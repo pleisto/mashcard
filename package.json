@@ -63,8 +63,8 @@
     "not dead"
   ],
   "scripts": {
-    "lint": "eslint ./  --ext .ts,.tsx && rubocop && brakeman  --summary --no-pager",
-    "lint:fix": "eslint ./ --fix --ext .ts,.tsx && rubocop -a && brakeman  --summary --no-pager",
+    "lint": "eslint ./  --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --config .rubocop.yml && bundle exec brakeman  --summary --no-pager",
+    "lint:fix": "eslint ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --config .rubocop.yml -a && bundle exec brakeman  --summary --no-pager",
     "test": "yarn lint",
     "commit": "git add . && cz",
     "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
@@ -81,7 +81,7 @@
       "eslint --fix"
     ],
     "(app|lib|saas)/**/*.rb": [
-      "rubocop -a"
+      "bundle exec rubocop -a"
     ]
   },
   "config": {

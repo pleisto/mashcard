@@ -259,6 +259,8 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.5-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.11.5-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -428,6 +430,7 @@ GEM
       sorbet-static (= 0.5.6424)
     sorbet-runtime (0.5.6424)
     sorbet-static (0.5.6424-universal-darwin-20)
+    sorbet-static (0.5.6424-x86_64-linux)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -482,6 +485,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   action_policy (~> 0.5.7)
@@ -551,9 +555,6 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webpacker (~> 6.0.0.beta.7)
   z85 (>= 0.11)
-
-RUBY VERSION
-   ruby 3.0.0p0
 
 BUNDLED WITH
    2.2.3

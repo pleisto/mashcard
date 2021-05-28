@@ -4,6 +4,7 @@ AllCops:
     - 'app/views/**/*'
     - 'bin/**/*'
     - 'node_modules/**/*'
+    - 'vendor/**/*'
   TargetRubyVersion: 2.7
   DisabledByDefault: true
   SuggestExtensions: false

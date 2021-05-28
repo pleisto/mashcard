@@ -1,0 +1,35 @@
+# https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idsteps
+---
+name: linter
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: 'node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
+      - name: Yarn install
+        run: yarn
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Lint Code
+        run: yarn lint
+
+
+
