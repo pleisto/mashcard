@@ -1,0 +1,88 @@
+{
+  "name": "@brickdoc/monorepo",
+  "version": "0.0.0",
+  "author": "Brickdoc LTD",
+  "description": "Brickdoc Monorepo Root",
+  "private": true,
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@apollo/client": "3.3.19",
+    "@icon-park/react": "1.3.3",
+    "@rails/actioncable": "6.1.3",
+    "graphql": "15.5.0",
+    "i18next": "20.3.0",
+    "i18next-icu": "2.0.3",
+    "lodash": "4.17.21",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-i18next": "11.9.0",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.14.3",
+    "@babel/preset-react": "7.13.13",
+    "@babel/preset-typescript": "7.13.0",
+    "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
+    "@graphql-codegen/cli": "1.21.5",
+    "@graphql-codegen/typescript": "1.22.1",
+    "@graphql-codegen/typescript-operations": "1.18.0",
+    "@graphql-codegen/typescript-react-apollo": "2.2.5",
+    "@rails/webpacker": "6.0.0-beta.7",
+    "@types/jest": "26.0.23",
+    "@types/node": "15.6.1",
+    "@types/react": "17.0.8",
+    "@types/react-dom": "17.0.5",
+    "@webpack-cli/serve": "1.4.0",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.27.0",
+    "graphql-tag": "2.12.4",
+    "husky": "^6.0.0",
+    "jest": "27.0.1",
+    "lint-staged": "11.0.0",
+    "patch-package": "6.4.7",
+    "prettier": "2.3.0",
+    "tsconfig-paths-webpack-plugin": "3.5.1",
+    "typescript": "4.2.4",
+    "webpack": "5.38.1",
+    "webpack-cli": "4.7.0",
+    "webpack-dev-server": "3.11.2"
+  },
+  "browserslist": [
+    "chrome >= 74",
+    "ios >= 13",
+    "firefox esr",
+    "last 3 edge version",
+    "last 2 safari version",
+    "not dead"
+  ],
+  "scripts": {
+    "lint": "eslint ./  --ext .ts,.tsx && rubocop && brakeman  --summary --no-pager",
+    "lint:fix": "eslint ./ --fix --ext .ts,.tsx && rubocop -a && brakeman  --summary --no-pager",
+    "commit": "cz",
+    "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
+    "postinstall": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.(ts|tsx|js)": [
+      "lint:fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Add files here to ignore them from prettier formatting
+
+dist
+coverage
+tmp
+log
+node_modules
+esm-bundle
+
+CHANGELOG.*
+*.gql
+*.env

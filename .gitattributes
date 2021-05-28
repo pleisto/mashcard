@@ -1,0 +1,21 @@
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+
+db/schema.gql linguist-generated merge=ours
+db/schema.rb linguist-generated merge=ours
+db/graphql/* linguist-generated merge=ours
+yarn.lock linguist-generated
+Gemfile.lock linguist-generated
+*.mdx linguist-language=TypeScript
+
+# Fonts
+*.ttf             binary
+*.eot             binary
+*.otf             binary
+*.woff            binary
+*.woff2           binary
+*.svg             binary
+*.ico             binary
+*.gif             binary
+*.png             binary
+*.wbmp            binary
+*.webp            binary

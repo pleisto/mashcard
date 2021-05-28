@@ -1,0 +1,45 @@
+██████╗ ██████╗ ██╗ ██████╗██╗  ██╗██████╗  ██████╗  ██████╗
+██╔══██╗██╔══██╗██║██╔════╝██║ ██╔╝██╔══██╗██╔═══██╗██╔════╝
+██████╔╝██████╔╝██║██║     █████╔╝ ██║  ██║██║   ██║██║
+██╔══██╗██╔══██╗██║██║     ██╔═██╗ ██║  ██║██║   ██║██║
+██████╔╝██║  ██║██║╚██████╗██║  ██╗██████╔╝╚██████╔╝╚██████╗
+╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝
+
+/***
+ * REFERENCE
+ */
+
+-  /robots.txt
+-  /.well-known/security.txt
+
+/***
+ * MISSION
+ * 使命
+ */
+
+By "augmenting human intellect" we mean increasing the capability of a man to approach a complex problem situation, to g
+ain comprehension to suit his particular needs, and to derive solutions to problems. Increased capability in this respec
+t is taken to mean a mixture of the following: more-rapid comprehension, better comprehension, the possibility of gainin
+g a useful degree of comprehension in a situation that previously was too complex, speedier solutions, better solutions,
+ and the possibility of finding solutions to problems that before seemed insoluble. And by "complex situations" we inclu
+de the professional problems of diplomats, executives, social scientists, life scientists, physical scientists, attorney
+s, designers—whether the problem situation exists for twenty minutes or twenty years. We do not speak of isolated clever
+tricks that help in particular situations. We refer to a way of life in an integrated domain where hunches, cut-and-try,
+intangibles, and the human "feel for a situation" usefully co-exist with powerful concepts, streamlined terminology and
+notation, sophisticated methods, and high-powered electronic aids.
+
+Augmenting Human Intellect: A Conceptual Framework, By: Douglas C. Engelbart
+
+
+
+“提高人类智能”是指增加一个人的能力来解决一个复杂问题,以获得适合他的特殊需要的能力,以及获得解决问题的方法。增加这方面的能
+力是指以下事项:更快的理解力,更好的领悟力,对于以前很复杂的问题，能够获得有效的理解程度,更快、更好的解决方案,在似乎无法解
+决问题之前，找到解决问题的可能性。“复杂情况下”我们包括外交官、高管、社会学家、生命学家、物理学家、律师、设计师等专业问题
+——无论这些问题存在20分钟或20年。我们不谈论孤立的在特定情况下有帮助的聪明的技巧。我们指的是一种生活方式，在一个综合范围的
+直觉、尝试、内省，以及人们“情形感知”有用的强大观念共存,简化的术语和符号,复杂的方法,和高性能的电子辅助设施。
+
+出处：《提高人类智能:一个概念性的框架》 作者：Douglas C. Engelbart 译者：三岛(@译文网)
+
+
+
+

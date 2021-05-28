@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'openssl'
+include FileUtils
+
+APP_ROOT = File.expand_path('..', __dir__)
+
+chdir APP_ROOT do
+  load 'lib/brick_graphql/reversible_int_hash.rb'
+  seed = BrickGraphQL::ReversibleIntHash.generate_seed
+  puts <<-EOF
+  # Please add to the environment variables.
+
+  SECURITY_REVERSIBLE_INT_PRIME=#{seed[:prime]}
+  SECURITY_REVERSIBLE_INT_RANDOM=#{seed[:random_integer]}
+  SECURITY_REVERSIBLE_INT_INVERSE=#{seed[:inverse_integer]}
+  EOF
+end

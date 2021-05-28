@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES2018",
+    "lib": ["esnext", "dom"],
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["frontends/*"]
+    }
+  }
+}

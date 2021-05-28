@@ -1,0 +1,26 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "5ea6dfd2b1dc1c2604737473af02f07b4697bdb53ab57d400dce90eeaec03231",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "lib/patches/active_record/postgresql_drop_database.rb",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "connection.select_all(\"select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where datname='#{configuration_hash[:database]}' AND state='idle';\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Patches::ActiveRecord::PostgresqlDropDatabase",
+        "method": "drop"
+      },
+      "user_input": "configuration_hash[:database]",
+      "confidence": "Medium",
+      "note": ""
+    }
+  ],
+  "updated": "2021-05-28 13:43:43 +0800",
+  "brakeman_version": "5.0.1"
+}
