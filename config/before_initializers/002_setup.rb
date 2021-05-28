@@ -32,7 +32,7 @@ Rails.application.reloader.to_prepare do
   ActionviewPrecompiler.precompile unless Rails.env.development?
 
   # Mailer
-  SMTP_SETTINGS = URI(BrickdocConfig.mailer[:url])
+  smtp_settings = URI(BrickdocConfig.mailer[:url])
   Rails.application.configure do
     unless Rails.env.test?
       config.action_mailer.delivery_method = :smtp
@@ -40,10 +40,10 @@ Rails.application.reloader.to_prepare do
         from: BrickdocConfig.mailer[:from]
       }
       config.action_mailer.smtp_settings = {
-        addresses: SMTP_SETTINGS.hostname,
-        port: SMTP_SETTINGS.port,
-        user_name: SMTP_SETTINGS.user,
-        password: SMTP_SETTINGS.password
+        addresses: smtp_settings.hostname,
+        port: smtp_settings.port,
+        user_name: smtp_settings.user,
+        password: smtp_settings.password
       }
     end
   end

@@ -18,6 +18,7 @@ require "rails/test_unit/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
 
 module Brickdoc
   class Application < Rails::Application
@@ -26,6 +27,7 @@ module Brickdoc
 
     config.action_mailer.deliver_later_queue_name = :default
 
+    require_dependency 'lib/brickdoc'
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app', 'graphql')

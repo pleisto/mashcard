@@ -81,8 +81,11 @@ group :development, :test do
   gem 'rubocop-brickdoc', require: false, path: 'packages/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 4.0.2'
-  gem 'shoulda-matchers', require: false
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
 group :development do
