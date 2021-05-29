@@ -1,4 +1,12 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Internal APIs
+  post '/.internal-apis/$graph' => 'internal_apis#graphql', default: { format: :json }
+
+  # Pages
+  get '/.well-know/unsupported' => 'pages#unsupported', as: :unsupported
+
+  # PWA
+  root 'pages#pwa'
+  get '*path', to: 'pages#pwa', constraints: ->(request) { !request.xhr? && request.format.html? }
 end

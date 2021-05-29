@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="<%= I18n.locale %>" dir="<%= t('meta.dir') %>">
+  <head prefix="og: http://ogp.me/ns#">
     <title>Brickdoc</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= action_cable_meta_tag %>
+    <%= render partial: 'layouts/head' %>
+    <meta name="renderer" content="webkit">
+    <meta name="browsermode" content="application">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta property="og:type" content="website" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <link rel="manifest" href="/packs/manifest.json" crossOrigin="use-credentials" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <style>
+      <% # noscript and PageLoader inline style %>
+      noscript { display: block; background: #fff2f0; color: #292929; z-index: 999; width: 100%; min-height: 3rem; position: fixed; top: 0; padding: 8px; } noscript .icon { vertical-align: -0.125em; color: #ff4d4f; }
+    </style>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
-
   <body>
-    <%= yield %>
+  <%= render partial: 'layouts/noscript' %>
+  <%= yield %>
   </body>
 </html>

@@ -1,6 +1,3 @@
 {
-  "extends": ["plugin:@brickdoc/eslint-plugin/react"],
-  "ignorePatterns": [
-    "config/webpack/*"
-  ]
+  "extends": ["plugin:@brickdoc/eslint-plugin/react"]
 }

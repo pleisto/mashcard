@@ -39,9 +39,8 @@ module Brickdoc
     end
 
     def parse_accept_language(value)
-      locale = HttpAcceptLanguage.intersection(value, :en, :zh, *available_locales, two_letter_truncate: false)
-      return 'en-US'.to_sym if locale == :en
-      return 'zh-CN'.to_sym if locale == :zh
+      locale = AcceptLanguage.parse(value).match(*available_locales)
+      return ::I18n.default_locale if locale.nil?
       locale
     end
   end

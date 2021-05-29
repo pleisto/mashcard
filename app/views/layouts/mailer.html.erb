@@ -1,13 +1,328 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml" dir="ltr" style="height:100%" height="100%">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <meta name="color-scheme" value="light only" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="date=no" />
+  <meta name="format-detection" content="address=no" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="target-densitydpi=device-dpi" />
+  <title></title>
+  <style type="text/css">
+    .ExternalClass {width: 100%;}
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+      line-height: 100%;}
+    body {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: none;
+      margin: 0; padding: 0;}
+    table, td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+      margin: 0; padding: 0;
+      border-collapse: collapse;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;}
+    img {
+      -ms-interpolation-mode: bicubic;
+      text-decoration: none;
+      outline: none;}
+    a img {
+      border: none;}
+    p {
+      margin: 0; margin-bottom: 0; padding: 0;}
+    [data-browser="useragent"] {
+      display: none;}
+    .ios-link-date a {
+      color: #666666 !important;
+      text-decoration: none !important;}
+    @media screen {/* Blue links on iOS */
+      span.ios-link-date a {
+        color: #666666 !important;
+        text-decoration: none !important;}
+      span.ios-link-disclaimer a {
+        color: #999999 !important;
+        text-decoration: none !important;}
+    }
+    @media
+    only screen and (max-width: 599px),
+      /* ios */
+    screen and (max-device-width: 414px) {
+      #ios-gmail-fix {
+        width: 100% !important;}
+      div#email {
+        /* side padding breaks Android Inbox's fixed-width!!
+        .. Update: 2018/11/6 - this seems fine now.
+        */
+        padding: 0 !important;
+      }
+      .mobile-img {
+        width: 100% !important;
+        max-width: 100% !important;}
+      div.stackable-div {
+        display: flex !important;
+        width: 100% !important;}
+      table.col {
+        width: 100% !important;}
+      .body-content,
+      .body-content-col {
+        padding: 0 50px !important;}
+      .body-content-col .col .copy {padding-left: 0 !important;}
+      .body-content-col .col .title {padding-top: 16px !important;}
+      .helpcenter-content .title {
+        font-size: 20px !important;}
+    }
+    /* global MQs */
+    /* iphone 6, 6s, 7, 8 */
+    @media
+    only screen and (min-device-width: 374px) and (max-device-width: 376px),
+      /* sony and samsung */
+    only screen and (device-width: 360px) and (orientation: portrait),
+      /* android - normal */
+    only screen and (device-width: 412px) and (orientation: portrait),
+      /* ios and android - plus devices */
+    only screen and (min-device-width: 413px) and (max-device-width: 415px),
+    only screen and (min-device-width: 319px) and (max-device-width: 321px),
+    only screen and (device-width: 375px) and (orientation: portrait),
+    only screen and (device-width: 414px) and (orientation: portrait) {
+    }
+    /* Android ONLY */
+    @media
+    only screen and (device-width: 412px) and (orientation: portrait) {
+      /* Gmail */
+      div > u + .body section {
+      }
+    }
+    /* iOS "Gmail" ONLY
+    ... This needs to come after the normal iOS MQ in order to work.
+    ... Make sure this stays as the last one!
+    */
+    @media only screen and
+    (device-width: 375px) and (orientation: portrait) {
+    }
+  </style>
+  <style type="text/css">
+    h4
+    {
+      text-align: left;
+    }
+    @media screen
+    {
+      .headerLineTitle
+      {
+        width:1.5in;
+        display:inline-block;
+        margin:0in;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-weight:bold;
+      }
+      .headerLineText
+      {
+        display:inline;
+        margin:0in;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-weight:normal;
+      }
+      .pageHeader
+      {
+        font-size:14.0pt;
+        font-weight:bold;
+        visibility:hidden;
+        display:none;
+      }
+    }
+    @media print
+    {
+      .headerLineTitle
+      {
+        width:1.5in;
+        display:inline-block;
+        margin:0in;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-weight:bold;
+      }
+      .headerLineText
+      {
+        display:inline;
+        margin:0in;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-weight:normal;
+      }
+      .pageHeader
+      {
+        font-size:14.0pt;
+        font-weight:bold;
+        visibility:visible;
+        display:block;
+      }
+    }
+  </style>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body height="100%" bgcolor="#f4f4f4" style="-webkit-text-size-adjust:100%; height:100%; padding: 0;">
+
+<!--[if mso]>
+<style type="text/css">
+  body, table, td, center {font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif !important;}
+  li {text-indent: -1em; /* Normalise space between bullets and text */}
+</style>
+<![endif]-->
+
+<table id="table-parent" width="100%" bgcolor="#f4f4f4" border="0" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4; border:0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+  <tr>
+    <td id="td-parent" dir="ltr" align="center" bgcolor="#f4f4f4" style="padding: 0; border-collapse: collapse;">
+      <!--[if mso]>
+      <table width="600" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; table-width:fixed;" align="center">
+        <tr><td style="width: 600px !important;">
+      <![endif]-->
+      <div id="email" bgcolor="#f4f4f4" style="margin:0 auto; padding: 40px 10px; background-color:#f4f4f4;">
+
+        <table class="bodyWrap" width="100%" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; max-width: 600px; background-color: #ffffff; border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+          <tr>
+            <td class="bodyWrap-td" dir="ltr" style="padding: 0; border-collapse: collapse;">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                <!-- preheader -->
+                <tr>
+                  <td class="preheader-hidden" style="display: none; opacity:0; overflow: hidden; visibility: hidden; max-height: 0; max-width: 0; border-collapse: collapse; font-size: 1px; line-height: 1px; color:#ffffff; mso-hide: all;">
+                    <%= yield :preheader %>
+                  </td>
+                </tr>
+
+
+
+                <!-- header -->
+                <tr>
+                  <td class="header-content" width="100%" align="left" valign="top" style="padding: 0; border-collapse: collapse;">
+                    <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                      <!-- logo -->
+                      <tr>
+                        <td width="100%" align="center" valign="top" style="padding: 30px 0 0; border-collapse: collapse;">
+                          <img src="https://s3.brickapis.com/mailer/logo-zh.png" alt="Google Domains" width="150" style="display: block; max-width: 150px;">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+
+
+                <!-- body -->
+                <tr>
+                  <td class="body-content" width="100%" align="center" valign="top" style="padding: 0 70px; border-collapse: collapse;">
+                    <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                      <tr><td width="100%" align="center" valign="top" style="padding: 40px 0 0; border-collapse: collapse; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px; line-height: 28px; color: #000000;"><%= yield :heading %></td></tr>
+                      <tr><td width="100%" align="left" valign="top" style="padding: 31px 0 0; border-collapse: collapse; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 21px; color: #000000;"><%= yield %></td></tr>
+                    </table>
+                  </td>
+                </tr>
+                <!-- body - 2 column module -->
+                <tr>
+                  <td class="body-content-col" width="100%" align="left" valign="top" style="padding: 0 70px; border-collapse: collapse;">
+                    <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                      <tr>
+                        <td width="100%" style="padding: 0; border-collapse: collapse;">
+                          <table width="100%" valign="middle" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                            <!-- sign-off -->
+                            <tr>
+                              <td width="100%" valign="middle" style="padding: 37px 0 0; border-collapse: collapse;">
+                                <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                                  <tr><td width="100%" style="padding: 0; border-collapse: collapse; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 21px; color: #000000;">敬颂&nbsp;时绥</td></tr>
+                                  <tr><td width="100%"  style="padding: 19px 0 0; border-collapse: collapse; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 21px; color: #000000;">积木文档团队</td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+
+
+                <!-- Help -->
+                <tr>
+                  <td class="helpcenter-content" style="padding: 35px 50px 0; border-collapse: collapse;">
+                    <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                      <!-- Have question -->
+                      <tr>
+                        <td width="100%" style="padding: 25px 0; border-collapse: collapse; border-top: solid 1px #ecedef;">
+                          <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                            <tr>
+                              <td width="20%" align="left" valign="top" style="padding: 0; border-collapse: collapse;"><a href="https://support.brickdoc.com/?utm=email.service-accounts.notice"><img class="mobile-img" src="https://s3.brickapis.com/mailer/support.icon.png" width="95" alt="Support Center Icon" style="display: inline-block; max-width: 95;"></a></td>
+                              <td width="80%" align="left" valign="top" style="padding: 0 0 0 27px; border-collapse: collapse;">
+                                <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                                  <tr><td class="title" width="100%" style="padding: 0; border-collapse: collapse; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 25px; line-height: 30px; color: #000000;">有任何疑问？</td></tr>
+                                  <tr><td class="" width="100%" style="padding: 10px 0 0; border-collapse: collapse; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 14px; line-height: 17px; color: #000000;">请勿直接回复系统邮件，您可访问<a href="https://support.brickdoc.com/?utm=email.service-accounts.notice" style="color: #1a73e8; text-decoration: none;;">支持中心</a>以获取帮助。
+                                  </td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- Learn -->
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+
+
+        <!-- footer -->
+        <table class="footerWrap" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; max-width: 600px; border: 0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+          <tr>
+            <td class="bodyWrap-td" dir="ltr" style="padding: 30px 25px; border-collapse: collapse;">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                <!-- Face(s) -->
+
+                <tr>
+                  <td width="100%" align="left" valign="top" style="padding: 10px 0 0;">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+                      <tr><td width="100%" align="center" style="padding: 14px 0 0; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #3c4043; font-size: 12px; line-height: 14px;">我们发送这封电子邮件通知是为了您让了解有关您的积木文档帐号的重要信息。
+                        我们将依照<a href="https://brickdoc.com/privacy" style="color: #1a73e8; text-decoration: none;">隐私权政策</a>处理您提供给我们的所有信息。
+                        Brickdoc® 和 积木文档® 是我们在中国及其他国家和地区注册的商标。
+                      </td></tr>
+                      <tr><td width="100%" align="center" style="padding: 14px 0 0; font-family: system, -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #3c4043; font-size: 12px; line-height: 14px;">Copyright © <%= Time.current.year %> 积木文档（宁波）云计算技术有限公司 保留所有权利</td></tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <!--[if mso]>
+      </td></tr></table>
+      <![endif]-->
+    </td>
+  </tr>
+
+</table>
+
+<table id="ios-gmail-fix" width="480" height="1" align="center" bgcolor="#f3f3f3" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto; padding: 0; border:0 none; border-collapse: collapse; mso-table-lspace:0; mso-table-rspace:0;">
+  <tr>
+    <td width="80" style="-moz-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-text-size-adjust: none; border-collapse: collapse; font-size: 0; line-height: 0; text-size-adjust: none;"><img width="80" height="1" border="0" src="https://s3.brickapis.com/mailer/spacer.png" style="display: block; border: 0; width: 80px; height: 1px; max-height: auto; outline: none;"></td>
+    <td width="80" style="-moz-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-text-size-adjust: none; border-collapse: collapse; font-size: 0; line-height: 0; text-size-adjust: none;"><img width="80" height="1" border="0" src="https://s3.brickapis.com/mailer/spacer.png" style="display: block; border: 0; width: 80px; height: 1px; max-height: auto; outline: none;"></td>
+    <td width="80" style="-moz-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-text-size-adjust: none; border-collapse: collapse; font-size: 0; line-height: 0; text-size-adjust: none;"><img width="80" height="1" border="0" src="https://s3.brickapis.com/mailer/spacer.png" style="display: block; border: 0; width: 80px; height: 1px; max-height: auto; outline: none;"></td>
+    <td width="80" style="-moz-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-text-size-adjust: none; border-collapse: collapse; font-size: 0; line-height: 0; text-size-adjust: none;"><img width="80" height="1" border="0" src="https://s3.brickapis.com/mailer/spacer.png" style="display: block; border: 0; width: 80px; height: 1px; max-height: auto; outline: none;"></td>
+    <td width="80" style="-moz-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-text-size-adjust: none; border-collapse: collapse; font-size: 0; line-height: 0; text-size-adjust: none;"><img width="80" height="1" border="0" src="https://s3.brickapis.com/mailer/spacer.png" style="display: block; border: 0; width: 80px; height: 1px; max-height: auto; outline: none;"></td>
+    <td width="80" style="-moz-text-size-adjust: none; -ms-text-size-adjust: none; -webkit-text-size-adjust: none; border-collapse: collapse; font-size: 0; line-height: 0; text-size-adjust: none;"><img width="80" height="1" border="0" src="https://s3.brickapis.com/mailer/spacer.png" style="display: block; border: 0; width: 80px; height: 1px; max-height: auto; outline: none;"></td>
+  </tr>
+</table>
+
+
+</body>
 </html>

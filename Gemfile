@@ -25,7 +25,7 @@ gem 'lockbox', '>= 0.6.4'
 gem 'lograge', '~> 0.11.2'
 gem 'logstop', '>= 0.2.7'
 gem 'fast_woothee', '~> 1.6', '>= 1.6.4'
-gem 'http_accept_language', '~> 2.1', '>= 2.1.1'
+gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '~> 1.11', '>= 1.11.5'
 
 # Feature toggles
@@ -98,3 +98,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+# SaaS Edition
+saas_path = 'packages/saas'
+gem 'brickdoc-saas', path: saas_path if File.exist?("#{saas_path}/brickdoc-saas.gemspec")

@@ -4,10 +4,17 @@ PATH
     rubocop-brickdoc (0.1.1)
       rubocop (>= 1.10)
 
+PATH
+  remote: packages/saas
+  specs:
+    brickdoc-saas (0.0.1)
+      rails (>= 6.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     abstract_type (0.0.7)
+    accept_language (2.0.1)
     action_policy (0.5.7)
       ruby-next-core (>= 0.11.0)
     action_policy-graphql (0.5.3)
@@ -213,7 +220,6 @@ GEM
       nokogiri (>= 1.4)
     html_tokenizer (0.0.7)
     htmlentities (4.3.4)
-    http_accept_language (2.1.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -488,12 +494,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  accept_language (>= 2.0.1)
   action_policy (~> 0.5.7)
   action_policy-graphql (~> 0.5.3)
   actionview_precompiler
   apollo_upload_server (~> 2.0, >= 2.0.5)
   bootsnap (>= 1.4.4)
   brakeman
+  brickdoc-saas!
   byebug
   cityhash (~> 0.9.0)
   cloak-rb (>= 0.1.0)
@@ -517,7 +525,6 @@ DEPENDENCIES
   graphql-docs (~> 2.0, >= 2.0.1)
   graphql-fragment_cache (~> 1.8)
   hiredis (~> 0.6.3)
-  http_accept_language (~> 2.1, >= 2.1.1)
   listen (~> 3.3)
   lockbox (>= 0.6.4)
   lograge (~> 0.11.2)
