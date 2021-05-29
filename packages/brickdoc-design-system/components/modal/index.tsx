@@ -9,8 +9,8 @@ import confirm, {
   modalGlobalConfig,
 } from './confirm'
 
-export { ActionButtonProps } from './ActionButton'
-export { ModalProps, ModalFuncProps } from './Modal'
+export type { ActionButtonProps } from './ActionButton'
+export type { ModalProps, ModalFuncProps } from './Modal'
 
 function modalWarn(props: ModalFuncProps) {
   return confirm(withWarn(props))
