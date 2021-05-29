@@ -1,0 +1,6 @@
+{
+  "presets": [
+    "./node_modules/@rails/webpacker/package/babel/preset.js"
+  ],
+  "plugins": ["@babel/plugin-syntax-flow", ["@babel/plugin-proposal-decorators", { "legacy": true }]]
+}

@@ -1,0 +1,13 @@
+<%= javascript_tag do %>
+  window.brickdocContext = window.brickdocContext || {}
+  Object.assign(window.brickdocContext,{
+  internalApiEndpoint: '<%= internal_graphql_api_path %>',
+  env:'<%=  Rails.env %>',
+  version:'<%= Brickdoc.full_version %>',
+  lang: '<%= Brickdoc::I18n.locale %>',
+  selfHosted: <%= Brickdoc.self_hosted? %>,
+  csrfToken: '<%= form_authenticity_token %>',
+  isDesktopApp: false,
+  features: <%= Flipper.features.to_json %>
+  })
+<% end %>

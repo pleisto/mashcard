@@ -43,7 +43,7 @@ gem 'graphql-docs', '~> 2.0', '>= 2.0.1'
 gem 'z85', '>= 0.11'
 
 # Frontend
-gem 'webpacker', '~> 6.0.0.beta.7'
+gem 'webpacker', '6.0.0.beta.7'
 gem 'turbo-rails', '~> 0.5.9'
 
 ## IAM

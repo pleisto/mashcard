@@ -1,0 +1,71 @@
+@import './index';
+
+// ================================================================
+// =                      Children Component                      =
+// ================================================================
+.@{form-item-prefix-cls} {
+  .@{brk-prefix}-mentions,
+  textarea.@{brk-prefix}-input {
+    height: auto;
+  }
+
+  // input[type=file]
+  .@{brk-prefix}-upload {
+    background: transparent;
+  }
+  .@{brk-prefix}-upload.@{brk-prefix}-upload-drag {
+    background: @background-color-light;
+  }
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    width: 14px;
+    height: 14px;
+  }
+
+  // Radios and checkboxes on same line
+  .@{brk-prefix}-radio-inline,
+  .@{brk-prefix}-checkbox-inline {
+    display: inline-block;
+    margin-left: 8px;
+    font-weight: normal;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .@{brk-prefix}-checkbox-vertical,
+  .@{brk-prefix}-radio-vertical {
+    display: block;
+  }
+
+  .@{brk-prefix}-checkbox-vertical + .@{brk-prefix}-checkbox-vertical,
+  .@{brk-prefix}-radio-vertical + .@{brk-prefix}-radio-vertical {
+    margin-left: 0;
+  }
+
+  .@{brk-prefix}-input-number {
+    + .@{form-prefix-cls}-text {
+      margin-left: 8px;
+    }
+    &-handler-wrap {
+      z-index: 2; // https://github.com/ant-design/ant-design/issues/6289
+    }
+  }
+
+  .@{brk-prefix}-select,
+  .@{brk-prefix}-cascader-picker {
+    width: 100%;
+  }
+
+  // Don't impact select inside input group and calendar header select
+  .@{brk-prefix}-picker-calendar-year-select,
+  .@{brk-prefix}-picker-calendar-month-select,
+  .@{brk-prefix}-input-group .@{brk-prefix}-select,
+  .@{brk-prefix}-input-group .@{brk-prefix}-cascader-picker {
+    width: auto;
+  }
+}

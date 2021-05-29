@@ -29,7 +29,7 @@ node_modules
 
 .eslintcache
 .byebug_history
-/public/packs
+/public/esm-bundle
 /public/packs-test
 
 .env.local

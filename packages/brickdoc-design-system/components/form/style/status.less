@@ -1,0 +1,278 @@
+@import './index.less';
+
+.@{form-item-prefix-cls} {
+  // ================================================================
+  // =                            Status                            =
+  // ================================================================
+  /* Some non-status related component style is in `components.less` */
+
+  // ========================= Explain =========================
+  /* To support leave along ErrorList. We add additional className to handle explain style */
+  &-explain {
+    &&-error {
+      color: @error-color;
+    }
+
+    &&-warning {
+      color: @warning-color;
+    }
+  }
+
+  &-has-feedback {
+    // ========================= Input =========================
+    .@{brk-prefix}-input {
+      padding-right: 24px;
+    }
+    // https://github.com/ant-design/ant-design/issues/19884
+    .@{brk-prefix}-input-affix-wrapper {
+      .@{brk-prefix}-input-suffix {
+        padding-right: 18px;
+      }
+    }
+
+    // Fix issue: https://github.com/ant-design/ant-design/issues/7854
+    .@{brk-prefix}-input-search:not(.@{brk-prefix}-input-search-enter-button) {
+      .@{brk-prefix}-input-suffix {
+        right: 28px;
+      }
+    }
+
+    // ======================== Switch =========================
+    .@{brk-prefix}-switch {
+      margin: 2px 0 4px;
+    }
+
+    // ======================== Select =========================
+    // Fix overlapping between feedback icon and <Select>'s arrow.
+    // https://github.com/ant-design/ant-design/issues/4431
+    > .@{brk-prefix}-select .@{brk-prefix}-select-arrow,
+    > .@{brk-prefix}-select .@{brk-prefix}-select-clear,
+    :not(.@{brk-prefix}-input-group-addon) > .@{brk-prefix}-select .@{brk-prefix}-select-arrow,
+    :not(.@{brk-prefix}-input-group-addon) > .@{brk-prefix}-select .@{brk-prefix}-select-clear {
+      right: 32px;
+    }
+    > .@{brk-prefix}-select .@{brk-prefix}-select-selection-selected-value,
+    :not(.@{brk-prefix}-input-group-addon)
+      > .@{brk-prefix}-select
+      .@{brk-prefix}-select-selection-selected-value {
+      padding-right: 42px;
+    }
+
+    // ======================= Cascader ========================
+    .@{brk-prefix}-cascader-picker {
+      &-arrow {
+        margin-right: 19px;
+      }
+      &-clear {
+        right: 32px;
+      }
+    }
+
+    // ======================== Picker =========================
+    // Fix issue: https://github.com/ant-design/ant-design/issues/4783
+    .@{brk-prefix}-picker {
+      padding-right: @input-padding-horizontal-base + @font-size-base * 1.3;
+
+      &-large {
+        padding-right: @input-padding-horizontal-lg + @font-size-base * 1.3;
+      }
+
+      &-small {
+        padding-right: @input-padding-horizontal-sm + @font-size-base * 1.3;
+      }
+    }
+
+    // ===================== Status Group ======================
+    &.@{form-item-prefix-cls} {
+      &-has-success,
+      &-has-warning,
+      &-has-error,
+      &-is-validating {
+        // ====================== Icon ======================
+        .@{form-item-prefix-cls}-children-icon {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          z-index: 1;
+          width: @input-height-base;
+          height: 20px;
+          margin-top: -10px;
+          font-size: @font-size-base;
+          line-height: 20px;
+          text-align: center;
+          visibility: visible;
+          animation: zoomIn 0.3s @ease-out-back;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  // ======================== Success ========================
+  &-has-success {
+    &.@{form-item-prefix-cls}-has-feedback .@{form-item-prefix-cls}-children-icon {
+      color: @success-color;
+      animation-name: diffZoomIn1 !important;
+    }
+  }
+
+  // ======================== Warning ========================
+  &-has-warning {
+    .form-control-validation(@warning-color; @warning-color; @form-warning-input-bg);
+
+    &.@{form-item-prefix-cls}-has-feedback .@{form-item-prefix-cls}-children-icon {
+      color: @warning-color;
+      animation-name: diffZoomIn3 !important;
+    }
+
+    // Select
+    .@{brk-prefix}-select:not(.@{brk-prefix}-select-disabled):not(.@{brk-prefix}-select-customize-input) {
+      .@{brk-prefix}-select-selector {
+        background-color: @form-warning-input-bg;
+        border-color: @warning-color !important;
+      }
+      &.@{brk-prefix}-select-open .@{brk-prefix}-select-selector,
+      &.@{brk-prefix}-select-focused .@{brk-prefix}-select-selector {
+        .active(@warning-color);
+      }
+    }
+
+    // InputNumber, TimePicker
+    .@{brk-prefix}-input-number,
+    .@{brk-prefix}-picker {
+      background-color: @form-warning-input-bg;
+      border-color: @warning-color;
+      &-focused,
+      &:focus {
+        .active(@warning-color);
+      }
+      &:not([disabled]):hover {
+        background-color: @form-warning-input-bg;
+        border-color: @warning-color;
+      }
+    }
+
+    .@{brk-prefix}-cascader-picker:focus .@{brk-prefix}-cascader-input {
+      .active(@warning-color);
+    }
+  }
+
+  // ========================= Error =========================
+  &-has-error {
+    .form-control-validation(@error-color; @error-color; @form-error-input-bg);
+
+    &.@{form-item-prefix-cls}-has-feedback .@{form-item-prefix-cls}-children-icon {
+      color: @error-color;
+      animation-name: diffZoomIn2 !important;
+    }
+
+    // Select
+    .@{brk-prefix}-select:not(.@{brk-prefix}-select-disabled):not(.@{brk-prefix}-select-customize-input) {
+      .@{brk-prefix}-select-selector {
+        background-color: @form-error-input-bg;
+        border-color: @error-color !important;
+      }
+      &.@{brk-prefix}-select-open .@{brk-prefix}-select-selector,
+      &.@{brk-prefix}-select-focused .@{brk-prefix}-select-selector {
+        .active(@error-color);
+      }
+    }
+
+    // fixes https://github.com/ant-design/ant-design/issues/20482
+    .@{brk-prefix}-input-group-addon .@{brk-prefix}-select {
+      &.@{brk-prefix}-select-single:not(.@{brk-prefix}-select-customize-input)
+        .@{brk-prefix}-select-selector {
+        background-color: inherit;
+        border: 0;
+        box-shadow: none;
+      }
+    }
+
+    .@{brk-prefix}-select.@{brk-prefix}-select-auto-complete {
+      .@{brk-prefix}-input:focus {
+        border-color: @error-color;
+      }
+    }
+
+    // InputNumber, TimePicker
+    .@{brk-prefix}-input-number,
+    .@{brk-prefix}-picker {
+      background-color: @form-error-input-bg;
+      border-color: @error-color;
+      &-focused,
+      &:focus {
+        .active(@error-color);
+      }
+      &:not([disabled]):hover {
+        background-color: @form-error-input-bg;
+        border-color: @error-color;
+      }
+    }
+
+    .@{brk-prefix}-mention-wrapper {
+      .@{brk-prefix}-mention-editor {
+        &,
+        &:not([disabled]):hover {
+          background-color: @form-error-input-bg;
+          border-color: @error-color;
+        }
+      }
+      &.@{brk-prefix}-mention-active:not([disabled]) .@{brk-prefix}-mention-editor,
+      .@{brk-prefix}-mention-editor:not([disabled]):focus {
+        .active(@error-color);
+      }
+    }
+
+    // cascader
+    .@{brk-prefix}-cascader-picker {
+      &:hover
+        .@{brk-prefix}-cascader-picker-label:hover
+        + .@{brk-prefix}-cascader-input.@{brk-prefix}-input {
+        border-color: @error-color;
+      }
+
+      &:focus .@{brk-prefix}-cascader-input {
+        background-color: @form-error-input-bg;
+        .active(@error-color);
+      }
+    }
+
+    // transfer
+    .@{brk-prefix}-transfer {
+      &-list {
+        border-color: @error-color;
+
+        &-search:not([disabled]) {
+          border-color: @input-border-color;
+
+          &:hover {
+            .hover();
+          }
+
+          &:focus {
+            .active();
+          }
+        }
+      }
+    }
+
+    // RadioGroup
+    .@{brk-prefix}-radio-button-wrapper {
+      border-color: @error-color !important;
+
+      &:not(:first-child) {
+        &::before {
+          background-color: @error-color;
+        }
+      }
+    }
+  }
+
+  // ====================== Validating =======================
+  &-is-validating {
+    &.@{form-item-prefix-cls}-has-feedback .@{form-item-prefix-cls}-children-icon {
+      display: inline-block;
+      color: @primary-color;
+    }
+  }
+}

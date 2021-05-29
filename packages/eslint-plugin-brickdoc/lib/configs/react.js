@@ -23,7 +23,7 @@ module.exports = {
     "react/no-did-update-set-state": "error",
     "react/no-unknown-property": "error",
     "react/no-unused-prop-types": "error",
-    "react/prop-types": "error",
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "error",
     'react/no-string-refs': 'error',
     'react/self-closing-comp': 'error',

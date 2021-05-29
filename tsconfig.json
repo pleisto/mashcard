@@ -5,18 +5,22 @@
     "lib": ["esnext", "dom"],
     "module": "esnext",
     "moduleResolution": "Node",
-    "declaration": true,
+    "declaration": false,
     "sourceMap": true,
     "jsx": "react",
     "noUnusedLocals": true,
+    "emitDecoratorMetadata": true,
     "noImplicitThis": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "noEmit": true,
     "experimentalDecorators": true,
+    "isolatedModules":true,
     "resolveJsonModule": true,
     "paths": {
       "@/*": ["frontends/*"]
     }
-  }
+  },
+  "compileOnSave": false
 }
