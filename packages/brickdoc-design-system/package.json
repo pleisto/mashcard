@@ -83,7 +83,7 @@
     "warning": "^4.0.3"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.8",
+    "@types/classnames": "^2.3.1",
     "@types/jest": "^26.0.0",
     "@types/jest-environment-puppeteer": "^4.4.0",
     "@types/jest-image-snapshot": "^4.1.0",
