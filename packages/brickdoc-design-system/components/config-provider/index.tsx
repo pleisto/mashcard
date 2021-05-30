@@ -1,5 +1,5 @@
 import * as React from 'react'
-import IconContext from '@ant-design/icons/lib/components/Context'
+import { IconProvider, IIconConfig } from '../icon'
 import { FormProvider as RcFormProvider } from 'rc-field-form'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
 import useMemo from 'rc-util/lib/hooks/useMemo'
@@ -56,7 +56,6 @@ export interface ConfigProviderProps {
   getTargetContainer?: () => HTMLElement;
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
   prefixCls?: string;
-  iconPrefixCls?: string;
   children?: React.ReactNode;
   renderEmpty?: RenderEmptyHandler;
   csp?: CSPConfig;
@@ -79,6 +78,7 @@ export interface ConfigProviderProps {
   };
   virtual?: boolean;
   dropdownMatchSelectWidth?: boolean;
+  icon?: IIconConfig;
 }
 
 interface ProviderChildrenProps extends ConfigProviderProps {
@@ -98,6 +98,39 @@ const setGlobalConfig = (params: Pick<ConfigProviderProps, 'prefixCls'>) => {
 function getGlobalPrefixCls() {
   return globalPrefixCls || defaultPrefixCls
 }
+
+function getIconDefaultConfig(rtl: boolean):IIconConfig {
+  return {
+    size: '1em',
+    strokeWidth: 3,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    rtl,
+    theme: 'outline',
+    colors: {
+      outline: {
+        fill: 'currentColor',
+        background: 'transparent'
+      },
+      filled: {
+        fill: 'currentColor',
+        background: 'transparent'
+      },
+      twoTone: {
+        fill: 'currentColor',
+        twoTone: '--primary-color'
+      },
+      multiColor: {
+        outStrokeColor: '#333',
+        outFillColor: '--primary-color',
+        innerStrokeColor: '#FFF',
+        innerFillColor: '#43CCF8'
+      }
+    },
+    prefix: getGlobalPrefixCls()
+  }
+}
+
 
 export const globalConfig = () => ({
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
@@ -123,7 +156,9 @@ export const globalConfig = () => ({
     // Fallback to default prefixCls
     return getGlobalPrefixCls()
   },
+  getIconDefaultConfig
 })
+
 
 const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
   const {
@@ -139,7 +174,7 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     dropdownMatchSelectWidth,
     legacyLocale,
     parentContext,
-    iconPrefixCls,
+    icon
   } = props
 
   const getPrefixCls = React.useCallback(
@@ -171,6 +206,7 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
   // Pass the props used by `useContext` directly with child component.
   // These props should merged into `config`.
   PASSED_PROPS.forEach(propName => {
+    // @ts-ignore
     const propValue: any = props[propName]
     if (propValue) {
       (config as any)[propName] = propValue
@@ -191,9 +227,6 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     },
   )
 
-  const memoIconContextValue = React.useMemo(() => ({ prefixCls: iconPrefixCls, csp }), [
-    iconPrefixCls,
-  ])
 
   let childNode = children
   // Additional Form provider
@@ -217,12 +250,11 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
       </LocaleProvider>
     )
   }
-
-  if (iconPrefixCls) {
-    childNode = (
-      <IconContext.Provider value={memoIconContextValue}>{childNode}</IconContext.Provider>
-    )
-  }
+  // IconPark
+  const IconConfig = {...(icon ?? getIconDefaultConfig(props.direction === 'rtl'))}
+  childNode = (
+    <IconProvider value={IconConfig}>{childNode}</IconProvider>
+  )
 
   if (componentSize) {
     childNode = <SizeContextProvider size={componentSize}>{childNode}</SizeContextProvider>

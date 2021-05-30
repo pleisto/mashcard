@@ -14,28 +14,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons-svg@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "@ant-design/icons-svg@npm:4.1.0"
-  checksum: c875e9692c65afd21d2c072fc4a6469bfe9d0a983a331eacea14c4e5e404ce1c24da1389dfb441f9db99318ac3f39445d5115cca13f7e3fe5c3ba25884058536
-  languageName: node
-  linkType: hard
-
-"@ant-design/icons@npm:^4.6.2":
-  version: 4.6.2
-  resolution: "@ant-design/icons@npm:4.6.2"
-  dependencies:
-    "@ant-design/colors": ^6.0.0
-    "@ant-design/icons-svg": ^4.0.0
-    "@babel/runtime": ^7.11.2
-    classnames: ^2.2.6
-    rc-util: ^5.9.4
-  peerDependencies:
-    react: ">=16.0.0"
-  checksum: 970104dff18be13bb05214a048f185adad8adfc897122ac358dcdc56e9cba0f1b154fac4f9535773c8788e1f58bb7906413cbf66845f6d62deb55cca56a64845
-  languageName: node
-  linkType: hard
-
 "@ant-design/react-slick@npm:~0.28.1":
   version: 0.28.3
   resolution: "@ant-design/react-slick@npm:0.28.3"
@@ -1554,8 +1532,8 @@ __metadata:
   resolution: "@brickdoc/design-system@workspace:packages/brickdoc-design-system"
   dependencies:
     "@ant-design/colors": ^6.0.0
-    "@ant-design/icons": ^4.6.2
     "@ant-design/react-slick": ~0.28.1
+    "@icon-park/react": 1.3.3
     "@types/classnames": ^2.3.1
     "@types/lodash": ^4.14.139
     array-tree-filter: ^2.1.0
@@ -1648,7 +1626,6 @@ __metadata:
     "@graphql-codegen/typescript": 1.22.1
     "@graphql-codegen/typescript-operations": 1.18.0
     "@graphql-codegen/typescript-react-apollo": 2.2.5
-    "@icon-park/react": 1.3.3
     "@rails/actioncable": 6.1.3
     "@rails/webpacker": 6.0.0-beta.7
     "@types/jest": 26.0.23
@@ -13398,7 +13375,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-util@npm:^5.0.0, rc-util@npm:^5.0.1, rc-util@npm:^5.0.5, rc-util@npm:^5.0.6, rc-util@npm:^5.0.7, rc-util@npm:^5.12.0, rc-util@npm:^5.13.0, rc-util@npm:^5.13.1, rc-util@npm:^5.2.0, rc-util@npm:^5.2.1, rc-util@npm:^5.3.0, rc-util@npm:^5.4.0, rc-util@npm:^5.5.0, rc-util@npm:^5.5.1, rc-util@npm:^5.6.1, rc-util@npm:^5.7.0, rc-util@npm:^5.8.0, rc-util@npm:^5.9.4, rc-util@npm:^5.9.8":
+"rc-util@npm:^5.0.0, rc-util@npm:^5.0.1, rc-util@npm:^5.0.5, rc-util@npm:^5.0.6, rc-util@npm:^5.0.7, rc-util@npm:^5.12.0, rc-util@npm:^5.13.0, rc-util@npm:^5.13.1, rc-util@npm:^5.2.0, rc-util@npm:^5.2.1, rc-util@npm:^5.3.0, rc-util@npm:^5.4.0, rc-util@npm:^5.5.0, rc-util@npm:^5.5.1, rc-util@npm:^5.6.1, rc-util@npm:^5.7.0, rc-util@npm:^5.8.0, rc-util@npm:^5.9.8":
   version: 5.13.1
   resolution: "rc-util@npm:5.13.1"
   dependencies:

@@ -1,12 +1,15 @@
 import * as React from 'react'
 import Notification from 'rc-notification'
+import { IconProvider ,
+  Close as CloseOutlined,
+  CheckOne as CheckCircleOutlined,
+  CloseOne as  CloseCircleOutlined,
+  Attention as ExclamationCircleOutlined,
+  Info as InfoCircleOutlined
+} from '../icon'
 import { NotificationInstance as RCNotificationInstance } from 'rc-notification/lib/Notification'
-import CloseOutlined from '@ant-design/icons/CloseOutlined'
+
 import classNames from 'classnames'
-import CheckCircleOutlined from '@ant-design/icons/CheckCircleOutlined'
-import CloseCircleOutlined from '@ant-design/icons/CloseCircleOutlined'
-import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined'
-import InfoCircleOutlined from '@ant-design/icons/InfoCircleOutlined'
 import createUseNotification from './hooks/useNotification'
 import { globalConfig } from '../config-provider'
 
@@ -151,9 +154,11 @@ function getNotificationInstance(
         closeIcon: closeIconToRender,
       },
       notification => {
+        // @ts-ignore
         resolve(notification)
         callback({
           prefixCls: `${prefixCls}-notice`,
+          // @ts-ignore
           instance: notification,
         })
       },
@@ -211,7 +216,12 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
   } else if (type) {
     iconNode = React.createElement(typeToIcon[type] || null, {
       className: `${prefixCls}-icon ${prefixCls}-icon-${type}`,
+      theme: 'outline'
     })
+  }
+
+  if (icon||type){
+    iconNode = <IconProvider value={globalConfig().getIconDefaultConfig(rtl)}>{iconNode}</IconProvider>
   }
 
   const autoMarginTag =

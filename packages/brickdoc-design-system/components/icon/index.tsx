@@ -1,8 +1,3 @@
-import devWarning from '../_util/devWarning'
-
-const Icon = () => {
-  devWarning(false, 'Icon', 'Empty Icon')
-  return null
-}
-
-export default Icon
+export type { IIconConfig } from '@icon-park/react/lib/runtime'
+export * from '@icon-park/react/lib/map'
+export { IconProvider } from '@icon-park/react/lib/runtime'

@@ -1,15 +1,18 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import RCNotification from 'rc-notification'
+import { IconProvider ,
+  Attention as ExclamationCircleFilled,
+  Info as InfoCircleFilled,
+  CheckOne as CheckCircleFilled,
+  CloseOne as CloseCircleFilled,
+  Rotation as LoadingOutlined
+} from '../icon'
 import {
   NotificationInstance as RCNotificationInstance,
   NoticeContent,
 } from 'rc-notification/lib/Notification'
-import LoadingOutlined from '@ant-design/icons/LoadingOutlined'
-import ExclamationCircleFilled from '@ant-design/icons/ExclamationCircleFilled'
-import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled'
-import CheckCircleFilled from '@ant-design/icons/CheckCircleFilled'
-import InfoCircleFilled from '@ant-design/icons/InfoCircleFilled'
+
 import createUseMessage from './hooks/useMessage'
 import { globalConfig } from '../config-provider'
 
@@ -144,6 +147,7 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
     [`${prefixCls}-${args.type}`]: args.type,
     [`${prefixCls}-rtl`]: rtl,
   })
+  const isLoading = args.type === 'loading'
   return {
     key: args.key,
     duration,
@@ -151,7 +155,9 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
     className: args.className,
     content: (
       <div className={messageClass}>
-        {args.icon || (IconComponent && <IconComponent />)}
+        {args.icon || (IconComponent && <IconProvider value={globalConfig().getIconDefaultConfig(rtl)}>
+          <IconComponent spin={isLoading} theme={isLoading ? 'outline':'filled'} />
+        </IconProvider>)}
         <span>{args.content}</span>
       </div>
     ),

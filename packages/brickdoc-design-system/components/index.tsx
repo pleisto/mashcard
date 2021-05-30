@@ -88,10 +88,10 @@ export { default as Layout } from './layout';
 
 export type { ListProps } from './list';
 export { default as List } from './list';
-
-export type { ArgsProps as MessageArgsProps } from './message';
-export { default as message } from './message';
-
+*/
+export type { ArgsProps as MessageArgsProps } from './message'
+export { default as message } from './message'
+/*
 export type { MenuProps, MenuTheme, SubMenuProps, MenuItemProps } from './menu';
 export { default as Menu } from './menu';
 
@@ -103,9 +103,9 @@ export { default as Modal } from './modal';
 
 export type { StatisticProps } from './statistic';
 export { default as Statistic } from './statistic';
-
-export { default as notification } from './notification';
-
+*/
+export { default as notification } from './notification'
+/*
 export type { PageHeaderProps } from './page-header';
 export { default as PageHeader } from './page-header';
 
