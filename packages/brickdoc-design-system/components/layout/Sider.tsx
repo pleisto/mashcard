@@ -2,9 +2,11 @@ import * as React from 'react'
 import { useContext, useRef, useState, useEffect } from 'react'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
-import BarsOutlined from '@ant-design/icons/BarsOutlined'
-import RightOutlined from '@ant-design/icons/RightOutlined'
-import LeftOutlined from '@ant-design/icons/LeftOutlined'
+import {
+  HamburgerButton as BarsOutlined,
+  Right as RightOutlined,
+  Left as LeftOutlined
+} from '../icon'
 
 import { LayoutContext } from './layout'
 import { ConfigContext } from '../config-provider'

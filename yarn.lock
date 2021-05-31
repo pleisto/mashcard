@@ -1554,7 +1554,7 @@ __metadata:
     rc-mentions: ~1.6.1
     rc-menu: ~9.0.0
     rc-motion: ^2.4.0
-    rc-notification: ~4.5.2
+    rc-notification: ~4.5.7
     rc-pagination: ~3.1.6
     rc-picker: ~2.5.10
     rc-progress: ~3.1.0
@@ -1590,15 +1590,15 @@ __metadata:
     eslint-config-prettier: 8.3.0
     eslint-config-standard-with-typescript: 20.0.0
     eslint-import-resolver-typescript: 2.4.0
-    eslint-plugin-import: 2.23.3
+    eslint-plugin-import: 2.23.4
     eslint-plugin-jest: 24.3.6
-    eslint-plugin-jsdoc: 35.0.0
+    eslint-plugin-jsdoc: 35.1.0
     eslint-plugin-jsx-a11y: 6.4.1
     eslint-plugin-node: 11.1.0
     eslint-plugin-prefer-arrow: 1.2.3
     eslint-plugin-prettier: 3.4.0
     eslint-plugin-promise: 5.1.0
-    eslint-plugin-react: 7.23.2
+    eslint-plugin-react: 7.24.0
     eslint-plugin-react-hooks: 4.2.0
     eslint-plugin-security-node: 1.0.14
     prettier: 2.3.0
@@ -1633,10 +1633,12 @@ __metadata:
     "@types/react": 17.0.8
     "@types/react-dom": 17.0.5
     "@webpack-cli/serve": 1.4.0
+    autoprefixer: ^10.2.6
     babel-plugin-transform-react-remove-prop-types: ^0.4.24
     commitizen: 4.2.4
     css-loader: ^5.2.6
     css-minimizer-webpack-plugin: ^3.0.0
+    cssnano: ^5.0.5
     cz-conventional-changelog: 3.3.0
     eslint: 7.27.0
     fork-ts-checker-webpack-plugin: ^6.2.10
@@ -1653,6 +1655,7 @@ __metadata:
     lodash: 4.17.21
     mini-css-extract-plugin: ^1.6.0
     patch-package: 6.4.7
+    postcss: ^8.3.0
     postcss-loader: ^5.3.0
     prettier: 2.3.0
     react: 17.0.2
@@ -1912,14 +1915,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@es-joy/jsdoccomment@npm:^0.7.2":
-  version: 0.7.2
-  resolution: "@es-joy/jsdoccomment@npm:0.7.2"
+"@es-joy/jsdoccomment@npm:^0.8.0-alpha.2":
+  version: 0.8.0-alpha.2
+  resolution: "@es-joy/jsdoccomment@npm:0.8.0-alpha.2"
   dependencies:
     comment-parser: ^1.1.5
     esquery: ^1.4.0
-    jsdoctypeparser: ^9.0.0
-  checksum: c3d23cb73a875d973c576f8e23d873ee2d615e0a0e6bbf8b1a3a029c36c4e50901726d61af88a348da72afa04c719fc96bd64dc40b4a13827ce504425caaf48c
+    jsdoc-type-pratt-parser: 1.0.0-alpha.23
+  checksum: cb6b06a8369f171f8dd5b9a3f74def4524e0d80a9c14a402246ff69a2a964a2ca3448c04e3cf5f99d6151aafa13272a96bd8b98d6857f9b217159c711fe09de1
   languageName: node
   linkType: hard
 
@@ -4038,6 +4041,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"autoprefixer@npm:^10.2.6":
+  version: 10.2.6
+  resolution: "autoprefixer@npm:10.2.6"
+  dependencies:
+    browserslist: ^4.16.6
+    caniuse-lite: ^1.0.30001230
+    colorette: ^1.2.2
+    fraction.js: ^4.1.1
+    normalize-range: ^0.1.2
+    postcss-value-parser: ^4.1.0
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: dedcc56739b3e5beda3927c13cd4dbb8e1eeb568418b28fb6b4a52697e951ec72ae3aca89e5d871c310e520a8bbbe24267b7401d21f96c07bf0ea6527977f9e8
+  languageName: node
+  linkType: hard
+
 "aws-sign2@npm:~0.7.0":
   version: 0.7.0
   resolution: "aws-sign2@npm:0.7.0"
@@ -4631,6 +4652,13 @@ __metadata:
   version: 1.0.30001230
   resolution: "caniuse-lite@npm:1.0.30001230"
   checksum: 7ad6bf592c272dc62e59eb05b7e8581f6e8e0b0f6cef8e687c82c8306d77dccacdbba86286a4d1e3defebdd358ddc0a236208f08ea8e7b899d7b519c1223399a
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001230":
+  version: 1.0.30001231
+  resolution: "caniuse-lite@npm:1.0.30001231"
+  checksum: 7c5fdd75c435b589ce594fafce6ddad4f7bb8215b08f99ee98911692eac6e6ded1706537177f29d46ed33c44b76ec49dd1f28d72dbd15fb4da57ab21acaa9ce6
   languageName: node
   linkType: hard
 
@@ -5587,7 +5615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssnano@npm:^5.0.0":
+"cssnano@npm:^5.0.0, cssnano@npm:^5.0.5":
   version: 5.0.5
   resolution: "cssnano@npm:5.0.5"
   dependencies:
@@ -6509,9 +6537,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:2.23.3":
-  version: 2.23.3
-  resolution: "eslint-plugin-import@npm:2.23.3"
+"eslint-plugin-import@npm:2.23.4":
+  version: 2.23.4
+  resolution: "eslint-plugin-import@npm:2.23.4"
   dependencies:
     array-includes: ^3.1.3
     array.prototype.flat: ^1.2.4
@@ -6530,7 +6558,7 @@ __metadata:
     tsconfig-paths: ^3.9.0
   peerDependencies:
     eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0
-  checksum: ed77042d30cba1d831036533912861b12c6a5291dc05f3cbc8bae0614922dafc5d2246256c2b5090327cf0fc8805b93892ee1c0c355b6f1b87ed9183b4038348
+  checksum: 8c64bb96fa35607de3da1ddf5d127a5913aebde5677bc276c55fecb3e539a7287569dc697af4f5c523bd2b08bff8f5b525448df5aa7d6256c86436b615be5abc
   languageName: node
   linkType: hard
 
@@ -6549,22 +6577,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:35.0.0":
-  version: 35.0.0
-  resolution: "eslint-plugin-jsdoc@npm:35.0.0"
+"eslint-plugin-jsdoc@npm:35.1.0":
+  version: 35.1.0
+  resolution: "eslint-plugin-jsdoc@npm:35.1.0"
   dependencies:
-    "@es-joy/jsdoccomment": ^0.7.2
+    "@es-joy/jsdoccomment": ^0.8.0-alpha.2
     comment-parser: 1.1.5
     debug: ^4.3.1
     esquery: ^1.4.0
-    jsdoctypeparser: ^9.0.0
+    jsdoc-type-pratt-parser: ^1.0.0
     lodash: ^4.17.21
-    regextras: ^0.7.1
+    regextras: ^0.8.0
     semver: ^7.3.5
     spdx-expression-parse: ^3.0.1
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0
-  checksum: 165182e3d888bb56893d39599ecfd74e655d84cbec82f27953443415a445754ec7be8c8937a9fdd26aa9f75279fe286ddc49c2c69cf675f3e99f3a1802e09a67
+  checksum: 6255d205e13047b9eab42cc16b7a9c0a49a4c80fd19420565942e83fa9b826405d9732d38540086cc16af43d75b243af608bc3a4eb8de5e0b9d7636041db78db
   languageName: node
   linkType: hard
 
@@ -6647,9 +6675,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:7.23.2":
-  version: 7.23.2
-  resolution: "eslint-plugin-react@npm:7.23.2"
+"eslint-plugin-react@npm:7.24.0":
+  version: 7.24.0
+  resolution: "eslint-plugin-react@npm:7.24.0"
   dependencies:
     array-includes: ^3.1.3
     array.prototype.flatmap: ^1.2.4
@@ -6657,15 +6685,15 @@ __metadata:
     has: ^1.0.3
     jsx-ast-utils: ^2.4.1 || ^3.0.0
     minimatch: ^3.0.4
-    object.entries: ^1.1.3
+    object.entries: ^1.1.4
     object.fromentries: ^2.0.4
-    object.values: ^1.1.3
+    object.values: ^1.1.4
     prop-types: ^15.7.2
     resolve: ^2.0.0-next.3
-    string.prototype.matchall: ^4.0.4
+    string.prototype.matchall: ^4.0.5
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7
-  checksum: 03a818ac93959c0a500f9232de76c96363666be127cb881d4a2d69eee630b992a7676cf0f8b2bf32d0fe7a917be8e831fe8d3f67dd0d2f97640d00c182bae143
+  checksum: bf844f98d93f3617fbd03df4be4f4c9e8e49ea035678762b73a28df730e9518d5ac636293f6326b41b4a0678f9dfa059ce559f6652c7a2d914d477ec3a389619
   languageName: node
   linkType: hard
 
@@ -7432,6 +7460,13 @@ __metadata:
   version: 0.1.2
   resolution: "forwarded@npm:0.1.2"
   checksum: 54695c574292f9bc6bfa52111844337bc2e61cfcc5ec82f16b816d721a67a0c76b4849a34b57e38e51d64ddbb81aef974f393579f610ed1b990470e75abad2e0
+  languageName: node
+  linkType: hard
+
+"fraction.js@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "fraction.js@npm:4.1.1"
+  checksum: e5a1f81d73e32aabf4fbd6581a7b3dfabd9a449ceb97c7e71ed2931dd0607095622341100d7819741eb9b435eb4e0d4a040a69e411dc943fa9b3a3872f3a2e0f
   languageName: node
   linkType: hard
 
@@ -9811,12 +9846,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jsdoctypeparser@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "jsdoctypeparser@npm:9.0.0"
-  bin:
-    jsdoctypeparser: bin/jsdoctypeparser
-  checksum: d9fd932fc657ee8df93b112ceb23f0c27862da7302c27325101d3700110d78d264f9ef08837ed84e7dd47b83657ffb323b47b1942b237111055cefb647b4a8ba
+"jsdoc-type-pratt-parser@npm:1.0.0-alpha.23":
+  version: 1.0.0-alpha.23
+  resolution: "jsdoc-type-pratt-parser@npm:1.0.0-alpha.23"
+  checksum: a174d04aeed52c621cb6075caf0a0efc8b0802346df915d5ac91cc1665b8b860daa0b9585cccd7430fcb50b6ccb1ba1d1328a306819819ab26dca18191686f7e
+  languageName: node
+  linkType: hard
+
+"jsdoc-type-pratt-parser@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "jsdoc-type-pratt-parser@npm:1.0.0"
+  checksum: ab45de382ea51afbd42d4c39c7ad0831e01abd9c085c6a5143624af1e70ae80bf9915ccf33b8ced30229e4615445eec5b4ea4cee242da4010c7a246a8e3da991
   languageName: node
   linkType: hard
 
@@ -11401,6 +11441,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"normalize-range@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "normalize-range@npm:0.1.2"
+  checksum: 9b2f14f093593f367a7a0834267c24f3cb3e887a2d9809c77d8a7e5fd08738bcd15af46f0ab01cc3a3d660386f015816b5c922cea8bf2ee79777f40874063184
+  languageName: node
+  linkType: hard
+
 "normalize-url@npm:^4.1.0, normalize-url@npm:^4.5.0":
   version: 4.5.1
   resolution: "normalize-url@npm:4.5.1"
@@ -11538,7 +11585,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"object.entries@npm:^1.1.3":
+"object.entries@npm:^1.1.4":
   version: 1.1.4
   resolution: "object.entries@npm:1.1.4"
   dependencies:
@@ -11570,7 +11617,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"object.values@npm:^1.1.3":
+"object.values@npm:^1.1.3, object.values@npm:^1.1.4":
   version: 1.1.4
   resolution: "object.values@npm:1.1.4"
   dependencies:
@@ -12612,7 +12659,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.15, postcss@npm:^8.2.9":
+"postcss@npm:^8.2.15, postcss@npm:^8.2.9, postcss@npm:^8.3.0":
   version: 8.3.0
   resolution: "postcss@npm:8.3.0"
   dependencies:
@@ -13086,9 +13133,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-notification@npm:~4.5.2":
-  version: 4.5.6
-  resolution: "rc-notification@npm:4.5.6"
+"rc-notification@npm:~4.5.7":
+  version: 4.5.7
+  resolution: "rc-notification@npm:4.5.7"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: 2.x
@@ -13097,7 +13144,7 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 00b2bd59420197ae74d243128fdd06bdf050592d82d3ede009ab2cacb6cfc21bbade2f6ecf4bde568300fe79a057fe92876f8f2ee090cbe9894910b1efbbf8bb
+  checksum: 7e62e00a86d5d4e2afcdc945c3de1edc75da5e88bb88434d13ea1b1d1df93bd5da4473aa60bb0bb3c290fe0ad82a4ff223acb35915522eb9191806895551993e
   languageName: node
   linkType: hard
 
@@ -13686,10 +13733,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"regextras@npm:^0.7.1":
-  version: 0.7.1
-  resolution: "regextras@npm:0.7.1"
-  checksum: ffcd5bfd5842564ed4db94af58ee3280cfc00bd19c235afc4b681be0f84b60ac2d3da345af5e92099b2b05d4d8b7063ab720c92bfee1162b2b7ae063d879baec
+"regextras@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "regextras@npm:0.8.0"
+  checksum: b7ec5b32a2b98b4b27048d44f8ab90009873c1307f2cf89321aa8c4cbb8147f1bee07863f4dadf585546ca0b91a234ad9804954dea5fc029421f6c25a4523798
   languageName: node
   linkType: hard
 
@@ -14910,7 +14957,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"string.prototype.matchall@npm:^4.0.4":
+"string.prototype.matchall@npm:^4.0.5":
   version: 4.0.5
   resolution: "string.prototype.matchall@npm:4.0.5"
   dependencies:

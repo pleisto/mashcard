@@ -162,9 +162,7 @@
     flex-direction: column;
     flex-grow: 1;
 
-    &:first-child:not([class^=~"'@{brk-prefix}-col-'"]):not([class*=~"' @{brk-prefix}-col-'"]) {
-      width: 100%;
-    }
+    &:first-child:not([class^='brk-col-']):not([class*=' brk-col-']) { width: 100%; }
   }
 
   &-control-input {
@@ -260,3 +258,9 @@
 }
 
 @import './rtl';
+
+// Hide the eye from a password input is MS Edge.
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}

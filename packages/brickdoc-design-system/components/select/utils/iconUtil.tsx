@@ -1,10 +1,12 @@
 import * as React from 'react'
-import DownOutlined from '@ant-design/icons/DownOutlined'
-import LoadingOutlined from '@ant-design/icons/LoadingOutlined'
-import CheckOutlined from '@ant-design/icons/CheckOutlined'
-import CloseOutlined from '@ant-design/icons/CloseOutlined'
-import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled'
-import SearchOutlined from '@ant-design/icons/SearchOutlined'
+import {
+  Search as SearchOutlined,
+  Close as CloseOutlined,
+  CloseOne as CloseCircleFilled,
+  Check as CheckOutlined,
+  Rotation as LoadingOutlined,
+  Down as DownOutlined
+} from '../../icon'
 
 export default function getIcons({
   suffixIcon,
@@ -26,7 +28,7 @@ export default function getIcons({
   // Clear Icon
   let mergedClearIcon = clearIcon
   if (!clearIcon) {
-    mergedClearIcon = <CloseCircleFilled />
+    mergedClearIcon = <CloseCircleFilled theme="filled" />
   }
 
   // Arrow item icon

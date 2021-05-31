@@ -1,12 +1,14 @@
 import * as React from 'react'
 import RcPagination from 'rc-pagination'
+// @ts-ignore
 import enUS from 'rc-pagination/lib/locale/en_US'
 import classNames from 'classnames'
-import LeftOutlined from '@ant-design/icons/LeftOutlined'
-import RightOutlined from '@ant-design/icons/RightOutlined'
-import DoubleLeftOutlined from '@ant-design/icons/DoubleLeftOutlined'
-import DoubleRightOutlined from '@ant-design/icons/DoubleRightOutlined'
-
+import {
+  Left as LeftOutlined,
+  Right as RightOutlined,
+  DoubleLeft as DoubleLeftOutlined,
+  DoubleRight as DoubleRightOutlined
+} from "../icon"
 import MiniSelect from './MiniSelect'
 import Select from '../select'
 import LocaleReceiver from '../locale-provider/LocaleReceiver'

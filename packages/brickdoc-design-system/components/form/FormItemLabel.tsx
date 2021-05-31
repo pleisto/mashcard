@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import QuestionCircleOutlined from '@ant-design/icons/QuestionCircleOutlined'
+import { Help as QuestionCircleOutlined} from '../icon'
 import Col, { ColProps } from '../grid/col'
 import { FormLabelAlign } from './interface'
 import { FormContext, FormContextProps } from './context'
@@ -85,7 +85,7 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         // Tooltip
         const tooltipProps = toTooltipProps(tooltip)
         if (tooltipProps) {
-          const { icon = <QuestionCircleOutlined />, ...restTooltipProps } = tooltipProps
+          const { icon = <QuestionCircleOutlined theme="outline" />, ...restTooltipProps } = tooltipProps
           const tooltipNode = (
             <Tooltip {...restTooltipProps}>
               {React.cloneElement(icon, { className: `${prefixCls}-item-tooltip` })}

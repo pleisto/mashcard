@@ -11,7 +11,7 @@ import { PresetColorType, PresetColorTypes } from '../_util/colors'
 import { LiteralUnion } from '../_util/type'
 import { getTransitionName } from '../_util/motion'
 
-export { AdjustOverflow, PlacementsConfig }
+export type { AdjustOverflow, PlacementsConfig }
 
 export type TooltipPlacement =
   | 'top'

@@ -6,10 +6,10 @@ export { default as Anchor } from './anchor';
 
 export type { AutoCompleteProps } from './auto-complete';
 export { default as AutoComplete } from './auto-complete';
-
-export type { AlertProps } from './alert';
-export { default as Alert } from './alert';
-
+*/
+export type { AlertProps } from './alert'
+export { default as Alert } from './alert'
+/*
 export type { AvatarProps } from './avatar';
 export { default as Avatar } from './avatar';
 
@@ -56,10 +56,10 @@ export { default as DatePicker } from './date-picker';
 
 export type { DescriptionsProps } from './descriptions';
 export { default as Descriptions } from './descriptions';
-
-export type { DividerProps } from './divider';
-export { default as Divider } from './divider';
-
+*/
+export type { DividerProps } from './divider'
+export { default as Divider } from './divider'
+/*
 export type { DropDownProps } from './dropdown';
 export { default as Dropdown } from './dropdown';
 
@@ -69,26 +69,26 @@ export { default as Drawer } from './drawer'; */
 export type { EmptyProps } from './empty'
 export { default as Empty } from './empty'
 
-/* export type { FormInstance, FormProps, FormItemProps } from './form';
-export { default as Form } from './form';
+export type { FormInstance, FormProps, FormItemProps } from './form'
+export { default as Form } from './form'
 
-export { default as Grid } from './grid';
+export { default as Grid } from './grid'
 
-export type { InputProps } from './input';
-export { default as Input } from './input';
-
+export type { InputProps } from './input'
+export { default as Input } from './input'
+/*
 export type { ImageProps } from './image';
 export { default as Image } from './image';
-
-export type { InputNumberProps } from './input-number';
-export { default as InputNumber } from './input-number';
-
-export type { LayoutProps } from './layout';
-export { default as Layout } from './layout';
-
-export type { ListProps } from './list';
-export { default as List } from './list';
 */
+export type { InputNumberProps } from './input-number'
+export { default as InputNumber } from './input-number'
+
+export type { LayoutProps } from './layout'
+export { default as Layout } from './layout'
+
+export type { ListProps } from './list'
+export { default as List } from './list'
+
 export type { ArgsProps as MessageArgsProps } from './message'
 export { default as message } from './message'
 /*

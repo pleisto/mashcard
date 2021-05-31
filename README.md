@@ -2,7 +2,7 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
-
+[![linter](https://github.com/brickdoc/brickdoc-enterprise/actions/workflows/linter.yml/badge.svg)](https://github.com/brickdoc/brickdoc-enterprise/actions/workflows/linter.yml)
 > Brickdoc is built on an open core model. This is Brickdoc **Enterprise Edition** mono repository.
 
 

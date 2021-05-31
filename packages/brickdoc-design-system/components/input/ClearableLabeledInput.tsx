@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled'
+import { CloseOne as CloseCircleFilled } from '../icon'
 import { tuple } from '../_util/type'
 import { InputProps, getInputClassName } from './Input'
 import { DirectionType } from '../config-provider'
@@ -64,6 +64,7 @@ class ClearableLabeledInput extends React.Component<ClearableInputProps> {
     const className = `${prefixCls}-clear-icon`
     return (
       <CloseCircleFilled
+        theme="filled"
         onClick={handleReset}
         className={classNames(
           {
