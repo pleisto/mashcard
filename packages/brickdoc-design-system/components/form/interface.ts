@@ -1,3 +1,3 @@
-export { Options as ScrollOptions } from 'scroll-into-view-if-needed'
+export type { Options as ScrollOptions } from 'scroll-into-view-if-needed'
 export type FormLabelAlign = 'left' | 'right';
-export { Store, StoreValue, NamePath, InternalNamePath } from 'rc-field-form/lib/interface'
+export type { Store, StoreValue, NamePath, InternalNamePath } from 'rc-field-form/lib/interface'

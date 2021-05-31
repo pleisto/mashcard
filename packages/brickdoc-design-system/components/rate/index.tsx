@@ -1,7 +1,6 @@
 import * as React from 'react'
 import RcRate from 'rc-rate'
-import StarFilled from '@ant-design/icons/StarFilled'
-
+import { Star as StarFilled } from '../icon'
 import Tooltip from '../tooltip'
 import { ConfigContext } from '../config-provider'
 
@@ -36,7 +35,7 @@ const Rate = React.forwardRef<unknown, RateProps>(({ prefixCls, tooltips, ...pro
 
   return (
     <RcRate
-      ref={ref}
+      ref={ref as any}
       characterRender={characterRender}
       {...props}
       prefixCls={ratePrefixCls}
@@ -48,7 +47,7 @@ const Rate = React.forwardRef<unknown, RateProps>(({ prefixCls, tooltips, ...pro
 Rate.displayName = 'Rate'
 
 Rate.defaultProps = {
-  character: <StarFilled />,
+  character: <StarFilled theme="filled" />,
 }
 
 export default Rate

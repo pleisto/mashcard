@@ -10,7 +10,7 @@ import { LiteralUnion } from '../_util/type'
 import { cloneElement } from '../_util/reactNode'
 import { isPresetColor } from './utils'
 
-export { ScrollNumberProps } from './ScrollNumber'
+export type { ScrollNumberProps } from './ScrollNumber'
 
 interface CompoundedComponent extends React.FC<BadgeProps> {
   Ribbon: typeof Ribbon;

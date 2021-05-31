@@ -1,8 +1,7 @@
-import { Moment } from 'moment'
-import momentGenerateConfig from 'rc-picker/lib/generate/moment'
+import dateFnsGenerateConfig from 'rc-picker/lib/generate/dateFns'
 import generateCalendar, { CalendarProps } from './generateCalendar'
 
-const Calendar = generateCalendar<Moment>(momentGenerateConfig)
+const Calendar = generateCalendar<Date>(dateFnsGenerateConfig)
 
-export { CalendarProps }
+export type { CalendarProps }
 export default Calendar

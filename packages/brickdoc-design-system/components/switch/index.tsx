@@ -1,7 +1,7 @@
 import * as React from 'react'
 import RcSwitch from 'rc-switch'
 import classNames from 'classnames'
-import LoadingOutlined from '@ant-design/icons/LoadingOutlined'
+import {Rotation as LoadingOutlined} from '../icon'
 
 import Wave from '../_util/wave'
 import { ConfigContext } from '../config-provider'
@@ -73,12 +73,13 @@ const Switch = React.forwardRef<unknown, SwitchProps>(
 
     return (
       <Wave insertExtraNode>
+        {/* @ts-ignore */}
         <RcSwitch
           {...props}
           prefixCls={prefixCls}
           className={classes}
           disabled={disabled || loading}
-          ref={ref}
+          ref={ref as any}
           loadingIcon={loadingIcon}
         />
       </Wave>

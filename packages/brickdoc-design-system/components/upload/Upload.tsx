@@ -294,7 +294,6 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     ...props,
     prefixCls,
     beforeUpload: mergedBeforeUpload,
-    // @ts-expect-error
     onChange: undefined,
   }
 

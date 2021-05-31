@@ -2,7 +2,7 @@ import * as React from 'react'
 import RcCollapse from 'rc-collapse'
 import { CSSMotionProps } from 'rc-motion'
 import classNames from 'classnames'
-import RightOutlined from '@ant-design/icons/RightOutlined'
+import { Right as RightOutlined } from '../icon'
 
 import toArray from 'rc-util/lib/Children/toArray'
 import omit from 'rc-util/lib/omit'
@@ -65,6 +65,7 @@ const Collapse: CollapseInterface = props => {
     const icon = (expandIcon ? (
       expandIcon(panelProps)
     ) : (
+      // @ts-ignore
       <RightOutlined rotate={panelProps.isActive ? 90 : undefined} />
     ))
 
@@ -110,7 +111,6 @@ const Collapse: CollapseInterface = props => {
     <RcCollapse
       openMotion={openMotion}
       {...props}
-      bordered={bordered}
       expandIcon={renderExpandIcon}
       prefixCls={prefixCls}
       className={collapseClassName}

@@ -1,5 +1,5 @@
 import { Moment } from 'moment'
-import momentGenerateConfig from 'rc-picker/lib/generate/moment'
+import dateFnsGenerateConfig from 'rc-picker/lib/generate/dateFns'
 import generatePicker, {
   PickerProps,
   PickerDateProps,
@@ -11,6 +11,6 @@ export type MonthPickerProps = Omit<PickerDateProps<Moment>, 'picker'>;
 export type WeekPickerProps = Omit<PickerDateProps<Moment>, 'picker'>;
 export type RangePickerProps = BaseRangePickerProps<Moment>;
 
-const DatePicker = generatePicker<Moment>(momentGenerateConfig)
+const DatePicker = generatePicker<Date>(dateFnsGenerateConfig)
 
 export default DatePicker

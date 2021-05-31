@@ -1,9 +1,11 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import InfoCircleOutlined from '@ant-design/icons/InfoCircleOutlined'
-import CheckCircleOutlined from '@ant-design/icons/CheckCircleOutlined'
-import CloseCircleOutlined from '@ant-design/icons/CloseCircleOutlined'
-import ExclamationCircleOutlined from '@ant-design/icons/ExclamationCircleOutlined'
+import {
+  CheckOne as CheckCircleOutlined,
+  CloseOne as  CloseCircleOutlined,
+  Attention as ExclamationCircleOutlined,
+  Info as InfoCircleOutlined
+} from '../icon'
 import { getConfirmLocale } from './locale'
 import { ModalFuncProps, destroyFns } from './Modal'
 import ConfirmDialog from './ConfirmDialog'
@@ -86,6 +88,7 @@ export default function confirm(config: ModalFuncProps) {
         if (typeof config.afterClose === 'function') {
           config.afterClose()
         }
+        // @ts-ignore
         destroy.apply(this, args)
       },
     }

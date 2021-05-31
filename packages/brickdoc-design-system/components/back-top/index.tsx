@@ -1,11 +1,10 @@
 import * as React from 'react'
 import CSSMotion from 'rc-motion'
-// @ts-expect-error
 import addEventListener from 'rc-util/lib/Dom/addEventListener'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
-import VerticalAlignTopOutlined from '@ant-design/icons/VerticalAlignTopOutlined'
+import { ToTop as VerticalAlignTopOutlined } from '../icon'
 import { throttleByAnimationFrame } from '../_util/throttleByAnimationFrame'
 import { ConfigContext } from '../config-provider'
 import getScroll from '../_util/getScroll'

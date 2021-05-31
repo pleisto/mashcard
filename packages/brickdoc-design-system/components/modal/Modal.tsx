@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Dialog from 'rc-dialog'
 import classNames from 'classnames'
-import CloseOutlined from '@ant-design/icons/CloseOutlined'
+import { Close as CloseOutlined } from '../icon'
 
 import useModal from './useModal'
 import { getConfirmLocale } from './locale'
@@ -201,9 +201,10 @@ const Modal: ModalInterface = props => {
     [`${prefixCls}-wrap-rtl`]: direction === 'rtl',
   })
   return (
+    // @ts-ignore
     <Dialog
       {...restProps}
-      getContainer={getContainer === undefined ? getContextPopupContainer : getContainer}
+      getContainer={(getContainer === undefined ? getContextPopupContainer : getContainer)as any}
       prefixCls={prefixCls}
       wrapClassName={wrapClassNameExtended}
       footer={footer === undefined ? defaultFooter : footer}

@@ -4,11 +4,13 @@ import arrayTreeFilter from 'array-tree-filter'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
 import KeyCode from 'rc-util/lib/KeyCode'
-import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled'
-import DownOutlined from '@ant-design/icons/DownOutlined'
-import RightOutlined from '@ant-design/icons/RightOutlined'
-import RedoOutlined from '@ant-design/icons/RedoOutlined'
-import LeftOutlined from '@ant-design/icons/LeftOutlined'
+import {
+  CloseOne as CloseCircleFilled,
+  Down as DownOutlined,
+  Right as RightOutlined,
+  Left as LeftOutlined,
+  Redo as RedoOutlined
+} from '../icon'
 
 import Input from '../input'
 import {
@@ -255,6 +257,7 @@ function getEmptyNode(
 
 class Cascader extends React.Component<CascaderProps, CascaderState> {
   static defaultProps = {
+    // @ts-ignore
     options: [],
     disabled: false,
     allowClear: true,

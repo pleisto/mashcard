@@ -1,9 +1,11 @@
 import * as React from 'react'
 import CSSMotion from 'rc-motion'
 import classNames from 'classnames'
-import EyeOutlined from '@ant-design/icons/EyeOutlined'
-import DeleteOutlined from '@ant-design/icons/DeleteOutlined'
-import DownloadOutlined from '@ant-design/icons/DownloadOutlined'
+import {
+  PreviewOpen as EyeOutlined,
+  Delete as DeleteOutlined,
+  Download as DownloadOutlined
+} from '../../icon'
 import Tooltip from '../../tooltip'
 import Progress from '../../progress'
 import { ConfigContext } from '../../config-provider'

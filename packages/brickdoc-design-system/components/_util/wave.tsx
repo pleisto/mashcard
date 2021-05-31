@@ -48,7 +48,7 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
   context: ConfigConsumerProps;
 
   componentDidMount() {
-    const node = this.containerRef.current 
+    const node = this.containerRef.current
     if (!node || node.nodeType !== 1) {
       return
     }
@@ -89,6 +89,7 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
       extraNode.style.borderColor = waveColor
 
       const nodeRoot = node.getRootNode?.() || node.ownerDocument
+      // @ts-ignore
       const nodeBody: Element =
         nodeRoot instanceof Document ? nodeRoot.body : (nodeRoot.firstChild as Element) ?? nodeRoot
 
@@ -117,7 +118,7 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
       return
     }
 
-    const node = this.containerRef.current 
+    const node = this.containerRef.current
     if (!e || e.target !== node || this.animationStart) {
       return
     }

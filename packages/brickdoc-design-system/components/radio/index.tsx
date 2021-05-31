@@ -4,7 +4,7 @@ import Group from './group'
 import Button from './radioButton'
 import { RadioProps } from './interface'
 
-export {
+export type {
   RadioGroupButtonStyle,
   RadioGroupOptionType,
   RadioGroupProps,

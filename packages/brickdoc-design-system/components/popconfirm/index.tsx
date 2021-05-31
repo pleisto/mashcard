@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
-import ExclamationCircleFilled from '@ant-design/icons/ExclamationCircleFilled'
+import { Attention as ExclamationCircleFilled } from '../icon'
 import KeyCode from 'rc-util/lib/KeyCode'
 import Tooltip, { AbstractTooltipProps } from '../tooltip'
 import Button from '../button'

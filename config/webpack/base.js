@@ -1,5 +1,5 @@
 const { webpackConfig, merge } = require("@rails/webpacker")
-// const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
@@ -12,7 +12,7 @@ webpackConfig.plugins = webpackConfig.plugins.filter(x=> x.constructor.name !== 
 
 module.exports = merge(webpackConfig, {
   plugins: [
-    // new ForkTSCheckerWebpackPlugin({async: false}),
+    new ForkTSCheckerWebpackPlugin({async: false}),
     new WebpackAssetsManifest({
       enabled: true,
       entrypoints: true,

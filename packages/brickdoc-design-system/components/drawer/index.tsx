@@ -1,7 +1,7 @@
 import * as React from 'react'
 import RcDrawer from 'rc-drawer'
 import getScrollBarSize from 'rc-util/lib/getScrollBarSize'
-import CloseOutlined from '@ant-design/icons/CloseOutlined'
+import { Close as CloseOutlined } from '../icon'
 import classNames from 'classnames'
 import { ConfigContext, DirectionType } from '../config-provider'
 import { tuple } from '../_util/type'

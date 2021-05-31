@@ -1539,12 +1539,12 @@ __metadata:
     array-tree-filter: ^2.1.0
     classnames: 2.3.1
     copy-to-clipboard: 3.3.1
+    date-fns: ^2.22.1
     lodash: ^4.17.21
-    moment: ^2.25.3
     pretty-quick: ^3.0.0
     rc-cascader: ~1.4.0
     rc-checkbox: ~2.3.0
-    rc-collapse: ~3.1.0
+    rc-collapse: ~3.1.1
     rc-dialog: ~8.5.1
     rc-drawer: ~4.3.0
     rc-dropdown: ~3.2.0
@@ -1573,8 +1573,11 @@ __metadata:
     rc-trigger: ^5.2.1
     rc-upload: ~4.3.0
     rc-util: ^5.13.1
+    react: ^17.0.2
+    react-dom: ^17.0.2
     scroll-into-view-if-needed: ^2.2.25
   peerDependencies:
+    date-fns: ">= 2.22.1"
     react: ">=17.0.0"
     react-dom: ">=17.0.0"
   languageName: unknown
@@ -1592,7 +1595,7 @@ __metadata:
     eslint-import-resolver-typescript: 2.4.0
     eslint-plugin-import: 2.23.4
     eslint-plugin-jest: 24.3.6
-    eslint-plugin-jsdoc: 35.1.0
+    eslint-plugin-jsdoc: 35.1.1
     eslint-plugin-jsx-a11y: 6.4.1
     eslint-plugin-node: 11.1.0
     eslint-plugin-prefer-arrow: 1.2.3
@@ -1640,6 +1643,7 @@ __metadata:
     css-minimizer-webpack-plugin: ^3.0.0
     cssnano: ^5.0.5
     cz-conventional-changelog: 3.3.0
+    date-fns: ^2.22.1
     eslint: 7.27.0
     fork-ts-checker-webpack-plugin: ^6.2.10
     graphql: 15.5.0
@@ -5751,7 +5755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.15.0":
+"date-fns@npm:^2.15.0, date-fns@npm:^2.22.1":
   version: 2.22.1
   resolution: "date-fns@npm:2.22.1"
   checksum: 7ff97cd605af50c02f341687c2cafd218839a1aace67965374989855a13f76dc4fe52e0e38c343c1ad1f8399787cb6839a0b14a669c44b30550c287300b1bb50
@@ -6577,22 +6581,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsdoc@npm:35.1.0":
-  version: 35.1.0
-  resolution: "eslint-plugin-jsdoc@npm:35.1.0"
+"eslint-plugin-jsdoc@npm:35.1.1":
+  version: 35.1.1
+  resolution: "eslint-plugin-jsdoc@npm:35.1.1"
   dependencies:
     "@es-joy/jsdoccomment": ^0.8.0-alpha.2
     comment-parser: 1.1.5
     debug: ^4.3.1
     esquery: ^1.4.0
-    jsdoc-type-pratt-parser: ^1.0.0
+    jsdoc-type-pratt-parser: ^1.0.1
     lodash: ^4.17.21
     regextras: ^0.8.0
     semver: ^7.3.5
     spdx-expression-parse: ^3.0.1
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0
-  checksum: 6255d205e13047b9eab42cc16b7a9c0a49a4c80fd19420565942e83fa9b826405d9732d38540086cc16af43d75b243af608bc3a4eb8de5e0b9d7636041db78db
+  checksum: 351117a0d261f8dd71dc53eaacd2782066753c3aab15629f5802609c56a551cb547c59300f70f7973ae8419d6b370a5638643dcba91042b4ef54582d450b4dd7
   languageName: node
   linkType: hard
 
@@ -9853,10 +9857,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jsdoc-type-pratt-parser@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "jsdoc-type-pratt-parser@npm:1.0.0"
-  checksum: ab45de382ea51afbd42d4c39c7ad0831e01abd9c085c6a5143624af1e70ae80bf9915ccf33b8ced30229e4615445eec5b4ea4cee242da4010c7a246a8e3da991
+"jsdoc-type-pratt-parser@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "jsdoc-type-pratt-parser@npm:1.0.1"
+  checksum: 3e157b645fec8f4db98bcde160377e92578bdeadb8bdb60251bc59bd1a6697ef16e15728b6aa3422b7be82d343ec386dd35f1e9427f5ae91d8b4c4bf64cfe125
   languageName: node
   linkType: hard
 
@@ -11159,7 +11163,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.24.0, moment@npm:^2.25.3":
+"moment@npm:^2.24.0":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
@@ -12982,7 +12986,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-collapse@npm:~3.1.0":
+"rc-collapse@npm:~3.1.1":
   version: 3.1.1
   resolution: "rc-collapse@npm:3.1.1"
   dependencies:
@@ -13464,7 +13468,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.2":
+"react-dom@npm:17.0.2, react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -13541,7 +13545,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.2":
+"react@npm:17.0.2, react@npm:^17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:

@@ -1,11 +1,14 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import CalendarOutlined from '@ant-design/icons/CalendarOutlined'
-import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined'
-import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled'
-import SwapRightOutlined from '@ant-design/icons/SwapRightOutlined'
+import {
+  Calendar as CalendarOutlined,
+  CloseOne as CloseCircleFilled,
+  Time as ClockCircleOutlined,
+  RightSmall as SwapRightOutlined
+
+} from '../../icon'
 import { RangePicker as RCRangePicker } from 'rc-picker'
-import { GenerateConfig } from 'rc-picker/lib/generate/index'
+import { GenerateConfig } from "rc-picker/lib/generate"
 import enUS from '../locale/en_US'
 import { ConfigContext, ConfigConsumerProps } from '../../config-provider'
 import SizeContext from '../../config-provider/SizeContext'
@@ -74,7 +77,7 @@ export default function generateRangePicker<DateType>(
                 ref={this.pickerRef}
                 placeholder={getRangePlaceholder(picker, locale, placeholder)}
                 suffixIcon={picker === 'time' ? <ClockCircleOutlined /> : <CalendarOutlined />}
-                clearIcon={<CloseCircleFilled />}
+                clearIcon={<CloseCircleFilled theme="filled" />}
                 allowClear
                 transitionName={`${rootPrefixCls}-slide-up`}
                 {...restProps}

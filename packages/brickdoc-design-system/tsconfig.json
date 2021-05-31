@@ -10,6 +10,6 @@
     "strictNullChecks": false,
     "jsx": "preserve",
     "noUnusedParameters": true,
-    "noImplicitAny": true
+    "noImplicitAny": false
   }
 }

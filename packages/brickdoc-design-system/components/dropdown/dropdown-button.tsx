@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import EllipsisOutlined from '@ant-design/icons/EllipsisOutlined'
+import { More as EllipsisOutlined } from '../icon'
 
 import Button from '../button'
 import { ButtonHTMLType } from '../button/button'

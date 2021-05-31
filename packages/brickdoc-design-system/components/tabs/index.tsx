@@ -2,9 +2,11 @@ import * as React from 'react'
 import RcTabs, { TabPane, TabsProps as RcTabsProps, TabPaneProps } from 'rc-tabs'
 import { EditableConfig } from 'rc-tabs/lib/interface'
 import classNames from 'classnames'
-import EllipsisOutlined from '@ant-design/icons/EllipsisOutlined'
-import PlusOutlined from '@ant-design/icons/PlusOutlined'
-import CloseOutlined from '@ant-design/icons/CloseOutlined'
+import {
+  Close as CloseOutlined,
+  Plus as PlusOutlined,
+  More as EllipsisOutlined
+} from '../icon'
 
 import devWarning from '../_util/devWarning'
 import { ConfigContext } from '../config-provider'
@@ -13,7 +15,7 @@ import SizeContext, { SizeType } from '../config-provider/SizeContext'
 export type TabsType = 'line' | 'card' | 'editable-card';
 export type TabsPosition = 'top' | 'right' | 'bottom' | 'left';
 
-export { TabPaneProps }
+export type { TabPaneProps }
 
 export interface TabsProps extends Omit<RcTabsProps, 'editable'> {
   type?: TabsType;

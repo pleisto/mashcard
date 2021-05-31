@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import KeyCode from 'rc-util/lib/KeyCode'
-import EnterOutlined from '@ant-design/icons/EnterOutlined'
+import { CornerDownLeft as EnterOutlined } from '../icon'
 import { AutoSizeType } from 'rc-textarea/lib/ResizableTextArea'
 import TextArea from '../input/TextArea'
 import { DirectionType } from '../config-provider'

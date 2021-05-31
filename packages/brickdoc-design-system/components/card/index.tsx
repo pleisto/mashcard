@@ -20,8 +20,8 @@ function getAction(actions: React.ReactNode[]) {
   return actionList
 }
 
-export { CardGridProps } from './Grid'
-export { CardMetaProps } from './Meta'
+export type { CardGridProps } from './Grid'
+export type { CardMetaProps } from './Meta'
 
 export type CardType = 'inner';
 export type CardSize = 'default' | 'small';

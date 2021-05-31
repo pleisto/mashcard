@@ -1,8 +1,10 @@
 import * as React from 'react'
 import omit from 'rc-util/lib/omit'
 import RcSteps from 'rc-steps'
-import CheckOutlined from '@ant-design/icons/CheckOutlined'
-import CloseOutlined from '@ant-design/icons/CloseOutlined'
+import {
+  Check as CheckOutlined,
+  Close as CloseOutlined
+} from '../icon'
 import classNames from 'classnames'
 import { ConfigContext } from '../config-provider'
 import Progress from '../progress'

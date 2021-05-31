@@ -13,7 +13,7 @@ import { INTERNAL_SELECTION_ITEM } from './hooks/useSelection'
 import { tuple } from '../_util/type'
 // import { TableAction } from './Table';
 
-export { GetRowKey, ExpandableConfig }
+export type { GetRowKey, ExpandableConfig }
 
 export type Key = React.Key;
 
