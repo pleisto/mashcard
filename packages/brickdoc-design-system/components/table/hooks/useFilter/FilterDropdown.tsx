@@ -1,7 +1,7 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import isEqual from 'lodash/isEqual'
-import FilterFilled from '@ant-design/icons/FilterFilled'
+import { Filter as FilterFilled } from '../../../icon'
 import Button from '../../../button'
 import Menu from '../../../menu'
 import Checkbox from '../../../checkbox'
@@ -12,7 +12,7 @@ import { ColumnType, ColumnFilterItem, Key, TableLocale, GetPopupContainer } fro
 import FilterDropdownMenuWrapper from './FilterWrapper'
 import { FilterState } from '.'
 import useSyncState from '../../../_util/hooks/useSyncState'
-import { ConfigContext } from "brick-design/es/config-provider"
+import { ConfigContext } from '../../../config-provider/context'
 
 const { SubMenu, Item: MenuItem } = Menu
 
@@ -21,12 +21,12 @@ function hasSubMenu(filters: ColumnFilterItem[]) {
 }
 
 function renderFilterItems({
-  filters,
-  prefixCls,
-  filteredKeys,
-  filterMultiple,
-  locale,
-}: {
+                             filters,
+                             prefixCls,
+                             filteredKeys,
+                             filterMultiple,
+                             locale,
+                           }: {
   filters: ColumnFilterItem[];
   prefixCls: string;
   filteredKeys: Key[];
@@ -87,6 +87,7 @@ function renderFilterItems({
 }
 
 export interface FilterDropdownProps<RecordType> {
+  tablePrefixCls: string;
   prefixCls: string;
   dropdownPrefixCls: string;
   column: ColumnType<RecordType>;
@@ -101,6 +102,7 @@ export interface FilterDropdownProps<RecordType> {
 
 function FilterDropdown<RecordType>(props: FilterDropdownProps<RecordType>) {
   const {
+    tablePrefixCls,
     prefixCls,
     column,
     dropdownPrefixCls,
@@ -160,7 +162,7 @@ function FilterDropdown<RecordType>(props: FilterDropdownProps<RecordType>) {
   )
 
   // ======================= Submit ========================
-  // @ts-expect-error
+  // @ts-ignore
   const internalTriggerFilter = (keys: Key[] | undefined | null) => {
     const mergedKeys = keys && keys.length ? keys : null
     if (mergedKeys === null && (!filterState || !filterState.filteredKeys)) {
@@ -277,14 +279,14 @@ function FilterDropdown<RecordType>(props: FilterDropdownProps<RecordType>) {
   } else if (column.filterIcon) {
     filterIcon = column.filterIcon
   } else {
-    filterIcon = <FilterFilled />
+    filterIcon = <FilterFilled theme="filled" />
   }
 
   const { direction } = React.useContext(ConfigContext)
 
   return (
-    <div className={classNames(`${prefixCls}-column`)}>
-      {children}
+    <div className={`${prefixCls}-column`}>
+      <span className={`${tablePrefixCls}-column-title`}>{children}</span>
       <Dropdown
         overlay={menu}
         trigger={['click']}

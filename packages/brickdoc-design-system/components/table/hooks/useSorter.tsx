@@ -1,7 +1,9 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import CaretDownOutlined from '@ant-design/icons/CaretDownOutlined'
-import CaretUpOutlined from '@ant-design/icons/CaretUpOutlined'
+import {
+  DownOne as CaretDownOutlined,
+  UpOne as CaretUpOutlined
+} from '../../icon'
 import {
   TransformColumns,
   ColumnsType,
@@ -154,7 +156,9 @@ function injectSorter<RecordType>(
         title: (renderProps: ColumnTitleProps<RecordType>) => {
           const renderSortTitle = (
             <div className={`${prefixCls}-column-sorters`}>
-              <span>{renderColumnTitle(column.title, renderProps)}</span>
+              <span className={`${prefixCls}-column-title`}>
+                {renderColumnTitle(column.title, renderProps)}
+              </span>
               <span
                 className={classNames(`${prefixCls}-column-sorter`, {
                   [`${prefixCls}-column-sorter-full`]: !!(upNode && downNode),
@@ -372,6 +376,7 @@ export default function useFilterSorter<RecordType>({
   }, [mergedColumns, sortStates])
 
   // Get render columns title required props
+  // @ts-ignore
   const columnTitleSorterProps = React.useMemo<ColumnTitleProps<RecordType>>(() => {
     const sortColumns = mergedSorterStates.map(({ column, sortOrder }) => ({
       column,

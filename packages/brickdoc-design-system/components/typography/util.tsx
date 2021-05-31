@@ -65,8 +65,9 @@ export default (
   if (!ellipsisContainer) {
     ellipsisContainer = document.createElement('div')
     ellipsisContainer.setAttribute('aria-hidden', 'true')
-    document.body.appendChild(ellipsisContainer)
   }
+  // HMR will remove this from body which should patch back
+  if (!ellipsisContainer.parentNode) { document.body.appendChild(ellipsisContainer) }
 
   const { rows, suffix = '' } = option
   // Get origin style

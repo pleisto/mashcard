@@ -1552,7 +1552,7 @@ __metadata:
     rc-image: ~5.2.4
     rc-input-number: ~7.1.0
     rc-mentions: ~1.6.1
-    rc-menu: ~9.0.0
+    rc-menu: ~9.0.1
     rc-motion: ^2.4.0
     rc-notification: ~4.5.7
     rc-pagination: ~3.1.6
@@ -13101,7 +13101,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-menu@npm:^9.0.0, rc-menu@npm:~9.0.0":
+"rc-menu@npm:^9.0.0, rc-menu@npm:~9.0.1":
   version: 9.0.10
   resolution: "rc-menu@npm:9.0.10"
   dependencies:

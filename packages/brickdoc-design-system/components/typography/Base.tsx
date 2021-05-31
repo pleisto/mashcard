@@ -3,9 +3,11 @@ import classNames from 'classnames'
 import toArray from 'rc-util/lib/Children/toArray'
 import copy from 'copy-to-clipboard'
 import omit from 'rc-util/lib/omit'
-import EditOutlined from '@ant-design/icons/EditOutlined'
-import CheckOutlined from '@ant-design/icons/CheckOutlined'
-import CopyOutlined from '@ant-design/icons/CopyOutlined'
+import {
+  Check as CheckOutlined,
+  Edit as EditOutlined,
+  CopyOne as CopyOutlined
+} from '../icon'
 import ResizeObserver from 'rc-resize-observer'
 import { AutoSizeType } from 'rc-textarea/lib/ResizableTextArea'
 import { ConfigConsumerProps, configConsumerProps, ConfigContext } from '../config-provider'
@@ -517,7 +519,7 @@ class Base extends React.Component<InternalBlockProps, BaseState> {
           this.expandStr = expand
 
           return (
-            <ResizeObserver onResize={this.resizeOnNextFrame} disabled={!rows}>
+            <ResizeObserver onResize={this.resizeOnNextFrame} disabled={cssEllipsis}>
               <Typography
                 className={classNames(
                   {

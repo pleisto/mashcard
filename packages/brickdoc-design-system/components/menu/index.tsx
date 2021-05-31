@@ -2,6 +2,7 @@ import * as React from 'react'
 import RcMenu, { Divider, ItemGroup, MenuProps as RcMenuProps } from 'rc-menu'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
+import { More as EllipsisOutlined } from '../icon'
 import SubMenu, { SubMenuProps } from './SubMenu'
 import Item, { MenuItemProps } from './MenuItem'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
@@ -11,7 +12,7 @@ import collapseMotion from '../_util/motion'
 import { cloneElement } from '../_util/reactNode'
 import MenuContext, { MenuTheme } from './MenuContext'
 
-export { MenuItemGroupProps } from 'rc-menu'
+export type { MenuItemGroupProps } from 'rc-menu'
 
 export type MenuMode = 'vertical' | 'vertical-left' | 'vertical-right' | 'horizontal' | 'inline';
 
@@ -89,6 +90,7 @@ class InternalMenu extends React.Component<InternalMenuProps> {
       >
         <RcMenu
           getPopupContainer={getPopupContainer}
+          overflowedIndicator={<EllipsisOutlined />}
           {...passedProps}
           inlineCollapsed={inlineCollapsed}
           className={menuClassName}
@@ -127,6 +129,6 @@ class Menu extends React.Component<MenuProps, {}> {
   }
 }
 
-export { MenuTheme, SubMenuProps, MenuItemProps }
+export type { MenuTheme, SubMenuProps, MenuItemProps }
 
 export default Menu
