@@ -1564,7 +1564,7 @@ __metadata:
     rc-slider: ~9.7.1
     rc-steps: ~4.1.0
     rc-switch: ~3.2.0
-    rc-table: ~7.16.1
+    rc-table: ~7.16.2
     rc-tabs: ~11.9.1
     rc-textarea: ~0.3.0
     rc-tooltip: ~5.1.1
@@ -13299,9 +13299,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-table@npm:~7.16.1":
-  version: 7.16.1
-  resolution: "rc-table@npm:7.16.1"
+"rc-table@npm:~7.16.2":
+  version: 7.16.2
+  resolution: "rc-table@npm:7.16.2"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: ^2.2.5
@@ -13311,7 +13311,7 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: c958233a091277d708378f8a0fe6216f4ce91705e0ffa9895ce3ab030893c5d0d586d444cbd2c4ad1c370df1742707b5a3c67672b9626842b45548ca662f3f07
+  checksum: 547f11d604b9d3d714a129c0abd31a6d2583792f5bb83ca78ccdc6e8bdd8e07557623d8fa68f10c5edf9055c50503f9b3e168c0025645a745b5002049853959a
   languageName: node
   linkType: hard
 

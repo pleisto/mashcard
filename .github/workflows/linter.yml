@@ -23,6 +23,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - name: Yarn install
         run: yarn
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: true
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
