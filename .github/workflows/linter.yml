@@ -24,7 +24,7 @@ jobs:
       - name: Yarn install
         run: yarn
         env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: true
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
