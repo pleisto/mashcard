@@ -201,7 +201,7 @@ GEM
       ffi (~> 1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    graphql (1.12.11)
+    graphql (1.12.12)
     graphql-docs (2.0.1)
       commonmarker (~> 0.16)
       escape_utils (~> 1.2)
