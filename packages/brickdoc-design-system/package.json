@@ -18,17 +18,8 @@
   "module": "components/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "npm run compile && NODE_OPTIONS='--max-old-space-size=4096' npm run dist",
-    "bundlesize": "bundlesize",
-    "dist:esbuild": "ESBUILD=true npm run dist",
-    "prettier": "prettier -c --write '**/*'",
-    "pretty-quick": "pretty-quick",
-    "sort": "npx sort-package-json",
-    "test": "jest --config .jest.js --cache=false",
-    "test:update": "jest --config .jest.js --cache=false -u",
-    "test-node": "jest --config .jest.node.js --cache=false",
-    "tsc": "tsc --noEmit",
-    "test-image": "npm run compile:less && docker-compose run tests"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "browserslist": [
     "chrome >= 74",
@@ -80,16 +71,44 @@
     "scroll-into-view-if-needed": "^2.2.25"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@brickdoc/less-vars-loader": "^0.1.1",
+    "@mdx-js/react": "^1.6.22",
+    "@storybook/addon-actions": "^6.3.0-beta.6",
+    "@storybook/addon-docs": "^6.3.0-beta.6",
+    "@storybook/addon-essentials": "^6.3.0-beta.6",
+    "@storybook/addon-links": "^6.3.0-beta.6",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addons": "^6.3.0-beta.6",
+    "@storybook/builder-webpack5": "^6.3.0-beta.6",
+    "@storybook/cli": "^6.3.0-beta.6",
+    "@storybook/manager-webpack5": "^6.3.0-beta.6",
+    "@storybook/react": "^6.3.0-beta.6",
+    "@storybook/theming": "^6.3.0-beta.6",
     "@types/classnames": "^2.3.1",
     "@types/lodash": "^4.14.139",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
     "date-fns": "^2.22.1",
+    "less-loader": "9.0.0",
     "pretty-quick": "^3.0.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "style-loader": "2.0.0"
   },
   "peerDependencies": {
     "date-fns": ">= 2.22.1",
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
+  },
+  "resolutions": {
+    "webpack": "^5.0.0",
+    "css-loader": "^5.0.0",
+    "dotenv-webpack": "^6.0.0",
+    "html-webpack-plugin": "^5.0.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.0",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-virtual-modules": "^0.4.2"
   }
 }

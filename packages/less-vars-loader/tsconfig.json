@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "baseUrl": "./",
+    "declaration": false,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "src"
+  ],
+  "compileOnSave": true
+}

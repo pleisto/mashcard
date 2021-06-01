@@ -1,0 +1,24 @@
+{
+  "name": "@brickdoc/less-vars-loader",
+  "version": "0.1.1",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@hon2a/get-regexp-matches": "0.0.7",
+    "enhanced-resolve": "5.8.2",
+    "fs-extra": "9.1.0",
+    "loader-utils": "2.0.0",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@types/less": "3.0.2",
+    "@types/loader-utils": "2.0.2",
+    "@types/lodash": "4.14.170",
+    "less": "4.1.1"
+  },
+  "scripts": {
+    "lint": "eslint  --fix --ext .ts",
+    "prebuild": "rm -rf lib",
+    "build": "tsc -p tsconfig.json"
+  },
+  "main": "lib/index.js"
+}
