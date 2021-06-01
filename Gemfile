@@ -68,10 +68,6 @@ gem 'sidekiq', '~> 6.2', '>= 6.2.1'
 gem 'sidekiq-cron', '~> 1.2'
 gem 'premailer-rails', '~> 1.11', '>= 1.11.1' # mailer
 
-# Type Check
-gem 'sorbet', group: :development
-gem 'sorbet-runtime'
-
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.1' # Don't rely on Linux/macOS timezone data.
 group :development, :test do

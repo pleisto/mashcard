@@ -399,7 +399,7 @@ GEM
       rubocop-ast (>= 1.5.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.5.0)
+    rubocop-ast (1.7.0)
       parser (>= 3.0.1.1)
     ruby-enum (0.9.0)
       i18n
@@ -432,11 +432,7 @@ GEM
       fugit (~> 1.1)
       sidekiq (>= 4.2.1)
     smart_properties (1.15.0)
-    sorbet (0.5.6427)
-      sorbet-static (= 0.5.6427)
     sorbet-runtime (0.5.6427)
-    sorbet-static (0.5.6427-universal-darwin-20)
-    sorbet-static (0.5.6427-x86_64-linux)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -451,7 +447,7 @@ GEM
       tomlrb (~> 1.2)
     thor (1.1.0)
     thread_safe (0.3.6)
-    tomlrb (1.2.9)
+    tomlrb (1.3.0)
     turbo-rails (0.5.9)
       rails (>= 6.0.0)
     typhoeus (1.4.0)
@@ -483,7 +479,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     z85 (0.11)
@@ -553,8 +549,6 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 6.2, >= 6.2.1)
   sidekiq-cron (~> 1.2)
-  sorbet
-  sorbet-runtime
   spring
   turbo-rails (~> 0.5.9)
   typhoeus (~> 1.4)
