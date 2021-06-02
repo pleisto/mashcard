@@ -365,6 +365,8 @@ GEM
     redis (4.2.5)
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
+    redis-objects (1.5.0)
+      redis (~> 4.0)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -542,6 +544,7 @@ DEPENDENCIES
   redirect_safely (~> 1.0)
   redis (~> 4.2.5)
   redis-namespace (~> 1.8, >= 1.8.1)
+  redis-objects (~> 1.5.0)
   rspec-rails (>= 4.0.2)
   rubocop (>= 1.15)
   rubocop-brickdoc!

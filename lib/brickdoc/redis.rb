@@ -9,7 +9,8 @@ module Brickdoc
       cache: 0,
       state: 1,
       queue: 2,
-      persistence: 3
+      persistence: 3,
+      object: 4
     }
 
     class << self
