@@ -76,7 +76,7 @@
     "@mdx-js/react": "^1.6.22",
     "@storybook/addon-actions": "^6.3.0-beta.7",
     "@storybook/addon-docs": "^6.3.0-beta.7",
-    "@storybook/addon-essentials": "^6.3.0-beta.6",
+    "@storybook/addon-essentials": "^6.3.0-beta.7",
     "@storybook/addon-links": "^6.3.0-beta.7",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addons": "^6.3.0-beta.7",
