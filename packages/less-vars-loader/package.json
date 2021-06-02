@@ -1,6 +1,6 @@
 {
   "name": "@brickdoc/less-vars-loader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "Apache-2.0",
   "dependencies": {
     "@hon2a/get-regexp-matches": "0.0.7",
@@ -14,6 +14,9 @@
     "@types/loader-utils": "2.0.2",
     "@types/lodash": "4.14.170",
     "less": "4.1.1"
+  },
+  "peerDependencies": {
+    "less": "^4.1.1"
   },
   "scripts": {
     "lint": "eslint  --fix --ext .ts",

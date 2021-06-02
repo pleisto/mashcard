@@ -1,12 +1,9 @@
 import "./docs.less"
 import { ConfigProvider } from '../components'
-import BrickDesignTheme from './BrickDesignTheme';
 
 export const parameters = {
+  viewMode: 'docs',
   actions: { argTypesRegex: "^on[A-Z].*" },
-  docs: {
-    theme: BrickDesignTheme,
-  },
   options: {
     storySort: {
       order: ['Guideline',['Introduction']],

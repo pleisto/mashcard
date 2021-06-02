@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import less from 'less'
+import * as less from 'less'
 import { resolve, dirname } from 'path'
 import { readFileSync } from 'fs'
 import enhancedResolve from "enhanced-resolve"

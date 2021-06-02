@@ -10,6 +10,7 @@ module.exports = {
     builder: "webpack5",
   },
   "stories": [
+    "../components/**/*.stories.tsx",
     "../components/**/*.stories.mdx",
     "../docs/**/*.stories.mdx"
   ],
@@ -18,12 +19,7 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   "typescript": {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      include: ["components/**/*.tsx"]
-    }
-    ,
+    reactDocgen: 'none',
   },
   "webpackFinal": async (config, { _configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

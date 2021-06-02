@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "module": "commonjs",
+    "moduleResolution": "node",
     "skipLibCheck": true,
+    "noEmit": false,
     "importHelpers": true,
     "jsx": "react",
     "sourceMap": true,
     "baseUrl": "./",
-    "declaration": false,
+    "declaration": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true
