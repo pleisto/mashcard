@@ -55,7 +55,12 @@ rails s -b 0.0.0.0
 
 > This repo demonstrates git hooks integration with [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog).
 
+#### Git Message Scope
 
+* If the change is related to `packages/*` then the scope is the name of the package, 
+* And, if the change is related to a functional module with a namespace (e.g. :accounts, :admin) then the scope is namespace, 
+* Else the scope name is empty.
+---
 * **use `yarn commit` and not `git commit`**
 * Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 * Push to your fork and [Submit a pull request](https://github.com/brickdoc/brickdoc/compare/)
