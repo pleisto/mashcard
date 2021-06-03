@@ -1,14 +1,37 @@
 # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idsteps
 ---
-name: linter
+name: ci
 on:
   push:
     branches:
       - '*'
 jobs:
-  build:
-    name: Lint Code Base
+  ci:
+    name: CI
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_DB: "brickdoc_test"
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "123456"
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:latest
+        ports: 
+           - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -19,8 +42,10 @@ jobs:
       - uses: actions/cache@v2
         id: yarn-cache
         with:
-          path: 'node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
+          path: |
+            node_modules
+            .yarn
+          key: yarn-${{secrets.CACHE_VERSION}}-${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - name: Yarn install
         run: yarn
         env:
@@ -32,6 +57,14 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Lint Code
         run: yarn lint
-
-
-
+      - name: Run Migrate
+        env:
+          RAILS_ENV: test
+          POSTGRES_PASS: 123456
+        run: bundle exec rails db:create db:migrate db:seed
+      - name: Run Spec
+        env:
+          RAILS_ENV: test
+          REDIS_URL: redis://127.0.0.1:6379
+          POSTGRES_PASS: 123456
+        run: bundle exec rails spec
