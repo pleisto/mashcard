@@ -75,7 +75,7 @@ const Template: Story<MentionsProps> = (_args) =>
     >
       <Option value="boris">Boris Ding</Option>
       <Option value="ror">Ruby on Rails</Option>
-      <Option value="antd">Ant Design</Option>
+      <Option value="antd">Brickdoc Design System</Option>
     </Mentions>
   </>
 export const Base = Template.bind({})

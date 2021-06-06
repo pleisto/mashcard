@@ -18,7 +18,7 @@ A versatile menu for navigation.
 
 #### When To Use
 
-Navigation is an important part of any website, as a good navigation setup allows users to move around the site quickly and efficiently. Ant Design offers top and side navigation options. Top navigation provides all the categories and functions of the website. Side navigation provides the multi-level structure of the website.
+Navigation is an important part of any website, as a good navigation setup allows users to move around the site quickly and efficiently. Brickdoc Design System offers top and side navigation options. Top navigation provides all the categories and functions of the website. Side navigation provides the multi-level structure of the website.
 
 More layouts with navigation: Layout.
 

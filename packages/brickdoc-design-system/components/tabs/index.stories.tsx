@@ -12,7 +12,7 @@ Tabs make it easy to switch between different views.
 
 ### When To Use
 
-Ant Design has 3 types of Tabs for different situations.
+Brickdoc Design System has 3 types of Tabs for different situations.
 
 - Card Tabs: for managing too many closeable views.
 - Normal Tabs: for functional aspects of a page.
