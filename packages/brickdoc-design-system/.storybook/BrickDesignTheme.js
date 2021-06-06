@@ -5,5 +5,5 @@ export default create({
   brandTitle: 'Brick Design',
   brandUrl: 'https://jimu.zone',
   colorSecondary: '#216CFF',
-  brandImage: 'https://s3.brickapis.com/favicon-32x32.png',
+  brandImage: 'https://s3.brickapis.com/logo_57x57.png',
 });

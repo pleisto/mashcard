@@ -41,7 +41,7 @@ export default  {
       }
     },
     ghost: {
-      description: 'Make background transparent and invert text and border colors\t',
+      description: 'Make background transparent and invert text and border colors',
       defaultValue: false,
       control: {
         type: 'boolean'

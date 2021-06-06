@@ -48,21 +48,24 @@
     font-size: @font-size-base;
   }
 }
-.docs-story{
+.docs-story {
   // Layouts
-  .@{brk-prefix}-layout{
+  .@{brk-prefix}-layout {
     text-align: center;
   }
+
   .@{brk-prefix}-layout-content {
     min-height: 120px;
     color: #fff;
     line-height: 120px;
     background: @primary-6;
   }
-  .@{brk-prefix}-layout-header, .@{brk-prefix}-layout-footer{
+
+  .@{brk-prefix}-layout-header, .@{brk-prefix}-layout-footer {
     color: #fff;
     background: @primary-4;
   }
+
   .@{brk-prefix}-layout + .@{brk-prefix}-layout {
     margin-top: 3rem;
   }
@@ -74,21 +77,23 @@
   }
 
   // Grid
-  .@{brk-prefix}-row>div:not(.gutter-row):nth-child(odd), .@{brk-prefix}-row>div:not(.gutter-row):nth-child(odd) {
-    background: @primary-4;
-  }
+  [id^=story--reactcomponents-grid] {
+    .@{brk-prefix}-row > div:not(.gutter-row):nth-child(odd), .@{brk-prefix}-row > div:not(.gutter-row):nth-child(odd) {
+      background: @primary-4;
+    }
 
-  .@{brk-prefix}-row>div:not(.gutter-row), .@{brk-prefix}-row>div:not(.gutter-row) {
-    padding: 16px 0;
-    background: @primary-5;
-  }
+    .@{brk-prefix}-row > div:not(.gutter-row), .@{brk-prefix}-row > div:not(.gutter-row) {
+      padding: 16px 0;
+      background: @primary-5;
+    }
 
-  .@{brk-prefix}-row>div {
-    min-height: 30px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    color: #fff;
-    text-align: center;
-    border-radius: 0;
+    .@{brk-prefix}-row > div {
+      min-height: 30px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      color: #fff;
+      text-align: center;
+      border-radius: 0;
+    }
   }
 }
