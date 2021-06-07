@@ -7,7 +7,6 @@ import { TransferLocale as TransferLocaleForEmpty } from '../empty'
 import { PaginationLocale } from '../pagination/Pagination'
 import { TableLocale } from '../table/interface'
 import { PopconfirmLocale } from '../popconfirm'
-import { UploadLocale } from '../upload/interface'
 import { PickerLocale as DatePickerLocale } from '../date-picker/generatePicker'
 import LocaleContext from './context'
 
@@ -24,7 +23,6 @@ export interface Locale {
   Popconfirm?: PopconfirmLocale;
   Transfer?: unknown; // Partial<TransferLocale>;
   Select?: Object;
-  Upload?: UploadLocale;
   Empty?: TransferLocaleForEmpty;
   global?: Object;
   PageHeader?: Object;

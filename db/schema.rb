@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_070558) do
+ActiveRecord::Schema.define(version: 2021_06_06_125026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts_federated_identities", force: :cascade do |t|
+    t.bigint "accounts_user_id"
+    t.string "provider", null: false
+    t.string "uid", null: false, comment: "unique identifier"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accounts_user_id"], name: "index_accounts_federated_identities_on_accounts_user_id"
+    t.index ["provider", "uid"], name: "index_accounts_federated_identities_on_provider_and_uid", unique: true
+  end
+
+  create_table "accounts_pods", force: :cascade do |t|
+    t.string "type", limit: 20, null: false
+    t.string "webid", null: false
+    t.string "name", null: false
+    t.bigint "owner_id"
+    t.string "email"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.string "avatar_key", limit: 128, comment: "object key for bucket that stored avatar."
+    t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
+    t.string "location", limit: 50
+    t.string "locale", limit: 17, comment: "BCP47 language codes."
+    t.string "timezone"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "lower((webid)::text)", name: "index_accounts_pods_on_lower_webid_text", unique: true
+    t.index ["confirmation_token"], name: "index_accounts_pods_on_confirmation_token", unique: true
+    t.index ["deleted_at"], name: "index_accounts_pods_on_deleted_at"
+    t.index ["email"], name: "index_accounts_pods_on_email", unique: true
+    t.index ["owner_id"], name: "index_accounts_pods_on_owner_id"
+    t.index ["reset_password_token"], name: "index_accounts_pods_on_reset_password_token", unique: true
+    t.index ["type"], name: "index_accounts_pods_on_type"
+    t.index ["unlock_token"], name: "index_accounts_pods_on_unlock_token", unique: true
+  end
 
   create_table "flipper_features", force: :cascade do |t|
     t.string "key", null: false

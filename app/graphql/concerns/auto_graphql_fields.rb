@@ -8,7 +8,7 @@ module AutoGraphQLFields
     def add_fields_for(modules, type)
       modules.each do |m|
         m.constants.select { |x| !x.end_with? 'Test' }.map(&m.method(:const_get))
-          .each { |r| field(r.graphql_name.camelcase(:lower), { type => r }) }
+          .each { |r| field(r.graphql_name.camelcase(:lower), type => r) }
       end
     end
   end

@@ -7,5 +7,4 @@ Rails.application.reloader.to_prepare do
 
   ActiveRecord::Tasks::PostgreSQLDatabaseTasks.prepend Patches::ActiveRecord::PostgresqlDropDatabase
   ActionDispatch::Routing::Mapper.prepend Patches::ActionDispatch::DrawRoute
-  ActiveRecord::Base.include Brickdoc::Validators
 end

@@ -37,10 +37,11 @@ gem 'rails-settings-cached', '>= 2.5'
 gem 'default_value_for', '~> 3.4'
 
 # GraphQL
-gem 'graphql', '~> 1.12', '>= 1.12.10'
+gem 'graphql', '~> 1.12', '>= 1.12.12'
 gem 'graphql-fragment_cache', '~> 1.8'
 gem 'apollo_upload_server', '~> 2.0', '>= 2.0.5'
 gem 'graphql-docs', '~> 2.0', '>= 2.0.1'
+gem 'graphql-batch', '~> 0.4.3'
 gem 'z85', '>= 0.11'
 
 # Frontend
@@ -90,9 +91,10 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
+  # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your appli
+  # cation running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 

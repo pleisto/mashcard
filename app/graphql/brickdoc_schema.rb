@@ -8,6 +8,6 @@ class BrickdocSchema < BrickGraphQL::BaseSchema
   # use GraphQL::Subscriptions::ActionCableSubscriptions
 
   query RootQuery
-  mutation RootMutation
+  # mutation RootMutation
   # subscriptions RootSubscription
 end

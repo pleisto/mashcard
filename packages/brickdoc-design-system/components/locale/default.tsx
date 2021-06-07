@@ -54,13 +54,6 @@ const localeValues: Locale = {
     removeAll: 'Remove all data',
     selectInvert: 'Invert current page',
   },
-  Upload: {
-    uploading: 'Uploading...',
-    removeFile: 'Remove file',
-    uploadError: 'Upload error',
-    previewFile: 'Preview file',
-    downloadFile: 'Download file',
-  },
   Empty: {
     description: 'No Data',
   },

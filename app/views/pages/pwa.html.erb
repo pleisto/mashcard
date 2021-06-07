@@ -2,4 +2,4 @@
 <%= # Browser update checker
     javascript_tag "(function(){try{eval('(async () => {}); Object.entries({},);')}catch(a){return!0}return!1})()&&(location.href='#{unsupported_path}')",nonce: true
 %>
-<%= javascript_pack_tag 'application', 'accounts' %>
+<%= javascript_pack_tag 'application' %>

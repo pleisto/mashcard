@@ -20,5 +20,6 @@
     "@typescript-eslint/naming-convention": "off",
     "react/no-unused-prop-types": "off",
     "@typescript-eslint/default-param-last": "off"
-  }
+  },
+  "ignorePatterns": ["storybook-static/**/*.js"]
 }

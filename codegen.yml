@@ -1,0 +1,12 @@
+overwrite: true
+schema: db/graphql/schema.json
+documents: './frontends/**/*.graphql.ts'
+generates:
+  ./frontends/BrickdocGraphQL.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+hooks:
+  afterAllFileWrite:
+    - prettier --write

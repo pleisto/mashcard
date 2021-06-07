@@ -53,13 +53,6 @@ const localeValues: Locale = {
     removeAll: '删除全部',
     selectInvert: '反选当页',
   },
-  Upload: {
-    uploading: '文件上传中',
-    removeFile: '删除文件',
-    uploadError: '上传错误',
-    previewFile: '预览文件',
-    downloadFile: '下载文件',
-  },
   Empty: {
     description: '暂无数据',
   },

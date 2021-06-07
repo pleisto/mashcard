@@ -2,10 +2,12 @@ import { client, cable } from '@/common/apollo'
 
 // I18n
 // eslint-disable-next-line import/first
-import '@/common/i18n'
+import '@/common/i18next'
 globalThis.brickdocContext = globalThis.brickdocContext || {}
 globalThis.brickdocContext.gqlClient = client
 globalThis.brickdocContext.wsCable = cable
+globalThis.brickdocContext.timezone ||=
+  Intl?.DateTimeFormat().resolvedOptions().timeZone || globalThis.brickdocContext.defaultTimezone
 
 // Self-XSS Attack Warning
 if (globalThis.brickdocContext.env !== 'development'){

@@ -8,8 +8,7 @@ const securityLink = setContext((_, { headers } )=>{
   return {
     headers: {
       ...headers,
-      // Add Rails CSRF Token to httpLink
-      'X-CSRF-Token': 'todo'
+      'X-CSRF-Token': globalThis.brickdocContext?.csrfToken
     }
   }
 })

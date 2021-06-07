@@ -5,6 +5,18 @@ __metadata:
   version: 4
   cacheKey: 8
 
+"@ahooksjs/use-request@npm:^2.8.7":
+  version: 2.8.7
+  resolution: "@ahooksjs/use-request@npm:2.8.7"
+  dependencies:
+    lodash.debounce: ^4.0.8
+    lodash.throttle: ^4.1.1
+  peerDependencies:
+    react: ^16.8 || ^17.0
+  checksum: 00adeca37a27b4431f49628bbe0f01aa1782a4c947d7840c04491214f8e9ae0a93fd7d437cd0723818a2ecd0edb4322226906645fcdc1f9d3288838cf5216fd3
+  languageName: node
+  linkType: hard
+
 "@ant-design/colors@npm:^6.0.0":
   version: 6.0.0
   resolution: "@ant-design/colors@npm:6.0.0"
@@ -1812,7 +1824,9 @@ __metadata:
     "@types/node": 15.6.1
     "@types/react": 17.0.8
     "@types/react-dom": 17.0.5
+    "@types/react-router-config": ^5.0.2
     "@webpack-cli/serve": 1.4.0
+    ahooks: ^2.10.5
     autoprefixer: ^10.2.6
     babel-plugin-transform-react-remove-prop-types: ^0.4.24
     commitizen: 4.2.4
@@ -1828,6 +1842,7 @@ __metadata:
     graphql-tag: 2.12.4
     husky: ^6.0.0
     i18next: 20.3.0
+    i18next-http-backend: ^1.2.6
     i18next-icu: 2.0.3
     jest: 27.0.1
     less: ^4.1.1
@@ -1843,6 +1858,7 @@ __metadata:
     react-dom: 17.0.2
     react-i18next: 11.9.0
     react-router: 5.2.0
+    react-router-config: ^5.1.1
     react-router-dom: 5.2.0
     tsconfig-paths-webpack-plugin: 3.5.1
     typescript: 4.3.2
@@ -4784,6 +4800,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/history@npm:*":
+  version: 4.7.8
+  resolution: "@types/history@npm:4.7.8"
+  checksum: 9c867532afd80f72a7101a5bb3c10c1ad7cc8c2c14e92fdbc54d5fed0ef8cdb6060c0f261a39884e243424636c6ff85d8aaffb984e2edaac348d2f216f9eedeb
+  languageName: node
+  linkType: hard
+
 "@types/html-minifier-terser@npm:^5.0.0":
   version: 5.1.1
   resolution: "@types/html-minifier-terser@npm:5.1.1"
@@ -4839,6 +4862,13 @@ __metadata:
     jest-diff: ^26.0.0
     pretty-format: ^26.0.0
   checksum: 69db26061e6be34de2a440c8a470b651c53ba6ee0057614a278c4f756ff00281f46cc075b24e5bd761f399f175f49d0a5758b50dd921342a8592461548dea29a
+  languageName: node
+  linkType: hard
+
+"@types/js-cookie@npm:^2.2.6":
+  version: 2.2.6
+  resolution: "@types/js-cookie@npm:2.2.6"
+  checksum: 97c50ff6cd0a27409b028aad94b0c4eb5cc43623532a1bdbbcccdb200539593eff3cc7f0d874b6b9bee586167638e3a10093c811ff6603ff2a9639564c82b3b1
   languageName: node
   linkType: hard
 
@@ -5062,6 +5092,27 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: ff301198c621864e1ee6c566285dc5cdc9eb5d881ca7fe7fcb8ebf29afe0357ffb7f77e401ab81ff444c64ff1375f653eeb28f04cd088a361915dee31cb3f4a8
+  languageName: node
+  linkType: hard
+
+"@types/react-router-config@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "@types/react-router-config@npm:5.0.2"
+  dependencies:
+    "@types/history": "*"
+    "@types/react": "*"
+    "@types/react-router": "*"
+  checksum: 4018dea46a481e0c7bd27493474375f9b0faed92b0907836e4800d901f8ac97e7969fcbf9491a2ab3d8ee0a0627ef718b6a5f1566b8d46530f9ac2eabdff323e
+  languageName: node
+  linkType: hard
+
+"@types/react-router@npm:*":
+  version: 5.1.15
+  resolution: "@types/react-router@npm:5.1.15"
+  dependencies:
+    "@types/history": "*"
+    "@types/react": "*"
+  checksum: b27c4a0b0fea6e31edbcbf1b1c2590575ad454016701997df48ffd26c08f7c18fab5433e9dc8b3f3131c13aac1a8eacb2fd21f77c03c1b1550cabf4aeee127a2
   languageName: node
   linkType: hard
 
@@ -5948,6 +5999,26 @@ __metadata:
     clean-stack: ^2.0.0
     indent-string: ^4.0.0
   checksum: 1101a33f21baa27a2fa8e04b698271e64616b886795fd43c31068c07533c7b3facfcaf4e9e0cab3624bd88f729a592f1c901a1a229c9e490eafce411a8644b79
+  languageName: node
+  linkType: hard
+
+"ahooks@npm:^2.10.5":
+  version: 2.10.5
+  resolution: "ahooks@npm:2.10.5"
+  dependencies:
+    "@ahooksjs/use-request": ^2.8.7
+    "@types/js-cookie": ^2.2.6
+    dayjs: ^1.9.1
+    intersection-observer: ^0.7.0
+    js-cookie: ^2.2.1
+    lodash.debounce: ^4.0.8
+    lodash.isequal: ^4.5.0
+    lodash.throttle: ^4.1.1
+    resize-observer-polyfill: ^1.5.1
+    screenfull: ^5.0.0
+  peerDependencies:
+    react: ^16.8.6 || ^17.0
+  checksum: b29ab84c7a829ac15a945195fed396e4cb53b2c3be174e115321a243570d940dc188febef536165b0d5b806222ff4796d47f5075931465aa572a4a7b7b264616
   languageName: node
   linkType: hard
 
@@ -8961,6 +9032,13 @@ __metadata:
   version: 2.22.1
   resolution: "date-fns@npm:2.22.1"
   checksum: 7ff97cd605af50c02f341687c2cafd218839a1aace67965374989855a13f76dc4fe52e0e38c343c1ad1f8399787cb6839a0b14a669c44b30550c287300b1bb50
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.9.1":
+  version: 1.10.5
+  resolution: "dayjs@npm:1.10.5"
+  checksum: a4b6565becdb7607e381666bf1b64a48ade2fcf305c18e4e9c8f9346aa80436a0319a2856f86a6e4b12d6041e3ba3619e9995bde2b44ff9887dcb402e176aba1
   languageName: node
   linkType: hard
 
@@ -12565,6 +12643,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"i18next-http-backend@npm:^1.2.6":
+  version: 1.2.6
+  resolution: "i18next-http-backend@npm:1.2.6"
+  dependencies:
+    cross-fetch: 3.1.4
+  checksum: 27943987ebc315c186e064cfe0a497dcb0f02d6ee9d6c56d38a45350d77cbc0f01bc100f4c338938b8c22db4a88f82937750178822062bdcf1ca4debb2726d1a
+  languageName: node
+  linkType: hard
+
 "i18next-icu@npm:2.0.3":
   version: 2.0.3
   resolution: "i18next-icu@npm:2.0.3"
@@ -12874,6 +12961,13 @@ fsevents@^1.2.7:
   version: 2.2.0
   resolution: "interpret@npm:2.2.0"
   checksum: f51efef7cb8d02da16408ffa3504cd6053014c5aeb7bb8c223727e053e4235bf565e45d67028b0c8740d917c603807aa3c27d7bd2f21bf20b6417e2bb3e5fd6e
+  languageName: node
+  linkType: hard
+
+"intersection-observer@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "intersection-observer@npm:0.7.0"
+  checksum: e1bf9c15ecfe8b4c59a813135348ddc0467e40b0a57d43bfe188f92c8548f804caea2effdb5dabd64ef100679da6489a31d85043766ca21ba4330ac9ca88adc6
   languageName: node
   linkType: hard
 
@@ -14344,6 +14438,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"js-cookie@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "js-cookie@npm:2.2.1"
+  checksum: 9b1fb980a1c5e624fd4b28ea4867bb30c71e04c4484bb3a42766344c533faa684de9498e443425479ec68609e96e27b60614bfe354877c449c631529b6d932f2
+  languageName: node
+  linkType: hard
+
 "js-string-escape@npm:^1.0.1":
   version: 1.0.1
   resolution: "js-string-escape@npm:1.0.1"
@@ -15186,6 +15287,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"lodash.isequal@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.isequal@npm:4.5.0"
+  checksum: da27515dc5230eb1140ba65ff8de3613649620e8656b19a6270afe4866b7bd461d9ba2ac8a48dcc57f7adac4ee80e1de9f965d89d4d81a0ad52bb3eec2609644
+  languageName: node
+  linkType: hard
+
 "lodash.isinteger@npm:^4.0.4":
   version: 4.0.4
   resolution: "lodash.isinteger@npm:4.0.4"
@@ -15239,6 +15347,13 @@ fsevents@^1.2.7:
   version: 4.1.1
   resolution: "lodash.once@npm:4.1.1"
   checksum: d768fa9f9b4e1dc6453be99b753906f58990e0c45e7b2ca5a3b40a33111e5d17f6edf2f768786e2716af90a8e78f8f91431ab8435f761fef00f9b0c256f6d245
+  languageName: node
+  linkType: hard
+
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
   languageName: node
   linkType: hard
 
@@ -19115,6 +19230,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-router-config@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "react-router-config@npm:5.1.1"
+  dependencies:
+    "@babel/runtime": ^7.1.2
+  peerDependencies:
+    react: ">=15"
+    react-router: ">=5"
+  checksum: bde7ee79444454bf7c3737fd9c5c268021012c8cc37bc19116b2e7daa28c4231598c275816c7f32c16f9f974dc707b91de279291a5e39efce2e1b1569355b87a
+  languageName: node
+  linkType: hard
+
 "react-router-dom@npm:5.2.0":
   version: 5.2.0
   resolution: "react-router-dom@npm:5.2.0"
@@ -20121,6 +20248,13 @@ resolve@^2.0.0-next.3:
     ajv: ^6.12.5
     ajv-keywords: ^3.5.2
   checksum: 56dc93b4f6abe91aa2b76b2c656610cc6d491297f4e6866340bc7b6b226b521a2969ab2498cd9e6c59eda670b730a9c8695404ca56c08643c3b95c5e174588c8
+  languageName: node
+  linkType: hard
+
+"screenfull@npm:^5.0.0":
+  version: 5.1.0
+  resolution: "screenfull@npm:5.1.0"
+  checksum: e8ab486ba2310055aeabd84d8f76f1c9e729669942a4b1bdd675131333076ac9ee6655fb41c2507de3be93865e120cf3641e5ff636090f9e2458170827e650c7
   languageName: node
   linkType: hard
 

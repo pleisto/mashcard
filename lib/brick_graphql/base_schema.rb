@@ -2,7 +2,7 @@
 
 module BrickGraphQL
   class BaseSchema < ::GraphQL::Schema
-    DEFAULT_MAX_COMPLEXITY = 200
+    DEFAULT_MAX_COMPLEXITY = 250
     AUTHENTICATED_COMPLEXITY = 500
     DEFAULT_MAX_DEPTH = 15
     AUTHENTICATED_MAX_DEPTH = 20
@@ -14,7 +14,7 @@ module BrickGraphQL
     default_max_page_size DEFAULT_MAX_PAGE_SIZE
 
     use ::GraphQL::Batch
-    connections.add(ActiveRecord::Relation, ::GraphQL::Pro::PostgresStableRelationConnection)
+    # connections.add(ActiveRecord::Relation, ::GraphQL::Pro::PostgresStableRelationConnection)
     disable_introspection_entry_points if Rails.env.production?
 
     query_analyzer(Plugins::QueryLogger)
@@ -51,10 +51,11 @@ module BrickGraphQL
           entrypoints = field.resolver.try(:requires_entrypoint_to_be)
           return entrypoints.nil? || entrypoints.include?(ctx[:entrypoint])
         end
-        super(query_str, args)
+        super(query_str, **args)
       end
 
       def max_query_complexity(ctx)
+        puts ctx
         return 1_000 if ctx[:entrypoint].blank? # rake graphql:schema:dump
         current_user = ctx&.fetch(:current_user, nil)
         current_user.present? ? AUTHENTICATED_COMPLEXITY : DEFAULT_MAX_COMPLEXITY

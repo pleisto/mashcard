@@ -1,0 +1,36 @@
+schema {
+  query: RootQuery
+}
+
+type RootQuery {
+  """
+  Return information about current Brickdoc server instance.
+  """
+  metadata: metadata!
+}
+
+"""
+Represents information about the Brickdoc Server Instance.
+"""
+type metadata {
+  """
+  Current available locales.
+  """
+  availableLocales: [select_option!]!
+  id: ID!
+}
+
+"""
+Option Object for BrickDesign Select Component.
+"""
+type select_option {
+  """
+  option label
+  """
+  label: String!
+
+  """
+  option value
+  """
+  value: String!
+}

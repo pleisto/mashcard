@@ -4,11 +4,15 @@ module Brickdoc
   module I18n
     extend self
     AVAILABLE_LANGUAGES = {
-      'en-US': 'English (American)',
+      'en-US': 'English',
       'zh-CN': '简体中文'
       # 'zh-tw': '繁體中文 (台灣地區)',
       # 'zh-hk': '繁體中文 (港澳地區)'
     }
+
+    # ignore this on I18Next
+    SERVER_ONLY_SCOPES = [:activerecord, :doorkeeper, :devise, :datetime, :helpers, :number,
+                          :date, :errors, :support, :time]
 
     def available_locales
       @available_locales ||= AVAILABLE_LANGUAGES.keys

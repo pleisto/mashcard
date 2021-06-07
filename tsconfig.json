@@ -22,5 +22,6 @@
       "@/*": ["frontends/*"]
     }
   },
-  "compileOnSave": false
+  "compileOnSave": false,
+  "includes": ["./frontends/common/externals.d.ts"]
 }
