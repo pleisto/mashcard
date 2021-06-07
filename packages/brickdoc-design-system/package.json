@@ -72,7 +72,7 @@
     "@babel/core": "^7.14.3",
     "@brickdoc/less-vars-loader": "^0.1.2",
     "@mdx-js/react": "^1.6.22",
-    "@storybook/addon-actions": "^6.3.0-beta.13",
+    "@storybook/addon-actions": "^6.3.0-beta.14",
     "@storybook/addon-docs": "^6.3.0-beta.13",
     "@storybook/addon-essentials": "^6.3.0-beta.13",
     "@storybook/addon-links": "^6.3.0-beta.13",
