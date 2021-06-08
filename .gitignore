@@ -53,3 +53,10 @@ Thumbs.db
 ehthumbs.db
 ._*
 
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
