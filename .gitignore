@@ -6,12 +6,18 @@
 *.sublime-project
 *.sublime-workspace
 /.settings
+/.ruby-gemset
+/.rvmrc
 
 # dependencies
 node_modules
-/.pnp
-.pnp.js
-.yarn/cache
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 /.bundle/*
 
 # Ignore all logfiles and tempfiles.
