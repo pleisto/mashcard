@@ -5,5 +5,6 @@ devise_for :users,
            path: 'accounts',
            controllers: {
              sessions: 'accounts/sessions',
-             registrations: 'accounts/registrations'
+             registrations: 'accounts/registrations',
+             omniauth_callbacks: 'accounts/omniauth_callbacks'
            }

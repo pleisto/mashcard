@@ -9,6 +9,8 @@ module BrickGraphQL
 
     DEFAULT_MAX_PAGE_SIZE = 30
 
+    SEPARATOR = '#'
+
     max_depth DEFAULT_MAX_DEPTH
     max_complexity DEFAULT_MAX_COMPLEXITY
     default_max_page_size DEFAULT_MAX_PAGE_SIZE
@@ -23,11 +25,11 @@ module BrickGraphQL
       # ref: https://graphql-ruby.org/relay/object_identification.html
       def id_from_object(object, _type, _ctx)
         Z85.encode_with_padding("#{object.try(:object_class_name) ||
-          object.class.name}$#{ReversibleIntHash.encode(object.id)}")
+          object.class.name}#{SEPARATOR}#{ReversibleIntHash.encode(object.id)}")
       end
 
       def object_from_id(payload, _ctx)
-        id, name = Z85.decode_with_padding(payload).split('$')
+        id, name = Z85.decode_with_padding(payload).split(SEPARATOR)
         name.constantize.find id
       end
 

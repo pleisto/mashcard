@@ -2,9 +2,12 @@
 
 module BrickGraphQL
   class Scalars::HttpUrl < BrickGraphQL::BaseScalar
-    description "A valid http or https url"
+    description "A valid http/https url or image uri"
 
     def self.coerce_input(input_value, _context)
+      # support Base64 data URI
+      return input_value if input_value.start_with?('data:image/')
+
       # Parse the incoming object into a `URI`
       url = URI.parse(input_value)
       if url.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)

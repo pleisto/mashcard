@@ -2,11 +2,71 @@ schema {
   query: RootQuery
 }
 
+"""
+Available authentication authentication.
+"""
+enum AuthMethod {
+  """
+  Email and Password Authentication
+  """
+  email_password
+
+  """
+  Github Federated Authentication
+  """
+  github
+}
+
+"""
+A valid http/https url or image uri
+"""
+scalar HttpUrl
+
 type RootQuery {
+  """
+  Check webid available.
+  """
+  accountsWebidAvailable(webid: String!): Boolean!
+
   """
   Return information about current Brickdoc server instance.
   """
   metadata: metadata!
+}
+
+"""
+Brickdoc Global Configuration
+"""
+type config {
+  """
+  Enable email and password authentication
+  """
+  accountsEmailPasswordAuth: Boolean!
+
+  """
+  Enabled federated identity providers
+  """
+  accountsFederatedProviders: [federatedProvider!]!
+
+  """
+  Preferred Authentication authentication
+  """
+  accountsPreferredAuthMethod: AuthMethod!
+}
+
+"""
+Accounts Federated Identity Provide Configuration
+"""
+type federatedProvider {
+  """
+  Provider Logo URI
+  """
+  logo: HttpUrl!
+
+  """
+  Provider Name
+  """
+  name: String!
 }
 
 """
@@ -17,6 +77,11 @@ type metadata {
   Current available locales.
   """
   availableLocales: [select_option!]!
+
+  """
+  Brickdoc Global Config
+  """
+  config: config!
   id: ID!
 }
 

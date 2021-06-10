@@ -11,6 +11,7 @@
   selfHosted: <%= Brickdoc.self_hosted? %>,
   csrfToken: '<%= form_authenticity_token %>',
   isDesktopApp: false,
-  featureFlags: <%= Flipper.features.to_json %>
+  featureFlags: <%= Flipper.features.to_json %>,
+  serverMessage: <%= sanitize flash[:alert].to_json %>
   })
 <% end %>

@@ -2,7 +2,7 @@
 
 class BrickdocSchema < BrickGraphQL::BaseSchema
   NAMESPACES = [
-    # IAM,
+    Accounts,
     System,
   ]
   # use GraphQL::Subscriptions::ActionCableSubscriptions

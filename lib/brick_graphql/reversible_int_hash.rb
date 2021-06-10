@@ -55,11 +55,11 @@ module BrickGraphQL
       end
 
       def system_instance
-        @instance ||= if BrickdocConfig.security[:reversible_int_hash][:prime].blank?
+        @instance ||= if BrickdocConfig.reversible_int_hash[:prime].blank?
           warn DEFAULT_SEED_WARN
           new DEFAULT_SEED
         else
-          new BrickdocConfig.security[:reversible_int_hash].transform_values(&:to_i)
+          new BrickdocConfig.reversible_int_hash.transform_values(&:to_i)
         end
       end
     end

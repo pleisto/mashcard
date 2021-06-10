@@ -21,7 +21,7 @@ unless Rails.env.test? || Rails.env.development?
   end
 
   # SaaS GDPR
-  # Logstop.guard(Rails.logger) if  Rails.env.production? && Brickdoc::Runtime.saas? && Brickdoc::SaaS.gdpr?
+  Logstop.guard(Rails.logger) if Rails.env.production? && BrickdocConfig.pii_masking?
 
   ActiveRecord::Base.logger = Rails.logger
 end

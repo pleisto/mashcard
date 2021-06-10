@@ -8,9 +8,42 @@
       "subscriptionType": null,
       "types": [
         {
+          "kind": "ENUM",
+          "name": "AuthMethod",
+          "description": "Available authentication authentication.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "email_password",
+              "description": "Email and Password Authentication",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "github",
+              "description": "Github Federated Authentication",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
           "kind": "SCALAR",
           "name": "Boolean",
           "description": "Represents `true` or `false` values.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "HttpUrl",
+          "description": "A valid http/https url or image uri",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -32,6 +65,39 @@
           "name": "RootQuery",
           "description": null,
           "fields": [
+            {
+              "name": "accountsWebidAvailable",
+              "description": "Check webid available.",
+              "args": [
+                {
+                  "name": "webid",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
             {
               "name": "metadata",
               "description": "Return information about current Brickdoc server instance.",
@@ -1055,6 +1121,130 @@
         },
         {
           "kind": "OBJECT",
+          "name": "config",
+          "description": "Brickdoc Global Configuration",
+          "fields": [
+            {
+              "name": "accountsEmailPasswordAuth",
+              "description": "Enable email and password authentication",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "accountsFederatedProviders",
+              "description": "Enabled federated identity providers",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "OBJECT",
+                      "name": "federatedProvider",
+                      "ofType": null
+                    }
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "accountsPreferredAuthMethod",
+              "description": "Preferred Authentication authentication",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "AuthMethod",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "federatedProvider",
+          "description": "Accounts Federated Identity Provide Configuration",
+          "fields": [
+            {
+              "name": "logo",
+              "description": "Provider Logo URI",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "HttpUrl",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "Provider Name",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "metadata",
           "description": "Represents information about the Brickdoc Server Instance.",
           "fields": [
@@ -1079,6 +1269,24 @@
                       "ofType": null
                     }
                   }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "config",
+              "description": "Brickdoc Global Config",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "config",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,

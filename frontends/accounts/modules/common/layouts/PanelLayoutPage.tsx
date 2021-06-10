@@ -4,7 +4,7 @@ import { BrickdocContext } from '@/common/PWAProvider'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import DefaultLocaleSelect from "../components/DefaultLocaleSelect"
 
-const Page: React.FC = (props)=>{
+const PanelLayoutPage: React.FC = (props)=>{
   const context = useContext(BrickdocContext)
 
   // Logged-in users can only change the locale through the settings page
@@ -20,4 +20,4 @@ const Page: React.FC = (props)=>{
     <footer />
   </div>)
 }
-export default Page
+export default PanelLayoutPage

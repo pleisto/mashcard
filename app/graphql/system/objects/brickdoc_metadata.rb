@@ -7,9 +7,14 @@ module System
       global_id_field :id
 
       field :available_locales, [BrickdesignSelectOption], 'Current available locales.', null: false
+      field :config, BrickdocConfig, 'Brickdoc Global Config', null: false
 
       def available_locales
         Brickdoc::I18n::AVAILABLE_LANGUAGES.map { |k, v| { label: v, value: k } }
+      end
+
+      def config
+        ::BrickdocConfig
       end
     end
   end

@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 gem 'pg', '~> 1.2.3'
+gem 'marginalia', '~> 1.10.0'
 gem 'puma', '~> 5.3', '>= 5.3.2'
 gem 'puma_worker_killer', '~> 0.3.1'
 gem 'hiredis', '~> 0.6.3'
@@ -32,6 +33,7 @@ gem 'nokogiri', '~> 1.11', '>= 1.11.5'
 # Feature toggles
 gem 'flipper', '~> 0.21.0'
 gem 'flipper-active_record', '~> 0.21.0'
+gem 'flipper-active_support_cache_store', '~> 0.21.0'
 
 gem 'rails-settings-cached', '>= 2.5'
 gem 'default_value_for', '~> 3.4'
@@ -58,6 +60,7 @@ gem 'redirect_safely', '~> 1.0'
 gem 'devise', '~> 4.8'
 gem 'devise-two-factor', '~> 4.0'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'omniauth-github', '~> 2.0'
 gem 'cityhash', '~> 0.9.0'
 

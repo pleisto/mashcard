@@ -5,4 +5,11 @@ class Accounts::Pod < ApplicationRecord
   def avatar
     avatar_key
   end
+
+  def self.webid_available?(webid)
+    instance = new
+    instance.webid = webid
+    instance.valid?
+    instance.errors[:webid].blank?
+  end
 end

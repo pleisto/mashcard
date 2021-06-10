@@ -18,7 +18,8 @@ interface globalContext {
   selfHost: boolean,
   csrfToken: string,
   isDesktopApp: boolean,
-  featureFlags: Array<string|null>
+  featureFlags: Array<string|null>,
+  serverMessage: string
 }
 
 

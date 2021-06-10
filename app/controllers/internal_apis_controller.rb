@@ -27,7 +27,8 @@ class InternalApisController < ActionController::API
       protocol: 'http',
       real_ip: request.remote_ip,
       entrypoint: 'internal',
-      current_user: nil,
+      current_user: current_user,
+      session: session,
       request_id: request.uuid
     }
   end
