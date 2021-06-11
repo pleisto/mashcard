@@ -1,7 +1,7 @@
 Brickdoc Design System
 Copyright (c) 2020-present Brickdoc (Ningbo) Cloud Computing Technology LTD <oss@brickdoc.com>
 
-This product contains code derived from the Han.css source code, written by Ant UED
+This product contains code derived from the Ant Design source code, written by Ant UED
 https://xtech.antfin.com/
 
 MIT LICENSE
@@ -26,3 +26,6 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+This product contains code derived from Iconpark source code, written by bytedance
+http://iconpark.bytedance.com/
