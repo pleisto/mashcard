@@ -1,48 +1,47 @@
 import React, { useEffect } from "react"
 import { AuthMethod } from "@/BrickdocGraphQL"
 import { useBoolean } from "ahooks"
+import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from "./hooks/useAccountsAuthMethods"
-import { Skeleton, Divider, Button, Tooltip } from "@brickdoc/design-system"
+import { useAccountsI18n } from "@/accounts/modules/common/hooks"
+import { Skeleton, Button } from "@brickdoc/design-system"
+import MoreAuthMethods from "./components/MoreAuthMethods"
+import EmailPasswordSignIn from "./components/EmailPasswordSignIn"
 
 const Page: React.FC = () => {
-  const [renderEmailPasswordForm, { setTrue }] = useBoolean(false)
-  const { loading, authMethods } = useAccountsAuthMethods(setTrue)
-  useEffect(()=>{
-    if (!loading && authMethods[0].name === AuthMethod.EmailPassword) setTrue()
-  })
+  const { t } = useAccountsI18n()
+  const [renderEmailPasswordForm, { setTrue: enableEmailPwdSignIn }] = useBoolean(false)
+  const { loading, authMethods } = useAccountsAuthMethods(enableEmailPwdSignIn)
+  const preferredAuthMethod = authMethods[0]
 
-  if (loading) {
-    return <Skeleton active />
-  }
+  useEffect(()=>{if (!loading && preferredAuthMethod.name === AuthMethod.EmailPassword) enableEmailPwdSignIn()})
 
-  const emailPasswordAuthInput = <div>
-    <input name="email" />
-    <input name="password" />
-    <Button type="primary">Sign In</Button>
-  </div>
+  if (loading) { return <Skeleton active /> }
 
-
-  const otherAuthMethodsList = (methods) => methods.map(i => <Tooltip key={i.name} title={i.name}>
-    <Button shape="circle" icon={i.logo} onClick={i.action} /></Tooltip>)
-
+  const otherAuthMethods = renderEmailPasswordForm ?
+    // skip EmailPassword if emailPassword has been rendered.
+    authMethods.filter(x => x.name !== AuthMethod.EmailPassword):
+    // `slice(1)` could skip `preferred` auth method.
+    authMethods.slice(1)
 
   return <div>
-    <h1>Sign In</h1>
+    <Helmet>
+      <title>{t('sessions.sign_in')}</title>
+    </Helmet>
+    <h1>{t('sessions.sign_in_to_brickdoc')}</h1>
     <div>
       { // Primary Area
-        renderEmailPasswordForm ? emailPasswordAuthInput :
-          <Button icon={authMethods[0].logo} onClick={authMethods[0].action} block>{authMethods[0].name}</Button>
+        renderEmailPasswordForm ?
+          <EmailPasswordSignIn />
+          :
+          <Button icon={preferredAuthMethod.logo}
+                  size="large"
+                  style={{marginTop: '2rem'}}
+                  onClick={preferredAuthMethod.action} block>
+            {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod.name}`) })}
+          </Button>
       }
-      {authMethods.length >= 2 && <>
-        <Divider plain>or Login with</Divider>
-        { // Footer
-          renderEmailPasswordForm ?
-            // skip EmailPassword if emailPassword has been rendered.
-            otherAuthMethodsList(authMethods.filter(x => x.name !== AuthMethod.EmailPassword)) :
-            // `slice` could skip `preferred` auth method.
-            otherAuthMethodsList(authMethods.slice(1))
-        }
-      </>}
+      { otherAuthMethods.length >= 1 && <MoreAuthMethods methods={otherAuthMethods} /> }
     </div>
   </div>
 }

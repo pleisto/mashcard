@@ -17,6 +17,7 @@ export const getAccountsConfig = gql`
     metadata {
       id
       config{
+        userAgreementLink
         accountsPreferredAuthMethod
         accountsEmailPasswordAuth
         accountsFederatedProviders {

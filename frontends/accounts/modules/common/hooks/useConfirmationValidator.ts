@@ -1,10 +1,15 @@
+import { useAccountsI18n } from "@/accounts/modules/common/hooks"
+
 export const useConfirmationValidator = ( fieldName: string ) =>{
+  const { t } = useAccountsI18n()
   return ({ getFieldValue }) => ({
     async validator(_, value) {
       if (!value || getFieldValue(fieldName) === value) {
         return await Promise.resolve()
       }
-      return await Promise.reject(new Error(`${fieldName} and Confirm ${fieldName} that you entered do not match`))
+      throw new Error(`${t('common.confirm_not_match', {
+        field: t(`sessions.${fieldName}`)
+      })}`)
     }
   })
 }

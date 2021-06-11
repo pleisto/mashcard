@@ -6,9 +6,9 @@ class InternalApisController < ActionController::API
   # i18next.js
   def show_locales
     @locale = params[:locale]&.to_sym
+    @ns = params[:ns]&.to_sym
     raise ActionController::RoutingError, 'Not Found' unless Brickdoc::I18n.available_locales.include? @locale
-    # @see https://stackoverflow.com/questions/14645914/rails-i18n-how-to-get-all-values-for-a-certain-key
-    @translations = ::I18n.t('.', locale: @locale)&.except(*Brickdoc::I18n::SERVER_ONLY_SCOPES)
+    @translations = ::I18n.t(@ns, locale: @locale, default: {})
     render json: Oj.dump(@translations)
   end
 

@@ -10,6 +10,7 @@ module System
             'Preferred Authentication authentication', null: false
       field :accounts_federated_providers, [::Accounts::Objects::FederatedProvider],
             'Enabled federated identity providers', null: false
+      field :user_agreement_link, BrickGraphQL::Scalars::HttpUrl, 'User agreement link', null: false
     end
   end
 end

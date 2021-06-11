@@ -4,7 +4,7 @@ import { sortBy } from "lodash"
 import { BrickdocContext } from '@/common/PWAProvider'
 import React, { useContext } from "react"
 
-interface authMethod {
+export  interface authMethod {
   name: string;
   logo: JSX.Element;
   action: ()=>void;
@@ -20,17 +20,18 @@ function redirectToOAuthProvider(provider: string, csrfToken: string) {
     <input type="submit" />
   `
   form.style.display = 'none'
-  document.body.appendChild(form);
-  (form.querySelector('[type="submit"]') ).click()
+  document.body.appendChild(form)
+  const submit: HTMLButtonElement = form.querySelector('[type="submit"]')
+  submit.click()
 }
 
 /**
  * A Array of enabled accounts authentication methods.
  * With the preferred authentication method at the TOP of this array.
  *
- * @param clickEmailPassword - If emailPasssword is not preferred, the function triggered when it is clicked
+ * @param emailPwdBtnOnClick - If emailPasssword is not preferred, the function triggered when it is clicked
  */
-export const useAccountsAuthMethods = (clickEmailPassword: () => void): { authMethods: authMethod[], loading: boolean } => {
+export const useAccountsAuthMethods = (emailPwdBtnOnClick: () => void): { authMethods: authMethod[], loading: boolean } => {
   const { csrfToken }  = useContext(BrickdocContext)
   const { loading, data } = useGetAccountsConfigFromWsQuery()
   if (loading) {
@@ -47,7 +48,7 @@ export const useAccountsAuthMethods = (clickEmailPassword: () => void): { authMe
     .concat(config.accountsEmailPasswordAuth ? [{
       name: AuthMethod.EmailPassword,
       logo: <Mail theme="filled" />,
-      action: clickEmailPassword
+      action: emailPwdBtnOnClick
     }] : [])
 
   // Move `accountsPreferredAuthMethod` to the top of the authMethods array.

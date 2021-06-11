@@ -1,0 +1,12 @@
+en-US:
+  accounts:
+    app_title: Brickdoc Accounts
+    provider:
+      github: Github
+      email_password: Email & Password
+    sessions:
+      sign_in_to_brickdoc: Sign in to Brickdoc
+      sign_in: Sign In
+      sign_up: Sign Up
+      more_login_options: More Login Options
+      login_via: Sign In with %{provider}

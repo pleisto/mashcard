@@ -45,6 +45,8 @@ export type Config = {
   accountsFederatedProviders: Array<FederatedProvider>
   /** Preferred Authentication authentication */
   accountsPreferredAuthMethod: AuthMethod
+  /** User agreement link */
+  userAgreementLink: Scalars['HttpUrl']
 }
 
 /** Accounts Federated Identity Provide Configuration */
@@ -87,9 +89,10 @@ export type GetAccountsConfigFromWsQueryVariables = Exact<{ [key: string]: never
 
 export type GetAccountsConfigFromWsQuery = { __typename?: 'RootQuery' } & {
   metadata: { __typename?: 'metadata' } & Pick<Metadata, 'id'> & {
-      config: { __typename?: 'config' } & Pick<Config, 'accountsPreferredAuthMethod' | 'accountsEmailPasswordAuth'> & {
-          accountsFederatedProviders: Array<{ __typename?: 'federatedProvider' } & Pick<FederatedProvider, 'name' | 'logo'>>
-        }
+      config: { __typename?: 'config' } & Pick<
+        Config,
+        'userAgreementLink' | 'accountsPreferredAuthMethod' | 'accountsEmailPasswordAuth'
+      > & { accountsFederatedProviders: Array<{ __typename?: 'federatedProvider' } & Pick<FederatedProvider, 'name' | 'logo'>> }
     }
 }
 
@@ -155,6 +158,7 @@ export const GetAccountsConfigFromWsDocument = gql`
     metadata {
       id
       config {
+        userAgreementLink
         accountsPreferredAuthMethod
         accountsEmailPasswordAuth
         accountsFederatedProviders {

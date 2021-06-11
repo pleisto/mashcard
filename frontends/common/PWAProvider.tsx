@@ -3,6 +3,7 @@ import { ApolloProvider } from '@apollo/client'
 import { Spin, ConfigProvider, Locale } from '@brickdoc/design-system'
 import enUS from '@brickdoc/design-system/components/locale/en_US'
 import zhCN from '@brickdoc/design-system/components/locale/zh_CN'
+import { HelmetProvider } from 'react-helmet-async'
 
 interface globalContext {
   internalApiEndpoint: string,
@@ -49,7 +50,7 @@ export default (props)=>{
     <ConfigProvider locale={locale}>
       <Suspense fallback={<Spin delay={1000}  />}>
         <ApolloProvider client={globalThis.brickdocContext.gqlClient}>
-          {props.children}
+          <HelmetProvider>{props.children}</HelmetProvider>
         </ApolloProvider>
       </Suspense>
     </ConfigProvider>

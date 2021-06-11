@@ -53,7 +53,7 @@ gem 'turbo-rails', '~> 0.5.9'
 ## IAM
 gem 'action_policy', '~> 0.5.7'
 gem 'action_policy-graphql', '~> 0.5.3'
-gem 'doorkeeper', '~> 5.5', '>= 5.5.1'
+gem 'doorkeeper', '~> 5.5', '>= 5.5.2'
 gem 'doorkeeper-jwt', '~> 0.4.0'
 gem 'doorkeeper-openid_connect', '~> 1.8'
 gem 'redirect_safely', '~> 1.0'

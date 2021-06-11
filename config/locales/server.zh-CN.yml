@@ -5,6 +5,8 @@ zh-CN:
     dir: ltr
     noscript: 抱歉积木文档需在开启浏览器的 Javascript 功能后方可正常工作，请访问 %{url} 以了解详情。
     noscript_url: https://zh.wikihow.com/%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E5%90%AF%E7%94%A8-JavaScript
+    errors:
+      is_not_valid_webid: "WebID「%{webid}」不符合命名规则或已被注册"
   'Your browser is out of date': 您的浏览器内核版本过旧
   download_latest_browser_html: 请升级您的浏览器至最新版本或使用下述之推荐浏览器访问 Brickodc： <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">360极速浏览器</a>, <a href="%{firefox}" rel="nofollow">Firefox</a>
   edge_link: https://www.microsoft.com/zh-cn/edge

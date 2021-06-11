@@ -52,6 +52,11 @@ type config {
   Preferred Authentication authentication
   """
   accountsPreferredAuthMethod: AuthMethod!
+
+  """
+  User agreement link
+  """
+  userAgreementLink: HttpUrl!
 }
 
 """

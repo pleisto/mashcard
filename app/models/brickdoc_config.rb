@@ -22,6 +22,8 @@ class BrickdocConfig < RailsSettings::Base
   # Keep personally identifiable information (PII) out of logs.
   field :pii_masking, type: :boolean, default: Brickdoc.saas?
 
+  field :user_agreement_link, type: :string, default: 'https://www.contributor-covenant.org/version/2/0/code_of_conduct/'
+
   # Accounts
   field :accounts_email_password_auth, type: :boolean, default: true
   # rubocop:disable Layout/LineLength
