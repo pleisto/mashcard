@@ -26,3 +26,6 @@ const App = () => (
   </>
 );
 ```
+## Changelog
+### 0.1.1
+* Sync of patches from Ant Design 4.16.2

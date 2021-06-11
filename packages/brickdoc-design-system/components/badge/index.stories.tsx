@@ -109,7 +109,7 @@ typically displaying unread messages count.
 
 
 const Template: Story<BadgeProps> = (args) =>   <Badge {...args} >
-  <a href="javascript:;" style={{
+  <a href="#" style={{
     width: 40, height: 40,
     background: '#eee',
     borderRadius: '2px',

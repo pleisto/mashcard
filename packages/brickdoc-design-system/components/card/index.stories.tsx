@@ -162,7 +162,7 @@ export const InnerCard: Story<CardProps> = (_args) => (
       style={{ marginTop: 16 }}
       type="inner"
       title="Inner Card title"
-      extra={<a href="javascript:;">More</a>}
+      extra={<a href="#">More</a>}
     >
       Inner Card content
     </Card>

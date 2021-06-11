@@ -235,25 +235,23 @@ Icon.parameters = {
   }
 }
 
-
-
-export const ErrorBoundaryAlert: Story<AlertProps> = (_args) => {
-  const { ErrorBoundary } = Alert
-  const ThrowError: React.FC = () => {
-    const [error, setError] = useState<Error>()
-    const onClick = () => {
-      setError(new Error('An Uncaught Error'))
-    }
-
-    if (error) {
-      throw error
-    }
-    return (
-      <Button danger onClick={onClick}>
-        Click me to throw a error
-      </Button>
-    )
+const { ErrorBoundary } = Alert
+const ThrowError: React.FC = () => {
+  const [error, setError] = useState<Error>()
+  const onClick = () => {
+    setError(new Error('An Uncaught Error'))
   }
+
+  if (error) {
+    throw error
+  }
+  return (
+    <Button danger onClick={onClick}>
+      Click me to throw a error
+    </Button>
+  )
+}
+export const ErrorBoundaryAlert: Story<AlertProps> = (_args) => {
   return (<ErrorBoundary>
     <ThrowError />
   </ErrorBoundary>)

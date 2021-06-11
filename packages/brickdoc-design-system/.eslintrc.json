@@ -12,14 +12,28 @@
     "@typescript-eslint/no-base-to-string": "off",
     "no-plusplus": "off",
     "no-param-reassign": "off",
+    "no-duplicate-imports": "off",
     "max-classes-per-file": "off",
+    "@typescript-eslint/member-ordering": "off",
     "@typescript-eslint/no-dynamic-delete": "off",
     "@typescript-eslint/consistent-type-assertions": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "react/jsx-no-constructed-context-values": "off",
     "@typescript-eslint/naming-convention": "off",
     "react/no-unused-prop-types": "off",
-    "@typescript-eslint/default-param-last": "off"
+    "@typescript-eslint/default-param-last": "off",
+    "max-depth": "off",
+    "max-nested-callbacks": "off",
+    "max-params": "off",
+
+    "func-name-matching": "off",
+    "complexity": [
+      "error",
+      {
+        "max": 35
+      }
+    ]
   },
   "ignorePatterns": ["storybook-static/**/*.js"]
 }

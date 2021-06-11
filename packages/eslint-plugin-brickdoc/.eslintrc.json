@@ -1,4 +1,5 @@
 {
   "extends": ["plugin:@brickdoc/eslint-plugin/base"],
-  "rules": {}
+  "rules": {},
+  "root": true
 }

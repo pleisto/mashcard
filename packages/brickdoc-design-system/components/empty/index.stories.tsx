@@ -53,7 +53,7 @@ const Template: Story<EmptyProps> = (_args) =>
       }}
       description={
         <span>
-        Customize <a href="javascript:;">Description</a>
+        Customize <a href="#">Description</a>
       </span>
       }
     >
