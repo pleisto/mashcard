@@ -65,7 +65,7 @@ const Page: React.FC = () => {
         name="webid"
         extra={t("sessions.webid_description")}
         hasFeedback
-        validateTrigger={["onFocus", "onBlur", "onLoad"]}
+        validateTrigger={["onFocus", "onBlur"]}
         rules={[{ required: true }, webidAvailableValidator]}
       >
         <Input />

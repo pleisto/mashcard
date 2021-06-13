@@ -8,10 +8,9 @@ class Accounts::User < Accounts::Pod
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :confirmable, :trackable, :omniauthable, :validatable
 
-  has_many :federated_identities, class_name: 'Accounts::FederatedIdentity'
-
+  has_many :federated_identities, class_name: 'Accounts::FederatedIdentity', foreign_key: :accounts_user_id
   attr_accessor :omniauth_provider, :omniauth_uid
-  after_create :bind_federation_identity, if: :omniauth_provider.present?
+  after_commit :bind_federation_identity, if: proc { omniauth_provider.present? }, on: [:create, :update]
 
   # FederatedIdentity
   def bind_federation_identity

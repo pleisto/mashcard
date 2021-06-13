@@ -2,6 +2,9 @@
 
 class InternalApisController < ActionController::API
   include Apiable
+  include I18nable
+  include ActionController::Cookies
+  around_action :switch_locale
 
   # i18next.js
   def show_locales
@@ -29,7 +32,8 @@ class InternalApisController < ActionController::API
       entrypoint: 'internal',
       current_user: current_user,
       session: session,
-      request_id: request.uuid
+      request_id: request.uuid,
+      warden: request.env['warden']
     }
   end
 end

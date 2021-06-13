@@ -8,6 +8,7 @@ module BrickGraphQL
     def self.coerce_input(input_value, _context)
       raise GraphQL::CoercionError,
             "#{input_value.inspect} is not a valid Hex Color Code" unless input_value =~ REGEXP
+      input_value
     end
 
     def self.coerce_result(ruby_value, _context)
