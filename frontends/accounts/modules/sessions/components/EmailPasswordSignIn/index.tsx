@@ -11,10 +11,12 @@ const EmailPasswordSignIn: React.FC = () => {
   const [ emailPasswordSignIn] = useEmailPasswordSignInMutation()
   const onFinish =  async (values: EmailPasswordSignInInput) => {
     const { data } = await emailPasswordSignIn({ variables: { input: values } })
-    console.log(data)
-    isEmpty(data.emailPasswordSignIn.errors) ?
-      (globalThis.location.href = data.emailPasswordSignIn.redirectPath):
+    if (isEmpty(data.emailPasswordSignIn.errors)) {
+      message.success(t('sessions.sign_in_successful'))
+      globalThis.location.href = data.emailPasswordSignIn.redirectPath
+    } else {
       data.emailPasswordSignIn.errors.map(error => message.error(error))
+    }
   }
   return (<Form layout="vertical" onFinish={onFinish}>
     <Form.Item
