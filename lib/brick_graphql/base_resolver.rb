@@ -3,7 +3,9 @@
 module BrickGraphQL
   class BaseResolver < ::GraphQL::Schema::Resolver
     argument_class BaseArgument
-    include Plugins::EntrypointValidatable
+    include GraphQL::FragmentCache::ObjectHelpers
+    include BrickGraphQL::Concerns::EntrypointValidatable
+    include ActionPolicy::GraphQL::Behaviour
     # override graphql-ruby
     # When the `resolve` method does not exist, the `field` is returned directly
     def resolve(**_args)

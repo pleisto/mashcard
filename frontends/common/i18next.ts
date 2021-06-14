@@ -12,7 +12,6 @@ i18next.use(HttpApi).use(initReactI18next).init({
   },
   load: 'currentOnly',
   cleanCode: true,
-  debug: true,
   interpolation: {
     escapeValue: false,
     prefix: "%{",

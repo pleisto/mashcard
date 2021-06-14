@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-describe Brickdoc::Validators::PodNameValidator do
+describe Brickdoc::Validators::WebidValidator do
   subject do
     Class.new do
       include ActiveModel::Model
       include ActiveModel::Validations
       include Brickdoc::Validators
       attr_accessor :name
-      validates :name, pod_name: true
+      validates :name, webid: true
     end.new
   end
 

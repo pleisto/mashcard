@@ -5,12 +5,14 @@ module BrickGraphQL
     object_class BaseObject
     field_class BaseField
     input_object_class BaseInputObject
-    prepend Plugins::CopyFieldDescription
-    include Plugins::EntrypointValidatable
+    include ActionPolicy::GraphQL::Behaviour
+    include BrickGraphQL::Concerns::CopyFieldDescription
+    include BrickGraphQL::Concerns::EntrypointValidatable
 
     field :errors, [String],
           null: false,
-          description: 'Errors encountered during execution of the mutation.'
+          description: 'Errors encountered during execution of the mutation.',
+          default_value: []
 
     def current_user
       context[:current_user]

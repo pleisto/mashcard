@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Accounts::Pod < ApplicationRecord
-  validates :webid, presence: true, pod_name: true
+  validates :webid, presence: true, webid: true, uniqueness: { case_sensitive: false }
   validates :name, presence: true
 
   def avatar

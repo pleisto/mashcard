@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BrickGraphQL
-  module Plugins
+  module Concerns
     module CopyFieldDescription
       extend ActiveSupport::Concern
 
@@ -11,8 +11,8 @@ module BrickGraphQL
         # are always identical to the corresponding query field descriptions.
         #
         # E.g.:
-        #   argument :name, GraphQL::STRING_TYPE, description: copy_field_description(Types::UserType, :name)
-        def copy_field_description(type, field_name)
+        #   argument :name, GraphQL::STRING_TYPE, description: description_same(Types::UserType, :name)
+        def description_same(type, field_name)
           type.fields[field_name.to_s.camelize(:lower)].description
         end
       end

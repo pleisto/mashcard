@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class Accounts::RegistrationsController < Devise::RegistrationsController
+class Accounts::ConfirmationsController < Devise::ConfirmationsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_up
+  # GET /resource/confirmation/new
   def new
     render 'pages/accounts'
   end
 
-  # POST /resource/sign_up
+  # POST /resource/confirmation
   def create
     # Only Support GraphQL API
     raise ActionController::RoutingError, 'Not Found'

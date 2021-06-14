@@ -6,10 +6,10 @@ class Accounts::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
     redirect_to(new_user_session_path) && return if omniauth_auth.blank?
     @identity = Accounts::FederatedIdentity.find_by(provider: omniauth_auth[:provider], uid: omniauth_auth[:uid])
     if @identity.present?
-      sign_in_and_redirect @identity.user, event: :authentication
+      sign_in_and_redirect @identity.accounts_user, event: :authentication
     else
       session[:omniauth] = omniauth_auth
-      redirect_to new_user_registration_path(autofill: omniauth_auth[:info], provider: omniauth_auth[:provider])
+      redirect_to new_user_registration_path
     end
   end
 

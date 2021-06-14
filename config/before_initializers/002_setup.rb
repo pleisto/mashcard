@@ -31,9 +31,15 @@ Rails.application.reloader.to_prepare do
   # @see https://github.com/jhawthorn/actionview_precompiler
   ActionviewPrecompiler.precompile unless Rails.env.development?
 
+  Rails.application.default_url_options = {
+    host: BrickdocConfig.host,
+    port: Rails.env.development? ? 3000 : nil
+  }
+
   # Mailer
   smtp_settings = URI(BrickdocConfig.mailer[:url])
   Rails.application.configure do
+    config.action_mailer.default_url_options = Rails.application.default_url_options
     unless Rails.env.test?
       config.action_mailer.delivery_method = :smtp
       config.action_mailer.default_options = {

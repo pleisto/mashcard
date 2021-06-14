@@ -1,25 +1,60 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from 'react-helmet-async'
-import { useGetAccountsConfigFromWsQuery, } from "@/BrickdocGraphQL"
+import {
+  useGetAccountsConfigFromWsQuery, useGetFederatedIdentitySessionQuery,
+  useUserCreateMutation, UserCreateInput
+} from "@/BrickdocGraphQL"
+import { useBoolean } from 'ahooks'
 import { useSignUpInitialValues } from "./hooks/useSignUpInitialValues"
 import { useConfirmationValidator, useWebidAvailableValidator , useAccountsI18n } from "@/accounts/modules/common/hooks"
-
-import { Form, Input, Button, Skeleton } from "@brickdoc/design-system"
-import { parse } from "qs"
+import { pick, omit } from 'lodash'
+import { mutationResultHandler } from "@/utils"
+import { Form, Input, Button, Skeleton, message } from "@brickdoc/design-system"
 import { Trans } from 'react-i18next'
+import ConfirmationEmailTips from "./components/ConfirmationEmailTips"
 
 const Page: React.FC = () => {
-  const  { loading, data } = useGetAccountsConfigFromWsQuery()
+  const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
+  const  { loading: configLoading, data: configData } = useGetAccountsConfigFromWsQuery()
 
-  // substr(1) could remove `?` char
-  const qs = parse(window.location.search.substr(1))
-  const { initialValues, hasFilled } = useSignUpInitialValues(qs.autofill as object | undefined)
-  const providerName = qs.provider as string | undefined
+  // Set Form initial values
+  const [form] = Form.useForm()
+  const  { loading: sessionLoading, data: sessionData } = useGetFederatedIdentitySessionQuery()
+  const { initialValues, setFill } = useSignUpInitialValues()
+  useEffect(() => {
+    if (!sessionLoading){ setFill(pick(sessionData.federatedIdentitySession,['webid', 'name']))}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[sessionLoading,sessionData])
+  const providerName = sessionData?.federatedIdentitySession?.provider
   const { t } = useAccountsI18n()
 
+  // Set Validator
   const passwordConfirmValidator = useConfirmationValidator("password")
   const webidAvailableValidator = useWebidAvailableValidator()
 
+  // On Form Submit
+  const [ userCreate, { loading: userCreateLoading } ] = useUserCreateMutation()
+  const onFinish =  async (values: object) => {
+    const input = omit(values,['confirm_password']) as UserCreateInput
+    const { data } = await userCreate({ variables: {  input} })
+    const result = data.userCreate
+    mutationResultHandler(result, ()=>{
+      if (result.redirectPath && result.isUserActive){
+        message.success(t('sessions.sign_in_successful'))
+        globalThis.location.href = result.redirectPath
+      } else{
+        showConfirmationEmailTips()
+      }
+    })
+  }
+
+  // Loading Status
+  if (configLoading || sessionLoading){ return <Skeleton active /> }
+
+  // Email unactive tips
+  if(didShowConfirmationEmailTips) { return  <ConfirmationEmailTips email={form.getFieldValue('email')} /> }
+
+  // View
   const pageTitle = providerName ?
     t("sessions.sign_up_via", { provider: t(`provider.${providerName}`) }) :
     t("sessions.sign_up")
@@ -29,7 +64,7 @@ const Page: React.FC = () => {
       name="email"
       label={t("sessions.email")}
       hasFeedback
-      rules={[{ required: !hasFilled }]}
+      rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }]}
     >
       <Input />
     </Form.Item>
@@ -52,14 +87,13 @@ const Page: React.FC = () => {
     </Form.Item>
   </>
 
-  if (loading){ return <Skeleton active /> }
 
   return <div>
     <Helmet>
       <title>{pageTitle}</title>
     </Helmet>
     <h1>{pageTitle}</h1>
-    <Form initialValues={initialValues} layout="vertical">
+    <Form form={form} initialValues={initialValues} layout="vertical" onFinish={onFinish}>
       <Form.Item
         label={t("sessions.webid")}
         name="webid"
@@ -80,7 +114,7 @@ const Page: React.FC = () => {
       </Form.Item>
       {
         // Federated Sign Up could skip email and password
-        !hasFilled && EmailPasswordFields
+        !sessionData?.federatedIdentitySession?.hasSession && EmailPasswordFields
       }
       <Form.Item
         hidden
@@ -97,7 +131,9 @@ const Page: React.FC = () => {
         <Input />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" block size="large">
+        <Button type="primary" htmlType="submit"
+                loading={userCreateLoading}
+                block size="large">
           {t("sessions.sign_up")}
         </Button>
       </Form.Item>
@@ -106,7 +142,7 @@ const Page: React.FC = () => {
                components={[
                  // False positive
                  // eslint-disable-next-line jsx-a11y/anchor-has-content, react/jsx-key
-                 <a target="_blank" href={data.metadata.config.userAgreementLink} />
+                 <a target="_blank" href={configData.metadata.config.userAgreementLink} />
                ]} />
       </div>
     </Form>

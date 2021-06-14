@@ -1,11 +1,9 @@
 import { useState, useContext } from "react"
 import { BrickdocContext } from "@/common/PWAProvider"
-import { isEmpty } from 'lodash'
 
-export const useSignUpInitialValues = (autofill: object|undefined)=>{
-  const [fill] = useState(autofill || {})
+export const useSignUpInitialValues = ()=>{
+  const [fill, setFill] = useState( {})
   const {locale, timezone } = useContext(BrickdocContext)
-  const hasFilled = !isEmpty(fill)
 
   return {
     initialValues: {
@@ -13,7 +11,7 @@ export const useSignUpInitialValues = (autofill: object|undefined)=>{
       locale,
       timezone
     },
-    hasFilled
+    setFill
   }
 
 }

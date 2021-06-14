@@ -15,11 +15,12 @@ module BrickGraphQL
     max_complexity DEFAULT_MAX_COMPLEXITY
     default_max_page_size DEFAULT_MAX_PAGE_SIZE
 
+    use GraphQL::FragmentCache
     use ::GraphQL::Batch
     # connections.add(ActiveRecord::Relation, ::GraphQL::Pro::PostgresStableRelationConnection)
     disable_introspection_entry_points if Rails.env.production?
 
-    query_analyzer(Plugins::QueryLogger)
+    query_analyzer(Concerns::QueryLogger)
 
     class << self
       # ref: https://graphql-ruby.org/relay/object_identification.html
@@ -47,9 +48,12 @@ module BrickGraphQL
         args[:max_complexity] ||= max_query_complexity(args[:context])
         args[:max_depth] ||= max_query_depth(args[:context])
 
-        # @see ./plugins/entrypoint_validatable.rb
+        # Remove entrypoint mismatched fields
+        # @see ./concerns/entrypoint_validatable.rb
         args[:only] = ->(field, ctx) do
+          # Skip this filter if there is no `entrypoint` in the context
           return true if ctx[:entrypoint].blank? || !(field.class == BrickGraphQL::BaseField)
+
           entrypoints = field.resolver.try(:requires_entrypoint_to_be)
           return entrypoints.nil? || entrypoints.include?(ctx[:entrypoint])
         end

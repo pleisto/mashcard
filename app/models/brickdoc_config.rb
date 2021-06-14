@@ -4,6 +4,7 @@ class BrickdocConfig < RailsSettings::Base
   cache_prefix { "v1" }
   field :default_locale, default: 'en-US'
   field :default_timezone, default: 'UTC'
+  field :host, default: (Rails.env.development? ? 'localhost' : Brickdoc::Runtime.hostname)
 
   # ActionMailer
   field :mailer, type: :hash, default: {

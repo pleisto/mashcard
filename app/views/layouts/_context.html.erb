@@ -1,17 +1,4 @@
 <%= javascript_tag do %>
   window.brickdocContext = window.brickdocContext || {}
-  Object.assign(window.brickdocContext,{
-  internalApiEndpoint: '<%= internal_graphql_api_path %>',
-  currentUser: <%= Current.user.to_json(only: [:webid, :name, :avatar]) %>,
-  env:'<%=  Rails.env %>',
-  version:'<%= Brickdoc.full_version %>',
-  locale: '<%= Brickdoc::I18n.locale %>',
-  timezone: <%= Current.timezone.to_json %>,
-  defaultTimezone: '<%= BrickdocConfig.default_timezone %>',
-  selfHosted: <%= Brickdoc.self_hosted? %>,
-  csrfToken: '<%= form_authenticity_token %>',
-  isDesktopApp: false,
-  featureFlags: <%= Flipper.features.to_json %>,
-  serverMessage: <%= sanitize flash[:alert].to_json %>
-  })
+  Object.assign(window.brickdocContext,<%= global_context.to_json.html_safe %>)
 <% end %>

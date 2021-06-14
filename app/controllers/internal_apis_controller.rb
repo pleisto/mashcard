@@ -29,10 +29,11 @@ class InternalApisController < ActionController::API
     {
       protocol: 'http',
       real_ip: request.remote_ip,
-      entrypoint: 'internal',
+      entrypoint: :internal,
       current_user: current_user,
       session: session,
       request_id: request.uuid,
+      routes: Rails.application.routes.url_helpers,
       warden: request.env['warden']
     }
   end

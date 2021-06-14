@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module BrickGraphQL
+module Brickdoc
   class DeviseFailureApp < Devise::FailureApp
     def respond
       around_i18n do

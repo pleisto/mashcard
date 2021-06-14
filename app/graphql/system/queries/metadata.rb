@@ -7,7 +7,8 @@ module System
 
     def resolve
       # metadata cache id == server booted time
-      OpenStruct.new(id: Brickdoc::BOOTED_AT.to_i, object_class_name: 'System::Metadata')
+      id = Brickdoc::BOOTED_AT.to_i
+      cache_fragment(id) { OpenStruct.new(id: id, object_class_name: 'System::Metadata') }
     end
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BrickGraphQL
-  class Plugins::QueryLogger < ::GraphQL::Analysis::AST::QueryComplexity
+  class Concerns::QueryLogger < ::GraphQL::Analysis::AST::QueryComplexity
     def initialize(subject)
       @max_depth = 0
       @current_depth = 0

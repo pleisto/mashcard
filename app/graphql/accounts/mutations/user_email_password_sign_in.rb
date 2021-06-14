@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 module Accounts
-  class Mutations::EmailPasswordSignIn < BrickGraphQL::BaseMutation
-    argument :email, BrickGraphQL::Scalars::Email, 'user email', required: true
-    argument :password, String, 'user password', required: true
-    argument :remember, Boolean, 'remember password', required: true
+  class Mutations::UserEmailPasswordSignIn < BrickGraphQL::BaseMutation
+    include DeviseGraphQLHelper
+    requires_entrypoint_to_be :internal
 
-    field :user, Accounts::Objects::User, null: true
+    argument :email, BrickGraphQL::Scalars::Email, description_same(Objects::User, :email), required: true
+    argument :password, String, 'user password', required: true
+    argument :remember, Boolean, 'remember authentication session', required: true
+
     field :redirect_path, String, 'redirect url path when sig in successful', null: true
 
     def resolve(email:, password:, remember:)
@@ -13,6 +15,7 @@ module Accounts
       if user&.valid_for_authentication? { user.valid_password?(password) }
         user.after_database_authentication
         user.remember_me if remember
+        user.resend_confirmation_instructions unless user.confirmed? # resend confirmation mail
         sign_in(user)
         errors = []
       else
@@ -20,23 +23,9 @@ module Accounts
                          authentication_keys: 'email')]
       end
       {
-
-        user: user,
         redirect_path: errors.blank? ? redirect_path : nil,
         errors: errors
       }
-    end
-
-    private
-
-    def sign_in(user)
-      context[:session].keys.grep(/^devise\./).each { |k| session.delete(k) }
-      context[:warden].set_user(user, scope: :user)
-    end
-
-    def redirect_path
-      return '/' if context[:session][:user_return_to].blank?
-      context[:session].delete(:user_return_to)
     end
   end
 end

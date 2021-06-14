@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe BrickGraphQL::Plugins::CopyFieldDescription do
+describe BrickGraphQL::Concerns::CopyFieldDescription do
   subject { Class.new.include(described_class) }
 
   describe '.copy_field_description' do
@@ -15,7 +15,7 @@ describe BrickGraphQL::Plugins::CopyFieldDescription do
     end
 
     it 'returns the correct description' do
-      expect(subject.copy_field_description(type, :field_name)).to eq('Foo')
+      expect(subject.description_same(type, :field_name)).to eq('Foo')
     end
   end
 end

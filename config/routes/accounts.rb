@@ -6,5 +6,8 @@ devise_for :users,
            controllers: {
              sessions: 'accounts/sessions',
              registrations: 'accounts/registrations',
-             omniauth_callbacks: 'accounts/omniauth_callbacks'
+             omniauth_callbacks: 'accounts/omniauth_callbacks',
+             confirmations: 'accounts/confirmations_callbacks',
+             unlocks: 'accounts/unlocks_callbacks',
+             passwords: 'accounts/passwords_callbacks'
            }

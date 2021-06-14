@@ -1,22 +1,21 @@
 import React from "react"
-import { isEmpty } from 'lodash'
 import { Form, Button, Input, Checkbox, Divider, message } from "@brickdoc/design-system"
 import { useAccountsI18n } from "@/accounts/modules/common/hooks"
-import { useEmailPasswordSignInMutation, EmailPasswordSignInInput } from "@/BrickdocGraphQL"
+import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from "@/BrickdocGraphQL"
+import { mutationResultHandler } from "@/utils"
 import { Link } from 'react-router-dom'
 import styles from './index.module.less'
 
 const EmailPasswordSignIn: React.FC = () => {
   const { t } = useAccountsI18n()
-  const [ emailPasswordSignIn] = useEmailPasswordSignInMutation()
-  const onFinish =  async (values: EmailPasswordSignInInput) => {
+  const [ emailPasswordSignIn, { loading } ] = useUserEmailPasswordSignInMutation()
+  const onFinish =  async (values: UserEmailPasswordSignInInput) => {
     const { data } = await emailPasswordSignIn({ variables: { input: values } })
-    if (isEmpty(data.emailPasswordSignIn.errors)) {
+    const result = data.userEmailPasswordSignIn
+    mutationResultHandler(result, ()=>{
       message.success(t('sessions.sign_in_successful'))
-      globalThis.location.href = data.emailPasswordSignIn.redirectPath
-    } else {
-      data.emailPasswordSignIn.errors.map(error => message.error(error))
-    }
+      globalThis.location.href = result.redirectPath
+    })
   }
   return (<Form layout="vertical" onFinish={onFinish}>
     <Form.Item
@@ -39,7 +38,7 @@ const EmailPasswordSignIn: React.FC = () => {
       <Checkbox>{t('sessions.remember_me')}</Checkbox>
     </Form.Item>
     <Form.Item>
-      <Button type="primary" htmlType="submit" size="large" block>
+      <Button type="primary" htmlType="submit" size="large" loading={loading} block>
         {t('sessions.sign_in')}
       </Button>
     </Form.Item>

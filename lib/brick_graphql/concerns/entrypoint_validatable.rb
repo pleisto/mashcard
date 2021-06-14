@@ -3,7 +3,7 @@
 module BrickGraphQL
   # The entrypoint plugin can restrict the query or mutation to be called only within a specific entrypoint.
   # @see https://graphql-ruby.org/queries/executing_queries.html#context
-  module Plugins::EntrypointValidatable
+  module Concerns::EntrypointValidatable
     extend ActiveSupport::Concern
 
     def current_entrypoint

@@ -14,14 +14,23 @@ class Accounts::User < Accounts::Pod
 
   # FederatedIdentity
   def bind_federation_identity
-    Accounts::FederatedIdentity.find_or_create_by!(provider: omniauth_provider, uid: omniauth_uid, user_id: id)
+    Accounts::FederatedIdentity.find_or_create_by!(provider: omniauth_provider, uid: omniauth_uid, accounts_user_id: id)
   end
 
   # Devise Overwrite
 
-  # When federated identity is not available, the password is required
+  # When federated identity is not available, the password field is required
   def email_required?
     federated_identities.blank? &&
       omniauth_provider.blank? # federated identity are not created until the User is created.
+  end
+
+  def password_required?
+    email_required?
+  end
+
+  # User who authenticated with federated identity can still sign in even if their email is not confirmed.
+  def confirmation_period_valid?
+    email_required? ? super : true
   end
 end
