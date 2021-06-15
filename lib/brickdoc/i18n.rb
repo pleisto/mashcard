@@ -5,9 +5,9 @@ module Brickdoc
     extend self
     AVAILABLE_LANGUAGES = {
       'en-US': 'English',
-      'zh-CN': '简体中文'
-      # 'zh-tw': '繁體中文 (台灣地區)',
-      # 'zh-hk': '繁體中文 (港澳地區)'
+      'zh-CN': '简体中文',
+      'zh-TW': '繁體中文 (台灣地區)'
+      # 'zh-HK': '繁體中文 (港澳地區)'
     }
 
     # ignore this on I18Next

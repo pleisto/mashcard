@@ -13,7 +13,7 @@ const EmailPasswordSignIn: React.FC = () => {
     const { data } = await emailPasswordSignIn({ variables: { input: values } })
     const result = data.userEmailPasswordSignIn
     mutationResultHandler(result, ()=>{
-      message.success(t('sessions.sign_in_successful'))
+      message.success(t('devise.sessions.signed_in'))
       globalThis.location.href = result.redirectPath
     })
   }

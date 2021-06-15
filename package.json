@@ -86,8 +86,9 @@
     "not dead"
   ],
   "scripts": {
-    "lint": "eslint ./  --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --config .rubocop.yml && bundle exec brakeman  --summary --no-pager",
-    "lint:fix": "eslint ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --config .rubocop.yml -a && bundle exec brakeman  --summary --no-pager",
+    "prepare": "husky install",
+    "lint": "eslint --cache ./  --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml && bundle exec brakeman --summary --no-pager --exit-on-warn",
+    "lint:fix": "eslint --cache ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml -a && bundle exec brakeman  --faster --summary --no-pager --exit-on-warn",
     "test": "yarn lint",
     "commit": "git add . && cz",
     "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
@@ -95,18 +96,12 @@
     "less-vars-loader": "yarn workspace @brickdoc/less-vars-loader",
     "design-system": "yarn workspace @brickdoc/design-system"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
     "*.(ts|tsx|js)": [
-      "eslint --fix"
+      "eslint --cache --fix"
     ],
     "(app|lib|saas)/**/*.rb": [
-      "bundle exec rubocop -a"
+      "bundle exec rubocop --parallel -a --force-exclusion"
     ]
   },
   "config": {

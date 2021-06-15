@@ -368,7 +368,6 @@ zh-CN:
       sign_in: 登录
       sign_up: 注册
       sign_in_to_brickdoc: 登录 Brickdoc
-      sign_in_successful: 登录成功
       more_login_options: 更多登录方式
       login_via: "使用 %{provider} 登录"
       email: Email
@@ -384,8 +383,6 @@ zh-CN:
       webid: "WebID"
       webid_description: "相当于您的用户名，仅允许包含英文字母和数字"
       agree_to_agreement: "注册即表示您已阅读并同意我们的<0>《用户协议》</0>"
-      confirmation_email_required: 激活邮件已送发到您的邮箱，请查收邮件以完成账号激活。
-      email_resend_successful: 邮件发送成功，请注意查收。
       resend_after: "%{seconds}秒后可重新发送"
     common:
       confirm_not_match: "两次输入的%{field}不一致"

@@ -40,7 +40,7 @@ const Page: React.FC = () => {
     const result = data.userCreate
     mutationResultHandler(result, ()=>{
       if (result.redirectPath && result.isUserActive){
-        message.success(t('sessions.sign_in_successful'))
+        message.success(t('devise.registrations.signed_up'))
         globalThis.location.href = result.redirectPath
       } else{
         showConfirmationEmailTips()

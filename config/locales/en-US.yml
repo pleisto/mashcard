@@ -10,7 +10,23 @@ en-US:
   chrome_link: https://www.google.com/chrome/
   firefox_link: https://www.mozilla.org/en-US/firefox/new/
   activerecord:
+    attributes:
+      doorkeeper/application:
+        name: 'Name'
+        redirect_uri: 'Redirect URI'
     errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'cannot contain a fragment.'
+              invalid_uri: 'must be a valid URI.'
+              unspecified_scheme: 'must specify a scheme.'
+              relative_uri: 'must be an absolute URI.'
+              secured_uri: 'must be an HTTPS/SSL URI.'
+              forbidden_uri: 'is forbidden by the server.'
+            scopes:
+              not_match_configured: "doesn't match configured on the server."
       messages:
         record_invalid: 'Validation failed: %{errors}'
         restrict_dependent_destroy:
@@ -71,19 +87,43 @@ en-US:
       - :year
   datetime:
     distance_in_words:
-      about_x_hours: 大约 %{count} 小时
-      about_x_months: 大约 %{count} 个月
-      about_x_years: 大约 %{count} 年
-      almost_x_years: 接近 %{count} 年
-      half_a_minute: half a minute
-      less_than_x_seconds: 不到 %{count} 秒
-      less_than_x_minutes: 不到 %{count} 分钟
-      over_x_years: "%{count} 年多"
-      x_seconds: "%{count} 秒"
-      x_minutes: "%{count} 分钟"
-      x_days: "%{count} 天"
-      x_months: "%{count} 个月"
-      x_years: "%{count} 年"
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+        about_x_months:
+          one: about 1 month
+          other: about %{count} months
+        about_x_years:
+          one: about 1 year
+          other: about %{count} years
+        almost_x_years:
+          one: almost 1 year
+          other: almost %{count} years
+        half_a_minute: half a minute
+        less_than_x_seconds:
+          one: less than 1 second
+          other: less than %{count} seconds
+        less_than_x_minutes:
+          one: less than a minute
+          other: less than %{count} minutes
+        over_x_years:
+          one: over 1 year
+          other: over %{count} years
+        x_seconds:
+          one: 1 second
+          other: "%{count} seconds"
+        x_minutes:
+          one: 1 minute
+          other: "%{count} minutes"
+        x_days:
+          one: 1 day
+          other: "%{count} days"
+        x_months:
+          one: 1 month
+          other: "%{count} months"
+        x_years:
+          one: 1 year
+          other: "%{count} years"
     prompts:
       second: Second
       minute: Minute
@@ -102,8 +142,8 @@ en-US:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
-      is_not_valid_webid: "WebID「%{webid}」不符合命名规则或已被注册"
-      send_interval: 发送间隔过短，请一分钟后再试
+      is_not_valid_webid: "WebID \"%{webid}\" is not available"
+      send_interval: Sending interval is too short, please try again after 1 minute
       accepted: must be accepted
       blank: can't be blank
       confirmation: doesn't match %{attribute}
@@ -125,12 +165,20 @@ en-US:
       present: must be blank
       required: must exist
       taken: has already been taken
-      too_long: 过长（最长为 %{count} 个字符）
-      too_short: 过短（最短为 %{count} 个字符）
-      wrong_length: 长度非法（必须为 %{count} 个字符）
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+        too_short:
+          one: is too short (minimum is 1 character)
+          other: is too short (minimum is %{count} characters)
+        wrong_length:
+          one: is the wrong length (should be 1 character)
+          other: is the wrong length (should be %{count} characters)
     template:
       body: 'There were problems with the following fields:'
-      header: 有 %{count} 个错误发生导致“%{model}”无法被保存。
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
     select:
       prompt: Please select
@@ -172,7 +220,9 @@ en-US:
       storage_units:
         format: "%n %u"
         units:
-          byte: 字节
+          byte:
+            one: Byte
+            other: Bytes
           eb: EB
           gb: GB
           kb: KB
@@ -200,9 +250,9 @@ en-US:
     pm: pm
   devise:
     confirmations:
-      send_instructions: 稍后，您将收到帐号激活的电子邮件。
-      send_paranoid_instructions: 如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份确认账号的邮件。
-      confirmed: 您的帐号已经激活，请登录。
+      confirmed: "Your email address has been successfully confirmed."
+      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
@@ -224,17 +274,38 @@ en-US:
       updated_not_active: Your password has been changed successfully.
     registrations:
       destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
-      signed_up: Welcome! You have signed up successfully.
+      signed_up: You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
       signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
       update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
       updated: Your account has been updated successfully.
     unlock_instructions:
-      send_instructions: 稍后，您将收到一封帐号解锁的邮件。
-      send_paranoid_instructions: 如果你已有账号，你将会收到一封用于解锁的邮件。
-      unlocked: 您的帐号已成功解锁，请登录。
+      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock instructions"
+      email_changed:
+        subject: "Email Changed"
+      password_change:
+        subject: "Password Changed"
+    sessions:
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+      already_signed_out: "Signed out successfully."
   doorkeeper:
+    scopes:
+      openid: 'Authenticate your account'
+      profile: 'View your profile information'
+      email: 'View your email address'
+      address: 'View your physical address'
+      phone: 'View your phone number'
     applications:
       confirmations:
         destroy: 'Are you sure?'
@@ -297,8 +368,22 @@ en-US:
         date_format: "%Y-%m-%d %H:%M:%S"
     pre_authorization:
       status: 'Pre-authorization'
+    openid_connect:
+      errors:
+        messages:
+          # Configuration error messages
+          resource_owner_from_access_token_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.resource_owner_from_access_token missing configuration.'
+          auth_time_from_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.auth_time_from_resource_owner missing configuration.'
+          reauthenticate_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner missing configuration.'
+          select_account_for_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.select_account_for_resource_owner missing configuration.'
+          subject_not_configured: 'ID Token generation failed due to Doorkeeper::OpenidConnect.configure.subject missing configuration.'
     errors:
       messages:
+        # doorkeeper oidc
+        login_required: 'The authorization server requires end-user authentication'
+        consent_required: 'The authorization server requires end-user consent'
+        interaction_required: 'The authorization server requires end-user interaction'
+        account_selection_required: 'The authorization server requires end-user account selection'
         #Common error messages
         invalid_request:
           unknown: 'The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.'
@@ -356,7 +441,6 @@ en-US:
       sign_in: Sign In
       sign_up: Sign Up
       sign_in_to_brickdoc: Sign in to Brickdoc
-      sign_in_successful: 登录成功
       more_login_options: More Login Options
       login_via: "Sign In with %{provider}"
       email: Email
@@ -364,7 +448,7 @@ en-US:
       remember_me: Remember me
       sign_up_with_email: Sign Up
       resend_unconfirmed_mail: 重发激活邮件
-      confirmation_email_required_heading: 只差一步即可完成注册
+      confirmation_email_required_heading: Almost done
       forget_password: Forget Password
       confirm_password: Confirm Password
       sign_up_via: "Sign Up with %{provider}"
@@ -372,8 +456,6 @@ en-US:
       webid: "WebID"
       webid_description: "Similar to a username, only alphabet and numbers are allowed"
       agree_to_agreement: "Sign Up indicate you agree to our <0>User Agreement</0>."
-      confirmation_email_required: An email has been sent with a link to activate your account.
-      email_resend_successful: The email was sent successfully.
       resend_after: "Resendable after %{seconds} seconds"
     common:
       confirm_not_match: "%{field} and confirm field do not match"
