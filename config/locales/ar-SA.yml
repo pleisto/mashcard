@@ -511,7 +511,7 @@ ar-SA:
       password: كلمة المرور
       remember_me: تذكّرني
       sign_up_with_email: التسجيل
-      resend_confirmed_email: أعد إرسال بريد التأكيد الإلكتروني
+      resend_confirmed_email: اعادة ارسال بريد التأكيد
       confirmation_email_required_heading: يكاد ينتهي
       forget_password: نسيت كلمة المرور ؟
       confirm_password: تأكيد كلمة المرور
@@ -522,4 +522,4 @@ ar-SA:
       agree_to_agreement: "سجل الدخول إلى أنك توافق على <0>اتفاقية المستخدم الخاصة بنا.</0>"
       resend_after: "قابلة لإعادة الإرسال بعد %{seconds} ثانية"
     common:
-      confirm_not_match: "%{field} الحقل وتأكيده غير متطابقين"
+      confirm_not_match: "%{field} والتأكيد %{field} غير متطابقين"

@@ -431,7 +431,7 @@ ja-JP:
       password: パスワード
       remember_me: ログイン状態を保存する
       sign_up_with_email: サインアップ
-      resend_confirmed_email: 確認用メールの再送信
+      resend_confirmed_email: 確認メールを再送信
       confirmation_email_required_heading: もう少しです
       forget_password: パスワードを忘れましたか
       confirm_password: パスワードを再入力してください。
@@ -442,4 +442,4 @@ ja-JP:
       agree_to_agreement: "サインアップは、お客様が当社の <0>ユーザー契約</0>に同意することを示します。"
       resend_after: "%{seconds} 秒後に再送信可能"
     common:
-      confirm_not_match: "%{field}と確認の欄が一致しない\n"
+      confirm_not_match: "%{field}と確認%{field}が一致しない\n"

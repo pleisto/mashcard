@@ -447,7 +447,7 @@ io-EN:
       password: crwdns1142:0crwdne1142:0
       remember_me: crwdns1144:0crwdne1144:0
       sign_up_with_email: crwdns1146:0crwdne1146:0
-      resend_confirmed_email: crwdns1148:0crwdne1148:0
+      resend_confirmed_email: crwdns1170:0crwdne1170:0
       confirmation_email_required_heading: crwdns1150:0crwdne1150:0
       forget_password: crwdns1152:0crwdne1152:0
       confirm_password: crwdns1154:0crwdne1154:0
@@ -458,4 +458,4 @@ io-EN:
       agree_to_agreement: "crwdns1164:0crwdne1164:0"
       resend_after: "crwdns1166:0%{seconds}crwdne1166:0"
     common:
-      confirm_not_match: "crwdns1168:0%{field}crwdne1168:0"
+      confirm_not_match: "crwdns1172:0%{field}crwdnd1172:0%{field}crwdne1172:0"

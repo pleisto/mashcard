@@ -431,7 +431,7 @@ zh-TW:
       password: 密碼
       remember_me: 記住賬號
       sign_up_with_email: 註冊賬號
-      resend_confirmed_email: 重發郵件激活
+      resend_confirmed_email: 重新發送確認電郵
       confirmation_email_required_heading: 僅差一步完成註冊
       forget_password: 找回密碼
       confirm_password: 確認密碼
@@ -442,4 +442,4 @@ zh-TW:
       agree_to_agreement: "註冊即表示您已閱讀並同意我們的<0>《用戶協議》</0>"
       resend_after: "%{seconds}秒後可重新發送"
     common:
-      confirm_not_match: "兩次輸入的%{field}不一致"
+      confirm_not_match: "%{field}和確認%{field}不匹配"
