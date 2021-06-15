@@ -511,7 +511,7 @@ ar-SA:
       password: كلمة المرور
       remember_me: تذكّرني
       sign_up_with_email: التسجيل
-      resend_unconfirmed_mail: أعد إرسال بريد التأكيد الإلكتروني
+      resend_confirmed_email: أعد إرسال بريد التأكيد الإلكتروني
       confirmation_email_required_heading: يكاد ينتهي
       forget_password: نسيت كلمة المرور ؟
       confirm_password: تأكيد كلمة المرور

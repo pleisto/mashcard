@@ -431,7 +431,7 @@ zh-CN:
       password: 密码
       remember_me: 记住我
       sign_up_with_email: 注册账号
-      resend_unconfirmed_mail: 重发激活邮件
+      resend_confirmed_email: 重发激活邮件
       confirmation_email_required_heading: 只差一步即可完成注册
       forget_password: 找回密码
       confirm_password: 确认密码

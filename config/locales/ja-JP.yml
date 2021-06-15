@@ -431,7 +431,7 @@ ja-JP:
       password: パスワード
       remember_me: ログイン状態を保存する
       sign_up_with_email: サインアップ
-      resend_unconfirmed_mail: 確認用メールの再送信
+      resend_confirmed_email: 確認用メールの再送信
       confirmation_email_required_heading: もう少しです
       forget_password: パスワードを忘れましたか
       confirm_password: パスワードを再入力してください。

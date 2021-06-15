@@ -431,7 +431,7 @@ zh-TW:
       password: 密碼
       remember_me: 記住賬號
       sign_up_with_email: 註冊賬號
-      resend_unconfirmed_mail: 重發郵件激活
+      resend_confirmed_email: 重發郵件激活
       confirmation_email_required_heading: 僅差一步完成註冊
       forget_password: 找回密碼
       confirm_password: 確認密碼

@@ -26,7 +26,7 @@ const ConfirmationEmailTips: React.FC<{email?: string}> = ({ email }) => {
     <h1>{t('sessions.confirmation_email_required_heading')}</h1>
     <p>{t('devise.registrations.signed_up_but_unconfirmed')}</p>
     <Button loading={loading} onClick={onClick} disabled={(countdown !== 0)}>
-      {(countdown === 0)? t('sessions.resend_unconfirmed_mail'):
+      {(countdown === 0)? t('sessions.resend_confirmed_email'):
         t('sessions.resend_after',{ seconds: millisecondsToSeconds(countdown) }) }
     </Button>
   </div>)

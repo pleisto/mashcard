@@ -447,7 +447,7 @@ en-US:
       password: Password
       remember_me: Remember me
       sign_up_with_email: Sign Up
-      resend_unconfirmed_mail: 重发激活邮件
+      resend_confirmed_email: Resend Confirmation Email
       confirmation_email_required_heading: Almost done
       forget_password: Forget Password
       confirm_password: Confirm Password
@@ -458,4 +458,4 @@ en-US:
       agree_to_agreement: "Sign Up indicate you agree to our <0>User Agreement</0>."
       resend_after: "Resendable after %{seconds} seconds"
     common:
-      confirm_not_match: "%{field} and confirm field do not match"
+      confirm_not_match: "%{field} and confirm %{field} do not match"
