@@ -1,0 +1,380 @@
+en-GB:
+  meta:
+    lang: zh-Hans
+    dir: ltr
+    noscript: 抱歉积木文档需在开启浏览器的 Javascript 功能后方可正常工作，请访问 %{url} 以了解详情。
+    noscript_url: https://zh.wikihow.com/%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E5%90%AF%E7%94%A8-JavaScript
+  'Your browser is out of date': 您的浏览器内核版本过旧
+  download_latest_browser_html: 请升级您的浏览器至最新版本或使用下述之推荐浏览器访问 Brickodc： <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">360极速浏览器</a>, <a href="%{firefox}" rel="nofollow">Firefox</a>
+  edge_link: https://www.microsoft.com/zh-cn/edge
+  chrome_link: https://browser.360.cn/ee/
+  firefox_link: https://www.mozilla.org/zh-CN/firefox/
+  activerecord:
+    errors:
+      messages:
+        record_invalid: '验证失败: %{errors}'
+        restrict_dependent_destroy:
+          has_one: 由于 %{record} 需要此记录，所以无法移除记录
+          has_many: 由于 %{record} 需要此记录，所以无法移除记录
+  date:
+    abbr_day_names:
+      - 周日
+      - 周一
+      - 周二
+      - 周三
+      - 周四
+      - 周五
+      - 周六
+    abbr_month_names:
+      -
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
+    day_names:
+      - 星期日
+      - 星期一
+      - 星期二
+      - 星期三
+      - 星期四
+      - 星期五
+      - 星期六
+    formats:
+      default: "%Y-%m-%d"
+      long: "%Y年%m月%d日"
+      short: "%m月%d日"
+    month_names:
+      -
+      - 一月
+      - 二月
+      - 三月
+      - 四月
+      - 五月
+      - 六月
+      - 七月
+      - 八月
+      - 九月
+      - 十月
+      - 十一月
+      - 十二月
+    order:
+      - :year
+      - :month
+      - :day
+  datetime:
+    distance_in_words:
+      about_x_hours: 大约 %{count} 小时
+      about_x_months: 大约 %{count} 个月
+      about_x_years: 大约 %{count} 年
+      almost_x_years: 接近 %{count} 年
+      half_a_minute: 半分钟
+      less_than_x_seconds: 不到 %{count} 秒
+      less_than_x_minutes: 不到 %{count} 分钟
+      over_x_years: "%{count} 年多"
+      x_seconds: "%{count} 秒"
+      x_minutes: "%{count} 分钟"
+      x_days: "%{count} 天"
+      x_months: "%{count} 个月"
+      x_years: "%{count} 年"
+    prompts:
+      second: 秒
+      minute: 分
+      hour: 时
+      day: 日
+      month: 月
+      year: 年
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      already_confirmed: 之前已经确认过，请尝试直接登录
+      confirmation_period_expired: 确认码已过期 %{period}，请重新申请
+      expired: 已过期，请重新申请
+      not_found: 未找到
+      not_locked: 对应的账号目前没有被锁定
+      not_saved:
+        one: '账号信息保存失败：'
+        other: "账号信息保存失败："
+      is_not_valid_webid: "WebID「%{webid}」不符合命名规则或已被注册"
+      send_interval: 发送间隔过短，请一分钟后再试
+      accepted: 必须是可被接受的
+      blank: 不能为空字符
+      confirmation: 与 %{attribute} 不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为双数
+      exclusion: 是保留关键字
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不包含于列表中
+      invalid: 是无效的
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      model_invalid: '验证失败: %{errors}'
+      not_a_number: 不是数字
+      not_an_integer: 必须是整数
+      odd: 必须为单数
+      other_than: 长度非法（不可为 %{count} 个字符
+      present: 必须是空白
+      required: 必须存在
+      taken: 已经被使用
+      too_long: 过长（最长为 %{count} 个字符）
+      too_short: 过短（最短为 %{count} 个字符）
+      wrong_length: 长度非法（必须为 %{count} 个字符）
+    template:
+      body: 如下字段出现错误：
+      header: 有 %{count} 个错误发生导致“%{model}”无法被保存。
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 新增%{model}
+      submit: 储存%{model}
+      update: 更新%{model}
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%u %n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: CN¥
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: 十亿
+          million: 百万
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte: 字节
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " 以及 "
+      two_words_connector: " 和 "
+      words_connector: "、"
+  time:
+    am: 上午
+    formats:
+      default: "%Y年%m月%d日 %A %H:%M:%S %Z"
+      long: "%Y年%m月%d日 %H:%M"
+      short: "%m月%d日 %H:%M"
+    pm: 下午
+  devise:
+    confirmations:
+      send_instructions: 稍后，您将收到帐号激活的电子邮件。
+      send_paranoid_instructions: 如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份确认账号的邮件。
+      confirmed: 您的帐号已经激活，请登录。
+    failure:
+      already_authenticated: 登录成功。
+      inactive: 您还没有激活帐户。
+      invalid: 帐号或密码错误。
+      locked: 由于多次密码错误，您的帐号已被暂时锁定，一小时后将自动解锁。
+      last_attempt: 你还有最后次尝试机会，如果依然不正确，账号将会暂时锁定。
+      not_found_in_database: 无效的 %{authentication_keys} 或密码不正确。
+      timeout: 您已登录超时，请重新登录。
+      unauthenticated: 继续操作前请注册或者登录。
+      unconfirmed: 请先进入邮箱，点击确认链接激活您的帐号才可使用。
+    omniauth_callbacks:
+      failure: 无法通过 %{kind} 登录，因为 "%{reason}"。
+      success: 成功通过 %{kind} 登录账号.
+    passwords:
+      no_token: 此页面必须通过找回密码链接打开，如果你是通过这种方式，请检查 URL 和邮件里面的 URL 是否一致。
+      send_instructions: 稍后，您将收到重置密码的电子邮件。
+      send_paranoid_instructions: 如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份恢复账号的邮件。
+      updated: 密码已修改成功。
+      updated_not_active: 密码修改成功。
+    registrations:
+      destroyed: 再见！你的账号已经成功注销。我们依然期待你再次回来使用。
+      signed_up: 欢迎！你的账号已经成功注册。
+      signed_up_but_inactive: 你已经成功注册账号。不过因为你的账号还未激活，所以暂时无法登录使用。
+      signed_up_but_locked: 你已经成功注册账号。不过因为你的账号已被锁定，无法登录。
+      signed_up_but_unconfirmed: 一封带有确认链接的邮件已经发送到了你的邮箱，请按照邮件内容的链接流程完成账号激活。
+      update_needs_confirmation: 你的账号更新成功，不过你必须验证新的邮件地址。请打开你的邮箱，找到我们发送的确认邮件并点击确认链接来完成确认。
+      updated: 你的账号更新成功。
+    unlock_instructions:
+      send_instructions: 稍后，您将收到一封帐号解锁的邮件。
+      send_paranoid_instructions: 如果你已有账号，你将会收到一封用于解锁的邮件。
+      unlocked: 您的帐号已成功解锁，请登录。
+  doorkeeper:
+    applications:
+      confirmations:
+        destroy: '确定要删除应用吗？'
+      buttons:
+        edit: '编辑'
+        destroy: '删除'
+        submit: '提交'
+        cancel: '取消'
+        authorize: '授权'
+      form:
+        error: '抱歉! 提交信息的时候遇到了下面的错误'
+      help:
+        confidential: '应用程序的client secret可以保密，但原生移动应用和单页应用将无法保护client secret。'
+        redirect_uri: '每行只能有一个 URI'
+        blank_redirect_uri: "Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI."
+        scopes: '用空格分割权限范围，留空则使用默认设置'
+      edit:
+        title: '修改应用'
+      index:
+        title: '你的应用'
+        new: '创建新应用'
+        name: '名称'
+        callback_url: '回调 URL'
+        actions: '动作'
+        confidential: 'Confidential?'
+        confidentiality:
+          'yes': '是'
+          'no': '沒有'
+      new:
+        title: '创建新应用'
+      show:
+        title: '应用：%{name}'
+        application_id: '应用 UID'
+        secret: '应用密钥'
+        scopes: '权限范围'
+        confidential: 'Confidential'
+        callback_urls: '回调 URL'
+        actions: '操作'
+    authorizations:
+      buttons:
+        authorize: '同意授权'
+        deny: '拒绝授权'
+      error:
+        title: '发生错误'
+      new:
+        title: '需要授权'
+        prompt: '授权 %{client_name} 使用你的帐户？'
+        able_to: '此应用将能够'
+      show:
+        title: '授权代码'
+    authorized_applications:
+      confirmations:
+        revoke: '确定要撤销对此应用的授权吗？'
+      buttons:
+        revoke: '撤销授权'
+      index:
+        title: '已授权的应用'
+        application: '应用'
+        created_at: '授权时间'
+        date_format: "%Y-%m-%d %H:%M:%S"
+    pre_authorization:
+      status: '预授权'
+    errors:
+      messages:
+        #Common error messages
+        invalid_request:
+          unknown: '请求缺少必要的参数，或者参数值、格式不正确。'
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: 'Request need to be authorized. Required parameter for authorizing request is missing or invalid.'
+        invalid_redirect_uri: '无效的登录回调地址。'
+        unauthorized_client: '未授权的应用，请求无法执行。'
+        access_denied: '资源所有者或服务器拒绝了请求。'
+        invalid_scope: '请求的权限范围无效、未知或格式不正确。'
+        invalid_code_challenge_method: 'The code challenge method must be plain or S256.'
+        server_error: '服务器异常，无法处理请求。'
+        temporarily_unavailable: '服务器维护中或负载过高，暂时无法处理请求。'
+        #Configuration error messages
+        credential_flow_not_configured: '由于 Doorkeeper.configure.resource_owner_from_credentials 尚未配置，应用验证授权流程失败。'
+        resource_owner_authenticator_not_configured: '由于 Doorkeeper.configure.resource_owner_authenticator 尚未配置，查找资源所有者失败。'
+        admin_authenticator_not_configured: '由于 Doorkeeper.configure.admin_authenticator 尚未配置，禁止访问管理员面板。'
+        #Access grant errors
+        unsupported_response_type: '服务器不支持这种响应类型。'
+        #Access token errors
+        invalid_client: '由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败。'
+        invalid_grant: '授权方式无效、过期或已被撤销、与授权请求中的回调地址不一致，或使用了其他应用的回调地址。'
+        unsupported_grant_type: '服务器不支持此类型的授权方式。'
+        invalid_token:
+          revoked: "访问令牌已被吊销"
+          expired: "访问令牌已过期"
+          unknown: "访问令牌无效"
+        revoke:
+          unauthorized: "You are not authorized to revoke this token"
+    flash:
+      applications:
+        create:
+          notice: '应用创建成功。'
+        destroy:
+          notice: '应用删除成功。'
+        update:
+          notice: '应用修改成功。'
+      authorized_applications:
+        destroy:
+          notice: '已成功撤销对此应用的授权。'
+    layouts:
+      admin:
+        title: 'Doorkeeper'
+        nav:
+          oauth2_provider: 'OAuth2 提供商'
+          applications: '应用'
+          home: '首页'
+      application:
+        title: '需要 OAuth 认证'
+  accounts:
+    app_title: Brickdoc 账号
+    provider:
+      github: Github
+      email_password: Email和密码
+    sessions:
+      sign_in: 登录
+      sign_up: 注册
+      sign_in_to_brickdoc: 登录 Brickdoc
+      sign_in_successful: 登录成功
+      more_login_options: 更多登录方式
+      login_via: "使用 %{provider} 登录"
+      email: Email
+      password: 密码
+      remember_me: 记住我
+      sign_up_with_email: 注册账号
+      resend_unconfirmed_mail: 重发激活邮件
+      confirmation_email_required_heading: 只差一步即可完成注册
+      forget_password: 找回密码
+      confirm_password: 确认密码
+      sign_up_via: "使用 %{provider} 注册"
+      name: "姓名"
+      webid: "WebID"
+      webid_description: "相当于您的用户名，仅允许包含英文字母和数字"
+      agree_to_agreement: "注册即表示您已阅读并同意我们的<0>《用户协议》</0>"
+      confirmation_email_required: 激活邮件已送发到您的邮箱，请查收邮件以完成账号激活。
+      email_resend_successful: 邮件发送成功，请注意查收。
+      resend_after: "%{seconds}秒后可重新发送"
+    common:
+      confirm_not_match: "两次输入的%{field}不一致"
+
