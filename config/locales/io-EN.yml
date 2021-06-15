@@ -1,0 +1,461 @@
+io-EN:
+  meta:
+    lang: crwdns556:0crwdne556:0
+    dir: crwdns558:0crwdne558:0
+    noscript: crwdns560:0%{url}crwdne560:0
+    noscript_url: crwdns562:0crwdne562:0
+  'Your browser is out of date': crwdns564:0crwdne564:0
+  download_latest_browser_html: crwdns566:0%{edge}crwdnd566:0%{chrome}crwdnd566:0%{firefox}crwdne566:0
+  edge_link: crwdns568:0crwdne568:0
+  chrome_link: crwdns570:0crwdne570:0
+  firefox_link: crwdns572:0crwdne572:0
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: 'crwdns574:0crwdne574:0'
+        redirect_uri: 'crwdns576:0crwdne576:0'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'crwdns578:0crwdne578:0'
+              invalid_uri: 'crwdns580:0crwdne580:0'
+              unspecified_scheme: 'crwdns582:0crwdne582:0'
+              relative_uri: 'crwdns584:0crwdne584:0'
+              secured_uri: 'crwdns586:0crwdne586:0'
+              forbidden_uri: 'crwdns588:0crwdne588:0'
+            scopes:
+              not_match_configured: "crwdns590:0crwdne590:0"
+      messages:
+        record_invalid: 'crwdns592:0%{errors}crwdne592:0'
+        restrict_dependent_destroy:
+          has_one: crwdns594:0%{record}crwdne594:0
+          has_many: crwdns596:0%{record}crwdne596:0
+  date:
+    abbr_day_names:
+      - crwdns598:0crwdne598:0
+      - crwdns600:0crwdne600:0
+      - crwdns602:0crwdne602:0
+      - crwdns604:0crwdne604:0
+      - crwdns606:0crwdne606:0
+      - crwdns608:0crwdne608:0
+      - crwdns610:0crwdne610:0
+    abbr_month_names:
+      -
+      - crwdns612:0crwdne612:0
+      - crwdns614:0crwdne614:0
+      - crwdns616:0crwdne616:0
+      - crwdns618:0crwdne618:0
+      - crwdns620:0crwdne620:0
+      - crwdns622:0crwdne622:0
+      - crwdns624:0crwdne624:0
+      - crwdns626:0crwdne626:0
+      - crwdns628:0crwdne628:0
+      - crwdns630:0crwdne630:0
+      - crwdns632:0crwdne632:0
+      - crwdns634:0crwdne634:0
+    day_names:
+      - crwdns636:0crwdne636:0
+      - crwdns638:0crwdne638:0
+      - crwdns640:0crwdne640:0
+      - crwdns642:0crwdne642:0
+      - crwdns644:0crwdne644:0
+      - crwdns646:0crwdne646:0
+      - crwdns648:0crwdne648:0
+    formats:
+      default: "crwdns650:0%mcrwdnd650:0%dcrwdnd650:0%Ycrwdne650:0"
+      long: "crwdns652:0%Bcrwdnd652:0%dcrwdnd652:0%Ycrwdne652:0"
+      short: "crwdns654:0%bcrwdnd654:0%dcrwdne654:0"
+    month_names:
+      -
+      - crwdns656:0crwdne656:0
+      - crwdns658:0crwdne658:0
+      - crwdns660:0crwdne660:0
+      - crwdns662:0crwdne662:0
+      - crwdns664:0crwdne664:0
+      - crwdns666:0crwdne666:0
+      - crwdns668:0crwdne668:0
+      - crwdns670:0crwdne670:0
+      - crwdns672:0crwdne672:0
+      - crwdns674:0crwdne674:0
+      - crwdns676:0crwdne676:0
+      - crwdns678:0crwdne678:0
+    order:
+      - crwdns680:0crwdne680:0
+      - crwdns682:0crwdne682:0
+      - crwdns684:0crwdne684:0
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: crwdns686:0crwdne686:0
+        other: crwdns688:0%{count}crwdne688:0
+        about_x_months:
+          one: crwdns690:1crwdne690:1
+          other: crwdns690:5%{count}crwdne690:5
+        about_x_years:
+          one: crwdns692:1crwdne692:1
+          other: crwdns692:5%{count}crwdne692:5
+        almost_x_years:
+          one: crwdns694:1crwdne694:1
+          other: crwdns694:5%{count}crwdne694:5
+        half_a_minute: crwdns696:0crwdne696:0
+        less_than_x_seconds:
+          one: crwdns698:1crwdne698:1
+          other: crwdns698:5%{count}crwdne698:5
+        less_than_x_minutes:
+          one: crwdns700:1crwdne700:1
+          other: crwdns700:5%{count}crwdne700:5
+        over_x_years:
+          one: crwdns702:1crwdne702:1
+          other: crwdns702:5%{count}crwdne702:5
+        x_seconds:
+          one: crwdns704:1crwdne704:1
+          other: "crwdns704:5%{count}crwdne704:5"
+        x_minutes:
+          one: crwdns706:1crwdne706:1
+          other: "crwdns706:5%{count}crwdne706:5"
+        x_days:
+          one: crwdns708:1crwdne708:1
+          other: "crwdns708:5%{count}crwdne708:5"
+        x_months:
+          one: crwdns710:1crwdne710:1
+          other: "crwdns710:5%{count}crwdne710:5"
+        x_years:
+          one: crwdns712:1crwdne712:1
+          other: "crwdns712:5%{count}crwdne712:5"
+    prompts:
+      second: crwdns714:0crwdne714:0
+      minute: crwdns716:0crwdne716:0
+      hour: crwdns718:0crwdne718:0
+      day: crwdns720:0crwdne720:0
+      month: crwdns722:0crwdne722:0
+      year: crwdns724:0crwdne724:0
+  errors:
+    format: "crwdns726:0%{attribute}crwdnd726:0%{message}crwdne726:0"
+    messages:
+      already_confirmed: crwdns728:0crwdne728:0
+      confirmation_period_expired: crwdns730:0%{period}crwdne730:0
+      expired: crwdns732:0crwdne732:0
+      not_found: crwdns734:0crwdne734:0
+      not_locked: crwdns736:0crwdne736:0
+      not_saved:
+        one: 'crwdns738:1%{resource}crwdne738:1'
+        other: "crwdns738:5%{count}crwdnd738:5%{resource}crwdne738:5"
+      is_not_valid_webid: "crwdns740:0%{webid}crwdne740:0"
+      send_interval: crwdns742:0crwdne742:0
+      accepted: crwdns744:0crwdne744:0
+      blank: crwdns746:0crwdne746:0
+      confirmation: crwdns748:0%{attribute}crwdne748:0
+      empty: crwdns750:0crwdne750:0
+      equal_to: crwdns752:0%{count}crwdne752:0
+      even: crwdns754:0crwdne754:0
+      exclusion: crwdns756:0crwdne756:0
+      greater_than: crwdns758:0%{count}crwdne758:0
+      greater_than_or_equal_to: crwdns760:0%{count}crwdne760:0
+      inclusion: crwdns762:0crwdne762:0
+      invalid: crwdns764:0crwdne764:0
+      less_than: crwdns766:0%{count}crwdne766:0
+      less_than_or_equal_to: crwdns768:0%{count}crwdne768:0
+      model_invalid: 'crwdns770:0%{errors}crwdne770:0'
+      not_a_number: crwdns772:0crwdne772:0
+      not_an_integer: crwdns774:0crwdne774:0
+      odd: crwdns776:0crwdne776:0
+      other_than: crwdns778:0%{count}crwdne778:0
+      present: crwdns780:0crwdne780:0
+      required: crwdns782:0crwdne782:0
+      taken: crwdns784:0crwdne784:0
+      too_long:
+        one: crwdns786:0crwdne786:0
+        other: crwdns788:0%{count}crwdne788:0
+        too_short:
+          one: crwdns790:1crwdne790:1
+          other: crwdns790:5%{count}crwdne790:5
+        wrong_length:
+          one: crwdns792:1crwdne792:1
+          other: crwdns792:5%{count}crwdne792:5
+    template:
+      body: 'crwdns794:0crwdne794:0'
+      header:
+        one: crwdns796:1%{model}crwdne796:1
+        other: "crwdns796:5%{count}crwdnd796:5%{model}crwdne796:5"
+  helpers:
+    select:
+      prompt: crwdns798:0crwdne798:0
+    submit:
+      create: crwdns800:0%{model}crwdne800:0
+      submit: crwdns802:0%{model}crwdne802:0
+      update: crwdns804:0%{model}crwdne804:0
+  number:
+    currency:
+      format:
+        delimiter: "crwdns806:0crwdne806:0"
+        format: "crwdns808:0%ucrwdnd808:0%ncrwdne808:0"
+        precision: 0
+        separator: "crwdns812:0crwdne812:0"
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 'crwdns814:0crwdne814:0'
+    format:
+      delimiter: "crwdns816:0crwdne816:0"
+      precision: 0
+      separator: "crwdns820:0crwdne820:0"
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "crwdns822:0%ncrwdnd822:0%ucrwdne822:0"
+        units:
+          billion: crwdns824:0crwdne824:0
+          million: crwdns826:0crwdne826:0
+          quadrillion: crwdns828:0crwdne828:0
+          thousand: crwdns830:0crwdne830:0
+          trillion: crwdns832:0crwdne832:0
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 0
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "crwdns840:0%ncrwdnd840:0%ucrwdne840:0"
+        units:
+          byte:
+            one: crwdns842:1crwdne842:1
+            other: crwdns842:5crwdne842:5
+          eb: crwdns844:0crwdne844:0
+          gb: crwdns846:0crwdne846:0
+          kb: crwdns848:0crwdne848:0
+          mb: crwdns850:0crwdne850:0
+          pb: crwdns852:0crwdne852:0
+          tb: crwdns854:0crwdne854:0
+    percentage:
+      format:
+        delimiter: ''
+        format: "crwdns858:0%ncrwdne858:0"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: "crwdns862:0crwdne862:0"
+      two_words_connector: "crwdns864:0crwdne864:0"
+      words_connector: "crwdns866:0crwdne866:0"
+  time:
+    am: crwdns868:0crwdne868:0
+    formats:
+      default: "crwdns870:0%acrwdnd870:0%dcrwdnd870:0%bcrwdnd870:0%Y %Icrwdnd870:0%Mcrwdnd870:0%Scrwdnd870:0%pcrwdnd870:0%Zcrwdne870:0"
+      long: "crwdns872:0%Bcrwdnd872:0%dcrwdnd872:0%Y %Icrwdnd872:0%Mcrwdnd872:0%pcrwdne872:0"
+      short: "crwdns874:0%dcrwdnd874:0%bcrwdnd874:0%I:%Mcrwdnd874:0%pcrwdne874:0"
+    pm: crwdns876:0crwdne876:0
+  devise:
+    confirmations:
+      confirmed: "crwdns878:0crwdne878:0"
+      send_instructions: "crwdns880:0crwdne880:0"
+      send_paranoid_instructions: "crwdns882:0crwdne882:0"
+    failure:
+      already_authenticated: crwdns884:0crwdne884:0
+      inactive: crwdns886:0crwdne886:0
+      invalid: crwdns888:0%{authentication_keys}crwdne888:0
+      locked: crwdns890:0crwdne890:0
+      last_attempt: crwdns892:0crwdne892:0
+      not_found_in_database: crwdns894:0%{authentication_keys}crwdne894:0
+      timeout: crwdns896:0crwdne896:0
+      unauthenticated: crwdns898:0crwdne898:0
+      unconfirmed: crwdns900:0crwdne900:0
+    omniauth_callbacks:
+      failure: crwdns902:0%{kind}crwdnd902:0%{reason}crwdne902:0
+      success: crwdns904:0%{kind}crwdne904:0
+    passwords:
+      no_token: crwdns906:0crwdne906:0
+      send_instructions: crwdns908:0crwdne908:0
+      send_paranoid_instructions: crwdns910:0crwdne910:0
+      updated: crwdns912:0crwdne912:0
+      updated_not_active: crwdns914:0crwdne914:0
+    registrations:
+      destroyed: crwdns916:0crwdne916:0
+      signed_up: crwdns918:0crwdne918:0
+      signed_up_but_inactive: crwdns920:0crwdne920:0
+      signed_up_but_locked: crwdns922:0crwdne922:0
+      signed_up_but_unconfirmed: crwdns924:0crwdne924:0
+      update_needs_confirmation: crwdns926:0crwdne926:0
+      updated: crwdns928:0crwdne928:0
+    unlock_instructions:
+      send_instructions: "crwdns930:0crwdne930:0"
+      send_paranoid_instructions: "crwdns932:0crwdne932:0"
+      unlocked: "crwdns934:0crwdne934:0"
+    mailer:
+      confirmation_instructions:
+        subject: "crwdns936:0crwdne936:0"
+      reset_password_instructions:
+        subject: "crwdns938:0crwdne938:0"
+      unlock_instructions:
+        subject: "crwdns940:0crwdne940:0"
+      email_changed:
+        subject: "crwdns942:0crwdne942:0"
+      password_change:
+        subject: "crwdns944:0crwdne944:0"
+    sessions:
+      signed_in: "crwdns946:0crwdne946:0"
+      signed_out: "crwdns948:0crwdne948:0"
+      already_signed_out: "crwdns950:0crwdne950:0"
+  doorkeeper:
+    scopes:
+      openid: 'crwdns952:0crwdne952:0'
+      profile: 'crwdns954:0crwdne954:0'
+      email: 'crwdns956:0crwdne956:0'
+      address: 'crwdns958:0crwdne958:0'
+      phone: 'crwdns960:0crwdne960:0'
+    applications:
+      confirmations:
+        destroy: 'crwdns962:0crwdne962:0'
+      buttons:
+        edit: 'crwdns964:0crwdne964:0'
+        destroy: 'crwdns966:0crwdne966:0'
+        submit: 'crwdns968:0crwdne968:0'
+        cancel: 'crwdns970:0crwdne970:0'
+        authorize: 'crwdns972:0crwdne972:0'
+      form:
+        error: 'crwdns974:0crwdne974:0'
+      help:
+        confidential: 'crwdns976:0crwdne976:0'
+        redirect_uri: 'crwdns978:0crwdne978:0'
+        blank_redirect_uri: "crwdns980:0crwdne980:0"
+        scopes: 'crwdns982:0crwdne982:0'
+      edit:
+        title: 'crwdns984:0crwdne984:0'
+      index:
+        title: 'crwdns986:0crwdne986:0'
+        new: 'crwdns988:0crwdne988:0'
+        name: 'crwdns990:0crwdne990:0'
+        callback_url: 'crwdns992:0crwdne992:0'
+        actions: 'crwdns994:0crwdne994:0'
+        confidential: 'crwdns996:0crwdne996:0'
+        confidentiality:
+          'yes': 'crwdns998:0crwdne998:0'
+          'no': 'crwdns1000:0crwdne1000:0'
+      new:
+        title: 'crwdns1002:0crwdne1002:0'
+      show:
+        title: 'crwdns1004:0%{name}crwdne1004:0'
+        application_id: 'crwdns1006:0crwdne1006:0'
+        secret: 'crwdns1008:0crwdne1008:0'
+        scopes: 'crwdns1010:0crwdne1010:0'
+        confidential: 'crwdns1012:0crwdne1012:0'
+        callback_urls: 'crwdns1014:0crwdne1014:0'
+        actions: 'crwdns1016:0crwdne1016:0'
+    authorizations:
+      buttons:
+        authorize: 'crwdns1018:0crwdne1018:0'
+        deny: 'crwdns1020:0crwdne1020:0'
+      error:
+        title: 'crwdns1022:0crwdne1022:0'
+      new:
+        title: 'crwdns1024:0crwdne1024:0'
+        prompt: 'crwdns1026:0%{client_name}crwdne1026:0'
+        able_to: 'crwdns1028:0crwdne1028:0'
+      show:
+        title: 'crwdns1030:0crwdne1030:0'
+    authorized_applications:
+      confirmations:
+        revoke: 'crwdns1032:0crwdne1032:0'
+      buttons:
+        revoke: 'crwdns1034:0crwdne1034:0'
+      index:
+        title: 'crwdns1036:0crwdne1036:0'
+        application: 'crwdns1038:0crwdne1038:0'
+        created_at: 'crwdns1040:0crwdne1040:0'
+        date_format: "crwdns1042:0%Y-%m-%dcrwdnd1042:0%H:%M:%Scrwdne1042:0"
+    pre_authorization:
+      status: 'crwdns1044:0crwdne1044:0'
+    openid_connect:
+      errors:
+        messages:
+          #Configuration error messages
+          resource_owner_from_access_token_not_configured: 'crwdns1046:0crwdne1046:0'
+          auth_time_from_resource_owner_not_configured: 'crwdns1048:0crwdne1048:0'
+          reauthenticate_resource_owner_not_configured: 'crwdns1050:0crwdne1050:0'
+          select_account_for_resource_owner_not_configured: 'crwdns1052:0crwdne1052:0'
+          subject_not_configured: 'crwdns1054:0crwdne1054:0'
+    errors:
+      messages:
+        #doorkeeper oidc
+        login_required: 'crwdns1056:0crwdne1056:0'
+        consent_required: 'crwdns1058:0crwdne1058:0'
+        interaction_required: 'crwdns1060:0crwdne1060:0'
+        account_selection_required: 'crwdns1062:0crwdne1062:0'
+        #Common error messages
+        invalid_request:
+          unknown: 'crwdns1064:0crwdne1064:0'
+          missing_param: 'crwdns1066:0%{value}crwdne1066:0'
+          request_not_authorized: 'crwdns1068:0crwdne1068:0'
+        invalid_redirect_uri: 'crwdns1070:0crwdne1070:0'
+        unauthorized_client: 'crwdns1072:0crwdne1072:0'
+        access_denied: 'crwdns1074:0crwdne1074:0'
+        invalid_scope: 'crwdns1076:0crwdne1076:0'
+        invalid_code_challenge_method: 'crwdns1078:0crwdne1078:0'
+        server_error: 'crwdns1080:0crwdne1080:0'
+        temporarily_unavailable: 'crwdns1082:0crwdne1082:0'
+        #Configuration error messages
+        credential_flow_not_configured: 'crwdns1084:0crwdne1084:0'
+        resource_owner_authenticator_not_configured: 'crwdns1086:0crwdne1086:0'
+        admin_authenticator_not_configured: 'crwdns1088:0crwdne1088:0'
+        #Access grant errors
+        unsupported_response_type: 'crwdns1090:0crwdne1090:0'
+        #Access token errors
+        invalid_client: 'crwdns1092:0crwdne1092:0'
+        invalid_grant: 'crwdns1094:0crwdne1094:0'
+        unsupported_grant_type: 'crwdns1096:0crwdne1096:0'
+        invalid_token:
+          revoked: "crwdns1098:0crwdne1098:0"
+          expired: "crwdns1100:0crwdne1100:0"
+          unknown: "crwdns1102:0crwdne1102:0"
+        revoke:
+          unauthorized: "crwdns1104:0crwdne1104:0"
+    flash:
+      applications:
+        create:
+          notice: 'crwdns1106:0crwdne1106:0'
+        destroy:
+          notice: 'crwdns1108:0crwdne1108:0'
+        update:
+          notice: 'crwdns1110:0crwdne1110:0'
+      authorized_applications:
+        destroy:
+          notice: 'crwdns1112:0crwdne1112:0'
+    layouts:
+      admin:
+        title: 'crwdns1114:0crwdne1114:0'
+        nav:
+          oauth2_provider: 'crwdns1116:0crwdne1116:0'
+          applications: 'crwdns1118:0crwdne1118:0'
+          home: 'crwdns1120:0crwdne1120:0'
+      application:
+        title: 'crwdns1122:0crwdne1122:0'
+  accounts:
+    app_title: crwdns1124:0crwdne1124:0
+    provider:
+      github: crwdns1126:0crwdne1126:0
+      email_password: crwdns1128:0crwdne1128:0
+    sessions:
+      sign_in: crwdns1130:0crwdne1130:0
+      sign_up: crwdns1132:0crwdne1132:0
+      sign_in_to_brickdoc: crwdns1134:0crwdne1134:0
+      more_login_options: crwdns1136:0crwdne1136:0
+      login_via: "crwdns1138:0%{provider}crwdne1138:0"
+      email: crwdns1140:0crwdne1140:0
+      password: crwdns1142:0crwdne1142:0
+      remember_me: crwdns1144:0crwdne1144:0
+      sign_up_with_email: crwdns1146:0crwdne1146:0
+      resend_unconfirmed_mail: crwdns1148:0crwdne1148:0
+      confirmation_email_required_heading: crwdns1150:0crwdne1150:0
+      forget_password: crwdns1152:0crwdne1152:0
+      confirm_password: crwdns1154:0crwdne1154:0
+      sign_up_via: "crwdns1156:0%{provider}crwdne1156:0"
+      name: "crwdns1158:0crwdne1158:0"
+      webid: "crwdns1160:0crwdne1160:0"
+      webid_description: "crwdns1162:0crwdne1162:0"
+      agree_to_agreement: "crwdns1164:0crwdne1164:0"
+      resend_after: "crwdns1166:0%{seconds}crwdne1166:0"
+    common:
+      confirm_not_match: "crwdns1168:0%{field}crwdne1168:0"

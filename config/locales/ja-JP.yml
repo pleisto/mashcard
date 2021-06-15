@@ -1,0 +1,445 @@
+ja-JP:
+  meta:
+    lang: jp-JP
+    dir: ltr
+    noscript: 申し訳ありませんが、JavaScriptが有効になっていないとBrickdocは正常に動作しません。詳細については、 %{url} をご覧ください。
+    noscript_url: https://www.enable-javascript.com/ja/
+  'Your browser is out of date': お使いのブラウザは古くなっています
+  download_latest_browser_html: Brickdocを使い続けるには、 <a href="%{edge}" rel="nofollow">Microsoft Edge</a>、 <a href="%{chrome}" rel="nofollow">Chrome</a> または <a href="%{firefox}" rel="nofollow">Firefox</a> の最新バージョンをダウンロードしてください。
+  edge_link: https://www.microsoft.com/ja-jp/edge
+  chrome_link: https://www.google.com/chrome/
+  firefox_link: https://www.mozilla.org/ja/firefox/new/
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: '名前'
+        redirect_uri: 'リダイレクトURI'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'はURLフラグメントを含めることはできません。'
+              invalid_uri: 'は有効なURIではありません。'
+              unspecified_scheme: 'スキームを指定する必要があります。'
+              relative_uri: 'は絶対URIでなければなりません。'
+              secured_uri: 'はHTTPS/SSL URIでなければなりません。'
+              forbidden_uri: 'はサーバーによって禁止されています。'
+            scopes:
+              not_match_configured: "はサーバーの設定と一致しません。"
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: '%{record}が存在しているので削除できません'
+          has_many: '%{record}が存在しているので削除できません'
+  date:
+    abbr_day_names:
+      - 日
+      - 月
+      - 火
+      - 水
+      - 木
+      - 金
+      - 土
+    abbr_month_names:
+      -
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
+    day_names:
+      - 日曜日
+      - 月曜日
+      - 火曜日
+      - 水曜日
+      - 木曜日
+      - 金曜日
+      - 土曜日
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+    month_names:
+      -
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
+    order:
+      - :year
+      - :month
+      - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 約1時間
+        other: 約%{count}時間
+        about_x_months:
+          other: 約 %{count} ヶ月
+        about_x_years:
+          other: 約 %{count} 年
+        almost_x_years:
+          other: ほぼ %{count} 年
+        half_a_minute: 半分
+        less_than_x_seconds:
+          other: '%{count} 秒未満'
+        less_than_x_minutes:
+          other: '%{count} 分未満'
+        over_x_years:
+          other: '%{count} 年以上'
+        x_seconds:
+          other: "%{count} 秒"
+        x_minutes:
+          other: "%{count} 分"
+        x_days:
+          other: "%{count} 日間"
+        x_months:
+          other: "%{count} ヶ月間"
+        x_years:
+          other: "%{count} 年間"
+    prompts:
+      second: 秒
+      minute: 分
+      hour: 時
+      day: 日
+      month: 月
+      year: 年
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      already_confirmed: は既に登録済みです。ログインしてください。
+      confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
+      expired: の有効期限が切れました。新しくリクエストしてください。
+      not_found: は見つかりませんでした。
+      not_locked: はロックされていません。
+      not_saved:
+        other: "%{count}つのエラーがあるのでこの%{resource}は保存されませんでした："
+      is_not_valid_webid: "WebID \"%{webid}\" は使用できません"
+      send_interval: 送信間隔が短すぎるので、1分後に再試行してください
+      accepted: を受諾してください
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      empty: を入力してください
+      equal_to: は%{count}にしてください
+      even: は偶数にしてください
+      exclusion: は予約されています
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      inclusion: は一覧にありません
+      invalid: は不正な値です
+      less_than: は%{count}より小さい値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      odd: は奇数にしてください
+      other_than: は%{count}以外の値にしてください
+      present: は入力しないでください
+      required: を入力してください
+      taken: はすでに存在します
+      too_long:
+        one: は長すぎます（最大文字数は 1 文字）
+        other: は長すぎます（最大文字数は %{count} 文字）
+        too_short:
+          other: は %{count} 文字以上で入力してください。
+        wrong_length:
+          other: は %{count} 文字でなければなりません。
+    template:
+      body: '次の項目を確認してください'
+      header:
+        other: "%{count}つのエラーがあるのでこの%{model}は保存されませんでした"
+  helpers:
+    select:
+      prompt: 選択してください
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n%u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: '円'
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: 十億
+          million: 百万
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n%u"
+        units:
+          byte:
+            other: バイト
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: "、"
+      two_words_connector: "、"
+      words_connector: "、"
+  time:
+    am: 午前
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%m/%d %H:%M"
+      short: "%m/%d %H:%M"
+    pm: 午後
+  devise:
+    confirmations:
+      confirmed: "メールアドレスが確認できました。"
+      send_instructions: "アカウントの有効化について数分以内にメールでご連絡します。"
+      send_paranoid_instructions: "メールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
+    failure:
+      already_authenticated: すでにログインしています。
+      inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
+      invalid: '%{authentication_keys}またはパスワードが違います。'
+      locked: アカウントはロックされています。
+      last_attempt: もう一回誤るとアカウントがロックされます。
+      not_found_in_database: '%{authentication_keys}またはパスワードが違います。'
+      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
+      unauthenticated: ログインもしくはアカウント登録してください。
+      unconfirmed: メールアドレスの本人確認が必要です。
+    omniauth_callbacks:
+      failure: '%{kind} アカウントによる認証に失敗しました。理由：（%{reason}）'
+      success: '%{kind} アカウントによる認証に成功しました。'
+    passwords:
+      no_token: このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。
+      send_instructions: パスワードの再設定について数分以内にメールでご連絡いたします。
+      send_paranoid_instructions: メールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。
+      updated: パスワードが正しく変更されました。
+      updated_not_active: パスワードが正しく変更されました。
+    registrations:
+      destroyed: アカウントを削除しました。またのご利用をお待ちしております。
+      signed_up: アカウント登録が完了しました。
+      signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
+      signed_up_but_locked: アカウントがロックされているためログインできません。
+      signed_up_but_unconfirmed: 本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。
+      update_needs_confirmation: アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。
+      updated: アカウント情報を変更しました。
+    unlock_instructions:
+      send_instructions: "数分であなたのアカウントのロックを解除する方法が書かれたメールが届きます。"
+      send_paranoid_instructions: "アカウントが登録済みの場合、数分でロックを解除する方法が書かれたメールが届きます。"
+      unlocked: "あなたのアカウントが正しくロック解除されました。続けるにはサインインしてください。"
+    mailer:
+      confirmation_instructions:
+        subject: "メールアドレス確認メール"
+      reset_password_instructions:
+        subject: "パスワードの再設定について"
+      unlock_instructions:
+        subject: "アカウントのロック解除について"
+      email_changed:
+        subject: "メール変更完了"
+      password_change:
+        subject: "パスワードの変更について"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "既にログアウト済みです。"
+  doorkeeper:
+    scopes:
+      openid: 'アカウントを認証する'
+      profile: 'プロフィール情報を表示する'
+      email: 'メールアドレスを表示する'
+      address: '物理アドレスを表示する'
+      phone: '電話番号を表示する'
+    applications:
+      confirmations:
+        destroy: '本当に削除しますか？'
+      buttons:
+        edit: '編集'
+        destroy: '削除'
+        submit: '登録'
+        cancel: 'キャンセル'
+        authorize: '認証'
+      form:
+        error: 'おっと！フォームにエラーがないか確認してください'
+      help:
+        confidential: 'クライアントシークレットの機密を保持できるアプリケーションで使われます。'
+        redirect_uri: 'URIごとに1行で入力してください'
+        blank_redirect_uri: "リダイレクトURIを必要としないクライアントクレデンシャル、リソースオーナークレデンシャル、その他のグラントタイプの場合は空白のままにします。"
+        scopes: '各スコープをスペースで区切ってください。初期設定のスコープを使用する場合は、空白のままにしてください。'
+      edit:
+        title: 'アプリケーションの編集'
+      index:
+        title: 'アプリケーション'
+        new: '新しいアプリケーション'
+        name: '名称'
+        callback_url: 'コールバックURL'
+        actions: '行動'
+        confidential: '機密？'
+        confidentiality:
+          'yes': 'はい'
+          'no': 'いいえ'
+      new:
+        title: 'アプリケーションの作成'
+      show:
+        title: 'アプリケーション: %{name}'
+        application_id: 'アプリケーションID'
+        secret: 'シークレット'
+        scopes: 'スコープ'
+        confidential: '機密'
+        callback_urls: 'コールバックURL'
+        actions: 'アクション'
+    authorizations:
+      buttons:
+        authorize: '承認'
+        deny: '否認'
+      error:
+        title: 'エラーが発生しました'
+      new:
+        title: '承認が必要です'
+        prompt: 'あなたのアカウントで %{client_name} を承認しますか？'
+        able_to: 'このアプリケーションは次のことが可能です'
+      show:
+        title: '認可コード'
+    authorized_applications:
+      confirmations:
+        revoke: '本当に取消しますか？'
+      buttons:
+        revoke: '取消'
+      index:
+        title: 'あなたの認証されたアプリケーション'
+        application: 'アプリケーション'
+        created_at: '作成日時'
+        date_format: "%Y年%m月%d日 %H:%M:%S"
+    pre_authorization:
+      status: 'Pre-authorization'
+    openid_connect:
+      errors:
+        messages:
+          #Configuration error messages
+          resource_owner_from_access_token_not_configured: 'ドアキーパー::OpenidConnect.configure.resource_owner_from_access_token設定が欠落しているためにエラーが発生しました。'
+          auth_time_from_resource_owner_not_configured: 'Doorkeeper :: OpenidConnect.configure.auth_time_from_resource_ownerに構成がないために失敗しました。'
+          reauthenticate_resource_owner_not_configured: 'Doorkeeper :: OpenidConnect.configure.reauthenticate_resource_ownerに構成がないために失敗しました。'
+          select_account_for_resource_owner_not_configured: 'ドアキーパー::OpenidConnect.configure.select_account_for_resource_owner設定が欠落しているためにエラーが発生しました。'
+          subject_not_configured: 'ドアキーパー::OpenidConnect.configure.subject設定が欠落しているためにエラーが発生しました。'
+    errors:
+      messages:
+        #doorkeeper oidc
+        login_required: '承認サーバーにはエンドユーザー認証が必要です'
+        consent_required: '承認サーバーにはエンドユーザーの同意が必要です'
+        interaction_required: '承認サーバーにはエンドユーザーの対話が必要です。'
+        account_selection_required: '承認サーバーにはエンドユーザー アカウントの選択が必要です'
+        #Common error messages
+        invalid_request:
+          unknown: '必須パラメータが不足しているか、サポートされていないパラメータが含まれているか、もしくはパラメータが無効であるため、リクエストを処理できませんでした。'
+          missing_param: '必須パラメーターが不足しています: %{value}'
+          request_not_authorized: 'リクエストは認可が必要です。リクエストを認可するための必須パラメータが不足しているか無効です。'
+        invalid_redirect_uri: '含まれるリダイレクトURIが正しくありません。'
+        unauthorized_client: 'クライアントはこのメソッドを用いたリクエストを実行する権限がありません。'
+        access_denied: 'リソースオーナーもしくは認可サーバがリクエストを拒否しました。'
+        invalid_scope: '指定されたスコープが無効か、不明か、もしくは正しくありません。'
+        invalid_code_challenge_method: 'コードチャレンジメソッドはplainかS256でなければなりません。'
+        server_error: '予期せぬ事態が発生したため、認可サーバはリクエストを処理できませんでした。'
+        temporarily_unavailable: '認可サーバが一時的に高負荷な状態にあるか、もしくはメンテナンス中であるため、リクエストを処理できません。'
+        #Configuration error messages
+        credential_flow_not_configured: 'Doorkeeper.configure.resource_owner_from_credentials が設定されていないため、リソースオーナーパスワードクレデンシャルフローは失敗しました。'
+        resource_owner_authenticator_not_configured: 'Doorkeeper.configure.resource_owner_authenticator が設定されていないため、リソースオーナーの取得に失敗しました。'
+        admin_authenticator_not_configured: 'Doorkeeper.configure.admin_authenticator being unconfigured が設定されていないため、管理者パネルへのアクセスが禁止されています。'
+        #Access grant errors
+        unsupported_response_type: '認可サーバは指定されたレスポンスタイプをサポートしていません。'
+        #Access token errors
+        invalid_client: 'クライアントが不明か、クライアント認証が含まれていないか、もしくは認証メソッドがサポートされていないため、クライアント認証は失敗しました。'
+        invalid_grant: '指定された認可グラントは無効か、有効期限切れか、リダイレクトURIが異なるか、もしくは別のクライアントに適用されています。'
+        unsupported_grant_type: 'この認可グラントのタイプは認可サーバではサポートされていません。'
+        invalid_token:
+          revoked: "アクセストークンが取り消されました"
+          expired: "アクセストークンの有効期限が切れました"
+          unknown: "アクセストークンが無効です"
+        revoke:
+          unauthorized: "このトークンを無効化する権限がありません"
+    flash:
+      applications:
+        create:
+          notice: 'アプリケーションが作成されました。'
+        destroy:
+          notice: 'アプリケーションが削除されました。'
+        update:
+          notice: 'アプリケーションが更新されました。'
+      authorized_applications:
+        destroy:
+          notice: 'アプリケーションが取消されました。'
+    layouts:
+      admin:
+        title: 'Doorkeeper'
+        nav:
+          oauth2_provider: 'OAuth2 プロバイダー'
+          applications: 'アプリケーション'
+          home: 'ホーム'
+      application:
+        title: 'OAuth認証が必要です'
+  accounts:
+    app_title: Brickdoc アカウント
+    provider:
+      github: Github
+      email_password: メールとパスワード
+    sessions:
+      sign_in: サインイン
+      sign_up: サインアップ
+      sign_in_to_brickdoc: Brickdocにサインインする
+      more_login_options: 追加のログインオプション
+      login_via: "%{provider} を使用してサインインする"
+      email: Email
+      password: パスワード
+      remember_me: ログイン状態を保存する
+      sign_up_with_email: サインアップ
+      resend_unconfirmed_mail: 確認用メールの再送信
+      confirmation_email_required_heading: もう少しです
+      forget_password: パスワードを忘れましたか
+      confirm_password: パスワードを再入力してください。
+      sign_up_via: "%{provider}に登録する"
+      name: "名前"
+      webid: "WebID"
+      webid_description: "ユーザー名と同様に、アルファベットと数字のみが許可されます"
+      agree_to_agreement: "サインアップは、お客様が当社の <0>ユーザー契約</0>に同意することを示します。"
+      resend_after: "%{seconds} 秒後に再送信可能"
+    common:
+      confirm_not_match: "%{field}と確認の欄が一致しない\n"

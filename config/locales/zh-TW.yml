@@ -10,7 +10,23 @@ zh-TW:
   chrome_link: https://www.google.com/intl/zh-TW/chrome/
   firefox_link: https://www.mozilla.org/zh-TW/firefox/
   activerecord:
+    attributes:
+      doorkeeper/application:
+        name: '名稱'
+        redirect_uri: '轉向網址'
     errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: '不能包含片段(#)'
+              invalid_uri: '必須是有效的網址'
+              unspecified_scheme: '必須指定一個Schema。'
+              relative_uri: '必須是絕對的網址。'
+              secured_uri: '必須是有 HTTPS/SSL 的網址。'
+              forbidden_uri: '被伺服器禁止。'
+            scopes:
+              not_match_configured: "與伺服器上的配置不合。"
       messages:
         record_invalid: '校驗失敗: %{errors}'
         restrict_dependent_destroy:
@@ -71,19 +87,32 @@ zh-TW:
       - :day
   datetime:
     distance_in_words:
-      about_x_hours: 大約 %{count} 小時
-      about_x_months: 大約 %{count} 個月
-      about_x_years: 大約 %{count} 年
-      almost_x_years: 接近 %{count} 年
-      half_a_minute: 半分鐘
-      less_than_x_seconds: 不到 %{count} 秒
-      less_than_x_minutes: 不到 %{count} 分鐘
-      over_x_years: "%{count} 年多"
-      x_seconds: "%{count} 秒"
-      x_minutes: "%{count} 分鐘"
-      x_days: "%{count} 天"
-      x_months: "%{count} 個月"
-      x_years: "%{count} 年"
+      about_x_hours:
+        one: 大約一個小時
+        other: 大約 %{count} 個小時
+        about_x_months:
+          other: 大約 %{count} 個月
+        about_x_years:
+          other: 大約 %{count} 年
+        almost_x_years:
+          other: 將近 %{count} 年
+        half_a_minute: 半分鐘
+        less_than_x_seconds:
+          other: 小於 %{count} 秒
+        less_than_x_minutes:
+          other: 不到 %{count} 分鐘
+        over_x_years:
+          other: 超過 %{count} 年
+        x_seconds:
+          other: "%{count} 秒"
+        x_minutes:
+          other: "%{count} 分鐘"
+        x_days:
+          other: "%{count} 天"
+        x_months:
+          other: "%{count} 個月"
+        x_years:
+          other: "%{count} 年"
     prompts:
       second: 秒
       minute: 分
@@ -124,12 +153,17 @@ zh-TW:
       present: 必須是空白
       required: 必須存在
       taken: 已經被使用
-      too_long: 過長（最長為 %{count} 個字符）
-      too_short: 過短（最短為 %{count} 個字符）
-      wrong_length: 長度錯誤（必須為 %{count} 個字符）
+      too_long:
+        one: 太長（最多 1 個字符）
+        other: 太長（最多 %{count} 字符）
+        too_short:
+          other: 太短（最少為 %{count} 字符）
+        wrong_length:
+          other: 是錯誤的長度（應該是 %{count} 字符）
     template:
-      body: 以下欄位發生問題：
-      header: 有 %{count} 個錯誤發生導致“%{model}”無法被保存。
+      body: '以下欄位發生問題：'
+      header:
+        other: "發生 %{count} 個錯誤，%{model} 無法儲存："
   helpers:
     select:
       prompt: 請選擇
@@ -146,7 +180,7 @@ zh-TW:
         separator: "."
         significant: false
         strip_insignificant_zeros: false
-        unit: NT$
+        unit: 'NT$'
     format:
       delimiter: ","
       precision: 3
@@ -171,7 +205,8 @@ zh-TW:
       storage_units:
         format: "%n %u"
         units:
-          byte: 字節
+          byte:
+            other: 位元組
           eb: EB
           gb: GB
           kb: KB
@@ -199,9 +234,9 @@ zh-TW:
     pm: 下午
   devise:
     confirmations:
-      send_instructions: 您將在幾分鐘後收到一封電子郵件，內有驗證帳號的步驟說明。
-      send_paranoid_instructions: 如果我們有您的信箱，您將會收到一封驗證您的帳號的電子郵件。
-      confirmed: 您的信箱已通過驗證，現在您已成功登入。
+      confirmed: "您的信箱已通過驗證，現在您已成功登入。"
+      send_instructions: "您將在幾分鐘後收到一封電子郵件，內有驗證帳號的步驟說明。"
+      send_paranoid_instructions: "如果我們有您的信箱，您將會收到一封驗證您的帳號的電子郵件。"
     failure:
       already_authenticated: 您已經登入。
       inactive: 您的帳號尚未被啟用。
@@ -230,10 +265,31 @@ zh-TW:
       update_needs_confirmation: 您已經成功的更新帳號資訊，但我們仍需確認您的電子信箱，請至新信箱收信並點擊連結以確認您的新電子郵件帳號。
       updated: 您已經成功的更新帳號資訊。
     unlock_instructions:
-      send_instructions: 稍後，您將收到一封電子郵件。
-      send_paranoid_instructions: 如果你已經過去了，你會收到一封郵件。
-      unlocked: 您的帳戶已成功創建，請登錄。
+      send_instructions: "稍後，您將收到一封電子郵件。"
+      send_paranoid_instructions: "如果你已經過去了，你會收到一封郵件。"
+      unlocked: "您的帳戶已成功創建，請登錄。"
+    mailer:
+      confirmation_instructions:
+        subject: "帳號確認通知"
+      reset_password_instructions:
+        subject: "重設你的密碼"
+      unlock_instructions:
+        subject: "解除帳號鎖定"
+      email_changed:
+        subject: "郵箱地址已更改"
+      password_change:
+        subject: "密碼已變更"
+    sessions:
+      signed_in: "已成功登入。"
+      signed_out: "已成功登出。"
+      already_signed_out: "已成功登出。"
   doorkeeper:
+    scopes:
+      openid: '驗證您的帳戶'
+      profile: '查看您的個人資料信息'
+      email: '查看您的電子郵件地址'
+      address: '查看您的實際地址'
+      phone: '查看您的電話號碼'
     applications:
       confirmations:
         destroy: '確定嗎？'
@@ -296,8 +352,22 @@ zh-TW:
         date_format: "%Y-%m-%d %H:%M:%S"
     pre_authorization:
       status: 'Pre-authorization'
+    openid_connect:
+      errors:
+        messages:
+          #Configuration error messages
+          resource_owner_from_access_token_not_configured: '由於 Doorkeeper::OpenidConnect.configure.resource_owner_from_access_token 缺少配置而導致失敗。'
+          auth_time_from_resource_owner_not_configured: '由於 Doorkeeper::OpenidConnect.configure.auth_time_from_resource_owner 缺少配置而導致失敗。'
+          reauthenticate_resource_owner_not_configured: '由於 Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner 缺少配置而導致失敗。'
+          select_account_for_resource_owner_not_configured: '由於 Doorkeeper::OpenidConnect.configure.select_account_for_resource_owner 缺少配置而導致失敗。'
+          subject_not_configured: '由於 Doorkeeper::OpenidConnect.configure.subject 缺少配置而導致失敗。'
     errors:
       messages:
+        #doorkeeper oidc
+        login_required: '授權伺服器需要最終用戶身份驗證'
+        consent_required: '授權伺服器需要最終用戶同意'
+        interaction_required: '授權伺服器需要最終用戶交互'
+        account_selection_required: '授權伺服器需要最終用戶選擇帳戶'
         #Common error messages
         invalid_request:
           unknown: '這個請求少了一個必要的參數，可能是不支援的參數值或是其他格式錯誤'
@@ -355,7 +425,6 @@ zh-TW:
       sign_in: 登錄
       sign_up: 註冊
       sign_in_to_brickdoc: 登錄 Brickdoc
-      sign_in_successful: 您已經登入
       more_login_options: 更多登錄方式
       login_via: "使用 %{provider} 登錄"
       email: Email
@@ -371,9 +440,6 @@ zh-TW:
       webid: "WebID"
       webid_description: "相當於您的使用者名稱，僅允許包含英文字母和數字\n"
       agree_to_agreement: "註冊即表示您已閱讀並同意我們的<0>《用戶協議》</0>"
-      confirmation_email_required: 激活郵件已發送到您的郵箱，請查收郵件以完成激活。
-      email_resend_successful: 郵件發送成功，請注意查收。
       resend_after: "%{seconds}秒後可重新發送"
     common:
       confirm_not_match: "兩次輸入的%{field}不一致"
-
