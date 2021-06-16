@@ -7,6 +7,7 @@ module ApplicationHelper
       env: Rails.env,
       version: Brickdoc.full_version,
       locale: Brickdoc::I18n.locale,
+      rtl: t('meta.dir') == 'rtl',
       timezone: Current.timezone,
       defaultTimezone: BrickdocConfig.default_timezone,
       selfHosted: Brickdoc.self_hosted?,

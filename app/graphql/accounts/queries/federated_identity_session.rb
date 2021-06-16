@@ -7,13 +7,13 @@ module Accounts
     type Accounts::Objects::OmniauthSession, null: false
 
     def resolve
-      omniauth = context[:session][:omniauth]
+      omniauth = context[:session][:omniauth]&.with_indifferent_access
       return { has_session: false } if omniauth.blank?
       {
         has_session: true,
-        provider: omniauth['provider'],
-        webid: omniauth['info']['webid'],
-        name: omniauth['info']['name']
+        provider: omniauth[:provider],
+        webid: omniauth[:info][:webid],
+        name: omniauth[:info][:name]
       }
     end
   end

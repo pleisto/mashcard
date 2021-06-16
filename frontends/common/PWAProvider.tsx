@@ -10,6 +10,7 @@ interface globalContext {
   env: string,
   version: string,
   locale: string,
+  rtl: boolean,
   currentUser: null|{
     webid: string,
     avatar: string,
@@ -26,6 +27,8 @@ interface globalContext {
 
 export const BrickdocContext: React.Context<globalContext> = React.createContext(globalThis.brickdocContext)
 BrickdocContext.displayName = 'BrickdocGlobalConfig'
+
+const direction = globalThis.brickdocContext.rtl ? 'rtl':'ltr'
 
 let locale: Locale
 switch(globalThis.brickdocContext.locale){
@@ -47,7 +50,7 @@ switch(globalThis.brickdocContext.locale){
 
 export default (props)=>{
   return <React.StrictMode>
-    <ConfigProvider locale={locale}>
+    <ConfigProvider direction={direction} locale={locale}>
       <Suspense fallback={<Spin delay={1000}  />}>
         <ApolloProvider client={globalThis.brickdocContext.gqlClient}>
           <HelmetProvider>{props.children}</HelmetProvider>

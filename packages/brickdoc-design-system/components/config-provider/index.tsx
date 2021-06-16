@@ -268,16 +268,11 @@ const ConfigProvider: React.FC<ConfigProviderProps> & {
   SizeContext: typeof SizeContext;
   config: typeof setGlobalConfig;
 } = props => {
-  React.useEffect(() => {
-    if (props.direction) {
-      message.config({
-        rtl: props.direction === 'rtl',
-      })
-      notification.config({
-        rtl: props.direction === 'rtl',
-      })
-    }
-  }, [props.direction])
+  React.useLayoutEffect(() => {
+    const rtl = props.direction === 'rtl'
+    message.config({ rtl })
+    notification.config({ rtl })
+  })
 
   return (
     <LocaleReceiver>

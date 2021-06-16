@@ -2,6 +2,7 @@
 
 module Accounts
   class Queries::AccountsWebidAvailable < BrickGraphQL::BaseResolver
+    requires_entrypoint_to_be :internal
     description 'Check webid available.'
     type GraphQL::Types::Boolean, null: false
 

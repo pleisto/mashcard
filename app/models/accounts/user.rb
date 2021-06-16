@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 class Accounts::User < Accounts::Pod
-  HIDDEN_FIELDS = [:owner_id]
-  include HiddenFields
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,

@@ -44,7 +44,7 @@ module Accounts
 
     def email_password_sign_up(user, email, password)
       if email.blank? || password.blank?
-        raise BrickGraphQL::Error.ArgumentError, "Expected email and password to not be null"
+        raise BrickGraphQL::Errors::ArgumentError, "Expected email and password to not be null"
       end
       user.email = email
       user.password = password
@@ -53,10 +53,11 @@ module Accounts
     end
 
     def federated_identity_sign_up(user)
-      user.email = context[:session][:omniauth]['info']['email']
-      user.avatar_key = context[:session][:omniauth]['info']['avatar']
-      user.omniauth_provider = context[:session][:omniauth]['provider']
-      user.omniauth_uid = context[:session][:omniauth]['uid']
+      omniauth = context[:session][:omniauth].with_indifferent_access
+      user.email = omniauth[:info][:email]
+      user.avatar_key = omniauth[:info][:avatar]
+      user.omniauth_provider = omniauth[:provider]
+      user.omniauth_uid = omniauth[:uid]
     end
   end
 end

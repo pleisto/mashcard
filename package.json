@@ -89,7 +89,7 @@
     "prepare": "husky install",
     "lint": "eslint --cache ./  --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml && bundle exec brakeman --summary --no-pager --exit-on-warn",
     "lint:fix": "eslint --cache ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml -a && bundle exec brakeman  --faster --summary --no-pager --exit-on-warn",
-    "test": "yarn lint",
+    "test": "yarn lint && bundle exec rspec",
     "commit": "git add . && cz",
     "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
     "postinstall": "husky install",
