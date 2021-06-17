@@ -179,7 +179,7 @@
           "fields": [
             {
               "name": "accountsWebidAvailable",
-              "description": "Check webid available.",
+              "description": "Check webid available.\nRequired `context[:entrypoints]` is `[:internal]`.\nRequired `context[:entrypoints]` is `[:internal]`.",
               "args": [
                 {
                   "name": "webid",

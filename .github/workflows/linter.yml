@@ -13,9 +13,9 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_DB: "brickdoc_test"
-          POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: "123456"
+          POSTGRES_DB: 'brickdoc_test'
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: '123456'
         ports:
           - 5432:5432
         options: >-
@@ -25,8 +25,8 @@ jobs:
           --health-retries 5
       redis:
         image: redis:latest
-        ports: 
-           - 6379:6379
+        ports:
+          - 6379:6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -45,7 +45,7 @@ jobs:
           path: |
             node_modules
             .yarn
-          key: yarn-${{secrets.CACHE_VERSION}}-${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
+          key: yarn-${{secrets.CACHE_VERSION}}-${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}-${{ hashFiles('.yarn/**')}}
       - name: Yarn install
         run: yarn
         env:
@@ -68,3 +68,18 @@ jobs:
           REDIS_URL: redis://127.0.0.1:6379
           POSTGRES_PASS: 123456
         run: bundle exec rails spec
+      - name: Dump database schema
+        run: bundle exec rails db:schema:dump
+        env:
+          RAILS_ENV: test
+          POSTGRES_PASS: 123456
+      - name: Dump graphql schema
+        run: yarn graphql
+      - name: Add and commit everything
+        uses: EndBug/add-and-commit@v7
+        env:
+          HUSKY: 0
+        with:
+          default_author: github_actions
+          message: 'ci: bump schema and dists'
+          add: 'app lib packages spec config db frontends'

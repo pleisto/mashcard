@@ -3,6 +3,7 @@
 # development
 /.idea
 /.vs
+/.vscode
 *.sublime-project
 *.sublime-workspace
 /.settings

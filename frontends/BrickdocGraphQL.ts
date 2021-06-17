@@ -50,7 +50,11 @@ export type RootMutationUserEmailPasswordSignInArgs = {
 
 export type RootQuery = {
   __typename?: 'RootQuery'
-  /** Check webid available. */
+  /**
+   * Check webid available.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   */
   accountsWebidAvailable: Scalars['Boolean']
   /**
    * provides a federated identity session data

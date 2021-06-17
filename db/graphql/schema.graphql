@@ -66,6 +66,8 @@ type RootMutation {
 type RootQuery {
   """
   Check webid available.
+  Required `context[:entrypoints]` is `[:internal]`.
+  Required `context[:entrypoints]` is `[:internal]`.
   """
   accountsWebidAvailable(webid: String!): Boolean!
 
