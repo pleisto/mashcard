@@ -75,7 +75,7 @@ gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.1' # Don't rely on Linux/macOS timezo
 group :development, :test do
   gem 'brakeman'
   gem 'ffaker'
-  gem 'rubocop', '>= 1.15'
+  gem 'rubocop', '>= 1.17'
   gem 'rubocop-brickdoc', require: false, path: 'packages/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 4.0.2'

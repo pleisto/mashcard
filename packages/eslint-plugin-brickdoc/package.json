@@ -1,6 +1,6 @@
 {
   "name": "@brickdoc/eslint-plugin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "ESLint configuration and custom rules for Brickdoc LTD",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "eslint-import-resolver-typescript": "2.4.0",
     "eslint-plugin-import": "2.23.4",
     "eslint-plugin-jest": "24.3.6",
-    "eslint-plugin-jsdoc": "35.2.0",
+    "eslint-plugin-jsdoc": "35.3.0",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prefer-arrow": "1.2.3",
