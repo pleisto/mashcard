@@ -7,7 +7,7 @@ devise_for :users,
              sessions: 'accounts/sessions',
              registrations: 'accounts/registrations',
              omniauth_callbacks: 'accounts/omniauth_callbacks',
-             confirmations: 'accounts/confirmations_callbacks',
+             confirmations: 'accounts/confirmations',
              unlocks: 'accounts/unlocks_callbacks',
-             passwords: 'accounts/passwords_callbacks'
+             passwords: 'accounts/passwords'
            }

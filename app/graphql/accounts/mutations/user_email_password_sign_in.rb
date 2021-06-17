@@ -8,7 +8,7 @@ module Accounts
     argument :password, String, 'user password', required: true
     argument :remember, Boolean, 'remember authentication session', required: true
 
-    field :redirect_path, String, 'redirect url path when sig in successful', null: true
+    field :redirect_path, String, 'redirect url path when sign in successful', null: true
 
     def resolve(email:, password:, remember:)
       user = Accounts::User.find_for_database_authentication(email: email)

@@ -440,6 +440,7 @@ en-US:
     sessions:
       sign_in: Sign In
       sign_up: Sign Up
+      reset_password: Reset Password
       sign_in_to_brickdoc: Sign in to Brickdoc
       more_login_options: More Login Options
       login_via: "Sign In with %{provider}"

@@ -4,10 +4,18 @@ export const getAvaailableLocales = gql`
   query GetAvailableLocalesFromWS {
     metadata {
       id
-      availableLocales{
+      availableLocales {
         label
         value
       }
+    }
+  }
+`
+
+export const UserSignOut = gql`
+  mutation userSignOut($input: UserSignOutInput!) {
+    userSignOut(input: $input) {
+      errors
     }
   }
 `
@@ -16,7 +24,7 @@ export const getAccountsConfig = gql`
   query GetAccountsConfigFromWS {
     metadata {
       id
-      config{
+      config {
         userAgreementLink
         accountsPreferredAuthMethod
         accountsEmailPasswordAuth
@@ -29,7 +37,7 @@ export const getAccountsConfig = gql`
   }
 `
 
-export const queryAccountWebidExists  = gql`
+export const queryAccountWebidExists = gql`
   query QueryAccountWebidAvailableFromWS($webid: String!) {
     accountsWebidAvailable(webid: $webid)
   }

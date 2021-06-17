@@ -44,8 +44,7 @@ jobs:
         with:
           path: |
             node_modules
-            .yarn
-          key: yarn-${{secrets.CACHE_VERSION}}-${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}-${{ hashFiles('.yarn/**')}}
+          key: yarn-${{secrets.CACHE_VERSION}}-${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - name: Yarn install
         run: yarn
         env:

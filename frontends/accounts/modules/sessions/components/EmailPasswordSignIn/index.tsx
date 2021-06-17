@@ -13,7 +13,7 @@ const EmailPasswordSignIn: React.FC = () => {
     const { data } = await emailPasswordSignIn({ variables: { input: values } })
     const result = data.userEmailPasswordSignIn
     mutationResultHandler(result, ()=>{
-      message.success(t('devise.sessions.signed_in'))
+      message.success(t('devise:sessions.signed_in'))
       globalThis.location.href = result.redirectPath
     })
   }
@@ -45,7 +45,7 @@ const EmailPasswordSignIn: React.FC = () => {
     <Form.Item className={styles.links}>
       <Link to="/sign_up">{t('sessions.sign_up_with_email')}</Link>
       <Divider type="vertical" />
-      <Link to="/password/new">{t('sessions.forget_password')}</Link>
+      <Link to="/password/forget">{t('sessions.forget_password')}</Link>
     </Form.Item>
   </Form>)
 }
