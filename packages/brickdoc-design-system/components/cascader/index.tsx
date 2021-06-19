@@ -703,7 +703,7 @@ class Cascader extends React.Component<CascaderProps, CascaderState> {
     return (
       <ConfigConsumer>
         {(configArgument: ConfigConsumerProps) => (
-          <LocaleReceiver>{locale => this.renderCascader(configArgument, locale)}</LocaleReceiver>
+          <LocaleReceiver componentName="global">{locale => this.renderCascader(configArgument, locale)}</LocaleReceiver>
         )}
       </ConfigConsumer>
     )

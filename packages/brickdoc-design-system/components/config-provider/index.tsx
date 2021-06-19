@@ -4,31 +4,17 @@ import { FormProvider as RcFormProvider } from 'rc-field-form'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
 import useMemo from 'rc-util/lib/hooks/useMemo'
 import { RenderEmptyHandler } from './renderEmpty'
-import LocaleProvider, { ANT_MARK, Locale } from '../locale-provider'
-import LocaleReceiver from '../locale-provider/LocaleReceiver'
-import {
-  ConfigConsumer,
-  ConfigContext,
-  CSPConfig,
-  DirectionType,
-  ConfigConsumerProps,
-} from './context'
+import LocaleProvider from '../locale-provider'
+import { useLocale } from '../locale-provider/LocaleReceiver'
+import { ConfigConsumer, ConfigContext, CSPConfig, DirectionType, ConfigConsumerProps } from './context'
 import SizeContext, { SizeContextProvider, SizeType } from './SizeContext'
 import message from '../message'
 import notification from '../notification'
 import { RequiredMark } from '../form/Form'
 
-export {
-  ConfigContext,
-  ConfigConsumer,
-}
+export { ConfigContext, ConfigConsumer }
 
-export type {
-  RenderEmptyHandler,
-  CSPConfig,
-  DirectionType,
-  ConfigConsumerProps,
-}
+export type { RenderEmptyHandler, CSPConfig, DirectionType, ConfigConsumerProps }
 
 export const configConsumerProps = [
   'getTargetContainer',
@@ -38,8 +24,7 @@ export const configConsumerProps = [
   'renderEmpty',
   'csp',
   'autoInsertSpaceInButton',
-  'locale',
-  'pageHeader',
+  'pageHeader'
 ]
 
 // These props is used by `useContext` directly in sub component
@@ -49,41 +34,39 @@ const PASSED_PROPS: Array<Exclude<keyof ConfigConsumerProps, 'rootPrefixCls' | '
   'renderEmpty',
   'pageHeader',
   'input',
-  'form',
+  'form'
 ]
 
 export interface ConfigProviderProps {
-  getTargetContainer?: () => HTMLElement;
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
-  prefixCls?: string;
-  children?: React.ReactNode;
-  renderEmpty?: RenderEmptyHandler;
-  csp?: CSPConfig;
-  autoInsertSpaceInButton?: boolean;
+  getTargetContainer?: () => HTMLElement
+  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
+  prefixCls?: string
+  children?: React.ReactNode
+  renderEmpty?: RenderEmptyHandler
+  csp?: CSPConfig
+  autoInsertSpaceInButton?: boolean
   form?: {
-    validateMessages?: ValidateMessages;
-    requiredMark?: RequiredMark;
-  };
+    validateMessages?: ValidateMessages
+    requiredMark?: RequiredMark
+  }
   input?: {
-    autoComplete?: string;
-  };
-  locale?: Locale;
+    autoComplete?: string
+  }
   pageHeader?: {
-    ghost: boolean;
-  };
-  componentSize?: SizeType;
-  direction?: DirectionType;
+    ghost: boolean
+  }
+  componentSize?: SizeType
+  direction?: DirectionType
   space?: {
-    size?: SizeType | number;
-  };
-  virtual?: boolean;
-  dropdownMatchSelectWidth?: boolean;
-  icon?: IIconConfig;
+    size?: SizeType | number
+  }
+  virtual?: boolean
+  dropdownMatchSelectWidth?: boolean
+  icon?: IIconConfig
 }
 
 interface ProviderChildrenProps extends ConfigProviderProps {
-  parentContext: ConfigConsumerProps;
-  legacyLocale: Locale;
+  parentContext: ConfigConsumerProps
 }
 
 export const defaultPrefixCls = 'brk'
@@ -99,7 +82,7 @@ function getGlobalPrefixCls() {
   return globalPrefixCls || defaultPrefixCls
 }
 
-function getIconDefaultConfig(rtl: boolean):IIconConfig {
+function getIconDefaultConfig(rtl: boolean): IIconConfig {
   return {
     size: '1em',
     strokeWidth: 3,
@@ -131,7 +114,6 @@ function getIconDefaultConfig(rtl: boolean):IIconConfig {
   }
 }
 
-
 export const globalConfig = () => ({
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
     if (customizePrefixCls) return customizePrefixCls
@@ -159,20 +141,17 @@ export const globalConfig = () => ({
   getIconDefaultConfig
 })
 
-
 const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
   const {
     children,
     csp,
     autoInsertSpaceInButton,
     form,
-    locale,
     componentSize,
     direction,
     space,
     virtual,
     dropdownMatchSelectWidth,
-    legacyLocale,
     parentContext,
     icon
   } = props
@@ -188,19 +167,18 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
       return suffixCls ? `${mergedPrefixCls}-${suffixCls}` : mergedPrefixCls
     },
     /* eslint-disable react-hooks/exhaustive-deps */
-    [parentContext.getPrefixCls, props.prefixCls],
+    [parentContext.getPrefixCls, props.prefixCls]
   )
 
   const config = {
     ...parentContext,
     csp,
     autoInsertSpaceInButton,
-    locale: locale || legacyLocale,
     direction,
     space,
     virtual,
     dropdownMatchSelectWidth,
-    getPrefixCls,
+    getPrefixCls
   }
 
   // Pass the props used by `useContext` directly with child component.
@@ -209,7 +187,7 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     // @ts-ignore
     const propValue: any = props[propName]
     if (propValue) {
-      (config as any)[propName] = propValue
+      ;(config as any)[propName] = propValue
     }
   })
 
@@ -220,18 +198,15 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     (prevConfig: Record<string, any>, currentConfig) => {
       const prevKeys = Object.keys(prevConfig)
       const currentKeys = Object.keys(currentConfig)
-      return (
-        prevKeys.length !== currentKeys.length ||
-        prevKeys.some(key => prevConfig[key] !== currentConfig[key])
-      )
-    },
+      return prevKeys.length !== currentKeys.length || prevKeys.some(key => prevConfig[key] !== currentConfig[key])
+    }
   )
-
 
   let childNode = children
   // Additional Form provider
   let validateMessages: ValidateMessages = {}
 
+  const locale = useLocale()
   if (locale && locale.Form && locale.Form.defaultValidateMessages) {
     validateMessages = locale.Form.defaultValidateMessages
   }
@@ -243,18 +218,9 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     childNode = <RcFormProvider validateMessages={validateMessages}>{children}</RcFormProvider>
   }
 
-  if (locale) {
-    childNode = (
-      <LocaleProvider locale={locale} _ANT_MARK__={ANT_MARK}>
-        {childNode}
-      </LocaleProvider>
-    )
-  }
   // IconPark
-  const IconConfig = {...(icon ?? getIconDefaultConfig(props.direction === 'rtl'))}
-  childNode = (
-    <IconProvider value={IconConfig}>{childNode}</IconProvider>
-  )
+  const IconConfig = { ...(icon ?? getIconDefaultConfig(props.direction === 'rtl')) }
+  childNode = <IconProvider value={IconConfig}>{childNode}</IconProvider>
 
   if (componentSize) {
     childNode = <SizeContextProvider size={componentSize}>{childNode}</SizeContextProvider>
@@ -264,9 +230,9 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
 }
 
 const ConfigProvider: React.FC<ConfigProviderProps> & {
-  ConfigContext: typeof ConfigContext;
-  SizeContext: typeof SizeContext;
-  config: typeof setGlobalConfig;
+  ConfigContext: typeof ConfigContext
+  SizeContext: typeof SizeContext
+  config: typeof setGlobalConfig
 } = props => {
   React.useLayoutEffect(() => {
     const rtl = props.direction === 'rtl'
@@ -275,19 +241,9 @@ const ConfigProvider: React.FC<ConfigProviderProps> & {
   })
 
   return (
-    <LocaleReceiver>
-      {(_, __, legacyLocale) => (
-        <ConfigConsumer>
-          {context => (
-            <ProviderChildren
-              parentContext={context}
-              legacyLocale={legacyLocale as Locale}
-              {...props}
-            />
-          )}
-        </ConfigConsumer>
-      )}
-    </LocaleReceiver>
+    <LocaleProvider>
+      <ConfigConsumer>{context => <ProviderChildren parentContext={context} {...props} />}</ConfigConsumer>
+    </LocaleProvider>
   )
 }
 

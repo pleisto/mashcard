@@ -5,11 +5,9 @@ import {
   CloseOne as CloseCircleFilled,
   Time as ClockCircleOutlined,
   RightSmall as SwapRightOutlined
-
 } from '../../icon'
 import { RangePicker as RCRangePicker } from 'rc-picker'
-import { GenerateConfig } from "rc-picker/lib/generate"
-import enUS from '../locale/en_US'
+import { GenerateConfig } from 'rc-picker/lib/generate'
 import { ConfigContext, ConfigConsumerProps } from '../../config-provider'
 import SizeContext from '../../config-provider/SizeContext'
 import LocaleReceiver from '../../locale-provider/LocaleReceiver'
@@ -17,26 +15,26 @@ import { getRangePlaceholder } from '../util'
 import { RangePickerProps, PickerLocale, getTimeProps, Components } from '.'
 
 export default function generateRangePicker<DateType>(
-  generateConfig: GenerateConfig<DateType>,
+  generateConfig: GenerateConfig<DateType>
 ): React.ComponentClass<RangePickerProps<DateType>> {
   class RangePicker extends React.Component<RangePickerProps<DateType>> {
-    static contextType = ConfigContext;
+    static contextType = ConfigContext
 
-    context: ConfigConsumerProps;
+    context: ConfigConsumerProps
 
-    pickerRef = React.createRef<RCRangePicker<DateType>>();
+    pickerRef = React.createRef<RCRangePicker<DateType>>()
 
     focus = () => {
       if (this.pickerRef.current) {
         this.pickerRef.current.focus()
       }
-    };
+    }
 
     blur = () => {
       if (this.pickerRef.current) {
         this.pickerRef.current.blur()
       }
-    };
+    }
 
     renderPicker = (contextLocale: PickerLocale) => {
       const locale = { ...contextLocale, ...this.props.locale }
@@ -58,7 +56,7 @@ export default function generateRangePicker<DateType>(
       additionalOverrideProps = {
         ...additionalOverrideProps,
         ...(showTime ? getTimeProps({ format, picker, ...showTime }) : {}),
-        ...(picker === 'time' ? getTimeProps({ format, ...this.props, picker }) : {}),
+        ...(picker === 'time' ? getTimeProps({ format, ...this.props, picker }) : {})
       }
       const rootPrefixCls = getPrefixCls()
 
@@ -85,9 +83,9 @@ export default function generateRangePicker<DateType>(
                 className={classNames(
                   {
                     [`${prefixCls}-${mergedSize}`]: mergedSize,
-                    [`${prefixCls}-borderless`]: !bordered,
+                    [`${prefixCls}-borderless`]: !bordered
                   },
-                  className,
+                  className
                 )}
                 locale={locale.lang}
                 prefixCls={prefixCls}
@@ -104,14 +102,10 @@ export default function generateRangePicker<DateType>(
           }}
         </SizeContext.Consumer>
       )
-    };
+    }
 
     render() {
-      return (
-        <LocaleReceiver componentName="DatePicker" defaultLocale={enUS}>
-          {this.renderPicker}
-        </LocaleReceiver>
-      )
+      return <LocaleReceiver componentName="DatePicker">{this.renderPicker}</LocaleReceiver>
     }
   }
 

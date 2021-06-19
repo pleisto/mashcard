@@ -1,19 +1,18 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { Help as QuestionCircleOutlined} from '../icon'
+import { Help as QuestionCircleOutlined } from '../icon'
 import Col, { ColProps } from '../grid/col'
 import { FormLabelAlign } from './interface'
 import { FormContext, FormContextProps } from './context'
 import { RequiredMark } from './Form'
-import { useLocaleReceiver } from '../locale-provider/LocaleReceiver'
-import defaultLocale from '../locale/default'
+import { useLocale } from '../locale-provider/LocaleReceiver'
 import Tooltip, { TooltipProps } from '../tooltip'
 
 export type WrapperTooltipProps = TooltipProps & {
-  icon?: React.ReactElement;
-};
+  icon?: React.ReactElement
+}
 
-export type LabelTooltipType = WrapperTooltipProps | React.ReactNode;
+export type LabelTooltipType = WrapperTooltipProps | React.ReactNode
 
 function toTooltipProps(tooltip: LabelTooltipType): WrapperTooltipProps | null {
   if (!tooltip) {
@@ -25,18 +24,18 @@ function toTooltipProps(tooltip: LabelTooltipType): WrapperTooltipProps | null {
   }
 
   return {
-    title: tooltip,
+    title: tooltip
   }
 }
 
 export interface FormItemLabelProps {
-  colon?: boolean;
-  htmlFor?: string;
-  label?: React.ReactNode;
-  labelAlign?: FormLabelAlign;
-  labelCol?: ColProps;
-  requiredMark?: RequiredMark;
-  tooltip?: LabelTooltipType;
+  colon?: boolean
+  htmlFor?: string
+  label?: React.ReactNode
+  labelAlign?: FormLabelAlign
+  labelCol?: ColProps
+  requiredMark?: RequiredMark
+  tooltip?: LabelTooltipType
 }
 
 const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixCls: string }> = ({
@@ -48,20 +47,15 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
   colon,
   required,
   requiredMark,
-  tooltip,
+  tooltip
 }) => {
-  const [formLocale] = useLocaleReceiver('Form')
+  const formLocale = useLocale('Form')
 
   if (!label) return null
 
   return (
     <FormContext.Consumer key="label">
-      {({
-        vertical,
-        labelAlign: contextLabelAlign,
-        labelCol: contextLabelCol,
-        colon: contextColon,
-      }: FormContextProps) => {
+      {({ vertical, labelAlign: contextLabelAlign, labelCol: contextLabelCol, colon: contextColon }: FormContextProps) => {
         const mergedLabelCol: ColProps = labelCol || contextLabelCol || {}
 
         const mergedLabelAlign: FormLabelAlign | undefined = labelAlign || contextLabelAlign
@@ -70,7 +64,7 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         const labelColClassName = classNames(
           labelClsBasic,
           mergedLabelAlign === 'left' && `${labelClsBasic}-left`,
-          mergedLabelCol.className,
+          mergedLabelCol.className
         )
 
         let labelChildren = label
@@ -78,8 +72,8 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         const computedColon = colon || (contextColon && colon)
         const haveColon = computedColon && !vertical
         // Remove duplicated user input colon
-        if (haveColon && typeof label === 'string' && (label ).trim() !== '') {
-          labelChildren = (label ).replace(/[:|：]\s*$/, '')
+        if (haveColon && typeof label === 'string' && label.trim() !== '') {
+          labelChildren = label.replace(/[:|：]\s*$/, '')
         }
 
         // Tooltip
@@ -87,9 +81,7 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         if (tooltipProps) {
           const { icon = <QuestionCircleOutlined theme="outline" />, ...restTooltipProps } = tooltipProps
           const tooltipNode = (
-            <Tooltip {...restTooltipProps}>
-              {React.cloneElement(icon, { className: `${prefixCls}-item-tooltip` })}
-            </Tooltip>
+            <Tooltip {...restTooltipProps}>{React.cloneElement(icon, { className: `${prefixCls}-item-tooltip` })}</Tooltip>
           )
 
           labelChildren = (
@@ -105,9 +97,7 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
           labelChildren = (
             <>
               {labelChildren}
-              <span className={`${prefixCls}-item-optional`}>
-                {formLocale?.optional || defaultLocale.Form?.optional}
-              </span>
+              <span className={`${prefixCls}-item-optional`}>{formLocale?.optional}</span>
             </>
           )
         }
@@ -115,16 +105,12 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         const labelClassName = classNames({
           [`${prefixCls}-item-required`]: required,
           [`${prefixCls}-item-required-mark-optional`]: requiredMark === 'optional',
-          [`${prefixCls}-item-no-colon`]: !computedColon,
+          [`${prefixCls}-item-no-colon`]: !computedColon
         })
 
         return (
           <Col {...mergedLabelCol} className={labelColClassName}>
-            <label
-              htmlFor={htmlFor}
-              className={labelClassName}
-              title={typeof label === 'string' ? label : ''}
-            >
+            <label htmlFor={htmlFor} className={labelClassName} title={typeof label === 'string' ? label : ''}>
               {labelChildren}
             </label>
           </Col>

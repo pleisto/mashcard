@@ -2,26 +2,21 @@ import * as React from 'react'
 import { useContext } from 'react'
 import { PreviewOpen as EyeOutlined } from '../icon'
 import RcImage, { ImageProps } from 'rc-image'
-import defaultLocale from '../locale/en_US'
+import { useLocale } from '../locale-provider/LocaleReceiver'
 import PreviewGroup, { icons } from './PreviewGroup'
 import { ConfigContext } from '../config-provider'
 import { getTransitionName } from '../_util/motion'
 
 export interface CompositionImage<P> extends React.FC<P> {
-  PreviewGroup: typeof PreviewGroup;
+  PreviewGroup: typeof PreviewGroup
 }
 
-const Image: CompositionImage<ImageProps> = ({
-  prefixCls: customizePrefixCls,
-  preview,
-  ...otherProps
-}) => {
+const Image: CompositionImage<ImageProps> = ({ prefixCls: customizePrefixCls, preview, ...otherProps }) => {
   const { getPrefixCls } = useContext(ConfigContext)
   const prefixCls = getPrefixCls('image', customizePrefixCls)
   const rootPrefixCls = getPrefixCls()
 
-  const { locale: contextLocale = defaultLocale } = useContext(ConfigContext)
-  const imageLocale = contextLocale.Image || defaultLocale.Image
+  const imageLocale = useLocale('Image')
 
   const mergedPreview = React.useMemo(() => {
     if (preview === false) {
@@ -39,7 +34,7 @@ const Image: CompositionImage<ImageProps> = ({
       icons,
       ..._preview,
       transitionName: getTransitionName(rootPrefixCls, 'zoom', _preview.transitionName),
-      maskTransitionName: getTransitionName(rootPrefixCls, 'fade', _preview.maskTransitionName),
+      maskTransitionName: getTransitionName(rootPrefixCls, 'fade', _preview.maskTransitionName)
     }
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [preview, imageLocale])

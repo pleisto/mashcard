@@ -1,6 +1,5 @@
 import * as React from 'react'
 import defaultRenderEmpty, { RenderEmptyHandler } from './renderEmpty'
-import { Locale } from '../locale-provider'
 import { SizeType } from './SizeContext'
 import { RequiredMark } from '../form/Form'
 
@@ -22,7 +21,6 @@ export interface ConfigConsumerProps {
   input?: {
     autoComplete?: string;
   };
-  locale?: Locale;
   pageHeader?: {
     ghost: boolean;
   };

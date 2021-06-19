@@ -1980,6 +1980,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.14.5":
+  version: 7.14.6
+  resolution: "@babel/runtime@npm:7.14.6"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 927ffed7871f2ed29f967a8dad7a72aa10662f93b6735a89d664a161fa4dc2074b8947ca159a8a0a49cec9a71c8de473d7c2b22d3de0ee4d7dd06d24a7f98018
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.12.13, @babel/template@npm:^7.12.7, @babel/template@npm:^7.3.3":
   version: 7.12.13
   resolution: "@babel/template@npm:7.12.13"
@@ -2127,6 +2136,7 @@ __metadata:
     copy-to-clipboard: 3.3.1
     css-loader: ^5.2.6
     date-fns: ^2.22.1
+    i18next: ^20.3.1
     less: 4.1.1
     less-loader: 9.1.0
     lodash: ^4.17.21
@@ -2163,12 +2173,15 @@ __metadata:
     rc-util: ^5.13.1
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-i18next: ^11.11.0
     scroll-into-view-if-needed: ^2.2.28
     style-loader: 2.0.0
   peerDependencies:
     date-fns: ">= 2.22.1"
+    i18next: ">=20.3.1"
     react: ">=17.0.0"
     react-dom: ">=17.0.0"
+    react-i18next: ">=11.11.0"
   languageName: unknown
   linkType: soft
 
@@ -13142,7 +13155,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"i18next@npm:20.3.1":
+"i18next@npm:20.3.1, i18next@npm:^20.3.1":
   version: 20.3.1
   resolution: "i18next@npm:20.3.1"
   dependencies:
@@ -19683,6 +19696,19 @@ fsevents@^1.2.7:
     i18next: ">= 19.0.0"
     react: ">= 16.8.0"
   checksum: efa13b4aeec1954521b61b07d889d91a9803e80ad4271c96f8cc6277147ffea05605a0668927d8bb70729ada17ebd02c932114019bdd901ee0df1bd3455b0277
+  languageName: node
+  linkType: hard
+
+"react-i18next@npm:^11.11.0":
+  version: 11.11.0
+  resolution: "react-i18next@npm:11.11.0"
+  dependencies:
+    "@babel/runtime": ^7.14.5
+    html-parse-stringify: ^3.0.1
+  peerDependencies:
+    i18next: ">= 19.0.0"
+    react: ">= 16.8.0"
+  checksum: 67faa5733fa60a0ed3fd2c4fdf592c59798d9e7766b0bb9f3788cff795f215f8ff54e98700041560804876aa329264065fefb4f19ed857d37d42ed79916c795a
   languageName: node
   linkType: hard
 

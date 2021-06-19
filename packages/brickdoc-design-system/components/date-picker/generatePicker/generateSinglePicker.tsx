@@ -1,50 +1,35 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import {
-  CloseOne as CloseCircleFilled,
-  Time as ClockCircleOutlined,
-  Calendar as CalendarOutlined
-} from '../../icon'
+import { CloseOne as CloseCircleFilled, Time as ClockCircleOutlined, Calendar as CalendarOutlined } from '../../icon'
 import RCPicker from 'rc-picker'
 import { PickerMode } from 'rc-picker/lib/interface'
-import { GenerateConfig } from "rc-picker/lib/generate"
-import enUS from '../locale/en_US'
+import { GenerateConfig } from 'rc-picker/lib/generate'
 import { getPlaceholder } from '../util'
 import devWarning from '../../_util/devWarning'
 import { ConfigContext, ConfigConsumerProps } from '../../config-provider'
 import LocaleReceiver from '../../locale-provider/LocaleReceiver'
 import SizeContext from '../../config-provider/SizeContext'
-import {
-  PickerProps,
-  PickerLocale,
-  PickerDateProps,
-  PickerTimeProps,
-  getTimeProps,
-  Components,
-} from '.'
+import { PickerProps, PickerLocale, PickerDateProps, PickerTimeProps, getTimeProps, Components } from '.'
 
 export default function generatePicker<DateType>(generateConfig: GenerateConfig<DateType>) {
-  type DatePickerProps = PickerProps<DateType>;
+  type DatePickerProps = PickerProps<DateType>
 
-  function getPicker<InnerPickerProps extends DatePickerProps>(
-    picker?: PickerMode,
-    displayName?: string,
-  ) {
+  function getPicker<InnerPickerProps extends DatePickerProps>(picker?: PickerMode, displayName?: string) {
     class Picker extends React.Component<InnerPickerProps> {
-      static contextType = ConfigContext;
+      static contextType = ConfigContext
 
-      static displayName: string;
+      static displayName: string
 
-      context: ConfigConsumerProps;
+      context: ConfigConsumerProps
 
-      pickerRef = React.createRef<RCPicker<DateType>>();
+      pickerRef = React.createRef<RCPicker<DateType>>()
 
       constructor(props: InnerPickerProps) {
         super(props)
         devWarning(
           picker !== 'quarter',
           displayName,
-          `DatePicker.${displayName} is legacy usage. Please use DatePicker[picker='${picker}'] directly.`,
+          `DatePicker.${displayName} is legacy usage. Please use DatePicker[picker='${picker}'] directly.`
         )
       }
 
@@ -52,13 +37,13 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
         if (this.pickerRef.current) {
           this.pickerRef.current.focus()
         }
-      };
+      }
 
       blur = () => {
         if (this.pickerRef.current) {
           this.pickerRef.current.blur()
         }
-      };
+      }
 
       renderPicker = (contextLocale: PickerLocale) => {
         const locale = { ...contextLocale, ...this.props.locale }
@@ -76,7 +61,7 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
         const prefixCls = getPrefixCls('picker', customizePrefixCls)
 
         const additionalProps = {
-          showToday: true,
+          showToday: true
         }
 
         let additionalOverrideProps: any = {}
@@ -88,9 +73,7 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
         additionalOverrideProps = {
           ...additionalOverrideProps,
           ...(showTime ? getTimeProps({ format, picker: mergedPicker, ...showTime }) : {}),
-          ...(mergedPicker === 'time'
-            ? getTimeProps({ format, ...this.props, picker: mergedPicker })
-            : {}),
+          ...(mergedPicker === 'time' ? getTimeProps({ format, ...this.props, picker: mergedPicker }) : {})
         }
         const rootPrefixCls = getPrefixCls()
 
@@ -103,9 +86,7 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
                 <RCPicker<DateType>
                   ref={this.pickerRef}
                   placeholder={getPlaceholder(mergedPicker, locale, placeholder)}
-                  suffixIcon={
-                    mergedPicker === 'time' ? <ClockCircleOutlined /> : <CalendarOutlined />
-                  }
+                  suffixIcon={mergedPicker === 'time' ? <ClockCircleOutlined /> : <CalendarOutlined />}
                   clearIcon={<CloseCircleFilled theme="filled" />}
                   allowClear
                   transitionName={`${rootPrefixCls}-slide-up`}
@@ -116,9 +97,9 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
                   className={classNames(
                     {
                       [`${prefixCls}-${mergedSize}`]: mergedSize,
-                      [`${prefixCls}-borderless`]: !bordered,
+                      [`${prefixCls}-borderless`]: !bordered
                     },
-                    className,
+                    className
                   )}
                   prefixCls={prefixCls}
                   getPopupContainer={customizeGetPopupContainer || getPopupContainer}
@@ -134,14 +115,10 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
             }}
           </SizeContext.Consumer>
         )
-      };
+      }
 
       render() {
-        return (
-          <LocaleReceiver componentName="DatePicker" defaultLocale={enUS}>
-            {this.renderPicker}
-          </LocaleReceiver>
-        )
+        return <LocaleReceiver componentName="DatePicker">{this.renderPicker}</LocaleReceiver>
       }
     }
 
@@ -157,10 +134,7 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
   const MonthPicker = getPicker<Omit<PickerDateProps<DateType>, 'picker'>>('month', 'MonthPicker')
   const YearPicker = getPicker<Omit<PickerDateProps<DateType>, 'picker'>>('year', 'YearPicker')
   const TimePicker = getPicker<Omit<PickerTimeProps<DateType>, 'picker'>>('time', 'TimePicker')
-  const QuarterPicker = getPicker<Omit<PickerTimeProps<DateType>, 'picker'>>(
-    'quarter',
-    'QuarterPicker',
-  )
+  const QuarterPicker = getPicker<Omit<PickerTimeProps<DateType>, 'picker'>>('quarter', 'QuarterPicker')
 
   return { DatePicker, WeekPicker, MonthPicker, YearPicker, TimePicker, QuarterPicker }
 }

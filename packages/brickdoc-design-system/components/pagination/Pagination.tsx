@@ -1,14 +1,7 @@
 import * as React from 'react'
 import RcPagination from 'rc-pagination'
-// @ts-ignore
-import enUS from 'rc-pagination/lib/locale/en_US'
 import classNames from 'classnames'
-import {
-  Left as LeftOutlined,
-  Right as RightOutlined,
-  DoubleLeft as DoubleLeftOutlined,
-  DoubleRight as DoubleRightOutlined
-} from "../icon"
+import { Left as LeftOutlined, Right as RightOutlined, DoubleLeft as DoubleLeftOutlined, DoubleRight as DoubleRightOutlined } from '../icon'
 import MiniSelect from './MiniSelect'
 import Select from '../select'
 import LocaleReceiver from '../locale-provider/LocaleReceiver'
@@ -16,44 +9,44 @@ import { ConfigContext } from '../config-provider'
 import useBreakpoint from '../grid/hooks/useBreakpoint'
 
 export interface PaginationProps {
-  total?: number;
-  defaultCurrent?: number;
-  disabled?: boolean;
-  current?: number;
-  defaultPageSize?: number;
-  pageSize?: number;
-  onChange?: (page: number, pageSize?: number) => void;
-  hideOnSinglePage?: boolean;
-  showSizeChanger?: boolean;
-  pageSizeOptions?: string[];
-  onShowSizeChange?: (current: number, size: number) => void;
-  showQuickJumper?: boolean | { goButton?: React.ReactNode };
-  showTitle?: boolean;
-  showTotal?: (total: number, range: [number, number]) => React.ReactNode;
-  size?: 'default' | 'small';
-  responsive?: boolean;
-  simple?: boolean;
-  style?: React.CSSProperties;
-  locale?: Object;
-  className?: string;
-  prefixCls?: string;
-  selectPrefixCls?: string;
+  total?: number
+  defaultCurrent?: number
+  disabled?: boolean
+  current?: number
+  defaultPageSize?: number
+  pageSize?: number
+  onChange?: (page: number, pageSize?: number) => void
+  hideOnSinglePage?: boolean
+  showSizeChanger?: boolean
+  pageSizeOptions?: string[]
+  onShowSizeChange?: (current: number, size: number) => void
+  showQuickJumper?: boolean | { goButton?: React.ReactNode }
+  showTitle?: boolean
+  showTotal?: (total: number, range: [number, number]) => React.ReactNode
+  size?: 'default' | 'small'
+  responsive?: boolean
+  simple?: boolean
+  style?: React.CSSProperties
+  locale?: Object
+  className?: string
+  prefixCls?: string
+  selectPrefixCls?: string
   itemRender?: (
     page: number,
     type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next',
-    originalElement: React.ReactElement<HTMLElement>,
-  ) => React.ReactNode;
-  role?: string;
-  showLessItems?: boolean;
+    originalElement: React.ReactElement<HTMLElement>
+  ) => React.ReactNode
+  role?: string
+  showLessItems?: boolean
 }
 
-export type PaginationPosition = 'top' | 'bottom' | 'both';
+export type PaginationPosition = 'top' | 'bottom' | 'both'
 
 export interface PaginationConfig extends PaginationProps {
-  position?: PaginationPosition;
+  position?: PaginationPosition
 }
 
-export type PaginationLocale = any;
+export type PaginationLocale = any
 
 const Pagination: React.FC<PaginationProps> = ({
   prefixCls: customizePrefixCls,
@@ -100,14 +93,14 @@ const Pagination: React.FC<PaginationProps> = ({
     )
     // change arrows direction in right-to-left direction
     if (direction === 'rtl') {
-      [prevIcon, nextIcon] = [nextIcon, prevIcon];
-      [jumpPrevIcon, jumpNextIcon] = [jumpNextIcon, jumpPrevIcon]
+      ;[prevIcon, nextIcon] = [nextIcon, prevIcon]
+      ;[jumpPrevIcon, jumpNextIcon] = [jumpNextIcon, jumpPrevIcon]
     }
     return {
       prevIcon,
       nextIcon,
       jumpPrevIcon,
-      jumpNextIcon,
+      jumpNextIcon
     }
   }
 
@@ -118,9 +111,9 @@ const Pagination: React.FC<PaginationProps> = ({
     const extendedClassName = classNames(
       {
         mini: isSmall,
-        [`${prefixCls}-rtl`]: direction === 'rtl',
+        [`${prefixCls}-rtl`]: direction === 'rtl'
       },
-      className,
+      className
     )
 
     return (
@@ -136,11 +129,7 @@ const Pagination: React.FC<PaginationProps> = ({
     )
   }
 
-  return (
-    <LocaleReceiver componentName="Pagination" defaultLocale={enUS}>
-      {renderPagination}
-    </LocaleReceiver>
-  )
+  return <LocaleReceiver componentName="Pagination">{renderPagination}</LocaleReceiver>
 }
 
 export default Pagination
