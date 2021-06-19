@@ -4,8 +4,8 @@ import { TFunction } from 'react-i18next'
 import { Locale } from '../locale-provider'
 import { PickerLocale } from '../date-picker/generatePicker'
 
-export function getLocaleData(t: TFunction<'ds'>, language: string): Locale {
-  const typeTemplate = t('form.defaultValidateMessages.types.template', '${label} is not a valid ${type}')
+export function getLocaleData(t: TFunction<'design_system'>, language: string): Locale {
+  const typeTemplate = t('form.defaultValidateMessages.types.template', '%{label} is not a valid %{type}')
 
   const pickerLocale: PickerLocale = {
     lang: {
@@ -60,7 +60,10 @@ export function getLocaleData(t: TFunction<'ds'>, language: string): Locale {
     },
     timePickerLocale: {
       placeholder: t('timePicker.placeholder', 'Select time'),
-      rangePlaceholder: [t('timePicker.rangePlaceholder.startTime', 'Start time'), t('timePicker.rangePlaceholder.endTime', 'End time')]
+      rangePlaceholder: [
+        t('timePicker.rangePlaceholder.startTime', 'Start time'),
+        t('timePicker.rangePlaceholder.endTime', 'End time')
+      ]
     }
   }
 
@@ -136,20 +139,17 @@ export function getLocaleData(t: TFunction<'ds'>, language: string): Locale {
       copied: t('text.copied', 'Copied'),
       expand: t('text.expand', 'Expand')
     },
-    PageHeader: {
-      back: t('pageHeader.back', 'Back')
-    },
     Form: {
       optional: t('form.optional', '(optional)'),
       defaultValidateMessages: {
-        default: t('form.defaultValidationMessages.default', 'Field validation error for ${label}'),
-        required: t('form.defaultValidationMessages.required', 'Please enter ${label}'),
-        enum: t('form.defaultValidationMessages.enum', '${label} must be one of [${enum}]'),
-        whitespace: t('form.defaultValidationMessages.whitespace', '${label} cannot be a blank character'),
+        default: t('form.defaultValidationMessages.default', 'Field validation error for label}'),
+        required: t('form.defaultValidationMessages.required', 'Please enter %{label}'),
+        enum: t('form.defaultValidationMessages.enum', '%{label} must be one of [%{enum}]'),
+        whitespace: t('form.defaultValidationMessages.whitespace', '%{label} cannot be a blank character'),
         date: {
-          format: t('form.defaultValidationMessages.date.format', '${label} date format is invalid'),
-          parse: t('form.defaultValidationMessages.date.parse', '${label} cannot be converted to a date'),
-          invalid: t('form.defaultValidationMessages.date.invalid', '${label} is an invalid date')
+          format: t('form.defaultValidationMessages.date.format', '%{label} date format is invalid'),
+          parse: t('form.defaultValidationMessages.date.parse', '%{label} cannot be converted to a date'),
+          invalid: t('form.defaultValidationMessages.date.invalid', '%{label} is an invalid date')
         },
         types: {
           string: typeTemplate,
@@ -167,25 +167,25 @@ export function getLocaleData(t: TFunction<'ds'>, language: string): Locale {
           hex: typeTemplate
         },
         string: {
-          len: t('form.defaultValidationMessages.string.len', '${label} must be ${len} characters'),
-          min: t('form.defaultValidationMessages.string.min', '${label} must be at least ${min} characters'),
-          max: t('form.defaultValidationMessages.string.max', '${label} must be up to ${max} characters'),
-          range: t('form.defaultValidationMessages.string.range', '${label} must be between ${min}-${max} characters')
+          len: t('form.defaultValidationMessages.string.len', '%{label} must be %{len} characters'),
+          min: t('form.defaultValidationMessages.string.min', '%{label} must be at least %{min} characters'),
+          max: t('form.defaultValidationMessages.string.max', '%{label} must be up to %{max} characters'),
+          range: t('form.defaultValidationMessages.string.range', '%{label} must be between %{min}-%{max} characters')
         },
         number: {
-          len: t('form.defaultValidationMessages.number.len', '${label} must be equal to ${len}'),
-          min: t('form.defaultValidationMessages.number.min', '${label} must be minimum ${min}'),
-          max: t('form.defaultValidationMessages.number.max', '${label} must be maximum ${max}'),
-          range: t('form.defaultValidationMessages.number.range', '${label} must be between ${min}-${max}')
+          len: t('form.defaultValidationMessages.number.len', '%{label} must be equal to %{len}'),
+          min: t('form.defaultValidationMessages.number.min', '%{label} must be minimum %{min}'),
+          max: t('form.defaultValidationMessages.number.max', '%{label} must be maximum %{max}'),
+          range: t('form.defaultValidationMessages.number.range', '%{label} must be between %{min}-%{max}')
         },
         array: {
-          len: t('form.defaultValidationMessages.array.len', 'Must be ${len} ${label}'),
-          min: t('form.defaultValidationMessages.array.min', 'At least ${min} ${label}'),
-          max: t('form.defaultValidationMessages.array.max', 'At most ${max} ${label}'),
-          range: t('form.defaultValidationMessages.array.range', 'The amount of ${label} must be between ${min}-${max}')
+          len: t('form.defaultValidationMessages.array.len', 'Must be %{len} %{label}'),
+          min: t('form.defaultValidationMessages.array.min', 'At least %{min} %{label}'),
+          max: t('form.defaultValidationMessages.array.max', 'At most %{max} %{label}'),
+          range: t('form.defaultValidationMessages.array.range', 'The amount of %{label} must be between %{min}-%{max}')
         },
         pattern: {
-          mismatch: t('form.defaultValidationMessages.pattern.mismatch', '${label} does not match the pattern ${pattern}')
+          mismatch: t('form.defaultValidationMessages.pattern.mismatch', '%{label} does not match the pattern %{pattern}')
         }
       }
     },

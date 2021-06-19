@@ -1,9 +1,9 @@
-import i18next from 'i18next'
+import i18n from 'i18next'
 import HttpApi from 'i18next-http-backend'
 import { initReactI18next } from "react-i18next"
 
 
-i18next.use(HttpApi).use(initReactI18next).init({
+i18n.use(HttpApi).use(initReactI18next).init({
   lng: globalThis.brickdocContext?.locale,
   ns: 'meta',
   fallbackLng: {
@@ -24,3 +24,5 @@ i18next.use(HttpApi).use(initReactI18next).init({
     }
   }
 })
+
+globalThis.i18n = i18n

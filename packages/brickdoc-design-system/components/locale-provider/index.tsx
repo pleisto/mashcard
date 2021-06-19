@@ -39,7 +39,7 @@ export interface Locale {
 }
 
 const LocaleProvider: React.FC = ({ children }) => {
-  const { t, i18n } = useTranslation('ds') // 'ds' is short for 'Design System'
+  const { t, i18n } = useTranslation('design_system')
   const locale = React.useMemo(() => getLocaleData(t, i18n.language), [i18n.language, t])
 
   React.useEffect(() => {

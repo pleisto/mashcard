@@ -1,6 +1,6 @@
-import * as React from 'react'
-import LocaleContext from './context'
-import { Locale } from '.'
+import * as React from "react"
+import LocaleContext from "./context"
+import { Locale } from "."
 
 type LocaleComponent = keyof Locale
 
@@ -9,12 +9,10 @@ export function useLocale<T extends LocaleComponent>(componentName: T): Locale[T
 export function useLocale<T extends LocaleComponent>(componentName?: T): Locale | Locale[T] {
   const antLocale = React.useContext(LocaleContext)
 
-  const componentLocale = React.useMemo<Locale | Locale[T]>(() => {
+  return React.useMemo<Locale | Locale[T]>(() => {
     if (!componentName) return antLocale
     return antLocale[componentName]
   }, [componentName, antLocale])
-
-  return componentLocale
 }
 
 export interface LocaleReceiverProps<C extends keyof Locale = keyof Locale> {

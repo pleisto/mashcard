@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { i18n } from 'i18next'
+import { I18nextProvider } from 'react-i18next'
 import { IconProvider, IIconConfig } from '../icon'
 import { FormProvider as RcFormProvider } from 'rc-field-form'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
@@ -52,6 +54,7 @@ export interface ConfigProviderProps {
   input?: {
     autoComplete?: string
   }
+  i18n: i18n
   pageHeader?: {
     ghost: boolean
   }
@@ -241,9 +244,11 @@ const ConfigProvider: React.FC<ConfigProviderProps> & {
   })
 
   return (
+    <I18nextProvider i18n={props.i18n}>
     <LocaleProvider>
       <ConfigConsumer>{context => <ProviderChildren parentContext={context} {...props} />}</ConfigConsumer>
     </LocaleProvider>
+    </I18nextProvider>
   )
 }
 

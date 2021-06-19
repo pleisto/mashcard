@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import Dialog, { ModalFuncProps } from './Modal'
 import ActionButton from './ActionButton'
 import devWarning from '../_util/devWarning'
-import ConfigProvider from '../config-provider'
+// import ConfigProvider from '../config-provider'
 import { getTransitionName } from '../_util/motion'
 
 interface ConfirmDialogProps extends ModalFuncProps {
@@ -104,7 +104,6 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
       focusTriggerAfterClose={focusTriggerAfterClose}
     >
       <div className={`${contentPrefixCls}-body-wrapper`}>
-        <ConfigProvider prefixCls={rootPrefixCls}>
           <div className={`${contentPrefixCls}-body`} style={bodyStyle}>
             {icon}
             {props.title === undefined ? null : (
@@ -112,7 +111,6 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
             )}
             <div className={`${contentPrefixCls}-content`}>{props.content}</div>
           </div>
-        </ConfigProvider>
         <div className={`${contentPrefixCls}-btns`}>
           {cancelButton}
           <ActionButton
