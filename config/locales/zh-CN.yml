@@ -9,6 +9,146 @@ zh-CN:
   edge_link: https://www.microsoft.com/zh-cn/edge
   chrome_link: https://browser.360.cn/ee/
   firefox_link: https://www.mozilla.org/zh-CN/firefox/
+  design_system:
+    calendarPicker:
+      today: 今天
+      now: 现在
+      backToToday: 回到今天
+      ok: 确 定
+      clear: 清除
+      month: 月
+      year: 年
+      timeSelect: 选择时间
+      dateSelect: 选择日期
+      weekSelect: 选择周
+      monthSelect: 选择月份
+      yearSelect: 选择年份
+      decadeSelect: 选择年代
+      yearFormat: YYYY年
+      dateFormat: YYYY年M月D日
+      dayFormat: D日
+      dateTimeFormat: 'YYYY年M月D日 HH时mm分ss秒'
+      monthBeforeYear: true
+      previousMonth: 上个月 (翻页上键)
+      nextMonth: 下个月 (翻页下键)
+      previousYear: 上一年 (Control键加左方向键)
+      nextYear: 下一年 (Control键加右方向键)
+      previousDecade: 上一年代
+      nextDecade: 下一年代
+      previousCentury: 上一世纪
+      nextCentury: 下一世纪
+      placeholder: 请选择日期
+      yearPlaceholder: 请选择年份
+      quarterPlaceholder: 请选择季度
+      monthPlaceholder: 请选择月份
+      weekPlaceholder: 请选择周
+      rangePlaceholder:
+        startDate: 开始日期
+        endDate: 结束日期
+      rangeYearPlaceholder:
+        startYear: 开始年份
+        endYear: 结束年份
+      rangeMonthPlaceholder:
+        startMonth: 开始月份
+        endMonth: 结束月份
+      rangeWeekPlaceholder:
+        startWeek: 起始周
+        endWeek: 结束周
+    timePicker:
+      placeholder: 请选择时间
+      rangePlaceholder:
+        startTime: 开始时间
+        endTime: 结束时间
+    pagination:
+      itemsPerPage: '条/页'
+      jumpTo: 跳至
+      jumpToConfirm: 确定
+      page: '页'
+      prevPage: '上一页'
+      nextPage: '下一页'
+      prev5: '向前 5 页'
+      next5: '向后 5 页'
+      prev3: '向前 3 页'
+      next3: '向后 3 页'
+    global:
+      placeholder: 请选择
+    table:
+      filterTitle: 筛选
+      filterConfirm: 确定
+      filterReset: 重置
+      filterEmptyText: '无筛选项'
+      emptyText: '暂无数据'
+      selectAll: '全选当页'
+      selectInvert: 反选当页
+      selectNone: 空所有
+      selectionAll: 全选所有
+      sortTitle: 排序
+      expand: 展开行
+      collapse: 折叠行
+      triggerDesc: 点击降序
+      triggerAsc: 击升序
+      cancelSort: 取消排序
+    modal:
+      okText: 确定
+      cancelText: 取消
+      justOkText: 确定
+    popconfirm:
+      okText: 确定
+      cancelText: 取消
+    transfer:
+      titles:
+        first: ''
+        second: ''
+      searchPlaceholder: '请输入搜索内容'
+      itemUnit: '项'
+      itemsUnit: '项'
+      remove: 删除
+      selectCurrent: 全选当页
+      removeCurrent: 删除当页
+      selectAll: 全选所有
+      removeAll: 删除全部
+      selectInvert: 反选当页
+    empty:
+      description: 暂无数据
+    icon:
+      icon: 图标
+    text:
+      edit: 编辑
+      copy: 复制
+      copied: 复制成功
+      expand: 展开
+    form:
+      optional: '（可选）'
+      defaultValidationMessages:
+        default: 字段验证错误%{label}
+        required: 请输入%{label}
+        enum: "%{label}必须是其中一个 [%{enum}]"
+        whitespace: "%{label} 不能为空"
+        types:
+          template: '%{label} 不是有效的 %{type}'
+        date:
+          format: '%{label} 日期格式无效'
+          parse: '%{label} 不能转换为日期'
+          invalid: '%{label} 是一个无效的日期'
+        string:
+          len: '%{label} 必须是 %{len} 个字符'
+          min: '%{label} 至少为 %{min} 个字符'
+          max: '%{label} 至多为 %{max} 个字符'
+          range: '%{label} 必须介于 %{min}-%{max} 个字符'
+        number:
+          len: '%{label} 必须等于 %{len}'
+          min: '%{label}最小值为%{min}'
+          max: '%{label}最大为 %{max}'
+          range: '%{label} 须在 %{min}-%{max} 之间'
+        array:
+          len: '必须是 %{len}个%{label}'
+          min: '最少%{min}个%{label}'
+          max: '最多%{max}个%{label}'
+          range: '%{label}数量须在%{min}-%{max}之间'
+        pattern:
+          mismatch: '%{label} 与规则 %{pattern} 不匹配'
+    image:
+      preview: 预览
   activerecord:
     attributes:
       doorkeeper/application:
@@ -424,6 +564,7 @@ zh-CN:
     sessions:
       sign_in: 登录
       sign_up: 注册
+      reset_password: 重置密码
       sign_in_to_brickdoc: 登录 Brickdoc
       more_login_options: 更多登录方式
       login_via: "使用 %{provider} 登录"

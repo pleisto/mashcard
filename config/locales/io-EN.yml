@@ -9,6 +9,146 @@ io-EN:
   edge_link: crwdns568:0crwdne568:0
   chrome_link: crwdns570:0crwdne570:0
   firefox_link: crwdns572:0crwdne572:0
+  design_system:
+    calendarPicker:
+      today: crwdns1792:0crwdne1792:0
+      now: crwdns1794:0crwdne1794:0
+      backToToday: crwdns1796:0crwdne1796:0
+      ok: crwdns1798:0crwdne1798:0
+      clear: crwdns1800:0crwdne1800:0
+      month: crwdns1802:0crwdne1802:0
+      year: crwdns1804:0crwdne1804:0
+      timeSelect: crwdns1806:0crwdne1806:0
+      dateSelect: crwdns1808:0crwdne1808:0
+      weekSelect: crwdns1810:0crwdne1810:0
+      monthSelect: crwdns1812:0crwdne1812:0
+      yearSelect: crwdns1814:0crwdne1814:0
+      decadeSelect: crwdns1816:0crwdne1816:0
+      yearFormat: crwdns1818:0crwdne1818:0
+      dateFormat: crwdns1820:0crwdne1820:0
+      dayFormat: crwdns1822:0crwdne1822:0
+      dateTimeFormat: 'crwdns1824:0crwdne1824:0'
+      monthBeforeYear: true
+      previousMonth: crwdns1826:0crwdne1826:0
+      nextMonth: crwdns1828:0crwdne1828:0
+      previousYear: crwdns1830:0crwdne1830:0
+      nextYear: crwdns1832:0crwdne1832:0
+      previousDecade: crwdns1834:0crwdne1834:0
+      nextDecade: crwdns1836:0crwdne1836:0
+      previousCentury: crwdns1838:0crwdne1838:0
+      nextCentury: crwdns1840:0crwdne1840:0
+      placeholder: crwdns1842:0crwdne1842:0
+      yearPlaceholder: crwdns1844:0crwdne1844:0
+      quarterPlaceholder: crwdns1846:0crwdne1846:0
+      monthPlaceholder: crwdns1848:0crwdne1848:0
+      weekPlaceholder: crwdns1850:0crwdne1850:0
+      rangePlaceholder:
+        startDate: crwdns1852:0crwdne1852:0
+        endDate: crwdns1854:0crwdne1854:0
+      rangeYearPlaceholder:
+        startYear: crwdns1856:0crwdne1856:0
+        endYear: crwdns1858:0crwdne1858:0
+      rangeMonthPlaceholder:
+        startMonth: crwdns1860:0crwdne1860:0
+        endMonth: crwdns1862:0crwdne1862:0
+      rangeWeekPlaceholder:
+        startWeek: crwdns1864:0crwdne1864:0
+        endWeek: crwdns1866:0crwdne1866:0
+    timePicker:
+      placeholder: crwdns1868:0crwdne1868:0
+      rangePlaceholder:
+        startTime: crwdns1870:0crwdne1870:0
+        endTime: crwdns1872:0crwdne1872:0
+    pagination:
+      itemsPerPage: 'crwdns1874:0crwdne1874:0'
+      jumpTo: crwdns1876:0crwdne1876:0
+      jumpToConfirm: crwdns1878:0crwdne1878:0
+      page: ''
+      prevPage: 'crwdns1882:0crwdne1882:0'
+      nextPage: 'crwdns1884:0crwdne1884:0'
+      prev5: 'crwdns1886:0crwdne1886:0'
+      next5: 'crwdns1888:0crwdne1888:0'
+      prev3: 'crwdns1890:0crwdne1890:0'
+      next3: 'crwdns1892:0crwdne1892:0'
+    global:
+      placeholder: crwdns1894:0crwdne1894:0
+    table:
+      filterTitle: crwdns1896:0crwdne1896:0
+      filterConfirm: crwdns1898:0crwdne1898:0
+      filterReset: crwdns1900:0crwdne1900:0
+      filterEmptyText: 'crwdns1902:0crwdne1902:0'
+      emptyText: 'crwdns1904:0crwdne1904:0'
+      selectAll: 'crwdns1906:0crwdne1906:0'
+      selectInvert: crwdns1908:0crwdne1908:0
+      selectNone: crwdns1910:0crwdne1910:0
+      selectionAll: crwdns1912:0crwdne1912:0
+      sortTitle: crwdns1914:0crwdne1914:0
+      expand: crwdns1916:0crwdne1916:0
+      collapse: crwdns1918:0crwdne1918:0
+      triggerDesc: crwdns1920:0crwdne1920:0
+      triggerAsc: crwdns1922:0crwdne1922:0
+      cancelSort: crwdns1924:0crwdne1924:0
+    modal:
+      okText: crwdns1926:0crwdne1926:0
+      cancelText: crwdns1928:0crwdne1928:0
+      justOkText: crwdns1930:0crwdne1930:0
+    popconfirm:
+      okText: crwdns1932:0crwdne1932:0
+      cancelText: crwdns1934:0crwdne1934:0
+    transfer:
+      titles:
+        first: ''
+        second: ''
+      searchPlaceholder: 'crwdns1940:0crwdne1940:0'
+      itemUnit: 'crwdns1942:0crwdne1942:0'
+      itemsUnit: 'crwdns1944:0crwdne1944:0'
+      remove: crwdns1946:0crwdne1946:0
+      selectCurrent: crwdns1948:0crwdne1948:0
+      removeCurrent: crwdns1950:0crwdne1950:0
+      selectAll: crwdns1952:0crwdne1952:0
+      removeAll: crwdns1954:0crwdne1954:0
+      selectInvert: crwdns1956:0crwdne1956:0
+    empty:
+      description: crwdns1958:0crwdne1958:0
+    icon:
+      icon: crwdns1960:0crwdne1960:0
+    text:
+      edit: crwdns1962:0crwdne1962:0
+      copy: crwdns1964:0crwdne1964:0
+      copied: crwdns1966:0crwdne1966:0
+      expand: crwdns1968:0crwdne1968:0
+    form:
+      optional: crwdns1970:0crwdne1970:0
+      defaultValidationMessages:
+        default: crwdns1972:0%{label}crwdne1972:0
+        required: crwdns1974:0%{label}crwdne1974:0
+        enum: "crwdns1976:0%{label}crwdnd1976:0%{enum}crwdne1976:0"
+        whitespace: "crwdns1978:0%{label}crwdne1978:0"
+        types:
+          template: 'crwdns1980:0%{label}crwdnd1980:0%{type}crwdne1980:0'
+        date:
+          format: 'crwdns1982:0%{label}crwdne1982:0'
+          parse: 'crwdns1984:0%{label}crwdne1984:0'
+          invalid: 'crwdns1986:0%{label}crwdne1986:0'
+        string:
+          len: 'crwdns1988:0%{label}crwdnd1988:0%{len}crwdne1988:0'
+          min: 'crwdns1990:0%{label}crwdnd1990:0%{min}crwdne1990:0'
+          max: 'crwdns1992:0%{label}crwdnd1992:0%{max}crwdne1992:0'
+          range: 'crwdns1994:0%{label}crwdnd1994:0%{min}crwdnd1994:0%{max}crwdne1994:0'
+        number:
+          len: 'crwdns1996:0%{label}crwdnd1996:0%{len}crwdne1996:0'
+          min: 'crwdns1998:0%{label}crwdnd1998:0%{min}crwdne1998:0'
+          max: 'crwdns2000:0%{label}crwdnd2000:0%{max}crwdne2000:0'
+          range: 'crwdns2002:0%{label}crwdnd2002:0%{min}crwdnd2002:0%{max}crwdne2002:0'
+        array:
+          len: 'crwdns2004:0%{len}crwdnd2004:0%{label}crwdne2004:0'
+          min: 'crwdns2006:0%{min}crwdnd2006:0%{label}crwdne2006:0'
+          max: 'crwdns2008:0%{max}crwdnd2008:0%{label}crwdne2008:0'
+          range: 'crwdns2010:0%{label}crwdnd2010:0%{min}crwdnd2010:0%{max}crwdne2010:0'
+        pattern:
+          mismatch: 'crwdns2012:0%{label}crwdnd2012:0%{pattern}crwdne2012:0'
+    image:
+      preview: crwdns2014:0crwdne2014:0
   activerecord:
     attributes:
       doorkeeper/application:
@@ -440,6 +580,7 @@ io-EN:
     sessions:
       sign_in: crwdns1130:0crwdne1130:0
       sign_up: crwdns1132:0crwdne1132:0
+      reset_password: crwdns1790:0crwdne1790:0
       sign_in_to_brickdoc: crwdns1134:0crwdne1134:0
       more_login_options: crwdns1136:0crwdne1136:0
       login_via: "crwdns1138:0%{provider}crwdne1138:0"

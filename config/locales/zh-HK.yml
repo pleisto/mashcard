@@ -1,4 +1,4 @@
-zh-TW:
+zh-HK:
   meta:
     lang: zh-Hant
     dir: ltr
@@ -9,6 +9,146 @@ zh-TW:
   edge_link: https://www.microsoft.com/zh-tw/edge
   chrome_link: https://www.google.com/intl/zh-TW/chrome/
   firefox_link: https://www.mozilla.org/zh-TW/firefox/
+  design_system:
+    calendarPicker:
+      today: 今天
+      now: 此刻
+      backToToday: 返回今天
+      ok: 確定
+      clear: 清除
+      month: 月
+      year: 年
+      timeSelect: 選擇時間
+      dateSelect: 選擇日期
+      weekSelect: 選擇周
+      monthSelect: 選擇月份
+      yearSelect: 選擇年份
+      decadeSelect: 選擇年代
+      yearFormat: YYYY年
+      dateFormat: YYYY年M月D日
+      dayFormat: D日
+      dateTimeFormat: 'YYYY年M月D日 HH時mm分ss秒'
+      monthBeforeYear: true
+      previousMonth: 上個月 (翻頁上鍵)
+      nextMonth: 下個月 (翻頁下鍵)
+      previousYear: 上一年 (Control鍵加左方向鍵)
+      nextYear: 下一年 (Control鍵加右方向鍵)
+      previousDecade: 上一年代
+      nextDecade: 下一年代
+      previousCentury: 上一世紀
+      nextCentury: 下一世紀
+      placeholder: 请選擇日期
+      yearPlaceholder: 请選擇年份
+      quarterPlaceholder: 请選擇季度
+      monthPlaceholder: 请選擇月份
+      weekPlaceholder: 请選擇周
+      rangePlaceholder:
+        startDate: 開始日期
+        endDate: 結束日期
+      rangeYearPlaceholder:
+        startYear: 開始年份
+        endYear: 結束年份
+      rangeMonthPlaceholder:
+        startMonth: 開始月份
+        endMonth: 結束月份
+      rangeWeekPlaceholder:
+        startWeek: 開始周
+        endWeek: 結束周
+    timePicker:
+      placeholder: 请選擇日期
+      rangePlaceholder:
+        startTime: 開始時間
+        endTime: 結束時間
+    pagination:
+      itemsPerPage: '條/頁'
+      jumpTo: 跳至
+      jumpToConfirm: 確認
+      page: '頁'
+      prevPage: '上一頁'
+      nextPage: '下一頁'
+      prev5: '向前 5 頁'
+      next5: '向後 5 頁'
+      prev3: '向前 3 頁'
+      next3: '向後 3 頁'
+    global:
+      placeholder: 請選擇
+    table:
+      filterTitle: 篩選器
+      filterConfirm: 確定
+      filterReset: 重置
+      filterEmptyText: '無篩選項'
+      emptyText: '無此資料'
+      selectAll: '全部選取'
+      selectInvert: 反向選取
+      selectNone: 空所有
+      selectionAll: 全選所有
+      sortTitle: 排序
+      expand: 展開行
+      collapse: 關閉行
+      triggerDesc: 點擊降序
+      triggerAsc: 點擊升序
+      cancelSort: 取消排序
+    modal:
+      okText: 確定
+      cancelText: 取消
+      justOkText: 確定
+    popconfirm:
+      okText: 確定
+      cancelText: 取消
+    transfer:
+      titles:
+        first: ''
+        second: ''
+      searchPlaceholder: '搜尋資料'
+      itemUnit: '項目'
+      itemsUnit: '項目'
+      remove: 移除
+      selectCurrent: 選擇當前頁面
+      removeCurrent: 移除當前頁面
+      selectAll: 全選所有
+      removeAll: 移除所有
+      selectInvert: 反向選取
+    empty:
+      description: 無此資料
+    icon:
+      icon: 圖標
+    text:
+      edit: 編輯
+      copy: 複製
+      copied: 複製成功
+      expand: 展開
+    form:
+      optional: (optional)
+      defaultValidationMessages:
+        default: 字段驗證錯誤%{label}
+        required: 請輸入%{label}
+        enum: "%{label}必須是其中一個[%{enum}]"
+        whitespace: "%{label}不能為空字符"
+        types:
+          template: '%{label}不是一個有效的%{type}'
+        date:
+          format: '%{label} 日期格式無效'''
+          parse: '%{label}不能轉換為日期'
+          invalid: '%{label}是一個無效日期'
+        string:
+          len: '%{label}須為%{len}個字符'
+          min: '%{label}最少%{min}個字符'
+          max: '%{label}最多%{max}個字符'
+          range: '%{label}須在%{min}-%{max}字符之間'
+        number:
+          len: '%{label}必須等於%{len}'
+          min: '%{label}最小值為%{min}'
+          max: '%{label}最大值為%{max}'
+          range: '%{label}須在%{min}-%{max}字符之間'
+        array:
+          len: '須為%{len}個%{label}'
+          min: '最少%{min}個%{label}'
+          max: '最多%{max}個%{label}'
+          range: '%{label}數量須在%{min}-%{max}之間'
+        pattern:
+          mismatch: '%{label}與模式不匹配%{pattern}'
+    image:
+      preview: 預覽
   activerecord:
     attributes:
       doorkeeper/application:
@@ -424,7 +564,7 @@ zh-TW:
     sessions:
       sign_in: 登錄
       sign_up: 註冊
-      reset_password: Reset Password
+      reset_password: 重設密碼
       sign_in_to_brickdoc: 登錄 Brickdoc
       more_login_options: 更多登錄方式
       login_via: "使用 %{provider} 登錄"

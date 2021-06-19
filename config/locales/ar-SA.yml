@@ -9,6 +9,146 @@ ar-SA:
   edge_link: https://www.microsoft.com/ar-sa/edge
   chrome_link: https://www.google.com/intl/ar/chrome/
   firefox_link: https://www.mozilla.org/ar/firefox/new
+  design_system:
+    calendarPicker:
+      today: اليوم
+      now: الأن
+      backToToday: العودة إلى اليوم
+      ok: تأكيد
+      clear: مسح
+      month: الشهر
+      year: السنة
+      timeSelect: اختيار الوقت
+      dateSelect: اختيار التاريخ
+      weekSelect: اختر أسبوعًا
+      monthSelect: اختيار الشهر
+      yearSelect: اختيار السنة
+      decadeSelect: اختيار العقد
+      yearFormat: YYYY
+      dateFormat: M/D/YYYY
+      dayFormat: D
+      dateTimeFormat: 'M/D/YYYY HH:mm:ss'
+      monthBeforeYear: true
+      previousMonth: الشهر السابق (PageUp)
+      nextMonth: الشهر التالى(PageDown)
+      previousYear: العام السابق (Control + left)
+      nextYear: العام التالى (Control + right)
+      previousDecade: العقد السابق
+      nextDecade: العقد التالى
+      previousCentury: القرن السابق
+      nextCentury: القرن التالى
+      placeholder: اختيار التاريخ
+      yearPlaceholder: تحديد سنة
+      quarterPlaceholder: حدد الربع
+      monthPlaceholder: اختر الشهر
+      weekPlaceholder: حدد الأسبوع
+      rangePlaceholder:
+        startDate: تاريخ البدء
+        endDate: تاريخ الانتهاء
+      rangeYearPlaceholder:
+        startYear: سنة البدء
+        endYear: نهاية السنة
+      rangeMonthPlaceholder:
+        startMonth: شهر البدء
+        endMonth: نهاية الشهر
+      rangeWeekPlaceholder:
+        startWeek: بداية الأسبوع
+        endWeek: نهاية الأسبوع
+    timePicker:
+      placeholder: حدد الوقت
+      rangePlaceholder:
+        startTime: وقت البدء
+        endTime: وقت النهاية
+    pagination:
+      itemsPerPage: '/ الصفحة'
+      jumpTo: الذهاب إلى
+      jumpToConfirm: تأكيد
+      page: ''
+      prevPage: 'الصفحة السابقة'
+      nextPage: 'الصفحة التالية'
+      prev5: 'خمس صفحات سابقة'
+      next5: 'خمس صفحات تالية'
+      prev3: 'ثلاث صفحات سابقة'
+      next3: 'ثلاث صفحات تالية'
+    global:
+      placeholder: يُرجى الاختيار
+    table:
+      filterTitle: الفلاتر
+      filterConfirm: تأكيد
+      filterReset: إعادة ضبط
+      filterEmptyText: 'لا يوجد عامل تصفية'
+      emptyText: 'لا بيانات'
+      selectAll: 'اختيار الكل'
+      selectInvert: إلغاء الاختيار
+      selectNone: مسح البيانات
+      selectionAll: حدد جميع البيانات
+      sortTitle: رتب
+      expand: توسيع الصف
+      collapse: طي الصف
+      triggerDesc: ترتيب تنازلي
+      triggerAsc: ترتيب تصاعدي
+      cancelSort: إلغاء الترتيب
+    modal:
+      okText: تأكيد
+      cancelText: يلغي
+      justOkText: تأكيد
+    popconfirm:
+      okText: تأكيد
+      cancelText: يلغي
+    transfer:
+      titles:
+        first: ''
+        second: ''
+      searchPlaceholder: 'ابحث هنا'
+      itemUnit: 'عنصر'
+      itemsUnit: 'عناصر'
+      remove: ازالة
+      selectCurrent: اختيار الكل
+      removeCurrent: إزالة الصفحة الحالية
+      selectAll: حدد جميع البيانات
+      removeAll: قم بإزالة كافة البيانات
+      selectInvert: إلغاء الاختيار
+    empty:
+      description: لا توجد بيانات
+    icon:
+      icon: أيقونة
+    text:
+      edit: تحرير
+      copy: انسخ
+      copied: تم النسخ
+      expand: وسع
+    form:
+      optional: (إختياري)
+      defaultValidationMessages:
+        default: خطأ في التحقق من صحة الحقل لـ %{label}
+        required: الرجاء إدخال %{label}
+        enum: "يجب أن تكون %{label} واحدة من [%{enum}]"
+        whitespace: "لا يمكن أن يكون %{label} حرف فارغ"
+        types:
+          template: '%{label} غير صالحة %{type}'
+        date:
+          format: '%{label} تنسيق التاريخ غير صحيح'
+          parse: '%{label} لا يمكن تحويلها إلى تاريخ'
+          invalid: 'تاريخ %{label} غير صحيح'
+        string:
+          len: 'يجب %{label} ان يكون %{len} أحرف'
+          min: '%{label} يجب أن يكون حرفًا %{min}'
+          max: '%{label} يجب أن تصل إلى %{max} الأحرف'
+          range: '%{label} يجب أن تكون بين %{min}-%{max} الأحرف'
+        number:
+          len: '%{label} يجب أن يساوي %{len}'
+          min: '%{label} يجب أن يكون الحد الأدنى %{min}'
+          max: 'يجب أن يكون %{label} أقصى %{max}'
+          range: 'يجب أن يكون الرقم %{label} %{min}-%{max}'
+        array:
+          len: 'يجب أن يكون %{len} %{label}'
+          min: 'على الأقل %{min} %{label}'
+          max: 'على الأكثر %{max} %{label}'
+          range: 'كمية من %{label} يجب أن تكون بين %{min}-%{max}'
+        pattern:
+          mismatch: '%{label} لا يطابق نمط %{pattern}'
+    image:
+      preview: معاينة
   activerecord:
     attributes:
       doorkeeper/application:
@@ -504,6 +644,7 @@ ar-SA:
     sessions:
       sign_in: تسجيل الدخول
       sign_up: التسجيل
+      reset_password: إعادة ضبط كلمة المرور
       sign_in_to_brickdoc: تسجيل الدخول إلى Brickdoc
       more_login_options: المزيد من خيارات تسجيل الدخول
       login_via: "تسجيل الدخول باستخدام %{provider}"

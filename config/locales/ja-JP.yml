@@ -9,6 +9,146 @@ ja-JP:
   edge_link: https://www.microsoft.com/ja-jp/edge
   chrome_link: https://www.google.com/chrome/
   firefox_link: https://www.mozilla.org/ja/firefox/new/
+  design_system:
+    calendarPicker:
+      today: 今日
+      now: 現在時刻
+      backToToday: 今日に戻る
+      ok: 決定
+      clear: クリア
+      month: 月
+      year: 年
+      timeSelect: 時間を選択
+      dateSelect: 日時を選択
+      weekSelect: 週を選択
+      monthSelect: 月を選択
+      yearSelect: 年を選択
+      decadeSelect: 年代を選択
+      yearFormat: YYYY年
+      dateFormat: YYYY年M月D日
+      dayFormat: D日
+      dateTimeFormat: 'YYYY年M月D日 HH時mm分ss秒'
+      monthBeforeYear: true
+      previousMonth: 前月 (ページアップキー)'
+      nextMonth: 翌月 (ページダウンキー)
+      previousYear: 前年 (Controlを押しながら左キー)
+      nextYear: 翌年 (Controlを押しながら右キー)
+      previousDecade: 前の年代
+      nextDecade: 次の年代
+      previousCentury: 前の世紀
+      nextCentury: 次の世紀
+      placeholder: 日付を選択
+      yearPlaceholder: 年を選択
+      quarterPlaceholder: 四半期の選択
+      monthPlaceholder: 月を選択
+      weekPlaceholder: 週を選択
+      rangePlaceholder:
+        startDate: 開始日
+        endDate: 終了日
+      rangeYearPlaceholder:
+        startYear: 開始年
+        endYear: 終了年
+      rangeMonthPlaceholder:
+        startMonth: 開始月
+        endMonth: 終了月
+      rangeWeekPlaceholder:
+        startWeek: 開始週
+        endWeek: 終了週
+    timePicker:
+      placeholder: 時間を選択
+      rangePlaceholder:
+        startTime: 開始日時
+        endTime: 終了日時
+    pagination:
+      itemsPerPage: '件 / ページ'
+      jumpTo: 移動
+      jumpToConfirm: 確認する
+      page: 'ページ'
+      prevPage: '前のページ'
+      nextPage: '次のページ'
+      prev5: '前 5ページ'
+      next5: '次 5ページ'
+      prev3: '前 3ページ'
+      next3: '次 3ページ'
+    global:
+      placeholder: 選択してください
+    table:
+      filterTitle: フィルター
+      filterConfirm: 決定
+      filterReset: リセット
+      filterEmptyText: 'フィルターなし'
+      emptyText: 'データがありません'
+      selectAll: 'ページ単位で選択'
+      selectInvert: ページ単位で反転
+      selectNone: すべてのデータを消去
+      selectionAll: すべてを選択
+      sortTitle: ソート
+      expand: 展開する
+      collapse: 折り畳む
+      triggerDesc: クリックで降順にソート
+      triggerAsc: クリックで昇順にソート
+      cancelSort: ソートをキャンセル
+    modal:
+      okText: 決定
+      cancelText: キャンセル
+      justOkText: 決定
+    popconfirm:
+      okText: 決定
+      cancelText: キャンセル
+    transfer:
+      titles:
+        first: ''
+        second: ''
+      searchPlaceholder: 'ここを検索'
+      itemUnit: 'アイテム'
+      itemsUnit: 'アイテム'
+      remove: 削除
+      selectCurrent: ページ単位で選択
+      removeCurrent: 現在のページを削除する
+      selectAll: すべてを選択
+      removeAll: すべてのデータを削除する
+      selectInvert: ページ単位で反転
+    empty:
+      description: データがありません
+    icon:
+      icon: Icon
+    text:
+      edit: 編集
+      copy: 複製
+      copied: コピーしました
+      expand: 展開する
+    form:
+      optional: "(オプション)\n"
+      defaultValidationMessages:
+        default: '%{label}のフィールド検証エラー'
+        required: '%{label}を入力してください'
+        enum: "%{label}は[%{enum}]のいずれかである必要があります"
+        whitespace: "%{label}は空白文字にすることはできません"
+        types:
+          template: '%{label}は有効な%{type}ではありません'
+        date:
+          format: '%{label}の日付形式は不正です'
+          parse: '%{label}日付に変換できません'
+          invalid: '%{label}は不正な日付です'
+        string:
+          len: '%{label}は%{len}文字である必要があります'
+          min: '%{label}は%{min}文字以上である必要があります'
+          max: '%{label}は%{max}文字以下である必要があります'
+          range: '%{label}は%{min}-%{max}文字の範囲である必要があります'
+        number:
+          len: '%{label}は%{len}と等しい必要があります'
+          min: '%{label}の最小値は%{min}です'
+          max: '%{label}の最大値は%{max}です'
+          range: '%{label}は%{min}-%{max}の範囲である必要があります'
+        array:
+          len: '%{label}は%{len}である必要があります'
+          min: '%{label}の最小は%{min}です'
+          max: '%{label}の最大は%{max}です'
+          range: '%{label}の合計は%{min}-%{max}の範囲である必要があります'
+        pattern:
+          mismatch: '%{label}はパターン%{pattern}と一致しません'
+    image:
+      preview: プレビュー
   activerecord:
     attributes:
       doorkeeper/application:
@@ -424,6 +564,7 @@ ja-JP:
     sessions:
       sign_in: サインイン
       sign_up: サインアップ
+      reset_password: パスワードリセット
       sign_in_to_brickdoc: Brickdocにサインインする
       more_login_options: 追加のログインオプション
       login_via: "%{provider} を使用してサインインする"
