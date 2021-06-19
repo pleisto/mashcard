@@ -6,10 +6,10 @@ module Brickdoc
     AVAILABLE_LANGUAGES = {
       'en-US': 'English',
       'zh-CN': '简体中文',
-      'zh-TW': '繁體中文',
+      # 'zh-TW': '繁體中文 (Taiwan, Province of China)',
       'ja-JP': '日本語',
-      'ar-SA': 'اَلْعَرَبِيَّةُ'
-      # 'zh-HK': '繁體中文 (港澳地區)'
+      'ar-SA': 'اَلْعَرَبِيَّةُ',
+      'zh-HK': '繁體中文'
     }
 
     # ignore this on I18Next
@@ -22,7 +22,7 @@ module Brickdoc
 
     def fallbacks
       {
-        'zh-HK': :'zh-TW',
+        'zh-TW': :'zh-HK',
         'en-US': :en
       }
     end

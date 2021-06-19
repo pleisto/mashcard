@@ -6,9 +6,9 @@ zh-HK:
     noscript_url: https://support.google.com/admanager/answer/12654?hl=zh-Hant
   'Your browser is out of date': 你的瀏覽器內核版本過舊
   download_latest_browser_html: 請升級您的瀏覽器至最新版本或使用下面的推薦瀏覽器 Brickodc： <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">Google Chrome</a>, <a href="%{firefox}" rel="nofollow">Firefox</a>
-  edge_link: https://www.microsoft.com/zh-tw/edge
-  chrome_link: https://www.google.com/intl/zh-TW/chrome/
-  firefox_link: https://www.mozilla.org/zh-TW/firefox/
+  edge_link: https://www.microsoft.com/zh-hk/edge
+  chrome_link: https://www.google.com/intl/zh-HK/chrome/
+  firefox_link: https://www.mozilla.org/zh-HK/firefox/
   design_system:
     calendarPicker:
       today: 今天
