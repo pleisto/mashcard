@@ -55,7 +55,7 @@ module Accounts
     def federated_identity_sign_up(user)
       omniauth = context[:session][:omniauth].with_indifferent_access
       user.email = omniauth[:info][:email]
-      user.avatar_key = omniauth[:info][:avatar]
+      user.avatar_uri = omniauth[:info][:avatar]
       user.omniauth_provider = omniauth[:provider]
       user.omniauth_uid = omniauth[:uid]
     end

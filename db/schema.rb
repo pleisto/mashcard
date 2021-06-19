@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_125026) do
+ActiveRecord::Schema.define(version: 2021_06_19_175027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,7 @@ ActiveRecord::Schema.define(version: 2021_06_06_125026) do
     t.index ["provider", "uid"], name: "index_accounts_federated_identities_on_provider_and_uid", unique: true
   end
 
-  create_table "accounts_pods", force: :cascade do |t|
-    t.string "type", limit: 20, null: false
-    t.string "webid", null: false
-    t.string "name", null: false
-    t.bigint "owner_id"
+  create_table "accounts_users", force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -47,22 +43,16 @@ ActiveRecord::Schema.define(version: 2021_06_06_125026) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.string "avatar_key", limit: 128, comment: "object key for bucket that stored avatar."
-    t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
-    t.string "location", limit: 50
     t.string "locale", limit: 17, comment: "BCP47 language codes."
     t.string "timezone"
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "lower((webid)::text)", name: "index_accounts_pods_on_lower_webid_text", unique: true
-    t.index ["confirmation_token"], name: "index_accounts_pods_on_confirmation_token", unique: true
-    t.index ["deleted_at"], name: "index_accounts_pods_on_deleted_at"
-    t.index ["email"], name: "index_accounts_pods_on_email", unique: true
-    t.index ["owner_id"], name: "index_accounts_pods_on_owner_id"
-    t.index ["reset_password_token"], name: "index_accounts_pods_on_reset_password_token", unique: true
-    t.index ["type"], name: "index_accounts_pods_on_type"
-    t.index ["unlock_token"], name: "index_accounts_pods_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_accounts_users_on_confirmation_token", unique: true
+    t.index ["deleted_at"], name: "index_accounts_users_on_deleted_at"
+    t.index ["email"], name: "index_accounts_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_accounts_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_accounts_users_on_unlock_token", unique: true
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -79,6 +69,21 @@ ActiveRecord::Schema.define(version: 2021_06_06_125026) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
+  end
+
+  create_table "pods", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.string "webid", null: false
+    t.string "name", null: false
+    t.string "avatar_uri", limit: 128, comment: "\"object key for bucket or url that stored avatar."
+    t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
+    t.boolean "personal", default: false, null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "lower((webid)::text)", name: "index_pods_on_lower_webid_text", unique: true
+    t.index ["deleted_at"], name: "index_pods_on_deleted_at"
+    t.index ["owner_id"], name: "index_pods_on_owner_id"
   end
 
   create_table "settings", force: :cascade do |t|

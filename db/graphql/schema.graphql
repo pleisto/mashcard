@@ -98,13 +98,6 @@ type RootMutation {
 
 type RootQuery {
   """
-  Check webid available.
-  Required `context[:entrypoints]` is `[:internal]`.
-  Required `context[:entrypoints]` is `[:internal]`.
-  """
-  accountsWebidAvailable(webid: String!): Boolean!
-
-  """
   provides a federated identity session data
   Required `context[:entrypoints]` is `[:internal]`.
   Required `context[:entrypoints]` is `[:internal]`.
@@ -115,6 +108,13 @@ type RootQuery {
   Return information about current Brickdoc server instance.
   """
   metadata: metadata!
+
+  """
+  Check webid available.
+  Required `context[:entrypoints]` is `[:internal]`.
+  Required `context[:entrypoints]` is `[:internal]`.
+  """
+  webidAvailable(webid: String!): Boolean!
 }
 
 """

@@ -45,7 +45,6 @@ describe Accounts::Mutations::UserCreate, type: :mutation do
           'avatar' => nil
         }
       }
-      puts request.session
 
       variables = {
         input: {

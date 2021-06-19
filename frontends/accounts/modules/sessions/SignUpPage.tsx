@@ -6,7 +6,8 @@ import {
 } from "@/BrickdocGraphQL"
 import { useBoolean } from 'ahooks'
 import { useSignUpInitialValues } from "./hooks/useSignUpInitialValues"
-import { useConfirmationValidator, useWebidAvailableValidator , useAccountsI18n } from "@/accounts/modules/common/hooks"
+import { useWebidAvailableValidator } from "@/common/hooks"
+import { useConfirmationValidator , useAccountsI18n } from "@/accounts/modules/common/hooks"
 import { pick, omit } from 'lodash'
 import { mutationResultHandler } from "@/utils"
 import { Form, Input, Button, Skeleton, message } from "@brickdoc/design-system"

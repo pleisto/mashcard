@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-describe Accounts::Queries::AccountsWebidAvailable, type: :query do
+describe System::Queries::WebidAvailable, type: :query do
   describe '#resolver' do
     query = <<-'GRAPHQL'
-       query QueryAccountWebidAvailable($webid: String!) {
-         accountsWebidAvailable(webid: $webid)
+       query QueryWebidAvailable($webid: String!) {
+         webidAvailable(webid: $webid)
        }
     GRAPHQL
 
@@ -17,15 +17,15 @@ describe Accounts::Queries::AccountsWebidAvailable, type: :query do
     it 'works' do
       internal_graphql_execute(query, { webid: 'admin' })
       expect(response.success?).to be true
-      expect(response.data['accountsWebidAvailable']).to be false
+      expect(response.data['webidAvailable']).to be false
       internal_graphql_execute(query, { webid: 'legitimate-name-example' })
-      expect(response.data['accountsWebidAvailable']).to be true
+      expect(response.data['webidAvailable']).to be true
     end
 
     it 'expect webid uniqueness' do
-      stub = create(:accounts_team)
+      stub = create(:pod)
       internal_graphql_execute(query, { webid: stub.webid })
-      expect(response.data['accountsWebidAvailable']).to be false
+      expect(response.data['webidAvailable']).to be false
     end
   end
 end

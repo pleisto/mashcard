@@ -15,4 +15,10 @@ describe Accounts::User, type: :model do
       expect(user).to be_valid
     end
   end
+
+  context '.personal_pod' do
+    it 'should personal pod created' do
+      expect(Pod.find_by(personal: true, owner_id: create(:accounts_user).id)).to be_present
+    end
+  end
 end

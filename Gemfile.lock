@@ -410,7 +410,7 @@ GEM
       fugit (~> 1.1)
       sidekiq (>= 4.2.1)
     smart_properties (1.15.0)
-    sorbet-runtime (0.5.6445)
+    sorbet-runtime (0.5.6453)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)

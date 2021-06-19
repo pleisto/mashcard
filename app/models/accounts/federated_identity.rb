@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Accounts::FederatedIdentity < ApplicationRecord
-  belongs_to :accounts_user, class_name: 'Accounts::User'
+  belongs_to :user, class_name: 'Accounts::User', foreign_key: :accounts_user_id
 
   second_level_cache expires_in: 1.week
 

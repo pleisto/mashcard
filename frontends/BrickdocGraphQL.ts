@@ -69,12 +69,6 @@ export type RootMutationUserSignOutArgs = {
 export type RootQuery = {
   __typename?: 'RootQuery'
   /**
-   * Check webid available.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   * Required `context[:entrypoints]` is `[:internal]`.
-   */
-  accountsWebidAvailable: Scalars['Boolean']
-  /**
    * provides a federated identity session data
    * Required `context[:entrypoints]` is `[:internal]`.
    * Required `context[:entrypoints]` is `[:internal]`.
@@ -82,9 +76,15 @@ export type RootQuery = {
   federatedIdentitySession: OmniauthSession
   /** Return information about current Brickdoc server instance. */
   metadata: Metadata
+  /**
+   * Check webid available.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   */
+  webidAvailable: Scalars['Boolean']
 }
 
-export type RootQueryAccountsWebidAvailableArgs = {
+export type RootQueryWebidAvailableArgs = {
   webid: Scalars['String']
 }
 
@@ -262,14 +262,6 @@ export type Select_Option = {
   value: Scalars['String']
 }
 
-export type GetAvailableLocalesFromWsQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetAvailableLocalesFromWsQuery = { __typename?: 'RootQuery' } & {
-  metadata: { __typename?: 'metadata' } & Pick<Metadata, 'id'> & {
-      availableLocales: Array<{ __typename?: 'select_option' } & Pick<Select_Option, 'label' | 'value'>>
-    }
-}
-
 export type UserSignOutMutationVariables = Exact<{
   input: UserSignOutInput
 }>
@@ -288,12 +280,6 @@ export type GetAccountsConfigFromWsQuery = { __typename?: 'RootQuery' } & {
       > & { accountsFederatedProviders: Array<{ __typename?: 'federatedProvider' } & Pick<FederatedProvider, 'name' | 'logo'>> }
     }
 }
-
-export type QueryAccountWebidAvailableFromWsQueryVariables = Exact<{
-  webid: Scalars['String']
-}>
-
-export type QueryAccountWebidAvailableFromWsQuery = { __typename?: 'RootQuery' } & Pick<RootQuery, 'accountsWebidAvailable'>
 
 export type UserForgetPasswordMailSendMutationVariables = Exact<{
   input: UserForgetPasswordMailSendInput
@@ -347,57 +333,20 @@ export type UserConfirmationEmailResendMutation = { __typename?: 'RootMutation' 
   >
 }
 
-export const GetAvailableLocalesFromWsDocument = gql`
-  query GetAvailableLocalesFromWS {
-    metadata {
-      id
-      availableLocales {
-        label
-        value
-      }
-    }
-  }
-`
+export type QueryWebidAvailableFromWsQueryVariables = Exact<{
+  webid: Scalars['String']
+}>
 
-/**
- * __useGetAvailableLocalesFromWsQuery__
- *
- * To run a query within a React component, call `useGetAvailableLocalesFromWsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAvailableLocalesFromWsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAvailableLocalesFromWsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAvailableLocalesFromWsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>(
-    GetAvailableLocalesFromWsDocument,
-    options
-  )
+export type QueryWebidAvailableFromWsQuery = { __typename?: 'RootQuery' } & Pick<RootQuery, 'webidAvailable'>
+
+export type GetAvailableLocalesFromWsQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetAvailableLocalesFromWsQuery = { __typename?: 'RootQuery' } & {
+  metadata: { __typename?: 'metadata' } & Pick<Metadata, 'id'> & {
+      availableLocales: Array<{ __typename?: 'select_option' } & Pick<Select_Option, 'label' | 'value'>>
+    }
 }
-export function useGetAvailableLocalesFromWsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>(
-    GetAvailableLocalesFromWsDocument,
-    options
-  )
-}
-export type GetAvailableLocalesFromWsQueryHookResult = ReturnType<typeof useGetAvailableLocalesFromWsQuery>
-export type GetAvailableLocalesFromWsLazyQueryHookResult = ReturnType<typeof useGetAvailableLocalesFromWsLazyQuery>
-export type GetAvailableLocalesFromWsQueryResult = Apollo.QueryResult<
-  GetAvailableLocalesFromWsQuery,
-  GetAvailableLocalesFromWsQueryVariables
->
+
 export const UserSignOutDocument = gql`
   mutation userSignOut($input: UserSignOutInput!) {
     userSignOut(input: $input) {
@@ -478,52 +427,6 @@ export function useGetAccountsConfigFromWsLazyQuery(
 export type GetAccountsConfigFromWsQueryHookResult = ReturnType<typeof useGetAccountsConfigFromWsQuery>
 export type GetAccountsConfigFromWsLazyQueryHookResult = ReturnType<typeof useGetAccountsConfigFromWsLazyQuery>
 export type GetAccountsConfigFromWsQueryResult = Apollo.QueryResult<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>
-export const QueryAccountWebidAvailableFromWsDocument = gql`
-  query QueryAccountWebidAvailableFromWS($webid: String!) {
-    accountsWebidAvailable(webid: $webid)
-  }
-`
-
-/**
- * __useQueryAccountWebidAvailableFromWsQuery__
- *
- * To run a query within a React component, call `useQueryAccountWebidAvailableFromWsQuery` and pass it any options that fit your needs.
- * When your component renders, `useQueryAccountWebidAvailableFromWsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useQueryAccountWebidAvailableFromWsQuery({
- *   variables: {
- *      webid: // value for 'webid'
- *   },
- * });
- */
-export function useQueryAccountWebidAvailableFromWsQuery(
-  baseOptions: Apollo.QueryHookOptions<QueryAccountWebidAvailableFromWsQuery, QueryAccountWebidAvailableFromWsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<QueryAccountWebidAvailableFromWsQuery, QueryAccountWebidAvailableFromWsQueryVariables>(
-    QueryAccountWebidAvailableFromWsDocument,
-    options
-  )
-}
-export function useQueryAccountWebidAvailableFromWsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<QueryAccountWebidAvailableFromWsQuery, QueryAccountWebidAvailableFromWsQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<QueryAccountWebidAvailableFromWsQuery, QueryAccountWebidAvailableFromWsQueryVariables>(
-    QueryAccountWebidAvailableFromWsDocument,
-    options
-  )
-}
-export type QueryAccountWebidAvailableFromWsQueryHookResult = ReturnType<typeof useQueryAccountWebidAvailableFromWsQuery>
-export type QueryAccountWebidAvailableFromWsLazyQueryHookResult = ReturnType<typeof useQueryAccountWebidAvailableFromWsLazyQuery>
-export type QueryAccountWebidAvailableFromWsQueryResult = Apollo.QueryResult<
-  QueryAccountWebidAvailableFromWsQuery,
-  QueryAccountWebidAvailableFromWsQueryVariables
->
 export const UserForgetPasswordMailSendDocument = gql`
   mutation userForgetPasswordMailSend($input: UserForgetPasswordMailSendInput!) {
     userForgetPasswordMailSend(input: $input) {
@@ -776,4 +679,101 @@ export type UserConfirmationEmailResendMutationResult = Apollo.MutationResult<Us
 export type UserConfirmationEmailResendMutationOptions = Apollo.BaseMutationOptions<
   UserConfirmationEmailResendMutation,
   UserConfirmationEmailResendMutationVariables
+>
+export const QueryWebidAvailableFromWsDocument = gql`
+  query QueryWebidAvailableFromWS($webid: String!) {
+    webidAvailable(webid: $webid)
+  }
+`
+
+/**
+ * __useQueryWebidAvailableFromWsQuery__
+ *
+ * To run a query within a React component, call `useQueryWebidAvailableFromWsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryWebidAvailableFromWsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryWebidAvailableFromWsQuery({
+ *   variables: {
+ *      webid: // value for 'webid'
+ *   },
+ * });
+ */
+export function useQueryWebidAvailableFromWsQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryWebidAvailableFromWsQuery, QueryWebidAvailableFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<QueryWebidAvailableFromWsQuery, QueryWebidAvailableFromWsQueryVariables>(
+    QueryWebidAvailableFromWsDocument,
+    options
+  )
+}
+export function useQueryWebidAvailableFromWsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryWebidAvailableFromWsQuery, QueryWebidAvailableFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryWebidAvailableFromWsQuery, QueryWebidAvailableFromWsQueryVariables>(
+    QueryWebidAvailableFromWsDocument,
+    options
+  )
+}
+export type QueryWebidAvailableFromWsQueryHookResult = ReturnType<typeof useQueryWebidAvailableFromWsQuery>
+export type QueryWebidAvailableFromWsLazyQueryHookResult = ReturnType<typeof useQueryWebidAvailableFromWsLazyQuery>
+export type QueryWebidAvailableFromWsQueryResult = Apollo.QueryResult<
+  QueryWebidAvailableFromWsQuery,
+  QueryWebidAvailableFromWsQueryVariables
+>
+export const GetAvailableLocalesFromWsDocument = gql`
+  query GetAvailableLocalesFromWS {
+    metadata {
+      id
+      availableLocales {
+        label
+        value
+      }
+    }
+  }
+`
+
+/**
+ * __useGetAvailableLocalesFromWsQuery__
+ *
+ * To run a query within a React component, call `useGetAvailableLocalesFromWsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAvailableLocalesFromWsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAvailableLocalesFromWsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAvailableLocalesFromWsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>(
+    GetAvailableLocalesFromWsDocument,
+    options
+  )
+}
+export function useGetAvailableLocalesFromWsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetAvailableLocalesFromWsQuery, GetAvailableLocalesFromWsQueryVariables>(
+    GetAvailableLocalesFromWsDocument,
+    options
+  )
+}
+export type GetAvailableLocalesFromWsQueryHookResult = ReturnType<typeof useGetAvailableLocalesFromWsQuery>
+export type GetAvailableLocalesFromWsLazyQueryHookResult = ReturnType<typeof useGetAvailableLocalesFromWsLazyQuery>
+export type GetAvailableLocalesFromWsQueryResult = Apollo.QueryResult<
+  GetAvailableLocalesFromWsQuery,
+  GetAvailableLocalesFromWsQueryVariables
 >

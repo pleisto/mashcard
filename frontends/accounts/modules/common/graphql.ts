@@ -1,16 +1,5 @@
 import { gql } from '@apollo/client'
 
-export const getAvaailableLocales = gql`
-  query GetAvailableLocalesFromWS {
-    metadata {
-      id
-      availableLocales {
-        label
-        value
-      }
-    }
-  }
-`
 
 export const UserSignOut = gql`
   mutation userSignOut($input: UserSignOutInput!) {
@@ -34,11 +23,5 @@ export const getAccountsConfig = gql`
         }
       }
     }
-  }
-`
-
-export const queryAccountWebidExists = gql`
-  query QueryAccountWebidAvailableFromWS($webid: String!) {
-    accountsWebidAvailable(webid: $webid)
   }
 `

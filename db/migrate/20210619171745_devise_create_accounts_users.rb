@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateAccountsPods < ActiveRecord::Migration[6.1]
+class DeviseCreateAccountsUsers < ActiveRecord::Migration[6.1]
   def change
-    create_table :accounts_pods do |t|
-      t.string :type, limit: 20, null: false, index: true
-      t.string :webid, null: false
-      t.string :name, null: false
-      t.belongs_to :owner, null: true
-
+    create_table :accounts_users do |t|
       ## Database authenticatable
       t.string :email,              null: true
       t.string :encrypted_password, null: false, default: ""
@@ -37,9 +32,6 @@ class DeviseCreateAccountsPods < ActiveRecord::Migration[6.1]
       t.string   :unlock_token # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
-      t.string :avatar_key, limit: 128, comment: "object key for bucket that stored avatar."
-      t.string :bio, limit: 140, comment: "\"Bio\" means Biography in social media."
-      t.string :location, limit: 50
       t.string :locale, limit: 17, comment: "BCP47 language codes."
       t.string :timezone
       t.datetime :deleted_at, index: true
@@ -47,10 +39,9 @@ class DeviseCreateAccountsPods < ActiveRecord::Migration[6.1]
       t.timestamps null: false
     end
 
-    add_index :accounts_pods, 'lower((webid)::text)', unique: true
-    add_index :accounts_pods, :email,                unique: true
-    add_index :accounts_pods, :reset_password_token, unique: true
-    add_index :accounts_pods, :confirmation_token,   unique: true
-    add_index :accounts_pods, :unlock_token,         unique: true
+    add_index :accounts_users, :email,                unique: true
+    add_index :accounts_users, :reset_password_token, unique: true
+    add_index :accounts_users, :confirmation_token,   unique: true
+    add_index :accounts_users, :unlock_token,         unique: true
   end
 end
