@@ -92,6 +92,9 @@ GEM
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2)
       equalizer (~> 0.0.11)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     apollo_upload_server (2.0.5)
       actionpack (>= 4.2)
       graphql (>= 1.8)
@@ -470,6 +473,7 @@ DEPENDENCIES
   action_policy (~> 0.5.7)
   action_policy-graphql (~> 0.5.3)
   actionview_precompiler
+  annotate
   apollo_upload_server (~> 2.0, >= 2.0.5)
   bootsnap (>= 1.4.4)
   brakeman

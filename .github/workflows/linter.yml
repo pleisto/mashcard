@@ -58,7 +58,6 @@ jobs:
         run: yarn lint
       - name: Run Migrate
         env:
-          RAILS_ENV: test
           POSTGRES_PASS: 123456
         run: bundle exec rails db:create db:migrate db:seed
       - name: Run Spec
@@ -76,6 +75,7 @@ jobs:
         run: yarn graphql
       - name: Add and commit everything
         uses: EndBug/add-and-commit@v7
+        if: github.ref != 'refs/heads/master'
         env:
           HUSKY: 0
         with:
