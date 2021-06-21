@@ -20,7 +20,7 @@
       <% # noscript and PageLoader inline style %>
       noscript { display: block; background: #fff2f0; color: #292929; z-index: 999; width: 100%; min-height: 3rem; position: fixed; top: 0; padding: 8px; } noscript .icon { vertical-align: -0.125em; color: #ff4d4f; }
     </style>
-    <%= stylesheet_pack_tag 'accounts' %>
+    <%= yield :stylesheet_head %>
     <%= render partial: 'layouts/context' %>
   </head>
   <body>

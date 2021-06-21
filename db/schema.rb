@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_175027) do
+ActiveRecord::Schema.define(version: 2021_06_19_175028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,26 @@ ActiveRecord::Schema.define(version: 2021_06_19_175027) do
     t.index ["email"], name: "index_accounts_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_accounts_users_on_unlock_token", unique: true
+  end
+
+  create_table "docs_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "pod_id"
+    t.string "type", limit: 32
+    t.uuid "parent_id"
+    t.string "parent_type", limit: 32
+    t.jsonb "meta", default: {}, null: false, comment: "metadata"
+    t.jsonb "data", null: false, comment: "data props"
+    t.uuid "children", array: true
+    t.bigint "version", default: 0, null: false
+    t.bigint "collaborators", default: [], null: false, array: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["children"], name: "index_docs_blocks_on_children", using: :gin
+    t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
+    t.index ["deleted_at"], name: "index_docs_blocks_on_deleted_at"
+    t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
+    t.index ["pod_id"], name: "index_docs_blocks_on_pod_id"
   end
 
   create_table "flipper_features", force: :cascade do |t|

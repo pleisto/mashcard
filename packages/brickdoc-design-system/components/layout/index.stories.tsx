@@ -20,7 +20,7 @@ The first level navigation is left aligned near a logo, and the secondary menu i
 - Top Navigation: the height of the first level navigation \`64px\`, the second level navigation \`48px\`.
 - Top Navigation (for landing pages): the height of the first level navigation \`80px\`, the second level navigation \`56px\`.
 - Calculation formula of a top navigation: \`48+8n\`.
-- Calculation formula of an aside navigation: \`200+8n\`.
+- Calculation formula of an aside navigation: \`270+8n\`.
 
 ### Interaction rules
 
@@ -99,9 +99,9 @@ The sidebar.
 | defaultCollapsed | To set the initial status | boolean | false |
 | reverseArrow | Reverse direction of arrow, for a sider that expands from the right | boolean | false |
 | style | To customize the styles | CSSProperties | - |
-| theme | Color theme of the sidebar | \`light\` \\| \`dark\` | \`dark\` |
+| theme | Color theme of the sidebar | \`light\` \\| \`dark\` | \`light\` |
 | trigger | Specify the customized trigger, set to null to hide the trigger | ReactNode | - |
-| width | Width of the sidebar | number \\| string | 200 |
+| width | Width of the sidebar | number \\| string | 270 |
 | zeroWidthTriggerStyle | To customize the styles of the special trigger that appears when \`collapsedWidth\` is 0 | object | - |
 | onBreakpoint | The callback function, executed when breakpoints changed | (broken) => {} | - |
 | onCollapse | The callback function, executed by clicking the trigger or activating the responsive layout | (collapsed, type) => {} | - |

@@ -2,6 +2,8 @@ import React, { Suspense } from 'react'
 import { ApolloProvider } from '@apollo/client'
 import { Spin, ConfigProvider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
+import { apolloClient } from '@/common/apollo'
+import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/inMemoryCache'
 
 interface globalContext {
   internalApiEndpoint: string,
@@ -28,15 +30,20 @@ BrickdocContext.displayName = 'BrickdocGlobalConfig'
 
 const direction = globalThis.brickdocContext.rtl ? 'rtl':'ltr'
 
+interface ProviderInterface {
+  cacheConfig?: InMemoryCacheConfig
+}
 
-export default (props)=>{
+
+const PWAProvider: React.FC<ProviderInterface> = (props) =>{
   return <React.StrictMode>
       <Suspense fallback={<Spin delay={1000}  />}>
         <ConfigProvider direction={direction} i18n={globalThis.i18n}>
-        <ApolloProvider client={globalThis.brickdocContext.gqlClient}>
+        <ApolloProvider client={apolloClient(props.cacheConfig)}>
           <HelmetProvider>{props.children}</HelmetProvider>
         </ApolloProvider>
         </ConfigProvider>
       </Suspense>
   </React.StrictMode>
 }
+export default PWAProvider

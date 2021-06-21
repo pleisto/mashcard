@@ -1,0 +1,19 @@
+@import '~@brickdoc/design-system/components/style/themes';
+.select{
+  display: flex;
+  padding: 1.5rem;
+  &:hover{
+    cursor: pointer;
+    background: @layout-trigger-background-light;
+  }
+}
+
+.name{
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  :global(.brk-icon){
+    margin-left: .5rem;
+    color: @text-color-secondary;
+  }
+}

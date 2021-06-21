@@ -77,8 +77,8 @@ Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 
 // The background colors for active and hover states for things like
 // list items or table cells.
-@item-active-bg: @primary-1;
-@item-hover-bg: #f5f5f5;
+@item-active-bg: #c4c4c4;
+@item-hover-bg: #eaeaea;
 
 // ICONFONT
 @iconfont-css-prefix: brk-icon;
@@ -228,7 +228,7 @@ Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 @divider-color: rgba(0, 0, 0, 6%);
 
 // Dropdown
-@dropdown-selected-color: @primary-color;
+@dropdown-selected-color: @text-color;
 @dropdown-menu-submenu-disabled-bg: @component-background;
 
 // Empty
@@ -291,22 +291,22 @@ Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 @grid-columns: 24;
 
 // Layout
-@layout-body-background: #f0f2f5;
+@layout-body-background: @component-background;
 @layout-header-background: #001529;
 @layout-header-height: 64px;
 @layout-header-padding: 0 50px;
 @layout-header-color: @text-color;
 @layout-footer-padding: 24px 50px;
 @layout-footer-background: @layout-body-background;
-@layout-sider-background: @layout-header-background;
+@layout-sider-background: @layout-header-background; // dark theme
 @layout-trigger-height: 48px;
 @layout-trigger-background: #002140;
 @layout-trigger-color: #fff;
 @layout-zero-trigger-width: 36px;
 @layout-zero-trigger-height: 42px;
 // Layout light theme
-@layout-sider-background-light: #fff;
-@layout-trigger-background-light: #fff;
+@layout-sider-background-light: rgba(233,233,233,0.75);
+@layout-trigger-background-light: darken(@layout-sider-background-light,10%);
 @layout-trigger-color-light: @text-color;
 
 // z-index list, order by `z-index`
@@ -405,7 +405,7 @@ Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 @select-item-selected-color: @text-color;
 @select-item-selected-font-weight: 600;
 @select-dropdown-bg: @component-background;
-@select-item-selected-bg: #eaeaea;
+@select-item-selected-bg: @item-active-bg;
 @select-item-active-bg: @item-hover-bg;
 @select-dropdown-vertical-padding: @dropdown-vertical-padding;
 @select-dropdown-font-size: @dropdown-font-size;
@@ -525,7 +525,7 @@ Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 @menu-popup-bg: @component-background;
 @menu-item-color: @text-color;
 @menu-inline-submenu-bg: @background-color-light;
-@menu-highlight-color: @primary-color;
+@menu-highlight-color: @text-color;
 @menu-highlight-danger-color: @error-color;
 @menu-item-active-bg: @primary-1;
 @menu-item-active-danger-bg: @red-1;

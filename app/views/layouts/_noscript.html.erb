@@ -4,6 +4,3 @@
     <%= t('meta.noscript',url: link_to('Wiki', t('meta.noscript_url'), target: '_blank', rel: 'nofollow')).html_safe %>
   </span>
 </noscript>
-<%= # Browser update checker
-    javascript_tag "(function(){try{eval('(async () => {}); Object.entries({},);')}catch(a){return!0}return!1})()&&(location.href='#{unsupported_path}')",nonce: true
-%>

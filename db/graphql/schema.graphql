@@ -28,6 +28,63 @@ A valid http/https url or image uri
 """
 scalar HttpUrl
 
+"""
+page blocks
+"""
+type PageBlock {
+  """
+  children block ids
+  """
+  children: [Int!]
+
+  """
+  children block
+  """
+  childrenBlocks: [block!]
+
+  """
+  collaborators
+  """
+  collaborators: [accounts_user!]
+  data: PageBlockData!
+  id: ID!
+  meta: PageBlockMeta!
+
+  """
+  parent uuid
+  """
+  parentId: String
+
+  """
+  parent type
+  """
+  parentType: String
+
+  """
+  block type
+  """
+  type: String!
+}
+
+type PageBlockData {
+  """
+  page title
+  """
+  title: String!
+}
+
+type PageBlockMeta {
+  """
+  cover image
+  """
+  cover: HttpUrl
+
+  """
+  page icon
+  """
+  icon: String
+}
+
 type RootMutation {
   """
 
@@ -98,6 +155,32 @@ type RootMutation {
 
 type RootQuery {
   """
+  return single block by id.
+  """
+  block(id: String!): block
+  blocks(
+    """
+    return PageBlock only
+    """
+    onlyPage: Boolean
+
+    """
+    List all children from parent id
+    """
+    parentId: String
+
+    """
+    Recursively find all child blocks
+    """
+    recursion: Boolean
+
+    """
+    List all blocks from webid
+    """
+    webid: String
+  ): [block!]
+
+  """
   provides a federated identity session data
   Required `context[:entrypoints]` is `[:internal]`.
   Required `context[:entrypoints]` is `[:internal]`.
@@ -110,11 +193,60 @@ type RootQuery {
   metadata: metadata!
 
   """
+  return all pods for user.
+  """
+  pods: [pod!]!
+
+  """
   Check webid available.
   Required `context[:entrypoints]` is `[:internal]`.
   Required `context[:entrypoints]` is `[:internal]`.
   """
   webidAvailable(webid: String!): Boolean!
+}
+
+"""
+text blocks
+"""
+type TextBlock {
+  """
+  children block ids
+  """
+  children: [Int!]
+
+  """
+  children block
+  """
+  childrenBlocks: [block!]
+
+  """
+  collaborators
+  """
+  collaborators: [accounts_user!]
+  data: TextBlockData!
+  id: ID!
+
+  """
+  parent uuid
+  """
+  parentId: String
+
+  """
+  parent type
+  """
+  parentType: String
+
+  """
+  block type
+  """
+  type: String!
+}
+
+type TextBlockData {
+  """
+  Text Content
+  """
+  content: String!
 }
 
 """
@@ -344,6 +476,47 @@ type UserSignOutPayload {
 }
 
 """
+A user is an individual's accounts on Brickdoc can make new content.
+"""
+type accounts_user {
+  """
+  the user's public profile bio
+  """
+  bio: String
+
+  """
+  User's email address
+  """
+  email: String
+  id: ID!
+
+  """
+  User's preferred language
+  """
+  locale: String!
+
+  """
+  Human-readable name of the user
+  """
+  name: String!
+
+  """
+  User's preferred timezone
+  """
+  timezone: String!
+
+  """
+  Like a username, Unique within this instance of Brickdoc.
+  """
+  webid: String!
+}
+
+"""
+Brickdoc Docs::Block
+"""
+union block = PageBlock | TextBlock
+
+"""
 Brickdoc Global Configuration
 """
 type config {
@@ -419,6 +592,32 @@ type omniauthSession {
   Like a username, Unique within this instance of Brickdoc.
   """
   webid: String
+}
+
+"""
+Brickdoc Pod.
+"""
+type pod {
+  """
+  Pod Avatar
+  """
+  avatar: String
+
+  """
+  public profile bio
+  """
+  bio: String
+  id: ID!
+
+  """
+  Pod Name
+  """
+  name: String
+
+  """
+  Like a username, Unique within this instance of Brickdoc
+  """
+  webid: String!
 }
 
 """

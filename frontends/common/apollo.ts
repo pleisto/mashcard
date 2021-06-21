@@ -3,6 +3,7 @@ import { setContext } from '@apollo/client/link/context'
 import { getMainDefinition } from '@apollo/client/utilities'
 import * as ActionCable from '@rails/actioncable'
 import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
+import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/inMemoryCache'
 
 const securityLink = setContext((_, { headers } )=>{
   return {
@@ -31,7 +32,8 @@ const brickdocLink = split(({ query, operationName })=> {
   )
 }, websocketLink, httpLink)
 
-export const client = new ApolloClient({
-  link: brickdocLink ,
-  cache: new InMemoryCache()
+
+export const apolloClient = (cacheConfig?: InMemoryCacheConfig) =>new ApolloClient({
+  link: brickdocLink,
+  cache: new InMemoryCache(cacheConfig)
 })

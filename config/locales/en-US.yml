@@ -601,3 +601,8 @@ en-US:
       resend_after: "Resendable after %{seconds} seconds"
     common:
       confirm_not_match: "%{field} and confirm %{field} do not match"
+  docs:
+    app_title: Brickdoc
+    menu:
+      create_new_pod: Create a new pod
+      logout: Logout

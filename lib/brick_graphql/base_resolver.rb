@@ -4,6 +4,7 @@ module BrickGraphQL
   class BaseResolver < ::GraphQL::Schema::Resolver
     argument_class BaseArgument
     include GraphQL::FragmentCache::ObjectHelpers
+    include BrickGraphQL::Concerns::AuthenticateUser
     include BrickGraphQL::Concerns::EntrypointValidatable
     include ActionPolicy::GraphQL::Behaviour
     # override graphql-ruby

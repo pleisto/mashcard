@@ -1,5 +1,1 @@
-<div id="acccounts-pwa__entrypoint" role="application"></div>
-<%= # Browser update checker
-    javascript_tag "(function(){try{eval('(async () => {}); Object.entries({},);')}catch(a){return!0}return!1})()&&(location.href='#{unsupported_path}')",nonce: true
-%>
-<%= javascript_pack_tag 'application' %>
+<%= pwa_entrypoint 'docs' %>
