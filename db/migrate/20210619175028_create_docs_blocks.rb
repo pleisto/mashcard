@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 class CreateDocsBlocks < ActiveRecord::Migration[6.1]
   def change
-    create_table :docs_blocks, id: :uuid do |t|
+    enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
+    create_table :docs_blocks, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.belongs_to :pod, index: true
       t.string :type, limit: 32
       t.belongs_to :parent, null: true, type: :uuid, index: true

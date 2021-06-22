@@ -14,7 +14,6 @@
 #
 #  index_settings_on_var  (var) UNIQUE
 #
-# RailsSettings Model
 class BrickdocConfig < RailsSettings::Base
   cache_prefix { "v1" }
   field :default_locale, default: 'en-US'

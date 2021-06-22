@@ -35,7 +35,7 @@ gem 'flipper', '~> 0.21.0'
 gem 'flipper-active_record', '~> 0.21.0'
 gem 'flipper-active_support_cache_store', '~> 0.21.0'
 
-gem 'rails-settings-cached', '>= 2.5'
+gem 'rails-settings-cached', '>= 2.6'
 gem 'default_value_for', '~> 3.4'
 
 # GraphQL
