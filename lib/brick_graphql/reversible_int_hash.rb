@@ -30,10 +30,11 @@ module BrickGraphQL
     def encode(value)
       raise ArgumentError, "value #{value} must be less than #{@max_integer}" if value > @max_integer
       ((value * prime) & max_integer) ^ random_integer
+      value.to_s(36)
     end
 
     def decode(value)
-      ((value ^ random_integer) * inverse_integer) & max_integer
+      ((value.to_i(36) ^ random_integer) * inverse_integer) & max_integer
     end
 
     class << self

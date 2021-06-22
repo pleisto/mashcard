@@ -686,7 +686,7 @@ Style/MultilineMemoization:
   Enabled: true
 
 Style/MultilineTernaryOperator:
-  Enabled: true
+  Enabled: false
 
 Style/NegatedIf:
   Enabled: true

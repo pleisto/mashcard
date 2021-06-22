@@ -16,6 +16,8 @@ export type Scalars = {
   Email: any
   /** A valid http/https url or image uri */
   HttpUrl: any
+  /** Represents untyped JSON */
+  JSON: any
 }
 
 /** Available authentication authentication. */
@@ -29,10 +31,10 @@ export enum AuthMethod {
 /** page blocks */
 export type PageBlock = {
   __typename?: 'PageBlock'
-  /** children block ids */
-  children?: Maybe<Array<Scalars['Int']>>
+  /** children block uuids */
+  children?: Maybe<Array<Scalars['String']>>
   /** children block */
-  childrenBlocks?: Maybe<Array<Block>>
+  childrenBlocks?: Maybe<Array<Scalars['JSON']>>
   /** collaborators */
   collaborators?: Maybe<Array<Accounts_User>>
   data: PageBlockData
@@ -141,10 +143,10 @@ export type RootQueryWebidAvailableArgs = {
 /** text blocks */
 export type TextBlock = {
   __typename?: 'TextBlock'
-  /** children block ids */
-  children?: Maybe<Array<Scalars['Int']>>
+  /** children block uuids */
+  children?: Maybe<Array<Scalars['String']>>
   /** children block */
-  childrenBlocks?: Maybe<Array<Block>>
+  childrenBlocks?: Maybe<Array<Scalars['JSON']>>
   /** collaborators */
   collaborators?: Maybe<Array<Accounts_User>>
   data: TextBlockData

@@ -8,9 +8,11 @@ module Docs
              description: 'List all blocks from webid'
     argument :parent_id, GraphQL::Types::String, required: false,
              description: 'List all children from parent id'
-    argument :only_page, GraphQL::Types::Boolean, required: false,
-             description: 'return PageBlock only'
-    argument :recursion, GraphQL::Types::Boolean, required: false,
-             description: 'Recursively find all child blocks'
+
+    def resolve(webid:, parent_id:)
+      condition = parent_id.present? ?
+                    { parent_id: parent_id } : { pod_id: Pod.find_by_webid(webid).id, parent_id: nil }
+      Docs::Block.where(condition)
+    end
   end
 end

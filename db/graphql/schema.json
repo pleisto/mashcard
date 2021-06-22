@@ -74,8 +74,8 @@
         },
         {
           "kind": "SCALAR",
-          "name": "Int",
-          "description": "Represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+          "name": "JSON",
+          "description": "Represents untyped JSON",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -89,7 +89,7 @@
           "fields": [
             {
               "name": "children",
-              "description": "children block ids",
+              "description": "children block uuids",
               "args": [
 
               ],
@@ -101,7 +101,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Int",
+                    "name": "String",
                     "ofType": null
                   }
                 }
@@ -122,8 +122,8 @@
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "UNION",
-                    "name": "block",
+                    "kind": "SCALAR",
+                    "name": "JSON",
                     "ofType": null
                   }
                 }
@@ -743,7 +743,7 @@
           "fields": [
             {
               "name": "children",
-              "description": "children block ids",
+              "description": "children block uuids",
               "args": [
 
               ],
@@ -755,7 +755,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Int",
+                    "name": "String",
                     "ofType": null
                   }
                 }
@@ -776,8 +776,8 @@
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "UNION",
-                    "name": "block",
+                    "kind": "SCALAR",
+                    "name": "JSON",
                     "ofType": null
                   }
                 }

@@ -43,7 +43,6 @@ gem 'graphql', '~> 1.12', '>= 1.12.12'
 gem 'graphql-fragment_cache', '~> 1.8'
 gem 'apollo_upload_server', '~> 2.0', '>= 2.0.5'
 gem 'graphql-batch', '~> 0.4.3'
-gem 'z85', '>= 0.11'
 
 # Frontend
 gem 'webpacker', '6.0.0.beta.7'

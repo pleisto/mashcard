@@ -29,18 +29,23 @@ A valid http/https url or image uri
 scalar HttpUrl
 
 """
+Represents untyped JSON
+"""
+scalar JSON
+
+"""
 page blocks
 """
 type PageBlock {
   """
-  children block ids
+  children block uuids
   """
-  children: [Int!]
+  children: [String!]
 
   """
   children block
   """
-  childrenBlocks: [block!]
+  childrenBlocks: [JSON!]
 
   """
   collaborators
@@ -210,14 +215,14 @@ text blocks
 """
 type TextBlock {
   """
-  children block ids
+  children block uuids
   """
-  children: [Int!]
+  children: [String!]
 
   """
   children block
   """
-  childrenBlocks: [block!]
+  childrenBlocks: [JSON!]
 
   """
   collaborators

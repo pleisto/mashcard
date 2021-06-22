@@ -5,8 +5,8 @@ module Docs
     field :type, String, 'block type', null: false
     field :parent_id, String, 'parent uuid', null: true
     field :parent_type, String, 'parent type', null: true
-    field :children, [Int], 'children block ids', null: true
-    field :children_blocks, [Docs::Objects::Block], 'children block', null: true
+    field :children, [String], 'children block uuids', null: true
+    field :children_blocks, [GraphQL::Types::JSON], 'children block', null: true
     field :collaborators, [Accounts::Objects::User], 'collaborators', null: true
 
     def self.create_object(&block)
