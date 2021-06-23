@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_175028) do
+ActiveRecord::Schema.define(version: 2021_06_21_101017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -63,17 +63,46 @@ ActiveRecord::Schema.define(version: 2021_06_19_175028) do
     t.string "parent_type", limit: 32
     t.jsonb "meta", default: {}, null: false, comment: "metadata"
     t.jsonb "data", null: false, comment: "data props"
-    t.uuid "children", array: true
-    t.bigint "version", default: 0, null: false
+    t.bigint "history_version", default: 0, null: false
     t.bigint "collaborators", default: [], null: false, array: true
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["children"], name: "index_docs_blocks_on_children", using: :gin
+    t.bigint "snapshot_version", default: 0, null: false
+    t.decimal "sort", precision: 15, scale: 10, default: "0.0", null: false
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["deleted_at"], name: "index_docs_blocks_on_deleted_at"
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
     t.index ["pod_id"], name: "index_docs_blocks_on_pod_id"
+  end
+
+  create_table "docs_histories", force: :cascade do |t|
+    t.bigint "pod_id"
+    t.jsonb "meta", null: false
+    t.jsonb "data", null: false
+    t.uuid "block_id", null: false
+    t.uuid "parent_id"
+    t.string "parent_type"
+    t.uuid "path", array: true
+    t.decimal "sort", precision: 15, scale: 10, null: false
+    t.bigint "history_version", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["block_id", "history_version"], name: "index_docs_histories_on_block_id_and_history_version", unique: true, comment: "history identifier"
+    t.index ["path"], name: "index_docs_histories_on_path", using: :gin
+    t.index ["pod_id"], name: "index_docs_histories_on_pod_id"
+  end
+
+  create_table "docs_snapshots", force: :cascade do |t|
+    t.bigint "pod_id"
+    t.uuid "block_id", null: false
+    t.bigint "snapshot_version", null: false
+    t.jsonb "meta", comment: "child block_id and history_version map"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["block_id"], name: "index_docs_snapshots_on_block_id"
+    t.index ["pod_id"], name: "index_docs_snapshots_on_pod_id"
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -96,7 +125,7 @@ ActiveRecord::Schema.define(version: 2021_06_19_175028) do
     t.bigint "owner_id", null: false
     t.string "webid", null: false
     t.string "name", null: false
-    t.string "avatar_uri", limit: 128, comment: "\"object key for bucket or url that stored avatar."
+    t.string "avatar_uri", limit: 128, comment: "object key for bucket or url that stored avatar."
     t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
     t.boolean "personal", default: false, null: false
     t.datetime "deleted_at"
