@@ -43,6 +43,7 @@ class Docs::History < ApplicationRecord
   end
 
   def self.from_meta(meta)
-    Docs::History.where("(block_id, history_version) IN (#{meta.map { '(? , ?)' }.join(' , ')})", *meta.flatten)
+    parameters = meta.size.times.collect { '(?,?)' }.join(',')
+    Docs::History.where("(block_id, history_version) IN (#{parameters})", *meta.flatten)
   end
 end
