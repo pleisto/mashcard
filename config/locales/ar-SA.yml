@@ -664,3 +664,8 @@ ar-SA:
       resend_after: "قابلة لإعادة الإرسال بعد %{seconds} ثانية"
     common:
       confirm_not_match: "%{field} والتأكيد %{field} غير متطابقين"
+  docs:
+    app_title: Brickdoc
+    menu:
+      create_new_pod: إنشاء جراب
+      logout: تسجيل الخروج

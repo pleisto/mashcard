@@ -584,3 +584,8 @@ zh-CN:
       resend_after: "%{seconds}秒后可重新发送"
     common:
       confirm_not_match: "%{field}和确认%{field}不一致"
+  docs:
+    app_title: 积木文档
+    menu:
+      create_new_pod: 创建新 Pod
+      logout: 登出

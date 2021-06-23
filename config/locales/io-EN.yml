@@ -600,3 +600,8 @@ io-EN:
       resend_after: "crwdns1166:0%{seconds}crwdne1166:0"
     common:
       confirm_not_match: "crwdns1172:0%{field}crwdnd1172:0%{field}crwdne1172:0"
+  docs:
+    app_title: crwdns2016:0crwdne2016:0
+    menu:
+      create_new_pod: crwdns2018:0crwdne2018:0
+      logout: crwdns2020:0crwdne2020:0

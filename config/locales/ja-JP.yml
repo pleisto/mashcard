@@ -584,3 +584,8 @@ ja-JP:
       resend_after: "%{seconds} 秒後に再送信可能"
     common:
       confirm_not_match: "%{field}と確認%{field}が一致しない\n"
+  docs:
+    app_title: Brickdoc
+    menu:
+      create_new_pod: "ポッド作成\n"
+      logout: ログアウト

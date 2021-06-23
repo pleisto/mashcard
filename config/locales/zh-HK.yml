@@ -584,3 +584,8 @@ zh-HK:
       resend_after: "%{seconds}秒後可重新發送"
     common:
       confirm_not_match: "%{field}和確認%{field}不匹配"
+  docs:
+    app_title: Brickdoc
+    menu:
+      create_new_pod: 建立新 Pod
+      logout: 登出
