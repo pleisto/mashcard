@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@tiptap/core": "^2.0.0-beta.84",
+    "@tiptap/core": "^2.0.0-beta.85",
     "@tiptap/extension-blockquote": "^2.0.0-beta.14",
     "@tiptap/extension-bold": "^2.0.0-beta.14",
     "@tiptap/extension-bullet-list": "^2.0.0-beta.14",
@@ -26,7 +26,7 @@
     "@tiptap/extension-paragraph": "^2.0.0-beta.15",
     "@tiptap/extension-strike": "^2.0.0-beta.16",
     "@tiptap/extension-text": "^2.0.0-beta.12",
-    "@tiptap/react": "^2.0.0-beta.50",
+    "@tiptap/react": "^2.0.0-beta.51",
     "@tiptap/suggestion": "^2.0.0-beta.58",
     "tippy.js": "^6.3.1"
   },
