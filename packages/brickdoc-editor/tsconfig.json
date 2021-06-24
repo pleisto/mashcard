@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "strictNullChecks": false,
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noImplicitAny": false
+  },
+  "include": ["./externals.d.ts"],
+  "exclude": [
+    "**/__tests__/**/*.ts?(x)",
+    "**/?(*.)+(spec|test).ts?(x)"
+  ]
+}

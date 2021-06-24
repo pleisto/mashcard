@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEditor, EditorContent, EditorOptions } from '@tiptap/react'
-import { BasicRichtextExtension } from './extensions'
+import { BasicRichtextExtension, SlashMenuExtension } from './extensions'
 import './styles.less'
 
 export interface EditorProps {
@@ -12,6 +12,7 @@ export const Editor: React.FC<EditorProps> = (props: EditorProps)=>{
     ...props.options,
     extensions: [
       BasicRichtextExtension,
+      SlashMenuExtension,
     ],
     autofocus: true,
   })

@@ -60,4 +60,6 @@ Thumbs.db
 ehthumbs.db
 ._*
 
+# testing
+coverage
 
