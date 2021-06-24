@@ -11,7 +11,7 @@ class CreateDocsSnapshots < ActiveRecord::Migration[6.1]
       t.belongs_to :pod, index: true
       t.uuid :block_id, null: false, index: true
       t.column :snapshot_version, :bigint, null: false
-      t.jsonb :meta, comment: 'child block_id and history_version map'
+      t.jsonb :version_meta, comment: 'child block_id and history_version map'
       t.string :name
       t.timestamps
     end

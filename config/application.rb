@@ -42,5 +42,9 @@ module Brickdoc
     initializer :before_zeitwerk, before: :let_zeitwerk_take_over, after: :prepend_helpers_path do
       Dir[Rails.root.join('config/before_initializers/*.rb')].sort.each { |file| load_config_initializer(file) }
     end
+
+    ## Run logger initializer before rails builtin initializers
+    ## See https://github.com/rails/rails/blob/127dd06df66552dd272eea7832f8bb205cf6fd01/railties/lib/rails/application/bootstrap.rb#L35
+    Dir[Rails.root.join('config/before_builtin_initializers/*.rb')].sort.each { |file| load(file) }
   end
 end

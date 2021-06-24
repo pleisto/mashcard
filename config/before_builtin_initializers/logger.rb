@@ -30,4 +30,3 @@ else
 
   ActiveRecord::Base.logger = Rails.logger
 end
-

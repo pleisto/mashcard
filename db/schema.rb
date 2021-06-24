@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.bigint "pod_id"
     t.uuid "block_id", null: false
     t.bigint "snapshot_version", null: false
-    t.jsonb "meta", comment: "child block_id and history_version map"
+    t.jsonb "version_meta", comment: "child block_id and history_version map"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

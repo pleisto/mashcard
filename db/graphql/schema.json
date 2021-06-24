@@ -581,30 +581,6 @@
                   "defaultValue": null,
                   "isDeprecated": false,
                   "deprecationReason": null
-                },
-                {
-                  "name": "onlyPage",
-                  "description": "return PageBlock only",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null,
-                  "isDeprecated": false,
-                  "deprecationReason": null
-                },
-                {
-                  "name": "recursion",
-                  "description": "Recursively find all child blocks",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Boolean",
-                    "ofType": null
-                  },
-                  "defaultValue": null,
-                  "isDeprecated": false,
-                  "deprecationReason": null
                 }
               ],
               "type": {

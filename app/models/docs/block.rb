@@ -123,10 +123,10 @@ class Docs::Block < ApplicationRecord
   end
 
   def current_histories
-    Docs::History.from_meta(children_version_metas)
+    Docs::History.from_version_meta(children_version_meta)
   end
 
-  def children_version_metas
+  def children_version_meta
     descendants(['id', 'history_version', 'parent_id']).pluck(:id, :history_version).to_h
   end
 end

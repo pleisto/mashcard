@@ -132,8 +132,6 @@ export type RootQueryBlockArgs = {
 export type RootQueryBlocksArgs = {
   webid?: Maybe<Scalars['String']>
   parentId?: Maybe<Scalars['String']>
-  onlyPage?: Maybe<Scalars['Boolean']>
-  recursion?: Maybe<Scalars['Boolean']>
 }
 
 export type RootQueryWebidAvailableArgs = {

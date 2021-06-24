@@ -165,19 +165,9 @@ type RootQuery {
   block(id: String!): block
   blocks(
     """
-    return PageBlock only
-    """
-    onlyPage: Boolean
-
-    """
     List all children from parent id
     """
     parentId: String
-
-    """
-    Recursively find all child blocks
-    """
-    recursion: Boolean
 
     """
     List all blocks from webid
