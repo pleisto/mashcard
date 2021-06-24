@@ -45,6 +45,7 @@ module Brickdoc
     end
 
     def parse_accept_language(value)
+      return ::I18n.default_locale if value.blank?
       locale = AcceptLanguage.parse(value).match(*available_locales)
       return ::I18n.default_locale if locale.nil?
       locale

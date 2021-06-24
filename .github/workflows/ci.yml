@@ -53,12 +53,13 @@ jobs:
         env:
           POSTGRES_PASS: 123456
         run: bundle exec rails db:create db:migrate db:seed
-      - name: Run Spec
+      - name: Run tests
         env:
+          CYPRESS: 1
           RAILS_ENV: test
           REDIS_URL: redis://127.0.0.1:6379
           POSTGRES_PASS: 123456
-        run: bundle exec rspec
+        run: bundle exec rspec && yarn run cypress run
       - name: Dump database schema
         run: bundle exec rails db:schema:dump
         env:

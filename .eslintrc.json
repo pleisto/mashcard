@@ -1,3 +1,9 @@
 {
-  "extends": ["plugin:@brickdoc/eslint-plugin/react"]
+  "extends": [
+    "plugin:@brickdoc/eslint-plugin/react",
+    "plugin:cypress/recommended"
+  ],
+  "rules": {
+    "jest/expect-expect": 0
+  }
 }

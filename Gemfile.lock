@@ -127,6 +127,8 @@ GEM
     crass (1.0.6)
     css_parser (1.9.0)
       addressable
+    cypress-on-rails (1.9.1)
+      rack
     default_value_for (3.4.0)
       activerecord (>= 3.2.0, < 7.0)
     devise (4.8.0)
@@ -481,6 +483,7 @@ DEPENDENCIES
   cityhash (~> 0.9.0)
   cloak-rb (>= 0.1.0)
   connection_pool (~> 2.2, >= 2.2.5)
+  cypress-on-rails (~> 1.9.1)
   default_value_for (~> 3.4)
   devise (~> 4.8)
   doorkeeper (~> 5.5, >= 5.5.2)
