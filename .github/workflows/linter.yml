@@ -58,7 +58,7 @@ jobs:
           RAILS_ENV: test
           REDIS_URL: redis://127.0.0.1:6379
           POSTGRES_PASS: 123456
-        run: bundle exec rails spec
+        run: bundle exec rspec
       - name: Dump database schema
         run: bundle exec rails db:schema:dump
         env:

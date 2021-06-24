@@ -31,6 +31,7 @@ class Docs::Block < ApplicationRecord
 
   belongs_to :pod
   belongs_to :parent, class_name: 'Docs::Block', optional: true
+  has_many :children, class_name: 'Docs::Block', foreign_key: :parent_id, dependent: :restrict_with_exception
   has_many :histories, dependent: :restrict_with_exception
   has_many :snapshots, dependent: :restrict_with_exception
 
