@@ -116,6 +116,16 @@ const Space: React.FC<SpaceProps> = props => {
   }
 
   const gapStyle: React.CSSProperties = {}
+
+  if (wrap) {
+    gapStyle.flexWrap = 'wrap'
+
+    // Patch for gap not support
+    if (!supportFlexGap) {
+      gapStyle.marginBottom = -verticalSize
+    }
+  }
+
   if (supportFlexGap) {
     gapStyle.columnGap = horizontalSize
     gapStyle.rowGap = verticalSize

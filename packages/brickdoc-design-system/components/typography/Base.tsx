@@ -471,6 +471,7 @@ class Base extends React.Component<InternalBlockProps, BaseState> {
       'underline',
       'strong',
       'keyboard',
+      'italic',
       ...(configConsumerProps as any),
     ]) as any
 

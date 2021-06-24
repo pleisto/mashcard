@@ -1,6 +1,6 @@
 {
   "name": "@brickdoc/design-system",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Brickdoc design system and React components implementation",
   "license": "Apache-2.0",
   "files": [

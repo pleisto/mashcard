@@ -27,5 +27,7 @@ const App = () => (
 );
 ```
 ## Changelog
-### 0.1.1
+### 0.1.2
 * Sync of patches from Ant Design 4.16.3
+### 0.1.5
+* Sync of patches from Ant Design 4.16.5
