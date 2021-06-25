@@ -4,6 +4,10 @@ name: ci
 on:
   push:
 
+env:
+  POSTGRES_PASS: '123456'
+  REDIS_URL: redis://127.0.0.1:6379
+
 jobs:
   ci:
     name: CI
@@ -47,24 +51,30 @@ jobs:
         with:
           ruby-version: 3.0
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run rails server
+        run: bundle exec rails s -p 3000 &
+        env:
+          RAILS_ENV: development
       - name: Lint Code
         run: yarn lint
       - name: Run Migrate
-        env:
-          POSTGRES_PASS: 123456
         run: bundle exec rails db:create db:migrate db:seed
       - name: Run tests
         env:
-          CYPRESS: 1
           RAILS_ENV: test
-          REDIS_URL: redis://127.0.0.1:6379
-          POSTGRES_PASS: 123456
-        run: bundle exec rspec && yarn run cypress run
+        run: bundle exec rspec
+      - name: Ensure server is running
+        run: curl http://localhost:3000 -I
+      - name: Webpacker compile
+        run: bundle exec rails webpacker_compile
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          config: pageLoadTimeout=10000
       - name: Dump database schema
         run: bundle exec rails db:schema:dump
         env:
           RAILS_ENV: test
-          POSTGRES_PASS: 123456
       - name: Dump graphql schema
         run: yarn graphql
       - name: Add and commit everything
@@ -76,3 +86,21 @@ jobs:
           default_author: github_actions
           message: 'ci: bump schema and dists'
           add: 'app lib packages spec config db frontends'
+      - name: Upload build artifact if failed
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-screenshots
+          if-no-files-found: ignore
+          retention-days: 20
+          path: |
+            cypress/screenshots/
+      - name: Upload build artifact always
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-videos
+          if-no-files-found: ignore
+          retention-days: 20
+          path: |
+            cypress/videos/

@@ -63,3 +63,5 @@ ehthumbs.db
 # testing
 coverage
 
+cypress/screenshots/
+cypress/videos/

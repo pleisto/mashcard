@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Array.wrap(command_options).map do |factory_options|
   factory_method = factory_options.shift
   begin
@@ -6,7 +7,7 @@ Array.wrap(command_options).map do |factory_options|
   rescue => e
     logger.error "#{e.class}: #{e.message}"
     logger.error e.backtrace.join("\n")
-    logger.error "#{e.record.inspect}" if e.is_a?(ActiveRecord::RecordInvalid)
+    logger.error e.record.inspect.to_s if e.is_a?(ActiveRecord::RecordInvalid)
     raise e
   end
 end

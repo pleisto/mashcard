@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # you can delete this file if you don't use Rails Test Fixtures
 
 fixtures_dir = command_options.try(:[], 'fixtures_dir')

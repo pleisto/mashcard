@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.bigint "owner_id", null: false
     t.string "webid", null: false
     t.string "name", null: false
-    t.string "avatar_uri", limit: 128, comment: "\"object key for bucket or url that stored avatar."
+    t.string "avatar_uri", limit: 128, comment: "object key for bucket or url that stored avatar."
     t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
     t.boolean "personal", default: false, null: false
     t.datetime "deleted_at"
