@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
+gem 'rails', '~> 6.1.4'
 gem 'pg', '~> 1.2.3'
 gem 'marginalia', '~> 1.10.0'
 gem 'puma', '~> 5.3', '>= 5.3.2'
@@ -13,7 +13,7 @@ gem 'redis-objects', '~>1.5.0'
 gem 'redis-namespace', '~> 1.8', '>= 1.8.1'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'connection_pool', '~> 2.2', '>= 2.2.5'
-gem 'faraday', '~> 1.4', '>= 1.4.2'
+gem 'faraday', '~> 1.4', '>= 1.4.3'
 gem 'typhoeus', '~> 1.4'
 gem 'oj'
 gem 'fast_blank', '>= 1.0', require: false
