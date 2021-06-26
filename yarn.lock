@@ -2163,8 +2163,8 @@ __metadata:
     rc-menu: ~9.0.12
     rc-motion: ^2.4.4
     rc-notification: ~4.5.7
-    rc-pagination: ~3.1.6
-    rc-picker: ~2.5.12
+    rc-pagination: ~3.1.7
+    rc-picker: ~2.5.13
     rc-progress: ~3.1.4
     rc-rate: ~2.9.1
     rc-resize-observer: ^1.0.0
@@ -20507,22 +20507,22 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-pagination@npm:~3.1.6":
-  version: 3.1.6
-  resolution: "rc-pagination@npm:3.1.6"
+"rc-pagination@npm:~3.1.7":
+  version: 3.1.7
+  resolution: "rc-pagination@npm:3.1.7"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: ^2.2.1
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: ffdb7b257a543f858bfa08e4ee95f0bc080eaeadbf33b03105bc80540f29290c4b44d0cd8968ae002c6d4749e463a29e2b459b944f621133d92f9e9f28001a30
+  checksum: 5d0360c4c3251490a70ce5871e5a2de0fa541c7b703c7b4cb7022be7e4e82d378e88c1773008db5362047749d899f8be5e2f08c4d00ea7870d21c7622dd557d0
   languageName: node
   linkType: hard
 
-"rc-picker@npm:~2.5.12":
-  version: 2.5.12
-  resolution: "rc-picker@npm:2.5.12"
+"rc-picker@npm:~2.5.13":
+  version: 2.5.13
+  resolution: "rc-picker@npm:2.5.13"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: ^2.2.1
@@ -20535,7 +20535,7 @@ fsevents@^1.2.7:
     dayjs: ^1.8.30
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 4ce92c5c1f61c0f849090b021976a949201f5eecf72bb3ffb665d2dbfd613804f3ca582c9d231f7348675d42794fa69ac572238251799cea796f59b4cea71837
+  checksum: c52440531aafa3c4b5bccff5adc2a02b40f6193a2dbc8977b5b1e0b1cfc9e96c2080976618ad8ca9ad44b132cc00b200db144a302640cbcc869ee4db9d5814ed
   languageName: node
   linkType: hard
 
