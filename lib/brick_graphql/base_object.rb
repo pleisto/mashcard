@@ -7,5 +7,6 @@ module BrickGraphQL
     include GraphQL::FragmentCache::Object
     include ActionPolicy::GraphQL::Behaviour
     include BrickGraphQL::Concerns::CopyFieldDescription
+    include BrickGraphQL::Concerns::HasPrimaryKey
   end
 end

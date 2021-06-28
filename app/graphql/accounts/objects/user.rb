@@ -2,7 +2,7 @@
 module Accounts
   module Objects
     class User < BrickGraphQL::BaseObject
-      global_id_field :id
+      has_primary_key
 
       graphql_name 'accounts_user'
       description 'A user is an individual\'s accounts on Brickdoc can make new content.'

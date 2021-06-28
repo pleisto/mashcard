@@ -2,11 +2,6 @@
 
 class CreateDocsSnapshots < ActiveRecord::Migration[6.1]
   def change
-    remove_column :docs_blocks, :children
-    rename_column :docs_blocks, :version, :history_version
-    add_column :docs_blocks, :snapshot_version, :bigint, null: false, default: 0
-    add_column :docs_blocks, :sort, :decimal, precision: 15, scale: 10, null: false, default: 0
-
     create_table :docs_snapshots do |t|
       t.belongs_to :pod, index: true
       t.uuid :block_id, null: false, index: true

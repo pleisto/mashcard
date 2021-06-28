@@ -64,12 +64,12 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.jsonb "meta", default: {}, null: false, comment: "metadata"
     t.jsonb "data", null: false, comment: "data props"
     t.bigint "history_version", default: 0, null: false
+    t.bigint "snapshot_version", default: 0, null: false
+    t.decimal "sort", precision: 15, scale: 10, default: "0.0", null: false
     t.bigint "collaborators", default: [], null: false, array: true
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "snapshot_version", default: 0, null: false
-    t.decimal "sort", precision: 15, scale: 10, default: "0.0", null: false
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["deleted_at"], name: "index_docs_blocks_on_deleted_at"
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"

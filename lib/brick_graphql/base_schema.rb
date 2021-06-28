@@ -9,8 +9,6 @@ module BrickGraphQL
 
     DEFAULT_MAX_PAGE_SIZE = 100
 
-    SEPARATOR = '@'
-
     max_depth DEFAULT_MAX_DEPTH
     max_complexity DEFAULT_MAX_COMPLEXITY
     default_max_page_size DEFAULT_MAX_PAGE_SIZE
@@ -23,21 +21,6 @@ module BrickGraphQL
     query_analyzer(Concerns::QueryLogger)
 
     class << self
-      # ref: https://graphql-ruby.org/relay/object_identification.html
-      def id_from_object(object, _type, _ctx)
-        id = object.id =~ Brickdoc::Validators::UUIDValidator::REGEXP ?
-               object.id : ReversibleIntHash.encode(object.id)
-        "#{id}#{SEPARATOR}#{object.try(:object_class_name) ||
-          object.class.name}"
-      end
-
-      def object_from_id(payload, _ctx)
-        id, name = payload.split(SEPARATOR)
-        id = id =~ Brickdoc::Validators::UUIDValidator::REGEXP ?
-               id : ReversibleIntHash.decode(id)
-        name.constantize.find id
-      end
-
       def multiplex(queries, **args)
         args[:max_complexity] ||= max_query_complexity(args[:context])
 

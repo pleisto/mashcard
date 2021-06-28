@@ -3,19 +3,32 @@ module Docs
   class Objects::PageBlock < Objects::BlockBaseObject
     description "page blocks"
 
-    def self.data_object
-      create_object do
-        graphql_name 'PageBlockData'
-        field :title, String, 'page title', null: false
-      end
+    def self.data_payload
+      [
+        {
+          name: :title,
+          type: String,
+          description: 'page title',
+          opts: { null: false }
+        },
+      ]
     end
 
-    def self.meta_object
-      create_object do
-        graphql_name 'PageBlockMeta'
-        field :icon, String, 'page icon', null: true
-        field :cover, BrickGraphQL::Scalars::HttpUrl, 'cover image', null: true
-      end
+    def self.meta_payload
+      [
+        {
+          name: :icon,
+          type: String,
+          description: 'page icon',
+          opts: { null: true }
+        },
+        {
+          name: :cover,
+          type: BrickGraphQL::Scalars::HttpUrl,
+          description: 'cover image',
+          opts: { null: true }
+        },
+      ]
     end
 
     field :data, data_object, null: false

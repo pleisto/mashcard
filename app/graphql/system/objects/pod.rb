@@ -4,7 +4,7 @@ module System
     class Pod < BrickGraphQL::BaseObject
       graphql_name 'pod'
       description 'Brickdoc Pod.'
-      global_id_field :id
+      has_primary_key
 
       field :webid, String, 'Like a username, Unique within this instance of Brickdoc', null: false
       field :name, String, 'Pod Name', null: true

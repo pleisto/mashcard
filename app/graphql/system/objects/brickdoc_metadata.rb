@@ -4,7 +4,7 @@ module System
     class BrickdocMetadata < BrickGraphQL::BaseObject
       graphql_name 'metadata'
       description 'Represents information about the Brickdoc Server Instance.'
-      global_id_field :id
+      has_primary_key
 
       field :available_locales, [BrickdesignSelectOption], 'Current available locales.', null: false
       field :config, BrickdocConfig, 'Brickdoc Global Config', null: false

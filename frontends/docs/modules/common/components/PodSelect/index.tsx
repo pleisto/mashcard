@@ -7,7 +7,7 @@ import { useHistory } from 'react-router'
 import styles from "./index.module.less"
 
 interface PodSelectProps {
-  webid: String
+  webid: string
 }
 
 

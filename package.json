@@ -22,6 +22,7 @@
     "i18next-icu": "2.0.3",
     "i18next-multiload-backend-adapter": "^1.0.0",
     "lodash": "4.17.21",
+    "performant-array-to-tree": "1.9.1",
     "qs": "6.10.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -92,7 +93,7 @@
     "start": "bin/webpack-dev-server",
     "prepare": "husky install",
     "lint": "eslint --cache ./  --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml && bundle exec brakeman --summary --no-pager --exit-on-warn",
-    "lint:fix": "eslint --cache ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml -a && bundle exec brakeman  --faster --summary --no-pager --exit-on-warn",
+    "lint:fix": "eslint --cache ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --config .rubocop.yml -a && bundle exec brakeman  --faster --summary --no-pager --exit-on-warn",
     "test": "yarn lint && bundle exec rspec",
     "commit": "git add . && cz",
     "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
@@ -105,7 +106,7 @@
       "eslint --cache --fix"
     ],
     "(app|lib|saas)/**/*.rb": [
-      "bundle exec rubocop --parallel -a --force-exclusion"
+      "bundle exec rubocop --parallel --force-exclusion"
     ]
   },
   "config": {

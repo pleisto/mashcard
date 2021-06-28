@@ -2338,6 +2338,7 @@ __metadata:
     lodash: 4.17.21
     mini-css-extract-plugin: ^1.6.0
     patch-package: 6.4.7
+    performant-array-to-tree: 1.9.1
     postcss: ^8.3.5
     postcss-loader: ^6.1.0
     prettier: 2.3.1
@@ -18912,6 +18913,13 @@ fsevents@^1.2.7:
   version: 2.1.0
   resolution: "performance-now@npm:2.1.0"
   checksum: 534e641aa8f7cba160f0afec0599b6cecefbb516a2e837b512be0adbe6c1da5550e89c78059c7fabc5c9ffdf6627edabe23eb7c518c4500067a898fa65c2b550
+  languageName: node
+  linkType: hard
+
+"performant-array-to-tree@npm:1.9.1":
+  version: 1.9.1
+  resolution: "performant-array-to-tree@npm:1.9.1"
+  checksum: fb1df1afd090ec98a71d2e7875e340dcad28ad7670e90496f6866c1b259e6d329e1eb5ec49abf4757c52e683243a63488cbdc0eba17e816285eada162744ea81
   languageName: node
   linkType: hard
 
