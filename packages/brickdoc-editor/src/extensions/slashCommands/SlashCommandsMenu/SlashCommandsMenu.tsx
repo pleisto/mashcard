@@ -6,14 +6,14 @@ import cx from 'classnames'
 import { MenuItem } from '..'
 import styles from './index.module.less'
 
-interface CommandsMenuProps {
+interface SlashCommandsMenuProps {
   items: MenuItem[]
   command: (item: MenuItem) => void
 }
 
 // We need expose instance function onKeyDown for suggestion extension.
-// And reactRenderer only access ref of a class component, thus CommandsMenu must be a class component.
-class CommandsMenu extends React.PureComponent<CommandsMenuProps> {
+// And reactRenderer only access ref of a class component, thus SlashCommandsMenu must be a class component.
+class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProps> {
   state = {
     selectedIndex: 0
   }
@@ -70,4 +70,4 @@ class CommandsMenu extends React.PureComponent<CommandsMenuProps> {
   }
 }
 
-export default CommandsMenu
+export default SlashCommandsMenu

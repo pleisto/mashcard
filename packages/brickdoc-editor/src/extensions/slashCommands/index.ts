@@ -3,7 +3,7 @@ import { Extension } from '@tiptap/core'
 import { Editor, ReactRenderer } from '@tiptap/react'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../helpers/popup'
-import CommandsMenu from './CommandsMenu'
+import SlashCommandsMenu from './SlashCommandsMenu'
 
 const QUERY_LIMIT = 10
 const TRIGGER_CHAR = '/'
@@ -33,8 +33,8 @@ function filterMenuItemsByQuery(query: string): MenuItem[] {
   return menuItems.filter(item => item.title.toLowerCase().startsWith(query.toLowerCase())).slice(0, QUERY_LIMIT)
 }
 
-export const SlashMenuExtension = Extension.create({
-  name: 'slashMenu',
+export const SlashCommandsExtension = Extension.create({
+  name: 'slashCommands',
 
   addProseMirrorPlugins() {
     return [
@@ -52,7 +52,7 @@ export const SlashMenuExtension = Extension.create({
 
           return {
             onStart: props => {
-              reactRenderer = new ReactRenderer(CommandsMenu as any, {
+              reactRenderer = new ReactRenderer(SlashCommandsMenu as any, {
                 props,
                 editor: props.editor as Editor
               })

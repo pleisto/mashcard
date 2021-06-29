@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { shallow } from 'enzyme'
-import CommandsMenu from '../CommandsMenu'
+import SlashCommandsMenu from '../SlashCommandsMenu'
 
-describe('CommandsMenu', () => {
+describe('SlashCommandsMenu', () => {
   it('render menu items', () => {
     const items = [{
       title: 'H1',
@@ -16,7 +16,7 @@ describe('CommandsMenu', () => {
     }]
 
     const commandsMenu = shallow(
-      <CommandsMenu items={items} command={() => {}} />
+      <SlashCommandsMenu items={items} command={() => {}} />
     )
 
     expect(commandsMenu.find('.menuItems').length).toBe(1)
@@ -34,7 +34,7 @@ describe('CommandsMenu', () => {
     }]
 
     const commandsMenu = shallow(
-      <CommandsMenu items={items} command={mockCommand} />
+      <SlashCommandsMenu items={items} command={mockCommand} />
     )
 
     const firstItem = commandsMenu.find('.menuItem').at(0)
@@ -65,8 +65,8 @@ describe('CommandsMenu', () => {
     }
 
     it('ArrowUp', () => {
-      const commandsMenu = shallow<CommandsMenu>(
-        <CommandsMenu items={items} command={() => {}} />
+      const commandsMenu = shallow<SlashCommandsMenu>(
+        <SlashCommandsMenu items={items} command={() => {}} />
       )
 
       expect(commandsMenu.state('selectedIndex')).toBe(0)
@@ -82,8 +82,8 @@ describe('CommandsMenu', () => {
     })
 
     it('ArrowDown', () => {
-      const commandsMenu = shallow<CommandsMenu>(
-        <CommandsMenu items={items} command={() => {}} />
+      const commandsMenu = shallow<SlashCommandsMenu>(
+        <SlashCommandsMenu items={items} command={() => {}} />
       )
 
       expect(commandsMenu.state('selectedIndex')).toBe(0)
@@ -100,8 +100,8 @@ describe('CommandsMenu', () => {
 
     it('Enter', () => {
       const mockCommand = jest.fn()
-      const commandsMenu = shallow<CommandsMenu>(
-        <CommandsMenu items={items} command={mockCommand} />
+      const commandsMenu = shallow<SlashCommandsMenu>(
+        <SlashCommandsMenu items={items} command={mockCommand} />
       )
 
       keyDown(commandsMenu, 'Enter')
@@ -126,8 +126,8 @@ describe('CommandsMenu', () => {
 
     it('Unexpected', () => {
       const mockCommand = jest.fn()
-      const commandsMenu = shallow<CommandsMenu>(
-        <CommandsMenu items={items} command={mockCommand} />
+      const commandsMenu = shallow<SlashCommandsMenu>(
+        <SlashCommandsMenu items={items} command={mockCommand} />
       )
 
       expect(() => {

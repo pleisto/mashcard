@@ -1,10 +1,10 @@
 .ProseMirror {
   > * + * {
-    margin-top: 0.75em;
+    margin-top: .75em;
   }
 
-  ul,
-  ol {
+  ol,
+  ul {
     padding: 0 1rem;
   }
 
@@ -26,14 +26,14 @@
     background: #0D0D0D;
     color: #FFF;
     font-family: 'JetBrainsMono', monospace;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
 
     code {
       color: inherit;
       padding: 0;
       background: none;
-      font-size: 0.8rem;
+      font-size: .8rem;
     }
   }
 
@@ -52,4 +52,13 @@
     border-top: 2px solid rgba(#0D0D0D, 0.1);
     margin: 2rem 0;
   }
+}
+
+// Brickdoc block commands
+.brickdoc-block-commands {
+  position: absolute;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

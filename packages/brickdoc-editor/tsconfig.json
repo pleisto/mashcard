@@ -5,7 +5,7 @@
     "strictNullChecks": false,
     "jsx": "react",
     "noUnusedParameters": true,
-    "noImplicitAny": false
+    "noImplicitAny": true
   },
   "include": ["./externals.d.ts"],
   "exclude": [

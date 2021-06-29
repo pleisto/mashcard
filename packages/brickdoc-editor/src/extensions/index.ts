@@ -1,2 +1,3 @@
 export * from './basicRichtext'
-export * from './slashMenu'
+export { SlashCommandsExtension } from './slashCommands'
+export { BlockCommandsExtension } from './blockCommands'
