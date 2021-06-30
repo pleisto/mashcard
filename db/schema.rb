@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.jsonb "data", null: false, comment: "data props"
     t.bigint "history_version", default: 0, null: false
     t.bigint "snapshot_version", default: 0, null: false
-    t.decimal "sort", precision: 15, scale: 10, default: "0.0", null: false
+    t.bigint "sort", default: 0
     t.bigint "collaborators", default: [], null: false, array: true
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.uuid "parent_id"
     t.string "parent_type"
     t.uuid "path", array: true
-    t.decimal "sort", precision: 15, scale: 10, null: false
+    t.bigint "sort", null: false
     t.bigint "history_version", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

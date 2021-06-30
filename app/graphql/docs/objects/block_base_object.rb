@@ -5,7 +5,7 @@ module Docs
     field :type, String, 'block type', null: false
     field :parent_id, BrickGraphQL::Scalars::UUID, 'parent uuid', null: true
     field :parent_type, String, 'parent type', null: true
-    field :sort, Float, 'block sort', null: false
+    field :sort, Int, 'block sort', null: false
     field :collaborators, [Accounts::Objects::User], 'collaborators', null: true
 
     def self.create_payload_object(payload_type)

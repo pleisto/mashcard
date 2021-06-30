@@ -7,7 +7,7 @@ module Docs
 
     argument :parent_id, BrickGraphQL::Scalars::UUID, description_same(Objects::BlockBaseObject, :parent_id), required: false
     argument :parent_type, String, description_same(Objects::BlockBaseObject, :parent_type), required: false
-    argument :sort, Float, description_same(Objects::BlockBaseObject, :sort), required: false
+    argument :sort, Int, description_same(Objects::BlockBaseObject, :sort), required: false
     argument :data, Scalars::BlockData, description_same(Scalars::BlockData), required: false
     argument :meta, Scalars::BlockMeta, description_same(Scalars::BlockMeta), required: false
 

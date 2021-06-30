@@ -12,7 +12,7 @@
 #  meta(metadata)     :jsonb            not null
 #  parent_type        :string(32)
 #  snapshot_version   :bigint           default(0), not null
-#  sort               :decimal(15, 10)  default(0.0), not null
+#  sort               :bigint           default(0)
 #  type               :string(32)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

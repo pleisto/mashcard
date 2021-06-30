@@ -47,7 +47,7 @@ export type BlockSyncInput = {
   /** parent type */
   parentType?: Maybe<Scalars['String']>
   /** block sort */
-  sort?: Maybe<Scalars['Float']>
+  sort?: Maybe<Scalars['Int']>
   /** block data */
   data?: Maybe<Scalars['BlockData']>
   /** block meta */
@@ -79,7 +79,7 @@ export type PageBlock = {
   /** parent type */
   parentType?: Maybe<Scalars['String']>
   /** block sort */
-  sort: Scalars['Float']
+  sort: Scalars['Int']
   /** block type */
   type: Scalars['String']
 }
@@ -198,7 +198,7 @@ export type TextBlock = {
   /** parent type */
   parentType?: Maybe<Scalars['String']>
   /** block sort */
-  sort: Scalars['Float']
+  sort: Scalars['Int']
   /** block type */
   type: Scalars['String']
 }

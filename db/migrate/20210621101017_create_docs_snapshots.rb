@@ -19,7 +19,7 @@ class CreateDocsSnapshots < ActiveRecord::Migration[6.1]
       t.uuid :parent_id
       t.string :parent_type
       t.column :path, :uuid, array: true
-      t.column :sort, :decimal, precision: 15, scale: 10, null: false
+      t.column :sort, :bigint, null: false
       t.column :history_version, :bigint, null: false
 
       t.timestamps

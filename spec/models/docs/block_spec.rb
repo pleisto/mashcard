@@ -44,7 +44,7 @@ RSpec.describe Docs::Block, type: :model do
     it 'order' do
       old_version = block.history_version
       expect(block.sort).to eq(0)
-      block.update!(sort: 100.12)
+      block.update!(sort: 101)
       expect(block.history_version).to eq(old_version + 1)
     end
   end
