@@ -22,7 +22,7 @@ describe Accounts::Mutations::UserConfirmationEmailResend, type: :mutation do
     end
 
     it 'work' do
-      user = create(:accounts_user)
+      user = create(:accounts_user_not_confirmed)
       internal_graphql_execute(mutation, { input: { email: user.email } })
       expect(response.data[:userConfirmationEmailResend][:errors]).to eq([])
       internal_graphql_execute(mutation, { input: { email: user.email } })

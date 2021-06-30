@@ -54,6 +54,7 @@ jobs:
       - name: Run rails server
         run: bundle exec rails s -p 3000 &
         env:
+          CYPRESS: 1
           RAILS_ENV: development
       - name: Lint Code
         run: yarn lint
@@ -64,6 +65,7 @@ jobs:
           RAILS_ENV: test
         run: bundle exec rspec --format RspecJunitFormatter --out rspec.xml
       - name: Publish Test Report
+        if: always()
         uses: mikepenz/action-junit-report@v2
         with:
           report_paths: './rspec.xml'
