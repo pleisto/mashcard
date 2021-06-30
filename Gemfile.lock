@@ -380,6 +380,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (1.17.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -526,6 +528,7 @@ DEPENDENCIES
   redis-namespace (~> 1.8, >= 1.8.1)
   redis-objects (~> 1.5.0)
   rspec-rails (>= 4.0.2)
+  rspec_junit_formatter (>= 0.4)
   rubocop (>= 1.17)
   rubocop-brickdoc!
   second_level_cache (~> 2.6, >= 2.6.4)

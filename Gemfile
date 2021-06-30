@@ -79,6 +79,7 @@ group :development, :test do
   gem 'rubocop-brickdoc', require: false, path: 'packages/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 4.0.2'
+  gem 'rspec_junit_formatter', '>= 0.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
