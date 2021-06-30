@@ -4,6 +4,6 @@ describe('pageTree', ()=>{
   })
   it('should rendered',()=>{
     cy.visit('/')
-    // cy.url().should('include', 'accounts/sign_in')
+    cy.url().should('not.include', 'accounts/sign_in')
   })
 })

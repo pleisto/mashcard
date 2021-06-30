@@ -23,5 +23,6 @@
     }
   },
   "compileOnSave": false,
-  "includes": ["./frontends/common/externals.d.ts"]
+  "includes": ["./frontends/common/externals.d.ts"],
+  "exclude": ["./cypress"]
 }
