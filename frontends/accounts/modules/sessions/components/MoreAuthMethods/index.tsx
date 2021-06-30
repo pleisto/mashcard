@@ -13,7 +13,7 @@ const MoreAuthMethods: React.FC<MoreAuthMethodsProps> = ({ methods }) => {
     <Divider plain>{t('sessions.more_login_options')}</Divider>
     {methods.map(i =>
       <Tooltip key={i.name} title={t('sessions.login_via', { provider: t(`provider.${i.name}`) })}>
-      <Button shape="circle" icon={i.logo} onClick={i.action} />
+      <Button id={`auth-btn-${i.name}`} shape="circle" icon={i.logo} onClick={i.action} />
     </Tooltip>)}
   </div>)
 }

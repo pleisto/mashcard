@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   draw :accounts
+  draw(:devtools) unless Rails.env.production?
   # Internal APIs
   post '/.internal-apis/$graph' => 'internal_apis#graphql', default: { format: :json }, as: 'internal_graphql_api'
   get '/.internal-apis/locales/:ns.:locale', to: 'internal_apis#show_locales', defaults: { format: :json }

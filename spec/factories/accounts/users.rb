@@ -5,5 +5,6 @@ FactoryBot.define do
     webid { "#{FFaker::Lorem.word}#{Time.now.to_i}" }
     email { FFaker::Internet.email }
     password { FFaker::Internet.password }
+    confirmed_at { Time.now.utc }
   end
 end

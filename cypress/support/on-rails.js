@@ -23,17 +23,22 @@ Cypress.Commands.add('appScenario', (name, options = {}) => {
   return cy.app(`scenarios/${  name}`, options)
 })
 
-Cypress.Commands.add('appEval', (code) => {
-  return cy.app('eval', code)
-})
-
 Cypress.Commands.add('appFactories', (options) => {
   return cy.app('factory_bot', options)
 })
 
-Cypress.Commands.add('appFixtures', (options) => {
-  cy.app('activerecord_fixtures', options)
+Cypress.Commands.add("sessionMock", (details) => {
+  if(!details)
+    // eslint-disable-next-line no-param-reassign
+    details = {}
+
+  if(!details.redirect_to)
+    details.redirect_to = '/'
+
+  cy.visit("__cypress__/session_mock",
+    { method: "POST", body: { email: details.email, redirect_to: details.redirect_to }  })
 })
+
 // CypressOnRails: end
 
 // The next is optional

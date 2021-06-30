@@ -36,6 +36,7 @@ const Page: React.FC = () => {
           :
           <Button icon={preferredAuthMethod.logo}
                   size="large"
+                  id={`auth-btn-${preferredAuthMethod.name}`}
                   style={{marginTop: '2rem'}}
                   onClick={preferredAuthMethod.action} block>
             {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod.name}`) })}
