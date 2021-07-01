@@ -8,7 +8,3 @@ trim_trailing_whitespace = true
 charset = utf-8
 indent_style = space
 indent_size = 2
-
-[*.{md,markdown,js.snap,ts.snap,mdx}]
-max_line_length = off
-trim_trailing_whitespace = false

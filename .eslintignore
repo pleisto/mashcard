@@ -1,4 +1,5 @@
 packages/brickdoc-design-system/tests/*
 packages/brickdoc-design-system/**/__tests__/*
-frontends/BrickdocGraphQl.ts
-cypress
+packages/less-vars-loader/lib/*
+frontends/BrickdocGraphQL.ts
+cypress/*

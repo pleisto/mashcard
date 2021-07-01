@@ -8,5 +8,4 @@ node_modules
 esm-bundle
 
 CHANGELOG.*
-*.gql
 *.env
