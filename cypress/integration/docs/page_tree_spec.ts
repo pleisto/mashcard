@@ -1,5 +1,5 @@
 describe('pageTree', ()=>{
-  before(()=>{
+  beforeEach(()=>{
     cy.sessionMock({email: 'cypress@example.com'})
   })
   it('should rendered',()=>{

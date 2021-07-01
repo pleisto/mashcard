@@ -3,13 +3,6 @@
     "plugin:@brickdoc/eslint-plugin/react",
     "plugin:cypress/recommended"
   ],
-  "parserOptions": {
-    "project": [
-      "./tsconfig.json",
-      "./packages/*/tsconfig.json",
-      "./cypress/tsconfig.json"
-    ]
-  },
   "rules": {
     "jest/expect-expect": 0
   }

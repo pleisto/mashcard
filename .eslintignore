@@ -1,3 +1,4 @@
 packages/brickdoc-design-system/tests/*
 packages/brickdoc-design-system/**/__tests__/*
 frontends/BrickdocGraphQl.ts
+cypress
