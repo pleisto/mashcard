@@ -37,7 +37,7 @@ class Docs::Block < ApplicationRecord
   has_many :snapshots, dependent: :restrict_with_exception
 
   validates :meta, presence: true, allow_blank: true
-  validates :data, presence: true
+  # validates :data, presence: true
   validates :pod, presence: true
   validates :collaborators, presence: true
 

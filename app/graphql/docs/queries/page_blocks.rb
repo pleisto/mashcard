@@ -9,7 +9,7 @@ module Docs
 
     def resolve(webid:)
       # TODO: permission check
-      Docs::Block.joins(:pod).where(type: 'page', pod: { webid: webid })
+      Docs::Block.joins(:pod).where(type: 'doc', pod: { webid: webid })
     end
   end
 end

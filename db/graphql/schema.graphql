@@ -104,6 +104,55 @@ A valid http/https url or image uri
 scalar HttpUrl
 
 """
+doc blocks
+"""
+type MetaBlock {
+  """
+  collaborators
+  """
+  collaborators: [accounts_user!]
+  data: Nil!
+
+  """
+  object unique id
+  """
+  id: UUID!
+  meta: MetaBlockMeta!
+
+  """
+  parent uuid
+  """
+  parentId: UUID
+
+  """
+  parent type
+  """
+  parentType: String
+
+  """
+  block sort
+  """
+  sort: Int!
+
+  """
+  block type
+  """
+  type: String!
+}
+
+type MetaBlockMeta {
+  """
+  attrs
+  """
+  attrs: String
+
+  """
+  marks
+  """
+  marks: String
+}
+
+"""
 Null value
 """
 scalar Nil
@@ -602,7 +651,7 @@ type accounts_user {
 """
 Brickdoc Docs::Block
 """
-union block = PageBlock | TextBlock
+union block = MetaBlock | PageBlock | TextBlock
 
 """
 Brickdoc Global Configuration

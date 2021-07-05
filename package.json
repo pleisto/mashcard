@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "bin/webpack-dev-server",
+    "start": "patch-package --error-on-fail && bin/webpack-dev-server",
     "lint": "eslint --cache ./  --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --parallel --config .rubocop.yml && bundle exec brakeman --summary --no-pager --exit-on-warn",
     "lint:fix": "eslint --cache ./ --fix --ext .ts,.tsx --ignore-pattern 'vendor/*' && bundle exec rubocop --config .rubocop.yml -a && bundle exec brakeman  --faster --summary --no-pager --exit-on-warn",
     "test": "yarn lint && bundle exec rspec",
@@ -17,7 +17,7 @@
     "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
     "less-vars-loader": "yarn workspace @brickdoc/less-vars-loader",
     "design-system": "yarn workspace @brickdoc/design-system",
-    "postinstall": "husky install"
+    "postinstall": "husky install && patch-package --error-on-fail"
   },
   "browserslist": [
     "chrome >= 74",

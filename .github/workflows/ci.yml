@@ -51,15 +51,15 @@ jobs:
         with:
           ruby-version: 3.0
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Lint Code
+        run: yarn lint
+      - name: Run Migrate
+        run: bundle exec rails db:create db:migrate db:seed
       - name: Run rails server
         run: bundle exec rails s -p 3000 &
         env:
           CYPRESS: 1
           RAILS_ENV: development
-      - name: Lint Code
-        run: yarn lint
-      - name: Run Migrate
-        run: bundle exec rails db:create db:migrate db:seed
       - name: Run tests
         env:
           RAILS_ENV: test
@@ -69,6 +69,8 @@ jobs:
         uses: mikepenz/action-junit-report@v2
         with:
           report_paths: './rspec.xml'
+      - name: Dump graphql schema
+        run: yarn graphql
       - name: Ensure server is running
         run: curl http://localhost:3000 -I
       - name: Webpacker compile
@@ -81,8 +83,6 @@ jobs:
         run: bundle exec rails db:schema:dump
         env:
           RAILS_ENV: test
-      - name: Dump graphql schema
-        run: yarn graphql
       - name: Add and commit everything
         uses: EndBug/add-and-commit@v7
         if: github.ref != 'refs/heads/master'

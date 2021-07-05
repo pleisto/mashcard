@@ -1,0 +1,20 @@
+diff --git a/node_modules/prosemirror-model/dist/index.es.js b/node_modules/prosemirror-model/dist/index.es.js
+index b1626f4..9b0da3a 100644
+--- a/node_modules/prosemirror-model/dist/index.es.js
++++ b/node_modules/prosemirror-model/dist/index.es.js
+@@ -1,3 +1,4 @@
++import { v4 as uuid } from 'uuid';
+ import OrderedMap from 'orderedmap';
+ 
+ function findDiffStart(a, b, pos) {
+@@ -1010,6 +1011,10 @@ var Node = function Node(type, attrs, content, marks) {
+   // The type of node that this is.
+   this.type = type;
+ 
++  // Add patch
++  this.uuid = uuid();
++  this.sort = 0;
++
+   // :: Object
+   // An object mapping attribute names to values. The kind of
+   // attributes allowed and required are

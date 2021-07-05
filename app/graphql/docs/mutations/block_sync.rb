@@ -15,9 +15,15 @@ module Docs
       block = Docs::Block.find_or_initialize_by(id: args[:id])
       # assign_attributes could update attributes without save
       block.assign_attributes(args.except(:id))
+
+      ## TODO from context
+      block.pod_id = current_user.pods.first.id
+
       block.collaborators << current_user.id
-      puts block
+
       valid_payload(block)
+
+      block.save!
       puts block.as_json
       nil
     end
