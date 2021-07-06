@@ -5,7 +5,7 @@ labels: [rfc]
 body:
   - type: markdown
     attributes:
-      value: Writing an RFC document is a good starting point to share your ideas, collect feedbacks and improve your solutions.
+      value: Writing an RFC document is a good starting point to share your ideas, collect feedbacks and improve your solutions. Learn more about [how to write a good RFC?](https://andrewhowdencom.medium.com/writing-up-a-request-for-comments-4a6be864bb8a).
   - type: input
     id: starting-date
     attributes:
