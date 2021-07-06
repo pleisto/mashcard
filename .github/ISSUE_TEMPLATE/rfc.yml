@@ -1,0 +1,72 @@
+name: RFC
+description: Create an RFC (Request for Comments) document to discuss with others.
+title: '[RFC-draft] <Your RFC Title>'
+labels: [rfc]
+body:
+  - type: markdown
+    attributes:
+      value: Writing an RFC document is a good starting point to share your ideas, collect feedbacks and improve your solutions.
+  - type: input
+    id: starting-date
+    attributes:
+      label: Starting Date
+      description: The starting date for your RFC discussions. You can fill in today's date if you are creating a new RFC.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: dropdown
+    id: current-state
+    attributes:
+      label: Current State
+      description: |
+        All new RFC documents should start in the `Draft` state. `Finalized` RFC should no longer accept any new edits.
+      options:
+        - Draft
+        - Finalized
+        - Abandoned
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Provide some backgrounds about your ideas, e.g. user stories / technical pain points / related bug reports.
+    validations:
+      required: true
+  - type: textarea
+    id: goals
+    attributes:
+      label: Goals
+      description: Give a list of goals you want to achieve. They should be short and easy to understand.
+      placeholder: |
+        - (Goal 1)
+        - (Goal 2)
+        - (Goal 3)
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution
+      description: The detailed solution to your problems.
+    validations:
+      required: true
+  - type: textarea
+    id: questions
+    attributes:
+      label: Questions
+      description: Leave some questions if you are looking for more specific feedbacks.
+      placeholder: |
+        - Is there a better way to achieve ...?
+        - Are there any potential security vulnerabilities?
+        - (Leave any questions for people to discuss)
+  - type: textarea
+    id: stakeholders
+    attributes:
+      label: Stakeholders
+      description: A list of stakeholders that should be aware of this RFC.
+      placeholder: |
+        - UED: @dave
+        - PMM: @robert
+        - Dev: @tom @mike
+        - (Include every one you want to mention / credit)
