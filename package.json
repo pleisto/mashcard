@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "postinstall": "husky install && yarn patch-package",
-    "start": "yarn patch-package && yarn tsc && concurrently --kill-others \"yarn tsc:build --watch\" \"./bin/webpack-dev-server\"",
+    "start": "yarn patch-package && yarn tsc:build && concurrently --kill-others \"yarn tsc:build --watch\" \"./bin/webpack-dev-server\"",
     "patch-package": "patch-package --error-on-fail",
     "lint": "yarn lint:eslint && yarn lint:robocop && yarn lint:brakeman",
     "lint:fix": "yarn lint:eslint:fix && yarn lint:robocop:fix",
