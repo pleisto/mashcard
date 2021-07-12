@@ -1,9 +1,9 @@
-import React, { useState }  from "react"
-import { Story } from "@storybook/react"
-import { Modal, ModalProps, Space, Button } from "../../"
-import {Help as ExclamationCircleOutlined} from '../icon'
+import React, { useState } from 'react'
+import { Story } from '@storybook/react'
+import { Modal, ModalProps, Space, Button } from '../'
+import { Help as ExclamationCircleOutlined } from '../icon'
 export default {
-  title: "ReactComponents/Modal",
+  title: 'ReactComponents/Modal',
   component: Modal,
   parameters: {
     docs: {
@@ -190,7 +190,7 @@ function showConfirm() {
     },
     onCancel() {
       console.log('Cancel')
-    },
+    }
   })
 }
 
@@ -204,7 +204,7 @@ function showPromiseConfirm() {
         setTimeout(Math.random() > 0.5 ? resolve : reject, 1000)
       }).catch(() => console.log('Oops errors!'))
     },
-    onCancel() {},
+    onCancel() {}
   })
 }
 
@@ -221,7 +221,7 @@ function showDeleteConfirm() {
     },
     onCancel() {
       console.log('Cancel')
-    },
+    }
   })
 }
 
@@ -233,7 +233,7 @@ function showPropsConfirm() {
     okText: 'Yes',
     okType: 'danger',
     okButtonProps: {
-      disabled: true,
+      disabled: true
     },
     cancelText: 'No',
     onOk() {
@@ -241,11 +241,11 @@ function showPropsConfirm() {
     },
     onCancel() {
       console.log('Cancel')
-    },
+    }
   })
 }
 
-const Template: Story<ModalProps> = (_args) =>
+const Template: Story<ModalProps> = _args => (
   <Space>
     <BasicApp />
     <Button onClick={showConfirm}>Confirm</Button>
@@ -256,7 +256,6 @@ const Template: Story<ModalProps> = (_args) =>
     <Button onClick={showPropsConfirm} type="dashed">
       With extra props
     </Button>
-
   </Space>
+)
 export const Base = Template.bind({})
-

@@ -6,34 +6,30 @@ import Button from '../button'
 import { ButtonHTMLType } from '../button/button'
 import { ButtonGroupProps } from '../button/button-group'
 import { ConfigContext } from '../config-provider'
-import Dropdown, { DropDownProps } from './dropdown'
+import Dropdown, { DropdownProps } from './dropdown'
 
 const ButtonGroup = Button.Group
 
-type DropdownButtonType = 'primary' | 'ghost' | 'dashed';
+type DropdownButtonType = 'primary' | 'ghost' | 'dashed'
 
-export interface DropdownButtonProps extends ButtonGroupProps, DropDownProps {
-  type?: DropdownButtonType;
-  htmlType?: ButtonHTMLType;
-  disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  icon?: React.ReactNode;
-  href?: string;
-  children?: React.ReactNode;
-  title?: string;
-  buttonsRender?: (buttons: React.ReactNode[]) => React.ReactNode[];
+export interface DropdownButtonProps extends ButtonGroupProps, DropdownProps {
+  type?: DropdownButtonType
+  htmlType?: ButtonHTMLType
+  disabled?: boolean
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  icon?: React.ReactNode
+  href?: string
+  children?: React.ReactNode
+  title?: string
+  buttonsRender?: (buttons: React.ReactElement[]) => React.ReactNode[]
 }
 
 interface DropdownButtonInterface extends React.FC<DropdownButtonProps> {
-  __ANT_BUTTON: boolean;
+  __ANT_BUTTON: boolean
 }
 
 const DropdownButton: DropdownButtonInterface = props => {
-  const {
-    getPopupContainer: getContextPopupContainer,
-    getPrefixCls,
-    direction,
-  } = React.useContext(ConfigContext)
+  const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(ConfigContext)
 
   const {
     prefixCls: customizePrefixCls,
@@ -60,6 +56,7 @@ const DropdownButton: DropdownButtonInterface = props => {
   } = props
 
   const prefixCls = getPrefixCls('dropdown-button', customizePrefixCls)
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const dropdownProps = {
     align,
     overlay,
@@ -68,8 +65,8 @@ const DropdownButton: DropdownButtonInterface = props => {
     onVisibleChange,
     getPopupContainer: getPopupContainer || getContextPopupContainer,
     mouseEnterDelay,
-    mouseLeaveDelay,
-  } as DropDownProps
+    mouseLeaveDelay
+  } as DropdownProps
 
   if ('visible' in props) {
     dropdownProps.visible = visible
@@ -82,14 +79,7 @@ const DropdownButton: DropdownButtonInterface = props => {
   }
 
   const leftButton = (
-    <Button
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-      htmlType={htmlType}
-      href={href}
-      title={title}
-    >
+    <Button type={type} disabled={disabled} onClick={onClick} htmlType={htmlType} href={href} title={title}>
       {children}
     </Button>
   )
@@ -110,7 +100,7 @@ DropdownButton.__ANT_BUTTON = true
 
 DropdownButton.defaultProps = {
   type: 'default' as DropdownButtonType,
-  buttonsRender: (buttons: React.ReactNode[]) => buttons,
+  buttonsRender: (buttons: React.ReactNode[]) => buttons
 }
 
 export default DropdownButton

@@ -3,12 +3,12 @@ import Button from '../button'
 import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'
 
 export interface ActionButtonProps {
-  type?: LegacyButtonType;
-  actionFn?: (...args: any[]) => any | PromiseLike<any>;
-  closeModal: Function;
-  autoFocus?: boolean;
-  prefixCls: string;
-  buttonProps?: ButtonProps;
+  type?: LegacyButtonType
+  actionFn?: (...args: any[]) => any | PromiseLike<any>
+  closeModal: Function
+  autoFocus?: boolean
+  prefixCls: string
+  buttonProps?: ButtonProps
 }
 
 const ActionButton: React.FC<ActionButtonProps> = props => {
@@ -32,6 +32,7 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
 
   const handlePromiseOnOk = (returnValueOfOnOk?: PromiseLike<any>) => {
     const { closeModal } = props
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     if (!returnValueOfOnOk || !returnValueOfOnOk.then) {
       return
     }
@@ -49,7 +50,7 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
         // See: https://github.com/ant-design/ant-design/issues/6183
         setLoading(false)
         clickedRef.current = false
-      },
+      }
     )
   }
 
@@ -80,14 +81,7 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
 
   const { type, children, prefixCls, buttonProps } = props
   return (
-    <Button
-      {...convertLegacyProps(type)}
-      onClick={onClick}
-      loading={loading}
-      prefixCls={prefixCls}
-      {...buttonProps}
-      ref={ref}
-    >
+    <Button {...convertLegacyProps(type)} onClick={onClick} loading={loading} prefixCls={prefixCls} {...buttonProps} ref={ref}>
       {children}
     </Button>
   )

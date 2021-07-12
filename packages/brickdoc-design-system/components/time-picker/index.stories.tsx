@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { TimePicker, TimePickerProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { TimePicker, TimePickerProps } from '../'
 export default {
-  title: "ReactComponents/TimePicker",
+  title: 'ReactComponents/TimePicker',
   component: TimePicker,
   parameters: {
     docs: {
@@ -84,15 +84,15 @@ Same props from RangePicker of DatePicker. And includes additional props:
   }
 }
 
-
-
-const Template: Story<TimePickerProps> = (_args) =>
+const Template: Story<TimePickerProps> = _args => (
   <>
-    <TimePicker  defaultOpenValue={Date.now()} />
-    <br/><br/>
-    <TimePicker use12Hours format="h:mm a"  />
-    <br/><br/>
+    <TimePicker defaultValue={new Date()} />
+    <br />
+    <br />
+    <TimePicker use12Hours format="h:mm a" />
+    <br />
+    <br />
     <TimePicker.RangePicker />
   </>
+)
 export const Base = Template.bind({})
-

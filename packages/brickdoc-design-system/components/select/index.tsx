@@ -10,35 +10,34 @@ import getIcons from './utils/iconUtil'
 import SizeContext, { SizeType } from '../config-provider/SizeContext'
 import { getTransitionName } from '../_util/motion'
 
-type RawValue = string | number;
+type RawValue = string | number
 
 export type { OptionProps }
 
-export type OptionType = typeof Option;
+export type OptionType = typeof Option
 
 export interface LabeledValue {
-  key?: string;
-  value: RawValue;
-  label: React.ReactNode;
+  key?: string
+  value: RawValue
+  label: React.ReactNode
 }
 
-export type SelectValue = RawValue | RawValue[] | LabeledValue | LabeledValue[] | undefined;
+export type SelectValue = RawValue | RawValue[] | LabeledValue | LabeledValue[] | undefined
 
 export interface InternalSelectProps<VT> extends Omit<RcSelectProps<VT>, 'mode'> {
-  suffixIcon?: React.ReactNode;
-  size?: SizeType;
-  mode?: 'multiple' | 'tags' | 'SECRET_COMBOBOX_MODE_DO_NOT_USE';
-  bordered?: boolean;
+  suffixIcon?: React.ReactNode
+  size?: SizeType
+  mode?: 'multiple' | 'tags' | 'SECRET_COMBOBOX_MODE_DO_NOT_USE'
+  bordered?: boolean
 }
 
-export interface SelectProps<VT>
-  extends Omit<InternalSelectProps<VT>, 'inputIcon' | 'mode' | 'getInputElement' | 'backfill'> {
-  mode?: 'multiple' | 'tags';
+export interface SelectProps<VT> extends Omit<InternalSelectProps<VT>, 'inputIcon' | 'mode' | 'getInputElement' | 'backfill'> {
+  mode?: 'multiple' | 'tags'
 }
 
 export interface RefSelectProps {
-  focus: () => void;
-  blur: () => void;
+  focus: () => void
+  blur: () => void
 }
 
 const SECRET_COMBOBOX_MODE_DO_NOT_USE = 'SECRET_COMBOBOX_MODE_DO_NOT_USE'
@@ -56,7 +55,7 @@ const InternalSelect = <VT extends SelectValue = SelectValue>(
     notFoundContent,
     ...props
   }: SelectProps<VT>,
-  ref: React.Ref<RefSelectProps>,
+  ref: React.Ref<RefSelectProps>
 ) => {
   const {
     getPopupContainer: getContextPopupContainer,
@@ -64,7 +63,7 @@ const InternalSelect = <VT extends SelectValue = SelectValue>(
     renderEmpty,
     direction,
     virtual,
-    dropdownMatchSelectWidth,
+    dropdownMatchSelectWidth
   } = React.useContext(ConfigContext)
   const size = React.useContext(SizeContext)
 
@@ -102,13 +101,13 @@ const InternalSelect = <VT extends SelectValue = SelectValue>(
   const { suffixIcon, itemIcon, removeIcon, clearIcon } = getIcons({
     ...props,
     multiple: isMultiple,
-    prefixCls,
+    prefixCls
   })
 
   const selectProps = omit(props as typeof props & { itemIcon: any }, ['suffixIcon', 'itemIcon'])
 
   const rcSelectRtlDropDownClassName = classNames(dropdownClassName, {
-    [`${prefixCls}-dropdown-${direction}`]: direction === 'rtl',
+    [`${prefixCls}-dropdown-${direction}`]: direction === 'rtl'
   })
 
   const mergedSize = customizeSize || size
@@ -117,9 +116,9 @@ const InternalSelect = <VT extends SelectValue = SelectValue>(
       [`${prefixCls}-lg`]: mergedSize === 'large',
       [`${prefixCls}-sm`]: mergedSize === 'small',
       [`${prefixCls}-rtl`]: direction === 'rtl',
-      [`${prefixCls}-borderless`]: !bordered,
+      [`${prefixCls}-borderless`]: !bordered
     },
-    className,
+    className
   )
 
   return (
@@ -147,15 +146,15 @@ const InternalSelect = <VT extends SelectValue = SelectValue>(
 }
 
 const SelectRef = React.forwardRef(InternalSelect) as <VT extends SelectValue = SelectValue>(
-  props: SelectProps<VT> & { ref?: React.Ref<RefSelectProps> },
+  props: SelectProps<VT> & { ref?: React.Ref<RefSelectProps> }
 ) => React.ReactElement
 
-type InternalSelectType = typeof SelectRef;
+type InternalSelectType = typeof SelectRef
 
-interface SelectInterface extends InternalSelectType {
-  SECRET_COMBOBOX_MODE_DO_NOT_USE: string;
-  Option: typeof Option;
-  OptGroup: typeof OptGroup;
+export interface SelectInterface extends InternalSelectType {
+  SECRET_COMBOBOX_MODE_DO_NOT_USE: string
+  Option: typeof Option
+  OptGroup: typeof OptGroup
 }
 
 const Select = SelectRef as SelectInterface

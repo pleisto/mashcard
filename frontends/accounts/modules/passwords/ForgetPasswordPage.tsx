@@ -40,7 +40,7 @@ const Page: React.FC = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <h1>{pageTitle}</h1>
-      <Form form={form} initialValues="" layout="vertical" onFinish={onFinish}>
+      <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item label={t('sessions.email')} name="email" hasFeedback rules={[{ required: true }]}>
           <Input />
         </Form.Item>

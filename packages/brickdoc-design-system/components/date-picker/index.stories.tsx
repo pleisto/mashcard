@@ -1,15 +1,14 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { DatePicker, DatePickerProps } from "../../"
-
+import React from 'react'
+import { Story } from '@storybook/react'
+import { DatePicker, DatePickerProps } from '../'
 
 export default {
-  title: "ReactComponents/DatePicker",
+  title: 'ReactComponents/DatePicker',
   component: DatePicker,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 To select or input a date.
 
 #### When To Use
@@ -137,29 +136,26 @@ The following APIs are shared by DatePicker, RangePicker.
 | onCalendarChange | Callback function, can be executed when the start time or the end time of the range is changing. \`info\` argument is added in 4.4.0 | function(dates: \\[Date, Date], dateStrings: \\[string, string], info: { range:\`start\`\\|\`end\` }) | - |
 | onChange | Callback function, can be executed when the selected time is changing | function(dates: \\[Date, Date], dateStrings: \\[string, string]) | - |
 `
+      }
     }
   }
 }
-}
 
-
-const Template: Story<DatePickerProps> = (_args) =>
+const Template: Story<DatePickerProps> = _args => (
   <>
-    <DatePicker  />
-    <br/><br/>
+    <DatePicker />
+    <br />
+    <br />
     <DatePicker picker="week" />
-    <br/><br/>
+    <br />
+    <br />
     <DatePicker picker="month" bordered={false} />
-    <br/><br/>
-    <DatePicker.RangePicker
-      showTime={{ format: 'HH:mm' }}
-      format="YYYY-MM-DD HH:mm"
-    />
-    <br/><br/>
+    <br />
+    <br />
+    <DatePicker.RangePicker showTime={{ format: 'HH:mm' }} format="YYYY-MM-DD HH:mm" />
+    <br />
+    <br />
     <DatePicker picker="quarter" size="large" />
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

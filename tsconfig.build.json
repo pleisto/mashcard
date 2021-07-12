@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["frontends/*"]
+    },
+    "noImplicitAny": false,
+    "strictNullChecks": false
+  },
+  "include": ["frontends/**/*"],
+  "references": [
+    { "path": "packages/brickdoc-design-system/tsconfig.build.json" },
+    { "path": "packages/brickdoc-editor/tsconfig.build.json" },
+    { "path": "packages/less-vars-loader/tsconfig.build.json" }
+  ]
+}

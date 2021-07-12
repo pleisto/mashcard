@@ -1,10 +1,10 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Switch, SwitchProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Switch, SwitchProps } from '../'
 export default {
-  title: "ReactComponents/Switch",
+  title: 'ReactComponents/Switch',
   component: Switch,
-  argTypes:{
+  argTypes: {
     autoFocus: {
       description: 'Whether get focus when component mounted',
       defaultValue: false,
@@ -15,7 +15,8 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       }
-    },checked: {
+    },
+    checked: {
       description: 'Determine whether the Switch is checked',
       defaultValue: false,
       control: {
@@ -48,7 +49,8 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       }
-    },disabled: {
+    },
+    disabled: {
       description: 'Disable switch',
       defaultValue: false,
       control: {
@@ -58,7 +60,8 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       }
-    },loading: {
+    },
+    loading: {
       description: 'Loading state of switch',
       defaultValue: false,
       control: {
@@ -97,7 +100,7 @@ export default {
       table: {
         type: { summary: 'function(checked: boolean, event: Event)' }
       }
-    },
+    }
   },
   parameters: {
     docs: {
@@ -124,11 +127,9 @@ Switching Selector.
   }
 }
 
-
-
-const Template: Story<SwitchProps> = (args) =>
+const Template: Story<SwitchProps> = args => (
   <>
     <Switch {...args} />
   </>
+)
 export const Base = Template.bind({})
-

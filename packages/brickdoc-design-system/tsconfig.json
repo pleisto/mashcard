@@ -1,15 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
-  "exclude": ["node_modules", "lib", "es"],
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "brick-design": ["components/index.tsx"],
-      "brick-design/es/*": ["components/*"]
-    },
-    "strictNullChecks": false,
-    "jsx": "preserve",
-    "noUnusedParameters": true,
-    "noImplicitAny": false
-  }
+  "extends": "./tsconfig.build.json",
+  "include": ["**/*"],
+  "exclude": ["dist/**/*"]
 }

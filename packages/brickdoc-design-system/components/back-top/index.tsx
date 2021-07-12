@@ -12,35 +12,32 @@ import scrollTo from '../_util/scrollTo'
 import { cloneElement } from '../_util/reactNode'
 
 export interface BackTopProps {
-  visibilityHeight?: number;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  target?: () => HTMLElement | Window | Document;
-  prefixCls?: string;
-  children?: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  duration?: number;
-  visible?: boolean; // Only for test. Don't use it.
+  visibilityHeight?: number
+  onClick?: React.MouseEventHandler<HTMLElement>
+  target?: () => HTMLElement | Window | Document
+  prefixCls?: string
+  children?: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+  duration?: number
+  visible?: boolean // Only for test. Don't use it.
 }
 
 const BackTop: React.FC<BackTopProps> = props => {
   const [visible, setVisible] = useMergedState(false, {
-    value: props.visible,
+    value: props.visible
   })
 
   const ref = React.createRef<HTMLDivElement>()
   const scrollEvent = React.useRef<any>()
 
-  const getDefaultTarget = () =>
-    ref.current && ref.current.ownerDocument ? ref.current.ownerDocument : window
+  const getDefaultTarget = () => (ref.current?.ownerDocument ? ref.current.ownerDocument : window)
 
-  const handleScroll = throttleByAnimationFrame(
-    (e: React.UIEvent<HTMLElement> | { target: any }) => {
-      const { visibilityHeight } = props
-      const scrollTop = getScroll(e.target, true)
-      setVisible(scrollTop > visibilityHeight)
-    },
-  )
+  const handleScroll = throttleByAnimationFrame((e: React.UIEvent<HTMLElement> | { target: any }) => {
+    const { visibilityHeight } = props
+    const scrollTop = getScroll(e.target, true)
+    setVisible(scrollTop > visibilityHeight)
+  })
 
   const bindScrollEvent = () => {
     const { target } = props
@@ -50,7 +47,7 @@ const BackTop: React.FC<BackTopProps> = props => {
       handleScroll(e)
     })
     handleScroll({
-      target: container,
+      target: container
     })
   }
 
@@ -60,7 +57,7 @@ const BackTop: React.FC<BackTopProps> = props => {
       if (scrollEvent.current) {
         scrollEvent.current.remove()
       }
-      (handleScroll as any).cancel()
+      ;(handleScroll as any).cancel()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.target])
@@ -69,20 +66,14 @@ const BackTop: React.FC<BackTopProps> = props => {
     const { onClick, target, duration = 450 } = props
     scrollTo(0, {
       getContainer: target || getDefaultTarget,
-      duration,
+      duration
     })
     if (typeof onClick === 'function') {
       onClick(e)
     }
   }
 
-  const renderChildren = ({
-    prefixCls,
-    rootPrefixCls,
-  }: {
-    prefixCls: string;
-    rootPrefixCls: string;
-  }) => {
+  const renderChildren = ({ prefixCls, rootPrefixCls }: { prefixCls: string; rootPrefixCls: string }) => {
     const { children } = props
     const defaultElement = (
       <div className={`${prefixCls}-content`}>
@@ -98,7 +89,7 @@ const BackTop: React.FC<BackTopProps> = props => {
           return (
             <div>
               {cloneElement(childNode, ({ className }) => ({
-                className: classNames(motionClassName, className),
+                className: classNames(motionClassName, className)
               }))}
             </div>
           )
@@ -114,22 +105,16 @@ const BackTop: React.FC<BackTopProps> = props => {
   const classString = classNames(
     prefixCls,
     {
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
 
   // fix https://fb.me/react-unknown-prop
-  const divProps = omit(props, [
-    'prefixCls',
-    'className',
-    'children',
-    'visibilityHeight',
-    'target',
-    'visible',
-  ])
+  const divProps = omit(props, ['prefixCls', 'className', 'children', 'visibilityHeight', 'target', 'visible'])
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div {...divProps} className={classString} onClick={scrollToTop} ref={ref}>
       {renderChildren({ prefixCls, rootPrefixCls })}
     </div>
@@ -137,7 +122,7 @@ const BackTop: React.FC<BackTopProps> = props => {
 }
 
 BackTop.defaultProps = {
-  visibilityHeight: 400,
+  visibilityHeight: 400
 }
 
 export default React.memo(BackTop)

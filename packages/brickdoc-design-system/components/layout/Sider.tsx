@@ -2,11 +2,7 @@ import * as React from 'react'
 import { useContext, useRef, useState, useEffect } from 'react'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
-import {
-  HamburgerButton as BarsOutlined,
-  Right as RightOutlined,
-  Left as LeftOutlined
-} from '../icon'
+import { HamburgerButton as BarsOutlined, Right as RightOutlined, Left as LeftOutlined } from '../icon'
 
 import { LayoutContext } from './layout'
 import { ConfigContext } from '../config-provider'
@@ -18,38 +14,38 @@ const dimensionMaxMap = {
   md: '767.98px',
   lg: '991.98px',
   xl: '1199.98px',
-  xxl: '1599.98px',
+  xxl: '1599.98px'
 }
 
 export interface SiderContextProps {
-  siderCollapsed?: boolean;
+  siderCollapsed?: boolean
 }
 
 export const SiderContext: React.Context<SiderContextProps> = React.createContext({})
 
-export type CollapseType = 'clickTrigger' | 'responsive';
+export type CollapseType = 'clickTrigger' | 'responsive'
 
-export type SiderTheme = 'light' | 'dark';
+export type SiderTheme = 'light' | 'dark'
 
 export interface SiderProps extends React.HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-  collapsible?: boolean;
-  collapsed?: boolean;
-  defaultCollapsed?: boolean;
-  reverseArrow?: boolean;
-  onCollapse?: (collapsed: boolean, type: CollapseType) => void;
-  zeroWidthTriggerStyle?: React.CSSProperties;
-  trigger?: React.ReactNode;
-  width?: number | string;
-  collapsedWidth?: number | string;
-  breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-  theme?: SiderTheme;
-  onBreakpoint?: (broken: boolean) => void;
+  prefixCls?: string
+  collapsible?: boolean
+  collapsed?: boolean
+  defaultCollapsed?: boolean
+  reverseArrow?: boolean
+  onCollapse?: (collapsed: boolean, type: CollapseType) => void
+  zeroWidthTriggerStyle?: React.CSSProperties
+  trigger?: React.ReactNode
+  width?: number | string
+  collapsedWidth?: number | string
+  breakpoint?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+  theme?: SiderTheme
+  onBreakpoint?: (broken: boolean) => void
 }
 
 export interface SiderState {
-  collapsed?: boolean;
-  below: boolean;
+  collapsed?: boolean
+  below: boolean
 }
 
 const generateId = (() => {
@@ -80,13 +76,11 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
       onBreakpoint,
       ...props
     },
-    ref,
+    ref
   ) => {
     const { siderHook } = useContext(LayoutContext)
 
-    const [collapsed, setCollapsed] = useState(
-      'collapsed' in props ? props.collapsed : defaultCollapsed,
-    )
+    const [collapsed, setCollapsed] = useState('collapsed' in props ? props.collapsed : defaultCollapsed)
     const [below, setBelow] = useState(false)
 
     useEffect(() => {
@@ -164,31 +158,25 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
       // special trigger when collapsedWidth == 0
       const zeroWidthTrigger =
         parseFloat(String(collapsedWidth || 0)) === 0 ? (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
           <span
             onClick={toggle}
-            className={classNames(
-              `${prefixCls}-zero-width-trigger`,
-              `${prefixCls}-zero-width-trigger-${reverseArrow ? 'right' : 'left'}`,
-            )}
-            style={zeroWidthTriggerStyle}
-          >
+            className={classNames(`${prefixCls}-zero-width-trigger`, `${prefixCls}-zero-width-trigger-${reverseArrow ? 'right' : 'left'}`)}
+            style={zeroWidthTriggerStyle}>
             {trigger || <BarsOutlined />}
           </span>
         ) : null
       const iconObj = {
         expanded: reverseArrow ? <RightOutlined /> : <LeftOutlined />,
-        collapsed: reverseArrow ? <LeftOutlined /> : <RightOutlined />,
+        collapsed: reverseArrow ? <LeftOutlined /> : <RightOutlined />
       }
       const status = collapsed ? 'collapsed' : 'expanded'
       const defaultTrigger = iconObj[status]
       const triggerDom =
         trigger !== null
           ? zeroWidthTrigger || (
-              <div
-                className={`${prefixCls}-trigger`}
-                onClick={toggle}
-                style={{ width: siderWidth }}
-              >
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+              <div className={`${prefixCls}-trigger`} onClick={toggle} style={{ width: siderWidth }}>
                 {trigger || defaultTrigger}
               </div>
             )
@@ -198,7 +186,7 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
         flex: `0 0 ${siderWidth}`,
         maxWidth: siderWidth, // Fix width transition bug in IE11
         minWidth: siderWidth, // https://github.com/ant-design/ant-design/issues/6349
-        width: siderWidth,
+        width: siderWidth
       }
       const siderCls = classNames(
         prefixCls,
@@ -207,9 +195,9 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
           [`${prefixCls}-collapsed`]: !!collapsed,
           [`${prefixCls}-has-trigger`]: collapsible && trigger !== null && !zeroWidthTrigger,
           [`${prefixCls}-below`]: !!below,
-          [`${prefixCls}-zero-width`]: parseFloat(siderWidth) === 0,
+          [`${prefixCls}-zero-width`]: parseFloat(siderWidth) === 0
         },
-        className,
+        className
       )
       return (
         <aside className={siderCls} {...divProps} style={divStyle} ref={ref}>
@@ -221,14 +209,14 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
 
     return (
       <SiderContext.Provider
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
         value={{
-          siderCollapsed: collapsed,
-        }}
-      >
+          siderCollapsed: collapsed
+        }}>
         {renderSider()}
       </SiderContext.Provider>
     )
-  },
+  }
 )
 
 Sider.displayName = 'Sider'

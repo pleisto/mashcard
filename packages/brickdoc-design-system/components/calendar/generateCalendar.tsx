@@ -160,7 +160,7 @@ function generateCalendar<DateType>(generateConfig: GenerateConfig<DateType>) {
               [`${calendarPrefixCls}-date-today`]: isSameDate(today, date)
             })}>
             <div className={`${calendarPrefixCls}-date-value`}>{padStart(String(generateConfig.getDate(date)), 2, '0')}</div>
-            <div className={`${calendarPrefixCls}-date-content`}>{dateCellRender && dateCellRender(date)}</div>
+            <div className={`${calendarPrefixCls}-date-content`}>{dateCellRender?.(date)}</div>
           </div>
         )
       },
@@ -182,7 +182,7 @@ function generateCalendar<DateType>(generateConfig: GenerateConfig<DateType>) {
               [`${calendarPrefixCls}-date-today`]: isSameMonth(today, date)
             })}>
             <div className={`${calendarPrefixCls}-date-value`}>{months[generateConfig.getMonth(date)]}</div>
-            <div className={`${calendarPrefixCls}-date-content`}>{monthCellRender && monthCellRender(date)}</div>
+            <div className={`${calendarPrefixCls}-date-content`}>{monthCellRender?.(date)}</div>
           </div>
         )
       },

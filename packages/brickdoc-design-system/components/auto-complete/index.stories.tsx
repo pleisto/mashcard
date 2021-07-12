@@ -1,12 +1,11 @@
-import React   from 'react'
+import React from 'react'
 import { Story } from '@storybook/react'
-import {  AutoComplete, AutoCompleteProps, Input } from '../../'
+import { AutoComplete, AutoCompleteProps, Input } from '../'
 
-
-export default  {
+export default {
   title: 'ReactComponents/AutoComplete',
   component: AutoComplete,
-  argTypes:{
+  argTypes: {
     allowClear: {
       description: 'Show clear button',
       defaultValue: false,
@@ -45,7 +44,7 @@ export default  {
       defaultValue: <Input />,
       table: {
         type: { summary: 'HTMLInputElement | HTMLTextAreaElement | React.ReactElement<InputProps>' },
-        defaultValue: { summary: '<Input />'}
+        defaultValue: { summary: '<Input />' }
       }
     },
     defaultActiveFirstOption: {
@@ -65,7 +64,7 @@ export default  {
         type: 'boolean'
       },
       table: {
-        type: { summary: 'boolean' },
+        type: { summary: 'boolean' }
       }
     },
     defaultValue: {
@@ -74,7 +73,7 @@ export default  {
         type: 'text'
       },
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       }
     },
     disabled: {
@@ -94,7 +93,7 @@ export default  {
         type: 'text'
       },
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       }
     },
     dropdownMatchSelectWidth: {
@@ -124,7 +123,7 @@ export default  {
         type: 'text'
       },
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       }
     },
     open: {
@@ -133,13 +132,13 @@ export default  {
         type: 'boolean'
       },
       table: {
-        type: { summary: 'boolean' },
+        type: { summary: 'boolean' }
       }
     },
-    options:{
+    options: {
       description: 'Select options. Will get better perf than jsx definition',
-      table:{
-        type: { summary: '{ label, value }[]'}
+      table: {
+        type: { summary: '{ label, value }[]' }
       }
     },
     placeholder: {
@@ -148,7 +147,7 @@ export default  {
         type: 'text'
       },
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       }
     },
     value: {
@@ -157,45 +156,45 @@ export default  {
         type: 'text'
       },
       table: {
-        type: { summary: 'string' },
+        type: { summary: 'string' }
       }
     },
-    onBlur:{
+    onBlur: {
       description: 'Called when leaving the component',
-      table:{
-        type: { summary: 'function()'}
+      table: {
+        type: { summary: 'function()' }
       }
     },
-    onChange:{
+    onChange: {
       description: 'Called when select an option or input value change, or value of input is changed',
-      table:{
-        type: { summary: 'function(value)\t'}
+      table: {
+        type: { summary: 'function(value)\t' }
       }
     },
-    onDropdownVisibleChange:{
+    onDropdownVisibleChange: {
       description: 'Call when dropdown open',
-      table:{
-        type: { summary: 'function(open)'}
+      table: {
+        type: { summary: 'function(open)' }
       }
     },
-    onFocus:{
+    onFocus: {
       description: 'Called when entering the component',
-      table:{
-        type: { summary: 'function()'}
+      table: {
+        type: { summary: 'function()' }
       }
     },
-    onSearch:{
+    onSearch: {
       description: 'Called when searching items',
-      table:{
-        type: { summary: 'function(value)'}
+      table: {
+        type: { summary: 'function(value)' }
       }
     },
-    onSelect:{
-      description: 'Called when a option is selected. param is option\'s value and option instance',
-      table:{
-        type: { summary: 'function(value, option)'}
+    onSelect: {
+      description: "Called when a option is selected. param is option's value and option instance",
+      table: {
+        type: { summary: 'function(value, option)' }
       }
-    },
+    }
   },
   parameters: {
     docs: {
@@ -217,17 +216,11 @@ When there is a need for autocomplete functionality.
   }
 }
 
-
-
-
-const Template: Story<AutoCompleteProps> = (args) => <AutoComplete {...args} />
-
+const Template: Story<AutoCompleteProps> = args => <AutoComplete {...args} />
 
 export const Base = Template.bind({})
 Base.args = {
   placeholder: 'Brickdoc Search Engine',
-  options: ['pods', 'accounts', 'demo'].map(v=>({label:v, value:v})),
+  options: ['pods', 'accounts', 'demo'].map(v => ({ label: v, value: v })),
   filterOption: false
 }
-
-

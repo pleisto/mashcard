@@ -13,7 +13,7 @@ const nodeToBlock = (node: Node): BlockSyncInput[] => {
 
   switch (node.type.name) {
     case 'doc':
-      ;(parent.data as PageBlockData) = { title: `[title] ${(node as any).uuid}` }
+      ;(parent.data as PageBlockData) = { title: `[title] ${(node as any).uuid as string}` }
       break
     case 'text':
       ;(parent.data as TextBlockData) = { content: node.text }

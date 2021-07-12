@@ -4,8 +4,7 @@ import {
   CheckOne as CheckCircle,
   CloseOne as CloseCircle,
   Info as InfoCircle,
-  Attention as ExclamationCircle,
-
+  Attention as ExclamationCircle
 } from '../icon'
 import CSSMotion from 'rc-motion'
 import classNames from 'classnames'
@@ -17,44 +16,43 @@ import { replaceElement } from '../_util/reactNode'
 
 export interface AlertProps {
   /** Type of Alert styles, options:`success`, `info`, `warning`, `error` */
-  type?: 'success' | 'info' | 'warning' | 'error';
+  type?: 'success' | 'info' | 'warning' | 'error'
   /** Whether Alert can be closed */
-  closable?: boolean;
+  closable?: boolean
   /** Close text to show */
-  closeText?: React.ReactNode;
+  closeText?: React.ReactNode
   /** Content of Alert */
-  message: React.ReactNode;
+  message: React.ReactNode
   /** Additional content of Alert */
-  description?: React.ReactNode;
+  description?: React.ReactNode
   /** Callback when close Alert */
-  onClose?: React.MouseEventHandler<HTMLButtonElement>;
+  onClose?: React.MouseEventHandler<HTMLButtonElement>
   /** Trigger when animation ending of Alert */
-  afterClose?: () => void;
+  afterClose?: () => void
   /** Whether to show icon */
-  showIcon?: boolean;
+  showIcon?: boolean
   /** https://www.w3.org/TR/2014/REC-html5-20141028/dom.html#aria-role-attribute */
-  role?: string;
-  style?: React.CSSProperties;
-  prefixCls?: string;
-  className?: string;
-  banner?: boolean;
-  icon?: React.ReactNode;
-  action?: React.ReactNode;
-  onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
-  onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  role?: string
+  style?: React.CSSProperties
+  prefixCls?: string
+  className?: string
+  banner?: boolean
+  icon?: React.ReactNode
+  action?: React.ReactNode
+  onMouseEnter?: React.MouseEventHandler<HTMLDivElement>
+  onMouseLeave?: React.MouseEventHandler<HTMLDivElement>
+  onClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const iconMap = {
   success: CheckCircle,
   info: InfoCircle,
   error: CloseCircle,
-  warning: ExclamationCircle,
+  warning: ExclamationCircle
 }
 
-
-interface AlertInterface extends React.FC<AlertProps> {
-  ErrorBoundary: typeof ErrorBoundary;
+export interface AlertInterface extends React.FC<AlertProps> {
+  ErrorBoundary: typeof ErrorBoundary
 }
 
 const Alert: AlertInterface = ({
@@ -105,27 +103,17 @@ const Alert: AlertInterface = ({
     if (icon) {
       return replaceElement(icon, <span className={`${prefixCls}-icon`}>{icon}</span>, () => ({
         className: classNames(`${prefixCls}-icon`, {
-          [(icon as any).props.className]: (icon as any).props.className,
-        }),
+          [(icon as any).props.className]: (icon as any).props.className
+        })
       }))
     }
-    return React.createElement(iconType,
-      { className: `${prefixCls}-icon`, theme: description ? 'outline':'filled' })
+    return React.createElement(iconType, { className: `${prefixCls}-icon`, theme: description ? 'outline' : 'filled' })
   }
 
   const renderCloseIcon = () =>
     isClosable ? (
-      <button
-        type="button"
-        onClick={handleClose}
-        className={`${prefixCls}-close-icon`}
-        tabIndex={0}
-      >
-        {closeText ? (
-          <span className={`${prefixCls}-close-text`}>{closeText}</span>
-        ) : (
-          <CloseOutlined />
-        )}
+      <button type="button" onClick={handleClose} className={`${prefixCls}-close-icon`} tabIndex={0}>
+        {closeText ? <span className={`${prefixCls}-close-text`}>{closeText}</span> : <CloseOutlined />}
       </button>
     ) : null
 
@@ -139,9 +127,9 @@ const Alert: AlertInterface = ({
       [`${prefixCls}-with-description`]: !!description,
       [`${prefixCls}-no-icon`]: !isShowIcon,
       [`${prefixCls}-banner`]: !!banner,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
 
   const dataOrAriaProps = getDataOrAriaProps(props)
@@ -153,11 +141,11 @@ const Alert: AlertInterface = ({
       motionAppear={false}
       motionEnter={false}
       onLeaveStart={node => ({
-        maxHeight: node.offsetHeight,
+        maxHeight: node.offsetHeight
       })}
-      onLeaveEnd={afterClose}
-    >
+      onLeaveEnd={afterClose}>
       {({ className: motionClassName, style: motionStyle }) => (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
         <div
           ref={ref}
           data-show={!closed}
@@ -167,8 +155,7 @@ const Alert: AlertInterface = ({
           onMouseLeave={onMouseLeave}
           onClick={onClick}
           role="alert"
-          {...dataOrAriaProps}
-        >
+          {...dataOrAriaProps}>
           {isShowIcon ? renderIconNode() : null}
           <div className={`${prefixCls}-content`}>
             <div className={`${prefixCls}-message`}>{message}</div>

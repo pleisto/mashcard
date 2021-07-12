@@ -127,7 +127,7 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
 
   const screens = useBreakpoint()
   const mergedColumns = React.useMemo(() => {
-    const matched = new Set(Object.keys(screens).filter((m: Breakpoint) => screens[m]))
+    const matched = new Set(Object.keys(screens).filter(m => screens[m]))
 
     return (columns || convertChildrenToColumns(children)).filter(
       (c: ColumnType<RecordType>) => !c.responsive || c.responsive.some((r: Breakpoint) => matched.has(r))
@@ -158,7 +158,7 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
       return 'nest'
     }
 
-    if (expandedRowRender || (expandable && expandable.expandedRowRender)) {
+    if (expandedRowRender || expandable?.expandedRowRender) {
       return 'row'
     }
 
@@ -199,12 +199,13 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
       }
 
       // Trigger pagination events
+      // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
       if (pagination && pagination.onChange) {
         pagination.onChange(1, changeInfo.pagination.pageSize)
       }
     }
 
-    if (scroll && scroll.scrollToFirstRowOnChange && internalRefs.body.current) {
+    if (scroll?.scrollToFirstRowOnChange && internalRefs.body.current) {
       scrollTo(0, {
         getContainer: () => internalRefs.body.current
       })
@@ -326,13 +327,7 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
       return mergedData.slice((current - 1) * pageSize, current * pageSize)
     },
     /* eslint-disable react-hooks/exhaustive-deps */
-    [
-      !!pagination,
-      mergedData,
-      mergedPagination && mergedPagination.current,
-      mergedPagination && mergedPagination.pageSize,
-      mergedPagination && mergedPagination.total
-    ]
+    [!!pagination, mergedData, mergedPagination?.current, mergedPagination?.pageSize, mergedPagination?.total]
   )
   /* eslint-enable */
 
@@ -466,7 +461,7 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
           data={pageData}
           rowKey={getRowKey}
           rowClassName={internalRowClassName}
-          emptyText={(locale && locale.emptyText) || renderEmpty('Table')}
+          emptyText={locale?.emptyText || renderEmpty('Table')}
           // Internal
           internalHooks={INTERNAL_HOOKS}
           internalRefs={internalRefs as any}

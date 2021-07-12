@@ -1,6 +1,6 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Layout } from '../../'
+import { Story } from '@storybook/react'
+import { Layout } from '../'
 
 export default {
   title: 'ReactComponents/Layout',
@@ -8,7 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:`
+        component: `
 Handling the overall layout of a page.
 
 ## Specification
@@ -119,51 +119,53 @@ The sidebar.
 }
 \`\`\`
         `
-      }}}
-} as Meta
+      }
+    }
+  }
+}
 
 const { Header, Footer, Sider, Content } = Layout
 
-
-const Template: Story = (_args) => {
-  return(<div>
-    <br/>
+const Template: Story = _args => {
+  return (
     <div>
-      <Layout>
-        <Header>Header</Header>
-        <Content>Content</Content>
-        <Footer>Footer</Footer>
-      </Layout>
-
-      <Layout>
-        <Header>Header</Header>
-        <Layout>
-          <Sider>Sider</Sider>
-          <Content>Content</Content>
-        </Layout>
-        <Footer>Footer</Footer>
-      </Layout>
-
-      <Layout>
-        <Header>Header</Header>
-        <Layout>
-          <Content>Content</Content>
-          <Sider>Sider</Sider>
-        </Layout>
-        <Footer>Footer</Footer>
-      </Layout>
-
-      <Layout>
-        <Sider>Sider</Sider>
+      <br />
+      <div>
         <Layout>
           <Header>Header</Header>
           <Content>Content</Content>
           <Footer>Footer</Footer>
         </Layout>
-      </Layout>
-    </div>
-  </div>)
-}
 
+        <Layout>
+          <Header>Header</Header>
+          <Layout>
+            <Sider>Sider</Sider>
+            <Content>Content</Content>
+          </Layout>
+          <Footer>Footer</Footer>
+        </Layout>
+
+        <Layout>
+          <Header>Header</Header>
+          <Layout>
+            <Content>Content</Content>
+            <Sider>Sider</Sider>
+          </Layout>
+          <Footer>Footer</Footer>
+        </Layout>
+
+        <Layout>
+          <Sider>Sider</Sider>
+          <Layout>
+            <Header>Header</Header>
+            <Content>Content</Content>
+            <Footer>Footer</Footer>
+          </Layout>
+        </Layout>
+      </div>
+    </div>
+  )
+}
 
 export const Example = Template.bind({})

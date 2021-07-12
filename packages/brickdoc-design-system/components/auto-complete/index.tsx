@@ -18,39 +18,29 @@ import { isValidElement } from '../_util/reactNode'
 const { Option } = Select
 
 export interface DataSourceItemObject {
-  value: string;
-  text: string;
+  value: string
+  text: string
 }
-export type DataSourceItemType = DataSourceItemObject | React.ReactNode;
+export type DataSourceItemType = DataSourceItemObject | React.ReactNode
 
 export interface AutoCompleteProps
-  extends Omit<
-    InternalSelectProps<string>,
-    'inputIcon' | 'loading' | 'mode' | 'optionLabelProp' | 'labelInValue'
-  > {
-  dataSource?: DataSourceItemType[];
+  extends Omit<InternalSelectProps<string>, 'inputIcon' | 'loading' | 'mode' | 'optionLabelProp' | 'labelInValue'> {
+  dataSource?: DataSourceItemType[]
 }
 
 function isSelectOptionOrSelectOptGroup(child: any): Boolean {
-  return child && child.type && (child.type.isSelectOption || child.type.isSelectOptGroup)
+  return child?.type && (child.type.isSelectOption || child.type.isSelectOptGroup)
 }
 
-const AutoComplete: React.ForwardRefRenderFunction<RefSelectProps, AutoCompleteProps> = (
-  props,
-  ref,
-) => {
+const AutoComplete: React.ForwardRefRenderFunction<RefSelectProps, AutoCompleteProps> = (props, ref) => {
   const { prefixCls: customizePrefixCls, className, children, dataSource } = props
   const childNodes: React.ReactElement[] = toArray(children)
 
   // ============================= Input =============================
   let customizeInput: React.ReactElement | undefined
 
-  if (
-    childNodes.length === 1 &&
-    isValidElement(childNodes[0]) &&
-    !isSelectOptionOrSelectOptGroup(childNodes[0])
-  ) {
-    [customizeInput] = childNodes
+  if (childNodes.length === 1 && isValidElement(childNodes[0]) && !isSelectOptionOrSelectOptGroup(childNodes[0])) {
+    ;[customizeInput] = childNodes
   }
 
   const getInputElement = customizeInput ? (): React.ReactElement => customizeInput : undefined
@@ -91,16 +81,12 @@ const AutoComplete: React.ForwardRefRenderFunction<RefSelectProps, AutoCompleteP
 
   // ============================ Warning ============================
   React.useEffect(() => {
-    devWarning(
-      !('dataSource' in props),
-      'AutoComplete',
-      '`dataSource` is deprecated, please use `options` instead.',
-    )
+    devWarning(!('dataSource' in props), 'AutoComplete', '`dataSource` is deprecated, please use `options` instead.')
 
     devWarning(
       !customizeInput || !('size' in props),
       'AutoComplete',
-      'You need to control style self instead of setting `size` when using customize input.',
+      'You need to control style self instead of setting `size` when using customize input.'
     )
   })
 
@@ -118,9 +104,8 @@ const AutoComplete: React.ForwardRefRenderFunction<RefSelectProps, AutoCompleteP
             mode={Select.SECRET_COMBOBOX_MODE_DO_NOT_USE as any}
             {...{
               // Internal api
-              getInputElement,
-            }}
-          >
+              getInputElement
+            }}>
             {optionChildren}
           </Select>
         )
@@ -132,9 +117,9 @@ const AutoComplete: React.ForwardRefRenderFunction<RefSelectProps, AutoCompleteP
 const RefAutoComplete = React.forwardRef<RefSelectProps, AutoCompleteProps>(AutoComplete)
 
 type RefAutoCompleteWithOption = typeof RefAutoComplete & {
-  Option: OptionType;
-};
+  Option: OptionType
+}
 
-(RefAutoComplete as RefAutoCompleteWithOption).Option = Option
+;(RefAutoComplete as RefAutoCompleteWithOption).Option = Option
 
 export default RefAutoComplete as RefAutoCompleteWithOption

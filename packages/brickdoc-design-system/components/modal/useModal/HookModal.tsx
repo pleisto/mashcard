@@ -3,27 +3,19 @@ import { ModalFuncProps } from '../Modal'
 import ConfirmDialog from '../ConfirmDialog'
 import LocaleReceiver from '../../locale-provider/LocaleReceiver'
 import { ConfigContext } from '../../config-provider'
+import { ModalLocale } from '../locale'
 
 export interface HookModalProps {
-  afterClose: () => void;
-  config: ModalFuncProps;
+  afterClose: () => void
+  config: ModalFuncProps
 }
 
 export interface HookModalRef {
-  destroy: () => void;
-  update: (config: ModalFuncProps) => void;
+  destroy: () => void
+  update: (config: ModalFuncProps) => void
 }
 
-interface ModalLocale {
-  okText: string;
-  cancelText: string;
-  justOkText: string;
-}
-
-const HookModal: React.ForwardRefRenderFunction<HookModalRef, HookModalProps> = (
-  { afterClose, config },
-  ref,
-) => {
+const HookModal: React.ForwardRefRenderFunction<HookModalRef, HookModalProps> = ({ afterClose, config }, ref) => {
   const [visible, setVisible] = React.useState(true)
   const [innerConfig, setInnerConfig] = React.useState(config)
   const { direction, getPrefixCls } = React.useContext(ConfigContext)
@@ -33,7 +25,7 @@ const HookModal: React.ForwardRefRenderFunction<HookModalRef, HookModalProps> = 
 
   function close(...args: any[]) {
     setVisible(false)
-    const triggerCancel = args.some(param => param && param.triggerCancel)
+    const triggerCancel = args.some(param => param?.triggerCancel)
     if (innerConfig.onCancel && triggerCancel) {
       innerConfig.onCancel()
     }
@@ -44,9 +36,9 @@ const HookModal: React.ForwardRefRenderFunction<HookModalRef, HookModalProps> = 
     update: (newConfig: ModalFuncProps) => {
       setInnerConfig(originConfig => ({
         ...originConfig,
-        ...newConfig,
+        ...newConfig
       }))
-    },
+    }
   }))
 
   return (
@@ -59,10 +51,7 @@ const HookModal: React.ForwardRefRenderFunction<HookModalRef, HookModalProps> = 
           close={close}
           visible={visible}
           afterClose={afterClose}
-          okText={
-            innerConfig.okText ||
-            (innerConfig.okCancel ? modalLocale.okText : modalLocale.justOkText)
-          }
+          okText={innerConfig.okText || (innerConfig.okCancel ? modalLocale.okText : modalLocale.justOkText)}
           direction={direction}
           cancelText={innerConfig.cancelText || modalLocale.cancelText}
         />

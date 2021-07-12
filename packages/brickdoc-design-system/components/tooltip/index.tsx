@@ -25,46 +25,46 @@ export type TooltipPlacement =
   | 'leftTop'
   | 'leftBottom'
   | 'rightTop'
-  | 'rightBottom';
+  | 'rightBottom'
 
 // https://github.com/react-component/tooltip
 // https://github.com/yiminghe/dom-align
 export interface TooltipAlignConfig {
-  points?: [string, string];
-  offset?: [number | string, number | string];
-  targetOffset?: [number | string, number | string];
-  overflow?: { adjustX: boolean; adjustY: boolean };
-  useCssRight?: boolean;
-  useCssBottom?: boolean;
-  useCssTransform?: boolean;
+  points?: [string, string]
+  offset?: [number | string, number | string]
+  targetOffset?: [number | string, number | string]
+  overflow?: { adjustX: boolean; adjustY: boolean }
+  useCssRight?: boolean
+  useCssBottom?: boolean
+  useCssTransform?: boolean
 }
 
 export interface AbstractTooltipProps extends Partial<Omit<RcTooltipProps, 'children'>> {
-  style?: React.CSSProperties;
-  className?: string;
-  color?: LiteralUnion<PresetColorType, string>;
-  placement?: TooltipPlacement;
-  builtinPlacements?: typeof Placements;
-  openClassName?: string;
-  arrowPointAtCenter?: boolean;
-  autoAdjustOverflow?: boolean | AdjustOverflow;
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement;
-  children?: React.ReactNode;
+  style?: React.CSSProperties
+  className?: string
+  color?: LiteralUnion<PresetColorType, string>
+  placement?: TooltipPlacement
+  builtinPlacements?: typeof Placements
+  openClassName?: string
+  arrowPointAtCenter?: boolean
+  autoAdjustOverflow?: boolean | AdjustOverflow
+  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
+  children?: React.ReactNode
 }
 
-export type RenderFunction = () => React.ReactNode;
+export type RenderFunction = () => React.ReactNode
 
 export interface TooltipPropsWithOverlay extends AbstractTooltipProps {
-  title?: React.ReactNode | RenderFunction;
-  overlay: React.ReactNode | RenderFunction;
+  title?: React.ReactNode | RenderFunction
+  overlay: React.ReactNode | RenderFunction
 }
 
 export interface TooltipPropsWithTitle extends AbstractTooltipProps {
-  title: React.ReactNode | RenderFunction;
-  overlay?: React.ReactNode | RenderFunction;
+  title: React.ReactNode | RenderFunction
+  overlay?: React.ReactNode | RenderFunction
 }
 
-export declare type TooltipProps = TooltipPropsWithTitle | TooltipPropsWithOverlay;
+export declare type TooltipProps = TooltipPropsWithTitle | TooltipPropsWithOverlay
 
 const splitObject = (obj: any, keys: string[]) => {
   const picked: any = {}
@@ -72,6 +72,7 @@ const splitObject = (obj: any, keys: string[]) => {
   keys.forEach(key => {
     if (obj && key in obj) {
       picked[key] = obj[key]
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete omitted[key]
     }
   })
@@ -101,27 +102,24 @@ function getDisabledCompatibleChildren(element: React.ReactElement<any>, prefixC
       'bottom',
       'float',
       'display',
-      'zIndex',
+      'zIndex'
     ])
     const spanStyle = {
       display: 'inline-block', // default inline-block is important
       ...picked,
       cursor: 'not-allowed',
-      width: element.props.block ? '100%' : null,
+      width: element.props.block ? '100%' : null
     }
     const buttonStyle = {
       ...omitted,
-      pointerEvents: 'none',
+      pointerEvents: 'none'
     }
     const child = cloneElement(element, {
       style: buttonStyle,
-      className: null,
+      className: null
     })
     return (
-      <span
-        style={spanStyle}
-        className={classNames(element.props.className, `${prefixCls}-disabled-compatible-wrapper`)}
-      >
+      <span style={spanStyle} className={classNames(element.props.className, `${prefixCls}-disabled-compatible-wrapper`)}>
         {child}
       </span>
     )
@@ -130,13 +128,11 @@ function getDisabledCompatibleChildren(element: React.ReactElement<any>, prefixC
 }
 
 const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
-  const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(
-    ConfigContext,
-  )
+  const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(ConfigContext)
 
   const [visible, setVisible] = useMergedState(false, {
     value: props.visible,
-    defaultValue: props.defaultVisible,
+    defaultValue: props.defaultVisible
   })
 
   const isNoTitle = () => {
@@ -158,7 +154,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       builtinPlacements ||
       getPlacements({
         arrowPointAtCenter,
-        autoAdjustOverflow,
+        autoAdjustOverflow
       })
     )
   }
@@ -168,9 +164,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     const placements: any = getTooltipPlacements()
     // 当前返回的位置
     const placement = Object.keys(placements).filter(
-      key =>
-        placements[key].points[0] === align.points[0] &&
-        placements[key].points[1] === align.points[1],
+      key => placements[key].points[0] === align.points[0] && placements[key].points[1] === align.points[1]
     )[0]
     if (!placement) {
       return
@@ -179,7 +173,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     const rect = domNode.getBoundingClientRect()
     const transformOrigin = {
       top: '50%',
-      left: '50%',
+      left: '50%'
     }
     if (placement.includes('top') || placement.includes('Bottom')) {
       transformOrigin.top = `${rect.height - align.offset[1]}px`
@@ -204,15 +198,7 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
 
   const { getPopupContainer, ...otherProps } = props
 
-  const {
-    prefixCls: customizePrefixCls,
-    openClassName,
-    getTooltipContainer,
-    overlayClassName,
-    color,
-    overlayInnerStyle,
-    children,
-  } = props
+  const { prefixCls: customizePrefixCls, openClassName, getTooltipContainer, overlayClassName, color, overlayInnerStyle, children } = props
   const prefixCls = getPrefixCls('tooltip', customizePrefixCls)
   const rootPrefixCls = getPrefixCls()
 
@@ -222,18 +208,15 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
     tempVisible = false
   }
 
-  const child = getDisabledCompatibleChildren(
-    isValidElement(children) ? children : <span>{children}</span>,
-    prefixCls,
-  )
+  const child = getDisabledCompatibleChildren(isValidElement(children) ? children : <span>{children}</span>, prefixCls)
   const childProps = child.props
   const childCls = classNames(childProps.className, {
-    [openClassName || `${prefixCls}-open`]: true,
+    [openClassName || `${prefixCls}-open`]: true
   })
 
   const customOverlayClassName = classNames(overlayClassName, {
     [`${prefixCls}-rtl`]: direction === 'rtl',
-    [`${prefixCls}-${color}`]: color && PresetColorRegex.test(color),
+    [`${prefixCls}-${color}`]: color && PresetColorRegex.test(color)
   })
 
   let formattedOverlayInnerStyle = overlayInnerStyle
@@ -259,9 +242,8 @@ const Tooltip = React.forwardRef<unknown, TooltipProps>((props, ref) => {
       arrowContent={<span className={`${prefixCls}-arrow-content`} style={arrowContentStyle} />}
       motion={{
         motionName: getTransitionName(rootPrefixCls, 'zoom-big-fast', props.transitionName),
-        motionDeadline: 1000,
-      }}
-    >
+        motionDeadline: 1000
+      }}>
       {tempVisible ? cloneElement(child, { className: childCls }) : child}
     </RcTooltip>
   )
@@ -274,7 +256,7 @@ Tooltip.defaultProps = {
   mouseEnterDelay: 0.1,
   mouseLeaveDelay: 0.1,
   arrowPointAtCenter: false,
-  autoAdjustOverflow: true,
+  autoAdjustOverflow: true
 }
 
 export default Tooltip

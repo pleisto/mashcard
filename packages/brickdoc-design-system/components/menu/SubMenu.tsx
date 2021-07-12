@@ -6,23 +6,23 @@ import MenuContext from './MenuContext'
 import { isValidElement, cloneElement } from '../_util/reactNode'
 
 interface TitleEventEntity {
-  key: string;
-  domEvent: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+  key: string
+  domEvent: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
 }
 
 export interface SubMenuProps {
-  className?: string;
-  disabled?: boolean;
-  level?: number;
-  title?: React.ReactNode;
-  icon?: React.ReactNode;
-  style?: React.CSSProperties;
-  onTitleClick?: (e: TitleEventEntity) => void;
-  onTitleMouseEnter?: (e: TitleEventEntity) => void;
-  onTitleMouseLeave?: (e: TitleEventEntity) => void;
-  popupOffset?: [number, number];
-  popupClassName?: string;
-  children?: React.ReactNode;
+  className?: string
+  disabled?: boolean
+  level?: number
+  title?: React.ReactNode
+  icon?: React.ReactNode
+  style?: React.CSSProperties
+  onTitleClick?: (e: TitleEventEntity) => void
+  onTitleMouseEnter?: (e: TitleEventEntity) => void
+  onTitleMouseLeave?: (e: TitleEventEntity) => void
+  popupOffset?: [number, number]
+  popupClassName?: string
+  children?: React.ReactNode
 }
 
 function SubMenu(props: SubMenuProps) {
@@ -48,10 +48,7 @@ function SubMenu(props: SubMenuProps) {
     titleNode = (
       <>
         {cloneElement(icon, {
-          className: classNames(
-            isValidElement(icon) ? icon.props?.className : '',
-            `${prefixCls}-item-icon`,
-          ),
+          className: classNames(isValidElement(icon) ? icon.props?.className : '', `${prefixCls}-item-icon`)
         })}
         {titleIsSpan ? title : <span className={`${prefixCls}-title-content`}>{title}</span>}
       </>
@@ -60,11 +57,11 @@ function SubMenu(props: SubMenuProps) {
 
   return (
     <MenuContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         ...context,
-        firstLevel: false,
-      }}
-    >
+        firstLevel: false
+      }}>
       <RcSubMenu
         {...omit(props, ['icon'])}
         title={titleNode}

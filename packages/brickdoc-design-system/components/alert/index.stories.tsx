@@ -1,22 +1,22 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react'
-import { Button, Alert, AlertProps, Space } from '../../'
+import { Button, Alert, AlertProps, Space } from '../'
 import { Download } from '../icon'
 
-export default  {
+export default {
   title: 'ReactComponents/Alert',
   component: Alert,
-  argTypes:{
-    action:{
+  argTypes: {
+    action: {
       description: 'The action of Alert',
       table: {
-        type: {summary: 'ReactNode'}
+        type: { summary: 'ReactNode' }
       }
     },
-    afterClose:{
+    afterClose: {
       description: 'Called when close animation is finished',
       table: {
-        type: {summary: '() => void'}
+        type: { summary: '() => void' }
       }
     },
     banner: {
@@ -39,28 +39,28 @@ export default  {
         type: { summary: 'boolean' }
       }
     },
-    closeText:{
+    closeText: {
       description: 'Close text to show',
       table: {
-        type: {summary: 'ReactNode'}
+        type: { summary: 'ReactNode' }
       }
     },
-    description:{
+    description: {
       description: 'Additional content of Alert',
       table: {
-        type: {summary: 'ReactNode'}
+        type: { summary: 'ReactNode' }
       }
     },
-    icon:{
+    icon: {
       description: 'Custom icon, effective when `showIcon` is true',
       table: {
-        type: {summary: 'ReactNode'}
+        type: { summary: 'ReactNode' }
       }
     },
-    message:{
+    message: {
       description: 'Content of Alert',
       table: {
-        type: {summary: 'ReactNode'}
+        type: { summary: 'ReactNode' }
       }
     },
     showIcon: {
@@ -75,9 +75,9 @@ export default  {
       }
     },
 
-    type:{
+    type: {
       defaultValue: 'info',
-      control:{
+      control: {
         type: 'select',
         options: ['success', 'info', 'warning', 'error']
       },
@@ -85,10 +85,10 @@ export default  {
         type: { summary: 'string' }
       }
     },
-    onClose:{
+    onClose: {
       description: 'Callback when Alert is closed',
-      table:{
-        type: { summary: '(e: MouseEvent) => void'}
+      table: {
+        type: { summary: '(e: MouseEvent) => void' }
       }
     }
   },
@@ -107,11 +107,7 @@ Alert component for feedback.
   }
 }
 
-
-
-
-const Template: Story<AlertProps> = (args) => <Alert {...args} />
-
+const Template: Story<AlertProps> = args => <Alert {...args} />
 
 export const Base = Template.bind({})
 
@@ -119,18 +115,21 @@ Base.args = {
   message: '42 is the answer to the ultimate question of life the universe and everything.'
 }
 
-
-export const Type: Story<AlertProps> = (_args) => (
+export const Type: Story<AlertProps> = _args => (
   <>
     <Alert message="Success Text" type="success" />
-    <br/><br/>
+    <br />
+    <br />
     <Alert message="Info Text" type="info" />
-    <br/><br/>
+    <br />
+    <br />
     <Alert message="Warning Text" type="warning" />
-    <br/><br/>
+    <br />
+    <br />
     <Alert message="Error Text" type="error" />
-    <br/><br/>
-    <div style={{border: '1px solid #bbb'}}>
+    <br />
+    <br />
+    <div style={{ border: '1px solid #bbb' }}>
       <Alert message="Success Text" type="success" banner />
       <Alert message="Info Text" type="info" banner />
       <Alert message="Warning Text" type="warning" banner />
@@ -147,21 +146,18 @@ Type.parameters = {
   }
 }
 
-export const Closable: Story<AlertProps> = (_args) => (
+export const Closable: Story<AlertProps> = _args => (
   <>
-    <Alert
-      message="我能吞下玻璃而不伤身体"
-      type="warning"
-      closable
-    />
-    <br/>
+    <Alert message="我能吞下玻璃而不伤身体" type="warning" closable />
+    <br />
     <Alert
       message="Augmenting Human Intellect: A Conceptual Framework"
-      description={<span>
-        By "augmenting human intellect" we mean increasing the capability of a man to
-        approach a complex problem situation, to gain comprehension to suit his particular
-        needs, and to derive solutions to problems.
-      </span>}
+      description={
+        <span>
+          By "augmenting human intellect" we mean increasing the capability of a man to approach a complex problem situation, to gain
+          comprehension to suit his particular needs, and to derive solutions to problems.
+        </span>
+      }
       type="info"
       closable
     />
@@ -176,18 +172,18 @@ Closable.parameters = {
   }
 }
 
-export const Icon: Story<AlertProps> = (_args) => (
+export const Icon: Story<AlertProps> = _args => (
   <>
-    <Alert message="Success Tips" type="success" showIcon /><br/>
-    <Alert message="Informational Notes" type="info" showIcon /><br/>
-    <Alert message="Warning" type="warning" showIcon closable /><br/>
-    <Alert message="Error" type="error" showIcon /><br/>
-    <Alert
-      message="Success Tips"
-      description="Detailed description and advice about successful copywriting."
-      type="success"
-      showIcon
-    /><br/>
+    <Alert message="Success Tips" type="success" showIcon />
+    <br />
+    <Alert message="Informational Notes" type="info" showIcon />
+    <br />
+    <Alert message="Warning" type="warning" showIcon closable />
+    <br />
+    <Alert message="Error" type="error" showIcon />
+    <br />
+    <Alert message="Success Tips" description="Detailed description and advice about successful copywriting." type="success" showIcon />
+    <br />
     <Alert
       message="Informational Notes"
       description="Additional description and information about copywriting."
@@ -203,20 +199,12 @@ export const Icon: Story<AlertProps> = (_args) => (
         </Space>
       }
       showIcon
-    /><br/>
-    <Alert
-      message="Warning"
-      description="This is a warning notice about copywriting."
-      type="warning"
-      showIcon
-      closable
-    /><br/>
-    <Alert
-      message="Error"
-      description="This is an error message about copywriting."
-      type="error"
-      showIcon
-    /><br/>
+    />
+    <br />
+    <Alert message="Warning" description="This is a warning notice about copywriting." type="warning" showIcon closable />
+    <br />
+    <Alert message="Error" description="This is an error message about copywriting." type="error" showIcon />
+    <br />
     <Alert
       message="Custom Icon"
       description="Boosting mankind's capability for coping with complex, urgent problems."
@@ -251,10 +239,12 @@ const ThrowError: React.FC = () => {
     </Button>
   )
 }
-export const ErrorBoundaryAlert: Story<AlertProps> = (_args) => {
-  return (<ErrorBoundary>
-    <ThrowError />
-  </ErrorBoundary>)
+export const ErrorBoundaryAlert: Story<AlertProps> = _args => {
+  return (
+    <ErrorBoundary>
+      <ThrowError />
+    </ErrorBoundary>
+  )
 }
 
 ErrorBoundaryAlert.parameters = {

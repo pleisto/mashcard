@@ -1,11 +1,11 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Affix, AffixProps } from '../../'
+import { Affix, AffixProps } from '../'
 
-export default  {
+export default {
   title: 'ReactComponents/Affix',
   component: Affix,
-  argTypes:{
+  argTypes: {
     offsetBottom: {
       description: 'Offset from the bottom of the viewport (in pixels)',
       control: {
@@ -26,7 +26,7 @@ export default  {
       }
     },
 
-    target:{
+    target: {
       description: 'Specifies the scrollable area DOM node',
       defaultValue: () => window,
       table: {
@@ -34,10 +34,10 @@ export default  {
         defaultValue: { summary: '`() => window`' }
       }
     },
-    onChange:{
+    onChange: {
       description: 'Callback for when Affix state is changed',
-      table:{
-        type: { summary: 'function(affixed)'}
+      table: {
+        type: { summary: 'function(affixed)' }
       }
     }
   },
@@ -57,17 +57,10 @@ Please note that Affix should not cover other content on the page, especially wh
   }
 }
 
-
-
-
-const Template: Story<AffixProps> = (args) => <Affix {...args} >
-  <span>Affix</span>
-</Affix>
-
+const Template: Story<AffixProps> = args => (
+  <Affix {...args}>
+    <span>Affix</span>
+  </Affix>
+)
 
 export const Base = Template.bind({})
-
-
-
-
-

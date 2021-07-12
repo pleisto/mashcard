@@ -1,28 +1,12 @@
+// tsconfig.json is for editor/eslint support, including every ts/tsx files
+// tsconfig.build.json is for building, including only files needed for the final product
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "ES2018",
-    "lib": ["esnext", "dom"],
-    "module": "esnext",
-    "moduleResolution": "Node",
-    "declaration": false,
-    "sourceMap": true,
-    "jsx": "react",
-    "noUnusedLocals": true,
-    "emitDecoratorMetadata": true,
-    "noImplicitThis": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "experimentalDecorators": true,
-    "isolatedModules":true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@/*": ["frontends/*"]
-    }
-  },
-  "compileOnSave": false,
-  "includes": ["./frontends/common/externals.d.ts"],
-  "exclude": ["./cypress"]
+  "extends": "./tsconfig.build.json",
+  "include": ["**/*"],
+  "exclude": ["packages/**/*", "dist/**/*", "cypress/**/*", "jest.config.ts", "jestSetup.ts"],
+  "references": [
+    { "path": "packages/brickdoc-design-system" },
+    { "path": "packages/brickdoc-editor" },
+    { "path": "packages/less-vars-loader" }
+  ]
 }

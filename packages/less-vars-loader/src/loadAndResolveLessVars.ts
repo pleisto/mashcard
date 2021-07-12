@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import * as less from 'less'
+import less from 'less'
 import { resolve, dirname } from 'path'
 import { readFileSync } from 'fs'
-import enhancedResolve from "enhanced-resolve"
+import enhancedResolve from 'enhanced-resolve'
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-function replaceSubstring(string:string, start:number, end:number, replacement:string):string {
+function replaceSubstring(string: string, start: number, end: number, replacement: string): string {
   return string.substring(0, start) + replacement + string.substring(end)
 }
 
-function getRegexpMatches(regexp: RegExp, text:string):RegExpExecArray[] {
+function getRegexpMatches(regexp: RegExp, text: string): RegExpExecArray[] {
   const matches = []
   const lastIndex = regexp.lastIndex
 
@@ -43,7 +43,7 @@ function getRegexpMatches(regexp: RegExp, text:string):RegExpExecArray[] {
 }
 
 const importRegExp = /^@import\s+['"]([^'"]+)['"];$/gm
-export function loadLessWithImports(entry:string):any {
+export function loadLessWithImports(entry: string): any {
   const entryPath = resolve('./', entry)
   const input = readFileSync(entryPath, 'utf8')
   const imports = getRegexpMatches(importRegExp, input).map(match => {
@@ -59,21 +59,19 @@ export function loadLessWithImports(entry:string):any {
     }
   })
   return {
-    code: imports.reduceRight(
-      (acc, { match, code }) => replaceSubstring(acc, match.index, match.index + match[0].length, code),
-      input
-    ),
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    code: imports.reduceRight((acc, { match, code }) => replaceSubstring(acc, match.index, match.index + match[0].length, code), input),
     imports: imports.reduce((acc, { path, imports: nestedImports }) => [...acc, ...nestedImports, path], [])
   }
 }
 
 const varNameRegExp = /^\s*@([\w-]+)\s*:/gm
-function findLessVariables(lessCode:any):string[] {
+function findLessVariables(lessCode: any): string[] {
   return getRegexpMatches(varNameRegExp, lessCode).map(([, varName]) => varName)
 }
 
 const cssVarRegExp = /--([^:]+): ([^;]*);/g
-export async function resolveLessVariables(lessCode:any, lessOptions:any):Promise<any> {
+export async function resolveLessVariables(lessCode: any, lessOptions: any): Promise<any> {
   const varNames = findLessVariables(lessCode)
   let renderResult: any
   try {
@@ -82,9 +80,7 @@ export async function resolveLessVariables(lessCode:any, lessOptions:any):Promis
       lessOptions
     )
   } catch (e) {
-    throw new Error(
-      `Less render failed! (${e.message}) Less code:\n${lessCode}\nVariables found:\n${varNames.join(', ')}`
-    )
+    throw new Error(`Less render failed! (${e.message}) Less code:\n${lessCode}\nVariables found:\n${varNames.join(', ')}`)
   }
   return getRegexpMatches(cssVarRegExp, renderResult.css.replace(/#resolved {(.*)}/, '$1')).reduce(
     (acc, [, varName, value]) => ({ ...acc, [varName]: value }),
@@ -99,7 +95,7 @@ export async function resolveLessVariables(lessCode:any, lessOptions:any):Promis
  * @param {Object} lessOptions (optional)
  * @returns {Promise<Object>}
  */
-export async function loadAndResolveLessVars(entry: string, lessOptions:object): Promise<Object> {
+export async function loadAndResolveLessVars(entry: string, lessOptions: object): Promise<Object> {
   const { code: lessCode } = loadLessWithImports(entry)
   // eslint-disable-next-line no-return-await
   return await resolveLessVariables(lessCode, lessOptions)

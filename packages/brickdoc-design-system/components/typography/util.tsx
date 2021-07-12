@@ -3,12 +3,12 @@ import * as React from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 
 interface MeasureResult {
-  finished: boolean;
-  reactNode: React.ReactNode;
+  finished: boolean
+  reactNode: React.ReactNode
 }
 interface Option {
-  rows: number;
-  suffix?: string;
+  rows: number
+  suffix?: string
 }
 
 // We only handle element & text node.
@@ -22,7 +22,7 @@ const wrapperStyle: React.CSSProperties = {
   padding: 0,
   margin: 0,
   display: 'inline',
-  lineHeight: 'inherit',
+  lineHeight: 'inherit'
 }
 
 function pxToNumber(value: string | null): number {
@@ -46,6 +46,7 @@ function mergeChildren(children: React.ReactNode[]): React.ReactNode[] {
   children.forEach((child: React.ReactNode) => {
     const prevChild = childList[childList.length - 1]
     if (typeof child === 'string' && typeof prevChild === 'string') {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-base-to-string
       childList[childList.length - 1] += child
     } else {
       childList.push(child)
@@ -60,24 +61,23 @@ export default (
   option: Option,
   content: React.ReactNode,
   fixedContent: React.ReactNode[],
-  ellipsisStr: string,
+  ellipsisStr: string
 ): { content: React.ReactNode; text: string; ellipsis: boolean } => {
   if (!ellipsisContainer) {
     ellipsisContainer = document.createElement('div')
     ellipsisContainer.setAttribute('aria-hidden', 'true')
   }
   // HMR will remove this from body which should patch back
-  if (!ellipsisContainer.parentNode) { document.body.appendChild(ellipsisContainer) }
+  if (!ellipsisContainer.parentNode) {
+    document.body.appendChild(ellipsisContainer)
+  }
 
   const { rows, suffix = '' } = option
   // Get origin style
   const originStyle = window.getComputedStyle(originEle)
   const originCSS = styleToString(originStyle)
   const lineHeight = pxToNumber(originStyle.lineHeight)
-  const maxHeight =
-    Math.floor(lineHeight) * (rows + 1) +
-    pxToNumber(originStyle.paddingTop) +
-    pxToNumber(originStyle.paddingBottom)
+  const maxHeight = Math.floor(lineHeight) * (rows + 1) + pxToNumber(originStyle.paddingTop) + pxToNumber(originStyle.paddingBottom)
 
   // Set shadow
   ellipsisContainer.setAttribute('style', originCSS)
@@ -91,8 +91,8 @@ export default (
 
   // clean up css overflow
   ellipsisContainer.style.textOverflow = 'clip'
-  ellipsisContainer.style.whiteSpace = 'normal';
-  (ellipsisContainer.style as any).webkitLineClamp = 'none'
+  ellipsisContainer.style.whiteSpace = 'normal'
+  ;(ellipsisContainer.style as any).webkitLineClamp = 'none'
 
   // Render in the fake container
   const contentList: React.ReactNode[] = mergeChildren(toArray(content))
@@ -104,7 +104,7 @@ export default (
       </span>
       <span style={wrapperStyle}>{fixedContent}</span>
     </div>,
-    ellipsisContainer,
+    ellipsisContainer
   ) // wrap in an div for old version react
 
   // Check if ellipsis in measure div is height enough for content
@@ -122,9 +122,7 @@ export default (
   const childNodes: ChildNode[] = Array.prototype.slice
     .apply(ellipsisContainer.childNodes[0].childNodes[0].cloneNode(true).childNodes)
     .filter(({ nodeType }: ChildNode) => nodeType !== COMMENT_NODE)
-  const fixedNodes: ChildNode[] = Array.prototype.slice.apply(
-    ellipsisContainer.childNodes[0].childNodes[1].cloneNode(true).childNodes,
-  )
+  const fixedNodes: ChildNode[] = Array.prototype.slice.apply(ellipsisContainer.childNodes[0].childNodes[1].cloneNode(true).childNodes)
   unmountComponentAtNode(ellipsisContainer)
 
   // ========================= Find match ellipsis content =========================
@@ -147,13 +145,7 @@ export default (
   }
 
   // Get maximum text
-  function measureText(
-    textNode: Text,
-    fullText: string,
-    startLoc = 0,
-    endLoc = fullText.length,
-    lastSuccessLoc = 0,
-  ): MeasureResult {
+  function measureText(textNode: Text, fullText: string, startLoc = 0, endLoc = fullText.length, lastSuccessLoc = 0): MeasureResult {
     const midLoc = Math.floor((startLoc + endLoc) / 2)
     const currentText = fullText.slice(0, midLoc)
     textNode.textContent = currentText
@@ -168,11 +160,11 @@ export default (
           return step === fullText.length
             ? {
                 finished: false,
-                reactNode: fullText,
+                reactNode: fullText
               }
             : {
                 finished: true,
-                reactNode: currentStepText,
+                reactNode: currentStepText
               }
         }
       }
@@ -193,7 +185,7 @@ export default (
       if (inRange()) {
         return {
           finished: false,
-          reactNode: contentList[index],
+          reactNode: contentList[index]
         }
       }
 
@@ -201,7 +193,7 @@ export default (
       ellipsisContentHolder.removeChild(childNode)
       return {
         finished: true,
-        reactNode: null,
+        reactNode: null
       }
     }
     if (type === TEXT_NODE) {
@@ -216,7 +208,7 @@ export default (
     /* istanbul ignore next */
     return {
       finished: false,
-      reactNode: null,
+      reactNode: null
     }
   }
 
@@ -231,6 +223,6 @@ export default (
   return {
     content: ellipsisChildren,
     text: ellipsisContainer.innerHTML,
-    ellipsis: true,
+    ellipsis: true
   }
 }

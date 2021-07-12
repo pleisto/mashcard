@@ -1,15 +1,14 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Empty, EmptyProps, Button } from "../../"
-
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Empty, EmptyProps, Button } from '../'
 
 export default {
-  title: "ReactComponents/Empty",
+  title: 'ReactComponents/Empty',
   component: Empty,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 Empty state placeholder.
 
 #### When To Use
@@ -34,36 +33,37 @@ Empty state placeholder.
 | image | Customize image. Will treat as image url when string provided | ReactNode | \`Empty.PRESENTED_IMAGE_DEFAULT\` |
 | imageStyle | The style of image | CSSProperties | - |
 `
+      }
     }
   }
 }
-}
 
-
-const Template: Story<EmptyProps> = (_args) =>
+const Template: Story<EmptyProps> = _args => (
   <>
     <Empty />
-    <br/><hr /><br/>
+    <br />
+    <hr />
+    <br />
     <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-    <br/><hr /><br/>
+    <br />
+    <hr />
+    <br />
     <Empty
       image="https://s3.brickapis.com/design-system/empty.svg"
       imageStyle={{
-        height: 60,
+        height: 60
       }}
       description={
         <span>
-        Customize <a href="#">Description</a>
-      </span>
-      }
-    >
+          Customize <a href="#">Description</a>
+        </span>
+      }>
       <Button type="primary">Create Now</Button>
     </Empty>
-    <br/><hr /><br/>
+    <br />
+    <hr />
+    <br />
     <Empty description={false} />
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

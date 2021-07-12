@@ -17,7 +17,8 @@ import { getOptions } from 'loader-utils'
 import { loadLessWithImports, resolveLessVariables } from './loadAndResolveLessVars'
 import fromPairs from 'lodash/fromPairs'
 
-export default async function lessVarsLoader(this: any):Promise<void> {
+// eslint-disable-next-line import/no-default-export
+export default async function lessVarsLoader(this: any): Promise<void> {
   const { lessOptions, transform } = getOptions(this) ?? {}
   const callback = this.async()
 
@@ -25,7 +26,7 @@ export default async function lessVarsLoader(this: any):Promise<void> {
   imports.forEach((path: string) => this.addDependency(path))
 
   const vars = await resolveLessVariables(code, lessOptions)
-  // @ts-ignore
+  // @ts-expect-error
   const processedVars = transform ? fromPairs(Object.entries(vars).map(transform)) : vars
 
   callback(null, `export default ${JSON.stringify(processedVars)}`)

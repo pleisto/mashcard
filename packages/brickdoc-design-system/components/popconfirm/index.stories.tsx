@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Popconfirm, PopconfirmProps, Space } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Popconfirm, PopconfirmProps, Space } from '../'
 export default {
-  title: "ReactComponents/Popconfirm",
+  title: 'ReactComponents/Popconfirm',
   component: Popconfirm,
   parameters: {
     docs: {
@@ -42,17 +42,11 @@ Please ensure that the child node of \`Popconfirm\` accepts \`onMouseEnter\`, \`
   }
 }
 
-
-
-const Template: Story<PopconfirmProps> = (_args) =>
+const Template: Story<PopconfirmProps> = _args => (
   <Space>
-    <Popconfirm
-      title="Are you sure to delete this task?"
-      okText="Yes"
-      cancelText="No"
-    >
+    <Popconfirm title="Are you sure to delete this task?" okText="Yes" cancelText="No">
       <a href="#">Delete</a>
     </Popconfirm>
   </Space>
+)
 export const Base = Template.bind({})
-

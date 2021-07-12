@@ -7,7 +7,7 @@ const PLUGIN_KEY = new PluginKey(PLUGIN_NAME)
 
 const THROTTLE_DURATION = 3000
 
-const now = () => {
+const now = (): number => {
   return new Date().getTime()
 }
 
@@ -40,7 +40,7 @@ export const SyncExtension = Extension.create({
               return state
             }
             const newPluginState = { ...state, editTime: now() }
-            const commitNow = () => {
+            const commitNow = (): void => {
               if (state.timer) {
                 clearTimeout(state.timer)
               }
@@ -55,6 +55,7 @@ export const SyncExtension = Extension.create({
             }
 
             commitNow()
+            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
             return { ...newPluginState, doc: newState.doc, version: state.version + 1, syncTime: now() }
           }
         }

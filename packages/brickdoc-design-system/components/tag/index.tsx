@@ -1,54 +1,37 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
-import { Close as CloseOutlined } from "../icon"
+import { Close as CloseOutlined } from '../icon'
 import CheckableTag from './CheckableTag'
 import { ConfigContext } from '../config-provider'
-import {
-  PresetColorTypes,
-  PresetStatusColorTypes,
-  PresetColorType,
-  PresetStatusColorType,
-} from '../_util/colors'
+import { PresetColorTypes, PresetStatusColorTypes, PresetColorType, PresetStatusColorType } from '../_util/colors'
 import Wave from '../_util/wave'
 import { LiteralUnion } from '../_util/type'
 
 export type { CheckableTagProps } from './CheckableTag'
 
 export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
-  prefixCls?: string;
-  className?: string;
-  color?: LiteralUnion<PresetColorType | PresetStatusColorType, string>;
-  closable?: boolean;
-  closeIcon?: React.ReactNode;
-  visible?: boolean;
-  onClose?: (e: React.MouseEvent<HTMLElement>) => void;
-  style?: React.CSSProperties;
-  icon?: React.ReactNode;
+  prefixCls?: string
+  className?: string
+  color?: LiteralUnion<PresetColorType | PresetStatusColorType, string>
+  closable?: boolean
+  closeIcon?: React.ReactNode
+  visible?: boolean
+  onClose?: (e: React.MouseEvent<HTMLElement>) => void
+  style?: React.CSSProperties
+  icon?: React.ReactNode
 }
 
 const PresetColorRegex = new RegExp(`^(${PresetColorTypes.join('|')})(-inverse)?$`)
 const PresetStatusColorRegex = new RegExp(`^(${PresetStatusColorTypes.join('|')})$`)
 
-export interface TagType
-  extends React.ForwardRefExoticComponent<TagProps & React.RefAttributes<HTMLElement>> {
-  CheckableTag: typeof CheckableTag;
+export interface TagType extends React.ForwardRefExoticComponent<TagProps & React.RefAttributes<HTMLElement>> {
+  CheckableTag: typeof CheckableTag
 }
 
 const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
-  {
-    prefixCls: customizePrefixCls,
-    className,
-    style,
-    children,
-    icon,
-    color,
-    onClose,
-    closeIcon,
-    closable = false,
-    ...props
-  },
-  ref,
+  { prefixCls: customizePrefixCls, className, style, children, icon, color, onClose, closeIcon, closable = false, ...props },
+  ref
 ) => {
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
   const [visible, setVisible] = React.useState(true)
@@ -69,7 +52,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
 
   const tagStyle = {
     backgroundColor: color && !isPresetColor() ? color : undefined,
-    ...style,
+    ...style
   }
 
   const presetColor = isPresetColor()
@@ -80,9 +63,9 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
       [`${prefixCls}-${color}`]: presetColor,
       [`${prefixCls}-has-color`]: color && !presetColor,
       [`${prefixCls}-hidden`]: !visible,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
 
   const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -100,6 +83,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
   const renderCloseIcon = () => {
     if (closable) {
       return closeIcon ? (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <span className={`${prefixCls}-close-icon`} onClick={handleCloseClick}>
           {closeIcon}
         </span>
@@ -110,8 +94,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
     return null
   }
 
-  const isNeedWave =
-    'onClick' in props || (children && (children as React.ReactElement<any>).type === 'a')
+  const isNeedWave = 'onClick' in props || (children && (children as React.ReactElement<any>).type === 'a')
   const tagProps = omit(props, ['visible'])
   const iconNode = icon || null
   const kids = iconNode ? (
@@ -133,7 +116,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
   return isNeedWave ? <Wave>{tagNode}</Wave> : tagNode
 }
 
-const Tag = React.forwardRef<unknown, TagProps>(InternalTag) as TagType
+const Tag = React.forwardRef<HTMLSpanElement, TagProps>(InternalTag) as TagType
 
 Tag.displayName = 'Tag'
 

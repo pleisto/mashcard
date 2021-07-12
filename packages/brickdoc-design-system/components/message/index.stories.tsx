@@ -1,14 +1,14 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { message, MessageProps, Button, Space } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { message, Button, Space } from '../'
 
 export default {
-  title: "ReactComponents/Message",
+  title: 'ReactComponents/Message',
   component: message,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 Display global messages as feedback in response to user operations.
 
 ## When To Use
@@ -97,12 +97,10 @@ message.config({
 | rtl | Whether to enable RTL mode | boolean | false |
 | top | Distance from top | number | 24 |
 `
+      }
     }
   }
 }
-}
-
-
 
 const info = () => {
   message.info('This is a normal message')
@@ -124,7 +122,7 @@ const loading = () => {
   // Dismiss manually and asynchronously
   setTimeout(hide, 2500)
 }
-const Template: Story<MessageProps> = (_args) =>
+const Template: Story = () => (
   <Space>
     <Button type="primary" onClick={info}>
       Display normal message
@@ -133,7 +131,6 @@ const Template: Story<MessageProps> = (_args) =>
     <Button onClick={error}>Error</Button>
     <Button onClick={warning}>Warning</Button>
     <Button onClick={loading}>Loading</Button>
-
   </Space>
+)
 export const Base = Template.bind({})
-

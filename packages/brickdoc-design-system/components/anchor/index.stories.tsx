@@ -1,13 +1,13 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import {  Anchor, AnchorProps } from '../../'
+import { Anchor, AnchorProps } from '../'
 
 const { Link } = Anchor
 
-export default  {
+export default {
   title: 'ReactComponents/Anchor',
   component: Anchor,
-  argTypes:{
+  argTypes: {
     affix: {
       description: 'Fixed mode of Anchor',
       defaultValue: true,
@@ -26,20 +26,20 @@ export default  {
         type: 'number'
       },
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number' }
       }
     },
-    getContainer:{
+    getContainer: {
       description: 'Scrolling container',
       table: {
-        type: {summary: '() => HTMLElement'},
-        defaultValue: { summary: '() => window'}
+        type: { summary: '() => HTMLElement' },
+        defaultValue: { summary: '() => window' }
       }
     },
-    getCurrentAnchor:{
+    getCurrentAnchor: {
       description: 'Customize the anchor highlight',
       table: {
-        type: {summary: '() => string'}
+        type: { summary: '() => string' }
       }
     },
     offsetTop: {
@@ -49,7 +49,7 @@ export default  {
         type: 'number'
       },
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number' }
       }
     },
     showInkInFixed: {
@@ -69,19 +69,19 @@ export default  {
         type: 'number'
       },
       table: {
-        type: { summary: 'number' },
+        type: { summary: 'number' }
       }
     },
-    onChange:{
+    onChange: {
       description: 'Listening for anchor link change',
-      table:{
-        type: { summary: '(currentActiveLink: string) => void'}
+      table: {
+        type: { summary: '(currentActiveLink: string) => void' }
       }
     },
-    onClick:{
+    onClick: {
       description: 'Set the handler to handle `click` event',
-      table:{
-        type: { summary: 'function(e: Event, link: Object)'}
+      table: {
+        type: { summary: 'function(e: Event, link: Object)' }
       }
     }
   },
@@ -99,20 +99,15 @@ For displaying anchor hyperlinks on page and jumping between them.
   }
 }
 
-
-
-
-const Template: Story<AnchorProps> = (args) => <Anchor {...args}>
-  <Link href="javascript:;console.log(1)" title="Basic demo" />
-  <Link href="javascript:;console.log(2)" title="Static demo" />
-  <Link href="javascript:;console.log(3)" title="API">
-    <Link href="javascript:;console.log(4)" title="Anchor Props" />
-    <Link href="javascript:;console.log(5)" title="Link Props" />
-  </Link>
-</Anchor>
-
+const Template: Story<AnchorProps> = args => (
+  <Anchor {...args}>
+    <Link href="javascript:;console.log(1)" title="Basic demo" />
+    <Link href="javascript:;console.log(2)" title="Static demo" />
+    <Link href="javascript:;console.log(3)" title="API">
+      <Link href="javascript:;console.log(4)" title="Anchor Props" />
+      <Link href="javascript:;console.log(5)" title="Link Props" />
+    </Link>
+  </Anchor>
+)
 
 export const Base = Template.bind({})
-
-
-

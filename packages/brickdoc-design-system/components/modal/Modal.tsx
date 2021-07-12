@@ -10,6 +10,7 @@ import LocaleReceiver from '../locale-provider/LocaleReceiver'
 import { ConfigContext, DirectionType } from '../config-provider'
 import { canUseDocElement } from '../_util/styleChecker'
 import { getTransitionName } from '../_util/motion'
+import { ModalLocale } from './locale'
 
 let mousePosition: { x: number; y: number } | null
 export const destroyFns: Array<() => void> = []
@@ -45,7 +46,7 @@ export interface ModalProps {
   /** 点击确定回调 */
   onOk?: (e: React.MouseEvent<HTMLElement>) => void
   /** 点击模态框右上角叉、取消按钮、Props.maskClosable 值为 true 时的遮罩层或键盘按下 Esc 时的回调 */
-  onCancel?: (e: React.MouseEvent<HTMLElement>) => void
+  onCancel?: (e: React.SyntheticEvent) => void
   afterClose?: () => void
   /** 垂直居中 */
   centered?: boolean
@@ -124,12 +125,6 @@ export interface ModalFuncProps {
   focusTriggerAfterClose?: boolean
 }
 
-export interface ModalLocale {
-  okText: string
-  cancelText: string
-  justOkText: string
-}
-
 interface ModalInterface extends React.FC<ModalProps> {
   useModal: typeof useModal
 }
@@ -137,7 +132,7 @@ interface ModalInterface extends React.FC<ModalProps> {
 const Modal: ModalInterface = props => {
   const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(ConfigContext)
 
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleCancel = (e: React.SyntheticEvent) => {
     const { onCancel } = props
     onCancel?.(e)
   }
@@ -187,7 +182,7 @@ const Modal: ModalInterface = props => {
     [`${prefixCls}-wrap-rtl`]: direction === 'rtl'
   })
   return (
-    // @ts-ignore
+    // @ts-expect-error
     <Dialog
       {...restProps}
       getContainer={(getContainer === undefined ? getContextPopupContainer : getContainer) as any}

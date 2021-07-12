@@ -1,10 +1,10 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Badge, BadgeProps, Space, Card } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Badge, BadgeProps, Space, Card } from '../'
 import { Alarm, Message } from '../icon'
 
 export default {
-  title: "ReactComponents/Badge",
+  title: 'ReactComponents/Badge',
   component: Badge,
   argTypes: {
     color: {
@@ -17,39 +17,39 @@ export default {
       }
     },
     count: {
-      description: "Number to show in badge",
+      description: 'Number to show in badge',
       control: {
-        type: "number"
+        type: 'number'
       },
       table: {
-        type: { summary: "number | ReactNode" }
+        type: { summary: 'number | ReactNode' }
       }
     },
     dot: {
-      description: "Whether to display a red dot instead of count",
+      description: 'Whether to display a red dot instead of count',
       defaultValue: false,
       control: {
-        type: "boolean"
+        type: 'boolean'
       },
       table: {
-        type: { summary: "boolean" },
-        defaultValue: {summary: 'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     offset: {
-      description: "Set offset of the badge dot",
+      description: 'Set offset of the badge dot',
       table: {
-        type: { summary: "[number, number]" }
+        type: { summary: '[number, number]' }
       }
     },
     overflowCount: {
-      description: "Max count to show",
+      description: 'Max count to show',
       defaultValue: 99,
       control: {
-        type: "number"
+        type: 'number'
       },
       table: {
-        type: { summary: "number" }
+        type: { summary: 'number' }
       }
     },
     showZero: {
@@ -59,30 +59,30 @@ export default {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     size: {
-      description: "If count is set, size sets the size of badge",
+      description: 'If count is set, size sets the size of badge',
       control: {
         type: 'radio',
-        options: ['default','small']
+        options: ['default', 'small']
       }
     },
     status: {
-      description: "If count is set, size sets the size of badge",
+      description: 'If count is set, size sets the size of badge',
       control: {
         type: 'select',
-        options: ['success','processing','default','error','warning', undefined]
+        options: ['success', 'processing', 'default', 'error', 'warning', undefined]
       }
     },
     text: {
-    description: "If status is set, text sets the display text of the status dot",
-    table: {
-      type: { summary: "ReactNode" }
-    }
-  },
+      description: 'If status is set, text sets the display text of the status dot',
+      table: {
+        type: { summary: 'ReactNode' }
+      }
+    },
     title: {
       description: 'Text to show when hovering over the badge',
       control: {
@@ -91,45 +91,50 @@ export default {
       table: {
         type: { summary: 'string' }
       }
-    },
-}, parameters: {
-  docs: {
-    description: {
-      component: `
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
 Small numerical value or status descriptor for UI elements.
 
 #### When To Use
 Badge normally appears in proximity to notifications or user avatars with eye-catching appeal,
 typically displaying unread messages count.
       `
+      }
     }
   }
 }
-}
 
-
-const Template: Story<BadgeProps> = (args) =>   <Badge {...args} >
-  <a href="#" style={{
-    width: 40, height: 40,
-    background: '#eee',
-    borderRadius: '2px',
-    display: 'inline-block',
-    verticalAlign: 'middle'
-  }} />
-
-</Badge>
-
+const Template: Story<BadgeProps> = args => (
+  <Badge {...args}>
+    <a
+      href="#"
+      style={{
+        width: 40,
+        height: 40,
+        background: '#eee',
+        borderRadius: '2px',
+        display: 'inline-block',
+        verticalAlign: 'middle'
+      }}
+    />
+  </Badge>
+)
 
 export const Base = Template.bind({})
-Base.args = {count:5}
+Base.args = { count: 5 }
 
-
-export const Standalone: Story<BadgeProps> = (_args) => (
+export const Standalone: Story<BadgeProps> = _args => (
   <Space>
     <Badge count={25} />
-    <Badge count={<Alarm style={{color:'#f4532a'}} />} />
-    <Badge count={999} style={{background:'#62c410'}} />
-    <Badge dot><Message size={21} /></Badge>
+    <Badge count={<Alarm style={{ color: '#f4532a' }} />} />
+    <Badge count={999} style={{ background: '#62c410' }} />
+    <Badge dot>
+      <Message size={21} />
+    </Badge>
     <Badge dot>Something</Badge>
   </Space>
 )
@@ -142,7 +147,7 @@ Standalone.parameters = {
   }
 }
 
-export const Status: Story<BadgeProps> = (_args) => (
+export const Status: Story<BadgeProps> = _args => (
   <Space>
     <Badge status="success" text="Success" />
     <br />
@@ -164,12 +169,13 @@ Status.parameters = {
   }
 }
 
-export const Ribbon: Story<BadgeProps> = (_args) => (
+export const Ribbon: Story<BadgeProps> = _args => (
   <>
     <Badge.Ribbon text="TBBT">
       <Card>Smart is the New Sexy.</Card>
     </Badge.Ribbon>
-    <br/><br/>
+    <br />
+    <br />
     <Badge.Ribbon text="Something" color="#f4532a" placement="start">
       <Card>Smart is the New Sexy.</Card>
     </Badge.Ribbon>

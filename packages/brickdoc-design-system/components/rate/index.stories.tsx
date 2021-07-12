@@ -1,9 +1,9 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Rate, RateProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Rate, RateProps } from '../'
 import { OvalLove } from '../icon'
 export default {
-  title: "ReactComponents/Rate",
+  title: 'ReactComponents/Rate',
   component: Rate,
   parameters: {
     docs: {
@@ -49,15 +49,15 @@ Rate component.
   }
 }
 
-
-
-const Template: Story<RateProps> = (_args) =>
+const Template: Story<RateProps> = _args => (
   <>
     <Rate allowHalf defaultValue={2.5} />
-    <br/><br/>
+    <br />
+    <br />
     <Rate character={<OvalLove />} />
-    <br/><br/>
+    <br />
+    <br />
     <Rate character="好" allowHalf />
   </>
+)
 export const Base = Template.bind({})
-

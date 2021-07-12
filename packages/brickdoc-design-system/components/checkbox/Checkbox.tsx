@@ -6,41 +6,41 @@ import { ConfigContext } from '../config-provider'
 import devWarning from '../_util/devWarning'
 
 export interface AbstractCheckboxProps<T> {
-  prefixCls?: string;
-  className?: string;
-  defaultChecked?: boolean;
-  checked?: boolean;
-  style?: React.CSSProperties;
-  disabled?: boolean;
-  onChange?: (e: T) => void;
-  onClick?: React.MouseEventHandler<HTMLElement>;
-  onMouseEnter?: React.MouseEventHandler<HTMLElement>;
-  onMouseLeave?: React.MouseEventHandler<HTMLElement>;
-  onKeyPress?: React.KeyboardEventHandler<HTMLElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
-  value?: any;
-  tabIndex?: number;
-  name?: string;
-  children?: React.ReactNode;
-  id?: string;
-  autoFocus?: boolean;
-  type?: string;
-  skipGroup?: boolean;
+  prefixCls?: string
+  className?: string
+  defaultChecked?: boolean
+  checked?: boolean
+  style?: React.CSSProperties
+  disabled?: boolean
+  onChange?: (e: T) => void
+  onClick?: React.MouseEventHandler<HTMLElement>
+  onMouseEnter?: React.MouseEventHandler<HTMLElement>
+  onMouseLeave?: React.MouseEventHandler<HTMLElement>
+  onKeyPress?: React.KeyboardEventHandler<HTMLElement>
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement>
+  value?: any
+  tabIndex?: number
+  name?: string
+  children?: React.ReactNode
+  id?: string
+  autoFocus?: boolean
+  type?: string
+  skipGroup?: boolean
 }
 
 export interface CheckboxChangeEventTarget extends CheckboxProps {
-  checked: boolean;
+  checked: boolean
 }
 
 export interface CheckboxChangeEvent {
-  target: CheckboxChangeEventTarget;
-  stopPropagation: () => void;
-  preventDefault: () => void;
-  nativeEvent: MouseEvent;
+  target: CheckboxChangeEventTarget
+  stopPropagation: () => void
+  preventDefault: () => void
+  nativeEvent: MouseEvent
 }
 
 export interface CheckboxProps extends AbstractCheckboxProps<CheckboxChangeEvent> {
-  indeterminate?: boolean;
+  indeterminate?: boolean
 }
 
 const InternalCheckbox: React.ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (
@@ -55,7 +55,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<HTMLInputElement, Checkbo
     skipGroup = false,
     ...restProps
   },
-  ref,
+  ref
 ) => {
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
   const checkboxGroup = React.useContext(GroupContext)
@@ -67,7 +67,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<HTMLInputElement, Checkbo
     devWarning(
       'checked' in restProps || !!checkboxGroup || !('value' in restProps),
       'Checkbox',
-      '`value` is not a valid prop, do you mean `checked`?',
+      '`value` is not a valid prop, do you mean `checked`?'
     )
   })
 
@@ -103,21 +103,16 @@ const InternalCheckbox: React.ForwardRefRenderFunction<HTMLInputElement, Checkbo
       [`${prefixCls}-wrapper`]: true,
       [`${prefixCls}-rtl`]: direction === 'rtl',
       [`${prefixCls}-wrapper-checked`]: checkboxProps.checked,
-      [`${prefixCls}-wrapper-disabled`]: checkboxProps.disabled,
+      [`${prefixCls}-wrapper-disabled`]: checkboxProps.disabled
     },
-    className,
+    className
   )
   const checkboxClass = classNames({
-    [`${prefixCls}-indeterminate`]: indeterminate,
+    [`${prefixCls}-indeterminate`]: indeterminate
   })
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
-    <label
-      className={classString}
-      style={style}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <label className={classString} style={style} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {/* @ts-expect-error */}
       <RcCheckbox {...checkboxProps} prefixCls={prefixCls} className={checkboxClass} ref={ref} />
       {children !== undefined && <span>{children}</span>}
@@ -125,7 +120,7 @@ const InternalCheckbox: React.ForwardRefRenderFunction<HTMLInputElement, Checkbo
   )
 }
 
-const Checkbox = React.forwardRef<unknown, CheckboxProps>(InternalCheckbox)
+const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(InternalCheckbox)
 
 Checkbox.displayName = 'Checkbox'
 

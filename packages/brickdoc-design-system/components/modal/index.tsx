@@ -1,13 +1,5 @@
 import OriginModal, { ModalFuncProps, destroyFns } from './Modal'
-import confirm, {
-  withWarn,
-  withInfo,
-  withSuccess,
-  withError,
-  withConfirm,
-  ModalStaticFunctions,
-  modalGlobalConfig,
-} from './confirm'
+import confirm, { withWarn, withInfo, withSuccess, withError, withConfirm, ModalStaticFunctions, modalGlobalConfig } from './confirm'
 
 export type { ActionButtonProps } from './ActionButton'
 export type { ModalProps, ModalFuncProps } from './Modal'
@@ -16,32 +8,23 @@ function modalWarn(props: ModalFuncProps) {
   return confirm(withWarn(props))
 }
 
-type ModalType = typeof OriginModal &
-  ModalStaticFunctions & { destroyAll: () => void; config: typeof modalGlobalConfig };
+export type ModalType = typeof OriginModal & ModalStaticFunctions & { destroyAll: () => void; config: typeof modalGlobalConfig }
 
 const Modal = OriginModal as ModalType
 
-Modal.info = function infoFn(props: ModalFuncProps) {
-  return confirm(withInfo(props))
-}
+Modal.info = (props: ModalFuncProps) => confirm(withInfo(props))
 
-Modal.success = function successFn(props: ModalFuncProps) {
-  return confirm(withSuccess(props))
-}
+Modal.success = (props: ModalFuncProps) => confirm(withSuccess(props))
 
-Modal.error = function errorFn(props: ModalFuncProps) {
-  return confirm(withError(props))
-}
+Modal.error = (props: ModalFuncProps) => confirm(withError(props))
 
 Modal.warning = modalWarn
 
 Modal.warn = modalWarn
 
-Modal.confirm = function confirmFn(props: ModalFuncProps) {
-  return confirm(withConfirm(props))
-}
+Modal.confirm = (props: ModalFuncProps) => confirm(withConfirm(props))
 
-Modal.destroyAll = function destroyAllFn() {
+Modal.destroyAll = () => {
   while (destroyFns.length) {
     const close = destroyFns.pop()
     if (close) {

@@ -1,16 +1,15 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Menu, Dropdown, DropdownProps } from "../../"
-import { Down  as DownOutlined } from '../icon'
-
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Menu, Dropdown, DropdownProps } from '../'
+import { Down as DownOutlined } from '../icon'
 
 export default {
-  title: "ReactComponents/Dropdown",
+  title: 'ReactComponents/Dropdown',
   component: Dropdown,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 A dropdown list.
 
 #### When To Use
@@ -57,9 +56,9 @@ choose an option and execute the relevant action.
 | onClick | The same as Button: called when you click the button on the left | (event) => void | - |
 | onVisibleChange | Called when the visible state is changed | (visible: boolean) => void | - |
 `
+      }
     }
   }
-}
 }
 
 const menu = (
@@ -82,38 +81,32 @@ const menu = (
     <Menu.Item danger>a danger item</Menu.Item>
   </Menu>
 )
-const Template: Story<DropdownProps> = (_args) =>
+const Template: Story<DropdownProps> = _args => (
   <>
     <Dropdown overlay={menu}>
       <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
         Hover me <DownOutlined />
       </a>
     </Dropdown>
-    <br/><br/>
+    <br />
+    <br />
     <Dropdown.Button placement="topCenter" overlay={menu}>
       Dropdown
     </Dropdown.Button>
-    <br/><br/>
+    <br />
+    <br />
     <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
       <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
         Click me <DownOutlined />
       </a>
     </Dropdown>
-    <br/><br/>
+    <br />
+    <br />
     <Dropdown.Button
       overlay={menu}
-      buttonsRender={([leftButton, rightButton]) => [
-
-          leftButton
-        ,
-        React.cloneElement(rightButton, { loading: true }),
-      ]}
-    >
+      buttonsRender={([leftButton, rightButton]) => [leftButton, React.cloneElement(rightButton, { loading: true })]}>
       Loading
     </Dropdown.Button>
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

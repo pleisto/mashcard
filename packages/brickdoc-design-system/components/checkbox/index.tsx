@@ -5,10 +5,9 @@ import Group from './Group'
 export type { CheckboxProps, CheckboxChangeEvent } from './Checkbox'
 export type { CheckboxGroupProps, CheckboxOptionType } from './Group'
 
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>> {
-  Group: typeof Group;
-  __ANT_CHECKBOX: boolean;
+export interface CompoundedComponent extends React.ForwardRefExoticComponent<CheckboxProps & React.RefAttributes<HTMLInputElement>> {
+  Group: typeof Group
+  __ANT_CHECKBOX: boolean
 }
 
 const Checkbox = InternalCheckbox as CompoundedComponent

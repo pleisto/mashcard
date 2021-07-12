@@ -7,10 +7,10 @@ import devWarning from '../_util/devWarning'
 import { getTransitionName } from '../_util/motion'
 
 interface ConfirmDialogProps extends ModalFuncProps {
-  afterClose?: () => void;
-  close: (...args: any[]) => void;
-  autoFocusButton?: null | 'ok' | 'cancel';
-  rootPrefixCls: string;
+  afterClose?: () => void
+  close: (...args: any[]) => void
+  autoFocusButton?: null | 'ok' | 'cancel'
+  rootPrefixCls: string
 }
 
 const ConfirmDialog = (props: ConfirmDialogProps) => {
@@ -37,13 +37,14 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
     closable = false,
     closeIcon,
     modalRender,
-    focusTriggerAfterClose,
+    focusTriggerAfterClose
   } = props
 
   devWarning(
     !(typeof icon === 'string' && icon.length > 2),
     'Modal',
-    `\`icon\` is using ReactNode instead of string naming in v4. Please check \`${icon}\` at https://ant.design/components/icon`,
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    `\`icon\` is using ReactNode instead of string naming in v4. Please check \`${icon}\` at https://ant.design/components/icon`
   )
 
   // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
@@ -62,17 +63,17 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
     contentPrefixCls,
     `${contentPrefixCls}-${props.type}`,
     { [`${contentPrefixCls}-rtl`]: direction === 'rtl' },
-    props.className,
+    props.className
   )
 
   const cancelButton = okCancel && (
     <ActionButton
       actionFn={onCancel}
       closeModal={close}
+      // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}
-      prefixCls={`${rootPrefixCls}-btn`}
-    >
+      prefixCls={`${rootPrefixCls}-btn`}>
       {cancelText}
     </ActionButton>
   )
@@ -101,26 +102,23 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
       closable={closable}
       closeIcon={closeIcon}
       modalRender={modalRender}
-      focusTriggerAfterClose={focusTriggerAfterClose}
-    >
+      focusTriggerAfterClose={focusTriggerAfterClose}>
       <div className={`${contentPrefixCls}-body-wrapper`}>
-          <div className={`${contentPrefixCls}-body`} style={bodyStyle}>
-            {icon}
-            {props.title === undefined ? null : (
-              <span className={`${contentPrefixCls}-title`}>{props.title}</span>
-            )}
-            <div className={`${contentPrefixCls}-content`}>{props.content}</div>
-          </div>
+        <div className={`${contentPrefixCls}-body`} style={bodyStyle}>
+          {icon}
+          {props.title === undefined ? null : <span className={`${contentPrefixCls}-title`}>{props.title}</span>}
+          <div className={`${contentPrefixCls}-content`}>{props.content}</div>
+        </div>
         <div className={`${contentPrefixCls}-btns`}>
           {cancelButton}
           <ActionButton
             type={okType}
             actionFn={onOk}
             closeModal={close}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocusButton === 'ok'}
             buttonProps={okButtonProps}
-            prefixCls={`${rootPrefixCls}-btn`}
-          >
+            prefixCls={`${rootPrefixCls}-btn`}>
             {okText}
           </ActionButton>
         </div>

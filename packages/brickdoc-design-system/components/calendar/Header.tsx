@@ -9,27 +9,18 @@ const YearSelectOffset = 10
 const YearSelectTotal = 20
 
 interface SharedProps<DateType> {
-  prefixCls: string;
-  value: DateType;
-  validRange?: [DateType, DateType];
-  generateConfig: GenerateConfig<DateType>;
-  locale: Locale;
-  fullscreen: boolean;
-  divRef: React.RefObject<HTMLDivElement>;
-  onChange: (year: DateType) => void;
+  prefixCls: string
+  value: DateType
+  validRange?: [DateType, DateType]
+  generateConfig: GenerateConfig<DateType>
+  locale: Locale
+  fullscreen: boolean
+  divRef: React.RefObject<HTMLDivElement>
+  onChange: (year: DateType) => void
 }
 
 function YearSelect<DateType>(props: SharedProps<DateType>) {
-  const {
-    fullscreen,
-    validRange,
-    generateConfig,
-    locale,
-    prefixCls,
-    value,
-    onChange,
-    divRef,
-  } = props
+  const { fullscreen, validRange, generateConfig, locale, prefixCls, value, onChange, divRef } = props
 
   const year = generateConfig.getYear(value || generateConfig.getNow())
 
@@ -43,7 +34,7 @@ function YearSelect<DateType>(props: SharedProps<DateType>) {
 
   const suffix = locale && locale.year === '年' ? '年' : ''
   const options: Array<{ label: string; value: number }> = []
-  for (let index = start; index < end; index++) {
+  for (let index = start; index < end; index += 1) {
     options.push({ label: `${index}${suffix}`, value: index })
   }
 
@@ -60,16 +51,10 @@ function YearSelect<DateType>(props: SharedProps<DateType>) {
           const [startDate, endDate] = validRange
           const newYear = generateConfig.getYear(newDate)
           const newMonth = generateConfig.getMonth(newDate)
-          if (
-            newYear === generateConfig.getYear(endDate) &&
-            newMonth > generateConfig.getMonth(endDate)
-          ) {
+          if (newYear === generateConfig.getYear(endDate) && newMonth > generateConfig.getMonth(endDate)) {
             newDate = generateConfig.setMonth(newDate, generateConfig.getMonth(endDate))
           }
-          if (
-            newYear === generateConfig.getYear(startDate) &&
-            newMonth < generateConfig.getMonth(startDate)
-          ) {
+          if (newYear === generateConfig.getYear(startDate) && newMonth < generateConfig.getMonth(startDate)) {
             newDate = generateConfig.setMonth(newDate, generateConfig.getMonth(startDate))
           }
         }
@@ -82,16 +67,7 @@ function YearSelect<DateType>(props: SharedProps<DateType>) {
 }
 
 function MonthSelect<DateType>(props: SharedProps<DateType>) {
-  const {
-    prefixCls,
-    fullscreen,
-    validRange,
-    value,
-    generateConfig,
-    locale,
-    onChange,
-    divRef,
-  } = props
+  const { prefixCls, fullscreen, validRange, value, generateConfig, locale, onChange, divRef } = props
   const month = generateConfig.getMonth(value || generateConfig.getNow())
 
   let start = 0
@@ -113,7 +89,7 @@ function MonthSelect<DateType>(props: SharedProps<DateType>) {
   for (let index = start; index <= end; index += 1) {
     options.push({
       label: months[index],
-      value: index,
+      value: index
     })
   }
 
@@ -132,8 +108,8 @@ function MonthSelect<DateType>(props: SharedProps<DateType>) {
 }
 
 interface ModeSwitchProps<DateType> extends Omit<SharedProps<DateType>, 'onChange'> {
-  mode: CalendarMode;
-  onModeChange: (type: CalendarMode) => void;
+  mode: CalendarMode
+  onModeChange: (type: CalendarMode) => void
 }
 
 function ModeSwitch<DateType>(props: ModeSwitchProps<DateType>) {
@@ -145,8 +121,7 @@ function ModeSwitch<DateType>(props: ModeSwitchProps<DateType>) {
       }}
       value={mode}
       size={fullscreen ? undefined : 'small'}
-      className={`${prefixCls}-mode-switch`}
-    >
+      className={`${prefixCls}-mode-switch`}>
       <Button value="month">{locale.month}</Button>
       <Button value="year">{locale.year}</Button>
     </Group>
@@ -154,15 +129,15 @@ function ModeSwitch<DateType>(props: ModeSwitchProps<DateType>) {
 }
 
 export interface CalendarHeaderProps<DateType> {
-  prefixCls: string;
-  value: DateType;
-  validRange?: [DateType, DateType];
-  generateConfig: GenerateConfig<DateType>;
-  locale: Locale;
-  mode: CalendarMode;
-  fullscreen: boolean;
-  onChange: (date: DateType) => void;
-  onModeChange: (mode: CalendarMode) => void;
+  prefixCls: string
+  value: DateType
+  validRange?: [DateType, DateType]
+  generateConfig: GenerateConfig<DateType>
+  locale: Locale
+  mode: CalendarMode
+  fullscreen: boolean
+  onChange: (date: DateType) => void
+  onModeChange: (mode: CalendarMode) => void
 }
 function CalendarHeader<DateType>(props: CalendarHeaderProps<DateType>) {
   const { prefixCls, fullscreen, mode, onChange, onModeChange } = props
@@ -172,7 +147,7 @@ function CalendarHeader<DateType>(props: CalendarHeaderProps<DateType>) {
     ...props,
     onChange,
     fullscreen,
-    divRef,
+    divRef
   }
 
   return (

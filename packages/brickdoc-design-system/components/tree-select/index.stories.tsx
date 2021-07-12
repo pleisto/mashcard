@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { TreeSelect, TreeSelectProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { TreeSelect } from '../'
 export default {
-  title: "ReactComponents/TreeSelect",
+  title: 'ReactComponents/TreeSelect',
   component: TreeSelect,
   parameters: {
     docs: {
@@ -92,11 +92,9 @@ Tree selection control.
   }
 }
 
-
 const { TreeNode } = TreeSelect
 
-
-const Template: Story<TreeSelectProps> = (_args) =>
+const Template: Story = () => (
   <>
     <TreeSelect
       showSearch
@@ -104,8 +102,7 @@ const Template: Story<TreeSelectProps> = (_args) =>
       dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
       placeholder="Please select"
       allowClear
-      treeDefaultExpandAll
-    >
+      treeDefaultExpandAll>
       <TreeNode value="parent 1" title="parent 1">
         <TreeNode value="parent 1-0" title="parent 1-0">
           <TreeNode value="leaf1" title="leaf1" />
@@ -116,7 +113,8 @@ const Template: Story<TreeSelectProps> = (_args) =>
         </TreeNode>
       </TreeNode>
     </TreeSelect>
-    <br/><br/>
+    <br />
+    <br />
     <TreeSelect
       showSearch
       style={{ width: '100%' }}
@@ -124,8 +122,7 @@ const Template: Story<TreeSelectProps> = (_args) =>
       placeholder="Please select"
       allowClear
       multiple
-      treeDefaultExpandAll
-    >
+      treeDefaultExpandAll>
       <TreeNode value="parent 1" title="parent 1">
         <TreeNode value="parent 1-0" title="parent 1-0">
           <TreeNode value="leaf1" title="my leaf" />
@@ -137,5 +134,5 @@ const Template: Story<TreeSelectProps> = (_args) =>
       </TreeNode>
     </TreeSelect>
   </>
+)
 export const Base = Template.bind({})
-

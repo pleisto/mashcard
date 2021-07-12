@@ -10,18 +10,14 @@ import { ConfigContext } from '../config-provider'
 const EMPTY_LIST: React.ReactNode[] = []
 
 export interface ErrorListProps {
-  errors?: React.ReactNode[];
+  errors?: React.ReactNode[]
   /** @private Internal Usage. Do not use in your production */
-  help?: React.ReactNode;
+  help?: React.ReactNode
   /** @private Internal Usage. Do not use in your production */
-  onDomErrorVisibleChange?: (visible: boolean) => void;
+  onDomErrorVisibleChange?: (visible: boolean) => void
 }
 
-export default function ErrorList({
-  errors = EMPTY_LIST,
-  help,
-  onDomErrorVisibleChange,
-}: ErrorListProps) {
+export default function ErrorList({ errors = EMPTY_LIST, help, onDomErrorVisibleChange }: ErrorListProps) {
   const forceUpdate = useForceUpdate()
   const { prefixCls, status } = React.useContext(FormItemPrefixContext)
   const { getPrefixCls } = React.useContext(ConfigContext)
@@ -42,14 +38,14 @@ export default function ErrorList({
       }
       forceUpdate()
     },
-    !!help,
+    !!help
   )
 
   const memoErrors = useMemo(
     () => cacheErrors,
     /* eslint-disable react-hooks/exhaustive-deps */
     visible,
-    (_, nextVisible) => nextVisible,
+    (_, nextVisible) => nextVisible
   )
 
   // Memo status in same visible
@@ -72,19 +68,18 @@ export default function ErrorList({
         onDomErrorVisibleChange?.(false)
       }}
       motionAppear
-      removeOnLeave
-    >
+      removeOnLeave>
+      {/* eslint-disable-next-line react/no-unused-prop-types */}
       {({ className: motionClassName }: { className?: string }) => (
         <div
           className={classNames(
             baseClassName,
             {
-              [`${baseClassName}-${innerStatus}`]: innerStatus,
+              [`${baseClassName}-${innerStatus}`]: innerStatus
             },
-            motionClassName,
+            motionClassName
           )}
-          key="help"
-        >
+          key="help">
           {memoErrors.map((error, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <div key={index} role="alert">

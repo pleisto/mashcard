@@ -5,9 +5,8 @@ import Group from './group'
 export type { AvatarProps } from './avatar'
 export type { GroupProps } from './group'
 
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLElement>> {
-  Group: typeof Group;
+export interface CompoundedComponent extends React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLElement>> {
+  Group: typeof Group
 }
 
 const Avatar = InternalAvatar as CompoundedComponent

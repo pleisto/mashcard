@@ -4,61 +4,50 @@ import omit from 'rc-util/lib/omit'
 import Checkbox, { CheckboxChangeEvent } from './Checkbox'
 import { ConfigContext } from '../config-provider'
 
-export type CheckboxValueType = string | number | boolean;
+export type CheckboxValueType = string | number | boolean
 
 export interface CheckboxOptionType {
-  label: React.ReactNode;
-  value: CheckboxValueType;
-  style?: React.CSSProperties;
-  disabled?: boolean;
-  onChange?: (e: CheckboxChangeEvent) => void;
+  label: React.ReactNode
+  value: CheckboxValueType
+  style?: React.CSSProperties
+  disabled?: boolean
+  onChange?: (e: CheckboxChangeEvent) => void
 }
 
 export interface AbstractCheckboxGroupProps {
-  prefixCls?: string;
-  className?: string;
-  options?: Array<CheckboxOptionType | string>;
-  disabled?: boolean;
-  style?: React.CSSProperties;
+  prefixCls?: string
+  className?: string
+  options?: Array<CheckboxOptionType | string>
+  disabled?: boolean
+  style?: React.CSSProperties
 }
 
 export interface CheckboxGroupProps extends AbstractCheckboxGroupProps {
-  name?: string;
-  defaultValue?: CheckboxValueType[];
-  value?: CheckboxValueType[];
-  onChange?: (checkedValue: CheckboxValueType[]) => void;
-  children?: React.ReactNode;
+  name?: string
+  defaultValue?: CheckboxValueType[]
+  value?: CheckboxValueType[]
+  onChange?: (checkedValue: CheckboxValueType[]) => void
+  children?: React.ReactNode
 }
 
 export interface CheckboxGroupContext {
-  name?: string;
-  toggleOption?: (option: CheckboxOptionType) => void;
-  value?: any;
-  disabled?: boolean;
-  registerValue: (val: string) => void;
-  cancelValue: (val: string) => void;
+  name?: string
+  toggleOption?: (option: CheckboxOptionType) => void
+  value?: any
+  disabled?: boolean
+  registerValue: (val: string) => void
+  cancelValue: (val: string) => void
 }
 
 export const GroupContext = React.createContext<CheckboxGroupContext | null>(null)
 
 const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, CheckboxGroupProps> = (
-  {
-    defaultValue,
-    children,
-    options = [],
-    prefixCls: customizePrefixCls,
-    className,
-    style,
-    onChange,
-    ...restProps
-  },
-  ref,
+  { defaultValue, children, options = [], prefixCls: customizePrefixCls, className, style, onChange, ...restProps },
+  ref
 ) => {
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
 
-  const [value, setValue] = React.useState<CheckboxValueType[]>(
-    restProps.value || defaultValue || [],
-  )
+  const [value, setValue] = React.useState<CheckboxValueType[]>(restProps.value || defaultValue || [])
   const [registeredValues, setRegisteredValues] = React.useState<CheckboxValueType[]>([])
 
   React.useEffect(() => {
@@ -73,7 +62,7 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
       if (typeof option === 'string') {
         return {
           label: option,
-          value: option,
+          value: option
         }
       }
       return option
@@ -106,7 +95,7 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
           const indexA = opts.findIndex(opt => opt.value === a)
           const indexB = opts.findIndex(opt => opt.value === b)
           return indexA - indexB
-        }),
+        })
     )
   }
 
@@ -116,6 +105,7 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
   const domProps = omit(restProps, ['value', 'disabled'])
 
   if (options && options.length > 0) {
+    // eslint-disable-next-line no-param-reassign
     children = getOptions().map(option => (
       <Checkbox
         prefixCls={prefixCls}
@@ -125,13 +115,13 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
         checked={value.includes(option.value)}
         onChange={option.onChange}
         className={`${groupPrefixCls}-item`}
-        style={option.style}
-      >
+        style={option.style}>
         {option.label}
       </Checkbox>
     ))
   }
 
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const context = {
     toggleOption,
     value,
@@ -140,15 +130,15 @@ const InternalCheckboxGroup: React.ForwardRefRenderFunction<HTMLDivElement, Chec
 
     // https://github.com/ant-design/ant-design/issues/16376
     registerValue,
-    cancelValue,
+    cancelValue
   }
 
   const classString = classNames(
     groupPrefixCls,
     {
-      [`${groupPrefixCls}-rtl`]: direction === 'rtl',
+      [`${groupPrefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
   return (
     <div className={classString} style={style} {...domProps} ref={ref}>

@@ -1,15 +1,15 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Input, InputProps, Select } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Input, InputProps, Select } from '../'
 import { User } from '../icon'
 
 export default {
-  title: "ReactComponents/Input",
+  title: 'ReactComponents/Input',
   component: Input,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 A basic widget for getting the user input is a text field.
 Keyboard and mouse can be used for providing or changing data.
 
@@ -100,9 +100,9 @@ Supports all props of \`Input\`.
 | focus | Get focus | (option?: { preventScroll?: boolean, cursor?: 'start' \\| 'end' \\| 'all' }) |
 
 `
+      }
     }
   }
-}
 }
 const { Option } = Select
 const { Search, TextArea } = Input
@@ -122,40 +122,42 @@ const selectAfter = (
   </Select>
 )
 
-
-
-
-const Template: Story<InputProps> = (_args) =>
+const Template: Story<InputProps> = _args => (
   <>
     <Input placeholder="Basic usage" />
-    <br/><br/>
+    <br />
+    <br />
     <Input size="large" placeholder="large size" prefix={<User />} />
-    <br/><br/>
+    <br />
+    <br />
     <Input addonBefore={selectBefore} addonAfter={selectAfter} defaultValue="mysite" />
-    <br/><br/>
-    <Search placeholder="input search text"style={{ width: 200 }} />
-    <br/><br/>
+    <br />
+    <br />
+    <Search placeholder="input search text" style={{ width: 200 }} />
+    <br />
+    <br />
     <TextArea rows={4} />
-    <br/><br/>
+    <br />
+    <br />
     <Input.Password placeholder="input password" />
-    <br/><br/>
+    <br />
+    <br />
     <Input prefix="￥" suffix="RMB" disabled />
-    <br/><br/>
+    <br />
+    <br />
     <Search placeholder="input search text" enterButton="Search" size="large" loading />
-    <br/><br/>
+    <br />
+    <br />
     <Input.Group compact>
-    <Select defaultValue="Zhejiang">
-      <Option value="Zhejiang">Zhejiang</Option>
-      <Option value="Jiangsu">Jiangsu</Option>
-    </Select>
-    <Input style={{ width: '50%' }} defaultValue="HKE Museum of Art, Ningbo" />
-
-  </Input.Group>
-    <br/><br/>
-    <Input placeholder="input with clear icon" allowClear  />
+      <Select defaultValue="Zhejiang">
+        <Option value="Zhejiang">Zhejiang</Option>
+        <Option value="Jiangsu">Jiangsu</Option>
+      </Select>
+      <Input style={{ width: '50%' }} defaultValue="HKE Museum of Art, Ningbo" />
+    </Input.Group>
+    <br />
+    <br />
+    <Input placeholder="input with clear icon" allowClear />
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

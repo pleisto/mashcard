@@ -1,9 +1,9 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Tree, TreeProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Tree, TreeProps } from '../'
 import { Down } from '../icon'
 export default {
-  title: "ReactComponents/Tree",
+  title: 'ReactComponents/Tree',
   component: Tree,
   parameters: {
     docs: {
@@ -124,25 +124,24 @@ const treeData = [
           {
             title: 'leaf',
             key: '0-0-0-0',
-            disableCheckbox: true,
+            disableCheckbox: true
           },
           {
             title: 'leaf',
-            key: '0-0-0-1',
-          },
-        ],
+            key: '0-0-0-1'
+          }
+        ]
       },
       {
         title: 'parent 1-1',
         key: '0-0-1',
-        children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }],
-      },
-    ],
-  },
+        children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }]
+      }
+    ]
+  }
 ]
 
-
-const Template: Story<TreeProps> = (_args) =>
+const Template: Story<TreeProps> = _args => (
   <>
     <Tree
       checkable
@@ -151,7 +150,8 @@ const Template: Story<TreeProps> = (_args) =>
       defaultCheckedKeys={['0-0-0', '0-0-1']}
       treeData={treeData}
     />
-    <br/><br/>
+    <br />
+    <br />
     <Tree
       showLine
       switcherIcon={<Down />}
@@ -167,17 +167,17 @@ const Template: Story<TreeProps> = (_args) =>
               children: [
                 {
                   title: 'leaf',
-                  key: '0-0-0-0',
+                  key: '0-0-0-0'
                 },
                 {
                   title: 'leaf',
-                  key: '0-0-0-1',
+                  key: '0-0-0-1'
                 },
                 {
                   title: 'leaf',
-                  key: '0-0-0-2',
-                },
-              ],
+                  key: '0-0-0-2'
+                }
+              ]
             },
             {
               title: 'parent 1-1',
@@ -185,9 +185,9 @@ const Template: Story<TreeProps> = (_args) =>
               children: [
                 {
                   title: 'leaf',
-                  key: '0-0-1-0',
-                },
-              ],
+                  key: '0-0-1-0'
+                }
+              ]
             },
             {
               title: 'parent 1-2',
@@ -195,18 +195,18 @@ const Template: Story<TreeProps> = (_args) =>
               children: [
                 {
                   title: 'leaf',
-                  key: '0-0-2-0',
+                  key: '0-0-2-0'
                 },
                 {
                   title: 'leaf',
-                  key: '0-0-2-1',
-                },
-              ],
-            },
-          ],
-        },
+                  key: '0-0-2-1'
+                }
+              ]
+            }
+          ]
+        }
       ]}
     />
   </>
+)
 export const Base = Template.bind({})
-

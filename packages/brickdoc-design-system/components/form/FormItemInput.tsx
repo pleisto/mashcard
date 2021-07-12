@@ -12,38 +12,38 @@ import { FormContext, FormItemPrefixContext } from './context'
 import ErrorList from './ErrorList'
 
 interface FormItemInputMiscProps {
-  prefixCls: string;
-  children: React.ReactNode;
-  errors: React.ReactNode[];
-  hasFeedback?: boolean;
-  validateStatus?: ValidateStatus;
-  onDomErrorVisibleChange: (visible: boolean) => void;
+  prefixCls: string
+  children: React.ReactNode
+  errors: React.ReactNode[]
+  hasFeedback?: boolean
+  validateStatus?: ValidateStatus
+  onDomErrorVisibleChange: (visible: boolean) => void
   /** @private Internal Usage, do not use in any of your production. */
   _internalItemRender?: {
-    mark: string;
+    mark: string
     render: (
       props: FormItemInputProps & FormItemInputMiscProps,
       domList: {
-        input: JSX.Element;
-        errorList: JSX.Element;
-        extra: JSX.Element | null;
-      },
-    ) => React.ReactNode;
-  };
+        input: JSX.Element
+        errorList: JSX.Element
+        extra: JSX.Element | null
+      }
+    ) => React.ReactNode
+  }
 }
 
 export interface FormItemInputProps {
-  wrapperCol?: ColProps;
-  help?: React.ReactNode;
-  extra?: React.ReactNode;
-  status?: ValidateStatus;
+  wrapperCol?: ColProps
+  help?: React.ReactNode
+  extra?: React.ReactNode
+  status?: ValidateStatus
 }
 
 const iconMap: { [key: string]: any } = {
   success: CheckCircleFilled,
   warning: ExclamationCircleFilled,
   error: CloseCircleFilled,
-  validating: LoadingOutlined,
+  validating: LoadingOutlined
 }
 
 const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = props => {
@@ -58,7 +58,7 @@ const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = pro
     hasFeedback,
     _internalItemRender: formItemRender,
     validateStatus,
-    extra,
+    extra
   } = props
   const baseClassName = `${prefixCls}-item`
 
@@ -68,22 +68,21 @@ const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = pro
 
   const className = classNames(`${baseClassName}-control`, mergedWrapperCol.className)
 
-  React.useEffect(
-    () => () => {
-      onDomErrorVisibleChange(false)
-    }
-  )
+  React.useEffect(() => () => {
+    onDomErrorVisibleChange(false)
+  })
 
   // Should provides additional icon if `hasFeedback`
   const IconNode = validateStatus && iconMap[validateStatus]
   const icon =
     hasFeedback && IconNode ? (
       <span className={`${baseClassName}-children-icon`}>
-        <IconNode theme={(validateStatus === 'validating' ? 'outline':'filled')} />
+        <IconNode theme={validateStatus === 'validating' ? 'outline' : 'filled'} />
       </span>
     ) : null
 
   // Pass to sub FormItem should not with col info
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const subFormContext = { ...formContext }
   delete subFormContext.labelCol
   delete subFormContext.wrapperCol
@@ -95,6 +94,7 @@ const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = pro
     </div>
   )
   const errorListDom = (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <FormItemPrefixContext.Provider value={{ prefixCls, status }}>
       <ErrorList errors={errors} help={help} onDomErrorVisibleChange={onDomErrorVisibleChange} />
     </FormItemPrefixContext.Provider>

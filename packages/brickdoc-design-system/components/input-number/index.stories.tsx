@@ -1,14 +1,14 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { InputNumber, InputNumberProps, Space, Button } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { InputNumber, InputNumberProps, Space, Button } from '../'
 
 export default {
-  title: "ReactComponents/InputNumber",
+  title: 'ReactComponents/InputNumber',
   component: InputNumber,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 Enter a number within certain range with the mouse or keyboard.
 
 #### When To Use
@@ -47,9 +47,9 @@ When a numeric value needs to be provided.
 | focus() | Get focus    |
 
 `
+      }
     }
   }
-}
 }
 
 const Demo = () => {
@@ -62,40 +62,30 @@ const Demo = () => {
         type="primary"
         onClick={() => {
           setValue(99)
-        }}
-      >
+        }}>
         Reset
       </Button>
     </Space>
   )
 }
 
-
-
-const Template: Story<InputNumberProps> = (_args) =>
+const Template: Story<InputNumberProps> = _args => (
   <>
-    <InputNumber min={1} max={10} defaultValue={3}  />
-    <br/><br/>
+    <InputNumber min={1} max={10} defaultValue={3} />
+    <br />
+    <br />
     <InputNumber
       size="large"
-      defaultValue={1000}
+      defaultValue={1000 as number}
       formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-      parser={value => value.replace(/\$\s?|(,*)/g, '')}
+      parser={value => parseInt(value.replace(/\$\s?|(,*)/g, ''), 10)}
     />
-    <br/><br/>
-    <InputNumber<string>
-      style={{ width: 200 }}
-      defaultValue="1"
-      min="0"
-      max="10"
-      step="0.00000000000001"
-      stringMode
-    />
-    <br/><br/>
+    <br />
+    <br />
+    <InputNumber<string> style={{ width: 200 }} defaultValue="1" min="0" max="10" step="0.00000000000001" stringMode />
+    <br />
+    <br />
     <Demo />
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

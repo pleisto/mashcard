@@ -1,9 +1,9 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Steps, StepsProps, Button, message } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Steps, StepsProps, Button, message } from '../'
 import { User, Certificate, Rotation as Loading, SmilingFace } from '../icon'
 export default {
-  title: "ReactComponents/Steps",
+  title: 'ReactComponents/Steps',
   component: Steps,
   parameters: {
     docs: {
@@ -62,45 +62,47 @@ A single step in the step bar.
   }
 }
 
-
 const { Step } = Steps
 
-const Template: Story<StepsProps> = (_args) =>
+const Template: Story<StepsProps> = _args => (
   <>
     <Steps current={1}>
       <Step title="Finished" description="This is a description." />
       <Step title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
       <Step title="Waiting" description="This is a description." />
     </Steps>
-    <br/><br/>
+    <br />
+    <br />
     <Steps>
-      <Step status="finish" title="Login" icon={<User/>} />
+      <Step status="finish" title="Login" icon={<User />} />
       <Step status="finish" title="Verification" icon={<Certificate />} />
       <Step status="process" title="Pay" icon={<Loading />} />
       <Step status="wait" title="Done" icon={<SmilingFace />} />
     </Steps>
-    <br/><br/>
+    <br />
+    <br />
     <Steps direction="vertical" size="small" current={1}>
       <Step title="Finished" description="This is a description." />
       <Step title="In Progress" description="This is a description." />
       <Step title="Waiting" description="This is a description." />
     </Steps>
   </>
+)
 export const Base = Template.bind({})
 
 const steps = [
   {
     title: 'First',
-    content: 'First-content',
+    content: 'First-content'
   },
   {
     title: 'Second',
-    content: 'Second-content',
+    content: 'Second-content'
   },
   {
     title: 'Last',
-    content: 'Last-content',
-  },
+    content: 'Last-content'
+  }
 ]
 
 const App = () => {
@@ -121,9 +123,18 @@ const App = () => {
           <Step key={item.title} title={item.title} />
         ))}
       </Steps>
-      <div style={{minHeight:'200px',marginTop:'16px',paddingTop:'80px',
-        textAlign:'center',backgroundColor:'#fafafa',border:'1px dashed #e9e9e9'}}>{steps[current].content}</div>
-      <div style={{marginTop: '24px'}}>
+      <div
+        style={{
+          minHeight: '200px',
+          marginTop: '16px',
+          paddingTop: '80px',
+          textAlign: 'center',
+          backgroundColor: '#fafafa',
+          border: '1px dashed #e9e9e9'
+        }}>
+        {steps[current].content}
+      </div>
+      <div style={{ marginTop: '24px' }}>
         {current < steps.length - 1 && (
           <Button type="primary" onClick={() => next()}>
             Next
@@ -144,4 +155,4 @@ const App = () => {
   )
 }
 
-export const SwitchStep: Story<StepsProps> = (_args)=> <App/>
+export const SwitchStep: Story<StepsProps> = _args => <App />

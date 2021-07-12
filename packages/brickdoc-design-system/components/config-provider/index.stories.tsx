@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { ConfigProvider, ConfigProviderProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { ConfigProvider, ConfigProviderProps } from '../'
 export default {
-  title: "ReactComponents/ConfigProvider",
+  title: 'ReactComponents/ConfigProvider',
   component: ConfigProvider,
   parameters: {
     docs: {
@@ -70,6 +70,5 @@ ConfigProvider.config({
   }
 }
 
-const Template: Story<ConfigProviderProps> = (args) =>
-  <ConfigProvider {...args} />
+const Template: Story<ConfigProviderProps> = args => <ConfigProvider {...args} />
 export const Base = Template.bind({})

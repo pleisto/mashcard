@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Slider, SliderProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Slider } from '../'
 export default {
-  title: "ReactComponents/Slider",
+  title: 'ReactComponents/Slider',
   component: Slider,
   parameters: {
     docs: {
@@ -56,23 +56,25 @@ To input a value in a range.
   }
 }
 
-
-
-const Template: Story<SliderProps> = (_args) =>
+const Template: Story = () => (
   <>
-    <Slider defaultValue={10} disabled  />
-    <Slider defaultValue={30}  />
-    <Slider range defaultValue={[20, 50]} marks={{
-      0: '0°C',
-      26: '26°C',
-      37: '37°C',
-      100: {
-        style: {
-          color: '#f50',
-        },
-        label: <strong>100°C</strong>,
-      },
-    }}  />
+    <Slider defaultValue={10} disabled />
+    <Slider defaultValue={30} />
+    <Slider
+      range
+      defaultValue={[20, 50]}
+      marks={{
+        0: '0°C',
+        26: '26°C',
+        37: '37°C',
+        100: {
+          style: {
+            color: '#f50'
+          },
+          label: <strong>100°C</strong>
+        }
+      }}
+    />
   </>
+)
 export const Base = Template.bind({})
-

@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Tabs, TabsProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Tabs, TabsProps } from '../'
 export default {
-  title: "ReactComponents/Tabs",
+  title: 'ReactComponents/Tabs',
   component: Tabs,
   parameters: {
     docs: {
@@ -61,10 +61,9 @@ More option at [rc-tabs option](https://github.com/react-component/tabs#tabpane)
   }
 }
 
-
 const { TabPane } = Tabs
 
-const Template: Story<TabsProps> = (_args) =>
+const Template: Story<TabsProps> = _args => (
   <>
     <Tabs defaultActiveKey="1">
       <TabPane tab="Tab 1" key="1">
@@ -77,8 +76,9 @@ const Template: Story<TabsProps> = (_args) =>
         Content of Tab Pane 3
       </TabPane>
     </Tabs>
-    <br/><br/>
-    <Tabs  type="card">
+    <br />
+    <br />
+    <Tabs type="card">
       <TabPane tab="Tab 1" key="1">
         Content of Tab Pane 1
       </TabPane>
@@ -89,7 +89,8 @@ const Template: Story<TabsProps> = (_args) =>
         Content of Tab Pane 3
       </TabPane>
     </Tabs>
-    <br/><br/>
+    <br />
+    <br />
     <Tabs tabPosition="left">
       <TabPane tab="Tab 1" key="1">
         Content of Tab 1
@@ -102,5 +103,5 @@ const Template: Story<TabsProps> = (_args) =>
       </TabPane>
     </Tabs>
   </>
+)
 export const Base = Template.bind({})
-

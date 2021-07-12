@@ -1,31 +1,24 @@
 import addEventListener from 'rc-util/lib/Dom/addEventListener'
 import Affix from '.'
 
-export type BindElement = HTMLElement | Window | null | undefined;
-export type Rect = ClientRect | DOMRect;
+export type BindElement = HTMLElement | Window | null | undefined
+export type Rect = ClientRect | DOMRect
 
 export function getTargetRect(target: BindElement): ClientRect {
   return target !== window
     ? (target as HTMLElement).getBoundingClientRect()
-    : ({ top: 0, bottom: window.innerHeight } as ClientRect)
+    : // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+      ({ top: 0, bottom: window.innerHeight } as ClientRect)
 }
 
-export function getFixedTop(
-  placeholderReact: Rect,
-  targetRect: Rect,
-  offsetTop: number | undefined,
-) {
+export function getFixedTop(placeholderReact: Rect, targetRect: Rect, offsetTop: number | undefined) {
   if (offsetTop !== undefined && targetRect.top > placeholderReact.top - offsetTop) {
     return offsetTop + targetRect.top
   }
   return undefined
 }
 
-export function getFixedBottom(
-  placeholderReact: Rect,
-  targetRect: Rect,
-  offsetBottom: number | undefined,
-) {
+export function getFixedBottom(placeholderReact: Rect, targetRect: Rect, offsetBottom: number | undefined) {
   if (offsetBottom !== undefined && targetRect.bottom < placeholderReact.bottom + offsetBottom) {
     const targetBottomOffset = window.innerHeight - targetRect.bottom
     return offsetBottom + targetBottomOffset
@@ -34,20 +27,12 @@ export function getFixedBottom(
 }
 
 // ======================== Observer ========================
-const TRIGGER_EVENTS = [
-  'resize',
-  'scroll',
-  'touchstart',
-  'touchmove',
-  'touchend',
-  'pageshow',
-  'load',
-]
+const TRIGGER_EVENTS = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load']
 
 interface ObserverEntity {
-  target: HTMLElement | Window;
-  affixList: Affix[];
-  eventHandlers: { [eventName: string]: any };
+  target: HTMLElement | Window
+  affixList: Affix[]
+  eventHandlers: { [eventName: string]: any }
 }
 
 let observerEntities: ObserverEntity[] = []
@@ -68,7 +53,7 @@ export function addObserveTarget(target: HTMLElement | Window | null, affix: Aff
     entity = {
       target,
       affixList: [affix],
-      eventHandlers: {},
+      eventHandlers: {}
     }
     observerEntities.push(entity)
 
@@ -98,7 +83,7 @@ export function removeObserveTarget(affix: Affix): void {
     // Remove listener
     TRIGGER_EVENTS.forEach(eventName => {
       const handler = observerEntity.eventHandlers[eventName]
-      if (handler && handler.remove) {
+      if (handler?.remove) {
         handler.remove()
       }
     })

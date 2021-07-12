@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { notification, NotificationProps, Space, Button } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { notification, Space, Button } from '../'
 export default {
-  title: "ReactComponents/Notification",
+  title: 'ReactComponents/Notification',
   component: notification,
   parameters: {
     docs: {
@@ -81,21 +81,19 @@ notification.config({
   }
 }
 
-
 const openNotificationWithIcon = type => {
   notification[type]({
     message: 'Notification Title',
     description:
-      'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+      'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
   })
 }
-const Template: Story<NotificationProps> = (_args) =>
+const Template: Story = () => (
   <Space>
     <Button onClick={() => openNotificationWithIcon('success')}>Success</Button>
     <Button onClick={() => openNotificationWithIcon('info')}>Info</Button>
     <Button onClick={() => openNotificationWithIcon('warning')}>Warning</Button>
     <Button onClick={() => openNotificationWithIcon('error')}>Error</Button>
-
   </Space>
+)
 export const Base = Template.bind({})
-

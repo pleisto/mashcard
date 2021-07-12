@@ -134,7 +134,7 @@ export const globalConfig = () => ({
     }
 
     // [Legacy] If customize prefixCls provided, we cut it to get the prefixCls
-    if (customizePrefixCls && customizePrefixCls.includes('-')) {
+    if (customizePrefixCls?.includes('-')) {
       return customizePrefixCls.replace(/^(.*)-[^-]*$/, '$1')
     }
 
@@ -187,7 +187,6 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
   // Pass the props used by `useContext` directly with child component.
   // These props should merged into `config`.
   PASSED_PROPS.forEach(propName => {
-    // @ts-ignore
     const propValue: any = props[propName]
     if (propValue) {
       ;(config as any)[propName] = propValue
@@ -210,10 +209,10 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
   let validateMessages: ValidateMessages = {}
 
   const locale = useLocale()
-  if (locale && locale.Form && locale.Form.defaultValidateMessages) {
+  if (locale?.Form?.defaultValidateMessages) {
     validateMessages = locale.Form.defaultValidateMessages
   }
-  if (form && form.validateMessages) {
+  if (form?.validateMessages) {
     validateMessages = { ...validateMessages, ...form.validateMessages }
   }
 
@@ -245,9 +244,9 @@ const ConfigProvider: React.FC<ConfigProviderProps> & {
 
   return (
     <I18nextProvider i18n={props.i18n}>
-    <LocaleProvider>
-      <ConfigConsumer>{context => <ProviderChildren parentContext={context} {...props} />}</ConfigConsumer>
-    </LocaleProvider>
+      <LocaleProvider>
+        <ConfigConsumer>{context => <ProviderChildren parentContext={context} {...props} />}</ConfigConsumer>
+      </LocaleProvider>
     </I18nextProvider>
   )
 }

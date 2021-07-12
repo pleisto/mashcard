@@ -1,78 +1,77 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Checkbox, CheckboxProps } from "../../"
-
-
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Checkbox, CheckboxProps } from '../'
 
 export default {
-  title: "ReactComponents/Checkbox",
+  title: 'ReactComponents/Checkbox',
   component: Checkbox,
   argTypes: {
     autoFocus: {
-      description: "If get focus when component mounted",
+      description: 'If get focus when component mounted',
       defaultValue: false,
       control: {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     checked: {
-      description: "Specifies whether the checkbox is selected",
+      description: 'Specifies whether the checkbox is selected',
       defaultValue: false,
       control: {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     defaultChecked: {
-      description: "Specifies the initial state: whether or not the checkbox is selected",
+      description: 'Specifies the initial state: whether or not the checkbox is selected',
       defaultValue: false,
       control: {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     disabled: {
-      description: "If disable checkbox",
+      description: 'If disable checkbox',
       defaultValue: false,
       control: {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     indeterminate: {
-      description: "The indeterminate checked state of checkbox",
+      description: 'The indeterminate checked state of checkbox',
       defaultValue: false,
       control: {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     onChange: {
-      description: "The callback function that is triggered when the state changes",
+      description: 'The callback function that is triggered when the state changes',
       table: {
-        type: { summary:'function(e:Event)'}
+        type: { summary: 'function(e:Event)' }
       }
-    },
-}, parameters: {
-  docs: {
-    description: {
-      component: `
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
 Checkbox component.
 
 #### When To Use
@@ -90,26 +89,17 @@ Checkbox component.
 | blur() | Remove focus |  |
 | focus() | Get focus |  |
 `
+      }
     }
   }
 }
-}
 
-
-
-const Template: Story<CheckboxProps> = (args) =>
-  <Checkbox {...args}>Checkbox</Checkbox>
+const Template: Story<CheckboxProps> = args => <Checkbox {...args}>Checkbox</Checkbox>
 export const Base = Template.bind({})
-
 
 const plainOptions = ['Apple', 'Pear', 'Orange']
 const defaultCheckedList = ['Apple', 'Orange']
-export const CheckboxGroup: Story<CheckboxProps> = (_args) => (
-  <Checkbox.Group
-    options={plainOptions}
-    value={defaultCheckedList}
-  />
-)
+export const CheckboxGroup: Story<CheckboxProps> = _args => <Checkbox.Group options={plainOptions} value={defaultCheckedList} />
 
 CheckboxGroup.parameters = {
   docs: {
@@ -129,5 +119,3 @@ Generate a group of checkboxes from an array.
     }
   }
 }
-
-

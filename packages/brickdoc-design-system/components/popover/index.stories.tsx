@@ -1,22 +1,22 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Popover, PopoverProps, Space, Button } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Popover, PopoverProps, Space, Button } from '../'
 export default {
-  title: "ReactComponents/Popover",
+  title: 'ReactComponents/Popover',
   component: Popover,
   argTypes: {
     content: {
-      description: "Content of the card",
+      description: 'Content of the card',
       table: {
-        type: { summary: "ReactNode || () => ReactNode" }
+        type: { summary: 'ReactNode || () => ReactNode' }
       }
     },
     title: {
-      description: "Title of the card",
+      description: 'Title of the card',
       table: {
-        type: { summary: "ReactNode || () => ReactNode" }
+        type: { summary: 'ReactNode || () => ReactNode' }
       }
-    },
+    }
   },
   parameters: {
     docs: {
@@ -50,12 +50,13 @@ const content = (
   </div>
 )
 
-const Template: Story<PopoverProps> = (args) =>
+const Template: Story<PopoverProps> = args => (
   <Space>
     <Popover {...args}>
       <Button type="primary">Hover me</Button>
     </Popover>
   </Space>
+)
 export const Base = Template.bind({})
 Base.args = {
   content,

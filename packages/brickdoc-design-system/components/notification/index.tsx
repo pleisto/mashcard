@@ -1,9 +1,10 @@
 import * as React from 'react'
 import Notification from 'rc-notification'
-import { IconProvider ,
+import {
+  IconProvider,
   Close as CloseOutlined,
   CheckOne as CheckCircleOutlined,
-  CloseOne as  CloseCircleOutlined,
+  CloseOne as CloseCircleOutlined,
   Attention as ExclamationCircleOutlined,
   Info as InfoCircleOutlined
 } from '../icon'
@@ -13,12 +14,12 @@ import classNames from 'classnames'
 import createUseNotification from './hooks/useNotification'
 import { globalConfig } from '../config-provider'
 
-export type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+export type NotificationPlacement = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
 
-export type IconType = 'success' | 'info' | 'error' | 'warning';
+export type IconType = 'success' | 'info' | 'error' | 'warning'
 
 const notificationInstance: {
-  [key: string]: Promise<RCNotificationInstance>;
+  [key: string]: Promise<RCNotificationInstance>
 } = {}
 let defaultDuration = 4.5
 let defaultTop = 24
@@ -30,14 +31,14 @@ let defaultCloseIcon: React.ReactNode
 let rtl = false
 
 export interface ConfigProps {
-  top?: number;
-  bottom?: number;
-  duration?: number;
-  prefixCls?: string;
-  placement?: NotificationPlacement;
-  getContainer?: () => HTMLElement;
-  closeIcon?: React.ReactNode;
-  rtl?: boolean;
+  top?: number
+  bottom?: number
+  duration?: number
+  prefixCls?: string
+  placement?: NotificationPlacement
+  getContainer?: () => HTMLElement
+  closeIcon?: React.ReactNode
+  rtl?: boolean
 }
 
 function setNotificationConfig(options: ConfigProps) {
@@ -70,64 +71,59 @@ function setNotificationConfig(options: ConfigProps) {
   }
 }
 
-function getPlacementStyle(
-  placement: NotificationPlacement,
-  top: number = defaultTop,
-  bottom: number = defaultBottom,
-) {
+function getPlacementStyle(placement: NotificationPlacement, top: number = defaultTop, bottom: number = defaultBottom) {
   let style
   switch (placement) {
     case 'topLeft':
       style = {
         left: 0,
         top,
-        bottom: 'auto',
+        bottom: 'auto'
       }
       break
     case 'topRight':
       style = {
         right: 0,
         top,
-        bottom: 'auto',
+        bottom: 'auto'
       }
       break
     case 'bottomLeft':
       style = {
         left: 0,
         top: 'auto',
-        bottom,
+        bottom
       }
       break
     default:
       style = {
         right: 0,
         top: 'auto',
-        bottom,
+        bottom
       }
       break
   }
   return style
 }
 
-function getNotificationInstance(
-  args: ArgsProps,
-  callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void,
-) {
+function getNotificationInstance(args: ArgsProps, callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void) {
   const {
     placement = defaultPlacement,
     top,
     bottom,
     getContainer = defaultGetContainer,
     closeIcon = defaultCloseIcon,
-    prefixCls: customizePrefixCls,
+    prefixCls: customizePrefixCls
   } = args
   const { getPrefixCls } = globalConfig()
   const prefixCls = getPrefixCls('notification', customizePrefixCls || defaultPrefixCls)
 
   const cacheKey = `${prefixCls}-${placement}`
   const cacheInstance = notificationInstance[cacheKey]
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   if (cacheInstance) {
-    Promise.resolve(cacheInstance).then(instance => {
+    void Promise.resolve(cacheInstance).then(instance => {
+      // eslint-disable-next-line node/no-callback-literal
       callback({ prefixCls: `${prefixCls}-notice`, instance })
     })
 
@@ -135,13 +131,11 @@ function getNotificationInstance(
   }
 
   const closeIconToRender = (
-    <span className={`${prefixCls}-close-x`}>
-      {closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}
-    </span>
+    <span className={`${prefixCls}-close-x`}>{closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}</span>
   )
 
   const notificationClass = classNames(`${prefixCls}-${placement}`, {
-    [`${prefixCls}-rtl`]: rtl,
+    [`${prefixCls}-rtl`]: rtl
   })
 
   notificationInstance[cacheKey] = new Promise(resolve => {
@@ -151,17 +145,16 @@ function getNotificationInstance(
         className: notificationClass,
         style: getPlacementStyle(placement, top, bottom),
         getContainer,
-        closeIcon: closeIconToRender,
+        closeIcon: closeIconToRender
       },
       notification => {
-        // @ts-ignore
         resolve(notification)
+        // eslint-disable-next-line node/no-callback-literal
         callback({
           prefixCls: `${prefixCls}-notice`,
-          // @ts-ignore
-          instance: notification,
+          instance: notification
         })
-      },
+      }
     )
   })
 }
@@ -170,43 +163,31 @@ const typeToIcon = {
   success: CheckCircleOutlined,
   info: InfoCircleOutlined,
   error: CloseCircleOutlined,
-  warning: ExclamationCircleOutlined,
+  warning: ExclamationCircleOutlined
 }
 
 export interface ArgsProps {
-  message: React.ReactNode;
-  description?: React.ReactNode;
-  btn?: React.ReactNode;
-  key?: string;
-  onClose?: () => void;
-  duration?: number | null;
-  icon?: React.ReactNode;
-  placement?: NotificationPlacement;
-  style?: React.CSSProperties;
-  prefixCls?: string;
-  className?: string;
-  readonly type?: IconType;
-  onClick?: () => void;
-  top?: number;
-  bottom?: number;
-  getContainer?: () => HTMLElement;
-  closeIcon?: React.ReactNode;
+  message: React.ReactNode
+  description?: React.ReactNode
+  btn?: React.ReactNode
+  key?: string
+  onClose?: () => void
+  duration?: number | null
+  icon?: React.ReactNode
+  placement?: NotificationPlacement
+  style?: React.CSSProperties
+  prefixCls?: string
+  className?: string
+  readonly type?: IconType
+  onClick?: () => void
+  top?: number
+  bottom?: number
+  getContainer?: () => HTMLElement
+  closeIcon?: React.ReactNode
 }
 
 function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
-  const {
-    duration: durationArg,
-    icon,
-    type,
-    description,
-    message,
-    btn,
-    onClose,
-    onClick,
-    key,
-    style,
-    className,
-  } = args
+  const { duration: durationArg, icon, type, description, message, btn, onClose, onClick, key, style, className } = args
 
   const duration = durationArg === undefined ? defaultDuration : durationArg
 
@@ -220,14 +201,11 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
     })
   }
 
-  if (icon||type){
+  if (icon || type) {
     iconNode = <IconProvider value={globalConfig().getIconDefaultConfig(rtl)}>{iconNode}</IconProvider>
   }
 
-  const autoMarginTag =
-    !description && iconNode ? (
-      <span className={`${prefixCls}-message-single-line-auto-margin`} />
-    ) : null
+  const autoMarginTag = !description && iconNode ? <span className={`${prefixCls}-message-single-line-auto-margin`} /> : null
 
   return {
     content: (
@@ -248,8 +226,8 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
     key,
     style: style || {},
     className: classNames(className, {
-      [`${prefixCls}-${type}`]: !!type,
-    }),
+      [`${prefixCls}-${type}`]: !!type
+    })
   }
 }
 
@@ -262,28 +240,31 @@ function notice(args: ArgsProps) {
 const api: any = {
   open: notice,
   close(key: string) {
-    Object.keys(notificationInstance).forEach(async cacheKey =>
-      await Promise.resolve(notificationInstance[cacheKey]).then(instance => {
-        instance.removeNotice(key)
-      }),
+    Object.keys(notificationInstance).forEach(
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
+      async cacheKey =>
+        await Promise.resolve(notificationInstance[cacheKey]).then(instance => {
+          instance.removeNotice(key)
+        })
     )
   },
   config: setNotificationConfig,
   destroy() {
     Object.keys(notificationInstance).forEach(cacheKey => {
-      Promise.resolve(notificationInstance[cacheKey]).then(instance => {
+      void Promise.resolve(notificationInstance[cacheKey]).then(instance => {
         instance.destroy()
       })
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete notificationInstance[cacheKey] // lgtm[js/missing-await]
     })
-  },
-};
+  }
+}
 
-['success', 'info', 'warning', 'error'].forEach(type => {
+;['success', 'info', 'warning', 'error'].forEach(type => {
   api[type] = (args: ArgsProps) =>
     api.open({
       ...args,
-      type,
+      type
     })
 })
 
@@ -291,25 +272,24 @@ api.warn = api.warning
 api.useNotification = createUseNotification(getNotificationInstance, getRCNoticeProps)
 
 export interface NotificationInstance {
-  success: (args: ArgsProps) => void;
-  error: (args: ArgsProps) => void;
-  info: (args: ArgsProps) => void;
-  warning: (args: ArgsProps) => void;
-  open: (args: ArgsProps) => void;
+  success: (args: ArgsProps) => void
+  error: (args: ArgsProps) => void
+  info: (args: ArgsProps) => void
+  warning: (args: ArgsProps) => void
+  open: (args: ArgsProps) => void
 }
 
 export interface NotificationApi extends NotificationInstance {
-  warn: (args: ArgsProps) => void;
-  close: (key: string) => void;
-  config: (options: ConfigProps) => void;
-  destroy: () => void;
+  warn: (args: ArgsProps) => void
+  close: (key: string) => void
+  config: (options: ConfigProps) => void
+  destroy: () => void
 
   // Hooks
-  useNotification: () => [NotificationInstance, React.ReactElement];
+  useNotification: () => [NotificationInstance, React.ReactElement]
 }
 
 /** @private test Only function. Not work on production */
-export const getInstance = async (cacheKey: string) =>
-  process.env.NODE_ENV === 'test' ? await notificationInstance[cacheKey] : null
+export const getInstance = async (cacheKey: string) => (process.env.NODE_ENV === 'test' ? await notificationInstance[cacheKey] : null)
 
 export default api as NotificationApi

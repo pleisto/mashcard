@@ -5,15 +5,15 @@ import { ScrollOptions, NamePath, InternalNamePath } from '../interface'
 import { toArray, getFieldId } from '../util'
 
 export interface FormInstance<Values = any> extends RcFormInstance<Values> {
-  scrollToField: (name: NamePath, options?: ScrollOptions) => void;
+  scrollToField: (name: NamePath, options?: ScrollOptions) => void
   /** This is an internal usage. Do not use in your prod */
   __INTERNAL__: {
     /** No! Do not use this in your code! */
-    name?: string;
+    name?: string
     /** No! Do not use this in your code! */
-    itemRef: (name: InternalNamePath) => (node: React.ReactElement) => void;
-  };
-  getFieldInstance: (name: NamePath) => any;
+    itemRef: (name: InternalNamePath) => (node: React.ReactElement) => void
+  }
+  getFieldInstance: (name: NamePath) => any
 }
 
 function toNamePathStr(name: NamePath) {
@@ -35,9 +35,10 @@ export default function useForm<Values = any>(form?: FormInstance<Values>): [For
             if (node) {
               itemsRef.current[namePathStr] = node
             } else {
+              // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
               delete itemsRef.current[namePathStr]
             }
-          },
+          }
         },
         scrollToField: (name: NamePath, options: ScrollOptions = {}) => {
           const namePath = toArray(name)
@@ -48,16 +49,16 @@ export default function useForm<Values = any>(form?: FormInstance<Values>): [For
             scrollIntoView(node, {
               scrollMode: 'if-needed',
               block: 'nearest',
-              ...options,
+              ...options
             })
           }
         },
         getFieldInstance: (name: NamePath) => {
           const namePathStr = toNamePathStr(name)
           return itemsRef.current[namePathStr]
-        },
+        }
       },
-    [form, rcForm],
+    [form, rcForm]
   )
 
   return [wrapForm]

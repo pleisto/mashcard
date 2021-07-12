@@ -4,13 +4,10 @@ import { TablePaginationConfig } from '../interface'
 
 export const DEFAULT_PAGE_SIZE = 10
 
-export function getPaginationParam(
-  pagination: TablePaginationConfig | boolean | undefined,
-  mergedPagination: TablePaginationConfig,
-) {
+export function getPaginationParam(pagination: TablePaginationConfig | boolean | undefined, mergedPagination: TablePaginationConfig) {
   const param: any = {
     current: mergedPagination.current,
-    pageSize: mergedPagination.pageSize,
+    pageSize: mergedPagination.pageSize
   }
   const paginationObj = pagination && typeof pagination === 'object' ? pagination : {}
 
@@ -26,6 +23,7 @@ export function getPaginationParam(
 }
 
 function extendsObject<T extends Object>(...list: T[]) {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const result: T = {} as T
 
   list.forEach(obj => {
@@ -33,7 +31,7 @@ function extendsObject<T extends Object>(...list: T[]) {
       Object.keys(obj).forEach(key => {
         const val = (obj as any)[key]
         if (val !== undefined) {
-          (result as any)[key] = val
+          ;(result as any)[key] = val
         }
       })
     }
@@ -45,28 +43,22 @@ function extendsObject<T extends Object>(...list: T[]) {
 export default function usePagination(
   total: number,
   pagination: TablePaginationConfig | false | undefined,
-  onChange: (current: number, pageSize: number) => void,
+  onChange: (current: number, pageSize: number) => void
 ): [TablePaginationConfig, () => void] {
-  const { total: paginationTotal = 0, ...paginationObj } =
-    pagination && typeof pagination === 'object' ? pagination : {}
+  const { total: paginationTotal = 0, ...paginationObj } = pagination && typeof pagination === 'object' ? pagination : {}
 
   const [innerPagination, setInnerPagination] = useState<{
-    current?: number;
-    pageSize?: number;
+    current?: number
+    pageSize?: number
   }>(() => ({
     current: 'defaultCurrent' in paginationObj ? paginationObj.defaultCurrent : 1,
-    pageSize:
-      'defaultPageSize' in paginationObj ? paginationObj.defaultPageSize : DEFAULT_PAGE_SIZE,
+    pageSize: 'defaultPageSize' in paginationObj ? paginationObj.defaultPageSize : DEFAULT_PAGE_SIZE
   }))
 
   // ============ Basic Pagination Config ============
-  const mergedPagination = extendsObject<Partial<TablePaginationConfig>>(
-    innerPagination,
-    paginationObj,
-    {
-      total: paginationTotal > 0 ? paginationTotal : total,
-    },
-  )
+  const mergedPagination = extendsObject<Partial<TablePaginationConfig>>(innerPagination, paginationObj, {
+    total: paginationTotal > 0 ? paginationTotal : total
+  })
 
   // Reset `current` if data length or pageSize changed
   const maxPage = Math.ceil((paginationTotal || total) / mergedPagination.pageSize)
@@ -78,7 +70,7 @@ export default function usePagination(
   const refreshPagination = (current: number = 1, pageSize?: number) => {
     setInnerPagination({
       current,
-      pageSize: pageSize || mergedPagination.pageSize,
+      pageSize: pageSize || mergedPagination.pageSize
     })
   }
 
@@ -97,8 +89,8 @@ export default function usePagination(
   return [
     {
       ...mergedPagination,
-      onChange: onInternalChange,
+      onChange: onInternalChange
     },
-    refreshPagination,
+    refreshPagination
   ]
 }

@@ -10,28 +10,28 @@ import SizeContext, { AvatarSize } from './SizeContext'
 
 export interface AvatarProps {
   /** Shape of avatar, options: `circle`, `square` */
-  shape?: 'circle' | 'square';
+  shape?: 'circle' | 'square'
   /*
    * Size of avatar, options: `large`, `small`, `default`
    * or a custom number size
    * */
-  size?: AvatarSize;
-  gap?: number;
+  size?: AvatarSize
+  gap?: number
   /** Src of image avatar */
-  src?: React.ReactNode;
+  src?: React.ReactNode
   /** Srcset of image avatar */
-  srcSet?: string;
-  draggable?: boolean;
+  srcSet?: string
+  draggable?: boolean
   /** Icon to be used in avatar */
-  icon?: React.ReactNode;
-  style?: React.CSSProperties;
-  prefixCls?: string;
-  className?: string;
-  children?: React.ReactNode;
-  alt?: string;
+  icon?: React.ReactNode
+  style?: React.CSSProperties
+  prefixCls?: string
+  className?: string
+  children?: React.ReactNode
+  alt?: string
   /* callback when img load error */
   /* return false to prevent Avatar show default fallback behavior, then you can do fallback by your self */
-  onError?: () => boolean;
+  onError?: () => boolean
 }
 
 const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (props, ref) => {
@@ -116,7 +116,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
           width: currentSize,
           height: currentSize,
           lineHeight: `${currentSize}px`,
-          fontSize: icon ? currentSize / 2 : 18,
+          fontSize: icon ? currentSize / 2 : 18
         }
       : {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,14 +125,15 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
   devWarning(
     !(typeof icon === 'string' && icon.length > 2),
     'Avatar',
-    `\`icon\` is using ReactNode instead of string naming in v4. Please check \`${icon}\` at https://ant.design/components/icon`,
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    `\`icon\` is using ReactNode instead of string naming in v4. Please check \`${icon}\` at https://ant.design/components/icon`
   )
 
   const prefixCls = getPrefixCls('avatar', customizePrefixCls)
 
   const sizeCls = classNames({
     [`${prefixCls}-lg`]: size === 'large',
-    [`${prefixCls}-sm`]: size === 'small',
+    [`${prefixCls}-sm`]: size === 'small'
   })
 
   const hasImageElement = React.isValidElement(src)
@@ -143,9 +144,9 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
     {
       [`${prefixCls}-${shape}`]: !!shape,
       [`${prefixCls}-image`]: hasImageElement || (src && isImgExist),
-      [`${prefixCls}-icon`]: !!icon,
+      [`${prefixCls}-icon`]: !!icon
     },
-    className,
+    className
   )
 
   const sizeStyle: React.CSSProperties =
@@ -154,15 +155,13 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
           width: size,
           height: size,
           lineHeight: `${size}px`,
-          fontSize: icon ? size / 2 : 18,
+          fontSize: icon ? size / 2 : 18
         }
       : {}
 
   let childrenToRender
   if (typeof src === 'string' && isImgExist) {
-    childrenToRender = (
-      <img src={src} draggable={draggable} srcSet={srcSet} onError={handleImgLoadError} alt={alt} />
-    )
+    childrenToRender = <img src={src} draggable={draggable} srcSet={srcSet} onError={handleImgLoadError} alt={alt} />
   } else if (hasImageElement) {
     childrenToRender = src
   } else if (icon) {
@@ -172,13 +171,13 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
     const childrenStyle: React.CSSProperties = {
       msTransform: transformString,
       WebkitTransform: transformString,
-      transform: transformString,
+      transform: transformString
     }
 
     const sizeChildrenStyle: React.CSSProperties =
       typeof size === 'number'
         ? {
-            lineHeight: `${size}px`,
+            lineHeight: `${size}px`
           }
         : {}
 
@@ -189,8 +188,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
           ref={(node: HTMLElement) => {
             avatarChildrenRef.current = node
           }}
-          style={{ ...sizeChildrenStyle, ...childrenStyle }}
-        >
+          style={{ ...sizeChildrenStyle, ...childrenStyle }}>
           {children}
         </span>
       </ResizeObserver>
@@ -202,8 +200,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
         style={{ opacity: 0 }}
         ref={(node: HTMLElement) => {
           avatarChildrenRef.current = node
-        }}
-      >
+        }}>
         {children}
       </span>
     )
@@ -219,8 +216,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
       {...others}
       style={{ ...sizeStyle, ...responsiveSizeStyle, ...others.style }}
       className={classString}
-      ref={avatarNodeMergeRef as any}
-    >
+      ref={avatarNodeMergeRef as any}>
       {childrenToRender}
     </span>
   )
@@ -231,7 +227,7 @@ Avatar.displayName = 'Avatar'
 
 Avatar.defaultProps = {
   shape: 'circle' as AvatarProps['shape'],
-  size: 'default' as AvatarProps['size'],
+  size: 'default' as AvatarProps['size']
 }
 
 export default Avatar

@@ -4,21 +4,27 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "test": "jest"
+    "build": "tsc --build",
+    "cleanup": "rm -rf dist"
   },
+  "module": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "@tiptap/core": "^2.0.0-beta.85",
+    "@tiptap/core": "^2.0.0-beta.86",
     "@tiptap/extension-blockquote": "^2.0.0-beta.14",
     "@tiptap/extension-bold": "^2.0.0-beta.14",
     "@tiptap/extension-bullet-list": "^2.0.0-beta.14",
     "@tiptap/extension-code": "^2.0.0-beta.14",
     "@tiptap/extension-code-block": "^2.0.0-beta.16",
     "@tiptap/extension-document": "^2.0.0-beta.12",
-    "@tiptap/extension-dropcursor": "^2.0.0-beta.16",
-    "@tiptap/extension-gapcursor": "^2.0.0-beta.17",
+    "@tiptap/extension-dropcursor": "^2.0.0-beta.17",
+    "@tiptap/extension-gapcursor": "^2.0.0-beta.18",
     "@tiptap/extension-hard-break": "^2.0.0-beta.14",
     "@tiptap/extension-heading": "^2.0.0-beta.14",
-    "@tiptap/extension-history": "^2.0.0-beta.13",
+    "@tiptap/extension-history": "^2.0.0-beta.14",
     "@tiptap/extension-horizontal-rule": "^2.0.0-beta.17",
     "@tiptap/extension-italic": "^2.0.0-beta.14",
     "@tiptap/extension-list-item": "^2.0.0-beta.13",
@@ -31,21 +37,12 @@
     "tippy.js": "^6.3.1"
   },
   "devDependencies": {
-    "@types/enzyme": "^3.10.9",
-    "@types/jest": "^26.0.23",
-    "@types/react-test-renderer": "^17.0.1",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
-    "enzyme": "^3.11.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
-    "ts-jest": "^27.0.3",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.5"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

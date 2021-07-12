@@ -6,34 +6,26 @@ import { ConfigContext } from '../config-provider'
 import { FormItemPrefixContext } from './context'
 
 export interface FormListFieldData {
-  name: number;
-  key: number;
-  fieldKey: number;
+  name: number
+  key: number
+  fieldKey: number
 }
 
 export interface FormListOperation {
-  add: (defaultValue?: StoreValue, insertIndex?: number) => void;
-  remove: (index: number | number[]) => void;
-  move: (from: number, to: number) => void;
+  add: (defaultValue?: StoreValue, insertIndex?: number) => void
+  remove: (index: number | number[]) => void
+  move: (from: number, to: number) => void
 }
 
 export interface FormListProps {
-  prefixCls?: string;
-  name: string | number | Array<string | number>;
-  rules?: ValidatorRule[];
-  initialValue?: any[];
-  children: (
-    fields: FormListFieldData[],
-    operation: FormListOperation,
-    meta: { errors: React.ReactNode[] },
-  ) => React.ReactNode;
+  prefixCls?: string
+  name: string | number | Array<string | number>
+  rules?: ValidatorRule[]
+  initialValue?: any[]
+  children: (fields: FormListFieldData[], operation: FormListOperation, meta: { errors: React.ReactNode[] }) => React.ReactNode
 }
 
-const FormList: React.FC<FormListProps> = ({
-  prefixCls: customizePrefixCls,
-  children,
-  ...props
-}) => {
+const FormList: React.FC<FormListProps> = ({ prefixCls: customizePrefixCls, children, ...props }) => {
   devWarning(!!props.name, 'Form.List', 'Miss `name` prop.')
 
   const { getPrefixCls } = React.useContext(ConfigContext)
@@ -42,13 +34,14 @@ const FormList: React.FC<FormListProps> = ({
   return (
     <List {...props}>
       {(fields, operation, meta) => (
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
         <FormItemPrefixContext.Provider value={{ prefixCls, status: 'error' }}>
           {children(
             fields.map(field => ({ ...field, fieldKey: field.key })),
             operation,
             {
-              errors: meta.errors,
-            },
+              errors: meta.errors
+            }
           )}
         </FormItemPrefixContext.Provider>
       )}

@@ -8,7 +8,7 @@ import scrollTo from '../_util/scrollTo'
 import getScroll from '../_util/getScroll'
 import AnchorContext from './context'
 
-export type AnchorContainer = HTMLElement | Window;
+export type AnchorContainer = HTMLElement | Window
 
 function getDefaultContainer() {
   return window
@@ -23,6 +23,7 @@ function getOffsetTop(element: HTMLElement, container: AnchorContainer): number 
 
   if (rect.width || rect.height) {
     if (container === window) {
+      // eslint-disable-next-line no-param-reassign
       container = element.ownerDocument.documentElement!
       return rect.top - container.clientTop
     }
@@ -35,98 +36,92 @@ function getOffsetTop(element: HTMLElement, container: AnchorContainer): number 
 const sharpMatcherRegx = /#(\S+)$/
 
 interface Section {
-  link: string;
-  top: number;
+  link: string
+  top: number
 }
 
 export interface AnchorProps {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-  offsetTop?: number;
-  bounds?: number;
-  affix?: boolean;
-  showInkInFixed?: boolean;
-  getContainer?: () => AnchorContainer;
+  prefixCls?: string
+  className?: string
+  style?: React.CSSProperties
+  children?: React.ReactNode
+  offsetTop?: number
+  bounds?: number
+  affix?: boolean
+  showInkInFixed?: boolean
+  getContainer?: () => AnchorContainer
   /** Return customize highlight anchor */
-  getCurrentAnchor?: () => string;
-  onClick?: (
-    e: React.MouseEvent<HTMLElement>,
-    link: { title: React.ReactNode; href: string },
-  ) => void;
+  getCurrentAnchor?: () => string
+  onClick?: (e: React.MouseEvent<HTMLElement>, link: { title: React.ReactNode; href: string }) => void
   /** Scroll to target offset value, if none, it's offsetTop prop value or 0. */
-  targetOffset?: number;
+  targetOffset?: number
   /** Listening event when scrolling change active link */
-  onChange?: (currentActiveLink: string) => void;
+  onChange?: (currentActiveLink: string) => void
 }
 
 export interface AnchorState {
-  activeLink: null | string;
+  activeLink: null | string
 }
 
 export interface AnchorDefaultProps extends AnchorProps {
-  prefixCls: string;
-  affix: boolean;
-  showInkInFixed: boolean;
-  getContainer: () => AnchorContainer;
+  prefixCls: string
+  affix: boolean
+  showInkInFixed: boolean
+  getContainer: () => AnchorContainer
 }
 
 export interface AntAnchor {
-  registerLink: (link: string) => void;
-  unregisterLink: (link: string) => void;
-  activeLink: string | null;
-  scrollTo: (link: string) => void;
-  onClick?: (
-    e: React.MouseEvent<HTMLElement>,
-    link: { title: React.ReactNode; href: string },
-  ) => void;
+  registerLink: (link: string) => void
+  unregisterLink: (link: string) => void
+  activeLink: string | null
+  scrollTo: (link: string) => void
+  onClick?: (e: React.MouseEvent<HTMLElement>, link: { title: React.ReactNode; href: string }) => void
 }
 
 export default class Anchor extends React.Component<AnchorProps, AnchorState, ConfigConsumerProps> {
-  static Link: typeof AnchorLink;
+  static Link: typeof AnchorLink
 
   static defaultProps = {
     affix: true,
-    showInkInFixed: false,
-  };
+    showInkInFixed: false
+  }
 
-  static contextType = ConfigContext;
+  static contextType = ConfigContext
 
   state = {
-    activeLink: null,
-  };
+    activeLink: null
+  }
 
-  content: ConfigConsumerProps;
+  content: ConfigConsumerProps
 
-  private readonly wrapperRef = React.createRef<HTMLDivElement>();
+  private readonly wrapperRef = React.createRef<HTMLDivElement>()
 
-  private inkNode: HTMLSpanElement;
+  private inkNode: HTMLSpanElement
 
   // scroll scope's container
-  private scrollContainer: HTMLElement | Window;
+  private scrollContainer: HTMLElement | Window
 
-  private readonly links: string[] = [];
+  private readonly links: string[] = []
 
-  private scrollEvent: any;
+  private scrollEvent: any
 
-  private animating: boolean;
+  private animating: boolean
 
-  private prefixCls?: string;
+  private prefixCls?: string
 
   // Context
   registerLink = (link: string) => {
     if (!this.links.includes(link)) {
       this.links.push(link)
     }
-  };
+  }
 
   unregisterLink = (link: string) => {
     const index = this.links.indexOf(link)
     if (index !== -1) {
       this.links.splice(index, 1)
     }
-  };
+  }
 
   getContainer = () => {
     const { getTargetContainer } = this.context
@@ -135,7 +130,7 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
     const getFunc = getContainer || getTargetContainer || getDefaultContainer
 
     return getFunc()
-  };
+  }
 
   componentDidMount() {
     this.scrollContainer = this.getContainer()
@@ -176,7 +171,7 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
         if (top < offsetTop + bounds) {
           linkSections.push({
             link,
-            top,
+            top
           })
         }
       }
@@ -213,13 +208,13 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
       callback: () => {
         this.animating = false
       },
-      getContainer: this.getContainer,
+      getContainer: this.getContainer
     })
-  };
+  }
 
   saveInkNode = (node: HTMLSpanElement) => {
     this.inkNode = node
-  };
+  }
 
   setCurrentActiveLink = (link: string) => {
     const { activeLink } = this.state
@@ -229,22 +224,19 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
     }
     // https://github.com/ant-design/ant-design/issues/30584
     this.setState({
-      activeLink: typeof getCurrentAnchor === 'function' ? getCurrentAnchor() : link,
+      activeLink: typeof getCurrentAnchor === 'function' ? getCurrentAnchor() : link
     })
     onChange?.(link)
-  };
+  }
 
   handleScroll = () => {
     if (this.animating) {
       return
     }
     const { offsetTop, bounds, targetOffset } = this.props
-    const currentActiveLink = this.getCurrentAnchor(
-      targetOffset !== undefined ? targetOffset : offsetTop || 0,
-      bounds,
-    )
+    const currentActiveLink = this.getCurrentAnchor(targetOffset !== undefined ? targetOffset : offsetTop || 0, bounds)
     this.setCurrentActiveLink(currentActiveLink)
-  };
+  }
 
   updateInk = () => {
     const { prefixCls, wrapperRef } = this
@@ -252,22 +244,15 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
     const linkNode = anchorNode?.getElementsByClassName(`${prefixCls}-link-title-active`)[0]
 
     if (linkNode) {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       this.inkNode.style.top = `${(linkNode as any).offsetTop + linkNode.clientHeight / 2 - 4.5}px`
     }
-  };
+  }
 
   render = () => {
     const { getPrefixCls, direction } = this.context
 
-    const {
-      prefixCls: customizePrefixCls,
-      className = '',
-      style,
-      offsetTop,
-      affix,
-      showInkInFixed,
-      children,
-    } = this.props
+    const { prefixCls: customizePrefixCls, className = '', style, offsetTop, affix, showInkInFixed, children } = this.props
     const { activeLink } = this.state
 
     const prefixCls = getPrefixCls('anchor', customizePrefixCls)
@@ -278,24 +263,24 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
     this.prefixCls = prefixCls
 
     const inkClass = classNames(`${prefixCls}-ink-ball`, {
-      visible: activeLink,
+      visible: activeLink
     })
 
     const wrapperClass = classNames(
       `${prefixCls}-wrapper`,
       {
-        [`${prefixCls}-rtl`]: direction === 'rtl',
+        [`${prefixCls}-rtl`]: direction === 'rtl'
       },
-      className,
+      className
     )
 
     const anchorClass = classNames(prefixCls, {
-      fixed: !affix && !showInkInFixed,
+      fixed: !affix && !showInkInFixed
     })
 
     const wrapperStyle = {
       maxHeight: offsetTop ? `calc(100vh - ${offsetTop}px)` : '100vh',
-      ...style,
+      ...style
     }
 
     const anchorContent = (
@@ -311,14 +296,14 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
 
     return (
       <AnchorContext.Provider
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
         value={{
           registerLink: this.registerLink,
           unregisterLink: this.unregisterLink,
           activeLink: this.state.activeLink,
           scrollTo: this.handleScrollTo,
-          onClick: this.props.onClick,
-        }}
-      >
+          onClick: this.props.onClick
+        }}>
         {!affix ? (
           anchorContent
         ) : (
@@ -328,5 +313,5 @@ export default class Anchor extends React.Component<AnchorProps, AnchorState, Co
         )}
       </AnchorContext.Provider>
     )
-  };
+  }
 }

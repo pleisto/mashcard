@@ -1,15 +1,14 @@
-import React, { useState } from "react"
-import { Story } from "@storybook/react"
-import { Drawer, DrawerProps, Button } from "../../"
-
+import React, { useState } from 'react'
+import { Story } from '@storybook/react'
+import { Drawer, DrawerProps, Button } from '../'
 
 export default {
-  title: "ReactComponents/Drawer",
+  title: 'ReactComponents/Drawer',
   component: Drawer,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 A panel which slides in from the edge of the screen.
 
 #### When To Use
@@ -54,9 +53,9 @@ leaving the current page, tasks can be achieved more efficiently within the same
 | onClose | Specify a callback that will be called when a user clicks mask, close button or Cancel button | function(e) | - |
 
 `
+      }
     }
   }
-}
 }
 
 const App: React.FC = () => {
@@ -72,13 +71,7 @@ const App: React.FC = () => {
       <Button type="primary" onClick={showDrawer}>
         Open
       </Button>
-      <Drawer
-        title="Basic Drawer"
-        placement="right"
-        closable={true}
-        onClose={onClose}
-        visible={visible}
-      >
+      <Drawer title="Basic Drawer" placement="right" closable={true} onClose={onClose} visible={visible}>
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
@@ -87,10 +80,5 @@ const App: React.FC = () => {
   )
 }
 
-const Template: Story<DrawerProps> = (_args) =>
-  <App/>
+const Template: Story<DrawerProps> = _args => <App />
 export const Base = Template.bind({})
-
-
-
-

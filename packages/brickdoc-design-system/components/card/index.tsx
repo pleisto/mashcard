@@ -23,43 +23,43 @@ function getAction(actions: React.ReactNode[]) {
 export type { CardGridProps } from './Grid'
 export type { CardMetaProps } from './Meta'
 
-export type CardType = 'inner';
-export type CardSize = 'default' | 'small';
+export type CardType = 'inner'
+export type CardSize = 'default' | 'small'
 
 export interface CardTabListType {
-  key: string;
-  tab: React.ReactNode;
-  disabled?: boolean;
+  key: string
+  tab: React.ReactNode
+  disabled?: boolean
 }
 
 export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  prefixCls?: string;
-  title?: React.ReactNode;
-  extra?: React.ReactNode;
-  bordered?: boolean;
-  headStyle?: React.CSSProperties;
-  bodyStyle?: React.CSSProperties;
-  style?: React.CSSProperties;
-  loading?: boolean;
-  hoverable?: boolean;
-  children?: React.ReactNode;
-  id?: string;
-  className?: string;
-  size?: CardSize;
-  type?: CardType;
-  cover?: React.ReactNode;
-  actions?: React.ReactNode[];
-  tabList?: CardTabListType[];
-  tabBarExtraContent?: React.ReactNode | null;
-  onTabChange?: (key: string) => void;
-  activeTabKey?: string;
-  defaultActiveTabKey?: string;
-  tabProps?: TabsProps;
+  prefixCls?: string
+  title?: React.ReactNode
+  extra?: React.ReactNode
+  bordered?: boolean
+  headStyle?: React.CSSProperties
+  bodyStyle?: React.CSSProperties
+  style?: React.CSSProperties
+  loading?: boolean
+  hoverable?: boolean
+  children?: React.ReactNode
+  id?: string
+  className?: string
+  size?: CardSize
+  type?: CardType
+  cover?: React.ReactNode
+  actions?: React.ReactNode[]
+  tabList?: CardTabListType[]
+  tabBarExtraContent?: React.ReactNode | null
+  onTabChange?: (key: string) => void
+  activeTabKey?: string
+  defaultActiveTabKey?: string
+  tabProps?: TabsProps
 }
 
 export interface CardInterface extends React.FC<CardProps> {
-  Grid: typeof Grid;
-  Meta: typeof Meta;
+  Grid: typeof Grid
+  Meta: typeof Meta
 }
 
 const Card: CardInterface = props => {
@@ -72,8 +72,8 @@ const Card: CardInterface = props => {
 
   const isContainGrid = () => {
     let containGrid
-    React.Children.forEach(props.children, (element: JSX.Element) => {
-      if (element && element.type && element.type === Grid) {
+    React.Children.forEach(props.children, (element: React.ReactNode) => {
+      if ((element as JSX.Element)?.type && (element as JSX.Element).type === Grid) {
         containGrid = true
       }
     })
@@ -105,8 +105,7 @@ const Card: CardInterface = props => {
 
   const prefixCls = getPrefixCls('card', customizePrefixCls)
 
-  const loadingBlockStyle =
-    bodyStyle.padding === 0 || bodyStyle.padding === '0px' ? { padding: 24 } : undefined
+  const loadingBlockStyle = bodyStyle.padding === 0 || bodyStyle.padding === '0px' ? { padding: 24 } : undefined
 
   const block = <div className={`${prefixCls}-loading-block`} />
 
@@ -138,26 +137,18 @@ const Card: CardInterface = props => {
   const hasActiveTabKey = activeTabKey !== undefined
   const extraProps = {
     ...tabProps,
-    [hasActiveTabKey ? 'activeKey' : 'defaultActiveKey']: hasActiveTabKey
-      ? activeTabKey
-      : defaultActiveTabKey,
-    tabBarExtraContent,
+    [hasActiveTabKey ? 'activeKey' : 'defaultActiveKey']: hasActiveTabKey ? activeTabKey : defaultActiveTabKey,
+    tabBarExtraContent
   }
 
   let head: React.ReactNode
-  const tabs =
-    tabList && tabList.length ? (
-      <Tabs
-        size="large"
-        {...extraProps}
-        className={`${prefixCls}-head-tabs`}
-        onChange={onTabChange}
-      >
-        {tabList.map(item => (
-          <Tabs.TabPane tab={item.tab} disabled={item.disabled} key={item.key} />
-        ))}
-      </Tabs>
-    ) : null
+  const tabs = tabList?.length ? (
+    <Tabs size="large" {...extraProps} className={`${prefixCls}-head-tabs`} onChange={onTabChange}>
+      {tabList.map(item => (
+        <Tabs.TabPane tab={item.tab} disabled={item.disabled} key={item.key} />
+      ))}
+    </Tabs>
+  ) : null
   if (title || extra || tabs) {
     head = (
       <div className={`${prefixCls}-head`} style={headStyle}>
@@ -175,10 +166,7 @@ const Card: CardInterface = props => {
       {loading ? loadingBlock : children}
     </div>
   )
-  const actionDom =
-    actions && actions.length ? (
-      <ul className={`${prefixCls}-actions`}>{getAction(actions)}</ul>
-    ) : null
+  const actionDom = actions?.length ? <ul className={`${prefixCls}-actions`}>{getAction(actions)}</ul> : null
   const divProps = omit(others, ['onTabChange'])
   const mergedSize = customizeSize || size
   const classString = classNames(
@@ -188,12 +176,12 @@ const Card: CardInterface = props => {
       [`${prefixCls}-bordered`]: bordered,
       [`${prefixCls}-hoverable`]: hoverable,
       [`${prefixCls}-contain-grid`]: isContainGrid(),
-      [`${prefixCls}-contain-tabs`]: tabList && tabList.length,
+      [`${prefixCls}-contain-tabs`]: tabList?.length,
       [`${prefixCls}-${mergedSize}`]: mergedSize,
       [`${prefixCls}-type-${type}`]: !!type,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
 
   return (

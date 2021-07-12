@@ -1,14 +1,14 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Mentions, MentionsProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Mentions, MentionProps } from '../'
 
 export default {
-  title: "ReactComponents/Mentions",
+  title: 'ReactComponents/Mentions',
   component: Mentions,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 Mention component.
 
 #### When To Use
@@ -36,7 +36,7 @@ When need to mention someone or something.
 | placement | Set popup placement | \`top\` \\| \`bottom\` | \`bottom\` |
 | prefix | Set trigger prefix keyword | string \\| string\\[] | \`@\` |
 | split | Set split string before and after selected mention | string | \` \` |
-| validateSearch | Customize trigger search logic | (text: string, props: MentionsProps) => void | - |
+| validateSearch | Customize trigger search logic | (text: string, props: MentionProps) => void | - |
 | value | Set value of mentions | string | - |
 | onBlur | Trigger when mentions lose focus | () => void | - |
 | onChange | Trigger when value changed | (text: string) => void | - |
@@ -59,27 +59,20 @@ When need to mention someone or something.
 | children | Suggestion content | ReactNode | - |
 | value | The value of suggestion, the value will insert into input filed while selected | string | - |
 `
+      }
     }
   }
 }
-}
-
 
 const { Option } = Mentions
 
-const Template: Story<MentionsProps> = (_args) =>
+const Template: Story<MentionProps> = _args => (
   <>
-    <Mentions
-      style={{ width: '100%' }}
-      defaultValue="@boris"
-    >
+    <Mentions style={{ width: '100%' }} defaultValue="@boris">
       <Option value="boris">Boris Ding</Option>
       <Option value="ror">Ruby on Rails</Option>
       <Option value="antd">Brickdoc Design System</Option>
     </Mentions>
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

@@ -11,40 +11,40 @@ import { ConfigContext } from '../config-provider'
 import collapseMotion from '../_util/motion'
 import { cloneElement } from '../_util/reactNode'
 
-export type ExpandIconPosition = 'left' | 'right' | undefined;
+export type ExpandIconPosition = 'left' | 'right' | undefined
 
 export interface CollapseProps {
-  activeKey?: Array<string | number> | string | number;
-  defaultActiveKey?: Array<string | number> | string | number;
+  activeKey?: Array<string | number> | string | number
+  defaultActiveKey?: Array<string | number> | string | number
   /** 手风琴效果 */
-  accordion?: boolean;
-  destroyInactivePanel?: boolean;
-  onChange?: (key: string | string[]) => void;
-  style?: React.CSSProperties;
-  className?: string;
-  bordered?: boolean;
-  prefixCls?: string;
-  expandIcon?: (panelProps: PanelProps) => React.ReactNode;
-  expandIconPosition?: ExpandIconPosition;
-  ghost?: boolean;
-  collapsible?: CollapsibleType;
+  accordion?: boolean
+  destroyInactivePanel?: boolean
+  onChange?: (key: string | number | Array<string | number>) => void
+  style?: React.CSSProperties
+  className?: string
+  bordered?: boolean
+  prefixCls?: string
+  expandIcon?: (panelProps: PanelProps) => React.ReactNode
+  expandIconPosition?: ExpandIconPosition
+  ghost?: boolean
+  collapsible?: CollapsibleType
 }
 
 interface PanelProps {
-  isActive?: boolean;
-  header?: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  showArrow?: boolean;
-  forceRender?: boolean;
+  isActive?: boolean
+  header?: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+  showArrow?: boolean
+  forceRender?: boolean
   /** @deprecated Use `collapsible="disabled"` instead */
-  disabled?: boolean;
-  extra?: React.ReactNode;
-  collapsible?: CollapsibleType;
+  disabled?: boolean
+  extra?: React.ReactNode
+  collapsible?: CollapsibleType
 }
 
-interface CollapseInterface extends React.FC<CollapseProps> {
-  Panel: typeof CollapsePanel;
+export interface CollapseInterface extends React.FC<CollapseProps> {
+  Panel: typeof CollapsePanel
 }
 
 const Collapse: CollapseInterface = props => {
@@ -62,15 +62,15 @@ const Collapse: CollapseInterface = props => {
 
   const renderExpandIcon = (panelProps: PanelProps = {}) => {
     const { expandIcon } = props
-    const icon = (expandIcon ? (
+    const icon = expandIcon ? (
       expandIcon(panelProps)
     ) : (
-      // @ts-ignore
+      // @ts-expect-error
       <RightOutlined rotate={panelProps.isActive ? 90 : undefined} />
-    ))
+    )
 
     return cloneElement(icon, () => ({
-      className: classNames((icon as any).props.className, `${prefixCls}-arrow`),
+      className: classNames((icon as any).props.className, `${prefixCls}-arrow`)
     }))
   }
 
@@ -80,14 +80,14 @@ const Collapse: CollapseInterface = props => {
       [`${prefixCls}-borderless`]: !bordered,
       [`${prefixCls}-icon-position-${iconPosition}`]: true,
       [`${prefixCls}-rtl`]: direction === 'rtl',
-      [`${prefixCls}-ghost`]: !!ghost,
+      [`${prefixCls}-ghost`]: !!ghost
     },
-    className,
+    className
   )
   const openMotion: CSSMotionProps = {
     ...collapseMotion,
     motionAppear: false,
-    leavedClassName: `${prefixCls}-content-hidden`,
+    leavedClassName: `${prefixCls}-content-hidden`
   }
 
   const getItems = () => {
@@ -99,7 +99,7 @@ const Collapse: CollapseInterface = props => {
         const childProps: CollapseProps & { key: React.Key } = {
           ...omit(child.props, ['disabled']),
           key,
-          collapsible: collapsible ?? (disabled ? 'disabled' : undefined),
+          collapsible: collapsible ?? (disabled ? 'disabled' : undefined)
         }
         return cloneElement(child, childProps)
       }
@@ -108,13 +108,7 @@ const Collapse: CollapseInterface = props => {
   }
 
   return (
-    <RcCollapse
-      openMotion={openMotion}
-      {...props}
-      expandIcon={renderExpandIcon}
-      prefixCls={prefixCls}
-      className={collapseClassName}
-    >
+    <RcCollapse openMotion={openMotion} {...props} expandIcon={renderExpandIcon} prefixCls={prefixCls} className={collapseClassName}>
       {getItems()}
     </RcCollapse>
   )

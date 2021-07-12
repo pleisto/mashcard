@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import * as React from 'react'
 import RcMenu, { Divider, ItemGroup, MenuProps as RcMenuProps } from 'rc-menu'
 import classNames from 'classnames'
@@ -14,22 +15,22 @@ import MenuContext, { MenuTheme } from './MenuContext'
 
 export type { MenuItemGroupProps } from 'rc-menu'
 
-export type MenuMode = 'vertical' | 'vertical-left' | 'vertical-right' | 'horizontal' | 'inline';
+export type MenuMode = 'vertical' | 'vertical-left' | 'vertical-right' | 'horizontal' | 'inline'
 
 export interface MenuProps extends RcMenuProps {
-  theme?: MenuTheme;
-  inlineIndent?: number;
+  theme?: MenuTheme
+  inlineIndent?: number
 }
 
 type InternalMenuProps = MenuProps &
   SiderContextProps & {
-    collapsedWidth?: string | number;
-  };
+    collapsedWidth?: string | number
+  }
 
 class InternalMenu extends React.Component<InternalMenuProps> {
   static defaultProps: Partial<MenuProps> = {
-    theme: 'light', // or dark
-  };
+    theme: 'light' // or dark
+  }
 
   constructor(props: InternalMenuProps) {
     super(props)
@@ -37,13 +38,13 @@ class InternalMenu extends React.Component<InternalMenuProps> {
     devWarning(
       !('inlineCollapsed' in props && props.mode !== 'inline'),
       'Menu',
-      '`inlineCollapsed` should only be used when `mode` is inline.',
+      '`inlineCollapsed` should only be used when `mode` is inline.'
     )
 
     devWarning(
       !(props.siderCollapsed !== undefined && 'inlineCollapsed' in props),
       'Menu',
-      '`inlineCollapsed` not control Menu under Sider. Should set `collapsed` on Sider instead.',
+      '`inlineCollapsed` not control Menu under Sider. Should set `collapsed` on Sider instead.'
     )
   }
 
@@ -58,13 +59,7 @@ class InternalMenu extends React.Component<InternalMenuProps> {
   renderMenu = ({ getPopupContainer, getPrefixCls, direction }: ConfigConsumerProps) => {
     const rootPrefixCls = getPrefixCls()
 
-    const {
-      prefixCls: customizePrefixCls,
-      className,
-      theme,
-      expandIcon,
-      ...restProps
-    } = this.props
+    const { prefixCls: customizePrefixCls, className, theme, expandIcon, ...restProps } = this.props
 
     const passedProps = omit(restProps, ['siderCollapsed', 'collapsedWidth'])
     const inlineCollapsed = this.getInlineCollapsed()
@@ -72,7 +67,7 @@ class InternalMenu extends React.Component<InternalMenuProps> {
     const defaultMotions = {
       horizontal: { motionName: `${rootPrefixCls}-slide-up` },
       inline: collapseMotion,
-      other: { motionName: `${rootPrefixCls}-zoom-big` },
+      other: { motionName: `${rootPrefixCls}-zoom-big` }
     }
 
     const prefixCls = getPrefixCls('menu', customizePrefixCls)
@@ -80,14 +75,14 @@ class InternalMenu extends React.Component<InternalMenuProps> {
 
     return (
       <MenuContext.Provider
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
         value={{
           prefixCls,
           inlineCollapsed: inlineCollapsed || false,
           antdMenuTheme: theme,
           direction,
-          firstLevel: true,
-        }}
-      >
+          firstLevel: true
+        }}>
         <RcMenu
           getPopupContainer={getPopupContainer}
           overflowedIndicator={<EllipsisOutlined />}
@@ -99,12 +94,12 @@ class InternalMenu extends React.Component<InternalMenuProps> {
           direction={direction}
           defaultMotions={defaultMotions}
           expandIcon={cloneElement(expandIcon, {
-            className: `${prefixCls}-submenu-expand-icon`,
+            className: `${prefixCls}-submenu-expand-icon`
           })}
         />
       </MenuContext.Provider>
     )
-  };
+  }
 
   render() {
     return <ConfigConsumer>{this.renderMenu}</ConfigConsumer>
@@ -113,20 +108,16 @@ class InternalMenu extends React.Component<InternalMenuProps> {
 
 // We should keep this as ref-able
 class Menu extends React.Component<MenuProps, {}> {
-  static Divider = Divider;
+  static Divider = Divider
 
-  static Item = Item;
+  static Item = Item
 
-  static SubMenu = SubMenu;
+  static SubMenu = SubMenu
 
-  static ItemGroup = ItemGroup;
+  static ItemGroup = ItemGroup
 
   render() {
-    return (
-      <SiderContext.Consumer>
-        {(context: SiderContextProps) => <InternalMenu {...this.props} {...context} />}
-      </SiderContext.Consumer>
-    )
+    return <SiderContext.Consumer>{(context: SiderContextProps) => <InternalMenu {...this.props} {...context} />}</SiderContext.Consumer>
   }
 }
 

@@ -18,34 +18,34 @@ function isHidden(element: HTMLElement) {
 function isNotGrey(color: string) {
   // eslint-disable-next-line no-useless-escape
   const match = (color || '').match(/rgba?\((\d*), (\d*), (\d*)(, [\d.]*)?\)/)
-  if (match && match[1] && match[2] && match[3]) {
+  if (match?.[1] && match[2] && match[3]) {
     return !(match[1] === match[2] && match[2] === match[3])
   }
   return true
 }
 
 export default class Wave extends React.Component<{ insertExtraNode?: boolean }> {
-  static contextType = ConfigContext;
+  static contextType = ConfigContext
+
+  context: ConfigConsumerProps
 
   private instance?: {
-    cancel: () => void;
-  };
+    cancel: () => void
+  }
 
-  private readonly containerRef = React.createRef<HTMLDivElement>();
+  private readonly containerRef = React.createRef<HTMLDivElement>()
 
-  private extraNode: HTMLDivElement;
+  private extraNode: HTMLDivElement
 
-  private clickWaveTimeoutId: number;
+  private clickWaveTimeoutId: number
 
-  private animationStartId: number;
+  private animationStartId: number
 
-  private animationStart: boolean = false;
+  private animationStart: boolean = false
 
-  private destroyed: boolean = false;
+  private destroyed: boolean = false
 
-  private csp?: CSPConfig;
-
-  context: ConfigConsumerProps;
+  private csp?: CSPConfig
 
   componentDidMount() {
     const node = this.containerRef.current
@@ -89,31 +89,28 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
       extraNode.style.borderColor = waveColor
 
       const nodeRoot = node.getRootNode?.() || node.ownerDocument
-      // @ts-ignore
-      const nodeBody: Element =
-        nodeRoot instanceof Document ? nodeRoot.body : (nodeRoot.firstChild as Element) ?? nodeRoot
+      // @ts-expect-error
+      const nodeBody: Element = nodeRoot instanceof Document ? nodeRoot.body : (nodeRoot.firstChild as Element) ?? nodeRoot
 
       styleForPseudo = updateCSS(
         `
-      [${getPrefixCls('')}-click-animating-without-extra-node='true']::after, .${getPrefixCls(
-          '',
-        )}-click-animating-node {
+      [${getPrefixCls('')}-click-animating-without-extra-node='true']::after, .${getPrefixCls('')}-click-animating-node {
         --antd-wave-shadow-color: ${waveColor};
       }`,
         'antd-wave',
-        { csp: this.csp, attachTo: nodeBody },
+        { csp: this.csp, attachTo: nodeBody }
       )
     }
     if (insertExtraNode) {
       node.appendChild(extraNode)
     }
-    ['transition', 'animation'].forEach(name => {
+    ;(['transition', 'animation'] as const).forEach(name => {
       node.addEventListener(`${name}start`, this.onTransitionStart)
       node.addEventListener(`${name}end`, this.onTransitionEnd)
     })
-  };
+  }
 
-  onTransitionStart = (e: AnimationEvent) => {
+  onTransitionStart = (e: AnimationEvent | TransitionEvent) => {
     if (this.destroyed) {
       return
     }
@@ -123,30 +120,23 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
       return
     }
     this.resetEffect(node)
-  };
+  }
 
-  onTransitionEnd = (e: AnimationEvent) => {
-    if (!e || e.animationName !== 'fadeEffect') {
+  onTransitionEnd = (e: AnimationEvent | TransitionEvent) => {
+    if ((e as AnimationEvent)?.animationName !== 'fadeEffect') {
       return
     }
     this.resetEffect(e.target as HTMLElement)
-  };
+  }
 
   getAttributeName() {
     const { getPrefixCls } = this.context
     const { insertExtraNode } = this.props
-    return insertExtraNode
-      ? `${getPrefixCls('')}-click-animating`
-      : `${getPrefixCls('')}-click-animating-without-extra-node`
+    return insertExtraNode ? `${getPrefixCls('')}-click-animating` : `${getPrefixCls('')}-click-animating-without-extra-node`
   }
 
   bindAnimationEvent = (node: HTMLElement) => {
-    if (
-      !node ||
-      !node.getAttribute ||
-      node.getAttribute('disabled') ||
-      node.className.includes('disabled')
-    ) {
+    if (!node || !node.getAttribute || node.getAttribute('disabled') || node.className.includes('disabled')) {
       return
     }
     const onClick = (e: MouseEvent) => {
@@ -174,9 +164,9 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
     return {
       cancel: () => {
         node.removeEventListener('click', onClick, true)
-      },
+      }
     }
-  };
+  }
 
   resetEffect(node: HTMLElement) {
     if (!node || node === this.extraNode || !(node instanceof Element)) {
@@ -193,7 +183,7 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
     if (insertExtraNode && this.extraNode && node.contains(this.extraNode)) {
       node.removeChild(this.extraNode)
     }
-    ['transition', 'animation'].forEach(name => {
+    ;(['transition', 'animation'] as const).forEach(name => {
       node.removeEventListener(`${name}start`, this.onTransitionStart)
       node.removeEventListener(`${name}end`, this.onTransitionEnd)
     })
@@ -211,7 +201,7 @@ export default class Wave extends React.Component<{ insertExtraNode?: boolean }>
     }
 
     return cloneElement(children, { ref })
-  };
+  }
 
   render() {
     return <ConfigConsumer>{this.renderWave}</ConfigConsumer>

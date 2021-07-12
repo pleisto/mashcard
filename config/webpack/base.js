@@ -1,29 +1,20 @@
-const { webpackConfig, merge } = require("@rails/webpacker")
-const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
-const WebpackAssetsManifest = require('webpack-assets-manifest')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const path = require('path')
+const { webpackConfig, merge } = require('@rails/webpacker')
+
+const DistAssetResolvePlugin = require('./DistAssetResolvePlugin')
+
+Object.keys(webpackConfig.entry).forEach(entry => {
+  webpackConfig.entry[entry] = webpackConfig.entry[entry].filter(file => file.endsWith('.js'))
+})
 
 // Less Options
-webpackConfig.module.rules.find(x => x.test.toString().includes("less"))
-  .use[3].options.lessOptions = { javascriptEnabled: true }
-
-// Reconfigure WebpackAssetsManifest to Fix https://github.com/rails/webpacker/issues/2864
-webpackConfig.plugins = webpackConfig.plugins.filter(x=> x.constructor.name !== 'WebpackAssetsManifest' )
+webpackConfig.module.rules.find(x => x.test.toString().includes('less')).use[3].options.lessOptions = { javascriptEnabled: true }
 
 module.exports = merge(webpackConfig, {
-  plugins: [
-    new ForkTSCheckerWebpackPlugin({async: false}),
-    new WebpackAssetsManifest({
-      enabled: true,
-      entrypoints: true,
-      writeToDisk: true,
-      output: 'manifest.json',
-      entrypointsUseAssets: true,
-      space: 2,
-      publicPath: true
-    })
-  ],
   resolve: {
-    plugins: [    new TsconfigPathsPlugin({})]
+    alias: {
+      '@': path.resolve(__dirname, '../../dist/frontends')
+    },
+    plugins: [new DistAssetResolvePlugin()]
   }
 })

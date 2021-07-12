@@ -1,7 +1,7 @@
 import raf from 'rc-util/lib/raf'
 
 interface RafMap {
-  [id: number]: number;
+  [id: number]: number
 }
 
 let id: number = 0
@@ -9,6 +9,7 @@ const ids: RafMap = {}
 
 // Support call raf with delay specified frame
 export default function wrapperRaf(callback: () => void, delayFrames: number = 1): number {
+  // eslint-disable-next-line no-plusplus
   const myId: number = id++
   let restFrames: number = delayFrames
 
@@ -17,6 +18,7 @@ export default function wrapperRaf(callback: () => void, delayFrames: number = 1
 
     if (restFrames <= 0) {
       callback()
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete ids[myId]
     } else {
       ids[myId] = raf(internalCallback)
@@ -32,6 +34,7 @@ wrapperRaf.cancel = function cancel(pid?: number) {
   if (pid === undefined) return
 
   raf.cancel(ids[pid])
+  // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
   delete ids[pid]
 }
 

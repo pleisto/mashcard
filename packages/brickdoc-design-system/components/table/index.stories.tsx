@@ -1,9 +1,11 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Table, TableProps, Space, Switch, Radio, Form } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Table, Space, Switch, Radio, Form } from '../'
 import { Down as DownOutlined } from '../icon'
+import { TablePaginationPosition } from './interface'
+import { SizeType } from '../config-provider/SizeContext'
 export default {
-  title: "ReactComponents/Table",
+  title: 'ReactComponents/Table',
   component: Table,
   parameters: {
     docs: {
@@ -255,12 +257,12 @@ return <Table rowKey={record => record.uid} />;
 const columns = [
   {
     title: 'Name',
-    dataIndex: 'name',
+    dataIndex: 'name'
   },
   {
     title: 'Age',
     dataIndex: 'age',
-    sorter: (a, b) => a.age - b.age,
+    sorter: (a, b) => a.age - b.age
   },
   {
     title: 'Address',
@@ -268,14 +270,14 @@ const columns = [
     filters: [
       {
         text: 'London',
-        value: 'London',
+        value: 'London'
       },
       {
         text: 'New York',
-        value: 'New York',
-      },
+        value: 'New York'
+      }
     ],
-    onFilter: (value, record) => record.address.indexOf(value) === 0,
+    onFilter: (value, record) => record.address.indexOf(value) === 0
   },
   {
     title: 'Action',
@@ -288,18 +290,18 @@ const columns = [
           More actions <DownOutlined />
         </a>
       </Space>
-    ),
-  },
+    )
+  }
 ]
 
 const data = []
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= 10; i += 1) {
   data.push({
     key: i,
     name: 'John Brown',
     age: `${i}2`,
     address: `New York No. ${i} Lake Park`,
-    description: `My name is John Brown, I am ${i}2 years old, living in New York No. ${i} Lake Park.`,
+    description: `My name is John Brown, I am ${i}2 years old, living in New York No. ${i} Lake Park.`
   })
 }
 
@@ -314,7 +316,7 @@ class Demo extends React.Component {
     bordered: false,
     loading: false,
     pagination,
-    size: 'default',
+    size: 'default' as SizeType,
     expandable,
     title: undefined,
     showHeader,
@@ -323,60 +325,60 @@ class Demo extends React.Component {
     scroll: undefined,
     hasData: true,
     tableLayout: undefined,
-    top: 'none',
-    bottom: 'bottomRight',
-  };
+    top: 'none' as TablePaginationPosition,
+    bottom: 'bottomRight' as TablePaginationPosition
+  }
 
   handleToggle = prop => enable => {
     this.setState({ [prop]: enable })
-  };
+  }
 
   handleSizeChange = e => {
     this.setState({ size: e.target.value })
-  };
+  }
 
   handleTableLayoutChange = e => {
     this.setState({ tableLayout: e.target.value })
-  };
+  }
 
   handleExpandChange = enable => {
     this.setState({ expandable: enable ? expandable : undefined })
-  };
+  }
 
   handleEllipsisChange = enable => {
     this.setState({ ellipsis: enable })
-  };
+  }
 
   handleTitleChange = enable => {
     this.setState({ title: enable ? title : undefined })
-  };
+  }
 
   handleHeaderChange = enable => {
     this.setState({ showHeader: enable ? showHeader : false })
-  };
+  }
 
   handleFooterChange = enable => {
     this.setState({ footer: enable ? footer : undefined })
-  };
+  }
 
   handleRowSelectionChange = enable => {
     this.setState({ rowSelection: enable ? {} : undefined })
-  };
+  }
 
   handleYScrollChange = enable => {
     this.setState({ yScroll: enable })
-  };
+  }
 
   handleXScrollChange = e => {
     this.setState({ xScroll: e.target.value })
-  };
+  }
 
   handleDataChange = hasData => {
     this.setState({ hasData })
-  };
+  }
 
   render() {
-    // @ts-ignore
+    // @ts-expect-error
     const { xScroll, yScroll, ...state } = this.state
 
     const scroll = {
@@ -386,25 +388,21 @@ class Demo extends React.Component {
       scroll.y = 240
     }
     if (xScroll) {
-      // @ts-ignore
+      // @ts-expect-error
       scroll.x = '100vw'
     }
 
     const tableColumns = columns.map(item => ({ ...item, ellipsis: (state as any).ellipsis }))
     if (xScroll === 'fixed') {
-      // @ts-ignore
+      // @ts-expect-error
       tableColumns[0].fixed = true
-      // @ts-ignore
+      // @ts-expect-error
       tableColumns[tableColumns.length - 1].fixed = 'right'
     }
 
     return (
       <>
-        <Form
-          layout="inline"
-          className="components-table-demo-control-bar"
-          style={{ marginBottom: 18 }}
-        >
+        <Form layout="inline" className="components-table-demo-control-bar" style={{ marginBottom: 18 }}>
           <Form.Item label="Bordered">
             <Switch checked={state.bordered} onChange={this.handleToggle('bordered')} />
           </Form.Item>
@@ -433,7 +431,6 @@ class Demo extends React.Component {
             <Switch checked={!!state.hasData} onChange={this.handleDataChange} />
           </Form.Item>
           <Form.Item label="Ellipsis">
-
             <Switch checked={!!(state as any).ellipsis} onChange={this.handleEllipsisChange} />
           </Form.Item>
           <Form.Item label="Size">
@@ -461,8 +458,7 @@ class Demo extends React.Component {
               value={this.state.top}
               onChange={e => {
                 this.setState({ top: e.target.value })
-              }}
-            >
+              }}>
               <Radio.Button value="topLeft">TopLeft</Radio.Button>
               <Radio.Button value="topCenter">TopCenter</Radio.Button>
               <Radio.Button value="topRight">TopRight</Radio.Button>
@@ -474,8 +470,7 @@ class Demo extends React.Component {
               value={this.state.bottom}
               onChange={e => {
                 this.setState({ bottom: e.target.value })
-              }}
-            >
+              }}>
               <Radio.Button value="bottomLeft">BottomLeft</Radio.Button>
               <Radio.Button value="bottomCenter">BottomCenter</Radio.Button>
               <Radio.Button value="bottomRight">BottomRight</Radio.Button>
@@ -495,9 +490,6 @@ class Demo extends React.Component {
   }
 }
 
-const Template: Story<TableProps> = (_args) =>
+const Template: Story = () => <Demo />
 
-    <Demo />
-  
 export const Base = Template.bind({})
-

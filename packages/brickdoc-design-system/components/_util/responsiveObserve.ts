@@ -1,7 +1,7 @@
-export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
-export type BreakpointMap = Record<Breakpoint, string>;
-export type ScreenMap = Partial<Record<Breakpoint, boolean>>;
-export type ScreenSizeMap = Partial<Record<Breakpoint, number>>;
+export type Breakpoint = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+export type BreakpointMap = Record<Breakpoint, string>
+export type ScreenMap = Partial<Record<Breakpoint, boolean>>
+export type ScreenSizeMap = Partial<Record<Breakpoint, number>>
 
 export const responsiveArray: Breakpoint[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs']
 
@@ -11,20 +11,21 @@ export const responsiveMap: BreakpointMap = {
   md: '(min-width: 768px)',
   lg: '(min-width: 992px)',
   xl: '(min-width: 1200px)',
-  xxl: '(min-width: 1600px)',
+  xxl: '(min-width: 1600px)'
 }
 
-type SubscribeFunc = (screens: ScreenMap) => void;
+type SubscribeFunc = (screens: ScreenMap) => void
 const subscribers = new Map<Number, SubscribeFunc>()
 let subUid = -1
 let screens = {}
 
 const responsiveObserve = {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   matchHandlers: {} as {
     [prop: string]: {
-      mql: MediaQueryList;
-      listener: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null;
-    };
+      mql: MediaQueryList
+      listener: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null
+    }
   },
   dispatch(pointMap: ScreenMap) {
     screens = pointMap
@@ -43,7 +44,7 @@ const responsiveObserve = {
     if (!subscribers.size) this.unregister()
   },
   unregister() {
-    Object.keys(responsiveMap).forEach((screen: Breakpoint) => {
+    Object.keys(responsiveMap).forEach(screen => {
       const matchMediaQuery = responsiveMap[screen]
       const handler = this.matchHandlers[matchMediaQuery]
       handler?.mql.removeListener(handler?.listener)
@@ -51,24 +52,24 @@ const responsiveObserve = {
     subscribers.clear()
   },
   register() {
-    Object.keys(responsiveMap).forEach((screen: Breakpoint) => {
+    Object.keys(responsiveMap).forEach(screen => {
       const matchMediaQuery = responsiveMap[screen]
       const listener = ({ matches }: { matches: boolean }) => {
         this.dispatch({
           ...screens,
-          [screen]: matches,
+          [screen]: matches
         })
       }
       const mql = window.matchMedia(matchMediaQuery)
       mql.addListener(listener)
       this.matchHandlers[matchMediaQuery] = {
         mql,
-        listener,
+        listener
       }
 
       listener(mql)
     })
-  },
+  }
 }
 
 export default responsiveObserve

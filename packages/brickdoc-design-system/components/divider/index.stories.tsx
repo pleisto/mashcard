@@ -1,10 +1,9 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Divider, DividerProps } from "../../"
-
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Divider, DividerProps } from '../'
 
 export default {
-  title: "ReactComponents/Divider",
+  title: 'ReactComponents/Divider',
   component: Divider,
   argTypes: {
     className: {
@@ -32,7 +31,7 @@ export default {
       defaultValue: 'center',
       control: {
         type: 'radio',
-        options: ['left','right','center']
+        options: ['left', 'right', 'center']
       },
       table: {
         type: { summary: 'left | right | center' }
@@ -60,17 +59,17 @@ export default {
       defaultValue: 'horizontal',
       control: {
         type: 'radio',
-        options: ['vertical','horizontal']
+        options: ['vertical', 'horizontal']
       },
       table: {
         type: { summary: 'horizontal | vertical' }
       }
-    },
+    }
   },
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 A divider line separates different content.
 
 #### When To Use
@@ -78,26 +77,22 @@ A divider line separates different content.
 * Divide sections of article.
 * Divide inline text and links such as the operation column of table.
 `
+      }
     }
   }
 }
-}
 
-
-const Template: Story<DividerProps> = (args) =>
+const Template: Story<DividerProps> = args => (
   <>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
-      probare, quae sunt a te dicta? Refert tamen, quo modo.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert
+      tamen, quo modo.
     </p>
-    <Divider {...args}  />
+    <Divider {...args} />
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista
-      probare, quae sunt a te dicta? Refert tamen, quo modo.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert
+      tamen, quo modo.
     </p>
   </>
+)
 export const Base = Template.bind({})
-
-
-
-

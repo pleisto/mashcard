@@ -1,23 +1,23 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
-  source_path: frontends
+  source_path: dist/frontends
   source_entry_path: entrypoints
   public_root_path: public
   public_output_path: esm-bundle
   cache_path: tmp/cache/webpacker
   webpack_compile_output: true
+  compile: false
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: ['packages/saas/frontends', 'packages/brickdoc-design-system', 'packages/brickdoc-editor']
+  additional_paths: ['packages']
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
 development:
   <<: *default
-  compile: false
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
@@ -26,9 +26,9 @@ development:
     port: 3035
     public: localhost:3035
     # Inject browserside javascript that required by both HMR and Live(full) reload
-    inject_client: false
+    inject_client: true
     # Hot Module Replacement updates modules while the application is running without a full reload
-    hmr: false
+    hmr: true
     # Inline should be set to true if using HMR; it inserts a script to take care of live reloading
     inline: true
     # Should we show a full-screen overlay in the browser when there are compiler errors or warnings?
@@ -57,9 +57,6 @@ test:
 
 production:
   <<: *default
-
-  # Production depends on precompilation of packs prior to booting for performance.
-  compile: false
 
   # Cache manifest.json for performance
   cache_manifest: true

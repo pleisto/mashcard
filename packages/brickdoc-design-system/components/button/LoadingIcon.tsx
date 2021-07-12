@@ -1,17 +1,17 @@
 import React from 'react'
 import CSSMotion from 'rc-motion'
-import {Rotation as LoadingOutlined} from '../icon'
+import { Rotation as LoadingOutlined } from '../icon'
 
 export interface LoadingIconProps {
-  prefixCls: string;
-  existIcon: boolean;
-  loading?: boolean | object;
+  prefixCls: string
+  existIcon: boolean
+  loading?: boolean | object
 }
 const getCollapsedWidth = () => ({ width: 0, opacity: 0, transform: 'scale(0)' })
 const getRealWidth = (node: HTMLElement) => ({
   width: node.scrollWidth,
   opacity: 1,
-  transform: 'scale(1)',
+  transform: 'scale(1)'
 })
 
 const LoadingIcon: React.FC<LoadingIconProps> = ({ prefixCls, loading, existIcon }) => {
@@ -36,8 +36,8 @@ const LoadingIcon: React.FC<LoadingIconProps> = ({ prefixCls, loading, existIcon
       onEnterStart={getCollapsedWidth}
       onEnterActive={getRealWidth}
       onLeaveStart={getRealWidth}
-      onLeaveActive={getCollapsedWidth}
-    >
+      onLeaveActive={getCollapsedWidth}>
+      {/* eslint-disable-next-line react/no-unused-prop-types */}
       {({ className, style }: { className?: string; style?: React.CSSProperties }, ref: any) => (
         <span className={`${prefixCls}-loading-icon`} style={style} ref={ref}>
           <LoadingOutlined className={className} />

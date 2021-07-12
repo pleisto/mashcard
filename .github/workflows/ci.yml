@@ -36,13 +36,14 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - name: Checkout Code
+      - name: Checkout the codebase
         uses: actions/checkout@v2
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - name: Yarn install
+          cache: yarn
+      - name: Run yarn install
         run: yarn
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
@@ -51,35 +52,37 @@ jobs:
         with:
           ruby-version: 3.0
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Lint Code
-        run: yarn lint
-      - name: Run Migrate
+      - name: Lint the codebase
+        run: yarn tsc:check && yarn lint
+      - name: Run Jest tests
+        run: yarn test:jest --ci --collectCoverage
+      - name: Run DB migrations
         run: bundle exec rails db:create db:migrate db:seed
-      - name: Run rails server
+      - name: Start the Rails server
         run: bundle exec rails s -p 3000 &
         env:
           CYPRESS: 1
           RAILS_ENV: development
-      - name: Run tests
+      - name: Run RSpec tests
         env:
           RAILS_ENV: test
-        run: bundle exec rspec --format RspecJunitFormatter --out rspec.xml
-      - name: Publish Test Report
+        run: bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
+      - name: Publish test reports
         if: always()
         uses: mikepenz/action-junit-report@v2
         with:
-          report_paths: './rspec.xml'
-      - name: Dump graphql schema
+          report_paths: junit-reports/*.xml
+      - name: Dump the graphql schema
         run: yarn graphql
-      - name: Ensure server is running
+      - name: Ensure the server is running
         run: curl http://localhost:3000 -I
-      - name: Webpacker compile
+      - name: Run Webpacker compilation
         run: bundle exec rails webpacker_compile
-      - name: Cypress run
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
           config: pageLoadTimeout=10000
-      - name: Dump database schema
+      - name: Dump the database schema
         run: bundle exec rails db:schema:dump
         env:
           RAILS_ENV: test
@@ -90,9 +93,9 @@ jobs:
           HUSKY: 0
         with:
           default_author: github_actions
-          message: 'ci: bump schema and dists'
+          message: 'ci: bump schemas and dists'
           add: 'app lib packages spec config db frontends'
-      - name: Upload build artifact if failed
+      - name: Upload build artifacts (when failed)
         if: failure()
         uses: actions/upload-artifact@v2
         with:
@@ -101,7 +104,7 @@ jobs:
           retention-days: 20
           path: |
             cypress/screenshots/
-      - name: Upload build artifact always
+      - name: Upload build artifacts
         if: always()
         uses: actions/upload-artifact@v2
         with:

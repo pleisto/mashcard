@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Tooltip, TooltipProps, Space, Button } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Tooltip, TooltipProps, Space, Button } from '../'
 export default {
-  title: "ReactComponents/Tooltip",
+  title: 'ReactComponents/Tooltip',
   component: Tooltip,
   parameters: {
     docs: {
@@ -53,7 +53,7 @@ Please ensure that the child node of \`Tooltip\` accepts \`onMouseEnter\`, \`onM
   }
 }
 
-const Template: Story<TooltipProps> = (_args) =>
+const Template: Story<TooltipProps> = _args => (
   <Space>
     <Tooltip title="prompt text">
       <span>Tooltip will show on mouse enter.</span>
@@ -65,4 +65,5 @@ const Template: Story<TooltipProps> = (_args) =>
       <Button>Color</Button>
     </Tooltip>
   </Space>
+)
 export const Base = Template.bind({})

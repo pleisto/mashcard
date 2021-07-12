@@ -1,116 +1,115 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Avatar, AvatarProps, Space, Badge } from "../../"
-import { User, Figma } from "../icon"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Avatar, AvatarProps, Space, Badge } from '../'
+import { User, Figma } from '../icon'
 
 export default {
-  title: "ReactComponents/Avatar",
+  title: 'ReactComponents/Avatar',
   component: Avatar,
   argTypes: {
     alt: {
-      description: "This attribute defines the alternative text describing the image",
+      description: 'This attribute defines the alternative text describing the image',
       control: {
-        type: "text"
+        type: 'text'
       },
       table: {
-        type: { summary: "string" }
+        type: { summary: 'string' }
       }
     },
     gap: {
-      description: "Letter type unit distance between left and right sides",
+      description: 'Letter type unit distance between left and right sides',
       defaultValue: 4,
       control: {
-        type: "number"
+        type: 'number'
       },
       table: {
-        type: { summary: "number" }
+        type: { summary: 'number' }
       }
     },
     icon: {
-      description: "Custom icon type for an icon avatar",
+      description: 'Custom icon type for an icon avatar',
       table: {
-        type: { summary: "ReactNode" }
+        type: { summary: 'ReactNode' }
       }
     },
     shape: {
-      description: "Can be set button shape",
-      defaultValue: "circle",
+      description: 'Can be set button shape',
+      defaultValue: 'circle',
       control: {
-        type: "radio",
-        options: ["circle", "round"]
+        type: 'radio',
+        options: ['circle', 'round']
       },
       table: {
-        type: { summary: "circle | round" }
+        type: { summary: 'circle | round' }
       }
     },
     size: {
-      description: "The size of the avatar",
-    defaultValue: "default",
-    table: {
-      type: { summary: "number | large | small | default | { xs: number, sm: number, ...}" }
-    }
-  },
-  src: {
-    description: "The address of the image for an image avatar or image element",
-    table: {
-      type: { summary: "string | ReactNode" }
-    }
-  },
-  srcSet: {
-    description: "A list of sources to use for different screen resolutions",
-    table: {
-      type: { summary: "string" }
-    }
-  },
-  draggable: {
-    description: "Whether the picture is allowed to be dragged",
-    table: {
-      type: { summary: "boolean | 'true' | 'false'" }
-    }
-  },
+      description: 'The size of the avatar',
+      defaultValue: 'default',
+      table: {
+        type: { summary: 'number | large | small | default | { xs: number, sm: number, ...}' }
+      }
+    },
+    src: {
+      description: 'The address of the image for an image avatar or image element',
+      table: {
+        type: { summary: 'string | ReactNode' }
+      }
+    },
+    srcSet: {
+      description: 'A list of sources to use for different screen resolutions',
+      table: {
+        type: { summary: 'string' }
+      }
+    },
+    draggable: {
+      description: 'Whether the picture is allowed to be dragged',
+      table: {
+        type: { summary: "boolean | 'true' | 'false'" }
+      }
+    },
 
-  onError: {
-    description: "Handler when img load error, return false to prevent default fallback behavior",
+    onError: {
+      description: 'Handler when img load error, return false to prevent default fallback behavior',
 
-    table: {
-      type: { summary: "() => boolean" }
+      table: {
+        type: { summary: '() => boolean' }
+      }
     }
-  }
-}, parameters: {
-  docs: {
-    description: {
-      component: 'Avatars can be used to represent people or objects. It supports images, Icons, or letters.'
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Avatars can be used to represent people or objects. It supports images, Icons, or letters.'
+      }
     }
   }
 }
-}
 
-
-const Template: Story<AvatarProps> = (args) => <Avatar {...args} />
-
+const Template: Story<AvatarProps> = args => <Avatar {...args} />
 
 export const Base = Template.bind({})
 
 Base.args = {
-  src: "https://avatars.githubusercontent.com/u/41993484?s=120&v=4"
+  src: 'https://avatars.githubusercontent.com/u/41993484?s=120&v=4'
 }
 
-
-export const Type: Story<AvatarProps> = (_args) => (
+export const Type: Story<AvatarProps> = _args => (
   <>
     <Space>
       <Avatar size={64} icon={<User />} />
       <Avatar size="large" icon={<User />} />
-      <Avatar  icon={<User />} />
+      <Avatar icon={<User />} />
       <Avatar size="small" icon={<User />} />
     </Space>
-    <br /><br />
+    <br />
+    <br />
     <Space>
       <Badge count={1}>
         <Avatar shape="square" size={64} icon={<User />} />
       </Badge>
       <Avatar shape="square" size="large" icon={<User />} />
-      <Avatar shape="square"  icon={<User />} />
+      <Avatar shape="square" icon={<User />} />
       <Avatar shape="square" size="small" icon={<User />} />
     </Space>
   </>
@@ -124,7 +123,7 @@ Type.parameters = {
   }
 }
 
-export const AvatarGroup: Story = (_args)=>(
+export const AvatarGroup: Story = _args => (
   <Avatar.Group>
     <Avatar src="https://avatars.githubusercontent.com/u/41993484?s=120&v=4" />
     <Avatar style={{ backgroundColor: '#87d068' }} icon={<User />} />
@@ -150,4 +149,3 @@ Avatar group display.
     }
   }
 }
-

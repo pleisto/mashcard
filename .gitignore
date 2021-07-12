@@ -48,7 +48,7 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 .yarn-integrity
-.tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # misc
 .DS_Store
@@ -61,7 +61,12 @@ ehthumbs.db
 ._*
 
 # testing
-coverage
-
+.coverage-cache
+.nyc_output
+junit-reports/
+coverage/
 cypress/screenshots/
 cypress/videos/
+
+# build
+dist

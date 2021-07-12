@@ -46,6 +46,7 @@ const LocaleProvider: React.FC = ({ children }) => {
     changeConfirmLocale(locale?.Modal)
   }, [locale])
 
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   return <LocaleContext.Provider value={{ ...locale, exist: true }}>{children}</LocaleContext.Provider>
 }
 

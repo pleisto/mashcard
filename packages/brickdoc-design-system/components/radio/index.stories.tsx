@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Radio, RadioProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Radio, RadioGroupProps } from '../'
 export default {
-  title: "ReactComponents/Radio",
+  title: 'ReactComponents/Radio',
   component: Radio,
   argTypes: {
     buttonStyle: {
@@ -10,11 +10,11 @@ export default {
       defaultValue: 'outline',
       control: {
         type: 'radio',
-        options: ['outline','solid']
+        options: ['outline', 'solid']
       },
       table: {
         type: { summary: 'outline | solid' },
-        defaultValue: { summary:'outline'}
+        defaultValue: { summary: 'outline' }
       }
     },
     defaultValue: {
@@ -40,13 +40,13 @@ export default {
         type: 'text'
       },
       table: {
-        type: { summary: 'string'}
+        type: { summary: 'string' }
       }
     },
     options: {
       description: 'Set children optional',
       table: {
-        type: {summary: 'string[] | Array<{ label: string value: string disabled?: boolean }>'}
+        type: { summary: 'string[] | Array<{ label: string value: string disabled?: boolean }>' }
       }
     },
     optionType: {
@@ -54,11 +54,11 @@ export default {
       defaultValue: 'default',
       control: {
         type: 'radio',
-        options: ['button','default']
+        options: ['button', 'default']
       },
       table: {
         type: { summary: 'button | default' },
-        defaultValue: { summary:'default'}
+        defaultValue: { summary: 'default' }
       }
     },
     size: {
@@ -66,11 +66,11 @@ export default {
       defaultValue: 'middle',
       control: {
         type: 'radio',
-        options: ['large','middle','small']
+        options: ['large', 'middle', 'small']
       },
       table: {
         type: { summary: 'large | middle | small' },
-        defaultValue: { summary:'middle'}
+        defaultValue: { summary: 'middle' }
       }
     },
     value: {
@@ -84,9 +84,8 @@ export default {
       table: {
         type: { summary: 'function(e:Event)' }
       }
-    },
-  }
-  ,
+    }
+  },
   parameters: {
     docs: {
       description: {
@@ -126,29 +125,27 @@ const plainOptions = ['Apple', 'Pear', 'Orange']
 const options = [
   { label: 'Apple', value: 'Apple' },
   { label: 'Pear', value: 'Pear' },
-  { label: 'Orange', value: 'Orange' },
+  { label: 'Orange', value: 'Orange' }
 ]
 const optionsWithDisabled = [
   { label: 'Apple', value: 'Apple' },
   { label: 'Pear', value: 'Pear' },
-  { label: 'Orange', value: 'Orange', disabled: true },
+  { label: 'Orange', value: 'Orange', disabled: true }
 ]
 
-
-const Template: Story<RadioProps> = (args) =>
+const Template: Story<RadioGroupProps> = args => (
   <>
-    <Radio.Group
-      {...args}
-    />
-    <br /><br />
-    <Radio.Group options={plainOptions}  />
+    <Radio.Group {...args} />
     <br />
-    <Radio.Group options={optionsWithDisabled}  />
-
+    <br />
+    <Radio.Group options={plainOptions} />
+    <br />
+    <Radio.Group options={optionsWithDisabled} />
   </>
+)
 export const Base = Template.bind({})
 
 Base.args = {
   options,
-  optionType: 'button',
+  optionType: 'button'
 }

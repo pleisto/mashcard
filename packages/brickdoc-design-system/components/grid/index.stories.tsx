@@ -1,6 +1,6 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react'
-import { Row, Col, Divider, Slider } from '../../'
+import { Story } from '@storybook/react'
+import { Row, Col, Divider, Slider } from '../'
 
 export default {
   title: 'ReactComponents/Grid',
@@ -65,41 +65,42 @@ If the Brickdoc Design System grid layout component does not meet your needs, yo
 
 The breakpoints of responsive grid follow [BootStrap 4 media queries rules](https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints) (not including \`occasionally part\`).
 `
-      }}}
-} as Meta
-
-
-
-const Template: Story = (_args) => {
-  return(<div>
-    <div>
-      <Row>
-        <Col span={24}>col</Col>
-      </Row>
-      <Row>
-        <Col span={12}>col-12</Col>
-        <Col span={12}>col-12</Col>
-      </Row>
-      <Row>
-        <Col span={8}>col-8</Col>
-        <Col span={8}>col-8</Col>
-        <Col span={8}>col-8</Col>
-      </Row>
-      <Row>
-        <Col span={6}>col-6</Col>
-        <Col span={6}>col-6</Col>
-        <Col span={6}>col-6</Col>
-        <Col span={6}>col-6</Col>
-      </Row>
-    </div>
-  </div>)
+      }
+    }
+  }
 }
 
+const Template: Story = _args => {
+  return (
+    <div>
+      <div>
+        <Row>
+          <Col span={24}>col</Col>
+        </Row>
+        <Row>
+          <Col span={12}>col-12</Col>
+          <Col span={12}>col-12</Col>
+        </Row>
+        <Row>
+          <Col span={8}>col-8</Col>
+          <Col span={8}>col-8</Col>
+          <Col span={8}>col-8</Col>
+        </Row>
+        <Row>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+          <Col span={6}>col-6</Col>
+        </Row>
+      </div>
+    </div>
+  )
+}
 
 export const Example = Template.bind({})
 const style = { background: '#0092ff', padding: '8px 0' }
-export const GridGutter: Story = (_args) => {
-  return(
+export const GridGutter: Story = _args => {
+  return (
     <>
       <Divider orientation="left">Horizontal</Divider>
       <Row gutter={16}>
@@ -158,11 +159,12 @@ export const GridGutter: Story = (_args) => {
           <div style={style}>col-6</div>
         </Col>
       </Row>
-    </>)
+    </>
+  )
 }
 
-export const ColumnOffset: Story = (_args) => {
-  return(
+export const ColumnOffset: Story = _args => {
+  return (
     <>
       <Row>
         <Col span={8}>col-8</Col>
@@ -183,11 +185,12 @@ export const ColumnOffset: Story = (_args) => {
           col-12 col-offset-6
         </Col>
       </Row>
-    </>)
+    </>
+  )
 }
 
-export const GridSort: Story = (_args) => {
-  return(
+export const GridSort: Story = _args => {
+  return (
     <>
       <Row>
         <Col span={18} push={6}>
@@ -197,11 +200,12 @@ export const GridSort: Story = (_args) => {
           col-6 col-pull-18
         </Col>
       </Row>
-    </>)
+    </>
+  )
 }
 
-export const FlexStrtch: Story = (_args) => {
-  return(
+export const FlexStrtch: Story = _args => {
+  return (
     <>
       <Divider orientation="left">Percentage columns</Divider>
       <Row>
@@ -225,20 +229,21 @@ export const FlexStrtch: Story = (_args) => {
         </Col>
         <Col flex="auto">auto with no-wrap</Col>
       </Row>
-    </>)
+    </>
+  )
 }
 
 const gutters = {}
 const vgutters = {}
-const colCounts = {};
+const colCounts = {}
 
-[8, 16, 24, 32, 40, 48].forEach((value, i) => {
+;[8, 16, 24, 32, 40, 48].forEach((value, i) => {
   gutters[i] = value
-});
-[8, 16, 24, 32, 40, 48].forEach((value, i) => {
+})
+;[8, 16, 24, 32, 40, 48].forEach((value, i) => {
   vgutters[i] = value
-});
-[2, 3, 4, 6, 8, 12].forEach((value, i) => {
+})
+;[2, 3, 4, 6, 8, 12].forEach((value, i) => {
   colCounts[i] = value
 })
 
@@ -246,31 +251,31 @@ class App extends React.Component {
   state = {
     gutterKey: 1,
     vgutterKey: 1,
-    colCountKey: 2,
-  };
+    colCountKey: 2
+  }
 
   onGutterChange = gutterKey => {
     this.setState({ gutterKey })
-  };
+  }
 
   onVGutterChange = vgutterKey => {
     this.setState({ vgutterKey })
-  };
+  }
 
   onColCountChange = colCountKey => {
     this.setState({ colCountKey })
-  };
+  }
 
   render() {
     const { gutterKey, vgutterKey, colCountKey } = this.state
     const cols = []
     const colCount = colCounts[colCountKey]
     let colCode = ''
-    for (let i = 0; i < colCount; i++) {
+    for (let i = 0; i < colCount; i += 1) {
       cols.push(
         <Col key={i.toString()} span={24 / colCount}>
           <div>Column</div>
-        </Col>,
+        </Col>
       )
       colCode += `  <Col span={${24 / colCount}} />\n`
     }
@@ -318,12 +323,18 @@ class App extends React.Component {
         </Row>
         Another Row:
         <Row gutter={[gutters[gutterKey], vgutters[vgutterKey]]}>{cols}</Row>
-        <br /><Divider /><br />
-        <pre><code>{`<Row gutter={[${gutters[gutterKey]}, ${vgutters[vgutterKey]}]}>\n${colCode}\n${colCode}</Row>`}</code></pre>
-        <pre><code>{`<Row gutter={[${gutters[gutterKey]}, ${vgutters[vgutterKey]}]}>\n${colCode}</Row>`}</code></pre>
+        <br />
+        <Divider />
+        <br />
+        <pre>
+          <code>{`<Row gutter={[${gutters[gutterKey]}, ${vgutters[vgutterKey]}]}>\n${colCode}\n${colCode}</Row>`}</code>
+        </pre>
+        <pre>
+          <code>{`<Row gutter={[${gutters[gutterKey]}, ${vgutters[vgutterKey]}]}>\n${colCode}</Row>`}</code>
+        </pre>
       </>
     )
   }
 }
 
-export const Playground: Story = (_args) => <App />
+export const Playground: Story = _args => <App />

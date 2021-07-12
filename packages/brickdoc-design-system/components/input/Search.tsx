@@ -9,16 +9,13 @@ import { ConfigContext } from '../config-provider'
 import { cloneElement } from '../_util/reactNode'
 
 export interface SearchProps extends InputProps {
-  inputPrefixCls?: string;
+  inputPrefixCls?: string
   onSearch?: (
     value: string,
-    event?:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.MouseEvent<HTMLElement>
-      | React.KeyboardEvent<HTMLInputElement>,
-  ) => void;
-  enterButton?: React.ReactNode;
-  loading?: boolean;
+    event?: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLInputElement>
+  ) => void
+  enterButton?: React.ReactNode
+  loading?: boolean
 }
 
 const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
@@ -45,8 +42,8 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
   const inputRef = React.useRef<Input>(null)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e && e.target && e.type === 'click' && customOnSearch) {
-      customOnSearch((e ).target.value, e)
+    if (e?.target && e.type === 'click' && customOnSearch) {
+      customOnSearch(e.target.value, e)
     }
     if (customOnChange) {
       customOnChange(e)
@@ -68,16 +65,12 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
   const prefixCls = getPrefixCls('input-search', customizePrefixCls)
   const inputPrefixCls = getPrefixCls('input', customizeInputPrefixCls)
 
-  const searchIcon =
-    typeof enterButton === 'boolean' || typeof enterButton === 'undefined' ? (
-      <SearchOutlined />
-    ) : null
+  const searchIcon = typeof enterButton === 'boolean' || typeof enterButton === 'undefined' ? <SearchOutlined /> : null
   const btnClassName = `${prefixCls}-button`
 
   let button: React.ReactNode
   const enterButtonAsElement = (enterButton || {}) as React.ReactElement
-  const isAntdButton =
-    enterButtonAsElement.type && (enterButtonAsElement.type as typeof Button).__ANT_BUTTON
+  const isAntdButton = enterButtonAsElement.type && (enterButtonAsElement.type as typeof Button).__ANT_BUTTON
   if (isAntdButton || enterButtonAsElement.type === 'button') {
     button = cloneElement(enterButtonAsElement, {
       onMouseDown,
@@ -86,9 +79,9 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
       ...(isAntdButton
         ? {
             className: btnClassName,
-            size,
+            size
           }
-        : {}),
+        : {})
     })
   } else {
     button = (
@@ -101,8 +94,7 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
         onMouseDown={onMouseDown}
         onClick={onSearch}
         loading={loading}
-        icon={searchIcon}
-      >
+        icon={searchIcon}>
         {enterButton}
       </Button>
     )
@@ -112,8 +104,8 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
     button = [
       button,
       cloneElement(addonAfter, {
-        key: 'addonAfter',
-      }),
+        key: 'addonAfter'
+      })
     ]
   }
 
@@ -122,9 +114,9 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
     {
       [`${prefixCls}-rtl`]: direction === 'rtl',
       [`${prefixCls}-${size}`]: !!size,
-      [`${prefixCls}-with-button`]: !!enterButton,
+      [`${prefixCls}-with-button`]: !!enterButton
     },
-    className,
+    className
   )
 
   return (

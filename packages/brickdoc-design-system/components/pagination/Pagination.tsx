@@ -1,5 +1,5 @@
 import * as React from 'react'
-import RcPagination from 'rc-pagination'
+import RcPagination, { PaginationProps as RcPaginationProps } from 'rc-pagination'
 import classNames from 'classnames'
 import { Left as LeftOutlined, Right as RightOutlined, DoubleLeft as DoubleLeftOutlined, DoubleRight as DoubleRightOutlined } from '../icon'
 import MiniSelect from './MiniSelect'
@@ -119,6 +119,7 @@ const Pagination: React.FC<PaginationProps> = ({
     return (
       <RcPagination
         {...restProps}
+        itemRender={restProps.itemRender as RcPaginationProps['itemRender']}
         prefixCls={prefixCls}
         selectPrefixCls={selectPrefixCls}
         {...getIconsProps()}

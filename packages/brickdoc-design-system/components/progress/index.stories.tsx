@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Progress, ProgressProps, Space } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Progress, ProgressProps, Space } from '../'
 export default {
-  title: "ReactComponents/Progress",
+  title: 'ReactComponents/Progress',
   component: Progress,
   parameters: {
     docs: {
@@ -63,21 +63,21 @@ Properties that shared by all types.
   }
 }
 
-
-
-const Template: Story<ProgressProps> = (_args) =>
+const Template: Story<ProgressProps> = _args => (
   <>
     <Progress percent={30} />
     <Progress percent={50} status="active" />
     <Progress percent={70} status="exception" />
     <Progress percent={100} />
     <Progress percent={50} showInfo={false} />
-    <br/><br/><br/>
+    <br />
+    <br />
+    <br />
     <Space size="large">
       <Progress type="circle" percent={75} />
       <Progress type="circle" percent={70} status="exception" />
       <Progress type="dashboard" percent={75} />
     </Space>
   </>
+)
 export const Base = Template.bind({})
-

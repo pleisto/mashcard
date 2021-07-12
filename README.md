@@ -3,22 +3,21 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
 [![linter](https://github.com/brickdoc/brickdoc-enterprise/actions/workflows/ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc-enterprise/actions/workflows/ci.yml)
-> Brickdoc is built on an open core model. This is Brickdoc **Enterprise Edition** mono repository.
 
+> Brickdoc is built on an open core model. This is Brickdoc **Enterprise Edition** mono repository.
 
 BrickDoc is an open-source human intellect application and collaboration platform to Break the boundary between documents, spreadsheets, and software.
 
 ## Development
 
 Prerequisites:
-* Yarn
-* Ruby 3.0+
-* Typescript 4.1+
-* NodeJS 14+
 
+- Yarn
+- Ruby 3.0+
+- Typescript 4.1+
+- NodeJS 14+
 
 **Run `yarn install && yarn init` initialize the development environment.**
-
 
 ### yarn scripts
 
@@ -28,26 +27,24 @@ yarn commit # instead of `git commit`, equivalent to `git add . && git-cz`
 yarn lint # run eslint and rubocop
 
 # webapp
-yarn webapp:dev # start dev server
-yarn webapp:build # build dist
+yarn start # start local dev server
+bundle exec rails webpacker_compile # build dist
 
 # other npm packages
-yarn $(package-dir-name):build
-yarn $(package-dir-name):spec
+yarn $(package-dir-name) build
+yarn $(package-dir-name) test
 ```
-
 
 ## Documentation
 
 Detailed documentation is available at https://brickdoc.com/about/community-edition
 
-* If you want to set up a Brickdoc for production use, see our [Install Guide](https://brickdoc.com/about/install)
-* If you're looking for business support or hosting service, see [Brickdoc Enterprise Edition](https://brickdoc.com/pricing)
+- If you want to set up a Brickdoc for production use, see our [Install Guide](https://brickdoc.com/about/install)
+- If you're looking for business support or hosting service, see [Brickdoc Enterprise Edition](https://brickdoc.com/pricing)
 
 ## Contributing
 
 Brickdoc is an open source project and we are very happy to accept community contributions. To contribute to Brickdoc, you have to agree with the Brickdoc Contributor License Agreement.Please refer to [Contributing Documentation](CONTRIBUTING.md) for more details.
-
 
 ## Licensing
 

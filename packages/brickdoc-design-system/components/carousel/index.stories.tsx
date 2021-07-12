@@ -1,85 +1,86 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Carousel, CarouselProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Carousel, CarouselProps } from '../'
 
 const contentStyle: React.CSSProperties = {
   height: '160px',
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
-  background: '#364d79',
+  background: '#364d79'
 }
 
 export default {
-  title: "ReactComponents/Carousel",
+  title: 'ReactComponents/Carousel',
   component: Carousel,
   argTypes: {
     autoplay: {
-      description: "Whether to scroll automatically\t",
+      description: 'Whether to scroll automatically\t',
       defaultValue: false,
       control: {
         type: 'boolean'
       },
       table: {
-        type: { summary:'boolean'},
-        defaultValue: { summary:'false'}
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
       }
     },
     dotPosition: {
       description: 'The position of the dots, which can be one of top bottom left right',
       control: {
         type: 'radio',
-        options: ['top', 'bottom','left','right']
+        options: ['top', 'bottom', 'left', 'right']
       },
       table: {
-        type: { summary:'string'},
+        type: { summary: 'string' }
       }
     },
     dots: {
-      description: "Whether to show the dots at the bottom of the gallery, object for dotsClass and any others",
+      description: 'Whether to show the dots at the bottom of the gallery, object for dotsClass and any others',
       defaultValue: true,
       table: {
-        type: { summary: "boolean | { className?: string }" },
-        defaultValue: {summary: 'true'}
+        type: { summary: 'boolean | { className?: string }' },
+        defaultValue: { summary: 'true' }
       }
     },
     easing: {
-      description: "Transition interpolation function name",
+      description: 'Transition interpolation function name',
       defaultValue: 'linear',
       control: {
         type: 'text'
       },
       table: {
-        type: { summary:'string'},
+        type: { summary: 'string' }
       }
     },
     effect: {
-      description: "Transition effect",
+      description: 'Transition effect',
       defaultValue: 'scrollx',
       table: {
-        type: { summary:'scrollx | fade'},
+        type: { summary: 'scrollx | fade' }
       },
       control: {
         type: 'radio',
-        options: ['scrollx','fade']
-      },
+        options: ['scrollx', 'fade']
+      }
     },
     afterChange: {
-      description: "Callback function called after the current index changes",
+      description: 'Callback function called after the current index changes',
       table: {
-        type: { summary:'function(current)'},
+        type: { summary: 'function(current)' }
       }
     },
     beforeChange: {
-      description: "Callback function called before the current index changes",
+      description: 'Callback function called before the current index changes',
       table: {
-        type: { summary:'function(from, to)'},
+        type: { summary: 'function(from, to)' }
       }
-    },
-}, parameters: {
-  docs: {
-    description: {
-      component: `
+    }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
 A carousel component. Scales with its container.
 
 #### When To Use
@@ -96,13 +97,12 @@ A carousel component. Scales with its container.
 | blur() | Remove focus |  |
 | focus() | Get focus |  |
 `
+      }
     }
   }
 }
-}
 
-
-const Template: Story<CarouselProps> = (args) =>
+const Template: Story<CarouselProps> = args => (
   <Carousel {...args}>
     <div>
       <h3 style={contentStyle}>1</h3>
@@ -117,4 +117,5 @@ const Template: Story<CarouselProps> = (args) =>
       <h3 style={contentStyle}>4</h3>
     </div>
   </Carousel>
+)
 export const Base = Template.bind({})

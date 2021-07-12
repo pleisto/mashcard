@@ -1,20 +1,5 @@
 {
-  "compilerOptions": {
-    "outDir": "lib",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "noEmit": false,
-    "importHelpers": true,
-    "jsx": "react",
-    "sourceMap": true,
-    "baseUrl": "./",
-    "declaration": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true
-  },
-  "include": [
-    "src"
-  ],
-  "compileOnSave": true
+  "extends": "./tsconfig.build.json",
+  "include": ["**/*"],
+  "exclude": ["dist/**/*"]
 }

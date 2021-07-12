@@ -1,25 +1,22 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
-import {
-  PreviewOpen as EyeOutlined,
-  PreviewClose as EyeInvisibleOutlined
-} from '../icon'
+import { PreviewOpen as EyeOutlined, PreviewClose as EyeInvisibleOutlined } from '../icon'
 
 import { useState } from 'react'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import Input, { InputProps } from './Input'
 
 export interface PasswordProps extends InputProps {
-  readonly inputPrefixCls?: string;
-  readonly action?: string;
-  visibilityToggle?: boolean;
-  iconRender?: (visible: boolean) => React.ReactNode;
+  readonly inputPrefixCls?: string
+  readonly action?: string
+  visibilityToggle?: boolean
+  iconRender?: (visible: boolean) => React.ReactNode
 }
 
 const ActionMap: Record<string, string> = {
   click: 'onClick',
-  hover: 'onMouseOver',
+  hover: 'onMouseOver'
 }
 
 const Password = React.forwardRef<any, PasswordProps>((props, ref) => {
@@ -51,7 +48,7 @@ const Password = React.forwardRef<any, PasswordProps>((props, ref) => {
         // Prevent caret position change
         // https://github.com/ant-design/ant-design/issues/23524
         e.preventDefault()
-      },
+      }
     }
     return React.cloneElement(React.isValidElement(icon) ? icon : <span>{icon}</span>, iconProps)
   }
@@ -71,15 +68,16 @@ const Password = React.forwardRef<any, PasswordProps>((props, ref) => {
 
     const suffixIcon = visibilityToggle && getIcon(prefixCls)
     const inputClassName = classNames(prefixCls, className, {
-      [`${prefixCls}-${size}`]: !!size,
+      [`${prefixCls}-${size}`]: !!size
     })
 
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const omittedProps = {
       ...omit(restProps, ['suffix', 'iconRender']),
       type: visible ? 'text' : 'password',
       className: inputClassName,
       prefixCls: inputPrefixCls,
-      suffix: suffixIcon,
+      suffix: suffixIcon
     } as InputProps
 
     if (size) {
@@ -95,7 +93,7 @@ const Password = React.forwardRef<any, PasswordProps>((props, ref) => {
 Password.defaultProps = {
   action: 'click',
   visibilityToggle: true,
-  iconRender: (visible: boolean) => (visible ? <EyeOutlined /> : <EyeInvisibleOutlined />),
+  iconRender: (visible: boolean) => (visible ? <EyeOutlined /> : <EyeInvisibleOutlined />)
 }
 
 Password.displayName = 'Password'

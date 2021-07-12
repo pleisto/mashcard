@@ -2,32 +2,22 @@ import * as React from 'react'
 import { ModalFuncProps } from '../Modal'
 import usePatchElement from '../../_util/hooks/usePatchElement'
 import HookModal, { HookModalRef } from './HookModal'
-import {
-  withConfirm,
-  ModalStaticFunctions,
-  withInfo,
-  withSuccess,
-  withError,
-  withWarn,
-} from '../confirm'
+import { withConfirm, ModalStaticFunctions, withInfo, withSuccess, withError, withWarn } from '../confirm'
 
 let uuid = 0
 
 interface ElementsHolderRef {
-  patchElement: ReturnType<typeof usePatchElement>[1];
+  patchElement: ReturnType<typeof usePatchElement>[1]
 }
 
 const ElementsHolder = React.memo(
   React.forwardRef<ElementsHolderRef>((_props, ref) => {
     const [elements, patchElement] = usePatchElement()
-    React.useImperativeHandle(
-      ref,
-      () => ({
-        patchElement,
-      })
-    )
+    React.useImperativeHandle(ref, () => ({
+      patchElement
+    }))
     return <>{elements}</>
-  }),
+  })
 )
 
 export default function useModal(): [Omit<ModalStaticFunctions, 'warn'>, React.ReactElement] {
@@ -55,6 +45,7 @@ export default function useModal(): [Omit<ModalStaticFunctions, 'warn'>, React.R
 
         const modalRef = React.createRef<HookModalRef>()
 
+        // eslint-disable-next-line prefer-const
         let closeFunc: Function
         const modal = (
           <HookModal
@@ -91,11 +82,11 @@ export default function useModal(): [Omit<ModalStaticFunctions, 'warn'>, React.R
             } else {
               setActionQueue(prev => [...prev, updateAction])
             }
-          },
+          }
         }
       },
     /* eslint-disable react-hooks/exhaustive-deps */
-    [],
+    []
   )
 
   const fns = React.useMemo(
@@ -104,10 +95,10 @@ export default function useModal(): [Omit<ModalStaticFunctions, 'warn'>, React.R
       success: getConfirmFunc(withSuccess),
       error: getConfirmFunc(withError),
       warning: getConfirmFunc(withWarn),
-      confirm: getConfirmFunc(withConfirm),
+      confirm: getConfirmFunc(withConfirm)
     }),
     /* eslint-disable react-hooks/exhaustive-deps */
-    [],
+    []
   )
 
   // eslint-disable-next-line react/jsx-key

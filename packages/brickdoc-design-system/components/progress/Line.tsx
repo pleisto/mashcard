@@ -5,9 +5,9 @@ import { validProgress, getSuccessPercent } from './utils'
 import { DirectionType } from '../config-provider'
 
 interface LineProps extends ProgressProps {
-  prefixCls: string;
-  direction?: DirectionType;
-  children: React.ReactNode;
+  prefixCls: string
+  direction?: DirectionType
+  children: React.ReactNode
 }
 
 /**
@@ -27,7 +27,7 @@ export const sortGradient = (gradients: StringGradients) => {
     if (!isNaN(formattedKey)) {
       tempArr.push({
         key: formattedKey,
-        value: gradients[key],
+        value: gradients[key]
       })
     }
   })
@@ -73,42 +73,41 @@ const Line: React.FC<LineProps> = props => {
     strokeLinecap,
     children,
     trailColor,
-    success,
+    success
   } = props
 
   const backgroundProps =
     strokeColor && typeof strokeColor !== 'string'
       ? handleGradient(strokeColor, directionConfig)
       : {
-          background: strokeColor,
+          background: strokeColor
         }
 
   const trailStyle = trailColor
     ? {
-        backgroundColor: trailColor,
+        backgroundColor: trailColor
       }
     : undefined
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const percentStyle = {
     width: `${validProgress(percent)}%`,
     height: strokeWidth || (size === 'small' ? 6 : 8),
     borderRadius: strokeLinecap === 'square' ? 0 : '',
-    ...backgroundProps,
+    ...backgroundProps
   } as React.CSSProperties
 
   const successPercent = getSuccessPercent(props)
 
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const successPercentStyle = {
     width: `${validProgress(successPercent)}%`,
     height: strokeWidth || (size === 'small' ? 6 : 8),
     borderRadius: strokeLinecap === 'square' ? 0 : '',
-    backgroundColor: success?.strokeColor,
+    backgroundColor: success?.strokeColor
   } as React.CSSProperties
 
-  const successSegment =
-    successPercent !== undefined ? (
-      <div className={`${prefixCls}-success-bg`} style={successPercentStyle} />
-    ) : null
+  const successSegment = successPercent !== undefined ? <div className={`${prefixCls}-success-bg`} style={successPercentStyle} /> : null
 
   return (
     <>

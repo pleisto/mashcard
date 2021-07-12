@@ -5,20 +5,20 @@ import { cloneElement } from '../_util/reactNode'
 import SingleNumber from './SingleNumber'
 
 export interface ScrollNumberProps {
-  prefixCls?: string;
-  className?: string;
-  motionClassName?: string;
-  count?: string | number | null;
-  children?: React.ReactElement<HTMLElement>;
-  component?: string;
-  style?: React.CSSProperties;
-  title?: string | number | null;
-  show: boolean;
+  prefixCls?: string
+  className?: string
+  motionClassName?: string
+  count?: string | number | null
+  children?: React.ReactElement<HTMLElement>
+  component?: string
+  style?: React.CSSProperties
+  title?: string | number | null
+  show: boolean
 }
 
 export interface ScrollNumberState {
-  animateStarted?: boolean;
-  count?: string | number | null;
+  animateStarted?: boolean
+  count?: string | number | null
 }
 
 const ScrollNumber: React.FC<ScrollNumberProps> = ({
@@ -42,7 +42,7 @@ const ScrollNumber: React.FC<ScrollNumberProps> = ({
     'data-show': show,
     style,
     className: classNames(prefixCls, className, motionClassName),
-    title: title as string,
+    title: title as string
   }
 
   // Only integer need motion
@@ -64,15 +64,15 @@ const ScrollNumber: React.FC<ScrollNumberProps> = ({
   // allow specify the border
   // mock border-color by box-shadow for compatible with old usage:
   // <Badge count={4} style={{ backgroundColor: '#fff', color: '#999', borderColor: '#d9d9d9' }} />
-  if (style && style.borderColor) {
+  if (style?.borderColor) {
     newProps.style = {
       ...style,
-      boxShadow: `0 0 0 1px ${style.borderColor} inset`,
+      boxShadow: `0 0 0 1px ${style.borderColor} inset`
     }
   }
   if (children) {
     return cloneElement(children, oriProps => ({
-      className: classNames(`${prefixCls}-custom-component`, oriProps?.className, motionClassName),
+      className: classNames(`${prefixCls}-custom-component`, oriProps?.className, motionClassName)
     }))
   }
   return React.createElement(component as any, newProps, numberNodes)

@@ -1,19 +1,22 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Menu, MenuProps, Button } from "../../"
-import { Mail as MailOutlined, AppStore as  AppstoreOutlined,
+/* eslint-disable max-classes-per-file */
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Menu, MenuProps, Button } from '../'
+import {
+  Mail as MailOutlined,
+  AppStore as AppstoreOutlined,
   Setting as SettingOutlined,
   MenuUnfold as MenuUnfoldOutlined,
   MenuFold as MenuFoldOutlined
 } from '../icon'
 
 export default {
-  title: "ReactComponents/Menu",
+  title: 'ReactComponents/Menu',
   component: Menu,
   parameters: {
-  docs: {
-    description: {
-      component: `
+    docs: {
+      description: {
+        component: `
 A versatile menu for navigation.
 
 #### When To Use
@@ -113,22 +116,22 @@ More layouts with navigation: Layout.
 
 Divider line in between menu items, only used in vertical popup Menu or Dropdown Menu.
 `
+      }
     }
   }
-}
 }
 
 const { SubMenu } = Menu
 
 class App extends React.Component {
   state = {
-    current: 'mail',
-  };
+    current: 'mail'
+  }
 
   handleClick = e => {
     console.log('click ', e)
     this.setState({ current: e.key })
-  };
+  }
 
   render() {
     const { current } = this.state
@@ -160,25 +163,23 @@ class App extends React.Component {
   }
 }
 
-
-
-const Template: Story<MenuProps> = (_args) =>
+const Template: Story<MenuProps> = _args => (
   <>
     <App />
   </>
+)
 export const Base = Template.bind({})
-
 
 class InlineMenuApp extends React.Component {
   state = {
-    collapsed: false,
-  };
+    collapsed: false
+  }
 
   toggleCollapsed = () => {
     this.setState({
-      collapsed: !this.state.collapsed,
+      collapsed: !this.state.collapsed
     })
-  };
+  }
 
   render() {
     return (
@@ -186,13 +187,7 @@ class InlineMenuApp extends React.Component {
         <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
           {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
         </Button>
-        <Menu
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
-          mode="inline"
-          theme="dark"
-          inlineCollapsed={this.state.collapsed}
-        >
+        <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark" inlineCollapsed={this.state.collapsed}>
           <Menu.Item key="1" icon={<AppstoreOutlined />}>
             Option 1
           </Menu.Item>
@@ -222,7 +217,6 @@ class InlineMenuApp extends React.Component {
   }
 }
 
-export const CollapsedInlineMenu: Story = (_args) => {
-  return(
-    <InlineMenuApp />)
+export const CollapsedInlineMenu: Story = _args => {
+  return <InlineMenuApp />
 }

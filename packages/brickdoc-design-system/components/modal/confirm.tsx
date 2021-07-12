@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {
   CheckOne as CheckCircleOutlined,
-  CloseOne as  CloseCircleOutlined,
+  CloseOne as CloseCircleOutlined,
   Attention as ExclamationCircleOutlined,
   Info as InfoCircleOutlined
 } from '../icon'
@@ -18,16 +18,12 @@ function getRootPrefixCls() {
   return defaultRootPrefixCls
 }
 
-type ConfigUpdate = ModalFuncProps | ((prevConfig: ModalFuncProps) => ModalFuncProps);
+export type ModalFunc = (props: ModalFuncProps) => {
+  destroy: () => void
+  update: (props: ModalFuncProps) => void
+}
 
-export type ModalFunc = (
-  props: ModalFuncProps,
-) => {
-  destroy: () => void;
-  update: (configUpdate: ConfigUpdate) => void;
-};
-
-export type ModalStaticFunctions = Record<NonNullable<ModalFuncProps['type']>, ModalFunc>;
+export type ModalStaticFunctions = Record<NonNullable<ModalFuncProps['type']>, ModalFunc>
 
 export default function confirm(config: ModalFuncProps) {
   const div = document.createElement('div')
@@ -40,11 +36,11 @@ export default function confirm(config: ModalFuncProps) {
     if (unmountResult && div.parentNode) {
       div.parentNode.removeChild(div)
     }
-    const triggerCancel = args.some(param => param && param.triggerCancel)
+    const triggerCancel = args.some(param => param?.triggerCancel)
     if (config.onCancel && triggerCancel) {
       config.onCancel(...args)
     }
-    for (let i = 0; i < destroyFns.length; i++) {
+    for (let i = 0; i < destroyFns.length; i += 1) {
       const fn = destroyFns[i]
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
       if (fn === close) {
@@ -75,7 +71,7 @@ export default function confirm(config: ModalFuncProps) {
           okText={okText || (props.okCancel ? runtimeLocale.okText : runtimeLocale.justOkText)}
           cancelText={cancelText || runtimeLocale.cancelText}
         />,
-        div,
+        div
       )
     })
   }
@@ -88,21 +84,17 @@ export default function confirm(config: ModalFuncProps) {
         if (typeof config.afterClose === 'function') {
           config.afterClose()
         }
-        // @ts-ignore
+        // @ts-expect-error
         destroy.apply(this, args)
-      },
+      }
     }
     render(currentConfig)
   }
 
-  function update(configUpdate: ConfigUpdate) {
-    if (typeof configUpdate === 'function') {
-      currentConfig = configUpdate(currentConfig)
-    } else {
-      currentConfig = {
-        ...currentConfig,
-        ...configUpdate,
-      }
+  function update(props: ModalFuncProps) {
+    currentConfig = {
+      ...currentConfig,
+      ...props
     }
     render(currentConfig)
   }
@@ -113,7 +105,7 @@ export default function confirm(config: ModalFuncProps) {
 
   return {
     destroy: close,
-    update,
+    update
   }
 }
 
@@ -122,7 +114,7 @@ export function withWarn(props: ModalFuncProps): ModalFuncProps {
     icon: <ExclamationCircleOutlined />,
     okCancel: false,
     ...props,
-    type: 'warning',
+    type: 'warning'
   }
 }
 
@@ -131,7 +123,7 @@ export function withInfo(props: ModalFuncProps): ModalFuncProps {
     icon: <InfoCircleOutlined />,
     okCancel: false,
     ...props,
-    type: 'info',
+    type: 'info'
   }
 }
 
@@ -140,7 +132,7 @@ export function withSuccess(props: ModalFuncProps): ModalFuncProps {
     icon: <CheckCircleOutlined />,
     okCancel: false,
     ...props,
-    type: 'success',
+    type: 'success'
   }
 }
 
@@ -149,7 +141,7 @@ export function withError(props: ModalFuncProps): ModalFuncProps {
     icon: <CloseCircleOutlined />,
     okCancel: false,
     ...props,
-    type: 'error',
+    type: 'error'
   }
 }
 
@@ -158,15 +150,11 @@ export function withConfirm(props: ModalFuncProps): ModalFuncProps {
     icon: <ExclamationCircleOutlined />,
     okCancel: true,
     ...props,
-    type: 'confirm',
+    type: 'confirm'
   }
 }
 
 export function modalGlobalConfig({ rootPrefixCls }: { rootPrefixCls: string }) {
-  devWarning(
-    false,
-    'Modal',
-    'Modal.config is deprecated. Please use ConfigProvider.config instead.',
-  )
+  devWarning(false, 'Modal', 'Modal.config is deprecated. Please use ConfigProvider.config instead.')
   defaultRootPrefixCls = rootPrefixCls
 }

@@ -12,50 +12,40 @@ function loadingFilterOption() {
   return true
 }
 
-export type MentionPlacement = 'top' | 'bottom';
+export type MentionPlacement = 'top' | 'bottom'
 
 export interface OptionProps {
-  value: string;
-  children: React.ReactNode;
-  [key: string]: any;
+  value: string
+  children: React.ReactNode
+  [key: string]: any
 }
 
 export interface MentionProps extends RcMentionsProps {
-  loading?: boolean;
+  loading?: boolean
 }
 
 export interface MentionState {
-  focused: boolean;
+  focused: boolean
 }
 
 interface MentionsConfig {
-  prefix?: string | string[];
-  split?: string;
+  prefix?: string | string[]
+  split?: string
 }
 
 interface MentionsEntity {
-  prefix: string;
-  value: string;
+  prefix: string
+  value: string
 }
 
-interface CompoundedComponent
-  extends React.ForwardRefExoticComponent<MentionProps & React.RefAttributes<HTMLElement>> {
-  Option: typeof Option;
-  getMentions: (value: string, config?: MentionsConfig) => MentionsEntity[];
+export interface CompoundedComponent extends React.ForwardRefExoticComponent<MentionProps & React.RefAttributes<HTMLElement>> {
+  Option: typeof Option
+  getMentions: (value: string, config?: MentionsConfig) => MentionsEntity[]
 }
 
 const InternalMentions: React.ForwardRefRenderFunction<unknown, MentionProps> = (
-  {
-    prefixCls: customizePrefixCls,
-    className,
-    disabled,
-    loading,
-    filterOption,
-    children,
-    notFoundContent,
-    ...restProps
-  },
-  ref,
+  { prefixCls: customizePrefixCls, className, disabled, loading, filterOption, children, notFoundContent, ...restProps },
+  ref
 ) => {
   const [focused, setFocused] = React.useState(false)
   const innerRef = React.useRef<HTMLElement>()
@@ -110,9 +100,9 @@ const InternalMentions: React.ForwardRefRenderFunction<unknown, MentionProps> = 
     {
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-focused`]: focused,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
 
   return (
@@ -126,8 +116,7 @@ const InternalMentions: React.ForwardRefRenderFunction<unknown, MentionProps> = 
       filterOption={getFilterOption()}
       onFocus={onFocus}
       onBlur={onBlur}
-      ref={mergedRef as any}
-    >
+      ref={mergedRef as any}>
       {getOptions()}
     </RcMentions>
   )
@@ -158,7 +147,7 @@ Mentions.getMentions = (value: string = '', config?: MentionsConfig): MentionsEn
       if (hitPrefix !== null) {
         return {
           prefix: hitPrefix,
-          value: str.slice(hitPrefix.length),
+          value: str.slice(hitPrefix.length)
         }
       }
       return null

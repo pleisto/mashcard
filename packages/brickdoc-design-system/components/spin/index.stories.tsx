@@ -1,9 +1,9 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Spin, SpinProps, Space, Alert } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Spin, SpinProps, Space, Alert } from '../'
 import { Rotation as LoadingOutlined } from '../icon'
 export default {
-  title: "ReactComponents/Spin",
+  title: 'ReactComponents/Spin',
   component: Spin,
   parameters: {
     docs: {
@@ -38,25 +38,21 @@ When part of the page is waiting for asynchronous data or during a rendering pro
   }
 }
 
-
-
-const Template: Story<SpinProps> = (_args) =>
+const Template: Story<SpinProps> = _args => (
   <>
     <Space size="middle">
       <Spin size="small" />
       <Spin />
       <Spin size="large" />
     </Space>
-    <br/><br/>
+    <br />
+    <br />
     <Spin tip="Loading...">
-      <Alert
-        message="Alert message title"
-        description="Further details about the context of this alert."
-        type="info"
-      />
+      <Alert message="Alert message title" description="Further details about the context of this alert." type="info" />
     </Spin>
-    <br/><br/>
+    <br />
+    <br />
     <Spin indicator={<LoadingOutlined spin size={24} />} />
   </>
+)
 export const Base = Template.bind({})
-

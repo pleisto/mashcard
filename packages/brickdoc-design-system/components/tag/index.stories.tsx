@@ -1,9 +1,9 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Tag, TagProps } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Tag, TagProps } from '../'
 import { Twitter } from '../icon'
 export default {
-  title: "ReactComponents/Tag",
+  title: 'ReactComponents/Tag',
   component: Tag,
   parameters: {
     docs: {
@@ -45,17 +45,14 @@ Tag for categorizing or markup.
 
 const { CheckableTag } = Tag
 
-
-const Template: Story<TagProps> = (_args) =>
+const Template: Story<TagProps> = _args => (
   <>
     <Tag>Tag 1</Tag>
     <Tag>
       <a href="https://github.com/ant-design/ant-design/issues/1862">Link</a>
     </Tag>
-    <Tag closable >
-      Tag 2
-    </Tag>
-    <CheckableTag>CheckableTag</CheckableTag>
+    <Tag closable>Tag 2</Tag>
+    <CheckableTag checked={false}>CheckableTag</CheckableTag>
     <CheckableTag checked>CheckableTag</CheckableTag>
     <Tag color="magenta">magenta</Tag>
     <Tag color="red">red</Tag>
@@ -68,5 +65,5 @@ const Template: Story<TagProps> = (_args) =>
       Twitter
     </Tag>
   </>
+)
 export const Base = Template.bind({})
-

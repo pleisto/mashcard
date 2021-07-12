@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Skeleton, SkeletonProps, Space } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Skeleton, SkeletonProps, Space } from '../'
 export default {
-  title: "ReactComponents/Skeleton",
+  title: 'ReactComponents/Skeleton',
   component: Skeleton,
   parameters: {
     docs: {
@@ -71,14 +71,14 @@ Provide a placeholder while you wait for content to load, or to visualise conten
   }
 }
 
-
-
-const Template: Story<SkeletonProps> = (_args) =>
+const Template: Story<SkeletonProps> = _args => (
   <>
     <Skeleton avatar paragraph={{ rows: 4 }} />
-    <br/><br/>
+    <br />
+    <br />
     <Skeleton active />
-    <br/><br/>
+    <br />
+    <br />
     <Skeleton loading={true}>
       <div>
         <h4>《知行录》</h4>
@@ -88,13 +88,14 @@ const Template: Story<SkeletonProps> = (_args) =>
         </p>
       </div>
     </Skeleton>
-    <br/><br/>
+    <br />
+    <br />
     <Space>
-      <Skeleton.Button  />
-      <Skeleton.Button  />
-      <Skeleton.Avatar  />
-      <Skeleton.Input style={{ width: 200 }}  />
+      <Skeleton.Button />
+      <Skeleton.Button />
+      <Skeleton.Avatar />
+      <Skeleton.Input style={{ width: 200 }} />
     </Space>
   </>
+)
 export const Base = Template.bind({})
-

@@ -9,23 +9,23 @@ const defaultEmptyImg = <DefaultEmptyImg />
 const simpleEmptyImg = <SimpleEmptyImg />
 
 export interface TransferLocale {
-  description: string;
+  description: string
 }
 
 export interface EmptyProps {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
+  prefixCls?: string
+  className?: string
+  style?: React.CSSProperties
   /** @since 3.16.0 */
-  imageStyle?: React.CSSProperties;
-  image?: React.ReactNode;
-  description?: React.ReactNode;
-  children?: React.ReactNode;
+  imageStyle?: React.CSSProperties
+  image?: React.ReactNode
+  description?: React.ReactNode
+  children?: React.ReactNode
 }
 
-interface EmptyType extends React.FC<EmptyProps> {
-  PRESENTED_IMAGE_DEFAULT: React.ReactNode;
-  PRESENTED_IMAGE_SIMPLE: React.ReactNode;
+export interface EmptyType extends React.FC<EmptyProps> {
+  PRESENTED_IMAGE_DEFAULT: React.ReactNode
+  PRESENTED_IMAGE_SIMPLE: React.ReactNode
 }
 
 const Empty: EmptyType = ({
@@ -60,12 +60,11 @@ const Empty: EmptyType = ({
               prefixCls,
               {
                 [`${prefixCls}-normal`]: image === simpleEmptyImg,
-                [`${prefixCls}-rtl`]: direction === 'rtl',
+                [`${prefixCls}-rtl`]: direction === 'rtl'
               },
-              className,
+              className
             )}
-            {...restProps}
-          >
+            {...restProps}>
             <div className={`${prefixCls}-image`} style={imageStyle}>
               {imageNode}
             </div>

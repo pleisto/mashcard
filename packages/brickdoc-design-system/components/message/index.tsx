@@ -1,22 +1,20 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import RCNotification from 'rc-notification'
-import { IconProvider ,
+import {
+  IconProvider,
   Attention as ExclamationCircleFilled,
   Info as InfoCircleFilled,
   CheckOne as CheckCircleFilled,
   CloseOne as CloseCircleFilled,
   Rotation as LoadingOutlined
 } from '../icon'
-import {
-  NotificationInstance as RCNotificationInstance,
-  NoticeContent,
-} from 'rc-notification/lib/Notification'
+import { NotificationInstance as RCNotificationInstance, NoticeContent } from 'rc-notification/lib/Notification'
 
 import createUseMessage from './hooks/useMessage'
 import { globalConfig } from '../config-provider'
 
-type NoticeType = 'info' | 'success' | 'error' | 'warning' | 'loading';
+type NoticeType = 'info' | 'success' | 'error' | 'warning' | 'loading'
 
 let messageInstance: RCNotificationInstance | null
 let defaultDuration = 3
@@ -30,17 +28,18 @@ let maxCount: number
 let rtl = false
 
 export function getKeyThenIncreaseKey() {
+  // eslint-disable-next-line no-plusplus
   return key++
 }
 
 export interface ConfigOptions {
-  top?: number;
-  duration?: number;
-  prefixCls?: string;
-  getContainer?: () => HTMLElement;
-  transitionName?: string;
-  maxCount?: number;
-  rtl?: boolean;
+  top?: number
+  duration?: number
+  prefixCls?: string
+  getContainer?: () => HTMLElement
+  transitionName?: string
+  maxCount?: number
+  rtl?: boolean
 }
 
 function setMessageConfig(options: ConfigOptions) {
@@ -74,11 +73,7 @@ function setMessageConfig(options: ConfigOptions) {
 
 function getRCNotificationInstance(
   args: ArgsProps,
-  callback: (info: {
-    prefixCls: string;
-    rootPrefixCls: string;
-    instance: RCNotificationInstance;
-  }) => void,
+  callback: (info: { prefixCls: string; rootPrefixCls: string; instance: RCNotificationInstance }) => void
 ) {
   const { prefixCls: customizePrefixCls } = args
   const { getPrefixCls, getRootPrefixCls } = globalConfig()
@@ -86,6 +81,7 @@ function getRCNotificationInstance(
   const rootPrefixCls = getRootPrefixCls(args.rootPrefixCls, prefixCls)
 
   if (messageInstance) {
+    // eslint-disable-next-line node/no-callback-literal
     callback({ prefixCls, rootPrefixCls, instance: messageInstance })
     return
   }
@@ -95,28 +91,30 @@ function getRCNotificationInstance(
     transitionName: hasTransitionName ? transitionName : `${rootPrefixCls}-${transitionName}`,
     style: { top: defaultTop }, // 覆盖原来的样式
     getContainer,
-    maxCount,
+    maxCount
   }
 
   RCNotification.newInstance(instanceConfig, (instance: any) => {
     if (messageInstance) {
+      // eslint-disable-next-line node/no-callback-literal
       callback({ prefixCls, rootPrefixCls, instance: messageInstance })
       return
     }
     messageInstance = instance
 
     if (process.env.NODE_ENV === 'test') {
-      (messageInstance as any).config = instanceConfig
+      ;(messageInstance as any).config = instanceConfig
     }
 
+    // eslint-disable-next-line node/no-callback-literal
     callback({ prefixCls, rootPrefixCls, instance })
   })
 }
 
-export type ThenableArgument = (val: any) => void;
+export type ThenableArgument = (val: any) => void
 
 export interface MessageType extends PromiseLike<any> {
-  (): void;
+  (): void
 }
 
 const typeToIcon = {
@@ -124,20 +122,20 @@ const typeToIcon = {
   success: CheckCircleFilled,
   error: CloseCircleFilled,
   warning: ExclamationCircleFilled,
-  loading: LoadingOutlined,
+  loading: LoadingOutlined
 }
 export interface ArgsProps {
-  content: React.ReactNode;
-  duration: number | null;
-  type: NoticeType;
-  prefixCls?: string;
-  rootPrefixCls?: string;
-  onClose?: () => void;
-  icon?: React.ReactNode;
-  key?: string | number;
-  style?: React.CSSProperties;
-  className?: string;
-  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
+  content: React.ReactNode
+  duration: number | null
+  type: NoticeType
+  prefixCls?: string
+  rootPrefixCls?: string
+  onClose?: () => void
+  icon?: React.ReactNode
+  key?: string | number
+  style?: React.CSSProperties
+  className?: string
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
 function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
@@ -145,7 +143,7 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
   const IconComponent = typeToIcon[args.type]
   const messageClass = classNames(`${prefixCls}-custom-content`, {
     [`${prefixCls}-${args.type}`]: args.type,
-    [`${prefixCls}-rtl`]: rtl,
+    [`${prefixCls}-rtl`]: rtl
   })
   const isLoading = args.type === 'loading'
   return {
@@ -155,18 +153,22 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
     className: args.className,
     content: (
       <div className={messageClass}>
-        {args.icon || (IconComponent && <IconProvider value={globalConfig().getIconDefaultConfig(rtl)}>
-          <IconComponent spin={isLoading} theme={isLoading ? 'outline':'filled'} />
-        </IconProvider>)}
+        {args.icon ||
+          (IconComponent && (
+            <IconProvider value={globalConfig().getIconDefaultConfig(rtl)}>
+              <IconComponent spin={isLoading} theme={isLoading ? 'outline' : 'filled'} />
+            </IconProvider>
+          ))}
         <span>{args.content}</span>
       </div>
     ),
     onClose: args.onClose,
-    onClick: args.onClick,
+    onClick: args.onClick
   }
 }
 
 function notice(args: ArgsProps): MessageType {
+  // eslint-disable-next-line no-plusplus
   const target = args.key || key++
   const closePromise = new Promise(resolve => {
     const callback = () => {
@@ -185,22 +187,18 @@ function notice(args: ArgsProps): MessageType {
       messageInstance.removeNotice(target)
     }
   }
-  result.then = async (filled: ThenableArgument, rejected: ThenableArgument) =>
-    await closePromise.then(filled, rejected)
+  result.then = async (filled: ThenableArgument, rejected: ThenableArgument) => await closePromise.then(filled, rejected)
   result.promise = closePromise
   return result
 }
 
-type ConfigContent = React.ReactNode | string;
-type ConfigDuration = number | (() => void);
-type JointContent = ConfigContent | ArgsProps;
-export type ConfigOnClose = () => void;
+type ConfigContent = React.ReactNode | string
+type ConfigDuration = number | (() => void)
+type JointContent = ConfigContent | ArgsProps
+export type ConfigOnClose = () => void
 
 function isArgsProps(content: JointContent): content is ArgsProps {
-  return (
-    Object.prototype.toString.call(content) === '[object Object]' &&
-    !!(content as ArgsProps).content
-  )
+  return Object.prototype.toString.call(content) === '[object Object]' && !!(content as ArgsProps).content
 }
 
 const api: any = {
@@ -217,21 +215,19 @@ const api: any = {
         messageInstance = null
       }
     }
-  },
+  }
 }
 
 export function attachTypeApi(originalApi: any, type: string) {
-  originalApi[type] = (
-    content: JointContent,
-    duration?: ConfigDuration,
-    onClose?: ConfigOnClose,
-  ) => {
+  originalApi[type] = (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => {
     if (isArgsProps(content)) {
       return originalApi.open({ ...content, type })
     }
 
     if (typeof duration === 'function') {
+      // eslint-disable-next-line no-param-reassign
       onClose = duration
+      // eslint-disable-next-line no-param-reassign
       duration = undefined
     }
 
@@ -239,25 +235,25 @@ export function attachTypeApi(originalApi: any, type: string) {
   }
 }
 
-['success', 'info', 'warning', 'error', 'loading'].forEach(type => attachTypeApi(api, type))
+;['success', 'info', 'warning', 'error', 'loading'].forEach(type => attachTypeApi(api, type))
 
 api.warn = api.warning
 api.useMessage = createUseMessage(getRCNotificationInstance, getRCNoticeProps)
 
 export interface MessageInstance {
-  info: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  success: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  error: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  warning: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  loading: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  open: (args: ArgsProps) => MessageType;
+  info: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType
+  success: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType
+  error: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType
+  warning: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType
+  loading: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType
+  open: (args: ArgsProps) => MessageType
 }
 
 export interface MessageApi extends MessageInstance {
-  warn: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType;
-  config: (options: ConfigOptions) => void;
-  destroy: (messageKey?: React.Key) => void;
-  useMessage: () => [MessageInstance, React.ReactElement];
+  warn: (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => MessageType
+  config: (options: ConfigOptions) => void
+  destroy: (messageKey?: React.Key) => void
+  useMessage: () => [MessageInstance, React.ReactElement]
 }
 
 /** @private test Only function. Not work on production */

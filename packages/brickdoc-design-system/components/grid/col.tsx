@@ -4,33 +4,33 @@ import RowContext from './RowContext'
 import { ConfigContext } from '../config-provider'
 
 // https://github.com/ant-design/ant-design/issues/14324
-type ColSpanType = number | string;
+type ColSpanType = number | string
 
-type FlexType = number | 'none' | 'auto' | string;
+type FlexType = number | 'none' | 'auto' | string
 
 export interface ColSize {
-  flex?: FlexType;
-  span?: ColSpanType;
-  order?: ColSpanType;
-  offset?: ColSpanType;
-  push?: ColSpanType;
-  pull?: ColSpanType;
+  flex?: FlexType
+  span?: ColSpanType
+  order?: ColSpanType
+  offset?: ColSpanType
+  push?: ColSpanType
+  pull?: ColSpanType
 }
 
 export interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
-  flex?: FlexType;
-  span?: ColSpanType;
-  order?: ColSpanType;
-  offset?: ColSpanType;
-  push?: ColSpanType;
-  pull?: ColSpanType;
-  xs?: ColSpanType | ColSize;
-  sm?: ColSpanType | ColSize;
-  md?: ColSpanType | ColSize;
-  lg?: ColSpanType | ColSize;
-  xl?: ColSpanType | ColSize;
-  xxl?: ColSpanType | ColSize;
-  prefixCls?: string;
+  flex?: FlexType
+  span?: ColSpanType
+  order?: ColSpanType
+  offset?: ColSpanType
+  push?: ColSpanType
+  pull?: ColSpanType
+  xs?: ColSpanType | ColSize
+  sm?: ColSpanType | ColSize
+  md?: ColSpanType | ColSize
+  lg?: ColSpanType | ColSize
+  xl?: ColSpanType | ColSize
+  xxl?: ColSpanType | ColSize
+  prefixCls?: string
 }
 
 function parseFlex(flex: FlexType): string {
@@ -49,19 +49,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
   const { gutter, wrap, supportFlexGap } = React.useContext(RowContext)
 
-  const {
-    prefixCls: customizePrefixCls,
-    span,
-    order,
-    offset,
-    push,
-    pull,
-    className,
-    children,
-    flex,
-    style,
-    ...others
-  } = props
+  const { prefixCls: customizePrefixCls, span, order, offset, push, pull, className, children, flex, style, ...others } = props
 
   const prefixCls = getPrefixCls('col', customizePrefixCls)
 
@@ -75,17 +63,17 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
       sizeProps = propSize || {}
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete others[size]
 
     sizeClassObj = {
       ...sizeClassObj,
       [`${prefixCls}-${size}-${sizeProps.span}`]: sizeProps.span !== undefined,
       [`${prefixCls}-${size}-order-${sizeProps.order}`]: sizeProps.order || sizeProps.order === 0,
-      [`${prefixCls}-${size}-offset-${sizeProps.offset}`]:
-        sizeProps.offset || sizeProps.offset === 0,
+      [`${prefixCls}-${size}-offset-${sizeProps.offset}`]: sizeProps.offset || sizeProps.offset === 0,
       [`${prefixCls}-${size}-push-${sizeProps.push}`]: sizeProps.push || sizeProps.push === 0,
       [`${prefixCls}-${size}-pull-${sizeProps.pull}`]: sizeProps.pull || sizeProps.pull === 0,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     }
   })
 
@@ -96,10 +84,10 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
       [`${prefixCls}-order-${order}`]: order,
       [`${prefixCls}-offset-${offset}`]: offset,
       [`${prefixCls}-push-${push}`]: push,
-      [`${prefixCls}-pull-${pull}`]: pull,
+      [`${prefixCls}-pull-${pull}`]: pull
     },
     className,
-    sizeClassObj,
+    sizeClassObj
   )
 
   const mergedStyle: React.CSSProperties = {}

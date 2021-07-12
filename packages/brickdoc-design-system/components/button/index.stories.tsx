@@ -1,12 +1,12 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Button, ButtonProps, Space, Menu, Dropdown } from '../../'
+import { Button, ButtonProps, Space, Menu, Dropdown } from '../'
 import { Search, Download } from '../icon'
 
-export default  {
+export default {
   title: 'ReactComponents/Button',
   component: Button,
-  argTypes:{
+  argTypes: {
     block: {
       description: 'Option to fit button width to its parent width',
       defaultValue: false,
@@ -61,11 +61,12 @@ export default  {
       }
     },
     htmlType: {
-      description: 'Set the original html type of button, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type)',
+      description:
+        'Set the original html type of button, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type)',
       defaultValue: 'button',
       control: {
         type: 'radio',
-        options: ['button','reset','submit']
+        options: ['button', 'reset', 'submit']
       },
       table: {
         type: { summary: 'string' }
@@ -89,14 +90,14 @@ export default  {
       description: 'Can be set button shape',
       control: {
         type: 'radio',
-        options: ['circle','round', undefined]
+        options: ['circle', 'round', undefined]
       },
       table: {
         type: { summary: 'circle | round' }
       }
     },
-    type:{
-      control:{
+    type: {
+      control: {
         type: 'select',
         options: ['primary', 'ghost', 'dashed', 'link', 'text', 'default']
       },
@@ -115,19 +116,19 @@ export default  {
         type: { summary: 'large | middle | small' }
       }
     },
-    target:{
+    target: {
       description: 'Same as target attribute of a, works when href is specified',
-      control:{
+      control: {
         type: 'text'
       },
       table: {
         type: { summary: 'string' }
       }
     },
-    onClick:{
+    onClick: {
       description: 'Set the handler to handle `click` event',
-      table:{
-        type: { summary: '(event) => void'}
+      table: {
+        type: { summary: '(event) => void' }
       }
     }
   },
@@ -160,11 +161,7 @@ And 4 other properties additionally.
   }
 }
 
-
-
-
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
-
+const Template: Story<ButtonProps> = args => <Button {...args} />
 
 export const Base = Template.bind({})
 
@@ -173,8 +170,7 @@ Base.args = {
   children: 'Primary Button'
 }
 
-
-export const Type: Story<ButtonProps> = (_args) => (
+export const Type: Story<ButtonProps> = _args => (
   <Space>
     <Button type="primary">Primary Button</Button>
     <Button>Default Button</Button>
@@ -192,17 +188,15 @@ Type.parameters = {
   }
 }
 
-export const Icon: Story<ButtonProps> = (_args) => (
+export const Icon: Story<ButtonProps> = _args => (
   <Space>
     <Button type="primary" shape="circle" icon={<Search />} />
     <Button type="primary" icon={<Search />}>
       Search
     </Button>
     <Button icon={<Download />} />
-    <Button  shape="circle" icon={<Download />} />
-    <Button  icon={<Download />}>
-      Download
-    </Button>
+    <Button shape="circle" icon={<Download />} />
+    <Button icon={<Download />}>Download</Button>
   </Space>
 )
 
@@ -219,14 +213,12 @@ Icon.parameters = {
   }
 }
 
-export const Loading: Story<ButtonProps> = (_args) => (
+export const Loading: Story<ButtonProps> = _args => (
   <Space>
     <Button type="primary" loading>
       Loading
     </Button>
-    <Button  loading>
-      Doc is Loading...
-    </Button>
+    <Button loading>Doc is Loading...</Button>
   </Space>
 )
 
@@ -239,14 +231,15 @@ A loading indicator can be added to a button by setting the \`loading\` property
   }
 }
 
+const menu = (
+  <Menu>
+    <Menu.Item key="1">1st item</Menu.Item>
+    <Menu.Item key="2">2nd item</Menu.Item>
+    <Menu.Item key="3">3rd item</Menu.Item>
+  </Menu>
+)
 
-const menu = (<Menu>
-  <Menu.Item key="1">1st item</Menu.Item>
-  <Menu.Item key="2">2nd item</Menu.Item>
-  <Menu.Item key="3">3rd item</Menu.Item>
-</Menu>)
-
-export const MultipleButtons: Story<ButtonProps> = (_args) => (
+export const MultipleButtons: Story<ButtonProps> = _args => (
   <Space>
     <>
       <Button type="primary">primary</Button>
@@ -266,18 +259,21 @@ than three operations, you can group some of them into \`Dropdown.Button\`.`
   }
 }
 
-export const BlockButton: Story<ButtonProps> = (_args) => (
+export const BlockButton: Story<ButtonProps> = _args => (
   <>
     <Button type="primary" block>
       Primary
     </Button>
-    <br/><br/>
+    <br />
+    <br />
     <Button block>Default</Button>
-    <br/><br/>
+    <br />
+    <br />
     <Button type="dashed" block>
       Dashed
     </Button>
-    <br/><br/>
+    <br />
+    <br />
     <Button type="link" block>
       Link
     </Button>

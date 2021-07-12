@@ -1,8 +1,8 @@
-import React from "react"
-import { Story } from "@storybook/react"
-import { Pagination, PaginationProps, Space } from "../../"
+import React from 'react'
+import { Story } from '@storybook/react'
+import { Pagination, PaginationProps, Space } from '../'
 export default {
-  title: "ReactComponents/Pagination",
+  title: 'ReactComponents/Pagination',
   component: Pagination,
   parameters: {
     docs: {
@@ -51,17 +51,10 @@ A long list can be divided into several pages using \`Pagination\`, and only one
 function showTotal(total) {
   return `Total ${total} items`
 }
-const Template: Story<PaginationProps> = (_args) =>
+const Template: Story<PaginationProps> = _args => (
   <Space size="large" direction="vertical">
     <Pagination defaultCurrent={6} total={500} showQuickJumper />
-    <Pagination
-      size="small"
-      total={50}
-      disabled
-      showTotal={showTotal}
-      showSizeChanger
-      showQuickJumper
-    />
+    <Pagination size="small" total={50} disabled showTotal={showTotal} showSizeChanger showQuickJumper />
   </Space>
+)
 export const Base = Template.bind({})
-

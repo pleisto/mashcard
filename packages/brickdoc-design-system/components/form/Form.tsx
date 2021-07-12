@@ -12,23 +12,23 @@ import { FormLabelAlign } from './interface'
 import useForm, { FormInstance } from './hooks/useForm'
 import SizeContext, { SizeType, SizeContextProvider } from '../config-provider/SizeContext'
 
-export type RequiredMark = boolean | 'optional';
-export type FormLayout = 'horizontal' | 'inline' | 'vertical';
+export type RequiredMark = boolean | 'optional'
+export type FormLayout = 'horizontal' | 'inline' | 'vertical'
 
 export interface FormProps<Values = any> extends Omit<RcFormProps<Values>, 'form'> {
-  prefixCls?: string;
-  colon?: boolean;
-  name?: string;
-  layout?: FormLayout;
-  labelAlign?: FormLabelAlign;
-  labelCol?: ColProps;
-  wrapperCol?: ColProps;
-  form?: FormInstance<Values>;
-  size?: SizeType;
-  scrollToFirstError?: Options | boolean;
-  requiredMark?: RequiredMark;
+  prefixCls?: string
+  colon?: boolean
+  name?: string
+  layout?: FormLayout
+  labelAlign?: FormLabelAlign
+  labelCol?: ColProps
+  wrapperCol?: ColProps
+  form?: FormInstance<Values>
+  size?: SizeType
+  scrollToFirstError?: Options | boolean
+  requiredMark?: RequiredMark
   /** @deprecated Will warning in future branch. Pls use `requiredMark` instead. */
-  hideRequiredMark?: boolean;
+  hideRequiredMark?: boolean
 }
 
 const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = (props, ref) => {
@@ -58,7 +58,7 @@ const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = (p
       return requiredMark
     }
 
-    if (contextForm && contextForm.requiredMark !== undefined) {
+    if (contextForm?.requiredMark !== undefined) {
       return contextForm.requiredMark
     }
 
@@ -77,12 +77,13 @@ const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = (p
       [`${prefixCls}-${layout}`]: true,
       [`${prefixCls}-hide-required-mark`]: mergedRequiredMark === false,
       [`${prefixCls}-rtl`]: direction === 'rtl',
-      [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-${size}`]: size
     },
-    className,
+    className
   )
 
   const [wrapForm] = useForm(form)
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { __INTERNAL__ } = wrapForm
   __INTERNAL__.name = name
 
@@ -95,10 +96,10 @@ const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = (p
       vertical: layout === 'vertical',
       colon,
       requiredMark: mergedRequiredMark,
-      itemRef: __INTERNAL__.itemRef,
+      itemRef: __INTERNAL__.itemRef
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [name, labelAlign, labelCol, wrapperCol, layout, colon, mergedRequiredMark],
+    [name, labelAlign, labelCol, wrapperCol, layout, colon, mergedRequiredMark]
   )
 
   React.useImperativeHandle(ref, () => wrapForm)
@@ -133,7 +134,7 @@ const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = (p
 }
 
 const Form = React.forwardRef<FormInstance, FormProps>(InternalForm) as <Values = any>(
-  props: React.PropsWithChildren<FormProps<Values>> & { ref?: React.Ref<FormInstance<Values>> },
+  props: React.PropsWithChildren<FormProps<Values>> & { ref?: React.Ref<FormInstance<Values>> }
 ) => React.ReactElement
 
 export { useForm, List }

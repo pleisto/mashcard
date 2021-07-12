@@ -12,28 +12,28 @@ import { isPresetColor } from './utils'
 
 export type { ScrollNumberProps } from './ScrollNumber'
 
-interface CompoundedComponent extends React.FC<BadgeProps> {
-  Ribbon: typeof Ribbon;
+export interface CompoundedComponent extends React.FC<BadgeProps> {
+  Ribbon: typeof Ribbon
 }
 
 export interface BadgeProps {
   /** Number to show in badge */
-  count?: React.ReactNode;
-  showZero?: boolean;
+  count?: React.ReactNode
+  showZero?: boolean
   /** Max count to show */
-  overflowCount?: number;
+  overflowCount?: number
   /** Whether to show red dot without number */
-  dot?: boolean;
-  style?: React.CSSProperties;
-  prefixCls?: string;
-  scrollNumberPrefixCls?: string;
-  className?: string;
-  status?: PresetStatusColorType;
-  color?: LiteralUnion<PresetColorType, string>;
-  text?: React.ReactNode;
-  size?: 'default' | 'small';
-  offset?: [number | string, number | string];
-  title?: string;
+  dot?: boolean
+  style?: React.CSSProperties
+  prefixCls?: string
+  scrollNumberPrefixCls?: string
+  className?: string
+  status?: PresetStatusColorType
+  color?: LiteralUnion<PresetColorType, string>
+  text?: React.ReactNode
+  size?: 'default' | 'small'
+  offset?: [number | string, number | string]
+  title?: string
 }
 
 const Badge: CompoundedComponent = ({
@@ -58,12 +58,9 @@ const Badge: CompoundedComponent = ({
   const prefixCls = getPrefixCls('badge', customizePrefixCls)
 
   // ================================ Misc ================================
-  const numberedDisplayCount = ((count as number) > (overflowCount )
-    ? `${overflowCount}+`
-    : count) as string | number | null
+  const numberedDisplayCount = ((count as number) > overflowCount ? `${overflowCount}+` : count) as string | number | null
 
-  const hasStatus =
-    (status !== null && status !== undefined) || (color !== null && color !== undefined)
+  const hasStatus = (status !== null && status !== undefined) || (color !== null && color !== undefined)
 
   const isZero = numberedDisplayCount === '0' || numberedDisplayCount === 0
 
@@ -111,19 +108,16 @@ const Badge: CompoundedComponent = ({
 
     return {
       ...offsetStyle,
-      ...style,
+      ...style
     }
   }, [direction, offset, style])
 
   // =============================== Render ===============================
   // >>> Title
-  const titleNode =
-    title ??
-    (typeof livingCount === 'string' || typeof livingCount === 'number' ? livingCount : undefined)
+  const titleNode = title ?? (typeof livingCount === 'string' || typeof livingCount === 'number' ? livingCount : undefined)
 
   // >>> Status Text
-  const statusTextNode =
-    isHidden || !text ? null : <span className={`${prefixCls}-status-text`}>{text}</span>
+  const statusTextNode = isHidden || !text ? null : <span className={`${prefixCls}-status-text`}>{text}</span>
 
   // >>> Display Component
   const displayNode =
@@ -132,15 +126,15 @@ const Badge: CompoundedComponent = ({
       : cloneElement(livingCount, oriProps => ({
           style: {
             ...mergedStyle,
-            ...oriProps.style,
-          },
+            ...oriProps.style
+          }
         }))
 
   // Shared styles
   const statusCls = classNames({
     [`${prefixCls}-status-dot`]: hasStatus,
     [`${prefixCls}-status-${status}`]: !!status,
-    [`${prefixCls}-status-${color}`]: isPresetColor(color),
+    [`${prefixCls}-status-${color}`]: isPresetColor(color)
   })
 
   const statusStyle: React.CSSProperties = {}
@@ -153,9 +147,9 @@ const Badge: CompoundedComponent = ({
     {
       [`${prefixCls}-status`]: hasStatus,
       [`${prefixCls}-not-a-wrapper`]: !children,
-      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-rtl`]: direction === 'rtl'
     },
-    className,
+    className
   )
 
   // <Badge status="success" />
@@ -177,10 +171,7 @@ const Badge: CompoundedComponent = ({
       {children}
       <CSSMotion visible={!isHidden} motionName={`${prefixCls}-zoom`} motionAppear={false}>
         {({ className: motionClassName }) => {
-          const scrollNumberPrefixCls = getPrefixCls(
-            'scroll-number',
-            customizeScrollNumberPrefixCls,
-          )
+          const scrollNumberPrefixCls = getPrefixCls('scroll-number', customizeScrollNumberPrefixCls)
 
           const isDot = isDotRef.current
 
@@ -188,10 +179,9 @@ const Badge: CompoundedComponent = ({
             [`${prefixCls}-dot`]: isDot,
             [`${prefixCls}-count`]: !isDot,
             [`${prefixCls}-count-sm`]: size === 'small',
-            [`${prefixCls}-multiple-words`]:
-              !isDot && displayCount && displayCount.toString().length > 1,
+            [`${prefixCls}-multiple-words`]: !isDot && displayCount && displayCount.toString().length > 1,
             [`${prefixCls}-status-${status}`]: !!status,
-            [`${prefixCls}-status-${color}`]: isPresetColor(color),
+            [`${prefixCls}-status-${color}`]: isPresetColor(color)
           })
 
           let scrollNumberStyle: React.CSSProperties = { ...mergedStyle }
@@ -209,8 +199,7 @@ const Badge: CompoundedComponent = ({
               count={displayCount}
               title={titleNode}
               style={scrollNumberStyle}
-              key="scrollNumber"
-            >
+              key="scrollNumber">
               {displayNode}
             </ScrollNumber>
           )
