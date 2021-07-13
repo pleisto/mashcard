@@ -666,6 +666,12 @@ ar-SA:
       confirm_not_match: "%{field} والتأكيد %{field} غير متطابقين"
   docs:
     app_title: Brickdoc
+    blocks:
+      create_pages: Add Pages
+      delete: Delete
+      create_snapshot: Create Snapshot
+    snapshots:
+      name: Snapshot
     menu:
       create_new_pod: إنشاء جراب
       logout: تسجيل الخروج

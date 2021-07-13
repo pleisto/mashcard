@@ -586,6 +586,12 @@ zh-HK:
       confirm_not_match: "%{field}和確認%{field}不匹配"
   docs:
     app_title: Brickdoc
+    blocks:
+      create_pages: 新增頁面
+      delete: 刪除
+      create_snapshot: 建立快照
+    snapshots:
+      name: 快照
     menu:
       create_new_pod: 建立新 Pod
       logout: 登出

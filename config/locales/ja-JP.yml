@@ -586,6 +586,12 @@ ja-JP:
       confirm_not_match: "%{field}と確認%{field}が一致しない\n"
   docs:
     app_title: Brickdoc
+    blocks:
+      create_pages: Add Pages
+      delete: Delete
+      create_snapshot: Create Snapshot
+    snapshots:
+      name: Snapshot
     menu:
       create_new_pod: "ポッド作成\n"
       logout: ログアウト

@@ -586,6 +586,12 @@ zh-CN:
       confirm_not_match: "%{field}和确认%{field}不一致"
   docs:
     app_title: 积木文档
+    blocks:
+      create_pages: 新增页面
+      delete: 刪除
+      create_snapshot: 创建快照
+    snapshots:
+      name: 快照
     menu:
       create_new_pod: 创建新 Pod
       logout: 登出
