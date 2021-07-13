@@ -28,6 +28,12 @@ module Docs
           description: 'cover image',
           opts: { null: true }
         },
+        {
+          name: :attrs,
+          type: String,
+          description: 'attrs',
+          opts: { null: true }
+        },
       ]
     end
 

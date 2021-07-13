@@ -603,6 +603,12 @@ en-US:
       confirm_not_match: "%{field} and confirm %{field} do not match"
   docs:
     app_title: Brickdoc
+    blocks:
+      create_pages: Add Pages
+      delete: Delete
+      create_snapshot: Create Snapshot
+    snapshots:
+      name: Snapshot
     menu:
       create_new_pod: Create a new pod
       logout: Logout

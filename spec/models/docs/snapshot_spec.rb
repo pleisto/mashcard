@@ -10,11 +10,13 @@ RSpec.describe Docs::Snapshot, type: :model do
       expect(child.history_version).to eq(1)
       expect(child.snapshots.count).to eq(0)
       expect(child.snapshot_version).to eq(0)
+      expect(child.realtime_snapshot_version_value).to eq(0)
 
       child.save_snapshot!
 
       expect(child.snapshots.count).to eq(1)
       expect(child.snapshot_version).to eq(1)
+      expect(child.realtime_snapshot_version_value).to eq(1)
       snapshot = child.snapshots.first
 
       expect(snapshot.version_meta).to eq({ child.id => 1 })
@@ -28,6 +30,7 @@ RSpec.describe Docs::Snapshot, type: :model do
       parent = child.parent
       expect(parent.snapshots.count).to eq(0)
       expect(parent.snapshot_version).to eq(0)
+      expect(parent.realtime_snapshot_version_value).to eq(0)
 
       child_history_version_0 = child.history_version
       parent_history_version_0 = parent.history_version
@@ -43,6 +46,7 @@ RSpec.describe Docs::Snapshot, type: :model do
       parent.save_snapshot!
 
       expect(parent.snapshot_version).to eq(1)
+      expect(parent.realtime_snapshot_version_value).to eq(1)
       snapshot = parent.snapshots.first
       expect(snapshot.blocks.count).to eq(2)
 

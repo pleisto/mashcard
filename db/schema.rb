@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.uuid "parent_id"
     t.string "parent_type"
     t.uuid "path", array: true
+    t.string "type", limit: 32
     t.bigint "sort", null: false
     t.bigint "history_version", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -101,7 +102,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_101017) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["block_id"], name: "index_docs_snapshots_on_block_id"
+    t.index ["block_id", "snapshot_version"], name: "index_docs_snapshots_on_block_id_and_snapshot_version", unique: true, comment: "snapshot identifier"
     t.index ["pod_id"], name: "index_docs_snapshots_on_pod_id"
   end
 

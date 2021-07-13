@@ -1,19 +1,14 @@
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { Extension } from '@tiptap/core'
-import type { Node } from 'prosemirror-model'
 
 const PLUGIN_NAME = 'sync'
 const PLUGIN_KEY = new PluginKey(PLUGIN_NAME)
 
 const THROTTLE_DURATION = 3000
 
-const now = (): number => {
-  return new Date().getTime()
-}
-
-export interface SyncCallback {
-  onCommit: ({ node: Node }) => void
-  onLoad: ({ parentId: String, schema: Schema }) => Node
+const now = (): number => new Date().getTime()
+export interface SyncHandler {
+  onCommit: ({ node: any }) => void
 }
 
 // https://prosemirror.net/docs/ref/#state.PluginSpec
@@ -22,7 +17,7 @@ export const SyncExtension = Extension.create({
 
   addProseMirrorPlugins() {
     const options: any = this.options
-    const callback = options.callback
+    const onSync = options.onSync
 
     return [
       new Plugin({
@@ -40,23 +35,20 @@ export const SyncExtension = Extension.create({
               return state
             }
             const newPluginState = { ...state, editTime: now() }
-            const commitNow = (): void => {
-              if (state.timer) {
-                clearTimeout(state.timer)
-              }
-              callback.onCommit({ node: newState.doc })
+            const doCommit = () => {
+              onSync.onCommit({ node: newState.doc })
             }
             if (state.syncTime && now() - state.syncTime < THROTTLE_DURATION) {
               if (state.timer) {
-                return newPluginState
+                clearTimeout(state.timer)
               }
-              const timer = setTimeout(commitNow, THROTTLE_DURATION)
+
+              const timer = setTimeout(doCommit, THROTTLE_DURATION)
               return { ...newPluginState, timer }
             }
 
-            commitNow()
-            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-            return { ...newPluginState, doc: newState.doc, version: state.version + 1, syncTime: now() }
+            doCommit()
+            return { ...newPluginState, doc: newState.doc, version: (state.version as number) + 1, syncTime: now() }
           }
         }
       })

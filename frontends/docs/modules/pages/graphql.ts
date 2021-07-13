@@ -8,11 +8,23 @@ export const BlockSync = gql`
   }
 `
 
+export const BlockSyncBatch = gql`
+  mutation blockSyncBatch($input: BlockSyncBatchInput!) {
+    blockSyncBatch(input: $input) {
+      errors
+    }
+  }
+`
+
 export const queryChildrenBlocks = gql`
-  query GetChildrenBlocks($parentId: String!) {
-    childrenBlocks(parentId: $parentId) {
+  query GetChildrenBlocks($parentId: String!, $excludePages: Boolean!, $snapshotVersion: Int!) {
+    __typename
+    childrenBlocks(parentId: $parentId, excludePages: $excludePages, snapshotVersion: $snapshotVersion) {
       ... on MetaBlock {
-        nullableData: data
+        id
+        sort
+        parentId
+        type
         meta {
           attrs
           marks
@@ -20,20 +32,45 @@ export const queryChildrenBlocks = gql`
       }
 
       ... on PageBlock {
+        id
+        sort
+        parentId
+        type
         data {
           title
         }
         meta {
           icon
           cover
+          attrs
+        }
+      }
+
+      ... on ParagraphBlock {
+        id
+        sort
+        parentId
+        type
+        data {
+          title
+        }
+        meta {
+          attrs
         }
       }
 
       ... on TextBlock {
+        id
+        sort
+        parentId
+        type
         data {
           content
         }
-        nullableMeta: meta
+        meta {
+          marks
+          attrs
+        }
       }
     }
   }

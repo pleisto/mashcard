@@ -10,6 +10,9 @@
 users = 5.times.map do |n|
   Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com", webid: "ADMIN#{n}")
 end
+
+users.first.confirm
+
 pods = users.map { |u| u.pods.first }
 
 BLOCK_TYPE = 'page'

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 module Docs
-  class Objects::TextBlock < Objects::BlockBaseObject
-    description "text blocks"
+  class Objects::ParagraphBlock < Objects::BlockBaseObject
+    description "paragraph blocks"
 
     def self.data_payload
       [
         {
-          name: :content,
+          name: :title,
           type: String,
-          description: 'Text Content',
+          description: 'page title',
           opts: { null: false }
         },
       ]
@@ -16,12 +16,6 @@ module Docs
 
     def self.meta_payload
       [
-        {
-          name: :marks,
-          type: String,
-          description: 'marks',
-          opts: { null: true }
-        },
         {
           name: :attrs,
           type: String,

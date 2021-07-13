@@ -28,7 +28,12 @@
 #
 class Docs::Block < ApplicationRecord
   self.inheritance_column = :_type_disabled
+
   default_scope { order(sort: :desc) }
+
+  default_scope { where(deleted_at: nil) }
+
+  scope :pageable, -> { where(type: ['doc', 'paragraph']) }
 
   belongs_to :pod
   belongs_to :parent, class_name: 'Docs::Block', optional: true
@@ -41,15 +46,81 @@ class Docs::Block < ApplicationRecord
   validates :pod, presence: true
   validates :collaborators, presence: true
 
+  def redis_counter_key(type)
+    "#{type}_#{id}"
+  end
+
+  COUNTER_META = {
+    history_version: {
+      key_f: ->(id) { "history_#{id}" },
+      expire_time: 1.day
+    },
+    snapshot_version: {
+      key_f: ->(id) { "snapshot_#{id}" },
+      expire_time: 1.day
+    }
+  }
+
+  ## NOTE Prepare counter to prevent collision
+  def prepare
+    realtime_history_version_value
+    realtime_snapshot_version_value
+  end
+
+  def realtime_version(type)
+    meta = COUNTER_META.fetch(type)
+    Brickdoc::Redis.with(:cache) do |redis|
+      key = meta.fetch(:key_f).call(id)
+      counter = redis.get(key)
+      return counter.to_i if counter
+
+      value = send(type)
+
+      redis.setex(key, meta.fetch(:expire_time), value)
+      value
+    end
+  end
+
+  def realtime_version_increment(type)
+    ## NOTE ensure counter exists
+    ## TODO remove this
+    _prepare_version = realtime_version(type)
+
+    meta = COUNTER_META.fetch(type)
+    Brickdoc::Redis.with(:cache) do |redis|
+      key = meta.fetch(:key_f).call(id)
+      return redis.incr(key)
+    end
+  end
+
+  def realtime_history_version_value
+    realtime_version(:history_version)
+  end
+
+  def realtime_snapshot_version_value
+    realtime_version(:snapshot_version)
+  end
+
+  def realtime_history_version_increment
+    realtime_version_increment(:history_version)
+  end
+
+  def realtime_snapshot_version_increment
+    realtime_version_increment(:snapshot_version)
+  end
+
   before_save do
     self.collaborators = collaborators.uniq
-    ## TODO add redis lock
-    self.history_version = history_version + 1 if meta_changed? || data_changed? || sort_changed? || parent_id_changed?
+    self.history_version = realtime_history_version_increment if meta_changed? || data_changed? || sort_changed? || parent_id_changed?
   end
 
   after_save do
-    histories.create! if history_version_previously_changed? || id_previously_changed?
-    snapshots.create! if snapshot_version_previously_changed?
+    histories.create!(history_version: history_version) if history_version_previously_changed? || id_previously_changed?
+    snapshots.create!(snapshot_version: snapshot_version) if snapshot_version_previously_changed?
+  end
+
+  def delete_pages!
+    descendants.pageable.update_all(deleted_at: Time.current)
   end
 
   # recursive CTE query
@@ -110,6 +181,20 @@ class Docs::Block < ApplicationRecord
     cte(:descendants, opts)
   end
 
+  def tree
+    self.class.make_tree(self)
+  end
+
+  def self.make_tree(parent, blocks = nil)
+    blocks ||= parent.descendants
+    children = blocks.select do |blk|
+      blk.parent_id == parent.id
+    end.sort_by(&:sort).map do |blk|
+      make_tree(blk, blocks)
+    end
+    parent.attributes.slice("id", "type", "sort", "meta", "data").merge("children" => children)
+  end
+
   def path_cache
     return [id] if parent_id.nil?
 
@@ -131,8 +216,7 @@ class Docs::Block < ApplicationRecord
   end
 
   def save_snapshot!
-    ## TODO add redis lock
-    update!(snapshot_version: snapshot_version + 1)
+    update!(snapshot_version: realtime_snapshot_version_increment)
   end
 
   def current_histories

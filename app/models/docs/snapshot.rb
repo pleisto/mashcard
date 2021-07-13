@@ -15,8 +15,8 @@
 #
 # Indexes
 #
-#  index_docs_snapshots_on_block_id  (block_id)
-#  index_docs_snapshots_on_pod_id    (pod_id)
+#  index_docs_snapshots_on_block_id_and_snapshot_version  (block_id,snapshot_version) UNIQUE
+#  index_docs_snapshots_on_pod_id                         (pod_id)
 #
 class Docs::Snapshot < ApplicationRecord
   belongs_to :pod, optional: true
@@ -24,7 +24,6 @@ class Docs::Snapshot < ApplicationRecord
 
   before_create do
     self.pod_id = block.pod_id
-    self.snapshot_version = block.snapshot_version
     self.name ||= generate_default_name
 
     ## NOTE save children's version as snapshot

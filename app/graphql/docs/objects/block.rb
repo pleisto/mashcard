@@ -4,10 +4,11 @@ module Docs
     class Block < ::GraphQL::Schema::Union
       graphql_name 'block'
       description 'Brickdoc Docs::Block'
-      possible_types PageBlock, TextBlock, MetaBlock
+      possible_types PageBlock, TextBlock, MetaBlock, ParagraphBlock
 
       TYPE_FALLBACK_MAP = {
         "doc" => "page",
+        "paragraph" => "paragraph",
         "text" => "text"
       }
 
