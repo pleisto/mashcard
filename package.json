@@ -26,7 +26,7 @@
     "test:cypress": "cypress open",
     "test:rspec": "bundle exec rspec",
     "commit": "git add . && cz",
-    "graphql": "rake graphql:schema:dump && graphql-codegen --config codegen.yml",
+    "graphql": "bundle exec rails graphql:schema:dump && graphql-codegen --config codegen.yml",
     "cleanup": "rm -rf dist && yarn less-vars-loader cleanup && yarn design-system cleanup && yarn editor cleanup",
     "less-vars-loader": "yarn workspace @brickdoc/less-vars-loader",
     "design-system": "yarn workspace @brickdoc/design-system",

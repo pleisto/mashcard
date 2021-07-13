@@ -52,6 +52,8 @@ jobs:
         with:
           ruby-version: 3.0
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Dump the graphql schema
+        run: yarn graphql
       - name: Lint the codebase
         run: yarn tsc:check && yarn lint
       - name: Run Jest tests
@@ -72,8 +74,6 @@ jobs:
         uses: mikepenz/action-junit-report@v2
         with:
           report_paths: junit-reports/*.xml
-      - name: Dump the graphql schema
-        run: yarn graphql
       - name: Ensure the server is running
         run: curl http://localhost:3000 -I
       - name: Run Webpacker compilation
