@@ -1,1 +1,14 @@
-* @0xDing
+* @0xDing @aligo @clszzyh @Darmody @stackia
+
+*.rb @0xDing @aligo @clszzyh
+Gemfile* @0xDing @aligo @clszzyh
+
+*.html @0xDing @Darmody @stackia
+*.js @0xDing @Darmody @stackia
+*.ts @0xDing @Darmody @stackia
+*.jsx @0xDing @Darmody @stackia
+*.tsx @0xDing @Darmody @stackia
+*.css @0xDing @Darmody @stackia
+*.less @0xDing @Darmody @stackia
+package.json @0xDing @Darmody @stackia
+yarn.lock @0xDing @Darmody @stackia
