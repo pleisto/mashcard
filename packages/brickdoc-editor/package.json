@@ -13,6 +13,7 @@
     "dist"
   ],
   "dependencies": {
+    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@tiptap/core": "^2.0.0-beta.86",
     "@tiptap/extension-blockquote": "^2.0.0-beta.14",
     "@tiptap/extension-bold": "^2.0.0-beta.14",
@@ -30,8 +31,11 @@
     "@tiptap/extension-list-item": "^2.0.0-beta.13",
     "@tiptap/extension-ordered-list": "^2.0.0-beta.14",
     "@tiptap/extension-paragraph": "^2.0.0-beta.15",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.25",
     "@tiptap/extension-strike": "^2.0.0-beta.16",
     "@tiptap/extension-text": "^2.0.0-beta.12",
+    "@tiptap/extension-text-style": "^2.0.0-beta.16",
+    "@tiptap/extension-underline": "^2.0.0-beta.15",
     "@tiptap/react": "^2.0.0-beta.52",
     "@tiptap/suggestion": "^2.0.0-beta.59",
     "tippy.js": "^6.3.1"

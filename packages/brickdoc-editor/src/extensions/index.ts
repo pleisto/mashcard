@@ -1,4 +1,8 @@
 export * from './basicRichtext'
 export { SlashCommandsExtension } from './slashCommands'
 export { BlockCommandsExtension } from './blockCommands'
+export * from './bubbleMenu'
+export * from './fontColor'
+export * from './placeholder'
+export * from './bulletList'
 export * from './sync'

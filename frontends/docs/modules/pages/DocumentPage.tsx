@@ -1,9 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Alert, Skeleton } from '@brickdoc/design-system'
+import { Alert, Skeleton, Input } from '@brickdoc/design-system'
 import { Editor } from '@brickdoc/editor'
 import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
 import { syncProvider, blocksToJSONContents } from './SyncProvider'
+import styles from './DocumentPage.module.less'
 
 const Page: React.FC = () => {
   const { webid, docid, ...restParams } = useParams<{ webid: string; docid: string; snapshotVersion: string }>()
@@ -20,7 +21,8 @@ const Page: React.FC = () => {
 
   if (!docid) {
     return (
-      <div>
+      <div className={styles.page}>
+        <Input.TextArea className={styles.titleInput} placeholder="Untitled" autoSize={true} />
         <Editor onSync={onSync} />
       </div>
     )
@@ -33,7 +35,8 @@ const Page: React.FC = () => {
   const content = blocksToJSONContents(data.childrenBlocks as Block[])[0]
 
   return (
-    <div>
+    <div className={styles.page}>
+      <Input.TextArea className={styles.titleInput} placeholder="Untitled" autoSize={true} />
       <Editor onSync={onSync} content={content} />
     </div>
   )

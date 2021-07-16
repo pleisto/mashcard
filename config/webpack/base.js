@@ -16,5 +16,14 @@ module.exports = merge(webpackConfig, {
       '@': path.resolve(__dirname, '../../dist/frontends')
     },
     plugins: [new DistAssetResolvePlugin()]
+  },
+  module: {
+    rules: [
+      {
+        // TODO: exclude default svg loader
+        test: /\.svgr$/,
+        use: ['@svgr/webpack', 'url-loader']
+      }
+    ]
   }
 })

@@ -9,8 +9,8 @@ const QUERY_LIMIT = 10
 const TRIGGER_CHAR = '/'
 
 export interface MenuItem {
-  title: string;
-  command: ({ editor: Editor, range: Range }) => void;
+  title: string
+  command: ({ editor: Editor, range: Range }) => void
 }
 
 // TODO: menu items should be passed in from outside
@@ -27,6 +27,12 @@ const menuItems: MenuItem[] = [
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
     }
   },
+  {
+    title: 'Bullet List',
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleBulletList().run()
+    }
+  }
 ]
 
 function filterMenuItemsByQuery(query: string): MenuItem[] {

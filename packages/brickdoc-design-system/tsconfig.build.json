@@ -5,5 +5,5 @@
     "strictNullChecks": false,
     "noImplicitAny": false
   },
-  "include": ["components/**/*", "utils/**/*"]
+  "include": ["components/**/*", "utils/**/*", "externals.d.ts"]
 }

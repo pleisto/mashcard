@@ -1,0 +1,118 @@
+@menu-height: 32px;
+
+.brickdoc-bubble-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: @menu-height;
+  background-color: #ffffff;
+  border: 1px solid #efefef;
+  box-shadow: 0 10px 15px rgba(62, 62, 62, 0.1), 0 0 6px rgba(62, 62, 62, 0.05);
+  border-radius: 4px;
+
+  .bubble-menu-group {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .bubble-menu-group + .bubble-menu-group {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #efefef;
+      width: 1px;
+      height: 16px;
+    }
+  }
+
+  .bubble-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: @menu-height;
+    border-radius: 0;
+
+    &.active {
+      .brk-icon {
+        color: #2dc5e3;
+      }
+    }
+  }
+
+  .font-menu-item-arrow-icon {
+    color: #efefef;
+    margin-top: 2px;
+    margin-left: 4px;
+  }
+}
+
+.brickdoc-bubble-menu-item-hint {
+  .brk-tooltip-arrow {
+    display: none;
+  }
+
+  .brk-tooltip-inner {
+    background-color: #000000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    min-height: auto;
+  }
+
+  .item-hint-main {
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .item-hint-sub {
+    color: #a6a6a6;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.brickdoc-bubble-font-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 240px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-sizing: border-box;
+
+  .font-menu-heading {
+    color: #a6a6a6;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 12px;
+    height: 32px;
+  }
+
+  .font-menu-item {
+    width: 100%;
+    padding: 0 12px;
+    text-align: left;
+  }
+
+  .font-menu-item-icon {
+    border: 1px solid #efefef;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+  }
+
+  .font-menu-item-label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
