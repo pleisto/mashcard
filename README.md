@@ -2,9 +2,9 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
-[![linter](https://github.com/brickdoc/brickdoc-enterprise/actions/workflows/ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc-enterprise/actions/workflows/ci.yml)
+[![linter](https://github.com/brickdoc/brickdoc/actions/workflows/ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/ci.yml)
 
-> Brickdoc is built on an open core model. This is Brickdoc **Enterprise Edition** mono repository.
+> Brickdoc is built on an open core model. This is Brickdoc **Community Edition** mono repository.
 
 BrickDoc is an open-source human intellect application and collaboration platform to Break the boundary between documents, spreadsheets, and software.
 

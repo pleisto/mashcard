@@ -20,7 +20,7 @@ gem 'fast_blank', '>= 1.0', require: false
 gem 'fast_underscore', '>= 0.3.1', require: false
 gem 'actionview_precompiler'
 gem 'second_level_cache', '~> 2.6', '>= 2.6.4'
-gem 'packwerk', '~> 1.1', '>= 1.1.3'
+gem 'packwerk', '~> 1.3', '>= 1.3.1'
 
 gem 'cloak-rb', '>= 0.1.0'
 gem 'lockbox', '>= 0.6.4'
@@ -39,7 +39,7 @@ gem 'rails-settings-cached', '>= 2.6'
 gem 'default_value_for', '~> 3.4'
 
 # GraphQL
-gem 'graphql', '~> 1.12', '>= 1.12.12'
+gem 'graphql', '~> 1.12', '>= 1.12.13'
 gem 'graphql-fragment_cache', '~> 1.8'
 gem 'apollo_upload_server', '~> 2.0', '>= 2.0.5'
 gem 'graphql-batch', '~> 0.4.3'
@@ -101,5 +101,5 @@ group :development do
 end
 
 # SaaS Edition
-saas_path = 'packages/saas'
+saas_path = '../'
 gem 'brickdoc-saas', path: saas_path if File.exist?("#{saas_path}/brickdoc-saas.gemspec")
