@@ -34,6 +34,11 @@ class BrickdocConfig < RailsSettings::Base
     random_integer: ENV['SECURITY_REVERSIBLE_INT_RANDOM']
   }
 
+  # Rails.application.config.active_storage.service
+  field :active_storage_service, default: (
+    Rails.env.test? ? "test" : "local"
+  )
+
   # Keep personally identifiable information (PII) out of logs.
   field :pii_masking, type: :boolean, default: Brickdoc.saas?
 

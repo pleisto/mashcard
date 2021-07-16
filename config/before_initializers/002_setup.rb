@@ -36,6 +36,9 @@ Rails.application.reloader.to_prepare do
     port: Rails.env.development? ? 3000 : nil
   }
 
+  ## ActiveStorage
+  Rails.application.config.active_storage.service = BrickdocConfig.active_storage_service.to_sym
+
   # Mailer
   smtp_settings = URI(BrickdocConfig.mailer[:url])
   Rails.application.configure do

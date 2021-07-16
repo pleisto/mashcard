@@ -26,6 +26,8 @@ jobs:
         with:
           ruby-version: 3.0
           bundler-cache: true
+      - name: Unset deployment
+        run: bundle config unset deployment
       - name: Update gems
         run: bundle update
       - name: Update yarn
