@@ -1731,7 +1731,7 @@ __metadata:
     rc-progress: ^3.1.4
     rc-rate: ^2.9.1
     rc-resize-observer: ^1.0.0
-    rc-select: ^13.0.0-alpha.0
+    rc-select: ^13.0.0-alpha.1
     rc-slider: ^9.7.2
     rc-steps: ^4.1.3
     rc-switch: ^3.2.2
@@ -19130,9 +19130,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-select@npm:^13.0.0-alpha.0":
-  version: 13.0.0-alpha.0
-  resolution: "rc-select@npm:13.0.0-alpha.0"
+"rc-select@npm:^13.0.0-alpha.1":
+  version: 13.0.0-alpha.1
+  resolution: "rc-select@npm:13.0.0-alpha.1"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: 2.x
@@ -19144,7 +19144,7 @@ fsevents@^1.2.7:
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: ceac9ca8af0e129fba82262a895970d06a04f2078a00158ad3119bf8ddc1a65faafc3a27713104058febfe8ed82b8432d0d6bf98109ab920e66aa8ea0880e6b9
+  checksum: 28a110476cc241ad759261d4ff77415f2316c9758431aac2178c48fee2d29df013c4abbc4f8bc1505be939a03bf4357e37c2ca08146057e11da69f3c86af0160
   languageName: node
   linkType: hard
 

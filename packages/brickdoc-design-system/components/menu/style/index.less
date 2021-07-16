@@ -25,8 +25,7 @@
   background: @menu-bg;
   outline: none;
   box-shadow: @box-shadow-base;
-  transition: background @animation-duration-slow,
-    width @animation-duration-slow cubic-bezier(0.2, 0, 0, 1) 0s;
+  transition: background @animation-duration-slow, width @animation-duration-slow cubic-bezier(0.2, 0, 0, 1) 0s;
   .clearfix();
 
   &&-root:focus-visible {
@@ -55,13 +54,11 @@
   }
 
   &-horizontal &-submenu {
-    transition: border-color @animation-duration-slow @ease-in-out,
-      background @animation-duration-slow @ease-in-out;
+    transition: border-color @animation-duration-slow @ease-in-out, background @animation-duration-slow @ease-in-out;
   }
   &-submenu,
   &-submenu-inline {
-    transition: border-color @animation-duration-slow @ease-in-out,
-      background @animation-duration-slow @ease-in-out,
+    transition: border-color @animation-duration-slow @ease-in-out, background @animation-duration-slow @ease-in-out,
       padding @menu-animation-duration-normal @ease-in-out;
   }
 
@@ -76,8 +73,11 @@
 
   &-submenu &-sub {
     cursor: initial;
-    transition: background @animation-duration-slow @ease-in-out,
-      padding @animation-duration-slow @ease-in-out;
+    transition: background @animation-duration-slow @ease-in-out, padding @animation-duration-slow @ease-in-out;
+  }
+
+  &-title-content {
+    transition: color @animation-duration-slow;
   }
 
   &-item a {
@@ -191,20 +191,18 @@
     padding: @menu-item-padding;
     white-space: nowrap;
     cursor: pointer;
-    transition: border-color @animation-duration-slow, background @animation-duration-slow,
-      padding @animation-duration-slow @ease-in-out;
+    transition: border-color @animation-duration-slow, background @animation-duration-slow, padding @animation-duration-slow @ease-in-out;
 
     .@{menu-prefix-cls}-item-icon,
     .@{iconfont-css-prefix} {
       min-width: 14px;
       font-size: @menu-icon-size;
-      transition: font-size @menu-animation-duration-normal @ease-out,
-        margin @animation-duration-slow @ease-in-out, color @animation-duration-slow;
+      transition: font-size @menu-animation-duration-normal @ease-out, margin @animation-duration-slow @ease-in-out,
+        color @animation-duration-slow;
       + span {
         margin-left: @menu-icon-margin-right;
         opacity: 1;
-        transition: opacity @animation-duration-slow @ease-in-out, margin @animation-duration-slow,
-          color @animation-duration-slow;
+        transition: opacity @animation-duration-slow @ease-in-out, margin @animation-duration-slow, color @animation-duration-slow;
       }
     }
 
@@ -295,9 +293,8 @@
         height: 1.5px;
         background-color: currentColor;
         border-radius: 2px;
-        transition: background @animation-duration-slow @ease-in-out,
-          transform @animation-duration-slow @ease-in-out, top @animation-duration-slow @ease-in-out,
-          color @animation-duration-slow @ease-in-out;
+        transition: background @animation-duration-slow @ease-in-out, transform @animation-duration-slow @ease-in-out,
+          top @animation-duration-slow @ease-in-out, color @animation-duration-slow @ease-in-out;
         content: '';
       }
       &::before {
@@ -359,7 +356,6 @@
         margin-top: -1px;
         margin-bottom: 0;
         padding: @menu-item-padding;
-
 
         &:hover,
         &-active,
@@ -431,8 +427,7 @@
         border-right: @menu-item-active-border-width solid @menu-highlight-color;
         transform: scaleY(0.0001);
         opacity: 0;
-        transition: transform @menu-animation-duration-normal @ease-out,
-          opacity @menu-animation-duration-normal @ease-out;
+        transition: transform @menu-animation-duration-normal @ease-out, opacity @menu-animation-duration-normal @ease-out;
         content: '';
       }
     }
@@ -478,8 +473,7 @@
       &::after {
         transform: scaleY(1);
         opacity: 1;
-        transition: transform @menu-animation-duration-normal @ease-in-out,
-          opacity @menu-animation-duration-normal @ease-in-out;
+        transition: transform @menu-animation-duration-normal @ease-in-out, opacity @menu-animation-duration-normal @ease-in-out;
       }
     }
 
@@ -499,8 +493,7 @@
       .@{menu-prefix-cls}-submenu-title {
         display: flex;
         align-items: center;
-        transition: border-color @animation-duration-slow, background @animation-duration-slow,
-          padding 0.1s @ease-out;
+        transition: border-color @animation-duration-slow, background @animation-duration-slow, padding 0.1s @ease-out;
 
         > .@{menu-prefix-cls}-title-content {
           flex: auto;
@@ -520,9 +513,7 @@
     width: @menu-collapsed-width;
 
     > .@{menu-prefix-cls}-item,
-    > .@{menu-prefix-cls}-item-group
-      > .@{menu-prefix-cls}-item-group-list
-      > .@{menu-prefix-cls}-item,
+    > .@{menu-prefix-cls}-item-group > .@{menu-prefix-cls}-item-group-list > .@{menu-prefix-cls}-item,
     > .@{menu-prefix-cls}-item-group
       > .@{menu-prefix-cls}-item-group-list
       > .@{menu-prefix-cls}-submenu

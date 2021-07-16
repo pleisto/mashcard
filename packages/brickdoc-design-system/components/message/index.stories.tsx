@@ -103,7 +103,7 @@ message.config({
 }
 
 const info = () => {
-  message.info('This is a normal message')
+  void message.info('This is a normal message')
 }
 const success = () => {
   message.success('This is a success message')

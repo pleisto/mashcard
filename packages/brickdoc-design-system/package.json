@@ -1,6 +1,6 @@
 {
   "name": "@brickdoc/design-system",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Brickdoc design system and React components implementation",
   "license": "Apache-2.0",
   "scripts": {
@@ -41,7 +41,7 @@
     "rc-progress": "^3.1.4",
     "rc-rate": "^2.9.1",
     "rc-resize-observer": "^1.0.0",
-    "rc-select": "^13.0.0-alpha.0",
+    "rc-select": "^13.0.0-alpha.1",
     "rc-slider": "^9.7.2",
     "rc-steps": "^4.1.3",
     "rc-switch": "^3.2.2",

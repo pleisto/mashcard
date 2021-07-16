@@ -5,8 +5,8 @@
     color: @text-color;
   }
   // 输入框的不同校验状态
-  .@{brk-prefix}-input:not(.@{brk-prefix}-input-disabled),
-  .@{brk-prefix}-input-affix-wrapper:not(.@{brk-prefix}-input-affix-wrapper-disabled) {
+  :not@{brk-prefix}-input-disabled.@{brk-prefix}-input-disabled,
+  :not(.@{brk-prefix}-input-affix-wrapper-disabled).@{brk-prefix}-input-affix-wrapper {
     &,
     &:hover {
       background-color: @background-color;

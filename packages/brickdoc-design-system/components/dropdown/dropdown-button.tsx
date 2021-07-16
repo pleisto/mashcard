@@ -1,10 +1,9 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import { More as EllipsisOutlined } from '../icon'
-
-import Button from '../button'
+import Button, { ButtonGroupProps } from '../button'
 import { ButtonHTMLType } from '../button/button'
-import { ButtonGroupProps } from '../button/button-group'
+
 import { ConfigContext } from '../config-provider'
 import Dropdown, { DropdownProps } from './dropdown'
 
@@ -52,6 +51,8 @@ const DropdownButton: DropdownButtonInterface = props => {
     buttonsRender,
     mouseEnterDelay,
     mouseLeaveDelay,
+    overlayClassName,
+    overlayStyle,
     ...restProps
   } = props
 
@@ -65,7 +66,9 @@ const DropdownButton: DropdownButtonInterface = props => {
     onVisibleChange,
     getPopupContainer: getPopupContainer || getContextPopupContainer,
     mouseEnterDelay,
-    mouseLeaveDelay
+    mouseLeaveDelay,
+    overlayClassName,
+    overlayStyle
   } as DropdownProps
 
   if ('visible' in props) {
