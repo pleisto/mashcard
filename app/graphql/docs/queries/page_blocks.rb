@@ -8,8 +8,7 @@ module Docs
              description: 'List all pages for pod webid'
 
     def resolve(webid:)
-      # TODO: permission check
-      Docs::Block.joins(:pod).pageable.where(pod: { webid: webid })
+      authorized_scope Docs::Block.joins(:pod).pageable.where(pod: { webid: webid }), as: :collaborating
     end
   end
 end

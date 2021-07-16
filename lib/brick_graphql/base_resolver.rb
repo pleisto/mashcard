@@ -6,7 +6,7 @@ module BrickGraphQL
     include GraphQL::FragmentCache::ObjectHelpers
     include BrickGraphQL::Concerns::AuthenticateUser
     include BrickGraphQL::Concerns::EntrypointValidatable
-    include ActionPolicy::GraphQL::Behaviour
+    include BrickGraphQL::Concerns::PolicyBehaviour
     # override graphql-ruby
     # When the `resolve` method does not exist, the `field` is returned directly
     def resolve(**_args)

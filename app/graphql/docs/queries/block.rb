@@ -9,8 +9,7 @@ module Docs
     argument :id, GraphQL::Types::String, required: true
 
     def resolve(id:)
-      # TODO: permission check
-      Docs::Block.find id
+      Docs::Block.find(id).tap { |doc| authorize! doc, to: :show? }
     end
   end
 end

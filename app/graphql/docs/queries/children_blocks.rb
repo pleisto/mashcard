@@ -10,12 +10,12 @@ module Docs
 
     argument :snapshot_version, GraphQL::Types::Int, required: true, description: 'Snapshot version'
 
-    def resolve(parent_id:, exclude_pages:, snapshot_version:)
-      # TODO: permission check
+    def resolve(parent_id:, exclude_pages: false, snapshot_version:)
       where = exclude_pages ? "docs_blocks.type != 'doc'" : nil
       if snapshot_version.zero?
-        Docs::Block.where(where).find_by(id: parent_id).descendants
+        authorized_scope Docs::Block.where(where).find_by(id: parent_id).descendants, as: :collaborating
       else
+        # TODO: permission check
         Docs::Snapshot.find_by!(block_id: parent_id, snapshot_version: snapshot_version).blocks.map(&:cast_block)
       end
     end

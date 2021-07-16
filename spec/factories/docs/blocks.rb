@@ -3,7 +3,7 @@ FactoryBot.define do
   factory :docs_block, class: 'Docs::Block' do
     id { SecureRandom.uuid }
     pod
-    type { 'page' }
+    type { 'doc' }
     meta { { title: FFaker::Lorem.phrase } }
     data { { paragraphs: FFaker::DizzleIpsum.paragraphs	} }
     collaborators { [pod.owner.id] }
@@ -13,7 +13,7 @@ FactoryBot.define do
     parent { association :docs_block }
     id { SecureRandom.uuid }
     pod
-    type { 'page' }
+    type { 'doc' }
     meta { { title: FFaker::Lorem.phrase } }
     data { { paragraphs: FFaker::DizzleIpsum.paragraphs	} }
     collaborators { [pod.owner.id] }

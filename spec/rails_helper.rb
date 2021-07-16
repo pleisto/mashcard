@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require 'graphql_sepc_helper'
+require 'graphql_spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
 # Load dotenv

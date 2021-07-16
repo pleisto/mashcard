@@ -5,7 +5,7 @@ module BrickGraphQL
     object_class BaseObject
     field_class BaseField
     input_object_class BaseInputObject
-    include ActionPolicy::GraphQL::Behaviour
+    include BrickGraphQL::Concerns::PolicyBehaviour
     include BrickGraphQL::Concerns::CopyFieldDescription
     include BrickGraphQL::Concerns::EntrypointValidatable
 
