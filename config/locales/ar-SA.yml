@@ -667,11 +667,11 @@ ar-SA:
   docs:
     app_title: Brickdoc
     blocks:
-      create_pages: Add Pages
-      delete: Delete
-      create_snapshot: Create Snapshot
+      create_pages: إضافة صفحة
+      delete: احذف
+      create_snapshot: إنشاء لقطة
     snapshots:
-      name: Snapshot
+      name: لقطة
     menu:
       create_new_pod: إنشاء جراب
       logout: تسجيل الخروج

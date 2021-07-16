@@ -587,11 +587,11 @@ ja-JP:
   docs:
     app_title: Brickdoc
     blocks:
-      create_pages: Add Pages
-      delete: Delete
-      create_snapshot: Create Snapshot
+      create_pages: ページを追加
+      delete: 削除
+      create_snapshot: スナップショットを作成する
     snapshots:
-      name: Snapshot
+      name: スナップショット
     menu:
       create_new_pod: "ポッド作成\n"
       logout: ログアウト
