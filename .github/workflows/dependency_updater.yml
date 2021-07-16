@@ -1,0 +1,40 @@
+---
+name: dependency_updater
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * 0-4'
+
+jobs:
+  dependency_updater:
+    name: dependency_updater
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Run yarn install
+        run: yarn
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true
+      - name: Update gems
+        run: bundle update
+      - name: Update yarn
+        run: yarn up
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: 'build(deps): Update depencency'
+          branch: deps-automatic-update
+          labels: |
+            dependencies
+          delete-branch: true
