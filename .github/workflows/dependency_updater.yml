@@ -34,6 +34,8 @@ jobs:
         run: yarn up
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        env:
+          HUSKY: 0
         with:
           commit-message: 'build(deps): Update depencency'
           branch: deps-automatic-update

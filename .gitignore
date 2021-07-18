@@ -70,3 +70,6 @@ cypress/videos/
 
 # build
 dist
+
+
+vendor
