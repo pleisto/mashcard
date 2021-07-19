@@ -11,5 +11,11 @@ module.exports = merge(webpackConfig, {
   cache: {
     type: 'filesystem'
   },
-  plugins: [new BundleAnalyzerPlugin(), new ReactRefreshWebpackPlugin()]
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true
+    }),
+    new ReactRefreshWebpackPlugin()
+  ]
 })

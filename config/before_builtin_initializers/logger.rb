@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 # Don't use json formatter on local development env.
-if Rails.env.test? || Rails.env.development?
+if ENV['CI'] == 'true'
+  Rails.application.configure { config.log_level = :debug }
+elsif Rails.env.test? || Rails.env.development?
   Rails.application.configure do
     config.logger = Logger.new(STDOUT)
     config.log_level = :debug
