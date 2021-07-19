@@ -8,6 +8,8 @@ module Docs
     field :sort, Int, 'block sort', null: false
     field :collaborators, [Accounts::Objects::User], 'collaborators', null: true
 
+    expose_permissions_field :show?
+
     def self.create_payload_object(payload_type)
       klass_name = graphql_name
       payload = public_send("#{payload_type}_payload")

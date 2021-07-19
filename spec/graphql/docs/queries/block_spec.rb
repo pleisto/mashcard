@@ -19,6 +19,11 @@ describe Docs::Queries::Block, type: :query do
           block(id: $id) {
             ... on PageBlock {
               id
+              permissions {
+                canShow {
+                  value
+                }
+              }
             }
           }
         }
@@ -31,6 +36,7 @@ describe Docs::Queries::Block, type: :query do
       internal_graphql_execute(query, { id: block2.id })
       expect(response.success?).to be true
       expect(response.data['block']['id']).to eq block2.id
+      expect(response.data['block']['permissions']['canShow']['value']).to eq true
 
       # pageBlocks
       query = <<-'GRAPHQL'
