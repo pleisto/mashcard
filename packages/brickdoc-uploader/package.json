@@ -1,0 +1,24 @@
+{
+  "name": "@brickdoc/uploader",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "cleanup": "rm -rf dist"
+  },
+  "module": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@uppy/core": "^1.19.2",
+    "@uppy/dashboard": "^1.20.2",
+    "@uppy/react": "^1.12.0",
+    "htm": "^3.1.0",
+    "preact": "8.2.9",
+    "re-resizable": "^6.9.0",
+    "react-medium-image-zoom": "^4.3.4"
+  }
+}

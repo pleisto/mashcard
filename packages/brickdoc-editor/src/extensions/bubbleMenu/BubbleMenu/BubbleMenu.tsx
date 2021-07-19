@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
+import { BubbleMenu as TiptapBubbleMenu } from '../tiptap/BubbleMenu'
 import { Editor } from '@tiptap/core'
 import { Icon } from '@brickdoc/design-system'
 import { FontColorMenuItem } from './FontColorMenuItem'

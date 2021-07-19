@@ -1,0 +1,102 @@
+.brickdoc-uploader-dashboard {
+  width: 560px;
+  min-height: 153px;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  box-shadow: 0 10px 15px rgba(62, 62, 62, 0.1), 0 0 6px rgba(62, 62, 62, 0.05);
+  border-radius: 8px;
+
+  .uploader-dashboard-navbar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 0;
+      height: 1px;
+      background-color: #efefef;
+    }
+
+    .uploader-dashboard-navbar-item {
+      display: flex;
+      align-items: center;
+      margin-left: 24px;
+      cursor: pointer;
+      color: #3e3e3e;
+      font-size: 14px;
+      font-weight: 400;
+      height: 100%;
+      position: relative;
+
+      &::after {
+        content: none;
+        position: absolute;
+        z-index: 1;
+        height: 2px;
+        background-color: #3e3e3e;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      &.active {
+        &::after {
+          content: '';
+        }
+      }
+    }
+  }
+
+  .uploader-dashboard-link-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+
+    .dashboard-link-panel-input {
+      width: 100%;
+      background: #f7f7f7;
+      border-radius: 4px;
+      border: none;
+      line-height: 20px;
+      font-size: 14px;
+      color: #3e3e3e;
+      padding: 6px 16.5px;
+
+      ::placeholder {
+        color: #a6a6a6;
+      }
+    }
+
+    .dashboard-link-panel-button {
+      margin-top: 16px;
+      background: #000000;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.043);
+      border-radius: 2px;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 16px;
+      cursor: pointer;
+    }
+
+    .dashboard-link-panel-hint {
+      color: #5f5f5f;
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 16px;
+    }
+  }
+}

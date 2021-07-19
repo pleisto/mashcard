@@ -21,6 +21,7 @@ import Underline, { UnderlineOptions } from '@tiptap/extension-underline'
 import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
+import { ImageSectionExtension } from '../imageSection'
 
 export interface BasicRichtextOptions {
   blockquote: Partial<BlockquoteOptions> | false
@@ -44,6 +45,7 @@ export interface BasicRichtextOptions {
   text: false
   textStyle: Partial<TextStyleOptions> | false
   fontColor: Partial<FontColorOptions> | false
+  imageSection: false
 }
 
 export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
@@ -73,6 +75,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.strike !== false) extensions.push(Strike.configure(this.options?.strike))
     if (this.options.underline !== false) extensions.push(Underline.configure(this.options?.underline))
     if (this.options.text !== false) extensions.push(Text.configure(this.options?.text))
+    if (this.options.imageSection !== false) extensions.push(ImageSectionExtension.configure(this.options?.imageSection))
     if (this.options.textStyle !== false) extensions.push(TextStyle.configure(this.options?.textStyle))
     if (this.options.fontColor !== false) extensions.push(FontColorExtension.configure(this.options?.fontColor))
     /* eslint-enable @typescript-eslint/no-unnecessary-boolean-literal-compare */

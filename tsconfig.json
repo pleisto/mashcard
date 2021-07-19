@@ -5,6 +5,7 @@
   "include": ["**/*"],
   "exclude": ["packages/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
+    { "path": "packages/brickdoc-uploader" },
     { "path": "packages/brickdoc-design-system" },
     { "path": "packages/brickdoc-editor" },
     { "path": "packages/less-vars-loader" }
