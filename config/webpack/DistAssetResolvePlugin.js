@@ -5,7 +5,7 @@ class DistAssetResolvePlugin {
       if (
         !path.includes('/node_modules/') &&
         path.includes('/dist/') &&
-        (path.endsWith('.less') || path.endsWith('.svg') || path.endsWith('.svgr') || path.endsWith('.ttf'))
+        (path.endsWith('.less') || path.endsWith('.svg') || path.endsWith('.ttf'))
       ) {
         return resolver.doResolve(
           resolver.ensureHook('final-file'),

@@ -40,14 +40,6 @@ module.exports = {
       exclude: /\.(vars)\.less$/
     })
 
-    // Add SVGR Loader
-    // ========================================================
-
-    config.module.rules.push({
-      test: /\.svgr$/,
-      use: ['@svgr/webpack', 'url-loader']
-    })
-
     // Return the altered config
     return config
   }

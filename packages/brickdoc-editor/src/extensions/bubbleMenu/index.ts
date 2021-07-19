@@ -1,3 +1,1 @@
-import BubbleMenu from './BubbleMenu'
-
-export { BubbleMenu }
+export { BubbleMenu } from './BubbleMenu'

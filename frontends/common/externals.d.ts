@@ -3,14 +3,6 @@ declare module '*.less' {
   export = resource
 }
 
-declare module '*.svgr' {
-  const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>
-  const content: string
-
-  export { ReactComponent }
-  export default content
-}
-
 declare module '*.svg' {
   const content: string
 
