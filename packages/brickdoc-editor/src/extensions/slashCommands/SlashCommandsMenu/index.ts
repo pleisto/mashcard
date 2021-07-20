@@ -1,2 +1,1 @@
-import SlashCommandsMenu from './SlashCommandsMenu'
-export default SlashCommandsMenu
+export { SlashCommandsMenu } from './SlashCommandsMenu'

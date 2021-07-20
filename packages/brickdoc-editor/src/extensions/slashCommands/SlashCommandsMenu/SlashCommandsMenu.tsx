@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import * as React from 'react'
-import cx from 'classnames'
 import { MenuItem } from '..'
-import styles from './index.module.less'
+import { SlashMenuItem } from './SlashMenuItem'
+import './index.less'
 
 interface SlashCommandsMenuProps {
   items: MenuItem[]
@@ -13,7 +10,7 @@ interface SlashCommandsMenuProps {
 
 // We need expose instance function onKeyDown for suggestion extension.
 // And reactRenderer only access ref of a class component, thus SlashCommandsMenu must be a class component.
-class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProps> {
+export class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProps> {
   state = {
     selectedIndex: 0
   }
@@ -25,11 +22,11 @@ class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProps> {
     }
   }
 
-  onKeyDown({ event }) {
+  onKeyDown({ event }): boolean {
     const { items } = this.props
     const { selectedIndex } = this.state
 
-    const setSelectedIndex = index => this.setState({ selectedIndex: index })
+    const setSelectedIndex = (index: number): void => this.setState({ selectedIndex: index })
 
     if (event.key === 'ArrowUp') {
       setSelectedIndex((selectedIndex + items.length - 1) % items.length)
@@ -49,25 +46,24 @@ class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProps> {
     return false
   }
 
-  render() {
+  render(): React.ReactElement {
     const { items } = this.props
     const { selectedIndex } = this.state
 
-    // TODO: temporary UI
     return (
-      <div className={styles.menuItems}>
+      <div className="brickdoc-slash-menu">
+        <div className="slash-menu-heading">Brickdoc</div>
         {items.map((item, index) => (
-          <div
-            role="menuitem"
-            className={cx(styles.menuItem, { [styles.active]: index === selectedIndex })}
+          <SlashMenuItem
             key={index}
-            onClick={this.selectItem(index)}>
-            {item.title}
-          </div>
+            active={index === selectedIndex}
+            title={item.title}
+            desc={item.desc}
+            icon={item.icon}
+            onClick={this.selectItem(index)}
+          />
         ))}
       </div>
     )
   }
 }
-
-export default SlashCommandsMenu

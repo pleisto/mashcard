@@ -1,44 +1,57 @@
 import * as React from 'react'
-import { shallow } from 'enzyme'
-import SlashCommandsMenu from '../SlashCommandsMenu'
+import { mount } from 'enzyme'
+import { SlashCommandsMenu } from '../SlashCommandsMenu'
 
 describe('SlashCommandsMenu', () => {
-  it('render menu items', () => {
-    const items = [{
-      title: 'H1',
-      command: () => {},
-    }, {
-      title: 'H2',
-      command: () => {},
-    }, {
-      title: 'H3',
-      command: () => {},
-    }]
+  it('renders menu items correctly', () => {
+    const items = [
+      {
+        title: 'H1',
+        desc: 'h1',
+        icon: <div>icon</div>,
+        command: () => {}
+      },
+      {
+        title: 'H2',
+        desc: 'h2',
+        icon: <div>icon</div>,
+        command: () => {}
+      },
+      {
+        title: 'H3',
+        desc: 'h3',
+        icon: <div>icon</div>,
+        command: () => {}
+      }
+    ]
 
-    const commandsMenu = shallow(
-      <SlashCommandsMenu items={items} command={() => {}} />
-    )
+    const commandsMenu = mount(<SlashCommandsMenu items={items} command={() => {}} />)
 
-    expect(commandsMenu.find('.menuItems').length).toBe(1)
-    expect(commandsMenu.find('.menuItem').length).toBe(3)
+    expect(commandsMenu.find('.brickdoc-slash-menu').length).toBe(1)
+    expect(commandsMenu.find('button.slash-menu-item').length).toBe(3)
   })
 
-  it('select menu item', () => {
+  it('selects menu item normally', () => {
     const mockCommand = jest.fn()
-    const items = [{
-      title: 'H1',
-      command: () => {},
-    }, {
-      title: 'H2',
-      command: () => {},
-    }]
+    const items = [
+      {
+        title: 'H1',
+        desc: 'h1',
+        icon: <div>icon</div>,
+        command: () => {}
+      },
+      {
+        title: 'H2',
+        desc: 'h2',
+        icon: <div>icon</div>,
+        command: () => {}
+      }
+    ]
 
-    const commandsMenu = shallow(
-      <SlashCommandsMenu items={items} command={mockCommand} />
-    )
+    const commandsMenu = mount(<SlashCommandsMenu items={items} command={mockCommand} />)
 
-    const firstItem = commandsMenu.find('.menuItem').at(0)
-    const secondItem = commandsMenu.find('.menuItem').at(1)
+    const firstItem = commandsMenu.find('button.slash-menu-item').at(0)
+    const secondItem = commandsMenu.find('button.slash-menu-item').at(1)
 
     firstItem.simulate('click')
 
@@ -49,25 +62,33 @@ describe('SlashCommandsMenu', () => {
   })
 
   describe('instance function onKeyDown', () => {
-    const items = [{
-      title: 'H1',
-      command: () => {},
-    }, {
-      title: 'H2',
-      command: () => {},
-    }, {
-      title: 'H3',
-      command: () => {},
-    }]
+    const items = [
+      {
+        title: 'H1',
+        desc: 'h1',
+        icon: <div>icon</div>,
+        command: () => {}
+      },
+      {
+        title: 'H2',
+        desc: 'h2',
+        icon: <div>icon</div>,
+        command: () => {}
+      },
+      {
+        title: 'H3',
+        desc: 'h3',
+        icon: <div>icon</div>,
+        command: () => {}
+      }
+    ]
 
-    function keyDown(component, eventKey) {
+    function keyDown(component, eventKey): void {
       component.instance().onKeyDown({ event: { key: eventKey } })
     }
 
-    it('ArrowUp', () => {
-      const commandsMenu = shallow<SlashCommandsMenu>(
-        <SlashCommandsMenu items={items} command={() => {}} />
-      )
+    it('triggers `ArrowUp` correctly', () => {
+      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={() => {}} />)
 
       expect(commandsMenu.state('selectedIndex')).toBe(0)
 
@@ -81,10 +102,8 @@ describe('SlashCommandsMenu', () => {
       expect(commandsMenu.state('selectedIndex')).toBe(0)
     })
 
-    it('ArrowDown', () => {
-      const commandsMenu = shallow<SlashCommandsMenu>(
-        <SlashCommandsMenu items={items} command={() => {}} />
-      )
+    it('triggers `ArrowDown` correctly', () => {
+      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={() => {}} />)
 
       expect(commandsMenu.state('selectedIndex')).toBe(0)
 
@@ -98,11 +117,9 @@ describe('SlashCommandsMenu', () => {
       expect(commandsMenu.state('selectedIndex')).toBe(0)
     })
 
-    it('Enter', () => {
+    it('triggers `Enter` correctly', () => {
       const mockCommand = jest.fn()
-      const commandsMenu = shallow<SlashCommandsMenu>(
-        <SlashCommandsMenu items={items} command={mockCommand} />
-      )
+      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={mockCommand} />)
 
       keyDown(commandsMenu, 'Enter')
       expect(mockCommand).toBeCalledTimes(1)
@@ -124,11 +141,9 @@ describe('SlashCommandsMenu', () => {
       expect(mockCommand).toBeCalledWith(items[0])
     })
 
-    it('Unexpected', () => {
+    it('triggers Unexpected key will not cause error', () => {
       const mockCommand = jest.fn()
-      const commandsMenu = shallow<SlashCommandsMenu>(
-        <SlashCommandsMenu items={items} command={mockCommand} />
-      )
+      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={mockCommand} />)
 
       expect(() => {
         keyDown(commandsMenu, 'Unexpected')
