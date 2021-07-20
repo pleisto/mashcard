@@ -28,8 +28,6 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
       case 'underline':
         editor.chain().focus().toggleUnderline().run()
         break
-      default:
-        break
     }
   }
 

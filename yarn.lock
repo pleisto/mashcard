@@ -1859,6 +1859,7 @@ __metadata:
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.0-rc.1
     "@rails/actioncable": ^6.1.4
     "@rails/webpacker": 6.0.0-beta.7
+    "@types/enzyme": ^3.10.9
     "@types/jest": ^26.0.24
     "@types/node": ^16.3.1
     "@types/qs": ^6.9.7
@@ -4914,6 +4915,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cheerio@npm:*":
+  version: 0.22.30
+  resolution: "@types/cheerio@npm:0.22.30"
+  dependencies:
+    "@types/node": "*"
+  checksum: 2aba93f57c0c88964bd83c3403b1f9ad98c377d00e0d638417a943ab483f0a638925c9a4f2e25d923db2a293ffb59f833cd49fa76c6299684494633becea54de
+  languageName: node
+  linkType: hard
+
 "@types/classnames@npm:^2.3.1":
   version: 2.3.1
   resolution: "@types/classnames@npm:2.3.1"
@@ -4936,6 +4946,16 @@ __metadata:
   version: 1.1.1
   resolution: "@types/color-name@npm:1.1.1"
   checksum: b71fcad728cc68abcba1d405742134410c8f8eb3c2ef18113b047afca158ad23a4f2c229bcf71a38f4a818dead375c45b20db121d0e69259c2d81e97a740daa6
+  languageName: node
+  linkType: hard
+
+"@types/enzyme@npm:^3.10.9":
+  version: 3.10.9
+  resolution: "@types/enzyme@npm:3.10.9"
+  dependencies:
+    "@types/cheerio": "*"
+    "@types/react": "*"
+  checksum: d04a0345bb87a1127a3a4ce7c29258083e00e02eb9937d36ecf63bd5748211ffdef990e63e99ec00e6ad631ba029ab5168324bc6f4c671a6934f9a025bb78d93
   languageName: node
   linkType: hard
 

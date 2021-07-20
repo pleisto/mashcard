@@ -6,7 +6,8 @@ module.exports = {
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    '@brickdoc/design-system': '<rootDir>/packages/brickdoc-design-system/dist/components/index.js'
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
   timers: 'fake',
