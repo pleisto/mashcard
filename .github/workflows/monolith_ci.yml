@@ -88,12 +88,10 @@ jobs:
           cache: yarn
       - name: Run yarn install
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+        run: yarn install --immutable
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn test:jest --ci --collectCoverage
+        run: yarn tsc:build && yarn test:jest --ci --collectCoverage
   rspec:
     name: Rails RSpec Test
     runs-on: ubuntu-latest
@@ -125,7 +123,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 2 # To retrieve the preceding commit.
-      - name: Get changed ruby files
+      - name: Get changed Ruby files
         id: changed-ruby-files
         uses: tj-actions/changed-files@v8.9
         with:
@@ -153,8 +151,8 @@ jobs:
         uses: mikepenz/action-junit-report@v2
         with:
           report_paths: junit-reports/*.xml
-  ci:
-    name: Main CI workflow
+  build_e2e:
+    name: Build & E2E Test
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -190,9 +188,7 @@ jobs:
           node-version: 16
           cache: yarn
       - name: Run yarn install
-        run: yarn
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+        run: yarn install --immutable
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -204,7 +200,7 @@ jobs:
         with:
           files: |
             db\/migrate
-      - name: Get changed graphql type definitions
+      - name: Get changed GraphQL type definitions
         id: changed-gql-typeds
         uses: tj-actions/changed-files@v8.9
         with:
@@ -224,7 +220,7 @@ jobs:
           RAILS_ENV: development
       - name: Ensure the server is running
         run: curl http://localhost:3000 -I
-      - name: Run Webpacker compilation
+      - name: Run front end compilation
         run: yarn dist
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
@@ -242,7 +238,7 @@ jobs:
           HUSKY: 0
         with:
           default_author: github_actions
-          message: 'ci: bump schemas and dists'
+          message: 'chore: bump schemas and dists'
           add: 'app lib packages spec config db frontends'
       - name: Upload rails log (when cypress failed)
         if: failure()

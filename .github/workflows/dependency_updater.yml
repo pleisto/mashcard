@@ -37,8 +37,9 @@ jobs:
         env:
           HUSKY: 0
         with:
-          commit-message: 'build(deps): Update depencency'
-          branch: deps-automatic-update
+          title: 'build(deps): Upgrade dependencies'
+          commit-message: 'build(deps): Upgrade dependencies'
+          branch: deps-automatic-upgrade
           labels: |
             dependencies
           delete-branch: true
