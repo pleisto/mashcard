@@ -42,7 +42,33 @@ describe Docs::Queries::Block, type: :query do
       query = <<-'GRAPHQL'
         query GetPageBlocks($webid: String!) {
           pageBlocks(webid: $webid) {
-            id
+            ... on PageBlock {
+              id
+              sort
+              parentId
+              type
+              data {
+                title
+              }
+              meta {
+                icon
+                cover
+              }
+            }
+
+            ... on ParagraphBlock {
+              id
+              sort
+              parentId
+              type
+              data {
+                text
+                content
+              }
+              meta {
+                attrs
+              }
+            }
           }
         }
       GRAPHQL

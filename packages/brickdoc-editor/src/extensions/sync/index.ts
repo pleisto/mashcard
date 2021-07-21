@@ -1,5 +1,20 @@
 import { Plugin, PluginKey } from 'prosemirror-state'
-import { Extension } from '@tiptap/core'
+import { Extension, JSONContent } from '@tiptap/core'
+import { Node } from 'prosemirror-model'
+import { SetDocAttrStep } from './SetDocAttrStep'
+
+declare module '@tiptap/core' {
+  interface Commands<ReturnType> {
+    sync: {
+      setDocAttrs: (newAttrs: Record<string, any>) => ReturnType
+      replaceRoot: (content: JSONContent) => ReturnType
+    }
+  }
+}
+
+export interface SyncExtensionOptions {
+  onCommit: (doc: Node) => void
+}
 
 const PLUGIN_NAME = 'sync'
 const PLUGIN_KEY = new PluginKey(PLUGIN_NAME)
@@ -7,17 +22,34 @@ const PLUGIN_KEY = new PluginKey(PLUGIN_NAME)
 const THROTTLE_DURATION = 3000
 
 const now = (): number => new Date().getTime()
-export interface SyncHandler {
-  onCommit: ({ node: any }) => void
-}
 
+// https://github.com/ueberdosis/tiptap/blob/main/packages/core/src/Extension.ts#L33
+// https://github.com/naept/tiptap-extension-collaboration/blob/master/src/Collaboration.js#L10-L11
 // https://prosemirror.net/docs/ref/#state.PluginSpec
-export const SyncExtension = Extension.create({
+export const SyncExtension = Extension.create<SyncExtensionOptions>({
   name: PLUGIN_NAME,
 
+  addCommands() {
+    return {
+      setDocAttrs:
+        newAttrs =>
+        ({ tr, dispatch }) => {
+          if (dispatch) {
+            tr.step(new SetDocAttrStep(newAttrs))
+          }
+          return true
+        },
+      replaceRoot:
+        content =>
+        ({ chain, can, dispatch }) => {
+          const chainedCommands = dispatch ? chain() : can().chain()
+          return chainedCommands.setContent(content).setDocAttrs(content.attrs).run()
+        }
+    }
+  },
+
   addProseMirrorPlugins() {
-    const options: any = this.options
-    const onSync = options.onSync
+    const { onCommit } = this.options
 
     return [
       new Plugin({
@@ -25,6 +57,7 @@ export const SyncExtension = Extension.create({
         state: {
           init: (config, state) => ({
             version: 0,
+            patchSeq: 0,
             doc: state.doc,
             syncTime: null,
             editTime: null,
@@ -35,8 +68,8 @@ export const SyncExtension = Extension.create({
               return state
             }
             const newPluginState = { ...state, editTime: now() }
-            const doCommit = () => {
-              onSync.onCommit({ node: newState.doc })
+            const doCommit = (): void => {
+              onCommit(newState.doc)
             }
             if (state.syncTime && now() - state.syncTime < THROTTLE_DURATION) {
               if (state.timer) {

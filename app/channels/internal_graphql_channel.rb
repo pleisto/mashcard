@@ -16,6 +16,7 @@ class InternalGraphQLChannel < ApplicationCable::Channel
       real_ip: request.remote_ip,
       entrypoint: :internal,
       current_user: nil,
+      channel: self,
       request_id: request.uuid
     }
 

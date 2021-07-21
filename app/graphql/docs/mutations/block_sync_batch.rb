@@ -3,23 +3,30 @@ module Docs
   class Mutations::BlockSyncBatch < BrickGraphQL::BaseMutation
     argument :blocks, [Inputs::BlockInput], required: true
     argument :root_id, BrickGraphQL::Scalars::UUID, 'block root id', required: true
+    argument :operator_id, String, 'operator id', required: true
 
-    def resolve(blocks:, root_id:)
-      lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 0.1)
+    def resolve(blocks:, root_id:, operator_id:)
+      lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 3)
       lock.lock do
-        do_resolve(blocks: blocks, root_id: root_id)
+        Rails.logger.info("resolve #{root_id} #{operator_id} #{blocks}")
+        do_resolve(blocks: blocks, root_id: root_id, operator_id: operator_id)
       end
     end
 
-    def do_resolve(blocks:, root_id:)
+    def do_resolve(blocks:, root_id:, operator_id:)
       root = Docs::Block.find_by(id: root_id)
+      patches = []
+      new_blocks_hash = {}
+      preloads = {}
 
       if root
-        preloads = root.descendants.index_by(&:id)
-        delete_block_ids = preloads.keys - blocks.map(&:id)
-        Docs::Block.where(id: delete_block_ids).update_all(deleted_at: Time.current) if delete_block_ids.present?
-      else
-        preloads = {}
+        preloads = root.descendants_cache(unscoped: true).index_by(&:id)
+        paths_cache = root.paths_cache
+        delete_block_ids = preloads.select { |_, v| !v.deleted_at }.keys - blocks.map(&:id)
+        if delete_block_ids.present?
+          patches += delete_block_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: "null", patch_type: "DELETE" } }
+          Docs::Block.where(id: delete_block_ids).update_all(deleted_at: Time.current)
+        end
       end
 
       ## TODO from context
@@ -35,12 +42,47 @@ module Docs
         block.type = args.type
 
         block.pod_id = pod.id
+        block.deleted_at = nil
 
         block.collaborators << current_user.id
 
         valid_payload(block)
 
         block.save!
+        new_blocks_hash[block.id] = block
+
+        patches << block.dirty_patch
+      end
+
+      patches.compact!
+
+      if patches.present?
+        root ||= new_blocks_hash.fetch(root_id)
+        if patches.any? { |p| p.fetch(:path).blank? }
+          root.clear_cache
+          paths_cache = root.paths_cache
+
+          patches = patches.map do |p|
+            if p.fetch(:path).blank?
+              parent_id = p.fetch(:parent_id)
+              # rubocop:disable Metrics/BlockNesting
+              new_path = parent_id.nil? ? [] : paths_cache.fetch(parent_id)
+              new_path += [p.fetch(:id)] if p.fetch(:patch_type) != "ADD"
+              p.merge(path: new_path)
+            else
+              p
+            end
+          end
+        end
+
+        trigger_payload = {
+          state: "ACTIVE",
+          seq: root.patch_seq_increment,
+          patches: patches.map do |p|
+            p.merge(operator_id: operator_id)
+          end.sort_by { |p| -p.fetch(:path).length }
+        }
+        Docs::Block.broadcast(root_id, trigger_payload)
       end
 
       nil

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
+import { Dropdown, Menu, MenuProps, Tooltip } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -18,6 +18,7 @@ interface PageMenuProps {
   webid: string
   id: UUID
   title: Scalars['String']
+  text: Scalars['String'] | null
   parentId?: UUID
 }
 
@@ -38,9 +39,12 @@ const PageMenu: React.FC<PageMenuProps> = props => {
     console.log(`rollback snapshot ${version}`)
   }
 
-  const link = <Link to={`/${props.webid}/${props.id}`}>{props.title}</Link>
   if (props.parentId) {
-    return link
+    return (
+      <Tooltip title={props.text}>
+        <Link to={`/${props.webid}/${props.parentId}#${props.id}`}>{props.title}</Link>
+      </Tooltip>
+    )
   }
 
   const onClick = (id: UUID): MenuProps['onClick'] => {
@@ -75,7 +79,7 @@ const PageMenu: React.FC<PageMenuProps> = props => {
   )
   return (
     <Dropdown mouseEnterDelay={1} overlay={menu}>
-      {link}
+      <Link to={`/${props.webid}/${props.id}`}>{props.title}</Link>
     </Dropdown>
   )
 }

@@ -6,10 +6,16 @@ module Docs
     def self.data_payload
       [
         {
-          name: :title,
+          name: :content,
           type: String,
-          description: 'page title',
+          description: 'Prosemirror content json',
           opts: { null: false }
+        },
+        {
+          name: :text,
+          type: String,
+          description: 'text',
+          opts: { null: true }
         },
       ]
     end

@@ -29,9 +29,10 @@
 class Docs::Block < ApplicationRecord
   self.inheritance_column = :_type_disabled
 
-  default_scope { order(sort: :desc) }
+  include Redis::Objects
+  counter :patch_seq
 
-  default_scope { where(deleted_at: nil) }
+  default_scope { where(deleted_at: nil).order(sort: :desc) }
 
   scope :pageable, -> { where(type: ['doc', 'paragraph']) }
 
@@ -46,20 +47,71 @@ class Docs::Block < ApplicationRecord
   validates :pod, presence: true
   validates :collaborators, presence: true
 
+  def patch_seq_increment
+    patch_seq.increment
+  end
+
   def redis_counter_key(type)
     "#{type}_#{id}"
   end
 
+  REDIS_EXPIRE_TIME = Rails.env.production? ? 1.day : 10.minutes
+
   COUNTER_META = {
     history_version: {
       key_f: ->(id) { "history_#{id}" },
-      expire_time: 1.day
+      expire_time: REDIS_EXPIRE_TIME
     },
     snapshot_version: {
       key_f: ->(id) { "snapshot_#{id}" },
-      expire_time: 1.day
+      expire_time: REDIS_EXPIRE_TIME
     }
   }
+
+  def prepare_descendants
+    data = descendants_cache(unscoped: true)
+    ids = data.map(&:id)
+    keys = ids.flat_map { |id| ["snapshot_#{id}", "history_#{id}"] }
+    persist_values = Hash[*data.flat_map { |b| ["snapshot_#{b.id}", b.snapshot_version.to_s, "history_#{b.id}", b.history_version.to_s] }]
+    Brickdoc::Redis.with(:cache) do |redis|
+      exist_values = redis.mapped_mget(*keys)
+      rest_keys = exist_values.select { |_, v| v.nil? }.keys
+      rest_hash = persist_values.slice(*rest_keys)
+
+      redis.pipelined do
+        rest_hash.each do |k, v|
+          redis.setex(k, REDIS_EXPIRE_TIME, v)
+        end
+      end
+      final_hash = exist_values.merge(rest_hash)
+      Current.redis_values = final_hash
+    end
+    # data.each(&:prepare)
+  end
+
+  def dirty_patch
+    return nil if previous_changes.blank?
+
+    changes = previous_changes.slice('id', 'meta', 'type', 'data', 'sort', 'parent_id')
+    ## TODO track changes before
+    payload = changes.transform_values(&:last)
+    path = if parent_id.nil?
+      [id]
+    else
+      []
+    end
+
+    patch_type =
+      if id_previously_changed?
+        "ADD"
+      else
+        "UPDATE"
+      end
+
+    Rails.logger.info("DIRTY #{id} #{changes}")
+
+    { id: id, patch_type: patch_type, payload: payload.to_json, parent_id: parent_id, path: path }
+  end
 
   ## NOTE Prepare counter to prevent collision
   def prepare
@@ -71,7 +123,7 @@ class Docs::Block < ApplicationRecord
     meta = COUNTER_META.fetch(type)
     Brickdoc::Redis.with(:cache) do |redis|
       key = meta.fetch(:key_f).call(id)
-      counter = redis.get(key)
+      counter = Current.redis_values.to_h[key] || redis.get(key)
       return counter.to_i if counter
 
       value = send(type)
@@ -84,12 +136,16 @@ class Docs::Block < ApplicationRecord
   def realtime_version_increment(type)
     ## NOTE ensure counter exists
     ## TODO remove this
-    _prepare_version = realtime_version(type)
+    prepare_version = realtime_version(type)
 
     meta = COUNTER_META.fetch(type)
     Brickdoc::Redis.with(:cache) do |redis|
       key = meta.fetch(:key_f).call(id)
-      return redis.incr(key)
+      result = redis.incr(key)
+
+      Rails.logger.info("DEBUG #{key} #{prepare_version} #{result}")
+
+      return result
     end
   end
 
@@ -119,8 +175,14 @@ class Docs::Block < ApplicationRecord
     snapshots.create!(snapshot_version: snapshot_version) if snapshot_version_previously_changed?
   end
 
+  def self.broadcast(id, payload)
+    BrickdocSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
+  end
+
   def delete_pages!
     descendants.pageable.update_all(deleted_at: Time.current)
+    patch_seq.del
+    self.class.broadcast(id, { state: "DELETED" })
   end
 
   # recursive CTE query
@@ -133,7 +195,8 @@ class Docs::Block < ApplicationRecord
   def cte(type, opts = {})
     opts = {
       columns: self.class.column_names, # select columns array
-      where: nil
+      where: nil,
+      unscoped: false
     }.merge(opts)
     hierarchy = self.class.arel_table
     recursive_table = Arel::Table.new(:recursive)
@@ -169,8 +232,13 @@ class Docs::Block < ApplicationRecord
       m.project Arel.star
     end
 
+    ids = ActiveRecord::Base.connection.execute(manager.to_sql).field_values('id')
     ## TODO save this query!
-    Docs::Block.where(id: ActiveRecord::Base.connection.execute(manager.to_sql).field_values('id'))
+    if opts[:unscoped]
+      Docs::Block.unscoped.where(id: ids)
+    else
+      Docs::Block.where(id: ids)
+    end
   end
 
   def ancestors(opts = {})
@@ -181,12 +249,57 @@ class Docs::Block < ApplicationRecord
     cte(:descendants, opts)
   end
 
+  def descendants_cache(opts = {})
+    data = Current.descendants.to_h[id]
+    return data unless data.nil?
+
+    data = descendants(opts).to_a
+    Current.descendants = Current.descendants.to_h.merge(id => data)
+    data
+  end
+
+  def clear_cache
+    Current.paths = Current.paths.to_h.slice!(id)
+    Current.descendants = Current.descendants.to_h.slice!(id)
+  end
+
+  def paths_cache
+    data = Current.paths.to_h[id]
+    return data unless data.nil?
+
+    data = path_map
+    Current.paths = Current.paths.to_h.merge(id => data)
+    data
+  end
+
+  def path_map
+    result = {}
+    parent_ids = [nil]
+    data = descendants_cache
+
+    loop do
+      this_level = data.select { |b| b.parent_id.in?(parent_ids) }
+
+      break if this_level.blank?
+
+      this_level.each do |b|
+        result[b.id] = result[b.parent_id].to_a + [b.id]
+      end
+
+      parent_ids = this_level.map(&:id)
+    end
+
+    result.tap do |path_map|
+      raise("[ERROR] path is empty!") if path_map.blank?
+    end
+  end
+
   def tree
     self.class.make_tree(self)
   end
 
   def self.make_tree(parent, blocks = nil)
-    blocks ||= parent.descendants
+    blocks ||= parent.descendants_cache
     children = blocks.select do |blk|
       blk.parent_id == parent.id
     end.sort_by(&:sort).map do |blk|
@@ -195,10 +308,7 @@ class Docs::Block < ApplicationRecord
     parent.attributes.slice("id", "type", "sort", "meta", "data").merge("children" => children)
   end
 
-  def path_cache
-    return [id] if parent_id.nil?
-
-    ## TODO read path cache from Current module
+  def calculate_path
     hash = ancestors(columns: %w[id parent_id]).pluck(:id, :parent_id).to_h
     target = []
     i = id
@@ -209,6 +319,14 @@ class Docs::Block < ApplicationRecord
     end
 
     target
+  end
+
+  def path_cache
+    return [id] if parent_id.nil?
+
+    ## TODO read path cache from Current module
+    ## TODO add `root_id` to blocks
+    calculate_path
   end
 
   def latest_history
@@ -224,6 +342,7 @@ class Docs::Block < ApplicationRecord
   end
 
   def children_version_meta
-    descendants(columns: %w[id history_version parent_id]).pluck(:id, :history_version).to_h
+    # descendants(columns: %w[id history_version parent_id]).pluck(:id, :history_version).to_h
+    descendants_cache.pluck(:id, :history_version).to_h
   end
 end

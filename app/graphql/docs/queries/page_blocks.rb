@@ -2,7 +2,7 @@
 
 module Docs
   class Queries::PageBlocks < BrickGraphQL::BaseResolver
-    type [Docs::Objects::PageBlock], null: true
+    type [Docs::Objects::Block], null: true
 
     argument :webid, GraphQL::Types::String, required: true,
              description: 'List all pages for pod webid'

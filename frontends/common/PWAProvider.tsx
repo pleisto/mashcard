@@ -35,15 +35,13 @@ interface ProviderInterface {
 
 const PWAProvider: React.FC<ProviderInterface> = props => {
   return (
-    <React.StrictMode>
-      <Suspense fallback={<Spin delay={1000} />}>
-        <ConfigProvider direction={direction} i18n={globalThis.i18n}>
-          <ApolloProvider client={apolloClient(props.cacheConfig)}>
-            <HelmetProvider>{props.children}</HelmetProvider>
-          </ApolloProvider>
-        </ConfigProvider>
-      </Suspense>
-    </React.StrictMode>
+    <Suspense fallback={<Spin delay={1000} />}>
+      <ConfigProvider direction={direction} i18n={globalThis.i18n}>
+        <ApolloProvider client={apolloClient(props.cacheConfig)}>
+          <HelmetProvider>{props.children}</HelmetProvider>
+        </ApolloProvider>
+      </ConfigProvider>
+    </Suspense>
   )
 }
 export default PWAProvider

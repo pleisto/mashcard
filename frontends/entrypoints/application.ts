@@ -1,10 +1,12 @@
 import { cable } from '@/common/apollo'
+import {v4 as uuid} from 'uuid'
 
 // I18n
 // eslint-disable-next-line import/first
 import '@/common/i18next'
 globalThis.brickdocContext = globalThis.brickdocContext || {}
 globalThis.brickdocContext.wsCable = cable
+globalThis.brickdocContext.uuid = uuid()
 globalThis.brickdocContext.timezone ||=
   Intl?.DateTimeFormat().resolvedOptions().timeZone || globalThis.brickdocContext.defaultTimezone
 

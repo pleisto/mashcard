@@ -274,6 +274,9 @@ en-US:
       year: Year
   errors:
     format: "%{attribute} %{message}"
+    graphql:
+      docs:
+        initialized_not_yet_completed: Initialized not yet completed
     messages:
       already_confirmed: was already confirmed, please try signing in
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one

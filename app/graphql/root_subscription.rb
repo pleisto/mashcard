@@ -3,5 +3,5 @@
 class RootSubscription < BrickGraphQL::BaseObject
   include AutoGraphQLFields
 
-  add_fields_for BrickGraphQL::Component.subscription_modules(BrickdocSchema::NAMESPACES), :subscription_modules
+  add_fields_for BrickGraphQL::Component.subscription_modules(BrickdocSchema::NAMESPACES), :subscription
 end

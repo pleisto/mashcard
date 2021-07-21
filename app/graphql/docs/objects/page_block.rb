@@ -9,7 +9,7 @@ module Docs
           name: :title,
           type: String,
           description: 'page title',
-          opts: { null: false }
+          opts: { null: true }
         },
       ]
     end
@@ -26,12 +26,6 @@ module Docs
           name: :cover,
           type: BrickGraphQL::Scalars::HttpUrl,
           description: 'cover image',
-          opts: { null: true }
-        },
-        {
-          name: :attrs,
-          type: String,
-          description: 'attrs',
           opts: { null: true }
         },
       ]

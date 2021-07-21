@@ -6,9 +6,11 @@ class BrickdocSchema < BrickGraphQL::BaseSchema
     System,
     Docs,
   ]
-  # use GraphQL::Subscriptions::ActionCableSubscriptions
+  use GraphQL::Subscriptions::ActionCableSubscriptions
+
+  tracer GraphQL::Tracing::ActiveSupportNotificationsTracing
 
   query RootQuery
   mutation RootMutation
-  # subscriptions RootSubscription
+  subscription RootSubscription
 end

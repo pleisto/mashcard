@@ -14,12 +14,33 @@ export const queryPods = gql`
 export const queryPageBlocks = gql`
   query GetPageBlocks($webid: String!) {
     pageBlocks(webid: $webid) {
-      id
-      parentId
-      data {
-        title
+      ... on PageBlock {
+        id
+        sort
+        parentId
+        type
+        data {
+          title
+        }
+        meta {
+          icon
+          cover
+        }
       }
-      sort
+
+      ... on ParagraphBlock {
+        id
+        sort
+        parentId
+        type
+        data {
+          text
+          content
+        }
+        meta {
+          attrs
+        }
+      }
     }
   }
 `
