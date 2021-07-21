@@ -262,6 +262,9 @@ zh-HK:
       year: 年
   errors:
     format: "%{attribute} %{message}"
+    graphql:
+      docs:
+        initialized_not_yet_completed: Initialized not yet completed
     messages:
       already_confirmed: 已經驗證，請直接登入。
       confirmation_period_expired: 必須在 %{period} 內驗證，請重新申請。

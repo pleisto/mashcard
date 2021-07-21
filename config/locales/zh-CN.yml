@@ -262,6 +262,9 @@ zh-CN:
       year: 年
   errors:
     format: "%{attribute} %{message}"
+    graphql:
+      docs:
+        initialized_not_yet_completed: Initialized not yet completed
     messages:
       already_confirmed: 之前已经确认过，请尝试直接登录
       confirmation_period_expired: 确认码已过期 %{period}，请重新申请

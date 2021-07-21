@@ -317,6 +317,9 @@ ar-SA:
       year: السنة
   errors:
     format: "%{message}"
+    graphql:
+      docs:
+        initialized_not_yet_completed: Initialized not yet completed
     messages:
       already_confirmed: تم تأكيده بالفعل، الرجاء محاولة تسجيل الدخول
       confirmation_period_expired: يحتاج إلى التأكيد في غضون %{period}،الرجاء طلب رابط تأكيد جديد

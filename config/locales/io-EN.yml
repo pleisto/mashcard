@@ -273,6 +273,9 @@ io-EN:
       year: crwdns724:0crwdne724:0
   errors:
     format: "crwdns726:0%{attribute}crwdnd726:0%{message}crwdne726:0"
+    graphql:
+      docs:
+        initialized_not_yet_completed: crwdns2029:0crwdne2029:0
     messages:
       already_confirmed: crwdns728:0crwdne728:0
       confirmation_period_expired: crwdns730:0%{period}crwdne730:0

@@ -262,6 +262,9 @@ ja-JP:
       year: 年
   errors:
     format: "%{attribute}%{message}"
+    graphql:
+      docs:
+        initialized_not_yet_completed: Initialized not yet completed
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。
       confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
