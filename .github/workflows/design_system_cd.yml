@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'packages/brickdoc-design-system/**'
+      - '.github/workflows/design_system_cd.yml'
     branches:
       - master
       - main
@@ -60,10 +61,9 @@ jobs:
     needs: build
     steps:
       - name: Deployment to App Engine
-        uses: brickdoc/app-engine@v1.beta1
+        uses: brickdoc/app-engine@v1.beta2
         with:
           name: design-system
-          token: ${{ secrets.GITHUB_TOKEN }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
