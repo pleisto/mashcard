@@ -63,6 +63,7 @@ jobs:
         uses: brickdoc/app-engine@v1.beta1
         with:
           name: design-system
+          token: ${{ secrets.GITHUB_TOKEN }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
