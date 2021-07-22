@@ -1,17 +1,7 @@
 import * as React from 'react'
 import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
 import { Editor } from '@tiptap/core'
-import {
-  IconBoldWords,
-  IconListOrdered,
-  IconListUnordered,
-  IconItalics,
-  IconStrikeThrough,
-  IconTextUnderline,
-  IconRteH1,
-  IconRteH2,
-  IconRteH3
-} from '@brickdoc/design-system'
+import { Icon } from '@brickdoc/design-system'
 import { FontColorMenuItem } from './FontColorMenuItem'
 import { MenuItem } from './MenuItem'
 import './index.less'
@@ -31,25 +21,25 @@ export interface StyleMeta {
 const MarkStyle: StyleMeta[] = [
   {
     value: 'bold',
-    label: <IconBoldWords />,
+    label: <Icon name="bold-words" />,
     desc: 'Bold',
     shortcutDesc: '⌘+B'
   },
   {
     value: 'italic',
-    label: <IconItalics />,
+    label: <Icon name="italics" />,
     desc: 'Italic',
     shortcutDesc: '⌘+I'
   },
   {
     value: 'underline',
-    label: <IconTextUnderline />,
+    label: <Icon name="text-underline" />,
     desc: 'Underline',
     shortcutDesc: '⌘+U'
   },
   {
     value: 'strike',
-    label: <IconStrikeThrough />,
+    label: <Icon name="strikethrough" />,
     desc: 'Strike-through'
   }
 ]
@@ -57,19 +47,19 @@ const MarkStyle: StyleMeta[] = [
 const HeadingStyle: StyleMeta[] = [
   {
     value: 'heading',
-    label: <IconRteH1 />,
+    label: <Icon name="rte-h1" />,
     option: { level: 1 },
     desc: 'Heading 1'
   },
   {
     value: 'heading',
-    label: <IconRteH2 />,
+    label: <Icon name="rte-h2" />,
     option: { level: 2 },
     desc: 'Heading 2'
   },
   {
     value: 'heading',
-    label: <IconRteH3 />,
+    label: <Icon name="rte-h3" />,
     option: { level: 3 },
     desc: 'Heading 3'
   }
@@ -78,12 +68,12 @@ const HeadingStyle: StyleMeta[] = [
 const ListStyle: StyleMeta[] = [
   {
     value: 'bulletList',
-    label: <IconListUnordered />,
+    label: <Icon name="list-unordered" />,
     desc: 'Bullet-list'
   },
   {
     value: 'orderedList',
-    label: <IconListOrdered />,
+    label: <Icon name="list-ordered" />,
     desc: 'Ordered-list'
   }
 ]

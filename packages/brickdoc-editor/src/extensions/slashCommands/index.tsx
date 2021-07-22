@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Extension } from '@tiptap/core'
 import { Editor, ReactRenderer } from '@tiptap/react'
 import Suggestion from '@tiptap/suggestion'
-import { IconRteH1, IconRteH2, IconRteH3, IconListUnordered, IconListOrdered } from '@brickdoc/design-system'
+import { Icon } from '@brickdoc/design-system'
 import { createPopup, PopupInstance } from '../helpers/popup'
 import { SlashCommandsMenu } from './SlashCommandsMenu'
 
@@ -21,7 +21,7 @@ const menuItems: MenuItem[] = [
   {
     title: 'Heading 1',
     desc: 'Big section heading',
-    icon: <IconRteH1 className="menu-item-icon" />,
+    icon: <Icon name="rte-h1" className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 1 }).run()
     }
@@ -29,7 +29,7 @@ const menuItems: MenuItem[] = [
   {
     title: 'Heading 2',
     desc: 'Medium section heading',
-    icon: <IconRteH2 className="menu-item-icon" />,
+    icon: <Icon name="rte-h2" className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
     }
@@ -37,7 +37,7 @@ const menuItems: MenuItem[] = [
   {
     title: 'Heading 3',
     desc: 'Small section heading',
-    icon: <IconRteH3 className="menu-item-icon" />,
+    icon: <Icon name="rte-h3" className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 3 }).run()
     }
@@ -45,7 +45,7 @@ const menuItems: MenuItem[] = [
   {
     title: 'Bulleted List',
     desc: 'Create a bulleted list',
-    icon: <IconListUnordered className="menu-item-icon" />,
+    icon: <Icon name="list-unordered" className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleBulletList().run()
     }
@@ -53,7 +53,7 @@ const menuItems: MenuItem[] = [
   {
     title: 'Numbered List',
     desc: 'Create a list with numbering',
-    icon: <IconListOrdered className="menu-item-icon" />,
+    icon: <Icon name="list-ordered" className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleOrderedList().run()
     }
