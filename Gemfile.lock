@@ -211,7 +211,7 @@ GEM
       aes_key_wrap
       bindata
     jwt (2.2.3)
-    listen (3.5.1)
+    listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (0.6.5)
