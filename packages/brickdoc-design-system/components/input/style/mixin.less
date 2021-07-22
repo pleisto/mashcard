@@ -191,8 +191,7 @@
     .@{brk-prefix}-select {
       margin: -(@input-padding-vertical-base + 1px) (-@input-padding-horizontal-base);
 
-      &.@{brk-prefix}-select-single:not(.@{brk-prefix}-select-customize-input)
-        .@{brk-prefix}-select-selector {
+      &.@{brk-prefix}-select-single:not(.@{brk-prefix}-select-customize-input) .@{brk-prefix}-select-selector {
         background-color: inherit;
         border: @border-width-base @border-style-base transparent;
         box-shadow: none;
@@ -203,6 +202,16 @@
         .@{brk-prefix}-select-selector {
           color: @primary-color;
         }
+      }
+    }
+    // https://github.com/ant-design/ant-design/issues/31333
+    .@{brk-prefix}-cascader-picker {
+      margin: -9px (-@control-padding-horizontal);
+      background-color: transparent;
+      .@{brk-prefix}-cascader-input {
+        text-align: left;
+        border: 0;
+        box-shadow: none;
       }
     }
   }

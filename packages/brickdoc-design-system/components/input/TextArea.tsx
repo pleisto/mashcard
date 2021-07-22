@@ -10,7 +10,7 @@ import { fixControlledValue, resolveOnChange, triggerFocus, InputFocusOptions } 
 import SizeContext, { SizeType } from '../config-provider/SizeContext'
 
 interface ShowCountProps {
-  formatter: (args: { count: number; maxLength?: number }) => string;
+  formatter: (args: { count: number; maxLength?: number }) => string
 }
 
 function fixEmojiLength(value: string, maxLength: number) {
@@ -18,16 +18,16 @@ function fixEmojiLength(value: string, maxLength: number) {
 }
 
 export interface TextAreaProps extends RcTextAreaProps {
-  allowClear?: boolean;
-  bordered?: boolean;
-  showCount?: boolean | ShowCountProps;
-  size?: SizeType;
+  allowClear?: boolean
+  bordered?: boolean
+  showCount?: boolean | ShowCountProps
+  size?: SizeType
 }
 
 export interface TextAreaRef {
-  focus: (options?: InputFocusOptions) => void;
-  blur: () => void;
-  resizableTextArea?: ResizableTextArea;
+  focus: (options?: InputFocusOptions) => void
+  blur: () => void
+  resizableTextArea?: ResizableTextArea
 }
 
 const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
@@ -45,7 +45,7 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
       onChange,
       ...props
     },
-    ref,
+    ref
   ) => {
     const { getPrefixCls, direction } = React.useContext(ConfigContext)
     const size = React.useContext(SizeContext)
@@ -56,7 +56,7 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
     const [compositing, setCompositing] = React.useState(false)
 
     const [value, setValue] = useMergedState(props.defaultValue, {
-      value: props.value,
+      value: props.value
     })
 
     const handleSetValue = (val: string, callback?: () => void) => {
@@ -117,7 +117,7 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
       focus: (option?: InputFocusOptions) => {
         triggerFocus(innerRef.current?.resizableTextArea?.textArea, option)
       },
-      blur: () => innerRef.current?.blur(),
+      blur: () => innerRef.current?.blur()
     }))
 
     const textArea = (
@@ -127,7 +127,7 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
           [`${prefixCls}-borderless`]: !bordered,
           [className]: className && !showCount,
           [`${prefixCls}-sm`]: size === 'small' || customizeSize === 'small',
-          [`${prefixCls}-lg`]: size === 'large' || customizeSize === 'large',
+          [`${prefixCls}-lg`]: size === 'large' || customizeSize === 'large'
         })}
         style={showCount ? undefined : style}
         prefixCls={prefixCls}
@@ -157,6 +157,7 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
         handleReset={handleReset}
         ref={clearableInputRef}
         bordered={bordered}
+        style={showCount ? undefined : style}
       />
     )
 
@@ -176,21 +177,20 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
           className={classNames(
             `${prefixCls}-textarea`,
             {
-              [`${prefixCls}-textarea-rtl`]: direction === 'rtl',
+              [`${prefixCls}-textarea-rtl`]: direction === 'rtl'
             },
             `${prefixCls}-textarea-show-count`,
-            className,
+            className
           )}
           style={style}
-          data-count={dataCount}
-        >
+          data-count={dataCount}>
           {textareaNode}
         </div>
       )
     }
 
     return textareaNode
-  },
+  }
 )
 
 export default TextArea

@@ -66,9 +66,7 @@ export default function ErrorList({ errors = EMPTY_LIST, help, onDomErrorVisible
       motionName={`${rootPrefixCls}-show-help`}
       onLeaveEnd={() => {
         onDomErrorVisibleChange?.(false)
-      }}
-      motionAppear
-      removeOnLeave>
+      }}>
       {/* eslint-disable-next-line react/no-unused-prop-types */}
       {({ className: motionClassName }: { className?: string }) => (
         <div

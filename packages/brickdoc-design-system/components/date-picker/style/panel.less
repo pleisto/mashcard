@@ -265,12 +265,8 @@
     &-in-view&-range-end&-range-hover::before,
     &-in-view&-range-start:not(&-range-start-single)&-range-hover-start::before,
     &-in-view&-range-end:not(&-range-end-single)&-range-hover-end::before,
-    .@{picker-prefix-cls}-panel
-      > :not(.@{picker-prefix-cls}-date-panel)
-      &-in-view&-in-range&-range-hover-start::before,
-    .@{picker-prefix-cls}-panel
-      > :not(.@{picker-prefix-cls}-date-panel)
-      &-in-view&-in-range&-range-hover-end::before {
+    .@{picker-prefix-cls}-panel > :not(.@{picker-prefix-cls}-date-panel) &-in-view&-in-range&-range-hover-start::before,
+    .@{picker-prefix-cls}-panel > :not(.@{picker-prefix-cls}-date-panel) &-in-view&-in-range&-range-hover-end::before {
       background: @picker-date-hover-range-color;
     }
 
@@ -295,9 +291,7 @@
         content: '';
       }
     }
-    .@{picker-prefix-cls}-date-panel
-      &-in-view&-in-range&-range-hover-start
-      .@{cellClassName}::after {
+    .@{picker-prefix-cls}-date-panel &-in-view&-in-range&-range-hover-start .@{cellClassName}::after {
       right: -5px - @border-width-base;
       left: 0;
     }
@@ -340,10 +334,10 @@
 
     // >>> Disabled
     &-disabled {
+      color: @disabled-color;
       pointer-events: none;
 
       .@{cellClassName} {
-        color: @disabled-color;
         background: transparent;
       }
 
@@ -366,11 +360,6 @@
       color: @text-color;
     }
 
-    // Disabled
-    &-disabled {
-      cursor: not-allowed;
-    }
-
     .picker-cell-inner(~'@{picker-cell-inner-cls}');
   }
 
@@ -384,12 +373,6 @@
 
     .@{picker-cell-inner-cls} {
       padding: 0 @padding-xs;
-    }
-
-    .@{picker-prefix-cls}-cell {
-      &-disabled .@{picker-cell-inner-cls} {
-        background: @picker-basic-cell-disabled-bg;
-      }
     }
   }
 
@@ -462,9 +445,7 @@
   &-year-panel,
   &-quarter-panel,
   &-month-panel {
-    @hover-cell-fixed-distance: (
-      (((@picker-panel-width - @padding-xs * 2) / 3) - @picker-year-month-cell-width) / 2
-    );
+    @hover-cell-fixed-distance: ((((@picker-panel-width - @padding-xs * 2) / 3) - @picker-year-month-cell-width) / 2);
 
     .@{picker-prefix-cls}-body {
       padding: 0 @padding-xs;
@@ -608,8 +589,7 @@
         height: @picker-time-panel-column-height - @picker-time-panel-cell-height;
         content: '';
         .@{picker-prefix-cls}-datetime-panel & {
-          height: @picker-time-panel-column-height - @picker-time-panel-cell-height + 2 *
-            @border-width-base;
+          height: @picker-time-panel-column-height - @picker-time-panel-cell-height + 2 * @border-width-base;
         }
       }
 
