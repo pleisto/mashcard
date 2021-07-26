@@ -7,8 +7,10 @@ on:
 
 jobs:
   dependency_updater:
-    name: dependency_updater
+    name: Upgrade dependencies
     runs-on: ubuntu-latest
+    env:
+      YARN_ENABLE_IMMUTABLE_INSTALLS: false
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v2
@@ -19,8 +21,6 @@ jobs:
           cache: yarn
       - name: Run yarn install
         run: yarn
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -28,12 +28,10 @@ jobs:
           bundler-cache: true
       - name: Unset deployment
         run: bundle config unset deployment
-      - name: Update gems
+      - name: Update ruby gems
         run: bundle update
-      - name: Update yarn
-        run: yarn up
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+      - name: Update yarn packages
+        run: yarn up '*' --caret
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         env:
