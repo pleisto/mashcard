@@ -35,7 +35,7 @@ gem 'flipper', '~> 0.21.0'
 gem 'flipper-active_record', '~> 0.21.0'
 gem 'flipper-active_support_cache_store', '~> 0.21.0'
 
-gem 'rails-settings-cached', '>= 2.6'
+# gem 'rails-settings-cached', '>= 2.6'
 gem 'default_value_for', '~> 3.4'
 
 # GraphQL
@@ -71,6 +71,9 @@ gem 'premailer-rails', '~> 1.11', '>= 1.11.1' # mailer
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.1' # Don't rely on Linux/macOS timezone data.
+
+gem 'brickdoc_settings', path: 'packages/brickdoc_settings'
+
 group :development, :test do
   gem 'cypress-on-rails', '~> 1.9.1'
   gem 'brakeman'

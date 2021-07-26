@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_073125) do
+ActiveRecord::Schema.define(version: 2021_07_22_070124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 2021_07_12_073125) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "brickdoc_configs", force: :cascade do |t|
+    t.string "key", null: false
+    t.text "value"
+    t.string "scope", null: false
+    t.string "domain", null: false
+    t.integer "domain_len"
+    t.index ["key", "scope", "domain"], name: "index_brickdoc_configs_on_key_and_scope_and_domain", unique: true
   end
 
   create_table "docs_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -164,14 +173,6 @@ ActiveRecord::Schema.define(version: 2021_07_12_073125) do
     t.index "lower((webid)::text)", name: "index_pods_on_lower_webid_text", unique: true
     t.index ["deleted_at"], name: "index_pods_on_deleted_at"
     t.index ["owner_id"], name: "index_pods_on_owner_id"
-  end
-
-  create_table "settings", force: :cascade do |t|
-    t.string "var", null: false
-    t.text "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -228,7 +228,7 @@ jobs:
           config: pageLoadTimeout=10000
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
-        run: bundle exec rails db:schema:dump
+        run: bundle exec rails db:prepare db:schema:dump
         env:
           RAILS_ENV: test
       - name: Add and commit everything
