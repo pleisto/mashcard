@@ -78,8 +78,8 @@ jobs:
         uses: tj-actions/changed-files@v9
         with:
           files: |
-            .(ts|tsx|jsx)$
-            packages.json
+            .(ts|tsx|js|jsx)$
+            yarn.lock
       - name: Setup NodeJS
         if: steps.changed-es-files.outputs.any_changed == 'true'
         uses: actions/setup-node@v2
@@ -129,7 +129,7 @@ jobs:
         with:
           files: |
             .(rb|gemspec)$
-            Gemfile
+            Gemfile.lock
       - name: Setup Ruby
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         uses: ruby/setup-ruby@v1

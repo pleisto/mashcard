@@ -2,6 +2,12 @@ diff --git a/dist/index.es.js b/dist/index.es.js
 index 4c0acde7bc112e9d66b7bece46f5907dc6826291..4f47f2049fba69fa895eba1c98e1e8f823690b29 100644
 --- a/dist/index.es.js
 +++ b/dist/index.es.js
+@@ -1,4 +1,5 @@
+ import OrderedMap from 'orderedmap';
++import { v4 as uuid } from 'uuid';
+
+ function findDiffStart(a, b, pos) {
+   for (var i = 0;; i++) {
 @@ -1014,7 +1014,7 @@ var Node = function Node(type, attrs, content, marks) {
    // An object mapping attribute names to values. The kind of
    // attributes allowed and required are
