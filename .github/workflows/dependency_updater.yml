@@ -31,14 +31,16 @@ jobs:
       - name: Update ruby gems
         run: bundle update
       - name: Update yarn packages
-        run: yarn up '*' --caret
+        run: yarn up '*'
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         env:
           HUSKY: 0
         with:
-          title: 'build(deps): Upgrade dependencies'
-          commit-message: 'build(deps): Upgrade dependencies'
+          token: ${{ secrets.PAT_FOR_BOT_CREATED_PR }}
+          title: 'build(deps): upgrade dependencies'
+          body: This is an auto-created PR to upgrade our dependencies according to <https://github.com/brickdoc/brickdoc/blob/master/.github/workflows/dependency_updater.yml>.
+          commit-message: 'build(deps): upgrade dependencies'
           branch: deps-automatic-upgrade
           labels: |
             dependencies
