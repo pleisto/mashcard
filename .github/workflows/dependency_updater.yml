@@ -32,6 +32,8 @@ jobs:
         run: bundle update
       - name: Update yarn
         run: yarn up
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         env:
