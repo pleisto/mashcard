@@ -1745,7 +1745,7 @@ __metadata:
     rc-util: ^5.13.2
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-i18next: ^11.11.3
+    react-i18next: ^11.11.4
     scroll-into-view-if-needed: ^2.2.28
     style-loader: ^3.2.1
     typescript: ^4.3.5
@@ -1916,7 +1916,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-helmet-async: ^1.0.9
-    react-i18next: ^11.11.3
+    react-i18next: ^11.11.4
     react-refresh: ^0.10.0
     react-router: ^5.2.0
     react-router-config: ^5.1.1
@@ -19515,16 +19515,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^11.11.3":
-  version: 11.11.3
-  resolution: "react-i18next@npm:11.11.3"
+"react-i18next@npm:^11.11.4":
+  version: 11.11.4
+  resolution: "react-i18next@npm:11.11.4"
   dependencies:
     "@babel/runtime": ^7.14.5
     html-parse-stringify: ^3.0.1
   peerDependencies:
     i18next: ">= 19.0.0"
     react: ">= 16.8.0"
-  checksum: 20f9f681f0a7f2676a01eedbe126e76b4dd396c6ab7166868a8c87d3d09ad42ca5cc91f2d044e441b45bf4b1b0bd13581c66ab42f20c550685a5221d466a877f
+  checksum: 5630bfe1b39e6ce893fcccfba62cd42db92d130c0d00f181ec3bc68884ee0db3c698d0b6320d05dc783e5e32c14f7e547bb8aa034788a5f317563ad32f29edf9
   languageName: node
   linkType: hard
 
