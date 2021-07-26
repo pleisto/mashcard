@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module System
-  class Mutations::CreateDirectUpload < GraphQL::Schema::Mutation
+  class Mutations::CreateDirectUpload < BrickGraphQL::BaseMutation
     argument :input, Inputs::DirectUploadInput, required: true
     argument :type, Enums::UploadType, required: true
     field :direct_upload, Objects::DirectUpload, null: false
@@ -12,8 +12,7 @@ module System
       # TODO: https://stackoverflow.com/a/51110844
       ActiveStorage::Current.host = BrickdocConfig.host
 
-      ## TODO Current.pod.id
-      pod_id = Current.user.pods.first.id
+      pod_id = current_pod.fetch('id')
 
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
       blob = ActiveStorage::Blob.create!(args.merge(pod_id: pod_id, key: nil, metadata: nil))

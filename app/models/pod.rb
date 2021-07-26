@@ -41,4 +41,8 @@ class Pod < ApplicationRecord
     instance.valid?
     instance.errors[:webid].blank?
   end
+
+  def as_session_context
+    attributes.slice('id', 'webid')
+  end
 end

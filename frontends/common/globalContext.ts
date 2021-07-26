@@ -1,15 +1,16 @@
-import React from "react"
+import React from 'react'
 
-interface globalContext {
+export interface globalContext {
   internalApiEndpoint: string
   env: string
   version: string
   locale: string
   rtl: boolean
+  currentPod?: {
+    webid: string
+  }
   currentUser?: {
     webid: string
-    avatar: string
-    name: string
   }
   timezone: string
   selfHost: boolean

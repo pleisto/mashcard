@@ -4,25 +4,7 @@ import { Spin, ConfigProvider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
 import { apolloClient } from '@/common/apollo'
 import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/inMemoryCache'
-
-interface globalContext {
-  internalApiEndpoint: string
-  env: string
-  version: string
-  locale: string
-  rtl: boolean
-  currentUser?: {
-    webid: string
-    avatar: string
-    name: string
-  }
-  timezone: string
-  selfHost: boolean
-  csrfToken: string
-  isDesktopApp: boolean
-  featureFlags: string[]
-  serverMessage: string
-}
+import { globalContext } from './globalContext'
 
 export const BrickdocContext: React.Context<globalContext> = React.createContext(globalThis.brickdocContext)
 BrickdocContext.displayName = 'BrickdocGlobalConfig'

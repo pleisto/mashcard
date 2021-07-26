@@ -2,6 +2,7 @@
 
 class InternalApisController < ActionController::API
   include Apiable
+  include CurrentPod
   include I18nable
   include ActionController::Cookies
   around_action :switch_locale
@@ -31,6 +32,7 @@ class InternalApisController < ActionController::API
       real_ip: request.remote_ip,
       entrypoint: :internal,
       current_user: current_user,
+      current_pod: current_pod,
       session: session,
       request_id: request.uuid,
       routes: Rails.application.routes.url_helpers,

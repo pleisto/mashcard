@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module GraphqlHelpers
-  attr_accessor :response, :current_user
+  attr_accessor :response, :current_user, :current_pod
 
   class Response
     attr_reader :data, :errors
@@ -46,6 +46,7 @@ module GraphqlHelpers
       real_ip: 'fe80:0000:0000::0042',
       entrypoint: entrypoint,
       current_user: current_user,
+      current_pod: current_pod,
       session: request.session,
       request_id: FFaker::Guid.guid,
       routes: Rails.application.routes.url_helpers,

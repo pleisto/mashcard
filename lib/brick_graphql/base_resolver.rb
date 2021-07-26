@@ -16,5 +16,9 @@ module BrickGraphQL
     def current_user
       context[:current_user]
     end
+
+    def current_pod
+      context[:current_pod]
+    end
   end
 end

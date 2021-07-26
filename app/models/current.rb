@@ -3,6 +3,7 @@
 
 class Current < ActiveSupport::CurrentAttributes
   attribute :user, :timezone, :locale
+  attribute :pod
   attribute :redis_values
   attribute :descendants
   attribute :paths

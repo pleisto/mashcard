@@ -3,12 +3,12 @@ import { Redirect } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import DocumentPage from '@/docs/modules/pages/DocumentPage'
 
-export default (currentWebid: string) => {
+export const routeConfig = (webid: string): any => {
   return renderRoutes([
     {
       path: '/',
       exact: true,
-      render: () => <Redirect to={`/${currentWebid}`} />
+      render: () => <Redirect to={`/${webid}`} />
     },
     {
       path: '/:webid/:docid',

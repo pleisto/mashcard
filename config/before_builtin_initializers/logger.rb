@@ -22,7 +22,8 @@ else
         exception: event.payload[:exception], # ["ExceptionClass", "the message"]
         exception_object: event.payload[:exception_object], # the exception instance
         request_id: event.payload[:request_id],
-        current_user_id: event.payload[:current_user]&.id
+        current_user_id: event.payload[:current_user]&.id,
+        current_pod_id: event.payload[:current_pod]&.fetch('id')
       }
     end
   end

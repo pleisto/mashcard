@@ -11,7 +11,7 @@ module BrickGraphQL
 
       def authorized?(object, context)
         return super unless @authenticate_user
-        context[:current_user].present? && super
+        context[:current_user].present? && context[:current_pod].present? && super
       end
     end
   end

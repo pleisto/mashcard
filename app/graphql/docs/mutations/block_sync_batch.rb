@@ -29,8 +29,7 @@ module Docs
         end
       end
 
-      ## TODO from context
-      pod = current_user.pods.first
+      pod_id = current_pod.fetch('id')
 
       blocks.each do |args|
         block = preloads[args.id] || Docs::Block.new(id: args.id)
@@ -41,7 +40,7 @@ module Docs
         block.parent_id = args.parent_id
         block.type = args.type
 
-        block.pod_id = pod.id
+        block.pod_id = pod_id
         block.deleted_at = nil
 
         block.collaborators << current_user.id

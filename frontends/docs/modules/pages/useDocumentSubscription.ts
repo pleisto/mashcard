@@ -1,4 +1,4 @@
-import { useNewPatchSubscription, PatchBaseObject } from '@/BrickdocGraphQL'
+import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate } from '@/BrickdocGraphQL'
 import { Fragment } from 'prosemirror-model'
 import { Editor, ChainedCommands } from '@tiptap/core'
 import { EditorProps } from '@brickdoc/editor'
@@ -38,10 +38,10 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
     const endPos = startPos + targetNode.nodeSize
 
     switch (patch.patchType) {
-      case 'ADD':
+      case Patchtype.Add:
         tr.insert(endPos - 1, editor.schema.nodeFromJSON(newNode))
         break
-      case 'UPDATE':
+      case Patchtype.Update:
         if (patch.path.length < 1) {
           console.warn('Root node cannot be updated')
         } else {
@@ -77,7 +77,7 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
           }
         }
         break
-      case 'DELETE':
+      case Patchtype.Delete:
         if (patch.path.length < 1) {
           console.warn('Root node cannot be deleted')
         } else {
@@ -104,7 +104,7 @@ export function useDocumentSubscription({ docid, editor }: SubscriptionProps): v
         return
       }
 
-      if (newPatch.state === 'DELETED') {
+      if (newPatch.state === Patchstate.Deleted) {
         console.log('Delete page ...')
         return
       }

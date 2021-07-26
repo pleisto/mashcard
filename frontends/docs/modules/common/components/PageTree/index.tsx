@@ -8,8 +8,8 @@ interface PageTreeProps {
   webid: string
 }
 
-const PageTree: React.FC<PageTreeProps> = props => {
-  const { data, loading } = useGetPageBlocksQuery({ variables: { webid: props.webid } })
+export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
+  const { data, loading } = useGetPageBlocksQuery({ variables: { webid } })
 
   if (loading) {
     return <Skeleton />
@@ -29,7 +29,7 @@ const PageTree: React.FC<PageTreeProps> = props => {
         value: i.id,
         parentId: i.parentId,
         sort: i.sort,
-        title: <PageMenu id={i.id} text={data.text} parentId={i.parentId} title={title} webid={props.webid} />
+        title: <PageMenu id={i.id} text={data.text} parentId={i.parentId} title={title} webid={webid} />
       }
     })
     .sort((a, b) => a.sort - b.sort)
@@ -38,5 +38,3 @@ const PageTree: React.FC<PageTreeProps> = props => {
 
   return <Tree treeData={treeData as any} draggable />
 }
-
-export default PageTree

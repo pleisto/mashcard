@@ -7,6 +7,19 @@ export const queryPods = gql`
       webid
       name
       avatar
+      bio
+    }
+  }
+`
+
+export const CreateOrUpdatePod = gql`
+  mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
+    createOrUpdatePod(input: $input) {
+      errors
+      pod {
+        webid
+        name
+      }
     }
   }
 `

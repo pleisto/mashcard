@@ -52,7 +52,7 @@ const nodeToBlock = (node: Node, level: number): BlockSyncInput[] => {
 
   const childrenBlocks = level === 0 ? nodeChildren(node) : []
   const children = childrenBlocks.flatMap((n: Node, index: number) =>
-    nodeToBlock(n, level + 1).map((i: BlockSyncInput) => ({ parentId: parent.id, sort: index, ...i }))
+    nodeToBlock(n, level + 1).map((i: BlockSyncInput) => ({ parentId: parent.id, sort: index * 100, ...i }))
   )
 
   return [parent, ...children]

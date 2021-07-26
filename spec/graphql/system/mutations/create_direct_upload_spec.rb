@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-describe System::Mutations::CreateDirectUpload, type: :mutation, focus: true do
+describe System::Mutations::CreateDirectUpload, type: :mutation do
   describe '#resolve' do
     mutation = <<-'GRAPHQL'
-      mutation createDirectUpload($input: DirectUploadInput!, $type: Upload!) {
-        createDirectUpload(input: $input, type: $type) {
+      mutation createDirectUpload($input: CreateDirectUploadInput!) {
+        createDirectUpload(input: $input) {
           directUpload {
             url
           }
@@ -22,13 +22,15 @@ describe System::Mutations::CreateDirectUpload, type: :mutation, focus: true do
     end
 
     it 'work' do
-      Current.user = user
-      input = { type: "AVATAR", input: { filename: "foo.txt", checksum: "123123", byteSize: 123, contentType: "text" } }
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+      input = { input: { type: "AVATAR", input: { filename: "foo.txt", checksum: "123123", byteSize: 123, contentType: "text" } } }
       internal_graphql_execute(mutation, input)
 
       expect(response.errors).to eq({})
       expect(response.data[:createDirectUpload][:directUpload][:url]).not_to be_blank
-      Current.user = nil
+      self.current_user = nil
+      self.current_pod = nil
     end
   end
 end

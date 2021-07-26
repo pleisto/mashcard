@@ -10,6 +10,8 @@ describe Docs::Queries::Block, type: :query do
 
       pod = create(:pod)
 
+      self.current_pod = pod.as_session_context
+
       block1 = create(:docs_block, pod: pod)
       block2 = create(:docs_block, pod: pod, collaborators: [user.id])
 

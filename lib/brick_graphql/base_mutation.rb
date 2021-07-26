@@ -18,6 +18,10 @@ module BrickGraphQL
       context[:current_user]
     end
 
+    def current_pod
+      context[:current_pod]
+    end
+
     # Returns Array of errors on an ActiveRecord object
     def errors_on_object(record)
       record.errors.full_messages

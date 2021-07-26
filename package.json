@@ -15,7 +15,7 @@
     "analyz": "webpack-bundle-analyzer --port 8888 public/esm-bundle/stats.json",
     "patch-package": "patch-package --error-on-fail",
     "lint": "yarn lint:eslint && yarn lint:rubocop && yarn lint:brakeman",
-    "lint:fix": "yarn lint:eslint:fix && yarn lint:robocop:fix",
+    "lint:fix": "yarn lint:eslint:fix && yarn lint:rubocop:fix",
     "lint:eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
     "lint:eslint:fix": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx ./",
     "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",

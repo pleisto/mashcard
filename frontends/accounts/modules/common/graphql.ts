@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client'
 
-
 export const UserSignOut = gql`
   mutation userSignOut($input: UserSignOutInput!) {
     userSignOut(input: $input) {

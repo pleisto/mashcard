@@ -2,7 +2,8 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
-[![linter](https://github.com/brickdoc/brickdoc/actions/workflows/ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/ci.yml)
+[![linting](https://github.com/brickdoc/brickdoc/actions/workflows/linting.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/linting.yml)
+[![Monolith Application CI](https://github.com/brickdoc/brickdoc/actions/workflows/monolith_ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/monolith_ci.yml)
 
 > Brickdoc is built on an open core model. This is Brickdoc **Community Edition** mono repository.
 

@@ -3,14 +3,14 @@ import { Helmet } from 'react-helmet-async'
 import { Layout } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../hooks'
-import PageTree from '@/docs/modules/common/components/PageTree'
-import PodSelect from '@/docs/modules/common/components/PodSelect'
+import { PageTree } from '@/docs/modules/common/components/PageTree'
+import { PodSelect } from '@/docs/modules/common/components/PodSelect'
 
 interface SidebarLayoutPageProps {
-  currentUserWebid: string
+  webid: string
 }
 
-export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ currentUserWebid, children }) => {
+export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, children }) => {
   const { t } = useDocsI18n()
   const { Sider, Content, Footer } = Layout
   return (
@@ -18,11 +18,11 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ currentUse
       <Helmet titleTemplate={`%s - ${t('app_title')}`} defaultTitle={t('app_title')} />
       <Layout>
         <Sider width={240}>
-          <PodSelect webid={currentUserWebid} />
-          <PageTree webid={currentUserWebid} />
+          <PodSelect webid={webid} />
+          <PageTree webid={webid} />
 
           <Footer style={{ textAlign: 'center' }}>
-            <Link style={{ color: 'inherit' }} to={`/${currentUserWebid}`}>
+            <Link style={{ color: 'inherit' }} to={`/${webid}`}>
               + {t('blocks.create_pages')}
             </Link>
           </Footer>

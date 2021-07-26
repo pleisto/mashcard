@@ -4,6 +4,7 @@ module ApplicationHelper
     {
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
+      currentPod: Current.pod,
       env: Rails.env,
       version: Brickdoc.full_version,
       locale: Brickdoc::I18n.locale,

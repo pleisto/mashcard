@@ -149,7 +149,6 @@ en-US:
           mismatch: '%{label} does not match the pattern %{pattern}'
     image:
       preview: Preview
-
   activerecord:
     attributes:
       doorkeeper/application:
@@ -604,6 +603,12 @@ en-US:
       resend_after: "Resendable after %{seconds} seconds"
     common:
       confirm_not_match: "%{field} and confirm %{field} do not match"
+    errors:
+      invalid_operation_type: "Invalid operation type"
+      invalid_pod_webid: "No access to the webid"
+      pod_has_already_switched: "Pod has already switched"
+      pod_exist: "Pod has already exist"
+      pod_not_exist: "Pod doesn't exist"
   docs:
     app_title: Brickdoc
     blocks:
@@ -612,6 +617,20 @@ en-US:
       create_snapshot: Create Snapshot
     snapshots:
       name: Snapshot
+    pods:
+      webid: WebID
+      name: Name
+      bio: Bio
+      avatar: Avatar
+      required:
+        webid: WebID is required
+        name: Name is required
+      create:
+        success: Create successfully.
+      update:
+        success: Update successfully.
     menu:
       create_new_pod: Create a new pod
+      edit_profile: Edit profile
+      pod_profile: Profile
       logout: Logout

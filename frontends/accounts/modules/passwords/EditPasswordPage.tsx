@@ -7,7 +7,7 @@ import { Form, Button, Input, message } from '@brickdoc/design-system'
 import { omit } from 'lodash'
 import { useBoolean } from 'ahooks'
 
-import { useUserPasswordResetMutation, UserPasswordResetInput, useUserSignOutMutation } from '@/BrickdocGraphQL'
+import { useUserPasswordResetMutation, UserPasswordResetInput, useUserSignOutMutation, UserSignOutInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/utils'
 
 const EditPasswordPage: React.FC = () => {
@@ -18,6 +18,7 @@ const EditPasswordPage: React.FC = () => {
 
   const [emailPasswordSignIn, { loading }] = useUserPasswordResetMutation()
   const [userSignOutMutation] = useUserSignOutMutation()
+  const signOutInput: UserSignOutInput = {}
   const onFinish = async (values: UserPasswordResetInput) => {
     const input = omit(values, ['confirm_password']) as UserPasswordResetInput
     const { data } = await emailPasswordSignIn({ variables: { input } })
@@ -25,7 +26,7 @@ const EditPasswordPage: React.FC = () => {
     mutationResultHandler(result, () => {
       message.success(t('devise:passwords.updated'))
       redirectToSignInPage()
-      userSignOutMutation()
+      void userSignOutMutation({ variables: { input: signOutInput } })
     })
   }
 
