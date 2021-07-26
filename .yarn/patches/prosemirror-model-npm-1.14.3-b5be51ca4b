@@ -1,0 +1,26 @@
+diff --git a/dist/index.es.js b/dist/index.es.js
+index 4c0acde7bc112e9d66b7bece46f5907dc6826291..4f47f2049fba69fa895eba1c98e1e8f823690b29 100644
+--- a/dist/index.es.js
++++ b/dist/index.es.js
+@@ -1014,7 +1014,7 @@ var Node = function Node(type, attrs, content, marks) {
+   // An object mapping attribute names to values. The kind of
+   // attributes allowed and required are
+   // [determined](#model.NodeSpec.attrs) by the node type.
+-  this.attrs = attrs;
++  this.attrs = {uuid: uuid(), sort: 0, ...attrs};
+
+   // :: Fragment
+   // A container holding the node's children.
+@@ -1865,6 +1865,12 @@ function computeAttrs(attrs, value) {
+     }
+     built[name] = given;
+   }
++  if (value?.uuid) {
++    built.uuid = value.uuid;
++  }
++  if (value?.sort) {
++    built.sort = value.sort;
++  }
+   return built
+ }
+

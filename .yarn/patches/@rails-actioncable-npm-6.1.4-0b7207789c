@@ -1,0 +1,25 @@
+diff --git a/app/assets/javascripts/action_cable.js b/app/assets/javascripts/action_cable.js
+index 8d14edbde1aa2170169b8e9b5533351cb1783fec..172741bb731576e3cccc3ba51f8db322da65dd5b 100644
+--- a/app/assets/javascripts/action_cable.js
++++ b/app/assets/javascripts/action_cable.js
+@@ -148,7 +148,7 @@
+     max: 30,
+     multiplier: 5
+   };
+-  ConnectionMonitor.staleThreshold = 6;
++  ConnectionMonitor.staleThreshold = 60;
+   var INTERNAL = {
+     message_types: {
+       welcome: "welcome",
+diff --git a/src/connection_monitor.js b/src/connection_monitor.js
+index 3bcee72e8f5d4e768e2c599304c583faca40b99a..4f19965d045e07a9eec997a794c00ec1bc70c06e 100644
+--- a/src/connection_monitor.js
++++ b/src/connection_monitor.js
+@@ -121,6 +121,6 @@ ConnectionMonitor.pollInterval = {
+   multiplier: 5
+ }
+ 
+-ConnectionMonitor.staleThreshold = 6 // Server::Connections::BEAT_INTERVAL * 2 (missed two pings)
++ConnectionMonitor.staleThreshold = 60 // Server::Connections::BEAT_INTERVAL * 2 (missed two pings)
+ 
+ export default ConnectionMonitor

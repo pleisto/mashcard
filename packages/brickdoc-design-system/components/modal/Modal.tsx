@@ -182,7 +182,6 @@ const Modal: ModalInterface = props => {
     [`${prefixCls}-wrap-rtl`]: direction === 'rtl'
   })
   return (
-    // @ts-expect-error
     <Dialog
       {...restProps}
       getContainer={(getContainer === undefined ? getContextPopupContainer : getContainer) as any}
