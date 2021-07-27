@@ -22,6 +22,8 @@ export type Scalars = {
   Email: string
   /** A valid http/https url or image uri */
   HttpUrl: string
+  /** Represents untyped JSON */
+  JSON: any
   /** UUID V4 */
   UUID: string
 }
@@ -232,6 +234,8 @@ export type DirectUploadInput = {
   checksum: Scalars['String']
   /** File content type */
   contentType: Scalars['String']
+  /** metadata */
+  metadata?: Maybe<Scalars['JSON']>
 }
 
 export type FailureReasons = {
@@ -791,6 +795,18 @@ export type GetAvailableLocalesFromWsQuery = { __typename?: 'RootQuery' } & {
     }
 }
 
+export type CreateDirectUploadMutationVariables = Exact<{
+  input: CreateDirectUploadInput
+}>
+
+export type CreateDirectUploadMutation = { __typename?: 'RootMutation' } & {
+  createDirectUpload?: Maybe<
+    { __typename?: 'CreateDirectUploadPayload' } & {
+      directUpload: { __typename?: 'DirectUpload' } & Pick<DirectUpload, 'url' | 'headers' | 'signedBlobId'>
+    }
+  >
+}
+
 export type GetPodsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPodsQuery = { __typename?: 'RootQuery' } & {
@@ -1337,6 +1353,45 @@ export type GetAvailableLocalesFromWsQueryResult = Apollo.QueryResult<
   GetAvailableLocalesFromWsQuery,
   GetAvailableLocalesFromWsQueryVariables
 >
+export const CreateDirectUploadDocument = gql`
+  mutation createDirectUpload($input: CreateDirectUploadInput!) {
+    createDirectUpload(input: $input) {
+      directUpload {
+        url
+        headers
+        signedBlobId
+      }
+    }
+  }
+`
+export type CreateDirectUploadMutationFn = Apollo.MutationFunction<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>
+
+/**
+ * __useCreateDirectUploadMutation__
+ *
+ * To run a mutation, you first call `useCreateDirectUploadMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateDirectUploadMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createDirectUploadMutation, { data, loading, error }] = useCreateDirectUploadMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateDirectUploadMutation(
+  baseOptions?: Apollo.MutationHookOptions<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>(CreateDirectUploadDocument, options)
+}
+export type CreateDirectUploadMutationHookResult = ReturnType<typeof useCreateDirectUploadMutation>
+export type CreateDirectUploadMutationResult = Apollo.MutationResult<CreateDirectUploadMutation>
+export type CreateDirectUploadMutationOptions = Apollo.BaseMutationOptions<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>
 export const GetPodsDocument = gql`
   query GetPods {
     pods {

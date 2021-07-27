@@ -8,7 +8,7 @@ module System
       argument :byte_size, Int, "File size (bytes)", required: true
       argument :checksum, String, "MD5 file checksum as base64", required: true
       argument :content_type, String, "File content type", required: true
-      # argument :metadata, JSON, "metadata", required: false
+      argument :metadata, GraphQL::Types::JSON, "metadata", required: false
     end
   end
 end

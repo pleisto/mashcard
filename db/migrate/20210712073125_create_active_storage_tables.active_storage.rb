@@ -13,6 +13,8 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
       t.datetime :created_at,   null: false
 
       t.bigint :pod_id, null: false
+      t.bigint :user_id
+      t.string :operation_type, null: false
 
       t.index [:key], unique: true
     end

@@ -13,9 +13,12 @@ module System
       ActiveStorage::Current.host = BrickdocConfig.host
 
       pod_id = current_pod.fetch('id')
+      user_id = current_user.id
 
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
-      blob = ActiveStorage::Blob.create!(args.merge(pod_id: pod_id, key: nil, metadata: nil))
+      blob = ActiveStorage::Blob.create!(
+        args.merge(pod_id: pod_id, user_id: user_id, key: nil, operation_type: type)
+      )
 
       {
         direct_upload: {
@@ -24,8 +27,7 @@ module System
           headers: blob.service_headers_for_direct_upload.to_json,
           blob_id: blob.id,
           signed_blob_id: blob.signed_id
-        },
-        type: type
+        }
       }
     end
   end

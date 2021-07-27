@@ -16,3 +16,15 @@ export const getAvaailableLocales = gql`
     }
   }
 `
+
+export const CreateDirectUpload = gql`
+  mutation createDirectUpload($input: CreateDirectUploadInput!) {
+    createDirectUpload(input: $input) {
+      directUpload {
+        url
+        headers
+        signedBlobId
+      }
+    }
+  }
+`
