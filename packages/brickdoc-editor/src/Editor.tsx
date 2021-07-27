@@ -30,7 +30,7 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
   onCommit: SyncExtensionOptions['onCommit']
 }
 
-export function useEditor(options: EditorOptions): TiptapEditor {
+export function useEditor(options: EditorOptions): TiptapEditor | null {
   const { onCommit, ...restOptions } = options
   return useTiptapEditor({
     extensions: [

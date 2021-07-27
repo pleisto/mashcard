@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { mount } from 'enzyme'
-import { SlashCommandsMenu } from '../SlashCommandsMenu'
+import { mount, ReactWrapper } from 'enzyme'
+import { SlashCommandsMenu, SlashCommandsMenuProps } from '../SlashCommandsMenu'
 
 describe('SlashCommandsMenu', () => {
   it('renders menu items correctly', () => {
@@ -83,8 +83,8 @@ describe('SlashCommandsMenu', () => {
       }
     ]
 
-    function keyDown(component, eventKey): void {
-      component.instance().onKeyDown({ event: { key: eventKey } })
+    function keyDown(component: ReactWrapper<SlashCommandsMenuProps, unknown, SlashCommandsMenu>, eventKey: string): void {
+      component.instance().onKeyDown(eventKey)
     }
 
     it('triggers `ArrowUp` correctly', () => {

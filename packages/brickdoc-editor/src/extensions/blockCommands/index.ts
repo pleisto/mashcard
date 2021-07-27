@@ -4,27 +4,23 @@ import { Plugin } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { createDragHandle } from './dragHandle'
 
-function removeNode(node: Element) {
-  node.parentNode.removeChild(node)
+function removeNode(node: Element): void {
+  node.parentNode?.removeChild(node)
 }
 
-function absoluteRect(node: Element) {
-  const data = node.getBoundingClientRect()
-
-  return {
-    top: data.top,
-    left: data.left,
-    width: data.width
-  }
+function absoluteRect(node: Element): {
+  -readonly [P in keyof DOMRect]: DOMRect[P]
+} {
+  return { ...node.getBoundingClientRect() }
 }
 
-function addMenuItems(menuElement: HTMLElement, editorView: EditorView) {
+function addMenuItems(menuElement: HTMLElement, editorView: EditorView): void {
   // drag handle
   menuElement.appendChild(createDragHandle(editorView))
 }
 
 // TODO: create a popup for block commands menu
-function createBlockCommandsMenuElement(editorView: EditorView) {
+function createBlockCommandsMenuElement(editorView: EditorView): HTMLDivElement {
   const element = document.createElement('div')
   element.classList.add('brickdoc-block-commands')
   addMenuItems(element, editorView)
@@ -33,22 +29,18 @@ function createBlockCommandsMenuElement(editorView: EditorView) {
   return element
 }
 
-function getNodeByEvent(view: EditorView, event: MouseEvent) {
+function getNodeByEvent(view: EditorView, event: MouseEvent): Element | undefined {
   const coords = {
     left: event.clientX,
     top: event.clientY
   }
-  const pos = view.posAtCoords(coords)
+  const { pos } = view.posAtCoords(coords) ?? {}
 
-  if (!pos) {
-    return null
-  }
+  if (!pos) return
 
-  let node = view.domAtPos(pos?.pos)?.node
+  let node = view.domAtPos(pos)?.node
 
-  if (!node) {
-    return null
-  }
+  if (!node) return
 
   // find the topmost node
   while (node.parentNode) {
@@ -59,19 +51,18 @@ function getNodeByEvent(view: EditorView, event: MouseEvent) {
     node = node.parentNode
   }
 
-  if (!(node instanceof Element)) {
-    return null
-  }
+  if (!(node instanceof Element)) return
 
   return node
 }
 
-function adjustMenuPosition(node: Element, menuElement: HTMLElement) {
+function adjustMenuPosition(node: Element, menuElement: HTMLElement): void {
   const style = window.getComputedStyle(node)
   const height = parseInt(style.height, 10)
   const top = 0
   const rect = absoluteRect(node)
   const win = node.ownerDocument.defaultView
+  if (!win) throw new Error('Failed to adjust menu position when process dragging.')
 
   rect.top += win.pageYOffset + (height - 24) / 2 + top
   rect.left += win.pageXOffset
@@ -83,9 +74,9 @@ function adjustMenuPosition(node: Element, menuElement: HTMLElement) {
   menuElement.style.display = 'flex'
 }
 
-const BlockCommandsExtension = Extension.create({
+export const BlockCommandsExtension = Extension.create({
   addProseMirrorPlugins() {
-    let menuElement: HTMLElement
+    let menuElement: HTMLElement | undefined
 
     return [
       new Plugin({
@@ -94,8 +85,9 @@ const BlockCommandsExtension = Extension.create({
 
           return {
             destroy() {
+              if (!menuElement) return
               removeNode(menuElement)
-              menuElement = null
+              menuElement = undefined
             }
           }
         },
@@ -104,20 +96,16 @@ const BlockCommandsExtension = Extension.create({
             mousemove(view, event) {
               const node = getNodeByEvent(view, event)
 
-              if (!node) {
+              if (!node || !menuElement) {
                 return false
               }
 
               adjustMenuPosition(node, menuElement)
               return true
-            },
+            }
           }
         }
       })
     ]
   }
 })
-
-export { BlockCommandsExtension }
-
-export default BlockCommandsExtension

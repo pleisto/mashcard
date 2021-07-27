@@ -58,8 +58,8 @@ const FontColorStyle: StyleMeta = {
 }
 
 export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
-  const [lastColor, setLastColor] = React.useState<ColorMeta>(null)
-  const [currentColor, setCurrentColor] = React.useState<ColorMeta>(null)
+  const [lastColor, setLastColor] = React.useState<ColorMeta>()
+  const [currentColor, setCurrentColor] = React.useState<ColorMeta>()
   const selectColor = (color: ColorMeta) => () => {
     setLastColor(currentColor)
     editor.chain().focus().setFontColor(color.color).run()

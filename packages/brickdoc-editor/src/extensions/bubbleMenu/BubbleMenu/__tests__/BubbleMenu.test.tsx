@@ -49,6 +49,7 @@ function mockEditor(): MockEditor {
         return () => this
       }
 
+      // @ts-expect-error
       return target[prop]
     }
   })
@@ -209,7 +210,7 @@ describe('BubbleMenu', () => {
 
       const item = bubbleMenu.find('button.bubble-menu-item').at(7).find('.font-menu-item-icon').at(0)
 
-      expect(item.prop('style').color).toEqual(color)
+      expect(item.prop('style')?.color).toEqual(color)
     })
 
     it('last selected color', () => {

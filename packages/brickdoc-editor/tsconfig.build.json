@@ -1,9 +1,7 @@
 {
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "noImplicitAny": false,
-    "strictNullChecks": false
+    "outDir": "dist"
   },
   "include": ["src/**/*", "externals.d.ts"],
   "references": [{ "path": "../brickdoc-design-system/tsconfig.build.json" }]

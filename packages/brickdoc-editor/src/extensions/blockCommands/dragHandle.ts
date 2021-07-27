@@ -1,22 +1,24 @@
 // ref: https://www.tiptap.dev/experiments/global-drag-handle/#globaldraghandle
 import { NodeSelection, TextSelection } from 'prosemirror-state'
-import { EditorView } from 'prosemirror-view'
-import { serializeForClipboard } from 'prosemirror-view/src/clipboard'
+import { EditorView, __serializeForClipboard } from 'prosemirror-view'
 
-function blockPosAtCoords(coords: { left: number; top: number }, view: EditorView) {
-  const pos = view.posAtCoords(coords)
-  let node = view.domAtPos(pos.pos).node
+function blockPosAtCoords(coords: { left: number; top: number }, view: EditorView): number | undefined {
+  const { pos } = view.posAtCoords(coords) ?? {}
+  if (pos === undefined) return
+
+  let node = view.domAtPos(pos).node
 
   // find the topmost node
-  while (node?.parentNode) {
-    if ((node.parentNode as Element)?.classList?.contains('ProseMirror')) {
+  while (node?.parentElement) {
+    if (node.parentElement?.classList?.contains('ProseMirror')) {
       break
     }
 
-    node = node.parentNode
+    node = node.parentElement
   }
 
   if (node && node.nodeType === 1) {
+    // See node_modules/prosemirror-view/src/viewdesc.js
     const docView = (view as any).docView
     const desc = docView.nearestDesc(node, true)
 
@@ -24,10 +26,9 @@ function blockPosAtCoords(coords: { left: number; top: number }, view: EditorVie
       return desc.posBefore
     }
   }
-  return null
 }
 
-function dragStart(e: DragEvent, view: EditorView) {
+function dragStart(e: DragEvent, view: EditorView): void {
   view.composing = true
 
   if (!e.dataTransfer) {
@@ -37,25 +38,26 @@ function dragStart(e: DragEvent, view: EditorView) {
   const coords = { left: e.clientX + 50, top: e.clientY }
   const pos = blockPosAtCoords(coords, view)
 
-  if (pos != null) {
+  if (pos !== undefined) {
     view.dispatch(view.state.tr.setSelection(NodeSelection.create(view.state.doc, pos)))
 
     const slice = view.state.selection.content()
 
-    const { dom, text } = serializeForClipboard(view, slice)
+    const { dom, text } = __serializeForClipboard(view, slice)
 
     e.dataTransfer.clearData()
     e.dataTransfer.setData('text/html', dom.innerHTML)
     e.dataTransfer.setData('text/plain', text)
 
     const el = document.querySelector('.ProseMirror-selectednode')
+    if (!el) throw new Error('Cannot find .ProseMirror-selectednode when processing dragging')
     e.dataTransfer?.setDragImage(el, 0, 0)
 
     view.dragging = { slice, move: true }
   }
 }
 
-export function createDragHandle(editorView: EditorView) {
+export function createDragHandle(editorView: EditorView): HTMLDivElement {
   // drag handle
   const dragElement = document.createElement('div')
   dragElement.draggable = true

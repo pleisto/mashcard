@@ -1,11 +1,18 @@
 import * as React from 'react'
-import { MenuItem } from '..'
+import { Editor, Range } from '@tiptap/react'
 import { SlashMenuItem } from './SlashMenuItem'
 import './index.less'
 
-interface SlashCommandsMenuProps {
-  items: MenuItem[]
-  command: (item: MenuItem) => void
+export interface SlashCommandsMenuItem {
+  title: string
+  desc: string
+  icon: React.ReactNode
+  command: ({ editor, range }: { editor: Editor; range: Range }) => void
+}
+
+export interface SlashCommandsMenuProps {
+  items: SlashCommandsMenuItem[]
+  command: (item: SlashCommandsMenuItem) => void
 }
 
 // We need expose instance function onKeyDown for suggestion extension.
@@ -22,23 +29,23 @@ export class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProp
     }
   }
 
-  onKeyDown({ event }): boolean {
+  onKeyDown(key: string): boolean {
     const { items } = this.props
     const { selectedIndex } = this.state
 
     const setSelectedIndex = (index: number): void => this.setState({ selectedIndex: index })
 
-    if (event.key === 'ArrowUp') {
+    if (key === 'ArrowUp') {
       setSelectedIndex((selectedIndex + items.length - 1) % items.length)
       return true
     }
 
-    if (event.key === 'ArrowDown') {
+    if (key === 'ArrowDown') {
       setSelectedIndex((selectedIndex + 1) % items.length)
       return true
     }
 
-    if (event.key === 'Enter') {
+    if (key === 'Enter') {
       this.selectItem(selectedIndex)()
       return true
     }

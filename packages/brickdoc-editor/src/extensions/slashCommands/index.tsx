@@ -1,23 +1,15 @@
 // ref: https://github.com/ueberdosis/tiptap/blob/main/packages/suggestion/src/suggestion.ts
 import * as React from 'react'
-import { Extension } from '@tiptap/core'
-import { Editor, ReactRenderer } from '@tiptap/react'
+import { ReactRenderer, Editor, Extension } from '@tiptap/react'
 import Suggestion from '@tiptap/suggestion'
 import { Icon } from '@brickdoc/design-system'
 import { createPopup, PopupInstance } from '../helpers/popup'
-import { SlashCommandsMenu } from './SlashCommandsMenu'
+import { SlashCommandsMenu, SlashCommandsMenuItem } from './SlashCommandsMenu'
 
 const QUERY_LIMIT = 10
 const TRIGGER_CHAR = '/'
 
-export interface MenuItem {
-  title: string
-  desc: string
-  icon: React.ReactNode
-  command: ({ editor: Editor, range: Range }) => void
-}
-
-const menuItems: MenuItem[] = [
+const menuItems: SlashCommandsMenuItem[] = [
   {
     title: 'Heading 1',
     desc: 'Big section heading',
@@ -60,7 +52,7 @@ const menuItems: MenuItem[] = [
   }
 ]
 
-function filterMenuItemsByQuery(query: string): MenuItem[] {
+function filterMenuItemsByQuery(query: string): SlashCommandsMenuItem[] {
   return menuItems.filter(item => item.title.toLowerCase().startsWith(query.toLowerCase())).slice(0, QUERY_LIMIT)
 }
 
@@ -81,6 +73,8 @@ export const SlashCommandsExtension = Extension.create({
           let reactRenderer: ReactRenderer
           let popup: PopupInstance
 
+          // TODO: make SlashCommandsMenu a controlled function component, and move its internal selectedIndex state here
+
           return {
             onStart: props => {
               reactRenderer = new ReactRenderer(SlashCommandsMenu as any, {
@@ -88,7 +82,8 @@ export const SlashCommandsExtension = Extension.create({
                 editor: props.editor as Editor
               })
 
-              popup = createPopup(props.clientRect, reactRenderer.element)
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+              popup = createPopup(props.clientRect!, reactRenderer.element)
             },
             onUpdate(props) {
               reactRenderer.updateProps(props)
@@ -97,8 +92,8 @@ export const SlashCommandsExtension = Extension.create({
                 getReferenceClientRect: props.clientRect
               })
             },
-            onKeyDown(props) {
-              return (reactRenderer.ref as any).onKeyDown(props)
+            onKeyDown({ event }) {
+              return (reactRenderer.ref as SlashCommandsMenu).onKeyDown(event.key)
             },
             onExit() {
               popup.destroy()

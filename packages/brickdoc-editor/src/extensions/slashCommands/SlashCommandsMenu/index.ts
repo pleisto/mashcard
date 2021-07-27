@@ -1,1 +1,1 @@
-export { SlashCommandsMenu } from './SlashCommandsMenu'
+export * from './SlashCommandsMenu'

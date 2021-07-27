@@ -1,8 +1,8 @@
-import tippy, { Content, GetReferenceClientRect, Instance, Placement } from 'tippy.js'
+import tippy, { Content, GetReferenceClientRect, Instance, Placement, Props } from 'tippy.js'
 
-export type PopupInstance = Instance
+export type { Instance as PopupInstance } from 'tippy.js'
 
-export function createPopup(clientRect: GetReferenceClientRect, content: Content, placement: Placement = 'bottom-start') {
+export function createPopup(clientRect: GetReferenceClientRect, content: Content, placement: Placement = 'bottom-start'): Instance<Props> {
   return tippy('body', {
     getReferenceClientRect: clientRect,
     appendTo: () => document.body,

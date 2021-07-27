@@ -1,13 +1,17 @@
-import { Node as ProsemirrorNode } from 'prosemirror-model'
+import { Node as ProsemirrorNode, Schema } from 'prosemirror-model'
 import { Step, StepResult } from 'prosemirror-transform'
 
+interface SetDocAttrStepJSON {
+  newAttrs: Record<string, unknown>
+}
+
 export class SetDocAttrStep extends Step {
-  static fromJSON(schema, json): SetDocAttrStep {
+  static fromJSON<S extends Schema = any>(schema: S, json: SetDocAttrStepJSON): SetDocAttrStep {
     return new SetDocAttrStep(json.newAttrs)
   }
 
-  private prevAttrs: Record<string, any>
-  constructor(private readonly newAttrs: Record<string, any>) {
+  private prevAttrs: Record<string, unknown> = {}
+  constructor(private readonly newAttrs: Record<string, unknown>) {
     super()
   }
 
@@ -25,7 +29,7 @@ export class SetDocAttrStep extends Step {
     return this
   }
 
-  toJSON(): Record<string, any> {
+  toJSON(): SetDocAttrStepJSON {
     return {
       newAttrs: this.newAttrs
     }

@@ -43,7 +43,10 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
         content =>
         ({ chain, can, dispatch }) => {
           const chainedCommands = dispatch ? chain() : can().chain()
-          return chainedCommands.setContent(content).setDocAttrs(content.attrs).run()
+          return chainedCommands
+            .setContent(content)
+            .setDocAttrs(content.attrs ?? {})
+            .run()
         }
     }
   },
