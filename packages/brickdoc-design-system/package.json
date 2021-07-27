@@ -31,7 +31,7 @@
     "rc-dropdown": "^3.2.0",
     "rc-field-form": "^1.21.1",
     "rc-image": "^5.2.4",
-    "rc-input-number": "^7.2.0",
+    "rc-input-number": "^7.3.0",
     "rc-mentions": "^1.6.1",
     "rc-menu": "^9.0.12",
     "rc-motion": "^2.4.4",
@@ -83,7 +83,7 @@
     "react-i18next": "^11.11.4",
     "style-loader": "^3.2.1",
     "typescript": "^4.3.5",
-    "webpack": "^5.46.0"
+    "webpack": "^5.47.0"
   },
   "peerDependencies": {
     "date-fns": "^2.22.1",

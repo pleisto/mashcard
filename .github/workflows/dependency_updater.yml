@@ -9,6 +9,8 @@ jobs:
   dependency_updater:
     name: Check and Upgrade
     runs-on: ubuntu-latest
+    env:
+      YARN_ENABLE_IMMUTABLE_INSTALLS: false
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v2
@@ -17,6 +19,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+      - name: Run yarn install
+        run: yarn
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -27,7 +31,7 @@ jobs:
       - name: Update ruby gems
         run: bundle update
       - name: Update yarn packages
-        run: yarn up '@(*|@!(brickdoc|rails|pmmmwh)/*)' --mode=update-lockfile
+        run: yarn up '@(*|@!(brickdoc|rails|pmmmwh)/*)' && yarn up '@(*|@!(brickdoc|rails|pmmmwh)/*)' --recursive
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         env:
