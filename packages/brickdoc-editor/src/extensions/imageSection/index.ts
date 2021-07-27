@@ -24,6 +24,13 @@ export const ImageSectionExtension = Node.create({
 
   selectable: false,
 
+  addAttributes() {
+    return {
+      width: {},
+      aspectRatio: {}
+    }
+  },
+
   parseHTML() {
     return [
       {

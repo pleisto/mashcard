@@ -53,7 +53,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   {
     title: 'Image',
     desc: 'Upload or embed with a link',
-    icon: <IconListOrdered className="menu-item-icon" />,
+    icon: <Icon name="file-image" className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setImageSection().run()
     }

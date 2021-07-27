@@ -1,22 +1,125 @@
 .brickdoc-block-image-section {
   width: 100%;
-  background: #F7F7F7;
+  background: #f7f7f7;
   border-radius: 4px;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 14px 17px;
   box-sizing: border-box;
+  border: none;
+  height: unset;
 
   &:hover {
-    background: #EFEFEF;
+    background: #efefef;
     cursor: pointer;
   }
 
+  .image-section-icon {
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+    color: #a6a6a6;
+  }
+
   .image-section-hint {
+    color: #5f5f5f;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0;
+    margin-left: 15px;
+  }
+}
+
+.brickdoc-block-image-section-resize-container {
+  max-width: 100%;
+  min-width: 40px;
+}
+
+.brickdoc-block-image-section-popover {
+  .brk-popover-arrow {
+    display: none;
+  }
+
+  .brk-popover-inner-content {
+    padding: 0;
+    color: unset;
+  }
+}
+
+.brickdoc-block-image {
+  width: 100%;
+  max-width: 100%;
+  min-width: 40px;
+}
+
+.brickdoc-block-image-section-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  position: relative;
+
+  .image-section-control-panel {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+
+    &:hover {
+      .image-section-control-left-drag,
+      .image-section-control-right-drag,
+      .image-section-menu-button {
+        opacity: 1;
+        transition: opacity 0.3s ease-in;
+      }
+    }
+
+    .image-section-menu-button {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 12px;
+      top: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 2px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+
+      .image-section-menu-icon {
+        color: #ffffff;
+      }
+    }
+
+    .image-section-control-drag {
+      width: 6px;
+      height: 40px;
+      background: #3e3e3e;
+      opacity: 0.8;
+      border: 1px solid #ffffff;
+      box-sizing: border-box;
+      border-radius: 14px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: col-resize;
+      opacity: 0;
+    }
+
+    .image-section-control-left-drag {
+      .image-section-control-drag();
+      left: 8px;
+    }
+
+    .image-section-control-right-drag {
+      .image-section-control-drag();
+      right: 8px;
+    }
   }
 }
