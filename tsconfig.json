@@ -3,7 +3,7 @@
 {
   "extends": "./tsconfig.build.json",
   "include": ["**/*"],
-  "exclude": ["packages/**/*", "dist/**/*", "cypress/**/*", "jest.config.ts", "jestSetup.ts"],
+  "exclude": ["packages/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
     { "path": "packages/brickdoc-design-system" },
     { "path": "packages/brickdoc-editor" },

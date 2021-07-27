@@ -21,7 +21,7 @@ const Page: React.FC = () => {
   })
 
   useEffect(() => {
-    if (editor && data) {
+    if (editor && !editor.isDestroyed && data) {
       editor.commands.replaceRoot(blocksToJSONContents(data.childrenBlocks as Block[])[0])
     }
   }, [editor, data])

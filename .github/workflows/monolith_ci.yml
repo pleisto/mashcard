@@ -91,7 +91,13 @@ jobs:
         run: yarn install --immutable
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn tsc:build && yarn test:jest --ci --collectCoverage
+        run: yarn test:jest
+      - name: Publish junit reports
+        if: always() && steps.changed-es-files.outputs.any_changed == 'true'
+        uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: junit-reports/jest.xml
+          check_name: Jest Test Report
   rspec:
     name: Rails RSpec Test
     runs-on: ubuntu-latest
@@ -150,7 +156,9 @@ jobs:
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2
         with:
-          report_paths: junit-reports/*.xml
+          report_paths: junit-reports/rspec.xml
+          check_name: Rails RSpec Test Report
+
   build_e2e:
     name: Build & E2E Test
     runs-on: ubuntu-latest
@@ -240,7 +248,7 @@ jobs:
           default_author: github_actions
           message: 'chore: bump schemas and dists'
           add: 'app lib packages spec config db frontends'
-      - name: Upload rails log (when cypress failed)
+      - name: Upload Rails log (when cypress failed)
         if: failure()
         uses: actions/upload-artifact@v2
         with:
