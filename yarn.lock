@@ -1861,7 +1861,7 @@ __metadata:
     "@rails/webpacker": 6.0.0-beta.7
     "@types/enzyme": ^3.10.9
     "@types/jest": ^26.0.24
-    "@types/node": ^16.4.3
+    "@types/node": ^16.4.4
     "@types/qs": ^6.9.7
     "@types/react": ^17.0.15
     "@types/react-dom": ^17.0.9
@@ -5172,10 +5172,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.4.3":
-  version: 16.4.3
-  resolution: "@types/node@npm:16.4.3"
-  checksum: 6b5fa8b524a9c770dcb96a24d862f240ce8c0072d7360fd088bfb9c5265b48bd1af58a3dd7f59e266b3214684c251e56bea2b2b0702b9901e57804221b6e07f2
+"@types/node@npm:*, @types/node@npm:^16.4.4":
+  version: 16.4.4
+  resolution: "@types/node@npm:16.4.4"
+  checksum: c5763046266b3398c9bca1e5615c4cbecf3f2533dc41231d80d705ff9628b9663c27e83555e765f9b0505a25a1c20b890640358d10432a57d8b7c05f344dd38d
   languageName: node
   linkType: hard
 
@@ -6921,9 +6921,9 @@ __metadata:
   linkType: hard
 
 "axe-core@npm:^4.0.2":
-  version: 4.3.1
-  resolution: "axe-core@npm:4.3.1"
-  checksum: 270a6353d877052dd3be95eabb0a6a792fdd92f3225a7237dc3e7ac4b7b0ef973cba36ca6a21587f0c3e9ff174e9980caf52b614bcfa48691f6f499b7c2f9d85
+  version: 4.3.2
+  resolution: "axe-core@npm:4.3.2"
+  checksum: ecedf159c4f24fe9c64689890e9b95082f1dab362e57ecd74d2d28573fca2f6b3b915784ccb46d9c3f1506c38524144066066c6d8759d0c5628d22ba3cdc57e0
   languageName: node
   linkType: hard
 
@@ -9987,9 +9987,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.564, electron-to-chromium@npm:^1.3.723":
-  version: 1.3.788
-  resolution: "electron-to-chromium@npm:1.3.788"
-  checksum: 81bb5a6c5e5cada080bb224039b7ac4b46a7475fa1ab07d7588c51482230c8532f645e827bad6180e65a0aa559b0060aa80886a578e59abe52edf98f556809b8
+  version: 1.3.789
+  resolution: "electron-to-chromium@npm:1.3.789"
+  checksum: 7cb9bae97509029fd94d18147c7aff802932e1123fdf1e3044cc146572ec509df8e6acb8da8a44df2892b7f2e6241b7e04401b0a2d993adba526e48c7a63b4b6
   languageName: node
   linkType: hard
 
@@ -12169,15 +12169,15 @@ fsevents@^1.2.7:
   linkType: hard
 
 "graphql-request@npm:^3.3.0":
-  version: 3.4.0
-  resolution: "graphql-request@npm:3.4.0"
+  version: 3.5.0
+  resolution: "graphql-request@npm:3.5.0"
   dependencies:
     cross-fetch: ^3.0.6
     extract-files: ^9.0.0
     form-data: ^3.0.0
   peerDependencies:
     graphql: 14.x || 15.x
-  checksum: 5be0398af5cd02694893169bcc3b92f454910dac3b257aa350fa59686d8ef24334619f0b5bdd2fdefea654eab9544ec6f270688255dde9eeff5475d5e64ea073
+  checksum: ec7b6c9b72f8a17c1d3ba005062b9b79259f0eaa4b040cdc69bc7f62bf7eb8060de984ce1d8d726961bb3629be8dbd0b9dcf2db51acc00e8c7f34f927f00b821
   languageName: node
   linkType: hard
 
@@ -16071,14 +16071,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mime-db@npm:1.48.0":
-  version: 1.48.0
-  resolution: "mime-db@npm:1.48.0"
-  checksum: d778392e474a5e78c24eef5a2894261f0ed168d2762c1ac2a115aa34c2274c9426178b92a6cc55e9edb8f13e7e9b8116380b0e61db9ff6d763e62876a65eea57
-  languageName: node
-  linkType: hard
-
-"mime-db@npm:>= 1.43.0 < 2":
+"mime-db@npm:1.49.0, mime-db@npm:>= 1.43.0 < 2":
   version: 1.49.0
   resolution: "mime-db@npm:1.49.0"
   checksum: 3744efc45b17896ff8a5934a761c434d5ffe3c7816662002d799ca9934347e00f99ae4d9b4ddf1c48d391cc9e522cc4523a6e77e7701f8e27c426e3e1d6e215a
@@ -16086,11 +16079,11 @@ fsevents@^1.2.7:
   linkType: hard
 
 "mime-types@npm:^2.1.12, mime-types@npm:^2.1.27, mime-types@npm:^2.1.30, mime-types@npm:~2.1.17, mime-types@npm:~2.1.19, mime-types@npm:~2.1.24":
-  version: 2.1.31
-  resolution: "mime-types@npm:2.1.31"
+  version: 2.1.32
+  resolution: "mime-types@npm:2.1.32"
   dependencies:
-    mime-db: 1.48.0
-  checksum: eb1612aa96403823c7a2ccb1a39d58ce11477e685560186e7d369d8164260fd6fc1eeb56fa23acb6a4050583f417b2a685b69c23eb2bd8ed169fb0c6e323740a
+    mime-db: 1.49.0
+  checksum: 4487dfd2f872126d2c219ec731ad47a6169a438d5a4cce6ecef7594ce08eaefaf0d85429485a76ec005f095016c7ec488a24cf8bfcc0ea06de0355e23395746f
   languageName: node
   linkType: hard
 
