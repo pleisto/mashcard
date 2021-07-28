@@ -5,6 +5,7 @@ import { EditorContent, useEditor } from '@brickdoc/editor'
 import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
 import { syncProvider, blocksToJSONContents } from './SyncProvider'
 import { useDocumentSubscription } from './useDocumentSubscription'
+import { usePrepareFileUpload } from './usePrepareFileUpload'
 import styles from './DocumentPage.module.less'
 
 export const DocumentPage: React.FC = () => {
@@ -16,7 +17,11 @@ export const DocumentPage: React.FC = () => {
     variables: { parentId: docid, excludePages: false, snapshotVersion: Number(restParams.snapshotVersion || '0') }
   })
 
-  const editor = useEditor({ onCommit })
+  const prepareFileUpload = usePrepareFileUpload()
+  const editor = useEditor({
+    onCommit,
+    prepareFileUpload
+  })
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data) {

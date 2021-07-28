@@ -1,14 +1,16 @@
 import * as React from 'react'
 import { Uppy } from '@uppy/core'
-import { DashboardPlugin, UploadResultData } from './plugin'
+import XhrUploadPlugin from '@uppy/xhr-upload'
+import { DashboardPlugin, DashboardPluginOptions, UploadResultData } from './plugin'
 
 export type { UploadResultData }
 
 export interface DashboardProps {
-  onUploaded?: (data: UploadResultData) => void
+  onUploaded?: DashboardPluginOptions['onUploaded']
+  prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ onUploaded }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ onUploaded, prepareFileUpload }) => {
   const container = React.useRef<HTMLElement>()
   const uppy = React.useRef<Uppy>()
 
@@ -24,8 +26,19 @@ export const Dashboard: React.FC<DashboardProps> = ({ onUploaded }) => {
         }
 
         container.current = ele
-        uppy.current = new Uppy()
-        uppy.current.use(DashboardPlugin, { target: container.current, onUploaded })
+        uppy.current = new Uppy({ debug: true })
+        // TODO: use active storage instead
+        uppy.current.use(XhrUploadPlugin, {
+          method: 'PUT',
+          formData: false,
+          getResponseData: responseText => {
+            console.log(responseText)
+            return {
+              url: ''
+            }
+          }
+        })
+        uppy.current.use(DashboardPlugin, { target: container.current, onUploaded, prepareFileUpload })
       }}
     />
   )

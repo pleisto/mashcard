@@ -1864,12 +1864,14 @@ __metadata:
     "@graphql-codegen/typescript-react-apollo": ^2.3.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.0-rc.2
     "@rails/actioncable": ^6.1.4
+    "@rails/activestorage": ^6.1.4
     "@rails/webpacker": 6.0.0-beta.7
     "@types/enzyme": ^3.10.9
     "@types/jest": ^26.0.24
     "@types/node": ^16.4.10
     "@types/qs": ^6.9.7
     "@types/rails__actioncable": ^6.1.5
+    "@types/rails__activestorage": ^6.0.1
     "@types/react": ^17.0.15
     "@types/react-dom": ^17.0.9
     "@types/react-router-config": ^5.0.3
@@ -1948,6 +1950,7 @@ __metadata:
     "@uppy/core": ^1.19.2
     "@uppy/dashboard": ^1.20.2
     "@uppy/react": ^1.12.0
+    "@uppy/xhr-upload": ^1.7.5
     htm: ^3.1.0
     preact: 8.2.9
     re-resizable: ^6.9.0
@@ -3467,6 +3470,15 @@ __metadata:
   version: 6.1.4
   resolution: "@rails/actioncable@patch:@rails/actioncable@npm%3A6.1.4#.yarn/patches/@rails-actioncable-npm-6.1.4-0b7207789c::version=6.1.4&hash=b9c99e&locator=%40brickdoc%2Fmonorepo%40workspace%3A."
   checksum: d5486f40d33b9ca26fb25d49cb62878347e2cd668bab4f77a3d90e525668f6107ec528510a22de906647c5e249016f036881bea0b62d0eef15142179e0e15773
+  languageName: node
+  linkType: hard
+
+"@rails/activestorage@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "@rails/activestorage@npm:6.1.4"
+  dependencies:
+    spark-md5: ^3.0.0
+  checksum: fdfacbe5249c1ed5c2aa09fe593bf1689840ef4b590766a5638b81b57c3c6307daaf636974a7d0b0a03ced602313440dc161a209e23f73d018fb530489ba3509
   languageName: node
   linkType: hard
 
@@ -5561,6 +5573,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/rails__activestorage@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@types/rails__activestorage@npm:6.0.1"
+  checksum: 38444b33ef6a84c22907750d23cc2869c786eba24e04683ba4932fbd7b4f305b1527b8911ebdddbbae98376407609559ed8e14107dc6037e78c2f2ddaa021ce0
+  languageName: node
+  linkType: hard
+
 "@types/reach__router@npm:^1.3.7":
   version: 1.3.9
   resolution: "@types/reach__router@npm:1.3.9"
@@ -5902,6 +5921,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@uppy/companion-client@npm:^1.10.2":
+  version: 1.10.2
+  resolution: "@uppy/companion-client@npm:1.10.2"
+  dependencies:
+    "@uppy/utils": ^3.6.2
+    namespace-emitter: ^2.0.1
+    qs-stringify: ^1.1.0
+    url-parse: ^1.4.7
+  checksum: eef41fb0dba29a1f0fa8baf8368eb227fefa90e7e1c38e9f41c7f6762fde2593763d2cc5fe89c2b114c3dc4ce1a1e78f95855107ac86ce2644478dab04e8adaf
+  languageName: node
+  linkType: hard
+
 "@uppy/core@npm:^1.19.2":
   version: 1.19.2
   resolution: "@uppy/core@npm:1.19.2"
@@ -6063,6 +6094,19 @@ __metadata:
     abortcontroller-polyfill: ^1.4.0
     lodash.throttle: ^4.1.1
   checksum: 945333155291d74a1836338352cbbe8693228feaaf95383c03b8420c7bbd8f92bd989a1dfd1f82958e0d8838e05e46bc472a1709eff13abbd581c97124574701
+  languageName: node
+  linkType: hard
+
+"@uppy/xhr-upload@npm:^1.7.5":
+  version: 1.7.5
+  resolution: "@uppy/xhr-upload@npm:1.7.5"
+  dependencies:
+    "@uppy/companion-client": ^1.10.2
+    "@uppy/utils": ^3.6.2
+    cuid: ^2.1.1
+  peerDependencies:
+    "@uppy/core": ^1.0.0
+  checksum: 820a942f65cdc21ca4b60a35fe4132622216280840ff8657a4d8c841553598badc38501a44a45df6850421c020b9b69b1540f0a73b3a7f4b5a73b7dc8202ac78
   languageName: node
   linkType: hard
 
@@ -19328,6 +19372,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"qs-stringify@npm:^1.1.0":
+  version: 1.2.1
+  resolution: "qs-stringify@npm:1.2.1"
+  checksum: 4e6d8c2658e38e7e6df1dd6404ebba7ff8275c62c0f3efa8e2bc8a8205f42b89fa3539ea5cc4e03297c7158fa5ad6da4a14d70c54c26e46203194fcd860af74a
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.7.0":
   version: 6.7.0
   resolution: "qs@npm:6.7.0"
@@ -21920,6 +21971,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"spark-md5@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "spark-md5@npm:3.0.1"
+  checksum: 613a7f4e20929b832406ef2ed925d696d4d004455360b07ba1a829975fc12a005d745db370cb261ecc827c3dedf3b431a9337f4bab1f1954df776f41a05aaabe
+  languageName: node
+  linkType: hard
+
 "spdx-correct@npm:^3.0.0":
   version: 3.1.1
   resolution: "spdx-correct@npm:3.1.1"
@@ -23729,7 +23787,7 @@ typescript@^4.3.5:
   languageName: node
   linkType: hard
 
-"url-parse@npm:^1.4.3, url-parse@npm:^1.5.1":
+"url-parse@npm:^1.4.3, url-parse@npm:^1.4.7, url-parse@npm:^1.5.1":
   version: 1.5.3
   resolution: "url-parse@npm:1.5.3"
   dependencies:

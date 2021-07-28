@@ -21,7 +21,7 @@ import Underline, { UnderlineOptions } from '@tiptap/extension-underline'
 import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
-import { ImageSectionExtension } from '../imageSection'
+import { ImageSectionExtension, ImageSectionOptions } from '../imageSection'
 
 export interface BasicRichtextOptions {
   blockquote: Partial<BlockquoteOptions> | false
@@ -45,7 +45,7 @@ export interface BasicRichtextOptions {
   text: false
   textStyle: Partial<TextStyleOptions> | false
   fontColor: Partial<FontColorOptions> | false
-  imageSection: false
+  imageSection: Partial<ImageSectionOptions> | false
 }
 
 export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({

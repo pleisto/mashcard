@@ -1,3 +1,4 @@
+import { DashboardPluginOptions } from '@brickdoc/uploader/dist/src/Dashboard/plugin'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ImageSection } from './ImageSection'
@@ -13,10 +14,18 @@ declare module '@tiptap/core' {
   }
 }
 
-export const ImageSectionExtension = Node.create({
+export interface ImageSectionOptions {
+  prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
+}
+
+export const ImageSectionExtension = Node.create<ImageSectionOptions>({
   name: 'imageSection',
 
-  defaultOptions: {},
+  defaultOptions: {
+    prepareFileUpload: () => {
+      throw new Error('You need configure prepareFileUpload if you want to enable ImageSection')
+    }
+  },
 
   group: 'block',
 
@@ -26,8 +35,9 @@ export const ImageSectionExtension = Node.create({
 
   addAttributes() {
     return {
-      width: {},
-      aspectRatio: {}
+      width: null,
+      url: null,
+      aspectRatio: null
     }
   },
 

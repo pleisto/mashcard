@@ -12,6 +12,7 @@ import {
   BubbleMenu
 } from './extensions'
 import './styles.less'
+import { ImageSectionOptions } from './extensions/imageSection'
 
 export interface EditorContentProps {
   editor: TiptapEditor | null
@@ -28,13 +29,14 @@ export const EditorContent: React.FC<EditorContentProps> = ({ editor }: EditorCo
 
 export interface EditorOptions extends Partial<TiptapEditorOptions> {
   onCommit: SyncExtensionOptions['onCommit']
+  prepareFileUpload?: ImageSectionOptions['prepareFileUpload']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
-  const { onCommit, ...restOptions } = options
+  const { onCommit, prepareFileUpload, ...restOptions } = options
   return useTiptapEditor({
     extensions: [
-      BasicRichtextExtension,
+      BasicRichtextExtension.configure({ imageSection: { prepareFileUpload } }),
       BlockCommandsExtension,
       SlashCommandsExtension,
       PlaceholderExtension,

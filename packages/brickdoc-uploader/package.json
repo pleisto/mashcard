@@ -16,6 +16,7 @@
     "@uppy/core": "^1.19.2",
     "@uppy/dashboard": "^1.20.2",
     "@uppy/react": "^1.12.0",
+    "@uppy/xhr-upload": "^1.7.5",
     "htm": "^3.1.0",
     "preact": "8.2.9",
     "re-resizable": "^6.9.0",

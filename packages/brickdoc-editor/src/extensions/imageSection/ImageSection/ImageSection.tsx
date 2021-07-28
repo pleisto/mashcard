@@ -36,7 +36,7 @@ function useDoubleClick(fn: VoidFunction): VoidFunction {
 }
 
 // TODO: handle image load on error
-export const ImageSection: React.FC<NodeViewProps> = ({ node, updateAttributes }) => {
+export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
   const [url, setUrl] = React.useState('')
   const [loaded, setLoaded] = React.useState(false)
   const [showPreview, setShowPreview] = React.useState(false)
@@ -45,7 +45,10 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, updateAttributes }
     setShowPreview(true)
   }
   const onDoubleClick = useDoubleClick(previewImage)
-  const onUploaded = (data: UploadResultData): void => setUrl(data.url)
+  const onUploaded = (data: UploadResultData): void => {
+    updateAttributes({ url: data.url })
+    setUrl(data.url)
+  }
   const onImageLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
     const img = event.target as HTMLImageElement
     // Update image dimensions on loaded if there is no dimensions data before
@@ -125,7 +128,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, updateAttributes }
         overlayClassName="brickdoc-block-image-section-popover"
         trigger="click"
         placement="top"
-        content={<Dashboard onUploaded={onUploaded} />}>
+        content={<Dashboard prepareFileUpload={extension.options.prepareFileUpload} onUploaded={onUploaded} />}>
         <Button type="text" className="brickdoc-block-image-section">
           <Icon className="image-section-icon" name="image" />
           <div className="image-section-hint">Add an image</div>
