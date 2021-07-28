@@ -12,9 +12,9 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
       t.string   :checksum,     null: false
       t.datetime :created_at,   null: false
 
-      t.bigint :pod_id, null: false
+      t.bigint :pod_id
       t.bigint :user_id
-      t.string :operation_type, null: false
+      t.string :operation_type, null: false, default: "THIRD"
 
       t.index [:key], unique: true
     end
@@ -22,7 +22,8 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
     # https://stackoverflow.com/a/64142064
     create_table :active_storage_attachments do |t|
       t.string     :name,     null: false
-      t.references :record,   null: false, polymorphic: true, index: false, type: :uuid
+      t.string     :record_id, null: false
+      t.string     :record_type, null: false
       t.references :blob,     null: false
 
       t.datetime :created_at, null: false

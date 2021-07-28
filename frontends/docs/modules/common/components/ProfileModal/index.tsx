@@ -15,13 +15,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
   const [form] = Form.useForm()
-  const [createOrUpdatePod, {loading}] = useCreateOrUpdatePodMutation()
+  const [createOrUpdatePod, { loading }] = useCreateOrUpdatePodMutation()
 
   const handleCancel = (): void => {
     setVisible(false)
   }
 
-  if(loading) {
+  if (loading) {
     return <Skeleton />
   }
 

@@ -45,9 +45,7 @@ export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
     }).then(result => {
       return {
         endpoint: result.data.createDirectUpload.directUpload.url,
-        headers: {
-          ...JSON.parse(result.data.createDirectUpload.directUpload.headers)
-        }
+        headers: result.data.createDirectUpload.directUpload.headers
       }
     })
   }

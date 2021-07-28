@@ -66,8 +66,8 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
   )
 
   let avatar
-  if (pod.avatar) {
-    avatar = <Avatar src={pod.avatar} />
+  if (pod.avatarUrl) {
+    avatar = <Avatar src={pod.avatarUrl} />
   } else {
     avatar = <Avatar style={{ background: '#2376b7' }}>{pod.webid}</Avatar>
   }

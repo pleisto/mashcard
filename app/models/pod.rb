@@ -4,16 +4,15 @@
 #
 # Table name: pods
 #
-#  id                                                           :bigint           not null, primary key
-#  avatar_uri(object key for bucket or url that stored avatar.) :string(128)
-#  bio("Bio" means Biography in social media.)                  :string(140)
-#  deleted_at                                                   :datetime
-#  name                                                         :string           not null
-#  personal                                                     :boolean          default(FALSE), not null
-#  webid                                                        :string           not null
-#  created_at                                                   :datetime         not null
-#  updated_at                                                   :datetime         not null
-#  owner_id                                                     :bigint           not null
+#  id                                          :bigint           not null, primary key
+#  bio("Bio" means Biography in social media.) :string(140)
+#  deleted_at                                  :datetime
+#  name                                        :string           not null
+#  personal                                    :boolean          default(FALSE), not null
+#  webid                                       :string           not null
+#  created_at                                  :datetime         not null
+#  updated_at                                  :datetime         not null
+#  owner_id                                    :bigint           not null
 #
 # Indexes
 #
@@ -31,8 +30,43 @@ class Pod < ApplicationRecord
 
   default_value_for :personal, false
 
-  def avatar
-    avatar_uri
+  has_one_attached :avatar
+
+  def self.url_helper
+    @url_helper ||= Rails.application.routes.url_helpers
+  end
+
+  def self.import_avatar(url)
+    return nil if url.blank?
+    # rubocop:disable Security/Open
+    io = URI.open(url)
+    filename = File.basename(URI.parse(url).path)
+    blob = ActiveStorage::Blob.create_and_upload!(io: io, service_name: :local, filename: filename)
+    blob.signed_id
+  end
+
+  ## NOTE persist pod_id and user_id
+  def fix_avatar!
+    blob = avatar.blob
+    return if blob.nil?
+    return if blob.pod_id && blob.user_id
+
+    blob.update_columns(pod_id: id, user_id: owner_id)
+  end
+
+  def avatar_url
+    blob = avatar.blob
+    return nil if blob.nil?
+    public = ActiveStorage::Blob.services.fetch(blob.service_name)
+    filename = blob.filename_in_database.presence || "unknown"
+    signed_id = blob.signed_id
+
+    if public
+      ## NOTE CDN
+      self.class.url_helper.rails_service_blob_proxy_url(filename: filename, signed_id: signed_id)
+    else
+      self.class.url_helper.rails_service_blob_url(filename: filename, signed_id: signed_id)
+    end
   end
 
   def self.webid_available?(webid)

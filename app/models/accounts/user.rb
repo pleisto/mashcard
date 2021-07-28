@@ -49,7 +49,7 @@ class Accounts::User < ApplicationRecord
           class_name: 'Pod', dependent: :destroy,
           foreign_key: :owner_id, inverse_of: :owner, autosave: true
 
-  delegate :webid, :webid=, :name, :name=, :bio, :bio=, :avatar, :avatar_uri, :avatar_uri=,
+  delegate :webid, :webid=, :name, :name=, :bio, :bio=, :avatar, :avatar=, :avatar_url,
            to: :personal_pod
   alias_method :original_personal_pod, :personal_pod
 

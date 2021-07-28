@@ -6,5 +6,6 @@ module System
 
     value "AVATAR", "Account avatar"
     value "DOC", "Page block"
+    value "THIRD", "Third"
   end
 end

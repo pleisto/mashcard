@@ -23,12 +23,16 @@ module Accounts
       user.name = args[:name]
       user.locale = args[:locale]
       user.timezone = args[:timezone]
+      omniauth = false
       if context[:session][:omniauth].present? && args[:password].blank?
+        omniauth = true
         federated_identity_sign_up(user)
       else
         email_password_sign_up(user, args[:email], args[:password])
       end
       user.save
+      user.personal_pod.fix_avatar! if omniauth
+
       return { errors: errors_on_object(user) } unless user.valid?
 
       if user.active_for_authentication?
@@ -55,7 +59,7 @@ module Accounts
     def federated_identity_sign_up(user)
       omniauth = context[:session][:omniauth].with_indifferent_access
       user.email = omniauth[:info][:email]
-      user.avatar_uri = omniauth[:info][:avatar]
+      user.avatar = Pod.import_avatar omniauth[:info][:avatar]
       user.omniauth_provider = omniauth[:provider]
       user.omniauth_uid = omniauth[:uid]
     end

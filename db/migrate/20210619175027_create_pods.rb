@@ -5,7 +5,6 @@ class CreatePods < ActiveRecord::Migration[6.1]
       t.belongs_to :owner, null: false
       t.string :webid, null: false
       t.string :name, null: false
-      t.string :avatar_uri, limit: 128, comment: 'object key for bucket or url that stored avatar.'
       t.string :bio, limit: 140, comment: '"Bio" means Biography in social media.'
       t.boolean :personal, null: false, default: false
 

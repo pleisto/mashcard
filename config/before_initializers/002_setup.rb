@@ -38,6 +38,14 @@ Rails.application.reloader.to_prepare do
 
   ## ActiveStorage
   Rails.application.config.active_storage.service = BrickdocConfig.active_storage_service.to_sym
+  Rails.application.config.active_storage.analyzers.delete ActiveStorage::Analyzer::VideoAnalyzer
+  Rails.application.config.active_storage.analyzers.delete ActiveStorage::Analyzer::ImageAnalyzer
+  Rails.application.config.active_storage.draw_routes = false
+
+  ActiveSupport.on_load(:active_storage_blob) do
+    ActiveStorage::Attachment.send(:second_level_cache, expires_in: 1.week)
+    ActiveStorage::Blob.send(:second_level_cache, expires_in: 1.week)
+  end
 
   # Mailer
   smtp_settings = URI(BrickdocConfig.mailer[:url])
@@ -53,5 +61,10 @@ Rails.application.reloader.to_prepare do
       user_name: smtp_settings.user,
       password: smtp_settings.password
     }
+    config.active_storage.default_url_options = Rails.application.default_url_options
+    if Rails.env.development?
+      ## TODO remove this when this commit is released https://github.com/rails/rails/commit/e9accafc844ed5981ce7f50afe8261d5ef07d4d2
+      ActiveStorage::Current.host = "http://#{Rails.application.default_url_options.fetch(:host)}:#{Rails.application.default_url_options.fetch(:port)}"
+    end
   end
 end

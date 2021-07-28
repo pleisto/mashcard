@@ -5,7 +5,7 @@ module System
     argument :type, Enums::PodOperationType, required: true
     argument :name, String, "pod name", required: true
     argument :bio, String, "bio", required: false
-    argument :avatar, String, "avatar", required: false
+    argument :avatar_signed_id, String, "Avatar signed id", required: false
     field :pod, Objects::Pod, null: true
 
     def resolve(attrs)
@@ -14,7 +14,7 @@ module System
       name = attrs.fetch(:name)
       pod = current_user.pods.find { |p| p.webid == webid }
 
-      extra = { avatar_uri: attrs[:avatar], bio: attrs[:bio] }.compact
+      extra = { avatar: attrs[:avatar_signed_id], bio: attrs[:bio] }.compact
 
       case type
       when "CREATE"

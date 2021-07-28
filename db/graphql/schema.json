@@ -1098,8 +1098,8 @@
               "deprecationReason": null
             },
             {
-              "name": "avatar",
-              "description": "avatar",
+              "name": "avatarSignedId",
+              "description": "Avatar signed id",
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
@@ -1227,7 +1227,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -2496,6 +2496,12 @@
             {
               "name": "DOC",
               "description": "Page block",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "THIRD",
+              "description": "Third",
               "isDeprecated": false,
               "deprecationReason": null
             }
@@ -4801,8 +4807,8 @@
           "description": "Brickdoc Pod.",
           "fields": [
             {
-              "name": "avatar",
-              "description": "Pod Avatar",
+              "name": "avatarUrl",
+              "description": "Pod Avatar url",
               "args": [
 
               ],
