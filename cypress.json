@@ -1,5 +1,5 @@
 {
+  "projectId": "p7oaqk",
   "baseUrl": "http://localhost:3000",
-  "defaultCommandTimeout": 60000,
-  "pageLoadTimeout": 60000
+  "reporter": "nyan"
 }

@@ -92,7 +92,7 @@ jobs:
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn test:jest
-      - name: Publish junit reports
+      - name: Publish Jest test reports
         if: always() && steps.changed-es-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2
         with:
@@ -152,7 +152,7 @@ jobs:
         env:
           RAILS_ENV: test
         run: bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
-      - name: Publish junit reports
+      - name: Publish RSpec test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2
         with:
@@ -233,7 +233,22 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
-          config: pageLoadTimeout=10000
+          browser: chrome
+          install: false
+          record: true
+          config: '{"reporter":"cypress-multi-reporters","reporterOptions":{"configFile":"cypress/ciReporterConfig.json"}}'
+          tag: ${{ github.event_name }}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # See https://github.com/cypress-io/github-action/issues/124#issuecomment-653180260
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+      - name: Publish Cypress test reports
+        if: always()
+        uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: junit-reports/cypress/*.xml
+          check_name: Cypress Test Report
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
         run: bundle exec rails db:prepare db:schema:dump
@@ -248,7 +263,7 @@ jobs:
           default_author: github_actions
           message: 'chore: bump schemas and dists'
           add: 'app lib packages spec config db frontends'
-      - name: Upload Rails log (when cypress failed)
+      - name: Upload Rails log (when failed)
         if: failure()
         uses: actions/upload-artifact@v2
         with:
