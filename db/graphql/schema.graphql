@@ -310,6 +310,7 @@ type CreateDirectUploadPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
+  urlPrefix: String!
 }
 
 """

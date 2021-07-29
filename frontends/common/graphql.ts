@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client"
+import { gql } from '@apollo/client'
 
 export const queryWebidExists = gql`
   query QueryWebidAvailableFromWS($webid: String!) {
@@ -23,8 +23,10 @@ export const CreateDirectUpload = gql`
       directUpload {
         url
         headers
+        blobKey
         signedBlobId
       }
+      urlPrefix
     }
   }
 `
