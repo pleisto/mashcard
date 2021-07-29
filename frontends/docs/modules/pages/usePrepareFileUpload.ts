@@ -45,7 +45,8 @@ export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
       // TODO: handle error
     }).then(result => {
       return {
-        endpoint: result.data.createDirectUpload.directUpload.url,
+        endpoint: result.data.createDirectUpload.directUpload.uploadUrl,
+        blobKey: result.data.createDirectUpload.directUpload.blobKey,
         headers: result.data.createDirectUpload.directUpload.headers
       }
     })

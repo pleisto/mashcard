@@ -63,15 +63,27 @@
   max-width: 100%;
   position: relative;
 
+  // TODO: repeat it in PdfSection/styles.less. Keep it DRY
   .image-section-control-panel {
     display: inline-block;
 
+    .image-section-control-bottom-drag,
+    .image-section-control-bottom-left-drag,
+    .image-section-control-bottom-right-drag,
+    .image-section-control-left-drag,
+    .image-section-control-right-drag,
+    .image-section-menu-button {
+      transition: opacity 0.3s ease-in;
+    }
+
     &:hover {
+      .image-section-control-bottom-drag,
+      .image-section-control-bottom-left-drag,
+      .image-section-control-bottom-right-drag,
       .image-section-control-left-drag,
       .image-section-control-right-drag,
       .image-section-menu-button {
         opacity: 1;
-        transition: opacity 0.3s ease-in;
       }
     }
 
@@ -97,16 +109,13 @@
     .image-section-control-drag {
       width: 6px;
       height: 40px;
-      background: #3e3e3e;
-      opacity: 0.8;
-      border: 1px solid #ffffff;
       box-sizing: border-box;
-      border-radius: 14px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      cursor: col-resize;
       opacity: 0;
+      background-image: url('../../../assets/control.png');
+      background-size: 6px 40px;
     }
 
     .image-section-control-left-drag {
@@ -116,6 +125,38 @@
 
     .image-section-control-right-drag {
       .image-section-control-drag();
+      right: 8px;
+    }
+
+    .image-section-control-bottom-drag {
+      .image-section-control-drag();
+      top: unset;
+      left: 50%;
+      bottom: 8px;
+      width: 40px;
+      height: 6px;
+      transform: translateX(-50%);
+      background-image: url('../../../assets/control-bottom.png');
+      background-size: 40px 6px;
+    }
+
+    .image-section-control-corner-drag {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      opacity: 0;
+      background-image: url('../../../assets/control-corner.png');
+      background-size: 24px 24px;
+    }
+
+    .image-section-control-bottom-left-drag {
+      .image-section-control-corner-drag();
+      left: 8px;
+    }
+
+    .image-section-control-bottom-right-drag {
+      .image-section-control-corner-drag();
+      transform: rotate(270deg);
       right: 8px;
     }
   }

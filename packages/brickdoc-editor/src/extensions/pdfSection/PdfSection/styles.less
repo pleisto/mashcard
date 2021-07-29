@@ -109,6 +109,15 @@
     bottom: 0;
     z-index: 1;
 
+    .pdf-section-control-bottom-drag,
+    .pdf-section-control-bottom-left-drag,
+    .pdf-section-control-bottom-right-drag,
+    .pdf-section-control-left-drag,
+    .pdf-section-control-right-drag,
+    .pdf-section-menu-button {
+      transition: opacity 0.3s ease-in;
+    }
+
     &:hover {
       .pdf-section-control-bottom-drag,
       .pdf-section-control-bottom-left-drag,
@@ -117,7 +126,6 @@
       .pdf-section-control-right-drag,
       .pdf-section-menu-button {
         opacity: 1;
-        transition: opacity .3s ease-in;
       }
     }
 

@@ -70,7 +70,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
   }
   const onDoubleClick = useDoubleClick(previewImage)
   const onUploaded = (data: UploadResultData): void => {
-    updateAttributes({ url: data.url })
+    updateAttributes({ url: data.url, blobKey: data.meta?.blobKey })
   }
   const onImageLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
     const img = event.target as HTMLImageElement

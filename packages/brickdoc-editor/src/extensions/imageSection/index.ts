@@ -41,9 +41,12 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
         default: DEFAULT_WIDTH
       },
       url: {
-        default: ''
+        default: null
       },
       aspectRatio: {
+        default: null
+      },
+      blobKey: {
         default: null
       }
     }

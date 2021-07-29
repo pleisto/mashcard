@@ -10,7 +10,10 @@ import './index.less'
 export type UploadProgress = UppyFile['progress']
 
 export interface UploadResultData {
-  url: string
+  url?: string
+  meta?: {
+    blobKey: string
+  }
 }
 
 export interface ImportSourceOption {
@@ -26,7 +29,7 @@ export interface DashboardPluginOptions {
   onProgress?: (progress: UploadProgress) => void
   onUploaded?: (data: UploadResultData) => void
   onFileLoaded?: (file: File) => void
-  prepareFileUpload: (type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any }>
+  prepareFileUpload: (type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any; blobKey: string }>
   fileType: 'image' | 'pdf'
   importSources: ImportSourceOption[]
 }
@@ -45,6 +48,8 @@ export class DashboardPlugin extends Plugin {
   link: string
 
   uploadInput: HTMLInputElement
+
+  blobKey: string
 
   constructor(uppy: Uppy, opts: DashboardPluginOptions) {
     super(uppy, opts)
@@ -104,7 +109,11 @@ export class DashboardPlugin extends Plugin {
   }
 
   handleUploadSuccess = (file: UppyFile): void => {
-    console.log('upload success', file)
+    this.opts.onUploaded({
+      meta: {
+        blobKey: this.blobKey
+      }
+    })
   }
 
   handleProgress = (file: UppyFile): void => {
@@ -113,7 +122,8 @@ export class DashboardPlugin extends Plugin {
 
   // TODO: handle error
   handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers } = await this.opts.prepareFileUpload(this.opts.fileType, file)
+    const { endpoint, headers, blobKey } = await this.opts.prepareFileUpload(this.opts.fileType, file)
+    this.blobKey = blobKey
     this.uppy.getPlugin('XHRUpload').setOptions({
       endpoint,
       headers

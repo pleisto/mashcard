@@ -30,7 +30,6 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
   const [progress, setProgress] = React.useState<UploadProgress>()
 
   const onProgress = (progress: UploadProgress): void => {
-    console.log(progress)
     setProgress(progress)
   }
 
@@ -39,10 +38,12 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
   }
 
   const onUploaded = (data: UploadResultData): void => {
-    updateAttributes({ url: data.url })
+    updateAttributes({ url: data.url, blobKey: data.meta?.blobKey })
   }
 
-  if (node.attrs.url) {
+  const isUploadCompleted = !!node.attrs.blobKey && file
+
+  if (node.attrs.url || isUploadCompleted) {
     return (
       <NodeViewWrapper>
         <div role="dialog" className="brickdoc-block-pdf-section-container">

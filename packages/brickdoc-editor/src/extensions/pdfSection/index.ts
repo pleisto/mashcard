@@ -45,7 +45,10 @@ export const PdfSectionExtension = Node.create<PdfSectionOptions>({
         default: DEFAULT_HEIGHT
       },
       url: {
-        default: ''
+        default: null
+      },
+      blobKey: {
+        default: null
       }
     }
   },
