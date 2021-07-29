@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
-    "@tiptap/core": "^2.0.0-beta.89",
+    "@tiptap/core": "^2.0.0-beta.91",
     "@tiptap/extension-blockquote": "^2.0.0-beta.15",
     "@tiptap/extension-bold": "^2.0.0-beta.15",
     "@tiptap/extension-bullet-list": "^2.0.0-beta.15",
@@ -36,7 +36,7 @@
     "@tiptap/extension-text": "^2.0.0-beta.13",
     "@tiptap/extension-text-style": "^2.0.0-beta.17",
     "@tiptap/extension-underline": "^2.0.0-beta.16",
-    "@tiptap/react": "^2.0.0-beta.54",
+    "@tiptap/react": "^2.0.0-beta.55",
     "@tiptap/suggestion": "^2.0.0-beta.61",
     "tippy.js": "^6.3.1"
   },
