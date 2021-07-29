@@ -14,6 +14,7 @@ class CreateActiveStorageTables < ActiveRecord::Migration[5.2]
 
       t.bigint :pod_id
       t.bigint :user_id
+      t.uuid :block_id
       t.string :operation_type, null: false, default: "THIRD"
 
       t.index [:key], unique: true

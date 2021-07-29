@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_07_22_070124) do
     t.datetime "created_at", null: false
     t.bigint "pod_id", null: false
     t.bigint "user_id"
+    t.uuid "block_id"
     t.string "operation_type", default: "THIRD", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end

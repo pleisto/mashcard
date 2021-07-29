@@ -1199,8 +1199,8 @@
           "description": "Represents direct upload credentials",
           "fields": [
             {
-              "name": "blobId",
-              "description": "Created blob record ID",
+              "name": "blobKey",
+              "description": "Created blob record key",
               "args": [
 
               ],

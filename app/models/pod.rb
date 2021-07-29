@@ -32,10 +32,6 @@ class Pod < ApplicationRecord
 
   has_one_attached :avatar
 
-  def self.url_helper
-    @url_helper ||= Rails.application.routes.url_helpers
-  end
-
   def self.import_avatar(url)
     return nil if url.blank?
     # rubocop:disable Security/Open
@@ -55,18 +51,7 @@ class Pod < ApplicationRecord
   end
 
   def avatar_url
-    blob = avatar.blob
-    return nil if blob.nil?
-    public = ActiveStorage::Blob.services.fetch(blob.service_name)
-    filename = blob.filename_in_database.presence || "unknown"
-    signed_id = blob.signed_id
-
-    if public
-      ## NOTE CDN
-      self.class.url_helper.rails_service_blob_proxy_url(filename: filename, signed_id: signed_id)
-    else
-      self.class.url_helper.rails_service_blob_url(filename: filename, signed_id: signed_id)
-    end
+    Brickdoc::Storage.blob_url avatar.blob
   end
 
   def self.webid_available?(webid)

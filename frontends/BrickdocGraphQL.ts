@@ -178,6 +178,8 @@ export type BlockSyncBatchPayload = {
 export type CreateDirectUploadInput = {
   input: DirectUploadInput
   type: Upload
+  /** block id */
+  blockId?: Maybe<Scalars['UUID']>
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: Maybe<Scalars['String']>
 }
@@ -220,8 +222,8 @@ export type CreateOrUpdatePodPayload = {
 /** Represents direct upload credentials */
 export type DirectUpload = {
   __typename?: 'DirectUpload'
-  /** Created blob record ID */
-  blobId: Scalars['ID']
+  /** Created blob record key */
+  blobKey: Scalars['ID']
   /** HTTP request headers (JSON-encoded) */
   headers: Scalars['JSON']
   /** Created blob record signed ID */
@@ -576,6 +578,15 @@ export type Accounts_User = {
   timezone: Scalars['String']
   /** Like a username, Unique within this instance of Brickdoc. */
   webid: Scalars['String']
+}
+
+/** ActiveStorage blobs */
+export type Blob = {
+  __typename?: 'blob'
+  /** Blob key */
+  key: Scalars['String']
+  /** Blob url */
+  url: Scalars['String']
 }
 
 /** Brickdoc Docs::Block */

@@ -27,7 +27,7 @@ module Docs
 
         ## TODO check permission
 
-        blocks = root.descendants_cache
+        blocks = root.descendants.with_attached_attachments.to_a
         ## NOTE cast to `doc`
         blocks = blocks.map do |b|
           if b.id == parent_id
@@ -40,7 +40,7 @@ module Docs
         authorized_scope blocks, as: :collaborating, with: Docs::BlockPolicy
       else
         # TODO: permission check
-        Docs::Snapshot.find_by!(block_id: parent_id, snapshot_version: snapshot_version).blocks.map(&:cast_block)
+        Docs::Snapshot.find_by!(block_id: parent_id, snapshot_version: snapshot_version).blocks.graphql_normalize
       end
     end
   end
