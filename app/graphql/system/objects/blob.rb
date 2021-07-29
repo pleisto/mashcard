@@ -5,7 +5,7 @@ module System
       graphql_name 'blob'
       description 'ActiveStorage blobs'
 
-      field :key, String, 'Blob key', null: false
+      field :blob_key, String, 'Blob key', null: false
       field :url, String, 'Blob url', null: false
     end
   end

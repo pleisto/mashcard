@@ -56,7 +56,7 @@ class Docs::Block < ApplicationRecord
 
   def blobs
     attachments.map do |blob|
-      { key: blob.key, url: Brickdoc::Storage.blob_url(blob) }
+      { blob_key: blob.key, url: Brickdoc::Storage.blob_url(blob) }
     end
   end
 

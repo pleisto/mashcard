@@ -584,7 +584,7 @@ export type Accounts_User = {
 export type Blob = {
   __typename?: 'blob'
   /** Blob key */
-  key: Scalars['String']
+  blobKey: Scalars['String']
   /** Blob url */
   url: Scalars['String']
 }
