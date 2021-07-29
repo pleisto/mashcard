@@ -1770,10 +1770,10 @@ __metadata:
   resolution: "@brickdoc/editor@workspace:packages/brickdoc-editor"
   dependencies:
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
-    "@tiptap/core": ^2.0.0-beta.93
-    "@tiptap/extension-blockquote": ^2.0.0-beta.15
-    "@tiptap/extension-bold": ^2.0.0-beta.15
-    "@tiptap/extension-bullet-list": ^2.0.0-beta.15
+    "@tiptap/core": 2.0.0-beta.89
+    "@tiptap/extension-blockquote": 2.0.0-beta.15
+    "@tiptap/extension-bold": 2.0.0-beta.15
+    "@tiptap/extension-bullet-list": 2.0.0-beta.15
     "@tiptap/extension-code": ^2.0.0-beta.15
     "@tiptap/extension-code-block": ^2.0.0-beta.17
     "@tiptap/extension-document": ^2.0.0-beta.13
@@ -1792,10 +1792,12 @@ __metadata:
     "@tiptap/extension-text": ^2.0.0-beta.13
     "@tiptap/extension-text-style": ^2.0.0-beta.17
     "@tiptap/extension-underline": ^2.0.0-beta.16
-    "@tiptap/react": ^2.0.0-beta.55
+    "@tiptap/react": 2.0.0-beta.50
     "@tiptap/suggestion": ^2.0.0-beta.61
+    "@types/react-pdf": ^5.0.5
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-pdf: ^5.3.2
     tippy.js: ^6.3.1
     typescript: ^4.3.5
   peerDependencies:
@@ -1955,6 +1957,7 @@ __metadata:
     preact: 8.2.9
     re-resizable: ^6.9.0
     react-medium-image-zoom: ^4.3.4
+    unsplash-js: ^7.0.15
   languageName: unknown
   linkType: soft
 
@@ -4716,9 +4719,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/core@npm:^2.0.0-beta.93":
-  version: 2.0.0-beta.93
-  resolution: "@tiptap/core@npm:2.0.0-beta.93"
+"@tiptap/core@npm:2.0.0-beta.89":
+  version: 2.0.0-beta.89
+  resolution: "@tiptap/core@npm:2.0.0-beta.89"
   dependencies:
     "@types/prosemirror-commands": ^1.0.4
     "@types/prosemirror-inputrules": ^1.0.4
@@ -4740,7 +4743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-blockquote@npm:^2.0.0-beta.15":
+"@tiptap/extension-blockquote@npm:2.0.0-beta.15":
   version: 2.0.0-beta.15
   resolution: "@tiptap/extension-blockquote@npm:2.0.0-beta.15"
   dependencies:
@@ -4751,7 +4754,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-bold@npm:^2.0.0-beta.15":
+"@tiptap/extension-bold@npm:2.0.0-beta.15":
   version: 2.0.0-beta.15
   resolution: "@tiptap/extension-bold@npm:2.0.0-beta.15"
   peerDependencies:
@@ -4760,7 +4763,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-bubble-menu@npm:^2.0.0-beta.25":
+"@tiptap/extension-bubble-menu@npm:^2.0.0-beta.23":
   version: 2.0.0-beta.25
   resolution: "@tiptap/extension-bubble-menu@npm:2.0.0-beta.25"
   dependencies:
@@ -4773,7 +4776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-bullet-list@npm:^2.0.0-beta.15":
+"@tiptap/extension-bullet-list@npm:2.0.0-beta.15":
   version: 2.0.0-beta.15
   resolution: "@tiptap/extension-bullet-list@npm:2.0.0-beta.15"
   dependencies:
@@ -4825,7 +4828,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-floating-menu@npm:^2.0.0-beta.19":
+"@tiptap/extension-floating-menu@npm:^2.0.0-beta.17":
   version: 2.0.0-beta.19
   resolution: "@tiptap/extension-floating-menu@npm:2.0.0-beta.19"
   dependencies:
@@ -4980,18 +4983,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/react@npm:^2.0.0-beta.55":
-  version: 2.0.0-beta.55
-  resolution: "@tiptap/react@npm:2.0.0-beta.55"
+"@tiptap/react@npm:2.0.0-beta.50":
+  version: 2.0.0-beta.50
+  resolution: "@tiptap/react@npm:2.0.0-beta.50"
   dependencies:
-    "@tiptap/extension-bubble-menu": ^2.0.0-beta.25
-    "@tiptap/extension-floating-menu": ^2.0.0-beta.19
-    prosemirror-view: ^1.18.11
+    "@tiptap/extension-bubble-menu": ^2.0.0-beta.23
+    "@tiptap/extension-floating-menu": ^2.0.0-beta.17
+    prosemirror-view: ^1.18.7
   peerDependencies:
     "@tiptap/core": ^2.0.0-beta.1
     react: ^17.0.1
     react-dom: ^17.0.1
-  checksum: a75c5f9e120ff569333b382535af1399c392e6bd258b3b5767cf6fc36e4b6945a66714b6b57616d703a885165883a80ae5976c4f3fb5c73a9e3be2d30a9b8908
+  checksum: c3a4612210d8403ff18cb0186c0d4d7d53c439a74971ae5a68720599f0408a79d6abc235121341561904738d3d722af5b4c215f2fc366a9fd9f4a196a1c16e15
   languageName: node
   linkType: hard
 
@@ -5108,6 +5111,13 @@ __metadata:
   version: 1.1.1
   resolution: "@types/color-name@npm:1.1.1"
   checksum: b71fcad728cc68abcba1d405742134410c8f8eb3c2ef18113b047afca158ad23a4f2c229bcf71a38f4a818dead375c45b20db121d0e69259c2d81e97a740daa6
+  languageName: node
+  linkType: hard
+
+"@types/content-type@npm:^1.1.3":
+  version: 1.1.5
+  resolution: "@types/content-type@npm:1.1.5"
+  checksum: 77d0a88003c18c4d75f8344c678545aa1f1a4c163420c38bf669ba05eb9e0a243ecd022b2c83fbd01def608c275743000c0bf37e9ac95e16f2c3af16ec70534b
   languageName: node
   linkType: hard
 
@@ -5425,6 +5435,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pdfjs-dist@npm:*":
+  version: 2.7.4
+  resolution: "@types/pdfjs-dist@npm:2.7.4"
+  checksum: 5a4fe5445977b229f36e1bf67a459a90663902a05b05c33d31ed5e4712cee38c55cde742ed104960abd90158aea3d0d9198ba5946c0ecc7cdb4977c929fab6bb
+  languageName: node
+  linkType: hard
+
 "@types/prettier@npm:^2.1.5":
   version: 2.3.2
   resolution: "@types/prettier@npm:2.3.2"
@@ -5595,6 +5612,16 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: b7e898e1a22643a371f58e801a3d1d8cf13a82d77063c24be73e840ef8d877ca1d04adc5db168d0dac3167dc050a26b1d70efc5fe8566a7f46a3c488a8322989
+  languageName: node
+  linkType: hard
+
+"@types/react-pdf@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "@types/react-pdf@npm:5.0.5"
+  dependencies:
+    "@types/pdfjs-dist": "*"
+    "@types/react": "*"
+  checksum: 6c0508b27d57f385b62ed82a68bb5f4724beeab3d32d3f72c78bd21bef5576dd818aafc9e0ab3aa79baaf48264b714278c91dc4ace1c10d46abae74d2f25cfa2
   languageName: node
   linkType: hard
 
@@ -9065,7 +9092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"content-type@npm:~1.0.4":
+"content-type@npm:^1.0.4, content-type@npm:~1.0.4":
   version: 1.0.4
   resolution: "content-type@npm:1.0.4"
   checksum: 3d93585fda985d1554eca5ebd251994327608d2e200978fdbfba21c0c679914d5faf266d17027de44b34a72c7b0745b18584ecccaa7e1fdfb6a68ac7114f12e0
@@ -11783,7 +11810,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-loader@npm:^6.2.0":
+"file-loader@npm:^6.0.0, file-loader@npm:^6.2.0":
   version: 6.2.0
   resolution: "file-loader@npm:6.2.0"
   dependencies:
@@ -16313,6 +16340,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"make-cancellable-promise@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "make-cancellable-promise@npm:1.0.0"
+  checksum: efdfee90c96b95b6250122ae305b18cf3b19ad660b31df82d3fe0ea4a62019608c89865b9d971c4c473701d470cab648535dc9e48e1c7ad506e96066e6792709
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^2.0.0, make-dir@npm:^2.1.0":
   version: 2.1.0
   resolution: "make-dir@npm:2.1.0"
@@ -16336,6 +16370,13 @@ fsevents@^1.2.7:
   version: 1.3.6
   resolution: "make-error@npm:1.3.6"
   checksum: b86e5e0e25f7f777b77fabd8e2cbf15737972869d852a22b7e73c17623928fccb826d8e46b9951501d3f20e51ad74ba8c59ed584f610526a48f8ccf88aaec402
+  languageName: node
+  linkType: hard
+
+"make-event-props@npm:^1.1.0":
+  version: 1.2.0
+  resolution: "make-event-props@npm:1.2.0"
+  checksum: 3fe45b1d01ddda97b3a9621f7475fb8dbad6e4d4336b8bed2d7a05f89592f6f86e3dc1cefa1b0ccaad38e4315fb57fbb31b3b44a5349ab63d777ea06d4fc65b6
   languageName: node
   linkType: hard
 
@@ -16610,10 +16651,24 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"merge-class-names@npm:^1.1.1":
+  version: 1.4.0
+  resolution: "merge-class-names@npm:1.4.0"
+  checksum: 443b6ff2d5ca78b3f38bce1a3f443c361d583ffadfe809a02aa86d70d00ac0d18ec4afbe86b2e51e927471e3e1fec94a81ccf0e7be788c122f8fe8ccefdc80db
+  languageName: node
+  linkType: hard
+
 "merge-descriptors@npm:1.0.1":
   version: 1.0.1
   resolution: "merge-descriptors@npm:1.0.1"
   checksum: 5abc259d2ae25bb06d19ce2b94a21632583c74e2a9109ee1ba7fd147aa7362b380d971e0251069f8b3eb7d48c21ac839e21fa177b335e82c76ec172e30c31a26
+  languageName: node
+  linkType: hard
+
+"merge-refs@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "merge-refs@npm:1.0.0"
+  checksum: 3b4ea1a178c52349a0e725281aa34b130fb6819d22f8e616ae30da6f4da223d9c3a53f6e1a427c5ba56bf6b162c98de95a53f76e01a343e10162823fee33f64a
   languageName: node
   linkType: hard
 
@@ -18268,6 +18323,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"pdfjs-dist@npm:2.6.347":
+  version: 2.6.347
+  resolution: "pdfjs-dist@npm:2.6.347"
+  checksum: 34a3ee1d63fe522000edcbc4c6be0cdbbdbe92544a2d97b1b003fc0e63d2fcfddaa882a418efb20aea22a2e67ff2cdd54be5543b15301971ed7f7a75ef9289cb
+  languageName: node
+  linkType: hard
+
 "pend@npm:~1.2.0":
   version: 1.2.0
   resolution: "pend@npm:1.2.0"
@@ -19264,7 +19326,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prosemirror-view@npm:^1.0.0, prosemirror-view@npm:^1.1.0, prosemirror-view@npm:^1.18.11":
+"prosemirror-view@npm:^1.0.0, prosemirror-view@npm:^1.1.0, prosemirror-view@npm:^1.18.11, prosemirror-view@npm:^1.18.7":
   version: 1.18.11
   resolution: "prosemirror-view@npm:1.18.11"
   dependencies:
@@ -20303,6 +20365,25 @@ fsevents@^1.2.7:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
   checksum: b011b68f5420332e4a8c9406bf14582c809a5fe537e5bc7ce4a97ce2869a33a0166565b24a1cdec851c46dc7ac9e77ac6b81d5cd54c71f53a33f47bb95f8960b
+  languageName: node
+  linkType: hard
+
+"react-pdf@npm:^5.3.2":
+  version: 5.3.2
+  resolution: "react-pdf@npm:5.3.2"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+    file-loader: ^6.0.0
+    make-cancellable-promise: ^1.0.0
+    make-event-props: ^1.1.0
+    merge-class-names: ^1.1.1
+    merge-refs: ^1.0.0
+    pdfjs-dist: 2.6.347
+    prop-types: ^15.6.2
+  peerDependencies:
+    react: ^16.3.0 || ^17.0.0-0
+    react-dom: ^16.3.0 || ^17.0.0-0
+  checksum: 8bb724957257be7303fb45c84ce89ef2c6058263a1b98fd4e5587d6c248036a66d1dea3e6579a43864f24eb5313d40e0126ac04be6765cfb0f24ae2bae26a950
   languageName: node
   linkType: hard
 
@@ -23710,6 +23791,16 @@ typescript@^4.3.5:
     has-value: ^0.3.1
     isobject: ^3.0.0
   checksum: 5990ecf660672be2781fc9fb322543c4aa592b68ed9a3312fa4df0e9ba709d42e823af090fc8f95775b4cd2c9a5169f7388f0cec39238b6d0d55a69fc2ab6b29
+  languageName: node
+  linkType: hard
+
+"unsplash-js@npm:^7.0.15":
+  version: 7.0.15
+  resolution: "unsplash-js@npm:7.0.15"
+  dependencies:
+    "@types/content-type": ^1.1.3
+    content-type: ^1.0.4
+  checksum: 814ede385e21df948ca502757c4ee8fb4289e959ba1de3c3daa9635e01708d1496d4efcecdce71d0ba95c80f046430ee0a3a8ae8a8c0af5ccc73c3dd3951faad
   languageName: node
   linkType: hard
 

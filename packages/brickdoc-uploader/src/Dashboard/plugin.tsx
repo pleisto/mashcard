@@ -7,40 +7,40 @@ import { html } from 'htm/preact/index.module'
 import cx from 'classnames'
 import './index.less'
 
+export type UploadProgress = UppyFile['progress']
+
 export interface UploadResultData {
   url: string
 }
 
+export interface ImportSourceOption {
+  type: SourceType
+  buttonText?: string
+  buttonHint?: string
+  acceptType?: string
+  linkInputPlaceholder?: string
+}
+
 export interface DashboardPluginOptions {
   target: HTMLElement
+  onProgress?: (progress: UploadProgress) => void
   onUploaded?: (data: UploadResultData) => void
-  prepareFileUpload: (type: 'image', file: any) => Promise<{ endpoint: string; headers: any }>
+  onFileLoaded?: (file: File) => void
+  prepareFileUpload: (type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any }>
+  fileType: 'image' | 'pdf'
+  importSources: ImportSourceOption[]
 }
 
 type SourceType = 'upload' | 'link' | 'unsplash'
 
-interface ImportSource {
-  type: SourceType
-  label: string
+const IMPORT_SOURCE_LABEL = {
+  upload: 'Upload',
+  link: 'Embed link',
+  unsplash: 'Unsplash'
 }
 
 export class DashboardPlugin extends Plugin {
   opts: DashboardPluginOptions
-
-  importSources: ImportSource[] = [
-    {
-      type: 'upload',
-      label: 'Upload'
-    },
-    {
-      type: 'link',
-      label: 'Embed link'
-    },
-    {
-      type: 'unsplash',
-      label: 'Unsplash'
-    }
-  ]
 
   link: string
 
@@ -57,17 +57,19 @@ export class DashboardPlugin extends Plugin {
     const { target } = this.opts
 
     if (target) {
+      this.uppy.on('upload-success', this.handleUploadSuccess)
+      this.uppy.on('upload-progress', this.handleProgress)
       this.mount(target, this as any)
-      this.setPluginState({ activeSourceType: 'upload' })
     }
   }
 
   uninstall(): void {
     this.uppy.off('upload-success', this.handleUploadSuccess)
+    this.uppy.off('upload-progress', this.handleProgress)
     this.unmount()
   }
 
-  handleNavbarItemClick = (sourceType: SourceType) => () => this.setPluginState({ activeSourceType: sourceType })
+  handleNavbarItemClick = (activeSource: ImportSourceOption) => () => this.setPluginState({ activeSource })
 
   // TODO: fix type
   handleLinkInput = (event: any): void => {
@@ -105,24 +107,20 @@ export class DashboardPlugin extends Plugin {
     console.log('upload success', file)
   }
 
+  handleProgress = (file: UppyFile): void => {
+    this.opts.onProgress?.(file.progress)
+  }
+
   // TODO: handle error
   handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers } = await this.opts.prepareFileUpload('image', file)
+    const { endpoint, headers } = await this.opts.prepareFileUpload(this.opts.fileType, file)
     this.uppy.getPlugin('XHRUpload').setOptions({
       endpoint,
       headers
     })
 
-    this.uppy.on('upload-success', this.handleUploadSuccess)
+    this.opts?.onFileLoaded(file)
 
-    const setUploadLink = (result: any): void => {
-      this.opts.onUploaded?.({ url: result })
-    }
-    const fr = new FileReader()
-    fr.readAsDataURL(file)
-    fr.onload = function onload() {
-      setUploadLink(this.result)
-    }
     await this.uppy.upload()
   }
 
@@ -139,17 +137,17 @@ export class DashboardPlugin extends Plugin {
     await this.handleUpload(file)
   }
 
-  renderLinkPanel() {
+  renderLinkPanel(source: ImportSourceOption) {
     return html`
       <div class="uploader-dashboard-link-panel">
-        <input onInput=${this.handleLinkInput} class="dashboard-link-panel-input" placeholder="Paste the image link..." />
-        <button onClick=${this.handleLinkSubmit} class="dashboard-panel-button">Embed image</button>
-        <div class="dashboard-link-panel-hint">Works with any image from web</div>
+        <input onInput=${this.handleLinkInput} class="dashboard-link-panel-input" placeholder=${source.linkInputPlaceholder} />
+        <button onClick=${this.handleLinkSubmit} class="dashboard-panel-button">${source.buttonText}</button>
+        <div class="dashboard-link-panel-hint">${source.buttonHint}</div>
       </div>
     `
   }
 
-  renderUploadPanel() {
+  renderUploadPanel(source: ImportSourceOption) {
     return html`
       <div class="uploader-dashboard-upload-panel">
         <input
@@ -159,33 +157,38 @@ export class DashboardPlugin extends Plugin {
           }}
           type="file"
           multiple=${false}
-          accept="image/*"
+          accept=${source.acceptType}
           onChange=${this.handleInputChange}
         />
-        <button onClick=${this.handleChooseFile} class="dashboard-panel-button">Choose an image</button>
+        <button onClick=${this.handleChooseFile} class="dashboard-panel-button">${source.buttonText}</button>
       </div>
     `
   }
 
   // TODO: change render engine from preact to React
   render() {
-    const { activeSourceType } = this.getPluginState() as { activeSourceType: SourceType }
+    let { activeSource } = this.getPluginState() as { activeSource: ImportSourceOption }
+
+    if (!activeSource) {
+      activeSource = this.opts.importSources?.[0]
+    }
 
     return html`
       <div class="brickdoc-uploader-dashboard">
         <div class="uploader-dashboard-navbar">
-          ${this.importSources.map(
+          ${this.opts.importSources.map(
             source => html`
               <div
-                class="${cx('uploader-dashboard-navbar-item', { active: activeSourceType === source.type })}"
-                onClick=${this.handleNavbarItemClick(source.type)}
+                class="${cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}"
+                onClick=${this.handleNavbarItemClick(source)}
               >
-                ${source.label}
+                ${IMPORT_SOURCE_LABEL[source.type]}
               </div>
             `
           )}
         </div>
-        ${activeSourceType === 'link' && this.renderLinkPanel()} ${activeSourceType === 'upload' && this.renderUploadPanel()}
+        ${activeSource?.type === 'link' && this.renderLinkPanel(activeSource)}
+        ${activeSource?.type === 'upload' && this.renderUploadPanel(activeSource)}
       </div>
     `
   }

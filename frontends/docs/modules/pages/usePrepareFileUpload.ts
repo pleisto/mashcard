@@ -21,9 +21,10 @@ export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
     let inputType: Upload
 
     switch (type) {
+      // TODO: add new types for pdf/image
+      case 'pdf':
       case 'image':
       default:
-        // TODO: add a new type for image
         inputType = Upload.Avatar
     }
 

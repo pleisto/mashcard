@@ -36,7 +36,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
   const { onCommit, prepareFileUpload, ...restOptions } = options
   return useTiptapEditor({
     extensions: [
-      BasicRichtextExtension.configure({ imageSection: { prepareFileUpload } }),
+      BasicRichtextExtension.configure({ imageSection: { prepareFileUpload }, pdfSection: { prepareFileUpload } }),
       BlockCommandsExtension,
       SlashCommandsExtension,
       PlaceholderExtension,

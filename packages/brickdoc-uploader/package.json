@@ -20,6 +20,7 @@
     "htm": "^3.1.0",
     "preact": "8.2.9",
     "re-resizable": "^6.9.0",
-    "react-medium-image-zoom": "^4.3.4"
+    "react-medium-image-zoom": "^4.3.4",
+    "unsplash-js": "^7.0.15"
   }
 }

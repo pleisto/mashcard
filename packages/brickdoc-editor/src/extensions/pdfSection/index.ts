@@ -1,31 +1,32 @@
 import type { DashboardPluginOptions } from '@brickdoc/uploader'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { ImageSection } from './ImageSection'
+import { PdfSection } from './PdfSection'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
-    imageSection: {
+    pdfSection: {
       /**
-       * Set a image section
+       * Set a pdf section
        */
-      setImageSection: () => ReturnType
+      setPdfSection: () => ReturnType
     }
   }
 }
 
 const DEFAULT_WIDTH = 700
+const DEFAULT_HEIGHT = 551
 
-export interface ImageSectionOptions {
+export interface PdfSectionOptions {
   prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
 }
 
-export const ImageSectionExtension = Node.create<ImageSectionOptions>({
-  name: 'imageSection',
+export const PdfSectionExtension = Node.create<PdfSectionOptions>({
+  name: 'pdfSection',
 
   defaultOptions: {
     prepareFileUpload: () => {
-      throw new Error('You need configure prepareFileUpload if you want to enable ImageSection')
+      throw new Error('You need configure prepareFileUpload if you want to enable PdfSection')
     }
   },
 
@@ -40,11 +41,11 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
       width: {
         default: DEFAULT_WIDTH
       },
+      height: {
+        default: DEFAULT_HEIGHT
+      },
       url: {
         default: ''
-      },
-      aspectRatio: {
-        default: null
       }
     }
   },
@@ -52,22 +53,22 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
   parseHTML() {
     return [
       {
-        tag: 'image-section'
+        tag: 'pdf-section'
       }
     ]
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['image-section', mergeAttributes(HTMLAttributes)]
+    return ['pdf-section', mergeAttributes(HTMLAttributes)]
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ImageSection)
+    return ReactNodeViewRenderer(PdfSection)
   },
 
   addCommands() {
     return {
-      setImageSection:
+      setPdfSection:
         () =>
         ({ commands }) => {
           return commands.replace(this.name)

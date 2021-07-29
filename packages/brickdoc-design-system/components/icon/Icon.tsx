@@ -68,7 +68,6 @@ export interface IconProps {
     | 'hamburger-button'
     | 'help'
     | 'info'
-    | 'more'
     | 'pic'
     | 'notes'
     | 'plus'
@@ -142,6 +141,8 @@ export interface IconProps {
     | 'textarea'
     | 'image'
     | 'file-image'
+    | 'more'
+    | 'file-pdf'
   className?: string
   style?: CSSProperties
 }

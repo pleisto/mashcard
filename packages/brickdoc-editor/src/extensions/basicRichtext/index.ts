@@ -22,6 +22,7 @@ import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
 import { ImageSectionExtension, ImageSectionOptions } from '../imageSection'
+import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
 
 export interface BasicRichtextOptions {
   blockquote: Partial<BlockquoteOptions> | false
@@ -46,6 +47,7 @@ export interface BasicRichtextOptions {
   textStyle: Partial<TextStyleOptions> | false
   fontColor: Partial<FontColorOptions> | false
   imageSection: Partial<ImageSectionOptions> | false
+  pdfSection: Partial<PdfSectionOptions> | false
 }
 
 export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
@@ -76,6 +78,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.underline !== false) extensions.push(Underline.configure(this.options?.underline))
     if (this.options.text !== false) extensions.push(Text.configure(this.options?.text))
     if (this.options.imageSection !== false) extensions.push(ImageSectionExtension.configure(this.options?.imageSection))
+    if (this.options.pdfSection !== false) extensions.push(PdfSectionExtension.configure(this.options?.pdfSection))
     if (this.options.textStyle !== false) extensions.push(TextStyle.configure(this.options?.textStyle))
     if (this.options.fontColor !== false) extensions.push(FontColorExtension.configure(this.options?.fontColor))
     /* eslint-enable @typescript-eslint/no-unnecessary-boolean-literal-compare */

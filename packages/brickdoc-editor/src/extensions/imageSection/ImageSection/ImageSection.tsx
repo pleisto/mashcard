@@ -6,11 +6,27 @@ import cx from 'classnames'
 import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { Button, Popover, Icon } from '@brickdoc/design-system'
-import { Dashboard, UploadResultData } from '@brickdoc/uploader'
+import { Dashboard, UploadResultData, ImportSourceOption } from '@brickdoc/uploader'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 
 const MAX_WIDTH = 700
+const IMAGE_IMPORT_SOURCES: ImportSourceOption[] = [
+  {
+    type: 'link',
+    linkInputPlaceholder: 'Paste the image link...',
+    buttonText: 'Embed image',
+    buttonHint: 'Works with any image from the web'
+  },
+  {
+    type: 'upload',
+    buttonText: 'Choose an image',
+    acceptType: 'image/*'
+  },
+  {
+    type: 'unsplash'
+  }
+]
 
 function useDoubleClick(fn: VoidFunction): VoidFunction {
   const clickCount = React.useRef(0)
@@ -37,17 +53,24 @@ function useDoubleClick(fn: VoidFunction): VoidFunction {
 
 // TODO: handle image load on error
 export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
-  const [url, setUrl] = React.useState('')
+  const [file, setFile] = React.useState<string>()
+
+  const onFileLoaded = (inputFile: File): void => {
+    const fr = new FileReader()
+    fr.readAsDataURL(inputFile)
+    fr.onload = function onload() {
+      setFile(this.result as string)
+    }
+  }
   const [loaded, setLoaded] = React.useState(false)
   const [showPreview, setShowPreview] = React.useState(false)
   const previewImage = (): void => {
-    if (!url && !loaded) return
+    if (!(file && !node.attrs.url) && !loaded) return
     setShowPreview(true)
   }
   const onDoubleClick = useDoubleClick(previewImage)
   const onUploaded = (data: UploadResultData): void => {
     updateAttributes({ url: data.url })
-    setUrl(data.url)
   }
   const onImageLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
     const img = event.target as HTMLImageElement
@@ -58,7 +81,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
     setLoaded(true)
   }
 
-  if (url) {
+  if (node.attrs.url || file) {
     return (
       <NodeViewWrapper>
         <div role="dialog" className="brickdoc-block-image-section-container" onClick={onDoubleClick}>
@@ -96,7 +119,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
               right: true
             }}
             size={{
-              width: node.attrs.width || '100%',
+              width: node.attrs.width,
               height: 'auto'
             }}
             onResizeStop={(e, direction, ref, d) => {
@@ -108,13 +131,13 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
               <Icon className="image-section-menu-icon" name="more" />
             </div>
             <ImagePreview
-              wrapStyle={{ pointerEvents: 'none' }}
+              wrapStyle={{ pointerEvents: 'none', width: '100%' }}
               overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
               isZoomed={showPreview}
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
               }}>
-              <img className={cx('brickdoc-block-image', { loading: !loaded })} src={url} alt="" onLoad={onImageLoad} />
+              <img className={cx('brickdoc-block-image', { loading: !loaded })} src={node.attrs.url || file} alt="" onLoad={onImageLoad} />
             </ImagePreview>
           </Resizable>
         </div>
@@ -128,7 +151,15 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
         overlayClassName="brickdoc-block-image-section-popover"
         trigger="click"
         placement="top"
-        content={<Dashboard prepareFileUpload={extension.options.prepareFileUpload} onUploaded={onUploaded} />}>
+        content={
+          <Dashboard
+            fileType="image"
+            prepareFileUpload={extension.options.prepareFileUpload}
+            onUploaded={onUploaded}
+            onFileLoaded={onFileLoaded}
+            importSources={IMAGE_IMPORT_SOURCES}
+          />
+        }>
         <Button type="text" className="brickdoc-block-image-section">
           <Icon className="image-section-icon" name="image" />
           <div className="image-section-hint">Add an image</div>

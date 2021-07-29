@@ -55,19 +55,16 @@
 }
 
 .brickdoc-block-image-section-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   position: relative;
 
   .image-section-control-panel {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
+    display: inline-block;
 
     &:hover {
       .image-section-control-left-drag,
