@@ -8,5 +8,6 @@ module Docs
     argument :sort, GraphQL::Types::BigInt, description_same(Objects::BlockBaseObject, :sort), required: false
     argument :data, Inputs::BlockDataInput, "data", required: false
     argument :meta, GraphQL::Types::JSON, "meta", required: false
+    argument :attachments, [String], 'attachments', required: false
   end
 end

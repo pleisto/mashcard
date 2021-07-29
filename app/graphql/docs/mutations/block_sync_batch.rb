@@ -39,6 +39,7 @@ module Docs
         block.meta = args.meta
         block.parent_id ||= args.parent_id
         block.type ||= args.type
+        block.attachments = args.attachments
 
         block.pod_id = pod_id
         block.deleted_at = nil
