@@ -310,7 +310,6 @@ type CreateDirectUploadPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
-  urlPrefix: String!
 }
 
 """
@@ -375,14 +374,14 @@ type DirectUpload {
   headers: JSON!
 
   """
-  Created blob record signed ID
-  """
-  signedBlobId: ID!
-
-  """
   Upload URL
   """
-  url: String!
+  uploadUrl: String!
+
+  """
+  View url
+  """
+  viewUrl: ID!
 }
 
 """

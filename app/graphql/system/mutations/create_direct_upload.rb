@@ -5,7 +5,6 @@ module System
     argument :type, Enums::UploadType, required: true
     argument :block_id, BrickGraphQL::Scalars::UUID, 'block id', required: false
     field :direct_upload, Objects::DirectUpload, null: false
-    field :url_prefix, String, null: false
 
     SERVICE_MAP = {
       "AVATAR" => :local_public,
@@ -34,13 +33,12 @@ module System
 
       {
         direct_upload: {
-          url: blob.service_url_for_direct_upload,
+          upload_url: blob.service_url_for_direct_upload,
           # NOTE: we pass headers as JSON since they have no schema
           headers: blob.service_headers_for_direct_upload.to_json,
           blob_key: blob.key,
-          signed_blob_id: blob.signed_id
-        },
-        url_prefix: Brickdoc::Storage.url_prefix(service)
+          view_url: Brickdoc::Storage.blob_url(blob)
+        }
       }
     end
   end

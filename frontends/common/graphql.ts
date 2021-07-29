@@ -21,12 +21,11 @@ export const CreateDirectUpload = gql`
   mutation createDirectUpload($input: CreateDirectUploadInput!) {
     createDirectUpload(input: $input) {
       directUpload {
-        url
+        uploadUrl
         headers
         blobKey
-        signedBlobId
+        viewUrl
       }
-      urlPrefix
     }
   }
 `

@@ -11,14 +11,6 @@ module Brickdoc
       ActiveStorage::Blob.services.fetch(service).public?
     end
 
-    def url_prefix(service)
-      if public?(service)
-        url_helper.rails_service_blob_proxy_url(filename: "?", signed_id: "?")
-      else
-        url_helper.rails_service_blob_url(filename: "?", signed_id: "?")
-      end
-    end
-
     def blob_url(blob)
       return nil if blob.nil?
 
