@@ -11,7 +11,7 @@ import {
   ParagraphBlockMeta
 } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
-import { MutationTuple } from '@apollo/client'
+import { ApolloCache, MutationTuple } from '@apollo/client'
 
 const nodeChildren = (node: Node): Node[] => {
   // TODO Fragment type missing content field
@@ -97,10 +97,10 @@ export const blocksToJSONContents = (blocks: Block[], id = null): JSONContent[] 
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function syncProvider({
+export function syncProvider<TApolloContext, TApolloCache extends ApolloCache<any>>({
   blockSyncBatch
 }: {
-  blockSyncBatch: MutationTuple<BlockSyncBatchMutation, BlockSyncBatchMutationVariables>[0]
+  blockSyncBatch: MutationTuple<BlockSyncBatchMutation, BlockSyncBatchMutationVariables, TApolloContext, TApolloCache>[0]
 }) {
   return {
     onCommit: (doc: Node) => {
