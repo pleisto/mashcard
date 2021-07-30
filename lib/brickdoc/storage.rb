@@ -11,7 +11,7 @@ module Brickdoc
       ActiveStorage::Blob.services.fetch(service).public?
     end
 
-    def blob_url(blob)
+    def real_url(blob)
       return nil if blob.nil?
 
       filename = blob.filename_in_database.presence || "unknown"

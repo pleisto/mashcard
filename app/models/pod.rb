@@ -51,7 +51,7 @@ class Pod < ApplicationRecord
   end
 
   def avatar_url
-    Brickdoc::Storage.blob_url avatar.blob
+    avatar.blob&.real_url
   end
 
   def self.webid_available?(webid)

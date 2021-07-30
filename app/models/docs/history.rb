@@ -60,7 +60,7 @@ class Docs::History < ApplicationRecord
     ).to_h
     preload_blobs = ActiveStorage::Blob.where(id: preload_attachments.keys).each_with_object({}) do |blob, h|
       h[preload_attachments.fetch(blob.id)] =
-        h[preload_attachments.fetch(blob.id)].to_a + [{ blob_key: blob.key, url: Brickdoc::Storage.blob_url(blob) }]
+        h[preload_attachments.fetch(blob.id)].to_a + [{ blob_key: blob.key, url: blob.real_url }]
     end
 
     histories.map { |h| h.cast_block.merge('blobs' => preload_blobs[h.block_id].to_a) }

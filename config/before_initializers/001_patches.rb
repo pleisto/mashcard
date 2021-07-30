@@ -7,4 +7,10 @@ Rails.application.reloader.to_prepare do
 
   ActiveRecord::Tasks::PostgreSQLDatabaseTasks.prepend Patches::ActiveRecord::PostgresqlDropDatabase
   ActionDispatch::Routing::Mapper.prepend Patches::ActionDispatch::DrawRoute
+
+  ActiveStorage::Blob.class_eval do
+    def real_url
+      Brickdoc::Storage.real_url(self)
+    end
+  end
 end

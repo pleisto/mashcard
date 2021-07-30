@@ -8,7 +8,7 @@ describe System::Mutations::CreateDirectUpload, type: :mutation do
       mutation createDirectUpload($input: CreateDirectUploadInput!) {
         createDirectUpload(input: $input) {
           directUpload {
-            url
+            viewUrl
           }
         }
       }
@@ -28,7 +28,7 @@ describe System::Mutations::CreateDirectUpload, type: :mutation do
       internal_graphql_execute(mutation, input)
 
       expect(response.errors).to eq({})
-      expect(response.data[:createDirectUpload][:directUpload][:url]).not_to be_blank
+      expect(response.data[:createDirectUpload][:directUpload][:viewUrl]).not_to be_blank
       self.current_user = nil
       self.current_pod = nil
     end
