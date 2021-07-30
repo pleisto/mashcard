@@ -12,6 +12,14 @@ export const queryPods = gql`
   }
 `
 
+export const queryUnsplashImage = gql`
+  query QueryUnsplashImage($query: String!) {
+    unsplashImage(query: $query) {
+      id
+    }
+  }
+`
+
 export const CreateOrUpdatePod = gql`
   mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
     createOrUpdatePod(input: $input) {

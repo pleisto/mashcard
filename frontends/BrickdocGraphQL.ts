@@ -387,6 +387,8 @@ export type RootQuery = {
   pageBlocks?: Maybe<Array<Block>>
   /** return all pods for user. */
   pods: Array<Pod>
+  /** return images from unsplash by search */
+  unsplashImage?: Maybe<Array<Unsplash_Image>>
   /**
    * Check webid available.
    * Required `context[:entrypoints]` is `[:internal]`.
@@ -415,6 +417,12 @@ export type RootQueryChildrenBlocksArgs = {
 
 export type RootQueryPageBlocksArgs = {
   webid: Scalars['String']
+}
+
+export type RootQueryUnsplashImageArgs = {
+  query?: Maybe<Scalars['String']>
+  page?: Maybe<Scalars['Int']>
+  perPage?: Maybe<Scalars['Int']>
 }
 
 export type RootQueryWebidAvailableArgs = {
@@ -680,6 +688,19 @@ export type Select_Option = {
   value: Scalars['String']
 }
 
+/** Unspash image. */
+export type Unsplash_Image = {
+  __typename?: 'unsplash_image'
+  /** url for full size image */
+  fullUrl: Scalars['String']
+  /** Image height */
+  height?: Maybe<Scalars['Int']>
+  /** Unsplash image id */
+  id: Scalars['String']
+  /** Image width */
+  width?: Maybe<Scalars['Int']>
+}
+
 export type UserSignOutMutationVariables = Exact<{
   input: UserSignOutInput
 }>
@@ -781,6 +802,14 @@ export type GetPodsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPodsQuery = { __typename?: 'RootQuery' } & {
   pods: Array<{ __typename?: 'pod' } & Pick<Pod, 'id' | 'webid' | 'name' | 'avatarUrl' | 'bio'>>
+}
+
+export type QueryUnsplashImageQueryVariables = Exact<{
+  query: Scalars['String']
+}>
+
+export type QueryUnsplashImageQuery = { __typename?: 'RootQuery' } & {
+  unsplashImage?: Maybe<Array<{ __typename?: 'unsplash_image' } & Pick<Unsplash_Image, 'id'>>>
 }
 
 export type CreateOrUpdatePodMutationVariables = Exact<{
@@ -1391,6 +1420,45 @@ export function useGetPodsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetPodsQueryHookResult = ReturnType<typeof useGetPodsQuery>
 export type GetPodsLazyQueryHookResult = ReturnType<typeof useGetPodsLazyQuery>
 export type GetPodsQueryResult = Apollo.QueryResult<GetPodsQuery, GetPodsQueryVariables>
+export const QueryUnsplashImageDocument = gql`
+  query QueryUnsplashImage($query: String!) {
+    unsplashImage(query: $query) {
+      id
+    }
+  }
+`
+
+/**
+ * __useQueryUnsplashImageQuery__
+ *
+ * To run a query within a React component, call `useQueryUnsplashImageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryUnsplashImageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryUnsplashImageQuery({
+ *   variables: {
+ *      query: // value for 'query'
+ *   },
+ * });
+ */
+export function useQueryUnsplashImageQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(QueryUnsplashImageDocument, options)
+}
+export function useQueryUnsplashImageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(QueryUnsplashImageDocument, options)
+}
+export type QueryUnsplashImageQueryHookResult = ReturnType<typeof useQueryUnsplashImageQuery>
+export type QueryUnsplashImageLazyQueryHookResult = ReturnType<typeof useQueryUnsplashImageLazyQuery>
+export type QueryUnsplashImageQueryResult = Apollo.QueryResult<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
 export const CreateOrUpdatePodDocument = gql`
   mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
     createOrUpdatePod(input: $input) {

@@ -659,6 +659,11 @@ type RootQuery {
   pods: [pod!]!
 
   """
+  return images from unsplash by search
+  """
+  unsplashImage(page: Int, perPage: Int, query: String): [unsplash_image!]
+
+  """
   Check webid available.
   Required `context[:entrypoints]` is `[:internal]`.
   Required `context[:entrypoints]` is `[:internal]`.
@@ -1144,4 +1149,29 @@ type select_option {
   option value
   """
   value: String!
+}
+
+"""
+Unspash image.
+"""
+type unsplash_image {
+  """
+  url for full size image
+  """
+  fullUrl: String!
+
+  """
+  Image height
+  """
+  height: Int
+
+  """
+  Unsplash image id
+  """
+  id: String!
+
+  """
+  Image width
+  """
+  width: Int
 }

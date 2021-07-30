@@ -65,6 +65,8 @@ gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.1' # Don't rely on Linux/macOS timezo
 
 gem 'brickdoc_settings', path: 'packages/brickdoc_settings'
 
+gem 'unsplash'
+
 group :development, :test do
   gem 'cypress-on-rails', '~> 1.9.1'
   gem 'brakeman'

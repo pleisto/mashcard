@@ -59,4 +59,7 @@ class BrickdocConfig < ApplicationRecord
   ]
   # rubocop:enable Layout/LineLength
   field :accounts_preferred_auth_method, default: 'email_password'
+
+  field :unsplash_api_access_key, default: ENV['UNSPLASH_API_ACCESS_KEY']
+  field :unsplash_api_secret, default: ENV['UNSPLASH_API_SECRET']
 end
