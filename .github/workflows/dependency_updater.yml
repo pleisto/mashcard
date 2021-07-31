@@ -30,6 +30,8 @@ jobs:
         run: bundle update
       - name: Update yarn packages
         run: yarn up '@(*|@!(brickdoc|rails|pmmmwh)/*)' --mode=update-lockfile && yarn up '@(*|@!(brickdoc|rails|pmmmwh)/*)' --recursive --mode=update-lockfile
+        env:
+          CYPRESS_INSTALL_BINARY: '0'
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         env:

@@ -89,6 +89,8 @@ jobs:
       - name: Run yarn install
         if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn install --immutable
+        env:
+          CYPRESS_INSTALL_BINARY: '0'
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
         run: yarn test:jest
@@ -195,6 +197,11 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+      - name: Restore Cypress binary cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Run yarn install
         run: yarn install --immutable
       - name: Setup Ruby
