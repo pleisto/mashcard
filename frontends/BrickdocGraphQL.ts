@@ -697,6 +697,10 @@ export type Unsplash_Image = {
   height?: Maybe<Scalars['Int']>
   /** Unsplash image id */
   id: Scalars['String']
+  /** url for small size image */
+  smallUrl: Scalars['String']
+  /** username */
+  username?: Maybe<Scalars['String']>
   /** Image width */
   width?: Maybe<Scalars['Int']>
 }
@@ -805,11 +809,13 @@ export type GetPodsQuery = { __typename?: 'RootQuery' } & {
 }
 
 export type QueryUnsplashImageQueryVariables = Exact<{
-  query: Scalars['String']
+  query?: Maybe<Scalars['String']>
+  page?: Maybe<Scalars['Int']>
+  perPage?: Maybe<Scalars['Int']>
 }>
 
 export type QueryUnsplashImageQuery = { __typename?: 'RootQuery' } & {
-  unsplashImage?: Maybe<Array<{ __typename?: 'unsplash_image' } & Pick<Unsplash_Image, 'id'>>>
+  unsplashImage?: Maybe<Array<{ __typename?: 'unsplash_image' } & Pick<Unsplash_Image, 'id' | 'width' | 'height' | 'fullUrl' | 'username'>>>
 }
 
 export type CreateOrUpdatePodMutationVariables = Exact<{
@@ -1421,9 +1427,14 @@ export type GetPodsQueryHookResult = ReturnType<typeof useGetPodsQuery>
 export type GetPodsLazyQueryHookResult = ReturnType<typeof useGetPodsLazyQuery>
 export type GetPodsQueryResult = Apollo.QueryResult<GetPodsQuery, GetPodsQueryVariables>
 export const QueryUnsplashImageDocument = gql`
-  query QueryUnsplashImage($query: String!) {
-    unsplashImage(query: $query) {
+  query QueryUnsplashImage($query: String, $page: Int, $perPage: Int) {
+    unsplashImage(query: $query, page: $page, perPage: $perPage) {
       id
+      width
+      height
+      fullUrl
+      smallUrl
+      username
     }
   }
 `
@@ -1441,11 +1452,13 @@ export const QueryUnsplashImageDocument = gql`
  * const { data, loading, error } = useQueryUnsplashImageQuery({
  *   variables: {
  *      query: // value for 'query'
+ *      page: // value for 'page'
+ *      perPage: // value for 'perPage'
  *   },
  * });
  */
 export function useQueryUnsplashImageQuery(
-  baseOptions: Apollo.QueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(QueryUnsplashImageDocument, options)

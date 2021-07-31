@@ -13,9 +13,13 @@ export const queryPods = gql`
 `
 
 export const queryUnsplashImage = gql`
-  query QueryUnsplashImage($query: String!) {
-    unsplashImage(query: $query) {
+  query QueryUnsplashImage($query: String, $page: Int, $perPage: Int) {
+    unsplashImage(query: $query, page: $page, perPage: $perPage) {
       id
+      width
+      height
+      fullUrl
+      username
     }
   }
 `

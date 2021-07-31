@@ -24,12 +24,22 @@ export interface ImportSourceOption {
   linkInputPlaceholder?: string
 }
 
+export interface UnsplashImage {
+  id: string
+  width: number
+  height: number
+  fullUrl: string
+  smallUrl: string
+  username: string
+}
+
 export interface DashboardPluginOptions {
   target: HTMLElement
   onProgress?: (progress: UploadProgress) => void
   onUploaded?: (data: UploadResultData) => void
   onFileLoaded?: (file: File) => void
   prepareFileUpload: (type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any; blobKey: string }>
+  fetchUnsplashImages?: (query: string, page: number, perPage: number) => Promise<{ success: boolean; data: UnsplashImage[] }>
   fileType: 'image' | 'pdf'
   importSources: ImportSourceOption[]
 }
@@ -42,6 +52,8 @@ const IMPORT_SOURCE_LABEL = {
   unsplash: 'Unsplash'
 }
 
+const UNSPLASH_PER_PAGE = 20
+
 export class DashboardPlugin extends Plugin {
   opts: DashboardPluginOptions
 
@@ -51,11 +63,20 @@ export class DashboardPlugin extends Plugin {
 
   blobKey: string
 
+  unsplashPage: number
+  unsplashFetching: boolean
+  unsplashQuery: string
+  unsplashSearchThrottleTimer: any
+  observeY: number
+
   constructor(uppy: Uppy, opts: DashboardPluginOptions) {
     super(uppy, opts)
     this.id = 'brk-dashboard'
     this.type = 'orchestrator'
     this.opts = opts
+    this.unsplashPage = 1
+    this.unsplashFetching = false
+    this.unsplashQuery = ''
   }
 
   install(): void {
@@ -74,11 +95,86 @@ export class DashboardPlugin extends Plugin {
     this.unmount()
   }
 
-  handleNavbarItemClick = (activeSource: ImportSourceOption) => () => this.setPluginState({ activeSource })
+  handleNavbarItemClick = (activeSource: ImportSourceOption) => () => {
+    this.setPluginState({ activeSource })
+
+    if ((this.getPluginState() as { unsplashImages: UnsplashImage[] }).unsplashImages?.length > 0) return
+    void this.handleFetchUnsplashImage()
+  }
+
+  handleScrollObserve = (entities: any, observer: any) => {
+    const y = entities[0].boundingClientRect.y
+    if (this.observeY > y) {
+      void this.handleFetchUnsplashImage()
+    }
+
+    this.observeY = y
+  }
+
+  createScrollObserver = (ele: HTMLElement): void => {
+    if (!ele) {
+      return
+    }
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+
+    const observer = new IntersectionObserver(this.handleScrollObserve, options)
+
+    observer.observe(ele)
+  }
+
+  handleFetchUnsplashImage = async (query?: string): Promise<void> => {
+    if (this.unsplashFetching) {
+      return
+    }
+
+    if (query && query !== this.unsplashQuery) {
+      this.unsplashPage = 1
+      this.unsplashQuery = query
+    }
+
+    this.unsplashFetching = true
+
+    try {
+      const response = await this.opts?.fetchUnsplashImages(this.unsplashQuery, this.unsplashPage, UNSPLASH_PER_PAGE)
+
+      if (response.success) {
+        const prevData =
+          (this.unsplashPage === 1 ? [] : (this.getPluginState() as { unsplashImages: UnsplashImage[] }).unsplashImages) ?? []
+        this.setPluginState({
+          unsplashImages: [...prevData, ...response.data]
+        })
+        this.unsplashPage += 1
+      }
+    } catch (error) {
+      console.error(error)
+    }
+
+    this.unsplashFetching = false
+  }
 
   // TODO: fix type
   handleLinkInput = (event: any): void => {
     this.link = event.target.value
+  }
+
+  // TODO: fix type
+  handleUnsplashSearchInput = (event: any): void => {
+    const query = event.target.value
+    clearTimeout(this.unsplashSearchThrottleTimer)
+    this.unsplashSearchThrottleTimer = setTimeout(() => {
+      void this.handleFetchUnsplashImage(query)
+    }, 300)
+  }
+
+  handleUnsplashImageSelect = (image: UnsplashImage) => (): void => {
+    this.opts?.onUploaded({
+      url: image.fullUrl
+    })
   }
 
   handleLinkSubmit = (): void => {
@@ -175,6 +271,29 @@ export class DashboardPlugin extends Plugin {
     `
   }
 
+  renderUnsplashPanel(activeSource) {
+    const { unsplashImages } = this.getPluginState() as { unsplashImages: UnsplashImage[] }
+    return html`
+      <div class="uploader-dashboard-unsplash-panel">
+        <input class="dashboard-unsplash-search-input" placeholder="Search for an image..." onChange=${this.handleUnsplashSearchInput} />
+        <div class="dashboard-unsplash-image-list">
+          ${(unsplashImages ?? []).map(
+            image => html`<div class="unsplash-image-item" onClick=${this.handleUnsplashImageSelect(image)}>
+              <div style="background-image: url(${image.smallUrl})" class="unsplash-image" />
+              <div class="unsplash-image-username">${image.username}</div>
+            </div>`
+          )}
+          <div
+            ref=${container => {
+              this.createScrollObserver(container)
+            }}
+            class="unsplash-load-more-placeholder"
+          />
+        </div>
+      </div>
+    `
+  }
+
   // TODO: change render engine from preact to React
   render() {
     let { activeSource } = this.getPluginState() as { activeSource: ImportSourceOption }
@@ -199,6 +318,7 @@ export class DashboardPlugin extends Plugin {
         </div>
         ${activeSource?.type === 'link' && this.renderLinkPanel(activeSource)}
         ${activeSource?.type === 'upload' && this.renderUploadPanel(activeSource)}
+        ${activeSource?.type === 'unsplash' && this.renderUnsplashPanel(activeSource)}
       </div>
     `
   }

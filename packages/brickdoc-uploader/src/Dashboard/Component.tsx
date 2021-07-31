@@ -1,15 +1,16 @@
 import * as React from 'react'
 import { Uppy } from '@uppy/core'
 import XhrUploadPlugin from '@uppy/xhr-upload'
-import { DashboardPlugin, DashboardPluginOptions, UploadResultData, ImportSourceOption, UploadProgress } from './plugin'
+import { DashboardPlugin, DashboardPluginOptions } from './plugin'
 
-export type { UploadResultData, ImportSourceOption, DashboardPluginOptions, UploadProgress }
+export type { UploadResultData, ImportSourceOption, DashboardPluginOptions, UploadProgress, UnsplashImage } from './plugin'
 
 export interface DashboardProps {
   onProgress?: DashboardPluginOptions['onProgress']
   onUploaded?: DashboardPluginOptions['onUploaded']
   onFileLoaded?: DashboardPluginOptions['onFileLoaded']
   prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
+  fetchUnsplashImages?: DashboardPluginOptions['fetchUnsplashImages']
   fileType: DashboardPluginOptions['fileType']
   importSources: DashboardPluginOptions['importSources']
 }
@@ -17,6 +18,7 @@ export interface DashboardProps {
 export const Dashboard: React.FC<DashboardProps> = ({
   onUploaded,
   prepareFileUpload,
+  fetchUnsplashImages,
   importSources,
   fileType,
   onFileLoaded,
@@ -52,6 +54,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           onUploaded,
           onFileLoaded,
           prepareFileUpload,
+          fetchUnsplashImages,
           importSources,
           fileType
         })

@@ -155,6 +155,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
           <Dashboard
             fileType="image"
             prepareFileUpload={extension.options.prepareFileUpload}
+            fetchUnsplashImages={extension.options.fetchUnsplashImages}
             onUploaded={onUploaded}
             onFileLoaded={onFileLoaded}
             importSources={IMAGE_IMPORT_SOURCES}

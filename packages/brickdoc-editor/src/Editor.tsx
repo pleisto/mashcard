@@ -30,13 +30,14 @@ export const EditorContent: React.FC<EditorContentProps> = ({ editor }: EditorCo
 export interface EditorOptions extends Partial<TiptapEditorOptions> {
   onCommit: SyncExtensionOptions['onCommit']
   prepareFileUpload?: ImageSectionOptions['prepareFileUpload']
+  fetchUnsplashImages?: ImageSectionOptions['fetchUnsplashImages']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
-  const { onCommit, prepareFileUpload, ...restOptions } = options
+  const { onCommit, prepareFileUpload, fetchUnsplashImages, ...restOptions } = options
   return useTiptapEditor({
     extensions: [
-      BasicRichtextExtension.configure({ imageSection: { prepareFileUpload }, pdfSection: { prepareFileUpload } }),
+      BasicRichtextExtension.configure({ imageSection: { prepareFileUpload, fetchUnsplashImages }, pdfSection: { prepareFileUpload } }),
       BlockCommandsExtension,
       SlashCommandsExtension,
       PlaceholderExtension,

@@ -21,7 +21,9 @@ module System
           id: photo.id,
           width: photo.width,
           height: photo.height,
-          full_url: photo.urls.full
+          full_url: photo.urls.full,
+          small_url: photo.urls.small,
+          username: photo.user.username
         }
       end
     end

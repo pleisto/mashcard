@@ -18,6 +18,7 @@ const DEFAULT_WIDTH = 700
 
 export interface ImageSectionOptions {
   prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
+  fetchUnsplashImages: DashboardPluginOptions['fetchUnsplashImages']
 }
 
 export const ImageSectionExtension = Node.create<ImageSectionOptions>({
@@ -26,6 +27,9 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
   defaultOptions: {
     prepareFileUpload: () => {
       throw new Error('You need configure prepareFileUpload if you want to enable ImageSection')
+    },
+    fetchUnsplashImages: () => {
+      throw new Error('You need configure fetchUnsplashImages if you want to enable ImageSection')
     }
   },
 

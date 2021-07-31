@@ -6,6 +6,7 @@ import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block } from '@/B
 import { syncProvider, blocksToJSONContents } from './SyncProvider'
 import { useDocumentSubscription } from './useDocumentSubscription'
 import { usePrepareFileUpload } from './usePrepareFileUpload'
+import { useFetchUnsplashImages } from './useFetchUnsplashImages'
 import styles from './DocumentPage.module.less'
 
 export const DocumentPage: React.FC = () => {
@@ -18,9 +19,11 @@ export const DocumentPage: React.FC = () => {
   })
 
   const prepareFileUpload = usePrepareFileUpload()
+  const fetchUnsplashImages = useFetchUnsplashImages()
   const editor = useEditor({
     onCommit,
-    prepareFileUpload
+    prepareFileUpload,
+    fetchUnsplashImages
   })
 
   useEffect(() => {
