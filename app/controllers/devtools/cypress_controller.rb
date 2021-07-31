@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Devtools::CypressController < Devtools::ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :initialize_user
+  before_action :cypress_env, :initialize_user
 
   def session_mock
     user = params[:email].present? ? Accounts::User.find_by!(email: params.require(:email)) :
@@ -11,6 +11,10 @@ class Devtools::CypressController < Devtools::ApplicationController
   end
 
   private
+
+  def cypress_env
+    render(status: :forbidden, body: nil) unless Rails.env.development? || Rails.env.test?
+  end
 
   def initialize_user
     if params[:email].present? && Accounts::User.find_by_email(params[:email]).blank?

@@ -76,8 +76,6 @@ ActiveRecord::Schema.define(version: 2021_07_22_070124) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.bigint "pod_id", null: false
-    t.bigint "user_id"
-    t.string "operation_type", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -175,6 +173,14 @@ ActiveRecord::Schema.define(version: 2021_07_22_070124) do
     t.index "lower((webid)::text)", name: "index_pods_on_lower_webid_text", unique: true
     t.index ["deleted_at"], name: "index_pods_on_deleted_at"
     t.index ["owner_id"], name: "index_pods_on_owner_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

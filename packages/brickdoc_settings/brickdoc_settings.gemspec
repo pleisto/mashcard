@@ -14,9 +14,18 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    %x(git ls-files -z).split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features)/}) }
-  end
+  spec.files = [
+    "Gemfile",
+    "Gemfile.lock",
+    "Rakefile",
+    "brickdoc_settings.gemspec",
+    "lib/brickdoc_settings.rb",
+    "lib/brickdoc_settings/accessor.rb",
+    "lib/brickdoc_settings/accessor_base.rb",
+    "lib/brickdoc_settings/base.rb",
+    "lib/brickdoc_settings/errors.rb",
+    "lib/brickdoc_settings/version.rb",
+  ]
 
   spec.require_paths = ["lib"]
 

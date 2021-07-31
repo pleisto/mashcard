@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "brickdoc.fullname" . }}
+  labels:
+    {{- include "brickdoc.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "brickdoc.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "brickdoc.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}-postgres
+          image: postgres:12.4-alpine
+          env:
+            - name: POSTGRES_DB
+              value: brickdoc_cicd
+            - name: POSTGRES_PASSWORD
+              value: NonPersistenceInstance
+          ports:
+            - name: postgres
+              containerPort: 5432
+              protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 256Mi
+        - name: {{ .Chart.Name }}-redis
+          image: redis:6-alpine
+          ports:
+            - name: redis
+              containerPort: 6379
+              protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi

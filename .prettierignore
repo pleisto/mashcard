@@ -10,3 +10,4 @@ esm-bundle/
 
 CHANGELOG.*
 *.env
+templates/helm-charts/**/*.yaml

@@ -1,0 +1,55 @@
+name: Destroyed Monolith Application Pull Request Preview Env
+
+on:
+  pull_request:
+    types: [closed]
+    paths-ignore:
+      - .github/**
+      - '!.github/workflow/monolith_ci.yml'
+      - .husky/**
+      - bin/**
+      - packages/brickdoc-design-system/**
+      - '!packages/brickdoc-design-system/components/**'
+      - packages/less-vars-loader/**
+      - packages/rubocop-brickdoc/**
+      - packages/eslint-plugin-brickdoc/**
+      - public/**
+      - templates/**
+      - '!templates/helm-charts/**'
+      - '**/*.template'
+      - '**/*.md'
+      - '**/Dockerfile'
+      - '**/.git*'
+      - '**/crowdin.yml'
+      - '**/LICENSE'
+      - '**/NOTICE'
+      - '**/VERSION'
+jobs:
+  cancel:
+    # Cancel any previous CI runs to save GH Actions minutes
+    name: 'Cancel Previous Runs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: styfle/cancel-workflow-action@0.9.0
+        with:
+          access_token: ${{ github.token }}
+  clean:
+    name: 'Helm Remove'
+    runs-on: ubuntu-latest
+    steps:
+      - name: App Engine Remove Deployment
+        uses: brickdoc/app-engine@v1.beta3
+        with:
+          name: brickdoc-preview-pr${{ github.event.pull_request.number }}
+          task: 'remove'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
+      - name: 'Remove temp docker image on GitHub packages'
+        uses: bots-house/ghcr-delete-image-action@v1.0.0
+        with:
+          owner: brickdoc
+          name: brickdoc
+          token: ${{ secrets.PAT }}
+          tag: pr.${{github.event.pull_request.number}}

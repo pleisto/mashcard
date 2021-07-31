@@ -5,6 +5,6 @@ class Devtools::ApplicationController < ::ApplicationController
   protected
 
   def double_check_env
-    render(status: :forbidden, body: nil) unless Rails.env.development? || Rails.env.test?
+    render(status: :forbidden, body: nil) if Rails.env.production?
   end
 end

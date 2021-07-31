@@ -11,7 +11,7 @@
   "scripts": {
     "postinstall": "husky install",
     "start": "./bin/webpack-dev-server",
-    "dist": "NODE_ENV=production ./bin/webpack",
+    "dist": "./bin/webpack",
     "analyze": "BUNDLE_ANALYZER=1 yarn dist",
     "lint": "yarn lint:eslint && yarn lint:rubocop && yarn lint:brakeman",
     "lint:fix": "yarn lint:eslint:fix && yarn lint:rubocop:fix",

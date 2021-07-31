@@ -16,7 +16,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = true
 
   # Disable serving static files from the `/public` folder by default since
@@ -40,10 +40,6 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-
-  # Include generic and useful information about system operation, but avoid logging too much
-  # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = :info
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -72,6 +68,7 @@ Rails.application.configure do
   config.active_support.disallowed_deprecation_warnings = []
 
   ## Logger
+  config.log_level = :debug
   config.logger = Brickdoc::Logger.new(STDOUT)
   config.colorize_logging = false
   config.lograge.enabled = true

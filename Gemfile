@@ -26,7 +26,6 @@ gem 'cloak-rb', '>= 0.1.0'
 gem 'lockbox', '>= 0.6.4'
 gem 'lograge', '~> 0.11.2'
 gem 'logstop', '>= 0.2.7'
-gem 'fast_woothee', '~> 1.6', '>= 1.6.4'
 gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '~> 1.11', '>= 1.11.5'
 
@@ -50,19 +49,11 @@ gem 'webpacker', '6.0.0.beta.7'
 ## IAM
 gem 'action_policy', '~> 0.5.7'
 gem 'action_policy-graphql', '~> 0.5.3'
-gem 'doorkeeper', '~> 5.5', '>= 5.5.2'
-gem 'doorkeeper-jwt', '~> 0.4.0'
-gem 'doorkeeper-openid_connect', '~> 1.8'
 gem 'devise', '~> 4.8'
-# gem 'devise-two-factor', '~> 4.0'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'omniauth-github', '~> 2.0'
 gem 'cityhash', '~> 0.9.0'
-
-## Docs
-gem 'rdeunicode', '~> 0.1.1'
-gem 'pg_ltree', '~> 1.1', '>= 1.1.8'
 
 ## Background Tasks
 gem 'sidekiq', '~> 6.2', '>= 6.2.1'

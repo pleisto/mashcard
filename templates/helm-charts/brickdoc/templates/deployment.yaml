@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "brickdoc.fullname" . }}
+  labels:
+    {{- include "brickdoc.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "brickdoc.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "brickdoc.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "brickdoc.serviceAccountName" . }}
+      initContainers:
+        - name: {{ .Chart.Name }}-db-migrate
+          command: ["bundle", "exec", "rake", "db:migrate"]
+          {{- include "brickdoc.deploymentCommon" . }}
+      containers:
+        - name: {{ .Chart.Name }}-web
+          {{- include "brickdoc.deploymentCommon" . }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            initialDelaySeconds: 180
+            tcpSocket:
+              port: http
+          readinessProbe:
+            tcpSocket:
+              port: http
+          resources:
+            {{- if .Values.previewEnv }}
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            {{- else }}
+            {{- toYaml .Values.resources | nindent 12 }}
+            {{- end }}
+        - name: {{ .Chart.Name }}-sidekiq
+          {{- include "brickdoc.deploymentCommon" . }}
+          command: ["bundle", "exec", "sidekiq", "-C", "/app/config/sidekiq.yml"]
+          resources:
+            {{- if .Values.previewEnv }}
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            {{- else }}
+            {{- toYaml .Values.resources | nindent 12 }}
+            {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

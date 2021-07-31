@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "brickdoc.fullname" . }}
+  labels: {{- include "brickdoc.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+      name: redis  
+  selector: {{- include "brickdoc.selectorLabels" . | nindent 4 }}

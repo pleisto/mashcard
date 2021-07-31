@@ -39,6 +39,7 @@ node_modules
 /public/esm-bundle
 /public/packs-test
 
+
 .env.local
 .env.development.local
 .env.test.local

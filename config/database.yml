@@ -17,6 +17,10 @@ test:
   <<: *default
   database: brickdoc_test
 
+cicd:
+  <<: *default
+  url: <%= ENV['BRICKDOC_DATABASE_URL'] %>
+
 production:
   <<: *default
   url: <%= ENV['BRICKDOC_DATABASE_URL'] %>

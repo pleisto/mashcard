@@ -1,0 +1,19 @@
+{{- $fullName := include "brickdoc.fullname" . -}}
+apiVersion: apisix.apache.org/v1
+kind: ApisixRoute
+metadata:
+  name: {{ $fullName }}
+  labels:
+    {{- include "brickdoc.labels" . | nindent 4 }}
+spec:
+  http:
+    - name: {{ $fullName }}
+      match:
+        paths:
+          - /*
+        hosts:
+          - {{ .Values.ingress.host }}
+      backends:
+        - serviceName: {{ $fullName }}
+          servicePort: 3000
+      websocket: true
