@@ -9,7 +9,7 @@ import { millisecondsToSeconds, add } from 'date-fns'
 
 import styles from './index.module.less'
 
-const PasswordChangeEmailNotice: React.FC<{ email?: string; pending?: boolean }> = ({ email, pending }) => {
+export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: boolean }> = ({ email, pending }) => {
   const duration = { minutes: 1 }
   const countdownParams = pending ? { targetDate: add(Date.now(), duration) } : {}
   const [countdown, setTargetDate] = useCountDown(countdownParams)
@@ -17,11 +17,11 @@ const PasswordChangeEmailNotice: React.FC<{ email?: string; pending?: boolean }>
   const { t } = useAccountsI18n()
   const [resendEmail, { loading }] = useUserForgetPasswordMailSendMutation()
 
-  const onClick = async () => {
+  const onClick = async (): Promise<void> => {
     const { data } = await resendEmail({ variables: { input: { email } } })
-    const result = data.userForgetPasswordMailSend
+    const result = data?.userForgetPasswordMailSend
     mutationResultHandler(result, () => {
-      message.success(t('devise:passwords.send_instructions'))
+      void message.success(t('devise:passwords.send_instructions'))
     })
     setTargetDate(add(Date.now(), duration))
   }
@@ -36,5 +36,3 @@ const PasswordChangeEmailNotice: React.FC<{ email?: string; pending?: boolean }>
     </div>
   )
 }
-
-export default PasswordChangeEmailNotice

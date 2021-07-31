@@ -10,7 +10,7 @@ import { useBoolean } from 'ahooks'
 import { useUserPasswordResetMutation, UserPasswordResetInput, useUserSignOutMutation, UserSignOutInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/utils'
 
-const EditPasswordPage: React.FC = () => {
+export const EditPasswordPage: React.FC = () => {
   const { t } = useAccountsI18n()
   const pageTitle = t('sessions.reset_password')
   const passwordConfirmValidator = useConfirmationValidator('password')
@@ -19,12 +19,12 @@ const EditPasswordPage: React.FC = () => {
   const [emailPasswordSignIn, { loading }] = useUserPasswordResetMutation()
   const [userSignOutMutation] = useUserSignOutMutation()
   const signOutInput: UserSignOutInput = {}
-  const onFinish = async (values: UserPasswordResetInput) => {
+  const onFinish = async (values: UserPasswordResetInput): Promise<void> => {
     const input = omit(values, ['confirm_password']) as UserPasswordResetInput
     const { data } = await emailPasswordSignIn({ variables: { input } })
-    const result = data.userPasswordReset
+    const result = data?.userPasswordReset
     mutationResultHandler(result, () => {
-      message.success(t('devise:passwords.updated'))
+      void message.success(t('devise:passwords.updated'))
       redirectToSignInPage()
       void userSignOutMutation({ variables: { input: signOutInput } })
     })
@@ -66,5 +66,3 @@ const EditPasswordPage: React.FC = () => {
     </div>
   )
 }
-
-export default EditPasswordPage

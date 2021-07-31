@@ -1,16 +1,16 @@
-import { AuthMethod, useGetAccountsConfigFromWsQuery, } from "@/BrickdocGraphQL"
-import { Mail, ImageIcon } from "@brickdoc/design-system/components/icon"
-import { sortBy } from "lodash"
+import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/BrickdocGraphQL'
+import { Mail, ImageIcon } from '@brickdoc/design-system/components/icon'
+import { sortBy } from 'lodash'
 import { BrickdocContext } from '@/common/PWAProvider'
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
-export  interface authMethod {
-  name: string;
-  logo: JSX.Element;
-  action: ()=>void;
+export interface authMethod {
+  name: string
+  logo: JSX.Element
+  action: () => void
 }
 
-function redirectToOAuthProvider(provider: string, csrfToken: string) {
+function redirectToOAuthProvider(provider: string, csrfToken: string): void {
   const form = document.createElement('form')
   form.method = 'post'
   form.action = `/accounts/auth/${provider}`
@@ -21,8 +21,8 @@ function redirectToOAuthProvider(provider: string, csrfToken: string) {
   `
   form.style.display = 'none'
   document.body.appendChild(form)
-  const submit: HTMLButtonElement = form.querySelector('[type="submit"]')
-  submit.click()
+  const submit = form.querySelector<HTMLButtonElement>('[type="submit"]')
+  submit?.click()
 }
 
 /**
@@ -31,27 +31,35 @@ function redirectToOAuthProvider(provider: string, csrfToken: string) {
  *
  * @param emailPwdBtnOnClick - If emailPasssword is not preferred, the function triggered when it is clicked
  */
-export const useAccountsAuthMethods = (emailPwdBtnOnClick: () => void): { authMethods: authMethod[], loading: boolean } => {
-  const { csrfToken }  = useContext(BrickdocContext)
+export const useAccountsAuthMethods = (emailPwdBtnOnClick: () => void): { authMethods: authMethod[]; loading: boolean } => {
+  const { csrfToken } = useContext(BrickdocContext)
   const { loading, data } = useGetAccountsConfigFromWsQuery()
   if (loading) {
     return { loading, authMethods: [] }
   }
-  const config = data.metadata.config
+  const config = data?.metadata.config
 
-  let authMethods = config.accountsFederatedProviders.map(i => ({
-    name: i.name,
-    logo: <ImageIcon src={i.logo} alt={`${i.name} logo`} />,
-    action: () => redirectToOAuthProvider(i.name, csrfToken)
-  }))
-    // Add EmailPassword Auth if it enabled.
-    .concat(config.accountsEmailPasswordAuth ? [{
-      name: AuthMethod.EmailPassword,
-      logo: <Mail theme="filled" />,
-      action: emailPwdBtnOnClick
-    }] : [])
+  let authMethods =
+    config?.accountsFederatedProviders
+      .map(i => ({
+        name: i.name,
+        logo: <ImageIcon src={i.logo} alt={`${i.name} logo`} />,
+        action: () => redirectToOAuthProvider(i.name, csrfToken)
+      }))
+      // Add EmailPassword Auth if it enabled.
+      .concat(
+        config.accountsEmailPasswordAuth
+          ? [
+              {
+                name: AuthMethod.EmailPassword,
+                logo: <Mail theme="filled" />,
+                action: emailPwdBtnOnClick
+              }
+            ]
+          : []
+      ) ?? []
 
   // Move `accountsPreferredAuthMethod` to the top of the authMethods array.
-  authMethods = sortBy(authMethods, ({ name }) => name === config.accountsPreferredAuthMethod ? 0 : 1)
+  authMethods = sortBy(authMethods, ({ name }) => (name === config?.accountsPreferredAuthMethod ? 0 : 1))
   return { authMethods, loading }
 }

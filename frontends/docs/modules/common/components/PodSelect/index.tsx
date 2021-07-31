@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import { Dropdown, Avatar, Skeleton, Menu } from '@brickdoc/design-system'
+import { Dropdown, Avatar, Skeleton, Menu, MenuProps } from '@brickdoc/design-system'
 import { SortTwo } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
@@ -21,14 +21,14 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
     return <Skeleton avatar active paragraph={false} />
   }
 
-  const pod = data.pods.find(p => p.webid === webid)
+  const pod = data?.pods.find(p => p.webid === webid)
 
   if (!pod) {
     console.error('Webid does not match the current user')
     return <></>
   }
 
-  const onClick = async ({ key }) => {
+  const onClick: MenuProps['onClick'] = async ({ key }) => {
     const signOutInput: UserSignOutInput = {}
     switch (key) {
       case 'pod-create':
@@ -38,7 +38,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
         setModalUpdateVisible(true)
         break
       case 'logout':
-        void await userSignOut({ variables: { input: signOutInput } })
+        void (await userSignOut({ variables: { input: signOutInput } }))
         window.location.href = '/'
         break
       default:
@@ -55,7 +55,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
 
   const dropdown = (
     <Menu onClick={onClick} selectedKeys={[`pod-${pod.webid}`]}>
-      {data.pods.map(i => (
+      {data?.pods.map(i => (
         <Menu.Item key={`pod-${i.webid}`}>{i.name}</Menu.Item>
       ))}
       <Menu.Divider />

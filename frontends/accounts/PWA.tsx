@@ -1,25 +1,30 @@
-import React, { useContext, useEffect } from 'react'
-import PWAProvider, { BrickdocContext } from "@/common/PWAProvider"
+import React, { FC, useContext, useEffect } from 'react'
+import { PWAProvider, BrickdocContext } from '@/common/PWAProvider'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { notification } from '@brickdoc/design-system'
-import Routes from './config/routes'
-import PanelLayoutPage from "./modules/common/layouts/PanelLayoutPage"
+import { routes } from './config/routes'
+import { PanelLayoutPage } from './modules/common/layouts/PanelLayoutPage'
 
-const AccountsPWA = ()=>{
+const AccountsPWA: FC = () => {
   const { serverMessage } = useContext(BrickdocContext)
   useEffect(() => {
-    if (serverMessage){
+    if (serverMessage) {
       notification.error({
         message: 'Error',
         description: serverMessage
       })
     }
   })
-  return <Router basename="/accounts">
-    <PanelLayoutPage>
-      {Routes}
-    </PanelLayoutPage>
-  </Router>
+  return (
+    <Router basename="/accounts">
+      <PanelLayoutPage>{routes}</PanelLayoutPage>
+    </Router>
+  )
 }
 
-export default <PWAProvider><AccountsPWA /></PWAProvider>
+// eslint-disable-next-line import/no-default-export
+export default (
+  <PWAProvider>
+    <AccountsPWA />
+  </PWAProvider>
+)

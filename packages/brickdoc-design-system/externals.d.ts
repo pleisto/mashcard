@@ -3,12 +3,6 @@ declare module '*.less' {
   export = resource
 }
 
-declare module '*.svg' {
-  const content: string
-
-  export default content
-}
-
 declare namespace JSX {
   interface IntrinsicElements {
     'iconpark-icon': { name: string }

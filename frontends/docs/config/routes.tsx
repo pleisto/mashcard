@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
-import DocumentPage from '@/docs/modules/pages/DocumentPage'
+import { DocumentPage } from '@/docs/modules/pages/DocumentPage'
 
 export const routeConfig = (webid: string): any => {
   return renderRoutes([

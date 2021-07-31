@@ -10,7 +10,7 @@ import {
   BlockCreateSnapshotInput,
   Scalars
 } from '@/BrickdocGraphQL'
-import SnapshotList from '../SnapshotList'
+import { SnapshotList } from '../SnapshotList'
 
 type UUID = Scalars['UUID']
 
@@ -22,7 +22,7 @@ interface PageMenuProps {
   parentId?: UUID
 }
 
-const PageMenu: React.FC<PageMenuProps> = props => {
+export const PageMenu: React.FC<PageMenuProps> = props => {
   const [blockDelete] = useBlockDeleteMutation()
   const deletePage = (id: UUID): void => {
     const input: BlockDeleteInput = { id }
@@ -83,5 +83,3 @@ const PageMenu: React.FC<PageMenuProps> = props => {
     </Dropdown>
   )
 }
-
-export default PageMenu

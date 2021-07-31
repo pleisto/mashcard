@@ -1,4 +1,8 @@
 frontends/BrickdocGraphQL.ts
+public/esm-bundle/
+public/packs-test/
 dist/
 vendor/
 coverage/
+tmp/
+storybook-static/

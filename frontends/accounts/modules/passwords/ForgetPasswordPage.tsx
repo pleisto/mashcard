@@ -5,9 +5,9 @@ import { useBoolean } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/modules/common/hooks'
 import { mutationResultHandler } from '@/utils'
 import { Form, Input, Button, message } from '@brickdoc/design-system'
-import PasswordChangeEmailNotice from './components/PasswordChangeEmailNotice'
+import { PasswordChangeEmailNotice } from './components/PasswordChangeEmailNotice'
 
-const Page: React.FC = () => {
+export const ForgetPasswordPage: React.FC = () => {
   const [didShowPasswordChangeEmailTips, { setTrue: showPasswordChangeEmailTips }] = useBoolean(false)
 
   // Set Form initial values
@@ -16,13 +16,13 @@ const Page: React.FC = () => {
 
   // On Form Submit
   const [userForgetPasswordMailSend, { loading: userForgetPasswordMailSendLoading }] = useUserForgetPasswordMailSendMutation()
-  const onFinish = async (values: object) => {
+  const onFinish = async (values: object): Promise<void> => {
     const input = values as UserForgetPasswordMailSendInput
 
     const { data } = await userForgetPasswordMailSend({ variables: { input } })
-    const result = data.userForgetPasswordMailSend
+    const result = data?.userForgetPasswordMailSend
     mutationResultHandler(result, () => {
-      message.success(t('devise:passwords.send_instructions'))
+      void message.success(t('devise:passwords.send_instructions'))
       showPasswordChangeEmailTips()
     })
   }
@@ -53,5 +53,3 @@ const Page: React.FC = () => {
     </div>
   )
 }
-
-export default Page

@@ -13,11 +13,11 @@ import {
 } from './extensions'
 import './styles.less'
 
-export interface EditorProps {
-  editor: TiptapEditor
+export interface EditorContentProps {
+  editor: TiptapEditor | null
 }
 
-export const EditorContent: React.FC<EditorProps> = ({ editor }: EditorProps) => {
+export const EditorContent: React.FC<EditorContentProps> = ({ editor }: EditorContentProps) => {
   return (
     <>
       <BubbleMenu editor={editor} />

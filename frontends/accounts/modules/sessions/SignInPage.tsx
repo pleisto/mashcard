@@ -5,10 +5,10 @@ import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from './hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/modules/common/hooks'
 import { Skeleton, Button } from '@brickdoc/design-system'
-import MoreAuthMethods from './components/MoreAuthMethods'
-import EmailPasswordSignIn from './components/EmailPasswordSignIn'
+import { MoreAuthMethods } from './components/MoreAuthMethods'
+import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
 
-const Page: React.FC = () => {
+export const SignInPage: React.FC = () => {
   const { t } = useAccountsI18n()
   const [renderEmailPasswordForm, { setTrue: enableEmailPwdSignIn }] = useBoolean(false)
   const { loading, authMethods } = useAccountsAuthMethods(enableEmailPwdSignIn)
@@ -56,5 +56,3 @@ const Page: React.FC = () => {
     </div>
   )
 }
-
-export default Page

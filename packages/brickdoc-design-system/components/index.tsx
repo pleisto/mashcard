@@ -83,7 +83,14 @@ export type { EmptyProps } from './empty'
 export { default as Empty } from './empty'
 
 import './form/style'
-export type { FormInstance, FormProps, FormItemProps } from './form'
+export type {
+  FormInstance,
+  FormProps,
+  FormItemProps,
+  Rule as FormRule,
+  RuleObject as FormRuleObject,
+  RuleRender as FormRuleRender
+} from './form'
 export { default as Form } from './form'
 
 export { default as Grid } from './grid'

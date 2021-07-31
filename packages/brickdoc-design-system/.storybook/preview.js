@@ -1,17 +1,17 @@
 import { Suspense } from 'react'
-import i18next from 'i18next'
+import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import './docs.less'
 import { ConfigProvider, Skeleton } from '../components'
 
-i18next.use(initReactI18next).init({
+i18n.use(initReactI18next).init({
   lng: 'en-US',
   interpolation: {
     escapeValue: false,
-    prefix: "%{",
-    suffix: "}",
-  },
+    prefix: '%{',
+    suffix: '}'
+  }
 })
 
 export const parameters = {
@@ -27,7 +27,7 @@ export const parameters = {
 export const decorators = [
   Story => (
     <Suspense fallback={<Skeleton active />}>
-      <ConfigProvider i18n={i18next}>
+      <ConfigProvider i18n={i18}>
         <Story />
       </ConfigProvider>
     </Suspense>

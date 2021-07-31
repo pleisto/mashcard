@@ -7,7 +7,7 @@ import { syncProvider, blocksToJSONContents } from './SyncProvider'
 import { useDocumentSubscription } from './useDocumentSubscription'
 import styles from './DocumentPage.module.less'
 
-const Page: React.FC = () => {
+export const DocumentPage: React.FC = () => {
   const { webid, docid, ...restParams } = useParams<{ webid: string; docid: string; snapshotVersion: string }>()
   const [blockSyncBatch] = useBlockSyncBatchMutation()
   const { onCommit } = syncProvider({ blockSyncBatch })
@@ -55,4 +55,3 @@ const Page: React.FC = () => {
     </div>
   )
 }
-export default Page

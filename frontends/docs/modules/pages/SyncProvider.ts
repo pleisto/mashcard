@@ -18,12 +18,12 @@ const nodeChildren = (node: Node): Node[] => {
   return (node.content as any).content
 }
 
-const exceptUUID = (content): any => {
+const exceptUUID = (content: JSONContent[] | undefined): JSONContent[] | undefined => {
   if (!content) {
-    return null
+    return
   }
   return content?.map(i => {
-    const { uuid, sort, ...attrs } = i.attrs
+    const { uuid, sort, ...attrs } = i.attrs ?? {}
     const result = { ...i, attrs }
     if (i.content) {
       return { ...result, content: exceptUUID(i.content) }
@@ -46,7 +46,10 @@ const nodeToBlock = (node: Node, level: number): BlockSyncInput[] => {
     ;(parent.data as PageBlockData) = { title: 'Untitled' }
     ;(parent.meta as PageBlockMeta) = {}
   } else {
-    ;(parent.data as ParagraphBlockData) = { text: node.textContent, content: JSON.stringify(exceptUUID((node.toJSON() as any).content)) }
+    ;(parent.data as ParagraphBlockData) = {
+      text: node.textContent,
+      content: JSON.stringify(exceptUUID((node.toJSON() as JSONContent).content))
+    }
     ;(parent.meta as ParagraphBlockMeta) = { attrs: JSON.stringify(rest) }
   }
 
@@ -63,34 +66,33 @@ export const blockToNode = (block: Block): JSONContent => {
     type: block.type
   }
 
-  const meta = block.meta as any
-  const data = block.data as any
-
-  if (meta?.attrs) {
-    result.attrs = JSON.parse(meta.attrs)
+  if (block.meta && 'attrs' in block.meta) {
+    result.attrs = JSON.parse(block.meta.attrs ?? '{}')
   } else {
     result.attrs = {}
   }
 
   // NOTE patch UPDATE
   if (block.id) {
-    result.attrs.uuid = block.id
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+    result.attrs!.uuid = block.id
   }
 
   // NOTE patch UPDATE
   if (block.sort !== undefined) {
-    result.attrs.sort = block.sort
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+    result.attrs!.sort = block.sort
   }
 
-  if (data?.content) {
-    const content = JSON.parse(data.content)
+  if (block.data && 'content' in block.data) {
+    const content = JSON.parse(block.data.content)
     result.content = content
   }
 
   return result
 }
 
-export const blocksToJSONContents = (blocks: Block[], id = null): JSONContent[] =>
+export const blocksToJSONContents = (blocks: Block[], id?: string): JSONContent[] =>
   blocks
     .filter(block => block.parentId === id)
     .sort((a, b) => a.sort - b.sort)

@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import styles from './styles.module.less'
 import { BrickdocContext } from '@/common/PWAProvider'
 import Logo from '@/common/assets/logo_brickdoc.svg'
-import DefaultLocaleSelect from '../components/DefaultLocaleSelect'
+import { DefaultLocaleSelect } from '../components/DefaultLocaleSelect'
 import { useAccountsI18n } from '@/accounts/modules/common/hooks'
 import { Helmet } from 'react-helmet-async'
 
-const PanelLayoutPage: React.FC = props => {
+export const PanelLayoutPage: React.FC = props => {
   const context = useContext(BrickdocContext)
   const { t } = useAccountsI18n()
   // Logged-in users can only change the locale through the settings page
@@ -28,4 +28,3 @@ const PanelLayoutPage: React.FC = props => {
     </>
   )
 }
-export default PanelLayoutPage

@@ -1,23 +1,18 @@
-import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate } from '@/BrickdocGraphQL'
+import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate, Block } from '@/BrickdocGraphQL'
 import { Fragment } from 'prosemirror-model'
 import { Editor, ChainedCommands } from '@tiptap/core'
-import { EditorProps } from '@brickdoc/editor'
+import { EditorContentProps } from '@brickdoc/editor'
 import { blockToNode } from './SyncProvider'
 
-interface SubscriptionProps {
-  docid: string
-  editor: EditorProps['editor']
-}
-
 function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: ChainedCommands): void {
-  const block = JSON.parse(patch.payload)
+  const block = JSON.parse(patch.payload) as Block
   const newNode = block && blockToNode(block)
 
   chainedCommands.command(({ tr }) => {
     let targetNode = tr.doc
     if (patch.path[0] !== targetNode.attrs.uuid) {
       console.warn("Root node uuid doesn't match patch.path", tr.doc.attrs?.uuid, patch.path[0])
-      return
+      return false
     }
     let startPos = -1
     if (patch.path.length > 1) {
@@ -27,7 +22,7 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
           if (child.attrs.uuid === path) {
             startPos += 1
             targetNode = child
-            return
+            return true
           }
           startPos += child.nodeSize
         }
@@ -45,7 +40,7 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
         if (patch.path.length < 1) {
           console.warn('Root node cannot be updated')
         } else {
-          let newContent = targetNode.content
+          let newContent: Fragment | undefined = targetNode.content
           if (newNode.content === null) {
             // Clear content
             newContent = undefined
@@ -88,7 +83,7 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
   })
 }
 
-export function useDocumentSubscription({ docid, editor }: SubscriptionProps): void {
+export function useDocumentSubscription({ docid, editor }: { docid: string; editor: EditorContentProps['editor'] | null }): void {
   useNewPatchSubscription({
     onSubscriptionData: ({ subscriptionData: { data } }) => {
       if (!data?.newPatch?.patches?.length) return

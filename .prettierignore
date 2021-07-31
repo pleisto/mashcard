@@ -6,7 +6,7 @@ junit-reports/
 tmp/
 log/
 node_modules/
-esm-bundle/
+/public/esm-bundle/
 
 CHANGELOG.*
 *.env
