@@ -1,5 +1,4 @@
 ARG RAILS_ENV=production
-ARG USE_LOCAL_DEPENDENCE=false
 FROM ghcr.io/brickdoc/ruby-3:latest as builder
 
 # RUN with pipe recommendation: https://github.com/hadolint/hadolint/wiki/DL4006

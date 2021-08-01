@@ -1,5 +1,6 @@
 # See https://git-scm.com/docs/gitattributes for more about git attribute files.
 
+.yarn/**/* linguist-vendored merge=ours
 db/schema.gql linguist-generated merge=ours
 db/schema.rb linguist-generated merge=ours
 db/graphql/* linguist-generated merge=ours

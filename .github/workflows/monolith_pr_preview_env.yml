@@ -4,21 +4,13 @@ on:
   pull_request:
     types: [opend, synchronize]
     paths-ignore:
-      - .github/**
-      - '!.github/workflow/monolith_pr_preview_*.yml'
-      - .husky/**
-      - bin/**
-      - packages/brickdoc-design-system/**
-      - '!packages/brickdoc-design-system/components/**'
-      - packages/less-vars-loader/**
-      - packages/rubocop-brickdoc/**
-      - packages/eslint-plugin-brickdoc/**
-      - public/**
-      - templates/**
-      - '!templates/helm-charts/**'
-      - '**/*.template'
+      - '.husky/**'
+      - 'bin/**'
+      - 'packages/less-vars-loader/**'
+      - 'packages/rubocop-brickdoc/**'
+      - 'packages/eslint-plugin-brickdoc/**'
       - '**/*.md'
-      - '**/Dockerfile'
+      - 'packages/**/Dockerfile'
       - '**/.git*'
       - '**/crowdin.yml'
       - '**/LICENSE'
@@ -74,6 +66,8 @@ jobs:
         with:
           context: .
           push: true
+          build-args: |
+            "RAILS_ENV=cicd"
           tags: ${{ env.image }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new

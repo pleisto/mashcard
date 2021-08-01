@@ -133,7 +133,7 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
-  "packageManager": "yarn@3.0.0-rc.13",
+  "packageManager": "yarn@3.0.0",
   "resolutions": {
     "prosemirror-model": "patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b",
     "@rails/actioncable": "patch:@rails/actioncable@npm:6.1.4#.yarn/patches/@rails-actioncable-npm-6.1.4-0b7207789c"

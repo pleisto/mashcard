@@ -43,17 +43,15 @@ Rails.application.reloader.to_prepare do
   smtp_settings = URI(BrickdocConfig.mailer[:url])
   Rails.application.configure do
     config.action_mailer.default_url_options = Rails.application.default_url_options
-    unless Rails.env.test?
-      config.action_mailer.delivery_method = :smtp
-      config.action_mailer.default_options = {
-        from: BrickdocConfig.mailer[:from]
-      }
-      config.action_mailer.smtp_settings = {
-        addresses: smtp_settings.hostname,
-        port: smtp_settings.port,
-        user_name: smtp_settings.user,
-        password: smtp_settings.password
-      }
-    end
+    config.action_mailer.delivery_method = Rails.env.test? ? :test : :smtp
+    config.action_mailer.default_options = {
+      from: BrickdocConfig.mailer[:from]
+    }
+    config.action_mailer.smtp_settings = {
+      address: smtp_settings.hostname,
+      port: smtp_settings.port,
+      user_name: smtp_settings.user,
+      password: smtp_settings.password
+    }
   end
 end
