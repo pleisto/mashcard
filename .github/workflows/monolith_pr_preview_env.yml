@@ -5,7 +5,7 @@ on:
     types: [opend, synchronize]
     paths-ignore:
       - .github/**
-      - '!.github/workflow/monolith_ci.yml'
+      - '!.github/workflow/monolith_pr_preview_*.yml'
       - .husky/**
       - bin/**
       - packages/brickdoc-design-system/**
@@ -124,5 +124,8 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            This pull request is automatically built and testable in [${{ env.domain }}](https://${{ env.domain }})
+            This pull request is automatically built and testable in [${{ env.domain }}](https://${{ env.domain }}).
+            ## Devtools
+            * [Mailer Mock](https://${{ env.domain }}/devtools/mailer)
+            * [Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#container-insights:infrastructure)
           edit-mode: replace

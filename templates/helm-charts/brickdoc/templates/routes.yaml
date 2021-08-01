@@ -7,6 +7,19 @@ metadata:
     {{- include "brickdoc.labels" . | nindent 4 }}
 spec:
   http:
+    {{- if .Values.previewEnv }}
+    - name: {{ $fullName }}-mailer
+      priority: 2
+      match:
+        paths:
+          - /devtools/mailer*
+        hosts:
+          - {{ .Values.ingress.host }}
+      backends:
+        - serviceName: {{ include "brickdoc.devDependenciesService" . }}
+          servicePort: 8025
+      websocket: true
+    {{- end }}          
     - name: {{ $fullName }}
       match:
         paths:

@@ -58,5 +58,5 @@ class BrickdocConfig < ApplicationRecord
     },
   ]
   # rubocop:enable Layout/LineLength
-  field :accounts_preferred_auth_method, default: Brickdoc.saas? ? 'github' : 'email_password'
+  field :accounts_preferred_auth_method, default: 'email_password'
 end

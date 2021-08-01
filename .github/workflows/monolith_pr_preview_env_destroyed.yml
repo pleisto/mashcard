@@ -5,7 +5,7 @@ on:
     types: [closed]
     paths-ignore:
       - .github/**
-      - '!.github/workflow/monolith_ci.yml'
+      - '!.github/workflow/monolith_pr_preview_*.yml'
       - .husky/**
       - bin/**
       - packages/brickdoc-design-system/**
@@ -51,5 +51,5 @@ jobs:
         with:
           owner: brickdoc
           name: brickdoc
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag: pr.${{github.event.pull_request.number}}

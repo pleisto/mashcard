@@ -31,9 +31,12 @@ spec:
               containerPort: 5432
               protocol: TCP
           resources:
+            requests:
+              cpu: "0.1"
+              memory: 16Mi
             limits:
               cpu: "1"
-              memory: 256Mi
+              memory: 512Mi
         - name: {{ .Chart.Name }}-redis
           image: redis:6-alpine
           ports:
@@ -41,6 +44,28 @@ spec:
               containerPort: 6379
               protocol: TCP
           resources:
+            requests:
+              cpu: "0.1"
+              memory: 16Mi
             limits:
               cpu: "1"
               memory: 512Mi
+        - name: {{ .Chart.Name }}-mailhog
+          image: mailhog/mailhog:v1.0.1
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: 8Mi
+            limits:
+              cpu: "0.25"
+              memory: 128Mi
+          env:
+            - name: MH_UI_WEB_PATH
+              value: devtools/mailer
+          ports:
+            - name: smtp
+              containerPort: 1025
+              protocol: TCP
+            - name: mailhog-ui
+              containerPort: 8025
+              protocol: TCP

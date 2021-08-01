@@ -21,7 +21,7 @@ spec:
       serviceAccountName: {{ include "brickdoc.serviceAccountName" . }}
       initContainers:
         - name: {{ .Chart.Name }}-db-migrate
-          command: ["bundle", "exec", "rake", "db:migrate"]
+          command: ["/app/bin/kube-init"]
           {{- include "brickdoc.deploymentCommon" . }}
       containers:
         - name: {{ .Chart.Name }}-web
@@ -39,8 +39,11 @@ spec:
               port: http
           resources:
             {{- if .Values.previewEnv }}
+            requests:
+              cpu: "0.1"
+              memory: 32Mi
             limits:
-              cpu: "1"
+              cpu: "1.5"
               memory: 512Mi
             {{- else }}
             {{- toYaml .Values.resources | nindent 12 }}
@@ -50,8 +53,11 @@ spec:
           command: ["bundle", "exec", "sidekiq", "-C", "/app/config/sidekiq.yml"]
           resources:
             {{- if .Values.previewEnv }}
+            requests:
+              cpu: "0.1"
+              memory: 64Mi
             limits:
-              cpu: "1"
+              cpu: "1.5"
               memory: 512Mi
             {{- else }}
             {{- toYaml .Values.resources | nindent 12 }}
