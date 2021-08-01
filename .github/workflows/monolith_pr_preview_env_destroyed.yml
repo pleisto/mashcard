@@ -43,5 +43,5 @@ jobs:
         with:
           owner: brickdoc
           name: brickdoc
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_FOR_PACAKGES }}
           tag: pr.${{github.event.pull_request.number}}
