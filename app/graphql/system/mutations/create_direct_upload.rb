@@ -17,18 +17,27 @@ module System
       type = args[:type]
       service = SERVICE_MAP.fetch(type)
       # https://edgeapi.rubyonrails.org/classes/ActiveStorage/Blob.html#method-c-create_before_direct_upload-21
-      args = input.to_h.merge(service_name: service)
+      new_input = input.to_h.merge(service_name: service)
 
       # TODO: https://stackoverflow.com/a/51110844
       ActiveStorage::Current.host = BrickdocConfig.host
 
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
-      blob = ActiveStorage::Blob.create!(args.merge(
+      blob = ActiveStorage::Blob.create!(new_input.merge(
         operation_type: type, pod_id: current_pod.fetch('id'), user_id: current_user.id, block_id: args[:block_id]
       ))
 
-      if args[:block_id]
-        Docs::Block.find(args[:block_id]).attachments.attach blob.signed_id
+      if type == "DOC"
+        raise BrickGraphQL::Errors::ArgumentError, "Need a block_id" if args[:block_id].nil?
+        # Docs::Block.find(args[:block_id]).attachments.attach blob.signed_id
+        ## HACK Create `ActiveStorage::Attachment` directly because blob is not persist yet.
+
+        ActiveStorage::Attachment.create!(
+          record_id: args[:block_id],
+          record_type: "Docs::Block",
+          blob_id: blob.id,
+          name: "attachments"
+        )
       end
 
       {

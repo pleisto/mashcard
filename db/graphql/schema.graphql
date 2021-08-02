@@ -155,6 +155,11 @@ InputObject type of Class
 """
 input BlockInput {
   """
+  attachments
+  """
+  attachments: [String!]
+
+  """
   data
   """
   data: BlockDataInput
@@ -991,6 +996,11 @@ type blob {
 Brickdoc Docs::Block
 """
 type block {
+  """
+  blobs
+  """
+  blobs: [blob!]
+
   """
   collaborators
   """

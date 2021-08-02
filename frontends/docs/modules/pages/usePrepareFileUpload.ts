@@ -25,7 +25,7 @@ export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
       case 'pdf':
       case 'image':
       default:
-        inputType = Upload.Avatar
+        inputType = Upload.Doc
     }
 
     const input = {

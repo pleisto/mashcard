@@ -30,6 +30,10 @@ export const queryChildrenBlocks = gql`
       id
       sort
       parentId
+      blobs {
+        blobKey
+        url
+      }
       type
       data {
         text
