@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor } from '@brickdoc/editor'
-import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
+import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block, BlockMeta } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './DocumentTitle'
 import { syncProvider, blocksToJSONContents } from './SyncProvider'
 import { useDocumentSubscription } from './useDocumentSubscription'
@@ -11,6 +11,7 @@ import { useFetchUnsplashImages } from './useFetchUnsplashImages'
 import styles from './DocumentPage.module.less'
 import { DocumentIconMeta } from './DocumentTitle/DocumentIcon'
 import { DocumentCoverMeta } from './DocumentTitle/DocumentCover'
+import { JSONContent } from '@tiptap/core'
 
 export const DocumentPage: React.FC = () => {
   const { webid, docid, ...restParams } = useParams<{ webid: string; docid: string; snapshotVersion: string }>()
@@ -30,11 +31,25 @@ export const DocumentPage: React.FC = () => {
   })
 
   const [icon, setIcon] = React.useState<DocumentIconMeta | null | undefined>()
+  // TODO
+  // const [icon, setIcon] = React.useState<BlockIcon | null >()
   const [cover, setCover] = React.useState<DocumentCoverMeta | null | undefined>()
+  // const [icon, setIcon] = React.useState<BlockCover | null >()
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data) {
-      const content = blocksToJSONContents(data.childrenBlocks as Block[])[0]
+      const content: JSONContent = blocksToJSONContents(data.childrenBlocks as Block[])[0]
+      const attrs = content.attrs as BlockMeta
+
+      if (attrs.cover) {
+        // TODO
+        // setCover(attrs.cover)
+      }
+      if (attrs.icon) {
+        // TODO
+        // setIcon(attrs.icon)
+      }
+
       editor.commands.replaceRoot(content)
     }
   }, [editor, data])

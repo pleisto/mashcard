@@ -48,7 +48,30 @@ export const queryPageBlocks = gql`
         text
         content
       }
-      meta
+      meta {
+        cover {
+          ... on BlockImage {
+            url
+          }
+          ... on BlockColor {
+            color
+          }
+        }
+        icon {
+          ... on BlockImage {
+            url
+          }
+
+          ... on BlockEmoji {
+            name
+            emoji
+            slug
+            emojiVersion
+            unicodeVersion
+            skinToneSupport
+          }
+        }
+      }
     }
   }
 `

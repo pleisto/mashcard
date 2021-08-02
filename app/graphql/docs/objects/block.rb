@@ -16,7 +16,7 @@ module Docs
       # end
 
       field :data, BlockData, null: false
-      field :meta, GraphQL::Types::JSON, null: false
+      field :meta, BlockMeta, null: false
     end
   end
 end
