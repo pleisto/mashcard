@@ -105,6 +105,8 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
           APP_SECRET_SECRET_KEY_BASE: ${{ secrets.previewEnvSecretKey }}
+          APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
+          APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: fc
