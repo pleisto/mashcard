@@ -371,12 +371,17 @@ type DirectUpload {
   """
   Created blob record key
   """
-  blobKey: ID!
+  blobKey: String!
 
   """
   HTTP request headers (JSON-encoded)
   """
   headers: JSON!
+
+  """
+  Blob signed id
+  """
+  signedId: String!
 
   """
   Upload URL
@@ -386,7 +391,7 @@ type DirectUpload {
   """
   View url
   """
-  viewUrl: ID!
+  viewUrl: String!
 }
 
 """

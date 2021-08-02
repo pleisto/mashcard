@@ -25,6 +25,7 @@ export const CreateDirectUpload = gql`
         headers
         blobKey
         viewUrl
+        signedId
       }
     }
   }

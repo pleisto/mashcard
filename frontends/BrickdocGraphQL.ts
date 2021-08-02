@@ -225,13 +225,15 @@ export type CreateOrUpdatePodPayload = {
 export type DirectUpload = {
   __typename?: 'DirectUpload'
   /** Created blob record key */
-  blobKey: Scalars['ID']
+  blobKey: Scalars['String']
   /** HTTP request headers (JSON-encoded) */
   headers: Scalars['JSON']
+  /** Blob signed id */
+  signedId: Scalars['String']
   /** Upload URL */
   uploadUrl: Scalars['String']
   /** View url */
-  viewUrl: Scalars['ID']
+  viewUrl: Scalars['String']
 }
 
 /** File information required to prepare a direct upload */
@@ -801,7 +803,7 @@ export type CreateDirectUploadMutationVariables = Exact<{
 export type CreateDirectUploadMutation = { __typename?: 'RootMutation' } & {
   createDirectUpload?: Maybe<
     { __typename?: 'CreateDirectUploadPayload' } & {
-      directUpload: { __typename?: 'DirectUpload' } & Pick<DirectUpload, 'uploadUrl' | 'headers' | 'blobKey' | 'viewUrl'>
+      directUpload: { __typename?: 'DirectUpload' } & Pick<DirectUpload, 'uploadUrl' | 'headers' | 'blobKey' | 'viewUrl' | 'signedId'>
     }
   >
 }
@@ -1361,6 +1363,7 @@ export const CreateDirectUploadDocument = gql`
         headers
         blobKey
         viewUrl
+        signedId
       }
     }
   }
