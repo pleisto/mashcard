@@ -146,6 +146,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
         placement="top"
         content={
           <Dashboard
+            blockId={node.attrs.uuid}
             fileType="pdf"
             prepareFileUpload={extension.options.prepareFileUpload}
             onProgress={onProgress}

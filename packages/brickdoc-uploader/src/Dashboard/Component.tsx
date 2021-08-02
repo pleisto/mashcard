@@ -6,6 +6,7 @@ import { DashboardPlugin, DashboardPluginOptions } from './plugin'
 export type { UploadResultData, ImportSourceOption, DashboardPluginOptions, UploadProgress, UnsplashImage, EmojiMeta } from './plugin'
 
 export interface DashboardProps {
+  blockId?: DashboardPluginOptions['blockId']
   onProgress?: DashboardPluginOptions['onProgress']
   onUploaded?: DashboardPluginOptions['onUploaded']
   onFileLoaded?: DashboardPluginOptions['onFileLoaded']
@@ -16,6 +17,7 @@ export interface DashboardProps {
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({
+  blockId,
   onUploaded,
   prepareFileUpload,
   fetchUnsplashImages,
@@ -50,6 +52,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         })
         uppy.current.use(DashboardPlugin, {
           target: container.current,
+          blockId,
           onProgress,
           onUploaded,
           onFileLoaded,

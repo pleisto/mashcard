@@ -55,10 +55,11 @@ export interface UnsplashImage {
 
 export interface DashboardPluginOptions {
   target: HTMLElement
+  blockId?: string
   onProgress?: (progress: UploadProgress) => void
   onUploaded?: (data: UploadResultData) => void
   onFileLoaded?: (file: File) => void
-  prepareFileUpload: (type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any; blobKey: string }>
+  prepareFileUpload: (blockId: string, type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any; blobKey: string }>
   fetchUnsplashImages?: (query: string, page: number, perPage: number) => Promise<{ success: boolean; data: UnsplashImage[] }>
   fileType: 'image' | 'pdf'
   importSources: ImportSourceOption[]
@@ -268,7 +269,7 @@ export class DashboardPlugin extends Plugin {
 
   // TODO: handle error
   handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers, blobKey } = await this.opts.prepareFileUpload(this.opts.fileType, file)
+    const { endpoint, headers, blobKey } = await this.opts.prepareFileUpload(this.opts.blockId, this.opts.fileType, file)
     this.blobKey = blobKey
     this.uppy.getPlugin('XHRUpload').setOptions({
       endpoint,

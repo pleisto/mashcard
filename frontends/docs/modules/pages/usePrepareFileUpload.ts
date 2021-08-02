@@ -17,7 +17,7 @@ const checksum = async (file: File): Promise<string> =>
 export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
   const [directUpload] = useCreateDirectUploadMutation()
 
-  return async (type: string, file: File) => {
+  return async (blockId: string, type: string, file: File) => {
     let inputType: Upload
 
     switch (type) {
@@ -39,7 +39,8 @@ export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
       variables: {
         input: {
           input,
-          type: inputType
+          type: inputType,
+          blockId
         }
       }
       // TODO: handle error

@@ -154,6 +154,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
         content={
           <Dashboard
             fileType="image"
+            blockId={node.attrs.uuid}
             prepareFileUpload={extension.options.prepareFileUpload}
             fetchUnsplashImages={extension.options.fetchUnsplashImages}
             onUploaded={onUploaded}
