@@ -1795,8 +1795,10 @@ __metadata:
     "@tiptap/react": 2.0.0-beta.50
     "@tiptap/suggestion": ^2.0.0-beta.61
     "@types/react-pdf": ^5.0.5
+    re-resizable: ^6.9.0
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-medium-image-zoom: ^4.3.4
     react-pdf: ^5.3.2
     tippy.js: ^6.3.1
     typescript: ^4.3.5
@@ -1955,9 +1957,6 @@ __metadata:
     "@uppy/xhr-upload": ^1.7.5
     htm: ^3.1.0
     preact: 8.2.9
-    re-resizable: ^6.9.0
-    react-medium-image-zoom: ^4.3.4
-    unsplash-js: ^7.0.15
   languageName: unknown
   linkType: soft
 
@@ -4739,7 +4738,7 @@ __metadata:
     prosemirror-state: ^1.3.4
     prosemirror-transform: ^1.3.2
     prosemirror-view: ^1.18.11
-  checksum: e1bb3beb868188d409230826e9999b12c34c41d911f78a15dc90b750eebdd877112a81ba614d024b170b228334d34268012a71cb23def29230a17dc8a23aec62
+  checksum: 3e6b6e644175dac6494f065520400d614601ef17f72695ca06d7be8f697ccb5c4ff78b363844553dd30f2e7705bfba109cd1425402a951e23a93eb940b60d0dd
   languageName: node
   linkType: hard
 
@@ -5111,13 +5110,6 @@ __metadata:
   version: 1.1.1
   resolution: "@types/color-name@npm:1.1.1"
   checksum: b71fcad728cc68abcba1d405742134410c8f8eb3c2ef18113b047afca158ad23a4f2c229bcf71a38f4a818dead375c45b20db121d0e69259c2d81e97a740daa6
-  languageName: node
-  linkType: hard
-
-"@types/content-type@npm:^1.1.3":
-  version: 1.1.5
-  resolution: "@types/content-type@npm:1.1.5"
-  checksum: 77d0a88003c18c4d75f8344c678545aa1f1a4c163420c38bf669ba05eb9e0a243ecd022b2c83fbd01def608c275743000c0bf37e9ac95e16f2c3af16ec70534b
   languageName: node
   linkType: hard
 
@@ -9092,7 +9084,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"content-type@npm:^1.0.4, content-type@npm:~1.0.4":
+"content-type@npm:~1.0.4":
   version: 1.0.4
   resolution: "content-type@npm:1.0.4"
   checksum: 3d93585fda985d1554eca5ebd251994327608d2e200978fdbfba21c0c679914d5faf266d17027de44b34a72c7b0745b18584ecccaa7e1fdfb6a68ac7114f12e0
@@ -23791,16 +23783,6 @@ typescript@^4.3.5:
     has-value: ^0.3.1
     isobject: ^3.0.0
   checksum: 5990ecf660672be2781fc9fb322543c4aa592b68ed9a3312fa4df0e9ba709d42e823af090fc8f95775b4cd2c9a5169f7388f0cec39238b6d0d55a69fc2ab6b29
-  languageName: node
-  linkType: hard
-
-"unsplash-js@npm:^7.0.15":
-  version: 7.0.15
-  resolution: "unsplash-js@npm:7.0.15"
-  dependencies:
-    "@types/content-type": ^1.1.3
-    content-type: ^1.0.4
-  checksum: 814ede385e21df948ca502757c4ee8fb4289e959ba1de3c3daa9635e01708d1496d4efcecdce71d0ba95c80f046430ee0a3a8ae8a8c0af5ccc73c3dd3951faad
   languageName: node
   linkType: hard
 
