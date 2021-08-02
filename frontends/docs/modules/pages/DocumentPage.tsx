@@ -16,20 +16,16 @@ export const DocumentPage: React.FC = () => {
     variables: { parentId: docid, excludePages: false, snapshotVersion: Number(restParams.snapshotVersion || '0') }
   })
 
-  const editor = useEditor({
-    onCommit
-  })
+  const editor = useEditor({ onCommit })
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data) {
-      editor.commands.replaceRoot(blocksToJSONContents(data.childrenBlocks as Block[])[0])
+      const content = blocksToJSONContents(data.childrenBlocks as Block[])[0]
+      editor.commands.replaceRoot(content)
     }
   }, [editor, data])
 
-  useDocumentSubscription({
-    docid,
-    editor
-  })
+  useDocumentSubscription({ docid, editor })
 
   if (loading) {
     return <Skeleton />

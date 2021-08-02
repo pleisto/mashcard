@@ -47,5 +47,67 @@ RSpec.describe Docs::Block, type: :model do
       block.update!(sort: 101)
       expect(block.history_version).to eq(old_version + 1)
     end
+
+    it 'child to child: move same parent' do
+      old_version = child.history_version
+      child.move!(child.parent_id, 100)
+      expect(child.sort).to eq(100)
+      expect(child.history_version).to eq(old_version + 1)
+      history = child.histories.find_by!(history_version: child.history_version)
+      expect(history.parent_id).to eq(child.parent_id)
+    end
+
+    it 'child to child: move different parent' do
+      old_version = child.history_version
+      child.move!(block.id, 200)
+      expect(child.sort).to eq(200)
+      expect(child.parent_id).to eq(block.id)
+      expect(child.history_version).to eq(old_version + 1)
+      history = child.histories.find_by!(history_version: child.history_version)
+      expect(history.parent_id).to eq(child.parent_id)
+    end
+
+    it 'root to root' do
+      old_version = block.history_version
+      block.move!(nil, 123)
+      expect(block.sort).to eq(123)
+      expect(block.parent_id).to eq(nil)
+      expect(block.history_version).to eq(old_version + 1)
+      history = block.histories.find_by!(history_version: block.history_version)
+      expect(history.sort).to eq(block.sort)
+    end
+
+    it 'error' do
+      expect { block.move!(block.id, 123) }.to raise_error(ArgumentError)
+      expect { child.parent.move!(child.id, 123) }.to raise_error(ArgumentError)
+    end
+
+    it 'root to child' do
+      expect(block.type).to eq("doc")
+      old_version = block.history_version
+      block.move!(child.id, 123)
+      expect(block.sort).to eq(123)
+      expect(block.parent_id).to eq(child.id)
+      expect(block.type).to eq("paragraph")
+      expect(block.history_version).to eq(old_version + 1)
+      history = block.histories.find_by!(history_version: block.history_version)
+      expect(history.sort).to eq(block.sort)
+      expect(history.type).to eq("paragraph")
+      expect(history.parent_id).to eq(block.parent_id)
+    end
+
+    it 'child to root' do
+      expect(child.type).to eq("paragraph")
+      old_version = child.history_version
+      child.move!(nil, 123)
+      expect(child.sort).to eq(123)
+      expect(child.parent_id).to eq(nil)
+      expect(child.type).to eq("doc")
+      expect(child.history_version).to eq(old_version + 1)
+      history = child.histories.find_by!(history_version: child.history_version)
+      expect(history.sort).to eq(child.sort)
+      expect(history.type).to eq("doc")
+      expect(history.parent_id).to eq(child.parent_id)
+    end
   end
 end

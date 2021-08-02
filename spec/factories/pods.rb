@@ -5,7 +5,7 @@ FactoryBot.define do
     before(:create) do |pod|
       name = FFaker::Company.name
       pod.name = name
-      pod.webid = "#{name.parameterize}#{Time.now.to_i}"
+      pod.webid = "#{name.parameterize}#{Time.now.to_i}#{SecureRandom.hex(2)}"
     end
   end
 end

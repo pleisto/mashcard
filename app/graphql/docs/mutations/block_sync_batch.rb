@@ -37,15 +37,15 @@ module Docs
         block.sort = args.sort.to_i
         block.data = args.data
         block.meta = args.meta
-        block.parent_id = args.parent_id
-        block.type = args.type
+        block.parent_id ||= args.parent_id
+        block.type ||= args.type
 
         block.pod_id = pod_id
         block.deleted_at = nil
 
         block.collaborators << current_user.id
 
-        valid_payload(block)
+        # valid_payload(block)
 
         block.save!
         new_blocks_hash[block.id] = block
@@ -65,7 +65,7 @@ module Docs
             if p.fetch(:path).blank?
               parent_id = p.fetch(:parent_id)
               # rubocop:disable Metrics/BlockNesting
-              new_path = parent_id.nil? ? [] : paths_cache.fetch(parent_id)
+              new_path = parent_id.nil? || p.fetch(:id) == root_id ? [] : paths_cache.fetch(parent_id)
               new_path += [p.fetch(:id)] if p.fetch(:patch_type) != "ADD"
               p.merge(path: new_path)
             else

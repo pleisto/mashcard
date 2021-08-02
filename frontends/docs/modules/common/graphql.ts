@@ -27,33 +27,16 @@ export const CreateOrUpdatePod = gql`
 export const queryPageBlocks = gql`
   query GetPageBlocks($webid: String!) {
     pageBlocks(webid: $webid) {
-      ... on PageBlock {
-        id
-        sort
-        parentId
-        type
-        data {
-          title
-        }
-        meta {
-          icon
-          cover
-        }
+      id
+      sort
+      nextSort
+      parentId
+      type
+      data {
+        text
+        content
       }
-
-      ... on ParagraphBlock {
-        id
-        sort
-        parentId
-        type
-        data {
-          text
-          content
-        }
-        meta {
-          attrs
-        }
-      }
+      meta
     }
   }
 `
@@ -80,6 +63,14 @@ export const queryBlockHistories = gql`
 export const BlockDelete = gql`
   mutation blockDelete($input: BlockDeleteInput!) {
     blockDelete(input: $input) {
+      errors
+    }
+  }
+`
+
+export const BlockMove = gql`
+  mutation blockMove($input: BlockMoveInput!) {
+    blockMove(input: $input) {
       errors
     }
   }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../hooks'
 import { PageTree } from '@/docs/modules/common/components/PageTree'
 import { PodSelect } from '@/docs/modules/common/components/PodSelect'
-
+import { v4 as uuid } from 'uuid'
 interface SidebarLayoutPageProps {
   webid: string
 }
@@ -22,7 +22,7 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, chi
           <PageTree webid={webid} />
 
           <Footer style={{ textAlign: 'center' }}>
-            <Link style={{ color: 'inherit' }} to={`/${webid}`}>
+            <Link style={{ color: 'inherit' }} to={`/${webid}/${uuid()}`}>
               + {t('blocks.create_pages')}
             </Link>
           </Footer>

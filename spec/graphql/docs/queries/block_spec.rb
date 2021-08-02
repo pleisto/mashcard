@@ -14,17 +14,18 @@ describe Docs::Queries::Block, type: :query do
 
       block1 = create(:docs_block, pod: pod)
       block2 = create(:docs_block, pod: pod, collaborators: [user.id])
+      child1 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block2)
+      child2 = create(:docs_block, pod: pod, sort: 200, collaborators: [user.id], parent: block2)
+      child3 = create(:docs_block, pod: pod, sort: 300, collaborators: [user.id], parent: block2)
 
       # block
       query = <<-'GRAPHQL'
         query GetBlock($id: String!) {
           block(id: $id) {
-            ... on PageBlock {
-              id
-              permissions {
-                canShow {
-                  value
-                }
+            id
+            permissions {
+              canShow {
+                value
               }
             }
           }
@@ -44,41 +45,35 @@ describe Docs::Queries::Block, type: :query do
       query = <<-'GRAPHQL'
         query GetPageBlocks($webid: String!) {
           pageBlocks(webid: $webid) {
-            ... on PageBlock {
-              id
-              sort
-              parentId
-              type
-              data {
-                title
-              }
-              meta {
-                icon
-                cover
-              }
+            id
+            sort
+            parentId
+            nextSort
+            type
+            data {
+              text
+              content
             }
-
-            ... on ParagraphBlock {
-              id
-              sort
-              parentId
-              type
-              data {
-                text
-                content
-              }
-              meta {
-                attrs
-              }
-            }
+            meta
           }
         }
       GRAPHQL
 
       internal_graphql_execute(query, { webid: pod.webid })
       expect(response.success?).to be true
-      expect(response.data['pageBlocks'].length).to eq 1
-      expect(response.data['pageBlocks'].first['id']).to eq block2.id
+      expect(response.data['pageBlocks'].length).to eq 4
+      root = response.data['pageBlocks'].find { |b| b.fetch('parentId').nil? }
+      expect(root['id']).to eq block2.id
+      expect(root['nextSort'].class).to eq String
+      expect(root['nextSort'].to_i).to_not eq 0
+      sort_map = {
+        block2.id => [Docs::Block::SORT_GAP, Docs::Block::SORT_GAP * 2], ## NOTE cuz authorized_scope
+        child1.id => [0, Docs::Block::SORT_GAP * 1],
+        child2.id => [Docs::Block::SORT_GAP * 1, Docs::Block::SORT_GAP * 2],
+        child3.id => [Docs::Block::SORT_GAP * 2, Docs::Block::SORT_GAP * 3]
+      }
+      expect(response.data['pageBlocks'].each_with_object({}) { |x, h| h[x['id']] = [x['sort'].to_i, x['nextSort'].to_i] }).to eq(sort_map)
+      expect(child2.reload.sort).to eq(Docs::Block::SORT_GAP)
 
       # childrenBlocks
       _block3 = create(:docs_block, parent: block2)
@@ -87,9 +82,7 @@ describe Docs::Queries::Block, type: :query do
       query = <<-'GRAPHQL'
         query GetChildrenBlocks($parent_id: String!, $snapshot_version: Int!) {
           childrenBlocks(parentId: $parent_id, snapshotVersion: $snapshot_version) {
-            ... on PageBlock {
-              id
-            }
+            id
           }
         }
       GRAPHQL
@@ -97,8 +90,8 @@ describe Docs::Queries::Block, type: :query do
       internal_graphql_execute(query, { parent_id: block2.id, snapshot_version: 0 })
 
       expect(response.success?).to be true
-      expect(response.data['childrenBlocks'].length).to eq 2
-      expect(response.data['childrenBlocks'].map { |b| b['id'] }.sort).to eq [block2.id, block4.id].sort
+      expect(response.data['childrenBlocks'].length).to eq 5
+      expect(response.data['childrenBlocks'].map { |b| b['id'] }.sort).to eq [block2.id, child1.id, child2.id, child3.id, block4.id].sort
     end
   end
 end

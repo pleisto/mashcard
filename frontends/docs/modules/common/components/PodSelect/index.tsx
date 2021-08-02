@@ -44,7 +44,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
       default:
         if (key.startsWith('pod-')) {
           const webid = key.replace('pod-', '')
-          window.location.href = `/${webid}`
+          globalThis.location.href = `/${webid}`
         } else {
           console.log(`unknown key ${key}`)
         }

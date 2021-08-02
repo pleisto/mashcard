@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Dropdown, Menu, MenuProps, Tooltip } from '@brickdoc/design-system'
+import { Dropdown, Menu, MenuProps, Skeleton } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -19,14 +19,15 @@ interface PageMenuProps {
   id: UUID
   title: Scalars['String']
   text: Scalars['String'] | null
-  parentId?: UUID
+  parentId: UUID | null
 }
 
 export const PageMenu: React.FC<PageMenuProps> = props => {
-  const [blockDelete] = useBlockDeleteMutation()
+  const [blockDelete, { loading: deleteLoading }] = useBlockDeleteMutation()
   const deletePage = (id: UUID): void => {
     const input: BlockDeleteInput = { id }
     void blockDelete({ variables: { input } })
+    globalThis.location.href = `/${props.webid}`
   }
   const [blockCreateSnapshot] = useBlockCreateSnapshotMutation()
   const createSnapshot = (id: UUID): void => {
@@ -35,16 +36,16 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   }
   const { t } = useDocsI18n()
 
+  if (deleteLoading) {
+    return <Skeleton />
+  }
+
   const rollbackSnapshot = (version: number): void => {
     console.log(`rollback snapshot ${version}`)
   }
 
   if (props.parentId) {
-    return (
-      <Tooltip title={props.text}>
-        <Link to={`/${props.webid}/${props.parentId}#${props.id}`}>{props.title}</Link>
-      </Tooltip>
-    )
+    return <Link to={`/${props.webid}/${props.parentId}#${props.id}`}>{props.title}</Link>
   }
 
   const onClick = (id: UUID): MenuProps['onClick'] => {

@@ -16,8 +16,7 @@ describe System::Mutations::CreateOrUpdatePod, type: :mutation do
       }
     GRAPHQL
 
-    let(:password) { FFaker::Internet.password }
-    let(:user) { create(:accounts_user, password: password) }
+    let(:user) { create(:accounts_user) }
 
     it 'update' do
       self.current_user = user

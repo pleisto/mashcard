@@ -38,7 +38,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
         setConfirmLoading(false)
         const msg = type === PodOperation.Create ? 'pods.create.success' : 'pods.update.success'
         void message.success(t(msg))
-        window.location.href = `/${values.webid}`
+        globalThis.location.href = `/${values.webid}`
       })
       .catch(info => {
         console.log('Validate Failed:', info)

@@ -32,9 +32,9 @@ class Docs::Block < ApplicationRecord
   include Redis::Objects
   counter :patch_seq
 
-  default_scope { where(deleted_at: nil).order(sort: :desc) }
+  default_scope { where(deleted_at: nil) }
 
-  scope :pageable, -> { where(type: ['doc', 'paragraph']) }
+  scope :pageable, -> { where(type: ['doc', 'paragraph', 'heading']) }
 
   belongs_to :pod
   belongs_to :parent, class_name: 'Docs::Block', optional: true
@@ -46,6 +46,12 @@ class Docs::Block < ApplicationRecord
   # validates :data, presence: true
   validates :pod, presence: true
   validates :collaborators, presence: true
+
+  attribute :next_sort, :integer, default: 0
+
+  ## Distance for expansion
+  SORT_GAP = 2**32
+  REBALANCE_GAP = 2**12
 
   def patch_seq_increment
     patch_seq.increment
@@ -167,7 +173,9 @@ class Docs::Block < ApplicationRecord
 
   before_save do
     self.collaborators = collaborators.uniq
-    self.history_version = realtime_history_version_increment if meta_changed? || data_changed? || sort_changed? || parent_id_changed?
+    if type_changed? || meta_changed? || data_changed? || sort_changed? || parent_id_changed?
+      self.history_version = realtime_history_version_increment
+    end
   end
 
   after_save do
@@ -183,6 +191,33 @@ class Docs::Block < ApplicationRecord
     descendants.pageable.update_all(deleted_at: Time.current)
     patch_seq.del
     self.class.broadcast(id, { state: "DELETED" })
+  end
+
+  def check_target_descendants!(target_parent_id)
+    return if target_parent_id.nil?
+    return if target_parent_id == parent_id
+    raise ArgumentError, "Invalid target" if target_parent_id == id
+
+    raise ArgumentError, "Invalid target" if target_parent_id.in?(descendants.ids)
+  end
+
+  def move!(target_parent_id, new_sort)
+    check_target_descendants!(target_parent_id)
+
+    params = { sort: new_sort, parent_id: target_parent_id }
+    if target_parent_id.nil? && parent_id.nil?
+      ## Root
+    elsif !target_parent_id.nil? && !parent_id.nil?
+      ## Child
+    elsif target_parent_id.nil? && !parent_id.nil?
+      ## Child to parent
+      params[:type] = 'doc'
+    elsif !target_parent_id.nil? && parent_id.nil?
+      ## Root to child, check its descendant
+      params[:type] = 'paragraph'
+    end
+
+    update!(params)
   end
 
   # recursive CTE query
@@ -274,7 +309,7 @@ class Docs::Block < ApplicationRecord
 
   def path_map
     result = {}
-    parent_ids = [nil]
+    parent_ids = [parent_id]
     data = descendants_cache
 
     loop do
