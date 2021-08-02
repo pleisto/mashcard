@@ -3,7 +3,7 @@ import { Uppy } from '@uppy/core'
 import XhrUploadPlugin from '@uppy/xhr-upload'
 import { DashboardPlugin, DashboardPluginOptions } from './plugin'
 
-export type { UploadResultData, ImportSourceOption, DashboardPluginOptions, UploadProgress, UnsplashImage } from './plugin'
+export type { UploadResultData, ImportSourceOption, DashboardPluginOptions, UploadProgress, UnsplashImage, EmojiMeta } from './plugin'
 
 export interface DashboardProps {
   onProgress?: DashboardPluginOptions['onProgress']
