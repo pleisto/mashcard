@@ -143,6 +143,8 @@ export interface IconProps {
     | 'file-image'
     | 'more'
     | 'file-pdf'
+    | 'face'
+    | 'redo'
   className?: string
   style?: CSSProperties
 }

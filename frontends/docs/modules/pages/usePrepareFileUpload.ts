@@ -17,7 +17,7 @@ const checksum = async (file: File): Promise<string> =>
 export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
   const [directUpload] = useCreateDirectUploadMutation()
 
-  return async (type, file: File) => {
+  return async (type: string, file: File) => {
     let inputType: Upload
 
     switch (type) {
@@ -44,6 +44,10 @@ export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
       }
       // TODO: handle error
     }).then(result => {
+      if (!result.data?.createDirectUpload) {
+        throw new Error('prepare upload failed')
+      }
+
       return {
         endpoint: result.data.createDirectUpload.directUpload.uploadUrl,
         blobKey: result.data.createDirectUpload.directUpload.blobKey,

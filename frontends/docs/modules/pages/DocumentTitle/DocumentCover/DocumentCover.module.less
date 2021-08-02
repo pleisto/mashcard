@@ -1,0 +1,49 @@
+.cover {
+  position: relative;
+  height: 260px;
+  width: 100%;
+
+  &.uncover {
+    height: 40px;
+
+    &:hover {
+      .buttons {
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover {
+    .buttons {
+      pointer-events: unset;
+      opacity: 1;
+    }
+  }
+
+  .buttons {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    bottom: 8px;
+    right: 110px;
+    z-index: 1;
+    transition: opacity 200ms ease-in;
+    background-color: #ffffff;
+    border: 1px solid #d6d6d6;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+    border-radius: 2px;
+
+    .button {
+      padding: 8px;
+      font-size: 12px;
+      line-height: 12px;
+      color: #3e3e3e;
+      border-radius: 0;
+    }
+
+    .button + .button {
+      border-left: 1px solid #d6d6d6;
+    }
+  }
+}
