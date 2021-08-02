@@ -30,7 +30,7 @@ FROM ghcr.io/brickdoc/ruby-3:latest
 LABEL org.opencontainers.iamge.authors="secure@brickdoc.com"
 LABEL org.opencontainers.image.licenses = "Apache-2.0"
 LABEL org.opencontainers.image.source = "https://github.com/brickdoc/brickdoc"
-COPY --from=builder /app /app
+COPY . /app
 
 ARG RAILS_ENV
 ENV RAILS_ENV=$RAILS_ENV
