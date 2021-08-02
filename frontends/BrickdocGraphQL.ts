@@ -1433,7 +1433,6 @@ export const QueryUnsplashImageDocument = gql`
       width
       height
       fullUrl
-      smallUrl
       username
     }
   }
