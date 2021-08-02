@@ -39,7 +39,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
       - name: 'Remove temp docker image on GitHub packages'
-        uses: bots-house/ghcr-delete-image-action@v1.0.0
+        uses: bots-house/ghcr-delete-image-action@v1.0.1
         with:
           owner: brickdoc
           name: brickdoc
