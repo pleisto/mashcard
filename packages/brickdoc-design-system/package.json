@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
-    "@babel/types": "^7.14.8",
+    "@babel/types": "^7.14.9",
     "@brickdoc/less-vars-loader": "^0.1.2",
     "@mdx-js/react": "^1.6.22",
     "@storybook/addon-actions": "^6.3.6",
