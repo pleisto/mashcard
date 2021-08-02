@@ -58,7 +58,7 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
 
 export const blockToNode = (block: Block): JSONContent => {
   const data = block.data
-  const attrs = { ...block.meta }
+  const attrs: JSONContent['attrs'] = { ...block.meta }
 
   // NOTE patch UPDATE
   if (block.id) {
@@ -73,6 +73,10 @@ export const blockToNode = (block: Block): JSONContent => {
   const result: JSONContent = {
     type: block.type,
     attrs
+  }
+
+  if (data.text) {
+    result.text = data.text
   }
 
   if (data.content.length) {

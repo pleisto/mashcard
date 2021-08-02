@@ -41,6 +41,9 @@ export const DocumentPage: React.FC = () => {
       const content: JSONContent = blocksToJSONContents(data.childrenBlocks as Block[])[0]
       const attrs = content.attrs as BlockMeta
 
+      const title = content.text as string
+      console.log(`TODO Title is: ${title}`)
+
       if (attrs.cover) {
         // TODO
         // setCover(attrs.cover)
