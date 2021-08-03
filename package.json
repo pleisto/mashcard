@@ -42,7 +42,7 @@
     "not dead"
   ],
   "dependencies": {
-    "@apollo/client": "^3.4.1",
+    "@apollo/client": "^3.4.2",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
     "@rails/actioncable": "^6.1.4",
@@ -130,7 +130,7 @@
     "ts-loader": "^9.2.4",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.3.5",
-    "webpack": "^5.47.1",
+    "webpack": "^5.48.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"

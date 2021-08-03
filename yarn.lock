@@ -39,9 +39,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "@apollo/client@npm:3.4.1"
+"@apollo/client@npm:^3.4.2":
+  version: 3.4.2
+  resolution: "@apollo/client@npm:3.4.2"
   dependencies:
     "@graphql-typed-document-node/core": ^3.0.0
     "@wry/context": ^0.6.0
@@ -64,7 +64,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 879e028fe31f19889413f6833a324fab758eeb594c0966b163c21ecb4e883a7dec47c8bea63db70fa2a7badcb37929126ce2a871fa5621e89ba55b9ae3366d9f
+  checksum: b2e3658efc68c624d9b27a27ede02d93273964d229fe7008d3edba3061d880d78f5ccd54106e779c9139612ed3e4d3aa883207f52254dce878c02565dfb2eda2
   languageName: node
   linkType: hard
 
@@ -1726,7 +1726,7 @@ __metadata:
     rc-drawer: ^4.4.0
     rc-dropdown: ^3.2.0
     rc-field-form: ^1.21.1
-    rc-image: ^5.2.4
+    rc-image: ^5.2.5
     rc-input-number: ^7.3.0
     rc-mentions: ^1.6.1
     rc-menu: ^9.0.12
@@ -1755,7 +1755,7 @@ __metadata:
     scroll-into-view-if-needed: ^2.2.28
     style-loader: ^3.2.1
     typescript: ^4.3.5
-    webpack: ^5.47.1
+    webpack: ^5.48.0
   peerDependencies:
     date-fns: ^2.22.1
     i18next: ^20.3.2
@@ -1854,7 +1854,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@brickdoc/monorepo@workspace:."
   dependencies:
-    "@apollo/client": ^3.4.1
+    "@apollo/client": ^3.4.2
     "@babel/core": ^7.14.8
     "@babel/preset-react": ^7.14.5
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
@@ -1940,7 +1940,7 @@ __metadata:
     ts-loader: ^9.2.4
     tsconfig-paths-webpack-plugin: ^3.5.1
     typescript: ^4.3.5
-    webpack: ^5.47.1
+    webpack: ^5.48.0
     webpack-bundle-analyzer: ^4.4.2
     webpack-cli: ^4.7.2
     webpack-dev-server: ^3.11.2
@@ -6639,6 +6639,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"acorn-import-assertions@npm:^1.7.6":
+  version: 1.7.6
+  resolution: "acorn-import-assertions@npm:1.7.6"
+  peerDependencies:
+    acorn: ^8
+  checksum: bc8a1585abd70ebfb3a6b3112f5e3974fee3ac598230f916a3857f0ad4fa7e72197be532c49d1feeb83678ef264f34bee9bf1934dfb2f276d88468134a51fa9f
+  languageName: node
+  linkType: hard
+
 "acorn-jsx@npm:^5.3.1":
   version: 5.3.2
   resolution: "acorn-jsx@npm:5.3.2"
@@ -10778,8 +10787,8 @@ __metadata:
   linkType: hard
 
 "es-abstract@npm:^1.17.0-next.0, es-abstract@npm:^1.18.0, es-abstract@npm:^1.18.0-next.1, es-abstract@npm:^1.18.0-next.2, es-abstract@npm:^1.18.2":
-  version: 1.18.4
-  resolution: "es-abstract@npm:1.18.4"
+  version: 1.18.5
+  resolution: "es-abstract@npm:1.18.5"
   dependencies:
     call-bind: ^1.0.2
     es-to-primitive: ^1.2.1
@@ -10798,7 +10807,7 @@ __metadata:
     string.prototype.trimend: ^1.0.4
     string.prototype.trimstart: ^1.0.4
     unbox-primitive: ^1.0.1
-  checksum: c20e4da89ec134513a19c250e2080be898033c71e33efc99e4d32b4ae1506edbdb622ec0cf64d8c1945177131d7368ac9fd806f65d54e8f41f6983591710c90b
+  checksum: 9b64145b077863c9572dd8cd50e190833d241a135505ec422efe829c5fc085c475e6daca378b2b45acc288f28bf85e942b3ef2cb0f69daa250240781e1081cc4
   languageName: node
   linkType: hard
 
@@ -15371,8 +15380,8 @@ fsevents@^1.2.7:
   linkType: hard
 
 "jsdom@npm:^16.6.0":
-  version: 16.6.0
-  resolution: "jsdom@npm:16.6.0"
+  version: 16.7.0
+  resolution: "jsdom@npm:16.7.0"
   dependencies:
     abab: ^2.0.5
     acorn: ^8.2.4
@@ -15399,14 +15408,14 @@ fsevents@^1.2.7:
     whatwg-encoding: ^1.0.5
     whatwg-mimetype: ^2.3.0
     whatwg-url: ^8.5.0
-    ws: ^7.4.5
+    ws: ^7.4.6
     xml-name-validator: ^3.0.0
   peerDependencies:
     canvas: ^2.5.0
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 4abf126bba167f1cf123601232ceb3be0696a4370c8fa484a1a99d93926f251c372d84233b74aeede55909c3f30c350c646d27409f41353ea733c52e0243f49c
+  checksum: 454b83371857000763ed31130a049acd1b113e3b927e6dcd75c67ddc30cdd242d7ebcac5c2294b7a1a6428155cb1398709c573b3c6d809218692ea68edd93370
   languageName: node
   linkType: hard
 
@@ -19649,7 +19658,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-dialog@npm:^8.6.0":
+"rc-dialog@npm:^8.6.0, rc-dialog@npm:~8.6.0":
   version: 8.6.0
   resolution: "rc-dialog@npm:8.6.0"
   dependencies:
@@ -19661,21 +19670,6 @@ fsevents@^1.2.7:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
   checksum: 4f6691129ec8196be6258e55cee8b03c655da118e710c64780562a459b56c8e18af554c667e0883830497c0f2e6e318d0db3cb8a1b818a459baf576a686bfbc1
-  languageName: node
-  linkType: hard
-
-"rc-dialog@npm:~8.5.0":
-  version: 8.5.3
-  resolution: "rc-dialog@npm:8.5.3"
-  dependencies:
-    "@babel/runtime": ^7.10.1
-    classnames: ^2.2.6
-    rc-motion: ^2.3.0
-    rc-util: ^5.6.1
-  peerDependencies:
-    react: ">=16.9.0"
-    react-dom: ">=16.9.0"
-  checksum: a4499584470db0181f2a824c2686ef05f2a5092247fe7ed6d6791d248e60f33a87b3c67ab5fbee3d3e878a800cb553e5327439ab8247abe89d6e9e4d67fcad0b
   languageName: node
   linkType: hard
 
@@ -19721,18 +19715,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-image@npm:^5.2.4":
-  version: 5.2.4
-  resolution: "rc-image@npm:5.2.4"
+"rc-image@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "rc-image@npm:5.2.5"
   dependencies:
     "@babel/runtime": ^7.11.2
     classnames: ^2.2.6
-    rc-dialog: ~8.5.0
+    rc-dialog: ~8.6.0
     rc-util: ^5.0.6
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 9afdc5d3cfc7e4884379b82761a177316771580b056d2ef09a1737b49ae5d045571237a79f8935f7bca60d8a1c5058de38fc8e68e8bd5146b6d287ab3e69afcb
+  checksum: b30c4ee051f6c3b08765a9858ecdc858027c07540f21af3929707c6b364e1e7f1bfa24ae75beb00457f6c49a3b0847b065b744ebe022526dca173e64e925f93a
   languageName: node
   linkType: hard
 
@@ -24441,10 +24435,10 @@ typescript@^4.3.5:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^3.1.1":
-  version: 3.1.2
-  resolution: "webpack-sources@npm:3.1.2"
-  checksum: cd82fa91d2ce7da68c00479c99d518e3c896472902d2e920d48e14c03f7a4aafacedf58ee06648cf76de6a34f5ba3c6d2d764371006bf5e3faaa6415f470dd66
+"webpack-sources@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "webpack-sources@npm:3.2.0"
+  checksum: 8f1d686bd6aab2eda330579a07e14803cb2e01415f5a603697402aea3c36e98c1d2731167c3e97e50170cf1b0214cf8ef945fc639b100d1e3b67c023feb35716
   languageName: node
   linkType: hard
 
@@ -24502,9 +24496,9 @@ typescript@^4.3.5:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.11.0, webpack@npm:^5.47.1, webpack@npm:^5.9.0":
-  version: 5.47.1
-  resolution: "webpack@npm:5.47.1"
+"webpack@npm:^5.11.0, webpack@npm:^5.48.0, webpack@npm:^5.9.0":
+  version: 5.48.0
+  resolution: "webpack@npm:5.48.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
     "@types/estree": ^0.0.50
@@ -24512,6 +24506,7 @@ typescript@^4.3.5:
     "@webassemblyjs/wasm-edit": 1.11.1
     "@webassemblyjs/wasm-parser": 1.11.1
     acorn: ^8.4.1
+    acorn-import-assertions: ^1.7.6
     browserslist: ^4.14.5
     chrome-trace-event: ^1.0.2
     enhanced-resolve: ^5.8.0
@@ -24528,13 +24523,13 @@ typescript@^4.3.5:
     tapable: ^2.1.1
     terser-webpack-plugin: ^5.1.3
     watchpack: ^2.2.0
-    webpack-sources: ^3.1.1
+    webpack-sources: ^3.2.0
   peerDependenciesMeta:
     webpack-cli:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 31c6da004cab5ca17dc2ddec49fa9be141542645f979a83b860b75f530b4193e2eeff2ba9d81e89fa471626fc7d13b4c7ec4723beb5829ac7132ed79de7916f9
+  checksum: 34028413a0d6e9425c636f2c36e8cfaa3c0a545d3480d8f40fd64d25241ea7cb19590a1cc5eaaad6ea5ac6d0e59d2b5579702e9ea4506f448ad82656479823fe
   languageName: node
   linkType: hard
 
@@ -24788,7 +24783,7 @@ typescript@^4.3.5:
   languageName: node
   linkType: hard
 
-"ws@npm:^5.2.0 || ^6.0.0 || ^7.0.0, ws@npm:^7.3.1, ws@npm:^7.4.5":
+"ws@npm:^5.2.0 || ^6.0.0 || ^7.0.0, ws@npm:^7.3.1, ws@npm:^7.4.6":
   version: 7.5.3
   resolution: "ws@npm:7.5.3"
   peerDependencies:
