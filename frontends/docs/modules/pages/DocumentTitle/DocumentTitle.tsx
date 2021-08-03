@@ -10,19 +10,23 @@ import { useDocumentCoverUploader } from './useDocumentCoverUploader'
 export interface DocumentTitleProps {
   prepareFileUpload: DashboardProps['prepareFileUpload']
   fetchUnsplashImages: DashboardProps['fetchUnsplashImages']
+  title?: string
   icon?: DocumentIconMeta | null
   cover?: DocumentCoverMeta | null
   onCoverChange: (cover: DocumentCoverMeta | null | undefined) => void
   onIconChange: (icon: DocumentIconMeta | null | undefined) => void
+  onTitleChange: (title: string) => void
 }
 
 export const DocumentTitle: React.FC<DocumentTitleProps> = ({
   prepareFileUpload,
   fetchUnsplashImages,
+  title,
   icon,
   cover,
   onCoverChange,
-  onIconChange
+  onIconChange,
+  onTitleChange
 }) => {
   const [documentIconMeta, iconPopoverProps] = useDocumentIconUploader(icon, {
     prepareFileUpload,
@@ -64,7 +68,13 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
             </Popover>
           )}
         </div>
-        <Input.TextArea className={styles.titleInput} placeholder="Untitled" autoSize={true} />
+        <Input.TextArea
+          className={styles.titleInput}
+          value={title}
+          onChange={e => onTitleChange(e.target.value)}
+          placeholder="Untitled"
+          autoSize={true}
+        />
       </div>
     </div>
   )

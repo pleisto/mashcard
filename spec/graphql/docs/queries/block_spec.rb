@@ -71,10 +71,6 @@ describe Docs::Queries::Block, type: :query do
                 ... on BlockEmoji {
                   name
                   emoji
-                  slug
-                  emojiVersion
-                  unicodeVersion
-                  skinToneSupport
                 }
               }
             }

@@ -2,12 +2,17 @@ import * as React from 'react'
 import cx from 'classnames'
 import styles from './DocumentCover.module.less'
 import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
+import { BlockColor, BlockImage } from '@/BrickdocGraphQL'
 
-export interface DocumentCoverMeta {
-  type: 'image' | 'color'
-  color?: string
-  url?: string
+interface DocumentCoverImage extends Omit<BlockImage, '__typename'> {
+  type: 'image'
 }
+
+interface DocumentCoverColor extends Omit<BlockColor, '__typename'> {
+  type: 'color'
+}
+
+export type DocumentCoverMeta = DocumentCoverImage | DocumentCoverColor
 
 export interface DocumentCoverProps {
   documentCoverMeta?: DocumentCoverMeta | null
@@ -15,7 +20,11 @@ export interface DocumentCoverProps {
 }
 
 export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta, popoverProps }) => {
-  const value = documentCoverMeta ? documentCoverMeta.color ?? `url(${documentCoverMeta.url})` : 'unset'
+  let value = 'unset'
+
+  if (documentCoverMeta?.type === 'color') value = documentCoverMeta.color
+  if (documentCoverMeta?.type === 'image') value = documentCoverMeta.url
+
   return (
     <div
       className={cx(styles.cover, { [styles.uncover]: !documentCoverMeta })}

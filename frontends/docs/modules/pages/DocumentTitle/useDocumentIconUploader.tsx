@@ -58,18 +58,24 @@ export function useDocumentIconUploader(
       return
     }
 
-    let type = ''
+    let documentIconMeta: DocumentIconMeta
 
-    if (url) type = 'image'
-    if (emoji) type = 'emoji'
+    if (url) {
+      documentIconMeta = {
+        type: 'image',
+        url
+      }
+    } else if (emoji) {
+      documentIconMeta = {
+        type: 'emoji',
+        name: emoji.name,
+        emoji: emoji.emoji
+      }
+    } else {
+      return
+    }
 
-    if (!type) return
-
-    onChange({
-      type: type as DocumentIconMeta['type'],
-      url,
-      emoji
-    })
+    onChange(documentIconMeta)
   }
 
   const popoverProps: Partial<PopoverProps> = {

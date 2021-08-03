@@ -1,13 +1,17 @@
-import { EmojiMeta } from '@brickdoc/uploader'
 import { Button } from '@brickdoc/design-system'
 import * as React from 'react'
 import styles from './DocumentIcon.module.less'
+import { BlockEmoji, BlockImage } from '@/BrickdocGraphQL'
 
-export interface DocumentIconMeta {
-  type: 'image' | 'emoji'
-  emoji?: EmojiMeta
-  url?: string
+interface DocumentIconImage extends Omit<BlockImage, '__typename'> {
+  type: 'image'
 }
+
+interface DocumentIconEmoji extends Pick<BlockEmoji, 'emoji' | 'name'> {
+  type: 'emoji'
+}
+
+export type DocumentIconMeta = DocumentIconImage | DocumentIconEmoji
 
 export interface DocumentIconProps {
   documentIconMeta?: DocumentIconMeta
@@ -20,8 +24,8 @@ export const DocumentIcon: React.FC<DocumentIconProps> = ({ documentIconMeta, on
   return (
     <Button type="text" className={styles.icon} onClick={onClick}>
       {documentIconMeta.type === 'emoji' && (
-        <span className={styles.emoji} aria-label={documentIconMeta.emoji?.name}>
-          {documentIconMeta.emoji?.emoji}
+        <span className={styles.emoji} aria-label={documentIconMeta.name}>
+          {documentIconMeta.emoji}
         </span>
       )}
       {documentIconMeta.type === 'image' && <div className={styles.image} style={{ backgroundImage: `url(${documentIconMeta.url})` }} />}

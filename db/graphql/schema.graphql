@@ -56,6 +56,11 @@ type BlockColor {
   string
   """
   color: String!
+
+  """
+  type
+  """
+  type: String!
 }
 
 """
@@ -157,29 +162,14 @@ type BlockEmoji {
   emoji: String!
 
   """
-  emoji_version
-  """
-  emojiVersion: String!
-
-  """
   name
   """
   name: String!
 
   """
-  skin_tone_support
+  type
   """
-  skinToneSupport: Boolean!
-
-  """
-  slug
-  """
-  slug: String!
-
-  """
-  unicode_version
-  """
-  unicodeVersion: String!
+  type: String!
 }
 
 type BlockHistory {
@@ -200,6 +190,11 @@ GraphQL
 union BlockIcon = BlockEmoji | BlockImage
 
 type BlockImage {
+  """
+  type
+  """
+  type: String!
+
   """
   url
   """
@@ -624,7 +619,6 @@ type RootMutation {
   ): CreateOrUpdatePodPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -635,7 +629,6 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -646,7 +639,6 @@ type RootMutation {
   ): UserCreatePayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -657,7 +649,6 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -668,7 +659,6 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -679,7 +669,6 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(

@@ -42,24 +42,24 @@ export const queryChildrenBlocks = gql`
       meta {
         cover {
           ... on BlockImage {
+            type
             url
           }
           ... on BlockColor {
+            type
             color
           }
         }
         icon {
           ... on BlockImage {
+            type
             url
           }
 
           ... on BlockEmoji {
+            type
             name
             emoji
-            slug
-            emojiVersion
-            unicodeVersion
-            skinToneSupport
           }
         }
       }

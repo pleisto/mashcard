@@ -35,7 +35,7 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
     level === 0 ||
     (node.type.name === 'paragraph' && nodeChildren(node) && nodeChildren(node).length && nodeChildren(node)[0].type.name === 'paragraph')
 
-  const text = hasChildren ? 'Untitled' : node.textContent
+  const text = node.text ?? node.textContent
 
   const content: JSONContent[] = hasChildren ? [] : withoutUUID((node.toJSON() as JSONContent).content)
 

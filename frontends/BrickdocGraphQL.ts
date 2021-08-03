@@ -53,6 +53,8 @@ export type BlockColor = {
   __typename?: 'BlockColor'
   /** string */
   color: Scalars['String']
+  /** type */
+  type: Scalars['String']
 }
 
 /** GraphQL */
@@ -112,16 +114,10 @@ export type BlockEmoji = {
   __typename?: 'BlockEmoji'
   /** emoji */
   emoji: Scalars['String']
-  /** emoji_version */
-  emojiVersion: Scalars['String']
   /** name */
   name: Scalars['String']
-  /** skin_tone_support */
-  skinToneSupport: Scalars['Boolean']
-  /** slug */
-  slug: Scalars['String']
-  /** unicode_version */
-  unicodeVersion: Scalars['String']
+  /** type */
+  type: Scalars['String']
 }
 
 export type BlockHistory = {
@@ -137,6 +133,8 @@ export type BlockIcon = BlockEmoji | BlockImage
 
 export type BlockImage = {
   __typename?: 'BlockImage'
+  /** type */
+  type: Scalars['String']
   /** url */
   url: Scalars['String']
 }
@@ -889,14 +887,12 @@ export type GetPageBlocksQuery = { __typename?: 'RootQuery' } & {
           data: { __typename?: 'BlockData' } & Pick<BlockData, 'text' | 'content'>
           meta: { __typename?: 'BlockMeta' } & {
             cover?: Maybe<
-              ({ __typename?: 'BlockColor' } & Pick<BlockColor, 'color'>) | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'url'>)
+              | ({ __typename?: 'BlockColor' } & Pick<BlockColor, 'type' | 'color'>)
+              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'url'>)
             >
             icon?: Maybe<
-              | ({ __typename?: 'BlockEmoji' } & Pick<
-                  BlockEmoji,
-                  'name' | 'emoji' | 'slug' | 'emojiVersion' | 'unicodeVersion' | 'skinToneSupport'
-                >)
-              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'url'>)
+              | ({ __typename?: 'BlockEmoji' } & Pick<BlockEmoji, 'type' | 'name' | 'emoji'>)
+              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'url'>)
             >
           }
         }
@@ -976,14 +972,12 @@ export type GetChildrenBlocksQuery = { __typename?: 'RootQuery' } & {
           data: { __typename?: 'BlockData' } & Pick<BlockData, 'text' | 'content'>
           meta: { __typename?: 'BlockMeta' } & {
             cover?: Maybe<
-              ({ __typename?: 'BlockColor' } & Pick<BlockColor, 'color'>) | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'url'>)
+              | ({ __typename?: 'BlockColor' } & Pick<BlockColor, 'type' | 'color'>)
+              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'url'>)
             >
             icon?: Maybe<
-              | ({ __typename?: 'BlockEmoji' } & Pick<
-                  BlockEmoji,
-                  'name' | 'emoji' | 'slug' | 'emojiVersion' | 'unicodeVersion' | 'skinToneSupport'
-                >)
-              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'url'>)
+              | ({ __typename?: 'BlockEmoji' } & Pick<BlockEmoji, 'type' | 'name' | 'emoji'>)
+              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'url'>)
             >
           }
         }
@@ -1599,23 +1593,23 @@ export const GetPageBlocksDocument = gql`
       meta {
         cover {
           ... on BlockImage {
+            type
             url
           }
           ... on BlockColor {
+            type
             color
           }
         }
         icon {
           ... on BlockImage {
+            type
             url
           }
           ... on BlockEmoji {
+            type
             name
             emoji
-            slug
-            emojiVersion
-            unicodeVersion
-            skinToneSupport
           }
         }
       }
@@ -1922,23 +1916,23 @@ export const GetChildrenBlocksDocument = gql`
       meta {
         cover {
           ... on BlockImage {
+            type
             url
           }
           ... on BlockColor {
+            type
             color
           }
         }
         icon {
           ... on BlockImage {
+            type
             url
           }
           ... on BlockEmoji {
+            type
             name
             emoji
-            slug
-            emojiVersion
-            unicodeVersion
-            skinToneSupport
           }
         }
       }

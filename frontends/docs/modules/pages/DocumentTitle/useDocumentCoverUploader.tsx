@@ -60,18 +60,23 @@ export function useDocumentCoverUploader(
       return
     }
 
-    let type = ''
+    let documentCoverMeta: DocumentCoverMeta
 
-    if (url) type = 'image'
-    if (color) type = 'color'
+    if (url) {
+      documentCoverMeta = {
+        type: 'image',
+        url
+      }
+    } else if (color) {
+      documentCoverMeta = {
+        type: 'color',
+        color
+      }
+    } else {
+      return
+    }
 
-    if (!type) return
-
-    onChange({
-      type: type as DocumentCoverMeta['type'],
-      url,
-      color
-    })
+    onChange(documentCoverMeta)
   }
 
   const popoverProps: Partial<PopoverProps> = {
