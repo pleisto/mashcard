@@ -20,6 +20,7 @@ RUN bundle install --retry 2 --jobs 4 \
   # Remove ./packages without local gems
   && find ./packages/* -maxdepth 0 -type d | \
   # TODO: we should separate the gem packages from npm packages in the future to avoid listing all gem package names here.
+  grep -v 'webpacker' | \
   grep -v 'brickdoc_settings' | \
   grep -v 'rubocop-brickdoc' | \
   xargs rm -rf \

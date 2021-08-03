@@ -44,7 +44,7 @@ gem 'apollo_upload_server', '~> 2.0', '>= 2.0.5'
 gem 'graphql-batch', '~> 0.4.3'
 
 # Frontend
-gem 'webpacker', '6.0.0.beta.7'
+gem 'webpacker', path: 'packages/webpacker'
 
 ## IAM
 gem 'action_policy', '~> 0.5.7'

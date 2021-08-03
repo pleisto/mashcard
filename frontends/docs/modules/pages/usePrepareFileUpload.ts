@@ -14,7 +14,7 @@ const checksum = async (file: File): Promise<string> =>
     })
   })
 
-export function usePrepareFileUpload(): EditorOptions['prepareFileUpload'] {
+export function usePrepareFileUpload(): Exclude<EditorOptions['prepareFileUpload'], undefined> {
   const [directUpload] = useCreateDirectUploadMutation()
 
   return async (blockId: string, type: string, file: File) => {

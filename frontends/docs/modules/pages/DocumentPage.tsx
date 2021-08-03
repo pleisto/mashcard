@@ -74,7 +74,7 @@ export const DocumentPage: React.FC = () => {
       onCoverChange={setCover}
       onIconChange={setIcon}
       onTitleChange={setTitle}
-      prepareFileUpload={prepareFileUpload!}
+      prepareFileUpload={prepareFileUpload}
       fetchUnsplashImages={fetchUnsplashImages}
     />
   )

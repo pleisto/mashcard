@@ -1,0 +1,46 @@
+{
+  "name": "@brickdoc/webpacker",
+  "version": "0.1.0",
+  "description": "Use webpack to manage app-like JavaScript modules in Rails",
+  "main": "package/index.js",
+  "files": [
+    "package",
+    "lib/install/config/webpacker.yml"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.9",
+    "@babel/runtime": "^7.14.8",
+    "babel-loader": "^8.2.2",
+    "glob": "^7.1.7",
+    "js-yaml": "^3.14.1",
+    "path-complete-extname": "^1.0.0",
+    "pnp-webpack-plugin": "^1.7.0",
+    "terser-webpack-plugin": "^5.1.4",
+    "webpack-assets-manifest": "^5.0.6",
+    "webpack-merge": "^5.8.0",
+    "webpack-sources": "^3.2.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "webpack": "^5.48.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "peerDependencies": {
+    "webpack": "^5.48.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|(\\.|/))\\.jsx?$",
+    "roots": [
+      "<rootDir>/package"
+    ]
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint package/"
+  },
+  "license": "MIT"
+}

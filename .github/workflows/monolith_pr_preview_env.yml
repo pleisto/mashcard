@@ -123,5 +123,5 @@ jobs:
             This pull request is automatically built and testable in [${{ env.domain }}](https://${{ env.domain }}).
             ## Devtools
             * [Mailer Mock](https://${{ env.domain }}/devtools/mailer)
-            * [Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#container-insights:infrastructure)
+            * [Pod Logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:logs-insights$3FqueryDetail$3D$257E$2528end$257E0$257Estart$257E-10800$257EtimeType$257E$2527RELATIVE$257Eunit$257E$2527seconds$257EeditorString$257E$2527fields*20*40timestamp*2c*20log*2c*20ispresent*28kubernetes.pod_name*29*20as*20haskubernetes_pod_name*0a*7c*20filter*20haskubernetes_pod_name*20and*20kubernetes.pod_name*20like*20*2fbrickdoc-preview-pr${{ github.event.pull_request.number }}-brickdoc-ce*2f*0a*7c*20sort*20*40timestamp*20desc*0a*7c*20limit*20100$257EisLiveTail$257Efalse$257EqueryId$257E$25270.7634460475768581$257Esource$257E$2528$257E$2527*2faws*2fcontainerinsights*2fglobal-corp-kube*2fapplication$2529$2529)
           edit-mode: replace
