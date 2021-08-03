@@ -178,7 +178,7 @@
         {
           "kind": "UNION",
           "name": "BlockCover",
-          "description": null,
+          "description": "GraphQL",
           "fields": null,
           "inputFields": null,
           "interfaces": null,
@@ -661,7 +661,7 @@
         {
           "kind": "UNION",
           "name": "BlockIcon",
-          "description": null,
+          "description": "GraphQL",
           "fields": null,
           "inputFields": null,
           "interfaces": null,

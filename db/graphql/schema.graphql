@@ -58,6 +58,9 @@ type BlockColor {
   color: String!
 }
 
+"""
+GraphQL
+"""
 union BlockCover = BlockColor | BlockImage
 
 """
@@ -191,6 +194,9 @@ type BlockHistory {
   id: AutoIncrementID!
 }
 
+"""
+GraphQL
+"""
 union BlockIcon = BlockEmoji | BlockImage
 
 type BlockImage {
