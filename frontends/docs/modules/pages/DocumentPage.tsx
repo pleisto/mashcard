@@ -73,6 +73,7 @@ export const DocumentPage: React.FC = () => {
   const setTitle = createDocAttrsUpdater('title')
   const setIcon = createDocAttrsUpdater('icon')
   const setCover = createDocAttrsUpdater('cover')
+  // const setSort = createDocAttrsUpdater('sort')
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data) {

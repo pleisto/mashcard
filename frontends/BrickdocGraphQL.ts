@@ -680,6 +680,14 @@ export type Accounts_User = {
   webid: Scalars['String']
 }
 
+export type Avatar = {
+  __typename?: 'avatar'
+  /** signed id */
+  signedId: Scalars['String']
+  /** url */
+  url: Scalars['String']
+}
+
 /** ActiveStorage blobs */
 export type Blob = {
   __typename?: 'blob'
@@ -761,8 +769,8 @@ export type OmniauthSession = {
 /** Brickdoc Pod. */
 export type Pod = {
   __typename?: 'pod'
-  /** Pod Avatar url */
-  avatarUrl?: Maybe<Scalars['String']>
+  /** Pod Avatar */
+  avatarData?: Maybe<Avatar>
   /** public profile bio */
   bio?: Maybe<Scalars['String']>
   /** object unique id */
@@ -899,7 +907,11 @@ export type CreateDirectUploadMutation = { __typename?: 'RootMutation' } & {
 export type GetPodsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPodsQuery = { __typename?: 'RootQuery' } & {
-  pods: Array<{ __typename?: 'pod' } & Pick<Pod, 'id' | 'webid' | 'name' | 'avatarUrl' | 'bio'>>
+  pods: Array<
+    { __typename?: 'pod' } & Pick<Pod, 'id' | 'webid' | 'name' | 'bio'> & {
+        avatarData?: Maybe<{ __typename?: 'avatar' } & Pick<Avatar, 'url' | 'signedId'>>
+      }
+  >
 }
 
 export type QueryUnsplashImageQueryVariables = Exact<{
@@ -1512,7 +1524,10 @@ export const GetPodsDocument = gql`
       id
       webid
       name
-      avatarUrl
+      avatarData {
+        url
+        signedId
+      }
       bio
     }
   }

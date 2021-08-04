@@ -21,6 +21,8 @@ export interface EmojiMeta {
 
 export interface UploadResultData {
   action: 'add' | 'remove'
+  signedId?: string
+  viewUrl?: string
   url?: string
   emoji?: EmojiMeta
   color?: string
@@ -59,7 +61,11 @@ export interface DashboardPluginOptions {
   onProgress?: (progress: UploadProgress) => void
   onUploaded?: (data: UploadResultData) => void
   onFileLoaded?: (file: File) => void
-  prepareFileUpload: (blockId: string, type: 'image' | 'pdf', file: any) => Promise<{ endpoint: string; headers: any; blobKey: string }>
+  prepareFileUpload: (
+    blockId: string,
+    type: 'image' | 'pdf',
+    file: any
+  ) => Promise<{ endpoint: string; headers: any; blobKey: string; signedId: string; viewUrl: string }>
   fetchUnsplashImages?: (query: string, page: number, perPage: number) => Promise<{ success: boolean; data: UnsplashImage[] }>
   fileType: 'image' | 'pdf'
   importSources: ImportSourceOption[]
@@ -98,6 +104,8 @@ export class DashboardPlugin extends Plugin {
   uploadInput: HTMLInputElement
 
   blobKey: string
+  viewUrl: string
+  signedId: string
 
   unsplashPage: number
   unsplashFetching: boolean
@@ -261,6 +269,8 @@ export class DashboardPlugin extends Plugin {
     this.opts.onUploaded({
       action: 'add',
       url: this.blobKey,
+      signedId: this.signedId,
+      viewUrl: this.viewUrl,
       meta: {
         source: 'origin'
       }
@@ -273,14 +283,16 @@ export class DashboardPlugin extends Plugin {
 
   // TODO: handle error
   handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers, blobKey } = await this.opts.prepareFileUpload(this.opts.blockId, this.opts.fileType, file)
+    const { endpoint, headers, blobKey, viewUrl, signedId } = await this.opts.prepareFileUpload(this.opts.blockId, this.opts.fileType, file)
     this.blobKey = blobKey
+    this.viewUrl = viewUrl
+    this.signedId = signedId
     this.uppy.getPlugin('XHRUpload').setOptions({
       endpoint,
       headers
     })
 
-    this.opts?.onFileLoaded(file)
+    this.opts.onFileLoaded?.(file)
 
     await this.uppy.upload()
   }

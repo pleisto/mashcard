@@ -32,6 +32,9 @@ module System
 
         block = Docs::Block.unscoped.find_by(id: args[:block_id])
 
+        ## Ensure exist
+        block.update!(deleted_at: nil) if block.deleted_at
+
         if block
           block.attach_blob!(blob.id)
         else

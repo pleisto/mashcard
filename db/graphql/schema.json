@@ -4948,6 +4948,55 @@
         },
         {
           "kind": "OBJECT",
+          "name": "avatar",
+          "description": null,
+          "fields": [
+            {
+              "name": "signedId",
+              "description": "signed id",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "url",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "blob",
           "description": "ActiveStorage blobs",
           "fields": [
@@ -5502,14 +5551,14 @@
           "description": "Brickdoc Pod.",
           "fields": [
             {
-              "name": "avatarUrl",
-              "description": "Pod Avatar url",
+              "name": "avatarData",
+              "description": "Pod Avatar",
               "args": [
 
               ],
               "type": {
-                "kind": "SCALAR",
-                "name": "String",
+                "kind": "OBJECT",
+                "name": "avatar",
                 "ofType": null
               },
               "isDeprecated": false,

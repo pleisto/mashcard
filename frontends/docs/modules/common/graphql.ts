@@ -6,7 +6,10 @@ export const queryPods = gql`
       id
       webid
       name
-      avatarUrl
+      avatarData {
+        url
+        signedId
+      }
       bio
     }
   }

@@ -50,8 +50,13 @@ class Pod < ApplicationRecord
     blob.update_columns(pod_id: id, user_id: owner_id)
   end
 
-  def avatar_url
-    avatar.blob&.real_url
+  def avatar_data
+    return nil if avatar.blob.nil?
+
+    {
+      url: avatar.blob.real_url,
+      signed_id: avatar.blob.signed_id
+    }
   end
 
   def self.webid_available?(webid)

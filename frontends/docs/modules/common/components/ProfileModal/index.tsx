@@ -1,7 +1,9 @@
-import React from 'react'
-import { Modal, Form, Input, Skeleton, message } from '@brickdoc/design-system'
+import React, { useState } from 'react'
+import { Modal, Form, Input, Skeleton, message, Avatar, Popover } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
+import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
+import { usePrepareFileUpload } from '@/docs/modules/pages/usePrepareFileUpload'
 
 interface ProfileModalProps {
   pod: Pod
@@ -11,11 +13,23 @@ interface ProfileModalProps {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+const IMPORT_SOURCES: ImportSourceOption[] = [
+  {
+    type: 'upload',
+    buttonText: 'Choose an image',
+    acceptType: 'image/*',
+    buttonHint: 'Images wider than 1500 pixels work best.'
+  }
+]
+
 export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title, type, setVisible }) => {
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
   const [form] = Form.useForm()
   const [createOrUpdatePod, { loading }] = useCreateOrUpdatePodMutation()
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.url : '')
+  const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.signedId : '')
+  const prepareFileUpload = usePrepareFileUpload()
 
   const handleCancel = (): void => {
     setVisible(false)
@@ -37,7 +51,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
           webid: values.webid,
           name: values.name,
           bio: values.bio,
-          avatarSignedId: values.avatar
+          avatarSignedId
         }
         void createOrUpdatePod({ variables: { input } })
         setVisible(false)
@@ -51,7 +65,15 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       })
   }
 
-  const initialValues = type === PodOperation.Create ? {} : pod
+  const initialValues =
+    type === PodOperation.Create
+      ? {}
+      : {
+          name: pod.name,
+          bio: pod.bio,
+          webid: pod.webid,
+          avatar: avatarSignedId
+        }
   const formName = type === PodOperation.Create ? 'Create' : 'Update'
 
   const webidFormItem =
@@ -65,20 +87,44 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       </Form.Item>
     )
 
+  const onUploaded = (attrs: UploadResultData): void => {
+    setAvatarUrl(attrs.viewUrl)
+    setAvatarSignedId(attrs.signedId)
+  }
+
+  let avatar
+  if (avatarUrl) {
+    avatar = <Avatar src={avatarUrl} />
+  } else if (type === PodOperation.Create) {
+    avatar = <Avatar />
+  } else {
+    avatar = <Avatar style={{ background: '#2376b7' }}>{pod.webid}</Avatar>
+  }
+
+  const updateDashboard = (
+    <Dashboard
+      fileType="image"
+      prepareFileUpload={prepareFileUpload}
+      onUploaded={onUploaded}
+      importSources={IMPORT_SOURCES}
+    />
+  )
+
   const formData = (
-    <Form form={form} name={formName} layout="vertical" initialValues={initialValues}>
-      {webidFormItem}
-      <Form.Item name="name" label={t('pods.name')} rules={[{ required: true, message: t('pods.required.name') }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item name="bio" label={t('pods.bio')}>
-        <Input />
-      </Form.Item>
-      {/* TODO Upload avatar */}
-      <Form.Item name="avatar" label={t('pods.avatar')}>
-        <Input />
-      </Form.Item>
-    </Form>
+    <>
+      <Form form={form} name={formName} layout="vertical" initialValues={initialValues}>
+        {webidFormItem}
+        <Form.Item name="name" label={t('pods.name')} rules={[{ required: true, message: t('pods.required.name') }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="bio" label={t('pods.bio')}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="avatar" label={t('pods.avatar')}>
+          <Popover content={updateDashboard}> {avatar} </Popover>
+        </Form.Item>
+      </Form>
+    </>
   )
 
   return (

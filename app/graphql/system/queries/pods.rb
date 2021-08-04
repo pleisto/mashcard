@@ -7,7 +7,7 @@ module System
     authenticate_user!
 
     def resolve
-      current_user.pods
+      current_user.pods.with_attached_avatar
     end
   end
 end

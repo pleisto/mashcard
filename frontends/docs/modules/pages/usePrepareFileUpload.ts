@@ -28,6 +28,10 @@ export function usePrepareFileUpload(): Exclude<EditorOptions['prepareFileUpload
         inputType = Upload.Doc
     }
 
+    if (!blockId && type === 'image') {
+      inputType = Upload.Avatar
+    }
+
     const input = {
       filename: file.name,
       byteSize: file.size,
@@ -49,10 +53,14 @@ export function usePrepareFileUpload(): Exclude<EditorOptions['prepareFileUpload
         throw new Error('prepare upload failed')
       }
 
+      const directUpload = result.data.createDirectUpload.directUpload
+
       return {
-        endpoint: result.data.createDirectUpload.directUpload.uploadUrl,
-        blobKey: result.data.createDirectUpload.directUpload.blobKey,
-        headers: result.data.createDirectUpload.directUpload.headers
+        endpoint: directUpload.uploadUrl,
+        blobKey: directUpload.blobKey,
+        headers: directUpload.headers,
+        signedId: directUpload.signedId,
+        viewUrl: directUpload.viewUrl
       }
     })
   }
