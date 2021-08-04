@@ -133,7 +133,7 @@ class Base extends React.Component<InternalBlockProps, BaseState> {
     return {}
   }
 
-  context: ConfigConsumerProps
+  declare context: ConfigConsumerProps
 
   editIcon?: HTMLDivElement
 

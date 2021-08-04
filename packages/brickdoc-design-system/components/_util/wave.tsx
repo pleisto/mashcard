@@ -27,7 +27,7 @@ function isNotGrey(color: string) {
 export default class Wave extends React.Component<{ insertExtraNode?: boolean }> {
   static contextType = ConfigContext
 
-  context: ConfigConsumerProps
+  declare context: ConfigConsumerProps
 
   private instance?: {
     cancel: () => void

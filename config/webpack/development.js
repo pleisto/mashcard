@@ -6,15 +6,22 @@ const PrintChangedFilePlugin = require('./PrintChangedFilePlugin')
 const webpackConfig = require('./base')
 
 // Enable React refresh support
-webpackConfig.module.rules.find(x => x.test.toString().includes('jsx')).use[0].options.plugins = [require.resolve('react-refresh/babel')]
+if (webpackConfig.devServer) {
+  webpackConfig.module.rules.find(x => x.test.toString().includes('jsx')).use[0].options.plugins = [require.resolve('react-refresh/babel')]
+}
 
-const mergedConfig = merge(webpackConfig, {
-  devServer: {
-    watchOptions: {
-      ignored: ['**/node_modules', '**/packages/*/dist']
-    }
-  },
-  plugins: [new ReactRefreshWebpackPlugin(), new PrintChangedFilePlugin()]
-})
+const mergedConfig = merge(
+  webpackConfig,
+  webpackConfig.devServer
+    ? {
+        devServer: {
+          watchOptions: {
+            ignored: ['**/node_modules', '**/packages/*/dist']
+          }
+        },
+        plugins: [new ReactRefreshWebpackPlugin(), new PrintChangedFilePlugin()]
+      }
+    : {}
+)
 
 module.exports = mergedConfig

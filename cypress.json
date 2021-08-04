@@ -1,5 +1,9 @@
 {
   "projectId": "p7oaqk",
   "baseUrl": "http://localhost:3000",
-  "reporter": "nyan"
+  "reporter": "nyan",
+  "video": false,
+  "env": {
+    "coverage": false
+  }
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
-ENV["NODE_ENV"]  = "development" if ENV["RAILS_ENV"] === 'cicd'
+ENV["NODE_ENV"] = "development" if ENV["RAILS_ENV"] === 'cicd'
 ENV["NODE_ENV"] ||= ENV["RAILS_ENV"]
 
 require "pathname"

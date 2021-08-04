@@ -1,3 +1,0 @@
-{
-  "presets": ["./node_modules/@brickdoc/webpacker/package/babel/preset.js"]
-}

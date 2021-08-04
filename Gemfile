@@ -81,6 +81,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'codecov', require: false
 end
 
 group :development do

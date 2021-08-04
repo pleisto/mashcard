@@ -1,3 +1,5 @@
+const isCI = require('is-ci')
+
 /**
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -7,15 +9,16 @@
 module.exports = {
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
-  collectCoverage: !!process.env.CI,
+  collectCoverage: isCI,
+  // Jest will map files in `dist` back into their source via source maps.
+  collectCoverageFrom: ['**/dist/**/*.js', '!**/@(node_modules|__tests__)/**', '!**/*.@(spec|test).js'],
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '@brickdoc/design-system': '<rootDir>/packages/brickdoc-design-system/dist/components/index.js'
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
   timers: 'fake',
-  testMatch: ['**/dist/**/__tests__/**/*.js', '**/dist/**/?(*.)+(spec|test).js'],
-  reporters: process.env.CI
+  testMatch: ['**/dist/**/__tests__/**/*.js', '**/dist/**/*.@(spec|test).js'],
+  reporters: isCI
     ? ['default', ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]]
     : ['default']
 }

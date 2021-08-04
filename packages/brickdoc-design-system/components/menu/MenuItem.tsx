@@ -8,15 +8,15 @@ import { SiderContext, SiderContextProps } from '../layout/Sider'
 import { isValidElement, cloneElement } from '../_util/reactNode'
 
 export interface MenuItemProps extends Omit<RcMenuItemProps, 'title'> {
-  icon?: React.ReactNode;
-  danger?: boolean;
-  title?: React.ReactNode;
+  icon?: React.ReactNode
+  danger?: boolean
+  title?: React.ReactNode
 }
 
 export default class MenuItem extends React.Component<MenuItemProps> {
-  static contextType = MenuContext;
+  static contextType = MenuContext
 
-  context: MenuContextProps;
+  declare context: MenuContextProps
 
   renderItemChildren(inlineCollapsed: boolean) {
     const { prefixCls, firstLevel } = this.context
@@ -45,7 +45,7 @@ export default class MenuItem extends React.Component<MenuItemProps> {
       tooltipTitle = ''
     }
     const tooltipProps: TooltipProps = {
-      title: tooltipTitle,
+      title: tooltipTitle
     }
 
     if (!siderCollapsed && !inlineCollapsed) {
@@ -59,30 +59,25 @@ export default class MenuItem extends React.Component<MenuItemProps> {
       <Tooltip
         {...tooltipProps}
         placement={direction === 'rtl' ? 'left' : 'right'}
-        overlayClassName={`${prefixCls}-inline-collapsed-tooltip`}
-      >
+        overlayClassName={`${prefixCls}-inline-collapsed-tooltip`}>
         <Item
           {...rest}
           className={classNames(
             {
               [`${prefixCls}-item-danger`]: danger,
-              [`${prefixCls}-item-only-child`]: (icon ? childrenLength + 1 : childrenLength) === 1,
+              [`${prefixCls}-item-only-child`]: (icon ? childrenLength + 1 : childrenLength) === 1
             },
-            className,
+            className
           )}
-          title={typeof title === 'string' ? title : undefined}
-        >
+          title={typeof title === 'string' ? title : undefined}>
           {cloneElement(icon, {
-            className: classNames(
-              isValidElement(icon) ? icon.props?.className : '',
-              `${prefixCls}-item-icon`,
-            ),
+            className: classNames(isValidElement(icon) ? icon.props?.className : '', `${prefixCls}-item-icon`)
           })}
           {this.renderItemChildren(inlineCollapsed)}
         </Item>
       </Tooltip>
     )
-  };
+  }
 
   render() {
     return <SiderContext.Consumer>{this.renderItem}</SiderContext.Consumer>

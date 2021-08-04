@@ -5,22 +5,22 @@ import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import AnchorContext from './context'
 
 export interface AnchorLinkProps {
-  prefixCls?: string;
-  href: string;
-  target?: string;
-  title: React.ReactNode;
-  children?: React.ReactNode;
-  className?: string;
+  prefixCls?: string
+  href: string
+  target?: string
+  title: React.ReactNode
+  children?: React.ReactNode
+  className?: string
 }
 
 class AnchorLink extends React.Component<AnchorLinkProps, any, AntAnchor> {
   static defaultProps = {
-    href: '#',
-  };
+    href: '#'
+  }
 
-  static contextType = AnchorContext;
+  static contextType = AnchorContext
 
-  context: AntAnchor;
+  declare context: AntAnchor
 
   componentDidMount() {
     this.context.registerLink(this.props.href)
@@ -43,7 +43,7 @@ class AnchorLink extends React.Component<AnchorLinkProps, any, AntAnchor> {
     const { href, title } = this.props
     onClick?.(e, { title, href })
     scrollTo(href)
-  };
+  }
 
   renderAnchorLink = ({ getPrefixCls }: ConfigConsumerProps) => {
     const { prefixCls: customizePrefixCls, href, title, children, className, target } = this.props
@@ -52,28 +52,22 @@ class AnchorLink extends React.Component<AnchorLinkProps, any, AntAnchor> {
     const wrapperClassName = classNames(
       `${prefixCls}-link`,
       {
-        [`${prefixCls}-link-active`]: active,
+        [`${prefixCls}-link-active`]: active
       },
-      className,
+      className
     )
     const titleClassName = classNames(`${prefixCls}-link-title`, {
-      [`${prefixCls}-link-title-active`]: active,
+      [`${prefixCls}-link-title-active`]: active
     })
     return (
       <div className={wrapperClassName}>
-        <a
-          className={titleClassName}
-          href={href}
-          title={typeof title === 'string' ? title : ''}
-          target={target}
-          onClick={this.handleClick}
-        >
+        <a className={titleClassName} href={href} title={typeof title === 'string' ? title : ''} target={target} onClick={this.handleClick}>
           {title}
         </a>
         {children}
       </div>
     )
-  };
+  }
 
   render() {
     return <ConfigConsumer>{this.renderAnchorLink}</ConfigConsumer>

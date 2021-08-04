@@ -23,8 +23,6 @@ body {
   .square(100%);
 }
 
-
-
 // Document
 //
 // 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
@@ -42,8 +40,6 @@ body {
   font-size: 100%;
 }
 
-
-
 // Body
 //
 // 1. remove the margin in all browsers.
@@ -60,11 +56,11 @@ body {
   line-height: @line-height-base;
   background-color: @body-background; // 2
   font-feature-settings: @font-feature-settings-base;
-  &:lang(zh-Hans){
-    font-family: "Brickdoc Sans CJK SC", @font-family;
+  &:lang(zh-Hans) {
+    font-family: 'Brickdoc Sans CJK SC', @font-family;
   }
-  &:lang(zh-Hant){
-    font-family: "Brickdoc Sans CJK TC", @font-family;
+  &:lang(zh-Hant) {
+    font-family: 'Brickdoc Sans CJK TC', @font-family;
   }
 }
 
@@ -163,7 +159,6 @@ blockquote {
   margin: 0 0 1em;
 }
 
-
 b,
 strong {
   font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
@@ -195,38 +190,35 @@ sup {
 
 em:lang(zh),
 em:lang(ja) {
-  -moz-text-emphasis: filled circle;
-  -webkit-text-emphasis: filled circle;
   text-emphasis: filled circle;
-  -moz-text-emphasis-position: under;
-  -webkit-text-emphasis-position: under;
-  text-emphasis-position: under;
+  text-emphasis-position: under right;
   font-style: inherit;
   border-bottom: 2px dotted;
-  padding-bottom: .05em;
+  padding-bottom: 0.05em;
   border-bottom-width: -webkit-calc(0px);
-  padding-bottom: -webkit-calc(0px); }
+  padding-bottom: -webkit-calc(0px);
+}
 
 em:lang(ja) {
-  -moz-text-emphasis: filled sesame;
-  -webkit-text-emphasis: filled sesame;
   text-emphasis: filled sesame;
-  -moz-text-emphasis-position: over;
-  -webkit-text-emphasis-position: over;
-  text-emphasis-position: over; }
+  text-emphasis-position: over right;
+}
 
 dfn:lang(zh),
 dfn:lang(ja) {
   font-weight: inherit;
-  font-style: inherit; }
+  font-style: inherit;
+}
 
 dfn:lang(zh),
 dfn:lang(ja) {
-  font-weight: bolder; }
+  font-weight: bolder;
+}
 
 cite:lang(zh),
 cite:lang(ja) {
-  font-style: inherit; }
+  font-style: inherit;
+}
 
 //
 // Links
@@ -363,7 +355,6 @@ textarea {
   line-height: inherit;
 }
 
-
 button,
 select {
   text-transform: none; // remove the inheritance of text transform in Firefox
@@ -387,8 +378,6 @@ button::-moz-focus-inner,
   padding: 0;
   border-style: none;
 }
-
-
 
 input[type='date'],
 input[type='time'],
@@ -478,7 +467,6 @@ output {
 summary {
   display: list-item; // Add the correct display in all browsers
 }
-
 
 mark {
   padding: 0.2em;

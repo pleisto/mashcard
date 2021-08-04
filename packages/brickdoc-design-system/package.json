@@ -9,6 +9,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "main": "./dist/components/index.js",
   "module": "./dist/components/index.js",
   "types": "./dist/components/index.d.ts",
   "files": [
