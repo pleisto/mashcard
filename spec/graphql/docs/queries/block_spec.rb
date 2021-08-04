@@ -92,12 +92,14 @@ describe Docs::Queries::Block, type: :query do
       expect(root['nextSort'].class).to eq String
       expect(root['nextSort'].to_i).to_not eq 0
       sort_map = {
-        block2.id => [Docs::Block::SORT_GAP, Docs::Block::SORT_GAP * 2], ## NOTE cuz authorized_scope
+        # block2.id => [Docs::Block::SORT_GAP, Docs::Block::SORT_GAP * 2],
         child1.id => [0, Docs::Block::SORT_GAP * 1],
         child2.id => [Docs::Block::SORT_GAP * 1, Docs::Block::SORT_GAP * 2],
         child3.id => [Docs::Block::SORT_GAP * 2, Docs::Block::SORT_GAP * 3]
       }
-      expect(response.data['pageBlocks'].each_with_object({}) { |x, h| h[x['id']] = [x['sort'].to_i, x['nextSort'].to_i] }).to eq(sort_map)
+      expect(response.data['pageBlocks'].each_with_object({}) do |x, h|
+        h[x['id']] = [x['sort'].to_i, x['nextSort'].to_i] if x['id'] != block2.id
+      end).to eq(sort_map)
       expect(child2.reload.sort).to eq(Docs::Block::SORT_GAP)
 
       # childrenBlocks
