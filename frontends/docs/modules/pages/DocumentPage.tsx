@@ -1,64 +1,87 @@
 import React, { useEffect } from 'react'
+import { Node } from 'prosemirror-model'
 import { useParams } from 'react-router-dom'
 import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor } from '@brickdoc/editor'
-import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
+import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './DocumentTitle'
 import { syncProvider, blocksToJSONContents } from './SyncProvider'
 import { useDocumentSubscription } from './useDocumentSubscription'
 import { usePrepareFileUpload } from './usePrepareFileUpload'
 import { useFetchUnsplashImages } from './useFetchUnsplashImages'
 import styles from './DocumentPage.module.less'
-import { DocumentIconMeta } from './DocumentTitle/DocumentIcon'
-import { DocumentCoverMeta } from './DocumentTitle/DocumentCover'
 import { JSONContent } from '@tiptap/core'
-
-interface DocumentMeta {
-  icon?: DocumentIconMeta | null
-  cover?: DocumentCoverMeta | null
-}
 
 export const DocumentPage: React.FC = () => {
   const { webid, docid, ...restParams } = useParams<{ webid: string; docid: string; snapshotVersion: string }>()
   const [blockSyncBatch] = useBlockSyncBatchMutation()
   const { onCommit } = syncProvider({ blockSyncBatch })
 
+  const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     variables: { parentId: docid, excludePages: false, snapshotVersion: Number(restParams.snapshotVersion || '0') }
   })
 
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
+  const createImageUrlGetter =
+    (field: string) =>
+    (node: Node): string | undefined => {
+      if (node.attrs[field]?.source === Filesourcetype.External) {
+        return node.attrs[field].key
+      }
+
+      if (node.attrs[field]?.source === Filesourcetype.Origin) {
+        const block = childrenBlocks.current?.find(block => block.id === node.attrs.uuid)
+        const blob = block?.blobs?.find(blob => blob.blobKey === node.attrs[field].key)
+        return blob?.url
+      }
+    }
+  const getImageUrl = createImageUrlGetter('image')
+  const getPdfUrl = createImageUrlGetter('attachment')
+  const getDocIconUrl = (): string | undefined => {
+    if (!editor || editor.isDestroyed) {
+      return undefined
+    }
+    return createImageUrlGetter('icon')(editor.state.doc)
+  }
+  const getDocCoverUrl = (): string | undefined => {
+    if (!editor || editor.isDestroyed) {
+      return undefined
+    }
+    return createImageUrlGetter('cover')(editor.state.doc)
+  }
+
   const editor = useEditor({
     onCommit,
     prepareFileUpload,
-    fetchUnsplashImages
+    fetchUnsplashImages,
+    getImageUrl,
+    getPdfUrl
   })
 
-  const [icon, setIcon] = React.useState<DocumentIconMeta | null | undefined>()
-  const [cover, setCover] = React.useState<DocumentCoverMeta | null | undefined>()
-  const [title, setTitle] = React.useState<string | undefined>()
+  const createDocAttrsUpdater =
+    (field: string) =>
+    (value: any): void => {
+      if (!editor || editor.isDestroyed) return
+      editor.commands.setDocAttrs({
+        ...editor.state.doc.attrs,
+        [field]: value
+      })
+    }
+
+  const setTitle = createDocAttrsUpdater('title')
+  const setIcon = createDocAttrsUpdater('icon')
+  const setCover = createDocAttrsUpdater('cover')
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data) {
       const content: JSONContent = blocksToJSONContents(data.childrenBlocks as Block[])[0]
-      const attrs = content.attrs as DocumentMeta
-
-      /**
-       * Document Meta
-       */
-      // initialize
-      if (content.text && title === undefined) setTitle(content.text)
-      if (attrs.cover && cover === undefined) setCover(attrs.cover)
-      if (attrs.icon && icon === undefined) setIcon(attrs.icon)
-      // update
-      if (title !== undefined && title !== content.text) content.text = title
-      if (cover !== undefined && cover !== attrs.cover) (content.attrs as DocumentMeta).cover = cover
-      if (icon !== undefined && icon !== attrs.icon) (content.attrs as DocumentMeta).icon = icon
+      childrenBlocks.current = data.childrenBlocks
 
       editor.commands.replaceRoot(content)
     }
-  }, [editor, data, title, cover, icon])
+  }, [editor, data])
 
   useDocumentSubscription({ docid, editor })
 
@@ -68,12 +91,15 @@ export const DocumentPage: React.FC = () => {
 
   const DocumentTitleElement = (
     <DocumentTitle
-      icon={icon}
-      cover={cover}
-      title={title}
+      blockId={editor?.state.doc.attrs.uuid}
+      icon={editor?.state.doc.attrs.icon}
+      cover={editor?.state.doc.attrs.cover}
+      title={editor?.state.doc.attrs.title}
       onCoverChange={setCover}
       onIconChange={setIcon}
       onTitleChange={setTitle}
+      getDocIconUrl={getDocIconUrl}
+      getDocCoverUrl={getDocCoverUrl}
       prepareFileUpload={prepareFileUpload}
       fetchUnsplashImages={fetchUnsplashImages}
     />

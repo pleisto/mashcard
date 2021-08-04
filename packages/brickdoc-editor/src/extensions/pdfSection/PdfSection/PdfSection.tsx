@@ -24,8 +24,35 @@ const PDF_IMPORT_SOURCES: ImportSourceOption[] = [
   }
 ]
 
+export interface PdfSectionAttributes {
+  width?: number
+  height?: number
+  key: string
+  source: string
+  type: string
+}
+
 // TODO: handle pdf load on error
 export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
+  const latestPdfAttributes = React.useRef<Partial<PdfSectionAttributes>>({})
+  const updatePdfAttributes = (newAttributes: Partial<PdfSectionAttributes>): void => {
+    latestPdfAttributes.current = {
+      ...latestPdfAttributes.current,
+      ...newAttributes
+    }
+
+    if (!node.attrs.attachment?.source && !latestPdfAttributes.current.source) {
+      return
+    }
+
+    updateAttributes({
+      attachment: {
+        ...node.attrs.attachment,
+        ...latestPdfAttributes.current
+      }
+    })
+  }
+
   const [file, setFile] = React.useState<File>()
   const [progress, setProgress] = React.useState<UploadProgress>()
 
@@ -38,12 +65,16 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
   }
 
   const onUploaded = (data: UploadResultData): void => {
-    updateAttributes({ url: data.url, blobKey: data.meta?.blobKey })
+    updatePdfAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
 
-  const isUploadCompleted = !!node.attrs.blobKey && file
+  const isUploadCompleted = !!node.attrs.attachment.source && file
 
-  if (node.attrs.url || isUploadCompleted) {
+  console.log(node, file)
+
+  if (node.attrs.attachment.key || isUploadCompleted) {
+    const url = extension.options.getPdfUrl?.(node) || file
+
     return (
       <NodeViewWrapper>
         <div role="dialog" className="brickdoc-block-pdf-section-container">
@@ -103,19 +134,19 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
               right: true
             }}
             size={{
-              width: node.attrs.width,
-              height: node.attrs.height
+              width: node.attrs.attachment.width,
+              height: node.attrs.attachment.height
             }}
             onResizeStop={(e, direction, ref, d) => {
-              updateAttributes({
-                width: Math.min(Number(node.attrs.width) + d.width, MAX_WIDTH),
-                height: Number(node.attrs.height) + d.height
+              updatePdfAttributes({
+                width: Math.min(Number(node.attrs.attachment.width) + d.width, MAX_WIDTH),
+                height: Number(node.attrs.attachment.height) + d.height
               })
             }}>
             <div className="pdf-section-menu-button">
               <Icon className="pdf-section-menu-icon" name="more" />
             </div>
-            <PdfDocument file={node.attrs.url || file} scale={Number(node.attrs.width) / MAX_WIDTH} />
+            <PdfDocument file={url} scale={Number(node.attrs.attachment.width) / MAX_WIDTH} />
           </Resizable>
         </div>
       </NodeViewWrapper>

@@ -8,6 +8,7 @@ import { useDocumentIconUploader } from './useDocumentIconUploader'
 import { useDocumentCoverUploader } from './useDocumentCoverUploader'
 
 export interface DocumentTitleProps {
+  blockId: string
   prepareFileUpload: DashboardProps['prepareFileUpload']
   fetchUnsplashImages: DashboardProps['fetchUnsplashImages']
   title?: string
@@ -16,9 +17,12 @@ export interface DocumentTitleProps {
   onCoverChange: (cover: DocumentCoverMeta | null | undefined) => void
   onIconChange: (icon: DocumentIconMeta | null | undefined) => void
   onTitleChange: (title: string) => void
+  getDocIconUrl: () => string | undefined
+  getDocCoverUrl: () => string | undefined
 }
 
 export const DocumentTitle: React.FC<DocumentTitleProps> = ({
+  blockId,
   prepareFileUpload,
   fetchUnsplashImages,
   title,
@@ -26,28 +30,41 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
   cover,
   onCoverChange,
   onIconChange,
-  onTitleChange
+  onTitleChange,
+  getDocIconUrl,
+  getDocCoverUrl
 }) => {
+  const [localIcon, setLocalIcon] = React.useState('')
+  const [localCover, setLocalCover] = React.useState('')
   const [documentIconMeta, iconPopoverProps] = useDocumentIconUploader(icon, {
+    blockId,
     prepareFileUpload,
     fetchUnsplashImages,
     styles,
-    onChange: onIconChange
+    onChange: onIconChange,
+    onFileLoaded: setLocalIcon
   })
   const [documentCoverMeta, coverPopoverProps] = useDocumentCoverUploader(cover, {
+    blockId,
     prepareFileUpload,
     fetchUnsplashImages,
     styles,
-    onChange: onCoverChange
+    onChange: onCoverChange,
+    onFileLoaded: setLocalCover
   })
 
   return (
     <div className={styles.container}>
-      <DocumentCover documentCoverMeta={documentCoverMeta} popoverProps={coverPopoverProps} />
+      <DocumentCover
+        localUrl={localCover}
+        getDocCoverUrl={getDocCoverUrl}
+        documentCoverMeta={documentCoverMeta}
+        popoverProps={coverPopoverProps}
+      />
       <div className={styles.titleWrapper}>
         {documentIconMeta && (
           <Popover {...iconPopoverProps}>
-            <DocumentIcon documentIconMeta={documentIconMeta} />
+            <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
           </Popover>
         )}
         <div className={styles.actions}>

@@ -1,3 +1,4 @@
+import { Blocktype, Filesourcetype } from '@/BrickdocGraphQL'
 import { PopoverProps } from '@brickdoc/design-system'
 import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import React from 'react'
@@ -25,15 +26,19 @@ const ICON_IMPORT_SOURCES: ImportSourceOption[] = [
 export function useDocumentIconUploader(
   icon: DocumentIconMeta | null | undefined,
   {
+    blockId,
     prepareFileUpload,
     fetchUnsplashImages,
     styles,
-    onChange
+    onChange,
+    onFileLoaded
   }: {
+    blockId: string
     prepareFileUpload: DashboardProps['prepareFileUpload']
     fetchUnsplashImages: DashboardProps['fetchUnsplashImages']
     styles: any
     onChange: (icon: DocumentIconMeta | null | undefined) => void
+    onFileLoaded: (localUrl: string) => void
   }
 ): [DocumentIconMeta | undefined | null, Partial<PopoverProps>] {
   const [documentIconMeta, setDocumentIconMeta] = React.useState(icon)
@@ -41,18 +46,15 @@ export function useDocumentIconUploader(
     setDocumentIconMeta(icon)
   }, [icon])
 
-  const onFileLoaded = (inputFile: File): void => {
+  const onLoaded = (inputFile: File): void => {
     const fr = new FileReader()
     fr.readAsDataURL(inputFile)
     fr.onload = function onload() {
-      onChange({
-        type: 'image',
-        url: this.result as string
-      })
+      onFileLoaded(this.result as string)
     }
   }
 
-  const onUploaded = ({ action, url, emoji }: UploadResultData): void => {
+  const onUploaded = ({ action, url, emoji, meta }: UploadResultData): void => {
     if (action === 'remove') {
       onChange(null)
       return
@@ -62,12 +64,13 @@ export function useDocumentIconUploader(
 
     if (url) {
       documentIconMeta = {
-        type: 'image',
-        url
+        type: Blocktype.Image,
+        source: meta?.source === 'external' ? Filesourcetype.External : Filesourcetype.Origin,
+        key: url
       }
     } else if (emoji) {
       documentIconMeta = {
-        type: 'emoji',
+        type: Blocktype.Emoji,
         name: emoji.name,
         emoji: emoji.emoji
       }
@@ -84,11 +87,12 @@ export function useDocumentIconUploader(
     placement: 'top',
     content: (
       <Dashboard
+        blockId={blockId}
         fileType="image"
         prepareFileUpload={prepareFileUpload}
         fetchUnsplashImages={fetchUnsplashImages}
         onUploaded={onUploaded}
-        onFileLoaded={onFileLoaded}
+        onFileLoaded={onLoaded}
         importSources={ICON_IMPORT_SOURCES}
       />
     )

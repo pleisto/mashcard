@@ -5,7 +5,7 @@ module Docs
       possible_types BlockImage, BlockColor
 
       def self.resolve_type(object, _ctx)
-        type_name = "block_#{object['type']}".classify
+        type_name = "block_#{object['type'].downcase}".classify
         "Docs::Objects::#{type_name}".safe_constantize
       end
     end

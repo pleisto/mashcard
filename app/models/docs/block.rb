@@ -190,6 +190,30 @@ class Docs::Block < ApplicationRecord
     snapshots.create!(snapshot_version: snapshot_version) if snapshot_version_previously_changed?
   end
 
+  after_create :maybe_attach_attachments!
+
+  def maybe_attach_attachments!
+    Brickdoc::Redis.with(:cache) do |redis|
+      key = "blob_#{id}"
+      redis.smembers(key).each do |blob_id|
+        attach_blob!(blob_id)
+      end
+
+      redis.del(key)
+    end
+  end
+
+  def attach_blob!(blob_id)
+    # Docs::Block.find(args[:block_id]).attachments.attach blob.signed_id
+    ## HACK Create `ActiveStorage::Attachment` directly because blob is not persist yet.
+    ActiveStorage::Attachment.create!(
+      record_id: id,
+      record_type: "Docs::Block",
+      blob_id: blob_id,
+      name: "attachments"
+    )
+  end
+
   def self.broadcast(id, payload)
     BrickdocSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
   end

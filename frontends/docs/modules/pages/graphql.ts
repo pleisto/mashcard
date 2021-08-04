@@ -40,10 +40,30 @@ export const queryChildrenBlocks = gql`
         content
       }
       meta {
+        title
+        level
+        image {
+          type
+          source
+          key
+          height
+          width
+          ratio
+        }
+        attachment {
+          type
+          source
+          key
+          height
+          width
+        }
         cover {
           ... on BlockImage {
             type
-            url
+            source
+            key
+            height
+            width
           }
           ... on BlockColor {
             type
@@ -53,7 +73,10 @@ export const queryChildrenBlocks = gql`
         icon {
           ... on BlockImage {
             type
-            url
+            source
+            key
+            height
+            width
           }
 
           ... on BlockEmoji {

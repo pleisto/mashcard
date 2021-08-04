@@ -2,7 +2,7 @@
 module Docs
   module Objects
     class BlockEmoji < BrickGraphQL::BaseObject
-      field :type, String, 'type', null: false
+      field :type, Enums::Blocktype, 'type', null: false
       field :name, String, 'name', null: false
       field :emoji, String, 'emoji', null: false
     end

@@ -1,7 +1,10 @@
 import type { DashboardPluginOptions } from '@brickdoc/uploader'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { ImageSection } from './ImageSection'
+import { ImageSection, ImageSectionAttributes } from './ImageSection'
+
+export type { ImageSectionAttributes }
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -14,11 +17,10 @@ declare module '@tiptap/core' {
   }
 }
 
-const DEFAULT_WIDTH = 700
-
 export interface ImageSectionOptions {
   prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
   fetchUnsplashImages: DashboardPluginOptions['fetchUnsplashImages']
+  getImageUrl?: (node: ProsemirrorNode) => string | undefined
 }
 
 export const ImageSectionExtension = Node.create<ImageSectionOptions>({
@@ -41,17 +43,10 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
 
   addAttributes() {
     return {
-      width: {
-        default: DEFAULT_WIDTH
-      },
-      url: {
-        default: null
-      },
-      aspectRatio: {
-        default: null
-      },
-      blobKey: {
-        default: null
+      image: {
+        default: {
+          type: 'IMAGE'
+        }
       }
     }
   },

@@ -52,7 +52,8 @@ export const queryPageBlocks = gql`
         cover {
           ... on BlockImage {
             type
-            url
+            source
+            key
           }
           ... on BlockColor {
             type
@@ -62,7 +63,8 @@ export const queryPageBlocks = gql`
         icon {
           ... on BlockImage {
             type
-            url
+            source
+            key
           }
 
           ... on BlockEmoji {

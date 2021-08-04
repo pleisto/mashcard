@@ -1,14 +1,12 @@
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { Extension, JSONContent } from '@tiptap/core'
 import { Node } from 'prosemirror-model'
-import { SetDocTitleStep } from './SetDocTitleStep'
 import { SetDocAttrStep } from './SetDocAttrStep'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     sync: {
       setDocAttrs: (newAttrs: Record<string, any>) => ReturnType
-      setDocTitle: (newTitle: string) => ReturnType
       replaceRoot: (content: JSONContent) => ReturnType
     }
   }
@@ -41,21 +39,12 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
           }
           return true
         },
-      setDocTitle:
-        newTitle =>
-        ({ tr, dispatch }) => {
-          if (dispatch) {
-            tr.step(new SetDocTitleStep(newTitle))
-          }
-          return true
-        },
       replaceRoot:
         content =>
         ({ chain, can, dispatch }) => {
           const chainedCommands = dispatch ? chain() : can().chain()
           return chainedCommands
             .setContent(content)
-            .setDocTitle(content.text ?? '')
             .setDocAttrs(content.attrs ?? {})
             .run()
         }

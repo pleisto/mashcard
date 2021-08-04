@@ -25,7 +25,7 @@ export interface UploadResultData {
   emoji?: EmojiMeta
   color?: string
   meta?: {
-    blobKey: string
+    source: 'origin' | 'external'
   }
 }
 
@@ -151,7 +151,7 @@ export class DashboardPlugin extends Plugin {
     void this.handleFetchUnsplashImage()
   }
 
-  handleScrollObserve = (entities: any, observer: any) => {
+  handleScrollObserve = (entities: any, observer: any): void => {
     const y = entities[0].boundingClientRect.y
     if (this.observeY > y) {
       void this.handleFetchUnsplashImage()
@@ -214,7 +214,10 @@ export class DashboardPlugin extends Plugin {
   handleUnsplashImageSelect = (image: UnsplashImage) => (): void => {
     this.opts?.onUploaded({
       action: 'add',
-      url: image.fullUrl
+      url: image.fullUrl,
+      meta: {
+        source: 'external'
+      }
     })
   }
 
@@ -232,7 +235,7 @@ export class DashboardPlugin extends Plugin {
       return
     }
 
-    this.opts.onUploaded?.({ action: 'add', url: this.link })
+    this.opts.onUploaded?.({ action: 'add', url: this.link, meta: { source: 'external' } })
   }
 
   handleChooseFile = (): void => {
@@ -257,8 +260,9 @@ export class DashboardPlugin extends Plugin {
   handleUploadSuccess = (file: UppyFile): void => {
     this.opts.onUploaded({
       action: 'add',
+      url: this.blobKey,
       meta: {
-        blobKey: this.blobKey
+        source: 'origin'
       }
     })
   }

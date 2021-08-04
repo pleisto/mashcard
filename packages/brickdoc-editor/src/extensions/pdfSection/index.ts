@@ -1,7 +1,11 @@
 import type { DashboardPluginOptions } from '@brickdoc/uploader'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { PdfSection } from './PdfSection'
+
+const DEFAULT_WIDTH = 700
+const DEFAULT_HEIGHT = 551
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -14,11 +18,9 @@ declare module '@tiptap/core' {
   }
 }
 
-const DEFAULT_WIDTH = 700
-const DEFAULT_HEIGHT = 551
-
 export interface PdfSectionOptions {
   prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
+  getPdfUrl?: (node: ProsemirrorNode) => string | undefined
 }
 
 export const PdfSectionExtension = Node.create<PdfSectionOptions>({
@@ -38,17 +40,12 @@ export const PdfSectionExtension = Node.create<PdfSectionOptions>({
 
   addAttributes() {
     return {
-      width: {
-        default: DEFAULT_WIDTH
-      },
-      height: {
-        default: DEFAULT_HEIGHT
-      },
-      url: {
-        default: null
-      },
-      blobKey: {
-        default: null
+      attachment: {
+        default: {
+          type: 'ATTACHMENT',
+          width: DEFAULT_WIDTH,
+          height: DEFAULT_HEIGHT
+        }
       }
     }
   },

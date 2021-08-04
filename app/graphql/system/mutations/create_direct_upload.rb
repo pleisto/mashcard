@@ -29,15 +29,18 @@ module System
 
       if type == "DOC"
         raise BrickGraphQL::Errors::ArgumentError, "Need a block_id" if args[:block_id].nil?
-        # Docs::Block.find(args[:block_id]).attachments.attach blob.signed_id
-        ## HACK Create `ActiveStorage::Attachment` directly because blob is not persist yet.
 
-        ActiveStorage::Attachment.create!(
-          record_id: args[:block_id],
-          record_type: "Docs::Block",
-          blob_id: blob.id,
-          name: "attachments"
-        )
+        block = Docs::Block.unscoped.find_by(id: args[:block_id])
+
+        if block
+          block.attach_blob!(blob.id)
+        else
+          Brickdoc::Redis.with(:cache) do |redis|
+            key = "blob_#{args[:block_id]}"
+            redis.sadd(key, blob.id)
+            redis.expire(key, 1.hours)
+          end
+        end
       end
 
       {

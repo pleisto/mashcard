@@ -2,14 +2,14 @@ import * as React from 'react'
 import cx from 'classnames'
 import styles from './DocumentCover.module.less'
 import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
-import { BlockColor, BlockImage } from '@/BrickdocGraphQL'
+import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 
 interface DocumentCoverImage extends Omit<BlockImage, '__typename'> {
-  type: 'image'
+  type: Blocktype.Image
 }
 
 interface DocumentCoverColor extends Omit<BlockColor, '__typename'> {
-  type: 'color'
+  type: Blocktype.Color
 }
 
 export type DocumentCoverMeta = DocumentCoverImage | DocumentCoverColor
@@ -17,13 +17,22 @@ export type DocumentCoverMeta = DocumentCoverImage | DocumentCoverColor
 export interface DocumentCoverProps {
   documentCoverMeta?: DocumentCoverMeta | null
   popoverProps: PopoverProps
+  localUrl?: string
+  onClick?: VoidFunction
+  getDocCoverUrl: () => string | undefined
 }
 
-export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta, popoverProps }) => {
+export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta, popoverProps, getDocCoverUrl, localUrl }) => {
   let value = 'unset'
 
-  if (documentCoverMeta?.type === 'color') value = documentCoverMeta.color
-  if (documentCoverMeta?.type === 'image') value = documentCoverMeta.url
+  if (documentCoverMeta?.type === Blocktype.Color) value = documentCoverMeta.color
+  if (documentCoverMeta?.type === Blocktype.Image) {
+    const url = getDocCoverUrl() ?? localUrl ?? ''
+
+    if (url) {
+      value = `url(${url})`
+    }
+  }
 
   return (
     <div

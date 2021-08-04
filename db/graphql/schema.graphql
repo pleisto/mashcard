@@ -47,6 +47,33 @@ exceed the size of a 32-bit integer, it's encoded as a string.
 """
 scalar BigInt
 
+type BlockAttachment {
+  """
+  width
+  """
+  height: String
+
+  """
+  url or blob key
+  """
+  key: String!
+
+  """
+  type
+  """
+  source: Filesourcetype!
+
+  """
+  type
+  """
+  type: Blocktype!
+
+  """
+  height
+  """
+  width: String
+}
+
 type BlockBaseObjectPermissions {
   canShow: AuthorizationResult!
 }
@@ -60,7 +87,7 @@ type BlockColor {
   """
   type
   """
-  type: String!
+  type: Blocktype!
 }
 
 """
@@ -169,7 +196,7 @@ type BlockEmoji {
   """
   type
   """
-  type: String!
+  type: Blocktype!
 }
 
 type BlockHistory {
@@ -191,14 +218,34 @@ union BlockIcon = BlockEmoji | BlockImage
 
 type BlockImage {
   """
-  type
+  height
   """
-  type: String!
+  height: String
 
   """
-  url
+  key
   """
-  url: String!
+  key: String!
+
+  """
+  aspect ratio
+  """
+  ratio: Float
+
+  """
+  type
+  """
+  source: Filesourcetype!
+
+  """
+  type
+  """
+  type: Blocktype!
+
+  """
+  height
+  """
+  width: String
 }
 
 """
@@ -243,6 +290,11 @@ input BlockInput {
 
 type BlockMeta {
   """
+  attachment
+  """
+  attachment: BlockAttachment
+
+  """
   cover
   """
   cover: BlockCover
@@ -251,6 +303,21 @@ type BlockMeta {
   icon
   """
   icon: BlockIcon
+
+  """
+  image
+  """
+  image: BlockImage
+
+  """
+  Prosemirror builtin level
+  """
+  level: Int
+
+  """
+  title
+  """
+  title: String
 }
 
 """
@@ -345,6 +412,28 @@ type BlockSyncBatchPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
+}
+
+enum Blocktype {
+  """
+  ATTACHMENT
+  """
+  ATTACHMENT
+
+  """
+  COLOR
+  """
+  COLOR
+
+  """
+  EMOJI
+  """
+  EMOJI
+
+  """
+  IMAGE
+  """
+  IMAGE
 }
 
 """
@@ -502,6 +591,18 @@ type FailureReasons {
   Human-readable errors
   """
   fullMessages: [String!]!
+}
+
+enum Filesourcetype {
+  """
+  EXTERNAL
+  """
+  EXTERNAL
+
+  """
+  ORIGIN
+  """
+  ORIGIN
 }
 
 """
