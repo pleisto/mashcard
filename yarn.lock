@@ -2106,6 +2106,7 @@ __metadata:
     react-router: ^5.2.0
     react-router-config: ^5.1.1
     react-router-dom: ^5.2.0
+    source-map-loader: ^3.0.0
     ts-loader: ^9.2.4
     tsconfig-paths-webpack-plugin: ^3.5.1
     typescript: ^4.3.5
@@ -22869,6 +22870,19 @@ resolve@^2.0.0-next.3:
   version: 0.6.2
   resolution: "source-map-js@npm:0.6.2"
   checksum: 9c8151a29e00fd8d3ba87709fdf9a9ce48313d653f4a29a39b4ae53d346ac79e005de624796ff42eff55cbaf26d2e87f4466001ca87831d400d818c5cf146a0e
+  languageName: node
+  linkType: hard
+
+"source-map-loader@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "source-map-loader@npm:3.0.0"
+  dependencies:
+    abab: ^2.0.5
+    iconv-lite: ^0.6.2
+    source-map-js: ^0.6.2
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: c4459cef5a43917ca1c7ad53b106ba715d545daae1ace259c867c36b2b2443c3b9eebe8630cac8f193760db39965c22d1b44d8f69e9910b88c8aca1c836757b5
   languageName: node
   linkType: hard
 

@@ -54,6 +54,9 @@ on:
 env:
   POSTGRES_PASS: '123456'
   REDIS_URL: redis://127.0.0.1:6379
+  SECURITY_REVERSIBLE_INT_PRIME: 1911469727
+  SECURITY_REVERSIBLE_INT_RANDOM: 1996136202
+  SECURITY_REVERSIBLE_INT_INVERSE: 2083710303
 
 jobs:
   cancel:
@@ -105,6 +108,7 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: frontend-unit
   rspec:
     name: Rails RSpec Test
     runs-on: ubuntu-latest
@@ -160,7 +164,6 @@ jobs:
           RAILS_ENV: test
           UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
           UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
       - name: Publish RSpec test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
@@ -168,6 +171,12 @@ jobs:
         with:
           report_paths: junit-reports/rspec.xml
           check_name: Rails RSpec Test Report
+      - name: Publish RSpec code coverage reports
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: backend-unit
 
   build_e2e:
     name: Build & E2E Test
@@ -270,6 +279,14 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          flags: frontend-e2e
+      - name: Stop the server
+        run: rm -rf coverage && (ps -aux | grep '[p]uma' | awk 'NR<=1{print $2}' | xargs kill -2)
+      - name: Publish Rails code coverage reports during Cypress tests
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: backend-e2e
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
         run: bundle exec rails db:prepare db:schema:dump

@@ -78,11 +78,3 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-
-if ENV['CI'] == 'true'
-  require 'simplecov'
-  SimpleCov.start
-
-  # require 'codecov'
-  # SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end

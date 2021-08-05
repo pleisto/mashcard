@@ -2,7 +2,7 @@ name: Create Monolith Application Pull Request Preview Env
 
 on:
   pull_request:
-    types: [opend, synchronize]
+    types: [opened, synchronize]
     paths-ignore:
       - '.husky/**'
       - 'bin/**'

@@ -125,8 +125,6 @@ GEM
     cityhash (0.9.0)
     cloak-rb (0.1.0)
       miscreant
-    codecov (0.5.2)
-      simplecov (>= 0.15, < 0.22)
     concord (0.1.6)
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
@@ -419,6 +417,7 @@ GEM
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
+    simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.3)
     smart_properties (1.15.0)
     sorbet-runtime (0.5.8993)
@@ -481,7 +480,6 @@ DEPENDENCIES
   byebug
   cityhash (~> 0.9.0)
   cloak-rb (>= 0.1.0)
-  codecov
   connection_pool (~> 2.2, >= 2.2.5)
   cypress-on-rails (~> 1.9.1)
   default_value_for (~> 3.4)
@@ -526,6 +524,8 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 6.2, >= 6.2.1)
   sidekiq-cron (~> 1.2)
+  simplecov
+  simplecov-lcov
   spring
   typhoeus (~> 1.4)
   tzinfo-data (~> 1.2021, >= 1.2021.1)

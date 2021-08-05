@@ -81,7 +81,8 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'codecov', require: false
+  gem 'simplecov', require: false
+  gem 'simplecov-lcov', require: false
 end
 
 group :development do

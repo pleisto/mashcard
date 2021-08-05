@@ -9,10 +9,20 @@ console.log(
     .join('\n')}\n`
 )
 
+const jsRule = webpackConfig.module.rules.find(x => x.test.toString().includes('jsx'))
 // Use ts-loader for TypeScript files
-webpackConfig.module.rules
-  .find(x => x.test.toString().includes('jsx'))
-  .use.push({ loader: 'ts-loader', options: { transpileOnly: true, projectReferences: true, configFile: 'tsconfig.build.json' } })
+webpackConfig.module.rules.push({
+  test: /\.tsx?$/,
+  use: [
+    ...jsRule.use,
+    { loader: 'ts-loader', options: { transpileOnly: true, projectReferences: true, configFile: 'tsconfig.build.json' } }
+  ]
+})
+jsRule.test = /\.(js|jsx|mjs)?(\.erb)?$/
+// Consume source maps produced by ts-loader during sub-package building (.js.map under packages/*/dist)
+jsRule.use.push({
+  loader: 'source-map-loader'
+})
 
 module.exports = merge(webpackConfig, {
   resolve: {

@@ -21,3 +21,14 @@ import './on-rails'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/
+Cypress.on('uncaught:exception', err => {
+  /**
+   * This error can be safely ignored.
+   * See https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
+   */
+  if (resizeObserverLoopErrRe.test(err.message)) {
+    return false
+  }
+})
