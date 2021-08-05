@@ -37,7 +37,7 @@
     "@tiptap/extension-text": "^2.0.0-beta.13",
     "@tiptap/extension-text-style": "^2.0.0-beta.17",
     "@tiptap/extension-underline": "^2.0.0-beta.16",
-    "@tiptap/react": "2.0.0-beta.50",
+    "@tiptap/react": "2.0.0-beta.55",
     "@tiptap/suggestion": "^2.0.0-beta.61",
     "re-resizable": "^6.9.0",
     "react-medium-image-zoom": "^4.3.4",

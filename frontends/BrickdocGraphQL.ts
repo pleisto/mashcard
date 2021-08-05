@@ -811,107 +811,128 @@ export type UserSignOutMutationVariables = Exact<{
   input: UserSignOutInput
 }>
 
-export type UserSignOutMutation = { __typename?: 'RootMutation' } & {
-  userSignOut?: Maybe<{ __typename?: 'UserSignOutPayload' } & Pick<UserSignOutPayload, 'errors'>>
+export type UserSignOutMutation = {
+  __typename?: 'RootMutation'
+  userSignOut?: Maybe<{ __typename?: 'UserSignOutPayload'; errors: Array<string> }>
 }
 
 export type GetAccountsConfigFromWsQueryVariables = Exact<{ [key: string]: never }>
 
-export type GetAccountsConfigFromWsQuery = { __typename?: 'RootQuery' } & {
-  metadata: { __typename?: 'metadata' } & Pick<Metadata, 'id'> & {
-      config: { __typename?: 'config' } & Pick<
-        Config,
-        'userAgreementLink' | 'accountsPreferredAuthMethod' | 'accountsEmailPasswordAuth'
-      > & { accountsFederatedProviders: Array<{ __typename?: 'federatedProvider' } & Pick<FederatedProvider, 'name' | 'logo'>> }
+export type GetAccountsConfigFromWsQuery = {
+  __typename?: 'RootQuery'
+  metadata: {
+    __typename?: 'metadata'
+    id: string
+    config: {
+      __typename?: 'config'
+      userAgreementLink: string
+      accountsPreferredAuthMethod: AuthMethod
+      accountsEmailPasswordAuth: boolean
+      accountsFederatedProviders: Array<{ __typename?: 'federatedProvider'; name: string; logo: string }>
     }
+  }
 }
 
 export type UserForgetPasswordMailSendMutationVariables = Exact<{
   input: UserForgetPasswordMailSendInput
 }>
 
-export type UserForgetPasswordMailSendMutation = { __typename?: 'RootMutation' } & {
-  userForgetPasswordMailSend?: Maybe<
-    { __typename?: 'UserForgetPasswordMailSendPayload' } & Pick<UserForgetPasswordMailSendPayload, 'errors'>
-  >
+export type UserForgetPasswordMailSendMutation = {
+  __typename?: 'RootMutation'
+  userForgetPasswordMailSend?: Maybe<{ __typename?: 'UserForgetPasswordMailSendPayload'; errors: Array<string> }>
 }
 
 export type UserPasswordResetMutationVariables = Exact<{
   input: UserPasswordResetInput
 }>
 
-export type UserPasswordResetMutation = { __typename?: 'RootMutation' } & {
-  userPasswordReset?: Maybe<{ __typename?: 'UserPasswordResetPayload' } & Pick<UserPasswordResetPayload, 'errors'>>
+export type UserPasswordResetMutation = {
+  __typename?: 'RootMutation'
+  userPasswordReset?: Maybe<{ __typename?: 'UserPasswordResetPayload'; errors: Array<string> }>
 }
 
 export type UserEmailPasswordSignInMutationVariables = Exact<{
   input: UserEmailPasswordSignInInput
 }>
 
-export type UserEmailPasswordSignInMutation = { __typename?: 'RootMutation' } & {
-  userEmailPasswordSignIn?: Maybe<
-    { __typename?: 'UserEmailPasswordSignInPayload' } & Pick<UserEmailPasswordSignInPayload, 'errors' | 'redirectPath'>
-  >
+export type UserEmailPasswordSignInMutation = {
+  __typename?: 'RootMutation'
+  userEmailPasswordSignIn?: Maybe<{ __typename?: 'UserEmailPasswordSignInPayload'; errors: Array<string>; redirectPath?: Maybe<string> }>
 }
 
 export type GetFederatedIdentitySessionQueryVariables = Exact<{ [key: string]: never }>
 
-export type GetFederatedIdentitySessionQuery = { __typename?: 'RootQuery' } & {
-  federatedIdentitySession: { __typename?: 'omniauthSession' } & Pick<OmniauthSession, 'hasSession' | 'webid' | 'name' | 'provider'>
+export type GetFederatedIdentitySessionQuery = {
+  __typename?: 'RootQuery'
+  federatedIdentitySession: {
+    __typename?: 'omniauthSession'
+    hasSession: boolean
+    webid?: Maybe<string>
+    name?: Maybe<string>
+    provider?: Maybe<string>
+  }
 }
 
 export type UserCreateMutationVariables = Exact<{
   input: UserCreateInput
 }>
 
-export type UserCreateMutation = { __typename?: 'RootMutation' } & {
-  userCreate?: Maybe<{ __typename?: 'UserCreatePayload' } & Pick<UserCreatePayload, 'errors' | 'redirectPath' | 'isUserActive'>>
+export type UserCreateMutation = {
+  __typename?: 'RootMutation'
+  userCreate?: Maybe<{
+    __typename?: 'UserCreatePayload'
+    errors: Array<string>
+    redirectPath?: Maybe<string>
+    isUserActive?: Maybe<boolean>
+  }>
 }
 
 export type UserConfirmationEmailResendMutationVariables = Exact<{
   input: UserConfirmationEmailResendInput
 }>
 
-export type UserConfirmationEmailResendMutation = { __typename?: 'RootMutation' } & {
-  userConfirmationEmailResend?: Maybe<
-    { __typename?: 'UserConfirmationEmailResendPayload' } & Pick<UserConfirmationEmailResendPayload, 'errors'>
-  >
+export type UserConfirmationEmailResendMutation = {
+  __typename?: 'RootMutation'
+  userConfirmationEmailResend?: Maybe<{ __typename?: 'UserConfirmationEmailResendPayload'; errors: Array<string> }>
 }
 
 export type QueryWebidAvailableFromWsQueryVariables = Exact<{
   webid: Scalars['String']
 }>
 
-export type QueryWebidAvailableFromWsQuery = { __typename?: 'RootQuery' } & Pick<RootQuery, 'webidAvailable'>
+export type QueryWebidAvailableFromWsQuery = { __typename?: 'RootQuery'; webidAvailable: boolean }
 
 export type GetAvailableLocalesFromWsQueryVariables = Exact<{ [key: string]: never }>
 
-export type GetAvailableLocalesFromWsQuery = { __typename?: 'RootQuery' } & {
-  metadata: { __typename?: 'metadata' } & Pick<Metadata, 'id'> & {
-      availableLocales: Array<{ __typename?: 'select_option' } & Pick<Select_Option, 'label' | 'value'>>
-    }
+export type GetAvailableLocalesFromWsQuery = {
+  __typename?: 'RootQuery'
+  metadata: { __typename?: 'metadata'; id: string; availableLocales: Array<{ __typename?: 'select_option'; label: string; value: string }> }
 }
 
 export type CreateDirectUploadMutationVariables = Exact<{
   input: CreateDirectUploadInput
 }>
 
-export type CreateDirectUploadMutation = { __typename?: 'RootMutation' } & {
-  createDirectUpload?: Maybe<
-    { __typename?: 'CreateDirectUploadPayload' } & {
-      directUpload: { __typename?: 'DirectUpload' } & Pick<DirectUpload, 'uploadUrl' | 'headers' | 'blobKey' | 'viewUrl' | 'signedId'>
-    }
-  >
+export type CreateDirectUploadMutation = {
+  __typename?: 'RootMutation'
+  createDirectUpload?: Maybe<{
+    __typename?: 'CreateDirectUploadPayload'
+    directUpload: { __typename?: 'DirectUpload'; uploadUrl: string; headers: any; blobKey: string; viewUrl: string; signedId: string }
+  }>
 }
 
 export type GetPodsQueryVariables = Exact<{ [key: string]: never }>
 
-export type GetPodsQuery = { __typename?: 'RootQuery' } & {
-  pods: Array<
-    { __typename?: 'pod' } & Pick<Pod, 'id' | 'webid' | 'name' | 'bio'> & {
-        avatarData?: Maybe<{ __typename?: 'avatar' } & Pick<Avatar, 'url' | 'signedId'>>
-      }
-  >
+export type GetPodsQuery = {
+  __typename?: 'RootQuery'
+  pods: Array<{
+    __typename?: 'pod'
+    id: string
+    webid: string
+    name?: Maybe<string>
+    bio?: Maybe<string>
+    avatarData?: Maybe<{ __typename?: 'avatar'; url: string; signedId: string }>
+  }>
 }
 
 export type QueryUnsplashImageQueryVariables = Exact<{
@@ -920,43 +941,60 @@ export type QueryUnsplashImageQueryVariables = Exact<{
   perPage?: Maybe<Scalars['Int']>
 }>
 
-export type QueryUnsplashImageQuery = { __typename?: 'RootQuery' } & {
-  unsplashImage?: Maybe<Array<{ __typename?: 'unsplash_image' } & Pick<Unsplash_Image, 'id' | 'width' | 'height' | 'fullUrl' | 'username'>>>
+export type QueryUnsplashImageQuery = {
+  __typename?: 'RootQuery'
+  unsplashImage?: Maybe<
+    Array<{
+      __typename?: 'unsplash_image'
+      id: string
+      width?: Maybe<number>
+      height?: Maybe<number>
+      fullUrl: string
+      username?: Maybe<string>
+    }>
+  >
 }
 
 export type CreateOrUpdatePodMutationVariables = Exact<{
   input: CreateOrUpdatePodInput
 }>
 
-export type CreateOrUpdatePodMutation = { __typename?: 'RootMutation' } & {
-  createOrUpdatePod?: Maybe<
-    { __typename?: 'CreateOrUpdatePodPayload' } & Pick<CreateOrUpdatePodPayload, 'errors'> & {
-        pod?: Maybe<{ __typename?: 'pod' } & Pick<Pod, 'webid' | 'name'>>
-      }
-  >
+export type CreateOrUpdatePodMutation = {
+  __typename?: 'RootMutation'
+  createOrUpdatePod?: Maybe<{
+    __typename?: 'CreateOrUpdatePodPayload'
+    errors: Array<string>
+    pod?: Maybe<{ __typename?: 'pod'; webid: string; name?: Maybe<string> }>
+  }>
 }
 
 export type GetPageBlocksQueryVariables = Exact<{
   webid: Scalars['String']
 }>
 
-export type GetPageBlocksQuery = { __typename?: 'RootQuery' } & {
+export type GetPageBlocksQuery = {
+  __typename?: 'RootQuery'
   pageBlocks?: Maybe<
-    Array<
-      { __typename?: 'block' } & Pick<Block, 'id' | 'sort' | 'nextSort' | 'parentId' | 'type'> & {
-          data: { __typename?: 'BlockData' } & Pick<BlockData, 'text' | 'content'>
-          meta: { __typename?: 'BlockMeta' } & {
-            cover?: Maybe<
-              | ({ __typename?: 'BlockColor' } & Pick<BlockColor, 'type' | 'color'>)
-              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'source' | 'key'>)
-            >
-            icon?: Maybe<
-              | ({ __typename?: 'BlockEmoji' } & Pick<BlockEmoji, 'type' | 'name' | 'emoji'>)
-              | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'source' | 'key'>)
-            >
-          }
-        }
-    >
+    Array<{
+      __typename?: 'block'
+      id: string
+      sort: any
+      nextSort: any
+      parentId?: Maybe<string>
+      type: string
+      data: { __typename?: 'BlockData'; text: string; content: Array<any> }
+      meta: {
+        __typename?: 'BlockMeta'
+        cover?: Maybe<
+          | { __typename?: 'BlockColor'; type: Blocktype; color: string }
+          | { __typename?: 'BlockImage'; type: Blocktype; source: Filesourcetype; key: string }
+        >
+        icon?: Maybe<
+          | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
+          | { __typename?: 'BlockImage'; type: Blocktype; source: Filesourcetype; key: string }
+        >
+      }
+    }>
   >
 }
 
@@ -964,58 +1002,75 @@ export type GetBlockSnapshotsQueryVariables = Exact<{
   id: Scalars['String']
 }>
 
-export type GetBlockSnapshotsQuery = { __typename?: 'RootQuery' } & {
-  blockSnapshots?: Maybe<Array<{ __typename?: 'BlockSnapshot' } & Pick<BlockSnapshot, 'id' | 'snapshotVersion' | 'name'>>>
+export type GetBlockSnapshotsQuery = {
+  __typename?: 'RootQuery'
+  blockSnapshots?: Maybe<Array<{ __typename?: 'BlockSnapshot'; id: string; snapshotVersion: number; name: string }>>
 }
 
 export type GetBlockHistoriesQueryVariables = Exact<{
   id: Scalars['String']
 }>
 
-export type GetBlockHistoriesQuery = { __typename?: 'RootQuery' } & {
-  blockHistories?: Maybe<Array<{ __typename?: 'BlockHistory' } & Pick<BlockHistory, 'id' | 'historyVersion'>>>
+export type GetBlockHistoriesQuery = {
+  __typename?: 'RootQuery'
+  blockHistories?: Maybe<Array<{ __typename?: 'BlockHistory'; id: string; historyVersion: number }>>
 }
 
 export type BlockDeleteMutationVariables = Exact<{
   input: BlockDeleteInput
 }>
 
-export type BlockDeleteMutation = { __typename?: 'RootMutation' } & {
-  blockDelete?: Maybe<{ __typename?: 'BlockDeletePayload' } & Pick<BlockDeletePayload, 'errors'>>
+export type BlockDeleteMutation = {
+  __typename?: 'RootMutation'
+  blockDelete?: Maybe<{ __typename?: 'BlockDeletePayload'; errors: Array<string> }>
 }
 
 export type BlockMoveMutationVariables = Exact<{
   input: BlockMoveInput
 }>
 
-export type BlockMoveMutation = { __typename?: 'RootMutation' } & {
-  blockMove?: Maybe<{ __typename?: 'BlockMovePayload' } & Pick<BlockMovePayload, 'errors'>>
+export type BlockMoveMutation = {
+  __typename?: 'RootMutation'
+  blockMove?: Maybe<{ __typename?: 'BlockMovePayload'; errors: Array<string> }>
 }
 
 export type BlockCreateSnapshotMutationVariables = Exact<{
   input: BlockCreateSnapshotInput
 }>
 
-export type BlockCreateSnapshotMutation = { __typename?: 'RootMutation' } & {
-  blockCreateSnapshot?: Maybe<{ __typename?: 'BlockCreateSnapshotPayload' } & Pick<BlockCreateSnapshotPayload, 'errors'>>
+export type BlockCreateSnapshotMutation = {
+  __typename?: 'RootMutation'
+  blockCreateSnapshot?: Maybe<{ __typename?: 'BlockCreateSnapshotPayload'; errors: Array<string> }>
 }
 
 export type BlockSyncBatchMutationVariables = Exact<{
   input: BlockSyncBatchInput
 }>
 
-export type BlockSyncBatchMutation = { __typename?: 'RootMutation' } & {
-  blockSyncBatch?: Maybe<{ __typename?: 'BlockSyncBatchPayload' } & Pick<BlockSyncBatchPayload, 'errors'>>
+export type BlockSyncBatchMutation = {
+  __typename?: 'RootMutation'
+  blockSyncBatch?: Maybe<{ __typename?: 'BlockSyncBatchPayload'; errors: Array<string> }>
 }
 
 export type NewPatchSubscriptionVariables = Exact<{
   docId: Scalars['UUID']
 }>
 
-export type NewPatchSubscription = { __typename?: 'RootSubscription' } & {
-  newPatch: { __typename?: 'NewPatchPayload' } & Pick<NewPatchPayload, 'state' | 'seq'> & {
-      patches: Array<{ __typename?: 'PatchBaseObject' } & Pick<PatchBaseObject, 'id' | 'path' | 'patchType' | 'payload' | 'operatorId'>>
-    }
+export type NewPatchSubscription = {
+  __typename?: 'RootSubscription'
+  newPatch: {
+    __typename?: 'NewPatchPayload'
+    state: Patchstate
+    seq: number
+    patches: Array<{
+      __typename?: 'PatchBaseObject'
+      id: string
+      path: Array<string>
+      patchType: Patchtype
+      payload: string
+      operatorId: string
+    }>
+  }
 }
 
 export type GetChildrenBlocksQueryVariables = Exact<{
@@ -1024,26 +1079,62 @@ export type GetChildrenBlocksQueryVariables = Exact<{
   snapshotVersion: Scalars['Int']
 }>
 
-export type GetChildrenBlocksQuery = { __typename?: 'RootQuery' } & {
+export type GetChildrenBlocksQuery = {
+  __typename?: 'RootQuery'
   childrenBlocks?: Maybe<
-    Array<
-      { __typename?: 'block' } & Pick<Block, 'id' | 'sort' | 'parentId' | 'type'> & {
-          blobs?: Maybe<Array<{ __typename?: 'blob' } & Pick<Blob, 'blobKey' | 'url'>>>
-          data: { __typename?: 'BlockData' } & Pick<BlockData, 'text' | 'content'>
-          meta: { __typename?: 'BlockMeta' } & Pick<BlockMeta, 'title' | 'level'> & {
-              image?: Maybe<{ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'source' | 'key' | 'height' | 'width' | 'ratio'>>
-              attachment?: Maybe<{ __typename?: 'BlockAttachment' } & Pick<BlockAttachment, 'type' | 'source' | 'key' | 'height' | 'width'>>
-              cover?: Maybe<
-                | ({ __typename?: 'BlockColor' } & Pick<BlockColor, 'type' | 'color'>)
-                | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'source' | 'key' | 'height' | 'width'>)
-              >
-              icon?: Maybe<
-                | ({ __typename?: 'BlockEmoji' } & Pick<BlockEmoji, 'type' | 'name' | 'emoji'>)
-                | ({ __typename?: 'BlockImage' } & Pick<BlockImage, 'type' | 'source' | 'key' | 'height' | 'width'>)
-              >
+    Array<{
+      __typename?: 'block'
+      id: string
+      sort: any
+      parentId?: Maybe<string>
+      type: string
+      blobs?: Maybe<Array<{ __typename?: 'blob'; blobKey: string; url: string }>>
+      data: { __typename?: 'BlockData'; text: string; content: Array<any> }
+      meta: {
+        __typename?: 'BlockMeta'
+        title?: Maybe<string>
+        level?: Maybe<number>
+        image?: Maybe<{
+          __typename?: 'BlockImage'
+          type: Blocktype
+          source: Filesourcetype
+          key: string
+          height?: Maybe<string>
+          width?: Maybe<string>
+          ratio?: Maybe<number>
+        }>
+        attachment?: Maybe<{
+          __typename?: 'BlockAttachment'
+          type: Blocktype
+          source: Filesourcetype
+          key: string
+          height?: Maybe<string>
+          width?: Maybe<string>
+        }>
+        cover?: Maybe<
+          | { __typename?: 'BlockColor'; type: Blocktype; color: string }
+          | {
+              __typename?: 'BlockImage'
+              type: Blocktype
+              source: Filesourcetype
+              key: string
+              height?: Maybe<string>
+              width?: Maybe<string>
             }
-        }
-    >
+        >
+        icon?: Maybe<
+          | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
+          | {
+              __typename?: 'BlockImage'
+              type: Blocktype
+              source: Filesourcetype
+              key: string
+              height?: Maybe<string>
+              width?: Maybe<string>
+            }
+        >
+      }
+    }>
   >
 }
 

@@ -1,4 +1,4 @@
-const { safeLoad } = require('js-yaml')
+const yaml = require('js-yaml')
 const { readFileSync } = require('fs')
 
 const NODE_ENVIRONMENTS = ['development', 'production', 'test']
@@ -11,7 +11,7 @@ const nodeEnv = rawNodeEnv && NODE_ENVIRONMENTS.includes(rawNodeEnv) ? rawNodeEn
 const isProduction = nodeEnv === 'production'
 const isDevelopment = nodeEnv === 'development'
 
-const config = safeLoad(readFileSync(configPath), 'utf8')
+const config = yaml.load(readFileSync(configPath, 'utf8'))
 const availableEnvironments = Object.keys(config).join('|')
 // eslint-disable-next-line security-node/non-literal-reg-expr
 const regex = new RegExp(`^(${availableEnvironments})$`, 'g')

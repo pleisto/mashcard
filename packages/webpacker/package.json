@@ -8,14 +8,14 @@
     "lib/install/config/webpacker.yml"
   ],
   "dependencies": {
-    "@babel/core": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-transform-runtime": "^7.14.5",
-    "@babel/preset-env": "^7.14.9",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "@babel/runtime": "^7.14.8",
     "babel-loader": "^8.2.2",
     "glob": "^7.1.7",
-    "js-yaml": "^3.14.1",
+    "js-yaml": "^4.1.0",
     "path-complete-extname": "^1.0.0",
     "pnp-webpack-plugin": "^1.7.0",
     "terser-webpack-plugin": "^5.1.4",

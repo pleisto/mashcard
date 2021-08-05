@@ -25,8 +25,7 @@ module.exports = function config(api) {
           corejs: '3.8',
           modules: 'auto',
           bugfixes: true,
-          loose: true,
-          exclude: ['transform-typeof-symbol']
+          loose: true
         }
       ],
       moduleExists('@babel/preset-typescript') && ['@babel/preset-typescript', { allExtensions: true, isTSX: true }],
@@ -39,7 +38,6 @@ module.exports = function config(api) {
       ]
     ].filter(Boolean),
     plugins: [
-      ['@babel/plugin-proposal-class-properties', { loose: true }],
       ['@babel/plugin-transform-runtime', { helpers: false }],
       isProductionEnv &&
         moduleExists('babel-plugin-transform-react-remove-prop-types') && [
