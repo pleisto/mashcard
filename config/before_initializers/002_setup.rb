@@ -41,6 +41,7 @@ Rails.application.reloader.to_prepare do
   Rails.application.config.active_storage.analyzers.delete ActiveStorage::Analyzer::VideoAnalyzer
   Rails.application.config.active_storage.analyzers.delete ActiveStorage::Analyzer::ImageAnalyzer
   Rails.application.config.active_storage.draw_routes = false
+  ActiveStorage.draw_routes = false
 
   ActiveSupport.on_load(:active_storage_blob) do
     ActiveStorage::Attachment.send(:second_level_cache, expires_in: 1.week)
