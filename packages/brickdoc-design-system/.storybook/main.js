@@ -14,6 +14,14 @@ module.exports = {
   typescript: {
     reactDocgen: 'none'
   },
+  babel: async options => {
+    options.presets.splice(
+      options.presets.findIndex(preset => preset.includes('preset-typescript')),
+      1
+    )
+    options.plugins.unshift(['@babel/plugin-transform-typescript', { isTSX: true, allowDeclareFields: true }])
+    return options
+  },
   webpackFinal: async (config, { _configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
