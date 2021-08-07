@@ -14,7 +14,7 @@ ENV BUNDLE_WITHOUT="test development"
 
 COPY . .
 RUN bundle install --retry 2 --jobs 4 \
-  && yarn install --immutable \
+  && CYPRESS_INSTALL_BINARY=0 yarn install --immutable \
   && yarn dist && rm -rf node_modules .yarn frontends dist public/esm-bundle/stats.json *.js *.json *.yml yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
   # Remove ./packages without local gems
