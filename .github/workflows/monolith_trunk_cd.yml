@@ -1,0 +1,117 @@
+name: Deploy Monolith Application Trunk on BAE
+on:
+  push:
+    paths-ignore:
+      - '.husky/**'
+      - 'bin/**'
+      - 'packages/less-vars-loader/**'
+      - 'packages/rubocop-brickdoc/**'
+      - 'packages/eslint-plugin-brickdoc/**'
+      - '**/*.md'
+      - 'packages/**/Dockerfile'
+      - '**/.git*'
+      - '**/crowdin.yml'
+      - '**/LICENSE'
+      - '**/NOTICE'
+      - '**/VERSION'
+    branches:
+      - master
+      - main
+env:
+  image: ghcr.io/brickdoc/brickdoc:latest
+  domain: trunk.brickdoc.dev
+jobs:
+  cancel:
+    # Cancel any previous CI runs to save GH Actions minutes
+    name: 'Cancel Previous Runs'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+  build:
+    name: 'Build and Push Docker Image'
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v2
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - run: yarn install --immutable
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: brickdocCE-trunk-${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            brickdocCE-trunk-${{ runner.os }}-buildx-
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          build-args: |
+            "RAILS_ENV=production"
+          tags: ${{ env.image }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+        # Temp fix
+        # https://github.com/docker/build-push-action/issues/252
+        # https://github.com/moby/buildkit/issues/1896
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+  deploy:
+    name: 'Deployment to BAE'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Uninstall History Release
+        uses: brickdoc/app-engine@v1.beta3
+        with:
+          name: brickdoc-trunk
+          task: 'remove'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
+      - name: Checkout the codebase
+        uses: actions/checkout@v2
+      - name: Deployment to App Engine
+        uses: brickdoc/app-engine@v1.beta3
+        with:
+          name: brickdoc-preview-trunk
+          image: ${{ env.image }}
+          host: ${{ env.domain }}
+          chart: ${{ github.workspace }}/templates/helm-charts/brickdoc
+          extraArgs: '--set --timeout 10m --cleanup-on-fail'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
+          APP_SECRET_SECRET_KEY_BASE: ${{ secrets.TRUNK_SECRET_KEY_BASE }}
+          APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.TRUNK_POSTGRE_URL }}
+          APP_SECRET_REDIS_URL: ${{ secrets.TRUNK_REDIS_AUTH_TOKEN }}
+          APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
+          APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
+          APP_SECRET_SECURITY_REVERSIBLE_INT_INVERSE: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_INVERSE }}
+          APP_SECRET_SECURITY_REVERSIBLE_INT_RANDOM: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_RANDOM }}
+          APP_SECRET_SECURITY_REVERSIBLE_INT_PRIME: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_PRIME }}
+          APP_ENV_SMTP_FROM: bot@trunk.brickdoc.dev
+          APP_SECRET_SMTP_URL: ${{ secrets.TRUNK_SMTP_URL }}

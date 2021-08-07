@@ -16,8 +16,13 @@ function getPercentage({ percent, success, successPercent }: CircleProps) {
   return [realSuccessPercent, validProgress(validProgress(percent) - realSuccessPercent)]
 }
 
+function getStrokeColor({ success = {}, strokeColor }: Partial<CircleProps>) {
+  const { strokeColor: successColor } = success
+  return [successColor || presetPrimaryColors.green, strokeColor || null]
+}
+
 const Circle: React.FC<CircleProps> = props => {
-  const { prefixCls, width, strokeWidth, trailColor, strokeLinecap, gapPosition, gapDegree, type, children } = props
+  const { prefixCls, width, strokeWidth, trailColor, strokeLinecap, gapPosition, gapDegree, type, children, success } = props
   const circleSize = width || 120
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   const circleStyle = {
@@ -41,7 +46,7 @@ const Circle: React.FC<CircleProps> = props => {
 
   // using className to style stroke color
   const isGradient = Object.prototype.toString.call(props.strokeColor) === '[object Object]'
-  const strokeColor = [presetPrimaryColors.green, props.strokeColor || null]
+  const strokeColor = getStrokeColor({ success, strokeColor: props.strokeColor })
 
   const wrapperClassName = classNames(`${prefixCls}-inner`, {
     [`${prefixCls}-circle-gradient`]: isGradient

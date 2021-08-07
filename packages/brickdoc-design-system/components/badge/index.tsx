@@ -58,13 +58,14 @@ const Badge: CompoundedComponent = ({
   const prefixCls = getPrefixCls('badge', customizePrefixCls)
 
   // ================================ Misc ================================
-  const numberedDisplayCount = ((count as number) > overflowCount ? `${overflowCount}+` : count) as string | number | null
+  const numberedDisplayCount = // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+  ((count as number) > (overflowCount as number) ? `${overflowCount}+` : count) as string | number | null
 
   const hasStatus = (status !== null && status !== undefined) || (color !== null && color !== undefined)
 
   const isZero = numberedDisplayCount === '0' || numberedDisplayCount === 0
 
-  const showAsDot = (dot && !isZero) || hasStatus
+  const showAsDot = dot && !isZero
 
   const mergedCount = showAsDot ? '' : numberedDisplayCount
 

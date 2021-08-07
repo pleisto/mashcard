@@ -5,21 +5,21 @@ import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import Element, { SkeletonElementProps } from './Element'
 
 export interface AvatarProps extends Omit<SkeletonElementProps, 'shape'> {
-  shape?: 'circle' | 'square';
+  shape?: 'circle' | 'square'
 }
 
 const SkeletonAvatar = (props: AvatarProps) => {
   const renderSkeletonAvatar = ({ getPrefixCls }: ConfigConsumerProps) => {
     const { prefixCls: customizePrefixCls, className, active } = props
     const prefixCls = getPrefixCls('skeleton', customizePrefixCls)
-    const otherProps = omit(props, ['prefixCls'])
+    const otherProps = omit(props, ['prefixCls', 'className'])
     const cls = classNames(
       prefixCls,
       `${prefixCls}-element`,
       {
-        [`${prefixCls}-active`]: active,
+        [`${prefixCls}-active`]: active
       },
-      className,
+      className
     )
     return (
       <div className={cls}>
@@ -32,7 +32,7 @@ const SkeletonAvatar = (props: AvatarProps) => {
 
 SkeletonAvatar.defaultProps = {
   size: 'default',
-  shape: 'circle',
+  shape: 'circle'
 }
 
 export default SkeletonAvatar

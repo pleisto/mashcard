@@ -13,7 +13,7 @@ yarn add @brickdoc/design-system
 ## 🔨 Usage
 
 ```jsx
-import { Button, DatePicker } from 'design-system'
+import { Button, DatePicker } from '@brickdoc/design-system'
 
 const App = () => (
   <>
@@ -41,3 +41,7 @@ const App = () => (
 
 - Sync of patches from Ant Design 4.16.8
 - Add Brickdoc App Engine support
+
+### 0.1.9
+
+- Sync of patches from Ant Design 4.16.10

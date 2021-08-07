@@ -97,7 +97,3 @@ group :development do
   gem 'spring'
   gem 'annotate'
 end
-
-# SaaS Edition
-saas_path = '../'
-gem 'brickdoc-saas', path: saas_path if File.exist?("#{saas_path}/brickdoc-saas.gemspec")
