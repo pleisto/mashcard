@@ -60,7 +60,8 @@ Rails.application.reloader.to_prepare do
       address: smtp_settings.hostname,
       port: smtp_settings.port,
       user_name: smtp_settings.user,
-      password: smtp_settings.password
+      password: smtp_settings.password,
+      tls: smtp_settings.schema === "smtps"
     }
     config.active_storage.default_url_options = Rails.application.default_url_options
     if Rails.env.development?
