@@ -571,7 +571,7 @@ Layout/BlockEndNewline:
   Enabled: true
 
 Style/CaseEquality:
-  Enabled: true
+  Enabled: false
   AllowOnConstant: true
 
 Style/CharacterLiteral:

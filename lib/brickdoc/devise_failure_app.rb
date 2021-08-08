@@ -25,7 +25,6 @@ module Brickdoc
 
       # make all data fields nullable.
       ast = GraphQL.parse(params[:query])
-      # rubocop:disable Style/CaseEquality
       fields = ast.children[0].selections.find { |i| i.name === operation_name }
         .selections.map(&:name) - %w[errors __typename]
       fields.each { |f| results[f] = nil }
