@@ -101,7 +101,7 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
       }
       placement="top">
       <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
-        <Button onClick={e => e.preventDefault()} type="text" className="bubble-menu-item">
+        <Button role="menuitem" onClick={e => e.preventDefault()} type="text" className="bubble-menu-item">
           <Icon name="font-size" className="font-menu-item-icon" style={{ color: activeColor() }} />
           <Icon name="line-down" className="font-menu-item-arrow-icon" />
         </Button>

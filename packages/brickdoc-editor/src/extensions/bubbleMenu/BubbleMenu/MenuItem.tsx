@@ -44,7 +44,7 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
         </>
       }
       placement="top">
-      <Button onClick={toggleStyle(style)} type="text" className={cx('bubble-menu-item', activeClass(style))}>
+      <Button role="menuitem" onClick={toggleStyle(style)} type="text" className={cx('bubble-menu-item', activeClass(style))}>
         {style.label}
       </Button>
     </Tooltip>

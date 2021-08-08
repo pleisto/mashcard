@@ -1,34 +1,108 @@
 import * as React from 'react'
-import { mount, ReactWrapper } from 'enzyme'
-import { SlashCommandsMenu, SlashCommandsMenuProps } from '../SlashCommandsMenu'
+import { SlashCommandsMenu } from '../SlashCommandsMenu'
+import { render, screen, fireEvent } from '@testing-library/react'
 
 describe('SlashCommandsMenu', () => {
-  it('renders menu items correctly', () => {
+  it('matches correct snapshot', () => {
+    const iconText = 'icon'
     const items = [
       {
         title: 'H1',
         desc: 'h1',
-        icon: <div>icon</div>,
+        icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
         title: 'H2',
         desc: 'h2',
-        icon: <div>icon</div>,
+        icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
         title: 'H3',
         desc: 'h3',
-        icon: <div>icon</div>,
+        icon: <div>{iconText}</div>,
         command: () => {}
       }
     ]
 
-    const commandsMenu = mount(<SlashCommandsMenu items={items} command={() => {}} />)
+    const { container } = render(<SlashCommandsMenu items={items} command={() => {}} />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 
-    expect(commandsMenu.find('.brickdoc-slash-menu').length).toBe(1)
-    expect(commandsMenu.find('button.slash-menu-item').length).toBe(3)
+  it('renders menu items correctly', () => {
+    const iconText = 'icon'
+    const items = [
+      {
+        title: 'H1',
+        desc: 'h1',
+        icon: <div>{iconText}</div>,
+        command: () => {}
+      },
+      {
+        title: 'H2',
+        desc: 'h2',
+        icon: <div>{iconText}</div>,
+        command: () => {}
+      },
+      {
+        title: 'H3',
+        desc: 'h3',
+        icon: <div>{iconText}</div>,
+        command: () => {}
+      }
+    ]
+
+    render(<SlashCommandsMenu items={items} command={() => {}} />)
+
+    const menuItems = screen.getAllByRole('menuitem')
+
+    expect(screen.getByRole('menu')).toBeInTheDocument()
+    expect(menuItems).toHaveLength(3)
+
+    items.forEach((item, index) => {
+      expect(menuItems[index]).toHaveTextContent(item.title)
+      expect(menuItems[index]).toHaveTextContent(item.desc)
+      expect(menuItems[index]).toHaveTextContent(iconText)
+    })
+  })
+
+  it('renders active class correctly correspond to active index', () => {
+    const iconText = 'icon'
+    const items = [
+      {
+        title: 'H1',
+        desc: 'h1',
+        icon: <div>{iconText}</div>,
+        command: () => {}
+      },
+      {
+        title: 'H2',
+        desc: 'h2',
+        icon: <div>{iconText}</div>,
+        command: () => {}
+      },
+      {
+        title: 'H3',
+        desc: 'h3',
+        icon: <div>{iconText}</div>,
+        command: () => {}
+      }
+    ]
+
+    const activeIndex = 1
+
+    render(<SlashCommandsMenu items={items} activeIndex={activeIndex} command={() => {}} />)
+
+    expect(screen.getByRole('menu')).toBeInTheDocument()
+
+    const menuItems = screen.getAllByRole('menuitem')
+
+    expect(menuItems[activeIndex]).toHaveClass('active')
+    menuItems.forEach((item, index) => {
+      if (index === activeIndex) return
+      expect(item).not.toHaveClass('active')
+    })
   })
 
   it('selects menu item normally', () => {
@@ -48,20 +122,19 @@ describe('SlashCommandsMenu', () => {
       }
     ]
 
-    const commandsMenu = mount(<SlashCommandsMenu items={items} command={mockCommand} />)
+    render(<SlashCommandsMenu items={items} command={mockCommand} />)
 
-    const firstItem = commandsMenu.find('button.slash-menu-item').at(0)
-    const secondItem = commandsMenu.find('button.slash-menu-item').at(1)
+    const menuItems = screen.getAllByRole('menuitem')
 
-    firstItem.simulate('click')
+    const clickedIndex = 1
 
-    expect(firstItem.hasClass('active')).toBeTruthy()
-    expect(secondItem.hasClass('active')).toBeFalsy()
+    fireEvent.click(menuItems[clickedIndex])
+
     expect(mockCommand).toBeCalledTimes(1)
-    expect(mockCommand).toBeCalledWith(items[0])
+    expect(mockCommand).toBeCalledWith(items[clickedIndex])
   })
 
-  describe('instance function onKeyDown', () => {
+  it('hovers on menu item will change active index', () => {
     const items = [
       {
         title: 'H1',
@@ -74,82 +147,19 @@ describe('SlashCommandsMenu', () => {
         desc: 'h2',
         icon: <div>icon</div>,
         command: () => {}
-      },
-      {
-        title: 'H3',
-        desc: 'h3',
-        icon: <div>icon</div>,
-        command: () => {}
       }
     ]
+    const mockIndexChange = jest.fn()
 
-    function keyDown(component: ReactWrapper<SlashCommandsMenuProps, unknown, SlashCommandsMenu>, eventKey: string): void {
-      component.instance().onKeyDown(eventKey)
-    }
+    render(<SlashCommandsMenu items={items} command={() => {}} onIndexChange={mockIndexChange} />)
 
-    it('triggers `ArrowUp` correctly', () => {
-      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={() => {}} />)
+    const menuItems = screen.getAllByRole('menuitem')
 
-      expect(commandsMenu.state('selectedIndex')).toBe(0)
+    const hoverIndex = 1
 
-      keyDown(commandsMenu, 'ArrowUp')
-      expect(commandsMenu.state('selectedIndex')).toBe(2)
+    fireEvent.mouseEnter(menuItems[hoverIndex])
 
-      keyDown(commandsMenu, 'ArrowUp')
-      expect(commandsMenu.state('selectedIndex')).toBe(1)
-
-      keyDown(commandsMenu, 'ArrowUp')
-      expect(commandsMenu.state('selectedIndex')).toBe(0)
-    })
-
-    it('triggers `ArrowDown` correctly', () => {
-      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={() => {}} />)
-
-      expect(commandsMenu.state('selectedIndex')).toBe(0)
-
-      keyDown(commandsMenu, 'ArrowDown')
-      expect(commandsMenu.state('selectedIndex')).toBe(1)
-
-      keyDown(commandsMenu, 'ArrowDown')
-      expect(commandsMenu.state('selectedIndex')).toBe(2)
-
-      keyDown(commandsMenu, 'ArrowDown')
-      expect(commandsMenu.state('selectedIndex')).toBe(0)
-    })
-
-    it('triggers `Enter` correctly', () => {
-      const mockCommand = jest.fn()
-      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={mockCommand} />)
-
-      keyDown(commandsMenu, 'Enter')
-      expect(mockCommand).toBeCalledTimes(1)
-      expect(mockCommand).toBeCalledWith(items[0])
-
-      keyDown(commandsMenu, 'ArrowDown')
-      keyDown(commandsMenu, 'Enter')
-      expect(mockCommand).toBeCalledTimes(2)
-      expect(mockCommand).toBeCalledWith(items[1])
-
-      keyDown(commandsMenu, 'ArrowDown')
-      keyDown(commandsMenu, 'Enter')
-      expect(mockCommand).toBeCalledTimes(3)
-      expect(mockCommand).toBeCalledWith(items[2])
-
-      keyDown(commandsMenu, 'ArrowDown')
-      keyDown(commandsMenu, 'Enter')
-      expect(mockCommand).toBeCalledTimes(4)
-      expect(mockCommand).toBeCalledWith(items[0])
-    })
-
-    it('triggers Unexpected key will not cause error', () => {
-      const mockCommand = jest.fn()
-      const commandsMenu = mount<SlashCommandsMenu>(<SlashCommandsMenu items={items} command={mockCommand} />)
-
-      expect(() => {
-        keyDown(commandsMenu, 'Unexpected')
-      }).not.toThrow()
-      expect(mockCommand).toBeCalledTimes(0)
-      expect(commandsMenu.state('selectedIndex')).toBe(0)
-    })
+    expect(mockIndexChange).toBeCalledTimes(1)
+    expect(mockIndexChange).toBeCalledWith(hoverIndex)
   })
 })

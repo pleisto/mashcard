@@ -12,6 +12,7 @@ const TRIGGER_CHAR = '/'
 const menuItems: SlashCommandsMenuItem[] = [
   {
     title: 'Heading 1',
+    alias: ['h1'],
     desc: 'Big section heading',
     icon: <Icon name="rte-h1" className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -20,6 +21,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   },
   {
     title: 'Heading 2',
+    alias: ['h2'],
     desc: 'Medium section heading',
     icon: <Icon name="rte-h2" className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -28,6 +30,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   },
   {
     title: 'Heading 3',
+    alias: ['h3'],
     desc: 'Small section heading',
     icon: <Icon name="rte-h3" className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -36,6 +39,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   },
   {
     title: 'Bulleted List',
+    alias: ['bulletlist'],
     desc: 'Create a bulleted list',
     icon: <Icon name="list-unordered" className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -44,6 +48,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   },
   {
     title: 'Numbered List',
+    alias: ['numberlist'],
     desc: 'Create a list with numbering',
     icon: <Icon name="list-ordered" className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -60,6 +65,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   },
   {
     title: 'Image',
+    alias: ['img', 'picture'],
     desc: 'Upload or embed with a link',
     icon: <Icon name="file-image" className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -69,7 +75,13 @@ const menuItems: SlashCommandsMenuItem[] = [
 ]
 
 function filterMenuItemsByQuery(query: string): SlashCommandsMenuItem[] {
-  return menuItems.filter(item => item.title.toLowerCase().startsWith(query.toLowerCase())).slice(0, QUERY_LIMIT)
+  return menuItems
+    .filter(
+      item =>
+        item.title.toLowerCase().startsWith(query.toLowerCase()) ||
+        item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
+    )
+    .slice(0, QUERY_LIMIT)
 }
 
 export const SlashCommandsExtension = Extension.create({
@@ -88,8 +100,13 @@ export const SlashCommandsExtension = Extension.create({
         render: () => {
           let reactRenderer: ReactRenderer
           let popup: PopupInstance
-
-          // TODO: make SlashCommandsMenu a controlled function component, and move its internal selectedIndex state here
+          let activeIndex = 0
+          const handleIndexChange = (index: number): void => {
+            activeIndex = index
+            reactRenderer.updateProps({
+              activeIndex: index
+            })
+          }
 
           return {
             onStart: props => {
@@ -109,7 +126,31 @@ export const SlashCommandsExtension = Extension.create({
               })
             },
             onKeyDown({ event }) {
-              return (reactRenderer.ref as SlashCommandsMenu).onKeyDown(event.key)
+              const key = event.key
+              const moving = (index: number): void => {
+                handleIndexChange(index)
+                reactRenderer.element
+                  ?.getElementsByClassName('slash-menu-item')
+                  [index]?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+              }
+
+              if (key === 'ArrowUp') {
+                moving((activeIndex + menuItems.length - 1) % menuItems.length)
+                return true
+              }
+
+              if (key === 'ArrowDown') {
+                moving((activeIndex + 1) % menuItems.length)
+                return true
+              }
+
+              if (key === 'Enter') {
+                reactRenderer.props.command(reactRenderer.props.items[activeIndex])
+                handleIndexChange(0)
+                return true
+              }
+
+              return false
             },
             onExit() {
               popup.destroy()

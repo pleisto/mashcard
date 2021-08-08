@@ -7,12 +7,13 @@ interface SlashMenuItemProps {
   title: string
   desc: string
   icon: React.ReactNode
-  onClick: () => void
+  onClick?: () => void
+  onHover?: () => void
 }
 
-export const SlashMenuItem: React.FC<SlashMenuItemProps> = ({ active, title, desc, icon, onClick }) => {
+export const SlashMenuItem: React.FC<SlashMenuItemProps> = ({ active, title, desc, icon, onClick, onHover }) => {
   return (
-    <Button type="text" className={cx('slash-menu-item', { active })} onClick={onClick}>
+    <Button role="menuitem" type="text" className={cx('slash-menu-item', { active })} onClick={onClick} onMouseEnter={onHover}>
       <div className="menu-item-icon-wrapper">{icon}</div>
       <div className="menu-item-content">
         <div className="menu-item-title">{title}</div>

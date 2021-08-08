@@ -1,42 +1,42 @@
 // CypressOnRails: dont remove these command
-Cypress.Commands.add('appCommands', (body) => {
-  cy.log(`APP: ${  JSON.stringify(body)}`)
-  return cy.request({
-    method: 'POST',
-    url: "/__cypress__/command",
-    body: JSON.stringify(body),
-    log: true,
-    failOnStatusCode: true
-  }).then((response) => {
-    return response.body
-  })
+Cypress.Commands.add('appCommands', body => {
+  cy.log(`APP: ${JSON.stringify(body)}`)
+  return cy
+    .request({
+      method: 'POST',
+      url: '/__cypress__/command',
+      body: JSON.stringify(body),
+      log: true,
+      failOnStatusCode: true
+    })
+    .then(response => {
+      return response.body
+    })
 })
 
 // eslint-disable-next-line camelcase
 Cypress.Commands.add('app', (name, commandOptions) => {
-  return cy.appCommands({name, options: commandOptions}).then((body) => {
+  return cy.appCommands({ name, options: commandOptions }).then(body => {
     return body[0]
   })
 })
 
 Cypress.Commands.add('appScenario', (name, options = {}) => {
-  return cy.app(`scenarios/${  name}`, options)
+  return cy.app(`scenarios/${name}`, options)
 })
 
-Cypress.Commands.add('appFactories', (options) => {
+Cypress.Commands.add('appFactories', options => {
   return cy.app('factory_bot', options)
 })
 
-Cypress.Commands.add("sessionMock", (details) => {
-  if(!details)
+Cypress.Commands.add('sessionMock', details => {
+  if (!details)
     // eslint-disable-next-line no-param-reassign
     details = {}
 
-  if(!details.redirect_to)
-    details.redirect_to = '/'
+  if (!details.redirect_to) details.redirect_to = '/'
 
-  cy.visit("__cypress__/session_mock",
-    { method: "POST", body: { email: details.email, redirect_to: details.redirect_to }  })
+  cy.visit('__cypress__/session_mock', { method: 'POST', body: { email: details.email, redirect_to: details.redirect_to } })
 })
 
 // CypressOnRails: end
@@ -51,7 +51,7 @@ Cypress.on('fail', (err, runnable) => {
   // allow app to generate additional logging data
   Cypress.$.ajax({
     url: '/__cypress__/command',
-    data: JSON.stringify({name: 'log_fail', options: {error_message: err.message, runnable_full_title: runnable.fullTitle() }}),
+    data: JSON.stringify({ name: 'log_fail', options: { error_message: err.message, runnable_full_title: runnable.fullTitle() } }),
     async: false,
     method: 'POST'
   })

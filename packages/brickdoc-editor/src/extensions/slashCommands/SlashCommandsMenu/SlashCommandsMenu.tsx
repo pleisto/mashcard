@@ -5,6 +5,7 @@ import './index.less'
 
 export interface SlashCommandsMenuItem {
   title: string
+  alias?: string[]
   desc: string
   icon: React.ReactNode
   command: ({ editor, range }: { editor: Editor; range: Range }) => void
@@ -12,65 +13,34 @@ export interface SlashCommandsMenuItem {
 
 export interface SlashCommandsMenuProps {
   items: SlashCommandsMenuItem[]
+  activeIndex?: number
+  onIndexChange?: (index: number) => void
   command: (item: SlashCommandsMenuItem) => void
 }
 
-// We need expose instance function onKeyDown for suggestion extension.
-// And reactRenderer only access ref of a class component, thus SlashCommandsMenu must be a class component.
-export class SlashCommandsMenu extends React.PureComponent<SlashCommandsMenuProps> {
-  state = {
-    selectedIndex: 0
+export const SlashCommandsMenu: React.FC<SlashCommandsMenuProps> = ({ items, activeIndex, command, onIndexChange }) => {
+  const selectItem = (index: number) => () => {
+    const item = items[index]
+    if (item) command(item)
   }
 
-  selectItem = (index: number) => () => {
-    const item = this.props.items[index]
-    if (item) {
-      this.props.command(item)
-    }
+  const onHover = (index: number) => (): void => {
+    onIndexChange?.(index)
   }
-
-  onKeyDown(key: string): boolean {
-    const { items } = this.props
-    const { selectedIndex } = this.state
-
-    const setSelectedIndex = (index: number): void => this.setState({ selectedIndex: index })
-
-    if (key === 'ArrowUp') {
-      setSelectedIndex((selectedIndex + items.length - 1) % items.length)
-      return true
-    }
-
-    if (key === 'ArrowDown') {
-      setSelectedIndex((selectedIndex + 1) % items.length)
-      return true
-    }
-
-    if (key === 'Enter') {
-      this.selectItem(selectedIndex)()
-      return true
-    }
-
-    return false
-  }
-
-  render(): React.ReactElement {
-    const { items } = this.props
-    const { selectedIndex } = this.state
-
-    return (
-      <div className="brickdoc-slash-menu">
-        <div className="slash-menu-heading">Brickdoc</div>
-        {items.map((item, index) => (
-          <SlashMenuItem
-            key={index}
-            active={index === selectedIndex}
-            title={item.title}
-            desc={item.desc}
-            icon={item.icon}
-            onClick={this.selectItem(index)}
-          />
-        ))}
-      </div>
-    )
-  }
+  return (
+    <div role="menu" className="brickdoc-slash-menu">
+      <div className="slash-menu-heading">Brickdoc</div>
+      {items.map((item, index) => (
+        <SlashMenuItem
+          key={index}
+          active={index === activeIndex}
+          title={item.title}
+          desc={item.desc}
+          icon={item.icon}
+          onClick={selectItem(index)}
+          onHover={onHover(index)}
+        />
+      ))}
+    </div>
+  )
 }

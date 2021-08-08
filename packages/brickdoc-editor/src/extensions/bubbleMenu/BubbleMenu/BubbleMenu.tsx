@@ -85,7 +85,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
 
   return (
     <TiptapBubbleMenu editor={editor} tippyOptions={{ placement: 'top', maxWidth: '1000px' }}>
-      <div className="brickdoc-bubble-menu">
+      <div role="menu" className="brickdoc-bubble-menu">
         <div className="bubble-menu-group">
           {HeadingStyle.map((s, index) => (
             <MenuItem key={index} editor={editor} style={s} />
