@@ -4,5 +4,5 @@
   - prettier --write
 '*.(json|yml|md|less|graphql)':
   - prettier --write
-'(app|lib|saas)/**/*.rb':
+'(app|lib|config|packages)/**/*.rb':
   - bundle exec rubocop --parallel --force-exclusion
