@@ -82,7 +82,7 @@ jobs:
       - name: Deployment to App Engine
         uses: brickdoc/app-engine@v1.beta3
         with:
-          name: brickdoc-preview-trunk
+          name: brickdoc-ce-trunk
           image: ${{ env.image }}
           host: ${{ env.domain }}
           chart: ${{ github.workspace }}/templates/helm-charts/brickdoc
@@ -92,7 +92,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
           APP_SECRET_SECRET_KEY_BASE: ${{ secrets.TRUNK_SECRET_KEY_BASE }}
           APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.TRUNK_POSTGRE_URL }}
-          APP_SECRET_REDIS_URL: redis://:${{ secrets.TRUNK_REDIS_AUTH_TOKEN }}@master.brickdoc-ce-trunk.8ne7l8.use1.cache.amazonaws.com:6379
+          APP_SECRET_REDIS_URL: ${{ secrets.TRUNK_REDIS_URL }}
           APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
           APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
           APP_SECRET_SECURITY_REVERSIBLE_INT_INVERSE: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_INVERSE }}
