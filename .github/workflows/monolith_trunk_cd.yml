@@ -102,3 +102,4 @@ jobs:
           APP_SECRET_SMTP_URL: ${{ secrets.TRUNK_SMTP_URL }}
           APP_ENV_GITHUB_KEY: 70835aac65b5971f7774
           APP_SECRET_GITHUB_SECRET: ${{ secrets.TRUNK_GITHUB_SECRET }}
+          APP_ENV_HOST: ${{ env.domain }}
