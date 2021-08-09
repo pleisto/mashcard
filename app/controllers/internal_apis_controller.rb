@@ -27,12 +27,15 @@ class InternalApisController < ActionController::API
   private
 
   def context
+    pod = current_pod
+    user = current_user
+    user&.pod_id = current_pod&.fetch('id')
     {
       protocol: 'http',
       real_ip: request.remote_ip,
       entrypoint: :internal,
-      current_user: current_user,
-      current_pod: current_pod,
+      current_user: user,
+      current_pod: pod,
       session: session,
       request_id: request.uuid,
       routes: Rails.application.routes.url_helpers,

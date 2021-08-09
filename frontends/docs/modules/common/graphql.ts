@@ -45,6 +45,7 @@ export const queryPageBlocks = gql`
       id
       sort
       nextSort
+      firstChildSort
       parentId
       type
       data {
@@ -104,6 +105,17 @@ export const BlockDelete = gql`
   mutation blockDelete($input: BlockDeleteInput!) {
     blockDelete(input: $input) {
       errors
+    }
+  }
+`
+
+export const BlockCreateShareLink = gql`
+  mutation blockCreateShareLink($input: BlockCreateShareLinkInput!) {
+    blockCreateShareLink(input: $input) {
+      errors
+      shareLink {
+        key
+      }
     }
   }
 `

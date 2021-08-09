@@ -3,6 +3,7 @@ import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, BlockData,
 import { Skeleton, Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/utils'
 import { PageMenu } from '../PageMenu'
+import { SIZE_GAP } from '@/docs/modules/pages/SyncProvider'
 
 interface PageTreeProps {
   webid: string
@@ -27,6 +28,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
         type: i.type,
         sort: i.sort,
         nextSort: i.nextSort,
+        firstChildSort: i.firstChildSort,
         titleText: title,
         title: <PageMenu id={i.id} text={data.text} parentId={i.parentId ?? null} title={title} webid={webid} />
       }
@@ -34,30 +36,34 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
     .sort((a, b) => Number(a.sort) - Number(b.sort))
 
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
-    // TODO check dropToGap
-    // TODO empty targetParentId support
-    console.log(attrs)
-    let targetParentId: string, sort: number
+    let targetParentId: string | undefined | null, sort: number
 
     const node = attrs.node as unknown as Block & { key: string }
     // Check if is root node
-    if (node.parentId) {
+    if (attrs.dropToGap) {
       targetParentId = node.parentId
       // take averaged value
-      sort = Math.round(0.5 * (Number(node.sort) + Number(node.nextSort)))
+      if (attrs.dropPosition === -1) {
+        sort = Math.round(2 * (Number(node.sort) - Number(node.nextSort)))
+      } else {
+        sort = Math.round(0.5 * (Number(node.sort) + Number(node.nextSort)))
+      }
     } else {
       targetParentId = node.key
       // take next value
-      sort = Number(node.nextSort)
+      sort = Number(node.firstChildSort) - SIZE_GAP
     }
-    const input: BlockMoveInput = { id: attrs.dragNode.key as string, targetParentId, sort }
-    console.log({ input })
+    const input: BlockMoveInput = { id: attrs.dragNode.key as string, sort }
+    if (targetParentId) {
+      input.targetParentId = targetParentId
+    }
+    // console.log({ input, attrs })
     await blockMove({ variables: { input } })
     void refetch()
   }
 
   const compactedData = flattedData.filter(i => {
-    // NOTE check if is NEWLINE (which type == paragraph and title is blank)
+    // NOTE hide if is NEWLINE (which type == paragraph and title is blank)
     return i.type !== 'paragraph' || !!i.titleText
   })
 

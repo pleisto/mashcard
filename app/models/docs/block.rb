@@ -41,6 +41,8 @@ class Docs::Block < ApplicationRecord
   has_many :children, class_name: 'Docs::Block', foreign_key: :parent_id, dependent: :restrict_with_exception
   has_many :histories, dependent: :restrict_with_exception
   has_many :snapshots, dependent: :restrict_with_exception
+  has_many :share_links, dependent: :restrict_with_exception
+  has_many :enabled_share_links, -> { enable }, class_name: "Docs::ShareLink", dependent: :restrict_with_exception
 
   validates :meta, presence: true, allow_blank: true
   # validates :data, presence: true
@@ -48,11 +50,16 @@ class Docs::Block < ApplicationRecord
   validates :collaborators, presence: true
 
   attribute :next_sort, :integer, default: 0
+  attribute :first_child_sort, :integer, default: 0
 
   ## Distance for expansion
   SORT_GAP = 2**32
   REBALANCE_GAP = 2**12
   has_many_attached :attachments
+
+  def title
+    data.fetch('text')
+  end
 
   def blobs
     attachments.map do |blob|
@@ -385,6 +392,17 @@ class Docs::Block < ApplicationRecord
     end
 
     target
+  end
+
+  def show_policy?(user)
+    return true if collaborators.include?(user.id)
+
+    target_pod_id = user.pod_id || user.personal_pod.id
+    return true if pod_id == target_pod_id
+
+    return true if enabled_share_links.any? { |l| l.target_pod_ids.blank? || l.target_pod_ids.include?(target_pod_id) }
+
+    false
   end
 
   def path_cache

@@ -608,6 +608,7 @@ en-US:
       invalid_pod_webid: "No access to the webid"
       pod_has_already_switched: "Pod has already switched"
       pod_exist: "Pod has already exist"
+      user_not_exist: "User doesn't exist"
       pod_not_exist: "Pod doesn't exist"
   docs:
     app_title: Brickdoc
@@ -615,6 +616,18 @@ en-US:
       create_pages: Add Pages
       delete: Delete
       create_snapshot: Create Snapshot
+      create_share_link: Create Share Link
+    share_links:
+      share_type: Share Type
+      expired_at: Expired at
+      anonymous: Anonymous User
+      pod: Pod
+      user: User
+      webid: Webid
+      email: Email
+      create:
+        placeholder: Select a share type
+        success: Share link create successfully.
     snapshots:
       name: Snapshot
     pods:

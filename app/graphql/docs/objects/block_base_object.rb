@@ -8,6 +8,7 @@ module Docs
     field :sort, GraphQL::Types::BigInt, 'block sort', null: false
     field :collaborators, [Accounts::Objects::User], 'collaborators', null: true
     field :next_sort, GraphQL::Types::BigInt, 'block next sort', null: false
+    field :first_child_sort, GraphQL::Types::BigInt, 'block first child sort', null: false
     field :blobs, [System::Objects::Blob], 'blobs', null: true
 
     expose_permissions_field :show?

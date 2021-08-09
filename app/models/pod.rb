@@ -27,6 +27,7 @@ class Pod < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of :owner_id, scope: :personal, if: proc { personal? }
   has_many :blocks, class_name: 'Docs::Block'
+  has_many :share_links, dependent: :restrict_with_exception, class_name: 'Docs::ShareLink'
 
   default_value_for :personal, false
 
@@ -67,6 +68,6 @@ class Pod < ApplicationRecord
   end
 
   def as_session_context
-    attributes.slice('id', 'webid')
+    attributes.slice('id', 'webid', 'owner_id')
   end
 end

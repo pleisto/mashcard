@@ -37,7 +37,7 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
         tr.insert(endPos - 1, editor.schema.nodeFromJSON(newNode))
         break
       case Patchtype.Update:
-        if (patch.path.length < 1) {
+        if (patch.path.length <= 1) {
           console.warn('Root node cannot be updated')
         } else {
           let newContent: Fragment | undefined = targetNode.content
@@ -117,7 +117,7 @@ export function useDocumentSubscription({ docid, editor }: { docid: string; edit
       patches.forEach(patch => {
         applyPatch(patch, editor, chainedCommands)
       })
-      chainedCommands.setDocAttrs({ ...editor.state.doc.attrs, patchSeq: newPatch.seq }).run()
+      chainedCommands.setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq }).run()
       console.log({ label: 'After Apply', uuid: globalThis.brickdocContext.uuid, patches, newPatch })
     },
     variables: { docId: docid }

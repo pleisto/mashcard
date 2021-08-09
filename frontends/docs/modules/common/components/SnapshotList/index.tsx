@@ -25,7 +25,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = props => {
 
   const subMenus = data.blockSnapshots.map((snapshot: BlockSnapshot) => (
     <Menu.Item key={`snapshot-${snapshot.snapshotVersion}`}>
-      <Link to={`/${props.webid}/${props.id}/${snapshot.snapshotVersion}`}> {snapshot.name} </Link>
+      <Link to={`/${props.webid}/${props.id}/s/${snapshot.snapshotVersion}`}> {snapshot.name} </Link>
     </Menu.Item>
   ))
 

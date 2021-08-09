@@ -111,20 +111,18 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   )
 
   const formData = (
-    <>
-      <Form form={form} name={formName} layout="vertical" initialValues={initialValues}>
-        {webidFormItem}
-        <Form.Item name="name" label={t('pods.name')} rules={[{ required: true, message: t('pods.required.name') }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name="bio" label={t('pods.bio')}>
-          <Input />
-        </Form.Item>
-        <Form.Item name="avatar" label={t('pods.avatar')}>
-          <Popover content={updateDashboard}> {avatar} </Popover>
-        </Form.Item>
-      </Form>
-    </>
+    <Form form={form} name={formName} layout="vertical" initialValues={initialValues}>
+      {webidFormItem}
+      <Form.Item name="name" label={t('pods.name')} rules={[{ required: true, message: t('pods.required.name') }]}>
+        <Input />
+      </Form.Item>
+      <Form.Item name="bio" label={t('pods.bio')}>
+        <Input />
+      </Form.Item>
+      <Form.Item name="avatar" label={t('pods.avatar')}>
+        <Popover content={updateDashboard}> {avatar} </Popover>
+      </Form.Item>
+    </Form>
   )
 
   return (

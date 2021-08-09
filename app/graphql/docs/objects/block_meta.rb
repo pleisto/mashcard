@@ -6,8 +6,10 @@ module Docs
       field :cover, BlockCover, 'cover', null: true
       field :image, BlockImage, 'image', null: true
       field :attachment, BlockAttachment, 'attachment', null: true
-      field :level, Int, 'Prosemirror builtin level', null: true
       field :title, String, 'title', null: true
+
+      ## NOTE: Prosemirror builtin
+      field :level, Int, 'Prosemirror builtin level', null: true
     end
   end
 end

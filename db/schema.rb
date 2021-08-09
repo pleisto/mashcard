@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_070124) do
+ActiveRecord::Schema.define(version: 2021_08_03_062644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -133,6 +133,23 @@ ActiveRecord::Schema.define(version: 2021_07_22_070124) do
     t.index ["block_id", "history_version"], name: "index_docs_histories_on_block_id_and_history_version", unique: true, comment: "history identifier"
     t.index ["path"], name: "index_docs_histories_on_path", using: :gin
     t.index ["pod_id"], name: "index_docs_histories_on_pod_id"
+  end
+
+  create_table "docs_share_links", force: :cascade do |t|
+    t.uuid "block_id", null: false, comment: "Page id"
+    t.bigint "pod_id", null: false
+    t.bigint "user_id"
+    t.string "key", null: false, comment: "Unique key"
+    t.bigint "state", default: 0, null: false, comment: "Status"
+    t.string "policy", null: false, comment: "Share policy"
+    t.json "payload"
+    t.datetime "expired_at"
+    t.bigint "target_pod_ids", default: [], null: false, array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["block_id", "state", "policy"], name: "index_docs_share_links_on_block_id_and_state_and_policy"
+    t.index ["key"], name: "index_docs_share_links_on_key", unique: true
+    t.index ["target_pod_ids"], name: "index_docs_share_links_on_target_pod_ids", using: :gin
   end
 
   create_table "docs_snapshots", force: :cascade do |t|

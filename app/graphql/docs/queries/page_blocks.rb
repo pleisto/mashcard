@@ -8,11 +8,13 @@ module Docs
              description: 'List all pages for pod webid'
 
     def resolve(webid:)
-      blocks = Docs::Block.joins(:pod).pageable.where(pod: { webid: webid }).to_a
+      blocks = Docs::Block.joins(:pod).pageable.where(pod: { webid: webid }).includes(:enabled_share_links).to_a
 
       tree_map = blocks.group_by(&:parent_id).transform_values do |a|
         [a.count, flatten_hash(a)]
       end
+
+      first_child_sort = {}
 
       target_blocks = []
       tree_map.each do |parent_id, (size, hash)|
@@ -43,10 +45,27 @@ module Docs
           block = hash.fetch("idx_#{idx}")
           block.next_sort = hash[idx + 1] || block.sort + Docs::Block::SORT_GAP
           target_blocks << block
+          first_child_sort[block.parent_id] = [first_child_sort[block.parent_id], block.sort].compact.min
         end
       end
 
-      authorized_scope blocks, as: :collaborating, with: Docs::BlockPolicy
+      blocks = blocks.map do |block|
+        block.first_child_sort = first_child_sort[block.id] || 0
+        block
+      end
+
+      roots = blocks.select { |block| block.parent_id.nil? }
+      result = authorized_scope roots, as: :collaborating, with: Docs::BlockPolicy
+      target = result
+
+      loop do
+        break if result.blank?
+        parent_ids = result.map(&:id)
+        result = blocks.select { |block| block.parent_id.in?(parent_ids) }
+        target += result
+      end
+
+      target
     end
 
     private

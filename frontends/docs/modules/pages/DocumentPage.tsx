@@ -76,11 +76,13 @@ export const DocumentPage: React.FC = () => {
   // const setSort = createDocAttrsUpdater('sort')
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && data) {
-      const content: JSONContent = blocksToJSONContents(data.childrenBlocks as Block[])[0]
+    if (editor && !editor.isDestroyed && data?.childrenBlocks) {
+      const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
       childrenBlocks.current = data.childrenBlocks
 
-      editor.commands.replaceRoot(content)
+      if (content.length) {
+        editor.commands.replaceRoot(content[0])
+      }
     }
   }, [editor, data])
 
@@ -115,14 +117,14 @@ export const DocumentPage: React.FC = () => {
     )
   }
 
-  if (!data) {
+  if (data?.childrenBlocks?.length) {
+    return (
+      <div className={styles.page}>
+        {DocumentTitleElement}
+        <EditorContent editor={editor} />
+      </div>
+    )
+  } else {
     return <Alert message="Page not found" type="error" />
   }
-
-  return (
-    <div className={styles.page}>
-      {DocumentTitleElement}
-      <EditorContent editor={editor} />
-    </div>
-  )
 }

@@ -22,7 +22,7 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, chi
           <PageTree webid={webid} />
 
           <Footer style={{ textAlign: 'center' }}>
-            <Link style={{ color: 'inherit' }} to={`/${webid}/${uuid()}`}>
+            <Link style={{ color: 'inherit' }} to={`/${webid}/p/${uuid()}`}>
               + {t('blocks.create_pages')}
             </Link>
           </Footer>

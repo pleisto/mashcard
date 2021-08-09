@@ -11,12 +11,17 @@ export const routeConfig = (webid: string): any => {
       render: () => <Redirect to={`/${webid}`} />
     },
     {
-      path: '/:webid/:docid',
+      path: '/:webid/p/:docid',
       exact: true,
       component: DocumentPage
     },
     {
-      path: '/:webid/:docid/:snapshotVersion',
+      path: '/:webid/p/:docid/s/:snapshotVersion',
+      exact: true,
+      component: DocumentPage
+    },
+    {
+      path: '/:webid/p/:docid/l/:shareLink',
       exact: true,
       component: DocumentPage
     },
