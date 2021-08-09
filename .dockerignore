@@ -30,6 +30,8 @@ storybook-static/
 /packages/brickdoc-design-system/.storybook/
 /junit-reports/
 /packages/*/spec/
+/gems/*/spec/
+/plugins/*/spec/
 Dockerfile
 .env.*
 .rspec

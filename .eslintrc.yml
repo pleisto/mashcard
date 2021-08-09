@@ -7,4 +7,6 @@ parserOptions:
   project:
     - ./tsconfig.json
     - ./packages/*/tsconfig.json
+    - ./plugins/*/tsconfig.json
+    - ./spec/dummy/plugins/*/tsconfig.json
     - ./cypress/tsconfig.json

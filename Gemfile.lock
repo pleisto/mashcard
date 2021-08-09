@@ -1,17 +1,17 @@
 PATH
-  remote: packages/brickdoc_settings
+  remote: gems/brickdoc_settings
   specs:
     brickdoc_settings (0.0.1)
       activesupport (>= 6.1.0)
 
 PATH
-  remote: packages/rubocop-brickdoc
+  remote: gems/rubocop-brickdoc
   specs:
     rubocop-brickdoc (0.1.1)
       rubocop (>= 1.10)
 
 PATH
-  remote: packages/webpacker
+  remote: gems/webpacker
   specs:
     webpacker (0.1.0)
       activesupport (>= 6.1)

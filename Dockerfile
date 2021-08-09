@@ -13,17 +13,14 @@ ENV RAILS_ENV=$RAILS_ENV
 ENV BUNDLE_WITHOUT="test development"
 
 COPY . .
-RUN bundle install --retry 2 --jobs 4 \
-  && CYPRESS_INSTALL_BINARY=0 yarn install --immutable \
-  && yarn dist && rm -rf node_modules .yarn frontends dist public/esm-bundle/stats.json *.js *.json *.yml yarn.lock \
+RUN bundle install --retry 2 --jobs 4
+
+ENV CYPRESS_INSTALL_BINARY=0
+RUN yarn install --immutable
+RUN yarn dist
+RUN rm -rf node_modules .yarn frontends dist public/esm-bundle/stats.json *.js *.json *.yml yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
-  # Remove ./packages without local gems
-  && find ./packages/* -maxdepth 0 -type d | \
-  # TODO: we should separate the gem packages from npm packages in the future to avoid listing all gem package names here.
-  grep -v 'webpacker' | \
-  grep -v 'brickdoc_settings' | \
-  grep -v 'rubocop-brickdoc' | \
-  xargs rm -rf \
+  && rm -rf ./packages/* \
   && mkdir tmp/pids
 
 

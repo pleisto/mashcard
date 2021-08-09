@@ -11,8 +11,8 @@
 #   inflect.uncountable %w( fish sheep )
 # end
 #
-ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.acronym "GraphQL"
-  inflect.acronym "UUID"
-  inflect.acronym "ID"
+ActiveSupport::Inflector.inflections do |inflect|
+  Packwerk::Inflections::Custom.new(
+    Rails.root.join('config', 'inflections.yml')
+  ).apply_to(inflect)
 end

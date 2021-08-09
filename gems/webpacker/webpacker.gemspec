@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.license  = "MIT"
 
   s.metadata = {
+    # TODO: change to gems
     "source_code_uri" => "https://github.com/brickdoc/brickdoc/tree/master/packages/webpack"
   }
 

@@ -7,7 +7,14 @@ import { apolloClient } from '@/common/apollo'
 import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/inMemoryCache'
 
 export const BrickdocContext: React.Context<BrickdocContext> = React.createContext(globalThis.brickdocContext)
+
 BrickdocContext.displayName = 'BrickdocGlobalConfig'
+
+// export const useBrickdocSetting: any = (key, scope = '') => {
+//   const { settings } = useContext(BrickdocContext)
+//   if (!settings[scope]) return null
+//   return settings[scope][key]
+// }
 
 const direction = globalThis.brickdocContext.rtl ? 'rtl' : 'ltr'
 

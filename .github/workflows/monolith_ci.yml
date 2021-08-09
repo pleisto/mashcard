@@ -12,8 +12,8 @@ on:
       - packages/brickdoc-design-system/**
       - '!packages/brickdoc-design-system/components/**'
       - packages/less-vars-loader/**
-      - packages/rubocop-brickdoc/**
       - packages/eslint-plugin-brickdoc/**
+      - gems/rubocop-brickdoc/**
       - public/**
       - templates/**
       - config/locales/**
@@ -35,8 +35,8 @@ on:
       - packages/brickdoc-design-system/**
       - '!packages/brickdoc-design-system/components/**'
       - packages/less-vars-loader/**
-      - packages/rubocop-brickdoc/**
       - packages/eslint-plugin-brickdoc/**
+      - gems/rubocop-brickdoc/**
       - public/**
       - templates/**
       - config/locales/**

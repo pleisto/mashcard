@@ -7,6 +7,8 @@ class CreateBrickdocConfigs < ActiveRecord::Migration[6.1]
       t.string :scope, null: false
       t.string :domain, null: false
       t.integer :domain_len
+
+      t.timestamps
     end
 
     add_index :brickdoc_configs, [:key, :scope, :domain], unique: true

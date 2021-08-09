@@ -3,7 +3,7 @@
 {
   "extends": "./tsconfig.build.json",
   "include": ["**/*"],
-  "exclude": ["packages/**/*", "dist/**/*", "cypress/**/*"],
+  "exclude": ["packages/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
     { "path": "packages/brickdoc-uploader" },
     { "path": "packages/brickdoc-design-system" },

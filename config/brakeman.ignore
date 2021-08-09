@@ -23,10 +23,10 @@
     {
       "warning_type": "Command Injection",
       "warning_code": 14,
-      "fingerprint": "b703ba674a3fc3a7dc715a26b79239ae0f72406615cb56a9bfd1df888c2af84c",
+      "fingerprint": "6da5a9cba445ed076882808ad96bf3e0dcc908583e7c728e766336d59a36ae02",
       "check_name": "Execute",
       "message": "Possible command injection",
-      "file": "packages/webpacker/lib/webpacker/compiler.rb",
+      "file": "gems/webpacker/lib/webpacker/compiler.rb",
       "line": 82,
       "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
       "code": "Open3.capture3(webpack_env, \"#{optional_ruby_runner} ./bin/webpack\", :chdir => File.expand_path(config.root_path))",
@@ -61,6 +61,6 @@
       "note": "false positives"
     }
   ],
-  "updated": "2021-08-03 02:31:49 +0800",
+  "updated": "2021-08-08 23:13:37 +0800",
   "brakeman_version": "5.1.1"
 }

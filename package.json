@@ -6,7 +6,9 @@
   "private": true,
   "license": "Apache-2.0",
   "workspaces": [
-    "packages/*"
+    "gems/*",
+    "packages/*",
+    "plugins/*"
   ],
   "scripts": {
     "postinstall": "husky install",
@@ -15,13 +17,14 @@
     "dist:prod": "RAILS_ENV=production yarn dist",
     "dist:test": "RAILS_ENV=test yarn dist",
     "analyze": "BUNDLE_ANALYZER=1 yarn dist",
-    "lint": "yarn lint:eslint && yarn lint:rubocop && yarn lint:brakeman",
+    "lint": "yarn lint:eslint && yarn lint:rubocop && yarn lint:brakeman && yarn lint:packwerk",
     "lint:fix": "yarn lint:eslint:fix && yarn lint:rubocop:fix",
     "lint:eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
     "lint:eslint:fix": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx ./",
     "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
     "lint:rubocop:fix": "bundle exec rubocop --config .rubocop.yml -a",
     "lint:brakeman": "bundle exec brakeman --no-pager --exit-on-warn",
+    "lint:packwerk": "bundle exec packwerk validate && bundle exec rake zeitwerk:check",
     "tsc:check": "tsc --build",
     "tsc:build": "tsc --build tsconfig.build.json",
     "test": "yarn tsc:check && yarn lint && yarn test:jest && yarn test:rspec",
@@ -71,7 +74,7 @@
     "@babel/core": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
-    "@brickdoc/webpacker": "workspace:packages/webpacker",
+    "@brickdoc/webpacker": "workspace:gems/webpacker",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@cypress/code-coverage": "^3.9.10",

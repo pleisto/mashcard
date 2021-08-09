@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "cleanup": "rm -rf dist"
+  },
+  "main": "./dist/frontend/index.js",
+  "module": "./dist/frontend/index.js",
+  "types": "./dist/frontend/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}

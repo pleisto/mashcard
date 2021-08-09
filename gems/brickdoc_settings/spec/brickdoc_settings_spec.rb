@@ -108,4 +108,49 @@ describe BrickdocSettings do
     expect(BrickSettings.at('pod1').get('int')).to eq(2)
     expect(BrickSettings.at('pod3').get('int')).to eq(4)
   end
+
+  it 'can handle settings on different domains' do
+    BrickSettings.field :domains_test, default: 'test'
+    BrickSettings.scope(:test_scope).field :domains_test2, default: 'test'
+
+    expect(BrickSettings.domains_test).to eq('test')
+    expect(BrickSettings.scope(:test_scope).domains_test2).to eq('test')
+
+    pod1_settings = BrickSettings.at('pod1')
+    pod2_settings = BrickSettings.at('pod2')
+
+    expect(pod1_settings.instance_variable_get(:@domain)).to eq('pod1')
+    expect(pod2_settings.instance_variable_get(:@domain)).to eq('pod2')
+    expect(pod1_settings.instance_variable_get(:@scope)).to eq('')
+    expect(pod2_settings.instance_variable_get(:@scope)).to eq('')
+
+    pod2_settings.domains_test = 'test2'
+    expect(BrickSettings.scope(:test_scope).at('pod2').instance_variable_get(:@domain)).to eq('pod2')
+    expect(BrickSettings.scope(:test_scope).at('pod2').instance_variable_get(:@scope)).to eq('test_scope')
+    BrickSettings.scope(:test_scope).at('pod2').domains_test2 = 'test2'
+
+    expect(pod1_settings.domains_test).to eq('test')
+    expect(pod1_settings.scope(:test_scope).instance_variable_get(:@domain)).to eq('pod1')
+    expect(pod1_settings.scope(:test_scope).instance_variable_get(:@scope)).to eq('test_scope')
+    expect(pod1_settings.scope(:test_scope).domains_test2).to eq('test')
+
+    expect(pod2_settings.domains_test).to eq('test2')
+    expect(pod2_settings.scope(:test_scope).domains_test2).to eq('test2')
+
+    expect(BrickSettings.at('user1.pod2').domains_test).to eq('test2')
+  end
+
+  it 'can set scope or domain on accessor' do
+    BrickSettings.field :test_key, default: '1', scope: 'cross1'
+    BrickSettings.field :test_key, default: '2', scope: 'cross2'
+
+    expect(BrickSettings.scope('cross1').test_key).to eq('1')
+    expect(BrickSettings.scope('cross1').get(:test_key, scope: 'cross2')).to eq('2')
+
+    BrickSettings.scope('cross1').at('d1').test_key = '3'
+
+    expect(BrickSettings.scope('cross1').at('d1').test_key).to eq('3')
+    expect(BrickSettings.scope('cross1').at('d1').get(:test_key, domain: 'd2')).to eq('1')
+    expect(BrickSettings.scope('cross1').at('d1').get(:test_key, scope: 'cross2', domain: 'd2')).to eq('2')
+  end
 end

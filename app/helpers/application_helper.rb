@@ -15,6 +15,7 @@ module ApplicationHelper
       csrfToken: form_authenticity_token,
       isDesktopApp: false,
       featureFlags: Flipper.features,
+      settings: BrickdocConfig.to_frontend,
       serverMessage: flash[:alert]
     }
   end

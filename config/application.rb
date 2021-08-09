@@ -31,6 +31,7 @@ module Brickdoc
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app', 'graphql')
+    config.eager_load_paths << Rails.root.join('app', 'graphql')
     config.autoload_paths << Rails.root.join('app', 'services')
 
     config.generators.templates.push Rails.root.join('templates/generators')

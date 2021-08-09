@@ -16,7 +16,7 @@ const mergedConfig = merge(
     ? {
         devServer: {
           watchOptions: {
-            ignored: ['**/node_modules', '**/packages/*/dist']
+            ignored: ['**/node_modules', '**/dist']
           }
         },
         plugins: [new ReactRefreshWebpackPlugin(), new PrintChangedFilePlugin()]

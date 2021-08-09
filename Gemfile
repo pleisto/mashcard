@@ -44,7 +44,7 @@ gem 'apollo_upload_server', '~> 2.0', '>= 2.0.5'
 gem 'graphql-batch', '~> 0.4.3'
 
 # Frontend
-gem 'webpacker', path: 'packages/webpacker'
+gem 'webpacker', path: 'gems/webpacker'
 
 ## IAM
 gem 'action_policy', '~> 0.5.7'
@@ -64,7 +64,7 @@ gem 'premailer-rails', '~> 1.11', '>= 1.11.1' # mailer
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.1' # Don't rely on Linux/macOS timezone data.
 
-gem 'brickdoc_settings', path: 'packages/brickdoc_settings'
+gem 'brickdoc_settings', path: 'gems/brickdoc_settings'
 
 gem 'unsplash'
 
@@ -73,7 +73,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'ffaker'
   gem 'rubocop', '>= 1.17'
-  gem 'rubocop-brickdoc', require: false, path: 'packages/rubocop-brickdoc'
+  gem 'rubocop-brickdoc', require: false, path: 'gems/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 4.0.2'
   gem 'rspec_junit_formatter', '>= 0.4'
