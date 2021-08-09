@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal, Form, Input, Skeleton, message, Avatar, Popover } from '@brickdoc/design-system'
+import { Modal, Form, Input, Skeleton, message, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
@@ -30,9 +30,12 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.url : '')
   const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.signedId : '')
   const prepareFileUpload = usePrepareFileUpload()
+  const formRef = React.createRef<FormInstance>()
 
   const handleCancel = (): void => {
     setVisible(false)
+    setConfirmLoading(false)
+    formRef.current!.resetFields()
   }
 
   if (loading) {
@@ -44,16 +47,18 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
 
     form
       .validateFields()
-      .then(values => {
+      .then(async values => {
         form.resetFields()
         const input: CreateOrUpdatePodInput = {
           type,
           webid: values.webid,
           name: values.name,
-          bio: values.bio,
-          avatarSignedId
+          bio: values.bio
         }
-        void createOrUpdatePod({ variables: { input } })
+        if (avatarSignedId) {
+          input.avatarSignedId = avatarSignedId
+        }
+        await createOrUpdatePod({ variables: { input } })
         setVisible(false)
         setConfirmLoading(false)
         const msg = type === PodOperation.Create ? 'pods.create.success' : 'pods.update.success'
@@ -102,16 +107,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   }
 
   const updateDashboard = (
-    <Dashboard
-      fileType="image"
-      prepareFileUpload={prepareFileUpload}
-      onUploaded={onUploaded}
-      importSources={IMPORT_SOURCES}
-    />
+    <Dashboard fileType="image" prepareFileUpload={prepareFileUpload} onUploaded={onUploaded} importSources={IMPORT_SOURCES} />
   )
 
   const formData = (
-    <Form form={form} name={formName} layout="vertical" initialValues={initialValues}>
+    <Form form={form} ref={formRef} name={formName} layout="vertical" initialValues={initialValues}>
       {webidFormItem}
       <Form.Item name="name" label={t('pods.name')} rules={[{ required: true, message: t('pods.required.name') }]}>
         <Input />

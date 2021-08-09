@@ -11,6 +11,7 @@ import {
 } from '@/BrickdocGraphQL'
 import { SnapshotList } from '../SnapshotList'
 import { ShareLinkModal } from '../ShareLinkModal'
+import { queryBlockSnapshots, queryPageBlocks } from '../../graphql'
 
 type UUID = Scalars['UUID']
 
@@ -23,19 +24,20 @@ interface PageMenuProps {
 }
 
 export const PageMenu: React.FC<PageMenuProps> = props => {
-  const [blockDelete, { loading: deleteLoading }] = useBlockDeleteMutation()
   const [blockId, setBlockId] = useState<string | undefined>()
   const [shareLinkModalVisible, setShareLinkModalVisible] = useState<boolean>(false)
 
-  const deletePage = (id: UUID): void => {
+  const [blockDelete, { loading: deleteLoading, client: deleteClient }] = useBlockDeleteMutation()
+  const deletePage = async (id: UUID): Promise<void> => {
     const input: BlockDeleteInput = { id }
-    void blockDelete({ variables: { input } })
-    globalThis.location.href = `/${props.webid}`
+    await blockDelete({ variables: { input } })
+    void deleteClient.refetchQueries({ include: [queryPageBlocks] })
   }
-  const [blockCreateSnapshot] = useBlockCreateSnapshotMutation()
-  const createSnapshot = (id: UUID): void => {
+  const [blockCreateSnapshot, { client: snapshotClient }] = useBlockCreateSnapshotMutation()
+  const createSnapshot = async (id: UUID): Promise<void> => {
     const input: BlockCreateSnapshotInput = { id }
-    void blockCreateSnapshot({ variables: { input } })
+    await blockCreateSnapshot({ variables: { input } })
+    void snapshotClient.refetchQueries({ include: [queryBlockSnapshots] })
   }
 
   const createShareLink = (id: UUID): void => {
@@ -52,21 +54,17 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
     console.log(`rollback snapshot ${version}`)
   }
 
-  if (props.parentId) {
-    return <Link to={`/${props.webid}/p/${props.parentId}#${props.id}`}>{props.title}</Link>
-  }
-
   const onClick = (id: UUID): MenuProps['onClick'] => {
     return ({ key }) => {
       switch (key) {
         case 'create_snapshot':
-          createSnapshot(id)
+          void createSnapshot(id)
           break
         case 'create_share_link':
-          createShareLink(id)
+          void createShareLink(id)
           break
         case 'delete':
-          deletePage(id)
+          void deletePage(id)
           break
         default:
           if (key.startsWith('snapshot-')) {
@@ -94,10 +92,13 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
       <SnapshotList id={props.id} webid={props.webid} />
     </Menu>
   )
+
+  const link = props.parentId ? `/${props.webid}/p/${props.parentId}#${props.id}` : `/${props.webid}/p/${props.id}`
+
   return (
     <>
       <Dropdown mouseEnterDelay={1} overlay={menu}>
-        <Link to={`/${props.webid}/p/${props.id}`}>{props.title}</Link>
+        <Link to={link}>{props.title}</Link>
       </Dropdown>
       <ShareLinkModal
         title={t('blocks.create_share_link')}

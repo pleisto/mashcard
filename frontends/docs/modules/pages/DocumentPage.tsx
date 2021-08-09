@@ -14,8 +14,8 @@ import { JSONContent } from '@tiptap/core'
 
 export const DocumentPage: React.FC = () => {
   const { webid, docid, ...restParams } = useParams<{ webid: string; docid: string; snapshotVersion: string }>()
-  const [blockSyncBatch] = useBlockSyncBatchMutation()
-  const { onCommit } = syncProvider({ blockSyncBatch })
+  const [blockSyncBatch, { client }] = useBlockSyncBatchMutation()
+  const { onCommit } = syncProvider({ client, blockSyncBatch })
 
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
