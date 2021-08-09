@@ -4,6 +4,8 @@ import arrayTreeFilter from 'array-tree-filter'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
 import KeyCode from 'rc-util/lib/KeyCode'
+
+import './style'
 import {
   CloseOne as CloseCircleFilled,
   Down as DownOutlined,

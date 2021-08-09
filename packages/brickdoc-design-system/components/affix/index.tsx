@@ -5,6 +5,7 @@ import ResizeObserver from 'rc-resize-observer'
 import { ConfigContext, ConfigConsumerProps } from '../config-provider'
 import { throttleByAnimationFrameDecorator } from '../_util/throttleByAnimationFrame'
 
+import './style'
 import { addObserveTarget, removeObserveTarget, getTargetRect, getFixedTop, getFixedBottom } from './utils'
 
 function getDefaultTarget() {

@@ -1,6 +1,8 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import toArray from 'rc-util/lib/Children/toArray'
+
+import './style'
 import { ConfigContext } from '../config-provider'
 import { SizeType } from '../config-provider/SizeContext'
 import Item from './Item'
@@ -10,27 +12,27 @@ export const SpaceContext = React.createContext({
   latestIndex: 0,
   horizontalSize: 0,
   verticalSize: 0,
-  supportFlexGap: false,
+  supportFlexGap: false
 })
 
-export type SpaceSize = SizeType | number;
+export type SpaceSize = SizeType | number
 
 export interface SpaceProps extends React.HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  size?: SpaceSize | [SpaceSize, SpaceSize];
-  direction?: 'horizontal' | 'vertical';
+  prefixCls?: string
+  className?: string
+  style?: React.CSSProperties
+  size?: SpaceSize | [SpaceSize, SpaceSize]
+  direction?: 'horizontal' | 'vertical'
   // No `stretch` since many components do not support that.
-  align?: 'start' | 'end' | 'center' | 'baseline';
-  split?: React.ReactNode;
-  wrap?: boolean;
+  align?: 'start' | 'end' | 'center' | 'baseline'
+  split?: React.ReactNode
+  wrap?: boolean
 }
 
 const spaceSize = {
   small: 8,
   middle: 16,
-  large: 24,
+  large: 24
 }
 
 function getNumberSize(size: SpaceSize) {
@@ -56,11 +58,8 @@ const Space: React.FC<SpaceProps> = props => {
   const supportFlexGap = useFlexGapSupport()
 
   const [horizontalSize, verticalSize] = React.useMemo(
-    () =>
-      ((Array.isArray(size) ? size : [size, size]) as [SpaceSize, SpaceSize]).map(item =>
-        getNumberSize(item),
-      ),
-    [size],
+    () => ((Array.isArray(size) ? size : [size, size]) as [SpaceSize, SpaceSize]).map(item => getNumberSize(item)),
+    [size]
   )
 
   const childNodes = toArray(children, { keepEmpty: true })
@@ -72,9 +71,9 @@ const Space: React.FC<SpaceProps> = props => {
     `${prefixCls}-${direction}`,
     {
       [`${prefixCls}-rtl`]: directionConfig === 'rtl',
-      [`${prefixCls}-align-${mergedAlign}`]: mergedAlign,
+      [`${prefixCls}-align-${mergedAlign}`]: mergedAlign
     },
-    className,
+    className
   )
 
   const itemClassName = `${prefixCls}-item`
@@ -97,8 +96,7 @@ const Space: React.FC<SpaceProps> = props => {
         index={i}
         marginDirection={marginDirection}
         split={split}
-        wrap={wrap}
-      >
+        wrap={wrap}>
         {child}
       </Item>
     )
@@ -107,7 +105,7 @@ const Space: React.FC<SpaceProps> = props => {
 
   const spaceContext = React.useMemo(
     () => ({ horizontalSize, verticalSize, latestIndex, supportFlexGap }),
-    [horizontalSize, verticalSize, latestIndex, supportFlexGap],
+    [horizontalSize, verticalSize, latestIndex, supportFlexGap]
   )
 
   // =========================== Render ===========================
@@ -137,10 +135,9 @@ const Space: React.FC<SpaceProps> = props => {
       style={{
         ...gapStyle,
         ...(wrap && { flexWrap: 'wrap', marginBottom: -verticalSize }),
-        ...style,
+        ...style
       }}
-      {...otherProps}
-    >
+      {...otherProps}>
       <SpaceContext.Provider value={spaceContext}>{nodes}</SpaceContext.Provider>
     </div>
   )

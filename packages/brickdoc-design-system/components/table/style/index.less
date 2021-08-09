@@ -19,6 +19,7 @@
 
 .@{table-prefix-cls} {
   .reset-component();
+
   position: relative;
   font-size: @table-font-size;
   background: @table-bg;
@@ -341,7 +342,6 @@
 
     min-width: 120px;
     background-color: @table-filter-dropdown-bg;
-
     border-radius: @border-radius-base;
     box-shadow: @box-shadow-base;
 
@@ -435,6 +435,7 @@
 
   &-row-expand-icon {
     .operation-unit();
+
     position: relative;
     display: inline-flex;
     float: left;
@@ -486,6 +487,7 @@
     &-collapsed::before {
       transform: rotate(-180deg);
     }
+
     &-collapsed::after {
       transform: rotate(0deg);
     }
@@ -496,6 +498,7 @@
         display: none;
         content: none;
       }
+
       background: transparent;
       border: 0;
       visibility: hidden;
@@ -540,6 +543,7 @@
     .@{table-prefix-cls}-empty & {
       color: @disabled-color;
     }
+
     &:hover {
       > td {
         background: @component-background;
@@ -598,6 +602,7 @@
     &::before {
       left: 0;
     }
+
     &::after {
       right: 0;
     }
@@ -636,6 +641,7 @@
       box-shadow: inset -10px 0 8px -8px darken(@shadow-color, 5%);
     }
   }
+
   &-sticky {
     &-holder {
       position: sticky;
@@ -652,16 +658,20 @@
       background: lighten(@table-border-color, 80%);
       border-top: 1px solid @table-border-color;
       opacity: 0.6;
+
       &:hover {
         transform-origin: center bottom;
       }
+
       &-bar {
         height: 8px;
         background-color: @table-sticky-scroll-bar-bg;
         border-radius: @table-sticky-scroll-bar-radius;
+
         &:hover {
           background-color: @table-sticky-scroll-bar-active-bg;
         }
+
         &-active {
           background-color: @table-sticky-scroll-bar-active-bg;
         }
@@ -677,6 +687,7 @@
         box-shadow: none !important;
       }
     }
+
     &-ping-right {
       .@{table-prefix-cls}-cell-fix-right-first::after {
         box-shadow: none !important;

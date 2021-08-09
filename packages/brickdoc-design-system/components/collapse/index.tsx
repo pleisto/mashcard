@@ -1,3 +1,4 @@
+import './style'
 import Collapse from './Collapse'
 
 export type { CollapseProps } from './Collapse'

@@ -125,6 +125,7 @@
     .@{checkbox-inner-prefix-cls} {
       background-color: @input-disabled-bg;
       border-color: @border-color-base !important;
+
       &::after {
         border-color: @input-disabled-bg;
         border-collapse: separate;
@@ -146,6 +147,7 @@
 
   .@{checkbox-prefix-cls}-wrapper {
     .reset-component();
+
     display: inline-flex;
     align-items: baseline;
     line-height: unset;
@@ -174,14 +176,17 @@
 
   .@{checkbox-prefix-cls}-group {
     .reset-component();
+
     display: inline-block;
 
     &-item {
       margin-right: @checkbox-group-item-margin-right;
+
       &:last-child {
         margin-right: 0;
       }
     }
+
     &-item + &-item {
       margin-left: 0;
     }
@@ -220,6 +225,7 @@
     transform: scale(1);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(1.6);
     opacity: 0;

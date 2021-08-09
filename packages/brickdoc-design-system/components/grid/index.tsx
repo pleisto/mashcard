@@ -1,3 +1,4 @@
+import './style'
 import Row from './row'
 import Col from './col'
 import useBreakpoint from './hooks/useBreakpoint'

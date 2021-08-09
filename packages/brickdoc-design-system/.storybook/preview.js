@@ -27,7 +27,7 @@ export const parameters = {
 export const decorators = [
   Story => (
     <Suspense fallback={<Skeleton active />}>
-      <ConfigProvider i18n={i18}>
+      <ConfigProvider i18n={i18n}>
         <Story />
       </ConfigProvider>
     </Suspense>

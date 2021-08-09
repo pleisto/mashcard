@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 *,
 *::before,
@@ -11,6 +13,7 @@ Use a more readable tab size (opinionated).
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+
   --brickdoc-primary-color: @primary-color;
   --font-size-base: @font-size-base;
   --text-color-base: @text-color;
@@ -56,9 +59,11 @@ body {
   line-height: @line-height-base;
   background-color: @body-background; // 2
   font-feature-settings: @font-feature-settings-base;
+
   &:lang(zh-Hans) {
     font-family: 'Brickdoc Sans CJK SC', @font-family;
   }
+
   &:lang(zh-Hant) {
     font-family: 'Brickdoc Sans CJK TC', @font-family;
   }
@@ -68,6 +73,7 @@ body {
 Grouping content
 ================
 */
+
 /**
 1. Add the correct height in Firefox.
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
@@ -184,6 +190,7 @@ sup {
 sub {
   bottom: -0.25em;
 }
+
 sup {
   top: -0.5em;
 }
@@ -193,10 +200,8 @@ em:lang(ja) {
   text-emphasis: filled circle;
   text-emphasis-position: under right;
   font-style: inherit;
-  border-bottom: 2px dotted;
-  padding-bottom: 0.05em;
-  border-bottom-width: -webkit-calc(0px);
-  padding-bottom: -webkit-calc(0px);
+  border-bottom-width: -webkit-calc(0);
+  padding-bottom: -webkit-calc(0);
 }
 
 em:lang(ja) {
@@ -206,13 +211,8 @@ em:lang(ja) {
 
 dfn:lang(zh),
 dfn:lang(ja) {
-  font-weight: inherit;
-  font-style: inherit;
-}
-
-dfn:lang(zh),
-dfn:lang(ja) {
   font-weight: bolder;
+  font-style: inherit;
 }
 
 cite:lang(zh),
@@ -482,3 +482,4 @@ mark {
 .clearfix {
   .clearfix();
 }
+/* stylelint-enable no-descending-specificity */

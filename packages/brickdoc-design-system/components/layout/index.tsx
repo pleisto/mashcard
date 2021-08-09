@@ -1,3 +1,4 @@
+import './style'
 import InternalLayout, { BasicProps, Content, Footer, Header } from './layout'
 import Sider from './Sider'
 

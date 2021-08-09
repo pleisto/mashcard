@@ -39,6 +39,7 @@
   &-small {
     .formSize(@input-height-sm);
   }
+
   &-large {
     .formSize(@input-height-lg);
   }
@@ -162,7 +163,9 @@
     flex-direction: column;
     flex-grow: 1;
 
-    &:first-child:not([class^='brk-col-']):not([class*=' brk-col-']) { width: 100%; }
+    &:first-child:not([class^='brk-col-']):not([class*=' brk-col-']) {
+      width: 100%;
+    }
   }
 
   &-control-input {
@@ -215,6 +218,7 @@
     transform: translateY(-5px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -235,6 +239,7 @@
     transform: scale(0);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -246,6 +251,7 @@
     transform: scale(0);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -257,6 +263,7 @@
     transform: scale(0);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;

@@ -1,8 +1,10 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
-import { Attention as ExclamationCircleFilled } from '../icon'
 import KeyCode from 'rc-util/lib/KeyCode'
+
+import './style'
+import { Attention as ExclamationCircleFilled } from '../icon'
 import Tooltip, { AbstractTooltipProps } from '../tooltip'
 import Button from '../button'
 import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'

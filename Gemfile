@@ -5,15 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '~> 6.1.4'
 gem 'pg', '~> 1.2.3'
 gem 'marginalia', '~> 1.10.0'
-gem 'puma', '~> 5.3', '>= 5.3.2'
+gem 'puma', '~> 5.4'
 gem 'puma_worker_killer', '~> 0.3.1'
 gem 'hiredis', '~> 0.6.3'
-gem 'redis', '~>4.2.5'
-gem 'redis-objects', '~>1.5.0'
+gem 'redis', '~>4.4.0'
+gem 'redis-objects', '~>1.5.1'
 gem 'redis-namespace', '~> 1.8', '>= 1.8.1'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'connection_pool', '~> 2.2', '>= 2.2.5'
-gem 'faraday', '~> 1.4', '>= 1.4.3'
+gem 'faraday', '~> 1.7'
 gem 'typhoeus', '~> 1.4'
 gem 'oj'
 gem 'fast_blank', '>= 1.0', require: false
@@ -23,24 +23,23 @@ gem 'second_level_cache', '~> 2.6', '>= 2.6.4'
 gem 'packwerk', '~> 1.3', '>= 1.3.1'
 
 gem 'cloak-rb', '>= 0.1.0'
-gem 'lockbox', '>= 0.6.4'
+gem 'lockbox', '>= 0.6.5'
 gem 'lograge', '~> 0.11.2'
 gem 'logstop', '>= 0.2.7'
 gem 'accept_language', '>= 2.0.1'
-gem 'nokogiri', '~> 1.11', '>= 1.11.5'
+gem 'nokogiri', '~> 1.12', '>= 1.12.2'
 
 # Feature toggles
-gem 'flipper', '~> 0.21.0'
-gem 'flipper-active_record', '~> 0.21.0'
-gem 'flipper-active_support_cache_store', '~> 0.21.0'
+gem 'flipper', '~> 0.22.0'
+gem 'flipper-active_record', '~> 0.22.0'
+gem 'flipper-active_support_cache_store', '~> 0.22.0'
 
-# gem 'rails-settings-cached', '>= 2.6'
 gem 'default_value_for', '~> 3.4'
 
 # GraphQL
-gem 'graphql', '~> 1.12', '>= 1.12.13'
+gem 'graphql', '~> 1.12', '>= 1.12.14'
 gem 'graphql-fragment_cache', '~> 1.8'
-gem 'apollo_upload_server', '~> 2.0', '>= 2.0.5'
+gem 'apollo_upload_server', '~> 2.1'
 gem 'graphql-batch', '~> 0.4.3'
 
 # Frontend
@@ -69,13 +68,13 @@ gem 'brickdoc_settings', path: 'gems/brickdoc_settings'
 gem 'unsplash'
 
 group :development, :test do
-  gem 'cypress-on-rails', '~> 1.9.1'
+  gem 'cypress-on-rails', '~> 1.11.0'
   gem 'brakeman'
   gem 'ffaker'
-  gem 'rubocop', '>= 1.17'
+  gem 'rubocop', '>= 1.18'
   gem 'rubocop-brickdoc', require: false, path: 'gems/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
-  gem 'rspec-rails', '>= 4.0.2'
+  gem 'rspec-rails', '>= 5.0.1'
   gem 'rspec_junit_formatter', '>= 0.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

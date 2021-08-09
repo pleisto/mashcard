@@ -1,5 +1,9 @@
 import * as React from 'react'
 import Notification from 'rc-notification'
+import { NotificationInstance as RCNotificationInstance } from 'rc-notification/lib/Notification'
+import classNames from 'classnames'
+
+import './style'
 import {
   IconProvider,
   Close as CloseOutlined,
@@ -8,9 +12,6 @@ import {
   Attention as ExclamationCircleOutlined,
   Info as InfoCircleOutlined
 } from '../icon'
-import { NotificationInstance as RCNotificationInstance } from 'rc-notification/lib/Notification'
-
-import classNames from 'classnames'
 import createUseNotification from './hooks/useNotification'
 import { globalConfig } from '../config-provider'
 

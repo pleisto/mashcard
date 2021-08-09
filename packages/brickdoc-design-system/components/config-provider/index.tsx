@@ -5,6 +5,8 @@ import { IconProvider, IIconConfig } from '../icon'
 import { FormProvider as RcFormProvider } from 'rc-field-form'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
 import useMemo from 'rc-util/lib/hooks/useMemo'
+
+import './style'
 import { RenderEmptyHandler } from './renderEmpty'
 import LocaleProvider from '../locale-provider'
 import { useLocale } from '../locale-provider/LocaleReceiver'

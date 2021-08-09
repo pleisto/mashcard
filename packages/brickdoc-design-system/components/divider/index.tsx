@@ -1,16 +1,18 @@
 import * as React from 'react'
 import classNames from 'classnames'
+
+import './style'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 
 export interface DividerProps {
-  prefixCls?: string;
-  type?: 'horizontal' | 'vertical';
-  orientation?: 'left' | 'right' | 'center';
-  className?: string;
-  children?: React.ReactNode;
-  dashed?: boolean;
-  style?: React.CSSProperties;
-  plain?: boolean;
+  prefixCls?: string
+  type?: 'horizontal' | 'vertical'
+  orientation?: 'left' | 'right' | 'center'
+  className?: string
+  children?: React.ReactNode
+  dashed?: boolean
+  style?: React.CSSProperties
+  plain?: boolean
 }
 
 const Divider: React.FC<DividerProps> = props => (
@@ -37,9 +39,9 @@ const Divider: React.FC<DividerProps> = props => (
           [`${prefixCls}-with-text${orientationPrefix}`]: hasChildren,
           [`${prefixCls}-dashed`]: !!dashed,
           [`${prefixCls}-plain`]: !!plain,
-          [`${prefixCls}-rtl`]: direction === 'rtl',
+          [`${prefixCls}-rtl`]: direction === 'rtl'
         },
-        className,
+        className
       )
       return (
         <div className={classString} {...restProps} role="separator">

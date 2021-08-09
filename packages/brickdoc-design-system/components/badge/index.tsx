@@ -2,6 +2,8 @@ import * as React from 'react'
 import { useMemo, useRef } from 'react'
 import CSSMotion from 'rc-motion'
 import classNames from 'classnames'
+
+import './style'
 import ScrollNumber from './ScrollNumber'
 import Ribbon from './Ribbon'
 import { PresetColorType, PresetStatusColorType } from '../_util/colors'

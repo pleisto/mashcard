@@ -1,5 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
+import './style'
 import { ConfigContext } from '../config-provider'
 import LocaleReceiver from '../locale-provider/LocaleReceiver'
 import DefaultEmptyImg from './empty'

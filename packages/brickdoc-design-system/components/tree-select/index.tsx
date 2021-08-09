@@ -3,6 +3,8 @@ import RcTreeSelect, { TreeNode, SHOW_ALL, SHOW_PARENT, SHOW_CHILD, TreeSelectPr
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
 import { DefaultValueType } from 'rc-tree-select/lib/interface'
+
+import './style'
 import { ConfigContext } from '../config-provider'
 import devWarning from '../_util/devWarning'
 import { AntTreeNodeProps } from '../tree'

@@ -40,7 +40,7 @@ in which case you may not even need the asset pipeline. This is mostly relevant 
 - Ruby 2.4+
 - Rails 5.2+
 - Node.js 12+ || 14+
-- Yarn 1.x+ || 2.x+
+- Yarn 3.x+
 
 ## Features
 
@@ -49,7 +49,6 @@ in which case you may not even need the asset pipeline. This is mostly relevant 
 - Automatic code splitting using multiple entry points
 - Asset compression, source-maps, and minification
 - CDN support
-- Rails view helpers
 - Extensible and configurable
 
 ### Optional support
@@ -57,7 +56,6 @@ in which case you may not even need the asset pipeline. This is mostly relevant 
 _requires extra packages to be installed_
 
 - Stylesheets - Sass, Less, Stylus and Css, PostCSS
-- CoffeeScript
 - TypeScript
 - React
 
@@ -87,9 +85,6 @@ Finally, run the following to install Webpacker:
 ```bash
 bundle
 bundle exec rails webpacker:install
-
-# OR (on rails version < 5.0)
-bundle exec rake webpacker:install
 ```
 
 Optional: To fix ["unmet peer dependency" warnings](https://github.com/rails/webpacker/issues/1078),
@@ -191,17 +186,6 @@ If you want to use images in your stylesheets:
   background-image: url('../images/logo.svg');
 }
 ```
-
-#### Server-Side Rendering (SSR)
-
-Note, if you are using server-side rendering of JavaScript with dynamic code-spliting,
-as is often done with extensions to Webpacker, like [React on Rails](https://github.com/shakacode/react_on_rails)
-your JavaScript should create the link prefetch HTML tags that you will use, so you won't
-need to use to `asset_pack_path` in those circumstances.
-
-**Note:** In order for your styles or static assets files to be available in your view,
-you would need to link them in your "pack" or entry file. Otherwise, Webpack won't know
-to package up those files.
 
 ### Development
 
@@ -457,118 +441,6 @@ For more information on React props hydration and Server-Side Rendering (SSR), s
 [Rails/Webpacker React Integration Options](https://github.com/shakacode/react_on_rails/blob/master/docs/rails-webpacker-react-integration-options.md)
 in the [ShakaCode/react_on_rails](https://github.com/shakacode/react_on_rails) repo.
 
-#### Other frameworks
-
-Please follow webpack integration guide for relevant framework or library,
-
-1. [Svelte](https://github.com/sveltejs/svelte-loader#install)
-2. [Angular](https://v2.angular.io/docs/ts/latest/guide/webpack.html#!#configure-webpack)
-3. [Vue](https://vue-loader.vuejs.org/guide/)
-
-For example to add Vue support:
-
-```js
-// config/webpack/rules/vue.js
-const { VueLoaderPlugin } = require('vue-loader')
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      }
-    ]
-  },
-  plugins: [new VueLoaderPlugin()],
-  resolve: {
-    extensions: ['.vue']
-  }
-}
-```
-
-```js
-// config/webpack/base.js
-const { webpackConfig, merge } = require('@brickdoc/webpacker')
-const vueConfig = require('./rules/vue')
-
-module.exports = merge(vueConfig, webpackConfig)
-```
-
-### Custom Rails environments
-
-Out of the box Webpacker ships with - development, test and production environments in `config/webpacker.yml` however, in most production apps extra environments are needed as part of deployment workflow. Webpacker supports this out of the box from version 3.4.0+ onwards.
-
-You can choose to define additional environment configurations in webpacker.yml,
-
-```yml
-staging:
-  <<: *default
-
-  # Production depends on precompilation of packs prior to booting for performance.
-  compile: false
-
-  # Cache manifest.json for performance
-  cache_manifest: true
-
-  # Compile staging packs to a separate directory
-  public_output_path: packs-staging
-```
-
-or, Webpacker will use production environment as a fallback environment for loading configurations. Please note, `NODE_ENV` can either be set to `production`, `development` or `test`.
-This means you don't need to create additional environment files inside `config/webpacker/*` and instead use webpacker.yml to load different configurations using `RAILS_ENV`.
-
-For example, the below command will compile assets in production mode but will use staging configurations from `config/webpacker.yml` if available or use fallback production environment configuration:
-
-```bash
-RAILS_ENV=staging bundle exec rails assets:precompile
-```
-
-And, this will compile in development mode and load configuration for cucumber environment
-if defined in webpacker.yml or fallback to production configuration
-
-```bash
-RAILS_ENV=cucumber NODE_ENV=development bundle exec rails assets:precompile
-```
-
-Please note, binstubs compiles in development mode however rake tasks
-compiles in production mode.
-
-```bash
-# Compiles in development mode unless NODE_ENV is specified, per the binstub source
-./bin/webpack
-./bin/webpack-dev-server
-
-# Compiles in production mode by default unless NODE_ENV is specified, per `lib/tasks/webpacker/compile.rake`
-bundle exec rails assets:precompile
-bundle exec rails webpacker:compile
-```
-
-### Upgrading
-
-You can run following commands to upgrade Webpacker to the latest stable version. This process involves upgrading the gem and related JavaScript packages:
-
-```bash
-# check your Gemfile for version restrictions
-bundle update webpacker
-
-# overwrite your changes to the default install files and revert any unwanted changes from the install
-rails webpacker:install
-
-# yarn 1 instructions
-yarn upgrade @brickdoc/webpacker --latest
-yarn upgrade webpack-dev-server --latest
-
-# yarn 2 instructions
-yarn up @brickdoc/webpacker@latest
-yarn up webpack-dev-server@latest
-
-# Or to install the latest release (including pre-releases)
-yarn add @brickdoc/webpacker@next
-```
-
-Also, consult the [CHANGELOG](./CHANGELOG.md) for additional upgrade links.
-
 ## Paths
 
 By default, Webpacker ships with simple conventions for where the JavaScript
@@ -638,16 +510,6 @@ Webpacker hooks up a new `webpacker:compile` task to `assets:precompile`, which 
 When compiling assets for production on a remote server, such as a continuous integration environment, it's recommended to use `yarn install --frozen-lockfile` to install NPM packages on the remote host to ensure that the installed packages match the `yarn.lock` file.
 
 If you are using a CDN setup, webpacker will use the configured [asset host](https://guides.rubyonrails.org/configuring.html#rails-general-configuration) value to prefix URLs for images or font icons which are included inside JS code or CSS. It is possible to override this value during asset compilation by setting the `WEBPACKER_ASSET_HOST` environment variable.
-
-## Troubleshooting
-
-See the doc page for [Troubleshooting](./docs/troubleshooting.md).
-
-## Contributing
-
-[![Code Helpers](https://www.codetriage.com/rails/webpacker/badges/users.svg)](https://www.codetriage.com/rails/webpacker)
-
-We encourage you to contribute to Webpacker! See [CONTRIBUTING](CONTRIBUTING.md) for guidelines about how to proceed.
 
 ## License
 

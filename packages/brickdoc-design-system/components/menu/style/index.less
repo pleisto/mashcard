@@ -56,6 +56,7 @@
   &-horizontal &-submenu {
     transition: border-color @animation-duration-slow @ease-in-out, background @animation-duration-slow @ease-in-out;
   }
+
   &-submenu,
   &-submenu-inline {
     transition: border-color @animation-duration-slow @ease-in-out, background @animation-duration-slow @ease-in-out,
@@ -82,9 +83,11 @@
 
   &-item a {
     color: @menu-item-color;
+
     &:hover {
       color: @menu-highlight-color;
     }
+
     &::before {
       position: absolute;
       top: 0;
@@ -99,6 +102,7 @@
   // https://github.com/ant-design/ant-design/issues/19809
   &-item > .@{brk-prefix}-badge a {
     color: @menu-item-color;
+
     &:hover {
       color: @menu-highlight-color;
     }
@@ -124,6 +128,7 @@
 
   &-item-selected {
     color: @menu-highlight-color;
+
     a,
     a:hover {
       color: @menu-highlight-color;
@@ -164,6 +169,7 @@
       left: 0;
       margin-left: 0;
       border-right: 0;
+
       &::after {
         border-right: 0;
       }
@@ -199,6 +205,7 @@
       font-size: @menu-icon-size;
       transition: font-size @menu-animation-duration-normal @ease-out, margin @animation-duration-slow @ease-in-out,
         color @animation-duration-slow;
+
       + span {
         margin-left: @menu-icon-margin-right;
         opacity: 1;
@@ -264,6 +271,7 @@
     > .@{menu-prefix-cls} {
       background-color: @menu-bg;
       border-radius: @border-radius-base;
+
       &-submenu-title::after {
         transition: transform @animation-duration-slow @ease-in-out;
       }
@@ -297,9 +305,11 @@
           top @animation-duration-slow @ease-in-out, color @animation-duration-slow @ease-in-out;
         content: '';
       }
+
       &::before {
         transform: rotate(45deg) translateY(-2.5px);
       }
+
       &::after {
         transform: rotate(-45deg) translateY(2.5px);
       }
@@ -316,6 +326,7 @@
       &::before {
         transform: rotate(-45deg) translateX(2.5px);
       }
+
       &::after {
         transform: rotate(45deg) translateX(-2.5px);
       }
@@ -328,9 +339,11 @@
     &-open&-inline > &-title > &-arrow {
       // ↑
       transform: translateY(-2px);
+
       &::after {
         transform: rotate(-45deg) translateX(-2.5px);
       }
+
       &::before {
         transform: rotate(45deg) translateX(2.5px);
       }
@@ -362,6 +375,7 @@
         &-open,
         &-selected {
           color: @menu-highlight-color;
+
           &::after {
             border-bottom: 2px solid @menu-highlight-color;
           }
@@ -375,6 +389,7 @@
       top: 1px;
       display: inline-block;
       vertical-align: bottom;
+
       &::after {
         position: absolute;
         right: @menu-item-padding-horizontal;
@@ -393,13 +408,16 @@
     > .@{menu-prefix-cls}-item {
       a {
         color: @menu-item-color;
+
         &:hover {
           color: @menu-highlight-color;
         }
+
         &::before {
           bottom: -2px;
         }
       }
+
       &-selected a {
         color: @menu-highlight-color;
       }
@@ -419,6 +437,7 @@
   &-inline {
     .@{menu-prefix-cls}-item {
       position: relative;
+
       &::after {
         position: absolute;
         top: 0;
@@ -532,6 +551,7 @@
         margin: 0;
         font-size: @menu-icon-size-lg;
         line-height: @menu-item-height;
+
         + span {
           display: inline-block;
           opacity: 0;
@@ -551,6 +571,7 @@
       .@{iconfont-css-prefix} {
         display: none;
       }
+
       a {
         color: @text-color-dark;
       }
@@ -644,6 +665,7 @@
     line-height: inherit;
   }
 }
+
 @import './light';
 @import './dark';
 @import './rtl';

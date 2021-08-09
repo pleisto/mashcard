@@ -1,8 +1,10 @@
 import * as React from 'react'
 import omit from 'rc-util/lib/omit'
 import RcSteps from 'rc-steps'
-import { Check as CheckOutlined, Close as CloseOutlined } from '../icon'
 import classNames from 'classnames'
+
+import './style'
+import { Check as CheckOutlined, Close as CloseOutlined } from '../icon'
 import { ConfigContext } from '../config-provider'
 import Progress from '../progress'
 import useBreakpoint from '../grid/hooks/useBreakpoint'

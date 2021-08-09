@@ -1,8 +1,9 @@
 import * as React from 'react'
 import RcSwitch from 'rc-switch'
 import classNames from 'classnames'
-import { Rotation as LoadingOutlined } from '../icon'
 
+import './style'
+import { Rotation as LoadingOutlined } from '../icon'
 import Wave from '../_util/wave'
 import { ConfigContext } from '../config-provider'
 import SizeContext from '../config-provider/SizeContext'

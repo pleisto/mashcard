@@ -1,8 +1,6 @@
 // customize dark components background in popover containers(like Modal, Drawer, Card, Popover, Popconfirm, Notification, ...)
 // for dark theme
-.popover-customize-bg(@containerClass, @background: @popover-background, @prefix: @brk-prefix)
-  when
-  (@theme = dark) {
+.popover-customize-bg(@containerClass, @background: @popover-background, @prefix: @brk-prefix) when (@theme = dark) {
   @picker-prefix-cls: ~'@{prefix}-picker';
   @slider-prefix-cls: ~'@{prefix}-slider';
   @anchor-prefix-cls: ~'@{prefix}-anchor';
@@ -64,6 +62,7 @@
       .@{table-prefix-cls}-row-expand-icon {
         border: @popover-border;
       }
+
       tfoot {
         > tr {
           > th,
@@ -72,6 +71,7 @@
           }
         }
       }
+
       thead {
         > tr {
           > th {
@@ -80,6 +80,7 @@
           }
         }
       }
+
       tbody {
         > tr {
           > td {

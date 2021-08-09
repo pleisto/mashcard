@@ -1,6 +1,8 @@
 import * as React from 'react'
 import RcSlider, { Range as RcRange, Handle as RcHandle } from 'rc-slider'
 import classNames from 'classnames'
+
+import './style'
 import { TooltipPlacement } from '../tooltip'
 import SliderTooltip from './SliderTooltip'
 import { ConfigContext } from '../config-provider'

@@ -22,8 +22,7 @@
         height: 2px;
 
         &-animated {
-          transition: width @animation-duration-slow, left @animation-duration-slow,
-            right @animation-duration-slow;
+          transition: width @animation-duration-slow, left @animation-duration-slow, right @animation-duration-slow;
         }
       }
 
@@ -39,6 +38,7 @@
           left: 0;
           box-shadow: inset 10px 0 8px -8px fade(@shadow-color, 8%);
         }
+
         &::after {
           right: 0;
           box-shadow: inset -10px 0 8px -8px fade(@shadow-color, 8%);
@@ -122,6 +122,7 @@
           top: 0;
           box-shadow: inset 0 10px 8px -8px fade(@shadow-color, 8%);
         }
+
         &::after {
           bottom: 0;
           box-shadow: inset 0 -10px 8px -8px fade(@shadow-color, 8%);

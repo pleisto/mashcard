@@ -1,32 +1,34 @@
 import * as React from 'react'
 import SlickCarousel, { Settings } from '@ant-design/react-slick'
 import classNames from 'classnames'
+
+import './style'
 import { ConfigContext } from '../config-provider'
 
-export type CarouselEffect = 'scrollx' | 'fade';
-export type DotPosition = 'top' | 'bottom' | 'left' | 'right';
+export type CarouselEffect = 'scrollx' | 'fade'
+export type DotPosition = 'top' | 'bottom' | 'left' | 'right'
 
 // Carousel
 export interface CarouselProps extends Omit<Settings, 'dots' | 'dotsClass'> {
-  effect?: CarouselEffect;
-  style?: React.CSSProperties;
-  prefixCls?: string;
-  slickGoTo?: number;
-  dotPosition?: DotPosition;
-  children?: React.ReactNode;
+  effect?: CarouselEffect
+  style?: React.CSSProperties
+  prefixCls?: string
+  slickGoTo?: number
+  dotPosition?: DotPosition
+  children?: React.ReactNode
   dots?:
     | boolean
     | {
-        className?: string;
-      };
+        className?: string
+      }
 }
 
 export interface CarouselRef {
-  goTo: (slide: number, dontAnimate?: boolean) => void;
-  next: () => void;
-  prev: () => void;
-  autoPlay: boolean;
-  innerSlider: any;
+  goTo: (slide: number, dontAnimate?: boolean) => void
+  next: () => void
+  prev: () => void
+  autoPlay: boolean
+  innerSlider: any
 }
 
 const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
@@ -45,10 +47,10 @@ const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
         autoPlay: slickRef.current.innerSlider.autoPlay,
         innerSlider: slickRef.current.innerSlider,
         prev: slickRef.current.slickPrev,
-        next: slickRef.current.slickNext,
+        next: slickRef.current.slickNext
       }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [slickRef.current],
+      [slickRef.current]
     )
 
     const prevCount = React.useRef(React.Children.count(props.children))
@@ -62,7 +64,7 @@ const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
     }, [props.children])
 
     const newProps = {
-      ...props,
+      ...props
     }
 
     if (newProps.effect === 'fade') {
@@ -74,30 +76,19 @@ const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
     newProps.vertical = dotPosition === 'left' || dotPosition === 'right'
 
     const enableDots = !!dots
-    const dsClass = classNames(
-      dotsClass,
-      `${dotsClass}-${dotPosition}`,
-      typeof dots === 'boolean' ? false : dots?.className,
-    )
+    const dsClass = classNames(dotsClass, `${dotsClass}-${dotPosition}`, typeof dots === 'boolean' ? false : dots?.className)
 
     const className = classNames(prefixCls, {
       [`${prefixCls}-rtl`]: direction === 'rtl',
-      [`${prefixCls}-vertical`]: newProps.vertical,
+      [`${prefixCls}-vertical`]: newProps.vertical
     })
 
     return (
       <div className={className}>
-        <SlickCarousel
-          ref={slickRef}
-          {...newProps}
-          dots={enableDots}
-          dotsClass={dsClass}
-          arrows={arrows}
-          draggable={draggable}
-        />
+        <SlickCarousel ref={slickRef} {...newProps} dots={enableDots} dotsClass={dsClass} arrows={arrows} draggable={draggable} />
       </div>
     )
-  },
+  }
 )
 
 export default Carousel

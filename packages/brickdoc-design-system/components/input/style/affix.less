@@ -6,10 +6,12 @@
 .@{brk-prefix}-input {
   &-affix-wrapper {
     .input();
+
     display: inline-flex;
 
     &:not(&-disabled):hover {
       .hover();
+
       z-index: 1;
       .@{brk-prefix}-input-search-with-button & {
         z-index: 0;

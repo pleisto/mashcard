@@ -1,36 +1,27 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import RcInputNumber, { InputNumberProps as RcInputNumberProps } from 'rc-input-number'
-import {
-  Up as UpOutlined,
-  Down as DownOutlined
-} from '../icon'
+
+import './style'
+import { Up as UpOutlined, Down as DownOutlined } from '../icon'
 
 import { ConfigContext } from '../config-provider'
 import { Omit } from '../_util/type'
 import SizeContext, { SizeType } from '../config-provider/SizeContext'
 
-type ValueType = string | number;
+type ValueType = string | number
 
-export interface InputNumberProps<T extends ValueType = ValueType>
-  extends Omit<RcInputNumberProps<T>, 'size'> {
-  prefixCls?: string;
-  size?: SizeType;
-  bordered?: boolean;
+export interface InputNumberProps<T extends ValueType = ValueType> extends Omit<RcInputNumberProps<T>, 'size'> {
+  prefixCls?: string
+  size?: SizeType
+  bordered?: boolean
 }
 
 const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>((props, ref) => {
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
   const size = React.useContext(SizeContext)
 
-  const {
-    className,
-    size: customizeSize,
-    prefixCls: customizePrefixCls,
-    bordered = true,
-    readOnly,
-    ...others
-  } = props
+  const { className, size: customizeSize, prefixCls: customizePrefixCls, bordered = true, readOnly, ...others } = props
 
   const prefixCls = getPrefixCls('input-number', customizePrefixCls)
   const upIcon = <UpOutlined className={`${prefixCls}-handler-up-inner`} />
@@ -43,9 +34,9 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>((props,
       [`${prefixCls}-sm`]: mergeSize === 'small',
       [`${prefixCls}-rtl`]: direction === 'rtl',
       [`${prefixCls}-readonly`]: readOnly,
-      [`${prefixCls}-borderless`]: !bordered,
+      [`${prefixCls}-borderless`]: !bordered
     },
-    className,
+    className
   )
 
   return (
@@ -63,6 +54,6 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>((props,
 
 export default InputNumber as (<T extends ValueType = ValueType>(
   props: React.PropsWithChildren<InputNumberProps<T>> & {
-    ref?: React.Ref<HTMLInputElement>;
-  },
+    ref?: React.Ref<HTMLInputElement>
+  }
 ) => React.ReactElement) & { displayName?: string }

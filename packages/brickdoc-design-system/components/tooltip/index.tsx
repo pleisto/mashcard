@@ -4,6 +4,8 @@ import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import { TooltipProps as RcTooltipProps } from 'rc-tooltip/lib/Tooltip'
 import classNames from 'classnames'
 import { placements as Placements } from 'rc-tooltip/lib/placements'
+
+import './style'
 import getPlacements, { AdjustOverflow, PlacementsConfig } from './placements'
 import { cloneElement, isValidElement } from '../_util/reactNode'
 import { ConfigContext } from '../config-provider'

@@ -13,6 +13,7 @@
     display: inline-block;
     font-size: 10px;
     vertical-align: baseline;
+
     svg {
       transition: transform 0.3s;
     }
@@ -28,6 +29,7 @@
     background-color: @primary-color;
     border-radius: 1px;
     pointer-events: none;
+
     &::after {
       position: absolute;
       top: -3px;
@@ -45,6 +47,7 @@
 .antTreeFn(@custom-tree-prefix-cls) {
   @custom-tree-node-prefix-cls: ~'@{custom-tree-prefix-cls}-treenode';
   .reset-component();
+
   background: @tree-bg;
   border-radius: @border-radius-base;
   transition: background-color 0.3s;
@@ -113,6 +116,7 @@
   // >>> Switcher
   &-switcher {
     .antTreeSwitcherIcon();
+
     position: relative;
     flex: none;
     align-self: stretch;
@@ -145,6 +149,7 @@
       display: inline-block;
       width: 100%;
       height: 100%;
+
       &::before {
         position: absolute;
         top: 0;
@@ -153,6 +158,7 @@
         border-left: 1px solid @normal-color;
         content: ' ';
       }
+
       &::after {
         position: absolute;
         width: @tree-title-height - 14px;
@@ -200,6 +206,7 @@
       line-height: @tree-title-height;
       text-align: center;
       vertical-align: top;
+
       &:empty {
         display: none;
       }

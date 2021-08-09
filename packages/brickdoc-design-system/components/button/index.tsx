@@ -1,3 +1,4 @@
+import './style'
 import Button from './button'
 
 export type { ButtonProps, ButtonShape, ButtonType } from './button'

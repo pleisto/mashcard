@@ -1,3 +1,4 @@
+import './style'
 import Progress from './progress'
 
 export type { ProgressProps } from './progress'

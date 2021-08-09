@@ -3,6 +3,8 @@ import * as React from 'react'
 import RcMenu, { Divider, ItemGroup, MenuProps as RcMenuProps } from 'rc-menu'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
+
+import './style'
 import { More as EllipsisOutlined } from '../icon'
 import SubMenu, { SubMenuProps } from './SubMenu'
 import Item, { MenuItemProps } from './MenuItem'

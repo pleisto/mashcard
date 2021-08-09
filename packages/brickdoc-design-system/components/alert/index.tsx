@@ -9,6 +9,7 @@ import {
 import CSSMotion from 'rc-motion'
 import classNames from 'classnames'
 
+import './style'
 import { ConfigContext } from '../config-provider'
 import getDataOrAriaProps from '../_util/getDataOrAriaProps'
 import ErrorBoundary from './ErrorBoundary'

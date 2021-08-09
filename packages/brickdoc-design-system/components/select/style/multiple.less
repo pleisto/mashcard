@@ -3,11 +3,7 @@
 @select-overflow-prefix-cls: ~'@{select-prefix-cls}-selection-overflow';
 @select-multiple-item-border-width: 1px;
 
-@select-multiple-padding: max(
-  @input-padding-vertical-base - @select-multiple-item-border-width -
-    @select-multiple-item-spacing-half,
-  0
-);
+@select-multiple-padding: max(@input-padding-vertical-base - @select-multiple-item-border-width - @select-multiple-item-spacing-half, 0);
 
 /**
  * Do not merge `height` & `line-height` under style with `selection` & `search`,
@@ -69,7 +65,6 @@
       flex: none;
       box-sizing: border-box;
       max-width: 100%;
-
       height: @select-multiple-item-height;
       margin-top: @select-multiple-item-spacing-half;
       margin-bottom: @select-multiple-item-spacing-half;
@@ -101,6 +96,7 @@
 
       &-remove {
         .iconfont-mixin();
+
         display: inline-block;
         color: @text-color-secondary;
         font-weight: bold;

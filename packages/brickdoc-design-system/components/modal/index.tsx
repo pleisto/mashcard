@@ -1,3 +1,4 @@
+import './style'
 import OriginModal, { ModalFuncProps, destroyFns } from './Modal'
 import confirm, { withWarn, withInfo, withSuccess, withError, withConfirm, ModalStaticFunctions, modalGlobalConfig } from './confirm'
 

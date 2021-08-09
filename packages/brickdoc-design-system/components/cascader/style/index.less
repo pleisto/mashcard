@@ -89,6 +89,7 @@
       cursor: pointer;
       opacity: 0;
       transition: color 0.3s ease, opacity 0.15s ease;
+
       &:hover {
         color: @text-color-secondary;
       }
@@ -162,6 +163,7 @@
       animation-name: antSlideDownOut;
     }
   }
+
   &-menu {
     display: inline-block;
     min-width: 111px;
@@ -177,15 +179,18 @@
     &:first-child {
       border-radius: @border-radius-base 0 0 @border-radius-base;
     }
+
     &:last-child {
       margin-right: -1px;
       border-right-color: transparent;
       border-radius: 0 @border-radius-base @border-radius-base 0;
     }
+
     &:only-child {
       border-radius: @border-radius-base;
     }
   }
+
   &-menu-item {
     padding: @cascader-dropdown-vertical-padding @control-padding-horizontal;
     overflow: hidden;
@@ -194,12 +199,15 @@
     text-overflow: ellipsis;
     cursor: pointer;
     transition: all 0.3s;
+
     &:hover {
       background: @item-hover-bg;
     }
+
     &-disabled {
       color: @disabled-color;
       cursor: not-allowed;
+
       &:hover {
         background: transparent;
       }
@@ -209,6 +217,7 @@
       cursor: default;
       pointer-events: none;
     }
+
     &-active:not(&-disabled) {
       &,
       &:hover {
@@ -216,6 +225,7 @@
         background-color: @cascader-item-selected-bg;
       }
     }
+
     &-expand {
       position: relative;
       padding-right: 24px;

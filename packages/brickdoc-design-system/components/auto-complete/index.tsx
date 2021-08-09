@@ -10,6 +10,8 @@ import * as React from 'react'
 import toArray from 'rc-util/lib/Children/toArray'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
+
+import './style'
 import Select, { InternalSelectProps, OptionType, RefSelectProps } from '../select'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import devWarning from '../_util/devWarning'
@@ -119,7 +121,6 @@ const RefAutoComplete = React.forwardRef<RefSelectProps, AutoCompleteProps>(Auto
 type RefAutoCompleteWithOption = typeof RefAutoComplete & {
   Option: OptionType
 }
-
 ;(RefAutoComplete as RefAutoCompleteWithOption).Option = Option
 
 export default RefAutoComplete as RefAutoCompleteWithOption

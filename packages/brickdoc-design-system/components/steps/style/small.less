@@ -1,6 +1,5 @@
 .@{steps-prefix-cls}-small {
-  &.@{steps-prefix-cls}-horizontal:not(.@{steps-prefix-cls}-label-vertical)
-    .@{steps-prefix-cls}-item {
+  &.@{steps-prefix-cls}-horizontal:not(.@{steps-prefix-cls}-label-vertical) .@{steps-prefix-cls}-item {
     padding-left: 12px;
 
     &:first-child {
@@ -20,6 +19,7 @@
     padding-right: 12px;
     font-size: @font-size-base;
     line-height: @steps-small-icon-size;
+
     &::after {
       top: (@steps-small-icon-size / 2);
     }

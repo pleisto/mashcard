@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useContext } from 'react'
+import './style'
 import { PreviewOpen as EyeOutlined } from '../icon'
 import RcImage, { ImageProps } from 'rc-image'
 import { useLocale } from '../locale-provider/LocaleReceiver'

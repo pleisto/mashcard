@@ -1,6 +1,8 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
+
+import './style'
 import { Close as CloseOutlined } from '../icon'
 import CheckableTag from './CheckableTag'
 import { ConfigContext } from '../config-provider'

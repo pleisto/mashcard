@@ -9,6 +9,7 @@
   @font-height: floor(@font-size * @line-height-base) + 2;
   @padding-top: max(((@input-height - @font-height) / 2), 0);
   @padding-bottom: max(@input-height - @font-height - @padding-top, 0);
+
   padding: @padding-top @padding-horizontal @padding-bottom;
 }
 
@@ -17,6 +18,7 @@
 
   .reset-component();
   .picker-padding(@input-height-base, @font-size-base, @input-padding-horizontal-base);
+
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -59,6 +61,7 @@
 
     > input {
       .input();
+
       flex: auto;
 
       // Fix Firefox flex not correct:
@@ -67,7 +70,6 @@
       height: auto;
       padding: 0;
       background: transparent;
-
       border: 0;
 
       &:focus {
@@ -212,6 +214,7 @@
   // ======================= Dropdown =======================
   &-dropdown {
     .reset-component();
+
     position: absolute;
     z-index: @zindex-picker;
 

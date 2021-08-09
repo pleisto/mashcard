@@ -15,7 +15,14 @@ webpackConfig.module.rules.push({
   test: /\.tsx?$/,
   use: [
     ...jsRule.use,
-    { loader: 'ts-loader', options: { transpileOnly: true, projectReferences: true, configFile: 'tsconfig.build.json' } }
+    {
+      loader: 'ts-loader',
+      options: {
+        transpileOnly: true,
+        projectReferences: true,
+        configFile: 'tsconfig.build.json'
+      }
+    }
   ]
 })
 jsRule.test = /\.(js|jsx|mjs)?(\.erb)?$/

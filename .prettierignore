@@ -11,3 +11,4 @@ node_modules/
 CHANGELOG.*
 *.env
 templates/helm-charts/**/*.yaml
+packages/brickdoc-design-system/components/style/color/*.less

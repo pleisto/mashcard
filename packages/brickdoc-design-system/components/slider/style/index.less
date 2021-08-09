@@ -46,8 +46,7 @@
     border-radius: 50%;
     box-shadow: @slider-handle-shadow;
     cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.6s,
-      transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    transition: border-color 0.3s, box-shadow 0.6s, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 
     &-dragging&-dragging&-dragging {
       border-color: @slider-handle-color-focus;
@@ -120,9 +119,11 @@
     &:first-child {
       margin-left: -4px;
     }
+
     &:last-child {
       margin-left: -4px;
     }
+
     &-active {
       border-color: @slider-dot-border-color-active;
     }

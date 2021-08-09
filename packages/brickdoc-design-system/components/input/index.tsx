@@ -1,3 +1,4 @@
+import './style'
 import Input from './Input'
 import Group from './Group'
 import Search from './Search'

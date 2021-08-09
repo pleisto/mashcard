@@ -2,40 +2,28 @@ import * as React from 'react'
 import RcTabs, { TabPane, TabsProps as RcTabsProps, TabPaneProps } from 'rc-tabs'
 import { EditableConfig } from 'rc-tabs/lib/interface'
 import classNames from 'classnames'
-import {
-  Close as CloseOutlined,
-  Plus as PlusOutlined,
-  More as EllipsisOutlined
-} from '../icon'
 
+import './style'
+import { Close as CloseOutlined, Plus as PlusOutlined, More as EllipsisOutlined } from '../icon'
 import devWarning from '../_util/devWarning'
 import { ConfigContext } from '../config-provider'
 import SizeContext, { SizeType } from '../config-provider/SizeContext'
 
-export type TabsType = 'line' | 'card' | 'editable-card';
-export type TabsPosition = 'top' | 'right' | 'bottom' | 'left';
+export type TabsType = 'line' | 'card' | 'editable-card'
+export type TabsPosition = 'top' | 'right' | 'bottom' | 'left'
 
 export type { TabPaneProps }
 
 export interface TabsProps extends Omit<RcTabsProps, 'editable'> {
-  type?: TabsType;
-  size?: SizeType;
-  hideAdd?: boolean;
-  centered?: boolean;
-  addIcon?: React.ReactNode;
-  onEdit?: (e: React.MouseEvent | React.KeyboardEvent | string, action: 'add' | 'remove') => void;
+  type?: TabsType
+  size?: SizeType
+  hideAdd?: boolean
+  centered?: boolean
+  addIcon?: React.ReactNode
+  onEdit?: (e: React.MouseEvent | React.KeyboardEvent | string, action: 'add' | 'remove') => void
 }
 
-function Tabs({
-  type,
-  className,
-  size: propSize,
-  onEdit,
-  hideAdd,
-  centered,
-  addIcon,
-  ...props
-}: TabsProps) {
+function Tabs({ type, className, size: propSize, onEdit, hideAdd, centered, addIcon, ...props }: TabsProps) {
   const { prefixCls: customizePrefixCls, moreIcon = <EllipsisOutlined /> } = props
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
   const prefixCls = getPrefixCls('tabs', customizePrefixCls)
@@ -48,7 +36,7 @@ function Tabs({
       },
       removeIcon: <CloseOutlined />,
       addIcon: addIcon || <PlusOutlined />,
-      showAdd: !hideAdd,
+      showAdd: !hideAdd
     }
   }
   const rootPrefixCls = getPrefixCls()
@@ -56,7 +44,7 @@ function Tabs({
   devWarning(
     !('onPrevClick' in props) && !('onNextClick' in props),
     'Tabs',
-    '`onPrevClick` and `onNextClick` has been removed. Please use `onTabScroll` instead.',
+    '`onPrevClick` and `onNextClick` has been removed. Please use `onTabScroll` instead.'
   )
 
   return (
@@ -73,9 +61,9 @@ function Tabs({
                 [`${prefixCls}-${size}`]: size,
                 [`${prefixCls}-card`]: ['card', 'editable-card'].includes(type as string),
                 [`${prefixCls}-editable-card`]: type === 'editable-card',
-                [`${prefixCls}-centered`]: centered,
+                [`${prefixCls}-centered`]: centered
               },
-              className,
+              className
             )}
             editable={editable}
             moreIcon={moreIcon}

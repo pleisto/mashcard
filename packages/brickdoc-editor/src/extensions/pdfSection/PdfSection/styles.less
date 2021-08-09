@@ -118,17 +118,6 @@
       transition: opacity 0.3s ease-in;
     }
 
-    &:hover {
-      .pdf-section-control-bottom-drag,
-      .pdf-section-control-bottom-left-drag,
-      .pdf-section-control-bottom-right-drag,
-      .pdf-section-control-left-drag,
-      .pdf-section-control-right-drag,
-      .pdf-section-menu-button {
-        opacity: 1;
-      }
-    }
-
     .pdf-section-menu-button {
       position: absolute;
       width: 24px;
@@ -144,7 +133,7 @@
       opacity: 0;
 
       .pdf-section-menu-icon {
-        color: #ffffff;
+        color: #fff;
       }
     }
 
@@ -162,16 +151,19 @@
 
     .pdf-section-control-left-drag {
       .pdf-section-control-drag();
+
       left: 8px;
     }
 
     .pdf-section-control-right-drag {
       .pdf-section-control-drag();
+
       right: 8px;
     }
 
     .pdf-section-control-bottom-drag {
       .pdf-section-control-drag();
+
       top: unset;
       left: 50%;
       bottom: 8px;
@@ -193,13 +185,26 @@
 
     .pdf-section-control-bottom-left-drag {
       .pdf-section-control-corner-drag();
+
       left: 8px;
     }
 
     .pdf-section-control-bottom-right-drag {
       .pdf-section-control-corner-drag();
+
       transform: rotate(270deg);
       right: 8px;
+    }
+
+    &:hover {
+      .pdf-section-control-bottom-drag,
+      .pdf-section-control-bottom-left-drag,
+      .pdf-section-control-bottom-right-drag,
+      .pdf-section-control-left-drag,
+      .pdf-section-control-right-drag,
+      .pdf-section-menu-button {
+        opacity: 1;
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story } from '@storybook/react'
 import { Tag, TagProps } from '../'
-import { Twitter } from '../icon'
+import { Add } from '../icon'
 export default {
   title: 'ReactComponents/Tag',
   component: Tag,
@@ -61,7 +61,7 @@ const Template: Story<TagProps> = _args => (
     <Tag color="gold">gold</Tag>
     <Tag color="lime">lime</Tag>
     <Tag color="green">green</Tag>
-    <Tag icon={<Twitter />} color="#55acee">
+    <Tag icon={<Add />} color="#55acee">
       Twitter
     </Tag>
   </>

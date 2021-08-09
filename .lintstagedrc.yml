@@ -1,8 +1,11 @@
 # Lint staged files before committing, see https://github.com/okonet/lint-staged
 '*.(ts|tsx|js|jsx)':
-  - eslint --fix
+  - eslint --cache --fix
   - prettier --write
-'*.(json|yml|md|less|graphql)':
+'*.(json|yml|md|graphql)':
   - prettier --write
-'(app|lib|config|packages)/**/*.rb':
+'(app|lib|config|gems)/**/*.rb':
   - bundle exec rubocop --parallel --force-exclusion
+'*.(css|less)':
+  - stylelint --cache --fix
+  - prettier --write

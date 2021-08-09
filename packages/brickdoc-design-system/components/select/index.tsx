@@ -5,6 +5,8 @@ import omit from 'rc-util/lib/omit'
 import classNames from 'classnames'
 import RcSelect, { Option, OptGroup, SelectProps as RcSelectProps } from 'rc-select'
 import { OptionProps } from 'rc-select/lib/Option'
+
+import './style'
 import { ConfigContext } from '../config-provider'
 import getIcons from './utils/iconUtil'
 import SizeContext, { SizeType } from '../config-provider/SizeContext'

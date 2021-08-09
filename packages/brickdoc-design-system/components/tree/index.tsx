@@ -1,3 +1,4 @@
+import './style'
 import Tree from './Tree'
 
 export type { EventDataNode, DataNode } from 'rc-tree/lib/interface'
@@ -10,7 +11,7 @@ export type {
   AntTreeNodeCheckedEvent,
   AntTreeNodeSelectedEvent,
   AntdTreeNodeAttribute,
-  AntTreeNodeProps,
+  AntTreeNodeProps
 } from './Tree'
 
 export type { ExpandAction as DirectoryTreeExpandAction, DirectoryTreeProps } from './DirectoryTree'

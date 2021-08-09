@@ -1,5 +1,7 @@
 import * as React from 'react'
 import RcRate from 'rc-rate'
+
+import './style'
 import { Star as StarFilled } from '../icon'
 import Tooltip from '../tooltip'
 import { ConfigContext } from '../config-provider'

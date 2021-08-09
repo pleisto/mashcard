@@ -1,3 +1,4 @@
+import './style'
 import Anchor from './Anchor'
 import AnchorLink from './AnchorLink'
 

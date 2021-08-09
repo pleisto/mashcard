@@ -76,17 +76,6 @@
       transition: opacity 0.3s ease-in;
     }
 
-    &:hover {
-      .image-section-control-bottom-drag,
-      .image-section-control-bottom-left-drag,
-      .image-section-control-bottom-right-drag,
-      .image-section-control-left-drag,
-      .image-section-control-right-drag,
-      .image-section-menu-button {
-        opacity: 1;
-      }
-    }
-
     .image-section-menu-button {
       position: absolute;
       width: 24px;
@@ -102,7 +91,7 @@
       opacity: 0;
 
       .image-section-menu-icon {
-        color: #ffffff;
+        color: #fff;
       }
     }
 
@@ -120,16 +109,19 @@
 
     .image-section-control-left-drag {
       .image-section-control-drag();
+
       left: 8px;
     }
 
     .image-section-control-right-drag {
       .image-section-control-drag();
+
       right: 8px;
     }
 
     .image-section-control-bottom-drag {
       .image-section-control-drag();
+
       top: unset;
       left: 50%;
       bottom: 8px;
@@ -151,13 +143,26 @@
 
     .image-section-control-bottom-left-drag {
       .image-section-control-corner-drag();
+
       left: 8px;
     }
 
     .image-section-control-bottom-right-drag {
       .image-section-control-corner-drag();
+
       transform: rotate(270deg);
       right: 8px;
+    }
+
+    &:hover {
+      .image-section-control-bottom-drag,
+      .image-section-control-bottom-left-drag,
+      .image-section-control-bottom-right-drag,
+      .image-section-control-left-drag,
+      .image-section-control-right-drag,
+      .image-section-menu-button {
+        opacity: 1;
+      }
     }
   }
 }

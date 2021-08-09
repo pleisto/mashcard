@@ -1,3 +1,4 @@
+import './style'
 import Table, { TableProps, TablePaginationConfig } from './Table'
 
 export type { ColumnProps } from './Column'

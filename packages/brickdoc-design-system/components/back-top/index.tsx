@@ -4,6 +4,8 @@ import addEventListener from 'rc-util/lib/Dom/addEventListener'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
+
+import './style'
 import { ToTop as VerticalAlignTopOutlined } from '../icon'
 import { throttleByAnimationFrame } from '../_util/throttleByAnimationFrame'
 import { ConfigContext } from '../config-provider'

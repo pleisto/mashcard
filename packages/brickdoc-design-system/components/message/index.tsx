@@ -1,6 +1,8 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import RCNotification from 'rc-notification'
+
+import './style'
 import {
   IconProvider,
   Attention as ExclamationCircleFilled,

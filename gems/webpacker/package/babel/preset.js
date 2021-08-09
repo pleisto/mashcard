@@ -22,8 +22,8 @@ module.exports = function config(api) {
         '@babel/preset-env',
         {
           useBuiltIns: 'entry',
-          corejs: '3.8',
-          modules: 'auto',
+          corejs: '3.16',
+          modules: false,
           bugfixes: true,
           loose: true
         }
