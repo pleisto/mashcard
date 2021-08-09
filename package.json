@@ -148,7 +148,7 @@
     "webpack": "^5.49.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.0.0-rc.0"
   },
   "packageManager": "yarn@3.0.0",
   "resolutions": {

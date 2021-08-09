@@ -12,16 +12,7 @@ if (webpackConfig.devServer) {
 
 const mergedConfig = merge(
   webpackConfig,
-  webpackConfig.devServer
-    ? {
-        devServer: {
-          watchOptions: {
-            ignored: ['**/node_modules', '**/dist']
-          }
-        },
-        plugins: [new ReactRefreshWebpackPlugin(), new PrintChangedFilePlugin()]
-      }
-    : {}
+  webpackConfig.devServer ? { plugins: [new ReactRefreshWebpackPlugin(), new PrintChangedFilePlugin()] } : {}
 )
 
 module.exports = mergedConfig

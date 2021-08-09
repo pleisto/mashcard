@@ -32,20 +32,17 @@ development:
     port: 3035
     # Hot Module Replacement updates modules while the application is running without a full reload
     hmr: true
-    # Inline should be set to true if using HMR; it inserts a script to take care of live reloading
-    inline: true
     # Should we use gzip compression?
     compress: true
     # Note that apps that do not check the host are vulnerable to DNS rebinding attacks
     allowed_hosts: 'all'
-    # When enabled, nothing except the initial startup information will be written to the console.
-    # This also means that errors or warnings from webpack are not visible.
-    quiet: false
     pretty: false
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:
-      ignored: '**/node_modules/**'
+      ignored:
+        - '**/node_modules'
+        - '**/dist'
 
 test:
   <<: *default

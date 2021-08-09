@@ -26,32 +26,36 @@ if (runningWebpackDevServer) {
       buildDependencies: { timestamp: true, hash: true }
     },
     devServer: {
-      clientLogLevel: 'none',
       compress: devServer.compress,
-      quiet: devServer.quiet,
-      disableHostCheck: devServer.disable_host_check,
+      allowedHosts: devServer.allowed_hosts,
       host: devServer.host,
       port: devServer.port,
       https: devServer.https,
       hot: devServer.hmr,
-      contentBase,
-      inline: devServer.inline || devServer.hmr,
-      injectClient: devServer.hmr,
-      injectHot: devServer.hmr,
-      useLocalIp: devServer.use_local_ip,
-      public: devServer.public,
-      publicPath,
       historyApiFallback: { disableDotRule: true },
       headers: devServer.headers,
-      overlay: devServer.overlay,
-      stats: {
-        colors: true,
-        entrypoints: false,
-        errorDetails: true,
-        modules: false,
-        moduleTrace: false
+      client: {
+        overlay: devServer.client.overlay,
+        progress: devServer.client.progress,
+        webSocketURL: {
+          hostname: devServer.client.webSocketURL.hostname,
+          port: devServer.client.webSocketURL.port
+        }
       },
-      watchOptions: devServer.watch_options
+      devMiddleware: {
+        publicPath,
+        stats: {
+          colors: true,
+          entrypoints: false,
+          errorDetails: true,
+          modules: false,
+          moduleTrace: false
+        }
+      },
+      static: {
+        directory: contentBase,
+        watch: devServer.watch_options
+      }
     }
   })
 }
