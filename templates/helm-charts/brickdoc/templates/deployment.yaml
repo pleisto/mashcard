@@ -12,6 +12,7 @@ spec:
   template:
     metadata:
       labels:
+        brickdoc.com/app-engine-build-at: "{{ now | unixEpoch }}"
         {{- include "brickdoc.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
