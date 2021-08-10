@@ -1008,6 +1008,7 @@ export type QueryUnsplashImageQuery = {
       width?: Maybe<number>
       height?: Maybe<number>
       fullUrl: string
+      smallUrl: string
       username?: Maybe<string>
     }>
   >
@@ -1729,6 +1730,7 @@ export const QueryUnsplashImageDocument = gql`
       width
       height
       fullUrl
+      smallUrl
       username
     }
   }

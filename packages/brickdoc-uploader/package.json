@@ -17,8 +17,6 @@
     "@uppy/core": "^1.20.0",
     "@uppy/dashboard": "^1.21.0",
     "@uppy/react": "^1.12.1",
-    "@uppy/xhr-upload": "^1.7.5",
-    "htm": "^3.1.0",
-    "preact": "8.2.9"
+    "@uppy/xhr-upload": "^1.7.5"
   }
 }

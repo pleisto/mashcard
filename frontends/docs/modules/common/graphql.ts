@@ -22,6 +22,7 @@ export const queryUnsplashImage = gql`
       width
       height
       fullUrl
+      smallUrl
       username
     }
   }

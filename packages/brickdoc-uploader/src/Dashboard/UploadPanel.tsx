@@ -1,0 +1,83 @@
+import { Uppy } from '@uppy/core'
+import React from 'react'
+import { ImportSourceOption } from './Dashboard'
+import { DashboardPluginOptions } from './plugin'
+
+interface UploadPanelProps {
+  pluginOptions: DashboardPluginOptions
+  importSource: ImportSourceOption
+  uppy: Uppy
+  pluginId: string
+}
+
+export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pluginId, pluginOptions }) => {
+  const input = React.useRef<HTMLInputElement>()
+  const uploadMeta = React.useRef<{ blobKey: string; viewUrl: string; signedId: string }>()
+  const addFile = (file: File): void => {
+    const descriptor = {
+      source: pluginId,
+      name: file.name,
+      type: file.type,
+      data: file
+    }
+
+    try {
+      uppy.addFile(descriptor)
+    } catch (err) {
+      uppy.log(err)
+    }
+  }
+
+  // TODO: handle error
+  const handleUpload = async (file: File): Promise<void> => {
+    const { endpoint, headers, blobKey, viewUrl, signedId } = await pluginOptions.prepareFileUpload(
+      pluginOptions.blockId,
+      pluginOptions.fileType,
+      file
+    )
+    uploadMeta.current = {
+      blobKey,
+      viewUrl,
+      signedId
+    }
+    uppy.getPlugin('XHRUpload').setOptions({
+      endpoint,
+      headers
+    })
+
+    pluginOptions.onFileLoaded?.(file)
+
+    await uppy.upload()
+  }
+
+  const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const file = event.target.files[0]
+    // We clear the input after a file is selected, because otherwise
+    // change event is not fired in Chrome and Safari when a file
+    // with the same name is selected.
+    event.target.value = null
+
+    addFile(file)
+    await handleUpload(file)
+  }
+
+  const handleChooseFile = (): void => {
+    input.current?.click()
+  }
+
+  return (
+    <div role="tabpanel" className="uploader-dashboard-upload-panel">
+      <input
+        className="dashboard-upload-file-input"
+        ref={input}
+        type="file"
+        multiple={false}
+        accept={importSource.acceptType}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleChooseFile} className="dashboard-panel-button">
+        {importSource.buttonText}
+      </button>
+    </div>
+  )
+}

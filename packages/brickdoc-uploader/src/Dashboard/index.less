@@ -68,6 +68,12 @@
       height: 100%;
       position: relative;
 
+      &.active,
+      &.focus,
+      &.hover {
+        background: none;
+      }
+
       &::after {
         content: none;
         position: absolute;
@@ -231,6 +237,8 @@
           align-items: center;
 
           .dashboard-emoji-item {
+            padding: 0;
+            border-radius: 0;
             font-size: 27px;
             box-sizing: border-box;
             height: 32px;
@@ -289,6 +297,9 @@
       .unsplash-image-item {
         margin-bottom: 6px;
         cursor: pointer;
+        height: unset;
+        border-radius: 0;
+        padding: 0;
       }
 
       .unsplash-image {

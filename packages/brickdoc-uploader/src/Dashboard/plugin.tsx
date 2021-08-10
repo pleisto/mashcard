@@ -1,10 +1,8 @@
-// about fixed version 8.2.9 for preact in package.json
-// that is what uppy suggests us to do.
-// ref: https://uppy.io/docs/writing-plugins/#UI-Plugins
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Plugin, Uppy, UppyFile } from '@uppy/core'
-// preact type definition is conflict with React, so we import source file directly
-import { html } from 'htm/preact/index.module'
-import cx from 'classnames'
+import findDOMElement from '@uppy/utils/lib/findDOMElement'
+import { Dashboard } from './Dashboard'
 import emojiData from './data-by-group.json'
 import './index.less'
 
@@ -61,7 +59,7 @@ export interface DashboardPluginOptions {
   onProgress?: (progress: UploadProgress) => void
   onUploaded?: (data: UploadResultData) => void
   onFileLoaded?: (file: File) => void
-  prepareFileUpload: (
+  prepareFileUpload?: (
     blockId: string,
     type: 'image' | 'pdf',
     file: any
@@ -72,14 +70,6 @@ export interface DashboardPluginOptions {
 }
 
 type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'
-
-const IMPORT_SOURCE_LABEL = {
-  upload: 'Upload',
-  link: 'Embed link',
-  unsplash: 'Unsplash',
-  emoji: 'Emoji',
-  gallery: 'Gallery'
-}
 
 const UNSPLASH_PER_PAGE = 20
 
@@ -155,7 +145,8 @@ export class DashboardPlugin extends Plugin {
   handleNavbarItemClick = (activeSource: ImportSourceOption) => () => {
     this.setPluginState({ activeSource })
 
-    if ((this.getPluginState() as { unsplashImages: UnsplashImage[] }).unsplashImages?.length > 0) return
+    if (activeSource.type !== 'unsplash' || (this.getPluginState() as { unsplashImages: UnsplashImage[] }).unsplashImages?.length > 0)
+      return
     void this.handleFetchUnsplashImage()
   }
 
@@ -283,7 +274,11 @@ export class DashboardPlugin extends Plugin {
 
   // TODO: handle error
   handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers, blobKey, viewUrl, signedId } = await this.opts.prepareFileUpload(this.opts.blockId, this.opts.fileType, file)
+    const { endpoint, headers, blobKey, viewUrl, signedId } = await this.opts.prepareFileUpload?.(
+      this.opts.blockId,
+      this.opts.fileType,
+      file
+    )
     this.blobKey = blobKey
     this.viewUrl = viewUrl
     this.signedId = signedId
@@ -371,184 +366,211 @@ export class DashboardPlugin extends Plugin {
     this.handleSelectColor(null, 'remove')()
   }
 
-  renderLinkPanel(source: ImportSourceOption) {
-    return html`
-      <div class="uploader-dashboard-link-panel">
-        <input onInput=${this.handleLinkInput} class="dashboard-link-panel-input" placeholder=${source.linkInputPlaceholder} />
-        <button onClick=${this.handleLinkSubmit} class="dashboard-panel-button">${source.buttonText}</button>
-        <div class="dashboard-link-panel-hint">${source.buttonHint}</div>
-      </div>
-    `
+  // renderLinkPanel(source: ImportSourceOption) {
+  //   return html`
+  //     <div class="uploader-dashboard-link-panel">
+  //       <input onInput=${this.handleLinkInput} class="dashboard-link-panel-input" placeholder=${source.linkInputPlaceholder} />
+  //       <button onClick=${this.handleLinkSubmit} class="dashboard-panel-button">${source.buttonText}</button>
+  //       <div class="dashboard-link-panel-hint">${source.buttonHint}</div>
+  //     </div>
+  //   `
+  // }
+
+  // renderUploadPanel(source: ImportSourceOption) {
+  //   return html`
+  //     <div role="tabpanel" class="uploader-dashboard-upload-panel">
+  //       <input
+  //         class="dashboard-upload-file-input"
+  //         ref=${input => {
+  //           this.uploadInput = input
+  //         }}
+  //         type="file"
+  //         multiple=${false}
+  //         accept=${source.acceptType}
+  //         onChange=${this.handleInputChange}
+  //       />
+  //       <button onClick=${this.handleChooseFile} class="dashboard-panel-button">${source.buttonText}</button>
+  //     </div>
+  //   `
+  // }
+
+  // renderUnsplashPanel(source: ImportSourceOption) {
+  //   const { unsplashImages } = this.getPluginState() as { unsplashImages: UnsplashImage[] }
+  //   return html`
+  //     <div class="uploader-dashboard-unsplash-panel">
+  //       <input class="dashboard-unsplash-search-input" placeholder="Search for an image..." onInput=${this.handleUnsplashSearchInput} />
+  //       <div class="dashboard-unsplash-image-list">
+  //         ${(unsplashImages ?? []).map(
+  //           image => html`<div class="unsplash-image-item" onClick=${this.handleUnsplashImageSelect(image)}>
+  //             <div style="background-image: url(${image.smallUrl})" class="unsplash-image" />
+  //             <div class="unsplash-image-username">${image.username}</div>
+  //           </div>`
+  //         )}
+  //         <div
+  //           ref=${container => {
+  //             this.createScrollObserver(container)
+  //           }}
+  //           class="unsplash-load-more-placeholder"
+  //         />
+  //       </div>
+  //     </div>
+  //   `
+  // }
+
+  // renderGalleryPanel(source: ImportSourceOption) {
+  //   const COLORS = [
+  //     '#5f5f5f',
+  //     '#D43730',
+  //     '#F75F48',
+  //     '#E47F2A',
+  //     '#A6A6A6',
+  //     '#2CAD94',
+  //     '#5423B9',
+  //     '#9F0F64',
+  //     '#FFE27D',
+  //     'linear-gradient(180deg, #FB9393 0%, #D2B343 100%)',
+  //     '#D78787'
+  //   ]
+  //   return html`
+  //     <div class="uploader-dashboard-gallery-panel">
+  //       <div class="dashboard-gallery-group">
+  //         <div class="dashboard-gallery-group-name">COLOR & GRADIENT</div>
+  //         <div class="dashboard-color-list">
+  //           ${COLORS.map(
+  //             item => html`
+  //               <div class="dashboard-color-item" style="background: ${item}" onClick=${this.handleSelectColor(item, 'add')} />
+  //             `
+  //           )}
+  //         </div>
+  //       </div>
+  //     </div>
+  //   `
+  // }
+
+  // renderEmojiPanel(source: ImportSourceOption) {
+  //   return html`
+  //     <div class="uploader-dashboard-emoji-panel">
+  //       <input class="dashboard-emoji-search-input" placeholder="Search for Emoji..." onInput=${this.handleSearchEmoji} />
+  //       <div class="dashboard-emoji-section">
+  //         ${[RECENT_GROUP, ...Object.keys(emojiData)].map(name => {
+  //           const emojis = this.getEmojis(name)
+
+  //           if (emojis.length === 0) {
+  //             return ''
+  //           }
+
+  //           return html`
+  //             <div class="dashboard-emoji-group">
+  //               <div class="dashboard-emoji-group-name">${name}</div>
+  //               <div class="dashboard-emoji-list">
+  //                 ${emojis.map(
+  //                   item => html`
+  //                     <div class="dashboard-emoji-item" onClick=${this.handleSelectEmoji(item, 'add')}>
+  //                       <span aria-label=${item.name} class="dashboard-emoji" role="img">${item.emoji}</span>
+  //                     </div>
+  //                   `
+  //                 )}
+  //               </div>
+  //             </div>
+  //           `
+  //         })}
+  //       </div>
+  //     </div>
+  //   `
+  // }
+
+  // renderActionButton(button: ActionButtonOption) {
+  //   return html`
+  //     <div class="dashboard-action-button" onClick=${button.onClick}>
+  //       ${button.icon &&
+  //       html`
+  //         <span class="brk-icon dashboard-action-button-icon">
+  //           <iconpark-icon name=${button.icon} />
+  //         </span>
+  //       `}
+  //       <div class="dashboard-action-button-label">${button.label}</div>
+  //     </div>
+  //   `
+  // }
+
+  mount(target, plugin) {
+    const callerPluginName = plugin.id
+
+    const targetElement = findDOMElement(target)
+
+    if (targetElement) {
+      // API for plugins that require a synchronous rerender.
+      // this.rerender = (state) => {
+      //   // plugin could be removed, but this.rerender is debounced below,
+      //   // so it could still be called even after uppy.removePlugin or uppy.close
+      //   // hence the check
+      //   if (!this.uppy.getPlugin(this.id)) return
+      //   this.el = preact.render(this.render(state), targetElement, this.el)
+      //   this.afterUpdate()
+      // }
+      // this._updateUI = debounce(this.rerender)
+
+      this.uppy.log(`Installing ${callerPluginName} to a DOM element '${target}'`)
+
+      ReactDOM.render(this.render(), targetElement)
+    }
   }
 
-  renderUploadPanel(source: ImportSourceOption) {
-    return html`
-      <div class="uploader-dashboard-upload-panel">
-        <input
-          class="dashboard-upload-file-input"
-          ref=${input => {
-            this.uploadInput = input
-          }}
-          type="file"
-          multiple=${false}
-          accept=${source.acceptType}
-          onChange=${this.handleInputChange}
-        />
-        <button onClick=${this.handleChooseFile} class="dashboard-panel-button">${source.buttonText}</button>
-      </div>
-    `
-  }
-
-  renderUnsplashPanel(source: ImportSourceOption) {
-    const { unsplashImages } = this.getPluginState() as { unsplashImages: UnsplashImage[] }
-    return html`
-      <div class="uploader-dashboard-unsplash-panel">
-        <input class="dashboard-unsplash-search-input" placeholder="Search for an image..." onInput=${this.handleUnsplashSearchInput} />
-        <div class="dashboard-unsplash-image-list">
-          ${(unsplashImages ?? []).map(
-            image => html`<div class="unsplash-image-item" onClick=${this.handleUnsplashImageSelect(image)}>
-              <div style="background-image: url(${image.smallUrl})" class="unsplash-image" />
-              <div class="unsplash-image-username">${image.username}</div>
-            </div>`
-          )}
-          <div
-            ref=${container => {
-              this.createScrollObserver(container)
-            }}
-            class="unsplash-load-more-placeholder"
-          />
-        </div>
-      </div>
-    `
-  }
-
-  renderGalleryPanel(source: ImportSourceOption) {
-    const COLORS = [
-      '#5f5f5f',
-      '#D43730',
-      '#F75F48',
-      '#E47F2A',
-      '#A6A6A6',
-      '#2CAD94',
-      '#5423B9',
-      '#9F0F64',
-      '#FFE27D',
-      'linear-gradient(180deg, #FB9393 0%, #D2B343 100%)',
-      '#D78787'
-    ]
-    return html`
-      <div class="uploader-dashboard-gallery-panel">
-        <div class="dashboard-gallery-group">
-          <div class="dashboard-gallery-group-name">COLOR & GRADIENT</div>
-          <div class="dashboard-color-list">
-            ${COLORS.map(
-              item => html`
-                <div class="dashboard-color-item" style="background: ${item}" onClick=${this.handleSelectColor(item, 'add')} />
-              `
-            )}
-          </div>
-        </div>
-      </div>
-    `
-  }
-
-  renderEmojiPanel(source: ImportSourceOption) {
-    return html`
-      <div class="uploader-dashboard-emoji-panel">
-        <input class="dashboard-emoji-search-input" placeholder="Search for Emoji..." onInput=${this.handleSearchEmoji} />
-        <div class="dashboard-emoji-section">
-          ${[RECENT_GROUP, ...Object.keys(emojiData)].map(name => {
-            const emojis = this.getEmojis(name)
-
-            if (emojis.length === 0) {
-              return ''
-            }
-
-            return html`
-              <div class="dashboard-emoji-group">
-                <div class="dashboard-emoji-group-name">${name}</div>
-                <div class="dashboard-emoji-list">
-                  ${emojis.map(
-                    item => html`
-                      <div class="dashboard-emoji-item" onClick=${this.handleSelectEmoji(item, 'add')}>
-                        <span aria-label=${item.name} class="dashboard-emoji" role="img">${item.emoji}</span>
-                      </div>
-                    `
-                  )}
-                </div>
-              </div>
-            `
-          })}
-        </div>
-      </div>
-    `
-  }
-
-  renderActionButton(button: ActionButtonOption) {
-    return html`
-      <div class="dashboard-action-button" onClick=${button.onClick}>
-        ${button.icon &&
-        html`
-          <span class="brk-icon dashboard-action-button-icon">
-            <iconpark-icon name=${button.icon} />
-          </span>
-        `}
-        <div class="dashboard-action-button-label">${button.label}</div>
-      </div>
-    `
+  render() {
+    return <Dashboard importSources={this.opts.importSources} pluginOptions={this.opts} uppy={this.uppy} pluginId={this.id} />
   }
 
   // TODO: change render engine from preact to React
-  render() {
-    let { activeSource } = this.getPluginState() as { activeSource: ImportSourceOption }
+  // render() {
+  //   let { activeSource } = this.getPluginState() as { activeSource: ImportSourceOption }
 
-    if (!activeSource) {
-      activeSource = this.opts.importSources?.[0]
-    }
+  //   if (!activeSource) {
+  //     activeSource = this.opts.importSources?.[0]
+  //   }
 
-    const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = [
-      {
-        label: 'Random',
-        icon: 'redo',
-        onClick: this.handleRandomPickEmoji
-      },
-      {
-        label: 'Remove',
-        onClick: this.handleRemoveEmoji
-      }
-    ]
+  //   const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = [
+  //     {
+  //       label: 'Random',
+  //       icon: 'redo',
+  //       onClick: this.handleRandomPickEmoji
+  //     },
+  //     {
+  //       label: 'Remove',
+  //       onClick: this.handleRemoveEmoji
+  //     }
+  //   ]
 
-    const GALLERY_ACTION_BUTTONS: ActionButtonOption[] = [
-      {
-        label: 'Remove',
-        onClick: this.handleRemoveEmoji
-      }
-    ]
+  //   const GALLERY_ACTION_BUTTONS: ActionButtonOption[] = [
+  //     {
+  //       label: 'Remove',
+  //       onClick: this.handleRemoveEmoji
+  //     }
+  //   ]
 
-    return html`
-      <div class="brickdoc-uploader-dashboard">
-        <div class="uploader-dashboard-navbar">
-          ${this.opts.importSources.map(
-            source => html`
-              <div
-                class="${cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}"
-                onClick=${this.handleNavbarItemClick(source)}
-              >
-                ${source.typeLabel || IMPORT_SOURCE_LABEL[source.type]}
-              </div>
-            `
-          )}
-          <div class="uploader-dashboard-action-buttons">
-            ${activeSource?.type === 'emoji' && EMOJI_ACTION_BUTTONS.map(this.renderActionButton)}
-            ${activeSource?.type === 'gallery' && GALLERY_ACTION_BUTTONS.map(this.renderActionButton)}
-          </div>
-        </div>
-        ${activeSource?.type === 'emoji' && this.renderEmojiPanel(activeSource)}
-        ${activeSource?.type === 'link' && this.renderLinkPanel(activeSource)}
-        ${activeSource?.type === 'upload' && this.renderUploadPanel(activeSource)}
-        ${activeSource?.type === 'unsplash' && this.renderUnsplashPanel(activeSource)}
-        ${activeSource?.type === 'gallery' && this.renderGalleryPanel(activeSource)}
-      </div>
-    `
-  }
+  //   return html`
+  //     <div role="dialog" class="brickdoc-uploader-dashboard">
+  //       <div class="uploader-dashboard-navbar">
+  //         ${this.opts.importSources.map(
+  //           source => html`
+  //             <div
+  //               class="${cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}"
+  //               onClick=${this.handleNavbarItemClick(source)}
+  //             >
+  //               ${source.typeLabel || IMPORT_SOURCE_LABEL[source.type]}
+  //             </div>
+  //           `
+  //         )}
+  //         <div class="uploader-dashboard-action-buttons">
+  //           ${activeSource?.type === 'emoji' && EMOJI_ACTION_BUTTONS.map(this.renderActionButton)}
+  //           ${activeSource?.type === 'gallery' && GALLERY_ACTION_BUTTONS.map(this.renderActionButton)}
+  //         </div>
+  //       </div>
+  //       ${activeSource?.type === 'emoji' && this.renderEmojiPanel(activeSource)}
+  //       ${activeSource?.type === 'link' && this.renderLinkPanel(activeSource)}
+  //       ${activeSource?.type === 'upload' && this.renderUploadPanel(activeSource)}
+  //       ${activeSource?.type === 'unsplash' && this.renderUnsplashPanel(activeSource)}
+  //       ${activeSource?.type === 'gallery' && this.renderGalleryPanel(activeSource)}
+  //     </div>
+  //   `
+  // }
 }

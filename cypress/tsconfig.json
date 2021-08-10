@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "types": ["cypress", "node"],
+    "types": ["cypress", "node", "@testing-library/cypress", "cypress-file-upload", "cypress-real-events"],
     "esModuleInterop": true
   },
   "include": ["./**/*.ts"]
