@@ -35,10 +35,11 @@
     "test:rspec": "bundle exec rspec",
     "commit": "git add . && cz",
     "graphql": "bundle exec rails graphql:schema:dump && graphql-codegen --config codegen.yml",
-    "cleanup": "rm -rf node_modules/.cache && rm -rf dist && rm -rf public/esm-bundle && rm -rf public/packs-test && rm -rf junit-reports && rm -rf coverage && yarn less-vars-loader cleanup && yarn design-system cleanup && yarn editor cleanup",
+    "cleanup": "rm -rf node_modules/.cache && rm -rf dist && rm -rf public/esm-bundle && rm -rf public/packs-test && rm -rf junit-reports && rm -rf coverage && yarn less-vars-loader cleanup && yarn design-system cleanup && yarn editor cleanup && yarn uploader cleanup",
     "less-vars-loader": "yarn workspace @brickdoc/less-vars-loader",
     "design-system": "yarn workspace @brickdoc/design-system",
-    "editor": "yarn workspace @brickdoc/editor"
+    "editor": "yarn workspace @brickdoc/editor",
+    "uploader": "yarn workspace @brickdoc/uploader"
   },
   "browserslist": [
     "chrome >= 74",
