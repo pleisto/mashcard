@@ -2031,7 +2031,7 @@ __metadata:
     "@testing-library/react": ^12.0.0
     "@types/is-ci": ^3.0.0
     "@types/jest": ^27.0.0
-    "@types/node": ^16.4.13
+    "@types/node": ^16.6.0
     "@types/qs": ^6.9.7
     "@types/rails__actioncable": ^6.1.5
     "@types/rails__activestorage": ^6.0.1
@@ -5533,10 +5533,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.4.13":
-  version: 16.4.13
-  resolution: "@types/node@npm:16.4.13"
-  checksum: 071e86a1d196cf72928a7109e99769dffed93db481032b9ca2f52e6f3ced432e2a179849c85e587e67409202e1ed37bffd0c7a31d38adf35a385d327dfe8bd72
+"@types/node@npm:*, @types/node@npm:^16.6.0":
+  version: 16.6.0
+  resolution: "@types/node@npm:16.6.0"
+  checksum: 72ab4b9fb47a64657d83336093867aba5bcf2f36facf3c18e9aeff802c078e44fa9f54025b02f2837eb0f2b19c1f551a5201fb4222766454c439de481dbf83d0
   languageName: node
   linkType: hard
 
