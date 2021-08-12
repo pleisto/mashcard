@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, BlockData, Block } from '@/BrickdocGraphQL'
+import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, BlockData, Block, Blocktype, BlockEmoji } from '@/BrickdocGraphQL'
 import { Skeleton, Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/utils'
 import { PageMenu } from '../PageMenu'
@@ -17,10 +17,20 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
     return <Skeleton />
   }
 
+  const getTitle = (block: Block): string => {
+    const emoji = block.meta.icon?.type === Blocktype.Emoji ? (block.meta.icon as BlockEmoji).emoji : ''
+    const text = block.data.text
+    if (emoji) {
+      return `${emoji} ${text}`
+    } else {
+      return text
+    }
+  }
+
   const flattedData = data.pageBlocks
     .map(i => {
       const data: BlockData = i.data
-      const title = data.text.slice(0, 20)
+      const title = getTitle(i as Block)
       return {
         key: i.id,
         value: i.id,

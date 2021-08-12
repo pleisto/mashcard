@@ -12,20 +12,34 @@ module CurrentPod
     # pod = current_user.personal_pod.as_session_context
     # warden.session['current_pod'] = pod
 
-    fetch_pod || current_user.personal_pod.as_session_context
+    ## TODO graphql
+    remote_pod =
+      if graphql?
+        warden.session['current_pod']
+      else
+        fetch_pod_via_params.tap do |pod|
+          warden.session['current_pod'] = pod
+        end
+      end
+
+    remote_pod || current_user.personal_pod.as_session_context
   end
 
   private
 
-  def fetch_pod
+  def fetch_pod_via_params
     ## NOTE Get pod via URL params
-    webid = request.params['path']
-    return nil if webid.nil?
+    webid = request.params['path'].to_s.split('/')[0]
+    return nil if webid.blank?
     pod = current_user.pods.find_by(webid: webid)
 
     return pod.as_session_context if pod
     Rails.logger.error("Can't find pod: #{current_user.id} #{webid}")
 
     nil
+  end
+
+  def graphql?
+    request.path.include?('.internal-apis')
   end
 end
