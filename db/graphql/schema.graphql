@@ -690,7 +690,7 @@ type PatchBaseObject {
   operatorId: String!
   patchType: Patchtype!
   path: [UUID!]!
-  payload: String!
+  payload: JSON!
 }
 
 enum Patchstate {

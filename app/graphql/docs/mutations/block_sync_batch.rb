@@ -24,7 +24,7 @@ module Docs
         paths_cache = root.paths_cache
         delete_block_ids = preloads.select { |_, v| !v.deleted_at }.keys - blocks.map(&:id)
         if delete_block_ids.present?
-          patches += delete_block_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: "null", patch_type: "DELETE" } }
+          patches += delete_block_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
           Docs::Block.where(id: delete_block_ids).update_all(deleted_at: Time.current)
         end
       end

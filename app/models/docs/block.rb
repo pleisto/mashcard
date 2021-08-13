@@ -130,7 +130,7 @@ class Docs::Block < ApplicationRecord
 
     Rails.logger.info("DIRTY #{id} #{changes}")
 
-    { id: id, patch_type: patch_type, payload: payload.to_json, parent_id: parent_id, path: path }
+    { id: id, patch_type: patch_type, payload: payload, parent_id: parent_id, path: path }
   end
 
   ## NOTE Prepare counter to prevent collision

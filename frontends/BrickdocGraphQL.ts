@@ -390,7 +390,7 @@ export type PatchBaseObject = {
   operatorId: Scalars['String']
   patchType: Patchtype
   path: Array<Scalars['UUID']>
-  payload: Scalars['String']
+  payload: Scalars['JSON']
 }
 
 export enum Patchstate {
@@ -1189,7 +1189,7 @@ export type NewPatchSubscription = {
       id: string
       path: Array<string>
       patchType: Patchtype
-      payload: string
+      payload: any
       operatorId: string
     }>
   }

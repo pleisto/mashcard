@@ -5,7 +5,7 @@ import { EditorContentProps } from '@brickdoc/editor'
 import { blockToNode } from './SyncProvider'
 
 function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: ChainedCommands): void {
-  const block = JSON.parse(patch.payload) as Block
+  const block = patch.payload as Block
   const newNode = block && blockToNode(block)
 
   chainedCommands.command(({ tr }) => {

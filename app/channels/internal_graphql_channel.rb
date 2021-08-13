@@ -15,8 +15,8 @@ class InternalGraphQLChannel < ApplicationCable::Channel
       protocol: 'websocket',
       real_ip: request.remote_ip,
       entrypoint: :internal,
-      current_user: nil, ## TODO fill this
-      current_pod: nil,
+      current_user: current_user,
+      current_pod: current_pod,
       channel: self,
       request_id: request.uuid
     }

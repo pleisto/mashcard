@@ -8,7 +8,7 @@ module Docs
       field :path, [BrickGraphQL::Scalars::UUID], null: false
 
       ## TODO refactor
-      field :payload, String, null: false
+      field :payload, GraphQL::Types::JSON, null: false
     end
   end
 end
