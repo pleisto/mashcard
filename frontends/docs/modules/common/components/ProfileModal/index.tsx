@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal, Form, Input, Skeleton, message, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
+import { Modal, Form, Input, message, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
@@ -26,7 +26,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
   const [form] = Form.useForm()
-  const [createOrUpdatePod, { loading }] = useCreateOrUpdatePodMutation()
+  const [createOrUpdatePod] = useCreateOrUpdatePodMutation()
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.url : '')
   const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.signedId : '')
   const prepareFileUpload = usePrepareFileUpload()
@@ -36,10 +36,6 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
     setVisible(false)
     setConfirmLoading(false)
     formRef.current!.resetFields()
-  }
-
-  if (loading) {
-    return <Skeleton />
   }
 
   const handleOk = (): void => {
@@ -59,10 +55,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
           input.avatarSignedId = avatarSignedId
         }
         await createOrUpdatePod({ variables: { input } })
-        setVisible(false)
-        setConfirmLoading(false)
         const msg = type === PodOperation.Create ? 'pods.create.success' : 'pods.update.success'
         void message.success(t(msg))
+        setConfirmLoading(false)
+        setVisible(false)
         globalThis.location.href = `/${values.webid}`
       })
       .catch(info => {

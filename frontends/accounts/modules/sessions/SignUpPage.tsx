@@ -15,6 +15,8 @@ import { mutationResultHandler } from '@/utils'
 import { Form, Input, Button, Skeleton, message } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
+import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
+import { usePasswordAvailableValidator } from '@/common/hooks/usePasswordAvailableValidator'
 
 export const SignUpPage: React.FC = () => {
   const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
@@ -36,6 +38,8 @@ export const SignUpPage: React.FC = () => {
   // Set Validator
   const passwordConfirmValidator = useConfirmationValidator('password')
   const webidAvailableValidator = useWebidAvailableValidator()
+  const emailAvailableValidator = useEmailAvailableValidator()
+  const passwordAvailableValidator = usePasswordAvailableValidator()
 
   // On Form Submit
   const [userCreate, { loading: userCreateLoading }] = useUserCreateMutation()
@@ -72,10 +76,10 @@ export const SignUpPage: React.FC = () => {
         name="email"
         label={t('sessions.email')}
         hasFeedback
-        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }]}>
+        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}>
         <Input />
       </Form.Item>
-      <Form.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }]}>
+      <Form.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }, passwordAvailableValidator]}>
         <Input.Password />
       </Form.Item>
       <Form.Item

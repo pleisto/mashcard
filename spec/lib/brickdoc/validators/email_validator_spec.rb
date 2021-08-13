@@ -16,6 +16,7 @@ describe Brickdoc::Validators::EmailValidator do
   it 'invalid address should be returns falsey' do
     subject.email = 'fake@163.com@'
     expect(subject.valid?).to be_falsey
+    expect(subject.errors[:email][0]).to eq(I18n.t("errors.messages.email_invalid"))
   end
 
   it 'email address should be returns truthy' do

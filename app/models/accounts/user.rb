@@ -96,4 +96,32 @@ class Accounts::User < ApplicationRecord
       name: name
     }
   end
+
+  def self.email_available?(email)
+    instance = new
+    instance.email = email
+    return { success: true, message: "ok" } if instance.valid?
+
+    errors = instance.errors[:email]
+
+    if errors.blank?
+      { success: true, message: "ok" }
+    else
+      { success: false, message: errors.first }
+    end
+  end
+
+  def self.password_available?(password)
+    instance = new
+    instance.password = password
+    return { success: true, message: "ok" } if instance.valid?
+
+    errors = instance.errors[:password]
+
+    if errors.blank?
+      { success: true, message: "ok" }
+    else
+      { success: false, message: errors.first }
+    end
+  end
 end

@@ -509,6 +509,12 @@ export type RootQuery = {
   blockSnapshots?: Maybe<Array<BlockSnapshot>>
   childrenBlocks?: Maybe<Array<Block>>
   /**
+   * Check email available.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   */
+  emailAvailable: Validate_Result
+  /**
    * provides a federated identity session data
    * Required `context[:entrypoints]` is `[:internal]`.
    * Required `context[:entrypoints]` is `[:internal]`.
@@ -517,6 +523,12 @@ export type RootQuery = {
   /** Return information about current Brickdoc server instance. */
   metadata: Metadata
   pageBlocks?: Maybe<Array<Block>>
+  /**
+   * Check password available.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   * Required `context[:entrypoints]` is `[:internal]`.
+   */
+  passwordAvailable: Validate_Result
   /** return all pods for user. */
   pods: Array<Pod>
   /** return images from unsplash by search */
@@ -526,7 +538,7 @@ export type RootQuery = {
    * Required `context[:entrypoints]` is `[:internal]`.
    * Required `context[:entrypoints]` is `[:internal]`.
    */
-  webidAvailable: Scalars['Boolean']
+  webidAvailable: Validate_Result
 }
 
 export type RootQueryBlockArgs = {
@@ -547,8 +559,16 @@ export type RootQueryChildrenBlocksArgs = {
   snapshotVersion: Scalars['Int']
 }
 
+export type RootQueryEmailAvailableArgs = {
+  email: Scalars['String']
+}
+
 export type RootQueryPageBlocksArgs = {
   webid: Scalars['String']
+}
+
+export type RootQueryPasswordAvailableArgs = {
+  password: Scalars['String']
 }
 
 export type RootQueryUnsplashImageArgs = {
@@ -865,6 +885,14 @@ export type Unsplash_Image = {
   width?: Maybe<Scalars['Int']>
 }
 
+export type Validate_Result = {
+  __typename?: 'validate_result'
+  /** error message */
+  message: Scalars['String']
+  /** Validate success */
+  success: Scalars['Boolean']
+}
+
 export type UserSignOutMutationVariables = Exact<{
   input: UserSignOutInput
 }>
@@ -954,11 +982,32 @@ export type UserConfirmationEmailResendMutation = {
   userConfirmationEmailResend?: Maybe<{ __typename?: 'UserConfirmationEmailResendPayload'; errors: Array<string> }>
 }
 
+export type QueryEmailAvailableFromWsQueryVariables = Exact<{
+  email: Scalars['String']
+}>
+
+export type QueryEmailAvailableFromWsQuery = {
+  __typename?: 'RootQuery'
+  emailAvailable: { __typename?: 'validate_result'; success: boolean; message: string }
+}
+
+export type QueryPasswordAvailableFromWsQueryVariables = Exact<{
+  password: Scalars['String']
+}>
+
+export type QueryPasswordAvailableFromWsQuery = {
+  __typename?: 'RootQuery'
+  passwordAvailable: { __typename?: 'validate_result'; success: boolean; message: string }
+}
+
 export type QueryWebidAvailableFromWsQueryVariables = Exact<{
   webid: Scalars['String']
 }>
 
-export type QueryWebidAvailableFromWsQuery = { __typename?: 'RootQuery'; webidAvailable: boolean }
+export type QueryWebidAvailableFromWsQuery = {
+  __typename?: 'RootQuery'
+  webidAvailable: { __typename?: 'validate_result'; success: boolean; message: string }
+}
 
 export type GetAvailableLocalesFromWsQueryVariables = Exact<{ [key: string]: never }>
 
@@ -1544,9 +1593,110 @@ export type UserConfirmationEmailResendMutationOptions = Apollo.BaseMutationOpti
   UserConfirmationEmailResendMutation,
   UserConfirmationEmailResendMutationVariables
 >
+export const QueryEmailAvailableFromWsDocument = gql`
+  query QueryEmailAvailableFromWS($email: String!) {
+    emailAvailable(email: $email) {
+      success
+      message
+    }
+  }
+`
+
+/**
+ * __useQueryEmailAvailableFromWsQuery__
+ *
+ * To run a query within a React component, call `useQueryEmailAvailableFromWsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryEmailAvailableFromWsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryEmailAvailableFromWsQuery({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useQueryEmailAvailableFromWsQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryEmailAvailableFromWsQuery, QueryEmailAvailableFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<QueryEmailAvailableFromWsQuery, QueryEmailAvailableFromWsQueryVariables>(
+    QueryEmailAvailableFromWsDocument,
+    options
+  )
+}
+export function useQueryEmailAvailableFromWsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryEmailAvailableFromWsQuery, QueryEmailAvailableFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryEmailAvailableFromWsQuery, QueryEmailAvailableFromWsQueryVariables>(
+    QueryEmailAvailableFromWsDocument,
+    options
+  )
+}
+export type QueryEmailAvailableFromWsQueryHookResult = ReturnType<typeof useQueryEmailAvailableFromWsQuery>
+export type QueryEmailAvailableFromWsLazyQueryHookResult = ReturnType<typeof useQueryEmailAvailableFromWsLazyQuery>
+export type QueryEmailAvailableFromWsQueryResult = Apollo.QueryResult<
+  QueryEmailAvailableFromWsQuery,
+  QueryEmailAvailableFromWsQueryVariables
+>
+export const QueryPasswordAvailableFromWsDocument = gql`
+  query QueryPasswordAvailableFromWS($password: String!) {
+    passwordAvailable(password: $password) {
+      success
+      message
+    }
+  }
+`
+
+/**
+ * __useQueryPasswordAvailableFromWsQuery__
+ *
+ * To run a query within a React component, call `useQueryPasswordAvailableFromWsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryPasswordAvailableFromWsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryPasswordAvailableFromWsQuery({
+ *   variables: {
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useQueryPasswordAvailableFromWsQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryPasswordAvailableFromWsQuery, QueryPasswordAvailableFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<QueryPasswordAvailableFromWsQuery, QueryPasswordAvailableFromWsQueryVariables>(
+    QueryPasswordAvailableFromWsDocument,
+    options
+  )
+}
+export function useQueryPasswordAvailableFromWsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryPasswordAvailableFromWsQuery, QueryPasswordAvailableFromWsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryPasswordAvailableFromWsQuery, QueryPasswordAvailableFromWsQueryVariables>(
+    QueryPasswordAvailableFromWsDocument,
+    options
+  )
+}
+export type QueryPasswordAvailableFromWsQueryHookResult = ReturnType<typeof useQueryPasswordAvailableFromWsQuery>
+export type QueryPasswordAvailableFromWsLazyQueryHookResult = ReturnType<typeof useQueryPasswordAvailableFromWsLazyQuery>
+export type QueryPasswordAvailableFromWsQueryResult = Apollo.QueryResult<
+  QueryPasswordAvailableFromWsQuery,
+  QueryPasswordAvailableFromWsQueryVariables
+>
 export const QueryWebidAvailableFromWsDocument = gql`
   query QueryWebidAvailableFromWS($webid: String!) {
-    webidAvailable(webid: $webid)
+    webidAvailable(webid: $webid) {
+      success
+      message
+    }
   }
 `
 

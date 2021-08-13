@@ -4,7 +4,7 @@ module System
   class Queries::WebidAvailable < BrickGraphQL::BaseResolver
     requires_entrypoint_to_be :internal
     description 'Check webid available.'
-    type GraphQL::Types::Boolean, null: false
+    type Objects::ValidateResult, null: false
 
     argument :webid, GraphQL::Types::String, required: true
 

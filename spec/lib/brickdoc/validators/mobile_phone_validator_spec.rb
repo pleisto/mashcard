@@ -16,8 +16,10 @@ describe Brickdoc::Validators::MobilePhoneValidator do
   it 'invalid phone number should be returns falsey' do
     subject.phone = '8623012340000'
     expect(subject.valid?).to be_falsey
+    expect(subject.errors[:phone][0]).to eq(I18n.t("errors.messages.mobile_phone_invalid"))
     subject.phone = '1234'
     expect(subject.valid?).to be_falsey
+    expect(subject.errors[:phone][0]).to eq(I18n.t("errors.messages.mobile_phone_invalid"))
   end
 
   it 'e164 numbers should be returns truthy' do

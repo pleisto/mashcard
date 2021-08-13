@@ -3087,6 +3087,39 @@
               "deprecationReason": null
             },
             {
+              "name": "emailAvailable",
+              "description": "Check email available.\nRequired `context[:entrypoints]` is `[:internal]`.\nRequired `context[:entrypoints]` is `[:internal]`.",
+              "args": [
+                {
+                  "name": "email",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "validate_result",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "federatedIdentitySession",
               "description": "provides a federated identity session data\nRequired `context[:entrypoints]` is `[:internal]`.\nRequired `context[:entrypoints]` is `[:internal]`.",
               "args": [
@@ -3154,6 +3187,39 @@
                     "name": "block",
                     "ofType": null
                   }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "passwordAvailable",
+              "description": "Check password available.\nRequired `context[:entrypoints]` is `[:internal]`.\nRequired `context[:entrypoints]` is `[:internal]`.",
+              "args": [
+                {
+                  "name": "password",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "validate_result",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
@@ -3267,8 +3333,8 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
+                  "kind": "OBJECT",
+                  "name": "validate_result",
                   "ofType": null
                 }
               },
@@ -6112,6 +6178,55 @@
                 "kind": "SCALAR",
                 "name": "Int",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "validate_result",
+          "description": null,
+          "fields": [
+            {
+              "name": "message",
+              "description": "error message",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "success",
+              "description": "Validate success",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null

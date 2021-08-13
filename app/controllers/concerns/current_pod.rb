@@ -40,6 +40,6 @@ module CurrentPod
   end
 
   def graphql?
-    request.path.include?('.internal-apis')
+    internal_graphql_api_path == request.path
   end
 end

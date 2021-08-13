@@ -890,6 +890,13 @@ type RootQuery {
   ): [block!]
 
   """
+  Check email available.
+  Required `context[:entrypoints]` is `[:internal]`.
+  Required `context[:entrypoints]` is `[:internal]`.
+  """
+  emailAvailable(email: String!): validate_result!
+
+  """
   provides a federated identity session data
   Required `context[:entrypoints]` is `[:internal]`.
   Required `context[:entrypoints]` is `[:internal]`.
@@ -908,6 +915,13 @@ type RootQuery {
   ): [block!]
 
   """
+  Check password available.
+  Required `context[:entrypoints]` is `[:internal]`.
+  Required `context[:entrypoints]` is `[:internal]`.
+  """
+  passwordAvailable(password: String!): validate_result!
+
+  """
   return all pods for user.
   """
   pods: [pod!]!
@@ -922,7 +936,7 @@ type RootQuery {
   Required `context[:entrypoints]` is `[:internal]`.
   Required `context[:entrypoints]` is `[:internal]`.
   """
-  webidAvailable(webid: String!): Boolean!
+  webidAvailable(webid: String!): validate_result!
 }
 
 type RootSubscription {
@@ -1486,4 +1500,16 @@ type unsplash_image {
   Image width
   """
   width: Int
+}
+
+type validate_result {
+  """
+  error message
+  """
+  message: String!
+
+  """
+  Validate success
+  """
+  success: Boolean!
 }

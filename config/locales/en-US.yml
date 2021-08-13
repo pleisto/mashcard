@@ -156,6 +156,10 @@ en-US:
         redirect_uri: 'Redirect URI'
     errors:
       models:
+        accounts/user:
+          attributes:
+            password:
+              too_short: too short
         doorkeeper/application:
           attributes:
             redirect_uri:
@@ -286,6 +290,7 @@ en-US:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
       is_not_valid_webid: "WebID \"%{webid}\" is not available"
+      is_not_valid_email: "Email \"%{email}\" is not available"
       send_interval: Sending interval is too short, please try again after 1 minute
       accepted: must be accepted
       blank: can't be blank
@@ -301,6 +306,10 @@ en-US:
       less_than: must be less than %{count}
       less_than_or_equal_to: must be less than or equal to %{count}
       model_invalid: 'Validation failed: %{errors}'
+      email_invalid: is not an email
+      webid_invalid: is not a webid
+      uuid_invalid: is not an uuid
+      mobile_phone_invalid: is not a valid mobile phone number
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd

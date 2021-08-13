@@ -8,7 +8,7 @@ module Brickdoc
 
       def validate_each(record, attribute, value)
         if value !~ REGEXP || Brickdoc::WebidBlacklist.all.include?(value)
-          record.errors.add attribute, :invalid
+          record.errors.add attribute, ::I18n.t("errors.messages.webid_invalid")
         end
       end
     end

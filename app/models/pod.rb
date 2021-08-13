@@ -63,8 +63,16 @@ class Pod < ApplicationRecord
   def self.webid_available?(webid)
     instance = new
     instance.webid = webid
-    instance.valid?
-    instance.errors[:webid].blank?
+
+    return { success: true, message: "ok" } if instance.valid?
+
+    errors = instance.errors[:webid]
+
+    if errors.blank?
+      { success: true, message: "ok" }
+    else
+      { success: false, message: errors.first }
+    end
   end
 
   def as_session_context

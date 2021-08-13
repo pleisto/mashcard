@@ -16,10 +16,13 @@ describe Brickdoc::Validators::WebidValidator do
   it 'invalid pod name should be returns falsey' do
     subject.name = '-hello'
     expect(subject.valid?).to be_falsey
+    expect(subject.errors[:name][0]).to eq(I18n.t("errors.messages.webid_invalid"))
     subject.name = 'admin'
     expect(subject.valid?).to be_falsey
+    expect(subject.errors[:name][0]).to eq(I18n.t("errors.messages.webid_invalid"))
     subject.name = '.test'
     expect(subject.valid?).to be_falsey
+    expect(subject.errors[:name][0]).to eq(I18n.t("errors.messages.webid_invalid"))
   end
 
   it 'should be returns truthy' do
