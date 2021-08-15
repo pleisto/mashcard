@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.build.json",
   "include": ["**/*", "**/*.json"],
-  "exclude": ["dist/**/*"],
+  "exclude": ["dist/**/*", "*.json"],
   "references": [{ "path": "../brickdoc-design-system" }]
 }

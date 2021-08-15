@@ -493,7 +493,7 @@ export class DashboardPlugin extends Plugin {
   //   `
   // }
 
-  mount(target, plugin) {
+  mount(target, plugin): void {
     const callerPluginName = plugin.id
 
     const targetElement = findDOMElement(target)
@@ -516,7 +516,7 @@ export class DashboardPlugin extends Plugin {
     }
   }
 
-  render() {
+  render(): JSX.Element {
     return <Dashboard importSources={this.opts.importSources} pluginOptions={this.opts} uppy={this.uppy} pluginId={this.id} />
   }
 

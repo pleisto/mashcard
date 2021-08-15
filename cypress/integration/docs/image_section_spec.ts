@@ -30,16 +30,17 @@ describe('imageSection', () => {
     cy.get('.brickdoc-block-image').should('exist')
   })
 
-  // ignore it for now because Unsplash API is too slow
-  // it('should select image from Unsplash', () => {
-  //   cy.visit('/')
-  //   cy.get('[contenteditable]').type('/image')
-  //   cy.get('button.slash-menu-item:first').click()
-  //   cy.findByText('Add an image').click()
-  //   cy.findByText('Unsplash').click()
-  //   cy.get('.unsplash-image-item:first').click()
-  //   cy.get('.brickdoc-block-image').should('exist')
-  // })
+  // FIXME: ignore it for now because Unsplash API is too slow
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should select image from Unsplash', () => {
+    cy.visit('/')
+    cy.get('[contenteditable]').type('/image')
+    cy.get('button.slash-menu-item:first').click()
+    cy.findByText('Add an image').click()
+    cy.findByText('Unsplash').click()
+    cy.get('.unsplash-image-item:first').click()
+    cy.get('.brickdoc-block-image').should('exist')
+  })
 
   it('should zoom out image when double click', () => {
     cy.visit('/')
