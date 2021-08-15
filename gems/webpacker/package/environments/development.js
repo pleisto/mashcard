@@ -53,10 +53,10 @@ if (runningWebpackDevServer) {
         }
       },
       static: {
-        directory: contentBase,
-        watch: devServer.watch_options
+        directory: contentBase
       }
-    }
+    },
+    watchOptions: devServer.watch_options
   })
 }
 
