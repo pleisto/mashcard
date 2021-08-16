@@ -4,6 +4,7 @@ import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import { usePrepareFileUpload } from '@/docs/modules/pages/usePrepareFileUpload'
+import { useWebidAvailableValidator } from '@/common/hooks'
 
 interface ProfileModalProps {
   pod: Pod
@@ -31,6 +32,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.signedId : '')
   const prepareFileUpload = usePrepareFileUpload()
   const formRef = React.createRef<FormInstance>()
+  const webidAvailableValidator = useWebidAvailableValidator()
 
   const handleCancel = (): void => {
     setVisible(false)
@@ -79,7 +81,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
 
   const webidFormItem =
     type === PodOperation.Create ? (
-      <Form.Item name="webid" label={t('pods.webid')} rules={[{ required: true, message: t('pods.required.webid') }]}>
+      <Form.Item
+        name="webid"
+        label={t('pods.webid')}
+        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}>
         <Input />
       </Form.Item>
     ) : (

@@ -408,8 +408,7 @@ class Docs::Block < ApplicationRecord
   def path_cache
     return [id] if parent_id.nil?
 
-    ## TODO read path cache from Current module
-    ## TODO add `root_id` to blocks
+    ## TODO should add `root_id` to block model?
     calculate_path
   end
 
