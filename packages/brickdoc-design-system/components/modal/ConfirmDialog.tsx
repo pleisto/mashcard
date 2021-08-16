@@ -48,11 +48,11 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
   )
 
   // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
-  const okType = props.okType || 'primary'
+  const okType = props.okType || 'ghost'
   const contentPrefixCls = `${prefixCls}-confirm`
   // 默认为 true，保持向下兼容
   const okCancel = 'okCancel' in props ? props.okCancel : true
-  const width = props.width || 416
+  const width = props.width || 336
   const style = props.style || {}
   const mask = props.mask === undefined ? true : props.mask
   // 默认为 false，保持旧版默认行为
@@ -68,8 +68,10 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
 
   const cancelButton = okCancel && (
     <ActionButton
+      actionType="cancel"
       actionFn={onCancel}
       closeModal={close}
+      type="ghost"
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}
@@ -110,9 +112,9 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
           <div className={`${contentPrefixCls}-content`}>{props.content}</div>
         </div>
         <div className={`${contentPrefixCls}-btns`}>
-          {cancelButton}
           <ActionButton
             type={okType}
+            actionType="ok"
             actionFn={onOk}
             closeModal={close}
             // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -121,6 +123,7 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
             prefixCls={`${rootPrefixCls}-btn`}>
             {okText}
           </ActionButton>
+          {cancelButton}
         </div>
       </div>
     </Dialog>

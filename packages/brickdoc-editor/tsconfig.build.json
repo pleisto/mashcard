@@ -3,6 +3,6 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["src/**/*", "externals.d.ts"],
+  "include": ["src/**/*", "externals.d.ts", "react-table.d.ts"],
   "references": [{ "path": "../brickdoc-design-system/tsconfig.build.json" }, { "path": "../brickdoc-uploader/tsconfig.build.json" }]
 }

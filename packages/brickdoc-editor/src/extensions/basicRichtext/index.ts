@@ -23,6 +23,7 @@ import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
 import { ImageSectionExtension, ImageSectionOptions } from '../imageSection'
 import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
+import { TableBlockExtension, TableBlockOptions } from '../table'
 
 export interface BasicRichtextOptions {
   blockquote: Partial<BlockquoteOptions> | false
@@ -48,6 +49,7 @@ export interface BasicRichtextOptions {
   fontColor: Partial<FontColorOptions> | false
   imageSection: Partial<ImageSectionOptions> | false
   pdfSection: Partial<PdfSectionOptions> | false
+  tableBlock: Partial<TableBlockOptions> | false
 }
 
 export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
@@ -81,6 +83,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.pdfSection !== false) extensions.push(PdfSectionExtension.configure(this.options?.pdfSection))
     if (this.options.textStyle !== false) extensions.push(TextStyle.configure(this.options?.textStyle))
     if (this.options.fontColor !== false) extensions.push(FontColorExtension.configure(this.options?.fontColor))
+    if (this.options.tableBlock !== false) extensions.push(TableBlockExtension.configure(this.options?.tableBlock))
     /* eslint-enable @typescript-eslint/no-unnecessary-boolean-literal-compare */
 
     return extensions

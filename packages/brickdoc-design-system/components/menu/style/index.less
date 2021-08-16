@@ -16,6 +16,7 @@
   .reset-component();
 
   margin-bottom: 0;
+  padding: @menu-padding 0;
   padding-left: 0; // Override default ul/ol
   color: @menu-item-color;
   font-size: @menu-item-font-size;
@@ -23,8 +24,10 @@
   text-align: left;
   list-style: none;
   background: @menu-bg;
+  border: 1px solid @menu-border-color;
+  border-radius: @menu-border-radius;
   outline: none;
-  box-shadow: @box-shadow-base;
+  box-shadow: @menu-box-shadow;
   transition: background @animation-duration-slow, width @animation-duration-slow cubic-bezier(0.2, 0, 0, 1) 0s;
   .clearfix();
 
@@ -81,6 +84,10 @@
     transition: color @animation-duration-slow;
   }
 
+  &-item.input-item:active {
+    background: unset;
+  }
+
   &-item a {
     color: @menu-item-color;
 
@@ -135,7 +142,7 @@
     }
   }
 
-  &:not(&-horizontal) &-item-selected {
+  &:not(&-horizontal) &-item-selected:not(.input-item) {
     background-color: @menu-item-active-bg;
   }
 
@@ -455,8 +462,7 @@
     .@{menu-prefix-cls}-submenu-title {
       height: @menu-item-height;
       margin-top: @menu-item-vertical-margin;
-      margin-bottom: @menu-item-vertical-margin;
-      padding: 0 16px;
+      padding: 0 @menu-padding;
       overflow: hidden;
       line-height: @menu-item-height;
       text-overflow: ellipsis;
@@ -465,10 +471,6 @@
     // disable margin collapsed
     .@{menu-prefix-cls}-submenu {
       padding-bottom: 0.02px;
-    }
-
-    .@{menu-prefix-cls}-item:not(:last-child) {
-      margin-bottom: @menu-item-boundary-margin;
     }
 
     > .@{menu-prefix-cls}-item,
@@ -595,7 +597,6 @@
     }
   }
 
-  &-root&-vertical,
   &-root&-vertical-left,
   &-root&-vertical-right,
   &-root&-inline {

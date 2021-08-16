@@ -1,0 +1,194 @@
+.brickdoc {
+  & .ProseMirror {
+    & .table-block-react-renderer {
+      max-width: 100%;
+      width: 100%;
+      overflow-x: scroll;
+      padding-left: 226px;
+      margin-left: 0;
+    }
+  }
+}
+
+.brickdoc-table-block {
+  & .table-block-table {
+    --border-color: #efefef;
+    --cell-height: 42px;
+
+    display: inline-block;
+    min-width: 700px;
+    border-top: 1px solid var(--border-color);
+
+    & .table-block-row {
+      position: relative;
+      height: var(--cell-height);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 150ms ease-in;
+
+      &.active {
+        border-top: 1px solid rgba(63, 145, 220, 0.3);
+        background: rgba(63, 145, 220, 0.1);
+        border-bottom: 1px solid rgba(63, 145, 220, 0.3);
+      }
+
+      & .table-block-row-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-100%);
+        transition: opacity 100ms ease-in;
+      }
+
+      &:hover {
+        & .table-block-row-actions {
+          opacity: 1;
+          pointer-events: unset;
+        }
+      }
+
+      & .table-block-row-action-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        box-sizing: border-box;
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        font-size: 18px;
+        color: #a6a6a6;
+      }
+    }
+
+    & .table-block-th {
+      height: var(--cell-height);
+      min-width: 180px;
+      color: #a6a6a6;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+
+      & .resizer {
+        display: none;
+
+        /* display: inline-block; */
+        background: blue;
+        width: 10px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(50%);
+        z-index: 1;
+        touch-action: none;
+
+        & .isResizing {
+          background: red;
+        }
+      }
+    }
+
+    & .table-block-tr {
+      align-items: center;
+    }
+
+    & .table-block-td {
+      height: var(--cell-height);
+
+      &.active {
+        border-top: 1px solid rgba(63, 145, 220, 0.3);
+        background: rgba(63, 145, 220, 0.1);
+        border-bottom: 1px solid rgba(63, 145, 220, 0.3);
+      }
+    }
+
+    & .table-block-add-column-button {
+      color: #a6a6a6;
+    }
+    & .table-block-add-column-button:hover {
+      background: none;
+    }
+    & .table-block-add-column-button:active {
+      background: none;
+    }
+    & .table-block-add-column-button:focus {
+      background: none;
+    }
+  }
+}
+
+.table-block-column-menu {
+  & .table-block-column-menu-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 28px;
+    margin-top: 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+
+    &.input-item {
+      margin-bottom: 8px;
+    }
+
+    & .table-block-column-menu-item-icon {
+      margin: 0 8px 0 4px;
+    }
+
+    &:hover {
+      font-weight: 500;
+    }
+  }
+
+  --input-active-color: #2dc5e3;
+
+  & .table-block-column-input {
+    background: #f7f7f7;
+    height: 28px;
+    border-radius: 4px;
+    border-color: transparent;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &::selection {
+      background: var(--input-active-color);
+    }
+  }
+
+  & .brk-input:focus {
+    border-color: var(--input-active-color);
+    box-shadow: none;
+  }
+
+  & .brk-input-focused {
+    border-color: var(--input-active-color);
+    box-shadow: none;
+  }
+}
+
+.table-block-column-menu-popover {
+  & .brk-popover-arrow {
+    display: none;
+  }
+
+  & .brk-popover-inner {
+    box-shadow: none;
+  }
+
+  & .brk-popover-inner-content {
+    padding: 0;
+    color: unset;
+  }
+}

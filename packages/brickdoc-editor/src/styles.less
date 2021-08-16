@@ -11,7 +11,6 @@ html * {
   width: 100%;
 
   .ProseMirror {
-    max-width: 700px;
     width: 100%;
     outline: none;
 
@@ -27,6 +26,11 @@ html * {
     }
 
     /** Block **/
+    > * {
+      margin-left: 226px;
+      max-width: 700px;
+    }
+
     > * + * {
       margin-top: 12px;
       margin-bottom: 0;

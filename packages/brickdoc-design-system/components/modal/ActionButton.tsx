@@ -1,9 +1,11 @@
 import * as React from 'react'
+import cx from 'classnames'
 import Button from '../button'
 import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'
 
 export interface ActionButtonProps {
   type?: LegacyButtonType
+  actionType: 'ok' | 'cancel'
   actionFn?: (...args: any[]) => any | PromiseLike<any>
   closeModal: Function
   autoFocus?: boolean
@@ -79,9 +81,16 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
     handlePromiseOnOk(returnValueOfOnOk)
   }
 
-  const { type, children, prefixCls, buttonProps } = props
+  const { actionType, type, children, prefixCls, buttonProps } = props
   return (
-    <Button {...convertLegacyProps(type)} onClick={onClick} loading={loading} prefixCls={prefixCls} {...buttonProps} ref={ref}>
+    <Button
+      {...convertLegacyProps(type)}
+      onClick={onClick}
+      loading={loading}
+      prefixCls={prefixCls}
+      {...buttonProps}
+      className={cx(`${prefixCls}-${actionType}-btn`, buttonProps?.className)}
+      ref={ref}>
       {children}
     </Button>
   )

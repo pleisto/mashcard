@@ -39,7 +39,7 @@
 @icon-color-hover: fade(@black, 75%);
 @font-variant-base: tabular-nums;
 @font-feature-settings-base: 'tnum';
-@font-size-base: 15px;
+@font-size-base: 14px;
 @font-size-lg: @font-size-base + 2px;
 @font-size-sm: 13px;
 @heading-1-size: ceil(@font-size-base * 2.71);
@@ -48,7 +48,7 @@
 @heading-4-size: ceil(@font-size-base * 1.42);
 @heading-5-size: ceil(@font-size-base * 1.14);
 @line-height-base: 1.7;
-@border-radius-base: 2px;
+@border-radius-base: 8px;
 @border-radius-sm: @border-radius-base;
 
 // vertical paddings
@@ -378,7 +378,7 @@
 @input-number-handler-bg: @component-background;
 @input-number-handler-border-color: @border-color-base;
 @input-addon-bg: @background-color-light;
-@input-hover-border-color: @primary-5;
+@input-hover-border-color: #2dc5e3;
 @input-disabled-bg: @disabled-bg;
 @input-outline-offset: 0 0;
 @input-icon-hover-color: fade(@black, 85%);
@@ -493,7 +493,7 @@
 @modal-footer-padding-horizontal: 16px;
 @modal-footer-border-width: @border-width-base;
 @modal-mask-bg: fade(@black, 45%);
-@modal-confirm-body-padding: 32px 32px 24px;
+@modal-confirm-body-padding: 24px;
 
 // Progress
 // --
@@ -512,12 +512,16 @@
 @menu-item-group-height: @line-height-base;
 @menu-collapsed-width: 80px;
 @menu-bg: @component-background;
+@menu-padding: 8px;
+@menu-border-color: #efefef;
+@menu-border-radius: 8px;
+@menu-box-shadow: 0px 10px 15px rgba(62, 62, 62, 0.1), 0px 0px 6px rgba(62, 62, 62, 0.05);
 @menu-popup-bg: @component-background;
 @menu-item-color: @text-color;
 @menu-inline-submenu-bg: @background-color-light;
 @menu-highlight-color: @text-color;
 @menu-highlight-danger-color: @error-color;
-@menu-item-active-bg: @primary-1;
+@menu-item-active-bg: #f7f7f7;
 @menu-item-active-danger-bg: @red-1;
 @menu-item-active-border-width: 3px;
 @menu-item-group-title-color: @text-color-secondary;
