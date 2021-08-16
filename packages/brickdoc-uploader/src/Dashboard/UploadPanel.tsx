@@ -1,4 +1,4 @@
-import { Uppy } from '@uppy/core'
+import { Uppy, UppyFile } from '@uppy/core'
 import React from 'react'
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions } from './plugin'
@@ -11,6 +11,26 @@ interface UploadPanelProps {
 }
 
 export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pluginId, pluginOptions }) => {
+  React.useEffect(() => {
+    const handleUploadSuccess = (file: UppyFile): void => {
+      pluginOptions.onUploaded({
+        action: 'add',
+        url: uploadMeta.current.blobKey,
+        signedId: uploadMeta.current.signedId,
+        viewUrl: uploadMeta.current.viewUrl,
+        meta: {
+          source: 'origin'
+        }
+      })
+    }
+
+    uppy.on('upload-success', handleUploadSuccess)
+
+    return () => {
+      uppy.off('upload-success', handleUploadSuccess)
+    }
+  }, [uppy, pluginOptions])
+
   const input = React.useRef<HTMLInputElement>()
   const uploadMeta = React.useRef<{ blobKey: string; viewUrl: string; signedId: string }>()
   const addFile = (file: File): void => {

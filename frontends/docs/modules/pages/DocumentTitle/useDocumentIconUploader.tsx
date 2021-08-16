@@ -11,6 +11,7 @@ const ICON_IMPORT_SOURCES: ImportSourceOption[] = [
   {
     type: 'upload',
     typeLabel: 'Upload an Image',
+    acceptType: 'image/*',
     buttonText: 'Choose an image',
     buttonHint: 'Recommended size is 280x280 pixels'
   },

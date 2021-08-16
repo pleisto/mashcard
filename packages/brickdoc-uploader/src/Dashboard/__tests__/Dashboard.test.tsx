@@ -18,7 +18,9 @@ describe('Dashboard', () => {
       buttonText: 'Button'
     }
     const sources: ImportSourceOption[] = [source]
-    const uppy: any = {}
+    const uppy: any = {
+      on: () => {}
+    }
 
     it('matches correct snapshot', () => {
       const options: DashboardPluginOptions = {
