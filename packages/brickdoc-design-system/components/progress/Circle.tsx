@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Circle as RCCircle } from 'rc-progress'
-import { presetPrimaryColors } from '@ant-design/colors'
 import classNames from 'classnames'
 import { validProgress, getSuccessPercent } from './utils'
 import { ProgressProps } from './progress'
@@ -18,7 +17,7 @@ function getPercentage({ percent, success, successPercent }: CircleProps) {
 
 function getStrokeColor({ success = {}, strokeColor }: Partial<CircleProps>) {
   const { strokeColor: successColor } = success
-  return [successColor || presetPrimaryColors.green, strokeColor || null]
+  return [successColor || '--todo-green', strokeColor || null]
 }
 
 const Circle: React.FC<CircleProps> = props => {

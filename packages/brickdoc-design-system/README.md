@@ -45,3 +45,8 @@ const App = () => (
 ### 0.1.9
 
 - Sync of patches from Ant Design 4.16.10
+
+### 0.2.0
+
+- Sync of patches from Ant Design 4.16.11
+- Remove unused components

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Modal, Form, Input, message, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
@@ -31,13 +31,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.url : '')
   const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.signedId : '')
   const prepareFileUpload = usePrepareFileUpload()
-  const formRef = React.createRef<FormInstance>()
+  const formRef = useRef<FormInstance>(null)
   const webidAvailableValidator = useWebidAvailableValidator()
 
   const handleCancel = (): void => {
     setVisible(false)
     setConfirmLoading(false)
-    formRef.current!.resetFields()
+    formRef.current?.resetFields()
   }
 
   const handleOk = (): void => {

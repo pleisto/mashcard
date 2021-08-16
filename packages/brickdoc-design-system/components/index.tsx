@@ -17,23 +17,11 @@ export { default as Avatar } from './avatar'
 export type { BackTopProps } from './back-top'
 export { default as BackTop } from './back-top'
 
-export type { BadgeProps } from './badge'
-export { default as Badge } from './badge'
-
 export type { ButtonProps } from './button'
 export { default as Button } from './button'
 
-export type { CalendarProps } from './calendar'
-export { default as Calendar } from './calendar'
-
 export type { CardProps } from './card'
 export { default as Card } from './card'
-
-export type { CollapseProps, CollapsePanelProps } from './collapse'
-export { default as Collapse } from './collapse'
-
-export type { CarouselProps } from './carousel'
-export { default as Carousel } from './carousel'
 
 export type { CascaderProps } from './cascader'
 export { default as Cascader } from './cascader'
@@ -83,9 +71,6 @@ export { Icon } from './icon/Icon'
 export type { ImageProps } from './image'
 export { default as Image } from './image'
 
-export type { InputNumberProps } from './input-number'
-export { default as InputNumber } from './input-number'
-
 export type { LayoutProps } from './layout'
 export { default as Layout } from './layout'
 
@@ -94,9 +79,6 @@ export { default as message } from './message'
 
 export type { MenuProps, MenuTheme, SubMenuProps, MenuItemProps } from './menu'
 export { default as Menu } from './menu'
-
-export type { MentionProps } from './mentions'
-export { default as Mentions } from './mentions'
 
 export type { ModalProps, ModalFuncProps } from './modal'
 export { default as Modal } from './modal'
@@ -118,9 +100,6 @@ export { default as Progress } from './progress'
 export type { RadioProps, RadioChangeEvent, RadioGroupProps } from './radio'
 export { default as Radio } from './radio'
 
-export type { RateProps } from './rate'
-export { default as Rate } from './rate'
-
 export type { RowProps } from './row'
 export { default as Row } from './row'
 
@@ -130,17 +109,11 @@ export { default as Select } from './select'
 export type { SkeletonProps } from './skeleton'
 export { default as Skeleton } from './skeleton'
 
-export type { SliderSingleProps } from './slider'
-export { default as Slider } from './slider'
-
 export type { SpaceProps } from './space'
 export { default as Space } from './space'
 
 export type { SpinProps } from './spin'
 export { default as Spin } from './spin'
-
-export type { StepProps, StepsProps } from './steps'
-export { default as Steps } from './steps'
 
 export type { SwitchProps } from './switch'
 export { default as Switch } from './switch'

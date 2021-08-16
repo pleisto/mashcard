@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { presetPrimaryColors } from '@ant-design/colors'
 import { ProgressGradient, ProgressProps, StringGradients } from './progress'
 import { validProgress, getSuccessPercent } from './utils'
 import { DirectionType } from '../config-provider'
@@ -49,12 +48,7 @@ export const sortGradient = (gradients: StringGradients) => {
  *   }
  */
 export const handleGradient = (strokeColor: ProgressGradient, directionConfig: DirectionType) => {
-  const {
-    from = presetPrimaryColors.blue,
-    to = presetPrimaryColors.blue,
-    direction = directionConfig === 'rtl' ? 'to left' : 'to right',
-    ...rest
-  } = strokeColor
+  const { from = '--todo-blue', to = '--todo-blue', direction = directionConfig === 'rtl' ? 'to left' : 'to right', ...rest } = strokeColor
   if (Object.keys(rest).length !== 0) {
     const sortedGradients = sortGradient(rest as StringGradients)
     return { backgroundImage: `linear-gradient(${direction}, ${sortedGradients})` }

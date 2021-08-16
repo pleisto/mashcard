@@ -2,41 +2,19 @@
 // for dark theme
 .popover-customize-bg(@containerClass, @background: @popover-background, @prefix: @brk-prefix) when (@theme = dark) {
   @picker-prefix-cls: ~'@{prefix}-picker';
-  @slider-prefix-cls: ~'@{prefix}-slider';
   @anchor-prefix-cls: ~'@{prefix}-anchor';
-  @collapse-prefix-cls: ~'@{prefix}-collapse';
   @tab-prefix-cls: ~'@{prefix}-tabs';
-  @timeline-prefix-cls: ~'@{prefix}-timeline';
   @tree-prefix-cls: ~'@{prefix}-tree';
   @card-prefix-cls: ~'@{prefix}-card';
-  @badge-prefix-cls: ~'@{prefix}-badge';
-  @transfer-prefix-cls: ~'@{prefix}-transfer';
-  @calendar-prefix-cls: ~'@{prefix}-picker-calendar';
-  @calendar-picker-prefix-cls: ~'@{prefix}-picker';
   @table-prefix-cls: ~'@{prefix}-table';
 
   @popover-border: @border-width-base @border-style-base @popover-customize-border-color;
 
   .@{containerClass} {
     .@{picker-prefix-cls}-clear,
-    .@{slider-prefix-cls}-handle,
     .@{anchor-prefix-cls}-wrapper,
-    .@{collapse-prefix-cls}-content,
-    .@{timeline-prefix-cls}-item-head,
     .@{card-prefix-cls} {
       background-color: @background;
-    }
-
-    .@{transfer-prefix-cls} {
-      &-list {
-        &-header {
-          background: @background;
-          border-bottom: @popover-border;
-        }
-        &-content-item:not(.@{transfer-prefix-cls}-list-content-item-disabled):hover {
-          background-color: @item-hover-bg;
-        }
-      }
     }
 
     tr.@{table-prefix-cls}-expanded-row {
@@ -145,26 +123,10 @@
       }
     }
 
-    .@{calendar-prefix-cls}-full {
-      background-color: @background;
-      .@{calendar-picker-prefix-cls}-panel {
-        background-color: @background;
-        .@{calendar-prefix-cls}-date {
-          border-top: 2px solid @popover-customize-border-color;
-        }
-      }
-    }
-
     .@{tab-prefix-cls} {
       &.@{tab-prefix-cls}-card .@{tab-prefix-cls}-card-bar .@{tab-prefix-cls}-tab-active {
         background-color: @background;
         border-bottom: @border-width-base solid @background;
-      }
-    }
-
-    .@{badge-prefix-cls} {
-      &-count {
-        box-shadow: 0 0 0 1px @background;
       }
     }
 

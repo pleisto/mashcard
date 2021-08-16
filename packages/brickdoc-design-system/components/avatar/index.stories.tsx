@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Avatar, AvatarProps, Space, Badge } from '../'
+import { Avatar, AvatarProps, Space } from '../'
 import { User, Figma } from '../icon'
 
 export default {
@@ -105,9 +105,6 @@ export const Type: Story<AvatarProps> = _args => (
     <br />
     <br />
     <Space>
-      <Badge count={1}>
-        <Avatar shape="square" size={64} icon={<User />} />
-      </Badge>
       <Avatar shape="square" size="large" icon={<User />} />
       <Avatar shape="square" icon={<User />} />
       <Avatar shape="square" size="small" icon={<User />} />

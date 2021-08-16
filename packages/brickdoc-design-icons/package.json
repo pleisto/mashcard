@@ -1,0 +1,7 @@
+{
+  "name": "brickdoc-design-icons",
+  "author": "Brickdoc LTD",
+  "homepage": "https://brickdoc.org",
+  "license": "Apache-2.0",
+  "packageManager": "yarn@3.0.0"
+}

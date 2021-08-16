@@ -41,6 +41,7 @@ export interface DropdownProps {
   transitionName?: string
   placement?: Placement
   overlayClassName?: string
+  destroyPopupOnHide?: boolean
   overlayStyle?: React.CSSProperties
   forceRender?: boolean
   mouseEnterDelay?: number

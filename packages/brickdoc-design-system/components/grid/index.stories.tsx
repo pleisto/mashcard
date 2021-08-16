@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Row, Col, Divider, Slider } from '../'
+import { Row, Col, Divider, Input } from '../'
 
 export default {
   title: 'ReactComponents/Grid',
@@ -283,39 +283,15 @@ class App extends React.Component {
       <>
         <span>Horizontal Gutter (px): </span>
         <div style={{ width: '50%' }}>
-          <Slider
-            min={0}
-            max={Object.keys(gutters).length - 1}
-            value={gutterKey}
-            onChange={this.onGutterChange}
-            marks={gutters}
-            step={null}
-            tipFormatter={value => gutters[value]}
-          />
+          <Input value={gutterKey} onChange={this.onGutterChange} />
         </div>
         <span>Vertical Gutter (px): </span>
         <div style={{ width: '50%' }}>
-          <Slider
-            min={0}
-            max={Object.keys(vgutters).length - 1}
-            value={vgutterKey}
-            onChange={this.onVGutterChange}
-            marks={vgutters}
-            step={null}
-            tipFormatter={value => vgutters[value]}
-          />
+          <Input value={vgutterKey} onChange={this.onVGutterChange} />
         </div>
         <span>Column Count:</span>
         <div style={{ width: '50%', marginBottom: 48 }}>
-          <Slider
-            min={0}
-            max={Object.keys(colCounts).length - 1}
-            value={colCountKey}
-            onChange={this.onColCountChange}
-            marks={colCounts}
-            step={null}
-            tipFormatter={value => colCounts[value]}
-          />
+          <Input value={colCountKey} onChange={this.onColCountChange} />
         </div>
         <Row gutter={[gutters[gutterKey], vgutters[vgutterKey]]}>
           {cols}

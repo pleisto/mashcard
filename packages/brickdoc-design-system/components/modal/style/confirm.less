@@ -21,7 +21,7 @@
       // create BFC to avoid
       // https://user-images.githubusercontent.com/507615/37702510-ba844e06-2d2d-11e8-9b67-8e19be57f445.png
       overflow: hidden;
-      color: #333333;
+      color: #333;
       font-weight: 500;
       font-size: @font-size-lg;
       line-height: 24px;
@@ -52,20 +52,22 @@
     justify-content: center;
 
     .@{brk-prefix}-btn-ok-btn {
-      border-color: #D53730;
-      color: #D53730;
+      border-color: #d53730;
+      color: #d53730;
     }
 
     .@{brk-prefix}-btn-cancel-btn {
-      border-color: #A6A6A6;
-      color: #333333;
+      border-color: #a6a6a6;
+      color: #333;
     }
     .@{brk-prefix}-btn {
       width: 100%;
       margin-top: 16px;
 
-      &:active, &:hover, &:focus {
-        background: #ffffff;
+      &:active,
+      &:hover,
+      &:focus {
+        background: #fff;
       }
     }
   }
