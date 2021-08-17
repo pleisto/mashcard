@@ -1,6 +1,6 @@
 import React from 'react'
 import { Uppy } from '@uppy/core'
-import { Button, Icon, IconProps } from '@brickdoc/design-system'
+import { Button, Icon } from '@brickdoc/design-system'
 import cx from 'classnames'
 import emojiData from './data-by-group.json'
 import { EmojiPanel } from './EmojiPanel'
@@ -38,7 +38,7 @@ interface DashboardProps {
 }
 
 export interface ActionButtonOption {
-  icon?: IconProps['name']
+  icon?: React.FC
   label: string
   onClick?: VoidFunction
 }
@@ -69,7 +69,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = [
     {
       label: 'Random',
-      icon: 'redo',
+      icon: Icon.Redo,
       onClick: handleRandomPickEmoji
     },
     {
@@ -113,7 +113,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
             <Button type="text" key={button.label} className="dashboard-action-button" onClick={button.onClick}>
               {button.icon && (
                 <span className="brk-icon dashboard-action-button-icon">
-                  <Icon name={button.icon} />
+                  <button.icon />
                 </span>
               )}
               <div className="dashboard-action-button-label">{button.label}</div>

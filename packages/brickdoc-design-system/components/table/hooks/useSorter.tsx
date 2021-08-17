@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { DownOne as CaretDownOutlined, UpOne as CaretUpOutlined } from '../../icon'
+import { Down as CaretDownOutlined, Up as CaretUpOutlined } from '../../icon'
 import {
   TransformColumns,
   ColumnsType,

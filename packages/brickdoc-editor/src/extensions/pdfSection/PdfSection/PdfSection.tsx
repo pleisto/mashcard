@@ -144,7 +144,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
               })
             }}>
             <div className="pdf-section-menu-button">
-              <Icon className="pdf-section-menu-icon" name="more" />
+              <Icon.More className="pdf-section-menu-icon" />
             </div>
             <PdfDocument file={url} scale={Number(node.attrs.attachment.width) / MAX_WIDTH} />
           </Resizable>
@@ -157,7 +157,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
     return (
       <NodeViewWrapper>
         <Button type="text" className="brickdoc-block-pdf-section">
-          <Icon className="pdf-section-icon" name="file-pdf" />
+          <Icon.FilePdf className="pdf-section-icon" />
           <div className="pdf-section-content">
             <div className="pdf-section-name">{file.name}</div>
             <div className="pdf-section-desc">
@@ -187,7 +187,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
           />
         }>
         <Button type="text" className="brickdoc-block-pdf-section">
-          <Icon className="pdf-section-icon" name="file-pdf" />
+          <Icon.FilePdf className="pdf-section-icon" />
           <div className="pdf-section-hint">Embed a PDF</div>
         </Button>
       </Popover>

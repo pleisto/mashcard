@@ -1,3 +1,8 @@
 flag_management:
   default_rules:
     carryforward: true
+ignore:
+  - 'db'
+  - 'bin'
+  - 'packages/brickdoc-design-icons'
+  - 'frontends/BrickdocGraphQL.ts'

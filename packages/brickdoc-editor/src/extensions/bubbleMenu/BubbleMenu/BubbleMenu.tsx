@@ -21,25 +21,25 @@ export interface StyleMeta {
 const MarkStyle: StyleMeta[] = [
   {
     value: 'bold',
-    label: <Icon name="bold-words" />,
+    label: <Icon.BoldWords />,
     desc: 'Bold',
     shortcutDesc: '⌘+B'
   },
   {
     value: 'italic',
-    label: <Icon name="italics" />,
+    label: <Icon.Italics />,
     desc: 'Italic',
     shortcutDesc: '⌘+I'
   },
   {
     value: 'underline',
-    label: <Icon name="text-underline" />,
+    label: <Icon.TextUnderline />,
     desc: 'Underline',
     shortcutDesc: '⌘+U'
   },
   {
     value: 'strike',
-    label: <Icon name="strikethrough" />,
+    label: <Icon.Strikethrough />,
     desc: 'Strike-through'
   }
 ]
@@ -47,19 +47,19 @@ const MarkStyle: StyleMeta[] = [
 const HeadingStyle: StyleMeta[] = [
   {
     value: 'heading',
-    label: <Icon name="rte-h1" />,
+    label: <Icon.RteH1 />,
     option: { level: 1 },
     desc: 'Heading 1'
   },
   {
     value: 'heading',
-    label: <Icon name="rte-h2" />,
+    label: <Icon.RteH2 />,
     option: { level: 2 },
     desc: 'Heading 2'
   },
   {
     value: 'heading',
-    label: <Icon name="rte-h3" />,
+    label: <Icon.RteH3 />,
     option: { level: 3 },
     desc: 'Heading 3'
   }
@@ -68,12 +68,12 @@ const HeadingStyle: StyleMeta[] = [
 const ListStyle: StyleMeta[] = [
   {
     value: 'bulletList',
-    label: <Icon name="list-unordered" />,
+    label: <Icon.ListUnordered />,
     desc: 'Bullet-list'
   },
   {
     value: 'orderedList',
-    label: <Icon name="list-ordered" />,
+    label: <Icon.ListOrdered />,
     desc: 'Ordered-list'
   }
 ]

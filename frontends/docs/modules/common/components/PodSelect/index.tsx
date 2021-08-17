@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
 import { Dropdown, Avatar, Skeleton, Menu, MenuProps } from '@brickdoc/design-system'
-import { SortTwo } from '@brickdoc/design-system/components/icon'
+import { Sort } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
 import { ProfileModal } from '../ProfileModal'
@@ -79,7 +79,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
           {avatar}
           <div className={styles.name}>
             <span>{pod.name}</span>
-            <SortTwo />
+            <Sort />
           </div>
         </div>
       </Dropdown>

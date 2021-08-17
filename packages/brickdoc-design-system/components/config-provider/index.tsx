@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { i18n } from 'i18next'
 import { I18nextProvider } from 'react-i18next'
-import { IconProvider, IIconConfig } from '../icon'
+import { IIconConfig, IconProvider } from '../icon'
 import { FormProvider as RcFormProvider } from 'rc-field-form'
 import { ValidateMessages } from 'rc-field-form/lib/interface'
 import useMemo from 'rc-util/lib/hooks/useMemo'
@@ -106,11 +106,11 @@ function getIconDefaultConfig(rtl: boolean): IIconConfig {
       },
       twoTone: {
         fill: 'currentColor',
-        twoTone: '--primary-color'
+        twoTone: '--color-primary'
       },
       multiColor: {
         outStrokeColor: '#333',
-        outFillColor: '--primary-color',
+        outFillColor: '--color-primary',
         innerStrokeColor: '#FFF',
         innerFillColor: '#43CCF8'
       }

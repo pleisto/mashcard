@@ -53,7 +53,7 @@ const FONT_COLOR: ColorMeta[] = [
 
 const FontColorStyle: StyleMeta = {
   value: 'fontColor',
-  label: <Icon name="font-size" />,
+  label: <Icon.FontSize />,
   desc: 'Font-color'
 }
 
@@ -75,7 +75,7 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
         <>
           <div className="font-menu-heading">Last Used</div>
           <Button onClick={selectColor(lastColor)} type="text" className="font-menu-item">
-            <Icon name="font-size" className="font-menu-item-icon" style={{ color: lastColor.color }} />
+            <Icon.FontSize className="font-menu-item-icon" style={{ color: lastColor.color }} />
             <span className="font-menu-item-label">{lastColor.label}</span>
           </Button>
         </>
@@ -83,7 +83,7 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
       <div className="font-menu-heading">Color</div>
       {FONT_COLOR.map(item => (
         <Button key={item.color} onClick={selectColor(item)} type="text" className="font-menu-item">
-          <Icon name="font-size" className="font-menu-item-icon" style={{ color: item.color }} />
+          <Icon.FontSize className="font-menu-item-icon" style={{ color: item.color }} />
           <span className="font-menu-item-label">{item.label}</span>
         </Button>
       ))}
@@ -102,8 +102,8 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
       placement="top">
       <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
         <Button role="menuitem" onClick={e => e.preventDefault()} type="text" className="bubble-menu-item">
-          <Icon name="font-size" className="font-menu-item-icon" style={{ color: activeColor() }} />
-          <Icon name="line-down" className="font-menu-item-arrow-icon" />
+          <Icon.FontSize className="font-menu-item-icon" style={{ color: activeColor() }} />
+          <Icon.LineDown className="font-menu-item-arrow-icon" />
         </Button>
       </Dropdown>
     </Tooltip>

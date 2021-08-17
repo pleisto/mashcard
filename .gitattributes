@@ -8,6 +8,7 @@ frontends/BrickdocGraphQL.ts linguist-generated merge=ours
 yarn.lock linguist-generated
 Gemfile.lock linguist-generated
 *.mdx linguist-language=TypeScript
+packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
 
 # Fonts
 *.ttf             binary

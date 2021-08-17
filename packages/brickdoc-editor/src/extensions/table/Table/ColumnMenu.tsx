@@ -43,7 +43,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({ onRemoveColumn, onColumn
               />
             </Menu.Item>
             <Menu.Item onClick={removeColumnConfirm} className="table-block-column-menu-item" key="Delete">
-              <Icon className="table-block-column-menu-item-icon" name="delete" />
+              <Icon.Delete className="table-block-column-menu-item-icon" />
               Delete
             </Menu.Item>
           </Menu>

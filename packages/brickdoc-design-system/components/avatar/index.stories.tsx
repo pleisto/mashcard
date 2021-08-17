@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story } from '@storybook/react'
 import { Avatar, AvatarProps, Space } from '../'
-import { User, Figma } from '../icon'
+import { User, Apple } from '../icon'
 
 export default {
   title: 'ReactComponents/Avatar',
@@ -125,7 +125,7 @@ export const AvatarGroup: Story = _args => (
     <Avatar src="https://avatars.githubusercontent.com/u/41993484?s=120&v=4" />
     <Avatar style={{ backgroundColor: '#87d068' }} icon={<User />} />
     <Avatar style={{ backgroundColor: '#f56a00' }}>B</Avatar>
-    <Avatar style={{ backgroundColor: '#1890ff' }} icon={<Figma />} />
+    <Avatar style={{ backgroundColor: '#1890ff' }} icon={<Apple />} />
   </Avatar.Group>
 )
 

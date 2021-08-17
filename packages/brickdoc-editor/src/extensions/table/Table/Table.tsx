@@ -121,7 +121,7 @@ export const Table: React.FC<NodeViewProps> = () => {
                 <div className={cx('table-block-row', { active: isRowActive(rowIndex) })} key={rowProps.key}>
                   <div data-testid="table-actions" className="table-block-row-actions">
                     <Button onClick={() => addNewRow(rowIndex)} className="table-block-row-action-button" type="text">
-                      <Icon name="plus" />
+                      <Icon.Plus />
                     </Button>
                   </div>
                   <div {...rowProps} style={{ ...rowProps.style, display: 'inline-flex' }}>

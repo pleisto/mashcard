@@ -1,7 +1,21 @@
 {
-  "name": "brickdoc-design-icons",
+  "name": "@brickdoc/design-icons",
   "author": "Brickdoc LTD",
   "homepage": "https://brickdoc.org",
   "license": "Apache-2.0",
-  "packageManager": "yarn@3.0.0"
+  "packageManager": "yarn@3.0.0",
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "scripts": {
+    "eslint:fix": "eslint --fix --cache ./src",
+    "generator": "bin/icons-react-component-generator"
+  },
+  "peerDependencies": {
+    "react": ">= 17.0",
+    "react-dom": ">= 17.0"
+  },
+  "devDependencies": {
+    "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
+    "eslint": "^7.32.0"
+  }
 }

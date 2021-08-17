@@ -156,7 +156,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
               })
             }}>
             <div className="image-section-menu-button">
-              <Icon className="image-section-menu-icon" name="more" />
+              <Icon.More className="image-section-menu-icon" />
             </div>
             <ImagePreview
               wrapStyle={{ pointerEvents: 'none', width: '100%' }}
@@ -191,7 +191,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
           />
         }>
         <Button type="text" className="brickdoc-block-image-section">
-          <Icon className="image-section-icon" name="image" />
+          <Icon.Image className="image-section-icon" />
           <div className="image-section-hint">Add an image</div>
         </Button>
       </Popover>

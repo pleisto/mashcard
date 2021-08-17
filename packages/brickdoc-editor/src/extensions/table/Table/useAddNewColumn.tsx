@@ -8,7 +8,7 @@ export function useAddNewColumn(addNewColumn: VoidFunction): Column {
   const AddNewColumnButton = React.useCallback(
     () => (
       <Button type="text" className="table-block-add-column-button" onClick={addNewColumn}>
-        <Icon name="plus" />
+        <Icon.Plus />
       </Button>
     ),
     [addNewColumn]

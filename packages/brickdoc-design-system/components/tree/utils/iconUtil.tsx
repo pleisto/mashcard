@@ -5,7 +5,7 @@ import {
   Reduce as MinusSquareOutlined,
   Add as PlusSquareOutlined,
   Notes as FileOutlined,
-  DownOne as CaretDownFilled
+  Down as CaretDownFilled
 } from '../../icon'
 import { AntTreeNodeProps } from '../Tree'
 import { isValidElement, cloneElement } from '../../_util/reactNode'
@@ -14,7 +14,7 @@ export default function renderSwitcherIcon(
   prefixCls: string,
   switcherIcon: React.ReactNode | null | undefined,
   showLine: boolean | { showLeafIcon: boolean } | undefined,
-  { isLeaf, expanded, loading }: AntTreeNodeProps,
+  { isLeaf, expanded, loading }: AntTreeNodeProps
 ) {
   if (loading) {
     return <LoadingOutlined className={`${prefixCls}-switcher-loading-icon`} />
@@ -35,7 +35,7 @@ export default function renderSwitcherIcon(
   const switcherCls = `${prefixCls}-switcher-icon`
   if (isValidElement(switcherIcon)) {
     return cloneElement(switcherIcon, {
-      className: classNames(switcherIcon.props.className || '', switcherCls),
+      className: classNames(switcherIcon.props.className || '', switcherCls)
     })
   }
 

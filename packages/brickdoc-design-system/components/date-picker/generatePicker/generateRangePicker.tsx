@@ -4,7 +4,7 @@ import {
   Calendar as CalendarOutlined,
   CloseOne as CloseCircleFilled,
   Time as ClockCircleOutlined,
-  RightSmall as SwapRightOutlined
+  Right as SwapRightOutlined
 } from '../../icon'
 import { RangePicker as RCRangePicker } from 'rc-picker'
 import { GenerateConfig } from 'rc-picker/lib/generate'

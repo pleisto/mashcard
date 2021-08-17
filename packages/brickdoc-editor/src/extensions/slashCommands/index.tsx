@@ -14,7 +14,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     title: 'Heading 1',
     alias: ['h1'],
     desc: 'Big section heading',
-    icon: <Icon name="rte-h1" className="menu-item-icon" />,
+    icon: <Icon.RteH1 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 1 }).run()
     }
@@ -23,7 +23,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     title: 'Heading 2',
     alias: ['h2'],
     desc: 'Medium section heading',
-    icon: <Icon name="rte-h2" className="menu-item-icon" />,
+    icon: <Icon.RteH2 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
     }
@@ -32,7 +32,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     title: 'Heading 3',
     alias: ['h3'],
     desc: 'Small section heading',
-    icon: <Icon name="rte-h3" className="menu-item-icon" />,
+    icon: <Icon.RteH3 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 3 }).run()
     }
@@ -41,7 +41,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     title: 'Bulleted List',
     alias: ['bulletlist'],
     desc: 'Create a bulleted list',
-    icon: <Icon name="list-unordered" className="menu-item-icon" />,
+    icon: <Icon.ListUnordered className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleBulletList().run()
     }
@@ -50,7 +50,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     title: 'Numbered List',
     alias: ['numberlist'],
     desc: 'Create a list with numbering',
-    icon: <Icon name="list-ordered" className="menu-item-icon" />,
+    icon: <Icon.ListOrdered className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleOrderedList().run()
     }
@@ -58,7 +58,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   {
     title: 'PDF',
     desc: 'Embed a PDF',
-    icon: <Icon name="file-pdf" className="menu-item-icon" />,
+    icon: <Icon.FilePdf className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setPdfSection().run()
     }
@@ -67,7 +67,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     title: 'Image',
     alias: ['img', 'picture'],
     desc: 'Upload or embed with a link',
-    icon: <Icon name="file-image" className="menu-item-icon" />,
+    icon: <Icon.FileImage className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setImageSection().run()
     }
@@ -75,7 +75,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   {
     title: 'Table',
     desc: 'Creat a table in this page',
-    icon: <Icon name="table" className="menu-item-icon" />,
+    icon: <Icon.Table className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setTableBlock().run()
     }

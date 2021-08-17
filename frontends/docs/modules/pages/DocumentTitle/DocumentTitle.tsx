@@ -71,7 +71,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
           {!documentIconMeta && (
             <Popover {...iconPopoverProps}>
               <Button type="text" className={styles.item}>
-                <Icon name="face" className={styles.icon} />
+                <Icon.Face className={styles.icon} />
                 <span className={styles.name}>Add icon</span>
               </Button>
             </Popover>
@@ -79,7 +79,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
           {!documentCoverMeta && (
             <Popover {...coverPopoverProps}>
               <Button type="text" className={styles.item}>
-                <Icon name="image" className={styles.icon} />
+                <Icon.Image className={styles.icon} />
                 <span className={styles.name}>Add cover</span>
               </Button>
             </Popover>

@@ -9,3 +9,5 @@
 '*.(css|less)':
   - stylelint --cache --fix
   - prettier --write
+'packages/brickdoc-design-icons/assets/**/*.svg':
+  - yarn workspace @brickdoc/design-icons generator
