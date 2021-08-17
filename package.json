@@ -50,7 +50,7 @@
     "not dead"
   ],
   "dependencies": {
-    "@apollo/client": "^3.4.7",
+    "@apollo/client": "^3.4.8",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
     "@rails/actioncable": "^6.1.4",
@@ -100,8 +100,8 @@
     "@types/react-router-config": "^5.0.3",
     "@types/react-router-dom": "^5.1.8",
     "@types/uuid": "^8.3.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.1",
-    "@typescript-eslint/parser": "^4.29.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
     "@webpack-cli/serve": "^1.5.2",
     "autoprefixer": "^10.3.1",
     "babel-jest": "^27.0.6",
@@ -111,7 +111,7 @@
     "css-loader": "^6.2.0",
     "css-minimizer-webpack-plugin": "^3.0.2",
     "cssnano": "^5.0.7",
-    "cypress": "^8.2.0",
+    "cypress": "^8.3.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-multi-reporters": "^1.5.0",
     "cypress-real-events": "^1.5.1",
@@ -164,6 +164,7 @@
     "@tiptap/extension-paragraph": "2.0.0-beta.16",
     "@tiptap/extension-placeholder": "2.0.0-beta.26",
     "@tiptap/suggestion": "2.0.0-beta.61",
-    "prosemirror-model": "patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b"
+    "prosemirror-model": "patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b",
+    "rc-select": "13.0.0-alpha.1"
   }
 }
