@@ -19,7 +19,7 @@ export const DocumentPage: React.FC = () => {
 
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
-    variables: { parentId: docid, excludePages: false, snapshotVersion: Number(restParams.snapshotVersion || '0') }
+    variables: { rootId: docid, excludePages: false, snapshotVersion: Number(restParams.snapshotVersion || '0') }
   })
 
   const prepareFileUpload = usePrepareFileUpload()
@@ -79,6 +79,8 @@ export const DocumentPage: React.FC = () => {
     if (editor && !editor.isDestroyed && data?.childrenBlocks) {
       const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
       childrenBlocks.current = data.childrenBlocks
+
+      console.log({ data, content })
 
       if (content.length) {
         editor.commands.replaceRoot(content[0])

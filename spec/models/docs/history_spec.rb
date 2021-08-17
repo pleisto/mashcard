@@ -20,7 +20,6 @@ RSpec.describe Docs::History, type: :model do
       expect(block.realtime_history_version_value).to eq(old_version + 1)
       expect(history.history_version).to eq(old_version + 1)
       expect(history.meta).to eq(block.meta)
-      expect(history.path).to eq([block.id])
       expect(block.histories.count).to eq(old_hist_count + 1)
     end
 
@@ -28,7 +27,6 @@ RSpec.describe Docs::History, type: :model do
       parent = child.parent
       parent_history = parent.histories.last
 
-      expect(parent_history.children.count).to eq(2)
       expect(parent_history.history_version).to eq(1)
       expect(child.history_version).to eq(1)
       expect(child.realtime_history_version_value).to eq(1)

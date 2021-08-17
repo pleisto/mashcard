@@ -35,9 +35,9 @@ def create_block(pod, id, parent_id, pods)
     collaborators: random_collaborators(pod, pods),
     meta: { title: FFaker::Lorem.phrase },
     data: { text: FFaker::Lorem.phrase, content: [] },
-    parent_id: parent_id
+    parent_id: parent_id,
+    root_id: parent_id
   }
-  params[:parent_type] = "paragraph" if params[:parent_id]
   Docs::Block.create!(params)
 end
 

@@ -40,10 +40,12 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
         nextSort: i.nextSort,
         firstChildSort: i.firstChildSort,
         titleText: title,
-        title: <PageMenu id={i.id} text={data.text} parentId={i.parentId ?? null} title={title} webid={webid} />
+        title: <PageMenu id={i.id} text={data.text} title={title} webid={webid} />
       }
     })
     .sort((a, b) => Number(a.sort) - Number(b.sort))
+
+  console.log({ flattedData, data })
 
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
     let targetParentId: string | undefined | null, sort: number

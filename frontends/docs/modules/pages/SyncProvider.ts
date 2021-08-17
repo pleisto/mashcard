@@ -35,7 +35,7 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
     level === 0 ||
     (node.type.name === 'paragraph' && nodeChildren(node) && nodeChildren(node).length && nodeChildren(node)[0].type.name === 'paragraph')
 
-  const text = rest.title ?? node.textContent
+  const text = rest.title || 'Untitled'
 
   const content: JSONContent[] = hasChildren ? [] : withoutUUID((node.toJSON() as JSONContent).content)
 
@@ -86,9 +86,9 @@ export const blockToNode = (block: Block): JSONContent => {
   return result
 }
 
-export const blocksToJSONContents = (blocks: Block[], id?: string): JSONContent[] =>
+export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONContent[] =>
   blocks
-    .filter(block => block.parentId === id || (isNil(block.parentId) && isNil(id)))
+    .filter(block => block.parentId === filterId || ((isNil(block.parentId) || block.rootId === block.id) && isNil(filterId)))
     .sort((a, b) => Number(a.sort) - Number(b.sort))
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 

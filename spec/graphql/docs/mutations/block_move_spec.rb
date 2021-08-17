@@ -15,16 +15,16 @@ describe Docs::Mutations::BlockMove, type: :mutation do
     let(:user) { create(:accounts_user) }
     let(:block1) do
       root = create(:docs_block, pod: user.personal_pod)
-      create(:docs_block, pod: user.personal_pod, sort: 100, parent: root)
-      create(:docs_block, pod: user.personal_pod, sort: 200, parent: root)
-      create(:docs_block, pod: user.personal_pod, sort: 300, parent: root)
+      create(:docs_block, pod: user.personal_pod, sort: 100, parent: root, root_id: root.id)
+      create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
+      create(:docs_block, pod: user.personal_pod, sort: 300, parent: root, root_id: root.id)
       root
     end
     let(:block2) do
       root = create(:docs_block, pod: user.personal_pod)
-      create(:docs_block, pod: user.personal_pod, sort: 100, parent: root)
-      create(:docs_block, pod: user.personal_pod, sort: 200, parent: root)
-      create(:docs_block, pod: user.personal_pod, sort: 300, parent: root)
+      create(:docs_block, pod: user.personal_pod, sort: 100, parent: root, root_id: root.id)
+      create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
+      create(:docs_block, pod: user.personal_pod, sort: 300, parent: root, root_id: root.id)
       root
     end
 

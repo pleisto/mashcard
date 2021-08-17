@@ -9,7 +9,7 @@ RSpec.describe Docs::Block, type: :model do
     let(:attrs) do
       {
         meta: { title: FFaker::Lorem.phrase },
-        data: { paragraphs: FFaker::DizzleIpsum.paragraphs	}
+        data: { text: "", content: []	}
       }
     end
 
@@ -19,11 +19,11 @@ RSpec.describe Docs::Block, type: :model do
       expect(parent.ancestors.count).to eq(1)
       expect(child.ancestors.count).to eq(2)
       expect(parent.descendants.count).to eq(2)
-      expect(child.descendants.count).to eq(1)
+      expect(child.descendants.count).to eq(0)
+      expect(child.descendants_raw.count).to eq(1)
+      expect(child.root_id).to eq(child.parent_id)
+      expect(parent.root_id).to eq(parent.id)
 
-      expect(parent.path_cache).to eq([parent.id])
-      expect(child.path_cache).to eq([child.id, parent.id])
-      expect(child.children_version_meta).to eq({ child.id => child.history_version })
       expect(parent.children_version_meta).to eq({ child.id => child.history_version, parent.id => parent.history_version })
     end
 
@@ -69,8 +69,8 @@ RSpec.describe Docs::Block, type: :model do
 
     it 'root to root' do
       old_version = block.history_version
-      block.move!(nil, 123)
-      expect(block.sort).to eq(123)
+      block.move!(nil, 168)
+      expect(block.sort).to eq(168)
       expect(block.parent_id).to eq(nil)
       expect(block.history_version).to eq(old_version + 1)
       history = block.histories.find_by!(history_version: block.history_version)
@@ -78,29 +78,29 @@ RSpec.describe Docs::Block, type: :model do
     end
 
     it 'error' do
-      expect { block.move!(block.id, 123) }.to raise_error(ArgumentError)
-      expect { child.parent.move!(child.id, 123) }.to raise_error(ArgumentError)
+      expect { block.move!(block.id, 171) }.to raise_error(ArgumentError)
+      expect { child.parent.move!(child.id, 171) }.to raise_error(ArgumentError)
     end
 
     it 'root to child' do
       expect(block.type).to eq("doc")
       old_version = block.history_version
-      block.move!(child.id, 123)
-      expect(block.sort).to eq(123)
+      block.move!(child.id, 231)
+      expect(block.sort).to eq(231)
       expect(block.parent_id).to eq(child.id)
-      expect(block.type).to eq("paragraph")
+      expect(block.type).to eq("doc")
       expect(block.history_version).to eq(old_version + 1)
       history = block.histories.find_by!(history_version: block.history_version)
       expect(history.sort).to eq(block.sort)
-      expect(history.type).to eq("paragraph")
+      expect(history.type).to eq("doc")
       expect(history.parent_id).to eq(block.parent_id)
     end
 
     it 'child to root' do
-      expect(child.type).to eq("paragraph")
+      expect(child.type).to eq("doc")
       old_version = child.history_version
-      child.move!(nil, 123)
-      expect(child.sort).to eq(123)
+      child.move!(nil, 412)
+      expect(child.sort).to eq(412)
       expect(child.parent_id).to eq(nil)
       expect(child.type).to eq("doc")
       expect(child.history_version).to eq(old_version + 1)

@@ -12,6 +12,7 @@ import {
 import { SnapshotList } from '../SnapshotList'
 import { ShareLinkModal } from '../ShareLinkModal'
 import { queryBlockSnapshots, queryPageBlocks } from '../../graphql'
+import { SubBlockModal } from '../SubBlockModal'
 
 type UUID = Scalars['UUID']
 
@@ -20,12 +21,12 @@ interface PageMenuProps {
   id: UUID
   title: Scalars['String']
   text: Scalars['String'] | null
-  parentId: UUID | null
 }
 
 export const PageMenu: React.FC<PageMenuProps> = props => {
   const [blockId, setBlockId] = useState<string | undefined>()
   const [shareLinkModalVisible, setShareLinkModalVisible] = useState<boolean>(false)
+  const [createSubBlockModalVisible, setCreateSubBlockModalVisible] = useState<boolean>(false)
 
   const [blockDelete, { loading: deleteLoading, client: deleteClient }] = useBlockDeleteMutation()
   const deletePage = async (id: UUID): Promise<void> => {
@@ -44,6 +45,12 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
     setShareLinkModalVisible(true)
     setBlockId(id)
   }
+
+  const createSubBlock = (id: UUID): void => {
+    setBlockId(id)
+    setCreateSubBlockModalVisible(true)
+  }
+
   const { t } = useDocsI18n()
 
   if (deleteLoading) {
@@ -59,6 +66,9 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
       switch (key) {
         case 'create_snapshot':
           void createSnapshot(id)
+          break
+        case 'create_sub_block':
+          void createSubBlock(id)
           break
         case 'create_share_link':
           void createShareLink(id)
@@ -78,13 +88,11 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
     }
   }
 
-  // Hide if is not page block
-  const shareLinkItem = props.parentId ? <></> : <Menu.Item key="create_share_link">{t('blocks.create_share_link')}</Menu.Item>
-
   const menu = (
     <Menu onClick={onClick(props.id)}>
       <Menu.Item key="create_snapshot">{t('blocks.create_snapshot')}</Menu.Item>
-      {shareLinkItem}
+      <Menu.Item key="create_sub_block">{t('blocks.create_sub_block')}</Menu.Item>
+      <Menu.Item key="create_share_link">{t('blocks.create_share_link')}</Menu.Item>
       <Menu.Item danger key="delete">
         {t('blocks.delete')}
       </Menu.Item>
@@ -93,18 +101,22 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
     </Menu>
   )
 
-  const link = props.parentId ? `/${props.webid}/p/${props.parentId}#${props.id}` : `/${props.webid}/p/${props.id}`
-
   return (
     <>
       <Dropdown mouseEnterDelay={1} overlay={menu}>
-        <Link to={link}>{props.title}</Link>
+        <Link to={`/${props.webid}/p/${props.id}`}>{props.title}</Link>
       </Dropdown>
       <ShareLinkModal
         title={t('blocks.create_share_link')}
         blockId={blockId}
         visible={shareLinkModalVisible}
         setVisible={setShareLinkModalVisible}
+      />
+      <SubBlockModal
+        title={t('blocks.create_sub_block')}
+        blockId={blockId}
+        visible={createSubBlockModalVisible}
+        setVisible={setCreateSubBlockModalVisible}
       />
     </>
   )

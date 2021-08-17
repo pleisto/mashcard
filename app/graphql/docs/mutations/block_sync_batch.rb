@@ -40,6 +40,7 @@ module Docs
         block.parent_id ||= args.parent_id
         block.type ||= args.type
         block.pod_id ||= pod_id
+        block.root_id ||= root_id
 
         block.attachments = args.attachments if args.attachments
 

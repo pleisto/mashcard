@@ -18,6 +18,7 @@
 #  updated_at         :datetime         not null
 #  parent_id          :uuid
 #  pod_id             :bigint
+#  root_id            :uuid
 #
 # Indexes
 #
@@ -34,7 +35,7 @@ class Docs::Block < ApplicationRecord
 
   default_scope { where(deleted_at: nil) }
 
-  scope :pageable, -> { where(type: ['doc', 'paragraph', 'heading']) }
+  scope :pageable, -> { where(type: ['doc']) }
 
   belongs_to :pod
   belongs_to :parent, class_name: 'Docs::Block', optional: true
@@ -185,6 +186,10 @@ class Docs::Block < ApplicationRecord
     realtime_version_increment(:snapshot_version)
   end
 
+  before_create do
+    self.root_id ||= id
+  end
+
   before_save do
     self.collaborators = collaborators.uniq
     if type_changed? || meta_changed? || data_changed? || sort_changed? || parent_id_changed?
@@ -243,19 +248,29 @@ class Docs::Block < ApplicationRecord
     check_target_descendants!(target_parent_id)
 
     params = { sort: new_sort, parent_id: target_parent_id }
-    if target_parent_id.nil? && parent_id.nil?
-      ## Root
-    elsif !target_parent_id.nil? && !parent_id.nil?
-      ## Child
-    elsif target_parent_id.nil? && !parent_id.nil?
-      ## Child to parent
-      params[:type] = 'doc'
-    elsif !target_parent_id.nil? && parent_id.nil?
-      ## Root to child, check its descendant
-      params[:type] = 'paragraph'
-    end
+    # if target_parent_id.nil? && parent_id.nil?
+    #   ## Root
+    # elsif !target_parent_id.nil? && !parent_id.nil?
+    #   ## Child
+    # elsif target_parent_id.nil? && !parent_id.nil?
+    #   ## Child to parent
+    # elsif !target_parent_id.nil? && parent_id.nil?
+    #   ## Root to child, check its descendant
+    # end
 
     update!(params)
+  end
+
+  def create_sub_block!(title)
+    Docs::Block.create!(
+      id: SecureRandom.uuid,
+      parent_id: id,
+      type: 'doc',
+      meta: { title: title },
+      pod_id: pod_id,
+      collaborators: collaborators,
+      data: { content: [], text: title }
+    )
   end
 
   # recursive CTE query
@@ -318,8 +333,13 @@ class Docs::Block < ApplicationRecord
     cte(:ancestors, opts)
   end
 
-  def descendants(opts = {})
+  def descendants_raw(opts = {})
     cte(:descendants, opts)
+  end
+
+  def descendants(opts = {})
+    ## TODO save root_id
+    descendants_raw(opts).where(root_id: id)
   end
 
   def descendants_cache(opts = {})
@@ -381,19 +401,6 @@ class Docs::Block < ApplicationRecord
     parent.attributes.slice("id", "type", "sort", "meta", "data").merge("children" => children)
   end
 
-  def calculate_path
-    hash = ancestors(columns: %w[id parent_id]).pluck(:id, :parent_id).to_h
-    target = []
-    i = id
-    loop do
-      target << i
-      i = hash[i]
-      break if i.nil?
-    end
-
-    target
-  end
-
   def show_policy?(user)
     return true if collaborators.include?(user.id)
 
@@ -403,13 +410,6 @@ class Docs::Block < ApplicationRecord
     return true if enabled_share_links.any? { |l| l.target_pod_ids.blank? || l.target_pod_ids.include?(target_pod_id) }
 
     false
-  end
-
-  def path_cache
-    return [id] if parent_id.nil?
-
-    ## TODO should add `root_id` to block model?
-    calculate_path
   end
 
   def latest_history

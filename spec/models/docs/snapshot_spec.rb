@@ -7,6 +7,7 @@ RSpec.describe Docs::Snapshot, type: :model do
 
     it 'basic' do
       expect(child.parent_id).not_to be_nil
+      expect(child.root_id).to eq(child.parent_id)
       expect(child.history_version).to eq(1)
       expect(child.snapshots.count).to eq(0)
       expect(child.snapshot_version).to eq(0)
@@ -19,10 +20,10 @@ RSpec.describe Docs::Snapshot, type: :model do
       expect(child.realtime_snapshot_version_value).to eq(1)
       snapshot = child.snapshots.first
 
-      expect(snapshot.version_meta).to eq({ child.id => 1 })
+      expect(snapshot.version_meta).to eq({})
 
       expect(snapshot.snapshot_version).to eq(1)
-      expect(snapshot.blocks.count).to eq(1)
+      expect(snapshot.blocks.count).to eq(0)
       expect(snapshot.blocks.count).to eq(child.descendants.count)
     end
 

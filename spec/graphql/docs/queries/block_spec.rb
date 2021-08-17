@@ -14,9 +14,9 @@ describe Docs::Queries::Block, type: :query do
 
       block1 = create(:docs_block, pod: pod)
       block2 = create(:docs_block, pod: pod, collaborators: [user.id])
-      child1 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block2)
-      child2 = create(:docs_block, pod: pod, sort: 200, collaborators: [user.id], parent: block2)
-      child3 = create(:docs_block, pod: pod, sort: 300, collaborators: [user.id], parent: block2)
+      child1 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block2, root_id: block2.id)
+      child2 = create(:docs_block, pod: pod, sort: 200, collaborators: [user.id], parent: block2, root_id: block2.id)
+      child3 = create(:docs_block, pod: pod, sort: 300, collaborators: [user.id], parent: block2, root_id: block2.id)
 
       # block
       query = <<-'GRAPHQL'
@@ -47,6 +47,7 @@ describe Docs::Queries::Block, type: :query do
           pageBlocks(webid: $webid) {
             id
             sort
+            rootId
             parentId
             nextSort
             firstChildSort
@@ -90,6 +91,7 @@ describe Docs::Queries::Block, type: :query do
       expect(response.data['pageBlocks'].length).to eq 4
       root = response.data['pageBlocks'].find { |b| b.fetch('parentId').nil? }
       expect(root['id']).to eq block2.id
+      expect(root['rootId']).to eq block2.id
       expect(root['nextSort'].class).to eq String
       expect(root['nextSort'].to_i).to_not eq 0
       expect(root['firstChildSort'].to_i).to eq child1.reload.sort
@@ -105,18 +107,18 @@ describe Docs::Queries::Block, type: :query do
       expect(child2.reload.sort).to eq(Docs::Block::SORT_GAP)
 
       # childrenBlocks
-      block3 = create(:docs_block, parent: block2)
-      block4 = create(:docs_block, parent: block2, collaborators: [user.id])
+      block3 = create(:docs_block, parent: block2, root_id: block2.id)
+      block4 = create(:docs_block, parent: block2, collaborators: [user.id], root_id: block2.id)
 
       query = <<-'GRAPHQL'
-        query GetChildrenBlocks($parent_id: String!, $snapshot_version: Int!) {
-          childrenBlocks(parentId: $parent_id, snapshotVersion: $snapshot_version) {
+        query GetChildrenBlocks($root_id: String!, $snapshot_version: Int!) {
+          childrenBlocks(rootId: $root_id, snapshotVersion: $snapshot_version) {
             id
           }
         }
       GRAPHQL
 
-      internal_graphql_execute(query, { parent_id: block2.id, snapshot_version: 0 })
+      internal_graphql_execute(query, { root_id: block2.id, snapshot_version: 0 })
 
       expect(response.success?).to be true
       expect(response.data['childrenBlocks'].length).to eq 6

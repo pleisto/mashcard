@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Docs::Mutations::BlockSyncBatch, type: :mutation, focus: true do
+describe Docs::Mutations::BlockSyncBatch, type: :mutation do
   describe '#resolve' do
     mutation = <<-'GRAPHQL'
       mutation blockSyncBatch($input: BlockSyncBatchInput!) {
@@ -28,14 +28,14 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation, focus: true do
         data: {
           text: "", content: []
         },
-        sort: 123
+        sort: 147
       }] } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
       expect(response.data).to eq({ "blockSyncBatch" => nil })
       root = Docs::Block.find(root_id)
       expect(root.type).to eq("doc")
-      expect(root.sort).to eq(123)
+      expect(root.sort).to eq(147)
       expect(root.descendants.count).to eq(1)
 
       self.current_user = nil
@@ -50,7 +50,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation, focus: true do
 
       blocks = [{
         id: SecureRandom.uuid,
-        type: "paragraph",
+        type: "doc",
         parentId: root_id,
         meta: {},
         data: {
@@ -64,7 +64,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation, focus: true do
         data: {
           text: "", content: []
         },
-        sort: 123
+        sort: 159
       }]
 
       input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
@@ -73,7 +73,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation, focus: true do
       expect(response.data).to eq({ "blockSyncBatch" => nil })
       root = Docs::Block.find(root_id)
       expect(root.descendants.count).to eq(2)
-      expect(root.sort).to eq(123)
+      expect(root.sort).to eq(159)
 
       blocks = blocks.map { |b| b.merge(sort: 333) }
       input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }

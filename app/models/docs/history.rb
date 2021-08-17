@@ -9,7 +9,6 @@
 #  history_version :bigint           not null
 #  meta            :jsonb            not null
 #  parent_type     :string
-#  path            :uuid             is an Array
 #  sort            :bigint           not null
 #  type            :string(32)
 #  created_at      :datetime         not null
@@ -21,7 +20,6 @@
 # Indexes
 #
 #  index_docs_histories_on_block_id_and_history_version  (block_id,history_version) UNIQUE
-#  index_docs_histories_on_path                          (path) USING gin
 #  index_docs_histories_on_pod_id                        (pod_id)
 #
 class Docs::History < ApplicationRecord
@@ -35,17 +33,13 @@ class Docs::History < ApplicationRecord
     self.data = block.data
     self.meta = block.meta
     self.sort = block.sort
-    self.path = block.path_cache
     self.type = block.type
     self.parent_type = block.parent_type
     self.parent_id = block.parent_id
   end
 
-  def children
-    Docs::History.where("? = ANY(path)", block_id)
-  end
-
   def self.from_version_meta(version_meta)
+    return [] if version_meta.blank?
     # parameters = version_meta.map { |k, v| "(#{k},#{v})" }.join(',')
     # Docs::History.where("(block_id, history_version) IN (?)", parameters)
     parameters = version_meta.size.times.collect { '(?,?)' }.join(',')

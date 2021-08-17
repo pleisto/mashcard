@@ -625,7 +625,12 @@ en-US:
       create_pages: Add Pages
       delete: Delete
       create_snapshot: Create Snapshot
+      create_sub_block: Create Sub Block
       create_share_link: Create Share Link
+    sub_blocks:
+      title: Title
+      create:
+        success: Create sub block successfully
     share_links:
       share_type: Share Type
       expired_at: Expired at

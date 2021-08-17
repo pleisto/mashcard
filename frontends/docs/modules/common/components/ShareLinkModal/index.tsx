@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Modal, Form, Input, message, FormInstance, Select } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { BlockCreateShareLinkInput, Policytype, ShareLink, Sharetype, useBlockCreateShareLinkMutation } from '@/BrickdocGraphQL'
@@ -15,12 +15,12 @@ export const ShareLinkModal: React.FC<ShareLinkModalProps> = ({ visible, title, 
   const [confirmLoading, setConfirmLoading] = useState<boolean>(false)
   const [form] = Form.useForm()
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation()
-  const formRef = React.createRef<FormInstance>()
+  const formRef = useRef<FormInstance>(null)
 
   const handleCancel = (): void => {
     setVisible(false)
     setConfirmLoading(false)
-    formRef.current!.resetFields()
+    formRef.current?.resetFields()
   }
 
   const handleOk = (): void => {

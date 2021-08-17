@@ -47,6 +47,7 @@ export const queryPageBlocks = gql`
       sort
       nextSort
       firstChildSort
+      rootId
       parentId
       type
       data {
@@ -105,6 +106,14 @@ export const queryBlockHistories = gql`
 export const BlockDelete = gql`
   mutation blockDelete($input: BlockDeleteInput!) {
     blockDelete(input: $input) {
+      errors
+    }
+  }
+`
+
+export const BlockCreateSubBlock = gql`
+  mutation blockCreateSubBlock($input: BlockCreateSubBlockInput!) {
+    blockCreateSubBlock(input: $input) {
       errors
     }
   }
