@@ -13,13 +13,13 @@ import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 
 export const DocumentPage: React.FC = () => {
-  const { webid, docid, ...restParams } = useParams<{ webid: string; docid: string; snapshotVersion: string }>()
-  const [blockSyncBatch, { client }] = useBlockSyncBatchMutation()
-  const { onCommit } = syncProvider({ client, blockSyncBatch })
+  const { docid, snapshotVersion } = useParams<{ docid: string; snapshotVersion: string }>()
+  const [blockSyncBatch] = useBlockSyncBatchMutation()
+  const { onCommit } = syncProvider({ blockSyncBatch })
 
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
-    variables: { rootId: docid, excludePages: false, snapshotVersion: Number(restParams.snapshotVersion || '0') }
+    variables: { rootId: docid, excludePages: false, snapshotVersion: Number(snapshotVersion || '0') }
   })
 
   const prepareFileUpload = usePrepareFileUpload()
@@ -53,7 +53,7 @@ export const DocumentPage: React.FC = () => {
   }
 
   const editor = useEditor({
-    onCommit,
+    onSave: onCommit,
     prepareFileUpload,
     fetchUnsplashImages,
     getImageUrl,

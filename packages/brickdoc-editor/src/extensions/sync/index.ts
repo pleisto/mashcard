@@ -13,15 +13,20 @@ declare module '@tiptap/core' {
 }
 
 export interface SyncExtensionOptions {
-  onCommit: (doc: Node) => void
+  onSave: (doc: Node) => void
 }
 
 const PLUGIN_NAME = 'sync'
 const PLUGIN_KEY = new PluginKey(PLUGIN_NAME)
 
-const THROTTLE_DURATION = 3000
+const THROTTLE_DURATION = 500
 
 const now = (): number => new Date().getTime()
+
+interface SyncPluginState {
+  lastImmediateSaveTime?: number
+  nextSaveTimer?: ReturnType<typeof setTimeout>
+}
 
 // https://github.com/ueberdosis/tiptap/blob/main/packages/core/src/Extension.ts#L33
 // https://github.com/naept/tiptap-extension-collaboration/blob/master/src/Collaboration.js#L10-L11
@@ -44,7 +49,7 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
         ({ chain, can, dispatch }) => {
           const chainedCommands = dispatch ? chain() : can().chain()
           return chainedCommands
-            .setContent(content)
+            .setContent(content, false)
             .setDocAttrs(content.attrs ?? {})
             .run()
         }
@@ -52,39 +57,61 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
   },
 
   addProseMirrorPlugins() {
-    const { onCommit } = this.options
+    const {
+      options: { onSave },
+      editor
+    } = this
 
     return [
-      new Plugin({
+      new Plugin<SyncPluginState>({
         key: PLUGIN_KEY,
         state: {
           init: (config, state) => ({
-            version: 0,
-            patchSeq: 0,
-            doc: state.doc,
-            syncTime: null,
-            editTime: null,
-            timer: null
+            lastImmediateSaveTime: undefined,
+            nextSaveTimer: undefined
           }),
-          apply(tr, state, oldState, newState) {
-            if (!tr.docChanged) {
-              return state
+          apply(tr, pluginState, oldState, newState) {
+            // Clean up plugin states when `nextSaveTimer` triggered
+            if (tr.getMeta('nextSaveTimerTriggered')) {
+              console.log('nextSaveTimerTriggered cleanup')
+              return { ...pluginState, nextSaveTimer: undefined }
             }
-            const newPluginState = { ...state, editTime: now() }
-            const doCommit = (): void => {
-              onCommit(newState.doc)
+
+            // Do nothing if the doc is not changed
+            if (!tr.docChanged || tr.getMeta('preventUpdate')) {
+              return pluginState
             }
-            if (state.syncTime && now() - state.syncTime < THROTTLE_DURATION) {
-              if (state.timer) {
-                clearTimeout(state.timer)
+
+            // When loading a new doc
+            if (newState.doc.attrs.uuid !== oldState.doc.attrs.uuid) {
+              // Clear pending sync timers if we are loading a new doc and save the old doc
+              if (pluginState.nextSaveTimer) {
+                console.log('cleanup pending save timer')
+                clearTimeout(pluginState.nextSaveTimer)
+                onSave(oldState.doc)
+              }
+              return { ...pluginState, lastImmediateSaveTime: undefined, nextSaveTimer: undefined }
+            }
+
+            // Delay triggering save if we are too close to the last immediate save
+            if (pluginState.lastImmediateSaveTime && now() - pluginState.lastImmediateSaveTime < THROTTLE_DURATION) {
+              if (pluginState.nextSaveTimer) {
+                clearTimeout(pluginState.nextSaveTimer)
               }
 
-              const timer = setTimeout(doCommit, THROTTLE_DURATION)
-              return { ...newPluginState, timer }
+              const timer = setTimeout(() => {
+                onSave(newState.doc)
+                editor.view.dispatch(newState.tr.setMeta('nextSaveTimerTriggered', true))
+              }, THROTTLE_DURATION)
+              return { ...pluginState, nextSaveTimer: timer }
             }
 
-            doCommit()
-            return { ...newPluginState, doc: newState.doc, version: (state.version as number) + 1, syncTime: now() }
+            // Otherwise, immediately trigger `onSave`
+            onSave(newState.doc)
+            if (pluginState.nextSaveTimer) {
+              clearTimeout(pluginState.nextSaveTimer)
+            }
+            return { ...pluginState, lastImmediateSaveTime: now(), nextSaveTimer: undefined }
           }
         }
       })

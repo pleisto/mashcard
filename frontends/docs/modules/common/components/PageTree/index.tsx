@@ -10,10 +10,10 @@ interface PageTreeProps {
 }
 
 export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
-  const { data, loading, refetch } = useGetPageBlocksQuery({ variables: { webid } })
-  const [blockMove, { loading: moveLoading }] = useBlockMoveMutation()
+  const { data, refetch } = useGetPageBlocksQuery({ variables: { webid } })
+  const [blockMove] = useBlockMoveMutation()
 
-  if (loading || moveLoading || !data?.pageBlocks) {
+  if (!data?.pageBlocks) {
     return <Skeleton />
   }
 

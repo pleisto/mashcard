@@ -37,12 +37,11 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
         tr.insert(endPos - 1, editor.schema.nodeFromJSON(newNode))
         break
       case Patchtype.Update:
-        if (patch.path.length <= 1) {
-          console.warn('Root node cannot be updated')
-        } else {
+        {
           let newContent: Fragment | undefined = targetNode.content
           if (newNode.content === null) {
             // Clear content
+            // FIXME: the server doesn't give clear differences between `clear` content and `don't change` content
             newContent = undefined
           } else if (newNode.content) {
             // Update content
@@ -53,22 +52,31 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
           const oldSort = targetNode.attrs?.sort
           if (newNode.text) updatedNode.text = newNode.text
           Object.assign(updatedNode.attrs, newNode.attrs)
-          tr.replaceWith(startPos, endPos, updatedNode)
 
-          if (newNode.attrs?.sort !== undefined && newNode.attrs.sort !== oldSort) {
-            let resolvedPos = tr.doc.resolve(startPos)
-            tr.delete(startPos, startPos + updatedNode.nodeSize)
+          if (patch.path.length <= 1) {
+            // For root node
+            tr.replaceWith(startPos + 1, endPos - 1, updatedNode)
+            chainedCommands.setDocAttrs(newNode.attrs ?? {})
+          } else {
+            // For normal node
+            tr.replaceWith(startPos, endPos, updatedNode)
 
-            resolvedPos = tr.doc.resolve(startPos)
-            let insertPos = resolvedPos.start()
-            for (let i = 0; i < resolvedPos.parent.childCount; i += 1) {
-              const child = resolvedPos.parent.child(i)
-              if (newNode.attrs.sort <= child.attrs.sort) {
-                break
+            // Move the node to the correct position if its `sort` changed
+            if (newNode.attrs?.sort !== undefined && newNode.attrs.sort !== oldSort) {
+              let resolvedPos = tr.doc.resolve(startPos)
+              tr.delete(startPos, startPos + updatedNode.nodeSize)
+
+              resolvedPos = tr.doc.resolve(startPos)
+              let insertPos = resolvedPos.start()
+              for (let i = 0; i < resolvedPos.parent.childCount; i += 1) {
+                const child = resolvedPos.parent.child(i)
+                if (newNode.attrs.sort <= child.attrs.sort) {
+                  break
+                }
+                insertPos += child.nodeSize
               }
-              insertPos += child.nodeSize
+              tr.insert(insertPos, updatedNode)
             }
-            tr.insert(insertPos, updatedNode)
           }
         }
         break
@@ -94,11 +102,6 @@ export function useDocumentSubscription({ docid, editor }: { docid: string; edit
 
       const { newPatch } = data
 
-      if (newPatch.seq === editor.state.doc.attrs?.seq) {
-        console.warn(`Duplicated seq ${newPatch.seq}, ignore...`)
-        return
-      }
-
       if (newPatch.state === Patchstate.Deleted) {
         console.log('Delete page ...')
         return
@@ -106,19 +109,17 @@ export function useDocumentSubscription({ docid, editor }: { docid: string; edit
 
       const patches = newPatch.patches.filter(p => p.operatorId !== globalThis.brickdocContext.uuid)
 
-      if (patches.length === 0) {
-        console.log('No available patches, ignore ...')
-        return
-      }
-
-      // TODO Check seq is increment atomically...
+      if (patches.length === 0) return
 
       const chainedCommands = editor.chain()
       patches.forEach(patch => {
         applyPatch(patch, editor, chainedCommands)
       })
-      chainedCommands.setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq }).run()
-      console.log({ label: 'After Apply', uuid: globalThis.brickdocContext.uuid, patches, newPatch })
+      chainedCommands
+        .setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq })
+        .setMeta('preventUpdate', true)
+        .run()
+      console.log('Patch applied', { uuid: globalThis.brickdocContext.uuid, patches, newPatch })
     },
     variables: { docId: docid }
   })

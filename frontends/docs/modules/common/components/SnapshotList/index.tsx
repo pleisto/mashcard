@@ -14,10 +14,7 @@ const { SubMenu } = Menu
 export const SnapshotList: React.FC<SnapshotListProps> = props => {
   const { t } = useDocsI18n()
 
-  const { data, loading } = useGetBlockSnapshotsQuery({ variables: { id: props.id } })
-  if (loading) {
-    return <Menu.Divider />
-  }
+  const { data } = useGetBlockSnapshotsQuery({ variables: { id: props.id } })
 
   if (!data?.blockSnapshots || data.blockSnapshots.length === 0) {
     return <SubMenu title={t('snapshots.name')} disabled />
@@ -25,7 +22,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = props => {
 
   const subMenus = data.blockSnapshots.map((snapshot: BlockSnapshot) => (
     <Menu.Item key={`snapshot-${snapshot.snapshotVersion}`}>
-      <Link to={`/${props.webid}/${props.id}/s/${snapshot.snapshotVersion}`}> {snapshot.name} </Link>
+      <Link to={`/${props.webid}/p/${props.id}/s/${snapshot.snapshotVersion}`}> {snapshot.name} </Link>
     </Menu.Item>
   ))
 

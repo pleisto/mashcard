@@ -38,5 +38,13 @@ const brickdocLink = split(
 export const apolloClient = (cacheConfig?: InMemoryCacheConfig): ApolloClient<NormalizedCacheObject> =>
   new ApolloClient({
     link: brickdocLink,
-    cache: new InMemoryCache(cacheConfig)
+    cache: new InMemoryCache(cacheConfig),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'cache-and-network'
+      },
+      query: {
+        fetchPolicy: 'network-only'
+      }
+    }
   })

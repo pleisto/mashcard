@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Dropdown, Menu, MenuProps, Skeleton } from '@brickdoc/design-system'
+import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -28,17 +28,15 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   const [shareLinkModalVisible, setShareLinkModalVisible] = useState<boolean>(false)
   const [createSubBlockModalVisible, setCreateSubBlockModalVisible] = useState<boolean>(false)
 
-  const [blockDelete, { loading: deleteLoading, client: deleteClient }] = useBlockDeleteMutation()
+  const [blockDelete] = useBlockDeleteMutation({ refetchQueries: [queryPageBlocks] })
   const deletePage = async (id: UUID): Promise<void> => {
     const input: BlockDeleteInput = { id }
     await blockDelete({ variables: { input } })
-    void deleteClient.refetchQueries({ include: [queryPageBlocks] })
   }
-  const [blockCreateSnapshot, { client: snapshotClient }] = useBlockCreateSnapshotMutation()
+  const [blockCreateSnapshot] = useBlockCreateSnapshotMutation({ refetchQueries: [queryBlockSnapshots] })
   const createSnapshot = async (id: UUID): Promise<void> => {
     const input: BlockCreateSnapshotInput = { id }
     await blockCreateSnapshot({ variables: { input } })
-    void snapshotClient.refetchQueries({ include: [queryBlockSnapshots] })
   }
 
   const createShareLink = (id: UUID): void => {
@@ -52,10 +50,6 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   }
 
   const { t } = useDocsI18n()
-
-  if (deleteLoading) {
-    return <Skeleton />
-  }
 
   const rollbackSnapshot = (version: number): void => {
     console.log(`rollback snapshot ${version}`)
@@ -103,7 +97,7 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
 
   return (
     <>
-      <Dropdown mouseEnterDelay={1} overlay={menu}>
+      <Dropdown trigger={['contextMenu']} overlay={menu}>
         <Link to={`/${props.webid}/p/${props.id}`}>{props.title}</Link>
       </Dropdown>
       <ShareLinkModal

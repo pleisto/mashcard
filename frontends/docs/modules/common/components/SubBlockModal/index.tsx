@@ -15,7 +15,9 @@ export const SubBlockModal: React.FC<SubBlockModalProps> = ({ visible, title, bl
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = useState<boolean>(false)
   const [form] = Form.useForm()
-  const [blockCreateSubBlock, { client }] = useBlockCreateSubBlockMutation()
+  const [blockCreateSubBlock] = useBlockCreateSubBlockMutation({
+    refetchQueries: [queryPageBlocks]
+  })
   const formRef = useRef<FormInstance>(null)
 
   const handleCancel = (): void => {
@@ -40,7 +42,6 @@ export const SubBlockModal: React.FC<SubBlockModalProps> = ({ visible, title, bl
         if (result?.errors.length) {
           void message.error(t(result.errors[0]))
         } else {
-          void (await client.refetchQueries({ include: [queryPageBlocks] }))
           void message.success(t('sub_blocks.create.success'))
           setConfirmLoading(false)
           setVisible(false)
