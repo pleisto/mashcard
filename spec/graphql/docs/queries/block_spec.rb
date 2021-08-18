@@ -4,6 +4,72 @@ require 'rails_helper'
 
 describe Docs::Queries::Block, type: :query do
   describe '#resolver' do
+    get_block_query = <<-'GRAPHQL'
+      query GetBlock($id: String!) {
+        block(id: $id) {
+          id
+          permissions {
+            canShow {
+              value
+            }
+          }
+        }
+      }
+    GRAPHQL
+
+    page_block_query = <<-'GRAPHQL'
+      query GetPageBlocks($webid: String!) {
+        pageBlocks(webid: $webid) {
+          id
+          sort
+          rootId
+          parentId
+          nextSort
+          firstChildSort
+          type
+          data {
+            text
+            content
+          }
+          meta {
+            cover {
+              ... on BlockImage {
+                type
+                key
+                source
+              }
+              ... on BlockColor {
+                type
+                color
+              }
+            }
+            icon {
+              ... on BlockImage {
+                type
+                key
+                source
+              }
+
+              ... on BlockEmoji {
+                type
+                name
+                emoji
+              }
+            }
+          }
+        }
+      }
+    GRAPHQL
+
+    children_blocks_query = <<-'GRAPHQL'
+      query GetChildrenBlocks($root_id: String!, $snapshot_version: Int!) {
+        childrenBlocks(rootId: $root_id, snapshotVersion: $snapshot_version) {
+          id
+          rootId
+        }
+      }
+    GRAPHQL
+
     it 'check permission' do
       user = create(:accounts_user)
       self.current_user = user
@@ -18,75 +84,18 @@ describe Docs::Queries::Block, type: :query do
       child2 = create(:docs_block, pod: pod, sort: 200, collaborators: [user.id], parent: block2, root_id: block2.id)
       child3 = create(:docs_block, pod: pod, sort: 300, collaborators: [user.id], parent: block2, root_id: block2.id)
 
-      # block
-      query = <<-'GRAPHQL'
-        query GetBlock($id: String!) {
-          block(id: $id) {
-            id
-            permissions {
-              canShow {
-                value
-              }
-            }
-          }
-        }
-      GRAPHQL
-
       expect do
-        internal_graphql_execute(query, { id: block1.id })
+        internal_graphql_execute(get_block_query, { id: block1.id })
       end.to raise_error('Not Authorized')
 
-      internal_graphql_execute(query, { id: block2.id })
+      internal_graphql_execute(get_block_query, { id: block2.id })
       expect(response.success?).to be true
       expect(response.data['block']['id']).to eq block2.id
       expect(response.data['block']['permissions']['canShow']['value']).to eq true
 
       # pageBlocks
-      query = <<-'GRAPHQL'
-        query GetPageBlocks($webid: String!) {
-          pageBlocks(webid: $webid) {
-            id
-            sort
-            rootId
-            parentId
-            nextSort
-            firstChildSort
-            type
-            data {
-              text
-              content
-            }
-            meta {
-              cover {
-                ... on BlockImage {
-                  type
-                  key
-                  source
-                }
-                ... on BlockColor {
-                  type
-                  color
-                }
-              }
-              icon {
-                ... on BlockImage {
-                  type
-                  key
-                  source
-                }
 
-                ... on BlockEmoji {
-                  type
-                  name
-                  emoji
-                }
-              }
-            }
-          }
-        }
-      GRAPHQL
-
-      internal_graphql_execute(query, { webid: pod.webid })
+      internal_graphql_execute(page_block_query, { webid: pod.webid })
       expect(response.success?).to be true
       expect(response.data['pageBlocks'].length).to eq 4
       root = response.data['pageBlocks'].find { |b| b.fetch('parentId').nil? }
@@ -110,21 +119,40 @@ describe Docs::Queries::Block, type: :query do
       block3 = create(:docs_block, parent: block2, root_id: block2.id)
       block4 = create(:docs_block, parent: block2, collaborators: [user.id], root_id: block2.id)
 
-      query = <<-'GRAPHQL'
-        query GetChildrenBlocks($root_id: String!, $snapshot_version: Int!) {
-          childrenBlocks(rootId: $root_id, snapshotVersion: $snapshot_version) {
-            id
-          }
-        }
-      GRAPHQL
-
-      internal_graphql_execute(query, { root_id: block2.id, snapshot_version: 0 })
+      internal_graphql_execute(children_blocks_query, { root_id: block2.id, snapshot_version: 0 })
 
       expect(response.success?).to be true
       expect(response.data['childrenBlocks'].length).to eq 6
       expect(response.data['childrenBlocks'].map do |b|
                b['id']
              end .sort).to eq [block2.id, child1.id, child2.id, child3.id, block3.id, block4.id].sort
+    end
+
+    it 'snapshots' do
+      user = create(:accounts_user)
+      self.current_user = user
+
+      pod = create(:pod)
+
+      self.current_pod = pod.as_session_context
+
+      block = create(:docs_block, pod: pod, collaborators: [user.id])
+      _child1 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block, root_id: block.id)
+      _child2 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block, root_id: block.id)
+
+      expect do
+        internal_graphql_execute(children_blocks_query, { root_id: block.id, snapshot_version: 1 })
+      end.to raise_error(ActiveRecord::RecordNotFound)
+
+      block.save_snapshot!
+
+      internal_graphql_execute(children_blocks_query, { root_id: block.id, snapshot_version: 1 })
+
+      expect(response.success?).to be true
+      expect(response.data['childrenBlocks'].length).to eq 3
+
+      self.current_user = nil
+      self.current_pod = nil
     end
   end
 end

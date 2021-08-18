@@ -19,7 +19,7 @@ export const DocumentPage: React.FC = () => {
 
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
-    variables: { rootId: docid, excludePages: false, snapshotVersion: Number(snapshotVersion || '0') }
+    variables: { rootId: docid, snapshotVersion: Number(snapshotVersion || '0') }
   })
 
   const prepareFileUpload = usePrepareFileUpload()

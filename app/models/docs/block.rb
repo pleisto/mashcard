@@ -262,11 +262,13 @@ class Docs::Block < ApplicationRecord
   end
 
   def create_sub_block!(title)
+    max_sort = descendants.maximum(:sort) || 0
     Docs::Block.create!(
       id: SecureRandom.uuid,
       parent_id: id,
       type: 'doc',
       meta: { title: title },
+      sort: max_sort + SORT_GAP,
       pod_id: pod_id,
       collaborators: collaborators,
       data: { content: [], text: title }

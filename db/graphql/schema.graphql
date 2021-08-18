@@ -917,8 +917,6 @@ type RootQuery {
   """
   blockSnapshots(id: String!): [BlockSnapshot!]
   childrenBlocks(
-    excludePages: Boolean
-
     """
     List all children from root id
     """

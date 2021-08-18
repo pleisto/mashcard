@@ -25,8 +25,8 @@ export const NewPatch = gql`
 `
 
 export const queryChildrenBlocks = gql`
-  query GetChildrenBlocks($rootId: String!, $excludePages: Boolean!, $snapshotVersion: Int!) {
-    childrenBlocks(rootId: $rootId, excludePages: $excludePages, snapshotVersion: $snapshotVersion) {
+  query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
+    childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {
       id
       sort
       parentId

@@ -579,7 +579,6 @@ export type RootQueryBlockSnapshotsArgs = {
 
 export type RootQueryChildrenBlocksArgs = {
   rootId: Scalars['String']
-  excludePages?: Maybe<Scalars['Boolean']>
   snapshotVersion: Scalars['Int']
 }
 
@@ -1233,7 +1232,6 @@ export type NewPatchSubscription = {
 
 export type GetChildrenBlocksQueryVariables = Exact<{
   rootId: Scalars['String']
-  excludePages: Scalars['Boolean']
   snapshotVersion: Scalars['Int']
 }>
 
@@ -2399,8 +2397,8 @@ export function useNewPatchSubscription(baseOptions: Apollo.SubscriptionHookOpti
 export type NewPatchSubscriptionHookResult = ReturnType<typeof useNewPatchSubscription>
 export type NewPatchSubscriptionResult = Apollo.SubscriptionResult<NewPatchSubscription>
 export const GetChildrenBlocksDocument = gql`
-  query GetChildrenBlocks($rootId: String!, $excludePages: Boolean!, $snapshotVersion: Int!) {
-    childrenBlocks(rootId: $rootId, excludePages: $excludePages, snapshotVersion: $snapshotVersion) {
+  query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
+    childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {
       id
       sort
       parentId
@@ -2477,7 +2475,6 @@ export const GetChildrenBlocksDocument = gql`
  * const { data, loading, error } = useGetChildrenBlocksQuery({
  *   variables: {
  *      rootId: // value for 'rootId'
- *      excludePages: // value for 'excludePages'
  *      snapshotVersion: // value for 'snapshotVersion'
  *   },
  * });

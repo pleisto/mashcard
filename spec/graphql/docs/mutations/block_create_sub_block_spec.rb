@@ -28,6 +28,7 @@ describe Docs::Mutations::BlockCreateSubBlock, type: :mutation do
       expect(response.data).to eq({ "blockCreateSubBlock" => nil })
       expect(block.descendants.count).to eq(1)
       expect(block.descendants_raw.count).to eq(2)
+      expect(block.descendants_raw.find { |b| b.id != block.id }.sort).to eq(Docs::Block::SORT_GAP)
 
       self.current_user = nil
       self.current_pod = nil

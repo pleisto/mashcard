@@ -6,14 +6,12 @@ module Docs
 
     argument :root_id, GraphQL::Types::String, required: true,
              description: 'List all children from root id'
-    argument :exclude_pages, GraphQL::Types::Boolean, required: false
 
     argument :snapshot_version, GraphQL::Types::Int, required: true, description: 'Snapshot version'
 
-    def resolve(root_id:, exclude_pages: false, snapshot_version:)
-      where = exclude_pages ? "docs_blocks.type != 'doc'" : nil
+    def resolve(root_id:, snapshot_version:)
       if snapshot_version.zero?
-        root = Docs::Block.where(where).find_by(id: root_id)
+        root = Docs::Block.find_by(id: root_id)
         if root.nil?
           params = {
             id: root_id,
@@ -35,7 +33,7 @@ module Docs
         end
       else
         # TODO: permission check
-        Docs::Snapshot.find_by!(block_id: root_id, snapshot_version: snapshot_version).blocks.graphql_normalize
+        Docs::Snapshot.find_by!(block_id: root_id, snapshot_version: snapshot_version).blocks.graphql_normalize(root_id)
       end
     end
   end

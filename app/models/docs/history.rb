@@ -46,7 +46,7 @@ class Docs::History < ApplicationRecord
     Docs::History.where("(block_id, history_version) IN (#{parameters})", *version_meta.flatten)
   end
 
-  def self.graphql_normalize
+  def self.graphql_normalize(root_id)
     histories = all
     block_ids = histories.map(&:block_id)
     preload_attachments = ActiveStorage::Attachment.where(name: "attachments", record_type: "Docs::Block", record_id: block_ids).pluck(
@@ -57,7 +57,7 @@ class Docs::History < ApplicationRecord
         h[preload_attachments.fetch(blob.id)].to_a + [{ blob_key: blob.key, url: blob.real_url }]
     end
 
-    histories.map { |h| h.cast_block.merge('blobs' => preload_blobs[h.block_id].to_a) }
+    histories.map { |h| h.cast_block.merge('blobs' => preload_blobs[h.block_id].to_a, 'root_id' => root_id) }
   end
 
   ## TODO refactor this
