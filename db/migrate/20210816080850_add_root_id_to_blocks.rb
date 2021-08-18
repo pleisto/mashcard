@@ -11,8 +11,8 @@ class AddRootIDToBlocks < ActiveRecord::Migration[6.1]
     add_column :docs_blocks, :root_id, :uuid
     remove_column :docs_histories, :path
 
-    Docs::Block.where(type: 'doc').each do |block|
-      block.descendants.update_all(root_id: block.id)
+    Docs::Block.unscoped.where(type: 'doc').each do |block|
+      block.descendants_raw.update_all(root_id: block.id)
     end
   end
 
