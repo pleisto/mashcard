@@ -13,6 +13,8 @@ if defined?(ActiveRecord::Base)
   json_result['records'] =
     ActiveRecord::Base.descendants.each_with_object({}) do |record_class, records|
       records[record_class.to_s] = record_class.limit(100).map(&:attributes)
+    rescue => _e
+      next
     end
 end
 
