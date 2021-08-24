@@ -85,7 +85,7 @@
     "@graphql-codegen/typescript": "^2.1.1",
     "@graphql-codegen/typescript-operations": "^2.1.1",
     "@graphql-codegen/typescript-react-apollo": "^3.1.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-rc.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-rc.5",
     "@testing-library/cypress": "^8.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -100,8 +100,8 @@
     "@types/react-router-config": "^5.0.3",
     "@types/react-router-dom": "^5.1.8",
     "@types/uuid": "^8.3.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
     "@webpack-cli/serve": "^1.5.2",
     "autoprefixer": "^10.3.2",
     "babel-jest": "^27.0.6",
@@ -152,7 +152,7 @@
     "webpack": "^5.51.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0-rc.0"
+    "webpack-dev-server": "^4.0.0"
   },
   "packageManager": "yarn@3.0.1",
   "resolutions": {
@@ -164,7 +164,6 @@
     "@tiptap/extension-paragraph": "2.0.0-beta.16",
     "@tiptap/extension-placeholder": "2.0.0-beta.26",
     "@tiptap/suggestion": "2.0.0-beta.61",
-    "prosemirror-model": "patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b",
-    "rc-select": "13.0.0-alpha.1"
+    "prosemirror-model": "patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b"
   }
 }
