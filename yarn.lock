@@ -1968,9 +1968,9 @@ __metadata:
     "@commitlint/config-conventional": ^13.1.0
     "@cypress/code-coverage": ^3.9.10
     "@graphql-codegen/cli": ^2.1.1
-    "@graphql-codegen/typescript": ^2.1.0
-    "@graphql-codegen/typescript-operations": ^2.1.0
-    "@graphql-codegen/typescript-react-apollo": ^3.1.0
+    "@graphql-codegen/typescript": ^2.1.1
+    "@graphql-codegen/typescript-operations": ^2.1.1
+    "@graphql-codegen/typescript-react-apollo": ^3.1.1
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.0-rc.3
     "@rails/actioncable": ^6.1.4
     "@rails/activestorage": ^6.1.4
@@ -2632,54 +2632,54 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-operations@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@graphql-codegen/typescript-operations@npm:2.1.0"
+"@graphql-codegen/typescript-operations@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@graphql-codegen/typescript-operations@npm:2.1.1"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.1.0
-    "@graphql-codegen/typescript": ^2.1.0
-    "@graphql-codegen/visitor-plugin-common": 2.1.0
+    "@graphql-codegen/typescript": ^2.1.1
+    "@graphql-codegen/visitor-plugin-common": 2.1.1
     auto-bind: ~4.0.0
     tslib: ~2.3.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 654b8d7f559fd493b4194cb3f2d2e7b4b032c97a0306bef95e030d509999cabff0321e17af0c3d5a26568b50e88e19917bbc2054e5ff7d649c62de6952acd2e4
+  checksum: aea84fa340a3943b78e3bc9dd58a491b60ef75fa6b14c1458bde8518913586ce86b99e55733d576101ac63a01f252d7b1e5a03e8baa68dfb1e772e348fe39fb9
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-react-apollo@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@graphql-codegen/typescript-react-apollo@npm:3.1.0"
+"@graphql-codegen/typescript-react-apollo@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "@graphql-codegen/typescript-react-apollo@npm:3.1.1"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.1.0
-    "@graphql-codegen/visitor-plugin-common": 2.1.0
+    "@graphql-codegen/visitor-plugin-common": 2.1.1
     auto-bind: ~4.0.0
     change-case-all: 1.0.14
     tslib: ~2.3.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
     graphql-tag: ^2.0.0
-  checksum: d7b11a0950824024ddaba4e3ab1f80ebb765d52f6cbf278cd6f318584d76c7fd95d4577964583259c43be66e90d7aa4ff8a7acb25cb3e8f440ae8a0514da852a
+  checksum: e4da8342da0502c7dafe50469fa1619af49a0ff16844bcf751671faf832e5578adb4943d44ed6ead2312fc385e272e5c9f6b33f08db187fa5b508d1a3424044b
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@graphql-codegen/typescript@npm:2.1.0"
+"@graphql-codegen/typescript@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@graphql-codegen/typescript@npm:2.1.1"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.1.0
-    "@graphql-codegen/visitor-plugin-common": 2.1.0
+    "@graphql-codegen/visitor-plugin-common": 2.1.1
     auto-bind: ~4.0.0
     tslib: ~2.3.0
   peerDependencies:
     graphql: ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: 30d817f0a255cc8ad27f78a2dd6b4189af1efe1ce91b2b7140ed9e3b4466bbcc41343b9db02e9d849667ba1be95a91c109b8be1c115d43a39d215d74ea126620
+  checksum: 50a64eaf6978c6c00199f43b931f3ef2cf22a2a2843b43895a7d69a54dd2a9fc31e5d6596643c7d7c9a2b0c4d583db4e054d28dcaf650cde70e129393517c34c
   languageName: node
   linkType: hard
 
-"@graphql-codegen/visitor-plugin-common@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.1.0"
+"@graphql-codegen/visitor-plugin-common@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@graphql-codegen/visitor-plugin-common@npm:2.1.1"
   dependencies:
     "@graphql-codegen/plugin-helpers": ^2.1.0
     "@graphql-tools/optimize": ^1.0.1
@@ -2693,7 +2693,7 @@ __metadata:
     tslib: ~2.3.0
   peerDependencies:
     graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-  checksum: edd1f1d681b6c5e8b749806eb495006006c0dfa6efb5d9d08bc63ccf40bf9d8565e2638922fb34b8bc235a09d65005fb63cca42a4ba9368c2a0cf742b55da0d9
+  checksum: 7f2fd38a02c3224a7e14c46bb24f603de2269e643b59f8f6f63fe219ff427a4115f05a223025caa181e2c040a2503efd056924d4efe21ea513724d149a614568
   languageName: node
   linkType: hard
 
@@ -18015,8 +18015,8 @@ fsevents@^1.2.7:
   linkType: hard
 
 "node-gyp@npm:latest":
-  version: 8.1.0
-  resolution: "node-gyp@npm:8.1.0"
+  version: 8.2.0
+  resolution: "node-gyp@npm:8.2.0"
   dependencies:
     env-paths: ^2.2.0
     glob: ^7.1.4
@@ -18026,11 +18026,11 @@ fsevents@^1.2.7:
     npmlog: ^4.1.2
     rimraf: ^3.0.2
     semver: ^7.3.5
-    tar: ^6.1.0
+    tar: ^6.1.2
     which: ^2.0.2
   bin:
     node-gyp: bin/node-gyp.js
-  checksum: d9f11a9ab20d2ec900cd910ecd77bc3909d4b5cd9eaf9854b00be4ba930227c5ce2ee0681216c326739dd445b1787aa933ac8d6a16ce222455d85092bb047901
+  checksum: 5e0e755eab8ca88647d20fc8aba4095560c3dd549686e86761b57b8489d93a1af68b0dccf881e5314bfce4d7ca290f8248e192915ccd3e18bf46571d72da6a9d
   languageName: node
   linkType: hard
 
@@ -21454,17 +21454,14 @@ fsevents@^1.2.7:
   linkType: hard
 
 "react-sizeme@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "react-sizeme@npm:3.0.1"
+  version: 3.0.2
+  resolution: "react-sizeme@npm:3.0.2"
   dependencies:
     element-resize-detector: ^1.2.2
     invariant: ^2.2.4
     shallowequal: ^1.1.0
     throttle-debounce: ^3.0.1
-  peerDependencies:
-    react: ^0.14.0 || ^15.0.0-0 || ^16.0.0 || ^17.0.0
-    react-dom: ^0.14.0 || ^15.0.0-0 || ^16.0.0 || ^17.0.0
-  checksum: 58ec9166dc458a1fd7929df8658d9dae3c1534968efbe66ffd026e3c38672b64374afa9df371d529e13fccab1758328d8fc52454745000d481b076ef457da7d7
+  checksum: 97cb852c24bbd50acb310da89df564e0d069415f6635676dae3d3bdc583ece88090c0f2ee88a6b0dc36d2793af4a11e83bf6bbb41b86225dd0cf338e8f7e8552
   languageName: node
   linkType: hard
 
@@ -24019,7 +24016,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tar@npm:^6.0.2, tar@npm:^6.1.0":
+"tar@npm:^6.0.2, tar@npm:^6.1.2":
   version: 6.1.10
   resolution: "tar@npm:6.1.10"
   dependencies:
