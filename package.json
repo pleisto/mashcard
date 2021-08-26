@@ -50,7 +50,7 @@
     "not dead"
   ],
   "dependencies": {
-    "@apollo/client": "^3.4.8",
+    "@apollo/client": "^3.4.9",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
     "@rails/actioncable": "^6.1.4",
