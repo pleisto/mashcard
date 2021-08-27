@@ -25,9 +25,9 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
         id: root_id,
         type: "doc",
         meta: {},
-        data: {
-          text: "", content: []
-        },
+        data: {},
+        text: "",
+        content: [],
         sort: 147
       }] } }
       internal_graphql_execute(mutation, input)
@@ -53,17 +53,17 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
         type: "doc",
         parentId: root_id,
         meta: {},
-        data: {
-          text: "", content: []
-        },
+        data: {},
+        text: "",
+        content: [],
         sort: 321
       }, {
         id: root_id,
         type: "doc",
         meta: {},
-        data: {
-          text: "", content: []
-        },
+        data: {},
+        text: "",
+        content: [],
         sort: 159
       }]
 

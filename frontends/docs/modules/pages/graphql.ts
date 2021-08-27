@@ -36,10 +36,9 @@ export const queryChildrenBlocks = gql`
         url
       }
       type
-      data {
-        text
-        content
-      }
+      text
+      content
+      data
       meta {
         title
         level

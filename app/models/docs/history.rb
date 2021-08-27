@@ -4,18 +4,19 @@
 #
 # Table name: docs_histories
 #
-#  id              :bigint           not null, primary key
-#  data            :jsonb            not null
-#  history_version :bigint           not null
-#  meta            :jsonb            not null
-#  parent_type     :string
-#  sort            :bigint           not null
-#  type            :string(32)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  block_id        :uuid             not null
-#  parent_id       :uuid
-#  pod_id          :bigint
+#  id                    :bigint           not null, primary key
+#  content(node content) :jsonb
+#  data                  :jsonb            not null
+#  history_version       :bigint           not null
+#  meta                  :jsonb            not null
+#  sort                  :bigint           not null
+#  text(node text)       :text             default("")
+#  type                  :string(32)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  block_id              :uuid             not null
+#  parent_id             :uuid
+#  pod_id                :bigint
 #
 # Indexes
 #
@@ -30,11 +31,12 @@ class Docs::History < ApplicationRecord
 
   before_create do
     self.pod_id = block.pod_id
+    self.content = block.content
+    self.text = block.text
     self.data = block.data
     self.meta = block.meta
     self.sort = block.sort
     self.type = block.type
-    self.parent_type = block.parent_type
     self.parent_id = block.parent_id
   end
 
@@ -64,7 +66,7 @@ class Docs::History < ApplicationRecord
   ## try `def id = block_id`
   def cast_block
     attributes.slice(
-      'sort', 'history_version', 'created_at', 'updated_at', 'meta', 'data', 'parent_id', 'type', 'parent_type', 'pod_id'
+      'sort', 'history_version', 'created_at', 'updated_at', 'meta', 'data', 'parent_id', 'type', 'pod_id'
     ).merge('id' => block_id)
   end
 end

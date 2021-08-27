@@ -31,12 +31,15 @@ def create_block(pod, id, parent_id, pods)
   params = {
     id: id,
     pod: pod,
+    page: true,
     type: BLOCK_TYPE,
     collaborators: random_collaborators(pod, pods),
     meta: { title: FFaker::Lorem.phrase },
-    data: { text: FFaker::Lorem.phrase, content: [] },
+    data: {},
     parent_id: parent_id,
-    root_id: parent_id
+    root_id: parent_id,
+    text: FFaker::Lorem.phrase,
+    content: []
   }
   Docs::Block.create!(params)
 end

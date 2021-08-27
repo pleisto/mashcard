@@ -27,10 +27,9 @@ describe Docs::Queries::Block, type: :query do
           nextSort
           firstChildSort
           type
-          data {
-            text
-            content
-          }
+          data
+          text
+          content
           meta {
             cover {
               ... on BlockImage {

@@ -50,10 +50,9 @@ export const queryPageBlocks = gql`
       rootId
       parentId
       type
-      data {
-        text
-        content
-      }
+      text
+      content
+      data
       meta {
         cover {
           ... on BlockImage {

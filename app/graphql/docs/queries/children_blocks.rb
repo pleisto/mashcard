@@ -15,8 +15,11 @@ module Docs
         if root.nil?
           params = {
             id: root_id,
+            page: true,
             type: 'doc',
-            data: { text: "", content: [] },
+            data: {},
+            text: '',
+            content: [],
             pod_id: current_pod.fetch('id'),
             collaborators: [current_user.id]
           }

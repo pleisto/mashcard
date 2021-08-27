@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, BlockData, Block, Blocktype, BlockEmoji } from '@/BrickdocGraphQL'
+import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, Block, Blocktype, BlockEmoji } from '@/BrickdocGraphQL'
 import { Skeleton, Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/utils'
 import { PageMenu } from '../PageMenu'
@@ -20,7 +20,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
 
   const getTitle = (block: Block): string => {
     const emoji = block.meta.icon?.type === Blocktype.Emoji ? (block.meta.icon as BlockEmoji).emoji : ''
-    const text = block.data.text
+    const text = block.text
     if (emoji) {
       return `${emoji} ${text}`
     } else {
@@ -30,7 +30,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
 
   const flattedData = data.pageBlocks
     .map(i => {
-      const data: BlockData = i.data
+      // const data: BlockData = i.data
       const title = getTitle(i as Block)
       return {
         key: i.id,
@@ -41,7 +41,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
         nextSort: i.nextSort,
         firstChildSort: i.firstChildSort,
         titleText: title,
-        title: <PageMenu id={i.id} text={data.text} title={title} webid={webid} />
+        title: <PageMenu id={i.id} text={i.text} title={title} webid={webid} />
       }
     })
     .sort((a, b) => Number(a.sort) - Number(b.sort))

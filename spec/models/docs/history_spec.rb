@@ -20,6 +20,9 @@ RSpec.describe Docs::History, type: :model do
       expect(block.realtime_history_version_value).to eq(old_version + 1)
       expect(history.history_version).to eq(old_version + 1)
       expect(history.meta).to eq(block.meta)
+      expect(history.data).to eq(block.data)
+      expect(history.content).to eq(block.content)
+      expect(history.text).to eq(block.text)
       expect(block.histories.count).to eq(old_hist_count + 1)
     end
 

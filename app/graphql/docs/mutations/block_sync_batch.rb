@@ -34,6 +34,8 @@ module Docs
       blocks.each do |args|
         block = preloads[args.id] || Docs::Block.new(id: args.id)
 
+        block.text = args.text
+        block.content = args.content
         block.sort = args.sort.to_i
         block.data = args.data
         block.meta = args.meta

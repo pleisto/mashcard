@@ -5,7 +5,9 @@ module Docs
       graphql_name 'block'
       description 'Brickdoc Docs::Block'
 
-      field :data, BlockData, null: false
+      field :content, [GraphQL::Types::JSON], 'content', null: false
+      field :text, String, 'text', null: false
+      field :data, GraphQL::Types::JSON, null: false
       field :meta, BlockMeta, null: false
     end
   end
