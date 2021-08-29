@@ -20,7 +20,6 @@ interface PageMenuProps {
   webid: string
   id: UUID
   title: Scalars['String']
-  text: Scalars['String'] | null
 }
 
 export const PageMenu: React.FC<PageMenuProps> = props => {

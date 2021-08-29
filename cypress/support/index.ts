@@ -14,13 +14,8 @@
 // ***********************************************************
 
 import '@cypress/code-coverage/support'
-
-// Import commands.js using ES2015 syntax:
 import './commands'
 import './on-rails'
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/
 Cypress.on('uncaught:exception', err => {

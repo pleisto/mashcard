@@ -48,6 +48,7 @@ const HookModal: React.ForwardRefRenderFunction<HookModalRef, HookModalProps> = 
           prefixCls={prefixCls}
           rootPrefixCls={rootPrefixCls}
           {...innerConfig}
+          // eslint-disable-next-line react/jsx-no-bind
           close={close}
           visible={visible}
           afterClose={afterClose}

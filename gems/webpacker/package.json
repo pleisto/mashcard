@@ -24,7 +24,7 @@
     "webpack-sources": "^3.2.0"
   },
   "devDependencies": {
-    "jest": "^27.0.6",
+    "jest": "^27.1.0",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"
   },

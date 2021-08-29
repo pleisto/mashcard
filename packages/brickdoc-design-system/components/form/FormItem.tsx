@@ -223,6 +223,7 @@ function FormItem<Values = any>(props: FormItemProps<Values>): React.ReactElemen
           errors={mergedErrors}
           prefixCls={prefixCls}
           status={mergedValidateStatus}
+          // eslint-disable-next-line react/jsx-no-bind
           onDomErrorVisibleChange={setDomErrorVisible}
           validateStatus={mergedValidateStatus}>
           {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}

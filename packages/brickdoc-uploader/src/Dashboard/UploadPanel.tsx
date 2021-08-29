@@ -44,7 +44,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
     try {
       uppy.addFile(descriptor)
     } catch (err) {
-      uppy.log(err)
+      uppy.log(err as string)
     }
   }
 

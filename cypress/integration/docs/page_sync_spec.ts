@@ -4,14 +4,14 @@ describe('document meta', () => {
   })
 
   it('basic sync', () => {
-    cy.findByText('+ Add Pages').realClick()
+    cy.visit('/')
+    cy.findByText('+ Add Pages').click()
+    cy.url().should('match', /\/p\//)
+    // eslint-disable-next-line max-nested-callbacks
+    cy.interceptGQL('blockSyncBatch', ({ variables }) => variables?.input.blocks.some(block => block.meta.title === 'Title'))
     cy.findAllByPlaceholderText('Untitled').focus().type('Title')
     cy.findAllByPlaceholderText('Untitled').should('have.value', 'Title')
-    cy.url().should('match', /\/p\//)
-    // avoid block unsaved, we need wait for 3s
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(3000)
-
+    cy.wait('@gql:blockSyncBatch')
     cy.reload(true)
     cy.findAllByPlaceholderText('Untitled').should('have.value', 'Title')
   })

@@ -29,19 +29,19 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
   }
 
   const flattedData = data.pageBlocks
-    .map(i => {
+    .map(b => {
       // const data: BlockData = i.data
-      const title = getTitle(i as Block)
+      const title = getTitle(b as Block)
       return {
-        key: i.id,
-        value: i.id,
-        parentId: i.parentId,
-        type: i.type,
-        sort: i.sort,
-        nextSort: i.nextSort,
-        firstChildSort: i.firstChildSort,
+        key: b.id,
+        value: b.id,
+        parentId: b.parentId,
+        type: b.type,
+        sort: b.sort,
+        nextSort: b.nextSort,
+        firstChildSort: b.firstChildSort,
         titleText: title,
-        title: <PageMenu id={i.id} text={i.text} title={title} webid={webid} />
+        title: <PageMenu id={b.id} title={title} webid={webid} />
       }
     })
     .sort((a, b) => Number(a.sort) - Number(b.sort))

@@ -7,6 +7,7 @@ import { ProgressProps } from './progress'
 interface CircleProps extends ProgressProps {
   prefixCls: string
   children: React.ReactNode
+  // eslint-disable-next-line react/no-unused-prop-types
   progressStatus: string
 }
 

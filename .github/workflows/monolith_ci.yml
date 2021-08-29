@@ -57,6 +57,8 @@ env:
   SECURITY_REVERSIBLE_INT_PRIME: 1911469727
   SECURITY_REVERSIBLE_INT_RANDOM: 1996136202
   SECURITY_REVERSIBLE_INT_INVERSE: 2083710303
+  UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
+  UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
 
 jobs:
   cancel:
@@ -162,8 +164,6 @@ jobs:
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         env:
           RAILS_ENV: test
-          UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
-          UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
         run: bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
       - name: Publish RSpec test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'

@@ -80,7 +80,7 @@ export async function resolveLessVariables(lessCode: any, lessOptions: any): Pro
       lessOptions
     )
   } catch (e) {
-    throw new Error(`Less render failed! (${e.message}) Less code:\n${lessCode}\nVariables found:\n${varNames.join(', ')}`)
+    throw new Error(`Less render failed! (${(e as Error).message}) Less code:\n${lessCode}\nVariables found:\n${varNames.join(', ')}`)
   }
   return getRegexpMatches(cssVarRegExp, renderResult.css.replace(/#resolved {(.*)}/, '$1')).reduce(
     (acc, [, varName, value]) => ({ ...acc, [varName]: value }),

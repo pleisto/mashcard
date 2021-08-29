@@ -252,7 +252,7 @@ export class DashboardPlugin extends Plugin {
     try {
       this.uppy.addFile(descriptor)
     } catch (err) {
-      this.uppy.log(err)
+      this.uppy.log(err as string)
     }
   }
 

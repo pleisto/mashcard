@@ -26,3 +26,26 @@
 import '@testing-library/cypress/add-commands'
 import 'cypress-file-upload'
 import 'cypress-real-events/support'
+
+import { HttpResponseInterceptor, StaticResponse } from 'cypress/types/net-stubbing'
+
+Cypress.Commands.add(
+  'interceptGQL',
+  (
+    operationName: string,
+    reqBodyMatcher?: (body: { operationName: string; query: string; variables: any }) => boolean,
+    staticResponseOrResponseInterceptor?: StaticResponse | HttpResponseInterceptor
+  ) => {
+    cy.intercept('POST', '/.internal-apis/$graph', req => {
+      const { body } = req
+      if (
+        Object.prototype.hasOwnProperty.call(body, 'operationName') &&
+        body.operationName === operationName &&
+        (reqBodyMatcher?.(body) ?? true)
+      ) {
+        req.alias = `gql:${operationName}`
+        req.reply(staticResponseOrResponseInterceptor)
+      }
+    })
+  }
+)
