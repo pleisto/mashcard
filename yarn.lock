@@ -1846,7 +1846,7 @@ __metadata:
     rc-textarea: ^0.3.5
     rc-tooltip: ^5.1.1
     rc-tree: ^5.0.3
-    rc-tree-select: ^4.4.0-alpha.4
+    rc-tree-select: ^4.4.0-alpha.5
     rc-trigger: ^5.2.10
     rc-util: ^5.13.2
     react: ^17.0.2
@@ -1979,7 +1979,7 @@ __metadata:
     "@testing-library/react": ^12.0.0
     "@types/is-ci": ^3.0.0
     "@types/jest": ^27.0.1
-    "@types/node": ^16.7.5
+    "@types/node": ^16.7.6
     "@types/qs": ^6.9.7
     "@types/rails__actioncable": ^6.1.5
     "@types/rails__activestorage": ^6.0.1
@@ -2013,10 +2013,10 @@ __metadata:
     eslint-plugin-jsx-a11y: ^6.4.1
     eslint-plugin-node: ^11.1.0
     eslint-plugin-promise: ^5.1.0
-    eslint-plugin-react: ^7.25.0
+    eslint-plugin-react: ^7.25.1
     eslint-plugin-react-hooks: ^4.2.0
     eslint-plugin-security-node: ^1.0.14
-    graphql: ^15.5.1
+    graphql: ^15.5.2
     graphql-ruby-client: ^1.10.0
     graphql-tag: ^2.12.5
     husky: ^7.0.2
@@ -5498,10 +5498,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.7.5":
-  version: 16.7.5
-  resolution: "@types/node@npm:16.7.5"
-  checksum: 19765a6e2fea3269f627045a4e07a33f57dc567b5437c7bb18e585944a6c76a23e4b43969e586eac7d92247f424000992c1c8cbfd33faeae4676095aad4a2b61
+"@types/node@npm:*, @types/node@npm:^16.7.6":
+  version: 16.7.6
+  resolution: "@types/node@npm:16.7.6"
+  checksum: a8533386a1d4ca0ed67885413001af8789c63948df288f3d36e31bd8fccffacf5dffb95e190c8cd57bb40385f010fb9a30f596bad6bb26b2bb88737d54d8ed95
   languageName: node
   linkType: hard
 
@@ -11605,9 +11605,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "eslint-plugin-react@npm:7.25.0"
+"eslint-plugin-react@npm:^7.25.1":
+  version: 7.25.1
+  resolution: "eslint-plugin-react@npm:7.25.1"
   dependencies:
     array-includes: ^3.1.3
     array.prototype.flatmap: ^1.2.4
@@ -11624,7 +11624,7 @@ __metadata:
     string.prototype.matchall: ^4.0.5
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7
-  checksum: f4332c2b33e4cb7b3896da63ee8b786c45196524f7da8e06594abb4b2641f9b52d7a4ccf830e5ade73d67aae78ac9d8fb2d1bf33de3e522b4a20a75edb8806b9
+  checksum: e22ffbb6d336558cab38717c8c6199b72635500b9bd909891ba45865adae5846912a2b3daa355b0c1b1bfe6664b28ee277c14943acc739e703316eff87c1fce4
   languageName: node
   linkType: hard
 
@@ -13370,10 +13370,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"graphql@npm:^15.5.1":
-  version: 15.5.1
-  resolution: "graphql@npm:15.5.1"
-  checksum: 7e45ae27021e5bafd2a3ce557e708606ff28504aae705654764fa6239b0151d014a90cbd4c68300f4f95a9074820aaee9b1f25b560ff089c8db0b49563e34080
+"graphql@npm:^15.5.2":
+  version: 15.5.2
+  resolution: "graphql@npm:15.5.2"
+  checksum: 0e26592c61815661d7ea25cef3d8ce781736fb36b2c80be30898bdfaca0f3cbd0c5fa3a2c001e399b62b2f23f6370f04f384171e033e90a9b820ca908e464105
   languageName: node
   linkType: hard
 
@@ -21058,9 +21058,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-tree-select@npm:^4.4.0-alpha.4":
-  version: 4.4.0-alpha.4
-  resolution: "rc-tree-select@npm:4.4.0-alpha.4"
+"rc-tree-select@npm:^4.4.0-alpha.5":
+  version: 4.4.0-alpha.5
+  resolution: "rc-tree-select@npm:4.4.0-alpha.5"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: 2.x
@@ -21070,7 +21070,7 @@ fsevents@^1.2.7:
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: c08fec5ac55c8b61ad72488b8c84295f33970640e50217647431d6f8da612f6ae7f14392d891e3e5fffd1ef4a2dba219782260b30d81b5889a1bef70cad7883c
+  checksum: 0252af1aa1bacca0843a9f2a2760fd6e3f8eb0d3557edbd0e14d41cad6f837f4712b2a3c5f1021ec18b357f560c4c59a7360c03e9913419270ce7a5630fd56ab
   languageName: node
   linkType: hard
 
