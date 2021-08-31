@@ -1,6 +1,7 @@
 FROM node:16 as build
 WORKDIR /app
-ADD . /app
+ADD ./packages/brickdoc-design-system /app
+ADD postcss.config.js /app
 RUN yarn install && yarn build-storybook --docs
 
 FROM ghcr.io/brickdoc/wrapdrive:latest

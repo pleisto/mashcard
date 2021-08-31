@@ -42,7 +42,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./packages/brickdoc-design-system
+          context: ./
           file: ./packages/brickdoc-design-system/Dockerfile
           push: true
           tags: ghcr.io/brickdoc/design-system:latest
