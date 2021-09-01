@@ -7,7 +7,6 @@ module.exports = {
     browser: true
   },
   rules: {
-    'no-void': 'off',
     'for-direction': 'error',
     'func-name-matching': ['error', 'always'],
     'getter-return': 'error',

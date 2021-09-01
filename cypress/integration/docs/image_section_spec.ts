@@ -37,18 +37,19 @@ describe('imageSection', () => {
     cy.get('.brickdoc-block-image').should('exist')
   })
 
-  it('should zoom out image when double click', () => {
+  it('should zoom in image when double click', () => {
     cy.visit('/')
     cy.get('[contenteditable]').type('/image')
     cy.get('button.slash-menu-item:first').click()
     cy.findByText('Add an image').click()
-    cy.findByPlaceholderText('Paste the image link...')
-      .focus()
-      .type(
-        'https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
-      )
+    const imageUrl =
+      'https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
+    cy.findByPlaceholderText('Paste the image link...').focus().type(imageUrl)
     cy.findByText('Embed image').click()
-    cy.get('.brickdoc-block-image-section-container').dblclick()
-    cy.get('[aria-modal="true"] > button').should('exist')
+    cy.waitForResources(
+      'https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
+    )
+    cy.get('.image-section-zoom-in-button').dblclick()
+    cy.get('[aria-modal="true"] > button').should('exist').click().should('not.exist')
   })
 })

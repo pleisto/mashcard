@@ -2014,6 +2014,7 @@ __metadata:
     cypress-file-upload: ^5.0.8
     cypress-multi-reporters: ^1.5.0
     cypress-real-events: ^1.5.1
+    cypress-wait-until: ^1.7.1
     cz-conventional-changelog: ^3.3.0
     date-fns: ^2.23.0
     eslint: ^7.32.0
@@ -10365,6 +10366,13 @@ __metadata:
   peerDependencies:
     cypress: ^4.x || ^5.x || ^6.x || ^7.x || ^8.x
   checksum: 3ae432d8c3b7463cc50394c04c32b2d418dc8b1827c9d4120277043fb75efd7dd4e1fa047a809a9766e1ec3be661e87ccf06bc4beb28c0cf6639ead23c832186
+  languageName: node
+  linkType: hard
+
+"cypress-wait-until@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "cypress-wait-until@npm:1.7.1"
+  checksum: 53795937472b3711da300be55e35abf3e9db184f8a5723dc9a4e4545053b07c09c58126ca2a9bb02c67e1093c970a13bd76cb2b13f50e8640dfbb7db71ec03f3
   languageName: node
   linkType: hard
 

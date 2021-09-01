@@ -28,29 +28,6 @@ const IMAGE_IMPORT_SOURCES: ImportSourceOption[] = [
   }
 ]
 
-function useDoubleClick(fn: VoidFunction): VoidFunction {
-  const clickCount = React.useRef(0)
-  const clickTimer = React.useRef<any>()
-
-  const onDoubleClick = (): void => {
-    clearTimeout(clickTimer.current)
-    clickCount.current += 1
-
-    if (clickCount.current >= 2) {
-      clickCount.current = 0
-      fn()
-
-      return
-    }
-
-    clickTimer.current = setTimeout(() => {
-      clickCount.current = 0
-    }, 200)
-  }
-
-  return onDoubleClick
-}
-
 export interface ImageSectionAttributes {
   width?: number
   ratio?: number
@@ -91,10 +68,9 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
   const [loaded, setLoaded] = React.useState(false)
   const [showPreview, setShowPreview] = React.useState(false)
   const previewImage = (): void => {
-    if (!(file && !node.attrs.image?.key) && !loaded) return
+    if ((!(file && !node.attrs.image?.key) && !loaded) || showPreview) return
     setShowPreview(true)
   }
-  const onDoubleClick = useDoubleClick(previewImage)
   const onUploaded = (data: UploadResultData): void => {
     updateImageAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
@@ -112,7 +88,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
 
     return (
       <NodeViewWrapper>
-        <div role="cell" className="brickdoc-block-image-section-container" onClick={onDoubleClick}>
+        <div role="cell" className="brickdoc-block-image-section-container">
           <Resizable
             lockAspectRatio={true}
             className="image-section-control-panel"
@@ -167,6 +143,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
               }}>
               <img role="img" className={cx('brickdoc-block-image', { loading: !loaded })} src={url} alt="" onLoad={onImageLoad} />
             </ImagePreview>
+            <button className="image-section-zoom-in-button" onDoubleClick={previewImage} />
           </Resizable>
         </div>
       </NodeViewWrapper>
