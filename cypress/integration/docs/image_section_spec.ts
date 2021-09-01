@@ -52,4 +52,23 @@ describe('imageSection', () => {
     cy.get('.image-section-zoom-in-button').dblclick()
     cy.get('[aria-modal="true"] > button').should('exist').click().should('not.exist')
   })
+
+  it('should show a correctly sized skeleton when loading', () => {
+    cy.visit('/')
+    cy.findByText('+ Add Pages').click()
+    cy.get('[contenteditable]').type('/image')
+    cy.get('button.slash-menu-item:first').click()
+    cy.findByText('Add an image').click()
+    const imageUrl = 'https://deelay.me/800/https://picsum.photos/200/300'
+    cy.findByPlaceholderText('Paste the image link...').focus().type(imageUrl)
+    cy.interceptGQL('blockSyncBatch', ({ variables }) =>
+      variables?.input.blocks.some(block => block.meta.image?.key === imageUrl && block.meta.image?.width === 200)
+    )
+    cy.findByText('Embed image').click()
+    const skeletonSelector = '.brickdoc-block-image-section-container .brk-skeleton'
+    cy.get(skeletonSelector).should('exist').invoke('width').should('eq', 700)
+    cy.wait('@gql:blockSyncBatch').reload()
+    cy.get(skeletonSelector).invoke('width').should('eq', 200)
+    cy.get(skeletonSelector).invoke('height').should('eq', 300)
+  })
 })

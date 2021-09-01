@@ -5,8 +5,8 @@ module Docs
       field :key, String, "key", null: false
       field :type, Enums::Blocktype, "type", null: false
       field :source, Enums::Filesourcetype, "type", null: false
-      field :height, String, "height", null: true
-      field :height, String, "height", null: true
+      field :height, Int, "height", null: true
+      field :width, Int, "width", null: true
       field :ratio, Float, 'aspect ratio', null: true
     end
   end

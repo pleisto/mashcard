@@ -48,16 +48,16 @@ export type AuthorizationResult = {
 
 export type BlockAttachment = {
   __typename?: 'BlockAttachment'
-  /** width */
-  height?: Maybe<Scalars['String']>
+  /** height */
+  height?: Maybe<Scalars['Int']>
   /** url or blob key */
   key: Scalars['String']
   /** type */
   source: Filesourcetype
   /** type */
   type: Blocktype
-  /** height */
-  width?: Maybe<Scalars['String']>
+  /** width */
+  width?: Maybe<Scalars['Int']>
 }
 
 export type BlockBaseObjectPermissions = {
@@ -181,7 +181,7 @@ export type BlockIcon = BlockEmoji | BlockImage
 export type BlockImage = {
   __typename?: 'BlockImage'
   /** height */
-  height?: Maybe<Scalars['String']>
+  height?: Maybe<Scalars['Int']>
   /** key */
   key: Scalars['String']
   /** aspect ratio */
@@ -190,8 +190,8 @@ export type BlockImage = {
   source: Filesourcetype
   /** type */
   type: Blocktype
-  /** height */
-  width?: Maybe<Scalars['String']>
+  /** width */
+  width?: Maybe<Scalars['Int']>
 }
 
 /** InputObject type of Class */
@@ -1268,8 +1268,8 @@ export type GetChildrenBlocksQuery = {
           type: Blocktype
           source: Filesourcetype
           key: string
-          height?: Maybe<string>
-          width?: Maybe<string>
+          height?: Maybe<number>
+          width?: Maybe<number>
           ratio?: Maybe<number>
         }>
         attachment?: Maybe<{
@@ -1277,8 +1277,8 @@ export type GetChildrenBlocksQuery = {
           type: Blocktype
           source: Filesourcetype
           key: string
-          height?: Maybe<string>
-          width?: Maybe<string>
+          height?: Maybe<number>
+          width?: Maybe<number>
         }>
         cover?: Maybe<
           | { __typename?: 'BlockColor'; type: Blocktype; color: string }
@@ -1287,8 +1287,8 @@ export type GetChildrenBlocksQuery = {
               type: Blocktype
               source: Filesourcetype
               key: string
-              height?: Maybe<string>
-              width?: Maybe<string>
+              height?: Maybe<number>
+              width?: Maybe<number>
             }
         >
         icon?: Maybe<
@@ -1298,8 +1298,8 @@ export type GetChildrenBlocksQuery = {
               type: Blocktype
               source: Filesourcetype
               key: string
-              height?: Maybe<string>
-              width?: Maybe<string>
+              height?: Maybe<number>
+              width?: Maybe<number>
             }
         >
       }

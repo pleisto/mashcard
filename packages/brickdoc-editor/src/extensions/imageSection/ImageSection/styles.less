@@ -52,6 +52,10 @@
   width: 100%;
   max-width: 100%;
   min-width: 40px;
+
+  &.loading {
+    position: absolute;
+  }
 }
 
 .brickdoc-block-image-section-container {
@@ -62,6 +66,11 @@
   margin-right: auto;
   max-width: 100%;
   position: relative;
+
+  [data-rmiz-wrap='visible'],
+  [data-rmiz-wrap='hidden'] {
+    display: flex;
+  }
 
   // TODO: repeat it in PdfSection/styles.less. Keep it DRY
   .image-section-control-panel {

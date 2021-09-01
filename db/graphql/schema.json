@@ -120,13 +120,13 @@
           "fields": [
             {
               "name": "height",
-              "description": "width",
+              "description": "height",
               "args": [
 
               ],
               "type": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -188,13 +188,13 @@
             },
             {
               "name": "width",
-              "description": "height",
+              "description": "width",
               "args": [
 
               ],
               "type": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -941,7 +941,7 @@
               ],
               "type": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1017,13 +1017,13 @@
             },
             {
               "name": "width",
-              "description": "height",
+              "description": "width",
               "args": [
 
               ],
               "type": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,

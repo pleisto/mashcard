@@ -5,7 +5,7 @@ import { Resizable } from 're-resizable'
 import cx from 'classnames'
 import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
-import { Button, Popover, Icon } from '@brickdoc/design-system'
+import { Button, Popover, Icon, Skeleton } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption } from '@brickdoc/uploader'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
@@ -141,6 +141,15 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
               }}>
+              {!loaded && (
+                <Skeleton.Image
+                  style={
+                    node.attrs.image.width
+                      ? { width: node.attrs.image.width, height: node.attrs.image.width / node.attrs.image.ratio }
+                      : { width: MAX_WIDTH }
+                  }
+                />
+              )}
               <img role="img" className={cx('brickdoc-block-image', { loading: !loaded })} src={url} alt="" onLoad={onImageLoad} />
             </ImagePreview>
             <button className="image-section-zoom-in-button" onDoubleClick={previewImage} />
