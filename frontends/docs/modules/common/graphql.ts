@@ -40,6 +40,17 @@ export const CreateOrUpdatePod = gql`
   }
 `
 
+export const queryBlockSearch = gql`
+  query GetBlockSearch($webid: String!, $input: String!) {
+    blockSearch(webid: $webid, input: $input) {
+      id
+      type
+      text
+      rootId
+    }
+  }
+`
+
 export const queryPageBlocks = gql`
   query GetPageBlocks($webid: String!) {
     pageBlocks(webid: $webid) {

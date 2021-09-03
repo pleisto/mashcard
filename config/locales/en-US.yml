@@ -621,6 +621,9 @@ en-US:
       pod_not_exist: "Pod doesn't exist"
   docs:
     app_title: Brickdoc
+    search:
+      text: Quick Find
+      placeholder: Search Pages
     blocks:
       create_pages: Add Pages
       delete: Delete

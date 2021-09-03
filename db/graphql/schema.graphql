@@ -894,6 +894,17 @@ type RootQuery {
   return histories by block id.
   """
   blockHistories(id: String!): [BlockHistory!]
+  blockSearch(
+    """
+    input
+    """
+    input: String!
+
+    """
+    webid
+    """
+    webid: String!
+  ): [block!]
 
   """
   return snapshots by block id.

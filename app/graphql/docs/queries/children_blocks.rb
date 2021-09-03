@@ -10,6 +10,7 @@ module Docs
     argument :snapshot_version, GraphQL::Types::Int, required: true, description: 'Snapshot version'
 
     def resolve(root_id:, snapshot_version:)
+      return [] if root_id.blank?
       if snapshot_version.zero?
         root = Docs::Block.find_by(id: root_id)
         if root.nil?

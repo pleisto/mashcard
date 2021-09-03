@@ -535,6 +535,7 @@ export type RootQuery = {
   block?: Maybe<Block>
   /** return histories by block id. */
   blockHistories?: Maybe<Array<BlockHistory>>
+  blockSearch?: Maybe<Array<Block>>
   /** return snapshots by block id. */
   blockSnapshots?: Maybe<Array<BlockSnapshot>>
   childrenBlocks?: Maybe<Array<Block>>
@@ -577,6 +578,11 @@ export type RootQueryBlockArgs = {
 
 export type RootQueryBlockHistoriesArgs = {
   id: Scalars['String']
+}
+
+export type RootQueryBlockSearchArgs = {
+  webid: Scalars['String']
+  input: Scalars['String']
 }
 
 export type RootQueryBlockSnapshotsArgs = {
@@ -1107,6 +1113,16 @@ export type CreateOrUpdatePodMutation = {
     errors: Array<string>
     pod?: Maybe<{ __typename?: 'pod'; webid: string; name?: Maybe<string> }>
   }>
+}
+
+export type GetBlockSearchQueryVariables = Exact<{
+  webid: Scalars['String']
+  input: Scalars['String']
+}>
+
+export type GetBlockSearchQuery = {
+  __typename?: 'RootQuery'
+  blockSearch?: Maybe<Array<{ __typename?: 'block'; id: string; type: string; text: string; rootId: string }>>
 }
 
 export type GetPageBlocksQueryVariables = Exact<{
@@ -2005,6 +2021,45 @@ export function useCreateOrUpdatePodMutation(
 export type CreateOrUpdatePodMutationHookResult = ReturnType<typeof useCreateOrUpdatePodMutation>
 export type CreateOrUpdatePodMutationResult = Apollo.MutationResult<CreateOrUpdatePodMutation>
 export type CreateOrUpdatePodMutationOptions = Apollo.BaseMutationOptions<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>
+export const GetBlockSearchDocument = gql`
+  query GetBlockSearch($webid: String!, $input: String!) {
+    blockSearch(webid: $webid, input: $input) {
+      id
+      type
+      text
+      rootId
+    }
+  }
+`
+
+/**
+ * __useGetBlockSearchQuery__
+ *
+ * To run a query within a React component, call `useGetBlockSearchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlockSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBlockSearchQuery({
+ *   variables: {
+ *      webid: // value for 'webid'
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useGetBlockSearchQuery(baseOptions: Apollo.QueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
+}
+export function useGetBlockSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
+}
+export type GetBlockSearchQueryHookResult = ReturnType<typeof useGetBlockSearchQuery>
+export type GetBlockSearchLazyQueryHookResult = ReturnType<typeof useGetBlockSearchLazyQuery>
+export type GetBlockSearchQueryResult = Apollo.QueryResult<GetBlockSearchQuery, GetBlockSearchQueryVariables>
 export const GetPageBlocksDocument = gql`
   query GetPageBlocks($webid: String!) {
     pageBlocks(webid: $webid) {
