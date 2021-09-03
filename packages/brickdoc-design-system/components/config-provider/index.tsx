@@ -90,9 +90,6 @@ function getGlobalPrefixCls() {
 function getIconDefaultConfig(rtl: boolean): IIconConfig {
   return {
     size: '1em',
-    strokeWidth: 3,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
     rtl,
     theme: 'outline',
     colors: {

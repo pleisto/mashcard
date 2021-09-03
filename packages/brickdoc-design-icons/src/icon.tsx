@@ -11,23 +11,11 @@ export interface ISvgIconProps {
   // Icon Size, default is 1em
   size: number | string
 
-  strokeWidth: number
-
-  strokeLinecap: StrokeLinecap
-
-  strokeLinejoin: StrokeLinejoin
-
   colors: string[]
 }
 
 export interface IIconConfig {
   size: number | string
-
-  strokeWidth: number
-
-  strokeLinecap: StrokeLinecap
-
-  strokeLinejoin: StrokeLinejoin
 
   prefix: string
 
@@ -89,9 +77,6 @@ export type IconRender = (props: ISvgIconProps) => ReactElement
 // Default Icon Config
 export const DEFAULT_ICON_CONFIGS: IIconConfig = {
   size: '1em',
-  strokeWidth: 3,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
   rtl: false,
   theme: 'outline',
   colors: {
@@ -109,7 +94,7 @@ export const DEFAULT_ICON_CONFIGS: IIconConfig = {
     },
     multiColor: {
       outStrokeColor: '#333',
-      outFillColor: '#2F88FF',
+      outFillColor: '--color-primary',
       innerStrokeColor: '#FFF',
       innerFillColor: '#43CCF8'
     }
@@ -158,9 +143,6 @@ export function IconConverter(id: string, icon: IIconBase, config: IIconConfig):
 
   return {
     size: icon.size || config.size,
-    strokeWidth: icon.strokeWidth || config.strokeWidth,
-    strokeLinecap: icon.strokeLinecap || config.strokeLinecap,
-    strokeLinejoin: icon.strokeLinejoin || config.strokeLinejoin,
     colors,
     id
   }

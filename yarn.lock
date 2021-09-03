@@ -1795,7 +1795,10 @@ __metadata:
   resolution: "@brickdoc/design-icons@workspace:packages/brickdoc-design-icons"
   dependencies:
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc"
+    "@icon-park/compiler": ^1.0.7
     eslint: ^7.32.0
+    glob: ^7.1.7
+    mkdirp: ^1.0.4
   peerDependencies:
     react: ">= 17.0"
     react-dom: ">= 17.0"
@@ -3098,6 +3101,19 @@ __metadata:
   version: 2.2.5
   resolution: "@iarna/toml@npm:2.2.5"
   checksum: b63b2b2c4fd67969a6291543ada0303d45593801ee744b60f5390f183c03d9192bc67a217abb24be945158f1935f02840d9ffff40c0142aa171b5d3b6b6a3ea5
+  languageName: node
+  linkType: hard
+
+"@icon-park/compiler@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "@icon-park/compiler@npm:1.0.7"
+  dependencies:
+    "@types/css-tree": ^1.0.3
+    "@types/tinycolor2": ^1.4.2
+    css-tree: ^1.0.0-alpha.39
+    tinycolor2: ^1.4.1
+    xml-js: ^1.6.11
+  checksum: a8c1558da9f6decdb0998280cb414faf1aa5ab3779a5d8e454575dff30b48db9780228b5a28ecbe2528752cdc56a1cf60e138a495e2eed716e0232fd06d9f425
   languageName: node
   linkType: hard
 
@@ -5452,6 +5468,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/css-tree@npm:^1.0.3":
+  version: 1.0.6
+  resolution: "@types/css-tree@npm:1.0.6"
+  checksum: 98ced65367a920f99e2852ac836288bcd69cf6dbeb742903adcfd304e53cc2cc12d8a3d4e5adb1612f1f0c7b4ab3d36f404aa0568489a415cbbb3b64a97efef3
+  languageName: node
+  linkType: hard
+
 "@types/eslint-scope@npm:^3.7.0":
   version: 3.7.1
   resolution: "@types/eslint-scope@npm:3.7.1"
@@ -6087,6 +6110,13 @@ __metadata:
   dependencies:
     "@types/jest": "*"
   checksum: 77fe7ad3a9d49250972a0e3289b6d536942f95f0d539f32a917cf78c9422113d55c00de53b53dd4de1de49b68c8b500faea62e3017c4a64736cfbfbade749e04
+  languageName: node
+  linkType: hard
+
+"@types/tinycolor2@npm:^1.4.2":
+  version: 1.4.3
+  resolution: "@types/tinycolor2@npm:1.4.3"
+  checksum: 61984b2825d4ee902016ef24777787bb2fb9e4999ccd4f7e5a709442c00cf90ba4afa510b9c78f18dcc83c03305d597d5fe3825a6aad38354f95c68af70ebc1b
   languageName: node
   linkType: hard
 
@@ -10166,7 +10196,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-tree@npm:^1.1.2, css-tree@npm:^1.1.3":
+"css-tree@npm:^1.0.0-alpha.39, css-tree@npm:^1.1.2, css-tree@npm:^1.1.3":
   version: 1.1.3
   resolution: "css-tree@npm:1.1.3"
   dependencies:
@@ -24561,6 +24591,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"tinycolor2@npm:^1.4.1":
+  version: 1.4.2
+  resolution: "tinycolor2@npm:1.4.2"
+  checksum: 57ed262e08815a4ab0ed933edafdbc6555a17081781766149813b44a080ecbe58b3ee281e81c0e75b42e4d41679f138cfa98eabf043f829e0683c04adb12c031
+  languageName: node
+  linkType: hard
+
 "tippy.js@npm:^6.3.1":
   version: 6.3.1
   resolution: "tippy.js@npm:6.3.1"
@@ -26406,6 +26443,17 @@ typescript@^4.4.2:
     utf-8-validate:
       optional: true
   checksum: 48582e4feb1fc6b6b977a0ee6136e5cd1c6a14bc5cb6ce5acf596652b34be757cdf0c225235b3263d56d057bc5d6e528dbe27fc88a3d09828aa803c6696f4b2c
+  languageName: node
+  linkType: hard
+
+"xml-js@npm:^1.6.11":
+  version: 1.6.11
+  resolution: "xml-js@npm:1.6.11"
+  dependencies:
+    sax: ^1.2.4
+  bin:
+    xml-js: ./bin/cli.js
+  checksum: 24a55479919413687105fc2d8ab05e613ebedb1c1bc12258a108e07cff5ef793779297db854800a4edf0281303ebd1f177bc4a588442f5344e62b3dddda26c2b
   languageName: node
   linkType: hard
 

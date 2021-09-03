@@ -5,5 +5,6 @@
     "strictNullChecks": false,
     "noImplicitAny": false
   },
-  "include": ["components/**/*", "utils/**/*", "externals.d.ts"]
+  "include": ["components/**/*", "utils/**/*", "externals.d.ts"],
+  "references": [{ "path": "../brickdoc-design-icons/tsconfig.build.json" }]
 }
