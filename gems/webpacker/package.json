@@ -18,14 +18,14 @@
     "js-yaml": "^4.1.0",
     "path-complete-extname": "^1.0.0",
     "pnp-webpack-plugin": "^1.7.0",
-    "terser-webpack-plugin": "^5.2.0",
+    "terser-webpack-plugin": "^5.2.1",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-merge": "^5.8.0",
     "webpack-sources": "^3.2.0"
   },
   "devDependencies": {
     "jest": "^27.1.0",
-    "webpack": "^5.51.1",
+    "webpack": "^5.51.2",
     "webpack-cli": "^4.8.0"
   },
   "peerDependencies": {

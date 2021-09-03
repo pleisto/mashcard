@@ -1837,7 +1837,7 @@ __metadata:
     rc-cascader: ^1.5.0
     rc-checkbox: ^2.3.2
     rc-dialog: ^8.6.0
-    rc-drawer: ^4.4.1
+    rc-drawer: ^4.4.2
     rc-dropdown: ^3.2.0
     rc-field-form: ^1.21.2
     rc-image: ^5.2.5
@@ -1847,7 +1847,7 @@ __metadata:
     rc-pagination: ^3.1.9
     rc-picker: ^2.5.15
     rc-progress: ^3.1.4
-    rc-resize-observer: ^1.0.0
+    rc-resize-observer: ^1.0.1
     rc-select: ^13.0.0-alpha.4
     rc-switch: ^3.2.2
     rc-table: ^7.17.2
@@ -1864,7 +1864,7 @@ __metadata:
     scroll-into-view-if-needed: ^2.2.28
     style-loader: ^3.2.1
     typescript: ^4.4.2
-    webpack: ^5.51.1
+    webpack: ^5.51.2
   peerDependencies:
     date-fns: ^2.23.0
     i18next: ^20.3.5
@@ -1980,7 +1980,7 @@ __metadata:
     "@graphql-codegen/typescript": ^2.1.2
     "@graphql-codegen/typescript-operations": ^2.1.2
     "@graphql-codegen/typescript-react-apollo": ^3.1.2
-    "@pmmmwh/react-refresh-webpack-plugin": ^0.5.0-rc.5
+    "@pmmmwh/react-refresh-webpack-plugin": ^0.5.0-rc.6
     "@rails/actioncable": ^6.1.4
     "@rails/activestorage": ^6.1.4
     "@swc/core": ^1.2.84
@@ -2042,7 +2042,7 @@ __metadata:
     less-loader: ^10.0.1
     lint-staged: ^11.1.2
     lodash: ^4.17.21
-    mini-css-extract-plugin: ^2.2.1
+    mini-css-extract-plugin: ^2.2.2
     mocha: ^9.1.1
     mocha-junit-reporter: ^2.0.0
     performant-array-to-tree: ^1.9.1
@@ -2069,7 +2069,7 @@ __metadata:
     ts-node: ^10.2.1
     tsconfig-paths-webpack-plugin: ^3.5.1
     typescript: ^4.4.2
-    webpack: ^5.51.1
+    webpack: ^5.51.2
     webpack-bundle-analyzer: ^4.4.2
     webpack-cli: ^4.8.0
     webpack-dev-server: ^4.1.0
@@ -2102,8 +2102,8 @@ __metadata:
     js-yaml: ^4.1.0
     path-complete-extname: ^1.0.0
     pnp-webpack-plugin: ^1.7.0
-    terser-webpack-plugin: ^5.2.0
-    webpack: ^5.51.1
+    terser-webpack-plugin: ^5.2.1
+    webpack: ^5.51.2
     webpack-assets-manifest: ^5.0.6
     webpack-cli: ^4.8.0
     webpack-merge: ^5.8.0
@@ -3537,13 +3537,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.0-rc.5":
-  version: 0.5.0-rc.5
-  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.0-rc.5"
+"@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.0-rc.6":
+  version: 0.5.0-rc.6
+  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.0-rc.6"
   dependencies:
     ansi-html: ^0.0.7
+    common-path-prefix: ^3.0.0
     core-js-pure: ^3.8.1
     error-stack-parser: ^2.0.6
+    find-up: ^5.0.0
     html-entities: ^2.1.0
     loader-utils: ^2.0.0
     schema-utils: ^3.0.0
@@ -3552,7 +3554,7 @@ __metadata:
     "@types/webpack": 4.x || 5.x
     react-refresh: ^0.10.0
     sockjs-client: ^1.4.0
-    type-fest: 1.x
+    type-fest: ">=0.17.0 <2.0.0"
     webpack: ">=4.43.0 <6.0.0"
     webpack-dev-server: 3.x || >=4.0.0-beta.0
     webpack-hot-middleware: 2.x
@@ -3570,7 +3572,7 @@ __metadata:
       optional: true
     webpack-plugin-serve:
       optional: true
-  checksum: 20ae9deb2c96bef1319feea972ecbe4fdd6e16823d9bfcc9581bd7957cd058739d553b123eef9df03c3f50309b9386c0d80e177a9211c2e3be787a2c42a2a385
+  checksum: c836fac45d2e46ce974f5dddb089ecf8b939c57ae6d749611f4927ceed291c4171b0dc24532fe0763a2fdaf831b1d01bd9c1fb7038dcbb86b6354150cea765fa
   languageName: node
   linkType: hard
 
@@ -9515,6 +9517,13 @@ __metadata:
     cz: bin/git-cz
     git-cz: bin/git-cz
   checksum: 5b0ae7310e91616e5f3c5149e355b0e675b1132bbad4c3292afe04c91192be81859b2c22f8fef00887310b270ab01b9aef60c6fc4e9bc47fbf208c209f1d8ff5
+  languageName: node
+  linkType: hard
+
+"common-path-prefix@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "common-path-prefix@npm:3.0.0"
+  checksum: fdb3c4f54e51e70d417ccd950c07f757582de800c0678ca388aedefefc84982039f346f9fd9a1252d08d2da9e9ef4019f580a1d1d3a10da031e4bb3c924c5818
   languageName: node
   linkType: hard
 
@@ -17768,14 +17777,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "mini-css-extract-plugin@npm:2.2.1"
+"mini-css-extract-plugin@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "mini-css-extract-plugin@npm:2.2.2"
   dependencies:
     schema-utils: ^3.1.0
   peerDependencies:
     webpack: ^5.0.0
-  checksum: 8b3f094a41c053e70fb0c33dbadb7dfac2e8a62565386b9ca2aa1d4f31891f61d7f47c49dccd7ce9880b1f15723b23b31d6a71a1a747b53811544c863af71d84
+  checksum: 8b4504b588ed35574d94fc1859db023f6883f5eb6f3ab4c3ae2b9beda8a222f3d76e32e4f3a36e84fee67fb1e1a5628f008935c17bd478e40ac5f118e907344e
   languageName: node
   linkType: hard
 
@@ -21043,9 +21052,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-drawer@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "rc-drawer@npm:4.4.1"
+"rc-drawer@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "rc-drawer@npm:4.4.2"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: ^2.2.6
@@ -21053,7 +21062,7 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 06392b93c35e0a52a641078f0d5235bb9fb2ba1e75cd208629a856a11baddab22f012b732c6c6c4dca47f7b650fb882e807edac3ea1a6901dd6a909642965bbc
+  checksum: 45c02bb03260649229da72541dc69ab458e5e6c9950458d1b1835104ef3d2852615b776759bf21a8cc6aeccc94c45c03fc364d806282daf77362704f3dbe24e7
   languageName: node
   linkType: hard
 
@@ -21219,6 +21228,21 @@ fsevents@^1.2.7:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
   checksum: 020bbe1020846e95c5e6d826b3d03d9711f6175dd85ea91b36549892ac7f000401c824aca0e7041b9d20c8b2a31be52c2525812ee3a52ae167d745ed953eeecd
+  languageName: node
+  linkType: hard
+
+"rc-resize-observer@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "rc-resize-observer@npm:1.0.1"
+  dependencies:
+    "@babel/runtime": ^7.10.1
+    classnames: ^2.2.1
+    rc-util: ^5.0.0
+    resize-observer-polyfill: ^1.5.1
+  peerDependencies:
+    react: ">=16.9.0"
+    react-dom: ">=16.9.0"
+  checksum: 4e7fc2a1f5e20776d35198ff7532cc5b8944f646010f91e7edeb4233d65bfac3ce962adf5f88a88bb7cd456105d46ce79c1e103fdc9d6513aeb773d1de2e346b
   languageName: node
   linkType: hard
 
@@ -24347,7 +24371,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"terser-webpack-plugin@npm:^5.0.3, terser-webpack-plugin@npm:^5.1.3, terser-webpack-plugin@npm:^5.2.0":
+"terser-webpack-plugin@npm:^5.0.3, terser-webpack-plugin@npm:^5.1.3":
   version: 5.2.0
   resolution: "terser-webpack-plugin@npm:5.2.0"
   dependencies:
@@ -24367,6 +24391,29 @@ resolve@^2.0.0-next.3:
     uglify-js:
       optional: true
   checksum: df2a4a340d1c8efb611b61987d4f2c2217efdff479dd2e44d7628ef32df2dafc8322c7e8a1267bdaec530824f7a66fc1cf71a39f0a5bb721c710235d6ee86c92
+  languageName: node
+  linkType: hard
+
+"terser-webpack-plugin@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "terser-webpack-plugin@npm:5.2.1"
+  dependencies:
+    jest-worker: ^27.0.6
+    p-limit: ^3.1.0
+    schema-utils: ^3.1.1
+    serialize-javascript: ^6.0.0
+    source-map: ^0.6.1
+    terser: ^5.7.2
+  peerDependencies:
+    webpack: ^5.1.0
+  peerDependenciesMeta:
+    "@swc/core":
+      optional: true
+    esbuild:
+      optional: true
+    uglify-js:
+      optional: true
+  checksum: c0e7bb0019b9f1d975522e38363d1dcba143a7775f03ed2f3b4999276558993dfb5a5b8b2bcf8731c29f6d3263127aa9ab7f0b6c6243195f6e0c310941f5c8e8
   languageName: node
   linkType: hard
 
@@ -26049,7 +26096,44 @@ typescript@^4.4.2:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.51.1, webpack@npm:^5.9.0":
+"webpack@npm:^5.51.2":
+  version: 5.51.2
+  resolution: "webpack@npm:5.51.2"
+  dependencies:
+    "@types/eslint-scope": ^3.7.0
+    "@types/estree": ^0.0.50
+    "@webassemblyjs/ast": 1.11.1
+    "@webassemblyjs/wasm-edit": 1.11.1
+    "@webassemblyjs/wasm-parser": 1.11.1
+    acorn: ^8.4.1
+    acorn-import-assertions: ^1.7.6
+    browserslist: ^4.14.5
+    chrome-trace-event: ^1.0.2
+    enhanced-resolve: ^5.8.0
+    es-module-lexer: ^0.7.1
+    eslint-scope: 5.1.1
+    events: ^3.2.0
+    glob-to-regexp: ^0.4.1
+    graceful-fs: ^4.2.4
+    json-parse-better-errors: ^1.0.2
+    loader-runner: ^4.2.0
+    mime-types: ^2.1.27
+    neo-async: ^2.6.2
+    schema-utils: ^3.1.0
+    tapable: ^2.1.1
+    terser-webpack-plugin: ^5.1.3
+    watchpack: ^2.2.0
+    webpack-sources: ^3.2.0
+  peerDependenciesMeta:
+    webpack-cli:
+      optional: true
+  bin:
+    webpack: bin/webpack.js
+  checksum: f767bf26afb89e6105757462a0d2d829583699aca0b76894339e2c60fc6dc0fbfc569fc070ef2d5e295f47b4ec649ab68db16bbc1fb593de9f5bb771afd85aca
+  languageName: node
+  linkType: hard
+
+"webpack@npm:^5.9.0":
   version: 5.51.1
   resolution: "webpack@npm:5.51.1"
   dependencies:

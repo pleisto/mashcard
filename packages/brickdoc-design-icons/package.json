@@ -9,6 +9,7 @@
   "main": "src/index.ts",
   "scripts": {
     "eslint:fix": "eslint --fix --cache ./src",
+    "cleanup": "rm -rf dist",
     "generator": "bin/icons-react-component-generator"
   },
   "peerDependencies": {

@@ -1,0 +1,2104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Emoji matches correct snapshot 1`] = `
+<div
+  class="brickdoc-uploader-dashboard"
+  role="dialog"
+>
+  <div
+    class="uploader-dashboard-navbar"
+  >
+    <button
+      class="brk-btn brk-btn-text uploader-dashboard-navbar-item active"
+      role="menuitem"
+      type="button"
+    >
+      <span>
+        Emoji Label
+      </span>
+    </button>
+    <div
+      class="uploader-dashboard-action-buttons"
+    >
+      <button
+        class="brk-btn brk-btn-text dashboard-action-button"
+        type="button"
+      >
+        <span
+          class="brk-icon dashboard-action-button-icon"
+        >
+          <span
+            class="brk-icon brk-icon-redo"
+          >
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.364 18.364a9 9 0 1 1 0-12.728C19.193 6.466 21 8.5 21 8.5"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+              <path
+                d="M21 4v4.5h-4.5"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+        </span>
+        <div
+          class="dashboard-action-button-label"
+        >
+          Random
+        </div>
+      </button>
+      <button
+        class="brk-btn brk-btn-text dashboard-action-button"
+        type="button"
+      >
+        <div
+          class="dashboard-action-button-label"
+        >
+          Remove
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    class="uploader-dashboard-emoji-panel"
+  >
+    <input
+      class="dashboard-emoji-search-input"
+      placeholder="Search for Emoji..."
+    />
+    <div
+      class="dashboard-emoji-section"
+    >
+      <div
+        class="dashboard-emoji-group"
+        role="group"
+      >
+        <div
+          class="dashboard-emoji-group-name"
+        >
+          Smileys & Emotion
+        </div>
+        <div
+          class="dashboard-emoji-list"
+          role="list"
+        >
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😀
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning face with big eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😃
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning face with smiling eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😄
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="beaming face with smiling eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😁
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning squinting face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😆
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning face with sweat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😅
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="rolling on the floor laughing"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤣
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with tears of joy"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😂
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="slightly smiling face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙂
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="upside-down face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙃
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="winking face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😉
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with smiling eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😊
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with halo"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😇
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with hearts"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥰
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with heart-eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😍
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="star-struck"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤩
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face blowing a kiss"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😘
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="kissing face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😗
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              ☺️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="kissing face with closed eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😚
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="kissing face with smiling eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😙
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with tear"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥲
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face savoring food"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😋
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with tongue"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😛
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="winking face with tongue"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😜
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="zany face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤪
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="squinting face with tongue"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😝
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="money-mouth face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤑
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="hugging face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤗
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with hand over mouth"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤭
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="shushing face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤫
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="thinking face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤔
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="zipper-mouth face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤐
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with raised eyebrow"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤨
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="neutral face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😐
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="expressionless face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😑
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face without mouth"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😶
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smirking face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😏
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="unamused face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😒
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with rolling eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙄
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grimacing face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😬
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="lying face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤥
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="relieved face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😌
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="pensive face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😔
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="sleepy face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😪
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="drooling face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤤
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="sleeping face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😴
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with medical mask"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😷
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with thermometer"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤒
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with head-bandage"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤕
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="nauseated face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤢
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face vomiting"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤮
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="sneezing face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤧
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="hot face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥵
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="cold face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥶
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="woozy face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥴
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="knocked-out face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😵
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="exploding head"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤯
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="cowboy hat face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤠
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="partying face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥳
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="disguised face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥸
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with sunglasses"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😎
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="nerd face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤓
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with monocle"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🧐
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="confused face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😕
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="worried face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😟
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="slightly frowning face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙁
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="frowning face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              ☹️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with open mouth"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😮
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="hushed face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😯
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="astonished face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😲
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="flushed face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😳
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="pleading face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥺
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="frowning face with open mouth"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😦
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="anguished face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😧
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="fearful face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😨
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="anxious face with sweat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😰
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="sad but relieved face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😥
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="crying face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😢
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="loudly crying face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😭
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face screaming in fear"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😱
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="confounded face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😖
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="persevering face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😣
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="disappointed face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😞
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="downcast face with sweat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😓
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="weary face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😩
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="tired face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😫
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="yawning face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🥱
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with steam from nose"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😤
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="pouting face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😡
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="angry face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😠
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="face with symbols on mouth"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤬
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling face with horns"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😈
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="angry face with horns"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👿
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="skull"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💀
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="skull and crossbones"
+              class="dashboard-emoji"
+              role="img"
+            >
+              ☠️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="pile of poo"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💩
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="clown face"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤡
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="ogre"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👹
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="goblin"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👺
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="ghost"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👻
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="alien"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👽
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="alien monster"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👾
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="robot"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤖
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning cat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😺
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="grinning cat with smiling eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😸
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="cat with tears of joy"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😹
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="smiling cat with heart-eyes"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😻
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="cat with wry smile"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😼
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="kissing cat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😽
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="weary cat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙀
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="crying cat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😿
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="pouting cat"
+              class="dashboard-emoji"
+              role="img"
+            >
+              😾
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="see-no-evil monkey"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙈
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="hear-no-evil monkey"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙉
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="speak-no-evil monkey"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🙊
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="kiss mark"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💋
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="love letter"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💌
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="heart with arrow"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💘
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="heart with ribbon"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💝
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="sparkling heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💖
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="growing heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💗
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="beating heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💓
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="revolving hearts"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💞
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="two hearts"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💕
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="heart decoration"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💟
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="heart exclamation"
+              class="dashboard-emoji"
+              role="img"
+            >
+              ❣️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="broken heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💔
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="red heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              ❤️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="orange heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🧡
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="yellow heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💛
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="green heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💚
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="blue heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💙
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="purple heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💜
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="brown heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤎
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="black heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🖤
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="white heart"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🤍
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="hundred points"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💯
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="anger symbol"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💢
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="collision"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💥
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="dizzy"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💫
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="sweat droplets"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💦
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="dashing away"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💨
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="hole"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🕳️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="bomb"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💣
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="speech balloon"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💬
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="eye in speech bubble"
+              class="dashboard-emoji"
+              role="img"
+            >
+              👁️‍🗨️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="left speech bubble"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🗨️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="right anger bubble"
+              class="dashboard-emoji"
+              role="img"
+            >
+              🗯️
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="thought balloon"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💭
+            </span>
+          </button>
+          <button
+            class="brk-btn brk-btn-text dashboard-emoji-item"
+            type="button"
+          >
+            <span
+              aria-label="zzz"
+              class="dashboard-emoji"
+              role="img"
+            >
+              💤
+            </span>
+          </button>
+          <div
+            class="emoji-load-more-placeholder"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard Gallery matches correct snapshot 1`] = `
+<div
+  class="brickdoc-uploader-dashboard"
+  role="dialog"
+>
+  <div
+    class="uploader-dashboard-navbar"
+  >
+    <button
+      class="brk-btn brk-btn-text uploader-dashboard-navbar-item active"
+      role="menuitem"
+      type="button"
+    >
+      <span>
+        Gallery Label
+      </span>
+    </button>
+    <div
+      class="uploader-dashboard-action-buttons"
+    >
+      <button
+        class="brk-btn brk-btn-text dashboard-action-button"
+        type="button"
+      >
+        <div
+          class="dashboard-action-button-label"
+        >
+          Remove
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    class="uploader-dashboard-gallery-panel"
+  >
+    <div
+      class="dashboard-gallery-group"
+      role="group"
+    >
+      <div
+        class="dashboard-gallery-group-name"
+      >
+        COLOR & GRADIENT
+      </div>
+      <div
+        class="dashboard-color-list"
+        role="list"
+      >
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(95, 95, 95);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(212, 55, 48);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(247, 95, 72);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(228, 127, 42);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(166, 166, 166);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(44, 173, 148);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(84, 35, 185);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(159, 15, 100);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(255, 226, 125);"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+        />
+        <div
+          class="dashboard-color-item"
+          role="img"
+          style="background: rgb(215, 135, 135);"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard Link matches correct snapshot 1`] = `
+<div
+  class="brickdoc-uploader-dashboard"
+  role="dialog"
+>
+  <div
+    class="uploader-dashboard-navbar"
+  >
+    <button
+      class="brk-btn brk-btn-text uploader-dashboard-navbar-item active"
+      role="menuitem"
+      type="button"
+    >
+      <span>
+        Link Label
+      </span>
+    </button>
+    <div
+      class="uploader-dashboard-action-buttons"
+    />
+  </div>
+  <div
+    class="uploader-dashboard-link-panel"
+  >
+    <input
+      class="dashboard-link-panel-input"
+      placeholder="Placeholder"
+    />
+    <button
+      class="dashboard-panel-button"
+    >
+      Button
+    </button>
+    <div
+      class="dashboard-link-panel-hint"
+    >
+      Button Hint
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard Upload matches correct snapshot 1`] = `
+<div
+  class="brickdoc-uploader-dashboard"
+  role="dialog"
+>
+  <div
+    class="uploader-dashboard-navbar"
+  >
+    <button
+      class="brk-btn brk-btn-text uploader-dashboard-navbar-item active"
+      role="menuitem"
+      type="button"
+    >
+      <span>
+        Upload Label
+      </span>
+    </button>
+    <div
+      class="uploader-dashboard-action-buttons"
+    />
+  </div>
+  <div
+    class="uploader-dashboard-upload-panel"
+    role="tabpanel"
+  >
+    <input
+      class="dashboard-upload-file-input"
+      type="file"
+    />
+    <button
+      class="dashboard-panel-button"
+    >
+      Button
+    </button>
+  </div>
+</div>
+`;

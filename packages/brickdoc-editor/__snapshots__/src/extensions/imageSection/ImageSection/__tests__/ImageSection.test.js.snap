@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageSection matches correct snapshot 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="white-space: normal;"
+>
+  <div
+    class="brickdoc-block-image-section-container"
+    role="cell"
+  >
+    <div
+      class="image-section-control-panel"
+      style="position: relative; user-select: auto; width: 700px; height: auto; max-width: 100%; min-width: 40px; box-sizing: border-box; flex-shrink: 0;"
+    >
+      <div
+        class="image-section-menu-button"
+      >
+        <span
+          class="brk-icon brk-icon-more image-section-menu-icon"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </div>
+      <div
+        data-rmiz-wrap="visible"
+        style="pointer-events: none; width: 100%;"
+      >
+        <div
+          class="brk-skeleton brk-skeleton-element"
+        >
+          <div
+            class="brk-skeleton-image"
+            style="width: 700px; height: 700px;"
+          >
+            <svg
+              class="brk-skeleton-image-svg"
+              viewBox="0 0 1098 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="brk-skeleton-image-path"
+                d="M365.714286 329.142857q0 45.714286-32.036571 77.677714t-77.677714 32.036571-77.677714-32.036571-32.036571-77.677714 32.036571-77.677714 77.677714-32.036571 77.677714 32.036571 32.036571 77.677714zM950.857143 548.571429l0 256-804.571429 0 0-109.714286 182.857143-182.857143 91.428571 91.428571 292.571429-292.571429zM1005.714286 146.285714l-914.285714 0q-7.460571 0-12.873143 5.412571t-5.412571 12.873143l0 694.857143q0 7.460571 5.412571 12.873143t12.873143 5.412571l914.285714 0q7.460571 0 12.873143-5.412571t5.412571-12.873143l0-694.857143q0-7.460571-5.412571-12.873143t-12.873143-5.412571zM1097.142857 164.571429l0 694.857143q0 37.741714-26.843429 64.585143t-64.585143 26.843429l-914.285714 0q-37.741714 0-64.585143-26.843429t-26.843429-64.585143l0-694.857143q0-37.741714 26.843429-64.585143t64.585143-26.843429l914.285714 0q37.741714 0 64.585143 26.843429t26.843429 64.585143z"
+              />
+            </svg>
+          </div>
+        </div>
+        <img
+          alt=""
+          class="brickdoc-block-image loading"
+          role="img"
+        />
+        <button
+          aria-label="Zoom image"
+          data-rmiz-btn-open="true"
+          type="button"
+        />
+      </div>
+      <button
+        class="image-section-zoom-in-button"
+      />
+      <div>
+        <div
+          class="image-section-control-left-drag"
+          style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; left: 8px; cursor: col-resize;"
+        />
+        <div
+          class="image-section-control-right-drag"
+          style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; right: 8px; cursor: col-resize;"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
