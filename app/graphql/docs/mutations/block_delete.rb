@@ -5,6 +5,8 @@ module Docs
 
     def resolve(id:)
       block = Docs::Block.find(id)
+      block.deleted_at = Time.now
+      block.save
 
       block.delete_pages!
 

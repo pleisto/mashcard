@@ -2,54 +2,7 @@ import * as React from 'react'
 import { Editor } from '@tiptap/core'
 import { StyleMeta } from './BubbleMenu'
 import { Button, Dropdown, Tooltip, Icon } from '@brickdoc/design-system'
-
-interface ColorMeta {
-  color: string
-  label: string
-}
-
-const FONT_COLOR: ColorMeta[] = [
-  {
-    color: '#3E3E3E',
-    label: 'Default'
-  },
-  {
-    color: '#A6A6A6',
-    label: 'Gray'
-  },
-  {
-    color: '#2DC5E3',
-    label: 'Cyan'
-  },
-  {
-    color: '#D43730',
-    label: 'Red'
-  },
-  {
-    color: '#E47F2A',
-    label: 'Orange'
-  },
-  {
-    color: '#FFE27D',
-    label: 'Yellow'
-  },
-  {
-    color: '#2CAD94',
-    label: 'Green'
-  },
-  {
-    color: '#55C6DF',
-    label: 'Blue'
-  },
-  {
-    color: '#5423B9',
-    label: 'Purple'
-  },
-  {
-    color: '#9F0F64',
-    label: 'Purplish Red'
-  }
-]
+import { ColorMeta, COLOR as FONT_COLOR } from '../../color'
 
 const FontColorStyle: StyleMeta = {
   value: 'fontColor',

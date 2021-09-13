@@ -89,3 +89,17 @@ export const queryChildrenBlocks = gql`
     }
   }
 `
+
+export const queryDatabaseRowBlocks = gql`
+  query GetDatabaseRowBlocks($parentId: String!, $snapshotVersion: Int!) {
+    databaseRowBlocks(parentId: $parentId, snapshotVersion: $snapshotVersion) {
+      id
+      sort
+      parentId
+      type
+      text
+      content
+      data
+    }
+  }
+`

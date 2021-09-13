@@ -51,6 +51,18 @@ import {
 declare module 'react-table' {
   // take this file as-is, or comment out the sections that don't apply to your plugin configuration
 
+  // define our custom types here
+  export interface TableActiveStatus {
+    rowId: string
+    columnIndex?: number
+  }
+
+  export interface TableColumnSelectOption {
+    value: string
+    label: string
+    color: string
+  }
+
   export interface TableOptions<D extends Record<string, unknown>>
     extends UseExpandedOptions<D>,
       UseFiltersOptions<D>,
@@ -81,7 +93,12 @@ declare module 'react-table' {
       UsePaginationInstanceProps<D>,
       UseRowSelectInstanceProps<D>,
       UseRowStateInstanceProps<D>,
-      UseSortByInstanceProps<D> {}
+      UseSortByInstanceProps<D> {
+    // define custom table properties here
+    updateActiveStatus: React.Dispatch<React.SetStateAction<TableActiveStatus[]>>
+    resetActiveStatus: () => void
+    updateData: (rowId: string, key: string, data: any) => void
+  }
 
   export interface TableState<D extends Record<string, unknown> = Record<string, unknown>>
     extends UseColumnOrderState<D>,
@@ -106,7 +123,12 @@ declare module 'react-table' {
     extends UseFiltersColumnProps<D>,
       UseGroupByColumnProps<D>,
       UseResizeColumnsColumnProps<D>,
-      UseSortByColumnProps<D> {}
+      UseSortByColumnProps<D> {
+    // define custom column properties here
+    columnType: string
+    selectOptions: TableColumnSelectOption[]
+    index: number
+  }
 
   export interface Cell<D extends Record<string, unknown> = Record<string, unknown>>
     extends UseGroupByCellProps<D>,

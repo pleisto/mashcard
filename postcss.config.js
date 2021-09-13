@@ -11,7 +11,7 @@ module.exports = {
     // stylelint is not compatible with postcss 8
     // require('stylelint')({}),
     require('postcss-will-change'),
-    require('postcss-preset-env')({ stage: 2 }),
+    require('postcss-preset-env')({ stage: 0 }),
     require('postcss-functions')({
       functions: { colorPalette }
     })

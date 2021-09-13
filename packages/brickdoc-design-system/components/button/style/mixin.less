@@ -3,10 +3,10 @@
 .button-size(@height; @padding-horizontal; @font-size; @border-radius) {
   @padding-vertical: max((round(((@height - @font-size * @line-height-base) / 2) * 10) / 10) - @border-width-base, 0);
 
-  height: 40px;
-  padding: 8px 16px;
+  height: @height;
+  padding: @padding-vertical @padding-horizontal;
   font-size: @font-size;
-  border-radius: 2px;
+  border-radius: @border-radius;
 }
 
 .button-disabled(@color: @btn-disable-color; @background: @btn-disable-bg; @border: @btn-disable-border) {

@@ -28,7 +28,7 @@ const withoutUUID = (content: JSONContent[] | undefined): JSONContent[] => {
 
 // https://prosemirror.net/docs/ref/#model.Node
 const nodeToBlock = (node: Node, level: number): BlockInput[] => {
-  const { uuid, sort, seq, ...rest } = node.attrs
+  const { uuid, sort, seq, data, ...rest } = node.attrs
 
   // TODO check if has child
   const hasChildren =
@@ -46,8 +46,10 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
     // sort: sort, ## TODO
     type: node.type.name,
     meta: rest,
-    data: {}
+    data: data || {}
   }
+
+  // TODO: convert rows to children nodes
 
   const childrenBlocks = hasChildren ? nodeChildren(node) : []
   const children = childrenBlocks.flatMap((n: Node, index: number) =>
@@ -70,6 +72,10 @@ export const blockToNode = (block: Block): JSONContent => {
   // NOTE patch UPDATE
   if (block.sort !== undefined) {
     attrs.sort = block.sort
+  }
+
+  if (block.data) {
+    attrs.data = block.data
   }
 
   const result: JSONContent = {

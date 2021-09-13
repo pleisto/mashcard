@@ -19,7 +19,8 @@ describe('Dashboard', () => {
     }
     const sources: ImportSourceOption[] = [source]
     const uppy: any = {
-      on: () => {}
+      on: () => {},
+      off: () => {}
     }
 
     it('matches correct snapshot', () => {

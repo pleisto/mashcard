@@ -148,6 +148,14 @@ export const BlockMove = gql`
   }
 `
 
+export const BlockUpdate = gql`
+  mutation blockUpdate($input: BlockUpdateInput!) {
+    blockUpdate(input: $input) {
+      errors
+    }
+  }
+`
+
 export const BlockCreateSnapshot = gql`
   mutation blockCreateSnapshot($input: BlockCreateSnapshotInput!) {
     blockCreateSnapshot(input: $input) {

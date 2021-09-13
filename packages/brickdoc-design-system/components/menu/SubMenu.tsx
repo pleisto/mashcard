@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
 import MenuContext from './MenuContext'
 import { isValidElement, cloneElement } from '../_util/reactNode'
+import * as Icon from '../icon'
 
 interface TitleEventEntity {
   key: string
@@ -64,7 +65,12 @@ function SubMenu(props: SubMenuProps) {
       }}>
       <RcSubMenu
         {...omit(props, ['icon'])}
-        title={titleNode}
+        title={
+          <>
+            {titleNode}
+            <Icon.ArrowRight />
+          </>
+        }
         popupClassName={classNames(prefixCls, `${prefixCls}-${antdMenuTheme}`, popupClassName)}
       />
     </MenuContext.Provider>

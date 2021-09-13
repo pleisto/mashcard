@@ -1,76 +1,75 @@
 import React from 'react'
-import { Column } from 'react-table'
+import { Column, TableColumnSelectOption } from 'react-table'
 import { v4 as uuid } from 'uuid'
 
 export const DEFAULT_GROUP_ID = '__defaultGroup'
 
-export function useColumns(defaultColumns: Column[]): [
+export interface DatabaseColumn {
+  key: string
+  title: string
+  type: string
+  // group: string
+  selectOptions?: TableColumnSelectOption[]
+}
+
+export interface DatabaseColumns extends Array<DatabaseColumn> {}
+
+export const databaseColumnsToTableColumns = (databaseColumns: DatabaseColumns): Column[] =>
+  Object.entries(
+    databaseColumns.reduce((r: { [group: string]: Column[] }, dbColumn: DatabaseColumn) => {
+      const group = DEFAULT_GROUP_ID
+      const column = {
+        accessor: dbColumn.key,
+        Header: dbColumn.title,
+        columnType: dbColumn.type,
+        selectOptions: dbColumn.selectOptions ?? [],
+        index: (r[group] || []).length
+      }
+      r[group] = [...(r[group] || []), column]
+      return r
+    }, {})
+  ).map(([group, columns]) => ({ id: group, columns }))
+
+export function useColumns(options: { databaseColumns: DatabaseColumns; updateAttributeData: (attributes: Record<string, any>) => void }): [
   Column[],
   {
-    remove: (groupId: string, columnId: string) => void
-    update: (value: string, groupId: string, columnId: string) => void
+    setColumns: (fn: (prevColumns: DatabaseColumns) => DatabaseColumns) => void
     add: () => void
+    remove: (groupId: string, columnId: string) => void
+    updateName: (value: string, groupId: string, columnId: string) => void
+    updateType: (type: string, groupId: string, columnId: string) => void
   }
 ] {
-  const [columns, setColumns] = React.useState<Column[]>(defaultColumns)
+  const { databaseColumns, updateAttributeData } = options
 
-  const remove = React.useCallback((groupId: string, columnId: string): void => {
-    setColumns(prevColumns =>
-      prevColumns.map(group => {
-        if (group.id === groupId) {
-          return {
-            ...group,
-            columns: ((group as any).columns as Column[]).filter(column => column.accessor !== columnId)
-          }
-        }
+  const latestDatabaseColumns = React.useRef<DatabaseColumns>(databaseColumns)
+  const latestColumns = React.useRef<Column[]>(databaseColumnsToTableColumns(latestDatabaseColumns.current))
 
-        return group
-      })
-    )
-  }, [])
+  const setColumns = (fn: (prevColumns: DatabaseColumns) => DatabaseColumns): void => {
+    latestDatabaseColumns.current = fn(latestDatabaseColumns.current)
+    latestColumns.current = databaseColumnsToTableColumns(latestDatabaseColumns.current)
+    updateAttributeData({ columns: latestDatabaseColumns.current })
+  }
 
-  const update = React.useCallback(
-    (value: string, groupId: string, columnId: string): void =>
-      setColumns(prevColumns =>
-        prevColumns.map(group => {
-          if (group.id !== groupId) return group
-          return {
-            ...group,
-            columns: ((group as any).columns as Column[]).map(column => ({
-              ...column,
-              Header: column.accessor === columnId ? value : column.Header
-            }))
-          }
-        })
-      ),
-    []
-  )
+  const remove = (groupId: string, columnId: string): void =>
+    setColumns(prevColumns => prevColumns.filter(dbColumn => dbColumn.key !== columnId))
 
-  const add = React.useCallback((): void => {
-    setColumns(prevColumns => {
-      return prevColumns.map(group => {
-        if (group.id === DEFAULT_GROUP_ID) {
-          const columns: Column[] = (group as any).columns
-          const label = 'Column'
-          const existsCount = columns.filter(c => typeof c.Header === 'string' && c.Header.startsWith(label)).length
-          const Header = `${label}${existsCount}`
+  const add = (): void =>
+    setColumns(prevColumns => [
+      ...prevColumns,
+      {
+        key: uuid(),
+        title: `Column${prevColumns.length}`,
+        type: 'text',
+        index: prevColumns.length
+      }
+    ])
 
-          return {
-            ...group,
-            columns: [
-              ...columns,
-              {
-                Header,
-                accessor: uuid()
-              }
-            ]
-          }
-        }
+  const updateName = (value: string, groupId: string, columnId: string): void =>
+    setColumns(prevColumns => prevColumns.map(dbColumn => (dbColumn.key === columnId ? { ...dbColumn, title: value } : dbColumn)))
 
-        return group
-      })
-    })
-  }, [])
+  const updateType = (type: string, groupId: string, columnId: string): void =>
+    setColumns(prevColumns => prevColumns.map(dbColumn => (dbColumn.key === columnId ? { ...dbColumn, type } : dbColumn)))
 
-  return [columns, { add, update, remove }]
+  return [latestColumns.current, { setColumns, add, remove, updateName, updateType }]
 }

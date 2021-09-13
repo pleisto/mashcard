@@ -2,6 +2,7 @@
 export { IconProvider, DEFAULT_ICON_CONFIGS } from './icon'
 export type { IIconConfig } from './icon'
 export { default as Add } from './icons/Add'
+export { default as AddGroup } from './icons/AddGroup'
 export { default as AddText } from './icons/AddText'
 export { default as Alarm } from './icons/Alarm'
 export { default as Alipay } from './icons/Alipay'

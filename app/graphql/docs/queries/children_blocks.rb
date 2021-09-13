@@ -27,7 +27,8 @@ module Docs
           root = Docs::Block.create!(params)
         end
 
-        blocks = root.descendants.with_attached_attachments.to_a
+        # TODO: storageType?
+        blocks = root.descendants.where('type != ?', 'databaseRow').with_attached_attachments.to_a
 
         result = authorized_scope [root], as: :collaborating, with: Docs::BlockPolicy
         if result.blank?

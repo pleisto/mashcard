@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 SimpleCov.start 'rails' do
+  add_group "GraphQL", "app/graphql"
   enable_coverage :branch
   if ENV['CI'] == "true"
     require 'simplecov-lcov'

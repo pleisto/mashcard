@@ -1,0 +1,207 @@
+.table-block-toolbar-item-panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 8px rgba(1, 66, 193, 0.1), 0 8px 12px rgba(66, 66, 66, 0.1), 0 0 6px rgba(66, 66, 66, 0.05);
+  border-radius: 8px;
+
+  --text-color: #bdbdbd;
+  --text-font-size: 14px;
+  --horizontal-padding: 12px;
+
+  & .table-block-toolbar-item-title {
+    color: var(--text-color);
+    font-size: var(--text-font-size);
+    font-weight: 500;
+    padding: 8px var(--horizontal-padding);
+    line-height: 32px;
+    margin-bottom: 8px;
+  }
+
+  & .table-toolbar-item-group-panel {
+    min-width: 604px;
+
+    &.cascade {
+      background: #eee;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding-top: 10px;
+    }
+
+    & .table-toolbar-item-group-content {
+      display: flex;
+      flex-direction: column;
+      color: var(--text-color);
+      font-size: var(--text-font-size);
+      font-weight: 500;
+      line-height: 20px;
+      padding: 0 var(--horizontal-padding) 8px;
+    }
+  }
+
+  & .table-toolbar-item-option {
+    --item-margin-left: 12px;
+    --action-button-width: 32px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding-right: calc(var(--item-margin-left) + var(--action-button-width));
+
+    & > * + * {
+      margin-left: var(--item-margin-left);
+    }
+
+    &.single {
+      height: 32px;
+    }
+
+    --border-color: #bdbdbd;
+    --border-radius: 4px;
+    --head-width: 64px;
+    --selection-item-padding-right: 10px;
+
+    & .table-toolbar-item-option-head-label {
+      width: var(--head-width);
+      text-align: right;
+    }
+
+    & .table-toolbar-item-option-head-select {
+      width: var(--head-width);
+
+      & .brk-select-selector {
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+
+        & .brk-select-selection-item {
+          padding-right: var(--selection-item-padding-right);
+        }
+      }
+    }
+
+    & .table-toolbar-item-option-select {
+      width: 136px;
+
+      & .brk-select-selector {
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+
+        & .brk-select-selection-item {
+          padding-right: var(--selection-item-padding-right);
+        }
+      }
+
+      & .table-toolbar-item-option-select-label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    & .table-toolbar-item-option-input {
+      flex: 1;
+      background: #f5f5f5;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+    }
+
+    & .table-toolbar-item-option-action-button {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: var(--action-button-width);
+      height: 32px;
+      padding: 0;
+      line-height: 1;
+
+      &.fade {
+        font-size: 18px;
+        color: #bdbdbd;
+      }
+    }
+  }
+
+  & .table-toolbar-item-option + .table-toolbar-item-option {
+    margin-top: 14px;
+  }
+
+  & .table-toolbar-item-footer {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 8px;
+      right: 8px;
+      background: #e0e0e0;
+      height: 1px;
+    }
+
+    &.cascade::before {
+      content: none;
+    }
+
+    & .table-toolbar-item-footer-button {
+      padding: 14px 12px;
+      border-radius: 0;
+      text-align: left;
+      line-height: 1;
+
+      &:active,
+      &:hover,
+      &:focus {
+        background: none;
+      }
+    }
+
+    & .table-toolbar-item-footer-icon {
+      color: rgba(189, 189, 189, 1);
+      margin-left: 7px;
+    }
+  }
+}
+
+.table-toolbar-item-option-select-text {
+  margin-left: 8px;
+}
+
+.table-block-filter-select-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  width: 240px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(1, 66, 193, 0.1), 0 8px 12px rgba(66, 66, 66, 0.1), 0 0 6px rgba(66, 66, 66, 0.05);
+  border-radius: 8px;
+
+  & .filter-select-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    color: #bdbdbd;
+  }
+
+  & .filter-select-option {
+    & .filter-select-option-btn {
+      padding: 0;
+      width: 100%;
+      text-align: left;
+
+      & .filter-select-option-btn-content {
+        & .brk-icon {
+          margin-right: 8px;
+        }
+      }
+
+      & .filter-select-option-btn-desc {
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(189, 189, 189, 1);
+        margin-left: 22px;
+      }
+    }
+  }
+}

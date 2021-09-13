@@ -1,13 +1,23 @@
 import React from 'react'
 import { Popover, Modal, Menu, Input, Icon } from '@brickdoc/design-system'
+import { COLUMN_TYPE } from './columnType'
 
 interface ColumnMenuProps {
   onColumnNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onColumnTypeChange: (type: string) => void
   onRemoveColumn: () => void
   columnName?: string
+  columnType: string
 }
 
-export const ColumnMenu: React.FC<ColumnMenuProps> = ({ onRemoveColumn, onColumnNameChange, columnName, children }) => {
+export const ColumnMenu: React.FC<ColumnMenuProps> = ({
+  onRemoveColumn,
+  onColumnNameChange,
+  onColumnTypeChange,
+  columnName,
+  columnType,
+  children
+}) => {
   const [visible, setVisible] = React.useState(false)
   const handleVisibleChange = (visible: boolean): void => setVisible(visible)
   const [modal, contextHolder] = Modal.useModal()
@@ -23,28 +33,55 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({ onRemoveColumn, onColumn
     })
   }
 
+  const handleUpdateColumnType = (type: string): void => {
+    onColumnTypeChange(type)
+    setVisible(false)
+  }
+
+  const currentColumnType = COLUMN_TYPE.find(item => item.type === columnType)!
+
   return (
     <>
       {contextHolder}
       <Popover
         visible={visible}
-        overlayClassName="table-block-column-menu-popover"
+        overlayClassName="table-block-menu-popover"
         onVisibleChange={handleVisibleChange}
         content={
-          <Menu className="table-block-column-menu">
-            <Menu.Item key="Header" className="table-block-column-menu-item input-item">
+          <Menu className="table-block-menu">
+            <Menu.Item key="Header" className="table-block-menu-item input-item">
               <Input
                 onFocus={e => {
                   e.target.setSelectionRange(0, e.target.value?.length ?? 0)
                 }}
                 onChange={onColumnNameChange}
-                className="table-block-column-input"
+                className="table-block-menu-input"
                 value={columnName}
               />
             </Menu.Item>
-            <Menu.Item onClick={removeColumnConfirm} className="table-block-column-menu-item" key="Delete">
-              <Icon.Delete className="table-block-column-menu-item-icon" />
-              Delete
+            <Menu.ItemGroup title="Property Type">
+              <Menu.SubMenu
+                key="type"
+                className="table-block-menu-submenu-title"
+                title={
+                  <>
+                    {React.createElement(currentColumnType.icon)}
+                    <span>{currentColumnType.label}</span>
+                  </>
+                }>
+                <Menu.ItemGroup title="Basic">
+                  {COLUMN_TYPE.map(type => (
+                    <Menu.Item key={type.type} onClick={() => handleUpdateColumnType(type.type)}>
+                      {React.createElement(type.icon)}
+                      <span>{type.label}</span>
+                    </Menu.Item>
+                  ))}
+                </Menu.ItemGroup>
+              </Menu.SubMenu>
+            </Menu.ItemGroup>
+            <Menu.Item onClick={removeColumnConfirm} className="table-block-menu-item" key="Delete">
+              <Icon.Delete />
+              <span>Delete</span>
             </Menu.Item>
           </Menu>
         }

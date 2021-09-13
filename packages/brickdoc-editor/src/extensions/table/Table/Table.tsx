@@ -1,68 +1,109 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import cx from 'classnames'
 import { NodeViewProps, NodeViewWrapper } from '@tiptap/react'
-import { useTable, HeaderGroup, useFlexLayout, TableHeaderProps, useResizeColumns, TableHeaderGroupProps } from 'react-table'
-import { Button, Icon } from '@brickdoc/design-system'
+import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps } from 'react-table'
+import { Modal } from '@brickdoc/design-system'
+import { TableExtensionOptions } from '../../table'
 import { ColumnMenu } from './ColumnMenu'
-import { useColumns, DEFAULT_GROUP_ID } from './useColumns'
+import { useColumns } from './useColumns'
 import { useAddNewColumn, COLUMN_ID as ADD_NEW_COLUMN_ID } from './useAddNewColumn'
 import { useActiveStatus } from './useActiveStatus'
+import { Cell } from './Cells/Cell'
+import { TableRow } from './TableRow'
+import { TableToolbar } from './TableToolbar'
+import { useFilter } from './TableToolbar/Filter/useFilter'
+import { useSorter } from './TableToolbar/Sorter/useSorter'
 import './Table.css'
 
 const isGroupedHeader = (headerGroup: HeaderGroup): boolean => headerGroup.headers?.[0].depth !== 0 || !!headerGroup.Header
 
-const getStyles = (props: Partial<TableHeaderProps>, align = 'left') => [
+const headerPropsGetter = (props: Partial<TableHeaderGroupProps>, { column }: any): Array<Partial<TableHeaderGroupProps>> => [
   props,
   {
     style: {
-      justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
+      justifyContent: column.align === 'right' ? 'flex-end' : 'flex-start',
       alignItems: 'center',
       display: 'inline-flex'
     }
   }
 ]
-const headerPropsGetter = (props: Partial<TableHeaderGroupProps>, { column }: any) => getStyles(props, column.align)
-const cellPropsGetter = (props: Partial<TableHeaderGroupProps>, { cell }: any) => getStyles(props, cell.column.align)
 
-const defaultColumnMeta = {
+const defaultColumnConfig = {
   minWidth: 30, // minWidth is only used as a limit for resizing
-  width: 180 // width is used for both the flex-basis and flex-grow
+  width: 180, // width is used for both the flex-basis and flex-grow
+  Cell
 }
 
-export const Table: React.FC<NodeViewProps> = () => {
-  const [columns, { add: addNewColumn, remove: removeColumn, update: updateColumn }] = useColumns([
-    {
-      id: DEFAULT_GROUP_ID,
-      columns: [
-        {
-          Header: 'Task name',
-          accessor: uuid()
-        },
-        {
-          Header: 'Due date',
-          accessor: uuid()
-        }
-      ]
-    }
-  ])
+export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
+  const parentId: string = node.attrs.uuid
+  const prevData = node.attrs.data || {}
 
-  const [{ isCellActive, isRowActive, updateActiveStatus }] = useActiveStatus()
-  const [data, setData] = React.useState<object[]>([
-    {
-      taskName: 'taskName',
-      dueDate: 'dueDate'
-    }
-  ])
+  const tableOptions: TableExtensionOptions = extension.options
+  const { useDatabaseRows } = tableOptions
 
-  const addNewRow = (rowIndex: number): void => {
-    updateActiveStatus([rowIndex + 1])
-    setData(prevData => [...prevData.slice(0, rowIndex), {}, ...prevData.slice(rowIndex, prevData.length)])
+  const updateAttributeData = (data: Record<string, any>): void => {
+    updateAttributes({
+      data: { ...(prevData || {}), ...data }
+    })
+  }
+
+  const fetched = React.useRef(false)
+
+  const [columns, { setColumns, add: addNewColumn, remove: removeColumn, updateName: updateColumnName, updateType: updateColumnType }] =
+    useColumns({
+      databaseColumns: prevData.columns,
+      updateAttributeData
+    })
+
+  const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
+
+  const [tableRows, { fetchRows, addRow, updateRow, removeRow }] = useDatabaseRows(parentId)
+
+  React.useEffect(() => {
+    if (!fetched.current) {
+      void fetchRows()
+      fetched.current = true
+    }
+  }, [fetchRows])
+
+  const updateData = (rowId: string, key: string, data: any): void => {
+    const row = tableRows.find(r => r.id === rowId)
+    if (row) {
+      updateRow({ ...row, [key]: data })
+    }
+  }
+
+  const addNewRow = (rowIndex?: number): void => {
+    const row = addRow(rowIndex)
+    updateActiveStatus([{ rowId: row.id }])
+  }
+
+  const [modal, contextHolder] = Modal.useModal()
+
+  const removeRowConfirm = (rowId: string): void => {
+    modal.confirm({
+      title: 'Are you sure you want to delete this property?',
+      okText: 'Delete',
+      cancelText: 'Cancel',
+      icon: null,
+      onOk: () => removeRow(rowId)
+    })
   }
 
   const addNewColColumn = useAddNewColumn(addNewColumn)
+
+  const [sorterOptions, { add: addNewSorter, remove: removeSorter, update: updateSorter, sort }] = useSorter([])
+  const [filterGroup, { filter, add: addNewFilter, remove: removeFilter, update: updateFilter, duplicate: duplicateFilter }] = useFilter({
+    type: 'group',
+    collectionType: 'intersection',
+    filters: []
+  })
+
+  // filter && sort
+  const data = React.useMemo(() => sort(tableRows.filter(item => filter(item, filterGroup))), [tableRows, filterGroup, filter, sort])
+
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
-    { columns, data, defaultColumn: defaultColumnMeta },
+    { columns, data, defaultColumn: defaultColumnConfig, updateActiveStatus, resetActiveStatus, updateData, setColumns },
     useFlexLayout,
     useResizeColumns,
     hooks => {
@@ -72,10 +113,26 @@ export const Table: React.FC<NodeViewProps> = () => {
 
   return (
     <NodeViewWrapper
+      className="table-block-node-view-wrapper"
       ref={(container: HTMLDivElement) => {
         // TODO: need a better way to add this class
         container?.parentElement?.classList.add('table-block-react-renderer')
+        container?.classList.add('table-block-node-view-wrapper')
       }}>
+      {contextHolder}
+      <TableToolbar
+        onAddNewRow={addNewRow}
+        columns={columns}
+        filterGroup={filterGroup}
+        addFilter={addNewFilter}
+        removeFilter={removeFilter}
+        updateFilter={updateFilter}
+        duplicateFilter={duplicateFilter}
+        sorterOptions={sorterOptions}
+        addSorter={addNewSorter}
+        removeSorter={removeSorter}
+        updateSorter={updateSorter}
+      />
       <div className="brickdoc-table-block">
         <div {...getTableProps({ className: 'table-block-table', style: { minWidth: '700px' }, role: 'table' })}>
           <div className="table-block-row">
@@ -103,7 +160,9 @@ export const Table: React.FC<NodeViewProps> = () => {
                       <ColumnMenu
                         key={column.id}
                         columnName={column.Header as string}
-                        onColumnNameChange={e => updateColumn(e.target.value, column.parent?.id ?? '', column.id)}
+                        columnType={column.columnType}
+                        onColumnNameChange={e => updateColumnName(e.target.value, column.parent?.id ?? '', column.id)}
+                        onColumnTypeChange={type => updateColumnType(type, column.parent?.id ?? '', column.id)}
                         onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}>
                         {Header}
                       </ColumnMenu>
@@ -118,26 +177,16 @@ export const Table: React.FC<NodeViewProps> = () => {
               prepareRow(row)
               const rowProps = row.getRowProps({ className: 'table-block-tr' })
               return (
-                <div className={cx('table-block-row', { active: isRowActive(rowIndex) })} key={rowProps.key}>
-                  <div data-testid="table-actions" className="table-block-row-actions">
-                    <Button onClick={() => addNewRow(rowIndex)} className="table-block-row-action-button" type="text">
-                      <Icon.Plus />
-                    </Button>
-                  </div>
-                  <div {...rowProps} style={{ ...rowProps.style, display: 'inline-flex' }}>
-                    {row.cells.map((cell, cellIndex) => {
-                      const cellProps = cell.getCellProps(cellPropsGetter)
-                      return (
-                        <div
-                          {...cellProps}
-                          key={cellProps.key}
-                          className={cx('table-block-td', { active: isCellActive(rowIndex, cellIndex) })}>
-                          {cell.render('Cell')}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
+                <TableRow
+                  {...rowProps}
+                  row={row}
+                  // fix type
+                  rowActive={isRowActive((row.original as any).id)}
+                  onAddNewRow={addNewRow}
+                  onRemoveRow={removeRowConfirm}
+                  isCellActive={isCellActive}
+                  key={rowProps.key}
+                />
               )
             })}
           </div>

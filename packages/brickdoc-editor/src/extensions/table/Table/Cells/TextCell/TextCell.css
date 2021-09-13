@@ -1,0 +1,33 @@
+.table-block-text-cell {
+  height: 100%;
+  width: 100%;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #333;
+  font-size: 14px;
+}
+
+.table-block-text-input {
+  --border-color: 239, 239, 239;
+  --box-shadow-color: 62, 62, 62;
+
+  height: 100%;
+  border: 1px solid rgba(var(--border-color));
+  border-top: none;
+  border-bottom: none;
+  box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
+  border-radius: 4px;
+  z-index: 2;
+
+  &:focus {
+    box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
+    border-color: rgba(var(--border-color));
+  }
+
+  &:hover {
+    box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
+    border-color: rgba(var(--border-color));
+  }
+}

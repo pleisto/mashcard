@@ -1,21 +1,31 @@
 import React from 'react'
+import { TableActiveStatus } from 'react-table'
 
-export type ActiveStatus = [number, number] | number
+export type IsCellActive = (rowId: string, cellIndex: number) => boolean
 
 export function useActiveStatus(): [
   {
-    isRowActive: (rowIndex: number) => boolean
-    isCellActive: (rowIndex: number, cellIndex: number) => boolean
-    updateActiveStatus: React.Dispatch<React.SetStateAction<ActiveStatus[]>>
+    isRowActive: (rowId: string) => boolean
+    isCellActive: IsCellActive
+    update: React.Dispatch<React.SetStateAction<TableActiveStatus[]>>
+    reset: () => void
   }
 ] {
-  const [activeCells, setActiveCells] = React.useState<ActiveStatus[]>([])
-  const isRowActive = (rowIndex: number): boolean => activeCells.includes(rowIndex)
-  const isCellActive = (rowIndex: number, cellIndex: number): boolean =>
-    activeCells.some(active => {
-      if (typeof active === 'number') return false
-      return active[0] === rowIndex && (active[1] === -1 || active[1] === cellIndex)
-    })
+  const [activeItems, setActiveStatus] = React.useState<TableActiveStatus[]>([])
+  const isRowActive = React.useCallback(
+    (rowId: string): boolean => activeItems.some(item => item.rowId === rowId && item.columnIndex === undefined),
+    [activeItems]
+  )
+  const isCellActive = React.useCallback(
+    (rowId: string, columnIndex: number): boolean =>
+      activeItems.some(item => {
+        return item.rowId === rowId && item.columnIndex === columnIndex
+      }),
+    [activeItems]
+  )
 
-  return [{ isRowActive, isCellActive, updateActiveStatus: setActiveCells }]
+  return React.useMemo(
+    () => [{ isRowActive, isCellActive, update: setActiveStatus, reset: () => setActiveStatus([]) }],
+    [isCellActive, isRowActive]
+  )
 }

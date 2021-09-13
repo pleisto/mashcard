@@ -41,7 +41,7 @@
 @font-feature-settings-base: 'tnum';
 @font-size-base: 14px;
 @font-size-lg: @font-size-base + 2px;
-@font-size-sm: 13px;
+@font-size-sm: 12px;
 @heading-1-size: ceil(@font-size-base * 2.71);
 @heading-2-size: ceil(@font-size-base * 2.14);
 @heading-3-size: ceil(@font-size-base * 1.71);
@@ -76,8 +76,8 @@
 
 // The background colors for active and hover states for things like
 // list items or table cells.
-@item-active-bg: #c4c4c4;
-@item-hover-bg: #eaeaea;
+@item-active-bg: #f7f7f7;
+@item-hover-bg: #e6e6e6;
 
 // ICONFONT
 @iconfont-css-prefix: brk-icon;
@@ -117,7 +117,7 @@
 // Outline
 @outline-blur-size: 0;
 @outline-width: 2px;
-@outline-color: @primary-color;
+@outline-color: #2dc5e3;
 @outline-fade: 20%;
 
 @background-color-light: hsv(0, 0, 98%); // background of header and selected item
@@ -141,7 +141,7 @@
 
 // Buttons
 @btn-font-weight: 500;
-@btn-border-radius-base: 0.4rem;
+@btn-border-radius-base: 2px;
 @btn-border-radius-sm: @border-radius-base;
 @btn-border-width: @border-width-base;
 @btn-border-style: @border-style-base;
@@ -171,11 +171,11 @@
 
 @btn-font-size-lg: @font-size-lg;
 @btn-font-size-sm: @font-size-base;
-@btn-padding-horizontal-base: @padding-md - 1px;
+@btn-padding-horizontal-base: 16px;
 @btn-padding-horizontal-lg: @btn-padding-horizontal-base;
 @btn-padding-horizontal-sm: @padding-xs - 1px;
 
-@btn-height-base: @height-base;
+@btn-height-base: 40px;
 @btn-height-lg: @height-lg;
 @btn-height-sm: @height-sm;
 
@@ -311,13 +311,13 @@
 @zindex-back-top: 10;
 @zindex-picker-panel: 10;
 @zindex-popup-close: 10;
-@zindex-modal: 1000;
-@zindex-modal-mask: 1000;
 @zindex-message: 1010;
 @zindex-notification: 1010;
 @zindex-popover: 1030;
 @zindex-dropdown: 1050;
 @zindex-picker: 1050;
+@zindex-modal: 1055;
+@zindex-modal-mask: 1055;
 @zindex-popoconfirm: 1060;
 @zindex-tooltip: 1070;
 @zindex-image: 1080;
@@ -332,7 +332,7 @@
 
 //Dropdown
 @dropdown-menu-bg: @component-background;
-@dropdown-vertical-padding: 5px;
+@dropdown-vertical-padding: 8px;
 @dropdown-edge-child-vertical-padding: 4px;
 @dropdown-font-size: @font-size-base;
 @dropdown-line-height: 22px;
@@ -400,7 +400,7 @@
 @select-dropdown-vertical-padding: @dropdown-vertical-padding;
 @select-dropdown-font-size: @dropdown-font-size;
 @select-dropdown-line-height: @dropdown-line-height;
-@select-dropdown-height: 32px;
+@select-dropdown-height: 38px;
 @select-background: @component-background;
 @select-clear-background: @select-background;
 @select-selection-item-bg: @background-color-base;
@@ -509,10 +509,10 @@
 // ---
 @menu-inline-toplevel-item-height: 40px;
 @menu-item-height: 40px;
-@menu-item-group-height: @line-height-base;
+@menu-item-group-height: 1;
 @menu-collapsed-width: 80px;
 @menu-bg: @component-background;
-@menu-padding: 8px;
+@menu-padding: 12px;
 @menu-border-color: #efefef;
 @menu-border-radius: 8px;
 @menu-box-shadow: 0px 10px 15px rgba(62, 62, 62, 0.1), 0px 0px 6px rgba(62, 62, 62, 0.05);
@@ -524,14 +524,14 @@
 @menu-item-active-bg: #f7f7f7;
 @menu-item-active-danger-bg: @red-1;
 @menu-item-active-border-width: 3px;
-@menu-item-group-title-color: @text-color-secondary;
+@menu-item-group-title-color: #a6a6a6;
 @menu-item-vertical-margin: 4px;
 @menu-item-font-size: @font-size-base;
 @menu-item-boundary-margin: 8px;
 @menu-item-padding-horizontal: 20px;
 @menu-item-padding: 0 @menu-item-padding-horizontal;
 @menu-horizontal-line-height: 46px;
-@menu-icon-margin-right: 10px;
+@menu-icon-margin-right: 8px;
 @menu-icon-size: @menu-item-font-size;
 @menu-icon-size-lg: @font-size-lg;
 @menu-item-group-title-font-size: @menu-item-font-size;
@@ -601,7 +601,8 @@
 @tag-default-bg: @background-color-light;
 @tag-default-color: @text-color;
 @tag-font-size: @font-size-sm;
-@tag-line-height: 20px;
+@tag-line-height: 16px;
+@tag-border-radius: 20px;
 
 // TimePicker
 // ---

@@ -122,8 +122,8 @@ en-US:
       defaultValidationMessages:
         default: Field validation error for %{label}
         required: Please enter %{label}
-        enum: "%{label} must be one of [%{enum}]"
-        whitespace: "%{label} cannot be a blank character"
+        enum: '%{label} must be one of [%{enum}]'
+        whitespace: '%{label} cannot be a blank character'
         types:
           template: '%{label} is not a valid %{type}'
         date:
@@ -208,9 +208,9 @@ en-US:
       - Friday
       - Saturday
     formats:
-      default: "%m-%d-%Y"
-      long: "%B %d, %Y"
-      short: "%b %d"
+      default: '%m-%d-%Y'
+      long: '%B %d, %Y'
+      short: '%b %d'
     month_names:
       -
       - January
@@ -255,19 +255,19 @@ en-US:
           other: over %{count} years
         x_seconds:
           one: 1 second
-          other: "%{count} seconds"
+          other: '%{count} seconds'
         x_minutes:
           one: 1 minute
-          other: "%{count} minutes"
+          other: '%{count} minutes'
         x_days:
           one: 1 day
-          other: "%{count} days"
+          other: '%{count} days'
         x_months:
           one: 1 month
-          other: "%{count} months"
+          other: '%{count} months'
         x_years:
           one: 1 year
-          other: "%{count} years"
+          other: '%{count} years'
     prompts:
       second: Second
       minute: Minute
@@ -276,7 +276,7 @@ en-US:
       month: Month
       year: Year
   errors:
-    format: "%{attribute} %{message}"
+    format: '%{attribute} %{message}'
     graphql:
       docs:
         initialized_not_yet_completed: Initialized not yet completed
@@ -288,9 +288,9 @@ en-US:
       not_locked: was not locked
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-      is_not_valid_webid: "WebID \"%{webid}\" is not available"
-      is_not_valid_email: "Email \"%{email}\" is not available"
+        other: '%{count} errors prohibited this %{resource} from being saved:'
+      is_not_valid_webid: 'WebID "%{webid}" is not available'
+      is_not_valid_email: 'Email "%{email}" is not available'
       send_interval: Sending interval is too short, please try again after 1 minute
       accepted: must be accepted
       blank: can't be blank
@@ -330,7 +330,7 @@ en-US:
       body: 'There were problems with the following fields:'
       header:
         one: 1 error prohibited this %{model} from being saved
-        other: "%{count} errors prohibited this %{model} from being saved"
+        other: '%{count} errors prohibited this %{model} from being saved'
   helpers:
     select:
       prompt: Please select
@@ -341,22 +341,22 @@ en-US:
   number:
     currency:
       format:
-        delimiter: ","
-        format: "%u%n"
+        delimiter: ','
+        format: '%u%n'
         precision: 2
-        separator: "."
+        separator: '.'
         significant: false
         strip_insignificant_zeros: false
         unit: '$'
     format:
-      delimiter: ","
+      delimiter: ','
       precision: 3
-      separator: "."
+      separator: '.'
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           billion: Billion
           million: Million
@@ -370,7 +370,7 @@ en-US:
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
             one: Byte
@@ -384,27 +384,27 @@ en-US:
     percentage:
       format:
         delimiter: ''
-        format: "%n%"
+        format: '%n%'
     precision:
       format:
         delimiter: ''
   support:
     array:
-      last_word_connector: ", and "
-      two_words_connector: " and "
-      words_connector: ", "
+      last_word_connector: ', and '
+      two_words_connector: ' and '
+      words_connector: ', '
   time:
     am: am
     formats:
-      default: "%a, %d %b %Y %I:%M:%S %p %Z"
-      long: "%B %d, %Y %I:%M %p"
-      short: "%d %b %I:%M %p"
+      default: '%a, %d %b %Y %I:%M:%S %p %Z'
+      long: '%B %d, %Y %I:%M %p'
+      short: '%d %b %I:%M %p'
     pm: pm
   devise:
     confirmations:
-      confirmed: "Your email address has been successfully confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      confirmed: 'Your email address has been successfully confirmed.'
+      send_instructions: 'You will receive an email with instructions for how to confirm your email address in a few minutes.'
+      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.'
     failure:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
@@ -433,24 +433,24 @@ en-US:
       update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
       updated: Your account has been updated successfully.
     unlock_instructions:
-      send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
-      send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      send_instructions: 'You will receive an email with instructions for how to unlock your account in a few minutes.'
+      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.'
+      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: 'Reset password instructions'
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: 'Unlock instructions'
       email_changed:
-        subject: "Email Changed"
+        subject: 'Email Changed'
       password_change:
-        subject: "Password Changed"
+        subject: 'Password Changed'
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+      already_signed_out: 'Signed out successfully.'
   doorkeeper:
     scopes:
       openid: 'Authenticate your account'
@@ -517,7 +517,7 @@ en-US:
         title: 'Your authorized applications'
         application: 'Application'
         created_at: 'Created At'
-        date_format: "%Y-%m-%d %H:%M:%S"
+        date_format: '%Y-%m-%d %H:%M:%S'
     pre_authorization:
       status: 'Pre-authorization'
     openid_connect:
@@ -541,7 +541,7 @@ en-US:
           unknown: 'The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.'
           missing_param: 'Missing required parameter: %{value}.'
           request_not_authorized: 'Request need to be authorized. Required parameter for authorizing request is missing or invalid.'
-        invalid_redirect_uri: 'The requested redirect uri is malformed or doesn''t match client redirect URI.'
+        invalid_redirect_uri: "The requested redirect uri is malformed or doesn't match client redirect URI."
         unauthorized_client: 'The client is not authorized to perform this request using this method.'
         access_denied: 'The resource owner or authorization server denied the request.'
         invalid_scope: 'The requested scope is invalid, unknown, or malformed.'
@@ -559,11 +559,11 @@ en-US:
         invalid_grant: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.'
         unsupported_grant_type: 'The authorization grant type is not supported by the authorization server.'
         invalid_token:
-          revoked: "The access token was revoked"
-          expired: "The access token expired"
-          unknown: "The access token is invalid"
+          revoked: 'The access token was revoked'
+          expired: 'The access token expired'
+          unknown: 'The access token is invalid'
         revoke:
-          unauthorized: "You are not authorized to revoke this token"
+          unauthorized: 'You are not authorized to revoke this token'
     flash:
       applications:
         create:
@@ -595,7 +595,7 @@ en-US:
       reset_password: Reset Password
       sign_in_to_brickdoc: Sign in to Brickdoc
       more_login_options: More Login Options
-      login_via: "Sign In with %{provider}"
+      login_via: 'Sign In with %{provider}'
       email: Email
       password: Password
       remember_me: Remember me
@@ -604,19 +604,19 @@ en-US:
       confirmation_email_required_heading: Almost done
       forget_password: Forget Password
       confirm_password: Confirm Password
-      sign_up_via: "Sign Up with %{provider}"
-      name: "Name"
-      webid: "WebID"
-      webid_description: "Similar to a username, only alphabet and numbers are allowed"
-      agree_to_agreement: "Sign Up indicate you agree to our <0>User Agreement</0>."
-      resend_after: "Resendable after %{seconds} seconds"
+      sign_up_via: 'Sign Up with %{provider}'
+      name: 'Name'
+      webid: 'WebID'
+      webid_description: 'Similar to a username, only alphabet and numbers are allowed'
+      agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
+      resend_after: 'Resendable after %{seconds} seconds'
     common:
-      confirm_not_match: "%{field} and confirm %{field} do not match"
+      confirm_not_match: '%{field} and confirm %{field} do not match'
     errors:
-      invalid_operation_type: "Invalid operation type"
-      invalid_pod_webid: "No access to the webid"
-      pod_has_already_switched: "Pod has already switched"
-      pod_exist: "Pod has already exist"
+      invalid_operation_type: 'Invalid operation type'
+      invalid_pod_webid: 'No access to the webid'
+      pod_has_already_switched: 'Pod has already switched'
+      pod_exist: 'Pod has already exist'
       user_not_exist: "User doesn't exist"
       pod_not_exist: "Pod doesn't exist"
   docs:
