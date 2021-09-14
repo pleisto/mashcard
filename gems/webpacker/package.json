@@ -21,10 +21,10 @@
     "terser-webpack-plugin": "^5.2.4",
     "webpack-assets-manifest": "^5.0.6",
     "webpack-merge": "^5.8.0",
-    "webpack-sources": "^3.2.0"
+    "webpack-sources": "^3.2.1"
   },
   "devDependencies": {
-    "jest": "^27.1.1",
+    "jest": "^27.2.0",
     "webpack": "^5.52.1",
     "webpack-cli": "^4.8.0"
   },
