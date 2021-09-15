@@ -110,7 +110,7 @@ describe('Table', () => {
     // clicks delete button on column menu
     fireEvent.click(screen.getByText('Delete'))
     // clicks delete button on confirm modal
-    fireEvent.click(screen.getAllByText('Delete')[1])
+    fireEvent.click(screen.getByText('Delete'))
 
     const newColumnHeaders = screen.getAllByRole('columnheader')
 

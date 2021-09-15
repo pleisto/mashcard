@@ -1,0 +1,14 @@
+.table-block-date-cell {
+  height: 100%;
+  width: 100%;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #333;
+  font-size: 14px;
+
+  & .table-date-cell-picker {
+    z-index: 2;
+  }
+}

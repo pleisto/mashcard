@@ -47,6 +47,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
         visible={visible}
         overlayClassName="table-block-menu-popover"
         onVisibleChange={handleVisibleChange}
+        destroyTooltipOnHide={true}
         content={
           <Menu className="table-block-menu">
             <Menu.Item key="Header" className="table-block-menu-item input-item">

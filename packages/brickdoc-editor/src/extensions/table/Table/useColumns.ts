@@ -10,6 +10,8 @@ export interface DatabaseColumn {
   type: string
   // group: string
   selectOptions?: TableColumnSelectOption[]
+  dateFormat?: string
+  dateIncludeTime?: boolean
 }
 
 export interface DatabaseColumns extends Array<DatabaseColumn> {}
@@ -23,6 +25,8 @@ export const databaseColumnsToTableColumns = (databaseColumns: DatabaseColumns):
         Header: dbColumn.title,
         columnType: dbColumn.type,
         selectOptions: dbColumn.selectOptions ?? [],
+        dateIncludeTime: dbColumn.dateIncludeTime,
+        dateFormat: dbColumn.dateFormat,
         index: (r[group] || []).length
       }
       r[group] = [...(r[group] || []), column]

@@ -34,12 +34,18 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
 }) => {
   const [filterVisible, setFilterVisible] = React.useState(false)
   const [sortVisible, setSortVisible] = React.useState(false)
+  const handleVisibleChange =
+    (setter: React.Dispatch<React.SetStateAction<boolean>>) =>
+    (visible: boolean): void => {
+      if (visible) return
+      setter(visible)
+    }
 
   return (
     <Filter
       columns={columns}
       visible={filterVisible}
-      onVisibleChange={visible => setFilterVisible(visible)}
+      onVisibleChange={handleVisibleChange(setFilterVisible)}
       filterGroup={filterGroup}
       onAdd={addFilter}
       onRemove={removeFilter}
@@ -52,7 +58,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         onUpdate={updateSorter}
         onRemove={removeSorter}
         visible={sortVisible}
-        onVisibleChange={visible => setSortVisible(visible)}>
+        onVisibleChange={handleVisibleChange(setSortVisible)}>
         <div role="toolbar" className="table-block-toolbar">
           <Button onClick={() => setFilterVisible(true)} type="text" className="table-toolbar-text-button">
             Filter

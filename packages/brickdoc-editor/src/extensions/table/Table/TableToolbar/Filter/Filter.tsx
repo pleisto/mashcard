@@ -19,7 +19,7 @@ export interface FilterSingleOption {
   type: 'single'
   columnId?: string
   action?: string
-  value?: string
+  value?: string | Date
   matchType?: keyof typeof matches
 }
 

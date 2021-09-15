@@ -57,6 +57,8 @@ declare module 'react-table' {
     columnIndex?: number
   }
 
+  export type TableColumnType = 'text' | 'select' | 'date'
+
   export interface TableColumnSelectOption {
     value: string
     label: string
@@ -125,8 +127,10 @@ declare module 'react-table' {
       UseResizeColumnsColumnProps<D>,
       UseSortByColumnProps<D> {
     // define custom column properties here
-    columnType: string
+    columnType: TableColumnType
     selectOptions: TableColumnSelectOption[]
+    dateFormat: string
+    dateIncludeTime: boolean
     index: number
   }
 

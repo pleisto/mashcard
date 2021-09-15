@@ -13,6 +13,13 @@ describe('tableBlockFilter', () => {
     cy.findByText('Text').click()
     cy.findByText('Select').click({ force: true })
 
+    // add new column
+    cy.get('.table-block-th:last > button').click()
+    // change to date type
+    cy.findByText('Column2').click()
+    cy.findAllByText('Text').last().click()
+    cy.findByText('Date').click()
+
     cy.get('.table-toolbar-add-button').click()
 
     cy.get('.table-block-select-cell:last').click()
@@ -24,6 +31,11 @@ describe('tableBlockFilter', () => {
     cy.get('.table-block-text-cell:last').click()
     cy.focused().type('text')
     cy.findByTestId('table-text-overlay').click({ force: true })
+
+    // edit date cell
+    cy.get('.table-block-date-cell:last').click()
+    // today
+    cy.get('.brk-picker-cell-today').click()
 
     // add row 2
     cy.get('.table-block-tbody > .table-block-row:first').realHover()
@@ -195,7 +207,7 @@ describe('tableBlockFilter', () => {
     cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
     cy.get('.table-block-tbody > .table-block-row .table-block-select-cell').should('contain.text', 'new option 2')
 
-    // Is
+    // Is not
     cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
     cy.focused().type('Is not{Enter}')
 
@@ -213,5 +225,104 @@ describe('tableBlockFilter', () => {
     cy.focused().type('Is not empty{Enter}')
 
     cy.get('.table-block-tbody > .table-block-row').should('have.length', 2)
+  })
+
+  it('should filter date data', () => {
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 2)
+
+    cy.findByText('Filter').click()
+    cy.findByText('Add a Filter').click()
+    cy.findByText('Add a filter').click()
+    cy.get('.table-toolbar-item-option-select:first').click()
+    cy.focused().type('Column2{Enter}')
+
+    // Is
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is{Enter}')
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Today').click()
+
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    // Is exact date
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Exact date').click()
+    cy.findByPlaceholderText('Select date').click()
+    cy.get('.brk-picker-cell-today').click()
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    // Is not
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is not{Enter}')
+
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+    cy.get('.table-block-tbody > .table-block-row .table-block-date-cell').should('not.have.text')
+
+    // Is before
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is before{Enter}')
+
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 0)
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Tomorrow').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    // Is after
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is after{Enter}')
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Today').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 0)
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Yesterday').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    // Is on or before
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is on or before{Enter}')
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Today').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Yesterday').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 0)
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Tomorrow').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    // Is on or after
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is on or after{Enter}')
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Today').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Yesterday').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+
+    cy.get('.table-toolbar-item-option-select:nth-of-type(3)').click()
+    cy.findByText('Tomorrow').click({ force: true })
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 0)
+
+    // Is empty
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is empty{Enter}')
+
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
+    cy.get('.table-block-tbody > .table-block-row .table-block-date-cell').should('not.have.text')
+
+    // Is not empty
+    cy.get('.table-toolbar-item-option-select:nth-of-type(2)').click()
+    cy.focused().type('Is not empty{Enter}')
+
+    cy.get('.table-block-tbody > .table-block-row').should('have.length', 1)
   })
 })

@@ -1,10 +1,11 @@
 import React from 'react'
-import { Column } from 'react-table'
+import { Column, TableColumnType } from 'react-table'
 import { Select, SelectProps } from '@brickdoc/design-system'
 import { FilterOption, FilterSingleOption } from '../Filter'
 import { COLUMN_TYPE } from '../../../columnType'
 import { TextValue } from './TextValue'
 import { SelectValue } from './SelectValue'
+import { DateValue } from './DateValue'
 
 export interface FilterItemProps {
   path: number[]
@@ -30,7 +31,7 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
   const handleUpdateMatchType = (matchType: any): void => onUpdateFilter({ matchType }, path)
   const handleUpdateEventValue = (event: React.ChangeEvent<HTMLInputElement>): void => onUpdateFilter({ value: event.target.value }, path)
   const handleUpdateValue = (value?: string): void => onUpdateFilter({ value }, path)
-  const isValueVisible = (type: string): boolean =>
+  const isValueVisible = (type: TableColumnType): boolean =>
     matchedColumnType?.type === type &&
     !!filterSingleOption.matchType &&
     filterSingleOption.matchType !== 'IsEmpty' &&
@@ -76,10 +77,15 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
           </Select.Option>
         ))}
       </Select>
-      {isValueVisible('text') && <TextValue onChange={handleUpdateEventValue} value={filterSingleOption.value} />}
+      {isValueVisible('text') && <TextValue onChange={handleUpdateEventValue} value={filterSingleOption.value as string} />}
       {isValueVisible('select') && (
-        <SelectValue options={(matchedColumn as any).selectOptions} onChange={handleUpdateValue} value={filterSingleOption.value} />
+        <SelectValue
+          options={(matchedColumn as any).selectOptions}
+          onChange={handleUpdateValue}
+          value={filterSingleOption.value as string}
+        />
       )}
+      {isValueVisible('date') && <DateValue onChange={handleUpdateValue} value={filterSingleOption.value as string} />}
     </>
   )
 }

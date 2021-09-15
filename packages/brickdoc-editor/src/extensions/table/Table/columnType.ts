@@ -1,14 +1,22 @@
 import React from 'react'
+import dayjs from 'dayjs'
 import { Icon } from '@brickdoc/design-system'
+import { TableColumnType } from 'react-table'
 
 interface MatchType {
   label: string
   value: string
-  executor: (columnValue?: string, value?: string) => boolean
+  executor: (columnValue?: any, value?: any) => boolean
 }
 
 const is: MatchType['executor'] = (columnValue, value) => columnValue === value
 const isNot: MatchType['executor'] = (columnValue, value) => !is(columnValue, value)
+const isOn: MatchType['executor'] = (columnValue, value) => !!columnValue && !!value && dayjs(columnValue).isSame(value, 'day')
+const isNotOn: MatchType['executor'] = (columnValue, value) => !isOn(columnValue, value)
+const isBefore: MatchType['executor'] = (columnValue, value) => !!columnValue && !!value && dayjs(columnValue).isBefore(value, 'day')
+const isAfter: MatchType['executor'] = (columnValue, value) => !!columnValue && !!value && dayjs(columnValue).isAfter(value, 'day')
+const isOnOrBefore: MatchType['executor'] = (columnValue, value) => isOn(columnValue, value) || isBefore(columnValue, value)
+const isOnOrAfter: MatchType['executor'] = (columnValue, value) => isOn(columnValue, value) || isAfter(columnValue, value)
 const contains: MatchType['executor'] = (columnValue, value) => columnValue?.includes(value ?? '') ?? false
 const doesNotContain: MatchType['executor'] = (columnValue, value) => !contains(columnValue, value)
 const startsWith: MatchType['executor'] = (columnValue, value) => columnValue?.startsWith(value ?? '') ?? false
@@ -26,6 +34,36 @@ export const matches = {
     label: 'Is not',
     value: 'IsNot',
     executor: isNot
+  },
+  IsOn: {
+    label: 'Is',
+    value: 'IsOn',
+    executor: isOn
+  },
+  IsNotOn: {
+    label: 'Is not',
+    value: 'IsNotOn',
+    executor: isNotOn
+  },
+  IsBefore: {
+    label: 'Is before',
+    value: 'IsBefore',
+    executor: isBefore
+  },
+  IsAfter: {
+    label: 'Is after',
+    value: 'IsAfter',
+    executor: isAfter
+  },
+  IsOnOrBefore: {
+    label: 'Is on or before',
+    value: 'IsOnOrBefore',
+    executor: isOnOrBefore
+  },
+  IsOnOrAfter: {
+    label: 'Is on or after',
+    value: 'IsOnOrAfter',
+    executor: isOnOrAfter
   },
   Contains: {
     label: 'Contains',
@@ -60,7 +98,7 @@ export const matches = {
 }
 
 export const COLUMN_TYPE: Array<{
-  type: string
+  type: TableColumnType
   label: string
   icon: React.ComponentType
   matches: MatchType[]
@@ -85,5 +123,20 @@ export const COLUMN_TYPE: Array<{
     label: 'Select',
     icon: Icon.ArrowCircleDown,
     matches: [matches.Is, matches.IsNot, matches.IsEmpty, matches.IsNotEmpty]
+  },
+  {
+    type: 'date',
+    label: 'Date',
+    icon: Icon.Calendar,
+    matches: [
+      matches.IsOn,
+      matches.IsNotOn,
+      matches.IsBefore,
+      matches.IsAfter,
+      matches.IsOnOrBefore,
+      matches.IsOnOrAfter,
+      matches.IsEmpty,
+      matches.IsNotEmpty
+    ]
   }
 ]

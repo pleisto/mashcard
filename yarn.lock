@@ -1909,6 +1909,7 @@ __metadata:
     "@tiptap/suggestion": ^2.0.0-beta.61
     "@types/react-pdf": ^5.0.6
     "@types/react-table": ^7.7.3
+    dayjs: ^1.10.7
     re-resizable: ^6.9.1
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -10570,7 +10571,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.10.7, dayjs@npm:1.x, dayjs@npm:^1.10.4, dayjs@npm:^1.9.1":
+"dayjs@npm:1.10.7, dayjs@npm:1.x, dayjs@npm:^1.10.4, dayjs@npm:^1.10.7, dayjs@npm:^1.9.1":
   version: 1.10.7
   resolution: "dayjs@npm:1.10.7"
   checksum: a0a4ca95abaa03d0702161dc2c35d16121188e342f5052b9c61cdf784dab68af766f477c04f87f71c6af666fd4d13db9b9853b87265850d6093b7b04e1bb1cd7
