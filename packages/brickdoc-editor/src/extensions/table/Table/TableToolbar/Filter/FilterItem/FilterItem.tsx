@@ -61,7 +61,8 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
         optionFilterProp="title"
         filterOption={handleFilterOption}
         onChange={handleUpdateColumnId}
-        value={filterSingleOption.columnId}>
+        value={filterSingleOption.columnId}
+      >
         {selectColumnComponents}
       </Select>
       <Select
@@ -70,7 +71,8 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
         filterOption={handleFilterOption}
         className="table-toolbar-item-option-select"
         onChange={handleUpdateMatchType}
-        value={filterSingleOption.matchType}>
+        value={filterSingleOption.matchType}
+      >
         {matchedColumnType?.matches.map(item => (
           <Select.Option key={item.value} value={item.value} title={item.label}>
             {item.label}
@@ -85,7 +87,9 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
           value={filterSingleOption.value as string}
         />
       )}
-      {isValueVisible('date') && <DateValue onChange={handleUpdateValue} value={filterSingleOption.value as string} />}
+      {(isValueVisible('date-range') || isValueVisible('date')) && (
+        <DateValue onChange={handleUpdateValue} value={filterSingleOption.value as string} />
+      )}
     </>
   )
 }

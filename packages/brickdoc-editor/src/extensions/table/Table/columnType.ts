@@ -11,10 +11,19 @@ interface MatchType {
 
 const is: MatchType['executor'] = (columnValue, value) => columnValue === value
 const isNot: MatchType['executor'] = (columnValue, value) => !is(columnValue, value)
-const isOn: MatchType['executor'] = (columnValue, value) => !!columnValue && !!value && dayjs(columnValue).isSame(value, 'day')
+const isOn: MatchType['executor'] = (columnValue, value) => {
+  const date = columnValue?.[0] || columnValue
+  return !!columnValue && !!value && dayjs(date).isSame(value, 'day')
+}
 const isNotOn: MatchType['executor'] = (columnValue, value) => !isOn(columnValue, value)
-const isBefore: MatchType['executor'] = (columnValue, value) => !!columnValue && !!value && dayjs(columnValue).isBefore(value, 'day')
-const isAfter: MatchType['executor'] = (columnValue, value) => !!columnValue && !!value && dayjs(columnValue).isAfter(value, 'day')
+const isBefore: MatchType['executor'] = (columnValue, value) => {
+  const date = columnValue?.[0] || columnValue
+  return !!columnValue && !!value && dayjs(date).isBefore(value, 'day')
+}
+const isAfter: MatchType['executor'] = (columnValue, value) => {
+  const date = columnValue?.[0] || columnValue
+  return !!columnValue && !!value && dayjs(date).isAfter(value, 'day')
+}
 const isOnOrBefore: MatchType['executor'] = (columnValue, value) => isOn(columnValue, value) || isBefore(columnValue, value)
 const isOnOrAfter: MatchType['executor'] = (columnValue, value) => isOn(columnValue, value) || isAfter(columnValue, value)
 const contains: MatchType['executor'] = (columnValue, value) => columnValue?.includes(value ?? '') ?? false
@@ -127,6 +136,21 @@ export const COLUMN_TYPE: Array<{
   {
     type: 'date',
     label: 'Date',
+    icon: Icon.Calendar,
+    matches: [
+      matches.IsOn,
+      matches.IsNotOn,
+      matches.IsBefore,
+      matches.IsAfter,
+      matches.IsOnOrBefore,
+      matches.IsOnOrAfter,
+      matches.IsEmpty,
+      matches.IsNotEmpty
+    ]
+  },
+  {
+    type: 'date-range',
+    label: 'Date range',
     icon: Icon.Calendar,
     matches: [
       matches.IsOn,

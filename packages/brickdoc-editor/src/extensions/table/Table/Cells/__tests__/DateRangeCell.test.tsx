@@ -1,9 +1,9 @@
 import React from 'react'
-import { DateCell } from '../DateCell'
+import { DateRangeCell } from '../DateRangeCell'
 import { render, screen } from '@testing-library/react'
 
 // See more tests in e2e test
-describe('DateCell', () => {
+describe('DateRangeCell', () => {
   const props: any = {
     value: new Date('2021-09-15'),
     resetActiveStatus: () => {},
@@ -21,13 +21,13 @@ describe('DateCell', () => {
     }
   }
   it('matches correct snapshot', () => {
-    const { container } = render(<DateCell {...props} />)
+    const { container } = render(<DateRangeCell {...props} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders correctly', () => {
-    render(<DateCell {...props} />)
+    render(<DateRangeCell {...props} />)
 
     expect(screen.getByRole('button')).toBeInTheDocument()
   })

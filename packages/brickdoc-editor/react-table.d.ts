@@ -57,7 +57,7 @@ declare module 'react-table' {
     columnIndex?: number
   }
 
-  export type TableColumnType = 'text' | 'select' | 'date'
+  export type TableColumnType = 'text' | 'select' | 'date' | 'date-range'
 
   export interface TableColumnSelectOption {
     value: string

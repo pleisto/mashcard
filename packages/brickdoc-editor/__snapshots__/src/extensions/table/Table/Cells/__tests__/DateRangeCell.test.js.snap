@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateRangeCell matches correct snapshot 1`] = `
+<div
+  class="table-block-date-range-cell"
+  role="button"
+  tabindex="-1"
+/>
+`;
