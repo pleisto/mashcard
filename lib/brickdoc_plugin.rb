@@ -39,7 +39,8 @@ class BrickdocPlugin
       plugin.instance_eval(File.read(plugin_file), plugin_file) if File.exist?(plugin_file)
 
       metadata_file = "#{path}/package.yml"
-      plugin.metadata = YAML.load(File.read(metadata_file))['metadata']&.deep_symbolize_keys || {} if File.exist?(metadata_file)
+      config = File.exist?(metadata_file) ? YAML.load(File.read(metadata_file)) : {}
+      plugin.metadata = config['metadata']&.deep_symbolize_keys || {}
 
       plugin_main_file = "#{path}/lib/#{plugin_name}"
       require "#{path}/lib/#{plugin_name}" if File.exist?("#{plugin_main_file}.rb")
@@ -48,29 +49,45 @@ class BrickdocPlugin
       plugin_constant = const_defined?(plugin_constant_name) ? const_get(plugin_constant_name) : const_set(plugin_constant_name, Module.new)
 
       # non-engine plugin autoload dirs
-      ['app/models', 'app/helpers', 'app/graphql', 'app/policies'].each do |dir|
+      ['app/models', 'app/helpers', 'app/graphql', 'app/controllers', 'app/policies'].each do |dir|
         plugin.loader.push_dir(dir, namespace: plugin_constant)
       end
       plugin.loader.setup
       plugin.loader.eager_load
 
-      require "#{path}/engine.rb" if plugin.load_engine
+      if plugin.load_engine
+        require "#{path}/engine.rb"
+        engine_constant = const_get(plugin_constant_name + '::Engine')
+        engines_to_mount[plugin_name] = engine_constant if engine_constant.routes?
+      end
+    end
+
+    def engines_to_mount
+      @engines_to_mount ||= {}
     end
 
     # TODO: cached with BrickSetting in current domain
-    def enabled_plugins
+    def enabled_plugin_keys
       @plugins.select { |_, plugin| plugin.enabled? }.keys
+    end
+
+    def enabled_plugins
+      @plugins.select { |_, plugin| plugin.enabled? }.values
+    end
+
+    def all_plugins
+      @plugins
     end
 
     # TODO: switch domain of BrickdocConfig and enable Hook scopes in one place
     def update_hooks_scopes
       BrickdocHook.enabled_scopes =
         BrickdocHook.enabled_scopes.select { |s| !s.start_with?('plugin.') } +
-        enabled_plugins.map { |pn| "plugin.#{pn}" }
+        enabled_plugin_keys.map { |pn| "plugin.#{pn}" }
     end
   end
 
-  attr_accessor :metadata
+  attr_accessor :metadata, :plugin_name
   attr_reader :plugin_constant
   attr_reader :load_engine
 
@@ -95,6 +112,16 @@ class BrickdocPlugin
 
   def settings(&block)
     BrickdocConfig.current.scope("plugin.#{@plugin_name}", &block)
+  end
+
+  def attributes
+    {
+      name: @plugin_name,
+      metadata: @metadata,
+      version: @metadata.fetch(:version),
+      logo: @metadata[:logo] || "",
+      enabled: enabled?
+    }
   end
 
   def enabled?

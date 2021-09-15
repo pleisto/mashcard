@@ -35,6 +35,10 @@ module BrickdocSettings
         cached_domains[domain].with_block(&block)
       end
 
+      def defined_fields
+        @defined_fields
+      end
+
       def field(key, scope: '', type: :string, default: nil, read_only: false, **options)
         key = key.to_s
         @defined_fields ||= {}
@@ -57,6 +61,15 @@ module BrickdocSettings
         @defined_fields[scope].keys
       end
 
+      def get_raw(key, scope: '', domain: '')
+        cache_key = "#{scope}.#{key}@#{domain}"
+        cached_values[cache_key]
+      end
+
+      def truthy?(value)
+        ['t', 'true', '1', 1, true].include?(value)
+      end
+
       def get(key, scope: '', domain: '')
         key = key.to_s
         cache_key = "#{scope}.#{key}@#{domain}"
@@ -66,7 +79,7 @@ module BrickdocSettings
           value = if !value.nil?
             case field_config[:type]
             when :boolean
-              ['t', 'true', '1', 1, true].include?(value)
+              truthy?(value)
             when :integer
               value&.to_i
             when :float
@@ -106,7 +119,7 @@ module BrickdocSettings
         if records[key].present?
           domain_len = domain.split('.').count
           records[key].select do |r|
-            r.domain.blank? || (r.domain == domain) || ((r.domain_len <= domain_len) && domain.end_with?(".#{r.domain}"))
+            r.domain.blank? || (r.domain == domain) || ((r.domain_len <= domain_len) && domain.start_with?("#{r.domain}."))
           end.last&.value
         end
       end

@@ -1,4 +1,11 @@
 # frozen_string_literal: true
 
-class BrickdocPlugin::DummyPlugin::Engine < Rails::Engine
+module BrickdocPlugin::DummyPlugin
+  class Engine < BrickdocPlugin::Engine
+    isolate_namespace BrickdocPlugin::DummyPlugin
+  end
+
+  Engine.routes.draw do
+    resources :echo
+  end
 end

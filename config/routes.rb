@@ -25,6 +25,10 @@ as: :rails_blob_representation_proxy
   # Pages
   get '/.well-know/unsupported' => 'pages#unsupported', as: :unsupported
 
+  BrickdocPlugin.engines_to_mount.each do |plugin_name, engine|
+    mount engine => "/plugin/#{plugin_name}"
+  end
+
   # PWA
   root 'pages#pwa'
   get '*path', to: 'pages#pwa', constraints: ->(request) { !request.xhr? && request.format.html? }

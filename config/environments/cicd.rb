@@ -76,11 +76,14 @@ Rails.application.configure do
   config.lograge.base_controller_class = %w[ActionController::API]
   config.lograge.formatter = Lograge::Formatters::Raw.new
   config.lograge.custom_options = lambda do |event|
+    exceptions = %w(controller action format id)
+
     {
       event: 'http.request',
       exception: event.payload[:exception], # ["ExceptionClass", "the message"]
       exception_object: event.payload[:exception_object], # the exception instance
       request_id: event.payload[:request_id],
+      params: event.payload[:params].except(*exceptions),
       current_user_id: event.payload[:current_user]&.id,
       current_pod_id: event.payload[:current_pod]&.fetch('id')
     }

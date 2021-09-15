@@ -1,0 +1,8 @@
+metadata:
+  name: github_webhook
+  version: 0.0.1
+  logo: https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/600px-Octicons-mark-github.svg.png
+
+enforce_dependencies: true
+
+enforce_privacy: true

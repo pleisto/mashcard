@@ -13301,6 +13301,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"github_webhook-381c76@workspace:plugins/github_webhook":
+  version: 0.0.0-use.local
+  resolution: "github_webhook-381c76@workspace:plugins/github_webhook"
+  languageName: unknown
+  linkType: soft
+
 "glob-base@npm:^0.3.0":
   version: 0.3.0
   resolution: "glob-base@npm:0.3.0"

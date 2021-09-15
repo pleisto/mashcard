@@ -1004,6 +1004,11 @@ type RootQuery {
   passwordAvailable(password: String!): validate_result!
 
   """
+  return all plugins for user.
+  """
+  plugins: [plugin!]!
+
+  """
   return all pods for user.
   """
   pods: [pod!]!
@@ -1512,6 +1517,36 @@ type omniauthSession {
   Like a username, Unique within this instance of Brickdoc.
   """
   webid: String
+}
+
+"""
+Brickdoc Plugin.
+"""
+type plugin {
+  """
+  Enabled
+  """
+  enabled: Boolean!
+
+  """
+  logo
+  """
+  logo: String!
+
+  """
+  metadata
+  """
+  metadata: JSON!
+
+  """
+  Plugin Name
+  """
+  name: String!
+
+  """
+  version
+  """
+  version: String!
 }
 
 """

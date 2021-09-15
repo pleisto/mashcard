@@ -96,13 +96,13 @@ describe BrickdocSettings do
   it 'can match value by domain' do
     BrickSettings.set('int', 1)
     BrickSettings.set('int', 2, domain: 'pod1')
-    BrickSettings.set('int', 3, domain: 'user1.pod1')
+    BrickSettings.set('int', 3, domain: 'pod1.user1')
 
     expect(BrickSettings.get('int')).to eq(1)
     expect(BrickSettings.get('int', domain: 'pod1')).to eq(2)
     expect(BrickSettings.get('int', domain: 'pod2')).to eq(1)
-    expect(BrickSettings.get('int', domain: 'user1.pod1')).to eq(3)
-    expect(BrickSettings.get('int', domain: 'user3.pod1')).to eq(2)
+    expect(BrickSettings.get('int', domain: 'pod1.user1')).to eq(3)
+    expect(BrickSettings.get('int', domain: 'pod1.user3')).to eq(2)
 
     BrickSettings.at('pod3').set('int', 4)
     expect(BrickSettings.at('pod1').get('int')).to eq(2)
@@ -137,7 +137,7 @@ describe BrickdocSettings do
     expect(pod2_settings.domains_test).to eq('test2')
     expect(pod2_settings.scope(:test_scope).domains_test2).to eq('test2')
 
-    expect(BrickSettings.at('user1.pod2').domains_test).to eq('test2')
+    expect(BrickSettings.at('pod2.user1').domains_test).to eq('test2')
   end
 
   it 'can set scope or domain on accessor' do
