@@ -34,13 +34,13 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta,
     }
   }
 
+  const style = {
+    backgroundImage: value?.startsWith('#') ? 'unset' : value,
+    backgroundColor: value?.startsWith('#') ? value : 'unset'
+  }
+
   return (
-    <div
-      className={cx(styles.cover, { [styles.uncover]: !documentCoverMeta })}
-      style={{
-        backgroundImage: value,
-        backgroundColor: value
-      }}>
+    <div className={cx(styles.cover, { [styles.uncover]: !documentCoverMeta })} style={style}>
       <div className={styles.buttons}>
         {documentCoverMeta && (
           <Popover {...popoverProps}>
