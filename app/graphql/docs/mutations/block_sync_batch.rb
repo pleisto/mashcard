@@ -34,6 +34,7 @@ module Docs
       blocks.each do |args|
         block = preloads[args.id] || Docs::Block.new(id: args.id)
 
+        block.page = true if block.id == root_id
         block.text = args.text
         block.content = args.content
         block.sort = args.sort.to_i
