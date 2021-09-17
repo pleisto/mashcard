@@ -60,7 +60,12 @@ const menuItems: SlashCommandsMenuItem[] = [
     desc: 'Embed a PDF',
     icon: <Icon.FilePdf className="menu-item-icon" />,
     command: ({ editor, range }) => {
-      editor.chain().focus().deleteRange(range).setPdfSection().run()
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setPdfSection(range.from - 1)
+        .run()
     }
   },
   {
@@ -69,7 +74,12 @@ const menuItems: SlashCommandsMenuItem[] = [
     desc: 'Upload or embed with a link',
     icon: <Icon.FileImage className="menu-item-icon" />,
     command: ({ editor, range }) => {
-      editor.chain().focus().deleteRange(range).setImageSection().run()
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setImageSection(range.from - 1)
+        .run()
     }
   },
   {
@@ -77,7 +87,12 @@ const menuItems: SlashCommandsMenuItem[] = [
     desc: 'Creat a table in this page',
     icon: <Icon.Table className="menu-item-icon" />,
     command: ({ editor, range }) => {
-      editor.chain().focus().deleteRange(range).setTableBlock().run()
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setTableBlock(range.from - 1)
+        .run()
     }
   }
 ]

@@ -70,8 +70,6 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
 
   const isUploadCompleted = !!node.attrs.attachment.source && file
 
-  console.log(node, file)
-
   if (node.attrs.attachment.key || isUploadCompleted) {
     const url = extension.options.getPdfUrl?.(node) || file
 
@@ -142,7 +140,8 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
                 width: Math.min(Number(node.attrs.attachment.width) + d.width, MAX_WIDTH),
                 height: Number(node.attrs.attachment.height) + d.height
               })
-            }}>
+            }}
+          >
             <div className="pdf-section-menu-button">
               <Icon.More className="pdf-section-menu-icon" />
             </div>
@@ -185,7 +184,8 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
             onFileLoaded={onFileLoaded}
             importSources={PDF_IMPORT_SOURCES}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-block-pdf-section">
           <Icon.FilePdf className="pdf-section-icon" />
           <div className="pdf-section-hint">Embed a PDF</div>

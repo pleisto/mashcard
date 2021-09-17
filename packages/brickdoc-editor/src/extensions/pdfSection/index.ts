@@ -13,7 +13,7 @@ declare module '@tiptap/core' {
       /**
        * Set a pdf section
        */
-      setPdfSection: () => ReturnType
+      setPdfSection: (position: number) => ReturnType
     }
   }
 }
@@ -69,9 +69,9 @@ export const PdfSectionExtension = Node.create<PdfSectionOptions>({
   addCommands() {
     return {
       setPdfSection:
-        () =>
+        (position: number) =>
         ({ commands }) => {
-          return commands.replace(this.name)
+          return commands.insertContentAt(position, { type: this.name })
         }
     }
   }

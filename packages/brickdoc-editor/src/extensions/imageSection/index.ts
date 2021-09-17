@@ -12,7 +12,7 @@ declare module '@tiptap/core' {
       /**
        * Set a image section
        */
-      setImageSection: () => ReturnType
+      setImageSection: (position: number) => ReturnType
     }
   }
 }
@@ -70,9 +70,9 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
   addCommands() {
     return {
       setImageSection:
-        () =>
+        (position: number) =>
         ({ commands }) => {
-          return commands.replace(this.name)
+          return commands.insertContentAt(position, { type: this.name })
         }
     }
   }

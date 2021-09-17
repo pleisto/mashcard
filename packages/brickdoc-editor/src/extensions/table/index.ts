@@ -9,7 +9,7 @@ declare module '@tiptap/core' {
       /**
        * Set a table block
        */
-      setTableBlock: () => ReturnType
+      setTableBlock: (position: number) => ReturnType
     }
   }
 }
@@ -87,9 +87,9 @@ export const TableBlockExtension = Node.create<TableBlockOptions>({
   addCommands() {
     return {
       setTableBlock:
-        () =>
+        (position: number) =>
         ({ commands }) => {
-          return commands.replace(this.name)
+          return commands.insertContentAt(position, { type: this.name })
         }
     }
   }

@@ -5,6 +5,7 @@
       --table-min-width: 700px;
       --toolbar-height: 42px;
 
+      position: relative;
       max-width: 100%;
       width: 100%;
       margin-left: 0;
