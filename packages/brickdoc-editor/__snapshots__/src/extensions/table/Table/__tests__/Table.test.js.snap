@@ -118,6 +118,76 @@ exports[`Table matches correct snapshot 1`] = `
       <div
         class="table-block-tbody"
       />
+      <div
+        class="table-block-footer"
+      >
+        <ul
+          class="brk-pagination table-block-pagination"
+          unselectable="unselectable"
+        >
+          <li
+            aria-disabled="true"
+            class="brk-pagination-prev brk-pagination-disabled"
+          >
+            <button
+              class="brk-pagination-item-link"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="brk-icon brk-icon-left"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m8 12 7-6v12l-7-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </li>
+          <li
+            class="brk-pagination-item brk-pagination-item-1 brk-pagination-item-disabled"
+            tabindex="0"
+            title="1"
+          >
+            <a
+              rel="nofollow"
+            >
+              1
+            </a>
+          </li>
+          <li
+            aria-disabled="true"
+            class="brk-pagination-next brk-pagination-disabled"
+          >
+            <button
+              class="brk-pagination-item-link"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <span
+                class="brk-icon brk-icon-right"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m16 12-7 6V6l7 6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

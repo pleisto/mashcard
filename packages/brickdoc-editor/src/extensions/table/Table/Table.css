@@ -13,6 +13,16 @@
       & .table-block-node-view-wrapper {
         padding-top: var(--toolbar-height);
 
+        & .table-block-footer {
+          padding: 24px 0;
+
+          & .table-block-pagination {
+            & li + li {
+              margin-top: unset;
+            }
+          }
+        }
+
         & .table-block-toolbar {
           position: absolute;
           top: 0;
