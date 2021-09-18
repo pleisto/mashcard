@@ -86,7 +86,7 @@ Rails.application.configure do
       exception: event.payload[:exception], # ["ExceptionClass", "the message"]
       exception_object: event.payload[:exception_object], # the exception instance
       request_id: event.payload[:request_id],
-      params: event.payload[:params].except(*exceptions),
+      params: event.payload[:params]&.except(*exceptions),
       current_user_id: event.payload[:current_user]&.id,
       current_pod_id: event.payload[:current_pod]&.fetch('id')
     }

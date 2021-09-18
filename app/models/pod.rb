@@ -38,7 +38,8 @@ class Pod < ApplicationRecord
     # rubocop:disable Security/Open
     io = URI.open(url)
     filename = File.basename(URI.parse(url).path)
-    blob = ActiveStorage::Blob.create_and_upload!(io: io, service_name: :local, filename: filename)
+    service_name = Rails.env.in?(["development", "test"]) ? :local_public : :amazon_public
+    blob = ActiveStorage::Blob.create_and_upload!(io: io, service_name: service_name, filename: filename)
     blob.signed_id
   end
 

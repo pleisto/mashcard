@@ -29,6 +29,8 @@ gem 'logstop', '>= 0.2.7'
 gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '~> 1.12', '>= 1.12.2'
 
+gem 'aws-sdk-s3', '~> 1'
+
 # Feature toggles
 gem 'flipper', '~> 0.22.0'
 gem 'flipper-active_record', '~> 0.22.0'

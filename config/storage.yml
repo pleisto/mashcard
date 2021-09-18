@@ -15,6 +15,16 @@ local_private:
   service: Disk
   public: false
   root: <%= Rails.root.join("storage/private") %>
+
+amazon_private:
+  service: S3
+  region: us-east-1
+  bucket: brickdoc-trunk-private
+
+amazon_public:
+  service: S3
+  region: us-east-1
+  bucket: brickdoc-trunk-public
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
