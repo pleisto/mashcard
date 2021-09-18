@@ -1,0 +1,12 @@
+.popover {
+  z-index: 1070;
+
+  & :global(.brk-popover-arrow) {
+    display: none;
+  }
+
+  & :global(.brk-popover-inner-content) {
+    padding: 0;
+    color: unset;
+  }
+}

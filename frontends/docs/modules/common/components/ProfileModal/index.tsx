@@ -5,6 +5,7 @@ import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import { usePrepareFileUpload } from '@/docs/modules/pages/usePrepareFileUpload'
 import { useWebidAvailableValidator } from '@/common/hooks'
+import styles from './index.module.css'
 
 interface ProfileModalProps {
   pod: Pod
@@ -100,11 +101,15 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
 
   let avatar
   if (avatarUrl) {
-    avatar = <Avatar src={avatarUrl} />
+    avatar = <Avatar src={avatarUrl} data-testid="profile-form-item-avatar" />
   } else if (type === PodOperation.Create) {
-    avatar = <Avatar />
+    avatar = <Avatar data-testid="profile-form-item-avatar" />
   } else {
-    avatar = <Avatar style={{ background: '#2376b7' }}>{pod.webid}</Avatar>
+    avatar = (
+      <Avatar data-testid="profile-form-item-avatar" style={{ background: '#2376b7' }}>
+        {pod.webid}
+      </Avatar>
+    )
   }
 
   const updateDashboard = (
@@ -121,7 +126,9 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
         <Input />
       </Form.Item>
       <Form.Item name="avatar" label={t('pods.avatar')}>
-        <Popover content={updateDashboard}> {avatar} </Popover>
+        <Popover overlayClassName={styles.popover} content={updateDashboard}>
+          {avatar}
+        </Popover>
       </Form.Item>
     </Form>
   )
