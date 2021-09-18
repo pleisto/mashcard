@@ -47,7 +47,7 @@ export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttribut
     })
   }
 
-  const fetched = React.useRef(false)
+  const fetched = React.useRef(!parentId) // if node have not uuid, not need to fetch rows
 
   const [columns, { setColumns, add: addNewColumn, remove: removeColumn, updateName: updateColumnName, updateType: updateColumnType }] =
     useColumns({
@@ -118,21 +118,24 @@ export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttribut
         // TODO: need a better way to add this class
         container?.parentElement?.classList.add('table-block-react-renderer')
         container?.classList.add('table-block-node-view-wrapper')
-      }}>
+      }}
+    >
       {contextHolder}
-      <TableToolbar
-        onAddNewRow={addNewRow}
-        columns={columns}
-        filterGroup={filterGroup}
-        addFilter={addNewFilter}
-        removeFilter={removeFilter}
-        updateFilter={updateFilter}
-        duplicateFilter={duplicateFilter}
-        sorterOptions={sorterOptions}
-        addSorter={addNewSorter}
-        removeSorter={removeSorter}
-        updateSorter={updateSorter}
-      />
+      {fetched.current && (
+        <TableToolbar
+          onAddNewRow={addNewRow}
+          columns={columns}
+          filterGroup={filterGroup}
+          addFilter={addNewFilter}
+          removeFilter={removeFilter}
+          updateFilter={updateFilter}
+          duplicateFilter={duplicateFilter}
+          sorterOptions={sorterOptions}
+          addSorter={addNewSorter}
+          removeSorter={removeSorter}
+          updateSorter={updateSorter}
+        />
+      )}
       <div className="brickdoc-table-block">
         <div {...getTableProps({ className: 'table-block-table', style: { minWidth: '700px' }, role: 'table' })}>
           <div className="table-block-row">
@@ -163,7 +166,8 @@ export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttribut
                         columnType={column.columnType}
                         onColumnNameChange={e => updateColumnName(e.target.value, column.parent?.id ?? '', column.id)}
                         onColumnTypeChange={type => updateColumnType(type, column.parent?.id ?? '', column.id)}
-                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}>
+                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}
+                      >
                         {Header}
                       </ColumnMenu>
                     )

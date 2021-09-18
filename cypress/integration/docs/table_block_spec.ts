@@ -93,7 +93,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Select').click()
       cy.get('.table-block-select-cell:last').click()
       cy.get('.table-block-select').should('exist')
@@ -107,7 +107,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Select').click()
       cy.get('.table-block-select-cell:last').click()
       cy.focused().type('new option{Enter}')
@@ -123,7 +123,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Select').click()
       cy.get('.table-block-select-cell:last').click()
 
@@ -142,7 +142,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Select').click()
       cy.get('.table-block-select-cell:last').click()
       cy.focused().type('new option{Enter}')
@@ -161,7 +161,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Date').click()
       cy.get('.table-block-date-cell:last').click()
       cy.findByText('Today').click()
@@ -176,7 +176,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Date').click()
       cy.get('.table-block-date-cell:last').click()
       cy.findByText('Include time').click()
@@ -197,7 +197,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Date range').click()
       cy.get('.table-block-date-range-cell:last').click()
       cy.get('.brk-picker-cell-today').click()
@@ -214,7 +214,7 @@ describe('tableBlock', () => {
 
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
-      cy.findByText('Text').click()
+      cy.findByText('Text').trigger('mouseover')
       cy.findByText('Date range').click()
       cy.get('.table-block-date-range-cell:last').click()
       cy.findByText('Include time').click()
