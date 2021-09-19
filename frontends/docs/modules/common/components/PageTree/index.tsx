@@ -23,6 +23,8 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
     const text = block.text
     if (emoji) {
       return `${emoji} ${text}`
+    } else if (/^\s*$/.test(text)) {
+      return 'Untitled Document'
     } else {
       return text
     }

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe System::Queries::Plugins, type: :query, focus: true do
+describe System::Queries::Plugins, type: :query do
   describe '#resolver' do
     it 'works' do
       query = <<-'GRAPHQL'

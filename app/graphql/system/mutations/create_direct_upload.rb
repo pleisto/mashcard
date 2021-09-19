@@ -23,10 +23,19 @@ module System
       # TODO: https://stackoverflow.com/a/51110844
       ActiveStorage::Current.host = BrickdocConfig.host
 
+      block_id = args[:block_id] || "global"
+      key = "#{current_pod.fetch('webid')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
+
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
-      blob = ActiveStorage::Blob.create!(new_input.merge(
-        operation_type: type, pod_id: current_pod.fetch('id'), user_id: current_user.id, block_id: args[:block_id]
-      ))
+      blob = ActiveStorage::Blob.create!(
+        new_input.merge(
+          key: key,
+          operation_type: type,
+          pod_id: current_pod.fetch('id'),
+          user_id: current_user.id,
+          block_id: args[:block_id]
+        )
+      )
 
       if type == "DOC"
         raise BrickGraphQL::Errors::ArgumentError, "Need a block_id" if args[:block_id].nil?

@@ -21,6 +21,11 @@ describe System::Queries::WebidAvailable, type: :query do
       internal_graphql_execute(query, { webid: 'admin' })
       expect(response.success?).to be true
       expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
+
+      internal_graphql_execute(query, { webid: 'global' })
+      expect(response.success?).to be true
+      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
+
       internal_graphql_execute(query, { webid: 'legitimate-name-example' })
       expect(response.data['webidAvailable']).to eq({ "success" => true, "message" => "ok" })
 
