@@ -1,16 +1,21 @@
 import * as React from 'react'
-import cx from 'classnames'
 import Button from '../button'
 import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'
 
 export interface ActionButtonProps {
   type?: LegacyButtonType
-  actionType: 'ok' | 'cancel'
   actionFn?: (...args: any[]) => any | PromiseLike<any>
-  closeModal: Function
+  close: Function
   autoFocus?: boolean
   prefixCls: string
   buttonProps?: ButtonProps
+  emitEvent?: boolean
+  quitOnNullishReturnValue?: boolean
+}
+
+function isThenable(thing?: PromiseLike<any>): boolean {
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  return !!(thing && !!thing.then)
 }
 
 const ActionButton: React.FC<ActionButtonProps> = props => {
@@ -29,21 +34,20 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
         clearTimeout(timeoutId)
       }
     }
-    /* eslint-disable react-hooks/exhaustive-deps */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handlePromiseOnOk = (returnValueOfOnOk?: PromiseLike<any>) => {
-    const { closeModal } = props
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    if (!returnValueOfOnOk || !returnValueOfOnOk.then) {
+    const { close } = props
+    if (!isThenable(returnValueOfOnOk)) {
       return
     }
     setLoading(true)
     returnValueOfOnOk.then(
       (...args: any[]) => {
-        // It's unnecessary to set loading=false, for the Modal will be unmounted after close.
-        // setState({ loading: false });
-        closeModal(...args)
+        setLoading(false)
+        close(...args)
+        clickedRef.current = false
       },
       (e: Error) => {
         // Emit error when catch promise reject
@@ -56,41 +60,41 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
     )
   }
 
-  const onClick = () => {
-    const { actionFn, closeModal } = props
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { actionFn, close } = props
     if (clickedRef.current) {
       return
     }
     clickedRef.current = true
     if (!actionFn) {
-      closeModal()
+      close()
       return
     }
     let returnValueOfOnOk
-    if (actionFn.length) {
-      returnValueOfOnOk = actionFn(closeModal)
+    if (props.emitEvent) {
+      returnValueOfOnOk = actionFn(e)
+      if (props.quitOnNullishReturnValue && !isThenable(returnValueOfOnOk)) {
+        clickedRef.current = false
+        close(e)
+        return
+      }
+    } else if (actionFn.length) {
+      returnValueOfOnOk = actionFn(close)
       // https://github.com/ant-design/ant-design/issues/23358
       clickedRef.current = false
     } else {
       returnValueOfOnOk = actionFn()
       if (!returnValueOfOnOk) {
-        closeModal()
+        close()
         return
       }
     }
     handlePromiseOnOk(returnValueOfOnOk)
   }
 
-  const { actionType, type, children, prefixCls, buttonProps } = props
+  const { type, children, prefixCls, buttonProps } = props
   return (
-    <Button
-      {...convertLegacyProps(type)}
-      onClick={onClick}
-      loading={loading}
-      prefixCls={prefixCls}
-      {...buttonProps}
-      className={cx(`${prefixCls}-${actionType}-btn`, buttonProps?.className)}
-      ref={ref}>
+    <Button {...convertLegacyProps(type)} onClick={onClick} loading={loading} prefixCls={prefixCls} {...buttonProps} ref={ref}>
       {children}
     </Button>
   )

@@ -1,9 +1,8 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import Dialog, { ModalFuncProps } from './Modal'
-import ActionButton from './ActionButton'
+import ActionButton from '../_util/ActionButton'
 import devWarning from '../_util/devWarning'
-// import ConfigProvider from '../config-provider'
 import { getTransitionName } from '../_util/motion'
 
 interface ConfirmDialogProps extends ModalFuncProps {
@@ -68,14 +67,14 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
 
   const cancelButton = okCancel && (
     <ActionButton
-      actionType="cancel"
       actionFn={onCancel}
-      closeModal={close}
+      close={close}
       type="ghost"
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}
-      prefixCls={`${rootPrefixCls}-btn`}>
+      prefixCls={`${rootPrefixCls}-btn`}
+    >
       {cancelText}
     </ActionButton>
   )
@@ -104,7 +103,8 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
       closable={closable}
       closeIcon={closeIcon}
       modalRender={modalRender}
-      focusTriggerAfterClose={focusTriggerAfterClose}>
+      focusTriggerAfterClose={focusTriggerAfterClose}
+    >
       <div className={`${contentPrefixCls}-body-wrapper`}>
         <div className={`${contentPrefixCls}-body`} style={bodyStyle}>
           {icon}
@@ -114,13 +114,13 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
         <div className={`${contentPrefixCls}-btns`}>
           <ActionButton
             type={okType}
-            actionType="ok"
             actionFn={onOk}
-            closeModal={close}
+            close={close}
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocusButton === 'ok'}
             buttonProps={okButtonProps}
-            prefixCls={`${rootPrefixCls}-btn`}>
+            prefixCls={`${rootPrefixCls}-btn`}
+          >
             {okText}
           </ActionButton>
           {cancelButton}

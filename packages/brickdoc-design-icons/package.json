@@ -12,7 +12,8 @@
   "scripts": {
     "eslint:fix": "eslint --fix --cache ./src",
     "cleanup": "rm -rf dist",
-    "generator": "bin/icons-react-component-generator"
+    "generator": "bin/icons-react-component-generator",
+    "build": "yarn generator && tsc --build"
   },
   "peerDependencies": {
     "react": ">= 17.0",

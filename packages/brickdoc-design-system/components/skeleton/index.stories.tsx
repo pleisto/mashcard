@@ -56,6 +56,7 @@ Provide a placeholder while you wait for content to load, or to visualise conten
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | active | Show animation effect | boolean | false |
+| block | Option to fit button width to its parent width | boolean | false |
 | shape | Set the shape of button | \`circle\` \\| \`round\` \\| \`default\` | - |
 | size | Set the size of button | \`large\` \\| \`small\` \\| \`default\` | - |
 

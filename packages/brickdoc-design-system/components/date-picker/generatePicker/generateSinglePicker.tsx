@@ -10,6 +10,7 @@ import { ConfigContext, ConfigConsumerProps } from '../../config-provider'
 import LocaleReceiver from '../../locale-provider/LocaleReceiver'
 import SizeContext from '../../config-provider/SizeContext'
 import { PickerProps, PickerLocale, PickerDateProps, PickerTimeProps, getTimeProps, Components } from '.'
+import { PickerComponentClass } from './interface'
 
 export default function generatePicker<DateType>(generateConfig: GenerateConfig<DateType>) {
   type DatePickerProps = PickerProps<DateType>
@@ -88,6 +89,10 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
                   placeholder={getPlaceholder(mergedPicker, locale, placeholder)}
                   suffixIcon={mergedPicker === 'time' ? <ClockCircleOutlined /> : <CalendarOutlined />}
                   clearIcon={<CloseCircleFilled theme="filled" />}
+                  prevIcon={<span className={`${prefixCls}-prev-icon`} />}
+                  nextIcon={<span className={`${prefixCls}-next-icon`} />}
+                  superPrevIcon={<span className={`${prefixCls}-super-prev-icon`} />}
+                  superNextIcon={<span className={`${prefixCls}-super-next-icon`} />}
                   allowClear
                   transitionName={`${rootPrefixCls}-slide-up`}
                   {...additionalProps}
@@ -104,10 +109,6 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
                   prefixCls={prefixCls}
                   getPopupContainer={customizeGetPopupContainer || getPopupContainer}
                   generateConfig={generateConfig}
-                  prevIcon={<span className={`${prefixCls}-prev-icon`} />}
-                  nextIcon={<span className={`${prefixCls}-next-icon`} />}
-                  superPrevIcon={<span className={`${prefixCls}-super-prev-icon`} />}
-                  superNextIcon={<span className={`${prefixCls}-super-next-icon`} />}
                   components={Components}
                   direction={direction}
                 />
@@ -126,7 +127,7 @@ export default function generatePicker<DateType>(generateConfig: GenerateConfig<
       Picker.displayName = displayName
     }
 
-    return Picker as React.ComponentClass<InnerPickerProps>
+    return Picker as PickerComponentClass<InnerPickerProps>
   }
 
   const DatePicker = getPicker<DatePickerProps>()

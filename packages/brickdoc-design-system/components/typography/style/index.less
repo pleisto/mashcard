@@ -26,7 +26,7 @@
     a&:active,
     a&:focus,
     a&:hover {
-      color: ~`colorPalette('@{error-color}', 5) `;
+      color: colorShade(@error-color, 4);
     }
   }
 
@@ -149,7 +149,7 @@
 
   mark {
     padding: 0;
-    background-color: @gold-3;
+    background-color: @orange-3;
   }
 
   u,
@@ -201,11 +201,6 @@
       bottom: 8px;
       color: @text-color-secondary;
       pointer-events: none;
-    }
-
-    // Fix Editable Textarea flash in Firefox
-    textarea {
-      -moz-transition: none;
     }
   }
 

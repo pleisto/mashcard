@@ -68,7 +68,12 @@ export default {
         type: { summary: "boolean | 'true' | 'false'" }
       }
     },
-
+    crossOrigin: {
+      description: 'CORS settings attributes',
+      table: {
+        type: { summary: "'anonymous' | 'use-credentials'" }
+      }
+    },
     onError: {
       description: 'Handler when img load error, return false to prevent default fallback behavior',
 

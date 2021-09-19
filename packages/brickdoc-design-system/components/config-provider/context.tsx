@@ -3,6 +3,15 @@ import defaultRenderEmpty, { RenderEmptyHandler } from './renderEmpty'
 import { SizeType } from './SizeContext'
 import { RequiredMark } from '../form/Form'
 
+export interface Theme {
+  primaryColor?: string
+  infoColor?: string
+  successColor?: string
+  processingColor?: string
+  errorColor?: string
+  warningColor?: string
+}
+
 export interface CSPConfig {
   nonce?: string
 }

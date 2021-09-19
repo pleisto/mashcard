@@ -1786,6 +1786,7 @@ __metadata:
   resolution: "@brickdoc/design-colors@workspace:packages/brickdoc-design-colors"
   dependencies:
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc"
+    esbuild: ^0.12.27
     eslint: ^7.32.0
   languageName: unknown
   linkType: soft
@@ -1812,8 +1813,10 @@ __metadata:
     "@babel/core": ^7.15.5
     "@babel/preset-typescript": ^7.15.0
     "@babel/types": ^7.15.6
+    "@brickdoc/design-colors": "workspace:packages/brickdoc-design-colors"
     "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons"
     "@brickdoc/less-vars-loader": ^0.1.2
+    "@ctrl/tinycolor": ^3.4.0
     "@mdx-js/react": ^1.6.22
     "@storybook/addon-actions": ^6.3.8
     "@storybook/addon-docs": ^6.3.8
@@ -1837,7 +1840,7 @@ __metadata:
     less: ^4.1.1
     less-loader: ^10.0.1
     lodash: ^4.17.21
-    rc-cascader: ^1.5.0
+    rc-cascader: ^2.0.0-alpha.18
     rc-checkbox: ^2.3.2
     rc-dialog: ^8.6.0
     rc-drawer: ^4.4.2
@@ -2322,6 +2325,13 @@ __metadata:
   version: 1.4.0
   resolution: "@csstools/convert-colors@npm:1.4.0"
   checksum: 26069eeb845a506934c821c203feb97f5de634c5fbeb9978505a2271d6cfdb0ce400240fca9620a4ef2e68953928ea25aab92ea8454e0edf5cd074066d9ad57b
+  languageName: node
+  linkType: hard
+
+"@ctrl/tinycolor@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@ctrl/tinycolor@npm:3.4.0"
+  checksum: 28217900f3c077d2000f95034a068e755b87e864481f7cf7c1e65442d51fe33283762860c3ee86961a48d9ea5deba73b06e3c961e6da6748054a79162b3a31c9
   languageName: node
   linkType: hard
 
@@ -11647,6 +11657,15 @@ __metadata:
   version: 0.35.6
   resolution: "es6-shim@npm:0.35.6"
   checksum: 31b27a7ce0432dd97c523da97e43dbcbf607093ac139697ac2e70d7ab67a90e9c362477a85f36961ebb0d09d0ffdaace45f5c9807f788849b28cc6a847e68c53
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:^0.12.27":
+  version: 0.12.27
+  resolution: "esbuild@npm:0.12.27"
+  bin:
+    esbuild: bin/esbuild
+  checksum: b40a7098a51d9d74c50a5912477079ecbd96c211d00cbabde3cb4560609b383265c7bbb0f7e350cfc40ed0e13996be25405d14f560eeaad48105cb7c753e24f8
   languageName: node
   linkType: hard
 
@@ -21075,19 +21094,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-cascader@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "rc-cascader@npm:1.5.0"
+"rc-cascader@npm:^2.0.0-alpha.18":
+  version: 2.0.0-alpha.18
+  resolution: "rc-cascader@npm:2.0.0-alpha.18"
   dependencies:
     "@babel/runtime": ^7.12.5
     array-tree-filter: ^2.1.0
+    rc-tree-select: ~4.5.0-alpha.0
     rc-trigger: ^5.0.4
     rc-util: ^5.0.1
     warning: ^4.0.1
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 481c42b4eae83f42895caebae1e56631a3f8d1be4bf1a26128e2c1eeee86f2e07e9073a3851886e110b4daafbb71c72b4c028254d9e819fc221ea522663004a8
+  checksum: 9ed96e0878356d346c7acdf9ce4039cdfe3efcbde5bf0cf2045ea40d3da13cb1dadd6ea3d966cb2b6c76fb757c15b5bbe422675ab3c291633dc6260fd92bbeca
   languageName: node
   linkType: hard
 
@@ -21391,7 +21411,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rc-tree-select@npm:^4.5.0-alpha.1":
+"rc-tree-select@npm:^4.5.0-alpha.1, rc-tree-select@npm:~4.5.0-alpha.0":
   version: 4.5.0-alpha.1
   resolution: "rc-tree-select@npm:4.5.0-alpha.1"
   dependencies:

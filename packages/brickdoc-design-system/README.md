@@ -50,3 +50,8 @@ const App = () => (
 
 - Sync of patches from Ant Design 4.16.11
 - Remove unused components
+
+### 0.3.0
+
+- Sync of patches from Ant Design 4.17-alpha.3
+- add `@brickdoc/design-colors`

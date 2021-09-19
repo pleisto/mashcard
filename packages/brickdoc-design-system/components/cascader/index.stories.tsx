@@ -1,10 +1,10 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Cascader, CascaderProps } from '../'
+import { CascaderProps, Cascader } from '../'
 
 export default {
-  title: 'ReactComponents/Carousel',
-  component: Cascader,
+  title: 'ReactComponents/Cascader',
+  component: Cascader as unknown as React.FunctionComponent<CascaderProps>,
   argTypes: {
     allowClear: {
       description: 'Whether allow clear',
@@ -164,7 +164,7 @@ export default {
         type: { summary: 'string' }
       }
     },
-    popupPlacement: {
+    placement: {
       description: 'Use preset popup align config from builtinPlacements：bottomLeft bottomRight topLeft topRight',
       defaultValue: 'bottomRight',
       control: {
@@ -176,18 +176,9 @@ export default {
         defaultValue: { summary: 'bottomRight' }
       }
     },
-    popupVisible: {
-      description: 'Set visible of cascader popup',
-      control: {
-        type: 'boolean'
-      },
-      table: {
-        type: { summary: 'boolean' }
-      }
-    },
     showSearch: {
       description: 'Whether show search input in single mode',
-      defaultValue: 'false',
+      defaultValue: false,
       control: {
         type: 'boolean'
       },
@@ -227,7 +218,7 @@ export default {
         type: { summary: '(value, selectedOptions) => void' }
       }
     },
-    onPopupVisibleChange: {
+    onDropdownVisibleChange: {
       description: 'Callback when popup shown or hidden',
       table: {
         type: { summary: '(value) => void' }

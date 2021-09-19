@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
 import * as React from 'react'
-import RcMenu, { Divider, ItemGroup, MenuProps as RcMenuProps } from 'rc-menu'
+import RcMenu, { ItemGroup, MenuProps as RcMenuProps } from 'rc-menu'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
 
@@ -14,7 +14,9 @@ import { SiderContext, SiderContextProps } from '../layout/Sider'
 import collapseMotion from '../_util/motion'
 import { cloneElement } from '../_util/reactNode'
 import MenuContext, { MenuTheme } from './MenuContext'
+import MenuDivider from './MenuDivider'
 
+export type { MenuDividerProps } from './MenuDivider'
 export type { MenuItemGroupProps } from 'rc-menu'
 
 export type MenuMode = 'vertical' | 'vertical-left' | 'vertical-right' | 'horizontal' | 'inline'
@@ -84,7 +86,8 @@ class InternalMenu extends React.Component<InternalMenuProps> {
           antdMenuTheme: theme,
           direction,
           firstLevel: true
-        }}>
+        }}
+      >
         <RcMenu
           getPopupContainer={getPopupContainer}
           overflowedIndicator={<EllipsisOutlined />}
@@ -110,7 +113,7 @@ class InternalMenu extends React.Component<InternalMenuProps> {
 
 // We should keep this as ref-able
 class Menu extends React.Component<MenuProps, {}> {
-  static Divider = Divider
+  static Divider = MenuDivider
 
   static Item = Item
 

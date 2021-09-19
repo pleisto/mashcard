@@ -77,7 +77,7 @@ function getRCNotificationInstance(
   args: ArgsProps,
   callback: (info: { prefixCls: string; rootPrefixCls: string; instance: RCNotificationInstance }) => void
 ) {
-  const { prefixCls: customizePrefixCls } = args
+  const { prefixCls: customizePrefixCls, getPopupContainer: getContextPopupContainer } = args
   const { getPrefixCls, getRootPrefixCls } = globalConfig()
   const prefixCls = getPrefixCls('message', customizePrefixCls || localPrefixCls)
   const rootPrefixCls = getRootPrefixCls(args.rootPrefixCls, prefixCls)
@@ -92,11 +92,11 @@ function getRCNotificationInstance(
     prefixCls,
     transitionName: hasTransitionName ? transitionName : `${rootPrefixCls}-${transitionName}`,
     style: { top: defaultTop }, // 覆盖原来的样式
-    getContainer,
+    getContainer: getContainer || getContextPopupContainer,
     maxCount
   }
 
-  RCNotification.newInstance(instanceConfig, (instance: any) => {
+  RCNotification.newInstance(instanceConfig as any, (instance: any) => {
     if (messageInstance) {
       // eslint-disable-next-line node/no-callback-literal
       callback({ prefixCls, rootPrefixCls, instance: messageInstance })
@@ -132,6 +132,7 @@ export interface ArgsProps {
   type: NoticeType
   prefixCls?: string
   rootPrefixCls?: string
+  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
   onClose?: () => void
   icon?: React.ReactNode
   key?: string | number

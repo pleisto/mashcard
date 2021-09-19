@@ -1,6 +1,5 @@
 import * as React from 'react'
 import RcDrawer from 'rc-drawer'
-import getScrollBarSize from 'rc-util/lib/getScrollBarSize'
 import classNames from 'classnames'
 
 import './style'
@@ -20,8 +19,13 @@ type EventType = React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLDivE
 
 type getContainerFunc = () => HTMLElement
 
+type ILevelMove = number | [number, number]
+
 const PlacementTypes = tuple('top', 'right', 'bottom', 'left')
 type placementType = typeof PlacementTypes[number]
+
+const SizeTypes = tuple('default', 'large')
+type sizeType = typeof SizeTypes[number]
 
 export interface PushState {
   distance: string | number
@@ -36,6 +40,7 @@ export interface DrawerProps {
   mask?: boolean
   maskStyle?: React.CSSProperties
   style?: React.CSSProperties
+  size?: sizeType
   /** Wrapper dom node style of header and body */
   drawerStyle?: React.CSSProperties
   headerStyle?: React.CSSProperties
@@ -54,9 +59,11 @@ export interface DrawerProps {
   className?: string
   handler?: React.ReactNode
   keyboard?: boolean
+  extra?: React.ReactNode
   footer?: React.ReactNode
   footerStyle?: React.CSSProperties
   level?: string | string[] | null | undefined
+  levelMove?: ILevelMove | ((e: { target: HTMLElement; open: boolean }) => ILevelMove)
 }
 
 export interface IDrawerState {
@@ -72,8 +79,9 @@ const defaultPushState: PushState = { distance: 180 }
 const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
   (
     {
-      width = 256,
-      height = 256,
+      width,
+      height,
+      size = 'default',
       closable = true,
       placement = 'right' as placementType,
       maskClosable = true,
@@ -97,6 +105,7 @@ const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
       onClose,
       footer,
       footerStyle,
+      extra,
       ...rest
     },
     ref
@@ -170,9 +179,11 @@ const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
       }
       const offsetStyle: any = {}
       if (placement === 'left' || placement === 'right') {
-        offsetStyle.width = width
+        const defaultWidth = size === 'large' ? 736 : 378
+        offsetStyle.width = typeof width === 'undefined' ? defaultWidth : width
       } else {
-        offsetStyle.height = height
+        const defaultHeight = size === 'large' ? 736 : 378
+        offsetStyle.height = typeof height === 'undefined' ? defaultHeight : height
       }
       return offsetStyle
     }
@@ -207,35 +218,29 @@ const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
       }
     }
 
-    function renderCloseIcon() {
-      return (
-        closable && (
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className={`${prefixCls}-close`}
-            style={
-              {
-                '--scroll-bar': `${getScrollBarSize()}px`
-              } as any
-            }>
-            {closeIcon}
-          </button>
-        )
-      )
-    }
+    const closeIconNode = closable && (
+      <button type="button" onClick={onClose} aria-label="Close" className={`${prefixCls}-close`}>
+        {closeIcon}
+      </button>
+    )
 
     function renderHeader() {
       if (!title && !closable) {
         return null
       }
 
-      const headerClassName = title ? `${prefixCls}-header` : `${prefixCls}-header-no-title`
       return (
-        <div className={headerClassName} style={headerStyle}>
-          {title && <div className={`${prefixCls}-title`}>{title}</div>}
-          {closable && renderCloseIcon()}
+        <div
+          className={classNames(`${prefixCls}-header`, {
+            [`${prefixCls}-header-close-only`]: closable && !title && !extra
+          })}
+          style={headerStyle}
+        >
+          <div className={`${prefixCls}-header-title`}>
+            {closeIconNode}
+            {title && <div className={`${prefixCls}-title`}>{title}</div>}
+          </div>
+          {extra && <div className={`${prefixCls}-extra`}>{extra}</div>}
         </div>
       )
     }
@@ -275,7 +280,8 @@ const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
             ...containerStyle,
             ...drawerStyle
           }}
-          onTransitionEnd={onDestroyTransitionEnd}>
+          onTransitionEnd={onDestroyTransitionEnd}
+        >
           {renderHeader()}
           <div className={`${prefixCls}-body`} style={bodyStyle}>
             {children}
@@ -312,7 +318,8 @@ const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
           open={visible}
           showMask={mask}
           style={getRcDrawerStyle()}
-          className={drawerClassName}>
+          className={drawerClassName}
+        >
           {renderBody()}
         </RcDrawer>
       </DrawerContext.Provider>

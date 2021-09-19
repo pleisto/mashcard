@@ -12,7 +12,7 @@ import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
 
 export default IconWrapper('font-size', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
+  <svg width={props.size} height={props.size} fill="none" viewBox="0 0 24 24">
     <path
       fill="currentColor"
       d="M3 3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2.467a1 1 0 1 1-2 0V4h-6v16h3a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h3V4H5v1.467a1 1 0 0 1-2 0V3z"

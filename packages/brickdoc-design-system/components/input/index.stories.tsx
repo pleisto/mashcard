@@ -145,7 +145,7 @@ const Template: Story<InputProps> = _args => (
     <Input prefix="￥" suffix="RMB" disabled />
     <br />
     <br />
-    <Search placeholder="input search text" enterButton="Search" size="large" loading />
+    <Search placeholder="input search text" enterButton="Search" size="small" loading />
     <br />
     <br />
     <Input.Group compact>

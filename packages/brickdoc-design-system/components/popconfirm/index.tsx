@@ -13,6 +13,7 @@ import { ConfigContext } from '../config-provider'
 import { getRenderPropValue, RenderFunction } from '../_util/getRenderPropValue'
 import { cloneElement } from '../_util/reactNode'
 import { getTransitionName } from '../_util/motion'
+import ActionButton from '../_util/ActionButton'
 
 export interface PopconfirmProps extends AbstractTooltipProps {
   title: React.ReactNode | RenderFunction
@@ -38,6 +39,7 @@ export interface PopconfirmLocale {
 }
 
 const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
+  const { getPrefixCls } = React.useContext(ConfigContext)
   const [visible, setVisible] = useMergedState(false, {
     value: props.visible,
     defaultValue: props.defaultVisible
@@ -49,10 +51,11 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
     props.onVisibleChange?.(value, e)
   }
 
-  const onConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const close = (e: React.MouseEvent<HTMLButtonElement>) => {
     settingVisible(false, e)
-    props.onConfirm?.call(this, e)
   }
+
+  const onConfirm = (e: React.MouseEvent<HTMLButtonElement>) => props.onConfirm?.call(this, e)
 
   const onCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     settingVisible(false, e)
@@ -85,15 +88,20 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
           <Button onClick={onCancel} size="small" {...cancelButtonProps}>
             {cancelText || popconfirmLocale.cancelText}
           </Button>
-          <Button onClick={onConfirm} {...convertLegacyProps(okType)} size="small" {...okButtonProps}>
+          <ActionButton
+            buttonProps={{ size: 'small', ...convertLegacyProps(okType), ...okButtonProps }}
+            actionFn={onConfirm}
+            close={close}
+            prefixCls={getPrefixCls('btn')}
+            quitOnNullishReturnValue
+            emitEvent
+          >
             {okText || popconfirmLocale.okText}
-          </Button>
+          </ActionButton>
         </div>
       </div>
     )
   }
-
-  const { getPrefixCls } = React.useContext(ConfigContext)
 
   const { prefixCls: customizePrefixCls, placement, children, overlayClassName, ...restProps } = props
   const prefixCls = getPrefixCls('popover', customizePrefixCls)
@@ -117,7 +125,8 @@ const Popconfirm = React.forwardRef<unknown, PopconfirmProps>((props, ref) => {
       overlay={overlay}
       overlayClassName={overlayClassNames}
       ref={ref as any}
-      transitionName={getTransitionName(rootPrefixCls, 'zoom-big', props.transitionName)}>
+      transitionName={getTransitionName(rootPrefixCls, 'zoom-big', props.transitionName)}
+    >
       {cloneElement(children, {
         onKeyDown: (e: React.KeyboardEvent<any>) => {
           if (React.isValidElement(children)) {

@@ -115,6 +115,10 @@ More layouts with navigation: Layout.
 ##### Menu.Divider
 
 Divider line in between menu items, only used in vertical popup Menu or Dropdown Menu.
+
+ Param  | Description            | Type    | Default value |
+| ------ | ---------------------- | ------- | ------------- |
+| dashed | Whether line is dashed | boolean | false         | 
 `
       }
     }

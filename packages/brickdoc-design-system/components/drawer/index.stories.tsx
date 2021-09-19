@@ -33,6 +33,7 @@ leaving the current page, tasks can be achieved more efficiently within the same
 | contentWrapperStyle | Style of the drawer wrapper of content part | CSSProperties | - |
 | destroyOnClose | Whether to unmount child components on closing drawer or not | boolean | false |
 | drawerStyle | Style of the popup layer element | object | - |
+| extra | Extra actions area at corner | ReactNode | - |
 | footer | The footer for Drawer | ReactNode | - |
 | footerStyle | Style of the drawer footer part | CSSProperties | - |
 | forceRender | Prerender Drawer component forcely | boolean | false |
@@ -47,11 +48,11 @@ leaving the current page, tasks can be achieved more efficiently within the same
 | push | Nested drawers push behavior | boolean \\| { distance: string \\| number } | { distance: 180 } |
 | style | Style of wrapper element which **contains mask** compare to \`drawerStyle\` | CSSProperties | - |
 | title | The title for Drawer | ReactNode | - |
+| size | presetted size of drawer, default \`378px\` and large \`736px\` | 'default' \\| 'large' | 'default' |
 | visible | Whether the Drawer dialog is visible or not | boolean | false |
-| width | Width of the Drawer dialog | string \\| number | 256 |
+| width | Width of the Drawer dialog | string \\| number | 378 |
 | zIndex | The \`z-index\` of the Drawer | number | 1000 |
 | onClose | Specify a callback that will be called when a user clicks mask, close button or Cancel button | function(e) | - |
-
 `
       }
     }

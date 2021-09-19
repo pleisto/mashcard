@@ -1,3 +1,7 @@
+/*
+ * Deprecated Theme
+ * PLEASE DO NOT MODIFY THIS FILE
+ */
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 @import '../color/colors';
 
@@ -10,6 +14,47 @@
 @html-selector: html;
 
 // -------- Colors -----------
+// >>> Primary
+@primary-color: @blue-6;
+@primary-color-hover: color(~`colorPalette('@{primary-color}', 5) `);
+@primary-color-active: color(~`colorPalette('@{primary-color}', 7) `);
+@primary-color-outline: fade(@primary-color, @outline-fade);
+
+@processing-color: @blue-6;
+
+// >>> Info
+@info-color: @primary-color;
+@info-color-deprecated-bg: color(~`colorPalette('@{info-color}', 1) `);
+@info-color-deprecated-border: color(~`colorPalette('@{info-color}', 3) `);
+
+// >>> Success
+@success-color: @green-6;
+@success-color-hover: color(~`colorPalette('@{success-color}', 5) `);
+@success-color-active: color(~`colorPalette('@{success-color}', 7) `);
+@success-color-outline: fade(@success-color, @outline-fade);
+@success-color-deprecated-bg: color(~`colorPalette('@{success-color}', 1) `);
+@success-color-deprecated-border: color(~`colorPalette('@{success-color}', 3) `);
+
+// >>> Warning
+@warning-color: @gold-6;
+@warning-color-hover: color(~`colorPalette('@{warning-color}', 5) `);
+@warning-color-active: color(~`colorPalette('@{warning-color}', 7) `);
+@warning-color-outline: fade(@warning-color, @outline-fade);
+@warning-color-deprecated-bg: color(~`colorPalette('@{warning-color}', 1) `);
+@warning-color-deprecated-border: color(~`colorPalette('@{warning-color}', 3) `);
+
+// >>> Error
+@error-color: @red-5;
+@error-color-hover: color(~`colorPalette('@{error-color}', 5) `);
+@error-color-active: color(~`colorPalette('@{error-color}', 7) `);
+@error-color-outline: fade(@error-color, @outline-fade);
+@error-color-deprecated-bg: color(~`colorPalette('@{error-color}', 1) `);
+@error-color-deprecated-border: color(~`colorPalette('@{error-color}', 3) `);
+
+@highlight-color: @red-5;
+@normal-color: #d9d9d9;
+@white: #fff;
+@black: #000;
 
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
@@ -28,7 +73,10 @@
 
 // Base Scaffolding Variables
 // ---
-
+// Background color for `<body>`
+@body-background: #fff;
+// Base background color for most components
+@component-background: #fff;
 // Popover background color
 @popover-background: @component-background;
 @popover-customize-border-color: @border-color-split;
@@ -117,7 +165,7 @@
 // Outline
 @outline-blur-size: 0;
 @outline-width: 2px;
-@outline-color: #2dc5e3;
+@outline-color: @primary-color; // No use anymore
 @outline-fade: 20%;
 
 @background-color-light: hsv(0, 0, 98%); // background of header and selected item
@@ -822,16 +870,6 @@
 @skeleton-paragraph-li-height: 16px;
 @skeleton-title-height: 16px;
 @skeleton-title-paragraph-margin-top: @margin-lg;
-
-// Transfer
-// ---
-@transfer-header-height: 40px;
-@transfer-item-height: @height-base;
-@transfer-disabled-bg: @disabled-bg;
-@transfer-list-height: 200px;
-@transfer-item-hover-bg: @item-hover-bg;
-@transfer-item-padding-vertical: 6px;
-@transfer-list-search-icon-top: 12px;
 
 // Message
 // ---

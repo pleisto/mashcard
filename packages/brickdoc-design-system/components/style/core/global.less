@@ -1,6 +1,9 @@
 /* stylelint-disable no-descending-specificity */
 
-/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/**
+ * 1. Add border box sizing in all browsers (opinionated).
+ * 2. Backgrounds do not repeat by default (opinionated).
+ */
 *,
 *::before,
 *::after {
@@ -8,16 +11,22 @@
 }
 
 /**
-Use a more readable tab size (opinionated).
-*/
-:root {
-  -moz-tab-size: 4;
-  tab-size: 4;
+ * 1. Use the default cursor in all browsers (opinionated).
+ * 2. Change the line height in all browsers (opinionated).
+ * 3. Breaks words to prevent overflow in all browsers (opinionated).
+ * 4. Use a 4-space tab width in all browsers (opinionated).
+ * 5. Remove the grey highlight on links in iOS (opinionated).
+ * 6. Prevent adjustments of font size after orientation changes in iOS.
+ */
 
-  --brickdoc-primary-color: @primary-color;
-  --font-size-base: @font-size-base;
-  --text-color-base: @text-color;
-  --scroll-bar: 0;
+:where(:root) {
+  cursor: default; /* 1 */
+  line-height: 1.5; /* 2 */
+  overflow-wrap: break-word; /* 3 */
+  -moz-tab-size: 4; /* 4 */
+  tab-size: 4; /* 4 */
+  -webkit-tap-highlight-color: transparent; /* 5 */
+  -webkit-text-size-adjust: 100%; /* 6 */
 }
 
 // HTML & Body reset
@@ -47,6 +56,7 @@ body {
 //
 // 1. remove the margin in all browsers.
 // 2. As a best practice, apply a default `body-background`.
+// 3. Fill the viewport block in all browsers (opinionated).
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -57,8 +67,11 @@ body {
   font-family: @font-family;
   font-variant: @font-variant-base;
   line-height: @line-height-base;
-  background-color: @body-background; // 2
+  background-color: #fff; // 2
   font-feature-settings: @font-feature-settings-base;
+  block-size: -moz-available; /* 3 */
+  block-size: -webkit-fill-available; /* 3 */
+  block-size: stretch; /* 3 */
 
   &:lang(zh-Hans) {
     font-family: 'Brickdoc Sans CJK SC', @font-family;
@@ -447,16 +460,6 @@ progress {
 }
 
 //
-// 1. Correct the inability to style clickable types in iOS and Safari.
-// 2. Change font properties to `inherit` in Safari.
-//
-
-::-webkit-file-upload-button {
-  font: inherit; // 2
-  -webkit-appearance: button; // 1
-}
-
-//
 // Correct element displays
 //
 
@@ -482,4 +485,114 @@ mark {
 .clearfix {
   .clearfix();
 }
+
+:where(audio, canvas, iframe, img, svg, video) {
+  vertical-align: middle;
+}
+
+/**
+ * Remove the border on iframes in all browsers (opinionated).
+ */
+
+:where(iframe) {
+  border-style: none;
+}
+
+/**
+ * Change the fill color to match the text color in all browsers (opinionated).
+ */
+
+:where(svg:not([fill])) {
+  fill: currentColor;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome, Edge, and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+:where([type='search' i]) {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Safari.
+ */
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the text style of placeholders in Chrome, Edge, and Safari.
+ */
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+/**
+ * Remove the inner padding in Chrome, Edge, and Safari on macOS.
+ */
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style upload buttons in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Accessibility
+ * ========================================================================== */
+
+/**
+ * Change the cursor on busy elements in all browsers (opinionated).
+ */
+
+:where([aria-busy='true']) {
+  cursor: progress;
+}
+
+/*
+ * Change the cursor on control elements in all browsers (opinionated).
+ */
+
+[aria-controls] {
+  cursor: pointer;
+}
+
+/*
+ * Change the cursor on disabled, not-editable, or otherwise
+ * inoperable elements in all browsers (opinionated).
+ */
+
+[aria-disabled='true'],
+[disabled] {
+  cursor: not-allowed;
+}
+
+/*
+ * Change the display on visually hidden accessible elements
+ * in all browsers (opinionated).
+ */
+
+[aria-hidden='false'][hidden] {
+  display: initial;
+}
+
+[aria-hidden='false'][hidden]:not(:focus) {
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
 /* stylelint-enable no-descending-specificity */

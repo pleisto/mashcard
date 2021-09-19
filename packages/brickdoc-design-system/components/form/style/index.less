@@ -39,7 +39,6 @@
   &-small {
     .formSize(@input-height-sm);
   }
-
   &-large {
     .formSize(@input-height-lg);
   }
@@ -62,14 +61,17 @@
 
   margin-bottom: @form-item-margin-bottom;
   vertical-align: top;
+  // We delay one frame (0.017s) here to let CSSMotion goes
+  transition: margin-bottom @animation-duration-slow 0.017s linear;
 
   &-with-help {
     margin-bottom: 0;
+    transition: none;
   }
 
   &-hidden,
   &-hidden.@{brk-prefix}-row {
-    // https://github.com/ant-design/ant-design/issues/26141
+    // https://github.com/brk-design/brk-design/issues/26141
     display: none;
   }
 
@@ -90,7 +92,6 @@
 
     > label {
       position: relative;
-      // display: inline;
       display: inline-flex;
       align-items: center;
       height: @form-item-label-height;
@@ -163,7 +164,7 @@
     flex-direction: column;
     flex-grow: 1;
 
-    &:first-child:not([class^='brk-col-']):not([class*=' brk-col-']) {
+    &:first-child:not([class^=~"'@{brk-prefix}-col-'"]):not([class*=~"' @{brk-prefix}-col-'"]) {
       width: 100%;
     }
   }
@@ -180,10 +181,12 @@
     }
   }
 
+  // ==============================================================
+  // =                           Explain                          =
+  // ==============================================================
   &-explain,
   &-extra {
     clear: both;
-    min-height: @form-item-margin-bottom;
     color: @text-color-secondary;
     font-size: @font-size-base;
     line-height: @line-height-base;
@@ -191,44 +194,63 @@
     .explainAndExtraDistance((@form-item-margin-bottom - @form-font-height) / 2);
   }
 
+  &-explain-connected {
+    height: 0;
+    min-height: 0;
+    opacity: 0;
+  }
+
+  &-extra {
+    min-height: @form-item-margin-bottom;
+  }
+
   .@{brk-prefix}-input-textarea-show-count {
     &::after {
       margin-bottom: -22px;
     }
   }
-}
 
-.show-help-motion(@className, @keyframeName, @duration: @animation-duration-slow) {
-  @name: ~'@{brk-prefix}-@{className}';
-  .make-motion(@name, @keyframeName, @duration);
-  .@{name}-enter,
-  .@{name}-appear {
-    opacity: 0;
-    animation-timing-function: @ease-in-out;
-  }
-  .@{name}-leave {
-    animation-timing-function: @ease-in-out;
-  }
-}
-
-.show-help-motion(show-help, antShowHelp, 0.3s);
-
-@keyframes antShowHelpIn {
-  0% {
-    transform: translateY(-5px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
+  &-with-help &-explain {
+    height: auto;
+    min-height: @form-item-margin-bottom;
     opacity: 1;
   }
 }
 
-@keyframes antShowHelpOut {
-  to {
+// >>>>>>>>>> Motion <<<<<<<<<<
+// Explain holder
+.@{brk-prefix}-show-help {
+  transition: height @animation-duration-slow linear, min-height @animation-duration-slow linear,
+    margin-bottom @animation-duration-slow @ease-in-out, opacity @animation-duration-slow @ease-in-out;
+
+  &-leave {
+    min-height: @form-item-margin-bottom;
+
+    &-active {
+      min-height: 0;
+    }
+  }
+}
+
+// Explain
+.@{brk-prefix}-show-help-item {
+  overflow: hidden;
+  transition: height @animation-duration-slow @ease-in-out, opacity @animation-duration-slow @ease-in-out,
+    transform @animation-duration-slow @ease-in-out !important;
+
+  &-appear,
+  &-enter {
     transform: translateY(-5px);
     opacity: 0;
+
+    &-active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &-leave-active {
+    transform: translateY(-5px);
   }
 }
 
@@ -237,43 +259,28 @@
 @keyframes diffZoomIn1 {
   0% {
     transform: scale(0);
-    opacity: 0;
   }
-
   100% {
     transform: scale(1);
-    opacity: 1;
   }
 }
 
 @keyframes diffZoomIn2 {
   0% {
     transform: scale(0);
-    opacity: 0;
   }
-
   100% {
     transform: scale(1);
-    opacity: 1;
   }
 }
 
 @keyframes diffZoomIn3 {
   0% {
     transform: scale(0);
-    opacity: 0;
   }
-
   100% {
     transform: scale(1);
-    opacity: 1;
   }
 }
 
 @import './rtl';
-
-// Hide the eye from a password input is MS Edge.
-input::-ms-reveal,
-input::-ms-clear {
-  display: none;
-}

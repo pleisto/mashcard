@@ -23,7 +23,7 @@ export interface AlertProps {
   /** Close text to show */
   closeText?: React.ReactNode
   /** Content of Alert */
-  message: React.ReactNode
+  message?: React.ReactNode
   /** Additional content of Alert */
   description?: React.ReactNode
   /** Callback when close Alert */
@@ -144,7 +144,8 @@ const Alert: AlertInterface = ({
       onLeaveStart={node => ({
         maxHeight: node.offsetHeight
       })}
-      onLeaveEnd={afterClose}>
+      onLeaveEnd={afterClose}
+    >
       {({ className: motionClassName, style: motionStyle }) => (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
         <div
@@ -156,11 +157,12 @@ const Alert: AlertInterface = ({
           onMouseLeave={onMouseLeave}
           onClick={onClick}
           role="alert"
-          {...dataOrAriaProps}>
+          {...dataOrAriaProps}
+        >
           {isShowIcon ? renderIconNode() : null}
           <div className={`${prefixCls}-content`}>
-            <div className={`${prefixCls}-message`}>{message}</div>
-            <div className={`${prefixCls}-description`}>{description}</div>
+            {message ? <div className={`${prefixCls}-message`}>{message}</div> : null}
+            {description ? <div className={`${prefixCls}-description`}>{description}</div> : null}
           </div>
 
           {action ? <div className={`${prefixCls}-action`}>{action}</div> : null}

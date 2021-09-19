@@ -6,6 +6,7 @@ import {
   CloseOne as CloseCircleFilled,
   Rotation as LoadingOutlined
 } from '../icon'
+
 import Col, { ColProps } from '../grid/col'
 import { ValidateStatus } from './FormItem'
 import { FormContext, FormItemPrefixContext } from './context'
@@ -15,9 +16,9 @@ interface FormItemInputMiscProps {
   prefixCls: string
   children: React.ReactNode
   errors: React.ReactNode[]
+  warnings: React.ReactNode[]
   hasFeedback?: boolean
   validateStatus?: ValidateStatus
-  onDomErrorVisibleChange: (visible: boolean) => void
   /** @private Internal Usage, do not use in any of your production. */
   _internalItemRender?: {
     mark: string
@@ -34,9 +35,9 @@ interface FormItemInputMiscProps {
 
 export interface FormItemInputProps {
   wrapperCol?: ColProps
-  help?: React.ReactNode
   extra?: React.ReactNode
   status?: ValidateStatus
+  help?: React.ReactNode
 }
 
 const iconMap: { [key: string]: any } = {
@@ -52,13 +53,13 @@ const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = pro
     status,
     wrapperCol,
     children,
-    help,
     errors,
-    onDomErrorVisibleChange,
+    warnings,
     hasFeedback,
     _internalItemRender: formItemRender,
     validateStatus,
-    extra
+    extra,
+    help
   } = props
   const baseClassName = `${prefixCls}-item`
 
@@ -68,16 +69,12 @@ const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = pro
 
   const className = classNames(`${baseClassName}-control`, mergedWrapperCol.className)
 
-  React.useEffect(() => () => {
-    onDomErrorVisibleChange(false)
-  })
-
   // Should provides additional icon if `hasFeedback`
   const IconNode = validateStatus && iconMap[validateStatus]
   const icon =
     hasFeedback && IconNode ? (
       <span className={`${baseClassName}-children-icon`}>
-        <IconNode theme={validateStatus === 'validating' ? 'outline' : 'filled'} />
+        <IconNode />
       </span>
     ) : null
 
@@ -96,7 +93,7 @@ const FormItemInput: React.FC<FormItemInputProps & FormItemInputMiscProps> = pro
   const errorListDom = (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <FormItemPrefixContext.Provider value={{ prefixCls, status }}>
-      <ErrorList errors={errors} help={help} onDomErrorVisibleChange={onDomErrorVisibleChange} />
+      <ErrorList errors={errors} warnings={warnings} help={help} helpStatus={status} className={`${baseClassName}-explain-connected`} />
     </FormItemPrefixContext.Provider>
   )
 

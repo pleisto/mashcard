@@ -9,7 +9,7 @@
     display: inline-flex;
     flex-direction: column;
     text-align: center;
-    background: @calendar-bg;
+    background: @picker-bg;
     border: @border-width-base @border-style-base @picker-border-color;
     border-radius: @border-radius-base;
     outline: none;
@@ -601,7 +601,7 @@
       }
 
       &-active {
-        background: fade(@calendar-item-active-bg, 20%);
+        background: @calendar-column-active-bg;
       }
 
       &:hover {

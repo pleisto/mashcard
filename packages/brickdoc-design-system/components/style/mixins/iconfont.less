@@ -5,16 +5,24 @@
   line-height: 0;
   text-align: center;
   text-transform: none;
-  vertical-align: -0.125em;
+  vertical-align: 0.125em; // for SVG icon, see https://blog.prototypr.io/align-svg-icons-to-text-and-say-goodbye-to-font-icons-d44b3d7b26b4
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &-spin svg {
-    animation: i-icon-spin 1s infinite linear;
+  > * {
+    line-height: 1;
   }
 
-  &-rtl {
-    transform: scaleX(-1);
+  svg {
+    display: inline-block;
+  }
+
+  &::before {
+    display: none; // dont display old icon.
+  }
+
+  & &-icon {
+    display: block;
   }
 }

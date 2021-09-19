@@ -29,6 +29,7 @@ export interface AvatarProps {
   className?: string
   children?: React.ReactNode
   alt?: string
+  crossOrigin?: '' | 'anonymous' | 'use-credentials'
   /* callback when img load error */
   /* return false to prevent Avatar show default fallback behavior, then you can do fallback by your self */
   onError?: () => boolean
@@ -97,6 +98,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
     alt,
     draggable,
     children,
+    crossOrigin,
     ...others
   } = props
 
@@ -161,7 +163,9 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
 
   let childrenToRender
   if (typeof src === 'string' && isImgExist) {
-    childrenToRender = <img src={src} draggable={draggable} srcSet={srcSet} onError={handleImgLoadError} alt={alt} />
+    childrenToRender = (
+      <img src={src} draggable={draggable} srcSet={srcSet} onError={handleImgLoadError} alt={alt} crossOrigin={crossOrigin} />
+    )
   } else if (hasImageElement) {
     childrenToRender = src
   } else if (icon) {
@@ -188,7 +192,8 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
           ref={(node: HTMLElement) => {
             avatarChildrenRef.current = node
           }}
-          style={{ ...sizeChildrenStyle, ...childrenStyle }}>
+          style={{ ...sizeChildrenStyle, ...childrenStyle }}
+        >
           {children}
         </span>
       </ResizeObserver>
@@ -200,7 +205,8 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
         style={{ opacity: 0 }}
         ref={(node: HTMLElement) => {
           avatarChildrenRef.current = node
-        }}>
+        }}
+      >
         {children}
       </span>
     )
@@ -216,7 +222,8 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
       {...others}
       style={{ ...sizeStyle, ...responsiveSizeStyle, ...others.style }}
       className={classString}
-      ref={avatarNodeMergeRef as any}>
+      ref={avatarNodeMergeRef as any}
+    >
       {childrenToRender}
     </span>
   )

@@ -48,7 +48,7 @@ The properties of config are as follows:
 | top | Distance from the top of the viewport, when \`placement\` is \`topRight\` or \`topLeft\` (unit: pixels) | number | 24 |
 | onClick | Specify a function that will be called when the notification is clicked | function | - |
 | onClose | Trigger when notification closed | function | - |
-
+| maxCount | Max Notification show, drop oldest if exceed limit | number | - |
 \`notification\` also provides a global \`config()\` method that can be used for specifying the default options. Once this method is used, all the notification boxes will take into account these globally defined options when displaying.
 
 - \`notification.config(options)\`

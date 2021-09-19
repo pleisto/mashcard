@@ -3,34 +3,26 @@ import useRCNotification from 'rc-notification/lib/useNotification'
 import {
   NotificationInstance as RCNotificationInstance,
   NoticeContent as RCNoticeContent,
-  HolderReadyCallback as RCHolderReadyCallback,
+  HolderReadyCallback as RCHolderReadyCallback
 } from 'rc-notification/lib/Notification'
 import { ConfigConsumer, ConfigConsumerProps } from '../../config-provider'
-import {
-  MessageInstance,
-  ArgsProps,
-  attachTypeApi,
-  ThenableArgument,
-  getKeyThenIncreaseKey,
-} from '..'
+import { MessageInstance, ArgsProps, attachTypeApi, ThenableArgument, getKeyThenIncreaseKey } from '..'
 
 export default function createUseMessage(
-  getRcNotificationInstance: (
-    args: ArgsProps,
-    callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void,
-  ) => void,
-  getRCNoticeProps: (args: ArgsProps, prefixCls: string) => RCNoticeContent,
+  getRcNotificationInstance: (args: ArgsProps, callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void) => void,
+  getRCNoticeProps: (args: ArgsProps, prefixCls: string) => RCNoticeContent
 ) {
   const useMessage = (): [MessageInstance, React.ReactElement] => {
     // We can only get content by render
     let getPrefixCls: ConfigConsumerProps['getPrefixCls']
+    let getPopupContainer: ConfigConsumerProps['getPopupContainer']
 
     // We create a proxy to handle delay created instance
     let innerInstance: RCNotificationInstance | null = null
     const proxy = {
       add: (noticeProps: RCNoticeContent, holderCallback?: RCHolderReadyCallback) => {
         innerInstance?.component.add(noticeProps, holderCallback)
-      },
+      }
     } as any
 
     const [hookNotify, holder] = useRCNotification(proxy)
@@ -52,11 +44,12 @@ export default function createUseMessage(
             ...args,
             prefixCls: mergedPrefixCls,
             rootPrefixCls,
+            getPopupContainer
           },
           ({ prefixCls, instance }) => {
             innerInstance = instance
             hookNotify(getRCNoticeProps({ ...args, key: target, onClose: callback }, prefixCls))
-          },
+          }
         )
       })
       const result: any = () => {
@@ -64,8 +57,7 @@ export default function createUseMessage(
           innerInstance.removeNotice(target)
         }
       }
-      result.then = async (filled: ThenableArgument, rejected: ThenableArgument) =>
-        await closePromise.then(filled, rejected)
+      result.then = async (filled: ThenableArgument, rejected: ThenableArgument) => await closePromise.then(filled, rejected)
       result.promise = closePromise
       return result
     }
@@ -73,20 +65,18 @@ export default function createUseMessage(
     // Fill functions
     const hookApiRef = React.useRef<any>({})
 
-    hookApiRef.current.open = notify;
+    hookApiRef.current.open = notify
 
-    ['success', 'info', 'warning', 'error', 'loading'].forEach(type =>
-      attachTypeApi(hookApiRef.current, type),
-    )
+    ;['success', 'info', 'warning', 'error', 'loading'].forEach(type => attachTypeApi(hookApiRef.current, type))
 
     return [
       hookApiRef.current,
       <ConfigConsumer key="holder">
         {(context: ConfigConsumerProps) => {
-          ({ getPrefixCls } = context)
+          ;({ getPrefixCls, getPopupContainer } = context)
           return holder
         }}
-      </ConfigConsumer>,
+      </ConfigConsumer>
     ]
   }
 

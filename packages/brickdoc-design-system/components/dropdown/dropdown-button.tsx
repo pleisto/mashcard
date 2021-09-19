@@ -9,7 +9,7 @@ import Dropdown, { DropdownProps } from './dropdown'
 
 const ButtonGroup = Button.Group
 
-type DropdownButtonType = 'primary' | 'ghost' | 'dashed'
+export type DropdownButtonType = 'default' | 'primary' | 'ghost' | 'dashed' | 'link' | 'text'
 
 export interface DropdownButtonProps extends ButtonGroupProps, DropdownProps {
   type?: DropdownButtonType
@@ -32,7 +32,7 @@ const DropdownButton: DropdownButtonInterface = props => {
 
   const {
     prefixCls: customizePrefixCls,
-    type,
+    type = 'default',
     disabled,
     onClick,
     htmlType,
@@ -48,7 +48,7 @@ const DropdownButton: DropdownButtonInterface = props => {
     href,
     icon = <EllipsisOutlined />,
     title,
-    buttonsRender,
+    buttonsRender = (buttons: React.ReactNode[]) => buttons,
     mouseEnterDelay,
     mouseLeaveDelay,
     overlayClassName,
@@ -100,10 +100,5 @@ const DropdownButton: DropdownButtonInterface = props => {
 }
 
 DropdownButton.__ANT_BUTTON = true
-
-DropdownButton.defaultProps = {
-  type: 'default' as DropdownButtonType,
-  buttonsRender: (buttons: React.ReactNode[]) => buttons
-}
 
 export default DropdownButton

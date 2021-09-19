@@ -10,11 +10,12 @@ import './style'
 import { RenderEmptyHandler } from './renderEmpty'
 import LocaleProvider from '../locale-provider'
 import { useLocale } from '../locale-provider/LocaleReceiver'
-import { ConfigConsumer, ConfigContext, CSPConfig, DirectionType, ConfigConsumerProps } from './context'
+import { ConfigConsumer, ConfigContext, CSPConfig, DirectionType, ConfigConsumerProps, Theme } from './context'
 import SizeContext, { SizeContextProvider, SizeType } from './SizeContext'
 import message from '../message'
 import notification from '../notification'
 import { RequiredMark } from '../form/Form'
+import { registerTheme } from './cssVariables'
 
 export { ConfigContext, ConfigConsumer }
 
@@ -77,14 +78,17 @@ interface ProviderChildrenProps extends ConfigProviderProps {
 export const defaultPrefixCls = 'brk'
 let globalPrefixCls: string
 
-const setGlobalConfig = (params: Pick<ConfigProviderProps, 'prefixCls'>) => {
-  if (params.prefixCls !== undefined) {
-    globalPrefixCls = params.prefixCls
-  }
-}
-
 function getGlobalPrefixCls() {
   return globalPrefixCls || defaultPrefixCls
+}
+
+const setGlobalConfig = ({ prefixCls, theme }: Pick<ConfigProviderProps, 'prefixCls'> & { theme?: Theme }) => {
+  if (prefixCls !== undefined) {
+    globalPrefixCls = prefixCls
+  }
+  if (theme) {
+    registerTheme(getGlobalPrefixCls(), theme)
+  }
 }
 
 function getIconDefaultConfig(rtl: boolean): IIconConfig {

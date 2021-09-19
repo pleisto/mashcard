@@ -30,6 +30,7 @@ let defaultPlacement: NotificationPlacement = 'topRight'
 let defaultGetContainer: () => HTMLElement
 let defaultCloseIcon: React.ReactNode
 let rtl = false
+let maxCount: number
 
 export interface ConfigProps {
   top?: number
@@ -40,6 +41,7 @@ export interface ConfigProps {
   getContainer?: () => HTMLElement
   closeIcon?: React.ReactNode
   rtl?: boolean
+  maxCount?: number
 }
 
 function setNotificationConfig(options: ConfigProps) {
@@ -69,6 +71,9 @@ function setNotificationConfig(options: ConfigProps) {
   }
   if (options.rtl !== undefined) {
     rtl = options.rtl
+  }
+  if (options.maxCount !== undefined) {
+    maxCount = options.maxCount
   }
 }
 
@@ -146,7 +151,8 @@ function getNotificationInstance(args: ArgsProps, callback: (info: { prefixCls: 
         className: notificationClass,
         style: getPlacementStyle(placement, top, bottom),
         getContainer,
-        closeIcon: closeIconToRender
+        closeIcon: closeIconToRender,
+        maxCount
       },
       notification => {
         resolve(notification)

@@ -6,19 +6,20 @@
   "license": "Apache-2.0",
   "packageManager": "yarn@3.0.0",
   "sideEffects": false,
-  "main": "./dist/src/index.js",
-  "module": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc --build && esbuild src/less-plugin.ts --bundle --outfile=dist/less-plugin.js",
     "cleanup": "rm -rf dist",
     "eslint:fix": "eslint --fix --cache ./src"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
+    "esbuild": "^0.12.27",
     "eslint": "^7.32.0"
   }
 }

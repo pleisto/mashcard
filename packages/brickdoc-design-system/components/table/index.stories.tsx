@@ -134,6 +134,8 @@ One of the Table \`columns\` prop for describing the table's columns, Column has
 | filteredValue | Controlled filtered value, filter icon will highlight | string\\[] | - |
 | filterIcon | Customized filter icon | ReactNode \\| (filtered: boolean) => ReactNode | - |
 | filterMultiple | Whether multiple filters can be selected | boolean | true |
+| filterMode | To specify the filter interface | 'menu' \\| 'tree' | 'menu' |
+| filterSearch | Whether to be searchable for filter menu | Boolean | false |
 | filters | Filter menu config | object\\[] | - |
 | fixed | (IE not support) Set column to be fixed: \`true\`(same as left) \`'left'\` \`'right'\` | boolean \\| string | false |
 | key | Unique key of this column, you can ignore this prop if you've set a unique \`dataIndex\` | string | - |
@@ -458,7 +460,8 @@ class Demo extends React.Component {
               value={this.state.top}
               onChange={e => {
                 this.setState({ top: e.target.value })
-              }}>
+              }}
+            >
               <Radio.Button value="topLeft">TopLeft</Radio.Button>
               <Radio.Button value="topCenter">TopCenter</Radio.Button>
               <Radio.Button value="topRight">TopRight</Radio.Button>
@@ -470,7 +473,8 @@ class Demo extends React.Component {
               value={this.state.bottom}
               onChange={e => {
                 this.setState({ bottom: e.target.value })
-              }}>
+              }}
+            >
               <Radio.Button value="bottomLeft">BottomLeft</Radio.Button>
               <Radio.Button value="bottomCenter">BottomCenter</Radio.Button>
               <Radio.Button value="bottomRight">BottomRight</Radio.Button>

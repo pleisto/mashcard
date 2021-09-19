@@ -201,7 +201,8 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
       // Trigger pagination events
       // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
       if (pagination && pagination.onChange) {
-        pagination.onChange(1, changeInfo.pagination.pageSize)
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        pagination.onChange(1, changeInfo.pagination!.pageSize!)
       }
     }
 
@@ -400,7 +401,11 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
     }
 
     const renderPagination = (position: string) => (
-      <Pagination className={`${prefixCls}-pagination ${prefixCls}-pagination-${position}`} {...mergedPagination} size={paginationSize} />
+      <Pagination
+        {...mergedPagination}
+        className={classNames(`${prefixCls}-pagination ${prefixCls}-pagination-${position}`, mergedPagination.className)}
+        size={paginationSize}
+      />
     )
     const defaultPosition = direction === 'rtl' ? 'left' : 'right'
     const { position } = mergedPagination

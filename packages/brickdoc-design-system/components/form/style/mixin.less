@@ -1,12 +1,16 @@
 @import '../../input/style/mixin';
 
-.form-control-validation(@text-color: @input-color; @border-color: @input-border-color; @background-color: @input-bg) {
+.form-control-validation(@text-color: @input-color;
+@border-color: @input-border-color;
+@background-color: @input-bg;
+@hoverBorderColor: @primary-color-hover;
+@outlineColor: @primary-color-outline;) {
   .@{brk-prefix}-form-item-split {
     color: @text-color;
   }
   // 输入框的不同校验状态
-  :not@{brk-prefix}-input-disabled.@{brk-prefix}-input-disabled,
-  :not(.@{brk-prefix}-input-affix-wrapper-disabled).@{brk-prefix}-input-affix-wrapper {
+  :not@{brk-prefix}-input-disabled:not(.@{brk-prefix}-input-borderless).@{brk-prefix}-input-disabled,
+  :not(.@{brk-prefix}-input-affix-wrapper-disabled):not(.@{brk-prefix}-input-affix-wrapper-borderless).@{brk-prefix}-input-affix-wrapper {
     &,
     &:hover {
       background-color: @background-color;
@@ -15,12 +19,12 @@
 
     &:focus,
     &-focused {
-      .active(@border-color);
+      .active(@border-color, @hoverBorderColor, @outlineColor);
     }
   }
 
   .@{brk-prefix}-calendar-picker-open .@{brk-prefix}-calendar-picker-input {
-    .active(@border-color);
+    .active(@border-color, @hoverBorderColor, @outlineColor);
   }
 
   .@{brk-prefix}-input-prefix {

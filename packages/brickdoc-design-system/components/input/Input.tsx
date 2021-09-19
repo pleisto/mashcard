@@ -1,15 +1,16 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import omit from 'rc-util/lib/omit'
-import Group from './Group'
-import Search from './Search'
-import TextArea from './TextArea'
-import Password from './Password'
+import type Group from './Group'
+import type Search from './Search'
+import type TextArea from './TextArea'
+import type Password from './Password'
 import { LiteralUnion } from '../_util/type'
-import ClearableLabeledInput, { hasPrefixSuffix } from './ClearableLabeledInput'
+import ClearableLabeledInput from './ClearableLabeledInput'
 import { ConfigConsumer, ConfigConsumerProps, DirectionType } from '../config-provider'
 import SizeContext, { SizeType } from '../config-provider/SizeContext'
 import devWarning from '../_util/devWarning'
+import { getInputClassName, hasPrefixSuffix } from './utils'
 
 export interface InputFocusOptions extends FocusOptions {
   cursor?: 'start' | 'end' | 'all'
@@ -51,6 +52,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   suffix?: React.ReactNode
   allowClear?: boolean
   bordered?: boolean
+  htmlSize?: number
 }
 
 export function fixControlledValue<T>(value: T) {
@@ -96,16 +98,6 @@ export function resolveOnChange<E extends HTMLInputElement | HTMLTextAreaElement
     return
   }
   onChange(event as React.ChangeEvent<E>)
-}
-
-export function getInputClassName(prefixCls: string, bordered: boolean, size?: SizeType, disabled?: boolean, direction?: DirectionType) {
-  return classNames(prefixCls, {
-    [`${prefixCls}-sm`]: size === 'small',
-    [`${prefixCls}-lg`]: size === 'large',
-    [`${prefixCls}-disabled`]: disabled,
-    [`${prefixCls}-rtl`]: direction === 'rtl',
-    [`${prefixCls}-borderless`]: !bordered
-  })
 }
 
 export function triggerFocus(element?: HTMLInputElement | HTMLTextAreaElement, option?: InputFocusOptions) {
@@ -257,7 +249,7 @@ class Input extends React.Component<InputProps, InputState> {
   }
 
   renderInput = (prefixCls: string, size: SizeType | undefined, bordered: boolean, input: ConfigConsumerProps['input'] = {}) => {
-    const { className, addonBefore, addonAfter, size: customizeSize, disabled } = this.props
+    const { className, addonBefore, addonAfter, size: customizeSize, disabled, htmlSize } = this.props
     // Fix https://fb.me/react-unknown-prop
     const otherProps = omit(this.props as InputProps & { inputType: any }, [
       'prefixCls',
@@ -272,7 +264,8 @@ class Input extends React.Component<InputProps, InputState> {
       'defaultValue',
       'size',
       'inputType',
-      'bordered'
+      'bordered',
+      'htmlSize'
     ])
     return (
       <input
@@ -286,6 +279,7 @@ class Input extends React.Component<InputProps, InputState> {
           [className]: className && !addonBefore && !addonAfter
         })}
         ref={this.saveInput}
+        size={htmlSize}
       />
     )
   }

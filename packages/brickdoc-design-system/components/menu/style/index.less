@@ -6,7 +6,7 @@
 @menu-animation-duration-normal: 0.15s;
 
 .accessibility-focus() {
-  box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+  box-shadow: 0 0 0 2px @primary-1;
 }
 
 // TODO: Should remove icon style compatible in v5
@@ -16,7 +16,6 @@
   .reset-component();
 
   margin-bottom: 0;
-  padding: @menu-padding 0;
   padding-left: 0; // Override default ul/ol
   color: @menu-item-color;
   font-size: @menu-item-font-size;
@@ -24,10 +23,8 @@
   text-align: left;
   list-style: none;
   background: @menu-bg;
-  border: 1px solid @menu-border-color;
-  border-radius: @menu-border-radius;
   outline: none;
-  box-shadow: @menu-box-shadow;
+  box-shadow: @box-shadow-base;
   transition: background @animation-duration-slow, width @animation-duration-slow cubic-bezier(0.2, 0, 0, 1) 0s;
   .clearfix();
 
@@ -42,14 +39,23 @@
     list-style: none;
   }
 
+  // Overflow ellipsis
+  &-overflow {
+    display: flex;
+
+    &-item {
+      flex: none;
+    }
+  }
+
   &-hidden,
   &-submenu-hidden {
     display: none;
   }
 
   &-item-group-title {
-    height: auto;
-    padding: 8px 12px;
+    height: @menu-item-group-height;
+    padding: 8px 16px;
     color: @menu-item-group-title-color;
     font-size: @menu-item-group-title-font-size;
     line-height: @menu-item-group-height;
@@ -59,21 +65,14 @@
   &-horizontal &-submenu {
     transition: border-color @animation-duration-slow @ease-in-out, background @animation-duration-slow @ease-in-out;
   }
-
   &-submenu,
   &-submenu-inline {
-    border: none;
     transition: border-color @animation-duration-slow @ease-in-out, background @animation-duration-slow @ease-in-out,
       padding @menu-animation-duration-normal @ease-in-out;
-
   }
 
-  &-submenu-active {
-    background: @menu-item-active-bg;
-  }
-
-  &-item:hover {
-    background: @menu-item-active-bg;
+  &-submenu-selected {
+    color: @menu-highlight-color;
   }
 
   &-item:active,
@@ -90,18 +89,11 @@
     transition: color @animation-duration-slow;
   }
 
-  &-item.input-item:active {
-    background: unset;
-  }
-
   &-item a {
     color: @menu-item-color;
-
     &:hover {
       color: @menu-highlight-color;
-      background-color: @menu-item-active-bg;
     }
-
     &::before {
       position: absolute;
       top: 0;
@@ -116,17 +108,21 @@
   // https://github.com/ant-design/ant-design/issues/19809
   &-item > .@{brk-prefix}-badge a {
     color: @menu-item-color;
-
     &:hover {
       color: @menu-highlight-color;
     }
   }
 
   &-item-divider {
-    height: 1px;
     overflow: hidden;
     line-height: 0;
-    background-color: @border-color-split;
+    border-color: @border-color-split;
+    border-style: solid;
+    border-width: 1px 0 0;
+  }
+
+  &-item-divider-dashed {
+    border-style: dashed;
   }
 
   &-horizontal &-item,
@@ -142,14 +138,13 @@
 
   &-item-selected {
     color: @menu-highlight-color;
-
     a,
     a:hover {
       color: @menu-highlight-color;
     }
   }
 
-  &:not(&-horizontal) &-item-selected:not(.input-item) {
+  &:not(&-horizontal) &-item-selected {
     background-color: @menu-item-active-bg;
   }
 
@@ -183,7 +178,6 @@
       left: 0;
       margin-left: 0;
       border-right: 0;
-
       &::after {
         border-right: 0;
       }
@@ -212,7 +206,6 @@
     white-space: nowrap;
     cursor: pointer;
     transition: border-color @animation-duration-slow, background @animation-duration-slow, padding @animation-duration-slow @ease-in-out;
-    font-weight: 500;
 
     .@{menu-prefix-cls}-item-icon,
     .@{iconfont-css-prefix} {
@@ -220,7 +213,6 @@
       font-size: @menu-icon-size;
       transition: font-size @menu-animation-duration-normal @ease-out, margin @animation-duration-slow @ease-in-out,
         color @animation-duration-slow;
-
       + span {
         margin-left: @menu-icon-margin-right;
         opacity: 1;
@@ -245,12 +237,8 @@
   }
 
   & > &-item-divider {
-    height: 1px;
     margin: 1px 0;
     padding: 0;
-    overflow: hidden;
-    line-height: 0;
-    background-color: @border-color-split;
   }
 
   &-submenu {
@@ -286,7 +274,6 @@
     > .@{menu-prefix-cls} {
       background-color: @menu-bg;
       border-radius: @border-radius-base;
-
       &-submenu-title::after {
         transition: transform @animation-duration-slow @ease-in-out;
       }
@@ -320,11 +307,9 @@
           top @animation-duration-slow @ease-in-out, color @animation-duration-slow @ease-in-out;
         content: '';
       }
-
       &::before {
         transform: rotate(45deg) translateY(-2.5px);
       }
-
       &::after {
         transform: rotate(-45deg) translateY(2.5px);
       }
@@ -341,7 +326,6 @@
       &::before {
         transform: rotate(-45deg) translateX(2.5px);
       }
-
       &::after {
         transform: rotate(45deg) translateX(-2.5px);
       }
@@ -354,11 +338,9 @@
     &-open&-inline > &-title > &-arrow {
       // ↑
       transform: translateY(-2px);
-
       &::after {
         transform: rotate(-45deg) translateX(-2.5px);
       }
-
       &::before {
         transform: rotate(45deg) translateX(2.5px);
       }
@@ -372,7 +354,6 @@
   }
 
   &-horizontal {
-    display: flex;
     line-height: @menu-horizontal-line-height;
     border: 0;
     border-bottom: @border-width-base @border-style-base @border-color-split;
@@ -423,16 +404,13 @@
     > .@{menu-prefix-cls}-item {
       a {
         color: @menu-item-color;
-
         &:hover {
           color: @menu-highlight-color;
         }
-
         &::before {
           bottom: -2px;
         }
       }
-
       &-selected a {
         color: @menu-highlight-color;
       }
@@ -452,7 +430,6 @@
   &-inline {
     .@{menu-prefix-cls}-item {
       position: relative;
-
       &::after {
         position: absolute;
         top: 0;
@@ -468,20 +445,13 @@
 
     .@{menu-prefix-cls}-item,
     .@{menu-prefix-cls}-submenu-title {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
       height: @menu-item-height;
       margin-top: @menu-item-vertical-margin;
-      padding: 0 @menu-padding;
+      margin-bottom: @menu-item-vertical-margin;
+      padding: 0 16px;
       overflow: hidden;
       line-height: @menu-item-height;
       text-overflow: ellipsis;
-
-      .@{brk-prefix}-icon-arrow-right {
-        display: none;
-      }
     }
 
     // disable margin collapsed
@@ -489,10 +459,21 @@
       padding-bottom: 0.02px;
     }
 
+    .@{menu-prefix-cls}-item:not(:last-child) {
+      margin-bottom: @menu-item-boundary-margin;
+    }
+
     > .@{menu-prefix-cls}-item,
     > .@{menu-prefix-cls}-submenu > .@{menu-prefix-cls}-submenu-title {
       height: @menu-inline-toplevel-item-height;
       line-height: @menu-inline-toplevel-item-height;
+    }
+  }
+
+  &-vertical {
+    .@{menu-prefix-cls}-item-group-list .@{menu-prefix-cls}-submenu-title,
+    .@{menu-prefix-cls}-submenu-title {
+      padding-right: 34px;
     }
   }
 
@@ -513,6 +494,10 @@
     }
 
     .@{menu-prefix-cls}-item-group-list .@{menu-prefix-cls}-submenu-title,
+    .@{menu-prefix-cls}-submenu-title {
+      padding-right: 34px;
+    }
+
     // Motion enhance for first level
     &.@{menu-prefix-cls}-root {
       .@{menu-prefix-cls}-item,
@@ -521,15 +506,15 @@
         align-items: center;
         transition: border-color @animation-duration-slow, background @animation-duration-slow, padding 0.1s @ease-out;
 
-        > * {
-          flex: none;
-        }
-
         > .@{menu-prefix-cls}-title-content {
           flex: auto;
           min-width: 0;
           overflow: hidden;
           text-overflow: ellipsis;
+        }
+
+        > * {
+          flex: none;
         }
       }
     }
@@ -558,7 +543,6 @@
         margin: 0;
         font-size: @menu-icon-size-lg;
         line-height: @menu-item-height;
-
         + span {
           display: inline-block;
           opacity: 0;
@@ -578,7 +562,6 @@
       .@{iconfont-css-prefix} {
         display: none;
       }
-
       a {
         color: @text-color-dark;
       }
@@ -598,10 +581,11 @@
     padding: 0;
     .@{menu-prefix-cls}-item,
     .@{menu-prefix-cls}-submenu-title {
-      padding: 0 @menu-padding;
+      padding: 0 16px 0 28px;
     }
   }
 
+  &-root&-vertical,
   &-root&-vertical-left,
   &-root&-vertical-right,
   &-root&-inline {
@@ -672,5 +656,6 @@
   }
 }
 
+@import './light';
 @import './dark';
 @import './rtl';

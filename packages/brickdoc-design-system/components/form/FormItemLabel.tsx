@@ -81,7 +81,7 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         if (tooltipProps) {
           const { icon = <QuestionCircleOutlined theme="outline" />, ...restTooltipProps } = tooltipProps
           const tooltipNode = (
-            <Tooltip {...restTooltipProps}>{React.cloneElement(icon, { className: `${prefixCls}-item-tooltip` })}</Tooltip>
+            <Tooltip {...restTooltipProps}>{React.cloneElement(icon, { className: `${prefixCls}-item-tooltip`, title: '' })}</Tooltip>
           )
 
           labelChildren = (
@@ -97,7 +97,9 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
           labelChildren = (
             <>
               {labelChildren}
-              <span className={`${prefixCls}-item-optional`}>{formLocale?.optional}</span>
+              <span className={`${prefixCls}-item-optional`} title="">
+                {formLocale?.optional}
+              </span>
             </>
           )
         }

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import omit from 'rc-util/lib/omit'
+import { Meta } from 'rc-field-form/lib/interface'
 import { FormProvider as RcFormProvider } from 'rc-field-form'
 import { FormProviderProps as RcFormProviderProps } from 'rc-field-form/lib/FormContext'
 import { ColProps } from '../grid/col'
@@ -9,34 +10,28 @@ import { ValidateStatus } from './FormItem'
 
 /** Form Context. Set top form style and pass to Form Item usage. */
 export interface FormContextProps {
-  vertical: boolean;
-  name?: string;
-  colon?: boolean;
-  labelAlign?: FormLabelAlign;
-  labelCol?: ColProps;
-  wrapperCol?: ColProps;
-  requiredMark?: RequiredMark;
-  itemRef: (name: Array<string | number>) => (node: React.ReactElement) => void;
+  vertical: boolean
+  name?: string
+  colon?: boolean
+  labelAlign?: FormLabelAlign
+  labelCol?: ColProps
+  wrapperCol?: ColProps
+  requiredMark?: RequiredMark
+  itemRef: (name: Array<string | number>) => (node: React.ReactElement) => void
 }
 
 export const FormContext = React.createContext<FormContextProps>({
   labelAlign: 'right',
   vertical: false,
-  itemRef: (() => {}) as any,
+  itemRef: (() => {}) as any
 })
 
-/** Form Item Context. Used for Form noStyle Item error collection */
-export interface FormItemContextProps {
-  updateItemErrors: (name: string, errors: string[], originName?: string) => void;
-}
-
-export const FormItemContext = React.createContext<FormItemContextProps>({
-  updateItemErrors: () => {},
-})
+export type ReportMetaChange = (meta: Meta, uniqueKeys: React.Key[]) => void
+export const NoStyleItemContext = React.createContext<ReportMetaChange | null>(null)
 
 /** Form Provider */
 export interface FormProviderProps extends Omit<RcFormProviderProps, 'validateMessages'> {
-  prefixCls?: string;
+  prefixCls?: string
 }
 
 export const FormProvider: React.FC<FormProviderProps> = props => {
@@ -46,10 +41,10 @@ export const FormProvider: React.FC<FormProviderProps> = props => {
 
 /** Used for ErrorList only */
 export interface FormItemPrefixContextProps {
-  prefixCls: string;
-  status?: ValidateStatus;
+  prefixCls: string
+  status?: ValidateStatus
 }
 
 export const FormItemPrefixContext = React.createContext<FormItemPrefixContextProps>({
-  prefixCls: '',
+  prefixCls: ''
 })

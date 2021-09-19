@@ -7,10 +7,11 @@ import {
   Info as InfoCircleOutlined
 } from '../icon'
 import { getConfirmLocale } from './locale'
-import { ModalFuncProps, destroyFns } from './Modal'
+import type { ModalFuncProps } from './Modal'
 import ConfirmDialog from './ConfirmDialog'
 import { globalConfig } from '../config-provider'
 import devWarning from '../_util/devWarning'
+import destroyFns from './destroyFns'
 
 let defaultRootPrefixCls = ''
 

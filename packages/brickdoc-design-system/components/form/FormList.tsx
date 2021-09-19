@@ -22,7 +22,11 @@ export interface FormListProps {
   name: string | number | Array<string | number>
   rules?: ValidatorRule[]
   initialValue?: any[]
-  children: (fields: FormListFieldData[], operation: FormListOperation, meta: { errors: React.ReactNode[] }) => React.ReactNode
+  children: (
+    fields: FormListFieldData[],
+    operation: FormListOperation,
+    meta: { errors: React.ReactNode[]; warnings: React.ReactNode[] }
+  ) => React.ReactNode
 }
 
 const FormList: React.FC<FormListProps> = ({ prefixCls: customizePrefixCls, children, ...props }) => {
@@ -40,7 +44,8 @@ const FormList: React.FC<FormListProps> = ({ prefixCls: customizePrefixCls, chil
             fields.map(field => ({ ...field, fieldKey: field.key })),
             operation,
             {
-              errors: meta.errors
+              errors: meta.errors,
+              warnings: meta.warnings
             }
           )}
         </FormItemPrefixContext.Provider>

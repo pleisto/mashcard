@@ -3,7 +3,6 @@ import Dialog from 'rc-dialog'
 import classNames from 'classnames'
 import { Close as CloseOutlined } from '../icon'
 
-import useModal from './useModal'
 import Button from '../button'
 import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'
 import LocaleReceiver from '../locale-provider/LocaleReceiver'
@@ -13,7 +12,6 @@ import { getTransitionName } from '../_util/motion'
 import { ModalLocale } from './locale'
 
 let mousePosition: { x: number; y: number } | null
-export const destroyFns: Array<() => void> = []
 
 // ref: https://github.com/ant-design/ant-design/issues/15795
 const getClickPosition = (e: MouseEvent) => {
@@ -125,11 +123,7 @@ export interface ModalFuncProps {
   focusTriggerAfterClose?: boolean
 }
 
-interface ModalInterface extends React.FC<ModalProps> {
-  useModal: typeof useModal
-}
-
-const Modal: ModalInterface = props => {
+const Modal: React.FC<ModalProps> = props => {
   const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(ConfigContext)
 
   const handleCancel = (e: React.SyntheticEvent) => {
@@ -198,8 +192,6 @@ const Modal: ModalInterface = props => {
     />
   )
 }
-
-Modal.useModal = useModal
 
 Modal.defaultProps = {
   width: 520,

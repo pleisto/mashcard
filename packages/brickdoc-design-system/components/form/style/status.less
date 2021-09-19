@@ -1,5 +1,7 @@
-@import './index.less';
+@import (reference) '../../style/themes/index';
 
+@form-prefix-cls: ~'@{brk-prefix}-form';
+@form-item-prefix-cls: ~'@{form-prefix-cls}-item';
 .@{form-item-prefix-cls} {
   // ================================================================
   // =                            Status                            =
@@ -11,11 +13,11 @@
 
   /* To support leave along ErrorList. We add additional className to handle explain style */
   &-explain {
-    &&-error {
+    &-error {
       color: @error-color;
     }
 
-    &&-warning {
+    &-warning {
       color: @warning-color;
     }
   }
@@ -119,7 +121,7 @@
 
   // ======================== Warning ========================
   &-has-warning {
-    .form-control-validation(@warning-color; @warning-color; @form-warning-input-bg);
+    .form-control-validation(@warning-color; @warning-color; @form-warning-input-bg; @warning-color-hover; @warning-color-outline);
 
     &.@{form-item-prefix-cls}-has-feedback .@{form-item-prefix-cls}-children-icon {
       color: @warning-color;
@@ -134,7 +136,7 @@
       }
       &.@{brk-prefix}-select-open .@{brk-prefix}-select-selector,
       &.@{brk-prefix}-select-focused .@{brk-prefix}-select-selector {
-        .active(@warning-color);
+        .active(@warning-color, @warning-color-hover, @warning-color-outline);
       }
     }
 
@@ -146,7 +148,7 @@
 
       &-focused,
       &:focus {
-        .active(@warning-color);
+        .active(@warning-color, @warning-color-hover, @warning-color-outline);
       }
 
       &:not([disabled]):hover {
@@ -162,7 +164,7 @@
 
   // ========================= Error =========================
   &-has-error {
-    .form-control-validation(@error-color; @error-color; @form-error-input-bg);
+    .form-control-validation(@error-color; @error-color; @form-error-input-bg; @error-color-hover; @error-color-outline);
 
     &.@{form-item-prefix-cls}-has-feedback .@{form-item-prefix-cls}-children-icon {
       color: @error-color;
@@ -177,7 +179,7 @@
       }
       &.@{brk-prefix}-select-open .@{brk-prefix}-select-selector,
       &.@{brk-prefix}-select-focused .@{brk-prefix}-select-selector {
-        .active(@error-color);
+        .active(@error-color, @error-color-hover, @error-color-outline);
       }
     }
 
@@ -204,7 +206,7 @@
 
       &-focused,
       &:focus {
-        .active(@error-color);
+        .active(@error-color, @error-color-hover, @error-color-outline);
       }
 
       &:not([disabled]):hover {
@@ -223,7 +225,7 @@
       }
       &.@{brk-prefix}-mention-active:not([disabled]) .@{brk-prefix}-mention-editor,
       .@{brk-prefix}-mention-editor:not([disabled]):focus {
-        .active(@error-color);
+        .active(@error-color, @error-color-hover, @error-color-outline);
       }
     }
 
@@ -235,7 +237,7 @@
 
       &:focus .@{brk-prefix}-cascader-input {
         background-color: @form-error-input-bg;
-        .active(@error-color);
+        .active(@error-color, @error-color-hover, @error-color-outline);
       }
     }
 
