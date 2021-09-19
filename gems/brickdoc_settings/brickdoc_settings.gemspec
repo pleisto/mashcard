@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "brickdoc_settings"
   spec.version       = BrickdocSettings::VERSION
   spec.version       = "0.0.1"
-  spec.authors       = ["Brickdoc (Ningbo) Cloud Computing Technology LTD"]
+  spec.authors       = ["Brickdoc Inc."]
   spec.email         = ["engineering@brickdoc.com"]
   spec.summary       = "Brickdoc Settings"
 
