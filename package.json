@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "postinstall": "husky install",
-    "start": "./bin/webpack-dev-server",
+    "start": "yarn design-colors build && ./bin/webpack-dev-server",
     "dist": "yarn design-colors build && ./bin/webpack",
     "dist:prod": "RAILS_ENV=production yarn dist",
     "dist:test": "RAILS_ENV=test yarn dist",

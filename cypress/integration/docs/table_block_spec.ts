@@ -43,7 +43,7 @@ describe('tableBlock', () => {
       cy.findByText('Column1').click()
       cy.findByText('Delete').click()
       // confirm
-      cy.get('.brk-btn-ok-btn').click()
+      cy.get('.brk-modal-confirm-btns > .brk-btn:first').click()
       cy.findByText('Column1').should('not.exist')
     })
 
