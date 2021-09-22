@@ -5,6 +5,11 @@ import { StyleMeta } from './BubbleMenu'
 import { Button, Tooltip } from '@brickdoc/design-system'
 
 export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ editor, style }) => {
+  // TODO: Need a better solution to avoid calculate frequently
+  const activeClass = (style: StyleMeta): string => (editor.isActive(style.value, style.option) ? 'active' : '')
+  const [tooltipVisible, setTooltipVisible] = React.useState(false)
+  const handleTooltipVisibleChange = (visible: boolean): void => setTooltipVisible(visible)
+
   const toggleStyle = (style: StyleMeta) => () => {
     switch (style.value) {
       case 'bold':
@@ -29,21 +34,24 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
         editor.chain().focus().toggleUnderline().run()
         break
     }
-  }
 
-  // TODO: Need a better solution to avoid calculate frequently
-  const activeClass = (style: StyleMeta): string => (editor.isActive(style.value, style.option) ? 'active' : '')
+    setTooltipVisible(false)
+  }
 
   return (
     <Tooltip
       overlayClassName="brickdoc-bubble-menu-item-hint"
+      destroyTooltipOnHide={true}
       title={
         <>
           <div className="item-hint-main">{style.desc}</div>
           {style.shortcutDesc && <div className="item-hint-sub">{style.shortcutDesc}</div>}
         </>
       }
-      placement="top">
+      visible={tooltipVisible}
+      onVisibleChange={handleTooltipVisibleChange}
+      placement="top"
+    >
       <Button role="menuitem" onClick={toggleStyle(style)} type="text" className={cx('bubble-menu-item', activeClass(style))}>
         {style.label}
       </Button>

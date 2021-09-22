@@ -62,6 +62,18 @@ const HeadingStyle: StyleMeta[] = [
     label: <Icon.RteH3 />,
     option: { level: 3 },
     desc: 'Heading 3'
+  },
+  {
+    value: 'heading',
+    label: <Icon.RteH4 />,
+    option: { level: 4 },
+    desc: 'Heading 4'
+  },
+  {
+    value: 'heading',
+    label: <Icon.RteH5 />,
+    option: { level: 5 },
+    desc: 'Heading 5'
   }
 ]
 

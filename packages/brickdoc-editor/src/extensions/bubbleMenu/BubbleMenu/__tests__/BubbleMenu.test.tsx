@@ -73,7 +73,7 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     expect(screen.getByRole('menu', byRoleOptions)).toBeInTheDocument()
-    expect(screen.getAllByRole('menuitem', byRoleOptions)).toHaveLength(10)
+    expect(screen.getAllByRole('menuitem', byRoleOptions)).toHaveLength(12)
   })
 
   it('makes menu item active when editor mark it as active', () => {
@@ -126,12 +126,34 @@ describe('BubbleMenu', () => {
     expect(editor.toggleHeading).toBeCalledWith({ level: 3 })
   })
 
-  it('clicking Bold will toggle bold mark', () => {
+  it('clicking Heading4 will toggle Heading4', () => {
     const editor = mockEditor()
     render(<BubbleMenu editor={editor as any} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[3])
+
+    expect(editor.toggleHeading).toBeCalledTimes(1)
+    expect(editor.toggleHeading).toBeCalledWith({ level: 4 })
+  })
+
+  it('clicking Heading5 will toggle Heading5', () => {
+    const editor = mockEditor()
+    render(<BubbleMenu editor={editor as any} />)
+
+    const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
+    fireEvent.click(menuItems[4])
+
+    expect(editor.toggleHeading).toBeCalledTimes(1)
+    expect(editor.toggleHeading).toBeCalledWith({ level: 5 })
+  })
+
+  it('clicking Bold will toggle bold mark', () => {
+    const editor = mockEditor()
+    render(<BubbleMenu editor={editor as any} />)
+
+    const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
+    fireEvent.click(menuItems[5])
 
     expect(editor.toggleBold).toBeCalledTimes(1)
   })
@@ -141,7 +163,7 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-    fireEvent.click(menuItems[4])
+    fireEvent.click(menuItems[6])
 
     expect(editor.toggleItalic).toBeCalledTimes(1)
   })
@@ -151,7 +173,7 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-    fireEvent.click(menuItems[5])
+    fireEvent.click(menuItems[7])
 
     expect(editor.toggleUnderline).toBeCalledTimes(1)
   })
@@ -161,7 +183,7 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-    fireEvent.click(menuItems[6])
+    fireEvent.click(menuItems[8])
 
     expect(editor.toggleStrike).toBeCalledTimes(1)
   })
@@ -171,7 +193,7 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-    fireEvent.click(menuItems[8])
+    fireEvent.click(menuItems[10])
 
     expect(editor.toggleBulletList).toBeCalledTimes(1)
   })
@@ -181,12 +203,13 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-    fireEvent.click(menuItems[9])
+    fireEvent.click(menuItems[11])
 
     expect(editor.toggleOrderedList).toBeCalledTimes(1)
   })
 
   describe('Font Color', () => {
+    const colorMenuItemIndex = 9
     it('shows up font color list when clicking menu item', () => {
       const editor = mockEditor()
       render(<BubbleMenu editor={editor as any} />)
@@ -194,7 +217,7 @@ describe('BubbleMenu', () => {
       expect(() => screen.getByText('Color')).toThrow()
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-      fireEvent.click(menuItems[7])
+      fireEvent.click(menuItems[colorMenuItemIndex])
 
       expect(screen.getByText('Color')).toBeInTheDocument()
     })
@@ -204,7 +227,7 @@ describe('BubbleMenu', () => {
       render(<BubbleMenu editor={editor as any} />)
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-      fireEvent.click(menuItems[7])
+      fireEvent.click(menuItems[colorMenuItemIndex])
 
       const colorItem = screen.getByText('Gray')
       fireEvent.click(colorItem)
@@ -220,7 +243,7 @@ describe('BubbleMenu', () => {
       render(<BubbleMenu editor={editor as any} />)
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-      const item = menuItems[7]
+      const item = menuItems[colorMenuItemIndex]
 
       expect(item.firstChild).toHaveStyle({ color })
     })
@@ -232,7 +255,7 @@ describe('BubbleMenu', () => {
       render(<BubbleMenu editor={editor as any} />)
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
-      fireEvent.click(menuItems[7])
+      fireEvent.click(menuItems[colorMenuItemIndex])
 
       fireEvent.click(screen.getByText(color))
       fireEvent.click(screen.getByText(secondColor))

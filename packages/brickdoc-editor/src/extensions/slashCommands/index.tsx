@@ -38,6 +38,24 @@ const menuItems: SlashCommandsMenuItem[] = [
     }
   },
   {
+    title: 'Heading 4',
+    alias: ['h4'],
+    desc: 'Small section heading',
+    icon: <Icon.RteH4 className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).setNode('heading', { level: 4 }).run()
+    }
+  },
+  {
+    title: 'Heading 5',
+    alias: ['h5'],
+    desc: 'Small section heading',
+    icon: <Icon.RteH5 className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).setNode('heading', { level: 5 }).run()
+    }
+  },
+  {
     title: 'Bulleted List',
     alias: ['bulletlist'],
     desc: 'Create a bulleted list',
