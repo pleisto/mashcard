@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2021_09_16_060231) do
     t.string "scope", null: false
     t.string "domain", null: false
     t.integer "domain_len"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["key", "scope", "domain"], name: "index_brickdoc_configs_on_key_and_scope_and_domain", unique: true
   end
 

@@ -10,6 +10,8 @@
 #  key        :string           not null
 #  scope      :string           not null
 #  value      :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
