@@ -74,6 +74,9 @@ export { default as Image } from './image'
 export type { LayoutProps } from './layout'
 export { default as Layout } from './layout'
 
+export type { ListProps } from './list'
+export { default as List } from './list'
+
 export type { ArgsProps as MessageArgsProps } from './message'
 export { default as message } from './message'
 
