@@ -27,14 +27,6 @@ describe System::Queries::Plugins, type: :query do
       internal_graphql_execute(query)
 
       expect(response.success?).to be true
-      expect(response.data['plugins'].present?).to be false
-
-      github_webhook_plugin = BrickdocPlugin.plugin(:github_webhook)
-      github_webhook_plugin.enabled = true
-
-      internal_graphql_execute(query)
-
-      expect(response.success?).to be true
       expect(response.data['plugins'].present?).to be true
 
       self.current_user = nil

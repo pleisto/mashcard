@@ -44,9 +44,9 @@ RSpec.describe BrickdocConfig, type: :model do
     BrickdocConfig.field :current_key, default: 'current'
     BrickdocConfig.at('pod1').current_key = 'pod1'
 
-    BrickdocConfig.current = BrickdocConfig
-
-    expect(BrickdocConfig.current.current_key).to eq('current')
+    BrickdocConfig.on(:global) do
+      expect(BrickdocConfig.current.current_key).to eq('current')
+    end
 
     BrickdocConfig.current = BrickdocConfig.at('pod1')
 

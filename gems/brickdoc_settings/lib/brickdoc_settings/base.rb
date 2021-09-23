@@ -84,6 +84,8 @@ module BrickdocSettings
               value&.to_i
             when :float
               value&.to_f
+            when :encrypted
+              _lockbox(cache_key).decrypt(value)
             else
               value
             end
@@ -98,6 +100,14 @@ module BrickdocSettings
 
       def set(key, value, scope: '', domain: '')
         raise ReadOnlyField.new(self, key, scope: scope) if @defined_fields.dig(scope, key, :read_only)
+        field_config = @defined_fields.dig(scope, key) || {}
+
+        # encrypted type fields
+        if field_config[:type] == :encrypted
+          cache_key = "#{scope}.#{key}@#{domain}"
+          value = _lockbox(cache_key).encrypt(value.to_s)
+        end
+
         _save_value(key.to_s, value, scope: scope, domain: domain)
         touch(key, scope: scope, domain: domain)
       end
@@ -129,6 +139,10 @@ module BrickdocSettings
         record.value = value
         record.domain_len = domain.split('.').count
         record.save
+      end
+
+      def _lockbox(cache_key)
+        Lockbox.new(key: Lockbox.attribute_key(table: :settings, attribute: cache_key))
       end
     end
   end

@@ -6,9 +6,8 @@ module Brickdoc
     AVAILABLE_LANGUAGES = {
       'en-US': 'English',
       'zh-CN': '简体中文',
-      # 'zh-TW': '繁體中文 (Taiwan, Province of China)',
       'ja-JP': '日本語',
-      'ar-SA': 'اَلْعَرَبِيَّةُ',
+      # 'ar-SA': 'اَلْعَرَبِيَّةُ',
       'zh-HK': '繁體中文'
     }
 

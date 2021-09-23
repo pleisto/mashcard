@@ -1,0 +1,2 @@
+# frozen_string_literal: true
+gem 'omniauth-github', '~> 2.0'

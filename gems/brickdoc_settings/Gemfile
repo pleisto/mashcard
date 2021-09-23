@@ -17,3 +17,4 @@ gem "rubocop", "~> 1.7"
 gem "sqlite3"
 
 gem "rails", "~> 6.0"
+gem "lockbox", ">= 0.6.5"

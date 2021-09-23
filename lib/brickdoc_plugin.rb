@@ -55,6 +55,9 @@ class BrickdocPlugin
       plugin.loader.setup
       plugin.loader.eager_load
 
+      # i18n
+      I18n.load_path += Dir["#{path}/config/locales/*.yml"]
+
       if plugin.load_engine
         require "#{path}/engine.rb"
         engine_constant = const_get(plugin_constant_name + '::Engine')
@@ -106,6 +109,7 @@ class BrickdocPlugin
     @loader
   end
 
+  # enabled rails engine mode
   def load_engine!
     @load_engine = true
   end
@@ -124,6 +128,12 @@ class BrickdocPlugin
     }
   end
 
+  # enable this plugin by default
+  def default_enabled!
+    BrickdocConfig.current.get_field("#{@plugin_name}_enabled", scope: 'plugins')[:default] = true
+    BrickdocPlugin.update_hooks_scopes
+  end
+
   def enabled?
     BrickdocConfig.current.get("#{@plugin_name}_enabled", scope: 'plugins')
   end
@@ -131,6 +141,14 @@ class BrickdocPlugin
   def enabled=(enabled)
     BrickdocConfig.current.set("#{@plugin_name}_enabled", enabled, scope: 'plugins')
     BrickdocPlugin.update_hooks_scopes
+  end
+
+  def enabled!
+    self.enabled = true
+  end
+
+  def disabled!
+    self.enabled = false
   end
 
   def on(hook_name, &block)

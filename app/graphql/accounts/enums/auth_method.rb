@@ -8,8 +8,9 @@ module Accounts
       value :email_password, 'Email and Password Authentication'
     end
 
-    Devise.omniauth_configs.keys.each do |provider|
-      value provider, "#{provider.to_s.capitalize} Federated Authentication"
+    Devise.omniauth_configs&.map(&:last)&.each do |provider|
+      name = provider.options[:provider_name]
+      value provider.provider, "#{name.to_s.capitalize} Federated Authentication"
     end
   end
 end

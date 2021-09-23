@@ -587,7 +587,6 @@ en-US:
   accounts:
     app_title: Brickdoc Accounts
     provider:
-      github: Github
       email_password: Email & Password
     sessions:
       sign_in: Sign In

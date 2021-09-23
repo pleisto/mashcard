@@ -3,7 +3,9 @@
 require 'spec_helper'
 
 require 'active_record'
+require 'lockbox'
 
+Lockbox.master_key = '0000000000000000000000000000000000000000000000000000000000000000'
 ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
 
 ActiveRecord::Schema.define do
@@ -24,6 +26,7 @@ class BrickSettings < ActiveRecord::Base
   include BrickdocSettings::Base
   serialize :value
 
+  field :secret, type: :encrypted
   field :int, type: :integer
   field :bool, type: :boolean
   field :default_val, default: 'test'
@@ -107,6 +110,12 @@ describe BrickdocSettings do
     BrickSettings.at('pod3').set('int', 4)
     expect(BrickSettings.at('pod1').get('int')).to eq(2)
     expect(BrickSettings.at('pod3').get('int')).to eq(4)
+  end
+
+  it 'can set encrypted value' do
+    BrickSettings.set('secret', 'ok')
+    expect(BrickSettings.get('secret')).to eq('ok')
+    expect(BrickSettings._get_value('secret')).not_to eq('ok')
   end
 
   it 'can handle settings on different domains' do

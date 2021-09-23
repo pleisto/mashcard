@@ -1,0 +1,4 @@
+en-US:
+  accounts:
+    provider:
+      google_oauth2: 'Google'

@@ -33,6 +33,24 @@ class BrickdocConfig < ApplicationRecord
       Thread.current[:brickdoc_config_current] = config
     end
 
+    # around current domian
+    #
+    # example:
+    # BrickdocConfig.on(:global) { Brickdoc.current.something }
+    # BrickdocConfig.on(Pod.find(1)) { Brickdoc.current.something = 1 }
+    def on(domain, &block)
+      # domian argument must is :global or Pod instance
+      raise ArgumentError, "unsupported domain: #{domain}" unless domain == :global || domain.class == Pod
+      config = domain == :global ? self : at("pod.#{domain.id}")
+      old_current = current
+      self.current = config
+      begin
+        yield block
+      ensure
+        self.current = old_current
+      end
+    end
+
     def field(key, scope: '', **opts)
       key = key.to_s
       if opts[:frontend]
@@ -81,19 +99,10 @@ class BrickdocConfig < ApplicationRecord
 
   # Accounts
   field :accounts_email_password_auth, type: :boolean, default: true
-  # rubocop:disable Layout/LineLength
-  field :accounts_federated_providers, type: :array, default: [
-    {
-      name: 'github',
-      logo: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9ImN1cnJlbnRDb2xvciIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjYgMC0xMiA1LjM3My0xMiAxMiAwIDUuMzAyIDMuNDM4IDkuOCA4LjIwNyAxMS4zODcuNTk5LjExMS43OTMtLjI2MS43OTMtLjU3N3YtMi4yMzRjLTMuMzM4LjcyNi00LjAzMy0xLjQxNi00LjAzMy0xLjQxNi0uNTQ2LTEuMzg3LTEuMzMzLTEuNzU2LTEuMzMzLTEuNzU2LTEuMDg5LS43NDUuMDgzLS43MjkuMDgzLS43MjkgMS4yMDUuMDg0IDEuODM5IDEuMjM3IDEuODM5IDEuMjM3IDEuMDcgMS44MzQgMi44MDcgMS4zMDQgMy40OTIuOTk3LjEwNy0uNzc1LjQxOC0xLjMwNS43NjItMS42MDQtMi42NjUtLjMwNS01LjQ2Ny0xLjMzNC01LjQ2Ny01LjkzMSAwLTEuMzExLjQ2OS0yLjM4MSAxLjIzNi0zLjIyMS0uMTI0LS4zMDMtLjUzNS0xLjUyNC4xMTctMy4xNzYgMCAwIDEuMDA4LS4zMjIgMy4zMDEgMS4yMy45NTctLjI2NiAxLjk4My0uMzk5IDMuMDAzLS40MDQgMS4wMi4wMDUgMi4wNDcuMTM4IDMuMDA2LjQwNCAyLjI5MS0xLjU1MiAzLjI5Ny0xLjIzIDMuMjk3LTEuMjMuNjUzIDEuNjUzLjI0MiAyLjg3NC4xMTggMy4xNzYuNzcuODQgMS4yMzUgMS45MTEgMS4yMzUgMy4yMjEgMCA0LjYwOS0yLjgwNyA1LjYyNC01LjQ3OSA1LjkyMS40My4zNzIuODIzIDEuMTAyLjgyMyAyLjIyMnYzLjI5M2MwIC4zMTkuMTkyLjY5NC44MDEuNTc2IDQuNzY1LTEuNTg5IDguMTk5LTYuMDg2IDguMTk5LTExLjM4NiAwLTYuNjI3LTUuMzczLTEyLTEyLTEyeiIvPjwvc3ZnPg==',
-      key: ENV['GITHUB_KEY'],
-      secret: ENV['GITHUB_SECRET'],
-      options: {}
-    },
-  ]
-  # rubocop:enable Layout/LineLength
   field :accounts_preferred_auth_method, default: 'email_password'
 
   field :unsplash_api_access_key, default: ENV['UNSPLASH_API_ACCESS_KEY']
   field :unsplash_api_secret, default: ENV['UNSPLASH_API_SECRET']
+
+  field :lockbox_test, type: :encrypted
 end

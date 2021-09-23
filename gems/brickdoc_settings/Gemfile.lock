@@ -3,6 +3,7 @@ PATH
   specs:
     brickdoc_settings (0.0.1)
       activesupport (>= 6.1.0)
+      lockbox (>= 0.6.5)
 
 GEM
   remote: https://rubygems.org/
@@ -77,6 +78,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    lockbox (0.6.5)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -188,6 +190,7 @@ PLATFORMS
 
 DEPENDENCIES
   brickdoc_settings!
+  lockbox (>= 0.6.5)
   rails (~> 6.0)
   rake (~> 13.0)
   rspec (~> 3.0)

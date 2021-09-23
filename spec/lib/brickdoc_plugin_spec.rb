@@ -46,31 +46,29 @@ describe BrickdocPlugin do
   end
 
   it 'enabled' do
-    github_webhook_plugin = BrickdocPlugin.plugin(:github_webhook)
-    expect(github_webhook_plugin.enabled?).to be(false)
-    github_webhook_plugin.enabled = true
-    expect(github_webhook_plugin.enabled?).to be(true)
+    github_auth_plugin = BrickdocPlugin.plugin(:github_auth)
+    github_auth_plugin.enabled = true
+    expect(github_auth_plugin.enabled?).to be(true)
     pod = create(:pod)
-    BrickdocConfig.current = BrickdocConfig.at(pod.webid)
-    expect(github_webhook_plugin.enabled?).to be(false)
-    github_webhook_plugin.enabled = true
-    expect(github_webhook_plugin.enabled?).to be(true)
-    BrickdocConfig.current.set("#{github_webhook_plugin.plugin_name}_enabled", false, scope: 'plugins')
-    expect(github_webhook_plugin.enabled?).to be(false)
+    BrickdocConfig.on(pod) do
+      github_auth_plugin.enabled!
+      expect(github_auth_plugin.enabled?).to be(true)
+      BrickdocConfig.current.set("#{github_auth_plugin.plugin_name}_enabled", false, scope: 'plugins')
+      expect(github_auth_plugin.enabled?).to be(false)
 
-    BrickdocConfig.current.set("#{github_webhook_plugin.plugin_name}_enabled", true, scope: 'plugins')
-    expect(github_webhook_plugin.enabled?).to be(true)
+      BrickdocConfig.current.set("#{github_auth_plugin.plugin_name}_enabled", true, scope: 'plugins')
+      expect(github_auth_plugin.enabled?).to be(true)
 
-    github_webhook_plugin.enabled = false
-    expect(github_webhook_plugin.enabled?).to be(false)
+      github_auth_plugin.disabled!
+      expect(github_auth_plugin.enabled?).to be(false)
 
-    github_webhook_plugin.enabled = true
-    expect(github_webhook_plugin.enabled?).to be(true)
-
-    github_webhook_plugin.enabled = false
+      github_auth_plugin.enabled!
+      expect(github_auth_plugin.enabled?).to be(true)
+      github_auth_plugin.disabled!
+      expect(github_auth_plugin.enabled?).to be(false)
+    end
     pod2 = create(:pod)
-    BrickdocConfig.current = BrickdocConfig.at(pod2.webid)
-    expect(github_webhook_plugin.enabled?).to be(false)
+    BrickdocConfig.on(pod2) { expect(github_auth_plugin.enabled?).to be(true) }
   end
 
   it 'can load plugin dummy_plugin' do
@@ -92,7 +90,11 @@ describe BrickdocPlugin do
     BrickdocHook.trigger :test_hook, test_value
     expect(test_value[:done]).to be(false)
 
-    dummy_plugin.enabled = true
+    expect(dummy_plugin.enabled?).to be(false)
+    dummy_plugin.default_enabled!
+    expect(dummy_plugin.enabled?).to be(true)
+
+    dummy_plugin.enabled!
 
     BrickdocPlugin.update_hooks_scopes
     expect(BrickdocHook.enabled_scopes).to include('plugin.dummy_plugin')

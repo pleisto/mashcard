@@ -16,8 +16,18 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'vcr'
 
 RSpec.configure do |config|
+  # VCR mock
+  VCR.configure do |c|
+    c.before_record { |i| i.response.body.force_encoding("UTF-8") }
+    c.cassette_library_dir = 'spec/vcr_cassettes'
+    c.hook_into :webmock
+    c.allow_http_connections_when_no_cassette = true
+    c.filter_sensitive_data("<ACCESS_KEY>") { Unsplash.configuration.application_access_key }
+    c.filter_sensitive_data("<APP_SECRET>") { Unsplash.configuration.application_secret }
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
