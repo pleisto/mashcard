@@ -12,7 +12,7 @@
   border-radius: 4px;
 
   .bubble-menu-group {
-    padding: 0 12px;
+    padding: 0 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,7 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
+    min-width: 32px;
     height: @menu-height;
     border-radius: 0;
     padding: 0;
@@ -48,11 +48,11 @@
       }
     }
   }
+}
 
-  .font-menu-item-arrow-icon {
-    margin-top: 2px;
-    margin-left: 4px;
-  }
+.brk-btn > .brk-icon.bubble-menu-item-arrow-icon {
+  margin-top: 2px;
+  margin-left: 4px;
 }
 
 .brickdoc-bubble-menu-item-hint {
@@ -85,10 +85,12 @@
   flex-direction: column;
   align-items: flex-start;
   width: 240px;
-  background-color: #fff;
   border-radius: 8px;
   padding: 8px 0;
   box-sizing: border-box;
+  background: rgba(240, 240, 240, 1);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgb(1 66 193 / 10%), 0 8px 12px rgb(66 66 66 / 10%), 0 0 6px rgb(66 66 66 / 5%);
 
   .font-menu-heading {
     color: #a6a6a6;
@@ -104,15 +106,58 @@
     text-align: left;
   }
 
-  .font-menu-item-icon {
-    border: 1px solid #efefef;
-    width: 16px;
-    height: 16px;
-    font-size: 14px;
-  }
-
   .font-menu-item-label {
     font-size: 14px;
     line-height: 20px;
+  }
+}
+
+.brickdoc-bubble-link-menu {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(44, 91, 255, 0.06), 0 8px 16px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(60px);
+  border-radius: 4px;
+  width: 344px;
+
+  .bubble-link-menu-input {
+    margin: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .bubble-link-menu-item {
+    width: 100%;
+    border: none;
+    text-align: left;
+    color: #292333;
+    font-size: 14px;
+  }
+
+  .bubble-link-menu-link-to-button {
+    height: auto;
+
+    .bubble-link-to-button-head {
+      line-height: 32px;
+      height: 32px;
+    }
+
+    .bubble-link-to-button-content {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+
+      .bubble-link-to-button-icon {
+        margin-top: 5px;
+      }
+
+      .bubble-link-to-button-content-text {
+        margin-left: 10px;
+      }
+
+      .bubble-link-to-button-content-hint {
+        color: #847e8e;
+        font-size: 12px;
+      }
+    }
   }
 }

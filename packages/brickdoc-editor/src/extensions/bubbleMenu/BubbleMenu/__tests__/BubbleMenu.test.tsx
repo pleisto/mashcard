@@ -73,7 +73,7 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     expect(screen.getByRole('menu', byRoleOptions)).toBeInTheDocument()
-    expect(screen.getAllByRole('menuitem', byRoleOptions)).toHaveLength(12)
+    expect(screen.getAllByRole('menuitem', byRoleOptions)).toHaveLength(13)
   })
 
   it('makes menu item active when editor mark it as active', () => {

@@ -4,6 +4,7 @@ import { Editor } from '@tiptap/core'
 import { Icon } from '@brickdoc/design-system'
 import { FontColorMenuItem } from './FontColorMenuItem'
 import { MenuItem } from './MenuItem'
+import { LinkMenuItem } from './LinkMenuItem'
 import './index.less'
 
 interface BubbleMenuProps {
@@ -11,7 +12,7 @@ interface BubbleMenuProps {
 }
 
 export interface StyleMeta {
-  value: 'bold' | 'italic' | 'strike' | 'heading' | 'bulletList' | 'orderedList' | 'underline' | 'fontColor'
+  value: 'bold' | 'italic' | 'strike' | 'heading' | 'bulletList' | 'orderedList' | 'underline' | 'fontColor' | 'link'
   label: React.ReactNode
   desc: string
   shortcutDesc?: string
@@ -115,6 +116,9 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
           {ListStyle.map((s, index) => (
             <MenuItem key={index} editor={editor} style={s} />
           ))}
+        </div>
+        <div className="bubble-menu-group">
+          <LinkMenuItem editor={editor} />
         </div>
       </div>
     </TiptapBubbleMenu>

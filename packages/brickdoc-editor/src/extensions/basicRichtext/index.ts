@@ -20,6 +20,7 @@ import Strike, { StrikeOptions } from '@tiptap/extension-strike'
 import Underline, { UnderlineOptions } from '@tiptap/extension-underline'
 import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
+import Link, { LinkOptions } from '@tiptap/extension-link'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
 import { ImageSectionExtension, ImageSectionOptions } from '../imageSection'
 import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
@@ -47,6 +48,7 @@ export interface BasicRichtextOptions {
   text: false
   textStyle: Partial<TextStyleOptions> | false
   fontColor: Partial<FontColorOptions> | false
+  link: Partial<LinkOptions> | false
   imageSection: Partial<ImageSectionOptions> | false
   pdfSection: Partial<PdfSectionOptions> | false
   tableBlock: Partial<TableBlockOptions> | false
@@ -84,6 +86,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.textStyle !== false) extensions.push(TextStyle.configure(this.options?.textStyle))
     if (this.options.fontColor !== false) extensions.push(FontColorExtension.configure(this.options?.fontColor))
     if (this.options.tableBlock !== false) extensions.push(TableBlockExtension.configure(this.options?.tableBlock))
+    if (this.options.link !== false) extensions.push(Link.configure(this.options?.link))
     /* eslint-enable @typescript-eslint/no-unnecessary-boolean-literal-compare */
 
     return extensions

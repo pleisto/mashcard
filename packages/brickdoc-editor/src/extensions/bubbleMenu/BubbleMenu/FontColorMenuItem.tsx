@@ -52,11 +52,12 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
           {FontColorStyle.shortcutDesc && <div className="item-hint-sub">{FontColorStyle.shortcutDesc}</div>}
         </>
       }
-      placement="top">
+      placement="top"
+    >
       <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
         <Button role="menuitem" onClick={e => e.preventDefault()} type="text" className="bubble-menu-item">
-          <Icon.FontSize className="font-menu-item-icon" style={{ color: activeColor() }} />
-          <Icon.LineDown className="font-menu-item-arrow-icon" />
+          <Icon.FontSize className="bubble-menu-item-icon" style={{ color: activeColor() }} />
+          <Icon.LineDown className="bubble-menu-item-arrow-icon" />
         </Button>
       </Dropdown>
     </Tooltip>
