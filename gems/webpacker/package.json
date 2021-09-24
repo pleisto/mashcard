@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/runtime": "^7.15.4",
     "babel-loader": "^8.2.2",
-    "glob": "^7.1.7",
+    "glob": "^7.2.0",
     "js-yaml": "^4.1.0",
     "path-complete-extname": "^1.0.0",
     "pnp-webpack-plugin": "^1.7.0",
