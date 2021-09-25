@@ -41,7 +41,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         }
 
         container.current = ele
-        uppy.current = new Uppy({ debug: true })
+        uppy.current = new Uppy()
         // TODO: use active storage instead
         uppy.current.use(XhrUploadPlugin, {
           method: 'PUT',

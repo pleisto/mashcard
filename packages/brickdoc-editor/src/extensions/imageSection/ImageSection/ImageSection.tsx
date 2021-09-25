@@ -6,7 +6,7 @@ import cx from 'classnames'
 import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { Button, Popover, Icon, Skeleton } from '@brickdoc/design-system'
-import { Dashboard, UploadResultData, ImportSourceOption } from '@brickdoc/uploader'
+import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload } from '@brickdoc/uploader'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 
@@ -53,7 +53,9 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
     updateAttributes({
       image: {
         ...node.attrs.image,
-        ...latestImageAttributes.current
+        ...latestImageAttributes.current,
+        // remove defaultFile prop
+        defaultFile: undefined
       }
     })
   }
@@ -82,6 +84,19 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
     }
     setLoaded(true)
   }
+
+  // upload default file
+  React.useEffect(() => {
+    if (!node.attrs.defaultFile) return
+    imperativeUpload(node.attrs.defaultFile, {
+      prepareFileUpload: extension.options.prepareFileUpload,
+      blockId: node.attrs.uuid,
+      fileType: 'image',
+      onFileLoaded,
+      onUploaded
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (node.attrs.image?.key || file) {
     const url = extension.options.getImageUrl?.(node) || file

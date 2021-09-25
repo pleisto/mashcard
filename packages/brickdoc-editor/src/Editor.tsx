@@ -10,6 +10,7 @@ import {
   PlaceholderExtension,
   SyncExtensionOptions,
   TableExtensionOptions,
+  EventHandlerExtension,
   BubbleMenu
 } from './extensions'
 import './styles.less'
@@ -49,6 +50,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
         pdfSection: { prepareFileUpload, getPdfUrl },
         tableBlock: { useDatabaseRows }
       }),
+      EventHandlerExtension,
       BlockCommandsExtension,
       SlashCommandsExtension,
       PlaceholderExtension,
