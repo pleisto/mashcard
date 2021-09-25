@@ -8,16 +8,23 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('download', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
-    <path
-      fill={props.colors[0]}
-      d="M6.56 10.829a.995.995 0 0 1-.49.28 4.002 4.002 0 1 0 2.024 7.74 1 1 0 1 1 .545 1.924A6 6 0 0 1 5.032 9.331a7 7 0 0 1 13.941.05 6.002 6.002 0 0 1-3.746 11.392 1 1 0 1 1 .546-1.924A4.006 4.006 0 0 0 20.866 15a4.002 4.002 0 0 0-3.07-3.892 1 1 0 0 1-.76-.843A1.002 1.002 0 0 1 17 10a5 5 0 0 0-10 0c0 .345-.175.65-.44.829zm9.716 3.467a1 1 0 0 1-.006 1.414l-3.566 3.538a1 1 0 0 1-1.412-.004l-3.468-3.479a1 1 0 1 1 1.417-1.411L11 16.118V10a1 1 0 1 1 2 0v6.137l1.862-1.847a1 1 0 0 1 1.414.006z"
-      clipRule="evenodd"
-      fillRule="evenodd"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'download',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <path
+                fill={props.colors[0]}
+                d="M6.56 10.829a.995.995 0 0 1-.49.28 4.002 4.002 0 1 0 2.024 7.74 1 1 0 1 1 .545 1.924A6 6 0 0 1 5.032 9.331a7 7 0 0 1 13.941.05 6.002 6.002 0 0 1-3.746 11.392 1 1 0 1 1 .546-1.924A4.006 4.006 0 0 0 20.866 15a4.002 4.002 0 0 0-3.07-3.892 1 1 0 0 1-.76-.843A1.002 1.002 0 0 1 17 10a5 5 0 0 0-10 0c0 .345-.175.65-.44.829zm9.716 3.467a1 1 0 0 1-.006 1.414l-3.566 3.538a1 1 0 0 1-1.412-.004l-3.468-3.479a1 1 0 1 1 1.417-1.411L11 16.118V10a1 1 0 1 1 2 0v6.137l1.862-1.847a1 1 0 0 1 1.414.006z"
+                clipRule="evenodd"
+                fillRule="evenodd"
+            />
+        </svg>
+    )
+);

@@ -8,24 +8,35 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('calendar', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
-    <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
-    <path
-      strokeLinejoin="round"
-      strokeWidth="2"
-      stroke={props.colors[0]}
-      d="M2.5 9.5h19V20a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1V9.5zM2.5 4.5a1 1 0 0 1 1-1h17a1 1 0 0 1 1 1v5h-19v-5z"
-    />
-    <path
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      strokeWidth="2"
-      stroke={props.colors[0]}
-      d="M8 2v4M16 2v4M14 17h3M7 17h3M14 13h3M7 13h3"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'calendar',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <path
+                fillOpacity=".01"
+                fill={props.colors[2]}
+                d="M24 0H0v24h24V0z"
+            />
+            <path
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke={props.colors[0]}
+                d="M2.5 9.5h19V20a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1V9.5zM2.5 4.5a1 1 0 0 1 1-1h17a1 1 0 0 1 1 1v5h-19v-5z"
+            />
+            <path
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                stroke={props.colors[0]}
+                d="M8 2v4M16 2v4M14 17h3M7 17h3M14 13h3M7 13h3"
+            />
+        </svg>
+    )
+);

@@ -8,11 +8,24 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('line-down', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
-    <path strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke="currentColor" d="m18.5 9-6 6-6-6" />
-  </svg>
-))
+export default IconWrapper(
+    'line-down',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <path
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                d="m18.5 9-6 6-6-6"
+            />
+        </svg>
+    )
+);

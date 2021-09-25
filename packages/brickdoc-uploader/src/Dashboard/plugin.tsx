@@ -69,7 +69,7 @@ export interface DashboardPluginOptions {
   importSources: ImportSourceOption[]
 }
 
-type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'
+export type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'
 
 const UNSPLASH_PER_PAGE = 20
 

@@ -8,24 +8,31 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('facebook', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
-    <path
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      strokeWidth="2"
-      stroke={props.colors[0]}
-      d="M3.864 21A.866.866 0 0 1 3 20.132V3.868c0-.48.387-.868.864-.868h16.272c.477 0 .864.389.864.868v16.264c0 .48-.387.868-.864.868H3.864z"
-      clipRule="evenodd"
-    />
-    <path
-      fill={props.colors[0]}
-      d="M18 9.5h-1.992a1 1 0 0 0-1 1v2H18l-.438 3h-2.554V21h-3.291v-5.5H9v-3h2.682l.035-2.846-.01-1.02A2.609 2.609 0 0 1 14.317 6H18v3.5z"
-      clipRule="evenodd"
-      fillRule="evenodd"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'facebook',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <path
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeWidth="2"
+                stroke={props.colors[0]}
+                d="M3.864 21A.866.866 0 0 1 3 20.132V3.868c0-.48.387-.868.864-.868h16.272c.477 0 .864.389.864.868v16.264c0 .48-.387.868-.864.868H3.864z"
+                clipRule="evenodd"
+            />
+            <path
+                fill={props.colors[0]}
+                d="M18 9.5h-1.992a1 1 0 0 0-1 1v2H18l-.438 3h-2.554V21h-3.291v-5.5H9v-3h2.682l.035-2.846-.01-1.02A2.609 2.609 0 0 1 14.317 6H18v3.5z"
+                clipRule="evenodd"
+                fillRule="evenodd"
+            />
+        </svg>
+    )
+);

@@ -87,6 +87,19 @@ const menuItems: SlashCommandsMenuItem[] = [
     }
   },
   {
+    title: 'Embed',
+    desc: 'For PDFs and more',
+    icon: <Icon.BlockLevelLink className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setLinkBlock(range.from - 1)
+        .run()
+    }
+  },
+  {
     title: 'Image',
     alias: ['img', 'picture'],
     desc: 'Upload or embed with a link',

@@ -4,14 +4,12 @@ import { Button, Icon } from '@brickdoc/design-system'
 import cx from 'classnames'
 import emojiData from './data-by-group.json'
 import { EmojiPanel } from './EmojiPanel'
-import { DashboardPluginOptions } from './plugin'
+import { DashboardPluginOptions, SourceType } from './plugin'
 import { LinkPanel } from './LinkPanel'
 import { UploadPanel } from './UploadPanel'
 import { UnsplashPanel } from './UnsplashPanel'
 import { GalleryPanel } from './GalleryPanel'
 import { useEmoji } from './useEmoji'
-
-type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'
 
 export interface ImportSourceOption {
   type: SourceType
@@ -104,7 +102,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
             role="menuitem"
             key={source.type}
             className={cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}
-            onClick={handleNavbarItemClick(source)}>
+            onClick={handleNavbarItemClick(source)}
+          >
             {source.typeLabel || IMPORT_SOURCE_LABEL[source.type]}
           </Button>
         ))}

@@ -10,9 +10,9 @@ export interface DashboardProps {
   onProgress?: DashboardPluginOptions['onProgress']
   onUploaded?: DashboardPluginOptions['onUploaded']
   onFileLoaded?: DashboardPluginOptions['onFileLoaded']
-  prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
+  prepareFileUpload?: DashboardPluginOptions['prepareFileUpload']
   fetchUnsplashImages?: DashboardPluginOptions['fetchUnsplashImages']
-  fileType: DashboardPluginOptions['fileType']
+  fileType?: DashboardPluginOptions['fileType']
   importSources: DashboardPluginOptions['importSources']
 }
 
