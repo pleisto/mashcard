@@ -25,7 +25,10 @@ module Docs
         delete_block_ids = preloads.select { |_, v| !v.deleted_at }.keys - blocks.map(&:id)
         if delete_block_ids.present?
           patches += delete_block_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
-          Docs::Block.where(id: delete_block_ids).update_all(deleted_at: Time.current)
+          preloads = preloads.each_with_object({}) do |(id, b), h|
+            b.soft_destroy if id.in?(delete_block_ids)
+            h[id] = b
+          end
         end
       end
 
@@ -60,8 +63,11 @@ module Docs
 
       patches.compact!
 
+      root ||= new_blocks_hash.fetch(root_id)
+      root.maybe_save_snapshot!
+
       if patches.present?
-        root ||= new_blocks_hash.fetch(root_id)
+        ## NOTE dirty data
         if patches.any? { |p| p.fetch(:path).blank? }
           root.clear_cache
           paths_cache = root.paths_cache

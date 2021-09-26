@@ -9,7 +9,7 @@ module Docs
     argument :id, GraphQL::Types::String, required: true
 
     def resolve(id:)
-      Docs::Block.find(id).snapshots
+      Docs::Block.find(id).snapshots.order(snapshot_version: :desc)
     end
   end
 end

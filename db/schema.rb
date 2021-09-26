@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_060231) do
+ActiveRecord::Schema.define(version: 2021_09_24_054146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_060231) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "content", default: [], comment: "node content"
     t.text "text", default: "", comment: "node text"
+    t.datetime "deleted_at"
     t.index ["block_id", "history_version"], name: "index_docs_histories_on_block_id_and_history_version", unique: true, comment: "history identifier"
     t.index ["pod_id"], name: "index_docs_histories_on_pod_id"
   end

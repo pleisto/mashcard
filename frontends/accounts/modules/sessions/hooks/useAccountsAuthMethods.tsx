@@ -41,7 +41,7 @@ export const useAccountsAuthMethods = (emailPwdBtnOnClick: () => void): { authMe
 
   let authMethods =
     config?.accountsFederatedProviders
-      .map(i => ({
+      ?.map(i => ({
         name: i.name,
         logo: <ImageIcon src={i.logo} alt={`${i.name} logo`} />,
         action: () => redirectToOAuthProvider(i.name, csrfToken)

@@ -2,7 +2,6 @@ import React, { FC, useContext } from 'react'
 import { PWAProvider, BrickdocContext } from '@/common/PWAProvider'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { routeConfig } from './config/routes'
-import { SidebarLayoutPage } from '@/docs/modules/common/layouts/SidebarLayoutPage'
 
 export const DocsPWA: FC = () => {
   const { currentPod } = useContext(BrickdocContext)
@@ -12,11 +11,7 @@ export const DocsPWA: FC = () => {
     return null
   }
 
-  return (
-    <Router>
-      <SidebarLayoutPage webid={currentPod.webid}>{routeConfig(currentPod.webid)}</SidebarLayoutPage>
-    </Router>
-  )
+  return <Router>{routeConfig(currentPod.webid)}</Router>
 }
 
 // eslint-disable-next-line import/no-default-export

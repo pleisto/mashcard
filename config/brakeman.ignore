@@ -43,13 +43,13 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
-      "fingerprint": "ed56a845c40692110d6748b3eb0fa8cb932e5602963b2364a837ac9677c72415",
+      "fingerprint": "d21f51ff4f398c08b3589bab7a1c89c4029017e57baab1e170ea4c08181656e5",
       "check_name": "SQL",
       "message": "Possible SQL injection",
       "file": "app/models/docs/history.rb",
-      "line": 52,
+      "line": 50,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "Docs::History.where(\"(block_id, history_version) IN (#{version_meta.size.times.collect do\n \"(?,?)\"\n end.join(\",\")})\", *version_meta.flatten)",
+      "code": "Docs::History.where(:deleted_at => nil).where(\"(block_id, history_version) IN (#{version_meta.size.times.collect do\n \"(?,?)\"\n end.join(\",\")})\", *version_meta.flatten)",
       "render_path": null,
       "location": {
         "type": "method",
@@ -58,9 +58,9 @@
       },
       "user_input": "version_meta.size.times.collect do\n \"(?,?)\"\n end.join(\",\")",
       "confidence": "Medium",
-      "note": "false positives"
+      "note": ""
     }
   ],
-  "updated": "2021-08-08 23:13:37 +0800",
+  "updated": "2021-09-24 14:40:25 +0800",
   "brakeman_version": "5.1.1"
 }

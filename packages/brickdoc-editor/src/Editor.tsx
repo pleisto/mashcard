@@ -42,7 +42,7 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
-  const { onSave, prepareFileUpload, fetchUnsplashImages, getImageUrl, getPdfUrl, useDatabaseRows, ...restOptions } = options
+  const { onSave, prepareFileUpload, fetchUnsplashImages, getImageUrl, getPdfUrl, useDatabaseRows, editable, ...restOptions } = options
   return useTiptapEditor({
     extensions: [
       BasicRichtextExtension.configure({
@@ -58,6 +58,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       SyncExtension.configure({ onSave })
     ],
     autofocus: true,
+    editable,
     ...restOptions
   })
 }

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { Node } from 'prosemirror-model'
-import { useParams } from 'react-router-dom'
 import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor } from '@brickdoc/editor'
 import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
@@ -13,14 +12,19 @@ import { useDatabaseRows } from './useDatabaseRows'
 import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 
-export const DocumentPage: React.FC = () => {
-  const { docid, snapshotVersion } = useParams<{ docid: string; snapshotVersion: string }>()
+interface DocumentPageProps {
+  docid: string | undefined
+  snapshotVersion: number
+  editable: boolean
+}
+
+export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersion, editable }) => {
   const [blockSyncBatch] = useBlockSyncBatchMutation()
   const { onCommit } = syncProvider({ blockSyncBatch })
 
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
-    variables: { rootId: docid, snapshotVersion: Number(snapshotVersion || '0') }
+    variables: { rootId: docid as string, snapshotVersion }
   })
 
   const prepareFileUpload = usePrepareFileUpload()
@@ -59,7 +63,8 @@ export const DocumentPage: React.FC = () => {
     prepareFileUpload,
     fetchUnsplashImages,
     getImageUrl,
-    getPdfUrl
+    getPdfUrl,
+    editable
   })
 
   const createDocAttrsUpdater =
@@ -82,15 +87,15 @@ export const DocumentPage: React.FC = () => {
       const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
       childrenBlocks.current = data.childrenBlocks
 
-      console.log({ data, content })
+      console.log({ data, content, docid, snapshotVersion, editable })
 
       if (content.length) {
         editor.commands.replaceRoot(content[0])
       }
     }
-  }, [editor, data])
+  }, [editor, data, docid, snapshotVersion, editable])
 
-  useDocumentSubscription({ docid, editor })
+  useDocumentSubscription({ docid: docid as string, editor })
 
   if (loading) {
     return <Skeleton />
@@ -109,6 +114,7 @@ export const DocumentPage: React.FC = () => {
       getDocCoverUrl={getDocCoverUrl}
       prepareFileUpload={prepareFileUpload}
       fetchUnsplashImages={fetchUnsplashImages}
+      editable={editable}
     />
   )
 

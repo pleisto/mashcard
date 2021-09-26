@@ -2,16 +2,9 @@ import React, { useState } from 'react'
 import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
-import {
-  useBlockDeleteMutation,
-  BlockDeleteInput,
-  useBlockCreateSnapshotMutation,
-  BlockCreateSnapshotInput,
-  Scalars
-} from '@/BrickdocGraphQL'
-import { SnapshotList } from '../SnapshotList'
+import { useBlockDeleteMutation, BlockDeleteInput, Scalars } from '@/BrickdocGraphQL'
 import { ShareLinkModal } from '../ShareLinkModal'
-import { queryBlockSnapshots, queryPageBlocks } from '../../graphql'
+import { queryPageBlocks } from '../../graphql'
 import { SubBlockModal } from '../SubBlockModal'
 
 type UUID = Scalars['UUID']
@@ -31,11 +24,6 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   const deletePage = async (id: UUID): Promise<void> => {
     const input: BlockDeleteInput = { id }
     await blockDelete({ variables: { input } })
-  }
-  const [blockCreateSnapshot] = useBlockCreateSnapshotMutation({ refetchQueries: [queryBlockSnapshots] })
-  const createSnapshot = async (id: UUID): Promise<void> => {
-    const input: BlockCreateSnapshotInput = { id }
-    await blockCreateSnapshot({ variables: { input } })
   }
 
   const createShareLink = (id: UUID): void => {
@@ -57,9 +45,6 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   const onClick = (id: UUID): MenuProps['onClick'] => {
     return ({ key }) => {
       switch (key) {
-        case 'create_snapshot':
-          void createSnapshot(id)
-          break
         case 'create_sub_block':
           void createSubBlock(id)
           break
@@ -83,14 +68,11 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
 
   const menu = (
     <Menu onClick={onClick(props.id)}>
-      <Menu.Item key="create_snapshot">{t('blocks.create_snapshot')}</Menu.Item>
       <Menu.Item key="create_sub_block">{t('blocks.create_sub_block')}</Menu.Item>
       <Menu.Item key="create_share_link">{t('blocks.create_share_link')}</Menu.Item>
       <Menu.Item danger key="delete">
         {t('blocks.delete')}
       </Menu.Item>
-      <Menu.Divider />
-      <SnapshotList id={props.id} webid={props.webid} />
     </Menu>
   )
 

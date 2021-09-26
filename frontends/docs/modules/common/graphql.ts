@@ -100,6 +100,8 @@ export const queryBlockSnapshots = gql`
       id
       snapshotVersion
       name
+      createdAt
+      relativeTime
     }
   }
 `
@@ -151,6 +153,14 @@ export const BlockMove = gql`
 export const BlockUpdate = gql`
   mutation blockUpdate($input: BlockUpdateInput!) {
     blockUpdate(input: $input) {
+      errors
+    }
+  }
+`
+
+export const SnapshotRestore = gql`
+  mutation snapshotRestore($input: SnapshotRestoreInput!) {
+    snapshotRestore(input: $input) {
       errors
     }
   }

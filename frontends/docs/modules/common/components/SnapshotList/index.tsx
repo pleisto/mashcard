@@ -1,30 +1,108 @@
 import React from 'react'
-import { useGetBlockSnapshotsQuery, BlockSnapshot } from '@/BrickdocGraphQL'
-import { Menu } from '@brickdoc/design-system'
+import { Button, Col, List, Row } from '@brickdoc/design-system'
+import { DocumentPage } from '@/docs/modules/pages/DocumentPage'
+import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMutation } from '@/BrickdocGraphQL'
+import styles from './index.module.less'
 import { useDocsI18n } from '../../hooks'
-import { Link } from 'react-router-dom'
+import Pic from '@/common/assets/cloud_brain_2.svg'
+import { queryChildrenBlocks } from '@/docs/modules/pages/graphql'
 
 interface SnapshotListProps {
-  id: string
-  webid: string
+  blockId: string
+  currentVersion: number | undefined
+  setCurrentVersion: React.Dispatch<React.SetStateAction<number | undefined>>
+  confirmLoading: boolean
+  setConfirmLoading: React.Dispatch<React.SetStateAction<boolean>>
+  onCleanup: () => void
 }
 
-const { SubMenu } = Menu
-
-export const SnapshotList: React.FC<SnapshotListProps> = props => {
+export const SnapshotList: React.FC<SnapshotListProps> = ({
+  blockId,
+  currentVersion,
+  setCurrentVersion,
+  confirmLoading,
+  onCleanup,
+  setConfirmLoading
+}) => {
   const { t } = useDocsI18n()
+  const { data } = useGetBlockSnapshotsQuery({ variables: { id: blockId } })
+  const [snapshotRestore] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks] })
 
-  const { data } = useGetBlockSnapshotsQuery({ variables: { id: props.id } })
-
-  if (!data?.blockSnapshots || data.blockSnapshots.length === 0) {
-    return <SubMenu title={t('snapshots.name')} disabled />
+  const onRestore = async (): Promise<void> => {
+    setConfirmLoading(true)
+    const input: SnapshotRestoreInput = { blockId, snapshotVersion: currentVersion as number }
+    await snapshotRestore({ variables: { input } })
+    onCleanup()
   }
 
-  const subMenus = data.blockSnapshots.map((snapshot: BlockSnapshot) => (
-    <Menu.Item key={`snapshot-${snapshot.snapshotVersion}`}>
-      <Link to={`/${props.webid}/p/${props.id}/s/${snapshot.snapshotVersion}`}> {snapshot.name} </Link>
-    </Menu.Item>
-  ))
+  const skelecton = (page: any, snapshots: any, disabled: boolean): any => {
+    return (
+      <Row>
+        <Col span={18} className={styles.row}>
+          {page}
+        </Col>
+        <Col span={6} className={styles.row}>
+          <div className={styles.snapshot}>{snapshots}</div>
+          <div>
+            <Button type="primary" className={styles.buttons} disabled={disabled} onClick={onRestore}>
+              {t('snapshots.restore')}
+            </Button>
+            <br />
+            <Button className={styles.buttons} onClick={onCleanup}>
+              {t('snapshots.cancel')}
+            </Button>
+          </div>
+        </Col>
+      </Row>
+    )
+  }
 
-  return <SubMenu title={t('snapshots.name')}>{subMenus}</SubMenu>
+  if (!data?.blockSnapshots || data.blockSnapshots.length === 0) {
+    return skelecton(
+      <div>
+        <img className={styles.image} src={Pic} alt="cloud_brain_2" />
+        <br />
+        <span className={styles.text}>{t('snapshots.empty')}</span>
+      </div>,
+      <>&nbsp;</>,
+      true
+    )
+  }
+
+  const dataSource = data.blockSnapshots
+
+  const firstVersion = Math.max(...data.blockSnapshots.map(snapshot => snapshot.snapshotVersion))
+
+  const snapshotData = (
+    <List
+      size="small"
+      footer={null}
+      header={null}
+      dataSource={dataSource}
+      renderItem={item => {
+        const color = item.snapshotVersion === currentVersion ? 'blue' : 'unset'
+        return (
+          <List.Item>
+            <button
+              className={styles.text_button}
+              onClick={event => {
+                setCurrentVersion(item.snapshotVersion)
+              }}>
+              <span style={{ color }}>{item.name}</span>
+              <br />
+              <span style={{ float: 'left', fontSize: 'small', color }}>{item.relativeTime}</span>
+            </button>
+          </List.Item>
+        )
+      }}
+    />
+  )
+
+  return skelecton(
+    <div className={styles.page}>
+      <DocumentPage docid={blockId} editable={false} snapshotVersion={currentVersion ?? firstVersion} />
+    </div>,
+    snapshotData,
+    !currentVersion || confirmLoading
+  )
 }

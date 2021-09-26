@@ -9,6 +9,7 @@ import { useDocumentCoverUploader } from './useDocumentCoverUploader'
 
 export interface DocumentTitleProps {
   blockId: string
+  editable: boolean
   prepareFileUpload: DashboardProps['prepareFileUpload']
   fetchUnsplashImages: DashboardProps['fetchUnsplashImages']
   title?: string
@@ -32,7 +33,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
   onIconChange,
   onTitleChange,
   getDocIconUrl,
-  getDocCoverUrl
+  getDocCoverUrl,
+  editable
 }) => {
   const [localIcon, setLocalIcon] = React.useState('')
   const [localCover, setLocalCover] = React.useState('')
@@ -56,6 +58,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
   return (
     <div className={styles.container}>
       <DocumentCover
+        editable={editable}
         localUrl={localCover}
         getDocCoverUrl={getDocCoverUrl}
         documentCoverMeta={documentCoverMeta}
@@ -63,22 +66,22 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
       />
       <div className={styles.titleWrapper}>
         {documentIconMeta && (
-          <Popover {...iconPopoverProps}>
+          <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
             <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
           </Popover>
         )}
         <div className={styles.actions}>
           {!documentIconMeta && (
-            <Popover {...iconPopoverProps}>
-              <Button type="text" className={styles.item}>
+            <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
+              <Button type="text" className={styles.item} disabled={!editable}>
                 <Icon.Face className={styles.icon} />
                 <span className={styles.name}>Add icon</span>
               </Button>
             </Popover>
           )}
           {!documentCoverMeta && (
-            <Popover {...coverPopoverProps}>
-              <Button type="text" className={styles.item}>
+            <Popover {...coverPopoverProps} visible={!editable ? false : undefined}>
+              <Button type="text" className={styles.item} disabled={!editable}>
                 <Icon.Image className={styles.icon} />
                 <span className={styles.name}>Add cover</span>
               </Button>
@@ -91,6 +94,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
           onChange={e => onTitleChange(e.target.value)}
           placeholder="Untitled"
           autoSize={true}
+          disabled={!editable}
         />
       </div>
     </div>

@@ -33,8 +33,10 @@ class Docs::Block < ApplicationRecord
   self.inheritance_column = :_type_disabled
 
   include Redis::Objects
+  include Sortable
   counter :patch_seq
 
+  ## REMOVE this
   default_scope { where(deleted_at: nil) }
 
   scope :pageable, -> { where(page: true) }
@@ -194,14 +196,14 @@ class Docs::Block < ApplicationRecord
 
   before_save do
     self.collaborators = collaborators.uniq
-    if type_changed? || meta_changed? || data_changed? || sort_changed? || parent_id_changed?
+    if type_changed? || meta_changed? || data_changed? || sort_changed? ||
+      parent_id_changed? || text_changed? || content_changed? || deleted_at_changed? || updated_at_changed?
       self.history_version = realtime_history_version_increment
     end
   end
 
   after_save do
     histories.create!(history_version: history_version) if history_version_previously_changed? || id_previously_changed?
-    snapshots.create!(snapshot_version: snapshot_version) if snapshot_version_previously_changed?
   end
 
   after_create :maybe_attach_attachments!
@@ -230,6 +232,10 @@ class Docs::Block < ApplicationRecord
 
   def self.broadcast(id, payload)
     BrickdocSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
+  end
+
+  def soft_destroy
+    update!(deleted_at: Time.current)
   end
 
   def delete_pages!
@@ -423,8 +429,29 @@ class Docs::Block < ApplicationRecord
     histories.find_by!(history_version: history_version)
   end
 
-  def save_snapshot!
-    update!(snapshot_version: realtime_snapshot_version_increment)
+  SAVE_SNAPSHOT_SECONDS = 5
+
+  def maybe_save_snapshot!
+    throttle_key = "save_snapshot:#{id}"
+    Brickdoc::Redis.with(:state) do |redis|
+      bol = redis.get(throttle_key)
+      return false if bol
+
+      redis.setex(throttle_key, SAVE_SNAPSHOT_SECONDS, 1)
+    end
+
+    save_snapshot!
+    true
+  rescue => _e
+    ## TODO handle error
+    false
+  end
+
+  def save_snapshot!(params = {})
+    transaction do
+      update!(snapshot_version: realtime_snapshot_version_increment)
+      snapshots.create!(params.merge(snapshot_version: snapshot_version))
+    end
   end
 
   def current_histories

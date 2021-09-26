@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
-import { DocumentPage } from '@/docs/modules/pages/DocumentPage'
+import { DocumentContent } from '../modules/pages/DocumentContent'
 
 export const routeConfig = (webid: string): any => {
   return renderRoutes([
@@ -13,22 +13,22 @@ export const routeConfig = (webid: string): any => {
     {
       path: '/:webid/p/:docid',
       exact: true,
-      component: DocumentPage
+      component: DocumentContent
     },
     {
       path: '/:webid/p/:docid/s/:snapshotVersion',
       exact: true,
-      component: DocumentPage
+      component: DocumentContent
     },
     {
       path: '/:webid/p/:docid/l/:shareLink',
       exact: true,
-      component: DocumentPage
+      component: DocumentContent
     },
     {
       path: '/:webid',
       exact: true,
-      component: DocumentPage
+      component: DocumentContent
     }
   ])
 }

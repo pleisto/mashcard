@@ -60,5 +60,24 @@ RSpec.describe Docs::Snapshot, type: :model do
       expect(snapshot.blocks.first.history_version).to eq(parent_history_version_1)
       expect(snapshot.blocks.last.history_version).to eq(child_history_version_1)
     end
+
+    it 'restore' do
+      block = child.parent
+      old_text = block.text
+      old_snapshot_version = block.snapshot_version
+
+      block.save_snapshot!
+      new_text = "foo bar"
+      block.update!(text: new_text)
+
+      expect(block.snapshot_version).to eq(old_snapshot_version + 1)
+
+      snapshot = Docs::Snapshot.find_by!(block_id: block.id, snapshot_version: block.snapshot_version)
+      snapshot.restore!
+      block.reload
+
+      expect(block.text).to eq(old_text)
+      expect(block.snapshot_version).to eq(old_snapshot_version + 2)
+    end
   end
 end

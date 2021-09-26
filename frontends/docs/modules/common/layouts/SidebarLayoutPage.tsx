@@ -7,11 +7,13 @@ import { PageTree } from '@/docs/modules/common/components/PageTree'
 import { PodSelect } from '@/docs/modules/common/components/PodSelect'
 import { v4 as uuid } from 'uuid'
 import { SearchModal } from '../components/SearchModal'
+// import { TrashButton } from '../components/TrashButton'
 interface SidebarLayoutPageProps {
   webid: string
+  docid: string | undefined
 }
 
-export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, children }) => {
+export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, docid, children }) => {
   const { t } = useDocsI18n()
   const { Sider, Content, Footer } = Layout
   return (
@@ -22,6 +24,7 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, chi
           <PodSelect webid={webid} />
           <SearchModal webid={webid} />
           <PageTree webid={webid} />
+          {/* <TrashButton webid={webid} docid={docid} /> */}
 
           <Footer style={{ textAlign: 'center' }}>
             <Link style={{ color: 'inherit' }} to={`/${webid}/p/${uuid()}`}>

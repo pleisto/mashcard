@@ -21,6 +21,7 @@
 class Docs::Snapshot < ApplicationRecord
   belongs_to :pod, optional: true
   belongs_to :block
+  include ActionView::Helpers::DateHelper
 
   before_create do
     self.pod_id = block.pod_id
@@ -31,7 +32,15 @@ class Docs::Snapshot < ApplicationRecord
   end
 
   def generate_default_name
-    "SNAPSHOT [#{snapshot_version}] #{Time.current}"
+    Time.current.to_s
+  end
+
+  def relative_time
+    time_ago_in_words(created_at)
+  end
+
+  def next_snapshot_name
+    "[Before Restore] #{generate_default_name}"
   end
 
   def blocks
@@ -40,5 +49,26 @@ class Docs::Snapshot < ApplicationRecord
 
     # After: save snapshot_id only in current block
     Docs::History.from_version_meta(version_meta)
+  end
+
+  def restore!
+    transaction do
+      ## 1. backup current state
+      block.save_snapshot!(name: next_snapshot_name)
+
+      ## 2. do restore
+      preload_blocks = blocks.each_with_object({}) do |history, h|
+        h[history.block_id] = history
+      end
+
+      block.descendants(unscoped: true).each do |child_block|
+        child_history = preload_blocks[child_block.id]
+        if child_history.nil?
+          child_block.update!(deleted_at: Time.current)
+        else
+          child_block.update!(child_history.update_params)
+        end
+      end
+    end
   end
 end
