@@ -6,7 +6,6 @@ import { Icon } from '@brickdoc/design-system'
 import { createPopup, PopupInstance } from '../helpers/popup'
 import { SlashCommandsMenu, SlashCommandsMenuItem } from './SlashCommandsMenu'
 
-const QUERY_LIMIT = 10
 const TRIGGER_CHAR = '/'
 
 const menuItems: SlashCommandsMenuItem[] = [
@@ -129,13 +128,11 @@ const menuItems: SlashCommandsMenuItem[] = [
 ]
 
 function filterMenuItemsByQuery(query: string): SlashCommandsMenuItem[] {
-  return menuItems
-    .filter(
-      item =>
-        item.title.toLowerCase().startsWith(query.toLowerCase()) ||
-        item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
-    )
-    .slice(0, QUERY_LIMIT)
+  return menuItems.filter(
+    item =>
+      item.title.toLowerCase().startsWith(query.toLowerCase()) ||
+      item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
+  )
 }
 
 export const SlashCommandsExtension = Extension.create({
