@@ -3,23 +3,23 @@
 
 .root {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
 
   @media (min-width: @screen-sm-min) {
-    align-items: center;
-    background: url('./assets/panel_bg.png') no-repeat fixed center center;
+    justify-content: space-between;
+    background: url('../../../../common/assets/common_bg.svg') no-repeat fixed center center;
     background-size: cover, cover;
     background-clip: border-box;
   }
 }
 
 .header {
-  top: 0;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
-  position: absolute;
   width: 100%;
   padding: 1.5rem 2rem;
 
@@ -45,9 +45,10 @@
   flex-direction: column;
 
   @media (min-width: @screen-sm-min) {
-    width: 30rem;
+    margin-top: -5rem;
+    width: 32rem;
     border-radius: 0.5rem;
-    box-shadow: @box-shadow-base;
-    padding: 2.4rem;
+    box-shadow: @box-shadow-lg;
+    padding: 3rem 6rem;
   }
 }

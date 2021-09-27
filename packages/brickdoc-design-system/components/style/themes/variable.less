@@ -192,7 +192,7 @@ html {
 @link-decoration: none;
 @link-hover-decoration: none;
 @link-focus-decoration: none;
-@link-focus-outline: 0;
+@link-focus-outline: 1px dotted rgba(0, 0, 0, 0.65);
 
 // Animation
 @ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
@@ -236,6 +236,8 @@ html {
 @shadow-color: rgba(0, 0, 0, 0.15);
 @shadow-color-inverse: @component-background;
 @box-shadow-base: @shadow-2;
+@box-shadow-md: 0px 2px 4px rgba(44, 91, 255, 0.05), 0px 4px 6px rgba(0, 0, 0, 0.1);
+@box-shadow-lg: 0px 4px 8px rgba(44, 91, 255, 0.06), 0px 8px 16px rgba(0, 0, 0, 0.12);
 @shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05), 0 -12px 48px 16px rgba(0, 0, 0, 0.03);
 @shadow-1-down: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
 @shadow-1-left: -6px 0 16px -8px rgba(0, 0, 0, 0.08), -9px 0 28px 0 rgba(0, 0, 0, 0.05), -12px 0 48px 16px rgba(0, 0, 0, 0.03);
@@ -377,9 +379,9 @@ html {
 @grid-columns: 24;
 
 // Layout
-@layout-body-background: @white;
-@layout-header-background: #001529;
-@layout-header-height: 64px;
+@layout-body-background: transparent;
+@layout-header-background: transparent;
+@layout-header-height: 48px;
 @layout-header-padding: 0 50px;
 @layout-header-color: @text-color;
 @layout-footer-padding: 24px 50px;
@@ -391,7 +393,7 @@ html {
 @layout-zero-trigger-width: 36px;
 @layout-zero-trigger-height: 42px;
 // Layout light theme
-@layout-sider-background-light: #fff;
+@layout-sider-background-light: transparent;
 @layout-trigger-background-light: #fff;
 @layout-trigger-color-light: @text-color;
 
@@ -433,7 +435,7 @@ html {
 @label-required-color: @highlight-color;
 @label-color: @heading-color;
 @form-warning-input-bg: @input-bg;
-@form-item-margin-bottom: 24px;
+@form-item-margin-bottom: 25px;
 @form-item-trailing-colon: true;
 @form-vertical-label-padding: 0 0 8px;
 @form-vertical-label-margin: 0;

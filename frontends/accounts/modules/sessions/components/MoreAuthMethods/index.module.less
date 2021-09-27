@@ -1,9 +1,23 @@
 .moreAuth {
   margin-top: 2rem;
-  & > button {
-    margin-right: 1rem;
+  text-align: center;
+  nav {
+    padding-top: 0.5rem;
   }
-  & > button:last-child {
+  nav > button {
+    margin-right: 1.25rem;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    &:hover,
+    &:active {
+      border: none;
+    }
+    & > * {
+      font-size: 2rem;
+    }
+  }
+  nav > button:last-child {
     margin-right: 0;
   }
 }

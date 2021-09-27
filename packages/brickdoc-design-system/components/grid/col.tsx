@@ -110,7 +110,7 @@ const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
 
     // Hack for Firefox to avoid size issue
     // https://github.com/ant-design/ant-design/pull/20023#issuecomment-564389553
-    if (flex === 'auto' && !wrap && !mergedStyle.minWidth) {
+    if (flex && !wrap && !mergedStyle.minWidth) {
       mergedStyle.minWidth = 0
     }
   }

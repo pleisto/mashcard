@@ -32,7 +32,7 @@ export const EmailPasswordSignIn: React.FC = () => {
         <Checkbox>{t('sessions.remember_me')}</Checkbox>
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" size="large" loading={loading} block>
+        <Button type="primary" htmlType="submit" loading={loading} block>
           {t('sessions.sign_in')}
         </Button>
       </Form.Item>

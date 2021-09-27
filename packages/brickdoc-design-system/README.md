@@ -55,3 +55,7 @@ const App = () => (
 
 - Sync of patches from Ant Design 4.17-alpha.3
 - add `@brickdoc/design-colors`
+
+### 0.3.1
+
+- Sync of patches from Ant Design 4.17-alpha.4

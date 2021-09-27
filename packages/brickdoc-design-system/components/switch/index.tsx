@@ -29,6 +29,7 @@ export interface SwitchProps {
   style?: React.CSSProperties
   title?: string
   tabIndex?: number
+  id?: string
 }
 
 export interface CompoundedComponent extends React.ForwardRefExoticComponent<SwitchProps & React.RefAttributes<HTMLElement>> {

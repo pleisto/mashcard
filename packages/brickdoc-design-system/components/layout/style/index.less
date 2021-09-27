@@ -35,7 +35,6 @@
     padding: @layout-header-padding;
     color: @layout-header-color;
     line-height: @layout-header-height;
-    background: @layout-header-background;
   }
 
   &-footer {
@@ -50,7 +49,8 @@
 
     /* fix firefox can't set height smaller than content on flex item */
     min-height: 0;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+    box-shadow: @box-shadow-md;
+    border-radius: 2px;
   }
 
   &-sider {
@@ -59,7 +59,6 @@
     /* fix firefox can't set width smaller than content on flex item */
     min-width: 0;
     background: @layout-sider-background;
-    backdrop-filter: blur(2rem) saturate(125%);
     transition: all 0.2s;
 
     &-children {

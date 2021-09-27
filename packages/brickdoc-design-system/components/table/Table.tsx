@@ -89,7 +89,7 @@ export interface TableProps<RecordType>
   showSorterTooltip?: boolean | TooltipProps
 }
 
-function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
+function InternalTable<RecordType extends object = any>(props: TableProps<RecordType>, ref: React.MutableRefObject<HTMLDivElement>) {
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -448,7 +448,7 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
     className
   )
   return (
-    <div className={wrapperClassNames} style={style}>
+    <div ref={ref} className={wrapperClassNames} style={style}>
       <Spin spinning={false} {...spinProps}>
         {topPaginationNode}
         <RcTable<RecordType>
@@ -477,6 +477,21 @@ function Table<RecordType extends object = any>(props: TableProps<RecordType>) {
     </div>
   )
 }
+
+const TableRef = React.forwardRef(InternalTable as React.ForwardRefRenderFunction<HTMLDivElement, TableProps<object>>)
+
+type InternalTableType = typeof TableRef
+
+interface TableInterface extends InternalTableType {
+  SELECTION_ALL: 'SELECT_ALL'
+  SELECTION_INVERT: 'SELECT_INVERT'
+  SELECTION_NONE: 'SELECT_NONE'
+  Column: typeof Column
+  ColumnGroup: typeof ColumnGroup
+  Summary: typeof Summary
+}
+
+const Table = TableRef as TableInterface
 
 Table.defaultProps = {
   rowKey: 'key'
