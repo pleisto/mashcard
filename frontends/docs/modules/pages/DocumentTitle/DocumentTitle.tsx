@@ -70,24 +70,26 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
             <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
           </Popover>
         )}
-        <div className={styles.actions}>
-          {!documentIconMeta && (
-            <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
-              <Button type="text" className={styles.item} disabled={!editable}>
-                <Icon.Face className={styles.icon} />
-                <span className={styles.name}>Add icon</span>
-              </Button>
-            </Popover>
-          )}
-          {!documentCoverMeta && (
-            <Popover {...coverPopoverProps} visible={!editable ? false : undefined}>
-              <Button type="text" className={styles.item} disabled={!editable}>
-                <Icon.Image className={styles.icon} />
-                <span className={styles.name}>Add cover</span>
-              </Button>
-            </Popover>
-          )}
-        </div>
+        {editable && (
+          <div className={styles.actions}>
+            {!documentIconMeta && (
+              <Popover {...iconPopoverProps}>
+                <Button type="text" className={styles.item} disabled={!editable}>
+                  <Icon.Face className={styles.icon} />
+                  <span className={styles.name}>Add icon</span>
+                </Button>
+              </Popover>
+            )}
+            {!documentCoverMeta && (
+              <Popover {...coverPopoverProps}>
+                <Button type="text" className={styles.item} disabled={!editable}>
+                  <Icon.Image className={styles.icon} />
+                  <span className={styles.name}>Add cover</span>
+                </Button>
+              </Popover>
+            )}
+          </div>
+        )}
         <Input.TextArea
           className={styles.titleInput}
           value={title}
