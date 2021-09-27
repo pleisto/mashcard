@@ -1,17 +1,17 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { MoreMenu } from '../common/components/MoreMenu'
 import { SidebarLayoutPage } from '../common/layouts/SidebarLayoutPage'
+import { DocumentTopBar } from './DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
+import { useSyncProvider } from './useSyncProvider'
 
 export const DocumentContent: React.FC = () => {
   const { webid, docid, snapshotVersion } = useParams<{ webid: string; docid: string | undefined; snapshotVersion: string | undefined }>()
+  const [onCommit, committing] = useSyncProvider()
   return (
     <SidebarLayoutPage webid={webid} docid={docid}>
-      <div style={{ float: 'right' }}>
-        <MoreMenu id={docid} webid={webid} />
-      </div>
-      <DocumentPage docid={docid} editable={true} snapshotVersion={Number(snapshotVersion ?? '0')} />
+      <DocumentTopBar docid={docid} webid={webid} saving={committing} />
+      <DocumentPage docid={docid} editable={true} snapshotVersion={Number(snapshotVersion ?? '0')} onCommit={onCommit} />
     </SidebarLayoutPage>
   )
 }

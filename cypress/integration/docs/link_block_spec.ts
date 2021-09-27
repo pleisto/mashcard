@@ -40,7 +40,7 @@ describe('linkBlock', () => {
     cy.findByText('Embed').click()
     cy.get('.brickdoc-link-block').realHover()
     cy.get('.link-block-menu-button').click()
-    cy.findByText('Copy').click()
+    cy.findByText('Copy link').click()
     cy.get('@copy').should('be.calledWithExactly', link)
   })
 

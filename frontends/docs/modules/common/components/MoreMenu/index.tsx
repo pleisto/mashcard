@@ -1,13 +1,14 @@
-import { Button } from '@brickdoc/design-system'
+import { Button, Icon } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { UpdateModal } from '../UpdateModal'
 
 interface UpdateButtonProps {
   id: string | undefined
   webid: string
+  className?: string
 }
 
-export const MoreMenu: React.FC<UpdateButtonProps> = ({ id, webid }) => {
+export const MoreMenu: React.FC<UpdateButtonProps> = ({ id, webid, className }) => {
   const [updateModalVisible, setUpdateModalVisible] = useState<boolean>(false)
   if (!id) {
     return <></>
@@ -17,8 +18,8 @@ export const MoreMenu: React.FC<UpdateButtonProps> = ({ id, webid }) => {
   }
   return (
     <>
-      <Button type="text" onClick={onClick}>
-        ...
+      <Button className={className} type="text" onClick={onClick}>
+        <Icon.More />
       </Button>
       <UpdateModal webid={webid} blockId={id} visible={updateModalVisible} setVisible={setUpdateModalVisible} />
     </>

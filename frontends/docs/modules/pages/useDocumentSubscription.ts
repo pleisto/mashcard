@@ -2,7 +2,7 @@ import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate, Block 
 import { Fragment } from 'prosemirror-model'
 import { Editor, ChainedCommands } from '@tiptap/core'
 import { EditorContentProps } from '@brickdoc/editor'
-import { blockToNode } from './SyncProvider'
+import { blockToNode } from './useSyncProvider'
 
 function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: ChainedCommands): void {
   const block = patch.payload as Block

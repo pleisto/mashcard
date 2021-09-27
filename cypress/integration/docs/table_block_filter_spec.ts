@@ -47,9 +47,9 @@ describe('tableBlockFilter', () => {
     // edit date range cell
     cy.get('.table-block-date-range-cell:last').click()
     // today
-    cy.get('.brk-picker-cell-today').click()
-    cy.get('.brk-picker-cell-today').click()
-    cy.get('.brk-picker-cell-today').click()
+    cy.get('.brk-picker-cell-today').last().click()
+    cy.get('.brk-picker-cell-today').last().click()
+    cy.get('.brk-picker-cell-today').last().click()
 
     // add row 2
     cy.get('.table-block-tbody > .table-block-row:first').realHover()

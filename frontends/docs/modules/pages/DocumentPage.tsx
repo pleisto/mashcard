@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { Node } from 'prosemirror-model'
 import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor } from '@brickdoc/editor'
-import { useBlockSyncBatchMutation, useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
+import { useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './DocumentTitle'
-import { syncProvider, blocksToJSONContents } from './SyncProvider'
+import { blocksToJSONContents } from './useSyncProvider'
 import { useDocumentSubscription } from './useDocumentSubscription'
 import { usePrepareFileUpload } from './usePrepareFileUpload'
 import { useFetchUnsplashImages } from './useFetchUnsplashImages'
@@ -16,12 +16,10 @@ interface DocumentPageProps {
   docid: string | undefined
   snapshotVersion: number
   editable: boolean
+  onCommit: (doc: Node) => Promise<void>
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersion, editable }) => {
-  const [blockSyncBatch] = useBlockSyncBatchMutation()
-  const { onCommit } = syncProvider({ blockSyncBatch })
-
+export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersion, editable, onCommit }) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     variables: { rootId: docid as string, snapshotVersion }

@@ -6,6 +6,7 @@ import styles from './index.module.less'
 import { useDocsI18n } from '../../hooks'
 import Pic from '@/common/assets/cloud_brain_2.svg'
 import { queryChildrenBlocks } from '@/docs/modules/pages/graphql'
+import { useSyncProvider } from '@/docs/modules/pages/useSyncProvider'
 
 interface SnapshotListProps {
   blockId: string
@@ -27,6 +28,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   const { t } = useDocsI18n()
   const { data } = useGetBlockSnapshotsQuery({ variables: { id: blockId } })
   const [snapshotRestore] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks] })
+  const [onCommit] = useSyncProvider()
 
   const onRestore = async (): Promise<void> => {
     setConfirmLoading(true)
@@ -85,7 +87,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
           <List.Item>
             <button
               className={styles.text_button}
-              onClick={event => {
+              onClick={() => {
                 setCurrentVersion(item.snapshotVersion)
               }}>
               <span style={{ color }}>{item.name}</span>
@@ -100,7 +102,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   return skelecton(
     <div className={styles.page}>
-      <DocumentPage docid={blockId} editable={false} snapshotVersion={currentVersion ?? firstVersion} />
+      <DocumentPage docid={blockId} editable={false} snapshotVersion={currentVersion ?? firstVersion} onCommit={onCommit} />
     </div>,
     snapshotData,
     !currentVersion || confirmLoading

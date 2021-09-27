@@ -3,7 +3,7 @@ import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, Block, Blo
 import { Skeleton, Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/utils'
 import { PageMenu } from '../PageMenu'
-import { SIZE_GAP } from '@/docs/modules/pages/SyncProvider'
+import { SIZE_GAP } from '@/docs/modules/pages/useSyncProvider'
 import { queryPageBlocks } from '../../graphql'
 
 interface PageTreeProps {

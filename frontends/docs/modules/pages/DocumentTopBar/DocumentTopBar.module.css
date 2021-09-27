@@ -1,0 +1,52 @@
+.topBar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 48px;
+
+  & .menu {
+    position: absolute;
+    right: 56px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    & .menuItem {
+      padding: 8px;
+      color: rgba(132, 126, 142, 1);
+      font-size: 12px;
+      line-height: 16px;
+      height: auto;
+      border-radius: 4px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  & .loading {
+    color: rgba(191, 188, 198, 1);
+    font-size: 12px;
+
+    & .loadingIcon {
+      width: 10.67px;
+      height: 10.67px;
+      animation: spin infinite linear 800ms;
+      margin-right: 6.67px;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,7 +1,7 @@
+import React from 'react'
 import { Node } from 'prosemirror-model'
-import { BlockInput, Block, BlockSyncBatchInput, BlockSyncBatchMutation, BlockSyncBatchMutationVariables } from '@/BrickdocGraphQL'
+import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
-import { ApolloCache, MutationTuple } from '@apollo/client'
 import { isNil } from 'lodash'
 
 const nodeChildren = (node: Node): Node[] => {
@@ -100,17 +100,23 @@ export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONCo
     .sort((a, b) => Number(a.sort) - Number(b.sort))
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function syncProvider<TApolloContext, TApolloCache extends ApolloCache<any>>({
-  blockSyncBatch
-}: {
-  blockSyncBatch: MutationTuple<BlockSyncBatchMutation, BlockSyncBatchMutationVariables, TApolloContext, TApolloCache>[0]
-}) {
-  return {
-    onCommit: async (doc: Node) => {
+export function useSyncProvider(): [(doc: Node) => Promise<void>, boolean] {
+  const [blockSyncBatch] = useBlockSyncBatchMutation()
+  const [committing, setCommitting] = React.useState(false)
+  return [
+    async (doc: Node) => {
+      setCommitting(true)
       const blocks = nodeToBlock(doc, 0)
       const input: BlockSyncBatchInput = { blocks, rootId: doc.attrs.uuid, operatorId: globalThis.brickdocContext.uuid }
-      await blockSyncBatch({ variables: { input } })
-    }
-  }
+      try {
+        await blockSyncBatch({ variables: { input } })
+      } catch (error) {
+        setCommitting(false)
+        throw error
+      }
+
+      setCommitting(false)
+    },
+    committing
+  ]
 }

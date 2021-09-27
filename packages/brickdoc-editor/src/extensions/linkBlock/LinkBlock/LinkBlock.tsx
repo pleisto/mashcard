@@ -47,6 +47,9 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
       const from = getPos()
       editor.commands.deleteRange({ from, to: from + node.nodeSize })
     }
+    const handleCopy = (): void => {
+      void navigator.clipboard.writeText(url)
+    }
     return (
       <NodeViewWrapper>
         <Button type="text" className="brickdoc-link-block" onClick={() => window.open(url, '_blank')}>
@@ -64,16 +67,18 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
-                  }}>
+                  }}
+                >
                   <Icon.Delete />
                   Delete
                 </Menu.Item>
-                <Menu.Item>
+                <Menu.Item onClick={handleCopy}>
                   <Icon.Copy />
                   Copy link
                 </Menu.Item>
               </Menu>
-            }>
+            }
+          >
             <Button type="text" className="link-block-menu-button" onClick={event => event.stopPropagation()}>
               <Icon.More className="link-block-menu-icon" />
             </Button>
@@ -89,7 +94,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
         overlayClassName="brickdoc-link-block-popover"
         trigger="click"
         placement="top"
-        content={<Dashboard onUploaded={onUploaded} importSources={IMPORT_SOURCES} />}>
+        content={<Dashboard onUploaded={onUploaded} importSources={IMPORT_SOURCES} />}
+      >
         <Button type="text" className="brickdoc-link-block-placeholder">
           <Icon.BlockLevelLink className="link-block-icon" />
           <div className="link-block-hint">Embed anything</div>
