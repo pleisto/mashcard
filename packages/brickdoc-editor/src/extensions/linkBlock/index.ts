@@ -13,13 +13,26 @@ declare module '@tiptap/core' {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface LinkBlockOptions {}
+export interface WebsiteMeta {
+  url: string
+  title?: string
+  description?: string
+  cover?: string | null
+  icon?: string
+}
+
+export interface LinkBlockOptions {
+  fetchWebsiteMeta: (url: string) => Promise<{ success: boolean; data: WebsiteMeta }>
+}
 
 export const LinkBlockExtension = Node.create<LinkBlockOptions>({
   name: 'linkBlock',
 
-  defaultOptions: {},
+  defaultOptions: {
+    fetchWebsiteMeta() {
+      throw new Error('You need configure fetchWebsiteMeta if you want to enable LinkBlock')
+    }
+  },
 
   group: 'block',
 

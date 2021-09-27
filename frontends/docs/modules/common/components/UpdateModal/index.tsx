@@ -29,7 +29,8 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ webid, visible, blockI
       visible={visible}
       confirmLoading={confirmLoading}
       onOk={onCleanup}
-      onCancel={onCleanup}>
+      onCancel={onCleanup}
+    >
       <SnapshotList
         blockId={blockId}
         currentVersion={currentVersion}

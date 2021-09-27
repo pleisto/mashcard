@@ -28,6 +28,17 @@ export const queryUnsplashImage = gql`
   }
 `
 
+export const queryPreviewBox = gql`
+  query QueryPreviewBox($url: String!) {
+    previewBox(url: $url) {
+      url
+      title
+      description
+      cover
+    }
+  }
+`
+
 export const CreateOrUpdatePod = gql`
   mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
     createOrUpdatePod(input: $input) {

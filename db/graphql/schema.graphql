@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-   Federated Authentication
+  Federated Authentication
   """
   github
 
   """
-   Federated Authentication
+  Federated Authentication
   """
   google_oauth2
 }
@@ -367,6 +367,48 @@ input BlockInput {
   type: String!
 }
 
+type BlockLink {
+  """
+  cover
+  """
+  cover: String
+
+  """
+  description
+  """
+  description: String
+
+  """
+  height
+  """
+  height: Int
+
+  """
+  key
+  """
+  key: String!
+
+  """
+  type
+  """
+  source: Filesourcetype!
+
+  """
+  title
+  """
+  title: String
+
+  """
+  type
+  """
+  type: String!
+
+  """
+  width
+  """
+  width: Int
+}
+
 type BlockMeta {
   """
   attachment
@@ -392,6 +434,11 @@ type BlockMeta {
   Prosemirror builtin level
   """
   level: Int
+
+  """
+  link
+  """
+  link: BlockLink
 
   """
   title
@@ -877,7 +924,6 @@ type RootMutation {
   ): SnapshotRestorePayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -888,7 +934,6 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -899,7 +944,6 @@ type RootMutation {
   ): UserCreatePayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -910,7 +954,6 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -921,7 +964,6 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -932,7 +974,6 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
-
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(
@@ -1033,6 +1074,11 @@ type RootQuery {
   return all pods for user.
   """
   pods: [pod!]!
+
+  """
+  return preview box data of url
+  """
+  previewBox(url: String!): preview_box!
 
   """
   return images from unsplash by search
@@ -1633,6 +1679,28 @@ type pod {
   Like a username, Unique within this instance of Brickdoc
   """
   webid: String!
+}
+
+type preview_box {
+  """
+  preview cover
+  """
+  cover: String
+
+  """
+  preview description
+  """
+  description: String!
+
+  """
+  preview title
+  """
+  title: String!
+
+  """
+  preview url
+  """
+  url: String!
 }
 
 """

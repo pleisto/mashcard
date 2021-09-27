@@ -218,6 +218,26 @@ export type BlockInput = {
   type: Scalars['String']
 }
 
+export type BlockLink = {
+  __typename?: 'BlockLink'
+  /** cover */
+  cover?: Maybe<Scalars['String']>
+  /** description */
+  description?: Maybe<Scalars['String']>
+  /** height */
+  height?: Maybe<Scalars['Int']>
+  /** key */
+  key: Scalars['String']
+  /** type */
+  source: Filesourcetype
+  /** title */
+  title?: Maybe<Scalars['String']>
+  /** type */
+  type: Scalars['String']
+  /** width */
+  width?: Maybe<Scalars['Int']>
+}
+
 export type BlockMeta = {
   __typename?: 'BlockMeta'
   /** attachment */
@@ -230,6 +250,8 @@ export type BlockMeta = {
   image?: Maybe<BlockImage>
   /** Prosemirror builtin level */
   level?: Maybe<Scalars['Int']>
+  /** link */
+  link?: Maybe<BlockLink>
   /** title */
   title?: Maybe<Scalars['String']>
 }
@@ -599,6 +621,8 @@ export type RootQuery = {
   plugins: Array<Plugin>
   /** return all pods for user. */
   pods: Array<Pod>
+  /** return preview box data of url */
+  previewBox: Preview_Box
   /** return images from unsplash by search */
   unsplashImage?: Maybe<Array<Unsplash_Image>>
   /**
@@ -646,6 +670,10 @@ export type RootQueryPageBlocksArgs = {
 
 export type RootQueryPasswordAvailableArgs = {
   password: Scalars['String']
+}
+
+export type RootQueryPreviewBoxArgs = {
+  url: Scalars['String']
 }
 
 export type RootQueryUnsplashImageArgs = {
@@ -974,6 +1002,18 @@ export type Pod = {
   webid: Scalars['String']
 }
 
+export type Preview_Box = {
+  __typename?: 'preview_box'
+  /** preview cover */
+  cover?: Maybe<Scalars['String']>
+  /** preview description */
+  description: Scalars['String']
+  /** preview title */
+  title: Scalars['String']
+  /** preview url */
+  url: Scalars['String']
+}
+
 /** Option Object for BrickDesign Select Component. */
 export type Select_Option = {
   __typename?: 'select_option'
@@ -1176,6 +1216,15 @@ export type QueryUnsplashImageQuery = {
       username?: Maybe<string>
     }>
   >
+}
+
+export type QueryPreviewBoxQueryVariables = Exact<{
+  url: Scalars['String']
+}>
+
+export type QueryPreviewBoxQuery = {
+  __typename?: 'RootQuery'
+  previewBox: { __typename?: 'preview_box'; url: string; title: string; description: string; cover?: Maybe<string> }
 }
 
 export type CreateOrUpdatePodMutationVariables = Exact<{
@@ -1421,6 +1470,15 @@ export type GetChildrenBlocksQuery = {
               width?: Maybe<number>
             }
         >
+        link?: Maybe<{
+          __typename?: 'BlockLink'
+          key: string
+          type: string
+          source: Filesourcetype
+          cover?: Maybe<string>
+          description?: Maybe<string>
+          title?: Maybe<string>
+        }>
       }
     }>
   >
@@ -2106,6 +2164,46 @@ export function useQueryUnsplashImageLazyQuery(
 export type QueryUnsplashImageQueryHookResult = ReturnType<typeof useQueryUnsplashImageQuery>
 export type QueryUnsplashImageLazyQueryHookResult = ReturnType<typeof useQueryUnsplashImageLazyQuery>
 export type QueryUnsplashImageQueryResult = Apollo.QueryResult<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
+export const QueryPreviewBoxDocument = gql`
+  query QueryPreviewBox($url: String!) {
+    previewBox(url: $url) {
+      url
+      title
+      description
+      cover
+    }
+  }
+`
+
+/**
+ * __useQueryPreviewBoxQuery__
+ *
+ * To run a query within a React component, call `useQueryPreviewBoxQuery` and pass it any options that fit your needs.
+ * When your component renders, `useQueryPreviewBoxQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useQueryPreviewBoxQuery({
+ *   variables: {
+ *      url: // value for 'url'
+ *   },
+ * });
+ */
+export function useQueryPreviewBoxQuery(baseOptions: Apollo.QueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
+}
+export function useQueryPreviewBoxLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
+}
+export type QueryPreviewBoxQueryHookResult = ReturnType<typeof useQueryPreviewBoxQuery>
+export type QueryPreviewBoxLazyQueryHookResult = ReturnType<typeof useQueryPreviewBoxLazyQuery>
+export type QueryPreviewBoxQueryResult = Apollo.QueryResult<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
 export const CreateOrUpdatePodDocument = gql`
   mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
     createOrUpdatePod(input: $input) {
@@ -2753,6 +2851,14 @@ export const GetChildrenBlocksDocument = gql`
             name
             emoji
           }
+        }
+        link {
+          key
+          type
+          source
+          cover
+          description
+          title
         }
       }
     }

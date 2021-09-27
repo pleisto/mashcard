@@ -6,6 +6,7 @@ module Docs
       field :cover, BlockCover, 'cover', null: true
       field :image, BlockImage, 'image', null: true
       field :attachment, BlockAttachment, 'attachment', null: true
+      field :link, BlockLink, 'link', null: true
       field :title, String, 'title', null: true
 
       ## NOTE: Prosemirror builtin

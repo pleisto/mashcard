@@ -207,6 +207,7 @@ class Docs::Block < ApplicationRecord
   end
 
   after_create :maybe_attach_attachments!
+  before_save :update_meta_link
 
   def maybe_attach_attachments!
     Brickdoc::Redis.with(:cache) do |redis|
@@ -228,6 +229,17 @@ class Docs::Block < ApplicationRecord
       blob_id: blob_id,
       name: "attachments"
     )
+  end
+
+  def update_meta_link
+    if meta['link'].present? && meta['link']['title'].blank?
+      data = Brickdoc::PreviewBox.preview(meta['link']['key'])
+      meta['link'].merge!(
+        'title' => data[:title],
+        'description' => data[:description],
+        'cover' => data[:cover]
+      )
+    end
   end
 
   def self.broadcast(id, payload)

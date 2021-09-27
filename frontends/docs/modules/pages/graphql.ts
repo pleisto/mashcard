@@ -97,6 +97,14 @@ export const queryChildrenBlocks = gql`
             emoji
           }
         }
+        link {
+          key
+          type
+          source
+          cover
+          description
+          title
+        }
       }
     }
   }

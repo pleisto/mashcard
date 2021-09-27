@@ -16,6 +16,7 @@ import {
 import './styles.less'
 import { ImageSectionOptions } from './extensions/imageSection'
 import { PdfSectionOptions } from './extensions/pdfSection'
+import { LinkBlockOptions } from './extensions/linkBlock'
 
 export type { ImageSectionAttributes } from './extensions'
 
@@ -37,18 +38,30 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
   useDatabaseRows?: TableExtensionOptions['useDatabaseRows']
   prepareFileUpload?: ImageSectionOptions['prepareFileUpload']
   fetchUnsplashImages?: ImageSectionOptions['fetchUnsplashImages']
+  fetchWebsiteMeta?: LinkBlockOptions['fetchWebsiteMeta']
   getImageUrl?: ImageSectionOptions['getImageUrl']
   getPdfUrl?: PdfSectionOptions['getPdfUrl']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
-  const { onSave, prepareFileUpload, fetchUnsplashImages, getImageUrl, getPdfUrl, useDatabaseRows, editable, ...restOptions } = options
+  const {
+    onSave,
+    prepareFileUpload,
+    fetchUnsplashImages,
+    fetchWebsiteMeta,
+    getImageUrl,
+    getPdfUrl,
+    useDatabaseRows,
+    editable,
+    ...restOptions
+  } = options
   return useTiptapEditor({
     extensions: [
       BasicRichtextExtension.configure({
         imageSection: { prepareFileUpload, fetchUnsplashImages, getImageUrl },
         pdfSection: { prepareFileUpload, getPdfUrl },
-        tableBlock: { useDatabaseRows }
+        tableBlock: { useDatabaseRows },
+        linkBlock: { fetchWebsiteMeta }
       }),
       EventHandlerExtension,
       BlockCommandsExtension,

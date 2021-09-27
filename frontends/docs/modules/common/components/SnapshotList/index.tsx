@@ -89,7 +89,8 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
               className={styles.text_button}
               onClick={() => {
                 setCurrentVersion(item.snapshotVersion)
-              }}>
+              }}
+            >
               <span style={{ color }}>{item.name}</span>
               <br />
               <span style={{ float: 'left', fontSize: 'small', color }}>{item.relativeTime}</span>

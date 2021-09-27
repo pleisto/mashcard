@@ -6,6 +6,7 @@ import { Button, Popover, Icon, Menu } from '@brickdoc/design-system'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.css'
+import { WebsiteMeta } from '..'
 
 const IMPORT_SOURCES: ImportSourceOption[] = [
   {
@@ -19,9 +20,14 @@ const IMPORT_SOURCES: ImportSourceOption[] = [
 export interface LinkBlockAttributes {
   key: string
   source: string
+  title?: WebsiteMeta['title']
+  description?: WebsiteMeta['description']
+  cover?: WebsiteMeta['cover']
+  icon?: WebsiteMeta['icon']
 }
 
 export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, extension, updateAttributes }) => {
+  console.log(node)
   const latestLinkBlockAttributes = React.useRef<Partial<LinkBlockAttributes>>({})
   const updateLinkBlockAttributes = (newAttributes: Partial<LinkBlockAttributes>): void => {
     latestLinkBlockAttributes.current = {
@@ -38,6 +44,11 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
   }
 
   const onUploaded = (data: UploadResultData): void => {
+    extension.options.fetchWebsiteMeta(data.url).then(({ success, data }: { success: boolean; data: WebsiteMeta }) => {
+      if (!success) return
+      updateLinkBlockAttributes({ ...data })
+    })
+
     updateLinkBlockAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
 

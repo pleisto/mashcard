@@ -3,7 +3,7 @@ module Docs
   module Objects
     class BlockLink < BlockAttachment
       field :key, String, "key", null: false
-      field :type, Enums::Blocktype, "type", null: false
+      field :type, String, "type", null: false
       field :source, Enums::Filesourcetype, "type", null: false
       field :cover, String, "cover", null: true
       field :description, String, "description", null: true
