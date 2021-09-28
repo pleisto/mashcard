@@ -11,20 +11,32 @@ import { useFetchUnsplashImages } from './useFetchUnsplashImages'
 import { useDatabaseRows } from './useDatabaseRows'
 import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
+import { TrashPrompt } from '../common/components/TrashPrompt'
 import { useFetchWebsiteMeta } from './useFetchWebsiteMeta'
-
 interface DocumentPageProps {
   docid: string | undefined
+  webid: string
   snapshotVersion: number
   editable: boolean
   onCommit: (doc: Node) => Promise<void>
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersion, editable, onCommit }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapshotVersion, editable, onCommit }) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     variables: { rootId: docid as string, snapshotVersion }
   })
+
+  let finalEditable = editable
+  let restorePrompt = <></>
+  // NOTE Set `editable` flag to `false` and add `restore` prompt if root block is deleted.
+  if (docid && editable && data?.childrenBlocks?.length) {
+    const root = data.childrenBlocks.find(block => block.id === docid)
+    if (root?.deletedAt) {
+      finalEditable = false
+      restorePrompt = <TrashPrompt webid={webid} docid={docid} />
+    }
+  }
 
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
@@ -65,7 +77,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersi
     fetchWebsiteMeta,
     getImageUrl,
     getPdfUrl,
-    editable
+    editable: finalEditable
   })
 
   const createDocAttrsUpdater =
@@ -88,13 +100,13 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersi
       const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
       childrenBlocks.current = data.childrenBlocks
 
-      console.log({ data, content, docid, snapshotVersion, editable })
+      console.log({ data, content, docid, snapshotVersion, finalEditable })
 
       if (content.length) {
         editor.commands.replaceRoot(content[0])
       }
     }
-  }, [editor, data, docid, snapshotVersion, editable])
+  }, [editor, data, docid, snapshotVersion, finalEditable])
 
   useDocumentSubscription({ docid: docid as string, editor })
 
@@ -115,26 +127,26 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docid, snapshotVersi
       getDocCoverUrl={getDocCoverUrl}
       prepareFileUpload={prepareFileUpload}
       fetchUnsplashImages={fetchUnsplashImages}
-      editable={editable}
+      editable={finalEditable}
     />
   )
 
-  if (!docid) {
-    return (
+  const PageElement = (
+    <>
+      {restorePrompt}
       <div className={styles.page}>
         {DocumentTitleElement}
         <EditorContent editor={editor} />
       </div>
-    )
+    </>
+  )
+
+  if (!docid) {
+    return PageElement
   }
 
   if (data?.childrenBlocks?.length) {
-    return (
-      <div className={styles.page}>
-        {DocumentTitleElement}
-        <EditorContent editor={editor} />
-      </div>
-    )
+    return PageElement
   } else {
     return <Alert message="Page not found" type="error" />
   }

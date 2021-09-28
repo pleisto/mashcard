@@ -629,6 +629,19 @@ en-US:
       create_snapshot: Create Snapshot
       create_sub_block: Create Sub Block
       create_share_link: Create Share Link
+    trash:
+      name: Trash
+      all_pages: All pages
+      current_page: In current page
+      search: Filter by page title...
+      not_found: No match found.
+      learn: Learn about deleting and restoring pages
+      delete_confirmation_body: Are you sure you want to delete this page permanently?
+      delete_confirmation_ok: Delete Page
+      delete_confirmation_cancel: Cancel
+      in_trash_prompt: This page is in trash.
+      restore_action: Restore page
+      hard_delete_action: Delete permanently
     sub_blocks:
       title: Title
       create:

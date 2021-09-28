@@ -35,7 +35,7 @@ describe Docs::Mutations::BlockUpdate, type: :mutation do
       expect(response.errors).to eq({})
       expect(response.data).to eq({ "blockUpdate" => nil })
 
-      row_block = Docs::Block.find(block_input[:id])
+      row_block = Docs::Block.non_deleted.find(block_input[:id])
 
       expect(row_block.parent).to eq(table_block)
       expect(row_block.root_id).to eq(table_block.id)

@@ -6,7 +6,7 @@ module Docs
     argument :sort, GraphQL::Types::BigInt, description_same(Objects::BlockBaseObject, :sort), required: true
 
     def resolve(args)
-      block = Docs::Block.find(args[:id])
+      block = Docs::Block.non_deleted.find(args[:id])
       block.move!(args[:target_parent_id], args[:sort])
 
       nil

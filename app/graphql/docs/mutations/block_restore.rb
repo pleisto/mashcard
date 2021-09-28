@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 module Docs
-  class Mutations::BlockDelete < BrickGraphQL::BaseMutation
+  class Mutations::BlockRestore < BrickGraphQL::BaseMutation
     argument :id, BrickGraphQL::Scalars::UUID, 'block unique id', required: true
 
     def resolve(id:)
       block = Docs::Block.find(id)
-      block.deleted_at = Time.now
-      block.save
-
-      block.delete_pages!
+      block.restore!
 
       nil
+    rescue => e
+      raise BrickGraphQL::Errors::ArgumentError, e.message
     end
   end
 end

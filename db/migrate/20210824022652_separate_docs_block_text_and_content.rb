@@ -15,7 +15,7 @@ class SeparateDocsBlockTextAndContent < ActiveRecord::Migration[6.1]
     add_column :docs_histories, :text, :text, default: '', comment: 'node text'
 
     [Docs::Block, Docs::History].each do |model_class|
-      model_class.unscoped.find_each do |block|
+      model_class.find_each do |block|
         block.text = block.data.delete('text')
         block.content = block.data.delete('content')
         model_class.where(id: block.id).update_all(text: block.text, content: block.content, data: block.data)
@@ -25,7 +25,7 @@ class SeparateDocsBlockTextAndContent < ActiveRecord::Migration[6.1]
 
   def down
     [Docs::Block, Docs::History].each do |model_class|
-      model_class.unscoped.find_each do |block|
+      model_class.find_each do |block|
         block.data['text'] = block.text
         block.data['content'] = block.content
         model_class.where(id: block.id).update_all(text: block.text, content: block.content, data: block.data)

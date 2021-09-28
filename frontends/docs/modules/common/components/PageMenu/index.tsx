@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
-import { useBlockDeleteMutation, BlockDeleteInput, Scalars } from '@/BrickdocGraphQL'
+import { useBlockSoftDeleteMutation, BlockSoftDeleteInput, Scalars } from '@/BrickdocGraphQL'
 import { ShareLinkModal } from '../ShareLinkModal'
 import { queryPageBlocks } from '../../graphql'
 import { SubBlockModal } from '../SubBlockModal'
@@ -20,10 +20,10 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   const [shareLinkModalVisible, setShareLinkModalVisible] = useState<boolean>(false)
   const [createSubBlockModalVisible, setCreateSubBlockModalVisible] = useState<boolean>(false)
 
-  const [blockDelete] = useBlockDeleteMutation({ refetchQueries: [queryPageBlocks] })
+  const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks] })
   const deletePage = async (id: UUID): Promise<void> => {
-    const input: BlockDeleteInput = { id }
-    await blockDelete({ variables: { input } })
+    const input: BlockSoftDeleteInput = { id }
+    await blockSoftDelete({ variables: { input } })
   }
 
   const createShareLink = (id: UUID): void => {

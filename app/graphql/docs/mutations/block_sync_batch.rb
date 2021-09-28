@@ -15,18 +15,23 @@ module Docs
 
     def do_resolve(blocks:, root_id:, operator_id:)
       root = Docs::Block.find_by(id: root_id)
+
+      if root&.deleted_at
+        raise BrickGraphQL::Errors::ArgumentError, :cannot_modify_deleted_blocks
+      end
+
       patches = []
       new_blocks_hash = {}
       preloads = {}
 
       if root
-        preloads = root.descendants_cache(unscoped: true).index_by(&:id)
+        preloads = root.descendants(unscoped: true).index_by(&:id)
         paths_cache = root.paths_cache
         delete_block_ids = preloads.select { |_, v| !v.deleted_at }.keys - blocks.map(&:id)
         if delete_block_ids.present?
           patches += delete_block_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
           preloads = preloads.each_with_object({}) do |(id, b), h|
-            b.soft_destroy if id.in?(delete_block_ids)
+            b.soft_delete! if id.in?(delete_block_ids)
             h[id] = b
           end
         end

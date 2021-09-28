@@ -9,7 +9,7 @@ class AddPageableToBlocks < ActiveRecord::Migration[6.1]
 
   def up
     add_column :docs_blocks, :page, :boolean, default: false, null: false
-    Docs::Block.unscoped.where(type: 'doc').update_all(page: true)
+    Docs::Block.where(type: 'doc').update_all(page: true)
     Docs::Block.reset_column_information
   end
 

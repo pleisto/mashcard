@@ -1,7 +1,6 @@
 import { Button, Icon } from '@brickdoc/design-system'
 import React, { useState } from 'react'
-import { UpdateModal } from '../UpdateModal'
-
+import { PageHistoryModal } from '../PageHistoryModal'
 interface UpdateButtonProps {
   id: string | undefined
   webid: string
@@ -21,7 +20,7 @@ export const MoreMenu: React.FC<UpdateButtonProps> = ({ id, webid, className }) 
       <Button className={className} type="text" onClick={onClick}>
         <Icon.More />
       </Button>
-      <UpdateModal webid={webid} blockId={id} visible={updateModalVisible} setVisible={setUpdateModalVisible} />
+      <PageHistoryModal webid={webid} blockId={id} visible={updateModalVisible} setVisible={setUpdateModalVisible} />
     </>
   )
 }

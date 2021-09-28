@@ -3,9 +3,9 @@ import {
   GetDatabaseRowBlocksQueryVariables as Variables,
   GetDatabaseRowBlocksDocument,
   useBlockUpdateMutation,
-  useBlockDeleteMutation,
+  useBlockSoftDeleteMutation,
   BlockUpdateInput,
-  BlockDeleteInput,
+  BlockSoftDeleteInput,
   BlockInput
 } from '@/BrickdocGraphQL'
 import React from 'react'
@@ -31,7 +31,7 @@ export function useDatabaseRows(parentId: string): [
   const queryDatabaseRowBlocks = useImperativeQuery<Query, Variables>(GetDatabaseRowBlocksDocument)
 
   const [blockUpdate] = useBlockUpdateMutation()
-  const [blockDelete] = useBlockDeleteMutation()
+  const [blockSoftDelete] = useBlockSoftDeleteMutation()
 
   const [databaseRows, setDatabaseRows] = React.useState([] as DatabaseRows)
 
@@ -81,10 +81,10 @@ export function useDatabaseRows(parentId: string): [
   const removeRow = React.useCallback(
     (rowId: string): void => {
       setDatabaseRows(databaseRows.filter(row => row.id !== rowId))
-      const input: BlockDeleteInput = { id: rowId }
-      void blockDelete({ variables: { input } })
+      const input: BlockSoftDeleteInput = { id: rowId }
+      void blockSoftDelete({ variables: { input } })
     },
-    [databaseRows, setDatabaseRows, blockDelete]
+    [databaseRows, setDatabaseRows, blockSoftDelete]
   )
 
   return [

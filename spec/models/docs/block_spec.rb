@@ -18,6 +18,8 @@ RSpec.describe Docs::Block, type: :model do
       expect(parent.children.ids).to eq([child.id])
       expect(parent.ancestors.count).to eq(1)
       expect(child.ancestors.count).to eq(2)
+      expect(parent.ancestors_raw.count).to eq(1)
+      expect(child.ancestors_raw.count).to eq(2)
       expect(parent.descendants.count).to eq(2)
       expect(child.descendants.count).to eq(0)
       expect(child.descendants_raw.count).to eq(1)

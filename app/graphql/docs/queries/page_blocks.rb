@@ -8,22 +8,14 @@ module Docs
              description: 'List all pages for pod webid'
 
     def resolve(webid:)
-      blocks = Docs::Block.joins(:pod).pageable.where(pod: { webid: webid }).includes(:enabled_share_links).to_a
+      blocks = Docs::Block.non_deleted.joins(:pod).pageable.where(pod: { webid: webid }).includes(:enabled_share_links).to_a
 
       blocks = Docs::Block.fill_sorts(webid, blocks)
 
-      roots = blocks.select { |block| block.parent_id.nil? }
+      roots = blocks.select { |block| block.id == block.root_id }
       result = authorized_scope roots, as: :collaborating, with: Docs::BlockPolicy
-      target = result
 
-      loop do
-        break if result.blank?
-        parent_ids = result.map(&:id)
-        result = blocks.select { |block| block.parent_id.in?(parent_ids) }
-        target += result
-      end
-
-      target
+      Docs::Block.tidy_pages(result, blocks)
     end
   end
 end

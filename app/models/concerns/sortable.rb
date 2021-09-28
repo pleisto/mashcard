@@ -4,6 +4,20 @@ module Sortable
   extend ActiveSupport::Concern
 
   module ClassMethods
+    ## NOTE remove dangling block
+    def tidy_pages(roots_result, blocks)
+      target = roots_result
+
+      loop do
+        break if roots_result.blank?
+        parent_ids = roots_result.map(&:id)
+        roots_result = blocks.select { |block| block.parent_id.in?(parent_ids) }
+        target += roots_result
+      end
+
+      target.uniq(&:id)
+    end
+
     def fill_sorts(webid, blocks)
       tree_map = blocks.group_by(&:parent_id).transform_values do |a|
         [a.count, flatten_hash(a)]

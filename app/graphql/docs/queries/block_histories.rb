@@ -9,7 +9,7 @@ module Docs
     argument :id, GraphQL::Types::String, required: true
 
     def resolve(id:)
-      Docs::Block.find(id).histories
+      Docs::Block.non_deleted.find(id).histories
     end
   end
 end

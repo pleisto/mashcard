@@ -10,7 +10,7 @@ module Docs
     field :share_link, Objects::ShareLink, null: true
 
     def resolve(args)
-      block = Docs::Block.find(args[:id])
+      block = Docs::Block.non_deleted.find(args[:id])
       target_pod_ids = []
 
       case args[:share_type]

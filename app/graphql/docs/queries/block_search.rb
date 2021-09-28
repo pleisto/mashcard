@@ -9,9 +9,9 @@ module Docs
 
     def resolve(webid:, input:)
       if input.blank?
-        Docs::Block.joins(:pod).where(pod: { webid: webid }).pageable
+        Docs::Block.non_deleted.joins(:pod).where(pod: { webid: webid }).pageable
       else
-        Docs::Block.joins(:pod).where(pod: { webid: webid }).where("text like ?", "%#{input}%")
+        Docs::Block.non_deleted.joins(:pod).where(pod: { webid: webid }).where("text like ?", "%#{input}%")
       end
     end
   end

@@ -33,7 +33,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
       expect(response.data).to eq({ "blockSyncBatch" => nil })
-      root = Docs::Block.find(root_id)
+      root = Docs::Block.non_deleted.find(root_id)
       expect(root.type).to eq("doc")
       expect(root.sort).to eq(147)
       expect(root.descendants.count).to eq(1)
@@ -83,6 +83,45 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       root.reload
       expect(root.descendants.count).to eq(2)
       expect(root.sort).to eq(333)
+
+      self.current_user = nil
+      self.current_pod = nil
+    end
+
+    it 'edit deleted blocks' do
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+
+      block = create(:docs_block, pod: user.personal_pod)
+      root_id = block.id
+
+      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+        id: root_id,
+        type: "doc",
+        meta: {},
+        data: {},
+        text: "123",
+        content: [],
+        sort: 147
+      }] } }
+      internal_graphql_execute(mutation, input)
+      expect(response.errors).to eq({})
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
+
+      block.soft_delete!
+
+      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+        id: root_id,
+        type: "doc",
+        meta: {},
+        data: {},
+        text: "123456",
+        content: [],
+        sort: 147
+      }] } }
+      internal_graphql_execute(mutation, input)
+      expect(response.success?).to be(false)
+      expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.cannot_modify_deleted_blocks"))
 
       self.current_user = nil
       self.current_pod = nil

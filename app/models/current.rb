@@ -5,7 +5,6 @@ class Current < ActiveSupport::CurrentAttributes
   attribute :user, :timezone, :locale
   attribute :pod
   attribute :redis_values
-  attribute :descendants
   attribute :paths
 
   # Implementing time zone conversion in PWA, uses UTC time in server-side

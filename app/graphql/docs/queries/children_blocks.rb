@@ -12,7 +12,9 @@ module Docs
     def resolve(root_id:, snapshot_version:)
       return [] if root_id.blank?
       if snapshot_version.zero?
-        root = Docs::Block.find_by(id: root_id)
+        root = Docs::Block.unscoped.find_by(id: root_id)
+        raise BrickGraphQL::Errors::ArgumentError, :already_hard_deleted if root&.deleted_permanently_at
+
         if root.nil?
           params = {
             id: root_id,
@@ -28,7 +30,7 @@ module Docs
         end
 
         # TODO: storageType?
-        blocks = root.descendants.where('type != ?', 'databaseRow').with_attached_attachments.to_a
+        blocks = root.descendants(unscoped: true).where('type != ?', 'databaseRow').with_attached_attachments.to_a
 
         result = authorized_scope [root], as: :collaborating, with: Docs::BlockPolicy
         if result.blank?

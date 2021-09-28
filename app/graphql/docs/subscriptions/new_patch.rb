@@ -11,7 +11,7 @@ module Docs
     # https://graphql-ruby.org/subscriptions/broadcast.html
     def subscribe(doc_id:)
       Rails.logger.info("Subscriptions subscribe #{doc_id}")
-      block = Docs::Block.find_by(id: doc_id)
+      block = Docs::Block.non_deleted.find_by(id: doc_id)
 
       if block.nil?
         raise BrickGraphQL::Errors::BaseError, I18n.t("errors.graphql.docs.initialized_not_yet_completed")

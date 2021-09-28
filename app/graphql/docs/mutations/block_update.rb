@@ -11,8 +11,8 @@ module Docs
 
     def do_resolve(block:, root_id:)
       # TODO: validating parent block, but what if parent block is not have been synced yet?
-      # parent_block = Docs::Block.find(block.parent_id)
-      update_block = Docs::Block.where(id: block.id).first_or_initialize
+      # parent_block = Docs::Block.non_deleted.find(block.parent_id)
+      update_block = Docs::Block.non_deleted.where(id: block.id).first_or_initialize
 
       update_block.text = block.text
       update_block.content = block.content

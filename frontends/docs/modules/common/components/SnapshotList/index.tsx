@@ -10,6 +10,7 @@ import { useSyncProvider } from '@/docs/modules/pages/useSyncProvider'
 
 interface SnapshotListProps {
   blockId: string
+  webid: string
   currentVersion: number | undefined
   setCurrentVersion: React.Dispatch<React.SetStateAction<number | undefined>>
   confirmLoading: boolean
@@ -19,6 +20,7 @@ interface SnapshotListProps {
 
 export const SnapshotList: React.FC<SnapshotListProps> = ({
   blockId,
+  webid,
   currentVersion,
   setCurrentVersion,
   confirmLoading,
@@ -103,7 +105,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   return skelecton(
     <div className={styles.page}>
-      <DocumentPage docid={blockId} editable={false} snapshotVersion={currentVersion ?? firstVersion} onCommit={onCommit} />
+      <DocumentPage webid={webid} docid={blockId} editable={false} snapshotVersion={currentVersion ?? firstVersion} onCommit={onCommit} />
     </div>,
     snapshotData,
     !currentVersion || confirmLoading

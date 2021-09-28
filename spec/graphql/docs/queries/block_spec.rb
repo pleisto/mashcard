@@ -64,6 +64,7 @@ describe Docs::Queries::Block, type: :query do
       query GetChildrenBlocks($root_id: String!, $snapshot_version: Int!) {
         childrenBlocks(rootId: $root_id, snapshotVersion: $snapshot_version) {
           id
+          deletedAt
           rootId
         }
       }
@@ -149,6 +150,27 @@ describe Docs::Queries::Block, type: :query do
 
       expect(response.success?).to be true
       expect(response.data['childrenBlocks'].length).to eq 3
+
+      self.current_user = nil
+      self.current_pod = nil
+    end
+
+    it 'hard deleted' do
+      user = create(:accounts_user)
+      self.current_user = user
+
+      pod = create(:pod)
+
+      self.current_pod = pod.as_session_context
+
+      block = create(:docs_block, pod: pod, collaborators: [user.id])
+      block.soft_delete!
+      block.hard_delete!
+
+      internal_graphql_execute(children_blocks_query, { root_id: block.id, snapshot_version: 0 })
+
+      expect(response.success?).to be false
+      expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.already_hard_deleted"))
 
       self.current_user = nil
       self.current_pod = nil

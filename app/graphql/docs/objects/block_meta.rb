@@ -11,6 +11,7 @@ module Docs
 
       ## NOTE: Prosemirror builtin
       field :level, Int, 'Prosemirror builtin level', null: true
+      field :language, String, 'Prosemirror builtin language', null: true
     end
   end
 end

@@ -4,28 +4,28 @@
 #
 # Table name: docs_blocks
 #
-#  id                    :uuid             not null, primary key
-#  collaborators         :bigint           default([]), not null, is an Array
-#  content(node content) :jsonb
-#  data(data props)      :jsonb            not null
-#  deleted_at            :datetime
-#  history_version       :bigint           default(0), not null
-#  meta(metadata)        :jsonb            not null
-#  page                  :boolean          default(FALSE), not null
-#  snapshot_version      :bigint           default(0), not null
-#  sort                  :bigint           default(0)
-#  text(node text)       :text             default("")
-#  type                  :string(32)
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  parent_id             :uuid
-#  pod_id                :bigint
-#  root_id               :uuid
+#  id                       :uuid             not null, primary key
+#  collaborators            :bigint           default([]), not null, is an Array
+#  content(node content)    :jsonb
+#  data(data props)         :jsonb            not null
+#  deleted_at               :datetime
+#  deleted_permanently_at   :datetime
+#  history_version          :bigint           default(0), not null
+#  meta(metadata)           :jsonb            not null
+#  page                     :boolean          default(FALSE), not null
+#  snapshot_version         :bigint           default(0), not null
+#  sort                     :bigint           default(0)
+#  text(node text)          :text             default("")
+#  type                     :string(32)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  parent_id                :uuid
+#  pod_id                   :bigint
+#  root_id                  :uuid
 #
 # Indexes
 #
 #  index_docs_blocks_on_collaborators  (collaborators) USING gin
-#  index_docs_blocks_on_deleted_at     (deleted_at)
 #  index_docs_blocks_on_parent_id      (parent_id)
 #  index_docs_blocks_on_pod_id         (pod_id)
 #
@@ -36,10 +36,11 @@ class Docs::Block < ApplicationRecord
   include Sortable
   counter :patch_seq
 
-  ## REMOVE this
-  default_scope { where(deleted_at: nil) }
+  default_scope { where(deleted_permanently_at: nil) if has_attribute?(:deleted_permanently_at) }
 
   scope :pageable, -> { where(page: true) }
+  scope :soft_deleted, -> { where.not(deleted_at: nil) }
+  scope :non_deleted, -> { where(deleted_at: nil) }
 
   belongs_to :pod
   belongs_to :parent, class_name: 'Docs::Block', optional: true
@@ -56,6 +57,7 @@ class Docs::Block < ApplicationRecord
 
   attribute :next_sort, :integer, default: 0
   attribute :first_child_sort, :integer, default: 0
+  attribute :parent_path_array_value
 
   ## Distance for expansion
   SORT_GAP = 2**32
@@ -94,7 +96,7 @@ class Docs::Block < ApplicationRecord
   }
 
   def prepare_descendants
-    data = descendants_cache(unscoped: true)
+    data = descendants(unscoped: true)
     ids = data.map(&:id)
     keys = ids.flat_map { |id| ["snapshot_#{id}", "history_#{id}"] }
     persist_values = Hash[*data.flat_map { |b| ["snapshot_#{b.id}", b.snapshot_version.to_s, "history_#{b.id}", b.history_version.to_s] }]
@@ -246,14 +248,22 @@ class Docs::Block < ApplicationRecord
     BrickdocSchema.subscriptions.trigger(:newPatch, { doc_id: id }, payload)
   end
 
-  def soft_destroy
+  def soft_delete!
+    raise 'already_soft_delete' unless deleted_at.nil?
     update!(deleted_at: Time.current)
-  end
-
-  def delete_pages!
-    descendants.pageable.update_all(deleted_at: Time.current)
     patch_seq.del
     self.class.broadcast(id, { state: "DELETED" })
+  end
+
+  def hard_delete!
+    raise 'not_deleted' if deleted_at.nil?
+    raise 'already_hard_delete' unless deleted_permanently_at.nil?
+    update!(deleted_permanently_at: Time.current)
+  end
+
+  def restore!
+    raise 'already_restored' if deleted_at.nil?
+    update!(deleted_at: nil)
   end
 
   def check_target_descendants!(target_parent_id)
@@ -305,27 +315,24 @@ class Docs::Block < ApplicationRecord
   # @return Docs::Block[]
   #
   # See https://stackoverflow.com/a/30924648
-  def cte(type, opts = {})
-    opts = {
-      columns: self.class.column_names, # select columns array
-      where: nil,
-      unscoped: false
-    }.merge(opts)
+  def cte(type, unscoped: false)
+    select_columns = [:id, :parent_id, :deleted_at]
     hierarchy = self.class.arel_table
     recursive_table = Arel::Table.new(:recursive)
     select_manager = Arel::SelectManager.new(ActiveRecord::Base).freeze
 
     non_recursive_term = select_manager.dup.tap do |m|
       m.from self.class.table_name
-      m.project(*opts[:columns])
+      m.project(*select_columns)
       m.where hierarchy[:id].eq(id)
     end
 
     recursive_term = select_manager.dup.tap do |m|
       m.from recursive_table
-      m.project(*(opts[:columns].map { |col| hierarchy[col] }))
+      m.project(*(select_columns.map { |col| hierarchy[col] }))
       m.join hierarchy
-      m.where(Arel.sql(opts[:where])) if opts[:where].present?
+      m.where(hierarchy[:deleted_permanently_at].eq(nil)) if has_attribute?(:deleted_permanently_at)
+      m.where(hierarchy[:deleted_at].eq(nil)) unless unscoped
       case type
       when :descendants
         m.on recursive_table[:id].eq(hierarchy[:parent_id])
@@ -347,38 +354,27 @@ class Docs::Block < ApplicationRecord
 
     ids = ActiveRecord::Base.connection.execute(manager.to_sql).field_values('id')
     ## TODO save this query!
-    if opts[:unscoped]
-      Docs::Block.unscoped.where(id: ids)
-    else
-      Docs::Block.where(id: ids)
-    end
-  end
-
-  def ancestors(opts = {})
-    cte(:ancestors, opts)
+    Docs::Block.where(id: ids)
   end
 
   def descendants_raw(opts = {})
-    cte(:descendants, opts)
+    cte(:descendants, **opts)
+  end
+
+  def ancestors_raw(opts = {})
+    cte(:ancestors, **opts)
   end
 
   def descendants(opts = {})
-    ## TODO save root_id
     descendants_raw(opts).where(root_id: id)
   end
 
-  def descendants_cache(opts = {})
-    data = Current.descendants.to_h[id]
-    return data unless data.nil?
-
-    data = descendants(opts).to_a
-    Current.descendants = Current.descendants.to_h.merge(id => data)
-    data
+  def ancestors(opts = {})
+    ancestors_raw(opts).where(root_id: root_id)
   end
 
   def clear_cache
     Current.paths = Current.paths.to_h.slice!(id)
-    Current.descendants = Current.descendants.to_h.slice!(id)
   end
 
   def paths_cache
@@ -390,10 +386,37 @@ class Docs::Block < ApplicationRecord
     data
   end
 
+  def path_object
+    { id: id, text: text }
+  end
+
+  def parent_path_array
+    return [path_object] if parent_id.nil?
+
+    preload = ancestors_raw(unscoped: true).all.index_by(&:id)
+    result = [path_object]
+    cursor = parent_id
+
+    loop do
+      try_block = preload[cursor]
+      break if try_block.nil?
+
+      result << try_block.path_object
+      cursor = try_block.parent_id
+    end
+
+    result.reverse
+  end
+
+  def path_array
+    return [] if parent_id.nil?
+    parent_path_array_value || parent.parent_path_array
+  end
+
   def path_map
     result = {}
     parent_ids = [parent_id]
-    data = descendants_cache
+    data = descendants
 
     loop do
       this_level = data.select { |b| b.parent_id.in?(parent_ids) }
@@ -417,7 +440,7 @@ class Docs::Block < ApplicationRecord
   end
 
   def self.make_tree(parent, blocks = nil)
-    blocks ||= parent.descendants_cache
+    blocks ||= parent.descendants
     children = blocks.select do |blk|
       blk.parent_id == parent.id
     end.sort_by(&:sort).map do |blk|
@@ -471,7 +494,6 @@ class Docs::Block < ApplicationRecord
   end
 
   def children_version_meta
-    # descendants(columns: %w[id history_version parent_id]).pluck(:id, :history_version).to_h
-    descendants_cache.pluck(:id, :history_version).to_h
+    descendants.pluck(:id, :history_version).to_h
   end
 end
