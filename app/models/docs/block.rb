@@ -14,14 +14,14 @@
 #  meta(metadata)           :jsonb            not null
 #  page                     :boolean          default(FALSE), not null
 #  snapshot_version         :bigint           default(0), not null
-#  sort                     :bigint           default(0)
+#  sort                     :bigint           default(0), not null
 #  text(node text)          :text             default("")
 #  type                     :string(32)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #  parent_id                :uuid
-#  pod_id                   :bigint
-#  root_id                  :uuid
+#  pod_id                   :bigint           not null
+#  root_id                  :uuid             not null
 #
 # Indexes
 #

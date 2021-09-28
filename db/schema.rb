@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_27_024837) do
+ActiveRecord::Schema.define(version: 2021_09_28_033615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -100,19 +100,19 @@ ActiveRecord::Schema.define(version: 2021_09_27_024837) do
   end
 
   create_table "docs_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "pod_id"
+    t.bigint "pod_id", null: false
     t.string "type", limit: 32
     t.uuid "parent_id"
     t.jsonb "meta", default: {}, null: false, comment: "metadata"
     t.jsonb "data", null: false, comment: "data props"
     t.bigint "history_version", default: 0, null: false
     t.bigint "snapshot_version", default: 0, null: false
-    t.bigint "sort", default: 0
+    t.bigint "sort", default: 0, null: false
     t.bigint "collaborators", default: [], null: false, array: true
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.uuid "root_id"
+    t.uuid "root_id", null: false
     t.jsonb "content", default: [], comment: "node content"
     t.text "text", default: "", comment: "node text"
     t.boolean "page", default: false, null: false
