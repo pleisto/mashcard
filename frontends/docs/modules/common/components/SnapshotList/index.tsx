@@ -91,8 +91,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
               className={styles.text_button}
               onClick={() => {
                 setCurrentVersion(item.snapshotVersion)
-              }}
-            >
+              }}>
               <span style={{ color }}>{item.name}</span>
               <br />
               <span style={{ float: 'left', fontSize: 'small', color }}>{item.relativeTime}</span>
@@ -105,7 +104,13 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   return skelecton(
     <div className={styles.page}>
-      <DocumentPage webid={webid} docid={blockId} editable={false} snapshotVersion={currentVersion ?? firstVersion} onCommit={onCommit} />
+      <DocumentPage
+        webid={webid}
+        docid={blockId}
+        defaultEditable={false}
+        snapshotVersion={currentVersion ?? firstVersion}
+        onCommit={onCommit}
+      />
     </div>,
     snapshotData,
     !currentVersion || confirmLoading
