@@ -4,7 +4,6 @@ import { EditorOptions as TiptapEditorOptions } from '@tiptap/core'
 import {
   BasicRichtextExtension,
   SlashCommandsExtension,
-  BlockCommandsExtension,
   SyncExtension,
   BulletListExtension,
   PlaceholderExtension,
@@ -64,7 +63,6 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
         linkBlock: { fetchWebsiteMeta }
       }),
       EventHandlerExtension,
-      BlockCommandsExtension,
       SlashCommandsExtension,
       PlaceholderExtension,
       BulletListExtension,
