@@ -482,7 +482,7 @@ const TableRef = React.forwardRef(InternalTable as React.ForwardRefRenderFunctio
 
 type InternalTableType = typeof TableRef
 
-interface TableInterface extends InternalTableType {
+export interface TableInterface extends InternalTableType {
   SELECTION_ALL: 'SELECT_ALL'
   SELECTION_INVERT: 'SELECT_INVERT'
   SELECTION_NONE: 'SELECT_NONE'

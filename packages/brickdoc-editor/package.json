@@ -44,7 +44,7 @@
     "dayjs": "^1.10.7",
     "re-resizable": "^6.9.1",
     "react-medium-image-zoom": "^4.3.5",
-    "react-pdf": "^5.4.0",
+    "react-pdf": "^5.3.2",
     "react-table": "^7.7.0",
     "tippy.js": "^6.3.1"
   },

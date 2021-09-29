@@ -30,7 +30,7 @@ RSpec.describe Docs::Block, type: :model do
     end
 
     it 'create' do
-      params = attrs.merge({ page: true, pod: pod, collaborators: [pod.owner.id] })
+      params = attrs.merge({ page: true, pod: pod, id: SecureRandom.uuid, collaborators: [pod.owner.id] })
       block = Docs::Block.create!(params)
 
       expect(block.histories.count).to eq(1)
