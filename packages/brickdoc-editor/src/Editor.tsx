@@ -5,7 +5,7 @@ import {
   BasicRichtextExtension,
   SlashCommandsExtension,
   SyncExtension,
-  BulletListExtension,
+  brickListExtension,
   PlaceholderExtension,
   SyncExtensionOptions,
   TableExtensionOptions,
@@ -65,7 +65,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       EventHandlerExtension,
       SlashCommandsExtension,
       PlaceholderExtension,
-      BulletListExtension,
+      brickListExtension,
       SyncExtension.configure({ onSave })
     ],
     autofocus: true,

@@ -60,7 +60,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     desc: 'Create a bulleted list',
     icon: <Icon.ListUnordered className="menu-item-icon" />,
     command: ({ editor, range }) => {
-      editor.chain().focus().deleteRange(range).toggleBulletList().run()
+      editor.chain().focus().deleteRange(range).wrapInBrickList('bulletList').run()
     }
   },
   {
@@ -69,7 +69,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     desc: 'Create a list with numbering',
     icon: <Icon.ListOrdered className="menu-item-icon" />,
     command: ({ editor, range }) => {
-      editor.chain().focus().deleteRange(range).toggleOrderedList().run()
+      editor.chain().focus().deleteRange(range).wrapInBrickList('orderedList').run()
     }
   },
   {

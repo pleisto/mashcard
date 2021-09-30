@@ -12,7 +12,8 @@ interface BubbleMenuProps {
 }
 
 export interface StyleMeta {
-  value: 'bold' | 'italic' | 'strike' | 'heading' | 'bulletList' | 'orderedList' | 'underline' | 'fontColor' | 'link'
+  value?: 'bold' | 'italic' | 'strike' | 'heading' | 'underline' | 'fontColor' | 'link'
+  listType?: 'bulletList' | 'orderedList'
   label: React.ReactNode
   desc: string
   shortcutDesc?: string
@@ -80,12 +81,12 @@ const HeadingStyle: StyleMeta[] = [
 
 const ListStyle: StyleMeta[] = [
   {
-    value: 'bulletList',
+    listType: 'bulletList',
     label: <Icon.ListUnordered />,
     desc: 'Bullet-list'
   },
   {
-    value: 'orderedList',
+    listType: 'orderedList',
     label: <Icon.ListOrdered />,
     desc: 'Ordered-list'
   }

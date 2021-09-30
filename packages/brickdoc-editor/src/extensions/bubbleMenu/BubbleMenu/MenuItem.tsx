@@ -3,10 +3,19 @@ import cx from 'classnames'
 import { Editor } from '@tiptap/core'
 import { StyleMeta } from './BubbleMenu'
 import { Button, Tooltip } from '@brickdoc/design-system'
+import { isListType } from '../../brickList'
 
 export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ editor, style }) => {
   // TODO: Need a better solution to avoid calculate frequently
-  const activeClass = (style: StyleMeta): string => (editor.isActive(style.value, style.option) ? 'active' : '')
+  const activeClass = (style: StyleMeta): string => {
+    let isActive = false
+    if (style.value) {
+      isActive = editor.isActive(style.value, style.option)
+    } else if (style.listType) {
+      isActive = isListType(style.listType)(editor)
+    }
+    return isActive ? 'active' : ''
+  }
   const [tooltipVisible, setTooltipVisible] = React.useState(false)
   const handleTooltipVisibleChange = (visible: boolean): void => setTooltipVisible(visible)
 
@@ -24,14 +33,17 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
       case 'heading':
         editor.chain().focus().toggleHeading({ level: style.option.level }).run()
         break
+      case 'underline':
+        editor.chain().focus().toggleUnderline().run()
+        break
+    }
+
+    switch (style.listType) {
       case 'bulletList':
         editor.chain().focus().toggleBulletList().run()
         break
       case 'orderedList':
         editor.chain().focus().toggleOrderedList().run()
-        break
-      case 'underline':
-        editor.chain().focus().toggleUnderline().run()
         break
     }
 
