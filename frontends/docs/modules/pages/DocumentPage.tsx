@@ -59,7 +59,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
     return createFileUrlGetter('cover')(editor.state.doc)
   }
 
-  const [documentEditable, setDocumentEditable] = React.useState(false)
+  // if there is no doc id, document will not have deleted status
+  const [documentEditable, setDocumentEditable] = React.useState(!docid)
   const [deleted, setDeleted] = React.useState(false)
 
   const editor = useEditor({
@@ -82,7 +83,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
 
       if (editor) {
         const nextEditable = editable && !deleted
-        if (editor?.options.editable !== nextEditable) {
+        if (editor.options.editable !== nextEditable) {
           editor.options.editable = nextEditable
           editor.view.update(editor.view.props)
           setDocumentEditable(nextEditable)

@@ -3,7 +3,8 @@
 exports[`LinkBlock matches correct snapshot 1`] = `
 <div
   data-node-view-wrapper=""
-  style="white-space: normal;"
+  editor="[object Object]"
+  style="pointer-events: none; white-space: normal;"
 >
   <button
     class="brk-btn brickdoc-link-block-link"

@@ -15,6 +15,7 @@ interface MockEditor {
   toggleOrderedList: jest.Mock
   toggleUnderline: jest.Mock
   setFontColor: jest.Mock
+  state: any
 }
 
 function mockEditor(): MockEditor {
@@ -30,7 +31,24 @@ function mockEditor(): MockEditor {
     toggleBulletList: jest.fn(),
     toggleOrderedList: jest.fn(),
     toggleUnderline: jest.fn(),
-    setFontColor: jest.fn()
+    setFontColor: jest.fn(),
+    state: {
+      schema: {
+        nodes: new Proxy(
+          {},
+          {
+            get(target, prop) {
+              return prop
+            }
+          }
+        )
+      },
+      selection: {
+        $from: {
+          depth: 0
+        }
+      }
+    }
   }
 
   editor.toggleHeading = editor.toggleHeading.mockReturnValue(editor)

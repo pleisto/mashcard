@@ -84,8 +84,6 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
   const fileUrl = extension.options.getAttachmentUrl(node) || attachmentUrl
   const linkUrl = node.attrs.link?.key
 
-  console.log(fileUrl, linkUrl)
-
   if (fileUrl) {
     const { name, size } = node.attrs.attachment
     return (
@@ -131,7 +129,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
-                  }}>
+                  }}
+                >
                   <Icon.Delete />
                   Delete
                 </Menu.Item>
@@ -140,7 +139,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   Copy link
                 </Menu.Item>
               </Menu>
-            }>
+            }
+          >
             <Button type="text" className="link-block-menu-button" onClick={event => event.stopPropagation()}>
               <Icon.More className="link-block-menu-icon" />
             </Button>
@@ -163,7 +163,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             importSources={IMPORT_SOURCES}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-link-block-placeholder">
           <Icon.BlockLevelLink className="link-block-icon" />
           <div className="link-block-hint">Embed anything</div>
