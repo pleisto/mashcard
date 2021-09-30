@@ -1,4 +1,3 @@
-import React from 'react'
 import { Node } from 'prosemirror-model'
 import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
@@ -100,23 +99,20 @@ export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONCo
     .sort((a, b) => Number(a.sort) - Number(b.sort))
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
-export function useSyncProvider(): [(doc: Node) => Promise<void>, boolean] {
+export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc: Node) => Promise<void>] {
   const [blockSyncBatch] = useBlockSyncBatchMutation()
-  const [committing, setCommitting] = React.useState(false)
   return [
     async (doc: Node) => {
-      setCommitting(true)
+      setCommitting?.(true)
       const blocks = nodeToBlock(doc, 0)
       const input: BlockSyncBatchInput = { blocks, rootId: doc.attrs.uuid, operatorId: globalThis.brickdocContext.uuid }
       try {
         await blockSyncBatch({ variables: { input } })
       } catch (error) {
-        setCommitting(false)
+        setCommitting?.(false)
         throw error
       }
-
-      setCommitting(false)
-    },
-    committing
+      setCommitting?.(false)
+    }
   ]
 }

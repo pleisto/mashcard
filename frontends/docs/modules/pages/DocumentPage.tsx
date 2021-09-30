@@ -19,9 +19,18 @@ interface DocumentPageProps {
   snapshotVersion: number
   editable: boolean
   onCommit: (doc: Node) => Promise<void>
+  setCommitting?: (value: boolean) => void
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapshotVersion, editable, onCommit }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({
+  webid,
+  docid,
+  snapshotVersion,
+  defaultEditable = true,
+  editable,  
+  onCommit,
+  setCommitting
+}) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     variables: { rootId: docid as string, snapshotVersion }
@@ -62,7 +71,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
 
   const editor = useEditor({
     onSave: onCommit,
-    useDatabaseRows,
+    useDatabaseRows: useDatabaseRows(setCommitting),
     prepareFileUpload,
     fetchUnsplashImages,
     fetchWebsiteMeta,
