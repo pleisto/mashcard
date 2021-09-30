@@ -5,7 +5,7 @@ describe('document meta', () => {
 
   it('basic sync', () => {
     cy.visit('/')
-    cy.findByText('+ Add Pages').click()
+    cy.findByText('Add Pages').click()
     cy.url().should('match', /\/p\//)
     cy.interceptGQL('blockSyncBatch', ({ variables }) => variables?.input.blocks.some(block => block.meta.title === 'Title'))
     cy.findAllByPlaceholderText('Untitled').focus().type('Title')

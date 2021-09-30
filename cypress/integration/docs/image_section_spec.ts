@@ -55,7 +55,7 @@ describe('imageSection', () => {
 
   it('should show a correctly sized skeleton when loading', () => {
     cy.visit('/')
-    cy.findByText('+ Add Pages').click()
+    cy.findByText('Add Pages').click()
     cy.get('[contenteditable]').type('/image')
     cy.get('button.slash-menu-item:first').click()
     cy.findByText('Add an image').click()

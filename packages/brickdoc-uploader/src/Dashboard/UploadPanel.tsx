@@ -19,6 +19,8 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
         signedId: uploadMeta.current.signedId,
         viewUrl: uploadMeta.current.viewUrl,
         meta: {
+          name: file.name,
+          size: file.size,
           source: 'origin'
         }
       })
@@ -98,6 +100,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
       <button onClick={handleChooseFile} className="dashboard-panel-button">
         {importSource.buttonText}
       </button>
+      <div className="dashboard-panel-hint">{importSource.buttonHint}</div>
     </div>
   )
 }

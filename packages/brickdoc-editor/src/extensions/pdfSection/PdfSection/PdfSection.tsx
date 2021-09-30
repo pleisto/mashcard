@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react'
 import { Resizable } from 're-resizable'
-// import cx from 'classnames'
 import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
 import { Button, Popover, Icon } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from '@brickdoc/uploader'
@@ -71,7 +70,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
   const isUploadCompleted = !!node.attrs.attachment.source && file
 
   if (node.attrs.attachment.key || isUploadCompleted) {
-    const url = extension.options.getPdfUrl?.(node) || file
+    const url = extension.options.getAttachmentUrl?.(node) || file
 
     return (
       <NodeViewWrapper>

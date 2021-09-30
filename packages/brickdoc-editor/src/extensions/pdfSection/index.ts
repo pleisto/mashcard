@@ -20,7 +20,7 @@ declare module '@tiptap/core' {
 
 export interface PdfSectionOptions {
   prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
-  getPdfUrl?: (node: ProsemirrorNode) => string | undefined
+  getAttachmentUrl?: (node: ProsemirrorNode) => string | undefined
 }
 
 export const PdfSectionExtension = Node.create<PdfSectionOptions>({

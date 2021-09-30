@@ -4,7 +4,7 @@ module Docs
     class BlockImage < BlockAttachment
       field :key, String, "key", null: true
       field :type, Enums::Blocktype, "type", null: false
-      field :source, Enums::Filesourcetype, "type", null: false
+      field :source, Enums::Filesourcetype, "type", null: true
       field :height, Int, "height", null: true
       field :width, Int, "width", null: true
       field :ratio, Float, 'aspect ratio', null: true

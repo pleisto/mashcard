@@ -70,6 +70,8 @@ export const queryChildrenBlocks = gql`
           key
           height
           width
+          name
+          size
         }
         cover {
           ... on BlockImage {

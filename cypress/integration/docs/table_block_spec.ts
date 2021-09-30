@@ -198,7 +198,7 @@ describe('tableBlock', () => {
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
       cy.findByText('Text').trigger('mouseover')
-      cy.findByText('Date range').click()
+      cy.findByText('Date range').click({ force: true })
       cy.get('.table-block-date-range-cell:last').click()
       cy.get('.brk-picker-cell-today').last().click()
       cy.get('.brk-picker-cell-today').last().click()

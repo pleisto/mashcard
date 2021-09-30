@@ -6,7 +6,7 @@ exports[`LinkBlock matches correct snapshot 1`] = `
   style="white-space: normal;"
 >
   <button
-    class="brk-btn brk-btn-text brickdoc-link-block"
+    class="brk-btn brickdoc-link-block-link"
     type="button"
   >
     <div

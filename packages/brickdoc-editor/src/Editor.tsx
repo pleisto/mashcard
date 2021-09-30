@@ -39,7 +39,7 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
   fetchUnsplashImages?: ImageSectionOptions['fetchUnsplashImages']
   fetchWebsiteMeta?: LinkBlockOptions['fetchWebsiteMeta']
   getImageUrl?: ImageSectionOptions['getImageUrl']
-  getPdfUrl?: PdfSectionOptions['getPdfUrl']
+  getAttachmentUrl?: PdfSectionOptions['getAttachmentUrl']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
@@ -49,7 +49,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     fetchUnsplashImages,
     fetchWebsiteMeta,
     getImageUrl,
-    getPdfUrl,
+    getAttachmentUrl,
     useDatabaseRows,
     editable,
     ...restOptions
@@ -58,9 +58,9 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     extensions: [
       BasicRichtextExtension.configure({
         imageSection: { prepareFileUpload, fetchUnsplashImages, getImageUrl },
-        pdfSection: { prepareFileUpload, getPdfUrl },
+        pdfSection: { prepareFileUpload, getAttachmentUrl },
         tableBlock: { useDatabaseRows },
-        linkBlock: { fetchWebsiteMeta }
+        linkBlock: { fetchWebsiteMeta, prepareFileUpload, getAttachmentUrl }
       }),
       EventHandlerExtension,
       SlashCommandsExtension,

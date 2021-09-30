@@ -61,12 +61,22 @@ type BlockAttachment {
   """
   url or blob key
   """
-  key: String!
+  key: String
 
   """
-  type
+  name
   """
-  source: Filesourcetype!
+  name: String
+
+  """
+  size
+  """
+  size: Int
+
+  """
+  source
+  """
+  source: Filesourcetype
 
   """
   type
@@ -297,14 +307,24 @@ type BlockImage {
   key: String
 
   """
+  name
+  """
+  name: String
+
+  """
   aspect ratio
   """
   ratio: Float
 
   """
+  size
+  """
+  size: Int
+
+  """
   type
   """
-  source: Filesourcetype!
+  source: Filesourcetype
 
   """
   type
@@ -386,12 +406,22 @@ type BlockLink {
   """
   key
   """
-  key: String!
+  key: String
 
   """
-  type
+  name
   """
-  source: Filesourcetype!
+  name: String
+
+  """
+  size
+  """
+  size: Int
+
+  """
+  source
+  """
+  source: Filesourcetype
 
   """
   title

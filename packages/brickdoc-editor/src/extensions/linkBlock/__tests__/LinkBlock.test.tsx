@@ -17,12 +17,14 @@ describe('LinkBlock', () => {
             title: 'brickdoc',
             description: 'desc',
             cover: 'cover'
-          }
+          },
+          attachment: {}
         }
       },
       extension: {
         options: {
-          prepareFileUpload: () => {}
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => ''
         }
       },
       updateAttributes: () => {}
@@ -35,8 +37,13 @@ describe('LinkBlock', () => {
   it('renders pending panel when no url', () => {
     const props: any = {
       editor: {},
-      node: { attrs: { link: {} } },
-      extension: {},
+      node: { attrs: { link: {}, attachment: {} } },
+      extension: {
+        options: {
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => ''
+        }
+      },
       updateAttributes: () => {}
     }
 
@@ -56,12 +63,14 @@ describe('LinkBlock', () => {
             title: 'brickdoc',
             description: 'desc',
             cover: 'cover'
-          }
+          },
+          attachment: {}
         }
       },
       extension: {
         options: {
-          prepareFileUpload: () => {}
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => ''
         }
       },
       updateAttributes: () => {}
@@ -73,11 +82,45 @@ describe('LinkBlock', () => {
     expect(screen.getByText(props.node.attrs.link.description)).toBeInTheDocument()
   })
 
+  it('renders attachment file', () => {
+    const props: any = {
+      editor: {},
+      node: {
+        attrs: {
+          link: {},
+          attachment: {
+            key: url,
+            source: 'ORIGIN',
+            name: 'file.ext',
+            size: 1000
+          }
+        }
+      },
+      extension: {
+        options: {
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => 'url'
+        }
+      },
+      updateAttributes: () => {}
+    }
+
+    render(<LinkBlock {...props} />)
+
+    expect(screen.getByText(props.node.attrs.attachment.name)).toBeInTheDocument()
+    expect(screen.getByText(`${props.node.attrs.attachment.size} b`)).toBeInTheDocument()
+  })
+
   it('renders uploader dashboard when click add button', () => {
     const props: any = {
       editor: {},
-      node: { attrs: { link: {} } },
-      extension: {},
+      node: { attrs: { link: {}, attachment: {} } },
+      extension: {
+        options: {
+          prepareFileUpload: () => {},
+          getAttachmentUrl: () => ''
+        }
+      },
       updateAttributes: () => {}
     }
 

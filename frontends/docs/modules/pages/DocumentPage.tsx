@@ -30,7 +30,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
   const fetchWebsiteMeta = useFetchWebsiteMeta()
-  const createImageUrlGetter =
+  const createFileUrlGetter =
     (field: string) =>
     (node: Node): string | undefined => {
       if (node.attrs[field]?.source === Filesourcetype.External) {
@@ -43,21 +43,20 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
         return blob?.url
       }
     }
-  const getImageUrl = createImageUrlGetter('image')
-  const getPdfUrl = createImageUrlGetter('attachment')
+  const getImageUrl = createFileUrlGetter('image')
+  const getAttachmentUrl = createFileUrlGetter('attachment')
   const getDocIconUrl = (): string | undefined => {
     if (!editor || editor.isDestroyed) {
       return undefined
     }
-    return createImageUrlGetter('icon')(editor.state.doc)
+    return createFileUrlGetter('icon')(editor.state.doc)
   }
   const getDocCoverUrl = (): string | undefined => {
     if (!editor || editor.isDestroyed) {
       return undefined
     }
-    return createImageUrlGetter('cover')(editor.state.doc)
+    return createFileUrlGetter('cover')(editor.state.doc)
   }
-
   const editor = useEditor({
     onSave: onCommit,
     useDatabaseRows,
@@ -65,7 +64,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
     fetchUnsplashImages,
     fetchWebsiteMeta,
     getImageUrl,
-    getPdfUrl,
+    getAttachmentUrl,
     editable: defaultEditable
   })
 

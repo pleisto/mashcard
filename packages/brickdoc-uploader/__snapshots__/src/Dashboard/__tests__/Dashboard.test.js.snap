@@ -2056,7 +2056,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
       Button
     </button>
     <div
-      class="dashboard-link-panel-hint"
+      class="dashboard-panel-hint"
     >
       Button Hint
     </div>
@@ -2098,6 +2098,9 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
     >
       Button
     </button>
+    <div
+      class="dashboard-panel-hint"
+    />
   </div>
 </div>
 `;

@@ -32,7 +32,50 @@
   }
 }
 
-.brickdoc-link-block {
+.brickdoc .ProseMirror a.brickdoc-link-block-attachment {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  text-align: left;
+  padding: 12px 0 12px 19px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  color: #bfbcc6;
+  font-size: 18px;
+  border-bottom: none;
+
+  & .link-block-attachment-download-icon {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  & .link-block-attachment-content {
+    margin-left: 19px;
+
+    & .link-block-attachment-name {
+      font-size: 14px;
+      line-height: 20px;
+      color: #847e8e;
+    }
+
+    & .link-block-attachment-size {
+      font-size: 12px;
+      line-height: 16px;
+      color: #847e8e;
+      margin-top: 4px;
+    }
+  }
+}
+
+.brickdoc-link-block-link {
   position: relative;
   background: #f6f6f6;
   border-radius: 4px;

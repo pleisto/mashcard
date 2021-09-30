@@ -27,7 +27,7 @@ export const LinkPanel: React.FC<LinkPanelProps> = ({ importSource, pluginOption
       <button onClick={handleLinkSubmit} className="dashboard-panel-button">
         {importSource.buttonText}
       </button>
-      <div className="dashboard-link-panel-hint">{importSource.buttonHint}</div>
+      <div className="dashboard-panel-hint">{importSource.buttonHint}</div>
     </div>
   )
 }

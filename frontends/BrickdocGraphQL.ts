@@ -53,9 +53,13 @@ export type BlockAttachment = {
   /** height */
   height?: Maybe<Scalars['Int']>
   /** url or blob key */
-  key: Scalars['String']
-  /** type */
-  source: Filesourcetype
+  key?: Maybe<Scalars['String']>
+  /** name */
+  name?: Maybe<Scalars['String']>
+  /** size */
+  size?: Maybe<Scalars['Int']>
+  /** source */
+  source?: Maybe<Filesourcetype>
   /** type */
   type: Blocktype
   /** width */
@@ -186,10 +190,14 @@ export type BlockImage = {
   height?: Maybe<Scalars['Int']>
   /** key */
   key?: Maybe<Scalars['String']>
+  /** name */
+  name?: Maybe<Scalars['String']>
   /** aspect ratio */
   ratio?: Maybe<Scalars['Float']>
+  /** size */
+  size?: Maybe<Scalars['Int']>
   /** type */
-  source: Filesourcetype
+  source?: Maybe<Filesourcetype>
   /** type */
   type: Blocktype
   /** width */
@@ -227,9 +235,13 @@ export type BlockLink = {
   /** height */
   height?: Maybe<Scalars['Int']>
   /** key */
-  key: Scalars['String']
-  /** type */
-  source: Filesourcetype
+  key?: Maybe<Scalars['String']>
+  /** name */
+  name?: Maybe<Scalars['String']>
+  /** size */
+  size?: Maybe<Scalars['Int']>
+  /** source */
+  source?: Maybe<Filesourcetype>
   /** title */
   title?: Maybe<Scalars['String']>
   /** type */
@@ -1338,11 +1350,11 @@ export type GetPageBlocksQuery = {
         __typename?: 'BlockMeta'
         cover?: Maybe<
           | { __typename?: 'BlockColor'; type: Blocktype; color: string }
-          | { __typename?: 'BlockImage'; type: Blocktype; source: Filesourcetype; key?: Maybe<string> }
+          | { __typename?: 'BlockImage'; type: Blocktype; source?: Maybe<Filesourcetype>; key?: Maybe<string> }
         >
         icon?: Maybe<
           | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
-          | { __typename?: 'BlockImage'; type: Blocktype; source: Filesourcetype; key?: Maybe<string> }
+          | { __typename?: 'BlockImage'; type: Blocktype; source?: Maybe<Filesourcetype>; key?: Maybe<string> }
         >
       }
     }>
@@ -1551,7 +1563,7 @@ export type GetChildrenBlocksQuery = {
         image?: Maybe<{
           __typename?: 'BlockImage'
           type: Blocktype
-          source: Filesourcetype
+          source?: Maybe<Filesourcetype>
           key?: Maybe<string>
           height?: Maybe<number>
           width?: Maybe<number>
@@ -1560,8 +1572,8 @@ export type GetChildrenBlocksQuery = {
         attachment?: Maybe<{
           __typename?: 'BlockAttachment'
           type: Blocktype
-          source: Filesourcetype
-          key: string
+          source?: Maybe<Filesourcetype>
+          key?: Maybe<string>
           height?: Maybe<number>
           width?: Maybe<number>
         }>
@@ -1570,7 +1582,7 @@ export type GetChildrenBlocksQuery = {
           | {
               __typename?: 'BlockImage'
               type: Blocktype
-              source: Filesourcetype
+              source?: Maybe<Filesourcetype>
               key?: Maybe<string>
               height?: Maybe<number>
               width?: Maybe<number>
@@ -1581,7 +1593,7 @@ export type GetChildrenBlocksQuery = {
           | {
               __typename?: 'BlockImage'
               type: Blocktype
-              source: Filesourcetype
+              source?: Maybe<Filesourcetype>
               key?: Maybe<string>
               height?: Maybe<number>
               width?: Maybe<number>
@@ -1589,9 +1601,9 @@ export type GetChildrenBlocksQuery = {
         >
         link?: Maybe<{
           __typename?: 'BlockLink'
-          key: string
+          key?: Maybe<string>
           type: string
-          source: Filesourcetype
+          source?: Maybe<Filesourcetype>
           cover?: Maybe<string>
           description?: Maybe<string>
           title?: Maybe<string>
@@ -3083,6 +3095,8 @@ export const GetChildrenBlocksDocument = gql`
           key
           height
           width
+          name
+          size
         }
         cover {
           ... on BlockImage {

@@ -25,6 +25,8 @@ export interface UploadResultData {
   emoji?: EmojiMeta
   color?: string
   meta?: {
+    name?: string
+    size?: number
     source: 'origin' | 'external'
   }
 }

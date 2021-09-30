@@ -1,3 +1,5 @@
+import type { DashboardPluginOptions } from '@brickdoc/uploader'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { LinkBlock } from './LinkBlock'
@@ -22,13 +24,18 @@ export interface WebsiteMeta {
 }
 
 export interface LinkBlockOptions {
+  prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
   fetchWebsiteMeta: (url: string) => Promise<{ success: boolean; data: WebsiteMeta }>
+  getAttachmentUrl?: (node: ProsemirrorNode) => string | undefined
 }
 
 export const LinkBlockExtension = Node.create<LinkBlockOptions>({
   name: 'linkBlock',
 
   defaultOptions: {
+    prepareFileUpload: () => {
+      throw new Error('You need configure prepareFileUpload if you want to enable ImageSection')
+    },
     fetchWebsiteMeta() {
       throw new Error('You need configure fetchWebsiteMeta if you want to enable LinkBlock')
     }
@@ -42,10 +49,14 @@ export const LinkBlockExtension = Node.create<LinkBlockOptions>({
 
   addAttributes() {
     return {
-      ...this.parent?.(),
       link: {
         default: {
           type: 'LINK'
+        }
+      },
+      attachment: {
+        default: {
+          type: 'ATTACHMENT'
         }
       }
     }
