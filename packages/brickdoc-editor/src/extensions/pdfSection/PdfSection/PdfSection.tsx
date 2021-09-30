@@ -2,11 +2,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react'
 import { Resizable } from 're-resizable'
-import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
+import { NodeViewProps } from '@tiptap/react'
 import { Button, Popover, Icon } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from '@brickdoc/uploader'
-import './styles.less'
 import { PdfDocument } from './PdfDocument'
+import { BlockWrapper } from '../../BlockWrapper'
+import './styles.less'
 
 const MAX_WIDTH = 700
 const PDF_IMPORT_SOURCES: ImportSourceOption[] = [
@@ -32,7 +33,7 @@ export interface PdfSectionAttributes {
 }
 
 // TODO: handle pdf load on error
-export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
+export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
   const latestPdfAttributes = React.useRef<Partial<PdfSectionAttributes>>({})
   const updatePdfAttributes = (newAttributes: Partial<PdfSectionAttributes>): void => {
     latestPdfAttributes.current = {
@@ -73,7 +74,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
     const url = extension.options.getAttachmentUrl?.(node) || file
 
     return (
-      <NodeViewWrapper>
+      <BlockWrapper editor={editor}>
         <div role="dialog" className="brickdoc-block-pdf-section-container">
           <Resizable
             className="pdf-section-control-panel"
@@ -139,21 +140,20 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
                 width: Math.min(Number(node.attrs.attachment.width) + d.width, MAX_WIDTH),
                 height: Number(node.attrs.attachment.height) + d.height
               })
-            }}
-          >
+            }}>
             <div className="pdf-section-menu-button">
               <Icon.More className="pdf-section-menu-icon" />
             </div>
             <PdfDocument file={url} scale={Number(node.attrs.attachment.width) / MAX_WIDTH} />
           </Resizable>
         </div>
-      </NodeViewWrapper>
+      </BlockWrapper>
     )
   }
 
   if (file) {
     return (
-      <NodeViewWrapper>
+      <BlockWrapper editor={editor}>
         <Button type="text" className="brickdoc-block-pdf-section">
           <Icon.FilePdf className="pdf-section-icon" />
           <div className="pdf-section-content">
@@ -163,12 +163,12 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
             </div>
           </div>
         </Button>
-      </NodeViewWrapper>
+      </BlockWrapper>
     )
   }
 
   return (
-    <NodeViewWrapper>
+    <BlockWrapper editor={editor}>
       <Popover
         overlayClassName="brickdoc-block-pdf-section-popover"
         trigger="click"
@@ -183,13 +183,12 @@ export const PdfSection: React.FC<NodeViewProps> = ({ node, extension, updateAtt
             onFileLoaded={onFileLoaded}
             importSources={PDF_IMPORT_SOURCES}
           />
-        }
-      >
+        }>
         <Button type="text" className="brickdoc-block-pdf-section">
           <Icon.FilePdf className="pdf-section-icon" />
           <div className="pdf-section-hint">Embed a PDF</div>
         </Button>
       </Popover>
-    </NodeViewWrapper>
+    </BlockWrapper>
   )
 }

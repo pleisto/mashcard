@@ -82,6 +82,10 @@ export class BubbleMenuView {
     const { doc, selection } = state
     const isSame = oldState?.doc.eq(doc) && oldState.selection.eq(selection)
 
+    if (!this.editor.isEditable) {
+      return
+    }
+
     if (composing || isSame) {
       return
     }

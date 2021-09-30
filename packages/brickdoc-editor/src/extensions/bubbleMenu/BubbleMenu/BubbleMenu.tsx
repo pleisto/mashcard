@@ -93,7 +93,7 @@ const ListStyle: StyleMeta[] = [
 ]
 
 export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
-  if (!editor || !editor.isEditable) {
+  if (!editor) {
     return null
   }
 

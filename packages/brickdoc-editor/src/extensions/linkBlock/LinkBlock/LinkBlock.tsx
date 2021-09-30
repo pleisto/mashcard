@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react'
-import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
+import { NodeViewProps } from '@tiptap/react'
 import { Button, Popover, Icon, Menu } from '@brickdoc/design-system'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
+import { WebsiteMeta } from '..'
+import { BlockWrapper } from '../../BlockWrapper'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.css'
-import { WebsiteMeta } from '..'
 
 const IMPORT_SOURCES: ImportSourceOption[] = [
   {
@@ -88,7 +89,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
   if (fileUrl) {
     const { name, size } = node.attrs.attachment
     return (
-      <NodeViewWrapper>
+      <BlockWrapper editor={editor}>
         <a href={fileUrl} className="brickdoc-link-block-attachment" download={true}>
           <Icon.File />
           <div className="link-block-attachment-content">
@@ -99,7 +100,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             <Icon.Download />
           </div>
         </a>
-      </NodeViewWrapper>
+      </BlockWrapper>
     )
   }
 
@@ -114,7 +115,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
       void navigator.clipboard.writeText(linkUrl)
     }
     return (
-      <NodeViewWrapper>
+      <BlockWrapper editor={editor}>
         <Button className="brickdoc-link-block-link" onClick={() => window.open(linkUrl, '_blank')}>
           {cover && <div className="link-block-cover" style={{ backgroundImage: `url(${cover})` }} />}
           <div className="link-block-content">
@@ -145,12 +146,12 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             </Button>
           </Popover>
         </Button>
-      </NodeViewWrapper>
+      </BlockWrapper>
     )
   }
 
   return (
-    <NodeViewWrapper>
+    <BlockWrapper editor={editor}>
       <Popover
         overlayClassName="brickdoc-link-block-popover"
         trigger="click"
@@ -168,6 +169,6 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
           <div className="link-block-hint">Embed anything</div>
         </Button>
       </Popover>
-    </NodeViewWrapper>
+    </BlockWrapper>
   )
 }

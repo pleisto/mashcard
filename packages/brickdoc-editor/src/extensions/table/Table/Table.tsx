@@ -1,8 +1,9 @@
 import React from 'react'
 import cx from 'classnames'
-import { NodeViewProps, NodeViewWrapper } from '@tiptap/react'
+import { NodeViewProps } from '@tiptap/react'
 import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps, usePagination } from 'react-table'
 import { Modal, Pagination } from '@brickdoc/design-system'
+import { BlockWrapper } from '../../BlockWrapper'
 import { TableExtensionOptions } from '../../table'
 import { ColumnMenu } from './ColumnMenu'
 import { useColumns } from './useColumns'
@@ -34,7 +35,7 @@ const defaultColumnConfig = {
   Cell
 }
 
-export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
+export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
   const parentId: string = node.attrs.uuid
   const prevData = node.attrs.data || {}
 
@@ -135,14 +136,14 @@ export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttribut
   )
 
   return (
-    <NodeViewWrapper
+    <BlockWrapper
+      editor={editor}
       className="table-block-node-view-wrapper"
       ref={(container: HTMLDivElement) => {
         // TODO: need a better way to add this class
         container?.parentElement?.classList.add('table-block-react-renderer')
         container?.classList.add('table-block-node-view-wrapper')
-      }}
-    >
+      }}>
       {contextHolder}
       {fetched.current && (
         <TableToolbar
@@ -189,8 +190,7 @@ export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttribut
                         columnType={column.columnType}
                         onColumnNameChange={e => updateColumnName(e.target.value, column.parent?.id ?? '', column.id)}
                         onColumnTypeChange={type => updateColumnType(type, column.parent?.id ?? '', column.id)}
-                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}
-                      >
+                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}>
                         {Header}
                       </ColumnMenu>
                     )
@@ -235,6 +235,6 @@ export const Table: React.FC<NodeViewProps> = ({ node, extension, updateAttribut
           </div>
         </div>
       </div>
-    </NodeViewWrapper>
+    </BlockWrapper>
   )
 }

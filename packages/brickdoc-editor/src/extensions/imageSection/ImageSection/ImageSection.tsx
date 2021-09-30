@@ -3,10 +3,11 @@
 import * as React from 'react'
 import { Resizable } from 're-resizable'
 import cx from 'classnames'
-import { NodeViewWrapper, NodeViewProps } from '@tiptap/react'
+import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { Button, Popover, Icon, Skeleton } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload } from '@brickdoc/uploader'
+import { BlockWrapper } from '../../BlockWrapper'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 
@@ -37,7 +38,7 @@ export interface ImageSectionAttributes {
 }
 
 // TODO: handle image load on error
-export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateAttributes }) => {
+export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
   const [file, setFile] = React.useState<string>()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
   const updateImageAttributes = (newAttributes: Partial<ImageSectionAttributes>): void => {
@@ -88,7 +89,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
   // upload default file
   React.useEffect(() => {
     if (!node.attrs.defaultFile) return
-    imperativeUpload(node.attrs.defaultFile, {
+    void imperativeUpload(node.attrs.defaultFile, {
       prepareFileUpload: extension.options.prepareFileUpload,
       blockId: node.attrs.uuid,
       fileType: 'image',
@@ -102,7 +103,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
     const url = extension.options.getImageUrl?.(node) || file
 
     return (
-      <NodeViewWrapper>
+      <BlockWrapper editor={editor}>
         <div role="cell" className="brickdoc-block-image-section-container">
           <Resizable
             lockAspectRatio={true}
@@ -170,12 +171,12 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
             <button className="image-section-zoom-in-button" onDoubleClick={previewImage} />
           </Resizable>
         </div>
-      </NodeViewWrapper>
+      </BlockWrapper>
     )
   }
 
   return (
-    <NodeViewWrapper>
+    <BlockWrapper editor={editor}>
       <Popover
         overlayClassName="brickdoc-block-image-section-popover"
         trigger="click"
@@ -196,6 +197,6 @@ export const ImageSection: React.FC<NodeViewProps> = ({ node, extension, updateA
           <div className="image-section-hint">Add an image</div>
         </Button>
       </Popover>
-    </NodeViewWrapper>
+    </BlockWrapper>
   )
 }

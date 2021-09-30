@@ -22,15 +22,7 @@ interface DocumentPageProps {
   setCommitting?: (value: boolean) => void
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({
-  webid,
-  docid,
-  snapshotVersion,
-  defaultEditable = true,
-  editable,  
-  onCommit,
-  setCommitting
-}) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapshotVersion, editable, onCommit, setCommitting }) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     variables: { rootId: docid as string, snapshotVersion }
@@ -67,7 +59,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
     return createFileUrlGetter('cover')(editor.state.doc)
   }
 
-  const [isDeleted, setIsDeleted] = React.useState<boolean | undefined>(undefined)
+  const [documentEditable, setDocumentEditable] = React.useState(false)
+  const [deleted, setDeleted] = React.useState(false)
 
   const editor = useEditor({
     onSave: onCommit,
@@ -77,7 +70,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
     fetchWebsiteMeta,
     getImageUrl,
     getAttachmentUrl,
-    editable: editable && !isDeleted
+    editable: documentEditable
   })
 
   React.useEffect(() => {
@@ -85,11 +78,15 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
 
     if (block) {
       const deleted = !!block.deletedAt
-      setIsDeleted(deleted)
+      setDeleted(deleted)
 
       if (editor) {
-        editor.options.editable = editable && !deleted
-        editor.view.update(editor.view.props)
+        const nextEditable = editable && !deleted
+        if (editor?.options.editable !== nextEditable) {
+          editor.options.editable = nextEditable
+          editor.view.update(editor.view.props)
+          setDocumentEditable(nextEditable)
+        }
       }
     }
   }, [data?.childrenBlocks, docid, editor, editable])
@@ -141,13 +138,13 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
       getDocCoverUrl={getDocCoverUrl}
       prepareFileUpload={prepareFileUpload}
       fetchUnsplashImages={fetchUnsplashImages}
-      editable={editable}
+      editable={documentEditable}
     />
   )
 
   const PageElement = (
     <>
-      {docid && isDeleted && <TrashPrompt webid={webid} docid={docid} />}
+      {docid && deleted && <TrashPrompt webid={webid} docid={docid} />}
       <div className={styles.page}>
         {DocumentTitleElement}
         <EditorContent editor={editor} />
