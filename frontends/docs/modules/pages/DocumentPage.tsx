@@ -17,11 +17,11 @@ interface DocumentPageProps {
   docid: string | undefined
   webid: string
   snapshotVersion: number
-  defaultEditable?: boolean
+  editable: boolean
   onCommit: (doc: Node) => Promise<void>
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapshotVersion, defaultEditable = true, onCommit }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapshotVersion, editable, onCommit }) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     variables: { rootId: docid as string, snapshotVersion }
@@ -57,6 +57,9 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
     }
     return createFileUrlGetter('cover')(editor.state.doc)
   }
+
+  const [isDeleted, setIsDeleted] = React.useState<boolean | undefined>(undefined)
+
   const editor = useEditor({
     onSave: onCommit,
     useDatabaseRows,
@@ -65,24 +68,22 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
     fetchWebsiteMeta,
     getImageUrl,
     getAttachmentUrl,
-    editable: defaultEditable
+    editable: editable && !isDeleted
   })
 
-  const [editable, setEditable] = React.useState(defaultEditable)
+  React.useEffect(() => {
+    const block = data?.childrenBlocks?.find(block => block.id === docid)
 
-  const restorePrompt = React.useRef(<></>)
-  // NOTE Set `editable` flag to `false` and add `restore` prompt if root block is deleted.
-  if (docid && editable && data?.childrenBlocks?.length) {
-    const root = data.childrenBlocks.find(block => block.id === docid)
-    if (root?.deletedAt) {
-      restorePrompt.current = <TrashPrompt webid={webid} docid={docid} />
+    if (block) {
+      const deleted = !!block.deletedAt
+      setIsDeleted(deleted)
+
       if (editor) {
-        editor.options.editable = false
+        editor.options.editable = editable && !deleted
         editor.view.update(editor.view.props)
       }
-      setEditable(false)
     }
-  }
+  }, [data?.childrenBlocks, docid, editor, editable])
 
   const createDocAttrsUpdater =
     (field: string) =>
@@ -137,7 +138,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
 
   const PageElement = (
     <>
-      {restorePrompt.current}
+      {docid && isDeleted && <TrashPrompt webid={webid} docid={docid} />}
       <div className={styles.page}>
         {DocumentTitleElement}
         <EditorContent editor={editor} />

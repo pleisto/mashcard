@@ -11,7 +11,7 @@ export const DocumentContent: React.FC = () => {
   return (
     <SidebarLayoutPage webid={webid} docid={docid}>
       <DocumentTopBar docid={docid} webid={webid} saving={committing} />
-      <DocumentPage webid={webid} docid={docid} snapshotVersion={Number(snapshotVersion ?? '0')} onCommit={onCommit} />
+      <DocumentPage webid={webid} docid={docid} snapshotVersion={Number(snapshotVersion ?? '0')} onCommit={onCommit} editable={true} />
     </SidebarLayoutPage>
   )
 }
