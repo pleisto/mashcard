@@ -3,7 +3,7 @@ import { setContext } from '@apollo/client/link/context'
 import { getMainDefinition } from '@apollo/client/utilities'
 import * as ActionCable from '@rails/actioncable'
 import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
-import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/inMemoryCache'
+import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/types'
 
 const securityLink = setContext((_, { headers }) => {
   return {

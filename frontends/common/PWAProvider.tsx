@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/client'
 import { Spin, ConfigProvider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
 import { apolloClient } from '@/common/apollo'
-import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/inMemoryCache'
+import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/types'
 
 export const BrickdocContext: React.Context<BrickdocContext> = React.createContext(globalThis.brickdocContext)
 
