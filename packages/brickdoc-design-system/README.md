@@ -59,3 +59,7 @@ const App = () => (
 ### 0.3.1
 
 - Sync of patches from Ant Design 4.17-alpha.4
+
+### 0.3.2
+
+- Sync of patches from Ant Design 4.17-alpha.5

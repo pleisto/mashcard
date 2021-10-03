@@ -1,12 +1,13 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Table, Space, Switch, Radio, Form } from '../'
+import { Space, Switch, Radio, Form } from '../'
+import Table, { TableProps } from './Table'
 import { Down as DownOutlined } from '../icon'
 import { TablePaginationPosition } from './interface'
 import { SizeType } from '../config-provider/SizeContext'
 export default {
   title: 'ReactComponents/Table',
-  component: Table,
+  component: Table as unknown as React.FunctionComponent<TableProps<object>>,
   parameters: {
     docs: {
       description: {

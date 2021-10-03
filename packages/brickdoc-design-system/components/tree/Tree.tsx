@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Drag as HolderOutlined } from '../icon'
 import RcTree, { TreeNode, TreeProps as RcTreeProps } from 'rc-tree'
 import classNames from 'classnames'
 import { DataNode, Key } from 'rc-tree/lib/interface'
@@ -92,7 +93,13 @@ export interface AntTreeNodeDropEvent {
 // [Legacy] Compatible for v3
 export type TreeNodeNormal = DataNode
 
-export interface TreeProps extends Omit<RcTreeProps, 'prefixCls' | 'showLine' | 'direction'> {
+type DraggableFn = (node: AntTreeNode) => boolean
+interface DraggableConfig {
+  icon?: React.ReactNode | false
+  nodeDraggable?: DraggableFn
+}
+
+export interface TreeProps extends Omit<RcTreeProps, 'prefixCls' | 'showLine' | 'direction' | 'draggable'> {
   showLine?: boolean | { showLeafIcon: boolean }
   className?: string
   /** 是否支持多选 */
@@ -126,7 +133,7 @@ export interface TreeProps extends Omit<RcTreeProps, 'prefixCls' | 'showLine' | 
   filterAntTreeNode?: (node: AntTreeNode) => boolean
   loadedKeys?: Key[]
   /** 设置节点可拖拽（IE>8） */
-  draggable?: ((node: DataNode) => boolean) | boolean
+  draggable?: DraggableFn | boolean | DraggableConfig
   style?: React.CSSProperties
   showIcon?: boolean
   icon?: ((nodeProps: AntdTreeNodeAttribute) => React.ReactNode) | React.ReactNode
@@ -143,19 +150,56 @@ export interface CompoundedComponent extends React.ForwardRefExoticComponent<Tre
 
 const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
   const { getPrefixCls, direction, virtual } = React.useContext(ConfigContext)
-  const { prefixCls: customizePrefixCls, className, showIcon, showLine, switcherIcon, blockNode, children, checkable, selectable } = props
+  const {
+    prefixCls: customizePrefixCls,
+    className,
+    showIcon,
+    showLine,
+    switcherIcon,
+    blockNode,
+    children,
+    checkable,
+    selectable,
+    draggable
+  } = props
   const prefixCls = getPrefixCls('tree', customizePrefixCls)
   const newProps = {
     ...props,
     showLine: Boolean(showLine),
     dropIndicatorRender
   }
+
+  const draggableConfig = React.useMemo(() => {
+    if (!draggable) {
+      return false
+    }
+
+    let mergedDraggable: DraggableConfig = {}
+    switch (typeof draggable) {
+      case 'function':
+        mergedDraggable.nodeDraggable = draggable
+        break
+
+      case 'object':
+        mergedDraggable = { ...draggable }
+        break
+
+      default:
+      // Do nothing
+    }
+
+    if (mergedDraggable.icon !== false) {
+      mergedDraggable.icon = mergedDraggable.icon || <HolderOutlined />
+    }
+
+    return mergedDraggable
+  }, [draggable])
   return (
     <RcTree
       itemHeight={20}
       ref={ref}
       virtual={virtual}
-      {...newProps}
+      {...(newProps as any)}
       prefixCls={prefixCls}
       className={classNames(
         {
@@ -169,7 +213,9 @@ const Tree = React.forwardRef<RcTree, TreeProps>((props, ref) => {
       direction={direction}
       checkable={checkable ? <span className={`${prefixCls}-checkbox-inner`} /> : checkable}
       selectable={selectable}
-      switcherIcon={(nodeProps: AntTreeNodeProps) => renderSwitcherIcon(prefixCls, switcherIcon, showLine, nodeProps)}>
+      switcherIcon={(nodeProps: AntTreeNodeProps) => renderSwitcherIcon(prefixCls, switcherIcon, showLine, nodeProps)}
+    >
+      draggable={draggableConfig as any}
       {children}
     </RcTree>
   )

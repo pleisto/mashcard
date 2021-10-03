@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 6.1', '>= 6.1.4.1'
 gem 'pg', '~> 1.2.3'
 gem 'marginalia', '~> 1.10.0'
 gem 'puma', '~> 5.5'
@@ -27,7 +27,7 @@ gem 'lockbox', '>= 0.6.5'
 gem 'lograge', '~> 0.11.2'
 gem 'logstop', '>= 0.2.7'
 gem 'accept_language', '>= 2.0.1'
-gem 'nokogiri', '~> 1.12', '>= 1.12.4'
+gem 'nokogiri', '~> 1.12', '>= 1.12.5'
 
 gem 'aws-sdk-s3', '~> 1', '>= 1.103.0'
 
