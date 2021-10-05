@@ -83,7 +83,7 @@
     "react-i18next": "^11.12.0",
     "style-loader": "^3.3.0",
     "typescript": "^4.4.3",
-    "webpack": "^5.55.1"
+    "webpack": "^5.56.1"
   },
   "peerDependencies": {
     "date-fns": "^2.23.0",

@@ -15,7 +15,7 @@ interface SidebarLayoutPageProps {
 
 export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, docid, children }) => {
   const { t } = useDocsI18n()
-  const { Sider, Content, Header } = Layout
+  const { Sider, Content } = Layout
   return (
     <div className={styles.acrylicBg}>
       <Helmet titleTemplate={`%s - ${t('app_title')}`} defaultTitle={t('app_title')} />
@@ -25,16 +25,12 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, doc
           <SearchModal webid={webid} />
           <PageTree webid={webid} />
           <TrashButton webid={webid} docid={docid} />
-
           <div className={styles.siderFooter}>
             <NewPage webid={webid} />
           </div>
         </Sider>
-        <Layout>
-          <Header>todo</Header>
-          <Content className={styles.content}>{children}</Content>
-        </Layout>
-        <aside className={styles.pluginBar}>Plugin</aside>
+        <Content className={styles.content}>{children}</Content>
+        <aside className={styles.pluginBar}>&nbsp; Plugin &nbsp;</aside>
       </Layout>
     </div>
   )

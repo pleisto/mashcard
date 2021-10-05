@@ -13,7 +13,8 @@ export const NewPage: React.FC<NewPageProps> = ({ webid }) => {
 
   return (
     <Link style={{ color: 'inherit' }} to={`/${webid}/p/${uuid()}`}>
-      <Plus /> {t('blocks.create_pages')}
+      <Plus />
+      {t('blocks.create_pages')}
     </Link>
   )
 }
