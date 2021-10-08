@@ -2,6 +2,7 @@ import { Node } from 'prosemirror-model'
 import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
 import { isNil } from 'lodash'
+import { queryPageBlocks } from '../common/graphql'
 
 const nodeChildren = (node: Node): Node[] => {
   // TODO Fragment type missing content field
@@ -165,14 +166,17 @@ export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONCo
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
 export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc: Node) => Promise<void>] {
-  const [blockSyncBatch] = useBlockSyncBatchMutation()
+  const [blockSyncBatch, { client }] = useBlockSyncBatchMutation()
   return [
     async (doc: Node) => {
       setCommitting?.(true)
       const blocks = nodeToBlock(doc, 0)
       const input: BlockSyncBatchInput = { blocks, rootId: doc.attrs.uuid, operatorId: globalThis.brickdocContext.uuid }
       try {
-        await blockSyncBatch({ variables: { input } })
+        const { data } = await blockSyncBatch({ variables: { input } })
+        if (data?.blockSyncBatch?.refetchTree) {
+          void client.refetchQueries({ include: [queryPageBlocks] })
+        }
       } catch (error) {
         setCommitting?.(false)
         throw error

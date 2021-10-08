@@ -5,6 +5,8 @@ module Docs
     argument :root_id, BrickGraphQL::Scalars::UUID, 'block root id', required: true
     argument :operator_id, String, 'operator id', required: true
 
+    field :refetch_tree, Boolean, null: false
+
     def resolve(blocks:, root_id:, operator_id:)
       lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 3)
       lock.lock do
@@ -15,6 +17,8 @@ module Docs
 
     def do_resolve(blocks:, root_id:, operator_id:)
       root = Docs::Block.find_by(id: root_id)
+      refetch_tree = false
+      refetch_tree = true if root.nil?
 
       if root&.deleted_at
         raise BrickGraphQL::Errors::ArgumentError, :cannot_modify_deleted_blocks
@@ -58,7 +62,9 @@ module Docs
         block.deleted_at = nil
 
         # TODO: fix this in collab (Readonly mode)
-        block.collaborators << current_user.id if current_pod.fetch('owner_id') == current_user.id
+        block.collaborators = (block.collaborators + [current_user.id]).uniq if current_pod.fetch('owner_id') == current_user.id
+
+        refetch_tree = true if args.id == root_id && block.changed?
 
         block.save!
         new_blocks_hash[block.id] = block
@@ -100,7 +106,9 @@ module Docs
         Docs::Block.broadcast(root_id, trigger_payload)
       end
 
-      nil
+      {
+        refetch_tree: refetch_tree
+      }
     end
   end
 end

@@ -175,6 +175,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
   if (data?.childrenBlocks?.length) {
     return PageElement
   } else {
-    return <Alert message="Page not found" type="error" />
+    return <Alert message="TODO Page not found" type="error" />
   }
 }

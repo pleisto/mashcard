@@ -8,6 +8,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       mutation blockSyncBatch($input: BlockSyncBatchInput!) {
         blockSyncBatch(input: $input) {
           errors
+          refetchTree
         }
       }
     GRAPHQL
@@ -32,7 +33,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       }] } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => nil })
+      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
       root = Docs::Block.non_deleted.find(root_id)
       expect(root.type).to eq("doc")
       expect(root.sort).to eq(147)
@@ -70,7 +71,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => nil })
+      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
       root = Docs::Block.find(root_id)
       expect(root.descendants.count).to eq(2)
       expect(root.sort).to eq(159)
@@ -79,10 +80,16 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => nil })
+      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
       root.reload
       expect(root.descendants.count).to eq(2)
       expect(root.sort).to eq(333)
+
+      blocks = blocks.map { |b| b[:id] == root_id ? b : b.merge(sort: 444) }
+      input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
+      internal_graphql_execute(mutation, input)
+      expect(response.errors).to eq({})
+      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => false } })
 
       self.current_user = nil
       self.current_pod = nil
@@ -106,7 +113,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       }] } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => nil })
+      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
 
       block.soft_delete!
 

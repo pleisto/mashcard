@@ -16,6 +16,7 @@ export const BlockSyncBatch = gql`
   mutation blockSyncBatch($input: BlockSyncBatchInput!) {
     blockSyncBatch(input: $input) {
       errors
+      refetchTree
     }
   }
 `

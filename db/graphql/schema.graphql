@@ -622,6 +622,7 @@ type BlockSyncBatchPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
+  refetchTree: Boolean!
 }
 
 """
