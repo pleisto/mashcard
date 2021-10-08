@@ -25,8 +25,7 @@ describe('tableBlockSort', () => {
     cy.findByTestId('table-text-overlay').click({ force: true })
 
     // add row 2
-    cy.get('.table-block-tbody > .table-block-row:first').realHover()
-    cy.get('.table-block-tbody > .table-block-row:first > .table-block-row-actions > button:first').click({ force: true })
+    cy.get('.table-toolbar-add-button').click()
     // edit text cell
     cy.get('.table-block-text-cell:last').click()
     cy.focused().type('text2')
@@ -37,8 +36,7 @@ describe('tableBlockSort', () => {
     cy.findByTestId('table-select-overlay').click({ force: true })
 
     // add row 3
-    cy.get('.table-block-tbody > .table-block-row:last').realHover()
-    cy.get('.table-block-tbody > .table-block-row:last > .table-block-row-actions > button:first').click({ force: true })
+    cy.get('.table-toolbar-add-button').click()
     // edit text cell
     cy.get('.table-block-text-cell:last').click()
     cy.focused().type('text')

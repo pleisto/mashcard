@@ -52,8 +52,7 @@ describe('tableBlockFilter', () => {
     cy.get('.brk-picker-cell-today').last().click()
 
     // add row 2
-    cy.get('.table-block-tbody > .table-block-row:first').realHover()
-    cy.get('.table-block-tbody > .table-block-row:first > .table-block-row-actions > button:first').click()
+    cy.get('.table-toolbar-add-button').click()
     // edit text cell
     cy.get('.table-block-text-cell:last').click()
     cy.focused().type('text2')

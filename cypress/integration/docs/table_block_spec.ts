@@ -53,8 +53,7 @@ describe('tableBlock', () => {
       cy.get('button.slash-menu-item:first').click()
       cy.get('.table-toolbar-add-button').click()
 
-      cy.get('.table-block-tbody > .table-block-row:first').realHover()
-      cy.get('.table-block-tbody > .table-block-row:first > .table-block-row-actions > button:first').click()
+      cy.get('.table-toolbar-add-button').click()
       cy.get('.table-block-row.active').should('exist')
     })
   })
