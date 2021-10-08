@@ -59,7 +59,7 @@ exports[`Table matches correct snapshot 1`] = `
     <div
       class="table-block-table"
       role="table"
-      style="min-width: 700px;"
+      style="min-width: 100%;"
     >
       <div
         class="table-block-row"

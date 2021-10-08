@@ -1,12 +1,11 @@
 .brickdoc {
   & .ProseMirror {
     & .table-block-react-renderer {
-      --block-padding-left: 226px;
-      --table-min-width: 700px;
+      --block-padding-left: 0;
+      --table-min-width: 100%;
       --toolbar-height: 42px;
 
       position: relative;
-      max-width: 100%;
       width: 100%;
       margin-left: 0;
 
@@ -27,8 +26,8 @@
           position: absolute;
           top: 0;
           left: var(--block-padding-left);
-          max-width: calc(var(--table-min-width) - 100px);
-          width: 60%;
+          max-width: calc(100% - 100px);
+          width: 80%;
           height: var(--toolbar-height);
           display: flex;
           flex-direction: row;

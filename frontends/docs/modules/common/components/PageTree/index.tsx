@@ -5,6 +5,7 @@ import { array2Tree } from '@/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '@/docs/modules/pages/useSyncProvider'
 import { queryPageBlocks } from '../../graphql'
+import styles from './PageTree.module.css'
 
 interface PageTreeProps {
   webid: string
@@ -75,5 +76,5 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
 
   const treeData = array2Tree(flattedData, { id: 'key' })
 
-  return <Tree treeData={treeData} defaultExpandAll draggable onDrop={onDrop} />
+  return <Tree className={styles.tree} treeData={treeData} defaultExpandAll draggable onDrop={onDrop} />
 }
