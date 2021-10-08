@@ -42,7 +42,7 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
     content,
     text,
     id: uuid,
-    // sort: sort, ## TODO
+    sort: level === 0 ? sort || 0 : sort,
     type: node.type.name,
     meta: rest,
     data: data || {}
@@ -50,11 +50,76 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
 
   // TODO: convert rows to children nodes
 
-  const childrenBlocks = hasChildren ? nodeChildren(node) : []
-  const children = childrenBlocks.flatMap((n: Node, index: number) =>
-    // TODO multiple level
-    nodeToBlock(n, level + 1).map((i: BlockInput) => ({ parentId: parent.id, sort: index * SIZE_GAP, ...i }))
-  )
+  const childrenNodes: Node[] = hasChildren ? nodeChildren(node) : []
+  // NOTE collect sort and compact
+  // NOTE exclude '0' / 0 / null / undefined / duplicated
+  const sorts: Array<number | null> = childrenNodes
+    .map((node: Node) => {
+      return isNil(node.attrs?.sort) ? null : Number(node.attrs?.sort)
+    })
+    .map((sort: number | null, index: number, sorts: Array<number | null>) => {
+      return sort === null || sorts.slice(0, index).includes(sort) ? null : sort
+    })
+
+  // Sorts result
+  let finalSorts: number[]
+
+  // Rebalance sorts
+  if (sorts.every((sort: number | null) => !isNil(sort))) {
+    // All valid
+    finalSorts = (sorts as number[]).sort((a, b) => a - b)
+  } else if (sorts.every((sort: number | null) => isNil(sort))) {
+    // All empty
+    finalSorts = sorts.map((_sort, index: number) => index * SIZE_GAP)
+  } else {
+    finalSorts = sorts
+      .map((sort: number | null, index: number, realtimeSorts: Array<number | null>) => {
+        let newSort: number
+        if (isNil(sort)) {
+          // Find next non nil value
+          const afterNonNilIndex = realtimeSorts.findIndex((s: number | null, i: number) => !isNil(s) && i > index)
+          const beforeNonNilIndexReverse = [...realtimeSorts]
+            .reverse()
+            .findIndex((s: number | null, i: number) => !isNil(s) && i > realtimeSorts.length - 1 - index)
+          const beforeNonNilIndex = beforeNonNilIndexReverse === -1 ? -1 : realtimeSorts.length - 1 - beforeNonNilIndexReverse
+
+          const afterSort = realtimeSorts[afterNonNilIndex]
+          const beforeSort = realtimeSorts[beforeNonNilIndex]
+          if (isNil(beforeSort)) {
+            // first start
+            if (isNil(afterSort)) {
+              console.error('After sort is nil!', {
+                realtimeSorts,
+                index,
+                afterNonNilIndex,
+                beforeNonNilIndex,
+                afterSort,
+                beforeSort,
+                length: realtimeSorts.length
+              })
+            }
+            newSort = (afterSort as number) - afterNonNilIndex * SIZE_GAP
+          } else if (isNil(afterSort)) {
+            newSort = beforeSort + (realtimeSorts.length - 1 - beforeNonNilIndex) * SIZE_GAP
+          } else {
+            newSort = beforeSort + Math.round((afterSort - beforeSort) / (afterNonNilIndex - beforeNonNilIndex))
+          }
+        } else {
+          newSort = sort
+        }
+
+        realtimeSorts[index] = newSort
+        return newSort
+      })
+      .sort((a, b) => a - b)
+  }
+
+  const children = childrenNodes
+    .map((node: Node, index: number) => {
+      node.attrs.sort = finalSorts[index]
+      return node
+    })
+    .flatMap((n: Node) => nodeToBlock(n, level + 1).map((i: BlockInput) => ({ parentId: parent.id, ...i })))
 
   return [parent, ...children]
 }
