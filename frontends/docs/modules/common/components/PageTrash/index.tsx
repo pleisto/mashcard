@@ -1,5 +1,5 @@
 import { Block, useGetTrashBlocksQuery } from '@/BrickdocGraphQL'
-import { List } from '@brickdoc/design-system'
+import { List, Skeleton } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { BlockListItem } from '../BlockListItem'
@@ -21,7 +21,11 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
   if (search) {
     input.search = search
   }
-  const { data } = useGetTrashBlocksQuery({ variables: input })
+  const { data, loading } = useGetTrashBlocksQuery({ variables: input })
+
+  if (loading) {
+    return <Skeleton />
+  }
 
   if (!data?.trashBlocks?.length) {
     return <>{t('trash.not_found')}</>

@@ -18,13 +18,8 @@ describe System::Queries::WebidAvailable, type: :query do
     end
 
     it 'works' do
-      internal_graphql_execute(query, { webid: 'admin' })
-      expect(response.success?).to be true
-      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
-
-      internal_graphql_execute(query, { webid: 'global' })
-      expect(response.success?).to be true
-      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
+      internal_graphql_execute(query, { webid: 'foo-bar' })
+      expect(response.data['webidAvailable']).to eq({ "success" => true, "message" => "ok" })
 
       internal_graphql_execute(query, { webid: 'legitimate-name-example' })
       expect(response.data['webidAvailable']).to eq({ "success" => true, "message" => "ok" })
@@ -37,6 +32,20 @@ describe System::Queries::WebidAvailable, type: :query do
       stub = create(:pod)
       internal_graphql_execute(query, { webid: stub.webid })
       expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.taken") })
+    end
+
+    it 'blacklist' do
+      internal_graphql_execute(query, { webid: 'admin' })
+      expect(response.success?).to be true
+      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
+
+      internal_graphql_execute(query, { webid: 'global' })
+      expect(response.success?).to be true
+      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
+
+      internal_graphql_execute(query, { webid: 'anonymous' })
+      expect(response.success?).to be true
+      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.webid_invalid") })
     end
   end
 end

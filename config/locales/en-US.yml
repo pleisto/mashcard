@@ -310,6 +310,7 @@ en-US:
       webid_invalid: is not a webid
       uuid_invalid: is not an uuid
       mobile_phone_invalid: is not a valid mobile phone number
+      webid_presence_invalid: is not presence
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd
@@ -620,15 +621,15 @@ en-US:
       pod_not_exist: "Pod doesn't exist"
   docs:
     app_title: Brickdoc
+    anonymous:
+      edit_button: Edit
     search:
       text: Quick Find
       placeholder: Search Pages
     blocks:
       create_pages: Add Pages
       delete: Delete
-      create_snapshot: Create Snapshot
       create_sub_block: Create Sub Block
-      create_share_link: Create Share Link
     trash:
       name: Trash
       all_pages: All pages
@@ -642,21 +643,30 @@ en-US:
       in_trash_prompt: This page is in trash.
       restore_action: Restore page
       hard_delete_action: Delete permanently
+    share:
+      menu: Share
+      share_to_web: Share to web
+      share_to_web_description: Publish and share link with anyone
+      allow_edit: Allow edit
+      learn: Learn about sharing
+      copy_link_button: Copy link
+      invite_placeholder: Add people, emails, groups, or intergrations
+      invite_button: Invite
+      copy: Copy
+    invite:
+      learn: Learn how to invite people and set permissions
+      type_hint: Type or paste in Email above, separated by commas.
+      search: Search Emails, names
+      button: Invite
+      edit_message: Can edit
+      edit_message_description: Can edit, but not share with others.
+      view_message: Can view
+      view_message_description: Cannot edit or share with others.
+      remove_message: Remove
     sub_blocks:
       title: Title
       create:
         success: Create sub block successfully
-    share_links:
-      share_type: Share Type
-      expired_at: Expired at
-      anonymous: Anonymous User
-      pod: Pod
-      user: User
-      webid: Webid
-      email: Email
-      create:
-        placeholder: Select a share type
-        success: Share link create successfully.
     snapshots:
       name: Snapshot
       restore: Restore version

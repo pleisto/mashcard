@@ -120,34 +120,14 @@ input BlockCreateShareLinkInput {
   clientMutationId: String
 
   """
-  email
-  """
-  emails: [Email!]
-
-  """
-  expired time
-  """
-  expiredAt: ISO8601DateTime
-
-  """
-  block unique id
+  block id
   """
   id: UUID!
 
   """
-  policy
+  share link target
   """
-  policy: Policytype!
-
-  """
-  share type
-  """
-  shareType: Sharetype!
-
-  """
-  webid
-  """
-  webids: [String!]
+  target: [ShareLinkInput!]!
 }
 
 """
@@ -163,7 +143,6 @@ type BlockCreateShareLinkPayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
-  shareLink: ShareLink
 }
 
 """
@@ -276,18 +255,6 @@ type BlockHardDeletePayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
-}
-
-type BlockHistory {
-  """
-  History version
-  """
-  historyVersion: Int!
-
-  """
-  object unique id
-  """
-  id: AutoIncrementID!
 }
 
 """
@@ -963,9 +930,14 @@ enum PodOperation {
 
 enum Policytype {
   """
-  SHOW
+  EDIT
   """
-  SHOW
+  edit
+
+  """
+  VIEW
+  """
+  view
 }
 
 type RootMutation {
@@ -1114,11 +1086,7 @@ type RootQuery {
   return single block by id.
   """
   block(id: String!): block
-
-  """
-  return histories by block id.
-  """
-  blockHistories(id: String!): [BlockHistory!]
+  blockPermission(id: String!): ShareLink
   blockSearch(
     """
     input
@@ -1130,6 +1098,11 @@ type RootQuery {
     """
     webid: String!
   ): [block!]
+
+  """
+  return share links by block id.
+  """
+  blockShareLinks(id: String!): [ShareLink!]!
 
   """
   return snapshots by block id.
@@ -1196,6 +1169,11 @@ type RootQuery {
   plugins: [plugin!]!
 
   """
+  search pods
+  """
+  podSearch(input: String!): [pod!]!
+
+  """
   return all pods for user.
   """
   pods: [pod!]!
@@ -1225,28 +1203,42 @@ type RootSubscription {
 
 type ShareLink {
   key: String!
+  policy: Policytype!
+  sharePodData: pod!
+  shareWebid: String!
+  state: ShareLinkState!
 }
 
-enum Sharetype {
+"""
+InputObject type of Class
+"""
+input ShareLinkInput {
   """
-  ANONYMOUS
+  policy
   """
-  ANONYMOUS
+  policy: Policytype!
 
   """
-  EVERYONE
+  state type
   """
-  EVERYONE
+  state: ShareLinkState!
 
   """
-  POD
+  block unique id
   """
-  POD
+  webid: String!
+}
+
+enum ShareLinkState {
+  """
+  DISABLED
+  """
+  disabled
 
   """
-  USER
+  ENABLED
   """
-  USER
+  enabled
 }
 
 """
@@ -1800,6 +1792,11 @@ type pod {
   public profile bio
   """
   bio: String
+
+  """
+  owner email
+  """
+  email: String
 
   """
   object unique id

@@ -29,7 +29,12 @@ class Pod < ApplicationRecord
   has_many :blocks, class_name: 'Docs::Block'
   has_many :share_links, dependent: :restrict_with_exception, class_name: 'Docs::ShareLink'
 
+  ANYONE_WEBID = 'anyone'
+  ANONYMOUS_WEBID = 'anonymous'
+
   default_value_for :personal, false
+
+  delegate :email, to: :owner
 
   has_one_attached :avatar
 
@@ -76,6 +81,10 @@ class Pod < ApplicationRecord
       { success: false, message: errors.first }
     end
   end
+
+  ANONYMOUS_CONTEXT = {
+    'webid' => ANONYMOUS_WEBID
+  }
 
   def as_session_context
     attributes.slice('id', 'webid', 'owner_id')

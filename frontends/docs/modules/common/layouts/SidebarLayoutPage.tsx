@@ -11,24 +11,32 @@ import styles from './styles.module.less'
 interface SidebarLayoutPageProps {
   webid: string
   docid: string | undefined
+  isAnonymous: boolean
 }
 
-export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, docid, children }) => {
+export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, docid, isAnonymous, children }) => {
   const { t } = useDocsI18n()
   const { Sider, Content } = Layout
+
+  const sider = isAnonymous ? (
+    <></>
+  ) : (
+    <Sider className={styles.sider}>
+      <PodSelect webid={webid} />
+      <SearchModal webid={webid} />
+      <PageTree webid={webid} />
+      <TrashButton webid={webid} docid={docid} />
+      <div className={styles.siderFooter}>
+        <NewPage webid={webid} />
+      </div>
+    </Sider>
+  )
+
   return (
     <div className={styles.acrylicBg}>
       <Helmet titleTemplate={`%s - ${t('app_title')}`} defaultTitle={t('app_title')} />
       <Layout>
-        <Sider className={styles.sider}>
-          <PodSelect webid={webid} />
-          <SearchModal webid={webid} />
-          <PageTree webid={webid} />
-          <TrashButton webid={webid} docid={docid} />
-          <div className={styles.siderFooter}>
-            <NewPage webid={webid} />
-          </div>
-        </Sider>
+        {sider}
         <Content className={styles.content}>{children}</Content>
         <aside className={styles.pluginBar}>&nbsp; Plugin &nbsp;</aside>
       </Layout>

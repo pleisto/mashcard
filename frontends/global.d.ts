@@ -4,7 +4,7 @@ declare global {
     currentUser?: {
       webid: string
     }
-    currentPod?: {
+    currentPod: {
       webid: string
     }
     env: string
@@ -13,6 +13,7 @@ declare global {
     rtl: boolean
     timezone: string
     defaultTimezone: string
+    host: string
     selfHost: boolean
     csrfToken: string
     isDesktopApp: boolean

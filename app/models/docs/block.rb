@@ -176,6 +176,25 @@ class Docs::Block < ApplicationRecord
     end
   end
 
+  def upsert_share_links!(target)
+    exists_share_links = share_links.to_a.index_by(&:share_webid)
+    transaction do
+      target.each do |obj|
+        exist = exists_share_links[obj[:webid]]
+        params = { policy: obj[:policy], state: obj[:state] }
+        if exist
+          if exist.state == obj[:state]
+            exist.update!(params)
+          else
+            exist.update!(state: obj[:state])
+          end
+        else
+          share_links.create!(params.merge(share_webid: obj[:webid]))
+        end
+      end
+    end
+  end
+
   def realtime_history_version_value
     realtime_version(:history_version)
   end
@@ -277,18 +296,7 @@ class Docs::Block < ApplicationRecord
   def move!(target_parent_id, new_sort)
     check_target_descendants!(target_parent_id)
 
-    params = { sort: new_sort, parent_id: target_parent_id }
-    # if target_parent_id.nil? && parent_id.nil?
-    #   ## Root
-    # elsif !target_parent_id.nil? && !parent_id.nil?
-    #   ## Child
-    # elsif target_parent_id.nil? && !parent_id.nil?
-    #   ## Child to parent
-    # elsif !target_parent_id.nil? && parent_id.nil?
-    #   ## Root to child, check its descendant
-    # end
-
-    update!(params)
+    update!(sort: new_sort, parent_id: target_parent_id)
   end
 
   def create_sub_block!(title)
@@ -450,12 +458,39 @@ class Docs::Block < ApplicationRecord
   end
 
   def show_policy?(user)
+    preload_enabled_share_links = nil
+
+    ## Anonymous user
+    if user.nil?
+      preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_webid)
+
+      anyone_share_link = preload_enabled_share_links[Pod::ANYONE_WEBID]
+
+      return false if anyone_share_link.nil?
+
+      return true
+    end
+
+    ## Collaborators
     return true if collaborators.include?(user.id)
 
-    target_pod_id = user.pod_id || user.personal_pod.id
-    return true if pod_id == target_pod_id
+    ## Fast check cache
+    if user.current_pod_id
+      return true if pod_id == user.current_pod_id
+    end
 
-    return true if enabled_share_links.any? { |l| l.target_pod_ids.blank? || l.target_pod_ids.include?(target_pod_id) }
+    preload_pods = user.pods.to_a
+
+    ## Owner
+    return true if pod_id.in?(preload_pods.map(&:id))
+
+    ## Share links
+    webids = preload_pods.map(&:webid) + [Pod::ANYONE_WEBID]
+    preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_webid)
+
+    webids.each do |webid|
+      return true if preload_enabled_share_links[webid]
+    end
 
     false
   end

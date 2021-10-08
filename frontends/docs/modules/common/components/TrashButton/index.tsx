@@ -2,7 +2,7 @@ import { Button } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { Delete } from '@brickdoc/design-system/components/icon'
-import { TrashModal } from '../TrashModal'
+import { TrashPopover } from '../TrashPopover'
 
 interface TrashButtonProps {
   webid: string
@@ -22,7 +22,7 @@ export const TrashButton: React.FC<TrashButtonProps> = ({ webid, docid }) => {
       <Button type="text" icon={<Delete />} onClick={onClick}>
         {t('trash.name')}
       </Button>
-      <TrashModal webid={webid} docid={docid} visible={trashModalVisible} setVisible={setTrashModalVisible} />
+      <TrashPopover webid={webid} docid={docid} visible={trashModalVisible} setVisible={setTrashModalVisible} />
     </>
   )
 }

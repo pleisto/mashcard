@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 require 'yaml'
-file_path = File.expand_path('../config/podname_blacklist.yml', __dir__)
+file_path = File.expand_path('../config/webid_blacklist.yml', __dir__)
 list = YAML.load_file(file_path)
 
 common = list[:common].map(&:to_s).sort.uniq

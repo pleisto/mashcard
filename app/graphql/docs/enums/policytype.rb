@@ -2,6 +2,7 @@
 
 module Docs
   class Enums::Policytype < BrickGraphQL::BaseEnum
-    value "SHOW", "SHOW"
+    value "view", "VIEW"
+    value "edit", "EDIT"
   end
 end

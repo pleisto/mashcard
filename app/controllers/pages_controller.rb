@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def pwa
-    authenticate_user!
+    # authenticate_user!
   end
 
   def unsupported

@@ -5,7 +5,7 @@ module ApplicationCable
 
     def connect
       self.current_user = find_verified_user
-      self.current_pod = find_current_pod(current_user)
+      self.current_pod = find_current_pod(current_user) || Pod::ANONYMOUS_CONTEXT
     end
 
     private

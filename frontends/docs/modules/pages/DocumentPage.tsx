@@ -13,18 +13,29 @@ import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { useFetchWebsiteMeta } from './useFetchWebsiteMeta'
+import { Redirect } from 'react-router-dom'
 interface DocumentPageProps {
   docid: string | undefined
   webid: string
   snapshotVersion: number
   editable: boolean
+  viewable: boolean
   onCommit: (doc: Node) => Promise<void>
   setCommitting?: (value: boolean) => void
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapshotVersion, editable, onCommit, setCommitting }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({
+  webid,
+  docid,
+  snapshotVersion,
+  editable,
+  viewable,
+  onCommit,
+  setCommitting
+}) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
+    fetchPolicy: 'no-cache',
     variables: { rootId: docid as string, snapshotVersion }
   })
 
@@ -121,6 +132,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ webid, docid, snapsh
   }, [editor, data, docid, snapshotVersion])
 
   useDocumentSubscription({ docid: docid as string, editor })
+
+  if (!viewable) {
+    return <Redirect to="/" />
+  }
 
   if (loading) {
     return <Skeleton />

@@ -8,7 +8,13 @@ export const routeConfig = (webid: string): any => {
     {
       path: '/',
       exact: true,
-      render: () => <Redirect to={`/${webid}`} />
+      render: () => {
+        if (webid === 'anonymous') {
+          window.location.href = '/accounts/sign_in'
+          return
+        }
+        return <Redirect to={`/${webid}`} />
+      }
     },
     {
       path: '/:webid/p/:docid',

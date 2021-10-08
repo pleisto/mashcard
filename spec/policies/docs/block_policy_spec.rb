@@ -3,51 +3,80 @@ require 'rails_helper'
 
 RSpec.describe Docs::BlockPolicy, type: :policy do
   let(:user) { create(:accounts_user) }
+  let(:collaborator_user) { create(:accounts_user) }
   let(:pod) { create(:pod) }
-  let(:user2) { create(:accounts_user) }
-  let(:user3) { create(:accounts_user) }
+  let(:block) { create(:docs_block, pod: pod, collaborators: [collaborator_user.id]) }
 
-  it 'show?' do
-    block1 = create(:docs_block, pod: pod)
-    block2 = create(:docs_block, pod: pod, collaborators: [user.id])
+  it 'owner' do
+    expect(described_class.new(block, user: user).apply(:show?)).to be false
+    expect(described_class.new(block, user: pod.owner).apply(:show?)).to be true
 
-    expect(described_class.new(block1, user: user).apply(:show?)).to be false
+    expect(block.show_policy?(user)).to be false
+    expect(block.show_policy?(pod.owner)).to be true
+  end
+
+  it 'collaborators' do
+    expect(described_class.new(block, user: collaborator_user).apply(:show?)).to be true
+    expect(block.show_policy?(collaborator_user)).to be true
+  end
+
+  it 'owner 2' do
+    new_pod = user.pods.create!(webid: "PolicyOwner", name: "PolicyOwner")
+    block2 = create(:docs_block, pod: new_pod)
     expect(described_class.new(block2, user: user).apply(:show?)).to be true
-    owner = pod.owner
-    owner.pod_id = pod.id
-    expect(described_class.new(block2, user: owner).apply(:show?)).to be true
+    expect(block2.show_policy?(user)).to be true
+  end
 
-    expect(described_class.new(block2, user: user2).apply(:show?)).to be false
-    expect(described_class.new(block2, user: user3).apply(:show?)).to be false
+  it 'ActionPolicy::AuthorizationContextMissing' do
+    expect do
+      described_class.new(block, user: nil).apply(:show?)
+    end.to raise_error(ActionPolicy::AuthorizationContextMissing)
+  end
 
-    share_link1 = Docs::ShareLink.create!(
-      block_id: block2.id,
-      target_pod_ids: [user2.personal_pod.id],
-      policy: "SHOW",
-      pod_id: pod.id,
-      user_id: pod.owner_id
-    )
+  it 'anonymous' do
+    new_block = create(:docs_block)
+    expect(new_block.show_policy?(nil)).to be false
 
-    block2.reload
-    expect(described_class.new(block2, user: user2).apply(:show?)).to be true
-    expect(described_class.new(block2, user: user3).apply(:show?)).to be false
+    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'view'])
+    new_block.enabled_share_links.reload
 
-    share_link1.disabled!
-    block2.reload
+    expect(new_block.show_policy?(nil)).to be true
 
-    expect(described_class.new(block2, user: user2).apply(:show?)).to be false
-    expect(described_class.new(block2, user: user3).apply(:show?)).to be false
+    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'disabled', policy: 'view'])
+    new_block.enabled_share_links.reload
 
-    _share_link2 = Docs::ShareLink.create!(
-      block_id: block2.id,
-      target_pod_ids: [],
-      policy: "SHOW",
-      pod_id: pod.id,
-      user_id: pod.owner_id
-    )
-    block2.reload
+    expect(new_block.show_policy?(nil)).to be false
+  end
 
-    expect(described_class.new(block2, user: user2).apply(:show?)).to be true
-    expect(described_class.new(block2, user: user3).apply(:show?)).to be true
+  it 'anyone' do
+    new_user = create(:accounts_user)
+    new_block = create(:docs_block)
+    expect(new_block.show_policy?(new_user)).to be false
+
+    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'view'])
+    new_block.enabled_share_links.reload
+
+    expect(new_block.show_policy?(new_user)).to be true
+
+    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'disabled', policy: 'view'])
+    new_block.enabled_share_links.reload
+
+    expect(new_block.show_policy?(new_user)).to be false
+  end
+
+  it 'share link' do
+    new_user = create(:accounts_user)
+    new_block = create(:docs_block)
+    expect(new_block.show_policy?(new_user)).to be false
+
+    new_block.upsert_share_links!([webid: new_user.webid, state: 'enabled', policy: 'view'])
+    new_block.enabled_share_links.reload
+
+    expect(new_block.show_policy?(new_user)).to be true
+
+    new_block.upsert_share_links!([webid: new_user.webid, state: 'disabled', policy: 'view'])
+    new_block.enabled_share_links.reload
+
+    expect(new_block.show_policy?(new_user)).to be false
   end
 end

@@ -18,6 +18,12 @@ module Brickdoc
         ENV['KUBERNETES_SERVICE_HOST'].present?
       end
 
+      def host
+        host = Rails.application.default_url_options.fetch(:host)
+        port = Rails.application.default_url_options.fetch(:port)
+        "http://#{host}#{port ? ':' + port.to_s : ''}"
+      end
+
       def test_suite?
         Rails.env.test?
       end

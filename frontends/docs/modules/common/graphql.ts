@@ -39,6 +39,19 @@ export const queryPreviewBox = gql`
   }
 `
 
+export const queryPodSearch = gql`
+  query QueryPodSearch($input: String!) {
+    podSearch(input: $input) {
+      webid
+      email
+      name
+      avatarData {
+        url
+      }
+    }
+  }
+`
+
 export const CreateOrUpdatePod = gql`
   mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
     createOrUpdatePod(input: $input) {
@@ -159,11 +172,21 @@ export const queryBlockSnapshots = gql`
   }
 `
 
-export const queryBlockHistories = gql`
-  query GetBlockHistories($id: String!) {
-    blockHistories(id: $id) {
-      id
-      historyVersion
+export const queryBlockShareLinks = gql`
+  query GetBlockShareLinks($id: String!) {
+    blockShareLinks(id: $id) {
+      key
+      shareWebid
+      policy
+      state
+      sharePodData {
+        name
+        webid
+        email
+        avatarData {
+          url
+        }
+      }
     }
   }
 `
@@ -204,9 +227,6 @@ export const BlockCreateShareLink = gql`
   mutation blockCreateShareLink($input: BlockCreateShareLinkInput!) {
     blockCreateShareLink(input: $input) {
       errors
-      shareLink {
-        key
-      }
     }
   }
 `

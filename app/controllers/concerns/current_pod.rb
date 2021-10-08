@@ -4,6 +4,12 @@ module CurrentPod
   extend ActiveSupport::Concern
 
   def current_pod
+    fetch_pod_by_user || Pod::ANONYMOUS_CONTEXT
+  end
+
+  private
+
+  def fetch_pod_by_user
     return nil if current_user.nil?
 
     ### NOTE via session
@@ -24,8 +30,6 @@ module CurrentPod
 
     remote_pod || current_user.personal_pod.as_session_context
   end
-
-  private
 
   def fetch_pod_via_params
     ## NOTE Get pod via URL params

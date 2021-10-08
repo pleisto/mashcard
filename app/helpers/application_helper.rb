@@ -11,6 +11,7 @@ module ApplicationHelper
       rtl: t('meta.dir') == 'rtl',
       timezone: Current.timezone,
       defaultTimezone: BrickdocConfig.default_timezone,
+      host: Brickdoc::Runtime.host,
       selfHosted: Brickdoc.self_hosted?,
       csrfToken: form_authenticity_token,
       isDesktopApp: false,

@@ -53,7 +53,7 @@ class Accounts::User < ApplicationRecord
            to: :personal_pod
   alias_method :original_personal_pod, :personal_pod
 
-  attribute :pod_id, :integer
+  attribute :current_pod_id, :integer
 
   def personal_pod
     original_personal_pod || build_personal_pod

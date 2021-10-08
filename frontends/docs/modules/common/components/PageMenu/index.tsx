@@ -3,7 +3,6 @@ import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { useBlockSoftDeleteMutation, BlockSoftDeleteInput, Scalars } from '@/BrickdocGraphQL'
-import { ShareLinkModal } from '../ShareLinkModal'
 import { queryPageBlocks } from '../../graphql'
 import { SubBlockModal } from '../SubBlockModal'
 
@@ -17,18 +16,12 @@ interface PageMenuProps {
 
 export const PageMenu: React.FC<PageMenuProps> = props => {
   const [blockId, setBlockId] = useState<string | undefined>()
-  const [shareLinkModalVisible, setShareLinkModalVisible] = useState<boolean>(false)
   const [createSubBlockModalVisible, setCreateSubBlockModalVisible] = useState<boolean>(false)
 
   const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks] })
   const deletePage = async (id: UUID): Promise<void> => {
     const input: BlockSoftDeleteInput = { id }
     await blockSoftDelete({ variables: { input } })
-  }
-
-  const createShareLink = (id: UUID): void => {
-    setShareLinkModalVisible(true)
-    setBlockId(id)
   }
 
   const createSubBlock = (id: UUID): void => {
@@ -48,9 +41,6 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
         case 'create_sub_block':
           void createSubBlock(id)
           break
-        case 'create_share_link':
-          void createShareLink(id)
-          break
         case 'delete':
           void deletePage(id)
           break
@@ -69,7 +59,6 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   const menu = (
     <Menu onClick={onClick(props.id)}>
       <Menu.Item key="create_sub_block">{t('blocks.create_sub_block')}</Menu.Item>
-      <Menu.Item key="create_share_link">{t('blocks.create_share_link')}</Menu.Item>
       <Menu.Item danger key="delete">
         {t('blocks.delete')}
       </Menu.Item>
@@ -81,12 +70,6 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
       <Dropdown trigger={['contextMenu']} overlay={menu}>
         <Link to={`/${props.webid}/p/${props.id}`}>{props.title}</Link>
       </Dropdown>
-      <ShareLinkModal
-        title={t('blocks.create_share_link')}
-        blockId={blockId}
-        visible={shareLinkModalVisible}
-        setVisible={setShareLinkModalVisible}
-      />
       <SubBlockModal
         title={t('blocks.create_sub_block')}
         blockId={blockId}

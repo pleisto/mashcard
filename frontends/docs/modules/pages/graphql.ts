@@ -36,6 +36,16 @@ export const NewPatch = gql`
   }
 `
 
+export const queryBlockPermission = gql`
+  query GetBlockPermission($id: String!) {
+    blockPermission(id: $id) {
+      key
+      policy
+      state
+    }
+  }
+`
+
 export const queryChildrenBlocks = gql`
   query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
     childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {

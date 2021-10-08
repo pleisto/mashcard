@@ -32,12 +32,7 @@ module Docs
         # TODO: storageType?
         blocks = root.descendants(unscoped: true).where('type != ?', 'databaseRow').with_attached_attachments.to_a
 
-        result = authorized_scope [root], as: :collaborating, with: Docs::BlockPolicy
-        if result.blank?
-          []
-        else
-          blocks
-        end
+        root.show_policy?(current_user) ? blocks : []
       else
         # TODO: permission check
         Docs::Snapshot.find_by!(block_id: root_id, snapshot_version: snapshot_version).blocks.graphql_normalize(root_id)

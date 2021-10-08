@@ -10,6 +10,7 @@ module System
       field :name, String, 'Pod Name', null: true
       field :avatar_data, Avatar, 'Pod Avatar', null: true
       field :bio, String, 'public profile bio', null: true
+      field :email, String, 'owner email', null: true
     end
   end
 end

@@ -29,7 +29,7 @@ class InternalApisController < ActionController::API
   def context
     pod = current_pod
     user = current_user
-    user&.pod_id = current_pod&.fetch('id')
+    user&.current_pod_id = current_pod&.fetch('id')
     {
       protocol: 'http',
       real_ip: request.remote_ip,
