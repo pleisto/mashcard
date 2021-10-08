@@ -5,7 +5,6 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: brickdoc_development
       POSTGRES_PASSWORD: 123456
   redis:
     image: redis
