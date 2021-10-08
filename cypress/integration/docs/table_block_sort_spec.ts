@@ -18,7 +18,7 @@ describe('tableBlockSort', () => {
     // add new select option
     cy.focused().type('new option 2{Enter}')
     cy.focused().type('new option{Enter}')
-    cy.findByTestId('table-select-overlay').click()
+    cy.findByTestId('table-select-overlay').click({ force: true })
     // edit text cell
     cy.get('.table-block-text-cell:last').click()
     cy.focused().type('text')

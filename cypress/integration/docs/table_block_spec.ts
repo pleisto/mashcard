@@ -129,7 +129,7 @@ describe('tableBlock', () => {
       cy.focused().type('new option{Enter}')
       cy.focused().type('new option 2{Enter}')
       cy.findByText('new option').click()
-      cy.findByTestId('table-select-overlay').click()
+      cy.findByTestId('table-select-overlay').click({ force: true })
       cy.get('.active > .table-block-select-cell').should('exist').should('contain.text', 'new option')
     })
 

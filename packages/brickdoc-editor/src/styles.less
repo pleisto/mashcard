@@ -1,4 +1,5 @@
 @font-color: #3e3e3e;
+@max-width: 960px;
 
 html * {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
@@ -6,6 +7,7 @@ html * {
 
 .brickdoc {
   width: 100%;
+  max-width: @max-width;
   flex: 1;
   display: flex;
   justify-content: center;
@@ -27,7 +29,7 @@ html * {
 
     /** Block **/
     > * {
-      max-width: 960px;
+      max-width: @max-width;
     }
 
     > * + * {
