@@ -19,11 +19,13 @@ local_private:
 amazon_private:
   service: S3
   region: us-east-1
+  public: false
   bucket: brickdoc-trunk-private
 
 amazon_public:
   service: S3
   region: us-east-1
+  public: true
   bucket: brickdoc-trunk-public
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
