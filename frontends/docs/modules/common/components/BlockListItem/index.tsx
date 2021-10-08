@@ -10,7 +10,7 @@ import {
 import { Avatar, Button, Modal, Space } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { FilePages, Delete, Undo } from '@brickdoc/design-system/components/icon'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 
@@ -27,7 +27,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
   const avatar =
     block.meta.icon?.type === Blocktype.Emoji ? <Avatar icon={(block.meta.icon as BlockEmoji).emoji} /> : <Avatar icon={<FilePages />} />
 
-  const [linkClick, setLinkClick] = useState<boolean>(false)
+  const history = useHistory()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
   const [hardDeleteConfirmLoading, setHardDeleteConfirmLoading] = React.useState<boolean>(false)
 
@@ -40,7 +40,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
 
   const onClickLink = (): void => {
     setVisible(false)
-    setLinkClick(true)
+    history.push(link)
   }
 
   const onRestore = async (): Promise<void> => {
@@ -61,10 +61,6 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
     await blockHardDelete({ variables: { input } })
     setHardDeleteModalVisible(false)
     setHardDeleteConfirmLoading(false)
-  }
-
-  if (linkClick) {
-    return <Redirect to={link} />
   }
 
   const title = block.text || 'Untitled'

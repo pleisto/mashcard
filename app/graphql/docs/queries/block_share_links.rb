@@ -9,7 +9,7 @@ module Docs
     argument :id, GraphQL::Types::String, required: true
 
     def resolve(id:)
-      Docs::Block.non_deleted.find(id).share_links.includes(share_pod: [:owner, :avatar_attachment]).order(id: :asc)
+      Docs::Block.find(id).share_links.includes(share_pod: [:owner, :avatar_attachment]).order(id: :asc)
     end
   end
 end

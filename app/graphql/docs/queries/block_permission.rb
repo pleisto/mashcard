@@ -8,7 +8,7 @@ module Docs
 
     def resolve(id:)
       return nil if id.blank?
-      base_query = Docs::Block.non_deleted.find(id).share_links
+      base_query = Docs::Block.find(id).share_links
 
       if current_pod.fetch('webid') == Pod::ANONYMOUS_WEBID
         base_query.find_by(share_webid: Pod::ANYONE_WEBID)

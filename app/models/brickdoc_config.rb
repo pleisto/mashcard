@@ -92,7 +92,11 @@ class BrickdocConfig < ApplicationRecord
 
   # Rails.application.config.active_storage.service
   field :active_storage_service, default: (
-    Rails.env.test? ? "test" : "local"
+    if Rails.env.test?
+      "test"
+    else
+      (Rails.env.development? ? "local" : "amazon_private")
+    end
   )
 
   field :user_agreement_link, type: :string, default: 'https://www.contributor-covenant.org/version/2/0/code_of_conduct/'
