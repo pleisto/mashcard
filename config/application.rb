@@ -23,13 +23,10 @@ Dotenv::Railtie.load
 module Brickdoc
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    # config.load_defaults 6.1
 
     config.action_mailer.deliver_later_queue_name = :default
 
-    require_dependency 'lib/brickdoc'
-    config.autoload_paths << Rails.root.join('lib')
-    config.eager_load_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app', 'graphql')
     config.eager_load_paths << Rails.root.join('app', 'graphql')
     config.autoload_paths << Rails.root.join('app', 'services')
@@ -43,5 +40,30 @@ module Brickdoc
     initializer :before_zeitwerk, before: :let_zeitwerk_take_over, after: :prepend_helpers_path do
       Dir[Rails.root.join('config/before_initializers/*.rb')].sort.each { |file| load_config_initializer(file) }
     end
+
+    config.before_initialize do
+      ActiveSupport::Inflector.inflections do |inflect|
+        Packwerk::Inflections::Custom.new(
+          Rails.root.join('config', 'inflections.yml')
+        ).apply_to(inflect)
+      end
+
+      loader = Zeitwerk::Loader.new
+      loader.inflector = Rails.autoloaders.main.inflector
+      loader.push_dir Rails.root.join('lib')
+      loader.setup
+    end
+
+    config.after_initialize do
+      BrickdocPlugin.load_plugins
+
+      ## Enabled Global Plugin
+      default_global_plugins = %i(google_auth github_auth)
+      BrickdocConfig.on(:global) do
+        default_global_plugins.each { |name| BrickdocPlugin.plugin(name).default_enabled! }
+      end
+    end
   end
 end
+
+require_relative '../lib/brickdoc'

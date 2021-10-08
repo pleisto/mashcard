@@ -7,7 +7,7 @@ class StoragesController < ActionController::Base
 
   include ActiveStorage::SetCurrent
   include ActiveStorage::FileServer
-  include ActiveStorage::SetHeaders
+  include ActiveStorage::SetBlob
 
   ## NOTE Rails 6.1.4
 

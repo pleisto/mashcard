@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 6.1', '>= 6.1.4.1'
+gem 'rails', '~> 7.0.0.alpha2'
 gem 'pg', '~> 1.2.3'
 gem 'marginalia', '~> 1.10.0'
 gem 'puma', '~> 5.5'
@@ -50,7 +50,7 @@ gem 'webpacker', path: 'gems/webpacker'
 ## IAM
 gem 'action_policy', '~> 0.6.0'
 gem 'action_policy-graphql', '~> 0.5.3'
-gem 'devise', '~> 4.8'
+gem 'devise', github: 'brickdoc/devise'
 gem 'devise-async', '~> 1.0.0'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'

@@ -327,11 +327,11 @@ class Docs::Block < ApplicationRecord
     select_columns = [:id, :parent_id, :deleted_at]
     hierarchy = self.class.arel_table
     recursive_table = Arel::Table.new(:recursive)
-    select_manager = Arel::SelectManager.new(ActiveRecord::Base).freeze
+    select_manager = Arel::SelectManager.new(self).freeze
 
     non_recursive_term = select_manager.dup.tap do |m|
       m.from self.class.table_name
-      m.project(*select_columns)
+      m.project(*(select_columns.map { |col| hierarchy[col] }))
       m.where hierarchy[:id].eq(id)
     end
 
