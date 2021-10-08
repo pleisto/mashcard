@@ -21216,10 +21216,10 @@ fsevents@^1.2.7:
 
 "prosemirror-model@patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b::locator=%40brickdoc%2Fmonorepo%40workspace%3A.":
   version: 1.14.3
-  resolution: "prosemirror-model@patch:prosemirror-model@npm%3A1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b::version=1.14.3&hash=e8c478&locator=%40brickdoc%2Fmonorepo%40workspace%3A."
+  resolution: "prosemirror-model@patch:prosemirror-model@npm%3A1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b::version=1.14.3&hash=6e5f0b&locator=%40brickdoc%2Fmonorepo%40workspace%3A."
   dependencies:
     orderedmap: ^1.1.0
-  checksum: ead26ea9d7677389d60edaec1b318d37ff16f75d3c402e567ade750e569d0972a0a82e6bf098e09a301302884228e3144ff551f8816d91035af615433c05d683
+  checksum: c8a33796ee54dc0b46454ac1a66b3e788ea6db39beb57d2325da0d2e1ec77146d3ede6c7e82325adea4cb4102defbd63dace6b1a306ee83f67f1c65824ef8997
   languageName: node
   linkType: hard
 

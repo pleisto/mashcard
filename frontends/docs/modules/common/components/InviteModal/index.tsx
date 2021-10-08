@@ -98,13 +98,13 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
       setOptions([])
       setFetching(true)
       const { data } = await podSearch({ input: value })
-      const pods: PodType[] = data?.podSearch ?? []
+      const pods: PodType[] = data?.podSearch?.filter(pod => pod.webid !== webid) ?? []
       setOptions(pods)
       setFetching(false)
     }
 
     return debounce(loadOptions, debounceTimeout)
-  }, [podSearch])
+  }, [podSearch, webid])
 
   const { Option } = Select
 

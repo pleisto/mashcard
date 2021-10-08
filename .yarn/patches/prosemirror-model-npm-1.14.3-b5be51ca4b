@@ -1,32 +1,53 @@
 diff --git a/dist/index.es.js b/dist/index.es.js
-index 4c0acde7bc112e9d66b7bece46f5907dc6826291..4f47f2049fba69fa895eba1c98e1e8f823690b29 100644
+index 4c0acde7bc112e9d66b7bece46f5907dc6826291..a7ecfe81423c8abaf33e8aae47a36f62da5c26dc 100644
 --- a/dist/index.es.js
 +++ b/dist/index.es.js
 @@ -1,4 +1,5 @@
  import OrderedMap from 'orderedmap';
 +import { v4 as uuid } from 'uuid';
-
+ 
  function findDiffStart(a, b, pos) {
    for (var i = 0;; i++) {
-@@ -1014,7 +1014,7 @@ var Node = function Node(type, attrs, content, marks) {
+@@ -1014,7 +1015,7 @@ var Node = function Node(type, attrs, content, marks) {
    // An object mapping attribute names to values. The kind of
    // attributes allowed and required are
    // [determined](#model.NodeSpec.attrs) by the node type.
 -  this.attrs = attrs;
 +  this.attrs = {uuid: uuid(), sort: 0, ...attrs};
-
+ 
    // :: Fragment
    // A container holding the node's children.
-@@ -1865,6 +1865,12 @@ function computeAttrs(attrs, value) {
+@@ -1127,11 +1128,18 @@ Node.prototype.hasMarkup = function hasMarkup (type, attrs, marks) {
+ // :: (?Fragment) → Node
+ // Create a new node with the same markup as this node, containing
+ // the given content (or empty, if no content is given).
+-Node.prototype.copy = function copy (content) {
++Node.prototype.copy = function copy (content, isNew) {
+     if ( content === void 0 ) content = null;
+ 
+   if (content == this.content) { return this }
+-  return new this.constructor(this.type, this.attrs, content, this.marks)
++
++  var attrs = { ...this.attrs };
++
++  if (isNew) {
++    attrs.uuid = uuid();
++  }
++
++  return new this.constructor(this.type, attrs, content, this.marks)
+ };
+ 
+ // :: ([Mark]) → Node
+@@ -1864,6 +1872,12 @@ function computeAttrs(attrs, value) {
+       else { throw new RangeError("No value supplied for attribute " + name) }
      }
      built[name] = given;
++    if (value?.uuid) {
++      built.uuid = value.uuid;
++    }
++    if (value?.sort) {
++      built.sort = value.sort;
++    }
    }
-+  if (value?.uuid) {
-+    built.uuid = value.uuid;
-+  }
-+  if (value?.sort) {
-+    built.sort = value.sort;
-+  }
    return built
  }
-
