@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import React, { useContext, useEffect } from 'react'
 import cx from 'classnames'
 import { Button, Input, Icon, List, Popover, Switch } from '@brickdoc/design-system'
@@ -91,9 +93,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
   const allowEditContent = shareWithAnonymousValue ? (
     <>
       <div className={styles.row}>
-        <div className={styles.inputWrapper}>
+        <div role="button" tabIndex={-1} className={styles.inputWrapper} onClick={handleCopy}>
           <Input className={styles.input} value={link} />
-          <Button className={styles.inputButton} type="text" onClick={handleCopy}>
+          <Button className={styles.inputButton} type="text">
             {t('share.copy')}
           </Button>
         </div>
@@ -150,9 +152,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
       {allowEditContent}
 
       <div className={cx(styles.row, styles.bordered)}>
-        <div className={styles.inputWrapper}>
+        <div role="button" tabIndex={-1} className={styles.inputWrapper} onClick={onClickInviteButton}>
           <Input className={styles.input} placeholder={t('share.invite_placeholder')} value="" />
-          <Button className={styles.inputButton} type="primary" onClick={onClickInviteButton}>
+          <Button className={styles.inputButton} type="primary">
             {t('share.invite_button')}
           </Button>
         </div>
@@ -165,7 +167,6 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
           <Icon.Help />
           <span>{t('share.learn')}</span>
         </div>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <div role="button" tabIndex={-1} onClick={handleCopy} className={styles.action}>
           <Icon.Link />
           <span>{t('share.copy_link_button')}</span>
