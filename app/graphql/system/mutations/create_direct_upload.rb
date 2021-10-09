@@ -20,9 +20,6 @@ module System
       # https://edgeapi.rubyonrails.org/classes/ActiveStorage/Blob.html#method-c-create_before_direct_upload-21
       new_input = input.to_h.merge(service_name: service)
 
-      # TODO: https://stackoverflow.com/a/51110844
-      ActiveStorage::Current.host = Brickdoc::Runtime.host
-
       block_id = args[:block_id] || "global"
       key = "#{current_pod.fetch('webid')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
 

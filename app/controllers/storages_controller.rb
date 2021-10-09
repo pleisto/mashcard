@@ -7,9 +7,10 @@ class StoragesController < ActionController::Base
 
   include ActiveStorage::SetCurrent
   include ActiveStorage::FileServer
-  include ActiveStorage::SetBlob
+  # include ActiveStorage::SetBlob
+  include ActiveStorage::Streaming
 
-  ## NOTE Rails 6.1.4
+  ## NOTE Rails 7.0.0-alpha2
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/base_controller.rb
   self.etag_with_template_digest = false
@@ -33,28 +34,33 @@ disposition: key[:disposition]
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/blobs/redirect_controller.rb#L13
   def blob_redirect
     expires_in ActiveStorage.service_urls_expire_in
-    redirect_to @blob.url(disposition: params[:disposition])
+    redirect_to @blob.url(disposition: params[:disposition]), allow_other_host: true
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/blobs/proxy_controller.rb
   def blob_proxy
-    http_cache_forever public: true do
-      set_content_headers_from @blob
-      stream @blob
+    if request.headers["Range"].present?
+      send_blob_byte_range_data @blob, request.headers["Range"]
+    else
+      http_cache_forever public: true do
+        response.headers["Accept-Ranges"] = "bytes"
+        response.headers["Content-Length"] = @blob.byte_size.to_s
+
+        send_blob_stream @blob
+      end
     end
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/redirect_controller.rb#L11
   def representation_redirect
     expires_in ActiveStorage.service_urls_expire_in
-    redirect_to @representation.url(disposition: params[:disposition])
+    redirect_to @representation.url(disposition: params[:disposition]), allow_other_host: true
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/proxy_controller.rb#L13
   def representation_proxy
     http_cache_forever public: true do
-      set_content_headers_from @representation.image
-      stream @representation
+      send_blob_stream @representation.image
     end
   end
 
@@ -68,14 +74,6 @@ disposition: key[:disposition]
 
   def decode_verified_key
     ActiveStorage.verifier.verified(params[:encoded_key], purpose: :blob_key)
-  end
-
-  def stream(blob)
-    blob.download do |chunk|
-      response.stream.write chunk
-    end
-  ensure
-    response.stream.close
   end
 
   def set_blob
@@ -93,8 +91,9 @@ disposition: key[:disposition]
     end
   end
 
+  # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/base_controller.rb#L3
   def blob_scope
-    ActiveStorage::Blob
+    ActiveStorage::Blob.scope_for_strict_loading
   end
 
   def set_representation

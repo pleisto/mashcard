@@ -12,16 +12,6 @@ enum AuthMethod {
   Email and Password Authentication
   """
   email_password
-
-  """
-   Federated Authentication
-  """
-  github
-
-  """
-   Federated Authentication
-  """
-  google_oauth2
 }
 
 type AuthorizationResult {

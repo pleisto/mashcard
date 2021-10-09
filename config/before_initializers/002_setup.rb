@@ -65,9 +65,6 @@ Rails.application.reloader.to_prepare do
     }
     Devise::Async.enabled = false if Rails.env.test?
     config.active_storage.default_url_options = Rails.application.default_url_options
-    if Rails.env.development?
-      ## TODO remove this when this commit is released https://github.com/rails/rails/commit/e9accafc844ed5981ce7f50afe8261d5ef07d4d2
-      ActiveStorage::Current.host = "http://#{Rails.application.default_url_options.fetch(:host)}:#{Rails.application.default_url_options.fetch(:port)}"
-    end
+    ActiveStorage::Current.url_options = Rails.application.default_url_options
   end
 end

@@ -31,11 +31,7 @@ export type Scalars = {
 /** Available authentication authentication. */
 export enum AuthMethod {
   /** Email and Password Authentication */
-  EmailPassword = 'email_password',
-  /**  Federated Authentication */
-  Github = 'github',
-  /**  Federated Authentication */
-  GoogleOauth2 = 'google_oauth2'
+  EmailPassword = 'email_password'
 }
 
 export type AuthorizationResult = {

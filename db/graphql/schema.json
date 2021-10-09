@@ -24,18 +24,6 @@
               "description": "Email and Password Authentication",
               "isDeprecated": false,
               "deprecationReason": null
-            },
-            {
-              "name": "github",
-              "description": " Federated Authentication",
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "google_oauth2",
-              "description": " Federated Authentication",
-              "isDeprecated": false,
-              "deprecationReason": null
             }
           ],
           "possibleTypes": null
