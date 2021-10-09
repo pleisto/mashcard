@@ -62,6 +62,10 @@ module Brickdoc
       BrickdocConfig.on(:global) do
         default_global_plugins.each { |name| BrickdocPlugin.plugin(name).default_enabled! }
       end
+
+      Devise.setup do |config|
+        BrickdocHook.trigger :omniauth_providers_setup, config
+      end
     end
   end
 end

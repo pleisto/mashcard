@@ -270,7 +270,6 @@ Rails.application.config.to_prepare do
     # up on your models and hooks.
     # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-    BrickdocHook.trigger :omniauth_providers_setup, config
     # BrickdocConfig.accounts_federated_providers.each do |provider|
     #  config.omniauth provider[:name], provider[:key], provider[:secret], provider[:options]
     # end
