@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Modal } from '@brickdoc/design-system'
 import { SnapshotList } from '../SnapshotList'
+import styles from './index.module.css'
 
 interface PageHistoryModalProps {
   webid: string
@@ -30,6 +31,7 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ webid, visib
       confirmLoading={confirmLoading}
       onOk={onCleanup}
       onCancel={onCleanup}
+      className={styles.modal}
     >
       <SnapshotList
         webid={webid}

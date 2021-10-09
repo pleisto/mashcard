@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Col, List, Row } from '@brickdoc/design-system'
+import cx from 'classnames'
+import { Button, List } from '@brickdoc/design-system'
 import { DocumentPage } from '@/docs/modules/pages/DocumentPage'
 import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMutation } from '@/BrickdocGraphQL'
 import styles from './index.module.less'
@@ -41,23 +42,22 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   const skelecton = (page: any, snapshots: any, disabled: boolean): any => {
     return (
-      <Row>
-        <Col span={18} className={styles.row}>
-          {page}
-        </Col>
-        <Col span={6} className={styles.row}>
+      <div className={styles.container}>
+        <div className={styles.contentWrapper}>
+          <div className={styles.content}>{page}</div>
+        </div>
+        <div className={styles.side}>
           <div className={styles.snapshot}>{snapshots}</div>
-          <div>
-            <Button type="primary" className={styles.buttons} disabled={disabled} onClick={onRestore}>
+          <div className={styles.actionPanel}>
+            <Button type="primary" className={styles.button} disabled={disabled} onClick={onRestore}>
               {t('snapshots.restore')}
             </Button>
-            <br />
-            <Button className={styles.buttons} onClick={onCleanup}>
+            <Button className={styles.button} onClick={onCleanup}>
               {t('snapshots.cancel')}
             </Button>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </div>
     )
   }
 
@@ -83,22 +83,15 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
       footer={null}
       header={null}
       dataSource={dataSource}
-      renderItem={item => {
-        const color = item.snapshotVersion === currentVersion ? 'blue' : 'unset'
-        return (
-          <List.Item>
-            <button
-              className={styles.text_button}
-              onClick={() => {
-                setCurrentVersion(item.snapshotVersion)
-              }}>
-              <span style={{ color }}>{item.name}</span>
-              <br />
-              <span style={{ float: 'left', fontSize: 'small', color }}>{item.relativeTime}</span>
-            </button>
-          </List.Item>
-        )
-      }}
+      split={false}
+      renderItem={item => (
+        <List.Item className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}>
+          <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
+            <span className={styles.title}>{item.name}</span>
+            <span className={styles.desc}>{item.relativeTime}</span>
+          </Button>
+        </List.Item>
+      )}
     />
   )
 

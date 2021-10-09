@@ -32,7 +32,7 @@ class Docs::Snapshot < ApplicationRecord
   end
 
   def generate_default_name
-    Time.current.to_s
+    block.title.presence || "Untitled"
   end
 
   def relative_time
