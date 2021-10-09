@@ -6,7 +6,7 @@ import {
   ShareLinkState,
   useBlockCreateShareLinkMutation
 } from '@/BrickdocGraphQL'
-import { Col, Dropdown, Menu, MenuProps, Row } from '@brickdoc/design-system'
+import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { LineDown } from '@brickdoc/design-system/components/icon'
@@ -22,7 +22,6 @@ interface ShareLinkListItemProps {
 export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ blockId, item }) => {
   const { t } = useDocsI18n()
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
-  const [menuLoading, setMenuLoading] = React.useState<boolean>(false)
 
   const policyMessage = item.policy === Policytype.Edit ? t('invite.edit_message') : t('invite.view_message')
 
@@ -43,20 +42,20 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ blockId, i
     const shareLink: ShareLinkInput = { webid: item.shareWebid, policy, state }
     const input: BlockCreateShareLinkInput = { id: blockId, target: [shareLink] }
 
-    setMenuLoading(true)
     await blockCreateShareLink({ variables: { input } })
-    setMenuLoading(false)
   }
 
   const menu = (
     <Menu onClick={onClickMenu} selectedKeys={[item.policy]}>
-      <Menu.Item key={Policytype.View} disabled={menuLoading || item.policy === Policytype.View}>
-        {t('invite.view_message')} <br /> {t('invite.view_message_description')}
+      <Menu.Item className={styles.menuItem} key={Policytype.View}>
+        <div className={styles.head}>{t('invite.view_message')}</div>
+        <div className={styles.desc}>{t('invite.view_message_description')}</div>
       </Menu.Item>
-      <Menu.Item key={Policytype.Edit} disabled={menuLoading || item.policy === Policytype.Edit}>
-        {t('invite.edit_message')} <br /> {t('invite.edit_message_description')}
+      <Menu.Item className={styles.menuItem} key={Policytype.Edit}>
+        <div className={styles.head}>{t('invite.edit_message')}</div>
+        <div className={styles.desc}>{t('invite.edit_message_description')}</div>
       </Menu.Item>
-      <Menu.Item key="remove" danger disabled={menuLoading}>
+      <Menu.Item className={styles.menuItem} key="remove" danger>
         {t('invite.remove_message')}
       </Menu.Item>
     </Menu>
@@ -70,15 +69,9 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ blockId, i
   )
 
   return (
-    <>
-      <Row>
-        <Col span={20} className={styles.center}>
-          <PodCard pod={item.sharePodData as PodType} />
-        </Col>
-        <Col span={8} className={styles.center}>
-          {policyData}
-        </Col>
-      </Row>
-    </>
+    <div className={styles.row}>
+      <PodCard pod={item.sharePodData as PodType} />
+      <div className={styles.action}>{policyData}</div>
+    </div>
   )
 }

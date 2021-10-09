@@ -1,4 +1,5 @@
 import React from 'react'
+import cx from 'classnames'
 import { Button, Dropdown, Menu, MenuProps, Modal, Icon, Select, Spin, Tag } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -76,11 +77,11 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
 
   const menu = (
     <Menu onClick={onClickMenu} selectedKeys={[currentPolicy]}>
-      <Menu.Item className={styles.menuItem} key={Policytype.View} disabled={Policytype.View === currentPolicy}>
+      <Menu.Item className={styles.menuItem} key={Policytype.View}>
         <div className={styles.head}>{t('invite.view_message')}</div>
         <div className={styles.desc}>{t('invite.view_message_description')}</div>
       </Menu.Item>
-      <Menu.Item className={styles.menuItem} key={Policytype.Edit} disabled={Policytype.Edit === currentPolicy}>
+      <Menu.Item className={styles.menuItem} key={Policytype.Edit}>
         <div className={styles.head}>{t('invite.edit_message')}</div>
         <div className={styles.desc}>{t('invite.edit_message_description')}</div>
       </Menu.Item>
@@ -118,6 +119,15 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
     )
   }
 
+  const dropdownRender = (node: React.ReactElement): React.ReactElement => (
+    <div className={styles.options}>
+      {options.length > 0 && <div className={styles.head}>Select a person</div>}
+      {node}
+    </div>
+  )
+
+  const inviteListRef = React.useRef<HTMLDivElement>(null)
+
   const selectData = (
     <Select
       className={styles.select}
@@ -128,12 +138,15 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
       labelInValue={true}
       value={podValue}
       notFoundContent={fetching ? <Spin size="small" /> : <span>{t('invite.type_hint')}</span>}
+      getPopupContainer={() => inviteListRef.current!}
+      dropdownClassName={styles.selectDropdown}
+      dropdownRender={dropdownRender}
       onSearch={debounceFetcher}
       tagRender={tagRender}
+      open={true}
       onChange={newValue => {
         setPodValue(newValue)
-      }}
-    >
+      }}>
       {options.map(pod => (
         <Option key={pod.webid} value={pod.webid}>
           <PodCard pod={pod} />
@@ -145,14 +158,16 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
   const inviteContent = (
     <div>
       <div className={styles.header}>
-        {selectData}
-        {policyDropdown}
-        <Button className={styles.inviteButton} type="primary" onClick={onInviteClick} loading={inviteButtonLoading}>
-          {t('invite.button')}
-        </Button>
+        <div className={cx(styles.input, { [styles.filled]: podValue.length > 0 })}>
+          {selectData}
+          {policyDropdown}
+          <Button className={styles.inviteButton} type="primary" onClick={onInviteClick} loading={inviteButtonLoading}>
+            {t('invite.button')}
+          </Button>
+        </div>
       </div>
 
-      <div className={styles.inviteList}>
+      <div ref={inviteListRef} className={styles.inviteList}>
         <span className={styles.placeholder}>{t('invite.type_hint')}</span>
       </div>
 
@@ -172,8 +187,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
       destroyOnClose={true}
       visible={visible}
       onOk={onCleanup}
-      onCancel={onCleanup}
-    >
+      onCancel={onCleanup}>
       {inviteContent}
     </Modal>
   )

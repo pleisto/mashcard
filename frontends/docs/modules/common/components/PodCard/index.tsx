@@ -1,4 +1,4 @@
-import { Avatar, Col, Row } from '@brickdoc/design-system'
+import { Avatar } from '@brickdoc/design-system'
 import React from 'react'
 import styles from './index.module.less'
 
@@ -16,24 +16,13 @@ interface PodCardProps {
 export const PodCard: React.FC<PodCardProps> = ({ pod }) => {
   const avatar = pod.avatarData?.url ? <Avatar src={pod.avatarData.url} /> : <Avatar>{pod.webid}</Avatar>
 
-  const titleData = pod.email ? (
-    <>
-      <span className={styles.bold}>{pod.name}</span>
-      <br />
-      {pod.email}
-    </>
-  ) : (
-    <span className={styles.bold}>{pod.name}</span>
-  )
-
   return (
-    <Row>
-      <Col span={4} className={styles.center}>
-        {avatar}
-      </Col>
-      <Col span={24} className={styles.center}>
-        {titleData}
-      </Col>
-    </Row>
+    <div className={styles.card}>
+      <div className={styles.avatarWrapper}>{avatar}</div>
+      <div className={styles.content}>
+        <span className={styles.name}>{pod.name}</span>
+        {pod.email && <span className={styles.email}>{pod.email}</span>}
+      </div>
+    </div>
   )
 }

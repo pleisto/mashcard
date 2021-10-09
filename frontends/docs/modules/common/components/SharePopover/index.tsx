@@ -119,6 +119,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
         footer={null}
         header={null}
         dataSource={inviteData as ShareLink[]}
+        split={false}
         renderItem={(item: ShareLink) => {
           return (
             <List.Item>
