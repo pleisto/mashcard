@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-load File.expand_path("spring", __dir__)
-
 if ENV['RAILS_ENV'] == 'test'
   require 'simplecov'
   puts "Enabled code coverage collecting."
