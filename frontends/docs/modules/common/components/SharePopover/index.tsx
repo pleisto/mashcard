@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import { Button, Col, Divider, List, Popover, Row, Switch } from '@brickdoc/design-system'
+import cx from 'classnames'
+import { Button, Input, Icon, List, Popover, Switch } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
-import { Help, International, Link } from '@brickdoc/design-system/components/icon'
 import { InviteModal } from '../InviteModal'
 import {
   useBlockCreateShareLinkMutation,
@@ -28,7 +28,6 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
   const [anonymousEditableLoading, setAnonymousEditableLoading] = React.useState<boolean>(false)
   const [shareWithAnonymousValue, setShareWithAnonymousValue] = React.useState<boolean>(false)
   const [anonymousEditableValue, setAnonymousEditableValue] = React.useState<boolean>(false)
-  const [copyLoading, setCopyLoading] = React.useState<boolean>(false)
   const [inviteModalVisible, setInviteModalVisible] = React.useState<boolean>(false)
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation()
   const { data } = useGetBlockShareLinksQuery({ variables: { id: blockId } })
@@ -86,33 +85,29 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
 
   const link = `${host}/${webid}/p/${blockId}`
   const handleCopy = (): void => {
-    setCopyLoading(true)
-    setTimeout(() => {
-      void navigator.clipboard.writeText(link)
-      setCopyLoading(false)
-    }, 2000)
+    void navigator.clipboard.writeText(link)
   }
 
   const allowEditContent = shareWithAnonymousValue ? (
     <>
-      <Button type="text" className={styles.text_button} onClick={handleCopy} disabled={copyLoading}>
-        <span className={styles.copy_link_placeholder}>{link}</span>
-        <span className={styles.copy_button}>{t('share.copy')}</span>
-      </Button>
-      <Row className={styles.padding_top}>
-        <Col span={20} className={styles.center}>
-          <span className={styles.bold}>{t('share.allow_edit')}</span>
-        </Col>
-        <Col span={3} offset={1} className={styles.center}>
-          <Switch onChange={onSwitchAnonymousEditable} loading={anonymousEditableLoading} checked={anonymousEditableValue} />
-        </Col>
-      </Row>
-
-      <Divider />
+      <div className={styles.row}>
+        <div className={styles.inputWrapper}>
+          <Input className={styles.input} value={link} />
+          <Button className={styles.inputButton} type="text" onClick={handleCopy}>
+            {t('share.copy')}
+          </Button>
+        </div>
+      </div>
+      <div className={cx(styles.row, styles.bordered)}>
+        <div className={styles.content}>
+          <span className={styles.head}>{t('share.allow_edit')}</span>
+        </div>
+        <div className={styles.action}>
+          <Switch size="small" onChange={onSwitchAnonymousEditable} loading={anonymousEditableLoading} checked={anonymousEditableValue} />
+        </div>
+      </div>
     </>
-  ) : (
-    <></>
-  )
+  ) : null
 
   const inviteData = data?.blockShareLinks.filter(link => link.state === ShareLinkState.Enabled && link.shareWebid !== ANYONE_WEBID) ?? []
   const suggestPods = data?.blockShareLinks.filter(link => link.shareWebid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
@@ -139,49 +134,41 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
 
   const shareContent = (
     <>
-      <Row>
-        <Col span={2} className={styles.center}>
-          <International />
-        </Col>
-        <Col span={18} className={styles.center}>
-          <div>
-            <div>
-              <span className={styles.bold}>{t('share.share_to_web')}</span>
-              <br />
-              <span>{t('share.share_to_web_description')}</span>
-            </div>
-          </div>
-        </Col>
-        <Col span={3} offset={1} className={styles.center}>
-          <div>
-            <Switch onChange={onSwitchShareAnonymous} loading={shareWithAnonymousLoading} checked={shareWithAnonymousValue} />
-          </div>
-        </Col>
-      </Row>
-
-      <Divider />
+      <div className={cx(styles.row, styles.bordered)}>
+        <div className={styles.icon}>
+          <Icon.International />
+        </div>
+        <div className={styles.content}>
+          <span className={styles.head}>{t('share.share_to_web')}</span>
+          <span className={styles.description}>{t('share.share_to_web_description')}</span>
+        </div>
+        <div className={styles.action}>
+          <Switch size="small" onChange={onSwitchShareAnonymous} loading={shareWithAnonymousLoading} checked={shareWithAnonymousValue} />
+        </div>
+      </div>
       {allowEditContent}
 
-      <Button type="text" className={styles.text_button} onClick={onClickInviteButton}>
-        <span className={styles.invite_placeholder}>{t('share.invite_placeholder')}</span>
-        <span className={styles.invite_button}>{t('share.invite_button')}</span>
-      </Button>
+      <div className={cx(styles.row, styles.bordered)}>
+        <div className={styles.inputWrapper}>
+          <Input className={styles.input} placeholder={t('share.invite_placeholder')} value="" />
+          <Button className={styles.inputButton} type="primary" onClick={onClickInviteButton}>
+            {t('share.invite_button')}
+          </Button>
+        </div>
+      </div>
 
       {inviteList}
 
-      <Divider />
-
-      <div>
-        <Row>
-          <Col span={10}>
-            <Help />
-            <span>{t('share.learn')}</span>
-          </Col>
-          <Col span={6} offset={8}>
-            <Link />
-            <span>{t('share.copy_link_button')}</span>
-          </Col>
-        </Row>
+      <div className={styles.footer}>
+        <div className={styles.content}>
+          <Icon.Help />
+          <span>{t('share.learn')}</span>
+        </div>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+        <div role="button" tabIndex={-1} onClick={handleCopy} className={styles.action}>
+          <Icon.Link />
+          <span>{t('share.copy_link_button')}</span>
+        </div>
       </div>
     </>
   )
@@ -194,6 +181,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
         placement="bottom"
         visible={visible}
         content={shareContent}
+        overlayClassName={styles.popover}
         onVisibleChange={handleVisibleChange}
       />
       <InviteModal

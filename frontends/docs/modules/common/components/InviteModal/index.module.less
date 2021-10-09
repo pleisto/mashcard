@@ -1,7 +1,92 @@
-.center {
-  margin: auto;
+.modal {
+  :global(.brk-modal-body) {
+    padding: 0;
+  }
 }
 
-.tag {
-  margin: 1;
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 12px;
+
+  .select {
+    flex: 1;
+
+    :global(.brk-select-selector) {
+      background-color: transparent;
+      height: 32px;
+      border: none;
+      outline: none;
+    }
+
+    :global(.brk-select-multiple .brk-select-selection-search) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .policyDropdown {
+    color: rgba(191, 188, 198, 1);
+    font-size: 14px;
+  }
+
+  .inviteButton {
+    margin-left: 8px;
+    width: 67px;
+    font-size: 14px;
+  }
+}
+
+.inviteList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+
+  .placeholder {
+    color: rgba(191, 188, 198, 1);
+    font-size: 14px;
+  }
+}
+
+.footer {
+  position: relative;
+  padding: 7px 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(191, 188, 198, 1);
+
+  span + span {
+    margin-left: 4.5px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12px;
+    right: 12px;
+    height: 1px;
+    background: #f6f6f6;
+  }
+}
+
+.menuItem {
+  width: 310px;
+  padding: 16px;
+
+  .head {
+    line-height: 20px;
+    font-size: 14px;
+  }
+
+  .desc {
+    line-height: 16px;
+    font-size: 12px;
+    color: #847e8e;
+  }
 }
