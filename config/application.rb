@@ -54,7 +54,9 @@ module Brickdoc
       loader.setup
     end
 
-    config.after_initialize do
+    initializer :load_plugins, after: :prepend_helpers_path, before: :load_config_initializers do
+      require_relative '../app/models/application_record'
+      require_relative '../app/models/brickdoc_config'
       BrickdocPlugin.load_plugins
 
       ## Enabled Global Plugin
