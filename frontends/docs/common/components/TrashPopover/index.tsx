@@ -1,8 +1,7 @@
-import { Divider, Input, Popover, Tabs } from '@brickdoc/design-system'
+import { Input, Popover, Icon, Tabs } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { PageTrash } from '../PageTrash'
-import { Help } from '@brickdoc/design-system/components/icon'
 import styles from './index.module.less'
 
 interface TrashPopoverProps {
@@ -13,9 +12,6 @@ interface TrashPopoverProps {
 }
 
 export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visible, setVisible }) => {
-  const { TabPane } = Tabs
-  const { Search } = Input
-
   const [searchObject, setSearchObject] = useState<object>({})
 
   const { t } = useDocsI18n()
@@ -30,22 +26,22 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visibl
 
   const tabPaneSkelecton = (tab: string, key: string, docid: string | null): any => {
     return (
-      <TabPane tab={tab} key={key}>
-        <Search
+      <Tabs.TabPane tab={tab} key={key}>
+        <Input.Search
           placeholder={t('trash.search')}
           onSearch={value => {
             handleSearch(value, key)
           }}
           allowClear
         />
-        <br />
         <div className={styles.list}>
           <PageTrash webid={webid} search={(searchObject as any)[key]} docid={docid} setVisible={setVisible} />
         </div>
-        <Divider />
-        <Help />
-        <span>{t('trash.learn')}</span>
-      </TabPane>
+        <div className={styles.footer}>
+          <Icon.Help />
+          <span>{t('trash.learn')}</span>
+        </div>
+      </Tabs.TabPane>
     )
   }
 
@@ -53,7 +49,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visibl
   const allPagesData = tabPaneSkelecton(t('trash.all_pages'), 'allPages', null)
 
   const popoverContent = (
-    <Tabs defaultActiveKey="allPages">
+    <Tabs className={styles.tabs} defaultActiveKey="allPages">
       {allPagesData}
       {currentPageData}
     </Tabs>
@@ -62,6 +58,8 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visibl
   return (
     <Popover
       content={popoverContent}
+      overlayClassName={styles.popover}
+      destroyTooltipOnHide={true}
       trigger="click"
       placement="right"
       title={null}

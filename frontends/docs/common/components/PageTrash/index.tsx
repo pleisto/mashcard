@@ -3,6 +3,7 @@ import { List, Skeleton } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { BlockListItem } from '../BlockListItem'
+import styles from './PageTrash.module.css'
 
 interface PageTrashProps {
   webid: string
@@ -28,18 +29,20 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
   }
 
   if (!data?.trashBlocks?.length) {
-    return <>{t('trash.not_found')}</>
+    return t('trash.not_found')
   }
 
   return (
     <List
+      className={styles.list}
       size="small"
+      split={false}
       footer={null}
       header={null}
       dataSource={data.trashBlocks as Block[]}
       renderItem={(item: Block) => {
         return (
-          <List.Item>
+          <List.Item className={styles.item}>
             <BlockListItem webid={webid} block={item} setVisible={setVisible} />
           </List.Item>
         )

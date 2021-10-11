@@ -8,16 +8,22 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
+import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
+
 export default IconWrapper('undo', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 48 48" fill="none">
+  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
     <path
-      d="M11.2721 36.7279C14.5294 39.9853 19.0294 42 24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C19.0294 6 14.5294 8.01472 11.2721 11.2721C9.61407 12.9301 6 17 6 17"
-      stroke="black"
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M12 4C16.4183 4 20 7.58173 20 12C20 16.4183 16.4183 20 12 20C9.79056 20 7.79194 19.1057 6.34317 17.6569C5.95265 17.2663 5.31948 17.2663 4.92895 17.6568C4.53842 18.0474 4.53841 18.6805 4.92893 19.071C6.73746 20.8796 9.23884 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47717 17.5228 2 12 2C9.23884 2 6.73746 3.12038 4.92893 4.92895C4.49461 5.36328 3.81984 6.0969 3.26642 6.70709C2.98689 7.0153 2.73359 7.29726 2.55021 7.50213C2.45848 7.6046 2.38416 7.68788 2.3327 7.74563L2.25266 7.83556L3 8.5L3.74774 9.16399L3.82583 9.07626C3.87643 9.01948 3.94976 8.9373 4.0404 8.83604C4.22174 8.63345 4.47202 8.35486 4.74788 8.05071C5.30523 7.43617 5.94849 6.73782 6.34316 6.34316C7.79193 4.89435 9.79056 4 12 4ZM2.336 9.24774C2.74897 9.61445 3.38103 9.57695 3.74774 9.16399L3 8.5L2.25266 7.83556C1.88594 8.24852 1.92304 8.88102 2.336 9.24774Z"
+      fill="currentColor"
     />
-    <path d="M6 9V17H14" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M3 3C2.44772 3 2 3.44772 2 4V8.5C2 9.05228 2.44772 9.5 3 9.5H7.5C8.05228 9.5 8.5 9.05228 8.5 8.5C8.5 7.94772 8.05228 7.5 7.5 7.5H4V4C4 3.44772 3.55228 3 3 3Z"
+      fill="currentColor"
+    />
   </svg>
 ))
