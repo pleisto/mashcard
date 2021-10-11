@@ -5,6 +5,7 @@ import { useDocsI18n } from '../../hooks'
 import { useBlockSoftDeleteMutation, BlockSoftDeleteInput, Scalars } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../graphql'
 import { SubBlockModal } from '../SubBlockModal'
+import { queryChildrenBlocks } from '@/docs/pages/graphql'
 
 type UUID = Scalars['UUID']
 
@@ -18,7 +19,7 @@ export const PageMenu: React.FC<PageMenuProps> = props => {
   const [blockId, setBlockId] = useState<string | undefined>()
   const [createSubBlockModalVisible, setCreateSubBlockModalVisible] = useState<boolean>(false)
 
-  const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks] })
+  const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks, queryChildrenBlocks] })
   const deletePage = async (id: UUID): Promise<void> => {
     const input: BlockSoftDeleteInput = { id }
     await blockSoftDelete({ variables: { input } })
