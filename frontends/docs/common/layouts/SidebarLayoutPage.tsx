@@ -24,7 +24,7 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, doc
     <Sider className={styles.sider}>
       <PodSelect webid={webid} />
       <SearchModal webid={webid} />
-      <PageTree webid={webid} />
+      <PageTree webid={webid} docid={docid} />
       <TrashButton webid={webid} docid={docid} />
       <div className={styles.siderFooter}>
         <NewPage webid={webid} />

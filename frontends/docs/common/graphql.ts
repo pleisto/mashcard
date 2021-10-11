@@ -215,9 +215,10 @@ export const BlockRestore = gql`
   }
 `
 
-export const BlockCreateSubBlock = gql`
-  mutation blockCreateSubBlock($input: BlockCreateSubBlockInput!) {
-    blockCreateSubBlock(input: $input) {
+export const BlockCreate = gql`
+  mutation blockCreate($input: BlockCreateInput!) {
+    blockCreate(input: $input) {
+      id
       errors
     }
   }

@@ -9,14 +9,15 @@ import styles from './PageTree.module.css'
 
 interface PageTreeProps {
   webid: string
+  docid: string | undefined
 }
 
-export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
-  const { data, loading } = useGetPageBlocksQuery({ variables: { webid } })
-  const [blockMove, { loading: moveLoading }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
+export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
+  const { data } = useGetPageBlocksQuery({ variables: { webid } })
+  const [blockMove, { loading }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
 
-  if (loading || moveLoading) {
+  if (loading) {
     return <Skeleton />
   }
 
@@ -80,6 +81,9 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
   }
 
   const treeData = array2Tree(flattedData, { id: 'key' })
+  const selectedKeys = docid ? [docid] : []
 
-  return <Tree className={styles.tree} treeData={treeData} defaultExpandAll draggable={draggable} onDrop={onDrop} />
+  return (
+    <Tree className={styles.tree} selectedKeys={selectedKeys} treeData={treeData} defaultExpandAll draggable={draggable} onDrop={onDrop} />
+  )
 }
