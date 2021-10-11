@@ -37,43 +37,9 @@
 #  index_accounts_users_on_unlock_token          (unlock_token) UNIQUE
 #
 class Accounts::User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  ## Devise
   devise :database_authenticatable, :registerable, :lockable, :async,
          :recoverable, :rememberable, :confirmable, :trackable, :omniauthable, :validatable
-
-  # Pod
-  has_many :pods, class_name: 'Pod', foreign_key: :owner_id, inverse_of: :owner
-
-  has_one :personal_pod, -> { where(personal: true) },
-          class_name: 'Pod', dependent: :destroy,
-          foreign_key: :owner_id, inverse_of: :owner, autosave: true
-
-  delegate :webid, :webid=, :name, :name=, :bio, :bio=, :avatar, :avatar=, :avatar_data,
-           to: :personal_pod
-  alias_method :original_personal_pod, :personal_pod
-
-  attribute :current_pod_id, :integer
-
-  def personal_pod
-    original_personal_pod || build_personal_pod
-  end
-
-  # FederatedIdentity
-  has_many :federated_identities, class_name: 'Accounts::FederatedIdentity',
-           foreign_key: :accounts_user_id, inverse_of: :user, dependent: :destroy
-  attr_accessor :omniauth_provider, :omniauth_uid
-  after_commit :bind_federation_identity, if: proc { omniauth_provider.present? }, on: [:create, :update]
-
-  def bind_federation_identity
-    Accounts::FederatedIdentity.find_or_create_by!(provider: omniauth_provider, uid: omniauth_uid, accounts_user_id: id)
-  end
-
-  # default values
-  default_value_for :locale, BrickdocConfig.default_locale
-  default_value_for :timezone, BrickdocConfig.default_timezone
-
-  # Devise Overwrite
 
   # When federated identity is not available, the password field is required
   def email_required?
@@ -123,5 +89,52 @@ class Accounts::User < ApplicationRecord
     else
       { success: false, message: errors.first }
     end
+  end
+
+  ## Pod
+  has_many :pods, class_name: 'Pod', foreign_key: :owner_id, inverse_of: :owner
+
+  has_one :personal_pod, -> { where(personal: true) },
+          class_name: 'Pod', dependent: :destroy,
+          foreign_key: :owner_id, inverse_of: :owner, autosave: true
+
+  delegate :webid, :webid=, :name, :name=, :bio, :bio=, :avatar, :avatar=, :avatar_data,
+           to: :personal_pod
+  alias_method :original_personal_pod, :personal_pod
+
+  attribute :current_pod_id, :integer
+
+  def personal_pod
+    original_personal_pod || build_personal_pod
+  end
+
+  ## FederatedIdentity
+  has_many :federated_identities, class_name: 'Accounts::FederatedIdentity',
+           foreign_key: :accounts_user_id, inverse_of: :user, dependent: :destroy
+  attr_accessor :omniauth_provider, :omniauth_uid
+  after_commit :bind_federation_identity, if: proc { omniauth_provider.present? }, on: [:create, :update]
+
+  def bind_federation_identity
+    Accounts::FederatedIdentity.find_or_create_by!(provider: omniauth_provider, uid: omniauth_uid, accounts_user_id: id)
+  end
+
+  ## default values
+  default_value_for :locale, BrickdocConfig.default_locale
+  default_value_for :timezone, BrickdocConfig.default_timezone
+
+  ## Stafftools
+  has_many :stafftools_role_assignments, dependent: :destroy, class_name: 'Stafftools::RoleAssignment', foreign_key: 'accounts_user_id'
+  has_many :stafftools_roles, through: :stafftools_role_assignments, class_name: 'Stafftools::Role'
+
+  def stafftools_permissions
+    stafftools_roles.map(&:permissions).flatten.uniq
+  end
+
+  def has_stafftools_permission?(permission)
+    stafftools_permissions.include?(permission)
+  end
+
+  def staff?
+    Stafftools::RoleAssignment.exists?(accounts_user_id: id)
   end
 end

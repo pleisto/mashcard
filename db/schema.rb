@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_062653) do
+ActiveRecord::Schema.define(version: 2021_10_11_092525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -195,6 +195,25 @@ ActiveRecord::Schema.define(version: 2021_09_28_062653) do
     t.index ["owner_id"], name: "index_pods_on_owner_id"
   end
 
+  create_table "stafftools_role_assignments", force: :cascade do |t|
+    t.bigint "accounts_user_id", null: false
+    t.bigint "stafftools_role_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accounts_user_id"], name: "index_stafftools_role_assignments_on_accounts_user_id"
+    t.index ["stafftools_role_id"], name: "index_stafftools_role_assignments_on_stafftools_role_id"
+  end
+
+  create_table "stafftools_roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "permissions", default: [], array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_stafftools_roles_on_name", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "stafftools_role_assignments", "accounts_users"
+  add_foreign_key "stafftools_role_assignments", "stafftools_roles"
 end

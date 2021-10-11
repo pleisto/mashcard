@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   draw :accounts
+  draw :stafftools
   draw(:devtools) unless Rails.env.production?
 
   ## ActiveStorage::Blob#service_url_for_direct_upload
