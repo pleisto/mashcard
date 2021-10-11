@@ -15,9 +15,21 @@ export interface DocumentTopBarProps {
   shareable: boolean
   editable: boolean
   isAnonymous: boolean
+  title: string
+  isDeleted: boolean
 }
 
-export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ webid, docid, saving, viewable, isAnonymous, editable, shareable }) => {
+export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
+  webid,
+  docid,
+  saving,
+  viewable,
+  title,
+  isDeleted,
+  isAnonymous,
+  editable,
+  shareable
+}) => {
   const { t } = useDocsI18n()
   const [redirectHome, setRedirectHome] = useState<boolean>(false)
 
@@ -29,14 +41,15 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ webid, docid, sa
     return <Redirect to="/" />
   }
 
-  const editableMenu = shareable ? (
-    <div className={styles.menu}>
-      <ShareMenu className={styles.menuItem} id={docid} webid={webid} />
-      <MoreMenu className={styles.menuItem} id={docid} webid={webid} />
-    </div>
-  ) : (
-    <></>
-  )
+  const editableMenu =
+    shareable && !isDeleted ? (
+      <div className={styles.menu}>
+        <ShareMenu className={styles.menuItem} id={docid} webid={webid} />
+        <MoreMenu className={styles.menuItem} id={docid} webid={webid} />
+      </div>
+    ) : (
+      <></>
+    )
 
   const handleLogin = (): void => {
     setRedirectHome(true)

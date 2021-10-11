@@ -37,12 +37,16 @@ export const NewPatch = gql`
   }
 `
 
-export const queryBlockPermission = gql`
-  query GetBlockPermission($id: String!) {
-    blockPermission(id: $id) {
-      key
-      policy
-      state
+export const queryBlockInfo = gql`
+  query GetBlockInfo($id: String!) {
+    blockInfo(id: $id) {
+      title
+      isDeleted
+      permission {
+        key
+        policy
+        state
+      }
     }
   }
 `

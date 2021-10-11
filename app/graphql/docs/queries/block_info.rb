@@ -1,14 +1,25 @@
 # frozen_string_literal: true
 
 module Docs
-  class Queries::BlockPermission < BrickGraphQL::BaseResolver
-    type Docs::Objects::ShareLink, null: true
+  class Queries::BlockInfo < BrickGraphQL::BaseResolver
+    type Docs::Objects::BlockInfo, null: true
 
     argument :id, GraphQL::Types::String, required: true
 
     def resolve(id:)
       return nil if id.blank?
-      base_query = Docs::Block.find(id).share_links
+      block = Docs::Block.find_by(id: id)
+      return nil if block.nil?
+
+      {
+        title: block.title,
+        is_deleted: !!block.deleted_at,
+        permission: permission(block)
+      }
+    end
+
+    def permission(block)
+      base_query = block.share_links
 
       if current_pod.fetch('webid') == Pod::ANONYMOUS_WEBID
         base_query.find_by(share_webid: Pod::ANYONE_WEBID)

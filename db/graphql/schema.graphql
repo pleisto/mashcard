@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   github
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   google_oauth2
 }
@@ -302,6 +302,23 @@ type BlockImage {
   width
   """
   width: Int
+}
+
+type BlockInfo {
+  """
+  is deleted
+  """
+  isDeleted: Boolean!
+
+  """
+  permission
+  """
+  permission: ShareLink
+
+  """
+  title
+  """
+  title: String!
 }
 
 """
@@ -1016,6 +1033,7 @@ type RootMutation {
   ): SnapshotRestorePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -1026,6 +1044,7 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -1036,6 +1055,7 @@ type RootMutation {
   ): UserCreatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -1046,6 +1066,7 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -1056,6 +1077,7 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -1066,6 +1088,7 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(
@@ -1081,7 +1104,7 @@ type RootQuery {
   return single block by id.
   """
   block(id: String!): block
-  blockPermission(id: String!): ShareLink
+  blockInfo(id: String!): BlockInfo
   blockSearch(
     """
     input

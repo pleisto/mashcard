@@ -15,6 +15,7 @@ interface DocumentPageProps {
   webid: string
   snapshotVersion: number
   editable: boolean
+  isAnonymous?: boolean
   viewable: boolean
   onCommit: (doc: Node) => Promise<void>
   setCommitting?: (value: boolean) => void
@@ -25,6 +26,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
   docid,
   snapshotVersion,
   editable,
+  isAnonymous,
   viewable,
   onCommit,
   setCommitting
@@ -166,6 +168,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
 
   if (!docid) {
     return PageElement
+  }
+
+  if (isAnonymous && !data?.childrenBlocks?.length) {
+    return <Redirect to="/" />
   }
 
   if (data?.childrenBlocks?.length) {

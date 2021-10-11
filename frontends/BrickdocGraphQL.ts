@@ -187,6 +187,16 @@ export type BlockImage = {
   width?: Maybe<Scalars['Int']>
 }
 
+export type BlockInfo = {
+  __typename?: 'BlockInfo'
+  /** is deleted */
+  isDeleted: Scalars['Boolean']
+  /** permission */
+  permission?: Maybe<ShareLink>
+  /** title */
+  title: Scalars['String']
+}
+
 /** InputObject type of Class */
 export type BlockInput = {
   /** attachments */
@@ -641,7 +651,7 @@ export type RootQuery = {
   __typename?: 'RootQuery'
   /** return single block by id. */
   block?: Maybe<Block>
-  blockPermission?: Maybe<ShareLink>
+  blockInfo?: Maybe<BlockInfo>
   blockSearch?: Maybe<Array<Block>>
   /** return share links by block id. */
   blockShareLinks: Array<ShareLink>
@@ -693,7 +703,7 @@ export type RootQueryBlockArgs = {
   id: Scalars['String']
 }
 
-export type RootQueryBlockPermissionArgs = {
+export type RootQueryBlockInfoArgs = {
   id: Scalars['String']
 }
 
@@ -1588,13 +1598,21 @@ export type NewPatchSubscription = {
   }
 }
 
-export type GetBlockPermissionQueryVariables = Exact<{
+export type GetBlockInfoQueryVariables = Exact<{
   id: Scalars['String']
 }>
 
-export type GetBlockPermissionQuery = {
+export type GetBlockInfoQuery = {
   __typename?: 'RootQuery'
-  blockPermission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
+  blockInfo?:
+    | {
+        __typename?: 'BlockInfo'
+        title: string
+        isDeleted: boolean
+        permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
+      }
+    | null
+    | undefined
 }
 
 export type GetChildrenBlocksQueryVariables = Exact<{
@@ -3188,47 +3206,47 @@ export function useNewPatchSubscription(baseOptions: Apollo.SubscriptionHookOpti
 }
 export type NewPatchSubscriptionHookResult = ReturnType<typeof useNewPatchSubscription>
 export type NewPatchSubscriptionResult = Apollo.SubscriptionResult<NewPatchSubscription>
-export const GetBlockPermissionDocument = gql`
-  query GetBlockPermission($id: String!) {
-    blockPermission(id: $id) {
-      key
-      policy
-      state
+export const GetBlockInfoDocument = gql`
+  query GetBlockInfo($id: String!) {
+    blockInfo(id: $id) {
+      title
+      isDeleted
+      permission {
+        key
+        policy
+        state
+      }
     }
   }
 `
 
 /**
- * __useGetBlockPermissionQuery__
+ * __useGetBlockInfoQuery__
  *
- * To run a query within a React component, call `useGetBlockPermissionQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetBlockPermissionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetBlockInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBlockInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetBlockPermissionQuery({
+ * const { data, loading, error } = useGetBlockInfoQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useGetBlockPermissionQuery(
-  baseOptions: Apollo.QueryHookOptions<GetBlockPermissionQuery, GetBlockPermissionQueryVariables>
-) {
+export function useGetBlockInfoQuery(baseOptions: Apollo.QueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetBlockPermissionQuery, GetBlockPermissionQueryVariables>(GetBlockPermissionDocument, options)
+  return Apollo.useQuery<GetBlockInfoQuery, GetBlockInfoQueryVariables>(GetBlockInfoDocument, options)
 }
-export function useGetBlockPermissionLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockPermissionQuery, GetBlockPermissionQueryVariables>
-) {
+export function useGetBlockInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockPermissionQuery, GetBlockPermissionQueryVariables>(GetBlockPermissionDocument, options)
+  return Apollo.useLazyQuery<GetBlockInfoQuery, GetBlockInfoQueryVariables>(GetBlockInfoDocument, options)
 }
-export type GetBlockPermissionQueryHookResult = ReturnType<typeof useGetBlockPermissionQuery>
-export type GetBlockPermissionLazyQueryHookResult = ReturnType<typeof useGetBlockPermissionLazyQuery>
-export type GetBlockPermissionQueryResult = Apollo.QueryResult<GetBlockPermissionQuery, GetBlockPermissionQueryVariables>
+export type GetBlockInfoQueryHookResult = ReturnType<typeof useGetBlockInfoQuery>
+export type GetBlockInfoLazyQueryHookResult = ReturnType<typeof useGetBlockInfoLazyQuery>
+export type GetBlockInfoQueryResult = Apollo.QueryResult<GetBlockInfoQuery, GetBlockInfoQueryVariables>
 export const GetChildrenBlocksDocument = gql`
   query GetChildrenBlocks($rootId: String!, $snapshotVersion: Int!) {
     childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {

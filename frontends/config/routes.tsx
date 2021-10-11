@@ -70,7 +70,7 @@ export const routeConfig = (context: BrickdocContext): JSX.Element => {
     {
       path: '/:webid/p/:docid',
       exact: true,
-      beforeAction: authenticateUser,
+      // beforeAction: authenticateUser,
       component: DocumentContentPage
     },
     {
