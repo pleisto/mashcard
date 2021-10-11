@@ -424,7 +424,7 @@ class Docs::Block < ApplicationRecord
   def path_map
     result = {}
     parent_ids = [parent_id]
-    data = descendants
+    data = descendants(unscoped: true)
 
     loop do
       this_level = data.select { |b| b.parent_id.in?(parent_ids) }
@@ -438,8 +438,8 @@ class Docs::Block < ApplicationRecord
       parent_ids = this_level.map(&:id)
     end
 
-    result.tap do |path_map|
-      raise("[ERROR] path is empty!") if path_map.blank?
+    result.tap do |map|
+      raise("[ERROR] path is empty!") if map.blank?
     end
   end
 

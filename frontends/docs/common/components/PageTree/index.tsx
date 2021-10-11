@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useGetPageBlocksQuery, useBlockMoveMutation, BlockMoveInput, Block, Blocktype, BlockEmoji } from '@/BrickdocGraphQL'
 import { Skeleton, Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/utils'
@@ -12,12 +12,15 @@ interface PageTreeProps {
 }
 
 export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
-  const { data } = useGetPageBlocksQuery({ variables: { webid } })
-  const [blockMove] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
+  const { data, loading } = useGetPageBlocksQuery({ variables: { webid } })
+  const [blockMove, { loading: moveLoading }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
+  const [draggable, setDraggable] = useState<boolean>(true)
 
-  if (!data?.pageBlocks) {
+  if (loading || moveLoading) {
     return <Skeleton />
   }
+
+  const pageBlocks = data?.pageBlocks ?? []
 
   const getTitle = (block: Block): string => {
     const emoji = block.meta.icon?.type === Blocktype.Emoji ? (block.meta.icon as BlockEmoji).emoji : ''
@@ -31,7 +34,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
     }
   }
 
-  const flattedData = data.pageBlocks
+  const flattedData = pageBlocks
     .map(b => {
       // const data: BlockData = i.data
       const title = getTitle(b as Block)
@@ -51,6 +54,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
 
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
     let targetParentId: string | undefined | null, sort: number
+    setDraggable(false)
 
     const node = attrs.node as unknown as Block & { key: string }
     // Check if is root node
@@ -72,9 +76,10 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid }) => {
       input.targetParentId = targetParentId
     }
     await blockMove({ variables: { input } })
+    setDraggable(true)
   }
 
   const treeData = array2Tree(flattedData, { id: 'key' })
 
-  return <Tree className={styles.tree} treeData={treeData} defaultExpandAll draggable onDrop={onDrop} />
+  return <Tree className={styles.tree} treeData={treeData} defaultExpandAll draggable={draggable} onDrop={onDrop} />
 }
