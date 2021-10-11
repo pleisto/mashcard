@@ -8,48 +8,31 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
-
-export default IconWrapper(
-    'oval-love',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            fill="none"
-            viewBox="0 0 24 24"
-        >
-            <path
-                fillOpacity=".01"
-                fill={props.colors[2]}
-                d="M24 0H0v24h24V0z"
-            />
-            <path
-                fillOpacity=".01"
-                fill={props.colors[2]}
-                d="M24 0H0v24h24V0z"
-            />
-            <path
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                stroke="#333"
-                d="M14.758 8.75c2.762 4.783 2.48 10.115-.629 11.91s-7.868-.627-10.63-5.41C.74 10.467 1.02 5.135 4.13 3.34s7.868.627 10.63 5.41z"
-            />
-            <path
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                stroke="#333"
-                d="M9.13 8.75c-2.762 4.783-2.48 10.115.628 11.91 3.11 1.795 7.868-.627 10.63-5.41 2.76-4.783 2.48-10.115-.63-11.91-3.109-1.795-7.867.627-10.629 5.41z"
-            />
-            <path
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                stroke="#333"
-                d="M11.876 5.172c1.073.954 2.065 2.163 2.882 3.578 2.762 4.783 2.48 10.115-.629 11.91a4.498 4.498 0 0 1-2.13.59"
-            />
-        </svg>
-    )
-);
+import { ISvgIconProps, IconWrapper } from '../icon'
+export default IconWrapper('oval-love', false, (props: ISvgIconProps) => (
+  <svg fill="none" viewBox="0 0 24 24">
+    <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
+    <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
+    <path
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2"
+      stroke="#333"
+      d="M14.758 8.75c2.762 4.783 2.48 10.115-.629 11.91s-7.868-.627-10.63-5.41C.74 10.467 1.02 5.135 4.13 3.34s7.868.627 10.63 5.41z"
+    />
+    <path
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2"
+      stroke="#333"
+      d="M9.13 8.75c-2.762 4.783-2.48 10.115.628 11.91 3.11 1.795 7.868-.627 10.63-5.41 2.76-4.783 2.48-10.115-.63-11.91-3.109-1.795-7.867.627-10.629 5.41z"
+    />
+    <path
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2"
+      stroke="#333"
+      d="M11.876 5.172c1.073.954 2.065 2.163 2.882 3.578 2.762 4.783 2.48 10.115-.629 11.91a4.498 4.498 0 0 1-2.13.59"
+    />
+  </svg>
+))

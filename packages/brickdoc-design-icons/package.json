@@ -1,14 +1,14 @@
 {
   "name": "@brickdoc/design-icons",
   "author": "Brickdoc LTD",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://brickdoc.org",
   "license": "Apache-2.0",
   "packageManager": "yarn@3.0.0",
   "sideEffects": false,
   "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "module": "src/index.ts",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "eslint:fix": "eslint --fix --cache ./src",
     "cleanup": "rm -rf dist",

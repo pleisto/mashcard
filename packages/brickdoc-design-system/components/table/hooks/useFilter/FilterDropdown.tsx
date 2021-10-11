@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import isEqual from 'lodash/isEqual'
+import { isEqual } from 'lodash-es'
 import { Filter as FilterFilled } from '../../../icon'
 import Button from '../../../button'
 import Menu from '../../../menu'

@@ -1,0 +1,18 @@
+diff --git a/dist/imports.js b/dist/imports.js
+index 8f16352ab74f329dd01389d416059754bbf0a99f..3a63ef772ad564b51c91e5df5a65a13ec6ae9975 100644
+--- a/dist/imports.js
++++ b/dist/imports.js
+@@ -41,10 +41,8 @@ function assertImportExists(name, cwd) {
+     return resolveImport(name, cwd, true) && name;
+ }
+ exports.assertImportExists = assertImportExists;
+-function inferNamedImports(root) {
+-    return resolveImport('preact', root)
+-        ? { preact: ['h'], '@mdx-js/preact': ['mdx'] }
+-        : { react: 'React', '@mdx-js/react': ['mdx'] };
++function inferNamedImports(_root) {
++    return { react: 'React', '@mdx-js/react': ['mdx'] };
+ }
+ exports.inferNamedImports = inferNamedImports;
+ //# sourceMappingURL=imports.js.map
+\ No newline at end of file

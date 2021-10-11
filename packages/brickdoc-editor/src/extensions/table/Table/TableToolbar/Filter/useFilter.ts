@@ -1,5 +1,5 @@
 import React from 'react'
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { FilterGroupOption, FilterOption } from './Filter'
 import { matches } from '../../columnType'
 import { useAsyncDebounce } from 'react-table'

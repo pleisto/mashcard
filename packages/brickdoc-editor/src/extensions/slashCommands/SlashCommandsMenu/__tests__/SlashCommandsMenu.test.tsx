@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { SlashCommandsMenu } from '../SlashCommandsMenu'
 import { render, screen, fireEvent } from '@testing-library/react'
 

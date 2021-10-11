@@ -5,7 +5,7 @@ class Accounts::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    render 'pages/accounts'
+    render 'pages/pwa'
   end
 
   # POST /resource/sign_in

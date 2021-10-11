@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import { Dayjs } from 'dayjs'
 import './style'
 import DatePicker from '../date-picker'
 import { PickerTimeProps, RangePickerTimeProps } from '../date-picker/generatePicker'
@@ -12,7 +12,7 @@ export interface TimePickerLocale {
   rangePlaceholder?: [string, string]
 }
 
-export interface TimeRangePickerProps extends Omit<RangePickerTimeProps<Date>, 'picker'> {
+export interface TimeRangePickerProps extends Omit<RangePickerTimeProps<Dayjs>, 'picker'> {
   popupClassName?: string
 }
 
@@ -20,7 +20,7 @@ const RangePicker = React.forwardRef<any, TimeRangePickerProps>((props, ref) => 
   <InternalRangePicker {...props} dropdownClassName={props.popupClassName} picker="time" mode={undefined} ref={ref} />
 ))
 
-export interface TimePickerProps extends Omit<PickerTimeProps<Date>, 'picker'> {
+export interface TimePickerProps extends Omit<PickerTimeProps<Dayjs>, 'picker'> {
   addon?: () => React.ReactNode
   popupClassName?: string
 }

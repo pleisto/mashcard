@@ -1,4 +1,3 @@
-import * as React from 'react'
 import classNames from 'classnames'
 import Dialog, { ModalFuncProps } from './Modal'
 import ActionButton from '../_util/ActionButton'

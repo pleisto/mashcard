@@ -1,6 +1,6 @@
 import { Button } from '@brickdoc/design-system'
 import React from 'react'
-import { debounce } from 'lodash'
+import { debounce } from 'lodash-es'
 import { DashboardPluginOptions, UnsplashImage } from './plugin'
 
 interface UnsplashPanelProps {

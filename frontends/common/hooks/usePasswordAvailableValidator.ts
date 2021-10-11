@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import { isEmpty } from 'lodash-es'
 import { useImperativeQuery } from '@/common/hooks/index'
 import {
   QueryPasswordAvailableFromWsDocument,

@@ -310,7 +310,6 @@ const Drawer = React.forwardRef<DrawerRef, InternalDrawerProps>(
             maskClosable,
             level,
             keyboard,
-            children,
             onClose,
             ...rest
           }}

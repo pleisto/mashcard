@@ -11,7 +11,6 @@ on:
       - bin/**
       - packages/brickdoc-design-system/**
       - '!packages/brickdoc-design-system/components/**'
-      - packages/less-vars-loader/**
       - packages/eslint-plugin-brickdoc/**
       - gems/rubocop-brickdoc/**
       - public/**
@@ -34,7 +33,6 @@ on:
       - bin/**
       - packages/brickdoc-design-system/**
       - '!packages/brickdoc-design-system/components/**'
-      - packages/less-vars-loader/**
       - packages/eslint-plugin-brickdoc/**
       - gems/rubocop-brickdoc/**
       - public/**

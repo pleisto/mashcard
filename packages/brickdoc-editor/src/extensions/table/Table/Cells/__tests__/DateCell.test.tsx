@@ -1,4 +1,3 @@
-import React from 'react'
 import { DateCell } from '../DateCell'
 import { render, screen } from '@testing-library/react'
 

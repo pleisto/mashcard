@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAsyncDebounce } from 'react-table'
-import { orderBy, uniqBy } from 'lodash'
+import { orderBy, uniqBy } from 'lodash-es'
 import { SorterOption } from './Sorter'
 
 export function useSorter(defaultSorterOptions: SorterOption[]): [

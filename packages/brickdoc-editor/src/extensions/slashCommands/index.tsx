@@ -1,5 +1,4 @@
 // ref: https://github.com/ueberdosis/tiptap/blob/main/packages/suggestion/src/suggestion.ts
-import * as React from 'react'
 import { ReactRenderer, Editor, Extension } from '@tiptap/react'
 import Suggestion from '@tiptap/suggestion'
 import { Icon } from '@brickdoc/design-system'

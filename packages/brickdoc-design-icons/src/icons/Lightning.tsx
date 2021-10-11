@@ -8,28 +8,10 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
-
-export default IconWrapper(
-    'lightning',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            fill="none"
-            viewBox="0 0 24 24"
-        >
-            <path
-                fillOpacity=".01"
-                fill={props.colors[2]}
-                d="M24 0H0v24h24V0z"
-            />
-            <path
-                strokeLinejoin="round"
-                strokeWidth="2"
-                stroke={props.colors[0]}
-                d="M9.5 2h9L13 9h7.5l-12 13 2.5-9.5H4L9.5 2z"
-            />
-        </svg>
-    )
-);
+import { ISvgIconProps, IconWrapper } from '../icon'
+export default IconWrapper('lightning', false, (props: ISvgIconProps) => (
+  <svg fill="none" viewBox="0 0 24 24">
+    <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
+    <path strokeLinejoin="round" strokeWidth="2" stroke={props.colors[0]} d="M9.5 2h9L13 9h7.5l-12 13 2.5-9.5H4L9.5 2z" />
+  </svg>
+))

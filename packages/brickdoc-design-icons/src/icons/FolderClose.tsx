@@ -8,30 +8,15 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
-
-export default IconWrapper(
-    'folder-close',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            fill="none"
-            viewBox="0 0 24 24"
-        >
-            <path
-                strokeLinejoin="round"
-                strokeWidth="2"
-                stroke={props.colors[0]}
-                d="M2.5 4a1 1 0 0 1 1-1h6L12 6h8.5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1V4zM21.5 11h-19"
-            />
-            <path
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                stroke={props.colors[0]}
-                d="M2.5 8v6M21.5 8v6"
-            />
-        </svg>
-    )
-);
+import { ISvgIconProps, IconWrapper } from '../icon'
+export default IconWrapper('folder-close', false, (props: ISvgIconProps) => (
+  <svg fill="none" viewBox="0 0 24 24">
+    <path
+      strokeLinejoin="round"
+      strokeWidth="2"
+      stroke={props.colors[0]}
+      d="M2.5 4a1 1 0 0 1 1-1h6L12 6h8.5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1V4zM21.5 11h-19"
+    />
+    <path strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" stroke={props.colors[0]} d="M2.5 8v6M21.5 8v6" />
+  </svg>
+))

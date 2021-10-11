@@ -1,5 +1,4 @@
 import React from 'react'
-
 export * from '@brickdoc/design-icons'
 
 export const ImageIcon: React.FC<{ src: string; alt?: string }> = props => {

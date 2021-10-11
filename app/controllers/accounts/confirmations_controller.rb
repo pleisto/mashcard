@@ -5,7 +5,7 @@ class Accounts::ConfirmationsController < Devise::ConfirmationsController
 
   # GET /resource/confirmation/new
   def new
-    render 'pages/accounts'
+    render 'pages/pwa'
   end
 
   # POST /resource/confirmation

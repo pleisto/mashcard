@@ -1,2 +1,0 @@
-extends:
-  - plugin:@brickdoc/eslint-plugin/node

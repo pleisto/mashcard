@@ -1,4 +1,3 @@
-import React from 'react'
 import { TextCell } from '../TextCell'
 import { render, screen, fireEvent } from '@testing-library/react'
 

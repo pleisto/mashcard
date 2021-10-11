@@ -3,6 +3,10 @@
 <div align="center">
 Forked From <a href="https://ant.design/" target="_blank">Ant Design</a>.
 </div>
+<br/><br/>
+At Brickdoc we are committed to enhancing human intelligence.
+
+Our design system helps us work together to build a great experience.
 
 ## 📦 Install
 
@@ -63,3 +67,8 @@ const App = () => (
 ### 0.3.2
 
 - Sync of patches from Ant Design 4.17-alpha.5
+
+### 0.4.0
+
+- Migrating webpack to vite
+- Use `dayjs` instead of `date-fns`

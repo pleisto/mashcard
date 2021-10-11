@@ -63,6 +63,7 @@ describe('linkBlock', () => {
   })
 
   // TODO: Failed on CI for no reason
+  // eslint-disable-next-line jest/no-disabled-tests
   describe.skip('attachment file', () => {
     it('should upload attachment successfully', () => {
       cy.visit('/')

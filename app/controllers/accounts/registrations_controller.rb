@@ -5,7 +5,7 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    render 'pages/accounts'
+    render 'pages/pwa'
   end
 
   # POST /resource/sign_up

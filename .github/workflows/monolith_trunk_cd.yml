@@ -4,7 +4,6 @@ on:
     paths-ignore:
       - '.husky/**'
       - 'bin/**'
-      - 'packages/less-vars-loader/**'
       - 'packages/rubocop-brickdoc/**'
       - 'packages/eslint-plugin-brickdoc/**'
       - '**/*.md'

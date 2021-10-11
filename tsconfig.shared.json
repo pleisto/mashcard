@@ -5,7 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "skipLibCheck": true,
     "importHelpers": true,
     "sourceMap": true,
@@ -15,7 +15,9 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "incremental": true,
+    "useDefineForClassFields": true
   },
   "exclude": ["**/*.stories.ts", "**/*.stories.tsx"]
 }

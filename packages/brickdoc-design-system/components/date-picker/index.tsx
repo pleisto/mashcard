@@ -1,13 +1,14 @@
-import dateFnsGenerateConfig from 'rc-picker/lib/generate/dateFns'
+import { Dayjs } from 'dayjs'
+import dayjsGenerateConfig from 'rc-picker/lib/generate/dayjs'
 
 import './style'
 import generatePicker, { PickerProps, PickerDateProps, RangePickerProps as BaseRangePickerProps } from './generatePicker'
 
-export type DatePickerProps = PickerProps<Date>
-export type MonthPickerProps = Omit<PickerDateProps<Date>, 'picker'>
-export type WeekPickerProps = Omit<PickerDateProps<Date>, 'picker'>
-export type RangePickerProps = BaseRangePickerProps<Date>
+export type DatePickerProps = PickerProps<Dayjs>
+export type MonthPickerProps = Omit<PickerDateProps<Dayjs>, 'picker'>
+export type WeekPickerProps = Omit<PickerDateProps<Dayjs>, 'picker'>
+export type RangePickerProps = BaseRangePickerProps<Dayjs>
 
-const DatePicker = generatePicker<Date>(dateFnsGenerateConfig)
+const DatePicker = generatePicker<Dayjs>(dayjsGenerateConfig)
 
 export default DatePicker

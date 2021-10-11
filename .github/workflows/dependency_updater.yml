@@ -32,8 +32,6 @@ jobs:
         run: cd gems/brickdoc_settings; bundle update; cd ../..
       - name: Update rubocop gems
         run: cd gems/rubocop-brickdoc; bundle update; cd ../..
-      - name: Update webpacker gems
-        run: cd gems/webpacker; bundle update; cd ../..
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:

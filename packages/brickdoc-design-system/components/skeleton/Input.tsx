@@ -1,11 +1,10 @@
-import * as React from 'react'
 import omit from 'rc-util/lib/omit'
 import classNames from 'classnames'
 import Element, { SkeletonElementProps } from './Element'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 
 export interface SkeletonInputProps extends Omit<SkeletonElementProps, 'size' | 'shape'> {
-  size?: 'large' | 'small' | 'default';
+  size?: 'large' | 'small' | 'default'
 }
 
 const SkeletonInput = (props: SkeletonInputProps) => {
@@ -17,9 +16,9 @@ const SkeletonInput = (props: SkeletonInputProps) => {
       prefixCls,
       `${prefixCls}-element`,
       {
-        [`${prefixCls}-active`]: active,
+        [`${prefixCls}-active`]: active
       },
-      className,
+      className
     )
     return (
       <div className={cls}>
@@ -31,7 +30,7 @@ const SkeletonInput = (props: SkeletonInputProps) => {
 }
 
 SkeletonInput.defaultProps = {
-  size: 'default',
+  size: 'default'
 }
 
 export default SkeletonInput

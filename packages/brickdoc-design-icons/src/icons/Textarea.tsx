@@ -8,24 +8,15 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
-
-export default IconWrapper(
-    'textarea',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            fill="none"
-            viewBox="0 0 24 24"
-        >
-            <path
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2"
-                stroke={props.colors[0]}
-                d="M8 2c3.5 0 4 3 4 4v12c0 1-.5 4-4 4M16 2c-3 0-4 3-4 4v12c0 1 .5 4 4 4M8.5 12h7"
-            />
-        </svg>
-    )
-);
+import { ISvgIconProps, IconWrapper } from '../icon'
+export default IconWrapper('textarea', false, (props: ISvgIconProps) => (
+  <svg fill="none" viewBox="0 0 24 24">
+    <path
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2"
+      stroke={props.colors[0]}
+      d="M8 2c3.5 0 4 3 4 4v12c0 1-.5 4-4 4M16 2c-3 0-4 3-4 4v12c0 1 .5 4 4 4M8.5 12h7"
+    />
+  </svg>
+))

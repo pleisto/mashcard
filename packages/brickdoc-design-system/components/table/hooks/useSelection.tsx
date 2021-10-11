@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import { Down as DownOutlined } from '../../icon'
 import { convertDataToEntities } from 'rc-tree/lib/utils/treeUtil'
 import { conductCheck } from 'rc-tree/lib/utils/conductUtil'
@@ -105,7 +104,7 @@ export default function useSelection<RecordType>(
   })
 
   // ======================== Caches ========================
-  const preserveRecordsRef = React.useRef(new Map<Key, RecordType>())
+  const preserveRecordsRef = useRef(new Map<Key, RecordType>())
 
   const updatePreserveRecordsCache = useCallback(
     (keys: Key[]) => {
@@ -129,7 +128,7 @@ export default function useSelection<RecordType>(
   )
 
   // Update cache with selectedKeys
-  React.useEffect(() => {
+  useEffect(() => {
     updatePreserveRecordsCache(mergedSelectedKeys)
     // eslint-disable-next-line  react-hooks/exhaustive-deps
   }, [mergedSelectedKeys])
@@ -189,7 +188,7 @@ export default function useSelection<RecordType>(
   const [lastSelectedKey, setLastSelectedKey] = useState<Key | null>(null)
 
   // Reset if rowSelection reset
-  React.useEffect(() => {
+  useEffect(() => {
     if (!rowSelection) {
       setMergedSelectedKeys([])
     }

@@ -8,7 +8,7 @@
     "cleanup": "rm -rf dist"
   },
   "main": "./dist/src/index.js",
-  "module": "./dist/src/index.js",
+  "module": "./src/index.ts",
   "types": "./dist/src/index.d.ts",
   "files": [
     "dist"

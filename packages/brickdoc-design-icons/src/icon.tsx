@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactElement, createContext, useContext, useMemo } from 'react'
+import React from 'react'
 
 export type StrokeLinejoin = 'miter' | 'round' | 'bevel'
 export type StrokeLinecap = 'butt' | 'round' | 'square'
@@ -71,8 +71,8 @@ export interface IIcon extends IIconBase {
   spin?: boolean
 }
 
-export type IIconProps = Intersection<IIcon, HTMLAttributes<HTMLSpanElement>>
-export type IconRender = (props: ISvgIconProps) => ReactElement
+export type IIconProps = Intersection<IIcon, React.HTMLAttributes<HTMLSpanElement>>
+export type IconRender = (props: ISvgIconProps) => React.ReactElement
 
 // Default Icon Config
 export const DEFAULT_ICON_CONFIGS: IIconConfig = {
@@ -149,7 +149,7 @@ export function IconConverter(id: string, icon: IIconBase, config: IIconConfig):
 }
 
 // Icon Configure Context
-const IconContext = createContext(DEFAULT_ICON_CONFIGS)
+const IconContext = React.createContext(DEFAULT_ICON_CONFIGS)
 
 // Icon Configure Provider
 export const IconProvider = IconContext.Provider
@@ -162,9 +162,9 @@ export function IconWrapper(name: string, rtl: boolean, render: IconRender) {
   return (props: IIconProps) => {
     const { size, strokeWidth, strokeLinecap, strokeLinejoin, theme, fill, className, spin, ...extra } = props
 
-    const ICON_CONFIGS = useContext(IconContext)
+    const ICON_CONFIGS = React.useContext(IconContext)
 
-    const id = useMemo(guid, [])
+    const id = React.useMemo(guid, [])
 
     const svgProps = IconConverter(
       id,

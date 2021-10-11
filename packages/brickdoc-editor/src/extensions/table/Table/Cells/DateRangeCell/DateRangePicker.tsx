@@ -1,8 +1,9 @@
 import React from 'react'
+import { Dayjs } from 'dayjs'
 import { Checkbox, DatePicker as BrkDatePicker } from '@brickdoc/design-system'
 import { CheckboxChangeEvent } from '@brickdoc/design-system/components/checkbox'
 
-export type DateRangeValue = [Date | null, Date | null]
+export type DateRangeValue = [Dayjs | null, Dayjs | null]
 
 export interface DatePickerProps {
   includeTime: boolean

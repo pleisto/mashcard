@@ -8,23 +8,14 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
-
-export default IconWrapper(
-    'close-one-fill',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            fill="none"
-            viewBox="0 0 24 24"
-        >
-            <path
-                fill={props.colors[0]}
-                d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11zm-7.464-3.536a1 1 0 0 1 0 1.415L13.414 12l2.122 2.121a1 1 0 0 1-1.415 1.415L12 13.414l-2.121 2.122a1 1 0 0 1-1.415-1.415L10.586 12 8.464 9.879A1 1 0 0 1 9.88 8.464L12 10.586l2.121-2.122a1 1 0 0 1 1.415 0z"
-                clipRule="evenodd"
-                fillRule="evenodd"
-            />
-        </svg>
-    )
-);
+import { ISvgIconProps, IconWrapper } from '../icon'
+export default IconWrapper('close-one-fill', false, (props: ISvgIconProps) => (
+  <svg fill="none" viewBox="0 0 24 24">
+    <path
+      fill={props.colors[0]}
+      d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1s11 4.925 11 11zm-7.464-3.536a1 1 0 0 1 0 1.415L13.414 12l2.122 2.121a1 1 0 0 1-1.415 1.415L12 13.414l-2.121 2.122a1 1 0 0 1-1.415-1.415L10.586 12 8.464 9.879A1 1 0 0 1 9.88 8.464L12 10.586l2.121-2.122a1 1 0 0 1 1.415 0z"
+      clipRule="evenodd"
+      fillRule="evenodd"
+    />
+  </svg>
+))

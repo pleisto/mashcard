@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 import { Plugin, Uppy, UppyFile } from '@uppy/core'
 import findDOMElement from '@uppy/utils/lib/findDOMElement'
@@ -78,7 +77,7 @@ const UNSPLASH_PER_PAGE = 20
 const RECENT_GROUP = 'RECENT'
 const RECENT_EMOJI_LOCAL_STORAGE_KEY = 'brickdoc-uploader-recent-emoji'
 
-const debounce = <T,>(delay: number, callback: (params: T) => void): ((params: T) => void) => {
+const debounce = <T extends unknown>(delay: number, callback: (params: T) => void): ((params: T) => void) => {
   let timer
   return event => {
     clearTimeout(timer)

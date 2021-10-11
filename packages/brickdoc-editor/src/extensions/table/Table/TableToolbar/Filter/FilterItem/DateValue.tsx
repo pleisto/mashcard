@@ -33,7 +33,7 @@ export const DateValue: React.FC<DateValueProps> = ({ value, onChange }) => {
     () => value && (value === EXACT_DATE || !options.find(item => item.value.toString() === value)),
     [value]
   )
-  const exactDateValue = !value || value === EXACT_DATE ? null : new Date(value)
+  const exactDateValue = !value || value === EXACT_DATE ? null : dayjs(value)
   return (
     <>
       <Select className="table-toolbar-item-option-select" value={isExactDate ? EXACT_DATE : value} onChange={onChange}>

@@ -3,7 +3,7 @@
 class Accounts::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
   def new
-    render 'pages/accounts'
+    render 'pages/pwa'
   end
 
   # POST /resource/unlock

@@ -3,7 +3,7 @@
 class Accounts::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   def new
-    render 'pages/accounts'
+    render 'pages/pwa'
   end
 
   # POST /resource/password
@@ -13,7 +13,7 @@ class Accounts::PasswordsController < Devise::PasswordsController
   end
 
   def edit
-    render 'pages/accounts'
+    render 'pages/pwa'
   end
 
   def update

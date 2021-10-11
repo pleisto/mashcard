@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import { format } from 'date-fns'
+import dayjs from 'dayjs'
 import { CellProps } from 'react-table'
 import { useEditingStatus } from '../useEditingStatus'
 import { DateRangePicker, DateRangeValue } from './DateRangePicker'
@@ -50,9 +50,9 @@ export const DateRangeCell: React.FC<DateRangeCellProps> = props => {
 
   return (
     <div role="button" tabIndex={-1} className="table-block-date-range-cell" onClick={showEditing}>
-      {!editing && startDate && format(new Date(startDate), cell.column.dateFormat ?? defaultFormat)}
+      {!editing && startDate && dayjs(startDate).format(cell.column.dateFormat ?? defaultFormat)}
       {startDate && ' - '}
-      {!editing && endDate && format(new Date(endDate), cell.column.dateFormat ?? defaultFormat)}
+      {!editing && endDate && dayjs(endDate).format(cell.column.dateFormat ?? defaultFormat)}
       {editing && (
         <>
           <div data-testid="table-date-range-overlay" className="table-block-cell-overlay" onClick={handleOverlayClick} />

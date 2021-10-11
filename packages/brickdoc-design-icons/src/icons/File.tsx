@@ -8,9 +8,7 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
-
 export default IconWrapper('file', false, (props: ISvgIconProps) => (
   <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
     <path

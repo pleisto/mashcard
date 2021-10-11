@@ -1,0 +1,15 @@
+{
+  "all": {
+    "sourceCodeDir": "frontends",
+    "watchAdditionalPaths": ["packages/**/*"],
+    "publicOutputDir": "esm-bundle"
+  },
+  "development": {
+    "autoBuild": false,
+    "port": 3036
+  },
+  "test": {
+    "autoBuild": false,
+    "publicOutputDir": "vite-test"
+  }
+}

@@ -1,5 +1,5 @@
 import { message } from '@brickdoc/design-system'
-import { isEmpty } from 'lodash'
+import { isEmpty } from 'lodash-es'
 import { arrayToTree, Config, Item } from 'performant-array-to-tree'
 
 export function triggerErrorMessages(errors: string[]): void {
@@ -37,4 +37,11 @@ export function array2Tree<TItem extends Item>(items: TItem[], config: Partial<C
     dataField: null,
     nestedIds: false
   }) as Array<TItem & { children: TItem[] }>
+}
+
+/**
+ * Converts milliseconds to seconds
+ */
+export function millisecondsToSeconds(milliseconds: number): number {
+  return Math.round(milliseconds / 1000)
 }

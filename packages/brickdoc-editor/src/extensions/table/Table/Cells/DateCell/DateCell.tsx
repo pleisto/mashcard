@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import { format } from 'date-fns'
+import dayjs, { Dayjs } from 'dayjs'
 import { CellProps } from 'react-table'
 import { useEditingStatus } from '../useEditingStatus'
 import { DatePicker } from './DatePicker'
@@ -13,7 +13,7 @@ export interface DateCellProps extends CellProps<object> {}
 export const DateCell: React.FC<DateCellProps> = props => {
   const { value, updateData, cell, setColumns } = props
   const [editing, { show: showEditing, hide: hideEditing }] = useEditingStatus(props)
-  const currentValue = React.useRef<Date | null>(value)
+  const currentValue = React.useRef<Dayjs | null>(value)
   React.useEffect(() => (currentValue.current = value), [value])
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>): void => {
@@ -33,7 +33,7 @@ export const DateCell: React.FC<DateCellProps> = props => {
     )
   }
 
-  const handleChange = (value: Date | null): void => {
+  const handleChange = (value: Dayjs | null): void => {
     currentValue.current = value
   }
 
@@ -48,7 +48,7 @@ export const DateCell: React.FC<DateCellProps> = props => {
 
   return (
     <div role="button" tabIndex={-1} className="table-block-date-cell" onClick={showEditing}>
-      {!editing && value && format(new Date(value), cell.column.dateFormat ?? defaultFormat)}
+      {!editing && value && dayjs(value).format(cell.column.dateFormat ?? defaultFormat)}
       {editing && (
         <>
           <div data-testid="table-date-overlay" className="table-block-cell-overlay" onClick={handleOverlayClick} />

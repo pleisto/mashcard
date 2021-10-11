@@ -1,0 +1,54 @@
+@import '@brickdoc/design-system/components/style/themes';
+@import '@brickdoc/design-system/components/style/mixins';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (min-width: @screen-sm-min) {
+    justify-content: space-between;
+    background: url('../../../../common/assets/common_bg.svg') no-repeat fixed center center;
+    background-size: cover, cover;
+    background-clip: border-box;
+  }
+}
+
+.header {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  padding: 1.5rem 2rem;
+
+  @media (min-width: @screen-sm-min) {
+    justify-content: start;
+  }
+
+  a {
+    margin-right: 2rem;
+  }
+
+  img {
+    height: 2.5rem;
+  }
+}
+
+.card {
+  overflow: hidden;
+  width: 100%;
+  background: @component-background;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: @screen-sm-min) {
+    margin-top: -5rem;
+    width: 32rem;
+    border-radius: 0.5rem;
+    box-shadow: @box-shadow-lg;
+    padding: 3rem 6rem;
+  }
+}
