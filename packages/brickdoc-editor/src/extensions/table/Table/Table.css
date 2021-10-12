@@ -80,6 +80,7 @@
         padding-bottom: 20px;
 
         & .table-block-table {
+          --font-color: #bfbcc6;
           --border-color: #efefef;
           --cell-height: 42px;
           --cell-left-padding: 4px;
@@ -133,7 +134,7 @@
               height: 22px;
               border-radius: 4px;
               font-size: 18px;
-              color: #a6a6a6;
+              color: var(--font-color);
             }
           }
 
@@ -141,7 +142,7 @@
             height: var(--cell-height);
             min-width: 180px;
             padding-left: var(--cell-left-padding);
-            color: #a6a6a6;
+            color: var(--font-color);
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
@@ -180,8 +181,23 @@
             }
           }
 
+          & .table-block-add-new-row {
+            color: var(--font-color);
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100%;
+            font-size: 14px;
+
+            & span {
+              font-size: 16px;
+              margin-right: 6px;
+            }
+          }
+
           & .table-block-add-column-button {
-            color: #a6a6a6;
+            color: var(--font-color);
           }
           & .table-block-add-column-button:hover {
             background: none;

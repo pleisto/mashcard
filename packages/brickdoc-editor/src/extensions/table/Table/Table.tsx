@@ -2,7 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 import { NodeViewProps } from '@tiptap/react'
 import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps, usePagination } from 'react-table'
-import { Modal, Pagination } from '@brickdoc/design-system'
+import { Modal, Icon, Pagination } from '@brickdoc/design-system'
 import { BlockWrapper } from '../../BlockWrapper'
 import { TableExtensionOptions } from '../../table'
 import { useEditorI18n } from '../../../hooks'
@@ -220,6 +220,13 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                 />
               )
             })}
+            <div className="table-block-row">
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+              <div className="table-block-add-new-row" role="button" tabIndex={-1} onClick={() => addNewRow()}>
+                <Icon.Plus />
+                New
+              </div>
+            </div>
           </div>
           <div className="table-block-footer">
             <Pagination
