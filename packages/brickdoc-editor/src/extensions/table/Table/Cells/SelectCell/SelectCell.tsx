@@ -64,7 +64,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
       onOk: () => {
         setSelectOptions(prevOptions => prevOptions.filter(item => item.value !== option.value))
 
-        if (option.value === value) {
+        if (option.value === currentValue) {
           setCurrentValue(null)
         }
       }
@@ -138,7 +138,8 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
           showSearch={true}
           showAction={['focus', 'click']}
           open={true}
-          onChange={handleChange}>
+          onChange={handleChange}
+        >
           {selectOptions.map(option => (
             <Select.Option className="select-cell-select-option" key={option.value} value={option.value} title={option.label}>
               <SelectCellOption onOptionValueChange={handleColumnOptionChange} onOptionRemove={handleColumnOptionRemove} option={option} />
