@@ -46,9 +46,24 @@ html * {
     }
 
     /** Bullet List **/
-    ol,
     ul {
       padding: 0 0 0 24px;
+    }
+
+    ol {
+      padding: 0 0 0 0;
+      counter-reset: item;
+      list-style-type: none;
+      li {
+        display: table;
+        counter-increment: item;
+      }
+      li::before {
+        content: counters(item, '.') '.';
+        display: table-cell;
+        font-weight: bold;
+        padding-right: 4px;
+      }
     }
 
     li::marker {
@@ -74,11 +89,11 @@ html * {
 
     .bullet-list() {
       ul {
-        list-style-type: circle;
+        list-style-type: disc;
         ul {
-          list-style-type: square;
+          list-style-type: circle;
           ul {
-            list-style-type: disc;
+            list-style-type: square;
           }
         }
       }
