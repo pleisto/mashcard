@@ -1,5 +1,5 @@
 import React from 'react'
-import { Plus } from '@brickdoc/design-system/components/icon'
+import { Add } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import { Button } from '@brickdoc/design-system'
 import { useHistory } from 'react-router'
@@ -28,7 +28,7 @@ export const NewPage: React.FC<NewPageProps> = ({ webid }) => {
 
   return (
     <Button type="text" onClick={onClick} loading={createBlockLoading} disabled={createBlockLoading}>
-      <Plus />
+      <Add />
       {t('blocks.create_pages')}
     </Button>
   )

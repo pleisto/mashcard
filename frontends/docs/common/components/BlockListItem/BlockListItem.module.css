@@ -6,7 +6,7 @@
     justify-content: center;
     background: transparent;
     font-size: 17px;
-    color: #bfbcc6;
+    color: @deep-purple-3;
     height: 20px;
     width: 20px;
   }

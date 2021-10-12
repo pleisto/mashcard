@@ -607,7 +607,7 @@ en-US:
       sign_up_via: 'Sign Up with %{provider}'
       name: 'Name'
       webid: 'WebID'
-      webid_description: 'Similar to a username, only alphabet and numbers are allowed'
+      webid_description: 'Only alphabet and numbers are allowed'
       agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
       resend_after: 'Resendable after %{seconds} seconds'
     common:
@@ -621,6 +621,8 @@ en-US:
       pod_not_exist: "Pod doesn't exist"
   docs:
     app_title: Brickdoc
+    user_setting:
+      text: User Setting
     anonymous:
       edit_button: Edit
     search:

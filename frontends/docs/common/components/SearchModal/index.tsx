@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import { AutoComplete, Button, Input, Modal, SelectProps } from '@brickdoc/design-system'
 import { Search as SearchOutlined } from '@brickdoc/design-system/components/icon'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { useBlockSearch } from '../SearchResult'
-
+import styles from './styles.module.less'
 interface SearchModalProps {
   webid: string
 }
@@ -50,6 +51,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
         {t('search.text')}
       </Button>
       <Modal
+        className={styles.modal}
         visible={searchModalVisible}
         onOk={onOkOrCancel}
         onCancel={onOkOrCancel}
@@ -58,8 +60,16 @@ export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
         destroyOnClose={true}
         closable={false}
       >
-        <AutoComplete options={options} onSelect={onSelect} onSearch={handleSearch}>
-          <Input placeholder={t('search.placeholder')} />
+        <AutoComplete
+          dropdownAlign={{ offset: [0, 0] }}
+          className={styles.input}
+          dropdownClassName={styles.dropdown}
+          options={options}
+          onSelect={onSelect}
+          onSearch={handleSearch}
+          autoFocus={true}
+        >
+          <Input placeholder={t('search.placeholder')} size="large" prefix={<SearchOutlined />} />
         </AutoComplete>
       </Modal>
     </>

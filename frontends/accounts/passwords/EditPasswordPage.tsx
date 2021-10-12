@@ -59,7 +59,7 @@ export const EditPasswordPage: React.FC = () => {
           <Input.Password />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={loading} block>
+          <Button type="primary" htmlType="submit" size="large" loading={loading} block>
             {t('sessions.reset_password')}
           </Button>
         </Form.Item>

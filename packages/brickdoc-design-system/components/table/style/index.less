@@ -7,8 +7,8 @@
 @tree-prefix-cls: ~'@{brk-prefix}-tree';
 @dropdown-prefix-cls: ~'@{brk-prefix}-dropdown';
 @descriptions-prefix-cls: ~'@{brk-prefix}-descriptions';
-@table-header-icon-color: #bfbfbf;
-@table-header-icon-color-hover: darken(@table-header-icon-color, 10%);
+@table-header-icon-color: @deep-purple-3;
+@table-header-icon-color-hover: @deep-purple-4;
 @table-sticky-zindex: calc(@zindex-table-fixed + 1);
 @table-sticky-scroll-bar-active-bg: fade(@table-sticky-scroll-bar-bg, 80%);
 @table-filter-dropdown-max-height: 264px;
@@ -298,7 +298,7 @@
   }
 
   &-column-sorters:hover &-column-sorter {
-    color: darken(@table-header-icon-color, 10%);
+    color: @deep-purple-4;
   }
 
   // ============================ Filter ============================

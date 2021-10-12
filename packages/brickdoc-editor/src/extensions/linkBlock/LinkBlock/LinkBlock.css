@@ -43,7 +43,7 @@
   padding: 12px 0 12px 19px;
   background: #f9f9f9;
   border-radius: 4px;
-  color: #bfbcc6;
+  color: @deep-purple-3;
   font-size: 18px;
   border-bottom: none;
 

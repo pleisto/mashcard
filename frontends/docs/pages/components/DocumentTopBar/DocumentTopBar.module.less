@@ -1,21 +1,18 @@
+@import '@brickdoc/design-system/components/style/themes/index';
 .topBar {
-  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 48px;
+  justify-content: flex-end;
+  height: @layout-header-height;
 
-  & .menu {
-    position: absolute;
-    right: 56px;
-    top: 0;
-    bottom: 0;
+  .menu {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 
-    & .menuItem {
+    .menuItem {
       padding: 8px;
       color: rgba(132, 126, 142, 1);
       font-size: 12px;
@@ -29,11 +26,11 @@
     }
   }
 
-  & .loading {
+  .loading {
     color: rgba(191, 188, 198, 1);
     font-size: 12px;
 
-    & .loadingIcon {
+    .loadingIcon {
       width: 10.67px;
       height: 10.67px;
       animation: spin infinite linear 800ms;

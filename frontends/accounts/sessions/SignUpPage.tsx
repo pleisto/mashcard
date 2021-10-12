@@ -105,7 +105,7 @@ export const SignUpPage: React.FC = () => {
         <Form.Item
           label={t('sessions.webid')}
           name="webid"
-          extra={t('sessions.webid_description')}
+          extra={<small>{t('sessions.webid_description')}</small>}
           hasFeedback
           validateTrigger={['onFocus', 'onBlur']}
           rules={[{ required: true }, webidAvailableValidator]}
@@ -126,20 +126,22 @@ export const SignUpPage: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={userCreateLoading} block>
+          <Button type="primary" htmlType="submit" size="large" loading={userCreateLoading} block>
             {t('sessions.sign_up')}
           </Button>
         </Form.Item>
         <div>
-          <Trans
-            t={t}
-            i18nKey="sessions.agree_to_agreement"
-            components={[
-              // False positive
-              // eslint-disable-next-line jsx-a11y/anchor-has-content, react/jsx-key
-              <a target="_blank" href={configData?.metadata.config.userAgreementLink} />
-            ]}
-          />
+          <small>
+            <Trans
+              t={t}
+              i18nKey="sessions.agree_to_agreement"
+              components={[
+                // False positive
+                // eslint-disable-next-line jsx-a11y/anchor-has-content, react/jsx-key
+                <a target="_blank" href={configData?.metadata.config.userAgreementLink} />
+              ]}
+            />
+          </small>
         </div>
       </Form>
     </div>

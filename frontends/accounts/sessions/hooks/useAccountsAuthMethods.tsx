@@ -1,5 +1,6 @@
 import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/BrickdocGraphQL'
-import { Mail, ImageIcon } from '@brickdoc/design-system/components/icon'
+import { ImageIcon } from '@brickdoc/design-system/components/icon'
+import Email from '../assets/email-auth-icon.svg'
 import { sortBy } from 'lodash-es'
 import { BrickdocContext } from '@/BrickdocPWA'
 import { useContext } from 'react'
@@ -52,7 +53,7 @@ export const useAccountsAuthMethods = (emailPwdBtnOnClick: () => void): { authMe
           ? [
               {
                 name: AuthMethod.EmailPassword,
-                logo: <Mail theme="filled" />,
+                logo: <ImageIcon src={Email} alt="email auth icon" />,
                 action: emailPwdBtnOnClick
               }
             ]

@@ -10,25 +10,6 @@
   box-sizing: border-box;
 }
 
-/**
- * 1. Use the default cursor in all browsers (opinionated).
- * 2. Change the line height in all browsers (opinionated).
- * 3. Breaks words to prevent overflow in all browsers (opinionated).
- * 4. Use a 4-space tab width in all browsers (opinionated).
- * 5. Remove the grey highlight on links in iOS (opinionated).
- * 6. Prevent adjustments of font size after orientation changes in iOS.
- */
-
-:where(:root) {
-  cursor: default; /* 1 */
-  line-height: 1.5; /* 2 */
-  overflow-wrap: break-word; /* 3 */
-  -moz-tab-size: 4; /* 4 */
-  tab-size: 4; /* 4 */
-  -webkit-tap-highlight-color: transparent; /* 5 */
-  -webkit-text-size-adjust: 100%; /* 6 */
-}
-
 // HTML & Body reset
 @{html-selector},
 body {
@@ -490,70 +471,12 @@ mark {
   .clearfix();
 }
 
-:where(audio, canvas, iframe, img, svg, video) {
-  vertical-align: middle;
-}
-
 /**
  * Remove the border on iframes in all browsers (opinionated).
  */
 
 :where(iframe) {
   border-style: none;
-}
-
-/**
- * Change the fill color to match the text color in all browsers (opinionated).
- */
-
-:where(svg:not([fill])) {
-  fill: currentColor;
-}
-
-/**
- * 1. Correct the odd appearance in Chrome, Edge, and Safari.
- * 2. Correct the outline style in Safari.
- */
-
-:where([type='search' i]) {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Safari.
- */
-
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/**
- * Correct the text style of placeholders in Chrome, Edge, and Safari.
- */
-
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 0.54;
-}
-
-/**
- * Remove the inner padding in Chrome, Edge, and Safari on macOS.
- */
-
-::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/**
- * 1. Correct the inability to style upload buttons in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
 }
 
 /* Accessibility

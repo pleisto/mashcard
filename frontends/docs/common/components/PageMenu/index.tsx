@@ -1,11 +1,12 @@
 import React from 'react'
-import { Button, Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
+import { Button, Dropdown, Menu, MenuProps, Tooltip } from '@brickdoc/design-system'
 import { Link, useHistory } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { useBlockSoftDeleteMutation, BlockSoftDeleteInput, Scalars, useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../graphql'
 import { queryChildrenBlocks } from '@/docs/pages/graphql'
-import { Plus } from '@brickdoc/design-system/components/icon'
+import { Add } from '@brickdoc/design-system/components/icon'
+import styles from './styles.module.less'
 
 type UUID = Scalars['UUID']
 
@@ -62,11 +63,13 @@ export const PageMenu: React.FC<PageMenuProps> = ({ webid, id, title }) => {
   return (
     <>
       <Dropdown trigger={['contextMenu']} overlay={menu}>
-        <div>
+        <div className={styles.menu}>
           <Link to={`/${webid}/p/${id}`}>{title}</Link>
-          <Button type="text" onClick={onClickPlus} loading={createBlockLoading} disabled={createBlockLoading}>
-            <Plus />
-          </Button>
+          <Tooltip title={t('blocks.create_pages')}>
+            <Button className={styles.addBtn} type="text" onClick={onClickPlus} loading={createBlockLoading} disabled={createBlockLoading}>
+              <Add />
+            </Button>
+          </Tooltip>
         </div>
       </Dropdown>
     </>

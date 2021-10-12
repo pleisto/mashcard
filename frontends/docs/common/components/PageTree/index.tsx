@@ -5,7 +5,7 @@ import { array2Tree } from '@/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '@/docs/pages/hooks/useSyncProvider'
 import { queryPageBlocks } from '../../graphql'
-import styles from './PageTree.module.css'
+import styles from './PageTree.module.less'
 
 interface PageTreeProps {
   webid: string

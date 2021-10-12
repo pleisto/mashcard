@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { MoreMenu } from '../../../common/components/MoreMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
-import styles from './DocumentTopBar.module.css'
+import styles from './DocumentTopBar.module.less'
 import loadingIcon from './loading.png'
 
 export interface DocumentTopBarProps {

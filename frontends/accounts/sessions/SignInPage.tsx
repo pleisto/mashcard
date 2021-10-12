@@ -41,6 +41,7 @@ export const SignInPage: React.FC = () => {
             <EmailPasswordSignIn />
           ) : (
             <Button
+              size="large"
               icon={preferredAuthMethod.logo}
               id={`auth-btn-${preferredAuthMethod.name}`}
               style={{ marginTop: '2rem' }}

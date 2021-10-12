@@ -2,21 +2,25 @@
 
 .select {
   display: flex;
-  padding: 1.5rem;
-
+  padding: 0.875rem 0.5rem 0.875rem 0.75rem;
+  width: 100%;
+  margin-bottom: 1.375rem;
+  justify-content: space-between;
+  align-items: center;
   &:hover {
     cursor: pointer;
-    background: @layout-trigger-background-light;
   }
+  .icon {
+    color: @text-color-secondary;
+  }
+}
+
+.pod {
+  display: flex;
 }
 
 .name {
   margin-left: 1rem;
   display: flex;
   align-items: center;
-
-  :global(.brk-icon) {
-    margin-left: 0.5rem;
-    color: @text-color-secondary;
-  }
 }

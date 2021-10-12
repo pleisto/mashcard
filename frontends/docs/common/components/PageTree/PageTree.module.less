@@ -1,0 +1,19 @@
+/* stylelint-disable no-descending-specificity */
+.tree {
+  margin: 1.5rem 0;
+
+  :global(.brk-tree-treenode) {
+    width: 100%;
+  }
+  :global(.brk-tree-node-content-wrapper) {
+    width: 100%;
+  }
+  :global(.brk-tree-treenode-selected),
+  :global(.brk-tree-treenode:hover) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  :global(.brk-tree-node-selected),
+  :global(.brk-tree-node-content-wrapper:hover) {
+    background-color: transparent !important;
+  }
+}

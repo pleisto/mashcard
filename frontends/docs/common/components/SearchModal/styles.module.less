@@ -1,0 +1,27 @@
+@import '@brickdoc/design-system/components/style/themes';
+.input {
+  width: 100%;
+
+  :global(.brk-input-affix-wrapper-lg) {
+    padding: 1rem;
+  }
+  :global(.brk-input-prefix) {
+    color: @input-placeholder-color;
+  }
+}
+.modal {
+  * {
+    border-radius: 0;
+    border: none;
+  }
+  :global(.brk-modal-content) {
+    border: none;
+  }
+  :global(.brk-modal-body) {
+    padding: 0;
+  }
+}
+.dropdown {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
