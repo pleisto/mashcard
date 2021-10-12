@@ -1,355 +1,364 @@
 zh-CN:
   meta:
-    lang: zh-Hans
+    lang: en-US
     dir: ltr
-    noscript: 抱歉积木文档需在开启浏览器的 Javascript 功能后方可正常工作，请访问 %{url} 以了解详情。
-    noscript_url: https://zh.wikihow.com/%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%8A%E5%90%AF%E7%94%A8-JavaScript
-  'Your browser is out of date': 您的浏览器内核版本过旧
-  download_latest_browser_html: 请升级您的浏览器至最新版本或使用下述之推荐浏览器访问 Brickodc： <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">360极速浏览器</a>, <a href="%{firefox}" rel="nofollow">Firefox</a>
-  edge_link: https://www.microsoft.com/zh-cn/edge
-  chrome_link: https://browser.360.cn/ee/
-  firefox_link: https://www.mozilla.org/zh-CN/firefox/
+    noscript: We're sorry but Brickdoc doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
+    noscript_url: https://www.wikihow.com/Enable-JavaScript
+  'Your browser is out of date': Your browser is out of date
+  download_latest_browser_html: Please download the latest version of <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">Chrome</a> or <a href="%{firefox}" rel="nofollow">Firefox</a> to continue using Brickdoc.
+  edge_link: https://www.microsoft.com/en-us/edge
+  chrome_link: https://www.google.com/chrome/
+  firefox_link: https://www.mozilla.org/en-US/firefox/new/
   design_system:
     calendarPicker:
-      today: 今天
-      now: 现在
-      backToToday: 回到今天
-      ok: 确 定
-      clear: 清除
-      month: 月
-      year: 年
-      timeSelect: 选择时间
-      dateSelect: 选择日期
-      weekSelect: 选择周
-      monthSelect: 选择月份
-      yearSelect: 选择年份
-      decadeSelect: 选择年代
-      yearFormat: YYYY年
-      dateFormat: YYYY年M月D日
-      dayFormat: D日
-      dateTimeFormat: 'YYYY年M月D日 HH时mm分ss秒'
+      today: Today
+      now: Now
+      backToToday: Back to today
+      ok: Ok
+      clear: Clear
+      month: Month
+      year: Year
+      timeSelect: select time
+      dateSelect: select date
+      weekSelect: Choose a week
+      monthSelect: Choose a month
+      yearSelect: Choose a year
+      decadeSelect: Choose a decade
+      yearFormat: YYYY
+      dateFormat: M/D/YYYY
+      dayFormat: D
+      dateTimeFormat: 'M/D/YYYY HH:mm:ss'
       monthBeforeYear: true
-      previousMonth: 上个月 (翻页上键)
-      nextMonth: 下个月 (翻页下键)
-      previousYear: 上一年 (Control键加左方向键)
-      nextYear: 下一年 (Control键加右方向键)
-      previousDecade: 上一年代
-      nextDecade: 下一年代
-      previousCentury: 上一世纪
-      nextCentury: 下一世纪
-      placeholder: 请选择日期
-      yearPlaceholder: 请选择年份
-      quarterPlaceholder: 请选择季度
-      monthPlaceholder: 请选择月份
-      weekPlaceholder: 请选择周
+      previousMonth: Previous month (PageUp)
+      nextMonth: Next month (PageDown)
+      previousYear: Last year (Control + left)
+      nextYear: Next year (Control + right)
+      previousDecade: Last decade
+      nextDecade: Next decade
+      previousCentury: Last century
+      nextCentury: Next century
+      placeholder: Select date
+      yearPlaceholder: Select year
+      quarterPlaceholder: Select quarter
+      monthPlaceholder: Select month
+      weekPlaceholder: Select week
       rangePlaceholder:
-        startDate: 开始日期
-        endDate: 结束日期
+        startDate: Start date
+        endDate: End date
       rangeYearPlaceholder:
-        startYear: 开始年份
-        endYear: 结束年份
+        startYear: Start year
+        endYear: End year
       rangeMonthPlaceholder:
-        startMonth: 开始月份
-        endMonth: 结束月份
+        startMonth: Start month
+        endMonth: End month
       rangeWeekPlaceholder:
-        startWeek: 起始周
-        endWeek: 结束周
+        startWeek: Start week
+        endWeek: End week
     timePicker:
-      placeholder: 请选择时间
+      placeholder: Select time
       rangePlaceholder:
-        startTime: 开始时间
-        endTime: 结束时间
+        startTime: Start time
+        endTime: End time
     pagination:
-      itemsPerPage: '条/页'
-      jumpTo: 跳至
-      jumpToConfirm: 确定
-      page: '页'
-      prevPage: '上一页'
-      nextPage: '下一页'
-      prev5: '向前 5 页'
-      next5: '向后 5 页'
-      prev3: '向前 3 页'
-      next3: '向后 3 页'
+      itemsPerPage: '/ page'
+      jumpTo: Go to
+      jumpToConfirm: confirm
+      page: ''
+      prevPage: 'Previous Page'
+      nextPage: 'Next Page'
+      prev5: 'Previous 5 Pages'
+      next5: 'Next 5 Pages'
+      prev3: 'Previous 3 Pages'
+      next3: 'Next 3 Pages'
     global:
-      placeholder: 请选择
+      placeholder: Please select
     table:
-      filterTitle: 筛选
-      filterConfirm: 确定
-      filterReset: 重置
-      filterEmptyText: '无筛选项'
-      emptyText: '暂无数据'
-      selectAll: '全选当页'
-      selectInvert: 反选当页
-      selectNone: 空所有
-      selectionAll: 全选所有
-      sortTitle: 排序
-      expand: 展开行
-      collapse: 折叠行
-      triggerDesc: 点击降序
-      triggerAsc: 击升序
-      cancelSort: 取消排序
+      filterTitle: Filter menu
+      filterConfirm: OK
+      filterReset: Reset
+      filterEmptyText: 'No filters'
+      emptyText: 'No data'
+      selectAll: 'Select current page'
+      selectInvert: Invert current page
+      selectNone: Clear all data
+      selectionAll: Select all data
+      sortTitle: Sort
+      expand: Expand row
+      collapse: Collapse row
+      triggerDesc: Click to sort descending
+      triggerAsc: Click to sort ascending
+      cancelSort: Click to cancel sorting
     modal:
-      okText: 确定
-      cancelText: 取消
-      justOkText: 确定
+      okText: OK
+      cancelText: Cancel
+      justOkText: OK
     popconfirm:
-      okText: 确定
-      cancelText: 取消
+      okText: OK
+      cancelText: Cancel
     transfer:
       titles:
         first: ''
         second: ''
-      searchPlaceholder: '请输入搜索内容'
-      itemUnit: '项'
-      itemsUnit: '项'
-      remove: 删除
-      selectCurrent: 全选当页
-      removeCurrent: 删除当页
-      selectAll: 全选所有
-      removeAll: 删除全部
-      selectInvert: 反选当页
+      searchPlaceholder: 'Search here'
+      itemUnit: 'item'
+      itemsUnit: 'items'
+      remove: Remove
+      selectCurrent: Select current page
+      removeCurrent: Remove current page
+      selectAll: Select all data
+      removeAll: Remove all data
+      selectInvert: Invert current page
     empty:
-      description: 暂无数据
+      description: No Data
     icon:
-      icon: 图标
+      icon: icon
     text:
-      edit: 编辑
-      copy: 复制
-      copied: 复制成功
-      expand: 展开
+      edit: Edit
+      copy: Copy
+      copied: Copied
+      expand: Expand
     form:
-      optional: '（可选）'
+      optional: (optional)
       defaultValidationMessages:
-        default: 字段验证错误%{label}
-        required: 请输入%{label}
-        enum: "%{label}必须是其中一个 [%{enum}]"
-        whitespace: "%{label} 不能为空"
+        default: Field validation error for %{label}
+        required: Please enter %{label}
+        enum: '%{label} must be one of [%{enum}]'
+        whitespace: '%{label} cannot be a blank character'
         types:
-          template: '%{label} 不是有效的 %{type}'
+          template: '%{label} is not a valid %{type}'
         date:
-          format: '%{label} 日期格式无效'
-          parse: '%{label} 不能转换为日期'
-          invalid: '%{label} 是一个无效的日期'
+          format: '%{label} date format is invalid'
+          parse: '%{label} cannot be converted to a date'
+          invalid: '%{label} is an invalid date'
         string:
-          len: '%{label} 必须是 %{len} 个字符'
-          min: '%{label} 至少为 %{min} 个字符'
-          max: '%{label} 至多为 %{max} 个字符'
-          range: '%{label} 必须介于 %{min}-%{max} 个字符'
+          len: '%{label} must be %{len} characters'
+          min: '%{label} must be at least %{min} characters'
+          max: '%{label} must be up to %{max} characters'
+          range: '%{label} must be between %{min}-%{max} characters'
         number:
-          len: '%{label} 必须等于 %{len}'
-          min: '%{label}最小值为%{min}'
-          max: '%{label}最大为 %{max}'
-          range: '%{label} 须在 %{min}-%{max} 之间'
+          len: '%{label} must be equal to %{len}'
+          min: '%{label} must be minimum %{min}'
+          max: '%{label} must be maximum %{max}'
+          range: '%{label} must be between %{min}-%{max}'
         array:
-          len: '必须是 %{len}个%{label}'
-          min: '最少%{min}个%{label}'
-          max: '最多%{max}个%{label}'
-          range: '%{label}数量须在%{min}-%{max}之间'
+          len: 'Must be %{len} %{label}'
+          min: 'At least %{min} %{label}'
+          max: 'At most %{max} %{label}'
+          range: 'The amount of %{label} must be between %{min}-%{max}'
         pattern:
-          mismatch: '%{label} 与规则 %{pattern} 不匹配'
+          mismatch: '%{label} does not match the pattern %{pattern}'
     image:
-      preview: 预览
+      preview: Preview
   activerecord:
     attributes:
       doorkeeper/application:
-        name: '程序名称'
-        redirect_uri: '重定向 URI'
+        name: 'Name'
+        redirect_uri: 'Redirect URI'
     errors:
       models:
+        accounts/user:
+          attributes:
+            password:
+              too_short: 过短
         doorkeeper/application:
           attributes:
             redirect_uri:
-              fragment_present: '不能包含「#」号'
-              invalid_uri: '必须是有效的 URI。'
-              unspecified_scheme: '必须指定 Schema。'
-              relative_uri: '必须是绝对 URI。'
-              secured_uri: '必须是 HTTPS/SSL URI。'
-              forbidden_uri: '被服务器禁止。'
+              fragment_present: 'cannot contain a fragment.'
+              invalid_uri: 'must be a valid URI.'
+              unspecified_scheme: 'must specify a scheme.'
+              relative_uri: 'must be an absolute URI.'
+              secured_uri: 'must be an HTTPS/SSL URI.'
+              forbidden_uri: 'is forbidden by the server.'
             scopes:
-              not_match_configured: "与服务器上配置的不匹配。"
+              not_match_configured: "doesn't match configured on the server."
       messages:
-        record_invalid: '验证失败: %{errors}'
+        record_invalid: 'Validation failed: %{errors}'
         restrict_dependent_destroy:
-          has_one: 由于 %{record} 需要此记录，所以无法移除记录
-          has_many: 由于 %{record} 需要此记录，所以无法移除记录
+          has_one: Cannot delete record because a dependent %{record} exists
+          has_many: Cannot delete record because dependent %{record} exist
   date:
     abbr_day_names:
-      - 周日
-      - 周一
-      - 周二
-      - 周三
-      - 周四
-      - 周五
-      - 周六
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
       -
-      - 1月
-      - 2月
-      - 3月
-      - 4月
-      - 5月
-      - 6月
-      - 7月
-      - 8月
-      - 9月
-      - 10月
-      - 11月
-      - 12月
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-      - 星期日
-      - 星期一
-      - 星期二
-      - 星期三
-      - 星期四
-      - 星期五
-      - 星期六
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
-      default: "%Y-%m-%d"
-      long: "%Y年%m月%d日"
-      short: "%m月%d日"
+      default: '%m-%d-%Y'
+      long: '%B %d, %Y'
+      short: '%b %d'
     month_names:
       -
-      - 一月
-      - 二月
-      - 三月
-      - 四月
-      - 五月
-      - 六月
-      - 七月
-      - 八月
-      - 九月
-      - 十月
-      - 十一月
-      - 十二月
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-      - :year
       - :month
       - :day
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
-        one: 大约一小时
         other: 大约 %{count} 小时
-        about_x_months:
-          other: 大约 %{count} 个月
-        about_x_years:
-          other: 大约 %{count} 年
-        almost_x_years:
-          other: 将近 %{count} 年
-        half_a_minute: 30 秒
-        less_than_x_seconds:
-          other: 小于 %{count} 秒
-        less_than_x_minutes:
-          other: 不到 %{count} 分钟
-        over_x_years:
-          other: 超过 %{count} 年
-        x_seconds:
-          other: "%{count} 秒"
-        x_minutes:
-          other: "%{count} 分钟"
-        x_days:
-          other: "%{count} 天"
-        x_months:
-          other: "%{count} 个月"
-        x_years:
-          other: "%{count} 年"
+      about_x_months:
+        other: 大约 %{count} 个月
+      about_x_years:
+        other: 大约 %{count} 年
+      almost_x_years:
+        other: 将近 %{count} 年
+      half_a_minute: 30 秒
+      less_than_x_seconds:
+        other: 小于 %{count} 秒
+      less_than_x_minutes:
+        other: 不到 %{count} 分钟
+      over_x_years:
+        other: '%{count} 年以上'
+      x_seconds:
+        other: '%{count} 秒'
+      x_minutes:
+        other: '%{count} 分钟'
+      x_days:
+        other: '%{count} 天'
+      x_months:
+        other: '%{count} 个月'
+      x_years:
+        other: '%{count} 年'
     prompts:
-      second: 秒
-      minute: 分
-      hour: 时
-      day: 日
-      month: 月
-      year: 年
+      second: Second
+      minute: Minute
+      hour: Hour
+      day: Day
+      month: Month
+      year: Year
   errors:
-    format: "%{attribute} %{message}"
+    format: '%{attribute} %{message}'
     graphql:
       docs:
-        initialized_not_yet_completed: Initialized not yet completed
+        initialized_not_yet_completed: 初始化尚未完成
     messages:
-      already_confirmed: 之前已经确认过，请尝试直接登录
-      confirmation_period_expired: 确认码已过期 %{period}，请重新申请
-      expired: 已过期，请重新申请
-      not_found: 未找到
-      not_locked: 对应的账号目前没有被锁定
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
       not_saved:
-        other: "发生了%{count}个错误，%{resource}无法被保存："
-      is_not_valid_webid: "WebID「%{webid}」不符合命名规则或已被注册"
-      send_interval: 发送间隔过短，请一分钟后再试
-      accepted: 必须是可被接受的
-      blank: 不能为空字符
-      confirmation: 与 %{attribute} 不匹配
-      empty: 不能留空
-      equal_to: 必须等于 %{count}
-      even: 必须为双数
-      exclusion: 是保留关键字
-      greater_than: 必须大于 %{count}
-      greater_than_or_equal_to: 必须大于或等于 %{count}
-      inclusion: 不包含于列表中
-      invalid: 是无效的
-      less_than: 必须小于 %{count}
-      less_than_or_equal_to: 必须小于或等于 %{count}
-      model_invalid: '验证失败: %{errors}'
-      not_a_number: 不是数字
-      not_an_integer: 必须是整数
-      odd: 必须为单数
-      other_than: 长度非法（不可为 %{count} 个字符
-      present: 必须是空白
-      required: 必须存在
-      taken: 已经被使用
+        other: '%{count} errors prohibited this %{resource} from being saved:'
+      is_not_valid_webid: 'WebID "%{webid}" is not available'
+      is_not_valid_email: '邮箱“%{email}”不可用'
+      send_interval: Sending interval is too short, please try again after 1 minute
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      model_invalid: 'Validation failed: %{errors}'
+      email_invalid: 不是有效的电子邮件地址
+      webid_invalid: 不是有效的 webid
+      uuid_invalid: 不是有效的 uuid
+      mobile_phone_invalid: 不是有效的手机号码
+      webid_presence_invalid: 不存在
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      other_than: must be other than %{count}
+      present: must be blank
+      required: must exist
+      taken: has already been taken
       too_long:
-        one: 太长（最多 1 个字符）
-        other: 太长（最多 %{count} 个字符）
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
         too_short:
-          other: 太短（最少为 %{count} 个字符）
+          other: is too short (minimum is %{count} characters)
         wrong_length:
-          other: 长度错误 (需要是 %{count} 个字符)
+          other: is the wrong length (should be %{count} characters)
     template:
-      body: '如下字段出现错误：'
+      body: 'There were problems with the following fields:'
       header:
-        other: "发生了%{count}个错误，%{model}无法被保存："
+        other: '%{count} errors prohibited this %{model} from being saved'
   helpers:
     select:
-      prompt: 请选择
+      prompt: Please select
     submit:
-      create: 新增%{model}
-      submit: 储存%{model}
-      update: 更新%{model}
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
   number:
     currency:
       format:
-        delimiter: ","
-        format: "%u %n"
+        delimiter: ','
+        format: '%u%n'
         precision: 2
-        separator: "."
+        separator: '.'
         significant: false
         strip_insignificant_zeros: false
-        unit: 'CN¥'
+        unit: '$'
     format:
-      delimiter: ","
+      delimiter: ','
       precision: 3
-      separator: "."
+      separator: '.'
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
-          billion: 十亿
-          million: 百万
-          quadrillion: 千兆
-          thousand: 千
-          trillion: 兆
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
           unit: ''
       format:
         delimiter: ''
-        precision: 1
+        precision: 3
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
-            other: 字节
+            other: Bytes
           eb: EB
           gb: GB
           kb: KB
@@ -359,242 +368,477 @@ zh-CN:
     percentage:
       format:
         delimiter: ''
-        format: "%n%"
+        format: '%n%'
     precision:
       format:
         delimiter: ''
   support:
     array:
-      last_word_connector: " 以及 "
-      two_words_connector: " 和 "
-      words_connector: "、"
+      last_word_connector: ', and '
+      two_words_connector: ' and '
+      words_connector: ', '
   time:
-    am: 上午
+    am: am
     formats:
-      default: "%Y年%m月%d日 %A %H:%M:%S %Z"
-      long: "%Y年%m月%d日 %H:%M"
-      short: "%m月%d日 %H:%M"
-    pm: 下午
+      default: '%a, %d %b %Y %I:%M:%S %p %Z'
+      long: '%B %d, %Y %I:%M %p'
+      short: '%d %b %I:%M %p'
+    pm: pm
   devise:
     confirmations:
-      confirmed: "您的帐号已经激活，请登录。"
-      send_instructions: "稍后，您将收到帐号激活的电子邮件。"
-      send_paranoid_instructions: "如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份确认账号的邮件。"
+      confirmed: 'Your email address has been successfully confirmed.'
+      send_instructions: 'You will receive an email with instructions for how to confirm your email address in a few minutes.'
+      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.'
     failure:
-      already_authenticated: 登录成功。
-      inactive: 您还没有激活帐户。
-      invalid: 帐号或密码错误。
-      locked: 由于多次密码错误，您的帐号已被暂时锁定，一小时后将自动解锁。
-      last_attempt: 你还有最后次尝试机会，如果依然不正确，账号将会暂时锁定。
-      not_found_in_database: 无效的 %{authentication_keys} 或密码不正确。
-      timeout: 您已登录超时，请重新登录。
-      unauthenticated: 继续操作前请注册或者登录。
-      unconfirmed: 请先进入邮箱，点击确认链接激活您的帐号才可使用。
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
     omniauth_callbacks:
-      failure: 无法通过 %{kind} 登录，因为 "%{reason}"。
-      success: 成功通过 %{kind} 登录账号.
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
     passwords:
-      no_token: 此页面必须通过找回密码链接打开，如果你是通过这种方式，请检查 URL 和邮件里面的 URL 是否一致。
-      send_instructions: 稍后，您将收到重置密码的电子邮件。
-      send_paranoid_instructions: 如果你输入的 Email 地址在我们系统中，几分钟后你将会收到一份恢复账号的邮件。
-      updated: 密码已修改成功。
-      updated_not_active: 密码修改成功。
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
     registrations:
-      destroyed: 再见！你的账号已经成功注销。我们依然期待你再次回来使用。
-      signed_up: 欢迎！你的账号已经成功注册。
-      signed_up_but_inactive: 你已经成功注册账号。不过因为你的账号还未激活，所以暂时无法登录使用。
-      signed_up_but_locked: 你已经成功注册账号。不过因为你的账号已被锁定，无法登录。
-      signed_up_but_unconfirmed: 一封带有确认链接的邮件已经发送到了你的邮箱，请按照邮件内容的链接流程完成账号激活。
-      update_needs_confirmation: 你的账号更新成功，不过你必须验证新的邮件地址。请打开你的邮箱，找到我们发送的确认邮件并点击确认链接来完成确认。
-      updated: 你的账号更新成功。
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      signed_up: You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
+      updated: Your account has been updated successfully.
     unlock_instructions:
-      send_instructions: "稍后，您将收到一封帐号解锁的邮件。"
-      send_paranoid_instructions: "如果你已有账号，你将会收到一封用于解锁的邮件。"
-      unlocked: "您的帐号已成功解锁，请登录。"
+      send_instructions: 'You will receive an email with instructions for how to unlock your account in a few minutes.'
+      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.'
+      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        subject: "帐户确认信息"
+        subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: "重置密码信息"
+        subject: 'Reset password instructions'
       unlock_instructions:
-        subject: "帐户解锁信息"
+        subject: 'Unlock instructions'
       email_changed:
-        subject: "电子邮件已被修改"
+        subject: 'Email Changed'
       password_change:
-        subject: "密码已被重置"
+        subject: 'Password Changed'
     sessions:
-      signed_in: "登录成功。"
-      signed_out: "注销成功。"
-      already_signed_out: "注销成功。"
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+      already_signed_out: 'Signed out successfully.'
   doorkeeper:
     scopes:
-      openid: '验证您的帐号'
-      profile: '查看您的个人资料'
-      email: '查看您的 Email 地址'
-      address: '查看您的居住地址'
-      phone: '查看您的电话号码'
+      openid: 'Authenticate your account'
+      profile: 'View your profile information'
+      email: 'View your email address'
+      address: 'View your physical address'
+      phone: 'View your phone number'
     applications:
       confirmations:
-        destroy: '确定要删除应用吗？'
+        destroy: 'Are you sure?'
       buttons:
-        edit: '编辑'
-        destroy: '删除'
-        submit: '提交'
-        cancel: '取消'
-        authorize: '授权'
+        edit: 'Edit'
+        destroy: 'Destroy'
+        submit: 'Submit'
+        cancel: 'Cancel'
+        authorize: 'Authorize'
       form:
-        error: '抱歉! 提交信息的时候遇到了下面的错误'
+        error: 'Whoops! Check your form for possible errors'
       help:
-        confidential: '应用程序的client secret可以保密，但原生移动应用和单页应用将无法保护client secret。'
-        redirect_uri: '每行只能有一个 URI'
-        blank_redirect_uri: "Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI."
-        scopes: '用空格分割权限范围，留空则使用默认设置'
+        confidential: 'Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.'
+        redirect_uri: 'Use one line per URI'
+        blank_redirect_uri: "如果将提供程序配置为使用客户端凭据、资源所有者密码凭据或任何其他不需要重定向 URI 的授予类型，请将其留空。"
+        scopes: 'Separate scopes with spaces. Leave blank to use the default scopes.'
       edit:
-        title: '修改应用'
+        title: 'Edit application'
       index:
-        title: '你的应用'
-        new: '创建新应用'
-        name: '名称'
-        callback_url: '回调 URL'
-        actions: '动作'
-        confidential: 'Confidential?'
+        title: 'Your applications'
+        new: 'New Application'
+        name: 'Name'
+        callback_url: 'Callback URL'
+        actions: 'Actions'
+        confidential: '保密的'
         confidentiality:
-          'yes': '是'
-          'no': '沒有'
+          'yes': 'Yes'
+          'no': 'No'
       new:
-        title: '创建新应用'
+        title: 'New Application'
       show:
-        title: '应用：%{name}'
-        application_id: '应用 UID'
-        secret: '应用密钥'
-        scopes: '权限范围'
-        confidential: 'Confidential'
-        callback_urls: '回调 URL'
-        actions: '操作'
+        title: 'Application: %{name}'
+        application_id: 'UID'
+        secret: 'Secret'
+        scopes: 'Scopes'
+        confidential: '保密的'
+        callback_urls: 'Callback urls'
+        actions: 'Actions'
     authorizations:
       buttons:
-        authorize: '同意授权'
-        deny: '拒绝授权'
+        authorize: 'Authorize'
+        deny: 'Deny'
       error:
-        title: '发生错误'
+        title: 'An error has occurred'
       new:
-        title: '需要授权'
-        prompt: '授权 %{client_name} 使用你的帐户？'
-        able_to: '此应用将能够'
+        title: 'Authorization required'
+        prompt: 'Authorize %{client_name} to use your account?'
+        able_to: 'This application will be able to'
       show:
-        title: '授权代码'
+        title: 'Authorization code'
     authorized_applications:
       confirmations:
-        revoke: '确定要撤销对此应用的授权吗？'
+        revoke: 'Are you sure?'
       buttons:
-        revoke: '撤销授权'
+        revoke: 'Revoke'
       index:
-        title: '已授权的应用'
-        application: '应用'
-        created_at: '授权时间'
-        date_format: "%Y-%m-%d %H:%M:%S"
+        title: 'Your authorized applications'
+        application: 'Application'
+        created_at: 'Created At'
+        date_format: '%Y-%m-%d %H:%M:%S'
     pre_authorization:
-      status: '预授权'
+      status: 'Pre-authorization'
     openid_connect:
       errors:
         messages:
           #Configuration error messages
-          resource_owner_from_access_token_not_configured: 'Doorkeeper::OpenidConnect.configure.resource_owners_from_access_token 缺少配置而失败。'
-          auth_time_from_resource_owner_not_configured: 'Doorkeeper::OpenidConnect.configure.auth_time_from_resource_ownersholder缺少配置导致失败。'
-          reauthenticate_resource_owner_not_configured: '由于 Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner 缺少配置而导致失败。'
-          select_account_for_resource_owner_not_configured: '由于 Doorkeeper::OpenidConnect.configure.select_account_for_resource_owner 缺少配置而失败。'
-          subject_not_configured: 'ID令牌生成失败，因为 Doorkeeper::OpenidConnect.configure.subject 缺少配置。'
+          resource_owner_from_access_token_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.resource_owner_from_access_token missing configuration.'
+          auth_time_from_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.auth_time_from_resource_owner missing configuration.'
+          reauthenticate_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner missing configuration.'
+          select_account_for_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.select_account_for_resource_owner missing configuration.'
+          subject_not_configured: 'ID Token generation failed due to Doorkeeper::OpenidConnect.configure.subject missing configuration.'
     errors:
       messages:
         #doorkeeper oidc
-        login_required: '授权服务器需要最终用户进行身份验证'
-        consent_required: '授权服务器需要请求最终用户的同意'
-        interaction_required: '授权服务器需要最终用户的互动'
-        account_selection_required: '授权服务器要求选择最终用户帐户'
+        login_required: 'The authorization server requires end-user authentication'
+        consent_required: 'The authorization server requires end-user consent'
+        interaction_required: 'The authorization server requires end-user interaction'
+        account_selection_required: 'The authorization server requires end-user account selection'
         #Common error messages
         invalid_request:
-          unknown: '请求缺少必要的参数，或者参数值、格式不正确。'
-          missing_param: 'Missing required parameter: %{value}.'
-          request_not_authorized: 'Request need to be authorized. Required parameter for authorizing request is missing or invalid.'
-        invalid_redirect_uri: '无效的登录回调地址。'
-        unauthorized_client: '未授权的应用，请求无法执行。'
-        access_denied: '资源所有者或服务器拒绝了请求。'
-        invalid_scope: '请求的权限范围无效、未知或格式不正确。'
-        invalid_code_challenge_method: 'The code challenge method must be plain or S256.'
-        server_error: '服务器异常，无法处理请求。'
-        temporarily_unavailable: '服务器维护中或负载过高，暂时无法处理请求。'
+          unknown: 'The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.'
+          missing_param: '缺少必需的参数：%{value}。'
+          request_not_authorized: '请求需要授权。但授权请求所需的参数丢失或无效。'
+        invalid_redirect_uri: "The requested redirect uri is malformed or doesn't match client redirect URI."
+        unauthorized_client: 'The client is not authorized to perform this request using this method.'
+        access_denied: 'The resource owner or authorization server denied the request.'
+        invalid_scope: 'The requested scope is invalid, unknown, or malformed.'
+        invalid_code_challenge_method: '代码质询方法必须是 plain 或 S256。'
+        server_error: 'The authorization server encountered an unexpected condition which prevented it from fulfilling the request.'
+        temporarily_unavailable: 'The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.'
         #Configuration error messages
-        credential_flow_not_configured: '由于 Doorkeeper.configure.resource_owner_from_credentials 尚未配置，应用验证授权流程失败。'
-        resource_owner_authenticator_not_configured: '由于 Doorkeeper.configure.resource_owner_authenticator 尚未配置，查找资源所有者失败。'
-        admin_authenticator_not_configured: '由于 Doorkeeper.configure.admin_authenticator 尚未配置，禁止访问管理员面板。'
+        credential_flow_not_configured: 'Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.'
+        resource_owner_authenticator_not_configured: 'Resource Owner find failed due to Doorkeeper.configure.resource_owner_authenticator being unconfigured.'
+        admin_authenticator_not_configured: 'Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.'
         #Access grant errors
-        unsupported_response_type: '服务器不支持这种响应类型。'
+        unsupported_response_type: 'The authorization server does not support this response type.'
         #Access token errors
-        invalid_client: '由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败。'
-        invalid_grant: '授权方式无效、过期或已被撤销、与授权请求中的回调地址不一致，或使用了其他应用的回调地址。'
-        unsupported_grant_type: '服务器不支持此类型的授权方式。'
+        invalid_client: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.'
+        invalid_grant: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.'
+        unsupported_grant_type: 'The authorization grant type is not supported by the authorization server.'
         invalid_token:
-          revoked: "访问令牌已被吊销"
-          expired: "访问令牌已过期"
-          unknown: "访问令牌无效"
+          revoked: 'The access token was revoked'
+          expired: 'The access token expired'
+          unknown: 'The access token is invalid'
         revoke:
-          unauthorized: "You are not authorized to revoke this token"
+          unauthorized: '您无权撤销此令牌'
     flash:
       applications:
         create:
-          notice: '应用创建成功。'
+          notice: 'Application created.'
         destroy:
-          notice: '应用删除成功。'
+          notice: 'Application deleted.'
         update:
-          notice: '应用修改成功。'
+          notice: 'Application updated.'
       authorized_applications:
         destroy:
-          notice: '已成功撤销对此应用的授权。'
+          notice: 'Application revoked.'
     layouts:
       admin:
         title: 'Doorkeeper'
         nav:
-          oauth2_provider: 'OAuth2 提供商'
-          applications: '应用'
-          home: '首页'
+          oauth2_provider: 'OAuth2 Provider'
+          applications: 'Applications'
+          home: 'Home'
       application:
-        title: '需要 OAuth 认证'
+        title: 'OAuth authorization required'
   accounts:
-    app_title: Brickdoc 账号
+    app_title: Brickdoc Accounts
     provider:
-      github: Github
-      email_password: Email和密码
+      email_password: Email & Password
     sessions:
-      sign_in: 登录
-      sign_up: 注册
-      reset_password: 重置密码
-      sign_in_to_brickdoc: 登录 Brickdoc
-      more_login_options: 更多登录方式
-      login_via: "使用 %{provider} 登录"
+      sign_in: Sign In
+      sign_up: Sign Up
+      reset_password: Reset Password
+      sign_in_to_brickdoc: Sign in to Brickdoc
+      more_login_options: More Login Options
+      login_via: 'Sign In with %{provider}'
       email: Email
-      password: 密码
-      remember_me: 记住我
-      sign_up_with_email: 注册账号
-      resend_confirmed_email: 重新发送验证邮件
-      confirmation_email_required_heading: 只差一步即可完成注册
-      forget_password: 找回密码
-      confirm_password: 确认密码
-      sign_up_via: "使用 %{provider} 注册"
-      name: "姓名"
-      webid: "WebID"
-      webid_description: "相当于您的用户名，仅允许包含英文字母和数字"
-      agree_to_agreement: "注册即表示您已阅读并同意我们的<0>《用户协议》</0>"
-      resend_after: "%{seconds}秒后可重新发送"
+      password: Password
+      remember_me: Remember me
+      sign_up_with_email: Sign Up
+      resend_confirmed_email: Resend Confirmation Email
+      confirmation_email_required_heading: Almost done
+      forget_password: Forget Password
+      confirm_password: Confirm Password
+      sign_up_via: 'Sign Up with %{provider}'
+      name: 'Name'
+      webid: 'WebID'
+      webid_description: 'Only alphabet and numbers are allowed'
+      agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
+      resend_after: 'Resendable after %{seconds} seconds'
     common:
-      confirm_not_match: "%{field}和确认%{field}不一致"
+      confirm_not_match: '%{field} and confirm %{field} do not match'
+    errors:
+      invalid_operation_type: '无效的实体类型'
+      invalid_pod_webid: '无访问权限'
+      pod_has_already_switched: 'Pod 已切换'
+      pod_exist: 'Pod 已经存在'
+      user_not_exist: "用户不存在"
+      pod_not_exist: "Pod 不存在"
   docs:
-    app_title: 积木文档
+    app_title: Brickdoc
+    saving: 保存中
+    user_setting:
+      text: 用户设置
+      general: General
+      member: Member
+      account: Account
+    pod_setting:
+      text: Pod Setting
+    anonymous:
+      edit_button: Edit
+    search:
+      text: 快速查找
+      placeholder: 搜索页面
     blocks:
-      create_pages: 新增页面
-      delete: 刪除
-      create_snapshot: 创建快照
+      create_pages: Add Pages
+      delete: Delete
+    trash:
+      name: 回收站
+      all_pages: 所有页面
+      current_page: 当前页面
+      search: 按页面标题过滤...
+      not_found: 未找到匹配项
+      learn: 了解如何删除和恢复页面
+      delete_confirmation_body: 您确定要永久删除此页面吗？
+      delete_confirmation_ok: 删除页面
+      delete_confirmation_cancel: Cancel
+      in_trash_prompt: 此页面已在回收站中。
+      restore_action: 还原页面
+      hard_delete_action: 永久删除
+    share:
+      menu: 分享
+      share_to_web: 分享到网页
+      share_to_web_description: 发布并与任何人共享链接
+      allow_edit: 允许编辑
+      learn: 了解共享
+      copy_link_button: 复制链接
+      invite_placeholder: 添加人员、电子邮件、群组或集成
+      invite_button: 邀请
+      copy: Copy
+    invite:
+      learn: 了解如何邀请他人和设置权限
+      type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。
+      search: 搜索电子邮件、姓名
+      button: 邀请
+      edit_message: 允许编辑
+      edit_message_description: 可以编辑，但不能再次共享给其他人。
+      view_message: 允许查看
+      view_message_description: 不能编辑或与他人共享。
+      remove_message: Remove
     snapshots:
-      name: 快照
+      name: Snapshot
+      restore: 还原此版本
+      cancel: Cancel
+      empty: 版本历史为空
+    pods:
+      webid: WebID
+      name: Name
+      bio: 个人简介
+      avatar: 头像
+      required:
+        webid: WebID是必需的
+        name: 名称是必需的
+      create:
+        success: 创建成功。
+      update:
+        success: 更新成功。
     menu:
-      create_new_pod: 创建新 Pod
-      logout: 登出
+      create_new_pod: Create other pod
+      logout: Logout
+    title:
+      add_icon: 添加图标
+      add_cover: 添加封面
+      change_cover: Change cover
+      reposition: Reposition
+      untitled: Untitled
+  editor:
+    placeholder: Type '/' for commands
+    slashmenu:
+      heading: Brickdoc
+      items:
+        h1:
+          title: 一级标题
+          desc: Big section heading
+        h2:
+          title: 二级标题
+          desc: Medium section heading
+        h3:
+          title: 三级标题
+          desc: Small section heading
+        h4:
+          title: 四级标题
+          desc: Small section heading
+        h5:
+          title: 五级标题
+          desc: Small section heading
+        bulletlist:
+          title: 无序列表
+          desc: 创建无序列表
+        orderedlist:
+          title: 有序列表
+          desc: 创建有序列表
+        pdf:
+          title: PDF
+          desc: 嵌入 PDF
+        embed:
+          title: 嵌入
+          desc: For PDFs and more
+        image:
+          title: 图片
+          desc: 上传或嵌入链接
+        table:
+          title: 表格
+          desc: 在页面中创建表格
+    bubblemenu:
+      items:
+        bold:
+          desc: 粗体
+        italic:
+          desc: 斜体
+        underline:
+          desc: 下划线
+        strike:
+          desc: 删除线
+        h1:
+          desc: 一级标题
+        h2:
+          desc: 二级标题
+        h3:
+          desc: 三级标题
+        h4:
+          desc: 四级标题
+        h5:
+          desc: 五级标题
+        bulletlist:
+          desc: 无序列表
+        orderedlist:
+          desc: 有序列表
+        link:
+          desc: 链接
+          link_placeholder: 粘贴链接
+          linked_to: 链接到
+          web_page: 网页
+          copy_link: 复制链接
+          remove_link: 删除链接
+          link_to_url: 链接到URL
+        fontcolor:
+          desc: 字体颜色
+    image_section:
+      hint: 添加图片
+      import_sources:
+        link:
+          placeholder: 粘贴图片链接...
+          button_text: 嵌入图像
+          button_hint: 适用于任何来自网页的图像
+        upload:
+          button_text: 选择图片
+    link_block:
+      delete: Delete
+      copy_link: 复制链接
+      hint: 嵌入任何内容
+      import_sources:
+        link:
+          placeholder: Paste in https://...
+          button_text: 嵌入
+          button_hint: Works with Block-level link projects
+        upload:
+          button_text: 选择文件
+          button_hint: 建议大小为 5MB
+    pdf_section:
+      hint: 嵌入 PDF
+      import_sources:
+        upload:
+          button_text: 选择文件
+        link:
+          placeholder: Paste in https://...
+          button_text: 嵌入 PDF
+          button_hint: 嵌入 PDF 文件
+    table:
+      new_row:
+        text: 新建
+      remove_row:
+        text: Delete
+        title: 您确定要删除此行吗？
+        ok: Delete
+        cancel: Cancel
+      remove_column:
+        text: Delete
+        title: 您确定要删除此属性吗？
+        ok: Delete
+        cancel: Cancel
+      column_default_name: 列
+      column_type: 属性类型
+      column_types:
+        basic: Basic
+        text: 文本
+        select: 下拉列表
+        date: 日期
+        date-range: 日期范围
+      filter:
+        text: 筛选
+        title: 筛选我的所有数据
+        remove: Remove
+        duplicate: 复制
+        where: Where
+        add_a_filter: 添加筛选
+        add_a_filter_group: 添加筛选组
+        add_a_filter_group_desc: A group to nest more filters
+        hint: |
+          使用过滤器来：
+          显示分配给我的任务。
+          只显示带有特定标签的笔记。
+          隐藏已完成的任务。
+        collection_types:
+          intersection: 和
+          union: 或
+        matches:
+          is: 是
+          is_not: 不是
+          is_on: 是
+          is_not_on: 不是
+          is_before: Is before
+          is_after: Is After
+          is_on_or_before: Is on or before
+          is_on_or_after: Is on or after
+          contains: 包含
+          does_not_contain: 不包含
+          starts_with: 开头为
+          ends_with: 结尾为
+          is_empty: 是空的
+          is_not_empty: 不为空
+      sort:
+        text: Sort
+        title: 为我的所有数据排序
+        hint: |
+          使用排序来：
+          按优先级排序任务。
+          按创建日期显示笔记。
+          显示最近联系过的客户。

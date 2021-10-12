@@ -1,419 +1,433 @@
 ar-SA:
   meta:
-    lang: ar-SA
-    dir: rtl
-    noscript: نحن آسفون ولكن Brickdoc لا يعمل بشكل صحيح دون تمكين جافا سكريبت. يرجى زيارة %{url} للحصول على مزيد من المعلومات.
-    noscript_url: https://ar.wikihow.com/%D8%AA%D9%81%D8%B9%D9%8A%D9%84-%D8%AC%D8%A7%D9%81%D8%A7-%D8%B3%D9%83%D8%B1%D9%8A%D8%A8%D8%AA-%D8%B9%D9%84%D9%89-%D9%85%D8%AA%D8%B5%D9%81%D8%AD-%D8%A7%D9%84%D8%A5%D9%86%D8%AA%D8%B1%D9%86%D8%AA
-  'Your browser is out of date': متصفحك قديم
-  download_latest_browser_html: الرجاء تحميل أحدث إصدار من <a href="%{edge}" rel="nofollow">Microsoft Edge</a>أو <a href="%{chrome}" rel="nofollow">Chrome</a> أو <a href="%{firefox}" rel="nofollow">Firefox</a> للاستمرار في استخدام Brickdoc.
-  edge_link: https://www.microsoft.com/ar-sa/edge
-  chrome_link: https://www.google.com/intl/ar/chrome/
-  firefox_link: https://www.mozilla.org/ar/firefox/new
+    lang: en-US
+    dir: ltr
+    noscript: We're sorry but Brickdoc doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
+    noscript_url: https://www.wikihow.com/Enable-JavaScript
+  'Your browser is out of date': Your browser is out of date
+  download_latest_browser_html: Please download the latest version of <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">Chrome</a> or <a href="%{firefox}" rel="nofollow">Firefox</a> to continue using Brickdoc.
+  edge_link: https://www.microsoft.com/en-us/edge
+  chrome_link: https://www.google.com/chrome/
+  firefox_link: https://www.mozilla.org/en-US/firefox/new/
   design_system:
     calendarPicker:
-      today: اليوم
-      now: الأن
-      backToToday: العودة إلى اليوم
-      ok: تأكيد
-      clear: مسح
-      month: الشهر
-      year: السنة
-      timeSelect: اختيار الوقت
-      dateSelect: اختيار التاريخ
-      weekSelect: اختر أسبوعًا
-      monthSelect: اختيار الشهر
-      yearSelect: اختيار السنة
-      decadeSelect: اختيار العقد
+      today: Today
+      now: Now
+      backToToday: Back to today
+      ok: Ok
+      clear: Clear
+      month: Month
+      year: Year
+      timeSelect: select time
+      dateSelect: select date
+      weekSelect: Choose a week
+      monthSelect: Choose a month
+      yearSelect: Choose a year
+      decadeSelect: Choose a decade
       yearFormat: YYYY
       dateFormat: M/D/YYYY
       dayFormat: D
       dateTimeFormat: 'M/D/YYYY HH:mm:ss'
       monthBeforeYear: true
-      previousMonth: الشهر السابق (PageUp)
-      nextMonth: الشهر التالى(PageDown)
-      previousYear: العام السابق (Control + left)
-      nextYear: العام التالى (Control + right)
-      previousDecade: العقد السابق
-      nextDecade: العقد التالى
-      previousCentury: القرن السابق
-      nextCentury: القرن التالى
-      placeholder: اختيار التاريخ
-      yearPlaceholder: تحديد سنة
-      quarterPlaceholder: حدد الربع
-      monthPlaceholder: اختر الشهر
-      weekPlaceholder: حدد الأسبوع
+      previousMonth: Previous month (PageUp)
+      nextMonth: Next month (PageDown)
+      previousYear: Last year (Control + left)
+      nextYear: Next year (Control + right)
+      previousDecade: Last decade
+      nextDecade: Next decade
+      previousCentury: Last century
+      nextCentury: Next century
+      placeholder: Select date
+      yearPlaceholder: Select year
+      quarterPlaceholder: Select quarter
+      monthPlaceholder: Select month
+      weekPlaceholder: Select week
       rangePlaceholder:
-        startDate: تاريخ البدء
-        endDate: تاريخ الانتهاء
+        startDate: Start date
+        endDate: End date
       rangeYearPlaceholder:
-        startYear: سنة البدء
-        endYear: نهاية السنة
+        startYear: Start year
+        endYear: End year
       rangeMonthPlaceholder:
-        startMonth: شهر البدء
-        endMonth: نهاية الشهر
+        startMonth: Start month
+        endMonth: End month
       rangeWeekPlaceholder:
-        startWeek: بداية الأسبوع
-        endWeek: نهاية الأسبوع
+        startWeek: Start week
+        endWeek: End week
     timePicker:
-      placeholder: حدد الوقت
+      placeholder: Select time
       rangePlaceholder:
-        startTime: وقت البدء
-        endTime: وقت النهاية
+        startTime: Start time
+        endTime: End time
     pagination:
-      itemsPerPage: '/ الصفحة'
-      jumpTo: الذهاب إلى
-      jumpToConfirm: تأكيد
+      itemsPerPage: '/ page'
+      jumpTo: Go to
+      jumpToConfirm: confirm
       page: ''
-      prevPage: 'الصفحة السابقة'
-      nextPage: 'الصفحة التالية'
-      prev5: 'خمس صفحات سابقة'
-      next5: 'خمس صفحات تالية'
-      prev3: 'ثلاث صفحات سابقة'
-      next3: 'ثلاث صفحات تالية'
+      prevPage: 'Previous Page'
+      nextPage: 'Next Page'
+      prev5: 'Previous 5 Pages'
+      next5: 'Next 5 Pages'
+      prev3: 'Previous 3 Pages'
+      next3: 'Next 3 Pages'
     global:
-      placeholder: يُرجى الاختيار
+      placeholder: Please select
     table:
-      filterTitle: الفلاتر
-      filterConfirm: تأكيد
-      filterReset: إعادة ضبط
-      filterEmptyText: 'لا يوجد عامل تصفية'
-      emptyText: 'لا بيانات'
-      selectAll: 'اختيار الكل'
-      selectInvert: إلغاء الاختيار
-      selectNone: مسح البيانات
-      selectionAll: حدد جميع البيانات
-      sortTitle: رتب
-      expand: توسيع الصف
-      collapse: طي الصف
-      triggerDesc: ترتيب تنازلي
-      triggerAsc: ترتيب تصاعدي
-      cancelSort: إلغاء الترتيب
+      filterTitle: Filter menu
+      filterConfirm: OK
+      filterReset: Reset
+      filterEmptyText: 'No filters'
+      emptyText: 'No data'
+      selectAll: 'Select current page'
+      selectInvert: Invert current page
+      selectNone: Clear all data
+      selectionAll: Select all data
+      sortTitle: Sort
+      expand: Expand row
+      collapse: Collapse row
+      triggerDesc: Click to sort descending
+      triggerAsc: Click to sort ascending
+      cancelSort: Click to cancel sorting
     modal:
-      okText: تأكيد
-      cancelText: يلغي
-      justOkText: تأكيد
+      okText: OK
+      cancelText: Cancel
+      justOkText: OK
     popconfirm:
-      okText: تأكيد
-      cancelText: يلغي
+      okText: OK
+      cancelText: Cancel
     transfer:
       titles:
         first: ''
         second: ''
-      searchPlaceholder: 'ابحث هنا'
-      itemUnit: 'عنصر'
-      itemsUnit: 'عناصر'
-      remove: ازالة
-      selectCurrent: اختيار الكل
-      removeCurrent: إزالة الصفحة الحالية
-      selectAll: حدد جميع البيانات
-      removeAll: قم بإزالة كافة البيانات
-      selectInvert: إلغاء الاختيار
+      searchPlaceholder: 'Search here'
+      itemUnit: 'item'
+      itemsUnit: 'items'
+      remove: Remove
+      selectCurrent: Select current page
+      removeCurrent: Remove current page
+      selectAll: Select all data
+      removeAll: Remove all data
+      selectInvert: Invert current page
     empty:
-      description: لا توجد بيانات
+      description: No Data
     icon:
-      icon: أيقونة
+      icon: icon
     text:
-      edit: تحرير
-      copy: انسخ
-      copied: تم النسخ
-      expand: وسع
+      edit: Edit
+      copy: Copy
+      copied: Copied
+      expand: Expand
     form:
-      optional: (إختياري)
+      optional: (optional)
       defaultValidationMessages:
-        default: خطأ في التحقق من صحة الحقل لـ %{label}
-        required: الرجاء إدخال %{label}
-        enum: "يجب أن تكون %{label} واحدة من [%{enum}]"
-        whitespace: "لا يمكن أن يكون %{label} حرف فارغ"
+        default: Field validation error for %{label}
+        required: Please enter %{label}
+        enum: '%{label} must be one of [%{enum}]'
+        whitespace: '%{label} cannot be a blank character'
         types:
-          template: '%{label} غير صالحة %{type}'
+          template: '%{label} is not a valid %{type}'
         date:
-          format: '%{label} تنسيق التاريخ غير صحيح'
-          parse: '%{label} لا يمكن تحويلها إلى تاريخ'
-          invalid: 'تاريخ %{label} غير صحيح'
+          format: '%{label} date format is invalid'
+          parse: '%{label} cannot be converted to a date'
+          invalid: '%{label} is an invalid date'
         string:
-          len: 'يجب %{label} ان يكون %{len} أحرف'
-          min: '%{label} يجب أن يكون حرفًا %{min}'
-          max: '%{label} يجب أن تصل إلى %{max} الأحرف'
-          range: '%{label} يجب أن تكون بين %{min}-%{max} الأحرف'
+          len: '%{label} must be %{len} characters'
+          min: '%{label} must be at least %{min} characters'
+          max: '%{label} must be up to %{max} characters'
+          range: '%{label} must be between %{min}-%{max} characters'
         number:
-          len: '%{label} يجب أن يساوي %{len}'
-          min: '%{label} يجب أن يكون الحد الأدنى %{min}'
-          max: 'يجب أن يكون %{label} أقصى %{max}'
-          range: 'يجب أن يكون الرقم %{label} %{min}-%{max}'
+          len: '%{label} must be equal to %{len}'
+          min: '%{label} must be minimum %{min}'
+          max: '%{label} must be maximum %{max}'
+          range: '%{label} must be between %{min}-%{max}'
         array:
-          len: 'يجب أن يكون %{len} %{label}'
-          min: 'على الأقل %{min} %{label}'
-          max: 'على الأكثر %{max} %{label}'
-          range: 'كمية من %{label} يجب أن تكون بين %{min}-%{max}'
+          len: 'Must be %{len} %{label}'
+          min: 'At least %{min} %{label}'
+          max: 'At most %{max} %{label}'
+          range: 'The amount of %{label} must be between %{min}-%{max}'
         pattern:
-          mismatch: '%{label} لا يطابق نمط %{pattern}'
+          mismatch: '%{label} does not match the pattern %{pattern}'
     image:
-      preview: معاينة
+      preview: Preview
   activerecord:
     attributes:
       doorkeeper/application:
-        name: 'الأسم'
-        redirect_uri: 'اعادة توجيه الموقع'
+        name: 'Name'
+        redirect_uri: 'Redirect URI'
     errors:
       models:
+        accounts/user:
+          attributes:
+            password:
+              too_short: قصير جدا
         doorkeeper/application:
           attributes:
             redirect_uri:
-              fragment_present: 'لا يمكن أن تحتوي على جزء.'
-              invalid_uri: 'يجب أن يكون URI صالح.'
-              unspecified_scheme: 'يجب تحديد مخطط.'
-              relative_uri: 'يجب أن يكون URI المطلقة.'
-              secured_uri: 'يجب أن يكون HTTPS/SSL URI.'
-              forbidden_uri: 'محظور بموجب الخادم.'
+              fragment_present: 'cannot contain a fragment.'
+              invalid_uri: 'must be a valid URI.'
+              unspecified_scheme: 'must specify a scheme.'
+              relative_uri: 'must be an absolute URI.'
+              secured_uri: 'must be an HTTPS/SSL URI.'
+              forbidden_uri: 'is forbidden by the server.'
             scopes:
-              not_match_configured: "لا يطابق الضبط على الخادم."
+              not_match_configured: "doesn't match configured on the server."
       messages:
-        record_invalid: 'فشل التحقّق من: %{errors}'
+        record_invalid: 'Validation failed: %{errors}'
         restrict_dependent_destroy:
-          has_one: لا يمكن حذف السجل لوجود سجل يعتمد عليه %{record}
-          has_many: لا يمكن حذف السجل لوجود سجلات تعتمد عليه %{record}
+          has_one: Cannot delete record because a dependent %{record} exists
+          has_many: Cannot delete record because dependent %{record} exist
   date:
     abbr_day_names:
-      - الأحد
-      - الإثنين
-      - الثّلاثاء
-      - الأربعاء
-      - الخميس
-      - الجمعة
-      - السّبت
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
       -
-      - يناير
-      - فبراير
-      - مارس
-      - أبريل
-      - مايو
-      - يونيو
-      - يوليو
-      - أغسطس
-      - سبتمبر
-      - أكتوبر
-      - نوفمبر
-      - ديسمبر
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-      - الأحد
-      - الإثنين
-      - الثّلاثاء
-      - الأربعاء
-      - الخميس
-      - الجمعة
-      - السّبت
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
-      default: "%d-%m-%Y"
-      long: "%e %B، %Y"
-      short: "%e %b"
+      default: '%m-%d-%Y'
+      long: '%B %d, %Y'
+      short: '%b %d'
     month_names:
       -
-      - يناير
-      - فبراير
-      - مارس
-      - أبريل
-      - مايو
-      - يونيو
-      - يوليو
-      - أغسطس
-      - سبتمبر
-      - أكتوبر
-      - نوفمبر
-      - ديسمبر
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-      - :day
       - :month
+      - :day
       - :year
   datetime:
     distance_in_words:
       about_x_hours:
-        one: حول ساعات %{count}
-        other: حول ساعات %{count}
-        about_x_months:
-          zero: حول أشهر %{count}
-          one: حوالي 1 في الشهر
-          two: حول أشهر %{count}
-          few: حول أشهر %{count}
-          many: حول أشهر %{count}
-          other: حول أشهر %{count}
-        about_x_years:
-          zero: حول سنوات %{count}
-          one: حوالي السنة 1
-          two: حول سنوات %{count}
-          few: حول سنوات %{count}
-          many: حول سنوات %{count}
-          other: حول سنوات %{count}
-        almost_x_years:
-          zero: '%{count} سنة تقريبا'
-          one: تقريبا في العام 1
-          two: '%{count} سنة تقريبا'
-          few: '%{count} سنة تقريبا'
-          many: '%{count} سنة تقريبا'
-          other: '%{count} سنة تقريبا'
-        half_a_minute: نصف دقيقة
-        less_than_x_seconds:
-          zero: أقل من ثانية %{count}
-          one: أقل من ثانية %{count}
-          two: أقل من ثانية %{count}
-          few: أقل من ثانية %{count}
-          many: أقل من ثانية %{count}
-          other: أقل من ثانية %{count}
-        less_than_x_minutes:
-          zero: أقل من دقيقة %{count}
-          one: أقل من دقيقة %{count}
-          two: أقل من دقيقة %{count}
-          few: أقل من دقيقة %{count}
-          many: أقل من دقيقة %{count}
-          other: أقل من دقيقة %{count}
-        over_x_years:
-          zero: على مدى السنوات %{count}
-          one: على مدى السنوات %{count}
-          two: على مدى السنوات %{count}
-          few: على مدى السنوات %{count}
-          many: على مدى السنوات %{count}
-          other: على مدى السنوات %{count}
-        x_seconds:
-          zero: "%{count} ثانية"
-          one: ثانية واحدة
-          two: "%{count} ثانية"
-          few: "%{count} ثانية"
-          many: "%{count} ثانية"
-          other: "%{count} ثانية"
-        x_minutes:
-          zero: "دقائق %{count}"
-          one: دقيقة واحدة
-          two: "دقائق %{count}"
-          few: "دقائق %{count}"
-          many: "دقائق %{count}"
-          other: "دقائق %{count}"
-        x_days:
-          zero: "أيام %{count}"
-          one: يوم واحد
-          two: "أيام %{count}"
-          few: "أيام %{count}"
-          many: "أيام %{count}"
-          other: "أيام %{count}"
-        x_months:
-          zero: "أشهر %{count}"
-          one: شهر 1
-          two: "أشهر %{count}"
-          few: "أشهر %{count}"
-          many: "أشهر %{count}"
-          other: "أشهر %{count}"
-        x_years:
-          zero: "أيام %{count}"
-          one: سنة واحدة
-          two: "أيام %{count}"
-          few: "أيام %{count}"
-          many: "أيام %{count}"
-          other: "أيام %{count}"
+        zero: about %{count} hours
+        one: about 1 hour
+        two: about %{count} hours
+        few: about %{count} hours
+        many: about %{count} hours
+        other: about %{count} hours
+      about_x_months:
+        zero: about %{count} months
+        one: about 1 month
+        two: about %{count} months
+        few: about %{count} months
+        many: about %{count} months
+        other: about %{count} months
+      about_x_years:
+        zero: about %{count} years
+        one: about 1 year
+        two: about %{count} years
+        few: about %{count} years
+        many: about %{count} years
+        other: about %{count} years
+      almost_x_years:
+        zero: almost %{count} years
+        one: almost 1 year
+        two: almost %{count} years
+        few: almost %{count} years
+        many: almost %{count} years
+        other: almost %{count} years
+      half_a_minute: نصف دقيقة
+      less_than_x_seconds:
+        zero: less than %{count} seconds
+        one: less than 1 second
+        two: less than %{count} seconds
+        few: less than %{count} seconds
+        many: less than %{count} seconds
+        other: less than %{count} seconds
+      less_than_x_minutes:
+        zero: less than %{count} minutes
+        one: less than a minute
+        two: less than %{count} minutes
+        few: less than %{count} minutes
+        many: less than %{count} minutes
+        other: less than %{count} minutes
+      over_x_years:
+        zero: over %{count} years
+        one: over 1 year
+        two: over %{count} years
+        few: over %{count} years
+        many: over %{count} years
+        other: over %{count} years
+      x_seconds:
+        zero: '%{count} seconds'
+        one: 1 second
+        two: '%{count} seconds'
+        few: '%{count} seconds'
+        many: '%{count} seconds'
+        other: '%{count} seconds'
+      x_minutes:
+        zero: 'دقائق %{count}'
+        one: دقيقة واحدة
+        two: 'دقائق %{count}'
+        few: 'دقائق %{count}'
+        many: 'دقائق %{count}'
+        other: 'دقائق %{count}'
+      x_days:
+        zero: 'أيام %{count}'
+        one: يوم واحد
+        two: 'أيام %{count}'
+        few: 'أيام %{count}'
+        many: 'أيام %{count}'
+        other: 'أيام %{count}'
+      x_months:
+        zero: 'أشهر %{count}'
+        one: شهر 1
+        two: 'أشهر %{count}'
+        few: 'أشهر %{count}'
+        many: 'أشهر %{count}'
+        other: 'أشهر %{count}'
+      x_years:
+        zero: 'أيام %{count}'
+        one: سنة واحدة
+        two: 'أيام %{count}'
+        few: 'أيام %{count}'
+        many: 'أيام %{count}'
+        other: 'أيام %{count}'
     prompts:
-      second: ثانية
-      minute: دقيقة
-      hour: ساعة
-      day: اليوم
-      month: الشهر
-      year: السنة
+      second: Second
+      minute: Minute
+      hour: Hour
+      day: Day
+      month: Month
+      year: Year
   errors:
-    format: "%{message}"
+    format: '%{attribute} %{message}'
     graphql:
       docs:
         initialized_not_yet_completed: Initialized not yet completed
     messages:
-      already_confirmed: تم تأكيده بالفعل، الرجاء محاولة تسجيل الدخول
-      confirmation_period_expired: يحتاج إلى التأكيد في غضون %{period}،الرجاء طلب رابط تأكيد جديد
-      expired: قد انتهت المدة، الرجاء طلب رابط تأكيد جديد
-      not_found: غير موجود
-      not_locked: لم يتم إلغاء قفله
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
       not_saved:
-        zero: "%{count} أخطاء منع %{resource} هذا من أن يتم حفظه:"
-        one: '1 خطأ منع %{resource} هذا من أن يتم حفظه:'
-        two: "%{count} أخطاء منع %{resource} هذا من أن يتم حفظه:"
-        few: "%{count} أخطاء منع %{resource} هذا من أن يتم حفظه:"
-        many: "%{count} أخطاء منع %{resource} هذا من أن يتم حفظه:"
-        other: "%{count} أخطاء منع %{resource} هذا من أن يتم حفظه:"
-      is_not_valid_webid: "معرف ويب \"%{webid}\" غير متوفر"
-      send_interval: الفاصل الزمني للإرسال قصير جدًا ، يرجى المحاولة مرة أخرى بعد دقيقة واحدة
-      accepted: يجب أن تقبل %{attribute}
-      blank: لا يمكن أن يكون محتوى %{attribute} فارغاً
-      confirmation: محتوى %{attribute} لا يتوافق مع %{attribute}
-      empty: لا يمكن أن يكون محتوى %{attribute} فارغاً
-      equal_to: يجب أن يساوي طول %{attribute} %{count}
-      even: يجب أن يكون عدد %{attribute} زوجياً
-      exclusion: حقل %{attribute} محجوز
-      greater_than: ميجب أن يكون عدد %{attribute} أكبر من %{count}
-      greater_than_or_equal_to: يجب أن يكون عدد %{attribute} أكبر أو يساوي %{count}
-      inclusion: '%{attribute} غير وارد في القائمة'
-      invalid: محتوى %{attribute} غير صالح
-      less_than: يجب أن يكون عدد %{attribute} أصغر من %{count}
-      less_than_or_equal_to: يجب أن يكون عدد %{attribute} أصغر أو  يساوي %{count}
-      model_invalid: 'فشل التحقّق من: %{errors}'
-      not_a_number: يجب أن يكون محتوى %{attribute} رقماً
-      not_an_integer: يجب أن يكون عدد %{attribute} عدد صحيحاً
-      odd: يجب أن يكون عدد %{attribute} عدداً فردياً
-      other_than: يجب أن تكون غير %{count}
-      present: يجب ترك حقل %{attribute} فارغاً
-      required: يجب أن تكون موجودة
-      taken: حقل %{attribute} محجوز مسبقاً
+        zero: '%{count} errors prohibited this %{resource} from being saved:'
+        one: '1 error prohibited this %{resource} from being saved:'
+        two: '%{count} errors prohibited this %{resource} from being saved:'
+        few: '%{count} errors prohibited this %{resource} from being saved:'
+        many: '%{count} errors prohibited this %{resource} from being saved:'
+        other: '%{count} errors prohibited this %{resource} from being saved:'
+      is_not_valid_webid: 'WebID "%{webid}" is not available'
+      is_not_valid_email: 'Email "%{email}" is not available'
+      send_interval: Sending interval is too short, please try again after 1 minute
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      model_invalid: 'Validation failed: %{errors}'
+      email_invalid: ليس برقم تسجيل بريد إلكتروني
+      webid_invalid: is not a webid
+      uuid_invalid: ليس uuid
+      mobile_phone_invalid: ليس رقم هاتف محمول صالحًا
+      webid_presence_invalid: is not presence
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      other_than: must be other than %{count}
+      present: must be blank
+      required: must exist
+      taken: has already been taken
       too_long:
-        one: طويل جدا (الحد الأقصى هو حرف واحد)
-        other: طويل جدًا (الحد الأقصى هو %{count} حرفًا)
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
         too_short:
-          zero: هو قصير جداً (الحد الأدنى هو %{count} حرف)
-          one: قصير جدًا (الحد الأدنى هو حرف واحد)
-          two: طويل جدًا (الحد الأقصى هو %{count} حرفًا)
-          few: طويل جدًا (الحد الأقصى هو %{count} حرفًا)
-          many: طويل جدًا (الحد الأقصى هو %{count} حرفًا)
-          other: طويل جدًا (الحد الأقصى هو %{count} حرفًا)
+          zero: is too short (minimum is %{count} characters)
+          one: is too short (minimum is 1 character)
+          two: is too short (minimum is %{count} characters)
+          few: is too short (minimum is %{count} characters)
+          many: is too short (minimum is %{count} characters)
+          other: is too short (minimum is %{count} characters)
         wrong_length:
-          zero: هو طول خاطئ (يجب أن يكون %{count} حرف)
-          one: هو طول خاطئ (يجب أن يكون 1 حرف)
-          two: هو طول خاطئ (يجب أن يكون %{count} حرف)
-          few: هو طول خاطئ (يجب أن يكون %{count} حرف)
-          many: هو طول خاطئ (يجب أن يكون %{count} حرف)
-          other: هو طول خاطئ (يجب أن تكون %{count} حرفا)
+          zero: is the wrong length (should be %{count} characters)
+          one: is the wrong length (should be 1 character)
+          two: is the wrong length (should be %{count} characters)
+          few: is the wrong length (should be %{count} characters)
+          many: is the wrong length (should be %{count} characters)
+          other: is the wrong length (should be %{count} characters)
     template:
-      body: 'يُرجى التحقّق من الحقول التّالية:%{attribute}'
+      body: 'There were problems with the following fields:'
       header:
-        zero: "ليس بالامكان حفظ %{model} لسبب ولا خطأ."
-        one: ليس بالامكان حفظ %{model} لسبب وجود خطأ واحد.
-        two: "ليس بالامكان حفظ %{model} لسبب وجود خطئان."
-        few: "ليس بالامكان حفظ %{model} لسبب وجود %{count} أخطاء."
-        many: "ليس بالامكان حفظ %{model} لسبب وجود %{count} خطأ."
-        other: "ليس بالامكان حفظ %{model} لسبب وجود %{count} خطأ."
+        zero: '%{count} errors prohibited this %{model} from being saved'
+        one: 1 error prohibited this %{model} from being saved
+        two: '%{count} errors prohibited this %{model} from being saved'
+        few: '%{count} errors prohibited this %{model} from being saved'
+        many: '%{count} errors prohibited this %{model} from being saved'
+        other: '%{count} errors prohibited this %{model} from being saved'
   helpers:
     select:
-      prompt: يُرجى الاختيار
+      prompt: Please select
     submit:
-      create: '%{model} إنشاء'
-      submit: '%{model} حِفظ'
-      update: '%{model} تحديث'
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
   number:
     currency:
       format:
-        delimiter: ","
-        format: "%u %n"
-        precision: 3
-        separator: "."
+        delimiter: ','
+        format: '%u%n'
+        precision: 2
+        separator: '.'
         significant: false
         strip_insignificant_zeros: false
-        unit: 'KWD'
+        unit: '$'
     format:
-      delimiter: ","
+      delimiter: ','
       precision: 3
-      separator: "."
+      separator: '.'
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
-          billion: مليار
-          million: مليون
-          quadrillion: كدريليون
-          thousand: ألفّ
-          trillion: تريليون
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
           unit: ''
       format:
         delimiter: ''
@@ -421,7 +435,7 @@ ar-SA:
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
           byte:
             zero: Bytes
@@ -439,242 +453,477 @@ ar-SA:
     percentage:
       format:
         delimiter: ''
-        format: "%n%"
+        format: '%n%'
     precision:
       format:
         delimiter: ''
   support:
     array:
-      last_word_connector: " و "
-      two_words_connector: " و "
-      words_connector: " ، "
+      last_word_connector: ', and '
+      two_words_connector: ' and '
+      words_connector: ', '
   time:
-    am: صباحًا
+    am: am
     formats:
-      default: "%a %b %d %H:%M:%S %Z %Y"
-      long: "%d %B, %Y %H:%M"
-      short: "%d %b %H:%M"
-    pm: مساءً
+      default: '%a, %d %b %Y %I:%M:%S %p %Z'
+      long: '%B %d, %Y %I:%M %p'
+      short: '%d %b %I:%M %p'
+    pm: pm
   devise:
     confirmations:
-      confirmed: "تم تأكيد عنوان بريدك الإلكتروني بنجاح."
-      send_instructions: "ستتلقى رسالة بريد إلكتروني بها تعليمات عن كيفية تأكيد عنوان بريدك الإلكتروني في غضون بضع دقائق."
-      send_paranoid_instructions: "إذا كان بريدك الإلكتروني موجود في قاعدة البيانات لدينا، ستتلقى رسالة بريد إلكتروني بها تعليمات عن كيفية تأكيد عنوان بريدك الإلكتروني في بضع دقائق."
+      confirmed: 'Your email address has been successfully confirmed.'
+      send_instructions: 'You will receive an email with instructions for how to confirm your email address in a few minutes.'
+      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.'
     failure:
-      already_authenticated: لقد قمت بتسجيل الدخول بالفعل.
-      inactive: لم يتم تفعيل حسابك بعد.
-      invalid: '%{authentication_keys} غير صالح أو كلمة المرور.'
-      locked: تم غلق حسابك.
-      last_attempt: لديك محاولة أو أكثر قبل غلق حسابك.
-      not_found_in_database: '%{authentication_keys} غير صالح أو كلمة المرور.'
-      timeout: انتهى الوقت المخصص للجلسة. الرجاء تسجيل الدخول مرة أخرى للمتابعة.
-      unauthenticated: تحتاج إلى تسجيل الدخول أو التسجيل قبل المتابعة.
-      unconfirmed: تحتاج إلى تأكيد عنوان بريدك الإلكتروني قبل المتابعة.
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
     omniauth_callbacks:
-      failure: تعذر التحقق منك من %{kind} بسبب "%{reason}".
-      success: تمت المصادقة بنجاح من حساب %{kind}.
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
     passwords:
-      no_token: لا يُمكنك الوصول إلى هذه الصفحة دون تأكيد رسالة البريد الإلكتروني المحتوية على إعادة تعيين كلمة المرور. إذا كنت قد انتقلت من رسالة تعيين كلمة المرور، الرجاء التأكد من أنك استخدمت رابط URL الكامل الموجود في الرسالة.
-      send_instructions: ستتلقى رسالة بريد إلكرتوني بها تعليمات ععن كيفية إعادة تعيين كلمة مرورك في غضون بضع دقائق.
-      send_paranoid_instructions: إذا كان بريدك الإلكتروني موجود في قاعدة البيانات لدينا، ستتلقى رابط استعادة كلمة المرور على عنوان بريدك الإلكتروني في غضون بضع دقائق.
-      updated: تم تغيير كلمة مرورك بنجاح. أنت الآن مُسجِّل الدخول.
-      updated_not_active: تم تغيير كلمة مرورك بنجاح.
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
     registrations:
-      destroyed: وداعاً! تم إلغاء حسابك بنجاح. نأمل أن نراك مرة أخرى في القريب العاجل.
-      signed_up: مرحباً! لقد قمت بالتسجيل بنجاح.
-      signed_up_but_inactive: لقد قمت بالتسجيل بنجاح. ومع ذلك، لن نتمكن من تسجيل دخولك لحسابك لأن حسابك لم يتم تفعيله بعد.
-      signed_up_but_locked: لقد قمت بالتسجيل بنجاح. ومع ذلك، لن نتمكن من تسجيل دخولك لحسابك لأن حسابك مغلق.
-      signed_up_but_unconfirmed: تم إرسال رسالة بها رابط التأكيد إلى عنوان بريدك الإلكتروني. الرجاء اتباع الرابط لتفعيل حسابك.
-      update_needs_confirmation: لقد قمت بتحديث حسابك بنجاح، ولكن نحتاج إلى تأكيد عنوان بريدك الإلكتروني الجديد. الرجاء التحقق من بريدك الإلكتروني واتباع رابط التأكيد لتأكيد عنوان بريدك الإلكتروني الجديد.
-      updated: تم تحديث حسابك بنجاح.
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      signed_up: You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
+      updated: Your account has been updated successfully.
     unlock_instructions:
-      send_instructions: "سوف تستلم بعد بضعة دقائق رسالة عبر البريد الإلكتروني والتي تحتوي على إرشادات حول كيفية إلغاء تأمين الحساب الخاص بك."
-      send_paranoid_instructions: "إذا كان حسابك موجوداً، سوف تستلم بعد بضعة دقائق رسالة عبر البريد الإلكتروني والتي تحتوي على إرشادات حول كيفية إلغاء تأمينه."
-      unlocked: "تم إلغاء تأمين حسابك بنجاح. الرجاء تسجيل الدخول للاستمرار."
+      send_instructions: 'You will receive an email with instructions for how to unlock your account in a few minutes.'
+      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.'
+      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        subject: "تعليمات التأكيد"
+        subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: "تعليمات إعادة تعيين كلمة المرور"
+        subject: 'Reset password instructions'
       unlock_instructions:
-        subject: "تعليمات إلغاء القفل"
+        subject: 'Unlock instructions'
       email_changed:
-        subject: "تم تغيير عنوان البريد الإلكتروني"
+        subject: 'Email Changed'
       password_change:
-        subject: "تم تغيير كلمة المرور"
+        subject: 'Password Changed'
     sessions:
-      signed_in: "تم تسجيل الدخول بنجاح."
-      signed_out: "تم تسجيل الخروج بنجاح."
-      already_signed_out: "تم تسجيل الخروج بنجاح."
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+      already_signed_out: 'Signed out successfully.'
   doorkeeper:
     scopes:
-      openid: 'مصادقة الحساب الخاص بك Brickdoc'
-      profile: 'عرض معلومات ملف التعريف الخاص بك'
-      email: 'عرض عنوان بريدك الإلكتروني'
-      address: 'عرض عنوانك الفعلي'
-      phone: 'عرض رقم هاتفك'
+      openid: 'Authenticate your account'
+      profile: 'View your profile information'
+      email: 'View your email address'
+      address: 'View your physical address'
+      phone: 'View your phone number'
     applications:
       confirmations:
-        destroy: 'هل أنت متأكد؟'
+        destroy: 'Are you sure?'
       buttons:
-        edit: 'تحرير'
-        destroy: 'اتلاف'
-        submit: 'ارسال'
-        cancel: 'يلغي'
-        authorize: 'يأذن'
+        edit: 'Edit'
+        destroy: 'Destroy'
+        submit: 'Submit'
+        cancel: 'Cancel'
+        authorize: 'Authorize'
       form:
-        error: 'يصيح! تحقق من النموذج بحثا عن أخطاء محتملة'
+        error: 'Whoops! Check your form for possible errors'
       help:
-        confidential: 'سيتم استخدام التطبيق حيث يمكن الحفاظ على خصوصية أسرار العميل. لا تُعتبر تطبيقات الهاتف النقال المحلي وتطبيقات الصفحة الواحد سرية. '
-        redirect_uri: 'استخدام سطر واحد لكل URI'
-        blank_redirect_uri: "اتركها خالية إن قمت بضبط موردك ليستخدم وسائل اعتماد العميل أو وسائل اعتماد كلمات المرور لمالك المصدر أو أي نوع اعتماد آخر لا يتطلب  إعادة توجيه الرابط الإلكتروني URl. "
-        scopes: 'مجالات منفصلة بمساحات. اترك مساحة خالية لتستخدم المجالات الافتراضية.'
+        confidential: 'Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.'
+        redirect_uri: 'Use one line per URI'
+        blank_redirect_uri: "Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI."
+        scopes: 'Separate scopes with spaces. Leave blank to use the default scopes.'
       edit:
-        title: 'تحرير التطبيق'
+        title: 'Edit application'
       index:
-        title: 'تطبيقاتك'
-        new: 'التطبيق'
-        name: 'الأسم'
-        callback_url: 'عنوان رد الاتصال'
-        actions: 'إجراءات'
-        confidential: 'سري؟'
+        title: 'Your applications'
+        new: 'New Application'
+        name: 'Name'
+        callback_url: 'Callback URL'
+        actions: 'Actions'
+        confidential: 'Confidential?'
         confidentiality:
-          'yes': 'موافق'
-          'no': 'إلغاء'
+          'yes': 'Yes'
+          'no': 'No'
       new:
-        title: 'تطبيق'
+        title: 'New Application'
       show:
-        title: 'التطبيق: %{name}'
+        title: 'Application: %{name}'
         application_id: 'UID'
-        secret: 'سري'
-        scopes: 'مجالات'
-        confidential: 'سري '
-        callback_urls: 'عناوين URL الخاصة بإعادة الاتصال'
-        actions: 'إجراءات'
+        secret: 'Secret'
+        scopes: 'Scopes'
+        confidential: 'Confidential'
+        callback_urls: 'Callback urls'
+        actions: 'Actions'
     authorizations:
       buttons:
-        authorize: 'يأذن'
-        deny: 'رفض'
+        authorize: 'Authorize'
+        deny: 'Deny'
       error:
-        title: 'حـدث خـطـأ'
+        title: 'An error has occurred'
       new:
-        title: 'مطلوب الإذن'
-        prompt: 'تخويل %{client_name} لاستخدام حسابك؟'
-        able_to: 'هذا التطبيق سوف تكون قادرة على'
+        title: 'Authorization required'
+        prompt: 'Authorize %{client_name} to use your account?'
+        able_to: 'This application will be able to'
       show:
-        title: 'رمز الإذن'
+        title: 'Authorization code'
     authorized_applications:
       confirmations:
-        revoke: 'هل أنت متأكد؟'
+        revoke: 'Are you sure?'
       buttons:
-        revoke: 'إلغاء'
+        revoke: 'Revoke'
       index:
-        title: 'التطبيقات المعتمدة'
-        application: 'تطبيق'
-        created_at: 'أنشئ في'
-        date_format: "%Y-%m-%d %H:%M:%S"
+        title: 'Your authorized applications'
+        application: 'Application'
+        created_at: 'Created At'
+        date_format: '%Y-%m-%d %H:%M:%S'
     pre_authorization:
-      status: 'إذن مُسبق'
+      status: 'Pre-authorization'
     openid_connect:
       errors:
         messages:
           #Configuration error messages
-          resource_owner_from_access_token_not_configured: 'فشل بسبب فقدان البواب :: OpenidConnect.configure.resource_owner_from_access_token التكوين.'
-          auth_time_from_resource_owner_not_configured: 'فشل بسبب فقدان البواب :: OpenidConnect.configure.auth_time_from_resource_owner التكوين.'
-          reauthenticate_resource_owner_not_configured: 'فشل بسبب عدم وجود التكوين في Doorkeeper :: OpenidConnect.configure.reauthenticate_resource_owner.'
-          select_account_for_resource_owner_not_configured: 'فشل بسبب عدم وجود تكوين في البواب :: OpenidConnect.configure.select_account_for_resource_owner.'
-          subject_not_configured: 'فشل إنشاء رمز المعرف بسبب فقدان تكوين Doorkeeper :: OpenidConnect.configure.subject.'
+          resource_owner_from_access_token_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.resource_owner_from_access_token missing configuration.'
+          auth_time_from_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.auth_time_from_resource_owner missing configuration.'
+          reauthenticate_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner missing configuration.'
+          select_account_for_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.select_account_for_resource_owner missing configuration.'
+          subject_not_configured: 'ID Token generation failed due to Doorkeeper::OpenidConnect.configure.subject missing configuration.'
     errors:
       messages:
         #doorkeeper oidc
-        login_required: 'يتطلب خادم التفويض مصادقة المستخدم النهائي'
-        consent_required: 'يتطلب ملقم التخويل موافقة المستخدم النهائي'
-        interaction_required: 'يتطلب ملقم التخويل تفاعل المستخدم النهائي'
-        account_selection_required: 'يتطلب ملقم التخويل تحديد حساب المستخدم النهائي'
+        login_required: 'The authorization server requires end-user authentication'
+        consent_required: 'The authorization server requires end-user consent'
+        interaction_required: 'The authorization server requires end-user interaction'
+        account_selection_required: 'The authorization server requires end-user account selection'
         #Common error messages
         invalid_request:
-          unknown: 'الطلب مفقود معلمة مطلوبة أو يتضمن قيمة معلمة غير معتمد أو غير مشوهة.'
-          missing_param: 'المعلمة المطلوبة مفقود: %{value}.'
-          request_not_authorized: 'يجب الإذن بنفاذ الطلب. المعيار المطلوب للإذن بنفاذ الطلب مفقود أو غير صالح.'
-        invalid_redirect_uri: 'الطلب بإعادة توجيه uri غير صحيح أو لا يُطابق إعادة توجيه URI الخاصة بالعميل.'
-        unauthorized_client: 'العميل غير مخول لتنفيذ هذا الطلب باستخدام هذا الأسلوب.'
-        access_denied: 'رفض مالك المورد أو خادم التفويض الطلب.'
-        invalid_scope: 'النطاق المطلوب غير صالح أو غير معروف أو مشوه.'
-        invalid_code_challenge_method: 'يجب أن تكون طريقة تحدي الرمز واضحة أو S256.'
-        server_error: 'واجه ملقم التخويل شرطا غير متوقع يمنعه من تلبية الطلب.'
-        temporarily_unavailable: 'خادم التفويض غير قادر حاليًا على معالجة الطلب بسبب التحميل الزائد المؤقت أو صيانة الخادم.'
+          unknown: 'The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.'
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: 'Request need to be authorized. Required parameter for authorizing request is missing or invalid.'
+        invalid_redirect_uri: "The requested redirect uri is malformed or doesn't match client redirect URI."
+        unauthorized_client: 'The client is not authorized to perform this request using this method.'
+        access_denied: 'The resource owner or authorization server denied the request.'
+        invalid_scope: 'The requested scope is invalid, unknown, or malformed.'
+        invalid_code_challenge_method: 'The code challenge method must be plain or S256.'
+        server_error: 'The authorization server encountered an unexpected condition which prevented it from fulfilling the request.'
+        temporarily_unavailable: 'The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.'
         #Configuration error messages
-        credential_flow_not_configured: 'فشل تدفق بيانات اعتماد كلمة مرور مالك المورد بسبب عدم تكوين Doorkeeper.configure.resource_owner_from_credentials.'
-        resource_owner_authenticator_not_configured: 'فشلت محاولة إيجاد مالك المصدر بسبب عدم ضبط Doorkeeper.configure.resource_owner_authenticator'
-        admin_authenticator_not_configured: 'الدخول لمنصة المشرف محظورة بسبب عدم ضبط Doorkeeper.configure.admin_authenticator being unconfigured.'
+        credential_flow_not_configured: 'Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.'
+        resource_owner_authenticator_not_configured: 'Resource Owner find failed due to Doorkeeper.configure.resource_owner_authenticator being unconfigured.'
+        admin_authenticator_not_configured: 'Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.'
         #Access grant errors
-        unsupported_response_type: 'لا يعتمد ملقم التخويل نوع الاستجابة هذا.'
+        unsupported_response_type: 'The authorization server does not support this response type.'
         #Access token errors
-        invalid_client: 'فشل مصادقة العميل بسبب عميل غير معروف أو لم يتم تضمين مصادقة العميل أو أسلوب مصادقة غير معتمد.'
-        invalid_grant: 'منح التفويض المقدم غير صالح أو منتهي الصلاحية أو ملغى أو لا يتطابق مع URI لإعادة التوجيه المستخدم في طلب التفويض أو تم إصداره لعميل آخر.'
-        unsupported_grant_type: 'نوع منحة التخويل غير معتمد من قبل ملقم التخويل.'
+        invalid_client: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.'
+        invalid_grant: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.'
+        unsupported_grant_type: 'The authorization grant type is not supported by the authorization server.'
         invalid_token:
-          revoked: "تم إبطال رمز الوصول المميز"
-          expired: "انتهت صلاحية الرمز المميز للوصول"
-          unknown: "رمز الوصول غير صالح"
+          revoked: 'The access token was revoked'
+          expired: 'The access token expired'
+          unknown: 'The access token is invalid'
         revoke:
-          unauthorized: "غير مُصرح لك بإلغاء هذا الرمز"
+          unauthorized: 'You are not authorized to revoke this token'
     flash:
       applications:
         create:
-          notice: 'تم إنشاء التطبيق.'
+          notice: 'Application created.'
         destroy:
-          notice: 'تم حذف التطبيق.'
+          notice: 'Application deleted.'
         update:
-          notice: 'تحديث التطبيق.'
+          notice: 'Application updated.'
       authorized_applications:
         destroy:
-          notice: 'تم إبطال الطلب.'
+          notice: 'Application revoked.'
     layouts:
       admin:
         title: 'Doorkeeper'
         nav:
-          oauth2_provider: 'موفر OAuth2'
-          applications: 'التطبيقات'
-          home: 'المنزل'
+          oauth2_provider: 'OAuth2 Provider'
+          applications: 'Applications'
+          home: 'Home'
       application:
-        title: 'مطلوب تصريح OAuth  '
+        title: 'OAuth authorization required'
   accounts:
-    app_title: حسابات Brickdoc
+    app_title: Brickdoc Accounts
     provider:
-      github: Github
-      email_password: البريد الإلكتروني وكلمة المرور
+      email_password: Email & Password
     sessions:
-      sign_in: تسجيل الدخول
-      sign_up: التسجيل
-      reset_password: إعادة ضبط كلمة المرور
-      sign_in_to_brickdoc: تسجيل الدخول إلى Brickdoc
-      more_login_options: المزيد من خيارات تسجيل الدخول
-      login_via: "تسجيل الدخول باستخدام %{provider}"
-      email: البريد الإلكتروني
-      password: كلمة المرور
-      remember_me: تذكّرني
-      sign_up_with_email: التسجيل
-      resend_confirmed_email: اعادة ارسال بريد التأكيد
-      confirmation_email_required_heading: يكاد ينتهي
-      forget_password: نسيت كلمة المرور ؟
-      confirm_password: تأكيد كلمة المرور
-      sign_up_via: "اشترك مع %{provider}"
-      name: "الأسم"
-      webid: "WebID"
-      webid_description: "على غرار اسم المستخدم، يسمح فقط بالأبجدية والأرقام"
-      agree_to_agreement: "سجل الدخول إلى أنك توافق على <0>اتفاقية المستخدم الخاصة بنا.</0>"
-      resend_after: "قابلة لإعادة الإرسال بعد %{seconds} ثانية"
+      sign_in: Sign In
+      sign_up: Sign Up
+      reset_password: Reset Password
+      sign_in_to_brickdoc: Sign in to Brickdoc
+      more_login_options: More Login Options
+      login_via: 'Sign In with %{provider}'
+      email: Email
+      password: Password
+      remember_me: Remember me
+      sign_up_with_email: Sign Up
+      resend_confirmed_email: Resend Confirmation Email
+      confirmation_email_required_heading: Almost done
+      forget_password: Forget Password
+      confirm_password: Confirm Password
+      sign_up_via: 'Sign Up with %{provider}'
+      name: 'Name'
+      webid: 'WebID'
+      webid_description: 'Only alphabet and numbers are allowed'
+      agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
+      resend_after: 'Resendable after %{seconds} seconds'
     common:
-      confirm_not_match: "%{field} والتأكيد %{field} غير متطابقين"
+      confirm_not_match: '%{field} and confirm %{field} do not match'
+    errors:
+      invalid_operation_type: 'عملية خطأ'
+      invalid_pod_webid: 'لا يمكن الوصول إلى webid'
+      pod_has_already_switched: 'Pod has already switched'
+      pod_exist: 'Pod has already exist'
+      user_not_exist: "User doesn't exist"
+      pod_not_exist: "Pod doesn't exist"
   docs:
     app_title: Brickdoc
+    saving: المدخرات
+    user_setting:
+      text: اعدادات المستخدم
+      general: General
+      member: Member
+      account: Account
+    pod_setting:
+      text: Pod Setting
+    anonymous:
+      edit_button: Edit
+    search:
+      text: بحث سريع
+      placeholder: صفحة البحث
     blocks:
-      create_pages: إضافة صفحة
-      delete: احذف
-      create_snapshot: إنشاء لقطة
+      create_pages: Add Pages
+      delete: Delete
+    trash:
+      name: حجم المهملات
+      all_pages: كل الصفحات
+      current_page: الصفحة الحالية.
+      search: Filter by page title...
+      not_found: لا توجد مباراة
+      learn: Learn about deleting and restoring pages
+      delete_confirmation_body: Are you sure you want to delete this page permanently?
+      delete_confirmation_ok: حذف الصفحة
+      delete_confirmation_cancel: Cancel
+      in_trash_prompt: This page is in trash.
+      restore_action: استعادة الصفحة
+      hard_delete_action: Delete permanently
+    share:
+      menu: مشاركة
+      share_to_web: شارك لـ 
+      share_to_web_description: Publish and share link with anyone
+      allow_edit: السماح بالتعديل
+      learn: Learn about sharing
+      copy_link_button: نسخ الارتباط
+      invite_placeholder: Add people, emails, groups, or intergrations
+      invite_button: دعـوة
+      copy: Copy
+    invite:
+      learn: Learn how to invite people and set permissions
+      type_hint: Type or paste in Email above, separated by commas.
+      search: Search Emails, names
+      button: دعـوة
+      edit_message: يمكنه(ا) التحرير
+      edit_message_description: Can edit, but not share with others.
+      view_message: يمكن أن يشاهد
+      view_message_description: Cannot edit or share with others.
+      remove_message: Remove
     snapshots:
-      name: لقطة
+      name: Snapshot
+      restore: استعادة هذا الإصدار
+      cancel: Cancel
+      empty: Version history is empty
+    pods:
+      webid: WebID
+      name: Name
+      bio: المعلومات الشخصية
+      avatar: الصورة الرمزية
+      required:
+        webid: WebID is required
+        name: حذف الكل
+      create:
+        success: Create successfully.
+      update:
+        success: Update successfully.
     menu:
-      create_new_pod: إنشاء جراب
-      logout: تسجيل الخروج
+      create_new_pod: Create other pod
+      logout: Logout
+    title:
+      add_icon: إضافة أيقونة
+      add_cover: أضف صورة غلاف
+      change_cover: Change cover
+      reposition: Reposition
+      untitled: Untitled
+  editor:
+    placeholder: Type '/' for commands
+    slashmenu:
+      heading: Brickdoc
+      items:
+        h1:
+          title: Heading 1
+          desc: Big section heading
+        h2:
+          title: Heading 2
+          desc: Medium section heading
+        h3:
+          title: Heading 3
+          desc: Small section heading
+        h4:
+          title: Heading 4
+          desc: Small section heading
+        h5:
+          title: Heading 5
+          desc: Small section heading
+        bulletlist:
+          title: Bulleted List
+          desc: Create a bulleted list
+        orderedlist:
+          title: Numbered List
+          desc: Create a list with numbering
+        pdf:
+          title: PDF
+          desc: قم بتضمين ملف PDF
+        embed:
+          title: Embed
+          desc: For PDFs and more
+        image:
+          title: صورة
+          desc: Upload or embed with a link
+        table:
+          title: جدول
+          desc: قم بإنشاء جدول في هذه الصفحة
+    bubblemenu:
+      items:
+        bold:
+          desc: غليظ
+        italic:
+          desc: خط مائل
+        underline:
+          desc: خط من تحت
+        strike:
+          desc: إضراب
+        h1:
+          desc: Heading 1
+        h2:
+          desc: Heading 2
+        h3:
+          desc: Heading 3
+        h4:
+          desc: Heading 4
+        h5:
+          desc: Heading 5
+        bulletlist:
+          desc: قائمة منقوطة
+        orderedlist:
+          desc: أمر قائمة
+        link:
+          desc: رابط
+          link_placeholder: لصق الروابط
+          linked_to: مرتبط بـ
+          web_page: web page
+          copy_link: نسخ الارتباط
+          remove_link: حذف الروابط
+          link_to_url: رابط إلى موقع
+        fontcolor:
+          desc: لون الخط
+    image_section:
+      hint: اضافة صورة
+      import_sources:
+        link:
+          placeholder: الصق رابط الصورة ...
+          button_text: Embed image
+          button_hint: Works with any image from the web
+        upload:
+          button_text: اختيار صورة
+    link_block:
+      delete: Delete
+      copy_link: نسخ الارتباط
+      hint: Embed anything
+      import_sources:
+        link:
+          placeholder: Paste in https://...
+          button_text: Embed
+          button_hint: Works with Block-level link projects
+        upload:
+          button_text: اختيار ملف
+          button_hint: Recommended size is 5MB
+    pdf_section:
+      hint: قم بتضمين ملف PDF
+      import_sources:
+        upload:
+          button_text: اختيار ملف
+        link:
+          placeholder: Paste in https://...
+          button_text: Embed PDF
+          button_hint: Embed a PDF file
+    table:
+      new_row:
+        text: New
+      remove_row:
+        text: Delete
+        title: Are you sure you want to delete this row?
+        ok: Delete
+        cancel: Cancel
+      remove_column:
+        text: Delete
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      column_default_name: عمود
+      column_type: نوع الملكية
+      column_types:
+        basic: Basic
+        text: النص
+        select: إختر
+        date: التاريخ
+        date-range: فترة التاريخ
+      filter:
+        text: المرَشِّح
+        title: Filter for My All Data
+        remove: Remove
+        duplicate: كَرر
+        where: Where
+        add_a_filter: إ&ضافة فلتر
+        add_a_filter_group: أضافة &مجموعة تصفية
+        add_a_filter_group_desc: A group to nest more filters
+        hint: |
+          استخدم عامل تصفية لـ:
+          إظهار المهام المسندة إلي.
+          اعرض الملاحظات ذات علامة معينة فقط.
+          إخفاء المهام المكتملة.
+        collection_types:
+          intersection: And
+          union: Or
+        matches:
+          is: Is
+          is_not: Is not
+          is_on: Is
+          is_not_on: Is not
+          is_before: Is before
+          is_after: Is After
+          is_on_or_before: Is on or before
+          is_on_or_after: Is on or after
+          contains: يحتوي علي
+          does_not_contain: لا يحتوي على
+          starts_with: يبدأ مع
+          ends_with: ينتهي
+          is_empty: فارغ
+          is_not_empty: غير فارغ
+      sort:
+        text: Sort
+        title: Sort for My All Data
+        hint: |
+          Use a sort to:
+          Order tasks by priority.
+          Show notes by creation date.
+          Show recently contacted customers.

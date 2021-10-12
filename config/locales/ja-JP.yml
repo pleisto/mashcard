@@ -1,344 +1,353 @@
 ja-JP:
   meta:
-    lang: jp-JP
+    lang: en-US
     dir: ltr
-    noscript: 申し訳ありませんが、JavaScriptが有効になっていないとBrickdocは正常に動作しません。詳細については、 %{url} をご覧ください。
-    noscript_url: https://www.enable-javascript.com/ja/
-  'Your browser is out of date': お使いのブラウザは古くなっています
-  download_latest_browser_html: Brickdocを使い続けるには、 <a href="%{edge}" rel="nofollow">Microsoft Edge</a>、 <a href="%{chrome}" rel="nofollow">Chrome</a> または <a href="%{firefox}" rel="nofollow">Firefox</a> の最新バージョンをダウンロードしてください。
-  edge_link: https://www.microsoft.com/ja-jp/edge
+    noscript: We're sorry but Brickdoc doesn't work properly without JavaScript enabled. Please visit %{url} for more information.
+    noscript_url: https://www.wikihow.com/Enable-JavaScript
+  'Your browser is out of date': Your browser is out of date
+  download_latest_browser_html: Please download the latest version of <a href="%{edge}" rel="nofollow">Microsoft Edge</a>, <a href="%{chrome}" rel="nofollow">Chrome</a> or <a href="%{firefox}" rel="nofollow">Firefox</a> to continue using Brickdoc.
+  edge_link: https://www.microsoft.com/en-us/edge
   chrome_link: https://www.google.com/chrome/
-  firefox_link: https://www.mozilla.org/ja/firefox/new/
+  firefox_link: https://www.mozilla.org/en-US/firefox/new/
   design_system:
     calendarPicker:
-      today: 今日
-      now: 現在時刻
-      backToToday: 今日に戻る
-      ok: 決定
-      clear: クリア
-      month: 月
-      year: 年
-      timeSelect: 時間を選択
-      dateSelect: 日時を選択
-      weekSelect: 週を選択
-      monthSelect: 月を選択
-      yearSelect: 年を選択
-      decadeSelect: 年代を選択
-      yearFormat: YYYY年
-      dateFormat: YYYY年M月D日
-      dayFormat: D日
-      dateTimeFormat: 'YYYY年M月D日 HH時mm分ss秒'
+      today: Today
+      now: Now
+      backToToday: Back to today
+      ok: Ok
+      clear: Clear
+      month: Month
+      year: Year
+      timeSelect: select time
+      dateSelect: select date
+      weekSelect: Choose a week
+      monthSelect: Choose a month
+      yearSelect: Choose a year
+      decadeSelect: Choose a decade
+      yearFormat: YYYY
+      dateFormat: M/D/YYYY
+      dayFormat: D
+      dateTimeFormat: 'M/D/YYYY HH:mm:ss'
       monthBeforeYear: true
-      previousMonth: 前月 (ページアップキー)'
-      nextMonth: 翌月 (ページダウンキー)
-      previousYear: 前年 (Controlを押しながら左キー)
-      nextYear: 翌年 (Controlを押しながら右キー)
-      previousDecade: 前の年代
-      nextDecade: 次の年代
-      previousCentury: 前の世紀
-      nextCentury: 次の世紀
-      placeholder: 日付を選択
-      yearPlaceholder: 年を選択
-      quarterPlaceholder: 四半期の選択
-      monthPlaceholder: 月を選択
-      weekPlaceholder: 週を選択
+      previousMonth: Previous month (PageUp)
+      nextMonth: Next month (PageDown)
+      previousYear: Last year (Control + left)
+      nextYear: Next year (Control + right)
+      previousDecade: Last decade
+      nextDecade: Next decade
+      previousCentury: Last century
+      nextCentury: Next century
+      placeholder: Select date
+      yearPlaceholder: Select year
+      quarterPlaceholder: Select quarter
+      monthPlaceholder: Select month
+      weekPlaceholder: Select week
       rangePlaceholder:
-        startDate: 開始日
-        endDate: 終了日
+        startDate: Start date
+        endDate: End date
       rangeYearPlaceholder:
-        startYear: 開始年
-        endYear: 終了年
+        startYear: Start year
+        endYear: End year
       rangeMonthPlaceholder:
-        startMonth: 開始月
-        endMonth: 終了月
+        startMonth: Start month
+        endMonth: End month
       rangeWeekPlaceholder:
-        startWeek: 開始週
-        endWeek: 終了週
+        startWeek: Start week
+        endWeek: End week
     timePicker:
-      placeholder: 時間を選択
+      placeholder: Select time
       rangePlaceholder:
-        startTime: 開始日時
-        endTime: 終了日時
+        startTime: Start time
+        endTime: End time
     pagination:
-      itemsPerPage: '件 / ページ'
-      jumpTo: 移動
-      jumpToConfirm: 確認する
-      page: 'ページ'
-      prevPage: '前のページ'
-      nextPage: '次のページ'
-      prev5: '前 5ページ'
-      next5: '次 5ページ'
-      prev3: '前 3ページ'
-      next3: '次 3ページ'
+      itemsPerPage: '/ page'
+      jumpTo: Go to
+      jumpToConfirm: confirm
+      page: ''
+      prevPage: 'Previous Page'
+      nextPage: 'Next Page'
+      prev5: 'Previous 5 Pages'
+      next5: 'Next 5 Pages'
+      prev3: 'Previous 3 Pages'
+      next3: 'Next 3 Pages'
     global:
-      placeholder: 選択してください
+      placeholder: Please select
     table:
-      filterTitle: フィルター
-      filterConfirm: 決定
-      filterReset: リセット
-      filterEmptyText: 'フィルターなし'
-      emptyText: 'データがありません'
-      selectAll: 'ページ単位で選択'
-      selectInvert: ページ単位で反転
-      selectNone: すべてのデータを消去
-      selectionAll: すべてを選択
-      sortTitle: ソート
-      expand: 展開する
-      collapse: 折り畳む
-      triggerDesc: クリックで降順にソート
-      triggerAsc: クリックで昇順にソート
-      cancelSort: ソートをキャンセル
+      filterTitle: Filter menu
+      filterConfirm: OK
+      filterReset: Reset
+      filterEmptyText: 'No filters'
+      emptyText: 'No data'
+      selectAll: 'Select current page'
+      selectInvert: Invert current page
+      selectNone: Clear all data
+      selectionAll: Select all data
+      sortTitle: Sort
+      expand: Expand row
+      collapse: Collapse row
+      triggerDesc: Click to sort descending
+      triggerAsc: Click to sort ascending
+      cancelSort: Click to cancel sorting
     modal:
-      okText: 決定
-      cancelText: キャンセル
-      justOkText: 決定
+      okText: OK
+      cancelText: Cancel
+      justOkText: OK
     popconfirm:
-      okText: 決定
-      cancelText: キャンセル
+      okText: OK
+      cancelText: Cancel
     transfer:
       titles:
         first: ''
         second: ''
-      searchPlaceholder: 'ここを検索'
-      itemUnit: 'アイテム'
-      itemsUnit: 'アイテム'
-      remove: 削除
-      selectCurrent: ページ単位で選択
-      removeCurrent: 現在のページを削除する
-      selectAll: すべてを選択
-      removeAll: すべてのデータを削除する
-      selectInvert: ページ単位で反転
+      searchPlaceholder: 'Search here'
+      itemUnit: 'item'
+      itemsUnit: 'items'
+      remove: Remove
+      selectCurrent: Select current page
+      removeCurrent: Remove current page
+      selectAll: Select all data
+      removeAll: Remove all data
+      selectInvert: Invert current page
     empty:
-      description: データがありません
+      description: No Data
     icon:
-      icon: Icon
+      icon: icon
     text:
-      edit: 編集
-      copy: 複製
-      copied: コピーしました
-      expand: 展開する
+      edit: Edit
+      copy: Copy
+      copied: Copied
+      expand: Expand
     form:
-      optional: "(オプション)\n"
+      optional: (optional)
       defaultValidationMessages:
-        default: '%{label}のフィールド検証エラー'
-        required: '%{label}を入力してください'
-        enum: "%{label}は[%{enum}]のいずれかである必要があります"
-        whitespace: "%{label}は空白文字にすることはできません"
+        default: Field validation error for %{label}
+        required: Please enter %{label}
+        enum: '%{label} must be one of [%{enum}]'
+        whitespace: '%{label} cannot be a blank character'
         types:
-          template: '%{label}は有効な%{type}ではありません'
+          template: '%{label} is not a valid %{type}'
         date:
-          format: '%{label}の日付形式は不正です'
-          parse: '%{label}日付に変換できません'
-          invalid: '%{label}は不正な日付です'
+          format: '%{label} date format is invalid'
+          parse: '%{label} cannot be converted to a date'
+          invalid: '%{label} is an invalid date'
         string:
-          len: '%{label}は%{len}文字である必要があります'
-          min: '%{label}は%{min}文字以上である必要があります'
-          max: '%{label}は%{max}文字以下である必要があります'
-          range: '%{label}は%{min}-%{max}文字の範囲である必要があります'
+          len: '%{label} must be %{len} characters'
+          min: '%{label} must be at least %{min} characters'
+          max: '%{label} must be up to %{max} characters'
+          range: '%{label} must be between %{min}-%{max} characters'
         number:
-          len: '%{label}は%{len}と等しい必要があります'
-          min: '%{label}の最小値は%{min}です'
-          max: '%{label}の最大値は%{max}です'
-          range: '%{label}は%{min}-%{max}の範囲である必要があります'
+          len: '%{label} must be equal to %{len}'
+          min: '%{label} must be minimum %{min}'
+          max: '%{label} must be maximum %{max}'
+          range: '%{label} must be between %{min}-%{max}'
         array:
-          len: '%{label}は%{len}である必要があります'
-          min: '%{label}の最小は%{min}です'
-          max: '%{label}の最大は%{max}です'
-          range: '%{label}の合計は%{min}-%{max}の範囲である必要があります'
+          len: 'Must be %{len} %{label}'
+          min: 'At least %{min} %{label}'
+          max: 'At most %{max} %{label}'
+          range: 'The amount of %{label} must be between %{min}-%{max}'
         pattern:
-          mismatch: '%{label}はパターン%{pattern}と一致しません'
+          mismatch: '%{label} does not match the pattern %{pattern}'
     image:
-      preview: プレビュー
+      preview: Preview
   activerecord:
     attributes:
       doorkeeper/application:
-        name: '名前'
-        redirect_uri: 'リダイレクトURI'
+        name: 'Name'
+        redirect_uri: 'Redirect URI'
     errors:
       models:
+        accounts/user:
+          attributes:
+            password:
+              too_short: 短すぎます
         doorkeeper/application:
           attributes:
             redirect_uri:
-              fragment_present: 'はURLフラグメントを含めることはできません。'
-              invalid_uri: 'は有効なURIではありません。'
-              unspecified_scheme: 'スキームを指定する必要があります。'
-              relative_uri: 'は絶対URIでなければなりません。'
-              secured_uri: 'はHTTPS/SSL URIでなければなりません。'
-              forbidden_uri: 'はサーバーによって禁止されています。'
+              fragment_present: 'cannot contain a fragment.'
+              invalid_uri: 'must be a valid URI.'
+              unspecified_scheme: 'must specify a scheme.'
+              relative_uri: 'must be an absolute URI.'
+              secured_uri: 'must be an HTTPS/SSL URI.'
+              forbidden_uri: 'is forbidden by the server.'
             scopes:
-              not_match_configured: "はサーバーの設定と一致しません。"
+              not_match_configured: "doesn't match configured on the server."
       messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        record_invalid: 'Validation failed: %{errors}'
         restrict_dependent_destroy:
-          has_one: '%{record}が存在しているので削除できません'
-          has_many: '%{record}が存在しているので削除できません'
+          has_one: Cannot delete record because a dependent %{record} exists
+          has_many: Cannot delete record because dependent %{record} exist
   date:
     abbr_day_names:
-      - 日
-      - 月
-      - 火
-      - 水
-      - 木
-      - 金
-      - 土
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
       -
-      - 1月
-      - 2月
-      - 3月
-      - 4月
-      - 5月
-      - 6月
-      - 7月
-      - 8月
-      - 9月
-      - 10月
-      - 11月
-      - 12月
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-      - 日曜日
-      - 月曜日
-      - 火曜日
-      - 水曜日
-      - 木曜日
-      - 金曜日
-      - 土曜日
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
-      default: "%Y/%m/%d"
-      long: "%Y年%m月%d日(%a)"
-      short: "%m/%d"
+      default: '%m-%d-%Y'
+      long: '%B %d, %Y'
+      short: '%b %d'
     month_names:
       -
-      - 1月
-      - 2月
-      - 3月
-      - 4月
-      - 5月
-      - 6月
-      - 7月
-      - 8月
-      - 9月
-      - 10月
-      - 11月
-      - 12月
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-      - :year
       - :month
       - :day
+      - :year
   datetime:
     distance_in_words:
       about_x_hours:
-        one: 約1時間
         other: 約%{count}時間
-        about_x_months:
-          other: 約 %{count} ヶ月
-        about_x_years:
-          other: 約 %{count} 年
-        almost_x_years:
-          other: ほぼ %{count} 年
-        half_a_minute: 半分
-        less_than_x_seconds:
-          other: '%{count} 秒未満'
-        less_than_x_minutes:
-          other: '%{count} 分未満'
-        over_x_years:
-          other: '%{count} 年以上'
-        x_seconds:
-          other: "%{count} 秒"
-        x_minutes:
-          other: "%{count} 分"
-        x_days:
-          other: "%{count} 日間"
-        x_months:
-          other: "%{count} ヶ月間"
-        x_years:
-          other: "%{count} 年間"
+      about_x_months:
+        other: 約 %{count} ヶ月
+      about_x_years:
+        other: 約 %{count} 年
+      almost_x_years:
+        other: ほぼ %{count} 年
+      half_a_minute: 半分
+      less_than_x_seconds:
+        other: '%{count} 秒未満'
+      less_than_x_minutes:
+        other: '%{count} 分未満'
+      over_x_years:
+        other: '%{count} 年以上'
+      x_seconds:
+        other: '%{count} 秒'
+      x_minutes:
+        other: '%{count} 分'
+      x_days:
+        other: '%{count} 日間'
+      x_months:
+        other: '%{count} ヶ月間'
+      x_years:
+        other: '%{count} 年間'
     prompts:
-      second: 秒
-      minute: 分
-      hour: 時
-      day: 日
-      month: 月
-      year: 年
+      second: Second
+      minute: Minute
+      hour: Hour
+      day: Day
+      month: Month
+      year: Year
   errors:
-    format: "%{attribute}%{message}"
+    format: '%{attribute} %{message}'
     graphql:
       docs:
-        initialized_not_yet_completed: Initialized not yet completed
+        initialized_not_yet_completed: 初期化はまだ完了していません
     messages:
-      already_confirmed: は既に登録済みです。ログインしてください。
-      confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
-      expired: の有効期限が切れました。新しくリクエストしてください。
-      not_found: は見つかりませんでした。
-      not_locked: はロックされていません。
+      already_confirmed: was already confirmed, please try signing in
+      confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
+      expired: has expired, please request a new one
+      not_found: not found
+      not_locked: was not locked
       not_saved:
-        other: "%{count}つのエラーがあるのでこの%{resource}は保存されませんでした："
-      is_not_valid_webid: "WebID \"%{webid}\" は使用できません"
-      send_interval: 送信間隔が短すぎるので、1分後に再試行してください
-      accepted: を受諾してください
-      blank: を入力してください
-      confirmation: と%{attribute}の入力が一致しません
-      empty: を入力してください
-      equal_to: は%{count}にしてください
-      even: は偶数にしてください
-      exclusion: は予約されています
-      greater_than: は%{count}より大きい値にしてください
-      greater_than_or_equal_to: は%{count}以上の値にしてください
-      inclusion: は一覧にありません
-      invalid: は不正な値です
-      less_than: は%{count}より小さい値にしてください
-      less_than_or_equal_to: は%{count}以下の値にしてください
-      model_invalid: 'バリデーションに失敗しました: %{errors}'
-      not_a_number: は数値で入力してください
-      not_an_integer: は整数で入力してください
-      odd: は奇数にしてください
-      other_than: は%{count}以外の値にしてください
-      present: は入力しないでください
-      required: を入力してください
-      taken: はすでに存在します
+        other: '%{count} errors prohibited this %{resource} from being saved:'
+      is_not_valid_webid: 'WebID "%{webid}" is not available'
+      is_not_valid_email: 'メール "%{email}" は利用できません'
+      send_interval: Sending interval is too short, please try again after 1 minute
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match %{attribute}
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      model_invalid: 'Validation failed: %{errors}'
+      email_invalid: は電子メールアドレスではありません．
+      webid_invalid: is not a webid
+      uuid_invalid: is not an uuid
+      mobile_phone_invalid: is not a valid mobile phone number
+      webid_presence_invalid: is not presence
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      other_than: must be other than %{count}
+      present: must be blank
+      required: must exist
+      taken: has already been taken
       too_long:
-        one: は長すぎます（最大文字数は 1 文字）
-        other: は長すぎます（最大文字数は %{count} 文字）
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
         too_short:
-          other: は %{count} 文字以上で入力してください。
+          other: is too short (minimum is %{count} characters)
         wrong_length:
-          other: は %{count} 文字でなければなりません。
+          other: is the wrong length (should be %{count} characters)
     template:
-      body: '次の項目を確認してください'
+      body: 'There were problems with the following fields:'
       header:
-        other: "%{count}つのエラーがあるのでこの%{model}は保存されませんでした"
+        other: '%{count} errors prohibited this %{model} from being saved'
   helpers:
     select:
-      prompt: 選択してください
+      prompt: Please select
     submit:
-      create: 登録する
-      submit: 保存する
-      update: 更新する
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
   number:
     currency:
       format:
-        delimiter: ","
-        format: "%n%u"
-        precision: 0
-        separator: "."
+        delimiter: ','
+        format: '%u%n'
+        precision: 2
+        separator: '.'
         significant: false
         strip_insignificant_zeros: false
-        unit: '円'
+        unit: '$'
     format:
-      delimiter: ","
+      delimiter: ','
       precision: 3
-      separator: "."
+      separator: '.'
       significant: false
       strip_insignificant_zeros: false
     human:
       decimal_units:
-        format: "%n %u"
+        format: '%n %u'
         units:
-          billion: 十億
-          million: 百万
-          quadrillion: 千兆
-          thousand: 千
-          trillion: 兆
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
           unit: ''
       format:
         delimiter: ''
@@ -346,10 +355,10 @@ ja-JP:
         significant: false
         strip_insignificant_zeros: false
       storage_units:
-        format: "%n%u"
+        format: '%n %u'
         units:
           byte:
-            other: バイト
+            other: Bytes
           eb: EB
           gb: GB
           kb: KB
@@ -359,242 +368,477 @@ ja-JP:
     percentage:
       format:
         delimiter: ''
-        format: "%n%"
+        format: '%n%'
     precision:
       format:
         delimiter: ''
   support:
     array:
-      last_word_connector: "、"
-      two_words_connector: "、"
-      words_connector: "、"
+      last_word_connector: ', and '
+      two_words_connector: ' and '
+      words_connector: ', '
   time:
-    am: 午前
+    am: am
     formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"
-    pm: 午後
+      default: '%a, %d %b %Y %I:%M:%S %p %Z'
+      long: '%B %d, %Y %I:%M %p'
+      short: '%d %b %I:%M %p'
+    pm: pm
   devise:
     confirmations:
-      confirmed: "メールアドレスが確認できました。"
-      send_instructions: "アカウントの有効化について数分以内にメールでご連絡します。"
-      send_paranoid_instructions: "メールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。"
+      confirmed: 'Your email address has been successfully confirmed.'
+      send_instructions: 'You will receive an email with instructions for how to confirm your email address in a few minutes.'
+      send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.'
     failure:
-      already_authenticated: すでにログインしています。
-      inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
-      invalid: '%{authentication_keys}またはパスワードが違います。'
-      locked: アカウントはロックされています。
-      last_attempt: もう一回誤るとアカウントがロックされます。
-      not_found_in_database: '%{authentication_keys}またはパスワードが違います。'
-      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
-      unauthenticated: ログインもしくはアカウント登録してください。
-      unconfirmed: メールアドレスの本人確認が必要です。
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid %{authentication_keys} or password.
+      locked: Your account is locked.
+      last_attempt: You have one more attempt before your account is locked.
+      not_found_in_database: Invalid %{authentication_keys} or password.
+      timeout: Your session expired. Please sign in again to continue.
+      unauthenticated: You need to sign in or sign up before continuing.
+      unconfirmed: You have to confirm your email address before continuing.
     omniauth_callbacks:
-      failure: '%{kind} アカウントによる認証に失敗しました。理由：（%{reason}）'
-      success: '%{kind} アカウントによる認証に成功しました。'
+      failure: Could not authenticate you from %{kind} because "%{reason}".
+      success: Successfully authenticated from %{kind} account.
     passwords:
-      no_token: このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。
-      send_instructions: パスワードの再設定について数分以内にメールでご連絡いたします。
-      send_paranoid_instructions: メールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。
-      updated: パスワードが正しく変更されました。
-      updated_not_active: パスワードが正しく変更されました。
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+      send_instructions: You will receive an email with instructions on how to reset your password in a few minutes.
+      send_paranoid_instructions: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+      updated: Your password has been changed successfully. You are now signed in.
+      updated_not_active: Your password has been changed successfully.
     registrations:
-      destroyed: アカウントを削除しました。またのご利用をお待ちしております。
-      signed_up: アカウント登録が完了しました。
-      signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
-      signed_up_but_locked: アカウントがロックされているためログインできません。
-      signed_up_but_unconfirmed: 本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。
-      update_needs_confirmation: アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。
-      updated: アカウント情報を変更しました。
+      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      signed_up: You have signed up successfully.
+      signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+      signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.
+      signed_up_but_unconfirmed: A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      update_needs_confirmation: You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirmation link to confirm your new email address.
+      updated: Your account has been updated successfully.
     unlock_instructions:
-      send_instructions: "数分であなたのアカウントのロックを解除する方法が書かれたメールが届きます。"
-      send_paranoid_instructions: "アカウントが登録済みの場合、数分でロックを解除する方法が書かれたメールが届きます。"
-      unlocked: "あなたのアカウントが正しくロック解除されました。続けるにはサインインしてください。"
+      send_instructions: 'You will receive an email with instructions for how to unlock your account in a few minutes.'
+      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.'
+      unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        subject: "メールアドレス確認メール"
+        subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: "パスワードの再設定について"
+        subject: 'Reset password instructions'
       unlock_instructions:
-        subject: "アカウントのロック解除について"
+        subject: 'Unlock instructions'
       email_changed:
-        subject: "メール変更完了"
+        subject: 'Email Changed'
       password_change:
-        subject: "パスワードの変更について"
+        subject: 'Password Changed'
     sessions:
-      signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
-      already_signed_out: "既にログアウト済みです。"
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
+      already_signed_out: 'Signed out successfully.'
   doorkeeper:
     scopes:
-      openid: 'アカウントを認証する'
-      profile: 'プロフィール情報を表示する'
-      email: 'メールアドレスを表示する'
-      address: '物理アドレスを表示する'
-      phone: '電話番号を表示する'
+      openid: 'Authenticate your account'
+      profile: 'View your profile information'
+      email: 'View your email address'
+      address: 'View your physical address'
+      phone: 'View your phone number'
     applications:
       confirmations:
-        destroy: '本当に削除しますか？'
+        destroy: 'Are you sure?'
       buttons:
-        edit: '編集'
-        destroy: '削除'
-        submit: '登録'
-        cancel: 'キャンセル'
-        authorize: '認証'
+        edit: 'Edit'
+        destroy: 'Destroy'
+        submit: 'Submit'
+        cancel: 'Cancel'
+        authorize: 'Authorize'
       form:
-        error: 'おっと！フォームにエラーがないか確認してください'
+        error: 'Whoops! Check your form for possible errors'
       help:
-        confidential: 'クライアントシークレットの機密を保持できるアプリケーションで使われます。'
-        redirect_uri: 'URIごとに1行で入力してください'
-        blank_redirect_uri: "リダイレクトURIを必要としないクライアントクレデンシャル、リソースオーナークレデンシャル、その他のグラントタイプの場合は空白のままにします。"
-        scopes: '各スコープをスペースで区切ってください。初期設定のスコープを使用する場合は、空白のままにしてください。'
+        confidential: 'Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.'
+        redirect_uri: 'Use one line per URI'
+        blank_redirect_uri: "Leave it blank if you configured your provider to use Client Credentials, Resource Owner Password Credentials or any other grant type that doesn't require redirect URI."
+        scopes: 'Separate scopes with spaces. Leave blank to use the default scopes.'
       edit:
-        title: 'アプリケーションの編集'
+        title: 'Edit application'
       index:
-        title: 'アプリケーション'
-        new: '新しいアプリケーション'
-        name: '名称'
-        callback_url: 'コールバックURL'
-        actions: '行動'
-        confidential: '機密？'
+        title: 'Your applications'
+        new: 'New Application'
+        name: 'Name'
+        callback_url: 'Callback URL'
+        actions: 'Actions'
+        confidential: 'Confidential?'
         confidentiality:
-          'yes': 'はい'
-          'no': 'いいえ'
+          'yes': 'Yes'
+          'no': 'No'
       new:
-        title: 'アプリケーションの作成'
+        title: 'New Application'
       show:
-        title: 'アプリケーション: %{name}'
-        application_id: 'アプリケーションID'
-        secret: 'シークレット'
-        scopes: 'スコープ'
-        confidential: '機密'
-        callback_urls: 'コールバックURL'
-        actions: 'アクション'
+        title: 'Application: %{name}'
+        application_id: 'UID'
+        secret: 'Secret'
+        scopes: 'Scopes'
+        confidential: 'Confidential'
+        callback_urls: 'Callback urls'
+        actions: 'Actions'
     authorizations:
       buttons:
-        authorize: '承認'
-        deny: '否認'
+        authorize: 'Authorize'
+        deny: 'Deny'
       error:
-        title: 'エラーが発生しました'
+        title: 'An error has occurred'
       new:
-        title: '承認が必要です'
-        prompt: 'あなたのアカウントで %{client_name} を承認しますか？'
-        able_to: 'このアプリケーションは次のことが可能です'
+        title: 'Authorization required'
+        prompt: 'Authorize %{client_name} to use your account?'
+        able_to: 'This application will be able to'
       show:
-        title: '認可コード'
+        title: 'Authorization code'
     authorized_applications:
       confirmations:
-        revoke: '本当に取消しますか？'
+        revoke: 'Are you sure?'
       buttons:
-        revoke: '取消'
+        revoke: 'Revoke'
       index:
-        title: 'あなたの認証されたアプリケーション'
-        application: 'アプリケーション'
-        created_at: '作成日時'
-        date_format: "%Y年%m月%d日 %H:%M:%S"
+        title: 'Your authorized applications'
+        application: 'Application'
+        created_at: 'Created At'
+        date_format: '%Y-%m-%d %H:%M:%S'
     pre_authorization:
       status: 'Pre-authorization'
     openid_connect:
       errors:
         messages:
           #Configuration error messages
-          resource_owner_from_access_token_not_configured: 'ドアキーパー::OpenidConnect.configure.resource_owner_from_access_token設定が欠落しているためにエラーが発生しました。'
-          auth_time_from_resource_owner_not_configured: 'Doorkeeper :: OpenidConnect.configure.auth_time_from_resource_ownerに構成がないために失敗しました。'
-          reauthenticate_resource_owner_not_configured: 'Doorkeeper :: OpenidConnect.configure.reauthenticate_resource_ownerに構成がないために失敗しました。'
-          select_account_for_resource_owner_not_configured: 'ドアキーパー::OpenidConnect.configure.select_account_for_resource_owner設定が欠落しているためにエラーが発生しました。'
-          subject_not_configured: 'ドアキーパー::OpenidConnect.configure.subject設定が欠落しているためにエラーが発生しました。'
+          resource_owner_from_access_token_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.resource_owner_from_access_token missing configuration.'
+          auth_time_from_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.auth_time_from_resource_owner missing configuration.'
+          reauthenticate_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner missing configuration.'
+          select_account_for_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.select_account_for_resource_owner missing configuration.'
+          subject_not_configured: 'ID Token generation failed due to Doorkeeper::OpenidConnect.configure.subject missing configuration.'
     errors:
       messages:
         #doorkeeper oidc
-        login_required: '承認サーバーにはエンドユーザー認証が必要です'
-        consent_required: '承認サーバーにはエンドユーザーの同意が必要です'
-        interaction_required: '承認サーバーにはエンドユーザーの対話が必要です。'
-        account_selection_required: '承認サーバーにはエンドユーザー アカウントの選択が必要です'
+        login_required: 'The authorization server requires end-user authentication'
+        consent_required: 'The authorization server requires end-user consent'
+        interaction_required: 'The authorization server requires end-user interaction'
+        account_selection_required: 'The authorization server requires end-user account selection'
         #Common error messages
         invalid_request:
-          unknown: '必須パラメータが不足しているか、サポートされていないパラメータが含まれているか、もしくはパラメータが無効であるため、リクエストを処理できませんでした。'
-          missing_param: '必須パラメーターが不足しています: %{value}'
-          request_not_authorized: 'リクエストは認可が必要です。リクエストを認可するための必須パラメータが不足しているか無効です。'
-        invalid_redirect_uri: '含まれるリダイレクトURIが正しくありません。'
-        unauthorized_client: 'クライアントはこのメソッドを用いたリクエストを実行する権限がありません。'
-        access_denied: 'リソースオーナーもしくは認可サーバがリクエストを拒否しました。'
-        invalid_scope: '指定されたスコープが無効か、不明か、もしくは正しくありません。'
-        invalid_code_challenge_method: 'コードチャレンジメソッドはplainかS256でなければなりません。'
-        server_error: '予期せぬ事態が発生したため、認可サーバはリクエストを処理できませんでした。'
-        temporarily_unavailable: '認可サーバが一時的に高負荷な状態にあるか、もしくはメンテナンス中であるため、リクエストを処理できません。'
+          unknown: 'The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.'
+          missing_param: 'Missing required parameter: %{value}.'
+          request_not_authorized: 'Request need to be authorized. Required parameter for authorizing request is missing or invalid.'
+        invalid_redirect_uri: "The requested redirect uri is malformed or doesn't match client redirect URI."
+        unauthorized_client: 'The client is not authorized to perform this request using this method.'
+        access_denied: 'The resource owner or authorization server denied the request.'
+        invalid_scope: 'The requested scope is invalid, unknown, or malformed.'
+        invalid_code_challenge_method: 'The code challenge method must be plain or S256.'
+        server_error: 'The authorization server encountered an unexpected condition which prevented it from fulfilling the request.'
+        temporarily_unavailable: 'The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.'
         #Configuration error messages
-        credential_flow_not_configured: 'Doorkeeper.configure.resource_owner_from_credentials が設定されていないため、リソースオーナーパスワードクレデンシャルフローは失敗しました。'
-        resource_owner_authenticator_not_configured: 'Doorkeeper.configure.resource_owner_authenticator が設定されていないため、リソースオーナーの取得に失敗しました。'
-        admin_authenticator_not_configured: 'Doorkeeper.configure.admin_authenticator being unconfigured が設定されていないため、管理者パネルへのアクセスが禁止されています。'
+        credential_flow_not_configured: 'Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.'
+        resource_owner_authenticator_not_configured: 'Resource Owner find failed due to Doorkeeper.configure.resource_owner_authenticator being unconfigured.'
+        admin_authenticator_not_configured: 'Access to admin panel is forbidden due to Doorkeeper.configure.admin_authenticator being unconfigured.'
         #Access grant errors
-        unsupported_response_type: '認可サーバは指定されたレスポンスタイプをサポートしていません。'
+        unsupported_response_type: 'The authorization server does not support this response type.'
         #Access token errors
-        invalid_client: 'クライアントが不明か、クライアント認証が含まれていないか、もしくは認証メソッドがサポートされていないため、クライアント認証は失敗しました。'
-        invalid_grant: '指定された認可グラントは無効か、有効期限切れか、リダイレクトURIが異なるか、もしくは別のクライアントに適用されています。'
-        unsupported_grant_type: 'この認可グラントのタイプは認可サーバではサポートされていません。'
+        invalid_client: 'Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.'
+        invalid_grant: 'The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.'
+        unsupported_grant_type: 'The authorization grant type is not supported by the authorization server.'
         invalid_token:
-          revoked: "アクセストークンが取り消されました"
-          expired: "アクセストークンの有効期限が切れました"
-          unknown: "アクセストークンが無効です"
+          revoked: 'The access token was revoked'
+          expired: 'The access token expired'
+          unknown: 'The access token is invalid'
         revoke:
-          unauthorized: "このトークンを無効化する権限がありません"
+          unauthorized: 'You are not authorized to revoke this token'
     flash:
       applications:
         create:
-          notice: 'アプリケーションが作成されました。'
+          notice: 'Application created.'
         destroy:
-          notice: 'アプリケーションが削除されました。'
+          notice: 'Application deleted.'
         update:
-          notice: 'アプリケーションが更新されました。'
+          notice: 'Application updated.'
       authorized_applications:
         destroy:
-          notice: 'アプリケーションが取消されました。'
+          notice: 'Application revoked.'
     layouts:
       admin:
         title: 'Doorkeeper'
         nav:
-          oauth2_provider: 'OAuth2 プロバイダー'
-          applications: 'アプリケーション'
-          home: 'ホーム'
+          oauth2_provider: 'OAuth2 Provider'
+          applications: 'Applications'
+          home: 'Home'
       application:
-        title: 'OAuth認証が必要です'
+        title: 'OAuth authorization required'
   accounts:
-    app_title: Brickdoc アカウント
+    app_title: Brickdoc Accounts
     provider:
-      github: Github
-      email_password: メールとパスワード
+      email_password: Email & Password
     sessions:
-      sign_in: サインイン
-      sign_up: サインアップ
-      reset_password: パスワードリセット
-      sign_in_to_brickdoc: Brickdocにサインインする
-      more_login_options: 追加のログインオプション
-      login_via: "%{provider} を使用してサインインする"
-      email: Email
-      password: パスワード
-      remember_me: ログイン状態を保存する
-      sign_up_with_email: サインアップ
-      resend_confirmed_email: 確認メールを再送信
-      confirmation_email_required_heading: もう少しです
-      forget_password: パスワードを忘れましたか
-      confirm_password: パスワードを再入力してください。
-      sign_up_via: "%{provider}に登録する"
-      name: "名前"
-      webid: "WebID"
-      webid_description: "ユーザー名と同様に、アルファベットと数字のみが許可されます"
-      agree_to_agreement: "サインアップは、お客様が当社の <0>ユーザー契約</0>に同意することを示します。"
-      resend_after: "%{seconds} 秒後に再送信可能"
+      sign_in: Sign In
+      sign_up: Sign Up
+      reset_password: Reset Password
+      sign_in_to_brickdoc: Sign in to Brickdoc
+      more_login_options: More Login Options
+      login_via: 'Sign In with %{provider}'
+      email: メール
+      password: Password
+      remember_me: Remember me
+      sign_up_with_email: Sign Up
+      resend_confirmed_email: Resend Confirmation Email
+      confirmation_email_required_heading: Almost done
+      forget_password: Forget Password
+      confirm_password: Confirm Password
+      sign_up_via: 'Sign Up with %{provider}'
+      name: 'Name'
+      webid: 'WebID'
+      webid_description: 'Only alphabet and numbers are allowed'
+      agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
+      resend_after: 'Resendable after %{seconds} seconds'
     common:
-      confirm_not_match: "%{field}と確認%{field}が一致しない\n"
+      confirm_not_match: '%{field} and confirm %{field} do not match'
+    errors:
+      invalid_operation_type: 'Invalid operation type'
+      invalid_pod_webid: 'No access to the webid'
+      pod_has_already_switched: 'Pod has already switched'
+      pod_exist: 'Pod has already exist'
+      user_not_exist: "ユーザーが存在しません。"
+      pod_not_exist: "ポッドは存在しません"
   docs:
     app_title: Brickdoc
+    saving: 保存
+    user_setting:
+      text: ユーザー設定
+      general: General
+      member: Member
+      account: Account
+    pod_setting:
+      text: Pod Setting
+    anonymous:
+      edit_button: Edit
+    search:
+      text: Quick Find
+      placeholder: Search Pages
     blocks:
-      create_pages: ページを追加
-      delete: 削除
-      create_snapshot: スナップショットを作成する
+      create_pages: Add Pages
+      delete: Delete
+    trash:
+      name: Trash
+      all_pages: All pages
+      current_page: In current page
+      search: Filter by page title...
+      not_found: No match found.
+      learn: Learn about deleting and restoring pages
+      delete_confirmation_body: Are you sure you want to delete this page permanently?
+      delete_confirmation_ok: Delete Page
+      delete_confirmation_cancel: Cancel
+      in_trash_prompt: This page is in trash.
+      restore_action: Restore page
+      hard_delete_action: Delete permanently
+    share:
+      menu: Share
+      share_to_web: Share to web
+      share_to_web_description: Publish and share link with anyone
+      allow_edit: Allow edit
+      learn: Learn about sharing
+      copy_link_button: Copy link
+      invite_placeholder: Add people, emails, groups, or intergrations
+      invite_button: Invite
+      copy: Copy
+    invite:
+      learn: Learn how to invite people and set permissions
+      type_hint: Type or paste in Email above, separated by commas.
+      search: Search Emails, names
+      button: Invite
+      edit_message: Can edit
+      edit_message_description: Can edit, but not share with others.
+      view_message: Can view
+      view_message_description: Cannot edit or share with others.
+      remove_message: Remove
     snapshots:
-      name: スナップショット
+      name: Snapshot
+      restore: Restore version
+      cancel: Cancel
+      empty: Version history is empty
+    pods:
+      webid: WebID
+      name: Name
+      bio: Bio
+      avatar: Avatar
+      required:
+        webid: WebID is required
+        name: Name is required
+      create:
+        success: Create successfully.
+      update:
+        success: Update successfully.
     menu:
-      create_new_pod: "ポッド作成\n"
-      logout: ログアウト
+      create_new_pod: Create other pod
+      logout: Logout
+    title:
+      add_icon: アイコンを追加します。
+      add_cover: 表紙を選ぶ
+      change_cover: Change cover
+      reposition: Reposition
+      untitled: Untitled
+  editor:
+    placeholder: Type '/' for commands
+    slashmenu:
+      heading: Brickdoc
+      items:
+        h1:
+          title: 見出し 1
+          desc: Big section heading
+        h2:
+          title: 見出し 2
+          desc: Medium section heading
+        h3:
+          title: 見出し 3
+          desc: Small section heading
+        h4:
+          title: 見出し 4
+          desc: Small section heading
+        h5:
+          title: 見出し 5
+          desc: Small section heading
+        bulletlist:
+          title: Bulleted List
+          desc: Create a bulleted list
+        orderedlist:
+          title: Numbered List
+          desc: Create a list with numbering
+        pdf:
+          title: PDF
+          desc: Embed a PDF
+        embed:
+          title: Embed
+          desc: For PDFs and more
+        image:
+          title: Image
+          desc: Upload or embed with a link
+        table:
+          title: テーブル
+          desc: Creat a table in this page
+    bubblemenu:
+      items:
+        bold:
+          desc: Bold
+        italic:
+          desc: Italic
+        underline:
+          desc: Underline
+        strike:
+          desc: Strike-through
+        h1:
+          desc: 見出し 1
+        h2:
+          desc: 見出し 2
+        h3:
+          desc: 見出し 3
+        h4:
+          desc: 見出し 4
+        h5:
+          desc: 見出し 5
+        bulletlist:
+          desc: Bullet-list
+        orderedlist:
+          desc: Ordered-list
+        link:
+          desc: リンク
+          link_placeholder: Paste link
+          linked_to: Linked to
+          web_page: web page
+          copy_link: リンクをコピー
+          remove_link: リンクを削除
+          link_to_url: Link to url
+        fontcolor:
+          desc: フォントの色
+    image_section:
+      hint: 画像を追加する
+      import_sources:
+        link:
+          placeholder: Paste the image link...
+          button_text: Embed image
+          button_hint: Works with any image from the web
+        upload:
+          button_text: Choose an image
+    link_block:
+      delete: Delete
+      copy_link: リンクをコピー
+      hint: Embed anything
+      import_sources:
+        link:
+          placeholder: Paste in https://...
+          button_text: 埋込
+          button_hint: Works with Block-level link projects
+        upload:
+          button_text: ファイルを選択します
+          button_hint: Recommended size is 5MB
+    pdf_section:
+      hint: Embed a PDF
+      import_sources:
+        upload:
+          button_text: ファイルを選択します
+        link:
+          placeholder: Paste in https://...
+          button_text: Embed PDF
+          button_hint: Embed a PDF file
+    table:
+      new_row:
+        text: New
+      remove_row:
+        text: Delete
+        title: Are you sure you want to delete this row?
+        ok: Delete
+        cancel: Cancel
+      remove_column:
+        text: Delete
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      column_default_name: Column
+      column_type: Property Type
+      column_types:
+        basic: Basic
+        text: テキスト
+        select: 選択
+        date: Date
+        date-range: Date Range
+      filter:
+        text: 絞り込み
+        title: Filter for My All Data
+        remove: Remove
+        duplicate: 複製
+        where: Where
+        add_a_filter: フィルターを追加
+        add_a_filter_group: Add a filter group
+        add_a_filter_group_desc: A group to nest more filters
+        hint: |
+          Use a filter to:
+          Show tasks assigned to me.
+          Show only notes with a certain tag.
+          Hide completed tasks.
+        collection_types:
+          intersection: と
+          union: または
+        matches:
+          is: Is
+          is_not: Is not
+          is_on: Is
+          is_not_on: Is not
+          is_before: Is before
+          is_after: Is After
+          is_on_or_before: Is on or before
+          is_on_or_after: Is on or after
+          contains: Contains
+          does_not_contain: Does not contain
+          starts_with: Starts with
+          ends_with: Ends with
+          is_empty: 空です
+          is_not_empty: 空ではない
+      sort:
+        text: Sort
+        title: Sort for My All Data
+        hint: |
+          Use a sort to:
+          Order tasks by priority.
+          Show notes by creation date.
+          Show recently contacted customers.
