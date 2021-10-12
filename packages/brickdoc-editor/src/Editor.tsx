@@ -1,12 +1,12 @@
 import React from 'react'
 import { useEditor as useTiptapEditor, EditorContent as TiptapEditorContent, Editor as TiptapEditor } from '@tiptap/react'
 import { EditorOptions as TiptapEditorOptions } from '@tiptap/core'
+import Placeholder from '@tiptap/extension-placeholder'
 import {
   BasicRichtextExtension,
   SlashCommandsExtension,
   SyncExtension,
   brickListExtension,
-  PlaceholderExtension,
   SyncExtensionOptions,
   TableExtensionOptions,
   EventHandlerExtension,
@@ -16,6 +16,7 @@ import './styles.less'
 import { ImageSectionOptions } from './extensions/imageSection'
 import { PdfSectionOptions } from './extensions/pdfSection'
 import { LinkBlockOptions } from './extensions/linkBlock'
+import { useEditorI18n } from './hooks'
 
 export type { ImageSectionAttributes } from './extensions'
 
@@ -54,6 +55,11 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     editable,
     ...restOptions
   } = options
+  const { t } = useEditorI18n()
+  const PlaceholderExtension = Placeholder.configure({
+    placeholder: t('placeholder')
+  })
+
   return useTiptapEditor({
     extensions: [
       BasicRichtextExtension.configure({

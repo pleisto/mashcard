@@ -9,71 +9,63 @@ const TRIGGER_CHAR = '/'
 
 const menuItems: SlashCommandsMenuItem[] = [
   {
-    title: 'Heading 1',
-    alias: ['h1'],
-    desc: 'Big section heading',
+    key: 'h1',
+    alias: ['h1', 'heading 1'],
     icon: <Icon.RteH1 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 1 }).run()
     }
   },
   {
-    title: 'Heading 2',
-    alias: ['h2'],
-    desc: 'Medium section heading',
+    key: 'h2',
+    alias: ['h2', 'heading 2'],
     icon: <Icon.RteH2 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
     }
   },
   {
-    title: 'Heading 3',
-    alias: ['h3'],
-    desc: 'Small section heading',
+    key: 'h3',
+    alias: ['h3', 'heading 3'],
     icon: <Icon.RteH3 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 3 }).run()
     }
   },
   {
-    title: 'Heading 4',
-    alias: ['h4'],
-    desc: 'Small section heading',
+    key: 'h4',
+    alias: ['h4', 'heading 4'],
     icon: <Icon.RteH4 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 4 }).run()
     }
   },
   {
-    title: 'Heading 5',
-    alias: ['h5'],
-    desc: 'Small section heading',
+    key: 'h5',
+    alias: ['h5', 'heading 5'],
     icon: <Icon.RteH5 className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode('heading', { level: 5 }).run()
     }
   },
   {
-    title: 'Bulleted List',
-    alias: ['bulletlist'],
-    desc: 'Create a bulleted list',
+    key: 'bulletlist',
+    alias: ['bullet list'],
     icon: <Icon.ListUnordered className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).wrapInBrickList('bulletList').run()
     }
   },
   {
-    title: 'Numbered List',
-    alias: ['numberlist'],
-    desc: 'Create a list with numbering',
+    key: 'orderedlist',
+    alias: ['number list', 'numbered list', 'order list', 'ordered list'],
     icon: <Icon.ListOrdered className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).wrapInBrickList('orderedList').run()
     }
   },
   {
-    title: 'PDF',
-    desc: 'Embed a PDF',
+    key: 'pdf',
     icon: <Icon.FilePdf className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor
@@ -85,8 +77,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     }
   },
   {
-    title: 'Embed',
-    desc: 'For PDFs and more',
+    key: 'embed',
     icon: <Icon.BlockLevelLink className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor
@@ -98,9 +89,8 @@ const menuItems: SlashCommandsMenuItem[] = [
     }
   },
   {
-    title: 'Image',
+    key: 'image',
     alias: ['img', 'picture'],
-    desc: 'Upload or embed with a link',
     icon: <Icon.FileImage className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor
@@ -112,8 +102,7 @@ const menuItems: SlashCommandsMenuItem[] = [
     }
   },
   {
-    title: 'Table',
-    desc: 'Creat a table in this page',
+    key: 'table',
     icon: <Icon.Table className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor
@@ -129,8 +118,7 @@ const menuItems: SlashCommandsMenuItem[] = [
 function filterMenuItemsByQuery(query: string): SlashCommandsMenuItem[] {
   return menuItems.filter(
     item =>
-      item.title.toLowerCase().startsWith(query.toLowerCase()) ||
-      item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
+      item.key.toLowerCase().startsWith(query.toLowerCase()) || item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
   )
 }
 

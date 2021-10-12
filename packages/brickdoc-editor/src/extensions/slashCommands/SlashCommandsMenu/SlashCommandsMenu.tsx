@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { Editor, Range } from '@tiptap/react'
 import { SlashMenuItem } from './SlashMenuItem'
+import { useEditorI18n } from '../../../hooks'
+
 import './index.less'
 
 export interface SlashCommandsMenuItem {
-  title: string
+  key: string
   alias?: string[]
-  desc: string
   icon: React.ReactNode
   command: ({ editor, range }: { editor: Editor; range: Range }) => void
 }
@@ -27,15 +28,17 @@ export const SlashCommandsMenu: React.FC<SlashCommandsMenuProps> = ({ items, act
   const onHover = (index: number) => (): void => {
     onIndexChange?.(index)
   }
+
+  const { t } = useEditorI18n()
   return (
     <div role="menu" className="brickdoc-slash-menu">
-      <div className="slash-menu-heading">Brickdoc</div>
+      <div className="slash-menu-heading">{t(`slashmenu.heading`)}</div>
       {items.map((item, index) => (
         <SlashMenuItem
           key={index}
           active={index === activeIndex}
-          title={item.title}
-          desc={item.desc}
+          title={t(`slashmenu.items.${item.key}.title`)}
+          desc={t(`slashmenu.items.${item.key}.desc`)}
           icon={item.icon}
           onClick={selectItem(index)}
           onHover={onHover(index)}

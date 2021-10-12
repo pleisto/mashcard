@@ -4,6 +4,7 @@ import styles from './DocumentTitle.module.less'
 import { DashboardProps } from '@brickdoc/uploader'
 import { DocumentIcon, DocumentIconMeta } from './DocumentIcon'
 import { DocumentCover, DocumentCoverMeta } from './DocumentCover'
+import { useDocsI18n } from '../../../common/hooks'
 import { useDocumentIconUploader, useDocumentCoverUploader } from '../../hooks'
 
 export interface DocumentTitleProps {
@@ -35,6 +36,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
   getDocCoverUrl,
   editable
 }) => {
+  const { t } = useDocsI18n()
   const [localIcon, setLocalIcon] = React.useState('')
   const [localCover, setLocalCover] = React.useState('')
   const [documentIconMeta, iconPopoverProps] = useDocumentIconUploader(icon, {
@@ -75,7 +77,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
               <Popover {...iconPopoverProps}>
                 <Button type="text" className={styles.item} disabled={!editable}>
                   <Icon.Face className={styles.icon} />
-                  <span className={styles.name}>Add icon</span>
+                  <span className={styles.name}>{t('title.add_icon')}</span>
                 </Button>
               </Popover>
             )}
@@ -83,7 +85,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
               <Popover {...coverPopoverProps}>
                 <Button type="text" className={styles.item} disabled={!editable}>
                   <Icon.Image className={styles.icon} />
-                  <span className={styles.name}>Add cover</span>
+                  <span className={styles.name}>{t('title.add_cover')}</span>
                 </Button>
               </Popover>
             )}
@@ -93,7 +95,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
           className={styles.titleInput}
           value={title}
           onChange={e => onTitleChange(e.target.value)}
-          placeholder="Untitled"
+          placeholder={t('title.placeholder')}
           autoSize={true}
           disabled={!editable}
         />

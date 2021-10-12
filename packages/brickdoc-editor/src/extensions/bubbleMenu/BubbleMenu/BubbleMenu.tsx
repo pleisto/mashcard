@@ -12,83 +12,83 @@ interface BubbleMenuProps {
 }
 
 export interface StyleMeta {
+  key: string
   value?: 'bold' | 'italic' | 'strike' | 'heading' | 'underline' | 'fontColor' | 'link'
   listType?: 'bulletList' | 'orderedList'
   label: React.ReactNode
-  desc: string
   shortcutDesc?: string
   option?: any
 }
 
 const MarkStyle: StyleMeta[] = [
   {
+    key: 'bold',
     value: 'bold',
     label: <Icon.BoldWords />,
-    desc: 'Bold',
     shortcutDesc: '⌘+B'
   },
   {
+    key: 'italic',
     value: 'italic',
     label: <Icon.Italics />,
-    desc: 'Italic',
     shortcutDesc: '⌘+I'
   },
   {
+    key: 'underline',
     value: 'underline',
     label: <Icon.TextUnderline />,
-    desc: 'Underline',
     shortcutDesc: '⌘+U'
   },
   {
+    key: 'strike',
     value: 'strike',
-    label: <Icon.Strikethrough />,
-    desc: 'Strike-through'
+    label: <Icon.Strikethrough />
   }
 ]
 
 const HeadingStyle: StyleMeta[] = [
   {
+    key: 'h1',
     value: 'heading',
     label: <Icon.RteH1 />,
-    option: { level: 1 },
-    desc: 'Heading 1'
+    option: { level: 1 }
   },
   {
+    key: 'h2',
     value: 'heading',
     label: <Icon.RteH2 />,
-    option: { level: 2 },
-    desc: 'Heading 2'
+    option: { level: 2 }
   },
   {
+    key: 'h3',
     value: 'heading',
     label: <Icon.RteH3 />,
-    option: { level: 3 },
-    desc: 'Heading 3'
+    option: { level: 3 }
   },
   {
+    key: 'h4',
     value: 'heading',
     label: <Icon.RteH4 />,
-    option: { level: 4 },
-    desc: 'Heading 4'
+    option: { level: 4 }
   },
   {
+    key: 'h5',
     value: 'heading',
     label: <Icon.RteH5 />,
-    option: { level: 5 },
-    desc: 'Heading 5'
+    option: { level: 5 }
   }
 ]
 
 const ListStyle: StyleMeta[] = [
   {
+    key: 'bulletlist',
     listType: 'bulletList',
-    label: <Icon.ListUnordered />,
-    desc: 'Bullet-list'
+    label: <Icon.ListUnordered />
   },
   {
+    key: 'orderedlist',
     listType: 'orderedList',
-    label: <Icon.ListOrdered />,
-    desc: 'Ordered-list'
+    label: <Icon.ListOrdered />
   }
 ]
 

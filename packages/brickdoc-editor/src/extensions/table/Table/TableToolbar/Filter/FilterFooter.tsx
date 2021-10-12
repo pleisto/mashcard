@@ -1,6 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import { Dropdown, Button, Icon } from '@brickdoc/design-system'
+import { useEditorI18n } from '../../../../../hooks'
 
 const MOST_CASCADE_LIMIT = 3
 
@@ -11,13 +12,14 @@ export interface FilterFooterProps {
 }
 
 export const FilterFooter: React.FC<FilterFooterProps> = ({ cascade, onAddFilter, path }) => {
+  const { t } = useEditorI18n()
   const Content = (
     <div className="table-block-filter-select-panel">
-      <div className="filter-select-title">Filter</div>
+      <div className="filter-select-title">{t('table.filter.text')}</div>
       <div className="filter-select-option">
         <Button className="filter-select-option-btn" type="text" onClick={() => onAddFilter(false, path)}>
           <Icon.Add />
-          Add a filter
+          {t('table.filter.add_a_filter')}
         </Button>
       </div>
       {(path?.length ?? 0) < MOST_CASCADE_LIMIT && (
@@ -25,9 +27,9 @@ export const FilterFooter: React.FC<FilterFooterProps> = ({ cascade, onAddFilter
           <Button className="filter-select-option-btn" type="text" onClick={() => onAddFilter(true, path)}>
             <div className="filter-select-option-btn-content">
               <Icon.AddGroup />
-              Add a filter group
+              {t('table.filter.add_a_filter_group')}
             </div>
-            <div className="filter-select-option-btn-desc">A group to nest more filters</div>
+            <div className="filter-select-option-btn-desc">{t('table.filter.add_a_filter_group_desc')}</div>
           </Button>
         </div>
       )}
@@ -39,7 +41,7 @@ export const FilterFooter: React.FC<FilterFooterProps> = ({ cascade, onAddFilter
       <Dropdown trigger={['click']} overlay={Content}>
         <Button className="table-toolbar-item-footer-button" type="text">
           <Icon.Add />
-          <span>Add a Filter</span>
+          <span>{t('table.filter.add_a_filter')}</span>
           <Icon.ArrowDown className="table-toolbar-item-footer-icon" />
         </Button>
       </Dropdown>

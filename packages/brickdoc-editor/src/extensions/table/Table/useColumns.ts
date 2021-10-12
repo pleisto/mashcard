@@ -1,6 +1,7 @@
 import React from 'react'
 import { Column, TableColumnSelectOption } from 'react-table'
 import { v4 as uuid } from 'uuid'
+import { useEditorI18n } from '../../../hooks'
 
 export const DEFAULT_GROUP_ID = '__defaultGroup'
 
@@ -44,6 +45,7 @@ export function useColumns(options: { databaseColumns: DatabaseColumns; updateAt
     updateType: (type: string, groupId: string, columnId: string) => void
   }
 ] {
+  const { t } = useEditorI18n()
   const { databaseColumns, updateAttributeData } = options
 
   const latestDatabaseColumns = React.useRef<DatabaseColumns>(databaseColumns)
@@ -63,7 +65,7 @@ export function useColumns(options: { databaseColumns: DatabaseColumns; updateAt
       ...prevColumns,
       {
         key: uuid(),
-        title: `Column${prevColumns.length}`,
+        title: `${t('table.column_default_name')}${prevColumns.length}`,
         type: 'text',
         index: prevColumns.length
       }

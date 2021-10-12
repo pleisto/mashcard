@@ -1,6 +1,7 @@
 import React from 'react'
 import { Column } from 'react-table'
 import { Popover } from '@brickdoc/design-system'
+import { useEditorI18n } from '../../../../../hooks'
 import { FilterGroup } from './FilterGroup'
 import { matches } from '../../columnType'
 
@@ -42,6 +43,7 @@ export const Filter: React.FC<TableFilterProps> = ({
   onUpdate,
   onDuplicate
 }) => {
+  const { t } = useEditorI18n()
   const handleVisibleChange = (visible: boolean): void => {
     if (visible) return
     onVisibleChange(visible)
@@ -49,7 +51,7 @@ export const Filter: React.FC<TableFilterProps> = ({
 
   const Content = (
     <div className="table-block-toolbar-item-panel">
-      <span className="table-block-toolbar-item-title">Filter for My All Data</span>
+      <span className="table-block-toolbar-item-title">{t('table.filter.title')}</span>
       <FilterGroup
         columns={columns}
         filterGroup={filterGroup}
@@ -71,7 +73,8 @@ export const Filter: React.FC<TableFilterProps> = ({
       overlayClassName="table-block-popover"
       trigger="click"
       placement="bottom"
-      content={Content}>
+      content={Content}
+    >
       {children}
     </Popover>
   )

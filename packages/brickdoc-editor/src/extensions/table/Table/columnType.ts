@@ -4,7 +4,7 @@ import { Icon } from '@brickdoc/design-system'
 import { TableColumnType } from 'react-table'
 
 interface MatchType {
-  label: string
+  key: string
   value: string
   executor: (columnValue?: any, value?: any) => boolean
 }
@@ -35,32 +35,32 @@ const isNotEmpty: MatchType['executor'] = (columnValue, value) => !isEmpty(colum
 
 export const matches = {
   Is: {
-    label: 'Is',
+    key: 'is',
     value: 'Is',
     executor: is
   },
   IsNot: {
-    label: 'Is not',
+    key: 'is_not',
     value: 'IsNot',
     executor: isNot
   },
   IsOn: {
-    label: 'Is',
+    key: 'is_on',
     value: 'IsOn',
     executor: isOn
   },
   IsNotOn: {
-    label: 'Is not',
+    key: 'is_not_on',
     value: 'IsNotOn',
     executor: isNotOn
   },
   IsBefore: {
-    label: 'Is before',
+    key: 'is_before',
     value: 'IsBefore',
     executor: isBefore
   },
   IsAfter: {
-    label: 'Is after',
+    key: 'is_after',
     value: 'IsAfter',
     executor: isAfter
   },
@@ -70,37 +70,37 @@ export const matches = {
     executor: isOnOrBefore
   },
   IsOnOrAfter: {
-    label: 'Is on or after',
+    key: 'is_on_or_before',
     value: 'IsOnOrAfter',
     executor: isOnOrAfter
   },
   Contains: {
-    label: 'Contains',
+    key: 'contains',
     value: 'Contains',
     executor: contains
   },
   DoesNotContain: {
-    label: 'Does not contain',
+    key: 'does_not_contain',
     value: 'DoesNotContain',
     executor: doesNotContain
   },
   StartsWith: {
-    label: 'Starts with',
+    key: 'starts_with',
     value: 'StartsWith',
     executor: startsWith
   },
   EndsWith: {
-    label: 'Ends with',
+    key: 'ends_with',
     value: 'EndsWith',
     executor: endsWith
   },
   IsEmpty: {
-    label: 'Is empty',
+    key: 'is_empty',
     value: 'IsEmpty',
     executor: isEmpty
   },
   IsNotEmpty: {
-    label: 'Is not empty',
+    key: 'is_not_empty',
     value: 'IsNotEmpty',
     executor: isNotEmpty
   }
@@ -108,13 +108,11 @@ export const matches = {
 
 export const COLUMN_TYPE: Array<{
   type: TableColumnType
-  label: string
   icon: React.ComponentType
   matches: MatchType[]
 }> = [
   {
     type: 'text',
-    label: 'Text',
     icon: Icon.AddText,
     matches: [
       matches.Is,
@@ -129,13 +127,11 @@ export const COLUMN_TYPE: Array<{
   },
   {
     type: 'select',
-    label: 'Select',
     icon: Icon.ArrowCircleDown,
     matches: [matches.Is, matches.IsNot, matches.IsEmpty, matches.IsNotEmpty]
   },
   {
     type: 'date',
-    label: 'Date',
     icon: Icon.Calendar,
     matches: [
       matches.IsOn,
@@ -150,7 +146,6 @@ export const COLUMN_TYPE: Array<{
   },
   {
     type: 'date-range',
-    label: 'Date range',
     icon: Icon.Calendar,
     matches: [
       matches.IsOn,

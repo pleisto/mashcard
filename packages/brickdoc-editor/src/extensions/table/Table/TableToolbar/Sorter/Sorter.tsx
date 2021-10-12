@@ -1,6 +1,7 @@
 import React from 'react'
 import { Column } from 'react-table'
 import { Button, Icon, Popover } from '@brickdoc/design-system'
+import { useEditorI18n } from '../../../../../hooks'
 import { SorterFooter } from './SorterFooter'
 import { SorterItem } from './SorterItem'
 
@@ -29,9 +30,10 @@ export const Sorter: React.FC<SorterProps> = ({
   onUpdate,
   onRemove
 }) => {
+  const { t } = useEditorI18n()
   const Content = (
     <div className="table-block-toolbar-item-panel">
-      <span className="table-block-toolbar-item-title">Sort for My All Data</span>
+      <span className="table-block-toolbar-item-title">{t('table.sort.title')}</span>
       <div className="table-toolbar-item-group-panel">
         <div role="group" className="table-toolbar-item-group-content">
           {sorterOptions.map((sorter, index) => (
@@ -44,10 +46,11 @@ export const Sorter: React.FC<SorterProps> = ({
           ))}
           {sorterOptions.length <= 0 && (
             <>
-              <span>Use a sort to:</span>
-              <span>Order tasks by priority.</span>
-              <span>Show notes by creation date.</span>
-              <span>Show recently contacted customers.</span>
+              {t('table.sort.hint')
+                .split('\n')
+                .map((l, i) => (
+                  <span key={i}>{l}</span>
+                ))}
             </>
           )}
         </div>
@@ -66,7 +69,8 @@ export const Sorter: React.FC<SorterProps> = ({
       overlayClassName="table-block-popover"
       trigger="click"
       placement="bottom"
-      content={Content}>
+      content={Content}
+    >
       {children}
     </Popover>
   )

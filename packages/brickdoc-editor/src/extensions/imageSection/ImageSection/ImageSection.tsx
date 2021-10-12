@@ -8,26 +8,11 @@ import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { Button, Popover, Icon, Skeleton } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload } from '@brickdoc/uploader'
 import { BlockWrapper } from '../../BlockWrapper'
+import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 
 const MAX_WIDTH = 700
-const IMAGE_IMPORT_SOURCES: ImportSourceOption[] = [
-  {
-    type: 'link',
-    linkInputPlaceholder: 'Paste the image link...',
-    buttonText: 'Embed image',
-    buttonHint: 'Works with any image from the web'
-  },
-  {
-    type: 'upload',
-    buttonText: 'Choose an image',
-    acceptType: 'image/*'
-  },
-  {
-    type: 'unsplash'
-  }
-]
 
 export interface ImageSectionAttributes {
   width?: number
@@ -39,6 +24,7 @@ export interface ImageSectionAttributes {
 
 // TODO: handle image load on error
 export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
+  const { t } = useEditorI18n()
   const [file, setFile] = React.useState<string>()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
   const updateImageAttributes = (newAttributes: Partial<ImageSectionAttributes>): void => {
@@ -146,7 +132,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               updateImageAttributes({
                 width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
               })
-            }}>
+            }}
+          >
             <div className="image-section-menu-button">
               <Icon.More className="image-section-menu-icon" />
             </div>
@@ -156,7 +143,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               isZoomed={showPreview}
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
-              }}>
+              }}
+            >
               {!loaded && (
                 <Skeleton.Image
                   style={
@@ -175,6 +163,23 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
     )
   }
 
+  const importSources: ImportSourceOption[] = [
+    {
+      type: 'link',
+      linkInputPlaceholder: t('image_section.import_sources.link.placeholder'),
+      buttonText: t('image_section.import_sources.link.button_text'),
+      buttonHint: t('image_section.import_sources.link.button_hint')
+    },
+    {
+      type: 'upload',
+      buttonText: t('image_section.import_sources.upload.button_text'),
+      acceptType: 'image/*'
+    },
+    {
+      type: 'unsplash'
+    }
+  ]
+
   return (
     <BlockWrapper editor={editor}>
       <Popover
@@ -189,12 +194,13 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
             fetchUnsplashImages={extension.options.fetchUnsplashImages}
             onUploaded={onUploaded}
             onFileLoaded={onFileLoaded}
-            importSources={IMAGE_IMPORT_SOURCES}
+            importSources={importSources}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-block-image-section">
           <Icon.Image className="image-section-icon" />
-          <div className="image-section-hint">Add an image</div>
+          <div className="image-section-hint">{t('image_section.hint')}</div>
         </Button>
       </Popover>
     </BlockWrapper>

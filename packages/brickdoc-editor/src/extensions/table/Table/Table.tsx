@@ -5,6 +5,7 @@ import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGrou
 import { Modal, Pagination } from '@brickdoc/design-system'
 import { BlockWrapper } from '../../BlockWrapper'
 import { TableExtensionOptions } from '../../table'
+import { useEditorI18n } from '../../../hooks'
 import { ColumnMenu } from './ColumnMenu'
 import { useColumns } from './useColumns'
 import { useAddNewColumn, COLUMN_ID as ADD_NEW_COLUMN_ID } from './useAddNewColumn'
@@ -36,6 +37,7 @@ const defaultColumnConfig = {
 }
 
 export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
+  const { t } = useEditorI18n()
   const parentId: string = node.attrs.uuid
   const prevData = node.attrs.data || {}
 
@@ -83,9 +85,9 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
 
   const removeRowConfirm = (rowId: string): void => {
     modal.confirm({
-      title: 'Are you sure you want to delete this property?',
-      okText: 'Delete',
-      cancelText: 'Cancel',
+      title: t('table.remove_row.title'),
+      okText: t('table.remove_row.ok'),
+      cancelText: t('table.remove_row.cancel'),
       icon: null,
       onOk: () => removeRow(rowId)
     })

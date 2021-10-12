@@ -1,6 +1,7 @@
 import React from 'react'
 import { Column, TableColumnType } from 'react-table'
 import { Select, SelectProps } from '@brickdoc/design-system'
+import { useEditorI18n } from '../../../../../../hooks'
 import { FilterOption, FilterSingleOption } from '../Filter'
 import { COLUMN_TYPE } from '../../../columnType'
 import { TextValue } from './TextValue'
@@ -15,6 +16,7 @@ export interface FilterItemProps {
 }
 
 export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSingleOption, onUpdateFilter }) => {
+  const { t } = useEditorI18n()
   const handleFilterOption: SelectProps<object>['filterOption'] = (inputValue, option) => {
     if (!inputValue) return true
     return ((option?.title as string) ?? '').toLowerCase().includes(inputValue.toLowerCase())
@@ -74,8 +76,8 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
         value={filterSingleOption.matchType}
       >
         {matchedColumnType?.matches.map(item => (
-          <Select.Option key={item.value} value={item.value} title={item.label}>
-            {item.label}
+          <Select.Option key={item.value} value={item.value} title={t(`table.filter.matches.${item.key}`)}>
+            {t(`table.filter.matches.${item.key}`)}
           </Select.Option>
         ))}
       </Select>

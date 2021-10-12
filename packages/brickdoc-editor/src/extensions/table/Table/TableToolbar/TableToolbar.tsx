@@ -1,6 +1,7 @@
 import React from 'react'
 import { Column } from 'react-table'
 import { Button, Icon } from '@brickdoc/design-system'
+import { useEditorI18n } from '../../../../hooks'
 import { Filter, FilterOption, FilterGroupOption } from './Filter'
 import { Sorter, SorterOption } from './Sorter'
 import './TableToolbar.css'
@@ -32,6 +33,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
   updateSorter,
   removeSorter
 }) => {
+  const { t } = useEditorI18n()
   const [filterVisible, setFilterVisible] = React.useState(false)
   const [sortVisible, setSortVisible] = React.useState(false)
   const handleVisibleChange =
@@ -50,7 +52,8 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
       onAdd={addFilter}
       onRemove={removeFilter}
       onUpdate={updateFilter}
-      onDuplicate={duplicateFilter}>
+      onDuplicate={duplicateFilter}
+    >
       <Sorter
         columns={columns}
         sorterOptions={sorterOptions}
@@ -58,16 +61,17 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         onUpdate={updateSorter}
         onRemove={removeSorter}
         visible={sortVisible}
-        onVisibleChange={handleVisibleChange(setSortVisible)}>
+        onVisibleChange={handleVisibleChange(setSortVisible)}
+      >
         <div role="toolbar" className="table-block-toolbar">
           <Button onClick={() => setFilterVisible(true)} type="text" className="table-toolbar-text-button">
-            Filter
+            {t('table.filter.text')}
           </Button>
           <Button onClick={() => setSortVisible(true)} type="text" className="table-toolbar-text-button">
-            Sort
+            {t('table.sort.text')}
           </Button>
           <Button type="primary" className="table-toolbar-add-button" onClick={() => onAddNewRow()}>
-            New <Icon.ArrowRight />
+            {t('table.new_row.text')} <Icon.ArrowRight />
           </Button>
         </div>
       </Sorter>

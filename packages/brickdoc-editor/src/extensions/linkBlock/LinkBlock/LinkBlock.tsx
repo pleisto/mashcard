@@ -6,22 +6,9 @@ import { Button, Popover, Icon, Menu } from '@brickdoc/design-system'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import { WebsiteMeta } from '..'
 import { BlockWrapper } from '../../BlockWrapper'
+import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.css'
-
-const IMPORT_SOURCES: ImportSourceOption[] = [
-  {
-    type: 'link',
-    linkInputPlaceholder: 'Paste in https://...',
-    buttonText: 'Embed',
-    buttonHint: 'Works with Block-level link projects'
-  },
-  {
-    type: 'upload',
-    buttonText: 'Choose an file',
-    buttonHint: 'Recommended size is 5MB'
-  }
-]
 
 export interface LinkBlockAttributes {
   key: string
@@ -43,6 +30,7 @@ const sizeFormat = (size?: number): string => {
 }
 
 export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, extension, updateAttributes }) => {
+  const { t } = useEditorI18n()
   const latestLinkBlockAttributes = React.useRef<Partial<LinkBlockAttributes>>({})
   const updateLinkBlockAttributes = (newAttributes: Partial<LinkBlockAttributes>, type: 'link' | 'attachment'): void => {
     latestLinkBlockAttributes.current = {
@@ -132,11 +120,11 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   }}
                 >
                   <Icon.Delete />
-                  Delete
+                  {t('link_block.delete')}
                 </Menu.Item>
                 <Menu.Item onClick={handleCopy}>
                   <Icon.Copy />
-                  Copy link
+                  {t('link_block.copy_link')}
                 </Menu.Item>
               </Menu>
             }
@@ -150,6 +138,20 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     )
   }
 
+  const importSources: ImportSourceOption[] = [
+    {
+      type: 'link',
+      linkInputPlaceholder: t('link_block.import_sources.link.placeholder'),
+      buttonText: t('link_block.import_sources.link.button_text'),
+      buttonHint: t('link_block.import_sources.link.button_hint')
+    },
+    {
+      type: 'upload',
+      buttonText: t('link_block.import_sources.upload.button_text'),
+      buttonHint: t('link_block.import_sources.upload.button_hint')
+    }
+  ]
+
   return (
     <BlockWrapper editor={editor}>
       <Popover
@@ -160,14 +162,14 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
           <Dashboard
             blockId={node.attrs.uuid}
             onUploaded={onUploaded}
-            importSources={IMPORT_SOURCES}
+            importSources={importSources}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
         }
       >
         <Button type="text" className="brickdoc-link-block-placeholder">
           <Icon.BlockLevelLink className="link-block-icon" />
-          <div className="link-block-hint">Embed anything</div>
+          <div className="link-block-hint">{t('link_block.hint')}</div>
         </Button>
       </Popover>
     </BlockWrapper>

@@ -3,14 +3,16 @@ import { Editor } from '@tiptap/core'
 import { StyleMeta } from './BubbleMenu'
 import { Button, Dropdown, Tooltip, Icon } from '@brickdoc/design-system'
 import { ColorMeta, COLOR as FONT_COLOR } from '../../color'
+import { useEditorI18n } from '../../../hooks'
 
 const FontColorStyle: StyleMeta = {
+  key: 'fontcolor',
   value: 'fontColor',
-  label: <Icon.FontSize />,
-  desc: 'Font-color'
+  label: <Icon.FontSize />
 }
 
 export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
+  const { t } = useEditorI18n()
   const [lastColor, setLastColor] = React.useState<ColorMeta>()
   const [currentColor, setCurrentColor] = React.useState<ColorMeta>()
   const selectColor = (color: ColorMeta) => () => {
@@ -48,7 +50,7 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
       overlayClassName="brickdoc-bubble-menu-item-hint"
       title={
         <>
-          <div className="item-hint-main">{FontColorStyle.desc}</div>
+          <div className="item-hint-main">{t(`bubblemenu.items.${FontColorStyle.key}.desc`)}</div>
           {FontColorStyle.shortcutDesc && <div className="item-hint-sub">{FontColorStyle.shortcutDesc}</div>}
         </>
       }

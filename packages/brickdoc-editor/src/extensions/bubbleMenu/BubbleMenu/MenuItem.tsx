@@ -4,8 +4,10 @@ import { Editor } from '@tiptap/core'
 import { StyleMeta } from './BubbleMenu'
 import { Button, Tooltip } from '@brickdoc/design-system'
 import { isListType } from '../../brickList'
+import { useEditorI18n } from '../../../hooks'
 
 export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ editor, style }) => {
+  const { t } = useEditorI18n()
   // TODO: Need a better solution to avoid calculate frequently
   const activeClass = (style: StyleMeta): string => {
     let isActive = false
@@ -56,7 +58,7 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
       destroyTooltipOnHide={true}
       title={
         <>
-          <div className="item-hint-main">{style.desc}</div>
+          <div className="item-hint-main">{t(`bubblemenu.items.${style.key}.desc`)}</div>
           {style.shortcutDesc && <div className="item-hint-sub">{style.shortcutDesc}</div>}
         </>
       }

@@ -2,14 +2,10 @@ import React from 'react'
 import { Column } from 'react-table'
 import cx from 'classnames'
 import { Button, Icon, Menu, Popover, Select } from '@brickdoc/design-system'
+import { useEditorI18n } from '../../../../../hooks'
 import { FilterGroupOption, FilterOption } from './Filter'
 import { FilterItem } from './FilterItem'
 import { FilterFooter } from './FilterFooter'
-
-const COLLECTION_TYPE_LABEL = {
-  intersection: 'And',
-  union: 'Or'
-}
 
 export interface FilterGroupProps {
   filterGroup: FilterGroupOption
@@ -36,21 +32,27 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   onUpdateFilter,
   onDuplicateFilter
 }) => {
+  const { t } = useEditorI18n()
   const updateCollectionType = (value: FilterGroupOption['collectionType']): void => onUpdateFilter({ collectionType: value }, path ?? [])
   return (
     <div data-testid="brickdoc-table-filter-group" role="group" className={cx('table-toolbar-item-group-panel', { cascade })}>
       <div className="table-toolbar-item-group-content">
         {filterGroup.filters.map((filter, index) => (
           <div key={index} className={cx('table-toolbar-item-option', filter.type)}>
-            {isFirst(index) && <span className="table-toolbar-item-option-head-label">Where</span>}
+            {isFirst(index) && <span className="table-toolbar-item-option-head-label">{t('table.filter.where')}</span>}
             {isSecond(index) && (
               <Select className="table-toolbar-item-option-head-select" value={filterGroup.collectionType} onChange={updateCollectionType}>
-                <Select.Option value="intersection">{COLLECTION_TYPE_LABEL.intersection}</Select.Option>
-                <Select.Option value="union">{COLLECTION_TYPE_LABEL.union}</Select.Option>
+                {['intersection', 'union'].map(type => (
+                  <Select.Option key={type} value={type}>
+                    {t(`table.filter.collection_types.${type}`)}
+                  </Select.Option>
+                ))}
               </Select>
             )}
             {NotFirstTwo(index) && (
-              <span className="table-toolbar-item-option-head-label">{COLLECTION_TYPE_LABEL[filterGroup.collectionType]}</span>
+              <span className="table-toolbar-item-option-head-label">
+                {t(`table.filter.collection_types.${filterGroup.collectionType}`)}
+              </span>
             )}
             {filter.type === 'single' && (
               <FilterItem path={[...(path ?? []), index]} columns={columns} filterSingleOption={filter} onUpdateFilter={onUpdateFilter} />
@@ -75,14 +77,15 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
                 <Menu className="table-block-menu">
                   <Menu.Item className="table-block-menu-item" key="Remove" onClick={() => onRemoveFilter([...(path ?? []), index])}>
                     <Icon.Delete />
-                    <span>Remove</span>
+                    <span>{t('table.filter.remove')}</span>
                   </Menu.Item>
                   <Menu.Item className="table-block-menu-item" key="Duplicate" onClick={() => onDuplicateFilter([...(path ?? []), index])}>
                     <Icon.Copy />
-                    <span>Duplicate</span>
+                    <span>{t('table.filter.duplicate')}</span>
                   </Menu.Item>
                 </Menu>
-              }>
+              }
+            >
               <Button type="text" className="table-toolbar-item-option-action-button">
                 <Icon.More />
               </Button>
@@ -91,10 +94,11 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
         ))}
         {!cascade && filterGroup.filters.length === 0 && (
           <>
-            <span>Use a filter to:</span>
-            <span>Show tasks assigned to me.</span>
-            <span>Show only notes with a certain tag.</span>
-            <span>Hide completed tasks.</span>
+            {t('table.filter.hint')
+              .split('\n')
+              .map((l, i) => (
+                <span key={i}>{l}</span>
+              ))}
           </>
         )}
       </div>

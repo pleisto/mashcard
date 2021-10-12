@@ -7,22 +7,10 @@ import { Button, Popover, Icon } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from '@brickdoc/uploader'
 import { PdfDocument } from './PdfDocument'
 import { BlockWrapper } from '../../BlockWrapper'
+import { useEditorI18n } from '../../../hooks'
 import './styles.less'
 
 const MAX_WIDTH = 700
-const PDF_IMPORT_SOURCES: ImportSourceOption[] = [
-  {
-    type: 'upload',
-    buttonText: 'Choose a file',
-    acceptType: 'application/pdf'
-  },
-  {
-    type: 'link',
-    linkInputPlaceholder: 'Https://...',
-    buttonText: 'Embed PDF',
-    buttonHint: 'Embed a PDF file'
-  }
-]
 
 export interface PdfSectionAttributes {
   width?: number
@@ -34,6 +22,7 @@ export interface PdfSectionAttributes {
 
 // TODO: handle pdf load on error
 export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
+  const { t } = useEditorI18n()
   const latestPdfAttributes = React.useRef<Partial<PdfSectionAttributes>>({})
   const updatePdfAttributes = (newAttributes: Partial<PdfSectionAttributes>): void => {
     latestPdfAttributes.current = {
@@ -140,7 +129,8 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
                 width: Math.min(Number(node.attrs.attachment.width) + d.width, MAX_WIDTH),
                 height: Number(node.attrs.attachment.height) + d.height
               })
-            }}>
+            }}
+          >
             <div className="pdf-section-menu-button">
               <Icon.More className="pdf-section-menu-icon" />
             </div>
@@ -167,6 +157,20 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
     )
   }
 
+  const importSources: ImportSourceOption[] = [
+    {
+      type: 'upload',
+      buttonText: t('pdf_section.import_sources.upload.button_text'),
+      acceptType: 'application/pdf'
+    },
+    {
+      type: 'link',
+      linkInputPlaceholder: t('pdf_section.import_sources.link.placeholder'),
+      buttonText: t('pdf_section.import_sources.link.button_text'),
+      buttonHint: t('pdf_section.import_sources.link.button_hint')
+    }
+  ]
+
   return (
     <BlockWrapper editor={editor}>
       <Popover
@@ -181,12 +185,13 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
             onProgress={onProgress}
             onUploaded={onUploaded}
             onFileLoaded={onFileLoaded}
-            importSources={PDF_IMPORT_SOURCES}
+            importSources={importSources}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-block-pdf-section">
           <Icon.FilePdf className="pdf-section-icon" />
-          <div className="pdf-section-hint">Embed a PDF</div>
+          <div className="pdf-section-hint">{t('pdf_section.hint')}</div>
         </Button>
       </Popover>
     </BlockWrapper>

@@ -2,11 +2,12 @@ import * as React from 'react'
 import { Editor } from '@tiptap/core'
 import { Button, Dropdown, Icon, Input, Tooltip } from '@brickdoc/design-system'
 import { StyleMeta } from './BubbleMenu'
+import { useEditorI18n } from '../../../hooks'
 
 const LinkStyle: StyleMeta = {
+  key: 'link',
   value: 'link',
-  label: <Icon.Link />,
-  desc: 'Link'
+  label: <Icon.Link />
 }
 
 function copyTextToClipboard(text: string): void {
@@ -14,6 +15,7 @@ function copyTextToClipboard(text: string): void {
 }
 
 export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
+  const { t } = useEditorI18n()
   const menuFocus = React.useRef<boolean>(false)
   const href = React.useRef(editor.getAttributes('link').href)
 
@@ -61,7 +63,7 @@ export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
         value={currentLink}
         onChange={event => setCurrentLink(event.target.value)}
         className="bubble-link-menu-input"
-        placeholder="Paste link"
+        placeholder={t('bubblemenu.items.link.link_placeholder')}
       />
       {href.current && (
         <>
@@ -71,12 +73,12 @@ export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
             onBlur={() => (menuFocus.current = false)}
             onClick={() => window.open(href.current, '_blank')}
           >
-            <div className="bubble-link-to-button-head">Linked to</div>
+            <div className="bubble-link-to-button-head">{t('bubblemenu.items.link.linked_to')}</div>
             <div className="bubble-link-to-button-content">
               <Icon.FilePages className="bubble-link-to-button-icon" />
               <div className="bubble-link-to-button-content-text">
                 {href.current}
-                <div className="bubble-link-to-button-content-hint">web page</div>
+                <div className="bubble-link-to-button-content-hint">{t('bubblemenu.items.link.web_page')}</div>
               </div>
             </div>
           </Button>
@@ -90,7 +92,7 @@ export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
           onClick={copyLink}
         >
           <Icon.Copy />
-          <span>Copy link</span>
+          <span>{t('bubblemenu.items.link.copy_link')}</span>
         </Button>
       )}
       {href.current && (
@@ -101,7 +103,7 @@ export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
           onClick={removeLink}
         >
           <Icon.Delete />
-          <span>Remove link</span>
+          <span>{t('bubblemenu.items.link.remove_link')}</span>
         </Button>
       )}
       {currentLink && (
@@ -112,7 +114,7 @@ export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
           onClick={setLink}
         >
           <Icon.Link />
-          <span>Link to URL</span>
+          <span>{t('bubblemenu.items.link.link_to_url')}</span>
         </Button>
       )}
     </div>
@@ -123,7 +125,7 @@ export const LinkMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
       overlayClassName="brickdoc-bubble-menu-item-hint"
       title={
         <>
-          <div className="item-hint-main">{LinkStyle.desc}</div>
+          <div className="item-hint-main">{t(`bubblemenu.items.${LinkStyle.key}.desc`)}</div>
           {LinkStyle.shortcutDesc && <div className="item-hint-sub">{LinkStyle.shortcutDesc}</div>}
         </>
       }

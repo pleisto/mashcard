@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { TableRowProps as RTTableRowProps, Row, TableHeaderGroupProps } from 'react-table'
 import { Button, Icon, Input, Menu, Popover } from '@brickdoc/design-system'
 import { IsCellActive } from './useActiveStatus'
+import { useEditorI18n } from '../../../hooks'
 
 export interface TableRowProps extends RTTableRowProps {
   rowActive?: boolean
@@ -24,6 +25,7 @@ const cellPropsGetter = (props: Partial<TableHeaderGroupProps>, { cell }: any): 
 ]
 
 export const TableRow: React.FC<TableRowProps> = ({ rowActive, isCellActive, onAddNewRow, onRemoveRow, row, ...rowProps }) => {
+  const { t } = useEditorI18n()
   const popupContainer = React.useRef<HTMLDivElement | null>(null)
   const [contextMenuVisible, setContextMenuVisible] = React.useState(false)
   const [contextMenuFilterValue, setContextMenuFilterValue] = React.useState('')
@@ -62,11 +64,12 @@ export const TableRow: React.FC<TableRowProps> = ({ rowActive, isCellActive, onA
               // TODO: fix type
               <Menu.Item onClick={() => onRemoveRow((row.original as any).id)} className="table-block-menu-item" key="Delete">
                 <Icon.Delete />
-                <span>Delete</span>
+                <span>{t('table.remove_row.text')}</span>
               </Menu.Item>
             )}
           </Menu>
-        }>
+        }
+      >
         {/* add a placeholder for popover to follow mouse's position */}
         <div ref={popupContainer} style={{ width: '1px', height: '1px', position: 'fixed' }} />
       </Popover>
@@ -84,7 +87,8 @@ export const TableRow: React.FC<TableRowProps> = ({ rowActive, isCellActive, onA
               <div
                 {...cellProps}
                 key={cellProps.key}
-                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}>
+                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}
+              >
                 {cell.render('Cell')}
               </div>
             )
