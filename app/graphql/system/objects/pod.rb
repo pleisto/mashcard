@@ -11,6 +11,9 @@ module System
       field :avatar_data, Avatar, 'Pod Avatar', null: true
       field :bio, String, 'public profile bio', null: true
       field :email, String, 'owner email', null: true
+      field :personal, Boolean, 'personal', null: false
+      field :invite_enable, Boolean, 'enable invite feature', null: false
+      field :invite_secret, String, 'invite secret', null: true
     end
   end
 end

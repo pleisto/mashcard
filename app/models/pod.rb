@@ -7,6 +7,8 @@
 #  id                                          :bigint           not null, primary key
 #  bio("Bio" means Biography in social media.) :string(140)
 #  deleted_at                                  :datetime
+#  invite_enable                               :boolean          default(FALSE), not null
+#  invite_secret                               :string
 #  name                                        :string           not null
 #  personal                                    :boolean          default(FALSE), not null
 #  webid                                       :string           not null
@@ -17,6 +19,7 @@
 # Indexes
 #
 #  index_pods_on_deleted_at        (deleted_at)
+#  index_pods_on_invite_secret     (invite_secret) UNIQUE
 #  index_pods_on_lower_webid_text  (lower((webid)::text)) UNIQUE
 #  index_pods_on_owner_id          (owner_id)
 #
@@ -28,6 +31,11 @@ class Pod < ApplicationRecord
   validates_uniqueness_of :owner_id, scope: :personal, if: proc { personal? }
   has_many :blocks, class_name: 'Docs::Block'
   has_many :share_links, dependent: :restrict_with_exception, class_name: 'Docs::ShareLink'
+  has_many :members, -> { enabled }, class_name: 'Accounts::Member'
+  has_many :all_members, class_name: 'Accounts::Member'
+  has_many :users, class_name: 'Accounts::User', through: :members
+
+  after_create :ensure_owner_member!
 
   ANYONE_WEBID = 'anyone'
   ANONYMOUS_WEBID = 'anonymous'
@@ -85,6 +93,12 @@ class Pod < ApplicationRecord
   ANONYMOUS_CONTEXT = {
     'webid' => ANONYMOUS_WEBID
   }
+
+  def ensure_owner_member!
+    members.find_or_create_by!(user_id: owner_id) do |member|
+      member.role = :admin
+    end
+  end
 
   def as_session_context
     attributes.slice('id', 'webid', 'owner_id')

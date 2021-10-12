@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Docs::Mutations::BlockCreate, type: :mutation, focus: true do
+describe Docs::Mutations::BlockCreate, type: :mutation do
   describe '#resolve' do
     mutation = <<-'GRAPHQL'
       mutation blockCreate($input: BlockCreateInput!) {

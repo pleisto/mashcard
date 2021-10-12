@@ -6,11 +6,30 @@ export const queryPods = gql`
       id
       webid
       name
+      personal
+      inviteEnable
+      inviteSecret
       avatarData {
         url
         signedId
       }
       bio
+    }
+  }
+`
+
+export const queryPodUsers = gql`
+  query GetPodUsers {
+    podMembers {
+      webid
+      email
+      name
+      role
+      state
+      avatarData {
+        url
+        signedId
+      }
     }
   }
 `
@@ -60,6 +79,22 @@ export const CreateOrUpdatePod = gql`
         webid
         name
       }
+    }
+  }
+`
+
+export const JoinPod = gql`
+  mutation joinPod($input: JoinPodInput!) {
+    joinPod(input: $input) {
+      errors
+    }
+  }
+`
+
+export const UpdateMember = gql`
+  mutation updateMember($input: UpdateMemberInput!) {
+    updateMember(input: $input) {
+      errors
     }
   }
 `

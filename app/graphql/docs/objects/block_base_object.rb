@@ -7,7 +7,8 @@ module Docs
     field :root_id, BrickGraphQL::Scalars::UUID, 'root uuid', null: false
     field :parent_id, BrickGraphQL::Scalars::UUID, 'parent uuid', null: true
     field :sort, GraphQL::Types::BigInt, 'block sort', null: false
-    field :collaborators, [Accounts::Objects::User], 'collaborators', null: true
+    # TODO: GraphQL::Types::BigInt -> Accounts::Objects::User
+    field :collaborators, [GraphQL::Types::BigInt], 'collaborators', null: false
     field :next_sort, GraphQL::Types::BigInt, 'block next sort', null: false
     field :first_child_sort, GraphQL::Types::BigInt, 'block first child sort', null: false
     field :blobs, [System::Objects::Blob], 'blobs', null: true

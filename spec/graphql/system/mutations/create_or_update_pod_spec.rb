@@ -11,6 +11,7 @@ describe System::Mutations::CreateOrUpdatePod, type: :mutation do
           pod {
             webid
             name
+            inviteEnable
           }
         }
       }
@@ -30,6 +31,13 @@ describe System::Mutations::CreateOrUpdatePod, type: :mutation do
       expect(response.errors).to eq({})
       expect(response.data[:createOrUpdatePod][:errors]).to eq([])
       expect(response.data[:createOrUpdatePod][:pod][:name]).to eq(new_name)
+
+      input = { input: { type: "UPDATE", webid: user.personal_pod.webid, inviteEnable: true } }
+      internal_graphql_execute(mutation, input)
+
+      expect(response.errors).to eq({})
+      expect(response.data[:createOrUpdatePod][:errors]).to eq([])
+      expect(response.data[:createOrUpdatePod][:pod][:inviteEnable]).to eq(true)
 
       input = { input: { type: "UPDATE", webid: "ERROR_WEBID", name: new_name } }
       internal_graphql_execute(mutation, input)

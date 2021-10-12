@@ -92,7 +92,9 @@ class Accounts::User < ApplicationRecord
   end
 
   ## Pod
-  has_many :pods, class_name: 'Pod', foreign_key: :owner_id, inverse_of: :owner
+  has_many :members, -> { enabled }, class_name: 'Accounts::Member'
+  has_many :own_pods, class_name: 'Pod', foreign_key: :owner_id, inverse_of: :owner
+  has_many :pods, class_name: 'Pod', through: :members
 
   has_one :personal_pod, -> { where(personal: true) },
           class_name: 'Pod', dependent: :destroy,

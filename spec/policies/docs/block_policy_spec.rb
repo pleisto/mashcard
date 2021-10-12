@@ -21,7 +21,7 @@ RSpec.describe Docs::BlockPolicy, type: :policy do
   end
 
   it 'owner 2' do
-    new_pod = user.pods.create!(webid: "PolicyOwner", name: "PolicyOwner")
+    new_pod = user.own_pods.create!(webid: "PolicyOwner", name: "PolicyOwner")
     block2 = create(:docs_block, pod: new_pod)
     expect(described_class.new(block2, user: user).apply(:show?)).to be true
     expect(block2.show_policy?(user)).to be true
