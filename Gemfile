@@ -27,7 +27,7 @@ gem 'lockbox', '>= 0.6.6'
 gem 'lograge', '~> 0.11.2'
 gem 'logstop', '>= 0.2.7'
 gem 'accept_language', '>= 2.0.1'
-gem 'nokogiri', '~> 1.12', '>= 1.12.5'
+gem 'nokogiri', '>= 1.12.5'
 
 gem 'aws-sdk-s3', '~> 1', '>= 1.103.0'
 

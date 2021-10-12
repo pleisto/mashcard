@@ -4,7 +4,6 @@ import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } fro
 import { JSONContent } from '@tiptap/core'
 import { isNil } from 'lodash-es'
 import { queryPageBlocks } from '@/docs/common/graphql'
-import { useDocsI18n } from '@/docs/common/hooks'
 
 const nodeChildren = (node: Node): Node[] => {
   // TODO Fragment type missing content field

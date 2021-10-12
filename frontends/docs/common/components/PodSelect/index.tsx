@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { BrickdocContext } from '@/BrickdocPWA'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import { Dropdown, Avatar, Skeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
+import { Dropdown, Skeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
+import { PodAvatar } from '../PodAvatar'
 import { Setting, Change } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
@@ -19,6 +21,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
   const [profileModalVisible, setProfileModalVisible] = useState<boolean>(false)
   const [profileWebid, setProfileWebid] = useState<undefined | string>(undefined)
+  const { currentUser } = useContext(BrickdocContext)
 
   if (loading || signOutLoading) {
     return <Skeleton avatar active paragraph={false} />
@@ -64,18 +67,26 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
 
   const dropdown = (
     <Menu onClick={onClick} selectedKeys={[`pod-${pod.webid}`]}>
-      {data?.pods.map(pod => (
-        <Menu.Item key={`pod-${pod.webid}`}>
-          <div className={styles.menu}>
-            {pod.name}
-            <Tooltip title={t(pod.personal ? 'user_setting.text' : 'pod_setting.text')}>
-              <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(pod)}>
-                <Setting />
-              </Button>
-            </Tooltip>
-          </div>
-        </Menu.Item>
-      ))}
+      <Menu.ItemGroup title={<small>@{currentUser?.webid ?? 'undefined'}</small>}>
+        {data?.pods.map(pod => (
+          <Menu.Item key={`pod-${pod.webid}`}>
+            <div className={styles.menu}>
+              <div className={styles.podInfo}>
+                <PodAvatar pod={pod} />
+                <div className={styles.name}>
+                  {pod.name}
+                  {currentUser?.webid === pod.webid && <div className={styles.podLabel}>Personal Pod</div>}
+                </div>
+              </div>
+              <Tooltip title={t(pod.personal ? 'user_setting.text' : 'pod_setting.text')}>
+                <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(pod)}>
+                  <Setting />
+                </Button>
+              </Tooltip>
+            </div>
+          </Menu.Item>
+        ))}
+      </Menu.ItemGroup>
       <Menu.Divider />
       <Menu.Item key="pod-create">{t('menu.create_new_pod')}</Menu.Item>
       <Menu.Divider />
@@ -85,19 +96,12 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
     </Menu>
   )
 
-  let avatar
-  if (pod.avatarData) {
-    avatar = <Avatar src={pod.avatarData.url} />
-  } else {
-    avatar = <Avatar style={{ background: '#2376b7' }}>{pod.webid}</Avatar>
-  }
-
   return (
     <>
-      <Dropdown trigger={['click']} overlay={dropdown} placement="bottomLeft">
+      <Dropdown trigger={['click']} overlay={dropdown} overlayClassName={styles.overlay} placement="bottomLeft">
         <div className={styles.select}>
           <div className={styles.pod}>
-            {avatar}
+            <PodAvatar pod={pod} />
             <div className={styles.name}>
               <span>{pod.name}</span>
             </div>

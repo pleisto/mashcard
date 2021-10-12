@@ -689,7 +689,7 @@ en-US:
         success: Update successfully.
     menu:
       create_new_pod: Create other pod
-      logout: Logout
+      logout: Log out
     title:
       add_icon: Add icon
       add_cover: Add cover

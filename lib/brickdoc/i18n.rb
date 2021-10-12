@@ -7,7 +7,7 @@ module Brickdoc
       'en-US': 'English',
       'zh-CN': '简体中文',
       'ja-JP': '日本語',
-      # 'ar-SA': 'اَلْعَرَبِيَّةُ',
+      'ar-SA': 'اَلْعَرَبِيَّةُ',
       'zh-HK': '繁體中文'
     }
 
@@ -21,8 +21,11 @@ module Brickdoc
 
     def fallbacks
       {
-        'zh-TW': :'zh-HK',
-        'en-US': :en
+        'en-US': :en,
+        'zh-CN': :'en-US',
+        'zh-HK': :'zh-CN',
+        'ja-JP': :'en-US',
+        'ar-SA': :'en-US'
       }
     end
 

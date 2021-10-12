@@ -27,9 +27,23 @@
 
 .menu {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  font-weight: 500;
+  color: @text-color;
+  .podInfo {
+    display: flex;
+    align-items: center;
+    .name {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
   a {
     color: @text-color;
+    &:hover {
+      color: @text-color;
+    }
   }
   .addBtn {
     opacity: 0;
@@ -46,5 +60,20 @@
     .addBtn {
       opacity: 1;
     }
+  }
+}
+.podLabel {
+  font-size: @font-size-xs;
+  color: @text-color-secondary;
+}
+
+.overlay {
+  min-width: 20rem !important;
+  :global(.brk-dropdown-menu-item-group-list) {
+    margin: 0;
+  }
+  :global(.brk-dropdown-menu-item),
+  :global(.brk-dropdown-menu-submenu-title) {
+    padding: 6px 12px;
   }
 }

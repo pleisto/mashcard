@@ -30,7 +30,7 @@ To start development:
 6. (Optionally) `cp .env.local .env.test.local` to make these environment variables also available during test running.
 7. Run `./bin/rails db:create db:migrate` to create the db schema, then `./bin/rails db:seed` to seed the db.
 8. (Optionally) Run `RAILS_ENV=test ./bin/rails db:migrate` and `RAILS_ENV=test ./bin/rails db:seed` to seed the db for tests.
-9. Execute `./bin/rails server` to start the back end server, and `yarn start` to start the front end server.
+9. Execute `yarn start` to start the vite devServer, and `./bin/rails server` to start the server.
 10. Visit `http://127.0.0.1:3000`, and you should now see the login page.
 
 - To run back end tests: `bundle exec rspec`
