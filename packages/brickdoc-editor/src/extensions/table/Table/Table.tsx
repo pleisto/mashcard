@@ -1,8 +1,8 @@
 import React from 'react'
 import cx from 'classnames'
 import { NodeViewProps } from '@tiptap/react'
-import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps, usePagination } from 'react-table'
-import { Modal, Icon, Pagination } from '@brickdoc/design-system'
+import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps } from 'react-table'
+import { Modal, Icon } from '@brickdoc/design-system'
 import { BlockWrapper } from '../../BlockWrapper'
 import { TableExtensionOptions } from '../../table'
 import { useEditorI18n } from '../../../hooks'
@@ -104,19 +104,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
 
   // filter && sort
   const data = React.useMemo(() => sort(tableRows.filter(item => filter(item, filterGroup))), [tableRows, filterGroup, filter, sort])
-  // pagination
-  const currentPageIndex = React.useRef(0)
 
-  const {
-    getTableProps,
-    headerGroups,
-    page,
-    prepareRow,
-    // pagination
-    gotoPage,
-    setPageSize,
-    state: { pageIndex, pageSize }
-  } = useTable(
+  const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data,
@@ -124,14 +113,10 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
       updateActiveStatus,
       resetActiveStatus,
       updateData,
-      setColumns,
-      initialState: {
-        pageIndex: currentPageIndex.current
-      }
+      setColumns
     },
     useFlexLayout,
     useResizeColumns,
-    usePagination,
     hooks => {
       hooks.visibleColumns.push(columns => [...columns, addNewColColumn])
     }
@@ -204,7 +189,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
             })}
           </div>
           <div className="table-block-tbody">
-            {page.map(row => {
+            {rows.map(row => {
               prepareRow(row)
               const rowProps = row.getRowProps({ className: 'table-block-tr' })
               return (
@@ -227,22 +212,6 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                 New
               </div>
             </div>
-          </div>
-          <div className="table-block-footer">
-            <Pagination
-              className="table-block-pagination"
-              total={data.length}
-              pageSize={pageSize}
-              current={pageIndex + 1}
-              onShowSizeChange={(current, size) => setPageSize(size)}
-              onChange={page => {
-                const nextPageIndex = page - 1
-                if (nextPageIndex !== pageIndex) {
-                  currentPageIndex.current = nextPageIndex
-                  gotoPage(nextPageIndex)
-                }
-              }}
-            />
           </div>
         </div>
       </div>

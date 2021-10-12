@@ -68,13 +68,13 @@
             align-items: center;
             justify-content: space-between;
             height: var(--button-height);
-            width: 88px;
             font-size: 12px;
             padding: 3px 0 3px 8px;
             border-radius: 4px;
             box-shadow: 0 2px 0 rgba(0, 0, 0, 0.043);
 
             & .brk-icon {
+              margin-left: 10px;
               width: 22px;
               border-left: 1px solid rgba(0, 0, 0, 0.35);
               height: 22px;
