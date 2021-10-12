@@ -26,13 +26,12 @@
           position: absolute;
           top: 0;
           left: var(--block-padding-left);
-          max-width: calc(100% - 100px);
-          width: 80%;
+          max-width: 100%;
+          width: 100%;
           height: var(--toolbar-height);
           display: flex;
           flex-direction: row;
           align-items: center;
-          justify-content: flex-end;
 
           --button-color: #1c1c1e;
           --button-height: 22px;
@@ -40,6 +39,18 @@
 
           & button + button {
             margin-left: 8px;
+          }
+
+          & .table-toolbar-actions {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
           }
 
           & .table-toolbar-text-button {
@@ -59,15 +70,27 @@
             height: var(--button-height);
             width: 88px;
             font-size: 12px;
-            padding: 0 5px 0 16px;
-            background: var(--button-color);
-            border-color: var(--button-color);
+            padding: 3px 0 3px 8px;
             border-radius: 4px;
             box-shadow: 0 2px 0 rgba(0, 0, 0, 0.043);
 
             & .brk-icon {
+              width: 22px;
+              border-left: 1px solid rgba(0, 0, 0, 0.35);
+              height: 22px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
               font-size: 18px;
             }
+          }
+        }
+      }
+
+      &:hover {
+        & .table-block-toolbar {
+          & .table-toolbar-actions {
+            opacity: 1;
           }
         }
       }

@@ -59,20 +59,26 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         sorterOptions={sorterOptions}
         onAdd={addSorter}
         onUpdate={updateSorter}
+        jjj
         onRemove={removeSorter}
         visible={sortVisible}
         onVisibleChange={handleVisibleChange(setSortVisible)}
       >
         <div role="toolbar" className="table-block-toolbar">
-          <Button onClick={() => setFilterVisible(true)} type="text" className="table-toolbar-text-button">
-            {t('table.filter.text')}
-          </Button>
-          <Button onClick={() => setSortVisible(true)} type="text" className="table-toolbar-text-button">
-            {t('table.sort.text')}
-          </Button>
-          <Button type="primary" className="table-toolbar-add-button" onClick={() => onAddNewRow()}>
-            {t('table.new_row.text')} <Icon.ArrowRight />
-          </Button>
+          <div className="table-toolbar-actions">
+            <Button onClick={() => setFilterVisible(true)} type="text" className="table-toolbar-text-button">
+              {t('table.filter.text')}
+            </Button>
+            <Button onClick={() => setSortVisible(true)} type="text" className="table-toolbar-text-button">
+              {t('table.sort.text')}
+            </Button>
+            <Button type="primary" className="table-toolbar-add-button" onClick={() => onAddNewRow()}>
+              {t('table.new_row.text')}
+              <div className="table-toolbar-add-button-icon">
+                <Icon.ArrowDown />
+              </div>
+            </Button>
+          </div>
         </div>
       </Sorter>
     </Filter>
