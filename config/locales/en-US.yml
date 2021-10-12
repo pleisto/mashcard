@@ -697,7 +697,7 @@ en-US:
       reposition: Reposition
       untitled: Untitled
   editor:
-    placeholder: Enter Text
+    placeholder: Type '/' for commands
     slashmenu:
       heading: Brickdoc
       items:
