@@ -62,6 +62,16 @@ export const brickListExtension = Extension.create<brickListOptions>({
                 if (dispatch) dispatch(tr.scrollIntoView())
                 return true
               }
+            } else {
+              const prevPos = selection.$from.before() - 1
+              if (prevPos > 0) {
+                const prevNode = tr.doc.resolve(prevPos).parent
+                if (prevNode.type.name.endsWith('List')) {
+                  tr.delete(selection.$from.before() - 1, selection.$to.after())
+                  if (dispatch) dispatch(tr.scrollIntoView())
+                  return true
+                }
+              }
             }
           }
           return originalJoinBackward(state, dispatch)
