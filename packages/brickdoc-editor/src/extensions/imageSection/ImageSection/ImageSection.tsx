@@ -9,6 +9,7 @@ import { Button, Popover, Icon, Skeleton } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload } from '@brickdoc/uploader'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
+import * as fileStorage from '../../fileStorage'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 
@@ -47,7 +48,20 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
     })
   }
 
+  React.useEffect(() => {
+    const file = fileStorage.get(node.attrs.uuid)
+
+    if (!file) return
+
+    const fr = new FileReader()
+    fr.readAsDataURL(file)
+    fr.onload = function onload() {
+      setFile(this.result as string)
+    }
+  }, [node.attrs.uuid])
+
   const onFileLoaded = (inputFile: File): void => {
+    fileStorage.set(node.attrs.uuid, inputFile)
     const fr = new FileReader()
     fr.readAsDataURL(inputFile)
     fr.onload = function onload() {

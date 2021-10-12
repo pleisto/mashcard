@@ -8,6 +8,7 @@ import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from 
 import { PdfDocument } from './PdfDocument'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
+import * as fileStorage from '../../fileStorage'
 import './styles.less'
 
 const MAX_WIDTH = 700
@@ -42,7 +43,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
     })
   }
 
-  const [file, setFile] = React.useState<File>()
+  const [file, setFile] = React.useState<File | undefined>(fileStorage.get(node.attrs.uuid))
   const [progress, setProgress] = React.useState<UploadProgress>()
 
   const onProgress = (progress: UploadProgress): void => {
@@ -50,6 +51,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
   }
 
   const onFileLoaded = (inputFile: File): void => {
+    fileStorage.set(node.attrs.uuid, inputFile)
     setFile(inputFile)
   }
 

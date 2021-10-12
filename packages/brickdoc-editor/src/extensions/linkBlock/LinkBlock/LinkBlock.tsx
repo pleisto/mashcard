@@ -10,6 +10,8 @@ import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.css'
 
+const attachmentUrlStorage: { [key: string]: string } = {}
+
 export interface LinkBlockAttributes {
   key: string
   source: string
@@ -46,7 +48,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     })
   }
 
-  const [attachmentUrl, setAttachmentUrl] = React.useState('')
+  const [attachmentUrl, setAttachmentUrl] = React.useState(attachmentUrlStorage[node.attrs.uuid] ?? '')
 
   const onUploaded = (data: UploadResultData): void => {
     // external link
@@ -62,6 +64,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
       return
     }
 
+    attachmentUrlStorage[node.attrs.uuid] = data.viewUrl ?? ''
     setAttachmentUrl(data.viewUrl ?? '')
     updateLinkBlockAttributes(
       { key: data.url, source: data.meta?.source.toUpperCase(), size: data.meta?.size, name: data.meta?.name },
