@@ -44,7 +44,7 @@ export const DateCell: React.FC<DateCellProps> = props => {
   }
 
   const includeTime = cell.column.dateIncludeTime
-  const defaultFormat = `yyyy/MM/dd${includeTime ? ' HH:mm:ss' : ''}`
+  const defaultFormat = `YYYY/MM/DD${includeTime ? ' HH:mm:ss' : ''}`
 
   return (
     <div role="button" tabIndex={-1} className="table-block-date-cell" onClick={showEditing}>
