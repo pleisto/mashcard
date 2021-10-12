@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import { Dropdown, Avatar, Skeleton, Menu, MenuProps } from '@brickdoc/design-system'
-import { Change } from '@brickdoc/design-system/components/icon'
+import { Dropdown, Avatar, Skeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
+import { Setting, Change } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
 import { ProfileModal } from '../ProfileModal'
+import { PodType } from '../PodCard'
+import { ProfileSettingModal } from '../ProfileSettingModal'
 
 interface PodSelectProps {
   webid: string
@@ -15,7 +17,8 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
-  const [modalUpdateVisible, setModalUpdateVisible] = useState<boolean>(false)
+  const [profileModalVisible, setProfileModalVisible] = useState<boolean>(false)
+  const [profileWebid, setProfileWebid] = useState<undefined | string>(undefined)
 
   if (loading || signOutLoading) {
     return <Skeleton avatar active paragraph={false} />
@@ -34,9 +37,6 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
       case 'pod-create':
         setModalCreateVisible(true)
         break
-      case 'pod-profile':
-        setModalUpdateVisible(true)
-        break
       case 'logout':
         void (await userSignOut({ variables: { input: signOutInput } }))
         window.location.href = '/'
@@ -53,15 +53,35 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
     }
   }
 
+  const onClickPodSetting = (pod: PodType): ButtonProps['onClick'] => {
+    return (event): void => {
+      void event.stopPropagation()
+
+      setProfileWebid(pod.webid)
+      setProfileModalVisible(true)
+    }
+  }
+
   const dropdown = (
     <Menu onClick={onClick} selectedKeys={[`pod-${pod.webid}`]}>
-      {data?.pods.map(i => (
-        <Menu.Item key={`pod-${i.webid}`}>{i.name}</Menu.Item>
+      {data?.pods.map(pod => (
+        <Menu.Item key={`pod-${pod.webid}`}>
+          <div className={styles.menu}>
+            {pod.name}
+            <Tooltip title={t(pod.personal ? 'user_setting.text' : 'pod_setting.text')}>
+              <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(pod)}>
+                <Setting />
+              </Button>
+            </Tooltip>
+          </div>
+        </Menu.Item>
       ))}
       <Menu.Divider />
       <Menu.Item key="pod-create">{t('menu.create_new_pod')}</Menu.Item>
-      <Menu.Item key="pod-profile">{t('menu.pod_profile')}</Menu.Item>
-      <Menu.Item key="logout">{t('menu.logout')}</Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="logout" danger>
+        {t('menu.logout')}
+      </Menu.Item>
     </Menu>
   )
 
@@ -94,13 +114,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
         visible={modalCreateVisible}
         setVisible={setModalCreateVisible}
       />
-      <ProfileModal
-        title={t('menu.edit_profile')}
-        pod={pod}
-        type={PodOperation.Update}
-        visible={modalUpdateVisible}
-        setVisible={setModalUpdateVisible}
-      />
+      <ProfileSettingModal webid={profileWebid} visible={profileModalVisible} setVisible={setProfileModalVisible} />
     </>
   )
 }

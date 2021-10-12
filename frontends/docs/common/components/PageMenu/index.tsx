@@ -29,7 +29,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({ webid, id, title }) => {
     await blockSoftDelete({ variables: { input } })
   }
 
-  const onClickPlus = async (): Promise<void> => {
+  const onClickPlus = async (event: { stopPropagation: () => any }): Promise<void> => {
+    void event.stopPropagation()
     const input = { parentId: id, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {

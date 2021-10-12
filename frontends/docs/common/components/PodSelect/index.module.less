@@ -24,3 +24,27 @@
   display: flex;
   align-items: center;
 }
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  a {
+    color: @text-color;
+  }
+  .addBtn {
+    opacity: 0;
+    padding: 4px;
+    height: auto;
+    font-size: inherit;
+    border: none;
+    line-height: 1;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  &:hover {
+    .addBtn {
+      opacity: 1;
+    }
+  }
+}

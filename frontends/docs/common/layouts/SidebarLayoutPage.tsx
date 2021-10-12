@@ -1,7 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Layout, Button } from '@brickdoc/design-system'
-import { Setting } from '@brickdoc/design-system/components/icon'
+import { Layout } from '@brickdoc/design-system'
 import { useDocsI18n } from '../hooks'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { PodSelect } from '@/docs/common/components/PodSelect'
@@ -25,13 +24,8 @@ export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, doc
   ) : (
     <Sider className={styles.sider}>
       <PodSelect webid={webid} />
-
       <SearchModal webid={webid} />
 
-      <Button type="text" icon={<Setting />}>
-        {' '}
-        {t('user_setting.text')}
-      </Button>
       <div className={styles.scrollArea}>
         <PageTree webid={webid} docid={docid} />
         <TrashButton webid={webid} docid={docid} />

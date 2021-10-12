@@ -18,7 +18,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
   const [draggable, setDraggable] = useState<boolean>(true)
 
   if (loading) {
-    return <Skeleton />
+    return <Skeleton active />
   }
 
   const pageBlocks = data?.pageBlocks ?? []

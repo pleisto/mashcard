@@ -8,6 +8,23 @@ export const queryPods = gql`
       name
       personal
       inviteEnable
+      avatarData {
+        url
+        signedId
+      }
+      bio
+    }
+  }
+`
+
+export const queryPod = gql`
+  query GetPod($webid: String!) {
+    pod(webid: $webid) {
+      id
+      webid
+      name
+      personal
+      inviteEnable
       inviteSecret
       avatarData {
         url

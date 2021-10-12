@@ -136,7 +136,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
   }
 
   if (loading) {
-    return <Skeleton />
+    return <Skeleton active />
   }
 
   const DocumentTitleElement = (

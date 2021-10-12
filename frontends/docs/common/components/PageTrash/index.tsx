@@ -25,7 +25,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
   const { data, loading } = useGetTrashBlocksQuery({ variables: input })
 
   if (loading) {
-    return <Skeleton />
+    return <Skeleton active />
   }
 
   if (!data?.trashBlocks?.length) {

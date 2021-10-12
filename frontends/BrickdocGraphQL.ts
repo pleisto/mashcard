@@ -728,6 +728,8 @@ export type RootQuery = {
   passwordAvailable: Validate_Result
   /** return all plugins for pod. */
   plugins: Array<Plugin>
+  /** return current pod for user. */
+  pod: Pod
   /** return all pod users */
   podMembers?: Maybe<Array<Pod_Member>>
   /** search pods */
@@ -788,6 +790,10 @@ export type RootQueryPageBlocksArgs = {
 
 export type RootQueryPasswordAvailableArgs = {
   password: Scalars['String']
+}
+
+export type RootQueryPodArgs = {
+  webid: Scalars['String']
 }
 
 export type RootQueryPodSearchArgs = {
@@ -1373,10 +1379,28 @@ export type GetPodsQuery = {
     name?: string | null | undefined
     personal: boolean
     inviteEnable: boolean
-    inviteSecret?: string | null | undefined
     bio?: string | null | undefined
     avatarData?: { __typename?: 'avatar'; url: string; signedId: string } | null | undefined
   }>
+}
+
+export type GetPodQueryVariables = Exact<{
+  webid: Scalars['String']
+}>
+
+export type GetPodQuery = {
+  __typename?: 'RootQuery'
+  pod: {
+    __typename?: 'pod'
+    id: string
+    webid: string
+    name?: string | null | undefined
+    personal: boolean
+    inviteEnable: boolean
+    inviteSecret?: string | null | undefined
+    bio?: string | null | undefined
+    avatarData?: { __typename?: 'avatar'; url: string; signedId: string } | null | undefined
+  }
 }
 
 export type GetPodUsersQueryVariables = Exact<{ [key: string]: never }>
@@ -2422,7 +2446,6 @@ export const GetPodsDocument = gql`
       name
       personal
       inviteEnable
-      inviteSecret
       avatarData {
         url
         signedId
@@ -2458,6 +2481,51 @@ export function useGetPodsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Ge
 export type GetPodsQueryHookResult = ReturnType<typeof useGetPodsQuery>
 export type GetPodsLazyQueryHookResult = ReturnType<typeof useGetPodsLazyQuery>
 export type GetPodsQueryResult = Apollo.QueryResult<GetPodsQuery, GetPodsQueryVariables>
+export const GetPodDocument = gql`
+  query GetPod($webid: String!) {
+    pod(webid: $webid) {
+      id
+      webid
+      name
+      personal
+      inviteEnable
+      inviteSecret
+      avatarData {
+        url
+        signedId
+      }
+      bio
+    }
+  }
+`
+
+/**
+ * __useGetPodQuery__
+ *
+ * To run a query within a React component, call `useGetPodQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPodQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPodQuery({
+ *   variables: {
+ *      webid: // value for 'webid'
+ *   },
+ * });
+ */
+export function useGetPodQuery(baseOptions: Apollo.QueryHookOptions<GetPodQuery, GetPodQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetPodQuery, GetPodQueryVariables>(GetPodDocument, options)
+}
+export function useGetPodLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPodQuery, GetPodQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetPodQuery, GetPodQueryVariables>(GetPodDocument, options)
+}
+export type GetPodQueryHookResult = ReturnType<typeof useGetPodQuery>
+export type GetPodLazyQueryHookResult = ReturnType<typeof useGetPodLazyQuery>
+export type GetPodQueryResult = Apollo.QueryResult<GetPodQuery, GetPodQueryVariables>
 export const GetPodUsersDocument = gql`
   query GetPodUsers {
     podMembers {

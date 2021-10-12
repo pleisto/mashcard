@@ -624,6 +624,11 @@ en-US:
     saving: Saving
     user_setting:
       text: User Setting
+      general: General
+      member: Member
+      account: Account
+    pod_setting:
+      text: Pod Setting
     anonymous:
       edit_button: Edit
     search:
@@ -688,9 +693,7 @@ en-US:
       update:
         success: Update successfully.
     menu:
-      create_new_pod: Create a new pod
-      edit_profile: Edit profile
-      pod_profile: Profile
+      create_new_pod: Create other pod
       logout: Logout
     title:
       add_icon: Add icon
