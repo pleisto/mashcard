@@ -113,14 +113,7 @@ function getPlacementStyle(placement: NotificationPlacement, top: number = defau
 }
 
 function getNotificationInstance(args: ArgsProps, callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void) {
-  const {
-    placement = defaultPlacement,
-    top,
-    bottom,
-    getContainer = defaultGetContainer,
-    closeIcon = defaultCloseIcon,
-    prefixCls: customizePrefixCls
-  } = args
+  const { placement = defaultPlacement, top, bottom, getContainer = defaultGetContainer, prefixCls: customizePrefixCls } = args
   const { getPrefixCls } = globalConfig()
   const prefixCls = getPrefixCls('notification', customizePrefixCls || defaultPrefixCls)
 
@@ -136,10 +129,6 @@ function getNotificationInstance(args: ArgsProps, callback: (info: { prefixCls: 
     return
   }
 
-  const closeIconToRender = (
-    <span className={`${prefixCls}-close-x`}>{closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}</span>
-  )
-
   const notificationClass = classNames(`${prefixCls}-${placement}`, {
     [`${prefixCls}-rtl`]: rtl
   })
@@ -151,7 +140,6 @@ function getNotificationInstance(args: ArgsProps, callback: (info: { prefixCls: 
         className: notificationClass,
         style: getPlacementStyle(placement, top, bottom),
         getContainer,
-        closeIcon: closeIconToRender,
         maxCount
       },
       notification => {
@@ -194,7 +182,20 @@ export interface ArgsProps {
 }
 
 function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
-  const { duration: durationArg, icon, type, description, message, btn, onClose, onClick, key, style, className } = args
+  const {
+    duration: durationArg,
+    icon,
+    type,
+    description,
+    message,
+    btn,
+    onClose,
+    onClick,
+    key,
+    style,
+    className,
+    closeIcon = defaultCloseIcon
+  } = args
 
   const duration = durationArg === undefined ? defaultDuration : durationArg
 
@@ -212,6 +213,10 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
     iconNode = <IconProvider value={globalConfig().getIconDefaultConfig(rtl)}>{iconNode}</IconProvider>
   }
 
+  const closeIconToRender = (
+    <span className={`${prefixCls}-close-x`}>{closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}</span>
+  )
+
   const autoMarginTag = !description && iconNode ? <span className={`${prefixCls}-message-single-line-auto-margin`} /> : null
 
   return {
@@ -228,6 +233,7 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
     ),
     duration,
     closable: true,
+    closeIcon: closeIconToRender,
     onClose,
     onClick,
     key,

@@ -72,3 +72,8 @@ const App = () => (
 
 - Migrating webpack to vite
 - Use `dayjs` instead of `date-fns`
+
+### 0.4.1
+
+- Sync of patches from Ant Design 4.17-alpha.6
+- Add `initials` props to Avatar components

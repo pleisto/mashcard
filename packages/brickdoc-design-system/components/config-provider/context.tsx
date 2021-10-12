@@ -20,7 +20,7 @@ export type DirectionType = 'ltr' | 'rtl' | undefined
 
 export interface ConfigConsumerProps {
   getTargetContainer?: () => HTMLElement
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
+  getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement
   rootPrefixCls?: string
   iconPrefixCls?: string
   getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => string

@@ -44,7 +44,7 @@ const PASSED_PROPS: Array<Exclude<keyof ConfigConsumerProps, 'rootPrefixCls' | '
 
 export interface ConfigProviderProps {
   getTargetContainer?: () => HTMLElement
-  getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
+  getPopupContainer?: (triggerNode?: HTMLElement) => HTMLElement
   prefixCls?: string
   children?: React.ReactNode
   renderEmpty?: RenderEmptyHandler

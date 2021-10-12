@@ -229,7 +229,7 @@
       }
     }
 
-    // cascader
+    // Cascader
     .@{brk-prefix}-cascader-picker {
       &:hover .@{brk-prefix}-cascader-picker-label:hover + .@{brk-prefix}-cascader-input.@{brk-prefix}-input {
         border-color: @error-color;
@@ -241,7 +241,7 @@
       }
     }
 
-    // transfer
+    // Transfer
     .@{brk-prefix}-transfer {
       &-list {
         border-color: @error-color;
@@ -260,7 +260,7 @@
       }
     }
 
-    // RadioGroup
+    // Radio.Group
     .@{brk-prefix}-radio-button-wrapper {
       border-color: @error-color !important;
 
@@ -268,6 +268,15 @@
         &::before {
           background-color: @error-color;
         }
+      }
+    }
+
+    // Mentions
+    .@{brk-prefix}-mentions {
+      border-color: @error-color !important;
+      &-focused,
+      &:focus {
+        .active(@error-color, @error-color-hover, @error-color-outline);
       }
     }
   }

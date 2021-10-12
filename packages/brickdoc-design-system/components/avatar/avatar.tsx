@@ -3,10 +3,10 @@ import classNames from 'classnames'
 import ResizeObserver from 'rc-resize-observer'
 import { composeRef } from 'rc-util/lib/ref'
 import { ConfigContext } from '../config-provider'
-import devWarning from '../_util/devWarning'
 import { Breakpoint, responsiveArray } from '../_util/responsiveObserve'
 import useBreakpoint from '../grid/hooks/useBreakpoint'
 import SizeContext, { AvatarSize } from './SizeContext'
+import { name2Initials, string2Color } from './initials'
 
 export interface AvatarProps {
   /** Shape of avatar, options: `circle`, `square` */
@@ -24,6 +24,8 @@ export interface AvatarProps {
   draggable?: boolean
   /** Icon to be used in avatar */
   icon?: React.ReactNode
+  /** Initials like @microsoft/fluent-ui */
+  initials?: string
   style?: React.CSSProperties
   prefixCls?: string
   className?: string
@@ -94,6 +96,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
     src,
     srcSet,
     icon,
+    initials,
     className,
     alt,
     draggable,
@@ -123,13 +126,6 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
       : {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screens, size])
-
-  devWarning(
-    !(typeof icon === 'string' && icon.length > 2),
-    'Avatar',
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
-    `\`icon\` is using ReactNode instead of string naming in v4. Please check \`${icon}\` at https://ant.design/components/icon`
-  )
 
   const prefixCls = getPrefixCls('avatar', customizePrefixCls)
 
@@ -162,12 +158,16 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
       : {}
 
   let childrenToRender
+  let initialsStyle: React.CSSProperties = {}
   if (typeof src === 'string' && isImgExist) {
     childrenToRender = (
       <img src={src} draggable={draggable} srcSet={srcSet} onError={handleImgLoadError} alt={alt} crossOrigin={crossOrigin} />
     )
   } else if (hasImageElement) {
     childrenToRender = src
+  } else if (initials) {
+    childrenToRender = name2Initials(initials)
+    initialsStyle = { backgroundColor: string2Color(initials) }
   } else if (icon) {
     childrenToRender = icon
   } else if (mounted || scale !== 1) {
@@ -220,7 +220,7 @@ const InternalAvatar: React.ForwardRefRenderFunction<unknown, AvatarProps> = (pr
   return (
     <span
       {...others}
-      style={{ ...sizeStyle, ...responsiveSizeStyle, ...others.style }}
+      style={{ ...sizeStyle, ...responsiveSizeStyle, ...initialsStyle, ...others.style }}
       className={classString}
       ref={avatarNodeMergeRef as any}
     >

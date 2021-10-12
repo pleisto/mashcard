@@ -9,7 +9,6 @@ const ids: RafMap = {}
 
 // Support call raf with delay specified frame
 export default function wrapperRaf(callback: () => void, delayFrames: number = 1): number {
-  // eslint-disable-next-line no-plusplus
   const myId: number = id++
   let restFrames: number = delayFrames
 

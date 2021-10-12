@@ -30,7 +30,6 @@ let maxCount: number
 let rtl = false
 
 export function getKeyThenIncreaseKey() {
-  // eslint-disable-next-line no-plusplus
   return key++
 }
 
@@ -171,7 +170,6 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string): NoticeContent {
 }
 
 function notice(args: ArgsProps): MessageType {
-  // eslint-disable-next-line no-plusplus
   const target = args.key || key++
   const closePromise = new Promise(resolve => {
     const callback = () => {

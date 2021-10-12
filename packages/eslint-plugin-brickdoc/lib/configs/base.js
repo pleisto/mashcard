@@ -24,7 +24,7 @@ module.exports = {
       }
     ],
     'no-alert': 'error',
-    'no-bitwise': 'error',
+    'no-bitwise': 'off',
     'no-var': 'error',
     'no-continue': 'error',
     'no-lonely-if': 'error',
@@ -40,7 +40,7 @@ module.exports = {
     'no-param-reassign': 'error',
     'func-names': ['error', 'as-needed'],
     radix: ['error', 'always'],
-    'no-plusplus': 'error',
+    'no-plusplus': 'off',
     'operator-assignment': 'error',
     'prefer-object-spread': 'error',
     'prefer-arrow-callback': 'error',
