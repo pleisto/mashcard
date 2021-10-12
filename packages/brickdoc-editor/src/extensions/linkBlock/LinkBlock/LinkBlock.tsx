@@ -9,6 +9,7 @@ import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.css'
+import { prependHttp } from '../../helpers/prependHttp'
 
 const attachmentUrlStorage: { [key: string]: string } = {}
 
@@ -53,6 +54,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
   const onUploaded = (data: UploadResultData): void => {
     // external link
     if (data.meta?.source === 'external') {
+      data.url = prependHttp(data.url ?? '')
       extension.options.fetchWebsiteMeta(data.url).then(({ success, data }: { success: boolean; data: WebsiteMeta }) => {
         if (!success) return
         updateLinkBlockAttributes({ ...data }, 'link')

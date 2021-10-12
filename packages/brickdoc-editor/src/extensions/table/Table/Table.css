@@ -97,7 +97,6 @@
 
       & .brickdoc-table-block {
         padding-left: var(--block-padding-left);
-        overflow-x: scroll;
 
         /* remain some spaces for cell shadow */
         padding-bottom: 20px;

@@ -59,7 +59,6 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         sorterOptions={sorterOptions}
         onAdd={addSorter}
         onUpdate={updateSorter}
-        jjj
         onRemove={removeSorter}
         visible={sortVisible}
         onVisibleChange={handleVisibleChange(setSortVisible)}
