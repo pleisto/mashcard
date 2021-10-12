@@ -1,12 +1,18 @@
 .table-block-date-range-cell {
+  --padding: 8px;
+
   height: 100%;
   width: 100%;
-  padding-left: 8px;
+  padding-left: var(--padding);
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #333;
   font-size: 14px;
+  max-width: calc(100% - 2 * var(--padding));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   & .table-date-cell-picker {
     z-index: 2;
