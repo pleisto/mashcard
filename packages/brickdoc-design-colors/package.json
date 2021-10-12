@@ -20,6 +20,6 @@
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
     "esbuild": "^0.13.4",
-    "eslint": "^7.32.0"
+    "eslint": "^8.0.0"
   }
 }
