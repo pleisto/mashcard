@@ -637,7 +637,6 @@ en-US:
     blocks:
       create_pages: Add Pages
       delete: Delete
-      create_sub_block: Create Sub Block
     trash:
       name: Trash
       all_pages: All pages
@@ -671,10 +670,6 @@ en-US:
       view_message: Can view
       view_message_description: Cannot edit or share with others.
       remove_message: Remove
-    sub_blocks:
-      title: Title
-      create:
-        success: Create sub block successfully
     snapshots:
       name: Snapshot
       restore: Restore version
@@ -698,7 +693,9 @@ en-US:
     title:
       add_icon: Add icon
       add_cover: Add cover
-      placeholder: Untitled
+      change_cover: Change cover
+      reposition: Reposition
+      untitled: Untitled
   editor:
     placeholder: Enter Text
     slashmenu:

@@ -63,7 +63,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
     setHardDeleteConfirmLoading(false)
   }
 
-  const title = block.text || 'Untitled'
+  const title = block.text || t('title.untitled')
   const titleData =
     block.pathArray.length === 0 ? (
       <> {title} </>
@@ -71,7 +71,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
       <>
         {title}
         <br />
-        {block.pathArray.map(p => p.text || 'Untitled').join(' / ')}
+        {block.pathArray.map(p => p.text || t('title.untitled')).join(' / ')}
       </>
     )
 
@@ -90,8 +90,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
           className={styles.button}
           onClick={() => {
             setHardDeleteModalVisible(true)
-          }}
-        >
+          }}>
           <Delete />
         </Button>
       </div>
@@ -104,8 +103,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
         confirmLoading={hardDeleteConfirmLoading}
         onCancel={onCancelDelete}
         onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}
-      >
+        visible={hardDeleteModalVisible}>
         {t('trash.delete_confirmation_body')}
       </Modal>
     </>

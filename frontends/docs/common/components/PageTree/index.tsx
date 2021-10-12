@@ -6,6 +6,7 @@ import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '@/docs/pages/hooks/useSyncProvider'
 import { queryPageBlocks } from '../../graphql'
 import styles from './PageTree.module.less'
+import { useDocsI18n } from '../../hooks'
 
 interface PageTreeProps {
   webid: string
@@ -16,6 +17,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
   const { data } = useGetPageBlocksQuery({ variables: { webid } })
   const [blockMove, { loading }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
+  const { t } = useDocsI18n()
 
   if (loading) {
     return <Skeleton active />
@@ -29,7 +31,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
     if (emoji) {
       return `${emoji} ${text}`
     } else if (/^\s*$/.test(text)) {
-      return 'Untitled'
+      return t('title.untitled')
     } else {
       return text
     }

@@ -87,7 +87,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
       renderItem={item => (
         <List.Item className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}>
           <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
-            <span className={styles.title}>{item.name}</span>
+            <span className={styles.title}>{item.name || t('title.untitled')}</span>
             <span className={styles.desc}>{item.relativeTime}</span>
           </Button>
         </List.Item>

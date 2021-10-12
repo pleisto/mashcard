@@ -32,7 +32,7 @@ class Docs::Snapshot < ApplicationRecord
   end
 
   def generate_default_name
-    block.title.presence || "Untitled"
+    block.title.presence || ""
   end
 
   def relative_time
@@ -40,7 +40,7 @@ class Docs::Snapshot < ApplicationRecord
   end
 
   def next_snapshot_name
-    "[Before Restore] #{generate_default_name}"
+    generate_default_name
   end
 
   def blocks

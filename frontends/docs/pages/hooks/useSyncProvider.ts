@@ -4,6 +4,7 @@ import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } fro
 import { JSONContent } from '@tiptap/core'
 import { isNil } from 'lodash-es'
 import { queryPageBlocks } from '@/docs/common/graphql'
+import { useDocsI18n } from '@/docs/common/hooks'
 
 const nodeChildren = (node: Node): Node[] => {
   // TODO Fragment type missing content field
@@ -36,7 +37,7 @@ const nodeToBlock = (node: Node, level: number): BlockInput[] => {
     level === 0 ||
     (node.type.name === 'paragraph' && nodeChildren(node) && nodeChildren(node).length && nodeChildren(node)[0].type.name === 'paragraph')
 
-  const text = level === 0 ? rest.title || 'Untitled' : node.textContent
+  const text = level === 0 ? rest.title || '' : node.textContent
 
   const content: JSONContent[] = hasChildren ? [] : withoutUUID((node.toJSON() as JSONContent).content)
 

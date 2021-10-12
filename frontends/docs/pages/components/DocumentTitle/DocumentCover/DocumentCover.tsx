@@ -3,6 +3,7 @@ import cx from 'classnames'
 import styles from './DocumentCover.module.less'
 import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
+import { useDocsI18n } from '@/docs/common/hooks'
 
 interface DocumentCoverImage extends Omit<BlockImage, '__typename'> {
   type: Blocktype.Image
@@ -25,6 +26,7 @@ export interface DocumentCoverProps {
 
 export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta, popoverProps, editable, getDocCoverUrl, localUrl }) => {
   let value = 'unset'
+  const { t } = useDocsI18n()
 
   if (documentCoverMeta?.type === Blocktype.Color) value = documentCoverMeta.color
   if (documentCoverMeta?.type === Blocktype.Image) {
@@ -48,13 +50,13 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta,
             {documentCoverMeta && (
               <Popover {...popoverProps}>
                 <Button className={styles.button} type="text" disabled={!editable}>
-                  Change cover
+                  {t('title.change_cover')}
                 </Button>
               </Popover>
             )}
             {/* TODO: cover reposition */}
             <Button className={styles.button} type="text" disabled={!editable}>
-              Reposition
+              {t('title.reposition')}
             </Button>
           </>
         )}
