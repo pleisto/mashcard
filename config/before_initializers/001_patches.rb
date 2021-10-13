@@ -9,8 +9,8 @@ Rails.application.reloader.to_prepare do
   ActionDispatch::Routing::Mapper.prepend Patches::ActionDispatch::DrawRoute
 
   ActiveStorage::Blob.class_eval do
-    def real_url
-      Brickdoc::Storage.real_url(self)
+    def real_url(params = {})
+      Brickdoc::Storage.real_url(self, params)
     end
   end
 end

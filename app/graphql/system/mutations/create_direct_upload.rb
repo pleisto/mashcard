@@ -60,7 +60,8 @@ module System
           headers: blob.service_headers_for_direct_upload,
           signed_id: blob.signed_id,
           blob_key: blob.key,
-          view_url: blob.real_url
+          view_url: blob.real_url,
+          download_url: blob.real_url(disposition: "attachment")
         }
       }
     end

@@ -9,6 +9,7 @@ describe System::Mutations::CreateDirectUpload, type: :mutation do
         createDirectUpload(input: $input) {
           directUpload {
             viewUrl
+            downloadUrl
             signedId
           }
         }

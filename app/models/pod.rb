@@ -71,6 +71,7 @@ class Pod < ApplicationRecord
 
     {
       url: avatar.blob.real_url,
+      download_url: avatar.blob.real_url(disposition: "attachment"),
       signed_id: avatar.blob.signed_id
     }
   end

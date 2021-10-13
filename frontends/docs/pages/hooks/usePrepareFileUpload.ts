@@ -60,6 +60,7 @@ export function usePrepareFileUpload(): Exclude<EditorOptions['prepareFileUpload
         blobKey: directUpload.blobKey,
         headers: directUpload.headers,
         signedId: directUpload.signedId,
+        downloadUrl: directUpload.downloadUrl,
         viewUrl: directUpload.viewUrl
       }
     })

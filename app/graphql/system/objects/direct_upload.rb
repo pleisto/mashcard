@@ -9,6 +9,7 @@ module System
       field :blob_key, String, "Created blob record key", null: false
       field :signed_id, String, "Blob signed id", null: false
       field :view_url, String, "View url", null: false
+      field :download_url, String, "Download url", null: false
     end
   end
 end

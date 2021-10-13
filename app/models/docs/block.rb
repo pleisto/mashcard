@@ -70,7 +70,7 @@ class Docs::Block < ApplicationRecord
 
   def blobs
     attachments.map do |blob|
-      { blob_key: blob.key, url: blob.real_url }
+      { blob_key: blob.key, url: blob.real_url, download_url: blob.real_url(disposition: "attachment") }
     end
   end
 

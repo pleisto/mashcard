@@ -18,6 +18,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
         url: uploadMeta.current.blobKey,
         signedId: uploadMeta.current.signedId,
         viewUrl: uploadMeta.current.viewUrl,
+        downloadUrl: uploadMeta.current.downloadUrl,
         meta: {
           name: file.name,
           size: file.size,
@@ -34,7 +35,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
   }, [uppy, pluginOptions])
 
   const input = React.useRef<HTMLInputElement>()
-  const uploadMeta = React.useRef<{ blobKey: string; viewUrl: string; signedId: string }>()
+  const uploadMeta = React.useRef<{ blobKey: string; viewUrl: string; downloadUrl: string; signedId: string }>()
   const addFile = (file: File): void => {
     const descriptor = {
       source: pluginId,
@@ -52,7 +53,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
 
   // TODO: handle error
   const handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers, blobKey, viewUrl, signedId } = await pluginOptions.prepareFileUpload(
+    const { endpoint, headers, blobKey, viewUrl, signedId, downloadUrl } = await pluginOptions.prepareFileUpload(
       pluginOptions.blockId,
       pluginOptions.fileType,
       file
@@ -60,7 +61,8 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
     uploadMeta.current = {
       blobKey,
       viewUrl,
-      signedId
+      signedId,
+      downloadUrl
     }
     uppy.getPlugin('XHRUpload').setOptions({
       endpoint,

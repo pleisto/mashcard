@@ -445,6 +445,8 @@ export type DirectUpload = {
   __typename?: 'DirectUpload'
   /** Created blob record key */
   blobKey: Scalars['String']
+  /** Download url */
+  downloadUrl: Scalars['String']
   /** HTTP request headers (JSON-encoded) */
   headers: Scalars['JSON']
   /** Blob signed id */
@@ -1028,6 +1030,8 @@ export type UserSignOutPayload = {
 
 export type Avatar = {
   __typename?: 'avatar'
+  /** download url */
+  downloadUrl: Scalars['String']
   /** signed id */
   signedId: Scalars['String']
   /** url */
@@ -1039,6 +1043,8 @@ export type Blob = {
   __typename?: 'blob'
   /** Blob key */
   blobKey: Scalars['String']
+  /** Blob url */
+  downloadUrl: Scalars['String']
   /** Blob url */
   url: Scalars['String']
 }
@@ -1362,7 +1368,15 @@ export type CreateDirectUploadMutation = {
   createDirectUpload?:
     | {
         __typename?: 'CreateDirectUploadPayload'
-        directUpload: { __typename?: 'DirectUpload'; uploadUrl: string; headers: any; blobKey: string; viewUrl: string; signedId: string }
+        directUpload: {
+          __typename?: 'DirectUpload'
+          uploadUrl: string
+          headers: any
+          blobKey: string
+          viewUrl: string
+          downloadUrl: string
+          signedId: string
+        }
       }
     | null
     | undefined
@@ -1380,7 +1394,7 @@ export type GetPodsQuery = {
     personal: boolean
     inviteEnable: boolean
     bio?: string | null | undefined
-    avatarData?: { __typename?: 'avatar'; url: string; signedId: string } | null | undefined
+    avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null | undefined
   }>
 }
 
@@ -1399,7 +1413,7 @@ export type GetPodQuery = {
     inviteEnable: boolean
     inviteSecret?: string | null | undefined
     bio?: string | null | undefined
-    avatarData?: { __typename?: 'avatar'; url: string; signedId: string } | null | undefined
+    avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null | undefined
   }
 }
 
@@ -1415,7 +1429,7 @@ export type GetPodUsersQuery = {
         name: string
         role: MemberRole
         state: MemberState
-        avatarData?: { __typename?: 'avatar'; url: string; signedId: string } | null | undefined
+        avatarData?: { __typename?: 'avatar'; url: string; downloadUrl: string; signedId: string } | null | undefined
       }>
     | null
     | undefined
@@ -1771,7 +1785,7 @@ export type GetChildrenBlocksQuery = {
         text: string
         content: Array<any>
         data: any
-        blobs?: Array<{ __typename?: 'blob'; blobKey: string; url: string }> | null | undefined
+        blobs?: Array<{ __typename?: 'blob'; blobKey: string; downloadUrl: string; url: string }> | null | undefined
         meta: {
           __typename?: 'BlockMeta'
           title?: string | null | undefined
@@ -2405,6 +2419,7 @@ export const CreateDirectUploadDocument = gql`
         headers
         blobKey
         viewUrl
+        downloadUrl
         signedId
       }
     }
@@ -2448,6 +2463,7 @@ export const GetPodsDocument = gql`
       inviteEnable
       avatarData {
         url
+        downloadUrl
         signedId
       }
       bio
@@ -2492,6 +2508,7 @@ export const GetPodDocument = gql`
       inviteSecret
       avatarData {
         url
+        downloadUrl
         signedId
       }
       bio
@@ -2536,6 +2553,7 @@ export const GetPodUsersDocument = gql`
       state
       avatarData {
         url
+        downloadUrl
         signedId
       }
     }
@@ -3545,6 +3563,7 @@ export const GetChildrenBlocksDocument = gql`
       rootId
       blobs {
         blobKey
+        downloadUrl
         url
       }
       type

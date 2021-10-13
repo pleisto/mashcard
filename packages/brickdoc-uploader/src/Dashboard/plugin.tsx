@@ -20,6 +20,7 @@ export interface UploadResultData {
   action: 'add' | 'remove'
   signedId?: string
   viewUrl?: string
+  downloadUrl?: string
   url?: string
   emoji?: EmojiMeta
   color?: string
@@ -64,7 +65,7 @@ export interface DashboardPluginOptions {
     blockId: string,
     type: 'image' | 'pdf',
     file: any
-  ) => Promise<{ endpoint: string; headers: any; blobKey: string; signedId: string; viewUrl: string }>
+  ) => Promise<{ endpoint: string; headers: any; blobKey: string; signedId: string; downloadUrl: string; viewUrl: string }>
   fetchUnsplashImages?: (query: string, page: number, perPage: number) => Promise<{ success: boolean; data: UnsplashImage[] }>
   fileType: 'image' | 'pdf'
   importSources: ImportSourceOption[]
@@ -96,6 +97,7 @@ export class DashboardPlugin extends Plugin {
 
   blobKey: string
   viewUrl: string
+  downloadUrl: string
   signedId: string
 
   unsplashPage: number
@@ -263,6 +265,7 @@ export class DashboardPlugin extends Plugin {
       url: this.blobKey,
       signedId: this.signedId,
       viewUrl: this.viewUrl,
+      downloadUrl: this.downloadUrl,
       meta: {
         source: 'origin'
       }
@@ -275,7 +278,7 @@ export class DashboardPlugin extends Plugin {
 
   // TODO: handle error
   handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers, blobKey, viewUrl, signedId } = await this.opts.prepareFileUpload?.(
+    const { endpoint, headers, blobKey, viewUrl, signedId, downloadUrl } = await this.opts.prepareFileUpload?.(
       this.opts.blockId,
       this.opts.fileType,
       file
@@ -283,6 +286,7 @@ export class DashboardPlugin extends Plugin {
     this.blobKey = blobKey
     this.viewUrl = viewUrl
     this.signedId = signedId
+    this.downloadUrl = downloadUrl
     this.uppy.getPlugin('XHRUpload').setOptions({
       endpoint,
       headers

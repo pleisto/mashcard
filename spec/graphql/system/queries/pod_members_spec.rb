@@ -15,6 +15,7 @@ describe System::Queries::PodMembers, type: :query do
           avatarData {
             url
             signedId
+            downloadUrl
           }
         }
       }

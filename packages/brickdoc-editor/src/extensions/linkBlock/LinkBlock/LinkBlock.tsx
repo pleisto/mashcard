@@ -66,8 +66,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
       return
     }
 
-    attachmentUrlStorage[node.attrs.uuid] = data.viewUrl ?? ''
-    setAttachmentUrl(data.viewUrl ?? '')
+    attachmentUrlStorage[node.attrs.uuid] = data.downloadUrl ?? ''
+    setAttachmentUrl(data.downloadUrl ?? '')
     updateLinkBlockAttributes(
       { key: data.url, source: data.meta?.source.toUpperCase(), size: data.meta?.size, name: data.meta?.name },
       'attachment'
@@ -122,8 +122,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
-                  }}
-                >
+                  }}>
                   <Icon.Delete />
                   {t('link_block.delete')}
                 </Menu.Item>
@@ -132,8 +131,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   {t('link_block.copy_link')}
                 </Menu.Item>
               </Menu>
-            }
-          >
+            }>
             <Button type="text" className="link-block-menu-button" onClick={event => event.stopPropagation()}>
               <Icon.More className="link-block-menu-icon" />
             </Button>
@@ -170,8 +168,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             importSources={importSources}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
-        }
-      >
+        }>
         <Button type="text" className="brickdoc-link-block-placeholder">
           <Icon.BlockLevelLink className="link-block-icon" />
           <div className="link-block-hint">{t('link_block.hint')}</div>

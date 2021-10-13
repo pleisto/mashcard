@@ -10,6 +10,7 @@ export const queryPods = gql`
       inviteEnable
       avatarData {
         url
+        downloadUrl
         signedId
       }
       bio
@@ -28,6 +29,7 @@ export const queryPod = gql`
       inviteSecret
       avatarData {
         url
+        downloadUrl
         signedId
       }
       bio
@@ -45,6 +47,7 @@ export const queryPodUsers = gql`
       state
       avatarData {
         url
+        downloadUrl
         signedId
       }
     }

@@ -5,6 +5,7 @@ module System
       graphql_name 'avatar'
 
       field :signed_id, String, 'signed id', null: false
+      field :download_url, String, 'download url', null: false
       field :url, String, 'url', null: false
     end
   end

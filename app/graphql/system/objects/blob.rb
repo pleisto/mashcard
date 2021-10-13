@@ -7,6 +7,7 @@ module System
 
       field :blob_key, String, 'Blob key', null: false
       field :url, String, 'Blob url', null: false
+      field :download_url, String, 'Blob url', null: false
     end
   end
 end

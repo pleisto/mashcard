@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   github
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   google_oauth2
 }
@@ -797,6 +797,11 @@ type DirectUpload {
   blobKey: String!
 
   """
+  Download url
+  """
+  downloadUrl: String!
+
+  """
   HTTP request headers (JSON-encoded)
   """
   headers: JSON!
@@ -1110,6 +1115,7 @@ type RootMutation {
   ): UpdateMemberPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -1120,6 +1126,7 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -1130,6 +1137,7 @@ type RootMutation {
   ): UserCreatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -1140,6 +1148,7 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -1150,6 +1159,7 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -1160,6 +1170,7 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(
@@ -1668,6 +1679,11 @@ type UserSignOutPayload {
 
 type avatar {
   """
+  download url
+  """
+  downloadUrl: String!
+
+  """
   signed id
   """
   signedId: String!
@@ -1686,6 +1702,11 @@ type blob {
   Blob key
   """
   blobKey: String!
+
+  """
+  Blob url
+  """
+  downloadUrl: String!
 
   """
   Blob url

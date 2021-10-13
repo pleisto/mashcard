@@ -14,6 +14,7 @@ describe System::Queries::Pods, type: :query do
           avatarData {
             url
             signedId
+            downloadUrl
           }
           bio
         }

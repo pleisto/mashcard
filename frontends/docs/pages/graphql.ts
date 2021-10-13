@@ -61,6 +61,7 @@ export const queryChildrenBlocks = gql`
       rootId
       blobs {
         blobKey
+        downloadUrl
         url
       }
       type

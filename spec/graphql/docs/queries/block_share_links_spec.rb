@@ -17,6 +17,7 @@ describe Docs::Queries::BlockShareLinks, type: :query do
             avatarData {
               url
               signedId
+              downloadUrl
             }
           }
         }

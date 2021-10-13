@@ -14,8 +14,9 @@ describe System::Queries::Pod, type: :query do
           inviteEnable
           inviteSecret
           avatarData {
-              url
-              signedId
+            url
+            signedId
+            downloadUrl
           }
           bio
         }
