@@ -660,6 +660,7 @@ en-US:
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: Invite
       copy: Copy
+      copy_hint: Share link copied
     invite:
       learn: Learn how to invite people and set permissions
       type_hint: Type or paste in Email above, separated by commas.

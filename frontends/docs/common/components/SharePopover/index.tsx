@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect } from 'react'
 import cx from 'classnames'
-import { Button, Input, Icon, List, Popover, Switch } from '@brickdoc/design-system'
+import { Button, Input, Icon, List, Popover, Switch, message } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { InviteModal } from '../InviteModal'
 import {
@@ -86,8 +86,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
   const { host } = useContext(BrickdocContext)
 
   const link = `${host}/${webid}/p/${blockId}`
-  const handleCopy = (): void => {
-    void navigator.clipboard.writeText(link)
+  const handleCopy = async (): Promise<void> => {
+    await navigator.clipboard.writeText(link)
+    void message.success(t('share.copy_hint'))
   }
 
   const allowEditContent = shareWithAnonymousValue ? (
