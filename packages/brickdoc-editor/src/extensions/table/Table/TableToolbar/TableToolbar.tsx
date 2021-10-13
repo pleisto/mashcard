@@ -1,12 +1,14 @@
 import React from 'react'
 import { Column } from 'react-table'
-import { Button, Icon } from '@brickdoc/design-system'
+import { Button, Icon, Input } from '@brickdoc/design-system'
 import { useEditorI18n } from '../../../../hooks'
 import { Filter, FilterOption, FilterGroupOption } from './Filter'
 import { Sorter, SorterOption } from './Sorter'
 import './TableToolbar.css'
 
 export interface TableToolbarProps {
+  title: string
+  setTitle: (title: string) => void
   onAddNewRow: VoidFunction
   columns: Array<Column<object>>
   filterGroup: FilterGroupOption
@@ -21,6 +23,8 @@ export interface TableToolbarProps {
 }
 
 export const TableToolbar: React.FC<TableToolbarProps> = ({
+  title,
+  setTitle,
   columns,
   onAddNewRow,
   filterGroup,
@@ -43,6 +47,10 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
       setter(visible)
     }
 
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setTitle(event.target.value)
+  }
+
   return (
     <Filter
       columns={columns}
@@ -64,6 +72,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         onVisibleChange={handleVisibleChange(setSortVisible)}
       >
         <div role="toolbar" className="table-block-toolbar">
+          <Input className="table-title-input" placeholder={t('table.untitled')} value={title} onChange={handleTitleChange} />
           <div className="table-toolbar-actions">
             <Button onClick={() => setFilterVisible(true)} type="text" className="table-toolbar-text-button">
               {t('table.filter.text')}

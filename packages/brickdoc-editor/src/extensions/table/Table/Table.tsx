@@ -1,5 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
+import { v4 as uuid } from 'uuid'
 import { NodeViewProps } from '@tiptap/react'
 import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps } from 'react-table'
 import { Modal, Icon } from '@brickdoc/design-system'
@@ -60,7 +61,20 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
 
   const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
 
-  const [tableRows, { fetchRows, addRow, updateRow, removeRow }] = useDatabaseRows(parentId)
+  const [tableRows, { fetchRows, addRow, updateRow, removeRow, setRowsState }] = useDatabaseRows(parentId)
+
+  if (columns.length === 0 && tableRows.length === 0) {
+    addNewColumn()
+    addNewColumn()
+    const newRows = [
+      { id: uuid(), sort: 0 },
+      { id: uuid(), sort: 1 },
+      { id: uuid(), sort: 2 }
+    ]
+    newRows.forEach(row => updateRow(row, false))
+    setRowsState(newRows)
+    fetched.current = true
+  }
 
   React.useEffect(() => {
     if (!fetched.current) {
@@ -122,6 +136,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     }
   )
 
+  const setTitle = (title: string): void => updateAttributeData({ title })
+
   return (
     <BlockWrapper
       editor={editor}
@@ -135,6 +151,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
       {contextHolder}
       {fetched.current && (
         <TableToolbar
+          title={prevData.title}
+          setTitle={setTitle}
           onAddNewRow={addNewRow}
           columns={columns}
           filterGroup={filterGroup}

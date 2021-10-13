@@ -6,20 +6,17 @@ describe('SlashCommandsMenu', () => {
     const iconText = 'icon'
     const items = [
       {
-        title: 'H1',
-        desc: 'h1',
+        key: 'h1',
         icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
-        title: 'H2',
-        desc: 'h2',
+        key: 'h2',
         icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
-        title: 'H3',
-        desc: 'h3',
+        key: 'h3',
         icon: <div>{iconText}</div>,
         command: () => {}
       }
@@ -33,20 +30,17 @@ describe('SlashCommandsMenu', () => {
     const iconText = 'icon'
     const items = [
       {
-        title: 'H1',
-        desc: 'h1',
+        key: 'h1',
         icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
-        title: 'H2',
-        desc: 'h2',
+        key: 'h2',
         icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
-        title: 'H3',
-        desc: 'h3',
+        key: 'h3',
         icon: <div>{iconText}</div>,
         command: () => {}
       }
@@ -60,8 +54,6 @@ describe('SlashCommandsMenu', () => {
     expect(menuItems).toHaveLength(3)
 
     items.forEach((item, index) => {
-      expect(menuItems[index]).toHaveTextContent(item.title)
-      expect(menuItems[index]).toHaveTextContent(item.desc)
       expect(menuItems[index]).toHaveTextContent(iconText)
     })
   })
@@ -70,20 +62,17 @@ describe('SlashCommandsMenu', () => {
     const iconText = 'icon'
     const items = [
       {
-        title: 'H1',
-        desc: 'h1',
+        key: 'h1',
         icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
-        title: 'H2',
-        desc: 'h2',
+        key: 'h2',
         icon: <div>{iconText}</div>,
         command: () => {}
       },
       {
-        title: 'H3',
-        desc: 'h3',
+        key: 'h3',
         icon: <div>{iconText}</div>,
         command: () => {}
       }
@@ -108,14 +97,12 @@ describe('SlashCommandsMenu', () => {
     const mockCommand = jest.fn()
     const items = [
       {
-        title: 'H1',
-        desc: 'h1',
+        key: 'h1',
         icon: <div>icon</div>,
         command: () => {}
       },
       {
-        title: 'H2',
-        desc: 'h2',
+        key: 'h2',
         icon: <div>icon</div>,
         command: () => {}
       }
@@ -136,14 +123,12 @@ describe('SlashCommandsMenu', () => {
   it('hovers on menu item will change active index', () => {
     const items = [
       {
-        title: 'H1',
-        desc: 'h1',
+        key: 'h1',
         icon: <div>icon</div>,
         command: () => {}
       },
       {
-        title: 'H2',
-        desc: 'h2',
+        key: 'h2',
         icon: <div>icon</div>,
         command: () => {}
       }

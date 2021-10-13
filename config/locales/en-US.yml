@@ -799,6 +799,7 @@ en-US:
           button_text: Embed PDF
           button_hint: Embed a PDF file
     table:
+      untitled: Untitled
       new_row:
         text: New
       remove_row:

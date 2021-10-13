@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { Table } from './Table'
@@ -31,6 +30,7 @@ export interface TableExtensionOptions {
       addRow: (rowIndex?: number) => DatabaseRow
       updateRow: (row: DatabaseRow, updateState?: boolean) => void
       removeRow: (rowId: string) => void
+      setRowsState: (rows: DatabaseRows) => void
     }
   ]
 }
@@ -56,13 +56,7 @@ export const TableBlockExtension = Node.create<TableBlockOptions>({
     return {
       data: {
         default: {
-          columns: [
-            {
-              title: 'Task name',
-              type: 'text',
-              key: uuid()
-            }
-          ]
+          columns: []
         }
       }
     }

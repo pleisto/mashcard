@@ -41,11 +41,22 @@
             margin-left: 8px;
           }
 
+          & .table-title-input {
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            &:hover {
+              border: none;
+              box-shadow: none;
+            }
+            &:focus {
+              border: none;
+              box-shadow: none;
+            }
+          }
+
           & .table-toolbar-actions {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
             opacity: 0;
             transition: opacity 300ms ease-in-out;
             display: flex;

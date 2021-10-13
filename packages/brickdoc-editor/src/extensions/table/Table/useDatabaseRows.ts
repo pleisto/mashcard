@@ -26,13 +26,16 @@ export const useDatabaseRows: TableExtensionOptions['useDatabaseRows'] = (parent
     setDatabaseRows(databaseRows.filter(row => row.id !== rowId))
   }
 
+  const setRowsState = React.useCallback((rows: DatabaseRows): void => setDatabaseRows(rows), [setDatabaseRows])
+
   return [
     databaseRows,
     {
       fetchRows,
       addRow,
       updateRow,
-      removeRow
+      removeRow,
+      setRowsState
     }
   ]
 }

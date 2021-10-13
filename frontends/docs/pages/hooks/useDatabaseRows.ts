@@ -26,6 +26,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
     addRow: (rowIndex?: number) => DatabaseRow
     updateRow: (row: DatabaseRow, updateState?: boolean) => void
     removeRow: (rowId: string) => void
+    setRowsState: (rows: DatabaseRows) => void
   }
 ] {
   return function useDatabaseRows(parentId: string) {
@@ -96,13 +97,16 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
       [databaseRows, setDatabaseRows, blockSoftDelete]
     )
 
+    const setRowsState = React.useCallback((rows: DatabaseRows): void => setDatabaseRows(rows), [setDatabaseRows])
+
     return [
       databaseRows,
       {
         fetchRows,
         addRow,
         updateRow,
-        removeRow
+        removeRow,
+        setRowsState
       }
     ]
   }

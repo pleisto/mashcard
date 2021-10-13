@@ -65,7 +65,7 @@ export function useColumns(options: { databaseColumns: DatabaseColumns; updateAt
       ...prevColumns,
       {
         key: uuid(),
-        title: `${t('table.column_default_name')}${prevColumns.length}`,
+        title: `${t('table.column_default_name')}${prevColumns.length + 1}`,
         type: 'text',
         index: prevColumns.length
       }
