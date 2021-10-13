@@ -13,9 +13,20 @@ module Docs
 
       {
         title: block.title,
+        pin: fetch_pin(block),
         is_deleted: !!block.deleted_at,
         permission: permission(block)
       }
+    end
+
+    def fetch_pin(block)
+      return false if current_pod.fetch('webid') == Pod::ANONYMOUS_WEBID
+
+      pin = Docs::Pin.find_by(user_id: current_user.id, pod_id: current_pod.fetch('id'), block_id: block.id)
+
+      return false if pin.nil? || pin.deleted_at
+
+      true
     end
 
     def permission(block)

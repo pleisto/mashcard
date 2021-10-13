@@ -7,11 +7,12 @@ import {
   BlockSoftDeleteInput,
   Scalars,
   useBlockCreateMutation,
-  useBlockRenameMutation
+  useBlockRenameMutation,
+  useBlockPinOrUnpinMutation
 } from '@/BrickdocGraphQL'
-import { queryPageBlocks } from '../../graphql'
-import { queryChildrenBlocks } from '@/docs/pages/graphql'
-import { Add, Delete, Edit, Link as LinkIcon, More } from '@brickdoc/design-system/components/icon'
+import { queryBlockPins, queryPageBlocks } from '../../graphql'
+import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
+import { Add, CheckOneFill, Delete, Edit, Link as LinkIcon, More, Star } from '@brickdoc/design-system/components/icon'
 import styles from './styles.module.less'
 import { BrickdocContext } from '@/BrickdocPWA'
 
@@ -21,11 +22,13 @@ interface PageMenuProps {
   webid: string
   id: UUID
   title: Scalars['String']
+  enableMenu: boolean
   titleText: string
+  pin: boolean
   docid: string | undefined
 }
 
-export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, title, titleText }) => {
+export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enableMenu, title, titleText }) => {
   const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks, queryChildrenBlocks] })
   const history = useHistory()
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
@@ -35,8 +38,12 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, title, tit
     refetchQueries: [queryPageBlocks]
   })
 
-  const [blockRename, { loading: renameBlockLoading, client }] = useBlockRenameMutation({
+  const [blockRename, { loading: renameBlockLoading, client: renameClient }] = useBlockRenameMutation({
     refetchQueries: [queryPageBlocks]
+  })
+
+  const [blockPinOrUnpin, { client: pinClient }] = useBlockPinOrUnpinMutation({
+    refetchQueries: [queryBlockPins]
   })
 
   const deletePage = async (id: UUID): Promise<void> => {
@@ -66,12 +73,25 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, title, tit
   const onRename = async (e: any): Promise<void> => {
     const input = { id, title: e.target.value }
     await blockRename({ variables: { input } })
-
     if (id === docid) {
-      await client.refetchQueries({ include: [queryChildrenBlocks] })
+      await renameClient.refetchQueries({ include: [queryChildrenBlocks] })
     }
-
     setPopoverVisible(false)
+  }
+
+  const doCopyLink = async (): Promise<void> => {
+    await navigator.clipboard.writeText(link)
+    void message.success(t('blocks.copy_link_hint'))
+    setDropdownVisible(false)
+  }
+
+  const doFavorite = async (): Promise<void> => {
+    const input = { blockId: id, pin: !pin }
+    await blockPinOrUnpin({ variables: { input } })
+    if (id === docid) {
+      await pinClient.refetchQueries({ include: [queryBlockInfo] })
+    }
+    setDropdownVisible(false)
   }
 
   const inputRef = React.useRef<any>(null)
@@ -94,13 +114,14 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, title, tit
           void deletePage(id)
           break
         case 'copy_link':
-          await navigator.clipboard.writeText(link)
-          void message.success(t('blocks.copy_link_hint'))
-          setDropdownVisible(false)
+          void doCopyLink()
           break
         case 'rename':
           // TODO focus and select all
           // inputRef.current.focus({ preventScroll: true })
+          break
+        case 'favorite':
+          void doFavorite()
           break
         default:
           console.log(`unknown key ${key}`)
@@ -124,6 +145,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, title, tit
       <Menu.Item key="copy_link" icon={<LinkIcon />}>
         {t('blocks.copy_link')}
       </Menu.Item>
+      <Menu.Item key="favorite" icon={pin ? <CheckOneFill /> : <Star />}>
+        {t(pin ? 'pin.remove' : 'pin.add')}
+      </Menu.Item>
       <Menu.Item key="rename" icon={<Edit />}>
         <Popover
           content={renamePopoverContent}
@@ -141,11 +165,20 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, title, tit
     </Menu>
   )
 
+  const linkData = <Link to={`/${webid}/p/${id}`}>{title}</Link>
+  if (!enableMenu) {
+    return (
+      <>
+        <div className={styles.menu}>{linkData}</div>
+      </>
+    )
+  }
+
   return (
     <>
       <Dropdown trigger={['contextMenu']} overlay={menu} visible={dropdownVisible} onVisibleChange={setDropdownVisible}>
         <div className={styles.menu}>
-          <Link to={`/${webid}/p/${id}`}>{title}</Link>
+          {linkData}
           <Tooltip title={t('blocks.more')}>
             <Button className={styles.moreBtn} type="text" onClick={onClickAddButton}>
               <More />

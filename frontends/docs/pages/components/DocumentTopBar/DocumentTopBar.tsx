@@ -1,3 +1,4 @@
+import { PinMenu } from '@/docs/common/components/PinMenu'
 import { Button } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
@@ -17,6 +18,7 @@ export interface DocumentTopBarProps {
   isAnonymous: boolean
   title: string
   isDeleted: boolean
+  pin: boolean
 }
 
 export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
@@ -25,6 +27,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
   saving,
   viewable,
   title,
+  pin,
   isDeleted,
   isAnonymous,
   editable,
@@ -42,9 +45,10 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
   }
 
   const editableMenu =
-    shareable && !isDeleted ? (
+    shareable && !isDeleted && docid ? (
       <div className={styles.menu}>
         <ShareMenu className={styles.menuItem} id={docid} webid={webid} />
+        <PinMenu className={styles.menuItem} id={docid} pin={pin} webid={webid} />
         <MoreMenu className={styles.menuItem} id={docid} webid={webid} />
       </div>
     ) : (

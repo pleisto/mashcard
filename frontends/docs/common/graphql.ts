@@ -38,8 +38,8 @@ export const queryPod = gql`
   }
 `
 
-export const queryPodUsers = gql`
-  query GetPodUsers {
+export const queryPodMembers = gql`
+  query GetPodMembers {
     podMembers {
       webid
       email
@@ -50,6 +50,30 @@ export const queryPodUsers = gql`
         url
         downloadUrl
         signedId
+      }
+    }
+  }
+`
+
+export const queryBlockPins = gql`
+  query GetBlockPins {
+    blockPins {
+      blockId
+      text
+      meta {
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+          }
+
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
       }
     }
   }
@@ -266,6 +290,14 @@ export const BlockHardDelete = gql`
 export const BlockRestore = gql`
   mutation blockRestore($input: BlockRestoreInput!) {
     blockRestore(input: $input) {
+      errors
+    }
+  }
+`
+
+export const BlockPinOrUnpin = gql`
+  mutation blockPinOrUnpin($input: BlockPinOrUnpinInput!) {
+    blockPinOrUnpin(input: $input) {
       errors
     }
   }

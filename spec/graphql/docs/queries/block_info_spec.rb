@@ -9,6 +9,7 @@ describe Docs::Queries::BlockInfo, type: :query do
         blockInfo(id: $id) {
           title
           isDeleted
+          pin
           permission {
             key
             policy
@@ -27,17 +28,17 @@ describe Docs::Queries::BlockInfo, type: :query do
 
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "isDeleted" => false, "permission" => nil } })
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
 
       block.soft_delete!
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "isDeleted" => true, "permission" => nil } })
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => true, "permission" => nil } })
 
       block.restore!
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "isDeleted" => false, "permission" => nil } })
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
 
       block.soft_delete!
       block.hard_delete!
@@ -58,7 +59,34 @@ describe Docs::Queries::BlockInfo, type: :query do
 
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "isDeleted" => false, "permission" => nil } })
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
+
+      self.current_user = nil
+      self.current_pod = nil
+    end
+
+    it 'self pin' do
+      user = create(:accounts_user)
+      self.current_user = user
+      pod = user.personal_pod
+      self.current_pod = pod.as_session_context
+      block = create(:docs_block, pod: pod, collaborators: [user.id])
+
+      internal_graphql_execute(query, { id: block.id })
+      expect(response.success?).to be true
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
+
+      pin = Docs::Pin.create!(user_id: user.id, pod_id: pod.id, block_id: block.id)
+
+      internal_graphql_execute(query, { id: block.id })
+      expect(response.success?).to be true
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => true, "isDeleted" => false, "permission" => nil } })
+
+      pin.update!(deleted_at: Time.current)
+
+      internal_graphql_execute(query, { id: block.id })
+      expect(response.success?).to be true
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
 
       self.current_user = nil
       self.current_pod = nil
@@ -76,7 +104,7 @@ describe Docs::Queries::BlockInfo, type: :query do
 
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "isDeleted" => false, "permission" => nil } })
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
 
       block.upsert_share_links!([webid: user.webid, state: 'enabled', policy: 'view'])
 
@@ -99,7 +127,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       block = create(:docs_block, pod: owner.personal_pod, collaborators: [owner.id])
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "isDeleted" => false, "permission" => nil } })
+      expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "pin" => false, "isDeleted" => false, "permission" => nil } })
 
       block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'edit'])
 

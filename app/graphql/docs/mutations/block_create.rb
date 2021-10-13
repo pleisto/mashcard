@@ -12,7 +12,7 @@ module Docs
         result = block.create_sub_block!(args[:title])
       else
         pod_id = current_pod.fetch('id')
-        max_sort = Docs::Block.non_deleted.where(pod_id: pod_id, type: 'doc', page: true, parent_id: nil).maximum(:sort) || 0
+        max_sort = Docs::Block.non_deleted.pageable.where(pod_id: pod_id, parent_id: nil).maximum(:sort) || 0
         result = Docs::Block.create!(
           data: {},
           content: [],

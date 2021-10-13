@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_124328) do
+ActiveRecord::Schema.define(version: 2021_10_13_081045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -149,6 +149,16 @@ ActiveRecord::Schema.define(version: 2021_10_11_124328) do
     t.datetime "deleted_at"
     t.index ["block_id", "history_version"], name: "index_docs_histories_on_block_id_and_history_version", unique: true, comment: "history identifier"
     t.index ["pod_id"], name: "index_docs_histories_on_pod_id"
+  end
+
+  create_table "docs_pins", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pod_id", null: false
+    t.uuid "block_id", null: false
+    t.datetime "deleted_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "pod_id", "block_id"], name: "index_docs_pins_on_user_id_and_pod_id_and_block_id", unique: true
   end
 
   create_table "docs_share_links", force: :cascade do |t|

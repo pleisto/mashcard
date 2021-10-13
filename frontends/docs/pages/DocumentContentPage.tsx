@@ -24,6 +24,7 @@ export const DocumentContentPage: React.FC = () => {
 
   const isAnonymous = !currentUser
 
+  const pin = !!data?.blockInfo?.pin
   const shareable = isMine
   const editable = isMine || policy === Policytype.Edit
   const realEditable = editable && !isAnonymous
@@ -41,6 +42,7 @@ export const DocumentContentPage: React.FC = () => {
         title={title}
         docid={docid}
         webid={webid}
+        pin={pin}
         shareable={shareable}
         saving={committing}
       />

@@ -42,6 +42,7 @@ export const queryBlockInfo = gql`
     blockInfo(id: $id) {
       title
       isDeleted
+      pin
       permission {
         key
         policy
