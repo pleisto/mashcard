@@ -120,7 +120,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
         icon: null,
         onOk: () => {
           const position = getPos()
-          const range = { from: position, to: position + 1 }
+          const range = { from: position, to: position + node.nodeSize }
           editor.commands.deleteRange(range)
         }
       })

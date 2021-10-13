@@ -82,7 +82,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
         icon: null,
         onOk: () => {
           const position = getPos()
-          const range = { from: position, to: position + 1 }
+          const range = { from: position, to: position + node.nodeSize }
           editor.commands.deleteRange(range)
         }
       })

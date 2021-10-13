@@ -105,6 +105,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     & .link-block-menu-icon {
       color: #292333;
@@ -182,4 +183,32 @@
     padding: 0;
     color: unset;
   }
+}
+
+.link-block-menu-popover {
+  z-index: 999;
+
+  & .brk-popover-arrow {
+    display: none;
+  }
+
+  & .brk-popover-inner-content {
+    padding: 0;
+    border-radius: 0.8rem;
+  }
+
+  & .brk-menu-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    line-height: 20px;
+
+    & .brk-icon {
+      margin-right: 0.8rem;
+    }
+  }
+}
+
+.image-section-menu {
+  border-radius: 0.8rem;
+  width: 24rem;
 }

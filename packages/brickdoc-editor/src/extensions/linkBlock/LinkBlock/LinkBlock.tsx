@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { Button, Popover, Icon, Menu } from '@brickdoc/design-system'
+import { Button, Popover, Icon, Menu, Modal, message } from '@brickdoc/design-system'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import { WebsiteMeta } from '..'
 import { BlockWrapper } from '../../BlockWrapper'
@@ -99,11 +99,24 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     const { title, description, cover } = node.attrs.link
 
     const handleDelete = (): void => {
-      const from = getPos()
-      editor.commands.deleteRange({ from, to: from + node.nodeSize })
+      Modal.confirm({
+        title: t('link_block.deletion_confirm.title'),
+        okText: t('link_block.deletion_confirm.ok'),
+        okButtonProps: {
+          danger: true
+        },
+        cancelText: t('link_block.deletion_confirm.cancel'),
+        icon: null,
+        onOk: () => {
+          const position = getPos()
+          const range = { from: position, to: position + node.nodeSize }
+          editor.commands.deleteRange(range)
+        }
+      })
     }
-    const handleCopy = (): void => {
-      void navigator.clipboard.writeText(linkUrl)
+    const handleCopy = async (): Promise<void> => {
+      await navigator.clipboard.writeText(linkUrl)
+      void message.success(t('link_block.copy_hint'))
     }
     return (
       <BlockWrapper editor={editor}>
@@ -116,22 +129,25 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
           </div>
           <Popover
             trigger="click"
+            overlayClassName="link-block-menu-popover"
             content={
               <Menu onClick={event => event.domEvent.stopPropagation()}>
                 <Menu.Item
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
-                  }}>
+                  }}
+                >
                   <Icon.Delete />
-                  {t('link_block.delete')}
+                  {t('link_block.menu.delete')}
                 </Menu.Item>
                 <Menu.Item onClick={handleCopy}>
                   <Icon.Copy />
-                  {t('link_block.copy_link')}
+                  {t('link_block.menu.copy')}
                 </Menu.Item>
               </Menu>
-            }>
+            }
+          >
             <Button type="text" className="link-block-menu-button" onClick={event => event.stopPropagation()}>
               <Icon.More className="link-block-menu-icon" />
             </Button>
@@ -168,7 +184,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             importSources={importSources}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-link-block-placeholder">
           <Icon.BlockLevelLink className="link-block-icon" />
           <div className="link-block-hint">{t('link_block.hint')}</div>
