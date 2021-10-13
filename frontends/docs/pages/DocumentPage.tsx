@@ -161,7 +161,9 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
       {docid && deleted && <TrashPrompt webid={webid} docid={docid} />}
       <div className={styles.page}>
         {DocumentTitleElement}
-        <EditorContent editor={editor} />
+        <div className={styles.pageWrap}>
+          <EditorContent editor={editor} />
+        </div>
       </div>
     </>
   )

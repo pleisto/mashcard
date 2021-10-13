@@ -57,7 +57,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
   })
 
   return (
-    <div className={styles.container}>
+    <>
       <DocumentCover
         editable={editable}
         localUrl={localCover}
@@ -65,41 +65,46 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
         documentCoverMeta={documentCoverMeta}
         popoverProps={coverPopoverProps}
       />
+
       <div className={styles.titleWrapper}>
-        {documentIconMeta && (
-          <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
-            <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
-          </Popover>
-        )}
-        {editable && (
-          <div className={styles.actions}>
-            {!documentIconMeta && (
-              <Popover {...iconPopoverProps}>
-                <Button type="text" className={styles.item} disabled={!editable}>
-                  <Icon.Face className={styles.icon} />
-                  <span className={styles.name}>{t('title.add_icon')}</span>
-                </Button>
+        <div className={styles.maxWidth}>
+          {editable && (
+            <div className={styles.actions}>
+              {!documentIconMeta && (
+                <Popover {...iconPopoverProps}>
+                  <Button type="text" className={styles.item} disabled={!editable}>
+                    <Icon.Face className={styles.icon} />
+                    <span className={styles.name}>{t('title.add_icon')}</span>
+                  </Button>
+                </Popover>
+              )}
+              {!documentCoverMeta && (
+                <Popover {...coverPopoverProps}>
+                  <Button type="text" className={styles.item} disabled={!editable}>
+                    <Icon.Image className={styles.icon} />
+                    <span className={styles.name}>{t('title.add_cover')}</span>
+                  </Button>
+                </Popover>
+              )}
+            </div>
+          )}
+          <div className={styles.titleRow}>
+            {documentIconMeta && (
+              <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
+                <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
-            {!documentCoverMeta && (
-              <Popover {...coverPopoverProps}>
-                <Button type="text" className={styles.item} disabled={!editable}>
-                  <Icon.Image className={styles.icon} />
-                  <span className={styles.name}>{t('title.add_cover')}</span>
-                </Button>
-              </Popover>
-            )}
+            <Input.TextArea
+              className={styles.titleInput}
+              value={title}
+              onChange={e => onTitleChange(e.target.value)}
+              placeholder={t('title.untitled')}
+              autoSize={true}
+              disabled={!editable}
+            />
           </div>
-        )}
-        <Input.TextArea
-          className={styles.titleInput}
-          value={title}
-          onChange={e => onTitleChange(e.target.value)}
-          placeholder={t('title.untitled')}
-          autoSize={true}
-          disabled={!editable}
-        />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

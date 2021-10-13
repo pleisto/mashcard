@@ -1,6 +1,6 @@
 import React from 'react'
 import { Uppy } from '@uppy/core'
-import { Button, Icon } from '@brickdoc/design-system'
+import { Button } from '@brickdoc/design-system'
 import cx from 'classnames'
 import emojiData from './data-by-group.json'
 import { EmojiPanel } from './EmojiPanel'
@@ -49,13 +49,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
     setActiveSource(activeSource)
   }
 
-  const handleRandomPickEmoji = (): void => {
-    const data = Object.values(emojiData).flat()
-    const emoji = data[Math.floor(Math.random() * data.length)]
-
-    handleSelectEmoji(emoji, 'add')
-  }
-
   const handleRemoveEmoji = (): void => {
     handleSelectEmoji(null, 'remove')
   }
@@ -65,11 +58,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   }
 
   const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = [
-    {
-      label: 'Random',
-      icon: Icon.Redo,
-      onClick: handleRandomPickEmoji
-    },
     {
       label: 'Remove',
       onClick: handleRemoveEmoji

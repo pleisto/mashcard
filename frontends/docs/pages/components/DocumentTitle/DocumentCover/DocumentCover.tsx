@@ -21,10 +21,18 @@ export interface DocumentCoverProps {
   editable: boolean
   localUrl?: string
   onClick?: VoidFunction
+  className?: string
   getDocCoverUrl: () => string | undefined
 }
 
-export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta, popoverProps, editable, getDocCoverUrl, localUrl }) => {
+export const DocumentCover: React.FC<DocumentCoverProps> = ({
+  documentCoverMeta,
+  popoverProps,
+  editable,
+  getDocCoverUrl,
+  localUrl,
+  className
+}) => {
   let value = 'unset'
   const { t } = useDocsI18n()
 
@@ -43,7 +51,7 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({ documentCoverMeta,
   }
 
   return (
-    <div className={cx(styles.cover, { [styles.uncover]: !documentCoverMeta })} style={style}>
+    <div className={cx(styles.cover, { [styles.uncover]: !documentCoverMeta }, className)} style={style}>
       <div className={styles.buttons}>
         {editable && (
           <>
