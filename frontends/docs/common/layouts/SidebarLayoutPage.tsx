@@ -9,7 +9,6 @@ import { TrashButton } from '../components/TrashButton'
 import { NewPage } from '../components/NewPage'
 import { headerBarVar } from '@/docs/common/reactiveVars'
 import styles from './styles.module.less'
-import { PinList } from '../components/PinList'
 interface SidebarLayoutPageProps {
   webid: string
   docid: string | undefined
