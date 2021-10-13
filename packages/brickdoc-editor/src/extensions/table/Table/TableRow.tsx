@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { TableRowProps as RTTableRowProps, Row, TableHeaderGroupProps } from 'react-table'
+import { TableRowProps as RTTableRowProps, Row, TableHeaderGroupProps, TableActiveStatus } from 'react-table'
 import { Button, Icon, Input, Menu, Popover } from '@brickdoc/design-system'
 import { IsCellActive } from './useActiveStatus'
 import { useEditorI18n } from '../../../hooks'
@@ -9,6 +9,7 @@ export interface TableRowProps extends RTTableRowProps {
   rowActive?: boolean
   onAddNewRow: (rowIndex?: number) => void
   onRemoveRow: (rowId: string) => void
+  updateActiveStatus: React.Dispatch<React.SetStateAction<TableActiveStatus[]>>
   isCellActive: IsCellActive
   row: Row
 }
@@ -24,7 +25,15 @@ const cellPropsGetter = (props: Partial<TableHeaderGroupProps>, { cell }: any): 
   }
 ]
 
-export const TableRow: React.FC<TableRowProps> = ({ rowActive, isCellActive, onAddNewRow, onRemoveRow, row, ...rowProps }) => {
+export const TableRow: React.FC<TableRowProps> = ({
+  rowActive,
+  isCellActive,
+  updateActiveStatus,
+  onAddNewRow,
+  onRemoveRow,
+  row,
+  ...rowProps
+}) => {
   const { t } = useEditorI18n()
   const popupContainer = React.useRef<HTMLDivElement | null>(null)
   const [contextMenuVisible, setContextMenuVisible] = React.useState(false)
@@ -38,6 +47,9 @@ export const TableRow: React.FC<TableRowProps> = ({ rowActive, isCellActive, onA
     event.preventDefault()
 
     if (!popupContainer.current) return false
+
+    // TODO: fix type
+    updateActiveStatus([{ rowId: (row.original as any).id }])
 
     popupContainer.current.style.left = `${event.clientX}px`
     popupContainer.current.style.top = `${event.clientY}px`

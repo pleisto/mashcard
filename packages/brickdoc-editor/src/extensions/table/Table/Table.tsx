@@ -101,6 +101,9 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     modal.confirm({
       title: t('table.remove_row.title'),
       okText: t('table.remove_row.ok'),
+      okButtonProps: {
+        danger: true
+      },
       cancelText: t('table.remove_row.cancel'),
       icon: null,
       onOk: () => removeRow(rowId)
@@ -177,12 +180,14 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                 <div {...headerGroupProps} style={{ ...headerGroupProps.style, display: 'inline-flex' }} key={headerGroupProps.key}>
                   {headerGroup.headers.map(column => {
                     const headerProps = column.getHeaderProps(headerPropsGetter)
+                    const resizerProps: any = {
+                      ...column.getResizerProps(),
+                      onClick: (event: React.TouchEvent) => event.stopPropagation()
+                    }
                     const Header = (
                       <div {...headerProps} className="table-block-th">
                         {column.render('Header')}
-                        {column.canResize && (
-                          <div {...column.getResizerProps()} className={cx('resizer', { isResizing: column.isResizing })} />
-                        )}
+                        {column.canResize && <div {...resizerProps} className={cx('resizer', { isResizing: column.isResizing })} />}
                       </div>
                     )
                     if (column.id === ADD_NEW_COLUMN_ID) {
@@ -217,6 +222,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                   // TODO: fix type
                   rowActive={isRowActive((row.original as any).id)}
                   onAddNewRow={addNewRow}
+                  updateActiveStatus={updateActiveStatus}
                   onRemoveRow={removeRowConfirm}
                   isCellActive={isCellActive}
                   key={rowProps.key}
