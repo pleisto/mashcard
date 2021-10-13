@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { Resizable } from 're-resizable'
 import { NodeViewProps } from '@tiptap/react'
-import { Button, Popover, Icon } from '@brickdoc/design-system'
+import { Button, Popover, Icon, Menu, message, Modal } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from '@brickdoc/uploader'
 import { PdfDocument } from './PdfDocument'
 import { BlockWrapper } from '../../BlockWrapper'
@@ -22,8 +22,9 @@ export interface PdfSectionAttributes {
 }
 
 // TODO: handle pdf load on error
-export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
+export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
   const { t } = useEditorI18n()
+  const [viewUrl, setViewUrl] = React.useState<string>()
   const latestPdfAttributes = React.useRef<Partial<PdfSectionAttributes>>({})
   const updatePdfAttributes = (newAttributes: Partial<PdfSectionAttributes>): void => {
     latestPdfAttributes.current = {
@@ -56,6 +57,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
   }
 
   const onUploaded = (data: UploadResultData): void => {
+    setViewUrl(data.viewUrl)
     updatePdfAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
 
@@ -63,6 +65,28 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
 
   if (node.attrs.attachment.key || isUploadCompleted) {
     const url = extension.options.getAttachmentUrl?.(node) || file
+
+    const handleCopy = async (): Promise<void> => {
+      await navigator.clipboard.writeText(viewUrl ?? url)
+      void message.success(t('pdf_section.copy_hint'))
+    }
+
+    const handleDelete = (): void => {
+      Modal.confirm({
+        title: t('pdf_section.deletion_confirm.title'),
+        okText: t('pdf_section.deletion_confirm.ok'),
+        okButtonProps: {
+          danger: true
+        },
+        cancelText: t('pdf_section.deletion_confirm.cancel'),
+        icon: null,
+        onOk: () => {
+          const position = getPos()
+          const range = { from: position, to: position + 1 }
+          editor.commands.deleteRange(range)
+        }
+      })
+    }
 
     return (
       <BlockWrapper editor={editor}>
@@ -133,9 +157,28 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, u
               })
             }}
           >
-            <div className="pdf-section-menu-button">
-              <Icon.More className="pdf-section-menu-icon" />
-            </div>
+            <Popover
+              trigger="click"
+              placement="bottom"
+              overlayClassName="pdf-section-menu-popover"
+              content={
+                <Menu className="pdf-section-menu">
+                  <Menu.Item onClick={handleCopy}>
+                    <Icon.Copy />
+                    {t('pdf_section.menu.copy')}
+                  </Menu.Item>
+                  <Menu.Divider />
+                  <Menu.Item onClick={handleDelete}>
+                    <Icon.Delete />
+                    {t('pdf_section.menu.delete')}
+                  </Menu.Item>
+                </Menu>
+              }
+            >
+              <div className="pdf-section-menu-button">
+                <Icon.More className="pdf-section-menu-icon" />
+              </div>
+            </Popover>
             <PdfDocument file={url} scale={Number(node.attrs.attachment.width) / MAX_WIDTH} />
           </Resizable>
         </div>

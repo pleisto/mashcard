@@ -69,6 +69,34 @@
   }
 }
 
+.pdf-section-menu-popover {
+  z-index: 999;
+
+  & .brk-popover-arrow {
+    display: none;
+  }
+
+  & .brk-popover-inner-content {
+    padding: 0;
+    border-radius: 0.8rem;
+  }
+
+  & .brk-menu-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 14px;
+    line-height: 20px;
+
+    & .brk-icon {
+      margin-right: 0.8rem;
+    }
+  }
+}
+
+.pdf-section-menu {
+  border-radius: 0.8rem;
+  width: 24rem;
+}
+
 .brickdoc-block-pdf-section-resize-container {
   max-width: 100%;
   min-width: 40px;
@@ -124,17 +152,14 @@
       height: 24px;
       right: 12px;
       top: 12px;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.7);
       border-radius: 2px;
       z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
-
-      .pdf-section-menu-icon {
-        color: #fff;
-      }
+      cursor: pointer;
     }
 
     .pdf-section-control-drag {

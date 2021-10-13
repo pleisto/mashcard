@@ -5,7 +5,7 @@ import { Resizable } from 're-resizable'
 import cx from 'classnames'
 import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
-import { Button, Popover, Icon, Skeleton } from '@brickdoc/design-system'
+import { message, Button, Modal, Popover, Icon, Skeleton, Menu } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload } from '@brickdoc/uploader'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
@@ -24,9 +24,10 @@ export interface ImageSectionAttributes {
 }
 
 // TODO: handle image load on error
-export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
+export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
   const { t } = useEditorI18n()
   const [file, setFile] = React.useState<string>()
+  const [viewUrl, setViewUrl] = React.useState<string>()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
   const updateImageAttributes = (newAttributes: Partial<ImageSectionAttributes>): void => {
     latestImageAttributes.current = {
@@ -75,6 +76,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
     setShowPreview(true)
   }
   const onUploaded = (data: UploadResultData): void => {
+    setViewUrl(data.viewUrl)
     updateImageAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
   const onImageLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
@@ -101,6 +103,28 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
 
   if (node.attrs.image?.key || file) {
     const url = extension.options.getImageUrl?.(node) || file
+
+    const handleCopy = async (): Promise<void> => {
+      await navigator.clipboard.writeText(viewUrl ?? url)
+      void message.success(t('image_section.copy_hint'))
+    }
+
+    const handleDelete = (): void => {
+      Modal.confirm({
+        title: t('image_section.deletion_confirm.title'),
+        okText: t('image_section.deletion_confirm.ok'),
+        okButtonProps: {
+          danger: true
+        },
+        cancelText: t('image_section.deletion_confirm.cancel'),
+        icon: null,
+        onOk: () => {
+          const position = getPos()
+          const range = { from: position, to: position + 1 }
+          editor.commands.deleteRange(range)
+        }
+      })
+    }
 
     return (
       <BlockWrapper editor={editor}>
@@ -148,9 +172,28 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               })
             }}
           >
-            <div className="image-section-menu-button">
-              <Icon.More className="image-section-menu-icon" />
-            </div>
+            <Popover
+              trigger="click"
+              placement="bottom"
+              overlayClassName="image-section-menu-popover"
+              content={
+                <Menu className="image-section-menu">
+                  <Menu.Item onClick={handleCopy}>
+                    <Icon.Copy />
+                    {t('image_section.menu.copy')}
+                  </Menu.Item>
+                  <Menu.Divider />
+                  <Menu.Item onClick={handleDelete}>
+                    <Icon.Delete />
+                    {t('image_section.menu.delete')}
+                  </Menu.Item>
+                </Menu>
+              }
+            >
+              <div className="image-section-menu-button">
+                <Icon.More className="image-section-menu-icon" />
+              </div>
+            </Popover>
             <ImagePreview
               wrapStyle={{ pointerEvents: 'none', width: '100%' }}
               overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
