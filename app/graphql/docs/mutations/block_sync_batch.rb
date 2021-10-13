@@ -43,8 +43,14 @@ module Docs
 
       pod_id = current_pod.fetch('id')
 
+      insert_data = []
+      now = Time.current
+
       blocks.each do |args|
-        block = preloads[args.id] || Docs::Block.new(id: args.id)
+        block = preloads[args.id]
+
+        exist = block.present?
+        block ||= Docs::Block.new(id: args.id)
 
         block.page = true if block.id == root_id
         block.text = args.text
@@ -66,10 +72,24 @@ module Docs
 
         refetch_tree = true if args.id == root_id && block.changed?
 
-        block.save!
+        if exist
+          block.save!
+        else
+          insert_data << block
+        end
         new_blocks_hash[block.id] = block
 
         patches << block.dirty_patch
+      end
+
+      if insert_data.present?
+        Docs::Block.insert_all(insert_data.map do |block|
+                                 block.attributes.slice(*Docs::Block.column_names).merge('created_at' => now, 'updated_at' => now)
+                               end)
+        Docs::History.insert_all(insert_data.map do |block|
+                                   block.attributes.slice(*Docs::History.column_names).merge('created_at' => now, 'updated_at' => now,
+'block_id' => block.id).slice!('id')
+                                 end)
       end
 
       patches.compact!
