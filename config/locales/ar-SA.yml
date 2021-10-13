@@ -720,7 +720,7 @@ ar-SA:
       hard_delete_action: Delete permanently
     share:
       menu: مشاركة
-      share_to_web: شارك لـ
+      share_to_web: شارك لـ 
       share_to_web_description: Publish and share link with anyone
       allow_edit: السماح بالتعديل
       learn: Learn about sharing
@@ -867,6 +867,7 @@ ar-SA:
           button_text: Embed PDF
           button_hint: Embed a PDF file
     table:
+      untitled: Untitled
       new_row:
         text: New
       remove_row:
