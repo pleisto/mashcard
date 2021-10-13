@@ -620,6 +620,10 @@ zh-HK:
     blocks:
       create_pages: Add Pages
       delete: Delete
+      copy_link: Copy link
+      copy_link_hint: Link copied
+      rename: Rename
+      more: Delete, Duplicate, and more...
     trash:
       name: 垃圾箱
       all_pages: All pages
@@ -643,6 +647,7 @@ zh-HK:
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: 邀請
       copy: Copy
+      copy_hint: Share link copied
     invite:
       learn: Learn how to invite people and set permissions
       type_hint: Type or paste in Email above, separated by commas.
@@ -752,7 +757,15 @@ zh-HK:
         fontcolor:
           desc: Font-color
     image_section:
+      copy_hint: Image link copied
       hint: Add an image
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: Copy link
+        delete: Remove
       import_sources:
         link:
           placeholder: Paste the image link...
@@ -761,8 +774,14 @@ zh-HK:
         upload:
           button_text: Choose an image
     link_block:
-      delete: Delete
-      copy_link: Copy link
+      copy_hint: link copied
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: Copy link
+        delete: Remove
       hint: Embed anything
       import_sources:
         link:
@@ -774,6 +793,14 @@ zh-HK:
           button_hint: Recommended size is 5MB
     pdf_section:
       hint: Embed a PDF
+      copy_hint: PDF link copied
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: Copy link
+        delete: Remove
       import_sources:
         upload:
           button_text: Choose an file

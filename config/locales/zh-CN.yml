@@ -620,6 +620,10 @@ zh-CN:
     blocks:
       create_pages: Add Pages
       delete: Delete
+      copy_link: 复制链接
+      copy_link_hint: Link copied
+      rename: Rename
+      more: Delete, Duplicate, and more...
     trash:
       name: 回收站
       all_pages: 所有页面
@@ -643,6 +647,7 @@ zh-CN:
       invite_placeholder: 添加人员、电子邮件、群组或集成
       invite_button: 邀请
       copy: Copy
+      copy_hint: Share link copied
     invite:
       learn: 了解如何邀请他人和设置权限
       type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。
@@ -752,7 +757,15 @@ zh-CN:
         fontcolor:
           desc: 字体颜色
     image_section:
+      copy_hint: Image link copied
       hint: 添加图片
+      deletion_confirm:
+        title: 您确定要删除此属性吗？
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: 复制链接
+        delete: Remove
       import_sources:
         link:
           placeholder: 粘贴图片链接...
@@ -761,8 +774,14 @@ zh-CN:
         upload:
           button_text: 选择图片
     link_block:
-      delete: Delete
-      copy_link: 复制链接
+      copy_hint: link copied
+      deletion_confirm:
+        title: 您确定要删除此属性吗？
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: 复制链接
+        delete: Remove
       hint: 嵌入任何内容
       import_sources:
         link:
@@ -774,6 +793,14 @@ zh-CN:
           button_hint: 建议大小为 5MB
     pdf_section:
       hint: 嵌入 PDF
+      copy_hint: PDF link copied
+      deletion_confirm:
+        title: 您确定要删除此属性吗？
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: 复制链接
+        delete: Remove
       import_sources:
         upload:
           button_text: 选择文件

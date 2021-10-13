@@ -705,6 +705,10 @@ ar-SA:
     blocks:
       create_pages: Add Pages
       delete: Delete
+      copy_link: نسخ الارتباط
+      copy_link_hint: Link copied
+      rename: Rename
+      more: Delete, Duplicate, and more...
     trash:
       name: حجم المهملات
       all_pages: كل الصفحات
@@ -728,6 +732,7 @@ ar-SA:
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: دعـوة
       copy: Copy
+      copy_hint: Share link copied
     invite:
       learn: Learn how to invite people and set permissions
       type_hint: Type or paste in Email above, separated by commas.
@@ -837,7 +842,15 @@ ar-SA:
         fontcolor:
           desc: لون الخط
     image_section:
+      copy_hint: Image link copied
       hint: اضافة صورة
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: نسخ الارتباط
+        delete: Remove
       import_sources:
         link:
           placeholder: الصق رابط الصورة ...
@@ -846,8 +859,14 @@ ar-SA:
         upload:
           button_text: اختيار صورة
     link_block:
-      delete: Delete
-      copy_link: نسخ الارتباط
+      copy_hint: link copied
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: نسخ الارتباط
+        delete: Remove
       hint: Embed anything
       import_sources:
         link:
@@ -859,6 +878,14 @@ ar-SA:
           button_hint: Recommended size is 5MB
     pdf_section:
       hint: قم بتضمين ملف PDF
+      copy_hint: PDF link copied
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
+      menu:
+        copy: نسخ الارتباط
+        delete: Remove
       import_sources:
         upload:
           button_text: اختيار ملف

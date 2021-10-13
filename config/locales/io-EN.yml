@@ -637,6 +637,10 @@ io-EN:
     blocks:
       create_pages: crwdns2907:0crwdne2907:0
       delete: crwdns2909:0crwdne2909:0
+      copy_link: crwdns3273:0crwdne3273:0
+      copy_link_hint: crwdns3275:0crwdne3275:0
+      rename: crwdns3277:0crwdne3277:0
+      more: crwdns3279:0crwdne3279:0
     trash:
       name: crwdns2913:0crwdne2913:0
       all_pages: crwdns2915:0crwdne2915:0
@@ -660,6 +664,7 @@ io-EN:
       invite_placeholder: crwdns2949:0crwdne2949:0
       invite_button: crwdns2951:0crwdne2951:0
       copy: crwdns2953:0crwdne2953:0
+      copy_hint: crwdns3247:0crwdne3247:0
     invite:
       learn: crwdns2955:0crwdne2955:0
       type_hint: crwdns2957:0crwdne2957:0
@@ -769,7 +774,15 @@ io-EN:
         fontcolor:
           desc: crwdns3099:0crwdne3099:0
     image_section:
+      copy_hint: crwdns3249:0crwdne3249:0
       hint: crwdns3101:0crwdne3101:0
+      deletion_confirm:
+        title: crwdns3251:0crwdne3251:0
+        ok: crwdns3253:0crwdne3253:0
+        cancel: crwdns3255:0crwdne3255:0
+      menu:
+        copy: crwdns3257:0crwdne3257:0
+        delete: crwdns3259:0crwdne3259:0
       import_sources:
         link:
           placeholder: crwdns3103:0crwdne3103:0
@@ -778,8 +791,14 @@ io-EN:
         upload:
           button_text: crwdns3109:0crwdne3109:0
     link_block:
-      delete: crwdns3111:0crwdne3111:0
-      copy_link: crwdns3113:0crwdne3113:0
+      copy_hint: crwdns3281:0crwdne3281:0
+      deletion_confirm:
+        title: crwdns3283:0crwdne3283:0
+        ok: crwdns3285:0crwdne3285:0
+        cancel: crwdns3287:0crwdne3287:0
+      menu:
+        copy: crwdns3289:0crwdne3289:0
+        delete: crwdns3291:0crwdne3291:0
       hint: crwdns3115:0crwdne3115:0
       import_sources:
         link:
@@ -791,6 +810,14 @@ io-EN:
           button_hint: crwdns3125:0crwdne3125:0
     pdf_section:
       hint: crwdns3127:0crwdne3127:0
+      copy_hint: crwdns3261:0crwdne3261:0
+      deletion_confirm:
+        title: crwdns3263:0crwdne3263:0
+        ok: crwdns3265:0crwdne3265:0
+        cancel: crwdns3267:0crwdne3267:0
+      menu:
+        copy: crwdns3269:0crwdne3269:0
+        delete: crwdns3271:0crwdne3271:0
       import_sources:
         upload:
           button_text: crwdns3129:0crwdne3129:0
