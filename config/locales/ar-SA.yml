@@ -709,6 +709,11 @@ ar-SA:
       copy_link_hint: Link copied
       rename: Rename
       more: Delete, Duplicate, and more...
+    pin:
+      add: Add to Favorites
+      add_tooltip: Pin this page
+      remove: Remove from Favorites
+      remove_tooltip: Unpin this page
     trash:
       name: حجم المهملات
       all_pages: كل الصفحات
@@ -733,6 +738,7 @@ ar-SA:
       invite_button: دعـوة
       copy: Copy
       copy_hint: Share link copied
+      tooltip: share or publish to the web
     invite:
       learn: Learn how to invite people and set permissions
       type_hint: Type or paste in Email above, separated by commas.

@@ -624,6 +624,11 @@ zh-CN:
       copy_link_hint: Link copied
       rename: Rename
       more: Delete, Duplicate, and more...
+    pin:
+      add: Add to Favorites
+      add_tooltip: Pin this page
+      remove: Remove from Favorites
+      remove_tooltip: Unpin this page
     trash:
       name: 回收站
       all_pages: 所有页面
@@ -648,6 +653,7 @@ zh-CN:
       invite_button: 邀请
       copy: Copy
       copy_hint: Share link copied
+      tooltip: share or publish to the web
     invite:
       learn: 了解如何邀请他人和设置权限
       type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。

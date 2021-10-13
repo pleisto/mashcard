@@ -641,6 +641,11 @@ io-EN:
       copy_link_hint: crwdns3275:0crwdne3275:0
       rename: crwdns3277:0crwdne3277:0
       more: crwdns3279:0crwdne3279:0
+    pin:
+      add: crwdns3293:0crwdne3293:0
+      add_tooltip: crwdns3295:0crwdne3295:0
+      remove: crwdns3297:0crwdne3297:0
+      remove_tooltip: crwdns3299:0crwdne3299:0
     trash:
       name: crwdns2913:0crwdne2913:0
       all_pages: crwdns2915:0crwdne2915:0
@@ -665,6 +670,7 @@ io-EN:
       invite_button: crwdns2951:0crwdne2951:0
       copy: crwdns2953:0crwdne2953:0
       copy_hint: crwdns3247:0crwdne3247:0
+      tooltip: crwdns3301:0crwdne3301:0
     invite:
       learn: crwdns2955:0crwdne2955:0
       type_hint: crwdns2957:0crwdne2957:0
