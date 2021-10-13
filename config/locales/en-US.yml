@@ -637,6 +637,10 @@ en-US:
     blocks:
       create_pages: Add Pages
       delete: Delete
+      copy_link: Copy link
+      copy_link_hint: Link copied
+      rename: Rename
+      more: Delete, Duplicate, and more...
     trash:
       name: Trash
       all_pages: All pages

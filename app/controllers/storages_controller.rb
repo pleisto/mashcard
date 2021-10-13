@@ -85,7 +85,7 @@ disposition: key[:disposition]
   def authenticate_blob
     pod = current_pod
 
-    if pod&.fetch('id') != @blob.pod_id
+    if pod&.fetch('id', nil) != @blob.pod_id
       Rails.logger.info("No pod permission")
       head :not_found
     end

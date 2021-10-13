@@ -1,5 +1,5 @@
-import { Avatar } from '@brickdoc/design-system'
 import React from 'react'
+import { PodAvatar } from '../PodAvatar'
 import styles from './index.module.less'
 
 export interface PodType {
@@ -14,11 +14,11 @@ interface PodCardProps {
 }
 
 export const PodCard: React.FC<PodCardProps> = ({ pod }) => {
-  const avatar = pod.avatarData?.url ? <Avatar src={pod.avatarData.url} /> : <Avatar>{pod.webid}</Avatar>
-
   return (
     <div className={styles.card}>
-      <div className={styles.avatarWrapper}>{avatar}</div>
+      <div className={styles.avatarWrapper}>
+        <PodAvatar pod={pod} />
+      </div>
       <div className={styles.content}>
         <span className={styles.name}>{pod.name}</span>
         {pod.email && <span className={styles.email}>{pod.email}</span>}

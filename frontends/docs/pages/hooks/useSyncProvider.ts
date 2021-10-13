@@ -176,7 +176,7 @@ export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc
       try {
         const { data } = await blockSyncBatch({ variables: { input } })
         if (data?.blockSyncBatch?.refetchTree) {
-          void client.refetchQueries({ include: [queryPageBlocks] })
+          await client.refetchQueries({ include: [queryPageBlocks] })
         }
       } catch (error) {
         setCommitting?.(false)

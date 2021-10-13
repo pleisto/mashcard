@@ -50,7 +50,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
         nextSort: b.nextSort,
         firstChildSort: b.firstChildSort,
         titleText: title,
-        title: <PageMenu id={b.id} title={title} webid={webid} />
+        title: <PageMenu docid={docid} id={b.id} title={title} titleText={b.text} webid={webid} />
       }
     })
     .sort((a, b) => Number(a.sort) - Number(b.sort))

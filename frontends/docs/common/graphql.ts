@@ -6,6 +6,7 @@ export const queryPods = gql`
       id
       webid
       name
+      email
       personal
       inviteEnable
       avatarData {
@@ -290,6 +291,14 @@ export const BlockCreateShareLink = gql`
 export const BlockMove = gql`
   mutation blockMove($input: BlockMoveInput!) {
     blockMove(input: $input) {
+      errors
+    }
+  }
+`
+
+export const BlockRename = gql`
+  mutation blockRename($input: BlockRenameInput!) {
+    blockRename(input: $input) {
       errors
     }
   }
