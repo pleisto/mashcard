@@ -6,6 +6,9 @@ const isCI = require('is-ci')
  *
  * @type {import('@jest/types').Config.InitialOptions}
  */
+
+const esModules = ['lodash-es'].join('|')
+
 module.exports = {
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
@@ -21,5 +24,6 @@ module.exports = {
   snapshotResolver: './jest.snapshot-resolver.js',
   reporters: isCI
     ? ['default', ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]]
-    : ['default']
+    : ['default'],
+  transformIgnorePatterns: [`/node_modules/(?!${esModules})`]
 }
