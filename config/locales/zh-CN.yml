@@ -667,6 +667,7 @@ zh-CN:
     snapshots:
       name: Snapshot
       restore: 还原此版本
+      restoring: Restoring...
       cancel: Cancel
       empty: 版本历史为空
     pods:

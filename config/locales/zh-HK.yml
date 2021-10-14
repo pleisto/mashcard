@@ -667,6 +667,7 @@ zh-HK:
     snapshots:
       name: Snapshot
       restore: Restore version
+      restoring: Restoring...
       cancel: Cancel
       empty: Version history is empty
     pods:

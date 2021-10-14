@@ -752,6 +752,7 @@ ar-SA:
     snapshots:
       name: Snapshot
       restore: استعادة هذا الإصدار
+      restoring: Restoring...
       cancel: Cancel
       empty: Version history is empty
     pods:

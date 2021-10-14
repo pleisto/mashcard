@@ -684,6 +684,7 @@ io-EN:
     snapshots:
       name: crwdns2977:0crwdne2977:0
       restore: crwdns2979:0crwdne2979:0
+      restoring: crwdns3303:0crwdne3303:0
       cancel: crwdns2981:0crwdne2981:0
       empty: crwdns2983:0crwdne2983:0
     pods:
