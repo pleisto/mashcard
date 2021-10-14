@@ -20346,7 +20346,7 @@ typescript@^4.4.4:
   languageName: node
   linkType: hard
 
-"vite-plugin-mdx@npm:^3.5.8":
+"vite-plugin-mdx@npm:3.5.8":
   version: 3.5.8
   resolution: "vite-plugin-mdx@npm:3.5.8"
   dependencies:
@@ -20358,6 +20358,21 @@ typescript@^4.4.4:
     "@mdx-js/mdx": "*"
     vite: "*"
   checksum: de5a69f1815c5ac27f15f3fc18beaf1902c3f3f62fb77619e5259cbedf4f46c2dc4e7505663bb518905ac132394e4f19605ae92d23bc4522a1817393cbb237b1
+  languageName: node
+  linkType: hard
+
+"vite-plugin-mdx@patch:vite-plugin-mdx@npm:3.5.8#.yarn/patches/vite-plugin-mdx-npm-3.5.8-357f666ad6::locator=%40brickdoc%2Fmonorepo%40workspace%3A.":
+  version: 3.5.8
+  resolution: "vite-plugin-mdx@patch:vite-plugin-mdx@npm%3A3.5.8#.yarn/patches/vite-plugin-mdx-npm-3.5.8-357f666ad6::version=3.5.8&hash=d0a629&locator=%40brickdoc%2Fmonorepo%40workspace%3A."
+  dependencies:
+    "@alloc/quick-lru": ^5.2.0
+    esbuild: ^0.8.31
+    resolve: ^1.20.0
+    unified: ^9.2.1
+  peerDependencies:
+    "@mdx-js/mdx": "*"
+    vite: "*"
+  checksum: 876e8cc35ed4499e66a5b5bcea3c0df5a97ba9bcfaad72094cee7d228a2f6ee82bc7ff86724d9fe9efccf540209dda0f5b44b51c9180d267a3d11ed20a43740a
   languageName: node
   linkType: hard
 
