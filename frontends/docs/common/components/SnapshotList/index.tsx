@@ -30,7 +30,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 }) => {
   const { t } = useDocsI18n()
   const { data } = useGetBlockSnapshotsQuery({ variables: { id: blockId } })
-  const [snapshotRestore] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks] })
+  const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks] })
   const [onCommit] = useSyncProvider()
 
   const onRestore = async (): Promise<void> => {
@@ -43,14 +43,12 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   const skelecton = (page: any, snapshots: any, disabled: boolean): any => {
     return (
       <div className={styles.container}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.content}>{page}</div>
-        </div>
+        <div className={styles.contentWrapper}>{page}</div>
         <div className={styles.side}>
           <div className={styles.snapshot}>{snapshots}</div>
           <div className={styles.actionPanel}>
-            <Button type="primary" className={styles.button} disabled={disabled} onClick={onRestore}>
-              {t('snapshots.restore')}
+            <Button type="primary" className={styles.button} disabled={disabled} loading={loading} onClick={onRestore}>
+              {loading ? t('snapshots.restoring') : t('snapshots.restore')}
             </Button>
             <Button className={styles.button} onClick={onCleanup}>
               {t('snapshots.cancel')}

@@ -62,10 +62,11 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
                 </Button>
               </Popover>
             )}
-            {/* TODO: cover reposition */}
+            {/* TODO: cover reposition 
             <Button className={styles.button} type="text" disabled={!editable}>
               {t('title.reposition')}
             </Button>
+            */}
           </>
         )}
       </div>

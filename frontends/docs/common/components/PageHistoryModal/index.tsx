@@ -22,7 +22,7 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ webid, visib
 
   return (
     <Modal
-      width={1000}
+      width={1100}
       title={null}
       footer={null}
       closable={false}
