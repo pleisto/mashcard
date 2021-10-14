@@ -1,5 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import { v4 as uuid } from 'uuid'
 import { NodeViewProps } from '@tiptap/react'
 import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps } from 'react-table'
@@ -70,7 +72,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
 
   const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
 
-  const [tableRows, { fetchRows, addRow, updateRow, removeRow, setRowsState }] = useDatabaseRows(parentId)
+  const [tableRows, { fetchRows, addRow, updateRow, removeRow, moveRow, setRowsState }] = useDatabaseRows(parentId)
   const initialized = React.useRef(false)
 
   React.useEffect(() => {
@@ -82,8 +84,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     addNewColumn()
     const newRows = [
       { id: uuid(), sort: 0 },
-      { id: uuid(), sort: 1 },
-      { id: uuid(), sort: 2 }
+      { id: uuid(), sort: 2 ** 32 },
+      { id: uuid(), sort: 2 ** 32 * 2 }
     ]
     newRows.forEach(row => updateRow(row, false))
     setRowsState(newRows)
@@ -107,6 +109,11 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
   const addNewRow = (rowIndex?: number): void => {
     const row = addRow(rowIndex)
     updateActiveStatus([{ rowId: row.id }])
+  }
+
+  const handleMoveRow = (fromIndex: number, toIndex: number): void => {
+    const row = moveRow(fromIndex, toIndex)
+    if (row) updateActiveStatus([{ rowId: row.id }])
   }
 
   const [modal, contextHolder] = Modal.useModal()
@@ -238,23 +245,26 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
             })}
           </div>
           <div className="table-block-tbody">
-            {rows.map(row => {
-              prepareRow(row)
-              const rowProps = row.getRowProps({ className: 'table-block-tr' })
-              return (
-                <TableRow
-                  {...rowProps}
-                  row={row}
-                  // TODO: fix type
-                  rowActive={isRowActive((row.original as any).id)}
-                  onAddNewRow={addNewRow}
-                  updateActiveStatus={updateActiveStatus}
-                  onRemoveRow={removeRowConfirm}
-                  isCellActive={isCellActive}
-                  key={rowProps.key}
-                />
-              )
-            })}
+            <DndProvider backend={HTML5Backend}>
+              {rows.map(row => {
+                prepareRow(row)
+                const rowProps = row.getRowProps({ className: 'table-block-tr' })
+                return (
+                  <TableRow
+                    {...rowProps}
+                    row={row}
+                    // TODO: fix type
+                    rowActive={isRowActive((row.original as any).id)}
+                    onAddNewRow={addNewRow}
+                    onMoveRow={handleMoveRow}
+                    updateActiveStatus={updateActiveStatus}
+                    onRemoveRow={removeRowConfirm}
+                    isCellActive={isCellActive}
+                    key={rowProps.key}
+                  />
+                )
+              })}
+            </DndProvider>
             <div className="table-block-row">
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
               <div className="table-block-add-new-row" role="button" tabIndex={-1} onClick={() => addNewRow()}>

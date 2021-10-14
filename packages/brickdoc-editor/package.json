@@ -43,6 +43,8 @@
     "@tiptap/suggestion": "2.0.0-beta.70",
     "dayjs": "^1.10.7",
     "re-resizable": "^6.9.1",
+    "react-dnd": "^14.0.4",
+    "react-dnd-html5-backend": "^14.0.2",
     "react-medium-image-zoom": "^4.3.5",
     "react-pdf": "^5.4.0",
     "react-table": "^7.7.0",

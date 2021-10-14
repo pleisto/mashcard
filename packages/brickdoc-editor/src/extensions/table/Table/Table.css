@@ -137,7 +137,7 @@
 
             & .table-block-row-actions {
               display: flex;
-              flex-direction: column;
+              flex-direction: row;
               align-items: center;
               justify-content: center;
               position: absolute;
@@ -168,6 +168,14 @@
               border-radius: 4px;
               font-size: 18px;
               color: var(--font-color);
+
+              &.drag {
+                cursor: grab;
+              }
+
+              &.dragging {
+                cursor: grabbing;
+              }
             }
           }
 
@@ -213,6 +221,10 @@
             position: relative;
             height: var(--cell-height);
             border-right: 1px solid var(--border-color);
+
+            &:last-child {
+              border-right: none;
+            }
 
             &.active {
               border: 1px solid rgba(var(--active-color), 0.3);

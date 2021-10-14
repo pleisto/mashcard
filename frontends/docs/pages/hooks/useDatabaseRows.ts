@@ -14,10 +14,11 @@ import { useImperativeQuery } from '@/common/hooks'
 
 export interface DatabaseRow {
   id: string
-  sort: number
   [key: string]: any
 }
 export interface DatabaseRows extends Array<DatabaseRow> {}
+
+const SORT_GAP = 2 ** 32
 
 export function useDatabaseRows(setCommitting?: (value: boolean) => void): (parentId: string) => [
   DatabaseRows,
@@ -26,6 +27,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
     addRow: (rowIndex?: number) => DatabaseRow
     updateRow: (row: DatabaseRow, updateState?: boolean) => void
     removeRow: (rowId: string) => void
+    moveRow: (fromIndex: number, toIndex: number) => DatabaseRow | undefined
     setRowsState: (rows: DatabaseRows) => void
   }
 ] {
@@ -74,7 +76,9 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
       (rowIndex?: number): DatabaseRow => {
         const currentRowIndex = rowIndex ?? databaseRows.length - 1
         const id = uuid()
-        const row = { id, sort: currentRowIndex }
+        const sort = Math.round(databaseRows[currentRowIndex + 1]?.sort ?? SORT_GAP - databaseRows[currentRowIndex - 1]?.sort ?? SORT_GAP)
+
+        const row = { id, sort }
         void updateRow(row, false)
         setDatabaseRows([
           ...databaseRows.slice(0, currentRowIndex + 1),
@@ -97,6 +101,31 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
       [databaseRows, setDatabaseRows, blockSoftDelete]
     )
 
+    const moveRow = React.useCallback(
+      (fromIndex: number, toIndex: number): DatabaseRow | undefined => {
+        let targetRow: DatabaseRow | undefined
+        const newRows = databaseRows.filter((row, index) => {
+          if (index !== fromIndex) {
+            return true
+          } else {
+            const sort = Math.round(0.5 * (databaseRows[index + 1]?.sort ?? SORT_GAP - databaseRows[index - 1]?.sort ?? SORT_GAP))
+            targetRow = { ...row, sort }
+
+            return false
+          }
+        })
+
+        if (!targetRow) return
+        void updateRow(targetRow).then(() => {
+          if (!targetRow) return
+          setDatabaseRows([...newRows.slice(0, toIndex), targetRow, ...newRows.slice(toIndex, newRows.length)])
+        })
+
+        return targetRow
+      },
+      [databaseRows, updateRow]
+    )
+
     const setRowsState = React.useCallback((rows: DatabaseRows): void => setDatabaseRows(rows), [setDatabaseRows])
 
     return [
@@ -106,6 +135,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
         addRow,
         updateRow,
         removeRow,
+        moveRow,
         setRowsState
       }
     ]

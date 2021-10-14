@@ -15,7 +15,6 @@ declare module '@tiptap/core' {
 
 export interface DatabaseRow {
   id: string
-  sort: number
   [key: string]: any
 }
 export interface DatabaseRows extends Array<DatabaseRow> {}
@@ -30,6 +29,7 @@ export interface TableExtensionOptions {
       addRow: (rowIndex?: number) => DatabaseRow
       updateRow: (row: DatabaseRow, updateState?: boolean) => void
       removeRow: (rowId: string) => void
+      moveRow: (fromIndex: number, toIndex: number) => DatabaseRow | undefined
       setRowsState: (rows: DatabaseRows) => void
     }
   ]
