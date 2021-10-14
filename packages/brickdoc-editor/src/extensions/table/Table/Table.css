@@ -174,24 +174,34 @@
           & .table-block-th {
             height: var(--cell-height);
             min-width: 180px;
+            overflow: hidden;
             padding-left: var(--cell-left-padding);
             color: var(--font-color);
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            border-right: 1px solid var(--border-color);
 
-            & .resizer {
-              display: inline-block;
-              background: var(--border-color);
-              width: 1px;
+            &.bordered {
+              border-right: 1px solid var(--border-color);
+            }
+
+            & .table-block-resizer {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 10px;
               height: 100%;
               position: absolute;
-              right: 0;
+              right: -5px;
               top: 0;
-              transform: translateX(50%);
               z-index: 1;
               touch-action: none;
+
+              & .table-block-resizer-inner {
+                background: var(--border-color);
+                width: 1px;
+                height: 100%;
+              }
             }
           }
 

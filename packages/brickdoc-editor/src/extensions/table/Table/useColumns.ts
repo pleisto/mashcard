@@ -9,6 +9,7 @@ export interface DatabaseColumn {
   key: string
   title: string
   type: string
+  width?: number
   // group: string
   selectOptions?: TableColumnSelectOption[]
   dateFormat?: string
@@ -28,8 +29,12 @@ export const databaseColumnsToTableColumns = (databaseColumns: DatabaseColumns):
         selectOptions: dbColumn.selectOptions ?? [],
         dateIncludeTime: dbColumn.dateIncludeTime,
         dateFormat: dbColumn.dateFormat,
-        index: (r[group] || []).length
+        index: (r[group] || []).length,
+        width: dbColumn.width
       }
+
+      if (!column.width) delete column.width
+
       r[group] = [...(r[group] || []), column]
       return r
     }, {})
@@ -43,6 +48,7 @@ export function useColumns(options: { databaseColumns: DatabaseColumns; updateAt
     remove: (groupId: string, columnId: string) => void
     updateName: (value: string, groupId: string, columnId: string) => void
     updateType: (type: string, groupId: string, columnId: string) => void
+    updateWidth: (width: number, groupId: string, columnId: string) => void
   }
 ] {
   const { t } = useEditorI18n()
@@ -77,5 +83,8 @@ export function useColumns(options: { databaseColumns: DatabaseColumns; updateAt
   const updateType = (type: string, groupId: string, columnId: string): void =>
     setColumns(prevColumns => prevColumns.map(dbColumn => (dbColumn.key === columnId ? { ...dbColumn, type } : dbColumn)))
 
-  return [latestColumns.current, { setColumns, add, remove, updateName, updateType }]
+  const updateWidth = (width: number, groupId: string, columnId: string): void =>
+    setColumns(prevColumns => prevColumns.map(dbColumn => (dbColumn.key === columnId ? { ...dbColumn, width } : dbColumn)))
+
+  return [latestColumns.current, { setColumns, add, remove, updateName, updateType, updateWidth }]
 }

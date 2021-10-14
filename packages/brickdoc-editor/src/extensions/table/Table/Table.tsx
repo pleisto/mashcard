@@ -53,17 +53,31 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
 
   const fetched = React.useRef(!parentId) // if node have not uuid, not need to fetch rows
 
-  const [columns, { setColumns, add: addNewColumn, remove: removeColumn, updateName: updateColumnName, updateType: updateColumnType }] =
-    useColumns({
-      databaseColumns: prevData.columns,
-      updateAttributeData
-    })
+  const [
+    columns,
+    {
+      setColumns,
+      add: addNewColumn,
+      remove: removeColumn,
+      updateName: updateColumnName,
+      updateType: updateColumnType,
+      updateWidth: updateColumnWidth
+    }
+  ] = useColumns({
+    databaseColumns: prevData.columns,
+    updateAttributeData
+  })
 
   const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
 
   const [tableRows, { fetchRows, addRow, updateRow, removeRow, setRowsState }] = useDatabaseRows(parentId)
+  const initialized = React.useRef(false)
 
-  if (columns.length === 0 && tableRows.length === 0) {
+  React.useEffect(() => {
+    if (initialized.current) return
+    if (!fetched.current) return
+    if (columns.length > 0 || tableRows.length > 0) return
+
     addNewColumn()
     addNewColumn()
     const newRows = [
@@ -73,8 +87,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     ]
     newRows.forEach(row => updateRow(row, false))
     setRowsState(newRows)
-    fetched.current = true
-  }
+    initialized.current = true
+  }, [columns, addNewColumn, setRowsState, updateRow, tableRows])
 
   React.useEffect(() => {
     if (!fetched.current) {
@@ -182,17 +196,29 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                     const headerProps = column.getHeaderProps(headerPropsGetter)
                     const resizerProps: any = {
                       ...column.getResizerProps(),
-                      onClick: (event: React.TouchEvent) => event.stopPropagation()
+                      onClick: (event: React.TouchEvent) => {
+                        event.stopPropagation()
+
+                        const width = parseInt(headerProps.style?.width?.toString() ?? '0', 10)
+                        if (!width) return
+                        updateColumnWidth(width, column.parent?.id ?? '', column.id)
+                      }
                     }
+
+                    const isAddNewColumn = column.id === ADD_NEW_COLUMN_ID
+
                     const Header = (
-                      <div {...headerProps} className="table-block-th">
+                      <div {...headerProps} className={cx('table-block-th', { bordered: !isAddNewColumn })}>
                         {column.render('Header')}
-                        {column.canResize && <div {...resizerProps} className={cx('resizer', { isResizing: column.isResizing })} />}
+                        {column.canResize && !isAddNewColumn && (
+                          <div {...resizerProps} className={cx('table-block-resizer', { resizing: column.isResizing })}>
+                            <div className="table-block-resizer-inner" />
+                          </div>
+                        )}
                       </div>
                     )
-                    if (column.id === ADD_NEW_COLUMN_ID) {
-                      return Header
-                    }
+
+                    if (isAddNewColumn) return Header
 
                     return (
                       <ColumnMenu
