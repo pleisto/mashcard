@@ -1,0 +1,46 @@
+---
+title: Popover
+---
+
+# Popover
+The floating card popped by clicking or hovering.
+
+## When To Use
+
+A simple popup menu to provide extra information or operations.
+
+Comparing with `Tooltip`, besides information `Popover` card can also provide action elements like links and buttons.
+
+## API
+
+Consult Tooltip's documentation to find more APIs.
+
+| Property | Description                         | Type                             | Default   | Version |
+| -------- | ----------------------------------- | -------------------------------- | --------- | ------- |
+| content  | Content of the card                 | `ReactNode , () => ReactNode`    | `-`       |         |
+| title    | Title of the card                   | `ReactNode , () => ReactNode`    | `-`       |         |
+
+## Note
+
+Please ensure that the child node of `Popover` accepts `onMouseEnter`, `onMouseLeave`, `onFocus`, `onClick` events.
+
+
+import { Base } from '../components/popover/demos'
+
+## Demo (Base)
+<Base />
+
+## Code
+```jsx
+<Space>
+  <Popover
+    content={<div><p>Content</p><p>Content</p></div>}
+    title="Hello World"
+  >
+    <Button type="primary">
+      Hover me
+    </Button>
+  </Popover>
+</Space>
+
+ ```

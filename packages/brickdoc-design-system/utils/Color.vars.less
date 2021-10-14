@@ -1,0 +1,42 @@
+@import '../components/style/color/colors';
+
+@len: length(@preset-colors);
+@key-map: range(0, 9);
+
+.make-color-classes(@i: @len) when (@i > 0) {
+  .make-color-classes(@i - 1);
+  @color: extract(@preset-colors, @i);
+
+  each(@key-map, {
+    @order: if((@value = 0), base, @value);
+    @k: '@{color}-@{order}';
+    --@{color}-@{order}: @@k;
+    // --@{color}-@{order} {
+    //   @k:  @{color}-@{order} ;
+    //   background-color: @@k;
+    //   border-style: solid;
+    //   border-width: 1px;
+    //   display: inline-block;
+    //   height: 30px;
+    //   margin-right: 10px;
+    //   width: 30px;
+    // }
+  });
+}
+
+:root {
+  .make-color-classes();
+}
+
+.item {
+  display: flex;
+  margin: 5px 0;
+}
+
+.colors-white {
+  background-color: @white;
+}
+
+.colors-black {
+  background-color: @black;
+}
