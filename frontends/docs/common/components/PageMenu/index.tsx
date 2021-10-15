@@ -53,7 +53,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
 
   const onClickPlus = async (event: { stopPropagation: () => any }): Promise<void> => {
     void event.stopPropagation()
-    const input = { parentId: id, title: '' }
+    const input = { parentId: pageId, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
       history.push(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
@@ -184,7 +184,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
               <More />
             </Button>
           </Tooltip>
-          <Tooltip title={t('blocks.create_pages')}>
+          <Tooltip title={t('blocks.create_sub_pages')}>
             <Button className={styles.addBtn} type="text" onClick={onClickPlus} loading={createBlockLoading} disabled={createBlockLoading}>
               <Add />
             </Button>
