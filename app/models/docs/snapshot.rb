@@ -57,17 +57,40 @@ class Docs::Snapshot < ApplicationRecord
       block.save_snapshot!(name: next_snapshot_name)
 
       ## 2. do restore
-      preload_blocks = blocks.each_with_object({}) do |history, h|
+      preload_histories = blocks.each_with_object({}) do |history, h|
         h[history.block_id] = history
       end
 
-      block.descendants(unscoped: true).each do |child_block|
-        child_history = preload_blocks[child_block.id]
+      update_blocks = []
+      now = Time.current
+
+      block.descendants(unscoped: true).includes(:pod).each do |child_block|
+        child_history = preload_histories[child_block.id]
         if child_history.nil?
-          child_block.update!(deleted_at: Time.current)
+          child_block.deleted_at = now
         else
-          child_block.update!(child_history.update_params)
+          child_history.update_params.each do |key, value|
+            child_block.send("#{key}=", value)
+          end
         end
+
+        if child_block.important_field_changed?
+          update_blocks << child_block
+        end
+      end
+
+      if update_blocks.present?
+        update_blocks.map do |block|
+          block.history_version = block.realtime_history_version_increment
+          block
+        end
+
+        insert_histories = update_blocks.map do |block|
+          block.history_attributes.merge('created_at' => now, 'updated_at' => now)
+        end
+
+        Docs::Block.upsert_all(update_blocks.map(&:block_attributes))
+        Docs::History.insert_all(insert_histories)
       end
     end
   end

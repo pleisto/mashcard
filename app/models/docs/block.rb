@@ -235,16 +235,28 @@ class Docs::Block < ApplicationRecord
     self.root_id ||= id
   end
 
+  def important_field_changed?
+    type_changed? || meta_changed? || data_changed? || sort_changed? ||
+      parent_id_changed? || text_changed? || content_changed? || deleted_at_changed? || updated_at_changed?
+  end
+
   before_save do
     self.collaborators = collaborators.uniq
-    if type_changed? || meta_changed? || data_changed? || sort_changed? ||
-      parent_id_changed? || text_changed? || content_changed? || deleted_at_changed? || updated_at_changed?
+    if important_field_changed?
       self.history_version = realtime_history_version_increment
     end
   end
 
   after_save do
-    histories.create!(history_version: history_version) if history_version_previously_changed? || id_previously_changed?
+    Docs::History.create!(history_attributes) if history_version_previously_changed? || id_previously_changed?
+  end
+
+  def block_attributes
+    attributes.slice(*Docs::Block.column_names)
+  end
+
+  def history_attributes
+    attributes.slice(*(Docs::History.column_names - ['id'])).merge('block_id' => id)
   end
 
   after_create :maybe_attach_attachments!

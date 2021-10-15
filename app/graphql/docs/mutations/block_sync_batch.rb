@@ -83,13 +83,14 @@ module Docs
       end
 
       if insert_data.present?
-        Docs::Block.insert_all(insert_data.map do |block|
-                                 block.attributes.slice(*Docs::Block.column_names).merge('created_at' => now, 'updated_at' => now)
-                               end)
-        Docs::History.insert_all(insert_data.map do |block|
-                                   block.attributes.slice(*Docs::History.column_names).merge('created_at' => now, 'updated_at' => now,
-'block_id' => block.id).slice!('id')
-                                 end)
+        insert_blocks = insert_data.map do |block|
+          block.block_attributes.merge('created_at' => now, 'updated_at' => now)
+        end
+        insert_histories = insert_data.map do |block|
+          block.history_attributes.merge('created_at' => now, 'updated_at' => now)
+        end
+        Docs::Block.insert_all(insert_blocks)
+        Docs::History.insert_all(insert_histories)
       end
 
       patches.compact!

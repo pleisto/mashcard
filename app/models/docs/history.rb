@@ -30,18 +30,6 @@ class Docs::History < ApplicationRecord
   belongs_to :pod, optional: true
   belongs_to :block
 
-  before_create do
-    self.pod_id = block.pod_id
-    self.content = block.content
-    self.text = block.text
-    self.data = block.data
-    self.meta = block.meta
-    self.sort = block.sort
-    self.type = block.type
-    self.deleted_at = block.deleted_at
-    self.parent_id = block.parent_id
-  end
-
   def self.from_version_meta(version_meta)
     return [] if version_meta.blank?
     # parameters = version_meta.map { |k, v| "(#{k},#{v})" }.join(',')
