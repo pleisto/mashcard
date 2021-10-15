@@ -619,6 +619,7 @@ ja-JP:
       placeholder: Search Pages
     blocks:
       create_pages: Add Pages
+      create_sub_pages: Add Subpage
       delete: Delete
       copy_link: Copy link
       copy_link_hint: Link copied

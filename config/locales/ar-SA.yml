@@ -704,6 +704,7 @@ ar-SA:
       placeholder: صفحة البحث
     blocks:
       create_pages: Add Pages
+      create_sub_pages: Add Subpage
       delete: Delete
       copy_link: نسخ الارتباط
       copy_link_hint: Link copied

@@ -619,6 +619,7 @@ zh-CN:
       placeholder: 搜索页面
     blocks:
       create_pages: Add Pages
+      create_sub_pages: Add Subpage
       delete: Delete
       copy_link: 复制链接
       copy_link_hint: Link copied

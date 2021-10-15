@@ -636,6 +636,7 @@ io-EN:
       placeholder: crwdns2905:0crwdne2905:0
     blocks:
       create_pages: crwdns2907:0crwdne2907:0
+      create_sub_pages: crwdns3305:0crwdne3305:0
       delete: crwdns2909:0crwdne2909:0
       copy_link: crwdns3273:0crwdne3273:0
       copy_link_hint: crwdns3275:0crwdne3275:0
