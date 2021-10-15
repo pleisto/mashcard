@@ -7,12 +7,11 @@ module System
     argument :url, GraphQL::Types::String, required: true
 
     def resolve(url:)
-      preview_data = cache_fragment(expires_in: 3.hours) do
-        Brickdoc::PreviewBox.preview(url)
+      cache_fragment(expires_in: 3.hours) do
+        Brickdoc::PreviewBox.preview(url).merge({
+          url: url
+        })
       end
-      preview_data.merge({
-        url: url
-      })
     end
   end
 end
