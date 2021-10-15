@@ -1,3 +1,4 @@
+import { DocMeta } from '@/docs/pages/DocumentContentPage'
 import { Input, Popover, Icon, Tabs } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
@@ -5,13 +6,12 @@ import { PageTrash } from '../PageTrash'
 import styles from './index.module.less'
 
 interface TrashPopoverProps {
-  webid: string
-  docid: string | undefined
+  docMeta: DocMeta
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visible, setVisible }) => {
+export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, setVisible }) => {
   const [searchObject, setSearchObject] = useState<object>({})
 
   const { t } = useDocsI18n()
@@ -35,7 +35,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visibl
           allowClear
         />
         <div className={styles.list}>
-          <PageTrash webid={webid} search={(searchObject as any)[key]} docid={docid} setVisible={setVisible} />
+          <PageTrash webid={docMeta.webid} search={(searchObject as any)[key]} docid={docid} setVisible={setVisible} />
         </div>
         <div className={styles.footer}>
           <Icon.Help />
@@ -45,7 +45,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ webid, docid, visibl
     )
   }
 
-  const currentPageData = docid ? tabPaneSkelecton(t('trash.current_page'), 'currentPage', docid) : <></>
+  const currentPageData = docMeta.id ? tabPaneSkelecton(t('trash.current_page'), 'currentPage', docMeta.id) : <></>
   const allPagesData = tabPaneSkelecton(t('trash.all_pages'), 'allPages', null)
 
   const popoverContent = (

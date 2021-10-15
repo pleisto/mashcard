@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import cx from 'classnames'
 import { Button, Input, Icon, List, Popover, Switch, message } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
@@ -15,16 +15,15 @@ import {
 } from '@/BrickdocGraphQL'
 import { ShareLinkListItem } from '../ShareLinkListItem'
 import styles from './index.module.less'
-import { BrickdocContext } from '@/BrickdocPWA'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface SharePopoverProps {
-  webid: string
+  docMeta: NonNullDocMeta
   visible: boolean
-  blockId: string
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, blockId, setVisible }) => {
+export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, setVisible }) => {
   const { t } = useDocsI18n()
   const [shareWithAnonymousLoading, setShareWithAnonymousLoading] = React.useState<boolean>(false)
   const [anonymousEditableLoading, setAnonymousEditableLoading] = React.useState<boolean>(false)
@@ -32,7 +31,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
   const [anonymousEditableValue, setAnonymousEditableValue] = React.useState<boolean>(false)
   const [inviteModalVisible, setInviteModalVisible] = React.useState<boolean>(false)
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation()
-  const { data } = useGetBlockShareLinksQuery({ variables: { id: blockId } })
+  const { data } = useGetBlockShareLinksQuery({ variables: { id: docMeta.id } })
 
   const ANYONE_WEBID = 'anyone'
 
@@ -45,7 +44,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
       setShareWithAnonymousValue(false)
       setAnonymousEditableValue(false)
     }
-  }, [data, webid, blockId])
+  }, [data, docMeta.webid, docMeta.id])
 
   const onClickInviteButton = (): void => {
     setInviteModalVisible(true)
@@ -62,7 +61,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
     const state: ShareLinkState = checked ? ShareLinkState.Enabled : ShareLinkState.Disabled
     const policy: Policytype = anonymousEditableValue ? Policytype.Edit : Policytype.View
     const input: BlockCreateShareLinkInput = {
-      id: blockId,
+      id: docMeta.id,
       target: [{ webid: ANYONE_WEBID, policy, state }]
     }
     await blockCreateShareLink({ variables: { input } })
@@ -75,7 +74,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
     const state: ShareLinkState = shareWithAnonymousValue ? ShareLinkState.Enabled : ShareLinkState.Disabled
     const policy: Policytype = checked ? Policytype.Edit : Policytype.View
     const input: BlockCreateShareLinkInput = {
-      id: blockId,
+      id: docMeta.id,
       target: [{ webid: ANYONE_WEBID, policy, state }]
     }
     await blockCreateShareLink({ variables: { input } })
@@ -83,9 +82,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
     setAnonymousEditableLoading(false)
   }
 
-  const { host } = useContext(BrickdocContext)
-
-  const link = `${host}/${webid}/p/${blockId}`
+  const link = `${docMeta.host}/${docMeta.path}`
   const handleCopy = async (): Promise<void> => {
     await navigator.clipboard.writeText(link)
     void message.success(t('share.copy_hint'))
@@ -126,7 +123,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
         renderItem={(item: ShareLink) => {
           return (
             <List.Item>
-              <ShareLinkListItem blockId={blockId} item={item} />
+              <ShareLinkListItem docMeta={docMeta} item={item} />
             </List.Item>
           )
         }}
@@ -187,13 +184,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ webid, visible, bloc
         overlayClassName={styles.popover}
         onVisibleChange={handleVisibleChange}
       />
-      <InviteModal
-        webid={webid}
-        blockId={blockId}
-        visible={inviteModalVisible}
-        suggestPods={suggestPods}
-        setVisible={setInviteModalVisible}
-      />
+      <InviteModal docMeta={docMeta} visible={inviteModalVisible} suggestPods={suggestPods} setVisible={setInviteModalVisible} />
     </>
   )
 }

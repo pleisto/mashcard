@@ -1,15 +1,14 @@
 /* eslint-disable jsx-a11y/no-autofocus */
+import { BlockIdKind } from '@/BrickdocGraphQL'
+import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { AutoComplete, Button, Input, Modal, SelectProps } from '@brickdoc/design-system'
 import { Search as SearchOutlined } from '@brickdoc/design-system/components/icon'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { useBlockSearch } from '../SearchResult'
 import styles from './styles.module.less'
-interface SearchModalProps {
-  webid: string
-}
 
-export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
+export const SearchModal: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
 
   const [searchModalVisible, setSearchModalVisible] = useState<boolean>(false)
@@ -26,7 +25,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
   const blockSearch = useBlockSearch()
 
   const handleSearch = async (input: string): Promise<void> => {
-    const result = await blockSearch(webid, input)
+    const result = await blockSearch(docMeta.webid, input)
     const options = result.map((block: any) => {
       return {
         value: `${block.rootId}#${block.id}`,
@@ -42,7 +41,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
 
   const onSelect = (value: string): void => {
     setSearchModalVisible(false)
-    globalThis.location.href = `/${webid}/p/${value.split('#')[0]}`
+    globalThis.location.href = `/${docMeta.webid}/${BlockIdKind.P}/${value.split('#')[0]}`
   }
 
   return (
@@ -58,8 +57,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
         title={null}
         footer={null}
         destroyOnClose={true}
-        closable={false}
-      >
+        closable={false}>
         <AutoComplete
           dropdownAlign={{ offset: [0, 0] }}
           className={styles.input}
@@ -67,8 +65,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ webid }) => {
           options={options}
           onSelect={onSelect}
           onSearch={handleSearch}
-          autoFocus={true}
-        >
+          autoFocus={true}>
           <Input placeholder={t('search.placeholder')} size="large" prefix={<SearchOutlined />} />
         </AutoComplete>
       </Modal>

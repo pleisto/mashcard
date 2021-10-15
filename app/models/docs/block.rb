@@ -64,6 +64,26 @@ class Docs::Block < ApplicationRecord
   REBALANCE_GAP = 2**12
   has_many_attached :attachments
 
+  def self.find_by_kind(id, kind, webid)
+    case kind
+    when 'p'
+      o = find_by(id: id)
+      return [o, {}]
+    when 'a'
+      pod = Pod.find_by(webid: webid)
+      return [nil, {}] if pod.nil?
+      a = Docs::Alias.enabled.find_by(pod_id: pod.id, alias: id)
+      return [nil, {}] if a.nil?
+      return [a.block, a.payload]
+    end
+
+    [nil, {}]
+  end
+
+  def create_alias!(a)
+    Docs::Alias.create!(alias: a, block_id: id, pod_id: pod_id)
+  end
+
   def title
     text
   end

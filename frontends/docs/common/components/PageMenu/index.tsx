@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Button, Dropdown, Input, Menu, MenuProps, message, Popover, Tooltip } from '@brickdoc/design-system'
 import { Link, useHistory } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
@@ -8,27 +8,27 @@ import {
   Scalars,
   useBlockCreateMutation,
   useBlockRenameMutation,
-  useBlockPinOrUnpinMutation
+  useBlockPinOrUnpinMutation,
+  BlockIdKind
 } from '@/BrickdocGraphQL'
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
 import { Add, CheckOneFill, Delete, Edit, Link as LinkIcon, More, Star } from '@brickdoc/design-system/components/icon'
 import styles from './styles.module.less'
-import { BrickdocContext } from '@/BrickdocPWA'
+import { DocMeta } from '@/docs/pages/DocumentContentPage'
 
 type UUID = Scalars['UUID']
 
 interface PageMenuProps {
-  webid: string
-  id: UUID
+  docMeta: DocMeta
+  pageId: UUID
   title: Scalars['String']
   enableMenu: boolean
   titleText: string
   pin: boolean
-  docid: string | undefined
 }
 
-export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enableMenu, title, titleText }) => {
+export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }, pageId, pin, enableMenu, title, titleText }) => {
   const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks, queryChildrenBlocks] })
   const history = useHistory()
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
@@ -46,8 +46,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enabl
     refetchQueries: [queryBlockPins]
   })
 
-  const deletePage = async (id: UUID): Promise<void> => {
-    const input: BlockSoftDeleteInput = { id }
+  const deletePage = async (): Promise<void> => {
+    const input: BlockSoftDeleteInput = { id: pageId }
     await blockSoftDelete({ variables: { input } })
   }
 
@@ -56,13 +56,13 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enabl
     const input = { parentId: id, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      history.push(`/${webid}/p/${data?.blockCreate?.id}`)
+      history.push(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
     }
   }
 
   const { t } = useDocsI18n()
-  const { host } = useContext(BrickdocContext)
-  const link = `${host}/${webid}/p/${id}`
+  const linkPath = `/${webid}/${BlockIdKind.P}/${pageId}`
+  const link = `${host}${linkPath}`
 
   const onClickAddButton = (e: { preventDefault: () => void; stopPropagation: () => void }): void => {
     e.preventDefault()
@@ -71,9 +71,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enabl
   }
 
   const onRename = async (e: any): Promise<void> => {
-    const input = { id, title: e.target.value }
+    const input = { id: pageId, title: e.target.value }
     await blockRename({ variables: { input } })
-    if (id === docid) {
+    if (pageId === id) {
       await renameClient.refetchQueries({ include: [queryChildrenBlocks] })
     }
     setPopoverVisible(false)
@@ -86,9 +86,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enabl
   }
 
   const doFavorite = async (): Promise<void> => {
-    const input = { blockId: id, pin: !pin }
+    const input = { blockId: pageId, pin: !pin }
     await blockPinOrUnpin({ variables: { input } })
-    if (id === docid) {
+    if (pageId === id) {
       await pinClient.refetchQueries({ include: [queryBlockInfo] })
     }
     setDropdownVisible(false)
@@ -111,7 +111,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enabl
     return async ({ key }) => {
       switch (key) {
         case 'delete':
-          void deletePage(id)
+          void deletePage()
           break
         case 'copy_link':
           void doCopyLink()
@@ -165,7 +165,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docid, webid, id, pin, enabl
     </Menu>
   )
 
-  const linkData = <Link to={`/${webid}/p/${id}`}>{title}</Link>
+  const linkData = <Link to={linkPath}>{title}</Link>
   if (!enableMenu) {
     return (
       <>

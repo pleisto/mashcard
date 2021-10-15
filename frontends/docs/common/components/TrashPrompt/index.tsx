@@ -5,13 +5,13 @@ import { BlockHardDeleteInput, BlockRestoreInput, useBlockHardDeleteMutation, us
 import { Redirect } from 'react-router-dom'
 import { queryChildrenBlocks } from '@/docs/pages/graphql'
 import { queryPageBlocks } from '../../graphql'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface TrashPromptProps {
-  docid: string
-  webid: string
+  docMeta: NonNullDocMeta
 }
 
-export const TrashPrompt: React.FC<TrashPromptProps> = ({ docid, webid }) => {
+export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid } }) => {
   const { t } = useDocsI18n()
   const [redirectHome, setRedirectHome] = useState<boolean>(false)
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
@@ -32,7 +32,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docid, webid }) => {
 
   const onRestoreClick = async (): Promise<void> => {
     setRestoreButtonLoading(true)
-    const input: BlockRestoreInput = { id: docid }
+    const input: BlockRestoreInput = { id }
     await blockRestore({ variables: { input } })
     setRestoreButtonLoading(false)
   }
@@ -44,7 +44,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docid, webid }) => {
 
   const onConfirmDelete = async (): Promise<void> => {
     setHardDeleteConfirmLoading(true)
-    const input: BlockHardDeleteInput = { id: docid }
+    const input: BlockHardDeleteInput = { id }
     await blockHardDelete({ variables: { input } })
     setHardDeleteModalVisible(false)
     setHardDeleteConfirmLoading(false)
@@ -77,8 +77,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docid, webid }) => {
         confirmLoading={hardDeleteConfirmLoading}
         onCancel={onCancelDelete}
         onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}
-      >
+        visible={hardDeleteModalVisible}>
         {t('trash.delete_confirmation_body')}
       </Modal>
     </>

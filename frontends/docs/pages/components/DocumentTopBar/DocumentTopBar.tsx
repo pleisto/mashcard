@@ -5,38 +5,20 @@ import { Redirect } from 'react-router-dom'
 import { MoreMenu } from '../../../common/components/MoreMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
+import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
 import styles from './DocumentTopBar.module.less'
 import loadingIcon from './loading.png'
 
 export interface DocumentTopBarProps {
-  webid: string
-  docid?: string
+  docMeta: DocMeta
   saving: boolean
-  viewable: boolean
-  shareable: boolean
-  editable: boolean
-  isAnonymous: boolean
-  title: string
-  isDeleted: boolean
-  pin: boolean
 }
 
-export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
-  webid,
-  docid,
-  saving,
-  viewable,
-  title,
-  pin,
-  isDeleted,
-  isAnonymous,
-  editable,
-  shareable
-}) => {
+export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta, saving }) => {
   const { t } = useDocsI18n()
   const [redirectHome, setRedirectHome] = useState<boolean>(false)
 
-  if (!viewable) {
+  if (!docMeta.viewable) {
     return <></>
   }
 
@@ -45,11 +27,11 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
   }
 
   const editableMenu =
-    shareable && !isDeleted && docid ? (
+    docMeta.id && docMeta.shareable && !docMeta.isDeleted ? (
       <div className={styles.menu}>
-        <ShareMenu className={styles.menuItem} id={docid} webid={webid} />
-        <PinMenu className={styles.menuItem} id={docid} pin={pin} webid={webid} />
-        <MoreMenu className={styles.menuItem} id={docid} webid={webid} />
+        <ShareMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+        <PinMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+        <MoreMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
       </div>
     ) : (
       <></>
@@ -60,7 +42,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({
   }
 
   const loginMenu =
-    editable && isAnonymous ? (
+    docMeta.editable && docMeta.isAnonymous ? (
       <div className={styles.menu}>
         <Button type="text" onClick={handleLogin}>
           {t('anonymous.edit_button')}

@@ -16,15 +16,15 @@ import { debounce } from 'lodash-es'
 import styles from './index.module.less'
 import { useImperativeQuery } from '@/common/hooks'
 import { PodCard, PodType } from '../PodCard'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 interface InviteModalProps {
-  webid: string
+  docMeta: NonNullDocMeta
   visible: boolean
-  blockId: string
   suggestPods: PodType[]
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockId, setVisible, suggestPods }) => {
+export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setVisible, suggestPods }) => {
   const { t } = useDocsI18n()
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
   const [inviteButtonLoading, setInviteButtonLoading] = React.useState<boolean>(false)
@@ -56,7 +56,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
     const state: ShareLinkState = ShareLinkState.Enabled
     const policy: Policytype = currentPolicy
     const input: BlockCreateShareLinkInput = {
-      id: blockId,
+      id: docMeta.id,
       target: podValue.map(podValue => ({ webid: podValue.value, policy, state }))
     }
     if (podValue.length) {
@@ -100,13 +100,13 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
       setOptions([])
       setFetching(true)
       const { data } = await podSearch({ input: value })
-      const pods: PodType[] = data?.podSearch?.filter(pod => pod.webid !== webid) ?? []
+      const pods: PodType[] = data?.podSearch?.filter(pod => pod.webid !== docMeta.webid) ?? []
       setOptions(pods)
       setFetching(false)
     }
 
     return debounce(loadOptions, debounceTimeout)
-  }, [podSearch, webid])
+  }, [podSearch, docMeta.webid])
 
   const { Option } = Select
 
@@ -146,8 +146,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
       open={true}
       onChange={newValue => {
         setPodValue(newValue)
-      }}
-    >
+      }}>
       {options.map(pod => (
         <Option key={pod.webid} value={pod.webid}>
           <PodCard pod={pod} />
@@ -188,8 +187,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ webid, visible, blockI
       destroyOnClose={true}
       visible={visible}
       onOk={onCleanup}
-      onCancel={onCleanup}
-    >
+      onCancel={onCleanup}>
       {inviteContent}
     </Modal>
   )

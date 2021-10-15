@@ -825,6 +825,29 @@
           "possibleTypes": null
         },
         {
+          "kind": "ENUM",
+          "name": "BlockIDKind",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "p",
+              "description": "NORMAL",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "a",
+              "description": "ALIAS",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
           "kind": "UNION",
           "name": "BlockIcon",
           "description": "GraphQL",
@@ -980,6 +1003,24 @@
           "description": null,
           "fields": [
             {
+              "name": "id",
+              "description": "id",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "UUID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "isDeleted",
               "description": "is deleted",
               "args": [
@@ -991,6 +1032,24 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "payload",
+              "description": "payload",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -4246,13 +4305,45 @@
               "args": [
                 {
                   "name": "id",
-                  "description": null,
+                  "description": "id",
                   "type": {
                     "kind": "NON_NULL",
                     "name": null,
                     "ofType": {
                       "kind": "SCALAR",
                       "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "webid",
+                  "description": "webid",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null,
+                  "isDeprecated": false,
+                  "deprecationReason": null
+                },
+                {
+                  "name": "kind",
+                  "description": "kind",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "ENUM",
+                      "name": "BlockIDKind",
                       "ofType": null
                     }
                   },

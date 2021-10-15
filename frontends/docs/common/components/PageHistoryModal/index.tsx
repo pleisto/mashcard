@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import { Modal } from '@brickdoc/design-system'
 import { SnapshotList } from '../SnapshotList'
 import styles from './index.module.css'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface PageHistoryModalProps {
-  webid: string
+  docMeta: NonNullDocMeta
   visible: boolean
-  blockId: string
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ webid, visible, blockId, setVisible }) => {
+export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ docMeta, visible, setVisible }) => {
   const [currentVersion, setCurrentVersion] = useState<number | undefined>()
   const [confirmLoading, setConfirmLoading] = React.useState<boolean>(false)
 
@@ -31,11 +31,9 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ webid, visib
       confirmLoading={confirmLoading}
       onOk={onCleanup}
       onCancel={onCleanup}
-      className={styles.modal}
-    >
+      className={styles.modal}>
       <SnapshotList
-        webid={webid}
-        blockId={blockId}
+        docMeta={docMeta}
         currentVersion={currentVersion}
         setCurrentVersion={setCurrentVersion}
         confirmLoading={confirmLoading}

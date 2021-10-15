@@ -3,14 +3,11 @@ import { Add } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import { Button } from '@brickdoc/design-system'
 import { useHistory } from 'react-router'
-import { useBlockCreateMutation } from '@/BrickdocGraphQL'
+import { BlockIdKind, useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../graphql'
+import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
-interface NewPageProps {
-  webid: string
-}
-
-export const NewPage: React.FC<NewPageProps> = ({ webid }) => {
+export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
@@ -22,7 +19,7 @@ export const NewPage: React.FC<NewPageProps> = ({ webid }) => {
     const input = { title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      history.push(`/${webid}/p/${data?.blockCreate?.id}`)
+      history.push(`/${docMeta.webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
     }
   }
 

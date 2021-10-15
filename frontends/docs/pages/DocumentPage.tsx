@@ -10,31 +10,18 @@ import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Redirect } from 'react-router-dom'
+import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 interface DocumentPageProps {
-  docid: string | undefined
-  webid: string
-  snapshotVersion: number
-  editable: boolean
-  isAnonymous?: boolean
-  viewable: boolean
+  docMeta: DocMeta
   onCommit: (doc: Node) => Promise<void>
   setCommitting?: (value: boolean) => void
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({
-  webid,
-  docid,
-  snapshotVersion,
-  editable,
-  isAnonymous,
-  viewable,
-  onCommit,
-  setCommitting
-}) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, setCommitting }) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
   const { data, loading } = useGetChildrenBlocksQuery({
     fetchPolicy: 'no-cache',
-    variables: { rootId: docid as string, snapshotVersion }
+    variables: { rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }
   })
 
   const prepareFileUpload = usePrepareFileUpload()
@@ -69,7 +56,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
   }
 
   // if there is no doc id, document will not have deleted status
-  const [documentEditable, setDocumentEditable] = React.useState(!docid)
+  const [documentEditable, setDocumentEditable] = React.useState(!docMeta.id)
   const [deleted, setDeleted] = React.useState(false)
 
   const editor = useEditor({
@@ -84,14 +71,14 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
   })
 
   React.useEffect(() => {
-    const block = data?.childrenBlocks?.find(block => block.id === docid)
+    const block = data?.childrenBlocks?.find(block => block.id === docMeta.id)
 
     if (block) {
       const deleted = !!block.deletedAt
       setDeleted(deleted)
 
       if (editor) {
-        const nextEditable = editable && !deleted
+        const nextEditable = docMeta.editable && !deleted
         if (editor.options.editable !== nextEditable) {
           editor.options.editable = nextEditable
           editor.view.update(editor.view.props)
@@ -99,7 +86,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
         }
       }
     }
-  }, [data?.childrenBlocks, docid, editor, editable])
+  }, [data?.childrenBlocks, docMeta.id, editor, docMeta.editable])
 
   const createDocAttrsUpdater =
     (field: string) =>
@@ -121,17 +108,15 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
       const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
       childrenBlocks.current = data.childrenBlocks
 
-      console.log({ data, content, docid, snapshotVersion })
-
       if (content.length) {
         editor.commands.replaceRoot(content[0])
       }
     }
-  }, [editor, data, docid, snapshotVersion])
+  }, [editor, data])
 
-  useDocumentSubscription({ docid: docid as string, editor })
+  useDocumentSubscription({ docid: docMeta.id as string, editor })
 
-  if (!viewable) {
+  if (!docMeta.viewable) {
     return <Redirect to="/" />
   }
 
@@ -158,7 +143,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
 
   const PageElement = (
     <>
-      {docid && deleted && <TrashPrompt webid={webid} docid={docid} />}
+      {docMeta.id && deleted && <TrashPrompt docMeta={docMeta as NonNullDocMeta} />}
       <div className={styles.page}>
         {DocumentTitleElement}
         <div className={styles.pageWrap}>
@@ -168,11 +153,11 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({
     </>
   )
 
-  if (!docid) {
+  if (!docMeta.id) {
     return PageElement
   }
 
-  if (isAnonymous && !data?.childrenBlocks?.length) {
+  if (docMeta.isAnonymous && !data?.childrenBlocks?.length) {
     return <Redirect to="/" />
   }
 

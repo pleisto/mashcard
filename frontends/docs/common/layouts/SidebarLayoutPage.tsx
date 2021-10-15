@@ -9,29 +9,25 @@ import { TrashButton } from '../components/TrashButton'
 import { NewPage } from '../components/NewPage'
 import { headerBarVar } from '@/docs/common/reactiveVars'
 import styles from './styles.module.less'
-interface SidebarLayoutPageProps {
-  webid: string
-  docid: string | undefined
-  isAnonymous: boolean
-}
+import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
-export const SidebarLayoutPage: React.FC<SidebarLayoutPageProps> = ({ webid, docid, isAnonymous, children }) => {
+export const SidebarLayoutPage: React.FC<DocMetaProps> = ({ docMeta, children }) => {
   const { t } = useDocsI18n()
   const { Sider, Content, Header } = Layout
 
-  const sider = isAnonymous ? (
+  const sider = docMeta.isAnonymous ? (
     <></>
   ) : (
     <Sider className={styles.sider}>
-      <PodSelect webid={webid} />
-      <SearchModal webid={webid} />
+      <PodSelect docMeta={docMeta} />
+      <SearchModal docMeta={docMeta} />
 
       <div className={styles.scrollArea}>
-        <PageTree webid={webid} docid={docid} />
-        <TrashButton webid={webid} docid={docid} />
+        <PageTree docMeta={docMeta} />
+        <TrashButton docMeta={docMeta} />
       </div>
       <div className={styles.siderFooter}>
-        <NewPage webid={webid} />
+        <NewPage docMeta={docMeta} />
       </div>
     </Sider>
   )

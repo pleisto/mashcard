@@ -60,7 +60,7 @@ class Docs::ShareLink < ApplicationRecord
   end
 
   after_create do
-    deliver_email_later! unless anyone?
+    # deliver_email_later! unless anyone?
   end
 
   def deliver_email_later!

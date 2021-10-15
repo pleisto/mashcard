@@ -6,12 +6,40 @@ import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
 import { useSyncProvider } from './hooks'
 import { BrickdocContext } from '@/BrickdocPWA'
-import { Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
+import { BlockIdKind, Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { headerBarVar } from '@/docs/common/reactiveVars'
 
+export interface DocMeta {
+  id: string | undefined
+  webid: string
+  kind: BlockIdKind
+  alias: string | undefined
+  payload: object
+  snapshotVersion: number
+  isAnonymous: boolean
+  isDeleted: boolean
+  pin: boolean
+  title: string
+  host: string
+  path: string
+  shareable: boolean
+  editable: boolean
+  viewable: boolean
+}
+
+export interface NonNullDocMeta extends DocMeta {
+  id: string
+  alias: string
+}
+
+export interface DocMetaProps {
+  docMeta: DocMeta
+}
+
 export const DocumentContentPage: React.FC = () => {
-  const { webid, docid, snapshotVersion } = useParams<{ webid: string; docid: string | undefined; snapshotVersion: string | undefined }>()
-  const { currentPod, currentUser } = useContext(BrickdocContext)
+  const { webid, docid, snapshotVersion, kind } =
+    useParams<{ webid: string; docid: string | undefined; kind: BlockIdKind; snapshotVersion: string | undefined }>()
+  const { currentPod, currentUser, host } = useContext(BrickdocContext)
   const [committing, setCommitting] = React.useState(false)
   const [onCommit] = useSyncProvider(setCommitting)
 
@@ -19,7 +47,7 @@ export const DocumentContentPage: React.FC = () => {
   const isMine = realWebid === webid
 
   // TODO lazy query
-  const { data, loading } = useGetBlockInfoQuery({ variables: { id: docid as string } })
+  const { data, loading } = useGetBlockInfoQuery({ variables: { id: docid as string, kind, webid } })
   const policy = data?.blockInfo?.permission?.policy
 
   const isAnonymous = !currentUser
@@ -27,48 +55,42 @@ export const DocumentContentPage: React.FC = () => {
   const pin = !!data?.blockInfo?.pin
   const shareable = isMine
   const editable = isMine || policy === Policytype.Edit
-  const realEditable = editable && !isAnonymous
   const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
   const isDeleted = data?.blockInfo?.isDeleted !== false
   const title = data?.blockInfo?.title ?? ''
+  const realid = data?.blockInfo?.id ?? docid
+  const payload = data?.blockInfo?.payload ?? {}
+  const path = `/${webid}/${kind}/${docid}`
+
+  const docMeta: DocMeta = {
+    id: realid,
+    alias: docid,
+    kind,
+    webid,
+    title,
+    payload,
+    isDeleted,
+    pin,
+    host,
+    path,
+    isAnonymous,
+    shareable,
+    editable,
+    viewable,
+    snapshotVersion: Number(snapshotVersion ?? '0')
+  }
 
   if (!loading || isMine) {
-    headerBarVar(
-      <DocumentTopBar
-        editable={editable}
-        viewable={viewable}
-        isAnonymous={isAnonymous}
-        isDeleted={isDeleted}
-        title={title}
-        docid={docid}
-        webid={webid}
-        pin={pin}
-        shareable={shareable}
-        saving={committing}
-      />
-    )
+    headerBarVar(<DocumentTopBar docMeta={docMeta} saving={committing} />)
   }
 
   const content = loading ? (
     <Skeleton active />
   ) : (
-    <DocumentPage
-      webid={webid}
-      docid={docid}
-      snapshotVersion={Number(snapshotVersion ?? '0')}
-      onCommit={onCommit}
-      viewable={viewable}
-      editable={realEditable}
-      isAnonymous={isAnonymous}
-      setCommitting={setCommitting}
-    />
+    <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} onCommit={onCommit} setCommitting={setCommitting} />
   )
 
-  return (
-    <SidebarLayoutPage isAnonymous={isAnonymous} webid={realWebid} docid={docid}>
-      {content}
-    </SidebarLayoutPage>
-  )
+  return <SidebarLayoutPage docMeta={docMeta}>{content}</SidebarLayoutPage>
 }
 
 export default DocumentContentPage

@@ -38,9 +38,11 @@ export const NewPatch = gql`
 `
 
 export const queryBlockInfo = gql`
-  query GetBlockInfo($id: String!) {
-    blockInfo(id: $id) {
+  query GetBlockInfo($id: String!, $webid: String!, $kind: BlockIDKind!) {
+    blockInfo(id: $id, webid: $webid, kind: $kind) {
       title
+      id
+      payload
       isDeleted
       pin
       permission {

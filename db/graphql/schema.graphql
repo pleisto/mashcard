@@ -258,6 +258,18 @@ type BlockHardDeletePayload {
   errors: [String!]!
 }
 
+enum BlockIDKind {
+  """
+  ALIAS
+  """
+  a
+
+  """
+  NORMAL
+  """
+  p
+}
+
 """
 GraphQL
 """
@@ -307,9 +319,19 @@ type BlockImage {
 
 type BlockInfo {
   """
+  id
+  """
+  id: UUID!
+
+  """
   is deleted
   """
   isDeleted: Boolean!
+
+  """
+  payload
+  """
+  payload: JSON!
 
   """
   permission
@@ -1273,7 +1295,22 @@ type RootQuery {
   return single block by id.
   """
   block(id: String!): block
-  blockInfo(id: String!): BlockInfo
+  blockInfo(
+    """
+    id
+    """
+    id: String!
+
+    """
+    kind
+    """
+    kind: BlockIDKind!
+
+    """
+    webid
+    """
+    webid: String!
+  ): BlockInfo
 
   """
   return all pins

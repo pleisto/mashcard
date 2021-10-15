@@ -9,12 +9,9 @@ import styles from './index.module.less'
 import { ProfileModal } from '../ProfileModal'
 import { PodType } from '../PodCard'
 import { ProfileSettingModal } from '../ProfileSettingModal'
+import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
-interface PodSelectProps {
-  webid: string
-}
-
-export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
+export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
@@ -27,7 +24,7 @@ export const PodSelect: React.FC<PodSelectProps> = ({ webid }) => {
     return <Skeleton avatar active paragraph={false} />
   }
 
-  const pod = data?.pods.find(p => p.webid === webid)
+  const pod = data?.pods.find(p => p.webid === docMeta.webid)
 
   if (!pod) {
     console.error('Webid does not match the current user')

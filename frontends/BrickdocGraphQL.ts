@@ -165,6 +165,13 @@ export type BlockHardDeletePayload = {
   errors: Array<Scalars['String']>
 }
 
+export enum BlockIdKind {
+  /** ALIAS */
+  A = 'a',
+  /** NORMAL */
+  P = 'p'
+}
+
 /** GraphQL */
 export type BlockIcon = BlockEmoji | BlockImage
 
@@ -190,8 +197,12 @@ export type BlockImage = {
 
 export type BlockInfo = {
   __typename?: 'BlockInfo'
+  /** id */
+  id: Scalars['UUID']
   /** is deleted */
   isDeleted: Scalars['Boolean']
+  /** payload */
+  payload: Scalars['JSON']
   /** permission */
   permission?: Maybe<ShareLink>
   /** pin */
@@ -809,6 +820,8 @@ export type RootQueryBlockArgs = {
 
 export type RootQueryBlockInfoArgs = {
   id: Scalars['String']
+  kind: BlockIdKind
+  webid: Scalars['String']
 }
 
 export type RootQueryBlockSearchArgs = {
@@ -1854,6 +1867,8 @@ export type NewPatchSubscription = {
 
 export type GetBlockInfoQueryVariables = Exact<{
   id: Scalars['String']
+  webid: Scalars['String']
+  kind: BlockIdKind
 }>
 
 export type GetBlockInfoQuery = {
@@ -1862,6 +1877,8 @@ export type GetBlockInfoQuery = {
     | {
         __typename?: 'BlockInfo'
         title: string
+        id: string
+        payload: any
         isDeleted: boolean
         pin: boolean
         permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
@@ -3735,9 +3752,11 @@ export function useNewPatchSubscription(baseOptions: Apollo.SubscriptionHookOpti
 export type NewPatchSubscriptionHookResult = ReturnType<typeof useNewPatchSubscription>
 export type NewPatchSubscriptionResult = Apollo.SubscriptionResult<NewPatchSubscription>
 export const GetBlockInfoDocument = gql`
-  query GetBlockInfo($id: String!) {
-    blockInfo(id: $id) {
+  query GetBlockInfo($id: String!, $webid: String!, $kind: BlockIDKind!) {
+    blockInfo(id: $id, webid: $webid, kind: $kind) {
       title
+      id
+      payload
       isDeleted
       pin
       permission {
@@ -3762,6 +3781,8 @@ export const GetBlockInfoDocument = gql`
  * const { data, loading, error } = useGetBlockInfoQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      webid: // value for 'webid'
+ *      kind: // value for 'kind'
  *   },
  * });
  */

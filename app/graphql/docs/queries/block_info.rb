@@ -4,16 +4,20 @@ module Docs
   class Queries::BlockInfo < BrickGraphQL::BaseResolver
     type Docs::Objects::BlockInfo, null: true
 
-    argument :id, GraphQL::Types::String, required: true
+    argument :id, GraphQL::Types::String, 'id', required: true
+    argument :webid, GraphQL::Types::String, 'webid', required: true
+    argument :kind, Enums::BlockIDKind, "kind", required: true
 
-    def resolve(id:)
+    def resolve(id:, kind:, webid:)
       return nil if id.blank?
-      block = Docs::Block.find_by(id: id)
+      block, payload = Docs::Block.find_by_kind(id, kind, webid)
       return nil if block.nil?
 
       {
         title: block.title,
+        payload: payload,
         pin: fetch_pin(block),
+        id: block.id,
         is_deleted: !!block.deleted_at,
         permission: permission(block)
       }

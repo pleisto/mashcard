@@ -16,16 +16,12 @@ import { SIZE_GAP } from '@/docs/pages/hooks/useSyncProvider'
 import { queryPageBlocks } from '../../graphql'
 import styles from './PageTree.module.less'
 import { useDocsI18n } from '../../hooks'
+import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
-interface PageTreeProps {
-  webid: string
-  docid: string | undefined
-}
-
-export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
+export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
 
-  const { data } = useGetPageBlocksQuery({ variables: { webid } })
+  const { data } = useGetPageBlocksQuery({ variables: { webid: docMeta.webid } })
 
   const [blockMove] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
@@ -92,7 +88,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
           nextSort: b.nextSort,
           firstChildSort: b.firstChildSort,
           titleText: title,
-          title: <PageMenu enableMenu={enableMenu} docid={docid} pin={pin} id={b.id} title={title} titleText={b.text} webid={webid} />
+          title: <PageMenu docMeta={docMeta} enableMenu={enableMenu} pin={pin} pageId={b.id} title={title} titleText={b.text} />
         }
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
@@ -125,7 +121,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ webid, docid }) => {
 
   const pageTreeData = treeDataSkelecton(pageBlocks, true)
   const pinTreeData = treeDataSkelecton(pinTreeBlocks, false)
-  const selectedKeys = docid ? [docid] : []
+  const selectedKeys = docMeta.id ? [docMeta.id] : []
 
   const pinTree = pinIds.length ? (
     <>

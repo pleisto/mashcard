@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_081045) do
+ActiveRecord::Schema.define(version: 2021_10_14_030448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -108,6 +108,18 @@ ActiveRecord::Schema.define(version: 2021_10_13_081045) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["key", "scope", "domain"], name: "index_brickdoc_configs_on_key_and_scope_and_domain", unique: true
+  end
+
+  create_table "docs_aliases", force: :cascade do |t|
+    t.bigint "pod_id", null: false
+    t.string "alias", null: false
+    t.uuid "block_id", null: false
+    t.json "payload", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "state", default: 0, null: false
+    t.index ["block_id"], name: "index_docs_aliases_on_block_id"
+    t.index ["pod_id", "alias"], name: "index_docs_aliases_on_pod_id_and_alias", unique: true
   end
 
   create_table "docs_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

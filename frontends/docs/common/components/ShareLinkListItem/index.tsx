@@ -13,13 +13,14 @@ import { LineDown } from '@brickdoc/design-system/components/icon'
 import { queryBlockShareLinks } from '../../graphql'
 import styles from './index.module.less'
 import { PodCard, PodType } from '../PodCard'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface ShareLinkListItemProps {
   item: ShareLink
-  blockId: string
+  docMeta: NonNullDocMeta
 }
 
-export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ blockId, item }) => {
+export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, item }) => {
   const { t } = useDocsI18n()
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
 
@@ -40,7 +41,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ blockId, i
         break
     }
     const shareLink: ShareLinkInput = { webid: item.shareWebid, policy, state }
-    const input: BlockCreateShareLinkInput = { id: blockId, target: [shareLink] }
+    const input: BlockCreateShareLinkInput = { id: docMeta.id, target: [shareLink] }
 
     await blockCreateShareLink({ variables: { input } })
   }

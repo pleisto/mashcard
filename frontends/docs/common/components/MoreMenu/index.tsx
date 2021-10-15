@@ -1,13 +1,13 @@
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Button, Icon } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { PageHistoryModal } from '../PageHistoryModal'
 interface MoreMenuProps {
-  id: string
-  webid: string
-  className?: string
+  docMeta: NonNullDocMeta
+  className: string
 }
 
-export const MoreMenu: React.FC<MoreMenuProps> = ({ id, webid, className }) => {
+export const MoreMenu: React.FC<MoreMenuProps> = ({ docMeta, className }) => {
   const [pageHistoryModalVisible, setPageHistoryModalVisible] = useState<boolean>(false)
 
   const onClick = (): void => {
@@ -18,7 +18,7 @@ export const MoreMenu: React.FC<MoreMenuProps> = ({ id, webid, className }) => {
       <Button className={className} type="text" onClick={onClick}>
         <Icon.More />
       </Button>
-      <PageHistoryModal webid={webid} blockId={id} visible={pageHistoryModalVisible} setVisible={setPageHistoryModalVisible} />
+      <PageHistoryModal docMeta={docMeta} visible={pageHistoryModalVisible} setVisible={setPageHistoryModalVisible} />
     </>
   )
 }

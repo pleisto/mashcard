@@ -8,10 +8,10 @@ import { useDocsI18n } from '../../hooks'
 import Pic from '@/common/assets/cloud_brain_2.svg'
 import { queryChildrenBlocks } from '@/docs/pages/graphql'
 import { useSyncProvider } from '@/docs/pages/hooks'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface SnapshotListProps {
-  blockId: string
-  webid: string
+  docMeta: NonNullDocMeta
   currentVersion: number | undefined
   setCurrentVersion: React.Dispatch<React.SetStateAction<number | undefined>>
   confirmLoading: boolean
@@ -20,8 +20,7 @@ interface SnapshotListProps {
 }
 
 export const SnapshotList: React.FC<SnapshotListProps> = ({
-  blockId,
-  webid,
+  docMeta,
   currentVersion,
   setCurrentVersion,
   confirmLoading,
@@ -29,13 +28,13 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   setConfirmLoading
 }) => {
   const { t } = useDocsI18n()
-  const { data } = useGetBlockSnapshotsQuery({ variables: { id: blockId } })
+  const { data } = useGetBlockSnapshotsQuery({ variables: { id: docMeta.id } })
   const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks] })
   const [onCommit] = useSyncProvider()
 
   const onRestore = async (): Promise<void> => {
     setConfirmLoading(true)
-    const input: SnapshotRestoreInput = { blockId, snapshotVersion: currentVersion as number }
+    const input: SnapshotRestoreInput = { blockId: docMeta.id, snapshotVersion: currentVersion as number }
     await snapshotRestore({ variables: { input } })
     onCleanup()
   }
@@ -96,12 +95,8 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   return skelecton(
     <div className={styles.page}>
       <DocumentPage
-        webid={webid}
-        docid={blockId}
-        editable={false}
-        snapshotVersion={currentVersion ?? firstVersion}
+        docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }}
         onCommit={onCommit}
-        viewable={true}
       />
     </div>,
     snapshotData,
