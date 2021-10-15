@@ -32,6 +32,11 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  unless ENV['VITE_PROXY'].present?
+    vite_config = ViteRuby.instance.config
+    config.action_controller.asset_host = "http://#{vite_config.host}:#{vite_config.port}"
+  end
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   # config.active_storage.service = :local
 

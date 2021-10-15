@@ -6,10 +6,7 @@
   },
   "development": {
     "autoBuild": false,
+    "host": "localhost",
     "port": 3036
-  },
-  "test": {
-    "autoBuild": false,
-    "publicOutputDir": "vite-test"
   }
 }

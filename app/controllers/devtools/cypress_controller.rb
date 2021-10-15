@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Devtools::CypressController < Devtools::ApplicationController
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   before_action :cypress_env, :initialize_user
 
   def session_mock

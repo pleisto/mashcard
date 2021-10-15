@@ -16,11 +16,9 @@ describe('tableBlock', () => {
       cy.get('[contenteditable]').type('/table')
       cy.get('button.slash-menu-item:first').click()
 
-      cy.get('.table-block-th:last > button').click()
-      cy.findByText('Column1').should('exist')
-
-      cy.get('.table-block-th:last > button').click()
       cy.findByText('Column2').should('exist')
+      cy.get('.table-block-th:last > button').click()
+      cy.findByText('Column3').should('exist')
     })
 
     it('should update column name', () => {
@@ -28,7 +26,6 @@ describe('tableBlock', () => {
       cy.get('[contenteditable]').type('/table')
       cy.get('button.slash-menu-item:first').click()
 
-      cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
       cy.findAllByDisplayValue('Column1').focus().type('NewColumn')
       cy.findByText('NewColumn').should('exist')
@@ -39,7 +36,6 @@ describe('tableBlock', () => {
       cy.get('[contenteditable]').type('/table')
       cy.get('button.slash-menu-item:first').click()
 
-      cy.get('.table-block-th:last-child > button').click()
       cy.findByText('Column1').click()
       cy.findByText('Delete').click()
       // confirm
@@ -197,7 +193,7 @@ describe('tableBlock', () => {
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
       cy.findByText('Text').trigger('mouseover')
-      cy.findByText('Date range').click({ force: true })
+      cy.findByText('Date Range').click({ force: true })
       cy.get('.table-block-date-range-cell:last').click()
       cy.get('.brk-picker-cell-today').last().click()
       cy.get('.brk-picker-cell-today').last().click()
@@ -214,7 +210,7 @@ describe('tableBlock', () => {
       cy.get('.table-block-th:last > button').click()
       cy.findByText('Column1').click()
       cy.findByText('Text').trigger('mouseover')
-      cy.findByText('Date range').click({ force: true })
+      cy.findByText('Date Range').click({ force: true })
       cy.get('.table-block-date-range-cell:last').click()
       cy.findByText('Include time').click()
       cy.get('.brk-picker-cell-today').click()

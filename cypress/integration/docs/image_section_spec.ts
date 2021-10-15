@@ -55,7 +55,10 @@ describe('imageSection', () => {
 
   it('should show a correctly sized skeleton when loading', () => {
     cy.visit('/')
-    cy.findByText('Add Pages').click()
+
+    const pageTitle = `Image ${Math.random().toString(36).substr(2, 5)}`
+    cy.findAllByPlaceholderText('Untitled').type(pageTitle)
+
     cy.get('[contenteditable]').type('/image')
     cy.get('button.slash-menu-item:first').click()
     cy.findByText('Add an image').click()
@@ -68,7 +71,10 @@ describe('imageSection', () => {
     const skeletonSelector = '.brickdoc-block-image-section-container .brk-skeleton'
     cy.get(skeletonSelector).should('exist').invoke('width').should('eq', 700)
     cy.wait('@gql:blockSyncBatch').reload()
-    cy.get(skeletonSelector).invoke('width').should('eq', 200)
-    cy.get(skeletonSelector).invoke('height').should('eq', 300)
+
+    cy.findByText(pageTitle).click()
+    const imageSelector = '.brickdoc-block-image-section-container .image-section-control-panel'
+    cy.get(imageSelector).invoke('width').should('eq', 200)
+    cy.get(imageSelector).invoke('height').should('eq', 300)
   })
 })

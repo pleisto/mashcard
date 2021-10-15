@@ -13,7 +13,7 @@ describe('bubbleMenu', () => {
     cy.get('[contenteditable]').type('{selectAll}')
     cy.findAllByRole('menuitem').last().click()
     cy.findByPlaceholderText('Paste link').type(link)
-    cy.findByText('Link to URL').click()
+    cy.findByText('Link to url').click()
     cy.get('[contenteditable] a').should('have.attr', 'href').and('equal', link)
   })
 
@@ -51,7 +51,7 @@ describe('bubbleMenu', () => {
     cy.get('[contenteditable]').type('{selectAll}')
     cy.findAllByRole('menuitem').last().click()
     cy.findByPlaceholderText('Paste link').type(link)
-    cy.findByText('Link to URL').click()
+    cy.findByText('Link to url').click()
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(500)
     cy.get('[contenteditable]').type('{selectAll}')
