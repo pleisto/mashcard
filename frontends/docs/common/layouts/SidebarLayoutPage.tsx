@@ -38,7 +38,7 @@ export const SidebarLayoutPage: React.FC<DocMetaProps> = ({ docMeta, children })
       <div className={styles.acrylicBg}>
         <Layout>
           {sider}
-          <Layout>
+          <Layout className={styles.main}>
             <Header>{headerBarVar()}</Header>
             <Content className={styles.content}>{children}</Content>
           </Layout>
