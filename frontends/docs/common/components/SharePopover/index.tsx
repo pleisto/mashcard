@@ -82,7 +82,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     setAnonymousEditableLoading(false)
   }
 
-  const link = `${docMeta.host}/${docMeta.path}`
+  const link = `${docMeta.host}${docMeta.path}`
   const handleCopy = async (): Promise<void> => {
     await navigator.clipboard.writeText(link)
     void message.success(t('share.copy_hint'))
