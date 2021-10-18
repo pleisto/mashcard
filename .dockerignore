@@ -26,8 +26,6 @@ storybook-static/
 /storage/
 /public/uploads/
 /spec/
-/packages/brickdoc-design-system/docs/
-/packages/brickdoc-design-system/.storybook/
 /junit-reports/
 /packages/*/spec/
 /gems/*/spec/
