@@ -1,10 +1,10 @@
 import React from 'react'
 import { Add } from '@brickdoc/design-system/components/icon'
-import { useDocsI18n } from '../../hooks'
+import { useDocsI18n } from '../../../common/hooks'
 import { Button } from '@brickdoc/design-system'
 import { useHistory } from 'react-router'
 import { BlockIdKind, useBlockCreateMutation } from '@/BrickdocGraphQL'
-import { queryPageBlocks } from '../../graphql'
+import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
 export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {

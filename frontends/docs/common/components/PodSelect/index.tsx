@@ -1,14 +1,13 @@
 import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import { BrickdocContext } from '@/BrickdocPWA'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
 import { Dropdown, Skeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
-import { PodAvatar } from '../PodAvatar'
+import { PodCard } from '@/common/components/PodCard'
 import { Setting, Change } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
 import { ProfileModal } from '../ProfileModal'
-import { PodType } from '../PodCard'
-import { ProfileSettingModal } from '../ProfileSettingModal'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
 export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
@@ -16,9 +15,8 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { loading, data } = useGetPodsQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
-  const [profileModalVisible, setProfileModalVisible] = useState<boolean>(false)
-  const [profileWebid, setProfileWebid] = useState<undefined | string>(undefined)
   const { currentUser } = useContext(BrickdocContext)
+  const history = useHistory()
 
   if (loading || signOutLoading) {
     return <Skeleton avatar active paragraph={false} />
@@ -31,6 +29,13 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
     return <></>
   }
 
+  const onClickPodSetting = (webid: string): ButtonProps['onClick'] => {
+    return (event): void => {
+      void event.stopPropagation()
+      history.push(`/${webid}/settings/general`)
+    }
+  }
+
   const onClick: MenuProps['onClick'] = async ({ key }) => {
     const signOutInput: UserSignOutInput = {}
     switch (key) {
@@ -39,7 +44,7 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
         break
       case 'logout':
         void (await userSignOut({ variables: { input: signOutInput } }))
-        window.location.href = '/'
+        history.push('/accounts/sign_in')
         break
       default:
         if (key.startsWith('pod-')) {
@@ -53,30 +58,15 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
     }
   }
 
-  const onClickPodSetting = (pod: PodType): ButtonProps['onClick'] => {
-    return (event): void => {
-      void event.stopPropagation()
-
-      setProfileWebid(pod.webid)
-      setProfileModalVisible(true)
-    }
-  }
-
   const dropdown = (
     <Menu onClick={onClick} selectedKeys={[`pod-${pod.webid}`]}>
       <Menu.ItemGroup title={<small>@{currentUser?.webid ?? 'undefined'}</small>}>
         {data?.pods.map(pod => (
           <Menu.Item key={`pod-${pod.webid}`}>
             <div className={styles.menu}>
-              <div className={styles.podInfo}>
-                <PodAvatar pod={pod} />
-                <div className={styles.name}>
-                  {pod.name}
-                  {currentUser?.webid === pod.webid && <div className={styles.podLabel}>Personal Pod</div>}
-                </div>
-              </div>
+              <PodCard pod={pod} label={pod.personal ? 'Personal Pod' : false} />
               <Tooltip title={t(pod.personal ? 'user_setting.text' : 'pod_setting.text')}>
-                <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(pod)}>
+                <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(pod.webid)}>
                   <Setting />
                 </Button>
               </Tooltip>
@@ -97,12 +87,7 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
     <>
       <Dropdown trigger={['click']} overlay={dropdown} overlayClassName={styles.overlay} placement="bottomLeft">
         <div className={styles.select}>
-          <div className={styles.pod}>
-            <PodAvatar pod={pod} />
-            <div className={styles.name}>
-              <span>{pod.name}</span>
-            </div>
-          </div>
+          <PodCard pod={pod} label={false} />
           <div className={styles.icon}>
             <Change />
           </div>
@@ -115,7 +100,6 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
         visible={modalCreateVisible}
         setVisible={setModalCreateVisible}
       />
-      <ProfileSettingModal webid={profileWebid} visible={profileModalVisible} setVisible={setProfileModalVisible} />
     </>
   )
 }

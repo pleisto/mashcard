@@ -1,7 +1,7 @@
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Avatar, Tooltip } from '@brickdoc/design-system'
 import React from 'react'
-import { PodAvatar } from '../PodAvatar'
+import { PodAvatar } from '@/common/components/PodAvatar'
 
 interface CollaboratorsMenuProps {
   docMeta: NonNullDocMeta

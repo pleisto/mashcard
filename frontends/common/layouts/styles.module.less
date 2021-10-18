@@ -1,7 +1,7 @@
 /* stylelint-disable no-descending-specificity */
 @import '@brickdoc/design-system/components/style/themes';
 .acrylicBg {
-  background: url('~/docs/common/assets/acrylic.svg') no-repeat fixed center center;
+  background: url('~/common/assets/acrylic.svg') no-repeat fixed center center;
   background-size: cover, cover;
   background-clip: border-box;
   height: 100vh;
@@ -25,25 +25,31 @@
 
 .sider {
   height: 100vh;
-}
 
-.siderFooter {
-  margin-top: auto;
-  bottom: 1rem;
-  left: 0;
-  padding: 0 0.5rem;
-  position: absolute;
-  width: 100%;
-}
+  footer {
+    margin-top: auto;
+    bottom: 1rem;
+    left: 0;
+    padding: 0 0.5rem;
+    position: absolute;
+    width: 100%;
+  }
 
-.scrollArea {
-  max-height: 60%;
-  overflow: scroll;
+  nav {
+    max-height: 60%;
+    overflow: scroll;
+    h2 {
+      font-weight: unset;
+      font-size: 1rem;
+      padding: 0.5rem 1rem 0;
+      color: @text-color-secondary;
+    }
+  }
 }
 
 .sider :global(.brk-layout-sider-children > .brk-btn-text),
-.scrollArea > :global(.brk-btn-text),
-.siderFooter :global(.brk-btn-text) {
+.sider nav > :global(.brk-btn-text),
+.sider footer :global(.brk-btn-text) {
   border: 0;
   padding: 0.375rem 1rem;
   height: auto;

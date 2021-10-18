@@ -1,13 +1,19 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { Skeleton } from '@brickdoc/design-system'
-import { SidebarLayoutPage } from '../common/layouts/SidebarLayoutPage'
+import { SidebarLayoutPage } from '@/common/layouts/SidebarLayoutPage'
 import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
 import { useSyncProvider } from './hooks'
 import { BrickdocContext } from '@/BrickdocPWA'
+import { PageTree } from '@/docs/common/components/PageTree'
+import { PodSelect } from '@/docs/common/components/PodSelect'
+import { SearchModal } from '@/docs/common/components/SearchModal'
+import { TrashButton } from '@/docs/common/components/TrashButton'
+import { NewPage } from './components/NewPage'
+import { Helmet } from 'react-helmet-async'
 import { BlockIdKind, GetBlockInfoQuery, Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
-import { headerBarVar } from '@/docs/common/reactiveVars'
+import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 
@@ -85,17 +91,39 @@ export const DocumentContentPage: React.FC = () => {
     snapshotVersion: Number(snapshotVersion ?? '0')
   }
 
+  // HeaderBar
   if (!loading || isMine) {
     headerBarVar(<DocumentTopBar docMeta={docMeta} saving={committing} />)
+  }
+
+  // SideBar
+  if (!docMeta.isAnonymous) {
+    siderBarVar(
+      <>
+        <PodSelect docMeta={docMeta} />
+        <SearchModal docMeta={docMeta} />
+
+        <nav>
+          <PageTree docMeta={docMeta} />
+          <TrashButton docMeta={docMeta} />
+        </nav>
+        <footer>
+          <NewPage docMeta={docMeta} />
+        </footer>
+      </>
+    )
   }
 
   const content = loading ? (
     <Skeleton active />
   ) : (
-    <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} onCommit={onCommit} setCommitting={setCommitting} />
+    <>
+      <Helmet title={docMeta.title} />
+      <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} onCommit={onCommit} setCommitting={setCommitting} />
+    </>
   )
 
-  return <SidebarLayoutPage docMeta={docMeta}>{content}</SidebarLayoutPage>
+  return <SidebarLayoutPage>{content}</SidebarLayoutPage>
 }
 
 export default DocumentContentPage

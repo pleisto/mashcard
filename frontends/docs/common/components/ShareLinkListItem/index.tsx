@@ -12,7 +12,7 @@ import { useDocsI18n } from '../../hooks'
 import { LineDown } from '@brickdoc/design-system/components/icon'
 import { queryBlockShareLinks } from '../../graphql'
 import styles from './index.module.less'
-import { PodCard, PodType } from '../PodCard'
+import { PodCard, PodType } from '@/common/components/PodCard'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface ShareLinkListItemProps {

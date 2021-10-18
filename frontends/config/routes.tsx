@@ -2,12 +2,14 @@ import { FC, lazy } from 'react'
 import { Redirect } from 'react-router-dom'
 import { renderRoutes, RouteConfig, RouteConfigComponentProps } from 'react-router-config'
 import { PanelLayoutPage } from '@/accounts/common/layouts/PanelLayoutPage'
+import { LayoutPage as SettingsLayoutPage } from '@/accounts/settings/LayoutPage'
 
 const SignInPage = lazy(async () => await import('@/accounts/sessions/SignInPage'))
 const SignUpPage = lazy(async () => await import('@/accounts/sessions/SignUpPage'))
 const EditPasswordPage = lazy(async () => await import('@/accounts/passwords/EditPasswordPage'))
 const ForgetPasswordPage = lazy(async () => await import('@/accounts/passwords/ForgetPasswordPage'))
 const DocumentContentPage = lazy(async () => await import('@/docs/pages/DocumentContentPage'))
+const GeneralSettingsPage = lazy(async () => await import('@/accounts/settings/GeneralPage'))
 
 interface routeRule extends RouteConfig {
   beforeAction?: FC<RouteConfigComponentProps> | undefined
@@ -65,8 +67,20 @@ export const routeConfig = (context: BrickdocContext): JSX.Element => {
         }
       ]
     },
-    // Docs
 
+    // Settings
+    {
+      path: '/:webid/settings',
+      component: SettingsLayoutPage,
+      beforeAction: authenticateUser,
+      routes: [
+        {
+          path: '/:webid/settings/general',
+          component: GeneralSettingsPage
+        }
+      ]
+    },
+    // Docs
     {
       path: '/:webid/:kind/:docid',
       exact: true,

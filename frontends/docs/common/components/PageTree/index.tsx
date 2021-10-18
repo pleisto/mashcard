@@ -156,7 +156,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   const pinTree = pinTreeBlocks.length ? (
     <>
-      Pin
+      <h2>Pin</h2>
       {treeElement(pinTreeBlocks, false)}
       <Divider />
     </>
@@ -167,7 +167,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   return pageBlocks.length ? (
     <>
       {pinTree}
-      Pages
+      <h2>Pages</h2>
       {treeElement(pageBlocks, draggable)}
     </>
   ) : (

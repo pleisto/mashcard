@@ -7,13 +7,16 @@ export interface PodType {
   webid: string
   email?: string | null | undefined
   avatarData?: { __typename?: 'avatar'; url: string } | null | undefined
+  personal?: boolean
 }
 
 interface PodCardProps {
   pod: PodType
+  label?: JSX.Element | string | false
 }
 
-export const PodCard: React.FC<PodCardProps> = ({ pod }) => {
+export const PodCard: React.FC<PodCardProps> = ({ pod, label }) => {
+  const extra = label !== false && (label ?? (pod.personal ? pod.email : `@${pod.webid}`))
   return (
     <div className={styles.card}>
       <div className={styles.avatarWrapper}>
@@ -21,7 +24,7 @@ export const PodCard: React.FC<PodCardProps> = ({ pod }) => {
       </div>
       <div className={styles.content}>
         <span className={styles.name}>{pod.name}</span>
-        {pod.email && <span className={styles.email}>{pod.email}</span>}
+        {extra && <span className={styles.email}>{extra}</span>}
       </div>
     </div>
   )

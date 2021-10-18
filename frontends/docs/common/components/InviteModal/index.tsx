@@ -15,7 +15,7 @@ import { queryBlockShareLinks } from '../../graphql'
 import { debounce } from 'lodash-es'
 import styles from './index.module.less'
 import { useImperativeQuery } from '@/common/hooks'
-import { PodCard, PodType } from '../PodCard'
+import { PodCard, PodType } from '@/common/components/PodCard'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 interface InviteModalProps {
   docMeta: NonNullDocMeta
@@ -146,7 +146,8 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       open={true}
       onChange={newValue => {
         setPodValue(newValue)
-      }}>
+      }}
+    >
       {options.map(pod => (
         <Option key={pod.webid} value={pod.webid}>
           <PodCard pod={pod} />
@@ -187,7 +188,8 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       destroyOnClose={true}
       visible={visible}
       onOk={onCleanup}
-      onCancel={onCleanup}>
+      onCancel={onCleanup}
+    >
       {inviteContent}
     </Modal>
   )
