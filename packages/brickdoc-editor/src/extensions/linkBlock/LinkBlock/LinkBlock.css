@@ -150,6 +150,7 @@
       -webkit-box-orient: vertical;
       white-space: normal;
       word-break: break-all;
+      word-wrap: anywhere;
     }
 
     & .link-block-description {
@@ -163,6 +164,7 @@
       -webkit-box-orient: vertical;
       white-space: normal;
       word-break: break-all;
+      word-wrap: anywhere;
     }
 
     & .link-block-url {
@@ -170,6 +172,9 @@
       line-height: 16px;
       color: #292333;
       font-weight: 500;
+      white-space: normal;
+      word-break: break-all;
+      word-wrap: anywhere;
     }
   }
 }
