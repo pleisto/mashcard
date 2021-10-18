@@ -730,14 +730,13 @@ ar-SA:
       hard_delete_action: Delete permanently
     share:
       menu: مشاركة
-      share_to_web: شارك لـ
+      share_to_web: شارك لـ 
       share_to_web_description: Publish and share link with anyone
       allow_edit: السماح بالتعديل
       learn: Learn about sharing
       copy_link_button: نسخ الارتباط
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: دعـوة
-      copy: Copy
       copy_hint: Share link copied
       tooltip: share or publish to the web
     invite:

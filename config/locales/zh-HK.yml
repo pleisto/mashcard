@@ -652,7 +652,6 @@ zh-HK:
       copy_link_button: Copy link
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: 邀請
-      copy: Copy
       copy_hint: Share link copied
       tooltip: share or publish to the web
     invite:
@@ -842,7 +841,7 @@ zh-HK:
         text: 篩選
         title: Filter for My All Data
         remove: Remove
-        duplicate: 複製
+        duplicate: 複製 
         where: Where
         add_a_filter: Add a filter
         add_a_filter_group: Add a filter group

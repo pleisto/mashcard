@@ -170,7 +170,7 @@ io-EN:
               secured_uri: 'crwdns2287:0crwdne2287:0'
               forbidden_uri: 'crwdns2289:0crwdne2289:0'
             scopes:
-              not_match_configured: 'crwdns2291:0crwdne2291:0'
+              not_match_configured: "crwdns2291:0crwdne2291:0"
       messages:
         record_invalid: 'crwdns2293:0%{errors}crwdne2293:0'
         restrict_dependent_destroy:
@@ -473,7 +473,7 @@ io-EN:
       help:
         confidential: 'crwdns2689:0crwdne2689:0'
         redirect_uri: 'crwdns2691:0crwdne2691:0'
-        blank_redirect_uri: 'crwdns2693:0crwdne2693:0'
+        blank_redirect_uri: "crwdns2693:0crwdne2693:0"
         scopes: 'crwdns2695:0crwdne2695:0'
       edit:
         title: 'crwdns2697:0crwdne2697:0'
@@ -542,7 +542,7 @@ io-EN:
           unknown: 'crwdns2777:0crwdne2777:0'
           missing_param: 'crwdns2779:0%{value}crwdne2779:0'
           request_not_authorized: 'crwdns2781:0crwdne2781:0'
-        invalid_redirect_uri: 'crwdns2783:0crwdne2783:0'
+        invalid_redirect_uri: "crwdns2783:0crwdne2783:0"
         unauthorized_client: 'crwdns2785:0crwdne2785:0'
         access_denied: 'crwdns2787:0crwdne2787:0'
         invalid_scope: 'crwdns2789:0crwdne2789:0'
@@ -617,8 +617,8 @@ io-EN:
       invalid_pod_webid: 'crwdns2885:0crwdne2885:0'
       pod_has_already_switched: 'crwdns2887:0crwdne2887:0'
       pod_exist: 'crwdns2889:0crwdne2889:0'
-      user_not_exist: 'crwdns2891:0crwdne2891:0'
-      pod_not_exist: 'crwdns2893:0crwdne2893:0'
+      user_not_exist: "crwdns2891:0crwdne2891:0"
+      pod_not_exist: "crwdns2893:0crwdne2893:0"
   docs:
     app_title: crwdns2895:0crwdne2895:0
     saving: crwdns2897:0crwdne2897:0
@@ -669,7 +669,6 @@ io-EN:
       copy_link_button: crwdns2947:0crwdne2947:0
       invite_placeholder: crwdns2949:0crwdne2949:0
       invite_button: crwdns2951:0crwdne2951:0
-      copy: crwdns2953:0crwdne2953:0
       copy_hint: crwdns3247:0crwdne3247:0
       tooltip: crwdns3301:0crwdne3301:0
     invite:
