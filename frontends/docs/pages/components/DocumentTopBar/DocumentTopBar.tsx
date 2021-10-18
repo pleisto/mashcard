@@ -1,3 +1,4 @@
+import { CollaboratorsMenu } from '@/docs/common/components/CollaboratorsMenu'
 import { PinMenu } from '@/docs/common/components/PinMenu'
 import { Button } from '@brickdoc/design-system'
 import React, { useState } from 'react'
@@ -29,6 +30,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta, saving 
   const editableMenu =
     docMeta.id && docMeta.shareable && !docMeta.isDeleted ? (
       <div className={styles.menu}>
+        <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
         <ShareMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
         <PinMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
         <MoreMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />

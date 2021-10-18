@@ -6,8 +6,10 @@ import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
 import { useSyncProvider } from './hooks'
 import { BrickdocContext } from '@/BrickdocPWA'
-import { BlockIdKind, Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
+import { BlockIdKind, GetBlockInfoQuery, Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { headerBarVar } from '@/docs/common/reactiveVars'
+
+type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 
 export interface DocMeta {
   id: string | undefined
@@ -22,6 +24,7 @@ export interface DocMeta {
   title: string
   host: string
   path: string
+  collaborators: Collaborator[]
   shareable: boolean
   editable: boolean
   viewable: boolean
@@ -60,6 +63,7 @@ export const DocumentContentPage: React.FC = () => {
   const title = data?.blockInfo?.title ?? ''
   const realid = data?.blockInfo?.id ?? docid
   const payload = data?.blockInfo?.payload ?? {}
+  const collaborators = data?.blockInfo?.collaborators ?? []
   const path = `/${webid}/${kind}/${docid}`
 
   const docMeta: DocMeta = {
@@ -77,6 +81,7 @@ export const DocumentContentPage: React.FC = () => {
     shareable,
     editable,
     viewable,
+    collaborators,
     snapshotVersion: Number(snapshotVersion ?? '0')
   }
 

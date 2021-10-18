@@ -8,6 +8,7 @@ module Docs
       field :pin, Boolean, 'pin', null: false
       field :payload, GraphQL::Types::JSON, 'payload', null: false
       field :permission, ShareLink, 'permission', null: true
+      field :collaborators, [System::Objects::Pod], 'pod', null: false
     end
   end
 end

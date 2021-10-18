@@ -154,7 +154,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
       }
     })
 
-  const pinTree = pinIds.length ? (
+  const pinTree = pinTreeBlocks.length ? (
     <>
       Pin
       {treeElement(pinTreeBlocks, false)}

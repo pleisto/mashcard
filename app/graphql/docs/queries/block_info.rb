@@ -19,7 +19,8 @@ module Docs
         pin: fetch_pin(block),
         id: block.id,
         is_deleted: !!block.deleted_at,
-        permission: permission(block)
+        permission: permission(block),
+        collaborators: collaborators(block)
       }
     end
 
@@ -45,6 +46,12 @@ module Docs
 
         share_links.find { |s| s.share_webid == current_pod.fetch('webid') }
       end
+    end
+
+    def collaborators(block)
+      return [] if block.collaborators.length <= 1
+
+      Accounts::User.where(id: block.collaborators).includes(personal_pod: :avatar_attachment)
     end
   end
 end

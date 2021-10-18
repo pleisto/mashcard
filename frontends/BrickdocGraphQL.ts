@@ -197,6 +197,8 @@ export type BlockImage = {
 
 export type BlockInfo = {
   __typename?: 'BlockInfo'
+  /** pod */
+  collaborators: Array<Pod>
   /** id */
   id: Scalars['UUID']
   /** is deleted */
@@ -1882,6 +1884,13 @@ export type GetBlockInfoQuery = {
         isDeleted: boolean
         pin: boolean
         permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
+        collaborators: Array<{
+          __typename?: 'pod'
+          name?: string | null | undefined
+          webid: string
+          email?: string | null | undefined
+          avatarData?: { __typename?: 'avatar'; url: string } | null | undefined
+        }>
       }
     | null
     | undefined
@@ -3763,6 +3772,14 @@ export const GetBlockInfoDocument = gql`
         key
         policy
         state
+      }
+      collaborators {
+        name
+        webid
+        email
+        avatarData {
+          url
+        }
       }
     }
   }

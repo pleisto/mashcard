@@ -50,6 +50,14 @@ export const queryBlockInfo = gql`
         policy
         state
       }
+      collaborators {
+        name
+        webid
+        email
+        avatarData {
+          url
+        }
+      }
     }
   }
 `

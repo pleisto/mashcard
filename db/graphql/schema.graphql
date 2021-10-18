@@ -319,6 +319,11 @@ type BlockImage {
 
 type BlockInfo {
   """
+  pod
+  """
+  collaborators: [pod!]!
+
+  """
   id
   """
   id: UUID!
