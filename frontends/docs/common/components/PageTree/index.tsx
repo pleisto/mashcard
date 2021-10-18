@@ -33,15 +33,20 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   const pinIds = pinData?.blockPins?.map(pin => pin.blockId) ?? []
 
   const getTitle = (block: BlockType): string => {
-    const emoji = block.meta.icon?.type === Blocktype.Emoji ? (block.meta.icon as BlockEmoji).emoji : ''
     const text = block.text
-    if (emoji) {
-      return `${emoji} ${text}`
-    } else if (/^\s*$/.test(text)) {
+    if (/^\s*$/.test(text)) {
       return t('title.untitled')
     } else {
       return text
     }
+  }
+
+  const getIcon = (block: BlockType): string | null => {
+    if (block.meta.icon?.type === Blocktype.Emoji) {
+      return (block.meta.icon as BlockEmoji).emoji
+    }
+
+    return null
   }
 
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
@@ -71,41 +76,59 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     setDraggable(true)
   }
 
+  const titleRender = (node: any): React.ReactElement => {
+    const pin = pinIds.includes(node.key)
+    return (
+      <PageMenu
+        docMeta={docMeta}
+        selectedKeys={selectedKeys}
+        setSelectedKeys={setSelectedKeys}
+        pin={pin}
+        pageId={node.key}
+        title={node.fakeIcon ? `${node.fakeIcon} ${node.title}` : node.title}
+        titleText={node.text}
+      />
+    )
+  }
+
   // TODO fix type
-  const treeDataSkelecton = (blocks: BlockType[]): any => {
-    if (!blocks) {
-      return []
+  const treeElement = (blocks: BlockType[], draggable: boolean): React.ReactElement => {
+    if (!blocks.length) {
+      return <></>
     }
     const flattedData = blocks
       .map(b => {
-        // const data: BlockData = i.data
         const title = getTitle(b)
-        const pin = pinIds.includes(b.id)
         return {
           key: b.id,
           value: b.id,
           parentId: b.parentId,
-          type: b.type,
           sort: b.sort,
+          // icon: getIcon(b), TODO fix style
+          fakeIcon: getIcon(b),
           nextSort: b.nextSort,
           firstChildSort: b.firstChildSort,
-          titleText: title,
-          title: (
-            <PageMenu
-              docMeta={docMeta}
-              selectedKeys={selectedKeys}
-              setSelectedKeys={setSelectedKeys}
-              pin={pin}
-              pageId={b.id}
-              title={title}
-              titleText={b.text}
-            />
-          )
+          text: b.text,
+          title
         }
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
     const treeData = array2Tree(flattedData, { id: 'key' })
-    return treeData
+    return (
+      <Tree
+        className={styles.tree}
+        selectedKeys={selectedKeys}
+        blockNode={false}
+        showIcon={true}
+        selectable={true}
+        // expandedKeys={selectedKeys}
+        treeData={treeData}
+        defaultExpandAll
+        draggable={draggable}
+        onDrop={onDrop}
+        titleRender={titleRender}
+      />
+    )
   }
 
   const pageBlocks = data?.pageBlocks ?? []
@@ -131,41 +154,23 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
       }
     })
 
-  const pageTreeData = treeDataSkelecton(pageBlocks)
-  const pinTreeData = treeDataSkelecton(pinTreeBlocks)
-
-  console.log({ label: 'TODO remove me', selectedKeys })
-
   const pinTree = pinIds.length ? (
     <>
       Pin
-      <Tree
-        className={styles.tree}
-        selectedKeys={selectedKeys}
-        // expandedKeys={selectedKeys}
-        treeData={pinTreeData}
-        defaultExpandAll
-        draggable={false}
-      />
+      {treeElement(pinTreeBlocks, false)}
       <Divider />
     </>
   ) : (
     <></>
   )
 
-  return (
+  return pageBlocks.length ? (
     <>
       {pinTree}
       Pages
-      <Tree
-        className={styles.tree}
-        selectedKeys={selectedKeys}
-        treeData={pageTreeData}
-        // expandedKeys={selectedKeys}
-        defaultExpandAll
-        draggable={draggable}
-        onDrop={onDrop}
-      />
+      {treeElement(pageBlocks, draggable)}
     </>
+  ) : (
+    <></>
   )
 }

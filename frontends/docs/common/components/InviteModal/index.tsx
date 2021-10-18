@@ -110,7 +110,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
 
   const { Option } = Select
 
-  const tagRender = (props: { label: any; value: any; closable: any; onClose: any }): any => {
+  const tagRender = (props: { label: any; value: any; closable: any; onClose: any }): React.ReactElement => {
     const { value, closable, onClose } = props
     return (
       <Tag closable={closable} onClose={onClose} className={styles.tag}>

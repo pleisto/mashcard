@@ -24,7 +24,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
     setSearchObject({ ...searchObject, [key]: value })
   }
 
-  const tabPaneSkelecton = (tab: string, key: string, docid: string | null): any => {
+  const tabPaneSkelecton = (tab: string, key: string, docid: string | null): React.ReactElement => {
     return (
       <Tabs.TabPane tab={tab} key={key}>
         <Input.Search

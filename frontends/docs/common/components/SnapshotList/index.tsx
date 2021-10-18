@@ -39,7 +39,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
     onCleanup()
   }
 
-  const skelecton = (page: any, snapshots: any, disabled: boolean): any => {
+  const skelecton = (page: any, snapshots: any, disabled: boolean): React.ReactElement => {
     return (
       <div className={styles.container}>
         <div className={styles.contentWrapper}>{page}</div>

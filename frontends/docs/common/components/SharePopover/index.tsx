@@ -90,14 +90,6 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
 
   const allowEditContent = shareWithAnonymousValue ? (
     <>
-      <div className={styles.row}>
-        <div role="button" tabIndex={-1} className={styles.inputWrapper} onClick={handleCopy}>
-          <Input className={styles.input} value={link} />
-          <Button className={styles.inputButton} type="text">
-            {t('share.copy')}
-          </Button>
-        </div>
-      </div>
       <div className={cx(styles.row, styles.bordered)}>
         <div className={styles.content}>
           <span className={styles.head}>{t('share.allow_edit')}</span>

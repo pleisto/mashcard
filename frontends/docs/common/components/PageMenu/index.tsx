@@ -195,7 +195,11 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     </Menu>
   )
 
-  const linkData = <Link to={linkPath}>{title}</Link>
+  const linkData = (
+    <Link to={linkPath} className={styles.title}>
+      {title}
+    </Link>
+  )
 
   return (
     <>

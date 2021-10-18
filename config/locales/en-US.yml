@@ -669,7 +669,6 @@ en-US:
       copy_link_button: Copy link
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: Invite
-      copy: Copy
       copy_hint: Share link copied
       tooltip: share or publish to the web
     invite:
