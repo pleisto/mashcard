@@ -44,7 +44,7 @@ export const DateRangeCell: React.FC<DateRangeCellProps> = props => {
   }
 
   const includeTime = cell.column.dateIncludeTime
-  const defaultFormat = `YYYY/MM/dd${includeTime ? ' HH:mm:ss' : ''}`
+  const defaultFormat = `YYYY/MM/DD${includeTime ? ' HH:mm:ss' : ''}`
   const startDate = value?.[0]
   const endDate = value?.[1]
 
