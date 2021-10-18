@@ -264,21 +264,6 @@ Array [
 `)
     })
 
-    it('clicks Random Button will pick an emoji randomly', () => {
-      const options: DashboardPluginOptions = {
-        target: {} as any,
-        importSources: sources,
-        fileType: 'image',
-        onUploaded: jest.fn()
-      }
-
-      render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
-
-      fireEvent.click(screen.getByText('Random'))
-
-      expect(options.onUploaded).toHaveBeenCalledTimes(1)
-    })
-
     it('clicks Remove Button will trigger remove action', () => {
       const options: DashboardPluginOptions = {
         target: {} as any,

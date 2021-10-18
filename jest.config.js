@@ -20,7 +20,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
   timers: 'fake',
-  testMatch: ['**/dist/**/__tests__/**/*.js', '**/dist/**/*.@(spec|test).js'],
+  testMatch: ['**/dist/**/__tests__/**/*.(js|jsx)', '**/dist/**/*.@(spec|test).(js|jsx)'],
   snapshotResolver: './jest.snapshot-resolver.js',
   reporters: isCI
     ? ['default', ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]]

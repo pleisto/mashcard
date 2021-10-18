@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Space basic demo should rendered 1`] = `
+<div>
+  <div
+    class="brk-space brk-space-vertical brk-space-align-start"
+  >
+    <div
+      class="brk-space-item"
+      style="margin-bottom: 8px;"
+    >
+      <button
+        class="brk-btn brk-btn-primary"
+        type="button"
+      >
+        <span>
+          Button
+        </span>
+      </button>
+    </div>
+    <div
+      class="brk-space-item"
+      style="margin-bottom: 8px;"
+    >
+      <button
+        class="brk-btn brk-btn-primary"
+        type="button"
+      >
+        <span>
+          Button
+        </span>
+      </button>
+    </div>
+    <div
+      class="brk-space-item"
+    >
+      <button
+        class="brk-btn brk-btn-primary"
+        type="button"
+      >
+        <span>
+          Button
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -62,7 +62,7 @@ describe('Table', () => {
     const newColumnHeaders = screen.getAllByRole('columnheader')
 
     expect(newColumnHeaders.length - columnHeaders.length).toBe(1)
-    expect(screen.getByText('Column1')).toBeInTheDocument()
+    expect(screen.getByText('table.column_default_name2')).toBeInTheDocument()
   })
 
   it(`updates column's name normally`, () => {
@@ -107,9 +107,9 @@ describe('Table', () => {
 
     fireEvent.click(firstColumnHeader)
     // clicks delete button on column menu
-    fireEvent.click(screen.getByText('Delete'))
+    fireEvent.click(screen.getByText('table.remove_column.text'))
     // clicks delete button on confirm modal
-    fireEvent.click(screen.getByText('Delete'))
+    fireEvent.click(screen.getByText('table.remove_column.ok'))
 
     const newColumnHeaders = screen.getAllByRole('columnheader')
 
@@ -163,25 +163,9 @@ describe('Table', () => {
       const menuItems = screen.getAllByRole('menuitem')
 
       expect(menuItems).toHaveLength(2)
-      expect(menuItems[1]).toHaveTextContent('Delete')
 
       fireEvent.change(screen.getByPlaceholderText('Filter actions...'), { target: { value: 'nonsense' } })
       expect(screen.getAllByRole('menuitem')).toHaveLength(1)
-    })
-
-    it('removes row by click delete button', () => {
-      render(<Table {...props} />)
-
-      fireEvent.click(screen.getByText('New'))
-
-      const rows = screen.getAllByRole('row')
-      fireEvent.contextMenu(rows[1])
-      fireEvent.click(screen.getByText('Delete'))
-      fireEvent.click(screen.getAllByText('Delete')[1])
-
-      const newRows = screen.getAllByRole('row')
-
-      expect(rows.length - newRows.length).toBe(1)
     })
   })
 })

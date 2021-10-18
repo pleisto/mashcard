@@ -42,20 +42,20 @@ describe('Table Filter', () => {
   it('adds single filter option normally', () => {
     render(<Table {...props} />)
 
-    fireEvent.click(screen.getByText('Filter'))
-    fireEvent.click(screen.getByText('Add a Filter'))
-    fireEvent.click(screen.getByText('Add a filter'))
+    fireEvent.click(screen.getByText('table.filter.text'))
+    fireEvent.click(screen.getByText('table.filter.add_a_filter'))
+    fireEvent.click(screen.getAllByText('table.filter.add_a_filter')[1])
 
     expect(screen.getByTestId('brickdoc-table-filter-group')).toBeInTheDocument()
-    expect(screen.getByText('Where')).toBeInTheDocument()
+    expect(screen.getByText('table.filter.where')).toBeInTheDocument()
   })
 
   it('adds group filter option normally', () => {
     render(<Table {...props} />)
 
-    fireEvent.click(screen.getByText('Filter'))
-    fireEvent.click(screen.getByText('Add a Filter'))
-    fireEvent.click(screen.getByText('Add a filter group'))
+    fireEvent.click(screen.getByText('table.filter.text'))
+    fireEvent.click(screen.getByText('table.filter.add_a_filter'))
+    fireEvent.click(screen.getByText('table.filter.add_a_filter_group'))
 
     expect(screen.getAllByTestId('brickdoc-table-filter-group')).toHaveLength(2)
   })

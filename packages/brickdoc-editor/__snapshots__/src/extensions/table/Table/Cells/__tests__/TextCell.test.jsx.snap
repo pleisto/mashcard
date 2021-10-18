@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextCell matches correct snapshot 1`] = `
+<div
+  class="table-block-text-cell"
+  role="button"
+  tabindex="-1"
+>
+  text
+</div>
+`;

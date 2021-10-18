@@ -1,0 +1,351 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress basic demo should rendered 1`] = `
+<div>
+  <div
+    class="brk-progress brk-progress-line brk-progress-status-normal brk-progress-show-info brk-progress-default"
+  >
+    <div
+      class="brk-progress-outer"
+    >
+      <div
+        class="brk-progress-inner"
+      >
+        <div
+          class="brk-progress-bg"
+          style="width: 30%; height: 8px;"
+        />
+      </div>
+    </div>
+    <span
+      class="brk-progress-text"
+      title="30%"
+    >
+      30%
+    </span>
+  </div>
+  <div
+    class="brk-progress brk-progress-line brk-progress-status-active brk-progress-show-info brk-progress-default"
+  >
+    <div
+      class="brk-progress-outer"
+    >
+      <div
+        class="brk-progress-inner"
+      >
+        <div
+          class="brk-progress-bg"
+          style="width: 50%; height: 8px;"
+        />
+      </div>
+    </div>
+    <span
+      class="brk-progress-text"
+      title="50%"
+    >
+      50%
+    </span>
+  </div>
+  <div
+    class="brk-progress brk-progress-line brk-progress-status-exception brk-progress-show-info brk-progress-default"
+  >
+    <div
+      class="brk-progress-outer"
+    >
+      <div
+        class="brk-progress-inner"
+      >
+        <div
+          class="brk-progress-bg"
+          style="width: 70%; height: 8px;"
+        />
+      </div>
+    </div>
+    <span
+      class="brk-progress-text"
+    >
+      <span
+        class="brk-icon brk-icon-close-one"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+            stroke="currentColor"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="m14.829 9.172-5.657 5.656M9.172 9.172l5.656 5.656"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </div>
+  <div
+    class="brk-progress brk-progress-line brk-progress-status-success brk-progress-show-info brk-progress-default"
+  >
+    <div
+      class="brk-progress-outer"
+    >
+      <div
+        class="brk-progress-inner"
+      >
+        <div
+          class="brk-progress-bg"
+          style="width: 100%; height: 8px;"
+        />
+      </div>
+    </div>
+    <span
+      class="brk-progress-text"
+    >
+      <span
+        class="brk-icon brk-icon-check-one"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M24 0H0v24h24V0z"
+            fill="#FFF"
+            fill-opacity=".01"
+          />
+          <path
+            d="M12 22a9.97 9.97 0 0 0 7.071-2.929A9.97 9.97 0 0 0 22 12a9.969 9.969 0 0 0-2.929-7.071A9.969 9.969 0 0 0 12 2a9.969 9.969 0 0 0-7.071 2.929A9.969 9.969 0 0 0 2 12a9.969 9.969 0 0 0 2.929 7.071A9.969 9.969 0 0 0 12 22z"
+            stroke="currentColor"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="m8 12 3 3 6-6"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </span>
+    </span>
+  </div>
+  <div
+    class="brk-progress brk-progress-line brk-progress-status-normal brk-progress-default"
+  >
+    <div
+      class="brk-progress-outer"
+    >
+      <div
+        class="brk-progress-inner"
+      >
+        <div
+          class="brk-progress-bg"
+          style="width: 50%; height: 8px;"
+        />
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  <div
+    class="brk-space brk-space-horizontal brk-space-align-center"
+  >
+    <div
+      class="brk-space-item"
+      style="margin-right: 24px;"
+    >
+      <div
+        class="brk-progress brk-progress-circle brk-progress-status-normal brk-progress-show-info brk-progress-default"
+      >
+        <div
+          class="brk-progress-inner"
+          style="width: 120px; height: 120px; font-size: 24px;"
+        >
+          <svg
+            class="brk-progress-circle"
+            viewBox="0 0 100 100"
+          >
+            <path
+              class="brk-progress-circle-trail"
+              d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+              fill-opacity="0"
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s;"
+            />
+            <path
+              class="brk-progress-circle-path"
+              d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+              fill-opacity="0"
+              opacity="1"
+              stroke=""
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke-dasharray: 221.48228207808043px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; transition-duration: .3s, .3s, .3s, .06s;"
+            />
+            <path
+              class="brk-progress-circle-path"
+              d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+              fill-opacity="0"
+              opacity="0"
+              stroke=""
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke: --todo-green; stroke-dasharray: 0px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; transition-duration: .3s, .3s, .3s, .06s;"
+            />
+          </svg>
+          <span
+            class="brk-progress-text"
+            title="75%"
+          >
+            75%
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="brk-space-item"
+      style="margin-right: 24px;"
+    >
+      <div
+        class="brk-progress brk-progress-circle brk-progress-status-exception brk-progress-show-info brk-progress-default"
+      >
+        <div
+          class="brk-progress-inner"
+          style="width: 120px; height: 120px; font-size: 24px;"
+        >
+          <svg
+            class="brk-progress-circle"
+            viewBox="0 0 100 100"
+          >
+            <path
+              class="brk-progress-circle-trail"
+              d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+              fill-opacity="0"
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke-dasharray: 295.3097094374406px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s;"
+            />
+            <path
+              class="brk-progress-circle-path"
+              d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+              fill-opacity="0"
+              opacity="1"
+              stroke=""
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke-dasharray: 206.7167966062084px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; transition-duration: .3s, .3s, .3s, .06s;"
+            />
+            <path
+              class="brk-progress-circle-path"
+              d="M 50,50 m 0,-47
+   a 47,47 0 1 1 0,94
+   a 47,47 0 1 1 0,-94"
+              fill-opacity="0"
+              opacity="0"
+              stroke=""
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke: --todo-green; stroke-dasharray: 0px 295.3097094374406px; stroke-dashoffset: -0px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; transition-duration: .3s, .3s, .3s, .06s;"
+            />
+          </svg>
+          <span
+            class="brk-progress-text"
+          >
+            <span
+              class="brk-icon brk-icon-close"
+            >
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="brk-space-item"
+    >
+      <div
+        class="brk-progress brk-progress-circle brk-progress-status-normal brk-progress-show-info brk-progress-default"
+      >
+        <div
+          class="brk-progress-inner"
+          style="width: 120px; height: 120px; font-size: 24px;"
+        >
+          <svg
+            class="brk-progress-circle"
+            viewBox="0 0 100 100"
+          >
+            <path
+              class="brk-progress-circle-trail"
+              d="M 50,50 m 0,47
+   a 47,47 0 1 1 0,-94
+   a 47,47 0 1 1 0,94"
+              fill-opacity="0"
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke-dasharray: 220.30970943744057px 295.3097094374406px; stroke-dashoffset: -37.5px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s;"
+            />
+            <path
+              class="brk-progress-circle-path"
+              d="M 50,50 m 0,47
+   a 47,47 0 1 1 0,-94
+   a 47,47 0 1 1 0,94"
+              fill-opacity="0"
+              opacity="1"
+              stroke=""
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke-dasharray: 165.23228207808043px 295.3097094374406px; stroke-dashoffset: -37.5px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; transition-duration: .3s, .3s, .3s, .06s;"
+            />
+            <path
+              class="brk-progress-circle-path"
+              d="M 50,50 m 0,47
+   a 47,47 0 1 1 0,-94
+   a 47,47 0 1 1 0,94"
+              fill-opacity="0"
+              opacity="0"
+              stroke=""
+              stroke-linecap="round"
+              stroke-width="6"
+              style="stroke: --todo-green; stroke-dasharray: 0px 295.3097094374406px; stroke-dashoffset: -37.5px; transition: stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s, opacity .3s ease 0s; transition-duration: .3s, .3s, .3s, .06s;"
+            />
+          </svg>
+          <span
+            class="brk-progress-text"
+            title="75%"
+          >
+            75%
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -6,7 +6,7 @@ import {
   HolderReadyCallback as RCHolderReadyCallback
 } from 'rc-notification/lib/Notification'
 import { ConfigConsumer, ConfigConsumerProps } from '../../config-provider'
-import { MessageInstance, ArgsProps, attachTypeApi, ThenableArgument, getKeyThenIncreaseKey } from '..'
+import { MessageInstance, ArgsProps, attachTypeApi, ThenableArgument, getKeyThenIncreaseKey, NoticeType } from '..'
 
 export default function createUseMessage(
   getRcNotificationInstance: (args: ArgsProps, callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void) => void,
@@ -66,8 +66,7 @@ export default function createUseMessage(
     const hookApiRef = React.useRef<any>({})
 
     hookApiRef.current.open = notify
-
-    ;['success', 'info', 'warning', 'error', 'loading'].forEach(type => attachTypeApi(hookApiRef.current, type))
+    ;(['success', 'info', 'warning', 'error', 'loading'] as NoticeType[]).forEach(type => attachTypeApi(hookApiRef.current, type))
 
     return [
       hookApiRef.current,

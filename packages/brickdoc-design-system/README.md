@@ -77,3 +77,8 @@ const App = () => (
 
 - Sync of patches from Ant Design 4.17-alpha.6
 - Add `initials` props to Avatar components
+
+### 0.4.2
+
+- Sync of patches from Ant Design 4.17-alpha.7
+- Add jest test

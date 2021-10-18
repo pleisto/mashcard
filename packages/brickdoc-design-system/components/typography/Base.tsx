@@ -305,10 +305,14 @@ class Base extends React.Component<InternalBlockProps, BaseState> {
     const { ellipsisText, isEllipsis, expanded } = this.state
     const { rows, suffix, onEllipsis } = this.getEllipsis()
     const { children } = this.props
-    if (!rows || rows < 0 || !this.contentRef.current || expanded) return
+    if (!rows || rows < 0 || !this.contentRef.current || expanded) {
+      return
+    }
 
     // Do not measure if css already support ellipsis
-    if (this.canUseCSSEllipsis()) return
+    if (this.canUseCSSEllipsis()) {
+      return
+    }
 
     devWarning(
       toArray(children).every((child: React.ReactNode) => typeof child === 'string'),
@@ -394,7 +398,8 @@ class Base extends React.Component<InternalBlockProps, BaseState> {
         <TransButton
           className={classNames(`${prefixCls}-copy`, copied && `${prefixCls}-copy-success`)}
           onClick={this.onCopyClick}
-          aria-label={ariaLabel}>
+          aria-label={ariaLabel}
+        >
           {copied ? getNode(iconNodes[1], <CheckOutlined />, true) : getNode(iconNodes[0], <CopyOutlined />, true)}
         </TransButton>
       </Tooltip>
@@ -524,7 +529,8 @@ class Base extends React.Component<InternalBlockProps, BaseState> {
                 component={component}
                 ref={this.contentRef}
                 direction={direction}
-                {...textProps}>
+                {...textProps}
+              >
                 {textNode}
                 {this.renderOperations()}
               </Typography>

@@ -47,7 +47,7 @@ describe('Table Sort', () => {
   it('adds single sort normally', () => {
     render(<Table {...props} />)
 
-    fireEvent.click(screen.getByText('Sort'))
+    fireEvent.click(screen.getByText('table.sort.text'))
     fireEvent.click(screen.getByText('Add a Sort'))
 
     expect(screen.getByRole('group')).toBeInTheDocument()

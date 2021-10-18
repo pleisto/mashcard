@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeSelect basic demo should rendered 1`] = `
+<div>
+  <div
+    class="brk-select brk-tree-select brk-select-single brk-select-allow-clear brk-select-show-arrow brk-select-show-search"
+    style="width: 100%;"
+  >
+    <div
+      class="brk-select-selector"
+    >
+      <span
+        class="brk-select-selection-search"
+      >
+        <input
+          aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+          aria-autocomplete="list"
+          aria-controls="rc_select_TEST_OR_SSR_list"
+          aria-haspopup="listbox"
+          aria-owns="rc_select_TEST_OR_SSR_list"
+          autocomplete="off"
+          class="brk-select-selection-search-input"
+          id="rc_select_TEST_OR_SSR"
+          role="combobox"
+          type="search"
+          value=""
+        />
+      </span>
+      <span
+        class="brk-select-selection-placeholder"
+      >
+        Please select
+      </span>
+    </div>
+    <span
+      aria-hidden="true"
+      class="brk-select-arrow"
+      style="user-select: none;"
+      unselectable="on"
+    >
+      <span
+        class="brk-icon brk-icon-down brk-select-suffix"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 16 6 9h12l-6 7z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </span>
+  </div>
+  <br />
+  <br />
+  <div
+    class="brk-select brk-tree-select brk-select-multiple brk-select-allow-clear brk-select-show-search"
+    style="width: 100%;"
+  >
+    <div
+      class="brk-select-selector"
+    >
+      <div
+        class="brk-select-selection-overflow"
+      >
+        <div
+          class="brk-select-selection-overflow-item brk-select-selection-overflow-item-suffix"
+          style="opacity: 1;"
+        >
+          <div
+            class="brk-select-selection-search"
+            style="width: 0px;"
+          >
+            <input
+              aria-activedescendant="rc_select_TEST_OR_SSR_list_0"
+              aria-autocomplete="list"
+              aria-controls="rc_select_TEST_OR_SSR_list"
+              aria-haspopup="listbox"
+              aria-owns="rc_select_TEST_OR_SSR_list"
+              autocomplete="off"
+              class="brk-select-selection-search-input"
+              id="rc_select_TEST_OR_SSR"
+              readonly=""
+              role="combobox"
+              style="opacity: 0;"
+              type="search"
+              unselectable="on"
+              value=""
+            />
+            <span
+              aria-hidden="true"
+              class="brk-select-selection-search-mirror"
+            >
+              
+               
+            </span>
+          </div>
+        </div>
+      </div>
+      <span
+        class="brk-select-selection-placeholder"
+      >
+        Please select
+      </span>
+    </div>
+  </div>
+</div>
+`;

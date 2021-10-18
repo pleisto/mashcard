@@ -3,6 +3,7 @@ import { Popover, Space, Button } from '../../../components'
 const Base = () => (
   <Space>
     <Popover
+      trigger="click"
       content={
         <div>
           <p>Content</p>
@@ -11,7 +12,7 @@ const Base = () => (
       }
       title="Hello World"
     >
-      <Button type="primary">Hover me</Button>
+      <Button type="primary">Click me</Button>
     </Popover>
   </Space>
 )

@@ -48,7 +48,7 @@ describe('LinkBlock', () => {
 
     render(<LinkBlock {...props} />)
 
-    expect(screen.getByText('Embed anything')).toBeInTheDocument()
+    expect(screen.getByText('link_block.hint')).toBeInTheDocument()
   })
 
   it('renders link', () => {
@@ -125,7 +125,7 @@ describe('LinkBlock', () => {
 
     render(<LinkBlock {...props} />)
 
-    fireEvent.click(screen.getByText('Embed anything'))
+    fireEvent.click(screen.getByText('link_block.hint'))
 
     expect(screen.getByRole('dialog')).toBeInTheDocument()
   })

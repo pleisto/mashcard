@@ -45,7 +45,7 @@ describe('ImageSection', () => {
 
     render(<ImageSection {...props} />)
 
-    expect(screen.getByText('Add an image')).toBeInTheDocument()
+    expect(screen.getByText('image_section.hint')).toBeInTheDocument()
   })
 
   it('renders image', () => {
@@ -90,7 +90,7 @@ describe('ImageSection', () => {
 
       render(<ImageSection {...props} />)
 
-      fireEvent.click(screen.getByText('Add an image'))
+      fireEvent.click(screen.getByText('image_section.hint'))
 
       expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
@@ -117,13 +117,13 @@ describe('ImageSection', () => {
 
       const { rerender } = render(<ImageSection {...props} />)
 
-      fireEvent.click(screen.getByText('Add an image'))
-      fireEvent.input(screen.getByPlaceholderText('Paste the image link...'), {
+      fireEvent.click(screen.getByText('image_section.hint'))
+      fireEvent.input(screen.getByPlaceholderText('image_section.import_sources.link.placeholder'), {
         target: {
           value: imageUrl
         }
       })
-      fireEvent.click(screen.getByText('Embed image'))
+      fireEvent.click(screen.getByText('image_section.import_sources.link.button_text'))
 
       expect(screen.getByRole('img')).toBeInTheDocument()
     })

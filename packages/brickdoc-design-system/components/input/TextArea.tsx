@@ -135,6 +135,7 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
         onChange={handleChange}
         onCompositionEnd={onInternalCompositionEnd}
         ref={innerRef}
+        maxLength={maxLength}
       />
     )
 
@@ -183,7 +184,8 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
             className
           )}
           style={style}
-          data-count={dataCount}>
+          data-count={dataCount}
+        >
           {textareaNode}
         </div>
       )

@@ -6,6 +6,7 @@ const Base = () => (
     <Avatar size={64} icon={<User />} />
     <Avatar size="large" icon={<User />} />
     <Avatar icon={<User />} />
+    <Avatar initials="Albert Einstein" />
     <Avatar size="small" icon={<User />} />
     <Avatar shape="square" size="large" icon={<User />} />
     <Avatar shape="square" icon={<User />} />

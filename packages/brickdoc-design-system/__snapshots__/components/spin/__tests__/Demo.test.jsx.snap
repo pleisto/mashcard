@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spin basic demo should rendered 1`] = `
+<div>
+  <div
+    class="brk-space brk-space-horizontal brk-space-align-center"
+  >
+    <div
+      class="brk-space-item"
+      style="margin-right: 16px;"
+    >
+      <div
+        class="brk-spin brk-spin-sm brk-spin-spinning"
+      >
+        <span
+          class="brk-spin-dot brk-spin-dot-spin"
+        >
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      class="brk-space-item"
+      style="margin-right: 16px;"
+    >
+      <div
+        class="brk-spin brk-spin-spinning"
+      >
+        <span
+          class="brk-spin-dot brk-spin-dot-spin"
+        >
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+    <div
+      class="brk-space-item"
+    >
+      <div
+        class="brk-spin brk-spin-lg brk-spin-spinning"
+      >
+        <span
+          class="brk-spin-dot brk-spin-dot-spin"
+        >
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div
+    class="brk-spin-nested-loading"
+  >
+    <div>
+      <div
+        class="brk-spin brk-spin-spinning brk-spin-show-text"
+      >
+        <span
+          class="brk-spin-dot brk-spin-dot-spin"
+        >
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+          <i
+            class="brk-spin-dot-item"
+          />
+        </span>
+        <div
+          class="brk-spin-text"
+        >
+          Loading...
+        </div>
+      </div>
+    </div>
+    <div
+      class="brk-spin-container brk-spin-blur"
+    >
+      <div
+        class="brk-alert brk-alert-info brk-alert-with-description brk-alert-no-icon"
+        data-show="true"
+        role="alert"
+      >
+        <div
+          class="brk-alert-content"
+        >
+          <div
+            class="brk-alert-message"
+          >
+            Alert message title
+          </div>
+          <div
+            class="brk-alert-description"
+          >
+            Further details about the context of this alert.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div
+    class="brk-spin brk-spin-spinning"
+  >
+    <span
+      class="brk-icon brk-icon-rotation brk-icon-spin brk-spin-dot"
+    >
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M24 0H0v24h24V0z"
+          fill="currentColor"
+          fill-opacity=".01"
+        />
+        <path
+          d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2"
+          stroke="#333"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+        <path
+          d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2"
+          stroke="#333"
+          stroke-dasharray="1 3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </span>
+  </div>
+</div>
+`;

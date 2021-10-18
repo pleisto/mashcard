@@ -16,7 +16,7 @@ import { NotificationInstance as RCNotificationInstance, NoticeContent } from 'r
 import createUseMessage from './hooks/useMessage'
 import { globalConfig } from '../config-provider'
 
-type NoticeType = 'info' | 'success' | 'error' | 'warning' | 'loading'
+export type NoticeType = 'info' | 'success' | 'error' | 'warning' | 'loading'
 
 let messageInstance: RCNotificationInstance | null
 let defaultDuration = 3
@@ -127,7 +127,7 @@ const typeToIcon = {
 }
 export interface ArgsProps {
   content: React.ReactNode
-  duration: number | null
+  duration?: number
   type: NoticeType
   prefixCls?: string
   rootPrefixCls?: string
@@ -219,7 +219,7 @@ const api: any = {
   }
 }
 
-export function attachTypeApi(originalApi: any, type: string) {
+export function attachTypeApi(originalApi: MessageApi, type: NoticeType) {
   originalApi[type] = (content: JointContent, duration?: ConfigDuration, onClose?: ConfigOnClose) => {
     if (isArgsProps(content)) {
       return originalApi.open({ ...content, type })
@@ -232,11 +232,16 @@ export function attachTypeApi(originalApi: any, type: string) {
       duration = undefined
     }
 
-    return originalApi.open({ content, duration, type, onClose })
+    return originalApi.open({
+      content,
+      type,
+      onClose,
+      duration: duration as number
+    })
   }
 }
 
-;['success', 'info', 'warning', 'error', 'loading'].forEach(type => attachTypeApi(api, type))
+;(['success', 'info', 'warning', 'error', 'loading'] as NoticeType[]).forEach(type => attachTypeApi(api, type))
 
 api.warn = api.warning
 api.useMessage = createUseMessage(getRCNotificationInstance, getRCNoticeProps)

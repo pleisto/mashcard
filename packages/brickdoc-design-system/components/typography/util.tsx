@@ -108,7 +108,8 @@ export default (
   // Get origin style
   const originStyle = window.getComputedStyle(originElement)
   const lineHeight = getRealLineHeight(originElement)
-  const maxHeight = Math.floor(lineHeight) * (rows + 1) + pxToNumber(originStyle.paddingTop) + pxToNumber(originStyle.paddingBottom)
+  const overflowRows = rows + 1
+  const oneRowMaxHeight = Math.floor(lineHeight) + pxToNumber(originStyle.paddingTop) + pxToNumber(originStyle.paddingBottom)
   resetDomStyles(ellipsisContainer, originElement)
 
   // Render in the fake container
@@ -126,7 +127,7 @@ export default (
 
   // Check if ellipsis in measure div is height enough for content
   function inRange() {
-    return Math.ceil(ellipsisContainer.getBoundingClientRect().height) < maxHeight
+    return Math.ceil(ellipsisContainer.getBoundingClientRect().height / overflowRows) < oneRowMaxHeight
   }
 
   // Skip ellipsis if already match

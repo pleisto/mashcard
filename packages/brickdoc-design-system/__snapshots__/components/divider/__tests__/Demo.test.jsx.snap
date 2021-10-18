@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider basic demo should rendered 1`] = `
+<div>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.
+  </p>
+  <div
+    class="brk-divider brk-divider-horizontal"
+    role="separator"
+  />
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.
+  </p>
+</div>
+`;

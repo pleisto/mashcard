@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table matches correct snapshot 1`] = `
+<div
+  class="table-block-node-view-wrapper"
+  data-node-view-wrapper=""
+  editor="[object Object]"
+  style="pointer-events: none; white-space: normal;"
+>
+  <div
+    class="table-block-toolbar"
+    role="toolbar"
+  >
+    <input
+      class="brk-input table-title-input"
+      placeholder="table.untitled"
+      type="text"
+      value=""
+    />
+    <div
+      class="table-toolbar-actions"
+    >
+      <button
+        class="brk-btn brk-btn-text table-toolbar-text-button"
+        type="button"
+      >
+        <span>
+          table.filter.text
+        </span>
+      </button>
+      <button
+        class="brk-btn brk-btn-text table-toolbar-text-button"
+        type="button"
+      >
+        <span>
+          table.sort.text
+        </span>
+      </button>
+      <button
+        class="brk-btn brk-btn-primary table-toolbar-add-button"
+        type="button"
+      >
+        <span>
+          table.new_row.text
+        </span>
+        <div
+          class="table-toolbar-add-button-icon"
+        >
+          <span
+            class="brk-icon brk-icon-arrow-down"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                d="m19 9-7 6-7-6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    class="brickdoc-table-block"
+  >
+    <div
+      class="table-block-table"
+      role="table"
+      style="min-width: 100%;"
+    >
+      <div
+        class="table-block-row"
+      >
+        <div
+          class="table-block-tr"
+          role="row"
+          style="display: inline-flex; flex: 1 0 auto; min-width: 60px;"
+        >
+          <div
+            class="table-block-th bordered"
+            colspan="1"
+            role="columnheader"
+            style="box-sizing: border-box; flex: 180 0 auto; min-width: 30px; width: 180px; position: relative; justify-content: flex-start; align-items: center; display: inline-flex;"
+          >
+            Column
+            <div
+              class="table-block-resizer"
+              draggable="false"
+              role="separator"
+              style="cursor: col-resize;"
+            >
+              <div
+                class="table-block-resizer-inner"
+              />
+            </div>
+          </div>
+          <div
+            class="table-block-th"
+            colspan="1"
+            role="columnheader"
+            style="box-sizing: border-box; flex: 180 0 auto; min-width: 30px; width: 180px; position: relative; justify-content: flex-start; align-items: center; display: inline-flex;"
+          >
+            <button
+              class="brk-btn brk-btn-text table-block-add-column-button"
+              type="button"
+            >
+              <span
+                class="brk-icon brk-icon-plus"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12.03 5-.018 14M5 12h14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="table-block-tbody"
+      >
+        <div
+          class="table-block-row"
+        >
+          <div
+            class="table-block-add-new-row"
+            role="button"
+            tabindex="-1"
+          >
+            <span
+              class="brk-icon brk-icon-plus"
+            >
+              <svg
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12.03 5-.018 14M5 12h14"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </span>
+            New
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

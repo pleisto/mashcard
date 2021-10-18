@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags basic demo should rendered 1`] = `
+<div>
+  <span
+    class="brk-tag"
+  >
+    Tag 1
+  </span>
+  <span
+    class="brk-tag"
+  >
+    <a
+      href="https://github.com/ant-design/ant-design/issues/1862"
+    >
+      Link
+    </a>
+  </span>
+  <span
+    class="brk-tag"
+  >
+    Tag 2
+    <span
+      class="brk-icon brk-icon-close brk-tag-close-icon"
+    >
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293z"
+          fill="currentColor"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+  </span>
+  <span
+    class="brk-tag brk-tag-checkable"
+  >
+    CheckableTag
+  </span>
+  <span
+    class="brk-tag brk-tag-checkable brk-tag-checkable-checked"
+  >
+    CheckableTag
+  </span>
+  <span
+    class="brk-tag brk-tag-magenta"
+  >
+    magenta
+  </span>
+  <span
+    class="brk-tag brk-tag-red"
+  >
+    red
+  </span>
+  <span
+    class="brk-tag brk-tag-volcano"
+  >
+    volcano
+  </span>
+  <span
+    class="brk-tag brk-tag-orange"
+  >
+    orange
+  </span>
+  <span
+    class="brk-tag brk-tag-gold"
+  >
+    gold
+  </span>
+  <span
+    class="brk-tag brk-tag-lime"
+  >
+    lime
+  </span>
+  <span
+    class="brk-tag brk-tag-green"
+  >
+    green
+  </span>
+  <span
+    class="brk-tag brk-tag-has-color"
+    style="background-color: rgb(85, 172, 238);"
+  >
+    <span
+      class="brk-icon brk-icon-add"
+    >
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 4a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H8a1 1 0 1 1 0-2h3V8a1 1 0 0 1 1-1z"
+          fill="currentColor"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <span>
+      Twitter
+    </span>
+  </span>
+</div>
+`;

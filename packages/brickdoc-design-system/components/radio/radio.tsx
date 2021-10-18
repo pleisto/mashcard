@@ -40,7 +40,7 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, RadioProps> = (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={wrapperClassString} style={style} onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
       {/* @ts-expect-error */}
-      <RcCheckbox {...radioProps} prefixCls={prefixCls} ref={mergedRef} />
+      <RcCheckbox {...radioProps} type="radio" prefixCls={prefixCls} ref={mergedRef} />
       {children !== undefined ? <span>{children}</span> : null}
     </label>
   )
@@ -49,9 +49,5 @@ const InternalRadio: React.ForwardRefRenderFunction<HTMLElement, RadioProps> = (
 const Radio = React.forwardRef<HTMLElement, RadioProps>(InternalRadio)
 
 Radio.displayName = 'Radio'
-
-Radio.defaultProps = {
-  type: 'radio'
-}
 
 export default Radio

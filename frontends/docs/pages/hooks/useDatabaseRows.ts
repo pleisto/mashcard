@@ -108,6 +108,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
           if (index !== fromIndex) {
             return true
           } else {
+            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
             const sort = Math.round(0.5 * (databaseRows[index + 1]?.sort ?? SORT_GAP - databaseRows[index - 1]?.sort ?? SORT_GAP))
             targetRow = { ...row, sort }
 
