@@ -58,10 +58,12 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
                 <Menu.Item
                   className={cx('select-cell-menu-color-item', { active: option.color === colorMeta.color })}
                   onClick={() => onOptionValueChange({ ...option, color: colorMeta.color })}
-                  key={colorMeta.color}>
+                  key={colorMeta.color}
+                >
                   <span
                     className="select-cell-menu-color-icon-container"
-                    style={{ color: colorMeta.color, background: bgColor(colorMeta.color) }}>
+                    style={{ color: colorMeta.color, background: bgColor(colorMeta.color) }}
+                  >
                     <Icon.FontSize />
                   </span>
                   {colorMeta.label}
@@ -73,8 +75,14 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
         }
         visible={visible}
         onVisibleChange={handleVisibleChange}
-        placement="right">
-        <Button className="select-cell-option-menu-button" type="text" onClick={handleOpenMenu}>
+        placement="right"
+      >
+        <Button
+          data-testid="table-select-cell-option-menu-button"
+          className="select-cell-option-menu-button"
+          type="text"
+          onClick={handleOpenMenu}
+        >
           <Icon.More className="select-cell-option-menu-icon" />
         </Button>
       </Popover>

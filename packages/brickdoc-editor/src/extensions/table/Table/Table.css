@@ -124,6 +124,8 @@
           border-top: 1px solid var(--border-color);
 
           & .table-block-row {
+            display: flex;
+            align-items: center;
             position: relative;
             min-height: var(--cell-height);
             border-bottom: 1px solid var(--border-color);

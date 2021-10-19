@@ -80,6 +80,30 @@ describe('tableBlock', () => {
   })
 
   describe('Select Cell', () => {
+    it("should clear all row's value after delete options", () => {
+      cy.visit('/')
+      cy.get('[contenteditable]').type('/table')
+      cy.get('button.slash-menu-item:first').click()
+      cy.get('.table-toolbar-add-button').click()
+
+      cy.get('.table-block-th:last > button').click()
+      cy.findByText('Column1').click()
+      cy.findByText('Text').trigger('mouseover')
+      cy.findByText('Select').click()
+
+      cy.get('.table-block-select-cell:first').click({ force: true })
+      cy.focused().type('new option{Enter}')
+      cy.findByTestId('table-select-overlay').click({ force: true })
+      cy.get('.table-block-select-cell:last').click({ force: true })
+      cy.focused().type('new option{Enter}')
+      cy.findByTestId('table-select-cell-option-menu-button').click()
+      cy.findByText('Delete').click()
+      cy.findAllByText('Delete').last().click()
+      cy.findByTestId('table-select-overlay').click({ force: true })
+      cy.get('.table-block-select-cell:first').click({ force: true })
+      // after clearing value, there is no "Create option"
+      cy.findByText('Create').should('not.exist')
+    })
     it('should change cell type to select', () => {
       cy.visit('/')
       cy.get('[contenteditable]').type('/table')

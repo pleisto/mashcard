@@ -6,6 +6,6 @@ exports[`TextCell matches correct snapshot 1`] = `
   role="button"
   tabindex="-1"
 >
-  text
+  textValue
 </div>
 `;

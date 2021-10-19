@@ -22,12 +22,14 @@ export const bgColor = (color?: string): string => {
 }
 
 export const SelectCell: React.FC<SelectCellProps> = props => {
-  const { cell, value, updateData, column, setColumns } = props
+  const { cell, value, updateData, batchDeleteSelectData, column, setColumns } = props
   const [modal, contextHolder] = Modal.useModal()
   const [editing, { show: showEditing, hide: hideEditing }] = useEditingStatus(props)
 
   const [currentValue, setCurrentValue] = React.useState(value)
-  React.useEffect(() => setCurrentValue(value), [value])
+  React.useEffect(() => {
+    setCurrentValue(value)
+  }, [value])
 
   const selectOptions = column.selectOptions
 
@@ -59,10 +61,14 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
     modal.confirm({
       title: 'Are you sure you want to delete this property?',
       okText: 'Delete',
+      okButtonProps: {
+        danger: true
+      },
       cancelText: 'Cancel',
       icon: null,
       onOk: () => {
         setSelectOptions(prevOptions => prevOptions.filter(item => item.value !== option.value))
+        batchDeleteSelectData(cell.column.id, option.value)
 
         if (option.value === currentValue) {
           setCurrentValue(null)
@@ -146,7 +152,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
             </Select.Option>
           ))}
         </Select>
-        <div data-testid="table-select-overlay" className="table-block-cell-overlay" onClick={handleEndEditing} />
+        <div data-testid="table-select-overlay" className="table-block-cell-overlay" onClick={() => handleEndEditing()} />
       </>
     )
   }

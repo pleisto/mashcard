@@ -25,7 +25,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
   {
     fetchRows: () => Promise<void>
     addRow: (rowIndex?: number) => DatabaseRow
-    updateRow: (row: DatabaseRow, updateState?: boolean) => void
+    updateRow: (row: DatabaseRow, updateState?: boolean) => Promise<void>
     removeRow: (rowId: string) => void
     moveRow: (fromIndex: number, toIndex: number) => DatabaseRow | undefined
     setRowsState: (rows: DatabaseRows) => void
@@ -50,10 +50,11 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
       async (row: DatabaseRow, updateState = true): Promise<void> => {
         setCommitting?.(true)
         if (updateState) {
-          const newRows = databaseRows.map((prevRow: DatabaseRow) => {
-            return prevRow.id === row.id ? row : prevRow
-          })
-          setDatabaseRows(newRows)
+          setDatabaseRows(prevRows =>
+            prevRows.map((prevRow: DatabaseRow) => {
+              return prevRow.id === row.id ? row : prevRow
+            })
+          )
         }
         const { id, sort, ...data } = row
         const blockArg: BlockInput = {
@@ -69,7 +70,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
         await blockUpdate({ variables: { input } })
         setCommitting?.(false)
       },
-      [databaseRows, setDatabaseRows, parentId, blockUpdate]
+      [setDatabaseRows, parentId, blockUpdate]
     )
 
     const addRow = React.useCallback(

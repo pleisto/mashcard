@@ -100,6 +100,7 @@ declare module 'react-table' {
     updateActiveStatus: React.Dispatch<React.SetStateAction<TableActiveStatus[]>>
     resetActiveStatus: () => void
     updateData: (rowId: string, key: string, data: any) => void
+    batchDeleteSelectData: (columnId: string, value: string) => void
   }
 
   export interface TableState<D extends Record<string, unknown> = Record<string, unknown>>

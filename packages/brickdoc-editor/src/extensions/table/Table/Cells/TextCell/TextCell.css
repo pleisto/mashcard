@@ -16,7 +16,7 @@ textarea.table-block-text-input {
   --box-shadow-color: 62, 62, 62;
 
   font-size: 14px;
-  height: 100%;
+  min-height: 100%;
   border: 1px solid rgba(var(--border-color));
   border-top: none;
   border-bottom: none;
