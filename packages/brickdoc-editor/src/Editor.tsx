@@ -2,6 +2,7 @@ import React from 'react'
 import { useEditor as useTiptapEditor, EditorContent as TiptapEditorContent, Editor as TiptapEditor } from '@tiptap/react'
 import { EditorOptions as TiptapEditorOptions } from '@tiptap/core'
 import Placeholder from '@tiptap/extension-placeholder'
+import UniqueID from '@tiptap/extension-unique-id'
 import {
   BasicRichtextExtension,
   SlashCommandsExtension,
@@ -72,6 +73,24 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       SlashCommandsExtension,
       PlaceholderExtension,
       brickListExtension,
+      UniqueID.configure({
+        attributeName: 'uuid',
+        types: [
+          'blockquote',
+          'bulletList',
+          'codeBlock',
+          'hardBreak',
+          'heading',
+          'horizontalRule',
+          'imageSection',
+          'linkBlock',
+          'listItem',
+          'orderedList',
+          'paragraph',
+          'pdfSection',
+          'tableBlock'
+        ]
+      }),
       SyncExtension.configure({ onSave })
     ],
     autofocus: true,

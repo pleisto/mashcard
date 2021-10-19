@@ -156,8 +156,6 @@
     "@tiptap/extension-paragraph": "2.0.0-beta.16",
     "@tiptap/extension-placeholder": "2.0.0-beta.26",
     "@tiptap/suggestion": "2.0.0-beta.61",
-    "prosemirror-model": "patch:prosemirror-model@npm:1.14.3#.yarn/patches/prosemirror-model-npm-1.14.3-b5be51ca4b",
-    "prosemirror-transform": "patch:prosemirror-transform@npm:1.3.3#.yarn/patches/prosemirror-transform-npm-1.3.3-48c87f30ce",
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.8#.yarn/patches/vite-plugin-mdx-npm-3.5.8-357f666ad6"
   }
 }

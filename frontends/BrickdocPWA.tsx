@@ -20,7 +20,7 @@ export const BrickdocPWA: FC = () => {
   return (
     <Suspense fallback={<Spin delay={1000} />}>
       <ConfigProvider direction={direction} i18n={i18n}>
-        <ApolloProvider client={apolloClient()}>
+        <ApolloProvider client={apolloClient}>
           <HelmetProvider>
             <Router>{routeConfig(context)}</Router>
           </HelmetProvider>

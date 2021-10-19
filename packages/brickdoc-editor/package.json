@@ -39,6 +39,7 @@
     "@tiptap/extension-text": "2.0.0-beta.13",
     "@tiptap/extension-text-style": "2.0.0-beta.17",
     "@tiptap/extension-underline": "2.0.0-beta.16",
+    "@tiptap/extension-unique-id": "^2.0.0-beta.3",
     "@tiptap/react": "2.0.0-beta.67",
     "@tiptap/suggestion": "2.0.0-beta.70",
     "dayjs": "^1.10.7",

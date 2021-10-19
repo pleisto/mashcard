@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 import { Skeleton } from '@brickdoc/design-system'
 import { SidebarLayoutPage } from '@/common/layouts/SidebarLayoutPage'
 import { DocumentTopBar } from './components/DocumentTopBar'
@@ -12,9 +12,10 @@ import { SearchModal } from '@/docs/common/components/SearchModal'
 import { TrashButton } from '@/docs/common/components/TrashButton'
 import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
-import { BlockIdKind, GetBlockInfoQuery, Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
+import { BlockIdKind, GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoLazyQuery } from '@/BrickdocGraphQL'
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 import { useDocsI18n } from '../common/hooks'
+import { queryPageBlocks } from '../common/graphql'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -50,18 +51,42 @@ export interface DocMetaProps {
 }
 
 export const DocumentContentPage: React.FC = () => {
-  const { webid, docid, snapshotVersion, kind } =
-    useParams<{ webid: string; docid: string | undefined; kind: BlockIdKind; snapshotVersion: string | undefined }>()
+  const {
+    webid,
+    docid,
+    snapshotVersion,
+    kind = BlockIdKind.P
+  } = useParams<{ webid: string; docid?: string; kind?: BlockIdKind; snapshotVersion?: string }>()
   const { currentPod, currentUser, host } = useContext(BrickdocContext)
   const [committing, setCommitting] = React.useState(false)
   const [onCommit] = useSyncProvider(setCommitting)
   const { t } = useDocsI18n()
+  const history = useHistory()
 
   const realWebid = currentPod.webid
   const isMine = realWebid === webid
 
-  // TODO lazy query
-  const { data, loading } = useGetBlockInfoQuery({ variables: { id: docid as string, kind, webid } })
+  const [fetch, { data, loading: getBlockInfoLoading }] = useGetBlockInfoLazyQuery()
+  const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
+    refetchQueries: [queryPageBlocks]
+  })
+  const loading = !data || getBlockInfoLoading || createBlockLoading
+
+  useEffect(() => {
+    async function createAndNavigateToNewPage(): Promise<void> {
+      const { data } = await blockCreate({ variables: { input: { title: '' } } })
+      if (data?.blockCreate?.id) {
+        history.push(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
+      }
+    }
+
+    if (docid) {
+      fetch({ variables: { id: docid, kind, webid } })
+    } else {
+      void createAndNavigateToNewPage()
+    }
+  }, [blockCreate, docid, fetch, history, kind, webid])
+
   const policy = data?.blockInfo?.permission?.policy
 
   const isAnonymous = !currentUser

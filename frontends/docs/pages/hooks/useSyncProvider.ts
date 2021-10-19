@@ -170,19 +170,22 @@ export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc
   const [blockSyncBatch, { client }] = useBlockSyncBatchMutation()
   return [
     async (doc: Node) => {
+      if (!doc.attrs.uuid) {
+        // Ignore updates to empty docs
+        return
+      }
+
       setCommitting?.(true)
-      const blocks = nodeToBlock(doc, 0)
-      const input: BlockSyncBatchInput = { blocks, rootId: doc.attrs.uuid, operatorId: globalThis.brickdocContext.uuid }
+      const newBlocks = nodeToBlock(doc, 0)
+      const input: BlockSyncBatchInput = { blocks: newBlocks, rootId: doc.attrs.uuid, operatorId: globalThis.brickdocContext.uuid }
       try {
         const { data } = await blockSyncBatch({ variables: { input } })
         if (data?.blockSyncBatch?.refetchTree) {
           await client.refetchQueries({ include: [queryPageBlocks] })
         }
-      } catch (error) {
+      } finally {
         setCommitting?.(false)
-        throw error
       }
-      setCommitting?.(false)
     }
   ]
 }

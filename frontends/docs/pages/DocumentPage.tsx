@@ -28,7 +28,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, s
   // }, [])
 
   const { data, loading } = useGetChildrenBlocksQuery({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: 'network-only',
+    nextFetchPolicy: 'standby',
     variables: { rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }
   })
 

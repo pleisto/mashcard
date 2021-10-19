@@ -1,9 +1,8 @@
-import { ApolloClient, InMemoryCache, createHttpLink, split, NormalizedCacheObject } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink, split, TypePolicy } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { getMainDefinition } from '@apollo/client/utilities'
 import * as ActionCable from '@rails/actioncable'
 import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
-import { InMemoryCacheConfig } from '@apollo/client/cache/inmemory/types'
 
 const securityLink = setContext((_, { headers }) => {
   return {
@@ -35,16 +34,34 @@ const brickdocLink = split(
   httpLink
 )
 
-export const apolloClient = (cacheConfig?: InMemoryCacheConfig): ApolloClient<NormalizedCacheObject> =>
-  new ApolloClient({
-    link: brickdocLink,
-    cache: new InMemoryCache(cacheConfig),
-    defaultOptions: {
-      watchQuery: {
-        fetchPolicy: 'cache-and-network'
-      },
-      query: {
-        fetchPolicy: 'network-only'
-      }
+export const apolloClient = new ApolloClient({
+  link: brickdocLink,
+  cache: new InMemoryCache({
+    typePolicies: {
+      ...[
+        'BlockMeta',
+        'BlockAttachment',
+        'BlockCover',
+        'BlockIcon',
+        'BlockImage',
+        'BlockLink',
+        'blob',
+        'BlockBaseObjectPermissions'
+      ].reduce<Record<string, TypePolicy>>((p, typename) => {
+        p[typename] = {
+          merge: true
+        }
+        return p
+      }, {})
     }
-  })
+  }),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+      nextFetchPolicy: 'cache-first'
+    },
+    query: {
+      fetchPolicy: 'network-only'
+    }
+  }
+})
