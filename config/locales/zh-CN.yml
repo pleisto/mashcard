@@ -621,10 +621,15 @@ zh-CN:
       create_pages: Add Pages
       create_sub_pages: Add Subpage
       delete: Delete
-      copy_link: 复制链接
-      copy_link_hint: Link copied
       rename: Rename
       more: Delete, Duplicate, and more...
+    copy_link:
+      button: 复制链接
+      copied: Copied
+      success_message: Link copied
+    duplicate:
+      new_title: Copy of %{title}
+      button: 复制
     pin:
       add: Add to Favorites
       add_tooltip: Pin this page
@@ -650,6 +655,7 @@ zh-CN:
       allow_edit: 允许编辑
       learn: 了解共享
       copy_link_button: 复制链接
+      copy_link_button_done: Copied
       invite_placeholder: 添加人员、电子邮件、群组或集成
       invite_button: 邀请
       copy_hint: Share link copied
@@ -659,6 +665,7 @@ zh-CN:
       type_hint: 在上方输入或粘贴Email 地址，以逗号分隔。
       search: 搜索电子邮件、姓名
       button: 邀请
+      confirm_button: Confirm
       edit_message: 允许编辑
       edit_message_description: 可以编辑，但不能再次共享给其他人。
       view_message: 允许查看

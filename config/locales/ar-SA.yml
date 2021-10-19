@@ -706,10 +706,15 @@ ar-SA:
       create_pages: Add Pages
       create_sub_pages: Add Subpage
       delete: Delete
-      copy_link: نسخ الارتباط
-      copy_link_hint: Link copied
       rename: Rename
       more: Delete, Duplicate, and more...
+    copy_link:
+      button: نسخ الارتباط
+      copied: Copied
+      success_message: Link copied
+    duplicate:
+      new_title: Copy of %{title}
+      button: كَرر
     pin:
       add: Add to Favorites
       add_tooltip: Pin this page
@@ -735,6 +740,7 @@ ar-SA:
       allow_edit: السماح بالتعديل
       learn: Learn about sharing
       copy_link_button: نسخ الارتباط
+      copy_link_button_done: Copied
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: دعـوة
       copy_hint: Share link copied
@@ -744,6 +750,7 @@ ar-SA:
       type_hint: Type or paste in Email above, separated by commas.
       search: Search Emails, names
       button: دعـوة
+      confirm_button: Confirm
       edit_message: يمكنه(ا) التحرير
       edit_message_description: Can edit, but not share with others.
       view_message: يمكن أن يشاهد

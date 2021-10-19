@@ -638,10 +638,15 @@ io-EN:
       create_pages: crwdns2907:0crwdne2907:0
       create_sub_pages: crwdns3305:0crwdne3305:0
       delete: crwdns2909:0crwdne2909:0
-      copy_link: crwdns3273:0crwdne3273:0
-      copy_link_hint: crwdns3275:0crwdne3275:0
       rename: crwdns3277:0crwdne3277:0
       more: crwdns3279:0crwdne3279:0
+    copy_link:
+      button: crwdns3307:0crwdne3307:0
+      copied: crwdns3309:0crwdne3309:0
+      success_message: crwdns3311:0crwdne3311:0
+    duplicate:
+      new_title: crwdns3313:0%{title}crwdne3313:0
+      button: crwdns3315:0crwdne3315:0
     pin:
       add: crwdns3293:0crwdne3293:0
       add_tooltip: crwdns3295:0crwdne3295:0
@@ -667,6 +672,7 @@ io-EN:
       allow_edit: crwdns2943:0crwdne2943:0
       learn: crwdns2945:0crwdne2945:0
       copy_link_button: crwdns2947:0crwdne2947:0
+      copy_link_button_done: crwdns3317:0crwdne3317:0
       invite_placeholder: crwdns2949:0crwdne2949:0
       invite_button: crwdns2951:0crwdne2951:0
       copy_hint: crwdns3247:0crwdne3247:0
@@ -676,6 +682,7 @@ io-EN:
       type_hint: crwdns2957:0crwdne2957:0
       search: crwdns2959:0crwdne2959:0
       button: crwdns2961:0crwdne2961:0
+      confirm_button: crwdns3319:0crwdne3319:0
       edit_message: crwdns2963:0crwdne2963:0
       edit_message_description: crwdns2965:0crwdne2965:0
       view_message: crwdns2967:0crwdne2967:0
