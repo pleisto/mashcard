@@ -125,7 +125,7 @@
 
           & .table-block-row {
             position: relative;
-            height: var(--cell-height);
+            min-height: var(--cell-height);
             border-bottom: 1px solid var(--border-color);
             transition: all 150ms ease-in;
 
@@ -213,13 +213,9 @@
             }
           }
 
-          & .table-block-tr {
-            align-items: center;
-          }
-
           & .table-block-td {
             position: relative;
-            height: var(--cell-height);
+            min-height: var(--cell-height);
             border-right: 1px solid var(--border-color);
 
             &:last-child {

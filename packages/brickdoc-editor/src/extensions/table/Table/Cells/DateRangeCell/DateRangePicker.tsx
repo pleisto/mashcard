@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dayjs } from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 import { Checkbox, DatePicker as BrkDatePicker } from '@brickdoc/design-system'
 import { CheckboxChangeEvent } from '@brickdoc/design-system/components/checkbox'
 
@@ -23,12 +23,14 @@ export const DateRangePicker: React.FC<DatePickerProps> = ({ value, onChange, on
     onConfirmChange()
   }
 
+  const dateRangeValue = value?.map(i => dayjs(i)) as DateRangeValue
+
   return (
     <BrkDatePicker.RangePicker
       className="table-date-range-cell-picker"
       showTime={includeTime}
       open={true}
-      value={value}
+      value={dateRangeValue}
       onChange={onChange}
       onOpenChange={handleVisibleChange}
       renderExtraFooter={() => (

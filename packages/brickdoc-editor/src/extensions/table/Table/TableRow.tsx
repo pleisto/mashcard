@@ -16,12 +16,10 @@ export interface TableRowProps extends RTTableRowProps {
   row: Row
 }
 
-const cellPropsGetter = (props: Partial<TableHeaderGroupProps>, { cell }: any): Array<Partial<TableHeaderGroupProps>> => [
+const cellPropsGetter = (props: Partial<TableHeaderGroupProps>): Array<Partial<TableHeaderGroupProps>> => [
   props,
   {
     style: {
-      justifyContent: cell.column.align === 'right' ? 'flex-end' : 'flex-start',
-      alignItems: 'center',
       display: 'inline-flex'
     }
   }
@@ -133,8 +131,7 @@ export const TableRow: React.FC<TableRowProps> = ({
               </Menu.Item>
             )}
           </Menu>
-        }
-      >
+        }>
         {/* add a placeholder for popover to follow mouse's position */}
         <div ref={popupContainer} style={{ width: '1px', height: '1px', position: 'fixed' }} />
       </Popover>
@@ -155,8 +152,7 @@ export const TableRow: React.FC<TableRowProps> = ({
               <div
                 {...cellProps}
                 key={cellProps.key}
-                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}
-              >
+                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}>
                 {cell.render('Cell')}
               </div>
             )

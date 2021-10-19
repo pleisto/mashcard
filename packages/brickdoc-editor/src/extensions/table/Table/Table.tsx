@@ -170,8 +170,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
         // TODO: need a better way to add this class
         container?.parentElement?.classList.add('table-block-react-renderer')
         container?.classList.add('table-block-node-view-wrapper')
-      }}
-    >
+      }}>
       {contextHolder}
       {fetched.current && (
         <TableToolbar
@@ -234,8 +233,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                         columnType={column.columnType}
                         onColumnNameChange={e => updateColumnName(e.target.value, column.parent?.id ?? '', column.id)}
                         onColumnTypeChange={type => updateColumnType(type, column.parent?.id ?? '', column.id)}
-                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}
-                      >
+                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}>
                         {Header}
                       </ColumnMenu>
                     )

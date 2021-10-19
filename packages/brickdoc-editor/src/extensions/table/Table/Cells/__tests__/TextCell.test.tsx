@@ -36,7 +36,7 @@ describe('TextCell', () => {
 
     fireEvent.click(screen.getByRole('button'))
 
-    expect(screen.getByDisplayValue(props.value)).toBeInTheDocument()
+    expect(screen.getByTestId('table-text-cell-input')).toBeInTheDocument()
   })
 
   it('updates data after canceling editing status', () => {
@@ -45,7 +45,7 @@ describe('TextCell', () => {
 
     render(<TextCell {...props} updateData={updateData} />)
     fireEvent.click(screen.getByRole('button'))
-    const input = screen.getByDisplayValue(props.value)
+    const input = screen.getByTestId('table-text-cell-input')
     fireEvent.change(input, { target: { value: newValue } })
     fireEvent.click(screen.getByTestId('table-text-overlay'))
 
