@@ -4,8 +4,7 @@ module Sortable
   extend ActiveSupport::Concern
 
   module ClassMethods
-    ## NOTE remove dangling block
-    def tidy_pages(roots_result, blocks)
+    def remove_dangling_blocks(roots_result, blocks)
       target = roots_result
 
       loop do

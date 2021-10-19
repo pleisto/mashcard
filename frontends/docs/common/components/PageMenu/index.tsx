@@ -111,6 +111,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const duDuplicate = async (): Promise<void> => {
     const input = { id: pageId }
     await blockDuplicate({ variables: { input } })
+    setDropdownVisible(false)
   }
 
   const doCopyLink = async (): Promise<void> => {

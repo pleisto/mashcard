@@ -15,7 +15,7 @@ module Docs
       roots = blocks.select { |block| block.id == block.root_id }
       result = authorized_scope roots, as: :collaborating, with: Docs::BlockPolicy
 
-      Docs::Block.tidy_pages(result, blocks)
+      Docs::Block.remove_dangling_blocks(result, blocks)
     end
   end
 end
