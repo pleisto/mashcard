@@ -638,10 +638,15 @@ en-US:
       create_pages: Add Pages
       create_sub_pages: Add Subpage
       delete: Delete
-      copy_link: Copy link
-      copy_link_hint: Link copied
       rename: Rename
       more: Delete, Duplicate, and more...
+    copy_link:
+      button: Copy link
+      copied: Copied
+      success_message: Link copied
+    duplicate:
+      new_title: Copy of %{title}
+      button: Duplicate
     pin:
       add: Add to Favorites
       add_tooltip: Pin this page
@@ -667,6 +672,7 @@ en-US:
       allow_edit: Allow edit
       learn: Learn about sharing
       copy_link_button: Copy link
+      copy_link_button_done: Copied
       invite_placeholder: Add people, emails, groups, or intergrations
       invite_button: Invite
       copy_hint: Share link copied
@@ -676,6 +682,7 @@ en-US:
       type_hint: Type or paste in Email above, separated by commas.
       search: Search Emails, names
       button: Invite
+      confirm_button: Confirm
       edit_message: Can edit
       edit_message_description: Can edit, but not share with others.
       view_message: Can view

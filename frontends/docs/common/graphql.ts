@@ -271,6 +271,15 @@ export const queryBlockShareLinks = gql`
   }
 `
 
+export const BlockDuplicate = gql`
+  mutation blockDuplicate($input: BlockDuplicateInput!) {
+    blockDuplicate(input: $input) {
+      id
+      errors
+    }
+  }
+`
+
 export const BlockSoftDelete = gql`
   mutation blockSoftDelete($input: BlockSoftDeleteInput!) {
     blockSoftDelete(input: $input) {

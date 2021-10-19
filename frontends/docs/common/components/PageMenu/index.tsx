@@ -4,16 +4,16 @@ import { Link, useHistory } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
   useBlockSoftDeleteMutation,
-  BlockSoftDeleteInput,
   Scalars,
   useBlockCreateMutation,
   useBlockRenameMutation,
   useBlockPinOrUnpinMutation,
-  BlockIdKind
+  BlockIdKind,
+  useBlockDuplicateMutation
 } from '@/BrickdocGraphQL'
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
-import { Add, CheckOneFill, Delete, Edit, Link as LinkIcon, More, Star } from '@brickdoc/design-system/components/icon'
+import { Add, Check, CheckOneFill, Copy, Delete, Edit, Link as LinkIcon, More, Star } from '@brickdoc/design-system/components/icon'
 import styles from './styles.module.less'
 import { DocMeta } from '@/docs/pages/DocumentContentPage'
 
@@ -38,10 +38,14 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   title,
   titleText
 }) => {
-  const [blockSoftDelete, { client: deleteClient }] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks] })
   const history = useHistory()
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
+  const [copied, setCopied] = React.useState<boolean>(false)
+
+  const [blockSoftDelete, { client: deleteClient, loading: blockDeleteLoading }] = useBlockSoftDeleteMutation({
+    refetchQueries: [queryPageBlocks]
+  })
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
@@ -51,12 +55,16 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     refetchQueries: [queryPageBlocks]
   })
 
-  const [blockPinOrUnpin, { client: pinClient }] = useBlockPinOrUnpinMutation({
+  const [blockPinOrUnpin, { client: pinClient, loading: blockPinLoading }] = useBlockPinOrUnpinMutation({
     refetchQueries: [queryBlockPins]
   })
 
+  const [blockDuplicate, { loading: blockDuplicateLoading }] = useBlockDuplicateMutation({
+    refetchQueries: [queryPageBlocks]
+  })
+
   const deletePage = async (): Promise<void> => {
-    const input: BlockSoftDeleteInput = { id: pageId }
+    const input = { id: pageId }
     await blockSoftDelete({ variables: { input } })
     if (pageId === id) {
       await deleteClient.refetchQueries({ include: [queryBlockInfo, queryChildrenBlocks] })
@@ -100,11 +108,19 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     setPopoverVisible(false)
   }
 
+  const duDuplicate = async (): Promise<void> => {
+    const input = { id: pageId }
+    await blockDuplicate({ variables: { input } })
+  }
+
   const doCopyLink = async (): Promise<void> => {
     await navigator.clipboard.writeText(link)
-    void message.success(t('blocks.copy_link_hint'))
+    void message.success(t('copy_link.success_message'))
+    setCopied(true)
     setDropdownVisible(false)
     removeSelectedKey()
+    // TODO
+    setCopied(false)
   }
 
   const doFavorite = async (): Promise<void> => {
@@ -148,6 +164,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         case 'copy_link':
           void doCopyLink()
           break
+        case 'duplicate':
+          void duDuplicate()
+          break
         case 'rename':
           // TODO focus and select all
           // inputRef.current.focus({ preventScroll: true })
@@ -175,13 +194,16 @@ export const PageMenu: React.FC<PageMenuProps> = ({
 
   const menu = (
     <Menu onClick={onClickMenu()}>
-      <Menu.Item key="copy_link" icon={<LinkIcon />}>
-        {t('blocks.copy_link')}
-      </Menu.Item>
-      <Menu.Item key="favorite" icon={pin ? <CheckOneFill /> : <Star />}>
+      <Menu.Item key="favorite" icon={pin ? <CheckOneFill /> : <Star />} disabled={blockPinLoading}>
         {t(pin ? 'pin.remove' : 'pin.add')}
       </Menu.Item>
-      <Menu.Item key="rename" icon={<Edit />}>
+      <Menu.Item key="copy_link" icon={copied ? <Check /> : <LinkIcon />}>
+        {t(copied ? 'copy_link.copied' : 'copy_link.button')}
+      </Menu.Item>
+      <Menu.Item key="duplicate" icon={<Copy />} disabled={blockDuplicateLoading}>
+        {t('duplicate.button')}
+      </Menu.Item>
+      <Menu.Item key="rename" icon={<Edit />} disabled={renameBlockLoading}>
         <Popover
           content={renamePopoverContent}
           title={null}
@@ -192,7 +214,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         </Popover>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item danger key="delete" icon={<Delete />}>
+      <Menu.Item danger key="delete" icon={<Delete />} disabled={blockDeleteLoading}>
         {t('blocks.delete')}
       </Menu.Item>
     </Menu>
