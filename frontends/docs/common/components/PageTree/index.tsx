@@ -120,7 +120,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
         selectedKeys={selectedKeys}
         blockNode={false}
         showIcon={true}
-        selectable={true}
+        selectable={!docMeta.documentInfoLoading}
         // expandedKeys={selectedKeys}
         treeData={treeData}
         defaultExpandAll

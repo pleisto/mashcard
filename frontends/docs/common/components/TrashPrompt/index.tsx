@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Alert, Button, Modal, Space } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { BlockHardDeleteInput, BlockRestoreInput, useBlockHardDeleteMutation, useBlockRestoreMutation } from '@/BrickdocGraphQL'
-import { Redirect } from 'react-router-dom'
-import { queryChildrenBlocks } from '@/docs/pages/graphql'
+import { useHistory } from 'react-router-dom'
+import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
 import { queryPageBlocks } from '../../graphql'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
@@ -13,18 +13,14 @@ interface TrashPromptProps {
 
 export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid } }) => {
   const { t } = useDocsI18n()
-  const [redirectHome, setRedirectHome] = useState<boolean>(false)
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
   const [hardDeleteConfirmLoading, setHardDeleteConfirmLoading] = React.useState<boolean>(false)
   const [restoreButtonLoading, setRestoreButtonLoading] = React.useState<boolean>(false)
 
   const [blockHardDelete] = useBlockHardDeleteMutation()
-  const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryPageBlocks] })
+  const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryPageBlocks, queryBlockInfo] })
 
-  const link = `/${webid}`
-  if (redirectHome) {
-    return <Redirect to={link} />
-  }
+  const history = useHistory()
 
   const onHardDeleteClick = (): void => {
     setHardDeleteModalVisible(true)
@@ -48,7 +44,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
     await blockHardDelete({ variables: { input } })
     setHardDeleteModalVisible(false)
     setHardDeleteConfirmLoading(false)
-    setRedirectHome(true)
+    history.push(`/${webid}`)
   }
 
   return (

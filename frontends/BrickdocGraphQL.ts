@@ -203,6 +203,8 @@ export type BlockInfo = {
   id: Scalars['UUID']
   /** is deleted */
   isDeleted: Scalars['Boolean']
+  /** path */
+  pathArray: Array<BlockPath>
   /** payload */
   payload: Scalars['JSON']
   /** permission */
@@ -1883,6 +1885,7 @@ export type GetBlockInfoQuery = {
         payload: any
         isDeleted: boolean
         pin: boolean
+        pathArray: Array<{ __typename?: 'BlockPath'; id: string; text: string }>
         permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
         collaborators: Array<{
           __typename?: 'pod'
@@ -3768,6 +3771,10 @@ export const GetBlockInfoDocument = gql`
       payload
       isDeleted
       pin
+      pathArray {
+        id
+        text
+      }
       permission {
         key
         policy

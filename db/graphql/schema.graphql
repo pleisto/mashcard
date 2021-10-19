@@ -334,6 +334,11 @@ type BlockInfo {
   isDeleted: Boolean!
 
   """
+  path
+  """
+  pathArray: [BlockPath!]!
+
+  """
   payload
   """
   payload: JSON!

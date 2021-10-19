@@ -38,7 +38,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   title,
   titleText
 }) => {
-  const [blockSoftDelete] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks, queryChildrenBlocks] })
+  const [blockSoftDelete, { client: deleteClient }] = useBlockSoftDeleteMutation({ refetchQueries: [queryPageBlocks] })
   const history = useHistory()
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
@@ -58,6 +58,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const deletePage = async (): Promise<void> => {
     const input: BlockSoftDeleteInput = { id: pageId }
     await blockSoftDelete({ variables: { input } })
+    if (pageId === id) {
+      await deleteClient.refetchQueries({ include: [queryBlockInfo, queryChildrenBlocks] })
+    }
   }
 
   const onClickPlus = async (event: { stopPropagation: () => any }): Promise<void> => {
@@ -92,7 +95,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     const input = { id: pageId, title: e.target.value }
     await blockRename({ variables: { input } })
     if (pageId === id) {
-      await renameClient.refetchQueries({ include: [queryChildrenBlocks] })
+      await renameClient.refetchQueries({ include: [queryChildrenBlocks, queryBlockInfo] })
     }
     setPopoverVisible(false)
   }

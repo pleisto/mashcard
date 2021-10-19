@@ -45,6 +45,10 @@ export const queryBlockInfo = gql`
       payload
       isDeleted
       pin
+      pathArray {
+        id
+        text
+      }
       permission {
         key
         policy

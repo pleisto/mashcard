@@ -14,8 +14,10 @@ import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
 import { BlockIdKind, GetBlockInfoQuery, Policytype, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
+import { useDocsI18n } from '../common/hooks'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
+type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
 
 export interface DocMeta {
   id: string | undefined
@@ -31,6 +33,8 @@ export interface DocMeta {
   host: string
   path: string
   collaborators: Collaborator[]
+  pathArray: Path[]
+  documentInfoLoading: boolean
   shareable: boolean
   editable: boolean
   viewable: boolean
@@ -51,6 +55,7 @@ export const DocumentContentPage: React.FC = () => {
   const { currentPod, currentUser, host } = useContext(BrickdocContext)
   const [committing, setCommitting] = React.useState(false)
   const [onCommit] = useSyncProvider(setCommitting)
+  const { t } = useDocsI18n()
 
   const realWebid = currentPod.webid
   const isMine = realWebid === webid
@@ -66,10 +71,12 @@ export const DocumentContentPage: React.FC = () => {
   const editable = isMine || policy === Policytype.Edit
   const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
   const isDeleted = data?.blockInfo?.isDeleted !== false
-  const title = data?.blockInfo?.title ?? ''
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const title: string = data?.blockInfo?.title || t('title.untitled')
   const realid = data?.blockInfo?.id ?? docid
   const payload = data?.blockInfo?.payload ?? {}
   const collaborators = data?.blockInfo?.collaborators ?? []
+  const pathArray = data?.blockInfo?.pathArray ?? []
   const path = `/${webid}/${kind}/${docid}`
 
   const docMeta: DocMeta = {
@@ -88,6 +95,8 @@ export const DocumentContentPage: React.FC = () => {
     editable,
     viewable,
     collaborators,
+    pathArray,
+    documentInfoLoading: loading,
     snapshotVersion: Number(snapshotVersion ?? '0')
   }
 

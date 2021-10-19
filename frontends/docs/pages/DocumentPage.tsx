@@ -19,6 +19,14 @@ interface DocumentPageProps {
 
 export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, setCommitting }) => {
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
+
+  // TODO lazy query here
+  // TODO disable page tree select when loading
+  // const [foo] = useLazyQuery(fooQuery, { onCompleted: () => /* ... */ })
+  // useEffect(() => {
+  //   foo()
+  // }, [])
+
   const { data, loading } = useGetChildrenBlocksQuery({
     fetchPolicy: 'no-cache',
     variables: { rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }

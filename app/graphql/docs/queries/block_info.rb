@@ -20,6 +20,7 @@ module Docs
         id: block.id,
         is_deleted: !!block.deleted_at,
         permission: permission(block),
+        path_array: block.path_array,
         collaborators: collaborators(block)
       }
     end

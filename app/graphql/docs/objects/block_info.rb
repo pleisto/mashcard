@@ -9,6 +9,7 @@ module Docs
       field :payload, GraphQL::Types::JSON, 'payload', null: false
       field :permission, ShareLink, 'permission', null: true
       field :collaborators, [System::Objects::Pod], 'pod', null: false
+      field :path_array, [BlockPath], 'path', null: false
     end
   end
 end
