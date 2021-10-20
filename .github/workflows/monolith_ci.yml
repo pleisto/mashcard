@@ -96,7 +96,7 @@ jobs:
           CYPRESS_INSTALL_BINARY: '0'
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn test:jest
+        run: yarn test:jest --silent
       - name: Publish Jest test reports
         if: always() && steps.changed-es-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2

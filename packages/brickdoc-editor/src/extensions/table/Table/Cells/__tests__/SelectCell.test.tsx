@@ -179,7 +179,10 @@ describe('SelectCell', () => {
       }
 
       const updateData = jest.fn()
-      const { rerender } = render(<SelectCell {...props} updateData={updateData} setColumns={setColumns} />)
+      const batchDeleteSelectData = jest.fn()
+      const { rerender } = render(
+        <SelectCell {...props} updateData={updateData} setColumns={setColumns} batchDeleteSelectData={batchDeleteSelectData} />
+      )
 
       fireEvent.click(screen.getByRole('button'))
       const menuButtons = screen.getAllByRole('button')
