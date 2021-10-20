@@ -1,5 +1,5 @@
 import React from 'react'
-import { Column, TableColumnSelectOption } from 'react-table'
+import { Column, TableColumnSelectOption, TableColumnType } from 'react-table'
 import { v4 as uuid } from 'uuid'
 import { useEditorI18n } from '../../../hooks'
 
@@ -47,7 +47,7 @@ export function useColumns(options: { databaseColumns: DatabaseColumns; updateAt
     add: () => void
     remove: (groupId: string, columnId: string) => void
     updateName: (value: string, groupId: string, columnId: string) => void
-    updateType: (type: string, groupId: string, columnId: string) => void
+    updateType: (type: TableColumnType, groupId: string, columnId: string) => void
     updateWidth: (width: number, groupId: string, columnId: string) => void
   }
 ] {

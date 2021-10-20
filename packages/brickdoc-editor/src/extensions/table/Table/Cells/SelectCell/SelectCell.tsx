@@ -22,7 +22,7 @@ export const bgColor = (color?: string): string => {
 }
 
 export const SelectCell: React.FC<SelectCellProps> = props => {
-  const { cell, value, updateData, batchDeleteSelectData, column, setColumns } = props
+  const { cell, value, updateData, batchDeleteDataByValue, column, setColumns } = props
   const [modal, contextHolder] = Modal.useModal()
   const [editing, { show: showEditing, hide: hideEditing }] = useEditingStatus(props)
 
@@ -68,7 +68,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
       icon: null,
       onOk: () => {
         setSelectOptions(prevOptions => prevOptions.filter(item => item.value !== option.value))
-        batchDeleteSelectData(cell.column.id, option.value)
+        batchDeleteDataByValue(cell.column.id, option.value)
 
         if (option.value === currentValue) {
           setCurrentValue(null)

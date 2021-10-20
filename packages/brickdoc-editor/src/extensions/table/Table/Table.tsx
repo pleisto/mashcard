@@ -4,7 +4,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { v4 as uuid } from 'uuid'
 import { NodeViewProps } from '@tiptap/react'
-import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps } from 'react-table'
+import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps, TableColumnType } from 'react-table'
 import { Modal, Icon } from '@brickdoc/design-system'
 import { BlockWrapper } from '../../BlockWrapper'
 import { TableExtensionOptions } from '../../table'
@@ -69,6 +69,10 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     databaseColumns: prevData.columns,
     updateAttributeData
   })
+  const handleColumnTypeChange = async (type: TableColumnType, groupId: string, columnId: string): Promise<void> => {
+    if (type === 'date' || type === 'date-range') await batchUpdateDataByColumn(columnId, null)
+    updateColumnType(type, groupId, columnId)
+  }
 
   const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
 
@@ -106,13 +110,16 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     }
   }
 
-  const batchDeleteSelectData = (columnId: string, value: string): void => {
+  const batchDeleteDataByValue = (columnId: string, value: string): void => {
     tableRows.forEach(r => {
       if (r[columnId] === value) {
         return updateRow({ ...r, [columnId]: null })
       }
     })
   }
+
+  const batchUpdateDataByColumn = async (columnId: string, value: any): Promise<void[]> =>
+    await Promise.all(tableRows.map(r => updateRow({ ...r, [columnId]: value })))
 
   const addNewRow = (rowIndex?: number): void => {
     const row = addRow(rowIndex)
@@ -159,7 +166,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
       updateActiveStatus,
       resetActiveStatus,
       updateData,
-      batchDeleteSelectData,
+      batchDeleteDataByValue,
+      batchUpdateDataByColumn,
       setColumns
     },
     useFlexLayout,
@@ -242,7 +250,9 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                         columnName={column.Header as string}
                         columnType={column.columnType}
                         onColumnNameChange={e => updateColumnName(e.target.value, column.parent?.id ?? '', column.id)}
-                        onColumnTypeChange={type => updateColumnType(type, column.parent?.id ?? '', column.id)}
+                        onColumnTypeChange={type => {
+                          void handleColumnTypeChange(type, column.parent?.id ?? '', column.id)
+                        }}
                         onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}
                       >
                         {Header}

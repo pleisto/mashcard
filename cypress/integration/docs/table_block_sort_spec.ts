@@ -17,8 +17,8 @@ describe('tableBlockSort', () => {
     cy.get('.table-block-row:nth-child(2) .table-block-select-cell:last').click({ force: true })
     // add new select option
     cy.focused().type('new option 2{Enter}')
+    cy.get('.table-block-row:nth-child(2) .table-block-select-cell:last').click({ force: true })
     cy.focused().type('new option{Enter}')
-    cy.findByTestId('table-select-overlay').click({ force: true })
 
     // add row 2
     // edit text cell
@@ -28,7 +28,6 @@ describe('tableBlockSort', () => {
     // pick select option
     cy.get('.table-block-row:nth-child(4) .table-block-select-cell:last').click()
     cy.findByText('new option 2').click()
-    cy.findByTestId('table-select-overlay').click({ force: true })
 
     // add row 3
     // edit text cell
@@ -38,7 +37,6 @@ describe('tableBlockSort', () => {
     // pick select option
     cy.get('.table-block-row:nth-child(6) .table-block-select-cell:last').click()
     cy.findAllByText('new option 2').last().click()
-    cy.findByTestId('table-select-overlay').click({ force: true })
   })
 
   it('should remove sort option', () => {

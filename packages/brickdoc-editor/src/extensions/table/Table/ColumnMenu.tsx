@@ -2,10 +2,11 @@ import React from 'react'
 import { Popover, Modal, Menu, Input, Icon } from '@brickdoc/design-system'
 import { COLUMN_TYPE } from './columnType'
 import { useEditorI18n } from '../../../hooks'
+import { TableColumnType } from 'react-table'
 
 interface ColumnMenuProps {
   onColumnNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onColumnTypeChange: (type: string) => void
+  onColumnTypeChange: (type: TableColumnType) => void
   onRemoveColumn: () => void
   columnName?: string
   columnType: string
@@ -35,7 +36,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
     })
   }
 
-  const handleUpdateColumnType = (type: string): void => {
+  const handleUpdateColumnType = (type: TableColumnType): void => {
     onColumnTypeChange(type)
     setVisible(false)
   }

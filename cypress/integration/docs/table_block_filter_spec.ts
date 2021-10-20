@@ -44,8 +44,8 @@ describe('tableBlockFilter', () => {
     cy.get('.table-block-select-cell:last').click({ force: true })
     // add new select option
     cy.focused().type('new option 2{Enter}')
+    cy.get('.table-block-select-cell:last').click({ force: true })
     cy.focused().type('new option{Enter}')
-    cy.findByTestId('table-select-overlay').click({ force: true })
     // edit text cell
     cy.get('.table-block-text-cell:last').click()
     cy.focused().type('text')
@@ -72,7 +72,6 @@ describe('tableBlockFilter', () => {
     // pick select option
     cy.get('.table-block-select-cell:last').click({ force: true })
     cy.findByText('new option 2').click()
-    cy.findByTestId('table-select-overlay').click({ force: true })
   })
 
   it('should allow three level nested filter group', () => {
