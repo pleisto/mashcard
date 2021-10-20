@@ -44,6 +44,7 @@ module Docs
       pod_id = current_pod.fetch('id')
 
       insert_data = []
+      # attachment_data = {}
       now = Time.current
 
       blocks.each do |args|
@@ -62,13 +63,12 @@ module Docs
         block.type ||= args.type
         block.pod_id ||= pod_id
         block.root_id ||= root_id
-
-        block.attachments = args.attachments if args.attachments
-
         block.deleted_at = nil
-
         # TODO: fix this in collab (Readonly mode)
         block.collaborators = (block.collaborators + [current_user.id]).uniq if current_pod.fetch('owner_id') == current_user.id
+
+        ## TODO upsert_all
+        block.attachments = args.attachments if args.attachments
 
         refetch_tree = true if args.id == root_id && block.changed?
 

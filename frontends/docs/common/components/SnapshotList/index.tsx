@@ -6,7 +6,7 @@ import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMuta
 import styles from './index.module.less'
 import { useDocsI18n } from '../../hooks'
 import Pic from '@/common/assets/cloud_brain_2.svg'
-import { queryChildrenBlocks } from '@/docs/pages/graphql'
+import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
 import { useSyncProvider } from '@/docs/pages/hooks'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
@@ -29,7 +29,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 }) => {
   const { t } = useDocsI18n()
   const { data } = useGetBlockSnapshotsQuery({ variables: { id: docMeta.id } })
-  const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks] })
+  const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryBlockInfo] })
   const [onCommit] = useSyncProvider()
 
   const onRestore = async (): Promise<void> => {

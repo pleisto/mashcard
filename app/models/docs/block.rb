@@ -42,7 +42,7 @@ class Docs::Block < ApplicationRecord
   scope :soft_deleted, -> { where.not(deleted_at: nil) }
   scope :non_deleted, -> { where(deleted_at: nil) }
 
-  belongs_to :pod
+  belongs_to :pod, optional: true
   belongs_to :parent, class_name: 'Docs::Block', optional: true
   has_many :children, class_name: 'Docs::Block', foreign_key: :parent_id, dependent: :restrict_with_exception
   has_many :histories, dependent: :restrict_with_exception
@@ -52,7 +52,7 @@ class Docs::Block < ApplicationRecord
 
   validates :meta, presence: true, allow_blank: true
   # validates :data, presence: true
-  validates :pod, presence: true
+  validates :pod_id, presence: true
   validates :collaborators, presence: true
 
   attribute :next_sort, :integer, default: 0
@@ -169,8 +169,9 @@ class Docs::Block < ApplicationRecord
 
   def realtime_version(type)
     meta = COUNTER_META.fetch(type)
+    key = meta.fetch(:key_f).call(id)
+
     Brickdoc::Redis.with(:cache) do |redis|
-      key = meta.fetch(:key_f).call(id)
       counter = Current.redis_values.to_h[key] || redis.get(key)
       return counter.to_i if counter
 
@@ -184,16 +185,13 @@ class Docs::Block < ApplicationRecord
   def realtime_version_increment(type)
     ## NOTE ensure counter exists
     ## TODO remove this
-    prepare_version = realtime_version(type)
+    _prepare_version = realtime_version(type)
 
     meta = COUNTER_META.fetch(type)
+    key = meta.fetch(:key_f).call(id)
+
     Brickdoc::Redis.with(:cache) do |redis|
-      key = meta.fetch(:key_f).call(id)
-      result = redis.incr(key)
-
-      Rails.logger.info("DEBUG #{key} #{prepare_version} #{result}")
-
-      return result
+      return redis.incr(key)
     end
   end
 
@@ -325,6 +323,8 @@ class Docs::Block < ApplicationRecord
       end
 
       Docs::Block.insert_all(insert_data)
+
+      Docs::Block.find(new_root_id).save_snapshot!
 
       new_root_id
     end

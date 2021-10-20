@@ -17,13 +17,14 @@ import { queryPageBlocks } from '../../graphql'
 import styles from './PageTree.module.less'
 import { useDocsI18n } from '../../hooks'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
+import { queryBlockInfo } from '@/docs/pages/graphql'
 
 export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
 
   const { data } = useGetPageBlocksQuery({ variables: { webid: docMeta.webid } })
 
-  const [blockMove] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
+  const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
   const [popoverKey, setPopoverKey] = useState<string | undefined>()
   // const [selectedKeys, setSelectedKeys] = useState<string[]>(docMeta.id ? [docMeta.id] : [])
@@ -74,6 +75,9 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
       input.targetParentId = targetParentId
     }
     await blockMove({ variables: { input } })
+    if (docMeta.id === attrs.dragNode.key) {
+      await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
+    }
     setDraggable(true)
   }
 
