@@ -48,10 +48,14 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
         content =>
         ({ chain, can, dispatch }) => {
           const chainedCommands = dispatch ? chain() : can().chain()
-          return chainedCommands
-            .setContent(content, false)
-            .setDocAttrs(content.attrs ?? {})
-            .run()
+          return (
+            chainedCommands
+              // replaceRoot will not record in history because it is an initialization
+              .setMeta('addToHistory', false)
+              .setContent(content, false)
+              .setDocAttrs(content.attrs ?? {})
+              .run()
+          )
         }
     }
   },
