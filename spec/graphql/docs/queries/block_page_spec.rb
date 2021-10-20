@@ -65,20 +65,29 @@ describe Docs::Queries::PageBlocks, type: :query do
       self.current_pod = nil
     end
 
-    it 'hard delete dangling' do
+    it 'delete dangling' do
       user = create(:accounts_user)
       self.current_user = user
       pod = create(:pod)
       self.current_pod = pod.as_session_context
 
       root = create(:docs_block, pod: pod, collaborators: [user.id])
-      _block = root.create_sub_block!("abc")
+      child = root.create_sub_block!("abc")
+      sub_child = child.create_sub_block!("abc")
+      _sub_sub_child = sub_child.create_sub_block!("abc")
 
       internal_graphql_execute(query, { webid: pod.webid })
       expect(response.success?).to be true
-      expect(response.data['pageBlocks'].count).to eq(2)
+      expect(response.data['pageBlocks'].count).to eq(4)
 
       root.soft_delete!
+
+      internal_graphql_execute(query, { webid: pod.webid })
+      expect(response.success?).to be true
+      expect(response.data['pageBlocks'].count).to eq(0)
+
+      root.restore!
+      child.soft_delete!
 
       internal_graphql_execute(query, { webid: pod.webid })
       expect(response.success?).to be true

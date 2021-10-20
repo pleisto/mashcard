@@ -23,21 +23,12 @@ interface PageMenuProps {
   docMeta: DocMeta
   pageId: UUID
   title: Scalars['String']
-  setSelectedKeys: React.Dispatch<React.SetStateAction<string[]>>
-  selectedKeys: string[]
+  setPopoverKey: React.Dispatch<React.SetStateAction<string | undefined>>
   titleText: string
   pin: boolean
 }
 
-export const PageMenu: React.FC<PageMenuProps> = ({
-  docMeta: { id, webid, host },
-  selectedKeys,
-  setSelectedKeys,
-  pageId,
-  pin,
-  title,
-  titleText
-}) => {
+export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }, setPopoverKey, pageId, pin, title, titleText }) => {
   const history = useHistory()
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
@@ -85,11 +76,11 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const link = `${host}${linkPath}`
 
   const addSelectedKey = (): void => {
-    setSelectedKeys([...new Set([...selectedKeys, pageId])])
+    setPopoverKey(pageId)
   }
 
   const removeSelectedKey = (): void => {
-    setSelectedKeys(selectedKeys.filter(key => key !== pageId))
+    setPopoverKey(undefined)
   }
 
   const onClickMoreButton = (e: { preventDefault: () => void; stopPropagation: () => void }): void => {

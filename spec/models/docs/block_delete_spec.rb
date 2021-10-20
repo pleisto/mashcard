@@ -68,13 +68,13 @@ RSpec.describe Docs::Block, type: :model do
 
     expect(root.descendants(unscoped: true).count).to eq(2)
     expect(root.descendants_raw(unscoped: true).count).to eq(2)
-    expect(child.ancestors(unscoped: true).count).to eq(1)
-    expect(child.ancestors_raw(unscoped: true).count).to eq(1)
+    expect(child.ancestors(unscoped: true).count).to eq(0)
+    expect(child.ancestors_raw(unscoped: true).count).to eq(0)
 
     expect(root.descendants.count).to eq(2)
     expect(root.descendants_raw.count).to eq(2)
-    expect(child.ancestors.count).to eq(1)
-    expect(child.ancestors_raw.count).to eq(1)
+    expect(child.ancestors.count).to eq(0)
+    expect(child.ancestors_raw.count).to eq(0)
   end
 
   it '[sub] soft delete and restore' do
@@ -141,12 +141,12 @@ RSpec.describe Docs::Block, type: :model do
 
     expect(root.descendants(unscoped: true).count).to eq(2)
     expect(root.descendants_raw(unscoped: true).count).to eq(2)
-    expect(child.ancestors(unscoped: true).count).to eq(1)
-    expect(child.ancestors_raw(unscoped: true).count).to eq(1)
+    expect(child.ancestors(unscoped: true).count).to eq(0)
+    expect(child.ancestors_raw(unscoped: true).count).to eq(0)
 
     expect(root.descendants.count).to eq(2)
     expect(root.descendants_raw.count).to eq(2)
-    expect(child.ancestors.count).to eq(1)
-    expect(child.ancestors_raw.count).to eq(1)
+    expect(child.ancestors.count).to eq(0)
+    expect(child.ancestors_raw.count).to eq(0)
   end
 end

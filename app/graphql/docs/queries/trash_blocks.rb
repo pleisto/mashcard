@@ -22,7 +22,6 @@ module Docs
 
       blocks = blocks.where("text like ?", "%#{search}%") if search.present?
 
-      # blocks.select { |block| block.id == block.root_id }
       result = blocks.to_a
 
       target_blocks = blocks.select { |block| !block.parent_id.nil? }

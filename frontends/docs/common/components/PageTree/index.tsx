@@ -25,7 +25,8 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   const [blockMove] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
-  const [selectedKeys, setSelectedKeys] = useState<string[]>(docMeta.id ? [docMeta.id] : [])
+  const [popoverKey, setPopoverKey] = useState<string | undefined>()
+  // const [selectedKeys, setSelectedKeys] = useState<string[]>(docMeta.id ? [docMeta.id] : [])
 
   const { t } = useDocsI18n()
 
@@ -81,8 +82,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     return (
       <PageMenu
         docMeta={docMeta}
-        selectedKeys={selectedKeys}
-        setSelectedKeys={setSelectedKeys}
+        setPopoverKey={setPopoverKey}
         pin={pin}
         pageId={node.key}
         title={node.fakeIcon ? `${node.fakeIcon} ${node.title}` : node.title}
@@ -114,6 +114,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
     const treeData = array2Tree(flattedData, { id: 'key' })
+    const selectedKeys = [docMeta.id, popoverKey].filter(k => !!k) as string[]
     return (
       <Tree
         className={styles.tree}

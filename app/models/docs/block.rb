@@ -340,7 +340,9 @@ class Docs::Block < ApplicationRecord
   def hard_delete!
     raise 'not_deleted' if deleted_at.nil?
     raise 'already_hard_delete' unless deleted_permanently_at.nil?
-    update!(deleted_permanently_at: Time.current)
+    ## update!(deleted_permanently_at: Time.current)
+    ## NOTE Remove all descendants
+    descendants_raw(unscoped: true).update_all(deleted_permanently_at: Time.current)
   end
 
   def restore!

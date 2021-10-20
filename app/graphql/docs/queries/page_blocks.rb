@@ -13,7 +13,18 @@ module Docs
       blocks = Docs::Block.fill_sorts(webid, blocks)
 
       roots = blocks.select { |block| block.id == block.root_id }
-      result = authorized_scope roots, as: :collaborating, with: Docs::BlockPolicy
+
+      non_deleted_result = []
+      parent_ids = [nil]
+      loop do
+        temp = roots.select { |block| block.parent_id.in?(parent_ids) }
+        break if temp.blank?
+
+        non_deleted_result += temp
+        parent_ids = temp.map(&:id)
+      end
+
+      result = authorized_scope non_deleted_result, as: :collaborating, with: Docs::BlockPolicy
 
       Docs::Block.remove_dangling_blocks(result, blocks)
     end
