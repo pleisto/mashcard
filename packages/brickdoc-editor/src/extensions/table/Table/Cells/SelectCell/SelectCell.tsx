@@ -146,7 +146,8 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
           showSearch={true}
           showAction={['focus', 'click']}
           open={true}
-          onChange={handleChange}>
+          onChange={handleChange}
+        >
           {selectOptions.map(option => (
             <Select.Option className="select-cell-select-option" key={option.value} value={option.value} title={option.label}>
               <SelectCellOption onOptionValueChange={handleColumnOptionChange} onOptionRemove={handleColumnOptionRemove} option={option} />
@@ -164,7 +165,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
     /* eslint-disable jsx-a11y/click-events-have-key-events */
     <div role="button" tabIndex={-1} className="table-block-select-cell" onClick={showEditing}>
       {label && (
-        <Tag color={bgColor(color)} style={{ color }}>
+        <Tag className="table-block-select-cell-tag" color={bgColor(color)} style={{ color }}>
           {label}
         </Tag>
       )}

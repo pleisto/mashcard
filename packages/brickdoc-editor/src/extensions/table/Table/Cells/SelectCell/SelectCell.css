@@ -2,13 +2,20 @@
   --padding: 8px;
 
   width: 100%;
-  padding-left: var(--padding);
+  padding: var(--padding);
   display: flex;
   flex-direction: row;
   align-items: center;
   color: #333;
   font-size: 14px;
+  word-break: break-all;
   max-width: calc(100% - 2 * var(--padding));
+
+  & .table-block-select-cell-tag {
+    word-break: break-all;
+    max-width: 100%;
+    white-space: break-spaces;
+  }
 }
 
 .table-block-select-dropdown-title {
