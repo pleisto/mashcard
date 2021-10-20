@@ -94,11 +94,6 @@ export const routeConfig = (context: BrickdocContext): JSX.Element => {
       component: DocumentContentPage
     },
     {
-      path: '/:webid/:kind/:docid/l/:shareLink',
-      exact: true,
-      component: DocumentContentPage
-    },
-    {
       path: '/:webid',
       exact: true,
       beforeAction: authenticateUser,

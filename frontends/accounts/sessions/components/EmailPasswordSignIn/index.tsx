@@ -3,12 +3,11 @@ import { Form, Button, Input, Checkbox, Divider, message } from '@brickdoc/desig
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/utils'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styles from './index.module.less'
 
 export const EmailPasswordSignIn: React.FC = () => {
   const { t } = useAccountsI18n()
-  const history = useHistory()
   const [emailPasswordSignIn, { loading }] = useUserEmailPasswordSignInMutation()
   const onFinish = async (values: UserEmailPasswordSignInInput): Promise<void> => {
     const { data } = await emailPasswordSignIn({ variables: { input: values } })
@@ -16,7 +15,7 @@ export const EmailPasswordSignIn: React.FC = () => {
     mutationResultHandler(result, () => {
       void message.success(t('devise:sessions.signed_in'))
       if (result?.redirectPath) {
-        history.push(result.redirectPath)
+        globalThis.location.href = result.redirectPath
       }
     })
   }

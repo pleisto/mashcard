@@ -125,12 +125,12 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, s
 
   useDocumentSubscription({ docid: docMeta.id as string, editor })
 
-  if (!docMeta.viewable) {
-    return <Redirect to="/" />
+  if (loading || docMeta.documentInfoLoading) {
+    return <Skeleton active />
   }
 
-  if (loading) {
-    return <Skeleton active />
+  if (!docMeta.viewable) {
+    return <Redirect to="/" />
   }
 
   const DocumentTitleElement = (

@@ -104,7 +104,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
           value: b.id,
           parentId: b.parentId,
           sort: b.sort,
-          // icon: getIcon(b), TODO fix style
+          // icon: getIcon(b), // TODO fix style
           fakeIcon: getIcon(b),
           nextSort: b.nextSort,
           firstChildSort: b.firstChildSort,

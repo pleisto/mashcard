@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { Skeleton } from '@brickdoc/design-system'
 import { SidebarLayoutPage } from '@/common/layouts/SidebarLayoutPage'
 import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
@@ -12,7 +11,7 @@ import { SearchModal } from '@/docs/common/components/SearchModal'
 import { TrashButton } from '@/docs/common/components/TrashButton'
 import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
-import { BlockIdKind, GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoLazyQuery } from '@/BrickdocGraphQL'
+import { BlockIdKind, GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
@@ -23,12 +22,14 @@ type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['p
 export interface DocMeta {
   id: string | undefined
   webid: string
+  loginWebid: string
   kind: BlockIdKind
   alias: string | undefined
   payload: object
   snapshotVersion: number
   isAnonymous: boolean
   isDeleted: boolean
+  isMine: boolean
   pin: boolean
   title: string
   host: string
@@ -63,33 +64,30 @@ export const DocumentContentPage: React.FC = () => {
   const { t } = useDocsI18n()
   const history = useHistory()
 
-  const realWebid = currentPod.webid
-  const isMine = realWebid === webid
+  const loginWebid = currentPod.webid
+  const isMine = loginWebid === webid
 
-  const [fetch, { data, loading: getBlockInfoLoading }] = useGetBlockInfoLazyQuery()
+  const { data, loading: getBlockInfoLoading } = useGetBlockInfoQuery({ variables: { id: docid as string, kind, webid } })
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
   const loading = !data || getBlockInfoLoading || createBlockLoading
+  const isAnonymous = !currentUser
 
   useEffect(() => {
     async function createAndNavigateToNewPage(): Promise<void> {
-      const { data } = await blockCreate({ variables: { input: { title: '' } } })
-      if (data?.blockCreate?.id) {
-        history.push(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
+      const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '' } } })
+      if (blockCreateData?.blockCreate?.id) {
+        history.push(`/${webid}/${BlockIdKind.P}/${blockCreateData?.blockCreate?.id}`)
       }
     }
 
-    if (docid) {
-      fetch({ variables: { id: docid, kind, webid } })
-    } else {
+    if (!isAnonymous && !docid) {
       void createAndNavigateToNewPage()
     }
-  }, [blockCreate, docid, fetch, history, kind, webid])
+  }, [blockCreate, docid, history, webid, isAnonymous])
 
   const policy = data?.blockInfo?.permission?.policy
-
-  const isAnonymous = !currentUser
 
   const pin = !!data?.blockInfo?.pin
   const shareable = isMine
@@ -116,6 +114,8 @@ export const DocumentContentPage: React.FC = () => {
     host,
     path,
     isAnonymous,
+    isMine,
+    loginWebid,
     shareable,
     editable,
     viewable,
@@ -132,25 +132,31 @@ export const DocumentContentPage: React.FC = () => {
 
   // SideBar
   if (!docMeta.isAnonymous) {
-    siderBarVar(
-      <>
-        <PodSelect docMeta={docMeta} />
-        <SearchModal docMeta={docMeta} />
+    if (docMeta.isMine) {
+      siderBarVar(
+        <>
+          <PodSelect docMeta={docMeta} />
+          <SearchModal docMeta={docMeta} />
 
-        <nav>
-          <PageTree docMeta={docMeta} />
-          <TrashButton docMeta={docMeta} />
-        </nav>
-        <footer>
-          <NewPage docMeta={docMeta} />
-        </footer>
-      </>
-    )
+          <nav>
+            <PageTree docMeta={docMeta} />
+            <TrashButton docMeta={docMeta} />
+          </nav>
+          <footer>
+            <NewPage docMeta={docMeta} />
+          </footer>
+        </>
+      )
+    } else {
+      siderBarVar(
+        <>
+          <PodSelect docMeta={docMeta} />
+        </>
+      )
+    }
   }
 
-  const content = loading ? (
-    <Skeleton active />
-  ) : (
+  const content = (
     <>
       <Helmet title={docMeta.title} />
       <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} onCommit={onCommit} setCommitting={setCommitting} />

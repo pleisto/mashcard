@@ -17,7 +17,6 @@ import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
 import { usePasswordAvailableValidator } from '@/common/hooks/usePasswordAvailableValidator'
-import { useHistory } from 'react-router-dom'
 
 export const SignUpPage: React.FC = () => {
   const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
@@ -35,7 +34,6 @@ export const SignUpPage: React.FC = () => {
   }, [sessionLoading, sessionData])
   const providerName = sessionData?.federatedIdentitySession?.provider
   const { t } = useAccountsI18n()
-  const history = useHistory()
 
   // Set Validator
   const passwordConfirmValidator = useConfirmationValidator('password')
@@ -52,7 +50,7 @@ export const SignUpPage: React.FC = () => {
     mutationResultHandler(result, () => {
       if (result?.redirectPath && result.isUserActive) {
         void message.success(t('devise:registrations.signed_up'))
-        history.push(result.redirectPath)
+        globalThis.location.href = result.redirectPath
       } else {
         showConfirmationEmailTips()
       }

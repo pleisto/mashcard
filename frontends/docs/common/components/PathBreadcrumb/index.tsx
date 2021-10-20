@@ -15,7 +15,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
   const { t } = useDocsI18n()
 
   const pathData = paths.map((path, idx) => {
-    const link = `/${docMeta.webid}/${BlockIdKind.P}/${path.id}`
+    const link = docMeta.isMine ? `/${docMeta.webid}/${BlockIdKind.P}/${path.id}` : '#'
     return (
       <div key={idx}>
         <Link className={styles.path} to={link}>
