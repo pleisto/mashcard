@@ -104,7 +104,6 @@ describe('SelectCell', () => {
 
     const elements = screen.getAllByRole('listitem')
     fireEvent.click(elements[elements.length - 1])
-    fireEvent.click(screen.getByTestId('table-select-overlay'))
 
     expect(updateData).toBeCalledTimes(1)
     expect(updateData).toBeCalledWith(props.cell.row.original.id, props.cell.column.id, id2)

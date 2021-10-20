@@ -85,10 +85,12 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
     setSelectOptions(prevOptions => {
       if (isOptionExist(newValue)) {
         setCurrentValue(newValue)
+        handleEndEditing(newValue)
         return prevOptions
       }
       const newOption: TableColumnSelectOption = { label: newValue, color: randomColor(), value: uuid() }
       setCurrentValue(newOption.value)
+      handleEndEditing(newOption.value)
       return [...prevOptions, newOption]
     })
   }
@@ -107,9 +109,9 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
     [selectOptions, handleRemove]
   )
 
-  const handleEndEditing = (): void => {
+  const handleEndEditing = (value?: string): void => {
     // TODO: fix type
-    updateData((cell.row.original as any).id, cell.column.id, currentValue)
+    updateData((cell.row.original as any).id, cell.column.id, value ?? currentValue)
     hideEditing()
   }
 
@@ -144,8 +146,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
           showSearch={true}
           showAction={['focus', 'click']}
           open={true}
-          onChange={handleChange}
-        >
+          onChange={handleChange}>
           {selectOptions.map(option => (
             <Select.Option className="select-cell-select-option" key={option.value} value={option.value} title={option.label}>
               <SelectCellOption onOptionValueChange={handleColumnOptionChange} onOptionRemove={handleColumnOptionRemove} option={option} />
