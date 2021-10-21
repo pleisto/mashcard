@@ -83,12 +83,23 @@ disposition: key[:disposition]
   end
 
   def authenticate_blob
+    return :ok if blob_can_view?
+
+    Rails.logger.info("No pod permission")
+    head :not_found
+  end
+
+  def blob_can_view?
     pod = current_pod
 
-    if pod&.fetch('id', nil) != @blob.pod_id
-      Rails.logger.info("No pod permission")
-      head :not_found
-    end
+    return true if pod&.fetch('id', nil) == @blob.pod_id
+
+    return false if @blob.block_id.blank?
+
+    block = Docs::Block.find_by(id: @blob.block_id)
+    return false if block.nil?
+
+    block.root.show_policy?(current_user)
   end
 
   # https://github.com/rails/rails/blob/main/activestorage/app/controllers/active_storage/representations/base_controller.rb#L3

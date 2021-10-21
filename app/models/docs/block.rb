@@ -89,6 +89,11 @@ class Docs::Block < ApplicationRecord
     text
   end
 
+  def root
+    return self if id == root_id
+    Docs::Block.find(root_id)
+  end
+
   def blobs
     attachments.map do |blob|
       { blob_key: blob.key, url: blob.real_url, download_url: blob.real_url(disposition: "attachment") }

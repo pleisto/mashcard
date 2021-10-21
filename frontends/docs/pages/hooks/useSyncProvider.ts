@@ -4,6 +4,7 @@ import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } fro
 import { JSONContent } from '@tiptap/core'
 import { isNil } from 'lodash-es'
 import { queryPageBlocks } from '@/docs/common/graphql'
+import { queryBlockInfo } from '../graphql'
 
 const nodeChildren = (node: Node): Node[] => {
   // TODO Fragment type missing content field
@@ -181,7 +182,7 @@ export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc
       try {
         const { data } = await blockSyncBatch({ variables: { input } })
         if (data?.blockSyncBatch?.refetchTree) {
-          await client.refetchQueries({ include: [queryPageBlocks] })
+          await client.refetchQueries({ include: [queryPageBlocks, queryBlockInfo] })
         }
       } finally {
         setCommitting?.(false)
