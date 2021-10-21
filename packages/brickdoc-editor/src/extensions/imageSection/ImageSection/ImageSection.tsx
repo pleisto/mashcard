@@ -6,10 +6,10 @@ import cx from 'classnames'
 import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { message, Button, Modal, Popover, Icon, Skeleton, Menu } from '@brickdoc/design-system'
-import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload } from '@brickdoc/uploader'
+import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload, UploadProgress } from '@brickdoc/uploader'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
-import * as fileStorage from '../../fileStorage'
+import { linkStorage, sizeFormat } from '../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 
@@ -26,8 +26,6 @@ export interface ImageSectionAttributes {
 // TODO: handle image load on error
 export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
   const { t } = useEditorI18n()
-  const [file, setFile] = React.useState<string>()
-  const [viewUrl, setViewUrl] = React.useState<string>()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
   const updateImageAttributes = (newAttributes: Partial<ImageSectionAttributes>): void => {
     latestImageAttributes.current = {
@@ -49,36 +47,19 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
     })
   }
 
-  React.useEffect(() => {
-    const file = fileStorage.get(node.attrs.uuid)
-
-    if (!file) return
-
-    const fr = new FileReader()
-    fr.readAsDataURL(file)
-    fr.onload = function onload() {
-      setFile(this.result as string)
-    }
-  }, [node.attrs.uuid])
-
-  const onFileLoaded = (inputFile: File): void => {
-    fileStorage.set(node.attrs.uuid, inputFile)
-    const fr = new FileReader()
-    fr.readAsDataURL(inputFile)
-    fr.onload = function onload() {
-      setFile(this.result as string)
-    }
-  }
   const [loaded, setLoaded] = React.useState(false)
   const [showPreview, setShowPreview] = React.useState(false)
   const previewImage = (): void => {
-    if ((!(file && !node.attrs.image?.key) && !loaded) || showPreview) return
+    if ((node.attrs.image?.key && !loaded) || showPreview) return
     setShowPreview(true)
   }
   const onUploaded = (data: UploadResultData): void => {
-    setViewUrl(data.viewUrl)
+    linkStorage.set(node.attrs.uuid, data.viewUrl!)
     updateImageAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
+  const [progress, setProgress] = React.useState<UploadProgress>()
+  const onProgress = (progress: UploadProgress): void => setProgress(progress)
+
   const onImageLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
     const img = event.target as HTMLImageElement
     // Update image dimensions on loaded if there is no dimensions data before
@@ -95,17 +76,16 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
       prepareFileUpload: extension.options.prepareFileUpload,
       blockId: node.attrs.uuid,
       fileType: 'image',
-      onFileLoaded,
       onUploaded
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (node.attrs.image?.key || file) {
-    const url = extension.options.getImageUrl?.(node) || file
+  if (node.attrs.image?.key) {
+    const url = extension.options.getImageUrl?.(node) ?? linkStorage.get(node.attrs.uuid)
 
     const handleCopy = async (): Promise<void> => {
-      await navigator.clipboard.writeText(viewUrl ?? url)
+      await navigator.clipboard.writeText(url)
       void message.success(t('image_section.copy_hint'))
     }
 
@@ -178,12 +158,12 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               overlayClassName="image-section-menu-popover"
               content={
                 <Menu className="image-section-menu">
-                  <Menu.Item onClick={handleCopy}>
+                  <Menu.Item key="copy" onClick={handleCopy}>
                     <Icon.Copy />
                     {t('image_section.menu.copy')}
                   </Menu.Item>
                   <Menu.Divider />
-                  <Menu.Item onClick={handleDelete}>
+                  <Menu.Item key="delete" onClick={handleDelete}>
                     <Icon.Delete />
                     {t('image_section.menu.delete')}
                   </Menu.Item>
@@ -250,14 +230,22 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
             prepareFileUpload={extension.options.prepareFileUpload}
             fetchUnsplashImages={extension.options.fetchUnsplashImages}
             onUploaded={onUploaded}
-            onFileLoaded={onFileLoaded}
+            onProgress={onProgress}
             importSources={importSources}
           />
         }
       >
         <Button type="text" className="brickdoc-block-image-section">
+          <div className="image-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.Image className="image-section-icon" />
-          <div className="image-section-hint">{t('image_section.hint')}</div>
+          <div className="image-section-content">
+            {progress ? progress.name : t('image_section.hint')}
+            {progress && (
+              <div className="image-section-desc">
+                {sizeFormat(progress.bytesTotal)} - {progress.percentage}%
+              </div>
+            )}
+          </div>
         </Button>
       </Popover>
     </BlockWrapper>

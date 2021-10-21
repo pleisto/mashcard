@@ -3,15 +3,14 @@
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { Button, Popover, Icon, Menu, Modal, message } from '@brickdoc/design-system'
-import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
+import { Dashboard, ImportSourceOption, UploadProgress, UploadResultData } from '@brickdoc/uploader'
 import { WebsiteMeta } from '..'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
-import './LinkBlock.css'
+import './LinkBlock.less'
 import { prependHttp } from '../../helpers/prependHttp'
-
-const attachmentUrlStorage: { [key: string]: string } = {}
+import { sizeFormat, linkStorage, getFileTypeByExtension } from '../../helpers/file'
 
 export interface LinkBlockAttributes {
   key: string
@@ -22,14 +21,6 @@ export interface LinkBlockAttributes {
   description?: WebsiteMeta['description']
   cover?: WebsiteMeta['cover']
   icon?: WebsiteMeta['icon']
-}
-
-const sizeFormat = (size?: number): string => {
-  if (size === undefined) return ''
-  if (size < 1024) return `${size} b`
-  if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`
-
-  return `${(size / 1024 / 1024).toFixed(1)} MB`
 }
 
 export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, extension, updateAttributes }) => {
@@ -49,7 +40,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     })
   }
 
-  const [attachmentUrl, setAttachmentUrl] = React.useState(attachmentUrlStorage[node.attrs.uuid] ?? '')
+  const [progress, setProgress] = React.useState<UploadProgress>()
+  const onProgress = (progress: UploadProgress): void => setProgress(progress)
 
   const onUploaded = (data: UploadResultData): void => {
     // external link
@@ -60,29 +52,31 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
         updateLinkBlockAttributes({ ...data }, 'link')
       })
 
-      setAttachmentUrl('')
+      linkStorage.set(node.attrs.uuid, null)
       updateLinkBlockAttributes({ key: data.url, source: data.meta?.source.toUpperCase() }, 'link')
 
       return
     }
 
-    attachmentUrlStorage[node.attrs.uuid] = data.downloadUrl ?? ''
-    setAttachmentUrl(data.downloadUrl ?? '')
+    linkStorage.set(node.attrs.uuid, data.downloadUrl ?? '')
     updateLinkBlockAttributes(
       { key: data.url, source: data.meta?.source.toUpperCase(), size: data.meta?.size, name: data.meta?.name },
       'attachment'
     )
   }
 
-  const fileUrl = extension.options.getAttachmentUrl(node) || attachmentUrl
+  const fileUrl = extension.options.getAttachmentUrl(node) ?? linkStorage.get(node.attrs.uuid)
   const linkUrl = node.attrs.link?.key
 
   if (fileUrl) {
     const { name, size } = node.attrs.attachment
+    const fileType = getFileTypeByExtension(name)
     return (
       <BlockWrapper editor={editor}>
         <a href={fileUrl} className="brickdoc-link-block-attachment" download={true}>
-          <Icon.File />
+          {fileType === 'unknown' && <Icon.File />}
+          {fileType === 'image' && <Icon.Image />}
+          {fileType === 'pdf' && <Icon.FilePdf />}
           <div className="link-block-attachment-content">
             <div className="link-block-attachment-name">{name}</div>
             <div className="link-block-attachment-size">{sizeFormat(size)}</div>
@@ -133,6 +127,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             content={
               <Menu onClick={event => event.domEvent.stopPropagation()}>
                 <Menu.Item
+                  key="delete"
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
@@ -141,7 +136,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   <Icon.Delete />
                   {t('link_block.menu.delete')}
                 </Menu.Item>
-                <Menu.Item onClick={handleCopy}>
+                <Menu.Item onClick={handleCopy} key="copy">
                   <Icon.Copy />
                   {t('link_block.menu.copy')}
                 </Menu.Item>
@@ -181,14 +176,23 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
           <Dashboard
             blockId={node.attrs.uuid}
             onUploaded={onUploaded}
+            onProgress={onProgress}
             importSources={importSources}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
         }
       >
         <Button type="text" className="brickdoc-link-block-placeholder">
+          <div className="link-block-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.BlockLevelLink className="link-block-icon" />
-          <div className="link-block-hint">{t('link_block.hint')}</div>
+          <div className="link-block-content">
+            {progress ? progress.name : t('link_block.hint')}
+            {progress && (
+              <div className="link-block-desc">
+                {sizeFormat(progress.bytesTotal)} - {progress.percentage}%
+              </div>
+            )}
+          </div>
         </Button>
       </Popover>
     </BlockWrapper>

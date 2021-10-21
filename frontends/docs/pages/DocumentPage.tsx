@@ -52,15 +52,11 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, s
   const getImageUrl = createFileUrlGetter('image')
   const getAttachmentUrl = createFileUrlGetter('attachment')
   const getDocIconUrl = (): string | undefined => {
-    if (!editor || editor.isDestroyed) {
-      return undefined
-    }
+    if (!editor || editor.isDestroyed) return undefined
     return createFileUrlGetter('icon')(editor.state.doc)
   }
   const getDocCoverUrl = (): string | undefined => {
-    if (!editor || editor.isDestroyed) {
-      return undefined
-    }
+    if (!editor || editor.isDestroyed) return undefined
     return createFileUrlGetter('cover')(editor.state.doc)
   }
 
@@ -110,7 +106,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, s
   const setTitle = createDocAttrsUpdater('title')
   const setIcon = createDocAttrsUpdater('icon')
   const setCover = createDocAttrsUpdater('cover')
-  // const setSort = createDocAttrsUpdater('sort')
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data?.childrenBlocks) {

@@ -6,9 +6,9 @@ import { NodeViewProps } from '@tiptap/react'
 import { Button, Popover, Icon, Menu, message, Modal } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from '@brickdoc/uploader'
 import { PdfDocument } from './PdfDocument'
+import { linkStorage, sizeFormat } from '../../helpers/file'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
-import * as fileStorage from '../../fileStorage'
 import './styles.less'
 
 const MAX_WIDTH = 700
@@ -24,7 +24,6 @@ export interface PdfSectionAttributes {
 // TODO: handle pdf load on error
 export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
   const { t } = useEditorI18n()
-  const [viewUrl, setViewUrl] = React.useState<string>()
   const latestPdfAttributes = React.useRef<Partial<PdfSectionAttributes>>({})
   const updatePdfAttributes = (newAttributes: Partial<PdfSectionAttributes>): void => {
     latestPdfAttributes.current = {
@@ -44,30 +43,19 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
     })
   }
 
-  const [file, setFile] = React.useState<File | undefined>(fileStorage.get(node.attrs.uuid))
   const [progress, setProgress] = React.useState<UploadProgress>()
-
-  const onProgress = (progress: UploadProgress): void => {
-    setProgress(progress)
-  }
-
-  const onFileLoaded = (inputFile: File): void => {
-    fileStorage.set(node.attrs.uuid, inputFile)
-    setFile(inputFile)
-  }
+  const onProgress = (progress: UploadProgress): void => setProgress(progress)
 
   const onUploaded = (data: UploadResultData): void => {
-    setViewUrl(data.viewUrl)
+    linkStorage.set(node.attrs.uuid, data.viewUrl!)
     updatePdfAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
   }
 
-  const isUploadCompleted = !!node.attrs.attachment.source && file
-
-  if (node.attrs.attachment.key || isUploadCompleted) {
-    const url = extension.options.getAttachmentUrl?.(node) || file
+  if (node.attrs.attachment.key) {
+    const url = extension.options.getAttachmentUrl?.(node) || linkStorage.get(node.attrs.uuid)
 
     const handleCopy = async (): Promise<void> => {
-      await navigator.clipboard.writeText(viewUrl ?? url)
+      await navigator.clipboard.writeText(url)
       void message.success(t('pdf_section.copy_hint'))
     }
 
@@ -186,22 +174,6 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
     )
   }
 
-  if (file) {
-    return (
-      <BlockWrapper editor={editor}>
-        <Button type="text" className="brickdoc-block-pdf-section">
-          <Icon.FilePdf className="pdf-section-icon" />
-          <div className="pdf-section-content">
-            <div className="pdf-section-name">{file.name}</div>
-            <div className="pdf-section-desc">
-              {(file.size / 1024.0).toFixed(1)}KB - {progress?.percentage}%
-            </div>
-          </div>
-        </Button>
-      </BlockWrapper>
-    )
-  }
-
   const importSources: ImportSourceOption[] = [
     {
       type: 'upload',
@@ -229,14 +201,21 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
             prepareFileUpload={extension.options.prepareFileUpload}
             onProgress={onProgress}
             onUploaded={onUploaded}
-            onFileLoaded={onFileLoaded}
             importSources={importSources}
           />
         }
       >
         <Button type="text" className="brickdoc-block-pdf-section">
+          <div className="pdf-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.FilePdf className="pdf-section-icon" />
-          <div className="pdf-section-hint">{t('pdf_section.hint')}</div>
+          <div className="pdf-section-content">
+            {progress ? progress.name : t('pdf_section.hint')}
+            {progress && (
+              <div className="pdf-section-desc">
+                {sizeFormat(progress.bytesTotal)} - {progress.percentage}%
+              </div>
+            )}
+          </div>
         </Button>
       </Popover>
     </BlockWrapper>

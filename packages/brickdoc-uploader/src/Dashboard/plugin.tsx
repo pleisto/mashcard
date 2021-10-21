@@ -5,7 +5,12 @@ import { Dashboard } from './Dashboard'
 import emojiData from './data-by-group.json'
 import './index.less'
 
-export type UploadProgress = UppyFile['progress']
+export interface UploadProgress {
+  bytesTotal: number
+  bytesUploaded: number
+  name: string
+  percentage: number
+}
 
 export interface EmojiMeta {
   emoji: string
@@ -272,8 +277,9 @@ export class DashboardPlugin extends Plugin {
     })
   }
 
-  handleProgress = (file: UppyFile): void => {
-    this.opts.onProgress?.(file.progress)
+  handleProgress = (file: UppyFile, progress: UploadProgress): void => {
+    const percentage = Number((100 * ((progress?.bytesUploaded ?? 0) / (progress?.bytesTotal ?? 1))).toFixed(2))
+    this.opts.onProgress?.({ bytesTotal: progress.bytesTotal, bytesUploaded: progress.bytesUploaded, name: file.name, percentage })
   }
 
   // TODO: handle error

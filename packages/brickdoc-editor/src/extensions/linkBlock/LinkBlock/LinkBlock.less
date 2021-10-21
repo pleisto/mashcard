@@ -1,6 +1,8 @@
+@import '@brickdoc/design-system/components/style/themes';
+
 .brk-btn.brickdoc-link-block-placeholder {
   width: 100%;
-  background: #f7f7f7;
+  background: #f9f9f9;
   border-radius: 4px;
   display: flex;
   flex-direction: row;
@@ -15,20 +17,36 @@
     cursor: pointer;
   }
 
-  & .link-block-icon {
+  .link-block-progressing {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: @primary-color;
+    opacity: 0.18;
+  }
+
+  .link-block-icon {
     font-size: 18px;
     line-height: 18px;
     height: 18px;
-    color: #a6a6a6;
+    color: #bfbcc6;
   }
 
-  & .link-block-hint {
-    color: #5f5f5f;
+  .link-block-content {
+    color: #847e8e;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 20px;
     letter-spacing: 0;
-    margin-left: 15px;
+    margin-left: 17px;
+
+    .link-block-desc {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 400;
+    }
   }
 }
 
@@ -47,7 +65,7 @@
   font-size: 18px;
   border-bottom: none;
 
-  & .link-block-attachment-download-icon {
+  .link-block-attachment-download-icon {
     position: absolute;
     top: 20px;
     right: 24px;
@@ -57,16 +75,16 @@
     font-size: 24px;
   }
 
-  & .link-block-attachment-content {
+  .link-block-attachment-content {
     margin-left: 19px;
 
-    & .link-block-attachment-name {
+    .link-block-attachment-name {
       font-size: 14px;
       line-height: 20px;
       color: #847e8e;
     }
 
-    & .link-block-attachment-size {
+    .link-block-attachment-size {
       font-size: 12px;
       line-height: 16px;
       color: #847e8e;
@@ -90,7 +108,7 @@
   justify-content: center;
   text-align: left;
 
-  & .link-block-menu-button {
+  .link-block-menu-button {
     transition: opacity 0.3s ease-in;
     position: absolute;
     top: 8px;
@@ -107,7 +125,7 @@
     justify-content: center;
     cursor: pointer;
 
-    & .link-block-menu-icon {
+    .link-block-menu-icon {
       color: #292333;
     }
   }
@@ -120,7 +138,7 @@
     }
   }
 
-  & .link-block-cover {
+  .link-block-cover {
     width: 148px;
     min-height: 92px;
     height: 100%;
@@ -130,15 +148,15 @@
     margin-right: 12px;
   }
 
-  & .link-block-content {
+  .link-block-content {
     flex: 1;
     padding: 8px;
 
-    & > * + * {
+    > * + * {
       margin-top: 8px;
     }
 
-    & .link-block-title {
+    .link-block-title {
       font-weight: 500;
       font-size: 14px;
       line-height: 26px;
@@ -153,7 +171,7 @@
       word-wrap: anywhere;
     }
 
-    & .link-block-description {
+    .link-block-description {
       font-size: 12px;
       line-height: 22px;
       color: #847e8e;
@@ -167,7 +185,7 @@
       word-wrap: anywhere;
     }
 
-    & .link-block-url {
+    .link-block-url {
       font-size: 12px;
       line-height: 16px;
       color: #292333;
@@ -180,11 +198,11 @@
 }
 
 .brickdoc-link-block-popover {
-  & .brk-popover-arrow {
+  .brk-popover-arrow {
     display: none;
   }
 
-  & .brk-popover-inner-content {
+  .brk-popover-inner-content {
     padding: 0;
     color: unset;
   }
@@ -193,27 +211,27 @@
 .link-block-menu-popover {
   z-index: 999;
 
-  & .brk-popover-arrow {
+  .brk-popover-arrow {
     display: none;
   }
 
-  & .brk-popover-inner-content {
+  .brk-popover-inner-content {
     padding: 0;
     border-radius: 0.8rem;
   }
 
-  & .brk-menu-item {
+  .brk-menu-item {
     padding: 0.6rem 1.2rem;
     font-size: 14px;
     line-height: 20px;
 
-    & .brk-icon {
+    .brk-icon {
       margin-right: 0.8rem;
     }
   }
 }
 
-.image-section-menu {
+.link-block-menu {
   border-radius: 0.8rem;
   width: 24rem;
 }
