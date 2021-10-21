@@ -166,12 +166,16 @@ export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONCo
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
 export function useSyncProvider(): [(doc: Node) => Promise<void>] {
-  const { setCommitting } = React.useContext(SyncStatusContext)
+  const { setCommitting, committing } = React.useContext(SyncStatusContext)
   const [blockSyncBatch, { client }] = useBlockSyncBatchMutation()
   return [
     async (doc: Node) => {
       if (!doc.attrs.uuid) {
         // Ignore updates to empty docs
+        return
+      }
+
+      if (committing) {
         return
       }
 

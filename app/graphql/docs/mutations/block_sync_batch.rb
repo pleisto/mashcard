@@ -8,7 +8,7 @@ module Docs
     field :refetch_tree, Boolean, null: false
 
     def resolve(blocks:, root_id:, operator_id:)
-      lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 3)
+      lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 10)
       lock.lock do
         Rails.logger.info("resolve #{root_id} #{operator_id} #{blocks}")
         do_resolve(blocks: blocks, root_id: root_id, operator_id: operator_id)
@@ -17,8 +17,7 @@ module Docs
 
     def do_resolve(blocks:, root_id:, operator_id:)
       root = Docs::Block.find_by(id: root_id)
-      refetch_tree = false
-      refetch_tree = true if root.nil?
+      refetch_tree = root.nil?
 
       if root&.deleted_at
         raise BrickGraphQL::Errors::ArgumentError, :cannot_modify_deleted_blocks
