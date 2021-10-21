@@ -114,7 +114,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
     setCopied(false)
   }
 
-  const doFavorite = async (): Promise<void> => {
+  const doPin = async (): Promise<void> => {
     const input = { blockId: pageId, pin: !pin }
     await blockPinOrUnpin({ variables: { input } })
     if (pageId === id) {
@@ -162,8 +162,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
           // TODO focus and select all
           // inputRef.current.focus({ preventScroll: true })
           break
-        case 'favorite':
-          void doFavorite()
+        case 'pin':
+          void doPin()
           break
         default:
           console.log(`unknown key ${key}`)
@@ -185,7 +185,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
 
   const menu = (
     <Menu onClick={onClickMenu()}>
-      <Menu.Item key="favorite" icon={pin ? <Icon.Pin /> : <Icon.Unpin />} disabled={blockPinLoading}>
+      <Menu.Item key="pin" icon={pin ? <Icon.Pin /> : <Icon.Unpin />} disabled={blockPinLoading}>
         {t(pin ? 'pin.remove' : 'pin.add')}
       </Menu.Item>
       <Menu.Item key="copy_link" icon={copied ? <Icon.Check /> : <Icon.Link />}>

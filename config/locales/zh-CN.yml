@@ -631,9 +631,9 @@ zh-CN:
       new_title: Copy of %{title}
       button: 复制
     pin:
-      add: Add to Favorites
+      add: Pin page
       add_tooltip: Pin this page
-      remove: Remove from Favorites
+      remove: Unpin page
       remove_tooltip: Unpin this page
     trash:
       name: 回收站

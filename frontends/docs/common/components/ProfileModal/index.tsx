@@ -15,6 +15,7 @@ interface ProfileModalProps {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+// TODO i18n
 const IMPORT_SOURCES: ImportSourceOption[] = [
   {
     type: 'upload',
@@ -85,8 +86,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       <Form.Item
         name="webid"
         label={t('pods.webid')}
-        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}
-      >
+        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}>
         <Input />
       </Form.Item>
     ) : (
@@ -142,8 +142,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       visible={visible}
       onOk={handleOk}
       confirmLoading={confirmLoading}
-      onCancel={handleCancel}
-    >
+      onCancel={handleCancel}>
       {formData}
     </Modal>
   )

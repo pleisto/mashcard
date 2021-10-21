@@ -1,30 +1,9 @@
 import { Blocktype, Filesourcetype } from '@/BrickdocGraphQL'
+import { useDocsI18n } from '@/docs/common/hooks'
 import { PopoverProps } from '@brickdoc/design-system'
 import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import React from 'react'
 import { DocumentCoverMeta } from '../components/DocumentTitle/DocumentCover'
-
-const IMPORT_SOURCES: ImportSourceOption[] = [
-  {
-    type: 'gallery'
-  },
-  {
-    type: 'upload',
-    acceptType: 'image/*',
-    buttonText: 'Choose an image',
-    buttonHint: 'Images wider than 1500 pixels work best.'
-  },
-  {
-    type: 'link',
-    typeLabel: 'Link',
-    linkInputPlaceholder: 'Paste an image link...',
-    buttonText: 'Submit',
-    buttonHint: 'Works with any image from the web'
-  },
-  {
-    type: 'unsplash'
-  }
-]
 
 export function useDocumentCoverUploader(
   cover: DocumentCoverMeta | null | undefined,
@@ -44,6 +23,28 @@ export function useDocumentCoverUploader(
     onFileLoaded: (localUrl: string) => void
   }
 ): [DocumentCoverMeta | null | undefined, Partial<PopoverProps>] {
+  const { t } = useDocsI18n()
+  const IMPORT_SOURCES: ImportSourceOption[] = [
+    {
+      type: 'gallery'
+    },
+    {
+      type: 'upload',
+      acceptType: 'image/*',
+      buttonText: t('document_cover.import_sources.upload.button_text'),
+      buttonHint: t('document_cover.import_sources.upload.button_hint')
+    },
+    {
+      type: 'link',
+      typeLabel: t('document_cover.import_sources.link.type_label'),
+      linkInputPlaceholder: t('document_cover.import_sources.link.placeholder'),
+      buttonText: t('document_cover.import_sources.link.button_text'),
+      buttonHint: t('document_cover.import_sources.link.button_hint')
+    },
+    {
+      type: 'unsplash'
+    }
+  ]
   const [documentCoverMeta, setDocumentCoverMeta] = React.useState(cover)
   React.useEffect(() => {
     setDocumentCoverMeta(cover)

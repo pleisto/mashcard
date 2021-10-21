@@ -648,9 +648,9 @@ en-US:
       new_title: Copy of %{title}
       button: Duplicate
     pin:
-      add: Add to Favorites
+      add: Pin page
       add_tooltip: Pin this page
-      remove: Remove from Favorites
+      remove: Unpin page
       remove_tooltip: Unpin this page
     trash:
       name: Trash
@@ -715,6 +715,28 @@ en-US:
       change_cover: Change cover
       reposition: Reposition
       untitled: Untitled
+    document_icon:
+      import_sources:
+        link:
+          placeholder: Paste the image link...
+          button_text: Submit
+          button_hint: Works with any image from the web
+          type_label: Link
+        upload:
+          button_hint: Recommended size is 280x280 pixels
+          button_text: Choose an image
+          type_label: Upload an Image
+    document_cover:
+      import_sources:
+        link:
+          placeholder: Paste the image link...
+          button_text: Submit
+          button_hint: Works with any image from the web
+          type_label: Link
+        upload:
+          button_hint: Images wider than 1500 pixels work best.
+          button_text: Choose an image
+          type_label: Upload an Image
   editor:
     placeholder: Type '/' for commands
     slashmenu:

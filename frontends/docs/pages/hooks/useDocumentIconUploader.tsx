@@ -1,28 +1,9 @@
 import { Blocktype, Filesourcetype } from '@/BrickdocGraphQL'
+import { useDocsI18n } from '@/docs/common/hooks'
 import { PopoverProps } from '@brickdoc/design-system'
 import { Dashboard, DashboardProps, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
 import React from 'react'
 import { DocumentIconMeta } from '../components/DocumentTitle/DocumentIcon'
-
-const ICON_IMPORT_SOURCES: ImportSourceOption[] = [
-  {
-    type: 'emoji'
-  },
-  {
-    type: 'upload',
-    typeLabel: 'Upload an Image',
-    acceptType: 'image/*',
-    buttonText: 'Choose an image',
-    buttonHint: 'Recommended size is 280x280 pixels'
-  },
-  {
-    type: 'link',
-    typeLabel: 'Link',
-    linkInputPlaceholder: 'Paste an image link...',
-    buttonText: 'Submit',
-    buttonHint: 'Works with any image from the web'
-  }
-]
 
 export function useDocumentIconUploader(
   icon: DocumentIconMeta | null | undefined,
@@ -42,6 +23,26 @@ export function useDocumentIconUploader(
     onFileLoaded: (localUrl: string) => void
   }
 ): [DocumentIconMeta | undefined | null, Partial<PopoverProps>] {
+  const { t } = useDocsI18n()
+  const ICON_IMPORT_SOURCES: ImportSourceOption[] = [
+    {
+      type: 'emoji'
+    },
+    {
+      type: 'upload',
+      typeLabel: t('document_icon.import_sources.upload.type_label'),
+      acceptType: 'image/*',
+      buttonText: t('document_icon.import_sources.upload.button_text'),
+      buttonHint: t('document_icon.import_sources.upload.button_hint')
+    },
+    {
+      type: 'link',
+      typeLabel: t('document_icon.import_sources.link.type_label'),
+      linkInputPlaceholder: t('document_icon.import_sources.link.placeholder'),
+      buttonText: t('document_icon.import_sources.link.button_text'),
+      buttonHint: t('document_icon.import_sources.link.button_hint')
+    }
+  ]
   const [documentIconMeta, setDocumentIconMeta] = React.useState(icon)
   React.useEffect(() => {
     setDocumentIconMeta(icon)
