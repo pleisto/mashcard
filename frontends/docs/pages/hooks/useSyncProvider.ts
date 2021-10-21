@@ -152,11 +152,7 @@ export const blockToNode = (block: Block): JSONContent => {
     attrs
   }
 
-  // if (data.text) {
-  //   result.text = data.text
-  // }
-
-  if (block?.content.length) {
+  if (block?.content?.length) {
     result.content = block.content
   }
 

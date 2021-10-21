@@ -34,7 +34,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   //   foo()
   // }, [])
 
-  const { data, loading } = useGetChildrenBlocksQuery({
+  const { data, loading, refetch } = useGetChildrenBlocksQuery({
     fetchPolicy: 'network-only',
     nextFetchPolicy: 'standby',
     variables: { rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }
@@ -127,7 +127,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     }
   }, [editor, data])
 
-  useDocumentSubscription({ docid: docMeta.id as string, editor })
+  useDocumentSubscription({ docid: docMeta.id as string, editor, setDocumentEditable, refetchDocument: refetch })
 
   if (loading || docMeta.documentInfoLoading) {
     return <Skeleton active />

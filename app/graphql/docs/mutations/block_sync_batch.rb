@@ -131,19 +131,19 @@ module Docs
 
       if patches.present?
         ## NOTE dirty data
-        if patches.any? { |p| p.fetch(:path).blank? }
+        if patches.any? { |patch| patch.fetch(:path).blank? }
           root.clear_cache
           paths_cache = root.paths_cache
 
-          patches = patches.map do |p|
-            if p.fetch(:path).blank?
-              parent_id = p.fetch(:parent_id)
+          patches = patches.map do |patch|
+            if patch.fetch(:path).blank?
+              parent_id = patch.fetch(:parent_id)
               # rubocop:disable Metrics/BlockNesting
-              new_path = parent_id.nil? || p.fetch(:id) == root_id ? [] : paths_cache.fetch(parent_id)
-              new_path += [p.fetch(:id)] if p.fetch(:patch_type) != "ADD"
-              p.merge(path: new_path)
+              new_path = parent_id.nil? || patch.fetch(:id) == root_id ? [] : paths_cache.fetch(parent_id)
+              new_path += [patch.fetch(:id)] if patch.fetch(:patch_type) != "ADD"
+              patch.merge(path: new_path)
             else
-              p
+              patch
             end
           end
         end

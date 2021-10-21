@@ -91,7 +91,17 @@ function applyPatch(patch: PatchBaseObject, editor: Editor, chainedCommands: Cha
   })
 }
 
-export function useDocumentSubscription({ docid, editor }: { docid: string; editor: EditorContentProps['editor'] | null }): void {
+export function useDocumentSubscription({
+  docid,
+  editor,
+  setDocumentEditable,
+  refetchDocument
+}: {
+  docid: string
+  editor: EditorContentProps['editor'] | null
+  setDocumentEditable: (editable: boolean) => void
+  refetchDocument: () => void
+}): void {
   useNewPatchSubscription({
     onSubscriptionData: ({ subscriptionData: { data } }) => {
       if (!data?.newPatch?.patches?.length) return
@@ -111,15 +121,21 @@ export function useDocumentSubscription({ docid, editor }: { docid: string; edit
 
       if (patches.length === 0) return
 
-      const chainedCommands = editor.chain()
-      patches.forEach(patch => {
-        applyPatch(patch, editor, chainedCommands)
-      })
-      chainedCommands
-        .setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq })
-        .setMeta('preventUpdate', true)
-        .run()
-      console.log('Patch applied', { uuid: globalThis.brickdocContext.uuid, patches, newPatch })
+      setDocumentEditable(false)
+      try {
+        const chainedCommands = editor.chain().setMeta('preventUpdate', true)
+        patches.forEach(patch => {
+          applyPatch(patch, editor, chainedCommands)
+        })
+        chainedCommands.setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq }).run()
+        console.log('Patch applied', { uuid: globalThis.brickdocContext.uuid, patches, newPatch })
+      } catch (e) {
+        console.error(e)
+        setDocumentEditable(false)
+        refetchDocument()
+        setDocumentEditable(true)
+      }
+      setDocumentEditable(true)
     },
     variables: { docId: docid }
   })
