@@ -365,6 +365,11 @@ type BlockInfo {
   isDeleted: Boolean!
 
   """
+  is master
+  """
+  isMaster: Boolean!
+
+  """
   path
   """
   pathArray: [BlockPath!]!

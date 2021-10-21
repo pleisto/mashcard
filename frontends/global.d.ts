@@ -7,6 +7,8 @@ declare global {
     currentPod: {
       webid: string
     }
+    lastBlockId?: string
+    lastWebid?: string
     env: string
     version: string
     locale: string

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 import { SidebarLayoutPage } from '@/common/layouts/SidebarLayoutPage'
 import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
@@ -31,6 +31,7 @@ export interface DocMeta {
   isAnonymous: boolean
   isDeleted: boolean
   isMine: boolean
+  isRedirect: boolean
   pin: boolean
   title: string
   host: string
@@ -67,7 +68,6 @@ export const DocumentContentPage: React.FC = () => {
   const { editor } = pageEditorContextValue
 
   const loginWebid = currentPod.webid
-  const isMine = loginWebid === webid
 
   const { data, loading: getBlockInfoLoading } = useGetBlockInfoQuery({ variables: { id: docid as string, kind, webid } })
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
@@ -90,7 +90,7 @@ export const DocumentContentPage: React.FC = () => {
   }, [blockCreate, docid, history, webid, isAnonymous])
 
   const policy = data?.blockInfo?.permission?.policy
-
+  const isMine = loginWebid === webid || !!data?.blockInfo?.isMaster
   const pin = !!data?.blockInfo?.pin
   const shareable = isMine
   const editable = isMine || policy === Policytype.Edit
@@ -103,6 +103,8 @@ export const DocumentContentPage: React.FC = () => {
   const collaborators = data?.blockInfo?.collaborators ?? []
   const pathArray = data?.blockInfo?.pathArray ?? []
   const path = `/${webid}/${kind}/${docid}`
+  const { state } = useLocation()
+  const isRedirect = !!(state as any)?.redirect
 
   const docMeta: DocMeta = {
     id: realid,
@@ -117,6 +119,7 @@ export const DocumentContentPage: React.FC = () => {
     path,
     isAnonymous,
     isMine,
+    isRedirect,
     loginWebid,
     shareable,
     editable,

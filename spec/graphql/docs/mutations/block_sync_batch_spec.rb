@@ -43,6 +43,33 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       self.current_pod = nil
     end
 
+    it 'last webid and last block_id' do
+      user = create(:accounts_user)
+      self.current_user = user
+      pod = user.personal_pod
+      self.current_pod = pod.as_session_context
+
+      expect(user.last_webid).to eq(nil)
+      expect(user.last_block_id).to eq(nil)
+
+      root_id = SecureRandom.uuid
+      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+        id: root_id,
+        type: "doc",
+        meta: {},
+        data: {},
+        text: "",
+        content: [],
+        sort: 147
+      }] } }
+      internal_graphql_execute(mutation, input)
+
+      user.reload
+
+      expect(user.last_webid).to eq(user.webid)
+      expect(user.last_block_id).to eq(root_id)
+    end
+
     it 'works' do
       self.current_user = user
       self.current_pod = user.personal_pod.as_session_context

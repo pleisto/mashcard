@@ -2,13 +2,14 @@
 
 require 'rails_helper'
 
-describe Docs::Queries::BlockInfo, type: :query do
+describe Docs::Queries::BlockInfo, type: :query, focus: true do
   describe '#resolver' do
     query = <<-'GRAPHQL'
       query GetBlockInfo($id: String!, $kind: BlockIDKind!, $webid: String!) {
         blockInfo(id: $id, kind: $kind, webid: $webid) {
           title
           isDeleted
+          isMaster
           pin
           id
           payload
@@ -33,6 +34,25 @@ describe Docs::Queries::BlockInfo, type: :query do
       }
     GRAPHQL
 
+    it 'last webid and last block_id' do
+      user = create(:accounts_user)
+      self.current_user = user
+      pod = user.personal_pod
+      self.current_pod = pod.as_session_context
+
+      expect(user.last_webid).to eq(nil)
+      expect(user.last_block_id).to eq(nil)
+
+      block = create(:docs_block, pod: pod, collaborators: [user.id])
+
+      internal_graphql_execute(query, { id: block.id, kind: 'p', webid: block.pod.webid })
+
+      user.reload
+
+      expect(user.last_webid).to eq(user.webid)
+      expect(user.last_block_id).to eq(block.id)
+    end
+
     it 'deleted' do
       user = create(:accounts_user)
       self.current_user = user
@@ -44,21 +64,21 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       block.soft_delete!
       internal_graphql_execute(query, { id: block.id, kind: 'p', webid: block.pod.webid })
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => true, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       block.restore!
       internal_graphql_execute(query, { id: block.id, kind: 'p', webid: block.pod.webid })
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       block.soft_delete!
       block.hard_delete!
@@ -81,7 +101,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       self.current_user = nil
       self.current_pod = nil
@@ -98,7 +118,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       pin = Docs::Pin.create!(user_id: user.id, pod_id: pod.id, block_id: block.id)
 
@@ -106,7 +126,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => true,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       pin.update!(deleted_at: Time.current)
 
@@ -114,7 +134,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => true } })
 
       self.current_user = nil
       self.current_pod = nil
@@ -134,7 +154,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => false } })
 
       block.upsert_share_links!([webid: user.webid, state: 'enabled', policy: 'view'])
 
@@ -157,7 +177,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                      "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                     "permission" => nil, 'id' => block.id } })
+                                                     "permission" => nil, 'id' => block.id, 'isMaster' => false } })
 
       block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'edit'])
 
@@ -192,7 +212,7 @@ describe Docs::Queries::BlockInfo, type: :query do
       expect(response.success?).to be true
       expect(response.data).to eq('blockInfo' => { "title" => block.title, "collaborators" => [], "pin" => false,
                                                    "payload" => {}, "isDeleted" => false, "pathArray" => [],
-                                                   "permission" => nil, 'id' => block.id })
+                                                   "permission" => nil, 'id' => block.id, 'isMaster' => true })
 
       a.disabled!
 

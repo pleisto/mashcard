@@ -133,8 +133,12 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     return <Skeleton active />
   }
 
-  if (!docMeta.viewable) {
-    return <Redirect to="/" />
+  if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {
+    if (docMeta.isRedirect) {
+      return <Alert message="TODO Page not found" type="error" />
+    } else {
+      return <Redirect to="/" />
+    }
   }
 
   const DocumentTitleElement = (
@@ -168,10 +172,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
 
   if (!docMeta.id) {
     return PageElement
-  }
-
-  if (docMeta.isAnonymous && !data?.childrenBlocks?.length) {
-    return <Redirect to="/" />
   }
 
   if (data?.childrenBlocks?.length) {

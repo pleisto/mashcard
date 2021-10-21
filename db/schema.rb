@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_030448) do
+ActiveRecord::Schema.define(version: 2021_10_21_094048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_10_14_030448) do
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "last_webid"
+    t.uuid "last_block_id"
     t.index ["confirmation_token"], name: "index_accounts_users_on_confirmation_token", unique: true
     t.index ["deleted_at"], name: "index_accounts_users_on_deleted_at"
     t.index ["email"], name: "index_accounts_users_on_email", unique: true

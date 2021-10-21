@@ -44,6 +44,7 @@ export const queryBlockInfo = gql`
       id
       payload
       isDeleted
+      isMaster
       pin
       pathArray {
         id

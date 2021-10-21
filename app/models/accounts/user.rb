@@ -16,6 +16,7 @@
 #  failed_attempts               :integer          default(0), not null
 #  last_sign_in_at               :datetime
 #  last_sign_in_ip               :string
+#  last_webid                    :string
 #  locale(BCP47 language codes.) :string(17)
 #  locked_at                     :datetime
 #  remember_created_at           :datetime
@@ -27,6 +28,7 @@
 #  unlock_token                  :string
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
+#  last_block_id                 :uuid
 #
 # Indexes
 #
@@ -61,6 +63,12 @@ class Accounts::User < ApplicationRecord
       webid: webid,
       name: name
     }
+  end
+
+  def save_last_position!(webid, block_id)
+    return if last_webid == webid && last_block_id == block_id
+
+    update!(last_webid: webid, last_block_id: block_id)
   end
 
   def self.email_available?(email)

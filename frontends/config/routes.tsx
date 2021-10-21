@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { renderRoutes, RouteConfig, RouteConfigComponentProps } from 'react-router-config'
 import { PanelLayoutPage } from '@/accounts/common/layouts/PanelLayoutPage'
 import { LayoutPage as SettingsLayoutPage } from '@/accounts/settings/LayoutPage'
+import { BlockIdKind } from '@/BrickdocGraphQL'
 
 const SignInPage = lazy(async () => await import('@/accounts/sessions/SignInPage'))
 const SignUpPage = lazy(async () => await import('@/accounts/sessions/SignUpPage'))
@@ -31,10 +32,25 @@ const generateRouteConfig = (rules: routeRule[]): RouteConfig[] => {
 }
 
 export const routeConfig = (context: BrickdocContext): JSX.Element => {
-  const { webid } = context.currentPod
+  const {
+    currentPod: { webid },
+    currentUser,
+    lastWebid,
+    lastBlockId
+  } = context
   const redirectToLogin: FC<RouteConfigComponentProps> = () => <Redirect to="/accounts/sign_in" />
-  const redirectToHome: FC<RouteConfigComponentProps> = () => <Redirect to={`/${webid}`} />
-  const authenticateUser = context.currentUser ? undefined : redirectToLogin
+  const redirectToHome: FC<RouteConfigComponentProps> = () => {
+    let path
+    if (lastWebid && lastBlockId) {
+      path = `/${lastWebid}/${BlockIdKind.P}/${lastBlockId}`
+    } else if (lastWebid) {
+      path = `/${lastWebid}`
+    } else {
+      path = `/${webid}`
+    }
+    return <Redirect to={{ pathname: path, state: { redirect: true } }} />
+  }
+  const authenticateUser = currentUser ? undefined : redirectToLogin
   const rules: routeRule[] = [
     {
       path: '/',
@@ -47,7 +63,7 @@ export const routeConfig = (context: BrickdocContext): JSX.Element => {
       path: '/accounts',
       component: PanelLayoutPage,
       // require user to be unauthenticated
-      beforeAction: context.currentUser ? redirectToHome : undefined,
+      beforeAction: currentUser ? redirectToHome : undefined,
       routes: [
         {
           path: '/accounts/sign_in',
