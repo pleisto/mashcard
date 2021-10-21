@@ -193,7 +193,7 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
       <Popover
         overlayClassName="brickdoc-block-pdf-section-popover"
         trigger="click"
-        placement="top"
+        placement="bottom"
         content={
           <Dashboard
             blockId={node.attrs.uuid}

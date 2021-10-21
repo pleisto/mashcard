@@ -171,7 +171,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
       <Popover
         overlayClassName="brickdoc-link-block-popover"
         trigger="click"
-        placement="top"
+        placement="bottom"
         content={
           <Dashboard
             blockId={node.attrs.uuid}
