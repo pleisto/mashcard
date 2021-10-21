@@ -1,6 +1,7 @@
-import { BlockIdKind } from '@/BrickdocGraphQL'
-import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import React from 'react'
+import { BlockIdKind } from '@/BrickdocGraphQL'
+import { PageEditorContext } from '@/docs/pages/contexts/pageEditorContext'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
@@ -11,7 +12,10 @@ interface PathBreadcrumbProps {
 }
 
 export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, className }) => {
-  const paths: NonNullDocMeta['pathArray'] = docMeta.pathArray.concat([{ id: docMeta.id, text: docMeta.title }])
+  const { editor } = React.useContext(PageEditorContext)
+  const paths: NonNullDocMeta['pathArray'] = docMeta.pathArray.concat([
+    { id: docMeta.id, text: editor?.state.doc.attrs.title ?? docMeta.title }
+  ])
   const { t } = useDocsI18n()
 
   const pathData = paths.map((path, idx) => {

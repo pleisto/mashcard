@@ -4,20 +4,27 @@ import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor } from '@brickdoc/editor'
 import { useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
-import { blocksToJSONContents, useDocumentSubscription, usePrepareFileUpload, useFetchUnsplashImages, useFetchWebsiteMeta } from './hooks'
+import {
+  blocksToJSONContents,
+  useDocumentSubscription,
+  usePrepareFileUpload,
+  useFetchUnsplashImages,
+  useFetchWebsiteMeta,
+  useSyncProvider
+} from './hooks'
 import { useDatabaseRows } from './hooks/useDatabaseRows'
 import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Redirect } from 'react-router-dom'
 import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
+import { PageEditorContext } from './contexts/pageEditorContext'
 interface DocumentPageProps {
   docMeta: DocMeta
-  onCommit: (doc: Node) => Promise<void>
-  setCommitting?: (value: boolean) => void
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, setCommitting }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
+  const [onCommit] = useSyncProvider()
   const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
 
   // TODO lazy query here
@@ -66,7 +73,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, s
 
   const editor = useEditor({
     onSave: onCommit,
-    useDatabaseRows: useDatabaseRows(setCommitting),
+    useDatabaseRows: useDatabaseRows(),
     prepareFileUpload,
     fetchUnsplashImages,
     fetchWebsiteMeta,
@@ -74,6 +81,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, onCommit, s
     getAttachmentUrl,
     editable: documentEditable
   })
+  const { setEditor } = React.useContext(PageEditorContext)
+  React.useEffect(() => setEditor(editor), [editor, setEditor])
 
   React.useEffect(() => {
     const block = data?.childrenBlocks?.find(block => block.id === docMeta.id)

@@ -3,7 +3,6 @@ import { useHistory, useParams } from 'react-router-dom'
 import { SidebarLayoutPage } from '@/common/layouts/SidebarLayoutPage'
 import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
-import { useSyncProvider } from './hooks'
 import { BrickdocContext } from '@/BrickdocPWA'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { PodSelect } from '@/docs/common/components/PodSelect'
@@ -15,6 +14,8 @@ import { BlockIdKind, GetBlockInfoQuery, Policytype, useBlockCreateMutation, use
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
+import { usePageEditorContextValue, PageEditorContext } from './contexts/pageEditorContext'
+import { SyncStatusContext, useSyncStatusContextValue } from './contexts/syncStatusContext'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -59,10 +60,11 @@ export const DocumentContentPage: React.FC = () => {
     kind = BlockIdKind.P
   } = useParams<{ webid: string; docid?: string; kind?: BlockIdKind; snapshotVersion?: string }>()
   const { currentPod, currentUser, host } = useContext(BrickdocContext)
-  const [committing, setCommitting] = React.useState(false)
-  const [onCommit] = useSyncProvider(setCommitting)
+  const syncStatusContextValue = useSyncStatusContextValue()
   const { t } = useDocsI18n()
   const history = useHistory()
+  const pageEditorContextValue = usePageEditorContextValue()
+  const { editor } = pageEditorContextValue
 
   const loginWebid = currentPod.webid
   const isMine = loginWebid === webid
@@ -127,7 +129,7 @@ export const DocumentContentPage: React.FC = () => {
 
   // HeaderBar
   if (!loading || isMine) {
-    headerBarVar(<DocumentTopBar docMeta={docMeta} saving={committing} />)
+    headerBarVar(<DocumentTopBar docMeta={docMeta} />)
   }
 
   // SideBar
@@ -158,12 +160,18 @@ export const DocumentContentPage: React.FC = () => {
 
   const content = (
     <>
-      <Helmet title={docMeta.title} />
-      <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} onCommit={onCommit} setCommitting={setCommitting} />
+      <Helmet title={editor?.state.doc.attrs.title ?? docMeta.title} />
+      <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} />
     </>
   )
 
-  return <SidebarLayoutPage>{content}</SidebarLayoutPage>
+  return (
+    <SyncStatusContext.Provider value={syncStatusContextValue}>
+      <PageEditorContext.Provider value={pageEditorContextValue}>
+        <SidebarLayoutPage>{content}</SidebarLayoutPage>
+      </PageEditorContext.Provider>
+    </SyncStatusContext.Provider>
+  )
 }
 
 export default DocumentContentPage

@@ -7,18 +7,19 @@ import { useHistory } from 'react-router-dom'
 import { MoreMenu } from '../../../common/components/MoreMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
+import { SyncStatusContext } from '../../contexts/syncStatusContext'
 import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
 import styles from './DocumentTopBar.module.less'
 import loadingIcon from './loading.png'
 
 export interface DocumentTopBarProps {
   docMeta: DocMeta
-  saving: boolean
 }
 
-export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta, saving }) => {
+export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
   const history = useHistory()
+  const { committing: saving } = React.useContext(SyncStatusContext)
 
   if (!docMeta.viewable) {
     return <></>

@@ -7,7 +7,6 @@ import styles from './index.module.less'
 import { useDocsI18n } from '../../hooks'
 import Pic from '@/common/assets/cloud_brain_2.svg'
 import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
-import { useSyncProvider } from '@/docs/pages/hooks'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface SnapshotListProps {
@@ -30,7 +29,6 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   const { t } = useDocsI18n()
   const { data } = useGetBlockSnapshotsQuery({ variables: { id: docMeta.id } })
   const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryBlockInfo] })
-  const [onCommit] = useSyncProvider()
 
   const onRestore = async (): Promise<void> => {
     setConfirmLoading(true)
@@ -94,10 +92,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   return skelecton(
     <div className={styles.page}>
-      <DocumentPage
-        docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }}
-        onCommit={onCommit}
-      />
+      <DocumentPage docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }} />
     </div>,
     snapshotData,
     !currentVersion || confirmLoading

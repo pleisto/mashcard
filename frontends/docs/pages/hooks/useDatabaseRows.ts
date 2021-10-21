@@ -11,6 +11,7 @@ import {
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { useImperativeQuery } from '@/common/hooks'
+import { SyncStatusContext } from '../contexts/syncStatusContext'
 
 export interface DatabaseRow {
   id: string
@@ -20,7 +21,7 @@ export interface DatabaseRows extends Array<DatabaseRow> {}
 
 const SORT_GAP = 2 ** 32
 
-export function useDatabaseRows(setCommitting?: (value: boolean) => void): (parentId: string) => [
+export function useDatabaseRows(): (parentId: string) => [
   DatabaseRows,
   {
     fetchRows: () => Promise<void>
@@ -31,6 +32,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
     setRowsState: (rows: DatabaseRows) => void
   }
 ] {
+  const { setCommitting } = React.useContext(SyncStatusContext)
   return function useDatabaseRows(parentId: string) {
     const queryDatabaseRowBlocks = useImperativeQuery<Query, Variables>(GetDatabaseRowBlocksDocument)
 
@@ -48,7 +50,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
 
     const updateRow = React.useCallback(
       async (row: DatabaseRow, updateState = true): Promise<void> => {
-        setCommitting?.(true)
+        setCommitting(true)
         if (updateState) {
           setDatabaseRows(prevRows =>
             prevRows.map((prevRow: DatabaseRow) => {
@@ -68,7 +70,7 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
         }
         const input: BlockUpdateInput = { block: blockArg, rootId: parentId }
         await blockUpdate({ variables: { input } })
-        setCommitting?.(false)
+        setCommitting(false)
       },
       [setDatabaseRows, parentId, blockUpdate]
     )
@@ -93,11 +95,11 @@ export function useDatabaseRows(setCommitting?: (value: boolean) => void): (pare
 
     const removeRow = React.useCallback(
       async (rowId: string): Promise<void> => {
-        if (setCommitting) setCommitting(true)
+        setCommitting(true)
         setDatabaseRows(databaseRows.filter(row => row.id !== rowId))
         const input: BlockSoftDeleteInput = { id: rowId }
         await blockSoftDelete({ variables: { input } })
-        if (setCommitting) setCommitting(false)
+        setCommitting(false)
       },
       [databaseRows, setDatabaseRows, blockSoftDelete]
     )

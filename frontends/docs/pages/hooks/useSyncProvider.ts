@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import React from 'react'
 import { Node } from 'prosemirror-model'
 import { BlockInput, Block, BlockSyncBatchInput, useBlockSyncBatchMutation } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
 import { isNil } from 'lodash-es'
 import { queryPageBlocks } from '@/docs/common/graphql'
 import { queryBlockInfo } from '../graphql'
+import { SyncStatusContext } from '../contexts/syncStatusContext'
 
 const nodeChildren = (node: Node): Node[] => {
   // TODO Fragment type missing content field
@@ -167,7 +169,8 @@ export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONCo
     .sort((a, b) => Number(a.sort) - Number(b.sort))
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
-export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc: Node) => Promise<void>] {
+export function useSyncProvider(): [(doc: Node) => Promise<void>] {
+  const { setCommitting } = React.useContext(SyncStatusContext)
   const [blockSyncBatch, { client }] = useBlockSyncBatchMutation()
   return [
     async (doc: Node) => {
@@ -176,7 +179,7 @@ export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc
         return
       }
 
-      setCommitting?.(true)
+      setCommitting(true)
       const newBlocks = nodeToBlock(doc, 0)
       const input: BlockSyncBatchInput = { blocks: newBlocks, rootId: doc.attrs.uuid, operatorId: globalThis.brickdocContext.uuid }
       try {
@@ -185,7 +188,7 @@ export function useSyncProvider(setCommitting?: (value: boolean) => void): [(doc
           await client.refetchQueries({ include: [queryPageBlocks, queryBlockInfo] })
         }
       } finally {
-        setCommitting?.(false)
+        setCommitting(false)
       }
     }
   ]
