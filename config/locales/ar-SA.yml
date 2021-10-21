@@ -783,6 +783,28 @@ ar-SA:
       change_cover: Change cover
       reposition: Reposition
       untitled: Untitled
+    document_icon:
+      import_sources:
+        link:
+          placeholder: الصق رابط الصورة ...
+          button_text: Submit
+          button_hint: Works with any image from the web
+          type_label: رابط
+        upload:
+          button_hint: Recommended size is 280x280 pixels
+          button_text: اختيار صورة
+          type_label: Upload an Image
+    document_cover:
+      import_sources:
+        link:
+          placeholder: الصق رابط الصورة ...
+          button_text: Submit
+          button_hint: Works with any image from the web
+          type_label: رابط
+        upload:
+          button_hint: Images wider than 1500 pixels work best.
+          button_text: اختيار صورة
+          type_label: Upload an Image
   editor:
     placeholder: Type '/' for commands
     slashmenu:

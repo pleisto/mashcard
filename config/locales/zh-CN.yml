@@ -698,6 +698,28 @@ zh-CN:
       change_cover: Change cover
       reposition: Reposition
       untitled: Untitled
+    document_icon:
+      import_sources:
+        link:
+          placeholder: 粘贴图片链接...
+          button_text: Submit
+          button_hint: 适用于任何来自网页的图像
+          type_label: 链接
+        upload:
+          button_hint: Recommended size is 280x280 pixels
+          button_text: 选择图片
+          type_label: Upload an Image
+    document_cover:
+      import_sources:
+        link:
+          placeholder: 粘贴图片链接...
+          button_text: Submit
+          button_hint: 适用于任何来自网页的图像
+          type_label: 链接
+        upload:
+          button_hint: Images wider than 1500 pixels work best.
+          button_text: 选择图片
+          type_label: Upload an Image
   editor:
     placeholder: Type '/' for commands
     slashmenu:
