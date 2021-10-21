@@ -81,7 +81,7 @@ class Docs::Snapshot < ApplicationRecord
 
       if update_blocks.present?
         block.prepare_descendants
-        update_blocks.map do |block|
+        update_blocks = update_blocks.map do |block|
           block.history_version = block.realtime_history_version_increment
           block
         end

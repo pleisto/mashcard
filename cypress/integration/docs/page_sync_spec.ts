@@ -5,6 +5,8 @@ describe('document meta', () => {
 
   it('basic sync', () => {
     cy.visit('/')
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(500)
     cy.findByText('Add Pages').click()
     cy.url().should('match', /\/p\//)
     cy.interceptGQL('blockSyncBatch', ({ variables }) => variables?.input.blocks.some(block => block.meta.title === 'Title'))
