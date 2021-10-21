@@ -1,8 +1,7 @@
 import { useBlockPinOrUnpinMutation } from '@/BrickdocGraphQL'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
-import { CheckOneFill, Star } from '@brickdoc/design-icons'
-import { Button, Tooltip } from '@brickdoc/design-system'
+import { Button, Tooltip, Icon } from '@brickdoc/design-system'
 import React from 'react'
 import { queryBlockPins } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
@@ -26,7 +25,7 @@ export const PinMenu: React.FC<PinMenuProps> = ({ docMeta, className }) => {
     <>
       <Tooltip title={t(docMeta.pin ? 'pin.remove_tooltip' : 'pin.add_tooltip')}>
         <Button className={className} type="text" onClick={onClick} disabled={blockPinOrUnpinLoading} loading={blockPinOrUnpinLoading}>
-          {docMeta.pin ? <CheckOneFill /> : <Star />}
+          {docMeta.pin ? <Icon.Pin /> : <Icon.Unpin />}
         </Button>
       </Tooltip>
     </>

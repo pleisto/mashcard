@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Dropdown, Input, Menu, MenuProps, message, Popover, Tooltip } from '@brickdoc/design-system'
+import { Button, Dropdown, Icon, Input, Menu, MenuProps, message, Popover, Tooltip } from '@brickdoc/design-system'
 import { Link, useHistory } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -13,7 +13,6 @@ import {
 } from '@/BrickdocGraphQL'
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
-import { Add, Check, CheckOneFill, Copy, Delete, Edit, Link as LinkIcon, More, Star } from '@brickdoc/design-system/components/icon'
 import styles from './styles.module.less'
 import { DocMeta } from '@/docs/pages/DocumentContentPage'
 
@@ -137,7 +136,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
   const inputRef = React.useRef<any>(null)
   const renamePopoverContent = (
     <Input
-      prefix={<Edit />}
+      prefix={<Icon.Edit />}
       disabled={renameBlockLoading}
       size="small"
       bordered={false}
@@ -186,16 +185,16 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
 
   const menu = (
     <Menu onClick={onClickMenu()}>
-      <Menu.Item key="favorite" icon={pin ? <CheckOneFill /> : <Star />} disabled={blockPinLoading}>
+      <Menu.Item key="favorite" icon={pin ? <Icon.Pin /> : <Icon.Unpin />} disabled={blockPinLoading}>
         {t(pin ? 'pin.remove' : 'pin.add')}
       </Menu.Item>
-      <Menu.Item key="copy_link" icon={copied ? <Check /> : <LinkIcon />}>
+      <Menu.Item key="copy_link" icon={copied ? <Icon.Check /> : <Icon.Link />}>
         {t(copied ? 'copy_link.copied' : 'copy_link.button')}
       </Menu.Item>
-      <Menu.Item key="duplicate" icon={<Copy />} disabled={blockDuplicateLoading}>
+      <Menu.Item key="duplicate" icon={<Icon.Copy />} disabled={blockDuplicateLoading}>
         {t('duplicate.button')}
       </Menu.Item>
-      <Menu.Item key="rename" icon={<Edit />} disabled={renameBlockLoading}>
+      <Menu.Item key="rename" icon={<Icon.Edit />} disabled={renameBlockLoading}>
         <Popover
           content={renamePopoverContent}
           title={null}
@@ -206,7 +205,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
         </Popover>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item danger key="delete" icon={<Delete />} disabled={blockDeleteLoading}>
+      <Menu.Item danger key="delete" icon={<Icon.Delete />} disabled={blockDeleteLoading}>
         {t('blocks.delete')}
       </Menu.Item>
     </Menu>
@@ -225,12 +224,12 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
           {linkData}
           <Tooltip title={t('blocks.more')}>
             <Button className={styles.moreBtn} type="text" onClick={onClickMoreButton}>
-              <More />
+              <Icon.More />
             </Button>
           </Tooltip>
           <Tooltip title={t('blocks.create_sub_pages')}>
             <Button className={styles.addBtn} type="text" onClick={onClickPlus} loading={createBlockLoading} disabled={createBlockLoading}>
-              <Add />
+              <Icon.Add />
             </Button>
           </Tooltip>
         </div>
