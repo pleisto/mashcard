@@ -19,6 +19,7 @@ declare global {
     isDesktopApp: boolean
     featureFlags: string[]
     serverMessage: string
+    sentryDsn: string
   }
   interface BrickdocClientContext {
     wsCable: ActionCable.Consumer

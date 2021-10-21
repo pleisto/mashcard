@@ -98,6 +98,7 @@ jobs:
           APP_SECRET_SECURITY_REVERSIBLE_INT_RANDOM: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_RANDOM }}
           APP_SECRET_SECURITY_REVERSIBLE_INT_PRIME: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_PRIME }}
           APP_ENV_SMTP_FROM: brickdoc-ce-trunk@intl-email-service.brickdoc.app
+          APP_ENV_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           APP_SECRET_SMTP_URL: ${{ secrets.TRUNK_SMTP_URL }}
           APP_ENV_GITHUB_KEY: 70835aac65b5971f7774
           APP_SECRET_GITHUB_SECRET: ${{ secrets.TRUNK_GITHUB_SECRET }}

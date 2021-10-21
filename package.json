@@ -56,6 +56,8 @@
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^7.0.0-alpha2",
+    "@sentry/react": "^6.13.3",
+    "@sentry/tracing": "^6.13.3",
     "ahooks": "^2.10.11",
     "dayjs": "^1.10.7",
     "graphql": "^15.6.1",

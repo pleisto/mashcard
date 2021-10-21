@@ -412,6 +412,16 @@ GEM
     second_level_cache (2.6.4)
       activerecord (>= 5.2, < 7)
       activesupport (>= 5.2, < 7)
+    sentry-rails (4.7.3)
+      railties (>= 5.0)
+      sentry-ruby-core (~> 4.7.0)
+    sentry-ruby (4.7.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      faraday (>= 1.0)
+      sentry-ruby-core (= 4.7.3)
+    sentry-ruby-core (4.7.3)
+      concurrent-ruby
+      faraday
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     sidekiq (6.2.2)
@@ -536,6 +546,8 @@ DEPENDENCIES
   rubocop (>= 1.22.1)
   rubocop-brickdoc!
   second_level_cache (~> 2.6, >= 2.6.4)
+  sentry-rails
+  sentry-ruby
   shoulda-matchers
   sidekiq (~> 6.2, >= 6.2.2)
   sidekiq-cron (~> 1.2)

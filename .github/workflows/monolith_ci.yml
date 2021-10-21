@@ -57,6 +57,7 @@ env:
   SECURITY_REVERSIBLE_INT_INVERSE: 2083710303
   UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
   UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
+  SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
 jobs:
   cancel:
@@ -167,15 +168,11 @@ jobs:
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         env:
           RAILS_ENV: test
-          UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
-          UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
         run: bundle exec rspec plugins --format RspecJunitFormatter --out junit-reports/rspec_plugin.xml
       - name: Run RSpec setting tests
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         env:
           RAILS_ENV: test
-          UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
-          UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
         run: cd gems/brickdoc_settings && bundle && bundle exec rspec --format RspecJunitFormatter --out ../../junit-reports/rspec_setting.xml && cd ../..
       - name: Publish RSpec test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'

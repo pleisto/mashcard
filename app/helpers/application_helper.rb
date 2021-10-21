@@ -17,7 +17,8 @@ module ApplicationHelper
       isDesktopApp: false,
       featureFlags: Flipper.features,
       settings: BrickdocConfig.to_frontend,
-      serverMessage: flash[:alert]
+      serverMessage: flash[:alert],
+      sentryDsn: BrickdocConfig.sentry_dsn
     }
   end
 end

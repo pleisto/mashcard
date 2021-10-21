@@ -38,6 +38,10 @@ gem 'flipper-active_support_cache_store', '~> 0.22.2'
 
 gem 'default_value_for', '~> 3.4'
 
+# Sentry
+gem "sentry-ruby"
+gem "sentry-rails"
+
 # GraphQL
 gem 'graphql', '~> 1.12', '>= 1.12.16'
 gem 'graphql-fragment_cache', '~> 1.9'
