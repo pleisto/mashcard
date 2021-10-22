@@ -41,7 +41,7 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
     const url = getDocCoverUrl() ?? localUrl ?? ''
 
     if (url) {
-      value = `url(${url})`
+      value = `url("${url}")`
     }
   }
 

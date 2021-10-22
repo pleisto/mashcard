@@ -31,7 +31,7 @@ export const DocumentIcon: React.FC<DocumentIconProps> = ({ documentIconMeta, on
         </span>
       )}
       {documentIconMeta.type === Blocktype.Image && (
-        <div className={styles.image} style={{ backgroundImage: `url(${getDocIconUrl() ?? localUrl ?? ''})` }} />
+        <div className={styles.image} style={{ backgroundImage: `url("${getDocIconUrl() ?? localUrl ?? ''}")` }} />
       )}
     </Button>
   )

@@ -115,7 +115,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     return (
       <BlockWrapper editor={editor}>
         <Button className="brickdoc-link-block-link" onClick={() => window.open(linkUrl, '_blank')}>
-          {cover && <div className="link-block-cover" style={{ backgroundImage: `url(${cover})` }} />}
+          {cover && <div className="link-block-cover" style={{ backgroundImage: `url("${cover}")` }} />}
           <div className="link-block-content">
             {title && <div className="link-block-title">{title}</div>}
             {description && <div className="link-block-description">{description}</div>}
