@@ -34,6 +34,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
 
     updateAttributes({
       [type]: {
+        __typename: type === 'link' ? 'BlockLink' : 'BlockAttachment',
         ...node.attrs[type],
         ...latestLinkBlockAttributes.current
       }

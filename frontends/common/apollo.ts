@@ -41,12 +41,14 @@ export const apolloClient = new ApolloClient({
       ...[
         'BlockMeta',
         'BlockAttachment',
+        'BlockColor',
         'BlockCover',
         'BlockIcon',
         'BlockImage',
         'BlockLink',
         'blob',
-        'BlockBaseObjectPermissions'
+        'BlockBaseObjectPermissions',
+        'BlockEmoji'
       ].reduce<Record<string, TypePolicy>>((p, typename) => {
         p[typename] = {
           merge: true

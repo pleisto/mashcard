@@ -3,11 +3,11 @@ import * as React from 'react'
 import styles from './DocumentIcon.module.less'
 import { BlockEmoji, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 
-interface DocumentIconImage extends Omit<BlockImage, '__typename'> {
+interface DocumentIconImage extends BlockImage {
   type: Blocktype.Image
 }
 
-interface DocumentIconEmoji extends Pick<BlockEmoji, 'emoji' | 'name'> {
+interface DocumentIconEmoji extends BlockEmoji {
   type: Blocktype.Emoji
 }
 

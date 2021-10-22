@@ -68,6 +68,7 @@ export function useDocumentCoverUploader(
 
     if (url) {
       documentCoverMeta = {
+        __typename: 'BlockImage',
         type: Blocktype.Image,
         // TODO: align types
         source: meta?.source === 'external' ? Filesourcetype.External : Filesourcetype.Origin,
@@ -75,6 +76,7 @@ export function useDocumentCoverUploader(
       }
     } else if (color) {
       documentCoverMeta = {
+        __typename: 'BlockColor',
         type: Blocktype.Color,
         color
       }

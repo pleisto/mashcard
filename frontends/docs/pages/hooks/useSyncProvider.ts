@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { Node } from 'prosemirror-model'
 import { gql, useApolloClient } from '@apollo/client'
+import { addTypenameToDocument } from '@apollo/client/utilities'
 import { BlockInput, Block, useBlockSyncBatchMutation, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
 import { isNil, isMatch } from 'lodash-es'
@@ -167,7 +168,7 @@ export const blocksToJSONContents = (blocks: Block[], filterId?: string): JSONCo
     .sort((a, b) => Number(a.sort) - Number(b.sort))
     .map(block => ({ content: blocksToJSONContents(blocks, block.id), ...blockToNode(block) }))
 
-const cachedChildrenBlocksQuery = gql`
+const cachedChildrenBlocksQuery = addTypenameToDocument(gql`
   query ($rootId: String!, $snapshotVersion: Int!) {
     childrenBlocks(rootId: $rootId, snapshotVersion: $snapshotVersion) {
       id
@@ -180,7 +181,7 @@ const cachedChildrenBlocksQuery = gql`
       parentId
     }
   }
-`
+`)
 
 export function useSyncProvider(): [(doc: Node) => Promise<void>] {
   const client = useApolloClient()
@@ -201,9 +202,6 @@ export function useSyncProvider(): [(doc: Node) => Promise<void>] {
           }) ?? {}
         if (!oldBlocks) oldBlocks = []
         const newBlocks = nodeToBlock(doc, 0)
-        if (oldBlocks[0].parentId) {
-          newBlocks[0].parentId = oldBlocks[0].parentId
-        }
 
         const oldBlockMap = new Map(oldBlocks.map(b => [b.id, b]))
         const newBlockIds = new Set()
@@ -221,10 +219,12 @@ export function useSyncProvider(): [(doc: Node) => Promise<void>] {
           if (!oldBlockMap.has(newBlock.id)) {
             added.push(newBlock)
           } else {
-            if (!isMatch(oldBlockMap.get(newBlock.id)!, newBlock)) {
+            const oldBlock = oldBlockMap.get(newBlock.id)!
+            if (!isMatch(oldBlock, newBlock)) {
               updated.push(newBlock)
               if (newBlock.id === rootId) {
                 newTitle = newBlock.text
+                if (oldBlock.parentId) newBlock.parentId = oldBlock.parentId
               }
             }
             oldBlockMap.delete(newBlock.id)
@@ -261,7 +261,7 @@ export function useSyncProvider(): [(doc: Node) => Promise<void>] {
         client.writeQuery({
           query: cachedChildrenBlocksQuery,
           variables: { rootId, snapshotVersion: 0 },
-          data: { childrenBlocks: newBlocks.map(b => ({ ...b, parentId: b.parentId ?? null, __typename: 'block' })) }
+          data: { childrenBlocks: newBlocks.map(b => ({ ...b, meta: { ...b.meta, __typename: 'BlockMeta' }, __typename: 'block' })) }
         })
 
         await syncPromise

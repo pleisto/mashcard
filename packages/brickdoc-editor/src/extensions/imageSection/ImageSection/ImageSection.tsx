@@ -39,6 +39,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
 
     updateAttributes({
       image: {
+        __typename: 'BlockImage',
         ...node.attrs.image,
         ...latestImageAttributes.current,
         // remove defaultFile prop

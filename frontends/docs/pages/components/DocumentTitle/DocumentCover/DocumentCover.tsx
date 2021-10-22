@@ -5,11 +5,11 @@ import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
 
-interface DocumentCoverImage extends Omit<BlockImage, '__typename'> {
+interface DocumentCoverImage extends BlockImage {
   type: Blocktype.Image
 }
 
-interface DocumentCoverColor extends Omit<BlockColor, '__typename'> {
+interface DocumentCoverColor extends BlockColor {
   type: Blocktype.Color
 }
 
@@ -62,7 +62,7 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
                 </Button>
               </Popover>
             )}
-            {/* TODO: cover reposition 
+            {/* TODO: cover reposition
             <Button className={styles.button} type="text" disabled={!editable}>
               {t('title.reposition')}
             </Button>

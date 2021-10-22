@@ -66,12 +66,14 @@ export function useDocumentIconUploader(
 
     if (url) {
       documentIconMeta = {
+        __typename: 'BlockImage',
         type: Blocktype.Image,
         source: meta?.source === 'external' ? Filesourcetype.External : Filesourcetype.Origin,
         key: url
       }
     } else if (emoji) {
       documentIconMeta = {
+        __typename: 'BlockEmoji',
         type: Blocktype.Emoji,
         name: emoji.name,
         emoji: emoji.emoji
