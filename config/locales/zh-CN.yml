@@ -232,29 +232,41 @@ zh-CN:
   datetime:
     distance_in_words:
       about_x_hours:
+        one: 大约一小时
         other: 大约 %{count} 小时
       about_x_months:
+        one: 大约一个月
         other: 大约 %{count} 个月
       about_x_years:
+        one: 大约一年
         other: 大约 %{count} 年
       almost_x_years:
+        one: 将近一年
         other: 将近 %{count} 年
       half_a_minute: 30 秒
       less_than_x_seconds:
+        one: 不到一秒
         other: 小于 %{count} 秒
       less_than_x_minutes:
+        one: 不到一分钟
         other: 不到 %{count} 分钟
       over_x_years:
+        one: 一年以上
         other: '%{count} 年以上'
       x_seconds:
+        one: 一秒
         other: '%{count} 秒'
       x_minutes:
+        one: 一分钟
         other: '%{count} 分钟'
       x_days:
+        one: 一天
         other: '%{count} 天'
       x_months:
+        one: 一个月
         other: '%{count} 个月'
       x_years:
+        one: 一年
         other: '%{count} 年'
     prompts:
       second: Second

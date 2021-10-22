@@ -4,8 +4,8 @@ module ApplicationHelper
     {
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
-      lastWebid: Current.user&.last_webid,
-      lastBlockId: Current.user&.last_block_id,
+      lastWebid: ENV['CYPRESS'] ? nil : Current.user&.last_webid,
+      lastBlockId: ENV['CYPRESS'] ? nil : Current.user&.last_block_id,
       currentPod: Current.pod,
       env: Rails.env,
       version: Brickdoc.full_version,

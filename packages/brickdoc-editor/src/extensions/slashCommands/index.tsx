@@ -148,6 +148,8 @@ export const SlashCommandsExtension = Extension.create({
 
           return {
             onStart: props => {
+              if (!this.editor.isEditable) return
+
               reactRenderer = new ReactRenderer(SlashCommandsMenu as any, {
                 props,
                 editor: props.editor as Editor
@@ -156,18 +158,22 @@ export const SlashCommandsExtension = Extension.create({
               // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
               popup = createPopup(props.clientRect!, reactRenderer.element)
             },
-            onUpdate(props) {
-              reactRenderer.updateProps(props)
+            onUpdate: props => {
+              if (!this.editor.isEditable) return
 
-              popup.setProps({
+              reactRenderer?.updateProps(props)
+
+              popup?.setProps({
                 getReferenceClientRect: props.clientRect
               })
             },
-            onKeyDown({ event }) {
+            onKeyDown: ({ event }) => {
+              if (!this.editor.isEditable) return false
+
               const key = event.key
               const moving = (index: number): void => {
                 handleIndexChange(index)
-                reactRenderer.element
+                reactRenderer?.element
                   ?.getElementsByClassName('slash-menu-item')
                   [index]?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
               }
@@ -183,16 +189,17 @@ export const SlashCommandsExtension = Extension.create({
               }
 
               if (key === 'Enter') {
-                reactRenderer.props.command(reactRenderer.props.items[activeIndex])
+                reactRenderer?.props.command(reactRenderer.props.items[activeIndex])
                 handleIndexChange(0)
                 return true
               }
 
               return false
             },
-            onExit() {
-              popup.destroy()
-              reactRenderer.destroy()
+            onExit: () => {
+              if (!this.editor.isEditable) return
+              popup?.destroy()
+              reactRenderer?.destroy()
             }
           }
         }
