@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Node } from 'prosemirror-model'
 import { Alert, Skeleton } from '@brickdoc/design-system'
-import { EditorContent, useEditor } from '@brickdoc/editor'
+import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import {
@@ -18,14 +18,21 @@ import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Redirect } from 'react-router-dom'
 import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
-import { PageEditorContext } from './contexts/pageEditorContext'
+import { editorVar } from '../reactiveVars'
 interface DocumentPageProps {
   docMeta: DocMeta
 }
 
 export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
+  // apollo doesn't work well with React Suspense. We must place this suspense-related hook above
+  // apollo useQuery API to avoid issues like sending request twice.
+  // useEditorI18n() is called inside useEditor(), which is below useGetChildrenBlocksQuery(). So we
+  // promote this call to the beginning of this render fn.
+  useEditorI18n()
+
   const [onCommit] = useSyncProvider()
-  const childrenBlocks = React.useRef<GetChildrenBlocksQuery['childrenBlocks']>()
+  const childrenBlocks = useRef<GetChildrenBlocksQuery['childrenBlocks']>()
+  const [focused, setFocused] = useState(false)
 
   // TODO lazy query here
   // TODO disable page tree select when loading
@@ -35,8 +42,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   // }, [])
 
   const { data, loading, refetch } = useGetChildrenBlocksQuery({
-    fetchPolicy: 'network-only',
-    nextFetchPolicy: 'standby',
+    fetchPolicy: docMeta.snapshotVersion > 0 ? 'no-cache' : 'cache-and-network',
+    nextFetchPolicy: 'cache-only',
     variables: { rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }
   })
 
@@ -79,10 +86,13 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     fetchWebsiteMeta,
     getImageUrl,
     getAttachmentUrl,
-    editable: documentEditable
+    editable: documentEditable,
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false)
   })
-  const { setEditor } = React.useContext(PageEditorContext)
-  React.useEffect(() => setEditor(editor), [editor, setEditor])
+  React.useEffect(() => {
+    editorVar(editor)
+  }, [editor])
 
   React.useEffect(() => {
     const block = data?.childrenBlocks?.find(block => block.id === docMeta.id)
@@ -117,7 +127,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const setCover = createDocAttrsUpdater('cover')
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && data?.childrenBlocks) {
+    if (editor && !editor.isDestroyed && data?.childrenBlocks && !focused) {
       const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
       childrenBlocks.current = data.childrenBlocks
 
@@ -125,7 +135,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
         editor.commands.replaceRoot(content[0])
       }
     }
-  }, [editor, data])
+  }, [editor, data, focused])
 
   useDocumentSubscription({ docid: docMeta.id as string, editor, setDocumentEditable, refetchDocument: refetch })
 

@@ -11,7 +11,7 @@ import {
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { useImperativeQuery } from '@/common/hooks'
-import { SyncStatusContext } from '../contexts/syncStatusContext'
+import { isSavingVar } from '../../reactiveVars'
 
 export interface DatabaseRow {
   id: string
@@ -65,7 +65,6 @@ export function useDatabaseRows(): (parentId: string) => [
     setRowsState: (rows: DatabaseRows) => void
   }
 ] {
-  const { setCommitting } = React.useContext(SyncStatusContext)
   return function useDatabaseRows(parentId: string) {
     const queryDatabaseRowBlocks = useImperativeQuery<Query, Variables>(GetDatabaseRowBlocksDocument)
 
@@ -83,7 +82,7 @@ export function useDatabaseRows(): (parentId: string) => [
 
     const updateRow = React.useCallback(
       async (row: DatabaseRow, updateState = true): Promise<void> => {
-        setCommitting(true)
+        isSavingVar(true)
         if (updateState) {
           setDatabaseRows(prevRows =>
             prevRows.map((prevRow: DatabaseRow) => {
@@ -103,7 +102,7 @@ export function useDatabaseRows(): (parentId: string) => [
         }
         const input: BlockUpdateInput = { block: blockArg, rootId: parentId }
         await blockUpdate({ variables: { input } })
-        setCommitting(false)
+        isSavingVar(false)
       },
       [setDatabaseRows, parentId, blockUpdate]
     )
@@ -124,11 +123,11 @@ export function useDatabaseRows(): (parentId: string) => [
 
     const removeRow = React.useCallback(
       async (rowId: string): Promise<void> => {
-        setCommitting(true)
+        isSavingVar(true)
         setDatabaseRows(databaseRows.filter(row => row.id !== rowId))
         const input: BlockSoftDeleteInput = { id: rowId }
         await blockSoftDelete({ variables: { input } })
-        setCommitting(false)
+        isSavingVar(false)
       },
       [databaseRows, setDatabaseRows, blockSoftDelete]
     )

@@ -8,7 +8,6 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       mutation blockSyncBatch($input: BlockSyncBatchInput!) {
         blockSyncBatch(input: $input) {
           errors
-          refetchTree
         }
       }
     GRAPHQL
@@ -22,7 +21,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
 
       root_id = SecureRandom.uuid
 
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
         type: "doc",
         meta: {},
@@ -33,7 +32,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       }] } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
       root = Docs::Block.non_deleted.find(root_id)
       expect(root.type).to eq("doc")
       expect(root.sort).to eq(147)
@@ -53,7 +52,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       expect(user.last_block_ids).to eq({})
 
       root_id = SecureRandom.uuid
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
         type: "doc",
         meta: {},
@@ -95,31 +94,73 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
         sort: 159
       }]
 
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: blocks } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
       root = Docs::Block.find(root_id)
       expect(root.descendants.count).to eq(2)
       expect(root.sort).to eq(159)
 
       blocks = blocks.map { |b| b.merge(sort: 333) }
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: blocks } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
       root.reload
       expect(root.descendants.count).to eq(2)
       expect(root.sort).to eq(333)
 
       blocks = blocks.map { |b| b[:id] == root_id ? b : b.merge(sort: 444) }
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: blocks } }
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: blocks } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => false } })
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
 
       self.current_user = nil
       self.current_pod = nil
+    end
+
+    it 'deleteIds' do
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+
+      root_id = SecureRandom.uuid
+      block_id = SecureRandom.uuid
+
+      blocks = [{
+        id: block_id,
+        type: "doc",
+        parentId: root_id,
+        meta: {},
+        data: {},
+        text: "",
+        content: [],
+        sort: 321
+      }, {
+        id: root_id,
+        type: "doc",
+        meta: {},
+        data: {},
+        text: "",
+        content: [],
+        sort: 159
+      }]
+
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: blocks } }
+      internal_graphql_execute(mutation, input)
+      root = Docs::Block.find(root_id)
+
+      expect(root.descendants.count).to eq(2)
+      expect(Docs::Block.find(block_id).deleted_at).to eq(nil)
+
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [block_id], blocks: [] } }
+      internal_graphql_execute(mutation, input)
+      expect(response.errors).to eq({})
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
+
+      expect(root.descendants.count).to eq(1)
+      expect(Docs::Block.find(block_id).deleted_at).not_to eq(nil)
     end
 
     it 'edit deleted blocks' do
@@ -129,7 +170,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       block = create(:docs_block, pod: user.personal_pod)
       root_id = block.id
 
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
         type: "doc",
         meta: {},
@@ -140,11 +181,11 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       }] } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
-      expect(response.data).to eq({ "blockSyncBatch" => { "errors" => [], "refetchTree" => true } })
+      expect(response.data).to eq({ "blockSyncBatch" => nil })
 
       block.soft_delete!
 
-      input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
+      input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
         id: root_id,
         type: "doc",
         meta: {},

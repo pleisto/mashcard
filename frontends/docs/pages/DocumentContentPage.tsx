@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useMemo } from 'react'
 import { useHistory, useLocation, useParams } from 'react-router-dom'
 import { SidebarLayoutPage } from '@/common/layouts/SidebarLayoutPage'
 import { DocumentTopBar } from './components/DocumentTopBar'
@@ -14,8 +14,8 @@ import { BlockIdKind, GetBlockInfoQuery, Policytype, useBlockCreateMutation, use
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
-import { usePageEditorContextValue, PageEditorContext } from './contexts/pageEditorContext'
-import { SyncStatusContext, useSyncStatusContextValue } from './contexts/syncStatusContext'
+import { useReactiveVar } from '@apollo/client'
+import { editorVar } from '../reactiveVars'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -61,11 +61,9 @@ export const DocumentContentPage: React.FC = () => {
     kind = BlockIdKind.P
   } = useParams<{ webid: string; docid?: string; kind?: BlockIdKind; snapshotVersion?: string }>()
   const { currentPod, currentUser, host, lastWebid, lastBlockIds } = useContext(BrickdocContext)
-  const syncStatusContextValue = useSyncStatusContextValue()
   const { t } = useDocsI18n()
   const history = useHistory()
-  const pageEditorContextValue = usePageEditorContextValue()
-  const { editor } = pageEditorContextValue
+  const editor = useReactiveVar(editorVar)
 
   const loginWebid = currentPod.webid
 
@@ -93,92 +91,91 @@ export const DocumentContentPage: React.FC = () => {
     }
   }, [blockCreate, docid, history, webid, isAnonymous, lastWebid, lastBlockIds])
 
-  const policy = data?.blockInfo?.permission?.policy
-  const isMine = loginWebid === webid || !!data?.blockInfo?.isMaster
-  const pin = !!data?.blockInfo?.pin
-  const shareable = isMine
-  const editable = isMine || policy === Policytype.Edit
-  const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
-  const isDeleted = data?.blockInfo?.isDeleted !== false
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const title: string = data?.blockInfo?.title || t('title.untitled')
-  const realid = data?.blockInfo?.id ?? docid
-  const payload = data?.blockInfo?.payload ?? {}
-  const collaborators = data?.blockInfo?.collaborators ?? []
-  const pathArray = data?.blockInfo?.pathArray ?? []
-  const path = `/${webid}/${kind}/${docid}`
   const { state } = useLocation()
-  const isRedirect = !!(state as any)?.redirect
 
-  const docMeta: DocMeta = {
-    id: realid,
-    alias: docid,
-    kind,
-    webid,
-    title,
-    payload,
-    isDeleted,
-    pin,
-    host,
-    path,
-    isAnonymous,
-    isMine,
-    isRedirect,
-    loginWebid,
-    shareable,
-    editable,
-    viewable,
-    collaborators,
-    pathArray,
-    documentInfoLoading: loading,
-    snapshotVersion: Number(snapshotVersion ?? '0')
-  }
+  const docMeta: DocMeta = useMemo(() => {
+    const policy = data?.blockInfo?.permission?.policy
+    const isMine = loginWebid === webid || !!data?.blockInfo?.isMaster
+    const pin = !!data?.blockInfo?.pin
+    const shareable = isMine
+    const editable = isMine || policy === Policytype.Edit
+    const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
+    const isDeleted = data?.blockInfo?.isDeleted !== false
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    const title: string = data?.blockInfo?.title || t('title.untitled')
+    const realid = data?.blockInfo?.id ?? docid
+    const payload = data?.blockInfo?.payload ?? {}
+    const collaborators = data?.blockInfo?.collaborators ?? []
+    const pathArray = data?.blockInfo?.pathArray ?? []
+    const path = `/${webid}/${kind}/${docid}`
+    const isRedirect = !!(state as any)?.redirect
 
-  // HeaderBar
-  if (!loading || isMine) {
-    headerBarVar(<DocumentTopBar docMeta={docMeta} />)
-  }
-
-  // SideBar
-  if (!docMeta.isAnonymous) {
-    if (docMeta.isMine) {
-      siderBarVar(
-        <>
-          <PodSelect docMeta={docMeta} />
-          <SearchModal docMeta={docMeta} />
-
-          <nav>
-            <PageTree docMeta={docMeta} />
-            <TrashButton docMeta={docMeta} />
-          </nav>
-          <footer>
-            <NewPage docMeta={docMeta} />
-          </footer>
-        </>
-      )
-    } else {
-      siderBarVar(
-        <>
-          <PodSelect docMeta={docMeta} />
-        </>
-      )
+    return {
+      id: realid,
+      alias: docid,
+      kind,
+      webid,
+      title,
+      payload,
+      isDeleted,
+      pin,
+      host,
+      path,
+      isAnonymous,
+      isMine,
+      isRedirect,
+      loginWebid,
+      shareable,
+      editable,
+      viewable,
+      collaborators,
+      pathArray,
+      documentInfoLoading: loading,
+      snapshotVersion: Number(snapshotVersion ?? '0')
     }
-  }
+  }, [data, docid, host, isAnonymous, kind, loading, loginWebid, snapshotVersion, state, t, webid])
+
+  useEffect(() => {
+    // HeaderBar
+    if (!loading || docMeta.isMine) {
+      headerBarVar(<DocumentTopBar docMeta={docMeta} />)
+    }
+
+    // SideBar
+    if (!docMeta.isAnonymous) {
+      if (docMeta.isMine) {
+        siderBarVar(
+          <>
+            <PodSelect docMeta={docMeta} />
+            <SearchModal docMeta={docMeta} />
+
+            <nav>
+              <PageTree docMeta={docMeta} />
+              <TrashButton docMeta={docMeta} />
+            </nav>
+            <footer>
+              <NewPage docMeta={docMeta} />
+            </footer>
+          </>
+        )
+      } else {
+        siderBarVar(
+          <>
+            <PodSelect docMeta={docMeta} />
+          </>
+        )
+      }
+    }
+  }, [docMeta, loading])
 
   const content = (
     <>
       <Helmet title={editor?.state.doc.attrs.title ?? docMeta.title} />
-      <DocumentPage docMeta={{ ...docMeta, editable: editable && !isAnonymous }} />
+      <DocumentPage docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous }} />
     </>
   )
 
-  return (
-    <SyncStatusContext.Provider value={syncStatusContextValue}>
-      <PageEditorContext.Provider value={pageEditorContextValue}>
-        <SidebarLayoutPage>{content}</SidebarLayoutPage>
-      </PageEditorContext.Provider>
-    </SyncStatusContext.Provider>
-  )
+  return <SidebarLayoutPage>{content}</SidebarLayoutPage>
 }
 
 export default DocumentContentPage

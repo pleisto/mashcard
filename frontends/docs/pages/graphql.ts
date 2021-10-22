@@ -16,7 +16,6 @@ export const BlockSyncBatch = gql`
   mutation blockSyncBatch($input: BlockSyncBatchInput!) {
     blockSyncBatch(input: $input) {
       errors
-      refetchTree
     }
   }
 `
@@ -88,6 +87,7 @@ export const queryChildrenBlocks = gql`
         title
         level
         language
+        start
         image {
           type
           source

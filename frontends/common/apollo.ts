@@ -52,7 +52,16 @@ export const apolloClient = new ApolloClient({
           merge: true
         }
         return p
-      }, {})
+      }, {}),
+      Query: {
+        fields: {
+          childrenBlocks: {
+            merge(existing, incoming) {
+              return [...incoming]
+            }
+          }
+        }
+      }
     }
   }),
   defaultOptions: {

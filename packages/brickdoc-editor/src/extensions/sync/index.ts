@@ -14,6 +14,7 @@ declare module '@tiptap/core' {
 
 export interface SyncExtensionOptions {
   onSave: (doc: Node) => void
+  types: string[]
 }
 
 const PLUGIN_NAME = 'sync'
@@ -60,6 +61,29 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
     }
   },
 
+  addGlobalAttributes() {
+    return [
+      {
+        types: this.options.types,
+        attributes: {
+          sort: {
+            default: undefined,
+            parseHTML: element => element.getAttribute(`data-sort`),
+            renderHTML: attributes => {
+              if (!attributes.sort) {
+                return {}
+              }
+
+              return {
+                [`data-sort`]: attributes.sort
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+
   addProseMirrorPlugins() {
     const {
       options: { onSave },
@@ -77,7 +101,6 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
           apply(tr, pluginState, oldState, newState) {
             // Clean up plugin states when `nextSaveTimer` triggered
             if (tr.getMeta('nextSaveTimerTriggered')) {
-              console.log('nextSaveTimerTriggered cleanup')
               return { ...pluginState, nextSaveTimer: undefined }
             }
 
@@ -90,7 +113,6 @@ export const SyncExtension = Extension.create<SyncExtensionOptions>({
             if (newState.doc.attrs.uuid !== oldState.doc.attrs.uuid) {
               // Clear pending sync timers if we are loading a new doc and save the old doc
               if (pluginState.nextSaveTimer) {
-                console.log('cleanup pending save timer')
                 clearTimeout(pluginState.nextSaveTimer)
                 onSave(oldState.doc)
               }

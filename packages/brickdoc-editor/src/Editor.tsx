@@ -21,6 +21,8 @@ import { useEditorI18n } from './hooks'
 
 export type { ImageSectionAttributes } from './extensions'
 
+export { useEditorI18n }
+
 export interface EditorContentProps {
   editor: TiptapEditor | null
 }
@@ -61,6 +63,22 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     placeholder: t('placeholder')
   })
 
+  const typesWithUuid = [
+    'blockquote',
+    'bulletList',
+    'codeBlock',
+    'hardBreak',
+    'heading',
+    'horizontalRule',
+    'imageSection',
+    'linkBlock',
+    'listItem',
+    'orderedList',
+    'paragraph',
+    'pdfSection',
+    'tableBlock'
+  ]
+
   return useTiptapEditor({
     extensions: [
       BasicRichtextExtension.configure({
@@ -75,23 +93,9 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       brickListExtension,
       UniqueID.configure({
         attributeName: 'uuid',
-        types: [
-          'blockquote',
-          'bulletList',
-          'codeBlock',
-          'hardBreak',
-          'heading',
-          'horizontalRule',
-          'imageSection',
-          'linkBlock',
-          'listItem',
-          'orderedList',
-          'paragraph',
-          'pdfSection',
-          'tableBlock'
-        ]
+        types: typesWithUuid
       }),
-      SyncExtension.configure({ onSave })
+      SyncExtension.configure({ onSave, types: typesWithUuid })
     ],
     autofocus: true,
     editable,

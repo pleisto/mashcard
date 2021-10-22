@@ -4,20 +4,18 @@ module Docs
     argument :blocks, [Inputs::BlockInput], required: true
     argument :root_id, BrickGraphQL::Scalars::UUID, 'block root id', required: true
     argument :operator_id, String, 'operator id', required: true
+    argument :deleted_ids, [BrickGraphQL::Scalars::UUID], 'deleted ids', required: true
 
-    field :refetch_tree, Boolean, null: false
-
-    def resolve(blocks:, root_id:, operator_id:)
+    def resolve(blocks:, root_id:, operator_id:, deleted_ids:)
       lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 10)
       lock.lock do
-        Rails.logger.info("resolve #{root_id} #{operator_id} #{blocks}")
-        do_resolve(blocks: blocks, root_id: root_id, operator_id: operator_id)
+        Rails.logger.info("resolve #{root_id} #{operator_id} #{deleted_ids} #{blocks}")
+        do_resolve(blocks: blocks, root_id: root_id, operator_id: operator_id, deleted_ids: deleted_ids)
       end
     end
 
-    def do_resolve(blocks:, root_id:, operator_id:)
+    def do_resolve(blocks:, root_id:, operator_id:, deleted_ids:)
       root = Docs::Block.find_by(id: root_id)
-      refetch_tree = root.nil?
 
       if root&.deleted_at
         raise BrickGraphQL::Errors::ArgumentError, :cannot_modify_deleted_blocks
@@ -30,11 +28,10 @@ module Docs
       if root
         preloads = root.descendants(unscoped: true).index_by(&:id)
         paths_cache = root.paths_cache
-        delete_block_ids = preloads.select { |_, v| !v.deleted_at }.keys - blocks.map(&:id)
-        if delete_block_ids.present?
-          patches += delete_block_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
+        if deleted_ids.present?
+          patches += deleted_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
           preloads = preloads.each_with_object({}) do |(id, b), h|
-            b.soft_delete! if id.in?(delete_block_ids)
+            b.soft_delete! if id.in?(deleted_ids)
             h[id] = b
           end
         end
@@ -72,8 +69,6 @@ module Docs
           # block.attachments = args.attachments
           attachment_data[block] = args.attachments
         end
-
-        refetch_tree = true if args.id == root_id && block.changed?
 
         if exist
           upsert_data << block if block.changed?
@@ -158,9 +153,7 @@ module Docs
         Docs::Block.broadcast(root_id, trigger_payload)
       end
 
-      {
-        refetch_tree: refetch_tree
-      }
+      nil
     end
   end
 end
