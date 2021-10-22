@@ -48,6 +48,7 @@ export const TableRow: React.FC<TableRowProps> = ({
 
       const dragIndex = item.index
       const hoverIndex = row.index
+
       // Don't replace items with themselves
       if (dragIndex === hoverIndex) return
       // Determine rectangle on screen
@@ -65,19 +66,61 @@ export const TableRow: React.FC<TableRowProps> = ({
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) return
       // Dragging upwards
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) return
+
+      // last hover one
+      if (dropRef.current.classList.contains('drag-hover-upwards')) return
+      if (dropRef.current.classList.contains('drag-hover-downwards')) return
+
+      for (const child of dropRef.current.parentElement?.children ?? []) {
+        child.classList.remove('drag-hover-upwards')
+        child.classList.remove('drag-hover-downwards')
+      }
+
+      dropRef.current.classList.add(dragIndex < hoverIndex ? 'drag-hover-downwards' : 'drag-hover-upwards')
+    },
+    drop(item: { index: number }, monitor) {
+      if (!dropRef.current) return
+
+      const dragIndex = item.index
+      const dropIndex = row.index
+      // Don't replace items with themselves
+      if (dragIndex === dropIndex) return
+      // Determine rectangle on screen
+      const hoverBoundingRect = dropRef.current.getBoundingClientRect()
+      // Get vertical middle
+      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+      // Determine mouse position
+      const clientOffset = monitor.getClientOffset()!
+      // Get pixels to the top
+      const hoverClientY = clientOffset.y - hoverBoundingRect.top
+      // Only perform the move when the mouse has crossed half of the items height
+      // When dragging downwards, only move when the cursor is below 50%
+      // When dragging upwards, only move when the cursor is above 50%
+      // Dragging downwards
+      if (dragIndex < dropIndex && hoverClientY < hoverMiddleY) return
+      // Dragging upwards
+      if (dragIndex > dropIndex && hoverClientY > hoverMiddleY) return
       // Time to actually perform the action
-      onMoveRow(dragIndex, hoverIndex)
+      onMoveRow(dragIndex, dropIndex)
       // Note: we're mutating the monitor item here!
       // Generally it's better to avoid mutations,
       // but it's good here for the sake of performance
       // to avoid expensive index searches.
-      item.index = hoverIndex
+      item.index = dropIndex
     }
   })
 
   const [{ isDragging }, drag, preview] = useDrag({
     type: DND_ITEM_TYPE,
     item: { index: row.index },
+    end: () => {
+      if (!dropRef.current) return
+      // clear hove style
+      for (const child of dropRef.current.parentElement?.children ?? []) {
+        child.classList.remove('drag-hover-downwards')
+        child.classList.remove('drag-hover-upwards')
+      }
+    },
     collect: monitor => ({
       isDragging: monitor.isDragging()
     })
@@ -131,7 +174,8 @@ export const TableRow: React.FC<TableRowProps> = ({
               </Menu.Item>
             )}
           </Menu>
-        }>
+        }
+      >
         {/* add a placeholder for popover to follow mouse's position */}
         <div ref={popupContainer} style={{ width: '1px', height: '1px', position: 'fixed' }} />
       </Popover>
@@ -152,7 +196,8 @@ export const TableRow: React.FC<TableRowProps> = ({
               <div
                 {...cellProps}
                 key={cellProps.key}
-                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}>
+                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}
+              >
                 {cell.render('Cell')}
               </div>
             )

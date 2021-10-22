@@ -21,6 +21,39 @@ export interface DatabaseRows extends Array<DatabaseRow> {}
 
 const SORT_GAP = 2 ** 32
 
+function calculateSort(rows: DatabaseRows, targetIndex: number, fromIndex?: number): number {
+  let nextIndex = targetIndex
+  let prevIndex = targetIndex - 1
+
+  if (fromIndex !== undefined) {
+    if (fromIndex > targetIndex) {
+      prevIndex = targetIndex - 1
+      nextIndex = targetIndex
+    } else {
+      prevIndex = targetIndex
+      nextIndex = targetIndex + 1
+    }
+  }
+
+  let nextRowSort: number | undefined = rows[nextIndex]?.sort
+  let prevRowSort: number | undefined = rows[prevIndex]?.sort
+
+  if (nextRowSort === undefined) {
+    if (prevRowSort === undefined) {
+      nextRowSort = 0
+      prevRowSort = 0
+    } else {
+      nextRowSort = Number(prevRowSort) + 2 * SORT_GAP
+    }
+  }
+
+  if (prevRowSort === undefined) {
+    prevRowSort = Number(nextRowSort) - 2 * SORT_GAP
+  }
+
+  return Math.round(0.5 * (Number(nextRowSort) + Number(prevRowSort)))
+}
+
 export function useDatabaseRows(): (parentId: string) => [
   DatabaseRows,
   {
@@ -77,17 +110,13 @@ export function useDatabaseRows(): (parentId: string) => [
 
     const addRow = React.useCallback(
       (rowIndex?: number): DatabaseRow => {
-        const currentRowIndex = rowIndex ?? databaseRows.length - 1
+        const currentRowIndex: number = rowIndex ?? databaseRows.length
         const id = uuid()
-        const sort = Math.round(databaseRows[currentRowIndex + 1]?.sort ?? SORT_GAP - databaseRows[currentRowIndex - 1]?.sort ?? SORT_GAP)
+        const sort = calculateSort(databaseRows, currentRowIndex)
 
         const row = { id, sort }
         void updateRow(row, false)
-        setDatabaseRows([
-          ...databaseRows.slice(0, currentRowIndex + 1),
-          row,
-          ...databaseRows.slice(currentRowIndex + 1, databaseRows.length)
-        ])
+        setDatabaseRows([...databaseRows.slice(0, currentRowIndex), row, ...databaseRows.slice(currentRowIndex, databaseRows.length)])
         return row
       },
       [databaseRows, setDatabaseRows, updateRow]
@@ -107,12 +136,11 @@ export function useDatabaseRows(): (parentId: string) => [
     const moveRow = React.useCallback(
       (fromIndex: number, toIndex: number): DatabaseRow | undefined => {
         let targetRow: DatabaseRow | undefined
-        const newRows = databaseRows.filter((row, index) => {
+        const newRows = databaseRows.filter((row, index: number) => {
           if (index !== fromIndex) {
             return true
           } else {
-            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-            const sort = Math.round(0.5 * (databaseRows[index + 1]?.sort ?? SORT_GAP - databaseRows[index - 1]?.sort ?? SORT_GAP))
+            const sort = calculateSort(databaseRows, toIndex, fromIndex)
             targetRow = { ...row, sort }
 
             return false

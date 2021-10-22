@@ -117,7 +117,7 @@
           --border-color: #efefef;
           --cell-height: 42px;
           --cell-left-padding: 4px;
-          --active-color: 93, 121, 228;
+          --active-color: 44, 91, 255;
 
           display: inline-block;
           min-width: var(--table-min-width);
@@ -131,10 +131,20 @@
             border-bottom: 1px solid var(--border-color);
             transition: all 150ms ease-in;
 
+            &.drag-hover-upwards {
+              border-top: 4px solid rgba(var(--active-color), 0.18);
+              transition: unset;
+            }
+
+            &.drag-hover-downwards {
+              border-bottom: 4px solid rgba(var(--active-color), 0.18);
+              transition: unset;
+            }
+
             &.active {
-              border-top: 1px solid rgba(var(--active-color), 0.3);
-              background: rgba(var(--active-color), 0.1);
-              border-bottom: 1px solid rgba(var(--active-color), 0.3);
+              border-top: 1px solid rgba(var(--active-color), 1);
+              background: rgba(var(--active-color), 0.18);
+              border-bottom: 1px solid rgba(var(--active-color), 1);
             }
 
             & .table-block-row-actions {
