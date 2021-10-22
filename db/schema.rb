@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_091223) do
+ActiveRecord::Schema.define(version: 2021_10_22_093443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -41,23 +41,23 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: 6
+    t.datetime "last_sign_in_at", precision: 6
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: 6
+    t.datetime "confirmation_sent_at", precision: 6
     t.string "unconfirmed_email"
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
-    t.datetime "locked_at"
+    t.datetime "locked_at", precision: 6
     t.string "locale", limit: 17, comment: "BCP47 language codes."
     t.string "timezone"
-    t.datetime "deleted_at"
+    t.datetime "deleted_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "last_webid"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.string "record_id", null: false
     t.string "record_type", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: 6, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: 6, null: false
     t.bigint "pod_id"
     t.bigint "user_id"
     t.uuid "block_id"
@@ -134,14 +134,14 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.bigint "snapshot_version", default: 0, null: false
     t.bigint "sort", default: 0, null: false
     t.bigint "collaborators", default: [], null: false, array: true
-    t.datetime "deleted_at"
+    t.datetime "deleted_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "root_id", null: false
     t.jsonb "content", default: [], comment: "node content"
     t.text "text", default: "", comment: "node text"
     t.boolean "page", default: false, null: false
-    t.datetime "deleted_permanently_at"
+    t.datetime "deleted_permanently_at", precision: 6
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
     t.index ["pod_id"], name: "index_docs_blocks_on_pod_id"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "content", default: [], comment: "node content"
     t.text "text", default: "", comment: "node text"
-    t.datetime "deleted_at"
+    t.datetime "deleted_at", precision: 6
     t.index ["block_id", "history_version"], name: "index_docs_histories_on_block_id_and_history_version", unique: true, comment: "history identifier"
     t.index ["pod_id"], name: "index_docs_histories_on_pod_id"
   end
@@ -222,7 +222,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.string "name", null: false
     t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
     t.boolean "personal", default: false, null: false
-    t.datetime "deleted_at"
+    t.datetime "deleted_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "invite_enable", default: false, null: false
