@@ -36,13 +36,13 @@ export const routeConfig = (context: BrickdocContext): JSX.Element => {
     currentPod: { webid },
     currentUser,
     lastWebid,
-    lastBlockId
+    lastBlockIds
   } = context
   const redirectToLogin: FC<RouteConfigComponentProps> = () => <Redirect to="/accounts/sign_in" />
   const redirectToHome: FC<RouteConfigComponentProps> = () => {
     let path
-    if (lastWebid && lastBlockId) {
-      path = `/${lastWebid}/${BlockIdKind.P}/${lastBlockId}`
+    if (lastWebid && lastBlockIds && (lastBlockIds as any)[lastWebid]) {
+      path = `/${lastWebid}/${BlockIdKind.P}/${(lastBlockIds as any)[lastWebid]}`
     } else if (lastWebid) {
       path = `/${lastWebid}`
     } else {

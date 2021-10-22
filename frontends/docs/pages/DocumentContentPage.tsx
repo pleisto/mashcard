@@ -60,7 +60,7 @@ export const DocumentContentPage: React.FC = () => {
     snapshotVersion,
     kind = BlockIdKind.P
   } = useParams<{ webid: string; docid?: string; kind?: BlockIdKind; snapshotVersion?: string }>()
-  const { currentPod, currentUser, host, lastWebid, lastBlockId } = useContext(BrickdocContext)
+  const { currentPod, currentUser, host, lastWebid, lastBlockIds } = useContext(BrickdocContext)
   const syncStatusContextValue = useSyncStatusContextValue()
   const { t } = useDocsI18n()
   const history = useHistory()
@@ -78,8 +78,8 @@ export const DocumentContentPage: React.FC = () => {
 
   useEffect(() => {
     async function createAndNavigateToNewPage(): Promise<void> {
-      if (lastWebid === webid && lastBlockId) {
-        history.push(`/${webid}/${BlockIdKind.P}/${lastBlockId}`)
+      if (lastBlockIds && (lastBlockIds as any)[webid]) {
+        history.push(`/${webid}/${BlockIdKind.P}/${(lastBlockIds as any)[webid]}`)
       } else {
         const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '' } } })
         if (blockCreateData?.blockCreate?.id) {
@@ -91,7 +91,7 @@ export const DocumentContentPage: React.FC = () => {
     if (!isAnonymous && !docid) {
       void createAndNavigateToNewPage()
     }
-  }, [blockCreate, docid, history, webid, isAnonymous, lastWebid, lastBlockId])
+  }, [blockCreate, docid, history, webid, isAnonymous, lastWebid, lastBlockIds])
 
   const policy = data?.blockInfo?.permission?.policy
   const isMine = loginWebid === webid || !!data?.blockInfo?.isMaster

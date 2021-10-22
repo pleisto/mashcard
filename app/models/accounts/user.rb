@@ -14,6 +14,7 @@
 #  email                         :string
 #  encrypted_password            :string           default(""), not null
 #  failed_attempts               :integer          default(0), not null
+#  last_block_ids                :json             not null
 #  last_sign_in_at               :datetime
 #  last_sign_in_ip               :string
 #  last_webid                    :string
@@ -28,7 +29,6 @@
 #  unlock_token                  :string
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
-#  last_block_id                 :uuid
 #
 # Indexes
 #
@@ -66,9 +66,9 @@ class Accounts::User < ApplicationRecord
   end
 
   def save_last_position!(webid, block_id)
-    return if last_webid == webid && last_block_id == block_id
+    return if last_webid == webid && last_block_ids[webid] == block_id
 
-    update!(last_webid: webid, last_block_id: block_id)
+    update!(last_webid: webid, last_block_ids: last_block_ids.merge(webid => block_id))
   end
 
   def self.email_available?(email)

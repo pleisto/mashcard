@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Docs::Queries::BlockInfo, type: :query, focus: true do
+describe Docs::Queries::BlockInfo, type: :query do
   describe '#resolver' do
     query = <<-'GRAPHQL'
       query GetBlockInfo($id: String!, $kind: BlockIDKind!, $webid: String!) {
@@ -41,7 +41,7 @@ describe Docs::Queries::BlockInfo, type: :query, focus: true do
       self.current_pod = pod.as_session_context
 
       expect(user.last_webid).to eq(nil)
-      expect(user.last_block_id).to eq(nil)
+      expect(user.last_block_ids).to eq({})
 
       block = create(:docs_block, pod: pod, collaborators: [user.id])
 
@@ -50,7 +50,7 @@ describe Docs::Queries::BlockInfo, type: :query, focus: true do
       user.reload
 
       expect(user.last_webid).to eq(user.webid)
-      expect(user.last_block_id).to eq(block.id)
+      expect(user.last_block_ids).to eq({ user.webid => block.id })
     end
 
     it 'deleted' do

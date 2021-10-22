@@ -50,7 +50,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       self.current_pod = pod.as_session_context
 
       expect(user.last_webid).to eq(nil)
-      expect(user.last_block_id).to eq(nil)
+      expect(user.last_block_ids).to eq({})
 
       root_id = SecureRandom.uuid
       input = { input: { operatorId: operator_id, rootId: root_id, blocks: [{
@@ -67,7 +67,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       user.reload
 
       expect(user.last_webid).to eq(user.webid)
-      expect(user.last_block_id).to eq(root_id)
+      expect(user.last_block_ids).to eq({ user.webid => root_id })
     end
 
     it 'works' do
