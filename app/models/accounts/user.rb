@@ -118,6 +118,12 @@ class Accounts::User < ApplicationRecord
     original_personal_pod || build_personal_pod
   end
 
+  def guess_pod
+    return personal_pod if last_webid.nil?
+
+    pods.find_by(webid: last_webid) || personal_pod
+  end
+
   ## FederatedIdentity
   has_many :federated_identities, class_name: 'Accounts::FederatedIdentity',
            foreign_key: :accounts_user_id, inverse_of: :user, dependent: :destroy
