@@ -13,9 +13,11 @@
 }
 
 textarea.table-block-text-input {
+  --padding: 8px;
   --border-color: 239, 239, 239;
   --box-shadow-color: 62, 62, 62;
 
+  max-width: calc(100% - 2 * var(--padding));
   font-size: 14px;
   min-height: 100%;
   border: 1px solid rgba(var(--border-color));
@@ -23,6 +25,7 @@ textarea.table-block-text-input {
   border-bottom: none;
   box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
   border-radius: 4px;
+  padding: var(--padding);
   z-index: 2;
 
   &:focus {
