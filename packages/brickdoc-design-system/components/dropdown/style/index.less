@@ -20,7 +20,7 @@
     bottom: -@popover-distance + @popover-arrow-width;
     left: -7px;
     z-index: -9999;
-    opacity: 0.0001;
+    opacity: 0.01%;
     content: ' ';
   }
 
@@ -73,6 +73,7 @@
     background: transparent;
     border-style: solid;
     border-width: (sqrt(@popover-arrow-width * @popover-arrow-width * 2) / 2);
+
     transform: rotate(45deg);
   }
 

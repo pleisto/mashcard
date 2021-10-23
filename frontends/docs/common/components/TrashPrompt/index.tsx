@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Button, Modal, Space } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { BlockHardDeleteInput, BlockRestoreInput, useBlockHardDeleteMutation, useBlockRestoreMutation } from '@/BrickdocGraphQL'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
 import { queryPageBlocks } from '../../graphql'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
@@ -20,7 +20,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
   const [blockHardDelete] = useBlockHardDeleteMutation()
   const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryPageBlocks, queryBlockInfo] })
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const onHardDeleteClick = (): void => {
     setHardDeleteModalVisible(true)
@@ -44,7 +44,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
     await blockHardDelete({ variables: { input } })
     setHardDeleteModalVisible(false)
     setHardDeleteConfirmLoading(false)
-    history.push(`/${webid}`)
+    navigate(`/${webid}`)
   }
 
   return (

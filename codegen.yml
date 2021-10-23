@@ -1,6 +1,8 @@
 overwrite: true
-schema: db/graphql/schema.json
-documents: ['./frontends/**/*.graphql.ts','./frontends/**/graphql.ts']
+schema:
+  - db/graphql/schema.json
+  - frontends/core/typePolicies/clientFileds.graphql
+documents: ['./frontends/**/*.graphql.ts', './frontends/**/graphql.ts']
 generates:
   ./frontends/BrickdocGraphQL.ts:
     plugins:

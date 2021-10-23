@@ -7,7 +7,9 @@ declare global {
     currentPod: {
       webid: string
     }
-    lastBlockIds?: object
+    lastBlockIds?: {
+      [webid: string]: string
+    }
     lastWebid?: string
     env: string
     version: string

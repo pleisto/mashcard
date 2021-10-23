@@ -159,7 +159,6 @@ export const SlashCommandsExtension = Extension.create({
                 editor: props.editor as Editor
               })
 
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
               popup = createPopup(props.clientRect!, reactRenderer.element)
             },
             onUpdate: props => {

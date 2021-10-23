@@ -155,7 +155,7 @@
       &.@{table-prefix-cls}-row-selected {
         > td {
           background: @table-selected-row-bg;
-          border-color: rgba(0, 0, 0, 0.03);
+          border-color: rgb(0 0 0 / 3%);
         }
 
         &:hover {
@@ -358,7 +358,7 @@
     }
 
     &-tree {
-      padding: 8px 8px 0 8px;
+      padding: 8px 8px 0;
 
       .@{tree-prefix-cls}-treenode .@{tree-prefix-cls}-node-content-wrapper:hover {
         background-color: @tree-node-hover-bg;
@@ -558,6 +558,7 @@
     .@{table-prefix-cls}-row-indent + & {
       margin-top: ((@font-size-base * @line-height-base - @border-width-base * 3) / 2) -
         ceil(((@font-size-sm * 1.4 - @border-width-base * 3) / 2));
+
       margin-right: @padding-xs;
     }
   }
@@ -605,7 +606,6 @@
   // ============================ Fixed =============================
   &-cell-fix-left,
   &-cell-fix-right {
-    position: -webkit-sticky !important;
     position: sticky !important;
     z-index: @zindex-table-fixed;
     background: @table-bg;
@@ -708,7 +708,7 @@
       align-items: center;
       background: lighten(@table-border-color, 80%);
       border-top: 1px solid @table-border-color;
-      opacity: 0.6;
+      opacity: 60%;
 
       &:hover {
         transform-origin: center bottom;

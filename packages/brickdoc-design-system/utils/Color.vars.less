@@ -9,7 +9,7 @@
 
   each(@key-map, {
     @order: if((@value = 0), base, @value);
-    @k: '@{color}-@{order}';
+    @k: "@{color}-@{order}";
     --@{color}-@{order}: @@k;
     // --@{color}-@{order} {
     //   @k:  @{color}-@{order} ;

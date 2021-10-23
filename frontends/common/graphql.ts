@@ -1,23 +1,5 @@
 import { gql } from '@apollo/client'
 
-export const queryEmailExists = gql`
-  query QueryEmailAvailableFromWS($email: String!) {
-    emailAvailable(email: $email) {
-      success
-      message
-    }
-  }
-`
-
-export const queryPasswordExists = gql`
-  query QueryPasswordAvailableFromWS($password: String!) {
-    passwordAvailable(password: $password) {
-      success
-      message
-    }
-  }
-`
-
 export const queryWebidExists = gql`
   query QueryWebidAvailableFromWS($webid: String!) {
     webidAvailable(webid: $webid) {
@@ -46,6 +28,80 @@ export const CreateDirectUpload = gql`
         headers
         blobKey
         viewUrl
+        downloadUrl
+        signedId
+      }
+    }
+  }
+`
+export const queryPods = gql`
+  query GetPods {
+    pods {
+      id
+      webid
+      name
+      email
+      personal
+      inviteEnable
+      avatarData {
+        url
+        downloadUrl
+        signedId
+      }
+      bio
+    }
+  }
+`
+
+export const queryPod = gql`
+  query GetPod($webid: String!) {
+    pod(webid: $webid) {
+      id
+      webid
+      name
+      personal
+      inviteEnable
+      inviteSecret
+      avatarData {
+        url
+        downloadUrl
+        signedId
+      }
+      bio
+    }
+  }
+`
+
+export const queryCurrentPod = gql`
+  query GetCurrentPod($webid: String!) {
+    currentPodWebid @client @export(as: "webid")
+    pod(webid: $webid) {
+      id
+      webid
+      name
+      personal
+      inviteEnable
+      inviteSecret
+      avatarData {
+        url
+        downloadUrl
+        signedId
+      }
+      bio
+    }
+  }
+`
+
+export const queryPodMembers = gql`
+  query GetPodMembers {
+    podMembers {
+      webid
+      email
+      name
+      role
+      state
+      avatarData {
+        url
         downloadUrl
         signedId
       }

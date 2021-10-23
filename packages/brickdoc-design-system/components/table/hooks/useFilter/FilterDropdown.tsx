@@ -133,7 +133,6 @@ function FilterDropdown<RecordType>(props: FilterDropdownProps<RecordType>) {
     if (!filterMultiple) {
       onSelectKeys({ selectedKeys: checked && node.key ? [node.key] : [] })
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       onSelectKeys({ selectedKeys: keys as Key[] })
     }
   }

@@ -83,7 +83,7 @@
 
     &:hover {
       .@{picker-prefix-cls}-clear {
-        opacity: 1;
+        opacity: 100%;
       }
     }
 
@@ -110,6 +110,7 @@
   &-suffix {
     align-self: center;
     margin-left: (@padding-xs / 2);
+
     color: @disabled-color;
     line-height: 1;
     pointer-events: none;
@@ -128,7 +129,7 @@
     background: @component-background;
     transform: translateY(-50%);
     cursor: pointer;
-    opacity: 0;
+    opacity: 0%;
     transition: opacity @animation-duration-slow, color @animation-duration-slow;
 
     > * {
@@ -173,7 +174,7 @@
 
     &:hover {
       .@{picker-prefix-cls}-clear {
-        opacity: 1;
+        opacity: 100%;
       }
     }
 
@@ -183,14 +184,14 @@
       height: 2px;
       margin-left: @input-padding-horizontal-base;
       background: @primary-color;
-      opacity: 0;
+      opacity: 0%;
       transition: all @animation-duration-slow ease-out;
       pointer-events: none;
     }
 
     &.@{picker-prefix-cls}-focused {
       .@{picker-prefix-cls}-active-bar {
-        opacity: 1;
+        opacity: 100%;
       }
     }
 
@@ -225,6 +226,7 @@
     &-placement-bottomLeft {
       .@{picker-prefix-cls}-range-arrow {
         top: (@arrow-size / 2) - (@arrow-size / 3);
+
         display: block;
         transform: rotate(-45deg);
       }
@@ -233,6 +235,7 @@
     &-placement-topLeft {
       .@{picker-prefix-cls}-range-arrow {
         bottom: (@arrow-size / 2) - (@arrow-size / 3);
+
         display: block;
         transform: rotate(135deg);
       }

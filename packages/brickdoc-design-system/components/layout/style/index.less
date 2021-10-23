@@ -67,7 +67,7 @@
       // Hack for fixing margin collaspe bug
       // https://github.com/ant-design/ant-design/issues/7967
       // solution from https://stackoverflow.com/a/33132624/3040605
-      padding: 0.1px 0.5rem 0 0.5rem;
+      padding: 0.1px 0.5rem 0;
 
       .@{layout-menu-prefix-cls}.@{layout-menu-prefix-cls}-inline-collapsed {
         width: auto;
@@ -109,6 +109,7 @@
         height: @layout-zero-trigger-height;
         color: @layout-trigger-color;
         font-size: (@layout-zero-trigger-width / 2);
+
         line-height: @layout-zero-trigger-height;
         text-align: center;
         background: @layout-sider-background;
@@ -128,7 +129,7 @@
         }
 
         &:hover::after {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgb(255 255 255 / 10%);
         }
 
         &-right {

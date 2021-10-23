@@ -1,6 +1,6 @@
 {
   "name": "@brickdoc/eslint-plugin",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "ESLint configuration and custom rules for Brickdoc LTD",
   "repository": {
     "type": "git",
@@ -19,15 +19,15 @@
     "eslint-config-standard-with-typescript": "^21.0.1"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": ">= 4.33.0",
-    "@typescript-eslint/parser": ">= 4.33.0",
+    "@typescript-eslint/eslint-plugin": ">= 5.1.0",
+    "@typescript-eslint/parser": ">= 5.1.0",
     "eslint": ">= 7.32.0",
     "eslint-plugin-cypress": ">= 2.12.1",
     "eslint-plugin-import": ">= 2.25.2",
-    "eslint-plugin-jest": ">= 24.3.6",
+    "eslint-plugin-jest": ">= 25.2.2",
     "eslint-plugin-jsx-a11y": ">= 6.4.1",
     "eslint-plugin-node": ">= 11.1.0",
-    "eslint-plugin-promise": ">= 5.1.0",
+    "eslint-plugin-promise": ">= 5.1.1",
     "eslint-plugin-react": ">= 7.26.1",
     "eslint-plugin-react-hooks": ">= 4.2.0",
     "eslint-plugin-security-node": ">= 1.0.14",

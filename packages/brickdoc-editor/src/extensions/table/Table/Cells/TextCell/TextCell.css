@@ -23,18 +23,18 @@ textarea.table-block-text-input {
   border: 1px solid rgba(var(--border-color));
   border-top: none;
   border-bottom: none;
-  box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
+  box-shadow: 0 10px 15px rgb(var(--box-shadow-color) 0.1), 0 0 6px rgb(var(--box-shadow-color) 0.05);
   border-radius: 4px;
   padding: var(--padding);
   z-index: 2;
 
   &:focus {
-    box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
+    box-shadow: 0 10px 15px rgb(var(--box-shadow-color) 0.1), 0 0 6px rgb(var(--box-shadow-color) 0.05);
     border-color: rgba(var(--border-color));
   }
 
   &:hover {
-    box-shadow: 0 10px 15px rgba(var(--box-shadow-color), 0.1), 0 0 6px rgba(var(--box-shadow-color), 0.05);
+    box-shadow: 0 10px 15px rgb(var(--box-shadow-color) 0.1), 0 0 6px rgb(var(--box-shadow-color) 0.05);
     border-color: rgba(var(--border-color));
   }
 }

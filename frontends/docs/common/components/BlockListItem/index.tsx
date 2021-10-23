@@ -11,7 +11,7 @@ import {
 import { Avatar, Button, Modal } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { FilePages, Delete, Undo } from '@brickdoc/design-system/components/icon'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import styles from './BlockListItem.module.css'
@@ -28,7 +28,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
   // TODO support image type
   const avatar = block.meta.icon?.type === Blocktype.Emoji ? (block.meta.icon as BlockEmoji).emoji : <FilePages />
 
-  const history = useHistory()
+  const navigate = useNavigate()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
   const [hardDeleteConfirmLoading, setHardDeleteConfirmLoading] = React.useState<boolean>(false)
 
@@ -41,7 +41,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
 
   const onClickLink = (): void => {
     setVisible(false)
-    history.push(link)
+    navigate(link)
   }
 
   const onRestore = async (): Promise<void> => {

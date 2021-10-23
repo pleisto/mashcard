@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { useUserForgetPasswordMailSendMutation, UserForgetPasswordMailSendInput } from '@/BrickdocGraphQL'
 import { useBoolean } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { mutationResultHandler } from '@/utils'
+import { mutationResultHandler } from '@/common/utils'
 import { Form, Input, Button, message } from '@brickdoc/design-system'
 import { PasswordChangeEmailNotice } from './components/PasswordChangeEmailNotice'
 

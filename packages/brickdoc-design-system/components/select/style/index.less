@@ -58,7 +58,7 @@
 
     &::-webkit-search-cancel-button {
       display: none;
-      -webkit-appearance: none;
+      appearance: none;
     }
   }
 }
@@ -124,6 +124,7 @@
     width: @font-size-sm;
     height: @font-size-sm;
     margin-top: (-@font-size-sm / 2);
+
     color: @disabled-color;
     font-size: @font-size-sm;
     line-height: 1;
@@ -158,6 +159,7 @@
     width: @font-size-sm;
     height: @font-size-sm;
     margin-top: (-@font-size-sm / 2);
+
     color: @disabled-color;
     font-size: @font-size-sm;
     font-style: normal;
@@ -166,7 +168,7 @@
     text-transform: none;
     background: @select-clear-background;
     cursor: pointer;
-    opacity: 0;
+    opacity: 0%;
     transition: color 0.3s ease, opacity 0.15s ease;
     text-rendering: auto;
 
@@ -179,7 +181,7 @@
     }
 
     .@{select-prefix-cls}:hover & {
-      opacity: 1;
+      opacity: 100%;
     }
   }
 

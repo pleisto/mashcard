@@ -2,7 +2,7 @@ import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/BrickdocGraphQL'
 import { ImageIcon } from '@brickdoc/design-system/components/icon'
 import Email from '../assets/email-auth-icon.svg'
 import { sortBy } from 'lodash-es'
-import { BrickdocContext } from '@/BrickdocPWA'
+import { BrickdocContext } from '@/common/brickdocContext'
 import { useContext } from 'react'
 
 export interface authMethod {

@@ -1,13 +1,12 @@
-import React, { useContext } from 'react'
+import { FC, useContext } from 'react'
 import styles from './styles.module.less'
-import { BrickdocContext } from '@/BrickdocPWA'
+import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import { DefaultLocaleSelect } from '../components/DefaultLocaleSelect'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { renderRoutes, RouteConfigComponentProps } from 'react-router-config'
 import { Helmet } from 'react-helmet-async'
 
-export const PanelLayoutPage: React.FC<RouteConfigComponentProps> = ({ route }) => {
+export const PanelLayoutPage: FC = ({ children }) => {
   const context = useContext(BrickdocContext)
   const { t } = useAccountsI18n()
   // Logged-in users can only change the locale through the settings page
@@ -23,7 +22,7 @@ export const PanelLayoutPage: React.FC<RouteConfigComponentProps> = ({ route }) 
           </a>
           {localeSelect}
         </header>
-        <main className={styles.card}>{renderRoutes(route!.routes)}</main>
+        <main className={styles.card}>{children}</main>
         <footer />
       </div>
     </>

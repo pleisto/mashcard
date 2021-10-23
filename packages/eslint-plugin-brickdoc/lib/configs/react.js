@@ -49,7 +49,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*Page.tsx'],
+      files: ['*Page.tsx', 'Module.tsx'],
       rules: {
         // React.lazy
         'import/no-default-export': 'off'

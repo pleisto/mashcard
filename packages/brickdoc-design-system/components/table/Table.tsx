@@ -201,7 +201,6 @@ function InternalTable<RecordType extends object = any>(props: TableProps<Record
       // Trigger pagination events
       // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
       if (pagination && pagination.onChange) {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         pagination.onChange(1, changeInfo.pagination!.pageSize!)
       }
     }

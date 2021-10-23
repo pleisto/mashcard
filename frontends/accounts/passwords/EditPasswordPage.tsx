@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router'
+import { Navigate } from 'react-router'
 
 import { Helmet } from 'react-helmet-async'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
@@ -8,7 +8,7 @@ import { omit } from 'lodash-es'
 import { useBoolean } from 'ahooks'
 
 import { useUserPasswordResetMutation, UserPasswordResetInput, useUserSignOutMutation, UserSignOutInput } from '@/BrickdocGraphQL'
-import { mutationResultHandler } from '@/utils'
+import { mutationResultHandler } from '@/common/utils'
 
 export const EditPasswordPage: React.FC = () => {
   const { t } = useAccountsI18n()
@@ -31,7 +31,7 @@ export const EditPasswordPage: React.FC = () => {
   }
 
   if (didRedirectToSignInPage) {
-    return <Redirect to="/sign_in" />
+    return <Navigate to="/sign_in" />
   }
 
   const token = new URLSearchParams(window.location.search).get('reset_password_token')

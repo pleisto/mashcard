@@ -81,7 +81,7 @@
           bottom: @tree-node-padding;
           left: 0;
           border: 1px solid @primary-color;
-          opacity: 0;
+          opacity: 0%;
           animation: ant-tree-node-fx-do-not-use 0.3s;
           animation-play-state: running;
           animation-fill-mode: forwards;
@@ -138,11 +138,11 @@
     width: @tree-title-height;
     line-height: @tree-title-height;
     text-align: center;
-    opacity: 0.2;
+    opacity: 20%;
     transition: opacity @animation-duration-slow;
 
     .@{custom-tree-node-prefix-cls}:hover & {
-      opacity: 0.45;
+      opacity: 45%;
     }
   }
 
@@ -267,10 +267,10 @@
 
   @keyframes ant-tree-node-fx-do-not-use {
     0% {
-      opacity: 0;
+      opacity: 0%;
     }
     100% {
-      opacity: 1;
+      opacity: 100%;
     }
   }
 
@@ -286,6 +286,7 @@
           position: absolute;
           top: 0;
           right: (@tree-title-height / 2);
+
           bottom: -@tree-node-padding;
           border-right: 1px solid @border-color-base;
           content: '';

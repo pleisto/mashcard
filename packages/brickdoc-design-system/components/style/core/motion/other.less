@@ -30,7 +30,7 @@ html {
   border-radius: inherit;
   box-shadow: 0 0 0 0 @primary-color;
   box-shadow: 0 0 0 0 var(--antd-wave-shadow-color);
-  opacity: 0.2;
+  opacity: 20%;
   animation: fadeEffect 2s @ease-out-circ, waveEffect 0.4s @ease-out-circ;
   animation-fill-mode: forwards;
   content: '';
@@ -46,13 +46,12 @@ html {
 
 @keyframes fadeEffect {
   100% {
-    opacity: 0;
+    opacity: 0%;
   }
 }
 
 @keyframes i-icon-spin {
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }

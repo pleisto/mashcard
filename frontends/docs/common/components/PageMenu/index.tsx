@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Dropdown, Icon, Input, Menu, MenuProps, message, Popover, Tooltip } from '@brickdoc/design-system'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
   useBlockSoftDeleteMutation,
@@ -28,7 +28,7 @@ interface PageMenuProps {
 }
 
 export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }, setPopoverKey, pageId, pin, title, titleText }) => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
   const [copied, setCopied] = React.useState<boolean>(false)
@@ -66,7 +66,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
     const input = { parentId: pageId, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      history.push(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
+      navigate(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
     }
   }
 
@@ -212,7 +212,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
       content={renamePopoverContent}
       title={null}
       placement="bottom"
-      trigger="click"
+      trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
     >

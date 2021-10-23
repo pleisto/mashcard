@@ -61,7 +61,6 @@ const defaultSearchRender: ShowSearchType['render'] = (inputValue, path, prefixC
       optionList.push(' / ')
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     let label = node[fieldNames.label!]
     const type = typeof label
     if (type === 'string' || type === 'number') {

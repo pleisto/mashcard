@@ -45,3 +45,5 @@ export function array2Tree<TItem extends Item>(items: TItem[], config: Partial<C
 export function millisecondsToSeconds(milliseconds: number): number {
   return Math.round(milliseconds / 1000)
 }
+
+export * from './paths'

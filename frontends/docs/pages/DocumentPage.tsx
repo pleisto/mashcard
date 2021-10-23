@@ -16,7 +16,7 @@ import { useDatabaseRows } from './hooks/useDatabaseRows'
 import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 import { editorVar } from '../reactiveVars'
 interface DocumentPageProps {
@@ -147,7 +147,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     if (docMeta.isRedirect) {
       return <Alert message="TODO Page not found" type="error" />
     } else {
-      return <Redirect to="/" />
+      return <Navigate to="/" />
     }
   }
 

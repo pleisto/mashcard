@@ -4,7 +4,7 @@ import { PinMenu } from '@/docs/common/components/PinMenu'
 import { useReactiveVar } from '@apollo/client'
 import { Button } from '@brickdoc/design-system'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { MoreMenu } from '../../../common/components/MoreMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
@@ -19,7 +19,7 @@ export interface DocumentTopBarProps {
 
 export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
-  const history = useHistory()
+  const navigate = useNavigate()
   const isSaving = useReactiveVar(isSavingVar)
 
   if (!docMeta.viewable) {
@@ -54,7 +54,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     )
 
   const handleLogin = (): void => {
-    history.push('/')
+    navigate('/')
   }
 
   const loginMenu =

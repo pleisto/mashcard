@@ -4,7 +4,7 @@ import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { AutoComplete, Button, Input, Modal, SelectProps } from '@brickdoc/design-system'
 import { Search as SearchOutlined } from '@brickdoc/design-system/components/icon'
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { useBlockSearch } from '../SearchResult'
 import styles from './styles.module.less'
@@ -24,7 +24,7 @@ export const SearchModal: React.FC<DocMetaProps> = ({ docMeta }) => {
   }
 
   const blockSearch = useBlockSearch()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const handleSearch = async (input: string): Promise<void> => {
     const result = await blockSearch(docMeta.webid, input)
@@ -43,7 +43,7 @@ export const SearchModal: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   const onSelect = (value: string): void => {
     setSearchModalVisible(false)
-    history.push(`/${docMeta.webid}/${BlockIdKind.P}/${value.split('#')[0]}`)
+    navigate(`/${docMeta.webid}/${BlockIdKind.P}/${value.split('#')[0]}`)
   }
 
   return (

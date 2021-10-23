@@ -57,7 +57,7 @@
           }
 
           & .table-toolbar-actions {
-            opacity: 0;
+            opacity: 0%;
             transition: opacity 300ms ease-in-out;
             display: flex;
             flex-direction: row;
@@ -82,12 +82,12 @@
             font-size: 12px;
             padding: 3px 0 3px 8px;
             border-radius: 4px;
-            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.043);
+            box-shadow: 0 2px 0 rgb(0 0 0 / 4.3%);
 
             & .brk-icon {
               margin-left: 10px;
               width: 22px;
-              border-left: 1px solid rgba(0, 0, 0, 0.35);
+              border-left: 1px solid rgb(0 0 0 / 35%);
               height: 22px;
               display: flex;
               align-items: center;
@@ -101,7 +101,7 @@
       &:hover {
         & .table-block-toolbar {
           & .table-toolbar-actions {
-            opacity: 1;
+            opacity: 100%;
           }
         }
       }
@@ -132,19 +132,19 @@
             transition: all 150ms ease-in;
 
             &.drag-hover-upwards {
-              border-top: 4px solid rgba(var(--active-color), 0.18);
+              border-top: 4px solid rgb(var(--active-color) 0.18);
               transition: unset;
             }
 
             &.drag-hover-downwards {
-              border-bottom: 4px solid rgba(var(--active-color), 0.18);
+              border-bottom: 4px solid rgb(var(--active-color) 0.18);
               transition: unset;
             }
 
             &.active {
-              border-top: 1px solid rgba(var(--active-color), 1);
-              background: rgba(var(--active-color), 0.18);
-              border-bottom: 1px solid rgba(var(--active-color), 1);
+              border-top: 1px solid rgb(var(--active-color) 1);
+              background: rgb(var(--active-color) 0.18);
+              border-bottom: 1px solid rgb(var(--active-color) 1);
             }
 
             & .table-block-row-actions {
@@ -156,7 +156,7 @@
               left: 0;
               top: 0;
               bottom: 0;
-              opacity: 0;
+              opacity: 0%;
               pointer-events: none;
               transform: translate(-100%);
               transition: opacity 100ms ease-in;
@@ -164,7 +164,7 @@
 
             &:hover {
               & .table-block-row-actions {
-                opacity: 1;
+                opacity: 100%;
                 pointer-events: unset;
               }
             }
@@ -235,8 +235,8 @@
             }
 
             &.active {
-              border: 1px solid rgba(var(--active-color), 0.3);
-              background: rgba(var(--active-color), 0.1);
+              border: 1px solid rgb(var(--active-color) 0.3);
+              background: rgb(var(--active-color) 0.1);
             }
           }
 

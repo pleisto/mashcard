@@ -108,7 +108,7 @@ class BrickdocConfig < ApplicationRecord
   field :unsplash_api_access_key, default: ENV['UNSPLASH_API_ACCESS_KEY']
   field :unsplash_api_secret, default: ENV['UNSPLASH_API_SECRET']
 
-  field :sentry_dsn, default: ENV.fetch('SENTRY_DSN')
+  field :sentry_dsn, default: ENV['SENTRY_DSN']
 
   field :lockbox_test, type: :encrypted
 end

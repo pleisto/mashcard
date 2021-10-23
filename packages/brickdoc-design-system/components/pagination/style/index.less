@@ -100,7 +100,7 @@
         color: @primary-color;
         font-size: @font-size-sm;
         letter-spacing: -1px;
-        opacity: 0;
+        opacity: 0%;
         transition: all 0.2s;
 
         &-svg {
@@ -125,7 +125,7 @@
         letter-spacing: 2px;
         text-align: center;
         text-indent: 0.13em;
-        opacity: 1;
+        opacity: 100%;
         transition: all 0.2s;
       }
     }
@@ -133,10 +133,10 @@
     &:focus-visible,
     &:hover {
       .@{pagination-prefix-cls}-item-link-icon {
-        opacity: 1;
+        opacity: 100%;
       }
       .@{pagination-prefix-cls}-item-ellipsis {
-        opacity: 0;
+        opacity: 0%;
       }
     }
   }
@@ -400,11 +400,11 @@
     }
 
     .@{pagination-prefix-cls}-item-link-icon {
-      opacity: 0;
+      opacity: 0%;
     }
 
     .@{pagination-prefix-cls}-item-ellipsis {
-      opacity: 1;
+      opacity: 100%;
     }
 
     .@{pagination-prefix-cls}-simple-pager {

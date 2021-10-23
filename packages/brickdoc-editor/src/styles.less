@@ -20,7 +20,7 @@ html * {
       color: unset;
       // selection background color overrides line-through style
       // we need set alpha to make line-through style visible
-      background: rgba(45, 170, 219, 0.3);
+      background: rgb(45 170 219 / 30%);
     }
 
     &:focus-visible {
@@ -51,7 +51,7 @@ html * {
     }
 
     ol {
-      padding: 0 0 0 0;
+      padding: 0;
       counter-reset: item;
       list-style-type: none;
       li {
@@ -143,7 +143,7 @@ html * {
     }
 
     code {
-      background-color: rgba(#616161, 0.1);
+      background-color: rgb(#616161 0.1);
       color: #616161;
     }
 
@@ -175,12 +175,12 @@ html * {
 
     blockquote {
       padding-left: 1rem;
-      border-left: 2px solid rgba(#0d0d0d, 0.1);
+      border-left: 2px solid rgb(#0d0d0d 0.1);
     }
 
     hr {
       border: none;
-      border-top: 2px solid rgba(#0d0d0d, 0.1);
+      border-top: 2px solid rgb(#0d0d0d 0.1);
       margin: 2rem 0;
     }
 

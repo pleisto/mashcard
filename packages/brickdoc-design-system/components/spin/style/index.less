@@ -12,13 +12,13 @@
   color: @primary-color;
   text-align: center;
   vertical-align: middle;
-  opacity: 0;
+  opacity: 0%;
   transition: transform 0.3s @ease-in-out-circ;
 
   &-spinning {
     position: static;
     display: inline-block;
-    opacity: 1;
+    opacity: 100%;
   }
 
   &-nested-loading {
@@ -90,7 +90,7 @@
       width: 100%;
       height: 100%;
       background: @component-background;
-      opacity: 0;
+      opacity: 0%;
       transition: all 0.3s;
       content: '';
       pointer-events: none;
@@ -100,12 +100,12 @@
   &-blur {
     clear: both;
     overflow: hidden;
-    opacity: 0.5;
+    opacity: 50%;
     user-select: none;
     pointer-events: none;
 
     &::after {
-      opacity: 0.4;
+      opacity: 40%;
       pointer-events: auto;
     }
   }
@@ -135,7 +135,7 @@
       border-radius: 100%;
       transform: scale(0.75);
       transform-origin: 50% 50%;
-      opacity: 0.3;
+      opacity: 30%;
       animation: antSpinMove 1s infinite linear alternate;
 
       &:nth-child(1) {
@@ -200,13 +200,13 @@
   /* IE10+ */
   .@{spin-prefix-cls}-blur {
     background: @component-background;
-    opacity: 0.5;
+    opacity: 50%;
   }
 }
 
 @keyframes antSpinMove {
   to {
-    opacity: 1;
+    opacity: 100%;
   }
 }
 

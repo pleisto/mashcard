@@ -47,14 +47,14 @@
     "react-dnd": "^14.0.4",
     "react-dnd-html5-backend": "^14.0.2",
     "react-medium-image-zoom": "^4.3.5",
-    "react-pdf": "^5.4.0",
+    "react-pdf": "^5.4.1",
     "react-table": "^7.7.0",
     "tippy.js": "^6.3.2"
   },
   "devDependencies": {
-    "@types/react-pdf": "^5.0.7",
-    "@types/react-table": "^7.7.6",
-    "i18next": "^21.3.0",
+    "@types/react-pdf": "^5.0.8",
+    "@types/react-table": "^7.7.7",
+    "i18next": "^21.3.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.4.4"

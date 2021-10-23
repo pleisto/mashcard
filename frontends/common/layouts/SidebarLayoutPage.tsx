@@ -5,8 +5,9 @@ import { useDocsI18n } from '@/docs/common/hooks'
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 import styles from './styles.module.less'
 import { useReactiveVar } from '@apollo/client'
+import { Outlet } from 'react-router-dom'
 
-export const SidebarLayoutPage: React.FC = ({ children }) => {
+export const SidebarLayoutPage: React.FC = () => {
   const { t } = useDocsI18n()
   const { Sider, Content, Header } = Layout
   const headerBar = useReactiveVar(headerBarVar)
@@ -20,7 +21,9 @@ export const SidebarLayoutPage: React.FC = ({ children }) => {
           <Sider className={styles.sider}>{siderBar}</Sider>
           <Layout className={styles.main}>
             {headerBar !== undefined && <Header>{headerBar}</Header>}
-            <Content className={styles.content}>{children}</Content>
+            <Content className={styles.content}>
+              <Outlet />
+            </Content>
           </Layout>
           <aside className={styles.pluginBar}>&nbsp;&nbsp;</aside>
         </Layout>

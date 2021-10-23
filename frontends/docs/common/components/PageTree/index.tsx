@@ -10,7 +10,7 @@ import {
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
 import { Divider, Tree, TreeProps } from '@brickdoc/design-system'
-import { array2Tree } from '@/utils'
+import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '@/docs/pages/hooks/useSyncProvider'
 import { queryPageBlocks } from '../../graphql'

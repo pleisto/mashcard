@@ -82,6 +82,7 @@
       left: 0;
       background-color: @switch-bg;
       border-radius: (@switch-pin-size / 2);
+
       box-shadow: 0 2px 4px 0 @switch-shadow-color;
       transition: all @switch-duration ease-in-out;
       content: '';
@@ -110,7 +111,8 @@
   &-loading-icon.@{iconfont-css-prefix} {
     position: relative;
     top: ((@switch-pin-size - @font-size-base) / 2);
-    color: rgba(0, 0, 0, 0.65);
+
+    color: rgb(0 0 0 / 65%);
     vertical-align: top;
   }
 
@@ -136,6 +138,7 @@
 
     .@{switch-prefix-cls}-loading-icon {
       top: ((@switch-sm-pin-size - 9px) / 2);
+
       font-size: 9px;
     }
 

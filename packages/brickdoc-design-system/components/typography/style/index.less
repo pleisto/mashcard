@@ -132,8 +132,8 @@
     margin: 0 0.2em;
     padding: 0.2em 0.4em 0.1em;
     font-size: 85%;
-    background: rgba(150, 150, 150, 0.1);
-    border: 1px solid rgba(100, 100, 100, 0.2);
+    background: rgb(150 150 150 / 10%);
+    border: 1px solid rgb(100 100 100 / 20%);
     border-radius: 3px;
   }
 
@@ -141,8 +141,8 @@
     margin: 0 0.2em;
     padding: 0.15em 0.4em 0.1em;
     font-size: 90%;
-    background: rgba(150, 150, 150, 0.06);
-    border: 1px solid rgba(100, 100, 100, 0.2);
+    background: rgb(150 150 150 / 6%);
+    border: 1px solid rgb(100 100 100 / 20%);
     border-bottom-width: 2px;
     border-radius: 3px;
   }
@@ -207,7 +207,7 @@
   // list
   ul,
   ol {
-    margin: 0 0 1em 0;
+    margin: 0 0 1em;
     padding: 0;
 
     li {
@@ -238,8 +238,8 @@
     padding: 0.4em 0.6em;
     white-space: pre-wrap;
     word-wrap: break-word;
-    background: rgba(150, 150, 150, 0.1);
-    border: 1px solid rgba(100, 100, 100, 0.2);
+    background: rgb(150 150 150 / 10%);
+    border: 1px solid rgb(100 100 100 / 20%);
     border-radius: 3px;
 
     // Compatible for marked
@@ -256,8 +256,8 @@
 
   blockquote {
     padding: 0 0 0 0.6em;
-    border-left: 4px solid rgba(100, 100, 100, 0.2);
-    opacity: 0.85;
+    border-left: 4px solid rgb(100 100 100 / 20%);
+    opacity: 85%;
   }
 
   // ============ Ellipsis ============
@@ -277,7 +277,7 @@
   }
 
   &-ellipsis-multiple-line {
-    display: -webkit-box;
+    display: box;
     overflow: hidden;
     -webkit-line-clamp: 3;
 

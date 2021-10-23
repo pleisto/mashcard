@@ -26,7 +26,7 @@
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
     "lodash-es": "^4.17.21",
-    "rc-cascader": "^2.1.1",
+    "rc-cascader": "^2.1.2",
     "rc-checkbox": "^2.3.2",
     "rc-dialog": "^8.6.0",
     "rc-drawer": "^4.4.2",
@@ -42,8 +42,8 @@
     "rc-resize-observer": "^1.0.1",
     "rc-select": "^13.1.0-alpha.0",
     "rc-switch": "^3.2.2",
-    "rc-table": "^7.18.1",
-    "rc-tabs": "^11.10.1",
+    "rc-table": "^7.19.0",
+    "rc-tabs": "^11.10.2",
     "rc-textarea": "^0.3.5",
     "rc-tooltip": "^5.1.1",
     "rc-tree": "^5.2.1",
@@ -57,23 +57,23 @@
     "@mdx-js/react": "^1.6.22",
     "@types/lodash-es": "^4.17.5",
     "dayjs": "^1.10.7",
-    "i18next": "^21.3.0",
+    "i18next": "^21.3.3",
     "less": "^4.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.12.0",
     "typescript": "^4.4.4",
-    "vite": "^2.6.7",
+    "vite": "^2.6.10",
     "vite-pages-theme-doc": "^3.1.0",
-    "vite-plugin-mdx": "^3.5.8",
+    "vite-plugin-mdx": "^3.5.9",
     "vite-plugin-react": "^4.0.1",
     "vite-plugin-react-pages": "^3.1.1"
   },
   "peerDependencies": {
     "dayjs": "^1.10.7",
-    "i18next": "^21.3.0",
+    "i18next": "^21.3.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-i18next": "^11.11.1"
+    "react-i18next": "^11.12.0"
   }
 }

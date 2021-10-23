@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { BrickdocContext } from '@/BrickdocPWA'
+import { BrickdocContext } from '@/common/brickdocContext'
 
 interface FilledInitialValues {
   webid?: string

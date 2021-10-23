@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Button, Input, Checkbox, Divider, message } from '@brickdoc/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
-import { mutationResultHandler } from '@/utils'
+import { mutationResultHandler } from '@/common/utils'
 import { Link } from 'react-router-dom'
 import styles from './index.module.less'
 
