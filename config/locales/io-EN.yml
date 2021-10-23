@@ -4,7 +4,7 @@ io-EN:
     dir: crwdns2033:0crwdne2033:0
     noscript: crwdns2035:0%{url}crwdne2035:0
     noscript_url: crwdns2037:0crwdne2037:0
-  'Your browser is out of date': crwdns2039:0crwdne2039:0
+  'Your browser is out of date': crwdns3353:0crwdne3353:0
   download_latest_browser_html: crwdns2041:0%{edge}crwdnd2041:0%{chrome}crwdnd2041:0%{firefox}crwdne2041:0
   edge_link: crwdns2043:0crwdne2043:0
   chrome_link: crwdns2045:0crwdne2045:0
@@ -430,7 +430,7 @@ io-EN:
       signed_up: crwdns2631:0crwdne2631:0
       signed_up_but_inactive: crwdns2633:0crwdne2633:0
       signed_up_but_locked: crwdns2635:0crwdne2635:0
-      signed_up_but_unconfirmed: crwdns2637:0crwdne2637:0
+      signed_up_but_unconfirmed: crwdns3355:0crwdne3355:0
       update_needs_confirmation: crwdns2639:0crwdne2639:0
       updated: crwdns2641:0crwdne2641:0
     unlock_instructions:
@@ -590,18 +590,18 @@ io-EN:
     provider:
       email_password: crwdns2839:0crwdne2839:0
     sessions:
-      sign_in: crwdns2841:0crwdne2841:0
-      sign_up: crwdns2843:0crwdne2843:0
+      sign_in: crwdns3357:0crwdne3357:0
+      sign_up: crwdns3359:0crwdne3359:0
       reset_password: crwdns2845:0crwdne2845:0
-      sign_in_to_brickdoc: crwdns2847:0crwdne2847:0
+      sign_in_to_brickdoc: crwdns3361:0crwdne3361:0
       more_login_options: crwdns2849:0crwdne2849:0
-      login_via: 'crwdns2851:0%{provider}crwdne2851:0'
+      login_via: 'crwdns3363:0%{provider}crwdne3363:0'
       email: crwdns2853:0crwdne2853:0
       password: crwdns2855:0crwdne2855:0
       remember_me: crwdns2857:0crwdne2857:0
       sign_up_with_email: crwdns2859:0crwdne2859:0
-      resend_confirmed_email: crwdns2861:0crwdne2861:0
-      confirmation_email_required_heading: crwdns2863:0crwdne2863:0
+      resend_confirmed_email: crwdns3365:0crwdne3365:0
+      confirmation_email_required_heading: crwdns3367:0crwdne3367:0
       forget_password: crwdns2865:0crwdne2865:0
       confirm_password: crwdns2867:0crwdne2867:0
       sign_up_via: 'crwdns2869:0%{provider}crwdne2869:0'
@@ -678,9 +678,9 @@ io-EN:
       copy_hint: crwdns3247:0crwdne3247:0
       tooltip: crwdns3301:0crwdne3301:0
     invite:
-      learn: crwdns2955:0crwdne2955:0
-      type_hint: crwdns2957:0crwdne2957:0
-      search: crwdns2959:0crwdne2959:0
+      learn: crwdns3369:0crwdne3369:0
+      type_hint: crwdns3371:0crwdne3371:0
+      search: crwdns3373:0crwdne3373:0
       button: crwdns2961:0crwdne2961:0
       confirm_button: crwdns3319:0crwdne3319:0
       edit_message: crwdns2963:0crwdne2963:0
@@ -734,7 +734,7 @@ io-EN:
           button_hint: crwdns3343:0crwdne3343:0
           type_label: crwdns3345:0crwdne3345:0
         upload:
-          button_hint: crwdns3347:0crwdne3347:0
+          button_hint: 'crwdns3375:0crwdne3375:0'
           button_text: crwdns3349:0crwdne3349:0
           type_label: crwdns3351:0crwdne3351:0
   editor:
@@ -744,13 +744,13 @@ io-EN:
       items:
         h1:
           title: crwdns3019:0crwdne3019:0
-          desc: crwdns3021:0crwdne3021:0
+          desc: crwdns3377:0crwdne3377:0
         h2:
           title: crwdns3023:0crwdne3023:0
-          desc: crwdns3025:0crwdne3025:0
+          desc: crwdns3379:0crwdne3379:0
         h3:
           title: crwdns3027:0crwdne3027:0
-          desc: crwdns3029:0crwdne3029:0
+          desc: crwdns3381:0crwdne3381:0
         h4:
           title: crwdns3031:0crwdne3031:0
           desc: crwdns3033:0crwdne3033:0
@@ -765,16 +765,16 @@ io-EN:
           desc: crwdns3045:0crwdne3045:0
         pdf:
           title: crwdns3047:0crwdne3047:0
-          desc: crwdns3049:0crwdne3049:0
+          desc: crwdns3383:0crwdne3383:0
         embed:
           title: crwdns3051:0crwdne3051:0
           desc: crwdns3053:0crwdne3053:0
         image:
           title: crwdns3055:0crwdne3055:0
-          desc: crwdns3057:0crwdne3057:0
+          desc: crwdns3385:0crwdne3385:0
         table:
           title: crwdns3059:0crwdne3059:0
-          desc: crwdns3061:0crwdne3061:0
+          desc: crwdns3387:0crwdne3387:0
     bubblemenu:
       items:
         bold:
