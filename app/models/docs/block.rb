@@ -245,6 +245,7 @@ class Docs::Block < ApplicationRecord
   end
 
   before_save do
+    raise("parent_id_cause_endless_loop") if parent_id == id
     self.collaborators = collaborators.uniq
     if important_field_changed?
       self.history_version = realtime_history_version_increment

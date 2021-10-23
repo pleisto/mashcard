@@ -46,6 +46,8 @@ module Docs
       now = Time.current
 
       blocks.each do |args|
+        raise BrickGraphQL::Errors::ArgumentError, :parent_id_cause_endless_loop if args.id == args.parent_id
+
         block = preloads[args.id]
 
         exist = block.present?
