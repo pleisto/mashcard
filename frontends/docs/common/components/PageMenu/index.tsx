@@ -141,6 +141,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
       size="small"
       bordered={false}
       onPressEnter={onRename}
+      onBlur={onRename}
       ref={inputRef}
       defaultValue={titleText}
     />
@@ -161,6 +162,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
         case 'rename':
           // TODO focus and select all
           // inputRef.current.focus({ preventScroll: true })
+          setDropdownVisible(false)
+          setPopoverVisible(true)
           break
         case 'pin':
           void doPin()
@@ -195,14 +198,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
         {t('duplicate.button')}
       </Menu.Item>
       <Menu.Item key="rename" icon={<Icon.Edit />} disabled={renameBlockLoading}>
-        <Popover
-          content={renamePopoverContent}
-          title={null}
-          trigger="click"
-          visible={popoverVisible}
-          onVisibleChange={onRenamePopoverVisibleChange}>
-          {t('blocks.rename')}
-        </Popover>
+        {t('blocks.rename')}
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item danger key="delete" icon={<Icon.Delete />} disabled={blockDeleteLoading}>
@@ -212,9 +208,18 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
   )
 
   const linkData = (
-    <Link to={linkPath} className={styles.title}>
-      {title}
-    </Link>
+    <Popover
+      content={renamePopoverContent}
+      title={null}
+      placement="bottom"
+      trigger="click"
+      visible={popoverVisible}
+      onVisibleChange={onRenamePopoverVisibleChange}
+    >
+      <Link to={linkPath} className={styles.title}>
+        {title}
+      </Link>
+    </Popover>
   )
 
   return (
