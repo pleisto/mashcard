@@ -33,7 +33,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
   const [copied, setCopied] = React.useState<boolean>(false)
 
-  const [blockSoftDelete, { client: deleteClient, loading: blockDeleteLoading }] = useBlockSoftDeleteMutation({
+  const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDeleteMutation({
     refetchQueries: [queryPageBlocks]
   })
 
@@ -56,9 +56,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
   const deletePage = async (): Promise<void> => {
     const input = { id: pageId }
     await blockSoftDelete({ variables: { input } })
-    if (pageId === id) {
-      await deleteClient.refetchQueries({ include: [queryBlockInfo, queryChildrenBlocks] })
-    }
+    // if (pageId === id) {
+    //   await deleteClient.refetchQueries({ include: [queryBlockInfo, queryChildrenBlocks] })
+    // }
   }
 
   const onClickPlus = async (event: { stopPropagation: () => any }): Promise<void> => {
@@ -214,8 +214,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
       placement="bottom"
       trigger="customEvent"
       visible={popoverVisible}
-      onVisibleChange={onRenamePopoverVisibleChange}
-    >
+      onVisibleChange={onRenamePopoverVisibleChange}>
       <Link to={linkPath} className={styles.title}>
         {title}
       </Link>
