@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 module ApplicationHelper
-  def cypree_running?
-    ENV['CYPRESS'] == '1'
-  end
-
   def global_context
     {
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
-      lastWebid: cypree_running? ? nil : Current.user&.last_webid,
-      lastBlockIds: cypree_running? ? nil : Current.user&.last_block_ids,
+      lastWebid: Brickdoc::Runtime.cypress? ? nil : Current.user&.last_webid,
+      lastBlockIds: Brickdoc::Runtime.cypress? ? nil : Current.user&.last_block_ids,
       currentPod: Current.pod,
       env: Rails.env,
       version: Brickdoc.full_version,

@@ -18,6 +18,10 @@ module Brickdoc
         ENV['KUBERNETES_SERVICE_HOST'].present?
       end
 
+      def cypress?
+        ENV['CYPRESS'].present? && ENV['CYPRESS'] != 'false'
+      end
+
       def host
         host = Rails.application.default_url_options.fetch(:host)
         port = Rails.application.default_url_options.fetch(:port)
