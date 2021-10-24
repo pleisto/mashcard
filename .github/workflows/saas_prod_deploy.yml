@@ -84,17 +84,19 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Deployment to App Engine
-        uses: brickdoc/app-engine@v1.beta3
+        uses: brickdoc/app-engine@v1.2
         with:
           name: brickdoc-saas-prod
           namespace: saas
           image: ${{ env.image }}:${{ steps.get_version.outputs.VERSION }}
           host: ${{ env.domain }}
           chart: ${{ github.workspace }}/templates/helm-charts/brickdoc
-          extraArgs: '--timeout 10m --cleanup-on-fail'
+          extraArgs: '--timeout 15m --cleanup-on-fail'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_PROD_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_PROD_SECRET }}
+          AWS_DEFAULT_REGION: us-west-2
+          AWS_EKS_CLUSTER: prod-kube
           APP_SECRET_SECRET_KEY_BASE: ${{ secrets.SAAS_PROD_SECRET_KEY_BASE }}
           APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.SAAS_PROD_POSTGRE_URL }}
           APP_SECRET_REDIS_URL: ${{ secrets.SAAS_PROD_REDIS_URL }}

@@ -59,7 +59,7 @@ Rails.application.reloader.to_prepare do
     config.action_mailer.smtp_settings = {
       address: smtp_settings.hostname,
       port: smtp_settings.port,
-      user_name: smtp_settings.user,
+      user_name: URI.decode_www_form_component(smtp_settings.user),
       password: smtp_settings.password,
       enable_starttls_auto: true
     }
