@@ -573,8 +573,8 @@ ja-JP:
     provider:
       email_password: Email & Password
     sessions:
-      sign_in: Continue with email
-      sign_up: Sign Up for Brickdoc
+      sign_in: Sign In
+      sign_up: Sign Up
       reset_password: Reset Password
       sign_in_to_brickdoc: Sign into Brickdoc
       more_login_options: More Login Options

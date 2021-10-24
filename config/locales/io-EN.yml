@@ -590,8 +590,8 @@ io-EN:
     provider:
       email_password: crwdns2839:0crwdne2839:0
     sessions:
-      sign_in: crwdns3357:0crwdne3357:0
-      sign_up: crwdns3359:0crwdne3359:0
+      sign_in: crwdns3389:0crwdne3389:0
+      sign_up: crwdns3391:0crwdne3391:0
       reset_password: crwdns2845:0crwdne2845:0
       sign_in_to_brickdoc: crwdns3361:0crwdne3361:0
       more_login_options: crwdns2849:0crwdne2849:0
