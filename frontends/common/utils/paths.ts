@@ -1,4 +1,4 @@
-import { BlockIdKind } from '@/BrickdocGraphQL'
+import { BlockIdKind } from '../../BrickdocGraphQL'
 import { BrickdocContext } from '../brickdocContext'
 
 export const rootPath = (context: BrickdocContext): string =>

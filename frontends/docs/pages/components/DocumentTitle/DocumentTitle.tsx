@@ -94,12 +94,11 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
                 <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
-            <Input.TextArea
+            <Input
               className={styles.titleInput}
               value={title}
               onChange={e => onTitleChange(e.target.value)}
               placeholder={t('title.untitled')}
-              autoSize={true}
               disabled={!editable}
             />
           </div>
