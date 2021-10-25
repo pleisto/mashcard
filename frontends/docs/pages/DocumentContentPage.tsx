@@ -171,7 +171,7 @@ export const DocumentContentPage: React.FC = () => {
   return (
     <>
       <Helmet title={editor?.state.doc.attrs.title ?? docMeta.title} />
-      <DocumentPage docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous }} />
+      <DocumentPage docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }} />
     </>
   )
 }

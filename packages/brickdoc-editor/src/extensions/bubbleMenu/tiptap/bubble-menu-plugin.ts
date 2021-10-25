@@ -131,6 +131,10 @@ export class BubbleMenuView {
   }
 
   show() {
+    if (!this.editor.isEditable) {
+      return
+    }
+
     this.tippy.show()
   }
 

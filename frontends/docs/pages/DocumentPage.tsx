@@ -76,7 +76,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
 
   // if there is no doc id, document will not have deleted status
   const [documentEditable, setDocumentEditable] = React.useState(!docMeta.id)
-  const [deleted, setDeleted] = React.useState(false)
 
   const editor = useEditor({
     onSave: onCommit,
@@ -98,11 +97,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     const block = data?.childrenBlocks?.find(block => block.id === docMeta.id)
 
     if (block) {
-      const deleted = !!block.deletedAt
-      setDeleted(deleted)
-
       if (editor) {
-        const nextEditable = docMeta.editable && !deleted
+        const nextEditable = docMeta.editable
         if (editor.options.editable !== nextEditable) {
           editor.options.editable = nextEditable
           editor.view.update(editor.view.props)
@@ -170,7 +166,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
 
   const PageElement = (
     <>
-      {docMeta.id && deleted && <TrashPrompt docMeta={docMeta as NonNullDocMeta} />}
+      {docMeta.id && docMeta.isDeleted && <TrashPrompt docMeta={docMeta as NonNullDocMeta} />}
       <div className={styles.page}>
         {DocumentTitleElement}
         <div className={styles.pageWrap}>

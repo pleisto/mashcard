@@ -1,6 +1,6 @@
 import { useBlockPinOrUnpinMutation } from '@/BrickdocGraphQL'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { queryBlockInfo } from '@/docs/pages/graphql'
+import { useApolloClient } from '@apollo/client'
 import { Button, Tooltip, Icon } from '@brickdoc/design-system'
 import React from 'react'
 import { queryBlockPins } from '../../graphql'
@@ -11,14 +11,23 @@ interface PinMenuProps {
 }
 
 export const PinMenu: React.FC<PinMenuProps> = ({ docMeta, className }) => {
+  const client = useApolloClient()
   const [blockPinOrUnpin, { loading: blockPinOrUnpinLoading }] = useBlockPinOrUnpinMutation({
-    refetchQueries: [queryBlockInfo, queryBlockPins]
+    refetchQueries: [queryBlockPins]
   })
   const { t } = useDocsI18n()
 
   const onClick = async (): Promise<void> => {
     const input = { blockId: docMeta.id, pin: !docMeta.pin }
     await blockPinOrUnpin({ variables: { input } })
+    client.cache.modify({
+      id: client.cache.identify({ __typename: 'BlockInfo', id: docMeta.id }),
+      fields: {
+        pin() {
+          return !docMeta.pin
+        }
+      }
+    })
   }
 
   return (

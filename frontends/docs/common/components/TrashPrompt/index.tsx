@@ -3,9 +3,9 @@ import { Alert, Button, Modal, Space } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { BlockHardDeleteInput, BlockRestoreInput, useBlockHardDeleteMutation, useBlockRestoreMutation } from '@/BrickdocGraphQL'
 import { useNavigate } from 'react-router-dom'
-import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
 import { queryPageBlocks } from '../../graphql'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import { useApolloClient } from '@apollo/client'
 
 interface TrashPromptProps {
   docMeta: NonNullDocMeta
@@ -13,12 +13,13 @@ interface TrashPromptProps {
 
 export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid } }) => {
   const { t } = useDocsI18n()
+  const client = useApolloClient()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
   const [hardDeleteConfirmLoading, setHardDeleteConfirmLoading] = React.useState<boolean>(false)
   const [restoreButtonLoading, setRestoreButtonLoading] = React.useState<boolean>(false)
 
   const [blockHardDelete] = useBlockHardDeleteMutation()
-  const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryPageBlocks, queryBlockInfo] })
+  const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryPageBlocks] })
 
   const navigate = useNavigate()
 
@@ -30,6 +31,14 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
     setRestoreButtonLoading(true)
     const input: BlockRestoreInput = { id }
     await blockRestore({ variables: { input } })
+    client.cache.modify({
+      id: client.cache.identify({ __typename: 'BlockInfo', id }),
+      fields: {
+        isDeleted() {
+          return false
+        }
+      }
+    })
     setRestoreButtonLoading(false)
   }
 

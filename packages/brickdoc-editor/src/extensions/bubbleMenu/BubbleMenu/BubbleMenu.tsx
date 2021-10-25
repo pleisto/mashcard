@@ -93,9 +93,7 @@ const ListStyle: StyleMeta[] = [
 ]
 
 export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
-  if (!editor || !editor.isEditable) {
-    return null
-  }
+  if (!editor) return null
 
   return (
     <TiptapBubbleMenu editor={editor} tippyOptions={{ placement: 'top', maxWidth: '1000px' }}>

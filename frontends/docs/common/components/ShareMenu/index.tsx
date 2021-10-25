@@ -15,6 +15,12 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ docMeta, className }) => {
   const onClick = (): void => {
     setShareModalVisible(true)
   }
+
+  const sharePopover = shareModalVisible ? (
+    <SharePopover docMeta={docMeta} visible={shareModalVisible} setVisible={setShareModalVisible} />
+  ) : (
+    <></>
+  )
   return (
     <>
       <Tooltip title={t('share.tooltip')}>
@@ -22,7 +28,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ docMeta, className }) => {
           {t('share.menu')}
         </Button>
       </Tooltip>
-      <SharePopover docMeta={docMeta} visible={shareModalVisible} setVisible={setShareModalVisible} />
+      {sharePopover}
     </>
   )
 }
