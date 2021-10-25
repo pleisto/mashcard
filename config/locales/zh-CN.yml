@@ -727,19 +727,19 @@ zh-CN:
       items:
         h1:
           title: 一级标题
-          desc: Highest level of heading
+          desc: First Level of Heading
         h2:
           title: 二级标题
-          desc: Main section subheading
+          desc: Second Level of Heading
         h3:
           title: 三级标题
-          desc: Sub-subheading
+          desc: Third Level of Heading
         h4:
           title: 四级标题
-          desc: Small section heading
+          desc: Fourth Level of Heading
         h5:
           title: 五级标题
-          desc: Small section heading
+          desc: Fifth Level of Heading
         bulletlist:
           title: 无序列表
           desc: 创建无序列表
@@ -748,13 +748,13 @@ zh-CN:
           desc: 创建有序列表
         pdf:
           title: PDF
-          desc: Insert a PDF
+          desc: 嵌入 PDF
         embed:
           title: 嵌入
           desc: For PDFs and more
         image:
           title: 图片
-          desc: Upload or insert with a link
+          desc: Upload or embed with a link
         table:
           title: 表格
           desc: Create a table

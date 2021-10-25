@@ -727,19 +727,19 @@ ja-JP:
       items:
         h1:
           title: 見出し 1
-          desc: Highest level of heading
+          desc: First Level of Heading
         h2:
           title: 見出し 2
-          desc: Main section subheading
+          desc: Second Level of Heading
         h3:
           title: 見出し 3
-          desc: Sub-subheading
+          desc: Third Level of Heading
         h4:
           title: 見出し 4
-          desc: Small section heading
+          desc: Fourth Level of Heading
         h5:
           title: 見出し 5
-          desc: Small section heading
+          desc: Fifth Level of Heading
         bulletlist:
           title: Bulleted List
           desc: Create a bulleted list
@@ -748,13 +748,13 @@ ja-JP:
           desc: Create a list with numbering
         pdf:
           title: PDF
-          desc: Insert a PDF
+          desc: Embed a PDF
         embed:
           title: Embed
           desc: For PDFs and more
         image:
           title: Image
-          desc: Upload or insert with a link
+          desc: Upload or embed with a link
         table:
           title: テーブル
           desc: Create a table

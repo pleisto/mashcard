@@ -727,19 +727,19 @@ zh-HK:
       items:
         h1:
           title: Heading 1
-          desc: Highest level of heading
+          desc: First Level of Heading
         h2:
           title: Heading 2
-          desc: Main section subheading
+          desc: Second Level of Heading
         h3:
           title: Heading 3
-          desc: Sub-subheading
+          desc: Third Level of Heading
         h4:
           title: Heading 4
-          desc: Small section heading
+          desc: Fourth Level of Heading
         h5:
           title: Heading 5
-          desc: Small section heading
+          desc: Fifth Level of Heading
         bulletlist:
           title: Bulleted List
           desc: Create a bulleted list
@@ -748,13 +748,13 @@ zh-HK:
           desc: Create a list with numbering
         pdf:
           title: PDF
-          desc: Insert a PDF
+          desc: Embed a PDF
         embed:
           title: Embed
           desc: For PDFs and more
         image:
           title: Image
-          desc: Upload or insert with a link
+          desc: Upload or embed with a link
         table:
           title: Table
           desc: Create a table
