@@ -79,7 +79,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ES files
         id: changed-es-files
-        uses: tj-actions/changed-files@v10
+        uses: tj-actions/changed-files@v11
         with:
           files: |
             .(ts|tsx|js|jsx)$
@@ -143,7 +143,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed Ruby files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v10
+        uses: tj-actions/changed-files@v11
         with:
           files: |
             .(rb|gemspec)$
@@ -253,13 +253,13 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Get changed database migrations
         id: changed-db-migrations
-        uses: tj-actions/changed-files@v10
+        uses: tj-actions/changed-files@v11
         with:
           files: |
             db\/migrate
       - name: Get changed GraphQL type definitions
         id: changed-gql-typeds
-        uses: tj-actions/changed-files@v10
+        uses: tj-actions/changed-files@v11
         with:
           files: |
             app\/graphql
