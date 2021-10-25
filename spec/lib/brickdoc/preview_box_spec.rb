@@ -11,7 +11,7 @@ describe Brickdoc::PreviewBox do
       expect(data[:cover]).to end_with('png')
 
       data = Brickdoc::PreviewBox.preview('https://www.w3schools.com/')
-      expect(data[:title]).to eq('W3Schools Online Web Tutorials')
+      expect(data[:title]).to eq('W3Schools Free Online Web Tutorials')
       expect(data[:description]).to include('HTML')
     end
   end
