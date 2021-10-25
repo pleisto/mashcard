@@ -18,7 +18,7 @@ module ApplicationCable
     def find_current_pod(user)
       return nil if user.nil?
 
-      env['warden'].session['current_pod'] || user.guess_pod.as_session_context
+      env['warden'].session['current_pod'] || user.fetch_current_pod_cache.as_session_context
     end
   end
 end

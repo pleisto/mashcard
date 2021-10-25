@@ -17,13 +17,14 @@ module Docs
 
       result = {
         title: block.title,
+        icon: block.icon,
         payload: payload,
         pin: fetch_pin(block),
         id: block.id,
         is_deleted: !!block.deleted_at,
         path_array: block.path_array,
         collaborators: collaborators(block)
-      }
+      }.compact
 
       is_master = master?(block)
       permission = is_master ? nil : get_permission(block)

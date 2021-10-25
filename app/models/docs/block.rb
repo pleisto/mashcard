@@ -465,8 +465,12 @@ class Docs::Block < ApplicationRecord
     data
   end
 
+  def icon
+    meta['icon']
+  end
+
   def path_object
-    { id: id, text: text }
+    { id: id, text: text, icon: icon }.compact
   end
 
   def parent_path_array

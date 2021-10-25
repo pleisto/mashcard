@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import styles from './BlockListItem.module.css'
+import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface BlockListItemProps {
   block: Block
@@ -64,6 +65,10 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
     setHardDeleteConfirmLoading(false)
   }
 
+  const getEmoji = (path: NonNullDocMeta['pathArray'][0]): string | undefined => {
+    return path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
+  }
+
   const title = block.text || t('title.untitled')
   const titleData =
     block.pathArray.length === 0 ? (
@@ -72,7 +77,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
       <>
         {title}
         <br />
-        {block.pathArray.map(p => p.text || t('title.untitled')).join(' / ')}
+        {block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
       </>
     )
 

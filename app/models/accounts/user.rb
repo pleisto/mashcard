@@ -113,9 +113,17 @@ class Accounts::User < ApplicationRecord
   alias_method :original_personal_pod, :personal_pod
 
   attribute :current_pod_id, :integer
+  attribute :current_pod_cache
 
   def personal_pod
     original_personal_pod || build_personal_pod
+  end
+
+  def fetch_current_pod_cache
+    return current_pod_cache if current_pod_cache
+
+    current_pod_cache = guess_pod
+    current_pod_cache
   end
 
   def guess_pod

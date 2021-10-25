@@ -150,6 +150,19 @@ export const queryTrashBlocks = gql`
       pathArray {
         id
         text
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+          }
+
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
       }
       rootId
       parentId

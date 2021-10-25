@@ -217,6 +217,8 @@ export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
   collaborators: Array<Pod>
+  /** icon */
+  icon?: Maybe<BlockIcon>
   /** id */
   id: Scalars['UUID']
   /** is deleted */
@@ -326,6 +328,8 @@ export type BlockMovePayload = {
 
 export type BlockPath = {
   __typename?: 'BlockPath'
+  /** icon */
+  icon?: Maybe<BlockIcon>
   /** icon */
   id: Scalars['UUID']
   /** cover */
@@ -1729,7 +1733,16 @@ export type GetTrashBlocksQuery = {
         parentId?: string | null | undefined
         type: string
         text: string
-        pathArray: Array<{ __typename?: 'BlockPath'; id: string; text: string }>
+        pathArray: Array<{
+          __typename?: 'BlockPath'
+          id: string
+          text: string
+          icon?:
+            | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
+            | { __typename?: 'BlockImage'; type: Blocktype; source?: Filesourcetype | null | undefined; key?: string | null | undefined }
+            | null
+            | undefined
+        }>
         meta: {
           __typename?: 'BlockMeta'
           cover?:
@@ -1944,7 +1957,35 @@ export type GetBlockInfoQuery = {
         isDeleted: boolean
         isMaster: boolean
         pin: boolean
-        pathArray: Array<{ __typename?: 'BlockPath'; id: string; text: string }>
+        icon?:
+          | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
+          | {
+              __typename?: 'BlockImage'
+              type: Blocktype
+              source?: Filesourcetype | null | undefined
+              key?: string | null | undefined
+              height?: number | null | undefined
+              width?: number | null | undefined
+            }
+          | null
+          | undefined
+        pathArray: Array<{
+          __typename?: 'BlockPath'
+          id: string
+          text: string
+          icon?:
+            | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
+            | {
+                __typename?: 'BlockImage'
+                type: Blocktype
+                source?: Filesourcetype | null | undefined
+                key?: string | null | undefined
+                height?: number | null | undefined
+                width?: number | null | undefined
+              }
+            | null
+            | undefined
+        }>
         permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
         collaborators: Array<{
           __typename?: 'pod'
@@ -3222,6 +3263,18 @@ export const GetTrashBlocksDocument = gql`
       pathArray {
         id
         text
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+          }
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
       }
       rootId
       parentId
@@ -3910,6 +3963,20 @@ export const GetBlockInfoDocument = gql`
     blockInfo(id: $id, webid: $webid, kind: $kind) {
       title
       id
+      icon {
+        ... on BlockImage {
+          type
+          source
+          key
+          height
+          width
+        }
+        ... on BlockEmoji {
+          type
+          name
+          emoji
+        }
+      }
       payload
       isDeleted
       isMaster
@@ -3917,6 +3984,20 @@ export const GetBlockInfoDocument = gql`
       pathArray {
         id
         text
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+            height
+            width
+          }
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
       }
       permission {
         key

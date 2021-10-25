@@ -7,7 +7,10 @@ module System
     authenticate_user!
 
     def resolve
-      current_user.pods.with_attached_avatar
+      pods = current_user.pods.with_attached_avatar.to_a
+      pods.map do |pod|
+        pod.attributes.merge(email: current_user.email)
+      end
     end
   end
 end

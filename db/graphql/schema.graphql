@@ -355,6 +355,11 @@ type BlockInfo {
   collaborators: [pod!]!
 
   """
+  icon
+  """
+  icon: BlockIcon
+
+  """
   id
   """
   id: UUID!
@@ -585,6 +590,11 @@ type BlockMovePayload {
 }
 
 type BlockPath {
+  """
+  icon
+  """
+  icon: BlockIcon
+
   """
   icon
   """

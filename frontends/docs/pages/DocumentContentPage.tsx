@@ -18,6 +18,7 @@ import { editorVar } from '../reactiveVars'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
+type icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['icon']
 
 export interface DocMeta {
   id: string | undefined
@@ -33,6 +34,7 @@ export interface DocMeta {
   isRedirect: boolean
   pin: boolean
   title: string
+  icon?: icon
   host: string
   path: string
   collaborators: Collaborator[]
@@ -97,6 +99,7 @@ export const DocumentContentPage: React.FC = () => {
     const policy = data?.blockInfo?.permission?.policy
     const isMine = loginWebid === webid || !!data?.blockInfo?.isMaster
     const pin = !!data?.blockInfo?.pin
+    const icon = data?.blockInfo?.icon
     const shareable = isMine
     const editable = isMine || policy === Policytype.Edit
     const viewable = isMine || (!!policy && [Policytype.View, Policytype.Edit].includes(policy))
@@ -130,6 +133,7 @@ export const DocumentContentPage: React.FC = () => {
       viewable,
       collaborators,
       pathArray,
+      icon,
       documentInfoLoading: loading,
       snapshotVersion: Number(snapshotVersion ?? '0')
     }

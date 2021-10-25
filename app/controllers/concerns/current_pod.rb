@@ -15,7 +15,7 @@ module CurrentPod
     ### NOTE via session
     # pod = warden.session['current_pod']
     # return pod if pod
-    # pod = current_user.guess_pod.as_session_context
+    # pod = current_user.fetch_current_pod_cache.as_session_context
     # warden.session['current_pod'] = pod
 
     ## TODO graphql
@@ -28,7 +28,7 @@ module CurrentPod
         end
       end
 
-    remote_pod || current_user.guess_pod.as_session_context
+    remote_pod || current_user.fetch_current_pod_cache.as_session_context
   end
 
   def fetch_pod_via_params

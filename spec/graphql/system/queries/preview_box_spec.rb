@@ -21,7 +21,10 @@ describe System::Queries::PreviewBox, type: :query do
       # expect(response.data['previewBox']['title']).to include('Seagate 1TB')
       # expect(response.data['previewBox']['description']).to include('FREE')
 
-      internal_graphql_execute(query, { url: 'https://github.com' })
+      VCR.use_cassette('preview_box_graphql_query_github') do
+        internal_graphql_execute(query, { url: 'https://github.com' })
+      end
+
       expect(response.success?).to be true
       expect(response.data['previewBox']['description']).to start_with('GitHub')
       expect(response.data['previewBox']['cover']).to end_with('png')

@@ -41,6 +41,21 @@ export const queryBlockInfo = gql`
     blockInfo(id: $id, webid: $webid, kind: $kind) {
       title
       id
+      icon {
+        ... on BlockImage {
+          type
+          source
+          key
+          height
+          width
+        }
+
+        ... on BlockEmoji {
+          type
+          name
+          emoji
+        }
+      }
       payload
       isDeleted
       isMaster
@@ -48,6 +63,21 @@ export const queryBlockInfo = gql`
       pathArray {
         id
         text
+        icon {
+          ... on BlockImage {
+            type
+            source
+            key
+            height
+            width
+          }
+
+          ... on BlockEmoji {
+            type
+            name
+            emoji
+          }
+        }
       }
       permission {
         key

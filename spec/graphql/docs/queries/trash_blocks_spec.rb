@@ -17,6 +17,19 @@ describe Docs::Queries::TrashBlocks, type: :query do
           pathArray {
             id
             text
+            icon {
+              ... on BlockImage {
+                type
+                source
+                key
+              }
+
+              ... on BlockEmoji {
+                type
+                name
+                emoji
+              }
+            }
           }
           text
         }
