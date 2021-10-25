@@ -5,7 +5,7 @@ import { DocumentPage } from './DocumentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { PodSelect } from '@/docs/common/components/PodSelect'
-import { SearchModal } from '@/docs/common/components/SearchModal'
+import { PageHead } from '@/docs/common/components/PageHead'
 import { TrashButton } from '@/docs/common/components/TrashButton'
 import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
@@ -90,6 +90,7 @@ export const DocumentContentPage: React.FC = () => {
     if (!isAnonymous && !docid) {
       void createAndNavigateToNewPage()
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockCreate, docid, history, webid, isAnonymous, lastWebid, lastBlockIds])
 
@@ -150,15 +151,18 @@ export const DocumentContentPage: React.FC = () => {
       if (docMeta.isMine) {
         siderBarVar(
           <>
-            <PodSelect docMeta={docMeta} />
-            <SearchModal docMeta={docMeta} />
+            <header>
+              <PageHead />
+            </header>
 
             <nav>
               <PageTree docMeta={docMeta} />
+              <NewPage docMeta={docMeta} />
               <TrashButton docMeta={docMeta} />
             </nav>
+
             <footer>
-              <NewPage docMeta={docMeta} />
+              <PodSelect docMeta={docMeta} />
             </footer>
           </>
         )

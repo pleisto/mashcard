@@ -52,13 +52,18 @@
     display: flex;
     flex: none;
     align-items: center;
+    & span {
+      color: @input-placeholder-color;
+    }
   }
 
   &-prefix {
     margin-right: @input-affix-margin;
+    font-size: @font-size-base;
   }
 
   &-suffix {
     margin-left: @input-affix-margin;
+    font-size: @font-size-xs;
   }
 }

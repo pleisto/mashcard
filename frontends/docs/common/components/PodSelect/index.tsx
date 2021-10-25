@@ -85,7 +85,7 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   return (
     <>
-      <Dropdown trigger={['click']} overlay={dropdown} overlayClassName={styles.overlay} placement="bottomLeft">
+      <Dropdown trigger={['click']} overlay={dropdown} overlayClassName={styles.overlay} placement="topRight">
         <div className={styles.select}>
           <PodCard pod={pod} label={false} />
           <div className={styles.icon}>

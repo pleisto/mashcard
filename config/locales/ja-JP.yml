@@ -600,8 +600,8 @@ ja-JP:
       invalid_pod_webid: 'No access to the webid'
       pod_has_already_switched: 'Pod has already switched'
       pod_exist: 'Pod has already exist'
-      user_not_exist: "ユーザーが存在しません。"
-      pod_not_exist: "ポッドは存在しません"
+      user_not_exist: 'ユーザーが存在しません。'
+      pod_not_exist: 'ポッドは存在しません'
   docs:
     app_title: Brickdoc
     saving: 保存

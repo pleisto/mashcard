@@ -17,12 +17,12 @@ export const BrickdocPWA: FC = () => {
   return (
     <Suspense fallback={<Spin delay={1000} />}>
       <BrickdocContext.Provider value={context}>
-      <ConfigProvider direction={direction} i18n={i18n}>
-        <ApolloProvider client={apolloClient}>
+        <ConfigProvider direction={direction} i18n={i18n}>
+          <ApolloProvider client={apolloClient}>
             <HelmetProvider>
               <RootRoutes />
             </HelmetProvider>
-        </ApolloProvider>
+          </ApolloProvider>
         </ConfigProvider>
       </BrickdocContext.Provider>
     </Suspense>

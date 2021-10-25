@@ -7,6 +7,8 @@ import { BlockIdKind, useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
+import styles from './index.module.less'
+
 export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
 
@@ -24,7 +26,7 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
   }
 
   return (
-    <Button type="text" onClick={onClick} loading={createBlockLoading} disabled={createBlockLoading}>
+    <Button type="text" className={styles.createBtn} onClick={onClick} loading={createBlockLoading} disabled={createBlockLoading}>
       <Add />
       {t('blocks.create_pages')}
     </Button>

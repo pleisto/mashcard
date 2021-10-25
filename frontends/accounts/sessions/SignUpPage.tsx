@@ -76,7 +76,8 @@ export const SignUpPage: React.FC = () => {
         name="email"
         label={t('sessions.email')}
         hasFeedback
-        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}>
+        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}
+      >
         <Input />
       </Form.Item>
       <Form.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }, passwordAvailableValidator]}>
@@ -87,7 +88,8 @@ export const SignUpPage: React.FC = () => {
         label={t('sessions.confirm_password')}
         hasFeedback
         dependencies={['password']}
-        rules={[{ required: true }, passwordConfirmValidator]}>
+        rules={[{ required: true }, passwordConfirmValidator]}
+      >
         <Input.Password />
       </Form.Item>
     </>
@@ -106,7 +108,8 @@ export const SignUpPage: React.FC = () => {
           extra={<small>{t('sessions.webid_description')}</small>}
           hasFeedback
           validateTrigger={['onFocus', 'onBlur']}
-          rules={[{ required: true }, webidAvailableValidator]}>
+          rules={[{ required: true }, webidAvailableValidator]}
+        >
           <Input />
         </Form.Item>
         <Form.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>

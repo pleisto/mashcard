@@ -7,6 +7,9 @@
     "./dist/**/*",
     "./packages/brickdoc-design-system/components/style/color/*.less",
     "./packages/brickdoc-design-system/storybook-static/**/*",
+    "./config/locales/*.yml",
+    "./spec/vcr_cassettes/*",
+    "./db/graphql/*",
     "**/coverage/**/*"
   ],
   "customSyntax": "postcss-less",

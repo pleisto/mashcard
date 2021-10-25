@@ -23,12 +23,12 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
     const link = docMeta.isMine ? `/${docMeta.webid}/${BlockIdKind.P}/${path.id}` : '#'
     const emoji = path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
     return (
-      <div key={idx}>
+      <div className={styles.path} key={idx}>
         <Link className={styles.path} to={link}>
           {emoji}
           {path.text || t('title.untitled')}
         </Link>
-        {idx < paths.length - 1 ? <span>&nbsp;/&nbsp;</span> : <></>}
+        {idx < paths.length - 1 ? <span className={styles.splicing}>&nbsp;/&nbsp;</span> : <></>}
       </div>
     )
   })

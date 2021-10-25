@@ -5,6 +5,8 @@ import { Delete } from '@brickdoc/design-system/components/icon'
 import { TrashPopover } from '../TrashPopover'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
+import styles from './index.module.less'
+
 export const TrashButton: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
   const [trashModalVisible, setTrashModalVisible] = useState<boolean>(false)
@@ -15,7 +17,7 @@ export const TrashButton: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   return (
     <>
-      <Button type="text" icon={<Delete />} onClick={onClick}>
+      <Button type="text" className={styles.delBtn} icon={<Delete />} onClick={onClick}>
         {t('trash.name')}
       </Button>
       <TrashPopover docMeta={docMeta} visible={trashModalVisible} setVisible={setTrashModalVisible} />

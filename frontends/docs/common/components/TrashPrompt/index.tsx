@@ -82,7 +82,8 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
         confirmLoading={hardDeleteConfirmLoading}
         onCancel={onCancelDelete}
         onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}>
+        visible={hardDeleteModalVisible}
+      >
         {t('trash.delete_confirmation_body')}
       </Modal>
     </>

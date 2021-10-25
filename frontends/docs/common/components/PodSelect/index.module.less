@@ -2,13 +2,16 @@
 
 .select {
   display: flex;
-  padding: 0.875rem 0.5rem 0.875rem 0.75rem;
+  border-radius: @border-radius-base;
   width: 100%;
-  margin-bottom: 1.375rem;
   justify-content: space-between;
   align-items: center;
+  padding: 0.25rem 1rem;
+
   &:hover {
     cursor: pointer;
+    background: @btn-text-hover-bg;
+    transition: background @animation-duration-slow, background @animation-duration-slow cubic-bezier(0.2, 0, 0, 1) 0s;
   }
   .icon {
     color: @text-color-secondary;

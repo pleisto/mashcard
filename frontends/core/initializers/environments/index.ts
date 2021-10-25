@@ -1,4 +1,4 @@
-import { productinEnvInit } from "./production"
+import { productinEnvInit } from './production'
 
 export const enviromentsInit = (): void => {
   switch (globalThis.brickdocContext.env) {

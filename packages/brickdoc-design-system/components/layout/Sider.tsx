@@ -162,7 +162,8 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
           <span
             onClick={toggle}
             className={classNames(`${prefixCls}-zero-width-trigger`, `${prefixCls}-zero-width-trigger-${reverseArrow ? 'right' : 'left'}`)}
-            style={zeroWidthTriggerStyle}>
+            style={zeroWidthTriggerStyle}
+          >
             {trigger || <BarsOutlined />}
           </span>
         ) : null
@@ -212,7 +213,8 @@ const Sider = React.forwardRef<HTMLDivElement, SiderProps>(
         // eslint-disable-next-line react/jsx-no-constructed-context-values
         value={{
           siderCollapsed: collapsed
-        }}>
+        }}
+      >
         {renderSider()}
       </SiderContext.Provider>
     )

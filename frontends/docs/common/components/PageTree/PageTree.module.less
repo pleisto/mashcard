@@ -1,19 +1,22 @@
+@import '@brickdoc/design-system/components/style/themes';
+
 /* stylelint-disable no-descending-specificity */
 .tree {
-  margin: 1.5rem 0;
-
   :global(.brk-tree-treenode) {
     width: 100%;
+    padding: 0;
+    margin-top: 2px;
   }
   :global(.brk-tree-node-content-wrapper) {
     width: 100%;
   }
   :global(.brk-tree-treenode-selected),
   :global(.brk-tree-treenode:hover) {
-    background-color: rgb(0 0 0 / 5%);
+    // background-color: rgb(0 0 0 / 5%);
   }
   :global(.brk-tree-node-selected),
   :global(.brk-tree-node-content-wrapper:hover) {
-    background-color: transparent !important;
+    box-sizing: border-box;
+    // background-color: transparent !important;
   }
 }

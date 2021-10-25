@@ -36,13 +36,15 @@
   }
 
   nav {
-    max-height: 60%;
+    max-height: calc(100vh - 96px - 1rem);
     overflow: scroll;
     h2 {
-      font-weight: unset;
-      font-size: 1rem;
-      padding: 0.5rem 1rem 0;
       color: @text-color-secondary;
+      font-size: @font-size-xs;
+      font-weight: @typography-title-font-weight;
+      padding: 8px 16px;
+      line-height: @line-height-sm;
+      margin-top: 30px;
     }
   }
 }
@@ -51,7 +53,8 @@
 .sider nav > :global(.brk-btn-text),
 .sider footer :global(.brk-btn-text) {
   border: 0;
-  padding: 0.375rem 1rem;
+  // padding: 0.375rem 1rem;
+  padding: 6px 12px;
   height: auto;
   width: 100%;
   text-align: left;

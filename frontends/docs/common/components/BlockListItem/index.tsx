@@ -96,7 +96,8 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
           className={styles.button}
           onClick={() => {
             setHardDeleteModalVisible(true)
-          }}>
+          }}
+        >
           <Delete />
         </Button>
       </div>
@@ -109,7 +110,8 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
         confirmLoading={hardDeleteConfirmLoading}
         onCancel={onCancelDelete}
         onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}>
+        visible={hardDeleteModalVisible}
+      >
         {t('trash.delete_confirmation_body')}
       </Modal>
     </>

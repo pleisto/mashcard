@@ -20,7 +20,7 @@ export const PodCard: React.FC<PodCardProps> = ({ pod, label }) => {
   return (
     <div className={styles.card}>
       <div className={styles.avatarWrapper}>
-        <PodAvatar pod={pod} />
+        <PodAvatar pod={pod} size="small" />
       </div>
       <div className={styles.content}>
         <span className={styles.name}>{pod.name}</span>

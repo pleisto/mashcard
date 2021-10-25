@@ -16,7 +16,7 @@ export const MoreMenu: React.FC<MoreMenuProps> = ({ docMeta, className }) => {
   return (
     <>
       <Button className={className} type="text" onClick={onClick}>
-        <Icon.More />
+        <Icon.Time />
       </Button>
       <PageHistoryModal docMeta={docMeta} visible={pageHistoryModalVisible} setVisible={setPageHistoryModalVisible} />
     </>

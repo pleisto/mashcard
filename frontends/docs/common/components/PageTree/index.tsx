@@ -9,7 +9,7 @@ import {
   useGetBlockPinsQuery,
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
-import { Divider, Tree, TreeProps } from '@brickdoc/design-system'
+import { Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '@/docs/pages/hooks/useSyncProvider'
@@ -163,7 +163,6 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     <>
       <h2>Pin</h2>
       {treeElement(pinTreeBlocks, false)}
-      <Divider />
     </>
   ) : (
     <></>

@@ -133,6 +133,7 @@ html {
 @code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 @text-color: color(~'@{deep-purple-9}');
 @text-color-secondary: color(~'@{deep-purple-4}');
+@text-color-disable: color(~'@{deep-purple-2}');
 @text-color-inverse: @white;
 @icon-color: inherit;
 @icon-color-hover: fade(@black, 75%);
@@ -152,6 +153,8 @@ html {
 @heading-4-size: 18px;
 @heading-5-size: 1.05;
 @line-height-base: 1.6;
+@line-height-sm: 16px;
+@line-height-md: 20px;
 @border-radius-base: 4px;
 @border-radius-sm: 2px;
 
@@ -382,7 +385,7 @@ html {
 // Layout
 @layout-body-background: transparent;
 @layout-header-background: transparent;
-@layout-header-height: 48px;
+@layout-header-height: 56px;
 @layout-header-padding: 0 0.5rem 0 0;
 @layout-header-color: @text-color;
 @layout-footer-padding: 24px 50px;
@@ -459,6 +462,7 @@ html {
 @input-padding-vertical-sm: 0px;
 @input-padding-vertical-lg: 0.28em;
 @input-placeholder-color: hsv(0, 0, 75%);
+@input-placeholder-size: @font-size-sm;
 @input-color: @text-color;
 @input-icon-color: @input-color;
 @input-border-color: @border-color-base;
@@ -815,10 +819,10 @@ html {
 // Tree
 // ---
 @tree-bg: transparent;
-@tree-title-height: 28px;
+@tree-title-height: 32px;
 @tree-child-padding: 18px;
 @tree-directory-selected-color: #fff;
-@tree-directory-selected-bg: @primary-color;
+@tree-directory-selected-bg: fade(@blue-6, 12%);
 @tree-node-hover-bg: rgba(0, 0, 0, 0.05);
 @tree-node-selected-bg: @tree-node-hover-bg;
 

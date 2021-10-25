@@ -21,7 +21,7 @@
 
     &:hover {
       &::before {
-        background: @item-hover-bg;
+        // background: @item-hover-bg;
       }
     }
 
@@ -54,7 +54,12 @@
     &-selected {
       &:hover::before,
       &::before {
+        border: 1px solid #809cff;
         background: @tree-directory-selected-bg;
+        // background: @tree-directory-selected-bg;
+        //background: @item-hover-bg;
+
+        // border-radius: 4px;
       }
 
       // >>> Switcher
