@@ -261,7 +261,14 @@ export function useSyncProvider(): [(doc: Node) => Promise<void>] {
         client.writeQuery({
           query: cachedChildrenBlocksQuery,
           variables: { rootId, snapshotVersion: 0 },
-          data: { childrenBlocks: newBlocks.map(b => ({ ...b, meta: { ...b.meta, __typename: 'BlockMeta' }, __typename: 'block' })) }
+          data: {
+            childrenBlocks: newBlocks.map(b => ({
+              ...b,
+              meta: { ...b.meta, __typename: 'BlockMeta' },
+              parentId: b.parentId ?? null,
+              __typename: 'block'
+            }))
+          }
         })
 
         await syncPromise

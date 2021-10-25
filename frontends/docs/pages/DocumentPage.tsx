@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef, useMemo } from 'react'
 import { Node } from 'prosemirror-model'
 import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
-import { useGetChildrenBlocksQuery, Block, Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
+import { useGetChildrenBlocksQuery, Block, Filesourcetype } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import {
   blocksToJSONContents,
@@ -31,8 +31,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   useEditorI18n()
 
   const [onCommit] = useSyncProvider()
-  const childrenBlocks = useRef<GetChildrenBlocksQuery['childrenBlocks']>()
-  const [focused, setFocused] = useState(false)
 
   // TODO lazy query here
   // TODO disable page tree select when loading
@@ -41,10 +39,17 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   //   foo()
   // }, [])
 
+  const queryVariables = useMemo(
+    () => ({ rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }),
+    [docMeta.id, docMeta.snapshotVersion]
+  )
+
+  const lastQueryVariables = useRef<typeof queryVariables>()
+
   const { data, loading, refetch } = useGetChildrenBlocksQuery({
     fetchPolicy: docMeta.snapshotVersion > 0 ? 'no-cache' : 'cache-and-network',
     nextFetchPolicy: 'cache-only',
-    variables: { rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }
+    variables: queryVariables
   })
 
   const prepareFileUpload = usePrepareFileUpload()
@@ -58,7 +63,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
       }
 
       if (node.attrs[field]?.source === Filesourcetype.Origin) {
-        const block = childrenBlocks.current?.find(block => block.id === node.attrs.uuid)
+        const block = data?.childrenBlocks?.find(block => block.id === node.attrs.uuid)
         const blob = block?.blobs?.find(blob => blob.blobKey === node.attrs[field].key)
         return blob?.url
       }
@@ -85,9 +90,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     fetchWebsiteMeta,
     getImageUrl,
     getAttachmentUrl,
-    editable: documentEditable,
-    onFocus: () => setFocused(true),
-    onBlur: () => setFocused(false)
+    editable: documentEditable
   })
   React.useEffect(() => {
     editorVar(editor)
@@ -123,15 +126,16 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const setCover = createDocAttrsUpdater('cover')
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && data?.childrenBlocks && !focused) {
+    if (editor && !editor.isDestroyed && data?.childrenBlocks && queryVariables !== lastQueryVariables.current) {
+      lastQueryVariables.current = queryVariables
+
       const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
-      childrenBlocks.current = data.childrenBlocks
 
       if (content.length) {
         editor.commands.replaceRoot(content[0])
       }
     }
-  }, [editor, data, focused])
+  }, [editor, data, queryVariables])
 
   useDocumentSubscription({ docid: docMeta.id as string, editor, setDocumentEditable, refetchDocument: refetch })
 
