@@ -244,10 +244,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
       trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
+      className={styles.title}
     >
-      <Link to={linkPath} className={styles.title}>
-        {title}
-      </Link>
+      <Link to={linkPath}>{title}</Link>
     </Popover>
   )
 

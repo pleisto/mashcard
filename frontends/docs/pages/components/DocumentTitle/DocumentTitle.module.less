@@ -80,7 +80,7 @@
   background: transparent;
   outline: none;
   width: 100%;
-  font-size: 1em;
+  font-size: 1em !important;
   font-weight: 400;
   line-height: 44px;
   letter-spacing: 0;
@@ -88,8 +88,9 @@
   box-shadow: none !important;
   padding: 0;
 
-  ::placeholder {
+  &::placeholder {
     color: #a6a6a6;
+    font-size: 1em !important;
   }
 }
 
