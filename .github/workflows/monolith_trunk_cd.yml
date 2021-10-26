@@ -103,3 +103,6 @@ jobs:
           APP_ENV_GITHUB_KEY: 70835aac65b5971f7774
           APP_SECRET_GITHUB_SECRET: ${{ secrets.TRUNK_GITHUB_SECRET }}
           APP_ENV_HOST: ${{ env.domain }}
+          APP_ENV_AWS_REGION: us-east-1
+          APP_ENV_AWS_PUBLIC_BUCKET: brickdoc-trunk-public
+          APP_ENV_AWS_PRIVATE_BUCKET: brickdoc-trunk-private

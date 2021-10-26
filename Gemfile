@@ -104,5 +104,9 @@ group :development do
   gem 'annotate'
 end
 
+# SaaS Edition
+saas_path = 'gems/brickdoc-saas'
+gem 'brickdoc-saas', path: saas_path if File.exist?("#{saas_path}/brickdoc-saas.gemspec")
+
 # Plugin dependencies
 Dir.glob('plugins/*/Gemfile').each { |p| eval_gemfile(p) }
