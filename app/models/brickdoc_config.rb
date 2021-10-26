@@ -75,7 +75,6 @@ class BrickdocConfig < ApplicationRecord
   field :default_locale, default: 'en-US'
   field :default_timezone, default: 'UTC'
   field :host, default: (Rails.env.development? ? 'localhost' : Brickdoc::Runtime.hostname)
-  field :asset_host, default: ENV['ASSET_HOST']
 
   # ActionMailer
   field :mailer, type: :hash, symbolize_keys: true, default: {
