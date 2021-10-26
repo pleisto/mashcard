@@ -45,9 +45,13 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
     </div>
   )
 
+  const buttonRef = React.useRef(null)
+
   return (
     <Tooltip
       overlayClassName="brickdoc-bubble-menu-item-hint"
+      destroyTooltipOnHide={true}
+      getPopupContainer={() => buttonRef.current!}
       title={
         <>
           <div className="item-hint-main">{t(`bubblemenu.items.${FontColorStyle.key}.desc`)}</div>
@@ -57,7 +61,7 @@ export const FontColorMenuItem: React.FC<{ editor: Editor }> = ({ editor }) => {
       placement="top"
     >
       <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
-        <Button role="menuitem" onClick={e => e.preventDefault()} type="text" className="bubble-menu-item">
+        <Button ref={buttonRef} role="menuitem" onClick={e => e.preventDefault()} type="text" className="bubble-menu-item">
           <Icon.FontSize className="bubble-menu-item-icon" style={{ color: activeColor() }} />
           <Icon.LineDown className="bubble-menu-item-arrow-icon" />
         </Button>

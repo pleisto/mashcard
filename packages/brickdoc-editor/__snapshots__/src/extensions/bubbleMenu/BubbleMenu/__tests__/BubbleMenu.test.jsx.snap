@@ -330,7 +330,7 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text brk-dropdown-trigger bubble-menu-item"
+        class="brk-btn brk-btn-text bubble-menu-item"
         role="menuitem"
         type="button"
       >

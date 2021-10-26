@@ -52,10 +52,13 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
     setTooltipVisible(false)
   }
 
+  const buttonRef = React.useRef(null)
+
   return (
     <Tooltip
       overlayClassName="brickdoc-bubble-menu-item-hint"
       destroyTooltipOnHide={true}
+      getPopupContainer={() => buttonRef.current!}
       title={
         <>
           <div className="item-hint-main">{t(`bubblemenu.items.${style.key}.desc`)}</div>
@@ -66,7 +69,13 @@ export const MenuItem: React.FC<{ editor: Editor; style: StyleMeta }> = ({ edito
       onVisibleChange={handleTooltipVisibleChange}
       placement="top"
     >
-      <Button role="menuitem" onClick={toggleStyle(style)} type="text" className={cx('bubble-menu-item', activeClass(style))}>
+      <Button
+        ref={buttonRef}
+        role="menuitem"
+        onClick={toggleStyle(style)}
+        type="text"
+        className={cx('bubble-menu-item', activeClass(style))}
+      >
         {style.label}
       </Button>
     </Tooltip>

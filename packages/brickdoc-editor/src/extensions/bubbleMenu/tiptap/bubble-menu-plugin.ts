@@ -37,20 +37,20 @@ export class BubbleMenuView {
     this.element.style.visibility = 'visible'
   }
 
-  mousedownHandler = () => {
+  mousedownHandler = (): void => {
     this.preventHide = true
   }
 
-  dragstartHandler = () => {
+  dragstartHandler = (): void => {
     this.hide()
   }
 
-  focusHandler = () => {
+  focusHandler = (): void => {
     // we use `setTimeout` to make sure `selection` is already updated
     setTimeout(() => this.update(this.editor.view))
   }
 
-  blurHandler = ({ event }: { event: FocusEvent }) => {
+  blurHandler = ({ event }: { event: FocusEvent }): void => {
     if (this.preventHide) {
       this.preventHide = false
 
@@ -64,7 +64,7 @@ export class BubbleMenuView {
     this.hide()
   }
 
-  createTooltip(options: Partial<Props> = {}) {
+  createTooltip(options: Partial<Props> = {}): void {
     this.tippy = tippy(this.view.dom, {
       duration: 0,
       getReferenceClientRect: null,
@@ -77,7 +77,7 @@ export class BubbleMenuView {
     })
   }
 
-  update(view: EditorView, oldState?: EditorState) {
+  update(view: EditorView, oldState?: EditorState): void {
     const { state, composing } = view
     const { doc, selection } = state
     const isSame = oldState?.doc.eq(doc) && oldState.selection.eq(selection)
@@ -123,26 +123,25 @@ export class BubbleMenuView {
           }
         }
 
-        return posToDOMRect(view, from, to)
+        const domRect = posToDOMRect(view, from, to)
+        return domRect
       }
     })
 
     this.show()
   }
 
-  show() {
-    if (!this.editor.isEditable) {
-      return
-    }
+  show(): void {
+    if (!this.editor.isEditable) return
 
     this.tippy.show()
   }
 
-  hide() {
+  hide(): void {
     this.tippy.hide()
   }
 
-  destroy() {
+  destroy(): void {
     this.tippy.destroy()
     this.element.removeEventListener('mousedown', this.mousedownHandler)
     this.view.dom.removeEventListener('dragstart', this.dragstartHandler)
@@ -153,9 +152,8 @@ export class BubbleMenuView {
 
 export const BubbleMenuPluginKey = new PluginKey('menuBubble')
 
-export const BubbleMenuPlugin = (options: BubbleMenuPluginProps) => {
-  return new Plugin({
+export const BubbleMenuPlugin = (options: BubbleMenuPluginProps): Plugin =>
+  new Plugin({
     key: BubbleMenuPluginKey,
     view: view => new BubbleMenuView({ view, ...options })
   })
-}

@@ -11,12 +11,12 @@ import {
   SyncExtensionOptions,
   TableExtensionOptions,
   EventHandlerExtension,
-  BubbleMenu
+  BubbleMenu,
+  PdfSectionOptions,
+  ImageSectionOptions,
+  LinkBlockOptions
 } from './extensions'
 import './styles.less'
-import { ImageSectionOptions } from './extensions/imageSection'
-import { PdfSectionOptions } from './extensions/pdfSection'
-import { LinkBlockOptions } from './extensions/linkBlock'
 import { useEditorI18n } from './hooks'
 
 export type { ImageSectionAttributes } from './extensions'
