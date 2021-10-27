@@ -1783,6 +1783,7 @@ __metadata:
   resolution: "@brickdoc/editor@workspace:packages/brickdoc-editor"
   dependencies:
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader"
     "@tiptap/core": 2.0.0-beta.106
     "@tiptap/extension-blockquote": 2.0.0-beta.15
@@ -1862,6 +1863,7 @@ __metadata:
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
     "@brickdoc/editor": "workspace:packages/brickdoc-editor"
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc"
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
     "@commitlint/cli": ^13.2.1
     "@commitlint/config-conventional": ^13.2.0
     "@cypress/code-coverage": ^3.9.11
@@ -1951,10 +1953,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@brickdoc/test-helper@workspace:packages/brickdoc-test-helper":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/test-helper@workspace:packages/brickdoc-test-helper"
+  dependencies:
+    typescript: ^4.4.4
+  languageName: unknown
+  linkType: soft
+
 "@brickdoc/uploader@workspace:packages/brickdoc-uploader":
   version: 0.0.0-use.local
   resolution: "@brickdoc/uploader@workspace:packages/brickdoc-uploader"
   dependencies:
+    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
     "@uppy/core": ^1.20.1
     "@uppy/dashboard": ^1.21.1
     "@uppy/react": ^1.12.2

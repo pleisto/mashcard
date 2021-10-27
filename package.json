@@ -54,6 +54,7 @@
     "@apollo/client": "^3.4.16",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^7.0.0-alpha2",
     "@sentry/react": "^6.13.3",

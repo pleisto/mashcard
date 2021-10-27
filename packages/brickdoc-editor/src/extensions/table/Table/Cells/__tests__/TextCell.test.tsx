@@ -1,5 +1,6 @@
 import { TextCell } from '../TextCell'
 import { render, screen, fireEvent } from '@testing-library/react'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 describe('TextCell', () => {
   const props: any = {
@@ -47,7 +48,7 @@ describe('TextCell', () => {
     fireEvent.click(screen.getByRole('button'))
     const input = screen.getByTestId('table-text-cell-input')
     fireEvent.change(input, { target: { value: newValue } })
-    fireEvent.click(screen.getByTestId('table-text-overlay'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.overlay.id))
 
     expect(updateData).toBeCalledTimes(1)
     expect(updateData).toBeCalledWith(props.cell.row.original.id, props.cell.column.id, newValue)
@@ -57,7 +58,7 @@ describe('TextCell', () => {
     const updateData = jest.fn()
     render(<TextCell {...props} updateData={updateData} />)
     fireEvent.click(screen.getByRole('button'))
-    fireEvent.click(screen.getByTestId('table-text-overlay'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.overlay.id))
 
     expect(screen.getByRole('button')).toBeInTheDocument()
   })

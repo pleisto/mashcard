@@ -5,6 +5,7 @@ import { CellProps } from 'react-table'
 import { Input } from '@brickdoc/design-system'
 import { useEditingStatus } from '../useEditingStatus'
 import './TextCell.css'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface TextCellProps extends CellProps<object> {}
 
@@ -38,13 +39,22 @@ export const TextCell: React.FC<TextCellProps> = props => {
           onPressEnter={handleEndEditing}
           data-testid="table-text-cell-input"
         />
-        <div data-testid="table-text-overlay" className="table-block-cell-overlay" onClick={handleEndEditing} />
+        <div
+          data-testid={TEST_ID_ENUM.editor.tableBlock.cell.text.overlay.id}
+          className="table-block-cell-overlay"
+          onClick={handleEndEditing}
+        />
       </>
     )
   }
 
   return (
-    <div role="button" tabIndex={-1} className="table-block-text-cell" onClick={showEditing}>
+    <div
+      data-testid={TEST_ID_ENUM.editor.tableBlock.cell.text.id}
+      role="button"
+      tabIndex={-1}
+      className="table-block-text-cell"
+      onClick={showEditing}>
       {value}
     </div>
   )

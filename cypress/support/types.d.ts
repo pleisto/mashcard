@@ -15,6 +15,10 @@ declare global {
         staticResponseOrResponseInterceptor?: StaticResponse | HttpResponseInterceptor
       ) => Chainable<Element>
 
+      addBlock: (blockName: string) => Chainable<Element>
+
+      slashCommand: (command: string) => Chainable<Element>
+
       /**
        * Adds command "cy.waitForResources(name1, name2, ...)"
        * that checks performance entries for resources that end with the given names.

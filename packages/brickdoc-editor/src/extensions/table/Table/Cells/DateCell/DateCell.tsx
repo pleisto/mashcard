@@ -7,6 +7,7 @@ import { useEditingStatus } from '../useEditingStatus'
 import { DatePicker } from './DatePicker'
 import './DateCell.css'
 import { DatabaseColumns } from '../../useColumns'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface DateCellProps extends CellProps<object> {}
 
@@ -47,7 +48,12 @@ export const DateCell: React.FC<DateCellProps> = props => {
   const defaultFormat = `YYYY/MM/DD${includeTime ? ' HH:mm:ss' : ''}`
 
   return (
-    <div role="button" tabIndex={-1} className="table-block-date-cell" onClick={showEditing}>
+    <div
+      data-testid={TEST_ID_ENUM.editor.tableBlock.cell.date.id}
+      role="button"
+      tabIndex={-1}
+      className="table-block-date-cell"
+      onClick={showEditing}>
       {!editing && value && dayjs(value).format(cell.column.dateFormat ?? defaultFormat)}
       {editing && (
         <>

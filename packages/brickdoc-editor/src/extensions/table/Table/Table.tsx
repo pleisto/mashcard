@@ -19,6 +19,7 @@ import { TableToolbar } from './TableToolbar'
 import { useFilter } from './TableToolbar/Filter/useFilter'
 import { useSorter } from './TableToolbar/Sorter/useSorter'
 import './Table.css'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 const isGroupedHeader = (headerGroup: HeaderGroup): boolean => headerGroup.headers?.[0].depth !== 0 || !!headerGroup.Header
 
@@ -187,8 +188,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
         // TODO: need a better way to add this class
         container?.parentElement?.classList.add('table-block-react-renderer')
         container?.classList.add('table-block-node-view-wrapper')
-      }}
-    >
+      }}>
       {contextHolder}
       {fetched.current && (
         <TableToolbar
@@ -207,7 +207,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
           updateSorter={updateSorter}
         />
       )}
-      <div className="brickdoc-table-block">
+      <div className="brickdoc-table-block" data-testid={TEST_ID_ENUM.editor.tableBlock.id}>
         <div {...getTableProps({ className: 'table-block-table', style: { minWidth: '100%' }, role: 'table' })}>
           <div className="table-block-row">
             {headerGroups.filter(isGroupedHeader).map(headerGroup => {
@@ -253,8 +253,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                         onColumnTypeChange={type => {
                           void handleColumnTypeChange(type, column.parent?.id ?? '', column.id)
                         }}
-                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}
-                      >
+                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}>
                         {Header}
                       </ColumnMenu>
                     )

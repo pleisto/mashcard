@@ -9,6 +9,7 @@ import { SelectCellOption } from './SelectCellOption'
 import { COLOR } from '../../../../color'
 import { DatabaseColumns } from '../../useColumns'
 import './SelectCell.css'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 const randomColor = (): string => COLOR[Math.floor(Math.random() * COLOR.length)].color
 
@@ -146,8 +147,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
           showSearch={true}
           showAction={['focus', 'click']}
           open={true}
-          onChange={handleChange}
-        >
+          onChange={handleChange}>
           {selectOptions.map(option => (
             <Select.Option className="select-cell-select-option" key={option.value} value={option.value} title={option.label}>
               <SelectCellOption onOptionValueChange={handleColumnOptionChange} onOptionRemove={handleColumnOptionRemove} option={option} />
@@ -163,7 +163,12 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
 
   return (
     /* eslint-disable jsx-a11y/click-events-have-key-events */
-    <div role="button" tabIndex={-1} className="table-block-select-cell" onClick={showEditing}>
+    <div
+      data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.id}
+      role="button"
+      tabIndex={-1}
+      className="table-block-select-cell"
+      onClick={showEditing}>
       {label && (
         <Tag className="table-block-select-cell-tag" color={bgColor(color)} style={{ color }}>
           {label}

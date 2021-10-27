@@ -5,6 +5,7 @@ import { TableRowProps as RTTableRowProps, Row, TableHeaderGroupProps, TableActi
 import { Button, Icon, Input, Menu, Popover } from '@brickdoc/design-system'
 import { IsCellActive } from './useActiveStatus'
 import { useEditorI18n } from '../../../hooks'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface TableRowProps extends RTTableRowProps {
   rowActive?: boolean
@@ -168,18 +169,25 @@ export const TableRow: React.FC<TableRowProps> = ({
             </Menu.Item>
             {isMenuItemMatch('Delete') && (
               // TODO: fix type
-              <Menu.Item onClick={() => onRemoveRow((row.original as any).id)} className="table-block-menu-item" key="Delete">
+              <Menu.Item
+                data-testid={TEST_ID_ENUM.editor.tableBlock.row.contextMenu.deleteButton.id}
+                onClick={() => onRemoveRow((row.original as any).id)}
+                className="table-block-menu-item"
+                key="Delete">
                 <Icon.Delete />
                 <span>{t('table.remove_row.text')}</span>
               </Menu.Item>
             )}
           </Menu>
-        }
-      >
+        }>
         {/* add a placeholder for popover to follow mouse's position */}
         <div ref={popupContainer} style={{ width: '1px', height: '1px', position: 'fixed' }} />
       </Popover>
-      <div ref={dropRef} className={cx('table-block-row', { active: rowActive })} onContextMenu={handleContextMenu}>
+      <div
+        data-testid={TEST_ID_ENUM.editor.tableBlock.row.id}
+        ref={dropRef}
+        className={cx('table-block-row', { active: rowActive })}
+        onContextMenu={handleContextMenu}>
         <div data-testid="table-actions" className="table-block-row-actions">
           <Button onClick={() => onAddNewRow(row.index)} className="table-block-row-action-button" type="text">
             <Icon.Plus />
@@ -196,8 +204,7 @@ export const TableRow: React.FC<TableRowProps> = ({
               <div
                 {...cellProps}
                 key={cellProps.key}
-                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}
-              >
+                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}>
                 {cell.render('Cell')}
               </div>
             )

@@ -3,6 +3,7 @@ import { Select, SelectProps } from '@brickdoc/design-system'
 import { Column } from 'react-table'
 import { COLUMN_TYPE } from '../../columnType'
 import { SorterOption } from './Sorter'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface SorterItemProps {
   columns: Array<Column<object>>
@@ -41,6 +42,7 @@ export const SorterItem: React.FC<SorterItemProps> = ({ columns, sorterSingleOpt
     <>
       <Select
         className="table-toolbar-item-option-select"
+        data-testid={TEST_ID_ENUM.editor.tableBlock.sort.option.select.id}
         optionFilterProp="title"
         showSearch={true}
         filterOption={handleFilterOption}
@@ -48,7 +50,12 @@ export const SorterItem: React.FC<SorterItemProps> = ({ columns, sorterSingleOpt
         value={sorterSingleOption.columnId}>
         {selectColumnComponents}
       </Select>
-      <Select className="table-toolbar-item-option-select" value={sorterSingleOption.sort} onChange={handleUpdateSort} showSearch={true}>
+      <Select
+        data-testid={TEST_ID_ENUM.editor.tableBlock.sort.option.select.id}
+        className="table-toolbar-item-option-select"
+        value={sorterSingleOption.sort}
+        onChange={handleUpdateSort}
+        showSearch={true}>
         <Select.Option value="asc">Ascending</Select.Option>
         <Select.Option value="desc">Descending</Select.Option>
       </Select>

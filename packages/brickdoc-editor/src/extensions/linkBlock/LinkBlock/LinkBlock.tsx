@@ -11,6 +11,7 @@ import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.less'
 import { prependHttp } from '../../helpers/prependHttp'
 import { sizeFormat, linkStorage, getFileTypeByExtension } from '../../helpers/file'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface LinkBlockAttributes {
   key: string
@@ -115,7 +116,10 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     }
     return (
       <BlockWrapper editor={editor}>
-        <Button className="brickdoc-link-block-link" onClick={() => window.open(linkUrl, '_blank')}>
+        <Button
+          data-testid={TEST_ID_ENUM.editor.linkBlock.link.id}
+          className="brickdoc-link-block-link"
+          onClick={() => window.open(linkUrl, '_blank')}>
           {cover && <div className="link-block-cover" style={{ backgroundImage: `url("${cover}")` }} />}
           <div className="link-block-content">
             {title && <div className="link-block-title">{title}</div>}
@@ -129,22 +133,25 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
               <Menu onClick={event => event.domEvent.stopPropagation()}>
                 <Menu.Item
                   key="delete"
+                  data-testid={TEST_ID_ENUM.editor.linkBlock.deleteButton.id}
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
-                  }}
-                >
+                  }}>
                   <Icon.Delete />
                   {t('link_block.menu.delete')}
                 </Menu.Item>
-                <Menu.Item onClick={handleCopy} key="copy">
+                <Menu.Item onClick={handleCopy} key="copy" data-testid={TEST_ID_ENUM.editor.linkBlock.copyButton.id}>
                   <Icon.Copy />
                   {t('link_block.menu.copy')}
                 </Menu.Item>
               </Menu>
-            }
-          >
-            <Button type="text" className="link-block-menu-button" onClick={event => event.stopPropagation()}>
+            }>
+            <Button
+              data-testid={TEST_ID_ENUM.editor.linkBlock.menuButton.id}
+              type="text"
+              className="link-block-menu-button"
+              onClick={event => event.stopPropagation()}>
               <Icon.More className="link-block-menu-icon" />
             </Button>
           </Popover>
@@ -181,9 +188,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             importSources={importSources}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
-        }
-      >
-        <Button type="text" className="brickdoc-link-block-placeholder">
+        }>
+        <Button data-testid={TEST_ID_ENUM.editor.linkBlock.addButton.id} type="text" className="brickdoc-link-block-placeholder">
           <div className="link-block-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.BlockLevelLink className="link-block-icon" />
           <div className="link-block-content">

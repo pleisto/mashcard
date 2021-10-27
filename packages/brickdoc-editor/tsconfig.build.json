@@ -4,5 +4,8 @@
     "outDir": "dist"
   },
   "include": ["src/**/*", "externals.d.ts", "react-table.d.ts"],
-  "references": [{ "path": "../brickdoc-design-system/tsconfig.build.json" }, { "path": "../brickdoc-uploader/tsconfig.build.json" }]
+  "references": [
+    { "path": "../brickdoc-test-helper/tsconfig.build.json" },
+    { "path": "../brickdoc-design-system/tsconfig.build.json" },
+    { "path": "../brickdoc-uploader/tsconfig.build.json" }]
 }

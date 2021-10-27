@@ -4,6 +4,7 @@ import { Button, Icon, Popover } from '@brickdoc/design-system'
 import { useEditorI18n } from '../../../../../hooks'
 import { SorterFooter } from './SorterFooter'
 import { SorterItem } from './SorterItem'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface SorterOption {
   columnId?: string
@@ -37,9 +38,13 @@ export const Sorter: React.FC<SorterProps> = ({
       <div className="table-toolbar-item-group-panel">
         <div role="group" className="table-toolbar-item-group-content">
           {sorterOptions.map((sorter, index) => (
-            <div key={index} className="table-toolbar-item-option">
+            <div data-testid={TEST_ID_ENUM.editor.tableBlock.sort.option.id} key={index} className="table-toolbar-item-option">
               <SorterItem index={index} sorterSingleOption={sorter} columns={columns} onUpdateSorter={onUpdate} />
-              <Button type="text" className="table-toolbar-item-option-action-button fade" onClick={() => onRemove(index)}>
+              <Button
+                data-testid={TEST_ID_ENUM.editor.tableBlock.sort.option.deleteButton.id}
+                type="text"
+                className="table-toolbar-item-option-action-button fade"
+                onClick={() => onRemove(index)}>
                 <Icon.Delete />
               </Button>
             </div>
@@ -69,8 +74,7 @@ export const Sorter: React.FC<SorterProps> = ({
       overlayClassName="table-block-popover"
       trigger="click"
       placement="bottom"
-      content={Content}
-    >
+      content={Content}>
       {children}
     </Popover>
   )

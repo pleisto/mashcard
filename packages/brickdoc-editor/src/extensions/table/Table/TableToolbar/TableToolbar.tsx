@@ -5,6 +5,7 @@ import { useEditorI18n } from '../../../../hooks'
 import { Filter, FilterOption, FilterGroupOption } from './Filter'
 import { Sorter, SorterOption } from './Sorter'
 import './TableToolbar.css'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface TableToolbarProps {
   title: string
@@ -60,8 +61,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
       onAdd={addFilter}
       onRemove={removeFilter}
       onUpdate={updateFilter}
-      onDuplicate={duplicateFilter}
-    >
+      onDuplicate={duplicateFilter}>
       <Sorter
         columns={columns}
         sorterOptions={sorterOptions}
@@ -69,18 +69,29 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         onUpdate={updateSorter}
         onRemove={removeSorter}
         visible={sortVisible}
-        onVisibleChange={handleVisibleChange(setSortVisible)}
-      >
+        onVisibleChange={handleVisibleChange(setSortVisible)}>
         <div role="toolbar" className="table-block-toolbar">
           <Input className="table-title-input" placeholder={t('table.untitled')} value={title} onChange={handleTitleChange} />
           <div className="table-toolbar-actions">
-            <Button onClick={() => setFilterVisible(true)} type="text" className="table-toolbar-text-button">
+            <Button
+              data-testid={TEST_ID_ENUM.editor.tableBlock.toolbar.filterButton.id}
+              onClick={() => setFilterVisible(true)}
+              type="text"
+              className="table-toolbar-text-button">
               {t('table.filter.text')}
             </Button>
-            <Button onClick={() => setSortVisible(true)} type="text" className="table-toolbar-text-button">
+            <Button
+              data-testid={TEST_ID_ENUM.editor.tableBlock.toolbar.sortButton.id}
+              onClick={() => setSortVisible(true)}
+              type="text"
+              className="table-toolbar-text-button">
               {t('table.sort.text')}
             </Button>
-            <Button type="primary" className="table-toolbar-add-button" onClick={() => onAddNewRow()}>
+            <Button
+              data-testid={TEST_ID_ENUM.editor.tableBlock.toolbar.addButton.id}
+              type="primary"
+              className="table-toolbar-add-button"
+              onClick={() => onAddNewRow()}>
               {t('table.new_row.text')}
               <div className="table-toolbar-add-button-icon">
                 <Icon.ArrowDown />

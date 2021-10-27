@@ -1,6 +1,7 @@
 import React from 'react'
 import { Select, SelectProps, Tag } from '@brickdoc/design-system'
 import { bgColor } from '../../../Cells/SelectCell'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface SelectValueProps {
   value?: string
@@ -21,6 +22,7 @@ export const SelectValue: React.FC<SelectValueProps> = ({ value, onChange, optio
   return (
     <Select
       className="table-toolbar-item-option-select"
+      data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.select.id}
       value={value}
       onChange={onChange}
       showSearch={true}

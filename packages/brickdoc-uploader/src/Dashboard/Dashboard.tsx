@@ -1,6 +1,7 @@
 import React from 'react'
 import { Uppy } from '@uppy/core'
 import { Button } from '@brickdoc/design-system'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import cx from 'classnames'
 import emojiData from './data-by-group.json'
 import { EmojiPanel } from './EmojiPanel'
@@ -26,6 +27,11 @@ const IMPORT_SOURCE_LABEL = {
   unsplash: 'Unsplash',
   emoji: 'Emoji',
   gallery: 'Gallery'
+}
+
+const IMPORT_SOURCE_TEST_ID = {
+  upload: TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id,
+  unsplash: TEST_ID_ENUM.uploader.Dashboard.tabs.Unsplash.id
 }
 
 interface DashboardProps {
@@ -90,8 +96,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
             role="menuitem"
             key={source.type}
             className={cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}
-            onClick={handleNavbarItemClick(source)}
-          >
+            data-testid={IMPORT_SOURCE_TEST_ID[source.type]}
+            onClick={handleNavbarItemClick(source)}>
             {source.typeLabel || IMPORT_SOURCE_LABEL[source.type]}
           </Button>
         ))}

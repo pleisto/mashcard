@@ -7,6 +7,7 @@ import { useEditingStatus } from '../useEditingStatus'
 import { DateRangePicker, DateRangeValue } from './DateRangePicker'
 import './DateRangeCell.css'
 import { DatabaseColumns } from '../../useColumns'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface DateRangeCellProps extends CellProps<object> {}
 
@@ -49,7 +50,12 @@ export const DateRangeCell: React.FC<DateRangeCellProps> = props => {
   const endDate = value?.[1]
 
   return (
-    <div role="button" tabIndex={-1} className="table-block-date-range-cell" onClick={showEditing}>
+    <div
+      data-testid={TEST_ID_ENUM.editor.tableBlock.cell.dateRange.id}
+      role="button"
+      tabIndex={-1}
+      className="table-block-date-range-cell"
+      onClick={showEditing}>
       {!editing && startDate && dayjs(startDate).format(cell.column.dateFormat ?? defaultFormat)}
       {startDate && ' - '}
       {!editing && endDate && dayjs(endDate).format(cell.column.dateFormat ?? defaultFormat)}

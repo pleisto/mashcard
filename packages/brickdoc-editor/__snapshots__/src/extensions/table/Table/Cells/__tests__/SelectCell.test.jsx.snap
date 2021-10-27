@@ -3,6 +3,7 @@
 exports[`SelectCell matches correct snapshot 1`] = `
 <div
   class="table-block-select-cell"
+  data-testid="editor-table-block-cell-select"
   role="button"
   tabindex="-1"
 >

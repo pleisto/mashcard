@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
 import { useReactiveVar } from '@apollo/client'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface PathBreadcrumbProps {
   docMeta: NonNullDocMeta
@@ -33,5 +34,9 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
     )
   })
 
-  return <div className={className}>{pathData}</div>
+  return (
+    <div data-testid={TEST_ID_ENUM.layout.header.PathBreadcrumb.id} className={className}>
+      {pathData}
+    </div>
+  )
 }

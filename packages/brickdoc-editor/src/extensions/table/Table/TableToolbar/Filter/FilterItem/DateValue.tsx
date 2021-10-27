@@ -1,6 +1,7 @@
 import React from 'react'
 import { DatePicker, Select } from '@brickdoc/design-system'
 import dayjs from 'dayjs'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface DateValueProps {
   value?: string
@@ -36,7 +37,11 @@ export const DateValue: React.FC<DateValueProps> = ({ value, onChange }) => {
   const exactDateValue = !value || value === EXACT_DATE ? null : dayjs(value)
   return (
     <>
-      <Select className="table-toolbar-item-option-select" value={isExactDate ? EXACT_DATE : value} onChange={onChange}>
+      <Select
+        data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.select.id}
+        className="table-toolbar-item-option-select"
+        value={isExactDate ? EXACT_DATE : value}
+        onChange={onChange}>
         {options.map(item => (
           <Select.Option key={item.label} value={item.value.toString()} title={item.label}>
             {item.label}

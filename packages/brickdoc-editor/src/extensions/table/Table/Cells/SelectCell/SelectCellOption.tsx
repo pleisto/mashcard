@@ -4,6 +4,7 @@ import { Tag, Button, Icon, Popover, Menu, Input } from '@brickdoc/design-system
 import { TableColumnSelectOption } from 'react-table'
 import { bgColor } from './SelectCell'
 import { COLOR } from '../../../../color'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface SelectCellOptionProps {
   option: TableColumnSelectOption
@@ -25,7 +26,7 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
   const inputRef = React.useRef<Input | null>()
 
   return (
-    <div className="select-cell-option-item" role="listitem">
+    <div className="select-cell-option-item" role="listitem" data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.id}>
       <Tag color={bgColor(option.color)} style={{ color: option.color }}>
         {option.label}
       </Tag>
@@ -58,12 +59,10 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
                 <Menu.Item
                   className={cx('select-cell-menu-color-item', { active: option.color === colorMeta.color })}
                   onClick={() => onOptionValueChange({ ...option, color: colorMeta.color })}
-                  key={colorMeta.color}
-                >
+                  key={colorMeta.color}>
                   <span
                     className="select-cell-menu-color-icon-container"
-                    style={{ color: colorMeta.color, background: bgColor(colorMeta.color) }}
-                  >
+                    style={{ color: colorMeta.color, background: bgColor(colorMeta.color) }}>
                     <Icon.FontSize />
                   </span>
                   {colorMeta.label}
@@ -75,14 +74,12 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
         }
         visible={visible}
         onVisibleChange={handleVisibleChange}
-        placement="right"
-      >
+        placement="right">
         <Button
-          data-testid="table-select-cell-option-menu-button"
+          data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.menuButton.id}
           className="select-cell-option-menu-button"
           type="text"
-          onClick={handleOpenMenu}
-        >
+          onClick={handleOpenMenu}>
           <Icon.More className="select-cell-option-menu-icon" />
         </Button>
       </Popover>

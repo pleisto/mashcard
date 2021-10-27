@@ -12,6 +12,7 @@ import { useEditorI18n } from '../../../hooks'
 import { linkStorage, sizeFormat } from '../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 const MAX_WIDTH = 700
 
@@ -151,8 +152,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               updateImageAttributes({
                 width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
               })
-            }}
-          >
+            }}>
             <Popover
               trigger="click"
               placement="bottom"
@@ -169,8 +169,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
                     {t('image_section.menu.delete')}
                   </Menu.Item>
                 </Menu>
-              }
-            >
+              }>
               <div className="image-section-menu-button">
                 <Icon.More className="image-section-menu-icon" />
               </div>
@@ -181,8 +180,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               isZoomed={showPreview}
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
-              }}
-            >
+              }}>
               {!loaded && (
                 <Skeleton.Image
                   style={
@@ -192,9 +190,20 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
                   }
                 />
               )}
-              <img role="img" className={cx('brickdoc-block-image', { loading: !loaded })} src={url} alt="" onLoad={onImageLoad} />
+              <img
+                data-testid={TEST_ID_ENUM.editor.imageSection.image.id}
+                role="img"
+                className={cx('brickdoc-block-image', { loading: !loaded })}
+                src={url}
+                alt=""
+                onLoad={onImageLoad}
+              />
             </ImagePreview>
-            <button className="image-section-zoom-in-button" onDoubleClick={previewImage} />
+            <button
+              data-testid={TEST_ID_ENUM.editor.imageSection.zoomInButton.id}
+              className="image-section-zoom-in-button"
+              onDoubleClick={previewImage}
+            />
           </Resizable>
         </div>
       </BlockWrapper>
@@ -234,9 +243,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
             onProgress={onProgress}
             importSources={importSources}
           />
-        }
-      >
-        <Button type="text" className="brickdoc-block-image-section">
+        }>
+        <Button type="text" className="brickdoc-block-image-section" data-testid={TEST_ID_ENUM.editor.imageSection.addButton.id}>
           <div className="image-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.Image className="image-section-icon" />
           <div className="image-section-content">

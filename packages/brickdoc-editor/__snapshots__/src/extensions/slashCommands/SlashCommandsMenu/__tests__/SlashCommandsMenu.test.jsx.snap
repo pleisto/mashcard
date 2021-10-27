@@ -12,6 +12,7 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
   </div>
   <button
     class="brk-btn brk-btn-text slash-menu-item"
+    data-testid="editor-slash-commands-item"
     role="menuitem"
     type="button"
   >
@@ -39,6 +40,7 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
   </button>
   <button
     class="brk-btn brk-btn-text slash-menu-item"
+    data-testid="editor-slash-commands-item"
     role="menuitem"
     type="button"
   >
@@ -66,6 +68,7 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
   </button>
   <button
     class="brk-btn brk-btn-text slash-menu-item"
+    data-testid="editor-slash-commands-item"
     role="menuitem"
     type="button"
   >

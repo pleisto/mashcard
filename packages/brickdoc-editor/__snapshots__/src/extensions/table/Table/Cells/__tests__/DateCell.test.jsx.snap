@@ -3,6 +3,7 @@
 exports[`DateCell matches correct snapshot 1`] = `
 <div
   class="table-block-date-cell"
+  data-testid="editor-table-block-cell-date"
   role="button"
   tabindex="-1"
 >

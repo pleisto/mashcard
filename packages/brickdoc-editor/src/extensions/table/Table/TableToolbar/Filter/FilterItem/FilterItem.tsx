@@ -7,6 +7,7 @@ import { COLUMN_TYPE } from '../../../columnType'
 import { TextValue } from './TextValue'
 import { SelectValue } from './SelectValue'
 import { DateValue } from './DateValue'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface FilterItemProps {
   path: number[]
@@ -59,12 +60,12 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
     <>
       <Select
         className="table-toolbar-item-option-select"
+        data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.select.id}
         showSearch={true}
         optionFilterProp="title"
         filterOption={handleFilterOption}
         onChange={handleUpdateColumnId}
-        value={filterSingleOption.columnId}
-      >
+        value={filterSingleOption.columnId}>
         {selectColumnComponents}
       </Select>
       <Select
@@ -72,9 +73,9 @@ export const FilterItem: React.FC<FilterItemProps> = ({ path, columns, filterSin
         optionFilterProp="title"
         filterOption={handleFilterOption}
         className="table-toolbar-item-option-select"
+        data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.select.id}
         onChange={handleUpdateMatchType}
-        value={filterSingleOption.matchType}
-      >
+        value={filterSingleOption.matchType}>
         {matchedColumnType?.matches.map(item => (
           <Select.Option key={item.value} value={item.value} title={t(`table.filter.matches.${item.key}`)}>
             {t(`table.filter.matches.${item.key}`)}

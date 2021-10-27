@@ -23,6 +23,7 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import '@testing-library/cypress/add-commands'
 import 'cypress-file-upload'
 import 'cypress-real-events/support'
@@ -50,6 +51,15 @@ Cypress.Commands.add(
     })
   }
 )
+
+Cypress.Commands.add('slashCommand', (command: string) => {
+  cy.get('[contenteditable]').type(`/${command}`)
+})
+
+Cypress.Commands.add('addBlock', (blockName: string) => {
+  cy.get('[contenteditable]').type(`/${blockName}`)
+  cy.findByTestId(TEST_ID_ENUM.editor.slashCommands.item.id).click()
+})
 
 Cypress.Commands.add('waitForResources', (...args) => {
   if (Cypress.browser.family === 'firefox') {

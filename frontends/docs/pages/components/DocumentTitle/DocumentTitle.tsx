@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Popover, Icon, Input } from '@brickdoc/design-system'
 import styles from './DocumentTitle.module.less'
 import { DashboardProps } from '@brickdoc/uploader'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { DocumentIcon, DocumentIconMeta } from './DocumentIcon'
 import { DocumentCover, DocumentCoverMeta } from './DocumentCover'
 import { useDocsI18n } from '../../../common/hooks'
@@ -80,7 +81,11 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
               )}
               {!documentCoverMeta && (
                 <Popover {...coverPopoverProps}>
-                  <Button type="text" className={styles.item} disabled={!editable}>
+                  <Button
+                    data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
+                    type="text"
+                    className={styles.item}
+                    disabled={!editable}>
                     <Icon.Image className={styles.icon} />
                     <span className={styles.name}>{t('title.add_cover')}</span>
                   </Button>
@@ -95,6 +100,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
               </Popover>
             )}
             <Input
+              data-testid={TEST_ID_ENUM.page.DocumentPage.titleInput.id}
               className={styles.titleInput}
               value={title}
               onChange={e => onTitleChange(e.target.value)}

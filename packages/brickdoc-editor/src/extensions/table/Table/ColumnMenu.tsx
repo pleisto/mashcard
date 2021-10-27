@@ -1,8 +1,8 @@
 import React from 'react'
+import { TableColumnType } from 'react-table'
 import { Popover, Modal, Menu, Input, Icon } from '@brickdoc/design-system'
 import { COLUMN_TYPE } from './columnType'
 import { useEditorI18n } from '../../../hooks'
-import { TableColumnType } from 'react-table'
 
 interface ColumnMenuProps {
   onColumnNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -72,8 +72,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
                     {React.createElement(currentColumnType.icon)}
                     <span>{t(`table.column_types.${currentColumnType.type}`)}</span>
                   </>
-                }
-              >
+                }>
                 <Menu.ItemGroup title={t('table.column_types.basic')}>
                   {COLUMN_TYPE.map(type => (
                     <Menu.Item key={type.type} onClick={() => handleUpdateColumnType(type.type)}>
@@ -91,8 +90,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
           </Menu>
         }
         trigger="click"
-        placement="bottomLeft"
-      >
+        placement="bottomLeft">
         {children}
       </Popover>
     </>

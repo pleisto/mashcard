@@ -3,6 +3,7 @@
 exports[`DateRangeCell matches correct snapshot 1`] = `
 <div
   class="table-block-date-range-cell"
+  data-testid="editor-table-block-cell-date-range"
   role="button"
   tabindex="-1"
 />

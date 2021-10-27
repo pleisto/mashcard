@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader",
     "@tiptap/core": "2.0.0-beta.106",
     "@tiptap/extension-blockquote": "2.0.0-beta.15",

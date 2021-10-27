@@ -22,6 +22,7 @@ exports[`Table matches correct snapshot 1`] = `
     >
       <button
         class="brk-btn brk-btn-text table-toolbar-text-button"
+        data-testid="editor-table-block-toolbar-filter-button"
         type="button"
       >
         <span>
@@ -30,6 +31,7 @@ exports[`Table matches correct snapshot 1`] = `
       </button>
       <button
         class="brk-btn brk-btn-text table-toolbar-text-button"
+        data-testid="editor-table-block-toolbar-sort-button"
         type="button"
       >
         <span>
@@ -38,6 +40,7 @@ exports[`Table matches correct snapshot 1`] = `
       </button>
       <button
         class="brk-btn brk-btn-primary table-toolbar-add-button"
+        data-testid="editor-table-block-toolbar-add-button"
         type="button"
       >
         <span>
@@ -70,6 +73,7 @@ exports[`Table matches correct snapshot 1`] = `
   </div>
   <div
     class="brickdoc-table-block"
+    data-testid="editor-table-block"
   >
     <div
       class="table-block-table"
@@ -110,6 +114,7 @@ exports[`Table matches correct snapshot 1`] = `
           >
             <button
               class="brk-btn brk-btn-text table-block-add-column-button"
+              data-testid="editor-table-block-column-add-button"
               type="button"
             >
               <span

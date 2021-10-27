@@ -4,6 +4,7 @@ import styles from './DocumentCover.module.less'
 import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface DocumentCoverImage extends BlockImage {
   type: Blocktype.Image
@@ -57,7 +58,11 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
           <>
             {documentCoverMeta && (
               <Popover {...popoverProps}>
-                <Button className={styles.button} type="text" disabled={!editable}>
+                <Button
+                  data-testid={TEST_ID_ENUM.page.DocumentPage.changeCoverButton.id}
+                  className={styles.button}
+                  type="text"
+                  disabled={!editable}>
                   {t('title.change_cover')}
                 </Button>
               </Popover>

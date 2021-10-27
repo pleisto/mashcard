@@ -8,6 +8,7 @@ exports[`LinkBlock matches correct snapshot 1`] = `
 >
   <button
     class="brk-btn brickdoc-link-block-link"
+    data-testid="editor-link-block-link"
     type="button"
   >
     <div
@@ -35,6 +36,7 @@ exports[`LinkBlock matches correct snapshot 1`] = `
     </div>
     <button
       class="brk-btn brk-btn-text link-block-menu-button"
+      data-testid="editor-link-block-menu-button"
       type="button"
     >
       <span

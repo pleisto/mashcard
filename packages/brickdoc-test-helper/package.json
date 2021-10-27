@@ -1,0 +1,19 @@
+{
+  "name": "@brickdoc/test-helper",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "cleanup": "rm -rf dist"
+  },
+  "main": "./dist/src/index.js",
+  "module": "./src/index.ts",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}

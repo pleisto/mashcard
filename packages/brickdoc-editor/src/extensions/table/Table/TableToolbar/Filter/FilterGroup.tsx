@@ -6,6 +6,7 @@ import { useEditorI18n } from '../../../../../hooks'
 import { FilterGroupOption, FilterOption } from './Filter'
 import { FilterItem } from './FilterItem'
 import { FilterFooter } from './FilterFooter'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface FilterGroupProps {
   filterGroup: FilterGroupOption
@@ -38,7 +39,10 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
     <div data-testid="brickdoc-table-filter-group" role="group" className={cx('table-toolbar-item-group-panel', { cascade })}>
       <div className="table-toolbar-item-group-content">
         {filterGroup.filters.map((filter, index) => (
-          <div key={index} className={cx('table-toolbar-item-option', filter.type)}>
+          <div
+            data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.id}
+            key={index}
+            className={cx('table-toolbar-item-option', filter.type)}>
             {isFirst(index) && <span className="table-toolbar-item-option-head-label">{t('table.filter.where')}</span>}
             {isSecond(index) && (
               <Select className="table-toolbar-item-option-head-select" value={filterGroup.collectionType} onChange={updateCollectionType}>
@@ -75,18 +79,28 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
               overlayClassName="table-block-menu-popover"
               content={
                 <Menu className="table-block-menu">
-                  <Menu.Item className="table-block-menu-item" key="Remove" onClick={() => onRemoveFilter([...(path ?? []), index])}>
+                  <Menu.Item
+                    data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.deleteButton.id}
+                    className="table-block-menu-item"
+                    key="Remove"
+                    onClick={() => onRemoveFilter([...(path ?? []), index])}>
                     <Icon.Delete />
                     <span>{t('table.filter.remove')}</span>
                   </Menu.Item>
-                  <Menu.Item className="table-block-menu-item" key="Duplicate" onClick={() => onDuplicateFilter([...(path ?? []), index])}>
+                  <Menu.Item
+                    data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.duplicateButton.id}
+                    className="table-block-menu-item"
+                    key="Duplicate"
+                    onClick={() => onDuplicateFilter([...(path ?? []), index])}>
                     <Icon.Copy />
                     <span>{t('table.filter.duplicate')}</span>
                   </Menu.Item>
                 </Menu>
-              }
-            >
-              <Button type="text" className="table-toolbar-item-option-action-button">
+              }>
+              <Button
+                data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.menuButton.id}
+                type="text"
+                className="table-toolbar-item-option-action-button">
                 <Icon.More />
               </Button>
             </Popover>
