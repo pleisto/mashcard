@@ -21,7 +21,7 @@ module System
       new_input = input.to_h.merge(service_name: service)
 
       block_id = args[:block_id] || "global"
-      key = "#{current_pod.fetch('webid')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
+      key = "#{current_pod.fetch('id_hash')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
 
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
       blob = ActiveStorage::Blob.create!(

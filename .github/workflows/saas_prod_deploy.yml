@@ -111,6 +111,6 @@ jobs:
           APP_ENV_HOST: ${{ env.domain }}
           APP_ENV_ASSET_HOST: https://s3.brickapis.com/globalcdn/brickdoc-saas-prod
           APP_ENV_BRICKDOC_BUILD: ${{ github.sha }}.saas-prod
-          APP_ENV_AWS_REGION: us-wset-2
+          APP_ENV_AWS_REGION: us-west-2
           APP_ENV_AWS_PUBLIC_BUCKET: brickdoc-prod-public
           APP_ENV_AWS_PRIVATE_BUCKET: brickdoc-prod-private

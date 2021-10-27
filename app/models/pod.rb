@@ -102,6 +102,6 @@ class Pod < ApplicationRecord
   end
 
   def as_session_context
-    attributes.slice('id', 'webid', 'owner_id')
+    attributes.slice('id', 'webid', 'owner_id').merge('id_hash' => BrickGraphQL::ReversibleIntHash.encode(id))
   end
 end
