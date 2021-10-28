@@ -7,8 +7,14 @@
     padding: 0;
     margin-top: 2px;
   }
+  :global(.brk-tree-switcher_open + .brk-tree-node-content-wrapper) {
+    width: 100%;
+    margin-left: -32px;
+    padding-left: 32px;
+  }
   :global(.brk-tree-node-content-wrapper) {
     width: 100%;
+    box-sizing: border-box;
   }
   :global(.brk-tree-treenode-selected),
   :global(.brk-tree-treenode:hover) {

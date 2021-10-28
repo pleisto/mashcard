@@ -5,7 +5,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: @font-size-sm;
-  line-height: @line-height-sm * 2;
+  line-height: @line-height-sm * 2 - 2px;
+  border: 1px solid transparent;
   align-items: center;
   flex-grow: 1;
 }
@@ -18,27 +19,25 @@
     // color: @text-color;
     // flex-grow: 1;
   }
-  .addBtn {
+  .btnBase {
     opacity: 0%;
-    padding: 4px;
     height: auto;
     font-size: inherit;
-    border: none;
     line-height: 1;
+    border: none;
     &:hover {
       background-color: transparent;
     }
   }
+  .addBtn {
+    .btnBase;
+
+    padding: 4px;
+  }
   .moreBtn {
+    .btnBase;
+
     margin-right: 0;
-    opacity: 0%;
-    height: auto;
-    font-size: inherit;
-    border: none;
-    line-height: 1;
-    &:hover {
-      background-color: transparent;
-    }
   }
   &:hover {
     .moreBtn {

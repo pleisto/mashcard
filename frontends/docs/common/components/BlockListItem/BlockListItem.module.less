@@ -1,0 +1,71 @@
+@import '@brickdoc/design-system/components/style/themes';
+
+.popoverTrash {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+
+  .content {
+    display: flex;
+
+    .avatar {
+      padding-right: 6px;
+
+      &:global(.brk-avatar-icon) {
+        border-radius: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        font-size: 17px;
+        color: @deep-purple-3;
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    .titleWarp {
+      flex-direction: column;
+    }
+
+    .title {
+      font-weight: 500;
+      color: #292333;
+      padding: 0;
+      margin: 0;
+      font-size: @font-size-sm;
+      line-height: @line-height-md;
+      height: @line-height-md;
+    }
+
+    .subTitle {
+      margin: 0;
+      font-size: @font-size-xs;
+      line-height: @line-height-sm;
+      color: @text-color-secondary;
+    }
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    // position: absolute;
+    // right: 0;
+    // top: 50%;
+    // transform: translate(0, -50%);
+
+    & .button {
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      color: #847e8e;
+    }
+
+    & .button + .button {
+      margin-left: 8px;
+    }
+  }
+}

@@ -94,7 +94,8 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
         onMouseDown={onMouseDown}
         onClick={onSearch}
         loading={loading}
-        icon={searchIcon}>
+        icon={searchIcon}
+      >
         {enterButton}
       </Button>
     )

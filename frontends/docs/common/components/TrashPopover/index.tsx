@@ -28,11 +28,11 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
     return (
       <Tabs.TabPane tab={tab} key={key}>
         <Input.Search
+          className={styles.btnHide}
           placeholder={t('trash.search')}
           onSearch={value => {
             handleSearch(value, key)
           }}
-          allowClear
         />
         <div className={styles.list}>
           <PageTrash webid={docMeta.webid} search={(searchObject as any)[key]} docid={docid} setVisible={setVisible} />

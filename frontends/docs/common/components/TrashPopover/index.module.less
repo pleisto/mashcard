@@ -5,6 +5,14 @@
   scrollbar-width: none;
 }
 
+.btnHide {
+  padding: 0 16px;
+
+  :global(.brk-input-group-addon) {
+    display: none;
+  }
+}
+
 .tabs {
   :global(.brk-tabs-tab) {
     height: 40px;
@@ -15,6 +23,9 @@
 .popover {
   :global(.brk-popover-inner-content) {
     width: 470px;
+    padding: 0;
+  }
+  :global(.brk-tabs-nav) {
     padding: 0 16px;
   }
 }

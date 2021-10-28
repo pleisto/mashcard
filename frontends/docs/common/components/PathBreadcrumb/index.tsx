@@ -25,7 +25,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
     return (
       <div className={styles.path} key={idx}>
         <Link className={styles.path} to={link}>
-          {emoji}
+          <span className={styles.emoji}>{emoji}</span>
           {path.text || t('title.untitled')}
         </Link>
         {idx < paths.length - 1 ? <span className={styles.splicing}>&nbsp;/&nbsp;</span> : <></>}

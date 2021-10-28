@@ -254,16 +254,24 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
       <Dropdown trigger={['contextMenu']} overlay={menu} visible={dropdownVisible} onVisibleChange={onDropdownVisibleChange}>
         <div className={styles.menu}>
           {linkData}
-          <Tooltip title={t('blocks.more')}>
-            <Button className={styles.moreBtn} type="text" onClick={onClickMoreButton}>
-              <Icon.More />
-            </Button>
-          </Tooltip>
-          <Tooltip title={t('blocks.create_sub_pages')}>
-            <Button className={styles.addBtn} type="text" onClick={onClickPlus} loading={createBlockLoading} disabled={createBlockLoading}>
-              <Icon.Add />
-            </Button>
-          </Tooltip>
+          <div>
+            <Tooltip title={t('blocks.more')}>
+              <Button className={styles.moreBtn} type="text" onClick={onClickMoreButton}>
+                <Icon.More />
+              </Button>
+            </Tooltip>
+            <Tooltip title={t('blocks.create_sub_pages')}>
+              <Button
+                className={styles.addBtn}
+                type="text"
+                onClick={onClickPlus}
+                loading={createBlockLoading}
+                disabled={createBlockLoading}
+              >
+                <Icon.Add />
+              </Button>
+            </Tooltip>
+          </div>
         </div>
       </Dropdown>
     </>
