@@ -40,7 +40,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
         state = ShareLinkState.Disabled
         break
     }
-    const shareLink: ShareLinkInput = { webid: item.shareWebid, policy, state }
+    const shareLink: ShareLinkInput = { webid: item.sharePodData.webid, policy, state }
     const input: BlockCreateShareLinkInput = { id: docMeta.id, target: [shareLink] }
 
     await blockCreateShareLink({ variables: { input } })

@@ -214,7 +214,6 @@ export const queryBlockShareLinks = gql`
   query GetBlockShareLinks($id: String!) {
     blockShareLinks(id: $id) {
       key
-      shareWebid
       policy
       state
       sharePodData {

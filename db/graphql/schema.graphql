@@ -1515,7 +1515,6 @@ type ShareLink {
   key: String!
   policy: Policytype!
   sharePodData: pod!
-  shareWebid: String!
   state: ShareLinkState!
 }
 

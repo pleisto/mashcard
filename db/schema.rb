@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_091223) do
+ActiveRecord::Schema.define(version: 2021_10_27_054723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -182,10 +182,10 @@ ActiveRecord::Schema.define(version: 2021_10_22_091223) do
     t.bigint "state", default: 0, null: false, comment: "Status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "share_webid", null: false
     t.integer "policy", null: false
+    t.bigint "share_pod_id"
     t.index ["key"], name: "index_docs_share_links_on_key", unique: true
-    t.index ["share_webid"], name: "index_docs_share_links_on_share_webid"
+    t.index ["share_pod_id"], name: "index_docs_share_links_on_share_pod_id"
   end
 
   create_table "docs_snapshots", force: :cascade do |t|

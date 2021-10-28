@@ -938,7 +938,6 @@ export type ShareLink = {
   key: Scalars['String']
   policy: Policytype
   sharePodData: Pod
-  shareWebid: Scalars['String']
   state: ShareLinkState
 }
 
@@ -1782,7 +1781,6 @@ export type GetBlockShareLinksQuery = {
   blockShareLinks: Array<{
     __typename?: 'ShareLink'
     key: string
-    shareWebid: string
     policy: Policytype
     state: ShareLinkState
     sharePodData: {
@@ -3383,7 +3381,6 @@ export const GetBlockShareLinksDocument = gql`
   query GetBlockShareLinks($id: String!) {
     blockShareLinks(id: $id) {
       key
-      shareWebid
       policy
       state
       sharePodData {

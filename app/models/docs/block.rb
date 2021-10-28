@@ -201,7 +201,7 @@ class Docs::Block < ApplicationRecord
   end
 
   def upsert_share_links!(target)
-    exists_share_links = share_links.to_a.index_by(&:share_webid)
+    exists_share_links = share_links.includes(:share_pod).to_a.index_by(&:share_webid)
     transaction do
       target.each do |obj|
         exist = exists_share_links[obj[:webid]]
@@ -213,7 +213,15 @@ class Docs::Block < ApplicationRecord
             exist.update!(state: obj[:state])
           end
         else
-          share_links.create!(params.merge(share_webid: obj[:webid]))
+          pod_id =
+            if obj[:webid] == Pod::ANYONE_WEBID
+              nil
+            else
+              pod = Pod.find_by(webid: obj[:webid])
+              raise ArgumentError, I18n.t("errors.messages.webid_presence_invalid") if pod.nil?
+              pod.id
+            end
+          share_links.create!(params.merge(share_pod_id: pod_id))
         end
       end
     end
@@ -537,9 +545,9 @@ class Docs::Block < ApplicationRecord
 
     ## Anonymous user
     if user.nil?
-      preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_webid)
+      preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_pod_id)
 
-      anyone_share_link = preload_enabled_share_links[Pod::ANYONE_WEBID]
+      anyone_share_link = preload_enabled_share_links[nil]
 
       return false if anyone_share_link.nil?
 
@@ -560,11 +568,11 @@ class Docs::Block < ApplicationRecord
     return true if pod_id.in?(preload_pods.map(&:id))
 
     ## Share links
-    webids = preload_pods.map(&:webid) + [Pod::ANYONE_WEBID]
-    preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_webid)
+    pod_ids = preload_pods.map(&:id) + [nil]
+    preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_pod_id)
 
-    webids.each do |webid|
-      return true if preload_enabled_share_links[webid]
+    pod_ids.each do |pod_id|
+      return true if preload_enabled_share_links[pod_id]
     end
 
     false

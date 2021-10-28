@@ -8,10 +8,10 @@ describe Docs::Queries::BlockShareLinks, type: :query do
       query GetBlockShareLinks($id: String!) {
         blockShareLinks(id: $id) {
           key
-          shareWebid
           policy
           state
           sharePodData {
+            webid
             name
             email
             avatarData {
@@ -38,7 +38,7 @@ describe Docs::Queries::BlockShareLinks, type: :query do
       block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'view'])
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data['blockShareLinks'][0]['shareWebid']).to eq(Pod::ANYONE_WEBID)
+      expect(response.data['blockShareLinks'][0]['sharePodData']['webid']).to eq(Pod::ANYONE_WEBID)
 
       block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'disabled', policy: 'view'])
       internal_graphql_execute(query, { id: block.id })

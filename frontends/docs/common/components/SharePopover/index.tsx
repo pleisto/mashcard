@@ -37,7 +37,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const ANYONE_WEBID = 'anyone'
 
   useEffect(() => {
-    const anyoneShareLink = data?.blockShareLinks.find(link => link.shareWebid === ANYONE_WEBID)
+    const anyoneShareLink = data?.blockShareLinks.find(link => link.sharePodData.webid === ANYONE_WEBID)
     if (anyoneShareLink) {
       setShareWithAnonymousValue(anyoneShareLink.state === ShareLinkState.Enabled)
       setAnonymousEditableValue(anyoneShareLink.policy === Policytype.Edit)
@@ -103,8 +103,9 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     </>
   ) : null
 
-  const inviteData = data?.blockShareLinks.filter(link => link.state === ShareLinkState.Enabled && link.shareWebid !== ANYONE_WEBID) ?? []
-  const suggestPods = data?.blockShareLinks.filter(link => link.shareWebid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
+  const inviteData =
+    data?.blockShareLinks.filter(link => link.state === ShareLinkState.Enabled && link.sharePodData.webid !== ANYONE_WEBID) ?? []
+  const suggestPods = data?.blockShareLinks.filter(link => link.sharePodData.webid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
 
   const inviteList = inviteData.length ? (
     <div className={styles.invite_list}>
