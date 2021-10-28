@@ -57,6 +57,10 @@ class Pod < ApplicationRecord
     blob.signed_id
   end
 
+  def pod_attributes
+    attributes.merge('avatar_data' => avatar_data)
+  end
+
   ## NOTE persist pod_id and user_id
   def fix_avatar!
     blob = avatar.blob
