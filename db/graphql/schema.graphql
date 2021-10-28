@@ -52,6 +52,11 @@ exceed the size of a 32-bit integer, it's encoded as a string.
 """
 scalar BigInt
 
+type BlockAlias {
+  key: String!
+  payload: JSON!
+}
+
 type BlockAttachment {
   """
   height
@@ -289,18 +294,6 @@ type BlockHardDeletePayload {
   errors: [String!]!
 }
 
-enum BlockIDKind {
-  """
-  ALIAS
-  """
-  a
-
-  """
-  NORMAL
-  """
-  p
-}
-
 """
 GraphQL
 """
@@ -355,6 +348,11 @@ type BlockInfo {
   collaborators: [pod!]!
 
   """
+  alias
+  """
+  enabledAlias: BlockAlias
+
+  """
   icon
   """
   icon: BlockIcon
@@ -378,11 +376,6 @@ type BlockInfo {
   path
   """
   pathArray: [BlockPath!]!
-
-  """
-  payload
-  """
-  payload: JSON!
 
   """
   permission
@@ -1371,11 +1364,6 @@ type RootQuery {
     id
     """
     id: String!
-
-    """
-    kind
-    """
-    kind: BlockIDKind!
 
     """
     webid

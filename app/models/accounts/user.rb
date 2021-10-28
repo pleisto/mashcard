@@ -66,7 +66,11 @@ class Accounts::User < ApplicationRecord
   end
 
   def save_last_position!(webid, block_id)
-    return if last_webid == webid && last_block_ids[webid] == block_id
+    return true if last_webid == webid && last_block_ids[webid] == block_id
+
+    unless last_block_ids.keys.include?(webid)
+      return false unless pods.find_by(webid: webid)
+    end
 
     update!(last_webid: webid, last_block_ids: last_block_ids.merge(webid => block_id))
   end

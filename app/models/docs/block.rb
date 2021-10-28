@@ -48,7 +48,9 @@ class Docs::Block < ApplicationRecord
   has_many :histories, dependent: :restrict_with_exception
   has_many :snapshots, dependent: :restrict_with_exception
   has_many :share_links, dependent: :restrict_with_exception
-  has_many :enabled_share_links, -> { enable }, class_name: "Docs::ShareLink", dependent: :restrict_with_exception
+  has_many :enabled_share_links, -> { enabled }, class_name: "Docs::ShareLink", dependent: :restrict_with_exception
+  has_one :enabled_alias, -> { enabled }, class_name: "Docs::Alias"
+  has_many :aliases
 
   validates :meta, presence: true, allow_blank: true
   # validates :data, presence: true
@@ -65,24 +67,24 @@ class Docs::Block < ApplicationRecord
   DUPLICATE_SORT_GAP = 4
   has_many_attached :attachments
 
-  def self.find_by_kind(id, kind, webid)
-    case kind
-    when 'p'
-      o = find_by(id: id)
-      return [o, {}]
-    when 'a'
-      pod = Pod.find_by(webid: webid)
-      return [nil, {}] if pod.nil?
-      a = Docs::Alias.enabled.find_by(pod_id: pod.id, alias: id)
-      return [nil, {}] if a.nil?
-      return [a.block, a.payload]
+  def self.find_by_slug(id, webid, current_pod = {})
+    pod_id =
+      if current_pod.present? && current_pod['webid'] == webid
+        current_pod.fetch('id')
+      else
+        Pod.find_by(webid: webid)&.id
+      end
+
+    return [nil, nil] if pod_id.nil?
+
+    if id =~ Brickdoc::Validators::UUIDValidator::REGEXP
+      o = find_by(pod_id: pod_id, id: id)
+      [o, nil]
+    else
+      a = Docs::Alias.enabled.find_by(pod_id: pod_id, alias: id)
+      return [nil, nil] if a.nil?
+      [a.block, a]
     end
-
-    [nil, {}]
-  end
-
-  def create_alias!(a)
-    Docs::Alias.create!(alias: a, block_id: id, pod_id: pod_id)
   end
 
   def title

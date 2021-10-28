@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import { BlockIdKind } from '@/BrickdocGraphQL'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { AutoComplete, Input, Modal, SelectProps } from '@brickdoc/design-system'
 import { Search as SearchOutlined } from '@brickdoc/design-system/components/icon'
@@ -43,7 +42,7 @@ export const SearchModal: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   const onSelect = (value: string): void => {
     setSearchModalVisible(false)
-    navigate(`/${docMeta.webid}/${BlockIdKind.P}/${value.split('#')[0]}`)
+    navigate(`/${docMeta.webid}/${value.split('#')[0]}`)
   }
   const suffixDom = <span>⌘+P</span>
 

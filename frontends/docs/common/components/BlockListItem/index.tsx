@@ -2,7 +2,6 @@ import {
   Block,
   BlockEmoji,
   BlockHardDeleteInput,
-  BlockIdKind,
   BlockRestoreInput,
   Blocktype,
   useBlockHardDeleteMutation,
@@ -38,7 +37,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
   const [blockHardDelete] = useBlockHardDeleteMutation({ refetchQueries: [queryTrashBlocks] })
   const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryTrashBlocks, queryPageBlocks] })
 
-  const link = `/${webid}/${BlockIdKind.P}/${block.id}`
+  const link = `/${webid}/${block.id}`
 
   const onClickLink = (): void => {
     setVisible(false)

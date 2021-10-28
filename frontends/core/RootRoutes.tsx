@@ -28,7 +28,7 @@ export const RootRoutes: FC = () => {
               </RequireLogin>
             }
           />
-          <Route path=":kind/:docid/*" element={<DocsModule />} />
+          <Route path=":docid/*" element={<DocsModule />} />
           <Route
             path="*"
             element={

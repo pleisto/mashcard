@@ -23,8 +23,6 @@ class Docs::ShareLink < ApplicationRecord
   belongs_to :block, optional: true
   belongs_to :share_pod, optional: true, class_name: "Pod"
 
-  scope :enable, -> { where(state: :enabled) }
-
   enum state: {
     enabled: 0,
     disabled: 10

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlockEmoji, BlockIdKind, Blocktype } from '@/BrickdocGraphQL'
+import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
 import { editorVar } from '../../../reactiveVars'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Link } from 'react-router-dom'
@@ -20,7 +20,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
   const { t } = useDocsI18n()
 
   const pathData = paths.map((path, idx) => {
-    const link = docMeta.isMine ? `/${docMeta.webid}/${BlockIdKind.P}/${path.id}` : '#'
+    const link = docMeta.isMine ? `/${docMeta.webid}/${path.id}` : '#'
     const emoji = path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
     return (
       <div className={styles.path} key={idx}>

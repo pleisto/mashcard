@@ -48,6 +48,12 @@ export type AuthorizationResult = {
   value: Scalars['Boolean']
 }
 
+export type BlockAlias = {
+  __typename?: 'BlockAlias'
+  key: Scalars['String']
+  payload: Scalars['JSON']
+}
+
 export type BlockAttachment = {
   __typename?: 'BlockAttachment'
   /** height */
@@ -183,13 +189,6 @@ export type BlockHardDeletePayload = {
   errors: Array<Scalars['String']>
 }
 
-export enum BlockIdKind {
-  /** ALIAS */
-  A = 'a',
-  /** NORMAL */
-  P = 'p'
-}
-
 /** GraphQL */
 export type BlockIcon = BlockEmoji | BlockImage
 
@@ -217,6 +216,8 @@ export type BlockInfo = {
   __typename?: 'BlockInfo'
   /** pod */
   collaborators: Array<Pod>
+  /** alias */
+  enabledAlias?: Maybe<BlockAlias>
   /** icon */
   icon?: Maybe<BlockIcon>
   /** id */
@@ -227,8 +228,6 @@ export type BlockInfo = {
   isMaster: Scalars['Boolean']
   /** path */
   pathArray: Array<BlockPath>
-  /** payload */
-  payload: Scalars['JSON']
   /** permission */
   permission?: Maybe<ShareLink>
   /** pin */
@@ -857,7 +856,6 @@ export type RootQueryBlockArgs = {
 
 export type RootQueryBlockInfoArgs = {
   id: Scalars['String']
-  kind: BlockIdKind
   webid: Scalars['String']
 }
 
@@ -1941,7 +1939,6 @@ export type NewPatchSubscription = {
 export type GetBlockInfoQueryVariables = Exact<{
   id: Scalars['String']
   webid: Scalars['String']
-  kind: BlockIdKind
 }>
 
 export type GetBlockInfoQuery = {
@@ -1951,10 +1948,10 @@ export type GetBlockInfoQuery = {
         __typename?: 'BlockInfo'
         title: string
         id: string
-        payload: any
         isDeleted: boolean
         isMaster: boolean
         pin: boolean
+        enabledAlias?: { __typename?: 'BlockAlias'; key: string; payload: any } | null | undefined
         icon?:
           | { __typename?: 'BlockEmoji'; type: Blocktype; name: string; emoji: string }
           | {
@@ -3956,10 +3953,14 @@ export function useNewPatchSubscription(baseOptions: Apollo.SubscriptionHookOpti
 export type NewPatchSubscriptionHookResult = ReturnType<typeof useNewPatchSubscription>
 export type NewPatchSubscriptionResult = Apollo.SubscriptionResult<NewPatchSubscription>
 export const GetBlockInfoDocument = gql`
-  query GetBlockInfo($id: String!, $webid: String!, $kind: BlockIDKind!) {
-    blockInfo(id: $id, webid: $webid, kind: $kind) {
+  query GetBlockInfo($id: String!, $webid: String!) {
+    blockInfo(id: $id, webid: $webid) {
       title
       id
+      enabledAlias {
+        key
+        payload
+      }
       icon {
         ... on BlockImage {
           type
@@ -3974,7 +3975,6 @@ export const GetBlockInfoDocument = gql`
           emoji
         }
       }
-      payload
       isDeleted
       isMaster
       pin
@@ -4027,7 +4027,6 @@ export const GetBlockInfoDocument = gql`
  *   variables: {
  *      id: // value for 'id'
  *      webid: // value for 'webid'
- *      kind: // value for 'kind'
  *   },
  * });
  */

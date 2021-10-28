@@ -6,28 +6,29 @@ module Docs
 
     argument :id, GraphQL::Types::String, 'id', required: true
     argument :webid, GraphQL::Types::String, 'webid', required: true
-    argument :kind, Enums::BlockIDKind, "kind", required: true
 
-    def resolve(id:, kind:, webid:)
+    def resolve(id:, webid:)
       return nil if id.blank?
-      block, payload = Docs::Block.find_by_kind(id, kind, webid)
+      block, enabled_alias = Docs::Block.find_by_slug(id, webid, current_pod)
       return nil if block.nil?
 
-      current_user&.save_last_position!(webid, block.id)
+      is_master = master?(block)
+      permission = is_master ? nil : get_permission(block)
+
+      return nil if !is_master && (permission.nil? || permission.disabled?)
+
+      current_user&.save_last_position!(webid, id)
 
       result = {
         title: block.title,
         icon: block.icon,
-        payload: payload,
         pin: fetch_pin(block),
+        enabled_alias: enabled_alias || block.enabled_alias,
         id: block.id,
         is_deleted: !!block.deleted_at,
         path_array: block.path_array,
         collaborators: collaborators(block)
       }.compact
-
-      is_master = master?(block)
-      permission = is_master ? nil : get_permission(block)
 
       result[:is_master] = is_master
       result[:permission] = permission

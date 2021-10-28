@@ -8,7 +8,6 @@ import {
   useBlockCreateMutation,
   useBlockRenameMutation,
   useBlockPinOrUnpinMutation,
-  BlockIdKind,
   useBlockDuplicateMutation
 } from '@/BrickdocGraphQL'
 import { queryBlockPins, queryPageBlocks } from '../../graphql'
@@ -76,12 +75,12 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
     const input = { parentId: pageId, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      navigate(`/${webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
+      navigate(`/${webid}/${data?.blockCreate?.id}`)
     }
   }
 
   const { t } = useDocsI18n()
-  const linkPath = `/${webid}/${BlockIdKind.P}/${pageId}`
+  const linkPath = `/${webid}/${pageId}`
   const link = `${host}${linkPath}`
 
   const addSelectedKey = (): void => {

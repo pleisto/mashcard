@@ -37,10 +37,14 @@ export const NewPatch = gql`
 `
 
 export const queryBlockInfo = gql`
-  query GetBlockInfo($id: String!, $webid: String!, $kind: BlockIDKind!) {
-    blockInfo(id: $id, webid: $webid, kind: $kind) {
+  query GetBlockInfo($id: String!, $webid: String!) {
+    blockInfo(id: $id, webid: $webid) {
       title
       id
+      enabledAlias {
+        key
+        payload
+      }
       icon {
         ... on BlockImage {
           type
@@ -56,7 +60,6 @@ export const queryBlockInfo = gql`
           emoji
         }
       }
-      payload
       isDeleted
       isMaster
       pin

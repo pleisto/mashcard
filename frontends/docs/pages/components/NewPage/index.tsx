@@ -3,7 +3,7 @@ import { Add } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../../common/hooks'
 import { Button } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router'
-import { BlockIdKind, useBlockCreateMutation } from '@/BrickdocGraphQL'
+import { useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
@@ -21,7 +21,7 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
     const input = { title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      navigate(`/${docMeta.webid}/${BlockIdKind.P}/${data?.blockCreate?.id}`)
+      navigate(`/${docMeta.webid}/${data?.blockCreate?.id}`)
     }
   }
 
