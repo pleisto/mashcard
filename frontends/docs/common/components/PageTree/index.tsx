@@ -129,6 +129,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
         // expandedKeys={selectedKeys}
         treeData={treeData}
         defaultExpandAll
+        autoExpandParent
         draggable={draggable}
         onDrop={onDrop}
         titleRender={titleRender}

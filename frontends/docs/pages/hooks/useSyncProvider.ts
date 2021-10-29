@@ -222,10 +222,10 @@ export function useSyncProvider(): [(doc: Node) => Promise<void>] {
             const oldBlock = oldBlockMap.get(newBlock.id)!
             if (!isMatch(oldBlock, newBlock)) {
               updated.push(newBlock)
-              if (newBlock.id === rootId) {
-                newTitle = newBlock.text
-                if (oldBlock.parentId) newBlock.parentId = oldBlock.parentId
-              }
+            }
+            if (newBlock.id === rootId) {
+              newTitle = newBlock.text
+              if (oldBlock.parentId) newBlock.parentId = oldBlock.parentId
             }
             oldBlockMap.delete(newBlock.id)
           }
