@@ -60,7 +60,7 @@
     "@sentry/tracing": "^6.13.3",
     "ahooks": "^2.10.12",
     "dayjs": "^1.10.7",
-    "graphql": "^15.7.1",
+    "graphql": "^15.7.2",
     "graphql-ruby-client": "^1.10.2",
     "history": "^5.0.1",
     "i18next": "^21.3.3",
@@ -100,8 +100,8 @@
     "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "@vitejs/plugin-react": "^1.0.6",
-    "autoprefixer": "^10.3.7",
+    "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.0",
     "babel-jest": "^27.3.1",
     "babel-plugin-istanbul": "^6.1.1",
     "commitizen": "^4.2.4",
@@ -143,7 +143,7 @@
     "typescript": "^4.4.4",
     "vite": "^2.6.13",
     "vite-plugin-pwa": "^0.11.3",
-    "vite-plugin-ruby": "^3.0.2-pre.2"
+    "vite-plugin-ruby": "^3.0.2"
   },
   "packageManager": "yarn@3.0.2",
   "resolutions": {

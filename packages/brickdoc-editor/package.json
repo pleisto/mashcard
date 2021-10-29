@@ -52,7 +52,7 @@
     "tippy.js": "^6.3.2"
   },
   "devDependencies": {
-    "@types/react-pdf": "^5.0.8",
+    "@types/react-pdf": "^5.0.9",
     "@types/react-table": "^7.7.7",
     "i18next": "^21.3.3",
     "react": "^17.0.2",
