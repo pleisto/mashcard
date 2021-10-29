@@ -58,7 +58,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   if (!data?.blockSnapshots || data.blockSnapshots.length === 0) {
     return skelecton(
-      <div>
+      <div className={styles.skelectonWarp}>
         <img className={styles.image} src={Pic} alt="cloud_brain_2" />
         <br />
         <span className={styles.text}>{t('snapshots.empty')}</span>
@@ -71,6 +71,12 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   const dataSource = data.blockSnapshots
 
   const firstVersion = Math.max(...data.blockSnapshots.map(snapshot => snapshot.snapshotVersion))
+
+  const snapshotTitle = (
+    <div className={styles.topBar}>
+      <p>{docMeta.title}</p>
+    </div>
+  )
 
   const snapshotData = (
     <List
@@ -92,6 +98,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 
   return skelecton(
     <div className={styles.page}>
+      {snapshotTitle}
       <DocumentPage docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }} />
     </div>,
     snapshotData,

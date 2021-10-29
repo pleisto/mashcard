@@ -11,16 +11,17 @@
 
   width: 100%;
 
+  @width: 220px;
   .contentWrapper {
     display: flex;
-    align-items: flex-start;
     justify-content: center;
-    // 180px == side min width
-    max-width: calc(100% - 180px);
+    align-items: center;
+    width: calc(100% - @width);
   }
 
   .side {
     border-left: 1px solid #f6f6f6;
+    width: @width;
     flex-shrink: 0;
 
     .actionPanel {
@@ -61,13 +62,13 @@
 .item {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 46px;
   padding: 6px 16px;
 
   .title {
-    font-size: 14px;
+    font-size: @font-size-sm;
     line-height: 20px;
     font-weight: 500;
     max-width: 20em;
@@ -90,6 +91,7 @@
   height: 70vh;
   overflow: auto;
   scrollbar-width: none;
+  width: 100%;
 }
 
 .page::-webkit-scrollbar {
@@ -107,14 +109,32 @@
   display: none;
 }
 
+.topBar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  color: @text-color-secondary;
+  font-size: @font-size-sm;
+  line-height: @line-height-md;
+  p {
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
 .image {
   display: block;
   margin: auto;
-  height: 50vh;
+  height: 270px;
 }
 
 .text {
   display: block;
   margin: auto;
   text-align: center;
+  color: #bfbcc6;
+  line-height: @font-size-base * 2;
+  font-size: @font-size-base * 1.25;
+  font-weight: 500;
 }
