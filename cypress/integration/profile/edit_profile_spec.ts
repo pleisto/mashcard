@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-commented-out-tests */
 describe('edit profile', () => {
   // beforeEach(() => {
   //   cy.sessionMock({ email: 'cypress@brickdoc.com' })

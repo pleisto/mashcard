@@ -59,27 +59,4 @@ class Docs::ShareLink < ApplicationRecord
 
     OpenStruct.new(id: 0, webid: Pod::ANYONE_WEBID, name: Pod::ANYONE_WEBID, avatar_data: nil, bio: nil, email: nil)
   end
-
-  after_create do
-    # deliver_email_later! unless anyone?
-  end
-
-  def deliver_email_later!
-    target_pod = share_pod
-    return if target_pod.nil?
-
-    deliver_later_by_email!(target_pod.owner.email)
-  end
-
-  def deliver_later_by_email!(email)
-    host = Brickdoc::Runtime.host
-    url = "#{host}/#{pod.webid}/p/#{block.id}/l/#{key}"
-
-    InviteMailer.with(
-      email: email,
-      title: block.title,
-      from: pod.name,
-      url: url
-    ).send_link.deliver_later
-  end
 end

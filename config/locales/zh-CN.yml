@@ -422,7 +422,8 @@ zh-CN:
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        you_can_confirm_your_account_email_through_the_link_below: '请点击下方按钮完成你的电子邮箱地址验证'
+        subject: '确认你的电子邮箱'
       reset_password_instructions:
         subject: 'Reset password instructions'
       unlock_instructions:

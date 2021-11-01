@@ -22,7 +22,7 @@ const AccountsModule: FC = () => {
         <Route path="sign_up" element={<SignUpPage />} />
         <Route path="password/forget" element={<ForgetPasswordPage />} />
         <Route path="password/edit" element={<EditPasswordPage />} />
-        {/* <Route path="*" element={404} /> */}
+        <Route path="*" element={<h1>Oops, Not Found</h1>} />
       </Routes>
     </PanelLayoutPage>
   )

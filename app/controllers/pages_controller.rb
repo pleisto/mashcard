@@ -2,7 +2,7 @@
 
 class PagesController < ApplicationController
   def pwa
-    # authenticate_user!
+    authenticate_user! if request.path === '/'
   end
 
   def unsupported

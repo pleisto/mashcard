@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 require_relative "boot"
 
-require "rails"
-
 # See {https://github.com/rails/rails/blob/v6.1.3/railties/lib/rails/all.rb}
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -13,7 +11,10 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
-require "rails/test_unit/railtie"
+# require "rails/test_unit/railtie"
+
+# eager load some dependencies
+require_relative '../lib/brickdoc'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -28,7 +29,6 @@ module Brickdoc
     config.action_mailer.deliver_later_queue_name = :default
 
     config.autoload_paths << Rails.root.join('app', 'graphql')
-    config.eager_load_paths << Rails.root.join('app', 'graphql')
     config.autoload_paths << Rails.root.join('app', 'services')
 
     config.generators.templates.push Rails.root.join('templates/generators')
@@ -54,6 +54,13 @@ module Brickdoc
       loader.setup
     end
 
+    if Brickdoc.saas?
+      Rails.autoloaders.main.push_dir(Brickdoc::SaaS.root.join('lib'))
+      Dir["#{Brickdoc::SaaS.root}/app/*"].each do |app_subdir|
+        Rails.autoloaders.main.push_dir(app_subdir)
+      end
+    end
+
     initializer :load_plugins, after: :prepend_helpers_path, before: :load_config_initializers do
       require_relative '../app/models/application_record'
       require_relative '../app/models/brickdoc_config'
@@ -71,5 +78,3 @@ module Brickdoc
     end
   end
 end
-
-require_relative '../lib/brickdoc'

@@ -8,6 +8,10 @@ class Accounts::ConfirmationsController < Devise::ConfirmationsController
     render 'pages/pwa'
   end
 
+  def show
+    render 'pages/pwa'
+  end
+
   # POST /resource/confirmation
   def create
     # Only Support GraphQL API

@@ -289,7 +289,7 @@ en-US:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: '%{count} errors prohibited this %{resource} from being saved:'
-      is_not_valid_webid: 'WebID "%{webid}" is not available'
+      is_not_valid_webid: 'Username "%{webid}" is not available'
       is_not_valid_email: 'Email "%{email}" is not available'
       send_interval: Sending interval is too short, please try again after 1 minute
       accepted: must be accepted
@@ -307,7 +307,7 @@ en-US:
       less_than_or_equal_to: must be less than or equal to %{count}
       model_invalid: 'Validation failed: %{errors}'
       email_invalid: is not an email
-      webid_invalid: is not a webid
+      webid_invalid: is not a username
       uuid_invalid: is not an uuid
       mobile_phone_invalid: is not a valid mobile phone number
       webid_presence_invalid: is not presence
@@ -439,7 +439,8 @@ en-US:
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        you_can_confirm_your_account_email_through_the_link_below: 'Please confirm this email address for your Brickdoc account by clicking on the button below'
+        subject: 'Confirmation Email'
       reset_password_instructions:
         subject: 'Reset password instructions'
       unlock_instructions:
@@ -606,7 +607,7 @@ en-US:
       confirm_password: Confirm Password
       sign_up_via: 'Sign Up with %{provider}'
       name: 'Name'
-      webid: 'WebID'
+      webid: 'Username'
       webid_description: 'Only alphabet and numbers are allowed'
       agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
       resend_after: 'Resendable after %{seconds} seconds'
@@ -614,7 +615,7 @@ en-US:
       confirm_not_match: '%{field} and confirm %{field} do not match'
     errors:
       invalid_operation_type: 'Invalid operation type'
-      invalid_pod_webid: 'No access to the webid'
+      invalid_pod_webid: 'No access to the username'
       pod_has_already_switched: 'Pod has already switched'
       pod_exist: 'Pod has already exist'
       user_not_exist: "User doesn't exist"
@@ -679,7 +680,7 @@ en-US:
       tooltip: share or publish to the web
     invite:
       learn: Learn more about sharing
-      type_hint: Type or paste in webid above, separated by commas.
+      type_hint: Type or paste in username above, separated by commas.
       search: Add people by Web ID
       button: Invite
       confirm_button: Confirm
@@ -695,12 +696,12 @@ en-US:
       cancel: Cancel
       empty: Version history is empty
     pods:
-      webid: WebID
+      webid: Username
       name: Name
       bio: Bio
       avatar: Avatar
       required:
-        webid: WebID is required
+        webid: Username is required
         name: Name is required
       create:
         success: Create successfully.
