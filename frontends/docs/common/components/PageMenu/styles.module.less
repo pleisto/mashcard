@@ -1,21 +1,30 @@
 @import '@brickdoc/design-system/components/style/themes';
 
 .title {
-  display: flex;
+  // display: flex;
   overflow: hidden;
-  text-overflow: ellipsis;
   font-size: @font-size-sm;
   line-height: @line-height-sm * 2 - 2px;
   border: 1px solid transparent;
   align-items: center;
   flex-grow: 1;
 }
+
+.nopage {
+  color: #bfbcc6;
+  font-size: @font-size-sm;
+  margin: 0;
+}
+
 .menu {
   display: flex;
   justify-content: space-between;
   a {
     color: #292333;
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     // color: @text-color;
     // flex-grow: 1;
   }

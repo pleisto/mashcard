@@ -83,6 +83,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   const titleRender = (node: any): React.ReactElement => {
     const pin = pinIds.includes(node.key)
+
     return (
       <PageMenu
         docMeta={docMeta}
@@ -100,6 +101,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     if (!blocks.length) {
       return <></>
     }
+
     const flattedData = blocks
       .map(b => {
         const title = getTitle(b)
@@ -117,13 +119,33 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
         }
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
+
+    // TODO: refactor~  insufficient data structure to support business requirements
+    flattedData
+      .filter(i => !i.parentId && i.firstChildSort === '0')
+      .forEach(item => {
+        flattedData.push({
+          firstChildSort: '0',
+          key: `${item.key}mock`,
+          value: item.key,
+          nextSort: '',
+          parentId: item.key,
+          text: 'No pages inside',
+          title: 'No pages inside',
+          // @ts-expect-error
+          className: styles.treeNodeNoPage
+        })
+      })
+
     const treeData = array2Tree(flattedData, { id: 'key' })
+
     const selectedKeys = [docMeta.id, popoverKey].filter(k => !!k) as string[]
     return (
       <Tree
         className={styles.tree}
         selectedKeys={selectedKeys}
         blockNode={false}
+        showLine={{ showLeafIcon: true }}
         showIcon={true}
         selectable={!docMeta.documentInfoLoading}
         // expandedKeys={selectedKeys}
