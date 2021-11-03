@@ -18,17 +18,23 @@
       padding: 8px;
       // TODO: Undefined variable
       color: rgb(132 126 142 / 1);
-      font-size: 14px;
       //line-height: 16px;
       height: auto;
       border-radius: 4px;
+      font-size: 18px;
       svg {
-        // stroke: rgba(132, 126, 142, 1);
+        path {
+          fill: @text-color-secondary;
+        }
       }
       &:hover {
         // TODO: Undefined variable
         background: rgb(0 0 0 / 5%);
       }
+    }
+
+    :global(.brk-tooltip-disabled-compatible-wrapper) {
+      padding: 0;
     }
   }
 

@@ -2,6 +2,16 @@
   margin-top: 16px;
 }
 
+.notFound {
+  color: #bfbcc6;
+  font-size: 14px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .item {
   &:global(.brk-list-item) {
     position: relative;

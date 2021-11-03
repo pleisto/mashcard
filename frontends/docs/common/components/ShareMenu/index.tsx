@@ -1,5 +1,5 @@
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { Button, Tooltip } from '@brickdoc/design-system'
+import { Button, Tooltip, Icon } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { SharePopover } from '../SharePopover'
@@ -25,7 +25,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ docMeta, className }) => {
     <>
       <Tooltip title={t('share.tooltip')}>
         <Button className={className} type="text" onClick={onClick}>
-          {t('share.menu')}
+          <Icon.Share />
         </Button>
       </Tooltip>
       {sharePopover}

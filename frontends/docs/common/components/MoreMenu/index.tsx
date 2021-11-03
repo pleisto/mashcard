@@ -1,5 +1,6 @@
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { Button, Icon } from '@brickdoc/design-system'
+import { Button } from '@brickdoc/design-system'
+import { Time } from '@brickdoc/design-icons'
 import React, { useState } from 'react'
 import { PageHistoryModal } from '../PageHistoryModal'
 interface MoreMenuProps {
@@ -16,7 +17,7 @@ export const MoreMenu: React.FC<MoreMenuProps> = ({ docMeta, className }) => {
   return (
     <>
       <Button className={className} type="text" onClick={onClick}>
-        <Icon.Time />
+        <Time />
       </Button>
       <PageHistoryModal docMeta={docMeta} visible={pageHistoryModalVisible} setVisible={setPageHistoryModalVisible} />
     </>

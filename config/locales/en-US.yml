@@ -637,6 +637,7 @@ en-US:
       placeholder: Search Pages
     blocks:
       create_pages: Add Pages
+      no_pages: No pages inside
       create_sub_pages: Add Subpage
       delete: Delete
       rename: Rename

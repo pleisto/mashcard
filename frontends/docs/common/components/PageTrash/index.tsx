@@ -29,7 +29,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
   }
 
   if (!data?.trashBlocks?.length) {
-    return t('trash.not_found')
+    return <p className={styles.notFound}>{t('trash.not_found')}</p>
   }
 
   return (

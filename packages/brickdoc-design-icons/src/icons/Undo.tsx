@@ -8,6 +8,7 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
+import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
 
 export default IconWrapper('undo', false, (props: ISvgIconProps) => (

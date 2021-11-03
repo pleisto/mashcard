@@ -20,9 +20,11 @@
   }
 
   .side {
+    display: flex;
     border-left: 1px solid #f6f6f6;
     width: @width;
     flex-shrink: 0;
+    flex-direction: column;
 
     .actionPanel {
       position: relative;
@@ -100,7 +102,7 @@
 
 .snapshot {
   min-height: unset;
-  height: 60vh;
+  height: 100%;
   overflow: auto;
   scrollbar-width: none;
 }

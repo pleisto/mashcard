@@ -11,6 +11,7 @@
     width: 100%;
   }
   :global(.brk-tree-node-content-wrapper) {
+    display: flex;
     width: 100%;
     box-sizing: border-box;
     margin-left: -28px;
@@ -24,6 +25,23 @@
   :global(.brk-tree-node-content-wrapper:hover) {
     box-sizing: border-box;
     // background-color: transparent !important;
+  }
+  :global(.brk-tree-title) {
+    width: 100%;
+  }
+  :global(.brk-tree-indent-unit-start) {
+    &::before {
+      border: none;
+    }
+  }
+
+  :global(.brk-tree-switcher-noop) {
+    padding-left: 20px;
+  }
+
+  :global(.brk-tree-switcher-noop + .brk-tree-node-content-wrapper) {
+    margin-left: -20px;
+    padding-left: 20px;
   }
 }
 
