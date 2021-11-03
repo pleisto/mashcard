@@ -50,12 +50,12 @@
     "react-medium-image-zoom": "^4.3.5",
     "react-pdf": "^5.5.0",
     "react-table": "^7.7.0",
-    "tippy.js": "^6.3.2"
+    "tippy.js": "^6.3.3"
   },
   "devDependencies": {
     "@types/react-pdf": "^5.0.9",
     "@types/react-table": "^7.7.7",
-    "i18next": "^21.3.3",
+    "i18next": "^21.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.4.4"
