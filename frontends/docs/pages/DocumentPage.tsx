@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useMemo } from 'react'
-import { Node } from 'prosemirror-model'
 import { Alert, Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
-import { useGetChildrenBlocksQuery, Block, Filesourcetype } from '@/BrickdocGraphQL'
+import { useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import {
   blocksToJSONContents,
@@ -12,6 +11,7 @@ import {
   useFetchWebsiteMeta,
   useSyncProvider
 } from './hooks'
+import { useBlobGetter } from './hooks/useBlobGetter'
 import { useDatabaseRows } from './hooks/useDatabaseRows'
 import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
@@ -55,28 +55,18 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
   const fetchWebsiteMeta = useFetchWebsiteMeta()
-  const createFileUrlGetter =
-    (field: string) =>
-    (node: Node): string | undefined => {
-      if (node.attrs[field]?.source === Filesourcetype.External) {
-        return node.attrs[field].key
-      }
 
-      if (node.attrs[field]?.source === Filesourcetype.Origin) {
-        const block = data?.childrenBlocks?.find(block => block.id === node.attrs.uuid)
-        const blob = block?.blobs?.find(blob => blob.blobKey === node.attrs[field].key)
-        return blob?.url
-      }
-    }
-  const getImageUrl = createFileUrlGetter('image')
-  const getAttachmentUrl = createFileUrlGetter('attachment')
+  const getImageUrl = useBlobGetter('image', data?.childrenBlocks)
+  const getAttachmentUrl = useBlobGetter('attachment', data?.childrenBlocks)
+  const docIconGetter = useBlobGetter('icon', data?.childrenBlocks)
+  const docCoverGetter = useBlobGetter('cover', data?.childrenBlocks)
   const getDocIconUrl = (): string | undefined => {
     if (!editor || editor.isDestroyed) return undefined
-    return createFileUrlGetter('icon')(editor.state.doc)
+    return docIconGetter(editor.state.doc)
   }
   const getDocCoverUrl = (): string | undefined => {
     if (!editor || editor.isDestroyed) return undefined
-    return createFileUrlGetter('cover')(editor.state.doc)
+    return docCoverGetter(editor.state.doc)
   }
 
   // if there is no doc id, document will not have deleted status

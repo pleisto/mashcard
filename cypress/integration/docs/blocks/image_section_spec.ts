@@ -40,7 +40,7 @@ describe('imageSection', () => {
     cy.findByTestId(TEST_ID_ENUM.editor.imageSection.image.id).should('exist')
   })
 
-  it('zooms in image when double click', () => {
+  it.skip('zooms in image when double click', () => {
     cy.visit('/')
     openImageSectionUploader()
     const imageUrl =
@@ -54,7 +54,7 @@ describe('imageSection', () => {
     cy.get('[aria-modal="true"] > button').should('exist').click().should('not.exist')
   })
 
-  it('shows a correctly sized skeleton when loading', () => {
+  it.skip('shows a correctly sized skeleton when loading', () => {
     cy.visit('/')
 
     const pageTitle = `Image ${Math.random().toString(36).substr(2, 5)}`
