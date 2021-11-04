@@ -344,13 +344,9 @@
 
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "Blocktype",
-                  "ofType": null
-                }
+                "kind": "ENUM",
+                "name": "Blocktype",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -872,13 +868,9 @@
 
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "Blocktype",
-                  "ofType": null
-                }
+                "kind": "ENUM",
+                "name": "Blocktype",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -1100,13 +1092,9 @@
 
               ],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "Blocktype",
-                  "ofType": null
-                }
+                "kind": "ENUM",
+                "name": "Blocktype",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null

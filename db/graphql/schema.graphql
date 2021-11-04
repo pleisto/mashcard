@@ -107,7 +107,7 @@ type BlockColor {
   """
   type
   """
-  type: Blocktype!
+  type: Blocktype
 }
 
 """
@@ -261,7 +261,7 @@ type BlockEmoji {
   """
   type
   """
-  type: Blocktype!
+  type: Blocktype
 }
 
 """
@@ -333,7 +333,7 @@ type BlockImage {
   """
   type
   """
-  type: Blocktype!
+  type: Blocktype
 
   """
   width
