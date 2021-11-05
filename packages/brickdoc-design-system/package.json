@@ -42,7 +42,7 @@
     "rc-resize-observer": "^1.0.1",
     "rc-select": "^13.1.0-alpha.0",
     "rc-switch": "^3.2.2",
-    "rc-table": "^7.19.0",
+    "rc-table": "^7.19.1",
     "rc-tabs": "^11.10.2",
     "rc-textarea": "^0.3.5",
     "rc-tooltip": "^5.1.1",
@@ -65,7 +65,7 @@
     "typescript": "^4.4.4",
     "vite": "^2.6.13",
     "vite-pages-theme-doc": "^3.1.0",
-    "vite-plugin-mdx": "^3.5.9",
+    "vite-plugin-mdx": "^3.5.10",
     "vite-plugin-react": "^4.0.1",
     "vite-plugin-react-pages": "^3.1.1"
   },
