@@ -17,6 +17,7 @@
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader",
+    "@pdftron/webviewer": "^8.1.0",
     "@tiptap/core": "2.0.0-beta.106",
     "@tiptap/extension-blockquote": "2.0.0-beta.15",
     "@tiptap/extension-bold": "2.0.0-beta.15",

@@ -107,7 +107,6 @@ describe('LinkBlock', () => {
     render(<LinkBlock {...props} />)
 
     expect(screen.getByText(props.node.attrs.attachment.name)).toBeInTheDocument()
-    expect(screen.getByText(`${props.node.attrs.attachment.size} b`)).toBeInTheDocument()
   })
 
   it('renders uploader dashboard when click add button', () => {

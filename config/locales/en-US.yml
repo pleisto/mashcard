@@ -770,7 +770,7 @@ en-US:
           desc: Embed a PDF
         embed:
           title: Embed
-          desc: For PDFs and more
+          desc: PDF、Word、PPT、Excel and more.
         image:
           title: Image
           desc: Upload or embed with a link
@@ -835,9 +835,14 @@ en-US:
         ok: Delete
         cancel: Cancel
       menu:
+        more:
+          duplicate: Duplicate
+          copy: Copy link
+          delete: Delete
         copy: Copy link
         delete: Remove
-      hint: Embed anything
+      hint: Embed a link or a file
+      desc: Upload PDF、Word、PPT、Excel and more.
       import_sources:
         link:
           placeholder: Paste in https://...

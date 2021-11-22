@@ -9,6 +9,7 @@ module Docs
       field :width, Int, 'width', null: true
       field :name, String, "name", null: true
       field :size, Int, "size", null: true
+      field :mode, String, "mode", null: true
     end
   end
 end

@@ -45,7 +45,7 @@ export const LinkBlockExtension = Node.create<LinkBlockOptions>({
 
   atom: true,
 
-  selectable: false,
+  selectable: true,
 
   addAttributes() {
     return {

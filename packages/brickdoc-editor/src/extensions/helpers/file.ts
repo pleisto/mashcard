@@ -16,7 +16,7 @@ export const linkStorage = {
   }
 }
 
-export type FileType = 'pdf' | 'image' | 'unknown'
+export type FileType = 'word' | 'excel' | 'ppt' | 'pdf' | 'image' | 'unknown'
 
 export const getFileTypeByExtension = (name: string): FileType => {
   const extension = name.split('.').pop()
@@ -30,6 +30,15 @@ export const getFileTypeByExtension = (name: string): FileType => {
     case 'svg':
     case 'png':
       return 'image'
+    case 'doc':
+    case 'docx':
+      return 'word'
+    case 'ppt':
+    case 'pptx':
+      return 'ppt'
+    case 'xls':
+    case 'xlsx':
+      return 'excel'
     default:
       return 'unknown'
   }

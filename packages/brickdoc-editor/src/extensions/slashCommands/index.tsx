@@ -79,7 +79,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   },
   {
     key: 'embed',
-    icon: <Icon.BlockLevelLink className="menu-item-icon" />,
+    icon: <Icon.PaperClip className="menu-item-icon" />,
     command: ({ editor, range }) => {
       editor
         .chain()

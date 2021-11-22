@@ -86,3 +86,5 @@ node_modules
 *.local
 .DS_Store
 
+# Pdftron
+/public/pdftron

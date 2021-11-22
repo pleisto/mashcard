@@ -3,13 +3,13 @@
 .brk-btn.brickdoc-link-block-placeholder {
   width: 100%;
   background: #f9f9f9;
+  border: 1px dashed #e0e0e0;
   border-radius: 4px;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 14px 17px;
   box-sizing: border-box;
-  border: none;
   height: unset;
 
   &:hover {
@@ -23,7 +23,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background: @primary-color;
+    background: #000;
     opacity: 18%;
   }
 
@@ -41,6 +41,7 @@
     line-height: 20px;
     letter-spacing: 0;
     margin-left: 17px;
+    text-align: left;
 
     .link-block-desc {
       text-align: left;
@@ -50,45 +51,37 @@
   }
 }
 
-.brickdoc .ProseMirror a.brickdoc-link-block-attachment {
+.brickdoc-link-block-attachment {
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
-  height: auto;
-  text-align: left;
-  padding: 12px 0 12px 19px;
-  background: #f9f9f9;
+  padding: 4px;
   border-radius: 4px;
-  color: @deep-purple-3;
-  font-size: 18px;
   border-bottom: none;
+  transition: background 300ms ease-in-out;
 
-  .link-block-attachment-download-icon {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+  &:hover {
+    background: #0000000d;
+  }
+
+  .brickdoc-link-block-attachment-icon {
+    font-size: 18px;
+    color: #847e8e;
+  }
+
+  .brickdoc-link-block-attachment-img-icon {
+    width: 18px;
   }
 
   .link-block-attachment-content {
-    margin-left: 19px;
+    margin-left: 7px;
 
     .link-block-attachment-name {
-      font-size: 14px;
       line-height: 20px;
-      color: #847e8e;
-    }
-
-    .link-block-attachment-size {
-      font-size: 12px;
-      line-height: 16px;
-      color: #847e8e;
-      margin-top: 4px;
+      font-size: 16px;
+      font-weight: 500;
     }
   }
 }
@@ -114,7 +107,7 @@
     top: 8px;
     right: 8px;
     z-index: 1;
-    opacity: 0%;
+    opacity: 0;
     width: 24px;
     height: 24px;
     padding: 0;

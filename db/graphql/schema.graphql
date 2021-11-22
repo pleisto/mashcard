@@ -69,6 +69,11 @@ type BlockAttachment {
   key: String
 
   """
+  mode
+  """
+  mode: String
+
+  """
   name
   """
   name: String
@@ -311,6 +316,11 @@ type BlockImage {
   key: String
 
   """
+  mode
+  """
+  mode: String
+
+  """
   name
   """
   name: String
@@ -465,6 +475,11 @@ type BlockLink {
   key: String
 
   """
+  mode
+  """
+  mode: String
+
+  """
   name
   """
   name: String
@@ -614,6 +629,11 @@ type BlockPage {
   link: String!
 
   """
+  mode
+  """
+  mode: String
+
+  """
   name
   """
   name: String
@@ -676,6 +696,11 @@ type BlockPeople {
   url or blob key
   """
   key: String
+
+  """
+  mode
+  """
+  mode: String
 
   """
   name

@@ -202,6 +202,20 @@
               "deprecationReason": null
             },
             {
+              "name": "mode",
+              "description": "mode",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "name",
               "description": "name",
               "args": [
@@ -1030,6 +1044,20 @@
               "deprecationReason": null
             },
             {
+              "name": "mode",
+              "description": "mode",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "name",
               "description": "name",
               "args": [
@@ -1531,6 +1559,20 @@
               "deprecationReason": null
             },
             {
+              "name": "mode",
+              "description": "mode",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "name",
               "description": "name",
               "args": [
@@ -1983,6 +2025,20 @@
               "deprecationReason": null
             },
             {
+              "name": "mode",
+              "description": "mode",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "name",
               "description": "name",
               "args": [
@@ -2173,6 +2229,20 @@
             {
               "name": "key",
               "description": "url or blob key",
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "mode",
+              "description": "mode",
               "args": [
 
               ],

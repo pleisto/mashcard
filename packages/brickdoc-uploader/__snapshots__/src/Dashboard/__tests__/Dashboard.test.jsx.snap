@@ -2015,10 +2015,13 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
       placeholder="Placeholder"
     />
     <button
-      class="dashboard-panel-button"
+      class="brk-btn brk-btn-primary dashboard-panel-button"
       data-testid="uploader-dashboard-modules-link-button"
+      type="button"
     >
-      Button
+      <span>
+        Button
+      </span>
     </button>
     <div
       class="dashboard-panel-hint"
@@ -2060,9 +2063,12 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
       type="file"
     />
     <button
-      class="dashboard-panel-button"
+      class="brk-btn brk-btn-primary dashboard-panel-button"
+      type="button"
     >
-      Button
+      <span>
+        Button
+      </span>
     </button>
     <div
       class="dashboard-panel-hint"

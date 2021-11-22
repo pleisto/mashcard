@@ -60,6 +60,8 @@ export type BlockAttachment = {
   height?: Maybe<Scalars['Int']>
   /** url or blob key */
   key?: Maybe<Scalars['String']>
+  /** mode */
+  mode?: Maybe<Scalars['String']>
   /** name */
   name?: Maybe<Scalars['String']>
   /** size */
@@ -198,6 +200,8 @@ export type BlockImage = {
   height?: Maybe<Scalars['Int']>
   /** key */
   key?: Maybe<Scalars['String']>
+  /** mode */
+  mode?: Maybe<Scalars['String']>
   /** name */
   name?: Maybe<Scalars['String']>
   /** aspect ratio */
@@ -268,6 +272,8 @@ export type BlockLink = {
   height?: Maybe<Scalars['Int']>
   /** key */
   key?: Maybe<Scalars['String']>
+  /** mode */
+  mode?: Maybe<Scalars['String']>
   /** name */
   name?: Maybe<Scalars['String']>
   /** size */
@@ -339,6 +345,8 @@ export type BlockPage = {
   key: Scalars['String']
   /** link */
   link: Scalars['String']
+  /** mode */
+  mode?: Maybe<Scalars['String']>
   /** name */
   name?: Maybe<Scalars['String']>
   /** size */
@@ -371,6 +379,8 @@ export type BlockPeople = {
   height?: Maybe<Scalars['Int']>
   /** url or blob key */
   key?: Maybe<Scalars['String']>
+  /** mode */
+  mode?: Maybe<Scalars['String']>
   /** name */
   name?: Maybe<Scalars['String']>
   /** size */
@@ -2147,6 +2157,7 @@ export type GetChildrenBlocksQuery = {
                 width?: number | null | undefined
                 name?: string | null | undefined
                 size?: number | null | undefined
+                mode?: string | null | undefined
               }
             | null
             | undefined
@@ -4197,6 +4208,7 @@ export const GetChildrenBlocksDocument = gql`
           width
           name
           size
+          mode
         }
         cover {
           ... on BlockImage {

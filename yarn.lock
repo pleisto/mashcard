@@ -1833,6 +1833,7 @@ __metadata:
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader"
+    "@pdftron/webviewer": ^8.1.0
     "@tiptap/core": 2.0.0-beta.106
     "@tiptap/extension-blockquote": 2.0.0-beta.15
     "@tiptap/extension-bold": 2.0.0-beta.15
@@ -1961,6 +1962,7 @@ __metadata:
     eslint-plugin-react: ^7.26.1
     eslint-plugin-react-hooks: ^4.2.0
     eslint-plugin-security-node: ^1.0.14
+    fs-extra: ^10.0.0
     graphql: ^16.0.1
     graphql-ruby-client: ^1.10.2
     graphql-tag: ^2.12.5
@@ -1998,6 +2000,7 @@ __metadata:
     vite: ^2.6.13
     vite-plugin-pwa: ^0.11.3
     vite-plugin-ruby: ^3.0.3
+    yargs: ^17.2.1
   languageName: unknown
   linkType: soft
 
@@ -3155,6 +3158,13 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: c96381d4a37448ea280951e46233f7e541058cf57a57d4094dd4bdcaae43fa5872b5f2eb6bfb004591a68e29c5877abe3cdc210cb3588cbf20ab2877f31a7de7
+  languageName: node
+  linkType: hard
+
+"@pdftron/webviewer@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "@pdftron/webviewer@npm:8.1.0"
+  checksum: d86f8d6df559a74744702186bba39a8959c8b4d43f390b2ec8a6cdcabffe627a9f52f297cff53d03419f7f1da4182d52c80a6496d35c015b23820dd7affcf58b
   languageName: node
   linkType: hard
 
@@ -20821,7 +20831,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yargs@npm:^17.0.0":
+"yargs@npm:^17.0.0, yargs@npm:^17.2.1":
   version: 17.2.1
   resolution: "yargs@npm:17.2.1"
   dependencies:
