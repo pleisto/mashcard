@@ -601,8 +601,8 @@ ja-JP:
       invalid_pod_webid: 'No access to the username'
       pod_has_already_switched: 'Pod has already switched'
       pod_exist: 'Pod has already exist'
-      user_not_exist: 'ユーザーが存在しません。'
-      pod_not_exist: 'ポッドは存在しません'
+      user_not_exist: "ユーザーが存在しません。"
+      pod_not_exist: "ポッドは存在しません"
   docs:
     app_title: Brickdoc
     saving: 保存
@@ -846,6 +846,17 @@ ja-JP:
           placeholder: Paste in https://...
           button_text: Embed PDF
           button_hint: Embed a PDF file
+    user_block:
+      anonymous: Anonymous
+    page_link_block:
+      untitled: Untitled
+    mention:
+      people:
+        head: PEOPLE
+        no_content: PEOPLE NO RESULT
+      page_link:
+        head: LINK TO PAGE
+        no_content: PAGE NO RESULT
     table:
       untitled: Untitled
       new_row:

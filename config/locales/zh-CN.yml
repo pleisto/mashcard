@@ -457,7 +457,7 @@ zh-CN:
       help:
         confidential: 'Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.'
         redirect_uri: 'Use one line per URI'
-        blank_redirect_uri: '如果将提供程序配置为使用客户端凭据、资源所有者密码凭据或任何其他不需要重定向 URI 的授予类型，请将其留空。'
+        blank_redirect_uri: "如果将提供程序配置为使用客户端凭据、资源所有者密码凭据或任何其他不需要重定向 URI 的授予类型，请将其留空。"
         scopes: 'Separate scopes with spaces. Leave blank to use the default scopes.'
       edit:
         title: 'Edit application'
@@ -601,8 +601,8 @@ zh-CN:
       invalid_pod_webid: 'No access to the username'
       pod_has_already_switched: 'Pod 已切换'
       pod_exist: 'Pod 已经存在'
-      user_not_exist: '用户不存在'
-      pod_not_exist: 'Pod 不存在'
+      user_not_exist: "用户不存在"
+      pod_not_exist: "Pod 不存在"
   docs:
     app_title: Brickdoc
     saving: 保存中
@@ -846,6 +846,17 @@ zh-CN:
           placeholder: Paste in https://...
           button_text: 嵌入 PDF
           button_hint: 嵌入 PDF 文件
+    user_block:
+      anonymous: Anonymous
+    page_link_block:
+      untitled: Untitled
+    mention:
+      people:
+        head: PEOPLE
+        no_content: PEOPLE NO RESULT
+      page_link:
+        head: LINK TO PAGE
+        no_content: PAGE NO RESULT
     table:
       untitled: Untitled
       new_row:
