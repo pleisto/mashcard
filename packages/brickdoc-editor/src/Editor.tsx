@@ -6,6 +6,7 @@ import UniqueID from '@tiptap/extension-unique-id'
 import {
   BasicRichtextExtension,
   SlashCommandsExtension,
+  MentionCommandsExtension,
   SyncExtension,
   brickListExtension,
   SyncExtensionOptions,
@@ -14,7 +15,10 @@ import {
   BubbleMenu,
   PdfSectionOptions,
   ImageSectionOptions,
-  LinkBlockOptions
+  LinkBlockOptions,
+  UserBlockExtension,
+  PageLinkBlockExtension,
+  MentionCommandsOptions
 } from './extensions'
 import './styles.less'
 import { useEditorI18n } from './hooks'
@@ -44,6 +48,8 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
   fetchWebsiteMeta?: LinkBlockOptions['fetchWebsiteMeta']
   getImageUrl?: ImageSectionOptions['getImageUrl']
   getAttachmentUrl?: PdfSectionOptions['getAttachmentUrl']
+  getCollaborators?: MentionCommandsOptions['getCollaborators']
+  getPages?: MentionCommandsOptions['getPages']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
@@ -54,6 +60,8 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     fetchWebsiteMeta,
     getImageUrl,
     getAttachmentUrl,
+    getCollaborators,
+    getPages,
     useDatabaseRows,
     editable,
     ...restOptions
@@ -89,6 +97,12 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       }),
       EventHandlerExtension,
       SlashCommandsExtension,
+      MentionCommandsExtension.configure({
+        getCollaborators,
+        getPages
+      }),
+      UserBlockExtension,
+      PageLinkBlockExtension,
       PlaceholderExtension,
       brickListExtension,
       UniqueID.configure({

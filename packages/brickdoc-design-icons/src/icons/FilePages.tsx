@@ -8,34 +8,43 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('file-pages', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3 3C3 1.89543 3.89543 1 5 1H15C15.2652 1 15.5196 1.10536 15.7071 1.29289L20.7071 6.29289C20.8946 6.48043 21 6.73478 21 7V21C21 22.1046 20.1046 23 19 23H5C3.89544 23 3 22.1046 3 21V3ZM14.5858 3H5V21H19V7.41421L14.5858 3Z"
-      fill="currentColor"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7 12C7 11.4477 7.44772 11 8 11H13C13.5523 11 14 11.4477 14 12C14 12.5523 13.5523 13 13 13H8C7.44772 13 7 12.5523 7 12Z"
-      fill="currentColor"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7 16C7 15.4477 7.44772 15 8 15H15C15.5523 15 16 15.4477 16 16C16 16.5523 15.5523 17 15 17H8C7.44772 17 7 16.5523 7 16Z"
-      fill="currentColor"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7 8C7 7.44772 7.44772 7 8 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H8C7.44772 9 7 8.55228 7 8Z"
-      fill="currentColor"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'file-pages',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            width={props.size}
+            height={props.size}
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3 3C3 1.89543 3.89543 1 5 1H15C15.2652 1 15.5196 1.10536 15.7071 1.29289L20.7071 6.29289C20.8946 6.48043 21 6.73478 21 7V21C21 22.1046 20.1046 23 19 23H5C3.89544 23 3 22.1046 3 21V3ZM14.5858 3H5V21H19V7.41421L14.5858 3Z"
+                fill="currentColor"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7 12C7 11.4477 7.44772 11 8 11H13C13.5523 11 14 11.4477 14 12C14 12.5523 13.5523 13 13 13H8C7.44772 13 7 12.5523 7 12Z"
+                fill="currentColor"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7 16C7 15.4477 7.44772 15 8 15H15C15.5523 15 16 15.4477 16 16C16 16.5523 15.5523 17 15 17H8C7.44772 17 7 16.5523 7 16Z"
+                fill="currentColor"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7 8C7 7.44772 7.44772 7 8 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H8C7.44772 9 7 8.55228 7 8Z"
+                fill="currentColor"
+            />
+        </svg>
+    )
+);

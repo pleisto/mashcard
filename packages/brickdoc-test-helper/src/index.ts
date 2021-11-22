@@ -26,6 +26,11 @@ export const TEST_ID_ENUM = {
     }
   },
   editor: {
+    mentionCommands: {
+      item: {
+        id: 'editor-slash-commands-item'
+      }
+    },
     slashCommands: {
       item: {
         id: 'editor-slash-commands-item'

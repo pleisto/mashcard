@@ -8,22 +8,31 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('time', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02943 3 3 7.02943 3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3Z"
-      fill="#292333"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M12.0042 5C12.5565 5.00006 13.0042 5.44782 13.0041 6.0001L13.0036 11.5902L16.9503 15.537C17.3409 15.9275 17.3409 16.5607 16.9503 16.9512C16.5598 17.3417 15.9267 17.3417 15.5361 16.9512L11.2964 12.7115C11.1089 12.5239 11.0035 12.2696 11.0035 12.0043L11.0041 5.9999C11.0042 5.44762 11.452 4.99994 12.0042 5Z"
-      fill="#292333"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'time',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            width={props.size}
+            height={props.size}
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02943 3 3 7.02943 3 12C3 16.9706 7.02943 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02943 16.9706 3 12 3Z"
+                fill="#292333"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12.0042 5C12.5565 5.00006 13.0042 5.44782 13.0041 6.0001L13.0036 11.5902L16.9503 15.537C17.3409 15.9275 17.3409 16.5607 16.9503 16.9512C16.5598 17.3417 15.9267 17.3417 15.5361 16.9512L11.2964 12.7115C11.1089 12.5239 11.0035 12.2696 11.0035 12.0043L11.0041 5.9999C11.0042 5.44762 11.452 4.99994 12.0042 5Z"
+                fill="#292333"
+            />
+        </svg>
+    )
+);

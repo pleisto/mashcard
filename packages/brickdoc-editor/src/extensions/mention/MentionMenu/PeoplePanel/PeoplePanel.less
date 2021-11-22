@@ -1,0 +1,24 @@
+.mention-menu-people-items {
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.mention-menu-people {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 68px;
+  padding: 8px 0 4px;
+  cursor: pointer;
+
+  &.active,
+  &:hover {
+    background: #0000000d;
+  }
+
+  .mention-menu-people-name {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

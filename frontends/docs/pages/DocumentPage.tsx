@@ -19,6 +19,8 @@ import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate } from 'react-router-dom'
 import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 import { editorVar } from '../reactiveVars'
+import { useDocumentPagesGetter } from './hooks/useDocumentPagesGetter'
+import { useDocumentCollaboratorsGetter } from './hooks/useDocumentCollaboratorsGetter'
 interface DocumentPageProps {
   docMeta: DocMeta
 }
@@ -68,6 +70,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     if (!editor || editor.isDestroyed) return undefined
     return docCoverGetter(editor.state.doc)
   }
+  const [getDocCollaborators] = useDocumentCollaboratorsGetter(docMeta)
+  const [getDocPages] = useDocumentPagesGetter(docMeta)
 
   // if there is no doc id, document will not have deleted status
   const [documentEditable, setDocumentEditable] = React.useState(!docMeta.id)
@@ -80,6 +84,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     fetchWebsiteMeta,
     getImageUrl,
     getAttachmentUrl,
+    getCollaborators: getDocCollaborators,
+    getPages: getDocPages,
     editable: documentEditable
   })
   React.useEffect(() => {

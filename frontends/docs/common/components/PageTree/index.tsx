@@ -18,6 +18,7 @@ import styles from './PageTree.module.less'
 import { useDocsI18n } from '../../hooks'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
+import { pagesVar } from '@/docs/reactiveVars'
 
 export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
@@ -34,22 +35,25 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { data: pinData } = useGetBlockPinsQuery()
   const pinIds = pinData?.blockPins?.map(pin => pin.blockId) ?? []
 
-  const getTitle = (block: BlockType): string => {
-    const text = block.text
-    if (/^\s*$/.test(text)) {
-      return t('title.untitled')
-    } else {
-      return text
-    }
-  }
+  const getTitle = React.useCallback(
+    (block: BlockType): string => {
+      const text = block.text
+      if (/^\s*$/.test(text)) {
+        return t('title.untitled')
+      } else {
+        return text
+      }
+    },
+    [t]
+  )
 
-  const getIcon = (block: BlockType): string | null => {
+  const getIcon = React.useCallback((block: BlockType): string | null => {
     if (block.meta.icon?.type === Blocktype.Emoji) {
       return (block.meta.icon as BlockEmoji).emoji
     }
 
     return ''
-  }
+  }, [])
 
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
     let targetParentId: string | undefined | null, sort: number
@@ -150,6 +154,27 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   }
 
   const pageBlocks = data?.pageBlocks ?? []
+
+  React.useEffect(() => {
+    const flattedData = (data?.pageBlocks ?? [])
+      .map(b => {
+        const title = getTitle(b)
+        return {
+          key: b.id,
+          value: b.id,
+          parentId: b.parentId,
+          sort: b.sort,
+          icon: getIcon(b),
+          nextSort: b.nextSort,
+          firstChildSort: b.firstChildSort,
+          text: b.text,
+          title
+        }
+      })
+      .sort((a, b) => Number(a.sort) - Number(b.sort))
+
+    pagesVar(flattedData)
+  }, [data?.pageBlocks, getTitle, getIcon])
 
   const recursionFilter = (blocks: BlockType[], cursor: string): BlockType[] => {
     if (!cursor) {

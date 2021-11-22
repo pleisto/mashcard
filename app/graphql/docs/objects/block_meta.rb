@@ -8,6 +8,8 @@ module Docs
       field :attachment, BlockAttachment, 'attachment', null: true
       field :link, BlockLink, 'link', null: true
       field :title, String, 'title', null: true
+      field :people, BlockPeople, 'people', null: true
+      field :page, BlockPage, 'page', null: true
 
       ## NOTE: Prosemirror builtin
       field :level, Int, 'Prosemirror builtin level', null: true

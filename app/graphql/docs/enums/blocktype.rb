@@ -6,5 +6,7 @@ module Docs
     value "EMOJI", "EMOJI"
     value "COLOR", "COLOR"
     value "ATTACHMENT", "ATTACHMENT"
+    value "PEOPLE", "PEOPLE"
+    value "PAGE", "PAGE"
   end
 end

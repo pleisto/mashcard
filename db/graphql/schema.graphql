@@ -532,6 +532,16 @@ type BlockMeta {
   link: BlockLink
 
   """
+  page
+  """
+  page: BlockPage
+
+  """
+  people
+  """
+  people: BlockPeople
+
+  """
   Prosemirror builtin start
   """
   start: String
@@ -582,6 +592,58 @@ type BlockMovePayload {
   errors: [String!]!
 }
 
+type BlockPage {
+  """
+  height
+  """
+  height: Int
+
+  """
+  icon
+  """
+  icon: String
+
+  """
+  key
+  """
+  key: String!
+
+  """
+  link
+  """
+  link: String!
+
+  """
+  name
+  """
+  name: String
+
+  """
+  size
+  """
+  size: Int
+
+  """
+  source
+  """
+  source: Filesourcetype
+
+  """
+  title
+  """
+  title: String
+
+  """
+  type
+  """
+  type: Blocktype
+
+  """
+  width
+  """
+  width: Int
+}
+
 type BlockPath {
   """
   icon
@@ -597,6 +659,53 @@ type BlockPath {
   cover
   """
   text: String!
+}
+
+type BlockPeople {
+  """
+  avatar
+  """
+  avatarUrl: String
+
+  """
+  height
+  """
+  height: Int
+
+  """
+  url or blob key
+  """
+  key: String
+
+  """
+  name
+  """
+  name: String
+
+  """
+  size
+  """
+  size: Int
+
+  """
+  source
+  """
+  source: Filesourcetype
+
+  """
+  type
+  """
+  type: Blocktype
+
+  """
+  key
+  """
+  webid: String!
+
+  """
+  width
+  """
+  width: Int
 }
 
 """
@@ -850,6 +959,16 @@ enum Blocktype {
   IMAGE
   """
   IMAGE
+
+  """
+  PAGE
+  """
+  PAGE
+
+  """
+  PEOPLE
+  """
+  PEOPLE
 }
 
 """
