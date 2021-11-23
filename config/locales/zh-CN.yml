@@ -753,7 +753,7 @@ zh-CN:
           desc: 嵌入 PDF
         embed:
           title: 嵌入
-          desc: For PDFs and more
+          desc: PDF、Word、PPT、Excel and more.
         image:
           title: 图片
           desc: Upload or embed with a link
@@ -818,9 +818,14 @@ zh-CN:
         ok: Delete
         cancel: Cancel
       menu:
+        more:
+          duplicate: 复制
+          copy: 复制链接
+          delete: Delete
         copy: 复制链接
         delete: Remove
-      hint: 嵌入任何内容
+      hint: Embed a link or a file
+      desc: Upload PDF、Word、PPT、Excel and more.
       import_sources:
         link:
           placeholder: Paste in https://...

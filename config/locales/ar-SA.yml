@@ -838,7 +838,7 @@ ar-SA:
           desc: قم بتضمين ملف PDF
         embed:
           title: Embed
-          desc: For PDFs and more
+          desc: PDF、Word、PPT、Excel and more.
         image:
           title: صورة
           desc: Upload or embed with a link
@@ -903,9 +903,14 @@ ar-SA:
         ok: Delete
         cancel: Cancel
       menu:
+        more:
+          duplicate: كَرر
+          copy: نسخ الارتباط
+          delete: Delete
         copy: نسخ الارتباط
         delete: Remove
-      hint: Embed anything
+      hint: Embed a link or a file
+      desc: Upload PDF、Word、PPT、Excel and more.
       import_sources:
         link:
           placeholder: Paste in https://...
