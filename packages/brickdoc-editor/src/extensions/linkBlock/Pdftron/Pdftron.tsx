@@ -4,6 +4,7 @@ import './Pdftron.less'
 import { ActionPanel } from '../ActionPanel/ActionPanel'
 import { FileIcon } from '../FileIcon/FileIcon'
 import { FileType } from '../../helpers/file'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface PdftronProps {
   docLink: string
@@ -49,7 +50,7 @@ export const Pdftron: React.FC<PdftronProps> = ({ docLink, fileName, fileType, o
       onDownload={handleDownload}
       onFullScreen={handleFullScreen}
       onToggleMode={onToggleMode}>
-      <div className="brickdoc-pdftron-block">
+      <div data-testid={TEST_ID_ENUM.editor.linkBlock.pdftron.id} className="brickdoc-pdftron-block">
         <div ref={viewer} className="brickdoc-pdftron-container" />
         <div className="brickdoc-pdftron-info">
           <FileIcon className="brickdoc-pdftron-info-icon" fileType={fileType} />

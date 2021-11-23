@@ -328,9 +328,7 @@ jobs:
         with:
           name: cypress-rails-logs
           retention-days: 20
-          path: |
-            log/std.log
-            log/test.log
+          path: log/
       - name: Upload cypress screenshots (when failed)
         if: failure()
         uses: actions/upload-artifact@v2

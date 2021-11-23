@@ -2064,6 +2064,7 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
     />
     <button
       class="brk-btn brk-btn-primary dashboard-panel-button"
+      data-testid="uploader-dashboard-modules-upload-button"
       type="button"
     >
       <span>

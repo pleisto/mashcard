@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User matches correct snapshot 1`] = `
+<span
+  as="span"
+  data-node-view-wrapper=""
+  editor="[object Object]"
+  style="pointer-events: none; white-space: normal;"
+>
+  <span
+    class="brk-avatar brk-avatar-sm brk-avatar-circle brk-avatar-image brickdoc-user-block-avatar"
+  >
+    <img
+      src="avatarUrl"
+    />
+  </span>
+  <span
+    class="brickdoc-user-block-name"
+  >
+    name
+  </span>
+</span>
+`;

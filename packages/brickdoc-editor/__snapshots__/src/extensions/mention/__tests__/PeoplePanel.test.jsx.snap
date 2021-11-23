@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MentionMenuPeoplePanel matches correct snapshot 1`] = `
+<div
+  class="mention-menu-panel"
+>
+  <div
+    class="mention-menu-panel-head"
+  >
+    mention.people.head
+  </div>
+  <div
+    class="mention-menu-people-items"
+  >
+    <div
+      class="mention-menu-people"
+      role="menuitem"
+      tabindex="-1"
+    >
+      <span
+        class="brk-avatar brk-avatar-circle brk-avatar-image mention-menu-people-avatar"
+      >
+        <img
+          src="avatar 0"
+        />
+      </span>
+      <span
+        class="mention-menu-people-name"
+      >
+        name 0
+      </span>
+    </div>
+    <div
+      class="mention-menu-people"
+      role="menuitem"
+      tabindex="-1"
+    >
+      <span
+        class="brk-avatar brk-avatar-circle brk-avatar-image mention-menu-people-avatar"
+      >
+        <img
+          src="avatar 1"
+        />
+      </span>
+      <span
+        class="mention-menu-people-name"
+      >
+        name 1
+      </span>
+    </div>
+    <div
+      class="mention-menu-people"
+      role="menuitem"
+      tabindex="-1"
+    >
+      <span
+        class="brk-avatar brk-avatar-circle brk-avatar-image mention-menu-people-avatar"
+      >
+        <img
+          src="avatar 2"
+        />
+      </span>
+      <span
+        class="mention-menu-people-name"
+      >
+        name 2
+      </span>
+    </div>
+  </div>
+</div>
+`;

@@ -1,4 +1,5 @@
 import { Button } from '@brickdoc/design-system'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { Uppy, UppyFile } from '@uppy/core'
 import React from 'react'
 import { ImportSourceOption } from './Dashboard'
@@ -100,7 +101,11 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
         accept={importSource.acceptType}
         onChange={handleInputChange}
       />
-      <Button type="primary" onClick={handleChooseFile} className="dashboard-panel-button">
+      <Button
+        data-testid={TEST_ID_ENUM.uploader.Dashboard.modules.upload.button.id}
+        type="primary"
+        onClick={handleChooseFile}
+        className="dashboard-panel-button">
         {importSource.buttonText}
       </Button>
       <div className="dashboard-panel-hint">{importSource.buttonHint}</div>

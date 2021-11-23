@@ -35,10 +35,11 @@ export const PeoplePanel: React.FC<PeoplePanelProps> = ({ editor, items, range, 
         {items.map((item, index) => (
           <div
             key={index}
-            role="button"
+            role="menuitem"
             tabIndex={-1}
             onClick={handlePeopleSelect(item)}
-            className={cx('mention-menu-people', { active: active && index === activeIndex })}>
+            className={cx('mention-menu-people', { active: active && index === activeIndex })}
+          >
             <Avatar className="mention-menu-people-avatar" initials={item.name ?? item.webid} src={item.avatar} />
             <span className="mention-menu-people-name">{item.name}</span>
           </div>

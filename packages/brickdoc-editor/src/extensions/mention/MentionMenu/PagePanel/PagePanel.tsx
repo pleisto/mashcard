@@ -34,10 +34,11 @@ export const PagePanel: React.FC<PagePanelProps> = ({ editor, range, items, acti
         {items.map((item, index) => (
           <div
             key={index}
-            role="button"
+            role="menuitem"
             tabIndex={-1}
             onClick={handlePageSelect(item)}
-            className={cx('mention-menu-page', { active: active && index === activeIndex })}>
+            className={cx('mention-menu-page', { active: active && index === activeIndex })}
+          >
             {item.icon ? (
               <span role="img" className="mention-menu-page-icon" aria-label="">
                 {item.icon}

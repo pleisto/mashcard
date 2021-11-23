@@ -2,6 +2,7 @@ frontends/BrickdocGraphQL.ts
 public/vite-dev/
 public/esm-bundle/
 public/packs-test/
+public/pdftron/
 dist/
 vendor/
 coverage/

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MentionMenu matches correct snapshot 1`] = `
+<div
+  class="brickdoc-mention-menu"
+  role="menu"
+>
+  <div
+    class="mention-menu-panel"
+  >
+    <div
+      class="mention-menu-panel-head"
+    >
+      mention.people.head
+    </div>
+    <div
+      class="mention-menu-people-items"
+    >
+      <div
+        class="mention-menu-people active"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <span
+          class="brk-avatar brk-avatar-circle brk-avatar-image mention-menu-people-avatar"
+        >
+          <img
+            src="avatar"
+          />
+        </span>
+        <span
+          class="mention-menu-people-name"
+        >
+          people name
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="mention-menu-divider"
+  />
+  <div
+    class="mention-menu-panel"
+  >
+    <div
+      class="mention-menu-panel-head"
+    >
+      mention.page_link.head
+    </div>
+    <div
+      class="mention-menu-page-items"
+    >
+      <div
+        class="mention-menu-page"
+        role="menuitem"
+        tabindex="-1"
+      >
+        <span
+          aria-label=""
+          class="mention-menu-page-icon"
+          role="img"
+        >
+          icon
+        </span>
+        <div
+          class="mention-menu-page-content"
+        >
+          <span
+            class="mention-menu-page-name"
+          >
+            page name
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

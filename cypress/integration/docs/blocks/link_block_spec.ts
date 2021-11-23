@@ -61,19 +61,41 @@ describe('linkBlock', () => {
     })
   })
 
-  // TODO: Failed on CI for no reason
-  // eslint-disable-next-line jest/no-disabled-tests
   describe.skip('attachment file', () => {
-    it('should upload attachment successfully', () => {
-      cy.visit('/')
-      cy.get('[contenteditable]').type('/embed')
-      cy.get('button.slash-menu-item:first').click()
-      cy.findByText('Embed anything').click()
-      cy.findByText('Upload').click()
-      cy.get('input[type=file]').attachFile('images/test.png')
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(1000)
-      cy.findByText('test.png').should('exist')
+    it('embeds pdf file normally', () => {
+      cy.addBlock('embed')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
+      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
+      cy.get('input[type=file]').attachFile('files/test.pdf')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
+      cy.findByText('test.pdf').should('exist')
+    })
+
+    it('embeds doc file normally', () => {
+      cy.addBlock('embed')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
+      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
+      cy.get('input[type=file]').attachFile('files/test.docx')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
+      cy.findByText('test.docx').should('exist')
+    })
+
+    it('embeds excel file normally', () => {
+      cy.addBlock('embed')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
+      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
+      cy.get('input[type=file]').attachFile('files/test.xlsx')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
+      cy.findByText('test.xlsx').should('exist')
+    })
+
+    it('embeds ppt file normally', () => {
+      cy.addBlock('embed')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
+      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
+      cy.get('input[type=file]').attachFile('files/test.pptx')
+      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
+      cy.findByText('test.pptx').should('exist')
     })
   })
 })

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageLink matches correct snapshot 1`] = `
+<span
+  as="span"
+  data-node-view-wrapper=""
+  editor="[object Object]"
+  style="pointer-events: none; white-space: normal;"
+>
+  <a
+    class="text"
+    href="/link"
+  >
+    <span
+      aria-label=""
+      class="brickdoc-page-link-block-icon"
+      role="img"
+    >
+      icon
+      <span
+        class="brk-icon brk-icon-arrow-shortcut brickdoc-page-link-block-shortcut-arrow"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M7 6C6.44772 6 6 6.44772 6 7C6 7.55228 6.44772 8 7 8H14.5941L5.29289 17.3012C4.90236 17.6917 4.90236 18.3249 5.29289 18.7154C5.68341 19.1059 6.31658 19.1059 6.7071 18.7154L16 9.42248V17C16 17.5523 16.4477 18 17 18C17.5523 18 18 17.5523 18 17V7C18 6.44772 17.5523 6 17 6H7Z"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </span>
+    <span
+      class="brickdoc-page-link-block-name"
+    >
+      title
+    </span>
+  </a>
+</span>
+`;
