@@ -1,6 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
-import { Button, List } from '@brickdoc/design-system'
+import { List } from '@brickdoc/design-system'
+import { Button } from '@brickdoc/brickdoc-headless-design-system'
 import { DocumentPage } from '@/docs/pages/DocumentPage'
 import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMutation } from '@/BrickdocGraphQL'
 import styles from './index.module.less'
@@ -44,10 +45,10 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
         <div className={styles.side}>
           <div className={styles.snapshot}>{snapshots}</div>
           <div className={styles.actionPanel}>
-            <Button type="primary" className={styles.button} disabled={disabled} loading={loading} onClick={onRestore}>
+            <Button className={styles.button} priority="secondary" disabled={disabled} loading={loading} onClick={onRestore} block>
               {loading ? t('snapshots.restoring') : t('snapshots.restore')}
             </Button>
-            <Button className={styles.button} onClick={onCleanup}>
+            <Button className={styles.button} onClick={onCleanup} block>
               {t('snapshots.cancel')}
             </Button>
           </div>
@@ -87,7 +88,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
       split={false}
       renderItem={item => (
         <List.Item className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}>
-          <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
+          <Button priority="ghost" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
             <span className={styles.title}>{item.name || t('title.untitled')}</span>
             <span className={styles.desc}>{item.relativeTime}</span>
           </Button>

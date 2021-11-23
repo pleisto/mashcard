@@ -14,6 +14,11 @@ declare module '*.svg' {
   export = content
 }
 
+declare module '*.mp4' {
+  const src: string
+  export = src
+}
+
 declare module '*.png' {
   const content: string
 

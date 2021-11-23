@@ -1,0 +1,83 @@
+{
+  "name": "@brickdoc/brickdoc-headless-design-system",
+  "version": "0.0.1",
+  "description": "Brickdoc design system and React components implementation",
+  "license": "Apache-2.0",
+  "scripts": {
+    "cleanup": "rm -rf dist",
+    "storybook": "NODE_ENV=dev vite serve --config ./vite.config.ts",
+    "build-storybook": "rm -rf storybook-static && vite build --config ./vite.config.ts"
+  },
+  "main": "./components/index.tsx",
+  "module": "./components/index.tsx",
+  "files": [
+    "components"
+  ],
+  "sideEffects": [
+    "*.less",
+    "*.css",
+    "**/style/*"
+  ],
+  "dependencies": {
+    "@brickdoc/design-colors": "workspace:packages/brickdoc-design-colors",
+    "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons",
+    "@ctrl/tinycolor": "^3.4.0",
+    "@react-aria/button": "^3.3.4",
+    "@react-aria/interactions": "^3.6.0",
+    "@stitches/core": "^1.2.5",
+    "@stitches/react": "^1.2.5",
+    "array-tree-filter": "^2.1.0",
+    "classnames": "^2.3.1",
+    "copy-to-clipboard": "^3.3.1",
+    "lodash-es": "^4.17.21",
+    "rc-cascader": "^2.1.2",
+    "rc-checkbox": "^2.3.2",
+    "rc-dialog": "^8.6.0",
+    "rc-drawer": "^4.4.2",
+    "rc-dropdown": "^3.2.0",
+    "rc-field-form": "^1.22.0-2",
+    "rc-image": "^5.2.5",
+    "rc-menu": "^9.0.14",
+    "rc-motion": "^2.4.4",
+    "rc-notification": "^4.5.7",
+    "rc-pagination": "^3.1.9",
+    "rc-picker": "^2.5.19",
+    "rc-progress": "^3.1.4",
+    "rc-resize-observer": "^1.0.1",
+    "rc-select": "^13.1.0-alpha.0",
+    "rc-switch": "^3.2.2",
+    "rc-table": "^7.19.1",
+    "rc-tabs": "^11.10.2",
+    "rc-textarea": "^0.3.5",
+    "rc-tooltip": "^5.1.1",
+    "rc-tree": "^5.2.2",
+    "rc-tree-select": "^4.6.1",
+    "rc-trigger": "^5.2.10",
+    "rc-util": "^5.14.0",
+    "scroll-into-view-if-needed": "^2.2.28"
+  },
+  "devDependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@types/lodash-es": "^4.17.5",
+    "dayjs": "^1.10.7",
+    "i18next": "^21.4.0",
+    "less": "^4.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.13.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.6.13",
+    "vite-pages-theme-doc": "^3.1.0",
+    "vite-plugin-mdx": "^3.5.10",
+    "vite-plugin-react": "^4.0.1",
+    "vite-plugin-react-pages": "^3.1.1"
+  },
+  "peerDependencies": {
+    "dayjs": "^1.10.7",
+    "i18next": "^21.3.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.12.0"
+  }
+}

@@ -127,9 +127,14 @@ export function colorWithShade(color: Color, shade: Shade, isInverted: boolean =
   return rgb2color(Object.assign(hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }))
 }
 
-export function colorShadeMixin(color: string, shade: string, isInverted = 'false'): null | string {
+export function colorShadeMixin(color: string, shade: string, isInverted = 'false'): string | null {
   const shadedColor = colorWithShade(cssStr2color(color), parseInt(shade, 10), isInverted === 'true')
   return !shadedColor ? null : color2cssStr(shadedColor)
+}
+
+export function colorShadeMixinString(color: string, shade: string, isInverted = 'false'): string {
+  const shadedColor = colorWithShade(cssStr2color(color), parseInt(shade, 10), isInverted === 'true')
+  return !shadedColor ? '' : color2cssStr(shadedColor)
 }
 
 export function generatePalette(color: string, isInverted = false): string[] {

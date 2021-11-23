@@ -52,6 +52,7 @@
   ],
   "dependencies": {
     "@apollo/client": "^3.4.16",
+    "@brickdoc/brickdoc-headless-design-system": "workspace:packages/brickdoc-headless-design-system",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",

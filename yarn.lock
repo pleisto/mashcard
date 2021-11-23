@@ -1660,7 +1660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.1, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.1, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.16.0
   resolution: "@babel/runtime@npm:7.16.0"
   dependencies:
@@ -1740,6 +1740,70 @@ __metadata:
   checksum: 850f9305536d0f2bd13e9e0881cb5f02e4f93fad1189f7b2d4bebf694e3206924eadee1068130d43c11b750efcc9405f88a8e42ef098b6d75239c0f047de1a27
   languageName: node
   linkType: hard
+
+"@brickdoc/brickdoc-headless-design-system@workspace:packages/brickdoc-headless-design-system":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/brickdoc-headless-design-system@workspace:packages/brickdoc-headless-design-system"
+  dependencies:
+    "@brickdoc/design-colors": "workspace:packages/brickdoc-design-colors"
+    "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons"
+    "@ctrl/tinycolor": ^3.4.0
+    "@mdx-js/mdx": ^1.6.22
+    "@mdx-js/react": ^1.6.22
+    "@react-aria/button": ^3.3.4
+    "@react-aria/interactions": ^3.6.0
+    "@stitches/core": ^1.2.5
+    "@stitches/react": ^1.2.5
+    "@types/lodash-es": ^4.17.5
+    array-tree-filter: ^2.1.0
+    classnames: ^2.3.1
+    copy-to-clipboard: ^3.3.1
+    dayjs: ^1.10.7
+    i18next: ^21.4.0
+    less: ^4.1.2
+    lodash-es: ^4.17.21
+    rc-cascader: ^2.1.2
+    rc-checkbox: ^2.3.2
+    rc-dialog: ^8.6.0
+    rc-drawer: ^4.4.2
+    rc-dropdown: ^3.2.0
+    rc-field-form: ^1.22.0-2
+    rc-image: ^5.2.5
+    rc-menu: ^9.0.14
+    rc-motion: ^2.4.4
+    rc-notification: ^4.5.7
+    rc-pagination: ^3.1.9
+    rc-picker: ^2.5.19
+    rc-progress: ^3.1.4
+    rc-resize-observer: ^1.0.1
+    rc-select: ^13.1.0-alpha.0
+    rc-switch: ^3.2.2
+    rc-table: ^7.19.1
+    rc-tabs: ^11.10.2
+    rc-textarea: ^0.3.5
+    rc-tooltip: ^5.1.1
+    rc-tree: ^5.2.2
+    rc-tree-select: ^4.6.1
+    rc-trigger: ^5.2.10
+    rc-util: ^5.14.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-i18next: ^11.13.0
+    scroll-into-view-if-needed: ^2.2.28
+    typescript: ^4.4.4
+    vite: ^2.6.13
+    vite-pages-theme-doc: ^3.1.0
+    vite-plugin-mdx: ^3.5.10
+    vite-plugin-react: ^4.0.1
+    vite-plugin-react-pages: ^3.1.1
+  peerDependencies:
+    dayjs: ^1.10.7
+    i18next: ^21.3.3
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-i18next: ^11.12.0
+  languageName: unknown
+  linkType: soft
 
 "@brickdoc/design-colors@workspace:packages/brickdoc-design-colors":
   version: 0.0.0-use.local
@@ -1909,6 +1973,7 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.4.16
     "@babel/plugin-proposal-decorators": ^7.16.0
+    "@brickdoc/brickdoc-headless-design-system": "workspace:packages/brickdoc-headless-design-system"
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
     "@brickdoc/editor": "workspace:packages/brickdoc-editor"
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc"
@@ -3198,6 +3263,76 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-aria/button@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "@react-aria/button@npm:3.3.4"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+    "@react-aria/focus": ^3.5.0
+    "@react-aria/interactions": ^3.6.0
+    "@react-aria/utils": ^3.9.0
+    "@react-stately/toggle": ^3.2.3
+    "@react-types/button": ^3.4.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: c67f2097bb1d1b4ecd074865451f0a889773ce5ce6a0f92461e95d323a9a58a71339a7e2b457990de8df2cd18478606da2579b424806c6785b1088f462083a5f
+  languageName: node
+  linkType: hard
+
+"@react-aria/focus@npm:^3.5.0":
+  version: 3.5.0
+  resolution: "@react-aria/focus@npm:3.5.0"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+    "@react-aria/interactions": ^3.6.0
+    "@react-aria/utils": ^3.9.0
+    "@react-types/shared": ^3.9.0
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: c03d4433bdb1c19d3119b88bec4d44857cc7efaf9205b1b855731f768dd13231e4e88adb1352fd1c64b5ec0454038b8535d30a07e43b605f41d519ae81dbeb6b
+  languageName: node
+  linkType: hard
+
+"@react-aria/interactions@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "@react-aria/interactions@npm:3.6.0"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+    "@react-aria/utils": ^3.9.0
+    "@react-types/shared": ^3.9.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: 8f87574fdb68816eac5af92e87c8a2046564d12d6855061a909661b9036083776f29df22201c93f2576378f4596d253ede610c3bd762e74844cb642f59d014b1
+  languageName: node
+  linkType: hard
+
+"@react-aria/ssr@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@react-aria/ssr@npm:3.1.0"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: ae376d45dbd19e990891353a2eee10c13f3b54dbd807a2e528928983741c0ea9dbfefcc132c46c685e53440a53f7be82bd36a5c61bdfaec3c3518f02ae444e7f
+  languageName: node
+  linkType: hard
+
+"@react-aria/utils@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@react-aria/utils@npm:3.9.0"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+    "@react-aria/ssr": ^3.1.0
+    "@react-stately/utils": ^3.2.2
+    "@react-types/shared": ^3.9.0
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: ef465effe2d007870342e27e73b179ef51dc21403918a8807931a785606e6199b67e3b6b5e1f0a23ecc8200f4bd8dba558bcdfb1eb6a322955d55c7089ef1136
+  languageName: node
+  linkType: hard
+
 "@react-dnd/asap@npm:^4.0.0":
   version: 4.0.0
   resolution: "@react-dnd/asap@npm:4.0.0"
@@ -3216,6 +3351,62 @@ __metadata:
   version: 2.0.0
   resolution: "@react-dnd/shallowequal@npm:2.0.0"
   checksum: b5bbdc795d65945bb7ba2322bed5cf8d4c6fe91dced98c3b10e3d16822c438f558751135ff296f8d1aa1eaa9d0037dacab2b522ca5eb812175123b9996966dcb
+  languageName: node
+  linkType: hard
+
+"@react-stately/toggle@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "@react-stately/toggle@npm:3.2.3"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+    "@react-stately/utils": ^3.2.2
+    "@react-types/checkbox": ^3.2.3
+    "@react-types/shared": ^3.8.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: 8bd8962d1c1c629c1d800692679caf8ea2d8bd72b6545bff3e8786d2b5fc312ce98eee1b99dbe2104baba61d14129c909ad8ccd8f80f50dae9e2056925d45fbc
+  languageName: node
+  linkType: hard
+
+"@react-stately/utils@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "@react-stately/utils@npm:3.2.2"
+  dependencies:
+    "@babel/runtime": ^7.6.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: c51a6f4f173c7db5f00e22f5984427f1b3613e6d2e2eb8ee536448920962975cf04ebe52e07ffb0712b34a7a4e5aa309d03e6e2c364441d7765f84cfefdb5709
+  languageName: node
+  linkType: hard
+
+"@react-types/button@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@react-types/button@npm:3.4.1"
+  dependencies:
+    "@react-types/shared": ^3.8.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: 3d5c05ce228117b2c57085e9d2a5827bb4f2c5a6303902faf355495badd69fcbe751963be2266c7f79ba04681c98e0ac6f087aab3554089a5fd582493f21d03f
+  languageName: node
+  linkType: hard
+
+"@react-types/checkbox@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "@react-types/checkbox@npm:3.2.3"
+  dependencies:
+    "@react-types/shared": ^3.8.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: e9d4371fff8e4e9460346f7cc715df8f10051860b8b3f4bf0773267f653e6541ce50ca6548822742e43972682c9c0ff9d72ecb364ee62779e07dac85086157c5
+  languageName: node
+  linkType: hard
+
+"@react-types/shared@npm:^3.8.0, @react-types/shared@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@react-types/shared@npm:3.9.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1
+  checksum: 0be11ba4234767d47707dff8601605f46bfd9e3e07dcd3213119517f9a627cca4b71e9030478d3941241d8a6be8b8bc00e92278342daad8f7397bc9eee290f1c
   languageName: node
   linkType: hard
 
@@ -3416,6 +3607,22 @@ __metadata:
   dependencies:
     "@sinonjs/commons": ^1.7.0
   checksum: 09b5a158ce013a6c37613258bad79ca4efeb99b1f59c41c73cca36cac00b258aefcf46eeea970fccf06b989414d86fe9f54c1102272c0c3bdd51a313cea80949
+  languageName: node
+  linkType: hard
+
+"@stitches/core@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "@stitches/core@npm:1.2.5"
+  checksum: cbc151e15faf65df970a26c7efcdb665f13e32bcc0e1bd543d781ab90d97c06da22cd353b8a233b2d46fc3ba9e5c3ce5dbbbf17dda2325dc49d30ae1bfcd68b6
+  languageName: node
+  linkType: hard
+
+"@stitches/react@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "@stitches/react@npm:1.2.5"
+  peerDependencies:
+    react: ">= 16.3.0"
+  checksum: 96b2ba837aeb36f9ab0479bfcad1a3fae99b3b43966aed7fffe2e32637808a29ed2f7e8d1bfcb7a327b6b39ba82ef822d80efad8f26cabc3f8ff177be095621e
   languageName: node
   linkType: hard
 
@@ -6753,6 +6960,13 @@ __metadata:
   version: 2.1.2
   resolution: "clone@npm:2.1.2"
   checksum: aaf106e9bc025b21333e2f4c12da539b568db4925c0501a1bf4070836c9e848c892fa22c35548ce0d1132b08bbbfa17a00144fe58fccdab6fa900fec4250f67d
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "clsx@npm:1.1.1"
+  checksum: ff052650329773b9b245177305fc4c4dc3129f7b2be84af4f58dc5defa99538c61d4207be7419405a5f8f3d92007c954f4daba5a7b74e563d5de71c28c830063
   languageName: node
   linkType: hard
 
