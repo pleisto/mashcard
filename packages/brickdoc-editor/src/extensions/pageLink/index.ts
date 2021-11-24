@@ -1,6 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { insertBlockAt } from '../helpers/commands'
+import { insertBlockAt } from '../../helpers/commands'
 import { PageLink } from './PageLink/PageLink'
 
 declare module '@tiptap/core' {

@@ -9,8 +9,8 @@ import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.less'
-import { prependHttp } from '../../helpers/prependHttp'
-import { sizeFormat, linkStorage, getFileTypeByExtension, FileType } from '../../helpers/file'
+import { prependHttp } from '../../../helpers/prependHttp'
+import { sizeFormat, linkStorage, getFileTypeByExtension, FileType } from '../../../helpers/file'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { Pdftron } from '../Pdftron/Pdftron'
 import { ActionPanel } from '../ActionPanel/ActionPanel'
@@ -140,7 +140,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
           onDownload={handleDownload}
           onCopyLink={handleCopyLink}
           onDelete={handleDelete}
-          onToggleMode={handleChangeModeToPreview}>
+          onToggleMode={handleChangeModeToPreview}
+        >
           <div className="brickdoc-link-block-attachment">
             <FileIcon fileType={fileType} />
             <div className="link-block-attachment-content">
@@ -180,7 +181,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
         <Button
           data-testid={TEST_ID_ENUM.editor.linkBlock.link.id}
           className="brickdoc-link-block-link"
-          onClick={() => window.open(linkUrl, '_blank')}>
+          onClick={() => window.open(linkUrl, '_blank')}
+        >
           {cover && <div className="link-block-cover" style={{ backgroundImage: `url("${cover}")` }} />}
           <div className="link-block-content">
             {title && <div className="link-block-title">{title}</div>}
@@ -198,7 +200,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   onClick={info => {
                     info.domEvent.stopPropagation()
                     handleDelete()
-                  }}>
+                  }}
+                >
                   <Icon.Delete />
                   {t('link_block.menu.delete')}
                 </Menu.Item>
@@ -207,12 +210,14 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
                   {t('link_block.menu.copy')}
                 </Menu.Item>
               </Menu>
-            }>
+            }
+          >
             <Button
               data-testid={TEST_ID_ENUM.editor.linkBlock.menuButton.id}
               type="text"
               className="link-block-menu-button"
-              onClick={event => event.stopPropagation()}>
+              onClick={event => event.stopPropagation()}
+            >
               <Icon.More className="link-block-menu-icon" />
             </Button>
           </Popover>
@@ -241,6 +246,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
         overlayClassName="brickdoc-link-block-popover"
         trigger="click"
         placement="bottom"
+        defaultVisible={node.attrs.isNew}
         content={
           <Dashboard
             blockId={node.attrs.uuid}
@@ -249,7 +255,8 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
             importSources={importSources}
             prepareFileUpload={extension.options.prepareFileUpload}
           />
-        }>
+        }
+      >
         <Button data-testid={TEST_ID_ENUM.editor.linkBlock.addButton.id} type="text" className="brickdoc-link-block-placeholder">
           <div className="link-block-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.PaperClip className="link-block-icon" />

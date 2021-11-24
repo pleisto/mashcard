@@ -4,7 +4,7 @@ import { NodeViewProps } from '@tiptap/core'
 import { Icon } from '@brickdoc/design-system'
 import { BlockWrapper } from '../../BlockWrapper'
 import { FormulaMenu } from '../../../components'
-import { COLOR } from '../../helpers/color'
+import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
 import { FormulaOptions } from '..'
 import { VariableTypeMeta, variableTypeMeta } from '@brickdoc/formula'
@@ -53,6 +53,11 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
 
   const activeColorIndex = variableT ? COLOR_ARRAY[variableTypeMeta(variableT)] || 0 : 0
   const activeColor = COLOR[activeColorIndex]
+  const handleDefaultPopoverVisibleChange = (visible: boolean): void => {
+    if (!visible && node.attrs.isNew) {
+      updateAttributes({ isNew: false })
+    }
+  }
 
   return (
     <BlockWrapper as="span" editor={editor}>
@@ -62,6 +67,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         variableId={variableT?.variableId}
         formulaName={variableT?.name}
         formulaDefaultName={formulaDefaultName}
+        defaultVisible={node.attrs.isNew}
+        onVisibleChange={handleDefaultPopoverVisibleChange}
         editor={editor}
         formulaValue={
           variableT?.codeFragments ? `=${variableT.codeFragments.map(fragment => fragment.name).join(' ')}` : variableT?.definition

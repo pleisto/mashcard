@@ -12,6 +12,8 @@ export interface FormulaMenuProps {
   node?: FormulaBlockProps['node']
   variableId?: string
   formulaDefaultName?: string
+  defaultVisible?: boolean
+  onVisibleChange?: (visible: boolean) => void
   editor: Editor
   updateVariableT?: (t: VariableData) => void
   updateFormula?: (id: string) => void
@@ -29,6 +31,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   node,
   variableId,
   children,
+  defaultVisible,
+  onVisibleChange,
   editor,
   updateFormula,
   formulaDefaultName,
@@ -46,7 +50,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const [result, setResult] = React.useState<any>(formulaResult)
   const [variable, setVariable] = React.useState<VariableInterface>()
   const [error, setError] = React.useState<{ type: string; message: string }>()
-  const [visible, setVisible] = React.useState(false)
+  const [visible, setVisible] = React.useState(defaultVisible)
 
   const close = (): void => {
     if (clear) {
@@ -58,9 +62,12 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       setResult('')
     }
     setVisible(false)
+    onVisibleChange?.(false)
   }
 
   const onPopoverVisibleChange = (visible: boolean): void => {
+    onVisibleChange?.(visible)
+
     if (!visible) {
       close()
       return
@@ -188,6 +195,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   return (
     <Popover
       onVisibleChange={onPopoverVisibleChange}
+      defaultVisible={defaultVisible}
       visible={visible}
       overlayClassName="brickdoc-formula-menu-popover"
       destroyTooltipOnHide={true}

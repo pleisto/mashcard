@@ -3,7 +3,7 @@ import WebViewer, { WebViewerInstance } from '@pdftron/webviewer'
 import './Pdftron.less'
 import { ActionPanel } from '../ActionPanel/ActionPanel'
 import { FileIcon } from '../FileIcon/FileIcon'
-import { FileType } from '../../helpers/file'
+import { FileType } from '../../../helpers/file'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface PdftronProps {
@@ -49,7 +49,8 @@ export const Pdftron: React.FC<PdftronProps> = ({ docLink, fileName, fileType, o
       onDelete={onDelete}
       onDownload={handleDownload}
       onFullScreen={handleFullScreen}
-      onToggleMode={onToggleMode}>
+      onToggleMode={onToggleMode}
+    >
       <div data-testid={TEST_ID_ENUM.editor.linkBlock.pdftron.id} className="brickdoc-pdftron-block">
         <div ref={viewer} className="brickdoc-pdftron-container" />
         <div className="brickdoc-pdftron-info">

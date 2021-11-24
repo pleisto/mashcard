@@ -1,7 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ContextInterface, VariableInterface } from '@brickdoc/formula'
-import { insertBlockAt } from '../helpers/commands'
+import { insertBlockAt } from '../../helpers/commands'
 import { Table } from './Table'
 
 declare module '@tiptap/core' {

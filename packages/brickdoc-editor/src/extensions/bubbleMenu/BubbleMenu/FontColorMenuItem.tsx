@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Editor } from '@tiptap/core'
 import { StyleMeta } from './BubbleMenu'
 import { Button, Dropdown, Tooltip, Icon } from '@brickdoc/design-system'
-import { ColorMeta, COLOR as FONT_COLOR } from '../../helpers/color'
+import { ColorMeta, COLOR as FONT_COLOR } from '../../../helpers/color'
 import { useEditorI18n } from '../../../hooks'
 
 const FontColorStyle: StyleMeta = {

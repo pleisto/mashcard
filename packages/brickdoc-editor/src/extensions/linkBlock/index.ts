@@ -1,9 +1,9 @@
 import type { DashboardPluginOptions } from '@brickdoc/uploader'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
-import { Node, mergeAttributes } from '@tiptap/core'
+import { Node, mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { LinkBlock } from './LinkBlock'
-import { insertBlockAt } from '../helpers/commands'
+import { insertBlockAt } from '../../helpers/commands'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -50,6 +50,9 @@ export const LinkBlockExtension = Node.create<LinkBlockOptions>({
 
   addAttributes() {
     return {
+      isNew: {
+        default: false
+      },
       link: {
         default: {
           type: 'LINK'
@@ -84,7 +87,7 @@ export const LinkBlockExtension = Node.create<LinkBlockOptions>({
       setLinkBlock:
         (position?: number) =>
         ({ chain }) => {
-          const content = { type: this.name }
+          const content: Content = { type: this.name, attrs: { isNew: true } }
           return insertBlockAt(content, chain, position)
         }
     }

@@ -2,8 +2,8 @@ import type { DashboardPluginOptions } from '@brickdoc/uploader'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { ImageSection, ImageSectionAttributes } from './ImageSection'
-import { insertBlockAt } from '../helpers/commands'
+import { ImageBlock, ImageSectionAttributes } from './ImageBlock'
+import { insertBlockAt } from '../../helpers/commands'
 
 export type { ImageSectionAttributes }
 
@@ -46,6 +46,7 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
     return {
       ...this.parent?.(),
       defaultFile: { default: {} },
+      isNew: { default: false },
       image: {
         default: {
           type: 'IMAGE'
@@ -67,7 +68,7 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ImageSection)
+    return ReactNodeViewRenderer(ImageBlock)
   },
 
   addCommands() {
@@ -75,7 +76,7 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
       setImageSection:
         (position?: number, defaultFile?: File) =>
         ({ chain }) => {
-          const content = { type: this.name, attrs: { defaultFile } }
+          const content = { type: this.name, attrs: { defaultFile, isNew: true } }
           return insertBlockAt(content, chain, position)
         }
     }

@@ -9,7 +9,7 @@ import { message, Button, Modal, Popover, Icon, Skeleton, Menu } from '@brickdoc
 import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload, UploadProgress } from '@brickdoc/uploader'
 import { BlockWrapper } from '../../BlockWrapper'
 import { useEditorI18n } from '../../../hooks'
-import { linkStorage, sizeFormat } from '../../helpers/file'
+import { linkStorage, sizeFormat } from '../../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -25,7 +25,7 @@ export interface ImageSectionAttributes {
 }
 
 // TODO: handle image load on error
-export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
+export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
   const { t } = useEditorI18n()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
   const updateImageAttributes = (newAttributes: Partial<ImageSectionAttributes>): void => {
@@ -152,7 +152,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               updateImageAttributes({
                 width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
               })
-            }}>
+            }}
+          >
             <Popover
               trigger="click"
               placement="bottom"
@@ -169,7 +170,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
                     {t('image_section.menu.delete')}
                   </Menu.Item>
                 </Menu>
-              }>
+              }
+            >
               <div className="image-section-menu-button">
                 <Icon.More className="image-section-menu-icon" />
               </div>
@@ -180,7 +182,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
               isZoomed={showPreview}
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
-              }}>
+              }}
+            >
               {!loaded && (
                 <Skeleton.Image
                   style={
@@ -233,6 +236,7 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
         overlayClassName="brickdoc-block-image-section-popover"
         trigger="click"
         placement="bottom"
+        defaultVisible={node.attrs.isNew}
         content={
           <Dashboard
             fileType="image"
@@ -243,7 +247,8 @@ export const ImageSection: React.FC<NodeViewProps> = ({ editor, node, extension,
             onProgress={onProgress}
             importSources={importSources}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-block-image-section" data-testid={TEST_ID_ENUM.editor.imageSection.addButton.id}>
           <div className="image-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.Image className="image-section-icon" />

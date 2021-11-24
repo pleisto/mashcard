@@ -2,7 +2,7 @@
 import { ReactRenderer, Editor as ReactEditor, Extension } from '@tiptap/react'
 import { Editor, Range } from '@tiptap/core'
 import Suggestion from '@tiptap/suggestion'
-import { createPopup, PopupInstance } from '../helpers/popup'
+import { createPopup, PopupInstance } from '../../helpers/popup'
 import { MentionCommandsMenu, MentionCommandsMenuProps } from './MentionMenu'
 import { PageItem } from './MentionMenu/PagePanel/PagePanel'
 import { PeopleItem } from './MentionMenu/PeoplePanel/PeoplePanel'
