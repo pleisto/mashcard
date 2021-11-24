@@ -365,6 +365,32 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
     </div>
+    <div
+      class="bubble-menu-group"
+    >
+      <button
+        class="brk-btn brk-btn-text bubble-menu-item"
+        role="menuitem"
+        type="button"
+      >
+        <span
+          class="brk-icon brk-icon-formula"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
   </div>
 </div>
 `;

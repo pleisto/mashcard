@@ -777,6 +777,9 @@ en-US:
         table:
           title: Table
           desc: Create a table
+        formula:
+          title: Formula
+          desc: Create a formula
     bubblemenu:
       items:
         bold:
@@ -811,6 +814,8 @@ en-US:
           link_to_url: Link to url
         fontcolor:
           desc: Font-color
+        formula:
+          desc: Formula
     image_section:
       copy_hint: Image link copied
       hint: Add an image
@@ -828,6 +833,23 @@ en-US:
           button_hint: Works with any image from the web
         upload:
           button_text: Choose an image
+    formula:
+      block:
+        menu:
+          edit: Edit
+          copy: Copy
+          delete: Delete
+          delete_confirm:
+            title: Are you sure you want to delete this property?
+            ok: Delete
+            cancel: Cancel
+      menu:
+        header: Formula
+        name: Name
+        color: Color
+        result: =
+        save: Save Formula
+        cancel: Cancel
     link_block:
       copy_hint: link copied
       deletion_confirm:

@@ -3,7 +3,7 @@ import cx from 'classnames'
 import { Tag, Button, Icon, Popover, Menu, Input } from '@brickdoc/design-system'
 import { TableColumnSelectOption } from 'react-table'
 import { bgColor } from './SelectCell'
-import { COLOR } from '../../../../color'
+import { COLOR } from '../../../../helpers/color'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface SelectCellOptionProps {

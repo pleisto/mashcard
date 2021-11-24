@@ -13,6 +13,7 @@
     { "path": "packages/brickdoc-design-colors/tsconfig.build.json" },
     { "path": "packages/brickdoc-uploader/tsconfig.build.json" },
     { "path": "packages/brickdoc-design-system/tsconfig.build.json" },
-    { "path": "packages/brickdoc-editor/tsconfig.build.json" }
+    { "path": "packages/brickdoc-editor/tsconfig.build.json" },
+    { "path": "packages/brickdoc-formula/tsconfig.build.json" }
   ]
 }

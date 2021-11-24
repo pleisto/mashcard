@@ -18,7 +18,8 @@ import {
   LinkBlockOptions,
   UserBlockExtension,
   PageLinkBlockExtension,
-  MentionCommandsOptions
+  MentionCommandsOptions,
+  FormulaOptions
 } from './extensions'
 import './styles.less'
 import { useEditorI18n } from './hooks'
@@ -29,12 +30,13 @@ export { useEditorI18n }
 
 export interface EditorContentProps {
   editor: TiptapEditor | null
+  formulaContextActions: FormulaOptions['formulaContextActions']
 }
 
-export const EditorContent: React.FC<EditorContentProps> = ({ editor }: EditorContentProps) => {
+export const EditorContent: React.FC<EditorContentProps> = ({ editor, formulaContextActions }: EditorContentProps) => {
   return (
     <>
-      <BubbleMenu editor={editor} />
+      <BubbleMenu editor={editor} formulaContextActions={formulaContextActions} />
       <TiptapEditorContent className="brickdoc" editor={editor} />
     </>
   )
@@ -50,6 +52,7 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
   getAttachmentUrl?: PdfSectionOptions['getAttachmentUrl']
   getCollaborators?: MentionCommandsOptions['getCollaborators']
   getPages?: MentionCommandsOptions['getPages']
+  formulaContextActions: FormulaOptions['formulaContextActions']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
@@ -62,6 +65,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     getAttachmentUrl,
     getCollaborators,
     getPages,
+    formulaContextActions,
     useDatabaseRows,
     editable,
     ...restOptions
@@ -93,7 +97,8 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
         imageSection: { prepareFileUpload, fetchUnsplashImages, getImageUrl },
         pdfSection: { prepareFileUpload, getAttachmentUrl },
         tableBlock: { useDatabaseRows },
-        linkBlock: { fetchWebsiteMeta, prepareFileUpload, getAttachmentUrl }
+        linkBlock: { fetchWebsiteMeta, prepareFileUpload, getAttachmentUrl },
+        formula: { formulaContextActions }
       }),
       EventHandlerExtension,
       SlashCommandsExtension,

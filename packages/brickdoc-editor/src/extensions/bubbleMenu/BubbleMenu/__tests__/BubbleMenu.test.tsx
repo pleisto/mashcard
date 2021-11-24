@@ -1,5 +1,31 @@
+import { ContextInterface, VariableInterface } from '@brickdoc/formula'
 import { render, screen, fireEvent } from '@testing-library/react'
+import { FormulaOptions } from '../../..'
 import { BubbleMenu } from '../BubbleMenu'
+
+const formulaContextActions: FormulaOptions['formulaContextActions'] = {
+  getFormulaContext: (): null => null,
+  getVariable: (variableId: string): null => null,
+  removeVariable: (variableId: string): void => {},
+  calculate: (
+    variableId: string | undefined,
+    name: string,
+    input: string,
+    formulaContext: ContextInterface,
+    updateResult: React.Dispatch<React.SetStateAction<any>>,
+    updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>,
+    updateError: React.Dispatch<
+      React.SetStateAction<
+        | {
+            type: string
+            message: string
+          }
+        | undefined
+      >
+    >,
+    updateValue: React.Dispatch<React.SetStateAction<string | undefined>>
+  ): void => {}
+}
 
 interface MockEditor {
   isActive: (value: string, options: any) => boolean
@@ -76,27 +102,27 @@ describe('BubbleMenu', () => {
   it('matches correct snapshot', () => {
     const editor = mockEditor()
 
-    const { container } = render(<BubbleMenu editor={editor as any} />)
+    const { container } = render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
     expect(container.firstChild).toMatchSnapshot()
   })
   it('renders nothing if `editor` is not ready', () => {
-    render(<BubbleMenu editor={null} />)
+    render(<BubbleMenu editor={null} formulaContextActions={formulaContextActions} />)
 
     expect(() => screen.getByRole('menu', byRoleOptions)).toThrow()
   })
 
   it('renders normally if `editor` is supplied', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     expect(screen.getByRole('menu', byRoleOptions)).toBeInTheDocument()
-    expect(screen.getAllByRole('menuitem', byRoleOptions)).toHaveLength(13)
+    expect(screen.getAllByRole('menuitem', byRoleOptions)).toHaveLength(14)
   })
 
   it('makes menu item active when editor mark it as active', () => {
     const editor = mockEditor()
     editor.isActive = (value: string, options: any) => value === 'heading' && options.level === 1
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const activeIndex = 0
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
@@ -112,7 +138,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Heading1 will toggle Heading1', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[0])
@@ -123,7 +149,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Heading2 will toggle Heading2', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[1])
@@ -134,7 +160,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Heading3 will toggle Heading3', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[2])
@@ -145,7 +171,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Heading4 will toggle Heading4', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[3])
@@ -156,7 +182,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Heading5 will toggle Heading5', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[4])
@@ -167,7 +193,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Bold will toggle bold mark', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[5])
@@ -177,7 +203,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Italic will toggle italic mark', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[6])
@@ -187,7 +213,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Underline will toggle underline mark', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[7])
@@ -197,7 +223,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Strike will toggle strike mark', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[8])
@@ -207,7 +233,7 @@ describe('BubbleMenu', () => {
 
   it('clicking Bullet List will toggle bullet list', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[10])
@@ -217,7 +243,7 @@ describe('BubbleMenu', () => {
 
   it('click Ordered List', () => {
     const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
     const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
     fireEvent.click(menuItems[11])
@@ -229,7 +255,7 @@ describe('BubbleMenu', () => {
     const colorMenuItemIndex = 9
     it('shows up font color list when clicking menu item', () => {
       const editor = mockEditor()
-      render(<BubbleMenu editor={editor as any} />)
+      render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
       expect(() => screen.getByText('Color')).toThrow()
 
@@ -241,7 +267,7 @@ describe('BubbleMenu', () => {
 
     it('selects font color normally', () => {
       const editor = mockEditor()
-      render(<BubbleMenu editor={editor as any} />)
+      render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
       fireEvent.click(menuItems[colorMenuItemIndex])
@@ -257,7 +283,7 @@ describe('BubbleMenu', () => {
       const color = '#A6A6A6'
       const editor = mockEditor()
       editor.isActive = (value: string, options: any) => value === 'textStyle' && options.fontColor === color
-      render(<BubbleMenu editor={editor as any} />)
+      render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
       const item = menuItems[colorMenuItemIndex]
@@ -269,7 +295,7 @@ describe('BubbleMenu', () => {
       const color = 'Gray'
       const secondColor = 'Cyan'
       const editor = mockEditor()
-      render(<BubbleMenu editor={editor as any} />)
+      render(<BubbleMenu editor={editor as any} formulaContextActions={formulaContextActions} />)
 
       const menuItems = screen.getAllByRole('menuitem', byRoleOptions)
       fireEvent.click(menuItems[colorMenuItemIndex])

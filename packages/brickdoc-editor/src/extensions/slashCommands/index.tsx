@@ -116,6 +116,18 @@ const menuItems: SlashCommandsMenuItem[] = [
         .splitBlock()
         .run()
     }
+  },
+  {
+    key: 'formula',
+    icon: <Icon.Formula className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setFormulaBlock(range.from - 1)
+        .run()
+    }
   }
 ]
 

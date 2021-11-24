@@ -8,6 +8,7 @@
     { "path": "packages/brickdoc-test-helper" },
     { "path": "packages/brickdoc-uploader" },
     { "path": "packages/brickdoc-design-system" },
-    { "path": "packages/brickdoc-editor" }
+    { "path": "packages/brickdoc-editor" },
+    { "path": "packages/brickdoc-formula" }
   ]
 }

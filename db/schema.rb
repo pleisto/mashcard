@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_054723) do
+ActiveRecord::Schema.define(version: 2021_11_12_040644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -145,6 +145,21 @@ ActiveRecord::Schema.define(version: 2021_10_27_054723) do
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
     t.index ["pod_id"], name: "index_docs_blocks_on_pod_id"
+  end
+
+  create_table "docs_formulas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "pod_id", null: false
+    t.uuid "block_id", null: false
+    t.string "name", null: false
+    t.json "view", default: {}, null: false
+    t.text "definition", null: false
+    t.json "cache_value", null: false
+    t.uuid "dependency_ids", default: [], null: false, array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["block_id", "name"], name: "index_docs_formulas_on_block_id_and_name", unique: true
+    t.index ["dependency_ids"], name: "index_docs_formulas_on_dependency_ids", using: :gin
+    t.index ["pod_id"], name: "index_docs_formulas_on_pod_id"
   end
 
   create_table "docs_histories", force: :cascade do |t|

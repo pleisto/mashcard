@@ -3,6 +3,7 @@ import { NodeViewWrapper, NodeViewWrapperProps, NodeViewProps } from '@tiptap/re
 
 export interface BlockWrapperProps extends NodeViewWrapperProps {
   editor: NodeViewProps['editor']
+  as?: NodeViewWrapperProps['as']
 }
 
 export const BlockWrapper: React.FC<BlockWrapperProps> = React.forwardRef((props, ref) => {

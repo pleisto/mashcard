@@ -4,7 +4,7 @@ import { gql, useApolloClient } from '@apollo/client'
 import { addTypenameToDocument } from '@apollo/client/utilities'
 import { BlockInput, Block, useBlockSyncBatchMutation, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 import { JSONContent } from '@tiptap/core'
-import { isNil, isMatch } from 'lodash-es'
+import { isNil, isEqual } from 'lodash-es'
 import { isSavingVar } from '../../reactiveVars'
 
 const nodeChildren = (node: Node): Node[] => {
@@ -220,7 +220,7 @@ export function useSyncProvider(): [(doc: Node) => Promise<void>] {
             added.push(newBlock)
           } else {
             const oldBlock = oldBlockMap.get(newBlock.id)!
-            if (!isMatch(oldBlock, newBlock)) {
+            if (!isEqual(oldBlock, newBlock)) {
               updated.push(newBlock)
             }
             if (newBlock.id === rootId) {

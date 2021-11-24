@@ -92,9 +92,9 @@ export class BubbleMenuView {
 
     // we need add this check to prevent bubble menu shown when selection is a NodeSelection
     // only show bubble menu when selection is a text selection
-    if (!isTextSelection(view.state.selection)) {
-      return
-    }
+    // if (!isTextSelection(view.state.selection)) {
+    //   return
+    // }
 
     const { empty, ranges } = selection
 

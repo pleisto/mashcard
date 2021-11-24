@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Editor, Range } from '@tiptap/react'
+import { Editor, Range } from '@tiptap/core'
 import { SlashMenuItem } from './SlashMenuItem'
 import { useEditorI18n } from '../../../hooks'
 
@@ -35,7 +35,7 @@ export const SlashCommandsMenu: React.FC<SlashCommandsMenuProps> = ({ items, act
       <div className="slash-menu-heading">{t(`slashmenu.heading`)}</div>
       {items.map((item, index) => (
         <SlashMenuItem
-          key={index}
+          key={item.key}
           active={index === activeIndex}
           title={t(`slashmenu.items.${item.key}.title`)}
           desc={t(`slashmenu.items.${item.key}.desc`)}

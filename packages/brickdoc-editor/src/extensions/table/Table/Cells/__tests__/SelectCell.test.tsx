@@ -1,6 +1,6 @@
 import { SelectCell } from '../SelectCell'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { COLOR } from '../../../../color'
+import { COLOR } from '../../../../helpers/color'
 
 describe('SelectCell', () => {
   const color = COLOR[0].color
