@@ -1,5 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
+import { insertBlockAt } from '../helpers/commands'
 import { PageLink } from './PageLink/PageLink'
 
 declare module '@tiptap/core' {
@@ -57,19 +58,22 @@ export const PageLinkBlockExtension = Node.create<PageLinkBlockOptions>({
     return {
       setPageLinkBlock:
         (id, link, title, icon) =>
-        ({ commands }) => {
-          return commands.insertContent({
-            type: this.name,
-            attrs: {
-              page: {
-                type: 'PAGE',
-                key: id,
-                title,
-                link,
-                icon
+        ({ chain }) => {
+          return insertBlockAt(
+            {
+              type: this.name,
+              attrs: {
+                page: {
+                  type: 'PAGE',
+                  key: id,
+                  title,
+                  link,
+                  icon
+                }
               }
-            }
-          })
+            },
+            chain
+          )
         }
     }
   }

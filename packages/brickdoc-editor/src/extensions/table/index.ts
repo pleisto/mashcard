@@ -1,6 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ContextInterface, VariableInterface } from '@brickdoc/formula'
+import { insertBlockAt } from '../helpers/commands'
 import { Table } from './Table'
 
 declare module '@tiptap/core' {
@@ -9,7 +10,7 @@ declare module '@tiptap/core' {
       /**
        * Set a table block
        */
-      setTableBlock: (position: number) => ReturnType
+      setTableBlock: (position?: number) => ReturnType
     }
   }
 }
@@ -101,9 +102,9 @@ export const TableBlockExtension = Node.create<TableBlockOptions>({
   addCommands() {
     return {
       setTableBlock:
-        (position: number) =>
-        ({ commands }) => {
-          return commands.insertContentAt(position, { type: this.name })
+        (position?: number) =>
+        ({ chain }) => {
+          return insertBlockAt({ type: this.name }, chain, position)
         }
     }
   }

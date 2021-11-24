@@ -3,6 +3,7 @@ import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ImageSection, ImageSectionAttributes } from './ImageSection'
+import { insertBlockAt } from '../helpers/commands'
 
 export type { ImageSectionAttributes }
 
@@ -73,10 +74,9 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
     return {
       setImageSection:
         (position?: number, defaultFile?: File) =>
-        ({ commands }) => {
+        ({ chain }) => {
           const content = { type: this.name, attrs: { defaultFile } }
-          if (position) return commands.insertContentAt(position, content)
-          return commands.insertContent(content)
+          return insertBlockAt(content, chain, position)
         }
     }
   }

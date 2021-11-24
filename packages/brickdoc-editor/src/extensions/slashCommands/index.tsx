@@ -65,19 +65,6 @@ const menuItems: SlashCommandsMenuItem[] = [
     }
   },
   {
-    key: 'pdf',
-    icon: <Icon.FilePdf className="menu-item-icon" />,
-    command: ({ editor, range }) => {
-      editor
-        .chain()
-        .focus()
-        .deleteRange(range)
-        .setPdfSection(range.from - 1)
-        .splitBlock()
-        .run()
-    }
-  },
-  {
     key: 'embed',
     icon: <Icon.PaperClip className="menu-item-icon" />,
     command: ({ editor, range }) => {
@@ -86,8 +73,14 @@ const menuItems: SlashCommandsMenuItem[] = [
         .focus()
         .deleteRange(range)
         .setLinkBlock(range.from - 1)
-        .splitBlock()
         .run()
+    }
+  },
+  {
+    key: 'divider',
+    icon: <Icon.Divider className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).setHorizontalRule().run()
     }
   },
   {

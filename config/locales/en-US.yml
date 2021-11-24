@@ -780,6 +780,9 @@ en-US:
         formula:
           title: Formula
           desc: Create a formula
+        divider:
+          title: Divider
+          desc: Visually divide blocks
     bubblemenu:
       items:
         bold:
