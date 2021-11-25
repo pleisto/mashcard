@@ -132,11 +132,12 @@ export function rgb2hex(r: number, g: number, b: number): string {
 
 /** Converts hex color string to RGB components. */
 export function hex2rgb(hexStr: string): RGB {
-  const rgbArray = hexStr
-    .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
-    .substring(1)
-    .match(/.{2}/g)
-    .map(x => parseInt(x, 16))
+  const rgbArray = (
+    hexStr
+      .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
+      .substring(1)
+      .match(/.{2}/g) ?? []
+  ).map(x => parseInt(x, 16))
 
   return {
     r: rgbArray[0],
@@ -180,7 +181,7 @@ export function cssStr2color(colorStr: string): Color | undefined {
       rgb = hex2rgb(colorStr)
       break
     case colorStr.startsWith('rgb'): {
-      const match = colorStr.match(/^rgb(a?)\(([\d., ]+)\)$/)
+      const match = colorStr.match(/^rgb(a?)\(([\d., ]+)\)$/) ?? []
       const hasAlpha = !!match[1]
       const parts = match[2].split(/ *, */).map(Number)
       rgb = {
@@ -192,7 +193,7 @@ export function cssStr2color(colorStr: string): Color | undefined {
       break
     }
     case colorStr.startsWith('hsl'): {
-      const match = colorStr.match(/^hsl(a?)\(([\d., ]+)\)$/)
+      const match = colorStr.match(/^hsl(a?)\(([\d., ]+)\)$/) ?? []
       const hasAlpha = !!match[1]
       const parts = match[2].split(/ *, */).map(Number)
       rgb = hsl2rgb(parts[0], parts[1], parts[2])
@@ -207,5 +208,5 @@ export function cssStr2color(colorStr: string): Color | undefined {
 }
 
 export function color2cssStr(color: Color): string {
-  return color.a === 100 ? color.str : `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a / 100})`
+  return color.a === 100 ? color.str : `rgba(${color.r}, ${color.g}, ${color.b}, ${(color.a ?? 0) / 100})`
 }

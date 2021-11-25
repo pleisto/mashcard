@@ -31,9 +31,9 @@ describe('Color Converter', () => {
   })
 
   it('should css color string to Color', () => {
-    expect(cssStr2color('#ccc').hex).toEqual('cccccc')
-    expect(cssStr2color('rgb(107,94,62)').hex).toEqual('6b5e3e')
-    expect(cssStr2color('rgba(34,105,168,1)').hex).toEqual('2269a8')
+    expect(cssStr2color('#ccc')!.hex).toEqual('cccccc')
+    expect(cssStr2color('rgb(107,94,62)')!.hex).toEqual('6b5e3e')
+    expect(cssStr2color('rgba(34,105,168,1)')!.hex).toEqual('2269a8')
   })
 
   it('should return a color object from an rgba string', () => {

@@ -127,19 +127,26 @@ export function colorWithShade(color: Color, shade: Shade, isInverted: boolean =
   return rgb2color(Object.assign(hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }))
 }
 
-export function colorShadeMixin(color: string, shade: string, isInverted = 'false'): string | null {
-  const shadedColor = colorWithShade(cssStr2color(color), parseInt(shade, 10), isInverted === 'true')
+export function colorShadeMixin(colorStr: string, shade: string, isInverted = 'false'): string | null {
+  const color = cssStr2color(colorStr)
+  if (!color) return ''
+  const shadedColor = colorWithShade(color, parseInt(shade, 10), isInverted === 'true')
   return !shadedColor ? null : color2cssStr(shadedColor)
 }
 
-export function colorShadeMixinString(color: string, shade: string, isInverted = 'false'): string {
-  const shadedColor = colorWithShade(cssStr2color(color), parseInt(shade, 10), isInverted === 'true')
+export function colorShadeMixinString(colorStr: string, shade: string, isInverted = 'false'): string {
+  const color = cssStr2color(colorStr)
+  if (!color) return ''
+  const shadedColor = colorWithShade(color, parseInt(shade, 10), isInverted === 'true')
   return !shadedColor ? '' : color2cssStr(shadedColor)
 }
 
 export function generatePalette(color: string, isInverted = false): string[] {
   const baseColor = cssStr2color(color)
   const colors = []
+
+  if (!baseColor) return []
+
   colors[0] = colorWithShade(baseColor, Shade.Shade1, isInverted)
   colors[1] = colorWithShade(baseColor, Shade.Shade2, isInverted)
   colors[2] = colorWithShade(baseColor, Shade.Shade3, isInverted)
@@ -149,5 +156,5 @@ export function generatePalette(color: string, isInverted = false): string[] {
   colors[6] = colorWithShade(baseColor, Shade.Shade6, isInverted)
   colors[7] = colorWithShade(baseColor, Shade.Shade7, isInverted)
   colors[8] = colorWithShade(baseColor, Shade.Shade8, isInverted)
-  return colors.map(color => color2cssStr(color))
+  return colors.map(color => (color ? color2cssStr(color) : ''))
 }
