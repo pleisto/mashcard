@@ -70,7 +70,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         with:
-          ruby-version: 3.0
+          ruby-version: 3.0.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run Rubocop
         if: steps.changed-ruby-files.outputs.any_changed == 'true'

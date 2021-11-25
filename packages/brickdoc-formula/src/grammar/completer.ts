@@ -1,9 +1,8 @@
-import { Context, FunctionClause } from '..'
+import { FunctionClause } from '..'
 
 export interface CompleteInput {
   readonly input: string
   readonly functionClauses: FunctionClause[]
-  readonly context: Context
 }
 
 export interface CompleteResult {

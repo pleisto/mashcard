@@ -1,6 +1,6 @@
 import { FunctionClause } from '../..'
-import { OBJECT_CLAUSES } from './object'
-import { STRING_CLAUSES } from './string'
-import { API_CLAUSES } from './api'
+import { CORE_OBJECT_CLAUSES } from './object'
+import { CORE_STRING_CLAUSES } from './string'
+import { CORE_API_CLAUSES } from './api'
 
-export const CORE_CLAUSES: FunctionClause[] = [...OBJECT_CLAUSES, ...STRING_CLAUSES, ...API_CLAUSES]
+export const CORE_CLAUSES: FunctionClause[] = [...CORE_OBJECT_CLAUSES, ...CORE_STRING_CLAUSES, ...CORE_API_CLAUSES]

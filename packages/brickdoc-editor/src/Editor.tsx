@@ -96,7 +96,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       BasicRichtextExtension.configure({
         imageSection: { prepareFileUpload, fetchUnsplashImages, getImageUrl },
         pdfSection: { prepareFileUpload, getAttachmentUrl },
-        tableBlock: { useDatabaseRows },
+        tableBlock: { useDatabaseRows, formulaContextActions },
         linkBlock: { fetchWebsiteMeta, prepareFileUpload, getAttachmentUrl },
         formula: { formulaContextActions }
       }),

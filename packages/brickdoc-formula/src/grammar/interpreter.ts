@@ -173,6 +173,8 @@ export class FormulaInterpreter extends BaseCstVisitor {
       return this.visit(ctx.variableExpression)
     } else if (ctx.columnExpression) {
       return this.visit(ctx.columnExpression)
+    } else if (ctx.blockExpression) {
+      return this.visit(ctx.blockExpression)
     }
   }
 
@@ -194,10 +196,16 @@ export class FormulaInterpreter extends BaseCstVisitor {
 
   columnExpression(ctx): Result {
     const [namespaceId, columnId] = ctx.UUID.map(uuid => uuid.image)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const columnMeta = this.formulaContext.findColumn(namespaceId, columnId)
+    const column = this.formulaContext.findColumn(namespaceId, columnId)
 
-    return null
+    return column
+  }
+
+  blockExpression(ctx): Result {
+    const namespaceId = ctx.UUID[0].image
+    const database = this.formulaContext.findDatabase(namespaceId)
+
+    return database
   }
 
   variableExpression(ctx): Result {

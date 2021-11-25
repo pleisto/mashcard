@@ -248,7 +248,8 @@ const testCases = [
   5. [StringLiteral]
   6. [Dollar, UUID, At]
   7. [Dollar, UUID, Sharp]
-  8. [FunctionGroupName]
+  8. [Dollar, UUID]
+  9. [FunctionGroupName]
 but found: '*'`
   },
   // Function Call

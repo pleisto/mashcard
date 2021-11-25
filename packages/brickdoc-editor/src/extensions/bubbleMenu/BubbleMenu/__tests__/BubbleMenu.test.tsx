@@ -23,7 +23,8 @@ const formulaContextActions: FormulaOptions['formulaContextActions'] = {
         | undefined
       >
     >,
-    updateValue: React.Dispatch<React.SetStateAction<string | undefined>>
+    updateValue: React.Dispatch<React.SetStateAction<string | undefined>>,
+    updateDefaultName: React.Dispatch<React.SetStateAction<string>>
   ): void => {}
 }
 

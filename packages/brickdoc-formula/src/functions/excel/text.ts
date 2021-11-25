@@ -6,7 +6,7 @@ export const T = (ctx: ContextInterface, input: any): string => (typeof input ==
 
 export const TRIM = (ctx: ContextInterface, str: string): string => str.trim()
 
-export const TEXT_CLAUSES: FunctionClause[] = [
+export const EXCEL_TEXT_CLAUSES: FunctionClause[] = [
   {
     name: 'LEN',
     async: false,

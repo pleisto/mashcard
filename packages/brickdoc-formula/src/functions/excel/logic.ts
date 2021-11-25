@@ -14,7 +14,7 @@ export const OR = (ctx: ContextInterface, ...conditions: boolean[]): boolean =>
 
 export const NOT = (ctx: ContextInterface, term: boolean): boolean => !term
 
-export const LOGIC_CLAUSES: FunctionClause[] = [
+export const EXCEL_LOGIC_CLAUSES: FunctionClause[] = [
   {
     name: 'IF',
     async: false,

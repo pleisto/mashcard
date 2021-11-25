@@ -20,6 +20,8 @@ import { useFilter } from './TableToolbar/Filter/useFilter'
 import { useSorter } from './TableToolbar/Sorter/useSorter'
 import './Table.css'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { TableBlockOptions } from '../..'
+import { useFormulaDatabase } from './useFormulaDatabase'
 
 const isGroupedHeader = (headerGroup: HeaderGroup): boolean => headerGroup.headers?.[0].depth !== 0 || !!headerGroup.Header
 
@@ -79,6 +81,14 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
 
   const [tableRows, { fetchRows, addRow, updateRow, removeRow, moveRow, setRowsState }] = useDatabaseRows(parentId)
   const initialized = React.useRef(false)
+
+  useFormulaDatabase(
+    node.attrs.uuid,
+    // first column is column group
+    (columns[0] as any)?.columns ?? [],
+    tableRows,
+    (extension.options as TableBlockOptions).formulaContextActions.getFormulaContext
+  )
 
   React.useEffect(() => {
     if (initialized.current) return

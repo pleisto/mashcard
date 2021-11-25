@@ -152,7 +152,7 @@ jobs:
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
+          ruby-version: 3.0.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run DB migrations
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
@@ -249,7 +249,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
+          ruby-version: 3.0.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Get changed database migrations
         id: changed-db-migrations

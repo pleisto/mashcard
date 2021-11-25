@@ -9,7 +9,7 @@ export const WITH_TYPE = (ctx: ContextInterface, obj: any): { type: string; obj:
   obj
 })
 
-export const OBJECT_CLAUSES: FunctionClause[] = [
+export const CORE_OBJECT_CLAUSES: FunctionClause[] = [
   {
     name: 'T',
     async: false,

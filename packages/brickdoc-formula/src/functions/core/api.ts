@@ -13,7 +13,7 @@ export const CURRENT_POSITION = async (ctx: ContextInterface): Promise<{ long: n
   }
 }
 
-export const API_CLAUSES: FunctionClause[] = [
+export const CORE_API_CLAUSES: FunctionClause[] = [
   {
     name: 'CURRENT_POSITION',
     async: true,

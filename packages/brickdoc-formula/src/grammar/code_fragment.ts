@@ -126,6 +126,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.visit(ctx.variableExpression)
     } else if (ctx.columnExpression) {
       return this.visit(ctx.columnExpression)
+    } else if (ctx.blockExpression) {
+      return this.visit(ctx.blockExpression)
     }
   }
 
@@ -144,7 +146,36 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   }
 
   columnExpression(ctx): result {
-    return []
+    const dollarFragment = token2fragment(ctx.Dollar[0])
+    const [namespaceToken, columnToken] = ctx.UUID
+
+    const namespaceId = namespaceToken.image
+    const columnId = columnToken.image
+
+    const columnFragment = token2fragment(columnToken)
+
+    const column = this.formulaContext.findColumn(namespaceId, columnId)
+
+    if (column) {
+      return [{ ...columnFragment, name: `$${column.name}` }]
+    } else {
+      return [dollarFragment, { ...columnFragment, error: { message: `Column not found: ${columnId}`, type: 'deps' } }]
+    }
+  }
+
+  blockExpression(ctx): result {
+    const dollarFragment = token2fragment(ctx.Dollar[0])
+    const namespaceToken = ctx.UUID[0]
+    const namespaceId = namespaceToken.image
+    const namespaceFragment = token2fragment(namespaceToken)
+
+    const database = this.formulaContext.findDatabase(namespaceId)
+
+    if (database) {
+      return [{ ...namespaceFragment, name: `$${database.name()}` }]
+    } else {
+      return [dollarFragment, { ...namespaceFragment, error: { message: `Database not found: ${namespaceId}`, type: 'deps' } }]
+    }
   }
 
   variableExpression(ctx): result {

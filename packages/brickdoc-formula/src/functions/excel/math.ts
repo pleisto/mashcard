@@ -22,7 +22,7 @@ export const TRUNC = (ctx: ContextInterface, number: number): number => Math.tru
 
 export const LN = (ctx: ContextInterface, number: number): number => Math.log(number)
 
-export const MATH_CLAUSES: FunctionClause[] = [
+export const EXCEL_MATH_CLAUSES: FunctionClause[] = [
   {
     name: 'ABS',
     async: false,
