@@ -9,7 +9,6 @@ describe('linkBlock', () => {
     it('embeds link by input link', () => {
       cy.visit('/')
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id).focus().type('https://www.brickdoc.com')
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id).click()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).should('exist')
@@ -18,7 +17,6 @@ describe('linkBlock', () => {
     it("deletes link block by click 'Delete' button", () => {
       cy.visit('/')
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id).focus().type('https://www.brickdoc.com')
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id).click()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).realHover()
@@ -36,7 +34,6 @@ describe('linkBlock', () => {
       })
       const link = 'https://www.brickdoc.com'
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id).focus().type(link)
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id).click()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).realHover()
@@ -53,7 +50,6 @@ describe('linkBlock', () => {
       })
       const link = 'https://www.brickdoc.com'
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id).focus().type(link)
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id).click()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).click()
@@ -64,7 +60,6 @@ describe('linkBlock', () => {
   describe.skip('attachment file', () => {
     it('embeds pdf file normally', () => {
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
       cy.get('input[type=file]').attachFile('files/test.pdf')
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
@@ -73,7 +68,6 @@ describe('linkBlock', () => {
 
     it('embeds doc file normally', () => {
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
       cy.get('input[type=file]').attachFile('files/test.docx')
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
@@ -82,7 +76,6 @@ describe('linkBlock', () => {
 
     it('embeds excel file normally', () => {
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
       cy.get('input[type=file]').attachFile('files/test.xlsx')
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')
@@ -91,7 +84,6 @@ describe('linkBlock', () => {
 
     it('embeds ppt file normally', () => {
       cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.addButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.tabs.Upload.id).click()
       cy.get('input[type=file]').attachFile('files/test.pptx')
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.pdftron.id).should('exist')

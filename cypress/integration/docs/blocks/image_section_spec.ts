@@ -7,7 +7,6 @@ describe('imageSection', () => {
 
   const openImageSectionUploader = (): void => {
     cy.addBlock('image')
-    cy.findByTestId(TEST_ID_ENUM.editor.imageSection.addButton.id).click()
   }
 
   it('embeds image by insert link', () => {
