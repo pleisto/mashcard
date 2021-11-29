@@ -1,12 +1,13 @@
 export const FontSizes = {
-  'font-size-footnote': `${10 / 16}rem`,
-  'font-size-subheadline': `${10 / 16}rem`,
-  'font-size-body': `${16 / 16}rem`,
-  'font-size-title5': `${18 / 16}rem`,
-  'font-size-title4': `${20 / 16}rem`,
-  'font-size-title3': `${24 / 16}rem`,
-  'font-size-title2': `${30 / 16}rem`,
-  'font-size-title1': `${36 / 16}rem`,
-  'font-size-largetitle': `${48 / 16}rem`,
-  'font-size-supertitle': `${64 / 16}rem`
+  footnote: '0.625rem',
+  callout: '0.75rem', // 12px
+  subheadline: '0.875rem',
+  body: '1rem',
+  title5: '1.125rem',
+  title4: '1.25rem',
+  title3: '1.5rem',
+  title2: '1.875rem',
+  title1: '2.25rem',
+  largetitle: '3rem',
+  supertitle: '4rem'
 }

@@ -41,7 +41,7 @@ export const ColorToken = {
   'color-error-border': '$scarlet-3',
   'color-error-bg': '$scarlet-2',
 
-  'color-status-info-bg': '$blue-3',
+  'color-status-info-bg': '$blue-2',
   'color-status-success-bg': '$green-3',
   'color-status-warning-bg': '$yellow-3',
 
@@ -63,10 +63,11 @@ export const ColorToken = {
   'color-hue-green-dafault': '$green-6',
   'color-hue-green-pressed': '$green-4',
   'color-hue-green-hover': '$green-3',
-
   'color-hue-green-bg': '$green-2',
+
   'color-hue-blue-dafault': '$blue-6',
   'color-hue-blue-bg': '$blue-2',
+  'color-hue-blue-hover': '$blue-3',
 
   'color-hue-cyan-dafault': '$cyan-6',
   'color-hue-cyan-pressed': '$cyan-4',

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useMemo } from 'react'
-import { Alert, Skeleton } from '@brickdoc/design-system'
+import { Skeleton } from '@brickdoc/design-system'
+import { Alert } from '@brickdoc/brickdoc-headless-design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'

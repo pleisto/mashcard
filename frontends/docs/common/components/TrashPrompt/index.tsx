@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Alert, Button, Modal, Space } from '@brickdoc/design-system'
+import { Button, Modal, Space } from '@brickdoc/design-system'
+import { Alert } from '@brickdoc/brickdoc-headless-design-system'
 import { useDocsI18n } from '../../hooks'
 import { BlockHardDeleteInput, BlockRestoreInput, useBlockHardDeleteMutation, useBlockRestoreMutation } from '@/BrickdocGraphQL'
 import { useNavigate } from 'react-router-dom'
@@ -61,6 +62,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
       <Alert
         message={t('trash.in_trash_prompt')}
         type="error"
+        icon={false}
         action={
           <Space>
             <Button size="small" loading={restoreButtonLoading} onClick={onRestoreClick}>
@@ -71,7 +73,6 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
             </Button>
           </Space>
         }
-        closable
       />
       <Modal
         title={null}
