@@ -760,6 +760,12 @@ zh-HK:
         table:
           title: Table
           desc: Create a table
+        formula:
+          title: Formula
+          desc: Create a formula
+        divider:
+          title: Divider
+          desc: Visually divide blocks
     bubblemenu:
       items:
         bold:
@@ -794,6 +800,8 @@ zh-HK:
           link_to_url: Link to url
         fontcolor:
           desc: Font-color
+        formula:
+          desc: Formula
     image_section:
       copy_hint: Image link copied
       hint: Add an image
@@ -811,6 +819,19 @@ zh-HK:
           button_hint: Works with any image from the web
         upload:
           button_text: Choose an image
+    formula:
+      menu:
+        delete_confirm:
+          title: Are you sure you want to delete this property?
+          ok: Delete
+          cancel: Cancel
+        header: Formula
+        name: Name
+        color: Color
+        result: '='
+        save: Save Formula
+        delete: Delete
+        cancel: Cancel
     link_block:
       copy_hint: link copied
       deletion_confirm:

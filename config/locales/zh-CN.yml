@@ -760,6 +760,12 @@ zh-CN:
         table:
           title: 表格
           desc: Create a table
+        formula:
+          title: Formula
+          desc: Create a formula
+        divider:
+          title: Divider
+          desc: Visually divide blocks
     bubblemenu:
       items:
         bold:
@@ -794,6 +800,8 @@ zh-CN:
           link_to_url: 链接到URL
         fontcolor:
           desc: 字体颜色
+        formula:
+          desc: Formula
     image_section:
       copy_hint: Image link copied
       hint: 添加图片
@@ -811,6 +819,19 @@ zh-CN:
           button_hint: 适用于任何来自网页的图像
         upload:
           button_text: 选择图片
+    formula:
+      menu:
+        delete_confirm:
+          title: 您确定要删除此属性吗？
+          ok: Delete
+          cancel: Cancel
+        header: Formula
+        name: Name
+        color: Color
+        result: '='
+        save: Save Formula
+        delete: Delete
+        cancel: Cancel
     link_block:
       copy_hint: link copied
       deletion_confirm:

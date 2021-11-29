@@ -777,6 +777,12 @@ io-EN:
         table:
           title: crwdns3059:0crwdne3059:0
           desc: crwdns3387:0crwdne3387:0
+        formula:
+          title: crwdns3451:0crwdne3451:0
+          desc: crwdns3453:0crwdne3453:0
+        divider:
+          title: crwdns3489:0crwdne3489:0
+          desc: crwdns3491:0crwdne3491:0
     bubblemenu:
       items:
         bold:
@@ -811,6 +817,8 @@ io-EN:
           link_to_url: crwdns3097:0crwdne3097:0
         fontcolor:
           desc: crwdns3099:0crwdne3099:0
+        formula:
+          desc: crwdns3455:0crwdne3455:0
     image_section:
       copy_hint: crwdns3249:0crwdne3249:0
       hint: crwdns3101:0crwdne3101:0
@@ -828,6 +836,19 @@ io-EN:
           button_hint: crwdns3107:0crwdne3107:0
         upload:
           button_text: crwdns3109:0crwdne3109:0
+    formula:
+      menu:
+        delete_confirm:
+          title: crwdns3481:0crwdne3481:0
+          ok: crwdns3483:0crwdne3483:0
+          cancel: crwdns3485:0crwdne3485:0
+        header: crwdns3469:0crwdne3469:0
+        name: crwdns3471:0crwdne3471:0
+        color: crwdns3473:0crwdne3473:0
+        result: crwdns3475:0crwdne3475:0
+        save: crwdns3477:0crwdne3477:0
+        delete: crwdns3487:0crwdne3487:0
+        cancel: crwdns3479:0crwdne3479:0
     link_block:
       copy_hint: crwdns3281:0crwdne3281:0
       deletion_confirm:
