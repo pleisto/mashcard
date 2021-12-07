@@ -1,31 +1,12 @@
-import { ContextInterface, VariableInterface } from '@brickdoc/formula'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { FormulaOptions } from '../../..'
 import { BubbleMenu } from '../BubbleMenu'
 
 const formulaContextActions: FormulaOptions['formulaContextActions'] = {
   getFormulaContext: (): null => null,
-  getVariable: (variableId: string): null => null,
+  getVariable: (variableId: string): undefined => undefined,
   removeVariable: (variableId: string): void => {},
-  calculate: (
-    variableId: string | undefined,
-    name: string,
-    input: string,
-    formulaContext: ContextInterface,
-    updateResult: React.Dispatch<React.SetStateAction<any>>,
-    updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>,
-    updateError: React.Dispatch<
-      React.SetStateAction<
-        | {
-            type: string
-            message: string
-          }
-        | undefined
-      >
-    >,
-    updateValue: React.Dispatch<React.SetStateAction<string | undefined>>,
-    updateDefaultName: React.Dispatch<React.SetStateAction<string>>
-  ): void => {}
+  calculate: (): void => {}
 }
 
 interface MockEditor {

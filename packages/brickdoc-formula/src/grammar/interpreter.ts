@@ -16,7 +16,6 @@ import {
   Plus,
   And,
   Or,
-  Ampersand,
   Caret
 } from './lexer'
 
@@ -73,6 +72,27 @@ export class FormulaInterpreter extends BaseCstVisitor {
     return result
   }
 
+  equalCompareExpression(ctx): Result {
+    let result = this.visit(ctx.lhs)
+
+    if (ctx.rhs) {
+      ctx.rhs.forEach((rhsOperand, idx) => {
+        const rhsValue = this.visit(rhsOperand)
+        const operator = ctx.EqualCompareOperator[idx]
+
+        if (tokenMatcher(operator, Equal) || tokenMatcher(operator, Equal2)) {
+          result = result === rhsValue
+        } else if (tokenMatcher(operator, NotEqual) || tokenMatcher(operator, NotEqual2)) {
+          result = result !== rhsValue
+        } else {
+          throw new Error(`Unexpected operator ${operator.image}`)
+        }
+      })
+    }
+
+    return result
+  }
+
   compareExpression(ctx): Result {
     let result = this.visit(ctx.lhs)
 
@@ -82,11 +102,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
         const rhsValue = this.visit(rhsOperand)
         const operator = ctx.CompareOperator[idx]
 
-        if (tokenMatcher(operator, Equal) || tokenMatcher(operator, Equal2)) {
-          result = result === rhsValue
-        } else if (tokenMatcher(operator, NotEqual) || tokenMatcher(operator, NotEqual2)) {
-          result = result !== rhsValue
-        } else if (tokenMatcher(operator, GreaterThan)) {
+        if (tokenMatcher(operator, GreaterThan)) {
           result = result > rhsValue
         } else if (tokenMatcher(operator, LessThan)) {
           result = result < rhsValue
@@ -97,6 +113,18 @@ export class FormulaInterpreter extends BaseCstVisitor {
         } else {
           throw new Error(`Unexpected operator ${operator.image}`)
         }
+      })
+    }
+
+    return result
+  }
+
+  concatExpression(ctx): Result {
+    let result = this.visit(ctx.lhs)
+
+    if (ctx.rhs) {
+      ctx.rhs.forEach(rhsOperand => {
+        result = result.concat(this.visit(rhsOperand))
       })
     }
 
@@ -116,8 +144,6 @@ export class FormulaInterpreter extends BaseCstVisitor {
           result += rhsValue
         } else if (tokenMatcher(operator, Minus)) {
           result -= rhsValue
-        } else if (tokenMatcher(operator, Ampersand)) {
-          result = result.concat(rhsValue)
         } else {
           throw new Error(`Unexpected operator ${operator.image}`)
         }

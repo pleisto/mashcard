@@ -1,25 +1,24 @@
 import React from 'react'
 import { Button, Input, Modal, Popover } from '@brickdoc/design-system'
-import { VariableInterface, VariableData } from '@brickdoc/formula'
+import { CodeFragment, Completion, VariableInterface } from '@brickdoc/formula'
 import { useEditorI18n } from '../../hooks'
 import './FormulaMenu.less'
 import { FormulaOptions } from '../../extensions'
-import { Editor } from '@tiptap/core'
+import { Editor, JSONContent } from '@tiptap/core'
 import { FormulaBlockProps } from '../../extensions/formula/FormulaBlock'
+import { AutocompleteList } from './AutocompleteList/AutocompleteList'
+import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
+import { codeFragmentsToJSONContent } from '../../helpers/formula'
 
 export interface FormulaMenuProps {
   getPos?: () => number
   node?: FormulaBlockProps['node']
-  variableId?: string
-  formulaDefaultName?: string
   defaultVisible?: boolean
   onVisibleChange?: (visible: boolean) => void
   editor: Editor
-  updateVariableT?: (t: VariableData) => void
+  variable?: VariableInterface
+  updateVariable?: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>
   updateFormula?: (id: string) => void
-  formulaName?: string
-  formulaValue?: string
-  formulaResult?: any
   clear?: boolean
   formulaContextActions: FormulaOptions['formulaContextActions']
 }
@@ -29,37 +28,50 @@ const i18nKey = 'formula.menu'
 export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   getPos,
   node,
-  variableId,
   children,
   defaultVisible,
   onVisibleChange,
+  variable,
   editor,
   updateFormula,
-  formulaDefaultName,
-  formulaName,
-  formulaValue,
-  formulaResult,
   formulaContextActions,
-  updateVariableT,
+  updateVariable,
   clear
 }) => {
+  // TODO very dirty hack, remove this
+  const rootId = (editor.view as any)?.docView?.node?.attrs?.uuid
+
   const { t } = useEditorI18n()
-  const [name, setName] = React.useState(formulaName)
-  const [defaultName, setDefaultName] = React.useState(formulaDefaultName ?? '')
-  const [value, setValue] = React.useState(formulaValue?.substr(1))
-  const [result, setResult] = React.useState<any>(formulaResult)
-  const [variable, setVariable] = React.useState<VariableInterface>()
+  const formulaContext = formulaContextActions.getFormulaContext()
+
+  const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''
+  const contextCompletions = formulaContext ? formulaContext.completions(rootId) : []
+  const formulaValue = variable?.t.codeFragments
+    ? `=${variable.t.codeFragments.map(fragment => fragment.name).join('')}`
+    : variable?.t.definition
+  const definition = formulaValue?.substr(1)
+
+  const codeFragments = variable?.t.codeFragments
+  const defaultContent = codeFragmentsToJSONContent(codeFragments)
+
+  const [completions, setCompletions] = React.useState(contextCompletions)
+
+  const [name, setName] = React.useState(variable?.t.name)
+  const [defaultName, setDefaultName] = React.useState(contextDefaultName)
+  const [input, setInput] = React.useState(definition)
+
   const [error, setError] = React.useState<{ type: string; message: string }>()
   const [visible, setVisible] = React.useState(defaultVisible)
+  const [content, setContent] = React.useState<JSONContent | undefined>(defaultContent)
 
   const close = (): void => {
     if (clear) {
-      setName('')
-      setDefaultName('')
-      setValue('')
-      setVariable(undefined)
+      setContent(defaultContent)
+      setName(variable?.t.name)
+      setDefaultName(contextDefaultName)
+      setCompletions(contextCompletions)
+      setInput(definition)
       setError(undefined)
-      setResult('')
     }
     setVisible(false)
     onVisibleChange?.(false)
@@ -75,44 +87,73 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setVisible(visible)
   }
 
-  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value)
-    const formulaContext = formulaContextActions.getFormulaContext()
-    const finalName = name ?? defaultName
-    if (!formulaContext || !e.target.value) return
-    formulaContextActions.calculate(
-      variableId,
-      finalName,
-      e.target.value,
-      formulaContext,
-      setResult,
-      setVariable,
-      setError,
-      setValue,
-      setDefaultName
-    )
+  const handleSelectCompletion = (completion: Completion): void => {
+    const oldContent = content?.content ?? []
+    const value = completion.value
+    const attrs: CodeFragment =
+      completion.kind === 'function'
+        ? { meta: {}, errors: [], name: value, code: 'Function', spaceBefore: false, spaceAfter: false, type: 'any' }
+        : {
+            meta: { name: completion.preview.name },
+            errors: [],
+            name: value,
+            code: 'Variable',
+            spaceBefore: false,
+            spaceAfter: false,
+            type: 'any'
+          }
+    const completionContents: JSONContent[] = [{ type: 'codeFragmentBlock', attrs, content: [{ type: 'text', text: value }] }]
+    const newContent = [...oldContent, ...completionContents]
+    const finalContent = { type: 'doc', content: newContent }
+    const finalInput = contentToInput(finalContent)
+    setContent(finalContent)
+    setInput(finalInput)
+    console.log({ completion, content, attrs, label: 'selectCompletion', newContent, finalInput })
+    doCalculate({ newInput: finalInput })
+  }
+
+  const contentToInput = (content: JSONContent): string => {
+    const newInput = content.content?.map((c: JSONContent) => (c.type === 'text' ? c.text : c.content?.[0].text ?? '')).join('') ?? ''
+    return `=${newInput}`
+  }
+
+  const handleValueChange = (editor: Editor): void => {
+    const text = contentToInput(editor.getJSON().content[0])
+    // const text = editor.getText()
+    console.log({ content, editor, text, label: 'updateValue' })
+    setInput(text)
+    doCalculate({ newInput: text })
   }
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setName(e.target.value)
-    const formulaContext = formulaContextActions.getFormulaContext()
-    if (!formulaContext || !value) return
-    formulaContextActions.calculate(
-      variableId,
-      e.target.value,
-      value,
+    doCalculate({ newName: e.target.value })
+  }
+
+  const doCalculate = ({ newName, newInput }: { newName?: string; newInput?: string }): void => {
+    const finalName = newName ?? name ?? defaultName
+    const finalInput = newInput ?? input ?? ''
+    console.log({ finalName, newName, newInput, input, finalInput })
+
+    if (!formulaContext || !finalInput) return
+
+    formulaContextActions.calculate({
+      variable,
+      name: finalName,
+      input: finalInput,
+      codeFragmentsToJSONContent,
       formulaContext,
-      setResult,
-      setVariable,
-      setError,
-      setValue,
-      setDefaultName
-    )
+      updateVariable,
+      updateError: setError,
+      updateInput: setInput,
+      updateContent: setContent,
+      updateCompletions: setCompletions,
+      updateDefaultName: setDefaultName
+    })
   }
 
   const handleSave = async (): Promise<void> => {
-    if (!(name ?? defaultName) || !value || !variable || !result) return
-    const formulaContext = formulaContextActions.getFormulaContext()
+    if (!(name ?? defaultName) || !input || !variable) return
     if (!formulaContext) return
 
     if (updateFormula) {
@@ -120,9 +161,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     } else {
       editor.chain().setFormula(variable.t.variableId).focus().run()
     }
-    variable.t.name = name ?? defaultName
+    const finalName = name ?? defaultName
+    variable.t.name = finalName
     await formulaContext.commitVariable({ variable })
-    updateVariableT?.(variable.t)
+    setName(finalName)
+    updateVariable?.(variable)
 
     close()
   }
@@ -141,9 +184,9 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       cancelText: t(`${i18nKey}.delete_confirm.cancel`),
       icon: null,
       onOk: async () => {
-        if (!variableId || !getPos || !node) return
+        if (!variable || !getPos || !node) return
         const position = getPos()
-        void (await formulaContextActions.removeVariable(variableId))
+        void (await formulaContextActions.removeVariable(variable.t.variableId))
         editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
       }
     })
@@ -162,7 +205,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <div className="formula-menu-row">
         <div className="formula-menu-item">
-          <Input className="formula-menu-field" value={value} onChange={handleValueChange} />
+          <FormulaEditor content={content} updateContent={handleValueChange} editable={true} />
+          {/* <Input className="formula-menu-field" value={value} onChange={handleValueChange} /> */}
         </div>
       </div>
       <div className="formula-menu-divider" />
@@ -174,8 +218,10 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
             <span className="formula-menu-result-error-message">{error.message}</span>
           </span>
         )}
-        {!error && result}
+        {!error && variable?.t.variableValue.display}
       </div>
+      <div className="formula-menu-divider" />
+      <AutocompleteList completions={completions} onSelect={handleSelectCompletion} />
       <div className="formula-menu-footer">
         <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
           {t(`${i18nKey}.cancel`)}

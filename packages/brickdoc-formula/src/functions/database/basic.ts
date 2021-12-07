@@ -39,7 +39,7 @@ export const DATABASE_BASIC_CLAUSES: FunctionClause[] = [
     args: [
       {
         name: 'database',
-        type: 'Table'
+        type: 'Block'
       }
     ],
     returns: 'number',

@@ -7,7 +7,7 @@ export function useFormulaBackendActions(): BackendActions {
   const [deletion] = useFormulaDeleteMutation()
 
   return {
-    createVariable: async ({ t: { name, variableId, namespaceId, definition, view, variableValue } }) => {
+    createVariable: async ({ t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies } }) => {
       const { value, type } = variableValue as SuccessVariableValue
       const { errors } = await creation({
         variables: {
@@ -21,7 +21,7 @@ export function useFormulaBackendActions(): BackendActions {
             name,
             definition,
             view,
-            dependencyIds: []
+            dependencyIds: variableDependencies.map(dependency => dependency.variableId)
           }
         }
       })
@@ -30,7 +30,7 @@ export function useFormulaBackendActions(): BackendActions {
         success: !errors || errors.length === 0
       }
     },
-    updateVariable: async ({ t: { name, variableId, namespaceId, definition, view, variableValue } }) => {
+    updateVariable: async ({ t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies } }) => {
       const { value, type } = variableValue as SuccessVariableValue
 
       const { errors } = await update({
@@ -44,7 +44,7 @@ export function useFormulaBackendActions(): BackendActions {
               value
             },
             view,
-            dependencyIds: [],
+            dependencyIds: variableDependencies.map(dependency => dependency.variableId),
             definition
           }
         }

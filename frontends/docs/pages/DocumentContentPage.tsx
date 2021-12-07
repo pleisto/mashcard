@@ -123,13 +123,13 @@ export const DocumentContentPage: React.FC = () => {
     }
   }, [data, docid, host, isAnonymous, loading, loginWebid, snapshotVersion, state, t, webid])
 
-  const { list } = useFormulaQuery(docMeta)
+  const getFormulas = useFormulaQuery(docMeta)
   const backendActions = useFormulaBackendActions()
 
   React.useEffect(() => {
     const functionClauses: FunctionClause[] = []
     const formulaContext = new FormulaContext({ functionClauses, backendActions })
-    void list(webid).then(({ data, success }) => {
+    void getFormulas(webid).then(({ data, success }) => {
       if (!success) return
       appendFormulas(formulaContext, (data ?? []) as Formula[])
     })

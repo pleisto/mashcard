@@ -1,6 +1,6 @@
 import { createToken, ILexerErrorMessageProvider, IToken, Lexer } from 'chevrotain'
-import { ArgumentType } from '..'
 
+export const EqualCompareOperator = createToken({ name: 'EqualCompareOperator', pattern: Lexer.NA })
 export const CompareOperator = createToken({ name: 'CompareOperator', pattern: Lexer.NA })
 export const AdditionOperator = createToken({ name: 'AdditionOperator', pattern: Lexer.NA })
 export const MultiplicationOperator = createToken({ name: 'MultiplicationOperator', pattern: Lexer.NA })
@@ -32,13 +32,13 @@ export const GreaterThan = createToken({
 export const Equal = createToken({
   name: 'Equal',
   pattern: /=/,
-  categories: CompareOperator
+  categories: EqualCompareOperator
 })
 
 export const Equal2 = createToken({
   name: 'Equal2',
   pattern: /==/,
-  categories: CompareOperator
+  categories: EqualCompareOperator
 })
 
 export const LessThan = createToken({
@@ -50,13 +50,13 @@ export const LessThan = createToken({
 export const NotEqual = createToken({
   name: 'NotEqual',
   pattern: /<>/,
-  categories: CompareOperator
+  categories: EqualCompareOperator
 })
 
 export const NotEqual2 = createToken({
   name: 'NotEqual2',
   pattern: /!=/,
-  categories: CompareOperator
+  categories: EqualCompareOperator
 })
 
 export const GreaterThanEqual = createToken({
@@ -79,8 +79,7 @@ export const Plus = createToken({
 
 export const Ampersand = createToken({
   name: 'Ampersand',
-  pattern: /&/,
-  categories: AdditionOperator
+  pattern: /&/
 })
 
 export const Caret = createToken({
@@ -216,6 +215,7 @@ export const allTokens = [
   UUID,
 
   CombineOperator,
+  EqualCompareOperator,
   CompareOperator,
   AdditionOperator,
   MultiplicationOperator,
@@ -247,20 +247,5 @@ export const FormulaLexer = new Lexer(allTokens, {
 
 export const tokenVocabulary = allTokens.reduce((o, acc) => {
   o[acc.name] = acc
-  return o
-}, {})
-
-export const AllowTypes: { [key: string]: ArgumentType } = Object.entries({
-  'Equal2,Equal,NotEqual,NotEqual2': 'any',
-  Not: 'any',
-  'LessThanEqual,LessThan,GreaterThan,GreaterThanEqual': 'number',
-  Ampersand: 'string',
-  'Multi,Div,Plus,Minus,Caret': 'number',
-  'And,Or': 'boolean',
-  NumberLiteral: 'number',
-  BooleanLiteral: 'boolean',
-  StringLiteral: 'string'
-}).reduce((o, [key, value]) => {
-  key.split(',').forEach(k => (o[k] = value))
   return o
 }, {})

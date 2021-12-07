@@ -67,6 +67,17 @@ const testCases = [
     value: false
   },
   {
+    input: '= 1 = 1 > 3',
+    label: 'compare chain',
+    value: false
+  },
+  {
+    input: '= (1 = 1) > 3',
+    label: 'compare chain',
+    parseSuccess: false,
+    errorMessage: 'Expected number but got boolean'
+  },
+  {
     input: '= 1 * 3 > 1 + 1',
     value: true
   },
@@ -88,9 +99,14 @@ const testCases = [
     value: ''
   },
   {
+    input: '= 1 & "foo"',
+    parseSuccess: false,
+    errorMessage: 'Expected string but got number'
+  },
+  {
     input: '= "foo" & 1',
     parseSuccess: false,
-    errorMessage: '[NumberLiteral, 1] Expected string but got number'
+    errorMessage: 'Expected string but got number'
   },
   // Number Literal
   {
@@ -167,7 +183,7 @@ const testCases = [
   {
     input: '= 2 ^ true',
     parseSuccess: false,
-    errorMessage: '[BooleanLiteral, true] Expected number but got boolean'
+    errorMessage: 'Expected number but got boolean'
   },
   {
     input: '= 2^0',
@@ -214,12 +230,12 @@ const testCases = [
   {
     input: '=1 and 2',
     parseSuccess: false,
-    errorMessage: '[NumberLiteral, 2] Expected boolean but got number'
+    errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=1 and false or 3',
     parseSuccess: false,
-    errorMessage: '[NumberLiteral, 3] Expected boolean but got number'
+    errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=true and !2 && excel::TRUE()',
@@ -260,18 +276,18 @@ but found: '*'`
   {
     input: '=excel::ABS ()',
     parseSuccess: false,
-    errorMessage: 'Expecting: one of these possible Token sequences:'
+    errorMessage: 'Miss argument'
   },
   {
     input: '=excel::ABS(1,2)',
     parseSuccess: false,
-    errorMessage: 'TODO mismatch token FunctionCall'
+    errorMessage: 'Argument count mismatch'
   },
   {
     input: '=excel::AVERAGE()',
     parseSuccess: false,
-    errorMessage: 'Expecting: one of these possible Token sequences:',
-    label: 'TODO spread operator with no argument (improve error message)'
+    errorMessage: 'Miss argument',
+    label: 'Spread operator with no argument'
   },
   {
     input: '=excel::AVERAGE(1)',
@@ -321,36 +337,54 @@ but found: '*'`
     input: '="foobar".core::START_WITH("bar")',
     value: false
   },
+  {
+    input: '="foo".core::START_WITH(123)',
+    parseSuccess: false,
+    errorMessage: 'Expected string but got number',
+    label: 'chain type 1'
+  },
+  {
+    input: '=true.core::START_WITH("123")',
+    parseSuccess: false,
+    label: 'TODO chain type 2',
+    errorMessage: 'Expected string but got boolean'
+  },
+  {
+    input: '="123".excel::LEN()',
+    parseSuccess: false,
+    errorMessage: 'excel::LEN is not chainable'
+  },
   // Type
   {
     input: '=excel::ABS ( "a" )',
     parseSuccess: false,
-    errorMessage: '[StringLiteral, "a"] Expected number but got string'
+    errorMessage: 'Expected number but got string'
   },
   {
     input: '=excel::IF(1, -3, -4)',
     parseSuccess: false,
-    errorMessage: '[NumberLiteral, 1] Expected boolean but got number'
+    errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=excel::ABS( excel::TODAY() )',
     parseSuccess: false,
-    errorMessage: '[Function, TODAY] Expected number but got Date'
+    errorMessage: 'Expected number but got Date'
   },
   {
     input: '=excel::AND(1, 2)',
     parseSuccess: false,
-    errorMessage: '[NumberLiteral, 1] Expected boolean but got number'
+    errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=excel::ABS ( excel::TRUE() )',
     parseSuccess: false,
-    errorMessage: '[Function, TRUE] Expected number but got boolean'
+    errorMessage: 'Expected number but got boolean'
   },
   {
     input: '= 2 * (2 = 4)',
-    label: 'TODO type check',
-    value: 0
+    label: 'type check',
+    parseSuccess: false,
+    errorMessage: 'Expected number but got boolean'
   },
   // TODO List
   {
@@ -370,8 +404,20 @@ but found: '*'`
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
+    input: '=1.core::START_WITH("123")',
+    parseSuccess: false,
+    label: 'TODO chain type 3',
+    errorMessage: 'TODO build not all input parsed :3'
+  },
+  {
+    input: '=123.excel::ABS()',
+    parseSuccess: false,
+    errorMessage: 'TODO build not all input parsed :5'
+  },
+  {
     input: '=excel::if(true, 1+2, "2")',
     parseSuccess: false,
+    label: 'TODO downcase',
     errorMessage: 'TODO mismatch token FunctionCall'
   }
 ]
@@ -411,11 +457,11 @@ describe('Simple test case', () => {
         expect(result.value).toEqual(value)
         expect(interpretSuccess).toEqual(true)
       } else if (!lexSuccess) {
+        expect(errorMessages[0].message).toContain(errorMessage)
         expect(errorType).toEqual('lex')
-        expect(errorMessages[0].message).toContain(errorMessage)
       } else if (!parseSuccess) {
-        expect(errorType).toEqual('parse')
         expect(errorMessages[0].message).toContain(errorMessage)
+        expect(errorType).toEqual('parse')
       } else {
         expect(errorMessages).toEqual([])
 

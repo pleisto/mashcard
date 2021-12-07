@@ -1,34 +1,47 @@
-import { FunctionClause } from '..'
+import type { IToken } from 'chevrotain'
+import type { CodeFragment, Completion, ContextInterface, NamespaceId } from '..'
 
 export interface CompleteInput {
-  readonly input: string
-  readonly functionClauses: FunctionClause[]
-}
-
-export interface CompleteResult {
-  readonly type: 'function'
-  readonly title: string
-  readonly description: string
-  readonly text: string
-  readonly index: number
+  readonly tokens: IToken[]
+  readonly formulaContext: ContextInterface
+  readonly namespaceId: NamespaceId
+  readonly codeFragments: CodeFragment[]
 }
 
 // TODO: https://github.com/Chevrotain/chevrotain/blob/master/examples/parser/content_assist/content_assist_complex.js
-export const complete = ({ input }: CompleteInput): CompleteResult[] => {
-  return [
-    {
-      type: 'function',
-      title: 'PI',
-      description: 'Returns the value of pi.',
-      text: 'PI()',
-      index: 4
-    },
-    {
-      type: 'function',
-      title: 'POWER',
-      description: 'Returns the value of a number raised to a power.',
-      text: 'POWER(number, power)',
-      index: 7
-    }
-  ]
+export const complete = ({ tokens, formulaContext, namespaceId, codeFragments }: CompleteInput): Completion[] => {
+  const completions = formulaContext.completions(namespaceId)
+  const lastToken = tokens[tokens.length - 1]
+  if (!lastToken) {
+    return completions
+  }
+  const {
+    tokenType: { name: tokenName },
+    image
+  } = lastToken
+
+  const checkImage = image.toLowerCase()
+
+  if (!['FunctionGroupName', 'FunctionName', 'NumberLiteral'].includes(tokenName)) {
+    return completions
+  }
+
+  return completions
+    .map(c => {
+      const name = c.name.toLowerCase()
+      if (name === checkImage) {
+        return { ...c, weight: c.weight + 1000 }
+      }
+
+      if (name.startsWith(checkImage)) {
+        return { ...c, weight: c.weight + 100 }
+      }
+
+      if (name.includes(checkImage)) {
+        return { ...c, weight: c.weight + 10 }
+      }
+
+      return c
+    })
+    .sort((a, b) => b.weight - a.weight)
 }

@@ -15,9 +15,8 @@
 .brickdoc-formula-menu {
   width: 677px;
   padding: 0.8rem 1.2rem;
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 8px #2c5bff0f, 0 8px 16px #0000001f;
+  background: #f8fbffd6;
+  box-shadow: 2px 2px 0 #fffc, 0 4px 12px #d3d3d366, inset 2px 2px 0 #ffffff40;
   backdrop-filter: blur(60px);
   border-radius: 4px;
 
@@ -40,24 +39,6 @@
 
       .formula-menu-field {
         flex: 1;
-      }
-
-      &.formula-menu-color {
-        flex: unset;
-
-        .formula-menu-field {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          flex: unset;
-          width: 124px;
-          background: #f9f9f9;
-          border: 1px solid #e0e0e0;
-          border-radius: 4px;
-          text-align: left;
-          padding: 6px 8px;
-        }
       }
     }
 
@@ -141,7 +122,7 @@
   padding: 8px 0;
   box-sizing: border-box;
   background: #fff;
-  border: 1px solid #e0e0e0;
+  border: 1px solid @border-color-base;
 
   .formula-menu-color-heading {
     color: #180e3580;

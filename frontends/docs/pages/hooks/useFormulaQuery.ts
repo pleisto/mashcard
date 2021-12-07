@@ -11,13 +11,11 @@ export function useFormulaQuery(docMeta: DocMeta) {
     blockId.current = docMeta.id
   }, [docMeta.id])
 
-  return {
-    list: async (webid: string) => {
-      const { data, error } = await query({ webid })
-      return {
-        success: !error,
-        data: data.formulas
-      }
+  return async (webid: string) => {
+    const { data, error } = await query({ webid })
+    return {
+      success: !error,
+      data: data.formulas
     }
   }
 }

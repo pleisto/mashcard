@@ -1,0 +1,177 @@
+@import '@brickdoc/design-system/components/style/themes/index';
+
+.formula-autocomplete {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fcfcfa;
+  border: 1px solid @border-color-base;
+  border-radius: 4px;
+  // height: 148px;
+  height: 280px;
+
+  .formula-autocomplete-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 174px;
+    height: 100%;
+    border-right: 1px solid #0000000d;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      appearance: none;
+    }
+
+    .autocomplete-list-item {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      padding: 4px 12px;
+
+      .autocomplete-list-item-icon {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 3px;
+        margin-right: 8px;
+      }
+
+      .autocomplete-list-item-content {
+        display: flex;
+        flex-direction: column;
+
+        .autocomplete-list-item-name {
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 500;
+        }
+
+        .autocomplete-list-item-desc {
+          font-size: 12px;
+          line-height: 16px;
+          color: #847e8e;
+        }
+      }
+
+      &.active,
+      &:active,
+      &:focus,
+      &:hover {
+        background: #0000000d;
+      }
+    }
+  }
+
+  .formula-autocomplete-preview {
+    flex: 1;
+    height: 100%;
+    background: #f6f6f6;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      appearance: none;
+    }
+  }
+
+  @preview-padding: 16px;
+
+  .autocomplete-preview-name {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  .autocomplete-preview-tag {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 1px 6.5px;
+  }
+
+  .autocomplete-preview-input-tag {
+    .autocomplete-preview-tag();
+
+    background: #dde4ff;
+    border-color: #c0cdff;
+    color: @primary-color;
+  }
+
+  .autocomplete-preview-output-tag {
+    .autocomplete-preview-tag();
+
+    background: #e0d7f2;
+    border-color: #c7b7e7;
+    color: #5e35b1;
+  }
+
+  .autocomplete-preview-section {
+    margin-top: 16px;
+    font-size: 12px;
+
+    .autocomplete-preview-section-head {
+      color: #847e8e;
+      line-height: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+  }
+
+  .autocomplete-preview-code-section {
+    background: #fff;
+    border: 1px solid @border-color-base;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .formula-autocomplete-preview-variable {
+    padding: @preview-padding;
+
+    .autocomplete-preview-definition {
+      .autocomplete-preview-code-section();
+    }
+  }
+
+  .formula-autocomplete-preview-function {
+    padding: @preview-padding;
+
+    .autocomplete-preview-arg {
+      color: #847e8e;
+      font-weight: 400;
+    }
+
+    .autocomplete-preview-arg-separator {
+      color: #292333;
+    }
+
+    .autocomplete-preview-desc {
+      margin-top: 4px;
+      color: #847e8e;
+      line-height: 20px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .autocomplete-preview-inputs-arg {
+      margin-bottom: 4px;
+    }
+
+    .autocomplete-preview-example {
+      .autocomplete-preview-code-section();
+
+      .autocomplete-preview-example-result {
+        color: #847e8e;
+      }
+    }
+
+    .autocomplete-preview-example + .autocomplete-preview-example {
+      margin-top: 4px;
+    }
+  }
+}

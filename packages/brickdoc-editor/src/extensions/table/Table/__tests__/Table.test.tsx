@@ -1,32 +1,13 @@
 import { Table } from '../Table'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { useDatabaseRows } from '../useDatabaseRows'
-import { ContextInterface, VariableInterface } from '@brickdoc/formula'
 import { FormulaOptions } from '../../..'
 
 const formulaContextActions: FormulaOptions['formulaContextActions'] = {
   getFormulaContext: (): null => null,
-  getVariable: (variableId: string): null => null,
+  getVariable: (variableId: string): undefined => undefined,
   removeVariable: (variableId: string): void => {},
-  calculate: (
-    variableId: string | undefined,
-    name: string,
-    input: string,
-    formulaContext: ContextInterface,
-    updateResult: React.Dispatch<React.SetStateAction<any>>,
-    updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>,
-    updateError: React.Dispatch<
-      React.SetStateAction<
-        | {
-            type: string
-            message: string
-          }
-        | undefined
-      >
-    >,
-    updateValue: React.Dispatch<React.SetStateAction<string | undefined>>,
-    updateDefaultName: React.Dispatch<React.SetStateAction<string>>
-  ): void => {}
+  calculate: (): void => {}
 }
 
 describe('Table', () => {

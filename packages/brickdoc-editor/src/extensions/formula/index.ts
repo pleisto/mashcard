@@ -1,33 +1,29 @@
 import React from 'react'
-import { Node, mergeAttributes } from '@tiptap/core'
+import { Node, mergeAttributes, JSONContent } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { ContextInterface, VariableInterface } from '@brickdoc/formula'
+import { CodeFragment, Completion, ContextInterface, VariableInterface } from '@brickdoc/formula'
 import { FormulaBlock } from './FormulaBlock'
+
+interface CalculateOptions {
+  variable: VariableInterface | undefined
+  name: string
+  input: string
+  codeFragmentsToJSONContent: (codeFragments: CodeFragment[] | undefined) => JSONContent | undefined
+  formulaContext: ContextInterface
+  updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>> | undefined
+  updateError: React.Dispatch<React.SetStateAction<{ type: string; message: string } | undefined>>
+  updateInput: React.Dispatch<React.SetStateAction<string | undefined>>
+  updateCompletions: React.Dispatch<React.SetStateAction<Completion[]>>
+  updateDefaultName: React.Dispatch<React.SetStateAction<string>>
+  updateContent: React.Dispatch<React.SetStateAction<JSONContent | undefined>>
+}
 
 export interface FormulaOptions {
   formulaContextActions: {
     getFormulaContext: () => ContextInterface | null
-    getVariable: (variableId: string) => VariableInterface | null | undefined
+    getVariable: (variableId: string) => VariableInterface | undefined
     removeVariable: (variableId: string) => void
-    calculate: (
-      variableId: string | undefined,
-      name: string,
-      input: string,
-      formulaContext: ContextInterface,
-      updateResult: React.Dispatch<React.SetStateAction<any>>,
-      updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>,
-      updateError: React.Dispatch<
-        React.SetStateAction<
-          | {
-              type: string
-              message: string
-            }
-          | undefined
-        >
-      >,
-      updateValue: React.Dispatch<React.SetStateAction<string | undefined>>,
-      updateDefaultName: React.Dispatch<React.SetStateAction<string>>
-    ) => void
+    calculate: (options: CalculateOptions) => void
   }
 }
 

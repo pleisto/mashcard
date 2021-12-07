@@ -5,17 +5,35 @@ export * from './functions'
 export * from './context'
 
 export type BasicType = 'number' | 'string' | 'boolean' | 'object' | 'array'
-export type ObjectType = 'Date' | 'Column' | 'Table'
+export type ObjectType = 'Date' | 'Column' | 'Block'
 
-export type ArgumentType = BasicType | ObjectType | 'any'
+export type FormulaType = BasicType | ObjectType | 'any'
 
-export type SpecialDefaultVariableName = 'str' | 'num' | 'bool' | 'obj' | 'array' | 'date' | 'column' | 'table' | 'var'
+export type SpecialDefaultVariableName = 'str' | 'num' | 'bool' | 'obj' | 'array' | 'date' | 'column' | 'block' | 'var'
 
-export type FunctionGroup = 'core' | 'excel' | 'database' | 'custom'
+export type FunctionGroup = 'core' | 'excel' | 'database' | 'custom' | string
+
+export type FunctionName = string
+export type VariableName = string
+export type ColumnName = string
 
 export type VariableKind = 'constant' | 'expression'
 
-export type VariableTypeMeta = `error_${VariableKind}` | `success_${VariableKind}_${ArgumentType}`
+export type VariableTypeMeta = `error_${VariableKind}` | `success_${VariableKind}_${FormulaType}`
+export type ErrorType = 'type' | 'syntax' | 'runtime' | 'fatal' | 'deps' | 'circular_dependency' | 'name_unique'
+
+export type FunctionKey = `${FunctionGroup}::${FunctionName}`
+export type VariableKey = `$${NamespaceId}@${VariableId}`
+
+export type DefaultVariableName = `${SpecialDefaultVariableName}${number}`
+
+// TODO https://www.typescriptlang.org/play?#code/C4TwDgpgBAcgrgWwgJwJYGMoF4oHIAMuUAPngIxGm4BMleAzHbgCxMCsTAbEwOxMAcTAJy4AUKEhQAggBswACwCGAIwjAM2PIqbKm6JgBMmEJgDMmAcybymqJgCsmAayYymCJgDsmAeyZgmAEcmZCYAZyZgJjgmADcmAHcmAA8mECYALzEJaFkFRU9EFA0cPKVVdUxSeCQ0dFFxcGgAJQhIRWAAHlEoXqgAYSVkKAhk4AhPAzCoMOA0TwsAGh6+-p84T2ARsYmpqEKEVWRlvqgAKR9UTwgDbfHJ6dn5i00AA1eTvql0TFH7vfwAG0ALqaEGiAB8mm+6EBuBkEwswBsoL+u2maw2WwA-OdLtdbgAuKCtdpdQaKY4DdabRZQV4AEgA3hcrjcAL7MinIdkfKCA-CLAB0IphwIhDRyUAAqtKAJIAEQAasw3szSRAOp0ygUinU6fwIeyALTqtqaro6g7FdB05hG01MjVaq16jB2h1msnauRKa36qD2k1ei0+-L+91QMjUI2vURAA
+// export type uuid = `${string}-${string}-${string}-${string}`
+export type uuid = string
+
+export type NamespaceId = uuid
+export type VariableId = uuid
+export type ColumnId = uuid
 
 export type Result = any
 
@@ -27,7 +45,7 @@ export interface Formula {
   blockId: uuid
   definition: string
   id: uuid
-  name: string
+  name: VariableName
   updatedAt: string
   createdAt: number
   cacheValue: object
@@ -39,9 +57,9 @@ export interface Cell {
 }
 
 export interface Column {
-  namespaceId: namespaceId
-  columnId: columnId
-  name: string | undefined
+  namespaceId: NamespaceId
+  columnId: ColumnId
+  name: ColumnName | undefined
   index: number
   type: string
 }
@@ -50,14 +68,14 @@ export interface Database {
   name: () => string
   _data: () => any
   listColumns: () => Column[]
-  getColumn: (columnId: columnId) => Column | undefined
-  listCell: (columnId: columnId) => Cell[]
-  getCell: (columnId: columnId, rowId: uuid) => Cell | undefined
+  getColumn: (columnId: ColumnId) => Column | undefined
+  listCell: (columnId: ColumnId) => Cell[]
+  getCell: (columnId: ColumnId, rowId: uuid) => Cell | undefined
 }
 
 export interface Argument {
   readonly name: string
-  readonly type: ArgumentType
+  readonly type: FormulaType
   readonly spread?: boolean
 }
 
@@ -66,39 +84,65 @@ export interface Example {
   readonly output: Result
 }
 
+export type CompletionKind = 'function' | 'variable'
+
+export interface BaseCompletion {
+  readonly kind: CompletionKind
+  readonly weight: number
+  readonly namespace: string
+  readonly name: string
+  readonly value: any
+  readonly preview: any
+}
+export interface FunctionCompletion extends BaseCompletion {
+  readonly kind: 'function'
+  readonly namespace: FunctionGroup
+  readonly value: FunctionKey
+  readonly preview: FunctionClause
+}
+
+export interface VariableCompletion extends BaseCompletion {
+  readonly kind: 'variable'
+  readonly namespace: NamespaceId
+  readonly value: VariableKey
+  readonly preview: VariableData
+}
+
+export type Completion = FunctionCompletion | VariableCompletion
+
 export interface ContextInterface {
-  databases: { [key: string]: Database }
+  databases: { [key: NamespaceId]: Database }
+  backendActions: BackendActions
   variableCount: () => number
-  getVariableNameCount: (type: ArgumentType) => string
+  getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   listCellByColumn: (column: Column) => Cell[]
-  completions: () => { functions: FunctionClause[]; variables: VariableInterface[] }
-  findDatabase: (namespaceId: namespaceId) => Database | undefined
-  findColumn: (namespaceId: namespaceId, variableId: variableId) => Column | undefined
-  setDatabase: (namespaceId: namespaceId, database: Database) => void
-  removeDatabase: (namespaceId: namespaceId) => void
-  findVariable: (namespaceId: namespaceId, variableId: variableId) => VariableInterface | undefined
-  findVariableByName: (namespaceId: namespaceId, name: string) => VariableInterface | undefined
-  clearDependency: (namespaceId: namespaceId, variableId: variableId) => void
-  trackDependency: (data: VariableData) => void
+  completions: (namespaceId: NamespaceId) => Completion[]
+  findDatabase: (namespaceId: NamespaceId) => Database | undefined
+  findColumn: (namespaceId: NamespaceId, variableId: VariableId) => Column | undefined
+  setDatabase: (namespaceId: NamespaceId, database: Database) => void
+  removeDatabase: (namespaceId: NamespaceId) => void
+  listVariables: (namespaceId: NamespaceId) => VariableInterface[]
+  findVariable: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
+  findVariableByName: (namespaceId: NamespaceId, name: VariableName) => VariableInterface | undefined
+  clearDependency: (namespaceId: NamespaceId, variableId: VariableId) => void
+  trackDependency: (variable: VariableInterface) => void
   handleBroadcast: (variable: VariableInterface) => void
   commitVariable: ({ variable, skipCreate }: { variable: VariableInterface; skipCreate?: boolean }) => Promise<void>
-  removeVariable: (namespaceId: namespaceId, variableId: variableId) => Promise<void>
-  findFunctionClause: (group: string, name: string) => FunctionClause | undefined
+  removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>
+  findFunctionClause: (group: FunctionGroup, name: FunctionName) => FunctionClause | undefined
   reset: () => void
-  variableKey: (namespaceId: namespaceId, variableId: variableId) => string
-  functionKey: (group: string, name: string) => string
 }
 
 export interface BaseFunctionClause {
-  readonly name: string
+  readonly name: FunctionName
   readonly pure: boolean
   readonly effect: boolean
   readonly async: boolean
+  readonly chain: boolean
   readonly description: string
   readonly group: FunctionGroup
   readonly args: Argument[]
-  readonly chain: boolean
-  readonly returns: ArgumentType
+  readonly returns: FormulaType
   readonly examples: Example[]
   readonly reference: (ctx: ContextInterface, ...args: any[]) => Result
 }
@@ -118,18 +162,15 @@ export type FunctionClause = NormalFunctionClause | ChainFunctionClause
 export interface CodeFragment {
   readonly code: string
   readonly name: string
-  readonly error?: ErrorMessage
+  readonly spaceBefore: boolean
+  readonly spaceAfter: boolean
+  readonly meta: { [key: string]: any }
+  readonly type: FormulaType
+  readonly errors: ErrorMessage[]
 }
-
-type uuid = string
-
-export type namespaceId = uuid
-export type variableId = uuid
-export type columnId = uuid
-
 export interface VariableDependency {
-  readonly variableId: variableId
-  readonly namespaceId: namespaceId
+  readonly variableId: VariableId
+  readonly namespaceId: NamespaceId
 }
 
 export interface BaseVariableValue {
@@ -137,7 +178,7 @@ export interface BaseVariableValue {
   readonly success: boolean
   readonly value?: Result
   readonly display?: string
-  readonly type?: ArgumentType
+  readonly type?: FormulaType
   readonly errorMessages?: ErrorMessage[]
 }
 
@@ -145,7 +186,7 @@ export interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
   readonly display: string
   readonly value: Result
-  readonly type: ArgumentType
+  readonly type: FormulaType
 }
 
 export interface ErrorVariableValue extends BaseVariableValue {
@@ -156,34 +197,37 @@ export interface ErrorVariableValue extends BaseVariableValue {
 export type VariableValue = SuccessVariableValue | ErrorVariableValue
 
 export interface VariableData {
-  name: string
-  namespaceId: namespaceId
-  variableId: variableId
+  name: VariableName
+  level: number
+  namespaceId: NamespaceId
+  variableId: VariableId
   definition: string
   dirty: boolean
   view?: View
   kind: VariableKind
   variableValue: VariableValue
   cst: CstNode
-  codeFragments?: CodeFragment[]
+  codeFragments: CodeFragment[]
+  flattenVariableDependencies: Set<VariableDependency>
   variableDependencies: VariableDependency[]
   functionDependencies: FunctionClause[]
 }
 
-export type UpdateHandler = (data: VariableData) => void
+export type VariableUpdateHandler = (variable: VariableInterface) => void
 
 export interface VariableMetadata {
-  readonly namespaceId: namespaceId
-  readonly variableId: variableId
+  readonly namespaceId: NamespaceId
+  readonly variableId: VariableId
   readonly input: string
-  readonly name: string
+  readonly name: VariableName
 }
 
 export interface VariableInterface {
   t: VariableData
   backendActions: BackendActions
   meta: () => VariableMetadata
-  onUpdate: (handler: UpdateHandler) => void
+  completion: (weight: number) => VariableCompletion
+  onUpdate: (handler: VariableUpdateHandler) => void
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>
   afterUpdate: () => void
@@ -196,7 +240,6 @@ export interface BackendActions {
   deleteVariable: (variable: VariableInterface) => Promise<{ success: boolean }>
 }
 
-export type ErrorType = 'type' | 'syntax' | 'runtime' | 'fatal' | 'deps' | 'circular_dependency'
 export interface ErrorMessage {
   readonly message: string
   readonly type: ErrorType

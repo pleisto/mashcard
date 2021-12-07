@@ -93,7 +93,7 @@ describe('Custom Function', () => {
 
     const { success, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext: localFormulaContext })
     expect(success).toEqual(false)
-    expect(errorMessages[0].message).toContain('Expecting: one of these possible Token sequences:')
+    expect(errorMessages[0].message).toEqual('Argument count mismatch')
   })
 
   it('42', async () => {
@@ -134,33 +134,18 @@ describe('Context', () => {
 
     expect(bar.t.functionDependencies).toEqual([])
     expect(bar.t.variableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
+    expect(bar.t.flattenVariableDependencies).toEqual(new Set([{ namespaceId, variableId: fooVariableId }]))
 
-    // const input = `=$${anotherBlockId}#${anotherVariableId}`
-    // const newMeta = { ...meta, input }
-    // const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
-    // expect(errorMessages).toEqual([])
-
-    // const { result, errorMessages: errorMessages3 } = interpret({ cst, meta: newMeta, formulaContext })
-    // expect(errorMessages3).toEqual([])
-    // expect(result).toEqual(34)
-    // const baseVariableDependency = {
-    //   kind: 'expression',
-    //   namespaceId,
-    //   variableId: fooVariableId
-    // }
-    // expect(formulaContext.context[anotherBlockId][anotherVariableId].variableDependencies).toEqual([
-    //   { ...baseVariableDependency, variableDependencies: [] }
-    // ])
-    // expect(formulaContext.context[anotherBlockId][anotherVariableId].flattenVariableDependencies).toEqual([baseVariableDependency])
-
-    // TODO Circular dependency check
-    // const { errorMessages: circularDependencyErrorMessages, flattenVariableDependencies } = parse({
-    //   ...parseInput,
-    //   input,
-    //   meta: { ...meta, variableId: fooVariableId }
-    // })
-    // expect(flattenVariableDependencies).toEqual([baseVariableDependency])
-    // expect(circularDependencyErrorMessages).toEqual([{ message: 'Circular dependency found', type: 'circular_dependency' }])
+    const input = `=$${anotherBlockId}@${anotherVariableId}`
+    const newMeta = { namespaceId, variableId: fooVariableId, name: 'bar', input }
+    const { errorMessages, flattenVariableDependencies } = parse({ ...parseInput, meta: newMeta })
+    expect(flattenVariableDependencies).toEqual(
+      new Set([
+        { namespaceId, variableId: fooVariableId },
+        { namespaceId: anotherBlockId, variableId: anotherVariableId }
+      ])
+    )
+    expect(errorMessages).toEqual([{ message: 'Circular dependency found', type: 'circular_dependency' }])
   })
 
   it('PLUS', async () => {
@@ -183,9 +168,10 @@ describe('Context', () => {
   3. [NumberLiteral]
   4. [BooleanLiteral]
   5. [StringLiteral]
-  6. [Dollar]
-  7. [FunctionGroupName]
-  8. [Not]
+  6. [Dollar, UUID, At]
+  7. [Dollar, UUID, Sharp]
+  8. [Dollar, UUID]
+  9. [FunctionGroupName]
 but found: '&'`,
         type: 'syntax'
       }
@@ -196,7 +182,7 @@ but found: '&'`,
     const input = `= "foo" & $${namespaceId}@${fooVariableId}`
     const newMeta = { ...meta, input }
     const { errorMessages } = parse({ ...parseInput, meta: newMeta })
-    expect(errorMessages).toEqual([{ message: '[Variable, foo] Expected string but got number', type: 'type' }])
+    expect(errorMessages).toEqual([{ message: 'Expected string but got number', type: 'type' }])
   })
 
   it('unknown namespace', () => {

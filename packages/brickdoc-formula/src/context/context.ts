@@ -3,24 +3,31 @@ import {
   Database,
   ContextInterface,
   FunctionClause,
-  namespaceId,
-  VariableData,
+  NamespaceId,
   VariableDependency,
-  variableId,
+  VariableId,
   BackendActions,
   VariableInterface,
-  ArgumentType,
+  FormulaType,
   SpecialDefaultVariableName,
-  Cell
+  Cell,
+  Completion,
+  FunctionName,
+  FunctionGroup,
+  FunctionKey,
+  VariableKey,
+  VariableName,
+  DefaultVariableName
 } from '..'
-import { BUILTIN_CLAUSES } from '../functions'
+import { BUILTIN_CLAUSES, function2completion } from '../functions'
 
 export interface FormulaContextArgs {
   functionClauses: FunctionClause[]
   backendActions?: BackendActions
 }
 
-export const ArgumentTypeCastName: { [key in ArgumentType]: SpecialDefaultVariableName } = {
+const matchRegex = /(str|num|bool|obj|array|date|column|block|var)([0-9]+)$/
+export const FormulaTypeCastName: { [key in FormulaType]: SpecialDefaultVariableName } = {
   string: 'str',
   number: 'num',
   boolean: 'bool',
@@ -28,69 +35,75 @@ export const ArgumentTypeCastName: { [key in ArgumentType]: SpecialDefaultVariab
   array: 'array',
   Date: 'date',
   Column: 'column',
-  Table: 'table',
+  Block: 'block',
   any: 'var'
 }
 
-const ReverseCastName = Object.entries(ArgumentTypeCastName).reduce(
+const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
   (acc, [key, value]) => ({
     ...acc,
     [value]: key
   }),
   {}
-)
+) as { [key in SpecialDefaultVariableName]: FormulaType }
 
-const matchRegex = /(str|num|bool|obj|array|date|column|var)([0-9]+)$/
+export const functionKey = (group: FunctionGroup, name: FunctionName): FunctionKey => `${group}::${name}`
+export const variableKey = (namespaceId: string, variableId: string): VariableKey => `$${namespaceId}@${variableId}`
 
 export class FormulaContext implements ContextInterface {
-  context: { [key: `$${namespaceId}@${variableId}`]: VariableInterface }
-  databases: { [key: string]: Database } = {}
-  variableNameCounter: { [key in ArgumentType]: number } = {
-    string: 0,
-    number: 0,
-    boolean: 0,
-    object: 0,
-    array: 0,
-    Date: 0,
-    Column: 0,
-    Table: 0,
-    any: 0
+  context: { [key: VariableKey]: VariableInterface } = {}
+  functionWeights: { [key: FunctionKey]: number } = {}
+  variableWeights: { [key: VariableKey]: number } = {}
+  databases: { [key: NamespaceId]: Database } = {}
+  variableNameCounter: { [key in FormulaType]: { [n: NamespaceId]: number } } = {
+    string: {},
+    number: {},
+    boolean: {},
+    object: {},
+    array: {},
+    Date: {},
+    Column: {},
+    Block: {},
+    any: {}
   }
 
-  reverseVariableDependencies: { [key: string]: VariableDependency[] }
-  reverseFunctionDependencies: { [key: string]: VariableDependency[] }
-  functionClausesMap: { [key: string]: FunctionClause }
+  reverseVariableDependencies: { [key: VariableKey]: VariableDependency[] } = {}
+  reverseFunctionDependencies: { [key: FunctionKey]: VariableDependency[] } = {}
+  functionClausesMap: { [key: FunctionKey]: FunctionClause }
   backendActions: BackendActions
 
   constructor({ functionClauses, backendActions }: FormulaContextArgs = { functionClauses: [] }) {
-    this.context = {}
-    this.reverseVariableDependencies = {}
-    this.reverseFunctionDependencies = {}
     if (backendActions) {
       this.backendActions = backendActions
     }
     this.functionClausesMap = [...BUILTIN_CLAUSES, ...functionClauses].reduce((o, acc) => {
-      o[`${acc.group}${acc.name}`] = acc
+      o[functionKey(acc.group, acc.name)] = acc
       return o
     }, {})
   }
 
-  public completions = (): { functions: FunctionClause[]; variables: VariableInterface[] } => {
-    const functions = Object.values(this.functionClausesMap)
-    const variables = Object.values(this.context)
-    return { functions, variables }
+  public completions = (namespaceId: NamespaceId): Completion[] => {
+    const functions = Object.entries(this.functionClausesMap).map(([key, f]) => {
+      const weight: number = this.functionWeights[key] || 0
+      return function2completion(f, weight)
+    })
+    const variables = Object.entries(this.context).map(([key, v]) => {
+      const weight: number = this.variableWeights[key] || 0
+      return v.completion(v.t.namespaceId === namespaceId ? weight + 1 : weight)
+    })
+    return [...functions, ...variables].sort((a, b) => b.weight - a.weight)
   }
 
-  public getVariableNameCount = (type: ArgumentType): string => {
-    console.log(this)
-    return `${ArgumentTypeCastName[type]}${this.variableNameCounter[type] + 1}`
+  public getDefaultVariableName = (namespaceId: NamespaceId, type: FormulaType): DefaultVariableName => {
+    const oldCounter = this.variableNameCounter[type][namespaceId] || 0
+    return `${FormulaTypeCastName[type]}${oldCounter + 1}`
   }
 
   public variableCount = (): number => {
     return Object.keys(this.context).length
   }
 
-  public findDatabase = (namespaceId: namespaceId): Database | undefined => {
+  public findDatabase = (namespaceId: NamespaceId): Database | undefined => {
     return this.databases[namespaceId]
   }
 
@@ -103,7 +116,7 @@ export class FormulaContext implements ContextInterface {
     return database.listCell(columnId)
   }
 
-  public findColumn = (namespaceId: namespaceId, variableId: variableId): Column | undefined => {
+  public findColumn = (namespaceId: NamespaceId, variableId: VariableId): Column | undefined => {
     const database = this.findDatabase(namespaceId)
     if (!database) {
       return undefined
@@ -112,28 +125,33 @@ export class FormulaContext implements ContextInterface {
     return database.getColumn(variableId)
   }
 
-  public setDatabase = (namespaceId: namespaceId, database: Database): void => {
+  public setDatabase = (namespaceId: NamespaceId, database: Database): void => {
     this.databases[namespaceId] = database
   }
 
-  public removeDatabase = (namespaceId: namespaceId): void => {
+  public removeDatabase = (namespaceId: NamespaceId): void => {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.databases[namespaceId]
   }
 
-  public findVariable = (namespaceId: namespaceId, variableId: variableId): VariableInterface | undefined => {
-    return this.context[this.variableKey(namespaceId, variableId)]
+  public findVariable = (namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined => {
+    return this.context[variableKey(namespaceId, variableId)]
   }
 
-  public findVariableByName = (namespaceId: namespaceId, name: string): VariableInterface | undefined => {
+  public listVariables = (namespaceId: NamespaceId): VariableInterface[] => {
+    return Object.values(this.context).filter(v => v.t.namespaceId === namespaceId)
+  }
+
+  public findVariableByName = (namespaceId: NamespaceId, name: VariableName): VariableInterface | undefined => {
     return Object.values(this.context).find((v: VariableInterface) => v.t.namespaceId === namespaceId && v.t.name === name)
   }
 
-  public clearDependency = (namespaceId: namespaceId, variableId: variableId): void => {
+  // TODO flattenVariableDependencies
+  public clearDependency = (namespaceId: NamespaceId, variableId: VariableId): void => {
     const variable = this.findVariable(namespaceId, variableId)
     if (variable) {
       variable.t.variableDependencies?.forEach(dependency => {
-        const dependencyKey = this.variableKey(dependency.namespaceId, dependency.variableId)
+        const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
         const variableDependencies = this.reverseVariableDependencies[dependencyKey]
           ? this.reverseVariableDependencies[dependencyKey].filter(x => !(x.namespaceId === namespaceId && x.variableId === variableId))
           : []
@@ -141,7 +159,7 @@ export class FormulaContext implements ContextInterface {
       })
 
       variable.t.functionDependencies?.forEach(dependency => {
-        const dependencyKey = this.functionKey(dependency.group, dependency.name)
+        const dependencyKey = functionKey(dependency.group, dependency.name)
         const functionDependencies = this.reverseFunctionDependencies[dependencyKey]
           ? this.reverseFunctionDependencies[dependencyKey].filter(x => !(x.namespaceId === namespaceId && x.variableId === variableId))
           : []
@@ -150,47 +168,56 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  public trackDependency = ({ variableDependencies, namespaceId, variableId, functionDependencies }: VariableData): void => {
+  // TODO flattenVariableDependencies
+  // TODO update level
+  public trackDependency = ({ t: { variableDependencies, namespaceId, variableId, functionDependencies } }: VariableInterface): void => {
     variableDependencies?.forEach(dependency => {
-      const dependencyKey = this.variableKey(dependency.namespaceId, dependency.variableId)
+      const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
       this.reverseVariableDependencies[dependencyKey] ||= []
       this.reverseVariableDependencies[dependencyKey] = [...this.reverseVariableDependencies[dependencyKey], { namespaceId, variableId }]
     })
 
     functionDependencies?.forEach(dependency => {
-      const dependencyKey = this.functionKey(dependency.group, dependency.name)
+      const dependencyKey = functionKey(dependency.group, dependency.name)
       this.reverseFunctionDependencies[dependencyKey] ||= []
       this.reverseFunctionDependencies[dependencyKey] = [...this.reverseFunctionDependencies[dependencyKey], { namespaceId, variableId }]
     })
   }
 
   public handleBroadcast = (variable: VariableInterface): void => {
-    const dependencyKey = this.variableKey(variable.t.namespaceId, variable.t.variableId)
+    void variable.afterUpdate()
+    const dependencyKey = variableKey(variable.t.namespaceId, variable.t.variableId)
     this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
-      void this.context[this.variableKey(namespaceId, variableId)]!.refresh(this)
+      void this.context[variableKey(namespaceId, variableId)]!.refresh(this)
     })
   }
 
   // TODO update dependencies and check circular references
   public commitVariable = async ({ variable, skipCreate }: { variable: VariableInterface; skipCreate?: boolean }): Promise<void> => {
     const { namespaceId, variableId } = variable.t
-    const isNew = !this.context[this.variableKey(namespaceId, variableId)]
-    let shouldBroadcast = false
-    if (isNew) {
-      variable.backendActions = this.backendActions
-    } else {
-      void this.clearDependency(namespaceId, variableId)
-      shouldBroadcast = true
+    const isNew = !this.context[variableKey(namespaceId, variableId)]
+
+    // 1. clear old dependencies
+    if (!isNew) {
+      // Update
+      this.clearDependency(namespaceId, variableId)
     }
-    this.context[this.variableKey(namespaceId, variableId)] = variable
+
+    // 2. replace variable object
+    this.context[variableKey(namespaceId, variableId)] = variable
+
+    // 3. update name counter
     const match = variable.t.name.match(matchRegex)
     if (match) {
       const [, defaultName, count] = match
       const realName = ReverseCastName[defaultName]
-      this.variableNameCounter[realName] = Math.max(this.variableNameCounter[realName], Number(count))
+      this.variableNameCounter[realName][namespaceId] = Math.max(this.variableNameCounter[realName][namespaceId] || 0, Number(count))
     }
-    void this.trackDependency(variable.t)
 
+    // 4. track dependencies
+    this.trackDependency(variable)
+
+    // 5. persist
     if (isNew) {
       if (!skipCreate) {
         void variable.invokeBackendCreate()
@@ -199,15 +226,12 @@ export class FormulaContext implements ContextInterface {
       void variable.invokeBackendUpdate()
     }
 
-    void variable.afterUpdate()
-
-    if (shouldBroadcast) {
-      void this.handleBroadcast(variable)
-    }
+    // 6. broadcast update
+    void this.handleBroadcast(variable)
   }
 
-  public removeVariable = async (namespaceId: namespaceId, variableId: variableId): Promise<void> => {
-    const key = this.variableKey(namespaceId, variableId)
+  public removeVariable = async (namespaceId: NamespaceId, variableId: VariableId): Promise<void> => {
+    const key = variableKey(namespaceId, variableId)
     const variable = this.context[key]
     if (variable) {
       void this.clearDependency(namespaceId, variableId)
@@ -220,21 +244,13 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  public findFunctionClause = (group: string, name: string): FunctionClause | undefined => {
-    return this.functionClausesMap[`${group}${name}`]
+  public findFunctionClause = (group: FunctionGroup, name: FunctionName): FunctionClause | undefined => {
+    return this.functionClausesMap[functionKey(group, name)]
   }
 
   public reset = (): void => {
     this.context = {}
     this.reverseVariableDependencies = {}
     this.reverseFunctionDependencies = {}
-  }
-
-  public variableKey = (namespaceId: namespaceId, variableId: variableId): string => {
-    return `$${namespaceId}@${variableId}`
-  }
-
-  public functionKey = (group: string, name: string): string => {
-    return `&${group}::${name}`
   }
 }

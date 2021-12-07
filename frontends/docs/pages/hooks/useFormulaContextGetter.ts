@@ -1,50 +1,13 @@
-import { buildVariable, ContextInterface, interpret, parse, VariableInterface, View } from '@brickdoc/formula'
-import { v4 as uuid } from 'uuid'
+import { buildVariable, CodeFragment, Completion, ContextInterface, interpret, parse, VariableInterface, View } from '@brickdoc/formula'
 import { debounce } from 'lodash-es'
 import React from 'react'
 import { FormulaContextVar } from '../../reactiveVars'
 import { DocMeta } from '../DocumentContentPage'
+import { FormulaOptions } from 'packages/brickdoc-editor/src/extensions'
+import { v4 as uuid } from 'uuid'
+import { JSONContent } from '@tiptap/core'
 
-const parseVariableName = ({
-  formulaContext,
-  namespaceId,
-  name
-}: {
-  formulaContext: ContextInterface
-  name: string
-  namespaceId: string
-}): string => {
-  const variable = formulaContext.findVariableByName(namespaceId, name)
-  if (variable) {
-    return `$${namespaceId}@${variable.t.variableId}`
-  }
-  const database = Object.values(formulaContext.databases)[0]
-  if (!database) {
-    return `$${name}`
-  }
-  const column = database.listColumns().find(column => column.name === name)
-  if (column) {
-    return `$${column.namespaceId}#${column.columnId}`
-  }
-  return `$${name}`
-}
-
-const transformUserInput = ({
-  namespaceId,
-  input,
-  formulaContext
-}: {
-  input: string
-  formulaContext: ContextInterface
-  namespaceId: string
-}): string => {
-  const inputAfterTransformVariable = input.replace(/\$([a-zA-Z0-9_-]+)/g, (a, name): string => {
-    return parseVariableName({ namespaceId, name, formulaContext })
-  })
-  return `=${inputAfterTransformVariable}`
-}
-
-export function useFormulaContextGetter(docMeta: DocMeta) {
+export function useFormulaContextGetter(docMeta: DocMeta): FormulaOptions['formulaContextActions'] {
   const context = FormulaContextVar()
   const data = React.useRef(context)
   const blockId = React.useRef(docMeta.id)
@@ -60,7 +23,7 @@ export function useFormulaContextGetter(docMeta: DocMeta) {
   return {
     getFormulaContext: () => data.current,
     getVariable: (variableId: string) => {
-      if (!blockId.current) return null
+      if (!blockId.current) return undefined
       return data.current?.findVariable(blockId.current, variableId)
     },
     removeVariable: (variableId: string) => {
@@ -68,59 +31,61 @@ export function useFormulaContextGetter(docMeta: DocMeta) {
       return data.current?.removeVariable(blockId.current, variableId)
     },
     calculate: debounce(
-      async (
-        id: string | undefined,
-        name: string,
-        input: string,
-        formulaContext: ContextInterface,
-        updateResult: React.Dispatch<React.SetStateAction<any>>,
-        updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>,
-        updateError: React.Dispatch<
-          React.SetStateAction<
-            | {
-                type: string
-                message: string
-              }
-            | undefined
-          >
-        >,
-        updateValue: React.Dispatch<React.SetStateAction<string | undefined>>,
+      async ({
+        variable,
+        name,
+        input,
+        codeFragmentsToJSONContent,
+        formulaContext,
+        updateVariable,
+        updateCompletions,
+        updateError,
+        updateInput,
+        updateDefaultName,
+        updateContent
+      }: {
+        variable: VariableInterface | undefined
+        name: string
+        input: string
+        codeFragmentsToJSONContent: (codeFragments: CodeFragment[] | undefined) => JSONContent | undefined
+        formulaContext: ContextInterface
+        updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>> | undefined
+        updateError: React.Dispatch<React.SetStateAction<{ type: string; message: string } | undefined>>
+        updateInput: React.Dispatch<React.SetStateAction<string | undefined>>
+        updateCompletions: React.Dispatch<React.SetStateAction<Completion[]>>
         updateDefaultName: React.Dispatch<React.SetStateAction<string>>
-      ) => {
+        updateContent: React.Dispatch<React.SetStateAction<JSONContent | undefined>>
+      }) => {
         const namespaceId = blockId.current ?? docMeta.id ?? ''
-        const variableId = id ?? uuid()
-        const meta = { namespaceId, variableId, name, input: transformUserInput({ namespaceId, input, formulaContext }) }
+        const variableId = variable ? variable.t.variableId : uuid()
+        const meta = { namespaceId, variableId, name, input }
         const view: View = {}
-        const parseInput = {
-          formulaContext,
-          meta
-        }
+        const parseInput = { formulaContext, meta }
         const parseResult = parse(parseInput)
+
+        console.log({ parseResult, input })
+
+        updateCompletions(parseResult.completions)
 
         if (parseResult.success) {
           const interpretResult = await interpret({ cst: parseResult.cst, formulaContext, meta })
+          const content = codeFragmentsToJSONContent(parseResult.codeFragments)
+          updateContent(content)
+          const newInput = parseResult.codeFragments.map(fragment => fragment.name)
+          updateInput(newInput.join(''))
 
           if (interpretResult.success) {
-            const newInput = parseResult.codeFragments.map(fragment => fragment.name).join(' ')
             const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
-            updateVariable(variable)
-            updateValue(newInput)
+            updateVariable?.(variable)
             updateError(undefined)
-            updateResult(interpretResult.result.display)
             const type = interpretResult.result.type
-            const defaultName = formulaContext.getVariableNameCount(type)
+            const defaultName = formulaContext.getDefaultVariableName(namespaceId, type)
             updateDefaultName(defaultName)
           } else {
-            updateError({
-              type: 'interpret',
-              message: interpretResult.errorMessages[0].message
-            })
+            updateError(interpretResult.errorMessages[0])
           }
         } else {
-          updateError({
-            type: 'Syntax error',
-            message: parseResult.errorMessages[0].message
-          })
+          updateError(parseResult.errorMessages[0])
         }
       },
       300
