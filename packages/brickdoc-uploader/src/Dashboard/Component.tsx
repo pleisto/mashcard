@@ -44,6 +44,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         uppy.current = new Uppy()
         // TODO: use active storage instead
         uppy.current.use(XhrUploadPlugin, {
+          endpoint: '/',
           method: 'PUT',
           formData: false,
           getResponseData: () => ({

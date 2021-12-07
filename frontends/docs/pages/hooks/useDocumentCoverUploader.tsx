@@ -26,7 +26,7 @@ export function useDocumentCoverUploader(
   const { t } = useDocsI18n()
   const IMPORT_SOURCES: ImportSourceOption[] = [
     {
-      type: 'gallery'
+      type: 'unsplash'
     },
     {
       type: 'upload',
@@ -40,9 +40,6 @@ export function useDocumentCoverUploader(
       linkInputPlaceholder: t('document_cover.import_sources.link.placeholder'),
       buttonText: t('document_cover.import_sources.link.button_text'),
       buttonHint: t('document_cover.import_sources.link.button_hint')
-    },
-    {
-      type: 'unsplash'
     }
   ]
   const [documentCoverMeta, setDocumentCoverMeta] = React.useState(cover)

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import { Plugin, Uppy } from '@uppy/core'
+import { BasePlugin, Uppy } from '@uppy/core'
 import findDOMElement from '@uppy/utils/lib/findDOMElement'
 import { Dashboard } from './Dashboard'
 import './index.less'
@@ -77,7 +77,7 @@ export interface DashboardPluginOptions {
 
 export type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'
 
-export class DashboardPlugin extends Plugin {
+export class DashboardPlugin extends BasePlugin {
   opts: DashboardPluginOptions
 
   constructor(uppy: Uppy, opts: DashboardPluginOptions) {
@@ -95,9 +95,7 @@ export class DashboardPlugin extends Plugin {
     }
   }
 
-  uninstall(): void {
-    this.unmount()
-  }
+  uninstall(): void {}
 
   mount(target, plugin): void {
     const callerPluginName = plugin.id

@@ -11,6 +11,9 @@ export const TEST_ID_ENUM = {
       iconButton: {
         id: 'page-document-page-icon-button'
       },
+      cover: {
+        id: 'page-document-page-cover'
+      },
       coverButton: {
         id: 'page-document-page-cover-button'
       },

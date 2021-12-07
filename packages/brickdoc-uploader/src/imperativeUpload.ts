@@ -16,6 +16,7 @@ export const imperativeUpload = async (
 ): Promise<void> => {
   const uppy = new Uppy()
   uppy.use(XhrUploadPlugin, {
+    endpoint: '/',
     method: 'PUT',
     formData: false,
     getResponseData: () => ({
