@@ -91,7 +91,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
         {unsplashImages.map(image => (
           <Button type="text" key={image.id} className="unsplash-image-item" onClick={handleUnsplashImageSelect(image)}>
             <div style={{ backgroundImage: `url("${image.smallUrl}")` }} className="unsplash-image" />
-            <div className="unsplash-image-username">{image.username}</div>
+            <div className="unsplash-image-username">@{image.username}</div>
           </Button>
         ))}
         <div

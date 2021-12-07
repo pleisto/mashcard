@@ -25,9 +25,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.5.5":
-  version: 3.5.5
-  resolution: "@apollo/client@npm:3.5.5"
+"@apollo/client@npm:3.4.17":
+  version: 3.4.17
+  resolution: "@apollo/client@npm:3.4.17"
   dependencies:
     "@graphql-typed-document-node/core": ^3.0.0
     "@wry/context": ^0.6.0
@@ -40,9 +40,9 @@ __metadata:
     symbol-observable: ^4.0.0
     ts-invariant: ^0.9.0
     tslib: ^2.3.0
-    zen-observable-ts: ^1.2.0
+    zen-observable-ts: ~1.1.0
   peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+    graphql: ^14.0.0 || ^15.0.0
     react: ^16.8.0 || ^17.0.0
     subscriptions-transport-ws: ^0.9.0 || ^0.11.0
   peerDependenciesMeta:
@@ -50,7 +50,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 765675a25d2e983c1ed0050a2a2d168e581d98de6771c9ebd8a67e7cf9b13275b08d1b2e4a3fe50d66c46e56f8c206909ff5c0145bf86a906830b6bc3d5e4ed7
+  checksum: 01624eceab4e71bfcc6fa6fc53ca413c17208a2651d61ebced039c6461da8e590bfef909f994dc23b94803ac49f67d4bd72057e8e33100c37da3ef9566db76d4
   languageName: node
   linkType: hard
 
@@ -2012,7 +2012,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@brickdoc/monorepo@workspace:."
   dependencies:
-    "@apollo/client": ^3.5.5
+    "@apollo/client": 3.4.17
     "@babel/plugin-proposal-decorators": ^7.16.4
     "@brickdoc/brickdoc-headless-design-system": "workspace:packages/brickdoc-headless-design-system"
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
@@ -4825,6 +4825,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: dfb49abe82605615712fc694eaa4f7068fe30aa03f38c085e2c2e74408beaad30471d36da9654a811482ece2ea4405575fd99b19c0aa327ed2a9736b554bbf43
+  languageName: node
+  linkType: hard
+
+"@types/zen-observable@npm:0.8.3":
+  version: 0.8.3
+  resolution: "@types/zen-observable@npm:0.8.3"
+  checksum: 08c88354abcf03a2176a2ec32e07da1f25fdad94fbc2f419bea53d77deb04ad4759518b4fe3fc695e61065dd4bdf7c8bd26b5211a6cd5be2233872806bdee48d
   languageName: node
   linkType: hard
 
@@ -21136,12 +21143,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"zen-observable-ts@npm:^1.2.0":
-  version: 1.2.3
-  resolution: "zen-observable-ts@npm:1.2.3"
+"zen-observable-ts@npm:~1.1.0":
+  version: 1.1.0
+  resolution: "zen-observable-ts@npm:1.1.0"
   dependencies:
+    "@types/zen-observable": 0.8.3
     zen-observable: 0.8.15
-  checksum: 0548b555c67671f1240fb416755d2c27abf095b74a9e25c1abf23b2e15de40e6b076c678a162021358fe62914864eb9f0a57cd65e203d66c4988a08b220e6172
+  checksum: 1772727f2c96af228c52b008260e1e4ae512782abc9d4f4a78d1a61913aa3b55ae672ad343ecf6895d9b968b5e3f4a41b5a317702cdc6cd5f6f93bc0dacf8103
   languageName: node
   linkType: hard
 

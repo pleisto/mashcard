@@ -50,7 +50,7 @@
     "not dead"
   ],
   "dependencies": {
-    "@apollo/client": "^3.5.5",
+    "@apollo/client": "3.4.17",
     "@brickdoc/brickdoc-headless-design-system": "workspace:packages/brickdoc-headless-design-system",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
