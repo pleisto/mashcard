@@ -766,6 +766,9 @@ zh-CN:
         divider:
           title: Divider
           desc: Visually divide blocks
+        code:
+          title: Code
+          desc: Capture a code snippet
     bubblemenu:
       items:
         bold:
@@ -832,19 +835,28 @@ zh-CN:
         save: Save Formula
         delete: Delete
         cancel: Cancel
+    action_panel:
+      more:
+        duplicate: 复制
+        copy: 复制链接
+        delete: Delete
+    code_block:
+      default_language: plain text
+      search_placeholder: Search
+      copy_hint: code copied
+      deletion_confirm:
+        title: 您确定要删除此属性吗？
+        ok: Delete
+        cancel: Cancel
     link_block:
+      menu:
+        copy: 复制链接
+        delete: Remove
       copy_hint: link copied
       deletion_confirm:
         title: 您确定要删除此属性吗？
         ok: Delete
         cancel: Cancel
-      menu:
-        more:
-          duplicate: 复制
-          copy: 复制链接
-          delete: Delete
-        copy: 复制链接
-        delete: Remove
       hint: Embed a link or a file
       desc: Upload PDF、Word、PPT、Excel and more.
       import_sources:

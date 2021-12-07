@@ -851,6 +851,9 @@ ar-SA:
         divider:
           title: Divider
           desc: Visually divide blocks
+        code:
+          title: Code
+          desc: Capture a code snippet
     bubblemenu:
       items:
         bold:
@@ -917,19 +920,28 @@ ar-SA:
         save: Save Formula
         delete: Delete
         cancel: Cancel
+    action_panel:
+      more:
+        duplicate: كَرر
+        copy: نسخ الارتباط
+        delete: Delete
+    code_block:
+      default_language: plain text
+      search_placeholder: Search
+      copy_hint: code copied
+      deletion_confirm:
+        title: Are you sure you want to delete this property?
+        ok: Delete
+        cancel: Cancel
     link_block:
+      menu:
+        copy: نسخ الارتباط
+        delete: Remove
       copy_hint: link copied
       deletion_confirm:
         title: Are you sure you want to delete this property?
         ok: Delete
         cancel: Cancel
-      menu:
-        more:
-          duplicate: كَرر
-          copy: نسخ الارتباط
-          delete: Delete
-        copy: نسخ الارتباط
-        delete: Remove
       hint: Embed a link or a file
       desc: Upload PDF、Word、PPT、Excel and more.
       import_sources:

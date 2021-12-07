@@ -783,6 +783,9 @@ io-EN:
         divider:
           title: crwdns3489:0crwdne3489:0
           desc: crwdns3491:0crwdne3491:0
+        code:
+          title: crwdns3493:0crwdne3493:0
+          desc: crwdns3495:0crwdne3495:0
     bubblemenu:
       items:
         bold:
@@ -849,19 +852,28 @@ io-EN:
         save: crwdns3477:0crwdne3477:0
         delete: crwdns3487:0crwdne3487:0
         cancel: crwdns3479:0crwdne3479:0
+    action_panel:
+      more:
+        duplicate: crwdns3497:0crwdne3497:0
+        copy: crwdns3499:0crwdne3499:0
+        delete: crwdns3501:0crwdne3501:0
+    code_block:
+      default_language: crwdns3503:0crwdne3503:0
+      search_placeholder: crwdns3505:0crwdne3505:0
+      copy_hint: crwdns3507:0crwdne3507:0
+      deletion_confirm:
+        title: crwdns3509:0crwdne3509:0
+        ok: crwdns3511:0crwdne3511:0
+        cancel: crwdns3513:0crwdne3513:0
     link_block:
+      menu:
+        copy: crwdns3289:0crwdne3289:0
+        delete: crwdns3291:0crwdne3291:0
       copy_hint: crwdns3281:0crwdne3281:0
       deletion_confirm:
         title: crwdns3283:0crwdne3283:0
         ok: crwdns3285:0crwdne3285:0
         cancel: crwdns3287:0crwdne3287:0
-      menu:
-        more:
-          duplicate: crwdns3441:0crwdne3441:0
-          copy: crwdns3443:0crwdne3443:0
-          delete: crwdns3445:0crwdne3445:0
-        copy: crwdns3289:0crwdne3289:0
-        delete: crwdns3291:0crwdne3291:0
       hint: crwdns3447:0crwdne3447:0
       desc: crwdns3449:0crwdne3449:0
       import_sources:
