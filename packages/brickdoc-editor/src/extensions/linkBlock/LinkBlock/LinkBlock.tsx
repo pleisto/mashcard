@@ -1,20 +1,14 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { Button, Popover, Icon, Menu, Modal, message } from '@brickdoc/design-system'
-import { Dashboard, ImportSourceOption, UploadProgress, UploadResultData } from '@brickdoc/uploader'
 import { WebsiteMeta } from '..'
 import { BlockWrapper } from '../../BlockWrapper'
-import { useEditorI18n } from '../../../hooks'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.less'
-import { prependHttp } from '../../../helpers/prependHttp'
-import { sizeFormat, linkStorage, getFileTypeByExtension, FileType } from '../../../helpers/file'
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { Pdftron } from '../Pdftron/Pdftron'
-import { ActionPanel } from '../ActionPanel/ActionPanel'
-import { FileIcon } from '../FileIcon/FileIcon'
+import { linkStorage, getFileTypeByExtension, FileType } from '../../../helpers/file'
+import { PreviewMode } from '../modes/PreviewMode/PreviewMode'
+import { AttachmentMode } from '../modes/AttachmentMode/AttachmentMode'
+import { LinkMode } from '../modes/LinkMode/LinkMode'
+import { UploaderMode } from '../modes/UploaderMode/UploaderMode'
 
 export interface LinkBlockAttributes {
   key: string
@@ -31,8 +25,7 @@ export interface LinkBlockAttributes {
 const canFilePreview = (fileType: FileType, mode: LinkBlockAttributes['mode']): boolean =>
   mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
-export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, extension, updateAttributes }) => {
-  const { t } = useEditorI18n()
+export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes, deleteNode }) => {
   const latestLinkBlockAttributes = React.useRef<Partial<LinkBlockAttributes>>({})
   const updateLinkBlockAttributes = (newAttributes: Partial<LinkBlockAttributes>, type: 'link' | 'attachment'): void => {
     latestLinkBlockAttributes.current = {
@@ -49,31 +42,6 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     })
   }
 
-  const [progress, setProgress] = React.useState<UploadProgress>()
-  const onProgress = (progress: UploadProgress): void => setProgress(progress)
-
-  const onUploaded = (data: UploadResultData): void => {
-    // external link
-    if (data.meta?.source === 'external') {
-      data.url = prependHttp(data.url ?? '')
-      extension.options.fetchWebsiteMeta(data.url).then(({ success, data }: { success: boolean; data: WebsiteMeta }) => {
-        if (!success) return
-        updateLinkBlockAttributes({ ...data }, 'link')
-      })
-
-      linkStorage.set(node.attrs.uuid, null)
-      updateLinkBlockAttributes({ key: data.url, source: data.meta?.source.toUpperCase() }, 'link')
-
-      return
-    }
-
-    linkStorage.set(node.attrs.uuid, data.downloadUrl ?? '')
-    updateLinkBlockAttributes(
-      { key: data.url, source: data.meta?.source.toUpperCase(), size: data.meta?.size, name: data.meta?.name },
-      'attachment'
-    )
-  }
-
   const fileUrl = extension.options.getAttachmentUrl(node) ?? linkStorage.get(node.attrs.uuid)
   const linkUrl = node.attrs.link?.key
 
@@ -81,74 +49,31 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
     const { name } = node.attrs.attachment
     const fileType = getFileTypeByExtension(name)
 
-    const handleDelete = (): void => {
-      Modal.confirm({
-        title: t('link_block.deletion_confirm.title'),
-        okText: t('link_block.deletion_confirm.ok'),
-        okButtonProps: {
-          danger: true
-        },
-        cancelText: t('link_block.deletion_confirm.cancel'),
-        icon: null,
-        onOk: () => {
-          const position = getPos()
-          const range = { from: position, to: position + node.nodeSize }
-          editor.commands.deleteRange(range)
-        }
-      })
-    }
-
-    const handleCopyLink = async (): Promise<void> => {
-      await navigator.clipboard.writeText(fileUrl)
-      void message.success(t('link_block.copy_hint'))
-    }
-
-    const handleChangeModeToLink = (): void => {
-      updateLinkBlockAttributes({ mode: 'link' }, 'attachment')
-    }
+    const updateAttachmentAttributes = (attrs: Record<string, any>): void => updateLinkBlockAttributes(attrs, 'attachment')
 
     if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
       return (
         <BlockWrapper editor={editor}>
-          <Pdftron
-            onToggleMode={handleChangeModeToLink}
-            onCopyLink={handleCopyLink}
-            onDelete={handleDelete}
-            docLink={fileUrl}
+          <PreviewMode
             fileName={name}
             fileType={fileType}
+            fileUrl={fileUrl}
+            deleteNode={deleteNode}
+            updateAttachmentAttributes={updateAttachmentAttributes}
           />
         </BlockWrapper>
       )
     }
 
-    const handleChangeModeToPreview = (): void => {
-      updateLinkBlockAttributes({ mode: 'preview' }, 'attachment')
-    }
-
-    const handleDownload = (): void => {
-      const link = document.createElement('a')
-      link.download = 'true'
-      link.href = fileUrl
-      link.click()
-    }
-
     return (
       <BlockWrapper editor={editor}>
-        <ActionPanel
-          mode="link"
-          onDownload={handleDownload}
-          onCopyLink={handleCopyLink}
-          onDelete={handleDelete}
-          onToggleMode={handleChangeModeToPreview}
-        >
-          <div className="brickdoc-link-block-attachment">
-            <FileIcon fileType={fileType} />
-            <div className="link-block-attachment-content">
-              <div className="link-block-attachment-name">{name}</div>
-            </div>
-          </div>
-        </ActionPanel>
+        <AttachmentMode
+          name={name}
+          fileType={fileType}
+          fileUrl={fileUrl}
+          deleteNode={deleteNode}
+          updateAttachmentAttributes={updateAttachmentAttributes}
+        />
       </BlockWrapper>
     )
   }
@@ -156,121 +81,16 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, exten
   if (linkUrl) {
     const { title, description, cover } = node.attrs.link
 
-    const handleDelete = (): void => {
-      Modal.confirm({
-        title: t('link_block.deletion_confirm.title'),
-        okText: t('link_block.deletion_confirm.ok'),
-        okButtonProps: {
-          danger: true
-        },
-        cancelText: t('link_block.deletion_confirm.cancel'),
-        icon: null,
-        onOk: () => {
-          const position = getPos()
-          const range = { from: position, to: position + node.nodeSize }
-          editor.commands.deleteRange(range)
-        }
-      })
-    }
-    const handleCopy = async (): Promise<void> => {
-      await navigator.clipboard.writeText(linkUrl)
-      void message.success(t('link_block.copy_hint'))
-    }
     return (
       <BlockWrapper editor={editor}>
-        <Button
-          data-testid={TEST_ID_ENUM.editor.linkBlock.link.id}
-          className="brickdoc-link-block-link"
-          onClick={() => window.open(linkUrl, '_blank')}
-        >
-          {cover && <div className="link-block-cover" style={{ backgroundImage: `url("${cover}")` }} />}
-          <div className="link-block-content">
-            {title && <div className="link-block-title">{title}</div>}
-            {description && <div className="link-block-description">{description}</div>}
-            <div className="link-block-url">{linkUrl}</div>
-          </div>
-          <Popover
-            trigger="click"
-            overlayClassName="link-block-menu-popover"
-            content={
-              <Menu onClick={event => event.domEvent.stopPropagation()}>
-                <Menu.Item
-                  key="delete"
-                  data-testid={TEST_ID_ENUM.editor.linkBlock.deleteButton.id}
-                  onClick={info => {
-                    info.domEvent.stopPropagation()
-                    handleDelete()
-                  }}
-                >
-                  <Icon.Delete />
-                  {t('link_block.menu.delete')}
-                </Menu.Item>
-                <Menu.Item onClick={handleCopy} key="copy" data-testid={TEST_ID_ENUM.editor.linkBlock.copyButton.id}>
-                  <Icon.Copy />
-                  {t('link_block.menu.copy')}
-                </Menu.Item>
-              </Menu>
-            }
-          >
-            <Button
-              data-testid={TEST_ID_ENUM.editor.linkBlock.menuButton.id}
-              type="text"
-              className="link-block-menu-button"
-              onClick={event => event.stopPropagation()}
-            >
-              <Icon.More className="link-block-menu-icon" />
-            </Button>
-          </Popover>
-        </Button>
+        <LinkMode title={title} cover={cover} description={description} linkUrl={linkUrl} deleteNode={deleteNode} />
       </BlockWrapper>
     )
   }
 
-  const importSources: ImportSourceOption[] = [
-    {
-      type: 'link',
-      linkInputPlaceholder: t('link_block.import_sources.link.placeholder'),
-      buttonText: t('link_block.import_sources.link.button_text'),
-      buttonHint: t('link_block.import_sources.link.button_hint')
-    },
-    {
-      type: 'upload',
-      buttonText: t('link_block.import_sources.upload.button_text'),
-      buttonHint: t('link_block.import_sources.upload.button_hint')
-    }
-  ]
-
   return (
     <BlockWrapper editor={editor}>
-      <Popover
-        overlayClassName="brickdoc-link-block-popover"
-        trigger="click"
-        placement="bottom"
-        defaultVisible={node.attrs.isNew}
-        content={
-          <Dashboard
-            blockId={node.attrs.uuid}
-            onUploaded={onUploaded}
-            onProgress={onProgress}
-            importSources={importSources}
-            prepareFileUpload={extension.options.prepareFileUpload}
-          />
-        }
-      >
-        <Button data-testid={TEST_ID_ENUM.editor.linkBlock.addButton.id} type="text" className="brickdoc-link-block-placeholder">
-          <div className="link-block-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
-          <Icon.PaperClip className="link-block-icon" />
-          <div className="link-block-content">
-            {progress ? progress.name : t('link_block.hint')}
-            {!progress && <div className="link-block-desc">{t('link_block.desc')}</div>}
-            {progress && (
-              <div className="link-block-desc">
-                {sizeFormat(progress.bytesTotal)} - {progress.percentage}%
-              </div>
-            )}
-          </div>
-        </Button>
-      </Popover>
+      <UploaderMode node={node} extension={extension} updateLinkBlockAttributes={updateLinkBlockAttributes} />
     </BlockWrapper>
   )
 }

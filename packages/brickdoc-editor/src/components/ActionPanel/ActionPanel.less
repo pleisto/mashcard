@@ -1,0 +1,84 @@
+@import '@brickdoc/design-system/components/style/themes';
+
+.brickdoc-action-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 8px #2c5bff0f, 0 8px 16px #0000001f;
+  backdrop-filter: blur(60px);
+  border-radius: 4px;
+  padding: 8px 12px;
+  height: 32px;
+
+  .brickdoc-action-panel-divider {
+    background: #f6f6f6;
+    width: 1px;
+    height: 16px;
+    margin: 0 4px;
+  }
+
+  .brickdoc-action-panel-button {
+    font-size: 14px;
+    padding: 0 8px;
+    text-align: center;
+
+    &.active {
+      color: @primary-color;
+      background: #2c5bff1f;
+    }
+  }
+
+  .brickdoc-action-panel-button + .brickdoc-action-panel-button {
+    margin-left: 2px;
+  }
+}
+
+.brickdoc-action-panel-popover {
+  .brk-popover-arrow {
+    display: none;
+  }
+
+  .brk-popover-inner-content {
+    padding: 0;
+    color: unset;
+  }
+}
+
+.brickdoc-action-panel-dropdown-menu {
+  min-width: 240px;
+}
+
+.brickdoc-action-panel-dropdown-menu-item {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.brickdoc-action-panel-dropdown-menu-item-icon {
+  margin-right: 8px;
+}
+
+.brickdoc-action-panel-popover-menu {
+  overflow: scroll;
+  width: 240px;
+  max-height: 321px;
+  border: 1px solid @border-color-base;
+  box-shadow: 0 4px 8px #2c5bff0f, 0 8px 16px rg#0000001f;
+  backdrop-filter: blur(60px);
+  border-radius: 4px;
+
+  &::-webkit-scrollbar {
+    appearance: none;
+    width: 0;
+    height: 0;
+  }
+
+  .brickdoc-action-panel-popover-menu-item {
+    cursor: pointer;
+    line-height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

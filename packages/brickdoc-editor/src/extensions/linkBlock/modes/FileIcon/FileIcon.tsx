@@ -1,11 +1,11 @@
 import React from 'react'
 import cx from 'classnames'
 import { Icon } from '@brickdoc/design-system'
-import { FileType } from '../../../helpers/file'
-import IconPdf from '../../../assets/file-pdf.png'
-import IconExcel from '../../../assets/file-excel.png'
-import IconPpt from '../../../assets/file-ppt.png'
-import IconWord from '../../../assets/file-word.png'
+import { FileType } from '../../../../helpers/file'
+import IconPdf from '../../../../assets/file-pdf.png'
+import IconExcel from '../../../../assets/file-excel.png'
+import IconPpt from '../../../../assets/file-ppt.png'
+import IconWord from '../../../../assets/file-word.png'
 
 interface FileIconProps {
   fileType: FileType

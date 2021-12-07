@@ -1904,6 +1904,7 @@ __metadata:
     "@tiptap/extension-bullet-list": 2.0.0-beta.15
     "@tiptap/extension-code": 2.0.0-beta.16
     "@tiptap/extension-code-block": 2.0.0-beta.18
+    "@tiptap/extension-code-block-lowlight": 2.0.0-beta.36
     "@tiptap/extension-document": 2.0.0-beta.13
     "@tiptap/extension-dropcursor": 2.0.0-beta.19
     "@tiptap/extension-gapcursor": 2.0.0-beta.19
@@ -1927,6 +1928,7 @@ __metadata:
     "@types/react-pdf": ^5.0.9
     "@types/react-table": ^7.7.7
     dayjs: ^1.10.7
+    highlight.js: ^11.3.1
     i18next: ^21.4.0
     re-resizable: ^6.9.1
     react: ^17.0.2
@@ -3798,6 +3800,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tiptap/extension-code-block-lowlight@npm:2.0.0-beta.36":
+  version: 2.0.0-beta.36
+  resolution: "@tiptap/extension-code-block-lowlight@npm:2.0.0-beta.36"
+  dependencies:
+    "@tiptap/extension-code-block": ^2.0.0-beta.17
+    "@types/lowlight": ^0.0.3
+    lowlight: ^1.20.0
+    prosemirror-model: ^1.14.3
+    prosemirror-state: ^1.3.4
+    prosemirror-view: ^1.20.0
+  peerDependencies:
+    "@tiptap/core": ^2.0.0-beta.1
+  checksum: ee87ad7f7c4869b43b467fad6f6424cfc10af7669efefa12bcd9ab10237a4c96d63f8ade4f4393d2e012c46b7d6905ccda5838bcea981b89c3df2aaac02c299a
+  languageName: node
+  linkType: hard
+
 "@tiptap/extension-code-block@npm:2.0.0-beta.18":
   version: 2.0.0-beta.18
   resolution: "@tiptap/extension-code-block@npm:2.0.0-beta.18"
@@ -4294,6 +4312,13 @@ __metadata:
   version: 4.14.176
   resolution: "@types/lodash@npm:4.14.176"
   checksum: 9e949704dfffab60365b5cdca0477926af6eabe82c64b7be8f74b3a117bb373d58371be962c2b159dd0cf8fad49a7dcacc748564aea4ce6b6883c197a6f0bfa8
+  languageName: node
+  linkType: hard
+
+"@types/lowlight@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@types/lowlight@npm:0.0.3"
+  checksum: 0765610f5236b2fd514fa99c6a8c4e3b6df6deea62dab34004f746736645aa345f4745104f1ab0d1806753fc14c9faa46b3368fa44945b94013a1d694bf12f2b
   languageName: node
   linkType: hard
 
@@ -9640,7 +9665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fault@npm:^1.0.1":
+"fault@npm:^1.0.0, fault@npm:^1.0.1":
   version: 1.0.4
   resolution: "fault@npm:1.0.4"
   dependencies:
@@ -10787,6 +10812,20 @@ fsevents@^1.2.7:
     capital-case: ^1.0.4
     tslib: ^2.0.3
   checksum: 571c83eeb25e8130d172218712f807c0b96d62b020981400bccc1503a7cf14b09b8b10498a962d2739eccf231d950e3848ba7d420b58a6acd2f9283439546cd9
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:^11.3.1":
+  version: 11.3.1
+  resolution: "highlight.js@npm:11.3.1"
+  checksum: 9adaaa1fe5aaae0ca522f9355bc2a7387f76ab362f88c32c86879b99f606619a9aa33c32ffc94cd893987e71ba5d2de6f3e325ed9e8eac65e5872d251e8cba3a
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:~10.7.0":
+  version: 10.7.3
+  resolution: "highlight.js@npm:10.7.3"
+  checksum: defeafcd546b535d710d8efb8e650af9e3b369ef53e28c3dc7893eacfe263200bba4c5fcf43524ae66d5c0c296b1af0870523ceae3e3104d24b7abf6374a4fea
   languageName: node
   linkType: hard
 
@@ -13545,6 +13584,16 @@ fsevents@^1.2.7:
   version: 2.0.0
   resolution: "lowercase-keys@npm:2.0.0"
   checksum: 24d7ebd56ccdf15ff529ca9e08863f3c54b0b9d1edb97a3ae1af34940ae666c01a1e6d200707bce730a8ef76cb57cc10e65f245ecaaf7e6bc8639f2fb460ac23
+  languageName: node
+  linkType: hard
+
+"lowlight@npm:^1.20.0":
+  version: 1.20.0
+  resolution: "lowlight@npm:1.20.0"
+  dependencies:
+    fault: ^1.0.0
+    highlight.js: ~10.7.0
+  checksum: 14a1815d6bae202ddee313fc60f06d46e5235c02fa483a77950b401d85b4c1e12290145ccd17a716b07f9328bd5864aa2d402b6a819ff3be7c833d9748ff8ba7
   languageName: node
   linkType: hard
 
@@ -16394,6 +16443,17 @@ fsevents@^1.2.7:
     prosemirror-state: ^1.0.0
     prosemirror-transform: ^1.1.0
   checksum: ff048bc03b76e46ae972f8a0605f5056d0f2bbefd550d3e103d075582420264a7d9ec32b1dda4d1c3e63e314ac6621fd34e532a7b9b39bd1dfc23db41e58d555
+  languageName: node
+  linkType: hard
+
+"prosemirror-view@npm:^1.20.0":
+  version: 1.23.3
+  resolution: "prosemirror-view@npm:1.23.3"
+  dependencies:
+    prosemirror-model: ^1.14.3
+    prosemirror-state: ^1.0.0
+    prosemirror-transform: ^1.1.0
+  checksum: cf193fe975495c435f44ac6cb9c6455493df5b61cf7e2dd42040e815c9bf918992d51a9d2a13b04be7ebc44a3d8b73b41cafed0f72a7bd61048f6492db6ef7c0
   languageName: node
   linkType: hard
 

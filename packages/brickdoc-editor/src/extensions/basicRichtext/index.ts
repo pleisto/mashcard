@@ -4,7 +4,8 @@ import Blockquote, { BlockquoteOptions } from '@tiptap/extension-blockquote'
 import Bold, { BoldOptions } from '@tiptap/extension-bold'
 import BulletList, { BulletListOptions } from '@tiptap/extension-bullet-list'
 import Code, { CodeOptions } from '@tiptap/extension-code'
-import CodeBlock, { CodeBlockOptions } from '@tiptap/extension-code-block'
+import { CodeBlockLowlight, CodeBlockLowlightOptions } from '@tiptap/extension-code-block-lowlight'
+import lowlight from 'lowlight'
 import Document from '@tiptap/extension-document'
 import Dropcursor, { DropcursorOptions } from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
@@ -27,13 +28,15 @@ import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
 import { LinkBlockExtension, LinkBlockOptions } from '../linkBlock'
 import { TableBlockExtension, TableBlockOptions } from '../table'
 import { FormulaExtension, FormulaOptions } from '../formula'
+import { CodeBlock } from '../../components/CodeBlock/CodeBlock'
+import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
   blockquote: Partial<BlockquoteOptions> | false
   bold: Partial<BoldOptions> | false
   bulletList: Partial<BulletListOptions> | false
   code: Partial<CodeOptions> | false
-  codeBlock: Partial<CodeBlockOptions> | false
+  codeBlock: Partial<CodeBlockLowlightOptions> | false
   document: false
   dropcursor: Partial<DropcursorOptions> | false
   gapcursor: false
@@ -70,7 +73,14 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.bold !== false) extensions.push(Bold.configure(this.options?.bold))
     if (this.options.bulletList !== false) extensions.push(BulletList.configure(this.options?.bulletList))
     if (this.options.code !== false) extensions.push(Code.configure(this.options?.code))
-    if (this.options.codeBlock !== false) extensions.push(CodeBlock.configure(this.options?.codeBlock))
+    if (this.options.codeBlock !== false)
+      extensions.push(
+        CodeBlockLowlight.extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(CodeBlock)
+          }
+        }).configure({ lowlight, ...this.options.codeBlock })
+      )
     if (this.options.document !== false) extensions.push(Document.configure(this.options?.document))
     if (this.options.dropcursor !== false) extensions.push(Dropcursor.configure(this.options?.dropcursor))
     if (this.options.gapcursor !== false) extensions.push(Gapcursor.configure(this.options?.gapcursor))
