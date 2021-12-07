@@ -18,9 +18,6 @@ Rails.application.reloader.to_prepare do
   Oj::Rails.set_decoder
   Oj::Rails.optimize(Array, BigDecimal, Hash, Range, Regexp, Time)
 
-  # Http client
-  Faraday.default_adapter = :typhoeus
-
   # Cache
   Rails.application.config.cache_store = [:redis_cache_store, {
     redis: Brickdoc::Redis.pool(:cache),

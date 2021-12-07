@@ -7,7 +7,7 @@ module Brickdoc
     def all
       return @pod_blacklist if @pod_blacklist.present?
       list = YAML.load_file(Brickdoc.root.join('config', 'webid_blacklist.yml'))
-      @pod_blacklist = Brickdoc.saas? ? (list[:common] | list[:saas]) : list[:common]
+      @pod_blacklist = list[:common] | list[:saas]
     end
   end
 end

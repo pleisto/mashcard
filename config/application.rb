@@ -54,13 +54,6 @@ module Brickdoc
       loader.setup
     end
 
-    if Brickdoc.saas?
-      Rails.autoloaders.main.push_dir(Brickdoc::SaaS.root.join('lib'))
-      Dir["#{Brickdoc::SaaS.root}/app/*"].each do |app_subdir|
-        Rails.autoloaders.main.push_dir(app_subdir)
-      end
-    end
-
     initializer :load_plugins, after: :prepend_helpers_path, before: :load_config_initializers do
       require_relative '../app/models/application_record'
       require_relative '../app/models/brickdoc_config'

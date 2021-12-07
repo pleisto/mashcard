@@ -2,7 +2,6 @@
 
 ESLint Configuration and custom rules for Brickdoc.
 
-
 ## Config
 
 Usage:
@@ -10,7 +9,7 @@ Usage:
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: ['plugin:@brickdoc/eslint-plugin-brickdoc/angular']
+  extends: ['plugin:@brickdoc/eslint-plugin-brickdoc/react']
   // or "plugin:@brickdoc/eslint-plugin-brickdoc/node"
 }
 ```

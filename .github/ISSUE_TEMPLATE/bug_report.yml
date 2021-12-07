@@ -1,0 +1,58 @@
+name: 🐛 Bug report
+description: Create a report to help us improve
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please read our [Rules of Conduct](https://github.com/brickdoc/brickdoc/blob/master/CODE_OF_CONDUCT.md)
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      options:
+        - label: I have written a descriptive issue title
+          required: true
+        - label: |
+            I have searched existing issues to ensure the bug has not already been reported
+          required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+
+  - type: input
+    id: runtime-versions
+    attributes:
+      label: OS/Node.js/PostgreSQL/Redis or other runtime versions
+      placeholder: Nodejs 16.0
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        1.
+        2.
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.

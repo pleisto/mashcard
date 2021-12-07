@@ -1,0 +1,103 @@
+{
+  // Autodetecting TSC tasks on a repo this size makes 'Tasks: Run Build Task' unusably slow.
+  // (See https://github.com/Microsoft/vscode/issues/34387)
+  "typescript.tsc.autoDetect": "off",
+  "files.associations": {
+    ".babelrc": "json",
+    ".eslintrc": "jsonc",
+    ".eslintrc*.json": "jsonc",
+    ".stylelintrc": "jsonc",
+    "stylelintrc": "jsonc"
+  },
+  "search.useIgnoreFiles": true,
+  "search.exclude": {
+    "**/build": true,
+    "**/output": true,
+    "**/dist": true,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true,
+    "**/*.log": true,
+    "**/*.pid": true,
+    "**/.git": true,
+    "**/node_modules": true,
+    "public": true,
+    "tmp": true
+  },
+  "cSpell.diagnosticLevel": "Hint",
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "npm.packageManager": "yarn",
+  "typescript.validate.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "cSpell.words": [
+    "Brickdoc",
+    "commitlint",
+    "Devkit",
+    "entrypoint",
+    "eqeqeq",
+    "falsey",
+    "Fastify",
+    "KEEPTTL",
+    "Kubernetes",
+    "kysely",
+    "livez",
+    "memex",
+    "memlimit",
+    "modulepreload",
+    "moize",
+    "neverthrow",
+    "npub",
+    "NPUBBYTES",
+    "omakase",
+    "opslimit",
+    "ormconfig",
+    "OWASP",
+    "pgcrypto",
+    "pino",
+    "prebuild",
+    "primatives",
+    "PXAT",
+    "Schneier's",
+    "STRBYTES",
+    "stylelint",
+    "uncountables",
+    "varchar",
+    "vite",
+    "vitejs",
+    "yarnpkg"
+  ]
+}

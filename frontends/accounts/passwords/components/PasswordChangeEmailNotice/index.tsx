@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCountDown } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { Button, message } from '@brickdoc/design-system'
@@ -9,9 +9,8 @@ import dayjs from 'dayjs'
 import styles from './index.module.less'
 
 export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: boolean }> = ({ email, pending }) => {
-  const countdownParams = pending ? { targetDate: dayjs().add(1, 'minute').toDate() } : {}
-  const [countdown, setTargetDate] = useCountDown(countdownParams)
-
+  const [targetDate, setTargetDate] = useState<number>(pending ? dayjs().add(1, 'minute').unix() : 0)
+  const [countdown] = useCountDown({ targetDate })
   const { t } = useAccountsI18n()
   const [resendEmail, { loading }] = useUserForgetPasswordMailSendMutation()
 
@@ -21,7 +20,7 @@ export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: bool
     mutationResultHandler(result, () => {
       void message.success(t('devise:passwords.send_instructions'))
     })
-    setTargetDate(dayjs().add(1, 'minute').toDate())
+    setTargetDate(dayjs().add(1, 'minute').unix())
   }
 
   return (

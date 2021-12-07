@@ -6,6 +6,10 @@ on:
     branches:
       - master
       - main
+env:
+  # GitHub-hosted runner have 7 gb RAM.
+  # 5250mb === 7gb * 0.75
+  NODE_OPTIONS: '--max-old-space-size=5250'
 jobs:
   cancel:
     # Cancel any previous CI runs to save GH Actions minutes

@@ -58,6 +58,9 @@ env:
   UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
   UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+  # GitHub-hosted runner have 7 gb RAM.
+  # 5250mb === 7gb * 0.75
+  NODE_OPTIONS: '--max-old-space-size=5250'
 
 jobs:
   cancel:
@@ -97,7 +100,7 @@ jobs:
           CYPRESS_INSTALL_BINARY: '0'
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn test:jest --silent
+        run: yarn test:jest --silent --onlyChanged
       - name: Publish Jest test reports
         if: always() && steps.changed-es-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2

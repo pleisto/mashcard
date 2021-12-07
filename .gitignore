@@ -3,12 +3,18 @@
 # development
 /.idea
 /.vs
-/.vscode
 *.sublime-project
 *.sublime-workspace
 /.settings
 /.ruby-gemset
 /.rvmrc
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # dependencies
 node_modules

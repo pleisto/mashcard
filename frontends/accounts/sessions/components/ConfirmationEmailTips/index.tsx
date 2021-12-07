@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCountDown } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { Button, message } from '@brickdoc/design-system'
@@ -10,7 +10,8 @@ import dayjs from 'dayjs'
 import styles from './index.module.less'
 
 export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) => {
-  const [countdown, setTargetDate] = useCountDown()
+  const [targetDate, setTargetDate] = useState<number>()
+  const [countdown] = useCountDown({ targetDate })
   const { t } = useAccountsI18n()
   const [resendEmail, { loading }] = useUserConfirmationEmailResendMutation()
 
@@ -20,7 +21,7 @@ export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) =>
     mutationResultHandler(result, () => {
       void message.success(t('devise:confirmations.send_paranoid_instructions'))
     })
-    setTargetDate(dayjs().add(1, 'minute').toDate())
+    setTargetDate(dayjs().add(1, 'minute').unix())
   }
 
   return (

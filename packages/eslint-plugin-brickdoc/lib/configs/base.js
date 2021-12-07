@@ -75,7 +75,8 @@ module.exports = {
         message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`
       }))
     ],
-    'import/no-default-export': 'warn'
+    'import/no-default-export': 'warn',
+    'no-restricted-imports': 'off'
   },
   overrides: [
     {
