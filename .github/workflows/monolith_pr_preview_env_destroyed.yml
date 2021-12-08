@@ -1,5 +1,6 @@
 name: Destroyed Monolith Application Pull Request Preview Env
-
+concurrency:
+  group: monolith-preview-destoryed-${{ github.ref }}
 on:
   pull_request:
     types: [closed]
@@ -16,15 +17,6 @@ on:
       - '**/NOTICE'
       - '**/VERSION'
 jobs:
-  cancel:
-    # Cancel any previous CI runs to save GH Actions minutes
-    name: 'Cancel Previous Runs'
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
   clean:
     name: 'Helm Remove'
     runs-on: ubuntu-latest

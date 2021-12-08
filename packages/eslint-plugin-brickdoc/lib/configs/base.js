@@ -88,7 +88,7 @@ module.exports = {
         '@typescript-eslint/no-floating-promises': 'warn',
         '@typescript-eslint/unified-signatures': 'error',
         '@typescript-eslint/prefer-ts-expect-error': 'warn',
-        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'warn',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off'
       }

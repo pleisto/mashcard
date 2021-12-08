@@ -1,8 +1,6 @@
 import { defineConfig, UserConfigExport } from 'vite'
 import react from '@vitejs/plugin-react'
 import mdx from 'vite-plugin-mdx'
-import pages from 'vite-plugin-react-pages'
-import path from 'path/posix'
 
 export default defineConfig({
   jsx: 'react',
@@ -14,10 +12,7 @@ export default defineConfig({
         }
       }
     }),
-    mdx(),
-    pages({
-      pagesDir: path.join(__dirname, 'docs')
-    })
+    mdx()
   ],
   server: {
     port: 6006,

@@ -1,0 +1,1072 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dependency dependency automatic update 1`] = `
+Object {
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "396b8653-6666-4126-92b6-74006a435276",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "396b8653-6666-4126-92b6-74006a435276",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    },
+  ],
+}
+`;
+
+exports[`Dependency dependency automatic update 2`] = `
+Array [
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "NumberLiteral",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "1",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "number",
+      },
+    ],
+    "cst": null,
+    "definition": "=1",
+    "dirty": false,
+    "flattenVariableDependencies": Set {},
+    "functionDependencies": Array [],
+    "kind": "constant",
+    "level": 0,
+    "name": "num0",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [],
+    "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+    "variableValue": Object {
+      "display": "1",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 1,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Multi",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "*",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "NumberLiteral",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "2",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "number",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "NumberLiteral",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "100",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "number",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259 * 2 + 100",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 1,
+    "name": "num1",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    ],
+    "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    "variableValue": Object {
+      "display": "102",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 102,
+    },
+    "view": Object {},
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 1,
+    "name": "num2",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    ],
+    "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+    "variableValue": Object {
+      "display": "1",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 1,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num2",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num1",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec + $9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 2,
+    "name": "num3",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+    ],
+    "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+    "variableValue": Object {
+      "display": "3",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 3,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num2",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec + $9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 2,
+    "name": "num4",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    ],
+    "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+    "variableValue": Object {
+      "display": "2",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 2,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num3",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num2",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373 + $9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259 + $9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 3,
+    "name": "num5",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+    ],
+    "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    "variableValue": Object {
+      "display": "5",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 5,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num4",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num1",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2 + $9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 3,
+    "name": "num6",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+    ],
+    "variableId": "396b8653-6666-4126-92b6-74006a435276",
+    "variableValue": Object {
+      "display": "4",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 4,
+    },
+  },
+]
+`;
+
+exports[`Dependency snapshot 1`] = `
+Object {
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "396b8653-6666-4126-92b6-74006a435276",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "396b8653-6666-4126-92b6-74006a435276",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+    },
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    },
+  ],
+  "$9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373": Array [
+    Object {
+      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    },
+  ],
+}
+`;
+
+exports[`Dependency snapshot 2`] = `
+Array [
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "NumberLiteral",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "1",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "number",
+      },
+    ],
+    "cst": null,
+    "definition": "=1",
+    "dirty": false,
+    "flattenVariableDependencies": Set {},
+    "functionDependencies": Array [],
+    "kind": "constant",
+    "level": 0,
+    "name": "num0",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [],
+    "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+    "variableValue": Object {
+      "display": "1",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 1,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "NumberLiteral",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "2",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "number",
+      },
+    ],
+    "cst": null,
+    "definition": "=2",
+    "dirty": false,
+    "flattenVariableDependencies": Set {},
+    "functionDependencies": Array [],
+    "kind": "constant",
+    "level": 0,
+    "name": "num1",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [],
+    "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    "variableValue": Object {
+      "display": "2",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 2,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 1,
+    "name": "num2",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    ],
+    "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+    "variableValue": Object {
+      "display": "1",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 1,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num2",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num1",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec + $9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 2,
+    "name": "num3",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+    ],
+    "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+    "variableValue": Object {
+      "display": "3",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 3,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num2",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec + $9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 2,
+    "name": "num4",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    ],
+    "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+    "variableValue": Object {
+      "display": "2",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 2,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num3",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num0",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num2",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373 + $9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259 + $9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 3,
+    "name": "num5",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+    ],
+    "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+    "variableValue": Object {
+      "display": "5",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 5,
+    },
+  },
+  Object {
+    "codeFragments": Array [
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num4",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": Object {},
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+      Object {
+        "code": "Variable",
+        "errors": Array [],
+        "meta": Object {
+          "name": "num1",
+        },
+        "name": "$9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "any",
+      },
+    ],
+    "cst": null,
+    "definition": "=$9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2 + $9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+    "dirty": false,
+    "flattenVariableDependencies": Set {
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
+      },
+    },
+    "functionDependencies": Array [],
+    "kind": "expression",
+    "level": 3,
+    "name": "num6",
+    "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "variableDependencies": Array [
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+      },
+      Object {
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+      },
+    ],
+    "variableId": "396b8653-6666-4126-92b6-74006a435276",
+    "variableValue": Object {
+      "display": "4",
+      "success": true,
+      "type": "number",
+      "updatedAt": null,
+      "value": 4,
+    },
+  },
+]
+`;

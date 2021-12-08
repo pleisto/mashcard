@@ -19,6 +19,8 @@ on:
 env:
   image: ghcr.io/brickdoc/brickdoc:latest
   domain: trunk.brickdoc.dev
+concurrency:
+  group: monolith-trunk-cd
 jobs:
   build:
     name: 'Build and Push Docker Image'
@@ -73,6 +75,9 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deploy:
     name: 'Deployment to BAE'
+    environment:
+      name: trunk
+      url: ${{ env.domain }}
     runs-on: ubuntu-latest
     needs: build
     steps:

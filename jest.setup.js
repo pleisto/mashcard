@@ -1,5 +1,5 @@
-import '@testing-library/jest-dom/extend-expect'
-import React from 'react'
+require('@testing-library/jest-dom/extend-expect')
+const React = require('react')
 
 globalThis.React = React
 

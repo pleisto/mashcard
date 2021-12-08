@@ -5,7 +5,7 @@ describe('document cover', () => {
     cy.sessionMock({ email: 'cypress@brickdoc.com' })
   })
 
-  it('adds document cover', () => {
+  it.skip('adds document cover', () => {
     cy.visit('/')
     cy.findByTestId(TEST_ID_ENUM.page.DocumentPage.titleInput.id).focus()
     cy.focused().realHover()
@@ -14,7 +14,7 @@ describe('document cover', () => {
     cy.findByTestId(TEST_ID_ENUM.page.DocumentPage.cover.id).should('have.css', 'background-image')
   })
 
-  it('changes document cover normally', () => {
+  it.skip('changes document cover normally', () => {
     cy.visit('/')
     cy.findByTestId(TEST_ID_ENUM.page.DocumentPage.titleInput.id).focus()
     cy.focused().realHover()

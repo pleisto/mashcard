@@ -14,12 +14,11 @@
   ],
   "scripts": {
     "build": "tsc --build && esbuild src/less-plugin.ts --bundle --outfile=dist/less-plugin.js",
-    "cleanup": "rm -rf dist",
+    "build:onDemand": "test -f \"dist/less-plugin.js\" || run build",
+    "cleanup": "tsc --build --clean && rm -rf dist",
     "eslint:fix": "eslint --fix --cache ./src"
   },
   "devDependencies": {
-    "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
-    "esbuild": "^0.14.2",
-    "eslint": "^7.32.0"
+    "esbuild": "^0.14.2"
   }
 }

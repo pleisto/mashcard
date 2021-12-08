@@ -1,20 +1,12 @@
 name: Deploy SaaS Prod on BAE
+concurrency:
+  group: sass-prod-deploy
 on:
-  push:
-    paths-ignore:
-      - '.husky/**'
-      - 'bin/**'
-      - 'packages/rubocop-brickdoc/**'
-      - 'packages/eslint-plugin-brickdoc/**'
-      - '**/*.md'
-      - 'packages/**/Dockerfile'
-      - '**/.git*'
-      - '**/crowdin.yml'
-      - '**/LICENSE'
-      - '**/NOTICE'
-      - '**/VERSION'
-    tags:
-      - 'v**-saas'
+  workflow_run:
+    workflows: ["Monolith Application CI"]
+    tags: ['v**-saas']
+    types:
+      - completed
 env:
   image: ghcr.io/brickdoc/brickdoc-saas
   domain: brickdoc.app
@@ -75,6 +67,9 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deploy:
     name: 'Deployment to BAE'
+    environment:
+      name: production
+      url: ${{ env.domain }}
     runs-on: ubuntu-latest
     needs: build
     steps:

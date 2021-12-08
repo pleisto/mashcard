@@ -12,6 +12,28 @@ const esModules = ['lodash-es'].join('|')
 module.exports = {
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          target: 'es2020',
+          parser: {
+            syntax: 'typescript',
+            tsx: true
+          },
+          transform: {
+            react: {
+              runtime: 'automatic'
+            }
+          }
+        },
+        module: {
+          type: 'commonjs'
+        }
+      }
+    ]
+  },
   collectCoverage: isCI,
   // Jest will map files in `dist` back into their source via source maps.
   collectCoverageFrom: ['**/dist/**/*.js', '!**/@(node_modules|__tests__)/**', '!**/*.@(spec|test).js'],

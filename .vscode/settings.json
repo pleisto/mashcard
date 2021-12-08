@@ -1,7 +1,8 @@
 {
-  // Autodetecting TSC tasks on a repo this size makes 'Tasks: Run Build Task' unusably slow.
-  // (See https://github.com/Microsoft/vscode/issues/34387)
-  "typescript.tsc.autoDetect": "off",
+  "typescript.tsc.autoDetect": "on",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.renderWhitespace": "all",
   "files.associations": {
     ".babelrc": "json",
     ".eslintrc": "jsonc",
@@ -10,31 +11,46 @@
     "stylelintrc": "jsonc"
   },
   "search.useIgnoreFiles": true,
+  "files.exclude": {
+    "**/.cache": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.eslintcache": true
+  },
+  "files.watcherExclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/tmp": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "public": true
+  },
   "search.exclude": {
     "**/build": true,
     "**/output": true,
     "**/dist": true,
-    "**/yarn.lock": true,
-    "**/package-lock.json": true,
     "**/*.log": true,
     "**/*.pid": true,
     "**/.git": true,
     "**/node_modules": true,
-    "public": true,
     "tmp": true
   },
+  "editor.rulers": [140],
   "cSpell.diagnosticLevel": "Hint",
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  "[plaintext]": {
+    "files.insertFinalNewline": false
   },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.workingDirectories": [
     {
@@ -49,19 +65,20 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.json-language-features",
     "editor.tabSize": 2,
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+    "editor.formatOnType": true
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.json-language-features",
     "editor.tabSize": 2,
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+    "editor.formatOnType": true
+  },
+  "[ruby]": {
+    "editor.defaultFormatter": "rebornix.ruby"
   },
   "cSpell.words": [
     "Brickdoc",
@@ -99,5 +116,22 @@
     "vite",
     "vitejs",
     "yarnpkg"
-  ]
+  ],
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "eslint.lintTask.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.useESLintClass": true,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "ruby.useBundler": true,
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true // enable rubocop via bundler
+    }
+  },
+  "ruby.format": "rubocop", // use rubocop for formatting
+  "solargraph.useBundler": true,
+  "solargraph.references": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true
 }

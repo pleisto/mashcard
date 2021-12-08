@@ -1,25 +1,14 @@
 name: Linting Code
-
+concurrency:
+  group: monolith-linting-${{ github.ref }}
+  cancel-in-progress: true
 on:
   pull_request:
-  push:
-    branches:
-      - master
-      - main
 env:
   # GitHub-hosted runner have 7 gb RAM.
   # 5250mb === 7gb * 0.75
   NODE_OPTIONS: '--max-old-space-size=5250'
 jobs:
-  cancel:
-    # Cancel any previous CI runs to save GH Actions minutes
-    name: 'Cancel Previous Runs'
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
   es:
     name: ECMAScript
     runs-on: ubuntu-latest
@@ -82,7 +71,7 @@ jobs:
           echo "::add-matcher::.github/matchers/rubocop.json"
           bundle exec rubocop --parallel --config .rubocop.yml
       - name: Run Brakeman
-        if: steps.changed-ruby-files.outputs.any_changed == 'true' && always()
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
         run: |
           echo "::add-matcher::.github/matchers/brakeman.json"
           bundle exec brakeman --no-pager -f csv -o /dev/stdout

@@ -11,7 +11,7 @@
   "types": "dist/src/index.d.ts",
   "scripts": {
     "eslint:fix": "eslint --fix --cache ./src",
-    "cleanup": "rm -rf dist",
+    "cleanup": "tsc --build --clean",
     "generator": "bin/icons-react-component-generator",
     "build": "yarn generator && tsc --build"
   },
