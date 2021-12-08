@@ -21,7 +21,7 @@ describe('document cover', () => {
     cy.findByTestId(TEST_ID_ENUM.page.DocumentPage.coverButton.id).realClick()
     cy.get('.unsplash-image-item:first').click()
     cy.findByTestId(TEST_ID_ENUM.page.DocumentPage.changeCoverButton.id).realClick()
-    cy.get('.unsplash-image-item:last').click()
+    cy.get('.unsplash-image-item:nth-of-type(2)').click()
     cy.findByTestId(TEST_ID_ENUM.page.DocumentPage.cover.id).should('have.css', 'background-image')
   })
 })
