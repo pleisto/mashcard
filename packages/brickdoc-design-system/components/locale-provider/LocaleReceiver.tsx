@@ -26,7 +26,7 @@ export interface LocaleReceiverProps<C extends keyof Locale = keyof Locale> {
 function LocaleReceiver<C extends keyof Locale = keyof Locale>({ componentName, children }: LocaleReceiverProps<C>): React.ReactElement {
   const locale = useLocale(componentName)
 
-  return children(locale)
+  return children(locale as any)
 }
 
 export default LocaleReceiver

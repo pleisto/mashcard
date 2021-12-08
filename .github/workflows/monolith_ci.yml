@@ -230,6 +230,8 @@ jobs:
           --health-retries 5
     env:
       RAILS_ENV: test
+      UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
+      UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v2

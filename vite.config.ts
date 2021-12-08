@@ -18,7 +18,9 @@ export default defineConfig({
   ],
   build: {
     chunkSizeWarningLimit: 1024,
-    sourcemap: false
+    sourcemap: false,
+    cssCodeSplit: false,
+    target: ['chrome74', 'ios13']
   },
   optimizeDeps: {
     include: ['dayjs', 'react', 'react-dom']

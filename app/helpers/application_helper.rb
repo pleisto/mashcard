@@ -21,4 +21,8 @@ module ApplicationHelper
       sentryDsn: BrickdocConfig.sentry_dsn
     }
   end
+
+  def vite_stylesheet_bundle_tag
+    vite_stylesheet_tag '~/style.css' unless ViteRuby.instance.dev_server_running?
+  end
 end

@@ -60,26 +60,11 @@ export function getLocaleData(t: TFunction<'design_system'>, language: string): 
     },
     timePickerLocale: {
       placeholder: t('timePicker.placeholder', 'Select time'),
-      rangePlaceholder: [
-        t('timePicker.rangePlaceholder.startTime', 'Start time'),
-        t('timePicker.rangePlaceholder.endTime', 'End time')
-      ]
+      rangePlaceholder: [t('timePicker.rangePlaceholder.startTime', 'Start time'), t('timePicker.rangePlaceholder.endTime', 'End time')]
     }
   }
 
   const locale: Locale = {
-    Pagination: {
-      items_per_page: t('pagination.itemsPerPage', '/ page'),
-      jump_to: t('pagination.jumpTo', 'Go to'),
-      jump_to_confirm: t('pagination.jumpToConfirm', 'confirm'),
-      page: t('pagination.page', ''),
-      prev_page: t('pagination.prevPage', 'Previous Page'),
-      next_page: t('pagination.nextPage', 'Next Page'),
-      prev_5: t('pagination.prev5', 'Previous 5 Pages'),
-      next_5: t('pagination.next5', 'Next 5 Pages'),
-      prev_3: t('pagination.prev3', 'Previous 3 Pages'),
-      next_3: t('pagination.next3', 'Next 3 Pages')
-    },
     DatePicker: pickerLocale,
     TimePicker: {
       placeholder: t('timePicker.placeholder', 'Select time'),
@@ -89,31 +74,10 @@ export function getLocaleData(t: TFunction<'design_system'>, language: string): 
     global: {
       placeholder: t('global.placeholder', 'Please select')
     },
-    Table: {
-      filterTitle: t('table.filterTitle', 'Filter menu'),
-      filterConfirm: t('table.filterConfirm', 'OK'),
-      filterReset: t('table.filterReset', 'Reset'),
-      filterEmptyText: t('table.filterEmptyText', 'No filters'),
-      emptyText: t('table.emptyText', 'No data'),
-      selectAll: t('table.selectAll', 'Select current page'),
-      selectInvert: t('table.selectInvert', 'Invert current page'),
-      selectNone: t('table.selectNone', 'Clear all data'),
-      selectionAll: t('table.selectionAll', 'Select all data'),
-      sortTitle: t('table.sortTitle', 'Sort'),
-      expand: t('table.expand', 'Expand row'),
-      collapse: t('table.collapse', 'Collapse row'),
-      triggerDesc: t('table.triggerDesc', 'Click to sort descending'),
-      triggerAsc: t('table.triggerAsc', 'Click to sort ascending'),
-      cancelSort: t('table.cancelSort', 'Click to cancel sorting')
-    },
     Modal: {
       okText: t('modal.okText', 'OK'),
       cancelText: t('modal.cancelText', 'Cancel'),
       justOkText: t('modal.justOkText', 'OK')
-    },
-    Popconfirm: {
-      okText: t('popconfirm.okText', 'OK'),
-      cancelText: t('popconfirm.cancelText', 'Cancel')
     },
     Transfer: {
       titles: [t('transfer.titles.first', ''), t('transfer.titles.second', '')],

@@ -4,7 +4,6 @@ import Spin, { SpinProps } from '../spin'
 import useBreakpoint from '../grid/hooks/useBreakpoint'
 import { Breakpoint, responsiveArray } from '../_util/responsiveObserve'
 import { RenderEmptyHandler, ConfigContext } from '../config-provider'
-import Pagination, { PaginationConfig } from '../pagination'
 import { Row } from '../grid'
 import Item from './Item'
 import './style'
@@ -42,7 +41,6 @@ export interface ListProps<T> {
   itemLayout?: ListItemLayout
   loading?: boolean | SpinProps
   loadMore?: React.ReactNode
-  pagination?: PaginationConfig | false
   prefixCls?: string
   rowKey?: ((item: T) => React.Key) | keyof T
   renderItem?: (item: T, index: number) => React.ReactNode
@@ -67,7 +65,6 @@ export const ListContext = React.createContext<ListConsumerProps>({})
 export const ListConsumer = ListContext.Consumer
 
 function List<T>({
-  pagination = false as ListProps<any>['pagination'],
   prefixCls: customizePrefixCls,
   bordered = false,
   split = true,
@@ -86,31 +83,9 @@ function List<T>({
   locale,
   ...rest
 }: ListProps<T>) {
-  const paginationObj = pagination && typeof pagination === 'object' ? pagination : {}
-
-  const [paginationCurrent, setPaginationCurrent] = React.useState(paginationObj.defaultCurrent || 1)
-  const [paginationSize, setPaginationSize] = React.useState(paginationObj.defaultPageSize || 10)
-
   const { getPrefixCls, renderEmpty, direction } = React.useContext(ConfigContext)
 
-  const defaultPaginationProps = {
-    current: 1,
-    total: 0
-  }
-
   const listItemsKeys: { [index: number]: React.Key } = {}
-
-  const triggerPaginationEvent = (eventName: string) => (page: number, pageSize: number) => {
-    setPaginationCurrent(page)
-    setPaginationSize(pageSize)
-    if (pagination && (pagination as any)[eventName]) {
-      ;(pagination as any)[eventName](page, pageSize)
-    }
-  }
-
-  const onPaginationChange = triggerPaginationEvent('onChange')
-
-  const onPaginationShowSizeChange = triggerPaginationEvent('onShowSizeChange')
 
   const renderInnerItem = (item: T, index: number) => {
     if (!renderItem) return null
@@ -134,7 +109,7 @@ function List<T>({
     return renderItem(item, index)
   }
 
-  const isSomethingAfterLastItem = () => !!(loadMore || pagination || footer)
+  const isSomethingAfterLastItem = () => !!(loadMore || footer)
 
   const renderEmptyFunc = (prefixCls: string, renderEmptyHandler: RenderEmptyHandler) => (
     <div className={`${prefixCls}-empty-text`}>{locale?.emptyText || renderEmptyHandler('List')}</div>
@@ -178,30 +153,7 @@ function List<T>({
     className
   )
 
-  const paginationProps = {
-    ...defaultPaginationProps,
-    total: dataSource.length,
-    current: paginationCurrent,
-    pageSize: paginationSize,
-    ...(pagination || {})
-  }
-
-  const largestPage = Math.ceil(paginationProps.total / paginationProps.pageSize)
-  if (paginationProps.current > largestPage) {
-    paginationProps.current = largestPage
-  }
-  const paginationContent = pagination ? (
-    <div className={`${prefixCls}-pagination`}>
-      <Pagination {...paginationProps} onChange={onPaginationChange} onShowSizeChange={onPaginationShowSizeChange} />
-    </div>
-  ) : null
-
-  let splitDataSource = [...dataSource]
-  if (pagination) {
-    if (dataSource.length > (paginationProps.current - 1) * paginationProps.pageSize) {
-      splitDataSource = [...dataSource].splice((paginationProps.current - 1) * paginationProps.pageSize, paginationProps.pageSize)
-    }
-  }
+  const splitDataSource = [...dataSource]
 
   const screens = useBreakpoint()
   const currentBreakpoint = React.useMemo(() => {
@@ -241,20 +193,17 @@ function List<T>({
     childrenContent = renderEmptyFunc(prefixCls, renderEmpty)
   }
 
-  const paginationPosition = paginationProps.position || 'bottom'
-
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <ListContext.Provider value={{ grid, itemLayout }}>
       <div className={classString} {...rest}>
-        {(paginationPosition === 'top' || paginationPosition === 'both') && paginationContent}
         {header && <div className={`${prefixCls}-header`}>{header}</div>}
         <Spin {...loadingProp}>
           {childrenContent}
           {children}
         </Spin>
         {footer && <div className={`${prefixCls}-footer`}>{footer}</div>}
-        {loadMore || ((paginationPosition === 'bottom' || paginationPosition === 'both') && paginationContent)}
+        {loadMore}
       </div>
     </ListContext.Provider>
   )

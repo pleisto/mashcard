@@ -32,7 +32,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  unless ENV['VITE_PROXY'].present?
+  if ViteRuby.instance.dev_server_running?
     vite_config = ViteRuby.instance.config
     config.action_controller.asset_host = "http://#{vite_config.host}:#{vite_config.port}"
   end
