@@ -6,11 +6,12 @@ const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 const unknownId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
 const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
-const functionClauses: FunctionClause[] = [
+const functionClauses: Array<FunctionClause<any>> = [
   {
     name: 'PLUS',
     async: false,
     pure: true,
+    key: 'custom::PLUS',
     effect: false,
     args: [
       {
@@ -27,20 +28,21 @@ const functionClauses: FunctionClause[] = [
     returns: 'number',
     examples: [],
     chain: false,
-    reference: (ctx: ContextInterface, a: number, b: number): number => a + b
+    reference: (ctx: ContextInterface, a: number, b: number) => ({ type: 'number', result: a + b })
   },
   {
     name: 'FORTY_TWO',
     async: false,
     pure: true,
     effect: false,
+    key: 'custom::FORTY_TWO',
     args: [],
     description: '',
     group: 'custom',
     returns: 'number',
     examples: [],
     chain: false,
-    reference: (ctx: ContextInterface): number => 42
+    reference: (ctx: ContextInterface) => ({ type: 'number', result: 42 })
   }
 ]
 
@@ -51,7 +53,7 @@ const meta = { namespaceId, variableId, name: 'foo', input: '=24' }
 const testCases = [
   '= (1 + 1) / 2 * 0.1 == (!!true and false or true) == "123"',
   '= custom::PLUS((custom::FORTY_TWO()), 1 + 1)',
-  '="FOO".core::T().core::T() & "Zzz"',
+  '="FOO".T().T() & "Zzz"',
   `=$${namespaceId}@${fooVariableId} + 1`,
   `=$${unknownId}@${fooVariableId} + 2`,
   `=$${namespaceId}@${unknownId} + 3`

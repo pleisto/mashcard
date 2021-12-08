@@ -127,7 +127,7 @@ export const DocumentContentPage: React.FC = () => {
   const backendActions = useFormulaBackendActions()
 
   React.useEffect(() => {
-    const functionClauses: FunctionClause[] = []
+    const functionClauses: Array<FunctionClause<any>> = []
     const formulaContext = new FormulaContext({ functionClauses, backendActions })
     void getFormulas(webid).then(({ data, success }) => {
       if (!success) return

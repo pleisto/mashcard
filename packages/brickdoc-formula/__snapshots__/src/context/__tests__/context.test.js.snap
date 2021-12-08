@@ -432,7 +432,7 @@ Object {
 
 exports[`Context commitVariable normal 2`] = `
 Object {
-  "excel::ABS": Array [
+  "ABS": Array [
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
@@ -494,7 +494,8 @@ Object {
             "output": 1,
           },
         ],
-        "group": "excel",
+        "group": "core",
+        "key": "ABS",
         "name": "ABS",
         "pure": true,
         "reference": [Function],
@@ -519,7 +520,7 @@ Array [
 
 exports[`Context removeVariable 2`] = `
 Object {
-  "excel::ABS": Array [],
+  "ABS": Array [],
 }
 `;
 
@@ -538,7 +539,7 @@ Array [
 
 exports[`Context reset 2`] = `
 Object {
-  "excel::ABS": Array [
+  "ABS": Array [
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",

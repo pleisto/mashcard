@@ -1,23 +1,23 @@
-import { Cell, Column, ContextInterface, Database, FunctionClause } from '../..'
+import { Cell, Column, ContextInterface, Database, BaseFunctionClause, NumberResult } from '..'
 
-export const SUM = (ctx: ContextInterface, column: Column): number => {
+export const SUM = (ctx: ContextInterface, column: Column): NumberResult => {
   const rows: number[] = ctx.listCellByColumn(column).map((cell: Cell) => Number(cell.value) || 0)
 
-  return rows.reduce((a, b) => a + b, 0)
+  return { type: 'number', result: rows.reduce((a, b) => a + b, 0) }
 }
 
-export const SIZE = (ctx: ContextInterface, database: Database): number => {
-  return database.size()
+export const SIZE = (ctx: ContextInterface, database: Database): NumberResult => {
+  return { type: 'number', result: database.size() }
 }
 
-export const DATABASE_BASIC_CLAUSES: FunctionClause[] = [
+export const CORE_DATABASE_CLAUSES: Array<BaseFunctionClause<'number'>> = [
   {
     name: 'SUM',
     async: false,
     pure: false,
     effect: false,
     description: 'Returns the sum of the column in the database.',
-    group: 'database',
+    group: 'core',
     args: [
       {
         name: 'column',
@@ -35,7 +35,7 @@ export const DATABASE_BASIC_CLAUSES: FunctionClause[] = [
     pure: false,
     effect: false,
     description: 'Returns the size of the database.',
-    group: 'database',
+    group: 'core',
     args: [
       {
         name: 'database',

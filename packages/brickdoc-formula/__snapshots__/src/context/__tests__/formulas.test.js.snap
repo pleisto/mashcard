@@ -213,7 +213,7 @@ Array [
         "code": "Function",
         "errors": Array [],
         "meta": Object {},
-        "name": "excel::RAND",
+        "name": "RAND",
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -406,57 +406,15 @@ Array [
                                                                     "FunctionCall": Array [
                                                                       Object {
                                                                         "children": Object {
-                                                                          "Colon": Array [
+                                                                          "FunctionName": Array [
                                                                             Object {
-                                                                              "endColumn": 15,
+                                                                              "endColumn": 12,
                                                                               "endLine": 1,
-                                                                              "endOffset": 14,
-                                                                              "image": "::",
-                                                                              "startColumn": 14,
-                                                                              "startLine": 1,
-                                                                              "startOffset": 13,
-                                                                              "tokenType": Object {
-                                                                                "CATEGORIES": Array [],
-                                                                                "PATTERN": /::/,
-                                                                                "categoryMatches": Array [],
-                                                                                "categoryMatchesMap": Object {},
-                                                                                "isParent": false,
-                                                                                "name": "Colon",
-                                                                                "tokenTypeIdx": 37,
-                                                                              },
-                                                                              "tokenTypeIdx": 37,
-                                                                            },
-                                                                          ],
-                                                                          "FunctionGroupName": Array [
-                                                                            Object {
-                                                                              "endColumn": 13,
-                                                                              "endLine": 1,
-                                                                              "endOffset": 12,
-                                                                              "image": "excel",
+                                                                              "endOffset": 11,
+                                                                              "image": "RAND",
                                                                               "startColumn": 9,
                                                                               "startLine": 1,
                                                                               "startOffset": 8,
-                                                                              "tokenType": Object {
-                                                                                "CATEGORIES": Array [],
-                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
-                                                                                "categoryMatches": Array [],
-                                                                                "categoryMatchesMap": Object {},
-                                                                                "isParent": false,
-                                                                                "name": "FunctionGroupName",
-                                                                                "tokenTypeIdx": 38,
-                                                                              },
-                                                                              "tokenTypeIdx": 38,
-                                                                            },
-                                                                          ],
-                                                                          "FunctionName": Array [
-                                                                            Object {
-                                                                              "endColumn": 19,
-                                                                              "endLine": 1,
-                                                                              "endOffset": 18,
-                                                                              "image": "RAND",
-                                                                              "startColumn": 16,
-                                                                              "startLine": 1,
-                                                                              "startOffset": 15,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
@@ -471,13 +429,13 @@ Array [
                                                                           ],
                                                                           "LParen": Array [
                                                                             Object {
-                                                                              "endColumn": 20,
+                                                                              "endColumn": 13,
                                                                               "endLine": 1,
-                                                                              "endOffset": 19,
+                                                                              "endOffset": 12,
                                                                               "image": "(",
-                                                                              "startColumn": 20,
+                                                                              "startColumn": 13,
                                                                               "startLine": 1,
-                                                                              "startOffset": 19,
+                                                                              "startOffset": 12,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\(/,
@@ -492,13 +450,13 @@ Array [
                                                                           ],
                                                                           "RParen": Array [
                                                                             Object {
-                                                                              "endColumn": 21,
+                                                                              "endColumn": 14,
                                                                               "endLine": 1,
-                                                                              "endOffset": 20,
+                                                                              "endOffset": 13,
                                                                               "image": ")",
-                                                                              "startColumn": 21,
+                                                                              "startColumn": 14,
                                                                               "startLine": 1,
-                                                                              "startOffset": 20,
+                                                                              "startOffset": 13,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\)/,
@@ -558,7 +516,7 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "= 123 + excel::RAND()",
+    "definition": "= 123 + RAND()",
     "dirty": false,
     "flattenVariableDependencies": Set {},
     "functionDependencies": Array [
@@ -569,7 +527,8 @@ Array [
         "description": "Returns a random number between 0 and 1.",
         "effect": false,
         "examples": Array [],
-        "group": "excel",
+        "group": "core",
+        "key": "RAND",
         "name": "RAND",
         "pure": false,
         "reference": [Function],
@@ -597,7 +556,7 @@ Array [
         "code": "Function",
         "errors": Array [],
         "meta": Object {},
-        "name": "excel::ABS",
+        "name": "ABS",
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -716,13 +675,13 @@ Array [
                                                 "children": Object {
                                                   "AdditionOperator": Array [
                                                     Object {
-                                                      "endColumn": 18,
+                                                      "endColumn": 11,
                                                       "endLine": 1,
-                                                      "endOffset": 17,
+                                                      "endOffset": 10,
                                                       "image": "+",
-                                                      "startColumn": 18,
+                                                      "startColumn": 11,
                                                       "startLine": 1,
-                                                      "startOffset": 17,
+                                                      "startOffset": 10,
                                                       "tokenType": Object {
                                                         "CATEGORIES": Array [
                                                           Object {
@@ -804,13 +763,13 @@ Array [
                                                                                                                                                       "children": Object {
                                                                                                                                                         "NumberLiteral": Array [
                                                                                                                                                           Object {
-                                                                                                                                                            "endColumn": 15,
+                                                                                                                                                            "endColumn": 8,
                                                                                                                                                             "endLine": 1,
-                                                                                                                                                            "endOffset": 14,
+                                                                                                                                                            "endOffset": 7,
                                                                                                                                                             "image": "123",
-                                                                                                                                                            "startColumn": 13,
+                                                                                                                                                            "startColumn": 6,
                                                                                                                                                             "startLine": 1,
-                                                                                                                                                            "startOffset": 12,
+                                                                                                                                                            "startOffset": 5,
                                                                                                                                                             "tokenType": Object {
                                                                                                                                                               "CATEGORIES": Array [],
                                                                                                                                                               "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
@@ -875,57 +834,15 @@ Array [
                                                                               "name": "Arguments",
                                                                             },
                                                                           ],
-                                                                          "Colon": Array [
+                                                                          "FunctionName": Array [
                                                                             Object {
-                                                                              "endColumn": 8,
+                                                                              "endColumn": 4,
                                                                               "endLine": 1,
-                                                                              "endOffset": 7,
-                                                                              "image": "::",
-                                                                              "startColumn": 7,
-                                                                              "startLine": 1,
-                                                                              "startOffset": 6,
-                                                                              "tokenType": Object {
-                                                                                "CATEGORIES": Array [],
-                                                                                "PATTERN": /::/,
-                                                                                "categoryMatches": Array [],
-                                                                                "categoryMatchesMap": Object {},
-                                                                                "isParent": false,
-                                                                                "name": "Colon",
-                                                                                "tokenTypeIdx": 37,
-                                                                              },
-                                                                              "tokenTypeIdx": 37,
-                                                                            },
-                                                                          ],
-                                                                          "FunctionGroupName": Array [
-                                                                            Object {
-                                                                              "endColumn": 6,
-                                                                              "endLine": 1,
-                                                                              "endOffset": 5,
-                                                                              "image": "excel",
+                                                                              "endOffset": 3,
+                                                                              "image": "ABS",
                                                                               "startColumn": 2,
                                                                               "startLine": 1,
                                                                               "startOffset": 1,
-                                                                              "tokenType": Object {
-                                                                                "CATEGORIES": Array [],
-                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
-                                                                                "categoryMatches": Array [],
-                                                                                "categoryMatchesMap": Object {},
-                                                                                "isParent": false,
-                                                                                "name": "FunctionGroupName",
-                                                                                "tokenTypeIdx": 38,
-                                                                              },
-                                                                              "tokenTypeIdx": 38,
-                                                                            },
-                                                                          ],
-                                                                          "FunctionName": Array [
-                                                                            Object {
-                                                                              "endColumn": 11,
-                                                                              "endLine": 1,
-                                                                              "endOffset": 10,
-                                                                              "image": "ABS",
-                                                                              "startColumn": 9,
-                                                                              "startLine": 1,
-                                                                              "startOffset": 8,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
@@ -940,13 +857,13 @@ Array [
                                                                           ],
                                                                           "LParen": Array [
                                                                             Object {
-                                                                              "endColumn": 12,
+                                                                              "endColumn": 5,
                                                                               "endLine": 1,
-                                                                              "endOffset": 11,
+                                                                              "endOffset": 4,
                                                                               "image": "(",
-                                                                              "startColumn": 12,
+                                                                              "startColumn": 5,
                                                                               "startLine": 1,
-                                                                              "startOffset": 11,
+                                                                              "startOffset": 4,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\(/,
@@ -961,13 +878,13 @@ Array [
                                                                           ],
                                                                           "RParen": Array [
                                                                             Object {
-                                                                              "endColumn": 16,
+                                                                              "endColumn": 9,
                                                                               "endLine": 1,
-                                                                              "endOffset": 15,
+                                                                              "endOffset": 8,
                                                                               "image": ")",
-                                                                              "startColumn": 16,
+                                                                              "startColumn": 9,
                                                                               "startLine": 1,
-                                                                              "startOffset": 15,
+                                                                              "startOffset": 8,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\)/,
@@ -1010,13 +927,13 @@ Array [
                                                                         "children": Object {
                                                                           "At": Array [
                                                                             Object {
-                                                                              "endColumn": 57,
+                                                                              "endColumn": 50,
                                                                               "endLine": 1,
-                                                                              "endOffset": 56,
+                                                                              "endOffset": 49,
                                                                               "image": "@",
-                                                                              "startColumn": 57,
+                                                                              "startColumn": 50,
                                                                               "startLine": 1,
-                                                                              "startOffset": 56,
+                                                                              "startOffset": 49,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /@/,
@@ -1031,13 +948,13 @@ Array [
                                                                           ],
                                                                           "Dollar": Array [
                                                                             Object {
-                                                                              "endColumn": 20,
+                                                                              "endColumn": 13,
                                                                               "endLine": 1,
-                                                                              "endOffset": 19,
+                                                                              "endOffset": 12,
                                                                               "image": "$",
-                                                                              "startColumn": 20,
+                                                                              "startColumn": 13,
                                                                               "startLine": 1,
-                                                                              "startOffset": 19,
+                                                                              "startOffset": 12,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\$/,
@@ -1052,13 +969,13 @@ Array [
                                                                           ],
                                                                           "UUID": Array [
                                                                             Object {
-                                                                              "endColumn": 56,
+                                                                              "endColumn": 49,
                                                                               "endLine": 1,
-                                                                              "endOffset": 55,
+                                                                              "endOffset": 48,
                                                                               "image": "d986e871-cb85-4bd5-b675-87307f60b882",
-                                                                              "startColumn": 21,
+                                                                              "startColumn": 14,
                                                                               "startLine": 1,
-                                                                              "startOffset": 20,
+                                                                              "startOffset": 13,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
@@ -1071,13 +988,13 @@ Array [
                                                                               "tokenTypeIdx": 27,
                                                                             },
                                                                             Object {
-                                                                              "endColumn": 93,
+                                                                              "endColumn": 86,
                                                                               "endLine": 1,
-                                                                              "endOffset": 92,
+                                                                              "endOffset": 85,
                                                                               "image": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-                                                                              "startColumn": 58,
+                                                                              "startColumn": 51,
                                                                               "startLine": 1,
-                                                                              "startOffset": 57,
+                                                                              "startOffset": 50,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
@@ -1137,7 +1054,7 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "=excel::ABS(123) + $d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+    "definition": "=ABS(123) + $d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
     "dirty": false,
     "flattenVariableDependencies": Set {
       Object {
@@ -1165,7 +1082,8 @@ Array [
             "output": 1,
           },
         ],
-        "group": "excel",
+        "group": "core",
+        "key": "ABS",
         "name": "ABS",
         "pure": true,
         "reference": [Function],
@@ -1197,13 +1115,13 @@ Array [
 
 exports[`appendFormulas expression 2`] = `
 Object {
-  "excel::ABS": Array [
+  "ABS": Array [
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
     },
   ],
-  "excel::RAND": Array [
+  "RAND": Array [
     Object {
       "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
       "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
@@ -1232,7 +1150,7 @@ Array [
     "dirty": false,
     "flattenVariableDependencies": Set {},
     "functionDependencies": Array [],
-    "kind": undefined,
+    "kind": "constant",
     "level": 0,
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
@@ -1251,6 +1169,7 @@ Array [
   7. [Dollar, UUID, Sharp]
   8. [Dollar, UUID]
   9. [FunctionGroupName]
+  10. [FunctionName]
 but found: ''",
           "type": "syntax",
         },
@@ -1272,7 +1191,7 @@ Array [
         "code": "Function",
         "errors": Array [],
         "meta": Object {},
-        "name": "excel::ABS",
+        "name": "ABS",
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -1403,13 +1322,13 @@ Array [
                                                 "children": Object {
                                                   "AdditionOperator": Array [
                                                     Object {
-                                                      "endColumn": 18,
+                                                      "endColumn": 11,
                                                       "endLine": 1,
-                                                      "endOffset": 17,
+                                                      "endOffset": 10,
                                                       "image": "+",
-                                                      "startColumn": 18,
+                                                      "startColumn": 11,
                                                       "startLine": 1,
-                                                      "startOffset": 17,
+                                                      "startOffset": 10,
                                                       "tokenType": Object {
                                                         "CATEGORIES": Array [
                                                           Object {
@@ -1491,13 +1410,13 @@ Array [
                                                                                                                                                       "children": Object {
                                                                                                                                                         "NumberLiteral": Array [
                                                                                                                                                           Object {
-                                                                                                                                                            "endColumn": 15,
+                                                                                                                                                            "endColumn": 8,
                                                                                                                                                             "endLine": 1,
-                                                                                                                                                            "endOffset": 14,
+                                                                                                                                                            "endOffset": 7,
                                                                                                                                                             "image": "123",
-                                                                                                                                                            "startColumn": 13,
+                                                                                                                                                            "startColumn": 6,
                                                                                                                                                             "startLine": 1,
-                                                                                                                                                            "startOffset": 12,
+                                                                                                                                                            "startOffset": 5,
                                                                                                                                                             "tokenType": Object {
                                                                                                                                                               "CATEGORIES": Array [],
                                                                                                                                                               "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
@@ -1562,57 +1481,15 @@ Array [
                                                                               "name": "Arguments",
                                                                             },
                                                                           ],
-                                                                          "Colon": Array [
+                                                                          "FunctionName": Array [
                                                                             Object {
-                                                                              "endColumn": 8,
+                                                                              "endColumn": 4,
                                                                               "endLine": 1,
-                                                                              "endOffset": 7,
-                                                                              "image": "::",
-                                                                              "startColumn": 7,
-                                                                              "startLine": 1,
-                                                                              "startOffset": 6,
-                                                                              "tokenType": Object {
-                                                                                "CATEGORIES": Array [],
-                                                                                "PATTERN": /::/,
-                                                                                "categoryMatches": Array [],
-                                                                                "categoryMatchesMap": Object {},
-                                                                                "isParent": false,
-                                                                                "name": "Colon",
-                                                                                "tokenTypeIdx": 37,
-                                                                              },
-                                                                              "tokenTypeIdx": 37,
-                                                                            },
-                                                                          ],
-                                                                          "FunctionGroupName": Array [
-                                                                            Object {
-                                                                              "endColumn": 6,
-                                                                              "endLine": 1,
-                                                                              "endOffset": 5,
-                                                                              "image": "excel",
+                                                                              "endOffset": 3,
+                                                                              "image": "ABS",
                                                                               "startColumn": 2,
                                                                               "startLine": 1,
                                                                               "startOffset": 1,
-                                                                              "tokenType": Object {
-                                                                                "CATEGORIES": Array [],
-                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
-                                                                                "categoryMatches": Array [],
-                                                                                "categoryMatchesMap": Object {},
-                                                                                "isParent": false,
-                                                                                "name": "FunctionGroupName",
-                                                                                "tokenTypeIdx": 38,
-                                                                              },
-                                                                              "tokenTypeIdx": 38,
-                                                                            },
-                                                                          ],
-                                                                          "FunctionName": Array [
-                                                                            Object {
-                                                                              "endColumn": 11,
-                                                                              "endLine": 1,
-                                                                              "endOffset": 10,
-                                                                              "image": "ABS",
-                                                                              "startColumn": 9,
-                                                                              "startLine": 1,
-                                                                              "startOffset": 8,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
@@ -1627,13 +1504,13 @@ Array [
                                                                           ],
                                                                           "LParen": Array [
                                                                             Object {
-                                                                              "endColumn": 12,
+                                                                              "endColumn": 5,
                                                                               "endLine": 1,
-                                                                              "endOffset": 11,
+                                                                              "endOffset": 4,
                                                                               "image": "(",
-                                                                              "startColumn": 12,
+                                                                              "startColumn": 5,
                                                                               "startLine": 1,
-                                                                              "startOffset": 11,
+                                                                              "startOffset": 4,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\(/,
@@ -1648,13 +1525,13 @@ Array [
                                                                           ],
                                                                           "RParen": Array [
                                                                             Object {
-                                                                              "endColumn": 16,
+                                                                              "endColumn": 9,
                                                                               "endLine": 1,
-                                                                              "endOffset": 15,
+                                                                              "endOffset": 8,
                                                                               "image": ")",
-                                                                              "startColumn": 16,
+                                                                              "startColumn": 9,
                                                                               "startLine": 1,
-                                                                              "startOffset": 15,
+                                                                              "startOffset": 8,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\)/,
@@ -1697,13 +1574,13 @@ Array [
                                                                         "children": Object {
                                                                           "At": Array [
                                                                             Object {
-                                                                              "endColumn": 57,
+                                                                              "endColumn": 50,
                                                                               "endLine": 1,
-                                                                              "endOffset": 56,
+                                                                              "endOffset": 49,
                                                                               "image": "@",
-                                                                              "startColumn": 57,
+                                                                              "startColumn": 50,
                                                                               "startLine": 1,
-                                                                              "startOffset": 56,
+                                                                              "startOffset": 49,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /@/,
@@ -1718,13 +1595,13 @@ Array [
                                                                           ],
                                                                           "Dollar": Array [
                                                                             Object {
-                                                                              "endColumn": 20,
+                                                                              "endColumn": 13,
                                                                               "endLine": 1,
-                                                                              "endOffset": 19,
+                                                                              "endOffset": 12,
                                                                               "image": "$",
-                                                                              "startColumn": 20,
+                                                                              "startColumn": 13,
                                                                               "startLine": 1,
-                                                                              "startOffset": 19,
+                                                                              "startOffset": 12,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\\\\\$/,
@@ -1739,13 +1616,13 @@ Array [
                                                                           ],
                                                                           "UUID": Array [
                                                                             Object {
-                                                                              "endColumn": 56,
+                                                                              "endColumn": 49,
                                                                               "endLine": 1,
-                                                                              "endOffset": 55,
+                                                                              "endOffset": 48,
                                                                               "image": "d986e871-cb85-4bd5-b675-87307f60b882",
-                                                                              "startColumn": 21,
+                                                                              "startColumn": 14,
                                                                               "startLine": 1,
-                                                                              "startOffset": 20,
+                                                                              "startOffset": 13,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
@@ -1758,13 +1635,13 @@ Array [
                                                                               "tokenTypeIdx": 27,
                                                                             },
                                                                             Object {
-                                                                              "endColumn": 93,
+                                                                              "endColumn": 86,
                                                                               "endLine": 1,
-                                                                              "endOffset": 92,
+                                                                              "endOffset": 85,
                                                                               "image": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-                                                                              "startColumn": 58,
+                                                                              "startColumn": 51,
                                                                               "startLine": 1,
-                                                                              "startOffset": 57,
+                                                                              "startOffset": 50,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
                                                                                 "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
@@ -1824,11 +1701,11 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "=excel::ABS(123) + $d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+    "definition": "=ABS(123) + $d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
     "dirty": false,
     "flattenVariableDependencies": Set {},
     "functionDependencies": Array [],
-    "kind": undefined,
+    "kind": "constant",
     "level": 0,
     "name": "bar",
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",

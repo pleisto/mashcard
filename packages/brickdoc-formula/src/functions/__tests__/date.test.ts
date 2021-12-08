@@ -1,10 +1,10 @@
-import { FormulaContext } from '../../../context'
+import { FormulaContext } from '../../context'
 import { TODAY } from '../date'
 
 const ctx = new FormulaContext()
 
 describe('date', () => {
   it('DATE', () => {
-    expect(typeof TODAY(ctx)).toBe('object')
+    expect(typeof TODAY(ctx).result).toBe('object')
   })
 })

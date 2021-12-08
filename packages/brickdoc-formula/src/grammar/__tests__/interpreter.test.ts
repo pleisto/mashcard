@@ -1,12 +1,13 @@
 import { parse, interpret, quickInsert, FunctionClause, BUILTIN_CLAUSES, ContextInterface } from '../..'
 import { FormulaContext } from '../../context'
 
-const functionClauses: FunctionClause[] = [
+const functionClauses: Array<FunctionClause<any>> = [
   {
     name: 'PLUS',
     async: false,
     pure: true,
     effect: false,
+    key: 'custom::PLUS',
     args: [
       {
         type: 'number',
@@ -22,20 +23,21 @@ const functionClauses: FunctionClause[] = [
     returns: 'number',
     examples: [],
     chain: false,
-    reference: (ctx: ContextInterface, a: number, b: number): number => a + b
+    reference: (ctx: ContextInterface, a: number, b: number) => ({ type: 'number', result: a + b })
   },
   {
     name: 'FORTY_TWO',
     async: false,
     pure: true,
     effect: false,
+    key: 'custom::FORTY_TWO',
     args: [],
     description: '',
     group: 'custom',
     returns: 'number',
     examples: [],
     chain: false,
-    reference: (ctx: ContextInterface): number => 42
+    reference: (ctx: ContextInterface) => ({ type: 'number', result: 42 })
   }
 ]
 
@@ -74,7 +76,7 @@ describe('Custom Function', () => {
   })
 
   it('Today track', () => {
-    const input = '=excel::TODAY()'
+    const input = '=TODAY()'
     const newMeta = { ...meta, input }
     const { success, cst, variableDependencies, functionDependencies } = parse({
       ...parseInput,
@@ -93,7 +95,7 @@ describe('Custom Function', () => {
 
     const { success, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext: localFormulaContext })
     expect(success).toEqual(false)
-    expect(errorMessages[0].message).toEqual('Argument count mismatch')
+    expect(errorMessages[0]!.message).toEqual('Argument count mismatch')
   })
 
   it('42', async () => {
@@ -130,7 +132,7 @@ describe('Context', () => {
     const meta = { namespaceId: anotherBlockId, variableId: anotherVariableId, name: 'bar' }
     await quickInsert({ formulaContext, meta: { ...meta, input: barInput } })
 
-    const bar = formulaContext.findVariable(anotherBlockId, anotherVariableId)
+    const bar = formulaContext.findVariable(anotherBlockId, anotherVariableId)!
 
     expect(bar.t.functionDependencies).toEqual([])
     expect(bar.t.variableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
@@ -172,6 +174,7 @@ describe('Context', () => {
   7. [Dollar, UUID, Sharp]
   8. [Dollar, UUID]
   9. [FunctionGroupName]
+  10. [FunctionName]
 but found: '&'`,
         type: 'syntax'
       }

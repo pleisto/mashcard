@@ -1,4 +1,4 @@
-import { createToken, ILexerErrorMessageProvider, IToken, Lexer } from 'chevrotain'
+import { createToken, ILexerErrorMessageProvider, IToken, Lexer, TokenType } from 'chevrotain'
 
 export const EqualCompareOperator = createToken({ name: 'EqualCompareOperator', pattern: Lexer.NA })
 export const CompareOperator = createToken({ name: 'CompareOperator', pattern: Lexer.NA })
@@ -245,7 +245,7 @@ export const FormulaLexer = new Lexer(allTokens, {
   ensureOptimizations: true
 })
 
-export const tokenVocabulary = allTokens.reduce((o, acc) => {
+export const tokenVocabulary = allTokens.reduce((o: { [key: string]: TokenType }, acc) => {
   o[acc.name] = acc
   return o
 }, {})

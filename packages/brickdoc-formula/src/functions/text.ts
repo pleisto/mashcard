@@ -1,19 +1,19 @@
-import { ContextInterface, FunctionClause } from '../..'
+import { ContextInterface, BaseFunctionClause, NumberResult, StringResult } from '..'
 
-export const LEN = (ctx: ContextInterface, str: string): number => str.length
+export const LEN = (ctx: ContextInterface, str: string): NumberResult => ({ result: str.length, type: 'number' })
 
-export const T = (ctx: ContextInterface, input: any): string => (typeof input === 'string' ? input : '')
+export const T = (ctx: ContextInterface, input: any): StringResult => ({ result: typeof input === 'string' ? input : '', type: 'string' })
 
-export const TRIM = (ctx: ContextInterface, str: string): string => str.trim()
+export const TRIM = (ctx: ContextInterface, str: string): StringResult => ({ result: str.trim(), type: 'string' })
 
-export const EXCEL_TEXT_CLAUSES: FunctionClause[] = [
+export const CORE_TEXT_CLAUSES: Array<BaseFunctionClause<any>> = [
   {
     name: 'LEN',
     async: false,
     pure: true,
     effect: false,
     description: 'Returns the length of the string.',
-    group: 'excel',
+    group: 'core',
     args: [
       {
         name: 'str',
@@ -36,7 +36,7 @@ export const EXCEL_TEXT_CLAUSES: FunctionClause[] = [
     pure: true,
     effect: false,
     description: 'Returns the input as a string.',
-    group: 'excel',
+    group: 'core',
     args: [
       {
         name: 'input',
@@ -63,7 +63,7 @@ export const EXCEL_TEXT_CLAUSES: FunctionClause[] = [
     pure: true,
     effect: false,
     description: 'Returns the string with leading and trailing whitespace removed.',
-    group: 'excel',
+    group: 'core',
     args: [
       {
         name: 'str',

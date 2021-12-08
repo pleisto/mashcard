@@ -12,10 +12,10 @@ import {
 
 export class VariableClass implements VariableInterface {
   t: VariableData
-  updateHandler: VariableUpdateHandler
-  backendActions: BackendActions
+  updateHandler: VariableUpdateHandler | undefined
+  backendActions: BackendActions | undefined
 
-  constructor({ t, backendActions }: { t: VariableData; backendActions: BackendActions }) {
+  constructor({ t, backendActions }: { t: VariableData; backendActions?: BackendActions }) {
     this.t = t
     this.backendActions = backendActions
   }

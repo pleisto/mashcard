@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, interpret } from '..'
-import { FormulaContext } from '../..'
+import { FormulaContext, FunctionClause } from '../..'
 
 const testCases = [
   {
@@ -238,7 +238,7 @@ const testCases = [
     errorMessage: 'Expected boolean but got number'
   },
   {
-    input: '=true and !2 && excel::TRUE()',
+    input: '=true and !2 && TRUE()',
     value: false
   },
   // Error
@@ -266,117 +266,122 @@ const testCases = [
   7. [Dollar, UUID, Sharp]
   8. [Dollar, UUID]
   9. [FunctionGroupName]
+  10. [FunctionName]
 but found: '*'`
   },
   // Function Call
   {
-    input: '=excel::ABS ( -1  )',
+    input: '=ABS ( -1  )',
     value: 1
   },
   {
-    input: '=excel::ABS ()',
+    input: '=core::ABS ( -1  )',
+    value: 1
+  },
+  {
+    input: '=ABS ()',
     parseSuccess: false,
     errorMessage: 'Miss argument'
   },
   {
-    input: '=excel::ABS(1,2)',
+    input: '=ABS(1,2)',
     parseSuccess: false,
     errorMessage: 'Argument count mismatch'
   },
   {
-    input: '=excel::AVERAGE()',
+    input: '=AVERAGE()',
     parseSuccess: false,
     errorMessage: 'Miss argument',
     label: 'Spread operator with no argument'
   },
   {
-    input: '=excel::AVERAGE(1)',
+    input: '=AVERAGE(1)',
     value: 1,
     label: 'spread operator'
   },
   {
-    input: '=excel::AVERAGE(1, 2, 3)',
+    input: '=AVERAGE(1, 2, 3)',
     value: 2,
     label: 'spread operator'
   },
   {
-    input: '=excel::IF(true, 1+2, "2")',
+    input: '=IF(true, 1+2, "2")',
     value: 3
   },
   {
-    input: '=excel::AND(true, false, false)',
+    input: '=AND(true, false, false)',
     value: false
   },
   {
-    input: '=excel::OR(true)',
+    input: '=OR(true)',
     value: true
   },
   {
-    input: '=excel::ABS(excel::IF(excel::FALSE(), -3, -4))',
+    input: '=ABS(IF(FALSE(), -3, -4))',
     value: 4
   },
   {
-    input: '=excel::UNKNOWN ()',
+    input: '=UNKNOWN ()',
     parseSuccess: false,
-    errorMessage: 'Function excel.UNKNOWN not found'
+    errorMessage: 'Function UNKNOWN not found'
   },
   // Chain
   {
-    input: '="FOO".core::T().core::T()',
+    input: '="FOO".T().T()',
     value: 'FOO'
   },
   {
-    input: '=(1+1).core::TYPE()',
+    input: '=(1+1).TYPE()',
     value: 'number'
   },
   {
-    input: '="foobar".core::START_WITH("foo")',
+    input: '="foobar".START_WITH("foo")',
     value: true
   },
   {
-    input: '="foobar".core::START_WITH("bar")',
+    input: '="foobar".START_WITH("bar")',
     value: false
   },
   {
-    input: '="foo".core::START_WITH(123)',
+    input: '="foo".START_WITH(123)',
     parseSuccess: false,
     errorMessage: 'Expected string but got number',
     label: 'chain type 1'
   },
   {
-    input: '=true.core::START_WITH("123")',
+    input: '=true.START_WITH("123")',
     parseSuccess: false,
     label: 'TODO chain type 2',
     errorMessage: 'Expected string but got boolean'
   },
   {
-    input: '="123".excel::LEN()',
+    input: '="123".LEN()',
     parseSuccess: false,
-    errorMessage: 'excel::LEN is not chainable'
+    errorMessage: 'LEN is not chainable'
   },
   // Type
   {
-    input: '=excel::ABS ( "a" )',
+    input: '=ABS ( "a" )',
     parseSuccess: false,
     errorMessage: 'Expected number but got string'
   },
   {
-    input: '=excel::IF(1, -3, -4)',
+    input: '=IF(1, -3, -4)',
     parseSuccess: false,
     errorMessage: 'Expected boolean but got number'
   },
   {
-    input: '=excel::ABS( excel::TODAY() )',
+    input: '=ABS( TODAY() )',
     parseSuccess: false,
     errorMessage: 'Expected number but got Date'
   },
   {
-    input: '=excel::AND(1, 2)',
+    input: '=AND(1, 2)',
     parseSuccess: false,
     errorMessage: 'Expected boolean but got number'
   },
   {
-    input: '=excel::ABS ( excel::TRUE() )',
+    input: '=ABS ( TRUE() )',
     parseSuccess: false,
     errorMessage: 'Expected number but got boolean'
   },
@@ -398,24 +403,24 @@ but found: '*'`
     value: 1
   },
   {
-    input: '=1.core::T()',
+    input: '=1.T()',
     label: 'should success',
     parseSuccess: false,
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
-    input: '=1.core::START_WITH("123")',
+    input: '=1.START_WITH("123")',
     parseSuccess: false,
     label: 'TODO chain type 3',
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
-    input: '=123.excel::ABS()',
+    input: '=123.ABS()',
     parseSuccess: false,
     errorMessage: 'TODO build not all input parsed :5'
   },
   {
-    input: '=excel::if(true, 1+2, "2")',
+    input: '=if(true, 1+2, "2")',
     parseSuccess: false,
     label: 'TODO downcase',
     errorMessage: 'TODO mismatch token FunctionCall'
@@ -425,7 +430,7 @@ but found: '*'`
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 
-const functionClauses = []
+const functionClauses: Array<FunctionClause<any>> = []
 const formulaContext = new FormulaContext({ functionClauses })
 
 const name = 'foo'
@@ -457,10 +462,10 @@ describe('Simple test case', () => {
         expect(result.value).toEqual(value)
         expect(interpretSuccess).toEqual(true)
       } else if (!lexSuccess) {
-        expect(errorMessages[0].message).toContain(errorMessage)
+        expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual('lex')
       } else if (!parseSuccess) {
-        expect(errorMessages[0].message).toContain(errorMessage)
+        expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual('parse')
       } else {
         expect(errorMessages).toEqual([])
@@ -469,7 +474,7 @@ describe('Simple test case', () => {
         expect(success).toEqual(true)
 
         expect(interpretSuccess).toEqual(false)
-        expect(interpretErrorMessages[0].message).toContain(errorMessage)
+        expect(interpretErrorMessages[0]!.message).toContain(errorMessage)
         expect(result).toEqual(null)
       }
     })

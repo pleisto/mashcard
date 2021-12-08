@@ -1,4 +1,4 @@
-import { parse, interpret, Database, Column } from '../..'
+import { parse, interpret, Database, Column, FunctionClause } from '../..'
 import { FormulaContext } from '../../context'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -13,7 +13,7 @@ const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 
 const meta = { namespaceId, variableId, name: 'example' }
 
-const tableData = [
+const tableData: Array<{ [key: string]: any }> = [
   { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', sort: 100 },
   { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', sort: 100 },
   { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', sort: 100 }
@@ -23,7 +23,7 @@ const columns: Column[] = [
   { namespaceId: databaseNamespaceId, columnId: secondColumnId, type: 'foo', name: 'second', index: 1 }
 ]
 
-const functionClauses = []
+const functionClauses: Array<FunctionClause<any>> = []
 
 const database: Database = {
   name: () => 'MyTable',
@@ -57,7 +57,7 @@ describe('Database Functions', () => {
   })
 
   it('size', async () => {
-    const newMeta = { ...meta, input: `=$${databaseNamespaceId}.database::SIZE()` }
+    const newMeta = { ...meta, input: `=$${databaseNamespaceId}.SIZE()` }
     const { errorMessages, cst } = parse({ ...parseInput, meta: newMeta, formulaContext })
     expect(errorMessages).toEqual([])
     expect(cst).toMatchSnapshot()
@@ -65,7 +65,7 @@ describe('Database Functions', () => {
   })
 
   it('sum', async () => {
-    const newMeta = { ...meta, input: `=$${databaseNamespaceId}#${firstColumnId}.database::SUM()` }
+    const newMeta = { ...meta, input: `=$${databaseNamespaceId}#${firstColumnId}.SUM()` }
     const { errorMessages, cst } = parse({ ...parseInput, meta: newMeta, formulaContext })
     expect(errorMessages).toEqual([])
     expect(cst).toMatchSnapshot()

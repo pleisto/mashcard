@@ -203,12 +203,14 @@ export class FormulaParser extends CstParser {
   })
 
   public FunctionCall = this.RULE('FunctionCall', () => {
-    this.CONSUME(FunctionGroupName)
-    this.CONSUME(DoubleColon)
+    this.OPTION(() => {
+      this.CONSUME(FunctionGroupName)
+      this.CONSUME(DoubleColon)
+    })
     this.CONSUME(FunctionName)
 
     this.CONSUME2(LParen)
-    this.OPTION(() => {
+    this.OPTION2(() => {
       this.SUBRULE2(this.Arguments)
     })
     this.CONSUME2(RParen)

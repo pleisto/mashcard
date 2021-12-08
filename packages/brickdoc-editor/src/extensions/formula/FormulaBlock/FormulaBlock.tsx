@@ -29,24 +29,18 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   const COLOR_ARRAY: { [key in VariableTypeMeta]: number } = {
     error_constant: 3,
     error_expression: 3,
-    success_constant_Date: 2,
-    success_constant_Column: 2,
-    success_constant_Block: 2,
-    success_constant_number: 0,
-    success_constant_string: 4,
-    success_constant_boolean: 5,
-    success_constant_any: 6,
-    success_constant_object: 6,
-    success_constant_array: 6,
-    success_expression_Date: 2,
-    success_expression_Block: 2,
-    success_expression_Column: 2,
-    success_expression_number: 8,
-    success_expression_string: 9,
-    success_expression_boolean: 7,
-    success_expression_any: 6,
-    success_expression_object: 6,
-    success_expression_array: 6
+    success_Date: 2,
+    success_Error: 2,
+    success_Column: 2,
+    success_Block: 2,
+    success_Spreadsheet: 2,
+    success_number: 0,
+    success_null: 0,
+    success_string: 4,
+    success_boolean: 5,
+    success_any: 6,
+    success_Object: 6,
+    success_Array: 6
   }
 
   const activeColorIndex = t ? COLOR_ARRAY[variableTypeMeta(t)] || 0 : 0

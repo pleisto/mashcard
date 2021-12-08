@@ -1,15 +1,12 @@
-import { ContextInterface, FunctionClause } from '../..'
+import { ContextInterface, BaseFunctionClause, AnyResult, StringResult, ObjectResult } from '..'
 
-export const T = (ctx: ContextInterface, obj: any): any => obj
+export const T = (ctx: ContextInterface, obj: any): AnyResult => ({ type: 'any', result: obj })
 
-export const TYPE = (ctx: ContextInterface, obj: any): string => typeof obj
+export const TYPE = (ctx: ContextInterface, obj: any): StringResult => ({ result: typeof obj, type: 'string' })
 
-export const WITH_TYPE = (ctx: ContextInterface, obj: any): { type: string; obj: any } => ({
-  type: typeof obj,
-  obj
-})
+export const WITH_TYPE = (ctx: ContextInterface, obj: any): ObjectResult => ({ result: { type: typeof obj, obj }, type: 'Object' })
 
-export const CORE_OBJECT_CLAUSES: FunctionClause[] = [
+export const CORE_OBJECT_CLAUSES: Array<BaseFunctionClause<any>> = [
   {
     name: 'T',
     async: false,
@@ -65,7 +62,7 @@ export const CORE_OBJECT_CLAUSES: FunctionClause[] = [
         type: 'any'
       }
     ],
-    returns: 'object',
+    returns: 'Object',
     examples: [
       { input: [1], output: { type: 'number', obj: 1 } },
       { input: ['foo'], output: { type: 'string', obj: 'foo' } }

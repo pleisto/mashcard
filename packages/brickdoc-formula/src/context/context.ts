@@ -19,21 +19,24 @@ import {
   VariableName,
   DefaultVariableName
 } from '..'
-import { BUILTIN_CLAUSES, function2completion } from '../functions'
+import { BUILTIN_CLAUSES, function2completion, buildFunctionKey } from '../functions'
 
 export interface FormulaContextArgs {
-  functionClauses: FunctionClause[]
+  functionClauses: Array<FunctionClause<any>>
   backendActions?: BackendActions
 }
 
-const matchRegex = /(str|num|bool|obj|array|date|column|block|var)([0-9]+)$/
+const matchRegex = /(str|num|bool|obj|array|null|date|spreadsheet|column|error|block|var)([0-9]+)$/
 export const FormulaTypeCastName: { [key in FormulaType]: SpecialDefaultVariableName } = {
   string: 'str',
   number: 'num',
   boolean: 'bool',
-  object: 'obj',
-  array: 'array',
+  null: 'null',
+  Object: 'obj',
+  Array: 'array',
   Date: 'date',
+  Error: 'error',
+  Spreadsheet: 'spreadsheet',
   Column: 'column',
   Block: 'block',
   any: 'var'
@@ -47,7 +50,6 @@ const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
   {}
 ) as { [key in SpecialDefaultVariableName]: FormulaType }
 
-export const functionKey = (group: FunctionGroup, name: FunctionName): FunctionKey => `${group}::${name}`
 export const variableKey = (namespaceId: string, variableId: string): VariableKey => `$${namespaceId}@${variableId}`
 
 export class FormulaContext implements ContextInterface {
@@ -59,8 +61,11 @@ export class FormulaContext implements ContextInterface {
     string: {},
     number: {},
     boolean: {},
-    object: {},
-    array: {},
+    Object: {},
+    Error: {},
+    Spreadsheet: {},
+    Array: {},
+    null: {},
     Date: {},
     Column: {},
     Block: {},
@@ -69,26 +74,26 @@ export class FormulaContext implements ContextInterface {
 
   reverseVariableDependencies: { [key: VariableKey]: VariableDependency[] } = {}
   reverseFunctionDependencies: { [key: FunctionKey]: VariableDependency[] } = {}
-  functionClausesMap: { [key: FunctionKey]: FunctionClause }
-  backendActions: BackendActions
+  functionClausesMap: { [key: FunctionKey]: FunctionClause<any> }
+  backendActions: BackendActions | undefined
 
   constructor({ functionClauses, backendActions }: FormulaContextArgs = { functionClauses: [] }) {
     if (backendActions) {
       this.backendActions = backendActions
     }
-    this.functionClausesMap = [...BUILTIN_CLAUSES, ...functionClauses].reduce((o, acc) => {
-      o[functionKey(acc.group, acc.name)] = acc
+    this.functionClausesMap = [...BUILTIN_CLAUSES, ...functionClauses].reduce((o: { [key: FunctionKey]: FunctionClause<any> }, acc) => {
+      o[acc.key] = acc
       return o
     }, {})
   }
 
   public completions = (namespaceId: NamespaceId): Completion[] => {
     const functions = Object.entries(this.functionClausesMap).map(([key, f]) => {
-      const weight: number = this.functionWeights[key] || 0
+      const weight: number = this.functionWeights[key as FunctionKey] || 0
       return function2completion(f, weight)
     })
     const variables = Object.entries(this.context).map(([key, v]) => {
-      const weight: number = this.variableWeights[key] || 0
+      const weight: number = this.variableWeights[key as VariableKey] || 0
       return v.completion(v.t.namespaceId === namespaceId ? weight + 1 : weight)
     })
     return [...functions, ...variables].sort((a, b) => b.weight - a.weight)
@@ -159,7 +164,7 @@ export class FormulaContext implements ContextInterface {
       })
 
       variable.t.functionDependencies?.forEach(dependency => {
-        const dependencyKey = functionKey(dependency.group, dependency.name)
+        const dependencyKey = dependency.key
         const functionDependencies = this.reverseFunctionDependencies[dependencyKey]
           ? this.reverseFunctionDependencies[dependencyKey].filter(x => !(x.namespaceId === namespaceId && x.variableId === variableId))
           : []
@@ -178,7 +183,7 @@ export class FormulaContext implements ContextInterface {
     })
 
     functionDependencies?.forEach(dependency => {
-      const dependencyKey = functionKey(dependency.group, dependency.name)
+      const dependencyKey = dependency.key
       this.reverseFunctionDependencies[dependencyKey] ||= []
       this.reverseFunctionDependencies[dependencyKey] = [...this.reverseFunctionDependencies[dependencyKey], { namespaceId, variableId }]
     })
@@ -210,7 +215,7 @@ export class FormulaContext implements ContextInterface {
     const match = variable.t.name.match(matchRegex)
     if (match) {
       const [, defaultName, count] = match
-      const realName = ReverseCastName[defaultName]
+      const realName = ReverseCastName[defaultName as SpecialDefaultVariableName]
       this.variableNameCounter[realName][namespaceId] = Math.max(this.variableNameCounter[realName][namespaceId] || 0, Number(count))
     }
 
@@ -244,8 +249,8 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  public findFunctionClause = (group: FunctionGroup, name: FunctionName): FunctionClause | undefined => {
-    return this.functionClausesMap[functionKey(group, name)]
+  public findFunctionClause = (group: FunctionGroup, name: FunctionName): FunctionClause<any> | undefined => {
+    return this.functionClausesMap[buildFunctionKey(group, name)]
   }
 
   public reset = (): void => {

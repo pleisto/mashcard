@@ -39,7 +39,7 @@ export interface BaseParseResult {
   readonly level: number
   readonly errorMessages: ErrorMessage[]
   readonly variableDependencies?: VariableDependency[]
-  readonly functionDependencies?: FunctionClause[]
+  readonly functionDependencies?: Array<FunctionClause<any>>
   readonly codeFragments: CodeFragment[]
   readonly flattenVariableDependencies?: Set<VariableDependency>
   readonly completions: Completion[]
@@ -51,7 +51,7 @@ export interface SuccessParseResult extends BaseParseResult {
   readonly cst: CstNode
   readonly kind: VariableKind
   readonly variableDependencies: VariableDependency[]
-  readonly functionDependencies: FunctionClause[]
+  readonly functionDependencies: Array<FunctionClause<any>>
   readonly flattenVariableDependencies: Set<VariableDependency>
 }
 
@@ -65,7 +65,7 @@ export interface ErrorParseResult extends BaseParseResult {
 export type ParseResult = SuccessParseResult | ErrorParseResult
 
 export interface InterpretInput {
-  readonly cst: CstNode
+  readonly cst?: CstNode
   readonly meta: VariableMetadata
   readonly formulaContext: ContextInterface
 }
@@ -95,7 +95,7 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   if (!variableId) {
     return {
       success: false,
-      cst: null,
+      cst: undefined,
       level,
       errorType: 'lex',
       completions: [],
@@ -124,7 +124,7 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   parser.input = tokens
 
   const cst: CstNode = parser.startExpression()
-  const { codeFragments } = codeFragmentVisitor.visit(cst, { type: 'any' }) ?? { codeFragments: [] }
+  const { codeFragments }: { codeFragments: CodeFragment[] } = codeFragmentVisitor.visit(cst, { type: 'any' }) ?? { codeFragments: [] }
 
   completions = complete({ tokens, formulaContext, namespaceId, codeFragments })
 
@@ -256,6 +256,14 @@ export const displayValue = (result: Result): string => {
 }
 
 export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): Promise<InterpretResult> => {
+  if (!cst) {
+    const errorMessage: ErrorMessage = { message: 'CST is undefined', type: 'fatal' }
+    return {
+      success: false,
+      errorMessages: [errorMessage],
+      result: { updatedAt: new Date(), success: false, errorMessages: [errorMessage] }
+    }
+  }
   try {
     const interpreter = new FormulaInterpreter({ formulaContext })
     const result = await interpreter.visit(cst)
@@ -350,31 +358,27 @@ export const castVariable = (
         errorMessages: errorMessages as [ErrorMessage, ...ErrorMessage[]]
       }
 
-  const finalVariableDependencies = variableDependencies || []
-  const finalFunctionDependencies = functionDependencies || []
-  const finalFlattenVariableDependencies = flattenVariableDependencies || new Set()
-
   return {
     namespaceId,
     variableId,
     variableValue,
     name,
     cst,
-    kind,
+    kind: kind ?? 'constant',
     view,
     definition,
     codeFragments,
     level,
-    variableDependencies: finalVariableDependencies,
-    flattenVariableDependencies: finalFlattenVariableDependencies,
-    functionDependencies: finalFunctionDependencies,
+    variableDependencies: variableDependencies ?? [],
+    flattenVariableDependencies: flattenVariableDependencies ?? new Set(),
+    functionDependencies: functionDependencies ?? [],
     dirty: false
   }
 }
 
 export const variableTypeMeta = (t: VariableData): VariableTypeMeta => {
   if (t.variableValue.success) {
-    return `success_${t.kind}_${t.variableValue.type}`
+    return `success_${t.variableValue.type}`
   }
 
   return `error_${t.kind}`
@@ -419,7 +423,7 @@ export const quickInsert = async ({
   } = parse(parseInput)
 
   if (!success) {
-    throw new Error(errorMessages[0].message)
+    throw new Error(errorMessages[0]!.message)
   }
 
   const { result } = await interpret({ cst, formulaContext, meta })
@@ -431,13 +435,13 @@ export const quickInsert = async ({
     dirty: false,
     definition: input,
     cst,
-    kind,
+    kind: kind ?? 'constant',
     codeFragments,
     variableValue: result,
     level,
-    variableDependencies,
-    functionDependencies,
-    flattenVariableDependencies
+    variableDependencies: variableDependencies ?? [],
+    functionDependencies: functionDependencies ?? [],
+    flattenVariableDependencies: flattenVariableDependencies ?? new Set()
   }
   // return new VariableClass({ t: variable, backendActions: formulaContext.backendActions })
   void (await formulaContext.commitVariable({

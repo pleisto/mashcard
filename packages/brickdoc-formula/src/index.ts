@@ -4,14 +4,26 @@ export * from './grammar'
 export * from './functions'
 export * from './context'
 
-export type BasicType = 'number' | 'string' | 'boolean' | 'object' | 'array'
-export type ObjectType = 'Date' | 'Column' | 'Block'
+export type BasicType = 'number' | 'string' | 'boolean' | 'null'
+export type ObjectType = 'Date' | 'Column' | 'Spreadsheet' | 'Block' | 'Object' | 'Array' | 'Error'
 
 export type FormulaType = BasicType | ObjectType | 'any'
 
-export type SpecialDefaultVariableName = 'str' | 'num' | 'bool' | 'obj' | 'array' | 'date' | 'column' | 'block' | 'var'
+export type SpecialDefaultVariableName =
+  | 'str'
+  | 'num'
+  | 'bool'
+  | 'obj'
+  | 'array'
+  | 'date'
+  | 'column'
+  | 'block'
+  | 'var'
+  | 'null'
+  | 'error'
+  | 'spreadsheet'
 
-export type FunctionGroup = 'core' | 'excel' | 'database' | 'custom' | string
+export type FunctionGroup = 'core' | 'custom' | string
 
 export type FunctionName = string
 export type VariableName = string
@@ -19,10 +31,10 @@ export type ColumnName = string
 
 export type VariableKind = 'constant' | 'expression'
 
-export type VariableTypeMeta = `error_${VariableKind}` | `success_${VariableKind}_${FormulaType}`
+export type VariableTypeMeta = `error_${VariableKind}` | `success_${FormulaType}`
 export type ErrorType = 'type' | 'syntax' | 'runtime' | 'fatal' | 'deps' | 'circular_dependency' | 'name_unique'
 
-export type FunctionKey = `${FunctionGroup}::${FunctionName}`
+export type FunctionKey = `${FunctionGroup}::${FunctionName}` | FunctionName
 export type VariableKey = `$${NamespaceId}@${VariableId}`
 
 export type DefaultVariableName = `${SpecialDefaultVariableName}${number}`
@@ -36,6 +48,88 @@ export type VariableId = uuid
 export type ColumnId = uuid
 
 export type Result = any
+
+export interface BaseResult {
+  result: Result
+  type: FormulaType
+  errorKind?: ErrorType
+}
+export interface NumberResult extends BaseResult {
+  result: number
+  type: 'number'
+}
+
+export interface BooleanResult extends BaseResult {
+  result: boolean
+  type: 'boolean'
+}
+
+export interface StringResult extends BaseResult {
+  result: string
+  type: 'string'
+}
+
+export interface NullResult extends BaseResult {
+  result: null
+  type: 'null'
+}
+
+export interface ArrayResult extends BaseResult {
+  result: any[]
+  type: 'Array'
+}
+
+export interface ObjectResult extends BaseResult {
+  result: { [key: string]: any }
+  type: 'Object'
+}
+
+export interface DateResult extends BaseResult {
+  result: Date
+  type: 'Date'
+}
+
+export interface ColumnResult extends BaseResult {
+  result: Column
+  type: 'Column'
+}
+
+export interface SpreadsheetResult extends BaseResult {
+  result: Database
+  type: 'Spreadsheet'
+}
+
+export interface BlockResult extends BaseResult {
+  result: never
+  type: 'Block'
+}
+
+export interface ErrorResult extends BaseResult {
+  result: string
+  type: 'Error'
+  errorKind: ErrorType
+}
+
+export interface AnyResult extends BaseResult {
+  result: any
+  type: 'any'
+}
+
+export type FunctionResult<T> =
+  | ((
+      | NumberResult
+      | BooleanResult
+      | StringResult
+      | NullResult
+      | ObjectResult
+      | ArrayResult
+      | DateResult
+      | ColumnResult
+      | SpreadsheetResult
+      | BlockResult
+      | AnyResult
+    ) & { type: T })
+  | ErrorResult
 
 export interface View {
   [key: string]: any
@@ -98,7 +192,7 @@ export interface FunctionCompletion extends BaseCompletion {
   readonly kind: 'function'
   readonly namespace: FunctionGroup
   readonly value: FunctionKey
-  readonly preview: FunctionClause
+  readonly preview: FunctionClause<any>
 }
 
 export interface VariableCompletion extends BaseCompletion {
@@ -112,7 +206,7 @@ export type Completion = FunctionCompletion | VariableCompletion
 
 export interface ContextInterface {
   databases: { [key: NamespaceId]: Database }
-  backendActions: BackendActions
+  backendActions: BackendActions | undefined
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   listCellByColumn: (column: Column) => Cell[]
@@ -129,11 +223,11 @@ export interface ContextInterface {
   handleBroadcast: (variable: VariableInterface) => void
   commitVariable: ({ variable, skipCreate }: { variable: VariableInterface; skipCreate?: boolean }) => Promise<void>
   removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>
-  findFunctionClause: (group: FunctionGroup, name: FunctionName) => FunctionClause | undefined
+  findFunctionClause: (group: FunctionGroup, name: FunctionName) => FunctionClause<any> | undefined
   reset: () => void
 }
 
-export interface BaseFunctionClause {
+export interface BaseFunctionClause<T extends FormulaType> {
   readonly name: FunctionName
   readonly pure: boolean
   readonly effect: boolean
@@ -142,22 +236,27 @@ export interface BaseFunctionClause {
   readonly description: string
   readonly group: FunctionGroup
   readonly args: Argument[]
-  readonly returns: FormulaType
+  readonly returns: T
   readonly examples: Example[]
-  readonly reference: (ctx: ContextInterface, ...args: any[]) => Result
+  readonly reference: (ctx: ContextInterface, ...args: any[]) => FunctionResult<T>
 }
 
-export interface NormalFunctionClause extends BaseFunctionClause {
+export interface NormalFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
   readonly chain: false
 }
 
-export interface ChainFunctionClause extends BaseFunctionClause {
+export interface ChainFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
   readonly chain: true
+  readonly returns: T
   readonly args: [Argument, ...Argument[]]
-  readonly reference: (ctx: ContextInterface, chainResult: any, ...args: any[]) => Result
+  readonly reference: (ctx: ContextInterface, chainResult: any, ...args: any[]) => FunctionResult<T>
 }
 
-export type FunctionClause = NormalFunctionClause | ChainFunctionClause
+export type BasicFunctionClause<T extends FormulaType> = NormalFunctionClause<T> | ChainFunctionClause<T>
+
+export interface FunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
+  readonly key: FunctionKey
+}
 
 export interface CodeFragment {
   readonly code: string
@@ -206,11 +305,11 @@ export interface VariableData {
   view?: View
   kind: VariableKind
   variableValue: VariableValue
-  cst: CstNode
+  cst?: CstNode
   codeFragments: CodeFragment[]
   flattenVariableDependencies: Set<VariableDependency>
   variableDependencies: VariableDependency[]
-  functionDependencies: FunctionClause[]
+  functionDependencies: Array<FunctionClause<any>>
 }
 
 export type VariableUpdateHandler = (variable: VariableInterface) => void
@@ -224,7 +323,7 @@ export interface VariableMetadata {
 
 export interface VariableInterface {
   t: VariableData
-  backendActions: BackendActions
+  backendActions: BackendActions | undefined
   meta: () => VariableMetadata
   completion: (weight: number) => VariableCompletion
   onUpdate: (handler: VariableUpdateHandler) => void
