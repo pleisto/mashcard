@@ -98,7 +98,7 @@ const shouldShow: BubbleMenuViewProps['shouldShow'] = ({ view, state, editor, fr
   if (!editor.isEditable || editor.isDestroyed) return false
   if (from === to) return false
 
-  const allowedNodeTypes = ['paragraph', 'listItem', 'orderedList', 'bulletList']
+  const allowedNodeTypes = ['paragraph', 'heading', 'listItem', 'orderedList', 'bulletList']
   let show = false
 
   for (let pos = from; pos <= to; pos++) {

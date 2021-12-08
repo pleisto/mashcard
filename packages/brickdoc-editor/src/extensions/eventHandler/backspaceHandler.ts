@@ -1,8 +1,15 @@
 import { Editor } from '@tiptap/core'
 import { EditorView } from 'prosemirror-view'
+import { unselectableNodes, paragraphLikeNodes } from './nodeTypes'
 
-const excludeNodes = ['imageSection', 'linkBlock', 'pdfSection', 'tableBlock']
-const paragraphLikeNodes = ['paragraph', 'heading']
+const deleteEmptyLine = (editor: Editor, from: number): void => {
+  editor
+    .chain()
+    .deleteRange({ from, to: from + 1 })
+    .focus()
+    .scrollIntoView()
+    .run()
+}
 
 export function backspaceHandler(editor: Editor, view: EditorView, event: KeyboardEvent): boolean {
   let position = view.state.selection.from
@@ -27,16 +34,10 @@ export function backspaceHandler(editor: Editor, view: EditorView, event: Keyboa
 
   if (!node) return false
 
-  if (!excludeNodes.includes(node.type.name)) return false
+  if (!unselectableNodes.includes(node.type.name)) return false
 
   // delete empty line
-  if (isEmptyLine)
-    editor
-      .chain()
-      .deleteRange({ from: emptyLineFrom, to: emptyLineFrom + 1 })
-      .focus()
-      .scrollIntoView()
-      .run()
+  if (isEmptyLine) deleteEmptyLine(editor, emptyLineFrom)
 
   return true
 }

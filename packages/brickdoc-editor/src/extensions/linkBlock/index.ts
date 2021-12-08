@@ -24,7 +24,7 @@ export const LinkBlockExtension = Node.create<LinkBlockOptions>({
 
   selectable: false,
 
-  allowGapCursor: true,
+  allowGapCursor: false,
 
   addAttributes() {
     return {

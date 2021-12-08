@@ -30,7 +30,7 @@ export const TableBlockExtension = Node.create<TableBlockOptions>({
 
   selectable: false,
 
-  allowGapCursor: true,
+  allowGapCursor: false,
 
   addAttributes() {
     return {
