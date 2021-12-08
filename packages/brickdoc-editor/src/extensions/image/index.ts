@@ -24,9 +24,9 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
 
   group: 'block',
 
-  atom: true,
-
   selectable: false,
+
+  allowGapCursor: true,
 
   addAttributes() {
     return {

@@ -22,9 +22,9 @@ export const LinkBlockExtension = Node.create<LinkBlockOptions>({
 
   group: 'block',
 
-  atom: true,
-
   selectable: false,
+
+  allowGapCursor: true,
 
   addAttributes() {
     return {

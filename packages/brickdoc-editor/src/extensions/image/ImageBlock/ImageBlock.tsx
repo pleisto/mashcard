@@ -27,7 +27,7 @@ export interface ImageSectionAttributes {
 }
 
 // TODO: handle image load on error
-export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
+export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, getPos, updateAttributes }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const { t } = useEditorI18n()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
@@ -159,8 +159,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
               updateImageAttributes({
                 width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
               })
-            }}
-          >
+            }}>
             <Popover
               trigger="click"
               placement="bottom"
@@ -177,8 +176,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
                     {t('image_section.menu.delete')}
                   </Menu.Item>
                 </Menu>
-              }
-            >
+              }>
               <div className="image-section-menu-button">
                 <Icon.More className="image-section-menu-icon" />
               </div>
@@ -189,8 +187,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
               isZoomed={showPreview}
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
-              }}
-            >
+              }}>
               {!loaded && (
                 <Skeleton.Image
                   style={
@@ -254,13 +251,11 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
             onProgress={onProgress}
             importSources={importSources}
           />
-        }
-      >
+        }>
         <Button
           type="text"
           className="brickdoc-block-image-section"
-          data-testid={TEST_ID_ENUM.editor.imageSection.addButton.id}
-        >
+          data-testid={TEST_ID_ENUM.editor.imageSection.addButton.id}>
           <div className="image-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.Image className="image-section-icon" />
           <div className="image-section-content">

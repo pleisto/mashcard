@@ -46,7 +46,7 @@ const defaultColumnConfig = {
   Cell
 }
 
-export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes }) => {
+export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes, selected }) => {
   const { t } = useEditorI18n()
   const parentId: string = node.attrs.uuid
   const prevData = node.attrs.data || {}
@@ -193,7 +193,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
         // TODO: need a better way to add this class
         container?.parentElement?.classList.add('table-block-react-renderer')
         container?.classList.add('table-block-node-view-wrapper')
-      }}>
+      }}
+    >
       {contextHolder}
       {fetched.current && (
         <TableToolbar
@@ -261,7 +262,8 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                         onColumnTypeChange={type => {
                           void handleColumnTypeChange(type, column.parent?.id ?? '', column.id)
                         }}
-                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}>
+                        onRemoveColumn={() => removeColumn(column.parent?.id ?? '', column.id)}
+                      >
                         {Header}
                       </ColumnMenu>
                     )

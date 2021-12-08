@@ -54,7 +54,7 @@ export const brickListExtension = Extension.create<brickListOptions>({
                   return commands.splitListItem(itemType)
                 }
 
-                let deleteFrom = listItem.pos - 2
+                let deleteFrom = listItem.pos - 1
                 if (deleteFrom < 0) deleteFrom = 0
                 tr.delete(deleteFrom, listItem.start + listItemNode.nodeSize)
                 const newSelection = Selection.findFrom(tr.doc.resolve(tr.mapping.map(listItem.pos, -1)), -1)

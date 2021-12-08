@@ -4,6 +4,7 @@ import { EditorDataSourceContext } from '../../dataSource/DataSource'
 
 export interface BlockWrapperProps extends NodeViewWrapperProps {
   editor: NodeViewProps['editor']
+  className?: string
   as?: NodeViewWrapperProps['as']
 }
 
