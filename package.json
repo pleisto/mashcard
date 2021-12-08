@@ -135,7 +135,6 @@
   "packageManager": "yarn@3.1.1",
   "resolutions": {
     "@rails/actioncable": "patch:@rails/actioncable@npm:6.1.4#.yarn/patches/@rails-actioncable-npm-6.1.4-0b7207789c",
-    "@tiptap/extension-bubble-menu": "2.0.0-beta.25",
     "@tiptap/extension-code": "2.0.0-beta.15",
     "@tiptap/extension-code-block": "2.0.0-beta.18",
     "@tiptap/extension-floating-menu": "2.0.0-beta.19",

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BubbleMenu as TiptapBubbleMenu } from '../tiptap/BubbleMenu'
+import { BubbleMenu as TiptapBubbleMenu } from '@tiptap/react'
 import { Editor } from '@tiptap/core'
 import { Icon } from '@brickdoc/design-system'
 import { FontColorMenuItem } from './FontColorMenuItem'
@@ -7,6 +7,7 @@ import { MenuItem } from './MenuItem'
 import { LinkMenuItem } from './LinkMenuItem'
 import './index.less'
 import { FormulaMenuItem } from './FormulaMenuItem'
+import { BubbleMenuViewProps } from '@tiptap/extension-bubble-menu'
 
 interface BubbleMenuProps {
   editor: Editor | null
@@ -93,11 +94,36 @@ const ListStyle: StyleMeta[] = [
   }
 ]
 
+const shouldShow: BubbleMenuViewProps['shouldShow'] = ({ view, state, editor, from, to }) => {
+  if (!editor.isEditable || editor.isDestroyed) return false
+  if (from === to) return false
+
+  const allowedNodeTypes = ['paragraph', 'listItem', 'orderedList', 'bulletList']
+  let show = false
+
+  for (let pos = from; pos <= to; pos++) {
+    const node = state.doc.nodeAt(pos)
+
+    if (node) {
+      // Text node
+      if (node.type.name === 'text' && node.text?.length) {
+        show = true
+      } else if (allowedNodeTypes.includes(node.type.name)) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+
+  return show
+}
+
 export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
   if (!editor) return null
 
   return (
-    <TiptapBubbleMenu editor={editor} tippyOptions={{ placement: 'top', maxWidth: '1000px' }}>
+    <TiptapBubbleMenu shouldShow={shouldShow} editor={editor} tippyOptions={{ placement: 'top', maxWidth: '1000px' }}>
       <div role="menu" className="brickdoc-bubble-menu">
         <div className="bubble-menu-group">
           {HeadingStyle.map((s, index) => (
