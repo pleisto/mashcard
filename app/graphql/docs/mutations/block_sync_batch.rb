@@ -9,12 +9,12 @@ module Docs
     def resolve(blocks:, root_id:, operator_id:, deleted_ids:)
       lock = Redis::Lock.new("sync_batch:#{root_id}", expiration: 15, timeout: 10)
       lock.lock do
-        Rails.logger.info("resolve #{root_id} #{operator_id} #{deleted_ids} #{blocks}")
         do_resolve(blocks: blocks, root_id: root_id, operator_id: operator_id, deleted_ids: deleted_ids)
       end
     end
 
     def do_resolve(blocks:, root_id:, operator_id:, deleted_ids:)
+      Rails.logger.info("resolve #{root_id} #{operator_id} #{deleted_ids} #{blocks}")
       root = Docs::Block.find_by(id: root_id)
 
       if root&.deleted_at
@@ -136,7 +136,7 @@ module Docs
             if patch.fetch(:path).blank?
               parent_id = patch.fetch(:parent_id)
               # rubocop:disable Metrics/BlockNesting
-              new_path = parent_id.nil? || patch.fetch(:id) == root_id ? [] : paths_cache.fetch(parent_id)
+              new_path = parent_id.nil? || patch.fetch(:id) == root_id ? [] : paths_cache.fetch(parent_id, [root_id])
               new_path += [patch.fetch(:id)] if patch.fetch(:patch_type) != "ADD"
               patch.merge(path: new_path)
             else

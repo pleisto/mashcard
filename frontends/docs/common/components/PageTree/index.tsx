@@ -12,7 +12,7 @@ import {
 import { Tree, TreeProps } from '@brickdoc/design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
-import { SIZE_GAP } from '@/docs/pages/hooks/useSyncProvider'
+import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'
 import styles from './PageTree.module.less'
 import { useDocsI18n } from '../../hooks'

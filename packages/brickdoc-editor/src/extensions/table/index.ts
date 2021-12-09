@@ -50,10 +50,9 @@ export interface TableExtensionOptions {
     {
       fetchRows: () => Promise<void>
       addRow: (rowIndex?: number) => DatabaseRow
-      updateRow: (row: DatabaseRow, updateState?: boolean) => void
+      updateRows: (rows: DatabaseRows) => void
       removeRow: (rowId: string) => void
       moveRow: (fromIndex: number, toIndex: number) => DatabaseRow | undefined
-      setRowsState: (rows: DatabaseRows) => void
     }
   ]
 }

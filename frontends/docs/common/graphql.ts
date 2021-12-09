@@ -302,14 +302,6 @@ export const BlockRename = gql`
   }
 `
 
-export const BlockUpdate = gql`
-  mutation blockUpdate($input: BlockUpdateInput!) {
-    blockUpdate(input: $input) {
-      errors
-    }
-  }
-`
-
 export const SnapshotRestore = gql`
   mutation snapshotRestore($input: SnapshotRestoreInput!) {
     snapshotRestore(input: $input) {

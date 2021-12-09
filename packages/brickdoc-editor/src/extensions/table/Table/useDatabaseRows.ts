@@ -18,11 +18,14 @@ export const useDatabaseRows: TableExtensionOptions['useDatabaseRows'] = (parent
     [databaseRows]
   )
 
-  const updateRow = React.useCallback(
-    (row: DatabaseRow, updateState = true): void => {
-      const newRows = databaseRows.map((prevRow: DatabaseRow) => {
-        return prevRow.id === row.id ? row : prevRow
-      })
+  const updateRows = React.useCallback(
+    (rows: DatabaseRows): void => {
+      const rowsMap = new Map(rows.map(row => [row.id, row]))
+      const prevRowsMap = new Map(databaseRows.map(row => [row.id, row]))
+      const newRows = [
+        ...databaseRows.map(prevRow => rowsMap.get(prevRow.id) ?? prevRow),
+        ...rows.filter(row => !prevRowsMap.has(row.id))
+      ].sort((a, b) => b.sort - a.sort)
       setDatabaseRows(newRows)
     },
     [databaseRows]
@@ -55,17 +58,14 @@ export const useDatabaseRows: TableExtensionOptions['useDatabaseRows'] = (parent
     [databaseRows]
   )
 
-  const setRowsState = React.useCallback((rows: DatabaseRows): void => setDatabaseRows(rows), [setDatabaseRows])
-
   return [
     databaseRows,
     {
       fetchRows,
       addRow,
-      updateRow,
+      updateRows,
       removeRow,
-      moveRow,
-      setRowsState
+      moveRow
     }
   ]
 }

@@ -73,13 +73,13 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     updateAttributeData
   })
   const handleColumnTypeChange = async (type: TableColumnType, groupId: string, columnId: string): Promise<void> => {
-    if (type === 'date' || type === 'date-range') await batchUpdateDataByColumn(columnId, null)
+    if (type === 'date' || type === 'date-range') batchUpdateDataByColumn(columnId, null)
     updateColumnType(type, groupId, columnId)
   }
 
   const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
 
-  const [tableRows, { fetchRows, addRow, updateRow, removeRow, moveRow, setRowsState }] = useDatabaseRows(parentId)
+  const [tableRows, { fetchRows, addRow, updateRows, removeRow, moveRow }] = useDatabaseRows(parentId)
   const initialized = React.useRef(false)
 
   useFormulaDatabase(
@@ -102,10 +102,9 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
       { id: uuid(), sort: 2 ** 32 },
       { id: uuid(), sort: 2 ** 32 * 2 }
     ]
-    newRows.forEach(row => updateRow(row, false))
-    setRowsState(newRows)
+    updateRows(newRows)
     initialized.current = true
-  }, [columns, addNewColumn, setRowsState, updateRow, tableRows])
+  }, [columns, addNewColumn, updateRows, tableRows])
 
   React.useEffect(() => {
     if (!fetched.current) {
@@ -117,20 +116,17 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
   const updateData = (rowId: string, key: string, data: any): void => {
     const row = tableRows.find(r => r.id === rowId)
     if (row) {
-      updateRow({ ...row, [key]: data })
+      updateRows([{ ...row, [key]: data }])
     }
   }
 
   const batchDeleteDataByValue = (columnId: string, value: string): void => {
-    tableRows.forEach(r => {
-      if (r[columnId] === value) {
-        return updateRow({ ...r, [columnId]: null })
-      }
-    })
+    updateRows(tableRows.map(r => (r[columnId] === value ? { ...r, [columnId]: null } : r)))
   }
 
-  const batchUpdateDataByColumn = async (columnId: string, value: any): Promise<void[]> =>
-    await Promise.all(tableRows.map(r => updateRow({ ...r, [columnId]: value })))
+  const batchUpdateDataByColumn = (columnId: string, value: any): void => {
+    updateRows(tableRows.map(r => ({ ...r, [columnId]: value })))
+  }
 
   const addNewRow = (rowIndex?: number): void => {
     const row = addRow(rowIndex)

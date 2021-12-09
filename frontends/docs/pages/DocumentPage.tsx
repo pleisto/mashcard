@@ -2,17 +2,10 @@ import React, { useEffect, useRef, useMemo } from 'react'
 import { Skeleton } from '@brickdoc/design-system'
 import { Alert } from '@brickdoc/brickdoc-headless-design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
-import { useGetChildrenBlocksQuery, Block } from '@/BrickdocGraphQL'
+import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
-import {
-  blocksToJSONContents,
-  useDocumentSubscription,
-  usePrepareFileUpload,
-  useFetchUnsplashImages,
-  useFetchWebsiteMeta,
-  useSyncProvider,
-  useFormulaContextGetter
-} from './hooks'
+import { useDocumentSubscription, usePrepareFileUpload, useFetchUnsplashImages, useFetchWebsiteMeta, useSyncProvider, useFormulaContextGetter } from './hooks'
+import { blocksToJSONContents } from '../common/blocks'
 import { useBlobGetter } from './hooks/useBlobGetter'
 import { useDatabaseRows } from './hooks/useDatabaseRows'
 import styles from './DocumentPage.module.less'
@@ -34,15 +27,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   // promote this call to the beginning of this render fn.
   useEditorI18n()
 
-  const [onCommit] = useSyncProvider()
-
-  // TODO lazy query here
-  // TODO disable page tree select when loading
-  // const [foo] = useLazyQuery(fooQuery, { onCompleted: () => /* ... */ })
-  // useEffect(() => {
-  //   foo()
-  // }, [])
-
   const queryVariables = useMemo(
     () => ({ rootId: docMeta.id as string, snapshotVersion: docMeta.snapshotVersion }),
     [docMeta.id, docMeta.snapshotVersion]
@@ -50,11 +34,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
 
   const lastQueryVariables = useRef<typeof queryVariables>()
 
-  const { data, loading, refetch } = useGetChildrenBlocksQuery({
-    fetchPolicy: docMeta.snapshotVersion > 0 ? 'no-cache' : 'cache-and-network',
-    nextFetchPolicy: 'cache-only',
-    variables: queryVariables
-  })
+  const { rootBlock, data, loading, refetch, onDocSave, updateBlocks, updateCachedDocBlock } = useSyncProvider(queryVariables)
 
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
@@ -66,6 +46,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const getAttachmentUrl = useBlobGetter('attachment', data?.childrenBlocks)
   const docIconGetter = useBlobGetter('icon', data?.childrenBlocks)
   const docCoverGetter = useBlobGetter('cover', data?.childrenBlocks)
+  
   const getDocIconUrl = (): string | undefined => {
     if (!editor || editor.isDestroyed) return undefined
     return docIconGetter(editor.state.doc)
@@ -81,8 +62,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const [documentEditable, setDocumentEditable] = React.useState(!docMeta.id)
 
   const editor = useEditor({
-    onSave: onCommit,
-    useDatabaseRows: useDatabaseRows(),
+    onSave: onDocSave,
+    useDatabaseRows: useDatabaseRows({ updateBlocks }),
     prepareFileUpload,
     fetchUnsplashImages,
     fetchWebsiteMeta,
@@ -97,10 +78,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     editorVar(editor)
   }, [editor])
 
-  React.useEffect(() => {
-    const block = data?.childrenBlocks?.find(block => block.id === docMeta.id)
+  const currentRootBlock = rootBlock.current
 
-    if (block) {
+  React.useEffect(() => {
+    if (currentRootBlock) {
       if (editor) {
         const nextEditable = docMeta.editable
         if (editor.options.editable !== nextEditable) {
@@ -110,7 +91,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
         }
       }
     }
-  }, [data?.childrenBlocks, docMeta.id, editor, docMeta.editable])
+  }, [currentRootBlock, editor, docMeta.editable])
 
   const createDocAttrsUpdater =
     (field: string) =>
@@ -130,15 +111,18 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     if (editor && !editor.isDestroyed && data?.childrenBlocks && queryVariables !== lastQueryVariables.current) {
       lastQueryVariables.current = queryVariables
 
-      const content: JSONContent[] = blocksToJSONContents(data.childrenBlocks as Block[])
+      const content: JSONContent[] = blocksToJSONContents(data?.childrenBlocks as Block[])
 
       if (content.length) {
-        editor.commands.replaceRoot(content[0])
+        editor.chain().setMeta('preventUpdate', true).replaceRoot(content[0]).run()
       }
     }
-  }, [editor, data, queryVariables])
+  }, [editor, data, data?.childrenBlocks, queryVariables])
 
-  useDocumentSubscription({ docid: docMeta.id as string, editor, setDocumentEditable, refetchDocument: refetch })
+  if (docMeta.snapshotVersion === 0) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useDocumentSubscription({ docid: docMeta.id as string, editor, setDocumentEditable, updateCachedDocBlock, refetchDocument: refetch })
+  }
 
   if (loading || docMeta.documentInfoLoading) {
     return <Skeleton active />
