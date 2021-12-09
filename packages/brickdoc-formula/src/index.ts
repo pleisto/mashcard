@@ -210,7 +210,7 @@ export interface ContextInterface {
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   listCellByColumn: (column: Column) => Cell[]
-  completions: (namespaceId: NamespaceId) => Completion[]
+  completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findDatabase: (namespaceId: NamespaceId) => Database | undefined
   findColumn: (namespaceId: NamespaceId, variableId: VariableId) => Column | undefined
   setDatabase: (namespaceId: NamespaceId, database: Database) => void
@@ -302,6 +302,7 @@ export interface VariableData {
   variableId: VariableId
   definition: string
   dirty: boolean
+  valid: boolean
   view?: View
   kind: VariableKind
   variableValue: VariableValue

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Input, Modal, Popover } from '@brickdoc/design-system'
-import { CodeFragment, Completion, VariableInterface } from '@brickdoc/formula'
+import { CodeFragment, Completion, ErrorMessage, VariableInterface } from '@brickdoc/formula'
 import { useEditorI18n } from '../../hooks'
 import './FormulaMenu.less'
 import { FormulaOptions } from '../../extensions'
@@ -9,6 +9,7 @@ import { FormulaBlockProps } from '../../extensions/formula/FormulaBlock'
 import { AutocompleteList } from './AutocompleteList/AutocompleteList'
 import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
 import { codeFragmentsToJSONContent } from '../../helpers/formula'
+import { useKeydownHandler } from './useKeyDownHandler'
 
 export interface FormulaMenuProps {
   getPos?: () => number
@@ -45,14 +46,14 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const formulaContext = formulaContextActions.getFormulaContext()
 
   const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''
-  const contextCompletions = formulaContext ? formulaContext.completions(rootId) : []
-  const formulaValue = variable?.t.codeFragments
-    ? `=${variable.t.codeFragments.map(fragment => fragment.name).join('')}`
-    : variable?.t.definition
+  const contextCompletions = formulaContext ? formulaContext.completions(rootId, variable?.t.variableId) : []
+  const formulaValue = variable?.t.valid ? `=${variable.t.codeFragments.map(fragment => fragment.name).join('')}` : variable?.t.definition
   const definition = formulaValue?.substr(1)
 
   const codeFragments = variable?.t.codeFragments
-  const defaultContent = codeFragmentsToJSONContent(codeFragments)
+  const defaultContent = variable?.t.valid
+    ? codeFragmentsToJSONContent(codeFragments)
+    : { type: 'doc', content: [{ type: 'text', text: definition }] }
 
   const [completions, setCompletions] = React.useState(contextCompletions)
 
@@ -60,9 +61,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const [defaultName, setDefaultName] = React.useState(contextDefaultName)
   const [input, setInput] = React.useState(definition)
 
-  const [error, setError] = React.useState<{ type: string; message: string }>()
+  const [error, setError] = React.useState<ErrorMessage | undefined>()
   const [visible, setVisible] = React.useState(defaultVisible)
   const [content, setContent] = React.useState<JSONContent | undefined>(defaultContent)
+  const [activeCompletion, setActiveCompletion] = React.useState<Completion | undefined>(completions[0])
+  const [activeCompletionIndex, setActiveCompletionIndex] = React.useState<number>(0)
 
   const close = (): void => {
     if (clear) {
@@ -71,6 +74,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       setDefaultName(contextDefaultName)
       setCompletions(contextCompletions)
       setInput(definition)
+      setActiveCompletion(completions[0])
+      setActiveCompletionIndex(0)
       setError(undefined)
     }
     setVisible(false)
@@ -87,14 +92,19 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setVisible(visible)
   }
 
-  const handleSelectCompletion = (completion: Completion): void => {
+  const handleSelectActiveCompletion = (completion?: Completion): void => {
+    const currentCompletion = completion ?? activeCompletion
+
+    if (!currentCompletion) {
+      return
+    }
     const oldContent = content?.content ?? []
-    const value = completion.value
+    const value = currentCompletion.value
     const attrs: CodeFragment =
-      completion.kind === 'function'
+      currentCompletion.kind === 'function'
         ? { meta: {}, errors: [], name: value, code: 'Function', spaceBefore: false, spaceAfter: false, type: 'any' }
         : {
-            meta: { name: completion.preview.name },
+            meta: { name: currentCompletion.preview.name },
             errors: [],
             name: value,
             code: 'Variable',
@@ -108,9 +118,17 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     const finalInput = contentToInput(finalContent)
     setContent(finalContent)
     setInput(finalInput)
-    console.log({ completion, content, attrs, label: 'selectCompletion', newContent, finalInput })
+    console.log({ currentCompletion, content, attrs, label: 'selectCompletion', newContent, finalInput })
     doCalculate({ newInput: finalInput })
   }
+  const keyDownHandler = useKeydownHandler({
+    completions,
+    activeCompletion,
+    activeCompletionIndex,
+    handleSelectActiveCompletion,
+    setActiveCompletion,
+    setActiveCompletionIndex
+  })
 
   const contentToInput = (content: JSONContent): string => {
     const newInput = content.content?.map((c: JSONContent) => (c.type === 'text' ? c.text : c.content?.[0].text ?? '')).join('') ?? ''
@@ -119,9 +137,9 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const handleValueChange = (editor: Editor): void => {
     const text = contentToInput(editor.getJSON().content[0])
-    // const text = editor.getText()
-    console.log({ content, editor, text, label: 'updateValue' })
+    console.log({ content, json: editor.getJSON(), editor, text, label: 'updateValue' })
     setInput(text)
+    setContent(editor.getJSON() as JSONContent)
     doCalculate({ newInput: text })
   }
 
@@ -148,6 +166,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       updateInput: setInput,
       updateContent: setContent,
       updateCompletions: setCompletions,
+      updateActiveCompletion: setActiveCompletion,
       updateDefaultName: setDefaultName
     })
   }
@@ -167,6 +186,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setName(finalName)
     updateVariable?.(variable)
 
+    console.log({ label: 'save ...', input, variable, updateVariable, formulaContext })
     close()
   }
 
@@ -178,9 +198,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     Modal.confirm({
       title: t(`${i18nKey}.delete_confirm.title`),
       okText: t(`${i18nKey}.delete_confirm.ok`),
-      okButtonProps: {
-        danger: true
-      },
+      okButtonProps: { danger: true },
       cancelText: t(`${i18nKey}.delete_confirm.cancel`),
       icon: null,
       onOk: async () => {
@@ -205,8 +223,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <div className="formula-menu-row">
         <div className="formula-menu-item">
-          <FormulaEditor content={content} updateContent={handleValueChange} editable={true} />
-          {/* <Input className="formula-menu-field" value={value} onChange={handleValueChange} /> */}
+          <FormulaEditor content={content} updateContent={handleValueChange} keyDownHandler={keyDownHandler} editable={true} />
         </div>
       </div>
       <div className="formula-menu-divider" />
@@ -221,7 +238,14 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         {!error && variable?.t.variableValue.display}
       </div>
       <div className="formula-menu-divider" />
-      <AutocompleteList completions={completions} onSelect={handleSelectCompletion} />
+      <AutocompleteList
+        completions={completions}
+        handleSelectActiveCompletion={handleSelectActiveCompletion}
+        setActiveCompletion={setActiveCompletion}
+        activeCompletionIndex={activeCompletionIndex}
+        setActiveCompletionIndex={setActiveCompletionIndex}
+        activeCompletion={activeCompletion}
+      />
       <div className="formula-menu-footer">
         <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
           {t(`${i18nKey}.cancel`)}

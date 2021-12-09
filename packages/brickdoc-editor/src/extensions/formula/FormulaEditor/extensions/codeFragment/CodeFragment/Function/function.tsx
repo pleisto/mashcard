@@ -10,7 +10,6 @@ export interface FunctionProps {
 export const Function: React.FC<FunctionProps> = ({ codeFragment, content }) => {
   return (
     <span className="brickdoc-formula-function">
-      Function:
       <span className="brickdoc-formula-function-content">{content}</span>
     </span>
   )

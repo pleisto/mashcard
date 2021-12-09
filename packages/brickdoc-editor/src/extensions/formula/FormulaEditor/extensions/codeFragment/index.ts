@@ -2,6 +2,7 @@ import { Node, mergeAttributes, JSONContent } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { SetDocAttrStep } from '../../../../sync/SetDocAttrStep'
 import { CodeFragment } from './CodeFragment/CodeFragment'
+import { CodeFragment as CodeFragmentType } from '@brickdoc/formula'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -28,14 +29,16 @@ export const CodeFragmentBlockExtension = Node.create<CodeFragmentBlockOptions>(
   defaultOptions: {},
 
   addAttributes() {
-    return {
+    const defaultAttr: { [key in keyof CodeFragmentType]: { default: any } } = {
       meta: { default: {} },
       code: { default: '' },
       name: { default: '' },
-      space: { default: false },
+      spaceAfter: { default: false },
+      spaceBefore: { default: false },
       type: { default: 'any' },
       errors: { default: [] }
     }
+    return defaultAttr
   },
 
   parseHTML() {

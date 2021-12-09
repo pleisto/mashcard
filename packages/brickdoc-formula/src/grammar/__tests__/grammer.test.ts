@@ -74,7 +74,7 @@ const testCases = [
   {
     input: '= (1 = 1) > 3',
     label: 'compare chain',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
   },
   {
@@ -100,12 +100,12 @@ const testCases = [
   },
   {
     input: '= 1 & "foo"',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected string but got number'
   },
   {
     input: '= "foo" & 1',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected string but got number'
   },
   // Number Literal
@@ -182,7 +182,7 @@ const testCases = [
   },
   {
     input: '= 2 ^ true',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
   },
   {
@@ -229,12 +229,12 @@ const testCases = [
   },
   {
     input: '=1 and 2',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=1 and false or 3',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected boolean but got number'
   },
   {
@@ -244,18 +244,18 @@ const testCases = [
   // Error
   {
     input: '1+1',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     label: 'missing prefix equal',
     errorMessage: 'TODO mismatch token startExpression'
   },
   {
     input: '= 1+$',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     errorMessage: 'Expecting: one of these possible Token sequences:'
   },
   {
     input: '=1**2',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     errorMessage: `Expecting: one of these possible Token sequences:
   1. [LParen]
   2. [Minus]
@@ -280,17 +280,17 @@ but found: '*'`
   },
   {
     input: '=ABS ()',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Miss argument'
   },
   {
     input: '=ABS(1,2)',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Argument count mismatch'
   },
   {
     input: '=AVERAGE()',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Miss argument',
     label: 'Spread operator with no argument'
   },
@@ -322,7 +322,7 @@ but found: '*'`
   },
   {
     input: '=UNKNOWN ()',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Function UNKNOWN not found'
   },
   // Chain
@@ -344,51 +344,51 @@ but found: '*'`
   },
   {
     input: '="foo".START_WITH(123)',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected string but got number',
     label: 'chain type 1'
   },
   {
     input: '=true.START_WITH("123")',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     label: 'TODO chain type 2',
     errorMessage: 'Expected string but got boolean'
   },
   {
     input: '="123".LEN()',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'LEN is not chainable'
   },
   // Type
   {
     input: '=ABS ( "a" )',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected number but got string'
   },
   {
     input: '=IF(1, -3, -4)',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=ABS( TODAY() )',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected number but got Date'
   },
   {
     input: '=AND(1, 2)',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected boolean but got number'
   },
   {
     input: '=ABS ( TRUE() )',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
   },
   {
     input: '= 2 * (2 = 4)',
     label: 'type check',
-    parseSuccess: false,
+    parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
   },
   // TODO List
@@ -405,23 +405,23 @@ but found: '*'`
   {
     input: '=1.T()',
     label: 'should success',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
     input: '=1.START_WITH("123")',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     label: 'TODO chain type 3',
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
     input: '=123.ABS()',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     errorMessage: 'TODO build not all input parsed :5'
   },
   {
     input: '=if(true, 1+2, "2")',
-    parseSuccess: false,
+    parseErrorType: 'parse',
     label: 'TODO downcase',
     errorMessage: 'TODO mismatch token FunctionCall'
   }
@@ -439,7 +439,7 @@ const meta = { variableId, namespaceId, name }
 const parseInput = { formulaContext, meta }
 
 describe('Simple test case', () => {
-  testCases.forEach(({ input, label, lexSuccess = true, parseSuccess = true, errorMessage, value }) => {
+  testCases.forEach(({ input, label, lexSuccess = true, parseErrorType = undefined, errorMessage, value }) => {
     const prefix = label ? `[${label}] ` : ''
     const suffix = value !== undefined ? ` // => ${value}` : ' // => ✗'
     // eslint-disable-next-line jest/valid-title
@@ -464,9 +464,9 @@ describe('Simple test case', () => {
       } else if (!lexSuccess) {
         expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual('lex')
-      } else if (!parseSuccess) {
+      } else if (parseErrorType) {
         expect(errorMessages[0]!.message).toContain(errorMessage)
-        expect(errorType).toEqual('parse')
+        expect(errorType).toEqual(parseErrorType)
       } else {
         expect(errorMessages).toEqual([])
 

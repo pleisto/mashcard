@@ -5,22 +5,23 @@ import Text from '@tiptap/extension-text'
 import Paragraph from '@tiptap/extension-paragraph'
 import { useEditor, EditorContent, JSONContent } from '@tiptap/react'
 import { CodeFragmentBlockExtension } from './extensions/codeFragment'
-import { DisableNewLineExtension } from './extensions/disableNewLine'
+import { HandleKeyDownExtension, KeyDownHandlerType } from './extensions/handleKeyDown'
 import './FormulaEditor.less'
 
 export interface FormulaEditorProps {
   content: JSONContent | undefined
   editable: boolean
   updateContent?: (editor: Editor) => void
+  keyDownHandler?: KeyDownHandlerType
 }
 
 const findNearestWord = (content: string, targetIndex: number): string | undefined =>
   content.split(' ').find((word, index) => index + word.length >= targetIndex)
 
-export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable, updateContent }) => {
+export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable, updateContent, keyDownHandler }) => {
   const editor = useEditor({
     editable,
-    extensions: [Document, Text, Paragraph, CodeFragmentBlockExtension, DisableNewLineExtension],
+    extensions: [Document, Text, Paragraph, CodeFragmentBlockExtension, HandleKeyDownExtension(keyDownHandler)],
     onUpdate: ({ editor, transaction }) => {
       updateContent?.(editor)
       if (transaction.selection.from === transaction.selection.to) {

@@ -31,8 +31,14 @@ const renderContent = (codeFragment: CodeFragmentType, content: string): React.R
 export const CodeFragment: React.FC<CodeFragmentProps> = ({ editor, node }) => {
   const codeFragment = node.attrs as CodeFragmentType
   const text = `${codeFragment.spaceBefore ? ' ' : ''}${codeFragment.name}${codeFragment.spaceAfter ? ' ' : ''}`
+  const errors = codeFragment.errors
+  // console.log({ attrs: node.attrs, text, errors })
 
-  console.log({ attrs: node.attrs, text })
-
-  return <NodeViewWrapper as="span">{renderContent(codeFragment, text)}</NodeViewWrapper>
+  return (
+    <NodeViewWrapper as="span">
+      <span className={errors.length ? 'brickdoc-formula-code-fragment-error' : 'brickdoc-formula-code-fragment-normal'}>
+        {renderContent(codeFragment, text)}
+      </span>
+    </NodeViewWrapper>
+  )
 }

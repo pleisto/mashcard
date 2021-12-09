@@ -408,6 +408,7 @@ Object {
   "level": 2,
   "name": "baz",
   "namespaceId": "37198be0-d10d-42dc-ae8b-20d45a95401b",
+  "valid": true,
   "variableDependencies": Array [
     Object {
       "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",

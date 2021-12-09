@@ -53,6 +53,7 @@ const meta = { namespaceId, variableId, name: 'foo', input: '=24' }
 const testCases = [
   '= (1 + 1) / 2 * 0.1 == (!!true and false or true) == "123"',
   '= custom::PLUS((custom::FORTY_TWO()), 1 + 1)',
+  '= ABS("123")',
   '="FOO".T().T() & "Zzz"',
   `=$${namespaceId}@${fooVariableId} + 1`,
   `=$${unknownId}@${fooVariableId} + 2`,

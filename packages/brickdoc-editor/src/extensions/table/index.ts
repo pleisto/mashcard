@@ -1,6 +1,6 @@
 import { Node, mergeAttributes, JSONContent } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { CodeFragment, Completion, ContextInterface, VariableInterface } from '@brickdoc/formula'
+import { CodeFragment, Completion, ContextInterface, ErrorMessage, VariableInterface } from '@brickdoc/formula'
 import { insertBlockAt } from '../../helpers/commands'
 import { Table } from './Table'
 
@@ -30,9 +30,10 @@ interface CalculateOptions {
   codeFragmentsToJSONContent: (codeFragments: CodeFragment[] | undefined) => JSONContent | undefined
   formulaContext: ContextInterface
   updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>> | undefined
-  updateError: React.Dispatch<React.SetStateAction<{ type: string; message: string } | undefined>>
+  updateError: React.Dispatch<React.SetStateAction<ErrorMessage | undefined>>
   updateInput: React.Dispatch<React.SetStateAction<string | undefined>>
   updateCompletions: React.Dispatch<React.SetStateAction<Completion[]>>
+  updateActiveCompletion: React.Dispatch<React.SetStateAction<Completion | undefined>>
   updateDefaultName: React.Dispatch<React.SetStateAction<string>>
   updateContent: React.Dispatch<React.SetStateAction<JSONContent | undefined>>
 }

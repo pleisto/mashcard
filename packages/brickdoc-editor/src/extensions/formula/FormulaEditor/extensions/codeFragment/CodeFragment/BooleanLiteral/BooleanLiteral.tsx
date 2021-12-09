@@ -8,7 +8,6 @@ export interface BooleanLiteralProps {
 export const BooleanLiteral: React.FC<BooleanLiteralProps> = ({ content }) => {
   return (
     <span className="brickdoc-formula-boolean-literal">
-      Boolean:
       <span className="brickdoc-formula-boolean-literal-content">{content}</span>
     </span>
   )

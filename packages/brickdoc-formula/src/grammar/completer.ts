@@ -1,16 +1,25 @@
 import type { IToken } from 'chevrotain'
-import type { CodeFragment, Completion, ContextInterface, NamespaceId } from '..'
+import type { CodeFragment, Completion, ContextInterface, NamespaceId, VariableId } from '..'
 
 export interface CompleteInput {
   readonly tokens: IToken[]
   readonly formulaContext: ContextInterface
   readonly namespaceId: NamespaceId
+  readonly variableId: VariableId
   readonly codeFragments: CodeFragment[]
+  readonly cacheCompletions?: Completion[]
 }
 
 // TODO: https://github.com/Chevrotain/chevrotain/blob/master/examples/parser/content_assist/content_assist_complex.js
-export const complete = ({ tokens, formulaContext, namespaceId, codeFragments }: CompleteInput): Completion[] => {
-  const completions = formulaContext.completions(namespaceId)
+export const complete = ({
+  tokens,
+  formulaContext,
+  namespaceId,
+  variableId,
+  cacheCompletions,
+  codeFragments
+}: CompleteInput): Completion[] => {
+  const completions = cacheCompletions ?? formulaContext.completions(namespaceId, variableId)
   const lastToken = tokens[tokens.length - 1]
   if (!lastToken) {
     return completions

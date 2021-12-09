@@ -33,8 +33,9 @@ export interface ParseInput {
 
 export interface BaseParseResult {
   readonly success: boolean
+  readonly valid: boolean
   readonly cst?: CstNode
-  readonly errorType?: 'lex' | 'parse'
+  readonly errorType?: 'lex' | 'parse' | 'syntax'
   readonly kind?: VariableKind
   readonly level: number
   readonly errorMessages: ErrorMessage[]
@@ -47,6 +48,7 @@ export interface BaseParseResult {
 
 export interface SuccessParseResult extends BaseParseResult {
   readonly success: true
+  readonly valid: true
   readonly errorMessages: []
   readonly cst: CstNode
   readonly kind: VariableKind
@@ -58,7 +60,7 @@ export interface SuccessParseResult extends BaseParseResult {
 export interface ErrorParseResult extends BaseParseResult {
   readonly success: false
   readonly cst?: CstNode
-  readonly errorType: 'lex' | 'parse'
+  readonly errorType: 'lex' | 'parse' | 'syntax'
   readonly errorMessages: [ErrorMessage, ...ErrorMessage[]]
 }
 
@@ -95,6 +97,7 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   if (!variableId) {
     return {
       success: false,
+      valid: false,
       cst: undefined,
       level,
       errorType: 'lex',
@@ -104,11 +107,12 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
     }
   }
   const lexResult: ILexingResult = FormulaLexer.tokenize(input)
-  let completions: Completion[] = formulaContext.completions(namespaceId)
+  let completions: Completion[] = formulaContext.completions(namespaceId, variableId)
 
   if (lexResult.errors.length > 0) {
     return {
       success: false,
+      valid: false,
       errorType: 'lex',
       level,
       completions,
@@ -126,7 +130,7 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   const cst: CstNode = parser.startExpression()
   const { codeFragments }: { codeFragments: CodeFragment[] } = codeFragmentVisitor.visit(cst, { type: 'any' }) ?? { codeFragments: [] }
 
-  completions = complete({ tokens, formulaContext, namespaceId, codeFragments })
+  completions = complete({ cacheCompletions: completions, tokens, formulaContext, namespaceId, variableId, codeFragments })
 
   level = codeFragmentVisitor.level
   const parseErrors: IRecognitionException[] = parser.errors
@@ -134,6 +138,7 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   if (parseErrors.length > 0) {
     return {
       success: false,
+      valid: false,
       errorType: 'parse',
       completions,
       level,
@@ -148,9 +153,10 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   if (errorCodeFragment) {
     return {
       success: false,
+      valid: true,
       cst,
       level,
-      errorType: 'parse',
+      errorType: 'syntax',
       completions,
       errorMessages: [errorCodeFragment.errors[0]],
       codeFragments
@@ -161,7 +167,8 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   if ([...flattenVariableDependencies].find(v => v.namespaceId === namespaceId && v.variableId === variableId)) {
     return {
       success: false,
-      errorType: 'parse',
+      valid: true,
+      errorType: 'syntax',
       errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
       level,
       completions,
@@ -178,9 +185,10 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   if (sameNameVariable) {
     return {
       success: false,
+      valid: true,
       cst,
       level,
-      errorType: 'parse',
+      errorType: 'syntax',
       completions,
       errorMessages: [{ message: 'Variable name exist in same namespace', type: 'name_unique' }],
       flattenVariableDependencies,
@@ -192,6 +200,7 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
 
   return {
     success: true,
+    valid: true,
     cst,
     level,
     errorMessages: [],
@@ -287,30 +296,31 @@ export const buildVariable = ({
   formulaContext,
   meta: { name, input, namespaceId, variableId },
   view,
-  parseResult: { cst, kind, codeFragments, variableDependencies, functionDependencies, level, flattenVariableDependencies },
+  parseResult: { valid, cst, kind, codeFragments, variableDependencies, functionDependencies, level, flattenVariableDependencies },
   interpretResult: { result }
 }: {
   formulaContext: ContextInterface
   meta: VariableMetadata
   view: View
-  parseResult: SuccessParseResult
-  interpretResult: SuccessInterpretResult
+  parseResult: ParseResult
+  interpretResult: InterpretResult
 }): VariableInterface => {
   const t: VariableData = {
     namespaceId,
     variableId,
     name,
     cst,
-    kind,
     view,
     codeFragments,
     definition: input,
     dirty: false,
     variableValue: result,
+    valid,
     level,
-    variableDependencies,
-    flattenVariableDependencies,
-    functionDependencies
+    kind: kind ?? 'constant',
+    variableDependencies: variableDependencies ?? [],
+    flattenVariableDependencies: flattenVariableDependencies ?? new Set(),
+    functionDependencies: functionDependencies ?? []
   }
 
   const oldVariable = formulaContext.findVariable(namespaceId, variableId)
@@ -335,6 +345,7 @@ export const castVariable = (
     success,
     cst,
     kind,
+    valid,
     errorMessages,
     variableDependencies,
     flattenVariableDependencies,
@@ -364,11 +375,12 @@ export const castVariable = (
     variableValue,
     name,
     cst,
-    kind: kind ?? 'constant',
     view,
+    valid,
     definition,
     codeFragments,
     level,
+    kind: kind ?? 'constant',
     variableDependencies: variableDependencies ?? [],
     flattenVariableDependencies: flattenVariableDependencies ?? new Set(),
     functionDependencies: functionDependencies ?? [],
@@ -433,6 +445,7 @@ export const quickInsert = async ({
     variableId,
     name,
     dirty: false,
+    valid: true,
     definition: input,
     cst,
     kind: kind ?? 'constant',
