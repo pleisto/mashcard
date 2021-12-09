@@ -1,10 +1,9 @@
 import './style'
-import Button from './button'
+
+import { Button } from '@brickdoc/brickdoc-headless-design-system'
+export type { ButtonProps } from '@brickdoc/brickdoc-headless-design-system'
 
 // export * from './demos'
-
-export type { ButtonProps, ButtonShape, ButtonType } from './button'
-export type { ButtonGroupProps } from './button-group'
 export type { SizeType as ButtonSize } from '../config-provider/SizeContext'
 
-export default Button
+export { Button }

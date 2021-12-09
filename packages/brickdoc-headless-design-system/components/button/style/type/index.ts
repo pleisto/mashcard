@@ -1,4 +1,4 @@
-export const priority = {
+export const type = {
   primary: {
     backgroundColor: '$color-primary-default',
     color: '$white',
@@ -15,7 +15,7 @@ export const priority = {
 
   secondary: {
     backgroundColor: '$white',
-    border: '1px solid $color-broder-secondary',
+    border: '1px solid $color-border-secondary',
     color: '$color-type-primary',
     '&:hover, &:focus, &:active': {
       textDecoration: 'none',
@@ -28,15 +28,15 @@ export const priority = {
     color: '$color-type-primary'
   },
 
-  ghost: {
-    backgroundColor: '$white',
+  text: {
+    backgroundColor: 'transparent',
     color: '$color-type-primary',
     '&:hover, &:focus, &:active': {
       textDecoration: 'none',
       backgroundColor: '$color-background-primary'
     }
   },
-  'ghost-press': {
+  'text-press': {
     backgroundColor: '$grey-3',
     color: '$color-type-primary'
     // transition: 'background .3s $ease-in-out'

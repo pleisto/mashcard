@@ -20,8 +20,6 @@
     "lint:fix": "yarn lint:eslint:fix && yarn lint:rubocop:fix",
     "lint:eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
     "lint:eslint:fix": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx ./",
-    "lint:stylelint": "stylelint --cache **/*.css **/*.less",
-    "lint:stylelint:fix": "stylelint --cache --fix **/*.css **/*.less",
     "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
     "lint:rubocop:fix": "bundle exec rubocop --config .rubocop.yml -a",
     "lint:brakeman": "bundle exec brakeman --no-pager --exit-on-warn",
@@ -129,8 +127,6 @@
     "postcss-preset-env": "^7.0.1",
     "postcss-will-change": "^4.0.1",
     "prettier": "^2.5.1",
-    "stylelint": "^14.1.0",
-    "stylelint-config-standard": "^24.0.0",
     "typescript": "^4.5.2",
     "vite": "^2.7.1",
     "vite-plugin-pwa": "^0.11.10",
@@ -148,6 +144,8 @@
     "@tiptap/extension-placeholder": "2.0.0-beta.26",
     "@tiptap/suggestion": "2.0.0-beta.61",
     "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.8#.yarn/patches/vite-plugin-mdx-npm-3.5.8-357f666ad6",
-    "preact": "10.6.2"
+    "preact": "10.6.2",
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11"
   }
 }

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router'
 import { useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
+import classNames from 'classnames'
 
 import styles from './index.module.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -30,11 +31,12 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
     <Button
       data-testid={TEST_ID_ENUM.page.DocumentPage.addPageButton.id}
       type="text"
-      className={styles.createBtn}
+      className={classNames([styles.createBtn, 'brk-btn-text'])}
       onClick={onClick}
       loading={createBlockLoading}
-      disabled={createBlockLoading}>
-      <Add />
+      icon={<Add />}
+      disabled={createBlockLoading}
+    >
       {t('blocks.create_pages')}
     </Button>
   )

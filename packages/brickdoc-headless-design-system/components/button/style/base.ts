@@ -2,7 +2,7 @@ export const baseStyles = {
   lineHeight: '$2xl',
   display: 'inline-flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   margin: 0,
   cursor: 'pointer',
   userSelect: 'none',

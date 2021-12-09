@@ -134,10 +134,10 @@ export function colorShadeMixin(colorStr: string, shade: string, isInverted = 'f
   return !shadedColor ? null : color2cssStr(shadedColor)
 }
 
-export function colorShadeMixinString(colorStr: string, shade: string, isInverted = 'false'): string {
+export function colorShadeMixinString(colorStr: string, shade: Shade, isInverted = 'false'): string {
   const color = cssStr2color(colorStr)
   if (!color) return ''
-  const shadedColor = colorWithShade(color, parseInt(shade, 10), isInverted === 'true')
+  const shadedColor = colorWithShade(color, shade, isInverted === 'true')
   return !shadedColor ? '' : color2cssStr(shadedColor)
 }
 

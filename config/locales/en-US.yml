@@ -650,6 +650,7 @@ en-US:
       new_title: Copy of %{title}
       button: Duplicate
     pin:
+      name: Pin
       add: Pin page
       add_tooltip: Pin this page
       remove: Unpin page

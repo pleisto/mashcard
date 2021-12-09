@@ -10,7 +10,7 @@ describe('tableBlockFilter', () => {
     const deleteEmptyRow = (): void => {
       cy.findAllByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.id).last().rightclick()
       cy.findByTestId(TEST_ID_ENUM.editor.tableBlock.row.contextMenu.deleteButton.id).click()
-      cy.get('.brk-modal-confirm-btns > .brk-btn:first').click()
+      cy.get('.brk-modal-confirm-btns > button:first').click()
     }
 
     // delete 3 empty rows
@@ -78,7 +78,9 @@ describe('tableBlockFilter', () => {
     cy.findByTestId(TEST_ID_ENUM.editor.tableBlock.filter.addGroupButton.id).click()
     cy.get('.table-toolbar-item-group-panel.cascade .table-toolbar-item-footer-button').click()
     cy.findAllByTestId(TEST_ID_ENUM.editor.tableBlock.filter.addGroupButton.id).last().click()
-    cy.get('.table-toolbar-item-group-panel.cascade .table-toolbar-item-group-panel .table-toolbar-item-footer-button').click()
+    cy.get(
+      '.table-toolbar-item-group-panel.cascade .table-toolbar-item-group-panel .table-toolbar-item-footer-button'
+    ).click()
     cy.findAllByTestId(TEST_ID_ENUM.editor.tableBlock.filter.addGroupButton.id).last().click()
     cy.get(
       '.table-toolbar-item-group-panel.cascade .table-toolbar-item-group-panel .table-toolbar-item-group-panel .table-toolbar-item-footer-button'

@@ -11,10 +11,9 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
     slashmenu.heading
   </div>
   <button
-    class="brk-btn brk-btn-text slash-menu-item"
+    class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
-    type="button"
   >
     <div
       class="menu-item-icon-wrapper"
@@ -39,10 +38,9 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
     </div>
   </button>
   <button
-    class="brk-btn brk-btn-text slash-menu-item"
+    class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
-    type="button"
   >
     <div
       class="menu-item-icon-wrapper"
@@ -67,10 +65,9 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
     </div>
   </button>
   <button
-    class="brk-btn brk-btn-text slash-menu-item"
+    class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
-    type="button"
   >
     <div
       class="menu-item-icon-wrapper"

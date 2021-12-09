@@ -1,11 +1,9 @@
-import type * as Stitches from '@stitches/react'
-import { priority } from './priority'
 import { size } from './size'
 import { state } from './state'
-// import { types } from './types'
+import { type } from './type'
 
-export const variants: Stitches.VariantProps<typeof state> = {
-  priority,
+export const variants = {
+  type,
   size,
   ...state
 }

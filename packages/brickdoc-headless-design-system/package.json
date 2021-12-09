@@ -4,44 +4,32 @@
   "description": "Brickdoc design system and React components implementation",
   "license": "Apache-2.0",
   "scripts": {
-    "cleanup": "tsc --build --clean",
-    "storybook": "NODE_ENV=dev vite serve --config ./vite.config.ts",
-    "build-storybook": "rm -rf storybook-static && vite build --config ./vite.config.ts"
+    "cleanup": "tsc --build --clean"
   },
   "main": "./components/index.tsx",
   "module": "./components/index.tsx",
   "files": [
     "components"
   ],
-  "sideEffects": [
-    "*.less",
-    "*.css",
-    "**/style/*"
-  ],
+  "sideEffects": false,
   "dependencies": {
     "@brickdoc/design-colors": "workspace:packages/brickdoc-design-colors",
     "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons",
     "@react-aria/button": "^3.3.4",
-    "@react-aria/interactions": "^3.6.0",
-    "@stitches/core": "^1.2.5",
-    "@stitches/react": "^1.2.5",
-    "classnames": "^2.3.1",
+    "@react-aria/interactions": "^3.7.0",
+    "@stitches/core": "^1.2.6",
+    "@stitches/react": "^1.2.6",
+    "ahooks": "^3.0.1",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
     "@types/lodash-es": "^4.17.5",
     "dayjs": "^1.10.7",
-    "i18next": "^21.4.0",
-    "less": "^4.1.2",
+    "i18next": "^21.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.14.3",
-    "typescript": ">=4.4.4",
-    "vite": "^2.7.1",
-    "vite-plugin-mdx": "^3.5.10",
-    "vite-plugin-react": "^4.0.1"
+    "typescript": ">=4.4.4"
   },
   "peerDependencies": {
     "dayjs": ">=1.10.7",

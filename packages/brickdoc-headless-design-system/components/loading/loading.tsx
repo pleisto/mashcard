@@ -1,16 +1,35 @@
 import React from 'react'
-import mp4 from './assets/loading.mp4'
+import mp4Url from './assets/loading.mp4'
+import { styled } from '../theme'
 
-export interface ButtonProps {
-  className?: string
+interface LoadingProps {
+  delayDuration?: number
 }
 
-const Loading: React.FC<ButtonProps> = ({ className, ...rest }) => {
+const Launcher = styled('div', {
+  width: '100vw',
+  height: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+})
+
+export const Loading: React.FC<LoadingProps> = ({ delayDuration }) => {
   return (
-    <video className={className} autoPlay playsInline muted loop {...rest}>
-      <source src={mp4} type="video/mp4" />
-    </video>
+    <Launcher>
+      <video
+        autoPlay
+        playsInline
+        width={75}
+        height={120}
+        muted
+        loop
+        x-webkit-airplay="deny"
+        disableRemotePlayback
+        preload="auto"
+      >
+        <source src={mp4Url} type="video/mp4" />
+      </video>
+    </Launcher>
   )
 }
-
-export default Loading

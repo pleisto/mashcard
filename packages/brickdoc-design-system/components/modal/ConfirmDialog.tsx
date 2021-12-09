@@ -46,7 +46,7 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
   )
 
   // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
-  const okType = props.okType || 'ghost'
+  const okType = props.okType || 'text'
   const contentPrefixCls = `${prefixCls}-confirm`
   // 默认为 true，保持向下兼容
   const okCancel = 'okCancel' in props ? props.okCancel : true
@@ -68,7 +68,7 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
     <ActionButton
       actionFn={onCancel}
       close={close}
-      type="ghost"
+      type="text"
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}

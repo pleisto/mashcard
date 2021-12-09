@@ -5,7 +5,8 @@ declare module '*.less' {
 
 declare module '*.mp4' {
   const src: string
-  export = src
+  // eslint-disable-next-line import/no-default-export
+  export default src
 }
 
 declare namespace JSX {

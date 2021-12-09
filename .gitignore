@@ -52,7 +52,6 @@ node_modules
 !/storage/.keep
 
 .eslintcache
-.stylelintcache
 .byebug_history
 public/esm-bundle/
 public/packs-test/

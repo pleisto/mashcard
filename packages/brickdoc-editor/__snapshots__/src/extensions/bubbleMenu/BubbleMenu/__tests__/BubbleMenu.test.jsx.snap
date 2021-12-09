@@ -12,9 +12,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-rte-h1"
@@ -37,9 +36,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-rte-h2"
@@ -62,9 +60,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-rte-h3"
@@ -87,9 +84,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-rte-h4"
@@ -114,9 +110,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-rte-h5"
@@ -145,9 +140,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-bold-words"
@@ -166,9 +160,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-italics"
@@ -187,9 +180,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-text-underline"
@@ -212,9 +204,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-strikethrough"
@@ -241,9 +232,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text brk-dropdown-trigger bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium brk-dropdown-trigger bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-font-size bubble-menu-item-icon"
@@ -284,9 +274,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-list-unordered"
@@ -305,9 +294,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-list-ordered"
@@ -330,9 +318,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-link bubble-menu-item-icon"
@@ -369,9 +356,8 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brk-btn brk-btn-text bubble-menu-item"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium bubble-menu-item"
         role="menuitem"
-        type="button"
       >
         <span
           class="brk-icon brk-icon-formula"

@@ -35,7 +35,13 @@ export const PinMenu: React.FC<PinMenuProps> = ({ docMeta, className }) => {
   return (
     <>
       <Tooltip title={t(docMeta.pin ? 'pin.remove_tooltip' : 'pin.add_tooltip')}>
-        <Button className={className} type="text" onClick={onClick} disabled={blockPinOrUnpinLoading}>
+        <Button
+          className={className}
+          type="text"
+          aria-label={t('pin.name')}
+          onClick={onClick}
+          disabled={blockPinOrUnpinLoading}
+        >
           {blockPinOrUnpinLoading ? <></> : iconRender}
         </Button>
       </Tooltip>

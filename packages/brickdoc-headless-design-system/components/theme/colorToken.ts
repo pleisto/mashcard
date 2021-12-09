@@ -20,9 +20,9 @@ export const ColorToken = {
   'color-background-thirdary': '$grey-3',
   'color-background-acrylic': 'fade($white, 60%)',
 
-  'color-broder-primary': '$grey-3',
-  'color-broder-secondary': '$grey-5',
-  'color-broder-thirdary': 'fade($black, 10%)',
+  'color-border-primary': '$grey-3',
+  'color-border-secondary': '$grey-5',
+  'color-border-thirdary': 'fade($black, 10%)',
 
   'color-divider-primary': '$grey-2',
   'color-divider-secondary': '$grey-4',

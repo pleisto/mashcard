@@ -21,31 +21,26 @@ exports[`Table matches correct snapshot 1`] = `
       class="table-toolbar-actions"
     >
       <button
-        class="brk-btn brk-btn-text table-toolbar-text-button"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium table-toolbar-text-button"
         data-testid="editor-table-block-toolbar-filter-button"
-        type="button"
       >
         <span>
           table.filter.text
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-text table-toolbar-text-button"
+        class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium table-toolbar-text-button"
         data-testid="editor-table-block-toolbar-sort-button"
-        type="button"
       >
         <span>
           table.sort.text
         </span>
       </button>
       <button
-        class="brk-btn brk-btn-primary table-toolbar-add-button"
+        class="brk-c-jHpzAy brk-c-jHpzAy-cmKnOF-type-primary brk-c-jHpzAy-dgJOHH-size-medium table-toolbar-add-button"
         data-testid="editor-table-block-toolbar-add-button"
-        type="button"
       >
-        <span>
-          table.new_row.text
-        </span>
+        table.new_row.text
         <div
           class="table-toolbar-add-button-icon"
         >
@@ -113,9 +108,8 @@ exports[`Table matches correct snapshot 1`] = `
             style="box-sizing: border-box; flex: 180 0 auto; min-width: 30px; width: 180px; position: relative; justify-content: flex-start; align-items: center; display: inline-flex;"
           >
             <button
-              class="brk-btn brk-btn-text table-block-add-column-button"
+              class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium table-block-add-column-button"
               data-testid="editor-table-block-column-add-button"
-              type="button"
             >
               <span
                 class="brk-icon brk-icon-plus"

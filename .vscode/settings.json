@@ -6,9 +6,7 @@
   "files.associations": {
     ".babelrc": "json",
     ".eslintrc": "jsonc",
-    ".eslintrc*.json": "jsonc",
-    ".stylelintrc": "jsonc",
-    "stylelintrc": "jsonc"
+    ".eslintrc*.json": "jsonc"
   },
   "search.useIgnoreFiles": true,
   "files.exclude": {
@@ -35,7 +33,7 @@
     "**/node_modules": true,
     "tmp": true
   },
-  "editor.rulers": [140],
+  "editor.rulers": [120],
   "cSpell.diagnosticLevel": "Hint",
   "[plaintext]": {
     "files.insertFinalNewline": false
@@ -110,7 +108,6 @@
     "PXAT",
     "Schneier's",
     "STRBYTES",
-    "stylelint",
     "uncountables",
     "varchar",
     "vite",

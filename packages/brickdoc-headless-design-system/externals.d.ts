@@ -5,7 +5,7 @@ declare module '*.less' {
 
 declare module '*.mp4' {
   const src: string
-  export default src
+  export = src
 }
 
 declare namespace JSX {

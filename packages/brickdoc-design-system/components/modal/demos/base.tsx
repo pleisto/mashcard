@@ -102,10 +102,10 @@ const Base = () => (
       <BasicApp />
       <Button onClick={showConfirm}>Confirm</Button>
       <Button onClick={showPromiseConfirm}>With promise</Button>
-      <Button onClick={showDeleteConfirm} type="dashed">
+      <Button onClick={showDeleteConfirm} type="primary">
         Delete
       </Button>
-      <Button onClick={showPropsConfirm} type="dashed">
+      <Button onClick={showPropsConfirm} type="secondary">
         With extra props
       </Button>
     </Space>

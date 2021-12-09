@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { composeRef } from 'rc-util/lib/ref'
 import { Search as SearchOutlined } from '../icon'
 import Input, { InputProps } from './Input'
-import Button from '../button'
+import { Button } from '../button'
 import SizeContext from '../config-provider/SizeContext'
 import { ConfigContext } from '../config-provider'
 import { cloneElement } from '../_util/reactNode'
@@ -70,7 +70,7 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
 
   let button: React.ReactNode
   const enterButtonAsElement = (enterButton || {}) as React.ReactElement
-  const isAntdButton = enterButtonAsElement.type && (enterButtonAsElement.type as typeof Button).__ANT_BUTTON
+  const isAntdButton = enterButtonAsElement.type && (enterButtonAsElement.type as typeof Button)
   if (isAntdButton || enterButtonAsElement.type === 'button') {
     button = cloneElement(enterButtonAsElement, {
       onMouseDown,
@@ -84,11 +84,12 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
         : {})
     })
   } else {
+    const btnSize: 'small' | 'medium' | 'large' = size === 'middle' ? 'medium' : size
     button = (
       <Button
         className={btnClassName}
         type={enterButton ? 'primary' : undefined}
-        size={size}
+        size={btnSize}
         disabled={disabled}
         key="enterButton"
         onMouseDown={onMouseDown}

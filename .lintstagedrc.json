@@ -2,6 +2,5 @@
   "*.(ts|tsx|js|jsx)": ["eslint --cache --fix", "prettier --write"],
   "*.(json|yml|md|graphql)": ["prettier --write"],
   "(app|lib|config|gems)/**/*.rb": ["bundle exec rubocop --parallel --force-exclusion"],
-  "*.(css|less)": ["stylelint --cache --fix", "prettier --write"],
   "packages/brickdoc-design-icons/assets/**/*.svg": ["yarn workspace @brickdoc/design-icons generator"]
 }

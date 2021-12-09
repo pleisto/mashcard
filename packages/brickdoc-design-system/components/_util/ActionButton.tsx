@@ -1,9 +1,8 @@
 import * as React from 'react'
-import Button from '../button'
-import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'
+import { Button, ButtonProps } from '../button'
 
 export interface ActionButtonProps {
-  type?: LegacyButtonType
+  type?: ButtonProps['type']
   actionFn?: (...args: any[]) => any | PromiseLike<any>
   close: Function
   autoFocus?: boolean
@@ -92,9 +91,9 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
     handlePromiseOnOk(returnValueOfOnOk)
   }
 
-  const { type, children, prefixCls, buttonProps } = props
+  const { type, children, buttonProps } = props
   return (
-    <Button {...convertLegacyProps(type)} onClick={onClick} loading={loading} prefixCls={prefixCls} {...buttonProps} ref={ref}>
+    <Button type={type} onClick={onClick} loading={loading} {...buttonProps} ref={ref}>
       {children}
     </Button>
   )

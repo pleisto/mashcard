@@ -22,7 +22,7 @@ describe('linkBlock', () => {
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).realHover()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.menuButton.id).click()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.deleteButton.id).click()
-      cy.get('.brk-modal-confirm-btns > .brk-btn:first').click()
+      cy.get('.brk-modal-confirm-btns > button:first').click()
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).should('not.exist')
     })
 

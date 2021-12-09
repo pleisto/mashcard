@@ -27,7 +27,14 @@ interface PageMenuProps {
   pin: boolean
 }
 
-export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }, setPopoverKey, pageId, pin, title, titleText }) => {
+export const PageMenu: React.FC<PageMenuProps> = ({
+  docMeta: { id, webid, host },
+  setPopoverKey,
+  pageId,
+  pin,
+  title,
+  titleText
+}) => {
   const navigate = useNavigate()
   const client = useApolloClient()
   const editor = useReactiveVar(editorVar)
@@ -70,8 +77,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
     }
   }
 
-  const onClickPlus = async (event: { stopPropagation: () => any }): Promise<void> => {
-    void event.stopPropagation()
+  const onPressAddSubPage = async (): Promise<void> => {
     const input = { parentId: pageId, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
@@ -256,7 +262,12 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
 
   return (
     <>
-      <Dropdown trigger={['contextMenu']} overlay={menu} visible={dropdownVisible} onVisibleChange={onDropdownVisibleChange}>
+      <Dropdown
+        trigger={['contextMenu']}
+        overlay={menu}
+        visible={dropdownVisible}
+        onVisibleChange={onDropdownVisibleChange}
+      >
         <div className={styles.menu}>
           {linkData}
           <div>
@@ -269,7 +280,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({ docMeta: { id, webid, host }
               <Button
                 className={styles.addBtn}
                 type="text"
-                onClick={onClickPlus}
+                onPress={onPressAddSubPage}
                 loading={createBlockLoading}
                 disabled={createBlockLoading}
               >

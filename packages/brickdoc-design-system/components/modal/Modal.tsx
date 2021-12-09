@@ -3,8 +3,7 @@ import Dialog from 'rc-dialog'
 import classNames from 'classnames'
 import { Close as CloseOutlined } from '../icon'
 
-import Button from '../button'
-import { LegacyButtonType, ButtonProps, convertLegacyProps } from '../button/button'
+import { Button, ButtonProps } from '../button'
 import LocaleReceiver from '../locale-provider/LocaleReceiver'
 import { ConfigContext, DirectionType } from '../config-provider'
 import { canUseDocElement } from '../_util/styleChecker'
@@ -55,7 +54,7 @@ export interface ModalProps {
   /** 确认按钮文字 */
   okText?: React.ReactNode
   /** 确认按钮类型 */
-  okType?: LegacyButtonType
+  okType?: ButtonProps['type']
   /** 取消按钮文字 */
   cancelText?: React.ReactNode
   /** 点击蒙层是否允许关闭 */
@@ -101,7 +100,7 @@ export interface ModalFuncProps {
   centered?: boolean
   width?: string | number
   okText?: React.ReactNode
-  okType?: LegacyButtonType
+  okType?: ButtonProps['type']
   cancelText?: React.ReactNode
   icon?: React.ReactNode
   mask?: boolean
@@ -143,7 +142,7 @@ const Modal: React.FC<ModalProps> = props => {
         <Button onClick={handleCancel} {...props.cancelButtonProps}>
           {cancelText || locale.cancelText}
         </Button>
-        <Button {...convertLegacyProps(okType)} loading={confirmLoading} onClick={handleOk} {...props.okButtonProps}>
+        <Button type={okType} loading={confirmLoading} onClick={handleOk} {...props.okButtonProps}>
           {okText || locale.okText}
         </Button>
       </>
@@ -168,7 +167,9 @@ const Modal: React.FC<ModalProps> = props => {
   const defaultFooter = <LocaleReceiver componentName="Modal">{renderFooter}</LocaleReceiver>
 
   const closeIconToRender = (
-    <span className={`${prefixCls}-close-x`}>{closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}</span>
+    <span className={`${prefixCls}-close-x`}>
+      {closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}
+    </span>
   )
 
   const wrapClassNameExtended = classNames(wrapClassName, {
@@ -197,7 +198,7 @@ Modal.defaultProps = {
   width: 520,
   confirmLoading: false,
   visible: false,
-  okType: 'primary' as LegacyButtonType
+  okType: 'primary'
 }
 
 export default Modal

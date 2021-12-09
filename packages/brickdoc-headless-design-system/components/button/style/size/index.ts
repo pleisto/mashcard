@@ -1,17 +1,18 @@
+import { theme } from '../../../theme'
 export const size = {
-  sm: {
-    padding: '$2xs $sm',
-    lineHeight: '$lg',
-    minWidth: '$lg'
+  small: {
+    padding: `${theme.space['2xs']} ${theme.space.sm}`,
+    lineHeight: theme.space.lg,
+    minWidth: theme.space.lg
   },
-  md: {
-    padding: '$xs $lg',
-    lineHeight: '$xl',
-    minWidth: '$xl'
+  medium: {
+    padding: `${theme.space.xs} ${theme.space.lg}`,
+    lineHeight: theme.space.xl,
+    minWidth: theme.space.xl
   },
-  lg: {
-    padding: '$sm $lg',
-    lineHeight: '$2xl',
-    minWidth: '$2xl'
+  large: {
+    padding: `${theme.space.sm} ${theme.space.lg}`,
+    lineHeight: theme.space['2xl'],
+    minWidth: theme.space['2xl']
   }
 }

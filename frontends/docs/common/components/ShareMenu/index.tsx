@@ -25,7 +25,7 @@ export const ShareMenu: React.FC<ShareMenuProps> = ({ docMeta, className }) => {
     <>
       <Tooltip title={t('share.tooltip')}>
         <Button className={className} type="text" onClick={onClick}>
-          <Icon.Share />
+          <Icon.Share aria-label={t('share.menu')} />
         </Button>
       </Tooltip>
       {sharePopover}

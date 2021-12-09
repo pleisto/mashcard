@@ -19,6 +19,7 @@
     "**/style/*"
   ],
   "dependencies": {
+    "@brickdoc/brickdoc-headless-design-system": "workspace:^",
     "@brickdoc/design-colors": "workspace:packages/brickdoc-design-colors",
     "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons",
     "@ctrl/tinycolor": "^3.4.0",

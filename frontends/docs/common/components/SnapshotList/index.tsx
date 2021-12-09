@@ -1,7 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { List } from '@brickdoc/design-system'
-import { Button } from '@brickdoc/brickdoc-headless-design-system'
+import { List, Button } from '@brickdoc/design-system'
 import { DocumentPage } from '@/docs/pages/DocumentPage'
 import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMutation } from '@/BrickdocGraphQL'
 import styles from './index.module.less'
@@ -29,7 +28,9 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 }) => {
   const { t } = useDocsI18n()
   const { data } = useGetBlockSnapshotsQuery({ variables: { id: docMeta.id } })
-  const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({ refetchQueries: [queryChildrenBlocks, queryBlockInfo] })
+  const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({
+    refetchQueries: [queryChildrenBlocks, queryBlockInfo]
+  })
 
   const onRestore = async (): Promise<void> => {
     setConfirmLoading(true)
@@ -45,7 +46,14 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
         <div className={styles.side}>
           <div className={styles.snapshot}>{snapshots}</div>
           <div className={styles.actionPanel}>
-            <Button className={styles.button} priority="secondary" disabled={disabled} loading={loading} onClick={onRestore} block>
+            <Button
+              className={styles.button}
+              type="secondary"
+              disabled={disabled}
+              loading={loading}
+              onClick={onRestore}
+              block
+            >
               {loading ? t('snapshots.restoring') : t('snapshots.restore')}
             </Button>
             <Button className={styles.button} onClick={onCleanup} block>
@@ -88,7 +96,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
       split={false}
       renderItem={item => (
         <List.Item className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}>
-          <Button priority="ghost" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
+          <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
             <span className={styles.title}>{item.name || t('title.untitled')}</span>
             <span className={styles.desc}>{item.relativeTime}</span>
           </Button>
@@ -100,7 +108,9 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   return skelecton(
     <div className={styles.page}>
       {snapshotTitle}
-      <DocumentPage docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }} />
+      <DocumentPage
+        docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }}
+      />
     </div>,
     snapshotData,
     !currentVersion || confirmLoading

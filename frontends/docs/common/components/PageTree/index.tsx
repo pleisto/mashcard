@@ -88,7 +88,16 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   const titleRender = (node: any): React.ReactElement => {
     const pin = pinIds.includes(node.key)
 
-    return <PageMenu docMeta={docMeta} setPopoverKey={setPopoverKey} pin={pin} pageId={node.key} title={node.title} titleText={node.text} />
+    return (
+      <PageMenu
+        docMeta={docMeta}
+        setPopoverKey={setPopoverKey}
+        pin={pin}
+        pageId={node.key}
+        title={node.title}
+        titleText={node.text}
+      />
+    )
   }
 
   // TODO fix type
@@ -180,7 +189,9 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     if (!cursor) {
       return []
     }
-    return blocks.filter(block => block.parentId === cursor).flatMap(child => recursionFilter(blocks, child.id).concat([child]))
+    return blocks
+      .filter(block => block.parentId === cursor)
+      .flatMap(child => recursionFilter(blocks, child.id).concat([child]))
   }
   const pinRootBlocks: BlockType[] = pageBlocks.filter(block => pinIds.includes(block.id))
   const pinChildrenBlocks = pinRootBlocks.map(block => block.id).flatMap(id => recursionFilter(pageBlocks, id))
@@ -207,11 +218,11 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   )
 
   return pageBlocks.length ? (
-    <>
+    <div className={styles.pageTree}>
       {pinTree}
       <h2>Pages</h2>
       {treeElement(pageBlocks, draggable)}
-    </>
+    </div>
   ) : (
     <></>
   )

@@ -22,7 +22,7 @@ export { default as BackTop } from './back-top'
 */
 
 export type { ButtonProps } from './button'
-export { default as Button } from './button'
+export { Button } from './button'
 
 /*
 export type { CardProps } from './card'

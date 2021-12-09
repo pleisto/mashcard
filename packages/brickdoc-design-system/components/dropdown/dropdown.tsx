@@ -2,7 +2,6 @@ import * as React from 'react'
 import RcDropdown from 'rc-dropdown'
 import classNames from 'classnames'
 import { Right as RightOutlined } from '../icon'
-import DropdownButton from './dropdown-button'
 import { ConfigContext } from '../config-provider'
 import devWarning from '../_util/devWarning'
 import { tuple } from '../_util/type'
@@ -49,11 +48,7 @@ export interface DropdownProps {
   openClassName?: string
 }
 
-export interface DropdownInterface extends React.FC<DropdownProps> {
-  Button: typeof DropdownButton
-}
-
-const Dropdown: DropdownInterface = props => {
+const Dropdown: React.FC<DropdownProps> = props => {
   const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(ConfigContext)
 
   const getTransitionName = () => {
@@ -122,7 +117,15 @@ const Dropdown: DropdownInterface = props => {
     return direction === 'rtl' ? ('bottomRight' as Placement) : ('bottomLeft' as Placement)
   }
 
-  const { arrow, prefixCls: customizePrefixCls, children, trigger, disabled, getPopupContainer, overlayClassName } = props
+  const {
+    arrow,
+    prefixCls: customizePrefixCls,
+    children,
+    trigger,
+    disabled,
+    getPopupContainer,
+    overlayClassName
+  } = props
 
   const prefixCls = getPrefixCls('dropdown', customizePrefixCls)
   const child = React.Children.only(children) as React.ReactElement<any>
@@ -159,13 +162,12 @@ const Dropdown: DropdownInterface = props => {
       transitionName={getTransitionName()}
       trigger={triggerActions}
       overlay={() => renderOverlay(prefixCls)}
-      placement={getPlacement()}>
+      placement={getPlacement()}
+    >
       {dropdownTrigger}
     </RcDropdown>
   )
 }
-
-Dropdown.Button = DropdownButton
 
 Dropdown.defaultProps = {
   mouseEnterDelay: 0.15,

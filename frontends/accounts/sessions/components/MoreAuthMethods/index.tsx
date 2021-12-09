@@ -15,7 +15,7 @@ export const MoreAuthMethods: React.FC<MoreAuthMethodsProps> = ({ methods }) => 
       <nav>
         {methods.map(i => (
           <Tooltip key={i.name} title={t('sessions.login_via', { provider: t(`provider.${i.name}`) })}>
-            <Button id={`auth-btn-${i.name}`} shape="circle" icon={i.logo} onClick={i.action} />
+            <Button id={`auth-btn-${i.name}`} circle aria-label={i.name} icon={i.logo} onClick={i.action} />
           </Tooltip>
         ))}
       </nav>

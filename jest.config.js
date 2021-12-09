@@ -38,7 +38,7 @@ module.exports = {
   // Jest will map files in `dist` back into their source via source maps.
   collectCoverageFrom: ['**/dist/**/*.js', '!**/@(node_modules|__tests__)/**', '!**/*.@(spec|test).js'],
   moduleNameMapper: {
-    '\\.(css|less|scss|sass|png)$': 'identity-obj-proxy'
+    '\\.(css|less|scss|sass|png|mp4|webp|gif)$': 'identity-obj-proxy'
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
   timers: 'fake',
