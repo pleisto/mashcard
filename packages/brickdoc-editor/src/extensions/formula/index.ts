@@ -90,7 +90,10 @@ export const FormulaExtension = Node.create<FormulaOptions>({
       setFormulaBlock:
         (position: number) =>
         ({ commands }) => {
-          return commands.insertContentAt(position, { type: this.name, attrs: { isNew: true, formula: { type: 'FORMULA' } } })
+          return commands.insertContentAt(position + 1, {
+            type: this.name,
+            attrs: { isNew: true, formula: { type: 'FORMULA' } }
+          })
         }
     }
   }
