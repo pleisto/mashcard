@@ -8,3 +8,5 @@ export { Loading } from './loading'
 
 export type { AlertProps } from './alert'
 export { default as Alert } from './alert'
+
+export { default as Tree } from './tree'

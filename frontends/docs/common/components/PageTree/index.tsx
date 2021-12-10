@@ -10,6 +10,7 @@ import {
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
 import { Tree, TreeProps } from '@brickdoc/design-system'
+// import { Tree } from '@brickdoc/brickdoc-headless-design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -113,6 +114,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
           key: b.id,
           value: b.id,
           parentId: b.parentId,
+          isOpen: docMeta.id === b.id,
           sort: b.sort,
           icon: getIcon(b),
           nextSort: b.nextSort,
@@ -143,6 +145,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     const treeData = array2Tree(flattedData, { id: 'key' })
 
     const selectedKeys = [docMeta.id, popoverKey].filter(k => !!k) as string[]
+    console.log([docMeta.id, popoverKey], '[docMeta.id, popoverKey]')
 
     return (
       <Tree

@@ -1,13 +1,15 @@
 import { createStitches } from '@stitches/react'
 import { Colors } from './colors'
+import { Palette } from './palette'
 import { Spacing } from './spacing'
 import { FontSizes } from './fontSizes'
 import { Transitions } from './transitions'
+import { Shadows } from './shadows'
 
 export const { styled, css, theme } = createStitches({
   prefix: 'brk',
   theme: {
-    colors: Colors,
+    colors: Palette(Colors),
     space: Spacing,
     fontSizes: FontSizes,
     fonts: {
@@ -21,7 +23,7 @@ export const { styled, css, theme } = createStitches({
     borderWidths: {},
     borderStyles: {},
     radii: Spacing,
-    shadows: {},
+    shadows: Shadows,
     zIndices: {},
     transitions: Transitions
   }

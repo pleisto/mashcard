@@ -46,7 +46,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const getAttachmentUrl = useBlobGetter('attachment', data?.childrenBlocks)
   const docIconGetter = useBlobGetter('icon', data?.childrenBlocks)
   const docCoverGetter = useBlobGetter('cover', data?.childrenBlocks)
-  
+
   const getDocIconUrl = (): string | undefined => {
     if (!editor || editor.isDestroyed) return undefined
     return docIconGetter(editor.state.doc)
