@@ -1,1 +1,0 @@
-export { Loading } from './loading'

@@ -1739,7 +1739,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-i18next: ^11.14.3
-    typescript: ">=4.4.4"
+    typescript: ^4.5.2
   peerDependencies:
     dayjs: ">=1.10.7"
     i18next: ">=21.3.3"
@@ -1785,7 +1785,7 @@ __metadata:
     "@types/lodash-es": ^4.17.5
     classnames: ^2.3.1
     dayjs: ^1.10.7
-    i18next: ^21.5.5
+    i18next: ^21.6.0
     less: ^4.1.2
     lodash-es: ^4.17.21
     rc-checkbox: ^2.3.2
@@ -1809,7 +1809,7 @@ __metadata:
     react-dom: ^17.0.2
     react-i18next: ^11.14.3
     scroll-into-view-if-needed: ^2.2.28
-    typescript: ">=4.4.4"
+    typescript: ">=4.5.2"
     vite-plugin-mdx: ^3.5.10
   peerDependencies:
     dayjs: ">=1.10.7"
@@ -1827,7 +1827,7 @@ __metadata:
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader"
-    "@pdftron/webviewer": ^8.1.0
+    "@pdftron/webviewer": ^8.2.0
     "@tiptap/core": 2.0.0-beta.106
     "@tiptap/extension-blockquote": 2.0.0-beta.15
     "@tiptap/extension-bold": 2.0.0-beta.15
@@ -1859,7 +1859,7 @@ __metadata:
     "@types/react-table": ^7.7.7
     dayjs: ^1.10.7
     highlight.js: ^11.3.1
-    i18next: ^21.4.0
+    i18next: ^21.6.0
     re-resizable: ^6.9.1
     react: ^17.0.2
     react-dnd: ^14.0.4
@@ -1868,8 +1868,8 @@ __metadata:
     react-medium-image-zoom: ^4.3.5
     react-pdf: ^5.5.0
     react-table: ^7.7.0
-    tippy.js: ^6.3.4
-    typescript: ">=4.4.4"
+    tippy.js: ^6.3.7
+    typescript: ^4.5.2
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -1971,11 +1971,11 @@ __metadata:
     eslint-plugin-react-hooks: ^4.3.0
     eslint-plugin-security-node: ^1.0.14
     fs-extra: ^10.0.0
-    graphql: ^16.0.1
+    graphql: ^16.1.0
     graphql-ruby-client: ^1.10.4
     graphql-tag: ^2.12.6
     husky: ^7.0.4
-    i18next: ^21.5.6
+    i18next: ^21.6.0
     i18next-http-backend: ^1.3.1
     identity-obj-proxy: ^3.0.0
     is-ci: ^3.0.1
@@ -2009,7 +2009,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@brickdoc/test-helper@workspace:packages/brickdoc-test-helper"
   dependencies:
-    typescript: ">=4.4.4"
+    typescript: ^4.5.2
   languageName: unknown
   linkType: soft
 
@@ -3284,10 +3284,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pdftron/webviewer@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "@pdftron/webviewer@npm:8.1.0"
-  checksum: d86f8d6df559a74744702186bba39a8959c8b4d43f390b2ec8a6cdcabffe627a9f52f297cff53d03419f7f1da4182d52c80a6496d35c015b23820dd7affcf58b
+"@pdftron/webviewer@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "@pdftron/webviewer@npm:8.2.0"
+  checksum: e3de7150c427c2ec25d739396c6ef33957955024af0f1500aef260e5a4d4c456af89f764b382f319c801d78e3d6eabf4f53092a1ecd3c15836c4a92aaaaab712
   languageName: node
   linkType: hard
 
@@ -10490,10 +10490,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16.0.1":
-  version: 16.0.1
-  resolution: "graphql@npm:16.0.1"
-  checksum: e2fbddc78ac93b84af5b1871cdced5ce796102373b91f888983e8bae26856788833aa641f5da15b9e4da05cef2edcc82b744a86a27e7e1ef6c9ce422571ab16c
+"graphql@npm:^16.1.0":
+  version: 16.1.0
+  resolution: "graphql@npm:16.1.0"
+  checksum: fa393f0e3d284a681606a3296aaa902e730036af89ae0142f91d72f7053c59627df65fc5fdac48f46d6c1f07f4406411ac4948b317621de729e3ccc8980dec1f
   languageName: node
   linkType: hard
 
@@ -10947,24 +10947,6 @@ __metadata:
   dependencies:
     cross-fetch: 3.1.4
   checksum: 4ee1d241f562e56b45f7125a3aee73517623a1af3eca7a4c5af8c537c732ed848268fde68c44fce3a34dec2ac2e30e8e5a4f8679abd3de0241fbb72d2f4fd65f
-  languageName: node
-  linkType: hard
-
-"i18next@npm:^21.4.0":
-  version: 21.4.0
-  resolution: "i18next@npm:21.4.0"
-  dependencies:
-    "@babel/runtime": ^7.12.0
-  checksum: cd26c166df08921e385fe97e99b019a4a6552767bbb236081b668c04af27c87c90f21d3239e5f8fe85630c37c6ff1a538688dc556779986af9066b520ddfb68c
-  languageName: node
-  linkType: hard
-
-"i18next@npm:^21.5.5, i18next@npm:^21.5.6":
-  version: 21.5.6
-  resolution: "i18next@npm:21.5.6"
-  dependencies:
-    "@babel/runtime": ^7.12.0
-  checksum: 24b7820b267100dad9d2ad008b507fdf2d82316336c41f6cfde909c15b0d76ef2268ed2b5ffb69335f054ed63b7b0bd296e435a6874e3cff59157cef73a83542
   languageName: node
   linkType: hard
 
@@ -18085,12 +18067,21 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tippy.js@npm:^6.3.1, tippy.js@npm:^6.3.4":
+"tippy.js@npm:^6.3.1":
   version: 6.3.4
   resolution: "tippy.js@npm:6.3.4"
   dependencies:
     "@popperjs/core": ^2.9.0
   checksum: d6c96684942b52631130cb8d3dfeaeccd5588f6ce4c749df12c4dc2e64f00f23440afccecef39b8eadb403311656e6fc549cd26b67fa11694e28ed52d2c87c66
+  languageName: node
+  linkType: hard
+
+"tippy.js@npm:^6.3.7":
+  version: 6.3.7
+  resolution: "tippy.js@npm:6.3.7"
+  dependencies:
+    "@popperjs/core": ^2.9.0
+  checksum: cac955318a65288e8d2dca05059878b003c6e66f92c94f7810f5bc5448eb6646abdf7dacc9bd00020e2611592598d0aae3a28ec9a45349a159603c3fdddce5fb
   languageName: node
   linkType: hard
 
@@ -18436,7 +18427,17 @@ typescript@^4.4.3:
   languageName: node
   linkType: hard
 
-"typescript@npm:>=4.4.4, typescript@npm:^4.5.2":
+"typescript@npm:>=4.5.2":
+  version: 4.5.3
+  resolution: "typescript@npm:4.5.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 2ac278c20418882816789ad94a5d9e7f11969db7a2a23fa09e61f2fedf3814265cbd4f89d7f5b6e1f0e7be2b5f169becf5dab913d0da255b073ea3c8c324e6d4
+  languageName: node
+  linkType: hard
+
+"typescript@npm:^4.5.2":
   version: 4.5.2
   resolution: "typescript@npm:4.5.2"
   bin:
@@ -18446,13 +18447,13 @@ typescript@^4.4.3:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@>=4.4.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
-  version: 4.5.2
-  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"
+"typescript@patch:typescript@>=4.5.2#~builtin<compat/typescript>":
+  version: 4.5.3
+  resolution: "typescript@patch:typescript@npm%3A4.5.3#~builtin<compat/typescript>::version=4.5.3&hash=493e53"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 53838d56aba6fcc947d63aa0771e5d966b1b648fddafed6e221d7f38c71219c4e036ece8cfe9e35ed80cf5a35ff4eb958934c993f99c3233773ec4f9ccd53f69
+  checksum: 3c3a664dfb66e7c45d3823cc1a4038dc506415041f39249ed3af1799a64b3065448549d9e9ba509c94335d1e2dfbe311a4b9e36574e87d248f9381d541cb8626
   languageName: node
   linkType: hard
 
@@ -18463,6 +18464,16 @@ typescript@^4.4.3:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: bd629ad0da4a15d79aaad56baf3ee7d96f6a181760d430ae77f8c5325df7bffd9edee57544a3970e3651e8b796fe03a5838a7eb39c6d46cc3866c0b23d36a0dd
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
+  version: 4.5.2
+  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 53838d56aba6fcc947d63aa0771e5d966b1b648fddafed6e221d7f38c71219c4e036ece8cfe9e35ed80cf5a35ff4eb958934c993f99c3233773ec4f9ccd53f69
   languageName: node
   linkType: hard
 

@@ -17,7 +17,7 @@
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader",
-    "@pdftron/webviewer": "^8.1.0",
+    "@pdftron/webviewer": "^8.2.0",
     "@tiptap/core": "2.0.0-beta.106",
     "@tiptap/extension-blockquote": "2.0.0-beta.15",
     "@tiptap/extension-bold": "2.0.0-beta.15",
@@ -53,15 +53,15 @@
     "react-medium-image-zoom": "^4.3.5",
     "react-pdf": "^5.5.0",
     "react-table": "^7.7.0",
-    "tippy.js": "^6.3.4"
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@types/react-pdf": "^5.0.9",
     "@types/react-table": "^7.7.7",
-    "i18next": "^21.4.0",
+    "i18next": "^21.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": ">=4.4.4"
+    "typescript": "^4.5.2"
   },
   "peerDependencies": {
     "react": "^17.0.2",
