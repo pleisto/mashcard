@@ -1,17 +1,2 @@
-import * as React from 'react'
-import './style'
-import InternalAvatar, { AvatarProps } from './avatar'
-import Group from './group'
-
-export type { AvatarProps } from './avatar'
-export type { GroupProps } from './group'
-
-export interface CompoundedComponent extends React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLElement>> {
-  Group: typeof Group
-}
-
-const Avatar = InternalAvatar as CompoundedComponent
-Avatar.Group = Group
-
-export { Group }
-export default Avatar
+export { Avatar } from '@brickdoc/brickdoc-headless-design-system'
+export type { AvatarProps } from '@brickdoc/brickdoc-headless-design-system'

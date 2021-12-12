@@ -1,7 +1,7 @@
 import { FC, useCallback, useState } from 'react'
 import { Success, Info, Caution, CloseOne, Close } from '@brickdoc/design-icons'
 
-import { AlertRoot } from './style'
+import * as AlertRoot from './style/index.style'
 
 export type Type = 'info' | 'error' | 'warning' | 'success'
 
@@ -29,7 +29,7 @@ export const Alert: FC<AlertProps> = props => {
     [setVisible, onClose]
   )
 
-  const size = title ? 'lg' : 'sm'
+  const size = title ? 'large' : 'small'
 
   const titleDom = title ? <AlertRoot.Title>{title}</AlertRoot.Title> : null
 

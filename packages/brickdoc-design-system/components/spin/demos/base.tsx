@@ -1,4 +1,4 @@
-import { Spin, Space, Alert } from '../../../components'
+import { Spin, Space } from '../../../components'
 import { Rotation as LoadingOutlined } from '../../icon'
 
 const Base = () => (
@@ -11,7 +11,7 @@ const Base = () => (
     <br />
     <br />
     <Spin tip="Loading...">
-      <Alert message="Alert message title" description="Further details about the context of this alert." type="info" />
+      <h1>22</h1>
     </Spin>
     <br />
     <br />

@@ -76,13 +76,15 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
     block.pathArray.length === 0 ? (
       <></>
     ) : (
-      <p className={styles.subTitle}>{block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}</p>
+      <p className={styles.subTitle}>
+        {block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
+      </p>
     )
 
   return (
     <div className={styles.popoverTrash} onClick={onClickLink}>
       <div className={styles.content}>
-        <Avatar className={styles.avatar} icon={avatar} />
+        <Avatar className={styles.avatar} src={avatar} />
         <div className={styles.titleWarp}>
           <p className={styles.title}>{title}</p>
           {titleData}

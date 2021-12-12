@@ -6,7 +6,8 @@
   "scripts": {
     "cleanup": "tsc --build --clean"
   },
-  "module": "./src/index.tsx",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "files": [
     "src"
   ],

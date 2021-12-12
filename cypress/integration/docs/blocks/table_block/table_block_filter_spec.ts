@@ -72,7 +72,7 @@ describe('tableBlockFilter', () => {
     cy.findByText('new option 2').click()
   })
 
-  it('allows three level nested filter group', () => {
+  it.skip('allows three level nested filter group', () => {
     cy.findByTestId(TEST_ID_ENUM.editor.tableBlock.toolbar.filterButton.id).click()
     cy.get('.table-toolbar-item-footer-button').click()
     cy.findByTestId(TEST_ID_ENUM.editor.tableBlock.filter.addGroupButton.id).click()

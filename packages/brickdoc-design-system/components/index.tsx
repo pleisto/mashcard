@@ -10,20 +10,10 @@ export { default as Anchor } from './anchor'
 export type { AutoCompleteProps } from './auto-complete'
 export { default as AutoComplete } from './auto-complete'
 
-export type { AlertProps } from './alert'
-export { default as Alert } from './alert'
-
-export type { AvatarProps } from './avatar'
-export { default as Avatar } from './avatar'
-
 /*
 export type { BackTopProps } from './back-top'
 export { default as BackTop } from './back-top'
 */
-
-export type { ButtonProps } from './button'
-export { Button } from './button'
-
 /*
 export type { CardProps } from './card'
 export { default as Card } from './card'
@@ -172,3 +162,13 @@ export { default as Tooltip } from './tooltip'
 export type { TypographyProps } from './typography'
 export { default as Typography } from './typography'
 */
+
+export { globalStyle, theme, css, styled, Loading } from '@brickdoc/brickdoc-headless-design-system'
+
+export type { ButtonProps } from './button'
+export { Button } from './button'
+
+export type { AlertProps } from './alert'
+export { Alert } from './alert'
+export type { AvatarProps } from './avatar'
+export { Avatar } from './avatar'

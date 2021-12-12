@@ -6,11 +6,11 @@
   "license": "Apache-2.0",
   "packageManager": "yarn@3.0.0",
   "sideEffects": false,
-  "main": "dist/src/index.js",
-  "module": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "tsc --build && esbuild src/less-plugin.ts --bundle --outfile=dist/less-plugin.js",
@@ -19,6 +19,6 @@
     "eslint:fix": "eslint --fix --cache ./src"
   },
   "devDependencies": {
-    "esbuild": "^0.14.2"
+    "esbuild": "^0.14.3"
   }
 }

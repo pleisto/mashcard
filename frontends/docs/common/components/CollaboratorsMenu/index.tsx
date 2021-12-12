@@ -1,5 +1,5 @@
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { Avatar, Tooltip } from '@brickdoc/design-system'
+import { Tooltip } from '@brickdoc/design-system'
 import React from 'react'
 import { PodAvatar } from '@/common/components/PodAvatar'
 
@@ -18,5 +18,5 @@ export const CollaboratorsMenu: React.FC<CollaboratorsMenuProps> = ({ docMeta })
     </Tooltip>
   ))
 
-  return <Avatar.Group maxCount={4}>{avatars}</Avatar.Group>
+  return <>{avatars}</>
 }

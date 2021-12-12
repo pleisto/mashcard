@@ -1,4 +1,4 @@
-import { styled } from '../../../themes'
+import { styled, theme } from '../../../themes'
 
 export const ContentWrapper = styled('div', {
   display: 'flex',
@@ -12,9 +12,9 @@ export const Content = styled('div', {
 })
 
 export const ContentIcon = styled('div', {
-  display: 'fnlex',
-  marginRight: '$xs',
-  fontSize: '$subheadline'
+  display: 'flex',
+  marginRight: theme.space.xs,
+  fontSize: theme.fontSizes.subHeadline
 })
 
 export const ContentBody = styled('div', {
@@ -25,35 +25,35 @@ export const ContentBody = styled('div', {
 
 export const ContentAction = styled('div', {
   display: 'flex',
-  marginTop: '$2xs * -1'
+  marginTop: `calc(${theme.space.xxs} * -1)`
 })
 
 export const ContentClose = styled('a', {
-  fontSize: '$footnote',
-  lineHeight: '$fontSizes$footnote',
+  fontSize: theme.fontSizes.footnote,
+  lineHeight: theme.fontSizes.footnote,
   display: 'flex',
   alignItems: 'center'
 })
 
 export const Description = styled('div', {
-  fontSize: '$callout',
-  lineHeight: '$lg'
+  fontSize: theme.fontSizes.callout,
+  lineHeight: theme.space.lg
 })
 
 export const Title = styled('div', {
-  marginBottom: '$3xs',
-  fontSize: '$body',
+  marginBottom: theme.space.xxxs,
+  fontSize: theme.fontSizes.body,
   fontWeight: '500',
-  lineHeight: '$2xl'
+  lineHeight: theme.space.xxl
 })
 
 export const Base = styled('div', {
   // Reset
   boxSizing: 'border-box',
   padding: '10px 12px',
-  color: '$color-type-primary',
+  color: theme.colors.typePrimary,
   border: '1px solid',
-  borderRadius: '$space$3xs',
+  borderRadius: theme.space.xxxs,
 
   '&::before': {
     boxSizing: 'border-box'
@@ -64,25 +64,24 @@ export const Base = styled('div', {
 
   variants: {
     size: {
-      sm: {
+      small: {
         [`& ${ContentIcon}`]: {},
         [`& ${Description}`]: {
           fontWeight: 500
         }
       },
-      lg: {
+      large: {
         [`& ${Content}`]: {
-          fontSize: '$title4',
-          marginRight: '$md',
+          fontSize: theme.fontSizes.title4,
+          marginRight: theme.space.md,
           alignItems: 'flex-start'
         },
         [`& ${ContentIcon}`]: {
-          fontSize: '$title4',
-          marginRight: '$md',
-          marginTop: '$3xs'
+          fontSize: theme.fontSizes.title4,
+          marginRight: theme.space.md,
+          marginTop: theme.space.xxxs
         },
         [`& ${Description}`]: {
-          // TODO: lacks token
           fontWeight: 400,
           lineHeight: '22px'
         }
@@ -90,34 +89,35 @@ export const Base = styled('div', {
     },
     variant: {
       info: {
-        backgroundColor: '$color-status-info-bg',
-        borderColor: '$color-hue-blue-hover',
-        color: '$color-primary-default',
+        backgroundColor: theme.colors.statusInfoBg,
+        borderColor: theme.colors.hueBlueHover,
+        color: theme.colors.primaryDefault,
         [`& ${ContentClose}`]: {
-          color: '$color-primary-default'
+          color: theme.colors.primaryDefault
         }
       },
       error: {
-        backgroundColor: '$color-error-bg',
-        borderColor: '$color-error-border',
-        color: '$color-error-default',
+        backgroundColor: theme.colors.errorBg,
+        borderColor: theme.colors.errorBorder,
+        color: theme.colors.errorDefault,
         [`& ${ContentClose}`]: {
-          color: '$color-error-default'
+          color: theme.colors.errorDefault
         }
       },
       warning: {
-        backgroundColor: '$color-status-warning-bg',
-        borderColor: '$color-hue-yellow-pressed',
+        backgroundColor: theme.colors.statusWarningBg,
+        borderColor: theme.colors.hueYellowHover,
+        color: theme.colors.hueYellowDefault,
         [`& ${ContentClose}`]: {
-          color: '$color-type-primary'
+          color: theme.colors.hueYellowDefault
         }
       },
       success: {
-        backgroundColor: '$color-hue-green-bg',
-        borderColor: '$color-hue-green-pressed',
-        color: '$color-hue-green-dafault',
+        backgroundColor: theme.colors.statusSuccessBg,
+        borderColor: theme.colors.hueGreenHover,
+        color: theme.colors.hueGreenDefault,
         [`& ${ContentClose}`]: {
-          color: '$color-hue-green-dafault'
+          color: theme.colors.hueGreenDefault
         }
       }
     },
@@ -125,7 +125,7 @@ export const Base = styled('div', {
   },
   compoundVariants: [],
   defaultVariants: {
-    size: 'sm',
+    size: 'small',
     variant: 'success'
   }
 })

@@ -11,7 +11,7 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
     slashmenu.heading
   </div>
   <button
-    class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium slash-menu-item"
+    class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
   >
@@ -38,7 +38,7 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
     </div>
   </button>
   <button
-    class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium slash-menu-item"
+    class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
   >
@@ -65,7 +65,7 @@ exports[`SlashCommandsMenu matches correct snapshot 1`] = `
     </div>
   </button>
   <button
-    class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium slash-menu-item"
+    class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
   >

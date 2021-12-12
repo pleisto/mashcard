@@ -7,7 +7,7 @@ exports[`LinkBlock matches correct snapshot 1`] = `
   style="pointer-events: none; white-space: normal;"
 >
   <button
-    class="brk-c-jHpzAy brk-c-jHpzAy-bfJpeV-type-secondary brk-c-jHpzAy-dgJOHH-size-medium brickdoc-link-block-link"
+    class="brd-c-ibMYPh brd-c-ibMYPh-ikcfFC-type-secondary brd-c-ibMYPh-ilBIMD-size-medium brickdoc-link-block-link"
     data-testid="editor-link-block-link"
   >
     <div
@@ -34,7 +34,7 @@ exports[`LinkBlock matches correct snapshot 1`] = `
       </div>
     </div>
     <button
-      class="brk-c-jHpzAy brk-c-jHpzAy-XMOnn-type-text brk-c-jHpzAy-dgJOHH-size-medium link-block-menu-button"
+      class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium link-block-menu-button"
       data-testid="editor-link-block-menu-button"
     >
       <span
