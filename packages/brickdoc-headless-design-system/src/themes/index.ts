@@ -10,7 +10,7 @@ export const { theme, css, styled, config, globalCss, keyframes } = createStitch
 })
 
 export const globalStyle = globalCss(globalStyleSheet as Record<string, any>)
-
+export { globalStyleSheet }
 /**
  * Register other themes here
  *

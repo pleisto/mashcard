@@ -31,7 +31,7 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
     <Button
       data-testid={TEST_ID_ENUM.page.DocumentPage.addPageButton.id}
       type="text"
-      className={classNames([styles.createBtn, 'brk-btn-text'])}
+      className={classNames([styles.createBtn, 'brd-btn-text'])}
       onClick={onClick}
       loading={createBlockLoading}
       icon={<Add />}

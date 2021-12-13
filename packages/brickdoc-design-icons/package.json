@@ -11,9 +11,9 @@
   "types": "dist/src/index.d.ts",
   "scripts": {
     "eslint:fix": "eslint --fix --cache ./src",
-    "cleanup": "tsc --build --clean",
+    "cleanup": "tsc --build tsconfig.build.json --clean",
     "generator": "bin/icons-react-component-generator",
-    "build": "yarn generator && tsc --build"
+    "build": "yarn generator && tsc --build tsconfig.build.json"
   },
   "peerDependencies": {
     "react": ">= 17.0",

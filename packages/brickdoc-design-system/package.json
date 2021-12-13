@@ -4,9 +4,7 @@
   "description": "Brickdoc design system and React components implementation",
   "license": "Apache-2.0",
   "scripts": {
-    "cleanup": "rm -rf dist",
-    "storybook": "NODE_ENV=dev vite serve --config ./vite.config.ts",
-    "build-storybook": "rm -rf storybook-static && vite build --config ./vite.config.ts"
+    "cleanup": "rm -rf dist"
   },
   "main": "./components/index.tsx",
   "module": "./components/index.tsx",

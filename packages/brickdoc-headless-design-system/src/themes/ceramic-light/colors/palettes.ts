@@ -5,11 +5,11 @@ export const Palettes = {
   black: '#000',
 
   grey1: '#fcfcfa',
-  grey2: '#f3f3f4',
+  grey2: '#f0f0f0',
   grey3: '#e0e0e0',
   grey4: '#d3d3d3',
   grey5: '#cacaca',
-  grey6: '#9e9e9e',
+  grey6: '#8e8e8e',
   grey7: '#757575',
   grey8: '#616161',
   grey9: '#1c1c1e',
@@ -47,7 +47,7 @@ export const Palettes = {
    * Cyan
    */
   ...generatePalette<'cyan'>('cyan', '#39b3e8'),
-  cyan1: '#f9fbff',
+  cyan1: '#f8fbff',
 
   /**
    * Blue

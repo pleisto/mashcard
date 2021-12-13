@@ -15,7 +15,7 @@ export interface TreeProps {
 /** Tree
  * @example
  */
-const Node: FC<TreeProps> = ({ treeData, onClick, handleSelected, titleRender, selectedId }) => {
+const InternalNode: FC<TreeProps> = ({ treeData, onClick, handleSelected, titleRender, selectedId }) => {
   const {
     key,
     icon = '',
@@ -67,7 +67,8 @@ const Node: FC<TreeProps> = ({ treeData, onClick, handleSelected, titleRender, s
               )}
 
               {icon ? <TreeRoot.ContentIcon data-test-id="content-icon">{icon}</TreeRoot.ContentIcon> : <></>}
-              <TreeRoot.ContentAction data-test-id="content-action" {...pressProps}>
+              {/* Todo: fixed TS2769: No overload matches this call. pressProps.css */}
+              <TreeRoot.ContentAction data-test-id="content-action" {...(pressProps as any)}>
                 {titleRender?.(treeData)}
               </TreeRoot.ContentAction>
             </TreeRoot.Content>
@@ -78,6 +79,6 @@ const Node: FC<TreeProps> = ({ treeData, onClick, handleSelected, titleRender, s
   )
 }
 
-Node.displayName = 'BrkTree'
+InternalNode.displayName = 'BrkTree'
 
-export default memo(Node)
+export const Node = memo(InternalNode)

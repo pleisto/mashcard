@@ -18,7 +18,9 @@ exports[`ImageBlock matches correct snapshot 1`] = `
         class="image-section-menu-button"
       >
         <span
-          class="brk-icon brk-icon-more image-section-menu-icon"
+          aria-label="more"
+          class="brd-icon brd-icon-more image-section-menu-icon"
+          role="img"
         >
           <svg
             viewBox="0 0 24 24"

@@ -35,8 +35,17 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'type'> {
   size?: Size
   style?: React.CSSProperties
   type?: BtnType
+  /**
+   * @deprecated use `onPressDown` instead
+   */
   onMouseDown?: React.MouseEventHandler<HTMLButtonElement>
+  /**
+   * @deprecated use `onPressEnter` instead
+   */
   onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>
+  /**
+   * @deprecated use `onPressUp` instead
+   */
   onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>
   role?: React.AriaRole
 }
@@ -110,7 +119,6 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
 
   const iconNode = icon && !innerLoading ? icon : <LoadingIcon loading={!!innerLoading} />
   const childrenDom = typeof children === 'string' || typeof children === 'number' ? <span>{children}</span> : children
-  const childrenNode = loading ? <></> : childrenDom
 
   return (
     <ButtonRoot
@@ -118,10 +126,11 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
       hasIcon={!!icon || !!innerLoading}
       role={props.role || buttonProps.role}
       ref={buttonRef}
-      disabled={disabled}
+      disabled={disabled || innerLoading}
       disabledBtn={disabled}
       type={isPressed && !disabled ? `${priorityType}-press` : priorityType}
       circle={circle && size}
+      loading={innerLoading}
       className={className}
       size={size}
       onMouseDown={onMouseDown}
@@ -130,7 +139,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
       block={block}
     >
       {iconNode}
-      {childrenNode}
+      {childrenDom}
     </ButtonRoot>
   )
 }

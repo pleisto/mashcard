@@ -12,11 +12,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-rte-h1"
+          aria-label="rte-h1"
+          class="brd-icon brd-icon-rte-h1"
+          role="img"
         >
           <svg
             fill="none"
@@ -36,11 +38,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-rte-h2"
+          aria-label="rte-h2"
+          class="brd-icon brd-icon-rte-h2"
+          role="img"
         >
           <svg
             fill="none"
@@ -60,11 +64,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-rte-h3"
+          aria-label="rte-h3"
+          class="brd-icon brd-icon-rte-h3"
+          role="img"
         >
           <svg
             fill="none"
@@ -84,11 +90,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-rte-h4"
+          aria-label="rte-h4"
+          class="brd-icon brd-icon-rte-h4"
+          role="img"
         >
           <svg
             fill="none"
@@ -110,11 +118,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-rte-h5"
+          aria-label="rte-h5"
+          class="brd-icon brd-icon-rte-h5"
+          role="img"
         >
           <svg
             fill="none"
@@ -140,11 +150,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-bold-words"
+          aria-label="bold-words"
+          class="brd-icon brd-icon-bold-words"
+          role="img"
         >
           <svg
             fill="none"
@@ -160,11 +172,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-italics"
+          aria-label="italics"
+          class="brd-icon brd-icon-italics"
+          role="img"
         >
           <svg
             fill="none"
@@ -180,11 +194,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-text-underline"
+          aria-label="text-underline"
+          class="brd-icon brd-icon-text-underline"
+          role="img"
         >
           <svg
             fill="none"
@@ -204,11 +220,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-strikethrough"
+          aria-label="strikethrough"
+          class="brd-icon brd-icon-strikethrough"
+          role="img"
         >
           <svg
             fill="none"
@@ -232,11 +250,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium brk-dropdown-trigger bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium brk-dropdown-trigger bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-font-size bubble-menu-item-icon"
+          aria-label="font-size"
+          class="brd-icon brd-icon-font-size bubble-menu-item-icon"
+          role="img"
         >
           <svg
             fill="none"
@@ -253,7 +273,9 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="brk-icon brk-icon-line-down bubble-menu-item-arrow-icon"
+          aria-label="line-down"
+          class="brd-icon brd-icon-line-down bubble-menu-item-arrow-icon"
+          role="img"
         >
           <svg
             fill="none"
@@ -274,11 +296,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-list-unordered"
+          aria-label="list-unordered"
+          class="brd-icon brd-icon-list-unordered"
+          role="img"
         >
           <svg
             fill="none"
@@ -294,11 +318,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-list-ordered"
+          aria-label="list-ordered"
+          class="brd-icon brd-icon-list-ordered"
+          role="img"
         >
           <svg
             fill="none"
@@ -318,11 +344,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-link bubble-menu-item-icon"
+          aria-label="link"
+          class="brd-icon brd-icon-link bubble-menu-item-icon"
+          role="img"
         >
           <svg
             fill="none"
@@ -335,7 +363,9 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="brk-icon brk-icon-line-down bubble-menu-item-arrow-icon"
+          aria-label="line-down"
+          class="brd-icon brd-icon-line-down bubble-menu-item-arrow-icon"
+          role="img"
         >
           <svg
             fill="none"
@@ -356,11 +386,13 @@ exports[`BubbleMenu matches correct snapshot 1`] = `
       class="bubble-menu-group"
     >
       <button
-        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium bubble-menu-item"
+        class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium bubble-menu-item"
         role="menuitem"
       >
         <span
-          class="brk-icon brk-icon-formula"
+          aria-label="formula"
+          class="brd-icon brd-icon-formula"
+          role="img"
         >
           <svg
             fill="none"

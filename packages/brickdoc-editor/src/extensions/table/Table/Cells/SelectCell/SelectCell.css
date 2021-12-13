@@ -106,8 +106,8 @@
     border-radius: 8px;
     z-index: 2;
 
-    & .brk-tag-has-color .brk-icon-close,
-    & .brk-tag-has-color .brk-icon-close:hover {
+    & .brk-tag-has-color .brd-icon-close,
+    & .brk-tag-has-color .brd-icon-close:hover {
       color: unset;
     }
 
@@ -117,7 +117,7 @@
       align-items: center;
       margin-left: 16px;
 
-      & .brk-icon {
+      & .brd-icon {
         margin-left: 4px;
         font-size: 8px;
       }

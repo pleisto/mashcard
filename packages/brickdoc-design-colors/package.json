@@ -13,9 +13,9 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc --build && esbuild src/less-plugin.ts --bundle --outfile=dist/less-plugin.js",
+    "build": "tsc --build tsconfig.build.json && esbuild src/less-plugin.ts --bundle --outfile=dist/less-plugin.js",
     "build:onDemand": "test -f \"dist/less-plugin.js\" || run build",
-    "cleanup": "tsc --build --clean && rm -rf dist",
+    "cleanup": "tsc --build tsconfig.build.json --clean && rm -rf dist",
     "eslint:fix": "eslint --fix --cache ./src"
   },
   "devDependencies": {

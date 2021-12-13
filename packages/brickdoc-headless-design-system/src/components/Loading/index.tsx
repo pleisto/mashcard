@@ -2,8 +2,10 @@ import React from 'react'
 import mp4Url from './assets/loading.mp4'
 import { styled } from '../../themes'
 
-interface LoadingProps {
+export interface LoadingProps {
   delayDuration?: number
+  style?: React.CSSProperties
+  className?: string
 }
 
 const Launcher = styled('div', {
@@ -14,9 +16,9 @@ const Launcher = styled('div', {
   alignItems: 'center'
 })
 
-export const Loading: React.FC<LoadingProps> = ({ delayDuration }) => {
+export const Loading: React.FC<LoadingProps> = ({ delayDuration, style, className }) => {
   return (
-    <Launcher>
+    <Launcher role="alert" aria-live="polite" aria-busy={true} aria-label="Loading" className={className} style={style}>
       <video
         autoPlay
         playsInline

@@ -18,7 +18,9 @@ exports[`PageLink matches correct snapshot 1`] = `
     >
       icon
       <span
-        class="brk-icon brk-icon-arrow-shortcut brickdoc-page-link-block-shortcut-arrow"
+        aria-label="arrow-shortcut"
+        class="brd-icon brd-icon-arrow-shortcut brickdoc-page-link-block-shortcut-arrow"
+        role="img"
       >
         <svg
           fill="none"

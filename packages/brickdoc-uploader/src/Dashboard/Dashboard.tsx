@@ -49,7 +49,10 @@ export interface ActionButtonOption {
 
 export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSources, pluginOptions }) => {
   const [activeSource, setActiveSource] = React.useState(importSources[0])
-  const [recentEmojis, handleSelectEmoji] = useEmoji(pluginOptions, !!importSources.find(source => source.type === 'emoji'))
+  const [recentEmojis, handleSelectEmoji] = useEmoji(
+    pluginOptions,
+    !!importSources.find(source => source.type === 'emoji')
+  )
 
   const handleNavbarItemClick = (activeSource: ImportSourceOption) => () => {
     setActiveSource(activeSource)
@@ -97,7 +100,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
             key={source.type}
             className={cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}
             data-testid={IMPORT_SOURCE_TEST_ID[source.type]}
-            onClick={handleNavbarItemClick(source)}>
+            onClick={handleNavbarItemClick(source)}
+          >
             {source.typeLabel || IMPORT_SOURCE_LABEL[source.type]}
           </Button>
         ))}
@@ -105,7 +109,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
           {actionButtons.map(button => (
             <Button type="text" key={button.label} className="dashboard-action-button" onClick={button.onClick}>
               {button.icon && (
-                <span className="brk-icon dashboard-action-button-icon">
+                <span className="brd-icon dashboard-action-button-icon">
                   <button.icon />
                 </span>
               )}

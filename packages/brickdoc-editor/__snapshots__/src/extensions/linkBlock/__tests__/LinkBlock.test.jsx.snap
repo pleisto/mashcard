@@ -7,7 +7,7 @@ exports[`LinkBlock matches correct snapshot 1`] = `
   style="pointer-events: none; white-space: normal;"
 >
   <button
-    class="brd-c-ibMYPh brd-c-ibMYPh-ikcfFC-type-secondary brd-c-ibMYPh-ilBIMD-size-medium brickdoc-link-block-link"
+    class="brd-c-ibMYPh brd-c-ibMYPh-fSvJsK-type-secondary brd-c-ibMYPh-lKjfQ-size-medium brickdoc-link-block-link"
     data-testid="editor-link-block-link"
   >
     <div
@@ -34,11 +34,13 @@ exports[`LinkBlock matches correct snapshot 1`] = `
       </div>
     </div>
     <button
-      class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-ilBIMD-size-medium link-block-menu-button"
+      class="brd-c-ibMYPh brd-c-ibMYPh-iiMVfj-type-text brd-c-ibMYPh-lKjfQ-size-medium link-block-menu-button"
       data-testid="editor-link-block-menu-button"
     >
       <span
-        class="brk-icon brk-icon-more link-block-menu-icon"
+        aria-label="more"
+        class="brd-icon brd-icon-more link-block-menu-icon"
+        role="img"
       >
         <svg
           viewBox="0 0 24 24"

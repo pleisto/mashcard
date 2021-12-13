@@ -62,7 +62,9 @@ exports[`MentionMenuPagePanel matches correct snapshot 1`] = `
       tabindex="-1"
     >
       <span
-        class="brk-icon brk-icon-file-pages mention-menu-page-icon"
+        aria-label="file-pages"
+        class="brd-icon brd-icon-file-pages mention-menu-page-icon"
+        role="img"
       >
         <svg
           fill="none"

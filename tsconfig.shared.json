@@ -20,5 +20,5 @@
     "noEmitOnError": true,
     "useDefineForClassFields": true
   },
-  "exclude": ["**/*.stories.ts", "**/*.stories.tsx", "**/node_modules"]
+  "exclude": ["**/node_modules"]
 }

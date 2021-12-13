@@ -10,7 +10,6 @@ import SubMenu, { SubMenuProps } from './SubMenu'
 import Item, { MenuItemProps } from './MenuItem'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import devWarning from '../_util/devWarning'
-import { SiderContext, SiderContextProps } from '../layout/Sider'
 import collapseMotion from '../_util/motion'
 import { cloneElement } from '../_util/reactNode'
 import MenuContext, { MenuTheme } from './MenuContext'
@@ -26,10 +25,9 @@ export interface MenuProps extends RcMenuProps {
   inlineIndent?: number
 }
 
-type InternalMenuProps = MenuProps &
-  SiderContextProps & {
-    collapsedWidth?: string | number
-  }
+type InternalMenuProps = MenuProps & {
+  collapsedWidth?: string | number
+}
 
 class InternalMenu extends React.Component<InternalMenuProps> {
   static defaultProps: Partial<MenuProps> = {
@@ -44,20 +42,10 @@ class InternalMenu extends React.Component<InternalMenuProps> {
       'Menu',
       '`inlineCollapsed` should only be used when `mode` is inline.'
     )
-
-    devWarning(
-      !(props.siderCollapsed !== undefined && 'inlineCollapsed' in props),
-      'Menu',
-      '`inlineCollapsed` not control Menu under Sider. Should set `collapsed` on Sider instead.'
-    )
   }
 
   getInlineCollapsed() {
-    const { inlineCollapsed, siderCollapsed } = this.props
-    if (siderCollapsed !== undefined) {
-      return siderCollapsed
-    }
-    return inlineCollapsed
+    return false
   }
 
   renderMenu = ({ getPopupContainer, getPrefixCls, direction }: ConfigConsumerProps) => {
@@ -65,7 +53,7 @@ class InternalMenu extends React.Component<InternalMenuProps> {
 
     const { prefixCls: customizePrefixCls, className, theme, expandIcon, ...restProps } = this.props
 
-    const passedProps = omit(restProps, ['siderCollapsed', 'collapsedWidth'])
+    const passedProps = omit(restProps, ['collapsedWidth'])
     const inlineCollapsed = this.getInlineCollapsed()
 
     const defaultMotions = {
@@ -122,7 +110,7 @@ class Menu extends React.Component<MenuProps, {}> {
   static ItemGroup = ItemGroup
 
   render() {
-    return <SiderContext.Consumer>{(context: SiderContextProps) => <InternalMenu {...this.props} {...context} />}</SiderContext.Consumer>
+    return <InternalMenu {...this.props} />
   }
 }
 

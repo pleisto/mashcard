@@ -4,7 +4,6 @@ import toArray from 'rc-util/lib/Children/toArray'
 import classNames from 'classnames'
 import MenuContext, { MenuContextProps } from './MenuContext'
 import Tooltip, { TooltipProps } from '../tooltip'
-import { SiderContext, SiderContextProps } from '../layout/Sider'
 import { isValidElement, cloneElement } from '../_util/reactNode'
 
 export interface MenuItemProps extends Omit<RcMenuItemProps, 'title'> {
@@ -33,7 +32,7 @@ export default class MenuItem extends React.Component<MenuItemProps> {
     return wrapNode
   }
 
-  renderItem = ({ siderCollapsed }: SiderContextProps) => {
+  renderItem = () => {
     const { prefixCls, firstLevel, inlineCollapsed, direction } = this.context
     const { className, children } = this.props
     const { title, icon, danger, ...rest } = this.props
@@ -48,7 +47,7 @@ export default class MenuItem extends React.Component<MenuItemProps> {
       title: tooltipTitle
     }
 
-    if (!siderCollapsed && !inlineCollapsed) {
+    if (!inlineCollapsed) {
       tooltipProps.title = null
       // Reset `visible` to fix control mode tooltip display not correct
       // ref: https://github.com/ant-design/ant-design/issues/16742
@@ -59,7 +58,8 @@ export default class MenuItem extends React.Component<MenuItemProps> {
       <Tooltip
         {...tooltipProps}
         placement={direction === 'rtl' ? 'left' : 'right'}
-        overlayClassName={`${prefixCls}-inline-collapsed-tooltip`}>
+        overlayClassName={`${prefixCls}-inline-collapsed-tooltip`}
+      >
         <Item
           {...rest}
           className={classNames(
@@ -69,7 +69,8 @@ export default class MenuItem extends React.Component<MenuItemProps> {
             },
             className
           )}
-          title={typeof title === 'string' ? title : undefined}>
+          title={typeof title === 'string' ? title : undefined}
+        >
           {cloneElement(icon, {
             className: classNames(isValidElement(icon) ? icon.props?.className : '', `${prefixCls}-item-icon`)
           })}
@@ -80,6 +81,6 @@ export default class MenuItem extends React.Component<MenuItemProps> {
   }
 
   render() {
-    return <SiderContext.Consumer>{this.renderItem}</SiderContext.Consumer>
+    return this.renderItem()
   }
 }

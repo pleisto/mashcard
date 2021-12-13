@@ -1,5 +1,8 @@
 require('@testing-library/jest-dom/extend-expect')
+const { toHaveNoViolations } = require('jest-axe')
 const React = require('react')
+
+expect.extend(toHaveNoViolations)
 
 globalThis.React = React
 

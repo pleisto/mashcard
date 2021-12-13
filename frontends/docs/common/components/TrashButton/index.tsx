@@ -18,7 +18,7 @@ export const TrashButton: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   return (
     <>
-      <Button type="text" className={classNames([styles.delBtn, 'brk-btn-text'])} icon={<Delete />} onClick={onClick}>
+      <Button type="text" className={classNames([styles.delBtn, 'brd-btn-text'])} icon={<Delete />} onClick={onClick}>
         {t('trash.name')}
       </Button>
       <TrashPopover docMeta={docMeta} visible={trashModalVisible} setVisible={setTrashModalVisible} />

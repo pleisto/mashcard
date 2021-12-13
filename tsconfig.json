@@ -5,10 +5,29 @@
   "include": ["**/*"],
   "exclude": ["packages/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
-    { "path": "packages/brickdoc-test-helper" },
-    { "path": "packages/brickdoc-uploader" },
-    { "path": "packages/brickdoc-design-system" },
-    { "path": "packages/brickdoc-editor" },
-    { "path": "packages/brickdoc-formula" }
+    {
+      "path": "packages/brickdoc-design-icons"
+    },
+    {
+      "path": "packages/brickdoc-test-helper"
+    },
+    {
+      "path": "packages/brickdoc-design-colors"
+    },
+    {
+      "path": "packages/brickdoc-uploader"
+    },
+    {
+      "path": "packages/brickdoc-design-system"
+    },
+    {
+      "path": "packages/brickdoc-editor"
+    },
+    {
+      "path": "packages/brickdoc-formula"
+    },
+    {
+      "path": "packages/brickdoc-headless-design-system"
+    }
   ]
 }

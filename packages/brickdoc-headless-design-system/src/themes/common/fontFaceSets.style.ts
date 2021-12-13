@@ -42,7 +42,7 @@ export const fontFaceSets = {
       fontFamily: 'Fira Code',
       ...webFontCommonSettings,
       fontWeight: '300 700',
-      src: fontSrc('woff2/FiraCode-VF.woff2')
+      src: fontSrc('FiraCode-VF.woff2')
     },
     {
       fontFamily: 'Biaodian Pro Sans CNS',

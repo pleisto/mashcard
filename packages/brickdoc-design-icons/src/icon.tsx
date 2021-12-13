@@ -99,12 +99,12 @@ export const DEFAULT_ICON_CONFIGS: IIconConfig = {
       innerFillColor: '#43CCF8'
     }
   },
-  prefix: 'brk'
+  prefix: 'brd'
 }
 
 function guid(): string {
   const uid = ((1 + Math.random()) * 0x100000000).toString(16).substring(1)
-  return `brk-icon-${uid}`
+  return `brd-icon-${uid}`
 }
 
 /* eslint-disable complexity */
@@ -194,9 +194,13 @@ export function IconWrapper(name: string, rtl: boolean, render: IconRender) {
     }
 
     return (
-      <span {...extra} className={cls.join(' ')}>
+      <span {...extra} role="img" aria-label={name} className={cls.join(' ')}>
         {render(svgProps)}
       </span>
     )
   }
+}
+
+export const ImageIcon: React.FC<{ src: string; alt?: string }> = props => {
+  return <img src={props.src} alt={props.alt} className="brd-icon brd-icon-img" />
 }

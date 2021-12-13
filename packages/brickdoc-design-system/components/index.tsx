@@ -69,10 +69,11 @@ export { Icon }
 /*
 export type { ImageProps } from './image'
 export { default as Image } from './image'
-*/
+
 
 export type { LayoutProps } from './layout'
 export { default as Layout } from './layout'
+*/
 
 export type { ListProps } from './list'
 export { default as List } from './list'
@@ -163,7 +164,15 @@ export type { TypographyProps } from './typography'
 export { default as Typography } from './typography'
 */
 
-export { globalStyle, theme, css, styled, Loading } from '@brickdoc/brickdoc-headless-design-system'
+export {
+  globalStyle,
+  theme,
+  css,
+  styled,
+  Loading,
+  globalCss,
+  globalStyleSheet
+} from '@brickdoc/brickdoc-headless-design-system'
 
 export type { ButtonProps } from './button'
 export { Button } from './button'

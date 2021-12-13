@@ -1,6 +1,6 @@
 import { FC, useCallback, useState, useMemo, ReactNode, memo } from 'react'
 import type { TNode } from './constants'
-import Node from './node'
+import { Node } from './node'
 // import { TreeRoot } from './style'
 
 export interface TreeNode {

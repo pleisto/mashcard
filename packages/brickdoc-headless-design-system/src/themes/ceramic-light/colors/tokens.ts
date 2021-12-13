@@ -29,12 +29,12 @@ export const Tokens = {
   /**
    * Background
    */
-  backgroundWhite: Palettes.white,
   backgroundPrimary: Palettes.grey1,
   backgroundSecondary: Palettes.grey2,
   backgroundThirdary: Palettes.grey3,
-  backgroundOverlayPrimary: rgba(Palettes.grey2, 0.5),
-  backgroundOverlaySecondary: rgba(Palettes.black, 0.03),
+  backgroundOverlayPrimary: rgba(Palettes.white, 0.8),
+  backgroundOverlaySecondary: rgba(Palettes.grey2, 0.5),
+  backgroundOverlayThirdary: rgba(Palettes.black, 0.03),
   backgroundOverlayThirdaryHover: rgba(Palettes.black, 0.05),
   backgroundOverlayThirdaryPressed: rgba(Palettes.black, 0.1),
   backgroundOverlayThirdarySelected: rgba(Palettes.blue6, 0.18),

@@ -1,5 +1,11 @@
 import { theme } from '../../../themes'
 
+const circleBase = {
+  padding: '0',
+  borderRadius: '50%',
+  justifyContent: 'center'
+}
+
 export const state = {
   disabledBtn: {
     true: {
@@ -14,6 +20,11 @@ export const state = {
       }
     }
   },
+  loading: {
+    true: {
+      cursor: 'not-allowed'
+    }
+  },
   block: {
     true: {
       width: '100%',
@@ -22,27 +33,24 @@ export const state = {
   },
   circle: {
     small: {
-      padding: theme.space.sm,
-      textAlign: 'center',
-      borderRadius: '50%',
-      minWidth: theme.space.lg
+      ...circleBase,
+      width: theme.space.lg,
+      height: theme.space.lg
     },
     medium: {
-      padding: theme.space.xs,
-      textAlign: 'center',
-      borderRadius: '50%',
-      minWidth: theme.space.xxxl
+      ...circleBase,
+      width: theme.space.xxxl,
+      height: theme.space.xxxl
     },
     large: {
-      padding: theme.space.sm,
-      textAlign: 'center',
-      borderRadius: '50%',
-      minWidth: theme.space._4xl
+      ...circleBase,
+      width: theme.space._4xl,
+      height: theme.space._4xl
     }
   },
   hasIcon: {
     true: {
-      '.brk-icon+span, span+.brk-icon': {
+      '.brd-icon+span, span+.brd-icon': {
         marginLeft: theme.space.xs
       }
     }

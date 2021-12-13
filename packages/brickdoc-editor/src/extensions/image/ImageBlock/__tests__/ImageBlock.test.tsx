@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ImageBlock } from '../ImageBlock'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 // See more specs in e2e test
 describe('ImageBlock', () => {
@@ -71,7 +72,7 @@ describe('ImageBlock', () => {
 
     render(<ImageBlock {...props} />)
 
-    expect(screen.getByRole('img')).toBeInTheDocument()
+    expect(screen.getByTestId(TEST_ID_ENUM.editor.imageSection.image.id)).toBeInTheDocument()
   })
 
   describe('Uploader Dashboard', () => {
@@ -125,7 +126,7 @@ describe('ImageBlock', () => {
       })
       fireEvent.click(screen.getByText('image_section.import_sources.link.button_text'))
 
-      expect(screen.getByRole('img')).toBeInTheDocument()
+      expect(screen.getByTestId(TEST_ID_ENUM.editor.imageSection.image.id)).toBeInTheDocument()
     })
   })
 })

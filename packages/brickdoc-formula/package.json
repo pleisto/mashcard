@@ -4,8 +4,8 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "build": "tsc --build",
-    "cleanup": "tsc --build --clean"
+    "build": "tsc --build tsconfig.build.json",
+    "cleanup": "tsc --build tsconfig.build.json --clean"
   },
   "main": "./dist/src/index.js",
   "module": "./src/index.ts",

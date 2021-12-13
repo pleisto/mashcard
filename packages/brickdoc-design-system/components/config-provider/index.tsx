@@ -116,7 +116,7 @@ function getIconDefaultConfig(rtl: boolean): IIconConfig {
         innerFillColor: '#43CCF8'
       }
     },
-    prefix: getGlobalPrefixCls()
+    prefix: 'brd'
   }
 }
 
