@@ -10,19 +10,14 @@ import {
   SyncExtension,
   brickListExtension,
   SyncExtensionOptions,
-  TableExtensionOptions,
   EventHandlerExtension,
   BubbleMenu,
-  PdfSectionOptions,
-  ImageSectionOptions,
-  LinkBlockOptions,
   UserBlockExtension,
-  PageLinkBlockExtension,
-  MentionCommandsOptions,
-  FormulaOptions
+  PageLinkBlockExtension
 } from './extensions'
 import './styles.less'
 import { useEditorI18n } from './hooks'
+import { EditorDataSource, EditorDataSourceContext } from './dataSource/DataSource'
 
 export type { ImageSectionAttributes } from './extensions'
 
@@ -30,46 +25,25 @@ export { useEditorI18n }
 
 export interface EditorContentProps {
   editor: TiptapEditor | null
-  formulaContextActions: FormulaOptions['formulaContextActions']
+  editorDataSource: EditorDataSource
 }
 
-export const EditorContent: React.FC<EditorContentProps> = ({ editor, formulaContextActions }: EditorContentProps) => {
+export const EditorContent: React.FC<EditorContentProps> = ({ editor, editorDataSource }) => {
   return (
-    <>
-      <BubbleMenu editor={editor} formulaContextActions={formulaContextActions} />
+    <EditorDataSourceContext.Provider value={editorDataSource}>
+      <BubbleMenu editor={editor} />
       <TiptapEditorContent className="brickdoc" editor={editor} />
-    </>
+    </EditorDataSourceContext.Provider>
   )
 }
 
 export interface EditorOptions extends Partial<TiptapEditorOptions> {
+  externalDataSource: EditorDataSource
   onSave: SyncExtensionOptions['onSave']
-  useDatabaseRows?: TableExtensionOptions['useDatabaseRows']
-  prepareFileUpload?: ImageSectionOptions['prepareFileUpload']
-  fetchUnsplashImages?: ImageSectionOptions['fetchUnsplashImages']
-  fetchWebsiteMeta?: LinkBlockOptions['fetchWebsiteMeta']
-  getImageUrl?: ImageSectionOptions['getImageUrl']
-  getAttachmentUrl?: PdfSectionOptions['getAttachmentUrl']
-  getCollaborators?: MentionCommandsOptions['getCollaborators']
-  getPages?: MentionCommandsOptions['getPages']
-  formulaContextActions: FormulaOptions['formulaContextActions']
 }
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
-  const {
-    onSave,
-    prepareFileUpload,
-    fetchUnsplashImages,
-    fetchWebsiteMeta,
-    getImageUrl,
-    getAttachmentUrl,
-    getCollaborators,
-    getPages,
-    formulaContextActions,
-    useDatabaseRows,
-    editable,
-    ...restOptions
-  } = options
+  const { onSave, editable, externalDataSource, ...restOptions } = options
   const { t } = useEditorI18n()
   const PlaceholderExtension = Placeholder.configure({
     placeholder: t('placeholder')
@@ -91,20 +65,15 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     'tableBlock'
   ]
 
+  const editorDataSource = externalDataSource
+
   return useTiptapEditor({
     extensions: [
-      BasicRichtextExtension.configure({
-        imageSection: { prepareFileUpload, fetchUnsplashImages, getImageUrl },
-        pdfSection: { prepareFileUpload, getAttachmentUrl },
-        tableBlock: { useDatabaseRows, formulaContextActions },
-        linkBlock: { fetchWebsiteMeta, prepareFileUpload, getAttachmentUrl },
-        formula: { formulaContextActions }
-      }),
+      BasicRichtextExtension,
       EventHandlerExtension,
       SlashCommandsExtension,
       MentionCommandsExtension.configure({
-        getCollaborators,
-        getPages
+        editorDataSource
       }),
       UserBlockExtension,
       PageLinkBlockExtension,

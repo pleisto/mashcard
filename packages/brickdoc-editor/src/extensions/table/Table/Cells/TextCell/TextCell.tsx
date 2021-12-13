@@ -51,8 +51,6 @@ export const TextCell: React.FC<TextCellProps> = props => {
   return (
     <div
       data-testid={TEST_ID_ENUM.editor.tableBlock.cell.text.id}
-      role="button"
-      tabIndex={-1}
       className="table-block-text-cell"
       onClick={showEditing}>
       {value}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar } from '@brickdoc/design-system'
 import { NodeViewRendererProps } from '@tiptap/react'
-import { BlockWrapper } from '../../BlockWrapper'
+import { BlockWrapper } from '../../../components'
 import './User.less'
 import { useEditorI18n } from '../../..'
 

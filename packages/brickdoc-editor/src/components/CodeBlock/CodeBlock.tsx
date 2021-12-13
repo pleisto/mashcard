@@ -1,7 +1,7 @@
 import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
 import { ActionDropdownMenuItem, ActionOptionGroup, ActionPanel } from '../ActionPanel/ActionPanel'
-import { BlockWrapper } from '../../extensions/BlockWrapper'
+import { BlockWrapper } from '../../components'
 import { Icon, Input, message, Modal } from '@brickdoc/design-system'
 import { useEditorI18n } from '../..'
 import 'highlight.js/styles/atom-one-light.css'

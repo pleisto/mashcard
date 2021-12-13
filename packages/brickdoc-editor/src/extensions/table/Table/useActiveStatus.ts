@@ -2,12 +2,13 @@ import React from 'react'
 import { TableActiveStatus } from 'react-table'
 
 export type IsCellActive = (rowId: string, cellIndex: number) => boolean
+export type ActiveStatusUpdater = React.Dispatch<React.SetStateAction<TableActiveStatus[]>>
 
 export function useActiveStatus(): [
   {
     isRowActive: (rowId: string) => boolean
     isCellActive: IsCellActive
-    update: React.Dispatch<React.SetStateAction<TableActiveStatus[]>>
+    update: ActiveStatusUpdater
     reset: () => void
   }
 ] {

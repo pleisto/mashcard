@@ -7,12 +7,14 @@ import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { message, Button, Modal, Popover, Icon, Skeleton, Menu } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, imperativeUpload, UploadProgress } from '@brickdoc/uploader'
-import { BlockWrapper } from '../../BlockWrapper'
+import { BlockWrapper } from '../../../components'
 import { useEditorI18n } from '../../../hooks'
 import { linkStorage, sizeFormat } from '../../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { getBlobUrl } from '../../../helpers/getBlobUrl'
+import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 
 const MAX_WIDTH = 700
 
@@ -26,6 +28,7 @@ export interface ImageSectionAttributes {
 
 // TODO: handle image load on error
 export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, getPos, updateAttributes }) => {
+  const editorDataSource = React.useContext(EditorDataSourceContext)
   const { t } = useEditorI18n()
   const latestImageAttributes = React.useRef<Partial<ImageSectionAttributes>>({})
   const updateImageAttributes = (newAttributes: Partial<ImageSectionAttributes>): void => {
@@ -66,7 +69,10 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
     const img = event.target as HTMLImageElement
     // Update image dimensions on loaded if there is no dimensions data before
     if (!node.attrs.image?.ratio) {
-      updateImageAttributes({ width: Math.min(MAX_WIDTH, img.naturalWidth), ratio: img.naturalWidth / img.naturalHeight })
+      updateImageAttributes({
+        width: Math.min(MAX_WIDTH, img.naturalWidth),
+        ratio: img.naturalWidth / img.naturalHeight
+      })
     }
     setLoaded(true)
   }
@@ -75,7 +81,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
   React.useEffect(() => {
     if (!node.attrs.defaultFile) return
     void imperativeUpload(node.attrs.defaultFile, {
-      prepareFileUpload: extension.options.prepareFileUpload,
+      prepareFileUpload: editorDataSource.prepareFileUpload,
       blockId: node.attrs.uuid,
       fileType: 'image',
       onUploaded
@@ -83,9 +89,10 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (node.attrs.image?.key) {
-    const url = extension.options.getImageUrl?.(node) ?? linkStorage.get(node.attrs.uuid)
+  const url =
+    getBlobUrl(node.attrs?.uuid, node.attrs?.image ?? {}, editorDataSource.blobs) ?? linkStorage.get(node.attrs.uuid)
 
+  if (url) {
     const handleCopy = async (): Promise<void> => {
       await navigator.clipboard.writeText(url)
       void message.success(t('image_section.copy_hint'))
@@ -152,8 +159,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
               updateImageAttributes({
                 width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
               })
-            }}
-          >
+            }}>
             <Popover
               trigger="click"
               placement="bottom"
@@ -170,8 +176,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
                     {t('image_section.menu.delete')}
                   </Menu.Item>
                 </Menu>
-              }
-            >
+              }>
               <div className="image-section-menu-button">
                 <Icon.More className="image-section-menu-icon" />
               </div>
@@ -182,8 +187,7 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
               isZoomed={showPreview}
               onZoomChange={shouldZoom => {
                 setShowPreview(shouldZoom)
-              }}
-            >
+              }}>
               {!loaded && (
                 <Skeleton.Image
                   style={
@@ -241,15 +245,17 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ editor, node, extension, g
           <Dashboard
             fileType="image"
             blockId={node.attrs.uuid}
-            prepareFileUpload={extension.options.prepareFileUpload}
-            fetchUnsplashImages={extension.options.fetchUnsplashImages}
+            prepareFileUpload={editorDataSource.prepareFileUpload}
+            fetchUnsplashImages={editorDataSource.fetchUnsplashImages}
             onUploaded={onUploaded}
             onProgress={onProgress}
             importSources={importSources}
           />
-        }
-      >
-        <Button type="text" className="brickdoc-block-image-section" data-testid={TEST_ID_ENUM.editor.imageSection.addButton.id}>
+        }>
+        <Button
+          type="text"
+          className="brickdoc-block-image-section"
+          data-testid={TEST_ID_ENUM.editor.imageSection.addButton.id}>
           <div className="image-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.Image className="image-section-icon" />
           <div className="image-section-content">

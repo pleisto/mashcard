@@ -2,19 +2,20 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
 import { Icon } from '@brickdoc/design-system'
-import { BlockWrapper } from '../../BlockWrapper'
-import { FormulaMenu } from '../../../components'
+import { BlockWrapper, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
-import { FormulaOptions } from '..'
 import { VariableTypeMeta, variableTypeMeta } from '@brickdoc/formula'
+import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 
 export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, updateAttributes, extension, getPos }) => {
-  const { getVariable }: FormulaOptions['formulaContextActions'] = extension.options.formulaContextActions
+  const editorDataSource = React.useContext(EditorDataSourceContext)
+  const formulaContext = editorDataSource.formulaContext
+
   const attributes = node.attrs.formula
-  const [variable, setVariable] = React.useState(getVariable(attributes.id))
+  const [variable, setVariable] = React.useState(formulaContext?.findVariable(editorDataSource.rootId, attributes.id))
   const [t, setT] = React.useState(variable?.t)
 
   const updateFormula = (id: string): void => updateAttributes({ formula: { type: 'FORMULA', id } })
@@ -59,7 +60,6 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         defaultVisible={node.attrs.isNew}
         onVisibleChange={handleDefaultPopoverVisibleChange}
         editor={editor}
-        formulaContextActions={extension.options.formulaContextActions}
         updateFormula={updateFormula}
         variable={variable}
         updateVariable={setVariable}>

@@ -4,14 +4,8 @@ import { Filesourcetype, GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
 
 export const useBlobGetter = (
   field: string,
-  inputBlocks: GetChildrenBlocksQuery['childrenBlocks']
+  blocks: GetChildrenBlocksQuery['childrenBlocks']
 ): ((node: Node) => string | undefined) => {
-  const blocks = React.useRef(inputBlocks)
-
-  React.useEffect(() => {
-    blocks.current = inputBlocks
-  }, [inputBlocks])
-
   return React.useCallback(
     node => {
       if (node.attrs[field]?.source === Filesourcetype.External) {
@@ -19,11 +13,11 @@ export const useBlobGetter = (
       }
 
       if (node.attrs[field]?.source === Filesourcetype.Origin) {
-        const block = blocks.current?.find(block => block.id === node.attrs.uuid)
+        const block = blocks?.find(block => block.id === node.attrs.uuid)
         const blob = block?.blobs?.find(blob => blob.blobKey === node.attrs[field].key)
         return blob?.url
       }
     },
-    [field]
+    [blocks, field]
   )
 }

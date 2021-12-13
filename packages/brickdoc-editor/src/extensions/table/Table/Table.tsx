@@ -6,8 +6,7 @@ import { v4 as uuid } from 'uuid'
 import { NodeViewProps } from '@tiptap/react'
 import { useTable, HeaderGroup, useFlexLayout, useResizeColumns, TableHeaderGroupProps, TableColumnType } from 'react-table'
 import { Modal, Icon } from '@brickdoc/design-system'
-import { BlockWrapper } from '../../BlockWrapper'
-import { TableExtensionOptions } from '../../table'
+import { BlockWrapper } from '../../../components'
 import { useEditorI18n } from '../../../hooks'
 import { ColumnMenu } from './ColumnMenu'
 import { useColumns } from './useColumns'
@@ -20,12 +19,17 @@ import { useFilter } from './TableToolbar/Filter/useFilter'
 import { useSorter } from './TableToolbar/Sorter/useSorter'
 import './Table.css'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { TableBlockOptions } from '../..'
 import { useFormulaDatabase } from './useFormulaDatabase'
+import { useTableRows } from './useTableRows'
+import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 
-const isGroupedHeader = (headerGroup: HeaderGroup): boolean => headerGroup.headers?.[0].depth !== 0 || !!headerGroup.Header
+const isGroupedHeader = (headerGroup: HeaderGroup): boolean =>
+  headerGroup.headers?.[0].depth !== 0 || !!headerGroup.Header
 
-const headerPropsGetter = (props: Partial<TableHeaderGroupProps>, { column }: any): Array<Partial<TableHeaderGroupProps>> => [
+const headerPropsGetter = (
+  props: Partial<TableHeaderGroupProps>,
+  { column }: any
+): Array<Partial<TableHeaderGroupProps>> => [
   props,
   {
     style: {
@@ -47,8 +51,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
   const parentId: string = node.attrs.uuid
   const prevData = node.attrs.data || {}
 
-  const tableOptions: TableExtensionOptions = extension.options
-  const { useDatabaseRows } = tableOptions
+  const editorDataSource = React.useContext(EditorDataSourceContext)
 
   const updateAttributeData = (data: Record<string, any>): void => {
     updateAttributes({
@@ -72,22 +75,36 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
     databaseColumns: prevData.columns,
     updateAttributeData
   })
+
+  const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
+
+  const initialized = React.useRef(false)
+
+  const [
+    tableRows,
+    {
+      updateRows,
+      fetchRows,
+      batchDeleteDataByValue,
+      batchUpdateDataByColumn,
+      moveRow,
+      removeRow,
+      updateData,
+      addNewRow
+    }
+  ] = useTableRows({ editorDataSource, parentId, updateActiveStatus })
+
   const handleColumnTypeChange = async (type: TableColumnType, groupId: string, columnId: string): Promise<void> => {
     if (type === 'date' || type === 'date-range') batchUpdateDataByColumn(columnId, null)
     updateColumnType(type, groupId, columnId)
   }
-
-  const [{ isCellActive, isRowActive, update: updateActiveStatus, reset: resetActiveStatus }] = useActiveStatus()
-
-  const [tableRows, { fetchRows, addRow, updateRows, removeRow, moveRow }] = useDatabaseRows(parentId)
-  const initialized = React.useRef(false)
 
   useFormulaDatabase(
     node.attrs.uuid,
     // first column is column group
     (columns[0] as any)?.columns ?? [],
     tableRows,
-    (extension.options as TableBlockOptions).formulaContextActions.getFormulaContext
+    editorDataSource.formulaContext
   )
 
   React.useEffect(() => {
@@ -102,41 +119,16 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
       { id: uuid(), sort: 2 ** 32 },
       { id: uuid(), sort: 2 ** 32 * 2 }
     ]
-    updateRows(newRows)
+    void updateRows(parentId, newRows)
     initialized.current = true
-  }, [columns, addNewColumn, updateRows, tableRows])
+  }, [columns, addNewColumn, updateRows, tableRows, parentId])
 
   React.useEffect(() => {
     if (!fetched.current) {
-      void fetchRows()
+      void fetchRows(parentId)
       fetched.current = true
     }
-  }, [fetchRows])
-
-  const updateData = (rowId: string, key: string, data: any): void => {
-    const row = tableRows.find(r => r.id === rowId)
-    if (row) {
-      updateRows([{ ...row, [key]: data }])
-    }
-  }
-
-  const batchDeleteDataByValue = (columnId: string, value: string): void => {
-    updateRows(tableRows.map(r => (r[columnId] === value ? { ...r, [columnId]: null } : r)))
-  }
-
-  const batchUpdateDataByColumn = (columnId: string, value: any): void => {
-    updateRows(tableRows.map(r => ({ ...r, [columnId]: value })))
-  }
-
-  const addNewRow = (rowIndex?: number): void => {
-    const row = addRow(rowIndex)
-    updateActiveStatus([{ rowId: row.id }])
-  }
-
-  const handleMoveRow = (fromIndex: number, toIndex: number): void => {
-    const row = moveRow(fromIndex, toIndex)
-    if (row) updateActiveStatus([{ rowId: row.id }])
-  }
+  }, [fetchRows, parentId])
 
   const [modal, contextHolder] = Modal.useModal()
 
@@ -156,14 +148,20 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
   const addNewColColumn = useAddNewColumn(addNewColumn)
 
   const [sorterOptions, { add: addNewSorter, remove: removeSorter, update: updateSorter, sort }] = useSorter([])
-  const [filterGroup, { filter, add: addNewFilter, remove: removeFilter, update: updateFilter, duplicate: duplicateFilter }] = useFilter({
+  const [
+    filterGroup,
+    { filter, add: addNewFilter, remove: removeFilter, update: updateFilter, duplicate: duplicateFilter }
+  ] = useFilter({
     type: 'group',
     collectionType: 'intersection',
     filters: []
   })
 
   // filter && sort
-  const data = React.useMemo(() => sort(tableRows.filter(item => filter(item, filterGroup))), [tableRows, filterGroup, filter, sort])
+  const data = React.useMemo(
+    () => sort(tableRows.filter(item => filter(item, filterGroup))),
+    [tableRows, filterGroup, filter, sort]
+  )
 
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
@@ -221,7 +219,10 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                 className: 'table-block-tr'
               })
               return (
-                <div {...headerGroupProps} style={{ ...headerGroupProps.style, display: 'inline-flex' }} key={headerGroupProps.key}>
+                <div
+                  {...headerGroupProps}
+                  style={{ ...headerGroupProps.style, display: 'inline-flex' }}
+                  key={headerGroupProps.key}>
                   {headerGroup.headers.map(column => {
                     const headerProps = column.getHeaderProps(headerPropsGetter)
                     const resizerProps: any = {
@@ -280,7 +281,7 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, extension, update
                     // TODO: fix type
                     rowActive={isRowActive((row.original as any).id)}
                     onAddNewRow={addNewRow}
-                    onMoveRow={handleMoveRow}
+                    onMoveRow={moveRow}
                     updateActiveStatus={updateActiveStatus}
                     onRemoveRow={removeRowConfirm}
                     isCellActive={isCellActive}
