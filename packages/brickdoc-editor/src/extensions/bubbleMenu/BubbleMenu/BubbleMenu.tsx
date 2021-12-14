@@ -7,9 +7,11 @@ import { MenuItem } from './MenuItem'
 import { LinkMenuItem } from './LinkMenuItem'
 import './index.less'
 import { FormulaMenuItem } from './FormulaMenuItem'
+import { FormulaOptions } from '../..'
 
 interface BubbleMenuProps {
   editor: Editor | null
+  formulaContextActions: FormulaOptions['formulaContextActions']
 }
 
 export interface StyleMeta {
@@ -93,7 +95,7 @@ const ListStyle: StyleMeta[] = [
   }
 ]
 
-export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
+export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor, formulaContextActions }) => {
   if (!editor) return null
 
   return (
@@ -121,7 +123,7 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
           <LinkMenuItem editor={editor} />
         </div>
         <div className="bubble-menu-group">
-          <FormulaMenuItem editor={editor} />
+          <FormulaMenuItem editor={editor} formulaContextActions={formulaContextActions} />
         </div>
       </div>
     </TiptapBubbleMenu>

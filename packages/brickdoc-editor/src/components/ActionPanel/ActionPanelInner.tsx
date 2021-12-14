@@ -98,7 +98,7 @@ export const ActionPanelInner: React.FC<ActionPanelProps> = ({ options }) => {
         if (Array.isArray(option))
           return [
             ...elements,
-            ...option.map((option, optionIndex) => <Option key={`${index}-${optionIndex}`} option={option} />),
+            ...option.map(option => <Option key={index} option={option} />),
             <div key={`divider${index}`} className="brickdoc-action-panel-divider" />
           ]
         return [...elements, <Option key={index} option={option} />]

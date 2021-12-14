@@ -1,16 +1,16 @@
-import { FormulaContext } from '@brickdoc/formula'
 import React from 'react'
 import { Column } from 'react-table'
-import { DatabaseRows } from '..'
+import { DatabaseRows, TableBlockOptions } from '..'
 
 export function useFormulaDatabase(
   blockId: string,
   tableColumns: Column[],
   tableData: DatabaseRows,
-  formulaContext: FormulaContext | null | undefined
+  getFormulaContext: TableBlockOptions['formulaContextActions']['getFormulaContext']
 ): void {
   // TODO pass column Type
   React.useEffect(() => {
+    const formulaContext = getFormulaContext()
     const columns = tableColumns.map(column => ({
       namespaceId: blockId,
       columnId: column.accessor as string,
@@ -44,7 +44,8 @@ export function useFormulaDatabase(
     })
 
     return () => {
+      const formulaContext = getFormulaContext()
       formulaContext?.removeDatabase(blockId)
     }
-  }, [blockId, formulaContext, tableColumns, tableData])
+  }, [blockId, getFormulaContext, tableColumns, tableData])
 }

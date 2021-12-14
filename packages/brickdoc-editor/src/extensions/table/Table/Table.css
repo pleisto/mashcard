@@ -132,19 +132,19 @@
             transition: all 150ms ease-in;
 
             &.drag-hover-upwards {
-              border-top: 4px solid rgba(var(--active-color), 0.18);
+              border-top: 4px solid rgb(var(--active-color) 0.18);
               transition: unset;
             }
 
             &.drag-hover-downwards {
-              border-bottom: 4px solid rgba(var(--active-color), 0.18);
+              border-bottom: 4px solid rgb(var(--active-color) 0.18);
               transition: unset;
             }
 
             &.active {
-              border-top: 1px solid rgb(var(--active-color));
-              background: rgba(var(--active-color), 0.18);
-              border-bottom: 1px solid rgb(var(--active-color));
+              border-top: 1px solid rgb(var(--active-color) 1);
+              background: rgb(var(--active-color) 0.18);
+              border-bottom: 1px solid rgb(var(--active-color) 1);
             }
 
             & .table-block-row-actions {
@@ -235,8 +235,8 @@
             }
 
             &.active {
-              border: 1px solid rgba(var(--active-color), 0.3);
-              background: rgba(var(--active-color), 0.1);
+              border: 1px solid rgb(var(--active-color) 0.3);
+              background: rgb(var(--active-color) 0.1);
             }
           }
 

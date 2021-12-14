@@ -1,7 +1,8 @@
+import type { DashboardPluginOptions } from '@brickdoc/uploader'
+import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { PdfSection } from './PdfSection'
-import { ExtensionBaseOptions } from '../baseOptions'
 
 const DEFAULT_WIDTH = 700
 const DEFAULT_HEIGHT = 551
@@ -17,10 +18,19 @@ declare module '@tiptap/core' {
   }
 }
 
-export interface PdfSectionOptions extends ExtensionBaseOptions {}
+export interface PdfSectionOptions {
+  prepareFileUpload: DashboardPluginOptions['prepareFileUpload']
+  getAttachmentUrl?: (node: ProsemirrorNode) => string | undefined
+}
 
 export const PdfSectionExtension = Node.create<PdfSectionOptions>({
   name: 'pdfSection',
+
+  defaultOptions: {
+    prepareFileUpload: () => {
+      throw new Error('You need configure prepareFileUpload if you want to enable PdfSection')
+    }
+  },
 
   group: 'block',
 

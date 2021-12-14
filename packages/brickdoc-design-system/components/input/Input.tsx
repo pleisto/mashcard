@@ -109,6 +109,7 @@ export function triggerFocus(element?: HTMLInputElement | HTMLTextAreaElement, o
   const { cursor } = option || {}
   if (cursor) {
     const len = element.value.length
+
     switch (cursor) {
       case 'start':
         element.setSelectionRange(0, 0)

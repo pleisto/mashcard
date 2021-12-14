@@ -46,8 +46,7 @@ export const ActionPanel: React.FC<ActionPanelProps> = ({ options, children }) =
     <Popover
       overlayClassName="brickdoc-action-panel-popover"
       trigger="hover"
-      autoAdjustOverflow={false}
-      placement="topRight"
+      placement="top"
       content={<ActionPanelInner options={options} />}>
       {children}
     </Popover>

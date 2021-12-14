@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { NodeViewRendererProps } from '@tiptap/core'
 import React from 'react'
 import { useEditorI18n } from '../../..'
-import { BlockWrapper } from '../../../components'
+import { BlockWrapper } from '../../BlockWrapper'
 import './PageLink.less'
 
 export interface PageLinkProps extends NodeViewRendererProps {}

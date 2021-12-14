@@ -4,28 +4,26 @@ import { Button, Icon, Popover } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { Dashboard, ImportSourceOption, UploadProgress, UploadResultData } from '@brickdoc/uploader'
 import { prependHttp } from '../../../../helpers/prependHttp'
+import { WebsiteMeta } from '../..'
 import { linkStorage, sizeFormat } from '../../../../helpers/file'
-import { EditorDataSourceContext, WebsiteMeta } from '../../../../dataSource/DataSource'
-import { useEditorI18n } from '../../../../hooks/useEditorI18n'
+import { useEditorI18n } from '../../../..'
 
 export interface UploaderModeProps {
   node: NodeViewProps['node']
+  extension: NodeViewProps['extension']
   updateLinkBlockAttributes: (attrs: Record<string, any>, type: 'link' | 'attachment') => void
 }
 
-export const UploaderMode: React.FC<UploaderModeProps> = ({ node, updateLinkBlockAttributes }) => {
+export const UploaderMode: React.FC<UploaderModeProps> = ({ node, extension, updateLinkBlockAttributes }) => {
   const [t] = useEditorI18n()
-  const editorDataSource = React.useContext(EditorDataSourceContext)
   const onUploaded = (data: UploadResultData): void => {
     // external link
     if (data.meta?.source === 'external') {
       data.url = prependHttp(data.url ?? '')
-      void editorDataSource
-        .fetchWebsiteMeta(data.url)
-        .then(({ success, data }: { success: boolean; data: WebsiteMeta }) => {
-          if (!success) return
-          updateLinkBlockAttributes({ ...data }, 'link')
-        })
+      extension.options.fetchWebsiteMeta(data.url).then(({ success, data }: { success: boolean; data: WebsiteMeta }) => {
+        if (!success) return
+        updateLinkBlockAttributes({ ...data }, 'link')
+      })
 
       linkStorage.set(node.attrs.uuid, null)
       updateLinkBlockAttributes({ key: data.url, source: data.meta?.source.toUpperCase() }, 'link')
@@ -69,13 +67,10 @@ export const UploaderMode: React.FC<UploaderModeProps> = ({ node, updateLinkBloc
           onUploaded={onUploaded}
           onProgress={onProgress}
           importSources={importSources}
-          prepareFileUpload={editorDataSource.prepareFileUpload}
+          prepareFileUpload={extension.options.prepareFileUpload}
         />
       }>
-      <Button
-        data-testid={TEST_ID_ENUM.editor.linkBlock.addButton.id}
-        type="text"
-        className="brickdoc-link-block-placeholder">
+      <Button data-testid={TEST_ID_ENUM.editor.linkBlock.addButton.id} type="text" className="brickdoc-link-block-placeholder">
         <div className="link-block-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
         <Icon.PaperClip className="link-block-icon" />
         <div className="link-block-content">

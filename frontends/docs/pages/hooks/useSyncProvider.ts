@@ -7,15 +7,13 @@ import { isEqual } from 'lodash-es'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
 
-export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
-
 export function useSyncProvider(queryVariables: { rootId: string; snapshotVersion: number }): {
   rootBlock: React.MutableRefObject<Block | undefined>
   data: any
   loading: boolean
   refetch: any
   onDocSave: (doc: Node) => Promise<void>
-  updateBlocks: UpdateBlocks
+  updateBlocks: (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
   updateCachedDocBlock: (block: Block, toDelete: boolean) => void
 } {
   const rootId = React.useRef<string>(queryVariables.rootId)

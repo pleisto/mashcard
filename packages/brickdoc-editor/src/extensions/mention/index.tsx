@@ -6,8 +6,6 @@ import { createPopup, PopupInstance } from '../../helpers/popup'
 import { MentionCommandsMenu, MentionCommandsMenuProps } from './MentionMenu'
 import { PageItem } from './MentionMenu/PagePanel/PagePanel'
 import { PeopleItem } from './MentionMenu/PeoplePanel/PeoplePanel'
-import { ExtensionBaseOptions } from '../baseOptions'
-import { EditorDataSource } from '../../dataSource/DataSource'
 
 const TRIGGER_CHAR = '@'
 
@@ -16,8 +14,26 @@ interface MenuItems {
   page: PageItem[]
 }
 
-export interface MentionCommandsOptions extends ExtensionBaseOptions {
-  editorDataSource: EditorDataSource
+export interface MentionCommandsOptions {
+  getCollaborators?: () => Array<{
+    name: string | null | undefined
+    webid: string
+    avatar: string | undefined
+  }>
+  getPages: () => {
+    webid: string
+    pages: Array<{
+      key: string
+      value: string
+      parentId: string | null | undefined
+      sort: number
+      icon: string | null
+      nextSort: number
+      firstChildSort: number
+      text: string
+      title: string | undefined
+    }>
+  }
 }
 
 export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>({
@@ -26,8 +42,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
   addProseMirrorPlugins() {
     const filterMenuItemsByQuery = (query: string): MenuItems => {
       const searchValue = (query ?? '').toLowerCase()
-      const pages = this.options.editorDataSource.documentPages
-      const webid = this.options.editorDataSource.webid
+      const { webid, pages } = this.options.getPages()
       const pagePath = (parentId: string | null | undefined, path: string[] = []): string[] => {
         const parent = pages.find(p => p.key === parentId)
 
@@ -36,7 +51,8 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
       }
       return {
         people:
-          this.options.editorDataSource.collaborators
+          this.options
+            .getCollaborators?.()
             .filter(item => (item.name ?? '').toLowerCase().includes(searchValue))
             .map(item => ({
               name: item.name,
@@ -58,12 +74,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
               icon: item.icon,
               category: pagePath(item.parentId).join('/'),
               command(editor: Editor, range: Range) {
-                editor
-                  .chain()
-                  .focus()
-                  .deleteRange(range)
-                  .setPageLinkBlock(item.key, `/${webid}/${item.key}`, item.title, item.icon)
-                  .run()
+                editor.chain().focus().deleteRange(range).setPageLinkBlock(item.key, `/${webid}/${item.key}`, item.title, item.icon).run()
               }
             }))
             .slice(0, 5) ?? []
@@ -136,10 +147,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
                 }
 
                 if (key === 'ArrowRight') {
-                  moving(
-                    activeCategory,
-                    Math.min(activeIndex + 1, reactRenderer.props.items[activeCategory].length - 1)
-                  )
+                  moving(activeCategory, Math.min(activeIndex + 1, reactRenderer.props.items[activeCategory].length - 1))
                   return true
                 }
 
@@ -160,10 +168,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
                 }
 
                 if (key === 'ArrowDown') {
-                  moving(
-                    activeCategory,
-                    Math.min(activeIndex + 1, reactRenderer.props.items[activeCategory].length - 1)
-                  )
+                  moving(activeCategory, Math.min(activeIndex + 1, reactRenderer.props.items[activeCategory].length - 1))
                   return true
                 }
               }

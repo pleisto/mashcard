@@ -1,6 +1,5 @@
-import React from 'react'
 import { Upload, useCreateDirectUploadMutation } from '@/BrickdocGraphQL'
-import { EditorDatabase } from '@brickdoc/editor'
+import { EditorOptions } from '@brickdoc/editor'
 import { FileChecksum } from '@rails/activestorage/src/file_checksum'
 
 const checksum = async (file: File): Promise<string> =>
@@ -15,58 +14,55 @@ const checksum = async (file: File): Promise<string> =>
     })
   })
 
-export function usePrepareFileUpload(): EditorDatabase['prepareFileUpload'] {
+export function usePrepareFileUpload(): Exclude<EditorOptions['prepareFileUpload'], undefined> {
   const [directUpload] = useCreateDirectUploadMutation()
 
-  return React.useCallback(
-    async (blockId: string, type: string, file: File) => {
-      let inputType: Upload
+  return async (blockId: string, type: string, file: File) => {
+    let inputType: Upload
 
-      switch (type) {
-        // TODO: add new types for pdf/image
-        case 'pdf':
-        case 'image':
-        default:
-          inputType = Upload.Doc
+    switch (type) {
+      // TODO: add new types for pdf/image
+      case 'pdf':
+      case 'image':
+      default:
+        inputType = Upload.Doc
+    }
+
+    if (!blockId && type === 'image') {
+      inputType = Upload.Avatar
+    }
+
+    const input = {
+      filename: file.name,
+      byteSize: file.size,
+      contentType: file.type,
+      checksum: await checksum(file)
+    }
+
+    return await directUpload({
+      variables: {
+        input: {
+          input,
+          type: inputType,
+          blockId
+        }
+      }
+      // TODO: handle error
+    }).then(result => {
+      if (!result.data?.createDirectUpload) {
+        throw new Error('prepare upload failed')
       }
 
-      if (!blockId && type === 'image') {
-        inputType = Upload.Avatar
+      const directUpload = result.data.createDirectUpload.directUpload
+
+      return {
+        endpoint: directUpload.uploadUrl,
+        blobKey: directUpload.blobKey,
+        headers: directUpload.headers,
+        signedId: directUpload.signedId,
+        downloadUrl: directUpload.downloadUrl,
+        viewUrl: directUpload.viewUrl
       }
-
-      const input = {
-        filename: file.name,
-        byteSize: file.size,
-        contentType: file.type,
-        checksum: await checksum(file)
-      }
-
-      return await directUpload({
-        variables: {
-          input: {
-            input,
-            type: inputType,
-            blockId
-          }
-        }
-        // TODO: handle error
-      }).then(result => {
-        if (!result.data?.createDirectUpload) {
-          throw new Error('prepare upload failed')
-        }
-
-        const directUpload = result.data.createDirectUpload.directUpload
-
-        return {
-          endpoint: directUpload.uploadUrl,
-          blobKey: directUpload.blobKey,
-          headers: directUpload.headers,
-          signedId: directUpload.signedId,
-          downloadUrl: directUpload.downloadUrl,
-          viewUrl: directUpload.viewUrl
-        }
-      })
-    },
-    [directUpload]
-  )
+    })
+  }
 }
