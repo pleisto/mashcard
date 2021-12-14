@@ -1,43 +1,63 @@
 import React from 'react'
 import { Button, Popover, Icon, Input } from '@brickdoc/design-system'
 import styles from './DocumentTitle.module.less'
-import { DashboardProps } from '@brickdoc/uploader'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { DocumentIcon, DocumentIconMeta } from './DocumentIcon'
-import { DocumentCover, DocumentCoverMeta } from './DocumentCover'
+import { DocumentIcon } from './DocumentIcon'
+import { DocumentCover } from './DocumentCover'
 import { useDocsI18n } from '../../../common/hooks'
-import { useDocumentIconUploader, useDocumentCoverUploader } from '../../hooks'
+import {
+  useDocumentIconUploader,
+  useDocumentCoverUploader,
+  usePrepareFileUpload,
+  useFetchUnsplashImages
+} from '../../hooks'
+import { useReactiveVar } from '@apollo/client'
+import { editorVar } from '@/docs/reactiveVars'
+import { useBlobGetter } from '../../hooks/useBlobGetter'
+import { GetChildrenBlocksQuery } from '@/BrickdocGraphQL'
+import { EditorContentProps } from '@brickdoc/editor'
 
 export interface DocumentTitleProps {
-  blockId: string
+  blocks: GetChildrenBlocksQuery['childrenBlocks']
   editable: boolean
-  prepareFileUpload: DashboardProps['prepareFileUpload']
-  fetchUnsplashImages: DashboardProps['fetchUnsplashImages']
-  title?: string
-  icon?: DocumentIconMeta | null
-  cover?: DocumentCoverMeta | null
-  onCoverChange: (cover: DocumentCoverMeta | null | undefined) => void
-  onIconChange: (icon: DocumentIconMeta | null | undefined) => void
-  onTitleChange: (title: string) => void
-  getDocIconUrl: () => string | undefined
-  getDocCoverUrl: () => string | undefined
 }
 
-export const DocumentTitle: React.FC<DocumentTitleProps> = ({
-  blockId,
-  prepareFileUpload,
-  fetchUnsplashImages,
-  title,
-  icon,
-  cover,
-  onCoverChange,
-  onIconChange,
-  onTitleChange,
-  getDocIconUrl,
-  getDocCoverUrl,
-  editable
-}) => {
+const createDocAttrsUpdater =
+  (editor: EditorContentProps['editor'], field: string) =>
+  (value: any): void => {
+    if (!editor || editor.isDestroyed) return
+    editor.commands.setDocAttrs({
+      ...editor.state.doc.attrs,
+      [field]: value
+    })
+  }
+
+export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }) => {
   const { t } = useDocsI18n()
+  const editor = useReactiveVar(editorVar)
+  const blockId = editor?.state.doc.attrs.uuid
+  const icon = editor?.state.doc.attrs.icon
+  const cover = editor?.state.doc.attrs.cover
+  const title = editor?.state.doc.attrs.title
+
+  const docIconGetter = useBlobGetter('icon', blocks)
+  const docCoverGetter = useBlobGetter('cover', blocks)
+
+  const setTitle = createDocAttrsUpdater(editor, 'title')
+  const setIcon = createDocAttrsUpdater(editor, 'icon')
+  const setCover = createDocAttrsUpdater(editor, 'cover')
+
+  const getDocIconUrl = (): string | undefined => {
+    if (!editor || editor.isDestroyed) return undefined
+    return docIconGetter(editor.state.doc)
+  }
+  const getDocCoverUrl = (): string | undefined => {
+    if (!editor || editor.isDestroyed) return undefined
+    return docCoverGetter(editor.state.doc)
+  }
+
+  const prepareFileUpload = usePrepareFileUpload()
+  const fetchUnsplashImages = useFetchUnsplashImages()
   const [localIcon, setLocalIcon] = React.useState('')
   const [localCover, setLocalCover] = React.useState('')
   const [documentIconMeta, iconPopoverProps] = useDocumentIconUploader(icon, {
@@ -45,7 +65,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
     prepareFileUpload,
     fetchUnsplashImages,
     styles,
-    onChange: onIconChange,
+    onChange: setIcon,
     onFileLoaded: setLocalIcon
   })
   const [documentCoverMeta, coverPopoverProps] = useDocumentCoverUploader(cover, {
@@ -53,7 +73,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
     prepareFileUpload,
     fetchUnsplashImages,
     styles,
-    onChange: onCoverChange,
+    onChange: setCover,
     onFileLoaded: setLocalCover
   })
 
@@ -103,7 +123,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({
               data-testid={TEST_ID_ENUM.page.DocumentPage.titleInput.id}
               className={styles.titleInput}
               value={title}
-              onChange={e => onTitleChange(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
               placeholder={t('title.untitled')}
               disabled={!editable}
             />

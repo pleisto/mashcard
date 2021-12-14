@@ -28,14 +28,14 @@ describe('TextCell', () => {
   it('renders correctly', () => {
     render(<TextCell {...props} />)
 
-    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.id)).toBeInTheDocument()
     expect(screen.getByText(props.value)).toBeInTheDocument()
   })
 
   it('turns into editing status when click text cell', () => {
     render(<TextCell {...props} />)
 
-    fireEvent.click(screen.getByRole('button'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.id))
 
     expect(screen.getByTestId('table-text-cell-input')).toBeInTheDocument()
   })
@@ -45,7 +45,7 @@ describe('TextCell', () => {
     const updateData = jest.fn()
 
     render(<TextCell {...props} updateData={updateData} />)
-    fireEvent.click(screen.getByRole('button'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.id))
     const input = screen.getByTestId('table-text-cell-input')
     fireEvent.change(input, { target: { value: newValue } })
     fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.overlay.id))
@@ -57,9 +57,9 @@ describe('TextCell', () => {
   it('turns into text when click overlay', () => {
     const updateData = jest.fn()
     render(<TextCell {...props} updateData={updateData} />)
-    fireEvent.click(screen.getByRole('button'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.id))
     fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.overlay.id))
 
-    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.cell.text.id)).toBeInTheDocument()
   })
 })

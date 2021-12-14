@@ -60,6 +60,7 @@ exports[`ImageBlock matches correct snapshot 1`] = `
           class="brickdoc-block-image loading"
           data-testid="editor-image-section-image"
           role="img"
+          src="https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80"
         />
         <button
           aria-label="Zoom image"

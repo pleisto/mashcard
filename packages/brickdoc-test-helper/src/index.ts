@@ -127,6 +127,12 @@ export const TEST_ID_ENUM = {
       },
       row: {
         id: 'editor-table-block-row',
+        actions: {
+          addButton: {
+            id: 'editor-table-block-row-actions-add-button'
+          },
+          id: 'editor-table-block-row-actions'
+        },
         contextMenu: {
           deleteButton: {
             id: 'editor-table-block-row-context-menu-delete-button'

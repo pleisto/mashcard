@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { WebsiteMeta } from '..'
-import { BlockWrapper } from '../../BlockWrapper'
+import { BlockWrapper } from '../../../components'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.less'
 import { linkStorage, getFileTypeByExtension, FileType } from '../../../helpers/file'
@@ -9,6 +8,8 @@ import { PreviewMode } from '../modes/PreviewMode/PreviewMode'
 import { AttachmentMode } from '../modes/AttachmentMode/AttachmentMode'
 import { LinkMode } from '../modes/LinkMode/LinkMode'
 import { UploaderMode } from '../modes/UploaderMode/UploaderMode'
+import { getBlobUrl } from '../../../helpers/getBlobUrl'
+import { EditorDataSourceContext, WebsiteMeta } from '../../../dataSource/DataSource'
 
 export interface LinkBlockAttributes {
   key: string
@@ -25,9 +26,13 @@ export interface LinkBlockAttributes {
 const canFilePreview = (fileType: FileType, mode: LinkBlockAttributes['mode']): boolean =>
   mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
-export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, extension, updateAttributes, deleteNode }) => {
+export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttributes, deleteNode }) => {
+  const editorDataSource = React.useContext(EditorDataSourceContext)
   const latestLinkBlockAttributes = React.useRef<Partial<LinkBlockAttributes>>({})
-  const updateLinkBlockAttributes = (newAttributes: Partial<LinkBlockAttributes>, type: 'link' | 'attachment'): void => {
+  const updateLinkBlockAttributes = (
+    newAttributes: Partial<LinkBlockAttributes>,
+    type: 'link' | 'attachment'
+  ): void => {
     latestLinkBlockAttributes.current = {
       ...latestLinkBlockAttributes.current,
       ...newAttributes
@@ -42,14 +47,17 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, extension, up
     })
   }
 
-  const fileUrl = extension.options.getAttachmentUrl(node) ?? linkStorage.get(node.attrs.uuid)
+  const fileUrl =
+    getBlobUrl(node.attrs?.uuid, node.attrs?.attachment ?? {}, editorDataSource.blobs) ??
+    linkStorage.get(node.attrs?.uuid)
   const linkUrl = node.attrs.link?.key
 
   if (fileUrl) {
     const { name } = node.attrs.attachment
     const fileType = getFileTypeByExtension(name)
 
-    const updateAttachmentAttributes = (attrs: Record<string, any>): void => updateLinkBlockAttributes(attrs, 'attachment')
+    const updateAttachmentAttributes = (attrs: Record<string, any>): void =>
+      updateLinkBlockAttributes(attrs, 'attachment')
 
     if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
       return (
@@ -90,7 +98,7 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, extension, up
 
   return (
     <BlockWrapper editor={editor}>
-      <UploaderMode node={node} extension={extension} updateLinkBlockAttributes={updateLinkBlockAttributes} />
+      <UploaderMode node={node} updateLinkBlockAttributes={updateLinkBlockAttributes} />
     </BlockWrapper>
   )
 }

@@ -1,16 +1,70 @@
 import { Table } from '../Table'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { useDatabaseRows } from '../useDatabaseRows'
-import { FormulaOptions } from '../../..'
+import { EditorDataSource, EditorDataSourceContext } from '../../../../dataSource/DataSource'
+import { DatabaseRow } from '../..'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
-const formulaContextActions: FormulaOptions['formulaContextActions'] = {
-  getFormulaContext: (): null => null,
-  getVariable: (variableId: string): undefined => undefined,
-  removeVariable: (variableId: string): void => {},
-  calculate: (): void => {}
+function buildTableSource(editorDataSource: EditorDataSource): void {
+  editorDataSource.table = {
+    rows: [],
+    async fetchRows(parentId) {},
+    addRow(parentId, rowIndex) {
+      const currentRowIndex = rowIndex ?? editorDataSource.table.rows.length - 1
+      const id = new Date().getTime().toString()
+      const row = { id, sort: currentRowIndex }
+      editorDataSource.table = {
+        ...editorDataSource.table,
+        rows: [
+          ...editorDataSource.table.rows.slice(0, currentRowIndex + 1),
+          row,
+          ...editorDataSource.table.rows.slice(currentRowIndex + 1, editorDataSource.table.rows.length)
+        ]
+      }
+      return row
+    },
+    async updateRows(parentId, rows) {
+      const rowsMap = new Map(rows.map(row => [row.id, row]))
+      const prevRowsMap = new Map(editorDataSource.table.rows.map(row => [row.id, row]))
+      const newRows = [
+        ...editorDataSource.table.rows.map(prevRow => rowsMap.get(prevRow.id) ?? prevRow),
+        ...rows.filter(row => !prevRowsMap.has(row.id))
+      ].sort((a, b) => b.sort - a.sort)
+      editorDataSource.table = {
+        ...editorDataSource.table,
+        rows: newRows
+      }
+    },
+    removeRow(rowId) {
+      editorDataSource.table = {
+        ...editorDataSource.table,
+        rows: editorDataSource.table.rows.filter(row => row.id !== rowId)
+      }
+    },
+    moveRow(parentId, fromIndex, toIndex) {
+      let targetRow: DatabaseRow | undefined
+      const newRows = editorDataSource.table.rows.filter((row, index) => {
+        if (index !== fromIndex) {
+          return true
+        } else {
+          targetRow = row
+          return false
+        }
+      })
+      if (!targetRow) return
+
+      editorDataSource.table = {
+        ...editorDataSource.table,
+        rows: [...newRows.slice(0, toIndex), targetRow, ...newRows.slice(toIndex, newRows.length)]
+      }
+
+      return targetRow
+    }
+  }
 }
 
 describe('Table', () => {
+  const editorDataSource = new EditorDataSource()
+
   const props: any = {
     editor: {},
     node: {
@@ -27,22 +81,31 @@ describe('Table', () => {
       }
     },
     extension: {
-      options: {
-        useDatabaseRows,
-        formulaContextActions
-      }
+      options: {}
     },
     updateAttributes: () => {}
   }
 
+  beforeEach(() => {
+    buildTableSource(editorDataSource)
+  })
+
   it('matches correct snapshot', () => {
-    const { container } = render(<Table {...props} />)
+    const { container } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders table correctly', () => {
-    render(<Table {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(screen.getByRole('table')).toBeInTheDocument()
   })
@@ -54,9 +117,17 @@ describe('Table', () => {
         ...attrs
       }
 
-      rerender(<Table {...props} />)
+      rerender(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <Table {...props} />
+        </EditorDataSourceContext.Provider>
+      )
     }
-    const { rerender } = render(<Table {...props} updateAttributes={updateAttributes} />)
+    const { rerender } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} updateAttributes={updateAttributes} />
+      </EditorDataSourceContext.Provider>
+    )
 
     const columnHeaders = screen.getAllByRole('columnheader')
 
@@ -81,9 +152,17 @@ describe('Table', () => {
         ...attrs
       }
 
-      rerender(<Table {...props} />)
+      rerender(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <Table {...props} />
+        </EditorDataSourceContext.Provider>
+      )
     }
-    const { rerender } = render(<Table {...props} updateAttributes={updateAttributes} />)
+    const { rerender } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} updateAttributes={updateAttributes} />
+      </EditorDataSourceContext.Provider>
+    )
     const newName = 'new name'
 
     const columnHeaders = screen.getAllByRole('columnheader')
@@ -107,9 +186,17 @@ describe('Table', () => {
         ...attrs
       }
 
-      rerender(<Table {...props} />)
+      rerender(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <Table {...props} />
+        </EditorDataSourceContext.Provider>
+      )
     }
-    const { rerender } = render(<Table {...props} updateAttributes={updateAttributes} />)
+    const { rerender } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} updateAttributes={updateAttributes} />
+      </EditorDataSourceContext.Provider>
+    )
 
     const columnHeaders = screen.getAllByRole('columnheader')
     const firstColumnHeader = columnHeaders[0]
@@ -126,11 +213,23 @@ describe('Table', () => {
   })
 
   it('adds new row by toolbar button normally', () => {
-    render(<Table {...props} />)
+    const { rerender } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} />
+      </EditorDataSourceContext.Provider>
+    )
+
+    editorDataSource.onUpdate(() => {
+      rerender(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <Table {...props} />
+        </EditorDataSourceContext.Provider>
+      )
+    })
 
     const rows = screen.getAllByRole('row')
 
-    fireEvent.click(screen.getByText('New'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.toolbar.addButton.id))
 
     const newRows = screen.getAllByRole('row')
 
@@ -142,13 +241,24 @@ describe('Table', () => {
   })
 
   it('adds new row by row action normally', () => {
-    render(<Table {...props} />)
+    const { rerender } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <Table {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
-    fireEvent.click(screen.getByText('New'))
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.toolbar.addButton.id))
+
+    editorDataSource.onUpdate(() => {
+      rerender(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <Table {...props} />
+        </EditorDataSourceContext.Provider>
+      )
+    })
 
     const rows = screen.getAllByRole('row')
-    const actions = screen.getByTestId('table-actions')
-    fireEvent.click(actions.firstChild!)
+    fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.row.actions.addButton.id))
 
     const newRows = screen.getAllByRole('row')
 
@@ -161,9 +271,21 @@ describe('Table', () => {
 
   describe('Row ContextMenu', () => {
     it('filters menu items normally', () => {
-      render(<Table {...props} />)
+      const { rerender } = render(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <Table {...props} />
+        </EditorDataSourceContext.Provider>
+      )
 
-      fireEvent.click(screen.getByText('New'))
+      editorDataSource.onUpdate(() => {
+        rerender(
+          <EditorDataSourceContext.Provider value={editorDataSource}>
+            <Table {...props} />
+          </EditorDataSourceContext.Provider>
+        )
+      })
+
+      fireEvent.click(screen.getByTestId(TEST_ID_ENUM.editor.tableBlock.toolbar.addButton.id))
 
       const rows = screen.getAllByRole('row')
       fireEvent.contextMenu(rows[1])

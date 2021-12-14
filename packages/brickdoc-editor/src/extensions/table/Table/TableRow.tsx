@@ -188,11 +188,18 @@ export const TableRow: React.FC<TableRowProps> = ({
         ref={dropRef}
         className={cx('table-block-row', { active: rowActive })}
         onContextMenu={handleContextMenu}>
-        <div data-testid="table-actions" className="table-block-row-actions">
-          <Button onClick={() => onAddNewRow(row.index)} className="table-block-row-action-button" type="text">
+        <div data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.id} className="table-block-row-actions">
+          <Button
+            data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.addButton.id}
+            onClick={() => onAddNewRow(row.index)}
+            className="table-block-row-action-button"
+            type="text">
             <Icon.Plus />
           </Button>
-          <Button type="text" className={cx('table-block-row-action-button', 'drag', { dragging: isDragging })} ref={dragRef}>
+          <Button
+            type="text"
+            className={cx('table-block-row-action-button', 'drag', { dragging: isDragging })}
+            ref={dragRef}>
             <Icon.Drag />
           </Button>
         </div>

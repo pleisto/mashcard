@@ -4,11 +4,9 @@ import { Tooltip, Icon, Button } from '@brickdoc/design-system'
 import { FormulaMenu } from '../../../components'
 import { useEditorI18n } from '../../../hooks'
 import { StyleMeta } from './BubbleMenu'
-import { FormulaOptions } from '../..'
 
 export interface FormulaMenuItemProps {
   editor: Editor
-  formulaContextActions: FormulaOptions['formulaContextActions']
 }
 
 const FormulaStyle: StyleMeta = {
@@ -17,7 +15,7 @@ const FormulaStyle: StyleMeta = {
   label: <Icon.Formula />
 }
 
-export const FormulaMenuItem: React.FC<FormulaMenuItemProps> = ({ editor, formulaContextActions }) => {
+export const FormulaMenuItem: React.FC<FormulaMenuItemProps> = ({ editor }) => {
   const { t } = useEditorI18n()
 
   return (
@@ -31,7 +29,7 @@ export const FormulaMenuItem: React.FC<FormulaMenuItemProps> = ({ editor, formul
         </>
       }
       placement="top">
-      <FormulaMenu clear={true} editor={editor} formulaContextActions={formulaContextActions}>
+      <FormulaMenu clear={true} editor={editor}>
         <Button role="menuitem" type="text" className="bubble-menu-item">
           {FormulaStyle.label}
         </Button>

@@ -1,6 +1,6 @@
 @import '@brickdoc/design-system/components/style/themes';
 
-.brickdoc-block-image-section.brk-btn {
+.brickdoc-block-image-section {
   position: relative;
   width: 100%;
   background: #f9f9f9;
@@ -86,11 +86,11 @@
 
   & .brk-popover-inner-content {
     padding: 0;
-    border-radius: 0.8rem;
+    border-radius: .8rem;
   }
 
   & .brk-menu-item {
-    padding: 0.6rem 1.2rem;
+    padding: .6rem 1.2rem;
     font-size: 14px;
     line-height: 20px;
 
@@ -101,7 +101,7 @@
 }
 
 .image-section-menu {
-  border-radius: 0.8rem;
+  border-radius: .8rem;
 }
 
 .brickdoc-block-image-section-container {
@@ -113,8 +113,8 @@
   max-width: 100%;
   position: relative;
 
-  [data-rmiz-wrap='visible'],
-  [data-rmiz-wrap='hidden'] {
+  [data-rmiz-wrap='hidden'],
+  [data-rmiz-wrap='visible'] {
     display: flex;
   }
 
@@ -128,7 +128,7 @@
     .image-section-control-left-drag,
     .image-section-control-right-drag,
     .image-section-menu-button {
-      transition: opacity 0.3s ease-in;
+      transition: opacity .3s ease-in;
     }
 
     .image-section-menu-button {
@@ -143,7 +143,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0%;
+      opacity: 0;
       cursor: pointer;
     }
 
@@ -154,7 +154,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      opacity: 0%;
+      opacity: 0;
       background-image: url('../../../assets/control.png');
       background-size: 6px 40px;
     }
@@ -188,7 +188,7 @@
       width: 24px;
       height: 24px;
       position: absolute;
-      opacity: 0%;
+      opacity: 0;
       background-image: url('../../../assets/control-corner.png');
       background-size: 24px 24px;
     }

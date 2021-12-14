@@ -1,6 +1,7 @@
 .table-block-text-cell {
   --padding: 8px;
 
+  user-select: none;
   width: 100%;
   padding: var(--padding);
   display: flex;
@@ -12,7 +13,7 @@
   max-width: calc(100% - 2 * var(--padding));
 }
 
-textarea.table-block-text-input {
+.table-block-text-input {
   --padding: 8px;
   --border-color: 239, 239, 239;
   --box-shadow-color: 62, 62, 62;
@@ -20,9 +21,7 @@ textarea.table-block-text-input {
   max-width: calc(100% - 2 * var(--padding));
   font-size: 14px;
   min-height: 100%;
-  border: 1px solid rgba(var(--border-color));
-  border-top: none;
-  border-bottom: none;
+  border: none;
   box-shadow: 0 10px 15px rgb(var(--box-shadow-color) 0.1), 0 0 6px rgb(var(--box-shadow-color) 0.05);
   border-radius: 4px;
   padding: var(--padding);

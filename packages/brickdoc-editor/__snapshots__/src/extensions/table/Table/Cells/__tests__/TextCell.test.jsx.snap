@@ -4,8 +4,6 @@ exports[`TextCell matches correct snapshot 1`] = `
 <div
   class="table-block-text-cell"
   data-testid="editor-table-block-cell-text"
-  role="button"
-  tabindex="-1"
 >
   text
 </div>

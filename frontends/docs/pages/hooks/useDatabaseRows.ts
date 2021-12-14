@@ -8,6 +8,7 @@ import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { useImperativeQuery } from '@/common/hooks'
 import { isSavingVar } from '../../reactiveVars'
+import { EditorDatabase } from '@brickdoc/editor'
 
 export interface DatabaseRow {
   id: string
@@ -50,116 +51,106 @@ function calculateSort(rows: DatabaseRows, targetIndex: number, fromIndex?: numb
   return Math.round(0.5 * (Number(nextRowSort) + Number(prevRowSort)))
 }
 
-export function useDatabaseRows(options: { updateBlocks: (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void> }): (
-  parentId: string
-) => [
-  DatabaseRows,
-  {
-    fetchRows: () => Promise<void>
-    addRow: (rowIndex?: number) => DatabaseRow
-    updateRows: (rows: DatabaseRows) => Promise<void>
-    removeRow: (rowId: string) => void
-    moveRow: (fromIndex: number, toIndex: number) => DatabaseRow | undefined
-  }
-] {
+export function useDatabaseRows(options: {
+  updateBlocks: (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
+}): EditorDatabase['table'] {
   const { updateBlocks } = options
-  return function useDatabaseRows(parentId: string) {
-    const queryDatabaseRowBlocks = useImperativeQuery<Query, Variables>(GetDatabaseRowBlocksDocument)
+  const queryDatabaseRowBlocks = useImperativeQuery<Query, Variables>(GetDatabaseRowBlocksDocument)
 
-    const [databaseRows, setDatabaseRows] = React.useState([] as DatabaseRows)
+  const [databaseRows, setDatabaseRows] = React.useState([] as DatabaseRows)
 
-    const fetchRows = React.useCallback(async (): Promise<void> => {
+  const fetchRows = React.useCallback(
+    async (parentId: string): Promise<void> => {
       const { data, error } = await queryDatabaseRowBlocks({ parentId, snapshotVersion: 0 })
       if (!error) {
         setDatabaseRows(data.databaseRowBlocks?.map(block => ({ ...block.data, id: block.id, sort: block.sort })) ?? [])
       }
-    }, [parentId, queryDatabaseRowBlocks])
+    },
+    [queryDatabaseRowBlocks]
+  )
 
-    const updateRows = React.useCallback(
-      async (rows: DatabaseRows): Promise<void> => {
-        isSavingVar(true)
-        const rowsMap = new Map(rows.map(row => [row.id, row]))
-        const prevRowsMap = new Map(databaseRows.map(row => [row.id, row]))
-        const newRows = [
-          ...databaseRows.map(prevRow => rowsMap.get(prevRow.id) ?? prevRow),
-          ...rows.filter(row => !prevRowsMap.has(row.id))
-        ].sort((a, b) => a.sort - b.sort)
-        setDatabaseRows(newRows)
-        const blocks: BlockInput[] = rows.map(row => {
-          const { id, sort, ...data } = row
-          const block: BlockInput = {
-            id,
-            sort,
-            data,
-            parentId,
-            type: 'databaseRow',
-            meta: {},
-            content: [],
-            text: ''
-          }
-          return block
-        })
-        await updateBlocks(blocks, [])
-      },
-      [databaseRows, setDatabaseRows, parentId]
-    )
+  const updateRows = React.useCallback(
+    async (parentId: string, rows: DatabaseRows): Promise<void> => {
+      isSavingVar(true)
+      const rowsMap = new Map(rows.map(row => [row.id, row]))
+      const prevRowsMap = new Map(databaseRows.map(row => [row.id, row]))
+      const newRows = [
+        ...databaseRows.map(prevRow => rowsMap.get(prevRow.id) ?? prevRow),
+        ...rows.filter(row => !prevRowsMap.has(row.id))
+      ].sort((a, b) => a.sort - b.sort)
+      setDatabaseRows(newRows)
+      const blocks: BlockInput[] = rows.map(row => {
+        const { id, sort, ...data } = row
+        const block: BlockInput = {
+          id,
+          sort,
+          data,
+          parentId,
+          type: 'databaseRow',
+          meta: {},
+          content: [],
+          text: ''
+        }
+        return block
+      })
+      await updateBlocks(blocks, [])
+    },
+    [databaseRows, updateBlocks]
+  )
 
-    const addRow = React.useCallback(
-      (rowIndex?: number): DatabaseRow => {
-        const currentRowIndex: number = rowIndex ?? (databaseRows.length as number) + 1
-        const id = uuid()
-        const sort = calculateSort(databaseRows, currentRowIndex)
+  const addRow = React.useCallback(
+    (parentId: string, rowIndex?: number): DatabaseRow => {
+      const currentRowIndex: number = rowIndex ?? databaseRows.length
+      const id = uuid()
+      const sort = calculateSort(databaseRows, currentRowIndex)
 
-        const row = { id, sort }
-        void updateRows([row])
-        return row
-      },
-      [databaseRows, updateRows]
-    )
+      const row = { id, sort }
+      void updateRows(parentId, [row])
+      return row
+    },
+    [databaseRows, updateRows]
+  )
 
-    const removeRow = React.useCallback(
-      async (rowId: string): Promise<void> => {
-        isSavingVar(true)
-        setDatabaseRows(databaseRows.filter(row => row.id !== rowId))
-        await updateBlocks([], [rowId])
-      },
-      [databaseRows, setDatabaseRows]
-    )
+  const removeRow = React.useCallback(
+    async (rowId: string): Promise<void> => {
+      isSavingVar(true)
+      setDatabaseRows(databaseRows.filter(row => row.id !== rowId))
+      await updateBlocks([], [rowId])
+    },
+    [databaseRows, updateBlocks]
+  )
 
-    const moveRow = React.useCallback(
-      (fromIndex: number, toIndex: number): DatabaseRow | undefined => {
-        let targetRow: DatabaseRow | undefined
-        const newRows = databaseRows.filter((row, index: number) => {
-          if (index !== fromIndex) {
-            return true
-          } else {
-            const sort = calculateSort(databaseRows, toIndex, fromIndex)
-            targetRow = { ...row, sort }
+  const moveRow = React.useCallback(
+    (parentId: string, fromIndex: number, toIndex: number): DatabaseRow | undefined => {
+      let targetRow: DatabaseRow | undefined
+      const newRows = databaseRows.filter((row, index: number) => {
+        if (index !== fromIndex) {
+          return true
+        } else {
+          const sort = calculateSort(databaseRows, toIndex, fromIndex)
+          targetRow = { ...row, sort }
 
-            return false
-          }
-        })
+          return false
+        }
+      })
 
+      if (!targetRow) return
+      void updateRows(parentId, [targetRow]).then(() => {
         if (!targetRow) return
-        void updateRows([targetRow]).then(() => {
-          if (!targetRow) return
-          setDatabaseRows([...newRows.slice(0, toIndex), targetRow, ...newRows.slice(toIndex, newRows.length)])
-        })
+        setDatabaseRows([...newRows.slice(0, toIndex), targetRow, ...newRows.slice(toIndex, newRows.length)])
+      })
 
-        return targetRow
-      },
-      [databaseRows, updateRows]
-    )
+      return targetRow
+    },
+    [databaseRows, updateRows]
+  )
 
-    return [
-      databaseRows,
-      {
-        fetchRows,
-        addRow,
-        updateRows,
-        removeRow,
-        moveRow
-      }
-    ]
+  return {
+    rows: databaseRows,
+    fetchRows,
+    addRow,
+    updateRows,
+    removeRow,
+    moveRow
   }
 }

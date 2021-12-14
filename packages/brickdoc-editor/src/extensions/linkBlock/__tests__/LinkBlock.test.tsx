@@ -1,15 +1,28 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import { EditorDataSource, EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { LinkBlock } from '../LinkBlock'
 
 // See more specs in e2e test
 describe('LinkBlock', () => {
   const url = 'https://www.brickdoc.com'
+  const editorDataSource = new EditorDataSource()
+  const uuid = 'uuid'
+  editorDataSource.prepareFileUpload = (() => {}) as any
+  editorDataSource.blobs = {
+    [uuid]: [
+      {
+        key: url,
+        url
+      }
+    ]
+  }
 
   it('matches correct snapshot', () => {
     const props: any = {
       editor: {},
       node: {
         attrs: {
+          uuid,
           link: {
             key: url,
             source: 'EXTERNAL',
@@ -21,32 +34,34 @@ describe('LinkBlock', () => {
         }
       },
       extension: {
-        options: {
-          prepareFileUpload: () => {},
-          getAttachmentUrl: () => ''
-        }
+        options: {}
       },
       updateAttributes: () => {}
     }
 
-    const { container } = render(<LinkBlock {...props} />)
+    const { container } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <LinkBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders pending panel when no url', () => {
     const props: any = {
       editor: {},
-      node: { attrs: { link: {}, attachment: {} } },
+      node: { uuid, attrs: { link: {}, attachment: {} } },
       extension: {
-        options: {
-          prepareFileUpload: () => {},
-          getAttachmentUrl: () => ''
-        }
+        options: {}
       },
       updateAttributes: () => {}
     }
 
-    render(<LinkBlock {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <LinkBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(screen.getByText('link_block.hint')).toBeInTheDocument()
   })
@@ -56,6 +71,7 @@ describe('LinkBlock', () => {
       editor: {},
       node: {
         attrs: {
+          uuid,
           link: {
             key: url,
             source: 'EXTERNAL',
@@ -75,7 +91,11 @@ describe('LinkBlock', () => {
       updateAttributes: () => {}
     }
 
-    render(<LinkBlock {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <LinkBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(screen.getByText(props.node.attrs.link.title)).toBeInTheDocument()
     expect(screen.getByText(props.node.attrs.link.description)).toBeInTheDocument()
@@ -86,6 +106,7 @@ describe('LinkBlock', () => {
       editor: {},
       node: {
         attrs: {
+          uuid,
           link: {},
           attachment: {
             key: url,
@@ -96,15 +117,16 @@ describe('LinkBlock', () => {
         }
       },
       extension: {
-        options: {
-          prepareFileUpload: () => {},
-          getAttachmentUrl: () => 'url'
-        }
+        options: {}
       },
       updateAttributes: () => {}
     }
 
-    render(<LinkBlock {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <LinkBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(screen.getByText(props.node.attrs.attachment.name)).toBeInTheDocument()
   })
@@ -112,7 +134,7 @@ describe('LinkBlock', () => {
   it('renders uploader dashboard when click add button', () => {
     const props: any = {
       editor: {},
-      node: { attrs: { link: {}, attachment: {} } },
+      node: { attrs: { uuid, link: {}, attachment: {} } },
       extension: {
         options: {
           prepareFileUpload: () => {},
@@ -122,7 +144,11 @@ describe('LinkBlock', () => {
       updateAttributes: () => {}
     }
 
-    render(<LinkBlock {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <LinkBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     fireEvent.click(screen.getByText('link_block.hint'))
 

@@ -1,9 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import { EditorDataSourceContext, EditorDataSource } from '../../../../dataSource/DataSource'
 import { ImageBlock } from '../ImageBlock'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 // See more specs in e2e test
 describe('ImageBlock', () => {
+  const editorDataSource = new EditorDataSource()
+  const imageUuid = 'image-uuid'
+  editorDataSource.prepareFileUpload = (() => {}) as any
+
   const imageUrl =
     'https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
 
@@ -12,6 +17,7 @@ describe('ImageBlock', () => {
       editor: {},
       node: {
         attrs: {
+          uuid: imageUuid,
           image: {
             key: imageUrl,
             source: 'EXTERNAL',
@@ -21,30 +27,39 @@ describe('ImageBlock', () => {
         }
       },
       extension: {
-        options: {
-          prepareFileUpload: () => {}
-        }
+        options: {}
       },
       updateAttributes: () => {}
     }
 
-    const { container } = render(<ImageBlock {...props} />)
+    const { container } = render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <ImageBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders pending panel when no image', () => {
     const props: any = {
       editor: {},
-      node: { attrs: { image: {} } },
-      extension: {
-        options: {
-          prepareFileUpload: () => {}
+      node: {
+        attrs: {
+          uuid: imageUuid,
+          image: {}
         }
+      },
+      extension: {
+        options: {}
       },
       updateAttributes: () => {}
     }
 
-    render(<ImageBlock {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <ImageBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(screen.getByText('image_section.hint')).toBeInTheDocument()
   })
@@ -54,6 +69,7 @@ describe('ImageBlock', () => {
       editor: {},
       node: {
         attrs: {
+          uuid: imageUuid,
           image: {
             key: imageUrl,
             source: 'EXTERNAL',
@@ -62,15 +78,15 @@ describe('ImageBlock', () => {
           }
         }
       },
-      extension: {
-        options: {
-          prepareFileUpload: () => {}
-        }
-      },
+      extension: {},
       updateAttributes: () => {}
     }
 
-    render(<ImageBlock {...props} />)
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <ImageBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
 
     expect(screen.getByTestId(TEST_ID_ENUM.editor.imageSection.image.id)).toBeInTheDocument()
   })
@@ -79,7 +95,12 @@ describe('ImageBlock', () => {
     it('renders uploader dashboard when click add button', () => {
       const props: any = {
         editor: {},
-        node: { attrs: { image: {} } },
+        node: {
+          attrs: {
+            uuid: imageUuid,
+            image: {}
+          }
+        },
         extension: {
           options: {
             prepareFileUpload: () => {},
@@ -89,7 +110,11 @@ describe('ImageBlock', () => {
         updateAttributes: () => {}
       }
 
-      render(<ImageBlock {...props} />)
+      render(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <ImageBlock {...props} />
+        </EditorDataSourceContext.Provider>
+      )
 
       fireEvent.click(screen.getByText('image_section.hint'))
 
@@ -99,7 +124,12 @@ describe('ImageBlock', () => {
     it('embeds image by paste link', () => {
       const props: any = {
         editor: {},
-        node: { attrs: { image: {} } },
+        node: {
+          attrs: {
+            uuid: imageUuid,
+            image: {}
+          }
+        },
         extension: {
           options: {
             prepareFileUpload: () => {},
@@ -112,11 +142,19 @@ describe('ImageBlock', () => {
             ...attrs
           }
 
-          rerender(<ImageBlock {...props} />)
+          rerender(
+            <EditorDataSourceContext.Provider value={editorDataSource}>
+              <ImageBlock {...props} />
+            </EditorDataSourceContext.Provider>
+          )
         }
       }
 
-      const { rerender } = render(<ImageBlock {...props} />)
+      const { rerender } = render(
+        <EditorDataSourceContext.Provider value={editorDataSource}>
+          <ImageBlock {...props} />
+        </EditorDataSourceContext.Provider>
+      )
 
       fireEvent.click(screen.getByText('image_section.hint'))
       fireEvent.input(screen.getByPlaceholderText('image_section.import_sources.link.placeholder'), {

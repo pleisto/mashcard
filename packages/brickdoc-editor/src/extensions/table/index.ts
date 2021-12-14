@@ -1,8 +1,8 @@
-import { Node, mergeAttributes, JSONContent } from '@tiptap/core'
+import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { CodeFragment, Completion, ContextInterface, ErrorMessage, VariableInterface } from '@brickdoc/formula'
 import { insertBlockAt } from '../../helpers/commands'
 import { Table } from './Table'
+import { ExtensionBaseOptions } from '../baseOptions'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -21,46 +21,7 @@ export interface DatabaseRow {
 }
 export interface DatabaseRows extends Array<DatabaseRow> {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-
-interface CalculateOptions {
-  variable: VariableInterface | undefined
-  name: string
-  input: string
-  codeFragmentsToJSONContent: (codeFragments: CodeFragment[] | undefined) => JSONContent | undefined
-  formulaContext: ContextInterface
-  updateVariable: React.Dispatch<React.SetStateAction<VariableInterface | undefined>> | undefined
-  updateError: React.Dispatch<React.SetStateAction<ErrorMessage | undefined>>
-  updateInput: React.Dispatch<React.SetStateAction<string | undefined>>
-  updateCompletions: React.Dispatch<React.SetStateAction<Completion[]>>
-  updateActiveCompletion: React.Dispatch<React.SetStateAction<Completion | undefined>>
-  updateDefaultName: React.Dispatch<React.SetStateAction<string>>
-  updateContent: React.Dispatch<React.SetStateAction<JSONContent | undefined>>
-}
-
-export interface TableExtensionOptions {
-  formulaContextActions: {
-    getFormulaContext: () => ContextInterface | null
-    getVariable: (variableId: string) => VariableInterface | null | undefined
-    removeVariable: (variableId: string) => void
-    calculate: (options: CalculateOptions) => void
-  }
-  useDatabaseRows: (parentId: string) => [
-    DatabaseRows,
-    {
-      fetchRows: () => Promise<void>
-      addRow: (rowIndex?: number) => DatabaseRow
-      updateRows: (rows: DatabaseRows) => void
-      removeRow: (rowId: string) => void
-      moveRow: (fromIndex: number, toIndex: number) => DatabaseRow | undefined
-    }
-  ]
-}
-
-export interface TableBlockOptions {
-  formulaContextActions: TableExtensionOptions['formulaContextActions']
-  useDatabaseRows: TableExtensionOptions['useDatabaseRows']
-}
+export interface TableBlockOptions extends ExtensionBaseOptions {}
 
 export const TableBlockExtension = Node.create<TableBlockOptions>({
   name: 'tableBlock',

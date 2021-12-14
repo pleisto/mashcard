@@ -1,14 +1,5 @@
 import { Table } from '../Table'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { useDatabaseRows } from '../useDatabaseRows'
-import { FormulaOptions } from '../../..'
-
-const formulaContextActions: FormulaOptions['formulaContextActions'] = {
-  getFormulaContext: (): null => null,
-  getVariable: (variableId: string): undefined => undefined,
-  removeVariable: (variableId: string): void => {},
-  calculate: (): void => {}
-}
 
 // see more tests in e2e testing
 describe('Table Sort', () => {
@@ -45,10 +36,7 @@ describe('Table Sort', () => {
       }
     },
     extension: {
-      options: {
-        useDatabaseRows,
-        formulaContextActions
-      }
+      options: {}
     },
     updateAttributes: () => {}
   }
