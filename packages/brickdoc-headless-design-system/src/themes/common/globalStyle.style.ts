@@ -100,13 +100,6 @@ export const globalStyleSheet = {
   table: {
     borderCollapse: 'revert'
   },
-  // fix for the content editable attribute will work properly
-  ':where([contenteditable])': {
-    '-moz-user-modify': 'read-write',
-    '-webkit-user-modify': 'read-write',
-    overflowWrap: 'break-word',
-    '-webkit-line-break': 'after-white-space'
-  },
   summary: {
     display: 'list-item'
   },
