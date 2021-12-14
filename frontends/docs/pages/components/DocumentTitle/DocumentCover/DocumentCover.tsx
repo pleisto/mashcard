@@ -66,14 +66,14 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
                   data-testid={TEST_ID_ENUM.page.DocumentPage.changeCoverButton.id}
                   className={styles.button}
                   type="text"
-                  disabled={!editable}
+                  isDisabled={!editable}
                 >
                   {t('title.change_cover')}
                 </Button>
               </Popover>
             )}
             {/* TODO: cover reposition
-            <Button className={styles.button} type="text" disabled={!editable}>
+            <Button className={styles.button} type="text" isDisabled={!editable}>
               {t('title.reposition')}
             </Button>
             */}

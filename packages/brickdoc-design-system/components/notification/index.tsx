@@ -112,8 +112,17 @@ function getPlacementStyle(placement: NotificationPlacement, top: number = defau
   return style
 }
 
-function getNotificationInstance(args: ArgsProps, callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void) {
-  const { placement = defaultPlacement, top, bottom, getContainer = defaultGetContainer, prefixCls: customizePrefixCls } = args
+function getNotificationInstance(
+  args: ArgsProps,
+  callback: (info: { prefixCls: string; instance: RCNotificationInstance }) => void
+) {
+  const {
+    placement = defaultPlacement,
+    top,
+    bottom,
+    getContainer = defaultGetContainer,
+    prefixCls: customizePrefixCls
+  } = args
   const { getPrefixCls } = globalConfig()
   const prefixCls = getPrefixCls('notification', customizePrefixCls || defaultPrefixCls)
 
@@ -214,10 +223,13 @@ function getRCNoticeProps(args: ArgsProps, prefixCls: string) {
   }
 
   const closeIconToRender = (
-    <span className={`${prefixCls}-close-x`}>{closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}</span>
+    <span className={`${prefixCls}-close-x`}>
+      {closeIcon || <CloseOutlined className={`${prefixCls}-close-icon`} />}
+    </span>
   )
 
-  const autoMarginTag = !description && iconNode ? <span className={`${prefixCls}-message-single-line-auto-margin`} /> : null
+  const autoMarginTag =
+    !description && iconNode ? <span className={`${prefixCls}-message-single-line-auto-margin`} /> : null
 
   return {
     content: (
@@ -303,6 +315,7 @@ export interface NotificationApi extends NotificationInstance {
 }
 
 /** @private test Only function. Not work on production */
-export const getInstance = async (cacheKey: string) => (process.env.NODE_ENV === 'test' ? await notificationInstance[cacheKey] : null)
+export const getInstance = async (cacheKey: string) =>
+  process.env.NODE_ENV === 'test' ? await notificationInstance[cacheKey] : null
 
 export default api as NotificationApi

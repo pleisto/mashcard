@@ -25,6 +25,7 @@ const AvatarWrapper = styled('span', {
   overflow: 'hidden',
   background: theme.colors.backgroundSecondary,
   color: theme.colors.typeSecondary,
+  isolation: 'isolation',
   '& > img': {
     display: 'inline-block',
     width: '100%',

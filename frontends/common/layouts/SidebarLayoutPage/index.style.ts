@@ -59,7 +59,7 @@ export const base = {
       minHeight: '0',
       flex: 'auto',
       flexDirection: 'column',
-      '--brk-editor-max-width': '960px',
+      '--brd-editor-max-width': '960px',
       borderRadius: '2px',
       border: '0.2px solod #fff',
       boxShadow: theme.shadows.refractionPrimary

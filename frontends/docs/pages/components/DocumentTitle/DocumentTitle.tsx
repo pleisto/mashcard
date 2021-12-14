@@ -93,7 +93,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
             <div className={styles.actions}>
               {!documentIconMeta && (
                 <Popover {...iconPopoverProps}>
-                  <Button type="text" className={styles.item} disabled={!editable}>
+                  <Button type="text" className={styles.item} isDisabled={!editable}>
                     <Icon.Face className={styles.icon} />
                     <span className={styles.name}>{t('title.add_icon')}</span>
                   </Button>
@@ -105,7 +105,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="text"
                     className={styles.item}
-                    disabled={!editable}>
+                    isDisabled={!editable}
+                  >
                     <Icon.Image className={styles.icon} />
                     <span className={styles.name}>{t('title.add_cover')}</span>
                   </Button>

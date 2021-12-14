@@ -33,9 +33,9 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
       type="text"
       className={classNames([styles.createBtn, 'brd-btn-text'])}
       onClick={onClick}
-      loading={createBlockLoading}
+      isLoading={createBlockLoading}
       icon={<Add />}
-      disabled={createBlockLoading}
+      isDisabled={createBlockLoading}
     >
       {t('blocks.create_pages')}
     </Button>

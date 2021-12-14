@@ -22,7 +22,8 @@ export const baseStyles = {
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
   touchAction: 'manipulation',
-  transition: `all .3s ${theme.transitions.easeInOut}`
+  transition: `all .3s ${theme.transitions.easeInOut}`,
+  isolation: 'isolation'
 }
 
 export const variants = {

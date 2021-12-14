@@ -36,6 +36,9 @@ export default {
     },
     message: {
       description: '`React.ReactNode`'
+    },
+    className: {
+      description: '`string`'
     }
   },
   parameters: {

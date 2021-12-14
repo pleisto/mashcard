@@ -48,8 +48,7 @@ export const Title = styled('div', {
 })
 
 export const Base = styled('div', {
-  // Reset
-  boxSizing: 'border-box',
+  isolation: 'isolation',
   padding: '10px 12px',
   color: theme.colors.typePrimary,
   border: '1px solid',

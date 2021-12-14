@@ -9,7 +9,7 @@ export default {
     type: 'secondary',
     size: 'medium',
     block: false,
-    disabled: false,
+    isDisabled: false,
     circle: false,
     htmlType: 'button',
     iconPosition: 'left'
@@ -30,13 +30,13 @@ export default {
     block: {
       control: 'boolean'
     },
-    disabled: {
+    isDisabled: {
       control: 'boolean'
     },
     circle: {
       control: 'boolean'
     },
-    loading: {
+    isLoading: {
       control: 'boolean',
       description: '`boolean | { delay?: number }`'
     },
@@ -60,6 +60,12 @@ export default {
     },
     role: {
       description: '`React.AriaRole`'
+    },
+    className: {
+      description: '`string`'
+    },
+    style: {
+      description: '`React.CSSProperties`'
     }
   },
   parameters: {
@@ -90,4 +96,4 @@ export const iconOnly = Template.bind({})
 iconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'large' }
 
 export const loadding = Template.bind({})
-loadding.args = { loading: true, children: 'Loading...' }
+loadding.args = { isLoading: true, children: 'Loading...' }

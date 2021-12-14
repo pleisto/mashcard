@@ -10,7 +10,6 @@ import {
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
 import { Tree, TreeProps } from '@brickdoc/design-system'
-// import { Tree } from '@brickdoc/brickdoc-headless-design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'

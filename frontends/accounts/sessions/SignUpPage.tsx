@@ -28,7 +28,9 @@ export const SignUpPage: React.FC = () => {
   const { initialValues, setFill } = useSignUpInitialValues()
   useEffect(() => {
     if (!sessionLoading) {
-      setFill(omitBy(pick(sessionData?.federatedIdentitySession, ['webid', 'name']), isNil) as { webid: string; name: string })
+      setFill(
+        omitBy(pick(sessionData?.federatedIdentitySession, ['webid', 'name']), isNil) as { webid: string; name: string }
+      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionLoading, sessionData])
@@ -68,7 +70,9 @@ export const SignUpPage: React.FC = () => {
   }
 
   // View
-  const pageTitle = providerName ? t('sessions.sign_up_via', { provider: t(`provider.${providerName}`) }) : t('sessions.sign_up')
+  const pageTitle = providerName
+    ? t('sessions.sign_up_via', { provider: t(`provider.${providerName}`) })
+    : t('sessions.sign_up')
 
   const EmailPasswordFields = (
     <>
@@ -80,7 +84,12 @@ export const SignUpPage: React.FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }, passwordAvailableValidator]}>
+      <Form.Item
+        name="password"
+        label={t('sessions.password')}
+        hasFeedback
+        rules={[{ required: true }, passwordAvailableValidator]}
+      >
         <Input.Password />
       </Form.Item>
       <Form.Item
@@ -126,7 +135,7 @@ export const SignUpPage: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" size="large" loading={userCreateLoading} block>
+          <Button type="primary" htmlType="submit" size="large" isLoading={userCreateLoading} block>
             {t('sessions.sign_up')}
           </Button>
         </Form.Item>

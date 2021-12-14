@@ -124,9 +124,6 @@ export { default as Space } from './space'
 export type { SpinProps } from './spin'
 export { default as Spin } from './spin'
 
-export type { SwitchProps } from './switch'
-export { default as Switch } from './switch'
-
 /*
 export type {
   TableProps,
@@ -181,3 +178,6 @@ export type { AlertProps } from './alert'
 export { Alert } from './alert'
 export type { AvatarProps } from './avatar'
 export { Avatar } from './avatar'
+
+export type { SwitchProps } from './switch'
+export { Switch } from './switch'

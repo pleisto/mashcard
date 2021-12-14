@@ -2,5 +2,12 @@
   "extends": "./tsconfig.build.json",
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
-  "references": [{ "path": "../brickdoc-design-icons" }]
+  "references": [
+    {
+      "path": "../brickdoc-design-icons"
+    },
+    {
+      "path": "../brickdoc-headless-design-system"
+    }
+  ]
 }

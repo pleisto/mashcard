@@ -163,14 +163,14 @@
   vertical-align: top;
   background: @skeleton-color;
 
-  .skeleton-element-avatar-size(@avatar-size-base);
+  .skeleton-element-avatar-size('18px');
 
   &-lg {
-    .skeleton-element-avatar-size(@avatar-size-lg);
+    .skeleton-element-avatar-size('24px');
   }
 
   &-sm {
-    .skeleton-element-avatar-size(@avatar-size-sm);
+    .skeleton-element-avatar-size('16px');
   }
 }
 
@@ -191,6 +191,7 @@
   }
 }
 
+@image-size-base: 3rem;
 // Image
 .skeleton-element-image() {
   display: flex;

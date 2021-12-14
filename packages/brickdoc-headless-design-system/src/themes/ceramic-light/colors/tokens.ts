@@ -109,6 +109,8 @@ export const Tokens = {
   /**
    * hueBlue
    */
+  hueBlueDefault: Palettes.blue6,
+  hueBluePressed: Palettes.blue4,
   hueBlueHover: Palettes.blue3,
   hueBlueBg: Palettes.blue2,
 

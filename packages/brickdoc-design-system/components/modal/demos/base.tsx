@@ -84,7 +84,7 @@ function showPropsConfirm() {
     okText: 'Yes',
     okType: 'danger',
     okButtonProps: {
-      disabled: true
+      isDisabled: true
     },
     cancelText: 'No',
     onOk() {

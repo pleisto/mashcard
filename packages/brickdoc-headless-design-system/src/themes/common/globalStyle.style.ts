@@ -67,6 +67,12 @@ export const globalStyleSheet = {
     marginTop: 0,
     marginBottom: '1em'
   },
+  'input, button, select, optgroup, textarea': {
+    margin: 0,
+    color: 'inherit',
+    fontFamily: 'inherit',
+    lineHeight: 'inherit'
+  },
   blockquote: {
     margin: '0 0 1em',
     fontFamily: '$fonts$defaultSerif',
@@ -105,6 +111,9 @@ export const globalStyleSheet = {
   },
   'dialog:not([open])': {
     display: 'none'
+  },
+  hr: {
+    color: 'inherit'
   },
   '.brd-icon': {
     display: 'inline-block',

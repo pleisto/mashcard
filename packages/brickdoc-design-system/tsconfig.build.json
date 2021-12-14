@@ -6,5 +6,12 @@
     "noImplicitAny": false
   },
   "include": ["components/**/*", "utils/**/*", "externals.d.ts"],
-  "references": [{ "path": "../brickdoc-design-icons/tsconfig.build.json" }]
+  "references": [
+    {
+      "path": "../brickdoc-design-icons/tsconfig.build.json"
+    },
+    {
+      "path": "../brickdoc-headless-design-system/tsconfig.build.json"
+    }
+  ]
 }

@@ -9,116 +9,60 @@
 // An override for the html selector for theme prefixes
 @html-selector: html;
 
-html {
-  @base-primary: @blue-6;
 
-  // ========= Primary Color =========
-  --@{brk-prefix}-primary-color: @base-primary;
-  --@{brk-prefix}-primary-color-hover: colorShade(@base-primary, 5);
-  --@{brk-prefix}-primary-color-active: colorShade(@base-primary, 6);
-  --@{brk-prefix}-primary-color-outline: fade(@base-primary, @outline-fade);
-
-  // Legacy
-  @legacy-primary-1: colorShade(@base-primary, 1);
-
-  --@{brk-prefix}-primary-1: @legacy-primary-1;
-  --@{brk-prefix}-primary-2: colorShade(@base-primary, 2);
-  --@{brk-prefix}-primary-3: colorShade(@base-primary, 3);
-  --@{brk-prefix}-primary-4: colorShade(@base-primary, 4);
-  --@{brk-prefix}-primary-5: colorShade(@base-primary, 5);
-  --@{brk-prefix}-primary-6: @base-primary;
-  --@{brk-prefix}-primary-7: colorShade(@base-primary, 6);
-
-  // Deprecated
-  --@{brk-prefix}-primary-color-deprecated-pure: ~'';
-  --@{brk-prefix}-primary-color-deprecated-l-35: lighten(@base-primary, 35%);
-  --@{brk-prefix}-primary-color-deprecated-l-20: lighten(@base-primary, 20%);
-  --@{brk-prefix}-primary-color-deprecated-t-20: tint(@base-primary, 20%);
-  --@{brk-prefix}-primary-color-deprecated-t-50: tint(@base-primary, 50%);
-  --@{brk-prefix}-primary-color-deprecated-f-12: fade(@base-primary, 12%);
-
-  // ========= Success Color =========
-  --@{brk-prefix}-success-color: @green-6;
-  --@{brk-prefix}-success-color-hover: colorShade(@green-6, 5);
-  --@{brk-prefix}-success-color-active: colorShade(@green-6, 6);
-  --@{brk-prefix}-success-color-outline: fade(color(~'@{green-6}'), @outline-fade);
-  --@{brk-prefix}-success-color-deprecated-bg: colorShade(@green-6, 1);
-  --@{brk-prefix}-success-color-deprecated-border: colorShade(@green-6, 3);
-
-  // ========== Error Color ==========
-  --@{brk-prefix}-error-color: @scarlet-5;
-  --@{brk-prefix}-error-color-hover: colorShade(@scarlet-5, 5);
-  --@{brk-prefix}-error-color-active: colorShade(@scarlet-5, 6);
-  --@{brk-prefix}-error-color-outline: fade(color(~'@{scarlet-5}'), @outline-fade);
-  --@{brk-prefix}-error-color-deprecated-bg: colorShade(@scarlet-5, 1);
-  --@{brk-prefix}-error-color-deprecated-border: colorShade(@scarlet-5, 3);
-
-  // ========= Warning Color =========
-  --@{brk-prefix}-warning-color: @yellow-6;
-  --@{brk-prefix}-warning-color-hover: colorShade(@yellow-6, 5);
-  --@{brk-prefix}-warning-color-active: colorShade(@yellow-6, 6);
-  --@{brk-prefix}-warning-color-outline: fade(color(~'@{yellow-6}'), @outline-fade);
-  --@{brk-prefix}-warning-color-deprecated-bg: colorShade(@yellow-6, 1);
-  --@{brk-prefix}-warning-color-deprecated-border: colorShade(@yellow-6, 3);
-
-  // ========== Info Color ===========
-  --@{brk-prefix}-info-color: @blue-6;
-  --@{brk-prefix}-info-color-deprecated-bg: colorShade(@blue-6, 1);
-  --@{brk-prefix}-info-color-deprecated-border: colorShade(@blue-6, 3);
-}
 
 // -------- Colors -----------
 // >>> Primary
-@primary-color: ~'var(--@{brk-prefix}-primary-color)';
-@primary-color-hover: ~'var(--@{brk-prefix}-primary-color-hover)';
-@primary-color-active: ~'var(--@{brk-prefix}-primary-color-active)';
-@primary-color-outline: ~'var(--@{brk-prefix}-primary-color-outline)';
+@primary-color: ~'var(--brd-colors-primaryDefault)';
+@primary-color-hover: ~'var(--brd-colors-primaryHover)';
+@primary-color-active: ~'var(--brd-colors-primaryPressed)';
+@primary-color-outline: fade(@blue-6, @outline-fade);
 
 @processing-color: @primary-color;
 
 // >>> Info
-@info-color: ~'var(--@{brk-prefix}-info-color)';
-@info-color-deprecated-bg: ~'var(--@{brk-prefix}-info-color-deprecated-bg)';
-@info-color-deprecated-border: ~'var(--@{brk-prefix}-info-color-deprecated-border)';
+@info-color: @cyan-base;
+@info-color-deprecated-bg: @cyan-1;
+@info-color-deprecated-border: @cyan-3;
 
 // >>> Success
-@success-color: ~'var(--@{brk-prefix}-success-color)';
-@success-color-hover: ~'var(--@{brk-prefix}-success-color-hover)';
-@success-color-active: ~'var(--@{brk-prefix}-success-color-active)';
-@success-color-outline: ~'var(--@{brk-prefix}-success-color-outline)';
-@success-color-deprecated-bg: ~'var(--@{brk-prefix}-success-color-deprecated-bg)';
-@success-color-deprecated-border: ~'var(--@{brk-prefix}-success-color-deprecated-border)';
+@success-color: ~'var(--brd-colors-hueGreenDefault)';
+@success-color-hover: ~'var(--brd-colors-hueGreenHove)';
+@success-color-active: ~'var(--brd-colors-hueGreenPressed)';
+@success-color-outline: fade(@green-6, @outline-fade);
+@success-color-deprecated-bg: ~'var(--brd-colors-statusSuccessBg)';
+@success-color-deprecated-border: ~'var(--brd-colors-green3)';
 
 // >>> Warning
-@warning-color: ~'var(--@{brk-prefix}-warning-color)';
-@warning-color-hover: ~'var(--@{brk-prefix}-warning-color-hover)';
-@warning-color-active: ~'var(--@{brk-prefix}-warning-color-active)';
-@warning-color-outline: ~'var(--@{brk-prefix}-warning-color-outline)';
-@warning-color-deprecated-bg: ~'var(--@{brk-prefix}-warning-color-deprecated-bg)';
-@warning-color-deprecated-border: ~'var(--@{brk-prefix}-warning-color-deprecated-border)';
+@warning-color: ~'var(--brd-colors-hueOrangeDefault)';
+@warning-color-hover: ~'var(--brd-colors-hueOrangeHover)';
+@warning-color-active: ~'var(--brd-colors-hueOrangePressed)';
+@warning-color-outline: fade(@orange-6, @outline-fade);
+@warning-color-deprecated-bg: ~'var(--brd-colors-statusWarningBg)';
+@warning-color-deprecated-border: ~'var(--brd-colors-orange3)';
 
 // >>> Error
-@error-color: ~'var(--@{brk-prefix}-error-color)';
-@error-color-hover: ~'var(--@{brk-prefix}-error-color-hover)';
-@error-color-active: ~'var(--@{brk-prefix}-error-color-active)';
-@error-color-outline: ~'var(--@{brk-prefix}-error-color-outline)';
-@error-color-deprecated-bg: ~'var(--@{brk-prefix}-error-color-deprecated-bg)';
-@error-color-deprecated-border: ~'var(--@{brk-prefix}-error-color-deprecated-border)';
+@error-color: ~'var(--brd-colors-errorDefault)';
+@error-color-hover: ~'var(--brd-colors-errorPressed)';
+@error-color-active: ~'var(--brd-colors-errorPressed';
+@error-color-outline: fade(@red-6, @outline-fade);
+@error-color-deprecated-bg: ~'var(--brd-colors-errorBg)';
+@error-color-deprecated-border: ~'var(--brd-colors-errorBorder)';
 
 @highlight-color: @red-3;
 @normal-color: #d9d9d9;
 
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
-@primary-1: ~'var(--@{brk-prefix}-primary-1)'; // replace tint(@primary-color, 90%)
-@primary-2: ~'var(--@{brk-prefix}-primary-2)'; // replace tint(@primary-color, 80%)
-@primary-3: ~'var(--@{brk-prefix}-primary-3)'; // unused
-@primary-4: ~'var(--@{brk-prefix}-primary-4)'; // unused
-@primary-5: ~'var(--@{brk-prefix}-primary-5)'; // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
-@primary-6: ~'var(--@{brk-prefix}-primary-6)'; // color used to control the text color of active buttons, don't use, use @primary-color
-@primary-7: ~'var(--@{brk-prefix}-primary-7)'; // replace shade(@primary-color, 5%)
-@primary-8: colorShade(@primary-color, 7); // unused
-@primary-9: colorShade(@primary-color, 8); // unused
+@primary-1: ~'var(--brd-colors-blue1)'; // replace tint(@primary-color, 90%)
+@primary-2: ~'var(--brd-colors-blue2)'; // replace tint(@primary-color, 80%)
+@primary-3: ~'var(--brd-colors-blue3)'; // unused
+@primary-4: ~'var(--brd-colors-blue4)'; // unused
+@primary-5: ~'var(--brd-colors-blue5)'; // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
+@primary-6: ~'var(--brd-colors-blue6)'; // color used to control the text color of active buttons, don't use, use @primary-color
+@primary-7: ~'var(--brd-colors-blue7)'; // replace shade(@primary-color, 5%)
+@primary-8: ~'var(--brd-colors-blue8)'; // unused
+@primary-9: ~'var(--brd-colors-blue9)'; // unused
 
 // Base Scaffolding Variables
 // ---
@@ -128,9 +72,8 @@ html {
 // Popover background color
 @popover-background: @component-background;
 @popover-customize-border-color: @border-color-split;
-@font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Roboto, 'Segoe UI', 'Segoe WP', sans-serif, Apple Color Emoji,
-  Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-@code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+@font-family: 'var(--brd-fonts-defaultSans)';
+@code-family: 'var(--brd-fonts-defaultMonospace)';
 @text-color: color(~'@{deep-purple-9}');
 @text-color-secondary: color(~'@{deep-purple-4}');
 @text-color-disable: color(~'@{deep-purple-2}');
@@ -590,16 +533,6 @@ html {
 @modal-mask-bg: fade(@black, 45%);
 @modal-confirm-body-padding: 32px 32px 24px;
 
-// Progress
-// --
-@progress-default-color: @processing-color;
-@progress-remaining-color: @background-color-base;
-@progress-info-text-color: @progress-text-color;
-@progress-radius: 100px;
-@progress-steps-item-bg: #f3f3f3;
-@progress-text-font-size: 1em;
-@progress-text-color: @text-color; // This is for circle text color, should be renamed better
-@progress-circle-text-font-size: 1em;
 // Menu
 // ---
 @menu-inline-toplevel-item-height: 40px;
@@ -645,48 +578,7 @@ html {
 @spin-dot-size: 20px;
 @spin-dot-size-lg: 32px;
 
-// Table
-// --
-@table-bg: @component-background;
-@table-header-bg: @background-color-light;
-@table-header-color: @heading-color;
-@table-header-sort-bg: @background-color-base;
-@table-body-sort-bg: #fafafa;
-@table-row-hover-bg: @background-color-light;
-@table-selected-row-color: inherit;
-@table-selected-row-bg: @primary-1;
-@table-body-selected-sort-bg: @table-selected-row-bg;
-@table-selected-row-hover-bg: ~'var(--@{brk-prefix}-primary-color-active-deprecated-d-02)';
-@table-expanded-row-bg: #fbfbfb;
-@table-padding-vertical: 16px;
-@table-padding-horizontal: 16px;
-@table-padding-vertical-md: (@table-padding-vertical * 3 / 4);
-@table-padding-horizontal-md: (@table-padding-horizontal / 2);
-@table-padding-vertical-sm: (@table-padding-vertical / 2);
-@table-padding-horizontal-sm: (@table-padding-horizontal / 2);
-@table-border-color: @border-color-split;
-@table-border-radius-base: @border-radius-base;
-@table-footer-bg: @background-color-light;
-@table-footer-color: @heading-color;
-@table-header-bg-sm: @table-header-bg;
-@table-font-size: @font-size-base;
-@table-font-size-md: @table-font-size;
-@table-font-size-sm: @table-font-size;
-@table-header-cell-split-color: rgba(0, 0, 0, 0.06);
-// Sorter
-// Legacy: `table-header-sort-active-bg` is used for hover not real active
-@table-header-sort-active-bg: rgba(0, 0, 0, 0.04);
-@table-fixed-header-sort-active-bg: hsv(0, 0, 96%);
 
-// Filter
-@table-header-filter-active-bg: rgba(0, 0, 0, 0.04);
-@table-filter-btns-bg: inherit;
-@table-filter-dropdown-bg: @component-background;
-@table-expand-icon-bg: @component-background;
-@table-selection-column-width: 32px;
-// Sticky
-@table-sticky-scroll-bar-bg: fade(#000, 35%);
-@table-sticky-scroll-bar-radius: 4px;
 
 // Tag
 // --
@@ -715,27 +607,7 @@ html {
 @picker-panel-without-time-cell-height: 66px;
 @calendar-item-active-bg: @item-active-bg;
 @calendar-column-active-bg: fade(@calendar-item-active-bg, 20%);
-// Card
-// ---
-@card-head-color: @heading-color;
-@card-head-background: transparent;
-@card-head-font-size: @font-size-lg;
-@card-head-font-size-sm: @font-size-base;
-@card-head-padding: 16px;
-@card-head-padding-sm: (@card-head-padding / 2);
-@card-head-height: 48px;
-@card-head-height-sm: 36px;
-@card-inner-head-padding: 12px;
-@card-padding-base: 24px;
-@card-padding-base-sm: (@card-padding-base / 2);
-@card-actions-background: @component-background;
-@card-actions-li-margin: 12px 0;
-@card-skeleton-bg: #cfd8dc;
-@card-background: @component-background;
-@card-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
-@card-radius: @border-radius-base;
-@card-head-tabs-margin-bottom: -17px;
-@card-head-extra-color: @text-color;
+
 
 // Tabs
 // ---
@@ -771,20 +643,6 @@ html {
 @back-top-bg: @text-color-secondary;
 @back-top-hover-bg: @text-color;
 
-// Avatar
-// ---
-@avatar-size-base: 32px;
-@avatar-size-lg: 40px;
-@avatar-size-sm: 24px;
-@avatar-font-size-base: 18px;
-@avatar-font-size-lg: 24px;
-@avatar-font-size-sm: 14px;
-@avatar-bg: @text-color;
-@avatar-color: #fff;
-@avatar-border-radius: @border-radius-base;
-@avatar-group-overlapping: -8px;
-@avatar-group-space: 3px;
-@avatar-group-border-color: #fff;
 
 // Switch
 // ---
@@ -801,20 +659,6 @@ html {
 @switch-inner-margin-max: ceil(@switch-height * 1.1);
 @switch-sm-inner-margin-min: ceil(@switch-sm-height * 0.3);
 @switch-sm-inner-margin-max: ceil(@switch-sm-height * 1.1);
-
-// Pagination
-// ---
-@pagination-item-bg: @component-background;
-@pagination-item-size: @height-base;
-@pagination-item-size-sm: 24px;
-@pagination-font-family: @font-family;
-@pagination-font-weight-active: 500;
-@pagination-item-bg-active: @component-background;
-@pagination-item-link-bg: @component-background;
-@pagination-item-disabled-color-active: @disabled-color;
-@pagination-item-disabled-bg-active: @disabled-active-bg;
-@pagination-item-input-bg: @component-background;
-@pagination-mini-options-size-changer-top: 0px;
 
 // Tree
 // ---
@@ -844,31 +688,6 @@ html {
 // ---
 @wave-animation-width: 6px;
 
-// Alert
-// ---
-@alert-success-border-color: @success-color-deprecated-border;
-@alert-success-bg-color: @success-color-deprecated-bg;
-@alert-success-icon-color: @success-color;
-@alert-info-border-color: @info-color-deprecated-border;
-@alert-info-bg-color: @info-color-deprecated-bg;
-@alert-info-icon-color: @info-color;
-@alert-warning-border-color: @warning-color-deprecated-border;
-@alert-warning-bg-color: @warning-color-deprecated-bg;
-@alert-warning-icon-color: @warning-color;
-@alert-error-border-color: @error-color-deprecated-border;
-@alert-error-bg-color: @error-color-deprecated-bg;
-@alert-error-icon-color: @error-color;
-@alert-message-color: @heading-color;
-@alert-text-color: @text-color;
-@alert-close-color: @text-color-secondary;
-@alert-close-hover-color: @icon-color-hover;
-@alert-no-icon-padding-vertical: @padding-xs;
-@alert-with-description-no-icon-padding-vertical: @padding-md - 1px;
-@alert-with-description-padding-vertical: @padding-md - 1px;
-@alert-with-description-padding: @alert-with-description-padding-vertical 15px @alert-with-description-no-icon-padding-vertical
-  @alert-with-description-icon-size;
-@alert-icon-top: 8px + @font-size-base * (@line-height-base / 2) - (@font-size-base / 2);
-@alert-with-description-icon-size: 24px;
 
 // List
 // ---
@@ -884,21 +703,6 @@ html {
 @list-customize-card-bg: @component-background;
 @list-item-meta-description-font-size: @font-size-base;
 
-// Drawer
-// ---
-@drawer-header-padding: @padding-md @padding-lg;
-@drawer-body-padding: @padding-lg;
-@drawer-bg: @component-background;
-@drawer-footer-padding-vertical: @modal-footer-padding-vertical;
-@drawer-footer-padding-horizontal: @modal-footer-padding-horizontal;
-@drawer-header-close-size: 56px;
-
-// Typography
-// ---
-@typography-title-font-weight: 600;
-@typography-title-margin-top: 1.2em;
-@typography-title-margin-bottom: 0.5em;
-
 // Notification
 // ---
 @notification-bg: @component-background;
@@ -912,13 +716,3 @@ html {
 @result-icon-font-size: 72px;
 @result-extra-margin: 24px 0 0 0;
 
-// Image
-// ---
-@image-size-base: 48px;
-@image-font-size-base: 24px;
-@image-bg: #f5f5f5;
-@image-color: #fff;
-@image-mask-font-size: 16px;
-@image-preview-operation-size: 18px;
-@image-preview-operation-color: @text-color-dark;
-@image-preview-operation-disabled-color: fade(@image-preview-operation-color, 25%);

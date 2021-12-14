@@ -35,6 +35,15 @@ export enum Shade {
 }
 
 /**
+ * Palette Token name
+ */
+type PaletteToken<T extends string> = `${T}${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9}`
+
+type PaletteObject<T extends string> = {
+  [key in PaletteToken<T>]: string
+}
+
+/**
  * Returns true if the argument is a valid Shade value
  * @param shade - The Shade value to validate.
  */
@@ -127,34 +136,32 @@ export function colorWithShade(color: Color, shade: Shade, isInverted: boolean =
   return rgb2color(Object.assign(hsv2rgb(hsv.h, hsv.s, hsv.v), { a: color.a }))
 }
 
-export function colorShadeMixin(colorStr: string, shade: string, isInverted = 'false'): string | null {
-  const color = cssStr2color(colorStr)
-  if (!color) return ''
-  const shadedColor = colorWithShade(color, parseInt(shade, 10), isInverted === 'true')
-  return !shadedColor ? null : color2cssStr(shadedColor)
-}
-
-export function colorShadeMixinString(colorStr: string, shade: Shade, isInverted = false): string {
-  const color = cssStr2color(colorStr)
-  if (!color) return ''
-  const shadedColor = colorWithShade(color, shade, isInverted)
-  return !shadedColor ? '' : color2cssStr(shadedColor)
-}
-
-export function generatePalette(color: string, isInverted = false): string[] {
-  const baseColor = cssStr2color(color)
-  const colors = []
-
-  if (!baseColor) return []
-
-  colors[0] = colorWithShade(baseColor, Shade.Shade1, isInverted)
-  colors[1] = colorWithShade(baseColor, Shade.Shade2, isInverted)
-  colors[2] = colorWithShade(baseColor, Shade.Shade3, isInverted)
-  colors[3] = colorWithShade(baseColor, Shade.Shade4, isInverted)
-  colors[4] = colorWithShade(baseColor, Shade.Shade5, isInverted)
-  colors[5] = baseColor
-  colors[6] = colorWithShade(baseColor, Shade.Shade6, isInverted)
-  colors[7] = colorWithShade(baseColor, Shade.Shade7, isInverted)
-  colors[8] = colorWithShade(baseColor, Shade.Shade8, isInverted)
-  return colors.map(color => (color ? color2cssStr(color) : ''))
+/**
+ * Generate the color palette
+ * @param name The name of the color
+ * @param baseColorHex The base color hex
+ * @param isInverted is dark mode
+ *
+ * @example
+ * ` generatePalette('cyan', '#39b3e8')`
+ */
+export const generatePalette = <T extends string>(
+  name: T,
+  baseColorHex: string,
+  isInverted = false
+): PaletteObject<T> => {
+  const baseColor = cssStr2color(baseColorHex)
+  const paletteStr = (shade: Shade): string => color2cssStr(colorWithShade(baseColor, shade, isInverted))
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  return {
+    [`${name}1`]: paletteStr(Shade.Shade1),
+    [`${name}2`]: paletteStr(Shade.Shade2),
+    [`${name}3`]: paletteStr(Shade.Shade3),
+    [`${name}4`]: paletteStr(Shade.Shade4),
+    [`${name}5`]: paletteStr(Shade.Shade5),
+    [`${name}6`]: baseColorHex,
+    [`${name}7`]: paletteStr(Shade.Shade6),
+    [`${name}8`]: paletteStr(Shade.Shade7),
+    [`${name}9`]: paletteStr(Shade.Shade8)
+  } as PaletteObject<T>
 }

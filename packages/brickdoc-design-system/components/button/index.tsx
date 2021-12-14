@@ -1,5 +1,3 @@
-import './style'
-
 import { Button } from '@brickdoc/brickdoc-headless-design-system'
 export type { ButtonProps } from '@brickdoc/brickdoc-headless-design-system'
 

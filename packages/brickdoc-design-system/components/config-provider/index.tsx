@@ -15,7 +15,6 @@ import SizeContext, { SizeContextProvider, SizeType } from './SizeContext'
 import message from '../message'
 import notification from '../notification'
 import { RequiredMark } from '../form/Form'
-import { registerTheme } from './cssVariables'
 
 export { ConfigContext, ConfigConsumer }
 
@@ -85,9 +84,6 @@ function getGlobalPrefixCls() {
 const setGlobalConfig = ({ prefixCls, theme }: Pick<ConfigProviderProps, 'prefixCls'> & { theme?: Theme }) => {
   if (prefixCls !== undefined) {
     globalPrefixCls = prefixCls
-  }
-  if (theme) {
-    registerTheme(getGlobalPrefixCls(), theme)
   }
 }
 

@@ -17,12 +17,12 @@ export const Palettes = {
   /**
    * Red
    */
-  ...generatePalette<'red'>('red', '#d43730'),
+  ...generatePalette('red', '#d43730'),
 
   /**
    * Scarlet
    */
-  ...generatePalette<'scarlet'>('scarlet', '#df5641'),
+  ...generatePalette('scarlet', '#df5641'),
   scarlet2: '#fee5e1',
   scarlet3: '#fdcec7',
   scarlet8: '#bc4837',
@@ -31,44 +31,44 @@ export const Palettes = {
   /**
    * Orange
    */
-  ...generatePalette<'orange'>('orange', '#fb8c00'),
+  ...generatePalette('orange', '#fb8c00'),
 
   /**
    * Yellow
    */
-  ...generatePalette<'yellow'>('yellow', '#ffd84e'),
+  ...generatePalette('yellow', '#ffd84e'),
 
   /**
    * Green
    */
-  ...generatePalette<'green'>('green', '#2cad94'),
+  ...generatePalette('green', '#2cad94'),
 
   /**
    * Cyan
    */
-  ...generatePalette<'cyan'>('cyan', '#39b3e8'),
+  ...generatePalette('cyan', '#39b3e8'),
   cyan1: '#f8fbff',
 
   /**
    * Blue
    */
-  ...generatePalette<'blue'>('blue', '#2c5bff'),
+  ...generatePalette('blue', '#2c5bff'),
 
   /**
    * Deep Purple
    */
-  ...generatePalette<'deepPurple'>('deepPurple', '#3a3642'),
+  ...generatePalette('deepPurple', '#3a3642'),
   deepPurple9: '#292323',
 
   /**
    * Purple
    */
-  ...generatePalette<'purple'>('purple', '#5e35b1'),
+  ...generatePalette('purple', '#5e35b1'),
 
   /**
    * Pink
    */
-  ...generatePalette<'pink'>('pink', '#ad1457'),
+  ...generatePalette('pink', '#ad1457'),
   pink2: '#efcde1',
   pink3: '#e2a4c8',
   pink4: '#c55998'

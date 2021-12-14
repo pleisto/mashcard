@@ -90,11 +90,11 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
         className={btnClassName}
         type={enterButton ? 'primary' : undefined}
         size={btnSize}
-        disabled={disabled}
+        isDisabled={disabled}
         key="enterButton"
         onMouseDown={onMouseDown}
         onClick={onSearch}
-        loading={loading}
+        isLoading={loading}
         icon={searchIcon}
       >
         {enterButton}

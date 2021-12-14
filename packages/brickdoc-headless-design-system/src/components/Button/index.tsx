@@ -11,7 +11,6 @@ export type BtnType = 'primary' | 'secondary' | 'danger' | 'text'
 export interface ButtonProps extends Omit<AriaButtonProps, 'type'> {
   block?: boolean
   circle?: boolean
-  disabled?: boolean
   className?: string
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
@@ -22,7 +21,7 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'type'> {
    * older versions of the design system
    */
   danger?: boolean
-  loading?: boolean | { delay?: number }
+  isLoading?: boolean | { delay?: number }
   /**
    * @deprecated use `onPress` instead
    */
@@ -66,8 +65,8 @@ const ButtonRoot = styled('button', {
  */
 const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
   const {
-    disabled = false,
-    loading = false,
+    isDisabled = false,
+    isLoading = false,
     circle = false,
     danger = false,
     type = 'secondary',
@@ -91,7 +90,7 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
     type: htmlType
   }
 
-  const [innerLoading, setLoading] = useState<Loading>(!!loading)
+  const [innerLoading, setLoading] = useState<Loading>(!!isLoading)
   const delayTimeoutRef = useRef<number>()
   const buttonRef = (ref as React.RefObject<HTMLButtonElement>) || React.createRef<HTMLButtonElement>()
   const { buttonProps, isPressed } = useButton(ariaProps, buttonRef)
@@ -100,10 +99,10 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
    * Update Loading
    */
   let loadingOrDelay: Loading
-  if (typeof loading === 'object' && loading.delay) {
-    loadingOrDelay = loading.delay || true
+  if (typeof isLoading === 'object' && isLoading.delay) {
+    loadingOrDelay = isLoading.delay || true
   } else {
-    loadingOrDelay = !!loading
+    loadingOrDelay = !!isLoading
   }
 
   useEffect(() => {
@@ -126,9 +125,9 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
       hasIcon={!!icon || !!innerLoading}
       role={props.role || buttonProps.role}
       ref={buttonRef}
-      disabled={disabled || innerLoading}
-      disabledBtn={disabled}
-      type={isPressed && !disabled ? `${priorityType}-press` : priorityType}
+      disabled={isDisabled || innerLoading}
+      disabledBtn={isDisabled}
+      type={isPressed && !isDisabled ? `${priorityType}-press` : priorityType}
       circle={circle && size}
       loading={innerLoading}
       className={className}

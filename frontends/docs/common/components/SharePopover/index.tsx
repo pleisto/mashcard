@@ -94,18 +94,29 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     <>
       <div className={cx(styles.row, styles.bordered)}>
         <div className={styles.content}>
-          <span className={styles.head}>{t('share.allow_edit')}</span>
+          <label htmlFor="allow-edit-content-switch" className={styles.head}>
+            {t('share.allow_edit')}
+          </label>
         </div>
         <div className={styles.action}>
-          <Switch size="small" onChange={onSwitchAnonymousEditable} loading={anonymousEditableLoading} checked={anonymousEditableValue} />
+          <Switch
+            id="allow-edit-content-switch"
+            size="small"
+            onChange={onSwitchAnonymousEditable}
+            isLoading={anonymousEditableLoading}
+            isSelected={anonymousEditableValue}
+          />
         </div>
       </div>
     </>
   ) : null
 
   const inviteData =
-    data?.blockShareLinks.filter(link => link.state === ShareLinkState.Enabled && link.sharePodData.webid !== ANYONE_WEBID) ?? []
-  const suggestPods = data?.blockShareLinks.filter(link => link.sharePodData.webid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
+    data?.blockShareLinks.filter(
+      link => link.state === ShareLinkState.Enabled && link.sharePodData.webid !== ANYONE_WEBID
+    ) ?? []
+  const suggestPods =
+    data?.blockShareLinks.filter(link => link.sharePodData.webid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
 
   const inviteList = inviteData.length ? (
     <div className={styles.invite_list}>
@@ -135,11 +146,19 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
           <Icon.International />
         </div>
         <div className={styles.content}>
-          <span className={styles.head}>{t('share.share_to_web')}</span>
+          <label htmlFor="share-to-web-switch" className={styles.head}>
+            {t('share.share_to_web')}
+          </label>
           <span className={styles.description}>{t('share.share_to_web_description')}</span>
         </div>
         <div className={styles.action}>
-          <Switch size="small" onChange={onSwitchShareAnonymous} loading={shareWithAnonymousLoading} checked={shareWithAnonymousValue} />
+          <Switch
+            id="share-to-web-switch"
+            size="small"
+            onChange={onSwitchShareAnonymous}
+            isLoading={shareWithAnonymousLoading}
+            isSelected={shareWithAnonymousValue}
+          />
         </div>
       </div>
       {allowEditContent}
@@ -179,7 +198,12 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
         overlayClassName={styles.popover}
         onVisibleChange={handleVisibleChange}
       />
-      <InviteModal docMeta={docMeta} visible={inviteModalVisible} suggestPods={suggestPods} setVisible={setInviteModalVisible} />
+      <InviteModal
+        docMeta={docMeta}
+        visible={inviteModalVisible}
+        suggestPods={suggestPods}
+        setVisible={setInviteModalVisible}
+      />
     </>
   )
 }

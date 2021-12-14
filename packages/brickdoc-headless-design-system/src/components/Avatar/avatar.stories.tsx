@@ -29,6 +29,12 @@ export default {
     },
     src: {
       control: 'text'
+    },
+    className: {
+      description: '`string`'
+    },
+    style: {
+      description: '`React.CSSProperties`'
     }
   },
   parameters: {

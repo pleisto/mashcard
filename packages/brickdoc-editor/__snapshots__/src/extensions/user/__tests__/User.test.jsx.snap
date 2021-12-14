@@ -8,7 +8,7 @@ exports[`User matches correct snapshot 1`] = `
   style="pointer-events: none; white-space: normal;"
 >
   <span
-    class="brd-c-fdBHWS brd-c-fdBHWS-hECRKn-shape-circle brd-c-fdBHWS-idjDNf-size-small brd-c-fdBHWS-idZPaNd-css brickdoc-user-block-avatar"
+    class="brd-c-draUgs brd-c-draUgs-hECRKn-shape-circle brd-c-draUgs-idjDNf-size-small brd-c-draUgs-idZPaNd-css brickdoc-user-block-avatar"
   >
     <img
       src="avatarUrl"

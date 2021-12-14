@@ -281,8 +281,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({
                 className={styles.addBtn}
                 type="text"
                 onPress={onPressAddSubPage}
-                loading={createBlockLoading}
-                disabled={createBlockLoading}
+                isLoading={createBlockLoading}
+                isDisabled={createBlockLoading}
               >
                 <Icon.Add />
               </Button>

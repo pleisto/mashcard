@@ -22,7 +22,7 @@ exports[`MentionMenu matches correct snapshot 1`] = `
         tabindex="-1"
       >
         <span
-          class="brd-c-fdBHWS brd-c-fdBHWS-hECRKn-shape-circle brd-c-fdBHWS-icQFFD-size-default brd-c-fdBHWS-iknjnNO-css mention-menu-people-avatar"
+          class="brd-c-draUgs brd-c-draUgs-hECRKn-shape-circle brd-c-draUgs-icQFFD-size-default brd-c-draUgs-iknjnNO-css mention-menu-people-avatar"
         >
           <img
             src="avatar"

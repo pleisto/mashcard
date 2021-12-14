@@ -7,7 +7,12 @@ import { Form, Button, Input, message } from '@brickdoc/design-system'
 import { omit } from 'lodash-es'
 import { useBoolean } from 'ahooks'
 
-import { useUserPasswordResetMutation, UserPasswordResetInput, useUserSignOutMutation, UserSignOutInput } from '@/BrickdocGraphQL'
+import {
+  useUserPasswordResetMutation,
+  UserPasswordResetInput,
+  useUserSignOutMutation,
+  UserSignOutInput
+} from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
 
 export const EditPasswordPage: React.FC = () => {
@@ -59,7 +64,7 @@ export const EditPasswordPage: React.FC = () => {
           <Input.Password />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" size="large" loading={loading} block>
+          <Button type="primary" htmlType="submit" size="large" isLoading={loading} block>
             {t('sessions.reset_password')}
           </Button>
         </Form.Item>
