@@ -1,7 +1,7 @@
 import { FormulaContext } from '../../context'
 import { TODAY } from '../date'
 
-const ctx = new FormulaContext()
+const ctx = new FormulaContext({})
 
 describe('date', () => {
   it('DATE', () => {

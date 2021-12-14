@@ -1,8 +1,17 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, interpret } from '..'
-import { FormulaContext, FunctionClause } from '../..'
+import { FormulaContext, ParseErrorType } from '../..'
 
-const testCases = [
+interface TestCase {
+  input: string
+  value?: any
+  label?: string
+  parseErrorType?: ParseErrorType
+  errorMessage?: string
+  debug?: true
+}
+
+const testCases: TestCase[] = [
   {
     input: '=1+1',
     value: 2
@@ -165,15 +174,15 @@ const testCases = [
   },
   {
     input: '= "hel"lo"',
-    label: 'lex error when parse "hel"lo"',
-    lexSuccess: false,
-    errorMessage: 'Unexpected character: ->"<- at offset: 9, skipped 1 characters.'
+    label: 'lex error when parse "hel"lo" => parseError',
+    parseErrorType: 'parse',
+    errorMessage: 'TODO build not all input parsed :7'
   },
   {
     input: "= 'hello'",
-    label: 'Single quote',
-    lexSuccess: false,
-    errorMessage: "Unexpected character: ->'<- at offset: 2, skipped 1 characters."
+    label: 'Single quote => parseError',
+    parseErrorType: 'parse',
+    errorMessage: 'Expecting: one of these possible Token sequences'
   },
   // **
   {
@@ -249,9 +258,57 @@ const testCases = [
     errorMessage: 'TODO mismatch token startExpression'
   },
   {
+    input: '=1+',
+    parseErrorType: 'parse',
+    label: 'TODO missing suffix expression',
+    errorMessage: 'Expecting: one of these possible Token sequences:'
+  },
+  {
+    input: '=(1',
+    parseErrorType: 'parse',
+    label: 'Missing closing parenthesis1',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=(1',
+    parseErrorType: 'parse',
+    label: 'Missing closing parenthesis1',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=ABS(',
+    parseErrorType: 'parse',
+    label: 'Missing closing parenthesis2',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=ABS(1',
+    parseErrorType: 'parse',
+    label: 'Missing closing parenthesis3',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=POWER(1,',
+    parseErrorType: 'parse',
+    label: 'Missing closing parenthesis4',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=POWER(1,2',
+    parseErrorType: 'parse',
+    label: 'Missing closing parenthesis5',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
     input: '= 1+$',
     parseErrorType: 'parse',
     errorMessage: 'Expecting: one of these possible Token sequences:'
+  },
+  {
+    input: '="foo" &&& 123',
+    parseErrorType: 'parse',
+    label: 'TODO &&&',
+    errorMessage: 'Expected boolean but got string'
   },
   {
     input: '=1**2',
@@ -265,8 +322,9 @@ const testCases = [
   6. [Dollar, UUID, At]
   7. [Dollar, UUID, Sharp]
   8. [Dollar, UUID]
-  9. [FunctionGroupName]
-  10. [FunctionName]
+  9. [FunctionName]
+  10. [EqualCompareOperator]
+  11. [CompareOperator]
 but found: '*'`
   },
   // Function Call
@@ -359,6 +417,40 @@ but found: '*'`
     parseErrorType: 'syntax',
     errorMessage: 'LEN is not chainable'
   },
+  // Predicate
+  {
+    input: '==1',
+    label: 'TODO predicate ==1',
+    parseErrorType: 'parse',
+    errorMessage: 'TODO mismatch token startExpression'
+  },
+  {
+    input: '= =1',
+    value: { type: 'number', result: 1 }
+  },
+  {
+    input: '=>=3',
+    value: { type: 'number', result: 3 }
+  },
+  {
+    input: '=!="foo"',
+    value: { type: 'string', result: 'foo' }
+  },
+  {
+    input: '=>=true',
+    debug: true,
+    label: 'Predicate check type',
+    parseErrorType: 'syntax',
+    errorMessage: 'Expected number but got boolean'
+  },
+  {
+    input: '=<>"123"',
+    value: { type: 'string', result: '123' }
+  },
+  {
+    input: '= <= (1+1)',
+    value: { type: 'number', result: 2 }
+  },
   // Type
   {
     input: '=ABS ( "a" )',
@@ -391,7 +483,25 @@ but found: '*'`
     parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
   },
+  {
+    input: '=if(true, 1+2, "2")',
+    parseErrorType: 'syntax',
+    label: 'downcase',
+    errorMessage: 'Function if not found'
+  },
   // TODO List
+  {
+    input: '= 中文',
+    label: 'TODO chinese',
+    parseErrorType: 'parse',
+    errorMessage: 'Expecting: one of these possible Token sequences'
+  },
+  {
+    input: '=varvarabc中文var',
+    label: 'TODO chinese2',
+    parseErrorType: 'parse',
+    errorMessage: 'TODO mismatch token FunctionCall'
+  },
   {
     input: '= nottrue',
     label: 'TODO not is a operator',
@@ -418,20 +528,13 @@ but found: '*'`
     input: '=123.ABS()',
     parseErrorType: 'parse',
     errorMessage: 'TODO build not all input parsed :5'
-  },
-  {
-    input: '=if(true, 1+2, "2")',
-    parseErrorType: 'parse',
-    label: 'TODO downcase',
-    errorMessage: 'TODO mismatch token FunctionCall'
   }
 ]
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 
-const functionClauses: Array<FunctionClause<any>> = []
-const formulaContext = new FormulaContext({ functionClauses })
+const formulaContext = new FormulaContext({})
 
 const name = 'foo'
 const meta = { variableId, namespaceId, name }
@@ -439,43 +542,57 @@ const meta = { variableId, namespaceId, name }
 const parseInput = { formulaContext, meta }
 
 describe('Simple test case', () => {
-  testCases.forEach(({ input, label, lexSuccess = true, parseErrorType = undefined, errorMessage, value }) => {
+  testCases.forEach(({ input, label, parseErrorType, errorMessage, value, debug }) => {
     const prefix = label ? `[${label}] ` : ''
     const suffix = value !== undefined ? ` // => ${value}` : ' // => ✗'
-    // eslint-disable-next-line jest/valid-title
     it(`${prefix}${input}${suffix}`, async () => {
       const newMeta = { ...meta, input }
-      const { success, cst, errorType, errorMessages } = parse({ ...parseInput, meta: newMeta })
       const {
-        success: interpretSuccess,
-        result,
-        errorMessages: interpretErrorMessages
-      } = await interpret({ cst, meta: newMeta, formulaContext })
+        success,
+        cst,
+        errorType,
+        errorMessages,
+        codeFragments,
+        completions,
+        input: newInput,
+        inputImage,
+        parseImage
+      } = parse({
+        ...parseInput,
+        meta: newMeta
+      })
+
+      expect(completions.length).not.toEqual(0)
+
+      if (label) {
+        expect(codeFragments).toMatchSnapshot()
+      }
+
+      if (debug) {
+        expect(cst).toMatchSnapshot()
+        expect({ newInput, input, inputImage, parseImage }).toMatchSnapshot()
+      }
 
       if (value !== undefined) {
+        const {
+          success: interpretSuccess,
+          variableValue,
+          errorMessages: interpretErrorMessages
+        } = await interpret({ cst, meta: newMeta, formulaContext })
+
         expect(errorMessages).toEqual([])
         expect(interpretErrorMessages).toEqual([])
 
         expect(errorType).toEqual(undefined)
         expect(success).toEqual(true)
 
-        expect(result.value).toEqual(value)
+        expect(variableValue.result.result).toEqual(value)
         expect(interpretSuccess).toEqual(true)
-      } else if (!lexSuccess) {
-        expect(errorMessages[0]!.message).toContain(errorMessage)
-        expect(errorType).toEqual('lex')
       } else if (parseErrorType) {
         expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual(parseErrorType)
       } else {
-        expect(errorMessages).toEqual([])
-
-        expect(errorType).toEqual(undefined)
-        expect(success).toEqual(true)
-
-        expect(interpretSuccess).toEqual(false)
-        expect(interpretErrorMessages[0]!.message).toContain(errorMessage)
-        expect(result).toEqual(null)
+        throw new Error('Unexpected error')
       }
     })
   })

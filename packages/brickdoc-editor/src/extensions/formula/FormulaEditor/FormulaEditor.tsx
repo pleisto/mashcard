@@ -56,7 +56,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable,
   useEffect(() => {
     if (editor && !editor.isDestroyed && content) {
       editor.commands.replaceRoot(content)
-      console.log({ content, editor, label: 'after replace root' })
+      // console.log({ content, editor, label: 'after replace root' })
     }
   }, [editor, content])
 

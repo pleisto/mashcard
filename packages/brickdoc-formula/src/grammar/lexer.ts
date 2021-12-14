@@ -157,15 +157,18 @@ export const Comma = createToken({ name: 'Comma', pattern: /,/ })
 
 export const DoubleColon = createToken({ name: 'Colon', pattern: /::/ })
 
-export const FunctionGroupName = createToken({
-  name: 'FunctionGroupName',
-  pattern: /[a-zA-Z][a-zA-Z0-9_]*/
-})
-
 export const FunctionName = createToken({
   name: 'FunctionName',
-  pattern: /[A-Z][A-Z0-9_]*/
+  pattern: /[a-zA-Z][a-zA-Z0-9_]*/
+  // pattern: /\S+/
 })
+
+export const AnyName = createToken({ name: 'AnyName', pattern: /\S+/ })
+
+// export const FunctionName = createToken({
+//   name: 'FunctionName',
+//   pattern: /[A-Z][A-Z0-9_]*/
+// })
 
 // marking WhiteSpace as 'SKIPPED' makes the lexer skip it.
 export const WhiteSpace = createToken({
@@ -223,16 +226,21 @@ export const allTokens = [
   NumberLiteral,
   BooleanLiteral,
   StringLiteral,
+  Comma, // ,
 
+  // FunctionName,
   FunctionName,
-  FunctionGroupName,
-  Comma // ,
+
+  AnyName
 ]
 
 const errorProvider: ILexerErrorMessageProvider = {
   // eslint-disable-next-line max-params
   buildUnexpectedCharactersMessage: (fullText, startOffset, length, line, column): string => {
-    return `Unexpected character: ->${fullText.charAt(startOffset)}<- at offset: ${startOffset},` + ` skipped ${length} characters.`
+    return (
+      `Unexpected character: ->${fullText.charAt(startOffset)}<- at offset: ${startOffset},` +
+      ` skipped ${length} characters.`
+    )
   },
 
   buildUnableToPopLexerModeMessage: (token: IToken): string => {
@@ -242,7 +250,7 @@ const errorProvider: ILexerErrorMessageProvider = {
 
 export const FormulaLexer = new Lexer(allTokens, {
   errorMessageProvider: errorProvider,
-  ensureOptimizations: true
+  ensureOptimizations: false
 })
 
 export const tokenVocabulary = allTokens.reduce((o: { [key: string]: TokenType }, acc) => {

@@ -1,33 +1,59 @@
-import { ContextInterface, BaseFunctionClause, NumberResult } from '..'
+import { ContextInterface, BasicFunctionClause, NumberResult } from '..'
 
-export const ABS = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.abs(number), type: 'number' })
+export const ABS = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.abs(number.result),
+  type: 'number'
+})
 
-export const INT = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.floor(number), type: 'number' })
+export const INT = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.floor(number.result),
+  type: 'number'
+})
 
-export const LOG10 = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.log10(number), type: 'number' })
+export const LOG10 = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.log10(number.result),
+  type: 'number'
+})
 
 export const PI = (ctx: ContextInterface): NumberResult => ({ result: Math.PI, type: 'number' })
 
-export const POWER = (ctx: ContextInterface, number: number, power: number): NumberResult => ({
-  result: Math.pow(number, power),
+export const POWER = (ctx: ContextInterface, number: NumberResult, power: NumberResult): NumberResult => ({
+  result: Math.pow(number.result, power.result),
   type: 'number'
 })
 
 export const RAND = (ctx: ContextInterface): NumberResult => ({ result: Math.random(), type: 'number' })
 
-export const RANDBETWEEN = (ctx: ContextInterface, min: number, max: number): NumberResult => ({
-  result: Math.random() * (max - min) + min,
+export const RANDBETWEEN = (ctx: ContextInterface, min: NumberResult, max: NumberResult): NumberResult => ({
+  result: Math.random() * (max.result - min.result) + min.result,
   type: 'number'
 })
 
-export const SQRT = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.sqrt(number), type: 'number' })
+export const SQRT = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.sqrt(number.result),
+  type: 'number'
+})
 
-export const SQRTPI = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.sqrt(number * Math.PI), type: 'number' })
+export const SQRTPI = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.sqrt(number.result * Math.PI),
+  type: 'number'
+})
 
-export const TRUNC = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.trunc(number), type: 'number' })
-export const LN = (ctx: ContextInterface, number: number): NumberResult => ({ result: Math.log(number), type: 'number' })
+export const TRUNC = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.trunc(number.result),
+  type: 'number'
+})
+export const LN = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.log(number.result),
+  type: 'number'
+})
 
-export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
+export const ROUND = (ctx: ContextInterface, number: NumberResult): NumberResult => ({
+  result: Math.round(number.result),
+  type: 'number'
+})
+
+export const CORE_MATH_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   {
     name: 'ABS',
     async: false,
@@ -37,12 +63,13 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
+    testCases: [
       {
         input: [-1],
         output: 1
       }
     ],
+    examples: [{ input: '=ABS(-1)', output: { type: 'number', result: 1 } }],
     chain: false,
     reference: ABS
   },
@@ -52,15 +79,16 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     pure: true,
     effect: false,
     description: 'Returns the integer part of a number.',
-    group: 'excel',
+    group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
+    testCases: [
       {
         input: [1.5],
         output: 1
       }
     ],
+    examples: [{ input: '=INT(-1.5)', output: { type: 'number', result: -1 } }],
     chain: false,
     reference: INT
   },
@@ -73,12 +101,13 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
+    testCases: [
       {
         input: [100],
         output: 2
       }
     ],
+    examples: [{ input: '=LOG10(100)', output: { type: 'number', result: 2 } }],
     chain: false,
     reference: LOG10
   },
@@ -91,12 +120,13 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [],
     returns: 'number',
-    examples: [
+    testCases: [
       {
         input: [],
         output: Math.PI
       }
     ],
+    examples: [{ input: '=PI()', output: { type: 'number', result: Math.PI } }],
     chain: false,
     reference: PI
   },
@@ -112,12 +142,13 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
       { name: 'power', type: 'number' }
     ],
     returns: 'number',
-    examples: [
+    testCases: [
       {
         input: [2, 3],
         output: 8
       }
     ],
+    examples: [{ input: '=POWER(2,3)', output: { type: 'number', result: 8 } }],
     chain: false,
     reference: POWER
   },
@@ -129,8 +160,9 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     description: 'Returns a random number between 0 and 1.',
     group: 'core',
     args: [],
+    examples: [{ input: '=RAND()', output: { type: 'number', result: 0.513 } }],
     returns: 'number',
-    examples: [],
+    testCases: [],
     chain: false,
     reference: RAND
   },
@@ -145,8 +177,9 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
       { name: 'min', type: 'number' },
       { name: 'max', type: 'number' }
     ],
+    examples: [{ input: '=RANDBETWEEN(1, 10)', output: { type: 'number', result: 5.13 } }],
     returns: 'number',
-    examples: [],
+    testCases: [],
     chain: false,
     reference: RANDBETWEEN
   },
@@ -159,12 +192,8 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
-      {
-        input: [4],
-        output: 2
-      }
-    ],
+    examples: [{ input: '=SQRT(4)', output: { type: 'number', result: 2 } }],
+    testCases: [],
     chain: false,
     reference: SQRT
   },
@@ -177,12 +206,8 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
-      {
-        input: [4],
-        output: 3.5449077018110318
-      }
-    ],
+    examples: [{ input: '=SQRTPI(4)', output: { type: 'number', result: 3.5449077018110318 } }],
+    testCases: [],
     chain: false,
     reference: SQRTPI
   },
@@ -195,12 +220,8 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
-      {
-        input: [1.5],
-        output: 1
-      }
-    ],
+    examples: [{ input: '=TRUNC(1.5)', output: { type: 'number', result: 1 } }],
+    testCases: [],
     chain: false,
     reference: TRUNC
   },
@@ -213,13 +234,23 @@ export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     group: 'core',
     args: [{ name: 'number', type: 'number' }],
     returns: 'number',
-    examples: [
-      {
-        input: [100],
-        output: 4.605170185988092
-      }
-    ],
+    examples: [{ input: '=LN(100)', output: { type: 'number', result: 4.605170185988092 } }],
+    testCases: [],
     chain: false,
     reference: LN
+  },
+  {
+    name: 'ROUND',
+    async: false,
+    pure: true,
+    effect: false,
+    description: 'Returns the number rounded to the specified number of decimal places.',
+    group: 'core',
+    args: [{ name: 'number', type: 'number' }],
+    returns: 'number',
+    examples: [{ input: '=ROUND(1.5)', output: { type: 'number', result: 2 } }],
+    testCases: [],
+    chain: false,
+    reference: ROUND
   }
 ]

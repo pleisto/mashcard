@@ -1,74 +1,171 @@
-import { parse, interpret, Database, Column, FunctionClause } from '../..'
+import { parse, interpret, Database, Column, Row } from '../..'
 import { FormulaContext } from '../../context'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 const databaseNamespaceId = '28e28190-63bd-4f70-aeca-26e72574c01a'
+const testNamespaceId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
+const testVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
 const firstColumnId = '62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6'
 const secondColumnId = '4e6f9adb-6f33-454e-9f9e-635dc98e3f28'
+const thirdColumnId = '2723b7d9-22ce-4d93-b2ef-7cce1b122d64'
 const firstRowId = 'ec4fdfe8-4a12-4a76-aeae-2dea0229e734'
 const secondRowId = '5d1e4a83-383a-4991-a33c-52a9b3169549'
 const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 
 const meta = { namespaceId, variableId, name: 'example' }
 
-const tableData: Array<{ [key: string]: any }> = [
-  { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', sort: 100 },
-  { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', sort: 100 },
-  { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', sort: 100 }
+const tableData: Row[] = [
+  { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', [thirdColumnId]: '3', sort: 100 },
+  { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', [thirdColumnId]: '', sort: 100 },
+  { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', [thirdColumnId]: '9', sort: 100 }
 ]
 const columns: Column[] = [
-  { namespaceId: databaseNamespaceId, columnId: firstColumnId, type: 'foo', name: 'first', index: 0 },
-  { namespaceId: databaseNamespaceId, columnId: secondColumnId, type: 'foo', name: 'second', index: 1 }
+  {
+    namespaceId: databaseNamespaceId,
+    columnId: firstColumnId,
+    spreadsheetName: 'MyTable',
+    type: 'foo',
+    name: 'first',
+    index: 0
+  },
+  {
+    namespaceId: databaseNamespaceId,
+    columnId: secondColumnId,
+    spreadsheetName: 'MyTable',
+    type: 'foo',
+    name: 'second',
+    index: 1
+  },
+  {
+    namespaceId: databaseNamespaceId,
+    columnId: thirdColumnId,
+    spreadsheetName: 'MyTable',
+    type: 'foo',
+    name: 'third',
+    index: 2
+  }
 ]
-
-const functionClauses: Array<FunctionClause<any>> = []
 
 const database: Database = {
   name: () => 'MyTable',
-  size: () => tableData.length,
+  blockId: databaseNamespaceId,
+  columnCount: () => columns.length,
+  rowCount: () => tableData.length,
   _data: () => ({}),
   listColumns: () => columns,
-  getCell: (columnId, rowId) => {
-    const value = tableData.find(row => row.id === rowId)?.[columnId]
-
-    if (value) {
-      return { value }
-    }
-
-    return undefined
-  },
-  listCell: columnId => tableData.map(row => ({ value: row[columnId] })),
-  getColumn: columnId => columns.find(col => col.columnId === columnId)
+  listRows: () => tableData,
+  getColumn: columnId => columns.find(col => col.columnId === columnId),
+  getRow: rowId => tableData.find(row => row.id === rowId)
 }
 
+interface TestCase {
+  input: string
+  label: string
+  value: any
+}
+
+const testCases: TestCase[] = [
+  { label: 'column', input: `=$${databaseNamespaceId}#${firstColumnId}`, value: columns[0] },
+  { label: 'COLUMN_COUNT', input: `=$${databaseNamespaceId}.COLUMN_COUNT()`, value: 3 },
+  { label: 'SUM', input: `=$${databaseNamespaceId}#${firstColumnId}.SUM()`, value: 1 + 3 + 5 },
+  { label: 'MAX', input: `=$${databaseNamespaceId}#${firstColumnId}.MAX()`, value: 5 },
+  { label: 'COUNTA', input: `=$${databaseNamespaceId}#${firstColumnId}.COUNTA()`, value: 3 },
+  { label: 'COUNTA', input: `=$${databaseNamespaceId}#${thirdColumnId}.COUNTA()`, value: 2 },
+  {
+    label: 'SUMPRODUCT',
+    input: `=SUMPRODUCT($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId})`,
+    value: 1 * 2 + 3 * 4 + 5 * 6
+  },
+  {
+    label: 'SUMIFS >3',
+    input: `=SUMIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, >3)`,
+    value: 3 + 5
+  },
+  {
+    label: 'SUMIFS 4',
+    input: `=SUMIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, 4)`,
+    value: 3
+  },
+  {
+    label: 'AVERAGEIFS 4',
+    input: `=AVERAGEIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, >3)`,
+    value: 4
+  },
+  {
+    label: 'AVERAGEIFS 100',
+    input: `=AVERAGEIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, >100)`,
+    value: 'No matching values'
+  },
+  {
+    label: 'COUNTIFS >2',
+    input: `=COUNTIFS($${databaseNamespaceId}#${firstColumnId}, >2)`,
+    value: 2
+  },
+  {
+    label: 'COUNTIFS =1',
+    input: `=COUNTIFS($${databaseNamespaceId}#${firstColumnId}, 3)`,
+    value: 1
+  },
+  {
+    label: 'VLOOKUP Not found',
+    input: `=VLOOKUP("", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    value: 'Not found'
+  },
+  {
+    label: 'VLOOKUP Column check',
+    input: `=VLOOKUP("", $${databaseNamespaceId}, $${databaseNamespaceId}#${firstColumnId})`,
+    value: 'Column cannot be the same as the first column'
+  },
+  {
+    label: 'VLOOKUP ok number',
+    input: `=VLOOKUP(1, $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    value: '2'
+  },
+  {
+    label: 'VLOOKUP ok string',
+    input: `=VLOOKUP("1", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    value: '2'
+  }
+]
+
 describe('Database Functions', () => {
-  const formulaContext = new FormulaContext({ functionClauses })
+  const formulaContext = new FormulaContext({})
   formulaContext.setDatabase(databaseNamespaceId, database)
   const parseInput = { formulaContext, meta }
 
-  it('column', async () => {
-    const newMeta = { ...meta, input: `=$${databaseNamespaceId}#${firstColumnId}` }
-    const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext })
-    expect(errorMessages).toEqual([])
-    expect(cst).toMatchSnapshot()
-    expect((await interpret({ cst, meta: newMeta, formulaContext })).result.value).toEqual(columns[0])
+  testCases.forEach(({ input, label, value }) => {
+    it(`[${label}] ${input}`, async () => {
+      const newMeta = { ...meta, input }
+      const { codeFragments, cst, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext })
+      expect(errorMessages).toEqual([])
+      expect(codeFragments).toMatchSnapshot()
+      expect((await interpret({ cst, meta: newMeta, formulaContext })).variableValue.result.result).toEqual(value)
+    })
   })
 
-  it('size', async () => {
-    const newMeta = { ...meta, input: `=$${databaseNamespaceId}.SIZE()` }
-    const { errorMessages, cst } = parse({ ...parseInput, meta: newMeta, formulaContext })
-    expect(errorMessages).toEqual([])
-    expect(cst).toMatchSnapshot()
-    expect((await interpret({ cst, meta: newMeta, formulaContext })).result.value).toEqual(3)
-  })
+  it('completion', () => {
+    const completions = formulaContext.completions(namespaceId, variableId)
+    expect(completions[0].kind).toEqual('spreadsheet')
+    expect(completions[0]).toMatchSnapshot()
+    expect(completions.filter(c => c.kind === 'column').length).toEqual(3)
 
-  it('sum', async () => {
-    const newMeta = { ...meta, input: `=$${databaseNamespaceId}#${firstColumnId}.SUM()` }
-    const { errorMessages, cst } = parse({ ...parseInput, meta: newMeta, formulaContext })
-    expect(errorMessages).toEqual([])
-    expect(cst).toMatchSnapshot()
-    expect((await interpret({ cst, meta: newMeta, formulaContext })).result.value).toEqual(1 + 3 + 5)
+    const input1 = `=$${databaseNamespaceId}#${firstColumnId}.`
+    const { completions: input1Completions } = parse({
+      formulaContext,
+      meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1 }
+    })
+    expect(input1Completions[0]).toMatchSnapshot()
+    expect(input1Completions[0].kind).toEqual('function')
+
+    const input2 = `=$${databaseNamespaceId}.`
+    const { completions: input2Completions } = parse({
+      formulaContext,
+      meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input2 }
+    })
+    expect(input2Completions[0].kind).toEqual('column')
+    expect(input2Completions[0]).toMatchSnapshot()
+    expect(input2Completions.find(c => c.kind === 'function')).toMatchSnapshot()
   })
 })

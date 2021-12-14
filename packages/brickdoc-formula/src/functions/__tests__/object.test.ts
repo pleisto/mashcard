@@ -1,21 +1,19 @@
 import { FormulaContext } from '../../context'
 import { T, TYPE, WITH_TYPE } from '../object'
 
-const ctx = new FormulaContext()
+const ctx = new FormulaContext({})
 
 describe('object', () => {
   it('T', () => {
-    expect(T(ctx, false).result).toBe(false)
-    expect(T(ctx, []).result).toStrictEqual([])
+    expect(T(ctx, { result: 1, type: 'number' }).result).toBe(1)
+    expect(T(ctx, { result: 'Foo', type: 'string' }).result).toBe('Foo')
   })
 
   it('TYPE', () => {
-    expect(TYPE(ctx, 1).result).toBe('number')
-    expect(TYPE(ctx, []).result).toBe('object')
+    expect(TYPE(ctx, { result: 1, type: 'number' }).result).toBe('number')
   })
 
   it('WITH_TYPE', () => {
-    expect(WITH_TYPE(ctx, 1).result).toStrictEqual({ type: 'number', obj: 1 })
-    expect(WITH_TYPE(ctx, '123').result).toStrictEqual({ type: 'string', obj: '123' })
+    expect(WITH_TYPE(ctx, { result: 1, type: 'number' }).result).toStrictEqual({ result: 1, type: 'number' })
   })
 })

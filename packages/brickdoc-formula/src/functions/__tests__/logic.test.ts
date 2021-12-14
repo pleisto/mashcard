@@ -1,12 +1,16 @@
 import { FormulaContext } from '../../context'
 import { IF, TRUE, FALSE, NOT, AND, OR } from '../logic'
 
-const ctx = new FormulaContext()
+const ctx = new FormulaContext({})
 
 describe('logic', () => {
   it('IF', () => {
-    expect(IF(ctx, false, 1, 2).result).toBe(2)
-    expect(IF(ctx, true, 1, 2).result).toBe(1)
+    expect(
+      IF(ctx, { result: false, type: 'boolean' }, { result: 1, type: 'number' }, { result: 2, type: 'number' }).result
+    ).toBe(2)
+    expect(
+      IF(ctx, { result: true, type: 'boolean' }, { result: 1, type: 'number' }, { result: 2, type: 'number' }).result
+    ).toBe(1)
   })
 
   it('TRUE', () => {
@@ -18,23 +22,23 @@ describe('logic', () => {
   })
 
   it('NOT', () => {
-    expect(NOT(ctx, false).result).toBe(true)
-    expect(NOT(ctx, true).result).toBe(false)
+    expect(NOT(ctx, { result: false, type: 'boolean' }).result).toBe(true)
+    expect(NOT(ctx, { result: true, type: 'boolean' }).result).toBe(false)
   })
 
   it('AND', () => {
     expect(AND(ctx).result).toBe(true)
-    expect(AND(ctx, true, true).result).toBe(true)
-    expect(AND(ctx, true, false).result).toBe(false)
-    expect(AND(ctx, false, true).result).toBe(false)
-    expect(AND(ctx, false, false).result).toBe(false)
+    expect(AND(ctx, { result: true, type: 'boolean' }, { result: true, type: 'boolean' }).result).toBe(true)
+    expect(AND(ctx, { result: true, type: 'boolean' }, { result: false, type: 'boolean' }).result).toBe(false)
+    expect(AND(ctx, { result: false, type: 'boolean' }, { result: true, type: 'boolean' }).result).toBe(false)
+    expect(AND(ctx, { result: false, type: 'boolean' }, { result: false, type: 'boolean' }).result).toBe(false)
   })
 
   it('OR', () => {
     expect(OR(ctx).result).toBe(false)
-    expect(OR(ctx, true, true).result).toBe(true)
-    expect(OR(ctx, true, false).result).toBe(true)
-    expect(OR(ctx, false, true).result).toBe(true)
-    expect(OR(ctx, false, false).result).toBe(false)
+    expect(OR(ctx, { result: true, type: 'boolean' }, { result: true, type: 'boolean' }).result).toBe(true)
+    expect(OR(ctx, { result: true, type: 'boolean' }, { result: false, type: 'boolean' }).result).toBe(true)
+    expect(OR(ctx, { result: false, type: 'boolean' }, { result: true, type: 'boolean' }).result).toBe(true)
+    expect(OR(ctx, { result: false, type: 'boolean' }, { result: false, type: 'boolean' }).result).toBe(false)
   })
 })

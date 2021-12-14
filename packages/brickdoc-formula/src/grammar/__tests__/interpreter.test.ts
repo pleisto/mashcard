@@ -1,13 +1,12 @@
-import { parse, interpret, quickInsert, FunctionClause, BUILTIN_CLAUSES, ContextInterface } from '../..'
+import { parse, interpret, quickInsert, BaseFunctionClause, NumberResult } from '../..'
 import { FormulaContext } from '../../context'
 
-const functionClauses: Array<FunctionClause<any>> = [
+const functionClauses: Array<BaseFunctionClause<any>> = [
   {
     name: 'PLUS',
     async: false,
     pure: true,
     effect: false,
-    key: 'custom::PLUS',
     args: [
       {
         type: 'number',
@@ -18,26 +17,27 @@ const functionClauses: Array<FunctionClause<any>> = [
         name: 'b'
       }
     ],
+    examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
     description: '',
     group: 'custom',
     returns: 'number',
-    examples: [],
+    testCases: [],
     chain: false,
-    reference: (ctx: ContextInterface, a: number, b: number) => ({ type: 'number', result: a + b })
+    reference: (ctx, a: NumberResult, b: NumberResult) => ({ type: 'number', result: a.result + b.result })
   },
   {
     name: 'FORTY_TWO',
     async: false,
     pure: true,
     effect: false,
-    key: 'custom::FORTY_TWO',
     args: [],
+    examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
     description: '',
     group: 'custom',
     returns: 'number',
-    examples: [],
+    testCases: [],
     chain: false,
-    reference: (ctx: ContextInterface) => ({ type: 'number', result: 42 })
+    reference: ctx => ({ type: 'number', result: 42 })
   }
 ]
 
@@ -71,21 +71,32 @@ describe('Custom Function', () => {
     const newMeta = { ...meta, input }
     const { success, cst } = parse({ ...parseInput, meta: newMeta, formulaContext: localFormulaContext })
     expect(success).toEqual(true)
-    expect((await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext })).result.value).toEqual(2)
+    const result = await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext })
+    expect(result.variableValue.result.result).toEqual(2)
     expect(cst).toMatchSnapshot()
+  })
+
+  it('Function dependencies', () => {
+    const newMeta = { ...meta, input: '=custom::PLUS(1, 1)' }
+    const { success, functionDependencies } = parse({
+      ...parseInput,
+      meta: newMeta,
+      formulaContext: localFormulaContext
+    })
+    expect(success).toEqual(true)
+    expect(functionDependencies).toMatchSnapshot()
   })
 
   it('Today track', () => {
     const input = '=TODAY()'
     const newMeta = { ...meta, input }
-    const { success, cst, variableDependencies, functionDependencies } = parse({
+    const { success, cst, variableDependencies } = parse({
       ...parseInput,
       meta: newMeta,
       formulaContext: localFormulaContext
     })
     expect(success).toEqual(true)
     expect(variableDependencies).toEqual([])
-    expect(functionDependencies).toEqual([BUILTIN_CLAUSES.find(c => c.name === 'TODAY')!])
     expect(cst).toMatchSnapshot()
   })
 
@@ -103,7 +114,9 @@ describe('Custom Function', () => {
     const newMeta = { ...meta, input }
     const { success, cst } = parse({ ...parseInput, meta: newMeta, formulaContext: localFormulaContext })
     expect(success).toEqual(true)
-    expect((await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext })).result.value).toEqual(42)
+    expect(
+      (await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext })).variableValue.result.result
+    ).toEqual(42)
   })
 })
 
@@ -120,7 +133,7 @@ describe('Context', () => {
     const newMeta = { ...meta, input }
     const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
     expect(errorMessages).toEqual([])
-    expect((await interpret({ cst, meta: newMeta, formulaContext })).result.value).toEqual(24)
+    expect((await interpret({ cst, meta: newMeta, formulaContext })).variableValue.result.result).toEqual(24)
   })
 
   it('expression variable', async () => {
@@ -155,30 +168,7 @@ describe('Context', () => {
     const newMeta = { ...meta, input }
     const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
     expect(errorMessages).toEqual([])
-    expect((await interpret({ cst, formulaContext, meta: newMeta })).result.value).toEqual(34)
-  })
-
-  it('syntax', () => {
-    const input = `= "foo" &&& 123`
-    const newMeta = { ...meta, input }
-    const { errorMessages } = parse({ ...parseInput, meta: newMeta })
-    expect(errorMessages).toEqual([
-      {
-        message: `Expecting: one of these possible Token sequences:
-  1. [LParen]
-  2. [Minus]
-  3. [NumberLiteral]
-  4. [BooleanLiteral]
-  5. [StringLiteral]
-  6. [Dollar, UUID, At]
-  7. [Dollar, UUID, Sharp]
-  8. [Dollar, UUID]
-  9. [FunctionGroupName]
-  10. [FunctionName]
-but found: '&'`,
-        type: 'syntax'
-      }
-    ])
+    expect((await interpret({ cst, formulaContext, meta: newMeta })).variableValue.result.result).toEqual(34)
   })
 
   it('Type', () => {

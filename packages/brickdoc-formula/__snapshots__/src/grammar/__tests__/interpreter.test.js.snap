@@ -1,5 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Custom Function Function dependencies 1`] = `
+Array [
+  Object {
+    "args": Array [
+      Object {
+        "name": "a",
+        "type": "number",
+      },
+      Object {
+        "name": "b",
+        "type": "number",
+      },
+    ],
+    "async": false,
+    "chain": false,
+    "description": "",
+    "effect": false,
+    "examples": Array [
+      Object {
+        "codeFragments": Array [
+          Object {
+            "code": "NumberLiteral",
+            "errors": Array [],
+            "meta": undefined,
+            "name": "1",
+            "spaceAfter": false,
+            "spaceBefore": false,
+            "type": "number",
+          },
+        ],
+        "input": "=1",
+        "output": Object {
+          "result": 1,
+          "type": "any",
+        },
+      },
+    ],
+    "group": "custom",
+    "key": "custom::PLUS",
+    "name": "PLUS",
+    "pure": true,
+    "reference": [Function],
+    "returns": "number",
+    "testCases": Array [],
+  },
+]
+`;
+
 exports[`Custom Function Plus 1`] = `
 Object {
   "children": Object {
@@ -334,7 +382,7 @@ Object {
                                                                           "tokenTypeIdx": 37,
                                                                         },
                                                                       ],
-                                                                      "FunctionGroupName": Array [
+                                                                      "FunctionName": Array [
                                                                         Object {
                                                                           "endColumn": 7,
                                                                           "endLine": 1,
@@ -349,13 +397,11 @@ Object {
                                                                             "categoryMatches": Array [],
                                                                             "categoryMatchesMap": Object {},
                                                                             "isParent": false,
-                                                                            "name": "FunctionGroupName",
+                                                                            "name": "FunctionName",
                                                                             "tokenTypeIdx": 38,
                                                                           },
                                                                           "tokenTypeIdx": 38,
                                                                         },
-                                                                      ],
-                                                                      "FunctionName": Array [
                                                                         Object {
                                                                           "endColumn": 13,
                                                                           "endLine": 1,
@@ -366,14 +412,14 @@ Object {
                                                                           "startOffset": 9,
                                                                           "tokenType": Object {
                                                                             "CATEGORIES": Array [],
-                                                                            "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                            "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                             "categoryMatches": Array [],
                                                                             "categoryMatchesMap": Object {},
                                                                             "isParent": false,
                                                                             "name": "FunctionName",
-                                                                            "tokenTypeIdx": 39,
+                                                                            "tokenTypeIdx": 38,
                                                                           },
-                                                                          "tokenTypeIdx": 39,
+                                                                          "tokenTypeIdx": 38,
                                                                         },
                                                                       ],
                                                                       "LParen": Array [
@@ -802,14 +848,14 @@ Object {
                                                                           "startOffset": 1,
                                                                           "tokenType": Object {
                                                                             "CATEGORIES": Array [],
-                                                                            "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                            "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                             "categoryMatches": Array [],
                                                                             "categoryMatchesMap": Object {},
                                                                             "isParent": false,
                                                                             "name": "FunctionName",
-                                                                            "tokenTypeIdx": 39,
+                                                                            "tokenTypeIdx": 38,
                                                                           },
-                                                                          "tokenTypeIdx": 39,
+                                                                          "tokenTypeIdx": 38,
                                                                         },
                                                                       ],
                                                                       "LParen": Array [

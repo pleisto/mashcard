@@ -1,5 +1,16 @@
-import { CstNode, tokenMatcher } from 'chevrotain'
-import { buildFunctionKey, ContextInterface, NormalFunctionClause, Result } from '..'
+import { CstNode, IToken, tokenMatcher } from 'chevrotain'
+import {
+  buildFunctionKey,
+  ContextInterface,
+  AnyTypeValue,
+  ColumnResult,
+  NullResult,
+  SpreadsheetResult,
+  NumberResult,
+  BooleanResult,
+  PredicateResult,
+  PredicateOperator
+} from '..'
 import { BaseCstVisitor } from './parser'
 import {
   Div,
@@ -33,157 +44,195 @@ export class FormulaInterpreter extends BaseCstVisitor {
     this.validateVisitor()
   }
 
-  startExpression(ctx: { expression: CstNode | CstNode[] }): Result {
+  startExpression(ctx: { expression: CstNode | CstNode[] }): AnyTypeValue {
     return this.visit(ctx.expression)
   }
 
-  expression(ctx: { combineExpression: CstNode | CstNode[] }): Result {
+  expression(ctx: { combineExpression: CstNode | CstNode[] }): AnyTypeValue {
     return this.visit(ctx.combineExpression)
   }
 
-  combineExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[]; CombineOperator: { [x: string]: any } }): Result {
+  combineExpression(ctx: {
+    lhs: CstNode | CstNode[]
+    rhs: any[]
+    CombineOperator: { [x: string]: any }
+  }): AnyTypeValue {
     let result = this.visit(ctx.lhs)
 
-    if (ctx.rhs) {
-      ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-        const rhsValue = this.visit(rhsOperand)
-        const operator = ctx.CombineOperator[idx]
-
-        if (tokenMatcher(operator, And)) {
-          result = result && rhsValue
-        } else if (tokenMatcher(operator, Or)) {
-          result = result || rhsValue
-        } else {
-          throw new Error(`Unexpected operator ${operator.image}`)
-        }
-      })
+    if (!ctx.rhs) {
+      return result
     }
+
+    ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
+      const rhsValue = this.visit(rhsOperand)
+      const operator = ctx.CombineOperator[idx]
+
+      if (tokenMatcher(operator, And)) {
+        result = { result: result.result && rhsValue.result, type: 'boolean' }
+      } else if (tokenMatcher(operator, Or)) {
+        result = { result: result.result || rhsValue.result, type: 'boolean' }
+      } else {
+        throw new Error(`Unexpected operator ${operator.image}`)
+      }
+    })
 
     return result
   }
 
-  notExpression(ctx: { rhs: CstNode | CstNode[]; lhs: any[] }): Result {
+  notExpression(ctx: { rhs: CstNode | CstNode[]; lhs: any[] }): AnyTypeValue {
     let result = this.visit(ctx.rhs)
-    if (ctx.lhs) {
-      ctx.lhs.forEach(() => {
-        result = !result
-      })
+
+    if (!ctx.lhs) {
+      return result
     }
-    return result
-  }
 
-  equalCompareExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[]; EqualCompareOperator: { [x: string]: any } }): Result {
-    let result = this.visit(ctx.lhs)
-
-    if (ctx.rhs) {
-      ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-        const rhsValue = this.visit(rhsOperand)
-        const operator = ctx.EqualCompareOperator[idx]
-
-        if (tokenMatcher(operator, Equal) || tokenMatcher(operator, Equal2)) {
-          result = result === rhsValue
-        } else if (tokenMatcher(operator, NotEqual) || tokenMatcher(operator, NotEqual2)) {
-          result = result !== rhsValue
-        } else {
-          throw new Error(`Unexpected operator ${operator.image}`)
-        }
-      })
-    }
+    ctx.lhs.forEach(() => {
+      result = { result: !result.result, type: 'boolean' }
+    })
 
     return result
   }
 
-  compareExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[]; CompareOperator: { [x: string]: any } }): Result {
+  equalCompareExpression(ctx: {
+    lhs: CstNode | CstNode[]
+    rhs: any[]
+    EqualCompareOperator: { [x: string]: any }
+  }): AnyTypeValue {
     let result = this.visit(ctx.lhs)
 
-    if (ctx.rhs) {
-      ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-        // there will be one operator for each rhs operand
-        const rhsValue = this.visit(rhsOperand)
-        const operator = ctx.CompareOperator[idx]
-
-        if (tokenMatcher(operator, GreaterThan)) {
-          result = result > rhsValue
-        } else if (tokenMatcher(operator, LessThan)) {
-          result = result < rhsValue
-        } else if (tokenMatcher(operator, GreaterThanEqual)) {
-          result = result >= rhsValue
-        } else if (tokenMatcher(operator, LessThanEqual)) {
-          result = result <= rhsValue
-        } else {
-          throw new Error(`Unexpected operator ${operator.image}`)
-        }
-      })
+    if (!ctx.rhs) {
+      return result
     }
+
+    ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
+      const rhsValue = this.visit(rhsOperand)
+      const operator = ctx.EqualCompareOperator[idx]
+
+      if (tokenMatcher(operator, Equal) || tokenMatcher(operator, Equal2)) {
+        result = { result: result.result === rhsValue.result, type: 'boolean' }
+      } else if (tokenMatcher(operator, NotEqual) || tokenMatcher(operator, NotEqual2)) {
+        result = { result: result.result !== rhsValue.result, type: 'boolean' }
+      } else {
+        throw new Error(`Unexpected operator ${operator.image}`)
+      }
+    })
 
     return result
   }
 
-  concatExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[] }): Result {
+  compareExpression(ctx: {
+    lhs: CstNode | CstNode[]
+    rhs: any[]
+    CompareOperator: { [x: string]: any }
+  }): AnyTypeValue {
     let result = this.visit(ctx.lhs)
 
-    if (ctx.rhs) {
-      ctx.rhs.forEach((rhsOperand: CstNode | CstNode[]) => {
-        result = result.concat(this.visit(rhsOperand))
-      })
+    if (!ctx.rhs) {
+      return result
     }
+
+    ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
+      // there will be one operator for each rhs operand
+      const rhsValue = this.visit(rhsOperand)
+      const operator = ctx.CompareOperator[idx]
+
+      if (tokenMatcher(operator, GreaterThan)) {
+        result = { result: result.result > rhsValue.result, type: 'boolean' }
+      } else if (tokenMatcher(operator, LessThan)) {
+        result = { result: result.result < rhsValue.result, type: 'boolean' }
+      } else if (tokenMatcher(operator, GreaterThanEqual)) {
+        result = { result: result.result >= rhsValue.result, type: 'boolean' }
+      } else if (tokenMatcher(operator, LessThanEqual)) {
+        result = { result: result.result <= rhsValue.result, type: 'boolean' }
+      } else {
+        throw new Error(`Unexpected operator ${operator.image}`)
+      }
+    })
 
     return result
   }
 
-  additionExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[]; AdditionOperator: { [x: string]: any } }): Result {
+  concatExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[] }): AnyTypeValue {
     let result = this.visit(ctx.lhs)
 
-    if (ctx.rhs) {
-      ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-        const rhsValue = this.visit(rhsOperand)
-        const operator = ctx.AdditionOperator[idx]
-
-        if (tokenMatcher(operator, Plus)) {
-          // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-          result += rhsValue
-        } else if (tokenMatcher(operator, Minus)) {
-          result -= rhsValue
-        } else {
-          throw new Error(`Unexpected operator ${operator.image}`)
-        }
-      })
+    if (!ctx.rhs) {
+      return result
     }
+
+    ctx.rhs.forEach((rhsOperand: CstNode | CstNode[]) => {
+      result = { result: result.result.concat(this.visit(rhsOperand).result), type: 'string' }
+    })
 
     return result
   }
 
-  multiplicationExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[]; MultiplicationOperator: { [x: string]: any } }): Result {
+  additionExpression(ctx: {
+    lhs: CstNode | CstNode[]
+    rhs: any[]
+    AdditionOperator: { [x: string]: any }
+  }): AnyTypeValue {
     let result = this.visit(ctx.lhs)
 
-    if (ctx.rhs) {
-      ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-        const rhsValue = this.visit(rhsOperand)
-        const operator = ctx.MultiplicationOperator[idx]
-
-        if (tokenMatcher(operator, Multi)) {
-          result *= rhsValue
-        } else if (tokenMatcher(operator, Div)) {
-          result /= rhsValue
-        } else if (tokenMatcher(operator, Caret)) {
-          result **= rhsValue
-        } else {
-          throw new Error(`Unexpected operator ${operator.image}`)
-        }
-      })
+    if (!ctx.rhs) {
+      return result
     }
+
+    ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
+      const rhsValue = this.visit(rhsOperand)
+      const operator = ctx.AdditionOperator[idx]
+
+      if (tokenMatcher(operator, Plus)) {
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+        result = { result: result.result + rhsValue.result, type: 'number' }
+      } else if (tokenMatcher(operator, Minus)) {
+        result = { result: result.result - rhsValue.result, type: 'number' }
+      } else {
+        throw new Error(`Unexpected operator ${operator.image}`)
+      }
+    })
 
     return result
   }
 
-  chainExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[] }): Result {
+  multiplicationExpression(ctx: {
+    lhs: CstNode | CstNode[]
+    rhs: any[]
+    MultiplicationOperator: { [x: string]: any }
+  }): AnyTypeValue {
     let result = this.visit(ctx.lhs)
 
-    if (ctx.rhs) {
-      ctx.rhs.forEach((cst: CstNode | CstNode[]) => {
-        result = this.visit(cst, result)
-      })
+    if (!ctx.rhs) {
+      return result
     }
+
+    ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
+      const rhsValue = this.visit(rhsOperand)
+      const operator = ctx.MultiplicationOperator[idx]
+
+      if (tokenMatcher(operator, Multi)) {
+        result = { result: result.result * rhsValue.result, type: 'number' }
+      } else if (tokenMatcher(operator, Div)) {
+        result = { result: result.result / rhsValue.result, type: 'number' }
+      } else if (tokenMatcher(operator, Caret)) {
+        result = { result: result.result ** rhsValue.result, type: 'number' }
+      } else {
+        throw new Error(`Unexpected operator ${operator.image}`)
+      }
+    })
+
+    return result
+  }
+
+  chainExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any[] }): AnyTypeValue {
+    let result = this.visit(ctx.lhs)
+
+    if (!ctx.rhs) {
+      return result
+    }
+
+    ctx.rhs.forEach((cst: CstNode | CstNode[]) => {
+      result = this.visit(cst, result)
+    })
 
     return result
   }
@@ -194,8 +243,9 @@ export class FormulaInterpreter extends BaseCstVisitor {
     FunctionCall: CstNode | CstNode[]
     variableExpression: CstNode | CstNode[]
     columnExpression: CstNode | CstNode[]
-    blockExpression: CstNode | CstNode[]
-  }): Result {
+    spreadsheetExpression: CstNode | CstNode[]
+    predicateExpression: CstNode | CstNode[]
+  }): AnyTypeValue {
     if (ctx.parenthesisExpression) {
       return this.visit(ctx.parenthesisExpression)
     } else if (ctx.constantExpression) {
@@ -206,12 +256,49 @@ export class FormulaInterpreter extends BaseCstVisitor {
       return this.visit(ctx.variableExpression)
     } else if (ctx.columnExpression) {
       return this.visit(ctx.columnExpression)
-    } else if (ctx.blockExpression) {
-      return this.visit(ctx.blockExpression)
+    } else if (ctx.spreadsheetExpression) {
+      return this.visit(ctx.spreadsheetExpression)
+    } else if (ctx.predicateExpression) {
+      return this.visit(ctx.predicateExpression)
+    } else {
+      throw new Error('unsupported expression')
     }
   }
 
-  parenthesisExpression(ctx: { expression: CstNode | CstNode[] }): Result {
+  predicateExpression(ctx: {
+    EqualCompareOperator: IToken[]
+    CompareOperator: IToken[]
+    atomicExpression: CstNode | CstNode[]
+  }): PredicateResult {
+    let operator: PredicateOperator
+    let token: IToken
+    if (ctx.EqualCompareOperator) {
+      token = ctx.EqualCompareOperator[0]
+    } else {
+      token = ctx.CompareOperator[0]
+    }
+
+    if (tokenMatcher(token, Equal) || tokenMatcher(token, Equal2)) {
+      operator = 'equal'
+    } else if (tokenMatcher(token, NotEqual) || tokenMatcher(token, NotEqual2)) {
+      operator = 'notEqual'
+    } else if (tokenMatcher(token, LessThan)) {
+      operator = 'lessThan'
+    } else if (tokenMatcher(token, GreaterThan)) {
+      operator = 'greaterThan'
+    } else if (tokenMatcher(token, LessThanEqual)) {
+      operator = 'lessThanEqual'
+    } else if (tokenMatcher(token, GreaterThanEqual)) {
+      operator = 'greaterThanEqual'
+    } else {
+      throw new Error(`Unexpected operator ${token.image}`)
+    }
+
+    const result = this.visit(ctx.atomicExpression)
+    return { type: 'Predicate', result, operator }
+  }
+
+  parenthesisExpression(ctx: { expression: CstNode | CstNode[] }): AnyTypeValue {
     return this.visit(ctx.expression)
   }
 
@@ -219,7 +306,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
     NumberLiteralExpression: CstNode | CstNode[]
     BooleanLiteralExpression: CstNode | CstNode[]
     StringLiteral: Array<{ image: any }>
-  }): Result {
+  }): AnyTypeValue {
     if (ctx.NumberLiteralExpression) {
       return this.visit(ctx.NumberLiteralExpression)
     } else if (ctx.BooleanLiteralExpression) {
@@ -227,25 +314,35 @@ export class FormulaInterpreter extends BaseCstVisitor {
     } else if (ctx.StringLiteral) {
       // TODO: dirty hack to get the string literal value
       const str = ctx.StringLiteral[0].image
-      return str.substring(1, str.length - 1).replace(/""/g, '"')
+      return { result: str.substring(1, str.length - 1).replace(/""/g, '"'), type: 'string' }
+    } else {
+      throw new Error('unsupported expression')
     }
   }
 
-  columnExpression(ctx: { UUID: { map: (arg0: (uuid: any) => any) => [any, any] } }): Result {
+  columnExpression(ctx: { UUID: { map: (arg0: (uuid: any) => any) => [any, any] } }): ColumnResult | NullResult {
     const [namespaceId, columnId] = ctx.UUID.map((uuid: { image: any }) => uuid.image)
     const column = this.formulaContext.findColumn(namespaceId, columnId)
 
-    return column
+    if (column) {
+      return { type: 'Column', result: column }
+    } else {
+      return { type: 'null', result: null }
+    }
   }
 
-  blockExpression(ctx: { UUID: Array<{ image: any }> }): Result {
+  spreadsheetExpression(ctx: { UUID: Array<{ image: any }> }): SpreadsheetResult | NullResult {
     const namespaceId = ctx.UUID[0].image
     const database = this.formulaContext.findDatabase(namespaceId)
 
-    return database
+    if (database) {
+      return { type: 'Spreadsheet', result: database }
+    } else {
+      return { type: 'null', result: null }
+    }
   }
 
-  variableExpression(ctx: { UUID: { map: (arg0: (uuid: any) => any) => [any, any] } }): Result {
+  variableExpression(ctx: { UUID: { map: (arg0: (uuid: any) => any) => [any, any] } }): AnyTypeValue {
     const [namespaceId, variableId] = ctx.UUID.map((uuid: { image: any }) => uuid.image)
     const variable = this.formulaContext.findVariable(namespaceId, variableId)
     if (!variable) {
@@ -253,29 +350,32 @@ export class FormulaInterpreter extends BaseCstVisitor {
     }
 
     if (variable.t.kind === 'constant') {
-      return variable.t.variableValue.value
+      return variable.t.variableValue.result
     }
 
     return this.visit(variable.t.cst!)
   }
 
-  NumberLiteralExpression(ctx: { NumberLiteral: Array<{ image: any }>; Sign: any; Minus: any }): Result {
+  NumberLiteralExpression(ctx: { NumberLiteral: Array<{ image: any }>; Sign: any; Minus: any }): NumberResult {
     const number = Number(ctx.NumberLiteral[0].image)
     const numberAfterSign = ctx.Sign ? number * 0.01 : number
 
-    return ctx.Minus ? numberAfterSign * -1 : numberAfterSign
+    return { result: ctx.Minus ? numberAfterSign * -1 : numberAfterSign, type: 'number' }
   }
 
-  BooleanLiteralExpression(ctx: { BooleanLiteral: Array<{ image: string }> }): Result {
-    return ['true'].includes(ctx.BooleanLiteral[0].image)
+  BooleanLiteralExpression(ctx: { BooleanLiteral: Array<{ image: string }> }): BooleanResult {
+    return { result: ['true'].includes(ctx.BooleanLiteral[0].image), type: 'boolean' }
   }
 
   FunctionCall(
-    ctx: { FunctionGroupName: Array<{ image: any }>; FunctionName: Array<{ image: any }>; Arguments: CstNode | CstNode[] },
+    ctx: {
+      FunctionName: Array<{ image: any }>
+      Arguments: CstNode | CstNode[]
+    },
     chainArgs: any
-  ): Result {
-    const group = ctx.FunctionGroupName?.[0].image ?? 'core'
-    const name = ctx.FunctionName[0].image
+  ): AnyTypeValue {
+    const names = ctx.FunctionName.map(group => group.image)
+    const [group, name] = names.length === 1 ? ['core', ...names] : names
 
     const clause = this.formulaContext.findFunctionClause(group, name)
 
@@ -285,20 +385,34 @@ export class FormulaInterpreter extends BaseCstVisitor {
       throw new Error(`Function ${functionKey} not found`)
     }
 
-    const args: Result[] = []
+    const args: AnyTypeValue[] = []
+
+    if (clause.chain && chainArgs) {
+      args.push(chainArgs)
+    }
 
     if (ctx.Arguments) {
       args.push(...this.visit(ctx.Arguments))
     }
 
-    if (clause.chain) {
-      return clause.reference(this.formulaContext, chainArgs, ...args).result
-    } else {
-      return (clause as NormalFunctionClause<'any'>).reference(this.formulaContext, ...args).result
-    }
+    const argsTypes = clause.args[0]?.spread
+      ? Array(args.length).fill(clause.args[0].type)
+      : clause.args.map(arg => arg.type)
+
+    const newArgs = args.map((arg, index) => {
+      const argType = argsTypes[index]
+
+      if (argType === 'Predicate' && arg.type !== 'Predicate') {
+        return { type: 'Predicate', result: arg, operator: 'equal' }
+      } else {
+        return arg
+      }
+    })
+
+    return clause.reference(this.formulaContext, ...newArgs)
   }
 
-  Arguments(ctx: { expression: any[] }): Result[] {
+  Arguments(ctx: { expression: any[] }): AnyTypeValue[] {
     return ctx.expression.map((arg: CstNode | CstNode[]) => this.visit(arg))
   }
 }

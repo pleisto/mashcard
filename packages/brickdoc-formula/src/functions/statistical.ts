@@ -1,11 +1,11 @@
-import { ContextInterface, BaseFunctionClause, NumberResult } from '..'
+import { ContextInterface, BasicFunctionClause, NumberResult } from '..'
 
-export const AVERAGE = (ctx: ContextInterface, ...numbers: number[]): NumberResult => {
-  const sum = numbers.reduce((acc, cur) => acc + cur, 0)
+export const AVERAGE = (ctx: ContextInterface, ...numbers: NumberResult[]): NumberResult => {
+  const sum = numbers.map(number => number.result).reduce((acc, cur) => acc + cur, 0)
   return { type: 'number', result: sum / numbers.length }
 }
 
-export const CORE_STATISTICAL_CLAUSES: Array<BaseFunctionClause<'number'>> = [
+export const CORE_STATISTICAL_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   {
     name: 'AVERAGE',
     async: false,
@@ -20,10 +20,15 @@ export const CORE_STATISTICAL_CLAUSES: Array<BaseFunctionClause<'number'>> = [
         spread: true
       }
     ],
+    examples: [{ input: '=AVERAGE(-1, 0, 4)', output: { type: 'number', result: 1 } }],
     returns: 'number',
-    examples: [
+    testCases: [
       {
-        input: [-1, 0, 4],
+        input: [
+          { type: 'number', result: -1 },
+          { type: 'number', result: 0 },
+          { type: 'number', result: 4 }
+        ],
         output: 1
       },
       {

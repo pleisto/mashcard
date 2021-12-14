@@ -1,10 +1,16 @@
-import { appendFormulas, buildVariable, Formula, FunctionClause, interpret, parse, SuccessInterpretResult, SuccessParseResult } from '../..'
+import {
+  appendFormulas,
+  buildVariable,
+  Formula,
+  interpret,
+  parse,
+  SuccessInterpretResult,
+  SuccessParseResult
+} from '../..'
 import { FormulaContext } from '..'
 
-const functionClauses: Array<FunctionClause<any>> = []
-
 describe('Context', () => {
-  const formulaContext = new FormulaContext({ functionClauses })
+  const formulaContext = new FormulaContext({})
   void appendFormulas(formulaContext, [])
 
   const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
@@ -23,7 +29,7 @@ describe('Context', () => {
       createdAt: 0,
       cacheValue: {
         type: 'number',
-        value: 123
+        result: 123
       },
       view: {}
     },
@@ -36,7 +42,7 @@ describe('Context', () => {
       createdAt: 0,
       cacheValue: {
         type: 'number',
-        value: 243
+        result: 243
       },
       view: {}
     }
@@ -88,7 +94,9 @@ describe('Context', () => {
     const input = '=123'
     const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
     const parseResult = parse({ formulaContext, meta })
-    expect(parseResult.errorMessages).toEqual([{ message: 'Variable name exist in same namespace', type: 'name_unique' }])
+    expect(parseResult.errorMessages).toEqual([
+      { message: 'Variable name exist in same namespace', type: 'name_unique' }
+    ])
   })
 
   it('if', () => {
@@ -101,7 +109,10 @@ describe('Context', () => {
 
     expect(parseResult.errorMessages).toEqual([{ message: 'Expected boolean but got number', type: 'type' }])
 
-    const parseResult2 = parse({ formulaContext, meta: { ...meta, input: `=IF(($${fooNamespaceId}@${fooVariableId} = 3), 1, 2)` } })
+    const parseResult2 = parse({
+      formulaContext,
+      meta: { ...meta, input: `=IF(($${fooNamespaceId}@${fooVariableId} = 3), 1, 2)` }
+    })
     expect(parseResult2.errorMessages).toEqual([])
   })
 
@@ -128,6 +139,8 @@ describe('Context', () => {
     expect(formulaContext.variableCount()).toEqual(3)
 
     const v = variable.t
+
+    expect(v.variableValue.result.result).toEqual(366)
 
     expect({ ...v, variableValue: { ...v.variableValue, updatedAt: null } }).toMatchSnapshot()
     expect(formulaContext.reverseFunctionDependencies).toMatchSnapshot()

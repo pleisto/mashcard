@@ -7,7 +7,7 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "123",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -178,10 +178,12 @@ Array [
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
     "variableValue": Object {
       "display": "123",
+      "result": Object {
+        "result": 123,
+        "type": "number",
+      },
       "success": true,
-      "type": "number",
       "updatedAt": null,
-      "value": 123,
     },
     "view": Object {},
   },
@@ -195,7 +197,7 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "123",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -204,7 +206,7 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "+",
         "spaceAfter": true,
         "spaceBefore": true,
@@ -213,7 +215,7 @@ Array [
       Object {
         "code": "Function",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "RAND",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -222,7 +224,7 @@ Array [
       Object {
         "code": "LParen",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "(",
         "spaceAfter": true,
         "spaceBefore": false,
@@ -231,7 +233,7 @@ Array [
       Object {
         "code": "RParen",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": ")",
         "spaceAfter": false,
         "spaceBefore": true,
@@ -418,14 +420,14 @@ Array [
                                                                               "startOffset": 8,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
-                                                                                "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                                 "categoryMatches": Array [],
                                                                                 "categoryMatchesMap": Object {},
                                                                                 "isParent": false,
                                                                                 "name": "FunctionName",
-                                                                                "tokenTypeIdx": 39,
+                                                                                "tokenTypeIdx": 38,
                                                                               },
-                                                                              "tokenTypeIdx": 39,
+                                                                              "tokenTypeIdx": 38,
                                                                             },
                                                                           ],
                                                                           "LParen": Array [
@@ -527,13 +529,51 @@ Array [
         "chain": false,
         "description": "Returns a random number between 0 and 1.",
         "effect": false,
-        "examples": Array [],
+        "examples": Array [
+          Object {
+            "codeFragments": Array [
+              Object {
+                "code": "Function",
+                "errors": Array [],
+                "meta": undefined,
+                "name": "RAND",
+                "spaceAfter": false,
+                "spaceBefore": false,
+                "type": "any",
+              },
+              Object {
+                "code": "LParen",
+                "errors": Array [],
+                "meta": undefined,
+                "name": "(",
+                "spaceAfter": true,
+                "spaceBefore": false,
+                "type": "any",
+              },
+              Object {
+                "code": "RParen",
+                "errors": Array [],
+                "meta": undefined,
+                "name": ")",
+                "spaceAfter": false,
+                "spaceBefore": true,
+                "type": "any",
+              },
+            ],
+            "input": "=RAND()",
+            "output": Object {
+              "result": 0.513,
+              "type": "number",
+            },
+          },
+        ],
         "group": "core",
         "key": "RAND",
         "name": "RAND",
         "pure": false,
         "reference": [Function],
         "returns": "number",
+        "testCases": Array [],
       },
     ],
     "kind": "expression",
@@ -545,10 +585,12 @@ Array [
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
     "variableValue": Object {
       "display": "123",
+      "result": Object {
+        "result": 123,
+        "type": "number",
+      },
       "success": true,
-      "type": "number",
       "updatedAt": null,
-      "value": 123,
     },
     "view": Object {},
   },
@@ -557,7 +599,7 @@ Array [
       Object {
         "code": "Function",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "ABS",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -566,7 +608,7 @@ Array [
       Object {
         "code": "LParen",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "(",
         "spaceAfter": true,
         "spaceBefore": false,
@@ -575,7 +617,7 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "123",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -584,7 +626,7 @@ Array [
       Object {
         "code": "RParen",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": ")",
         "spaceAfter": false,
         "spaceBefore": true,
@@ -593,7 +635,7 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "+",
         "spaceAfter": true,
         "spaceBefore": true,
@@ -604,11 +646,13 @@ Array [
         "errors": Array [],
         "meta": Object {
           "name": "foo",
+          "namespace": "d986e871-cb85-4bd5-b675-87307f60b882",
+          "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
         },
         "name": "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
         "spaceAfter": false,
         "spaceBefore": false,
-        "type": "any",
+        "type": "number",
       },
     ],
     "cst": Object {
@@ -847,14 +891,14 @@ Array [
                                                                               "startOffset": 1,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
-                                                                                "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                                 "categoryMatches": Array [],
                                                                                 "categoryMatchesMap": Object {},
                                                                                 "isParent": false,
                                                                                 "name": "FunctionName",
-                                                                                "tokenTypeIdx": 39,
+                                                                                "tokenTypeIdx": 38,
                                                                               },
-                                                                              "tokenTypeIdx": 39,
+                                                                              "tokenTypeIdx": 38,
                                                                             },
                                                                           ],
                                                                           "LParen": Array [
@@ -1078,10 +1122,49 @@ Array [
         "effect": false,
         "examples": Array [
           Object {
-            "input": Array [
-              -1,
+            "codeFragments": Array [
+              Object {
+                "code": "Function",
+                "errors": Array [],
+                "meta": undefined,
+                "name": "ABS",
+                "spaceAfter": false,
+                "spaceBefore": false,
+                "type": "any",
+              },
+              Object {
+                "code": "LParen",
+                "errors": Array [],
+                "meta": undefined,
+                "name": "(",
+                "spaceAfter": true,
+                "spaceBefore": false,
+                "type": "any",
+              },
+              Object {
+                "code": "NumberLiteral",
+                "errors": Array [],
+                "meta": undefined,
+                "name": "1",
+                "spaceAfter": false,
+                "spaceBefore": false,
+                "type": "number",
+              },
+              Object {
+                "code": "RParen",
+                "errors": Array [],
+                "meta": undefined,
+                "name": ")",
+                "spaceAfter": false,
+                "spaceBefore": true,
+                "type": "any",
+              },
             ],
-            "output": 1,
+            "input": "=ABS(-1)",
+            "output": Object {
+              "result": 1,
+              "type": "number",
+            },
           },
         ],
         "group": "core",
@@ -1090,6 +1173,14 @@ Array [
         "pure": true,
         "reference": [Function],
         "returns": "number",
+        "testCases": Array [
+          Object {
+            "input": Array [
+              -1,
+            ],
+            "output": 1,
+          },
+        ],
       },
     ],
     "kind": "expression",
@@ -1106,10 +1197,12 @@ Array [
     "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
     "variableValue": Object {
       "display": "456",
+      "result": Object {
+        "result": 456,
+        "type": "number",
+      },
       "success": true,
-      "type": "number",
       "updatedAt": null,
-      "value": 456,
     },
     "view": Object {},
   },
@@ -1147,8 +1240,245 @@ Object {
 exports[`appendFormulas parse error 1`] = `
 Array [
   Object {
-    "codeFragments": Array [],
-    "cst": undefined,
+    "codeFragments": Array [
+      Object {
+        "code": "NumberLiteral",
+        "errors": Array [],
+        "meta": undefined,
+        "name": "123",
+        "spaceAfter": false,
+        "spaceBefore": false,
+        "type": "number",
+      },
+      Object {
+        "code": "Plus",
+        "errors": Array [],
+        "meta": undefined,
+        "name": "+",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "number",
+      },
+    ],
+    "cst": Object {
+      "children": Object {
+        "Equal": Array [
+          Object {
+            "endColumn": 1,
+            "endLine": 1,
+            "endOffset": 0,
+            "image": "=",
+            "startColumn": 1,
+            "startLine": 1,
+            "startOffset": 0,
+            "tokenType": Object {
+              "CATEGORIES": Array [
+                Object {
+                  "CATEGORIES": Array [],
+                  "PATTERN": /NOT_APPLICABLE/,
+                  "categoryMatches": Array [
+                    12,
+                    13,
+                    15,
+                    16,
+                  ],
+                  "categoryMatchesMap": Object {
+                    "12": true,
+                    "13": true,
+                    "15": true,
+                    "16": true,
+                  },
+                  "isParent": true,
+                  "name": "EqualCompareOperator",
+                  "tokenTypeIdx": 3,
+                },
+              ],
+              "PATTERN": /=/,
+              "categoryMatches": Array [],
+              "categoryMatchesMap": Object {},
+              "isParent": false,
+              "name": "Equal",
+              "tokenTypeIdx": 12,
+            },
+            "tokenTypeIdx": 12,
+          },
+        ],
+        "expression": Array [
+          Object {
+            "children": Object {
+              "combineExpression": Array [
+                Object {
+                  "children": Object {
+                    "lhs": Array [
+                      Object {
+                        "children": Object {
+                          "rhs": Array [
+                            Object {
+                              "children": Object {
+                                "lhs": Array [
+                                  Object {
+                                    "children": Object {
+                                      "lhs": Array [
+                                        Object {
+                                          "children": Object {
+                                            "lhs": Array [
+                                              Object {
+                                                "children": Object {
+                                                  "AdditionOperator": Array [
+                                                    Object {
+                                                      "endColumn": 7,
+                                                      "endLine": 1,
+                                                      "endOffset": 6,
+                                                      "image": "+",
+                                                      "startColumn": 7,
+                                                      "startLine": 1,
+                                                      "startOffset": 6,
+                                                      "tokenType": Object {
+                                                        "CATEGORIES": Array [
+                                                          Object {
+                                                            "CATEGORIES": Array [],
+                                                            "PATTERN": /NOT_APPLICABLE/,
+                                                            "categoryMatches": Array [
+                                                              19,
+                                                              28,
+                                                            ],
+                                                            "categoryMatchesMap": Object {
+                                                              "19": true,
+                                                              "28": true,
+                                                            },
+                                                            "isParent": true,
+                                                            "name": "AdditionOperator",
+                                                            "tokenTypeIdx": 5,
+                                                          },
+                                                        ],
+                                                        "PATTERN": /\\\\\\+/,
+                                                        "categoryMatches": Array [],
+                                                        "categoryMatchesMap": Object {},
+                                                        "isParent": false,
+                                                        "name": "Plus",
+                                                        "tokenTypeIdx": 19,
+                                                      },
+                                                      "tokenTypeIdx": 19,
+                                                    },
+                                                  ],
+                                                  "lhs": Array [
+                                                    Object {
+                                                      "children": Object {
+                                                        "lhs": Array [
+                                                          Object {
+                                                            "children": Object {
+                                                              "lhs": Array [
+                                                                Object {
+                                                                  "children": Object {
+                                                                    "constantExpression": Array [
+                                                                      Object {
+                                                                        "children": Object {
+                                                                          "NumberLiteralExpression": Array [
+                                                                            Object {
+                                                                              "children": Object {
+                                                                                "NumberLiteral": Array [
+                                                                                  Object {
+                                                                                    "endColumn": 5,
+                                                                                    "endLine": 1,
+                                                                                    "endOffset": 4,
+                                                                                    "image": "123",
+                                                                                    "startColumn": 3,
+                                                                                    "startLine": 1,
+                                                                                    "startOffset": 2,
+                                                                                    "tokenType": Object {
+                                                                                      "CATEGORIES": Array [],
+                                                                                      "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
+                                                                                      "categoryMatches": Array [],
+                                                                                      "categoryMatchesMap": Object {},
+                                                                                      "isParent": false,
+                                                                                      "name": "NumberLiteral",
+                                                                                      "tokenTypeIdx": 33,
+                                                                                    },
+                                                                                    "tokenTypeIdx": 33,
+                                                                                  },
+                                                                                ],
+                                                                              },
+                                                                              "name": "NumberLiteralExpression",
+                                                                            },
+                                                                          ],
+                                                                        },
+                                                                        "name": "constantExpression",
+                                                                      },
+                                                                    ],
+                                                                  },
+                                                                  "name": "atomicExpression",
+                                                                },
+                                                              ],
+                                                            },
+                                                            "name": "chainExpression",
+                                                          },
+                                                        ],
+                                                      },
+                                                      "name": "multiplicationExpression",
+                                                    },
+                                                  ],
+                                                  "rhs": Array [
+                                                    Object {
+                                                      "children": Object {
+                                                        "lhs": Array [
+                                                          Object {
+                                                            "children": Object {
+                                                              "lhs": Array [
+                                                                Object {
+                                                                  "children": Object {},
+                                                                  "name": "atomicExpression",
+                                                                  "recoveredNode": true,
+                                                                },
+                                                              ],
+                                                            },
+                                                            "name": "chainExpression",
+                                                            "recoveredNode": true,
+                                                          },
+                                                        ],
+                                                      },
+                                                      "name": "multiplicationExpression",
+                                                      "recoveredNode": true,
+                                                    },
+                                                  ],
+                                                },
+                                                "name": "additionExpression",
+                                                "recoveredNode": true,
+                                              },
+                                            ],
+                                          },
+                                          "name": "concatExpression",
+                                          "recoveredNode": true,
+                                        },
+                                      ],
+                                    },
+                                    "name": "compareExpression",
+                                    "recoveredNode": true,
+                                  },
+                                ],
+                              },
+                              "name": "equalCompareExpression",
+                              "recoveredNode": true,
+                            },
+                          ],
+                        },
+                        "name": "notExpression",
+                        "recoveredNode": true,
+                      },
+                    ],
+                  },
+                  "name": "combineExpression",
+                  "recoveredNode": true,
+                },
+              ],
+            },
+            "name": "expression",
+            "recoveredNode": true,
+          },
+        ],
+      },
+      "name": "startExpression",
+      "recoveredNode": true,
+    },
     "definition": "= 123 +",
     "dirty": false,
     "flattenVariableDependencies": Set {},
@@ -1157,13 +1487,11 @@ Array [
     "level": 0,
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-    "valid": false,
+    "valid": true,
     "variableDependencies": Array [],
     "variableId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
     "variableValue": Object {
-      "errorMessages": Array [
-        Object {
-          "message": "Expecting: one of these possible Token sequences:
+      "display": "Expecting: one of these possible Token sequences:
   1. [LParen]
   2. [Minus]
   3. [NumberLiteral]
@@ -1172,14 +1500,28 @@ Array [
   6. [Dollar, UUID, At]
   7. [Dollar, UUID, Sharp]
   8. [Dollar, UUID]
-  9. [FunctionGroupName]
-  10. [FunctionName]
+  9. [FunctionName]
+  10. [EqualCompareOperator]
+  11. [CompareOperator]
 but found: ''",
-          "type": "syntax",
-        },
-      ],
+      "result": Object {
+        "errorKind": "syntax",
+        "result": "Expecting: one of these possible Token sequences:
+  1. [LParen]
+  2. [Minus]
+  3. [NumberLiteral]
+  4. [BooleanLiteral]
+  5. [StringLiteral]
+  6. [Dollar, UUID, At]
+  7. [Dollar, UUID, Sharp]
+  8. [Dollar, UUID]
+  9. [FunctionName]
+  10. [EqualCompareOperator]
+  11. [CompareOperator]
+but found: ''",
+        "type": "Error",
+      },
       "success": false,
-      "type": "any",
       "updatedAt": null,
     },
     "view": Object {},
@@ -1194,7 +1536,7 @@ Array [
       Object {
         "code": "Function",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "ABS",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1203,7 +1545,7 @@ Array [
       Object {
         "code": "LParen",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "(",
         "spaceAfter": true,
         "spaceBefore": false,
@@ -1212,7 +1554,7 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "123",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1221,7 +1563,7 @@ Array [
       Object {
         "code": "RParen",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": ")",
         "spaceAfter": false,
         "spaceBefore": true,
@@ -1230,7 +1572,7 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "+",
         "spaceAfter": true,
         "spaceBefore": true,
@@ -1239,7 +1581,7 @@ Array [
       Object {
         "code": "Dollar",
         "errors": Array [],
-        "meta": Object {},
+        "meta": undefined,
         "name": "$",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1253,7 +1595,7 @@ Array [
             "type": "deps",
           },
         ],
-        "meta": Object {},
+        "meta": undefined,
         "name": "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1496,14 +1838,14 @@ Array [
                                                                               "startOffset": 1,
                                                                               "tokenType": Object {
                                                                                 "CATEGORIES": Array [],
-                                                                                "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                                 "categoryMatches": Array [],
                                                                                 "categoryMatchesMap": Object {},
                                                                                 "isParent": false,
                                                                                 "name": "FunctionName",
-                                                                                "tokenTypeIdx": 39,
+                                                                                "tokenTypeIdx": 38,
                                                                               },
-                                                                              "tokenTypeIdx": 39,
+                                                                              "tokenTypeIdx": 38,
                                                                             },
                                                                           ],
                                                                           "LParen": Array [
@@ -1717,14 +2059,13 @@ Array [
     "variableDependencies": Array [],
     "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
     "variableValue": Object {
-      "errorMessages": Array [
-        Object {
-          "message": "Variable not found: 1588aedf-06e1-47f1-9282-d2ffe865974c",
-          "type": "deps",
-        },
-      ],
+      "display": "Variable not found: 1588aedf-06e1-47f1-9282-d2ffe865974c",
+      "result": Object {
+        "errorKind": "deps",
+        "result": "Variable not found: 1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "type": "Error",
+      },
       "success": false,
-      "type": "any",
       "updatedAt": null,
     },
     "view": Object {},

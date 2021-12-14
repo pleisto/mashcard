@@ -5,7 +5,7 @@ export * from './functions'
 export * from './context'
 
 export type BasicType = 'number' | 'string' | 'boolean' | 'null'
-export type ObjectType = 'Date' | 'Column' | 'Spreadsheet' | 'Block' | 'Object' | 'Array' | 'Error'
+export type ObjectType = 'Date' | 'Column' | 'Spreadsheet' | 'Block' | 'Object' | 'Array' | 'Error' | 'Predicate'
 
 export type FormulaType = BasicType | ObjectType | 'any'
 
@@ -21,6 +21,7 @@ export type SpecialDefaultVariableName =
   | 'var'
   | 'null'
   | 'error'
+  | 'predicate'
   | 'spreadsheet'
 
 export type FunctionGroup = 'core' | 'custom' | string
@@ -28,16 +29,37 @@ export type FunctionGroup = 'core' | 'custom' | string
 export type FunctionName = string
 export type VariableName = string
 export type ColumnName = string
+export type SpreadsheetName = string
+
+export type Definition = string
 
 export type VariableKind = 'constant' | 'expression'
 
 export type VariableTypeMeta = `error_${VariableKind}` | `success_${FormulaType}`
-export type ErrorType = 'type' | 'syntax' | 'runtime' | 'fatal' | 'deps' | 'circular_dependency' | 'name_unique'
+export type ErrorType =
+  | 'type'
+  | 'syntax'
+  | 'runtime'
+  | 'fatal'
+  | 'deps'
+  | 'circular_dependency'
+  | 'name_unique'
+  | 'custom'
+
+export type ParseErrorType = 'parse' | 'syntax'
 
 export type FunctionKey = `${FunctionGroup}::${FunctionName}` | FunctionName
+export type FunctionCompletionValue = FunctionKey | `${FunctionKey}()`
 export type VariableKey = `$${NamespaceId}@${VariableId}`
+export type SpreadsheetKey = `$${NamespaceId}`
+export type ColumnKey = `$${NamespaceId}#${ColumnId}`
+
+// TODO blockName -> string
+export type BlockName = NamespaceId
 
 export type DefaultVariableName = `${SpecialDefaultVariableName}${number}`
+
+export type PredicateFunction = (input: any) => boolean
 
 // TODO https://www.typescriptlang.org/play?#code/C4TwDgpgBAcgrgWwgJwJYGMoF4oHIAMuUAPngIxGm4BMleAzHbgCxMCsTAbEwOxMAcTAJy4AUKEhQAggBswACwCGAIwjAM2PIqbKm6JgBMmEJgDMmAcybymqJgCsmAayYymCJgDsmAeyZgmAEcmZCYAZyZgJjgmADcmAHcmAA8mECYALzEJaFkFRU9EFA0cPKVVdUxSeCQ0dFFxcGgAJQhIRWAAHlEoXqgAYSVkKAhk4AhPAzCoMOA0TwsAGh6+-p84T2ARsYmpqEKEVWRlvqgAKR9UTwgDbfHJ6dn5i00AA1eTvql0TFH7vfwAG0ALqaEGiAB8mm+6EBuBkEwswBsoL+u2maw2WwA-OdLtdbgAuKCtdpdQaKY4DdabRZQV4AEgA3hcrjcAL7MinIdkfKCA-CLAB0IphwIhDRyUAAqtKAJIAEQAasw3szSRAOp0ygUinU6fwIeyALTqtqaro6g7FdB05hG01MjVaq16jB2h1msnauRKa36qD2k1ei0+-L+91QMjUI2vURAA
 // export type uuid = `${string}-${string}-${string}-${string}`
@@ -47,12 +69,13 @@ export type NamespaceId = uuid
 export type VariableId = uuid
 export type ColumnId = uuid
 
-export type Result = any
+export type PredicateOperator = 'equal' | 'notEqual' | 'greaterThan' | 'greaterThanEqual' | 'lessThan' | 'lessThanEqual'
 
 export interface BaseResult {
-  result: Result
+  result: any
   type: FormulaType
   errorKind?: ErrorType
+  operator?: PredicateOperator
 }
 export interface NumberResult extends BaseResult {
   result: number
@@ -110,12 +133,49 @@ export interface ErrorResult extends BaseResult {
   errorKind: ErrorType
 }
 
+export interface PredicateResult extends BaseResult {
+  type: 'Predicate'
+  result: AnyTypeResult
+  operator: PredicateOperator
+}
+
 export interface AnyResult extends BaseResult {
   result: any
   type: 'any'
 }
 
-export type FunctionResult<T> =
+export type BaseFunctionResult<T> =
+  | ((
+      | NumberResult
+      | BooleanResult
+      | StringResult
+      | NullResult
+      | ObjectResult
+      | ArrayResult
+      | DateResult
+      | ColumnResult
+      | SpreadsheetResult
+      | PredicateResult
+      | BlockResult
+    ) & { type: T })
+  | ErrorResult
+
+export type AnyTypeResult =
+  | NumberResult
+  | BooleanResult
+  | StringResult
+  | NullResult
+  | ObjectResult
+  | ArrayResult
+  | DateResult
+  | ColumnResult
+  | SpreadsheetResult
+  | BlockResult
+  | PredicateResult
+  | ErrorResult
+  | AnyResult
+
+export type AnyFunctionResult<T> =
   | ((
       | NumberResult
       | BooleanResult
@@ -127,9 +187,12 @@ export type FunctionResult<T> =
       | ColumnResult
       | SpreadsheetResult
       | BlockResult
+      | PredicateResult
       | AnyResult
     ) & { type: T })
   | ErrorResult
+
+export type AnyTypeValue = AnyFunctionResult<any>
 
 export interface View {
   [key: string]: any
@@ -142,29 +205,33 @@ export interface Formula {
   name: VariableName
   updatedAt: string
   createdAt: number
-  cacheValue: object
+  cacheValue: AnyTypeValue
   view: View
 }
-
-export interface Cell {
-  value: any
-}
-
 export interface Column {
   namespaceId: NamespaceId
   columnId: ColumnId
-  name: ColumnName | undefined
+  name: ColumnName
+  spreadsheetName: SpreadsheetName
   index: number
   type: string
 }
+
+export interface Row {
+  id: string
+  [key: string]: any
+}
+
 export interface Database {
-  size: () => number
+  blockId: NamespaceId
+  columnCount: () => number
+  rowCount: () => number
   name: () => string
   _data: () => any
   listColumns: () => Column[]
+  listRows: () => Row[]
+  getRow: (rowId: uuid) => Row | undefined
   getColumn: (columnId: ColumnId) => Column | undefined
-  listCell: (columnId: ColumnId) => Cell[]
-  getCell: (columnId: ColumnId, rowId: uuid) => Cell | undefined
 }
 
 export interface Argument {
@@ -173,16 +240,12 @@ export interface Argument {
   readonly spread?: boolean
 }
 
-export interface Example {
-  readonly input: any[]
-  readonly output: Result
-}
-
-export type CompletionKind = 'function' | 'variable'
+export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column'
 
 export interface BaseCompletion {
   readonly kind: CompletionKind
   readonly weight: number
+  readonly replace: string
   readonly namespace: string
   readonly name: string
   readonly value: any
@@ -191,25 +254,38 @@ export interface BaseCompletion {
 export interface FunctionCompletion extends BaseCompletion {
   readonly kind: 'function'
   readonly namespace: FunctionGroup
-  readonly value: FunctionKey
+  readonly value: FunctionCompletionValue
   readonly preview: FunctionClause<any>
 }
 
 export interface VariableCompletion extends BaseCompletion {
   readonly kind: 'variable'
-  readonly namespace: NamespaceId
+  readonly namespace: BlockName
   readonly value: VariableKey
   readonly preview: VariableData
 }
 
-export type Completion = FunctionCompletion | VariableCompletion
+export interface ColumnCompletion extends BaseCompletion {
+  readonly kind: 'column'
+  readonly namespace: SpreadsheetName
+  readonly value: ColumnKey
+  readonly preview: Column
+}
+
+export interface SpreadsheetCompletion extends BaseCompletion {
+  readonly kind: 'spreadsheet'
+  readonly namespace: BlockName
+  readonly value: SpreadsheetKey
+  readonly preview: Database
+}
+
+export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCompletion | ColumnCompletion
 
 export interface ContextInterface {
   databases: { [key: NamespaceId]: Database }
   backendActions: BackendActions | undefined
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
-  listCellByColumn: (column: Column) => Cell[]
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findDatabase: (namespaceId: NamespaceId) => Database | undefined
   findColumn: (namespaceId: NamespaceId, variableId: VariableId) => Column | undefined
@@ -227,6 +303,20 @@ export interface ContextInterface {
   reset: () => void
 }
 
+export interface TestCase {
+  readonly input: any[]
+  readonly output: any
+}
+
+export interface Example<T extends FormulaType> {
+  readonly input: Definition
+  readonly output: BaseFunctionResult<T>
+}
+
+export interface ExampleWithCodeFragments<T extends FormulaType> extends Example<T> {
+  readonly codeFragments: CodeFragment[]
+}
+
 export interface BaseFunctionClause<T extends FormulaType> {
   readonly name: FunctionName
   readonly pure: boolean
@@ -235,38 +325,73 @@ export interface BaseFunctionClause<T extends FormulaType> {
   readonly chain: boolean
   readonly description: string
   readonly group: FunctionGroup
+  readonly examples: [Example<T>, ...Array<Example<T>>]
   readonly args: Argument[]
   readonly returns: T
-  readonly examples: Example[]
-  readonly reference: (ctx: ContextInterface, ...args: any[]) => FunctionResult<T>
+  readonly testCases: TestCase[]
+  readonly reference: (ctx: ContextInterface, ...args: any[]) => AnyFunctionResult<T>
 }
 
 export interface NormalFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
   readonly chain: false
 }
 
+// TODO reference argument type!
 export interface ChainFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
   readonly chain: true
   readonly returns: T
   readonly args: [Argument, ...Argument[]]
-  readonly reference: (ctx: ContextInterface, chainResult: any, ...args: any[]) => FunctionResult<T>
+  readonly reference: (ctx: ContextInterface, chainResult: any, ...args: any[]) => AnyFunctionResult<T>
 }
 
 export type BasicFunctionClause<T extends FormulaType> = NormalFunctionClause<T> | ChainFunctionClause<T>
 
-export interface FunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
+export interface BaseFunctionClauseWithKey<T extends FormulaType> extends BaseFunctionClause<T> {
   readonly key: FunctionKey
 }
 
-export interface CodeFragment {
+export interface FunctionClause<T extends FormulaType> extends BaseFunctionClauseWithKey<T> {
+  readonly examples: [ExampleWithCodeFragments<T>, ...Array<ExampleWithCodeFragments<T>>]
+}
+
+export interface BaseCodeFragment {
   readonly code: string
   readonly name: string
   readonly spaceBefore: boolean
   readonly spaceAfter: boolean
-  readonly meta: { [key: string]: any }
+  readonly meta: any
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }
+
+export interface SpreadsheetCodeFragment extends BaseCodeFragment {
+  readonly code: 'Spreadsheet'
+  readonly meta: { name: SpreadsheetName; blockId: NamespaceId }
+}
+
+export interface ColumnCodeFragment extends BaseCodeFragment {
+  readonly code: 'Column'
+  readonly meta: { name: ColumnName; spreadsheetName: SpreadsheetName }
+}
+
+export interface VariableCodeFragment extends BaseCodeFragment {
+  readonly code: 'Variable'
+  readonly meta: { name: VariableName; namespaceId: NamespaceId; namespace: BlockName }
+}
+
+export interface OtherCodeFragment extends BaseCodeFragment {
+  readonly code: Exclude<string, 'Variable' | 'Column' | 'Spreadsheet'>
+  readonly meta: undefined
+}
+
+export type CodeFragment = VariableCodeFragment | SpreadsheetCodeFragment | ColumnCodeFragment | OtherCodeFragment
+
+export interface CodeFragmentResult {
+  readonly codeFragments: CodeFragment[]
+  readonly type: FormulaType
+  readonly image: string
+}
+
 export interface VariableDependency {
   readonly variableId: VariableId
   readonly namespaceId: NamespaceId
@@ -275,22 +400,18 @@ export interface VariableDependency {
 export interface BaseVariableValue {
   updatedAt: Date
   readonly success: boolean
-  readonly value?: Result
-  readonly display?: string
-  readonly type?: FormulaType
-  readonly errorMessages?: ErrorMessage[]
+  readonly display: string
+  readonly result: AnyTypeValue
 }
 
 export interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
-  readonly display: string
-  readonly value: Result
-  readonly type: FormulaType
+  readonly result: AnyTypeValue
 }
 
 export interface ErrorVariableValue extends BaseVariableValue {
   readonly success: false
-  readonly errorMessages: [ErrorMessage, ...ErrorMessage[]]
+  readonly result: ErrorResult
 }
 
 export type VariableValue = SuccessVariableValue | ErrorVariableValue
@@ -300,7 +421,7 @@ export interface VariableData {
   level: number
   namespaceId: NamespaceId
   variableId: VariableId
-  definition: string
+  definition: Definition
   dirty: boolean
   valid: boolean
   view?: View
@@ -326,7 +447,6 @@ export interface VariableInterface {
   t: VariableData
   backendActions: BackendActions | undefined
   meta: () => VariableMetadata
-  completion: (weight: number) => VariableCompletion
   onUpdate: (handler: VariableUpdateHandler) => void
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>

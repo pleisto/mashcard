@@ -1,12 +1,16 @@
-import { ContextInterface, BaseFunctionClause, NumberResult, StringResult } from '..'
+import { ContextInterface, BasicFunctionClause, NumberResult, StringResult } from '..'
 
-export const LEN = (ctx: ContextInterface, str: string): NumberResult => ({ result: str.length, type: 'number' })
+export const LEN = (ctx: ContextInterface, str: StringResult): NumberResult => ({
+  result: str.result.length,
+  type: 'number'
+})
 
-export const T = (ctx: ContextInterface, input: any): StringResult => ({ result: typeof input === 'string' ? input : '', type: 'string' })
+export const TRIM = (ctx: ContextInterface, str: StringResult): StringResult => ({
+  result: str.result.trim(),
+  type: 'string'
+})
 
-export const TRIM = (ctx: ContextInterface, str: string): StringResult => ({ result: str.trim(), type: 'string' })
-
-export const CORE_TEXT_CLAUSES: Array<BaseFunctionClause<any>> = [
+export const CORE_TEXT_CLAUSES: Array<BasicFunctionClause<any>> = [
   {
     name: 'LEN',
     async: false,
@@ -21,41 +25,15 @@ export const CORE_TEXT_CLAUSES: Array<BaseFunctionClause<any>> = [
       }
     ],
     returns: 'number',
-    examples: [
+    testCases: [
       {
-        input: ['abc'],
+        input: [{ type: 'string', result: 'abc' }],
         output: 3
       }
     ],
+    examples: [{ input: '=LEN("foo")', output: { type: 'number', result: 3 } }],
     chain: false,
     reference: LEN
-  },
-  {
-    name: 'T',
-    async: false,
-    pure: true,
-    effect: false,
-    description: 'Returns the input as a string.',
-    group: 'core',
-    args: [
-      {
-        name: 'input',
-        type: 'any'
-      }
-    ],
-    returns: 'string',
-    examples: [
-      {
-        input: ['abc'],
-        output: 'abc'
-      },
-      {
-        input: [123],
-        output: ''
-      }
-    ],
-    chain: false,
-    reference: T
   },
   {
     name: 'TRIM',
@@ -64,6 +42,7 @@ export const CORE_TEXT_CLAUSES: Array<BaseFunctionClause<any>> = [
     effect: false,
     description: 'Returns the string with leading and trailing whitespace removed.',
     group: 'core',
+    examples: [{ input: '=TRIM("  foo  ")', output: { type: 'string', result: 'foo' } }],
     args: [
       {
         name: 'str',
@@ -71,9 +50,9 @@ export const CORE_TEXT_CLAUSES: Array<BaseFunctionClause<any>> = [
       }
     ],
     returns: 'string',
-    examples: [
+    testCases: [
       {
-        input: [' abc '],
+        input: [{ type: 'string', result: ' abc ' }],
         output: 'abc'
       }
     ],

@@ -1,11 +1,11 @@
-import { ContextInterface, BaseFunctionClause, BooleanResult } from '..'
+import { ContextInterface, BasicFunctionClause, BooleanResult, StringResult } from '..'
 
-export const START_WITH = (ctx: ContextInterface, string: string, prefix: string): BooleanResult => ({
-  result: string.startsWith(prefix),
+export const START_WITH = (ctx: ContextInterface, string: StringResult, prefix: StringResult): BooleanResult => ({
+  result: string.result.startsWith(prefix.result),
   type: 'boolean'
 })
 
-export const CORE_STRING_CLAUSES: Array<BaseFunctionClause<'boolean'>> = [
+export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
   {
     name: 'START_WITH',
     async: false,
@@ -23,10 +23,26 @@ export const CORE_STRING_CLAUSES: Array<BaseFunctionClause<'boolean'>> = [
         type: 'string'
       }
     ],
-    returns: 'boolean',
     examples: [
-      { input: ['foobar', 'foo'], output: true },
-      { input: ['', ''], output: true }
+      { input: '=START_WITH("foo", "bar")', output: { type: 'boolean', result: false } },
+      { input: '=START_WITH("foobar", "foo")', output: { type: 'boolean', result: true } }
+    ],
+    returns: 'boolean',
+    testCases: [
+      {
+        input: [
+          { type: 'string', result: 'foobar' },
+          { type: 'string', result: 'foo' }
+        ],
+        output: true
+      },
+      {
+        input: [
+          { type: 'string', result: '' },
+          { type: 'string', result: '' }
+        ],
+        output: true
+      }
     ],
     chain: true,
     reference: START_WITH

@@ -17,20 +17,18 @@ import {
   Not,
   StringLiteral,
   Sign,
-  FunctionName,
   Dollar,
   UUID,
   Sharp,
-  FunctionGroupName,
+  FunctionName,
   DoubleColon,
   Dot,
   Ampersand,
   EqualCompareOperator
 } from './lexer'
-import { FormulaContext } from '../context'
 
 interface ParserConfig {
-  readonly formulaContext: ContextInterface
+  readonly formulaContext?: ContextInterface
 }
 
 const errorProvider: IParserErrorMessageProvider = {
@@ -54,20 +52,20 @@ const errorProvider: IParserErrorMessageProvider = {
 }
 
 export class FormulaParser extends CstParser {
-  formulaContext: ContextInterface
+  formulaContext?: ContextInterface
 
   // Unfortunately no support for class fields with initializer in ES2015, only in esNext...
   // so the parsing rules are defined inside the constructor, as each parsing rule must be initialized by
   // invoking RULE(...)
   // see: https://github.com/jeffmo/es-class-fields-and-static-properties
-  constructor(config: ParserConfig = { formulaContext: new FormulaContext() }) {
+  constructor({ formulaContext }: ParserConfig) {
     super(allTokens, {
       maxLookahead: 3,
-      errorMessageProvider: errorProvider,
-      ...config
+      recoveryEnabled: true,
+      errorMessageProvider: errorProvider
     })
 
-    this.formulaContext = config.formulaContext
+    this.formulaContext = formulaContext
     this.performSelfAnalysis()
   }
 
@@ -150,9 +148,19 @@ export class FormulaParser extends CstParser {
       { ALT: () => this.SUBRULE(this.constantExpression) },
       { ALT: () => this.SUBRULE(this.variableExpression) },
       { ALT: () => this.SUBRULE(this.columnExpression) },
-      { ALT: () => this.SUBRULE(this.blockExpression) },
-      { ALT: () => this.SUBRULE(this.FunctionCall) }
+      { ALT: () => this.SUBRULE(this.spreadsheetExpression) },
+      { ALT: () => this.SUBRULE(this.FunctionCall) },
+      { ALT: () => this.SUBRULE(this.predicateExpression) }
     ])
+  })
+
+  public predicateExpression = this.RULE('predicateExpression', () => {
+    this.OR([
+      { ALT: () => this.CONSUME(EqualCompareOperator) },
+      { ALT: () => this.CONSUME(CompareOperator) },
+    ])
+
+    this.SUBRULE(this.atomicExpression)
   })
 
   public columnExpression = this.RULE('columnExpression', () => {
@@ -169,7 +177,7 @@ export class FormulaParser extends CstParser {
     this.CONSUME2(UUID)
   })
 
-  public blockExpression = this.RULE('blockExpression', () => {
+  public spreadsheetExpression = this.RULE('spreadsheetExpression', () => {
     this.CONSUME(Dollar)
     this.CONSUME(UUID)
   })
@@ -204,10 +212,10 @@ export class FormulaParser extends CstParser {
 
   public FunctionCall = this.RULE('FunctionCall', () => {
     this.OPTION(() => {
-      this.CONSUME(FunctionGroupName)
+      this.CONSUME(FunctionName)
       this.CONSUME(DoubleColon)
     })
-    this.CONSUME(FunctionName)
+    this.CONSUME2(FunctionName)
 
     this.CONSUME2(LParen)
     this.OPTION2(() => {
@@ -225,6 +233,6 @@ export class FormulaParser extends CstParser {
   })
 }
 
-export const ParserInstance = new FormulaParser()
+export const ParserInstance = new FormulaParser({})
 
 export const BaseCstVisitor = ParserInstance.getBaseCstVisitorConstructor()

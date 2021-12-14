@@ -1,5 +1,5 @@
 import { useFormulaCreateMutation, useFormulaDeleteMutation, useFormulaUpdateMutation } from '@/BrickdocGraphQL'
-import { BackendActions, SuccessVariableValue } from '@brickdoc/formula'
+import { BackendActions } from '@brickdoc/formula'
 
 export function useFormulaBackendActions(): BackendActions {
   const [creation] = useFormulaCreateMutation()
@@ -7,17 +7,15 @@ export function useFormulaBackendActions(): BackendActions {
   const [deletion] = useFormulaDeleteMutation()
 
   return {
-    createVariable: async ({ t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies } }) => {
-      const { value, type } = variableValue as SuccessVariableValue
+    createVariable: async ({
+      t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies }
+    }) => {
       const { errors } = await creation({
         variables: {
           input: {
             blockId: namespaceId,
             id: variableId,
-            cacheValue: {
-              type,
-              value
-            },
+            cacheValue: variableValue.result,
             name,
             definition,
             view,
@@ -30,19 +28,16 @@ export function useFormulaBackendActions(): BackendActions {
         success: !errors || errors.length === 0
       }
     },
-    updateVariable: async ({ t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies } }) => {
-      const { value, type } = variableValue as SuccessVariableValue
-
+    updateVariable: async ({
+      t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies }
+    }) => {
       const { errors } = await update({
         variables: {
           input: {
             blockId: namespaceId,
             id: variableId,
             name,
-            cacheValue: {
-              type,
-              value
-            },
+            cacheValue: variableValue.result,
             view,
             dependencyIds: variableDependencies.map(dependency => dependency.variableId),
             definition

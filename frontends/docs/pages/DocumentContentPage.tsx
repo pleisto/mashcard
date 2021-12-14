@@ -16,7 +16,7 @@ import { queryPageBlocks } from '../common/graphql'
 import { useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '../reactiveVars'
 import { validate as isValidUUID } from 'uuid'
-import { appendFormulas, Formula, FormulaContext, FunctionClause } from '@brickdoc/formula'
+import { appendFormulas, FormulaContext } from '@brickdoc/formula'
 import { useFormulaQuery } from './hooks'
 import { useFormulaBackendActions } from './hooks/useFormulaBackendActions'
 
@@ -59,7 +59,11 @@ export interface DocMetaProps {
 }
 
 export const DocumentContentPage: React.FC = () => {
-  const { webid, docid, snapshotVersion } = useParams() as unknown as { webid: string; docid?: string; snapshotVersion?: string }
+  const { webid, docid, snapshotVersion } = useParams() as unknown as {
+    webid: string
+    docid?: string
+    snapshotVersion?: string
+  }
   const { currentPod, currentUser, host, lastWebid, lastBlockIds } = useContext(BrickdocContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
@@ -127,11 +131,10 @@ export const DocumentContentPage: React.FC = () => {
   const backendActions = useFormulaBackendActions()
 
   React.useEffect(() => {
-    const functionClauses: Array<FunctionClause<any>> = []
-    const formulaContext = new FormulaContext({ functionClauses, backendActions })
+    const formulaContext = new FormulaContext({ backendActions })
     void getFormulas(webid).then(({ data, success }) => {
       if (!success) return
-      appendFormulas(formulaContext, (data ?? []) as Formula[])
+      appendFormulas(formulaContext, data ?? [])
     })
 
     FormulaContextVar(formulaContext)

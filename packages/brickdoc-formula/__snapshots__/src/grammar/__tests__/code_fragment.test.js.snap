@@ -1179,7 +1179,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -1188,7 +1188,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "1",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1197,7 +1197,7 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "+",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1206,7 +1206,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "1",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1215,7 +1215,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -1224,7 +1224,7 @@ Array [
   Object {
     "code": "Div",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "/",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1233,7 +1233,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "2",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1242,7 +1242,7 @@ Array [
   Object {
     "code": "Multi",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "*",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1251,7 +1251,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "0.1",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1260,7 +1260,7 @@ Array [
   Object {
     "code": "Equal2",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "==",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1269,7 +1269,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -1278,7 +1278,7 @@ Array [
   Object {
     "code": "Not",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "!",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1287,7 +1287,7 @@ Array [
   Object {
     "code": "Not",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "!",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1296,7 +1296,7 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "true",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1305,7 +1305,7 @@ Array [
   Object {
     "code": "And",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "and",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1314,7 +1314,7 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "false",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1323,7 +1323,7 @@ Array [
   Object {
     "code": "Or",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "or",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1332,7 +1332,7 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "true",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1341,7 +1341,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -1350,7 +1350,7 @@ Array [
   Object {
     "code": "Equal2",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "==",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -1359,7 +1359,7 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "\\"123\\"",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1561,14 +1561,14 @@ Object {
                                                                           "startOffset": 2,
                                                                           "tokenType": Object {
                                                                             "CATEGORIES": Array [],
-                                                                            "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                            "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                             "categoryMatches": Array [],
                                                                             "categoryMatchesMap": Object {},
                                                                             "isParent": false,
                                                                             "name": "FunctionName",
-                                                                            "tokenTypeIdx": 39,
+                                                                            "tokenTypeIdx": 38,
                                                                           },
-                                                                          "tokenTypeIdx": 39,
+                                                                          "tokenTypeIdx": 38,
                                                                         },
                                                                       ],
                                                                       "LParen": Array [
@@ -1667,7 +1667,7 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "ABS",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1676,7 +1676,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -1690,7 +1690,7 @@ Array [
         "type": "type",
       },
     ],
-    "meta": Object {},
+    "meta": undefined,
     "name": "\\"123\\"",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1699,7 +1699,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -1938,7 +1938,7 @@ Object {
                                                                                                                                                                                                                     "tokenTypeIdx": 37,
                                                                                                                                                                                                                   },
                                                                                                                                                                                                                 ],
-                                                                                                                                                                                                                "FunctionGroupName": Array [
+                                                                                                                                                                                                                "FunctionName": Array [
                                                                                                                                                                                                                   Object {
                                                                                                                                                                                                                     "endColumn": 22,
                                                                                                                                                                                                                     "endLine": 1,
@@ -1953,13 +1953,11 @@ Object {
                                                                                                                                                                                                                       "categoryMatches": Array [],
                                                                                                                                                                                                                       "categoryMatchesMap": Object {},
                                                                                                                                                                                                                       "isParent": false,
-                                                                                                                                                                                                                      "name": "FunctionGroupName",
+                                                                                                                                                                                                                      "name": "FunctionName",
                                                                                                                                                                                                                       "tokenTypeIdx": 38,
                                                                                                                                                                                                                     },
                                                                                                                                                                                                                     "tokenTypeIdx": 38,
                                                                                                                                                                                                                   },
-                                                                                                                                                                                                                ],
-                                                                                                                                                                                                                "FunctionName": Array [
                                                                                                                                                                                                                   Object {
                                                                                                                                                                                                                     "endColumn": 33,
                                                                                                                                                                                                                     "endLine": 1,
@@ -1970,14 +1968,14 @@ Object {
                                                                                                                                                                                                                     "startOffset": 24,
                                                                                                                                                                                                                     "tokenType": Object {
                                                                                                                                                                                                                       "CATEGORIES": Array [],
-                                                                                                                                                                                                                      "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                                                                                                                                                                      "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                                                                                                                                                                       "categoryMatches": Array [],
                                                                                                                                                                                                                       "categoryMatchesMap": Object {},
                                                                                                                                                                                                                       "isParent": false,
                                                                                                                                                                                                                       "name": "FunctionName",
-                                                                                                                                                                                                                      "tokenTypeIdx": 39,
+                                                                                                                                                                                                                      "tokenTypeIdx": 38,
                                                                                                                                                                                                                     },
-                                                                                                                                                                                                                    "tokenTypeIdx": 39,
+                                                                                                                                                                                                                    "tokenTypeIdx": 38,
                                                                                                                                                                                                                   },
                                                                                                                                                                                                                 ],
                                                                                                                                                                                                                 "LParen": Array [
@@ -2331,7 +2329,7 @@ Object {
                                                                           "tokenTypeIdx": 37,
                                                                         },
                                                                       ],
-                                                                      "FunctionGroupName": Array [
+                                                                      "FunctionName": Array [
                                                                         Object {
                                                                           "endColumn": 8,
                                                                           "endLine": 1,
@@ -2346,13 +2344,11 @@ Object {
                                                                             "categoryMatches": Array [],
                                                                             "categoryMatchesMap": Object {},
                                                                             "isParent": false,
-                                                                            "name": "FunctionGroupName",
+                                                                            "name": "FunctionName",
                                                                             "tokenTypeIdx": 38,
                                                                           },
                                                                           "tokenTypeIdx": 38,
                                                                         },
-                                                                      ],
-                                                                      "FunctionName": Array [
                                                                         Object {
                                                                           "endColumn": 14,
                                                                           "endLine": 1,
@@ -2363,14 +2359,14 @@ Object {
                                                                           "startOffset": 10,
                                                                           "tokenType": Object {
                                                                             "CATEGORIES": Array [],
-                                                                            "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                            "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                             "categoryMatches": Array [],
                                                                             "categoryMatchesMap": Object {},
                                                                             "isParent": false,
                                                                             "name": "FunctionName",
-                                                                            "tokenTypeIdx": 39,
+                                                                            "tokenTypeIdx": 38,
                                                                           },
-                                                                          "tokenTypeIdx": 39,
+                                                                          "tokenTypeIdx": 38,
                                                                         },
                                                                       ],
                                                                       "LParen": Array [
@@ -2469,7 +2465,7 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "custom::PLUS",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -2478,7 +2474,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -2487,7 +2483,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -2496,7 +2492,7 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "custom::FORTY_TWO",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -2505,7 +2501,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -2514,7 +2510,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -2523,7 +2519,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -2532,7 +2528,7 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ",",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -2541,7 +2537,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "1",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -2550,7 +2546,7 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "+",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -2559,7 +2555,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "1",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -2568,7 +2564,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -2758,14 +2754,14 @@ Object {
                                                                     "startOffset": 7,
                                                                     "tokenType": Object {
                                                                       "CATEGORIES": Array [],
-                                                                      "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                      "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                       "categoryMatches": Array [],
                                                                       "categoryMatchesMap": Object {},
                                                                       "isParent": false,
                                                                       "name": "FunctionName",
-                                                                      "tokenTypeIdx": 39,
+                                                                      "tokenTypeIdx": 38,
                                                                     },
-                                                                    "tokenTypeIdx": 39,
+                                                                    "tokenTypeIdx": 38,
                                                                   },
                                                                 ],
                                                                 "LParen": Array [
@@ -2826,14 +2822,14 @@ Object {
                                                                     "startOffset": 11,
                                                                     "tokenType": Object {
                                                                       "CATEGORIES": Array [],
-                                                                      "PATTERN": /\\[A-Z\\]\\[A-Z0-9_\\]\\*/,
+                                                                      "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
                                                                       "categoryMatches": Array [],
                                                                       "categoryMatchesMap": Object {},
                                                                       "isParent": false,
                                                                       "name": "FunctionName",
-                                                                      "tokenTypeIdx": 39,
+                                                                      "tokenTypeIdx": 38,
                                                                     },
-                                                                    "tokenTypeIdx": 39,
+                                                                    "tokenTypeIdx": 38,
                                                                   },
                                                                 ],
                                                                 "LParen": Array [
@@ -2984,7 +2980,7 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "\\"FOO\\"",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -2993,7 +2989,7 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ".",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3002,7 +2998,7 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "T",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3011,7 +3007,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -3020,7 +3016,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -3029,7 +3025,7 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ".",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3038,7 +3034,7 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "T",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3047,7 +3043,7 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "(",
     "spaceAfter": true,
     "spaceBefore": false,
@@ -3056,7 +3052,7 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
@@ -3065,7 +3061,7 @@ Array [
   Object {
     "code": "Ampersand",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "&",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -3074,7 +3070,7 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "\\"Zzz\\"",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3389,7 +3385,7 @@ Array [
   Object {
     "code": "Dollar",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "$",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3403,7 +3399,7 @@ Array [
         "type": "deps",
       },
     ],
-    "meta": Object {},
+    "meta": undefined,
     "name": "$57622108-1337-4edd-833a-2557835bcfe0@cd4f6e1e-765e-4064-badd-b5585c7eff8e",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3412,7 +3408,7 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "+",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -3421,7 +3417,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "3",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3736,7 +3732,7 @@ Array [
   Object {
     "code": "Dollar",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "$",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3750,7 +3746,7 @@ Array [
         "type": "deps",
       },
     ],
-    "meta": Object {},
+    "meta": undefined,
     "name": "$57622108-1337-4edd-833a-2557835bcfe0@d986e871-cb85-4bd5-b675-87307f60b882",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -3759,7 +3755,7 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "+",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -3768,7 +3764,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "1",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -4083,7 +4079,7 @@ Array [
   Object {
     "code": "Dollar",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "$",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -4097,7 +4093,7 @@ Array [
         "type": "deps",
       },
     ],
-    "meta": Object {},
+    "meta": undefined,
     "name": "$cd4f6e1e-765e-4064-badd-b5585c7eff8e@d986e871-cb85-4bd5-b675-87307f60b882",
     "spaceAfter": false,
     "spaceBefore": false,
@@ -4106,7 +4102,7 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "+",
     "spaceAfter": true,
     "spaceBefore": true,
@@ -4115,7 +4111,7 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": Object {},
+    "meta": undefined,
     "name": "2",
     "spaceAfter": false,
     "spaceBefore": false,

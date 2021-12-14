@@ -1,6 +1,5 @@
 import { CstNode, ILexingResult, IRecognitionException } from 'chevrotain'
 import {
-  FormulaType,
   CodeFragment,
   ErrorMessage,
   ErrorVariableValue,
@@ -8,34 +7,38 @@ import {
   ContextInterface,
   FormulaLexer,
   FunctionClause,
-  Result,
   SuccessVariableValue,
   VariableClass,
   VariableData,
   VariableDependency,
   VariableKind,
   VariableMetadata,
-  VariableTypeMeta,
   VariableValue,
   View,
   VariableInterface,
-  Completion
+  Completion,
+  AnyTypeValue,
+  ParseErrorType,
+  CodeFragmentResult
 } from '..'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './code_fragment'
-
 export interface ParseInput {
   readonly meta: VariableMetadata
-  readonly formulaContext: ContextInterface
+  readonly activeCompletion?: Completion
+  readonly formulaContext?: ContextInterface
 }
 
 export interface BaseParseResult {
   readonly success: boolean
   readonly valid: boolean
+  readonly input: string
+  readonly inputImage: string
+  readonly parseImage: string
   readonly cst?: CstNode
-  readonly errorType?: 'lex' | 'parse' | 'syntax'
+  readonly errorType?: ParseErrorType
   readonly kind?: VariableKind
   readonly level: number
   readonly errorMessages: ErrorMessage[]
@@ -60,7 +63,7 @@ export interface SuccessParseResult extends BaseParseResult {
 export interface ErrorParseResult extends BaseParseResult {
   readonly success: false
   readonly cst?: CstNode
-  readonly errorType: 'lex' | 'parse' | 'syntax'
+  readonly errorType: ParseErrorType
   readonly errorMessages: [ErrorMessage, ...ErrorMessage[]]
 }
 
@@ -75,78 +78,150 @@ export interface InterpretInput {
 export interface BaseInterpretResult {
   readonly success: boolean
   readonly errorMessages: ErrorMessage[]
-  readonly result: VariableValue
+  readonly variableValue: VariableValue
 }
 
 export interface SuccessInterpretResult extends BaseInterpretResult {
   readonly success: true
   readonly errorMessages: []
-  readonly result: SuccessVariableValue
+  readonly variableValue: SuccessVariableValue
 }
 
 export interface ErrorInterpretResult extends BaseInterpretResult {
   readonly success: false
   readonly errorMessages: [ErrorMessage, ...ErrorMessage[]]
-  readonly result: ErrorVariableValue
+  readonly variableValue: ErrorVariableValue
 }
 
 export type InterpretResult = SuccessInterpretResult | ErrorInterpretResult
 
-export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, name } }: ParseInput): ParseResult => {
+export const parse = ({
+  formulaContext,
+  meta: { namespaceId, variableId, input, name },
+  activeCompletion
+}: ParseInput): ParseResult => {
   let level = 0
+  let newInput = input
   if (!variableId) {
     return {
       success: false,
+      inputImage: '',
+      parseImage: '',
       valid: false,
       cst: undefined,
+      input: newInput,
       level,
-      errorType: 'lex',
+      errorType: 'parse',
       completions: [],
       errorMessages: [{ message: 'Miss variableId', type: 'fatal' }],
       codeFragments: []
     }
   }
-  const lexResult: ILexingResult = FormulaLexer.tokenize(input)
-  let completions: Completion[] = formulaContext.completions(namespaceId, variableId)
-
-  if (lexResult.errors.length > 0) {
-    return {
-      success: false,
-      valid: false,
-      errorType: 'lex',
-      level,
-      completions,
-      codeFragments: [],
-      errorMessages: lexResult.errors.map(e => ({ message: e.message, type: 'syntax' })) as [ErrorMessage, ...ErrorMessage[]]
-    }
-  }
+  const baseCompletion = formulaContext?.completions(namespaceId, variableId) ?? []
+  let completions: Completion[] = baseCompletion
 
   const parser = new FormulaParser({ formulaContext })
   const codeFragmentVisitor = new CodeFragmentVisitor({ formulaContext })
-  const tokens = lexResult.tokens
+
+  let lexResult: ILexingResult = FormulaLexer.tokenize(input)
+  let tokens = lexResult.tokens
+
+  const endChar = input[input.length - 1]
+  // console.log({ endChar, input })
+
+  if (['.', ' ', ','].includes(endChar)) {
+    const index = endChar === '.' ? tokens.length - 2 : tokens.length - 1
+    const lastToken = tokens[index]
+
+    const currentCompletion = activeCompletion
+
+    // console.log({ endChar, lastToken, input, tokens, currentCompletion })
+    if (lastToken && currentCompletion && currentCompletion.name === lastToken.image) {
+      // console.log('start replace', lastToken.image, currentCompletion)
+      newInput = input
+        .slice(0, input.length - lastToken.image.length - 1)
+        .concat(currentCompletion.value)
+        .concat(endChar)
+
+      lexResult = FormulaLexer.tokenize(newInput)
+      tokens = lexResult.tokens
+    }
+  }
 
   parser.input = tokens
+  const inputImage = tokens.map(t => t.image).join('')
 
   const cst: CstNode = parser.startExpression()
-  const { codeFragments }: { codeFragments: CodeFragment[] } = codeFragmentVisitor.visit(cst, { type: 'any' }) ?? { codeFragments: [] }
-
-  completions = complete({ cacheCompletions: completions, tokens, formulaContext, namespaceId, variableId, codeFragments })
+  const { codeFragments, image }: CodeFragmentResult = codeFragmentVisitor.visit(cst, {
+    type: 'any'
+  })
 
   level = codeFragmentVisitor.level
   const parseErrors: IRecognitionException[] = parser.errors
 
-  if (parseErrors.length > 0) {
+  if (lexResult.errors.length > 0 || parseErrors.length > 0) {
+    const finalCodeFragments: CodeFragment[] = codeFragments
+    const errorMessages = (lexResult.errors.length ? lexResult.errors : parseErrors).map(e => ({
+      message: e.message,
+      type: 'syntax'
+    })) as [ErrorMessage, ...ErrorMessage[]]
+
+    const errorCodeFragment = codeFragments.find(f => f.errors.length)
+    const finalErrorMessages: [ErrorMessage, ...ErrorMessage[]] = errorCodeFragment
+      ? [errorCodeFragment.errors[0]]
+      : errorMessages
+
+    if (inputImage.startsWith(image)) {
+      const restImages = inputImage.slice(image.length)
+      if (restImages.length > 0) {
+        finalCodeFragments.push({
+          code: 'other',
+          name: restImages,
+          spaceAfter: false,
+          spaceBefore: false,
+          type: 'any',
+          meta: undefined,
+          errors: errorMessages
+        })
+      }
+    } else {
+      console.error({ ParseErrorTODO: { input, newInput, inputImages: inputImage, image } })
+    }
+
+    completions = complete({
+      input,
+      cacheCompletions: baseCompletion,
+      codeFragments,
+      tokens,
+      formulaContext,
+      namespaceId,
+      variableId
+    })
+
     return {
       success: false,
-      valid: false,
+      valid: finalCodeFragments.length > 0,
       errorType: 'parse',
+      input: newInput,
+      inputImage,
+      parseImage: image,
       completions,
       level,
-      errorMessages: parseErrors.map(e => ({ message: e.message, type: 'syntax' })) as [ErrorMessage, ...ErrorMessage[]],
+      errorMessages: finalErrorMessages,
       cst,
-      codeFragments
+      codeFragments: finalCodeFragments
     }
   }
+
+  completions = complete({
+    input,
+    cacheCompletions: baseCompletion,
+    codeFragments,
+    tokens,
+    formulaContext,
+    namespaceId,
+    variableId
+  })
 
   const errorCodeFragment = codeFragments.find(f => f.errors.length)
 
@@ -154,6 +229,9 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
     return {
       success: false,
       valid: true,
+      input: newInput,
+      inputImage,
+      parseImage: image,
       cst,
       level,
       errorType: 'syntax',
@@ -168,6 +246,9 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
     return {
       success: false,
       valid: true,
+      input: newInput,
+      inputImage,
+      parseImage: image,
       errorType: 'syntax',
       errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
       level,
@@ -180,12 +261,17 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
     }
   }
 
-  const sameNameVariable = formulaContext.listVariables(namespaceId).find(v => v.t.variableId !== variableId && v.t.name === name)
+  const sameNameVariable = formulaContext
+    ?.listVariables(namespaceId)
+    .find(v => v.t.variableId !== variableId && v.t.name === name)
 
   if (sameNameVariable) {
     return {
       success: false,
       valid: true,
+      input: newInput,
+      inputImage,
+      parseImage: image,
       cst,
       level,
       errorType: 'syntax',
@@ -201,6 +287,9 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   return {
     success: true,
     valid: true,
+    input: newInput,
+    inputImage,
+    parseImage: image,
     cst,
     level,
     errorMessages: [],
@@ -213,81 +302,70 @@ export const parse = ({ formulaContext, meta: { namespaceId, variableId, input, 
   }
 }
 
-const castValue = (value: any, type: any): any => {
-  switch (type) {
+export const displayValue = (v: AnyTypeValue): string => {
+  switch (v.type) {
     case 'number':
-      return Number(value)
     case 'boolean':
-      return Boolean(value)
-    // TODO date
-    default:
-      return value
-  }
-}
-
-const fetchType = (result: any): FormulaType => {
-  const type = typeof result
-  if (['string', 'boolean', 'number'].includes(type)) {
-    return type as 'string' | 'boolean' | 'number'
-  }
-
-  if (result instanceof Date) {
-    return 'Date'
+      return String(v.result)
+    case 'string':
+      return `"${v.result}"`
+    case 'Date':
+      return v.result.toISOString()
+    case 'Error':
+      return `#<Error> ${v.result}`
+    case 'Spreadsheet':
+      return `#<Spreadsheet> ${v.result.name()}`
+    case 'Column':
+      return `#<Column> ${v.result.spreadsheetName} - ${v.result.name}`
+    case 'Predicate':
+      return `#<Predicate> [${v.operator}] ${displayValue(v.result)}`
   }
 
-  return 'any'
-}
-
-export const displayValue = (result: Result): string => {
-  const type = typeof result
-
-  if (type === 'string') {
-    return `"${result}"`
-  }
-
-  if (['boolean', 'number'].includes(type)) {
-    return String(result)
-  }
-
-  if (result instanceof Date) {
-    return result.toISOString()
-  }
-
-  if (result instanceof Array) {
-    return JSON.stringify(result)
-  }
-
-  if (result instanceof Object) {
-    return JSON.stringify(result)
-  }
-
-  return String(result)
+  return JSON.stringify(v.result)
 }
 
 export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): Promise<InterpretResult> => {
   if (!cst) {
-    const errorMessage: ErrorMessage = { message: 'CST is undefined', type: 'fatal' }
+    const message = 'CST is undefined'
+    const errorMessage: ErrorMessage = { message, type: 'fatal' }
     return {
       success: false,
       errorMessages: [errorMessage],
-      result: { updatedAt: new Date(), success: false, errorMessages: [errorMessage] }
+      variableValue: {
+        updatedAt: new Date(),
+        success: false,
+        display: message,
+        result: { result: message, type: 'Error', errorKind: 'fatal' }
+      }
     }
   }
   try {
     const interpreter = new FormulaInterpreter({ formulaContext })
-    const result = await interpreter.visit(cst)
+    const result: AnyTypeValue = await interpreter.visit(cst)
+
     return {
       success: true,
-      result: { success: true, value: result, display: displayValue(result), type: fetchType(result), updatedAt: new Date() },
+      variableValue: {
+        success: true,
+        display: displayValue(result),
+        updatedAt: new Date(),
+        result
+      },
       errorMessages: []
     }
   } catch (e) {
-    // console.error(e)
-    const errorMessage: ErrorMessage = { message: (e as any).message as string, type: 'runtime' }
+    console.error(e)
+    const message = `[FATAL] ${(e as any).message as string}`
+    const errorMessage: ErrorMessage = { message, type: 'fatal' }
     return {
       success: false,
-      result: { updatedAt: new Date(), success: false, errorMessages: [errorMessage] },
-      errorMessages: [errorMessage]
+      errorMessages: [errorMessage],
+      variableValue: {
+        display: message,
+        updatedAt: new Date(),
+        success: false,
+        result: { result: message, type: 'Error', errorKind: 'fatal' }
+      }
     }
   }
 }
@@ -296,8 +374,17 @@ export const buildVariable = ({
   formulaContext,
   meta: { name, input, namespaceId, variableId },
   view,
-  parseResult: { valid, cst, kind, codeFragments, variableDependencies, functionDependencies, level, flattenVariableDependencies },
-  interpretResult: { result }
+  parseResult: {
+    valid,
+    cst,
+    kind,
+    codeFragments,
+    variableDependencies,
+    functionDependencies,
+    level,
+    flattenVariableDependencies
+  },
+  interpretResult: { variableValue }
 }: {
   formulaContext: ContextInterface
   meta: VariableMetadata
@@ -314,7 +401,7 @@ export const buildVariable = ({
     codeFragments,
     definition: input,
     dirty: false,
-    variableValue: result,
+    variableValue,
     valid,
     level,
     kind: kind ?? 'constant',
@@ -339,7 +426,7 @@ export const castVariable = (
 ): VariableData => {
   const namespaceId = blockId
   const variableId = id
-  const { type, value } = cacheValue as any
+  const castedValue: AnyTypeValue = cacheValue as unknown as AnyTypeValue
   const parseInput = { formulaContext, meta: { namespaceId, variableId, name, input: definition } }
   const {
     success,
@@ -358,15 +445,14 @@ export const castVariable = (
     ? {
         updatedAt: new Date(),
         success: true,
-        display: displayValue(castValue(value, type)),
-        type,
-        value: castValue(value, type)
+        display: displayValue(castedValue),
+        result: castedValue
       }
     : {
         updatedAt: new Date(),
         success: false,
-        type: 'any',
-        errorMessages: errorMessages as [ErrorMessage, ...ErrorMessage[]]
+        display: errorMessages[0]!.message,
+        result: { type: 'Error', result: errorMessages[0]!.message, errorKind: errorMessages[0]!.type }
       }
 
   return {
@@ -386,14 +472,6 @@ export const castVariable = (
     functionDependencies: functionDependencies ?? [],
     dirty: false
   }
-}
-
-export const variableTypeMeta = (t: VariableData): VariableTypeMeta => {
-  if (t.variableValue.success) {
-    return `success_${t.variableValue.type}`
-  }
-
-  return `error_${t.kind}`
 }
 
 export const appendFormulas = (formulaContext: ContextInterface, formulas: Formula[]): void => {
@@ -438,7 +516,7 @@ export const quickInsert = async ({
     throw new Error(errorMessages[0]!.message)
   }
 
-  const { result } = await interpret({ cst, formulaContext, meta })
+  const { variableValue } = await interpret({ cst, formulaContext, meta })
 
   const variable: VariableData = {
     namespaceId,
@@ -450,7 +528,7 @@ export const quickInsert = async ({
     cst,
     kind: kind ?? 'constant',
     codeFragments,
-    variableValue: result,
+    variableValue,
     level,
     variableDependencies: variableDependencies ?? [],
     functionDependencies: functionDependencies ?? [],

@@ -1,7 +1,6 @@
 /* eslint-disable max-nested-callbacks */
 import {
   buildVariable,
-  FunctionClause,
   interpret,
   parse,
   quickInsert,
@@ -11,8 +10,7 @@ import {
 } from '../..'
 import { FormulaContext } from '..'
 
-const functionClauses: Array<FunctionClause<any>> = []
-const formulaContext = new FormulaContext({ functionClauses })
+const formulaContext = new FormulaContext({})
 
 const namespaceId = '9dda8306-dbe1-49d3-868d-1a7c86f27328'
 const variableIds = [
@@ -64,10 +62,20 @@ describe('Dependency', () => {
 
   it('snapshot', () => {
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
-    expect(formulaContext.findVariable(namespaceId, variableIds[5])!.t.variableValue.value).toEqual(5)
-    expect(formulaContext.findVariable(namespaceId, variableIds[6])!.t.variableValue.value).toEqual(4)
+    expect(formulaContext.findVariable(namespaceId, variableIds[5])!.t.variableValue.result).toEqual({
+      result: 5,
+      type: 'number'
+    })
+    expect(formulaContext.findVariable(namespaceId, variableIds[6])!.t.variableValue.result).toEqual({
+      result: 4,
+      type: 'number'
+    })
     expect(
-      Object.values(formulaContext.context).map(v => ({ ...v.t, cst: null, variableValue: { ...v.t.variableValue, updatedAt: null } }))
+      Object.values(formulaContext.context).map(v => ({
+        ...v.t,
+        cst: null,
+        variableValue: { ...v.t.variableValue, updatedAt: null }
+      }))
     ).toMatchSnapshot()
   })
 

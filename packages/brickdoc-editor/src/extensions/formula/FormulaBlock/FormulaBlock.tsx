@@ -5,8 +5,8 @@ import { Icon } from '@brickdoc/design-system'
 import { BlockWrapper, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
-import { VariableTypeMeta, variableTypeMeta } from '@brickdoc/formula'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
+import { FormulaType } from '@brickdoc/formula'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 
@@ -27,24 +27,23 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     })
   }, [variable])
 
-  const COLOR_ARRAY: { [key in VariableTypeMeta]: number } = {
-    error_constant: 3,
-    error_expression: 3,
-    success_Date: 2,
-    success_Error: 2,
-    success_Column: 2,
-    success_Block: 2,
-    success_Spreadsheet: 2,
-    success_number: 0,
-    success_null: 0,
-    success_string: 4,
-    success_boolean: 5,
-    success_any: 6,
-    success_Object: 6,
-    success_Array: 6
+  const COLOR_ARRAY: { [key in FormulaType]: number } = {
+    Date: 2,
+    Error: 1,
+    Column: 2,
+    Block: 2,
+    Spreadsheet: 2,
+    number: 0,
+    null: 0,
+    Predicate: 3,
+    string: 4,
+    boolean: 5,
+    any: 6,
+    Object: 6,
+    Array: 6
   }
 
-  const activeColorIndex = t ? COLOR_ARRAY[variableTypeMeta(t)] || 0 : 0
+  const activeColorIndex = t ? COLOR_ARRAY[t.variableValue.result.type as FormulaType] || 0 : 0
   const activeColor = COLOR[activeColorIndex]
   const handleDefaultPopoverVisibleChange = (visible: boolean): void => {
     if (!visible && node.attrs.isNew) {
@@ -71,7 +70,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
               borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
               background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
             }}>
-            {t.name}: {t.variableValue.success ? t.variableValue.display : t.variableValue.errorMessages[0].message}
+            {t.name}: {t.variableValue.display}
           </span>
         ) : (
           <span className="brickdoc-formula-placeholder">

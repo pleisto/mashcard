@@ -22,7 +22,6 @@ import { AutocompleteList } from './AutocompleteList/AutocompleteList'
 import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
 import { codeFragmentsToJSONContent } from '../../helpers/formula'
 import { useKeydownHandler } from './useKeyDownHandler'
-import { debounce } from 'lodash'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
 
 export interface FormulaMenuProps {
@@ -39,61 +38,76 @@ export interface FormulaMenuProps {
 
 const i18nKey = 'formula.menu'
 
-const calculate = debounce(
-  async ({
-    namespaceId,
-    variable,
-    name,
+const calculate = async ({
+  namespaceId,
+  variable,
+  name,
+  input,
+  activeCompletion,
+  formulaContext
+}: {
+  namespaceId: string
+  variable: VariableInterface | undefined
+  activeCompletion: Completion | undefined
+  name: string
+  input: string
+  formulaContext: ContextInterface
+}): Promise<{
+  completions: Completion[]
+  newVariable: VariableInterface
+  errors: ErrorMessage[]
+  parseResult: ParseResult
+  interpretResult: InterpretResult
+}> => {
+  const variableId = variable ? variable.t.variableId : uuid()
+  const meta = { namespaceId, variableId, name, input }
+  const view: View = {}
+  const parseInput = { formulaContext, meta, activeCompletion }
+  const parseResult = parse(parseInput)
+
+  console.log({
+    parseResult,
     input,
-    formulaContext
-  }: {
-    namespaceId: string
-    variable: VariableInterface | undefined
-    name: string
-    input: string
-    formulaContext: ContextInterface
-  }): Promise<{
-    completions: Completion[]
-    newVariable: VariableInterface
-    errors: ErrorMessage[]
-    parseResult: ParseResult
-    interpretResult: InterpretResult
-  }> => {
-    const variableId = variable ? variable.t.variableId : uuid()
-    const meta = { namespaceId, variableId, name, input }
-    const view: View = {}
-    const parseInput = { formulaContext, meta }
-    const parseResult = parse(parseInput)
+    newINput: parseResult.input,
+    codeFragments: parseResult.codeFragments,
+    activeCompletion
+  })
 
-    console.log({ parseResult, input })
+  const completions = parseResult.completions
 
-    const completions = parseResult.completions
+  let interpretResult: InterpretResult
 
-    let interpretResult: InterpretResult
-
-    if (parseResult.success) {
-      interpretResult = await interpret({ cst: parseResult.cst, formulaContext, meta })
-    } else {
-      interpretResult = {
+  if (parseResult.success) {
+    interpretResult = await interpret({ cst: parseResult.cst, formulaContext, meta })
+  } else {
+    interpretResult = {
+      success: false,
+      errorMessages: parseResult.errorMessages,
+      variableValue: {
         success: false,
-        errorMessages: parseResult.errorMessages,
-        result: { success: false, errorMessages: parseResult.errorMessages, updatedAt: new Date() }
+        display: parseResult.errorMessages[0].message,
+        result: {
+          type: 'Error',
+          result: parseResult.errorMessages[0].message,
+          errorKind: parseResult.errorMessages[0].type
+        },
+        updatedAt: new Date()
       }
     }
+  }
 
-    const newVariable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
-    const errors = [...parseResult.errorMessages, ...interpretResult.errorMessages]
+  const newVariable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
+  const errors = [...parseResult.errorMessages, ...interpretResult.errorMessages]
 
-    return {
-      completions,
-      newVariable,
-      errors,
-      parseResult,
-      interpretResult
-    }
-  },
-  300
-)
+  return {
+    completions,
+    newVariable,
+    errors,
+    parseResult,
+    interpretResult
+  }
+}
+export type CodeFragmentWithBlockId = CodeFragment & { blockId: string }
 
 export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   getPos,
@@ -121,7 +135,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const codeFragments = variable?.t.codeFragments
   const defaultContent = variable?.t.valid
-    ? codeFragmentsToJSONContent(codeFragments)
+    ? codeFragmentsToJSONContent(codeFragments, rootId)
     : { type: 'doc', content: [{ type: 'text', text: definition }] }
 
   const [completions, setCompletions] = React.useState(contextCompletions)
@@ -161,32 +175,104 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setVisible(visible)
   }
 
-  const handleSelectActiveCompletion = (completion?: Completion): void => {
+  const handleSelectActiveCompletion = (completion?: Completion, inputContent?: JSONContent): void => {
     const currentCompletion = completion ?? activeCompletion
+    const currentContent = inputContent ?? content
 
     if (!currentCompletion) {
+      console.error('No active completion!')
       return
     }
-    const oldContent = content?.content ?? []
-    const value = currentCompletion.value
-    const attrs: CodeFragment =
-      currentCompletion.kind === 'function'
-        ? { meta: {}, errors: [], name: value, code: 'Function', spaceBefore: false, spaceAfter: false, type: 'any' }
-        : {
-            meta: { name: currentCompletion.preview.name },
-            errors: [],
-            name: value,
-            code: 'Variable',
-            spaceBefore: false,
-            spaceAfter: false,
-            type: 'any'
+
+    let oldContent = currentContent?.content ?? []
+    const oldContentLast = oldContent[oldContent.length - 1]
+    // console.log('Before replace', { oldContentLast, currentCompletion })
+    if (oldContentLast && oldContentLast.type === 'codeFragmentBlock' && currentCompletion.replace) {
+      const text = contentToInput(currentContent!)
+      // console.log('start replace', { oldContentLast, currentCompletion, currentContent, text })
+      if (text === currentCompletion.replace || !text) {
+        oldContent = []
+        // console.log('remove last one...', oldContent)
+      } else if (!text.endsWith(currentCompletion.replace)) {
+        console.error({ text, currentCompletion })
+      } else {
+        const newText = text.substring(0, text.length - currentCompletion.replace.length)
+
+        oldContent = [
+          {
+            type: 'codeFragmentBlock',
+            attrs: { ...oldContentLast.attrs, name: newText },
+            content: [{ type: 'text', text: newText }]
           }
+        ]
+
+        // console.log('replace..', newText, oldContent)
+      }
+    }
+
+    const value = currentCompletion.value
+    let attrs: CodeFragmentWithBlockId
+    switch (currentCompletion.kind) {
+      case 'variable':
+        attrs = {
+          meta: {
+            name: currentCompletion.preview.name,
+            namespaceId: currentCompletion.preview.namespaceId,
+            namespace: currentCompletion.preview.namespaceId
+          },
+          errors: [],
+          name: value,
+          code: 'Variable',
+          spaceBefore: false,
+          spaceAfter: false,
+          type: 'any',
+          blockId: rootId
+        }
+        break
+      case 'function':
+        attrs = {
+          meta: undefined,
+          errors: [],
+          name: value,
+          code: 'Function',
+          spaceBefore: false,
+          spaceAfter: false,
+          type: 'any',
+          blockId: rootId
+        }
+        break
+      case 'spreadsheet':
+        attrs = {
+          meta: { name: currentCompletion.preview.name(), blockId: currentCompletion.preview.blockId },
+          errors: [],
+          name: value,
+          code: 'Spreadsheet',
+          spaceBefore: false,
+          spaceAfter: false,
+          type: 'any',
+          blockId: rootId
+        }
+        break
+      case 'column':
+        attrs = {
+          meta: { name: currentCompletion.preview.name, spreadsheetName: currentCompletion.preview.spreadsheetName },
+          errors: [],
+          name: value,
+          code: 'Column',
+          spaceBefore: false,
+          spaceAfter: false,
+          type: 'any',
+          blockId: rootId
+        }
+        break
+    }
+
     const completionContents: JSONContent[] = [
       { type: 'codeFragmentBlock', attrs, content: [{ type: 'text', text: value }] }
     ]
     const newContent = [...oldContent, ...completionContents]
     const finalContent = { type: 'doc', content: newContent }
-    const finalInput = contentToInput(finalContent)
+    const finalInput = `=${contentToInput(finalContent)}`
     setContent(finalContent)
     setInput(finalInput)
     console.log({ currentCompletion, content, attrs, label: 'selectCompletion', newContent, finalInput })
@@ -195,6 +281,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const keyDownHandler = useKeydownHandler({
     completions,
     activeCompletion,
+    content,
     activeCompletionIndex,
     handleSelectActiveCompletion,
     setActiveCompletion,
@@ -202,14 +289,14 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   })
 
   const contentToInput = (content: JSONContent): string => {
-    const newInput =
+    return (
       content.content?.map((c: JSONContent) => (c.type === 'text' ? c.text : c.content?.[0].text ?? '')).join('') ?? ''
-    return `=${newInput}`
+    )
   }
 
   const handleValueChange = (editor: Editor): void => {
-    const text = contentToInput(editor.getJSON().content[0])
-    console.log({ content, json: editor.getJSON(), editor, text, label: 'updateValue' })
+    const text = `=${contentToInput(editor.getJSON().content[0])}`
+    console.log({ content, json: editor.getJSON(), editor, text, formulaContext, label: 'updateValue' })
     setInput(text)
     setContent(editor.getJSON() as JSONContent)
     void doCalculate({ newInput: text })
@@ -221,14 +308,19 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   }
 
   const doCalculate = async ({ newName, newInput }: { newName?: string; newInput?: string }): Promise<void> => {
-    const finalName = newName ?? name ?? defaultName
-    const finalInput = newInput ?? input ?? ''
-    console.log({ finalName, newName, newInput, input, finalInput })
+    if (!formulaContext || !(newInput ?? input)) {
+      console.log('no final input!')
+      return
+    }
 
-    if (!formulaContext || !finalInput) return
+    const finalName = newName ?? name ?? defaultName
+    const finalInput = newInput ?? `=${input}`
+
+    // console.log({ finalName, newName, newInput, input, finalInput, activeCompletion })
 
     const result = await calculate({
       namespaceId: rootId,
+      activeCompletion,
       variable,
       name: finalName,
       input: finalInput,
@@ -240,8 +332,13 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     const { interpretResult, parseResult, completions, newVariable, errors } = result
 
     if (parseResult.valid) {
-      setContent(codeFragmentsToJSONContent(parseResult.codeFragments))
+      setContent(codeFragmentsToJSONContent(parseResult.codeFragments, rootId))
       setInput(parseResult.codeFragments.map(fragment => fragment.name).join(''))
+    } else if (parseResult.input !== input && parseResult.input !== '=') {
+      const content = { type: 'doc', content: [{ type: 'text', text: parseResult.input }] }
+      console.log({ content, newINput: parseResult.input, input, parseResult, label: 'ReplaceInput' })
+      setContent(content)
+      setInput(parseResult.input)
     }
 
     updateVariable?.(newVariable)
@@ -250,7 +347,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setError(errors.length ? errors[0] : undefined)
 
     if (interpretResult.success) {
-      const type = interpretResult.result.type
+      const type = interpretResult.variableValue.result.type
       setDefaultName(formulaContext.getDefaultVariableName(rootId, type))
     }
   }
@@ -328,6 +425,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <div className="formula-menu-divider" />
       <AutocompleteList
+        blockId={rootId}
         completions={completions}
         handleSelectActiveCompletion={handleSelectActiveCompletion}
         setActiveCompletion={setActiveCompletion}

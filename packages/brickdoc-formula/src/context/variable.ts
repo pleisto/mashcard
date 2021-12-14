@@ -3,10 +3,8 @@ import {
   ContextInterface,
   interpret,
   VariableUpdateHandler,
-  VariableCompletion,
   VariableData,
   VariableInterface,
-  variableKey,
   VariableMetadata
 } from '..'
 
@@ -45,17 +43,6 @@ export class VariableClass implements VariableInterface {
     }
   }
 
-  public completion = (weight: number): VariableCompletion => {
-    return {
-      kind: 'variable',
-      weight,
-      name: this.t.name,
-      namespace: this.t.namespaceId,
-      value: variableKey(this.t.namespaceId, this.t.variableId),
-      preview: this.t
-    }
-  }
-
   public afterUpdate = (): void => {
     if (this.updateHandler) {
       this.updateHandler(this)
@@ -63,9 +50,9 @@ export class VariableClass implements VariableInterface {
   }
 
   public refresh = async (formulaContext: ContextInterface): Promise<void> => {
-    const { result } = await interpret({ cst: this.t.cst, formulaContext, meta: this.meta() })
+    const { variableValue } = await interpret({ cst: this.t.cst, formulaContext, meta: this.meta() })
 
-    this.t = { ...this.t, variableValue: result }
+    this.t = { ...this.t, variableValue }
     this.afterUpdate()
     await this.invokeBackendUpdate()
   }

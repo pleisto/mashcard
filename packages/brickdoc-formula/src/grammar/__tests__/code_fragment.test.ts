@@ -1,4 +1,4 @@
-import { parse, quickInsert, FunctionClause, ContextInterface } from '../..'
+import { parse, quickInsert, BaseFunctionClause, NumberResult } from '../..'
 import { FormulaContext } from '../../context'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -6,12 +6,11 @@ const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 const unknownId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
 const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
-const functionClauses: Array<FunctionClause<any>> = [
+const functionClauses: Array<BaseFunctionClause<any>> = [
   {
     name: 'PLUS',
     async: false,
     pure: true,
-    key: 'custom::PLUS',
     effect: false,
     args: [
       {
@@ -23,26 +22,27 @@ const functionClauses: Array<FunctionClause<any>> = [
         name: 'b'
       }
     ],
+    examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
     description: '',
     group: 'custom',
     returns: 'number',
-    examples: [],
+    testCases: [],
     chain: false,
-    reference: (ctx: ContextInterface, a: number, b: number) => ({ type: 'number', result: a + b })
+    reference: (ctx, a: NumberResult, b: NumberResult) => ({ type: 'number', result: a.result + b.result })
   },
   {
     name: 'FORTY_TWO',
     async: false,
     pure: true,
     effect: false,
-    key: 'custom::FORTY_TWO',
     args: [],
+    examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
     description: '',
     group: 'custom',
     returns: 'number',
-    examples: [],
+    testCases: [],
     chain: false,
-    reference: (ctx: ContextInterface) => ({ type: 'number', result: 42 })
+    reference: () => ({ type: 'number', result: 42 })
   }
 ]
 

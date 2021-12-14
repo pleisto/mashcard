@@ -1,50 +1,47 @@
-import { ContextInterface } from '@brickdoc/formula'
+import { ContextInterface, Database, Column as ColumnType } from '@brickdoc/formula'
 import React from 'react'
 import { Column } from 'react-table'
 import { DatabaseRows } from '..'
 
+// eslint-disable-next-line max-params
 export function useFormulaDatabase(
   blockId: string,
+  title: string,
   tableColumns: Column[],
   tableData: DatabaseRows,
   formulaContext: ContextInterface | null | undefined
 ): void {
   // TODO pass column Type
   React.useEffect(() => {
-    const columns = tableColumns.map(column => ({
+    const columns: ColumnType[] = tableColumns.map(column => ({
       namespaceId: blockId,
       columnId: column.accessor as string,
       name: column.Header as string,
+      spreadsheetName: title,
       type: (column as any).columnType,
       index: (column as any).index
     }))
-    formulaContext?.setDatabase(blockId, {
-      name: () => 'untitled',
-      size: () => tableData.length,
+
+    const database: Database = {
+      blockId,
+      name: () => title ?? 'untitled',
+      columnCount: () => columns.length,
+      rowCount: () => tableData.length,
       _data: () => ({
         tableData,
         columns,
         tableColumns
       }),
       listColumns: () => columns,
-      getCell: (columnId, rowId) => {
-        const value = tableData.find(row => row.id === rowId)?.[columnId]
+      listRows: () => tableData,
+      getColumn: columnId => columns.find(col => col.columnId === columnId),
+      getRow: rowId => tableData.find(row => row.rowId === rowId)
+    }
 
-        if (value) {
-          return { value }
-        }
-
-        return undefined
-      },
-      listCell: columnId =>
-        tableData.map(row => ({
-          value: row[columnId]
-        })),
-      getColumn: columnId => columns.find(col => col.columnId === columnId)
-    })
+    formulaContext?.setDatabase(blockId, database)
 
     return () => {
       formulaContext?.removeDatabase(blockId)
     }
-  }, [blockId, formulaContext, tableColumns, tableData])
+  }, [blockId, title, formulaContext, tableColumns, tableData])
 }

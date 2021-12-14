@@ -1,11 +1,9 @@
-import { appendFormulas, Formula, FunctionClause } from '../..'
+import { appendFormulas, Formula } from '../..'
 import { FormulaContext } from '..'
-
-const functionClauses: Array<FunctionClause<any>> = []
 
 describe('appendFormulas', () => {
   it('constant', () => {
-    const formulaContext = new FormulaContext({ functionClauses })
+    const formulaContext = new FormulaContext({})
     void appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
@@ -23,7 +21,7 @@ describe('appendFormulas', () => {
         createdAt: 0,
         cacheValue: {
           type: 'number',
-          value: 123
+          result: 123
         },
         view: {}
       }
@@ -41,7 +39,7 @@ describe('appendFormulas', () => {
   })
 
   it('expression', () => {
-    const formulaContext = new FormulaContext({ functionClauses })
+    const formulaContext = new FormulaContext({})
     void appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
@@ -62,7 +60,7 @@ describe('appendFormulas', () => {
         createdAt: 0,
         cacheValue: {
           type: 'number',
-          value: 123
+          result: 123
         },
         view: {}
       },
@@ -75,7 +73,7 @@ describe('appendFormulas', () => {
         createdAt: 0,
         cacheValue: {
           type: 'number',
-          value: 456
+          result: 456
         },
         view: {}
       }
@@ -95,7 +93,7 @@ describe('appendFormulas', () => {
   })
 
   it('unmatched variable', () => {
-    const formulaContext = new FormulaContext({ functionClauses })
+    const formulaContext = new FormulaContext({})
     void appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
@@ -115,7 +113,7 @@ describe('appendFormulas', () => {
         createdAt: 0,
         cacheValue: {
           type: 'number',
-          value: 456
+          result: 456
         },
         view: {}
       }
@@ -133,7 +131,7 @@ describe('appendFormulas', () => {
   })
 
   it('parse error', () => {
-    const formulaContext = new FormulaContext({ functionClauses })
+    const formulaContext = new FormulaContext({})
     void appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
@@ -151,7 +149,7 @@ describe('appendFormulas', () => {
         createdAt: 0,
         cacheValue: {
           type: 'number',
-          value: 123
+          result: 123
         },
         view: {}
       }

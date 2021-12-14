@@ -1,0 +1,238 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Complete dot + different namespace 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Plus",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "+",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "number",
+  },
+  Object {
+    "code": "Variable",
+    "errors": Array [],
+    "meta": Object {
+      "name": "varvarabcvar",
+      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+]
+`;
+
+exports[`Complete dot + same namespace 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Plus",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "+",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "number",
+  },
+  Object {
+    "code": "Variable",
+    "errors": Array [],
+    "meta": Object {
+      "name": "varvarabcvar",
+      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+]
+`;
+
+exports[`Complete space + different namespace 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Plus",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "+",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "number",
+  },
+  Object {
+    "code": "Variable",
+    "errors": Array [],
+    "meta": Object {
+      "name": "varvarabcvar",
+      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Complete space + same namespace 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Plus",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "+",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "number",
+  },
+  Object {
+    "code": "Variable",
+    "errors": Array [],
+    "meta": Object {
+      "name": "varvarabcvar",
+      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Complete var equal 1`] = `
+Array [
+  Object {
+    "code": "other",
+    "errors": Array [
+      Object {
+        "message": "TODO mismatch token FunctionCall",
+        "type": "syntax",
+      },
+    ],
+    "meta": undefined,
+    "name": "varvarabcvar",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+]
+`;
+
+exports[`Complete var equal different namespaceId 1`] = `
+Array [
+  Object {
+    "code": "other",
+    "errors": Array [
+      Object {
+        "message": "TODO mismatch token FunctionCall",
+        "type": "syntax",
+      },
+    ],
+    "meta": undefined,
+    "name": "varvarabcvar",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+]
+`;
+
+exports[`Complete var startWith 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Plus",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "+",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "number",
+  },
+  Object {
+    "code": "other",
+    "errors": Array [
+      Object {
+        "message": "TODO mismatch token FunctionCall",
+        "type": "syntax",
+      },
+    ],
+    "meta": undefined,
+    "name": "var",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+]
+`;

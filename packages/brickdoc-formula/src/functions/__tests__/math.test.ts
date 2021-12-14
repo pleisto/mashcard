@@ -1,28 +1,28 @@
 import { FormulaContext } from '../../context'
 import { ABS, INT, LOG10, PI, POWER, RAND, RANDBETWEEN, SQRT, SQRTPI, TRUNC, LN } from '../math'
 
-const ctx = new FormulaContext()
+const ctx = new FormulaContext({})
 
 describe('math', () => {
   it('ABS', () => {
-    expect(ABS(ctx, 0).result).toBe(0)
-    expect(ABS(ctx, 1).result).toBe(1)
-    expect(ABS(ctx, -1).result).toBe(1)
+    expect(ABS(ctx, { result: 0, type: 'number' }).result).toBe(0)
+    expect(ABS(ctx, { result: 1, type: 'number' }).result).toBe(1)
+    expect(ABS(ctx, { result: -1, type: 'number' }).result).toBe(1)
   })
 
   it('INT', () => {
-    expect(INT(ctx, 0).result).toBe(0)
-    expect(INT(ctx, 1).result).toBe(1)
-    expect(INT(ctx, -1).result).toBe(-1)
-    expect(INT(ctx, 1.1).result).toBe(1)
-    expect(INT(ctx, 1.5).result).toBe(1)
+    expect(INT(ctx, { result: 0, type: 'number' }).result).toBe(0)
+    expect(INT(ctx, { result: 1, type: 'number' }).result).toBe(1)
+    expect(INT(ctx, { result: -1, type: 'number' }).result).toBe(-1)
+    expect(INT(ctx, { result: 1.1, type: 'number' }).result).toBe(1)
+    expect(INT(ctx, { result: 1.5, type: 'number' }).result).toBe(1)
   })
 
   it('LOG10', () => {
-    expect(LOG10(ctx, 1).result).toBe(0)
-    expect(LOG10(ctx, 10).result).toBe(1)
-    expect(LOG10(ctx, 100).result).toBe(2)
-    expect(LOG10(ctx, 1000).result).toBe(3)
+    expect(LOG10(ctx, { result: 1, type: 'number' }).result).toBe(0)
+    expect(LOG10(ctx, { result: 10, type: 'number' }).result).toBe(1)
+    expect(LOG10(ctx, { result: 100, type: 'number' }).result).toBe(2)
+    expect(LOG10(ctx, { result: 1000, type: 'number' }).result).toBe(3)
   })
 
   it('PI', () => {
@@ -30,9 +30,9 @@ describe('math', () => {
   })
 
   it('POWER', () => {
-    expect(POWER(ctx, 2, 3).result).toBe(8)
-    expect(POWER(ctx, 2, 0).result).toBe(1)
-    expect(POWER(ctx, 2, -3).result).toBe(0.125)
+    expect(POWER(ctx, { result: 2, type: 'number' }, { result: 3, type: 'number' }).result).toBe(8)
+    expect(POWER(ctx, { result: 2, type: 'number' }, { result: 0, type: 'number' }).result).toBe(1)
+    expect(POWER(ctx, { result: 2, type: 'number' }, { result: -3, type: 'number' }).result).toBe(0.125)
   })
 
   it('RAND', () => {
@@ -41,34 +41,36 @@ describe('math', () => {
   })
 
   it('RANDBETWEEN', () => {
-    expect(RANDBETWEEN(ctx, 1, 2).result).toBeGreaterThanOrEqual(1)
-    expect(RANDBETWEEN(ctx, 1, 2).result).toBeLessThanOrEqual(2)
+    expect(
+      RANDBETWEEN(ctx, { result: 1, type: 'number' }, { result: 2, type: 'number' }).result
+    ).toBeGreaterThanOrEqual(1)
+    expect(RANDBETWEEN(ctx, { result: 1, type: 'number' }, { result: 2, type: 'number' }).result).toBeLessThanOrEqual(2)
   })
 
   it('SQRT', () => {
-    expect(SQRT(ctx, 4).result).toBe(2)
-    expect(SQRT(ctx, 9).result).toBe(3)
-    expect(SQRT(ctx, 16).result).toBe(4)
+    expect(SQRT(ctx, { result: 4, type: 'number' }).result).toBe(2)
+    expect(SQRT(ctx, { result: 9, type: 'number' }).result).toBe(3)
+    expect(SQRT(ctx, { result: 16, type: 'number' }).result).toBe(4)
   })
 
   it('SQRTPI', () => {
-    expect(Math.round(SQRTPI(ctx, 1).result)).toBe(2)
-    expect(Math.round(SQRTPI(ctx, 2).result)).toBe(3)
-    expect(Math.round(SQRTPI(ctx, 3).result)).toBe(3)
+    expect(Math.round(SQRTPI(ctx, { result: 1, type: 'number' }).result)).toBe(2)
+    expect(Math.round(SQRTPI(ctx, { result: 2, type: 'number' }).result)).toBe(3)
+    expect(Math.round(SQRTPI(ctx, { result: 3, type: 'number' }).result)).toBe(3)
   })
 
   it('TRUNC', () => {
-    expect(TRUNC(ctx, 1.1).result).toBe(1)
-    expect(TRUNC(ctx, 1.9).result).toBe(1)
-    expect(TRUNC(ctx, 1.5).result).toBe(1)
-    expect(TRUNC(ctx, 1.0).result).toBe(1)
-    expect(TRUNC(ctx, 0.1).result).toBe(0)
-    expect(TRUNC(ctx, 0.9).result).toBe(0)
-    expect(TRUNC(ctx, 0.5).result).toBe(0)
-    expect(TRUNC(ctx, 0.0).result).toBe(0)
+    expect(TRUNC(ctx, { result: 1.1, type: 'number' }).result).toBe(1)
+    expect(TRUNC(ctx, { result: 1.9, type: 'number' }).result).toBe(1)
+    expect(TRUNC(ctx, { result: 1.5, type: 'number' }).result).toBe(1)
+    expect(TRUNC(ctx, { result: 1.0, type: 'number' }).result).toBe(1)
+    expect(TRUNC(ctx, { result: 0.1, type: 'number' }).result).toBe(0)
+    expect(TRUNC(ctx, { result: 0.9, type: 'number' }).result).toBe(0)
+    expect(TRUNC(ctx, { result: 0.5, type: 'number' }).result).toBe(0)
+    expect(TRUNC(ctx, { result: 0.0, type: 'number' }).result).toBe(0)
   })
 
   it('LN', () => {
-    expect(LN(ctx, 1).result).toBe(0)
+    expect(LN(ctx, { result: 1, type: 'number' }).result).toBe(0)
   })
 })

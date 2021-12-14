@@ -29,8 +29,9 @@ export const CodeFragmentBlockExtension = Node.create<CodeFragmentBlockOptions>(
   defaultOptions: {},
 
   addAttributes() {
-    const defaultAttr: { [key in keyof CodeFragmentType]: { default: any } } = {
+    const defaultAttr: { [key in keyof (CodeFragmentType & {blockId: string })]: { default: any } } = {
       meta: { default: {} },
+      blockId: {default: ''},
       code: { default: '' },
       name: { default: '' },
       spaceAfter: { default: false },
@@ -44,13 +45,13 @@ export const CodeFragmentBlockExtension = Node.create<CodeFragmentBlockOptions>(
   parseHTML() {
     return [
       {
-        tag: 'function-call'
+        tag: 'code-fragment'
       }
     ]
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['function-call', mergeAttributes(HTMLAttributes)]
+    return ['code-fragment', mergeAttributes(HTMLAttributes)]
   },
 
   addNodeView() {

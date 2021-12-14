@@ -8,12 +8,13 @@ import {
   VariableKind,
   VariableDependency,
   FunctionClause,
-  buildFunctionKey
+  buildFunctionKey,
+  OtherCodeFragment,
+  CodeFragmentResult
 } from '..'
 import { BaseCstVisitor } from './parser'
-
 interface InterpreterConfig {
-  readonly formulaContext: ContextInterface
+  readonly formulaContext?: ContextInterface
 }
 
 const SpaceBeforeTypes = [
@@ -54,49 +55,51 @@ const SpaceAfterTypes = [
   'GreaterThanEqual'
 ]
 
-const token2fragment = (token: IToken, type: FormulaType): CodeFragment => {
+const token2fragment = (token: IToken, type: FormulaType): OtherCodeFragment => {
   const spaceBefore = SpaceBeforeTypes.includes(token.tokenType.name)
   const spaceAfter = SpaceAfterTypes.includes(token.tokenType.name)
-  return { name: token.image, code: token.tokenType.name, errors: [], type, spaceBefore, spaceAfter, meta: {} }
+  return { name: token.image, code: token.tokenType.name, errors: [], type, spaceBefore, spaceAfter, meta: undefined }
 }
 
 type ExpressionType = FormulaType | undefined
-
-interface result {
-  readonly codeFragments: CodeFragment[]
-  readonly type: FormulaType
-}
 
 interface ExpressionArgument {
   readonly type: ExpressionType
   readonly firstArgumentType?: ExpressionType
 }
 
-const intersectType = (argumentType: ExpressionType, contextType: FormulaType): { errorMessages: ErrorMessage[]; newType: FormulaType } => {
-  if (argumentType === undefined) {
-    return { errorMessages: [], newType: contextType }
+const intersectType = (
+  expectedArgumentType: ExpressionType,
+  contextResultType: FormulaType
+): { errorMessages: ErrorMessage[]; newType: FormulaType } => {
+  if (expectedArgumentType === undefined) {
+    return { errorMessages: [], newType: contextResultType }
   }
 
-  if (argumentType === 'any') {
-    return { errorMessages: [], newType: contextType }
+  if (expectedArgumentType === 'any') {
+    return { errorMessages: [], newType: contextResultType }
   }
 
-  if (contextType === 'any') {
-    return { errorMessages: [], newType: argumentType }
+  if (contextResultType === 'any') {
+    return { errorMessages: [], newType: expectedArgumentType }
   }
 
-  if (argumentType === contextType) {
-    return { errorMessages: [], newType: argumentType }
+  if (expectedArgumentType === contextResultType) {
+    return { errorMessages: [], newType: expectedArgumentType }
+  }
+
+  if (expectedArgumentType === 'Predicate') {
+    return { errorMessages: [], newType: contextResultType }
   }
 
   return {
-    errorMessages: [{ type: 'type', message: `Expected ${argumentType} but got ${contextType}` }],
-    newType: contextType
+    errorMessages: [{ type: 'type', message: `Expected ${expectedArgumentType} but got ${contextResultType}` }],
+    newType: contextResultType
   }
 }
 
 export class CodeFragmentVisitor extends BaseCstVisitor {
-  formulaContext: ContextInterface
+  formulaContext?: ContextInterface
   variableDependencies: VariableDependency[] = []
   functionDependencies: Array<FunctionClause<any>> = []
   flattenVariableDependencies: Set<VariableDependency> = new Set()
@@ -109,62 +112,81 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     this.validateVisitor()
   }
 
-  startExpression(ctx: { expression: CstNode | CstNode[] }, { type }: ExpressionArgument): result {
+  startExpression(
+    ctx: { expression: CstNode | CstNode[]; Equal: any },
+    { type }: ExpressionArgument
+  ): CodeFragmentResult {
     // const operator = ctx.Equal[0] as IToken
     // return [token2fragment(operator), ...this.visit(ctx.expression)]
-    return this.visit(ctx.expression, { type })
+    const { type: newType, codeFragments, image } = this.visit(ctx.expression, { type })
+    return { type: newType, codeFragments, image: `${ctx.Equal[0].image}${image}` }
   }
 
-  expression(ctx: { combineExpression: CstNode | CstNode[] }, { type }: ExpressionArgument): result {
+  expression(ctx: { combineExpression: CstNode | CstNode[] }, { type }: ExpressionArgument): CodeFragmentResult {
     return this.visit(ctx.combineExpression, { type })
   }
 
   combineExpression(
     ctx: { rhs: any[]; lhs: CstNode | CstNode[]; CombineOperator: { [x: string]: IToken } },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'boolean'
 
-    const { codeFragments: lhsCodeFragments }: result = this.visit(ctx.lhs, { type: childrenType })
+    const { codeFragments: lhsCodeFragments, image: lhsImage }: CodeFragmentResult = this.visit(ctx.lhs, {
+      type: childrenType
+    })
     codeFragments.push(...lhsCodeFragments)
+    images.push(lhsImage)
 
     ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
       const operator = ctx.CombineOperator[idx] as IToken
-      const { codeFragments: rhsValue }: result = this.visit(rhsOperand, { type: childrenType })
+      const { codeFragments: rhsValue, image: rhsImage }: CodeFragmentResult = this.visit(rhsOperand, {
+        type: childrenType
+      })
 
       codeFragments.push(token2fragment(operator, parentType), ...rhsValue)
+      images.push(operator.image, rhsImage)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
 
-  notExpression(ctx: { lhs: any[]; rhs: CstNode | CstNode[] }, { type }: ExpressionArgument): result {
+  notExpression(ctx: { lhs: any[]; rhs: CstNode | CstNode[] }, { type }: ExpressionArgument): CodeFragmentResult {
     if (!ctx.lhs) {
       return this.visit(ctx.rhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'any'
 
     ctx.lhs.forEach((operator: IToken) => {
       codeFragments.push(token2fragment(operator, parentType))
+      images.push(operator.image)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
-    const { codeFragments: rhsCodeFragments }: result = this.visit(ctx.rhs, { type: childrenType })
+    const { codeFragments: rhsCodeFragments, image }: CodeFragmentResult = this.visit(ctx.rhs, { type: childrenType })
+    images.push(image)
 
     return {
+      image: images.join(''),
       codeFragments: [...codeFragments, ...rhsCodeFragments].map(codeFragment => ({
         ...codeFragment,
         errors: [...errorMessages, ...codeFragment.errors]
@@ -176,27 +198,34 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   equalCompareExpression(
     ctx: { rhs: any[]; lhs: CstNode | CstNode[]; EqualCompareOperator: { [x: string]: any } },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'any'
 
-    const { codeFragments: lhsCodeFragments }: result = this.visit(ctx.lhs, { type: childrenType })
+    const { codeFragments: lhsCodeFragments, image }: CodeFragmentResult = this.visit(ctx.lhs, { type: childrenType })
+    images.push(image)
     codeFragments.push(...lhsCodeFragments)
 
     ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-      const { codeFragments: rhsValue }: result = this.visit(rhsOperand, { type: childrenType })
+      const { codeFragments: rhsValue, image }: CodeFragmentResult = this.visit(rhsOperand, { type: childrenType })
       const operator = ctx.EqualCompareOperator[idx]
       codeFragments.push(token2fragment(operator, parentType), ...rhsValue)
+      images.push(operator.image, image)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
@@ -204,54 +233,68 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   compareExpression(
     ctx: { rhs: any[]; lhs: CstNode | CstNode[]; CompareOperator: { [x: string]: any } },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'number'
 
-    const { codeFragments: lhsCodeFragments }: result = this.visit(ctx.lhs, { type: childrenType })
+    const { codeFragments: lhsCodeFragments, image }: CodeFragmentResult = this.visit(ctx.lhs, { type: childrenType })
     codeFragments.push(...lhsCodeFragments)
+    images.push(image)
 
     ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-      const { codeFragments: rhsValue }: result = this.visit(rhsOperand, { type: childrenType })
+      const { codeFragments: rhsValue, image }: CodeFragmentResult = this.visit(rhsOperand, { type: childrenType })
       const operator = ctx.CompareOperator[idx]
       codeFragments.push(token2fragment(operator, parentType), ...rhsValue)
+      images.push(operator.image, image)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
 
-  concatExpression(ctx: { rhs: any[]; lhs: CstNode | CstNode[] }, { type }: ExpressionArgument): result {
+  concatExpression(ctx: { rhs: any[]; lhs: CstNode | CstNode[] }, { type }: ExpressionArgument): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'string'
     const childrenType: FormulaType = 'string'
 
-    const { codeFragments: lhsCodeFragments }: result = this.visit(ctx.lhs, { type: childrenType })
+    const { codeFragments: lhsCodeFragments, image }: CodeFragmentResult = this.visit(ctx.lhs, { type: childrenType })
     codeFragments.push(...lhsCodeFragments)
+    images.push(image)
 
     ctx.rhs.forEach((rhsOperand: CstNode | CstNode[]) => {
-      const { codeFragments: rhsValue }: result = this.visit(rhsOperand, { type: childrenType })
+      const { codeFragments: rhsValue, image }: CodeFragmentResult = this.visit(rhsOperand, { type: childrenType })
       codeFragments.push(
-        { name: '&', code: 'Ampersand', type: 'any', errors: [], spaceBefore: true, spaceAfter: true, meta: {} },
+        { name: '&', code: 'Ampersand', type: 'any', errors: [], spaceBefore: true, spaceAfter: true, meta: undefined },
         ...rhsValue
       )
+      images.push('&', image)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
@@ -259,27 +302,34 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   additionExpression(
     ctx: { rhs: any[]; lhs: CstNode | CstNode[]; AdditionOperator: { [x: string]: any } },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'number'
     const childrenType: FormulaType = 'number'
 
-    const { codeFragments: lhsCodeFragments }: result = this.visit(ctx.lhs, { type: childrenType })
+    const { codeFragments: lhsCodeFragments, image }: CodeFragmentResult = this.visit(ctx.lhs, { type: childrenType })
     codeFragments.push(...lhsCodeFragments)
+    images.push(image)
 
     ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-      const { codeFragments: rhsValue }: result = this.visit(rhsOperand, { type: childrenType })
+      const { codeFragments: rhsValue, image }: CodeFragmentResult = this.visit(rhsOperand, { type: childrenType })
       const operator = ctx.AdditionOperator[idx]
       codeFragments.push(token2fragment(operator, parentType), ...rhsValue)
+      images.push(operator.image, image)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
@@ -287,54 +337,79 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   multiplicationExpression(
     ctx: { rhs: any[]; lhs: CstNode | CstNode[]; MultiplicationOperator: { [x: string]: any } },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
     const parentType: FormulaType = 'number'
     const childrenType: FormulaType = 'number'
 
-    const { codeFragments: lhsCodeFragments }: result = this.visit(ctx.lhs, { type: childrenType })
+    const { codeFragments: lhsCodeFragments, image }: CodeFragmentResult = this.visit(ctx.lhs, { type: childrenType })
     codeFragments.push(...lhsCodeFragments)
+    images.push(image)
 
     ctx.rhs.forEach((rhsOperand: CstNode | CstNode[], idx: string | number) => {
-      const { codeFragments: rhsValue }: result = this.visit(rhsOperand, { type: childrenType })
+      const { codeFragments: rhsValue, image }: CodeFragmentResult = this.visit(rhsOperand, { type: childrenType })
       const operator = ctx.MultiplicationOperator[idx]
       codeFragments.push(token2fragment(operator, parentType), ...rhsValue)
+      images.push(operator.image, image)
     })
 
     const { errorMessages, newType } = intersectType(type, parentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
 
-  chainExpression(ctx: { rhs: any[]; lhs: CstNode | CstNode[] }, { type }: ExpressionArgument): result {
+  chainExpression(ctx: { rhs: any[]; lhs: CstNode | CstNode[] }, { type }: ExpressionArgument): CodeFragmentResult {
     if (!ctx.rhs) {
       return this.visit(ctx.lhs, { type })
     }
 
     const codeFragments: CodeFragment[] = []
-    const { codeFragments: lhsCodeFragments, type: lhsType }: result = this.visit(ctx.lhs, { type: 'any' })
+    const images: string[] = []
+    const {
+      codeFragments: lhsCodeFragments,
+      type: lhsType,
+      image
+    }: CodeFragmentResult = this.visit(ctx.lhs, { type: 'any' })
     codeFragments.push(...lhsCodeFragments)
+    images.push(image)
 
     let firstArgumentType = lhsType
 
     ctx.rhs.forEach((cst: CstNode | CstNode[]) => {
-      const { codeFragments: rhsCodeFragments, type: rhsType }: result = this.visit(cst, { type: 'any', firstArgumentType })
+      const {
+        codeFragments: rhsCodeFragments,
+        type: rhsType,
+        image
+      }: CodeFragmentResult = this.visit(cst, {
+        type: 'any',
+        firstArgumentType
+      })
       codeFragments.push(
-        { name: '.', code: 'Dot', type: 'any', errors: [], spaceBefore: false, spaceAfter: false, meta: {} },
+        { name: '.', code: 'Dot', type: 'any', errors: [], spaceBefore: false, spaceAfter: false, meta: undefined },
         ...rhsCodeFragments
       )
+      images.push('.', image)
       firstArgumentType = rhsType
     })
 
     const { errorMessages, newType } = intersectType(type, firstArgumentType)
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: newType
     }
   }
@@ -346,10 +421,11 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       FunctionCall: CstNode | CstNode[]
       variableExpression: CstNode | CstNode[]
       columnExpression: CstNode | CstNode[]
-      blockExpression: CstNode | CstNode[]
+      spreadsheetExpression: CstNode | CstNode[]
+      predicateExpression: CstNode | CstNode[]
     },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (ctx.parenthesisExpression) {
       return this.visit(ctx.parenthesisExpression, { type })
     } else if (ctx.constantExpression) {
@@ -360,28 +436,93 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.visit(ctx.variableExpression, { type })
     } else if (ctx.columnExpression) {
       return this.visit(ctx.columnExpression, { type })
-    } else if (ctx.blockExpression) {
-      return this.visit(ctx.blockExpression, { type })
+    } else if (ctx.spreadsheetExpression) {
+      return this.visit(ctx.spreadsheetExpression, { type })
+    } else if (ctx.predicateExpression) {
+      return this.visit(ctx.predicateExpression, { type })
     }
 
-    throw new Error('Unsupported atomic expression')
+    // console.log('debugAtomic', {ctx, type})
+    return { codeFragments: [], type: 'any', image: '' }
+  }
+
+  predicateExpression(
+    ctx: { EqualCompareOperator: IToken[]; CompareOperator: IToken[]; atomicExpression: CstNode | CstNode[] },
+    { type }: ExpressionArgument
+  ): CodeFragmentResult {
+    let token: IToken
+    let childrenType: FormulaType
+    if (ctx.EqualCompareOperator) {
+      token = ctx.EqualCompareOperator[0]
+      childrenType = 'any'
+    } else {
+      token = ctx.CompareOperator[0]
+      childrenType = 'number'
+    }
+
+    const codeFragments: CodeFragment[] = []
+    const images: string[] = []
+    const parentType: FormulaType = 'Predicate'
+    const { codeFragments: expressionCodeFragments, image }: CodeFragmentResult = this.visit(ctx.atomicExpression, {
+      type: childrenType
+    })
+
+    codeFragments.push(
+      {
+        name: token.image,
+        code: token.tokenType.name,
+        errors: [],
+        meta: undefined,
+        spaceBefore: false,
+        spaceAfter: false,
+        type: 'any'
+      },
+      ...expressionCodeFragments
+    )
+    images.push(token.image, image)
+
+    const { errorMessages, newType } = intersectType(type, parentType)
+    return {
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
+      type: newType
+    }
   }
 
   parenthesisExpression(
     ctx: { expression: CstNode | CstNode[]; LParen: IToken[]; RParen: IToken[] },
     { type }: ExpressionArgument
-  ): result {
-    const { codeFragments, type: expressionType }: result = this.visit(ctx.expression, { type })
+  ): CodeFragmentResult {
+    if (!ctx.LParen) {
+      return { codeFragments: [], type: 'any', image: '' }
+    }
+    const rParenErrorMessages: ErrorMessage[] = ctx.RParen ? [] : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
+    const { codeFragments, type: expressionType, image }: CodeFragmentResult = this.visit(ctx.expression, { type })
+    const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], 'any')] : []
+    const finalImage = ctx.RParen ? `(${image})` : `(${image}`
+
     return {
-      codeFragments: [token2fragment(ctx.LParen[0], 'any'), ...codeFragments, token2fragment(ctx.RParen[0], 'any')],
-      type: expressionType
+      codeFragments: [
+        { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
+        ...codeFragments,
+        ...rparenCodeFragments
+      ],
+      type: expressionType,
+      image: finalImage
     }
   }
 
   constantExpression(
-    ctx: { NumberLiteralExpression: CstNode | CstNode[]; BooleanLiteralExpression: CstNode | CstNode[]; StringLiteral: IToken[] },
+    ctx: {
+      NumberLiteralExpression: CstNode | CstNode[]
+      BooleanLiteralExpression: CstNode | CstNode[]
+      StringLiteral: IToken[]
+    },
     { type }: ExpressionArgument
-  ): result {
+  ): CodeFragmentResult {
     if (ctx.NumberLiteralExpression) {
       return this.visit(ctx.NumberLiteralExpression, { type })
     } else if (ctx.BooleanLiteralExpression) {
@@ -389,25 +530,38 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     } else if (ctx.StringLiteral) {
       const parentType = 'string'
       const { errorMessages } = intersectType(type, parentType)
-      return { codeFragments: [{ ...token2fragment(ctx.StringLiteral[0], parentType), errors: errorMessages }], type: parentType }
+      return {
+        codeFragments: [{ ...token2fragment(ctx.StringLiteral[0], parentType), errors: errorMessages }],
+        type: parentType,
+        image: ctx.StringLiteral[0].image
+      }
     }
 
-    throw new Error('Unsupported constant expression')
+    // console.log('debugConstant', { ctx, type })
+    return { codeFragments: [], type: 'any', image: '' }
   }
 
-  NumberLiteralExpression(ctx: { NumberLiteral: IToken[] }, { type }: ExpressionArgument): result {
+  NumberLiteralExpression(ctx: { NumberLiteral: IToken[] }, { type }: ExpressionArgument): CodeFragmentResult {
     const parentType = 'number'
     const { errorMessages } = intersectType(type, parentType)
-    return { codeFragments: [{ ...token2fragment(ctx.NumberLiteral[0], parentType), errors: errorMessages }], type: parentType }
+    return {
+      codeFragments: [{ ...token2fragment(ctx.NumberLiteral[0], parentType), errors: errorMessages }],
+      type: parentType,
+      image: ctx.NumberLiteral[0].image
+    }
   }
 
-  BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, { type }: ExpressionArgument): result {
+  BooleanLiteralExpression(ctx: { BooleanLiteral: IToken[] }, { type }: ExpressionArgument): CodeFragmentResult {
     const parentType = 'boolean'
     const { errorMessages } = intersectType(type, parentType)
-    return { codeFragments: [{ ...token2fragment(ctx.BooleanLiteral[0], parentType), errors: errorMessages }], type: parentType }
+    return {
+      codeFragments: [{ ...token2fragment(ctx.BooleanLiteral[0], parentType), errors: errorMessages }],
+      type: parentType,
+      image: ctx.BooleanLiteral[0].image
+    }
   }
 
-  columnExpression(ctx: { Dollar: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): result {
+  columnExpression(ctx: { Dollar: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): CodeFragmentResult {
     const dollarFragment = token2fragment(ctx.Dollar[0], 'any')
     const [namespaceToken, columnToken] = ctx.UUID
 
@@ -416,7 +570,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     const columnFragment = token2fragment(columnToken, 'any')
 
-    const column = this.formulaContext.findColumn(namespaceId, columnId)
+    const column = this.formulaContext?.findColumn(namespaceId, columnId)
 
     const parentType: ExpressionType = 'Column'
 
@@ -424,47 +578,79 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     if (column) {
       const { errorMessages, newType } = intersectType(type, parentType)
-      return { codeFragments: [{ ...columnFragment, name: `$${column.name}`, errors: errorMessages }], type: newType }
+      return {
+        codeFragments: [
+          {
+            ...columnFragment,
+            code: 'Column',
+            type: parentType,
+            name: `$${namespaceId}#${columnId}`,
+            meta: { name: column.name, spreadsheetName: column.spreadsheetName },
+            errors: errorMessages
+          }
+        ],
+        type: newType,
+        image: `$${namespaceId}#${columnId}`
+      }
     } else {
       return {
         codeFragments: [
           dollarFragment,
-          { ...columnFragment, name: `${namespaceId}#${columnId}`, errors: [{ message: `Column not found: ${columnId}`, type: 'deps' }] }
+          {
+            ...columnFragment,
+            name: `$${namespaceId}#${columnId}`,
+            errors: [{ message: `Column not found: ${columnId}`, type: 'deps' }]
+          }
         ],
-        type: parentType
+        type: parentType,
+        image: `$${namespaceId}#${columnId}`
       }
     }
   }
 
-  blockExpression(ctx: { Dollar: IToken[]; UUID: any[] }, { type }: ExpressionArgument): result {
+  spreadsheetExpression(ctx: { Dollar: IToken[]; UUID: any[] }, { type }: ExpressionArgument): CodeFragmentResult {
     const dollarFragment = token2fragment(ctx.Dollar[0], 'any')
     const namespaceToken = ctx.UUID[0]
     const namespaceId = namespaceToken.image
 
-    const database = this.formulaContext.findDatabase(namespaceId)
+    const database = this.formulaContext?.findDatabase(namespaceId)
 
-    const parentType: FormulaType = 'Block'
+    const parentType: FormulaType = 'Spreadsheet'
 
     this.kind = 'expression'
 
     if (database) {
       const { errorMessages, newType } = intersectType(type, parentType)
       return {
-        codeFragments: [{ ...token2fragment(namespaceToken, 'any'), name: `$${database.name()}`, errors: errorMessages }],
+        codeFragments: [
+          {
+            ...token2fragment(namespaceToken, 'any'),
+            code: 'Spreadsheet',
+            type: parentType,
+            meta: { name: database.name(), blockId: database.blockId },
+            name: `$${namespaceId}`,
+            errors: errorMessages
+          }
+        ],
+        image: `$${namespaceId}`,
         type: newType
       }
     } else {
       return {
         codeFragments: [
           dollarFragment,
-          { ...token2fragment(namespaceToken, 'any'), errors: [{ message: `Database not found: ${namespaceId}`, type: 'deps' }] }
+          {
+            ...token2fragment(namespaceToken, 'any'),
+            errors: [{ message: `Database not found: ${namespaceId}`, type: 'deps' }]
+          }
         ],
+        image: `$${namespaceId}`,
         type: parentType
       }
     }
   }
 
-  variableExpression(ctx: { Dollar: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): result {
+  variableExpression(ctx: { Dollar: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): CodeFragmentResult {
     const dollarFragment = token2fragment(ctx.Dollar[0], 'any')
     const [namespaceToken, variableToken] = ctx.UUID
 
@@ -473,7 +659,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     const variableFragment = token2fragment(variableToken, 'any')
 
-    const variable = this.formulaContext.findVariable(namespaceId, variableId)
+    const variable = this.formulaContext?.findVariable(namespaceId, variableId)
 
     this.kind = 'expression'
 
@@ -486,17 +672,19 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       ])
       this.level = Math.max(this.level, variable.t.level + 1)
 
-      const { errorMessages, newType } = intersectType(type, variable.t.variableValue.type ?? 'any')
+      const { errorMessages, newType } = intersectType(type, variable.t.variableValue.result.type ?? 'any')
       return {
         codeFragments: [
           {
             ...variableFragment,
             code: 'Variable',
-            meta: { name: variable.t.name },
+            type: newType,
+            meta: { name: variable.t.name, namespace: variable.t.namespaceId, namespaceId: variable.t.namespaceId },
             name: `$${namespaceId}@${variableId}`,
             errors: errorMessages
           }
         ],
+        image: `$${namespaceId}@${variableId}`,
         type: newType
       }
     } else {
@@ -510,6 +698,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             errors: [{ message: `Variable not found: ${variableId}`, type: 'deps' }]
           }
         ],
+        image: `$${namespaceId}@${variableId}`,
         type: 'any'
       }
     }
@@ -517,24 +706,48 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
   FunctionCall(
     ctx: {
-      FunctionGroupName: Array<{ image: any }>
-      FunctionName: IToken[]
+      FunctionName: Array<{ image: any }>
       Arguments: CstNode | CstNode[]
       LParen: IToken[]
       RParen: IToken[]
     },
     { type, firstArgumentType }: ExpressionArgument
-  ): result {
-    const group = ctx.FunctionGroupName?.[0].image ?? 'core'
-    const name = ctx.FunctionName[0].image
+  ): CodeFragmentResult {
+    if (!ctx.LParen) {
+      return { codeFragments: [], type: 'any', image: '' }
+    }
 
-    const clause = this.formulaContext.findFunctionClause(group, name)
+    const rParenErrorMessages: ErrorMessage[] = ctx.RParen
+      ? []
+      : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
+    const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], 'any')] : []
+
+    const names = ctx.FunctionName.map(({ image }) => image)
+    const [group, name] = names.length === 1 ? ['core', ...names] : names
+
+    const images: string[] = []
+
+    if (names.length === 1) {
+      images.push(name)
+    } else {
+      images.push(group, '::', name)
+    }
+
+    const clause = this.formulaContext?.findFunctionClause(group, name)
 
     this.kind = 'expression'
 
     const functionKey = buildFunctionKey(group, name)
 
-    const nameFragment = { ...token2fragment(ctx.FunctionName[0], 'any'), name: functionKey }
+    const nameFragment: CodeFragment = {
+      name: functionKey,
+      code: 'FunctionName',
+      errors: [],
+      type: 'any',
+      spaceBefore: false,
+      spaceAfter: false,
+      meta: undefined
+    }
 
     if (clause) {
       this.functionDependencies.push(clause)
@@ -552,53 +765,81 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         chainError.push(...errorMessages)
         clauseArgs = clause.args.slice(1)
       }
-      const args = ctx.Arguments ? (this.visit(ctx.Arguments, clauseArgs) as result).codeFragments : []
+      const { codeFragments: argsCodeFragments, image } = ctx.Arguments
+        ? (this.visit(ctx.Arguments, clauseArgs) as CodeFragmentResult)
+        : { codeFragments: [], image: '' }
       const argsErrorMessages: ErrorMessage[] =
-        clauseArgs.length > 0 && args.length === 0 ? [{ message: 'Miss argument', type: 'deps' }] : []
+        clauseArgs.length > 0 && argsCodeFragments.length === 0 ? [{ message: 'Miss argument', type: 'deps' }] : []
+
+      images.push('(', image, ctx.RParen ? ')' : '')
 
       const { errorMessages, newType } = intersectType(type, clause.returns)
       return {
         codeFragments: [
-          { ...nameFragment, code: 'Function', errors: [...chainError, ...errorMessages, ...argsErrorMessages] },
-          token2fragment(ctx.LParen[0], 'any'),
-          ...args,
-          token2fragment(ctx.RParen[0], 'any')
+          { ...nameFragment, code: 'Function', errors: [...rParenErrorMessages, ...chainError, ...errorMessages, ...argsErrorMessages] },
+          { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
+          ...argsCodeFragments,
+          ...rparenCodeFragments
         ],
+        image: images.join(''),
         type: newType
       }
     } else {
-      const args = ctx.Arguments ? (this.visit(ctx.Arguments, null) as result).codeFragments : []
+      const { codeFragments: argsCodeFragments, image } = ctx.Arguments
+        ? (this.visit(ctx.Arguments, null) as CodeFragmentResult)
+        : { codeFragments: [], image: '' }
+      images.push('(', image, ctx.RParen ? ')' : '')
+
       return {
         codeFragments: [
-          { ...nameFragment, code: 'Function', errors: [{ message: `Function ${functionKey} not found`, type: 'deps' }] },
-          token2fragment(ctx.LParen[0], 'any'),
-          ...args,
-          token2fragment(ctx.RParen[0], 'any')
+          {
+            ...nameFragment,
+            code: 'Function',
+            errors: [{ message: `Function ${functionKey} not found`, type: 'deps' }]
+          },
+          { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
+          ...argsCodeFragments,
+          ...rparenCodeFragments
         ],
+        image: images.join(''),
         type: 'any'
       }
     }
   }
 
-  Arguments(ctx: { expression: any[]; Comma: IToken[] }, args: Argument[] | null): result {
+  Arguments(ctx: { expression: any[]; Comma: IToken[] }, args: Argument[] | null): CodeFragmentResult {
     const firstArgs = args?.[0]
-    const argumentTypes = firstArgs?.spread ? Array(ctx.expression.length).fill(firstArgs.type) : args?.map(x => x.type) ?? []
+    const argumentTypes = firstArgs?.spread
+      ? Array(ctx.expression.length).fill(firstArgs.type)
+      : args?.map(x => x.type) ?? []
 
     const codeFragments: CodeFragment[] = []
+    const images: string[] = []
 
     ctx.expression.forEach((arg: CstNode | CstNode[], idx: number) => {
-      const { codeFragments: argFragments }: result = this.visit(arg, { type: argumentTypes[idx] || 'any' })
-      if (idx === 0) {
-        codeFragments.push(...argFragments)
-      } else {
-        codeFragments.push(token2fragment(ctx.Comma[idx - 1], 'any'), ...argFragments)
+      const { codeFragments: argFragments, image }: CodeFragmentResult = this.visit(arg, {
+        type: argumentTypes[idx] || 'any'
+      })
+
+      if (idx !== 0 && ctx.Comma[idx - 1]) {
+        codeFragments.push(token2fragment(ctx.Comma[idx - 1], 'any'))
+        images.push(',')
       }
+
+      codeFragments.push(...argFragments)
+      images.push(image)
     })
 
     const errorMessages: ErrorMessage[] =
-      !!args && ctx.expression.length !== argumentTypes.length ? [{ message: 'Argument count mismatch', type: 'deps' }] : []
+      !!args && ctx.expression.length !== argumentTypes.length
+        ? [{ message: 'Argument count mismatch', type: 'deps' }]
+        : []
     return {
-      codeFragments: codeFragments.map(codeFragment => ({ ...codeFragment, errors: [...errorMessages, ...codeFragment.errors] })),
+      image: images.join(''),
+      codeFragments: codeFragments.map(codeFragment => ({
+        ...codeFragment,
+        errors: [...errorMessages, ...codeFragment.errors]
+      })),
       type: 'any'
     }
   }
