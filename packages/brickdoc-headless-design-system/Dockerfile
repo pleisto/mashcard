@@ -2,7 +2,7 @@ FROM node:16 as build
 WORKDIR /app
 # temp fixed monorepo dependency
 ADD ./ /app
-RUN yarn install && yarn design-system build-storybook
+RUN yarn install && yarn headless build-storybook
 
 FROM ghcr.io/brickdoc/wrapdrive:latest
 LABEL org.opencontainers.iamge.authors="secure@brickdoc.com"

@@ -33,6 +33,7 @@
     "graphql": "bundle exec rails graphql:schema:dump && graphql-codegen --config codegen.yml",
     "cleanup": "tsc --build --clean && rm -rf public/esm-bundle junit-reports node_modules/.cache coverage && yarn workspaces foreach --since -p -j unlimited run cleanup",
     "design-system": "yarn workspace @brickdoc/design-system",
+    "headless": "yarn workspace @brickdoc/brickdoc-headless-design-system",
     "design-icons": "yarn workspace @brickdoc/design-icons",
     "editor": "yarn workspace @brickdoc/editor",
     "formula": "yarn workspace @brickdoc/formula",
