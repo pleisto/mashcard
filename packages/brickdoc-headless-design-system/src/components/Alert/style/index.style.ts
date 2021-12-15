@@ -89,10 +89,10 @@ export const Base = styled('div', {
     variant: {
       info: {
         backgroundColor: theme.colors.statusInfoBg,
-        borderColor: theme.colors.hueBlueHover,
-        color: theme.colors.primaryDefault,
+        borderColor: theme.colors.blue2,
+        color: theme.colors.blue6,
         [`& ${ContentClose}`]: {
-          color: theme.colors.primaryDefault
+          color: theme.colors.blue6
         }
       },
       error: {
@@ -105,18 +105,18 @@ export const Base = styled('div', {
       },
       warning: {
         backgroundColor: theme.colors.statusWarningBg,
-        borderColor: theme.colors.hueYellowHover,
-        color: theme.colors.hueYellowDefault,
+        borderColor: theme.colors.yellow3,
+        color: theme.colors.typePrimary,
         [`& ${ContentClose}`]: {
-          color: theme.colors.hueYellowDefault
+          color: theme.colors.typePrimary
         }
       },
       success: {
         backgroundColor: theme.colors.statusSuccessBg,
-        borderColor: theme.colors.hueGreenHover,
-        color: theme.colors.hueGreenDefault,
+        borderColor: theme.colors.green2,
+        color: theme.colors.green6,
         [`& ${ContentClose}`]: {
-          color: theme.colors.hueGreenDefault
+          color: theme.colors.green6
         }
       }
     },

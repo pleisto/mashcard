@@ -4,7 +4,9 @@ export const globalStyleSheet = {
   html: {
     fontFamily: 'sans-serif',
     fontSize: '100%',
-    textSizeAdjust: '100%'
+    textSizeAdjust: '100%',
+    '--webkit-font-smoothing': 'antialiased',
+    '-moz-osx-font-smoothing': 'grayscale'
   },
   '*, *::before, *::after': {
     boxSizing: 'border-box'
@@ -28,12 +30,12 @@ export const globalStyleSheet = {
     margin: 0,
     height: '100%',
     width: '100%',
-    '--webkit-font-smoothing': 'antialiased',
     fontFamily: '$fonts$defaultSans',
     color: '$colors$typePrimary',
     fontSize: '$fontSizes$body',
     lineHeight: '$lineHeights$base',
     backgroundColor: '$colors$backgroundPrimary',
+    OverlayScrollBehaviorY: 'none',
     '&:lang(zh-Hant)': {
       fontFamily: '$fonts$zhHanTSans'
     },
@@ -89,11 +91,15 @@ export const globalStyleSheet = {
   'img, iframe': {
     border: 0
   },
+  img: {
+    objectFit: 'cover'
+  },
   a: {
     textDecoration: 'none',
     cursor: 'pointer',
     transition: 'color 0.2s',
-    color: 'inherit',
+    color: '$colors$blue9',
+    display: 'inline-block',
     '&:hover': {
       textDecoration: 'underline'
     },

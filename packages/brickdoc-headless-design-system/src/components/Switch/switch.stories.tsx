@@ -31,6 +31,10 @@ export default {
       control: 'boolean',
       description: 'For controlled components'
     },
+    isLabelFirst: {
+      control: 'boolean',
+      description: 'Whether to put the label before the switch'
+    },
     defaultSelected: {
       control: 'boolean',
       description: 'For uncontrolled components'

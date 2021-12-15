@@ -16,6 +16,7 @@
   "sideEffects": false,
   "dependencies": {
     "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons",
+    "@pxblue/storybook-rtl-addon": "^1.1.0",
     "@react-aria/button": "^3.3.4",
     "@react-aria/focus": "^3.5.0",
     "@react-aria/interactions": "^3.7.0",
@@ -26,7 +27,8 @@
     "@stitches/react": "^1.2.6",
     "ahooks": "^3.0.2",
     "lodash-es": "^4.17.21",
-    "polished": "^4.1.3"
+    "polished": "^4.1.3",
+    "stitches-mixins": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.5",
@@ -47,8 +49,10 @@
     "dayjs": "^1.10.7",
     "i18next": "^21.6.0",
     "react": "^17.0.2",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.1",
+    "react-json-view": "^1.21.3",
     "storybook-addon-designs": "^6.2.0",
     "storybook-addon-performance": "^0.16.1",
     "storybook-builder-vite": "^0.1.11",

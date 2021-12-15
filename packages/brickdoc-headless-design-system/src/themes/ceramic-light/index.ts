@@ -1,17 +1,18 @@
 import { colors } from './colors'
 import { transitions } from './transitions'
 import { fontSizes } from './fontSizes'
-import { shadows } from './shadows'
 import { space } from './space'
 import { fonts } from './fonts'
+import { borderStyles } from './borderStyles'
+export { mixins as ceramicLightMixins } from './mixins'
 
 export const ceramicLightTheme = {
   colors,
   transitions,
   fontSizes,
   fonts,
-  shadows,
   space,
+  borderStyles,
   lineHeights: {
     base: '1.6'
   }

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import { User } from '@brickdoc/design-icons'
 import { name2Initials, string2Color } from './initials'
 import { styled, theme } from '../../themes'
@@ -16,10 +16,9 @@ export interface AvatarProps {
 }
 
 const AvatarWrapper = styled('span', {
+  include: ['flexCenter'],
   display: 'inline-flex',
   position: 'relative',
-  justifyContent: 'center',
-  alignItems: 'center',
   whiteSpace: 'nowrap',
   verticalAlign: 'middle',
   overflow: 'hidden',
@@ -28,14 +27,12 @@ const AvatarWrapper = styled('span', {
   isolation: 'isolation',
   '& > img': {
     display: 'inline-block',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
+    boxSize: '100%',
     verticalAlign: 'top'
   },
   '& > span': {
     color: theme.colors.white,
-    fontSize: '0.8em'
+    fontSize: '0.8rem'
   },
   variants: {
     shape: {
@@ -48,19 +45,33 @@ const AvatarWrapper = styled('span', {
     },
     size: {
       large: {
-        width: '2.5rem',
-        height: '2.5rem',
-        lineHeight: '2.5rem'
+        boxSize: '2.5rem',
+        lineHeight: '2.5rem',
+        fontSize: '2.5rem'
       },
       default: {
-        width: '2rem',
-        height: '2rem',
-        lineHeight: '2rem'
+        boxSize: '2rem',
+        lineHeight: '2rem',
+        fontSize: '2rem'
       },
       small: {
-        width: '1.5rem',
-        height: '1.5rem',
-        lineHeight: '1.5rem'
+        boxSize: '1.5rem',
+        lineHeight: '1.5rem',
+        fontSize: '1.5rem',
+        '& > span': {
+          fontSize: '0.625rem'
+        }
+      }
+    },
+    default: {
+      true: {
+        alignItems: 'flex-end',
+        background: theme.colors.ceramicSecondary,
+        border: `1px solid ${'rgba(0,0,0,0.12)'}`,
+        '& > span.brd-icon': {
+          color: theme.colors.dividerSecondary,
+          fontSize: '.75em'
+        }
       }
     }
   }
@@ -68,27 +79,37 @@ const AvatarWrapper = styled('span', {
 
 export const Avatar: FC<AvatarProps> = props => {
   const { shape = 'circle', size = 'default', alt, initials, src, className, style = {} } = props
+
+  const initialsObj = useMemo(
+    () =>
+      initials
+        ? {
+            color: { background: string2Color(initials) },
+            text: name2Initials(initials)
+          }
+        : undefined,
+    [initials]
+  )
+
   const isCustomSize = typeof size === 'number' ? size : undefined
-  let childrenNode = src || (initials ? <span>{name2Initials(initials)}</span> : null) || <User />
+  let childrenNode = src || (initialsObj ? <span>{initialsObj.text}</span> : null) || <User theme="filled" />
   if (typeof childrenNode === 'string') childrenNode = <img src={childrenNode} alt={alt} />
 
   const customSizeCss = isCustomSize
     ? {
-        width: `${size}px`,
-        height: `${size}px`,
+        boxSize: `${size}px`,
         lineHeight: `${size}px`
       }
     : undefined
-
-  const initialsColor = initials ? { background: string2Color(initials) } : undefined
 
   return (
     <AvatarWrapper
       css={{
         ...customSizeCss,
-        ...initialsColor,
+        ...initialsObj?.color,
         ...style
       }}
+      default={!src && !initials}
       shape={shape}
       size={isCustomSize ? undefined : (size as AvatarSize)}
       className={className}

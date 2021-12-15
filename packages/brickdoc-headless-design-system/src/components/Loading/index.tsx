@@ -1,6 +1,6 @@
 import React from 'react'
 import mp4Url from './assets/loading.mp4'
-import { styled } from '../../themes'
+import { styled, theme } from '../../themes'
 
 export interface LoadingProps {
   delayDuration?: number
@@ -13,7 +13,8 @@ const Launcher = styled('div', {
   height: '100vh',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  backgroundColor: theme.colors.white
 })
 
 export const Loading: React.FC<LoadingProps> = ({ delayDuration, style, className }) => {

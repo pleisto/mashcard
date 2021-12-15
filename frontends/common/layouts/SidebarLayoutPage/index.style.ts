@@ -61,8 +61,7 @@ export const base = {
       flexDirection: 'column',
       '--brd-editor-max-width': '960px',
       borderRadius: '2px',
-      border: '0.2px solod #fff',
-      boxShadow: theme.shadows.refractionPrimary
+      include: ['ceramicSecondary']
     }
   },
   '& > aside': {

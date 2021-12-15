@@ -15,8 +15,28 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Docs', ['Introduction', 'Design Token'], 'Components']
+      order: ['Docs', ['Introduction', 'Design Token'], 'Components', ['*', 'Utils'], 'Brickdoc Components']
     }
+  },
+  backgrounds: {
+    values: [
+      {
+        name: 'Ceramic Primary',
+        value: 'var(--brd-colors-ceramicPrimary)'
+      },
+      {
+        name: 'Ceramic Secondary',
+        value: 'var(--brd-colors-ceramicSecondary)'
+      },
+      {
+        name: 'Ceramic Thirdary',
+        value: 'var(--brd-colors-ceramicThirdary)'
+      },
+      {
+        name: 'Ceramic Quaternary',
+        value: 'var(--brd-colors-ceramicQuaternary)'
+      }
+    ]
   }
 }
 export const decorators = [

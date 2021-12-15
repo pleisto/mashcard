@@ -5,7 +5,8 @@ module.exports = {
     '@storybook/addon-essentials',
     'storybook-addon-designs',
     '@storybook/addon-a11y',
-    'storybook-addon-performance/register'
+    'storybook-addon-performance/register',
+    '@pxblue/storybook-rtl-addon/register'
   ],
   framework: '@storybook/react',
   core: {

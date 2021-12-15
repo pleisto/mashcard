@@ -63,3 +63,9 @@ imageAvatar.args = {
   src: 'https://i.pravatar.cc/150?img=42',
   alt: 'John Smith Avatar'
 }
+
+export const AnonymousAvatar = Template.bind({})
+AnonymousAvatar.args = {
+  initials: undefined,
+  src: undefined
+}

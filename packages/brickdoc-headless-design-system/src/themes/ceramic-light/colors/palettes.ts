@@ -18,36 +18,33 @@ export const Palettes = {
    * Red
    */
   ...generatePalette('red', '#d43730'),
-
-  /**
-   * Scarlet
-   */
-  ...generatePalette('scarlet', '#df5641'),
-  scarlet2: '#fee5e1',
-  scarlet3: '#fdcec7',
-  scarlet8: '#bc4837',
-  scarlet9: '#8b3528',
+  red7: '#b0160e',
 
   /**
    * Orange
    */
-  ...generatePalette('orange', '#fb8c00'),
+  ...generatePalette('orange', '#ff6d00'),
+  orange1: '#fff5ed',
+  orange9: '#933610',
 
   /**
    * Yellow
    */
   ...generatePalette('yellow', '#ffd84e'),
+  yellow1: '#fffbf0',
 
   /**
    * Green
    */
   ...generatePalette('green', '#2cad94'),
+  green1: '#edfffb',
 
   /**
    * Cyan
    */
   ...generatePalette('cyan', '#39b3e8'),
   cyan1: '#f8fbff',
+  cyan9: '#095b85',
 
   /**
    * Blue
@@ -58,7 +55,7 @@ export const Palettes = {
    * Deep Purple
    */
   ...generatePalette('deepPurple', '#3a3642'),
-  deepPurple9: '#292323',
+  deepPurple9: '#0f0a15',
 
   /**
    * Purple
@@ -68,8 +65,5 @@ export const Palettes = {
   /**
    * Pink
    */
-  ...generatePalette('pink', '#ad1457'),
-  pink2: '#efcde1',
-  pink3: '#e2a4c8',
-  pink4: '#c55998'
+  ...generatePalette('pink', '#d81b60')
 }

@@ -1,7 +1,11 @@
 import { Palettes } from './palettes'
-import { Tokens } from './tokens'
+import { Atomics } from './atomics'
+import { Semantics } from './semantics'
+import { Ceramics } from './ceramics'
 
 export const colors = {
   ...Palettes,
-  ...Tokens
+  ...Atomics,
+  ...Semantics,
+  ...Ceramics
 }

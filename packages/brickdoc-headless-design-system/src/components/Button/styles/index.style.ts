@@ -1,13 +1,12 @@
-import { theme } from '../../../themes'
+import { theme, css } from '../../../themes'
 import { size } from './size.style'
 import { state } from './state.style'
 import { type } from './types.style'
 
-export const baseStyles = {
+export const buttonStyle = css({
+  include: ['flexCenter'],
   lineHeight: theme.space.xxl,
   display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
   margin: 0,
   cursor: 'pointer',
   userSelect: 'none',
@@ -23,11 +22,10 @@ export const baseStyles = {
   whiteSpace: 'nowrap',
   touchAction: 'manipulation',
   transition: `all .3s ${theme.transitions.easeInOut}`,
-  isolation: 'isolation'
-}
-
-export const variants = {
-  type,
-  size,
-  ...state
-}
+  isolation: 'isolation',
+  variants: {
+    type,
+    size,
+    ...state
+  }
+})

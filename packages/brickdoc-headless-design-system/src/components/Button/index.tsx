@@ -3,7 +3,7 @@ import { useButton } from '@react-aria/button'
 import { AriaButtonProps } from '@react-types/button'
 import { LoadingIcon } from './LoadingIcon'
 import { styled } from '../../themes'
-import { variants, baseStyles } from './styles/index.style'
+import { buttonStyle } from './styles/index.style'
 
 export type Size = 'large' | 'medium' | 'small'
 export type BtnType = 'primary' | 'secondary' | 'danger' | 'text'
@@ -51,10 +51,7 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'type'> {
 
 type Loading = number | boolean
 
-const ButtonRoot = styled('button', {
-  ...baseStyles,
-  variants
-})
+const ButtonRoot = styled('button', buttonStyle)
 
 /** Button
  * @example

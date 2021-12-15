@@ -44,8 +44,8 @@ export const state = {
     },
     large: {
       ...circleBase,
-      width: theme.space._4xl,
-      height: theme.space._4xl
+      width: '32px',
+      height: '32px'
     }
   },
   hasIcon: {
