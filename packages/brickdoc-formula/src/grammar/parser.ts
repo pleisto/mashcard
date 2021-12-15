@@ -1,7 +1,7 @@
 import { CstParser, defaultParserErrorProvider, IParserErrorMessageProvider } from 'chevrotain'
-import { Argument, ContextInterface } from '..'
+import { tokensByMode } from '.'
+import { Argument, ContextInterface, ParseMode } from '..'
 import {
-  allTokens,
   AdditionOperator,
   MultiplicationOperator,
   NumberLiteral,
@@ -24,11 +24,13 @@ import {
   DoubleColon,
   Dot,
   Ampersand,
-  EqualCompareOperator
+  EqualCompareOperator,
+  Semicolon
 } from './lexer'
 
 interface ParserConfig {
   readonly formulaContext?: ContextInterface
+  readonly mode?: ParseMode
 }
 
 const errorProvider: IParserErrorMessageProvider = {
@@ -53,25 +55,39 @@ const errorProvider: IParserErrorMessageProvider = {
 
 export class FormulaParser extends CstParser {
   formulaContext?: ContextInterface
+  mode: ParseMode = 'oneline'
 
   // Unfortunately no support for class fields with initializer in ES2015, only in esNext...
   // so the parsing rules are defined inside the constructor, as each parsing rule must be initialized by
   // invoking RULE(...)
   // see: https://github.com/jeffmo/es-class-fields-and-static-properties
-  constructor({ formulaContext }: ParserConfig) {
-    super(allTokens, {
+  constructor({ formulaContext, mode }: ParserConfig) {
+    const tokens = tokensByMode(mode)
+    super(tokens, {
       maxLookahead: 3,
       recoveryEnabled: true,
       errorMessageProvider: errorProvider
     })
 
     this.formulaContext = formulaContext
+    if (mode) {
+      this.mode = mode
+    }
     this.performSelfAnalysis()
   }
 
   public startExpression = this.RULE('startExpression', () => {
     this.CONSUME(Equal)
     this.SUBRULE(this.expression)
+  })
+
+  public multilineExpression = this.RULE('multilineExpression', () => {
+    this.CONSUME(Equal)
+    this.SUBRULE(this.expression, { LABEL: 'lhs' })
+    this.MANY(() => {
+      this.CONSUME(Semicolon)
+      this.SUBRULE2(this.expression, { LABEL: 'rhs' })
+    })
   })
 
   public expression = this.RULE('expression', () => {
@@ -155,10 +171,7 @@ export class FormulaParser extends CstParser {
   })
 
   public predicateExpression = this.RULE('predicateExpression', () => {
-    this.OR([
-      { ALT: () => this.CONSUME(EqualCompareOperator) },
-      { ALT: () => this.CONSUME(CompareOperator) },
-    ])
+    this.OR([{ ALT: () => this.CONSUME(EqualCompareOperator) }, { ALT: () => this.CONSUME(CompareOperator) }])
 
     this.SUBRULE(this.atomicExpression)
   })

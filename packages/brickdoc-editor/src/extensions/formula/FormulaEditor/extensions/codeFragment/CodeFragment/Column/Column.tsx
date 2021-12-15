@@ -12,8 +12,14 @@ export const Column: React.FC<ColumnProps> = ({
   }
 }) => {
   return (
-    <span className="brickdoc-formula-column">
-      <span className="brickdoc-formula-column-content">{`${spreadsheetName}.${name}`}</span>
+    <span>
+      <span className="brickdoc-formula-spreadsheet">
+        <span className="brickdoc-formula-spreadsheet-content">{spreadsheetName}</span>
+      </span>
+      .
+      <span className="brickdoc-formula-column">
+        <span className="brickdoc-formula-column-content">{name}</span>
+      </span>
     </span>
   )
 }

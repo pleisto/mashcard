@@ -1,4 +1,5 @@
 import { createToken, ILexerErrorMessageProvider, IToken, Lexer, TokenType } from 'chevrotain'
+import { ParseMode } from '..'
 
 export const EqualCompareOperator = createToken({ name: 'EqualCompareOperator', pattern: Lexer.NA })
 export const CompareOperator = createToken({ name: 'CompareOperator', pattern: Lexer.NA })
@@ -155,6 +156,8 @@ export const StringLiteral = createToken({
 
 export const Comma = createToken({ name: 'Comma', pattern: /,/ })
 
+export const Semicolon = createToken({ name: 'Semicolon', pattern: /;/ })
+
 export const DoubleColon = createToken({ name: 'Colon', pattern: /::/ })
 
 export const FunctionName = createToken({
@@ -177,7 +180,7 @@ export const WhiteSpace = createToken({
   group: Lexer.SKIPPED
 })
 
-export const allTokens = [
+const tokensBeforeSemicolon = [
   WhiteSpace, // whitespace is normally very common so it should be placed first to speed up the lexer's performance
 
   And, // and &&
@@ -226,13 +229,18 @@ export const allTokens = [
   NumberLiteral,
   BooleanLiteral,
   StringLiteral,
-  Comma, // ,
+  Comma // ,
+]
 
+const tokensAfterSemicolon = [
   // FunctionName,
   FunctionName,
 
   AnyName
 ]
+
+const allOnelineTokens = [...tokensBeforeSemicolon, ...tokensAfterSemicolon]
+const allMultilineTokens = [...tokensBeforeSemicolon, Semicolon, ...tokensAfterSemicolon]
 
 const errorProvider: ILexerErrorMessageProvider = {
   // eslint-disable-next-line max-params
@@ -248,12 +256,23 @@ const errorProvider: ILexerErrorMessageProvider = {
   }
 }
 
-export const FormulaLexer = new Lexer(allTokens, {
+const OnelineFormulaLexer = new Lexer(allOnelineTokens, {
   errorMessageProvider: errorProvider,
   ensureOptimizations: false
 })
 
-export const tokenVocabulary = allTokens.reduce((o: { [key: string]: TokenType }, acc) => {
+const MultilineFormulaLexer = new Lexer(allMultilineTokens, {
+  errorMessageProvider: errorProvider,
+  ensureOptimizations: false
+})
+
+export const tokensByMode = (mode: ParseMode | undefined): TokenType[] =>
+  mode === 'multiline' ? allMultilineTokens : allOnelineTokens
+
+export const lexerByMode = (mode: ParseMode | undefined): Lexer =>
+  mode === 'multiline' ? MultilineFormulaLexer : OnelineFormulaLexer
+
+export const tokenVocabulary = allOnelineTokens.reduce((o: { [key: string]: TokenType }, acc) => {
   o[acc.name] = acc
   return o
 }, {})

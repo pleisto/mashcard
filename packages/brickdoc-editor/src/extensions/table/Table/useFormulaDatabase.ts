@@ -13,18 +13,19 @@ export function useFormulaDatabase(
 ): void {
   // TODO pass column Type
   React.useEffect(() => {
+    const spreadsheetName = title ?? 'Untitled'
     const columns: ColumnType[] = tableColumns.map(column => ({
       namespaceId: blockId,
       columnId: column.accessor as string,
       name: column.Header as string,
-      spreadsheetName: title,
+      spreadsheetName,
       type: (column as any).columnType,
       index: (column as any).index
     }))
 
     const database: Database = {
       blockId,
-      name: () => title ?? 'untitled',
+      name: () => spreadsheetName,
       columnCount: () => columns.length,
       rowCount: () => tableData.length,
       _data: () => ({

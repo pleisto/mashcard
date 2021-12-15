@@ -515,6 +515,15 @@ Object {
                 "type": "any",
               },
               Object {
+                "code": "Minus",
+                "errors": Array [],
+                "meta": undefined,
+                "name": "-",
+                "spaceAfter": false,
+                "spaceBefore": true,
+                "type": "any",
+              },
+              Object {
                 "code": "NumberLiteral",
                 "errors": Array [],
                 "meta": undefined,

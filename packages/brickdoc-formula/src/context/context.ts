@@ -20,7 +20,6 @@ import {
   buildFunctionKey,
   DefaultVariableName,
   CodeFragment,
-  FormulaLexer,
   FormulaParser,
   ExampleWithCodeFragments,
   BaseFunctionClause,
@@ -36,7 +35,7 @@ import {
   column2completion
 } from '..'
 import { BUILTIN_CLAUSES } from '../functions'
-import { CodeFragmentVisitor } from '../grammar'
+import { CodeFragmentVisitor, lexerByMode } from '../grammar'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>
@@ -322,7 +321,7 @@ export class FormulaContext implements ContextInterface {
   }
 
   private readonly parseCodeFragments = (input: string): CodeFragment[] => {
-    const lexResult: ILexingResult = FormulaLexer.tokenize(input)
+    const lexResult: ILexingResult = lexerByMode('oneline').tokenize(input)
     if (lexResult.errors.length > 0) {
       return []
     }

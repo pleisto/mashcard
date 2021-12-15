@@ -1,4 +1,4 @@
-import { complete, FormulaLexer, parse, quickInsert } from '..'
+import { complete, lexerByMode, parse, quickInsert } from '..'
 import { CodeFragment } from '../..'
 import { FormulaContext } from '../../context'
 
@@ -27,7 +27,7 @@ describe('Complete', () => {
 
   it('basic', () => {
     const input = '=123'
-    const lexResult = FormulaLexer.tokenize(input)
+    const lexResult = lexerByMode('oneline').tokenize(input)
     const tokens = lexResult.tokens
     const codeFragments: CodeFragment[] = []
 

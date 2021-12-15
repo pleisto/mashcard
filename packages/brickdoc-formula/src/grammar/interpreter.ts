@@ -48,6 +48,20 @@ export class FormulaInterpreter extends BaseCstVisitor {
     return this.visit(ctx.expression)
   }
 
+  multilineExpression(ctx: { lhs: CstNode | CstNode[]; rhs: any }): AnyTypeValue {
+    let result = this.visit(ctx.lhs)
+
+    if (!ctx.rhs) {
+      return result
+    }
+
+    ctx.rhs.forEach((rhs: CstNode | CstNode[]) => {
+      result = this.visit(rhs)
+    })
+
+    return result
+  }
+
   expression(ctx: { combineExpression: CstNode | CstNode[] }): AnyTypeValue {
     return this.visit(ctx.combineExpression)
   }

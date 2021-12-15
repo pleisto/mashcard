@@ -1187,7 +1187,9 @@ Object {
     "name": [Function],
     "rowCount": [Function],
   },
-  "replace": "",
+  "replacements": Array [
+    "MyTable",
+  ],
   "value": "$28e28190-63bd-4f70-aeca-26e72574c01a",
   "weight": 10,
 }
@@ -1237,7 +1239,9 @@ Object {
     "returns": "number",
     "testCases": Array [],
   },
-  "replace": "",
+  "replacements": Array [
+    "SUM",
+  ],
   "value": "SUM",
   "weight": 250,
 }
@@ -1256,7 +1260,12 @@ Object {
     "spreadsheetName": "MyTable",
     "type": "foo",
   },
-  "replace": "$28e28190-63bd-4f70-aeca-26e72574c01a.",
+  "replacements": Array [
+    "first",
+    "$28e28190-63bd-4f70-aeca-26e72574c01a.first",
+    "$28e28190-63bd-4f70-aeca-26e72574c01a.",
+    "$28e28190-63bd-4f70-aeca-26e72574c01a",
+  ],
   "value": "$28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
   "weight": 997,
 }
@@ -1306,7 +1315,9 @@ Object {
     "returns": "number",
     "testCases": Array [],
   },
-  "replace": "",
+  "replacements": Array [
+    "COLUMN_COUNT",
+  ],
   "value": "COLUMN_COUNT",
   "weight": 250,
 }

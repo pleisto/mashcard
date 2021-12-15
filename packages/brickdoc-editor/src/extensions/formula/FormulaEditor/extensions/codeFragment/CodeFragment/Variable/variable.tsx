@@ -21,8 +21,14 @@ export const Variable: React.FC<VariableProps> = ({
     )
   } else {
     return (
-      <span className="brickdoc-formula-variable">
-        <span className="brickdoc-formula-variable-content">{`${namespace}::${name}`}</span>
+      <span>
+        <span className="brickdoc-formula-spreadsheet">
+          <span className="brickdoc-formula-spreadsheet-content">{namespace}</span>
+        </span>
+        .
+        <span className="brickdoc-formula-variable">
+          <span className="brickdoc-formula-variable-content">{name}</span>
+        </span>
       </span>
     )
   }

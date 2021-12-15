@@ -1,11 +1,12 @@
 import type { IToken } from 'chevrotain'
-import type {
+import {
   CodeFragment,
   Completion,
   ContextInterface,
   FormulaType,
   NamespaceId,
   SpreadsheetCodeFragment,
+  spreadsheetKey,
   VariableId
 } from '..'
 
@@ -80,37 +81,39 @@ export const complete = ({
 
   if (['other', 'NumberLiteral'].includes(code)) {
     completions = completions.map(c => {
+      const replacements = c.kind === 'column' ? [`${spreadsheetKey(c.preview.namespaceId)}.${name}`, name] : [name]
+
       if (c.name === name) {
-        return { ...c, weight: c.weight + 1000, replace: c.replace.concat(name) }
+        return { ...c, weight: c.weight + 1000, replacements: [...replacements, ...c.replacements] }
       }
 
       const cname = c.name.toLowerCase()
       if (cname === lowerCaseName) {
-        return { ...c, weight: c.weight + 500, replace: c.replace.concat(name) }
+        return { ...c, weight: c.weight + 500, replacements: [...replacements, ...c.replacements] }
       }
 
       if (cname.startsWith(lowerCaseName)) {
-        return { ...c, weight: c.weight + 100, replace: c.replace.concat(name) }
+        return { ...c, weight: c.weight + 100, replacements: [...replacements, ...c.replacements] }
       }
 
       if (cname.includes(lowerCaseName)) {
-        return { ...c, weight: c.weight + 10, replace: c.replace.concat(name) }
+        return { ...c, weight: c.weight + 10, replacements: [...replacements, ...c.replacements] }
       }
 
       if (c.name === lastTokenText) {
-        return { ...c, weight: c.weight + 1000, replace: c.replace.concat(lastTokenText) }
+        return { ...c, weight: c.weight + 1000, replacements: [...replacements, ...c.replacements] }
       }
 
       if (cname === lastTokenText) {
-        return { ...c, weight: c.weight + 500, replace: c.replace.concat(lastTokenText) }
+        return { ...c, weight: c.weight + 500, replacements: [...replacements, ...c.replacements] }
       }
 
       if (cname.startsWith(lastTokenText)) {
-        return { ...c, weight: c.weight + 100, replace: c.replace.concat(lastTokenText) }
+        return { ...c, weight: c.weight + 100, replacements: [...replacements, ...c.replacements] }
       }
 
       if (cname.includes(lastTokenText)) {
-        return { ...c, weight: c.weight + 10, replace: c.replace.concat(lastTokenText) }
+        return { ...c, weight: c.weight + 10, replacements: [...replacements, ...c.replacements] }
       }
 
       return c

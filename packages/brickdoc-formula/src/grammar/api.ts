@@ -5,7 +5,6 @@ import {
   ErrorVariableValue,
   Formula,
   ContextInterface,
-  FormulaLexer,
   FunctionClause,
   SuccessVariableValue,
   VariableClass,
@@ -19,7 +18,9 @@ import {
   Completion,
   AnyTypeValue,
   ParseErrorType,
-  CodeFragmentResult
+  CodeFragmentResult,
+  ParseMode,
+  lexerByMode
 } from '..'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
@@ -29,6 +30,7 @@ export interface ParseInput {
   readonly meta: VariableMetadata
   readonly activeCompletion?: Completion
   readonly formulaContext?: ContextInterface
+  readonly mode?: ParseMode
 }
 
 export interface BaseParseResult {
@@ -97,6 +99,7 @@ export type InterpretResult = SuccessInterpretResult | ErrorInterpretResult
 
 export const parse = ({
   formulaContext,
+  mode,
   meta: { namespaceId, variableId, input, name },
   activeCompletion
 }: ParseInput): ParseResult => {
@@ -120,20 +123,25 @@ export const parse = ({
   const baseCompletion = formulaContext?.completions(namespaceId, variableId) ?? []
   let completions: Completion[] = baseCompletion
 
-  const parser = new FormulaParser({ formulaContext })
+  const parseRule = mode === 'multiline' ? 'multilineExpression' : 'startExpression'
+
+  const parser = new FormulaParser({ formulaContext, mode })
   const codeFragmentVisitor = new CodeFragmentVisitor({ formulaContext })
 
-  let lexResult: ILexingResult = FormulaLexer.tokenize(input)
+  const lexer = lexerByMode(mode)
+
+  let lexResult: ILexingResult = lexer.tokenize(input)
   let tokens = lexResult.tokens
 
   const endChar = input[input.length - 1]
   // console.log({ endChar, input })
 
-  if (['.', ' ', ','].includes(endChar)) {
-    const index = endChar === '.' ? tokens.length - 2 : tokens.length - 1
+  if (['.', ' ', ',', '(', ')'].includes(endChar)) {
+    const index = endChar === ' ' ? tokens.length - 1 : tokens.length - 2
     const lastToken = tokens[index]
 
-    const currentCompletion = activeCompletion
+    // const currentCompletion = activeCompletion
+    const currentCompletion = completions.find(completion => completion.name === lastToken.image)
 
     // console.log({ endChar, lastToken, input, tokens, currentCompletion })
     if (lastToken && currentCompletion && currentCompletion.name === lastToken.image) {
@@ -143,7 +151,7 @@ export const parse = ({
         .concat(currentCompletion.value)
         .concat(endChar)
 
-      lexResult = FormulaLexer.tokenize(newInput)
+      lexResult = lexer.tokenize(newInput)
       tokens = lexResult.tokens
     }
   }
@@ -151,7 +159,7 @@ export const parse = ({
   parser.input = tokens
   const inputImage = tokens.map(t => t.image).join('')
 
-  const cst: CstNode = parser.startExpression()
+  const cst: CstNode = parser[parseRule]()
   const { codeFragments, image }: CodeFragmentResult = codeFragmentVisitor.visit(cst, {
     type: 'any'
   })

@@ -1,10 +1,12 @@
-import { tokenVocabulary, FormulaLexer } from '..'
+import { tokenVocabulary, lexerByMode } from '..'
 import { tokenMatcher } from 'chevrotain'
+
+const lexer = lexerByMode('oneline')
 
 describe('lex', () => {
   it('Can Lex a simple input', () => {
     const inputText = '= 1 + 1'
-    const lexingResult = FormulaLexer.tokenize(inputText)
+    const lexingResult = lexer.tokenize(inputText)
 
     expect(lexingResult.errors).toEqual([])
 
