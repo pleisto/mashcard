@@ -18,6 +18,7 @@ const ERROR_CLAUSE: BasicFunctionClause<'Error'> = {
   name: 'ERROR',
   async: false,
   pure: false,
+  acceptError: false,
   effect: false,
   examples: [{ input: '=ERROR("foo bar")', output: { type: 'Error', result: 'foo bar', errorKind: 'custom' } }],
   description: 'Returns an error with the given message.',
@@ -33,6 +34,7 @@ const IFERROR_CLAUSE: BasicFunctionClause<any> = {
   name: 'IFERROR',
   async: false,
   pure: false,
+  acceptError: true,
   effect: false,
   examples: [
     { input: '=IFERROR(1, "foo bar")', output: { type: 'number', result: 1 } },

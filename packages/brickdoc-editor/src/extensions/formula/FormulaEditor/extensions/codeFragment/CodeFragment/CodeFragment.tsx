@@ -15,6 +15,7 @@ import { Function } from './Function/function'
 import { BooleanLiteral } from './BooleanLiteral/BooleanLiteral'
 import { Spreadsheet } from './Spreadsheet/Spreadsheet'
 import { Column } from './Column/Column'
+import { NullLiteral } from './NullLiteral/NullLiteral'
 
 export interface CodeFragmentProps extends NodeViewProps {}
 
@@ -28,6 +29,8 @@ const renderContent = (codeFragment: CodeFragmentWithBlockId, content: string): 
       return <NumberLiteral content={content} />
     case 'BooleanLiteral':
       return <BooleanLiteral content={content} />
+    case 'NullLiteral':
+      return <NullLiteral content={content} />
     case 'Variable':
       return <Variable codeFragment={codeFragment as VariableCodeFragment & { blockId: string }} />
     case 'Function':

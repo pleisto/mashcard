@@ -1,5 +1,5 @@
 import { parse, interpret, Database, Column, Row } from '../..'
-import { FormulaContext } from '../../context'
+import { DatabaseFactory, FormulaContext } from '../../context'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
@@ -17,48 +17,47 @@ const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 const meta = { namespaceId, variableId, name: 'example' }
 
 const tableData: Row[] = [
-  { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', [thirdColumnId]: '3', sort: 100 },
-  { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', [thirdColumnId]: '', sort: 100 },
-  { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', [thirdColumnId]: '9', sort: 100 }
+  { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', [thirdColumnId]: '3', sort: '100' },
+  { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', [thirdColumnId]: '', sort: '100' },
+  { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', [thirdColumnId]: 'Foo', sort: '100' }
 ]
 const columns: Column[] = [
   {
     namespaceId: databaseNamespaceId,
     columnId: firstColumnId,
     spreadsheetName: 'MyTable',
-    type: 'foo',
+    type: 'text',
     name: 'first',
-    index: 0
+    index: 0,
+    rows: tableData.map(row => row[firstColumnId])
   },
   {
     namespaceId: databaseNamespaceId,
     columnId: secondColumnId,
     spreadsheetName: 'MyTable',
-    type: 'foo',
+    type: 'text',
     name: 'second',
-    index: 1
+    index: 1,
+    rows: tableData.map(row => row[secondColumnId])
   },
   {
     namespaceId: databaseNamespaceId,
     columnId: thirdColumnId,
     spreadsheetName: 'MyTable',
-    type: 'foo',
+    type: 'text',
     name: 'third',
-    index: 2
+    index: 2,
+    rows: tableData.map(row => row[thirdColumnId])
   }
 ]
 
-const database: Database = {
+const database: Database = new DatabaseFactory({
   name: () => 'MyTable',
+  dynamic: false,
   blockId: databaseNamespaceId,
-  columnCount: () => columns.length,
-  rowCount: () => tableData.length,
-  _data: () => ({}),
   listColumns: () => columns,
-  listRows: () => tableData,
-  getColumn: columnId => columns.find(col => col.columnId === columnId),
-  getRow: rowId => tableData.find(row => row.id === rowId)
-}
+  listRows: () => tableData
+})
 
 interface TestCase {
   input: string
@@ -66,8 +65,20 @@ interface TestCase {
   value: any
 }
 
+const SNAPSHOT_FLAG = '<SNAPSHOT>'
+
 const testCases: TestCase[] = [
   { label: 'column', input: `=$${databaseNamespaceId}#${firstColumnId}`, value: columns[0] },
+  { label: 'in database true', input: `=3 in $${databaseNamespaceId}`, value: true },
+  { label: 'toArray', input: `=$${databaseNamespaceId}.toArray()`, value: SNAPSHOT_FLAG },
+  { label: 'toRecord', input: `=$${databaseNamespaceId}.toRecord()`, value: SNAPSHOT_FLAG },
+  { label: 'Table', input: `=Table([]).toArray()`, value: SNAPSHOT_FLAG },
+  { label: 'Table', input: `=Table([1,2,3]).toArray()`, value: SNAPSHOT_FLAG },
+  { label: 'Table', input: `=Table([{a: 1}, {a: 2}]).toArray()`, value: SNAPSHOT_FLAG },
+  { label: 'in database false', input: `=4 in $${databaseNamespaceId}`, value: false },
+  { label: 'in column true', input: `=3 in $${databaseNamespaceId}#${secondColumnId}`, value: false },
+  { label: 'in column false', input: `=4 in $${databaseNamespaceId}#${secondColumnId}`, value: true },
+  { label: 'exactin column true', input: `="foo" in $${databaseNamespaceId}#${thirdColumnId}`, value: true },
   { label: 'COLUMN_COUNT', input: `=$${databaseNamespaceId}.COLUMN_COUNT()`, value: 3 },
   { label: 'SUM', input: `=$${databaseNamespaceId}#${firstColumnId}.SUM()`, value: 1 + 3 + 5 },
   { label: 'MAX', input: `=$${databaseNamespaceId}#${firstColumnId}.MAX()`, value: 5 },
@@ -141,8 +152,22 @@ describe('Database Functions', () => {
       const { codeFragments, cst, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext })
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      expect((await interpret({ cst, meta: newMeta, formulaContext })).variableValue.result.result).toEqual(value)
+      const result = (await interpret({ cst, meta: newMeta, formulaContext })).variableValue.result.result
+      if (value === SNAPSHOT_FLAG) {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(result).toMatchSnapshot()
+      } else {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(result).toEqual(value)
+      }
     })
+  })
+
+  it('Database Factory', () => {
+    expect(database.listColumns()).toMatchSnapshot()
+    expect(database.listRows()).toMatchSnapshot()
+    expect(database.toArray()).toMatchSnapshot()
+    expect(database.toRecord()).toMatchSnapshot()
   })
 
   it('completion', () => {

@@ -25,7 +25,14 @@ import {
   Dot,
   Ampersand,
   EqualCompareOperator,
-  Semicolon
+  Semicolon,
+  InOperator,
+  LBracket,
+  RBracket,
+  NullLiteral,
+  LBrace,
+  RBrace,
+  Colon
 } from './lexer'
 
 interface ParserConfig {
@@ -119,9 +126,17 @@ export class FormulaParser extends CstParser {
   })
 
   public compareExpression = this.RULE('compareExpression', () => {
-    this.SUBRULE(this.concatExpression, { LABEL: 'lhs' })
+    this.SUBRULE(this.inExpression, { LABEL: 'lhs' })
     this.MANY(() => {
       this.CONSUME(CompareOperator)
+      this.SUBRULE2(this.inExpression, { LABEL: 'rhs' })
+    })
+  })
+
+  public inExpression = this.RULE('inExpression', () => {
+    this.SUBRULE(this.concatExpression, { LABEL: 'lhs' })
+    this.OPTION(() => {
+      this.CONSUME(InOperator)
       this.SUBRULE2(this.concatExpression, { LABEL: 'rhs' })
     })
   })
@@ -161,6 +176,8 @@ export class FormulaParser extends CstParser {
   public atomicExpression = this.RULE('atomicExpression', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.parenthesisExpression) },
+      { ALT: () => this.SUBRULE(this.arrayExpression) },
+      { ALT: () => this.SUBRULE(this.recordExpression) },
       { ALT: () => this.SUBRULE(this.constantExpression) },
       { ALT: () => this.SUBRULE(this.variableExpression) },
       { ALT: () => this.SUBRULE(this.columnExpression) },
@@ -168,6 +185,33 @@ export class FormulaParser extends CstParser {
       { ALT: () => this.SUBRULE(this.FunctionCall) },
       { ALT: () => this.SUBRULE(this.predicateExpression) }
     ])
+  })
+
+  public arrayExpression = this.RULE('arrayExpression', () => {
+    this.CONSUME(LBracket)
+    this.OPTION(() => {
+      this.SUBRULE2(this.Arguments)
+    })
+    this.CONSUME(RBracket)
+  })
+
+  public recordExpression = this.RULE('recordExpression', () => {
+    this.CONSUME(LBrace)
+
+    this.MANY_SEP({
+      SEP: Comma,
+      DEF: () => {
+        this.SUBRULE(this.recordField)
+      }
+    })
+
+    this.CONSUME(RBrace)
+  })
+
+  public recordField = this.RULE('recordField', () => {
+    this.OR([{ ALT: () => this.CONSUME(StringLiteral) }, { ALT: () => this.CONSUME(FunctionName) }])
+    this.CONSUME(Colon)
+    this.SUBRULE(this.expression)
   })
 
   public predicateExpression = this.RULE('predicateExpression', () => {
@@ -199,7 +243,8 @@ export class FormulaParser extends CstParser {
     this.OR([
       { ALT: () => this.SUBRULE(this.NumberLiteralExpression) },
       { ALT: () => this.SUBRULE(this.BooleanLiteralExpression) },
-      { ALT: () => this.CONSUME(StringLiteral) }
+      { ALT: () => this.CONSUME(StringLiteral) },
+      { ALT: () => this.CONSUME(NullLiteral) }
     ])
   })
 

@@ -178,9 +178,12 @@ describe('Complete', () => {
       meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
     })
 
-    expect(inputImage).toEqual(`=1+$${namespaceId}@${variableId}.`)
-    expect(parseImage).toEqual(`=1+$${namespaceId}@${variableId}.`)
-    expect(newInput).toEqual(`= 1 + $${namespaceId}@${variableId}.`)
+    expect({ inputImage, parseImage, newInput }).toEqual({
+      inputImage: `=1+$${namespaceId}@${variableId}.`,
+      parseImage: `=1+$${namespaceId}@${variableId}.`,
+      newInput: `= 1 + $${namespaceId}@${variableId}.`
+    })
+
     expect(errorMessages[0]!.message).toEqual('TODO mismatch token FunctionCall')
     expect(valid).toBe(true)
     expect(codeFragments).toMatchSnapshot()

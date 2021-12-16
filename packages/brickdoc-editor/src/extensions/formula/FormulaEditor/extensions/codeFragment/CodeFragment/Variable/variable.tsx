@@ -12,7 +12,7 @@ export const Variable: React.FC<VariableProps> = ({
     meta: { name, namespaceId, namespace }
   }
 }) => {
-  console.log({ blockId, name, namespaceId, namespace })
+  // console.log({ blockId, name, namespaceId, namespace })
   if (blockId === namespaceId) {
     return (
       <span className="brickdoc-formula-variable">

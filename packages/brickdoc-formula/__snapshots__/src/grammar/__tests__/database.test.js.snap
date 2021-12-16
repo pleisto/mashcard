@@ -38,7 +38,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -59,7 +59,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -87,7 +87,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -130,7 +130,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -151,7 +151,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -179,7 +179,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -232,7 +232,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -285,7 +285,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -338,7 +338,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -381,7 +381,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -400,7 +400,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -443,7 +443,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -471,7 +471,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -524,7 +524,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -577,7 +577,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -620,7 +620,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -641,7 +641,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -669,7 +669,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -712,7 +712,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -733,7 +733,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -752,7 +752,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -795,7 +795,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -817,10 +817,490 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
+
+exports[`Database Functions [Table] =Table([]).toArray() 1`] = `
+Array [
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "Table",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LBracket",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "[",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "RBracket",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "]",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "toArray",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [Table] =Table([]).toArray() 2`] = `
+Array [
+  Object {
+    "result": Array [
+      Object {
+        "result": "Column1",
+        "type": "string",
+      },
+      Object {
+        "result": "Column2",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "1",
+        "type": "string",
+      },
+      Object {
+        "result": "2",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "3",
+        "type": "string",
+      },
+      Object {
+        "result": "4",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [Table] =Table([{a: 1}, {a: 2}]).toArray() 1`] = `
+Array [
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "Table",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LBracket",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "[",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LBrace",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "{",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "FunctionName",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Colon",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ":",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "RBrace",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "}",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "Comma",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ",",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LBrace",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "{",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "FunctionName",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Colon",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ":",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "2",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "RBrace",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "}",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "RBracket",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "]",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "toArray",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [Table] =Table([{a: 1}, {a: 2}]).toArray() 2`] = `
+Array [
+  Object {
+    "result": Array [
+      Object {
+        "result": "a",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "1",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "2",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [Table] =Table([1,2,3]).toArray() 1`] = `
+Array [
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "Table",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LBracket",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "[",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "1",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Comma",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ",",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "2",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "Comma",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ",",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "3",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "RBracket",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "]",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "toArray",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [Table] =Table([1,2,3]).toArray() 2`] = `"Table must be an array of records"`;
 
 exports[`Database Functions [VLOOKUP Column check] =VLOOKUP("", $28e28190-63bd-4f70-aeca-26e72574c01a, $28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6) 1`] = `
 Array [
@@ -857,7 +1337,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -878,7 +1358,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -900,7 +1380,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "string",
   },
 ]
 `;
@@ -940,7 +1420,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -961,7 +1441,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -983,7 +1463,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "string",
   },
 ]
 `;
@@ -1023,7 +1503,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -1044,7 +1524,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -1066,7 +1546,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "string",
   },
 ]
 `;
@@ -1106,7 +1586,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -1127,7 +1607,7 @@ Array [
     "meta": undefined,
     "name": ",",
     "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
@@ -1149,7 +1629,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "string",
   },
 ]
 `;
@@ -1171,21 +1651,515 @@ Array [
 ]
 `;
 
+exports[`Database Functions [exactin column true] ="foo" in $28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64 1`] = `
+Array [
+  Object {
+    "code": "StringLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "\\"foo\\"",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "string",
+  },
+  Object {
+    "code": "In",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "in",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "Column",
+    "errors": Array [],
+    "meta": Object {
+      "name": "third",
+      "spreadsheetName": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Column",
+  },
+]
+`;
+
+exports[`Database Functions [in column false] =4 in $28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "4",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "In",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "in",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "Column",
+    "errors": Array [],
+    "meta": Object {
+      "name": "second",
+      "spreadsheetName": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Column",
+  },
+]
+`;
+
+exports[`Database Functions [in column true] =3 in $28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "3",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "In",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "in",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "Column",
+    "errors": Array [],
+    "meta": Object {
+      "name": "second",
+      "spreadsheetName": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Column",
+  },
+]
+`;
+
+exports[`Database Functions [in database false] =4 in $28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "4",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "In",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "in",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Spreadsheet",
+  },
+]
+`;
+
+exports[`Database Functions [in database true] =3 in $28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
+Array [
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "3",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "In",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "in",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Spreadsheet",
+  },
+]
+`;
+
+exports[`Database Functions [toArray] =$28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 1`] = `
+Array [
+  Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "toArray",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [toArray] =$28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 2`] = `
+Array [
+  Object {
+    "result": Array [
+      Object {
+        "result": "first",
+        "type": "string",
+      },
+      Object {
+        "result": "second",
+        "type": "string",
+      },
+      Object {
+        "result": "third",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "1",
+        "type": "string",
+      },
+      Object {
+        "result": "2",
+        "type": "string",
+      },
+      Object {
+        "result": "3",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "3",
+        "type": "string",
+      },
+      Object {
+        "result": "4",
+        "type": "string",
+      },
+      Object {
+        "result": "",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+  Object {
+    "result": Array [
+      Object {
+        "result": "5",
+        "type": "string",
+      },
+      Object {
+        "result": "6",
+        "type": "string",
+      },
+      Object {
+        "result": "Foo",
+        "type": "string",
+      },
+    ],
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [toRecord] =$28e28190-63bd-4f70-aeca-26e72574c01a.toRecord() 1`] = `
+Array [
+  Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Dot",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ".",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "toRecord",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "Array",
+  },
+]
+`;
+
+exports[`Database Functions [toRecord] =$28e28190-63bd-4f70-aeca-26e72574c01a.toRecord() 2`] = `
+Array [
+  Object {
+    "result": Object {
+      "first": "1",
+      "second": "2",
+      "third": "3",
+    },
+    "type": "Record",
+  },
+  Object {
+    "result": Object {
+      "first": "3",
+      "second": "4",
+      "third": "",
+    },
+    "type": "Record",
+  },
+  Object {
+    "result": Object {
+      "first": "5",
+      "second": "6",
+      "third": "Foo",
+    },
+    "type": "Record",
+  },
+]
+`;
+
+exports[`Database Functions Database Factory 1`] = `
+Array [
+  Object {
+    "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "index": 0,
+    "name": "first",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "rows": Array [
+      "1",
+      "3",
+      "5",
+    ],
+    "spreadsheetName": "MyTable",
+    "type": "text",
+  },
+  Object {
+    "columnId": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "index": 1,
+    "name": "second",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "rows": Array [
+      "2",
+      "4",
+      "6",
+    ],
+    "spreadsheetName": "MyTable",
+    "type": "text",
+  },
+  Object {
+    "columnId": "2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
+    "index": 2,
+    "name": "third",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "rows": Array [
+      "3",
+      "",
+      "Foo",
+    ],
+    "spreadsheetName": "MyTable",
+    "type": "text",
+  },
+]
+`;
+
+exports[`Database Functions Database Factory 2`] = `
+Array [
+  Object {
+    "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "3",
+    "4e6f9adb-6f33-454e-9f9e-635dc98e3f28": "2",
+    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6": "1",
+    "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "sort": "100",
+  },
+  Object {
+    "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "",
+    "4e6f9adb-6f33-454e-9f9e-635dc98e3f28": "4",
+    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6": "3",
+    "id": "5d1e4a83-383a-4991-a33c-52a9b3169549",
+    "sort": "100",
+  },
+  Object {
+    "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "Foo",
+    "4e6f9adb-6f33-454e-9f9e-635dc98e3f28": "6",
+    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6": "5",
+    "id": "05f5ae67-b982-406e-a92f-e559c10a7ba6",
+    "sort": "100",
+  },
+]
+`;
+
+exports[`Database Functions Database Factory 3`] = `
+Array [
+  Array [
+    "first",
+    "second",
+    "third",
+  ],
+  Array [
+    "1",
+    "2",
+    "3",
+  ],
+  Array [
+    "3",
+    "4",
+    "",
+  ],
+  Array [
+    "5",
+    "6",
+    "Foo",
+  ],
+]
+`;
+
+exports[`Database Functions Database Factory 4`] = `
+Array [
+  Object {
+    "first": "1",
+    "second": "2",
+    "third": "3",
+  },
+  Object {
+    "first": "3",
+    "second": "4",
+    "third": "",
+  },
+  Object {
+    "first": "5",
+    "second": "6",
+    "third": "Foo",
+  },
+]
+`;
+
 exports[`Database Functions completion 1`] = `
 Object {
   "kind": "spreadsheet",
   "name": "MyTable",
   "namespace": "28e28190-63bd-4f70-aeca-26e72574c01a",
-  "preview": Object {
-    "_data": [Function],
+  "preview": DatabaseFactory {
     "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-    "columnCount": [Function],
-    "getColumn": [Function],
-    "getRow": [Function],
+    "dynamic": false,
     "listColumns": [Function],
     "listRows": [Function],
     "name": [Function],
-    "rowCount": [Function],
   },
   "replacements": Array [
     "MyTable",
@@ -1201,6 +2175,7 @@ Object {
   "name": "SUM",
   "namespace": "core",
   "preview": Object {
+    "acceptError": false,
     "args": Array [
       Object {
         "name": "column",
@@ -1242,7 +2217,7 @@ Object {
   "replacements": Array [
     "SUM",
   ],
-  "value": "SUM",
+  "value": "SUM()",
   "weight": 250,
 }
 `;
@@ -1257,8 +2232,13 @@ Object {
     "index": 0,
     "name": "first",
     "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "rows": Array [
+      "1",
+      "3",
+      "5",
+    ],
     "spreadsheetName": "MyTable",
-    "type": "foo",
+    "type": "text",
   },
   "replacements": Array [
     "first",
@@ -1274,9 +2254,10 @@ Object {
 exports[`Database Functions completion 4`] = `
 Object {
   "kind": "function",
-  "name": "COLUMN_COUNT",
+  "name": "toArray",
   "namespace": "core",
   "preview": Object {
+    "acceptError": false,
     "args": Array [
       Object {
         "name": "database",
@@ -1285,7 +2266,7 @@ Object {
     ],
     "async": false,
     "chain": true,
-    "description": "Returns the column size of the database.",
+    "description": "Converts the value to an array.",
     "effect": false,
     "examples": Array [
       Object {
@@ -1302,23 +2283,23 @@ Object {
         ],
         "input": "=123",
         "output": Object {
-          "result": 123,
-          "type": "number",
+          "result": Array [],
+          "type": "Array",
         },
       },
     ],
     "group": "core",
-    "key": "COLUMN_COUNT",
-    "name": "COLUMN_COUNT",
+    "key": "toArray",
+    "name": "toArray",
     "pure": false,
     "reference": [Function],
-    "returns": "number",
+    "returns": "Array",
     "testCases": Array [],
   },
   "replacements": Array [
-    "COLUMN_COUNT",
+    "toArray",
   ],
-  "value": "COLUMN_COUNT",
+  "value": "toArray()",
   "weight": 250,
 }
 `;

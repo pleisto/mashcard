@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-// import { ContextInterface, BaseFunctionClause, ObjectResult } from '../..'
+// import { ContextInterface, BaseFunctionClause, RecordResult } from '../..'
 
-// import { ContextInterface, BaseFunctionClause, ObjectResult } from '../..'
+// import { ContextInterface, BaseFunctionClause, RecordResult } from '../..'
 
 // // TODO { long: number; lat: number; msg: string }
-// export const CURRENT_POSITION = async (ctx: ContextInterface): Promise<ObjectResult> => {
+// export const CURRENT_POSITION = async (ctx: ContextInterface): Promise<RecordResult> => {
 //   if (!navigator.geolocation) {
 //     return { type: 'Object', result: { long: 0, lat: 0, msg: 'Geolocation is not supported by your browser' } }
 //   }

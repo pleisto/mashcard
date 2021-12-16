@@ -18,13 +18,13 @@ const testCases: TestCase[] = [
     value: 2
   },
   {
+    input: '=null',
+    value: null
+  },
+  {
     input: '= -0.123%',
     label: 'caret and sign',
     value: -0.00123
-  },
-  {
-    input: '=0/0',
-    value: NaN
   },
   {
     input: '= ( 3 + 4 ) * 5 - 2',
@@ -122,6 +122,173 @@ const testCases: TestCase[] = [
     input: '= "foo" & 1',
     parseErrorType: 'syntax',
     errorMessage: 'Expected string but got number'
+  },
+  // In
+  {
+    input: '= "foo" in "barfoobaz"',
+    value: true
+  },
+  {
+    input: '= "foo" in "barFoobaz"',
+    value: true
+  },
+  {
+    input: '= "foo" exactin "barFoobaz"',
+    value: false
+  },
+  {
+    input: '= "foo" exactin "barfoobaz"',
+    value: true
+  },
+  {
+    input: '= "foo" in 123',
+    parseErrorType: 'syntax',
+    errorMessage: 'Expected string,Array,Spreadsheet,Column but got number'
+  },
+  {
+    input: '= "foo" in',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing right expression'
+  },
+  {
+    input: '= 1 in []',
+    value: false
+  },
+  {
+    input: '= false exactin "foo"',
+    parseErrorType: 'syntax',
+    errorMessage: 'Expected Array but got string'
+  },
+  {
+    input: '= 1 in [1, "foo", true]',
+    value: true
+  },
+  {
+    input: '= "Foo" in [1, "foo", true, null]',
+    value: true
+  },
+  {
+    input: '= "Foo" exactin [1, "foo", true, null]',
+    value: false
+  },
+  {
+    input: '= true in [1, "foo", true, null]',
+    value: true
+  },
+  {
+    input: '= true exactin [1, "foo", true, null]',
+    value: true
+  },
+  {
+    input: '= null exactin [1, "foo", true, null]',
+    value: true
+  },
+  {
+    input: '= false exactin [1, "foo", true, null]',
+    value: false
+  },
+  // Array
+  {
+    input: '=[]',
+    value: []
+  },
+  {
+    input: '=[[]]',
+    value: [{ type: 'Array', result: [] }]
+  },
+  {
+    input: '=[',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=[1',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=[1,',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=[1,]',
+    label: 'array edit',
+    parseErrorType: 'parse',
+    errorMessage: 'Expression count mismatch'
+  },
+  {
+    input: '=[1,2',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '=[2, "foo", true]',
+    label: 'Array ok',
+    value: [
+      { type: 'number', result: 2 },
+      { type: 'string', result: 'foo' },
+      { type: 'boolean', result: true }
+    ]
+  },
+  // Record
+  {
+    input: '={}',
+    value: {}
+  },
+  {
+    input: '={"foo": 1, bar: "baz", obj: {}, array: [1]}',
+    value: {
+      foo: { type: 'number', result: 1 },
+      bar: { type: 'string', result: 'baz' },
+      obj: { type: 'Record', result: {} },
+      array: { type: 'Array', result: [{ type: 'number', result: 1 }] }
+    }
+  },
+  {
+    input: '={',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '={a',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '={a: }',
+    parseErrorType: 'parse',
+    errorMessage: 'Expecting: one of these possible Token sequences'
+  },
+  {
+    input: '={a: 1',
+    parseErrorType: 'parse',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '={1: "a"}',
+    parseErrorType: 'parse',
+    label: 'TODO record number as key',
+    errorMessage: 'Missing closing parenthesis'
+  },
+  {
+    input: '={"foo":}',
+    parseErrorType: 'parse',
+    errorMessage: 'Expecting: one of these possible Token sequences'
+  },
+  {
+    input: '={"fo o": 123}',
+    value: { 'fo o': { type: 'number', result: 123 } }
+  },
+  {
+    input: '={a: 1, a: []}',
+    parseErrorType: 'syntax',
+    errorMessage: 'Record key duplicated'
+  },
+  {
+    input: '={a: 1, "a": 2}',
+    parseErrorType: 'syntax',
+    errorMessage: 'Record key duplicated'
   },
   // Number Literal
   {
@@ -258,6 +425,26 @@ const testCases: TestCase[] = [
   },
   // Error
   {
+    input: '= 1/0',
+    value: 'Division by zero'
+  },
+  {
+    input: '= ABS(1/0)',
+    value: 'Division by zero'
+  },
+  {
+    input: '= 1/0 + 1',
+    value: 'Division by zero'
+  },
+  {
+    input: '= 3 = 1/0',
+    value: 'Division by zero'
+  },
+  {
+    input: '= IFERROR(1/0, "Foo")',
+    value: 'Foo'
+  },
+  {
     input: '= -',
     label: 'Without number',
     parseErrorType: 'parse',
@@ -339,16 +526,19 @@ const testCases: TestCase[] = [
     parseErrorType: 'parse',
     errorMessage: `Expecting: one of these possible Token sequences:
   1. [LParen]
-  2. [Minus]
-  3. [NumberLiteral]
-  4. [BooleanLiteral]
-  5. [StringLiteral]
-  6. [Dollar, UUID, At]
-  7. [Dollar, UUID, Sharp]
-  8. [Dollar, UUID]
-  9. [FunctionName]
-  10. [EqualCompareOperator]
-  11. [CompareOperator]
+  2. [LBracket]
+  3. [LBrace]
+  4. [Minus]
+  5. [NumberLiteral]
+  6. [BooleanLiteral]
+  7. [StringLiteral]
+  8. [NullLiteral]
+  9. [Dollar, UUID, At]
+  10. [Dollar, UUID, Sharp]
+  11. [Dollar, UUID]
+  12. [FunctionName]
+  13. [EqualCompareOperator]
+  14. [CompareOperator]
 but found: '*'`
   },
   // Function Call
@@ -403,6 +593,14 @@ but found: '*'`
     value: 4
   },
   {
+    input: '=toString(1)',
+    value: '1'
+  },
+  {
+    input: '=toString("Foo")',
+    value: '"Foo"'
+  },
+  {
     input: '=UNKNOWN ()',
     parseErrorType: 'syntax',
     errorMessage: 'Function UNKNOWN not found'
@@ -415,6 +613,10 @@ but found: '*'`
   {
     input: '=(1+1).TYPE()',
     value: 'number'
+  },
+  {
+    input: '=[1,false,"foo"].toString()',
+    value: '[1, false, "foo"]'
   },
   {
     input: '="foobar".START_WITH("foo")',
@@ -477,6 +679,11 @@ but found: '*'`
   },
   // Type
   {
+    input: '=null + 1',
+    parseErrorType: 'syntax',
+    errorMessage: 'Expected number but got null'
+  },
+  {
     input: '=ABS ( "a" )',
     parseErrorType: 'syntax',
     errorMessage: 'Expected number but got string'
@@ -487,7 +694,7 @@ but found: '*'`
     errorMessage: 'Expected boolean but got number'
   },
   {
-    input: '=ABS( TODAY() )',
+    input: '=ABS( NOW() )',
     parseErrorType: 'syntax',
     errorMessage: 'Expected number but got Date'
   },

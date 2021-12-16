@@ -151,6 +151,36 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const [activeCompletion, setActiveCompletion] = React.useState<Completion | undefined>(completions[0])
   const [activeCompletionIndex, setActiveCompletionIndex] = React.useState<number>(0)
 
+  const latestActiveCompletion = React.useRef(activeCompletion)
+  React.useEffect(() => {
+    latestActiveCompletion.current = activeCompletion
+  }, [activeCompletion])
+
+  const latestContent = React.useRef(content)
+  React.useEffect(() => {
+    latestContent.current = content
+  }, [content])
+
+  const latestActiveCompletionIndex = React.useRef(activeCompletionIndex)
+  React.useEffect(() => {
+    latestActiveCompletionIndex.current = activeCompletionIndex
+  }, [activeCompletionIndex])
+
+  const latestCompletions = React.useRef(completions)
+  React.useEffect(() => {
+    latestCompletions.current = completions
+  }, [completions])
+
+  const latestSetActiveCompletion = React.useRef(setActiveCompletion)
+  React.useEffect(() => {
+    latestSetActiveCompletion.current = setActiveCompletion
+  }, [setActiveCompletion])
+
+  const latestSetActiveCompletionIndex = React.useRef(setActiveCompletionIndex)
+  React.useEffect(() => {
+    latestSetActiveCompletionIndex.current = setActiveCompletionIndex
+  }, [setActiveCompletionIndex])
+
   const close = (): void => {
     if (clear) {
       setContent(defaultContent)
@@ -177,8 +207,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   }
 
   const handleSelectActiveCompletion = (completion?: Completion, inputContent?: JSONContent): void => {
-    const currentCompletion = completion ?? activeCompletion
-    const currentContent = inputContent ?? content
+    const currentCompletion = completion ?? latestActiveCompletion.current
+    const currentContent = inputContent ?? latestContent.current
 
     if (!currentCompletion) {
       console.error('No active completion!')
@@ -197,7 +227,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       } else {
         const replacement = currentCompletion.replacements.find(replacement => text.endsWith(replacement))
         if (!replacement) {
-          console.error({ text, currentCompletion })
+          console.info('replacement not found 1', { text, currentCompletion })
         } else {
           const newText = text.substring(0, text.length - replacement.length)
 
@@ -282,13 +312,13 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     void doCalculate({ newInput: finalInput })
   }
   const keyDownHandler = useKeydownHandler({
-    completions,
-    activeCompletion,
-    content,
-    activeCompletionIndex,
+    completions: latestCompletions,
+    activeCompletion: latestActiveCompletion,
+    content: latestContent,
+    activeCompletionIndex: latestActiveCompletionIndex,
     handleSelectActiveCompletion,
-    setActiveCompletion,
-    setActiveCompletionIndex
+    setActiveCompletion: latestSetActiveCompletion,
+    setActiveCompletionIndex: latestSetActiveCompletionIndex
   })
 
   const contentToInput = (content: JSONContent): string => {
@@ -319,11 +349,19 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     const finalName = newName ?? name ?? defaultName
     const finalInput = newInput ?? `=${input}`
 
-    // console.log({ finalName, newName, newInput, input, finalInput, activeCompletion })
+    // console.log({
+    //   finalName,
+    //   newName,
+    //   newInput,
+    //   input,
+    //   finalInput,
+    //   activeCompletion,
+    //   latestActiveCompletion: latestActiveCompletion.current
+    // })
 
     const result = await calculate({
       namespaceId: rootId,
-      activeCompletion,
+      activeCompletion: latestActiveCompletion.current,
       variable,
       name: finalName,
       input: finalInput,
@@ -429,12 +467,12 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       <div className="formula-menu-divider" />
       <AutocompleteList
         blockId={rootId}
-        completions={completions}
+        completions={latestCompletions}
         handleSelectActiveCompletion={handleSelectActiveCompletion}
-        setActiveCompletion={setActiveCompletion}
-        activeCompletionIndex={activeCompletionIndex}
-        setActiveCompletionIndex={setActiveCompletionIndex}
-        activeCompletion={activeCompletion}
+        setActiveCompletion={latestSetActiveCompletion}
+        activeCompletionIndex={latestActiveCompletionIndex}
+        setActiveCompletionIndex={latestSetActiveCompletionIndex}
+        activeCompletion={latestActiveCompletion}
       />
       <div className="formula-menu-footer">
         <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>

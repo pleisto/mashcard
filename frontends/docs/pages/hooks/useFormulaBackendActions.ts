@@ -10,6 +10,7 @@ export function useFormulaBackendActions(): BackendActions {
     createVariable: async ({
       t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies }
     }) => {
+      // console.log('create', { variableValue })
       const { errors } = await creation({
         variables: {
           input: {
@@ -31,6 +32,7 @@ export function useFormulaBackendActions(): BackendActions {
     updateVariable: async ({
       t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies }
     }) => {
+      // console.log('update', { variableValue })
       const { errors } = await update({
         variables: {
           input: {

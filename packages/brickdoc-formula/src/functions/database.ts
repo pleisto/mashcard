@@ -8,9 +8,16 @@ import {
   PredicateResult,
   PredicateFunction,
   StringResult,
-  AnyTypeResult
+  AnyTypeResult,
+  ArrayResult,
+  DatabaseFactory,
+  DatabaseDefinition,
+  Column,
+  Row,
+  RecordResult
 } from '..'
 import { buildPredicate } from '../grammar/predicate'
+import { v4 as uuid } from 'uuid'
 
 export const SUM = (ctx: ContextInterface, { result: column }: ColumnResult): NumberResult | ErrorResult => {
   const database = ctx.findDatabase(column.namespaceId)
@@ -20,6 +27,80 @@ export const SUM = (ctx: ContextInterface, { result: column }: ColumnResult): Nu
 
   const rows: number[] = database.listRows().map(row => Number(row[column.columnId]) || 0)
   return { type: 'number', result: rows.reduce((a, b) => a + b, 0) }
+}
+
+// TODO ... result type???
+export const toArray = (ctx: ContextInterface, { result: database }: SpreadsheetResult): ArrayResult => {
+  return {
+    type: 'Array',
+    result: database.toArray().map(row => ({ type: 'Array', result: row.map(r => ({ type: 'string', result: r })) }))
+  }
+}
+
+export const toRecord = (ctx: ContextInterface, { result: database }: SpreadsheetResult): ArrayResult => {
+  return { type: 'Array', result: database.toRecord().map(row => ({ type: 'Record', result: row })) }
+}
+
+export const Table = (ctx: ContextInterface, { result }: ArrayResult): SpreadsheetResult | ErrorResult => {
+  const defaultData: RecordResult[] = [
+    { type: 'Record', result: { Column1: { type: 'string', result: 1 }, Column2: { type: 'string', result: 2 } } },
+    { type: 'Record', result: { Column1: { type: 'string', result: 3 }, Column2: { type: 'string', result: 4 } } }
+  ]
+
+  const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
+
+  const nonRecordElement = recordData.find(e => e.type !== 'Record')
+  if (nonRecordElement) {
+    return { type: 'Error', result: 'Table must be an array of records', errorKind: 'runtime' }
+  }
+
+  const blockId = uuid()
+  const tableName = 'Dynamic'
+  const columns: Column[] = []
+  const rows: Row[] = []
+
+  if (recordData.length) {
+    const data = recordData.map(e => e.result)
+    const keys = Object.keys(data[0])
+    const keyWithIds = keys.map(key => ({ key, uuid: uuid() }))
+
+    columns.push(
+      ...keys.map((key, index) => ({
+        namespaceId: blockId,
+        columnId: keyWithIds.find(k => k.key === key)!.uuid,
+        name: key,
+        index,
+        spreadsheetName: tableName,
+        type: 'text',
+        rows: data.map(e => String(e[key].result || ''))
+      }))
+    )
+
+    rows.push(
+      ...data.map(source => {
+        const row: Row = { id: uuid() }
+
+        keyWithIds.forEach(({ key, uuid }) => {
+          row[uuid] = String(source[key].result || '')
+        })
+
+        return row
+      })
+    )
+  }
+
+  // console.log({ recordData, rows, columns })
+
+  const databaseDefinition: DatabaseDefinition = {
+    blockId,
+    dynamic: true,
+    name: () => tableName,
+    listColumns: () => columns,
+    listRows: () => rows
+  }
+
+  const database = new DatabaseFactory(databaseDefinition)
+  return { type: 'Spreadsheet', result: database }
 }
 
 export const MAX = (ctx: ContextInterface, { result: column }: ColumnResult): NumberResult | ErrorResult => {
@@ -204,6 +285,7 @@ const VLOOKUP_CLAUSE: BasicFunctionClause<'string'> = {
   name: 'VLOOKUP',
   async: false,
   pure: false,
+  acceptError: false,
   effect: false,
   examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
   description: 'Returns the value of the column in the database that matches the match value.',
@@ -228,11 +310,70 @@ const VLOOKUP_CLAUSE: BasicFunctionClause<'string'> = {
   reference: VLOOKUP
 }
 
+const TABLE_CLAUSE: BasicFunctionClause<'Spreadsheet'> = {
+  name: 'Table',
+  async: false,
+  pure: false,
+  acceptError: false,
+  effect: false,
+  examples: [{ input: '=123', output: null }],
+  description: 'Returns the table.',
+  group: 'core',
+  args: [{ name: 'array', type: 'Array' }],
+  returns: 'Spreadsheet',
+  testCases: [],
+  chain: true,
+  reference: Table
+}
+
+const TO_ARRAY_CLAUSE: BasicFunctionClause<'Array'> = {
+  name: 'toArray',
+  async: false,
+  pure: false,
+  acceptError: false,
+  effect: false,
+  examples: [{ input: '=123', output: { type: 'Array', result: [] } }],
+  description: 'Converts the value to an array.',
+  group: 'core',
+  args: [
+    {
+      name: 'database',
+      type: 'Spreadsheet'
+    }
+  ],
+  returns: 'Array',
+  testCases: [],
+  chain: true,
+  reference: toArray
+}
+
+const TO_RECORD_CLAUSE: BasicFunctionClause<'Array'> = {
+  name: 'toRecord',
+  async: false,
+  pure: false,
+  acceptError: false,
+  effect: false,
+  examples: [{ input: '=123', output: { type: 'Array', result: [] } }],
+  description: 'Converts the value to a record.',
+  group: 'core',
+  args: [
+    {
+      name: 'database',
+      type: 'Spreadsheet'
+    }
+  ],
+  returns: 'Array',
+  testCases: [],
+  chain: true,
+  reference: toRecord
+}
+
 const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   {
     name: 'SUM',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the sum of the column in the database.',
@@ -252,6 +393,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'COLUMN_COUNT',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the column size of the database.',
@@ -271,6 +413,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'ROW_COUNT',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the row size of the database.',
@@ -290,6 +433,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'SUMIFS',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the sum of the column in the database.',
@@ -317,6 +461,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'AVERAGEIFS',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the average of the column in the database.',
@@ -344,6 +489,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'COUNTIFS',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the sum of the column in the database.',
@@ -367,6 +513,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'SUMPRODUCT',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the sum of the column in the database.',
@@ -390,6 +537,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'MAX',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the max of the column in the database.',
@@ -409,6 +557,7 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'COUNTA',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
     description: 'Returns the count of the column in the database.',
@@ -426,4 +575,10 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   }
 ]
 
-export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<any>> = [VLOOKUP_CLAUSE, ...NUMBER_CLAUSES]
+export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<any>> = [
+  TABLE_CLAUSE,
+  TO_ARRAY_CLAUSE,
+  TO_RECORD_CLAUSE,
+  VLOOKUP_CLAUSE,
+  ...NUMBER_CLAUSES
+]

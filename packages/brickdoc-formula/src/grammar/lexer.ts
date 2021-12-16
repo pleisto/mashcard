@@ -6,6 +6,10 @@ export const CompareOperator = createToken({ name: 'CompareOperator', pattern: L
 export const AdditionOperator = createToken({ name: 'AdditionOperator', pattern: Lexer.NA })
 export const MultiplicationOperator = createToken({ name: 'MultiplicationOperator', pattern: Lexer.NA })
 export const CombineOperator = createToken({ name: 'CombineOperator', pattern: Lexer.NA })
+export const InOperator = createToken({ name: 'InOperator', pattern: Lexer.NA })
+
+export const In = createToken({ name: 'In', pattern: /in/, categories: InOperator })
+export const ExactIn = createToken({ name: 'ExactIn', pattern: /exactin/, categories: InOperator })
 
 export const And = createToken({
   name: 'And',
@@ -139,6 +143,13 @@ export const Div = createToken({
 
 export const LParen = createToken({ name: 'LParen', pattern: /\(/ })
 export const RParen = createToken({ name: 'RParen', pattern: /\)/ })
+
+export const LBracket = createToken({ name: 'LBracket', pattern: /\[/ })
+export const RBracket = createToken({ name: 'RBracket', pattern: /\]/ })
+
+export const LBrace = createToken({ name: 'LBrace', pattern: /\{/ })
+export const RBrace = createToken({ name: 'RBrace', pattern: /\}/ })
+
 export const NumberLiteral = createToken({
   name: 'NumberLiteral',
   pattern: /[0-9]+[.]?[0-9]*([eE][+-][0-9]+)?/
@@ -154,11 +165,18 @@ export const StringLiteral = createToken({
   pattern: /"(""|[^"])*"/
 })
 
+export const NullLiteral = createToken({
+  name: 'NullLiteral',
+  pattern: /null/
+})
+
 export const Comma = createToken({ name: 'Comma', pattern: /,/ })
 
 export const Semicolon = createToken({ name: 'Semicolon', pattern: /;/ })
 
-export const DoubleColon = createToken({ name: 'Colon', pattern: /::/ })
+export const DoubleColon = createToken({ name: 'DoubleColon', pattern: /::/ })
+
+export const Colon = createToken({ name: 'Colon', pattern: /:/ })
 
 export const FunctionName = createToken({
   name: 'FunctionName',
@@ -191,6 +209,9 @@ const tokensBeforeSemicolon = [
 
   Not, // not !
 
+  In, // in
+  ExactIn, // exactin
+
   LessThanEqual, // <=
   GreaterThanEqual, // >=
   NotEqual, // <>
@@ -210,17 +231,25 @@ const tokensBeforeSemicolon = [
   LParen, // (
   RParen, // )
 
+  LBracket, // [
+  RBracket, // ]
+
+  LBrace, // {
+  RBrace, // }
+
   Sign, // %
 
   Dollar, // $
   At, // @
   Sharp, // #
   DoubleColon, // ::
+  Colon, // :
   Dot, // .
 
   UUID,
 
   CombineOperator,
+  InOperator,
   EqualCompareOperator,
   CompareOperator,
   AdditionOperator,
@@ -229,6 +258,7 @@ const tokensBeforeSemicolon = [
   NumberLiteral,
   BooleanLiteral,
   StringLiteral,
+  NullLiteral,
   Comma // ,
 ]
 

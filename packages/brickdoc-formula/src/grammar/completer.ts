@@ -56,7 +56,11 @@ export const complete = ({
     if (last2CodeFragment) {
       completions = completions.map(c => {
         return c.kind === 'function' && c.preview.chain
-          ? { ...c, weight: matchTypeWeight(last2CodeFragment.type, c.preview.args[0].type, c.weight) }
+          ? {
+              ...c,
+              value: `${c.value}()`,
+              weight: matchTypeWeight(last2CodeFragment.type, c.preview.args[0].type, c.weight)
+            }
           : c
       })
 

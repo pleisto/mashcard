@@ -1,20 +1,51 @@
-import { ContextInterface, BasicFunctionClause, DateResult } from '..'
+import { ContextInterface, BasicFunctionClause, DateResult, StringResult } from '..'
 
-export const TODAY = (ctx: ContextInterface): DateResult => ({ result: new Date(), type: 'Date' })
+export const NOW = (ctx: ContextInterface): DateResult => ({ result: new Date(), type: 'Date' })
+
+export const DATE = (ctx: ContextInterface, date: StringResult): DateResult => ({
+  result: new Date(date.result),
+  type: 'Date'
+})
 
 export const CORE_DATE_CLAUSES: Array<BasicFunctionClause<'Date'>> = [
   {
-    name: 'TODAY',
+    name: 'NOW',
     async: false,
     pure: false,
+    acceptError: false,
     effect: false,
-    examples: [{ input: '=TODAY()', output: { type: 'Date', result: new Date('1926-08-17T00:00:00.000Z') } }],
+    examples: [{ input: '=NOW()', output: { type: 'Date', result: new Date('1926-08-17T00:00:00.000Z') } }],
     description: 'Returns the current date',
     group: 'core',
     args: [],
     testCases: [],
     returns: 'Date',
     chain: false,
-    reference: TODAY
+    reference: NOW
+  },
+  {
+    name: 'DATE',
+    async: false,
+    pure: false,
+    acceptError: false,
+    effect: false,
+    examples: [
+      {
+        input: '=DATE("1926-08-17")',
+        output: { type: 'Date', result: new Date('1926-08-17') }
+      }
+    ],
+    description: 'Returns the date specified by the input',
+    group: 'core',
+    args: [
+      {
+        type: 'string',
+        name: 'date'
+      }
+    ],
+    testCases: [],
+    returns: 'Date',
+    chain: false,
+    reference: DATE
   }
 ]

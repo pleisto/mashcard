@@ -20,7 +20,9 @@ import {
   ParseErrorType,
   CodeFragmentResult,
   ParseMode,
-  lexerByMode
+  lexerByMode,
+  DatabasePersistence,
+  DatabaseFactory
 } from '..'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
@@ -97,6 +99,7 @@ export interface ErrorInterpretResult extends BaseInterpretResult {
 
 export type InterpretResult = SuccessInterpretResult | ErrorInterpretResult
 
+// eslint-disable-next-line complexity
 export const parse = ({
   formulaContext,
   mode,
@@ -136,20 +139,42 @@ export const parse = ({
   const endChar = input[input.length - 1]
   // console.log({ endChar, input })
 
-  if (['.', ' ', ',', '(', ')'].includes(endChar)) {
+  if (['.', ' ', ',', '(', ')', '+', '-', '*', '/', '=', '>', '<', '[', ']', '{', '}'].includes(endChar)) {
     const index = endChar === ' ' ? tokens.length - 1 : tokens.length - 2
     const lastToken = tokens[index]
 
-    // const currentCompletion = activeCompletion
-    const currentCompletion = completions.find(completion => completion.name === lastToken.image)
+    const currentCompletion = activeCompletion
+    // const currentCompletion = completions.find(completion => completion.name === lastToken.image)
 
     // console.log({ endChar, lastToken, input, tokens, currentCompletion })
-    if (lastToken && currentCompletion && currentCompletion.name === lastToken.image) {
+    if (
+      lastToken &&
+      currentCompletion &&
+      lastToken.image.length > 2 &&
+      currentCompletion.replacements.find(replacement => replacement.toUpperCase() === lastToken.image.toUpperCase())
+    ) {
       // console.log('start replace', lastToken.image, currentCompletion)
+      // TODO spreadsheet && column completion (should in same codefragment)
+      const firstReplacement = currentCompletion.replacements.find(replacement =>
+        input.endsWith(replacement.concat(endChar))
+      )
+      let image = lastToken.image
+
+      if (firstReplacement) {
+        image = firstReplacement
+      } else {
+        console.error('replacement not found', { currentCompletion, lastToken, input })
+      }
+
       newInput = input
-        .slice(0, input.length - lastToken.image.length - 1)
+        .slice(0, input.length - image.length - 1)
         .concat(currentCompletion.value)
-        .concat(endChar)
+
+      if (firstReplacement && endChar === '(') {
+        // console.log()
+      } else {
+        newInput = newInput.concat(endChar)
+      }
 
       lexResult = lexer.tokenize(newInput)
       tokens = lexResult.tokens
@@ -269,9 +294,28 @@ export const parse = ({
     }
   }
 
+  if (formulaContext?.reservedNames.includes(name.toUpperCase())) {
+    return {
+      success: false,
+      valid: true,
+      input: newInput,
+      inputImage,
+      parseImage: image,
+      cst,
+      level,
+      errorType: 'syntax',
+      completions,
+      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }],
+      flattenVariableDependencies,
+      variableDependencies: codeFragmentVisitor.variableDependencies,
+      functionDependencies: codeFragmentVisitor.functionDependencies,
+      codeFragments
+    }
+  }
+
   const sameNameVariable = formulaContext
     ?.listVariables(namespaceId)
-    .find(v => v.t.variableId !== variableId && v.t.name === name)
+    .find(v => v.t.variableId !== variableId && v.t.name.toUpperCase() === name.toUpperCase())
 
   if (sameNameVariable) {
     return {
@@ -327,6 +371,14 @@ export const displayValue = (v: AnyTypeValue): string => {
       return `#<Column> ${v.result.spreadsheetName} - ${v.result.name}`
     case 'Predicate':
       return `#<Predicate> [${v.operator}] ${displayValue(v.result)}`
+    case 'null':
+      return '#<Null> null'
+    case 'Record':
+      return `#<Record> { ${Object.entries(v.result)
+        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeValue)}`)
+        .join(', ')} }`
+    case 'Array':
+      return `#<Array> [${v.result.map((v: AnyTypeValue) => displayValue(v)).join(', ')}]`
   }
 
   return JSON.stringify(v.result)
@@ -428,13 +480,31 @@ export const buildVariable = ({
   }
 }
 
+const parseCacheValue = (cacheValue: AnyTypeValue): AnyTypeValue => {
+  if (cacheValue.type === 'Spreadsheet' && cacheValue.result.dynamic) {
+    const { blockId, tableName, columns, rows }: DatabasePersistence = cacheValue.result.persistence
+    return {
+      type: 'Spreadsheet',
+      result: new DatabaseFactory({
+        blockId,
+        dynamic: true,
+        name: () => tableName,
+        listColumns: () => columns,
+        listRows: () => rows
+      })
+    }
+  }
+
+  return cacheValue
+}
+
 export const castVariable = (
   formulaContext: ContextInterface,
   { name, definition, cacheValue, blockId, id, view }: Formula
 ): VariableData => {
   const namespaceId = blockId
   const variableId = id
-  const castedValue: AnyTypeValue = cacheValue as unknown as AnyTypeValue
+  const castedValue: AnyTypeValue = parseCacheValue(cacheValue as unknown as AnyTypeValue)
   const parseInput = { formulaContext, meta: { namespaceId, variableId, name, input: definition } }
   const {
     success,

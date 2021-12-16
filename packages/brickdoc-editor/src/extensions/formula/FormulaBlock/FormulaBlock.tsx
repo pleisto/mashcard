@@ -28,18 +28,18 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   }, [variable])
 
   const COLOR_ARRAY: { [key in FormulaType]: number } = {
-    Date: 2,
-    Error: 1,
-    Column: 2,
-    Block: 2,
-    Spreadsheet: 2,
+    Date: 6,
+    Error: 3,
+    Column: 6,
+    Block: 6,
+    Spreadsheet: 6,
     number: 0,
     null: 0,
-    Predicate: 3,
+    Predicate: 1,
     string: 4,
-    boolean: 5,
+    boolean: 4,
     any: 6,
-    Object: 6,
+    Record: 6,
     Array: 6
   }
 

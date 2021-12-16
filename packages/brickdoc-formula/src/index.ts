@@ -4,16 +4,18 @@ export * from './grammar'
 export * from './functions'
 export * from './context'
 
-export type BasicType = 'number' | 'string' | 'boolean' | 'null'
-export type ObjectType = 'Date' | 'Column' | 'Spreadsheet' | 'Block' | 'Object' | 'Array' | 'Error' | 'Predicate'
+type BasicType = 'number' | 'string' | 'boolean' | 'null'
+type ObjectType = 'Date' | 'Column' | 'Spreadsheet' | 'Block' | 'Record' | 'Array' | 'Error' | 'Predicate'
 
 export type FormulaType = BasicType | ObjectType | 'any'
+
+export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
 export type SpecialDefaultVariableName =
   | 'str'
   | 'num'
   | 'bool'
-  | 'obj'
+  | 'record'
   | 'array'
   | 'date'
   | 'column'
@@ -44,6 +46,7 @@ export type ErrorType =
   | 'deps'
   | 'circular_dependency'
   | 'name_unique'
+  | 'name_check'
   | 'custom'
 
 export type ParseErrorType = 'parse' | 'syntax'
@@ -100,13 +103,13 @@ export interface NullResult extends BaseResult {
 }
 
 export interface ArrayResult extends BaseResult {
-  result: any[]
+  result: AnyTypeValue[]
   type: 'Array'
 }
 
-export interface ObjectResult extends BaseResult {
+export interface RecordResult extends BaseResult {
   result: { [key: string]: any }
-  type: 'Object'
+  type: 'Record'
 }
 
 export interface DateResult extends BaseResult {
@@ -152,7 +155,7 @@ export type BaseFunctionResult<T> =
       | BooleanResult
       | StringResult
       | NullResult
-      | ObjectResult
+      | RecordResult
       | ArrayResult
       | DateResult
       | ColumnResult
@@ -167,7 +170,7 @@ export type AnyTypeResult =
   | BooleanResult
   | StringResult
   | NullResult
-  | ObjectResult
+  | RecordResult
   | ArrayResult
   | DateResult
   | ColumnResult
@@ -183,7 +186,7 @@ export type AnyFunctionResult<T> =
       | BooleanResult
       | StringResult
       | NullResult
-      | ObjectResult
+      | RecordResult
       | ArrayResult
       | DateResult
       | ColumnResult
@@ -217,23 +220,42 @@ export interface Column {
   spreadsheetName: SpreadsheetName
   index: number
   type: string
+  rows: string[]
 }
 
 export interface Row {
   id: string
-  [key: string]: any
+  [key: string]: string
+}
+
+export interface DatabaseDefinition {
+  blockId: NamespaceId
+  dynamic: boolean
+  name: () => string
+  listColumns: () => Column[]
+  listRows: () => Row[]
+}
+
+export interface DatabasePersistence {
+  blockId: NamespaceId
+  tableName: string
+  columns: Column[]
+  rows: Row[]
 }
 
 export interface Database {
   blockId: NamespaceId
+  dynamic: boolean
   columnCount: () => number
   rowCount: () => number
   name: () => string
-  _data: () => any
   listColumns: () => Column[]
   listRows: () => Row[]
   getRow: (rowId: uuid) => Row | undefined
   getColumn: (columnId: ColumnId) => Column | undefined
+  toArray: () => string[][]
+  toRecord: () => Array<{ [key: string]: any }>
+  persist: () => DatabasePersistence
 }
 
 export interface Argument {
@@ -285,6 +307,7 @@ export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCo
 
 export interface ContextInterface {
   databases: { [key: NamespaceId]: Database }
+  reservedNames: string[]
   backendActions: BackendActions | undefined
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
@@ -312,7 +335,7 @@ export interface TestCase {
 
 export interface Example<T extends FormulaType> {
   readonly input: Definition
-  readonly output: BaseFunctionResult<T>
+  readonly output: BaseFunctionResult<T> | null
 }
 
 export interface ExampleWithCodeFragments<T extends FormulaType> extends Example<T> {
@@ -325,6 +348,7 @@ export interface BaseFunctionClause<T extends FormulaType> {
   readonly effect: boolean
   readonly async: boolean
   readonly chain: boolean
+  readonly acceptError: boolean
   readonly description: string
   readonly group: FunctionGroup
   readonly examples: [Example<T>, ...Array<Example<T>>]

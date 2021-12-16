@@ -9,6 +9,7 @@ export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
   {
     name: 'START_WITH',
     async: false,
+    acceptError: false,
     pure: true,
     effect: false,
     description: 'Returns true if the sequence of elements of searchString converted to a String',

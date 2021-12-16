@@ -99,9 +99,18 @@ describe('Context', () => {
     ])
   })
 
+  it('reserved name check', () => {
+    const newFooVariableId = '7fb702f9-8216-47de-a574-e6b8eede5bf5'
+    const name = 'if'
+    const input = '=123'
+    const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
+    const parseResult = parse({ formulaContext, meta })
+    expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is reserved', type: 'name_check' }])
+  })
+
   it('if', () => {
     const input = `=IF(($${fooNamespaceId}@${fooVariableId}), 1, 2)`
-    const name = 'if'
+    const name = 'ifname'
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const meta = { namespaceId, variableId, name, input }

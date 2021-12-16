@@ -10,6 +10,7 @@ export const CORE_STATISTICAL_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     name: 'AVERAGE',
     async: false,
     pure: true,
+    acceptError: false,
     effect: false,
     description: 'Returns the average of the numbers in the list.',
     group: 'core',
