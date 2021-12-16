@@ -6,7 +6,7 @@ import {
   ShareLinkState,
   useBlockCreateShareLinkMutation
 } from '@/BrickdocGraphQL'
-import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
+import { Dropdown, DeprecatedMenu as Menu, DeprecatedMenuProps as MenuProps } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { LineDown } from '@brickdoc/design-system/components/icon'

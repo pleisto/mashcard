@@ -2,7 +2,15 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import { Dropdown, Skeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
+import {
+  Dropdown,
+  Skeleton,
+  DeprecatedMenu as Menu,
+  DeprecatedMenuProps as MenuProps,
+  Tooltip,
+  Button,
+  ButtonProps
+} from '@brickdoc/design-system'
 import { PodCard } from '@/common/components/PodCard'
 import { Setting, Change } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'

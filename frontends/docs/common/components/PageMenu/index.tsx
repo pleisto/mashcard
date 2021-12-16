@@ -1,5 +1,15 @@
 import React from 'react'
-import { Button, Dropdown, Icon, Input, Menu, MenuProps, message, Popover, Tooltip } from '@brickdoc/design-system'
+import {
+  Button,
+  Dropdown,
+  Icon,
+  Input,
+  DeprecatedMenu as Menu,
+  DeprecatedMenuProps as MenuProps,
+  message,
+  Popover,
+  Tooltip
+} from '@brickdoc/design-system'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {

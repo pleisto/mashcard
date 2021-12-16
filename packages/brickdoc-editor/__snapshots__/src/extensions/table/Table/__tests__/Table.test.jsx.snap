@@ -21,7 +21,7 @@ exports[`Table matches correct snapshot 1`] = `
       class="table-toolbar-actions"
     >
       <button
-        class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium table-toolbar-text-button"
+        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-toolbar-text-button"
         data-testid="editor-table-block-toolbar-filter-button"
       >
         <span>
@@ -29,7 +29,7 @@ exports[`Table matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium table-toolbar-text-button"
+        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-toolbar-text-button"
         data-testid="editor-table-block-toolbar-sort-button"
       >
         <span>
@@ -37,7 +37,7 @@ exports[`Table matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-hWVhr brd-c-hWVhr-eaIrEQ-type-primary brd-c-hWVhr-lKjfQ-size-medium table-toolbar-add-button"
+        class="brd-c-NFHkO brd-c-NFHkO-bRcfYV-type-primary brd-c-NFHkO-lKjfQ-size-medium table-toolbar-add-button"
         data-testid="editor-table-block-toolbar-add-button"
       >
         table.new_row.text
@@ -110,7 +110,7 @@ exports[`Table matches correct snapshot 1`] = `
             style="box-sizing: border-box; flex: 180 0 auto; min-width: 30px; width: 180px; position: relative; justify-content: flex-start; align-items: center; display: inline-flex;"
           >
             <button
-              class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium table-block-add-column-button"
+              class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-block-add-column-button"
               data-testid="editor-table-block-column-add-button"
             >
               <span

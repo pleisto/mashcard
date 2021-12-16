@@ -1,6 +1,16 @@
 import React from 'react'
 import cx from 'classnames'
-import { Button, Dropdown, Menu, MenuProps, Modal, Icon, Select, Spin, Tag } from '@brickdoc/design-system'
+import {
+  Button,
+  Dropdown,
+  DeprecatedMenu as Menu,
+  DeprecatedMenuProps as MenuProps,
+  Modal,
+  Icon,
+  Select,
+  Spin,
+  Tag
+} from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockCreateShareLinkInput,

@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { Button, Dropdown, Menu, Popover } from '@brickdoc/design-system'
+import { Button, Dropdown, DeprecatedMenu as Menu, Popover } from '@brickdoc/design-system'
 import './ActionPanel.less'
 import { ActionDropdownOption, ActionOption, ActionPanelProps } from './ActionPanel'
 
@@ -12,7 +12,8 @@ const OptionButton: React.FC<{ option: ActionOption; onClick?: (event: any) => v
       option.onClick?.()
     }}
     className={cx('brickdoc-action-panel-button', { active: option.active })}
-    type="text">
+    type="text"
+  >
     {option.Icon}
   </Button>
 )
@@ -24,7 +25,11 @@ const OptionDropdown: React.FC<{ option: ActionDropdownOption }> = ({ option }) 
         {option.menuItems.map((item, index) => {
           if (item.type === 'item') {
             return (
-              <Menu.Item onClick={() => item.onClick?.(() => {})} className="brickdoc-action-panel-dropdown-menu-item" key={item.name}>
+              <Menu.Item
+                onClick={() => item.onClick?.(() => {})}
+                className="brickdoc-action-panel-dropdown-menu-item"
+                key={item.name}
+              >
                 {item.content && item.content}
                 {!item.content &&
                   item.Icon &&
@@ -37,7 +42,8 @@ const OptionDropdown: React.FC<{ option: ActionDropdownOption }> = ({ option }) 
           }
         })}
       </Menu>
-    }>
+    }
+  >
     <OptionButton option={option} />
   </Dropdown>
 )
@@ -60,7 +66,8 @@ const OptionPopover: React.FC<{ option: ActionDropdownOption }> = ({ option }) =
                 <Menu.Item
                   onClick={() => item.onClick?.(() => setVisible(false))}
                   className={cx('brickdoc-action-panel-popover-menu-item', { 'brk-menu-item-selected': item.active })}
-                  key={item.name}>
+                  key={item.name}
+                >
                   {item.content && item.content}
                   {!item.content &&
                     item.Icon &&
@@ -73,7 +80,8 @@ const OptionPopover: React.FC<{ option: ActionDropdownOption }> = ({ option }) =
             }
           })}
         </Menu>
-      }>
+      }
+    >
       <OptionButton option={option} />
     </Popover>
   )

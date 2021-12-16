@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { Menu } from '../../../components'
+import { DeprecatedMenu as Menu } from '../../../components'
 import { Mail as MailOutlined, AppStore as AppstoreOutlined, Setting as SettingOutlined } from '../../icon'
 const { SubMenu } = Menu
 

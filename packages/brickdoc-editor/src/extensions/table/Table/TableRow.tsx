@@ -2,7 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 import { useDrag, useDrop } from 'react-dnd'
 import { TableRowProps as RTTableRowProps, Row, TableHeaderGroupProps, TableActiveStatus } from 'react-table'
-import { Button, Icon, Input, Menu, Popover } from '@brickdoc/design-system'
+import { Button, Icon, Input, DeprecatedMenu as Menu, Popover } from '@brickdoc/design-system'
 import { IsCellActive } from './useActiveStatus'
 import { useEditorI18n } from '../../../hooks'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -134,7 +134,8 @@ export const TableRow: React.FC<TableRowProps> = ({
   const [contextMenuVisible, setContextMenuVisible] = React.useState(false)
   const [contextMenuFilterValue, setContextMenuFilterValue] = React.useState('')
 
-  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>): void => setContextMenuFilterValue(event.target.value)
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>): void =>
+    setContextMenuFilterValue(event.target.value)
   const isMenuItemMatch = (item: string): boolean =>
     !contextMenuFilterValue || item.toLowerCase().includes(contextMenuFilterValue.toLowerCase())
 
@@ -173,13 +174,15 @@ export const TableRow: React.FC<TableRowProps> = ({
                 data-testid={TEST_ID_ENUM.editor.tableBlock.row.contextMenu.deleteButton.id}
                 onClick={() => onRemoveRow((row.original as any).id)}
                 className="table-block-menu-item"
-                key="Delete">
+                key="Delete"
+              >
                 <Icon.Delete />
                 <span>{t('table.remove_row.text')}</span>
               </Menu.Item>
             )}
           </Menu>
-        }>
+        }
+      >
         {/* add a placeholder for popover to follow mouse's position */}
         <div ref={popupContainer} style={{ width: '1px', height: '1px', position: 'fixed' }} />
       </Popover>
@@ -187,19 +190,22 @@ export const TableRow: React.FC<TableRowProps> = ({
         data-testid={TEST_ID_ENUM.editor.tableBlock.row.id}
         ref={dropRef}
         className={cx('table-block-row', { active: rowActive })}
-        onContextMenu={handleContextMenu}>
+        onContextMenu={handleContextMenu}
+      >
         <div data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.id} className="table-block-row-actions">
           <Button
             data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.addButton.id}
             onClick={() => onAddNewRow(row.index)}
             className="table-block-row-action-button"
-            type="text">
+            type="text"
+          >
             <Icon.Plus />
           </Button>
           <Button
             type="text"
             className={cx('table-block-row-action-button', 'drag', { dragging: isDragging })}
-            ref={dragRef}>
+            ref={dragRef}
+          >
             <Icon.Drag />
           </Button>
         </div>
@@ -211,7 +217,8 @@ export const TableRow: React.FC<TableRowProps> = ({
               <div
                 {...cellProps}
                 key={cellProps.key}
-                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}>
+                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}
+              >
                 {cell.render('Cell')}
               </div>
             )

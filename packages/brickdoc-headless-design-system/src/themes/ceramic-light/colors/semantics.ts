@@ -63,7 +63,7 @@ export const Semantics = {
   dividerPrimary: Palettes.grey3,
   dividerSecondary: Palettes.grey4,
   dividerThirdary: Palettes.grey8,
-  dividerOverlayPrimary: Atomics.white_20p,
+  dividerOverlayPrimary: Atomics.black_5p,
 
   /**
    * Overlays

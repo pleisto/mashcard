@@ -9,7 +9,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium uploader-dashboard-navbar-item active"
+      class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium uploader-dashboard-navbar-item active"
       role="menuitem"
     >
       <span>
@@ -20,7 +20,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
       class="uploader-dashboard-action-buttons"
     >
       <button
-        class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-action-button"
+        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-action-button"
       >
         <div
           class="dashboard-action-button-label"
@@ -54,7 +54,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
           role="list"
         >
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning face"
@@ -65,7 +65,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning face with big eyes"
@@ -76,7 +76,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning face with smiling eyes"
@@ -87,7 +87,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="beaming face with smiling eyes"
@@ -98,7 +98,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning squinting face"
@@ -109,7 +109,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning face with sweat"
@@ -120,7 +120,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="rolling on the floor laughing"
@@ -131,7 +131,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with tears of joy"
@@ -142,7 +142,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="slightly smiling face"
@@ -153,7 +153,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="upside-down face"
@@ -164,7 +164,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="winking face"
@@ -175,7 +175,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with smiling eyes"
@@ -186,7 +186,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with halo"
@@ -197,7 +197,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with hearts"
@@ -208,7 +208,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with heart-eyes"
@@ -219,7 +219,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="star-struck"
@@ -230,7 +230,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face blowing a kiss"
@@ -241,7 +241,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="kissing face"
@@ -252,7 +252,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face"
@@ -263,7 +263,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="kissing face with closed eyes"
@@ -274,7 +274,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="kissing face with smiling eyes"
@@ -285,7 +285,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with tear"
@@ -296,7 +296,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face savoring food"
@@ -307,7 +307,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with tongue"
@@ -318,7 +318,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="winking face with tongue"
@@ -329,7 +329,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="zany face"
@@ -340,7 +340,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="squinting face with tongue"
@@ -351,7 +351,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="money-mouth face"
@@ -362,7 +362,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="hugging face"
@@ -373,7 +373,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with hand over mouth"
@@ -384,7 +384,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="shushing face"
@@ -395,7 +395,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="thinking face"
@@ -406,7 +406,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="zipper-mouth face"
@@ -417,7 +417,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with raised eyebrow"
@@ -428,7 +428,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="neutral face"
@@ -439,7 +439,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="expressionless face"
@@ -450,7 +450,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face without mouth"
@@ -461,7 +461,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smirking face"
@@ -472,7 +472,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="unamused face"
@@ -483,7 +483,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with rolling eyes"
@@ -494,7 +494,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grimacing face"
@@ -505,7 +505,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="lying face"
@@ -516,7 +516,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="relieved face"
@@ -527,7 +527,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="pensive face"
@@ -538,7 +538,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="sleepy face"
@@ -549,7 +549,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="drooling face"
@@ -560,7 +560,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="sleeping face"
@@ -571,7 +571,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with medical mask"
@@ -582,7 +582,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with thermometer"
@@ -593,7 +593,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with head-bandage"
@@ -604,7 +604,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="nauseated face"
@@ -615,7 +615,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face vomiting"
@@ -626,7 +626,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="sneezing face"
@@ -637,7 +637,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="hot face"
@@ -648,7 +648,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="cold face"
@@ -659,7 +659,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="woozy face"
@@ -670,7 +670,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="knocked-out face"
@@ -681,7 +681,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="exploding head"
@@ -692,7 +692,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="cowboy hat face"
@@ -703,7 +703,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="partying face"
@@ -714,7 +714,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="disguised face"
@@ -725,7 +725,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with sunglasses"
@@ -736,7 +736,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="nerd face"
@@ -747,7 +747,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with monocle"
@@ -758,7 +758,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="confused face"
@@ -769,7 +769,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="worried face"
@@ -780,7 +780,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="slightly frowning face"
@@ -791,7 +791,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="frowning face"
@@ -802,7 +802,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with open mouth"
@@ -813,7 +813,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="hushed face"
@@ -824,7 +824,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="astonished face"
@@ -835,7 +835,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="flushed face"
@@ -846,7 +846,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="pleading face"
@@ -857,7 +857,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="frowning face with open mouth"
@@ -868,7 +868,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="anguished face"
@@ -879,7 +879,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="fearful face"
@@ -890,7 +890,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="anxious face with sweat"
@@ -901,7 +901,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="sad but relieved face"
@@ -912,7 +912,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="crying face"
@@ -923,7 +923,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="loudly crying face"
@@ -934,7 +934,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face screaming in fear"
@@ -945,7 +945,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="confounded face"
@@ -956,7 +956,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="persevering face"
@@ -967,7 +967,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="disappointed face"
@@ -978,7 +978,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="downcast face with sweat"
@@ -989,7 +989,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="weary face"
@@ -1000,7 +1000,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="tired face"
@@ -1011,7 +1011,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="yawning face"
@@ -1022,7 +1022,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with steam from nose"
@@ -1033,7 +1033,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="pouting face"
@@ -1044,7 +1044,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="angry face"
@@ -1055,7 +1055,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="face with symbols on mouth"
@@ -1066,7 +1066,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling face with horns"
@@ -1077,7 +1077,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="angry face with horns"
@@ -1088,7 +1088,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="skull"
@@ -1099,7 +1099,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="skull and crossbones"
@@ -1110,7 +1110,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="pile of poo"
@@ -1121,7 +1121,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="clown face"
@@ -1132,7 +1132,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="ogre"
@@ -1143,7 +1143,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="goblin"
@@ -1154,7 +1154,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="ghost"
@@ -1165,7 +1165,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="alien"
@@ -1176,7 +1176,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="alien monster"
@@ -1187,7 +1187,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="robot"
@@ -1198,7 +1198,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning cat"
@@ -1209,7 +1209,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="grinning cat with smiling eyes"
@@ -1220,7 +1220,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="cat with tears of joy"
@@ -1231,7 +1231,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="smiling cat with heart-eyes"
@@ -1242,7 +1242,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="cat with wry smile"
@@ -1253,7 +1253,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="kissing cat"
@@ -1264,7 +1264,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="weary cat"
@@ -1275,7 +1275,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="crying cat"
@@ -1286,7 +1286,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="pouting cat"
@@ -1297,7 +1297,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="see-no-evil monkey"
@@ -1308,7 +1308,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="hear-no-evil monkey"
@@ -1319,7 +1319,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="speak-no-evil monkey"
@@ -1330,7 +1330,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="kiss mark"
@@ -1341,7 +1341,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="love letter"
@@ -1352,7 +1352,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="heart with arrow"
@@ -1363,7 +1363,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="heart with ribbon"
@@ -1374,7 +1374,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="sparkling heart"
@@ -1385,7 +1385,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="growing heart"
@@ -1396,7 +1396,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="beating heart"
@@ -1407,7 +1407,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="revolving hearts"
@@ -1418,7 +1418,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="two hearts"
@@ -1429,7 +1429,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="heart decoration"
@@ -1440,7 +1440,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="heart exclamation"
@@ -1451,7 +1451,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="broken heart"
@@ -1462,7 +1462,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="red heart"
@@ -1473,7 +1473,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="orange heart"
@@ -1484,7 +1484,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="yellow heart"
@@ -1495,7 +1495,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="green heart"
@@ -1506,7 +1506,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="blue heart"
@@ -1517,7 +1517,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="purple heart"
@@ -1528,7 +1528,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="brown heart"
@@ -1539,7 +1539,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="black heart"
@@ -1550,7 +1550,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="white heart"
@@ -1561,7 +1561,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="hundred points"
@@ -1572,7 +1572,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="anger symbol"
@@ -1583,7 +1583,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="collision"
@@ -1594,7 +1594,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="dizzy"
@@ -1605,7 +1605,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="sweat droplets"
@@ -1616,7 +1616,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="dashing away"
@@ -1627,7 +1627,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="hole"
@@ -1638,7 +1638,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="bomb"
@@ -1649,7 +1649,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="speech balloon"
@@ -1660,7 +1660,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="eye in speech bubble"
@@ -1671,7 +1671,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="left speech bubble"
@@ -1682,7 +1682,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="right anger bubble"
@@ -1693,7 +1693,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="thought balloon"
@@ -1704,7 +1704,7 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-emoji-item"
+            class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-emoji-item"
           >
             <span
               aria-label="zzz"
@@ -1733,7 +1733,7 @@ exports[`Dashboard Gallery matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium uploader-dashboard-navbar-item active"
+      class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium uploader-dashboard-navbar-item active"
       role="menuitem"
     >
       <span>
@@ -1744,7 +1744,7 @@ exports[`Dashboard Gallery matches correct snapshot 1`] = `
       class="uploader-dashboard-action-buttons"
     >
       <button
-        class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium dashboard-action-button"
+        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium dashboard-action-button"
       >
         <div
           class="dashboard-action-button-label"
@@ -1839,7 +1839,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium uploader-dashboard-navbar-item active"
+      class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium uploader-dashboard-navbar-item active"
       role="menuitem"
     >
       <span>
@@ -1859,7 +1859,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
       placeholder="Placeholder"
     />
     <button
-      class="brd-c-hWVhr brd-c-hWVhr-eaIrEQ-type-primary brd-c-hWVhr-lKjfQ-size-medium dashboard-panel-button"
+      class="brd-c-NFHkO brd-c-NFHkO-bRcfYV-type-primary brd-c-NFHkO-lKjfQ-size-medium dashboard-panel-button"
       data-testid="uploader-dashboard-modules-link-button"
     >
       <span>
@@ -1884,7 +1884,7 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-hWVhr brd-c-hWVhr-iiMVfj-type-text brd-c-hWVhr-lKjfQ-size-medium uploader-dashboard-navbar-item active"
+      class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium uploader-dashboard-navbar-item active"
       data-testid="uploader-dashboard-tabs-upload"
       role="menuitem"
     >
@@ -1905,7 +1905,7 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
       type="file"
     />
     <button
-      class="brd-c-hWVhr brd-c-hWVhr-eaIrEQ-type-primary brd-c-hWVhr-lKjfQ-size-medium dashboard-panel-button"
+      class="brd-c-NFHkO brd-c-NFHkO-bRcfYV-type-primary brd-c-NFHkO-lKjfQ-size-medium dashboard-panel-button"
       data-testid="uploader-dashboard-modules-upload-button"
     >
       <span>

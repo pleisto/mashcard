@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { Tag, Button, Icon, Popover, Menu, Input } from '@brickdoc/design-system'
+import { Tag, Button, Icon, Popover, DeprecatedMenu as Menu, Input } from '@brickdoc/design-system'
 import { TableColumnSelectOption } from 'react-table'
 import { bgColor } from './SelectCell'
 import { COLOR } from '../../../../../helpers/color'
@@ -13,7 +13,12 @@ export interface SelectCellOptionProps {
   onOptionRemove: (option: TableColumnSelectOption) => void
 }
 
-export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOptionValueChange, onOptionRemove, onMenuVisibleChange }) => {
+export const SelectCellOption: React.FC<SelectCellOptionProps> = ({
+  option,
+  onOptionValueChange,
+  onOptionRemove,
+  onMenuVisibleChange
+}) => {
   const [visible, setVisible] = React.useState(false)
   const handleVisibleChange = (visible: boolean): void => {
     setVisible(visible)
@@ -26,7 +31,11 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
   const inputRef = React.useRef<Input | null>()
 
   return (
-    <div className="select-cell-option-item" role="listitem" data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.id}>
+    <div
+      className="select-cell-option-item"
+      role="listitem"
+      data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.id}
+    >
       <Tag color={bgColor(option.color)} style={{ color: option.color }}>
         {option.label}
       </Tag>
@@ -36,7 +45,11 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
         overlayStyle={{ zIndex: 1054 }}
         content={
           <Menu className="table-block-menu" onClick={e => e.domEvent.stopPropagation()}>
-            <Menu.Item key="Header" className="table-block-menu-item input-item" onClick={() => inputRef.current?.focus()}>
+            <Menu.Item
+              key="Header"
+              className="table-block-menu-item input-item"
+              onClick={() => inputRef.current?.focus()}
+            >
               <Input
                 ref={container => {
                   inputRef.current = container
@@ -59,10 +72,12 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
                 <Menu.Item
                   className={cx('select-cell-menu-color-item', { active: option.color === colorMeta.color })}
                   onClick={() => onOptionValueChange({ ...option, color: colorMeta.color })}
-                  key={colorMeta.color}>
+                  key={colorMeta.color}
+                >
                   <span
                     className="select-cell-menu-color-icon-container"
-                    style={{ color: colorMeta.color, background: bgColor(colorMeta.color) }}>
+                    style={{ color: colorMeta.color, background: bgColor(colorMeta.color) }}
+                  >
                     <Icon.FontSize />
                   </span>
                   {colorMeta.label}
@@ -74,12 +89,14 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({ option, onOp
         }
         visible={visible}
         onVisibleChange={handleVisibleChange}
-        placement="right">
+        placement="right"
+      >
         <Button
           data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.menuButton.id}
           className="select-cell-option-menu-button"
           type="text"
-          onClick={handleOpenMenu}>
+          onClick={handleOpenMenu}
+        >
           <Icon.More className="select-cell-option-menu-icon" />
         </Button>
       </Popover>

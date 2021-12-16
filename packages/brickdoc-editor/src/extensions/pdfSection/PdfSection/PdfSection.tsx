@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { Resizable } from 're-resizable'
 import { NodeViewProps } from '@tiptap/react'
-import { Button, Popover, Icon, Menu, message, Modal } from '@brickdoc/design-system'
+import { Button, Popover, Icon, DeprecatedMenu as Menu, message, Modal } from '@brickdoc/design-system'
 import { Dashboard, UploadResultData, ImportSourceOption, UploadProgress } from '@brickdoc/uploader'
 import { PdfDocument } from './PdfDocument'
 import { linkStorage, sizeFormat } from '../../../helpers/file'
@@ -147,7 +147,8 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
                 width: Math.min(Number(node.attrs.attachment.width) + d.width, MAX_WIDTH),
                 height: Number(node.attrs.attachment.height) + d.height
               })
-            }}>
+            }}
+          >
             <Popover
               trigger="click"
               placement="bottom"
@@ -164,7 +165,8 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
                     {t('pdf_section.menu.delete')}
                   </Menu.Item>
                 </Menu>
-              }>
+              }
+            >
               <div className="pdf-section-menu-button">
                 <Icon.More className="pdf-section-menu-icon" />
               </div>
@@ -205,7 +207,8 @@ export const PdfSection: React.FC<NodeViewProps> = ({ editor, node, extension, g
             onUploaded={onUploaded}
             importSources={importSources}
           />
-        }>
+        }
+      >
         <Button type="text" className="brickdoc-block-pdf-section">
           <div className="pdf-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.FilePdf className="pdf-section-icon" />

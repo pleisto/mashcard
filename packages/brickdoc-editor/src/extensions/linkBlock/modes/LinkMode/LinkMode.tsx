@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { Button, Icon, Menu, message, Modal, Popover } from '@brickdoc/design-system'
+import { Button, Icon, DeprecatedMenu as Menu, message, Modal, Popover } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { useEditorI18n } from '../../../../'
 
@@ -37,7 +37,8 @@ export const LinkMode: React.FC<LinkModeProps> = ({ linkUrl, cover, title, descr
     <Button
       data-testid={TEST_ID_ENUM.editor.linkBlock.link.id}
       className="brickdoc-link-block-link"
-      onClick={() => window.open(linkUrl, '_blank')}>
+      onClick={() => window.open(linkUrl, '_blank')}
+    >
       {cover && <div className="link-block-cover" style={{ backgroundImage: `url("${cover}")` }} />}
       <div className="link-block-content">
         {title && <div className="link-block-title">{title}</div>}
@@ -55,7 +56,8 @@ export const LinkMode: React.FC<LinkModeProps> = ({ linkUrl, cover, title, descr
               onClick={info => {
                 info.domEvent.stopPropagation()
                 handleDelete()
-              }}>
+              }}
+            >
               <Icon.Delete />
               {t('link_block.menu.delete')}
             </Menu.Item>
@@ -64,12 +66,14 @@ export const LinkMode: React.FC<LinkModeProps> = ({ linkUrl, cover, title, descr
               {t('link_block.menu.copy')}
             </Menu.Item>
           </Menu>
-        }>
+        }
+      >
         <Button
           data-testid={TEST_ID_ENUM.editor.linkBlock.menuButton.id}
           type="text"
           className="link-block-menu-button"
-          onClick={event => event.stopPropagation()}>
+          onClick={event => event.stopPropagation()}
+        >
           <Icon.More className="link-block-menu-icon" />
         </Button>
       </Popover>

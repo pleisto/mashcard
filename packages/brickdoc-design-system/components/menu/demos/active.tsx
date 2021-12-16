@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { Menu, Button } from '../../../components'
+import { DeprecatedMenu as Menu, Button } from '../../../components'
 import {
   Mail as MailOutlined,
   AppStore as AppstoreOutlined,
@@ -19,7 +19,13 @@ const Active = () => {
       <Button type="primary" onClick={handleClick} style={{ marginBottom: 16 }}>
         {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
       </Button>
-      <Menu defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} mode="inline" theme="dark" inlineCollapsed={collapsed}>
+      <Menu
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        mode="inline"
+        theme="dark"
+        inlineCollapsed={collapsed}
+      >
         <Menu.Item key="1" icon={<AppstoreOutlined />}>
           Option 1
         </Menu.Item>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Column } from 'react-table'
 import cx from 'classnames'
-import { Button, Icon, Menu, Popover, Select } from '@brickdoc/design-system'
+import { Button, Icon, DeprecatedMenu as Menu, Popover, Select } from '@brickdoc/design-system'
 import { useEditorI18n } from '../../../../../hooks'
 import { FilterGroupOption, FilterOption } from './Filter'
 import { FilterItem } from './FilterItem'
@@ -34,18 +34,28 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
   onDuplicateFilter
 }) => {
   const { t } = useEditorI18n()
-  const updateCollectionType = (value: FilterGroupOption['collectionType']): void => onUpdateFilter({ collectionType: value }, path ?? [])
+  const updateCollectionType = (value: FilterGroupOption['collectionType']): void =>
+    onUpdateFilter({ collectionType: value }, path ?? [])
   return (
-    <div data-testid="brickdoc-table-filter-group" role="group" className={cx('table-toolbar-item-group-panel', { cascade })}>
+    <div
+      data-testid="brickdoc-table-filter-group"
+      role="group"
+      className={cx('table-toolbar-item-group-panel', { cascade })}
+    >
       <div className="table-toolbar-item-group-content">
         {filterGroup.filters.map((filter, index) => (
           <div
             data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.id}
             key={index}
-            className={cx('table-toolbar-item-option', filter.type)}>
+            className={cx('table-toolbar-item-option', filter.type)}
+          >
             {isFirst(index) && <span className="table-toolbar-item-option-head-label">{t('table.filter.where')}</span>}
             {isSecond(index) && (
-              <Select className="table-toolbar-item-option-head-select" value={filterGroup.collectionType} onChange={updateCollectionType}>
+              <Select
+                className="table-toolbar-item-option-head-select"
+                value={filterGroup.collectionType}
+                onChange={updateCollectionType}
+              >
                 {['intersection', 'union'].map(type => (
                   <Select.Option key={type} value={type}>
                     {t(`table.filter.collection_types.${type}`)}
@@ -59,7 +69,12 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
               </span>
             )}
             {filter.type === 'single' && (
-              <FilterItem path={[...(path ?? []), index]} columns={columns} filterSingleOption={filter} onUpdateFilter={onUpdateFilter} />
+              <FilterItem
+                path={[...(path ?? []), index]}
+                columns={columns}
+                filterSingleOption={filter}
+                onUpdateFilter={onUpdateFilter}
+              />
             )}
             {filter.type === 'group' && (
               <FilterGroup
@@ -83,7 +98,8 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
                     data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.deleteButton.id}
                     className="table-block-menu-item"
                     key="Remove"
-                    onClick={() => onRemoveFilter([...(path ?? []), index])}>
+                    onClick={() => onRemoveFilter([...(path ?? []), index])}
+                  >
                     <Icon.Delete />
                     <span>{t('table.filter.remove')}</span>
                   </Menu.Item>
@@ -91,16 +107,19 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
                     data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.duplicateButton.id}
                     className="table-block-menu-item"
                     key="Duplicate"
-                    onClick={() => onDuplicateFilter([...(path ?? []), index])}>
+                    onClick={() => onDuplicateFilter([...(path ?? []), index])}
+                  >
                     <Icon.Copy />
                     <span>{t('table.filter.duplicate')}</span>
                   </Menu.Item>
                 </Menu>
-              }>
+              }
+            >
               <Button
                 data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.menuButton.id}
                 type="text"
-                className="table-toolbar-item-option-action-button">
+                className="table-toolbar-item-option-action-button"
+              >
                 <Icon.More />
               </Button>
             </Popover>
