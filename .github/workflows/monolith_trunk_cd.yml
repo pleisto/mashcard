@@ -111,3 +111,4 @@ jobs:
           APP_ENV_AWS_REGION: us-east-1
           APP_ENV_AWS_PUBLIC_BUCKET: brickdoc-trunk-public
           APP_ENV_AWS_PRIVATE_BUCKET: brickdoc-trunk-private
+          APP_ENV_BRICKDOC_BUILD: ${{ github.sha }}.trunk

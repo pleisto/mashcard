@@ -44,7 +44,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable,
             if (block.type !== 'text') break
 
             const word = findNearestWord(block.text!, position - length - 1)
-            console.log({ word, pos: position - length - 1 })
+            console.info({ word, pos: position - length - 1 })
           }
 
           length += blockLength

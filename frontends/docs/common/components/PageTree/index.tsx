@@ -144,7 +144,6 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     const treeData = array2Tree(flattedData, { id: 'key' })
 
     const selectedKeys = [docMeta.id, popoverKey].filter(k => !!k) as string[]
-    console.log([docMeta.id, popoverKey], '[docMeta.id, popoverKey]')
 
     return (
       <Tree
