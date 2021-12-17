@@ -17,6 +17,9 @@
     { "path": "packages/brickdoc-editor/tsconfig.build.json" },
     {
       "path": "packages/brickdoc-formula/tsconfig.build.json"
+    },
+    {
+      "path": "packages/brickdoc-schema"
     }
   ]
 }

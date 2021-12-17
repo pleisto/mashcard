@@ -19,6 +19,9 @@
     },
     {
       "path": "packages/brickdoc-formula"
+    },
+    {
+      "path": "packages/brickdoc-schema"
     }
   ]
 }

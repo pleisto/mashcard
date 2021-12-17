@@ -3,19 +3,18 @@ import { Fragment } from 'prosemirror-model'
 import { Editor, ChainedCommands } from '@tiptap/core'
 import { EditorContentProps } from '@brickdoc/editor'
 import { blockToNode } from '../../common/blocks'
+import { BrickdocEventBus, BlockUpdated, BlockDeleted } from '@brickdoc/schema'
 
 export function useDocumentSubscription({
   docid,
   editor,
   setDocumentEditable,
-  refetchDocument,
-  updateCachedDocBlock
+  refetchDocument
 }: {
   docid: string
   editor: EditorContentProps['editor'] | null
   setDocumentEditable: (editable: boolean) => void
   refetchDocument: () => void
-  updateCachedDocBlock: (block: Block, toDelete: boolean) => void
 }): void {
   const applyPatch = (editor: Editor, chainedCommands: ChainedCommands, patch: PatchBaseObject) => {
     const block = patch.payload as Block
@@ -103,7 +102,11 @@ export function useDocumentSubscription({
       return true
     })
 
-    updateCachedDocBlock(block, patch.patchType === Patchtype.Delete)
+    if (patch.patchType === Patchtype.Delete) {
+      BrickdocEventBus.dispatch(BlockDeleted(block))
+    } else {
+      BrickdocEventBus.dispatch(BlockUpdated(block))
+    }
   }
   useNewPatchSubscription({
     onSubscriptionData: ({ subscriptionData: { data } }) => {

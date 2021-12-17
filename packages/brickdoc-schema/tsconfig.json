@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.build.json",
+  "include": ["**/*"],
+  "exclude": ["dist/**/*"],
+  "references": [{ "path": "../brickdoc-test-helper" }]
+}

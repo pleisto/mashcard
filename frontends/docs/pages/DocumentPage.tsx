@@ -31,8 +31,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
 
   const lastQueryVariables = useRef<typeof queryVariables>()
 
-  const { rootBlock, data, loading, refetch, onDocSave, updateBlocks, updateCachedDocBlock } =
-    useSyncProvider(queryVariables)
+  const { rootBlock, data, loading, refetch, onDocSave, updateBlocks } = useSyncProvider(queryVariables)
 
   const currentRootBlock = rootBlock.current
   const [documentEditable, setDocumentEditable] = useDocumentEditable(docMeta, currentRootBlock)
@@ -71,7 +70,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
       docid: docMeta.id as string,
       editor,
       setDocumentEditable,
-      updateCachedDocBlock,
       refetchDocument: refetch
     })
   }

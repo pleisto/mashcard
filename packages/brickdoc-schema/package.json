@@ -1,0 +1,19 @@
+{
+  "name": "@brickdoc/schema",
+  "version": "0.0.1",
+  "description": "Brickdoc schema",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc --build",
+    "cleanup": "tsc --build --clean"
+  },
+  "main": "./dist/src/index.js",
+  "module": "./src/index.ts",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
+  }
+}

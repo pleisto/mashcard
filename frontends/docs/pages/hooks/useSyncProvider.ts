@@ -6,6 +6,7 @@ import { BlockInput, Block, useGetChildrenBlocksQuery, useBlockSyncBatchMutation
 import { isEqual } from 'lodash-es'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
+import { BrickdocEventBus, Event, BlockUpdated, BlockDeleted } from '@brickdoc/schema'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -16,7 +17,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
   refetch: any
   onDocSave: (doc: Node) => Promise<void>
   updateBlocks: UpdateBlocks
-  updateCachedDocBlock: (block: Block, toDelete: boolean) => void
+  // updateCachedDocBlock: (block: Block, toDelete: boolean) => void
 } {
   const rootId = React.useRef<string>(queryVariables.rootId)
 
@@ -66,8 +67,14 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
           dirtyBlocksMap.current.get(parentId)
       )
       const deletedIds = [...dirtyToDeleteIds.current]
-      blocks.forEach(b => dirtyBlocksMap.current.delete(b.id))
-      deletedIds.forEach(id => dirtyToDeleteIds.current.delete(id))
+      blocks.forEach(b => {
+        BrickdocEventBus.dispatch(BlockUpdated(b))
+        dirtyBlocksMap.current.delete(b.id)
+      })
+      deletedIds.forEach(id => {
+        BrickdocEventBus.dispatch(BlockDeleted(docBlocksMap.current.get(id)))
+        dirtyToDeleteIds.current.delete(id)
+      })
 
       const syncPromise = blockSyncBatch({
         variables: {
@@ -115,38 +122,45 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       docBlocksMap.current.delete(id)
     })
 
-    // update info title if root block changed
-    const dirtyRootBlock = dirtyBlocksMap.current.get(rootId.current)
-    if (dirtyRootBlock) {
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'BlockInfo', id: dirtyRootBlock.id }),
-        fields: {
-          title() {
-            return dirtyRootBlock.text
-          }
-        }
-      })
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'block', id: dirtyRootBlock.id }),
-        fields: {
-          text() {
-            return dirtyRootBlock.text
-          }
-        }
-      })
-    }
-
     await commitDirty()
   }
 
-  const updateCachedDocBlock = (block: Block, toDelete: boolean) => {
-    if (toDelete) {
-      docBlocksMap.current.delete(block.id)
-    } else {
+  BrickdocEventBus.subscribe(
+    BlockUpdated,
+    (e: Event) => {
+      const block: Block = e.payload
       const oldBlock = docBlocksMap.current.get(block.id) ?? {}
       docBlocksMap.current.set(block.id, { ...oldBlock, ...block })
-    }
-  }
+      if (block.id === rootId.current) {
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'BlockInfo', id: block.id }),
+          fields: {
+            title() {
+              return block.text
+            }
+          }
+        })
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'block', id: block.id }),
+          fields: {
+            text() {
+              return block.text
+            }
+          }
+        })
+      }
+    },
+    { subscribeId: 'SyncProvider' }
+  )
+
+  BrickdocEventBus.subscribe(
+    BlockDeleted,
+    (e: Event) => {
+      const block: Block = e.payload
+      docBlocksMap.current.delete(block.id)
+    },
+    { subscribeId: 'SyncProvider' }
+  )
 
   const updateBlocks = async (blocks: BlockInput[], toDeleteIds: string[]) => {
     isSavingVar(true)
@@ -162,7 +176,6 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     loading,
     refetch,
     onDocSave,
-    updateBlocks,
-    updateCachedDocBlock
+    updateBlocks
   }
 }

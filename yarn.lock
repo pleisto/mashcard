@@ -2188,6 +2188,7 @@ __metadata:
     "@brickdoc/editor": "workspace:packages/brickdoc-editor"
     "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc"
     "@brickdoc/formula": "workspace:packages/brickdoc-formula"
+    "@brickdoc/schema": "workspace:packages/brickdoc-schema"
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
     "@commitlint/cli": ^15.0.0
     "@commitlint/config-conventional": ^15.0.0
@@ -2272,6 +2273,14 @@ __metadata:
     vite: ^2.7.2
     vite-plugin-pwa: ^0.11.11
     vite-plugin-ruby: ^3.0.4
+  languageName: unknown
+  linkType: soft
+
+"@brickdoc/schema@workspace:packages/brickdoc-schema":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/schema@workspace:packages/brickdoc-schema"
+  dependencies:
+    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
   languageName: unknown
   linkType: soft
 

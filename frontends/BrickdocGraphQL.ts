@@ -1539,7 +1539,10 @@ export type GetAccountsConfigFromWsQuery = {
       userAgreementLink: string
       accountsPreferredAuthMethod: AuthMethod
       accountsEmailPasswordAuth: boolean
-      accountsFederatedProviders?: Array<{ __typename?: 'federatedProvider'; name: string; logo: string }> | null | undefined
+      accountsFederatedProviders?:
+        | Array<{ __typename?: 'federatedProvider'; name: string; logo: string }>
+        | null
+        | undefined
     }
   }
 }
@@ -1550,7 +1553,10 @@ export type UserForgetPasswordMailSendMutationVariables = Exact<{
 
 export type UserForgetPasswordMailSendMutation = {
   __typename?: 'RootMutation'
-  userForgetPasswordMailSend?: { __typename?: 'UserForgetPasswordMailSendPayload'; errors: Array<string> } | null | undefined
+  userForgetPasswordMailSend?:
+    | { __typename?: 'UserForgetPasswordMailSendPayload'; errors: Array<string> }
+    | null
+    | undefined
 }
 
 export type UserPasswordResetMutationVariables = Exact<{
@@ -1610,7 +1616,10 @@ export type UserConfirmationEmailResendMutationVariables = Exact<{
 
 export type UserConfirmationEmailResendMutation = {
   __typename?: 'RootMutation'
-  userConfirmationEmailResend?: { __typename?: 'UserConfirmationEmailResendPayload'; errors: Array<string> } | null | undefined
+  userConfirmationEmailResend?:
+    | { __typename?: 'UserConfirmationEmailResendPayload'; errors: Array<string> }
+    | null
+    | undefined
 }
 
 export type QueryWebidAvailableFromWsQueryVariables = Exact<{
@@ -1626,7 +1635,11 @@ export type GetAvailableLocalesFromWsQueryVariables = Exact<{ [key: string]: nev
 
 export type GetAvailableLocalesFromWsQuery = {
   __typename?: 'RootQuery'
-  metadata: { __typename?: 'metadata'; id: string; availableLocales: Array<{ __typename?: 'select_option'; label: string; value: string }> }
+  metadata: {
+    __typename?: 'metadata'
+    id: string
+    availableLocales: Array<{ __typename?: 'select_option'; label: string; value: string }>
+  }
 }
 
 export type CreateDirectUploadMutationVariables = Exact<{
@@ -1781,7 +1794,13 @@ export type QueryPreviewBoxQueryVariables = Exact<{
 
 export type QueryPreviewBoxQuery = {
   __typename?: 'RootQuery'
-  previewBox: { __typename?: 'preview_box'; url: string; title: string; description: string; cover?: string | null | undefined }
+  previewBox: {
+    __typename?: 'preview_box'
+    url: string
+    title: string
+    description: string
+    cover?: string | null | undefined
+  }
 }
 
 export type QueryPodSearchQueryVariables = Exact<{
@@ -1840,7 +1859,10 @@ export type GetBlockSearchQueryVariables = Exact<{
 
 export type GetBlockSearchQuery = {
   __typename?: 'RootQuery'
-  blockSearch?: Array<{ __typename?: 'block'; id: string; type: string; text: string; rootId: string }> | null | undefined
+  blockSearch?:
+    | Array<{ __typename?: 'block'; id: string; type: string; text: string; rootId: string }>
+    | null
+    | undefined
 }
 
 export type GetPageBlocksQueryVariables = Exact<{
@@ -1956,7 +1978,14 @@ export type GetBlockSnapshotsQueryVariables = Exact<{
 export type GetBlockSnapshotsQuery = {
   __typename?: 'RootQuery'
   blockSnapshots?:
-    | Array<{ __typename?: 'BlockSnapshot'; id: string; snapshotVersion: number; name: string; createdAt: any; relativeTime: string }>
+    | Array<{
+        __typename?: 'BlockSnapshot'
+        id: string
+        snapshotVersion: number
+        name: string
+        createdAt: any
+        relativeTime: string
+      }>
     | null
     | undefined
 }
@@ -2085,7 +2114,14 @@ export type GetPluginQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetPluginQuery = {
   __typename?: 'RootQuery'
-  plugins: Array<{ __typename?: 'plugin'; name: string; version: string; logo: string; enabled: boolean; metadata: any }>
+  plugins: Array<{
+    __typename?: 'plugin'
+    name: string
+    version: string
+    logo: string
+    enabled: boolean
+    metadata: any
+  }>
 }
 
 export type BlockSyncBatchMutationVariables = Exact<{
@@ -2213,7 +2249,10 @@ export type GetBlockInfoQuery = {
             | null
             | undefined
         }>
-        permission?: { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState } | null | undefined
+        permission?:
+          | { __typename?: 'ShareLink'; key: string; policy: Policytype; state: ShareLinkState }
+          | null
+          | undefined
         collaborators: Array<{
           __typename?: 'pod'
           name?: string | null | undefined
@@ -2447,7 +2486,10 @@ export function useQueryPasswordAvailableFromWsQuery(
   )
 }
 export function useQueryPasswordAvailableFromWsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<QueryPasswordAvailableFromWsQuery, QueryPasswordAvailableFromWsQueryVariables>
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    QueryPasswordAvailableFromWsQuery,
+    QueryPasswordAvailableFromWsQueryVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<QueryPasswordAvailableFromWsQuery, QueryPasswordAvailableFromWsQueryVariables>(
@@ -2456,7 +2498,9 @@ export function useQueryPasswordAvailableFromWsLazyQuery(
   )
 }
 export type QueryPasswordAvailableFromWsQueryHookResult = ReturnType<typeof useQueryPasswordAvailableFromWsQuery>
-export type QueryPasswordAvailableFromWsLazyQueryHookResult = ReturnType<typeof useQueryPasswordAvailableFromWsLazyQuery>
+export type QueryPasswordAvailableFromWsLazyQueryHookResult = ReturnType<
+  typeof useQueryPasswordAvailableFromWsLazyQuery
+>
 export type QueryPasswordAvailableFromWsQueryResult = Apollo.QueryResult<
   QueryPasswordAvailableFromWsQuery,
   QueryPasswordAvailableFromWsQueryVariables
@@ -2487,7 +2531,9 @@ export type UserSignOutMutationFn = Apollo.MutationFunction<UserSignOutMutation,
  *   },
  * });
  */
-export function useUserSignOutMutation(baseOptions?: Apollo.MutationHookOptions<UserSignOutMutation, UserSignOutMutationVariables>) {
+export function useUserSignOutMutation(
+  baseOptions?: Apollo.MutationHookOptions<UserSignOutMutation, UserSignOutMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<UserSignOutMutation, UserSignOutMutationVariables>(UserSignOutDocument, options)
 }
@@ -2530,17 +2576,26 @@ export function useGetAccountsConfigFromWsQuery(
   baseOptions?: Apollo.QueryHookOptions<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>(GetAccountsConfigFromWsDocument, options)
+  return Apollo.useQuery<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>(
+    GetAccountsConfigFromWsDocument,
+    options
+  )
 }
 export function useGetAccountsConfigFromWsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>(GetAccountsConfigFromWsDocument, options)
+  return Apollo.useLazyQuery<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>(
+    GetAccountsConfigFromWsDocument,
+    options
+  )
 }
 export type GetAccountsConfigFromWsQueryHookResult = ReturnType<typeof useGetAccountsConfigFromWsQuery>
 export type GetAccountsConfigFromWsLazyQueryHookResult = ReturnType<typeof useGetAccountsConfigFromWsLazyQuery>
-export type GetAccountsConfigFromWsQueryResult = Apollo.QueryResult<GetAccountsConfigFromWsQuery, GetAccountsConfigFromWsQueryVariables>
+export type GetAccountsConfigFromWsQueryResult = Apollo.QueryResult<
+  GetAccountsConfigFromWsQuery,
+  GetAccountsConfigFromWsQueryVariables
+>
 export const UserForgetPasswordMailSendDocument = gql`
   mutation userForgetPasswordMailSend($input: UserForgetPasswordMailSendInput!) {
     userForgetPasswordMailSend(input: $input) {
@@ -2571,7 +2626,10 @@ export type UserForgetPasswordMailSendMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUserForgetPasswordMailSendMutation(
-  baseOptions?: Apollo.MutationHookOptions<UserForgetPasswordMailSendMutation, UserForgetPasswordMailSendMutationVariables>
+  baseOptions?: Apollo.MutationHookOptions<
+    UserForgetPasswordMailSendMutation,
+    UserForgetPasswordMailSendMutationVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<UserForgetPasswordMailSendMutation, UserForgetPasswordMailSendMutationVariables>(
@@ -2592,7 +2650,10 @@ export const UserPasswordResetDocument = gql`
     }
   }
 `
-export type UserPasswordResetMutationFn = Apollo.MutationFunction<UserPasswordResetMutation, UserPasswordResetMutationVariables>
+export type UserPasswordResetMutationFn = Apollo.MutationFunction<
+  UserPasswordResetMutation,
+  UserPasswordResetMutationVariables
+>
 
 /**
  * __useUserPasswordResetMutation__
@@ -2615,11 +2676,17 @@ export function useUserPasswordResetMutation(
   baseOptions?: Apollo.MutationHookOptions<UserPasswordResetMutation, UserPasswordResetMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<UserPasswordResetMutation, UserPasswordResetMutationVariables>(UserPasswordResetDocument, options)
+  return Apollo.useMutation<UserPasswordResetMutation, UserPasswordResetMutationVariables>(
+    UserPasswordResetDocument,
+    options
+  )
 }
 export type UserPasswordResetMutationHookResult = ReturnType<typeof useUserPasswordResetMutation>
 export type UserPasswordResetMutationResult = Apollo.MutationResult<UserPasswordResetMutation>
-export type UserPasswordResetMutationOptions = Apollo.BaseMutationOptions<UserPasswordResetMutation, UserPasswordResetMutationVariables>
+export type UserPasswordResetMutationOptions = Apollo.BaseMutationOptions<
+  UserPasswordResetMutation,
+  UserPasswordResetMutationVariables
+>
 export const UserEmailPasswordSignInDocument = gql`
   mutation userEmailPasswordSignIn($input: UserEmailPasswordSignInInput!) {
     userEmailPasswordSignIn(input: $input) {
@@ -2743,7 +2810,9 @@ export type UserCreateMutationFn = Apollo.MutationFunction<UserCreateMutation, U
  *   },
  * });
  */
-export function useUserCreateMutation(baseOptions?: Apollo.MutationHookOptions<UserCreateMutation, UserCreateMutationVariables>) {
+export function useUserCreateMutation(
+  baseOptions?: Apollo.MutationHookOptions<UserCreateMutation, UserCreateMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<UserCreateMutation, UserCreateMutationVariables>(UserCreateDocument, options)
 }
@@ -2780,7 +2849,10 @@ export type UserConfirmationEmailResendMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUserConfirmationEmailResendMutation(
-  baseOptions?: Apollo.MutationHookOptions<UserConfirmationEmailResendMutation, UserConfirmationEmailResendMutationVariables>
+  baseOptions?: Apollo.MutationHookOptions<
+    UserConfirmationEmailResendMutation,
+    UserConfirmationEmailResendMutationVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<UserConfirmationEmailResendMutation, UserConfirmationEmailResendMutationVariables>(
@@ -2908,7 +2980,10 @@ export const CreateDirectUploadDocument = gql`
     }
   }
 `
-export type CreateDirectUploadMutationFn = Apollo.MutationFunction<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>
+export type CreateDirectUploadMutationFn = Apollo.MutationFunction<
+  CreateDirectUploadMutation,
+  CreateDirectUploadMutationVariables
+>
 
 /**
  * __useCreateDirectUploadMutation__
@@ -2931,11 +3006,17 @@ export function useCreateDirectUploadMutation(
   baseOptions?: Apollo.MutationHookOptions<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>(CreateDirectUploadDocument, options)
+  return Apollo.useMutation<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>(
+    CreateDirectUploadDocument,
+    options
+  )
 }
 export type CreateDirectUploadMutationHookResult = ReturnType<typeof useCreateDirectUploadMutation>
 export type CreateDirectUploadMutationResult = Apollo.MutationResult<CreateDirectUploadMutation>
-export type CreateDirectUploadMutationOptions = Apollo.BaseMutationOptions<CreateDirectUploadMutation, CreateDirectUploadMutationVariables>
+export type CreateDirectUploadMutationOptions = Apollo.BaseMutationOptions<
+  CreateDirectUploadMutation,
+  CreateDirectUploadMutationVariables
+>
 export const GetPodsDocument = gql`
   query GetPods {
     pods {
@@ -3063,11 +3144,15 @@ export const GetCurrentPodDocument = gql`
  *   },
  * });
  */
-export function useGetCurrentPodQuery(baseOptions: Apollo.QueryHookOptions<GetCurrentPodQuery, GetCurrentPodQueryVariables>) {
+export function useGetCurrentPodQuery(
+  baseOptions: Apollo.QueryHookOptions<GetCurrentPodQuery, GetCurrentPodQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetCurrentPodQuery, GetCurrentPodQueryVariables>(GetCurrentPodDocument, options)
 }
-export function useGetCurrentPodLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCurrentPodQuery, GetCurrentPodQueryVariables>) {
+export function useGetCurrentPodLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetCurrentPodQuery, GetCurrentPodQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetCurrentPodQuery, GetCurrentPodQueryVariables>(GetCurrentPodDocument, options)
 }
@@ -3106,11 +3191,15 @@ export const GetPodMembersDocument = gql`
  *   },
  * });
  */
-export function useGetPodMembersQuery(baseOptions?: Apollo.QueryHookOptions<GetPodMembersQuery, GetPodMembersQueryVariables>) {
+export function useGetPodMembersQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetPodMembersQuery, GetPodMembersQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetPodMembersQuery, GetPodMembersQueryVariables>(GetPodMembersDocument, options)
 }
-export function useGetPodMembersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPodMembersQuery, GetPodMembersQueryVariables>) {
+export function useGetPodMembersLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetPodMembersQuery, GetPodMembersQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetPodMembersQuery, GetPodMembersQueryVariables>(GetPodMembersDocument, options)
 }
@@ -3155,11 +3244,15 @@ export const GetBlockPinsDocument = gql`
  *   },
  * });
  */
-export function useGetBlockPinsQuery(baseOptions?: Apollo.QueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>) {
+export function useGetBlockPinsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetBlockPinsQuery, GetBlockPinsQueryVariables>(GetBlockPinsDocument, options)
 }
-export function useGetBlockPinsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>) {
+export function useGetBlockPinsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockPinsQuery, GetBlockPinsQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetBlockPinsQuery, GetBlockPinsQueryVariables>(GetBlockPinsDocument, options)
 }
@@ -3207,11 +3300,17 @@ export function useQueryUnsplashImageLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(QueryUnsplashImageDocument, options)
+  return Apollo.useLazyQuery<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>(
+    QueryUnsplashImageDocument,
+    options
+  )
 }
 export type QueryUnsplashImageQueryHookResult = ReturnType<typeof useQueryUnsplashImageQuery>
 export type QueryUnsplashImageLazyQueryHookResult = ReturnType<typeof useQueryUnsplashImageLazyQuery>
-export type QueryUnsplashImageQueryResult = Apollo.QueryResult<QueryUnsplashImageQuery, QueryUnsplashImageQueryVariables>
+export type QueryUnsplashImageQueryResult = Apollo.QueryResult<
+  QueryUnsplashImageQuery,
+  QueryUnsplashImageQueryVariables
+>
 export const QueryPreviewBoxDocument = gql`
   query QueryPreviewBox($url: String!) {
     previewBox(url: $url) {
@@ -3239,7 +3338,9 @@ export const QueryPreviewBoxDocument = gql`
  *   },
  * });
  */
-export function useQueryPreviewBoxQuery(baseOptions: Apollo.QueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>) {
+export function useQueryPreviewBoxQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(QueryPreviewBoxDocument, options)
 }
@@ -3281,11 +3382,15 @@ export const QueryPodSearchDocument = gql`
  *   },
  * });
  */
-export function useQueryPodSearchQuery(baseOptions: Apollo.QueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>) {
+export function useQueryPodSearchQuery(
+  baseOptions: Apollo.QueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<QueryPodSearchQuery, QueryPodSearchQueryVariables>(QueryPodSearchDocument, options)
 }
-export function useQueryPodSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>) {
+export function useQueryPodSearchLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<QueryPodSearchQuery, QueryPodSearchQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<QueryPodSearchQuery, QueryPodSearchQueryVariables>(QueryPodSearchDocument, options)
 }
@@ -3303,7 +3408,10 @@ export const CreateOrUpdatePodDocument = gql`
     }
   }
 `
-export type CreateOrUpdatePodMutationFn = Apollo.MutationFunction<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>
+export type CreateOrUpdatePodMutationFn = Apollo.MutationFunction<
+  CreateOrUpdatePodMutation,
+  CreateOrUpdatePodMutationVariables
+>
 
 /**
  * __useCreateOrUpdatePodMutation__
@@ -3326,11 +3434,17 @@ export function useCreateOrUpdatePodMutation(
   baseOptions?: Apollo.MutationHookOptions<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>(CreateOrUpdatePodDocument, options)
+  return Apollo.useMutation<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>(
+    CreateOrUpdatePodDocument,
+    options
+  )
 }
 export type CreateOrUpdatePodMutationHookResult = ReturnType<typeof useCreateOrUpdatePodMutation>
 export type CreateOrUpdatePodMutationResult = Apollo.MutationResult<CreateOrUpdatePodMutation>
-export type CreateOrUpdatePodMutationOptions = Apollo.BaseMutationOptions<CreateOrUpdatePodMutation, CreateOrUpdatePodMutationVariables>
+export type CreateOrUpdatePodMutationOptions = Apollo.BaseMutationOptions<
+  CreateOrUpdatePodMutation,
+  CreateOrUpdatePodMutationVariables
+>
 export const JoinPodDocument = gql`
   mutation joinPod($input: JoinPodInput!) {
     joinPod(input: $input) {
@@ -3357,7 +3471,9 @@ export type JoinPodMutationFn = Apollo.MutationFunction<JoinPodMutation, JoinPod
  *   },
  * });
  */
-export function useJoinPodMutation(baseOptions?: Apollo.MutationHookOptions<JoinPodMutation, JoinPodMutationVariables>) {
+export function useJoinPodMutation(
+  baseOptions?: Apollo.MutationHookOptions<JoinPodMutation, JoinPodMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<JoinPodMutation, JoinPodMutationVariables>(JoinPodDocument, options)
 }
@@ -3390,13 +3506,18 @@ export type UpdateMemberMutationFn = Apollo.MutationFunction<UpdateMemberMutatio
  *   },
  * });
  */
-export function useUpdateMemberMutation(baseOptions?: Apollo.MutationHookOptions<UpdateMemberMutation, UpdateMemberMutationVariables>) {
+export function useUpdateMemberMutation(
+  baseOptions?: Apollo.MutationHookOptions<UpdateMemberMutation, UpdateMemberMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<UpdateMemberMutation, UpdateMemberMutationVariables>(UpdateMemberDocument, options)
 }
 export type UpdateMemberMutationHookResult = ReturnType<typeof useUpdateMemberMutation>
 export type UpdateMemberMutationResult = Apollo.MutationResult<UpdateMemberMutation>
-export type UpdateMemberMutationOptions = Apollo.BaseMutationOptions<UpdateMemberMutation, UpdateMemberMutationVariables>
+export type UpdateMemberMutationOptions = Apollo.BaseMutationOptions<
+  UpdateMemberMutation,
+  UpdateMemberMutationVariables
+>
 export const GetBlockSearchDocument = gql`
   query GetBlockSearch($webid: String!, $input: String!) {
     blockSearch(webid: $webid, input: $input) {
@@ -3425,11 +3546,15 @@ export const GetBlockSearchDocument = gql`
  *   },
  * });
  */
-export function useGetBlockSearchQuery(baseOptions: Apollo.QueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>) {
+export function useGetBlockSearchQuery(
+  baseOptions: Apollo.QueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
 }
-export function useGetBlockSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>) {
+export function useGetBlockSearchLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockSearchQuery, GetBlockSearchQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetBlockSearchQuery, GetBlockSearchQueryVariables>(GetBlockSearchDocument, options)
 }
@@ -3494,11 +3619,15 @@ export const GetPageBlocksDocument = gql`
  *   },
  * });
  */
-export function useGetPageBlocksQuery(baseOptions: Apollo.QueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>) {
+export function useGetPageBlocksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetPageBlocksQuery, GetPageBlocksQueryVariables>(GetPageBlocksDocument, options)
 }
-export function useGetPageBlocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>) {
+export function useGetPageBlocksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetPageBlocksQuery, GetPageBlocksQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetPageBlocksQuery, GetPageBlocksQueryVariables>(GetPageBlocksDocument, options)
 }
@@ -3576,11 +3705,15 @@ export const GetTrashBlocksDocument = gql`
  *   },
  * });
  */
-export function useGetTrashBlocksQuery(baseOptions: Apollo.QueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>) {
+export function useGetTrashBlocksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>(GetTrashBlocksDocument, options)
 }
-export function useGetTrashBlocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>) {
+export function useGetTrashBlocksLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetTrashBlocksQuery, GetTrashBlocksQueryVariables>(GetTrashBlocksDocument, options)
 }
@@ -3615,7 +3748,9 @@ export const GetBlockSnapshotsDocument = gql`
  *   },
  * });
  */
-export function useGetBlockSnapshotsQuery(baseOptions: Apollo.QueryHookOptions<GetBlockSnapshotsQuery, GetBlockSnapshotsQueryVariables>) {
+export function useGetBlockSnapshotsQuery(
+  baseOptions: Apollo.QueryHookOptions<GetBlockSnapshotsQuery, GetBlockSnapshotsQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetBlockSnapshotsQuery, GetBlockSnapshotsQueryVariables>(GetBlockSnapshotsDocument, options)
 }
@@ -3623,7 +3758,10 @@ export function useGetBlockSnapshotsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetBlockSnapshotsQuery, GetBlockSnapshotsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockSnapshotsQuery, GetBlockSnapshotsQueryVariables>(GetBlockSnapshotsDocument, options)
+  return Apollo.useLazyQuery<GetBlockSnapshotsQuery, GetBlockSnapshotsQueryVariables>(
+    GetBlockSnapshotsDocument,
+    options
+  )
 }
 export type GetBlockSnapshotsQueryHookResult = ReturnType<typeof useGetBlockSnapshotsQuery>
 export type GetBlockSnapshotsLazyQueryHookResult = ReturnType<typeof useGetBlockSnapshotsLazyQuery>
@@ -3672,11 +3810,17 @@ export function useGetBlockShareLinksLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>(GetBlockShareLinksDocument, options)
+  return Apollo.useLazyQuery<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>(
+    GetBlockShareLinksDocument,
+    options
+  )
 }
 export type GetBlockShareLinksQueryHookResult = ReturnType<typeof useGetBlockShareLinksQuery>
 export type GetBlockShareLinksLazyQueryHookResult = ReturnType<typeof useGetBlockShareLinksLazyQuery>
-export type GetBlockShareLinksQueryResult = Apollo.QueryResult<GetBlockShareLinksQuery, GetBlockShareLinksQueryVariables>
+export type GetBlockShareLinksQueryResult = Apollo.QueryResult<
+  GetBlockShareLinksQuery,
+  GetBlockShareLinksQueryVariables
+>
 export const BlockDuplicateDocument = gql`
   mutation blockDuplicate($input: BlockDuplicateInput!) {
     blockDuplicate(input: $input) {
@@ -3712,7 +3856,10 @@ export function useBlockDuplicateMutation(
 }
 export type BlockDuplicateMutationHookResult = ReturnType<typeof useBlockDuplicateMutation>
 export type BlockDuplicateMutationResult = Apollo.MutationResult<BlockDuplicateMutation>
-export type BlockDuplicateMutationOptions = Apollo.BaseMutationOptions<BlockDuplicateMutation, BlockDuplicateMutationVariables>
+export type BlockDuplicateMutationOptions = Apollo.BaseMutationOptions<
+  BlockDuplicateMutation,
+  BlockDuplicateMutationVariables
+>
 export const BlockSoftDeleteDocument = gql`
   mutation blockSoftDelete($input: BlockSoftDeleteInput!) {
     blockSoftDelete(input: $input) {
@@ -3720,7 +3867,10 @@ export const BlockSoftDeleteDocument = gql`
     }
   }
 `
-export type BlockSoftDeleteMutationFn = Apollo.MutationFunction<BlockSoftDeleteMutation, BlockSoftDeleteMutationVariables>
+export type BlockSoftDeleteMutationFn = Apollo.MutationFunction<
+  BlockSoftDeleteMutation,
+  BlockSoftDeleteMutationVariables
+>
 
 /**
  * __useBlockSoftDeleteMutation__
@@ -3747,7 +3897,10 @@ export function useBlockSoftDeleteMutation(
 }
 export type BlockSoftDeleteMutationHookResult = ReturnType<typeof useBlockSoftDeleteMutation>
 export type BlockSoftDeleteMutationResult = Apollo.MutationResult<BlockSoftDeleteMutation>
-export type BlockSoftDeleteMutationOptions = Apollo.BaseMutationOptions<BlockSoftDeleteMutation, BlockSoftDeleteMutationVariables>
+export type BlockSoftDeleteMutationOptions = Apollo.BaseMutationOptions<
+  BlockSoftDeleteMutation,
+  BlockSoftDeleteMutationVariables
+>
 export const BlockHardDeleteDocument = gql`
   mutation blockHardDelete($input: BlockHardDeleteInput!) {
     blockHardDelete(input: $input) {
@@ -3755,7 +3908,10 @@ export const BlockHardDeleteDocument = gql`
     }
   }
 `
-export type BlockHardDeleteMutationFn = Apollo.MutationFunction<BlockHardDeleteMutation, BlockHardDeleteMutationVariables>
+export type BlockHardDeleteMutationFn = Apollo.MutationFunction<
+  BlockHardDeleteMutation,
+  BlockHardDeleteMutationVariables
+>
 
 /**
  * __useBlockHardDeleteMutation__
@@ -3782,7 +3938,10 @@ export function useBlockHardDeleteMutation(
 }
 export type BlockHardDeleteMutationHookResult = ReturnType<typeof useBlockHardDeleteMutation>
 export type BlockHardDeleteMutationResult = Apollo.MutationResult<BlockHardDeleteMutation>
-export type BlockHardDeleteMutationOptions = Apollo.BaseMutationOptions<BlockHardDeleteMutation, BlockHardDeleteMutationVariables>
+export type BlockHardDeleteMutationOptions = Apollo.BaseMutationOptions<
+  BlockHardDeleteMutation,
+  BlockHardDeleteMutationVariables
+>
 export const BlockRestoreDocument = gql`
   mutation blockRestore($input: BlockRestoreInput!) {
     blockRestore(input: $input) {
@@ -3809,13 +3968,18 @@ export type BlockRestoreMutationFn = Apollo.MutationFunction<BlockRestoreMutatio
  *   },
  * });
  */
-export function useBlockRestoreMutation(baseOptions?: Apollo.MutationHookOptions<BlockRestoreMutation, BlockRestoreMutationVariables>) {
+export function useBlockRestoreMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockRestoreMutation, BlockRestoreMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<BlockRestoreMutation, BlockRestoreMutationVariables>(BlockRestoreDocument, options)
 }
 export type BlockRestoreMutationHookResult = ReturnType<typeof useBlockRestoreMutation>
 export type BlockRestoreMutationResult = Apollo.MutationResult<BlockRestoreMutation>
-export type BlockRestoreMutationOptions = Apollo.BaseMutationOptions<BlockRestoreMutation, BlockRestoreMutationVariables>
+export type BlockRestoreMutationOptions = Apollo.BaseMutationOptions<
+  BlockRestoreMutation,
+  BlockRestoreMutationVariables
+>
 export const BlockPinOrUnpinDocument = gql`
   mutation blockPinOrUnpin($input: BlockPinOrUnpinInput!) {
     blockPinOrUnpin(input: $input) {
@@ -3823,7 +3987,10 @@ export const BlockPinOrUnpinDocument = gql`
     }
   }
 `
-export type BlockPinOrUnpinMutationFn = Apollo.MutationFunction<BlockPinOrUnpinMutation, BlockPinOrUnpinMutationVariables>
+export type BlockPinOrUnpinMutationFn = Apollo.MutationFunction<
+  BlockPinOrUnpinMutation,
+  BlockPinOrUnpinMutationVariables
+>
 
 /**
  * __useBlockPinOrUnpinMutation__
@@ -3850,7 +4017,10 @@ export function useBlockPinOrUnpinMutation(
 }
 export type BlockPinOrUnpinMutationHookResult = ReturnType<typeof useBlockPinOrUnpinMutation>
 export type BlockPinOrUnpinMutationResult = Apollo.MutationResult<BlockPinOrUnpinMutation>
-export type BlockPinOrUnpinMutationOptions = Apollo.BaseMutationOptions<BlockPinOrUnpinMutation, BlockPinOrUnpinMutationVariables>
+export type BlockPinOrUnpinMutationOptions = Apollo.BaseMutationOptions<
+  BlockPinOrUnpinMutation,
+  BlockPinOrUnpinMutationVariables
+>
 export const BlockCreateDocument = gql`
   mutation blockCreate($input: BlockCreateInput!) {
     blockCreate(input: $input) {
@@ -3878,7 +4048,9 @@ export type BlockCreateMutationFn = Apollo.MutationFunction<BlockCreateMutation,
  *   },
  * });
  */
-export function useBlockCreateMutation(baseOptions?: Apollo.MutationHookOptions<BlockCreateMutation, BlockCreateMutationVariables>) {
+export function useBlockCreateMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockCreateMutation, BlockCreateMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<BlockCreateMutation, BlockCreateMutationVariables>(BlockCreateDocument, options)
 }
@@ -3892,7 +4064,10 @@ export const BlockCreateShareLinkDocument = gql`
     }
   }
 `
-export type BlockCreateShareLinkMutationFn = Apollo.MutationFunction<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>
+export type BlockCreateShareLinkMutationFn = Apollo.MutationFunction<
+  BlockCreateShareLinkMutation,
+  BlockCreateShareLinkMutationVariables
+>
 
 /**
  * __useBlockCreateShareLinkMutation__
@@ -3915,7 +4090,10 @@ export function useBlockCreateShareLinkMutation(
   baseOptions?: Apollo.MutationHookOptions<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>(BlockCreateShareLinkDocument, options)
+  return Apollo.useMutation<BlockCreateShareLinkMutation, BlockCreateShareLinkMutationVariables>(
+    BlockCreateShareLinkDocument,
+    options
+  )
 }
 export type BlockCreateShareLinkMutationHookResult = ReturnType<typeof useBlockCreateShareLinkMutation>
 export type BlockCreateShareLinkMutationResult = Apollo.MutationResult<BlockCreateShareLinkMutation>
@@ -3949,7 +4127,9 @@ export type BlockMoveMutationFn = Apollo.MutationFunction<BlockMoveMutation, Blo
  *   },
  * });
  */
-export function useBlockMoveMutation(baseOptions?: Apollo.MutationHookOptions<BlockMoveMutation, BlockMoveMutationVariables>) {
+export function useBlockMoveMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockMoveMutation, BlockMoveMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<BlockMoveMutation, BlockMoveMutationVariables>(BlockMoveDocument, options)
 }
@@ -3982,7 +4162,9 @@ export type BlockRenameMutationFn = Apollo.MutationFunction<BlockRenameMutation,
  *   },
  * });
  */
-export function useBlockRenameMutation(baseOptions?: Apollo.MutationHookOptions<BlockRenameMutation, BlockRenameMutationVariables>) {
+export function useBlockRenameMutation(
+  baseOptions?: Apollo.MutationHookOptions<BlockRenameMutation, BlockRenameMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<BlockRenameMutation, BlockRenameMutationVariables>(BlockRenameDocument, options)
 }
@@ -3996,7 +4178,10 @@ export const SnapshotRestoreDocument = gql`
     }
   }
 `
-export type SnapshotRestoreMutationFn = Apollo.MutationFunction<SnapshotRestoreMutation, SnapshotRestoreMutationVariables>
+export type SnapshotRestoreMutationFn = Apollo.MutationFunction<
+  SnapshotRestoreMutation,
+  SnapshotRestoreMutationVariables
+>
 
 /**
  * __useSnapshotRestoreMutation__
@@ -4023,7 +4208,10 @@ export function useSnapshotRestoreMutation(
 }
 export type SnapshotRestoreMutationHookResult = ReturnType<typeof useSnapshotRestoreMutation>
 export type SnapshotRestoreMutationResult = Apollo.MutationResult<SnapshotRestoreMutation>
-export type SnapshotRestoreMutationOptions = Apollo.BaseMutationOptions<SnapshotRestoreMutation, SnapshotRestoreMutationVariables>
+export type SnapshotRestoreMutationOptions = Apollo.BaseMutationOptions<
+  SnapshotRestoreMutation,
+  SnapshotRestoreMutationVariables
+>
 export const BlockCreateSnapshotDocument = gql`
   mutation blockCreateSnapshot($input: BlockCreateSnapshotInput!) {
     blockCreateSnapshot(input: $input) {
@@ -4031,7 +4219,10 @@ export const BlockCreateSnapshotDocument = gql`
     }
   }
 `
-export type BlockCreateSnapshotMutationFn = Apollo.MutationFunction<BlockCreateSnapshotMutation, BlockCreateSnapshotMutationVariables>
+export type BlockCreateSnapshotMutationFn = Apollo.MutationFunction<
+  BlockCreateSnapshotMutation,
+  BlockCreateSnapshotMutationVariables
+>
 
 /**
  * __useBlockCreateSnapshotMutation__
@@ -4054,7 +4245,10 @@ export function useBlockCreateSnapshotMutation(
   baseOptions?: Apollo.MutationHookOptions<BlockCreateSnapshotMutation, BlockCreateSnapshotMutationVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useMutation<BlockCreateSnapshotMutation, BlockCreateSnapshotMutationVariables>(BlockCreateSnapshotDocument, options)
+  return Apollo.useMutation<BlockCreateSnapshotMutation, BlockCreateSnapshotMutationVariables>(
+    BlockCreateSnapshotDocument,
+    options
+  )
 }
 export type BlockCreateSnapshotMutationHookResult = ReturnType<typeof useBlockCreateSnapshotMutation>
 export type BlockCreateSnapshotMutationResult = Apollo.MutationResult<BlockCreateSnapshotMutation>
@@ -4093,7 +4287,9 @@ export function useGetPluginQuery(baseOptions?: Apollo.QueryHookOptions<GetPlugi
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetPluginQuery, GetPluginQueryVariables>(GetPluginDocument, options)
 }
-export function useGetPluginLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPluginQuery, GetPluginQueryVariables>) {
+export function useGetPluginLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetPluginQuery, GetPluginQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetPluginQuery, GetPluginQueryVariables>(GetPluginDocument, options)
 }
@@ -4134,7 +4330,10 @@ export function useBlockSyncBatchMutation(
 }
 export type BlockSyncBatchMutationHookResult = ReturnType<typeof useBlockSyncBatchMutation>
 export type BlockSyncBatchMutationResult = Apollo.MutationResult<BlockSyncBatchMutation>
-export type BlockSyncBatchMutationOptions = Apollo.BaseMutationOptions<BlockSyncBatchMutation, BlockSyncBatchMutationVariables>
+export type BlockSyncBatchMutationOptions = Apollo.BaseMutationOptions<
+  BlockSyncBatchMutation,
+  BlockSyncBatchMutationVariables
+>
 export const FormulaCreateDocument = gql`
   mutation formulaCreate($input: FormulaCreateInput!) {
     formulaCreate(input: $input) {
@@ -4161,13 +4360,18 @@ export type FormulaCreateMutationFn = Apollo.MutationFunction<FormulaCreateMutat
  *   },
  * });
  */
-export function useFormulaCreateMutation(baseOptions?: Apollo.MutationHookOptions<FormulaCreateMutation, FormulaCreateMutationVariables>) {
+export function useFormulaCreateMutation(
+  baseOptions?: Apollo.MutationHookOptions<FormulaCreateMutation, FormulaCreateMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<FormulaCreateMutation, FormulaCreateMutationVariables>(FormulaCreateDocument, options)
 }
 export type FormulaCreateMutationHookResult = ReturnType<typeof useFormulaCreateMutation>
 export type FormulaCreateMutationResult = Apollo.MutationResult<FormulaCreateMutation>
-export type FormulaCreateMutationOptions = Apollo.BaseMutationOptions<FormulaCreateMutation, FormulaCreateMutationVariables>
+export type FormulaCreateMutationOptions = Apollo.BaseMutationOptions<
+  FormulaCreateMutation,
+  FormulaCreateMutationVariables
+>
 export const FormulaUpdateDocument = gql`
   mutation formulaUpdate($input: FormulaUpdateInput!) {
     formulaUpdate(input: $input) {
@@ -4194,13 +4398,18 @@ export type FormulaUpdateMutationFn = Apollo.MutationFunction<FormulaUpdateMutat
  *   },
  * });
  */
-export function useFormulaUpdateMutation(baseOptions?: Apollo.MutationHookOptions<FormulaUpdateMutation, FormulaUpdateMutationVariables>) {
+export function useFormulaUpdateMutation(
+  baseOptions?: Apollo.MutationHookOptions<FormulaUpdateMutation, FormulaUpdateMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<FormulaUpdateMutation, FormulaUpdateMutationVariables>(FormulaUpdateDocument, options)
 }
 export type FormulaUpdateMutationHookResult = ReturnType<typeof useFormulaUpdateMutation>
 export type FormulaUpdateMutationResult = Apollo.MutationResult<FormulaUpdateMutation>
-export type FormulaUpdateMutationOptions = Apollo.BaseMutationOptions<FormulaUpdateMutation, FormulaUpdateMutationVariables>
+export type FormulaUpdateMutationOptions = Apollo.BaseMutationOptions<
+  FormulaUpdateMutation,
+  FormulaUpdateMutationVariables
+>
 export const FormulaDeleteDocument = gql`
   mutation formulaDelete($input: FormulaDeleteInput!) {
     formulaDelete(input: $input) {
@@ -4227,13 +4436,18 @@ export type FormulaDeleteMutationFn = Apollo.MutationFunction<FormulaDeleteMutat
  *   },
  * });
  */
-export function useFormulaDeleteMutation(baseOptions?: Apollo.MutationHookOptions<FormulaDeleteMutation, FormulaDeleteMutationVariables>) {
+export function useFormulaDeleteMutation(
+  baseOptions?: Apollo.MutationHookOptions<FormulaDeleteMutation, FormulaDeleteMutationVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useMutation<FormulaDeleteMutation, FormulaDeleteMutationVariables>(FormulaDeleteDocument, options)
 }
 export type FormulaDeleteMutationHookResult = ReturnType<typeof useFormulaDeleteMutation>
 export type FormulaDeleteMutationResult = Apollo.MutationResult<FormulaDeleteMutation>
-export type FormulaDeleteMutationOptions = Apollo.BaseMutationOptions<FormulaDeleteMutation, FormulaDeleteMutationVariables>
+export type FormulaDeleteMutationOptions = Apollo.BaseMutationOptions<
+  FormulaDeleteMutation,
+  FormulaDeleteMutationVariables
+>
 export const GetFormulasDocument = gql`
   query GetFormulas($webid: String!) {
     formulas(webid: $webid) {
@@ -4270,7 +4484,9 @@ export function useGetFormulasQuery(baseOptions: Apollo.QueryHookOptions<GetForm
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetFormulasQuery, GetFormulasQueryVariables>(GetFormulasDocument, options)
 }
-export function useGetFormulasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFormulasQuery, GetFormulasQueryVariables>) {
+export function useGetFormulasLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetFormulasQuery, GetFormulasQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetFormulasQuery, GetFormulasQueryVariables>(GetFormulasDocument, options)
 }
@@ -4309,7 +4525,9 @@ export const NewPatchDocument = gql`
  *   },
  * });
  */
-export function useNewPatchSubscription(baseOptions: Apollo.SubscriptionHookOptions<NewPatchSubscription, NewPatchSubscriptionVariables>) {
+export function useNewPatchSubscription(
+  baseOptions: Apollo.SubscriptionHookOptions<NewPatchSubscription, NewPatchSubscriptionVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useSubscription<NewPatchSubscription, NewPatchSubscriptionVariables>(NewPatchDocument, options)
 }
@@ -4393,11 +4611,15 @@ export const GetBlockInfoDocument = gql`
  *   },
  * });
  */
-export function useGetBlockInfoQuery(baseOptions: Apollo.QueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>) {
+export function useGetBlockInfoQuery(
+  baseOptions: Apollo.QueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetBlockInfoQuery, GetBlockInfoQueryVariables>(GetBlockInfoDocument, options)
 }
-export function useGetBlockInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>) {
+export function useGetBlockInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetBlockInfoQuery, GetBlockInfoQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useLazyQuery<GetBlockInfoQuery, GetBlockInfoQueryVariables>(GetBlockInfoDocument, options)
 }
@@ -4514,7 +4736,9 @@ export const GetChildrenBlocksDocument = gql`
  *   },
  * });
  */
-export function useGetChildrenBlocksQuery(baseOptions: Apollo.QueryHookOptions<GetChildrenBlocksQuery, GetChildrenBlocksQueryVariables>) {
+export function useGetChildrenBlocksQuery(
+  baseOptions: Apollo.QueryHookOptions<GetChildrenBlocksQuery, GetChildrenBlocksQueryVariables>
+) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetChildrenBlocksQuery, GetChildrenBlocksQueryVariables>(GetChildrenBlocksDocument, options)
 }
@@ -4522,7 +4746,10 @@ export function useGetChildrenBlocksLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetChildrenBlocksQuery, GetChildrenBlocksQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetChildrenBlocksQuery, GetChildrenBlocksQueryVariables>(GetChildrenBlocksDocument, options)
+  return Apollo.useLazyQuery<GetChildrenBlocksQuery, GetChildrenBlocksQueryVariables>(
+    GetChildrenBlocksDocument,
+    options
+  )
 }
 export type GetChildrenBlocksQueryHookResult = ReturnType<typeof useGetChildrenBlocksQuery>
 export type GetChildrenBlocksLazyQueryHookResult = ReturnType<typeof useGetChildrenBlocksLazyQuery>
@@ -4562,14 +4789,23 @@ export function useGetDatabaseRowBlocksQuery(
   baseOptions: Apollo.QueryHookOptions<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>(GetDatabaseRowBlocksDocument, options)
+  return Apollo.useQuery<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>(
+    GetDatabaseRowBlocksDocument,
+    options
+  )
 }
 export function useGetDatabaseRowBlocksLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>(GetDatabaseRowBlocksDocument, options)
+  return Apollo.useLazyQuery<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>(
+    GetDatabaseRowBlocksDocument,
+    options
+  )
 }
 export type GetDatabaseRowBlocksQueryHookResult = ReturnType<typeof useGetDatabaseRowBlocksQuery>
 export type GetDatabaseRowBlocksLazyQueryHookResult = ReturnType<typeof useGetDatabaseRowBlocksLazyQuery>
-export type GetDatabaseRowBlocksQueryResult = Apollo.QueryResult<GetDatabaseRowBlocksQuery, GetDatabaseRowBlocksQueryVariables>
+export type GetDatabaseRowBlocksQueryResult = Apollo.QueryResult<
+  GetDatabaseRowBlocksQuery,
+  GetDatabaseRowBlocksQueryVariables
+>
