@@ -328,7 +328,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   }
 
   const handleValueChange = (editor: Editor): void => {
-    const text = `=${contentToInput(editor.getJSON().content[0])}`
+    const text = `=${contentToInput(editor.getJSON().content?.[0] ?? [])}`
     console.log({ content, json: editor.getJSON(), editor, text, formulaContext, label: 'updateValue' })
     setInput(text)
     setContent(editor.getJSON() as JSONContent)
@@ -499,7 +499,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )

@@ -1,5 +1,6 @@
 // ref: https://github.com/ueberdosis/tiptap/blob/main/packages/suggestion/src/suggestion.ts
 import { ReactRenderer, Editor, Extension } from '@tiptap/react'
+import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { Icon } from '@brickdoc/design-system'
 import { createPopup, PopupInstance } from '../../helpers/popup'
@@ -128,7 +129,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   }
 ]
 
-function filterMenuItemsByQuery(query: string): SlashCommandsMenuItem[] {
+function filterMenuItemsByQuery({ query }: { query: string }): SlashCommandsMenuItem[] {
   return menuItems.filter(
     item =>
       item.key.toLowerCase().startsWith(query.toLowerCase()) ||
@@ -142,6 +143,7 @@ export const SlashCommandsExtension = Extension.create({
   addProseMirrorPlugins() {
     return [
       Suggestion({
+        pluginKey: new PluginKey('slashMenu'),
         char: TRIGGER_CHAR,
         startOfLine: true,
         command: ({ editor, range, props }) => {

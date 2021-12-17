@@ -1,6 +1,7 @@
 // ref: https://github.com/ueberdosis/tiptap/blob/main/packages/suggestion/src/suggestion.ts
 import { ReactRenderer, Editor as ReactEditor, Extension } from '@tiptap/react'
 import { Editor, Range } from '@tiptap/core'
+import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../helpers/popup'
 import { MentionCommandsMenu, MentionCommandsMenuProps } from './MentionMenu'
@@ -72,6 +73,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
 
     return [
       Suggestion({
+        pluginKey: new PluginKey('mention'),
         char: TRIGGER_CHAR,
         startOfLine: false,
         command: ({ editor, range, props }) => {

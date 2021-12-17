@@ -28,7 +28,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable,
         const position = transaction.selection.from - 1
 
         if (position < 1) return
-        const blocks: JSONContent[] = editor.getJSON().content[0].content
+        const blocks: JSONContent[] = editor.getJSON().content?.[0].content ?? []
         let length = 0
 
         for (const block of blocks) {
