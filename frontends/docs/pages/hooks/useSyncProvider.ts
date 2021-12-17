@@ -72,7 +72,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
         dirtyBlocksMap.current.delete(b.id)
       })
       deletedIds.forEach(id => {
-        BrickdocEventBus.dispatch(BlockDeleted(docBlocksMap.current.get(id)))
+        BrickdocEventBus.dispatch(BlockDeleted({ id }))
         dirtyToDeleteIds.current.delete(id)
       })
 

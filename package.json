@@ -23,7 +23,6 @@
     "lint:rubocop": "bundle exec rubocop --parallel --config .rubocop.yml",
     "lint:rubocop:fix": "bundle exec rubocop --config .rubocop.yml -a",
     "lint:brakeman": "bundle exec brakeman --no-pager --exit-on-warn",
-    "lint:packwerk": "bundle exec packwerk validate && bundle exec rake zeitwerk:check",
     "tsc:check": "tsc --build",
     "tsc:build": "tsc --build tsconfig.build.json",
     "test": "yarn tsc:check && yarn lint && yarn test:jest && yarn test:rspec",
