@@ -107,7 +107,7 @@ jobs:
           APP_ENV_AWS_REGION: us-east-1
           APP_ENV_AWS_PUBLIC_BUCKET: brickdoc-trunk-public
           APP_ENV_AWS_PRIVATE_BUCKET: brickdoc-trunk-private
-          APP_SECRET_SECRET_KEY_BASE: ${{ secrets.previewEnvSecretKey }}
+          APP_SECRET_SECRET_KEY_SEED: ${{ secrets.PR_SECRET_KEY_SEED }}
           APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
           APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
       - name: Find Comment

@@ -63,8 +63,10 @@ jobs:
       - name: Deployment to App Engine
         uses: brickdoc/app-engine@v1.beta2
         with:
+          image: ghcr.io/brickdoc/design-system:latest
           name: design-system
           host: design-system.brickdoc.dev
+          extraArgs: '--timeout 10m --cleanup-on-fail'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}

@@ -32,6 +32,7 @@ module Brickdoc
     config.autoload_paths << Rails.root.join('app', 'services')
 
     config.generators.templates.push Rails.root.join('templates/generators')
+    config.active_record.query_log_tags_enabled = true
 
     # Run some initializers before Zeitwerk is loaded.
     # This empty initializer forces the :let_zeitwerk_take_over initializer to run before we load initializers
@@ -43,9 +44,10 @@ module Brickdoc
 
     config.before_initialize do
       ActiveSupport::Inflector.inflections do |inflect|
-        Packwerk::Inflections::Custom.new(
-          Rails.root.join('config', 'inflections.yml')
-        ).apply_to(inflect)
+        inflect.acronym 'GraphQL'
+        inflect.acronym 'UUID'
+        inflect.acronym 'ID'
+        inflect.acronym 'SaaS'
       end
 
       loader = Zeitwerk::Loader.new

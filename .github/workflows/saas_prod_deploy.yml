@@ -3,7 +3,7 @@ concurrency:
   group: sass-prod-deploy
 on:
   workflow_run:
-    workflows: ["Monolith Application CI"]
+    workflows: ['Monolith Application CI']
     tags: ['v**-saas']
     types:
       - completed
@@ -92,7 +92,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_PROD_SECRET }}
           AWS_DEFAULT_REGION: us-west-2
           AWS_EKS_CLUSTER: prod-kube
-          APP_SECRET_SECRET_KEY_BASE: ${{ secrets.SAAS_PROD_SECRET_KEY_BASE }}
+          APP_ENV_SECRET_KEY_SEED_DECODER: aws_kms
+          APP_SECRET_SECRET_KEY_SEED: ${{ secrets.SAAS_PROD_SECRET_KEY_SEED }}
           APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.SAAS_PROD_POSTGRE_URL }}
           APP_SECRET_REDIS_URL: ${{ secrets.SAAS_PROD_REDIS_URL }}
           APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}

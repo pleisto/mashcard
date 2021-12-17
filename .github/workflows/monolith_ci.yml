@@ -113,6 +113,8 @@ jobs:
         run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: '0'
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -170,6 +172,9 @@ jobs:
           files: |
             .(rb|gemspec)$
             Gemfile.lock
+      - name: Install Dependencies
+        if: steps.changed-ruby-files.outputs.any_changed == 'true'
+        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Setup Ruby
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         uses: ruby/setup-ruby@v1
@@ -301,6 +306,8 @@ jobs:
           path: |
             ~/.cache/Cypress
           key: cypress-binary-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

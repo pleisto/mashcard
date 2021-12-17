@@ -59,6 +59,8 @@ jobs:
           files: |
             .(rb)$
             Gemfile.lock
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         if: steps.changed-ruby-files.outputs.any_changed == 'true'

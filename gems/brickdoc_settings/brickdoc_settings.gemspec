@@ -30,8 +30,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "activesupport", ">= 6.1.0"
-  spec.add_dependency "lockbox", ">= 0.6.5"
+  spec.add_dependency "activesupport", ">= 7.0.0"
+  spec.add_dependency "lockbox", ">= 0.6.6"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html

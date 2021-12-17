@@ -94,7 +94,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
-          APP_SECRET_SECRET_KEY_BASE: ${{ secrets.TRUNK_SECRET_KEY_BASE }}
+          APP_SECRET_SECRET_KEY_SEED: ${{ secrets.TRUNK_SECRET_KEY_SEED }}
           APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.TRUNK_POSTGRE_URL }}
           APP_SECRET_REDIS_URL: ${{ secrets.TRUNK_REDIS_URL }}
           APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
