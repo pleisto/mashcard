@@ -1,19 +1,21 @@
 import React from 'react'
+import { NodeViewProps } from '@tiptap/react'
 import WebViewer, { WebViewerInstance } from '@pdftron/webviewer'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { ActionPanel } from '../../../../components/ActionPanel/ActionPanel'
 import { FileIcon } from '../FileIcon/FileIcon'
 import { FileType } from '../../../../helpers/file'
 import { useActionOptions } from '../useActionOptions'
 import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmentMethods'
 import './PreviewMode.less'
+import { BlockContainer } from '../../../../components'
 
 export interface PreviewModeProps extends Omit<UseAttachmentMethodsProps, 'webViewer'> {
+  editor: NodeViewProps['editor']
   fileName: string
   fileType: FileType
 }
 
-export const PreviewMode: React.FC<PreviewModeProps> = ({ fileName, fileType, ...attachmentMethodsProps }) => {
+export const PreviewMode: React.FC<PreviewModeProps> = ({ editor, fileName, fileType, ...attachmentMethodsProps }) => {
   const viewer = React.useRef<HTMLDivElement>(null)
   const [viewerInstance, setViewerInstance] = React.useState<WebViewerInstance>()
   React.useEffect(() => {
@@ -48,7 +50,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ fileName, fileType, ..
   })
 
   return (
-    <ActionPanel options={actionOptions}>
+    <BlockContainer editor={editor} options={actionOptions}>
       <div data-testid={TEST_ID_ENUM.editor.linkBlock.pdftron.id} className="brickdoc-pdftron-block">
         <div ref={viewer} className="brickdoc-pdftron-container" />
         <div className="brickdoc-pdftron-info">
@@ -56,6 +58,6 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ fileName, fileType, ..
           {fileName}
         </div>
       </div>
-    </ActionPanel>
+    </BlockContainer>
   )
 }

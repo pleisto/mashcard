@@ -33,25 +33,6 @@ exports[`LinkBlock matches correct snapshot 1`] = `
         https://www.brickdoc.com
       </div>
     </div>
-    <button
-      class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium link-block-menu-button"
-      data-testid="editor-link-block-menu-button"
-    >
-      <span
-        aria-label="more"
-        class="brd-icon brd-icon-more link-block-menu-icon"
-        role="img"
-      >
-        <svg
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-    </button>
   </button>
 </div>
 `;

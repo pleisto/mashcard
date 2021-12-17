@@ -39,7 +39,7 @@ export const TEST_ID_ENUM = {
         id: 'editor-slash-commands-item'
       }
     },
-    imageSection: {
+    imageBlock: {
       image: {
         id: 'editor-image-section-image'
       },

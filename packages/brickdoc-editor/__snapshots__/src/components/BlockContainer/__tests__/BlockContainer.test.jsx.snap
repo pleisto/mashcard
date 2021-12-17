@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BlockWrapper freezes block when editor isn't editable 1`] = `
+exports[`BlockContainer freezes block when editor isn't editable 1`] = `
 <div
   data-node-view-wrapper=""
   editor="[object Object]"

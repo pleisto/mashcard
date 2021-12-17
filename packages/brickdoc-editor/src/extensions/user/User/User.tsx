@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar } from '@brickdoc/design-system'
 import { NodeViewRendererProps } from '@tiptap/react'
-import { BlockWrapper } from '../../../components'
+import { BlockContainer } from '../../../components'
 import './User.less'
 import { useEditorI18n } from '../../..'
 
@@ -11,7 +11,7 @@ export const User: React.FC<UserProps> = ({ editor, node }) => {
   const [t] = useEditorI18n()
   const attributes = node.attrs.people ?? {}
   return (
-    <BlockWrapper as="span" editor={editor}>
+    <BlockContainer as="span" editor={editor}>
       <Avatar
         size="small"
         initials={attributes.name ?? attributes.webid}
@@ -19,6 +19,6 @@ export const User: React.FC<UserProps> = ({ editor, node }) => {
         className="brickdoc-user-block-avatar"
       />
       <span className="brickdoc-user-block-name">{attributes.name || t('user_block.anonymous')}</span>
-    </BlockWrapper>
+    </BlockContainer>
   )
 }

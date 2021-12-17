@@ -1,8 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import { Button, Dropdown, DeprecatedMenu as Menu, Popover } from '@brickdoc/design-system'
-import './ActionPanel.less'
-import { ActionDropdownOption, ActionOption, ActionPanelProps } from './ActionPanel'
+import { ActionDropdownOption, ActionOption, BlockActionsProps } from './BlockActions'
 
 const OptionButton: React.FC<{ option: ActionOption; onClick?: (event: any) => void }> = ({ option, ...props }) => (
   <Button
@@ -99,7 +98,7 @@ const Option: React.FC<{ option: ActionOption }> = ({ option }) => {
   return <OptionDropdown option={option} />
 }
 
-export const ActionPanelInner: React.FC<ActionPanelProps> = ({ options }) => {
+export const BlockActionsMenu: React.FC<BlockActionsProps> = ({ options }) => {
   return (
     <div className="brickdoc-action-panel">
       {options.reduce<React.ReactElement[]>((elements, option, index) => {

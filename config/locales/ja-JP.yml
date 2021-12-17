@@ -601,8 +601,8 @@ ja-JP:
       invalid_pod_webid: 'No access to the username'
       pod_has_already_switched: 'Pod has already switched'
       pod_exist: 'Pod has already exist'
-      user_not_exist: "ユーザーが存在しません。"
-      pod_not_exist: "ポッドは存在しません"
+      user_not_exist: 'ユーザーが存在しません。'
+      pod_not_exist: 'ポッドは存在しません'
   docs:
     app_title: Brickdoc
     saving: 保存
@@ -805,7 +805,7 @@ ja-JP:
           desc: フォントの色
         formula:
           desc: Formula
-    image_section:
+    image_block:
       copy_hint: Image link copied
       hint: 画像を追加する
       deletion_confirm:

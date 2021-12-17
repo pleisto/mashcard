@@ -14,34 +14,6 @@ describe('linkBlock', () => {
       cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).should('exist')
     })
 
-    it("deletes link block by click 'Delete' button", () => {
-      cy.visit('/')
-      cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id).focus().type('https://www.brickdoc.com')
-      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id).click()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).realHover()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.menuButton.id).click()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.deleteButton.id).click()
-      cy.get('.brk-modal-confirm-btns > button:first').click()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).should('not.exist')
-    })
-
-    it('copies link by clicking Copy button', () => {
-      cy.visit('/', {
-        onBeforeLoad(win: Window): void {
-          cy.spy(win.navigator.clipboard, 'writeText').as('copy')
-        }
-      })
-      const link = 'https://www.brickdoc.com'
-      cy.addBlock('embed')
-      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.input.id).focus().type(link)
-      cy.findByTestId(TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id).click()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.link.id).realHover()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.menuButton.id).click()
-      cy.findByTestId(TEST_ID_ENUM.editor.linkBlock.copyButton.id).click()
-      cy.get('@copy').should('be.calledWithExactly', link)
-    })
-
     it('opens link by click link block', () => {
       cy.visit('/', {
         onBeforeLoad(win) {

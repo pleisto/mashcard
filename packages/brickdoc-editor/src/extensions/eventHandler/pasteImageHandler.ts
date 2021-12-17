@@ -13,7 +13,7 @@ export const pasteImageHandler = (editor: Editor, event: ClipboardEvent): boolea
     const file = files[i]
 
     if (file?.type.includes('image')) {
-      editor.commands.setImageSection(undefined, file)
+      editor.commands.setImageBlock(undefined, file)
     }
   }
 

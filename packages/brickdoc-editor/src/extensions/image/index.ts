@@ -1,25 +1,23 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { ImageBlock, ImageSectionAttributes } from './ImageBlock'
+import { ImageBlock } from './ImageBlock'
 import { insertBlockAt } from '../../helpers/commands'
 import { ExtensionBaseOptions } from '../baseOptions'
-
-export type { ImageSectionAttributes }
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     imageSection: {
       /**
-       * Set a image section
+       * Set a image block
        */
-      setImageSection: (position?: number, file?: File) => ReturnType
+      setImageBlock: (position?: number, file?: File) => ReturnType
     }
   }
 }
 
-export interface ImageSectionOptions extends ExtensionBaseOptions {}
+export interface ImageBlockOptions extends ExtensionBaseOptions {}
 
-export const ImageSectionExtension = Node.create<ImageSectionOptions>({
+export const ImageBlockExtension = Node.create<ImageBlockOptions>({
   name: 'imageSection',
 
   group: 'block',
@@ -59,7 +57,7 @@ export const ImageSectionExtension = Node.create<ImageSectionOptions>({
 
   addCommands() {
     return {
-      setImageSection:
+      setImageBlock:
         (position?: number, defaultFile?: File) =>
         ({ chain }) => {
           const content = { type: this.name, attrs: { defaultFile, isNew: true } }

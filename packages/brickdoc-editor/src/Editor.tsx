@@ -23,8 +23,6 @@ import './styles.less'
 import { useEditorI18n } from './hooks'
 import { EditorDataSource, EditorDataSourceContext } from './dataSource/DataSource'
 
-export type { ImageSectionAttributes } from './extensions'
-
 export { useEditorI18n }
 
 export interface EditorContentProps {

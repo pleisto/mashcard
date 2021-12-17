@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { NodeViewRendererProps } from '@tiptap/core'
 import React from 'react'
 import { useEditorI18n } from '../../..'
-import { BlockWrapper } from '../../../components'
+import { BlockContainer } from '../../../components'
 import './PageLink.less'
 
 export interface PageLinkProps extends NodeViewRendererProps {}
@@ -12,7 +12,7 @@ export const PageLink: React.FC<PageLinkProps> = ({ editor, node }) => {
   const [t] = useEditorI18n()
   const attributes = node.attrs.page
   return (
-    <BlockWrapper as="span" editor={editor}>
+    <BlockContainer as="span" editor={editor}>
       <Link className="text" to={attributes.link ?? '/'}>
         {!!attributes.icon && (
           <span role="img" className="brickdoc-page-link-block-icon" aria-label="">
@@ -28,6 +28,6 @@ export const PageLink: React.FC<PageLinkProps> = ({ editor, node }) => {
         )}
         <span className="brickdoc-page-link-block-name">{attributes.title || t('page_link_block.untitled')}</span>
       </Link>
-    </BlockWrapper>
+    </BlockContainer>
   )
 }

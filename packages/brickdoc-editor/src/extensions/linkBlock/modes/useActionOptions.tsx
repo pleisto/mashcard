@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
-import { ActionOption, ActionOptionGroup } from '../../../components/ActionPanel/ActionPanel'
+import { ActionOption, ActionOptionGroup } from '../../../components/BlockActions'
 import { useEditorI18n } from '../../../'
 
 export interface UseActionOptionsProps {

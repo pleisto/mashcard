@@ -631,7 +631,7 @@ zh-HK:
       success_message: Link copied
     duplicate:
       new_title: Copy of %{title}
-      button: 複製 
+      button: 複製
     pin:
       add: Pin page
       add_tooltip: Pin this page
@@ -805,7 +805,7 @@ zh-HK:
           desc: Font-color
         formula:
           desc: Formula
-    image_section:
+    image_block:
       copy_hint: Image link copied
       hint: Add an image
       deletion_confirm:
@@ -837,7 +837,7 @@ zh-HK:
         cancel: Cancel
     action_panel:
       more:
-        duplicate: 複製 
+        duplicate: 複製
         copy: Copy link
         delete: Delete
     code_block:
@@ -921,7 +921,7 @@ zh-HK:
         text: 篩選
         title: Filter for My All Data
         remove: Remove
-        duplicate: 複製 
+        duplicate: 複製
         where: Where
         add_a_filter: Add a filter
         add_a_filter_group: Add a filter group

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Popover } from '@brickdoc/design-system'
-import { ActionPanelInner } from './ActionPanelInner'
-import './ActionPanel.less'
+import { BlockActionsMenu } from './BlockActionsMenu'
+import './BlockActions.less'
 
 export interface ActionDropdownMenuItem {
   type: 'item'
@@ -37,18 +37,19 @@ export type ActionOption = ActionButtonOption | ActionDropdownOption
 
 export type ActionOptionGroup = Array<ActionOption[] | ActionOption>
 
-export interface ActionPanelProps {
+export interface BlockActionsProps {
   options: ActionOptionGroup
 }
 
-export const ActionPanel: React.FC<ActionPanelProps> = ({ options, children }) => {
+export const BlockActions: React.FC<BlockActionsProps> = ({ options, children }) => {
   return (
     <Popover
       overlayClassName="brickdoc-action-panel-popover"
       trigger="hover"
       autoAdjustOverflow={false}
       placement="topRight"
-      content={<ActionPanelInner options={options} />}>
+      content={<BlockActionsMenu options={options} />}
+    >
       {children}
     </Popover>
   )

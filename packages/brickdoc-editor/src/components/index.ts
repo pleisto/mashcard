@@ -1,2 +1,4 @@
 export * from './FormulaMenu'
-export * from './BlockWrapper'
+export * from './BlockContainer'
+export * from './BlockActions'
+export * from './CodeBlock'

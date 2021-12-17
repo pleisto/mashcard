@@ -23,12 +23,12 @@ import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import Link, { LinkOptions } from '@tiptap/extension-link'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
-import { ImageSectionExtension, ImageSectionOptions } from '../image'
+import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
 import { LinkBlockExtension, LinkBlockOptions } from '../linkBlock'
 import { TableBlockExtension, TableBlockOptions } from '../table'
 import { FormulaExtension, FormulaOptions } from '../formula'
-import { CodeBlock } from '../../components/CodeBlock/CodeBlock'
+import { CodeBlock } from '../../components'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
@@ -55,7 +55,7 @@ export interface BasicRichtextOptions {
   fontColor: Partial<FontColorOptions> | false
   formula: Partial<FormulaOptions> | false
   link: Partial<LinkOptions> | false
-  imageSection: Partial<ImageSectionOptions> | false
+  imageBlock: Partial<ImageBlockOptions> | false
   linkBlock: Partial<LinkBlockOptions> | false
   pdfSection: Partial<PdfSectionOptions> | false
   tableBlock: Partial<TableBlockOptions> | false
@@ -95,7 +95,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.strike !== false) extensions.push(Strike.configure(this.options?.strike))
     if (this.options.underline !== false) extensions.push(Underline.configure(this.options?.underline))
     if (this.options.text !== false) extensions.push(Text.configure(this.options?.text))
-    if (this.options.imageSection !== false) extensions.push(ImageSectionExtension.configure(this.options?.imageSection))
+    if (this.options.imageBlock !== false) extensions.push(ImageBlockExtension.configure(this.options?.imageBlock))
     if (this.options.linkBlock !== false) extensions.push(LinkBlockExtension.configure(this.options?.linkBlock))
     if (this.options.pdfSection !== false) extensions.push(PdfSectionExtension.configure(this.options?.pdfSection))
     if (this.options.textStyle !== false) extensions.push(TextStyle.configure(this.options?.textStyle))

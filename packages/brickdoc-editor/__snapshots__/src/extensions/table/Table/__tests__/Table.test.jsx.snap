@@ -37,6 +37,24 @@ exports[`Table matches correct snapshot 1`] = `
         </span>
       </button>
       <button
+        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-toolbar-text-button"
+      >
+        <span
+          aria-label="more"
+          class="brd-icon brd-icon-more"
+          role="img"
+        >
+          <svg
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
         class="brd-c-NFHkO brd-c-NFHkO-bRcfYV-type-primary brd-c-NFHkO-lKjfQ-size-medium table-toolbar-add-button"
         data-testid="editor-table-block-toolbar-add-button"
       >

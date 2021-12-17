@@ -1,7 +1,6 @@
 import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
-import { ActionDropdownMenuItem, ActionOptionGroup, ActionPanel } from '../ActionPanel/ActionPanel'
-import { BlockWrapper } from '../../components'
+import { BlockContainer, ActionDropdownMenuItem, ActionOptionGroup } from '../../components'
 import { Icon, Input, message, Modal } from '@brickdoc/design-system'
 import { useEditorI18n } from '../..'
 import 'highlight.js/styles/atom-one-light.css'
@@ -113,12 +112,10 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   ]
 
   return (
-    <BlockWrapper editor={editor}>
-      <ActionPanel options={actionOptions}>
-        <pre>
-          <NodeViewContent as="code" />
-        </pre>
-      </ActionPanel>
-    </BlockWrapper>
+    <BlockContainer editor={editor} actionOptions={actionOptions}>
+      <pre>
+        <NodeViewContent as="code" />
+      </pre>
+    </BlockContainer>
   )
 }

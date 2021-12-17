@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
-import { BlockWrapper } from '../'
+import { BlockContainer } from '../'
 
-describe('BlockWrapper', () => {
+describe('BlockContainer', () => {
   it(`freezes block when editor isn't editable`, () => {
     const editor: any = { isEditable: false }
-    const { container } = render(<BlockWrapper editor={editor} />)
+    const { container } = render(<BlockContainer editor={editor} />)
     expect(container.firstChild).toMatchSnapshot()
   })
 })

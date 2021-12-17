@@ -90,7 +90,7 @@ const menuItems: SlashCommandsMenuItem[] = [
       editor
         .chain()
         .deleteRange(range)
-        .setImageSection(range.from - 1)
+        .setImageBlock(range.from - 1)
         .run()
     }
   },
@@ -131,7 +131,8 @@ const menuItems: SlashCommandsMenuItem[] = [
 function filterMenuItemsByQuery(query: string): SlashCommandsMenuItem[] {
   return menuItems.filter(
     item =>
-      item.key.toLowerCase().startsWith(query.toLowerCase()) || item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
+      item.key.toLowerCase().startsWith(query.toLowerCase()) ||
+      item.alias?.some(name => name.toLowerCase().startsWith(query.toLowerCase()))
   )
 }
 

@@ -61,7 +61,7 @@ describe('ImageBlock', () => {
       </EditorDataSourceContext.Provider>
     )
 
-    expect(screen.getByText('image_section.hint')).toBeInTheDocument()
+    expect(screen.getByText('image_block.hint')).toBeInTheDocument()
   })
 
   it('renders image', () => {
@@ -88,7 +88,7 @@ describe('ImageBlock', () => {
       </EditorDataSourceContext.Provider>
     )
 
-    expect(screen.getByTestId(TEST_ID_ENUM.editor.imageSection.image.id)).toBeInTheDocument()
+    expect(screen.getByTestId(TEST_ID_ENUM.editor.imageBlock.image.id)).toBeInTheDocument()
   })
 
   describe('Uploader Dashboard', () => {
@@ -116,7 +116,7 @@ describe('ImageBlock', () => {
         </EditorDataSourceContext.Provider>
       )
 
-      fireEvent.click(screen.getByText('image_section.hint'))
+      fireEvent.click(screen.getByText('image_block.hint'))
 
       expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
@@ -156,15 +156,15 @@ describe('ImageBlock', () => {
         </EditorDataSourceContext.Provider>
       )
 
-      fireEvent.click(screen.getByText('image_section.hint'))
-      fireEvent.input(screen.getByPlaceholderText('image_section.import_sources.link.placeholder'), {
+      fireEvent.click(screen.getByText('image_block.hint'))
+      fireEvent.input(screen.getByPlaceholderText('image_block.import_sources.link.placeholder'), {
         target: {
           value: imageUrl
         }
       })
-      fireEvent.click(screen.getByText('image_section.import_sources.link.button_text'))
+      fireEvent.click(screen.getByText('image_block.import_sources.link.button_text'))
 
-      expect(screen.getByTestId(TEST_ID_ENUM.editor.imageSection.image.id)).toBeInTheDocument()
+      expect(screen.getByTestId(TEST_ID_ENUM.editor.imageBlock.image.id)).toBeInTheDocument()
     })
   })
 })

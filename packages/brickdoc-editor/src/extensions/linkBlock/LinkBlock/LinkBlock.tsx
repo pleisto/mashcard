@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { BlockWrapper } from '../../../components'
 import 'react-medium-image-zoom/dist/styles.css'
 import './LinkBlock.less'
 import { linkStorage, getFileTypeByExtension, FileType } from '../../../helpers/file'
@@ -61,28 +60,26 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttribu
 
     if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
       return (
-        <BlockWrapper editor={editor}>
-          <PreviewMode
-            fileName={name}
-            fileType={fileType}
-            fileUrl={fileUrl}
-            deleteNode={deleteNode}
-            updateAttachmentAttributes={updateAttachmentAttributes}
-          />
-        </BlockWrapper>
-      )
-    }
-
-    return (
-      <BlockWrapper editor={editor}>
-        <AttachmentMode
-          name={name}
+        <PreviewMode
+          editor={editor}
+          fileName={name}
           fileType={fileType}
           fileUrl={fileUrl}
           deleteNode={deleteNode}
           updateAttachmentAttributes={updateAttachmentAttributes}
         />
-      </BlockWrapper>
+      )
+    }
+
+    return (
+      <AttachmentMode
+        editor={editor}
+        name={name}
+        fileType={fileType}
+        fileUrl={fileUrl}
+        deleteNode={deleteNode}
+        updateAttachmentAttributes={updateAttachmentAttributes}
+      />
     )
   }
 
@@ -90,15 +87,23 @@ export const LinkBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttribu
     const { title, description, cover } = node.attrs.link
 
     return (
-      <BlockWrapper editor={editor}>
-        <LinkMode title={title} cover={cover} description={description} linkUrl={linkUrl} deleteNode={deleteNode} />
-      </BlockWrapper>
+      <LinkMode
+        editor={editor}
+        title={title}
+        cover={cover}
+        description={description}
+        linkUrl={linkUrl}
+        deleteNode={deleteNode}
+      />
     )
   }
 
   return (
-    <BlockWrapper editor={editor}>
-      <UploaderMode node={node} updateLinkBlockAttributes={updateLinkBlockAttributes} />
-    </BlockWrapper>
+    <UploaderMode
+      editor={editor}
+      deleteNode={deleteNode}
+      node={node}
+      updateLinkBlockAttributes={updateLinkBlockAttributes}
+    />
   )
 }

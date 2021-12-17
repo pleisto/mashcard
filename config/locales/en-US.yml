@@ -823,7 +823,7 @@ en-US:
           desc: Font-color
         formula:
           desc: Formula
-    image_section:
+    image_block:
       copy_hint: Image link copied
       hint: Add an image
       deletion_confirm:
