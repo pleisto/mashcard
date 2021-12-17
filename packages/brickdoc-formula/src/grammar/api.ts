@@ -166,15 +166,14 @@ export const parse = ({
         console.error('replacement not found', { currentCompletion, lastToken, input })
       }
 
-      newInput = input
-        .slice(0, input.length - image.length - 1)
-        .concat(currentCompletion.value)
+      newInput = input.slice(0, input.length - image.length - 1).concat(currentCompletion.value)
 
-      if (firstReplacement && endChar === '(') {
-        // console.log()
-      } else {
-        newInput = newInput.concat(endChar)
-      }
+      // if (firstReplacement && endChar === '(') {
+      //   // console.log()
+      // } else {
+      //   newInput = newInput.concat(endChar)
+      // }
+      newInput = newInput.concat(endChar)
 
       lexResult = lexer.tokenize(newInput)
       tokens = lexResult.tokens
@@ -370,15 +369,13 @@ export const displayValue = (v: AnyTypeValue): string => {
     case 'Column':
       return `#<Column> ${v.result.spreadsheetName} - ${v.result.name}`
     case 'Predicate':
-      return `#<Predicate> [${v.operator}] ${displayValue(v.result)}`
-    case 'null':
-      return '#<Null> null'
+      return `[${v.operator}] ${displayValue(v.result)}`
     case 'Record':
-      return `#<Record> { ${Object.entries(v.result)
+      return `{ ${Object.entries(v.result)
         .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeValue)}`)
         .join(', ')} }`
     case 'Array':
-      return `#<Array> [${v.result.map((v: AnyTypeValue) => displayValue(v)).join(', ')}]`
+      return `[${v.result.map((v: AnyTypeValue) => displayValue(v)).join(', ')}]`
   }
 
   return JSON.stringify(v.result)
@@ -494,6 +491,15 @@ const parseCacheValue = (cacheValue: AnyTypeValue): AnyTypeValue => {
       })
     }
   }
+
+  if (cacheValue.type === 'Date') {
+    return {
+      type: 'Date',
+      result: new Date(cacheValue.result)
+    }
+  }
+
+  // console.log({ cacheValue })
 
   return cacheValue
 }
