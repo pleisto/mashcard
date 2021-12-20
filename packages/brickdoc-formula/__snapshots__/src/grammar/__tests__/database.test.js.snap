@@ -476,6 +476,160 @@ Array [
 ]
 `;
 
+exports[`Database Functions [CountIf error1] =CountIf($28e28190-63bd-4f70-aeca-26e72574c01a, >= 3) 1`] = `
+Array [
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "CountIf",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Comma",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ",",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "GreaterThanEqual",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ">=",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "3",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Database Functions [CountIf ok] =CountIf($28e28190-63bd-4f70-aeca-26e72574c01a, $28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6 >= 3) 1`] = `
+Array [
+  Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "CountIf",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "LParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "(",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "code": "Comma",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ",",
+    "spaceAfter": true,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "Column",
+    "errors": Array [],
+    "meta": Object {
+      "name": "first",
+      "spreadsheetName": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "Column",
+  },
+  Object {
+    "code": "GreaterThanEqual",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ">=",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "3",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+  Object {
+    "code": "RParen",
+    "errors": Array [],
+    "meta": undefined,
+    "name": ")",
+    "spaceAfter": false,
+    "spaceBefore": true,
+    "type": "number",
+  },
+]
+`;
+
 exports[`Database Functions [MAX] =$28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.MAX() 1`] = `
 Array [
   Object {
@@ -997,7 +1151,7 @@ Array [
     "name": "a",
     "spaceAfter": false,
     "spaceBefore": false,
-    "type": "any",
+    "type": "string",
   },
   Object {
     "code": "Colon",
@@ -1051,7 +1205,7 @@ Array [
     "name": "a",
     "spaceAfter": false,
     "spaceBefore": false,
-    "type": "any",
+    "type": "string",
   },
   Object {
     "code": "Colon",
@@ -2151,6 +2305,18 @@ Array [
 
 exports[`Database Functions completion 1`] = `
 Object {
+  "codeFragment": Object {
+    "code": "Spreadsheet",
+    "errors": Array [],
+    "meta": Object {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "name": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
   "kind": "spreadsheet",
   "name": "MyTable",
   "namespace": "28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2171,6 +2337,15 @@ Object {
 
 exports[`Database Functions completion 2`] = `
 Object {
+  "codeFragment": Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "SUM",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
   "kind": "function",
   "name": "SUM",
   "namespace": "core",
@@ -2208,6 +2383,7 @@ Object {
     ],
     "group": "core",
     "key": "SUM",
+    "lazy": false,
     "name": "SUM",
     "pure": false,
     "reference": [Function],
@@ -2224,6 +2400,18 @@ Object {
 
 exports[`Database Functions completion 3`] = `
 Object {
+  "codeFragment": Object {
+    "code": "Column",
+    "errors": Array [],
+    "meta": Object {
+      "name": "first",
+      "spreadsheetName": "MyTable",
+    },
+    "name": "$28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
   "kind": "column",
   "name": "first",
   "namespace": "MyTable",
@@ -2253,6 +2441,15 @@ Object {
 
 exports[`Database Functions completion 4`] = `
 Object {
+  "codeFragment": Object {
+    "code": "Function",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "toArray",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
+  },
   "kind": "function",
   "name": "toArray",
   "namespace": "core",
@@ -2290,6 +2487,7 @@ Object {
     ],
     "group": "core",
     "key": "toArray",
+    "lazy": false,
     "name": "toArray",
     "pure": false,
     "reference": [Function],

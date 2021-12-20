@@ -5,11 +5,11 @@ import {
   CodeFragment,
   Completion,
   ContextInterface,
+  displayValue,
   ErrorMessage,
   interpret,
   InterpretResult,
   parse,
-  ParseMode,
   ParseResult,
   VariableInterface,
   View
@@ -63,13 +63,12 @@ const calculate = async ({
   const variableId = variable ? variable.t.variableId : uuid()
   const meta = { namespaceId, variableId, name, input }
   const view: View = {}
-  const mode: ParseMode = 'multiline'
-  const parseResult = parse({ formulaContext, meta, activeCompletion, mode })
+  const parseResult = parse({ formulaContext, meta, activeCompletion })
 
   console.log({
     parseResult,
     input,
-    newINput: parseResult.input,
+    newInput: parseResult.input,
     codeFragments: parseResult.codeFragments,
     activeCompletion
   })
@@ -86,8 +85,12 @@ const calculate = async ({
       errorMessages: parseResult.errorMessages,
       variableValue: {
         success: false,
-        display: parseResult.errorMessages[0].message,
         result: {
+          type: 'Error',
+          result: parseResult.errorMessages[0].message,
+          errorKind: parseResult.errorMessages[0].type
+        },
+        cacheValue: {
           type: 'Error',
           result: parseResult.errorMessages[0].message,
           errorKind: parseResult.errorMessages[0].type
@@ -244,61 +247,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     }
 
     const value = currentCompletion.value
-    let attrs: CodeFragmentWithBlockId
-    switch (currentCompletion.kind) {
-      case 'variable':
-        attrs = {
-          meta: {
-            name: currentCompletion.preview.name,
-            namespaceId: currentCompletion.preview.namespaceId,
-            namespace: currentCompletion.preview.namespaceId
-          },
-          errors: [],
-          name: value,
-          code: 'Variable',
-          spaceBefore: false,
-          spaceAfter: false,
-          type: 'any',
-          blockId: rootId
-        }
-        break
-      case 'function':
-        attrs = {
-          meta: undefined,
-          errors: [],
-          name: value,
-          code: 'Function',
-          spaceBefore: false,
-          spaceAfter: false,
-          type: 'any',
-          blockId: rootId
-        }
-        break
-      case 'spreadsheet':
-        attrs = {
-          meta: { name: currentCompletion.preview.name(), blockId: currentCompletion.preview.blockId },
-          errors: [],
-          name: value,
-          code: 'Spreadsheet',
-          spaceBefore: false,
-          spaceAfter: false,
-          type: 'any',
-          blockId: rootId
-        }
-        break
-      case 'column':
-        attrs = {
-          meta: { name: currentCompletion.preview.name, spreadsheetName: currentCompletion.preview.spreadsheetName },
-          errors: [],
-          name: value,
-          code: 'Column',
-          spaceBefore: false,
-          spaceAfter: false,
-          type: 'any',
-          blockId: rootId
-        }
-        break
-    }
+    const attrs: CodeFragmentWithBlockId = { ...currentCompletion.codeFragment, blockId: rootId }
 
     const completionContents: JSONContent[] = [
       { type: 'codeFragmentBlock', attrs, content: [{ type: 'text', text: value }] }
@@ -329,7 +278,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const handleValueChange = (editor: Editor): void => {
     const text = `=${contentToInput(editor.getJSON().content?.[0] ?? [])}`
-    console.log({ content, json: editor.getJSON(), editor, text, formulaContext, label: 'updateValue' })
+    // console.log({ content, json: editor.getJSON(), editor, text, formulaContext, label: 'updateValue' })
     setInput(text)
     setContent(editor.getJSON() as JSONContent)
     void doCalculate({ newInput: text })
@@ -462,7 +411,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
             <span className="formula-menu-result-error-message">{error.message}</span>
           </span>
         )}
-        {!error && variable?.t.variableValue.display}
+        {!error && variable && displayValue(variable?.t.variableValue.result)}
       </div>
       <div className="formula-menu-divider" />
       <AutocompleteList
@@ -499,8 +448,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

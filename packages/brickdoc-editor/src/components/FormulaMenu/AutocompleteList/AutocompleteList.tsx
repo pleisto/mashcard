@@ -140,12 +140,12 @@ const COMPLETION_STYLE_META: {
     Icon: <Icon.Formula />,
     render: (completion: Completion, blockId: string): React.ReactElement => {
       const { preview } = completion as VariableCompletion
-      const content = preview.valid
-        ? codeFragmentsToJSONContent(preview.codeFragments, blockId)
-        : { type: 'doc', content: [{ type: 'text', text: preview.definition }] }
+      const content = preview.t.valid
+        ? codeFragmentsToJSONContent(preview.t.codeFragments, blockId)
+        : { type: 'doc', content: [{ type: 'text', text: preview.t.definition }] }
       return (
         <div className="formula-autocomplete-preview-variable">
-          <div className="autocomplete-preview-name">{preview.name}</div>
+          <div className="autocomplete-preview-name">{preview.t.name}</div>
           <div className="autocomplete-preview-section">
             <div className="autocomplete-preview-section-head">Definition</div>
             <div className="autocomplete-preview-definition">
@@ -154,12 +154,12 @@ const COMPLETION_STYLE_META: {
           </div>
           <div className="autocomplete-preview-section">
             <div className="autocomplete-preview-section-head">Type</div>
-            <span className="autocomplete-preview-input-tag">{preview.variableValue.result.type}</span>
+            <span className="autocomplete-preview-input-tag">{preview.t.variableValue.result.type}</span>
           </div>
           <div className="autocomplete-preview-section">
             <div className="autocomplete-preview-section-head">Value</div>
             <span className="autocomplete-preview-output-tag">
-              {JSON.stringify(preview.variableValue.result.result)}
+              {JSON.stringify(preview.t.variableValue.result.result)}
             </span>
           </div>
         </div>
@@ -236,7 +236,8 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
               onKeyDown={onKeyDown}
               className={cx('autocomplete-list-item', {
                 active: completion.value === activeCompletion.current?.value
-              })}>
+              })}
+            >
               {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
               <div className="autocomplete-list-item-content">
                 <span className="autocomplete-list-item-name">{completion.name}</span>

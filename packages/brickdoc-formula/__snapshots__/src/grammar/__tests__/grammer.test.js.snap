@@ -77,6 +77,10 @@ Array [
         "message": "Missing closing parenthesis",
         "type": "syntax",
       },
+      Object {
+        "message": "TODO mismatch token parenthesisExpression",
+        "type": "syntax",
+      },
     ],
     "meta": undefined,
     "name": "(",
@@ -103,6 +107,10 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "TODO mismatch token parenthesisExpression",
         "type": "syntax",
       },
     ],
@@ -137,6 +145,10 @@ Array [
         "message": "Miss argument",
         "type": "deps",
       },
+      Object {
+        "message": "TODO mismatch token FunctionCall",
+        "type": "syntax",
+      },
     ],
     "meta": undefined,
     "name": "ABS",
@@ -168,6 +180,10 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "TODO mismatch token FunctionCall",
         "type": "syntax",
       },
     ],
@@ -210,6 +226,28 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: ''",
         "type": "syntax",
       },
     ],
@@ -271,6 +309,10 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "TODO mismatch token FunctionCall",
         "type": "syntax",
       },
     ],
@@ -370,16 +412,16 @@ Object {
               "CATEGORIES": Array [],
               "PATTERN": /NOT_APPLICABLE/,
               "categoryMatches": Array [
-                15,
                 16,
-                18,
+                17,
                 19,
+                20,
               ],
               "categoryMatchesMap": Object {
-                "15": true,
                 "16": true,
-                "18": true,
+                "17": true,
                 "19": true,
+                "20": true,
               },
               "isParent": true,
               "name": "EqualCompareOperator",
@@ -391,15 +433,15 @@ Object {
           "categoryMatchesMap": Object {},
           "isParent": false,
           "name": "Equal",
-          "tokenTypeIdx": 15,
+          "tokenTypeIdx": 16,
         },
-        "tokenTypeIdx": 15,
+        "tokenTypeIdx": 16,
       },
     ],
     "expression": Array [
       Object {
         "children": Object {
-          "combineExpression": Array [
+          "lhs": Array [
             Object {
               "children": Object {
                 "lhs": Array [
@@ -447,16 +489,16 @@ Object {
                                                                                       "CATEGORIES": Array [],
                                                                                       "PATTERN": /NOT_APPLICABLE/,
                                                                                       "categoryMatches": Array [
-                                                                                        14,
-                                                                                        17,
-                                                                                        20,
+                                                                                        15,
+                                                                                        18,
                                                                                         21,
+                                                                                        22,
                                                                                       ],
                                                                                       "categoryMatchesMap": Object {
-                                                                                        "14": true,
-                                                                                        "17": true,
-                                                                                        "20": true,
+                                                                                        "15": true,
+                                                                                        "18": true,
                                                                                         "21": true,
+                                                                                        "22": true,
                                                                                       },
                                                                                       "isParent": true,
                                                                                       "name": "CompareOperator",
@@ -468,12 +510,12 @@ Object {
                                                                                   "categoryMatchesMap": Object {},
                                                                                   "isParent": false,
                                                                                   "name": "GreaterThanEqual",
-                                                                                  "tokenTypeIdx": 20,
+                                                                                  "tokenTypeIdx": 21,
                                                                                 },
-                                                                                "tokenTypeIdx": 20,
+                                                                                "tokenTypeIdx": 21,
                                                                               },
                                                                             ],
-                                                                            "atomicExpression": Array [
+                                                                            "simpleAtomicExpression": Array [
                                                                               Object {
                                                                                 "children": Object {
                                                                                   "constantExpression": Array [
@@ -498,9 +540,9 @@ Object {
                                                                                                     "categoryMatchesMap": Object {},
                                                                                                     "isParent": false,
                                                                                                     "name": "BooleanLiteral",
-                                                                                                    "tokenTypeIdx": 41,
+                                                                                                    "tokenTypeIdx": 42,
                                                                                                   },
-                                                                                                  "tokenTypeIdx": 41,
+                                                                                                  "tokenTypeIdx": 42,
                                                                                                 },
                                                                                               ],
                                                                                             },
@@ -512,7 +554,7 @@ Object {
                                                                                     },
                                                                                   ],
                                                                                 },
-                                                                                "name": "atomicExpression",
+                                                                                "name": "simpleAtomicExpression",
                                                                               },
                                                                             ],
                                                                           },
@@ -589,23 +631,45 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "other",
+    "code": "Semicolon",
     "errors": Array [
       Object {
-        "message": "TODO build not all input parsed :3",
+        "message": "Missing expression",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: ''",
         "type": "syntax",
       },
     ],
     "meta": undefined,
     "name": ";",
-    "spaceAfter": false,
-    "spaceBefore": false,
+    "spaceAfter": true,
+    "spaceBefore": true,
     "type": "any",
   },
 ]
 `;
 
-exports[`Simple test case [Semicolon 2] = 1; 2 // => ✗ 1`] = `
+exports[`Simple test case [Semicolon 2] = 1; 2 // => 2 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -617,18 +681,22 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "other",
-    "errors": Array [
-      Object {
-        "message": "TODO build not all input parsed :3",
-        "type": "syntax",
-      },
-    ],
+    "code": "Semicolon",
+    "errors": Array [],
     "meta": undefined,
-    "name": ";2",
+    "name": ";",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
+    "code": "NumberLiteral",
+    "errors": Array [],
+    "meta": undefined,
+    "name": "2",
     "spaceAfter": false,
     "spaceBefore": false,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -640,20 +708,23 @@ Array [
     "errors": Array [
       Object {
         "message": "Expecting: one of these possible Token sequences:
-  1. [LParen]
-  2. [LBracket]
-  3. [LBrace]
-  4. [Minus]
-  5. [NumberLiteral]
-  6. [BooleanLiteral]
-  7. [StringLiteral]
-  8. [NullLiteral]
-  9. [Dollar, UUID, At]
-  10. [Dollar, UUID, Sharp]
-  11. [Dollar, UUID]
-  12. [FunctionName]
-  13. [EqualCompareOperator]
-  14. [CompareOperator]
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
 but found: ''hello''",
         "type": "syntax",
       },
@@ -712,6 +783,28 @@ Array [
       Object {
         "message": "Expected boolean but got string",
         "type": "type",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: '&'",
+        "type": "syntax",
       },
     ],
     "meta": undefined,
@@ -863,20 +956,23 @@ Array [
     "errors": Array [
       Object {
         "message": "Expecting: one of these possible Token sequences:
-  1. [LParen]
-  2. [LBracket]
-  3. [LBrace]
-  4. [Minus]
-  5. [NumberLiteral]
-  6. [BooleanLiteral]
-  7. [StringLiteral]
-  8. [NullLiteral]
-  9. [Dollar, UUID, At]
-  10. [Dollar, UUID, Sharp]
-  11. [Dollar, UUID]
-  12. [FunctionName]
-  13. [EqualCompareOperator]
-  14. [CompareOperator]
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
 but found: '中文'",
         "type": "syntax",
       },
@@ -987,6 +1083,10 @@ Array [
         "message": "Missing closing parenthesis",
         "type": "syntax",
       },
+      Object {
+        "message": "TODO mismatch token recordExpression",
+        "type": "syntax",
+      },
     ],
     "meta": undefined,
     "name": "{",
@@ -1020,6 +1120,10 @@ Array [
         "message": "Missing number",
         "type": "syntax",
       },
+      Object {
+        "message": "TODO mismatch token NumberLiteralExpression",
+        "type": "syntax",
+      },
     ],
     "meta": undefined,
     "name": "-",
@@ -1046,6 +1150,28 @@ Array [
     "errors": Array [
       Object {
         "message": "Expression count mismatch",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: ']'",
         "type": "syntax",
       },
     ],
@@ -1237,7 +1363,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "boolean",
   },
   Object {
     "code": "GreaterThan",
@@ -1579,6 +1705,50 @@ Array [
         "message": "Missing expression",
         "type": "syntax",
       },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: ';'",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: ''",
+        "type": "syntax",
+      },
     ],
     "meta": undefined,
     "name": ";",
@@ -1646,6 +1816,28 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing expression",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [EqualCompareOperator]
+  2. [CompareOperator]
+  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  5. [LParen]
+  6. [LBracket]
+  7. [LBrace]
+  8. [Minus]
+  9. [NumberLiteral]
+  10. [BooleanLiteral]
+  11. [StringLiteral]
+  12. [NullLiteral]
+  13. [Self]
+  14. [FunctionName]
+  15. [Dollar, UUID, At]
+  16. [Dollar, UUID, Sharp, UUID]
+  17. [Dollar, UUID]
+but found: ''",
         "type": "syntax",
       },
     ],
@@ -1739,7 +1931,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "number",
   },
 ]
 `;
@@ -1982,7 +2174,7 @@ Array [
     "name": ")",
     "spaceAfter": false,
     "spaceBefore": true,
-    "type": "any",
+    "type": "boolean",
   },
 ]
 `;

@@ -6,7 +6,8 @@ import { BlockContainer, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
-import { FormulaType } from '@brickdoc/formula'
+import { displayValue, FormulaType, VariableClass } from '@brickdoc/formula'
+import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 
@@ -16,16 +17,26 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
 
   const attributes = node.attrs.formula
   const [variable, setVariable] = React.useState(formulaContext?.findVariable(editorDataSource.rootId, attributes.id))
-  const [t, setT] = React.useState(variable?.t)
 
   const updateFormula = (id: string): void => updateAttributes({ formula: { type: 'FORMULA', id } })
 
-  React.useEffect(() => {
-    variable?.onUpdate(t => {
-      setT(t.t)
-      setVariable(t)
-    })
-  }, [variable])
+  // React.useEffect(() => {
+  //   variable?.onUpdate(t => {
+  //     setT(t.t)
+  //     setVariable(t)
+  //   })
+  // }, [variable])
+
+  BrickdocEventBus.subscribe(
+    FormulaUpdated,
+    e => {
+      setVariable(new VariableClass({ t: e.payload.t, formulaContext: e.payload.formulaContext }))
+    },
+    {
+      eventId: `${editorDataSource.rootId},${attributes.id}`,
+      subscribeId: `${editorDataSource.rootId},${attributes.id}`
+    }
+  )
 
   const COLOR_ARRAY: { [key in FormulaType]: number } = {
     Date: 6,
@@ -36,6 +47,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     number: 0,
     null: 0,
     Predicate: 1,
+    Function: 3,
+    Reference: 0,
+    Button: 1,
     string: 4,
     boolean: 4,
     any: 6,
@@ -43,7 +57,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     Array: 6
   }
 
-  const activeColorIndex = t ? COLOR_ARRAY[t.variableValue.result.type as FormulaType] || 0 : 0
+  const activeColorIndex = variable?.t ? COLOR_ARRAY[variable.t.variableValue.result.type as FormulaType] || 0 : 0
   const activeColor = COLOR[activeColorIndex]
   const handleDefaultPopoverVisibleChange = (visible: boolean): void => {
     if (!visible && node.attrs.isNew) {
@@ -61,18 +75,16 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         editor={editor}
         updateFormula={updateFormula}
         variable={variable}
-        updateVariable={setVariable}
-      >
-        {t ? (
+        updateVariable={setVariable}>
+        {variable?.t ? (
           <span
             className="brickdoc-formula"
             style={{
               color: activeColor.color,
               borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
               background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
-            }}
-          >
-            {t.name}: {t.variableValue.display}
+            }}>
+            {variable.t.name}: {displayValue(variable.t.variableValue.result)}
           </span>
         ) : (
           <span className="brickdoc-formula-placeholder">

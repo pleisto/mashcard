@@ -2,5 +2,12 @@
   "extends": "./tsconfig.build.json",
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
-  "references": [{ "path": "../brickdoc-test-helper" }]
+  "references": [
+    {
+      "path": "../brickdoc-test-helper"
+    },
+    {
+      "path": "../brickdoc-schema"
+    }
+  ]
 }

@@ -1,4 +1,5 @@
 import { ContextInterface, Database, Column as ColumnType, DatabaseFactory } from '@brickdoc/formula'
+import { BlockTableLoaded, BrickdocEventBus } from '@brickdoc/schema'
 import React from 'react'
 import { Column } from 'react-table'
 import { DatabaseRows } from '..'
@@ -33,6 +34,10 @@ export function useFormulaDatabase(
     })
 
     formulaContext?.setDatabase(blockId, database)
+
+    if (formulaContext) {
+      BrickdocEventBus.dispatch(BlockTableLoaded({ id: blockId }))
+    }
 
     return () => {
       formulaContext?.removeDatabase(blockId)

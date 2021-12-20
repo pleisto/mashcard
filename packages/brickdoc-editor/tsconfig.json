@@ -5,6 +5,9 @@
   "references": [
     { "path": "../brickdoc-design-system" },
     { "path": "../brickdoc-formula" },
+    {
+      "path": "../brickdoc-schema"
+    },
     { "path": "../brickdoc-uploader" },
     { "path": "../brickdoc-test-helper" },
   ]

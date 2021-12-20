@@ -1,4 +1,4 @@
-import { BasicFunctionClause, FunctionGroup, FunctionKey, FunctionName } from '..'
+import { BasicFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '..'
 import { CORE_API_CLAUSES } from './api'
 import { CORE_DATABASE_CLAUSES } from './database'
 import { CORE_DATE_CLAUSES } from './date'
@@ -9,8 +9,11 @@ import { CORE_OBJECT_CLAUSES } from './object'
 import { CORE_STATISTICAL_CLAUSES } from './statistical'
 import { CORE_STRING_CLAUSES } from './string'
 import { CORE_TEXT_CLAUSES } from './text'
+import { CORE_POWERFX_CLAUSES } from './power_fx'
+import { CORE_CONTROL_CLAUSES } from './control'
+import { CORE_CORE_CLAUSES } from './core'
 
-export const buildFunctionKey = (group: FunctionGroup, name: FunctionName): FunctionKey => {
+export const buildFunctionKey = (group: FunctionGroup, name: FunctionNameType): FunctionKey => {
   if (group === 'core') {
     return name
   }
@@ -27,5 +30,8 @@ export const BUILTIN_CLAUSES: Array<BasicFunctionClause<any>> = [
   ...CORE_STATISTICAL_CLAUSES,
   ...CORE_DATE_CLAUSES,
   ...CORE_OBJECT_CLAUSES,
-  ...CORE_ERROR_CLAUSES
+  ...CORE_ERROR_CLAUSES,
+  ...CORE_POWERFX_CLAUSES,
+  ...CORE_CONTROL_CLAUSES,
+  ...CORE_CORE_CLAUSES
 ]

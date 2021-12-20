@@ -6,7 +6,7 @@ import { BlockInput, Block, useGetChildrenBlocksQuery, useBlockSyncBatchMutation
 import { isEqual } from 'lodash-es'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
-import { BrickdocEventBus, Event, BlockUpdated, BlockDeleted } from '@brickdoc/schema'
+import { BrickdocEventBus, Event, BlockUpdated, BlockDeleted, BlockNameLoad } from '@brickdoc/schema'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -68,6 +68,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       )
       const deletedIds = [...dirtyToDeleteIds.current]
       blocks.forEach(b => {
+        BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
         BrickdocEventBus.dispatch(BlockUpdated(b))
         dirtyBlocksMap.current.delete(b.id)
       })

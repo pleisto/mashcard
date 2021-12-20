@@ -1,12 +1,11 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, interpret } from '..'
-import { FormulaContext, ParseErrorType, ParseMode } from '../..'
+import { FormulaContext, ParseErrorType } from '../..'
 
 interface TestCase {
   input: string
   value?: any
   label?: string
-  mode?: ParseMode
   parseErrorType?: ParseErrorType
   errorMessage?: string
   debug?: true
@@ -147,7 +146,7 @@ const testCases: TestCase[] = [
   },
   {
     input: '= "foo" in',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing right expression'
   },
   {
@@ -198,28 +197,28 @@ const testCases: TestCase[] = [
   },
   {
     input: '=[',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=[1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=[1,',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=[1,]',
     label: 'array edit',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Expression count mismatch'
   },
   {
     input: '=[1,2',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
@@ -247,33 +246,33 @@ const testCases: TestCase[] = [
   },
   {
     input: '={',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '={a',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '={a: }',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Expecting: one of these possible Token sequences'
   },
   {
     input: '={a: 1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '={1: "a"}',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'TODO record number as key',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '={"foo":}',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Expecting: one of these possible Token sequences'
   },
   {
@@ -348,13 +347,13 @@ const testCases: TestCase[] = [
   {
     input: '= "hel"lo"',
     label: 'lex error when parse "hel"lo" => parseError',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'TODO build not all input parsed :7'
   },
   {
     input: "= 'hello'",
     label: 'Single quote => parseError',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Expecting: one of these possible Token sequences'
   },
   // **
@@ -447,99 +446,87 @@ const testCases: TestCase[] = [
   {
     input: '= -',
     label: 'Without number',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing number'
   },
   {
     input: '1+1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'missing prefix equal',
     errorMessage: 'TODO mismatch token startExpression'
   },
   {
     input: '=1+',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'TODO missing suffix expression',
     errorMessage: 'Expecting: one of these possible Token sequences:'
   },
   {
     input: '=(1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'Missing closing parenthesis1',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=(1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'Missing closing parenthesis1',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=ABS(',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'Missing closing parenthesis2',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=ABS(1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'Missing closing parenthesis3',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=POWER(1,',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'Missing closing parenthesis4',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '=POWER(1,2',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'Missing closing parenthesis5',
     errorMessage: 'Missing closing parenthesis'
   },
   {
     input: '= 1+$',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Expecting: one of these possible Token sequences:'
   },
   {
     input: '= 1;',
     label: 'Semicolon 1',
-    parseErrorType: 'parse',
-    errorMessage: 'TODO build not all input parsed :3'
+    parseErrorType: 'syntax',
+    errorMessage: 'Missing expression'
   },
   {
     input: '= 1; 2',
     label: 'Semicolon 2',
-    parseErrorType: 'parse',
-    errorMessage: 'TODO build not all input parsed :3'
+    value: 2
+  },
+  {
+    input: '= (1; 2+1)',
+    value: 3
   },
   {
     input: '="foo" &&& 123',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'TODO &&&',
     errorMessage: 'Expected boolean but got string'
   },
   {
     input: '=1**2',
-    parseErrorType: 'parse',
-    errorMessage: `Expecting: one of these possible Token sequences:
-  1. [LParen]
-  2. [LBracket]
-  3. [LBrace]
-  4. [Minus]
-  5. [NumberLiteral]
-  6. [BooleanLiteral]
-  7. [StringLiteral]
-  8. [NullLiteral]
-  9. [Dollar, UUID, At]
-  10. [Dollar, UUID, Sharp]
-  11. [Dollar, UUID]
-  12. [FunctionName]
-  13. [EqualCompareOperator]
-  14. [CompareOperator]
-but found: '*'`
+    parseErrorType: 'syntax',
+    errorMessage: 'Expecting: one of these possible Token sequences:'
   },
   // Function Call
   {
@@ -605,7 +592,53 @@ but found: '*'`
     parseErrorType: 'syntax',
     errorMessage: 'Function UNKNOWN not found'
   },
+  // Access
+  {
+    input: '=1.a',
+    parseErrorType: 'syntax',
+    errorMessage: 'TODO build not all input parsed :3'
+  },
+  {
+    input: '=1."a"',
+    parseErrorType: 'syntax',
+    errorMessage: 'TODO build not all input parsed :3'
+  },
+  {
+    input: '=true.a',
+    parseErrorType: 'syntax',
+    errorMessage: 'Access error'
+  },
+  {
+    input: '={a:1}.a',
+    value: 1
+  },
+  {
+    input: '={a:1}.b',
+    value: 'Key b not found'
+  },
+  {
+    input: '=[123].b',
+    value: 'Access not supported'
+  },
+  {
+    input: '={a:1}."a"',
+    value: 1
+  },
+  {
+    input: '=ERROR("Foo").result',
+    value: 'Foo'
+  },
   // Chain
+  {
+    input: '="FOO".',
+    parseErrorType: 'syntax',
+    errorMessage: 'Missing expression'
+  },
+  {
+    input: '="FOO".T',
+    parseErrorType: 'syntax',
+    errorMessage: 'Access error'
+  },
   {
     input: '="FOO".T().T()',
     value: 'FOO'
@@ -647,7 +680,7 @@ but found: '*'`
   {
     input: '==1',
     label: 'TODO predicate ==1',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'TODO mismatch token startExpression'
   },
   {
@@ -723,41 +756,41 @@ but found: '*'`
   {
     input: '=1; 2; (1+3)',
     label: 'multiline ok',
-    mode: 'multiline',
+    value: 4
+  },
+  {
+    input: '=1; 2; 1/0; (1+3)',
     value: 4
   },
   {
     input: '=1; 2;',
     label: 'multiline error',
-    parseErrorType: 'parse',
-    mode: 'multiline',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing expression'
   },
   {
     input: '=;',
     label: 'multiline error 2',
-    parseErrorType: 'parse',
-    mode: 'multiline',
+    parseErrorType: 'syntax',
     errorMessage: 'Missing expression'
   },
   {
     input: '=;123',
     label: 'multiline error 3',
-    parseErrorType: 'parse',
-    mode: 'multiline',
+    parseErrorType: 'syntax',
     errorMessage: 'Expecting: one of these possible Token sequences'
   },
   // TODO List
   {
     input: '= 中文',
     label: 'TODO chinese',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'Expecting: one of these possible Token sequences'
   },
   {
     input: '=varvarabc中文var',
     label: 'TODO chinese2',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'TODO mismatch token FunctionCall'
   },
   {
@@ -773,18 +806,18 @@ but found: '*'`
   {
     input: '=1.T()',
     label: 'should success',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
     input: '=1.START_WITH("123")',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     label: 'TODO chain type 3',
     errorMessage: 'TODO build not all input parsed :3'
   },
   {
     input: '=123.ABS()',
-    parseErrorType: 'parse',
+    parseErrorType: 'syntax',
     errorMessage: 'TODO build not all input parsed :5'
   }
 ]
@@ -800,7 +833,7 @@ const meta = { variableId, namespaceId, name }
 const parseInput = { formulaContext, meta }
 
 describe('Simple test case', () => {
-  testCases.forEach(({ input, label, parseErrorType, errorMessage, mode, value, debug }) => {
+  testCases.forEach(({ input, label, parseErrorType, errorMessage, value, debug }) => {
     const prefix = label ? `[${label}] ` : ''
     const suffix = value !== undefined ? ` // => ${value}` : ' // => ✗'
     it(`${prefix}${input}${suffix}`, async () => {
@@ -817,7 +850,6 @@ describe('Simple test case', () => {
         parseImage
       } = parse({
         ...parseInput,
-        mode,
         meta: newMeta
       })
 

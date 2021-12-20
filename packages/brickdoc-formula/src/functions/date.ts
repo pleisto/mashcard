@@ -12,6 +12,7 @@ export const CORE_DATE_CLAUSES: Array<BasicFunctionClause<'Date'>> = [
     name: 'NOW',
     async: false,
     pure: false,
+    lazy: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=NOW()', output: { type: 'Date', result: new Date('1926-08-17T00:00:00.000Z') } }],
@@ -27,6 +28,7 @@ export const CORE_DATE_CLAUSES: Array<BasicFunctionClause<'Date'>> = [
     name: 'DATE',
     async: false,
     pure: false,
+    lazy: false,
     acceptError: false,
     effect: false,
     examples: [

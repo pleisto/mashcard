@@ -19,10 +19,9 @@ import {
   AnyTypeValue,
   ParseErrorType,
   CodeFragmentResult,
-  ParseMode,
-  lexerByMode,
-  DatabasePersistence,
-  DatabaseFactory
+  NamespaceId,
+  castVariable,
+  FormulaLexer
 } from '..'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
@@ -32,7 +31,6 @@ export interface ParseInput {
   readonly meta: VariableMetadata
   readonly activeCompletion?: Completion
   readonly formulaContext?: ContextInterface
-  readonly mode?: ParseMode
 }
 
 export interface BaseParseResult {
@@ -46,10 +44,11 @@ export interface BaseParseResult {
   readonly kind?: VariableKind
   readonly level: number
   readonly errorMessages: ErrorMessage[]
-  readonly variableDependencies?: VariableDependency[]
-  readonly functionDependencies?: Array<FunctionClause<any>>
+  readonly variableDependencies: VariableDependency[]
+  readonly functionDependencies: Array<FunctionClause<any>>
+  readonly blockDependencies: NamespaceId[]
   readonly codeFragments: CodeFragment[]
-  readonly flattenVariableDependencies?: Set<VariableDependency>
+  readonly flattenVariableDependencies: Set<VariableDependency>
   readonly completions: Completion[]
 }
 
@@ -59,9 +58,6 @@ export interface SuccessParseResult extends BaseParseResult {
   readonly errorMessages: []
   readonly cst: CstNode
   readonly kind: VariableKind
-  readonly variableDependencies: VariableDependency[]
-  readonly functionDependencies: Array<FunctionClause<any>>
-  readonly flattenVariableDependencies: Set<VariableDependency>
 }
 
 export interface ErrorParseResult extends BaseParseResult {
@@ -102,11 +98,14 @@ export type InterpretResult = SuccessInterpretResult | ErrorInterpretResult
 // eslint-disable-next-line complexity
 export const parse = ({
   formulaContext,
-  mode,
   meta: { namespaceId, variableId, input, name },
   activeCompletion
 }: ParseInput): ParseResult => {
   let level = 0
+  let variableDependencies: VariableDependency[] = []
+  let functionDependencies: Array<FunctionClause<any>> = []
+  let blockDependencies: NamespaceId[] = []
+  let flattenVariableDependencies: Set<VariableDependency> = new Set()
   let newInput = input
   if (!variableId) {
     return {
@@ -120,18 +119,20 @@ export const parse = ({
       errorType: 'parse',
       completions: [],
       errorMessages: [{ message: 'Miss variableId', type: 'fatal' }],
-      codeFragments: []
+      codeFragments: [],
+      variableDependencies,
+      functionDependencies,
+      blockDependencies,
+      flattenVariableDependencies
     }
   }
   const baseCompletion = formulaContext?.completions(namespaceId, variableId) ?? []
   let completions: Completion[] = baseCompletion
 
-  const parseRule = mode === 'multiline' ? 'multilineExpression' : 'startExpression'
-
-  const parser = new FormulaParser({ formulaContext, mode })
+  const parser = new FormulaParser({ formulaContext })
   const codeFragmentVisitor = new CodeFragmentVisitor({ formulaContext })
 
-  const lexer = lexerByMode(mode)
+  const lexer = FormulaLexer
 
   let lexResult: ILexingResult = lexer.tokenize(input)
   let tokens = lexResult.tokens
@@ -183,25 +184,30 @@ export const parse = ({
   parser.input = tokens
   const inputImage = tokens.map(t => t.image).join('')
 
-  const cst: CstNode = parser[parseRule]()
+  const cst: CstNode = parser.startExpression()
   const { codeFragments, image }: CodeFragmentResult = codeFragmentVisitor.visit(cst, {
     type: 'any'
   })
 
+  const finalCodeFragments: CodeFragment[] = codeFragments
+  const errorCodeFragment = codeFragments.find(f => f.errors.length)
+  const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
+
   level = codeFragmentVisitor.level
+  variableDependencies = codeFragmentVisitor.variableDependencies
+  functionDependencies = codeFragmentVisitor.functionDependencies
+  blockDependencies = codeFragmentVisitor.blockDependencies
+  flattenVariableDependencies = codeFragmentVisitor.flattenVariableDependencies
+
   const parseErrors: IRecognitionException[] = parser.errors
 
   if (lexResult.errors.length > 0 || parseErrors.length > 0) {
-    const finalCodeFragments: CodeFragment[] = codeFragments
     const errorMessages = (lexResult.errors.length ? lexResult.errors : parseErrors).map(e => ({
       message: e.message,
       type: 'syntax'
     })) as [ErrorMessage, ...ErrorMessage[]]
 
-    const errorCodeFragment = codeFragments.find(f => f.errors.length)
-    const finalErrorMessages: [ErrorMessage, ...ErrorMessage[]] = errorCodeFragment
-      ? [errorCodeFragment.errors[0]]
-      : errorMessages
+    finalErrorMessages.push(...errorMessages)
 
     if (inputImage.startsWith(image)) {
       const restImages = inputImage.slice(image.length)
@@ -219,30 +225,19 @@ export const parse = ({
     } else {
       console.error({ ParseErrorTODO: { input, newInput, inputImages: inputImage, image } })
     }
+  }
 
-    completions = complete({
-      input,
-      cacheCompletions: baseCompletion,
-      codeFragments,
-      tokens,
-      formulaContext,
-      namespaceId,
-      variableId
+  const spaceCount = input.length - input.trimEnd().length
+  if (spaceCount) {
+    finalCodeFragments.push({
+      code: 'Space',
+      name: Array(spaceCount).fill(' ').join(''),
+      spaceAfter: false,
+      spaceBefore: false,
+      type: 'any',
+      meta: undefined,
+      errors: []
     })
-
-    return {
-      success: false,
-      valid: finalCodeFragments.length > 0,
-      errorType: 'parse',
-      input: newInput,
-      inputImage,
-      parseImage: image,
-      completions,
-      level,
-      errorMessages: finalErrorMessages,
-      cst,
-      codeFragments: finalCodeFragments
-    }
   }
 
   completions = complete({
@@ -255,12 +250,10 @@ export const parse = ({
     variableId
   })
 
-  const errorCodeFragment = codeFragments.find(f => f.errors.length)
-
-  if (errorCodeFragment) {
+  if (finalErrorMessages.length) {
     return {
       success: false,
-      valid: true,
+      valid: codeFragments.length > 0,
       input: newInput,
       inputImage,
       parseImage: image,
@@ -268,12 +261,15 @@ export const parse = ({
       level,
       errorType: 'syntax',
       completions,
-      errorMessages: [errorCodeFragment.errors[0]],
-      codeFragments
+      errorMessages: finalErrorMessages as [ErrorMessage, ...ErrorMessage[]],
+      codeFragments: finalCodeFragments,
+      variableDependencies,
+      functionDependencies,
+      blockDependencies,
+      flattenVariableDependencies
     }
   }
 
-  const flattenVariableDependencies = codeFragmentVisitor.flattenVariableDependencies
   if ([...flattenVariableDependencies].find(v => v.namespaceId === namespaceId && v.variableId === variableId)) {
     return {
       success: false,
@@ -287,9 +283,10 @@ export const parse = ({
       completions,
       cst,
       flattenVariableDependencies,
-      variableDependencies: codeFragmentVisitor.variableDependencies,
-      functionDependencies: codeFragmentVisitor.functionDependencies,
-      codeFragments
+      variableDependencies,
+      functionDependencies,
+      blockDependencies,
+      codeFragments: finalCodeFragments
     }
   }
 
@@ -306,9 +303,10 @@ export const parse = ({
       completions,
       errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }],
       flattenVariableDependencies,
-      variableDependencies: codeFragmentVisitor.variableDependencies,
-      functionDependencies: codeFragmentVisitor.functionDependencies,
-      codeFragments
+      blockDependencies,
+      variableDependencies,
+      functionDependencies,
+      codeFragments: finalCodeFragments
     }
   }
 
@@ -329,9 +327,10 @@ export const parse = ({
       completions,
       errorMessages: [{ message: 'Variable name exist in same namespace', type: 'name_unique' }],
       flattenVariableDependencies,
-      variableDependencies: codeFragmentVisitor.variableDependencies,
-      functionDependencies: codeFragmentVisitor.functionDependencies,
-      codeFragments
+      blockDependencies,
+      variableDependencies,
+      functionDependencies,
+      codeFragments: finalCodeFragments
     }
   }
 
@@ -347,38 +346,11 @@ export const parse = ({
     completions,
     kind: codeFragmentVisitor.kind,
     flattenVariableDependencies,
-    variableDependencies: codeFragmentVisitor.variableDependencies,
-    functionDependencies: codeFragmentVisitor.functionDependencies,
-    codeFragments
+    blockDependencies,
+    variableDependencies,
+    functionDependencies,
+    codeFragments: finalCodeFragments
   }
-}
-
-export const displayValue = (v: AnyTypeValue): string => {
-  switch (v.type) {
-    case 'number':
-    case 'boolean':
-      return String(v.result)
-    case 'string':
-      return `"${v.result}"`
-    case 'Date':
-      return v.result.toISOString()
-    case 'Error':
-      return `#<Error> ${v.result}`
-    case 'Spreadsheet':
-      return `#<Spreadsheet> ${v.result.name()}`
-    case 'Column':
-      return `#<Column> ${v.result.spreadsheetName} - ${v.result.name}`
-    case 'Predicate':
-      return `[${v.operator}] ${displayValue(v.result)}`
-    case 'Record':
-      return `{ ${Object.entries(v.result)
-        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeValue)}`)
-        .join(', ')} }`
-    case 'Array':
-      return `[${v.result.map((v: AnyTypeValue) => displayValue(v)).join(', ')}]`
-  }
-
-  return JSON.stringify(v.result)
 }
 
 export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): Promise<InterpretResult> => {
@@ -391,7 +363,7 @@ export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): 
       variableValue: {
         updatedAt: new Date(),
         success: false,
-        display: message,
+        cacheValue: { result: message, type: 'Error', errorKind: 'fatal' },
         result: { result: message, type: 'Error', errorKind: 'fatal' }
       }
     }
@@ -404,8 +376,8 @@ export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): 
       success: true,
       variableValue: {
         success: true,
-        display: displayValue(result),
         updatedAt: new Date(),
+        cacheValue: result,
         result
       },
       errorMessages: []
@@ -418,9 +390,9 @@ export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): 
       success: false,
       errorMessages: [errorMessage],
       variableValue: {
-        display: message,
         updatedAt: new Date(),
         success: false,
+        cacheValue: { result: message, type: 'Error', errorKind: 'fatal' },
         result: { result: message, type: 'Error', errorKind: 'fatal' }
       }
     }
@@ -438,6 +410,7 @@ export const buildVariable = ({
     codeFragments,
     variableDependencies,
     functionDependencies,
+    blockDependencies,
     level,
     flattenVariableDependencies
   },
@@ -462,99 +435,18 @@ export const buildVariable = ({
     valid,
     level,
     kind: kind ?? 'constant',
-    variableDependencies: variableDependencies ?? [],
-    flattenVariableDependencies: flattenVariableDependencies ?? new Set(),
-    functionDependencies: functionDependencies ?? []
+    variableDependencies,
+    flattenVariableDependencies,
+    blockDependencies,
+    functionDependencies
   }
 
   const oldVariable = formulaContext.findVariable(namespaceId, variableId)
-
   if (oldVariable) {
     oldVariable.t = t
     return oldVariable
   } else {
-    return new VariableClass({ t, backendActions: formulaContext.backendActions })
-  }
-}
-
-const parseCacheValue = (cacheValue: AnyTypeValue): AnyTypeValue => {
-  if (cacheValue.type === 'Spreadsheet' && cacheValue.result.dynamic) {
-    const { blockId, tableName, columns, rows }: DatabasePersistence = cacheValue.result.persistence
-    return {
-      type: 'Spreadsheet',
-      result: new DatabaseFactory({
-        blockId,
-        dynamic: true,
-        name: () => tableName,
-        listColumns: () => columns,
-        listRows: () => rows
-      })
-    }
-  }
-
-  if (cacheValue.type === 'Date') {
-    return {
-      type: 'Date',
-      result: new Date(cacheValue.result)
-    }
-  }
-
-  // console.log({ cacheValue })
-
-  return cacheValue
-}
-
-export const castVariable = (
-  formulaContext: ContextInterface,
-  { name, definition, cacheValue, blockId, id, view }: Formula
-): VariableData => {
-  const namespaceId = blockId
-  const variableId = id
-  const castedValue: AnyTypeValue = parseCacheValue(cacheValue as unknown as AnyTypeValue)
-  const parseInput = { formulaContext, meta: { namespaceId, variableId, name, input: definition } }
-  const {
-    success,
-    cst,
-    kind,
-    valid,
-    errorMessages,
-    variableDependencies,
-    flattenVariableDependencies,
-    codeFragments,
-    functionDependencies,
-    level
-  } = parse(parseInput)
-
-  const variableValue: VariableValue = success
-    ? {
-        updatedAt: new Date(),
-        success: true,
-        display: displayValue(castedValue),
-        result: castedValue
-      }
-    : {
-        updatedAt: new Date(),
-        success: false,
-        display: errorMessages[0]!.message,
-        result: { type: 'Error', result: errorMessages[0]!.message, errorKind: errorMessages[0]!.type }
-      }
-
-  return {
-    namespaceId,
-    variableId,
-    variableValue,
-    name,
-    cst,
-    view,
-    valid,
-    definition,
-    codeFragments,
-    level,
-    kind: kind ?? 'constant',
-    variableDependencies: variableDependencies ?? [],
-    flattenVariableDependencies: flattenVariableDependencies ?? new Set(),
-    functionDependencies: functionDependencies ?? [],
-    dirty: false
+    return new VariableClass({ t, formulaContext })
   }
 }
 
@@ -567,7 +459,7 @@ export const appendFormulas = (formulaContext: ContextInterface, formulas: Formu
       const variable = castVariable(formulaContext, formula)
 
       void formulaContext.commitVariable({
-        variable: new VariableClass({ t: variable, backendActions: formulaContext.backendActions }),
+        variable: new VariableClass({ t: variable, formulaContext }),
         skipCreate: true
       })
     })
@@ -582,6 +474,7 @@ export const quickInsert = async ({
   formulaContext: ContextInterface
 }): Promise<void> => {
   const meta = { namespaceId, variableId, name, input }
+  const view: View = {}
 
   const parseInput = { formulaContext, meta }
   const {
@@ -593,6 +486,7 @@ export const quickInsert = async ({
     errorMessages,
     variableDependencies,
     functionDependencies,
+    blockDependencies,
     flattenVariableDependencies
   } = parse(parseInput)
 
@@ -608,18 +502,20 @@ export const quickInsert = async ({
     name,
     dirty: false,
     valid: true,
+    view,
     definition: input,
     cst,
     kind: kind ?? 'constant',
     codeFragments,
     variableValue,
     level,
-    variableDependencies: variableDependencies ?? [],
-    functionDependencies: functionDependencies ?? [],
-    flattenVariableDependencies: flattenVariableDependencies ?? new Set()
+    blockDependencies,
+    variableDependencies,
+    functionDependencies,
+    flattenVariableDependencies
   }
   // return new VariableClass({ t: variable, backendActions: formulaContext.backendActions })
   void (await formulaContext.commitVariable({
-    variable: new VariableClass({ t: variable, backendActions: formulaContext.backendActions })
+    variable: new VariableClass({ t: variable, formulaContext })
   }))
 }

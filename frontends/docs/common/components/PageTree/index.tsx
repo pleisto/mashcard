@@ -19,6 +19,7 @@ import { useDocsI18n } from '../../hooks'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
+import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 
 export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
@@ -164,6 +165,10 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   }
 
   const pageBlocks = data?.pageBlocks ?? []
+
+  pageBlocks.forEach(b => {
+    BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
+  })
 
   React.useEffect(() => {
     const flattedData = (data?.pageBlocks ?? [])

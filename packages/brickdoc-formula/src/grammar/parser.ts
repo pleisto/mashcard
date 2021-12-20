@@ -1,6 +1,6 @@
 import { CstParser, defaultParserErrorProvider, IParserErrorMessageProvider } from 'chevrotain'
-import { tokensByMode } from '.'
-import { Argument, ContextInterface, ParseMode } from '..'
+import { allTokens } from '.'
+import { ContextInterface } from '..'
 import {
   AdditionOperator,
   MultiplicationOperator,
@@ -32,12 +32,12 @@ import {
   NullLiteral,
   LBrace,
   RBrace,
-  Colon
+  Colon,
+  Self
 } from './lexer'
 
 interface ParserConfig {
   readonly formulaContext?: ContextInterface
-  readonly mode?: ParseMode
 }
 
 const errorProvider: IParserErrorMessageProvider = {
@@ -62,24 +62,20 @@ const errorProvider: IParserErrorMessageProvider = {
 
 export class FormulaParser extends CstParser {
   formulaContext?: ContextInterface
-  mode: ParseMode = 'oneline'
 
   // Unfortunately no support for class fields with initializer in ES2015, only in esNext...
   // so the parsing rules are defined inside the constructor, as each parsing rule must be initialized by
   // invoking RULE(...)
   // see: https://github.com/jeffmo/es-class-fields-and-static-properties
-  constructor({ formulaContext, mode }: ParserConfig) {
-    const tokens = tokensByMode(mode)
+  constructor({ formulaContext }: ParserConfig) {
+    const tokens = allTokens
     super(tokens, {
-      maxLookahead: 3,
+      maxLookahead: 5,
       recoveryEnabled: true,
       errorMessageProvider: errorProvider
     })
 
     this.formulaContext = formulaContext
-    if (mode) {
-      this.mode = mode
-    }
     this.performSelfAnalysis()
   }
 
@@ -88,17 +84,12 @@ export class FormulaParser extends CstParser {
     this.SUBRULE(this.expression)
   })
 
-  public multilineExpression = this.RULE('multilineExpression', () => {
-    this.CONSUME(Equal)
-    this.SUBRULE(this.expression, { LABEL: 'lhs' })
+  public expression = this.RULE('expression', () => {
+    this.SUBRULE(this.combineExpression, { LABEL: 'lhs' })
     this.MANY(() => {
       this.CONSUME(Semicolon)
-      this.SUBRULE2(this.expression, { LABEL: 'rhs' })
+      this.SUBRULE2(this.combineExpression, { LABEL: 'rhs' })
     })
-  })
-
-  public expression = this.RULE('expression', () => {
-    this.SUBRULE(this.combineExpression)
   })
 
   public combineExpression = this.RULE('combineExpression', () => {
@@ -169,21 +160,35 @@ export class FormulaParser extends CstParser {
     this.SUBRULE(this.atomicExpression, { LABEL: 'lhs' })
     this.MANY(() => {
       this.CONSUME(Dot)
-      this.SUBRULE(this.FunctionCall, { LABEL: 'rhs' })
+
+      this.OR([
+        { ALT: () => this.SUBRULE(this.FunctionCall, { LABEL: 'rhs' }) },
+        { ALT: () => this.SUBRULE(this.keyExpression, { LABEL: 'rhs' }) }
+      ])
     })
   })
 
-  public atomicExpression = this.RULE('atomicExpression', () => {
+  public keyExpression = this.RULE('keyExpression', () => {
+    this.OR([{ ALT: () => this.CONSUME(StringLiteral) }, { ALT: () => this.CONSUME(FunctionName) }])
+  })
+
+  public simpleAtomicExpression = this.RULE('simpleAtomicExpression', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.parenthesisExpression) },
       { ALT: () => this.SUBRULE(this.arrayExpression) },
       { ALT: () => this.SUBRULE(this.recordExpression) },
       { ALT: () => this.SUBRULE(this.constantExpression) },
-      { ALT: () => this.SUBRULE(this.variableExpression) },
+      { ALT: () => this.SUBRULE(this.allVariableExpression) },
+      { ALT: () => this.SUBRULE(this.FunctionCall) }
+    ])
+  })
+
+  public atomicExpression = this.RULE('atomicExpression', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.predicateExpression) },
+      { ALT: () => this.SUBRULE(this.simpleAtomicExpression) },
       { ALT: () => this.SUBRULE(this.columnExpression) },
-      { ALT: () => this.SUBRULE(this.spreadsheetExpression) },
-      { ALT: () => this.SUBRULE(this.FunctionCall) },
-      { ALT: () => this.SUBRULE(this.predicateExpression) }
+      { ALT: () => this.SUBRULE(this.spreadsheetExpression) }
     ])
   })
 
@@ -209,15 +214,18 @@ export class FormulaParser extends CstParser {
   })
 
   public recordField = this.RULE('recordField', () => {
-    this.OR([{ ALT: () => this.CONSUME(StringLiteral) }, { ALT: () => this.CONSUME(FunctionName) }])
+    this.SUBRULE(this.keyExpression)
     this.CONSUME(Colon)
     this.SUBRULE(this.expression)
   })
 
   public predicateExpression = this.RULE('predicateExpression', () => {
+    this.OPTION(() => {
+      this.SUBRULE(this.columnExpression)
+    })
     this.OR([{ ALT: () => this.CONSUME(EqualCompareOperator) }, { ALT: () => this.CONSUME(CompareOperator) }])
 
-    this.SUBRULE(this.atomicExpression)
+    this.SUBRULE(this.simpleAtomicExpression)
   })
 
   public columnExpression = this.RULE('columnExpression', () => {
@@ -225,6 +233,23 @@ export class FormulaParser extends CstParser {
     this.CONSUME(UUID)
     this.CONSUME(Sharp)
     this.CONSUME2(UUID)
+  })
+
+  public lazyVariableExpression = this.RULE('lazyVariableExpression', () => {
+    this.OR([{ ALT: () => this.SUBRULE(this.variableExpression) }, { ALT: () => this.CONSUME(Self) }])
+  })
+
+  public allVariableExpression = this.RULE('allVariableExpression', lazy => {
+    this.OR([
+      {
+        GATE: () => !lazy,
+        ALT: () => this.SUBRULE(this.variableExpression)
+      },
+      {
+        GATE: () => lazy,
+        ALT: () => this.SUBRULE(this.lazyVariableExpression)
+      }
+    ])
   })
 
   public variableExpression = this.RULE('variableExpression', () => {
@@ -282,7 +307,7 @@ export class FormulaParser extends CstParser {
     this.CONSUME2(RParen)
   })
 
-  public Arguments = this.RULE('Arguments', (args: undefined | Argument[]) => {
+  public Arguments = this.RULE('Arguments', () => {
     this.SUBRULE(this.expression)
     this.MANY(() => {
       this.CONSUME(Comma)

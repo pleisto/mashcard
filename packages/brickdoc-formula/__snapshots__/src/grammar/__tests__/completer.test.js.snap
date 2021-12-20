@@ -25,7 +25,7 @@ Array [
     "errors": Array [],
     "meta": Object {
       "name": "varvarabcvar",
-      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespace": "Untitled",
       "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
     },
     "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -35,7 +35,21 @@ Array [
   },
   Object {
     "code": "Dot",
-    "errors": Array [],
+    "errors": Array [
+      Object {
+        "message": "Missing expression",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [FunctionName, DoubleColon]
+  2. [FunctionName, LParen]
+  3. [StringLiteral]
+  4. [FunctionName]
+but found: ''",
+        "type": "syntax",
+      },
+    ],
     "meta": undefined,
     "name": ".",
     "spaceAfter": false,
@@ -70,7 +84,7 @@ Array [
     "errors": Array [],
     "meta": Object {
       "name": "varvarabcvar",
-      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespace": "Untitled",
       "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
     },
     "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -80,7 +94,21 @@ Array [
   },
   Object {
     "code": "Dot",
-    "errors": Array [],
+    "errors": Array [
+      Object {
+        "message": "Missing expression",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Expecting: one of these possible Token sequences:
+  1. [FunctionName, DoubleColon]
+  2. [FunctionName, LParen]
+  3. [StringLiteral]
+  4. [FunctionName]
+but found: ''",
+        "type": "syntax",
+      },
+    ],
     "meta": undefined,
     "name": ".",
     "spaceAfter": false,
@@ -115,13 +143,22 @@ Array [
     "errors": Array [],
     "meta": Object {
       "name": "varvarabcvar",
-      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespace": "Untitled",
       "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
     },
     "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
+  },
+  Object {
+    "code": "Space",
+    "errors": Array [],
+    "meta": undefined,
+    "name": " ",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
   },
 ]
 `;
@@ -151,13 +188,22 @@ Array [
     "errors": Array [],
     "meta": Object {
       "name": "varvarabcvar",
-      "namespace": "57622108-1337-4edd-833a-2557835bcfe0",
+      "namespace": "Untitled",
       "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
     },
     "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
+  },
+  Object {
+    "code": "Space",
+    "errors": Array [],
+    "meta": undefined,
+    "name": " ",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "any",
   },
 ]
 `;

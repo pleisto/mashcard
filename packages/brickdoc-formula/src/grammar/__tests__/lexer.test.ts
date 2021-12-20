@@ -1,7 +1,7 @@
-import { tokenVocabulary, lexerByMode } from '..'
+import { FormulaLexer, tokenVocabulary } from '..'
 import { tokenMatcher } from 'chevrotain'
 
-const lexer = lexerByMode('oneline')
+const lexer = FormulaLexer
 
 describe('lex', () => {
   it('Can Lex a simple input', () => {

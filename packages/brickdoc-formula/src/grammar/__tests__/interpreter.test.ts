@@ -8,6 +8,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     pure: true,
     acceptError: false,
     effect: false,
+    lazy: false,
     args: [
       {
         type: 'number',
@@ -32,6 +33,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     pure: true,
     acceptError: false,
     effect: false,
+    lazy: false,
     args: [],
     examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
     description: '',

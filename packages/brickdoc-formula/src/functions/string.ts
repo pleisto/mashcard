@@ -9,6 +9,7 @@ export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
   {
     name: 'START_WITH',
     async: false,
+    lazy: false,
     acceptError: false,
     pure: true,
     effect: false,

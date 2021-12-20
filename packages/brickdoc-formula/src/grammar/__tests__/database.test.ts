@@ -85,6 +85,17 @@ const testCases: TestCase[] = [
   { label: 'COUNTA', input: `=$${databaseNamespaceId}#${firstColumnId}.COUNTA()`, value: 3 },
   { label: 'COUNTA', input: `=$${databaseNamespaceId}#${thirdColumnId}.COUNTA()`, value: 2 },
   {
+    label: 'CountIf ok',
+    input: `=CountIf($${databaseNamespaceId}, $${databaseNamespaceId}#${firstColumnId} >= 3)`,
+    value: 2
+  },
+  {
+    label: 'CountIf error1',
+    input: `=CountIf($${databaseNamespaceId}, >= 3)`,
+    value: 'Column is missing'
+  },
+
+  {
     label: 'SUMPRODUCT',
     input: `=SUMPRODUCT($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId})`,
     value: 1 * 2 + 3 * 4 + 5 * 6

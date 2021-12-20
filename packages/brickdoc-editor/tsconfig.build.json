@@ -7,6 +7,9 @@
   "references": [
     { "path": "../brickdoc-test-helper/tsconfig.build.json" },
     { "path": "../brickdoc-formula/tsconfig.build.json" },
+    {
+      "path": "../brickdoc-schema/tsconfig.build.json"
+    },
     { "path": "../brickdoc-design-system/tsconfig.build.json" },
     { "path": "../brickdoc-uploader/tsconfig.build.json" }]
 }

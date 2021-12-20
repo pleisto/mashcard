@@ -44,11 +44,13 @@ export const complete = ({
   if (!lastCodeFragment || !lastToken) {
     return completions
   }
+
+  // console.log({ lastCodeFragment, lastToken })
+
   const { code, name } = lastCodeFragment
   const lowerCaseName = name.toLowerCase()
   const lastTokenText = lastToken.image
 
-  // console.log({ name, code, input })
   // console.log({ name, code, input, lastCodeFragment, tokens, codeFragments, completions })
 
   if (code === 'Dot') {
@@ -77,7 +79,7 @@ export const complete = ({
 
   if (['GreaterThan', 'GreaterThanEqual', 'LessThan', 'LessThanEqual'].includes(code)) {
     completions = completions.map(c => {
-      return c.kind === 'variable' && c.preview.variableValue.result.type === 'number'
+      return c.kind === 'variable' && c.preview.t.variableValue.result.type === 'number'
         ? { ...c, weight: c.weight + 1000 }
         : c
     })

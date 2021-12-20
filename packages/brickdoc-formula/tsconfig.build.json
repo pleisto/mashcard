@@ -4,5 +4,12 @@
     "outDir": "dist"
   },
   "include": ["src/**/*"],
-  "references": [{ "path": "../brickdoc-test-helper/tsconfig.build.json" }]
+  "references": [
+    {
+      "path": "../brickdoc-test-helper/tsconfig.build.json"
+    },
+    {
+      "path": "../brickdoc-schema/tsconfig.build.json"
+    },
+  ]
 }
