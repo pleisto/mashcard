@@ -1,5 +1,5 @@
 /* eslint-disable jest/no-conditional-expect */
-import { parse, interpret } from '..'
+import { parse, interpret, quickInsert } from '..'
 import { FormulaContext, ParseErrorType } from '../..'
 
 interface TestCase {
@@ -10,6 +10,11 @@ interface TestCase {
   errorMessage?: string
   debug?: true
 }
+
+const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
+const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
+const barNamespaceId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
+const barVariableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 
 const testCases: TestCase[] = [
   {
@@ -229,6 +234,31 @@ const testCases: TestCase[] = [
       { type: 'string', result: 'foo' },
       { type: 'boolean', result: true }
     ]
+  },
+  // Reference
+  {
+    input: `=Self`,
+    value: { kind: 'self' }
+  },
+  {
+    input: `=$${barNamespaceId}@${barVariableId}`,
+    value: 24
+  },
+  {
+    input: `=&$${barNamespaceId}@${barVariableId}`,
+    value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId }
+  },
+  {
+    input: `=&$${barNamespaceId}@${barVariableId}.foo`,
+    value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId, attribute: 'foo' }
+  },
+  {
+    input: '=&Self',
+    value: { kind: 'self' }
+  },
+  {
+    input: '=&Self."foo bar"',
+    value: { kind: 'self', attribute: 'foo bar' }
   },
   // Record
   {
@@ -618,7 +648,7 @@ const testCases: TestCase[] = [
   },
   {
     input: '=[123].b',
-    value: 'Access not supported'
+    value: 'Access not supported for Array'
   },
   {
     input: '={a:1}."a"',
@@ -822,9 +852,6 @@ const testCases: TestCase[] = [
   }
 ]
 
-const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
-const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
-
 const formulaContext = new FormulaContext({})
 
 const name = 'foo'
@@ -833,6 +860,13 @@ const meta = { variableId, namespaceId, name }
 const parseInput = { formulaContext, meta }
 
 describe('Simple test case', () => {
+  beforeAll(async () => {
+    await quickInsert({
+      formulaContext,
+      meta: { namespaceId: barNamespaceId, name: 'bar', variableId: barVariableId, input: '=24' }
+    })
+  })
+
   testCases.forEach(({ input, label, parseErrorType, errorMessage, value, debug }) => {
     const prefix = label ? `[${label}] ` : ''
     const suffix = value !== undefined ? ` // => ${value}` : ' // => ✗'

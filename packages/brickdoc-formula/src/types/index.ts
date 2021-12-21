@@ -1,5 +1,5 @@
 import { CstNode } from 'chevrotain'
-import { Button } from '../controls'
+import { ButtonType } from '../controls'
 
 type BasicType = 'number' | 'string' | 'boolean' | 'null'
 type ObjectType =
@@ -7,12 +7,14 @@ type ObjectType =
   | 'Column'
   | 'Spreadsheet'
   | 'Block'
+  | 'Blank'
   | 'Record'
   | 'Array'
   | 'Error'
   | 'Predicate'
   | 'Function'
   | 'Reference'
+  | 'Cst'
 type ControlType = 'Button'
 
 export type FormulaType = BasicType | ObjectType | ControlType | 'any'
@@ -23,9 +25,11 @@ export type SpecialDefaultVariableName =
   | 'str'
   | 'num'
   | 'bool'
+  | 'cst'
   | 'record'
   | 'array'
   | 'date'
+  | 'blank'
   | 'column'
   | 'block'
   | 'var'
@@ -86,7 +90,6 @@ export type ColumnId = uuid
 export type PredicateOperator = 'equal' | 'notEqual' | 'greaterThan' | 'greaterThanEqual' | 'lessThan' | 'lessThanEqual'
 
 export type FormulaFunctionKind = 'Set'
-
 export interface BaseResult {
   result: any
   type: FormulaType
@@ -111,6 +114,11 @@ export interface StringResult extends BaseResult {
 export interface NullResult extends BaseResult {
   result: null
   type: 'null'
+}
+
+export interface BlankResult extends BaseResult {
+  result: any
+  type: 'Blank'
 }
 
 export interface ArrayResult extends BaseResult {
@@ -155,20 +163,29 @@ export interface PredicateResult extends BaseResult {
   column?: Column
   operator: PredicateOperator
 }
+export interface FormulaFunction {
+  name: FunctionNameType
+  args: Array<ReferenceResult | CstResult>
+}
 
 export interface FunctionResult extends BaseResult {
   type: 'Function'
-  result: FormulaFunction[]
+  result: FormulaFunction
+}
+
+export interface CstResult extends BaseResult {
+  type: 'Cst'
+  result: CstNode
 }
 
 export interface ReferenceResult extends BaseResult {
   type: 'Reference'
-  result: never
+  result: Reference
 }
 
 export interface ButtonResult extends BaseResult {
   type: 'Button'
-  result: Button
+  result: ButtonType
 }
 
 export interface AnyResult extends BaseResult {
@@ -176,24 +193,22 @@ export interface AnyResult extends BaseResult {
   type: 'any'
 }
 
-export type BaseFunctionResult<T> =
-  | ((
-      | NumberResult
-      | BooleanResult
-      | StringResult
-      | NullResult
-      | RecordResult
-      | ArrayResult
-      | DateResult
-      | ColumnResult
-      | SpreadsheetResult
-      | PredicateResult
-      | BlockResult
-      | FunctionResult
-      | ReferenceResult
-      | ButtonResult
-    ) & { type: T })
-  | ErrorResult
+export type Reference = VariableReference | SelfReference
+
+export interface BaseReference {
+  attribute?: string
+  kind: 'variable' | 'self'
+}
+
+export interface VariableReference extends BaseReference {
+  kind: 'variable'
+  variableId: VariableId
+  namespaceId: NamespaceId
+}
+
+export interface SelfReference extends BaseReference {
+  kind: 'self'
+}
 
 export type AnyTypeResult =
   | NumberResult
@@ -201,6 +216,7 @@ export type AnyTypeResult =
   | StringResult
   | NullResult
   | RecordResult
+  | BlankResult
   | ArrayResult
   | DateResult
   | ColumnResult
@@ -210,30 +226,13 @@ export type AnyTypeResult =
   | ButtonResult
   | ErrorResult
   | FunctionResult
+  | CstResult
   | ReferenceResult
   | AnyResult
 
-export type AnyFunctionResult<T> =
-  | ((
-      | NumberResult
-      | BooleanResult
-      | StringResult
-      | NullResult
-      | RecordResult
-      | ArrayResult
-      | DateResult
-      | ColumnResult
-      | SpreadsheetResult
-      | BlockResult
-      | ButtonResult
-      | PredicateResult
-      | FunctionResult
-      | ReferenceResult
-      | AnyResult
-    ) & { type: T })
-  | ErrorResult
+export type AnyFunctionResult<T> = (AnyTypeResult & { type: T }) | ErrorResult
 
-export type AnyTypeValue = AnyFunctionResult<any>
+export type AnyTypeValue = AnyTypeResult
 
 export interface View {
   [key: string]: any
@@ -272,10 +271,6 @@ export interface DatabaseDefinition {
   listRows: () => Row[]
 }
 
-export interface FormulaFunction {
-  kind: FormulaFunctionKind
-}
-
 export interface DatabasePersistence {
   blockId: NamespaceId
   tableName: string
@@ -286,6 +281,7 @@ export interface DatabasePersistence {
 export interface Database {
   blockId: NamespaceId
   dynamic: boolean
+  persistence?: DatabasePersistence
   columnCount: () => number
   rowCount: () => number
   name: () => string
@@ -377,7 +373,7 @@ export interface TestCase {
 
 export interface Example<T extends FormulaType> {
   readonly input: Definition
-  readonly output: BaseFunctionResult<T> | null
+  readonly output: AnyFunctionResult<T> | null
 }
 
 export interface ExampleWithCodeFragments<T extends FormulaType> extends Example<T> {
@@ -517,6 +513,8 @@ export interface VariableInterface {
   namespaceName: () => string
   reparse: () => void
   meta: () => VariableMetadata
+  updateDefinition: (definition: Definition) => void
+  updateCst: (cst: CstNode) => void
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>
   afterUpdate: () => void

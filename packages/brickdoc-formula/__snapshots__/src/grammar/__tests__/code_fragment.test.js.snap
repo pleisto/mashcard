@@ -3427,7 +3427,7 @@ Object {
                                                                       "simpleAtomicExpression": Array [
                                                                         Object {
                                                                           "children": Object {
-                                                                            "allVariableExpression": Array [
+                                                                            "lazyVariableExpression": Array [
                                                                               Object {
                                                                                 "children": Object {
                                                                                   "variableExpression": Array [
@@ -3520,7 +3520,7 @@ Object {
                                                                                     },
                                                                                   ],
                                                                                 },
-                                                                                "name": "allVariableExpression",
+                                                                                "name": "lazyVariableExpression",
                                                                               },
                                                                             ],
                                                                           },
@@ -3802,7 +3802,7 @@ Object {
                                                                       "simpleAtomicExpression": Array [
                                                                         Object {
                                                                           "children": Object {
-                                                                            "allVariableExpression": Array [
+                                                                            "lazyVariableExpression": Array [
                                                                               Object {
                                                                                 "children": Object {
                                                                                   "variableExpression": Array [
@@ -3895,7 +3895,7 @@ Object {
                                                                                     },
                                                                                   ],
                                                                                 },
-                                                                                "name": "allVariableExpression",
+                                                                                "name": "lazyVariableExpression",
                                                                               },
                                                                             ],
                                                                           },
@@ -4177,7 +4177,7 @@ Object {
                                                                       "simpleAtomicExpression": Array [
                                                                         Object {
                                                                           "children": Object {
-                                                                            "allVariableExpression": Array [
+                                                                            "lazyVariableExpression": Array [
                                                                               Object {
                                                                                 "children": Object {
                                                                                   "variableExpression": Array [
@@ -4270,7 +4270,7 @@ Object {
                                                                                     },
                                                                                   ],
                                                                                 },
-                                                                                "name": "allVariableExpression",
+                                                                                "name": "lazyVariableExpression",
                                                                               },
                                                                             ],
                                                                           },

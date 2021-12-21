@@ -44,11 +44,13 @@ export interface FormulaContextArgs {
 }
 
 const matchRegex =
-  /(str|num|bool|record|array|null|date|predicate|reference|spreadsheet|function|column|button|error|block|var)([0-9]+)$/
+  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|spreadsheet|function|column|button|error|block|var)([0-9]+)$/
 export const FormulaTypeCastName: { [key in FormulaType]: SpecialDefaultVariableName } = {
   string: 'str',
   number: 'num',
   boolean: 'bool',
+  Blank: 'blank',
+  Cst: 'cst',
   Button: 'button',
   Predicate: 'predicate',
   Function: 'function',
@@ -84,8 +86,10 @@ export class FormulaContext implements ContextInterface {
     Button: {},
     Function: {},
     boolean: {},
+    Blank: {},
     Record: {},
     Predicate: {},
+    Cst: {},
     Reference: {},
     Error: {},
     Spreadsheet: {},
@@ -283,10 +287,12 @@ export class FormulaContext implements ContextInterface {
   }
 
   public handleBroadcast = (variable: VariableInterface): void => {
-    void variable.afterUpdate()
     const dependencyKey = variableKey(variable.t.namespaceId, variable.t.variableId)
+    // console.log('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
     this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
-      void this.context[variableKey(namespaceId, variableId)]!.refresh()
+      const childrenVariable = this.context[variableKey(namespaceId, variableId)]!
+      void childrenVariable.refresh()
+      this.handleBroadcast(childrenVariable)
     })
   }
 
@@ -332,6 +338,8 @@ export class FormulaContext implements ContextInterface {
     } else {
       void variable.invokeBackendUpdate()
     }
+
+    void variable.afterUpdate()
 
     // 6. broadcast update
     void this.handleBroadcast(variable)

@@ -140,45 +140,47 @@ export const parse = ({
   const endChar = input[input.length - 1]
   // console.log({ endChar, input })
 
-  if (['.', ' ', ',', '(', ')', '+', '-', '*', '/', '=', '>', '<', '[', ']', '{', '}'].includes(endChar)) {
-    const index = endChar === ' ' ? tokens.length - 1 : tokens.length - 2
-    const lastToken = tokens[index]
+  const specialChars = ['.', ' ', ',', '(', ')', '+', '-', '*', '/', '=', '>', '<', '[', ']', '{', '}']
 
-    const currentCompletion = activeCompletion
-    // const currentCompletion = completions.find(completion => completion.name === lastToken.image)
+  const index = specialChars.includes(endChar) ? tokens.length - 2 : tokens.length - 1
+  const lastToken = tokens[index]
 
-    // console.log({ endChar, lastToken, input, tokens, currentCompletion })
-    if (
-      lastToken &&
-      currentCompletion &&
-      lastToken.image.length > 2 &&
-      currentCompletion.replacements.find(replacement => replacement.toUpperCase() === lastToken.image.toUpperCase())
-    ) {
-      // console.log('start replace', lastToken.image, currentCompletion)
-      // TODO spreadsheet && column completion (should in same codefragment)
-      const firstReplacement = currentCompletion.replacements.find(replacement =>
-        input.endsWith(replacement.concat(endChar))
-      )
-      let image = lastToken.image
+  const currentCompletion = activeCompletion
+  // const currentCompletion = completions.find(completion => completion.name === lastToken.image)
 
-      if (firstReplacement) {
-        image = firstReplacement
-      } else {
-        console.error('replacement not found', { currentCompletion, lastToken, input })
-      }
+  // console.log({ endChar, lastToken, input, tokens, currentCompletion })
+  if (
+    lastToken &&
+    currentCompletion &&
+    lastToken.image.length > 2 &&
+    currentCompletion.replacements.find(replacement => replacement.toUpperCase() === lastToken.image.toUpperCase())
+  ) {
+    // console.log('start replace', lastToken.image, currentCompletion)
+    // TODO spreadsheet && column completion (should in same codefragment)
+    const firstReplacement = currentCompletion.replacements.find(replacement =>
+      input.endsWith(replacement.concat(endChar))
+    )
+    let image = lastToken.image
 
-      newInput = input.slice(0, input.length - image.length - 1).concat(currentCompletion.value)
-
-      // if (firstReplacement && endChar === '(') {
-      //   // console.log()
-      // } else {
-      //   newInput = newInput.concat(endChar)
-      // }
-      newInput = newInput.concat(endChar)
-
-      lexResult = lexer.tokenize(newInput)
-      tokens = lexResult.tokens
+    if (firstReplacement) {
+      image = firstReplacement
+    } else {
+      console.error('replacement not found', { currentCompletion, lastToken, input })
     }
+
+    newInput = input.slice(0, input.length - image.length - 1).concat(currentCompletion.value)
+
+    // if (firstReplacement && endChar === '(') {
+    //   // console.log()
+    // } else {
+    //   newInput = newInput.concat(endChar)
+    // }
+    if (specialChars.includes(endChar)) {
+      newInput = newInput.concat(endChar)
+    }
+
+    lexResult = lexer.tokenize(newInput)
+    tokens = lexResult.tokens
   }
 
   parser.input = tokens

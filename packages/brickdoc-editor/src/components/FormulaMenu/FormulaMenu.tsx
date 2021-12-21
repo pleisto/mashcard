@@ -298,6 +298,10 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     const finalName = newName ?? name ?? defaultName
     const finalInput = newInput ?? `=${input}`
 
+    if (finalInput.trim() === '=') {
+      return
+    }
+
     // console.log({
     //   finalName,
     //   newName,
@@ -345,14 +349,17 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleSave = async (): Promise<void> => {
     if (!(name ?? defaultName) || !input || !variable) return
     if (!formulaContext) return
+    const finalName = name ?? defaultName
+
+    variable.t.name = finalName
+    variable.t.definition = `=${input}`
 
     if (updateFormula) {
       updateFormula(variable.t.variableId)
     } else {
       editor.chain().setFormula(variable.t.variableId).focus().run()
     }
-    const finalName = name ?? defaultName
-    variable.t.name = finalName
+
     await formulaContext.commitVariable({ variable })
     setName(finalName)
     updateVariable?.(variable)

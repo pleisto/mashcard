@@ -1,4 +1,5 @@
 import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
+import { CstNode } from 'chevrotain'
 import {
   ContextInterface,
   interpret,
@@ -11,6 +12,7 @@ import {
   DatabasePersistence,
   VariableValue
 } from '..'
+import { ButtonClass } from '../controls/button'
 import { parse } from '../grammar'
 
 export const displayValue = (v: AnyTypeValue): string => {
@@ -38,6 +40,14 @@ export const displayValue = (v: AnyTypeValue): string => {
       return `[${v.result.map((v: AnyTypeValue) => displayValue(v)).join(', ')}]`
     case 'Button':
       return `#<Button> ${v.result.name}`
+    case 'Reference':
+      return `#<Reference> ${JSON.stringify(v.result)}`
+    case 'Function':
+      return `#<Function> ${v.result.name}: ${v.result.args.map(a => displayValue(a)).join(', ')}`
+    case 'Cst':
+      return '#<Cst>'
+    case 'Blank':
+      return `#<Blank>`
   }
 
   return JSON.stringify(v.result)
@@ -53,7 +63,7 @@ const parseCacheValue = (formulaContext: ContextInterface, cacheValue: AnyTypeVa
 
   if (cacheValue.type === 'Spreadsheet' && !(cacheValue.result instanceof DatabaseFactory)) {
     if (cacheValue.result.dynamic) {
-      const { blockId, tableName, columns, rows }: DatabasePersistence = cacheValue.result.persistence
+      const { blockId, tableName, columns, rows }: DatabasePersistence = cacheValue.result.persistence!
       return {
         type: 'Spreadsheet',
         result: new DatabaseFactory({
@@ -72,6 +82,11 @@ const parseCacheValue = (formulaContext: ContextInterface, cacheValue: AnyTypeVa
         return { type: 'Error', result: `Database ${cacheValue.result.blockId} not found`, errorKind: 'deps' }
       }
     }
+  }
+
+  if (cacheValue.type === 'Button' && !(cacheValue.result instanceof ButtonClass)) {
+    const button = new ButtonClass(formulaContext, cacheValue.result)
+    return { type: 'Button', result: button }
   }
 
   // console.log({ cacheValue })
@@ -181,6 +196,7 @@ export class VariableClass implements VariableInterface {
   }
 
   public afterUpdate = (): void => {
+    // console.log('after update', this.t.name, this.t.variableId)
     BrickdocEventBus.dispatch(FormulaUpdated(this))
   }
 
@@ -188,6 +204,30 @@ export class VariableClass implements VariableInterface {
     const formula = this.buildFormula()
     this.t = castVariable(this.formulaContext, formula)
     this.afterUpdate()
+  }
+
+  public updateDefinition = (definition: string): void => {
+    this.t.definition = definition
+    void this.reload()
+  }
+
+  public updateCst = (cst: CstNode): void => {
+    this.t.cst = cst
+    void this.refresh()
+  }
+
+  public reload = async (): Promise<void> => {
+    const formula = this.buildFormula()
+    this.t = castVariable(this.formulaContext, formula)
+    const { variableValue } = await interpret({
+      cst: this.t.cst,
+      formulaContext: this.formulaContext,
+      meta: this.meta()
+    })
+
+    this.t = { ...this.t, variableValue }
+    this.afterUpdate()
+    await this.invokeBackendUpdate()
   }
 
   public refresh = async (): Promise<void> => {

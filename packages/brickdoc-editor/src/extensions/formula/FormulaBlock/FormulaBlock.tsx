@@ -1,12 +1,12 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Icon } from '@brickdoc/design-system'
+import { Button, Icon } from '@brickdoc/design-system'
 import { BlockContainer, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
-import { displayValue, FormulaType, VariableClass } from '@brickdoc/formula'
+import { displayValue, FormulaType, VariableClass, VariableInterface, ButtonType } from '@brickdoc/formula'
 import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
 
 export interface FormulaBlockProps extends NodeViewProps {}
@@ -47,8 +47,10 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     number: 0,
     null: 0,
     Predicate: 1,
+    Cst: 0,
     Function: 3,
     Reference: 0,
+    Blank: 0,
     Button: 1,
     string: 4,
     boolean: 4,
@@ -57,12 +59,37 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     Array: 6
   }
 
-  const activeColorIndex = variable?.t ? COLOR_ARRAY[variable.t.variableValue.result.type as FormulaType] || 0 : 0
+  const activeColorIndex = variable ? COLOR_ARRAY[variable.t.variableValue.result.type as FormulaType] || 0 : 0
   const activeColor = COLOR[activeColorIndex]
   const handleDefaultPopoverVisibleChange = (visible: boolean): void => {
     if (!visible && node.attrs.isNew) {
       updateAttributes({ isNew: false })
     }
+  }
+
+  const renderVariable = (variable: VariableInterface): React.ReactNode => {
+    const result = variable.t.variableValue.result
+    if (result.type === 'Button') {
+      const button: ButtonType = result.result
+      // console.log({ button })
+      return (
+        <Button isDisabled={button.disabled} onPress={button.onClick}>
+          {button.name}
+        </Button>
+      )
+    }
+
+    return (
+      <span
+        className="brickdoc-formula"
+        style={{
+          color: activeColor.color,
+          borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
+          background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
+        }}>
+        {variable.t.name}: {displayValue(result)}
+      </span>
+    )
   }
 
   return (
@@ -76,16 +103,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         updateFormula={updateFormula}
         variable={variable}
         updateVariable={setVariable}>
-        {variable?.t ? (
-          <span
-            className="brickdoc-formula"
-            style={{
-              color: activeColor.color,
-              borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
-              background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
-            }}>
-            {variable.t.name}: {displayValue(variable.t.variableValue.result)}
-          </span>
+        {variable ? (
+          renderVariable(variable)
         ) : (
           <span className="brickdoc-formula-placeholder">
             <Icon.Formula className="brickdoc-formula-placeholder-icon" />

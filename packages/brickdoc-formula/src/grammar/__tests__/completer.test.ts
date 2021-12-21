@@ -53,167 +53,151 @@ describe('Complete', () => {
     expect(completions2[0].kind).toBe('function')
   })
 
-  it('var startWith', () => {
-    const input = '=  1 + var'
-    const { errorMessages, valid, completions, codeFragments, inputImage, parseImage } = parse({
-      formulaContext,
-      meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
-    })
-    expect(inputImage).toEqual('=1+var')
-    expect(parseImage).toEqual('=1+')
-    expect(errorMessages[0]!.message).toEqual('TODO mismatch token FunctionCall')
-    expect(codeFragments).toMatchSnapshot()
-    expect(valid).toBe(true)
-    expect(completions[0].weight).toEqual(101)
-  })
+  interface TestCase {
+    input: string
+    label: string
+    namespaceId: string
+    expectInputImage: string
+    expectParseImage: string
+    expectNewInput: string
+    weight: number
+    errorMessage: string | undefined
+  }
 
-  it('var equal different namespaceId', () => {
-    const input = `=${testName1}`
-    const { errorMessages, valid, completions, codeFragments, inputImage, parseImage } = parse({
-      formulaContext,
-      meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input }
-    })
+  const testCases: TestCase[] = [
+    {
+      label: 'var startWith same namespace',
+      input: '= 1 + var',
+      namespaceId,
+      errorMessage: 'TODO mismatch token FunctionCall',
+      weight: 101,
+      expectInputImage: '=1+var',
+      expectParseImage: '=1+',
+      expectNewInput: '= 1 + var'
+    },
+    {
+      label: 'var equal different namespaceId',
+      input: `=${testName1}`,
+      namespaceId: testNamespaceId,
+      errorMessage: undefined,
+      weight: 0,
+      expectParseImage: `=$${namespaceId}@${variableId}`,
+      expectInputImage: `=$${namespaceId}@${variableId}`,
+      expectNewInput: `=$${namespaceId}@${variableId}`
+    },
+    {
+      label: 'var equal same namespaceId',
+      input: `=${testName1}`,
+      namespaceId,
+      errorMessage: undefined,
+      weight: 1,
+      expectParseImage: `=$${namespaceId}@${variableId}`,
+      expectInputImage: `=$${namespaceId}@${variableId}`,
+      expectNewInput: `=$${namespaceId}@${variableId}`
+    },
+    {
+      label: 'var include same namespaceId',
+      input: `=1+arvar`,
+      namespaceId,
+      errorMessage: 'TODO mismatch token FunctionCall',
+      weight: 11,
+      expectInputImage: '=1+arvar',
+      expectParseImage: '=1+',
+      expectNewInput: '=1+arvar'
+    },
+    {
+      label: 'var include different namespaceId',
+      input: `=1+arvar`,
+      namespaceId: testNamespaceId,
+      errorMessage: 'TODO mismatch token FunctionCall',
+      weight: 9,
+      expectInputImage: '=1+arvar',
+      expectParseImage: '=1+',
+      expectNewInput: '=1+arvar'
+    },
+    // {
+    //   label: 'space equal same namespaceId',
+    //   input: `= 1 + ${testName1} `,
+    //   namespaceId,
+    //   errorMessage: undefined,
+    //   weight: 1001,
+    //   expectParseImage: `=1+$${namespaceId}@${variableId}`,
+    //   expectInputImage: `=1+$${namespaceId}@${variableId}`,
+    //   expectNewInput: `= 1 + $${namespaceId}@${variableId} `
+    // },
+    // {
+    //   label: 'space equal same namespaceId',
+    //   input: `= 1 + ${testName1} `,
+    //   namespaceId: testNamespaceId,
+    //   errorMessage: undefined,
+    //   weight: 999,
+    //   expectParseImage: `=1+$${namespaceId}@${variableId}`,
+    //   expectInputImage: `=1+$${namespaceId}@${variableId}`,
+    //   expectNewInput: `= 1 + $${namespaceId}@${variableId} `
+    // },
+    {
+      label: 'dot equal same namespaceId',
+      input: `= 1 + ${testName1}.`,
+      namespaceId,
+      errorMessage: 'Missing expression',
+      weight: 125,
+      expectParseImage: `=1+$${namespaceId}@${variableId}.`,
+      expectInputImage: `=1+$${namespaceId}@${variableId}.`,
+      expectNewInput: `= 1 + $${namespaceId}@${variableId}.`
+    },
+    {
+      label: 'dot equal different namespaceId',
+      input: `= 1 + ${testName1}.`,
+      namespaceId: testNamespaceId,
+      errorMessage: 'Missing expression',
+      weight: 125,
+      expectParseImage: `=1+$${namespaceId}@${variableId}.`,
+      expectInputImage: `=1+$${namespaceId}@${variableId}.`,
+      expectNewInput: `= 1 + $${namespaceId}@${variableId}.`
+    }
+  ]
 
-    expect(inputImage).toEqual(`=${testName1}`)
-    expect(parseImage).toEqual('=')
-    expect(errorMessages[0]!.message).toEqual('TODO mismatch token FunctionCall')
-    expect(valid).toBe(true)
-    expect(codeFragments).toMatchSnapshot()
-    expect(completions[0].weight).toEqual(999)
-  })
+  testCases.forEach(
+    ({
+      input,
+      label,
+      weight,
+      errorMessage,
+      expectInputImage,
+      namespaceId: testcaseNamespaceId,
+      expectParseImage,
+      expectNewInput
+    }) => {
+      it(`[${label}] ${input}`, async () => {
+        const { completions: oldCompletions } = parse({
+          formulaContext,
+          meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input: input.slice(0, -1) }
+        })
 
-  it('var equal', () => {
-    const input = `=${testName1}`
-    const { errorMessages, valid, completions, codeFragments, inputImage, parseImage } = parse({
-      formulaContext,
-      meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
-    })
+        const {
+          errorMessages,
+          valid,
+          completions,
+          codeFragments,
+          inputImage,
+          input: newInput,
+          parseImage
+        } = parse({
+          formulaContext,
+          activeCompletion: oldCompletions[0],
+          meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input }
+        })
 
-    expect(inputImage).toEqual(`=${testName1}`)
-    expect(parseImage).toEqual('=')
-    expect(errorMessages[0]!.message).toEqual('TODO mismatch token FunctionCall')
-    expect(valid).toBe(true)
-    expect(codeFragments).toMatchSnapshot()
-    expect(completions[0].weight).toEqual(1001)
-  })
-
-  it('var include', () => {
-    const input = '=1+arvar'
-    const { errorMessages, valid, completions, inputImage, parseImage } = parse({
-      formulaContext,
-      meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
-    })
-
-    expect(inputImage).toEqual('=1+arvar')
-    expect(parseImage).toEqual('=1+')
-    expect(errorMessages[0]!.message).toEqual('TODO mismatch token FunctionCall')
-    expect(valid).toBe(true)
-    expect(completions[0].weight).toEqual(11)
-  })
-
-  it('space + same namespace', () => {
-    const input = `= 1 + ${testName1} `
-    const {
-      errorMessages,
-      valid,
-      completions,
-      codeFragments,
-      inputImage,
-      parseImage,
-      input: newInput
-    } = parse({
-      formulaContext,
-      activeCompletion: formulaContext.completions(namespaceId, testVariableId).find(c => c.name === testName1)!,
-      meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
-    })
-
-    expect(inputImage).toEqual(`=1+$${namespaceId}@${variableId}`)
-    expect(parseImage).toEqual(`=1+$${namespaceId}@${variableId}`)
-    expect(newInput).toEqual(`= 1 + $${namespaceId}@${variableId} `)
-    expect(errorMessages).toEqual([])
-    expect(valid).toBe(true)
-    expect(codeFragments).toMatchSnapshot()
-    expect(completions[0].name).toEqual(testName1)
-  })
-
-  it('space + different namespace', () => {
-    const input = `= 1 + ${testName1} `
-    const {
-      errorMessages,
-      valid,
-      completions,
-      codeFragments,
-      inputImage,
-      parseImage,
-      input: newInput
-    } = parse({
-      formulaContext,
-      activeCompletion: formulaContext.completions(namespaceId, testVariableId).find(c => c.name === testName1)!,
-      meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input }
-    })
-
-    expect(inputImage).toEqual(`=1+$${namespaceId}@${variableId}`)
-    expect(parseImage).toEqual(`=1+$${namespaceId}@${variableId}`)
-    expect(newInput).toEqual(`= 1 + $${namespaceId}@${variableId} `)
-    expect(errorMessages).toEqual([])
-    expect(valid).toBe(true)
-    expect(codeFragments).toMatchSnapshot()
-    expect(completions[0].name).not.toEqual('bar')
-    expect(completions[0].kind).toEqual('function')
-  })
-
-  it('dot + same namespace', () => {
-    const input = `= 1 + ${testName1}.`
-    const {
-      errorMessages,
-      valid,
-      completions,
-      codeFragments,
-      inputImage,
-      parseImage,
-      input: newInput
-    } = parse({
-      formulaContext,
-      activeCompletion: formulaContext.completions(namespaceId, testVariableId).find(c => c.name === testName1)!,
-      meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
-    })
-
-    expect({ inputImage, parseImage, newInput }).toEqual({
-      inputImage: `=1+$${namespaceId}@${variableId}.`,
-      parseImage: `=1+$${namespaceId}@${variableId}.`,
-      newInput: `= 1 + $${namespaceId}@${variableId}.`
-    })
-
-    expect(errorMessages[0]!.message).toEqual('Missing expression')
-    expect(valid).toBe(true)
-    expect(codeFragments).toMatchSnapshot()
-    expect(completions[0].kind).toEqual('function')
-    expect((completions[0].preview as any).chain).toEqual(true)
-  })
-
-  it('dot + different namespace', () => {
-    const input = `= 1 + ${testName1}.`
-    const {
-      errorMessages,
-      valid,
-      completions,
-      codeFragments,
-      inputImage,
-      parseImage,
-      input: newInput
-    } = parse({
-      formulaContext,
-      activeCompletion: formulaContext.completions(namespaceId, testVariableId).find(c => c.name === testName1)!,
-      meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input }
-    })
-
-    expect(inputImage).toEqual(`=1+$${namespaceId}@${variableId}.`)
-    expect(parseImage).toEqual(`=1+$${namespaceId}@${variableId}.`)
-    expect(newInput).toEqual(`= 1 + $${namespaceId}@${variableId}.`)
-    expect(errorMessages[0]!.message).toEqual('Missing expression')
-    expect(valid).toBe(true)
-    expect(codeFragments).toMatchSnapshot()
-    expect(completions[0].kind).toEqual('function')
-    expect((completions[0].preview as any).chain).toEqual(true)
-  })
+        expect(valid).toBe(true)
+        expect(codeFragments).toMatchSnapshot()
+        expect({ inputImage, parseImage, newInput }).toEqual({
+          inputImage: expectInputImage,
+          parseImage: expectParseImage,
+          newInput: expectNewInput
+        })
+        expect(errorMessages[0]?.message).toEqual(errorMessage)
+        expect(completions[0].weight).toEqual(weight)
+      })
+    }
+  )
 })

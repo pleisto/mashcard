@@ -1041,7 +1041,7 @@ Array [
                                                                           "simpleAtomicExpression": Array [
                                                                             Object {
                                                                               "children": Object {
-                                                                                "allVariableExpression": Array [
+                                                                                "lazyVariableExpression": Array [
                                                                                   Object {
                                                                                     "children": Object {
                                                                                       "variableExpression": Array [
@@ -1134,7 +1134,7 @@ Array [
                                                                                         },
                                                                                       ],
                                                                                     },
-                                                                                    "name": "allVariableExpression",
+                                                                                    "name": "lazyVariableExpression",
                                                                                   },
                                                                                 ],
                                                                               },
@@ -1620,19 +1620,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ''",
         "type": "Error",
       },
@@ -2058,7 +2059,7 @@ Array [
                                                                           "simpleAtomicExpression": Array [
                                                                             Object {
                                                                               "children": Object {
-                                                                                "allVariableExpression": Array [
+                                                                                "lazyVariableExpression": Array [
                                                                                   Object {
                                                                                     "children": Object {
                                                                                       "variableExpression": Array [
@@ -2151,7 +2152,7 @@ Array [
                                                                                         },
                                                                                       ],
                                                                                     },
-                                                                                    "name": "allVariableExpression",
+                                                                                    "name": "lazyVariableExpression",
                                                                                   },
                                                                                 ],
                                                                               },

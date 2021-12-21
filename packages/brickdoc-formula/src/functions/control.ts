@@ -1,13 +1,12 @@
-import { ContextInterface, BasicFunctionClause, ErrorResult, ButtonResult, StringResult } from '..'
+import { ContextInterface, BasicFunctionClause, ErrorResult, ButtonResult, StringResult, FunctionResult } from '..'
+import { ButtonClass } from '../controls/button'
 
-export const Button = (ctx: ContextInterface, { result: name }: StringResult): ButtonResult | ErrorResult => {
-  const button = {
-    name,
-    disabled: false,
-    onClick: () => {
-      console.log(`Button ${name} clicked`)
-    }
-  }
+export const Button = (
+  ctx: ContextInterface,
+  { result: name }: StringResult,
+  fn: FunctionResult
+): ButtonResult | ErrorResult => {
+  const button = new ButtonClass(ctx, { name, fn })
   return { result: button, type: 'Button' }
 }
 
@@ -26,6 +25,10 @@ export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<any>> = [
       {
         name: 'name',
         type: 'string'
+      },
+      {
+        name: 'onClick',
+        type: 'Function'
       }
     ],
     testCases: [],

@@ -113,8 +113,8 @@ export const CORE_OBJECT_CLAUSES: Array<BasicFunctionClause<any>> = [
       }
     ],
     examples: [
-      { input: '=WITH_TYPE(100)', output: { type: 'Object', result: 'TODO ...' } },
-      { input: '=WITH_TYPE("foo")', output: { type: 'Object', result: 'TODO ...' } }
+      { input: '=WITH_TYPE(100)', output: { type: 'Object', result: {} } },
+      { input: '=WITH_TYPE("foo")', output: { type: 'Object', result: {} } }
     ],
     returns: 'Object',
     testCases: [],

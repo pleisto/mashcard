@@ -178,7 +178,7 @@ export class FormulaParser extends CstParser {
       { ALT: () => this.SUBRULE(this.arrayExpression) },
       { ALT: () => this.SUBRULE(this.recordExpression) },
       { ALT: () => this.SUBRULE(this.constantExpression) },
-      { ALT: () => this.SUBRULE(this.allVariableExpression) },
+      { ALT: () => this.SUBRULE(this.lazyVariableExpression) },
       { ALT: () => this.SUBRULE(this.FunctionCall) }
     ])
   })
@@ -186,6 +186,7 @@ export class FormulaParser extends CstParser {
   public atomicExpression = this.RULE('atomicExpression', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.predicateExpression) },
+      { ALT: () => this.SUBRULE(this.referenceExpression) },
       { ALT: () => this.SUBRULE(this.simpleAtomicExpression) },
       { ALT: () => this.SUBRULE(this.columnExpression) },
       { ALT: () => this.SUBRULE(this.spreadsheetExpression) }
@@ -235,21 +236,13 @@ export class FormulaParser extends CstParser {
     this.CONSUME2(UUID)
   })
 
-  public lazyVariableExpression = this.RULE('lazyVariableExpression', () => {
-    this.OR([{ ALT: () => this.SUBRULE(this.variableExpression) }, { ALT: () => this.CONSUME(Self) }])
+  public referenceExpression = this.RULE('referenceExpression', () => {
+    this.CONSUME(Ampersand)
+    this.SUBRULE(this.lazyVariableExpression)
   })
 
-  public allVariableExpression = this.RULE('allVariableExpression', lazy => {
-    this.OR([
-      {
-        GATE: () => !lazy,
-        ALT: () => this.SUBRULE(this.variableExpression)
-      },
-      {
-        GATE: () => lazy,
-        ALT: () => this.SUBRULE(this.lazyVariableExpression)
-      }
-    ])
+  public lazyVariableExpression = this.RULE('lazyVariableExpression', () => {
+    this.OR([{ ALT: () => this.SUBRULE(this.variableExpression) }, { ALT: () => this.CONSUME(Self) }])
   })
 
   public variableExpression = this.RULE('variableExpression', () => {

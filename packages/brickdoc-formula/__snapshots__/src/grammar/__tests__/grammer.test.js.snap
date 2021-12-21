@@ -234,19 +234,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ''",
         "type": "syntax",
       },
@@ -643,19 +644,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ''",
         "type": "syntax",
       },
@@ -712,19 +714,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ''hello''",
         "type": "syntax",
       },
@@ -786,24 +789,9 @@ Array [
       },
       Object {
         "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
-but found: '&'",
+  1. [Dollar]
+  2. [Self]
+but found: '123'",
         "type": "syntax",
       },
     ],
@@ -826,33 +814,32 @@ but found: '&'",
     "code": "Ampersand",
     "errors": Array [
       Object {
-        "message": "Expected boolean but got string",
+        "message": "Expected boolean but got Reference",
         "type": "type",
       },
     ],
     "meta": undefined,
     "name": "&",
-    "spaceAfter": true,
-    "spaceBefore": true,
+    "spaceAfter": false,
+    "spaceBefore": false,
     "type": "any",
   },
   Object {
-    "code": "NumberLiteral",
+    "code": "other",
     "errors": Array [
       Object {
-        "message": "Expected boolean but got string",
-        "type": "type",
-      },
-      Object {
-        "message": "Expected string but got number",
-        "type": "type",
+        "message": "Expecting: one of these possible Token sequences:
+  1. [Dollar]
+  2. [Self]
+but found: '123'",
+        "type": "syntax",
       },
     ],
     "meta": undefined,
     "name": "123",
     "spaceAfter": false,
     "spaceBefore": false,
-    "type": "number",
+    "type": "any",
   },
 ]
 `;
@@ -960,19 +947,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: '中文'",
         "type": "syntax",
       },
@@ -1158,19 +1146,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ']'",
         "type": "syntax",
       },
@@ -1711,19 +1700,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ';'",
         "type": "syntax",
       },
@@ -1733,19 +1723,20 @@ but found: ';'",
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ''",
         "type": "syntax",
       },
@@ -1824,19 +1815,20 @@ Array [
   2. [CompareOperator]
   3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
   4. [Dollar, UUID, Sharp, UUID, CompareOperator]
-  5. [LParen]
-  6. [LBracket]
-  7. [LBrace]
-  8. [Minus]
-  9. [NumberLiteral]
-  10. [BooleanLiteral]
-  11. [StringLiteral]
-  12. [NullLiteral]
-  13. [Self]
-  14. [FunctionName]
-  15. [Dollar, UUID, At]
-  16. [Dollar, UUID, Sharp, UUID]
-  17. [Dollar, UUID]
+  5. [Ampersand]
+  6. [LParen]
+  7. [LBracket]
+  8. [LBrace]
+  9. [Minus]
+  10. [NumberLiteral]
+  11. [BooleanLiteral]
+  12. [StringLiteral]
+  13. [NullLiteral]
+  14. [Self]
+  15. [FunctionName]
+  16. [Dollar, UUID, At]
+  17. [Dollar, UUID, Sharp, UUID]
+  18. [Dollar, UUID]
 but found: ''",
         "type": "syntax",
       },

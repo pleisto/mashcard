@@ -17,7 +17,7 @@ export const IFERROR = (ctx: ContextInterface, expr1: AnyTypeResult, expr2: AnyT
 const ERROR_CLAUSE: BasicFunctionClause<'Error'> = {
   name: 'ERROR',
   async: false,
-  pure: false,
+  pure: true,
   lazy: false,
   acceptError: false,
   effect: false,
@@ -34,7 +34,7 @@ const ERROR_CLAUSE: BasicFunctionClause<'Error'> = {
 const IFERROR_CLAUSE: BasicFunctionClause<any> = {
   name: 'IFERROR',
   async: false,
-  pure: false,
+  pure: true,
   lazy: false,
   acceptError: true,
   effect: false,

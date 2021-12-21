@@ -27,7 +27,7 @@ export const CORE_DATE_CLAUSES: Array<BasicFunctionClause<'Date'>> = [
   {
     name: 'DATE',
     async: false,
-    pure: false,
+    pure: true,
     lazy: false,
     acceptError: false,
     effect: false,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Complete dot + different namespace 1`] = `
+exports[`Complete [dot equal different namespaceId] = 1 + varvarabcvar. 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -59,7 +59,7 @@ but found: ''",
 ]
 `;
 
-exports[`Complete dot + same namespace 1`] = `
+exports[`Complete [dot equal same namespaceId] = 1 + varvarabcvar. 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -118,7 +118,43 @@ but found: ''",
 ]
 `;
 
-exports[`Complete space + different namespace 1`] = `
+exports[`Complete [var equal different namespaceId] =varvarabcvar 1`] = `
+Array [
+  Object {
+    "code": "Variable",
+    "errors": Array [],
+    "meta": Object {
+      "name": "varvarabcvar",
+      "namespace": "Untitled",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Complete [var equal same namespaceId] =varvarabcvar 1`] = `
+Array [
+  Object {
+    "code": "Variable",
+    "errors": Array [],
+    "meta": Object {
+      "name": "varvarabcvar",
+      "namespace": "Untitled",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "spaceAfter": false,
+    "spaceBefore": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Complete [var include different namespaceId] =1+arvar 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -139,23 +175,15 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "Variable",
-    "errors": Array [],
-    "meta": Object {
-      "name": "varvarabcvar",
-      "namespace": "Untitled",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    },
-    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Space",
-    "errors": Array [],
+    "code": "other",
+    "errors": Array [
+      Object {
+        "message": "TODO mismatch token FunctionCall",
+        "type": "syntax",
+      },
+    ],
     "meta": undefined,
-    "name": " ",
+    "name": "arvar",
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -163,7 +191,7 @@ Array [
 ]
 `;
 
-exports[`Complete space + same namespace 1`] = `
+exports[`Complete [var include same namespaceId] =1+arvar 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -184,33 +212,6 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "Variable",
-    "errors": Array [],
-    "meta": Object {
-      "name": "varvarabcvar",
-      "namespace": "Untitled",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    },
-    "name": "$57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Space",
-    "errors": Array [],
-    "meta": undefined,
-    "name": " ",
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
-  },
-]
-`;
-
-exports[`Complete var equal 1`] = `
-Array [
-  Object {
     "code": "other",
     "errors": Array [
       Object {
@@ -219,7 +220,7 @@ Array [
       },
     ],
     "meta": undefined,
-    "name": "varvarabcvar",
+    "name": "arvar",
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -227,26 +228,7 @@ Array [
 ]
 `;
 
-exports[`Complete var equal different namespaceId 1`] = `
-Array [
-  Object {
-    "code": "other",
-    "errors": Array [
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
-      },
-    ],
-    "meta": undefined,
-    "name": "varvarabcvar",
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
-  },
-]
-`;
-
-exports[`Complete var startWith 1`] = `
+exports[`Complete [var startWith same namespace] = 1 + var 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
