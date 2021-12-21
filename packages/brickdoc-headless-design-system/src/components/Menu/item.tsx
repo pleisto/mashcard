@@ -1,5 +1,8 @@
 import React from 'react'
+import { PressEvents } from '@react-types/shared'
+import { mergeProps } from '@react-aria/utils'
 import { AriaMenuItemProps, useMenuItem } from '@react-aria/menu'
+import { usePress } from '@react-aria/interactions'
 import { ItemContext } from './itemContainer'
 import { styled, theme } from '../../themes'
 import { itemMinHeight, itemSpacing } from './styles/index.style'
@@ -68,7 +71,7 @@ const ItemDescription = styled('span', {
   lineHeight: '16px'
 })
 
-export interface MenuItemProps {
+export interface MenuItemProps extends PressEvents {
   'aria-label'?: AriaMenuItemProps['aria-label']
   danger?: boolean
   description?: string | React.ReactElement
@@ -82,7 +85,7 @@ export interface MenuItemProps {
 const getReactElement = (element?: string | React.ReactElement): React.ReactElement =>
   typeof element === 'string' ? <span>{element}</span> : element
 
-export const Item: React.FC<MenuItemProps> = ({ children, danger, icon, label, description, tip }) => {
+export const Item: React.FC<MenuItemProps> = ({ children, danger, icon, label, description, tip, ...props }) => {
   const { state, item, onAction } = React.useContext(ItemContext)
   const isDisabled = React.useMemo(() => state.disabledKeys.has(item.key), [item.key, state.disabledKeys])
 
@@ -91,14 +94,20 @@ export const Item: React.FC<MenuItemProps> = ({ children, danger, icon, label, d
     {
       key: item.key,
       isDisabled,
-      onAction
+      onAction,
+      ...props
     },
     state,
     innerRef
   )
+  const { pressProps } = usePress({})
 
   return (
-    <ItemRoot {...menuItemProps} danger={danger && typeof children === 'string'} css={{}} ref={innerRef}>
+    <ItemRoot
+      {...mergeProps(menuItemProps, pressProps)}
+      danger={danger && typeof children === 'string'}
+      css={{}}
+      ref={innerRef}>
       {children}
       {!children && (
         <ItemContent>

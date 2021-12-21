@@ -1,2 +1,2 @@
-export const unselectableNodes = ['imageSection', 'linkBlock', 'pdfSection', 'tableBlock']
+export const unselectableNodes = ['imageBlock', 'embedBlock', 'pdfSection', 'tableBlock']
 export const paragraphLikeNodes = ['paragraph', 'heading']

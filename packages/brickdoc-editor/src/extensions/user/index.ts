@@ -26,8 +26,6 @@ export const UserBlockExtension = Node.create<UserBlockOptions>({
 
   selectable: false,
 
-  defaultOptions: {},
-
   addAttributes() {
     return {
       people: {

@@ -1,9 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BlockContainer freezes block when editor isn't editable 1`] = `
+exports[`BlockContainer changes block pointer event when editor editable state change 1`] = `
 <div
   data-node-view-wrapper=""
-  editor="[object Object]"
   style="pointer-events: none; white-space: normal;"
 />
+`;
+
+exports[`BlockContainer changes block pointer event when editor editable state change 2`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: unset; white-space: normal;"
+/>
+`;
+
+exports[`BlockContainer with actionOptions 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  <span>
+    block
+  </span>
+</div>
 `;

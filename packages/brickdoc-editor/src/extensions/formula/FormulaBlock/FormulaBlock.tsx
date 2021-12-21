@@ -93,7 +93,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   }
 
   return (
-    <BlockContainer as="span" editor={editor}>
+    <BlockContainer as="span">
       <FormulaMenu
         node={node}
         getPos={getPos}

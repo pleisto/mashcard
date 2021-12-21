@@ -848,7 +848,7 @@ zh-CN:
         title: 您确定要删除此属性吗？
         ok: Delete
         cancel: Cancel
-    link_block:
+    embed_block:
       menu:
         copy: 复制链接
         delete: Remove

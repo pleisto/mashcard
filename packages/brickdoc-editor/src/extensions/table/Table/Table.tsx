@@ -194,7 +194,6 @@ export const Table: React.FC<NodeViewProps> = ({ editor, node, deleteNode, updat
 
   return (
     <BlockContainer
-      editor={editor}
       className="table-block-node-view-wrapper"
       ref={(container: HTMLDivElement) => {
         // TODO: need a better way to add this class

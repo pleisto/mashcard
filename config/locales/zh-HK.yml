@@ -848,7 +848,7 @@ zh-HK:
         title: Are you sure you want to delete this property?
         ok: Delete
         cancel: Cancel
-    link_block:
+    embed_block:
       menu:
         copy: Copy link
         delete: Remove

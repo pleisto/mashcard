@@ -6,7 +6,7 @@ import { ExtensionBaseOptions } from '../baseOptions'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
-    imageSection: {
+    imageBlock: {
       /**
        * Set a image block
        */
@@ -18,7 +18,7 @@ declare module '@tiptap/core' {
 export interface ImageBlockOptions extends ExtensionBaseOptions {}
 
 export const ImageBlockExtension = Node.create<ImageBlockOptions>({
-  name: 'imageSection',
+  name: 'imageBlock',
 
   group: 'block',
 
@@ -42,13 +42,13 @@ export const ImageBlockExtension = Node.create<ImageBlockOptions>({
   parseHTML() {
     return [
       {
-        tag: 'image-section'
+        tag: 'image-block'
       }
     ]
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['image-section', mergeAttributes(HTMLAttributes)]
+    return ['image-block', mergeAttributes(HTMLAttributes)]
   },
 
   addNodeView() {

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar matches snapshot correctly 1`] = `
+<ul
+  class="brd-c-ijmYxO"
+>
+  <ul
+    class="brd-c-gYAvyC"
+  >
+    <li
+      class="brd-c-fWLPxz"
+    >
+      <span>
+        item
+      </span>
+    </li>
+    <span>
+      <li
+        class="brd-c-kazggs"
+      >
+        dropdown
+        <span
+          aria-label="arrow-down"
+          class="brd-icon brd-icon-arrow-down brd-c-eDppjp"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              d="m19 9-7 6-7-6"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+      </li>
+    </span>
+    <li
+      aria-label="toolbar.separator"
+      class="brd-c-rmqRb"
+    />
+  </ul>
+  <li
+    class="brd-c-fWLPxz"
+  >
+    <span>
+      item2
+    </span>
+  </li>
+</ul>
+`;

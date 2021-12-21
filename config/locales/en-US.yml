@@ -742,6 +742,11 @@ en-US:
           type_label: Upload an Image
   editor:
     placeholder: Type '/' for commands
+    copy_hint: Copied to clipboard.
+    toolbar:
+      separator: Menu separator
+    block_actions:
+      more: More
     slashmenu:
       heading: Brickdoc
       items:
@@ -824,7 +829,6 @@ en-US:
         formula:
           desc: Formula
     image_block:
-      copy_hint: Image link copied
       hint: Add an image
       deletion_confirm:
         title: Are you sure you want to delete this property?
@@ -861,16 +865,14 @@ en-US:
     code_block:
       default_language: plain text
       search_placeholder: Search
-      copy_hint: code copied
       deletion_confirm:
         title: Are you sure you want to delete this property?
         ok: Delete
         cancel: Cancel
-    link_block:
+    embed_block:
       menu:
         copy: Copy link
         delete: Remove
-      copy_hint: link copied
       deletion_confirm:
         title: Are you sure you want to delete this property?
         ok: Delete
@@ -887,7 +889,6 @@ en-US:
           button_hint: Recommended size is 5MB
     pdf_section:
       hint: Embed a PDF
-      copy_hint: PDF link copied
       deletion_confirm:
         title: Are you sure you want to delete this property?
         ok: Delete

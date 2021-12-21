@@ -4,7 +4,6 @@ exports[`PageLink matches correct snapshot 1`] = `
 <span
   as="span"
   data-node-view-wrapper=""
-  editor="[object Object]"
   style="pointer-events: none; white-space: normal;"
 >
   <a

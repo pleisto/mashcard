@@ -1,7 +1,7 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { Column } from 'react-table'
-import { Button, DeprecatedMenu as Menu, Icon, Input, Modal, Popover } from '@brickdoc/design-system'
+import { Button, DeprecatedMenu as Menu, Icon, Input, Popover } from '@brickdoc/design-system'
 import { useEditorI18n } from '../../../../hooks'
 import { Filter, FilterOption, FilterGroupOption } from './Filter'
 import { Sorter, SorterOption } from './Sorter'
@@ -57,18 +57,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
 
   // TODO: refactor block actions
   const handleDelete = (): void => {
-    Modal.confirm({
-      title: t('link_block.deletion_confirm.title'),
-      okText: t('link_block.deletion_confirm.ok'),
-      okButtonProps: {
-        danger: true
-      },
-      cancelText: t('link_block.deletion_confirm.cancel'),
-      icon: null,
-      onOk: () => {
-        deleteNode()
-      }
-    })
+    deleteNode()
   }
 
   return (
@@ -80,8 +69,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
       onAdd={addFilter}
       onRemove={removeFilter}
       onUpdate={updateFilter}
-      onDuplicate={duplicateFilter}
-    >
+      onDuplicate={duplicateFilter}>
       <Sorter
         columns={columns}
         sorterOptions={sorterOptions}
@@ -89,8 +77,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
         onUpdate={updateSorter}
         onRemove={removeSorter}
         visible={sortVisible}
-        onVisibleChange={handleVisibleChange(setSortVisible)}
-      >
+        onVisibleChange={handleVisibleChange(setSortVisible)}>
         <div role="toolbar" className="table-block-toolbar">
           <Input
             className="table-title-input"
@@ -103,16 +90,14 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
               data-testid={TEST_ID_ENUM.editor.tableBlock.toolbar.filterButton.id}
               onClick={() => setFilterVisible(true)}
               type="text"
-              className="table-toolbar-text-button"
-            >
+              className="table-toolbar-text-button">
               {t('table.filter.text')}
             </Button>
             <Button
               data-testid={TEST_ID_ENUM.editor.tableBlock.toolbar.sortButton.id}
               onClick={() => setSortVisible(true)}
               type="text"
-              className="table-toolbar-text-button"
-            >
+              className="table-toolbar-text-button">
               {t('table.sort.text')}
             </Button>
             <Popover
@@ -126,8 +111,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
                 </Menu>
               }
               trigger="click"
-              placement="bottom"
-            >
+              placement="bottom">
               <Button type="text" className="table-toolbar-text-button">
                 <Icon.More />
               </Button>
@@ -136,8 +120,7 @@ export const TableToolbar: React.FC<TableToolbarProps> = ({
               data-testid={TEST_ID_ENUM.editor.tableBlock.toolbar.addButton.id}
               type="primary"
               className="table-toolbar-add-button"
-              onClick={() => onAddNewRow()}
-            >
+              onClick={() => onAddNewRow()}>
               {t('table.new_row.text')}
               <div className="table-toolbar-add-button-icon">
                 <Icon.ArrowDown />

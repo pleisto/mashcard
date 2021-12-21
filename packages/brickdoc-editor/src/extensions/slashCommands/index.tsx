@@ -72,7 +72,7 @@ const menuItems: SlashCommandsMenuItem[] = [
       editor
         .chain()
         .deleteRange(range)
-        .setLinkBlock(range.from - 1)
+        .setEmbedBlock(range.from - 1)
         .run()
     }
   },

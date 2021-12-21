@@ -4,7 +4,6 @@ exports[`Table matches correct snapshot 1`] = `
 <div
   class="table-block-node-view-wrapper"
   data-node-view-wrapper=""
-  editor="[object Object]"
   style="pointer-events: none; white-space: normal;"
 >
   <div

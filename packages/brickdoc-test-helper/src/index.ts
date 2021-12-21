@@ -41,13 +41,13 @@ export const TEST_ID_ENUM = {
     },
     imageBlock: {
       image: {
-        id: 'editor-image-section-image'
+        id: 'editor-image-block-image'
       },
       zoomInButton: {
-        id: 'editor-image-section-zoom-in-button'
+        id: 'editor-image-block-zoom-in-button'
       },
       addButton: {
-        id: 'editor-image-section-add-button'
+        id: 'editor-image-block-add-button'
       }
     },
     tableBlock: {
@@ -140,24 +140,24 @@ export const TEST_ID_ENUM = {
         }
       }
     },
-    linkBlock: {
+    embedBlock: {
       addButton: {
-        id: 'editor-link-block-add-button'
+        id: 'editor-embed-block-add-button'
       },
       menuButton: {
-        id: 'editor-link-block-menu-button'
+        id: 'editor-embed-block-menu-button'
       },
       deleteButton: {
-        id: 'editor-link-block-delete-button'
+        id: 'editor-embed-block-delete-button'
       },
       copyButton: {
-        id: 'editor-link-block-copy-button'
+        id: 'editor-embed-block-copy-button'
       },
       link: {
-        id: 'editor-link-block-link'
+        id: 'editor-embed-block-link'
       },
       pdftron: {
-        id: 'editor-link-block-pdftron'
+        id: 'editor-embed-block-pdftron'
       }
     }
   },

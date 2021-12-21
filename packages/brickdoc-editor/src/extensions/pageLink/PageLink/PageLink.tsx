@@ -1,18 +1,18 @@
 import { Icon } from '@brickdoc/design-system'
 import { Link } from 'react-router-dom'
-import { NodeViewRendererProps } from '@tiptap/core'
+import { NodeViewProps } from '@tiptap/react'
 import React from 'react'
 import { useEditorI18n } from '../../..'
 import { BlockContainer } from '../../../components'
 import './PageLink.less'
 
-export interface PageLinkProps extends NodeViewRendererProps {}
+export interface PageLinkProps extends NodeViewProps {}
 
-export const PageLink: React.FC<PageLinkProps> = ({ editor, node }) => {
+export const PageLink: React.FC<PageLinkProps> = ({ node }) => {
   const [t] = useEditorI18n()
   const attributes = node.attrs.page
   return (
-    <BlockContainer as="span" editor={editor}>
+    <BlockContainer as="span">
       <Link className="text" to={attributes.link ?? '/'}>
         {!!attributes.icon && (
           <span role="img" className="brickdoc-page-link-block-icon" aria-label="">

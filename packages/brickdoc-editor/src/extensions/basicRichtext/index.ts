@@ -25,7 +25,7 @@ import Link, { LinkOptions } from '@tiptap/extension-link'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
 import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
-import { LinkBlockExtension, LinkBlockOptions } from '../linkBlock'
+import { EmbedBlockExtension, EmbedBlockOptions } from '../embed'
 import { TableBlockExtension, TableBlockOptions } from '../table'
 import { FormulaExtension, FormulaOptions } from '../formula'
 import { CodeBlock } from '../../components'
@@ -56,7 +56,7 @@ export interface BasicRichtextOptions {
   formula: Partial<FormulaOptions> | false
   link: Partial<LinkOptions> | false
   imageBlock: Partial<ImageBlockOptions> | false
-  linkBlock: Partial<LinkBlockOptions> | false
+  embedBlock: Partial<EmbedBlockOptions> | false
   pdfSection: Partial<PdfSectionOptions> | false
   tableBlock: Partial<TableBlockOptions> | false
 }
@@ -96,7 +96,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.underline !== false) extensions.push(Underline.configure(this.options?.underline))
     if (this.options.text !== false) extensions.push(Text.configure(this.options?.text))
     if (this.options.imageBlock !== false) extensions.push(ImageBlockExtension.configure(this.options?.imageBlock))
-    if (this.options.linkBlock !== false) extensions.push(LinkBlockExtension.configure(this.options?.linkBlock))
+    if (this.options.embedBlock !== false) extensions.push(EmbedBlockExtension.configure(this.options?.embedBlock))
     if (this.options.pdfSection !== false) extensions.push(PdfSectionExtension.configure(this.options?.pdfSection))
     if (this.options.textStyle !== false) extensions.push(TextStyle.configure(this.options?.textStyle))
     if (this.options.fontColor !== false) extensions.push(FontColorExtension.configure(this.options?.fontColor))

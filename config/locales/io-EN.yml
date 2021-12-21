@@ -865,7 +865,7 @@ io-EN:
         title: crwdns3509:0crwdne3509:0
         ok: crwdns3511:0crwdne3511:0
         cancel: crwdns3513:0crwdne3513:0
-    link_block:
+    embed_block:
       menu:
         copy: crwdns3289:0crwdne3289:0
         delete: crwdns3291:0crwdne3291:0

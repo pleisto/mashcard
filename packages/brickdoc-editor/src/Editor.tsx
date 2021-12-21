@@ -22,6 +22,7 @@ import {
 import './styles.less'
 import { useEditorI18n } from './hooks'
 import { EditorDataSource, EditorDataSourceContext } from './dataSource/DataSource'
+import { EditorContext, EditorContextData } from './context/EditorContext'
 
 export { useEditorI18n }
 
@@ -31,11 +32,15 @@ export interface EditorContentProps {
 }
 
 export const EditorContent: React.FC<EditorContentProps> = ({ editor, editorDataSource }) => {
+  const [t] = useEditorI18n()
+  const editorContext = React.useMemo<EditorContextData>(() => ({ editor, t }), [editor, t])
   return (
-    <EditorDataSourceContext.Provider value={editorDataSource}>
-      <BubbleMenu editor={editor} />
-      <TiptapEditorContent className="brickdoc" editor={editor} />
-    </EditorDataSourceContext.Provider>
+    <EditorContext.Provider value={editorContext}>
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <BubbleMenu editor={editor} />
+        <TiptapEditorContent className="brickdoc" editor={editor} />
+      </EditorDataSourceContext.Provider>
+    </EditorContext.Provider>
   )
 }
 
@@ -58,8 +63,8 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     'hardBreak',
     'heading',
     'horizontalRule',
-    'imageSection',
-    'linkBlock',
+    'imageBlock',
+    'embedBlock',
     'listItem',
     'orderedList',
     'paragraph',

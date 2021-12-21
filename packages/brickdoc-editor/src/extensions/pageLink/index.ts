@@ -26,8 +26,6 @@ export const PageLinkBlockExtension = Node.create<PageLinkBlockOptions>({
 
   selectable: false,
 
-  defaultOptions: {},
-
   addAttributes() {
     return {
       page: {

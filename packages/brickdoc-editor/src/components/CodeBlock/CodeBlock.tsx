@@ -1,118 +1,66 @@
 import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
-import { BlockContainer, ActionDropdownMenuItem, ActionOptionGroup } from '../../components'
-import { Icon, Input, message, Modal } from '@brickdoc/design-system'
-import { useEditorI18n } from '../..'
+import { BlockContainer } from '../../components'
+import { Icon, message } from '@brickdoc/design-system'
 import 'highlight.js/styles/atom-one-light.css'
 import './CodeBlock.less'
+import { ActionItemOption } from '../BlockActions'
+import { BlockContainerProps } from '../BlockContainer'
+import { EditorContext } from '../../context/EditorContext'
 
 export interface CodeBlockProps extends NodeViewProps {}
 
 const defaultLanguage = 'plain text'
-const LANGUAGE_OPTION_LIMIT = 20
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({
-  node: {
-    attrs: { language = defaultLanguage },
-    text
-  },
-  editor,
-  updateAttributes,
-  extension,
-  deleteNode
-}) => {
-  const [t] = useEditorI18n()
-  const [search, setSearch] = React.useState('')
-  const menuItems: ActionDropdownMenuItem[] = React.useMemo(() => {
-    const options = ([defaultLanguage, ...extension.options.lowlight.listLanguages()] as string[])
-      .map<ActionDropdownMenuItem>(lang => ({
-        type: 'item',
-        name: lang,
-        active: lang === language,
-        onClick: closeMenu => {
-          updateAttributes({
-            language: lang
-          })
-          closeMenu()
-        }
-      }))
-      .sort(i => (i.name === language ?? defaultLanguage ? -1 : 0))
-      .filter(i => i.name.toLowerCase().includes(search.toLowerCase()))
-      .slice(0, LANGUAGE_OPTION_LIMIT)
+export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, extension, deleteNode }) => {
+  const {
+    attrs: { language = defaultLanguage }
+  } = node
+  const { t } = React.useContext(EditorContext)
+  const menuItems: ActionItemOption[] = React.useMemo(
+    () =>
+      ([defaultLanguage, ...extension.options.lowlight.listLanguages()] as string[])
+        .map<ActionItemOption>(lang => ({
+          type: 'item',
+          name: lang,
+          active: lang === language,
+          onAction: () => {
+            updateAttributes({
+              language: lang
+            })
+          },
+          closeOnAction: true
+        }))
+        .sort(i => (i.name === language ?? defaultLanguage ? -1 : 0)),
+    [extension.options.lowlight, language, updateAttributes]
+  )
 
-    return [
-      {
-        type: 'item',
-        name: 'input',
-        content: (
-          <Input
-            placeholder={t('code_block.search_placeholder')}
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            className="brickdoc-code-block-lang-search-input"
-          />
-        )
-      },
-      ...options
-    ]
-  }, [extension.options.lowlight, language, search, t, updateAttributes])
-
-  const handleDelete = React.useCallback((): void => {
-    Modal.confirm({
-      title: t('code_block.deletion_confirm.title'),
-      okText: t('code_block.deletion_confirm.ok'),
-      okButtonProps: {
-        danger: true
-      },
-      cancelText: t('code_block.deletion_confirm.cancel'),
-      icon: null,
-      onOk: () => {
-        deleteNode()
-      }
-    })
-  }, [deleteNode, t])
-
-  const actionOptions: ActionOptionGroup = [
+  const actionOptions: BlockContainerProps['actionOptions'] = [
     [
       {
         type: 'dropdown',
-        dropdownType: 'popover',
-        Icon: (
-          <span>
-            {language ?? defaultLanguage} <Icon.ArrowDown className="brickdoc-code-block-arrow-down" />
-          </span>
-        ),
+        name: 'languages',
+        content: language ?? defaultLanguage,
+        searchable: true,
         menuItems
       }
     ],
     [
       {
-        type: 'button',
-        Icon: <Icon.Copy />,
-        onClick: async () => {
-          await navigator.clipboard.writeText(text ?? '')
-          void message.success(t('code_block.copy_hint'))
+        type: 'item',
+        name: 'copy',
+        icon: <Icon.Copy />,
+        onAction: async () => {
+          await navigator.clipboard.writeText(node.text ?? node.textContent ?? '')
+          void message.success(t('copy_hint'))
         }
       }
     ],
-    [
-      {
-        type: 'dropdown',
-        Icon: <Icon.More />,
-        menuItems: [
-          {
-            type: 'item',
-            Icon: <Icon.Delete />,
-            name: t('action_panel.more.delete'),
-            onClick: handleDelete
-          }
-        ]
-      }
-    ]
+    'delete'
   ]
 
   return (
-    <BlockContainer editor={editor} actionOptions={actionOptions}>
+    <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions}>
       <pre>
         <NodeViewContent as="code" />
       </pre>

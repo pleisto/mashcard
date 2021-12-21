@@ -2,54 +2,44 @@ import React from 'react'
 import { Popover } from '@brickdoc/design-system'
 import { BlockActionsMenu } from './BlockActionsMenu'
 import './BlockActions.less'
+import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
+import { ToolbarDropdownOption, ToolbarItemOption, ToolbarOption, ToolbarOptionGroup } from '../Toolbar'
 
-export interface ActionDropdownMenuItem {
-  type: 'item'
-  onClick?: (closeMenu: () => void) => void
-  Icon?: React.ReactElement
-  content?: React.ReactElement
-  name: string
-  active?: boolean
-}
+export type ActionItemOption = ToolbarItemOption
 
-export interface ActionDropdownMenuDivider {
-  type: 'divider'
-}
+export type ActionDropdownOption = ToolbarDropdownOption
 
-export interface ActionOptionBase {
-  type: 'button' | 'dropdown'
-  active?: boolean
-  Icon: React.ReactElement
-  onClick?: () => void
-}
+export type ActionOption = ToolbarOption
 
-export interface ActionButtonOption extends ActionOptionBase {
-  type: 'button'
-}
+export type ActionItemOptionGroup = Array<ActionItemOption[] | ActionItemOption>
 
-export interface ActionDropdownOption extends ActionOptionBase {
-  type: 'dropdown'
-  dropdownType?: 'dropdown' | 'popover'
-  menuItems: Array<ActionDropdownMenuItem | ActionDropdownMenuDivider>
-}
+export type ActionOptionGroup = ToolbarOptionGroup
 
-export type ActionOption = ActionButtonOption | ActionDropdownOption
-
-export type ActionOptionGroup = Array<ActionOption[] | ActionOption>
+export type BlockActionOptions = Array<ActionOption[] | ActionOption | BasicActionOptionType>
 
 export interface BlockActionsProps {
-  options: ActionOptionGroup
+  options: BlockActionOptions
 }
 
 export const BlockActions: React.FC<BlockActionsProps> = ({ options, children }) => {
+  const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
+    () => options.filter(option => typeof option === 'string') as BasicActionOptionType[],
+    [options]
+  )
+  const extraOptions = React.useMemo<ActionOptionGroup>(
+    () => options.filter(option => typeof option !== 'string') as ActionOptionGroup,
+    [options]
+  )
+  const basicOptions = useBasicActionOptions({ types: basicOptionTypes })
+
   return (
     <Popover
+      // TODO: replace by css-in-js
       overlayClassName="brickdoc-action-panel-popover"
       trigger="hover"
       autoAdjustOverflow={false}
       placement="topRight"
-      content={<BlockActionsMenu options={options} />}
-    >
+      content={<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />}>
       {children}
     </Popover>
   )
