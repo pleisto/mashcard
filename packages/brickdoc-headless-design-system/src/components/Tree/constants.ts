@@ -1,19 +1,33 @@
 import { ReactNode } from 'react'
 
-export interface TItem {
+export interface TNode {
   key: string
   value: string
-  parentId?: string
+  parentId?: string | null | undefined
+  rootId?: string
   title: ReactNode | string
   icon: string | null
   hasItemIcon?: boolean
   hasChildren: boolean
-  indent: number | 16 | '1rem'
+  firstChildSort: string
+  indent: number
   isOpen: boolean
+  collapsed: boolean
   sort: number
   lastPlaceholder: ReactNode | string
+  children: TNode[]
 }
 
-export type TNode = Pick<TItem, 'key' | 'value' | 'hasItemIcon' | 'sort' | 'isOpen'> & {
-  children: TNode[]
+export enum Inserted {
+  Top,
+  Bottom,
+  Child
+}
+
+export interface MoveNode {
+  sourceIndex: number
+  sourceId: string
+  targetIndex: number
+  targetId: string
+  position: Inserted
 }

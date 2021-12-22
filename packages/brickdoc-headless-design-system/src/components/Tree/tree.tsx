@@ -1,36 +1,30 @@
-import { FC, useCallback, useState, useMemo, ReactNode, memo } from 'react'
-import type { TNode } from './constants'
+import { FC, useCallback, useState, useMemo, useEffect, ReactNode, memo } from 'react'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import type { TNode, MoveNode } from './constants'
 import { Node } from './node'
-// import { TreeRoot } from './style'
-
-export interface TreeNode {
-  id: string
-  labelNode: ReactNode
-  showArrow?: boolean
-  children?: TreeNode[]
-}
-
-export interface FlattenedTreeNode {
-  id: string
-  labelNode: ReactNode
-  showArrow?: boolean
-  hasChildren: boolean
-  depth: number
-  collapsed: boolean
-}
-
-/* interface Props {
- *   data: TreeNode[];
- *   className?: string;
- *   collapseAll?: boolean;
- * } */
 
 export interface TreeProps {
   treeData: TNode[]
+  selectedNodeId?: string
   className?: string
   openAll?: boolean
-  selectedKeys: string[]
+  draggable?: boolean
+  onDrop?: (attrs: MoveNode) => void
   titleRender?: (node: TNode) => ReactNode
+  emptyNode?: string | ReactNode
+}
+
+const findPathById = (tree: TNode[], id: string, path?: string[]): string[] => {
+  for (let i = 0; i < tree.length; i++) {
+    const tempPath = [...(path ?? [])]
+    tempPath.push(tree[i].value)
+    if (tree[i].value === id) return tempPath
+    if (tree[i].children) {
+      const result = findPathById(tree[i].children, id, tempPath)
+      if (result) return result
+    }
+  }
 }
 
 /** Tree
@@ -39,61 +33,81 @@ export interface TreeProps {
 const TreeInternal: FC<TreeProps> = ({
   treeData,
   openAll = false,
-  titleRender
-  /* selectedKeys,
-   * className */
+  titleRender,
+  emptyNode,
+  selectedNodeId,
+  draggable = false,
+  onDrop
 }) => {
-  const [closedItemIds, setClosedItemIds] = useState<string[]>(
-    openAll ? treeData.map(node => node.value) : treeData.filter(node => node.isOpen).map(node => node.value)
+  const [openedIds, setOpenedIds] = useState<string[]>(
+    openAll ? treeData.map(node => node.value) : treeData.filter(node => node.collapsed).map(node => node.value) || []
   )
+  const [selectedId, setSelectedId] = useState<string | undefined>(selectedNodeId)
 
-  const [selectedId, setSelectedId] = useState<string>()
-  // console.log(selectedKeys, 'selectedKeysselectedKeysselectedKeys')
-  const flattenNode = useCallback(
+  useEffect(() => {
+    if (selectedNodeId) {
+      setOpenedIds(findPathById(treeData, selectedNodeId, openedIds) ?? [])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const flattened = useCallback(
     (node, indent: number, result: TNode[]) => {
       const { children, value } = node
-      const isOpen = closedItemIds.includes(value)
+      const collapsed = openedIds.includes(value)
+
       result.push({
         ...node,
         hasChildren: (children ?? []).length > 0,
         indent: indent ?? 0,
-        isOpen
+        collapsed
       })
 
-      if (!isOpen && children) {
+      if (collapsed && children) {
         for (const child of children) {
-          flattenNode(child, indent + 1, result)
+          flattened(child, indent + 1, result)
         }
       }
     },
-    [closedItemIds]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [openedIds]
   )
 
   const renderTree = useMemo(() => {
     const result: TNode[] = []
     for (const node of treeData) {
-      flattenNode(node, 0, result)
+      flattened(node, 0, result)
     }
     return result
-  }, [treeData, flattenNode])
+  }, [treeData, flattened])
 
   const handleSelected = useCallback((id: string) => setSelectedId(id), [setSelectedId])
 
   const handleItemClick = useCallback(
     (node: TNode) =>
-      node.isOpen
-        ? setClosedItemIds(closedNodeIds => closedNodeIds.filter(value => value !== node.value))
-        : setClosedItemIds(closedNodeIds => [...closedNodeIds, node.value]),
-    []
+      node.collapsed
+        ? setOpenedIds(i => i.filter(value => value !== node.value))
+        : setOpenedIds(i => [...i, node.value]),
+    [setOpenedIds]
   )
 
-  // const parentRef = useRef<HTMLDivElement | null>(null);
+  const moveNode = useCallback(
+    (item: MoveNode) => {
+      if (!draggable) return
+      onDrop?.(item)
+    },
+    [draggable, onDrop]
+  )
 
   return (
-    <>
-      {renderTree.map(item => (
+    <DndProvider backend={HTML5Backend}>
+      {renderTree.map((item, index) => (
         <Node
-          key={item.value}
+          moveNode={moveNode}
+          id={item.key}
+          index={index}
+          key={item.key}
+          emptyNode={emptyNode}
           treeData={item}
           onClick={handleItemClick}
           handleSelected={handleSelected}
@@ -101,7 +115,7 @@ const TreeInternal: FC<TreeProps> = ({
           selectedId={selectedId}
         />
       ))}
-    </>
+    </DndProvider>
   )
 }
 

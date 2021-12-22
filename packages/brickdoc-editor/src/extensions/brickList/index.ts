@@ -47,7 +47,9 @@ export const brickListExtension = Extension.create<brickListOptions>({
             if (listItem) {
               const listItemNode = listItem.node
               if (listItemNode.textContent.length === 0) {
-                const parentListItem = findParentNode(node => node.type === itemType && node !== listItemNode)(selection)
+                const parentListItem = findParentNode(node => node.type === itemType && node !== listItemNode)(
+                  selection
+                )
 
                 if (parentListItem) {
                   originalLiftListItem(itemType)(state, dispatch)

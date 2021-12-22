@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { find, propEq } from 'ramda'
 import {
   useGetPageBlocksQuery,
   useBlockMoveMutation,
@@ -9,7 +10,10 @@ import {
   useGetBlockPinsQuery,
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
-import { Tree, TreeProps } from '@brickdoc/design-system'
+/* import { Tree, TreeProps } from '@brickdoc/design-system' */
+
+// TODO: change to design-system
+import { Tree, TreeProps, TNode, Inserted } from '@brickdoc/brickdoc-headless-design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -25,11 +29,8 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
 
   const { data } = useGetPageBlocksQuery({ variables: { webid: docMeta.webid } })
-
   const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
-  const [popoverKey, setPopoverKey] = useState<string | undefined>()
-  // const [selectedKeys, setSelectedKeys] = useState<string[]>(docMeta.id ? [docMeta.id] : [])
 
   const { t } = useDocsI18n()
 
@@ -56,31 +57,45 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     return ''
   }, [])
 
+  //
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
-    let targetParentId: string | undefined | null, sort: number
+    const { sourceId, targetId, position } = attrs
     setDraggable(false)
-
-    const node = attrs.node as unknown as Block & { key: string }
-    // Check if is root node
-    if (attrs.dropToGap) {
-      targetParentId = node.parentId
-      // take averaged value
-      if (attrs.dropPosition === -1) {
-        sort = Math.round(2 * (Number(node.sort) - Number(node.nextSort)))
-      } else {
-        sort = Math.round(0.5 * (Number(node.sort) + Number(node.nextSort)))
-      }
-    } else {
-      targetParentId = node.key
-      // take next value
-      sort = Number(node.firstChildSort) - SIZE_GAP
+    let targetParentId: string | undefined | null, sort: number
+    const node = find<Block>(propEq('id', sourceId))((data?.pageBlocks ?? []) as Block[])
+    const targetNode = find<Block>(propEq('id', targetId))((data?.pageBlocks ?? []) as Block[])
+    if (!node?.id) {
+      setDraggable(true)
+      return
     }
-    const input: BlockMoveInput = { id: attrs.dragNode.key as string, sort }
+
+    if (targetNode?.parentId) {
+      // root node
+      targetParentId = targetNode.parentId
+    }
+
+    switch (position) {
+      case Inserted.Top:
+        sort = (targetNode?.sort ?? 0) - 1
+        break
+      case Inserted.Child:
+        targetParentId = targetId
+        sort = Number(node.firstChildSort) - SIZE_GAP
+        break
+      case Inserted.Bottom:
+        sort = Math.round(0.5 * (Number(targetNode?.sort ?? 0) + Number(targetNode?.nextSort ?? 0)))
+        break
+    }
+
+    const input: BlockMoveInput = {
+      id: node.id,
+      sort
+    }
     if (targetParentId) {
       input.targetParentId = targetParentId
     }
     await blockMove({ variables: { input } })
-    if (docMeta.id === attrs.dragNode.key) {
+    if (docMeta.id === node.id) {
       await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
     setDraggable(true)
@@ -92,7 +107,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     return (
       <PageMenu
         docMeta={docMeta}
-        setPopoverKey={setPopoverKey}
+        // setPopoverKey={setPopoverKey}
         pin={pin}
         pageId={node.key}
         title={node.title}
@@ -101,8 +116,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     )
   }
 
-  // TODO fix type
-  const treeElement = (blocks: BlockType[], draggable: boolean): React.ReactElement => {
+  const treeElement = (blocks: BlockType[], isDraggable: boolean): React.ReactElement => {
     if (!blocks.length) {
       return <></>
     }
@@ -110,11 +124,12 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     const flattedData = blocks
       .map(b => {
         const title = getTitle(b)
+
         return {
           key: b.id,
           value: b.id,
+          rootId: b.rootId,
           parentId: b.parentId,
-          isOpen: docMeta.id === b.id,
           sort: b.sort,
           icon: getIcon(b),
           nextSort: b.nextSort,
@@ -125,39 +140,16 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
 
-    // TODO: refactor~  insufficient data structure to support business requirements
-    flattedData
-      .filter(i => !i.parentId && i.firstChildSort === '0')
-      .forEach(item => {
-        flattedData.push({
-          firstChildSort: '0',
-          key: `${item.key}mock`,
-          value: item.key,
-          nextSort: '',
-          parentId: item.key,
-          text: t('blocks.no_pages'),
-          title: t('blocks.no_pages'),
-          // @ts-expect-error
-          className: styles.treeNodeNoPage
-        })
-      })
-
     const treeData = array2Tree(flattedData, { id: 'key' })
-
-    const selectedKeys = [docMeta.id, popoverKey].filter(k => !!k) as string[]
 
     return (
       <Tree
         className={styles.tree}
-        selectedKeys={selectedKeys}
-        blockNode={false}
-        showLine={{ showLeafIcon: true }}
-        showIcon={true}
-        selectable={!docMeta.documentInfoLoading}
-        defaultExpandedKeys={selectedKeys}
-        treeData={treeData}
-        autoExpandParent
-        draggable={true}
+        emptyNode={t('blocks.no_pages')}
+        // selectable={!docMeta.documentInfoLoading}
+        selectedNodeId={docMeta.id}
+        treeData={treeData as unknown as TNode[]}
+        draggable={draggable && isDraggable}
         onDrop={onDrop}
         titleRender={titleRender}
       />
@@ -178,6 +170,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
           key: b.id,
           value: b.id,
           parentId: b.parentId,
+          rootId: b.rootId,
           sort: b.sort,
           icon: getIcon(b),
           nextSort: b.nextSort,

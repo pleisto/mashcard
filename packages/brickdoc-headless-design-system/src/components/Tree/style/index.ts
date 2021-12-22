@@ -1,3 +1,3 @@
-import * as TreeRoot from './base'
+import * as TreeRoot from './base.style'
 
 export { TreeRoot }

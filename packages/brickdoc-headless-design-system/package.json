@@ -4,14 +4,17 @@
   "description": "Brickdoc design system and React components implementation",
   "license": "Apache-2.0",
   "scripts": {
+    "build": "tsc --build tsconfig.build.json",
     "cleanup": "tsc --build tsconfig.build.json --clean",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "main": "./src/index.ts",
+  "main": "./dist/src/index.js",
   "module": "./src/index.ts",
+  "types": "./dist/src/index.d.ts",
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "sideEffects": false,
   "dependencies": {
@@ -30,6 +33,8 @@
     "ahooks": "^3.0.5",
     "lodash-es": "^4.17.21",
     "polished": "^4.1.3",
+    "react-dnd": "^14.0.4",
+    "react-dnd-html5-backend": "^14.0.2",
     "stitches-mixins": "^1.0.0",
     "tippy.js": "^6.3.7"
   },

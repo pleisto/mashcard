@@ -23,6 +23,17 @@ export const mixins = {
     boxShadow: `2px 2px 0px ${colors.black_3p}, 0px 4px 12px ${colors.grey6_2p},
     inset 2px 2px 0px ${colors.white_25p}`
   },
+
+  /**
+   * TreeShoadows
+   */
+  treeDefault: {
+    boxShadow: `2px 2px 0px rgba(202, 202, 202, 0.4), inset 2px 2px 0px rgba(202, 202, 202, 0.4)`
+  },
+  treeSelected: {
+    boxShadow: `2px 2px 0px rgba(44, 91, 255, 0.08), inset 2px 2px 0px rgba(44, 91, 255, 0.06)`
+  },
+
   /**
    * Shoadows
    */

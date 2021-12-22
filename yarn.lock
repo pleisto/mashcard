@@ -2016,6 +2016,8 @@ __metadata:
     polished: ^4.1.3
     react: ^17.0.2
     react-color: ^2.19.3
+    react-dnd: ^14.0.4
+    react-dnd-html5-backend: ^14.0.2
     react-dom: ^17.0.2
     react-i18next: ^11.15.1
     react-json-view: ^1.21.3
@@ -2214,6 +2216,7 @@ __metadata:
     "@types/node": ^17.0.0
     "@types/rails__actioncable": ^6.1.6
     "@types/rails__activestorage": ^6.0.1
+    "@types/ramda": ^0.27.60
     "@types/react": ^17.0.37
     "@types/react-dom": ^17.0.11
     "@types/uuid": ^8.3.3
@@ -2265,6 +2268,7 @@ __metadata:
     postcss-less: ^5.0.0
     postcss-preset-env: ^7.0.2
     prettier: ^2.5.1
+    ramda: ^0.27.1
     react: ^17.0.2
     react-dom: ^17.0.2
     react-helmet-async: ^1.2.2
@@ -7127,6 +7131,15 @@ __metadata:
   version: 6.0.1
   resolution: "@types/rails__activestorage@npm:6.0.1"
   checksum: 38444b33ef6a84c22907750d23cc2869c786eba24e04683ba4932fbd7b4f305b1527b8911ebdddbbae98376407609559ed8e14107dc6037e78c2f2ddaa021ce0
+  languageName: node
+  linkType: hard
+
+"@types/ramda@npm:^0.27.60":
+  version: 0.27.60
+  resolution: "@types/ramda@npm:0.27.60"
+  dependencies:
+    ts-toolbelt: ^6.15.1
+  checksum: 442cce67b91ad42753ba47929918284dfc1792a3557038b3a0c816c1c874adeafe62daf3b80055044f0092054736ab211e14e2e1cef922378bce129b68ae9870
   languageName: node
   linkType: hard
 
@@ -22027,6 +22040,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ramda@npm:^0.27.1":
+  version: 0.27.1
+  resolution: "ramda@npm:0.27.1"
+  checksum: 31a0c0ef739b2525d7615f84cbb5d3cb89ee0c795469b711f729ea1d8df0dccc3cd75d3717a1e9742d42315ce86435680b7c87743eb7618111c60c144a5b8059
+  languageName: node
+  linkType: hard
+
 "randombytes@npm:^2.0.0, randombytes@npm:^2.0.1, randombytes@npm:^2.0.5, randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -25794,6 +25814,13 @@ resolve@^2.0.0-next.3:
     typescript:
       optional: true
   checksum: c2a698b85d521298fe6f2435fbf2d3dc5834b423ea25abd321805ead3f399dbeedce7ca09492d7eb005b9d2c009c6b9587055bc3ab273dc6b9e40eefd7edb5b2
+  languageName: node
+  linkType: hard
+
+"ts-toolbelt@npm:^6.15.1":
+  version: 6.15.5
+  resolution: "ts-toolbelt@npm:6.15.5"
+  checksum: 24ad00cfd9ce735c76c873a9b1347eac475b94e39ebbdf100c9019dce88dd5f4babed52884cf82bb456a38c28edd0099ab6f704b84b2e5e034852b618472c1f3
   languageName: node
   linkType: hard
 
