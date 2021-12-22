@@ -1,8 +1,8 @@
 import { CstNode } from 'chevrotain'
-import { ButtonType } from '../controls'
+import { ButtonType, SelectType, SwitchType } from '../controls'
 
-type BasicType = 'number' | 'string' | 'boolean' | 'null'
-type ObjectType =
+type FormulaBasicType = 'number' | 'string' | 'boolean' | 'null'
+type FormulaObjectType =
   | 'Date'
   | 'Column'
   | 'Spreadsheet'
@@ -15,9 +15,10 @@ type ObjectType =
   | 'Function'
   | 'Reference'
   | 'Cst'
-type ControlType = 'Button'
 
-export type FormulaType = BasicType | ObjectType | ControlType | 'any'
+export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Radio' | 'Rate' | 'Slider'
+
+export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any'
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
@@ -40,6 +41,12 @@ export type SpecialDefaultVariableName =
   | 'reference'
   | 'function'
   | 'button'
+  | 'switch'
+  | 'select'
+  | 'input'
+  | 'radio'
+  | 'rate'
+  | 'slider'
 
 export type FunctionGroup = 'core' | 'custom' | string
 
@@ -122,12 +129,16 @@ export interface BlankResult extends BaseResult {
 }
 
 export interface ArrayResult extends BaseResult {
-  result: AnyTypeValue[]
+  result: AnyTypeResult[]
   type: 'Array'
 }
 
+export interface RecordType {
+  [key: string]: AnyTypeResult
+}
+
 export interface RecordResult extends BaseResult {
-  result: { [key: string]: any }
+  result: RecordType
   type: 'Record'
 }
 
@@ -170,7 +181,7 @@ export interface FormulaFunction {
 
 export interface FunctionResult extends BaseResult {
   type: 'Function'
-  result: FormulaFunction
+  result: FormulaFunction[]
 }
 
 export interface CstResult extends BaseResult {
@@ -186,6 +197,15 @@ export interface ReferenceResult extends BaseResult {
 export interface ButtonResult extends BaseResult {
   type: 'Button'
   result: ButtonType
+}
+export interface SwitchResult extends BaseResult {
+  type: 'Switch'
+  result: SwitchType
+}
+
+export interface SelectResult extends BaseResult {
+  type: 'Select'
+  result: SelectType
 }
 
 export interface AnyResult extends BaseResult {
@@ -224,6 +244,8 @@ export type AnyTypeResult =
   | BlockResult
   | PredicateResult
   | ButtonResult
+  | SwitchResult
+  | SelectResult
   | ErrorResult
   | FunctionResult
   | CstResult
@@ -231,8 +253,6 @@ export type AnyTypeResult =
   | AnyResult
 
 export type AnyFunctionResult<T> = (AnyTypeResult & { type: T }) | ErrorResult
-
-export type AnyTypeValue = AnyTypeResult
 
 export interface View {
   [key: string]: any
@@ -245,7 +265,10 @@ export interface Formula {
   name: VariableName
   updatedAt: string
   createdAt: number
-  cacheValue: AnyTypeValue
+  cacheValue: AnyTypeResult
+  level: number
+  version: number
+  kind: string
   view: View
 }
 export interface Column {
@@ -297,6 +320,7 @@ export interface Database {
 export interface Argument {
   readonly name: string
   readonly type: FormulaType
+  readonly default?: AnyTypeResult
   readonly spread?: boolean
 }
 
@@ -380,6 +404,14 @@ export interface ExampleWithCodeFragments<T extends FormulaType> extends Example
   readonly codeFragments: CodeFragment[]
 }
 
+export interface FunctionContext {
+  readonly ctx: ContextInterface
+  readonly meta: VariableMetadata
+  readonly interpretContext: InterpretContext
+}
+
+export type InterpretContext = RecordType
+
 export interface BaseFunctionClause<T extends FormulaType> {
   readonly name: FunctionNameType
   readonly pure: boolean
@@ -394,7 +426,7 @@ export interface BaseFunctionClause<T extends FormulaType> {
   readonly args: Argument[]
   readonly returns: T
   readonly testCases: TestCase[]
-  readonly reference: (ctx: ContextInterface, ...args: any[]) => AnyFunctionResult<T>
+  readonly reference: (ctx: FunctionContext, ...args: any[]) => AnyFunctionResult<T>
 }
 
 export interface NormalFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
@@ -406,7 +438,7 @@ export interface ChainFunctionClause<T extends FormulaType> extends BaseFunction
   readonly chain: true
   readonly returns: T
   readonly args: [Argument, ...Argument[]]
-  readonly reference: (ctx: ContextInterface, chainResult: any, ...args: any[]) => AnyFunctionResult<T>
+  readonly reference: (ctx: FunctionContext, chainResult: any, ...args: any[]) => AnyFunctionResult<T>
 }
 
 export type BasicFunctionClause<T extends FormulaType> = NormalFunctionClause<T> | ChainFunctionClause<T>
@@ -465,13 +497,13 @@ export interface VariableDependency {
 export interface BaseVariableValue {
   updatedAt: Date
   readonly success: boolean
-  readonly result: AnyTypeValue
-  readonly cacheValue: AnyTypeValue
+  readonly result: AnyTypeResult
+  readonly cacheValue: AnyTypeResult
 }
 
 export interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
-  readonly result: AnyTypeValue
+  readonly result: AnyTypeResult
 }
 
 export interface ErrorVariableValue extends BaseVariableValue {
@@ -484,6 +516,7 @@ export type VariableValue = SuccessVariableValue | ErrorVariableValue
 export interface VariableData {
   name: VariableName
   level: number
+  version: number
   namespaceId: NamespaceId
   variableId: VariableId
   definition: Definition
@@ -513,12 +546,12 @@ export interface VariableInterface {
   namespaceName: () => string
   reparse: () => void
   meta: () => VariableMetadata
-  updateDefinition: (definition: Definition) => void
-  updateCst: (cst: CstNode) => void
+  updateCst: (cst: CstNode, context: InterpretContext) => void
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>
   afterUpdate: () => void
-  refresh: () => Promise<void>
+  updateAndPersist: () => Promise<void>
+  refresh: (context: InterpretContext) => Promise<void>
 }
 
 export interface BackendActions {

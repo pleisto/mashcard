@@ -7,15 +7,19 @@ import {
   VariableInterface,
   VariableMetadata,
   Formula,
-  AnyTypeValue,
+  AnyTypeResult,
   DatabaseFactory,
   DatabasePersistence,
-  VariableValue
+  VariableValue,
+  FunctionContext,
+  InterpretContext
 } from '..'
 import { ButtonClass } from '../controls/button'
+import { SelectClass } from '../controls/select'
+import { SwitchClass } from '../controls/switch'
 import { parse } from '../grammar'
 
-export const displayValue = (v: AnyTypeValue): string => {
+export const displayValue = (v: AnyTypeResult): string => {
   switch (v.type) {
     case 'number':
     case 'boolean':
@@ -34,16 +38,20 @@ export const displayValue = (v: AnyTypeValue): string => {
       return `[${v.operator}] ${displayValue(v.result)}`
     case 'Record':
       return `{ ${Object.entries(v.result)
-        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeValue)}`)
+        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeResult)}`)
         .join(', ')} }`
     case 'Array':
-      return `[${v.result.map((v: AnyTypeValue) => displayValue(v)).join(', ')}]`
+      return `[${v.result.map((v: AnyTypeResult) => displayValue(v)).join(', ')}]`
     case 'Button':
-      return `#<Button> ${v.result.name}`
+      return `#<${v.type}> ${v.result.name}`
+    case 'Switch':
+      return `#<${v.type}> ${v.result.isSelected}`
+    case 'Select':
+      return `#<${v.type}> ${JSON.stringify(v.result.options)}`
     case 'Reference':
       return `#<Reference> ${JSON.stringify(v.result)}`
     case 'Function':
-      return `#<Function> ${v.result.name}: ${v.result.args.map(a => displayValue(a)).join(', ')}`
+      return `#<Function> ${v.result.map(({ name, args }) => `${name} ${args.map(a => displayValue(a)).join(', ')}`)}`
     case 'Cst':
       return '#<Cst>'
     case 'Blank':
@@ -53,7 +61,7 @@ export const displayValue = (v: AnyTypeValue): string => {
   return JSON.stringify(v.result)
 }
 
-const parseCacheValue = (formulaContext: ContextInterface, cacheValue: AnyTypeValue): AnyTypeValue => {
+const parseCacheValue = (ctx: FunctionContext, cacheValue: AnyTypeResult): AnyTypeResult => {
   if (cacheValue.type === 'Date' && !(cacheValue.result instanceof Date)) {
     return {
       type: 'Date',
@@ -75,7 +83,7 @@ const parseCacheValue = (formulaContext: ContextInterface, cacheValue: AnyTypeVa
         })
       }
     } else {
-      const database = formulaContext.findDatabase(cacheValue.result.blockId)
+      const database = ctx.ctx.findDatabase(cacheValue.result.blockId)
       if (database) {
         return { type: 'Spreadsheet', result: database }
       } else {
@@ -85,8 +93,18 @@ const parseCacheValue = (formulaContext: ContextInterface, cacheValue: AnyTypeVa
   }
 
   if (cacheValue.type === 'Button' && !(cacheValue.result instanceof ButtonClass)) {
-    const button = new ButtonClass(formulaContext, cacheValue.result)
-    return { type: 'Button', result: button }
+    const buttonResult = new ButtonClass(ctx, cacheValue.result)
+    return { type: 'Button', result: buttonResult }
+  }
+
+  if (cacheValue.type === 'Switch' && !(cacheValue.result instanceof SwitchClass)) {
+    const switchResult = new SwitchClass(ctx, cacheValue.result)
+    return { type: 'Switch', result: switchResult }
+  }
+
+  if (cacheValue.type === 'Select' && !(cacheValue.result instanceof SelectClass)) {
+    const selectResult = new SelectClass(ctx, cacheValue.result)
+    return { type: 'Select', result: selectResult }
   }
 
   // console.log({ cacheValue })
@@ -96,12 +114,13 @@ const parseCacheValue = (formulaContext: ContextInterface, cacheValue: AnyTypeVa
 
 export const castVariable = (
   formulaContext: ContextInterface,
-  { name, definition, cacheValue, blockId, id, view }: Formula
+  { name, definition, cacheValue, version, blockId, id, view }: Formula
 ): VariableData => {
   const namespaceId = blockId
   const variableId = id
-  const castedValue: AnyTypeValue = parseCacheValue(formulaContext, cacheValue)
-  const parseInput = { formulaContext, meta: { namespaceId, variableId, name, input: definition } }
+  const meta = { namespaceId, variableId, name, input: definition }
+  const castedValue: AnyTypeResult = parseCacheValue({ ctx: formulaContext, meta, interpretContext: {} }, cacheValue)
+  const parseInput = { formulaContext, meta }
   const {
     success,
     cst,
@@ -138,6 +157,7 @@ export const castVariable = (
     cst,
     view,
     valid,
+    version,
     definition,
     codeFragments,
     level,
@@ -176,6 +196,9 @@ export class VariableClass implements VariableInterface {
       definition: this.t.definition,
       id: this.t.variableId,
       name: this.t.name,
+      version: this.t.version,
+      kind: this.t.kind,
+      level: this.t.level,
       updatedAt: new Date().toISOString(),
       createdAt: new Date().getTime(),
       cacheValue: this.t.variableValue.cacheValue,
@@ -200,45 +223,37 @@ export class VariableClass implements VariableInterface {
     BrickdocEventBus.dispatch(FormulaUpdated(this))
   }
 
+  public updateAndPersist = async (): Promise<void> => {
+    await this.invokeBackendUpdate()
+    this.afterUpdate()
+  }
+
   public reparse = (): void => {
     const formula = this.buildFormula()
     this.t = castVariable(this.formulaContext, formula)
     this.afterUpdate()
   }
 
-  public updateDefinition = (definition: string): void => {
-    this.t.definition = definition
-    void this.reload()
-  }
-
-  public updateCst = (cst: CstNode): void => {
+  public updateCst = (cst: CstNode, interpretContext: InterpretContext): void => {
     this.t.cst = cst
-    void this.refresh()
+    void this.refresh(interpretContext)
   }
 
-  public reload = async (): Promise<void> => {
-    const formula = this.buildFormula()
-    this.t = castVariable(this.formulaContext, formula)
+  public refresh = async (interpretContext: InterpretContext): Promise<void> => {
+    await this.interpret(interpretContext)
+    this.afterUpdate()
+    await this.invokeBackendUpdate()
+    this.formulaContext.handleBroadcast(this)
+  }
+
+  private readonly interpret = async (interpretContext: InterpretContext): Promise<void> => {
     const { variableValue } = await interpret({
       cst: this.t.cst,
       formulaContext: this.formulaContext,
-      meta: this.meta()
+      meta: this.meta(),
+      interpretContext
     })
 
     this.t = { ...this.t, variableValue }
-    this.afterUpdate()
-    await this.invokeBackendUpdate()
-  }
-
-  public refresh = async (): Promise<void> => {
-    const { variableValue } = await interpret({
-      cst: this.t.cst,
-      formulaContext: this.formulaContext,
-      meta: this.meta()
-    })
-
-    this.t = { ...this.t, variableValue }
-    this.afterUpdate()
-    await this.invokeBackendUpdate()
   }
 }

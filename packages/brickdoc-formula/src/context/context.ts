@@ -36,7 +36,7 @@ import {
 } from '..'
 import { BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor, FormulaLexer } from '../grammar'
-import { BlockNameLoad, BlockTableLoaded, BrickdocEventBus } from '@brickdoc/schema'
+import { BlockNameLoad, BlockTableLoaded, BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>
@@ -44,13 +44,20 @@ export interface FormulaContextArgs {
 }
 
 const matchRegex =
-  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|spreadsheet|function|column|button|error|block|var)([0-9]+)$/
+  // eslint-disable-next-line max-len
+  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|spreadsheet|function|column|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
 export const FormulaTypeCastName: { [key in FormulaType]: SpecialDefaultVariableName } = {
   string: 'str',
   number: 'num',
   boolean: 'bool',
   Blank: 'blank',
   Cst: 'cst',
+  Switch: 'switch',
+  Select: 'select',
+  Slider: 'slider',
+  Input: 'input',
+  Radio: 'radio',
+  Rate: 'rate',
   Button: 'button',
   Predicate: 'predicate',
   Function: 'function',
@@ -84,6 +91,12 @@ export class FormulaContext implements ContextInterface {
     string: {},
     number: {},
     Button: {},
+    Switch: {},
+    Select: {},
+    Slider: {},
+    Input: {},
+    Radio: {},
+    Rate: {},
     Function: {},
     boolean: {},
     Blank: {},
@@ -254,7 +267,15 @@ export class FormulaContext implements ContextInterface {
       e => {
         this.blockNameMap[namespaceId] = e.payload.name
       },
-      { eventId: namespaceId, subscribeId: variable.t.variableId }
+      { eventId: namespaceId, subscribeId: variableId }
+    )
+
+    BrickdocEventBus.subscribe(
+      FormulaInnerRefresh,
+      e => {
+        void variable.updateAndPersist()
+      },
+      { eventId: `${namespaceId},${variableId}`, subscribeId: variableId }
     )
 
     blockDependencies.forEach(blockId => {
@@ -263,7 +284,7 @@ export class FormulaContext implements ContextInterface {
         e => {
           variable.reparse()
         },
-        { eventId: blockId, subscribeId: variable.t.variableId }
+        { eventId: blockId, subscribeId: variableId }
       )
     })
 
@@ -291,8 +312,7 @@ export class FormulaContext implements ContextInterface {
     // console.log('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
     this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
       const childrenVariable = this.context[variableKey(namespaceId, variableId)]!
-      void childrenVariable.refresh()
-      this.handleBroadcast(childrenVariable)
+      void childrenVariable.refresh({})
     })
   }
 

@@ -85,7 +85,7 @@ export const complete = ({
     })
   }
 
-  if (['other', 'NumberLiteral'].includes(code)) {
+  if (['other', 'NumberLiteral', 'Function'].includes(code)) {
     completions = completions.map(c => {
       const replacements = c.kind === 'column' ? [`${spreadsheetKey(c.preview.namespaceId)}.${name}`, name] : [name]
 

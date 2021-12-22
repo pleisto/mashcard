@@ -1101,6 +1101,12 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.visit(ctx.variableExpression, { type })
     } else if (ctx.Self) {
       return { codeFragments: [token2fragment(ctx.Self[0], 'Reference')], type: 'Reference', image: ctx.Self[0].image }
+    } else if (ctx.Input) {
+      return {
+        codeFragments: [token2fragment(ctx.Input[0], 'Record')],
+        type: 'Record',
+        image: ctx.Input[0].image
+      }
     } else {
       return { codeFragments: [], type: 'any', image: '' }
     }
@@ -1173,10 +1179,6 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     },
     { type, firstArgumentType }: ExpressionArgument
   ): CodeFragmentResult {
-    if (!ctx.LParen) {
-      return { codeFragments: [], type: 'any', image: '' }
-    }
-
     const names = ctx.FunctionName.map(({ image }) => image)
     const [group, name] = names.length === 1 ? ['core', ...names] : names
 
@@ -1200,6 +1202,20 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       spaceBefore: false,
       spaceAfter: false,
       meta: undefined
+    }
+
+    if (!ctx.LParen) {
+      return {
+        codeFragments: [
+          {
+            ...nameFragment,
+            code: 'Function',
+            errors: [{ message: `Unknown function ${functionKey}`, type: 'syntax' }]
+          }
+        ],
+        image: images.join(''),
+        type: 'any'
+      }
     }
 
     const rParenErrorMessages: ErrorMessage[] = ctx.RParen
@@ -1279,6 +1295,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       ? Array(ctx.expression.length).fill(firstArgs.type)
       : args?.map(x => x.type) ?? []
 
+    const nonDefaultArgumentCount = args ? args.filter(x => !x.default).length : 0
+
     const codeFragments: CodeFragment[] = []
     const images: string[] = []
 
@@ -1308,7 +1326,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       validExpressionCount === commaIndex + 1 ? [] : [{ message: 'Expression count mismatch', type: 'syntax' }]
 
     const errorMessages: ErrorMessage[] =
-      !!args && ctx.expression.length !== argumentTypes.length
+      !!args && (ctx.expression.length > argumentTypes.length || ctx.expression.length < nonDefaultArgumentCount)
         ? [{ message: 'Argument count mismatch', type: 'deps' }]
         : []
     return {

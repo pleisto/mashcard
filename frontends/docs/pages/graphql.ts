@@ -56,6 +56,9 @@ export const queryFormulas = gql`
       dependencyIds
       updatedAt
       createdAt
+      level
+      version
+      kind
     }
   }
 `

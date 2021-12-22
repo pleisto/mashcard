@@ -16,12 +16,14 @@ import {
   View,
   VariableInterface,
   Completion,
-  AnyTypeValue,
+  AnyTypeResult,
   ParseErrorType,
   CodeFragmentResult,
   NamespaceId,
   castVariable,
-  FormulaLexer
+  FormulaLexer,
+  FORMULA_PARSER_VERSION,
+  InterpretContext
 } from '..'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
@@ -37,6 +39,7 @@ export interface BaseParseResult {
   readonly success: boolean
   readonly valid: boolean
   readonly input: string
+  readonly version: number
   readonly inputImage: string
   readonly parseImage: string
   readonly cst?: CstNode
@@ -73,6 +76,7 @@ export interface InterpretInput {
   readonly cst?: CstNode
   readonly meta: VariableMetadata
   readonly formulaContext: ContextInterface
+  readonly interpretContext: InterpretContext
 }
 
 export interface BaseInterpretResult {
@@ -107,6 +111,7 @@ export const parse = ({
   let blockDependencies: NamespaceId[] = []
   let flattenVariableDependencies: Set<VariableDependency> = new Set()
   let newInput = input
+  const version = FORMULA_PARSER_VERSION
   if (!variableId) {
     return {
       success: false,
@@ -115,6 +120,7 @@ export const parse = ({
       valid: false,
       cst: undefined,
       input: newInput,
+      version,
       level,
       errorType: 'parse',
       completions: [],
@@ -138,15 +144,14 @@ export const parse = ({
   let tokens = lexResult.tokens
 
   const endChar = input[input.length - 1]
-  // console.log({ endChar, input })
 
   const specialChars = ['.', ' ', ',', '(', ')', '+', '-', '*', '/', '=', '>', '<', '[', ']', '{', '}']
+  const endCharIsSpecial = specialChars.includes(endChar)
 
-  const index = specialChars.includes(endChar) ? tokens.length - 2 : tokens.length - 1
+  const index = endCharIsSpecial ? tokens.length - 2 : tokens.length - 1
   const lastToken = tokens[index]
 
   const currentCompletion = activeCompletion
-  // const currentCompletion = completions.find(completion => completion.name === lastToken.image)
 
   // console.log({ endChar, lastToken, input, tokens, currentCompletion })
   if (
@@ -155,29 +160,28 @@ export const parse = ({
     lastToken.image.length > 2 &&
     currentCompletion.replacements.find(replacement => replacement.toUpperCase() === lastToken.image.toUpperCase())
   ) {
-    // console.log('start replace', lastToken.image, currentCompletion)
     // TODO spreadsheet && column completion (should in same codefragment)
-    const firstReplacement = currentCompletion.replacements.find(replacement =>
-      input.endsWith(replacement.concat(endChar))
-    )
+
     let image = lastToken.image
+    let firstReplacement
 
-    if (firstReplacement) {
-      image = firstReplacement
+    if (endCharIsSpecial) {
+      firstReplacement = currentCompletion.replacements.find(replacement => input.endsWith(replacement.concat(endChar)))
+      if (firstReplacement) {
+        image = firstReplacement
+      } else {
+        console.error('replacement not found', { currentCompletion, lastToken, input, endChar })
+      }
+
+      newInput = input
+        .slice(0, input.length - image.length - 1)
+        .concat(currentCompletion.value)
+        .concat(endChar)
     } else {
-      console.error('replacement not found', { currentCompletion, lastToken, input })
+      newInput = input.slice(0, input.length - image.length).concat(currentCompletion.value)
     }
 
-    newInput = input.slice(0, input.length - image.length - 1).concat(currentCompletion.value)
-
-    // if (firstReplacement && endChar === '(') {
-    //   // console.log()
-    // } else {
-    //   newInput = newInput.concat(endChar)
-    // }
-    if (specialChars.includes(endChar)) {
-      newInput = newInput.concat(endChar)
-    }
+    // console.log({ input, image, currentCompletion, lastToken })
 
     lexResult = lexer.tokenize(newInput)
     tokens = lexResult.tokens
@@ -259,6 +263,7 @@ export const parse = ({
       input: newInput,
       inputImage,
       parseImage: image,
+      version,
       cst,
       level,
       errorType: 'syntax',
@@ -282,6 +287,7 @@ export const parse = ({
       errorType: 'syntax',
       errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
       level,
+      version,
       completions,
       cst,
       flattenVariableDependencies,
@@ -301,6 +307,7 @@ export const parse = ({
       parseImage: image,
       cst,
       level,
+      version,
       errorType: 'syntax',
       completions,
       errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }],
@@ -325,6 +332,7 @@ export const parse = ({
       parseImage: image,
       cst,
       level,
+      version,
       errorType: 'syntax',
       completions,
       errorMessages: [{ message: 'Variable name exist in same namespace', type: 'name_unique' }],
@@ -344,6 +352,7 @@ export const parse = ({
     parseImage: image,
     cst,
     level,
+    version,
     errorMessages: [],
     completions,
     kind: codeFragmentVisitor.kind,
@@ -355,7 +364,12 @@ export const parse = ({
   }
 }
 
-export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): Promise<InterpretResult> => {
+export const interpret = async ({
+  cst,
+  formulaContext,
+  meta,
+  interpretContext
+}: InterpretInput): Promise<InterpretResult> => {
   if (!cst) {
     const message = 'CST is undefined'
     const errorMessage: ErrorMessage = { message, type: 'fatal' }
@@ -371,8 +385,8 @@ export const interpret = async ({ cst, formulaContext, meta }: InterpretInput): 
     }
   }
   try {
-    const interpreter = new FormulaInterpreter({ formulaContext })
-    const result: AnyTypeValue = await interpreter.visit(cst)
+    const interpreter = new FormulaInterpreter({ formulaContext, meta, interpretContext })
+    const result: AnyTypeResult = await interpreter.visit(cst)
 
     return {
       success: true,
@@ -410,6 +424,7 @@ export const buildVariable = ({
     cst,
     kind,
     codeFragments,
+    version,
     variableDependencies,
     functionDependencies,
     blockDependencies,
@@ -430,6 +445,7 @@ export const buildVariable = ({
     name,
     cst,
     view,
+    version,
     codeFragments,
     definition: input,
     dirty: false,
@@ -485,6 +501,7 @@ export const quickInsert = async ({
     codeFragments,
     kind,
     level,
+    version,
     errorMessages,
     variableDependencies,
     functionDependencies,
@@ -496,7 +513,7 @@ export const quickInsert = async ({
     throw new Error(errorMessages[0]!.message)
   }
 
-  const { variableValue } = await interpret({ cst, formulaContext, meta })
+  const { variableValue } = await interpret({ cst, formulaContext, meta, interpretContext: {} })
 
   const variable: VariableData = {
     namespaceId,
@@ -507,6 +524,7 @@ export const quickInsert = async ({
     view,
     definition: input,
     cst,
+    version,
     kind: kind ?? 'constant',
     codeFragments,
     variableValue,

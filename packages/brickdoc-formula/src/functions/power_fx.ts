@@ -1,5 +1,5 @@
 import {
-  ContextInterface,
+  FunctionContext,
   BasicFunctionClause,
   NumberResult,
   SpreadsheetResult,
@@ -10,7 +10,7 @@ import {
 import { buildPredicate } from '../grammar/predicate'
 
 export const CountIf = (
-  ctx: ContextInterface,
+  ctx: FunctionContext,
   { result: database }: SpreadsheetResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {

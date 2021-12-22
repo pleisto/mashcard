@@ -175,8 +175,12 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "other",
+    "code": "Function",
     "errors": Array [
+      Object {
+        "message": "Unknown function arvar",
+        "type": "syntax",
+      },
       Object {
         "message": "TODO mismatch token FunctionCall",
         "type": "syntax",
@@ -212,8 +216,12 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "other",
+    "code": "Function",
     "errors": Array [
+      Object {
+        "message": "Unknown function arvar",
+        "type": "syntax",
+      },
       Object {
         "message": "TODO mismatch token FunctionCall",
         "type": "syntax",
@@ -249,8 +257,12 @@ Array [
     "type": "number",
   },
   Object {
-    "code": "other",
+    "code": "Function",
     "errors": Array [
+      Object {
+        "message": "Unknown function var",
+        "type": "syntax",
+      },
       Object {
         "message": "TODO mismatch token FunctionCall",
         "type": "syntax",

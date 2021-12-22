@@ -25,8 +25,11 @@ describe('Context', () => {
       id: fooVariableId,
       blockId: fooNamespaceId,
       definition: '=123',
+      kind: 'constant',
       updatedAt: new Date().toDateString(),
       createdAt: 0,
+      version: 0,
+      level: 0,
       cacheValue: {
         type: 'number',
         result: 123
@@ -38,8 +41,11 @@ describe('Context', () => {
       id: barVariableId,
       blockId: barNamespaceId,
       definition: `=ABS(120) + $${fooNamespaceId}@${fooVariableId}`,
+      kind: 'expression',
       updatedAt: new Date().toDateString(),
       createdAt: 0,
+      version: 0,
+      level: 0,
       cacheValue: {
         type: 'number',
         result: 243
@@ -137,7 +143,12 @@ describe('Context', () => {
 
     expect(parseResult.success).toEqual(true)
 
-    const interpretResult = (await interpret({ cst: parseResult.cst, formulaContext, meta })) as SuccessInterpretResult
+    const interpretResult = (await interpret({
+      cst: parseResult.cst,
+      formulaContext,
+      meta,
+      interpretContext: {}
+    })) as SuccessInterpretResult
 
     expect(interpretResult.success).toEqual(true)
 

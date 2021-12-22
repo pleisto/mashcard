@@ -71,7 +71,7 @@ const testCases: TestCase[] = [
   { label: 'column', input: `=$${databaseNamespaceId}#${firstColumnId}`, value: columns[0] },
   { label: 'in database true', input: `=3 in $${databaseNamespaceId}`, value: true },
   { label: 'toArray', input: `=$${databaseNamespaceId}.toArray()`, value: SNAPSHOT_FLAG },
-  { label: 'toRecord', input: `=$${databaseNamespaceId}.toRecord()`, value: SNAPSHOT_FLAG },
+  { label: 'toRecordArray', input: `=$${databaseNamespaceId}.toRecordArray()`, value: SNAPSHOT_FLAG },
   { label: 'Table', input: `=Table([]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Table', input: `=Table([1,2,3]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Table', input: `=Table([{a: 1}, {a: 2}]).toArray()`, value: SNAPSHOT_FLAG },
@@ -146,6 +146,31 @@ const testCases: TestCase[] = [
     value: '2'
   },
   {
+    label: 'VLOOKUP Not found 2 range false',
+    input: `=VLOOKUP("2", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, false)`,
+    value: 'Not found'
+  },
+  {
+    label: 'VLOOKUP 2 range default',
+    input: `=VLOOKUP("2", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    value: '2'
+  },
+  {
+    label: 'VLOOKUP 2 range true',
+    input: `=VLOOKUP("2", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, true)`,
+    value: '2'
+  },
+  {
+    label: 'VLOOKUP ok number',
+    input: `=VLOOKUP(1, $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, true)`,
+    value: '2'
+  },
+  {
+    label: 'VLOOKUP ok number',
+    input: `=VLOOKUP(1, $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, false)`,
+    value: '2'
+  },
+  {
     label: 'VLOOKUP ok string',
     input: `=VLOOKUP("1", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
     value: '2'
@@ -163,7 +188,8 @@ describe('Database Functions', () => {
       const { codeFragments, cst, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext })
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      const result = (await interpret({ cst, meta: newMeta, formulaContext })).variableValue.result.result
+      const result = (await interpret({ cst, meta: newMeta, formulaContext, interpretContext: {} })).variableValue
+        .result.result
       if (value === SNAPSHOT_FLAG) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(result).toMatchSnapshot()

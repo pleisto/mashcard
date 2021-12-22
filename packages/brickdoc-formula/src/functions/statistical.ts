@@ -1,6 +1,6 @@
-import { ContextInterface, BasicFunctionClause, NumberResult } from '..'
+import { FunctionContext, BasicFunctionClause, NumberResult } from '..'
 
-export const AVERAGE = (ctx: ContextInterface, ...numbers: NumberResult[]): NumberResult => {
+export const AVERAGE = (ctx: FunctionContext, ...numbers: NumberResult[]): NumberResult => {
   const sum = numbers.map(number => number.result).reduce((acc, cur) => acc + cur, 0)
   return { type: 'number', result: sum / numbers.length }
 }

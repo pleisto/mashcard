@@ -1,12 +1,12 @@
-import { AnyTypeResult, BasicFunctionClause, ContextInterface, ErrorResult, StringResult } from '..'
+import { AnyTypeResult, BasicFunctionClause, FunctionContext, ErrorResult, StringResult } from '..'
 
-export const ERROR = (ctx: ContextInterface, reason: StringResult): ErrorResult => ({
+export const ERROR = (ctx: FunctionContext, reason: StringResult): ErrorResult => ({
   result: reason.result,
   type: 'Error',
   errorKind: 'custom'
 })
 
-export const IFERROR = (ctx: ContextInterface, expr1: AnyTypeResult, expr2: AnyTypeResult): AnyTypeResult => {
+export const IFERROR = (ctx: FunctionContext, expr1: AnyTypeResult, expr2: AnyTypeResult): AnyTypeResult => {
   if (expr1.type === 'Error') {
     return expr2
   } else {

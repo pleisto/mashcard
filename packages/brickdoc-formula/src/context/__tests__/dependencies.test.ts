@@ -92,7 +92,12 @@ describe('Dependency', () => {
     const parseResult = parse({ formulaContext, meta }) as SuccessParseResult
     expect(parseResult.errorMessages).toEqual([])
     const view = {}
-    const interpretResult = (await interpret({ cst: parseResult.cst, formulaContext, meta })) as SuccessInterpretResult
+    const interpretResult = (await interpret({
+      cst: parseResult.cst,
+      formulaContext,
+      meta,
+      interpretContext: {}
+    })) as SuccessInterpretResult
     expect(interpretResult.errorMessages).toEqual([])
 
     const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })

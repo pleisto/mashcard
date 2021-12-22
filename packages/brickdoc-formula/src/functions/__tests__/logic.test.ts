@@ -1,7 +1,16 @@
 import { FormulaContext } from '../../context'
-import { IF, TRUE, FALSE, NOT, AND, OR } from '../logic'
+import { IF, NOT, AND, OR } from '../logic'
 
-const ctx = new FormulaContext({})
+const ctx = {
+  ctx: new FormulaContext({}),
+  interpretContext: {},
+  meta: {
+    namespaceId: '57622108-1337-4edd-833a-2557835bcfe0',
+    variableId: '481b6dd1-e668-4477-9e47-cfe5cb1239d0',
+    name: 'v',
+    input: '=24'
+  }
+}
 
 describe('logic', () => {
   it('IF', () => {
@@ -11,14 +20,6 @@ describe('logic', () => {
     expect(
       IF(ctx, { result: true, type: 'boolean' }, { result: 1, type: 'number' }, { result: 2, type: 'number' }).result
     ).toBe(1)
-  })
-
-  it('TRUE', () => {
-    expect(TRUE(ctx).result).toBe(true)
-  })
-
-  it('FALSE', () => {
-    expect(FALSE(ctx).result).toBe(false)
   })
 
   it('NOT', () => {

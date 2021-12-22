@@ -8,7 +8,7 @@ export function useFormulaBackendActions(): BackendActions {
 
   return {
     createVariable: async ({
-      t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies }
+      t: { name, variableId, level, namespaceId, version, kind, definition, view, variableValue, variableDependencies }
     }) => {
       // console.log('create', { variableValue })
       const { errors } = await creation({
@@ -18,7 +18,10 @@ export function useFormulaBackendActions(): BackendActions {
             id: variableId,
             cacheValue: variableValue.result,
             name,
+            kind,
             definition,
+            version,
+            level,
             view,
             dependencyIds: variableDependencies.map(dependency => dependency.variableId)
           }
@@ -30,7 +33,7 @@ export function useFormulaBackendActions(): BackendActions {
       }
     },
     updateVariable: async ({
-      t: { name, variableId, namespaceId, definition, view, variableValue, variableDependencies }
+      t: { name, variableId, level, namespaceId, version, kind, definition, view, variableValue, variableDependencies }
     }) => {
       // console.log('update', { variableValue })
       const { errors } = await update({
@@ -39,6 +42,9 @@ export function useFormulaBackendActions(): BackendActions {
             blockId: namespaceId,
             id: variableId,
             name,
+            kind,
+            level,
+            version,
             cacheValue: variableValue.result,
             view,
             dependencyIds: variableDependencies.map(dependency => dependency.variableId),

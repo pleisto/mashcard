@@ -1180,6 +1180,16 @@ type Formula {
   id: UUID!
 
   """
+  kind
+  """
+  kind: String!
+
+  """
+  level
+  """
+  level: Int!
+
+  """
   formula name
   """
   name: String!
@@ -1188,6 +1198,11 @@ type Formula {
   updated at
   """
   updatedAt: ISO8601DateTime!
+
+  """
+  version
+  """
+  version: Int!
 
   """
   formula name
@@ -1230,9 +1245,24 @@ input FormulaCreateInput {
   id: UUID!
 
   """
+  kind
+  """
+  kind: String
+
+  """
+  level
+  """
+  level: Int
+
+  """
   name
   """
   name: String!
+
+  """
+  version
+  """
+  version: Int
 
   """
   view
@@ -1325,9 +1355,24 @@ input FormulaUpdateInput {
   id: UUID!
 
   """
+  kind
+  """
+  kind: String
+
+  """
+  level
+  """
+  level: Int
+
+  """
   name
   """
   name: String
+
+  """
+  version
+  """
+  version: Int
 
   """
   view

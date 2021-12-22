@@ -69,10 +69,10 @@ describe('Complete', () => {
       label: 'var startWith same namespace',
       input: '= 1 + var',
       namespaceId,
-      errorMessage: 'TODO mismatch token FunctionCall',
+      errorMessage: 'Unknown function var',
       weight: 101,
       expectInputImage: '=1+var',
-      expectParseImage: '=1+',
+      expectParseImage: '=1+var',
       expectNewInput: '= 1 + var'
     },
     {
@@ -99,20 +99,20 @@ describe('Complete', () => {
       label: 'var include same namespaceId',
       input: `=1+arvar`,
       namespaceId,
-      errorMessage: 'TODO mismatch token FunctionCall',
+      errorMessage: 'Unknown function arvar',
       weight: 11,
       expectInputImage: '=1+arvar',
-      expectParseImage: '=1+',
+      expectParseImage: '=1+arvar',
       expectNewInput: '=1+arvar'
     },
     {
       label: 'var include different namespaceId',
       input: `=1+arvar`,
       namespaceId: testNamespaceId,
-      errorMessage: 'TODO mismatch token FunctionCall',
+      errorMessage: 'Unknown function arvar',
       weight: 9,
       expectInputImage: '=1+arvar',
-      expectParseImage: '=1+',
+      expectParseImage: '=1+arvar',
       expectNewInput: '=1+arvar'
     },
     // {

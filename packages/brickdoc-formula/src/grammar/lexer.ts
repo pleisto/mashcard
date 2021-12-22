@@ -11,6 +11,7 @@ export const In = createToken({ name: 'In', pattern: /in/, categories: InOperato
 export const ExactIn = createToken({ name: 'ExactIn', pattern: /exactin/, categories: InOperator })
 
 export const Self = createToken({ name: 'Self', pattern: /Self/ })
+export const Input = createToken({ name: 'Input', pattern: /Input/ })
 
 export const And = createToken({
   name: 'And',
@@ -265,6 +266,7 @@ export const allTokens = [
   Semicolon, // ;
 
   Self, // Self
+  Input, // Input
   // FunctionName,
   FunctionName,
 

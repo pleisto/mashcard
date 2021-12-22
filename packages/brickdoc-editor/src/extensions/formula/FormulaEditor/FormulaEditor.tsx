@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { MutableRefObject, useEffect } from 'react'
 import { Editor } from '@tiptap/core'
 import Document from '@tiptap/extension-document'
 import Text from '@tiptap/extension-text'
@@ -11,6 +11,8 @@ import './FormulaEditor.less'
 export interface FormulaEditorProps {
   content: JSONContent | undefined
   editable: boolean
+  position?: MutableRefObject<number>
+  updatePosition?: MutableRefObject<React.Dispatch<React.SetStateAction<number>>>
   updateContent?: (editor: Editor) => void
   keyDownHandler?: KeyDownHandlerType
 }
@@ -18,7 +20,14 @@ export interface FormulaEditorProps {
 const findNearestWord = (content: string, targetIndex: number): string | undefined =>
   content.split(' ').find((word, index) => index + word.length >= targetIndex)
 
-export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable, updateContent, keyDownHandler }) => {
+export const FormulaEditor: React.FC<FormulaEditorProps> = ({
+  content,
+  editable,
+  position: pos,
+  updatePosition,
+  updateContent,
+  keyDownHandler
+}) => {
   const editor = useEditor({
     editable,
     extensions: [Document, Text, Paragraph, CodeFragmentBlockExtension, HandleKeyDownExtension(keyDownHandler)],
@@ -26,6 +35,8 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable,
       updateContent?.(editor)
       if (transaction.selection.from === transaction.selection.to) {
         const position = transaction.selection.from - 1
+
+        updatePosition?.current(position)
 
         if (position < 1) return
         const blocks: JSONContent[] = editor.getJSON().content?.[0].content ?? []
@@ -55,10 +66,19 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ content, editable,
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && content) {
-      editor.commands.replaceRoot(content)
+      // console.log({ pos: pos?.current })
+      if (pos) {
+        editor
+          .chain()
+          .replaceRoot(content)
+          .setTextSelection(pos.current + 1)
+          .run()
+      } else {
+        editor.commands.replaceRoot(content)
+      }
       // console.log({ content, editor, label: 'after replace root' })
     }
-  }, [editor, content])
+  }, [editor, content, pos])
 
   return (
     <>

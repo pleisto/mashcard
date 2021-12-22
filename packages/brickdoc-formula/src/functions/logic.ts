@@ -1,27 +1,23 @@
-import { ContextInterface, AnyTypeResult, BooleanResult, BasicFunctionClause } from '..'
+import { AnyTypeResult, BooleanResult, BasicFunctionClause, FunctionContext } from '..'
 
 export const IF = (
-  ctx: ContextInterface,
+  ctx: FunctionContext,
   condition: BooleanResult,
   ifTrue: AnyTypeResult,
   ifFalse: AnyTypeResult
 ): AnyTypeResult => (condition.result ? ifTrue : ifFalse)
 
-export const TRUE = (ctx: ContextInterface): BooleanResult => ({ type: 'boolean', result: true })
-
-export const FALSE = (ctx: ContextInterface): BooleanResult => ({ type: 'boolean', result: false })
-
-export const AND = (ctx: ContextInterface, ...conditions: BooleanResult[]): BooleanResult => ({
+export const AND = (ctx: FunctionContext, ...conditions: BooleanResult[]): BooleanResult => ({
   type: 'boolean',
   result: conditions.map(c => c.result).reduce((acc, condition) => acc && condition, true)
 })
 
-export const OR = (ctx: ContextInterface, ...conditions: BooleanResult[]): BooleanResult => ({
+export const OR = (ctx: FunctionContext, ...conditions: BooleanResult[]): BooleanResult => ({
   result: conditions.map(c => c.result).reduce((acc, condition) => acc || condition, false),
   type: 'boolean'
 })
 
-export const NOT = (ctx: ContextInterface, term: BooleanResult): BooleanResult => ({
+export const NOT = (ctx: FunctionContext, term: BooleanResult): BooleanResult => ({
   type: 'boolean',
   result: !term.result
 })
@@ -58,38 +54,6 @@ const IF_CLAUSE: BasicFunctionClause<any> = {
 }
 
 const BOOLEAN_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
-  {
-    name: 'TRUE',
-    async: false,
-    pure: true,
-    lazy: false,
-    acceptError: false,
-    effect: false,
-    description: 'Returns true.',
-    group: 'core',
-    args: [],
-    examples: [{ input: '=TRUE()', output: { type: 'boolean', result: true } }],
-    returns: 'boolean',
-    testCases: [],
-    chain: false,
-    reference: TRUE
-  },
-  {
-    name: 'FALSE',
-    async: false,
-    pure: true,
-    lazy: false,
-    acceptError: false,
-    effect: false,
-    description: 'Returns false.',
-    group: 'core',
-    args: [],
-    examples: [{ input: '=FALSE()', output: { type: 'boolean', result: false } }],
-    returns: 'boolean',
-    testCases: [],
-    chain: false,
-    reference: FALSE
-  },
   {
     name: 'NOT',
     async: false,

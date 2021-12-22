@@ -8,6 +8,9 @@ module Docs
     argument :view, GraphQL::Types::JSON, 'view', required: false
     argument :dependency_ids, [BrickGraphQL::Scalars::UUID], 'dependencies', required: true
     argument :cache_value, GraphQL::Types::JSON, 'dump value', required: false
+    argument :version, Integer, 'version', required: false
+    argument :level, Integer, 'level', required: false
+    argument :kind, String, 'kind', required: false
 
     def resolve(args)
       Docs::Formula.create!(args.to_h)

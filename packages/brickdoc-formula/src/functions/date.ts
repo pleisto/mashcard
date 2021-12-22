@@ -1,8 +1,8 @@
-import { ContextInterface, BasicFunctionClause, DateResult, StringResult } from '..'
+import { BasicFunctionClause, DateResult, StringResult, FunctionContext } from '..'
 
-export const NOW = (ctx: ContextInterface): DateResult => ({ result: new Date(), type: 'Date' })
+export const NOW = (ctx: FunctionContext): DateResult => ({ result: new Date(), type: 'Date' })
 
-export const DATE = (ctx: ContextInterface, date: StringResult): DateResult => ({
+export const DATE = (ctx: FunctionContext, date: StringResult): DateResult => ({
   result: new Date(date.result),
   type: 'Date'
 })

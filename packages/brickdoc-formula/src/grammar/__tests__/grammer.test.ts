@@ -449,8 +449,16 @@ const testCases: TestCase[] = [
     errorMessage: 'Expected boolean but got number'
   },
   {
-    input: '=true and !2 && TRUE()',
+    input: '=true and !2 && true',
     value: false
+  },
+  {
+    input: '=Input.foo',
+    value: 'Key foo not found'
+  },
+  {
+    input: '=Input.bar',
+    value: 'bar123'
   },
   // Error
   {
@@ -606,7 +614,7 @@ const testCases: TestCase[] = [
     value: true
   },
   {
-    input: '=ABS(IF(FALSE(), -3, -4))',
+    input: '=ABS(IF(false, -3, -4))',
     value: 4
   },
   {
@@ -767,7 +775,7 @@ const testCases: TestCase[] = [
     errorMessage: 'Expected boolean but got number'
   },
   {
-    input: '=ABS ( TRUE() )',
+    input: '=ABS ( true )',
     parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
   },
@@ -786,6 +794,11 @@ const testCases: TestCase[] = [
   {
     input: '=1; 2; (1+3)',
     label: 'multiline ok',
+    value: 4
+  },
+  {
+    input: '=ABS(1; 2; (1+3))',
+    label: 'multiline function call ok',
     value: 4
   },
   {
@@ -821,7 +834,7 @@ const testCases: TestCase[] = [
     input: '=varvarabc中文var',
     label: 'TODO chinese2',
     parseErrorType: 'syntax',
-    errorMessage: 'TODO mismatch token FunctionCall'
+    errorMessage: 'Unknown function varvarabc'
   },
   {
     input: '= nottrue',
@@ -903,7 +916,12 @@ describe('Simple test case', () => {
           success: interpretSuccess,
           variableValue,
           errorMessages: interpretErrorMessages
-        } = await interpret({ cst, meta: newMeta, formulaContext })
+        } = await interpret({
+          cst,
+          meta: newMeta,
+          formulaContext,
+          interpretContext: { bar: { type: 'string', result: 'bar123' } }
+        })
 
         expect(errorMessages).toEqual([])
         expect(interpretErrorMessages).toEqual([])

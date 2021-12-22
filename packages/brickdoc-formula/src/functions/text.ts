@@ -1,11 +1,11 @@
-import { ContextInterface, BasicFunctionClause, NumberResult, StringResult } from '..'
+import { FunctionContext, BasicFunctionClause, NumberResult, StringResult } from '..'
 
-export const LEN = (ctx: ContextInterface, str: StringResult): NumberResult => ({
+export const LEN = (ctx: FunctionContext, str: StringResult): NumberResult => ({
   result: str.result.length,
   type: 'number'
 })
 
-export const TRIM = (ctx: ContextInterface, str: StringResult): StringResult => ({
+export const TRIM = (ctx: FunctionContext, str: StringResult): StringResult => ({
   result: str.result.trim(),
   type: 'string'
 })

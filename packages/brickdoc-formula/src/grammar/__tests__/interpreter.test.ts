@@ -75,7 +75,7 @@ describe('Custom Function', () => {
     const newMeta = { ...meta, input }
     const { success, cst } = parse({ ...parseInput, meta: newMeta, formulaContext: localFormulaContext })
     expect(success).toEqual(true)
-    const result = await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext })
+    const result = await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext, interpretContext: {} })
     expect(result.variableValue.result.result).toEqual(2)
     expect(cst).toMatchSnapshot()
   })
@@ -119,7 +119,8 @@ describe('Custom Function', () => {
     const { success, cst } = parse({ ...parseInput, meta: newMeta, formulaContext: localFormulaContext })
     expect(success).toEqual(true)
     expect(
-      (await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext })).variableValue.result.result
+      (await interpret({ cst, meta: newMeta, formulaContext: localFormulaContext, interpretContext: {} })).variableValue
+        .result.result
     ).toEqual(42)
   })
 })
@@ -137,7 +138,9 @@ describe('Context', () => {
     const newMeta = { ...meta, input }
     const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
     expect(errorMessages).toEqual([])
-    expect((await interpret({ cst, meta: newMeta, formulaContext })).variableValue.result.result).toEqual(24)
+    expect(
+      (await interpret({ cst, meta: newMeta, formulaContext, interpretContext: {} })).variableValue.result.result
+    ).toEqual(24)
   })
 
   it('expression variable', async () => {
@@ -172,7 +175,9 @@ describe('Context', () => {
     const newMeta = { ...meta, input }
     const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
     expect(errorMessages).toEqual([])
-    expect((await interpret({ cst, formulaContext, meta: newMeta })).variableValue.result.result).toEqual(34)
+    expect(
+      (await interpret({ cst, formulaContext, meta: newMeta, interpretContext: {} })).variableValue.result.result
+    ).toEqual(34)
   })
 
   it('Type', () => {

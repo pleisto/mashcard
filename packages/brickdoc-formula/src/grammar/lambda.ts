@@ -1,34 +1,37 @@
 import { CstNode } from 'chevrotain'
-import { ContextInterface, ControlType, FunctionResult, Reference } from '..'
+import { ControlType, FunctionContext, FunctionResult, Reference } from '..'
 
 export type Lambda = () => void
 
-export const functionResult2lambda = (ctx: ContextInterface, { result }: FunctionResult, ctrl: ControlType): Lambda => {
-  if (result.name !== 'Set') {
-    throw new Error('Only Set is supported')
-  }
-
-  const [ref, cst] = result.args
-  // console.log({ ref, cst, ctrl })
-
-  const reference = ref.result as Reference
-  const cstdata = cst.result as CstNode
-
-  if (reference.kind !== 'variable') {
-    throw new Error('Only variable reference is supported')
-  }
+export const functionResult2lambda = <T extends ControlType>(
+  ctx: FunctionContext,
+  { result }: FunctionResult,
+  ctrl: T
+): Lambda => {
+  result.forEach(({ name }) => {
+    if (name !== 'Set') {
+      throw new Error('Only Set is supported')
+    }
+  })
 
   return () => {
-    if (reference.kind === 'variable') {
-      const variable = ctx.findVariable(reference.namespaceId, reference.variableId)!
+    result.forEach(({ args: [ref, cst] }) => {
+      const reference = ref.result as Reference
+      const cstdata = cst.result as CstNode
 
-      if (variable.t.kind === 'expression') {
-        throw new Error('Only variable reference is supported')
+      if (reference.kind === 'variable') {
+        const variable = ctx.ctx.findVariable(reference.namespaceId, reference.variableId)!
+
+        if (variable.t.kind === 'expression') {
+          throw new Error('Only constant variable is supported')
+        }
+
+        variable.updateCst(cstdata, ctx.interpretContext)
+      } else if (reference.kind === 'self' && reference.attribute) {
+        console.log('self', { reference, cstdata })
       }
+    })
 
-      variable.updateCst(cstdata)
-    }
-    // ctrl.name = 'Clicked'
-    console.log(`Button clicked`)
+    console.log(`lambda called ${ctrl.kind}`)
   }
 }

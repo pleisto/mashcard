@@ -33,7 +33,8 @@ import {
   LBrace,
   RBrace,
   Colon,
-  Self
+  Self,
+  Input
 } from './lexer'
 
 interface ParserConfig {
@@ -242,7 +243,11 @@ export class FormulaParser extends CstParser {
   })
 
   public lazyVariableExpression = this.RULE('lazyVariableExpression', () => {
-    this.OR([{ ALT: () => this.SUBRULE(this.variableExpression) }, { ALT: () => this.CONSUME(Self) }])
+    this.OR([
+      { ALT: () => this.SUBRULE(this.variableExpression) },
+      { ALT: () => this.CONSUME(Self) },
+      { ALT: () => this.CONSUME(Input) }
+    ])
   })
 
   public variableExpression = this.RULE('variableExpression', () => {

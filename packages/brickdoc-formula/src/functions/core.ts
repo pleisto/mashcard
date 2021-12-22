@@ -1,8 +1,22 @@
-import { ContextInterface, BasicFunctionClause, ErrorResult, ReferenceResult, FunctionResult, CstResult } from '..'
+import { FunctionContext, BasicFunctionClause, ErrorResult, ReferenceResult, FunctionResult, CstResult } from '..'
 
-export const Set = (ctx: ContextInterface, ref: ReferenceResult, cst: CstResult): FunctionResult | ErrorResult => {
+export const Set = (ctx: FunctionContext, ref: ReferenceResult, cst: CstResult): FunctionResult | ErrorResult => {
   // TODO check ref as constant
-  return { type: 'Function', result: { name: 'Set', args: [ref, cst] } }
+  const reference = ref.result
+  if (reference.kind === 'variable') {
+    const variable = ctx.ctx.findVariable(reference.namespaceId, reference.variableId)
+    if (!variable) {
+      return { type: 'Error', errorKind: 'runtime', result: 'Variable not found' }
+    }
+    if (variable.t.kind === 'expression') {
+      return {
+        type: 'Error',
+        errorKind: 'runtime',
+        result: 'Only constant variable is supported'
+      }
+    }
+  }
+  return { type: 'Function', result: [{ name: 'Set', args: [ref, cst] }] }
 }
 
 export const CORE_CORE_CLAUSES: Array<BasicFunctionClause<any>> = [
