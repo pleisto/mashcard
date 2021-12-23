@@ -26,6 +26,13 @@ describe('BlockContainer', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
+  it('inline', () => {
+    const { container } = render(<BlockContainer inline={true}>block</BlockContainer>)
+
+    // expect dom has two pseudo span element at before and after
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
   it('with actionOptions', () => {
     const { container } = render(
       <BlockContainer
@@ -34,7 +41,8 @@ describe('BlockContainer', () => {
             type: 'item',
             name: 'item'
           }
-        ]}>
+        ]}
+      >
         block
       </BlockContainer>
     )

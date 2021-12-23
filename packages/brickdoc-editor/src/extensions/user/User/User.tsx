@@ -1,17 +1,18 @@
 import React from 'react'
-import { Avatar } from '@brickdoc/design-system'
 import { NodeViewProps } from '@tiptap/react'
+import { Avatar } from '@brickdoc/design-system'
 import { BlockContainer } from '../../../components'
+import { EditorContext } from '../../../context/EditorContext'
 import './User.less'
-import { useEditorI18n } from '../../..'
 
 export interface UserProps extends NodeViewProps {}
 
-export const User: React.FC<UserProps> = ({ editor, node }) => {
-  const [t] = useEditorI18n()
+export const User: React.FC<UserProps> = ({ node }) => {
+  const { t } = React.useContext(EditorContext)
+
   const attributes = node.attrs.people ?? {}
   return (
-    <BlockContainer as="span">
+    <BlockContainer inline={true}>
       <Avatar
         size="small"
         initials={attributes.name ?? attributes.webid}

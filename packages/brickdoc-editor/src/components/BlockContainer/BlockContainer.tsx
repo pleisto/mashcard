@@ -1,12 +1,13 @@
 import React from 'react'
 import { NodeViewWrapper, NodeViewWrapperProps, NodeViewProps } from '@tiptap/react'
-import { EditorDataSourceContext } from '../../dataSource/DataSource'
-import { BlockActions, BlockActionsProps } from '../BlockActions'
-import { BlockContext, BlockContextData } from '../../context/BlockContext'
-import { message } from '@brickdoc/design-system'
-import { EditorContext } from '../../context/EditorContext'
+import { BlockActionsProps } from '../BlockActions'
+import { BlockContext } from '../../context/BlockContext'
+import { useDocumentEditable } from '../../hooks'
+import { useBlockContextDataProvider } from './useBlockContextDataProvider'
+import { useBlockElement } from './useBlockElement'
 
 export interface BlockContainerProps {
+  inline?: boolean
   deleteNode?: NodeViewProps['deleteNode']
   className?: string
   style?: React.CSSProperties
@@ -17,38 +18,20 @@ export interface BlockContainerProps {
 }
 
 export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef(
-  ({ children, style, actionOptions, deleteNode, contentForCopy, ...props }, ref) => {
-    const { t } = React.useContext(EditorContext)
-    const blockContextData = React.useMemo<BlockContextData>(
-      () => ({
-        deleteBlock: () => deleteNode?.(),
-        duplicateBlock() {},
-        moveBlock() {},
-        copyContent: async () => {
-          await navigator.clipboard.writeText(contentForCopy ?? '')
-          void message.success(t('copy_hint'))
-        }
-      }),
-      [contentForCopy, deleteNode, t]
-    )
-
-    const editorDataSource = React.useContext(EditorDataSourceContext)
-    const [isEditable, setEditable] = React.useState(editorDataSource.documentEditable)
-    editorDataSource.onUpdate(type => {
-      if (type === 'documentEditable') {
-        setEditable(editorDataSource.documentEditable)
-      }
-    })
-
-    const pointerStyle: React.CSSProperties = { pointerEvents: isEditable ? 'unset' : 'none' }
-    const hasActionOptions = (actionOptions?.length ?? 0) > 0
+  ({ children, inline, as, style, actionOptions, deleteNode, contentForCopy, ...props }, ref) => {
+    const [blockContextData] = useBlockContextDataProvider({ deleteNode, contentForCopy })
+    const [documentEditable] = useDocumentEditable()
+    const [blockElement] = useBlockElement(children, !!inline, actionOptions)
+    const asElement = as ?? inline ? 'span' : undefined
 
     return (
-      <NodeViewWrapper {...props} style={{ ...style, ...pointerStyle }} ref={ref}>
-        <BlockContext.Provider value={blockContextData}>
-          {hasActionOptions && <BlockActions options={actionOptions!}>{children}</BlockActions>}
-          {!hasActionOptions && children}
-        </BlockContext.Provider>
+      <NodeViewWrapper
+        {...props}
+        as={asElement}
+        style={{ ...style, ...{ pointerEvents: documentEditable ? 'unset' : 'none' } }}
+        ref={ref}
+      >
+        <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )
   }
