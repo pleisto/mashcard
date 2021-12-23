@@ -9,8 +9,8 @@ const Pseudo = styled('span', {
 
 export function useBlockElement(
   originElement: React.ReactNode,
-  inline: boolean,
-  actionOptions: BlockContainerProps['actionOptions']
+  actionOptions: BlockContainerProps['actionOptions'],
+  inline?: boolean
 ): [React.ReactNode] {
   let blockElement = originElement
   if (inline) {
