@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { BlockContext } from '../../context/BlockContext'
 import { ActionItemOption, ActionItemOptionGroup } from './BlockActions'
+import { EditorContext } from '../../context/EditorContext'
 
 export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move'
 
@@ -11,6 +12,7 @@ export interface UseActionOptionsProps {
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionItemOptionGroup | null {
   const { deleteBlock, duplicateBlock, copyContent, moveBlock } = React.useContext(BlockContext)
+  const { t } = React.useContext(EditorContext)
 
   return React.useMemo<ActionItemOptionGroup | null>(() => {
     const group: ActionItemOptionGroup = []
@@ -22,6 +24,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
 
     if (types.includes('duplicate')) {
       normalGroup.push({
+        label: t('block_actions.basic.duplicate'),
         name: 'duplicate',
         type: 'item',
         icon: <Icon.Copy />,
@@ -33,6 +36,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
     if (types.includes('copy')) {
       normalGroup.push({
         name: 'copy',
+        label: t('block_actions.basic.copy'),
         type: 'item',
         icon: <Icon.Link />,
         onAction: copyContent,
@@ -42,6 +46,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
 
     if (types.includes('move')) {
       normalGroup.push({
+        label: t('block_actions.basic.move'),
         name: 'move',
         type: 'item',
         icon: <Icon.MoveIn />,
@@ -56,6 +61,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
 
     if (types.includes('delete'))
       group.push({
+        label: t('block_actions.basic.delete'),
         name: 'delete',
         type: 'item',
         icon: <Icon.Delete />,
@@ -64,5 +70,5 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
       })
 
     return group
-  }, [copyContent, deleteBlock, duplicateBlock, moveBlock, types])
+  }, [copyContent, deleteBlock, duplicateBlock, moveBlock, t, types])
 }

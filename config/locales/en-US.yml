@@ -746,6 +746,11 @@ en-US:
     toolbar:
       separator: Menu separator
     block_actions:
+      basic:
+        copy: Copy
+        move: Move
+        duplicate: Duplicate
+        delete: Delete
       more: More
     slashmenu:
       heading: Brickdoc

@@ -50,11 +50,12 @@ export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = (
                     <Menu.Item
                       key={item.name}
                       icon={item.icon}
-                      label={item.name}
+                      label={item.label ?? item.name}
                       onAction={key => {
                         item.onAction?.(key)
                         if (item.closeOnAction) setVisible(false)
-                      }}>
+                      }}
+                    >
                       {item.content}
                     </Menu.Item>
                   ))}
@@ -68,7 +69,8 @@ export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = (
             )
           })}
         </Menu>
-      }>
+      }
+    >
       {option.icon && <ToolbarMenuItem option={option} />}
       {!option.icon && (
         <DropdownItem active={option.active}>

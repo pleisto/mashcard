@@ -16,6 +16,7 @@ export interface ToolbarOptionBase {
 
 export interface ToolbarItemOption extends ToolbarOptionBase {
   type: 'item'
+  label?: string
 }
 
 export interface ToolbarDropdownOption extends ToolbarOptionBase {
