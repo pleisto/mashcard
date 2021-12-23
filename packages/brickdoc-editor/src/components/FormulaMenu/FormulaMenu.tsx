@@ -154,317 +154,312 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const [activeCompletion, setActiveCompletion] = React.useState<Completion | undefined>(completions[0])
   const [activeCompletionIndex, setActiveCompletionIndex] = React.useState<number>(0)
 
-    const [position, setPosition] = React.useState(0)
+  const [position, setPosition] = React.useState(0)
 
-    const latestPosition = React.useRef(position)
-    React.useEffect(() => {
-      latestPosition.current = position
-    }, [position])
+  const latestPosition = React.useRef(position)
+  React.useEffect(() => {
+    latestPosition.current = position
+  }, [position])
 
-    const latestSetPosition = React.useRef(setPosition)
-    React.useEffect(() => {
-      latestSetPosition.current = setPosition
-    }, [setPosition])
+  const latestSetPosition = React.useRef(setPosition)
+  React.useEffect(() => {
+    latestSetPosition.current = setPosition
+  }, [setPosition])
 
-    const latestActiveCompletion = React.useRef(activeCompletion)
-    React.useEffect(() => {
-      latestActiveCompletion.current = activeCompletion
-    }, [activeCompletion])
+  const latestActiveCompletion = React.useRef(activeCompletion)
+  React.useEffect(() => {
+    latestActiveCompletion.current = activeCompletion
+  }, [activeCompletion])
 
-    const latestContent = React.useRef(content)
-    React.useEffect(() => {
-      latestContent.current = content
-    }, [content])
+  const latestContent = React.useRef(content)
+  React.useEffect(() => {
+    latestContent.current = content
+  }, [content])
 
-    const latestActiveCompletionIndex = React.useRef(activeCompletionIndex)
-    React.useEffect(() => {
-      latestActiveCompletionIndex.current = activeCompletionIndex
-    }, [activeCompletionIndex])
+  const latestActiveCompletionIndex = React.useRef(activeCompletionIndex)
+  React.useEffect(() => {
+    latestActiveCompletionIndex.current = activeCompletionIndex
+  }, [activeCompletionIndex])
 
-    const latestCompletions = React.useRef(completions)
-    React.useEffect(() => {
-      latestCompletions.current = completions
-    }, [completions])
+  const latestCompletions = React.useRef(completions)
+  React.useEffect(() => {
+    latestCompletions.current = completions
+  }, [completions])
 
-    const latestSetActiveCompletion = React.useRef(setActiveCompletion)
-    React.useEffect(() => {
-      latestSetActiveCompletion.current = setActiveCompletion
-    }, [setActiveCompletion])
+  const latestSetActiveCompletion = React.useRef(setActiveCompletion)
+  React.useEffect(() => {
+    latestSetActiveCompletion.current = setActiveCompletion
+  }, [setActiveCompletion])
 
-    const latestSetActiveCompletionIndex = React.useRef(setActiveCompletionIndex)
-    React.useEffect(() => {
-      latestSetActiveCompletionIndex.current = setActiveCompletionIndex
-    }, [setActiveCompletionIndex])
+  const latestSetActiveCompletionIndex = React.useRef(setActiveCompletionIndex)
+  React.useEffect(() => {
+    latestSetActiveCompletionIndex.current = setActiveCompletionIndex
+  }, [setActiveCompletionIndex])
 
-    const close = (): void => {
-      if (clear) {
-        setContent(defaultContent)
-        setName(variable?.t.name)
-        setDefaultName(contextDefaultName)
-        setCompletions(contextCompletions)
-        setInput(definition)
-        setActiveCompletion(completions[0])
-        setActiveCompletionIndex(0)
-        setError(undefined)
-      }
-      setVisible(false)
-      onVisibleChange?.(false)
+  const close = (): void => {
+    if (clear) {
+      setContent(defaultContent)
+      setName(variable?.t.name)
+      setDefaultName(contextDefaultName)
+      setCompletions(contextCompletions)
+      setInput(definition)
+      setActiveCompletion(completions[0])
+      setActiveCompletionIndex(0)
+      setError(undefined)
+    }
+    setVisible(false)
+    onVisibleChange?.(false)
+  }
+
+  const onPopoverVisibleChange = (visible: boolean): void => {
+    onVisibleChange?.(visible)
+
+    if (!visible) {
+      close()
+      return
+    }
+    setVisible(visible)
+  }
+
+  const handleSelectActiveCompletion = (completion?: Completion, inputContent?: JSONContent): void => {
+    const currentCompletion = completion ?? latestActiveCompletion.current
+    const currentContent = inputContent ?? latestContent.current
+
+    if (!currentCompletion) {
+      console.error('No active completion!')
+      return
     }
 
-    const onPopoverVisibleChange = (visible: boolean): void => {
-      onVisibleChange?.(visible)
-
-      if (!visible) {
-        close()
-        return
-      }
-      setVisible(visible)
-    }
-
-    const handleSelectActiveCompletion = (completion?: Completion, inputContent?: JSONContent): void => {
-      const currentCompletion = completion ?? latestActiveCompletion.current
-      const currentContent = inputContent ?? latestContent.current
-
-      if (!currentCompletion) {
-        console.error('No active completion!')
-        return
-      }
-
-      let oldContent = currentContent?.content ?? []
-      const oldContentLast = oldContent[oldContent.length - 1]
-      // console.log('Before replace', { oldContentLast, currentCompletion })
-      if (oldContentLast && oldContentLast.type === 'codeFragmentBlock' && currentCompletion.replacements.length) {
-        const text = contentToInput(currentContent!)
-        // console.log('start replace', { oldContentLast, currentCompletion, currentContent, text })
-        if (!text || currentCompletion.replacements.includes(text)) {
-          oldContent = []
-          // console.log('remove last one...', oldContent)
+    let oldContent = currentContent?.content ?? []
+    const oldContentLast = oldContent[oldContent.length - 1]
+    // console.log('Before replace', { oldContentLast, currentCompletion })
+    if (oldContentLast && oldContentLast.type === 'codeFragmentBlock' && currentCompletion.replacements.length) {
+      const text = contentToInput(currentContent!)
+      // console.log('start replace', { oldContentLast, currentCompletion, currentContent, text })
+      if (!text || currentCompletion.replacements.includes(text)) {
+        oldContent = []
+        // console.log('remove last one...', oldContent)
+      } else {
+        const replacement = currentCompletion.replacements.find(replacement => text.endsWith(replacement))
+        if (!replacement) {
+          console.info('replacement not found 1', { text, currentCompletion })
         } else {
-          const replacement = currentCompletion.replacements.find(replacement => text.endsWith(replacement))
-          if (!replacement) {
-            console.info('replacement not found 1', { text, currentCompletion })
-          } else {
-            const newText = text.substring(0, text.length - replacement.length)
+          const newText = text.substring(0, text.length - replacement.length)
 
-            oldContent = [
-              {
-                type: 'codeFragmentBlock',
-                attrs: { ...oldContentLast.attrs, name: newText },
-                content: [{ type: 'text', text: newText }]
-              }
-            ]
-          }
-          // console.log('replace..', newText, oldContent)
+          oldContent = [
+            {
+              type: 'codeFragmentBlock',
+              attrs: { ...oldContentLast.attrs, name: newText },
+              content: [{ type: 'text', text: newText }]
+            }
+          ]
         }
+        // console.log('replace..', newText, oldContent)
       }
-
-      const value = currentCompletion.value
-      const attrs: CodeFragmentWithBlockId = { ...currentCompletion.codeFragment, blockId: rootId }
-
-      const completionContents: JSONContent[] = [
-        { type: 'codeFragmentBlock', attrs, content: [{ type: 'text', text: value }] }
-      ]
-      const newContent = [...oldContent, ...completionContents]
-      const finalContent = { type: 'doc', content: newContent }
-      const finalInput = `=${contentToInput(finalContent)}`
-      setContent(finalContent)
-      setInput(finalInput)
-      console.log({ currentCompletion, content, attrs, label: 'selectCompletion', newContent, finalInput })
-      void doCalculate({ newInput: finalInput })
     }
-    const keyDownHandler = useKeydownHandler({
-      completions: latestCompletions,
-      activeCompletion: latestActiveCompletion,
-      content: latestContent,
-      activeCompletionIndex: latestActiveCompletionIndex,
-      handleSelectActiveCompletion,
-      setActiveCompletion: latestSetActiveCompletion,
-      setActiveCompletionIndex: latestSetActiveCompletionIndex
+
+    const value = currentCompletion.value
+    const attrs: CodeFragmentWithBlockId = { ...currentCompletion.codeFragment, blockId: rootId }
+
+    const completionContents: JSONContent[] = [
+      { type: 'codeFragmentBlock', attrs, content: [{ type: 'text', text: value }] }
+    ]
+    const newContent = [...oldContent, ...completionContents]
+    const finalContent = { type: 'doc', content: newContent }
+    const finalInput = `=${contentToInput(finalContent)}`
+    setContent(finalContent)
+    setInput(finalInput)
+    console.log({ currentCompletion, content, attrs, label: 'selectCompletion', newContent, finalInput })
+    void doCalculate({ newInput: finalInput })
+  }
+  const keyDownHandler = useKeydownHandler({
+    completions: latestCompletions,
+    activeCompletion: latestActiveCompletion,
+    content: latestContent,
+    activeCompletionIndex: latestActiveCompletionIndex,
+    handleSelectActiveCompletion,
+    setActiveCompletion: latestSetActiveCompletion,
+    setActiveCompletionIndex: latestSetActiveCompletionIndex
+  })
+
+  const contentToInput = (content: JSONContent): string => {
+    return (
+      content.content?.map((c: JSONContent) => (c.type === 'text' ? c.text : c.content?.[0].text ?? '')).join('') ?? ''
+    )
+  }
+
+  const handleValueChange = (editor: Editor): void => {
+    const text = `=${contentToInput(editor.getJSON().content?.[0] ?? [])}`
+    // console.log({ content, json: editor.getJSON(), editor, text, formulaContext, label: 'updateValue' })
+    setInput(text)
+    setContent(editor.getJSON() as JSONContent)
+    void doCalculate({ newInput: text })
+  }
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setName(e.target.value)
+    void doCalculate({ newName: e.target.value })
+  }
+
+  const doCalculate = async ({ newName, newInput }: { newName?: string; newInput?: string }): Promise<void> => {
+    if (!formulaContext || !(newInput ?? input)) {
+      console.log('no final input!')
+      return
+    }
+
+    const finalName = newName ?? name ?? defaultName
+    const finalInput = newInput ?? `=${input}`
+
+    if (finalInput.trim() === '=') {
+      return
+    }
+
+    // console.log({
+    //   finalName,
+    //   newName,
+    //   newInput,
+    //   input,
+    //   finalInput,
+    //   activeCompletion,
+    //   latestActiveCompletion: latestActiveCompletion.current
+    // })
+
+    const result = await calculate({
+      namespaceId: rootId,
+      activeCompletion: latestActiveCompletion.current,
+      variable,
+      name: finalName,
+      input: finalInput,
+      formulaContext
     })
 
-    const contentToInput = (content: JSONContent): string => {
-      return (
-        content.content?.map((c: JSONContent) => (c.type === 'text' ? c.text : c.content?.[0].text ?? '')).join('') ??
-        ''
-      )
+    if (!result) return
+
+    const { interpretResult, parseResult, completions, newVariable, errors } = result
+
+    if (parseResult.valid) {
+      setContent(codeFragmentsToJSONContent(parseResult.codeFragments, rootId))
+      setInput(parseResult.codeFragments.map(fragment => fragment.name).join(''))
+    } else if (parseResult.input !== input && parseResult.input !== '=') {
+      const content = { type: 'doc', content: [{ type: 'text', text: parseResult.input }] }
+      console.log({ content, newINput: parseResult.input, input, parseResult, label: 'ReplaceInput' })
+      setContent(content)
+      setInput(parseResult.input)
     }
 
-    const handleValueChange = (editor: Editor): void => {
-      const text = `=${contentToInput(editor.getJSON().content?.[0] ?? [])}`
-      // console.log({ content, json: editor.getJSON(), editor, text, formulaContext, label: 'updateValue' })
-      setInput(text)
-      setContent(editor.getJSON() as JSONContent)
-      void doCalculate({ newInput: text })
+    updateVariable?.(newVariable)
+    setCompletions(completions)
+    setActiveCompletion(completions[0])
+    setError(errors.length ? errors[0] : undefined)
+
+    if (interpretResult.success) {
+      const type = interpretResult.variableValue.result.type
+      setDefaultName(formulaContext.getDefaultVariableName(rootId, type))
+    }
+  }
+
+  const handleSave = async (): Promise<void> => {
+    if (!(name ?? defaultName) || !input || !variable) return
+    if (!formulaContext) return
+    const finalName = name ?? defaultName
+
+    variable.t.name = finalName
+    variable.t.definition = `=${input}`
+
+    if (updateFormula) {
+      updateFormula(variable.t.variableId)
+    } else {
+      editor.chain().setFormula(variable.t.variableId).focus().run()
     }
 
-    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-      setName(e.target.value)
-      void doCalculate({ newName: e.target.value })
-    }
+    await formulaContext.commitVariable({ variable })
+    setName(finalName)
+    updateVariable?.(variable)
 
-    const doCalculate = async ({ newName, newInput }: { newName?: string; newInput?: string }): Promise<void> => {
-      if (!formulaContext || !(newInput ?? input)) {
-        console.log('no final input!')
-        return
+    console.log({ label: 'save ...', input, variable, updateVariable, formulaContext })
+    close()
+  }
+
+  const handleCancel = (): void => {
+    close()
+  }
+
+  const handleDelete = (): void => {
+    Modal.confirm({
+      zIndex: 1070,
+      title: t(`${i18nKey}.delete_confirm.title`),
+      okText: t(`${i18nKey}.delete_confirm.ok`),
+      okButtonProps: { danger: true },
+      cancelText: t(`${i18nKey}.delete_confirm.cancel`),
+      icon: null,
+      onOk: async () => {
+        if (!variable || !getPos || !node) return
+        const position = getPos()
+        void (await formulaContext?.removeVariable(rootId, variable.t.variableId))
+        editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
       }
+    })
+  }
 
-      const finalName = newName ?? name ?? defaultName
-      const finalInput = newInput ?? `=${input}`
-
-      if (finalInput.trim() === '=') {
-        return
-      }
-
-      // console.log({
-      //   finalName,
-      //   newName,
-      //   newInput,
-      //   input,
-      //   finalInput,
-      //   activeCompletion,
-      //   latestActiveCompletion: latestActiveCompletion.current
-      // })
-
-      const result = await calculate({
-        namespaceId: rootId,
-        activeCompletion: latestActiveCompletion.current,
-        variable,
-        name: finalName,
-        input: finalInput,
-        formulaContext
-      })
-
-      if (!result) return
-
-      const { interpretResult, parseResult, completions, newVariable, errors } = result
-
-      if (parseResult.valid) {
-        setContent(codeFragmentsToJSONContent(parseResult.codeFragments, rootId))
-        setInput(parseResult.codeFragments.map(fragment => fragment.name).join(''))
-      } else if (parseResult.input !== input && parseResult.input !== '=') {
-        const content = { type: 'doc', content: [{ type: 'text', text: parseResult.input }] }
-        console.log({ content, newINput: parseResult.input, input, parseResult, label: 'ReplaceInput' })
-        setContent(content)
-        setInput(parseResult.input)
-      }
-
-      updateVariable?.(newVariable)
-      setCompletions(completions)
-      setActiveCompletion(completions[0])
-      setError(errors.length ? errors[0] : undefined)
-
-      if (interpretResult.success) {
-        const type = interpretResult.variableValue.result.type
-        setDefaultName(formulaContext.getDefaultVariableName(rootId, type))
-      }
-    }
-
-    const handleSave = async (): Promise<void> => {
-      if (!(name ?? defaultName) || !input || !variable) return
-      if (!formulaContext) return
-      const finalName = name ?? defaultName
-
-      variable.t.name = finalName
-      variable.t.definition = `=${input}`
-
-      if (updateFormula) {
-        updateFormula(variable.t.variableId)
-      } else {
-        editor.chain().setFormula(variable.t.variableId).focus().run()
-      }
-
-      await formulaContext.commitVariable({ variable })
-      setName(finalName)
-      updateVariable?.(variable)
-
-      console.log({ label: 'save ...', input, variable, updateVariable, formulaContext })
-      close()
-    }
-
-    const handleCancel = (): void => {
-      close()
-    }
-
-    const handleDelete = (): void => {
-      Modal.confirm({
-        title: t(`${i18nKey}.delete_confirm.title`),
-        okText: t(`${i18nKey}.delete_confirm.ok`),
-        okButtonProps: { danger: true },
-        cancelText: t(`${i18nKey}.delete_confirm.cancel`),
-        icon: null,
-        onOk: async () => {
-          if (!variable || !getPos || !node) return
-          const position = getPos()
-          void (await formulaContext?.removeVariable(rootId, variable.t.variableId))
-          editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
-        }
-      })
-    }
-
-    const menu = (
-      <div className="brickdoc-formula-menu">
-        <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div>
-        <div className="formula-menu-row">
-          <div className="formula-menu-item">
-            <label className="formula-menu-label">
-              <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span>
-              <Input
-                className="formula-menu-field"
-                placeholder={defaultName}
-                value={name}
-                onChange={handleNameChange}
-              />
-            </label>
-          </div>
-        </div>
-        <div className="formula-menu-row">
-          <div className="formula-menu-item">
-            <FormulaEditor
-              content={content}
-              position={latestPosition}
-              updatePosition={latestSetPosition}
-              updateContent={handleValueChange}
-              keyDownHandler={keyDownHandler}
-              editable={true}
-            />
-          </div>
-        </div>
-        <div className="formula-menu-divider" />
-        <div className="formula-menu-result">
-          <span className="formula-menu-result-label">=</span>
-          {error && (
-            <span className="formula-menu-result-error">
-              <span className="formula-menu-result-error-type">{error.type}</span>
-              <span className="formula-menu-result-error-message">{error.message}</span>
-            </span>
-          )}
-          {!error && variable && displayValue(variable?.t.variableValue.result)}
-        </div>
-        <div className="formula-menu-divider" />
-        <AutocompleteList
-          blockId={rootId}
-          completions={latestCompletions}
-          handleSelectActiveCompletion={handleSelectActiveCompletion}
-          setActiveCompletion={latestSetActiveCompletion}
-          activeCompletionIndex={latestActiveCompletionIndex}
-          setActiveCompletionIndex={latestSetActiveCompletionIndex}
-          activeCompletion={latestActiveCompletion}
-        />
-        <div className="formula-menu-footer">
-          <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
-            {t(`${i18nKey}.cancel`)}
-          </Button>
-          <Button className="formula-menu-button" size="small" type="primary" onClick={handleSave}>
-            {t(`${i18nKey}.save`)}
-          </Button>
-          {node && (
-            <Button className="formula-menu-button" size="small" type="text" danger={true} onClick={handleDelete}>
-              {t(`${i18nKey}.delete`)}
-            </Button>
-          )}
+  const menu = (
+    <div className="brickdoc-formula-menu">
+      <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div>
+      <div className="formula-menu-row">
+        <div className="formula-menu-item">
+          <label className="formula-menu-label">
+            <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span>
+            <Input className="formula-menu-field" placeholder={defaultName} value={name} onChange={handleNameChange} />
+          </label>
         </div>
       </div>
-    )
+      <div className="formula-menu-row">
+        <div className="formula-menu-item">
+          <FormulaEditor
+            content={content}
+            position={latestPosition}
+            updatePosition={latestSetPosition}
+            updateContent={handleValueChange}
+            keyDownHandler={keyDownHandler}
+            editable={true}
+          />
+        </div>
+      </div>
+      <div className="formula-menu-divider" />
+      <div className="formula-menu-result">
+        <span className="formula-menu-result-label">=</span>
+        {error && (
+          <span className="formula-menu-result-error">
+            <span className="formula-menu-result-error-type">{error.type}</span>
+            <span className="formula-menu-result-error-message">{error.message}</span>
+          </span>
+        )}
+        {!error && variable && displayValue(variable?.t.variableValue.result)}
+      </div>
+      <div className="formula-menu-divider" />
+      <AutocompleteList
+        blockId={rootId}
+        completions={latestCompletions}
+        handleSelectActiveCompletion={handleSelectActiveCompletion}
+        setActiveCompletion={latestSetActiveCompletion}
+        activeCompletionIndex={latestActiveCompletionIndex}
+        setActiveCompletionIndex={latestSetActiveCompletionIndex}
+        activeCompletion={latestActiveCompletion}
+      />
+      <div className="formula-menu-footer">
+        <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
+          {t(`${i18nKey}.cancel`)}
+        </Button>
+        <Button className="formula-menu-button" size="small" type="primary" onClick={handleSave}>
+          {t(`${i18nKey}.save`)}
+        </Button>
+        {node && (
+          <Button className="formula-menu-button" size="small" type="text" danger={true} onClick={handleDelete}>
+            {t(`${i18nKey}.delete`)}
+          </Button>
+        )}
+      </div>
+    </div>
+  )
 
   return (
     <Popover
@@ -475,7 +470,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )
