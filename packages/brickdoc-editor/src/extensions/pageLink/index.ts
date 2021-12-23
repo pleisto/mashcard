@@ -1,7 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { insertBlockAt } from '../../helpers/commands'
-import { PageLink } from './PageLink/PageLink'
+import { PageLink } from '../../components'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -9,7 +9,12 @@ declare module '@tiptap/core' {
       /**
        * Set a page link block
        */
-      setPageLinkBlock: (id: string, link: string, title: string | undefined, icon: string | null | undefined) => ReturnType
+      setPageLinkBlock: (
+        id: string,
+        link: string,
+        title: string | undefined,
+        icon: string | null | undefined
+      ) => ReturnType
     }
   }
 }

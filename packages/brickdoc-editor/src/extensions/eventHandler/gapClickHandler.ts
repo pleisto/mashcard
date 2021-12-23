@@ -4,7 +4,7 @@ import { EditorView } from 'prosemirror-view'
 import { unselectableNodes, paragraphLikeNodes } from './nodeTypes'
 
 const insertNewLine = (editor: Editor, position: number): void => {
-  editor.chain().insertContentAt(position, { type: Paragraph.name }).focus(position).scrollIntoView().run()
+  editor.chain().insertContentAt(position, { type: Paragraph.name }).run()
 }
 
 export const gapClickHandler = (editor: Editor, view: EditorView, position: number, event: MouseEvent): void => {

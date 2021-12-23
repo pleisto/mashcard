@@ -4,11 +4,11 @@ import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { Icon } from '@brickdoc/design-system'
 import { createPopup, PopupInstance } from '../../helpers/popup'
-import { SlashCommandsMenu, SlashCommandsMenuItem } from './SlashCommandsMenu'
+import { SlashMenu, SlashMenuItem } from '../../components'
 
 const TRIGGER_CHAR = '/'
 
-const menuItems: SlashCommandsMenuItem[] = [
+const menuItems: SlashMenuItem[] = [
   {
     key: 'h1',
     alias: ['h1', 'heading 1'],
@@ -129,7 +129,7 @@ const menuItems: SlashCommandsMenuItem[] = [
   }
 ]
 
-function filterMenuItemsByQuery({ query }: { query: string }): SlashCommandsMenuItem[] {
+function filterMenuItemsByQuery({ query }: { query: string }): SlashMenuItem[] {
   return menuItems.filter(
     item =>
       item.key.toLowerCase().startsWith(query.toLowerCase()) ||
@@ -166,7 +166,7 @@ export const SlashCommandsExtension = Extension.create({
             onStart: props => {
               if (!this.editor.isEditable) return
 
-              reactRenderer = new ReactRenderer(SlashCommandsMenu as any, {
+              reactRenderer = new ReactRenderer(SlashMenu as any, {
                 props,
                 editor: props.editor as Editor
               })

@@ -15,7 +15,6 @@ import {
   brickListExtension,
   SyncExtensionOptions,
   EventHandlerExtension,
-  BubbleMenu,
   UserBlockExtension,
   PageLinkBlockExtension
 } from './extensions'
@@ -23,6 +22,7 @@ import './styles.less'
 import { useEditorI18n } from './hooks'
 import { EditorDataSource, EditorDataSourceContext } from './dataSource/DataSource'
 import { EditorContext, EditorContextData } from './context/EditorContext'
+import { BubbleMenu } from './components'
 
 export { useEditorI18n }
 

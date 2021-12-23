@@ -1,7 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { PdfSection } from './PdfSection'
-import { ExtensionBaseOptions } from '../baseOptions'
 
 const DEFAULT_WIDTH = 700
 const DEFAULT_HEIGHT = 551
@@ -17,7 +16,8 @@ declare module '@tiptap/core' {
   }
 }
 
-export interface PdfSectionOptions extends ExtensionBaseOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface PdfSectionOptions {}
 
 export const PdfSectionExtension = Node.create<PdfSectionOptions>({
   name: 'pdfSection',

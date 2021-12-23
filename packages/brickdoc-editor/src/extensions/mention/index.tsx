@@ -4,10 +4,9 @@ import { Editor, Range } from '@tiptap/core'
 import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../helpers/popup'
-import { MentionCommandsMenu, MentionCommandsMenuProps } from './MentionMenu'
-import { PageItem } from './MentionMenu/PagePanel/PagePanel'
-import { PeopleItem } from './MentionMenu/PeoplePanel/PeoplePanel'
-import { ExtensionBaseOptions } from '../baseOptions'
+import { MentionCommandsMenu, MentionCommandsMenuProps } from '../../components'
+import { PageItem } from '../../components/MentionMenu/PagePanel'
+import { PeopleItem } from '../../components/MentionMenu/PeoplePanel'
 import { EditorDataSource } from '../../dataSource/DataSource'
 
 const TRIGGER_CHAR = '@'
@@ -17,7 +16,7 @@ interface MenuItems {
   page: PageItem[]
 }
 
-export interface MentionCommandsOptions extends ExtensionBaseOptions {
+export interface MentionCommandsOptions {
   editorDataSource: EditorDataSource
 }
 

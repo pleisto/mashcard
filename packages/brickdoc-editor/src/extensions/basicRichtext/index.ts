@@ -28,7 +28,7 @@ import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
 import { EmbedBlockExtension, EmbedBlockOptions } from '../embed'
 import { TableBlockExtension, TableBlockOptions } from '../table'
 import { FormulaExtension, FormulaOptions } from '../formula'
-import { CodeBlock } from '../../components'
+import { CodeBlock, DividerBlock } from '../../components'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
@@ -87,7 +87,14 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.hardBreak !== false) extensions.push(HardBreak.configure(this.options?.hardBreak))
     if (this.options.heading !== false) extensions.push(Heading.configure(this.options?.heading))
     if (this.options.history !== false) extensions.push(History.configure(this.options?.history))
-    if (this.options.horizontalRule !== false) extensions.push(HorizontalRule.configure(this.options?.horizontalRule))
+    if (this.options.horizontalRule !== false)
+      extensions.push(
+        HorizontalRule.extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(DividerBlock)
+          }
+        }).configure(this.options?.horizontalRule)
+      )
     if (this.options.italic !== false) extensions.push(Italic.configure(this.options?.italic))
     if (this.options.listItem !== false) extensions.push(ListItem.configure(this.options?.listItem))
     if (this.options.orderedList !== false) extensions.push(OrderedList.configure(this.options?.orderedList))

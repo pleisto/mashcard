@@ -1,10 +1,10 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { FormulaBlock } from './FormulaBlock'
-import { ExtensionBaseOptions } from '../baseOptions'
 import { insertBlockAt } from '../../helpers/commands'
 
-export interface FormulaOptions extends ExtensionBaseOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface FormulaOptions {}
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {

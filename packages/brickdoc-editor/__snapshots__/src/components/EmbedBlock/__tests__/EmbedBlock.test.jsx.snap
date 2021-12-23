@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmbedBlock matches correct snapshot 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  <button
+    class="brd-c-NFHkO brd-c-NFHkO-LDMAS-type-secondary brd-c-NFHkO-lKjfQ-size-medium brickdoc-link-block-link"
+    data-testid="editor-embed-block-link"
+  >
+    <div
+      class="link-block-cover"
+      style="background-image: url(cover);"
+    />
+    <div
+      class="link-block-content"
+    >
+      <div
+        class="link-block-title"
+      >
+        brickdoc
+      </div>
+      <div
+        class="link-block-description"
+      >
+        desc
+      </div>
+      <div
+        class="link-block-url"
+      >
+        https://www.brickdoc.com
+      </div>
+    </div>
+  </button>
+</div>
+`;

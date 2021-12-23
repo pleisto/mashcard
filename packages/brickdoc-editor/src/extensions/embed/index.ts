@@ -1,8 +1,7 @@
 import { Node, mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { EmbedBlock } from './EmbedBlock'
+import { EmbedBlock } from '../../components'
 import { insertBlockAt } from '../../helpers/commands'
-import { ExtensionBaseOptions } from '../baseOptions'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -15,7 +14,8 @@ declare module '@tiptap/core' {
   }
 }
 
-export interface EmbedBlockOptions extends ExtensionBaseOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface EmbedBlockOptions {}
 
 export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
   name: 'embedBlock',

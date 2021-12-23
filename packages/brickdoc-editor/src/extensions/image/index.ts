@@ -1,8 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { ImageBlock } from './ImageBlock'
+import { ImageBlock } from '../../components'
 import { insertBlockAt } from '../../helpers/commands'
-import { ExtensionBaseOptions } from '../baseOptions'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -15,7 +14,8 @@ declare module '@tiptap/core' {
   }
 }
 
-export interface ImageBlockOptions extends ExtensionBaseOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ImageBlockOptions {}
 
 export const ImageBlockExtension = Node.create<ImageBlockOptions>({
   name: 'imageBlock',

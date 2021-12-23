@@ -1,7 +1,6 @@
 export * from './basicRichtext'
 export * from './slashCommands'
 export * from './blockCommands'
-export * from './bubbleMenu'
 export * from './fontColor'
 export * from './formula'
 export * from './sync'

@@ -1,7 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { insertBlockAt } from '../../helpers/commands'
-import { User } from './User/User'
+import { User } from '../../components'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {

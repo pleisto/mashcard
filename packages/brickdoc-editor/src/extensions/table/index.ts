@@ -1,8 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { insertBlockAt } from '../../helpers/commands'
-import { Table } from './Table'
-import { ExtensionBaseOptions } from '../baseOptions'
+import { Table } from '../../components'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -21,7 +20,8 @@ export interface DatabaseRow {
 }
 export interface DatabaseRows extends Array<DatabaseRow> {}
 
-export interface TableBlockOptions extends ExtensionBaseOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface TableBlockOptions {}
 
 export const TableBlockExtension = Node.create<TableBlockOptions>({
   name: 'tableBlock',
