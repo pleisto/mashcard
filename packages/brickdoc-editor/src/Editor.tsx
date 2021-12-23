@@ -77,7 +77,10 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
   return useTiptapEditor({
     extensions: [
       BasicRichtextExtension.configure({
-        gapcursor: false
+        gapcursor: false,
+        link: {
+          autolink: false
+        }
       }),
       EventHandlerExtension,
       SlashCommandsExtension,
