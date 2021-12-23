@@ -105,6 +105,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
         </Button>
       </div>
       <Modal
+        zIndex={1070}
         title={null}
         okText={t('trash.delete_confirmation_ok')}
         cancelText={t('trash.delete_confirmation_cancel')}
