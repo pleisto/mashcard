@@ -1,11 +1,17 @@
-import { FunctionContext, BasicFunctionClause, BooleanResult, StringResult } from '..'
+import { FunctionContext, BasicFunctionClause, BooleanResult, StringResult, ArrayResult } from '..'
 
 export const START_WITH = (ctx: FunctionContext, string: StringResult, prefix: StringResult): BooleanResult => ({
   result: string.result.startsWith(prefix.result),
   type: 'boolean'
 })
 
-export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
+export const Split = (ctx: FunctionContext, string: StringResult, separator: StringResult): ArrayResult => ({
+  result: string.result.split(separator.result).map(s => ({ result: s, type: 'string' })),
+  subType: 'string',
+  type: 'Array'
+})
+
+export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean' | 'Array'>> = [
   {
     name: 'START_WITH',
     async: false,
@@ -48,5 +54,36 @@ export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
     ],
     chain: true,
     reference: START_WITH
+  },
+  {
+    name: 'Split',
+    async: false,
+    lazy: false,
+    acceptError: false,
+    pure: true,
+    effect: false,
+    description: 'Returns an array of strings that result from splitting the string at the given separator.',
+    group: 'core',
+    args: [
+      {
+        name: 'string',
+        type: 'string'
+      },
+      {
+        name: 'separator',
+        type: 'string',
+        default: { type: 'string', result: '' }
+      }
+    ],
+    examples: [
+      {
+        input: '=Split("foo", ",")',
+        output: { type: 'Array', subType: 'string', result: [{ type: 'string', result: 'foo' }] }
+      }
+    ],
+    returns: 'Array',
+    testCases: [],
+    chain: true,
+    reference: Split
   }
 ]

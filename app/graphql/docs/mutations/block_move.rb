@@ -11,7 +11,7 @@ module Docs
 
       nil
     rescue => e
-      raise BrickGraphQL::Errors::ArgumentError, e.message
+      { errors: [e.message] }
     end
   end
 end

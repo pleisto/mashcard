@@ -43,7 +43,7 @@ export const CountIf = (
   return { result: sum, type: 'number' }
 }
 
-export const CORE_POWERFX_CLAUSES: Array<BasicFunctionClause<any>> = [
+export const CORE_POWERFX_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   {
     name: 'CountIf',
     async: false,

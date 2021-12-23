@@ -81,9 +81,9 @@ describe('Complete', () => {
       namespaceId: testNamespaceId,
       errorMessage: undefined,
       weight: 0,
-      expectParseImage: `=$${namespaceId}@${variableId}`,
-      expectInputImage: `=$${namespaceId}@${variableId}`,
-      expectNewInput: `=$${namespaceId}@${variableId}`
+      expectParseImage: `=#${namespaceId}@${variableId}`,
+      expectInputImage: `=#${namespaceId}@${variableId}`,
+      expectNewInput: `=#${namespaceId}@${variableId}`
     },
     {
       label: 'var equal same namespaceId',
@@ -91,9 +91,9 @@ describe('Complete', () => {
       namespaceId,
       errorMessage: undefined,
       weight: 1,
-      expectParseImage: `=$${namespaceId}@${variableId}`,
-      expectInputImage: `=$${namespaceId}@${variableId}`,
-      expectNewInput: `=$${namespaceId}@${variableId}`
+      expectParseImage: `=#${namespaceId}@${variableId}`,
+      expectInputImage: `=#${namespaceId}@${variableId}`,
+      expectNewInput: `=#${namespaceId}@${variableId}`
     },
     {
       label: 'var include same namespaceId',
@@ -121,9 +121,9 @@ describe('Complete', () => {
     //   namespaceId,
     //   errorMessage: undefined,
     //   weight: 1001,
-    //   expectParseImage: `=1+$${namespaceId}@${variableId}`,
-    //   expectInputImage: `=1+$${namespaceId}@${variableId}`,
-    //   expectNewInput: `= 1 + $${namespaceId}@${variableId} `
+    //   expectParseImage: `=1+#${namespaceId}@${variableId}`,
+    //   expectInputImage: `=1+#${namespaceId}@${variableId}`,
+    //   expectNewInput: `= 1 + #${namespaceId}@${variableId} `
     // },
     // {
     //   label: 'space equal same namespaceId',
@@ -131,9 +131,9 @@ describe('Complete', () => {
     //   namespaceId: testNamespaceId,
     //   errorMessage: undefined,
     //   weight: 999,
-    //   expectParseImage: `=1+$${namespaceId}@${variableId}`,
-    //   expectInputImage: `=1+$${namespaceId}@${variableId}`,
-    //   expectNewInput: `= 1 + $${namespaceId}@${variableId} `
+    //   expectParseImage: `=1+#${namespaceId}@${variableId}`,
+    //   expectInputImage: `=1+#${namespaceId}@${variableId}`,
+    //   expectNewInput: `= 1 + #${namespaceId}@${variableId} `
     // },
     {
       label: 'dot equal same namespaceId',
@@ -141,9 +141,9 @@ describe('Complete', () => {
       namespaceId,
       errorMessage: 'Missing expression',
       weight: 125,
-      expectParseImage: `=1+$${namespaceId}@${variableId}.`,
-      expectInputImage: `=1+$${namespaceId}@${variableId}.`,
-      expectNewInput: `= 1 + $${namespaceId}@${variableId}.`
+      expectParseImage: `=1+#${namespaceId}@${variableId}.`,
+      expectInputImage: `=1+#${namespaceId}@${variableId}.`,
+      expectNewInput: `= 1 + #${namespaceId}@${variableId}.`
     },
     {
       label: 'dot equal different namespaceId',
@@ -151,9 +151,9 @@ describe('Complete', () => {
       namespaceId: testNamespaceId,
       errorMessage: 'Missing expression',
       weight: 125,
-      expectParseImage: `=1+$${namespaceId}@${variableId}.`,
-      expectInputImage: `=1+$${namespaceId}@${variableId}.`,
-      expectNewInput: `= 1 + $${namespaceId}@${variableId}.`
+      expectParseImage: `=1+#${namespaceId}@${variableId}.`,
+      expectInputImage: `=1+#${namespaceId}@${variableId}.`,
+      expectNewInput: `= 1 + #${namespaceId}@${variableId}.`
     }
   ]
 

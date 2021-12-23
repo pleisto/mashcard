@@ -1,4 +1,4 @@
-import { Column, Database, DatabaseDefinition, DatabasePersistence, NamespaceId, Row } from '..'
+import { Column, Database, DatabaseDefinition, DatabasePersistence, NamespaceId, Row, StringResult } from '..'
 
 export class DatabaseFactory implements Database {
   blockId: NamespaceId
@@ -63,16 +63,16 @@ export class DatabaseFactory implements Database {
     return result
   }
 
-  toRecord(): Array<{ [key: string]: string }> {
+  toRecord(): Array<{ [key: string]: StringResult }> {
     const columns: Column[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
-    const result: Array<{ [key: string]: string }> = []
+    const result: Array<{ [key: string]: StringResult }> = []
 
     rows.forEach(row => {
-      const rowData: { [key: string]: string } = {}
+      const rowData: { [key: string]: StringResult } = {}
       columns.forEach(col => {
-        rowData[col.name] = row[col.columnId] || ''
+        rowData[col.name] = { type: 'string', result: row[col.columnId] || '' }
       })
       result.push(rowData)
     })

@@ -77,7 +77,7 @@ describe('appendFormulas', () => {
         version: 0,
         level: 0,
         kind: 'expression',
-        definition: `=ABS(123) + $${fooNamespaceId}@${fooVariableId}`,
+        definition: `=ABS(123) + #${fooNamespaceId}@${fooVariableId}`,
         updatedAt: new Date().toDateString(),
         createdAt: 0,
         cacheValue: {
@@ -120,7 +120,7 @@ describe('appendFormulas', () => {
         version: 0,
         level: 0,
         kind: 'expression',
-        definition: `=ABS(123) + $${fooNamespaceId}@${fooVariableId}`,
+        definition: `=ABS(123) + #${fooNamespaceId}@${fooVariableId}`,
         updatedAt: new Date().toDateString(),
         createdAt: 0,
         cacheValue: {

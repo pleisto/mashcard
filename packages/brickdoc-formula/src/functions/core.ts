@@ -19,7 +19,7 @@ export const Set = (ctx: FunctionContext, ref: ReferenceResult, cst: CstResult):
   return { type: 'Function', result: [{ name: 'Set', args: [ref, cst] }] }
 }
 
-export const CORE_CORE_CLAUSES: Array<BasicFunctionClause<any>> = [
+export const CORE_CORE_CLAUSES: Array<BasicFunctionClause<'Function'>> = [
   {
     name: 'Set',
     async: false,

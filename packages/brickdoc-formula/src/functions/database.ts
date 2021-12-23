@@ -33,8 +33,16 @@ export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): Num
 
 export const Table = (ctx: FunctionContext, { result }: ArrayResult): SpreadsheetResult | ErrorResult => {
   const defaultData: RecordResult[] = [
-    { type: 'Record', result: { Column1: { type: 'string', result: '1' }, Column2: { type: 'string', result: '2' } } },
-    { type: 'Record', result: { Column1: { type: 'string', result: '3' }, Column2: { type: 'string', result: '4' } } }
+    {
+      type: 'Record',
+      subType: 'string',
+      result: { Column1: { type: 'string', result: '1' }, Column2: { type: 'string', result: '2' } }
+    },
+    {
+      type: 'Record',
+      subType: 'string',
+      result: { Column1: { type: 'string', result: '3' }, Column2: { type: 'string', result: '4' } }
+    }
   ]
 
   const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
@@ -542,4 +550,4 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   }
 ]
 
-export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<any>> = [TABLE_CLAUSE, VLOOKUP_CLAUSE, ...NUMBER_CLAUSES]
+export const CORE_DATABASE_CLAUSES = [TABLE_CLAUSE, VLOOKUP_CLAUSE, ...NUMBER_CLAUSES]

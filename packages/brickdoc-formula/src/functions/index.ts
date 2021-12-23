@@ -13,6 +13,7 @@ import { CORE_POWERFX_CLAUSES } from './power_fx'
 import { CORE_CONTROL_CLAUSES } from './control'
 import { CORE_CORE_CLAUSES } from './core'
 import { CORE_CONVERT_CLAUSES } from './convert'
+import { CORE_ARRAY_CLAUSES } from './array'
 
 export const buildFunctionKey = (group: FunctionGroup, name: FunctionNameType): FunctionKey => {
   if (group === 'core') {
@@ -35,5 +36,6 @@ export const BUILTIN_CLAUSES: Array<BasicFunctionClause<any>> = [
   ...CORE_POWERFX_CLAUSES,
   ...CORE_CONTROL_CLAUSES,
   ...CORE_CORE_CLAUSES,
-  ...CORE_CONVERT_CLAUSES
+  ...CORE_CONVERT_CLAUSES,
+  ...CORE_ARRAY_CLAUSES
 ]

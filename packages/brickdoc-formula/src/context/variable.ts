@@ -119,7 +119,10 @@ export const castVariable = (
   const namespaceId = blockId
   const variableId = id
   const meta = { namespaceId, variableId, name, input: definition }
-  const castedValue: AnyTypeResult = parseCacheValue({ ctx: formulaContext, meta, interpretContext: {} }, cacheValue)
+  const castedValue: AnyTypeResult = parseCacheValue(
+    { ctx: formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } },
+    cacheValue
+  )
   const parseInput = { formulaContext, meta }
   const {
     success,
@@ -241,12 +244,11 @@ export class VariableClass implements VariableInterface {
 
   public refresh = async (interpretContext: InterpretContext): Promise<void> => {
     await this.interpret(interpretContext)
-    this.afterUpdate()
     await this.invokeBackendUpdate()
     this.formulaContext.handleBroadcast(this)
   }
 
-  private readonly interpret = async (interpretContext: InterpretContext): Promise<void> => {
+  public interpret = async (interpretContext: InterpretContext): Promise<void> => {
     const { variableValue } = await interpret({
       cst: this.t.cst,
       formulaContext: this.formulaContext,
@@ -255,5 +257,7 @@ export class VariableClass implements VariableInterface {
     })
 
     this.t = { ...this.t, variableValue }
+
+    this.afterUpdate()
   }
 }

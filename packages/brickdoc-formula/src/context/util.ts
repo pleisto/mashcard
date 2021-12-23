@@ -16,11 +16,11 @@ import {
 } from '..'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
-  `$${namespaceId}@${variableId}`
+  `#${namespaceId}@${variableId}`
 
-export const spreadsheetKey = (namespaceId: NamespaceId): SpreadsheetKey => `$${namespaceId}`
+export const spreadsheetKey = (namespaceId: NamespaceId): SpreadsheetKey => `#${namespaceId}`
 
-export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `$${namespaceId}#${columnId}`
+export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `#${namespaceId}#${columnId}`
 
 export const database2completion = (database: Database): SpreadsheetCompletion => {
   const value = spreadsheetKey(database.blockId)

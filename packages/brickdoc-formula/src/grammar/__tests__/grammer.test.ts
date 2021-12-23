@@ -198,7 +198,7 @@ const testCases: TestCase[] = [
   },
   {
     input: '=[[]]',
-    value: [{ type: 'Array', result: [] }]
+    value: [{ type: 'Array', subType: 'void', result: [] }]
   },
   {
     input: '=[',
@@ -241,15 +241,15 @@ const testCases: TestCase[] = [
     value: { kind: 'self' }
   },
   {
-    input: `=$${barNamespaceId}@${barVariableId}`,
+    input: `=#${barNamespaceId}@${barVariableId}`,
     value: 24
   },
   {
-    input: `=&$${barNamespaceId}@${barVariableId}`,
+    input: `=&#${barNamespaceId}@${barVariableId}`,
     value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId }
   },
   {
-    input: `=&$${barNamespaceId}@${barVariableId}.foo`,
+    input: `=&#${barNamespaceId}@${barVariableId}.foo`,
     value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId, attribute: 'foo' }
   },
   {
@@ -270,8 +270,8 @@ const testCases: TestCase[] = [
     value: {
       foo: { type: 'number', result: 1 },
       bar: { type: 'string', result: 'baz' },
-      obj: { type: 'Record', result: {} },
-      array: { type: 'Array', result: [{ type: 'number', result: 1 }] }
+      obj: { type: 'Record', subType: 'void', result: {} },
+      array: { type: 'Array', subType: 'number', result: [{ type: 'number', result: 1 }] }
     }
   },
   {
@@ -459,6 +459,14 @@ const testCases: TestCase[] = [
   {
     input: '=Input.bar',
     value: 'bar123'
+  },
+  {
+    input: '=$1',
+    value: 'Foo1234123'
+  },
+  {
+    input: '=$2',
+    value: 'Argument 2 not found'
   },
   // Error
   {
@@ -920,7 +928,10 @@ describe('Simple test case', () => {
           cst,
           meta: newMeta,
           formulaContext,
-          interpretContext: { bar: { type: 'string', result: 'bar123' } }
+          interpretContext: {
+            ctx: { bar: { type: 'string', result: 'bar123' } },
+            arguments: [{ type: 'string', result: 'Foo1234123' }]
+          }
         })
 
         expect(errorMessages).toEqual([])

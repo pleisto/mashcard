@@ -17,7 +17,10 @@ export class SwitchClass implements SwitchType {
     this.disabled = false
     this.onChange = isSelected => {
       functionResult2lambda<SwitchType>(
-        { ...ctx, interpretContext: { isSelected: { type: 'boolean', result: isSelected } } },
+        {
+          ...ctx,
+          interpretContext: { ...ctx.interpretContext, ctx: { isSelected: { type: 'boolean', result: isSelected } } }
+        },
         fn,
         this
       )()

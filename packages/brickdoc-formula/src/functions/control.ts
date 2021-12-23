@@ -14,6 +14,7 @@ import {
 import { ButtonClass } from '../controls/button'
 import { SelectClass } from '../controls/select'
 import { SwitchClass } from '../controls/switch'
+import { FORMULA_FEATURE_CONTROL } from '../context'
 
 export const Button = (
   ctx: FunctionContext,
@@ -35,10 +36,10 @@ export const Switch = (
 
 export const Select = (
   ctx: FunctionContext,
-  { result }: ArrayResult,
+  { result, subType }: ArrayResult,
   fn: FunctionResult
 ): SelectResult | ErrorResult => {
-  if (result.find(v => !['string', 'number'].includes(v.type))) {
+  if (!['string', 'number', 'void'].includes(subType)) {
     return { type: 'Error', result: 'Select expects an array of strings', errorKind: 'runtime' }
   }
 
@@ -56,7 +57,7 @@ export const Select = (
   return { result: selectResult, type: 'Select' }
 }
 
-export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<any>> = [
+export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<'Button' | 'Select' | 'Switch'>> = [
   {
     name: 'Button',
     async: false,
@@ -64,6 +65,7 @@ export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<any>> = [
     lazy: false,
     acceptError: false,
     effect: false,
+    feature: FORMULA_FEATURE_CONTROL,
     examples: [{ input: '=Button("name")', output: null }],
     description: 'Build button',
     group: 'core',
@@ -87,6 +89,7 @@ export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<any>> = [
     async: false,
     pure: false,
     lazy: false,
+    feature: FORMULA_FEATURE_CONTROL,
     acceptError: false,
     effect: false,
     examples: [{ input: '=Switch("name")', output: null }],
@@ -112,6 +115,7 @@ export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<any>> = [
     async: false,
     pure: false,
     lazy: false,
+    feature: FORMULA_FEATURE_CONTROL,
     acceptError: false,
     effect: false,
     examples: [{ input: '=Select("name")', output: null }],

@@ -152,6 +152,8 @@ export const RBracket = createToken({ name: 'RBracket', pattern: /\]/ })
 export const LBrace = createToken({ name: 'LBrace', pattern: /\{/ })
 export const RBrace = createToken({ name: 'RBrace', pattern: /\}/ })
 
+export const LambdaArgumentNumber = createToken({ name: 'LambdaArgumentNumber', pattern: /\$[1-9]/ })
+
 export const NumberLiteral = createToken({
   name: 'NumberLiteral',
   pattern: /[0-9]+[.]?[0-9]*([eE][+-][0-9]+)?/
@@ -241,6 +243,8 @@ export const allTokens = [
 
   Sign, // %
 
+  LambdaArgumentNumber,
+
   Dollar, // $
   At, // @
   Sharp, // #
@@ -261,8 +265,8 @@ export const allTokens = [
   BooleanLiteral,
   StringLiteral,
   NullLiteral,
-  Comma, // ,
 
+  Comma, // ,
   Semicolon, // ;
 
   Self, // Self

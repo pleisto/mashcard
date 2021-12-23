@@ -14,7 +14,7 @@ const testName1 = 'varvarabcvar'
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const meta = { namespaceId, variableId, name: testName1, input: '=24' }
-const barMeta = { namespaceId, variableId: barVariableId, name: 'bar', input: `=$${namespaceId}@${variableId}` }
+const barMeta = { namespaceId, variableId: barVariableId, name: 'bar', input: `=#${namespaceId}@${variableId}` }
 describe('Controls', () => {
   beforeAll(async () => {
     await quickInsert({ formulaContext, meta })
@@ -37,71 +37,87 @@ describe('Controls', () => {
     },
     {
       label: 'set ok',
-      input: `=Set($${namespaceId}@${variableId}, 1)`,
+      input: `=Set(#${namespaceId}@${variableId}, 1)`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'set ok 2',
-      input: `=Set($${namespaceId}@${variableId}, (1 + $${namespaceId}@${variableId} + $${namespaceId}@${variableId}))`,
+      input: `=Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId} + #${namespaceId}@${variableId}))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'set multiple line',
-      input: `=Set($${namespaceId}@${variableId}, (1 + $${namespaceId}@${variableId})); Set($${namespaceId}@${variableId}, (123))`,
+      input: `=Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId})); Set(#${namespaceId}@${variableId}, (123))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'set unknown',
-      input: `=Set($${namespaceId}@${unknownVariableId}, 1)`,
+      input: `=Set(#${namespaceId}@${unknownVariableId}, 1)`,
       parseErrorMessage: `Variable not found: ${unknownVariableId}`,
       result: null
     },
     {
       label: 'set expression',
-      input: `=Set($${namespaceId}@${barVariableId}, 1)`,
+      input: `=Set(#${namespaceId}@${barVariableId}, 1)`,
       parseErrorMessage: undefined,
       result: 'Only constant variable is supported'
     },
     {
       label: 'button',
-      input: `=Button("Foo", Set($${namespaceId}@${variableId}, (1 + $${namespaceId}@${variableId})))`,
+      input: `=Button("Foo", Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId})))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'button multiple set',
-      input: `=Button("Foo", Set($${namespaceId}@${variableId}, (1 + $${namespaceId}@${variableId})); Set($${namespaceId}@${variableId}, (123)))`,
+      input: `=Button("Foo", Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId})); Set(#${namespaceId}@${variableId}, (123)))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'switch set',
-      input: `=Switch(true, Set($${namespaceId}@${variableId}, (1 + $${namespaceId}@${variableId})); Set($${namespaceId}@${variableId}, (123)))`,
+      input: `=Switch(true, Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId})); Set(#${namespaceId}@${variableId}, (123)))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'select ok',
-      input: `=Select([1,2,3], Set($${namespaceId}@${variableId}, Input.selected))`,
+      input: `=Select([1,2,3], Set(#${namespaceId}@${variableId}, Input.selected))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'select []',
-      input: `=Select([], Set($${namespaceId}@${variableId}, Input.selected))`,
+      input: `=Select([], Set(#${namespaceId}@${variableId}, Input.selected))`,
       parseErrorMessage: undefined,
       result: 'Select expects non empty options'
     },
     {
       label: 'select [[]]',
-      input: `=Select([[]], Set($${namespaceId}@${variableId}, Input.selected))`,
+      input: `=Select([[]], Set(#${namespaceId}@${variableId}, Input.selected))`,
       parseErrorMessage: undefined,
       result: 'Select expects an array of strings'
     }
   ]
+
+  it('feature', () => {
+    const input = `=Button("Foo", Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId})))`
+    const meta = { namespaceId, variableId: testVariableId, name: 'foo', input }
+    const { errorMessages: errorMessage1 } = parse({ formulaContext: new FormulaContext({ features: [] }), meta })
+
+    expect(errorMessage1).toEqual([{ message: 'Function Button not found', type: 'deps' }])
+
+    const { errorMessages: errorMessage2 } = parse({ formulaContext: { ...formulaContext, features: [] }, meta })
+
+    expect(errorMessage2).toEqual([{ message: 'Feature formula-controls not enabled', type: 'deps' }])
+
+    const { errorMessages: errorMessage3 } = parse({ formulaContext, meta })
+
+    expect(errorMessage3).toEqual([])
+  })
 
   testCases.forEach(({ input, label, parseErrorMessage, result }) => {
     it(`[${label}] ${input}`, async () => {
@@ -120,7 +136,7 @@ describe('Controls', () => {
           success: interpretSuccess,
           variableValue,
           errorMessages: interpretErrorMessages
-        } = await interpret({ cst, meta, formulaContext, interpretContext: {} })
+        } = await interpret({ cst, meta, formulaContext, interpretContext: { ctx: {}, arguments: [] } })
 
         expect(interpretSuccess).toBe(true)
         expect(interpretErrorMessages).toEqual([])

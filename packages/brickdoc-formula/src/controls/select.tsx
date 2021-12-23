@@ -19,7 +19,10 @@ export class SelectClass implements SelectType {
     this.value = value
     this.onChange = option => {
       functionResult2lambda<SelectType>(
-        { ...ctx, interpretContext: { selected: { type: 'string', result: option } } },
+        {
+          ...ctx,
+          interpretContext: { ...ctx.interpretContext, ctx: { selected: { type: 'string', result: option } } }
+        },
         fn,
         this
       )()

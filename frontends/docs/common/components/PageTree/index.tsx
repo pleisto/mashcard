@@ -24,6 +24,7 @@ import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
+import { message } from '@brickdoc/design-system'
 
 export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
@@ -94,10 +95,17 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     if (targetParentId) {
       input.targetParentId = targetParentId
     }
-    await blockMove({ variables: { input } })
-    if (docMeta.id === node.id) {
+
+    const { data: blockMoveData } = await blockMove({ variables: { input } })
+
+    const errorMessage = blockMoveData?.blockMove?.errors?.[0]
+
+    if (errorMessage) {
+      void message.error(errorMessage)
+    } else if (docMeta.id === node.id) {
       await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
+
     setDraggable(true)
   }
 

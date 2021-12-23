@@ -64,7 +64,7 @@ export const DocumentContentPage: React.FC = () => {
     docid?: string
     snapshotVersion?: string
   }
-  const { currentPod, currentUser, host, lastWebid, lastBlockIds } = useContext(BrickdocContext)
+  const { currentPod, currentUser, host, lastWebid, lastBlockIds, featureFlags } = useContext(BrickdocContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const editor = useReactiveVar(editorVar)
@@ -131,7 +131,7 @@ export const DocumentContentPage: React.FC = () => {
   const backendActions = useFormulaBackendActions()
 
   React.useEffect(() => {
-    const formulaContext = new FormulaContext({ backendActions })
+    const formulaContext = new FormulaContext({ backendActions, features: featureFlags })
     void getFormulas(webid).then(({ data, success }) => {
       if (!success) return
       appendFormulas(formulaContext, data ?? [])

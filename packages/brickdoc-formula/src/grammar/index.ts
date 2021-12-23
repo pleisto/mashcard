@@ -1,3 +1,4 @@
+export * from './util'
 export * from './lexer'
 export * from './parser'
 export * from './interpreter'

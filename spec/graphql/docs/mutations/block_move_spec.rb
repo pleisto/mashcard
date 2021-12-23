@@ -121,8 +121,25 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       input = { input: { id: root.id, targetParentId: root.id, sort: 300 } }
       internal_graphql_execute(mutation, input)
 
-      expect(response.data[:blockMove]).to eq(nil)
-      expect(response.errors[0]['message']).to include("Invalid target")
+      expect(response.data[:blockMove]).to eq({ "errors" => ['Invalid target'] })
+
+      self.current_user = nil
+      self.current_pod = nil
+    end
+
+    it 'descendants' do
+      self.current_user = user
+      self.current_pod = user.personal_pod.as_session_context
+
+      root = block1
+
+      id = SecureRandom.uuid
+      child = create(:docs_block, pod: user.personal_pod, id: id, root_id: id, parent: root)
+
+      input = { input: { id: root.id, targetParentId: child.id, sort: 300 } }
+      internal_graphql_execute(mutation, input)
+
+      expect(response.data[:blockMove]).to eq({ "errors" => ['Invalid target'] })
 
       self.current_user = nil
       self.current_pod = nil

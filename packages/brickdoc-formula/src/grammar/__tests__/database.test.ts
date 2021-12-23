@@ -68,111 +68,111 @@ interface TestCase {
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const testCases: TestCase[] = [
-  { label: 'column', input: `=$${databaseNamespaceId}#${firstColumnId}`, value: columns[0] },
-  { label: 'in database true', input: `=3 in $${databaseNamespaceId}`, value: true },
-  { label: 'toArray', input: `=$${databaseNamespaceId}.toArray()`, value: SNAPSHOT_FLAG },
-  { label: 'toRecordArray', input: `=$${databaseNamespaceId}.toRecordArray()`, value: SNAPSHOT_FLAG },
+  { label: 'column', input: `=#${databaseNamespaceId}#${firstColumnId}`, value: columns[0] },
+  { label: 'in database true', input: `=3 in #${databaseNamespaceId}`, value: true },
+  { label: 'toArray', input: `=#${databaseNamespaceId}.toArray()`, value: SNAPSHOT_FLAG },
+  { label: 'toRecordArray', input: `=#${databaseNamespaceId}.toRecordArray()`, value: SNAPSHOT_FLAG },
   { label: 'Table', input: `=Table([]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Table', input: `=Table([1,2,3]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Table', input: `=Table([{a: 1}, {a: 2}]).toArray()`, value: SNAPSHOT_FLAG },
-  { label: 'in database false', input: `=4 in $${databaseNamespaceId}`, value: false },
-  { label: 'in column true', input: `=3 in $${databaseNamespaceId}#${secondColumnId}`, value: false },
-  { label: 'in column false', input: `=4 in $${databaseNamespaceId}#${secondColumnId}`, value: true },
-  { label: 'exactin column true', input: `="foo" in $${databaseNamespaceId}#${thirdColumnId}`, value: true },
-  { label: 'COLUMN_COUNT', input: `=$${databaseNamespaceId}.COLUMN_COUNT()`, value: 3 },
-  { label: 'SUM', input: `=$${databaseNamespaceId}#${firstColumnId}.SUM()`, value: 1 + 3 + 5 },
-  { label: 'MAX', input: `=$${databaseNamespaceId}#${firstColumnId}.MAX()`, value: 5 },
-  { label: 'COUNTA', input: `=$${databaseNamespaceId}#${firstColumnId}.COUNTA()`, value: 3 },
-  { label: 'COUNTA', input: `=$${databaseNamespaceId}#${thirdColumnId}.COUNTA()`, value: 2 },
+  { label: 'in database false', input: `=4 in #${databaseNamespaceId}`, value: false },
+  { label: 'in column true', input: `=3 in #${databaseNamespaceId}#${secondColumnId}`, value: false },
+  { label: 'in column false', input: `=4 in #${databaseNamespaceId}#${secondColumnId}`, value: true },
+  { label: 'exactin column true', input: `="foo" in #${databaseNamespaceId}#${thirdColumnId}`, value: true },
+  { label: 'COLUMN_COUNT', input: `=#${databaseNamespaceId}.COLUMN_COUNT()`, value: 3 },
+  { label: 'SUM', input: `=#${databaseNamespaceId}#${firstColumnId}.SUM()`, value: 1 + 3 + 5 },
+  { label: 'MAX', input: `=#${databaseNamespaceId}#${firstColumnId}.MAX()`, value: 5 },
+  { label: 'COUNTA', input: `=#${databaseNamespaceId}#${firstColumnId}.COUNTA()`, value: 3 },
+  { label: 'COUNTA', input: `=#${databaseNamespaceId}#${thirdColumnId}.COUNTA()`, value: 2 },
   {
     label: 'CountIf ok',
-    input: `=CountIf($${databaseNamespaceId}, $${databaseNamespaceId}#${firstColumnId} >= 3)`,
+    input: `=CountIf(#${databaseNamespaceId}, #${databaseNamespaceId}#${firstColumnId} >= 3)`,
     value: 2
   },
   {
     label: 'CountIf error1',
-    input: `=CountIf($${databaseNamespaceId}, >= 3)`,
+    input: `=CountIf(#${databaseNamespaceId}, >= 3)`,
     value: 'Column is missing'
   },
 
   {
     label: 'SUMPRODUCT',
-    input: `=SUMPRODUCT($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId})`,
+    input: `=SUMPRODUCT(#${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId})`,
     value: 1 * 2 + 3 * 4 + 5 * 6
   },
   {
     label: 'SUMIFS >3',
-    input: `=SUMIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, >3)`,
+    input: `=SUMIFS(#${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId}, >3)`,
     value: 3 + 5
   },
   {
     label: 'SUMIFS 4',
-    input: `=SUMIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, 4)`,
+    input: `=SUMIFS(#${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId}, 4)`,
     value: 3
   },
   {
     label: 'AVERAGEIFS 4',
-    input: `=AVERAGEIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, >3)`,
+    input: `=AVERAGEIFS(#${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId}, >3)`,
     value: 4
   },
   {
     label: 'AVERAGEIFS 100',
-    input: `=AVERAGEIFS($${databaseNamespaceId}#${firstColumnId}, $${databaseNamespaceId}#${secondColumnId}, >100)`,
+    input: `=AVERAGEIFS(#${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId}, >100)`,
     value: 'No matching values'
   },
   {
     label: 'COUNTIFS >2',
-    input: `=COUNTIFS($${databaseNamespaceId}#${firstColumnId}, >2)`,
+    input: `=COUNTIFS(#${databaseNamespaceId}#${firstColumnId}, >2)`,
     value: 2
   },
   {
     label: 'COUNTIFS =1',
-    input: `=COUNTIFS($${databaseNamespaceId}#${firstColumnId}, 3)`,
+    input: `=COUNTIFS(#${databaseNamespaceId}#${firstColumnId}, 3)`,
     value: 1
   },
   {
     label: 'VLOOKUP Not found',
-    input: `=VLOOKUP("", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP("", #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId})`,
     value: 'Not found'
   },
   {
     label: 'VLOOKUP Column check',
-    input: `=VLOOKUP("", $${databaseNamespaceId}, $${databaseNamespaceId}#${firstColumnId})`,
+    input: `=VLOOKUP("", #${databaseNamespaceId}, #${databaseNamespaceId}#${firstColumnId})`,
     value: 'Column cannot be the same as the first column'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP(1, #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId})`,
     value: '2'
   },
   {
     label: 'VLOOKUP Not found 2 range false',
-    input: `=VLOOKUP("2", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, false)`,
+    input: `=VLOOKUP("2", #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId}, false)`,
     value: 'Not found'
   },
   {
     label: 'VLOOKUP 2 range default',
-    input: `=VLOOKUP("2", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP("2", #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId})`,
     value: '2'
   },
   {
     label: 'VLOOKUP 2 range true',
-    input: `=VLOOKUP("2", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, true)`,
+    input: `=VLOOKUP("2", #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId}, true)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, true)`,
+    input: `=VLOOKUP(1, #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId}, true)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId}, false)`,
+    input: `=VLOOKUP(1, #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId}, false)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok string',
-    input: `=VLOOKUP("1", $${databaseNamespaceId}, $${databaseNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP("1", #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId})`,
     value: '2'
   }
 ]
@@ -188,8 +188,9 @@ describe('Database Functions', () => {
       const { codeFragments, cst, errorMessages } = parse({ ...parseInput, meta: newMeta, formulaContext })
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      const result = (await interpret({ cst, meta: newMeta, formulaContext, interpretContext: {} })).variableValue
-        .result.result
+      const result = (
+        await interpret({ cst, meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } })
+      ).variableValue.result.result
       if (value === SNAPSHOT_FLAG) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(result).toMatchSnapshot()
@@ -213,7 +214,7 @@ describe('Database Functions', () => {
     expect(completions[0]).toMatchSnapshot()
     expect(completions.filter(c => c.kind === 'column').length).toEqual(3)
 
-    const input1 = `=$${databaseNamespaceId}#${firstColumnId}.`
+    const input1 = `=#${databaseNamespaceId}#${firstColumnId}.`
     const { completions: input1Completions } = parse({
       formulaContext,
       meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1 }
@@ -221,7 +222,7 @@ describe('Database Functions', () => {
     expect(input1Completions[0]).toMatchSnapshot()
     expect(input1Completions[0].kind).toEqual('function')
 
-    const input2 = `=$${databaseNamespaceId}.`
+    const input2 = `=#${databaseNamespaceId}.`
     const { completions: input2Completions } = parse({
       formulaContext,
       meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input2 }

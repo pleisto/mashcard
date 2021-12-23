@@ -232,8 +232,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -243,12 +243,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ''",
         "type": "syntax",
       },
@@ -542,9 +543,9 @@ Object {
                                                                                                     "categoryMatchesMap": Object {},
                                                                                                     "isParent": false,
                                                                                                     "name": "BooleanLiteral",
-                                                                                                    "tokenTypeIdx": 43,
+                                                                                                    "tokenTypeIdx": 44,
                                                                                                   },
-                                                                                                  "tokenTypeIdx": 43,
+                                                                                                  "tokenTypeIdx": 44,
                                                                                                 },
                                                                                               ],
                                                                                             },
@@ -643,8 +644,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -654,12 +655,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ''",
         "type": "syntax",
       },
@@ -714,8 +716,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -725,12 +727,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ''hello''",
         "type": "syntax",
       },
@@ -792,9 +795,10 @@ Array [
       },
       Object {
         "message": "Expecting: one of these possible Token sequences:
-  1. [Dollar]
-  2. [Self]
-  3. [Input]
+  1. [Sharp]
+  2. [LambdaArgumentNumber]
+  3. [Self]
+  4. [Input]
 but found: '123'",
         "type": "syntax",
       },
@@ -833,9 +837,10 @@ but found: '123'",
     "errors": Array [
       Object {
         "message": "Expecting: one of these possible Token sequences:
-  1. [Dollar]
-  2. [Self]
-  3. [Input]
+  1. [Sharp]
+  2. [LambdaArgumentNumber]
+  3. [Self]
+  4. [Input]
 but found: '123'",
         "type": "syntax",
       },
@@ -950,8 +955,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -961,12 +966,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: '中文'",
         "type": "syntax",
       },
@@ -1168,8 +1174,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -1179,12 +1185,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ']'",
         "type": "syntax",
       },
@@ -1723,8 +1730,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -1734,12 +1741,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ';'",
         "type": "syntax",
       },
@@ -1747,8 +1755,8 @@ but found: ';'",
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -1758,12 +1766,13 @@ but found: ';'",
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ''",
         "type": "syntax",
       },
@@ -1840,8 +1849,8 @@ Array [
         "message": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -1851,12 +1860,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ''",
         "type": "syntax",
       },

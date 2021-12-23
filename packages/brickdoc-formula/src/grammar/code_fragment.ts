@@ -134,7 +134,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   variableDependencies: VariableDependency[] = []
   functionDependencies: Array<FunctionClause<any>> = []
   blockDependencies: NamespaceId[] = []
-  flattenVariableDependencies: Set<VariableDependency> = new Set()
+  flattenVariableDependencies: VariableDependency[] = []
   level: number = 0
   kind: VariableKind = 'constant'
 
@@ -551,13 +551,9 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
         const args = rhsCst.name === 'FunctionCall' ? { type: 'any', firstArgumentType } : { type: 'string' }
 
-        const {
-          codeFragments: rhsCodeFragments,
-          type: rhsType,
-          image: rhsImage
-        }: CodeFragmentResult = this.visit(rhsCst, args)
+        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult = this.visit(rhsCst, args)
 
-        firstArgumentType = rhsType
+        firstArgumentType = 'any'
         images.push(rhsImage)
         codeFragments.push(...rhsCodeFragments.map(f => ({ ...f, errors: [...accessErrorMessages, ...f.errors] })))
       }
@@ -1004,8 +1000,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     }
   }
 
-  columnExpression(ctx: { Dollar: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): CodeFragmentResult {
-    const dollarFragment = token2fragment(ctx.Dollar[0], 'any')
+  columnExpression(ctx: { Sharp: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): CodeFragmentResult {
+    const SharpFragment = token2fragment(ctx.Sharp[0], 'any')
     const [namespaceToken, columnToken] = ctx.UUID
 
     const namespaceId = namespaceToken.image
@@ -1029,32 +1025,32 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             ...columnFragment,
             code: 'Column',
             type: parentType,
-            name: `$${namespaceId}#${columnId}`,
+            name: `#${namespaceId}#${columnId}`,
             meta: { name: column.name, spreadsheetName: column.spreadsheetName },
             errors: errorMessages
           }
         ],
         type: newType,
-        image: `$${namespaceId}#${columnId}`
+        image: `#${namespaceId}#${columnId}`
       }
     } else {
       return {
         codeFragments: [
-          dollarFragment,
+          SharpFragment,
           {
             ...columnFragment,
-            name: `$${namespaceId}#${columnId}`,
+            name: `#${namespaceId}#${columnId}`,
             errors: [{ message: `Column not found: ${columnId}`, type: 'deps' }]
           }
         ],
         type: parentType,
-        image: `$${namespaceId}#${columnId}`
+        image: `#${namespaceId}#${columnId}`
       }
     }
   }
 
-  spreadsheetExpression(ctx: { Dollar: IToken[]; UUID: any[] }, { type }: ExpressionArgument): CodeFragmentResult {
-    const dollarFragment = token2fragment(ctx.Dollar[0], 'any')
+  spreadsheetExpression(ctx: { Sharp: IToken[]; UUID: any[] }, { type }: ExpressionArgument): CodeFragmentResult {
+    const SharpFragment = token2fragment(ctx.Sharp[0], 'any')
     const namespaceToken = ctx.UUID[0]
     const namespaceId = namespaceToken.image
 
@@ -1074,23 +1070,23 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             code: 'Spreadsheet',
             type: parentType,
             meta: { name: database.name(), blockId: database.blockId },
-            name: `$${namespaceId}`,
+            name: `#${namespaceId}`,
             errors: errorMessages
           }
         ],
-        image: `$${namespaceId}`,
+        image: `#${namespaceId}`,
         type: newType
       }
     } else {
       return {
         codeFragments: [
-          dollarFragment,
+          SharpFragment,
           {
             ...token2fragment(namespaceToken, 'any'),
             errors: [{ message: `Database not found: ${namespaceId}`, type: 'deps' }]
           }
         ],
-        image: `$${namespaceId}`,
+        image: `#${namespaceId}`,
         type: parentType
       }
     }
@@ -1107,13 +1103,19 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         type: 'Record',
         image: ctx.Input[0].image
       }
+    } else if (ctx.LambdaArgumentNumber) {
+      return {
+        codeFragments: [token2fragment(ctx.LambdaArgumentNumber[0], 'Reference')],
+        type: 'Reference',
+        image: ctx.LambdaArgumentNumber[0].image
+      }
     } else {
       return { codeFragments: [], type: 'any', image: '' }
     }
   }
 
-  variableExpression(ctx: { Dollar: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): CodeFragmentResult {
-    const dollarFragment = token2fragment(ctx.Dollar[0], 'any')
+  variableExpression(ctx: { Sharp: IToken[]; UUID: [any, any] }, { type }: ExpressionArgument): CodeFragmentResult {
+    const SharpFragment = token2fragment(ctx.Sharp[0], 'any')
     const [namespaceToken, variableToken] = ctx.UUID
 
     const namespaceId = namespaceToken.image
@@ -1126,12 +1128,22 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     this.kind = 'expression'
 
     if (variable) {
-      this.variableDependencies.push({ namespaceId, variableId })
-      this.flattenVariableDependencies = new Set([
-        { namespaceId, variableId },
-        ...this.flattenVariableDependencies,
-        ...variable.t.flattenVariableDependencies
-      ])
+      this.variableDependencies = [
+        ...new Map(
+          [...this.variableDependencies, { namespaceId, variableId }].map(item => [item.variableId, item])
+        ).values()
+      ]
+
+      this.flattenVariableDependencies = [
+        ...new Map(
+          [
+            ...this.flattenVariableDependencies,
+            ...variable.t.flattenVariableDependencies,
+            { namespaceId, variableId }
+          ].map(item => [item.variableId, item])
+        ).values()
+      ]
+
       this.level = Math.max(this.level, variable.t.level + 1)
 
       const { errorMessages, newType } = intersectType(
@@ -1146,30 +1158,31 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             code: 'Variable',
             type: newType,
             meta: { name: variable.t.name, namespace: variable.namespaceName(), namespaceId: variable.t.namespaceId },
-            name: `$${namespaceId}@${variableId}`,
+            name: `#${namespaceId}@${variableId}`,
             errors: errorMessages
           }
         ],
-        image: `$${namespaceId}@${variableId}`,
+        image: `#${namespaceId}@${variableId}`,
         type: newType
       }
     } else {
       return {
         codeFragments: [
-          dollarFragment,
+          SharpFragment,
           {
             ...variableFragment,
             code: 'Variable',
-            name: `$${namespaceId}@${variableId}`,
+            name: `#${namespaceId}@${variableId}`,
             errors: [{ message: `Variable not found: ${variableId}`, type: 'deps' }]
           }
         ],
-        image: `$${namespaceId}@${variableId}`,
+        image: `#${namespaceId}@${variableId}`,
         type: 'any'
       }
     }
   }
 
+  // eslint-disable-next-line complexity
   FunctionCall(
     ctx: {
       FunctionName: Array<{ image: any }>
@@ -1223,7 +1236,14 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
     const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], clause ? clause.returns : 'any')] : []
 
-    if (clause) {
+    const clauseErrorMessages: ErrorMessage[] = []
+    if (!clause) {
+      clauseErrorMessages.push({ message: `Function ${functionKey} not found`, type: 'deps' })
+    } else if (clause.feature && this.formulaContext && !this.formulaContext.features.includes(clause.feature)) {
+      clauseErrorMessages.push({ message: `Feature ${clause.feature} not enabled`, type: 'deps' })
+    }
+
+    if (clauseErrorMessages.length === 0 && clause) {
       this.functionDependencies.push(clause)
 
       if (clause.effect || !clause.pure) {
@@ -1247,7 +1267,9 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         ? (this.visit(ctx.Arguments, clauseArgs) as CodeFragmentResult)
         : { codeFragments: [], image: '' }
       const argsErrorMessages: ErrorMessage[] =
-        clauseArgs.length > 0 && argsCodeFragments.length === 0 ? [{ message: 'Miss argument', type: 'deps' }] : []
+        clauseArgs.filter(a => !a.default).length > 0 && argsCodeFragments.length === 0
+          ? [{ message: 'Miss argument', type: 'deps' }]
+          : []
 
       images.push('(', image, ctx.RParen ? ')' : '')
 
@@ -1277,7 +1299,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           {
             ...nameFragment,
             code: 'Function',
-            errors: [{ message: `Function ${functionKey} not found`, type: 'deps' }]
+            errors: clauseErrorMessages
           },
           { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
           ...argsCodeFragments,

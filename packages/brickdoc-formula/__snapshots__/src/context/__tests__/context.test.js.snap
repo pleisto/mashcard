@@ -12,7 +12,7 @@ Object {
         "namespace": "Untitled",
         "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
       },
-      "name": "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+      "name": "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
       "spaceAfter": false,
       "spaceBefore": false,
       "type": "number",
@@ -34,7 +34,7 @@ Object {
         "namespace": "Untitled",
         "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       },
-      "name": "$615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
+      "name": "#615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
       "spaceAfter": false,
       "spaceBefore": false,
       "type": "number",
@@ -183,25 +183,25 @@ Object {
                                                                                               "tokenTypeIdx": 29,
                                                                                             },
                                                                                           ],
-                                                                                          "Dollar": Array [
+                                                                                          "Sharp": Array [
                                                                                             Object {
                                                                                               "endColumn": 2,
                                                                                               "endLine": 1,
                                                                                               "endOffset": 1,
-                                                                                              "image": "$",
+                                                                                              "image": "#",
                                                                                               "startColumn": 2,
                                                                                               "startLine": 1,
                                                                                               "startOffset": 1,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
-                                                                                                "PATTERN": /\\\\\\$/,
+                                                                                                "PATTERN": /#/,
                                                                                                 "categoryMatches": Array [],
                                                                                                 "categoryMatchesMap": Object {},
                                                                                                 "isParent": false,
-                                                                                                "name": "Dollar",
-                                                                                                "tokenTypeIdx": 28,
+                                                                                                "name": "Sharp",
+                                                                                                "tokenTypeIdx": 30,
                                                                                               },
-                                                                                              "tokenTypeIdx": 28,
+                                                                                              "tokenTypeIdx": 30,
                                                                                             },
                                                                                           ],
                                                                                           "UUID": Array [
@@ -307,25 +307,25 @@ Object {
                                                                                               "tokenTypeIdx": 29,
                                                                                             },
                                                                                           ],
-                                                                                          "Dollar": Array [
+                                                                                          "Sharp": Array [
                                                                                             Object {
                                                                                               "endColumn": 79,
                                                                                               "endLine": 1,
                                                                                               "endOffset": 78,
-                                                                                              "image": "$",
+                                                                                              "image": "#",
                                                                                               "startColumn": 79,
                                                                                               "startLine": 1,
                                                                                               "startOffset": 78,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
-                                                                                                "PATTERN": /\\\\\\$/,
+                                                                                                "PATTERN": /#/,
                                                                                                 "categoryMatches": Array [],
                                                                                                 "categoryMatchesMap": Object {},
                                                                                                 "isParent": false,
-                                                                                                "name": "Dollar",
-                                                                                                "tokenTypeIdx": 28,
+                                                                                                "name": "Sharp",
+                                                                                                "tokenTypeIdx": 30,
                                                                                               },
-                                                                                              "tokenTypeIdx": 28,
+                                                                                              "tokenTypeIdx": 30,
                                                                                             },
                                                                                           ],
                                                                                           "UUID": Array [
@@ -427,22 +427,18 @@ Object {
     },
     "name": "startExpression",
   },
-  "definition": "=$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c + $615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
+  "definition": "=#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c + #615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
   "dirty": false,
-  "flattenVariableDependencies": Set {
+  "flattenVariableDependencies": Array [
+    Object {
+      "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+      "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+    },
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
     },
-    Object {
-      "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-      "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-    },
-    Object {
-      "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-      "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-    },
-  },
+  ],
   "functionDependencies": Array [],
   "kind": "expression",
   "level": 2,
@@ -490,13 +486,13 @@ Object {
 
 exports[`Context commitVariable normal 3`] = `
 Object {
-  "$615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900": Array [
+  "#615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900": Array [
     Object {
       "namespaceId": "37198be0-d10d-42dc-ae8b-20d45a95401b",
       "variableId": "b4289606-2a52-48e3-a50f-77ee321dd84e",
     },
   ],
-  "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [
+  "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
@@ -619,7 +615,7 @@ Object {
 
 exports[`Context removeVariable 1`] = `
 Array [
-  "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+  "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
 ]
 `;
 
@@ -631,14 +627,14 @@ Object {
 
 exports[`Context removeVariable 3`] = `
 Object {
-  "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [],
+  "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [],
 }
 `;
 
 exports[`Context reset 1`] = `
 Array [
-  "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
-  "$615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
+  "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+  "#615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
 ]
 `;
 
@@ -655,7 +651,7 @@ Object {
 
 exports[`Context reset 3`] = `
 Object {
-  "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [
+  "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",

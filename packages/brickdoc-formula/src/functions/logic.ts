@@ -69,7 +69,7 @@ const BOOLEAN_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
         type: 'boolean'
       }
     ],
-    examples: [{ input: '=NOT(TRUE())', output: { type: 'boolean', result: false } }],
+    examples: [{ input: '=NOT(true)', output: { type: 'boolean', result: false } }],
     returns: 'boolean',
     testCases: [],
     chain: false,

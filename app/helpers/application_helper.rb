@@ -15,7 +15,7 @@ module ApplicationHelper
       host: Brickdoc::Runtime.host,
       csrfToken: form_authenticity_token,
       isDesktopApp: false,
-      featureFlags: Flipper.features,
+      featureFlags: Flipper.features.map(&:name),
       settings: BrickdocConfig.to_frontend,
       serverMessage: flash[:alert],
       sentryDsn: BrickdocConfig.sentry_dsn

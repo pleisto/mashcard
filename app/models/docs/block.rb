@@ -369,9 +369,12 @@ class Docs::Block < ApplicationRecord
   def check_target_descendants!(target_parent_id)
     return if target_parent_id.nil?
     return if target_parent_id == parent_id
-    raise ArgumentError, "Invalid target" if target_parent_id == id
 
-    raise ArgumentError, "Invalid target" if target_parent_id.in?(descendants.ids)
+    msg = I18n.t("errors.graphql.docs.target_descendants_invalid")
+
+    raise ArgumentError, msg if target_parent_id == id
+
+    raise ArgumentError, msg if target_parent_id.in?(descendants_raw.ids)
   end
 
   def move!(target_parent_id, new_sort)

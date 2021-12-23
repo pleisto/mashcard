@@ -116,9 +116,9 @@ Array [
                                                                                                   "categoryMatchesMap": Object {},
                                                                                                   "isParent": false,
                                                                                                   "name": "NumberLiteral",
-                                                                                                  "tokenTypeIdx": 42,
+                                                                                                  "tokenTypeIdx": 43,
                                                                                                 },
-                                                                                                "tokenTypeIdx": 42,
+                                                                                                "tokenTypeIdx": 43,
                                                                                               },
                                                                                             ],
                                                                                           },
@@ -182,7 +182,7 @@ Array [
     },
     "definition": "=123",
     "dirty": false,
-    "flattenVariableDependencies": Set {},
+    "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "kind": "constant",
     "level": 0,
@@ -398,9 +398,9 @@ Array [
                                                                                                   "categoryMatchesMap": Object {},
                                                                                                   "isParent": false,
                                                                                                   "name": "NumberLiteral",
-                                                                                                  "tokenTypeIdx": 42,
+                                                                                                  "tokenTypeIdx": 43,
                                                                                                 },
-                                                                                                "tokenTypeIdx": 42,
+                                                                                                "tokenTypeIdx": 43,
                                                                                               },
                                                                                             ],
                                                                                           },
@@ -458,9 +458,9 @@ Array [
                                                                                             "categoryMatchesMap": Object {},
                                                                                             "isParent": false,
                                                                                             "name": "FunctionName",
-                                                                                            "tokenTypeIdx": 50,
+                                                                                            "tokenTypeIdx": 51,
                                                                                           },
-                                                                                          "tokenTypeIdx": 50,
+                                                                                          "tokenTypeIdx": 51,
                                                                                         },
                                                                                       ],
                                                                                       "LParen": Array [
@@ -562,7 +562,7 @@ Array [
     },
     "definition": "= 123 + RAND()",
     "dirty": false,
-    "flattenVariableDependencies": Set {},
+    "flattenVariableDependencies": Array [],
     "functionDependencies": Array [
       Object {
         "acceptError": false,
@@ -697,7 +697,7 @@ Array [
           "namespace": "Untitled",
           "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
         },
-        "name": "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "name": "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -883,9 +883,9 @@ Array [
                                                                                                                                                                                       "categoryMatchesMap": Object {},
                                                                                                                                                                                       "isParent": false,
                                                                                                                                                                                       "name": "NumberLiteral",
-                                                                                                                                                                                      "tokenTypeIdx": 42,
+                                                                                                                                                                                      "tokenTypeIdx": 43,
                                                                                                                                                                                     },
-                                                                                                                                                                                    "tokenTypeIdx": 42,
+                                                                                                                                                                                    "tokenTypeIdx": 43,
                                                                                                                                                                                   },
                                                                                                                                                                                 ],
                                                                                                                                                                               },
@@ -964,9 +964,9 @@ Array [
                                                                                             "categoryMatchesMap": Object {},
                                                                                             "isParent": false,
                                                                                             "name": "FunctionName",
-                                                                                            "tokenTypeIdx": 50,
+                                                                                            "tokenTypeIdx": 51,
                                                                                           },
-                                                                                          "tokenTypeIdx": 50,
+                                                                                          "tokenTypeIdx": 51,
                                                                                         },
                                                                                       ],
                                                                                       "LParen": Array [
@@ -1070,25 +1070,25 @@ Array [
                                                                                                 "tokenTypeIdx": 29,
                                                                                               },
                                                                                             ],
-                                                                                            "Dollar": Array [
+                                                                                            "Sharp": Array [
                                                                                               Object {
                                                                                                 "endColumn": 13,
                                                                                                 "endLine": 1,
                                                                                                 "endOffset": 12,
-                                                                                                "image": "$",
+                                                                                                "image": "#",
                                                                                                 "startColumn": 13,
                                                                                                 "startLine": 1,
                                                                                                 "startOffset": 12,
                                                                                                 "tokenType": Object {
                                                                                                   "CATEGORIES": Array [],
-                                                                                                  "PATTERN": /\\\\\\$/,
+                                                                                                  "PATTERN": /#/,
                                                                                                   "categoryMatches": Array [],
                                                                                                   "categoryMatchesMap": Object {},
                                                                                                   "isParent": false,
-                                                                                                  "name": "Dollar",
-                                                                                                  "tokenTypeIdx": 28,
+                                                                                                  "name": "Sharp",
+                                                                                                  "tokenTypeIdx": 30,
                                                                                                 },
-                                                                                                "tokenTypeIdx": 28,
+                                                                                                "tokenTypeIdx": 30,
                                                                                               },
                                                                                             ],
                                                                                             "UUID": Array [
@@ -1190,14 +1190,14 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "=ABS(123) + $d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+    "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
     "dirty": false,
-    "flattenVariableDependencies": Set {
+    "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
         "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
       },
-    },
+    ],
     "functionDependencies": Array [
       Object {
         "acceptError": false,
@@ -1333,7 +1333,7 @@ Object {
 
 exports[`appendFormulas expression 3`] = `
 Object {
-  "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [
+  "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c": Array [
     Object {
       "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
       "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
@@ -1504,9 +1504,9 @@ Array [
                                                                                                   "categoryMatchesMap": Object {},
                                                                                                   "isParent": false,
                                                                                                   "name": "NumberLiteral",
-                                                                                                  "tokenTypeIdx": 42,
+                                                                                                  "tokenTypeIdx": 43,
                                                                                                 },
-                                                                                                "tokenTypeIdx": 42,
+                                                                                                "tokenTypeIdx": 43,
                                                                                               },
                                                                                             ],
                                                                                           },
@@ -1602,7 +1602,7 @@ Array [
     },
     "definition": "= 123 +",
     "dirty": false,
-    "flattenVariableDependencies": Set {},
+    "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "kind": "constant",
     "level": 0,
@@ -1621,8 +1621,8 @@ Array [
         "result": "Expecting: one of these possible Token sequences:
   1. [EqualCompareOperator]
   2. [CompareOperator]
-  3. [Dollar, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Dollar, UUID, Sharp, UUID, CompareOperator]
+  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
+  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
   5. [Ampersand]
   6. [LParen]
   7. [LBracket]
@@ -1632,12 +1632,13 @@ Array [
   11. [BooleanLiteral]
   12. [StringLiteral]
   13. [NullLiteral]
-  14. [Self]
-  15. [Input]
-  16. [FunctionName]
-  17. [Dollar, UUID, At]
-  18. [Dollar, UUID, Sharp, UUID]
-  19. [Dollar, UUID]
+  14. [LambdaArgumentNumber]
+  15. [Self]
+  16. [Input]
+  17. [FunctionName]
+  18. [Sharp, UUID, At]
+  19. [Sharp, UUID, Sharp, UUID]
+  20. [Sharp, UUID]
 but found: ''",
         "type": "Error",
       },
@@ -1701,10 +1702,10 @@ Array [
         "type": "number",
       },
       Object {
-        "code": "Dollar",
+        "code": "Sharp",
         "errors": Array [],
         "meta": undefined,
-        "name": "$",
+        "name": "#",
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -1718,7 +1719,7 @@ Array [
           },
         ],
         "meta": undefined,
-        "name": "$d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "name": "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -1904,9 +1905,9 @@ Array [
                                                                                                                                                                                       "categoryMatchesMap": Object {},
                                                                                                                                                                                       "isParent": false,
                                                                                                                                                                                       "name": "NumberLiteral",
-                                                                                                                                                                                      "tokenTypeIdx": 42,
+                                                                                                                                                                                      "tokenTypeIdx": 43,
                                                                                                                                                                                     },
-                                                                                                                                                                                    "tokenTypeIdx": 42,
+                                                                                                                                                                                    "tokenTypeIdx": 43,
                                                                                                                                                                                   },
                                                                                                                                                                                 ],
                                                                                                                                                                               },
@@ -1985,9 +1986,9 @@ Array [
                                                                                             "categoryMatchesMap": Object {},
                                                                                             "isParent": false,
                                                                                             "name": "FunctionName",
-                                                                                            "tokenTypeIdx": 50,
+                                                                                            "tokenTypeIdx": 51,
                                                                                           },
-                                                                                          "tokenTypeIdx": 50,
+                                                                                          "tokenTypeIdx": 51,
                                                                                         },
                                                                                       ],
                                                                                       "LParen": Array [
@@ -2091,25 +2092,25 @@ Array [
                                                                                                 "tokenTypeIdx": 29,
                                                                                               },
                                                                                             ],
-                                                                                            "Dollar": Array [
+                                                                                            "Sharp": Array [
                                                                                               Object {
                                                                                                 "endColumn": 13,
                                                                                                 "endLine": 1,
                                                                                                 "endOffset": 12,
-                                                                                                "image": "$",
+                                                                                                "image": "#",
                                                                                                 "startColumn": 13,
                                                                                                 "startLine": 1,
                                                                                                 "startOffset": 12,
                                                                                                 "tokenType": Object {
                                                                                                   "CATEGORIES": Array [],
-                                                                                                  "PATTERN": /\\\\\\$/,
+                                                                                                  "PATTERN": /#/,
                                                                                                   "categoryMatches": Array [],
                                                                                                   "categoryMatchesMap": Object {},
                                                                                                   "isParent": false,
-                                                                                                  "name": "Dollar",
-                                                                                                  "tokenTypeIdx": 28,
+                                                                                                  "name": "Sharp",
+                                                                                                  "tokenTypeIdx": 30,
                                                                                                 },
-                                                                                                "tokenTypeIdx": 28,
+                                                                                                "tokenTypeIdx": 30,
                                                                                               },
                                                                                             ],
                                                                                             "UUID": Array [
@@ -2211,9 +2212,9 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "=ABS(123) + $d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+    "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
     "dirty": false,
-    "flattenVariableDependencies": Set {},
+    "flattenVariableDependencies": Array [],
     "functionDependencies": Array [
       Object {
         "acceptError": false,

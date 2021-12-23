@@ -51,7 +51,7 @@ export interface BaseParseResult {
   readonly functionDependencies: Array<FunctionClause<any>>
   readonly blockDependencies: NamespaceId[]
   readonly codeFragments: CodeFragment[]
-  readonly flattenVariableDependencies: Set<VariableDependency>
+  readonly flattenVariableDependencies: VariableDependency[]
   readonly completions: Completion[]
 }
 
@@ -83,6 +83,7 @@ export interface BaseInterpretResult {
   readonly success: boolean
   readonly errorMessages: ErrorMessage[]
   readonly variableValue: VariableValue
+  readonly lazy: boolean
 }
 
 export interface SuccessInterpretResult extends BaseInterpretResult {
@@ -95,6 +96,7 @@ export interface ErrorInterpretResult extends BaseInterpretResult {
   readonly success: false
   readonly errorMessages: [ErrorMessage, ...ErrorMessage[]]
   readonly variableValue: ErrorVariableValue
+  readonly lazy: false
 }
 
 export type InterpretResult = SuccessInterpretResult | ErrorInterpretResult
@@ -109,7 +111,7 @@ export const parse = ({
   let variableDependencies: VariableDependency[] = []
   let functionDependencies: Array<FunctionClause<any>> = []
   let blockDependencies: NamespaceId[] = []
-  let flattenVariableDependencies: Set<VariableDependency> = new Set()
+  let flattenVariableDependencies: VariableDependency[] = []
   let newInput = input
   const version = FORMULA_PARSER_VERSION
   if (!variableId) {
@@ -375,6 +377,7 @@ export const interpret = async ({
     const errorMessage: ErrorMessage = { message, type: 'fatal' }
     return {
       success: false,
+      lazy: false,
       errorMessages: [errorMessage],
       variableValue: {
         updatedAt: new Date(),
@@ -387,9 +390,11 @@ export const interpret = async ({
   try {
     const interpreter = new FormulaInterpreter({ formulaContext, meta, interpretContext })
     const result: AnyTypeResult = await interpreter.visit(cst)
+    const lazy = interpreter.lazy
 
     return {
       success: true,
+      lazy,
       variableValue: {
         success: true,
         updatedAt: new Date(),
@@ -404,6 +409,7 @@ export const interpret = async ({
     const errorMessage: ErrorMessage = { message, type: 'fatal' }
     return {
       success: false,
+      lazy: false,
       errorMessages: [errorMessage],
       variableValue: {
         updatedAt: new Date(),
@@ -431,7 +437,7 @@ export const buildVariable = ({
     level,
     flattenVariableDependencies
   },
-  interpretResult: { variableValue }
+  interpretResult: { variableValue, lazy }
 }: {
   formulaContext: ContextInterface
   meta: VariableMetadata
@@ -445,7 +451,7 @@ export const buildVariable = ({
     name,
     cst,
     view,
-    version,
+    version: lazy ? -1 : version,
     codeFragments,
     definition: input,
     dirty: false,
@@ -513,7 +519,12 @@ export const quickInsert = async ({
     throw new Error(errorMessages[0]!.message)
   }
 
-  const { variableValue } = await interpret({ cst, formulaContext, meta, interpretContext: {} })
+  const { variableValue, lazy } = await interpret({
+    cst,
+    formulaContext,
+    meta,
+    interpretContext: { ctx: {}, arguments: [] }
+  })
 
   const variable: VariableData = {
     namespaceId,
@@ -524,7 +535,7 @@ export const quickInsert = async ({
     view,
     definition: input,
     cst,
-    version,
+    version: lazy ? -1 : version,
     kind: kind ?? 'constant',
     codeFragments,
     variableValue,

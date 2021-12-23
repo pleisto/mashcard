@@ -17,7 +17,6 @@ import {
   Not,
   StringLiteral,
   Sign,
-  Dollar,
   UUID,
   Sharp,
   FunctionName,
@@ -34,7 +33,8 @@ import {
   RBrace,
   Colon,
   Self,
-  Input
+  Input,
+  LambdaArgumentNumber
 } from './lexer'
 
 interface ParserConfig {
@@ -231,9 +231,9 @@ export class FormulaParser extends CstParser {
   })
 
   public columnExpression = this.RULE('columnExpression', () => {
-    this.CONSUME(Dollar)
-    this.CONSUME(UUID)
     this.CONSUME(Sharp)
+    this.CONSUME(UUID)
+    this.CONSUME2(Sharp)
     this.CONSUME2(UUID)
   })
 
@@ -245,20 +245,21 @@ export class FormulaParser extends CstParser {
   public lazyVariableExpression = this.RULE('lazyVariableExpression', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.variableExpression) },
+      { ALT: () => this.CONSUME(LambdaArgumentNumber) },
       { ALT: () => this.CONSUME(Self) },
       { ALT: () => this.CONSUME(Input) }
     ])
   })
 
   public variableExpression = this.RULE('variableExpression', () => {
-    this.CONSUME(Dollar)
+    this.CONSUME(Sharp)
     this.CONSUME(UUID)
     this.CONSUME(At)
     this.CONSUME2(UUID)
   })
 
   public spreadsheetExpression = this.RULE('spreadsheetExpression', () => {
-    this.CONSUME(Dollar)
+    this.CONSUME(Sharp)
     this.CONSUME(UUID)
   })
 

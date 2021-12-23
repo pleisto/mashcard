@@ -18,7 +18,7 @@ type FormulaObjectType =
 
 export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Radio' | 'Rate' | 'Slider'
 
-export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any'
+export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any' | 'void'
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
@@ -36,6 +36,7 @@ export type SpecialDefaultVariableName =
   | 'var'
   | 'null'
   | 'error'
+  | 'void'
   | 'predicate'
   | 'spreadsheet'
   | 'reference'
@@ -59,7 +60,6 @@ export type Definition = string
 
 export type VariableKind = 'constant' | 'expression'
 
-export type VariableTypeMeta = `error_${VariableKind}` | `success_${FormulaType}`
 export type ErrorType =
   | 'type'
   | 'syntax'
@@ -75,9 +75,9 @@ export type ParseErrorType = 'parse' | 'syntax'
 
 export type FunctionKey = `${FunctionGroup}::${FunctionNameType}` | FunctionNameType
 export type FunctionCompletionValue = FunctionKey | `${FunctionKey}()`
-export type VariableKey = `$${NamespaceId}@${VariableId}`
-export type SpreadsheetKey = `$${NamespaceId}`
-export type ColumnKey = `$${NamespaceId}#${ColumnId}`
+export type VariableKey = `#${NamespaceId}@${VariableId}`
+export type SpreadsheetKey = `#${NamespaceId}`
+export type ColumnKey = `#${NamespaceId}#${ColumnId}`
 
 // TODO blockName -> string
 export type BlockName = NamespaceId
@@ -94,12 +94,16 @@ export type NamespaceId = uuid
 export type VariableId = uuid
 export type ColumnId = uuid
 
+export type Feature = string
+export type Features = Feature[]
+
 export type PredicateOperator = 'equal' | 'notEqual' | 'greaterThan' | 'greaterThanEqual' | 'lessThan' | 'lessThanEqual'
 
 export type FormulaFunctionKind = 'Set'
 export interface BaseResult {
   result: any
   type: FormulaType
+  subType?: FormulaType
   errorKind?: ErrorType
   operator?: PredicateOperator
 }
@@ -131,6 +135,7 @@ export interface BlankResult extends BaseResult {
 export interface ArrayResult extends BaseResult {
   result: AnyTypeResult[]
   type: 'Array'
+  subType: FormulaType
 }
 
 export interface RecordType {
@@ -139,6 +144,7 @@ export interface RecordType {
 
 export interface RecordResult extends BaseResult {
   result: RecordType
+  subType: FormulaType
   type: 'Record'
 }
 
@@ -313,7 +319,7 @@ export interface Database {
   getRow: (rowId: uuid) => Row | undefined
   getColumn: (columnId: ColumnId) => Column | undefined
   toArray: () => string[][]
-  toRecord: () => Array<{ [key: string]: any }>
+  toRecord: () => Array<{ [key: string]: StringResult }>
   persist: () => DatabasePersistence
 }
 
@@ -367,6 +373,7 @@ export interface SpreadsheetCompletion extends BaseCompletion {
 export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCompletion | ColumnCompletion
 
 export interface ContextInterface {
+  features: string[]
   databases: { [key: NamespaceId]: Database }
   blockNameMap: { [key: NamespaceId]: string }
   reservedNames: string[]
@@ -410,12 +417,16 @@ export interface FunctionContext {
   readonly interpretContext: InterpretContext
 }
 
-export type InterpretContext = RecordType
+export interface InterpretContext {
+  readonly ctx: RecordType
+  readonly arguments: AnyTypeResult[]
+}
 
 export interface BaseFunctionClause<T extends FormulaType> {
   readonly name: FunctionNameType
   readonly pure: boolean
   readonly effect: false
+  readonly feature?: Feature
   readonly lazy: boolean
   readonly async: false
   readonly chain: boolean
@@ -527,7 +538,7 @@ export interface VariableData {
   variableValue: VariableValue
   cst?: CstNode
   codeFragments: CodeFragment[]
-  flattenVariableDependencies: Set<VariableDependency>
+  flattenVariableDependencies: VariableDependency[]
   variableDependencies: VariableDependency[]
   blockDependencies: NamespaceId[]
   functionDependencies: Array<FunctionClause<any>>
@@ -550,6 +561,7 @@ export interface VariableInterface {
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>
   afterUpdate: () => void
+  interpret: (context: InterpretContext) => Promise<void>
   updateAndPersist: () => Promise<void>
   refresh: (context: InterpretContext) => Promise<void>
 }

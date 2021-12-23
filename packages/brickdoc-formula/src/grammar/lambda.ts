@@ -32,6 +32,6 @@ export const functionResult2lambda = <T extends ControlType>(
       }
     })
 
-    console.log(`lambda called ${ctrl.kind}`)
+    console.log('lambda called', { ctx, result, ctrl })
   }
 }

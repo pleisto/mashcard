@@ -10,7 +10,7 @@ export const TRIM = (ctx: FunctionContext, str: StringResult): StringResult => (
   type: 'string'
 })
 
-export const CORE_TEXT_CLAUSES: Array<BasicFunctionClause<any>> = [
+export const CORE_TEXT_CLAUSES: Array<BasicFunctionClause<'string' | 'number'>> = [
   {
     name: 'LEN',
     async: false,
