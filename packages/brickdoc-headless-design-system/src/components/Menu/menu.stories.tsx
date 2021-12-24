@@ -42,11 +42,15 @@ Basic.args = {
   'aria-label': 'menu',
   className: 'menu',
   children: [
-    <Menu.Item key="one" label="One">
+    <Menu.Item itemKey="one" key="one" label="One">
       One
     </Menu.Item>,
-    <Menu.Item key="two">Two</Menu.Item>,
-    <Menu.Item key="three">Three</Menu.Item>
+    <Menu.Item itemKey="two" key="two">
+      Two
+    </Menu.Item>,
+    <Menu.Item itemKey="three" key="three">
+      Three
+    </Menu.Item>
   ]
 }
 
@@ -56,33 +60,26 @@ withSection.args = {
   className: 'menu',
   children: [
     <Menu.Section key="section" title="section one">
-      <Menu.Item key="one">One</Menu.Item>
-      <Menu.Item key="two">Two</Menu.Item>
-      <Menu.Item key="three">Three</Menu.Item>
+      <Menu.Item itemKey="one" key="one">
+        One
+      </Menu.Item>
+      <Menu.Item itemKey="two" key="two">
+        Two
+      </Menu.Item>
+      <Menu.Item itemKey="three" key="three">
+        Three
+      </Menu.Item>
     </Menu.Section>,
     <Menu.Section key="section two" title="section two">
-      <Menu.Item key="four">four</Menu.Item>
-      <Menu.Item key="five">five</Menu.Item>
-      <Menu.Item key="six">six</Menu.Item>
-    </Menu.Section>
-  ]
-}
-
-export const withSearch = Template.bind({})
-withSearch.args = {
-  'aria-label': 'menu',
-  className: 'menu',
-  searchable: true,
-  children: [
-    <Menu.Section key="section" title="section one">
-      <Menu.Item key="one">One</Menu.Item>
-      <Menu.Item key="two">Two</Menu.Item>
-      <Menu.Item key="three">Three</Menu.Item>
-    </Menu.Section>,
-    <Menu.Section key="section two" title="section two">
-      <Menu.Item key="four">four</Menu.Item>
-      <Menu.Item key="five">five</Menu.Item>
-      <Menu.Item key="six">six</Menu.Item>
+      <Menu.Item itemKey="four" key="four">
+        four
+      </Menu.Item>
+      <Menu.Item itemKey="five" key="five">
+        five
+      </Menu.Item>
+      <Menu.Item itemKey="six" key="six">
+        six
+      </Menu.Item>
     </Menu.Section>
   ]
 }

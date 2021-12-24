@@ -1,9 +1,9 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { BlockContext } from '../../context/BlockContext'
-import { ActionItemOption, ActionItemOptionGroup } from './BlockActions'
 import { EditorContext } from '../../context/EditorContext'
 import { useDocumentEditable } from '../../hooks'
+import { ActionItemOptionGroup, ActionItemSectionOption } from './BlockActions'
 
 export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move'
 
@@ -18,14 +18,14 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
 
   return React.useMemo<ActionItemOptionGroup | null>(() => {
     const group: ActionItemOptionGroup = []
-    const normalGroup: ActionItemOption[] = []
+    const normalGroup: ActionItemSectionOption = { type: 'section', items: [] }
 
     if (!documentEditable || types.length === 0) {
       return null
     }
 
     if (types.includes('duplicate')) {
-      normalGroup.push({
+      normalGroup.items.push({
         label: t('block_actions.basic.duplicate'),
         name: 'duplicate',
         type: 'item',
@@ -36,7 +36,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
     }
 
     if (types.includes('copy')) {
-      normalGroup.push({
+      normalGroup.items.push({
         name: 'copy',
         label: t('block_actions.basic.copy'),
         type: 'item',
@@ -47,7 +47,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
     }
 
     if (types.includes('move')) {
-      normalGroup.push({
+      normalGroup.items.push({
         label: t('block_actions.basic.move'),
         name: 'move',
         type: 'item',
@@ -57,7 +57,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
       })
     }
 
-    if (normalGroup.length > 0) {
+    if (normalGroup.items.length > 0) {
       group.push(normalGroup)
     }
 

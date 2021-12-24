@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
-import { ActionOption, BlockActionOptions } from '../../../components/BlockActions'
+import { ActionSectionOption, BlockActionOptions } from '../../../components/BlockActions'
 
 export interface UseActionOptionsProps {
   mode: 'link' | 'preview'
@@ -18,17 +18,20 @@ export function useActionOptions({
   onToPreviewMode
 }: UseActionOptionsProps): [BlockActionOptions] {
   return React.useMemo(() => {
-    const firstGroup: ActionOption[] = [
-      {
-        name: 'download',
-        type: 'item',
-        icon: <Icon.Download />,
-        onAction: onDownload
-      }
-    ]
+    const firstGroup: ActionSectionOption = {
+      type: 'section',
+      items: [
+        {
+          name: 'download',
+          type: 'item',
+          icon: <Icon.Download />,
+          onAction: onDownload
+        }
+      ]
+    }
 
     if (onFullScreen) {
-      firstGroup.push({
+      firstGroup.items.push({
         name: 'fullscreen',
         type: 'item',
         icon: <Icon.ScreenFull />,
@@ -38,22 +41,25 @@ export function useActionOptions({
 
     const actionOptions: BlockActionOptions = [
       firstGroup,
-      [
-        {
-          name: 'attachment mode',
-          type: 'item',
-          icon: <Icon.TextView />,
-          onAction: onToLinkMode,
-          active: mode === 'link'
-        },
-        {
-          name: 'preview mode',
-          type: 'item',
-          icon: <Icon.Preview />,
-          onAction: onToPreviewMode,
-          active: mode === 'preview'
-        }
-      ],
+      {
+        type: 'section',
+        items: [
+          {
+            name: 'attachment mode',
+            type: 'item',
+            icon: <Icon.TextView />,
+            onAction: onToLinkMode,
+            active: mode === 'link'
+          },
+          {
+            name: 'preview mode',
+            type: 'item',
+            icon: <Icon.Preview />,
+            onAction: onToPreviewMode,
+            active: mode === 'preview'
+          }
+        ]
+      },
       'copy',
       'delete'
     ]

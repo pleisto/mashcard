@@ -3,12 +3,16 @@
 exports[`Toolbar matches snapshot correctly 1`] = `
 <ul
   class="brd-c-ijmYxO"
+  role="menu"
 >
   <ul
     class="brd-c-gYAvyC"
+    role="presentation"
   >
     <li
+      aria-label="item"
       class="brd-c-fWLPxz"
+      role="menuitem"
     >
       <span>
         item
@@ -16,7 +20,9 @@ exports[`Toolbar matches snapshot correctly 1`] = `
     </li>
     <span>
       <li
+        aria-label="dropdown"
         class="brd-c-kazggs"
+        role="menuitem"
       >
         dropdown
         <span
@@ -47,7 +53,9 @@ exports[`Toolbar matches snapshot correctly 1`] = `
     />
   </ul>
   <li
+    aria-label="item2"
     class="brd-c-fWLPxz"
+    role="menuitem"
   >
     <span>
       item2

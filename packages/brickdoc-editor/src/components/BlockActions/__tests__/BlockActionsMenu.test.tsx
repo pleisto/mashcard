@@ -12,7 +12,7 @@ describe('BlockActionsMenu', () => {
       {
         type: 'dropdown',
         name: 'dropdown',
-        menuItems: [
+        items: [
           {
             type: 'item',
             name: 'menuItem',

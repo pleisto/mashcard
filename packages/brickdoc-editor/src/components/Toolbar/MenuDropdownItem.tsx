@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Menu, Popover, styled, theme } from '@brickdoc/design-system'
-import { ToolbarDropdownOption } from './Toolbar'
+import { ToolbarDropdownOption, ToolbarItemOption, ToolbarItemSectionOption } from './Toolbar'
 import { ToolbarMenuItem } from './MenuItem'
 import { itemCommon, itemHeight } from './styles/index.style'
 import { variants } from './styles/variants.style'
@@ -29,52 +29,76 @@ export interface ToolbarMenuDropdownItemProps {
   option: ToolbarDropdownOption
 }
 
-export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = ({ option }) => {
+const renderMenu = (
+  option: ToolbarDropdownOption,
+  items: Array<ToolbarItemSectionOption | ToolbarItemOption>,
+  closeMenu: () => void
+): React.ReactElement => {
+  return (
+    <Menu aria-label={option.name}>
+      {items.map((menuItem, index) => {
+        if (menuItem.type === 'section') {
+          return (
+            <Menu.Section title={menuItem.title} key={index}>
+              {menuItem.items.map(item => (
+                <Menu.Item
+                  key={item.name}
+                  itemKey={item.name}
+                  icon={item.icon}
+                  label={item.label ?? item.name}
+                  onAction={key => {
+                    item.onAction?.(key)
+                    if (item.closeOnAction) closeMenu()
+                  }}
+                >
+                  {item.content}
+                </Menu.Item>
+              ))}
+            </Menu.Section>
+          )
+        }
+        return (
+          <Menu.Item
+            key={menuItem.name}
+            itemKey={menuItem.name}
+            icon={menuItem.icon}
+            label={menuItem.label ?? menuItem.name}
+            onAction={key => {
+              menuItem.onAction?.(key)
+              if (menuItem.closeOnAction) closeMenu()
+            }}
+          >
+            {menuItem.content}
+          </Menu.Item>
+        )
+      })}
+    </Menu>
+  )
+}
+
+export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = ({ option, ...props }) => {
   const [visible, setVisible] = React.useState(false)
   const handleVisibleChange = (visible: boolean): void => setVisible(visible)
+  const hasContent = !!option.content
+
+  const MenuContent = Array.isArray(option.items)
+    ? renderMenu(option, option.items, () => setVisible(false))
+    : option.items()
 
   return (
     <Popover
+      {...props}
       trigger="click"
       visible={visible}
       overlayClassName="brickdoc-toolbar-dropdown-popover"
       onVisibleChange={handleVisibleChange}
       placement="bottom"
-      content={
-        <Menu aria-label={option.name} searchable={option.searchable}>
-          {option.menuItems.map((menuItem, index) => {
-            if (Array.isArray(menuItem)) {
-              return (
-                <Menu.Section key={index}>
-                  {menuItem.map(item => (
-                    <Menu.Item
-                      key={item.name}
-                      icon={item.icon}
-                      label={item.label ?? item.name}
-                      onAction={key => {
-                        item.onAction?.(key)
-                        if (item.closeOnAction) setVisible(false)
-                      }}
-                    >
-                      {item.content}
-                    </Menu.Item>
-                  ))}
-                </Menu.Section>
-              )
-            }
-            return (
-              <Menu.Item key={menuItem.name} icon={menuItem.icon} label={menuItem.name} onAction={menuItem.onAction}>
-                {menuItem.content}
-              </Menu.Item>
-            )
-          })}
-        </Menu>
-      }
-    >
-      {option.icon && <ToolbarMenuItem option={option} />}
-      {!option.icon && (
-        <DropdownItem active={option.active}>
-          {option.content}
+      getPopupContainer={element => element}
+      content={MenuContent}>
+      {hasContent && <ToolbarMenuItem option={option} />}
+      {!hasContent && (
+        <DropdownItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>
+          {option.icon ?? option.label}
           <ArrowDown />
         </DropdownItem>
       )}

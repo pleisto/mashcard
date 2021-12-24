@@ -17,11 +17,11 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
     const value = hasExtraOptions ? extraOptions : basicOptions
 
     if (hasExtraOptions && hasBasicOptions) {
-      value?.push({
+      ;(value as ToolbarOptionGroup)?.push({
         type: 'dropdown',
         name: t('block_actions.more'),
         icon: <Icon.More />,
-        menuItems: basicOptions!
+        items: basicOptions ?? []
       })
     }
 

@@ -5,24 +5,27 @@ import { Toolbar } from '../Toolbar'
 describe('Toolbar', () => {
   it(`matches snapshot correctly`, () => {
     const options: ToolbarOptionGroup = [
-      [
-        {
-          type: 'item',
-          name: 'item',
-          icon: <span>item</span>
-        },
-        {
-          type: 'dropdown',
-          name: 'dropdown',
-          content: 'dropdown',
-          menuItems: [
-            {
-              type: 'item',
-              name: 'dropdown item'
-            }
-          ]
-        }
-      ],
+      {
+        type: 'section',
+        items: [
+          {
+            type: 'item',
+            name: 'item',
+            icon: <span>item</span>
+          },
+          {
+            type: 'dropdown',
+            name: 'dropdown',
+            label: 'dropdown',
+            items: [
+              {
+                type: 'item',
+                name: 'dropdown item'
+              }
+            ]
+          }
+        ]
+      },
       {
         type: 'item',
         name: 'item2',
@@ -36,24 +39,33 @@ describe('Toolbar', () => {
 
   it('renders separator correctly', () => {
     const options: ToolbarOptionGroup = [
-      [
-        {
-          type: 'item',
-          name: 'item1'
-        }
-      ],
-      [
-        {
-          type: 'item',
-          name: 'item2'
-        }
-      ],
-      [
-        {
-          type: 'item',
-          name: 'item3'
-        }
-      ]
+      {
+        type: 'section',
+        items: [
+          {
+            type: 'item',
+            name: 'item1'
+          }
+        ]
+      },
+      {
+        type: 'section',
+        items: [
+          {
+            type: 'item',
+            name: 'item2'
+          }
+        ]
+      },
+      {
+        type: 'section',
+        items: [
+          {
+            type: 'item',
+            name: 'item3'
+          }
+        ]
+      }
     ]
     render(<Toolbar options={options} />)
 

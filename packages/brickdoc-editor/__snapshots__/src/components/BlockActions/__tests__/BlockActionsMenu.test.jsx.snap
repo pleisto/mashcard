@@ -3,9 +3,12 @@
 exports[`BlockActionsMenu matches snapshot correctly 1`] = `
 <ul
   class="brd-c-ijmYxO"
+  role="menu"
 >
   <li
+    aria-label="item"
     class="brd-c-fWLPxz"
+    role="menuitem"
   >
     <span>
       icon
@@ -13,7 +16,9 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
   </li>
   <span>
     <li
+      aria-label="dropdown"
       class="brd-c-kazggs"
+      role="menuitem"
     >
       <span
         aria-label="arrow-down"
@@ -39,7 +44,9 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
   </span>
   <span>
     <li
-      class="brd-c-fWLPxz"
+      aria-label="block_actions.more"
+      class="brd-c-kazggs"
+      role="menuitem"
     >
       <span
         aria-label="more"
@@ -52,6 +59,26 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           <path
             d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
             fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span
+        aria-label="arrow-down"
+        class="brd-icon brd-icon-arrow-down brd-c-eDppjp"
+        role="img"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            d="m19 9-7 6-7-6"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
           />
         </svg>
       </span>

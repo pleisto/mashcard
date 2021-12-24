@@ -26,8 +26,6 @@ export const CodeFragmentBlockExtension = Node.create<CodeFragmentBlockOptions>(
 
   selectable: false,
 
-  defaultOptions: {},
-
   addAttributes() {
     const defaultAttr: { [key in keyof (CodeFragmentType & {blockId: string })]: { default: any } } = {
       meta: { default: {} },

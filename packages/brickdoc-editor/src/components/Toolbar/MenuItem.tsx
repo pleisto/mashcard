@@ -20,14 +20,24 @@ export interface ToolbarMenuItemProps {
   option: ToolbarOption
 }
 
-export const ToolbarMenuItem: React.FC<ToolbarMenuItemProps> = ({ option }) => {
-  const handleClick = React.useCallback(() => {
-    option.onAction?.(option.name)
-  }, [option])
+export const ToolbarMenuItem: React.FC<ToolbarMenuItemProps> = ({ option, ...props }) => {
+  const handleClick = React.useCallback(
+    (event: React.MouseEvent<HTMLLIElement>) => {
+      option.onAction?.(option.name)
+      ;(props as any).onClick?.(event)
+    },
+    [option, props]
+  )
 
   return (
-    <MenuItem onClick={handleClick} active={option.active}>
-      {option.icon}
+    <MenuItem
+      role="menuitem"
+      aria-label={option.label ?? option.name}
+      {...props}
+      onClick={handleClick}
+      active={option.active}
+      css={option.css}>
+      {option.content ?? option.icon ?? option.label}
     </MenuItem>
   )
 }

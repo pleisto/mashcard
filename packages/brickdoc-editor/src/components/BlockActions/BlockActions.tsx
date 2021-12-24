@@ -3,19 +3,31 @@ import { Popover } from '@brickdoc/design-system'
 import { BlockActionsMenu } from './BlockActionsMenu'
 import './BlockActions.less'
 import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
-import { ToolbarDropdownOption, ToolbarItemOption, ToolbarOption, ToolbarOptionGroup } from '../Toolbar'
+import {
+  ToolbarDropdownOption,
+  ToolbarItemOption,
+  ToolbarItemOptionGroup,
+  ToolbarItemSectionOption,
+  ToolbarOption,
+  ToolbarOptionGroup,
+  ToolbarSectionOption
+} from '../Toolbar'
 
 export type ActionItemOption = ToolbarItemOption
 
 export type ActionDropdownOption = ToolbarDropdownOption
 
+export type ActionSectionOption = ToolbarSectionOption
+
+export type ActionItemSectionOption = ToolbarItemSectionOption
+
 export type ActionOption = ToolbarOption
 
-export type ActionItemOptionGroup = Array<ActionItemOption[] | ActionItemOption>
+export type ActionItemOptionGroup = ToolbarItemOptionGroup
 
 export type ActionOptionGroup = ToolbarOptionGroup
 
-export type BlockActionOptions = Array<ActionOption[] | ActionOption | BasicActionOptionType>
+export type BlockActionOptions = Array<ToolbarSectionOption | ToolbarItemOption | BasicActionOptionType>
 
 export interface BlockActionsProps {
   options: BlockActionOptions
@@ -39,7 +51,8 @@ export const BlockActions: React.FC<BlockActionsProps> = ({ options, children })
       trigger="hover"
       autoAdjustOverflow={false}
       placement="topRight"
-      content={<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />}>
+      content={<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />}
+    >
       {children}
     </Popover>
   )

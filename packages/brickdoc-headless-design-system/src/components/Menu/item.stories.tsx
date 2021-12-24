@@ -68,3 +68,8 @@ export const withTip = Template.bind({})
 withTip.args = {
   tip: <Check />
 }
+
+export const inputItem = Template.bind({})
+inputItem.args = {
+  children: <input placeholder="input anything" />
+}

@@ -11,10 +11,10 @@ describe('useBasicActionOptions', () => {
       return (
         <span>
           {group?.map(item => {
-            if (Array.isArray(item)) {
+            if (item.type === 'section') {
               return (
                 <span>
-                  {item.map((i, index) => (
+                  {item.items.map((i, index) => (
                     <span key={index}>{i.name}</span>
                   ))}
                 </span>
@@ -37,10 +37,10 @@ describe('useBasicActionOptions', () => {
       return (
         <span>
           {group?.map(item => {
-            if (Array.isArray(item)) {
+            if (item.type === 'section') {
               return (
                 <span>
-                  {item.map((i, index) => (
+                  {item.items.map((i, index) => (
                     <span key={index}>{i.name}</span>
                   ))}
                 </span>
@@ -68,10 +68,10 @@ describe('useBasicActionOptions', () => {
       return (
         <span>
           {group?.map(item => {
-            if (Array.isArray(item)) {
+            if (item.type === 'section') {
               return (
                 <span role="group">
-                  {item.map((i, index) => (
+                  {item.items.map((i, index) => (
                     <span key={index}>{i.name}</span>
                   ))}
                 </span>
