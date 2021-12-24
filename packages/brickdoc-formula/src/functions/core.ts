@@ -4,7 +4,7 @@ export const Set = (ctx: FunctionContext, ref: ReferenceResult, cst: CstResult):
   // TODO check ref as constant
   const reference = ref.result
   if (reference.kind === 'variable') {
-    const variable = ctx.ctx.findVariable(reference.namespaceId, reference.variableId)
+    const variable = ctx.formulaContext.findVariable(reference.namespaceId, reference.variableId)
     if (!variable) {
       return { type: 'Error', errorKind: 'runtime', result: 'Variable not found' }
     }

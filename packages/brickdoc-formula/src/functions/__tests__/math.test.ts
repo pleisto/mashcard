@@ -2,7 +2,7 @@ import { FormulaContext } from '../../context'
 import { ABS, INT, LOG10, PI, POWER, RAND, RANDBETWEEN, SQRT, SQRTPI, TRUNC, LN } from '../math'
 
 const ctx = {
-  ctx: new FormulaContext({}),
+  formulaContext: new FormulaContext({}),
   interpretContext: {
     ctx: {},
     arguments: []

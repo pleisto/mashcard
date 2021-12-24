@@ -5,9 +5,9 @@ import {
   SpreadsheetResult,
   PredicateResult,
   ErrorResult,
-  PredicateFunction
+  PredicateFunction,
+  buildPredicate
 } from '..'
-import { buildPredicate } from '../grammar/predicate'
 
 export const CountIf = (
   ctx: FunctionContext,

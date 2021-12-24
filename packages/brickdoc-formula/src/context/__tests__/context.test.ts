@@ -1,12 +1,4 @@
-import {
-  appendFormulas,
-  buildVariable,
-  Formula,
-  interpret,
-  parse,
-  SuccessInterpretResult,
-  SuccessParseResult
-} from '../..'
+import { appendFormulas, buildVariable, Formula, interpret, parse, SuccessParseResult } from '../..'
 import { FormulaContext } from '..'
 
 describe('Context', () => {
@@ -143,14 +135,16 @@ describe('Context', () => {
 
     expect(parseResult.success).toEqual(true)
 
-    const interpretResult = (await interpret({
+    const interpretResult = await interpret({
       cst: parseResult.cst,
-      formulaContext,
-      meta,
-      interpretContext: { ctx: {}, arguments: [] }
-    })) as SuccessInterpretResult
+      ctx: {
+        formulaContext,
+        meta,
+        interpretContext: { ctx: {}, arguments: [] }
+      }
+    })
 
-    expect(interpretResult.success).toEqual(true)
+    expect(interpretResult.variableValue.success).toEqual(true)
 
     const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
 

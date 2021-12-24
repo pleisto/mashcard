@@ -1,4 +1,4 @@
-import { Column, Database, DatabaseDefinition, DatabasePersistence, NamespaceId, Row, StringResult } from '..'
+import { Column, Database, DatabaseInitializer, DatabasePersistence, NamespaceId, Row, StringResult } from '..'
 
 export class DatabaseFactory implements Database {
   blockId: NamespaceId
@@ -8,7 +8,7 @@ export class DatabaseFactory implements Database {
   listColumns: () => Column[]
   listRows: () => Row[]
 
-  constructor({ blockId, name, listColumns, listRows, dynamic }: DatabaseDefinition) {
+  constructor({ blockId, name, listColumns, listRows, dynamic }: DatabaseInitializer) {
     this.dynamic = dynamic
     this.blockId = blockId
     this.name = name

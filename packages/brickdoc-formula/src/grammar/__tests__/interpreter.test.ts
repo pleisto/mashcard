@@ -77,9 +77,11 @@ describe('Custom Function', () => {
     expect(success).toEqual(true)
     const result = await interpret({
       cst,
-      meta: newMeta,
-      formulaContext: localFormulaContext,
-      interpretContext: { ctx: {}, arguments: [] }
+      ctx: {
+        meta: newMeta,
+        formulaContext: localFormulaContext,
+        interpretContext: { ctx: {}, arguments: [] }
+      }
     })
     expect(result.variableValue.result.result).toEqual(2)
     expect(cst).toMatchSnapshot()
@@ -127,9 +129,11 @@ describe('Custom Function', () => {
       (
         await interpret({
           cst,
-          meta: newMeta,
-          formulaContext: localFormulaContext,
-          interpretContext: { ctx: {}, arguments: [] }
+          ctx: {
+            meta: newMeta,
+            formulaContext: localFormulaContext,
+            interpretContext: { ctx: {}, arguments: [] }
+          }
         })
       ).variableValue.result.result
     ).toEqual(42)
@@ -150,7 +154,7 @@ describe('Context', () => {
     const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
     expect(errorMessages).toEqual([])
     expect(
-      (await interpret({ cst, meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }))
+      (await interpret({ cst, ctx: { meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } } }))
         .variableValue.result.result
     ).toEqual(24)
   })
@@ -186,7 +190,7 @@ describe('Context', () => {
     const { cst, errorMessages } = parse({ ...parseInput, meta: newMeta })
     expect(errorMessages).toEqual([])
     expect(
-      (await interpret({ cst, formulaContext, meta: newMeta, interpretContext: { ctx: {}, arguments: [] } }))
+      (await interpret({ cst, ctx: { formulaContext, meta: newMeta, interpretContext: { ctx: {}, arguments: [] } } }))
         .variableValue.result.result
     ).toEqual(34)
   })

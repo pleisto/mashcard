@@ -80,15 +80,15 @@ const calculate = async ({
   if (parseResult.success) {
     interpretResult = await interpret({
       cst: parseResult.cst,
-      formulaContext,
-      meta,
-      interpretContext: { ctx: {}, arguments: [] }
+      ctx: {
+        formulaContext,
+        meta,
+        interpretContext: { ctx: {}, arguments: [] }
+      }
     })
   } else {
     interpretResult = {
-      success: false,
       lazy: false,
-      errorMessages: parseResult.errorMessages,
       variableValue: {
         success: false,
         result: {
@@ -107,12 +107,11 @@ const calculate = async ({
   }
 
   const newVariable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
-  const errors = [...parseResult.errorMessages, ...interpretResult.errorMessages]
 
   return {
     completions,
     newVariable,
-    errors,
+    errors: parseResult.errorMessages,
     parseResult,
     interpretResult
   }
@@ -358,7 +357,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setActiveCompletion(completions[0])
     setError(errors.length ? errors[0] : undefined)
 
-    if (interpretResult.success) {
+    if (interpretResult.variableValue.success) {
       const type = interpretResult.variableValue.result.type
       setDefaultName(formulaContext.getDefaultVariableName(rootId, type))
     }
@@ -476,8 +475,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

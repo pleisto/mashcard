@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Button, Icon, Select, Switch } from '@brickdoc/design-system'
+import { Button, Icon, Input, Select, Switch } from '@brickdoc/design-system'
 import { BlockContainer, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
@@ -84,6 +84,14 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
             {result.result.name}
           </Button>
         )
+      case 'Input':
+        return (
+          <Input
+            disabled={result.result.disabled}
+            onChange={e => result.result.onChange?.(e.target.value)}
+            value={result.result.value}
+          />
+        )
       case 'Switch':
         return (
           <Switch
@@ -110,8 +118,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
               color: activeColor.color,
               borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
               background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
-            }}
-          >
+            }}>
             {variable.t.name}: {displayValue(result)}
           </span>
         )
@@ -128,8 +135,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         editor={editor}
         updateFormula={updateFormula}
         variable={variable}
-        updateVariable={setVariable}
-      >
+        updateVariable={setVariable}>
         {variable ? (
           renderVariable(variable)
         ) : (

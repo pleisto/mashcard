@@ -2,11 +2,9 @@ import { CstNode, ILexingResult, IRecognitionException } from 'chevrotain'
 import {
   CodeFragment,
   ErrorMessage,
-  ErrorVariableValue,
   Formula,
   ContextInterface,
   FunctionClause,
-  SuccessVariableValue,
   VariableClass,
   VariableData,
   VariableDependency,
@@ -23,7 +21,7 @@ import {
   castVariable,
   FormulaLexer,
   FORMULA_PARSER_VERSION,
-  InterpretContext
+  FunctionContext
 } from '..'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
@@ -74,32 +72,13 @@ export type ParseResult = SuccessParseResult | ErrorParseResult
 
 export interface InterpretInput {
   readonly cst?: CstNode
-  readonly meta: VariableMetadata
-  readonly formulaContext: ContextInterface
-  readonly interpretContext: InterpretContext
+  readonly ctx: FunctionContext
 }
 
-export interface BaseInterpretResult {
-  readonly success: boolean
-  readonly errorMessages: ErrorMessage[]
+export interface InterpretResult {
   readonly variableValue: VariableValue
   readonly lazy: boolean
 }
-
-export interface SuccessInterpretResult extends BaseInterpretResult {
-  readonly success: true
-  readonly errorMessages: []
-  readonly variableValue: SuccessVariableValue
-}
-
-export interface ErrorInterpretResult extends BaseInterpretResult {
-  readonly success: false
-  readonly errorMessages: [ErrorMessage, ...ErrorMessage[]]
-  readonly variableValue: ErrorVariableValue
-  readonly lazy: false
-}
-
-export type InterpretResult = SuccessInterpretResult | ErrorInterpretResult
 
 // eslint-disable-next-line complexity
 export const parse = ({
@@ -366,19 +345,11 @@ export const parse = ({
   }
 }
 
-export const interpret = async ({
-  cst,
-  formulaContext,
-  meta,
-  interpretContext
-}: InterpretInput): Promise<InterpretResult> => {
+export const interpret = async ({ cst, ctx }: InterpretInput): Promise<InterpretResult> => {
   if (!cst) {
     const message = 'CST is undefined'
-    const errorMessage: ErrorMessage = { message, type: 'fatal' }
     return {
-      success: false,
       lazy: false,
-      errorMessages: [errorMessage],
       variableValue: {
         updatedAt: new Date(),
         success: false,
@@ -388,29 +359,24 @@ export const interpret = async ({
     }
   }
   try {
-    const interpreter = new FormulaInterpreter({ formulaContext, meta, interpretContext })
+    const interpreter = new FormulaInterpreter({ ctx })
     const result: AnyTypeResult = await interpreter.visit(cst)
     const lazy = interpreter.lazy
 
     return {
-      success: true,
       lazy,
       variableValue: {
         success: true,
         updatedAt: new Date(),
         cacheValue: result,
         result
-      },
-      errorMessages: []
+      }
     }
   } catch (e) {
     console.error(e)
     const message = `[FATAL] ${(e as any).message as string}`
-    const errorMessage: ErrorMessage = { message, type: 'fatal' }
     return {
-      success: false,
       lazy: false,
-      errorMessages: [errorMessage],
       variableValue: {
         updatedAt: new Date(),
         success: false,
@@ -521,9 +487,11 @@ export const quickInsert = async ({
 
   const { variableValue, lazy } = await interpret({
     cst,
-    formulaContext,
-    meta,
-    interpretContext: { ctx: {}, arguments: [] }
+    ctx: {
+      formulaContext,
+      meta,
+      interpretContext: { ctx: {}, arguments: [] }
+    }
   })
 
   const variable: VariableData = {

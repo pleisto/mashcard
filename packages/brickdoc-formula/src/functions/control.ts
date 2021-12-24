@@ -9,11 +9,13 @@ import {
   BooleanResult,
   ArrayResult,
   SelectResult,
-  SelectOption
+  SelectOption,
+  InputResult,
+  ButtonClass,
+  SwitchClass,
+  SelectClass,
+  InputClass
 } from '..'
-import { ButtonClass } from '../controls/button'
-import { SelectClass } from '../controls/select'
-import { SwitchClass } from '../controls/switch'
 import { FORMULA_FEATURE_CONTROL } from '../context'
 
 export const Button = (
@@ -32,6 +34,11 @@ export const Switch = (
 ): SwitchResult | ErrorResult => {
   const switchResult = new SwitchClass(ctx, { isSelected, fn })
   return { result: switchResult, type: 'Switch' }
+}
+
+export const Input = (ctx: FunctionContext, fn: FunctionResult): InputResult | ErrorResult => {
+  const inputResult = new InputClass(ctx, { fn, value: '' })
+  return { result: inputResult, type: 'Input' }
 }
 
 export const Select = (
@@ -57,7 +64,7 @@ export const Select = (
   return { result: selectResult, type: 'Select' }
 }
 
-export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<'Button' | 'Select' | 'Switch'>> = [
+export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<'Button' | 'Select' | 'Switch' | 'Input'>> = [
   {
     name: 'Button',
     async: false,
@@ -83,6 +90,23 @@ export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<'Button' | 'Select'
     returns: 'Button',
     chain: false,
     reference: Button
+  },
+  {
+    name: 'CInput',
+    async: false,
+    pure: false,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    feature: FORMULA_FEATURE_CONTROL,
+    examples: [{ input: '=Input()', output: null }],
+    description: 'Build input',
+    group: 'core',
+    args: [{ name: 'onChange', type: 'Function' }],
+    testCases: [],
+    returns: 'Input',
+    chain: false,
+    reference: Input
   },
   {
     name: 'Switch',

@@ -2,7 +2,7 @@ import { FormulaContext } from '../../context'
 import { AVERAGE } from '../statistical'
 
 const ctx = {
-  ctx: new FormulaContext({}),
+  formulaContext: new FormulaContext({}),
   interpretContext: {
     ctx: {},
     arguments: []

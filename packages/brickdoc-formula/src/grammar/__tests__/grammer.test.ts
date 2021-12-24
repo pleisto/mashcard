@@ -235,6 +235,26 @@ const testCases: TestCase[] = [
       { type: 'boolean', result: true }
     ]
   },
+  {
+    input: '=[2, "foo", true, null].Map(1)',
+    label: 'Array Map',
+    value: [
+      { type: 'number', result: 1 },
+      { type: 'number', result: 1 },
+      { type: 'number', result: 1 },
+      { type: 'number', result: 1 }
+    ]
+  },
+  {
+    input: '=[2, "foo", true, null].Map($1)',
+    label: 'Array Map $1',
+    value: [
+      { type: 'number', result: 2 },
+      { type: 'string', result: 'foo' },
+      { type: 'boolean', result: true },
+      { type: 'null', result: null }
+    ]
+  },
   // Reference
   {
     input: `=Self`,
@@ -920,28 +940,25 @@ describe('Simple test case', () => {
       }
 
       if (value !== undefined) {
-        const {
-          success: interpretSuccess,
-          variableValue,
-          errorMessages: interpretErrorMessages
-        } = await interpret({
+        const { variableValue } = await interpret({
           cst,
-          meta: newMeta,
-          formulaContext,
-          interpretContext: {
-            ctx: { bar: { type: 'string', result: 'bar123' } },
-            arguments: [{ type: 'string', result: 'Foo1234123' }]
+          ctx: {
+            meta: newMeta,
+            formulaContext,
+            interpretContext: {
+              ctx: { bar: { type: 'string', result: 'bar123' } },
+              arguments: [{ type: 'string', result: 'Foo1234123' }]
+            }
           }
         })
 
         expect(errorMessages).toEqual([])
-        expect(interpretErrorMessages).toEqual([])
 
         expect(errorType).toEqual(undefined)
         expect(success).toEqual(true)
 
         expect(variableValue.result.result).toEqual(value)
-        expect(interpretSuccess).toEqual(true)
+        expect(variableValue.success).toEqual(true)
       } else if (parseErrorType) {
         expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual(parseErrorType)

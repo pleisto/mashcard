@@ -2,7 +2,7 @@ import { FormulaContext } from '../../context'
 import { START_WITH } from '../string'
 
 const ctx = {
-  ctx: new FormulaContext({}),
+  formulaContext: new FormulaContext({}),
   interpretContext: {
     ctx: {},
     arguments: []

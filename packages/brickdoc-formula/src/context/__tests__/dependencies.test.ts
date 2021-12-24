@@ -1,13 +1,5 @@
 /* eslint-disable max-nested-callbacks */
-import {
-  buildVariable,
-  interpret,
-  parse,
-  quickInsert,
-  SuccessInterpretResult,
-  SuccessParseResult,
-  VariableMetadata
-} from '../..'
+import { buildVariable, interpret, parse, quickInsert, SuccessParseResult, VariableMetadata } from '../..'
 import { FormulaContext } from '..'
 
 const formulaContext = new FormulaContext({})
@@ -92,13 +84,15 @@ describe('Dependency', () => {
     const parseResult = parse({ formulaContext, meta }) as SuccessParseResult
     expect(parseResult.errorMessages).toEqual([])
     const view = {}
-    const interpretResult = (await interpret({
+    const interpretResult = await interpret({
       cst: parseResult.cst,
-      formulaContext,
-      meta,
-      interpretContext: { ctx: {}, arguments: [] }
-    })) as SuccessInterpretResult
-    expect(interpretResult.errorMessages).toEqual([])
+      ctx: {
+        formulaContext,
+        meta,
+        interpretContext: { ctx: {}, arguments: [] }
+      }
+    })
+    expect(interpretResult.variableValue.success).toEqual(true)
 
     const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
     await formulaContext.commitVariable({ variable })

@@ -1,5 +1,5 @@
-import { parse, interpret, Database, Column, Row } from '../..'
-import { DatabaseFactory, FormulaContext } from '../../context'
+import { parse, interpret, Database, Column, Row, DatabaseFactory } from '../..'
+import { FormulaContext } from '../../context'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
@@ -189,7 +189,7 @@ describe('Database Functions', () => {
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
       const result = (
-        await interpret({ cst, meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } })
+        await interpret({ cst, ctx: { meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } } })
       ).variableValue.result.result
       if (value === SNAPSHOT_FLAG) {
         // eslint-disable-next-line jest/no-conditional-expect

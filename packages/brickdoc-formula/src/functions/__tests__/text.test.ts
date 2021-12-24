@@ -2,7 +2,7 @@ import { FormulaContext } from '../../context'
 import { LEN, TRIM } from '../text'
 
 const ctx = {
-  ctx: new FormulaContext({}),
+  formulaContext: new FormulaContext({}),
   interpretContext: {
     ctx: {},
     arguments: []

@@ -1,4 +1,13 @@
-import { ArrayResult, BasicFunctionClause, ErrorResult, FunctionContext, StringResult } from '..'
+import {
+  ArrayResult,
+  BasicFunctionClause,
+  CstResult,
+  ErrorResult,
+  extractSubType,
+  FunctionContext,
+  StringResult
+} from '..'
+import { interpret } from '../grammar'
 
 export const Join = (
   ctx: FunctionContext,
@@ -12,7 +21,26 @@ export const Join = (
   return { result: result.map(a => a.result).join(separator), type: 'string' }
 }
 
-export const CORE_ARRAY_CLAUSES: Array<BasicFunctionClause<'string'>> = [
+export const Map = async (
+  ctx: FunctionContext,
+  { result: array }: ArrayResult,
+  { result: cst }: CstResult
+): Promise<ArrayResult | ErrorResult> => {
+  const interpretContexts = array.map(a => ({ ctx: ctx.interpretContext.ctx, arguments: [a] }))
+
+  const newResult = await Promise.all(
+    interpretContexts.map(async interpretContext => {
+      const { variableValue } = await interpret({ cst, ctx: { ...ctx, interpretContext } })
+      return variableValue.result
+    })
+  )
+
+  // console.log({ interpretContexts, newResult })
+
+  return { type: 'Array', result: newResult, subType: extractSubType(newResult) }
+}
+
+export const CORE_ARRAY_CLAUSES: Array<BasicFunctionClause<'string' | 'Array'>> = [
   {
     name: 'Join',
     async: false,
@@ -38,5 +66,42 @@ export const CORE_ARRAY_CLAUSES: Array<BasicFunctionClause<'string'>> = [
     testCases: [],
     chain: true,
     reference: Join
+  },
+  {
+    name: 'Map',
+    async: false,
+    lazy: true,
+    acceptError: false,
+    pure: true,
+    effect: false,
+    description: 'Maps an array of values',
+    group: 'core',
+    args: [
+      {
+        name: 'array',
+        type: 'Array'
+      },
+      {
+        name: 'value',
+        type: 'Cst'
+      }
+    ],
+    examples: [
+      {
+        input: '=Map([1,2], "hello")',
+        output: {
+          type: 'Array',
+          subType: 'string',
+          result: [
+            { type: 'string', result: 'hello' },
+            { type: 'string', result: 'hello' }
+          ]
+        }
+      }
+    ],
+    returns: 'Array',
+    testCases: [],
+    chain: true,
+    reference: Map
   }
 ]

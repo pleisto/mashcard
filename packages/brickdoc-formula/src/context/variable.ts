@@ -12,11 +12,11 @@ import {
   DatabasePersistence,
   VariableValue,
   FunctionContext,
-  InterpretContext
+  InterpretContext,
+  SwitchClass,
+  ButtonClass,
+  SelectClass
 } from '..'
-import { ButtonClass } from '../controls/button'
-import { SelectClass } from '../controls/select'
-import { SwitchClass } from '../controls/switch'
 import { parse } from '../grammar'
 
 export const displayValue = (v: AnyTypeResult): string => {
@@ -83,7 +83,7 @@ const parseCacheValue = (ctx: FunctionContext, cacheValue: AnyTypeResult): AnyTy
         })
       }
     } else {
-      const database = ctx.ctx.findDatabase(cacheValue.result.blockId)
+      const database = ctx.formulaContext.findDatabase(cacheValue.result.blockId)
       if (database) {
         return { type: 'Spreadsheet', result: database }
       } else {
@@ -120,7 +120,7 @@ export const castVariable = (
   const variableId = id
   const meta = { namespaceId, variableId, name, input: definition }
   const castedValue: AnyTypeResult = parseCacheValue(
-    { ctx: formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } },
+    { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } },
     cacheValue
   )
   const parseInput = { formulaContext, meta }
@@ -251,9 +251,11 @@ export class VariableClass implements VariableInterface {
   public interpret = async (interpretContext: InterpretContext): Promise<void> => {
     const { variableValue } = await interpret({
       cst: this.t.cst,
-      formulaContext: this.formulaContext,
-      meta: this.meta(),
-      interpretContext
+      ctx: {
+        formulaContext: this.formulaContext,
+        meta: this.meta(),
+        interpretContext
+      }
     })
 
     this.t = { ...this.t, variableValue }

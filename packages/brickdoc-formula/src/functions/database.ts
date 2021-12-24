@@ -11,17 +11,17 @@ import {
   AnyTypeResult,
   ArrayResult,
   DatabaseFactory,
-  DatabaseDefinition,
+  DatabaseInitializer,
   Column,
   Row,
   RecordResult,
-  BooleanResult
+  BooleanResult,
+  buildPredicate
 } from '..'
-import { buildPredicate } from '../grammar/predicate'
 import { v4 as uuid } from 'uuid'
 
 export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const database = ctx.ctx.findDatabase(column.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
@@ -29,7 +29,6 @@ export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): Num
   const rows: number[] = database.listRows().map(row => Number(row[column.columnId]) || 0)
   return { type: 'number', result: rows.reduce((a, b) => a + b, 0) }
 }
-
 
 export const Table = (ctx: FunctionContext, { result }: ArrayResult): SpreadsheetResult | ErrorResult => {
   const defaultData: RecordResult[] = [
@@ -89,7 +88,7 @@ export const Table = (ctx: FunctionContext, { result }: ArrayResult): Spreadshee
 
   // console.log({ recordData, rows, columns })
 
-  const databaseDefinition: DatabaseDefinition = {
+  const databaseDefinition: DatabaseInitializer = {
     blockId,
     dynamic: true,
     name: () => tableName,
@@ -102,7 +101,7 @@ export const Table = (ctx: FunctionContext, { result }: ArrayResult): Spreadshee
 }
 
 export const MAX = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const database = ctx.ctx.findDatabase(column.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
@@ -112,7 +111,7 @@ export const MAX = (ctx: FunctionContext, { result: column }: ColumnResult): Num
 }
 
 export const COUNTA = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const database = ctx.ctx.findDatabase(column.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
@@ -139,7 +138,7 @@ export const SUMIFS = (
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const database = ctx.ctx.findDatabase(column1.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column1.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
@@ -168,7 +167,7 @@ export const AVERAGEIFS = (
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const database = ctx.ctx.findDatabase(column1.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column1.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
@@ -198,7 +197,7 @@ export const COUNTIFS = (
   { result: column }: ColumnResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {
-  const database = ctx.ctx.findDatabase(column.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
@@ -225,7 +224,7 @@ export const SUMPRODUCT = (
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const database = ctx.ctx.findDatabase(column1.namespaceId)
+  const database = ctx.formulaContext.findDatabase(column1.namespaceId)
   if (!database) {
     return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
   }
