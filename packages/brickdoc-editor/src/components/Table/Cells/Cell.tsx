@@ -8,6 +8,11 @@ import { DateRangeCell } from './DateRangeCell'
 export interface CellProps extends ReactTableCellProps<object> {}
 
 export const Cell: React.FC<CellProps> = props => {
+
+  if (props.dynamic) {
+    return <span>{props.value}</span>
+  }
+
   switch (props.cell.column.columnType) {
     case 'text':
       return <TextCell {...props} />

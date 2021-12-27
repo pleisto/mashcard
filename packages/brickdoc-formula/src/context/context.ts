@@ -1,7 +1,7 @@
 import { CstNode, ILexingResult } from 'chevrotain'
 import {
-  Column,
-  Database,
+  ColumnType,
+  DatabaseType,
   ContextInterface,
   FunctionClause,
   NamespaceId,
@@ -34,7 +34,9 @@ import {
   ColumnCompletion,
   column2completion,
   FORMULA_PARSER_VERSION,
-  Features
+  Features,
+  ColumnClass,
+  ColumnInitializer
 } from '..'
 import { BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor, FormulaLexer } from '../grammar'
@@ -91,7 +93,7 @@ export class FormulaContext implements ContextInterface {
   context: { [key: VariableKey]: VariableInterface } = {}
   functionWeights: { [key: FunctionKey]: number } = {}
   variableWeights: { [key: VariableKey]: number } = {}
-  databases: { [key: NamespaceId]: Database } = {}
+  databases: { [key: NamespaceId]: DatabaseType } = {}
   blockNameMap: { [key: NamespaceId]: string } = {}
   variableNameCounter: { [key in FormulaType]: { [n: NamespaceId]: number } } = {
     string: {},
@@ -181,7 +183,7 @@ export class FormulaContext implements ContextInterface {
     })
 
     const columns: ColumnCompletion[] = Object.entries(this.databases).flatMap(([key, database]) => {
-      return database.listColumns().map(column => column2completion(column))
+      return database.listColumns().map(column => column2completion({ ...column, database }))
     })
 
     const dynamicColumns: ColumnCompletion[] = completionVariables
@@ -189,7 +191,11 @@ export class FormulaContext implements ContextInterface {
         return v.t.variableValue.result.type === 'Spreadsheet' && v.t.variableValue.result.result.dynamic
       })
       .flatMap(([key, v]) => {
-        return v.t.variableValue.result.result.listColumns().map((column: Column) => column2completion(column))
+        return v.t.variableValue.result.result
+          .listColumns()
+          .map((column: ColumnInitializer) =>
+            column2completion({ ...column, database: v.t.variableValue.result.result })
+          )
       })
     return [...functions, ...variables, ...spreadsheets, ...columns, ...dynamicColumns].sort(
       (a, b) => b.weight - a.weight
@@ -205,20 +211,26 @@ export class FormulaContext implements ContextInterface {
     return Object.keys(this.context).length
   }
 
-  public findDatabase = (namespaceId: NamespaceId): Database | undefined => {
+  public findDatabase = (namespaceId: NamespaceId): DatabaseType | undefined => {
     return this.databases[namespaceId]
   }
 
-  public findColumn = (namespaceId: NamespaceId, variableId: VariableId): Column | undefined => {
+  public findColumn = (namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined => {
     const database = this.findDatabase(namespaceId)
     if (!database) {
       return undefined
     }
 
-    return database.getColumn(variableId)
+    const column = database.getColumn(variableId)
+
+    if (!column) {
+      return undefined
+    }
+
+    return new ColumnClass(database, column)
   }
 
-  public setDatabase = (namespaceId: NamespaceId, database: Database): void => {
+  public setDatabase = (namespaceId: NamespaceId, database: DatabaseType): void => {
     this.databases[namespaceId] = database
   }
 
@@ -323,7 +335,7 @@ export class FormulaContext implements ContextInterface {
     // console.log('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
     this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
       const childrenVariable = this.context[variableKey(namespaceId, variableId)]!
-      void childrenVariable.refresh({ctx: {}, arguments: []})
+      void childrenVariable.refresh({ ctx: {}, arguments: [] })
     })
   }
 

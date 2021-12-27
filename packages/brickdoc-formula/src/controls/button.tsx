@@ -7,7 +7,7 @@ export class ButtonClass implements ButtonType {
   kind: 'Button' = 'Button'
   fn: FunctionResult
   disabled: boolean
-  onClick?: () => void
+  onClick?: VoidFunction
 
   constructor(ctx: FunctionContext, { name, fn }: ButtonInitializer) {
     this.name = name

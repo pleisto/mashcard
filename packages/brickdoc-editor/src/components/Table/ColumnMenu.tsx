@@ -7,6 +7,7 @@ import { useEditorI18n } from '../../hooks'
 interface ColumnMenuProps {
   onColumnNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onColumnTypeChange: (type: TableColumnType) => void
+  dynamic: boolean
   onRemoveColumn: () => void
   columnName?: string
   columnType: string
@@ -14,6 +15,7 @@ interface ColumnMenuProps {
 
 export const ColumnMenu: React.FC<ColumnMenuProps> = ({
   onRemoveColumn,
+  dynamic,
   onColumnNameChange,
   onColumnTypeChange,
   columnName,
@@ -47,7 +49,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
     <>
       {contextHolder}
       <Popover
-        visible={visible}
+        visible={!dynamic && visible}
         overlayClassName="table-block-menu-popover"
         onVisibleChange={handleVisibleChange}
         destroyTooltipOnHide={true}
@@ -72,8 +74,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
                     {React.createElement(currentColumnType.icon)}
                     <span>{t(`table.column_types.${currentColumnType.type}`)}</span>
                   </>
-                }
-              >
+                }>
                 <Menu.ItemGroup title={t('table.column_types.basic')}>
                   {COLUMN_TYPE.map(type => (
                     <Menu.Item key={type.type} onClick={() => handleUpdateColumnType(type.type)}>
@@ -91,8 +92,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
           </Menu>
         }
         trigger="click"
-        placement="bottomLeft"
-      >
+        placement="bottomLeft">
         {children}
       </Popover>
     </>

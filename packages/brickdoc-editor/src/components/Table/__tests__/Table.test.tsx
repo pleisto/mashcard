@@ -1,48 +1,49 @@
 import { Table } from '../Table'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { EditorDataSource, EditorDataSourceContext } from '../../../dataSource/DataSource'
+import { EditorDataSource, EditorDataSourceContext, useDatabaseRowsReturn } from '../../../dataSource/DataSource'
 import { DatabaseRow } from '../../../extensions/table'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 function buildTableSource(editorDataSource: EditorDataSource): void {
-  editorDataSource.table = {
+  const container: { source?: useDatabaseRowsReturn } = {}
+  container.source = {
     rows: [],
     async fetchRows(parentId) {},
     addRow(parentId, rowIndex) {
-      const currentRowIndex = rowIndex ?? editorDataSource.table.rows.length - 1
+      const currentRowIndex = rowIndex ?? container.source!.rows.length - 1
       const id = new Date().getTime().toString()
       const row = { id, sort: currentRowIndex }
-      editorDataSource.table = {
-        ...editorDataSource.table,
+      container.source! = {
+        ...container.source!,
         rows: [
-          ...editorDataSource.table.rows.slice(0, currentRowIndex + 1),
+          ...container.source!.rows.slice(0, currentRowIndex + 1),
           row,
-          ...editorDataSource.table.rows.slice(currentRowIndex + 1, editorDataSource.table.rows.length)
+          ...container.source!.rows.slice(currentRowIndex + 1, container.source!.rows.length)
         ]
       }
       return row
     },
     async updateRows(parentId, rows) {
       const rowsMap = new Map(rows.map(row => [row.id, row]))
-      const prevRowsMap = new Map(editorDataSource.table.rows.map(row => [row.id, row]))
+      const prevRowsMap = new Map(container.source!.rows.map(row => [row.id, row]))
       const newRows = [
-        ...editorDataSource.table.rows.map(prevRow => rowsMap.get(prevRow.id) ?? prevRow),
+        ...container.source!.rows.map(prevRow => rowsMap.get(prevRow.id) ?? prevRow),
         ...rows.filter(row => !prevRowsMap.has(row.id))
       ].sort((a, b) => b.sort - a.sort)
-      editorDataSource.table = {
-        ...editorDataSource.table,
+      container.source! = {
+        ...container.source!,
         rows: newRows
       }
     },
     removeRow(rowId) {
-      editorDataSource.table = {
-        ...editorDataSource.table,
-        rows: editorDataSource.table.rows.filter(row => row.id !== rowId)
+      container.source! = {
+        ...container.source!,
+        rows: container.source!.rows.filter(row => row.id !== rowId)
       }
     },
     moveRow(parentId, fromIndex, toIndex) {
       let targetRow: DatabaseRow | undefined
-      const newRows = editorDataSource.table.rows.filter((row, index) => {
+      const newRows = container.source!.rows.filter((row, index) => {
         if (index !== fromIndex) {
           return true
         } else {
@@ -52,14 +53,16 @@ function buildTableSource(editorDataSource: EditorDataSource): void {
       })
       if (!targetRow) return
 
-      editorDataSource.table = {
-        ...editorDataSource.table,
+      container.source! = {
+        ...container.source!,
         rows: [...newRows.slice(0, toIndex), targetRow, ...newRows.slice(toIndex, newRows.length)]
       }
 
       return targetRow
     }
   }
+
+  editorDataSource.useDatabaseRows = opt => container.source!
 }
 
 describe('Table', () => {

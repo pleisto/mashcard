@@ -14,9 +14,86 @@ import {
   ButtonClass,
   SwitchClass,
   SelectClass,
-  InputClass
+  InputClass,
+  DatabaseInitializer,
+  RecordResult,
+  Row,
+  SpreadsheetResult,
+  DatabaseClass,
+  ColumnInitializer
 } from '..'
 import { FORMULA_FEATURE_CONTROL } from '../context'
+import { v4 as uuid } from 'uuid'
+
+export const Table = (ctx: FunctionContext, { result }: ArrayResult): SpreadsheetResult | ErrorResult => {
+  const defaultData: RecordResult[] = [
+    {
+      type: 'Record',
+      subType: 'string',
+      result: { Column1: { type: 'string', result: '1' }, Column2: { type: 'string', result: '2' } }
+    },
+    {
+      type: 'Record',
+      subType: 'string',
+      result: { Column1: { type: 'string', result: '3' }, Column2: { type: 'string', result: '4' } }
+    }
+  ]
+
+  const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
+
+  const nonRecordElement = recordData.find(e => e.type !== 'Record')
+  if (nonRecordElement) {
+    return { type: 'Error', result: 'Table must be an array of records', errorKind: 'runtime' }
+  }
+
+  const blockId = uuid()
+  const tableName = 'Dynamic'
+  const columns: ColumnInitializer[] = []
+  const rows: Row[] = []
+
+  if (recordData.length) {
+    const data = recordData.map(e => e.result)
+    const keys = Object.keys(data[0])
+    const keyWithIds = keys.map(key => ({ key, uuid: uuid() }))
+
+    columns.push(
+      ...keys.map((key, index) => ({
+        namespaceId: blockId,
+        columnId: keyWithIds.find(k => k.key === key)!.uuid,
+        name: key,
+        index,
+        spreadsheetName: tableName,
+        type: 'text',
+        rows: data.map(e => String(e[key].result || ''))
+      }))
+    )
+
+    rows.push(
+      ...data.map(source => {
+        const row: Row = { id: uuid() }
+
+        keyWithIds.forEach(({ key, uuid }) => {
+          row[uuid] = String(source[key].result || '')
+        })
+
+        return row
+      })
+    )
+  }
+
+  // console.log({ recordData, rows, columns })
+
+  const databaseDefinition: DatabaseInitializer = {
+    blockId,
+    dynamic: true,
+    name: () => tableName,
+    listColumns: () => columns,
+    listRows: () => rows
+  }
+
+  const database = new DatabaseClass(databaseDefinition)
+  return { type: 'Spreadsheet', result: database }
+}
 
 export const Button = (
   ctx: FunctionContext,
@@ -64,7 +141,25 @@ export const Select = (
   return { result: selectResult, type: 'Select' }
 }
 
-export const CORE_CONTROL_CLAUSES: Array<BasicFunctionClause<'Button' | 'Select' | 'Switch' | 'Input'>> = [
+export const CORE_CONTROL_CLAUSES: Array<
+  BasicFunctionClause<'Spreadsheet' | 'Button' | 'Select' | 'Switch' | 'Input'>
+> = [
+  {
+    name: 'Table',
+    async: false,
+    pure: false,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=123', output: null }],
+    description: 'Returns the table.',
+    group: 'core',
+    args: [{ name: 'array', type: 'Array' }],
+    returns: 'Spreadsheet',
+    testCases: [],
+    chain: true,
+    reference: Table
+  },
   {
     name: 'Button',
     async: false,

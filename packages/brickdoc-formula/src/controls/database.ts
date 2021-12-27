@@ -1,11 +1,12 @@
-import { Column, Database, DatabaseInitializer, DatabasePersistence, NamespaceId, Row, StringResult } from '..'
+import { ColumnInitializer } from '.'
+import { DatabaseType, DatabaseInitializer, DatabasePersistence, NamespaceId, Row, StringResult } from '..'
 
-export class DatabaseFactory implements Database {
+export class DatabaseClass implements DatabaseType {
   blockId: NamespaceId
   dynamic: boolean
   persistence?: DatabasePersistence
   name: () => string
-  listColumns: () => Column[]
+  listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
 
   constructor({ blockId, name, listColumns, listRows, dynamic }: DatabaseInitializer) {
@@ -41,12 +42,12 @@ export class DatabaseFactory implements Database {
     return this.listRows().find(row => row.id === rowId)
   }
 
-  getColumn(columnId: string): Column | undefined {
+  getColumn(columnId: string): ColumnInitializer | undefined {
     return this.listColumns().find(col => col.columnId === columnId)
   }
 
   toArray(): string[][] {
-    const columns: Column[] = this.listColumns()
+    const columns: ColumnInitializer[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
     const result: string[][] = []
@@ -64,7 +65,7 @@ export class DatabaseFactory implements Database {
   }
 
   toRecord(): Array<{ [key: string]: StringResult }> {
-    const columns: Column[] = this.listColumns()
+    const columns: ColumnInitializer[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
     const result: Array<{ [key: string]: StringResult }> = []

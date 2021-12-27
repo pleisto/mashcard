@@ -9,114 +9,22 @@ import {
   PredicateFunction,
   StringResult,
   AnyTypeResult,
-  ArrayResult,
-  DatabaseFactory,
-  DatabaseInitializer,
-  Column,
-  Row,
-  RecordResult,
   BooleanResult,
   buildPredicate
 } from '..'
-import { v4 as uuid } from 'uuid'
 
 export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const database = ctx.formulaContext.findDatabase(column.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
-  const rows: number[] = database.listRows().map(row => Number(row[column.columnId]) || 0)
+  const rows: number[] = column.database.listRows().map(row => Number(row[column.columnId]) || 0)
   return { type: 'number', result: rows.reduce((a, b) => a + b, 0) }
 }
 
-export const Table = (ctx: FunctionContext, { result }: ArrayResult): SpreadsheetResult | ErrorResult => {
-  const defaultData: RecordResult[] = [
-    {
-      type: 'Record',
-      subType: 'string',
-      result: { Column1: { type: 'string', result: '1' }, Column2: { type: 'string', result: '2' } }
-    },
-    {
-      type: 'Record',
-      subType: 'string',
-      result: { Column1: { type: 'string', result: '3' }, Column2: { type: 'string', result: '4' } }
-    }
-  ]
-
-  const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
-
-  const nonRecordElement = recordData.find(e => e.type !== 'Record')
-  if (nonRecordElement) {
-    return { type: 'Error', result: 'Table must be an array of records', errorKind: 'runtime' }
-  }
-
-  const blockId = uuid()
-  const tableName = 'Dynamic'
-  const columns: Column[] = []
-  const rows: Row[] = []
-
-  if (recordData.length) {
-    const data = recordData.map(e => e.result)
-    const keys = Object.keys(data[0])
-    const keyWithIds = keys.map(key => ({ key, uuid: uuid() }))
-
-    columns.push(
-      ...keys.map((key, index) => ({
-        namespaceId: blockId,
-        columnId: keyWithIds.find(k => k.key === key)!.uuid,
-        name: key,
-        index,
-        spreadsheetName: tableName,
-        type: 'text',
-        rows: data.map(e => String(e[key].result || ''))
-      }))
-    )
-
-    rows.push(
-      ...data.map(source => {
-        const row: Row = { id: uuid() }
-
-        keyWithIds.forEach(({ key, uuid }) => {
-          row[uuid] = String(source[key].result || '')
-        })
-
-        return row
-      })
-    )
-  }
-
-  // console.log({ recordData, rows, columns })
-
-  const databaseDefinition: DatabaseInitializer = {
-    blockId,
-    dynamic: true,
-    name: () => tableName,
-    listColumns: () => columns,
-    listRows: () => rows
-  }
-
-  const database = new DatabaseFactory(databaseDefinition)
-  return { type: 'Spreadsheet', result: database }
-}
-
 export const MAX = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const database = ctx.formulaContext.findDatabase(column.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
-  const rows: number[] = database.listRows().map(row => Number(row[column.columnId]) || 0)
+  const rows: number[] = column.database.listRows().map(row => Number(row[column.columnId]) || 0)
   return { type: 'number', result: Math.max(...rows) }
 }
 
 export const COUNTA = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const database = ctx.formulaContext.findDatabase(column.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
-  const counta = database.listRows().filter(row => !!row[column.columnId]).length
+  const counta = column.database.listRows().filter(row => !!row[column.columnId]).length
   return { type: 'number', result: counta }
 }
 
@@ -138,15 +46,10 @@ export const SUMIFS = (
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const database = ctx.formulaContext.findDatabase(column1.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
 
-  database.listRows().forEach(row => {
+  column1.database.listRows().forEach(row => {
     const value1 = Number(row[column1.columnId])
     const value2 = Number(row[column2.columnId])
     if (value1 && predicateFunction(value2)) {
@@ -167,16 +70,11 @@ export const AVERAGEIFS = (
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const database = ctx.formulaContext.findDatabase(column1.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
   let count: number = 0
 
-  database.listRows().forEach(row => {
+  column1.database.listRows().forEach(row => {
     const value1 = Number(row[column1.columnId])
     const value2 = Number(row[column2.columnId])
     if (value1 && predicateFunction(value2)) {
@@ -197,15 +95,10 @@ export const COUNTIFS = (
   { result: column }: ColumnResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {
-  const database = ctx.formulaContext.findDatabase(column.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
 
-  database.listRows().forEach(row => {
+  column.database.listRows().forEach(row => {
     const value = Number(row[column.columnId])
     if (predicateFunction(value)) {
       sum += 1
@@ -224,20 +117,54 @@ export const SUMPRODUCT = (
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const database = ctx.formulaContext.findDatabase(column1.namespaceId)
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
-
   let sum: number = 0
 
-  database.listRows().forEach(row => {
+  column1.database.listRows().forEach(row => {
     const value1 = Number(row[column1.columnId])
     const value2 = Number(row[column2.columnId])
     sum += value1 * value2
   })
 
   return { type: 'number', result: sum }
+}
+
+export const XLOOKUP = (
+  ctx: FunctionContext,
+  { result: lookupValue }: AnyTypeResult,
+  { result: lookupColumn }: ColumnResult,
+  { result: returnColumn }: ColumnResult,
+  notFoundValue: StringResult,
+  { result: matchMode }: NumberResult
+): StringResult | ErrorResult => {
+  if (lookupColumn.namespaceId !== returnColumn.namespaceId) {
+    return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
+  }
+
+  let result: StringResult = notFoundValue
+
+  lookupColumn.database.listRows().forEach(row => {
+    let bol = false
+    const compareData = Number(lookupValue)
+    const data = Number(row[lookupColumn.columnId])
+
+    switch (matchMode) {
+      case 0:
+        bol = data === compareData
+        break
+      case 1:
+        bol = data >= compareData
+        break
+      case 2:
+        bol = data <= compareData
+        break
+    }
+
+    if (bol) {
+      result = { type: 'string', result: row[returnColumn.columnId] ?? '' }
+    }
+  })
+
+  return result
 }
 
 export const VLOOKUP = (
@@ -281,59 +208,80 @@ export const VLOOKUP = (
   return result
 }
 
-const VLOOKUP_CLAUSE: BasicFunctionClause<'string'> = {
-  name: 'VLOOKUP',
-  async: false,
-  pure: false,
-  lazy: false,
-  acceptError: false,
-  effect: false,
-  examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
-  description: 'Returns the value of the column in the database that matches the match value.',
-  group: 'core',
-  args: [
-    {
-      name: 'match',
-      type: 'any'
-    },
-    {
-      name: 'database',
-      type: 'Spreadsheet'
-    },
-    {
-      name: 'column',
-      type: 'Column'
-    },
-    {
-      name: 'range',
-      type: 'boolean',
-      default: { type: 'boolean', result: true }
-    }
-  ],
-  returns: 'string',
-  testCases: [],
-  chain: true,
-  reference: VLOOKUP
-}
-
-const TABLE_CLAUSE: BasicFunctionClause<'Spreadsheet'> = {
-  name: 'Table',
-  async: false,
-  pure: false,
-  lazy: false,
-  acceptError: false,
-  effect: false,
-  examples: [{ input: '=123', output: null }],
-  description: 'Returns the table.',
-  group: 'core',
-  args: [{ name: 'array', type: 'Array' }],
-  returns: 'Spreadsheet',
-  testCases: [],
-  chain: true,
-  reference: Table
-}
-
-const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
+export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string'>> = [
+  {
+    name: 'VLOOKUP',
+    async: false,
+    pure: false,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
+    description: 'Returns the value of the column in the database that matches the match value.',
+    group: 'core',
+    args: [
+      {
+        name: 'match',
+        type: 'any'
+      },
+      {
+        name: 'database',
+        type: 'Spreadsheet'
+      },
+      {
+        name: 'column',
+        type: 'Column'
+      },
+      {
+        name: 'range',
+        type: 'boolean',
+        default: { type: 'boolean', result: true }
+      }
+    ],
+    returns: 'string',
+    testCases: [],
+    chain: true,
+    reference: VLOOKUP
+  },
+  {
+    name: 'XLOOKUP',
+    async: false,
+    pure: false,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
+    description: 'Returns the value of the column in the database that matches the match value.',
+    group: 'core',
+    args: [
+      {
+        name: 'lookupValue',
+        type: 'any'
+      },
+      {
+        name: 'lookupColumn',
+        type: 'Column'
+      },
+      {
+        name: 'returnColumn',
+        type: 'Column'
+      },
+      {
+        name: 'notFoundValue',
+        type: 'string',
+        default: { type: 'string', result: '' }
+      },
+      {
+        name: 'matchMode',
+        type: 'number',
+        default: { type: 'number', result: 0 }
+      }
+    ],
+    returns: 'string',
+    testCases: [],
+    chain: true,
+    reference: XLOOKUP
+  },
   {
     name: 'SUM',
     async: false,
@@ -548,5 +496,3 @@ const NUMBER_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     reference: COUNTA
   }
 ]
-
-export const CORE_DATABASE_CLAUSES = [TABLE_CLAUSE, VLOOKUP_CLAUSE, ...NUMBER_CLAUSES]

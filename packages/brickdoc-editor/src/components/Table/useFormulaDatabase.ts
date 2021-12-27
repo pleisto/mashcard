@@ -1,6 +1,6 @@
 import React from 'react'
 import { Column } from 'react-table'
-import { ContextInterface, Database, Column as ColumnType, DatabaseFactory } from '@brickdoc/formula'
+import { ContextInterface, DatabaseType, DatabaseClass, ColumnInitializer } from '@brickdoc/formula'
 import { BlockTableLoaded, BrickdocEventBus } from '@brickdoc/schema'
 import { DatabaseRows } from '../../extensions/table'
 
@@ -10,22 +10,25 @@ export function useFormulaDatabase(
   title: string,
   tableColumns: Column[],
   tableData: DatabaseRows,
-  formulaContext: ContextInterface | null | undefined
+  formulaContext: ContextInterface | null | undefined,
+  dynamic: boolean
 ): void {
   // TODO pass column Type
   React.useEffect(() => {
+    if (dynamic) {
+      return
+    }
     const spreadsheetName = title ?? 'Untitled'
-    const columns: ColumnType[] = tableColumns.map(column => ({
-      namespaceId: blockId,
+    const columns: ColumnInitializer[] = tableColumns.map(column => ({
       columnId: column.accessor as string,
+      namespaceId: blockId,
       name: column.Header as string,
-      spreadsheetName,
       type: (column as any).columnType,
       index: (column as any).index,
       rows: tableData.map(row => row[column.accessor as string])
     }))
 
-    const database: Database = new DatabaseFactory({
+    const database: DatabaseType = new DatabaseClass({
       blockId,
       dynamic: false,
       name: () => spreadsheetName,
@@ -42,5 +45,5 @@ export function useFormulaDatabase(
     return () => {
       formulaContext?.removeDatabase(blockId)
     }
-  }, [blockId, title, formulaContext, tableColumns, tableData])
+  }, [blockId, title, formulaContext, tableColumns, tableData, dynamic])
 }

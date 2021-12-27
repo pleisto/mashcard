@@ -9,6 +9,7 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface TableRowProps extends RTTableRowProps {
   rowActive?: boolean
+  dynamic: boolean
   onAddNewRow: (rowIndex?: number) => void
   onMoveRow: (fromIndex: number, toIndex: number) => void
   onRemoveRow: (rowId: string) => void
@@ -30,6 +31,7 @@ const DND_ITEM_TYPE = 'row'
 
 export const TableRow: React.FC<TableRowProps> = ({
   rowActive,
+  dynamic,
   isCellActive,
   updateActiveStatus,
   onAddNewRow,
@@ -159,7 +161,7 @@ export const TableRow: React.FC<TableRowProps> = ({
     <>
       <Popover
         trigger="contextMenu"
-        visible={contextMenuVisible}
+        visible={!dynamic && contextMenuVisible}
         onVisibleChange={setContextMenuVisible}
         overlayClassName="table-block-menu-popover"
         placement="bottom"
@@ -174,15 +176,13 @@ export const TableRow: React.FC<TableRowProps> = ({
                 data-testid={TEST_ID_ENUM.editor.tableBlock.row.contextMenu.deleteButton.id}
                 onClick={() => onRemoveRow((row.original as any).id)}
                 className="table-block-menu-item"
-                key="Delete"
-              >
+                key="Delete">
                 <Icon.Delete />
                 <span>{t('table.remove_row.text')}</span>
               </Menu.Item>
             )}
           </Menu>
-        }
-      >
+        }>
         {/* add a placeholder for popover to follow mouse's position */}
         <div ref={popupContainer} style={{ width: '1px', height: '1px', position: 'fixed' }} />
       </Popover>
@@ -190,25 +190,24 @@ export const TableRow: React.FC<TableRowProps> = ({
         data-testid={TEST_ID_ENUM.editor.tableBlock.row.id}
         ref={dropRef}
         className={cx('table-block-row', { active: rowActive })}
-        onContextMenu={handleContextMenu}
-      >
-        <div data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.id} className="table-block-row-actions">
-          <Button
-            data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.addButton.id}
-            onClick={() => onAddNewRow(row.index)}
-            className="table-block-row-action-button"
-            type="text"
-          >
-            <Icon.Plus />
-          </Button>
-          <Button
-            type="text"
-            className={cx('table-block-row-action-button', 'drag', { dragging: isDragging })}
-            ref={dragRef}
-          >
-            <Icon.Drag />
-          </Button>
-        </div>
+        onContextMenu={handleContextMenu}>
+        {!dynamic && (
+          <div data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.id} className="table-block-row-actions">
+            <Button
+              data-testid={TEST_ID_ENUM.editor.tableBlock.row.actions.addButton.id}
+              onClick={() => onAddNewRow(row.index)}
+              className="table-block-row-action-button"
+              type="text">
+              <Icon.Plus />
+            </Button>
+            <Button
+              type="text"
+              className={cx('table-block-row-action-button', 'drag', { dragging: isDragging })}
+              ref={dragRef}>
+              <Icon.Drag />
+            </Button>
+          </div>
+        )}
         <div {...rowProps} style={{ ...rowProps.style, display: 'inline-flex' }}>
           {row.cells.map((cell, cellIndex) => {
             const cellProps = cell.getCellProps(cellPropsGetter)
@@ -217,8 +216,7 @@ export const TableRow: React.FC<TableRowProps> = ({
               <div
                 {...cellProps}
                 key={cellProps.key}
-                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}
-              >
+                className={cx('table-block-td', { active: isCellActive((row.original as any).id, cellIndex) })}>
                 {cell.render('Cell')}
               </div>
             )

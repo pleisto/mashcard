@@ -1,9 +1,9 @@
 import {
-  Column,
+  ColumnType,
   ColumnCompletion,
   ColumnId,
   ColumnKey,
-  Database,
+  DatabaseType,
   FunctionClause,
   FunctionCompletion,
   NamespaceId,
@@ -22,7 +22,7 @@ export const spreadsheetKey = (namespaceId: NamespaceId): SpreadsheetKey => `#${
 
 export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `#${namespaceId}#${columnId}`
 
-export const database2completion = (database: Database): SpreadsheetCompletion => {
+export const database2completion = (database: DatabaseType): SpreadsheetCompletion => {
   const value = spreadsheetKey(database.blockId)
   return {
     kind: 'spreadsheet',
@@ -44,7 +44,7 @@ export const database2completion = (database: Database): SpreadsheetCompletion =
   }
 }
 
-export const column2completion = (column: Column): ColumnCompletion => {
+export const column2completion = (column: ColumnType): ColumnCompletion => {
   const value = columnKey(column.namespaceId, column.columnId)
   return {
     kind: 'column',
@@ -56,11 +56,11 @@ export const column2completion = (column: Column): ColumnCompletion => {
     ],
     weight: -3,
     name: column.name,
-    namespace: column.spreadsheetName,
+    namespace: column.database.name(),
     value,
     preview: column,
     codeFragment: {
-      meta: { name: column.name, spreadsheetName: column.spreadsheetName },
+      meta: { name: column.name, spreadsheetName: column.database.name() },
       errors: [],
       name: value,
       code: 'Column',

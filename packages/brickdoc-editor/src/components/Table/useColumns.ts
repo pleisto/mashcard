@@ -40,20 +40,19 @@ export const databaseColumnsToTableColumns = (databaseColumns: DatabaseColumns):
     }, {})
   ).map(([group, columns]) => ({ id: group, columns }))
 
+export interface ColumnsUtils {
+  setColumns: (fn: (prevColumns: DatabaseColumns) => DatabaseColumns) => void
+  add: () => void
+  remove: (groupId: string, columnId: string) => void
+  updateName: (value: string, groupId: string, columnId: string) => void
+  updateType: (type: TableColumnType, groupId: string, columnId: string) => void
+  updateWidth: (width: number, groupId: string, columnId: string) => void
+}
+
 export function useColumns(options: {
   databaseColumns: DatabaseColumns
   updateAttributeData: (attributes: Record<string, any>) => void
-}): [
-  Column[],
-  {
-    setColumns: (fn: (prevColumns: DatabaseColumns) => DatabaseColumns) => void
-    add: () => void
-    remove: (groupId: string, columnId: string) => void
-    updateName: (value: string, groupId: string, columnId: string) => void
-    updateType: (type: TableColumnType, groupId: string, columnId: string) => void
-    updateWidth: (width: number, groupId: string, columnId: string) => void
-  }
-] {
+}): [Column[], ColumnsUtils] {
   const { t } = useEditorI18n()
   const { databaseColumns, updateAttributeData } = options
 

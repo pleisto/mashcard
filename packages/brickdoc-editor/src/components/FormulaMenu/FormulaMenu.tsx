@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, Modal, Popover } from '@brickdoc/design-system'
+import { Button, Input, Popover } from '@brickdoc/design-system'
 import {
   buildVariable,
   CodeFragment,
@@ -34,6 +34,7 @@ export interface FormulaMenuProps {
   variable?: VariableInterface
   updateVariable?: React.Dispatch<React.SetStateAction<VariableInterface | undefined>>
   updateFormula?: (id: string) => void
+  handleDelete: () => void
   clear?: boolean
 }
 
@@ -128,6 +129,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   editor,
   updateFormula,
   updateVariable,
+  handleDelete,
   clear
 }) => {
   const { t } = useEditorI18n()
@@ -387,23 +389,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
   const handleCancel = (): void => {
     close()
-  }
-
-  const handleDelete = (): void => {
-    Modal.confirm({
-      zIndex: 1070,
-      title: t(`${i18nKey}.delete_confirm.title`),
-      okText: t(`${i18nKey}.delete_confirm.ok`),
-      okButtonProps: { danger: true },
-      cancelText: t(`${i18nKey}.delete_confirm.cancel`),
-      icon: null,
-      onOk: async () => {
-        if (!variable || !getPos || !node) return
-        const position = getPos()
-        void (await formulaContext?.removeVariable(rootId, variable.t.variableId))
-        editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
-      }
-    })
   }
 
   const menu = (

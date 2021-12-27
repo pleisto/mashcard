@@ -1026,7 +1026,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             code: 'Column',
             type: parentType,
             name: `#${namespaceId}#${columnId}`,
-            meta: { name: column.name, spreadsheetName: column.spreadsheetName },
+            meta: { name: column.name, spreadsheetName: column.database.name() },
             errors: errorMessages
           }
         ],

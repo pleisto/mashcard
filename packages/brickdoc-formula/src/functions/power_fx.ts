@@ -9,6 +9,11 @@ import {
   buildPredicate
 } from '..'
 
+// TODO https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-filter-lookup
+// Filter Search LookUp
+// https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-clear-collect-clearcollect
+// TODO database refactor to collection
+
 export const CountIf = (
   ctx: FunctionContext,
   { result: database }: SpreadsheetResult,
@@ -18,9 +23,7 @@ export const CountIf = (
   if (!column) {
     return { type: 'Error', result: 'Column is missing', errorKind: 'runtime' }
   }
-  if (!database) {
-    return { type: 'Error', result: 'Database not found', errorKind: 'runtime' }
-  }
+
   if (database.blockId !== column.namespaceId) {
     return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
   }

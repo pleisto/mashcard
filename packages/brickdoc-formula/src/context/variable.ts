@@ -8,14 +8,15 @@ import {
   VariableMetadata,
   Formula,
   AnyTypeResult,
-  DatabaseFactory,
+  DatabaseClass,
   DatabasePersistence,
   VariableValue,
   FunctionContext,
   InterpretContext,
   SwitchClass,
   ButtonClass,
-  SelectClass
+  SelectClass,
+  ColumnClass
 } from '..'
 import { parse } from '../grammar'
 
@@ -33,7 +34,7 @@ export const displayValue = (v: AnyTypeResult): string => {
     case 'Spreadsheet':
       return `#<Spreadsheet> ${v.result.name()}`
     case 'Column':
-      return `#<Column> ${v.result.spreadsheetName}.${v.result.name}`
+      return `#<Column> ${v.result.database.name()}.${v.result.name}`
     case 'Predicate':
       return `[${v.operator}] ${displayValue(v.result)}`
     case 'Record':
@@ -55,7 +56,7 @@ export const displayValue = (v: AnyTypeResult): string => {
     case 'Cst':
       return '#<Cst>'
     case 'Blank':
-      return `#<Blank>`
+      return `#N/A`
   }
 
   return JSON.stringify(v.result)
@@ -69,12 +70,12 @@ const parseCacheValue = (ctx: FunctionContext, cacheValue: AnyTypeResult): AnyTy
     }
   }
 
-  if (cacheValue.type === 'Spreadsheet' && !(cacheValue.result instanceof DatabaseFactory)) {
+  if (cacheValue.type === 'Spreadsheet' && !(cacheValue.result instanceof DatabaseClass)) {
     if (cacheValue.result.dynamic) {
       const { blockId, tableName, columns, rows }: DatabasePersistence = cacheValue.result.persistence!
       return {
         type: 'Spreadsheet',
-        result: new DatabaseFactory({
+        result: new DatabaseClass({
           blockId,
           dynamic: true,
           name: () => tableName,
@@ -89,6 +90,15 @@ const parseCacheValue = (ctx: FunctionContext, cacheValue: AnyTypeResult): AnyTy
       } else {
         return { type: 'Error', result: `Database ${cacheValue.result.blockId} not found`, errorKind: 'deps' }
       }
+    }
+  }
+
+  if (cacheValue.type === 'Column' && !(cacheValue.result instanceof ColumnClass)) {
+    const database = ctx.formulaContext.findDatabase(cacheValue.result.namespaceId)
+    if (database) {
+      return { type: 'Column', result: new ColumnClass(database, cacheValue.result) }
+    } else {
+      return { type: 'Error', result: `Database ${cacheValue.result.namespaceId} not found`, errorKind: 'deps' }
     }
   }
 

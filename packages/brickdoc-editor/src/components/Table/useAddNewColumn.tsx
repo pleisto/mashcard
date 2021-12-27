@@ -5,20 +5,19 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export const COLUMN_ID = '__addColumn'
 
-export function useAddNewColumn(addNewColumn: VoidFunction): Column {
-  const AddNewColumnButton = React.useCallback(
-    () => (
+export function useAddNewColumn(addNewColumn: VoidFunction, dynamic: boolean): Column {
+  const AddNewColumnButton = React.useCallback(() => {
+    if (dynamic) return <div />
+    return (
       <Button
         data-testid={TEST_ID_ENUM.editor.tableBlock.column.addButton.id}
         type="text"
         className="table-block-add-column-button"
-        onClick={addNewColumn}
-      >
+        onClick={addNewColumn}>
         <Icon.Plus />
       </Button>
-    ),
-    [addNewColumn]
-  )
+    )
+  }, [addNewColumn, dynamic])
   const AddNewColumnCell = React.useCallback(() => <div />, [])
 
   return {

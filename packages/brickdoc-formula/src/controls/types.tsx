@@ -4,7 +4,6 @@ import {
   FormulaControlType,
   FunctionResult,
   NamespaceId,
-  SpreadsheetName,
   StringResult,
   uuid,
   VariableMetadata
@@ -21,17 +20,20 @@ export interface ButtonType extends ControlType {
   kind: 'Button'
   name: string
   fn: FunctionResult
-  onClick?: () => void
+  onClick?: VoidFunction
 }
 
-export interface Column {
-  namespaceId: NamespaceId
+export interface ColumnInitializer {
   columnId: ColumnId
+  namespaceId: NamespaceId
   name: ColumnName
-  spreadsheetName: SpreadsheetName
   index: number
   type: string
   rows: string[]
+}
+
+export interface ColumnType extends ColumnInitializer {
+  database: DatabaseType
 }
 
 export interface Row {
@@ -43,28 +45,28 @@ export interface DatabaseInitializer {
   blockId: NamespaceId
   dynamic: boolean
   name: () => string
-  listColumns: () => Column[]
+  listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
 }
 
 export interface DatabasePersistence {
   blockId: NamespaceId
   tableName: string
-  columns: Column[]
+  columns: ColumnInitializer[]
   rows: Row[]
 }
 
-export interface Database {
+export interface DatabaseType {
   blockId: NamespaceId
   dynamic: boolean
   persistence?: DatabasePersistence
   columnCount: () => number
   rowCount: () => number
   name: () => string
-  listColumns: () => Column[]
+  listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
   getRow: (rowId: uuid) => Row | undefined
-  getColumn: (columnId: ColumnId) => Column | undefined
+  getColumn: (columnId: ColumnId) => ColumnInitializer | undefined
   toArray: () => string[][]
   toRecord: () => Array<{ [key: string]: StringResult }>
   persist: () => DatabasePersistence

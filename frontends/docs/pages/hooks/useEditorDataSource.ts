@@ -34,25 +34,21 @@ export function useEditorDataSource({
   const queryPreviewBox = useImperativeQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(
     QueryPreviewBoxDocument
   )
-  const { rows, fetchRows, addRow, updateRows, removeRow, moveRow } = useDatabaseRows({ updateBlocks })
+
   const formulaContext = useReactiveVar(FormulaContextVar)
+
+  // updateBlocks
+  React.useEffect(() => {
+    dataSource.current.updateBlocks = updateBlocks
+  }, [updateBlocks])
+
+  // table
+  dataSource.current.useDatabaseRows = useDatabaseRows
 
   // formula context
   React.useEffect(() => {
     dataSource.current.formulaContext = formulaContext
   }, [formulaContext])
-
-  // table
-  React.useEffect(() => {
-    dataSource.current.table = {
-      rows,
-      fetchRows,
-      addRow,
-      moveRow,
-      removeRow,
-      updateRows
-    }
-  }, [addRow, rows, fetchRows, moveRow, removeRow, updateRows])
 
   // fetch unsplash images
   React.useEffect(() => {

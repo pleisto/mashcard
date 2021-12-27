@@ -1,7 +1,7 @@
 import { CstNode } from 'chevrotain'
 import { ControlType, FunctionContext, FunctionResult, Reference, PredicateFunction, PredicateResult } from '..'
 
-export type Lambda = () => void
+export type Lambda = VoidFunction
 
 export const functionResult2lambda = <T extends ControlType>(
   ctx: FunctionContext,

@@ -8,7 +8,7 @@ import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { useImperativeQuery } from '@/common/hooks'
 import { isSavingVar } from '../../reactiveVars'
-import { EditorDatabase } from '@brickdoc/editor'
+import { useDatabaseRowsReturn } from '@brickdoc/editor'
 
 export interface DatabaseRow {
   id: string
@@ -53,7 +53,7 @@ function calculateSort(rows: DatabaseRows, targetIndex: number, fromIndex?: numb
 
 export function useDatabaseRows(options: {
   updateBlocks: (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
-}): EditorDatabase['table'] {
+}): useDatabaseRowsReturn {
   const { updateBlocks } = options
   const queryDatabaseRowBlocks = useImperativeQuery<Query, Variables>(GetDatabaseRowBlocksDocument)
 
@@ -71,6 +71,9 @@ export function useDatabaseRows(options: {
 
   const updateRows = React.useCallback(
     async (parentId: string, rows: DatabaseRows): Promise<void> => {
+      if (parentId === '') {
+        throw new Error('Updating database with empty parentId.')
+      }
       isSavingVar(true)
       const rowsMap = new Map(rows.map(row => [row.id, row]))
       const prevRowsMap = new Map(databaseRows.map(row => [row.id, row]))

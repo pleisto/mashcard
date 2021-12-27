@@ -1,5 +1,5 @@
 import { CstNode } from 'chevrotain'
-import { ButtonType, InputType, Column, Database, SelectType, SwitchType } from '../controls'
+import { ButtonType, InputType, ColumnType, DatabaseType, SelectType, SwitchType } from '../controls'
 
 type FormulaBasicType = 'number' | 'string' | 'boolean' | 'null'
 type FormulaObjectType =
@@ -154,12 +154,12 @@ export interface DateResult extends BaseResult {
 }
 
 export interface ColumnResult extends BaseResult {
-  result: Column
+  result: ColumnType
   type: 'Column'
 }
 
 export interface SpreadsheetResult extends BaseResult {
-  result: Database
+  result: DatabaseType
   type: 'Spreadsheet'
 }
 
@@ -177,7 +177,7 @@ export interface ErrorResult extends BaseResult {
 export interface PredicateResult extends BaseResult {
   type: 'Predicate'
   result: AnyTypeResult
-  column?: Column
+  column?: ColumnType
   operator: PredicateOperator
 }
 interface FormulaFunction {
@@ -322,30 +322,30 @@ export interface ColumnCompletion extends BaseCompletion {
   readonly kind: 'column'
   readonly namespace: SpreadsheetName
   readonly value: ColumnKey
-  readonly preview: Column
+  readonly preview: ColumnType
 }
 
 export interface SpreadsheetCompletion extends BaseCompletion {
   readonly kind: 'spreadsheet'
   readonly namespace: BlockName
   readonly value: SpreadsheetKey
-  readonly preview: Database
+  readonly preview: DatabaseType
 }
 
 export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCompletion | ColumnCompletion
 
 export interface ContextInterface {
   features: string[]
-  databases: { [key: NamespaceId]: Database }
+  databases: { [key: NamespaceId]: DatabaseType }
   blockNameMap: { [key: NamespaceId]: string }
   reservedNames: string[]
   backendActions: BackendActions | undefined
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
-  findDatabase: (namespaceId: NamespaceId) => Database | undefined
-  findColumn: (namespaceId: NamespaceId, variableId: VariableId) => Column | undefined
-  setDatabase: (namespaceId: NamespaceId, database: Database) => void
+  findDatabase: (namespaceId: NamespaceId) => DatabaseType | undefined
+  findColumn: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
+  setDatabase: (namespaceId: NamespaceId, database: DatabaseType) => void
   removeDatabase: (namespaceId: NamespaceId) => void
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariable: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
@@ -356,7 +356,7 @@ export interface ContextInterface {
   commitVariable: ({ variable, skipCreate }: { variable: VariableInterface; skipCreate?: boolean }) => Promise<void>
   removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>
   findFunctionClause: (group: FunctionGroup, name: FunctionNameType) => FunctionClause<any> | undefined
-  reset: () => void
+  reset: VoidFunction
 }
 
 interface TestCase {
@@ -521,12 +521,12 @@ export interface VariableInterface {
   t: VariableData
   buildFormula: () => Formula
   namespaceName: () => string
-  reparse: () => void
+  reparse: VoidFunction
   meta: () => VariableMetadata
   updateCst: (cst: CstNode, context: InterpretContext) => void
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>
-  afterUpdate: () => void
+  afterUpdate: VoidFunction
   interpret: (context: InterpretContext) => Promise<void>
   updateAndPersist: () => Promise<void>
   refresh: (context: InterpretContext) => Promise<void>

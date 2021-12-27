@@ -1,4 +1,4 @@
-import { parse, interpret, Database, Column, Row, DatabaseFactory } from '../..'
+import { parse, interpret, DatabaseType, Row, DatabaseClass, ColumnInitializer } from '../..'
 import { FormulaContext } from '../../context'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -21,29 +21,26 @@ const tableData: Row[] = [
   { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', [thirdColumnId]: '', sort: '100' },
   { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', [thirdColumnId]: 'Foo', sort: '100' }
 ]
-const columns: Column[] = [
+const columns: ColumnInitializer[] = [
   {
-    namespaceId: databaseNamespaceId,
     columnId: firstColumnId,
-    spreadsheetName: 'MyTable',
+    namespaceId: databaseNamespaceId,
     type: 'text',
     name: 'first',
     index: 0,
     rows: tableData.map(row => row[firstColumnId])
   },
   {
-    namespaceId: databaseNamespaceId,
     columnId: secondColumnId,
-    spreadsheetName: 'MyTable',
+    namespaceId: databaseNamespaceId,
     type: 'text',
     name: 'second',
     index: 1,
     rows: tableData.map(row => row[secondColumnId])
   },
   {
-    namespaceId: databaseNamespaceId,
     columnId: thirdColumnId,
-    spreadsheetName: 'MyTable',
+    namespaceId: databaseNamespaceId,
     type: 'text',
     name: 'third',
     index: 2,
@@ -51,7 +48,7 @@ const columns: Column[] = [
   }
 ]
 
-const database: Database = new DatabaseFactory({
+const database: DatabaseType = new DatabaseClass({
   name: () => 'MyTable',
   dynamic: false,
   blockId: databaseNamespaceId,
@@ -68,7 +65,7 @@ interface TestCase {
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const testCases: TestCase[] = [
-  { label: 'column', input: `=#${databaseNamespaceId}#${firstColumnId}`, value: columns[0] },
+  { label: 'column', input: `=#${databaseNamespaceId}#${firstColumnId}`, value: { ...columns[0], database } },
   { label: 'in database true', input: `=3 in #${databaseNamespaceId}`, value: true },
   { label: 'toArray', input: `=#${databaseNamespaceId}.toArray()`, value: SNAPSHOT_FLAG },
   { label: 'toRecordArray', input: `=#${databaseNamespaceId}.toRecordArray()`, value: SNAPSHOT_FLAG },
@@ -84,17 +81,6 @@ const testCases: TestCase[] = [
   { label: 'MAX', input: `=#${databaseNamespaceId}#${firstColumnId}.MAX()`, value: 5 },
   { label: 'COUNTA', input: `=#${databaseNamespaceId}#${firstColumnId}.COUNTA()`, value: 3 },
   { label: 'COUNTA', input: `=#${databaseNamespaceId}#${thirdColumnId}.COUNTA()`, value: 2 },
-  {
-    label: 'CountIf ok',
-    input: `=CountIf(#${databaseNamespaceId}, #${databaseNamespaceId}#${firstColumnId} >= 3)`,
-    value: 2
-  },
-  {
-    label: 'CountIf error1',
-    input: `=CountIf(#${databaseNamespaceId}, >= 3)`,
-    value: 'Column is missing'
-  },
-
   {
     label: 'SUMPRODUCT',
     input: `=SUMPRODUCT(#${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId})`,
@@ -174,6 +160,16 @@ const testCases: TestCase[] = [
     label: 'VLOOKUP ok string',
     input: `=VLOOKUP("1", #${databaseNamespaceId}, #${databaseNamespaceId}#${secondColumnId})`,
     value: '2'
+  },
+  {
+    label: 'XLOOKUP ok string',
+    input: `=XLOOKUP("1", #${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId})`,
+    value: '2'
+  },
+  {
+    label: 'XLOOKUP ok string',
+    input: `=XLOOKUP("123", #${databaseNamespaceId}#${firstColumnId}, #${databaseNamespaceId}#${secondColumnId}, "100")`,
+    value: '100'
   }
 ]
 

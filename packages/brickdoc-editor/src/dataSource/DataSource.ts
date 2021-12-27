@@ -2,6 +2,7 @@ import React from 'react'
 import { ContextInterface } from '@brickdoc/formula'
 import { DashboardPluginOptions } from '@brickdoc/uploader'
 import { DatabaseRow, DatabaseRows } from '../extensions/table'
+import { BlockInput } from '@brickdoc/schema'
 
 export interface WebsiteMeta {
   url: string
@@ -27,6 +28,15 @@ export interface DocumentPageData {
   firstChildSort: number
   text: string
   title: string | undefined
+}
+
+export interface useDatabaseRowsReturn {
+  rows: DatabaseRows
+  fetchRows: (parentId: string) => Promise<void>
+  addRow: (parentId: string, rowIndex?: number) => DatabaseRow
+  updateRows: (parentId: string, rows: DatabaseRows) => Promise<void>
+  removeRow: (rowId: string) => void
+  moveRow: (parentId: string, fromIndex: number, toIndex: number) => DatabaseRow | undefined
 }
 
 export interface EditorDatabase {
@@ -57,14 +67,11 @@ export interface EditorDatabase {
 
   rootId: string
 
-  table: {
-    rows: DatabaseRows
-    fetchRows: (parentId: string) => Promise<void>
-    addRow: (parentId: string, rowIndex?: number) => DatabaseRow
-    updateRows: (parentId: string, rows: DatabaseRows) => Promise<void>
-    removeRow: (rowId: string) => void
-    moveRow: (parentId: string, fromIndex: number, toIndex: number) => DatabaseRow | undefined
-  }
+  updateBlocks: (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
+
+  useDatabaseRows: (options: {
+    updateBlocks: (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
+  }) => useDatabaseRowsReturn
 }
 
 export type DataSourceListenerType = keyof EditorDatabase
@@ -72,24 +79,6 @@ export type DataSourceListener = (type: DataSourceListenerType) => void
 
 export class EditorDataSource {
   private database: EditorDatabase = {
-    table: {
-      rows: [],
-      fetchRows() {
-        throw new Error('table.fetchRows unimplement.')
-      },
-      addRow() {
-        throw new Error('table.addRow unimplement.')
-      },
-      updateRows() {
-        throw new Error('table.updateRows unimplement.')
-      },
-      removeRow() {
-        throw new Error('table.removeRow unimplement.')
-      },
-      moveRow() {
-        throw new Error('table.moveRow unimplement.')
-      }
-    },
     webid: '',
     rootId: '',
     documentEditable: false,
@@ -104,6 +93,12 @@ export class EditorDataSource {
     },
     fetchUnsplashImages() {
       throw new Error('fetchUnsplashImages unimplement.')
+    },
+    updateBlocks() {
+      throw new Error('updateBlocks unimplement.')
+    },
+    useDatabaseRows() {
+      throw new Error('useDatabaseRows unimplement.')
     }
   }
 
@@ -143,13 +138,22 @@ export class EditorDataSource {
     this.invokeListeners('formulaContext')
   }
 
-  get table(): EditorDatabase['table'] {
-    return this.database.table
+  get updateBlocks(): EditorDatabase['updateBlocks'] {
+    return this.database.updateBlocks
   }
 
-  set table(value: EditorDatabase['table']) {
-    this.database.table = value
-    this.invokeListeners('table')
+  set updateBlocks(value: EditorDatabase['updateBlocks']) {
+    this.database.updateBlocks = value
+    this.invokeListeners('updateBlocks')
+  }
+
+  get useDatabaseRows(): EditorDatabase['useDatabaseRows'] {
+    return this.database.useDatabaseRows
+  }
+
+  set useDatabaseRows(value: EditorDatabase['useDatabaseRows']) {
+    this.database.useDatabaseRows = value
+    this.invokeListeners('useDatabaseRows')
   }
 
   get rootId(): EditorDatabase['rootId'] {

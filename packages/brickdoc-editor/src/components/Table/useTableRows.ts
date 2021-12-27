@@ -1,6 +1,5 @@
-import React from 'react'
 import { DatabaseRows } from '../../extensions/table'
-import { EditorDataSource } from '../../dataSource/DataSource'
+import { EditorDataSource, useDatabaseRowsReturn } from '../../dataSource/DataSource'
 import { ActiveStatusUpdater } from './useActiveStatus'
 
 export interface UseTableRowsProps {
@@ -15,9 +14,9 @@ export interface TableRowsUtils {
   batchUpdateDataByColumn: (columnId: string, value: any) => void
   addNewRow: (rowIndex?: number) => void
   moveRow: (fromIndex: number, toIndex: number) => void
-  updateRows: EditorDataSource['table']['updateRows']
-  fetchRows: EditorDataSource['table']['fetchRows']
-  removeRow: EditorDataSource['table']['removeRow']
+  updateRows: useDatabaseRowsReturn['updateRows']
+  fetchRows: useDatabaseRowsReturn['fetchRows']
+  removeRow: useDatabaseRowsReturn['removeRow']
 }
 
 export function useTableRows({
@@ -25,16 +24,14 @@ export function useTableRows({
   parentId,
   updateActiveStatus
 }: UseTableRowsProps): [DatabaseRows, TableRowsUtils] {
-  const { rows: databaseRows, fetchRows, addRow, updateRows, removeRow, moveRow } = editorDataSource.table
-  const [tableRows, setTableRows] = React.useState(databaseRows)
-
-  React.useEffect(() => {
-    return editorDataSource.onUpdate(type => {
-      if (type === 'table') {
-        setTableRows(editorDataSource.table.rows)
-      }
-    })
-  }, [editorDataSource])
+  const {
+    rows: tableRows,
+    fetchRows,
+    addRow,
+    updateRows,
+    removeRow,
+    moveRow
+  } = editorDataSource.useDatabaseRows({ updateBlocks: editorDataSource.updateBlocks })
 
   const updateData = (rowId: string, key: string, data: any): void => {
     const row = tableRows.find(r => r.id === rowId)
