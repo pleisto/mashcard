@@ -46,7 +46,7 @@ export const displayValue = (v: AnyTypeResult): string => {
     case 'Button':
       return `#<${v.type}> ${v.result.name}`
     case 'Switch':
-      return `#<${v.type}> ${v.result.isSelected}`
+      return `#<${v.type}> ${v.result.checked}`
     case 'Select':
       return `#<${v.type}> ${JSON.stringify(v.result.options)}`
     case 'Reference':

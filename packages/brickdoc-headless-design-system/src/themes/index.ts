@@ -19,7 +19,7 @@ export const utils = {
 /**
  * Register default theme here
  */
-export const { theme, css, styled, config, globalCss, keyframes } = createStitches({
+export const { theme, css, styled, config, globalCss, keyframes, prefix } = createStitches({
   prefix: 'brd',
   theme: ceramicLightTheme,
   utils: {

@@ -3,9 +3,9 @@
 #
 # Table name: stafftools_roles
 #
-#  id          :bigint           not null, primary key
+#  id          :integer          not null, primary key
 #  name        :string           not null
-#  permissions :string           default([]), is an Array
+#  permissions :string           default("{}"), is an Array
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -13,6 +13,7 @@
 #
 #  index_stafftools_roles_on_name  (name) UNIQUE
 #
+
 class Stafftools::Role < ApplicationRecord
   has_many :stafftools_role_assignments, dependent: :destroy, class_name: 'Stafftools::RoleAssignment'
   has_many :accounts_users, through: :stafftools_role_assignments, class_name: 'Accounts::User'

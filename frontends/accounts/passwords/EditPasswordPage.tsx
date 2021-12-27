@@ -59,12 +59,11 @@ export const EditPasswordPage: React.FC = () => {
           label={t('sessions.confirm_password')}
           hasFeedback
           dependencies={['password']}
-          rules={[{ required: true }, passwordConfirmValidator]}
-        >
+          rules={[{ required: true }, passwordConfirmValidator]}>
           <Input.Password />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" size="large" isLoading={loading} block>
+          <Button type="primary" htmlType="submit" size="large" loading={loading} block>
             {t('sessions.reset_password')}
           </Button>
         </Form.Item>

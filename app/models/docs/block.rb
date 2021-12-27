@@ -1,34 +1,34 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: docs_blocks
 #
-#  id                       :uuid             not null, primary key
-#  collaborators            :bigint           default([]), not null, is an Array
-#  content(node content)    :jsonb
-#  data(data props)         :jsonb            not null
-#  deleted_at               :datetime
-#  deleted_permanently_at   :datetime
-#  history_version          :bigint           default(0), not null
-#  meta(metadata)           :jsonb            not null
-#  page                     :boolean          default(FALSE), not null
-#  snapshot_version         :bigint           default(0), not null
-#  sort                     :bigint           default(0), not null
-#  text(node text)          :text             default("")
-#  type                     :string(32)
-#  created_at               :datetime         not null
-#  updated_at               :datetime         not null
-#  parent_id                :uuid
-#  pod_id                   :bigint           not null
-#  root_id                  :uuid             not null
+#  id                     :uuid             not null, primary key
+#  pod_id                 :integer          not null
+#  type                   :string(32)
+#  parent_id              :uuid
+#  meta                   :jsonb            default("{}"), not null
+#  data                   :jsonb            not null
+#  history_version        :integer          default("0"), not null
+#  snapshot_version       :integer          default("0"), not null
+#  sort                   :integer          default("0"), not null
+#  collaborators          :integer          default("{}"), not null, is an Array
+#  deleted_at             :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  root_id                :uuid             not null
+#  content                :jsonb            default("[]")
+#  text                   :text             default("")
+#  page                   :boolean          default("false"), not null
+#  deleted_permanently_at :datetime
 #
 # Indexes
 #
-#  index_docs_blocks_on_collaborators  (collaborators) USING gin
+#  index_docs_blocks_on_collaborators  (collaborators)
 #  index_docs_blocks_on_parent_id      (parent_id)
 #  index_docs_blocks_on_pod_id         (pod_id)
 #
+
 class Docs::Block < ApplicationRecord
   self.inheritance_column = :_type_disabled
 

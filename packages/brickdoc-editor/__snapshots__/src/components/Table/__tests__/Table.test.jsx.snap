@@ -7,6 +7,7 @@ exports[`Table matches correct snapshot 1`] = `
   style="pointer-events: none; white-space: normal;"
 >
   <div
+    aria-haspopup="dialog"
     class="table-block-toolbar"
     role="toolbar"
   >
@@ -20,23 +21,30 @@ exports[`Table matches correct snapshot 1`] = `
       class="table-toolbar-actions"
     >
       <button
-        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-toolbar-text-button"
+        class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium table-toolbar-text-button"
         data-testid="editor-table-block-toolbar-filter-button"
+        role="button"
+        type="button"
       >
         <span>
           table.filter.text
         </span>
       </button>
       <button
-        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-toolbar-text-button"
+        class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium table-toolbar-text-button"
         data-testid="editor-table-block-toolbar-sort-button"
+        role="button"
+        type="button"
       >
         <span>
           table.sort.text
         </span>
       </button>
       <button
-        class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-toolbar-text-button"
+        aria-haspopup="dialog"
+        class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium table-toolbar-text-button"
+        role="button"
+        type="button"
       >
         <span
           aria-label="more"
@@ -54,8 +62,10 @@ exports[`Table matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-NFHkO brd-c-NFHkO-bRcfYV-type-primary brd-c-NFHkO-lKjfQ-size-medium table-toolbar-add-button"
+        class="brd-c-cLOgmF brd-c-cLOgmF-bekiLh-btnType-primary brd-c-cLOgmF-lKjfQ-size-medium table-toolbar-add-button"
         data-testid="editor-table-block-toolbar-add-button"
+        role="button"
+        type="button"
       >
         table.new_row.text
         <div
@@ -103,6 +113,7 @@ exports[`Table matches correct snapshot 1`] = `
           style="display: inline-flex; flex: 1 0 auto; min-width: 60px;"
         >
           <div
+            aria-haspopup="dialog"
             class="table-block-th bordered"
             colspan="1"
             role="columnheader"
@@ -127,8 +138,10 @@ exports[`Table matches correct snapshot 1`] = `
             style="box-sizing: border-box; flex: 180 0 auto; min-width: 30px; width: 180px; position: relative; justify-content: flex-start; align-items: center; display: inline-flex;"
           >
             <button
-              class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium table-block-add-column-button"
+              class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium table-block-add-column-button"
               data-testid="editor-table-block-column-add-button"
+              role="button"
+              type="button"
             >
               <span
                 aria-label="plus"

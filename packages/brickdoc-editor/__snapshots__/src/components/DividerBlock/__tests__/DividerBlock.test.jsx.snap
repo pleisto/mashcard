@@ -5,6 +5,8 @@ exports[`DividerBlock matches snapshot correctly 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <hr />
+  <hr
+    aria-haspopup="dialog"
+  />
 </div>
 `;

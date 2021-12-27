@@ -1,6 +1,2 @@
-import './style'
-import Dropdown from './dropdown'
-
-export type { DropdownProps } from './dropdown'
-
-export default Dropdown
+export { Dropdown } from '@brickdoc/brickdoc-headless-design-system'
+export type { DropdownProps } from '@brickdoc/brickdoc-headless-design-system'

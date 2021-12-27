@@ -49,8 +49,8 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
             <Button
               className={styles.button}
               type="secondary"
-              isDisabled={disabled}
-              isLoading={loading}
+              disabled={disabled}
+              loading={loading}
               onClick={onRestore}
               block
             >

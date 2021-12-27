@@ -27,7 +27,7 @@ export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: bool
     <div className={styles.container}>
       <Success theme="filled" className={styles.icon} />
       <p>{t('devise:passwords.send_instructions')}</p>
-      <Button isLoading={loading} onClick={onClick} isDisabled={countdown !== 0}>
+      <Button loading={loading} onClick={onClick} disabled={countdown !== 0}>
         {countdown === 0
           ? t('sessions.resend_confirmed_email')
           : t('sessions.resend_after', { seconds: millisecondsToSeconds(countdown) })}

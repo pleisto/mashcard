@@ -1,23 +1,23 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: docs_aliases
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
+#  pod_id     :integer          not null
 #  alias      :string           not null
-#  payload    :json             not null
-#  state      :integer          default("enabled"), not null
+#  block_id   :uuid             not null
+#  payload    :json             default("{}"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  block_id   :uuid             not null
-#  pod_id     :bigint           not null
+#  state      :integer          default("0"), not null
 #
 # Indexes
 #
 #  index_docs_aliases_on_block_id          (block_id)
 #  index_docs_aliases_on_pod_id_and_alias  (pod_id,alias) UNIQUE
 #
+
 class Docs::Alias < ApplicationRecord
   belongs_to :pod, optional: true
   belongs_to :block, class_name: 'Docs::Block'

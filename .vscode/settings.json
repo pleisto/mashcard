@@ -79,6 +79,7 @@
     "editor.defaultFormatter": "rebornix.ruby"
   },
   "cSpell.words": [
+    "affordance",
     "Brickdoc",
     "Cascadia",
     "commitlint",
@@ -89,6 +90,8 @@
     "falsey",
     "Fastify",
     "Fira",
+    "fontset",
+    "frontends",
     "KEEPTTL",
     "Kubernetes",
     "kysely",
@@ -117,7 +120,9 @@
     "STRBYTES",
     "Tahoma",
     "thirdary",
+    "tippyjs",
     "uncountables",
+    "Untrigger",
     "varchar",
     "vite",
     "vitejs",

@@ -8,7 +8,7 @@ export const Palettes = {
   grey2: '#f0f0f0',
   grey3: '#e0e0e0',
   grey4: '#d3d3d3',
-  grey5: '#cacaca',
+  grey5: '#bdbdbd',
   grey6: '#8e8e8e',
   grey7: '#757575',
   grey8: '#616161',
@@ -18,6 +18,7 @@ export const Palettes = {
    * Red
    */
   ...generatePalette('red', '#d43730'),
+  red1: '#fff7f5',
   red7: '#b0160e',
 
   /**
@@ -25,13 +26,14 @@ export const Palettes = {
    */
   ...generatePalette('orange', '#ff6d00'),
   orange1: '#fff5ed',
-  orange9: '#933610',
+  orange8: '#c84116',
 
   /**
    * Yellow
    */
   ...generatePalette('yellow', '#ffd84e'),
   yellow1: '#fffbf0',
+  yellow9: '#7e6409',
 
   /**
    * Green
@@ -55,7 +57,8 @@ export const Palettes = {
    * Deep Purple
    */
   ...generatePalette('deepPurple', '#3a3642'),
-  deepPurple9: '#0f0a15',
+  deepPurple4: '#908b9c',
+  deepPurple5: '#73707e',
 
   /**
    * Purple

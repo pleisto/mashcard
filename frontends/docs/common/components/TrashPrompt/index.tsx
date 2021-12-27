@@ -69,7 +69,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
         icon={false}
         action={
           <Space>
-            <Button size="small" isLoading={restoreButtonLoading} onClick={onRestoreClick}>
+            <Button size="small" disabled={restoreButtonLoading} onClick={onRestoreClick}>
               {t('trash.restore_action')}
             </Button>
             <Button size="small" type="primary" danger onClick={onHardDeleteClick}>

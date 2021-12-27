@@ -41,7 +41,9 @@ exports[`BlockContainer with actionOptions 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <span>
+  <span
+    aria-haspopup="dialog"
+  >
     block
   </span>
 </div>

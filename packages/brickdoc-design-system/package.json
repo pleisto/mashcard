@@ -23,7 +23,6 @@
     "lodash-es": "^4.17.21",
     "rc-checkbox": "^2.3.2",
     "rc-dialog": "^8.6.0",
-    "rc-dropdown": "^3.2.0",
     "rc-field-form": "^1.22.0",
     "rc-menu": "^9.0.14",
     "rc-motion": "^2.4.4",
@@ -32,9 +31,6 @@
     "rc-select": "^13.2.1",
     "rc-tabs": "^11.10.5",
     "rc-textarea": "^0.3.6",
-    "rc-tooltip": "^5.1.1",
-    "rc-tree": "^5.3.2",
-    "rc-trigger": "^5.2.10",
     "rc-util": "^5.16.1",
     "scroll-into-view-if-needed": "^2.2.28"
   },

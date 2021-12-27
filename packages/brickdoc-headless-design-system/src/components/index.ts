@@ -5,3 +5,8 @@ export * from './Tree'
 export * from './Avatar'
 export * from './Switch'
 export * from './Menu'
+export * from './Tooltip'
+export * from './Popover'
+export * from './Provider'
+export * from './Dropdown'
+

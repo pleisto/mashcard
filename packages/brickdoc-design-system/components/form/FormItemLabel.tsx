@@ -1,32 +1,17 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { Help as QuestionCircleOutlined } from '../icon'
 import Col, { ColProps } from '../grid/col'
 import { FormLabelAlign } from './interface'
 import { FormContext, FormContextProps } from './context'
 import { RequiredMark } from './Form'
 import { useLocale } from '../locale-provider/LocaleReceiver'
-import Tooltip, { TooltipProps } from '../tooltip'
+import { TooltipProps } from '../tooltip'
 
 export type WrapperTooltipProps = TooltipProps & {
   icon?: React.ReactElement
 }
 
 export type LabelTooltipType = WrapperTooltipProps | React.ReactNode
-
-function toTooltipProps(tooltip: LabelTooltipType): WrapperTooltipProps | null {
-  if (!tooltip) {
-    return null
-  }
-
-  if (typeof tooltip === 'object' && !React.isValidElement(tooltip)) {
-    return tooltip as WrapperTooltipProps
-  }
-
-  return {
-    title: tooltip
-  }
-}
 
 export interface FormItemLabelProps {
   colon?: boolean
@@ -55,7 +40,12 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
 
   return (
     <FormContext.Consumer key="label">
-      {({ vertical, labelAlign: contextLabelAlign, labelCol: contextLabelCol, colon: contextColon }: FormContextProps) => {
+      {({
+        vertical,
+        labelAlign: contextLabelAlign,
+        labelCol: contextLabelCol,
+        colon: contextColon
+      }: FormContextProps) => {
         const mergedLabelCol: ColProps = labelCol || contextLabelCol || {}
 
         const mergedLabelAlign: FormLabelAlign | undefined = labelAlign || contextLabelAlign
@@ -74,22 +64,6 @@ const FormItemLabel: React.FC<FormItemLabelProps & { required?: boolean; prefixC
         // Remove duplicated user input colon
         if (haveColon && typeof label === 'string' && label.trim() !== '') {
           labelChildren = label.replace(/[:|：]\s*$/, '')
-        }
-
-        // Tooltip
-        const tooltipProps = toTooltipProps(tooltip)
-        if (tooltipProps) {
-          const { icon = <QuestionCircleOutlined theme="outline" />, ...restTooltipProps } = tooltipProps
-          const tooltipNode = (
-            <Tooltip {...restTooltipProps}>{React.cloneElement(icon, { className: `${prefixCls}-item-tooltip`, title: '' })}</Tooltip>
-          )
-
-          labelChildren = (
-            <>
-              {labelChildren}
-              {tooltipNode}
-            </>
-          )
         }
 
         // Add required mark if optional

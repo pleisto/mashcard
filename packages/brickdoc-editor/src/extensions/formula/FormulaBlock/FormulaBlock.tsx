@@ -164,7 +164,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
           color: activeColor.color,
           borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
           background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
-        }}>
+        }}
+      >
         {variable.t.name}: {displayValue(variable.t.variableValue.result)}
       </span>
     )
@@ -176,7 +177,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     switch (result.type) {
       case 'Button':
         return (
-          <Button isDisabled={result.result.disabled} onPress={result.result.onClick}>
+          <Button disabled={result.result.disabled} onClick={result.result.onClick}>
             {result.result.name}
           </Button>
         )
@@ -191,9 +192,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
       case 'Switch':
         return (
           <Switch
-            isDisabled={result.result.disabled}
+            disabled={result.result.disabled}
             size="large"
-            isSelected={result.result.isSelected}
+            checked={result.result.checked}
             onChange={result.result.onChange}
           />
         )
@@ -224,7 +225,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         editor={editor}
         updateFormula={updateFormula}
         variable={variable}
-        updateVariable={setVariable}>
+        updateVariable={setVariable}
+      >
         {variable ? (
           renderVariable(variable)
         ) : (

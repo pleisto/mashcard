@@ -62,7 +62,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
     </Menu>
   )
   const policyData = (
-    <Dropdown overlay={menu} arrow={true}>
+    <Dropdown overlay={menu}>
       <div>
         {policyMessage} <LineDown />
       </div>

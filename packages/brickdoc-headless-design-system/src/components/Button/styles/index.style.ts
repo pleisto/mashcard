@@ -1,7 +1,7 @@
 import { theme, css } from '../../../themes'
 import { size } from './size.style'
 import { state } from './state.style'
-import { type } from './types.style'
+import { btnType } from './types.style'
 
 export const buttonStyle = css({
   include: ['flexCenter'],
@@ -23,8 +23,11 @@ export const buttonStyle = css({
   touchAction: 'manipulation',
   transition: `all .3s ${theme.transitions.easeInOut}`,
   isolation: 'isolation',
+  '&:focus-visible': {
+    include: ['focusOutline']
+  },
   variants: {
-    type,
+    btnType,
     size,
     ...state
   }

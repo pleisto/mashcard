@@ -2,7 +2,10 @@
 // tsconfig.build.json is for building, including only files needed for the final product
 {
   "extends": "./tsconfig.build.json",
-  "include": ["**/*"],
+  "include": [
+    "**/*",
+    "node_modules/vite-plugin-pwa/client.d.ts"
+  ],
   "exclude": ["packages/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
     {

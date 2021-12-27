@@ -11,9 +11,10 @@ exports[`SlashMenu matches correct snapshot 1`] = `
     slashmenu.heading
   </div>
   <button
-    class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium slash-menu-item"
+    class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
+    type="button"
   >
     <div
       class="menu-item-icon-wrapper"
@@ -38,9 +39,10 @@ exports[`SlashMenu matches correct snapshot 1`] = `
     </div>
   </button>
   <button
-    class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium slash-menu-item"
+    class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
+    type="button"
   >
     <div
       class="menu-item-icon-wrapper"
@@ -65,9 +67,10 @@ exports[`SlashMenu matches correct snapshot 1`] = `
     </div>
   </button>
   <button
-    class="brd-c-NFHkO brd-c-NFHkO-inWxtj-type-text brd-c-NFHkO-lKjfQ-size-medium slash-menu-item"
+    class="brd-c-cLOgmF brd-c-cLOgmF-eWWUXK-btnType-text brd-c-cLOgmF-lKjfQ-size-medium slash-menu-item"
     data-testid="editor-slash-commands-item"
     role="menuitem"
+    type="button"
   >
     <div
       class="menu-item-icon-wrapper"

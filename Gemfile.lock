@@ -5,28 +5,6 @@ GIT
     default_value_for (3.4.0)
       activerecord (>= 3.2.0, < 8.0)
 
-GIT
-  remote: https://github.com/brickdoc/devise.git
-  revision: 9f5b83750eef89710b8f2f1e0969c308023e2f05
-  specs:
-    devise (4.8.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-
-GIT
-  remote: https://github.com/brickdoc/flipper.git
-  revision: 32ec03f98d02f3dd7ecd6cc30c576f91498c8e39
-  specs:
-    flipper-active_record (0.22.2)
-      activerecord (>= 4.2, < 8)
-      flipper (~> 0.22.2)
-    flipper-active_support_cache_store (0.22.2)
-      activesupport (>= 4.2, < 8)
-      flipper (~> 0.22.2)
-
 PATH
   remote: gems/brickdoc_settings
   specs:
@@ -121,17 +99,17 @@ GEM
       graphql (>= 1.8)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.541.0)
-    aws-sdk-core (3.124.0)
+    aws-partitions (1.543.0)
+    aws-sdk-core (3.125.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.52.0)
-      aws-sdk-core (~> 3, >= 3.122.0)
+    aws-sdk-kms (1.53.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.109.0)
-      aws-sdk-core (~> 3, >= 3.122.0)
+    aws-sdk-s3 (1.110.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
     aws-sigv4 (1.4.0)
@@ -166,10 +144,16 @@ GEM
       addressable
     cypress-on-rails (1.11.0)
       rack
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     devise-async (1.0.0)
       activejob (>= 5.0)
       devise (>= 4.0)
-    diff-lcs (1.4.4)
+    diff-lcs (1.5.0)
     docile (1.4.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -208,7 +192,13 @@ GEM
     fast_underscore (0.3.3)
     ffaker (2.20.0)
     ffi (1.15.4)
-    flipper (0.22.2)
+    flipper (0.23.0)
+    flipper-active_record (0.23.0)
+      activerecord (>= 4.2, < 8)
+      flipper (~> 0.23.0)
+    flipper-active_support_cache_store (0.23.0)
+      activesupport (>= 4.2, < 8)
+      flipper (~> 0.23.0)
     fugit (1.5.2)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
@@ -404,16 +394,16 @@ GEM
     rspec-support (3.10.3)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.23.0)
+    rubocop (1.24.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.12.0, < 2.0)
+      rubocop-ast (>= 1.15.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.15.0)
+    rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
     ruby-next (0.13.2)
       ruby-next-core (= 0.13.2)
@@ -437,7 +427,7 @@ GEM
     sentry-ruby-core (4.8.1)
       concurrent-ruby
       faraday
-    shoulda-matchers (5.0.0)
+    shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     sidekiq (6.3.1)
       connection_pool (>= 2.2.2)
@@ -469,7 +459,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.9460)
+    sorbet-runtime (0.5.9464)
     thor (1.1.0)
     tilt (2.0.10)
     tomlrb (1.2.9)
@@ -485,10 +475,10 @@ GEM
       httparty (~> 0.16)
       oauth2 (~> 1)
     vcr (6.0.0)
-    vite_rails (3.0.2)
+    vite_rails (3.0.3)
       railties (>= 5.1, < 8)
       vite_ruby (~> 3.0)
-    vite_ruby (3.0.3)
+    vite_ruby (3.0.6)
       dry-cli (~> 0.7.0)
       rack-proxy (~> 0.6, >= 0.6.1)
       zeitwerk (~> 2.2)
@@ -509,7 +499,7 @@ GEM
     websocket-extensions (0.1.5)
     yard (0.9.27)
       webrick (~> 1.7.0)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.2)
 
 PLATFORMS
   x86_64-darwin-20
@@ -532,7 +522,7 @@ DEPENDENCIES
   connection_pool (~> 2.2, >= 2.2.5)
   cypress-on-rails (~> 1.11.0)
   default_value_for!
-  devise!
+  devise (~> 4.8.1)
   devise-async (~> 1.0.0)
   dotenv-rails (~> 2.7, >= 2.7.6)
   factory_bot_rails (>= 6.2)
@@ -540,9 +530,9 @@ DEPENDENCIES
   fast_blank (>= 1.0.1)
   fast_underscore (>= 0.3.3)
   ffaker
-  flipper (~> 0.22.2)
-  flipper-active_record!
-  flipper-active_support_cache_store!
+  flipper (~> 0.23.0)
+  flipper-active_record (~> 0.23.0)
+  flipper-active_support_cache_store (~> 0.23.0)
   graphql (~> 1.13)
   graphql-batch (~> 0.4.3)
   graphql-fragment_cache (~> 1.9.1)
@@ -569,7 +559,7 @@ DEPENDENCIES
   redis-objects (~> 1.5.1)
   rspec-rails (>= 5.0.2)
   rspec_junit_formatter (>= 0.4)
-  rubocop (>= 1.23.0)
+  rubocop (>= 1.24.0)
   rubocop-brickdoc!
   second_level_cache (~> 2.7)
   sentry-rails
@@ -583,7 +573,7 @@ DEPENDENCIES
   tzinfo-data (~> 1.2021, >= 1.2021.5)
   unsplash
   vcr (~> 6.0)
-  vite_rails (~> 3.0.2)
+  vite_rails (~> 3.0.3)
   web-console (>= 4.2.0)
   webmock (~> 3.14)
 

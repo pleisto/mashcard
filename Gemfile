@@ -30,9 +30,9 @@ gem 'nokogiri', '>= 1.12.5'
 gem 'aws-sdk-s3', '~> 1', '>= 1.109.0'
 
 # Feature toggles
-gem 'flipper', '~> 0.22.2'
-gem 'flipper-active_record', github: 'brickdoc/flipper'
-gem 'flipper-active_support_cache_store', github: 'brickdoc/flipper'
+gem 'flipper', '~> 0.23.0'
+gem 'flipper-active_record', '~> 0.23.0'
+gem 'flipper-active_support_cache_store', '~> 0.23.0'
 
 gem 'default_value_for', github: 'brickdoc/default_value_for'
 
@@ -47,12 +47,12 @@ gem 'apollo_upload_server', '~> 2.1'
 gem 'graphql-batch', '~> 0.4.3'
 
 # Frontend
-gem 'vite_rails', '~> 3.0.2'
+gem 'vite_rails', '~> 3.0.3'
 
 ## IAM
 gem 'action_policy', '~> 0.6.0'
 gem 'action_policy-graphql', '~> 0.5.3'
-gem 'devise', github: 'brickdoc/devise'
+gem 'devise', '~> 4.8.1'
 gem 'devise-async', '~> 1.0.0'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
@@ -75,7 +75,7 @@ group :development, :test do
   gem 'cypress-on-rails', '~> 1.11.0'
   gem 'brakeman'
   gem 'ffaker'
-  gem 'rubocop', '>= 1.23.0'
+  gem 'rubocop', '>= 1.24.0'
   gem 'rubocop-brickdoc', require: false, path: 'gems/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 5.0.2'

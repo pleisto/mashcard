@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { useButton } from '@react-aria/button'
-import { AriaButtonProps } from '@react-types/button'
+import { Button as HeadlessButton, ButtonProps as HeadlessButtonProps } from 'reakit/Button'
 import { LoadingIcon } from './LoadingIcon'
 import { styled } from '../../themes'
 import { buttonStyle } from './styles/index.style'
@@ -8,12 +7,11 @@ import { buttonStyle } from './styles/index.style'
 export type Size = 'large' | 'medium' | 'small'
 export type BtnType = 'primary' | 'secondary' | 'danger' | 'text'
 
-export interface ButtonProps extends Omit<AriaButtonProps, 'type'> {
+export interface ButtonProps extends Omit<HeadlessButtonProps, 'type' | 'css'> {
   block?: boolean
   circle?: boolean
-  className?: string
   icon?: React.ReactNode
-  iconPosition?: 'left' | 'right'
+  iconPosition?: 'start' | 'end'
   /**
    * @deprecated use `type: danger` instead
    *
@@ -21,85 +19,60 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'type'> {
    * older versions of the design system
    */
   danger?: boolean
-  isLoading?: boolean | { delay?: number }
-  /**
-   * @deprecated use `onPress` instead
-   */
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  loading?: boolean | { delay?: number }
+
   /**
    * Use `htmlType` as an alias for `type` to be compatible
    * with older version design system.
    */
-  htmlType?: AriaButtonProps['type']
+  htmlType?: HeadlessButtonProps['type']
   size?: Size
-  style?: React.CSSProperties
   type?: BtnType
-  /**
-   * @deprecated use `onPressDown` instead
-   */
-  onMouseDown?: React.MouseEventHandler<HTMLButtonElement>
-  /**
-   * @deprecated use `onPressEnter` instead
-   */
-  onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>
-  /**
-   * @deprecated use `onPressUp` instead
-   */
-  onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>
-  role?: React.AriaRole
 }
 
 type Loading = number | boolean
 
-const ButtonRoot = styled('button', buttonStyle)
+const ButtonRoot = styled(HeadlessButton, buttonStyle)
 
 /** Button
  * @example
  * ```tsx
  * <Button type="primary" disabled loading onClick={....} block>test</Button>
- * <Button onPress={....} block>test</Button>
+ * <Button onClick={....} block>test</Button>
  * ```
  */
-const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
+const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref) => {
   const {
-    isDisabled = false,
-    isLoading = false,
+    disabled = false,
+    loading = false,
     circle = false,
     danger = false,
     type = 'secondary',
     size = 'medium',
-    className = '',
     children,
     icon,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
+    onClick,
     block = false,
-    htmlType = 'button' as ButtonProps['htmlType']
+    htmlType = 'button',
+    role = 'button',
+    iconPosition = 'start',
+    ...otherProps
   } = props
 
   const priorityType: BtnType = danger ? 'danger' : type
 
-  // AriaButtonProps require `type` property as htmlType
-  const ariaProps = {
-    ...props,
-    htmlType: undefined,
-    type: htmlType
-  }
-
-  const [innerLoading, setLoading] = useState<Loading>(!!isLoading)
+  const [innerLoading, setLoading] = useState<Loading>(!!loading)
   const delayTimeoutRef = useRef<number>()
   const buttonRef = (ref as React.RefObject<HTMLButtonElement>) || React.createRef<HTMLButtonElement>()
-  const { buttonProps, isPressed } = useButton(ariaProps, buttonRef)
 
   /**
    * Update Loading
    */
   let loadingOrDelay: Loading
-  if (typeof isLoading === 'object' && isLoading.delay) {
-    loadingOrDelay = isLoading.delay || true
+  if (typeof loading === 'object' && loading.delay) {
+    loadingOrDelay = loading.delay || true
   } else {
-    loadingOrDelay = !!isLoading
+    loadingOrDelay = !!loading
   }
 
   useEffect(() => {
@@ -118,29 +91,29 @@ const InternalButton: React.ForwardRefRenderFunction<unknown, ButtonProps> = (pr
 
   return (
     <ButtonRoot
-      {...buttonProps}
+      {...otherProps}
+      role={role}
+      unstable_clickOnEnter
+      unstable_clickOnSpace
       hasIcon={!!icon || !!innerLoading}
-      role={props.role || buttonProps.role}
       ref={buttonRef}
-      disabled={isDisabled || innerLoading}
-      disabledBtn={isDisabled}
-      type={isPressed && !isDisabled ? `${priorityType}-press` : priorityType}
-      circle={circle && size}
-      loading={innerLoading}
-      className={className}
+      disabled={disabled || !!innerLoading}
+      disabledBtn={disabled}
+      btnType={priorityType}
+      type={htmlType}
+      circle={circle ? size : undefined}
+      loading={!!innerLoading}
       size={size}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       block={block}
-    >
-      {iconNode}
+      onClick={onClick}>
+      {iconPosition === 'start' && iconNode}
       {childrenDom}
+      {iconPosition === 'end' && iconNode}
     </ButtonRoot>
   )
 }
 
-const Button = React.forwardRef<unknown, ButtonProps>(InternalButton)
-Button.displayName = 'Button'
+const _Button = React.forwardRef(Button)
+_Button.displayName = 'Button'
 
-export { Button }
+export { _Button as Button }

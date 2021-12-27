@@ -2,7 +2,7 @@ import React from 'react'
 import { Add } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../../common/hooks'
 import { Button } from '@brickdoc/design-system'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
@@ -33,9 +33,9 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
       type="text"
       className={classNames([styles.createBtn, 'brd-btn-text'])}
       onClick={onClick}
-      isLoading={createBlockLoading}
+      loading={createBlockLoading}
       icon={<Add />}
-      isDisabled={createBlockLoading}
+      disabled={createBlockLoading}
     >
       {t('blocks.create_pages')}
     </Button>

@@ -9,10 +9,10 @@ export default {
     type: 'secondary',
     size: 'medium',
     block: false,
-    isDisabled: false,
+    disabled: false,
     circle: false,
     htmlType: 'button',
-    iconPosition: 'left'
+    iconPosition: 'start'
   },
   argTypes: {
     type: {
@@ -30,13 +30,13 @@ export default {
     block: {
       control: 'boolean'
     },
-    isDisabled: {
+    disabled: {
       control: 'boolean'
     },
     circle: {
       control: 'boolean'
     },
-    isLoading: {
+    loading: {
       control: 'boolean',
       description: '`boolean | { delay?: number }`'
     },
@@ -47,7 +47,7 @@ export default {
       }
     },
     iconPosition: {
-      options: ['left', 'right'],
+      options: ['start', 'end'],
       control: {
         type: 'radio'
       }
@@ -96,4 +96,4 @@ export const iconOnly = Template.bind({})
 iconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'large' }
 
 export const loadding = Template.bind({})
-loadding.args = { isLoading: true, children: 'Loading...' }
+loadding.args = { loading: true, children: 'Loading...' }

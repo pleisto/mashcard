@@ -1,4 +1,5 @@
 import { styled, theme } from '../../../themes'
+import { Button } from '../../Button'
 
 export const ContentWrapper = styled('div', {
   display: 'flex',
@@ -28,12 +29,7 @@ export const ContentAction = styled('div', {
   marginTop: `calc(${theme.space.xxs} * -1)`
 })
 
-export const ContentClose = styled('a', {
-  fontSize: theme.fontSizes.footnote,
-  lineHeight: theme.fontSizes.footnote,
-  display: 'flex',
-  alignItems: 'center'
-})
+export const ContentClose = styled(Button, {})
 
 export const Description = styled('div', {
   fontSize: theme.fontSizes.callout,
@@ -90,9 +86,9 @@ export const Base = styled('div', {
       info: {
         backgroundColor: theme.colors.statusInfoBg,
         borderColor: theme.colors.blue2,
-        color: theme.colors.blue6,
+        color: theme.colors.blue8,
         [`& ${ContentClose}`]: {
-          color: theme.colors.blue6
+          color: theme.colors.blue8
         }
       },
       error: {
@@ -106,17 +102,17 @@ export const Base = styled('div', {
       warning: {
         backgroundColor: theme.colors.statusWarningBg,
         borderColor: theme.colors.yellow3,
-        color: theme.colors.typePrimary,
+        color: theme.colors.yellow9,
         [`& ${ContentClose}`]: {
-          color: theme.colors.typePrimary
+          color: theme.colors.yellow9
         }
       },
       success: {
         backgroundColor: theme.colors.statusSuccessBg,
         borderColor: theme.colors.green2,
-        color: theme.colors.green6,
+        color: theme.colors.green9,
         [`& ${ContentClose}`]: {
-          color: theme.colors.green6
+          color: theme.colors.green9
         }
       }
     },

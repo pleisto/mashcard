@@ -98,7 +98,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
     </Menu>
   )
   const policyDropdown = (
-    <Dropdown placement="bottomLeft" className={styles.policyDropdown} overlay={menu} arrow={true}>
+    <Dropdown placement="bottomStart" className={styles.policyDropdown} overlay={menu}>
       <div>
         {policyMessage} <Icon.LineDown />
       </div>
@@ -172,12 +172,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
         <div className={cx(styles.input, { [styles.filled]: podValue.length > 0 })}>
           {selectData}
           {policyDropdown}
-          <Button
-            className={styles.inviteButton}
-            type="primary"
-            onClick={onInviteClick}
-            isLoading={inviteButtonLoading}
-          >
+          <Button className={styles.inviteButton} type="primary" onClick={onInviteClick} loading={inviteButtonLoading}>
             {t(podValue.length ? 'invite.confirm_button' : 'invite.button')}
           </Button>
         </div>

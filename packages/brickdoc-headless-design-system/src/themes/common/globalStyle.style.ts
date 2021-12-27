@@ -30,12 +30,14 @@ export const globalStyleSheet = {
     margin: 0,
     height: '100%',
     width: '100%',
-    fontFamily: '$fonts$defaultSans',
     color: '$colors$typePrimary',
     fontSize: '$fontSizes$body',
     lineHeight: '$lineHeights$base',
     backgroundColor: '$colors$backgroundPrimary',
-    OverlayScrollBehaviorY: 'none',
+    OverlayScrollBehaviorY: 'none'
+  },
+  'body,input,textarea, [data-fontset="sans"]': {
+    fontFamily: '$fonts$defaultSans',
     '&:lang(zh-Hant)': {
       fontFamily: '$fonts$zhHanTSans'
     },
@@ -47,8 +49,10 @@ export const globalStyleSheet = {
     }
   },
   'pre, code, kbd, samp': {
+    fontSize: '1em'
+  },
+  'pre, code, kbd, samp, [data-fontset="monospace"]': {
     fontFamily: '$fonts$defaultMonospace',
-    fontSize: '1em',
     '&:lang(zh-Hant)': {
       fontFamily: '$fonts$zhHanTMonospace'
     },
@@ -76,7 +80,9 @@ export const globalStyleSheet = {
     lineHeight: 'inherit'
   },
   blockquote: {
-    margin: '0 0 1em',
+    margin: '0 0 1em'
+  },
+  'blockquote, [data-fontset="serif"]': {
     fontFamily: '$fonts$defaultSerif',
     '&:lang(zh-Hant)': {
       fontFamily: '$fonts$zhHanTSerif'

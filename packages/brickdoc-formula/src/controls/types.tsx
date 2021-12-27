@@ -91,13 +91,13 @@ export interface InputInitializer extends ControlInitializer {
 
 export interface SwitchType extends ControlType {
   kind: 'Switch'
-  isSelected: boolean
+  checked: boolean
   fn: FunctionResult
   onChange?: (bool: boolean) => void
 }
 
 export interface SwitchInitializer extends ControlInitializer {
-  isSelected: boolean
+  checked: boolean
   fn: FunctionResult
 }
 

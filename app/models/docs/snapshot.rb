@@ -1,23 +1,23 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: docs_snapshots
 #
-#  id                                                   :bigint           not null, primary key
-#  name                                                 :string
-#  snapshot_version                                     :bigint           not null
-#  version_meta(child block_id and history_version map) :jsonb
-#  created_at                                           :datetime         not null
-#  updated_at                                           :datetime         not null
-#  block_id                                             :uuid             not null
-#  pod_id                                               :bigint
+#  id               :integer          not null, primary key
+#  pod_id           :integer
+#  block_id         :uuid             not null
+#  snapshot_version :integer          not null
+#  version_meta     :jsonb
+#  name             :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #
 #  index_docs_snapshots_on_block_id_and_snapshot_version  (block_id,snapshot_version) UNIQUE
 #  index_docs_snapshots_on_pod_id                         (pod_id)
 #
+
 class Docs::Snapshot < ApplicationRecord
   belongs_to :pod, optional: true
   belongs_to :block

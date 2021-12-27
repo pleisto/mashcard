@@ -1,4 +1,4 @@
-import bg from '@/common/assets/ceramic.jpg'
+import bg from '@/common/assets/ceramicBg.webp'
 import { theme } from '@brickdoc/design-system'
 
 export const base = {

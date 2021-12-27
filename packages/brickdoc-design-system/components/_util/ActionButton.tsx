@@ -20,7 +20,7 @@ function isThenable(thing?: PromiseLike<any>): boolean {
 const ActionButton: React.FC<ActionButtonProps> = props => {
   const clickedRef = React.useRef<boolean>(false)
   const ref = React.useRef<any>()
-  const [loading, setLoading] = React.useState<ButtonProps['isLoading']>(false)
+  const [loading, setLoading] = React.useState<ButtonProps['loading']>(false)
 
   React.useEffect(() => {
     let timeoutId: any
@@ -93,7 +93,7 @@ const ActionButton: React.FC<ActionButtonProps> = props => {
 
   const { type, children, buttonProps } = props
   return (
-    <Button type={type} onClick={onClick} isLoading={loading} {...buttonProps} ref={ref}>
+    <Button type={type} onClick={onClick} loading={loading} {...buttonProps} ref={ref}>
       {children}
     </Button>
   )

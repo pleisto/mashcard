@@ -1,19 +1,21 @@
-import React from 'react'
-import { useSwitch } from '@react-aria/switch'
-import { AriaSwitchProps } from '@react-types/switch'
-import { VisuallyHidden } from '@react-aria/visually-hidden'
-import { useToggleState } from '@react-stately/toggle'
-import { FocusRing } from '../FocusRing'
+import React, { useState } from 'react'
+import { VisuallyHidden } from 'reakit/VisuallyHidden'
+import { Checkbox, CheckboxProps } from 'reakit/Checkbox'
 import { Rotation } from '@brickdoc/design-icons'
 import { styled } from '../../themes'
+import { FocusRing } from '../FocusRing'
 import { root, switcher } from './styles/index.style'
 
-export interface SwitchProps extends AriaSwitchProps {
-  size: 'small' | 'medium' | 'large'
-  isLoading?: boolean
+export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange'> {
+  size?: 'small' | 'medium' | 'large'
+  loading?: boolean
   className?: string
   style?: React.CSSProperties
-  isLabelFirst?: boolean
+  labelFirst?: boolean
+  disabled?: boolean
+  defaultChecked?: boolean
+  checked?: boolean
+  onChange?: (checked: boolean, event: React.ChangeEvent) => void
 }
 
 const SwitchLabel = styled('label', root)
@@ -21,34 +23,49 @@ const Switcher = styled('div', switcher)
 
 export const Switch: React.FC<SwitchProps> = props => {
   const {
-    isLabelFirst = false,
-    isLoading = false,
+    labelFirst = false,
+    loading = false,
     size = 'medium',
     className,
     style,
-    autoFocus,
-    isDisabled,
-    children
+    onChange,
+    defaultChecked = false,
+    checked = undefined,
+    children,
+    disabled,
+    ...otherProps
   } = props
-  const state = useToggleState(props)
+  const isDisabled = disabled || loading
   const ref = React.useRef()
-  const { inputProps } = useSwitch(props, state, ref)
-
-  const disabled = isDisabled || isLoading
+  const [unControlledChecked, setUnControlledChecked] = useState(defaultChecked)
+  const unControlledToggle = (): void => setUnControlledChecked(!unControlledChecked)
 
   return (
-    <FocusRing autoFocus={autoFocus} within={true}>
-      <SwitchLabel className={className} style={style}>
-        <VisuallyHidden>
-          <input {...inputProps} ref={ref} disabled={disabled} />
-        </VisuallyHidden>
-
-        {isLabelFirst && children && <span>{children}</span>}
-        <Switcher checked={state.isSelected} loading={isLoading} disabled={disabled} size={size}>
-          <div>{isLoading && <Rotation className="brd-icon-spin" />}</div>
+    <SwitchLabel className={className} style={style}>
+      {labelFirst && children && <span>{children}</span>}
+      <FocusRing within={true}>
+        <Switcher checked={checked ?? unControlledChecked} loading={loading} disabled={isDisabled} size={size}>
+          <VisuallyHidden>
+            <Checkbox
+              {...otherProps}
+              onChange={
+                typeof checked === 'boolean'
+                  ? e => {
+                      onChange(e.target.checked, e)
+                    }
+                  : unControlledToggle
+              }
+              checked={checked ?? unControlledChecked}
+              ref={ref}
+              unstable_clickOnEnter
+              unstable_clickOnSpace
+              disabled={isDisabled}
+            />
+          </VisuallyHidden>
+          <div>{loading && <Rotation className="brd-icon-spin" />}</div>
         </Switcher>
-        {!isLabelFirst && children && <span>{children}</span>}
-      </SwitchLabel>
-    </FocusRing>
+      </FocusRing>
+      {!labelFirst && children && <span>{children}</span>}
+    </SwitchLabel>
   )
 }

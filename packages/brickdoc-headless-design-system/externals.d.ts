@@ -8,6 +8,12 @@ declare module '*.mp4' {
   export = src
 }
 
+declare module '*.webp' {
+  const src: string
+  export = src
+}
+
+
 declare namespace JSX {
   interface IntrinsicElements {
     'iconpark-icon': { name: string }

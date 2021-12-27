@@ -103,8 +103,8 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
             id="allow-edit-content-switch"
             size="small"
             onChange={onSwitchAnonymousEditable}
-            isLoading={anonymousEditableLoading}
-            isSelected={anonymousEditableValue}
+            loading={anonymousEditableLoading}
+            checked={anonymousEditableValue}
           />
         </div>
       </div>
@@ -156,8 +156,8 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
             id="share-to-web-switch"
             size="small"
             onChange={onSwitchShareAnonymous}
-            isLoading={shareWithAnonymousLoading}
-            isSelected={shareWithAnonymousValue}
+            loading={shareWithAnonymousLoading}
+            checked={shareWithAnonymousValue}
           />
         </div>
       </div>

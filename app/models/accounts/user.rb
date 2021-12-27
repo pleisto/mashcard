@@ -1,34 +1,33 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: accounts_users
 #
-#  id                            :bigint           not null, primary key
-#  confirmation_sent_at          :datetime
-#  confirmation_token            :string
-#  confirmed_at                  :datetime
-#  current_sign_in_at            :datetime
-#  current_sign_in_ip            :string
-#  deleted_at                    :datetime
-#  email                         :string
-#  encrypted_password            :string           default(""), not null
-#  failed_attempts               :integer          default(0), not null
-#  last_block_ids                :json             not null
-#  last_sign_in_at               :datetime
-#  last_sign_in_ip               :string
-#  last_webid                    :string
-#  locale(BCP47 language codes.) :string(17)
-#  locked_at                     :datetime
-#  remember_created_at           :datetime
-#  reset_password_sent_at        :datetime
-#  reset_password_token          :string
-#  sign_in_count                 :integer          default(0), not null
-#  timezone                      :string
-#  unconfirmed_email             :string
-#  unlock_token                  :string
-#  created_at                    :datetime         not null
-#  updated_at                    :datetime         not null
+#  id                     :integer          not null, primary key
+#  email                  :string
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default("0"), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string
+#  last_sign_in_ip        :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  failed_attempts        :integer          default("0"), not null
+#  unlock_token           :string
+#  locked_at              :datetime
+#  locale                 :string(17)
+#  timezone               :string
+#  deleted_at             :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  last_webid             :string
+#  last_block_ids         :json             default("{}"), not null
 #
 # Indexes
 #
@@ -38,6 +37,7 @@
 #  index_accounts_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_accounts_users_on_unlock_token          (unlock_token) UNIQUE
 #
+
 class Accounts::User < ApplicationRecord
   ## Devise
   devise :database_authenticatable, :registerable, :lockable, :async,

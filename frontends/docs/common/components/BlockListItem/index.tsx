@@ -91,7 +91,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
         </div>
       </div>
       <div className={styles.action}>
-        <Button className={styles.button} type="text" isLoading={restoreButtonLoading} onClick={onRestore}>
+        <Button className={styles.button} type="text" loading={restoreButtonLoading} onClick={onRestore}>
           <Undo />
         </Button>
         <Button

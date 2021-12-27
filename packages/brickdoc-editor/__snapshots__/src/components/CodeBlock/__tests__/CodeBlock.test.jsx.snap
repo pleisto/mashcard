@@ -5,7 +5,9 @@ exports[`CodeBlock matches snapshot correctly 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <pre>
+  <pre
+    aria-haspopup="dialog"
+  >
     <code
       as="code"
       data-node-view-content=""

@@ -1,21 +1,21 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: accounts_federated_identities
 #
-#  id                     :bigint           not null, primary key
-#  provider               :string           not null
-#  uid(unique identifier) :string           not null
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  accounts_user_id       :bigint
+#  id               :integer          not null, primary key
+#  accounts_user_id :integer
+#  provider         :string           not null
+#  uid              :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 # Indexes
 #
 #  index_accounts_federated_identities_on_accounts_user_id  (accounts_user_id)
 #  index_accounts_federated_identities_on_provider_and_uid  (provider,uid) UNIQUE
 #
+
 class Accounts::FederatedIdentity < ApplicationRecord
   belongs_to :user, class_name: 'Accounts::User', foreign_key: :accounts_user_id
 

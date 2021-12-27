@@ -11,23 +11,25 @@ exports[`Toolbar matches snapshot correctly 1`] = `
   >
     <li
       aria-label="item"
-      class="brd-c-fWLPxz"
+      class="brd-c-fLjdfo"
       role="menuitem"
     >
       <span>
         item
       </span>
     </li>
-    <span>
+    <span
+      aria-haspopup="dialog"
+    >
       <li
         aria-label="dropdown"
-        class="brd-c-kazggs"
+        class="brd-c-jTwgFr"
         role="menuitem"
       >
         dropdown
         <span
           aria-label="arrow-down"
-          class="brd-icon brd-icon-arrow-down brd-c-eDppjp"
+          class="brd-icon brd-icon-arrow-down brd-c-eIxPHM"
           role="img"
         >
           <svg
@@ -54,7 +56,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
   </ul>
   <li
     aria-label="item2"
-    class="brd-c-fWLPxz"
+    class="brd-c-fLjdfo"
     role="menuitem"
   >
     <span>

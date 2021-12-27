@@ -46,7 +46,7 @@ export const ForgetPasswordPage: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" isLoading={userForgetPasswordMailSendLoading} size="large" block>
+          <Button type="primary" htmlType="submit" loading={userForgetPasswordMailSendLoading} size="large" block>
             {t('sessions.forget_password')}
           </Button>
         </Form.Item>

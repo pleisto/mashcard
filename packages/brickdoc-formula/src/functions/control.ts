@@ -106,10 +106,10 @@ export const Button = (
 
 export const Switch = (
   ctx: FunctionContext,
-  { result: isSelected }: BooleanResult,
+  { result: checked }: BooleanResult,
   fn: FunctionResult
 ): SwitchResult | ErrorResult => {
-  const switchResult = new SwitchClass(ctx, { isSelected, fn })
+  const switchResult = new SwitchClass(ctx, { checked, fn })
   return { result: switchResult, type: 'Switch' }
 }
 

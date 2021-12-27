@@ -1,8 +1,5 @@
 import { globalStyle } from '../src/themes'
-import { addDecorator } from '@storybook/react'
-import { withPerformance } from 'storybook-addon-performance'
-
-addDecorator(withPerformance)
+import { Provider } from '../src/components/Provider'
 
 export const parameters = {
   viewMode: 'docs',
@@ -29,12 +26,21 @@ export const parameters = {
         value: 'var(--brd-colors-ceramicSecondary)'
       },
       {
-        name: 'Ceramic Thirdary',
-        value: 'var(--brd-colors-ceramicThirdary)'
-      },
-      {
         name: 'Ceramic Quaternary',
         value: 'var(--brd-colors-ceramicQuaternary)'
+      },
+      {
+        name: 'White',
+        value: 'var(--brd-colors-white)'
+      },
+      {
+        name: 'Black',
+        value: 'var(--brd-colors-black)'
+      },
+      {
+        name: 'Ceramic Background',
+        value:
+          'url(https://s3.brickapis.com/design-system/ceramic.jpg?x-oss-process=image/format,webp) no-repeat fixed center center'
       }
     ]
   }
@@ -42,6 +48,10 @@ export const parameters = {
 export const decorators = [
   Story => {
     globalStyle()
-    return <Story />
+    return (
+      <Provider>
+        <Story />
+      </Provider>
+    )
   }
 ]

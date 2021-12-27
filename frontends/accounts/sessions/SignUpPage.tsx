@@ -117,8 +117,7 @@ export const SignUpPage: React.FC = () => {
           extra={<small>{t('sessions.webid_description')}</small>}
           hasFeedback
           validateTrigger={['onFocus', 'onBlur']}
-          rules={[{ required: true }, webidAvailableValidator]}
-        >
+          rules={[{ required: true }, webidAvailableValidator]}>
           <Input />
         </Form.Item>
         <Form.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>
@@ -135,7 +134,7 @@ export const SignUpPage: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit" size="large" isLoading={userCreateLoading} block>
+          <Button type="primary" htmlType="submit" size="large" loading={userCreateLoading} block>
             {t('sessions.sign_up')}
           </Button>
         </Form.Item>

@@ -3,21 +3,22 @@
 #
 # Table name: docs_share_links
 #
-#  id                :bigint           not null, primary key
-#  key(Unique key)   :string           not null
-#  policy            :integer          not null
-#  state(Status)     :bigint           default("enabled"), not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  block_id(Page id) :uuid             not null
-#  pod_id            :bigint           not null
-#  share_pod_id      :bigint
+#  id           :integer          not null, primary key
+#  block_id     :uuid             not null
+#  pod_id       :integer          not null
+#  key          :string           not null
+#  state        :integer          default("0"), not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  policy       :integer          not null
+#  share_pod_id :integer
 #
 # Indexes
 #
 #  index_docs_share_links_on_key           (key) UNIQUE
 #  index_docs_share_links_on_share_pod_id  (share_pod_id)
 #
+
 class Docs::ShareLink < ApplicationRecord
   belongs_to :pod, optional: true
   belongs_to :block, optional: true

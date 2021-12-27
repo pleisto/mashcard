@@ -1,5 +1,4 @@
 import { colors } from './colors'
-import { borderStyles } from './borderStyles'
 import { CeramicsMixins } from './colors/ceramics'
 export const mixins = {
   ...CeramicsMixins,
@@ -7,9 +6,7 @@ export const mixins = {
    * FocusRing Outline Styles
    */
   focusOutline: {
-    outline: borderStyles.focusRing,
-    outlineOffset: '3px',
-    borderRadius: '4px'
+    boxShadow: `${colors.blue7} 0px 0px 0px 1px inset, ${colors.blue6_18p} 0px 0px 0px 3px !important`
   },
   /**
    * Refraction

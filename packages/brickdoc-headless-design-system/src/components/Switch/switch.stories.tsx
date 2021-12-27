@@ -5,8 +5,8 @@ export default {
   title: 'Components/Switch',
   component: Switch,
   args: {
-    isDisabled: false,
-    isLoading: false,
+    disabled: false,
+    loading: false,
     size: 'small'
   },
   argTypes: {
@@ -18,24 +18,21 @@ export default {
       control: 'text',
       description: '`string` The value of the input element, used when submitting an HTML form'
     },
-    isDisabled: {
+    disabled: {
       control: 'boolean'
     },
-    isLoading: {
+    loading: {
       control: 'boolean'
     },
-    isReadOnly: {
-      control: 'boolean'
-    },
-    isSelected: {
+    checked: {
       control: 'boolean',
       description: 'For controlled components'
     },
-    isLabelFirst: {
+    labelFirst: {
       control: 'boolean',
       description: 'Whether to put the label before the switch'
     },
-    defaultSelected: {
+    defaultChecked: {
       control: 'boolean',
       description: 'For uncontrolled components'
     },
@@ -49,16 +46,14 @@ export default {
       description: '`React.ReactNode`'
     },
     onChange: {
-      description: "`(isSelected: boolean) => void` Handler that is called when the Switch's selection state changes."
+      description:
+        "`(checked: boolean, e: ChangedEvent) => void` Handler that is called when the Switch's selection state changes."
     },
     onFocus: {
       description: '`(e: FocusEvent) => void` Handler that is called when the element receives focus.'
     },
     onBlur: {
       description: '`(e: FocusEvent) => void`'
-    },
-    onFocusChange: {
-      description: '`(isFocused: boolean) => void`'
     },
     onKeyDown: {
       description: '`(e: KeyboardEvent) => void`'
@@ -100,4 +95,4 @@ export const Basic = Template.bind({})
 Basic.args = { children: 'Autopilot Mode' }
 
 export const loadding = Template.bind({})
-loadding.args = { isLoading: true, children: 'Connect with Huston', defaultSelected: true }
+loadding.args = { loading: true, children: 'Connect with Huston', defaultChecked: true }

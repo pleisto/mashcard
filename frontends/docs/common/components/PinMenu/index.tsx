@@ -40,7 +40,7 @@ export const PinMenu: React.FC<PinMenuProps> = ({ docMeta, className }) => {
           type="text"
           aria-label={t('pin.name')}
           onClick={onClick}
-          isDisabled={blockPinOrUnpinLoading}
+          disabled={blockPinOrUnpinLoading}
         >
           {blockPinOrUnpinLoading ? <></> : iconRender}
         </Button>

@@ -7,7 +7,7 @@
       "@/*": ["frontends/*"]
     }
   },
-  "include": ["frontends/**/*"],
+  "include": ["frontends/**/*", "node_modules/vite-plugin-pwa/client.d.ts"],
   "references": [
     {
       "path": "packages/brickdoc-test-helper/tsconfig.build.json"

@@ -5048,6 +5048,7 @@ Array [
 exports[`Controls [switch set] =Switch(true, Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123))) 2`] = `
 Object {
   "result": SwitchClass {
+    "checked": true,
     "disabled": false,
     "fn": Object {
       "result": Array [
@@ -5747,7 +5748,6 @@ Object {
       ],
       "type": "Function",
     },
-    "isSelected": true,
     "kind": "Switch",
     "meta": Object {
       "input": "=Switch(true, Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123)))",

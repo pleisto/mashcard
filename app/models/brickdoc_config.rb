@@ -1,15 +1,14 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: brickdoc_configs
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
+#  key        :string           not null
+#  value      :text
+#  scope      :string           not null
 #  domain     :string           not null
 #  domain_len :integer
-#  key        :string           not null
-#  scope      :string           not null
-#  value      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -17,6 +16,7 @@
 #
 #  index_brickdoc_configs_on_key_and_scope_and_domain  (key,scope,domain) UNIQUE
 #
+
 class BrickdocConfig < ApplicationRecord
   include BrickdocSettings::Base
 
