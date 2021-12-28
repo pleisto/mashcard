@@ -45,7 +45,7 @@ export const popoverStyle = css({
     paddingRight: distance
   },
   '&-inner': {
-    include: ['refractionPrimary'],
+    include: ['ceramicPrimary'],
     backgroundColor: theme.colors.white,
     backgroundClip: 'padding-box',
     color: theme.colors.typePrimary,
@@ -68,7 +68,7 @@ export const popoverStyle = css({
     overflow: 'hidden',
     pointerEvents: 'none',
     '&-content': {
-      include: ['refractionPrimary'],
+      include: ['ceramicPrimary'],
       position: 'absolute',
       inset: '0',
       display: 'block',

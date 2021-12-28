@@ -1,6 +1,7 @@
-import { ForwardRefRenderFunction, forwardRef, useState, ReactNode, isValidElement, cloneElement } from 'react'
+import { ForwardRefRenderFunction, forwardRef, ReactNode, isValidElement, cloneElement } from 'react'
 import RcTooltip from 'rc-tooltip'
 import { BuildInPlacements } from 'rc-trigger'
+import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import { AbstractTriggerProps, getPlacements } from './trigger'
 import { tooltipStyle } from './styles/index.style'
 import { useId, RenderFunction } from '../../utilities'
@@ -22,7 +23,10 @@ export const defaultPopupContainer = (): HTMLElement => document.body
 const Tooltip: ForwardRefRenderFunction<unknown, TooltipProps> = (props, ref) => {
   const overlayId = useId()
   const prefixCls = props.prefixCls || tooltipStyle()
-  const [visible, setVisible] = useState(props.visible ?? props.defaultVisible ?? false)
+  const [visible, setVisible] = useMergedState(false, {
+    value: props.visible,
+    defaultValue: props.defaultVisible
+  })
 
   const isNoTitle = (): boolean => {
     const { title, overlay } = props

@@ -4,7 +4,13 @@ import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import { DefaultLocaleSelect } from '../components/DefaultLocaleSelect'
 import { useAccountsI18n } from '@/accounts/common/hooks'
+import { css } from '@brickdoc/design-system'
 import { Helmet } from 'react-helmet-async'
+import ClassNames from 'classnames'
+
+const cardStyle = css({
+  include: ['ceramicPrimary']
+})
 
 export const PanelLayoutPage: FC = ({ children }) => {
   const context = useContext(BrickdocContext)
@@ -22,7 +28,7 @@ export const PanelLayoutPage: FC = ({ children }) => {
           </a>
           {localeSelect}
         </header>
-        <main className={styles.card}>{children}</main>
+        <main className={ClassNames(styles.card, cardStyle())}>{children}</main>
         <footer />
       </div>
     </>

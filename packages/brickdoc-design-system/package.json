@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/lodash-es": "^4.17.5",
     "dayjs": "^1.10.7",
-    "i18next": "^21.6.0",
+    "i18next": "^21.6.4",
     "less": "^4.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
