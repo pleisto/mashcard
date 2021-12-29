@@ -50,6 +50,21 @@ export const TEST_ID_ENUM = {
         id: 'editor-image-block-add-button'
       }
     },
+    tocBlock: {
+      id: 'editor-toc-block',
+      item: {
+        id: 'editor-toc-block-item-id',
+        title: {
+          id: 'editor-toc-block-item-title'
+        },
+        toggleIcon: {
+          id: 'editor-toc-block-item-toggle-icon'
+        },
+        contentPanel: {
+          id: 'editor-toc-block-item-content-panel'
+        }
+      }
+    },
     tableBlock: {
       id: 'editor-table-block',
       toolbar: {

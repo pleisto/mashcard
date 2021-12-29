@@ -229,6 +229,7 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
               role="button"
               tabIndex={-1}
               onClick={() => {
+                console.log('click 选中', completion)
                 setActiveCompletion.current(completion)
                 setActiveCompletionIndex.current(index)
               }}

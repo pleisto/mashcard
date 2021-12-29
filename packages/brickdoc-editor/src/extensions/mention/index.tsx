@@ -24,7 +24,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
   name: 'mentionCommands',
 
   addProseMirrorPlugins() {
-    const filterMenuItemsByQuery = (query: string): MenuItems => {
+    const filterMenuItemsByQuery = ({ query }: { query: string }): MenuItems => {
       const searchValue = (query ?? '').toLowerCase()
       const pages = this.options.editorDataSource.documentPages
       const webid = this.options.editorDataSource.webid

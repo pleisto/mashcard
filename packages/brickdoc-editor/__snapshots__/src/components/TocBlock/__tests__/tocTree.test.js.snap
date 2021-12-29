@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tocTree create normally toc tree correctly 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [],
+              "item": Object {
+                "level": 5,
+                "nodeSize": 1,
+                "position": 3,
+                "text": "h5\`",
+              },
+              "parent": [Circular],
+            },
+          ],
+          "item": Object {
+            "level": 2,
+            "nodeSize": 1,
+            "position": 2,
+            "text": "h2",
+          },
+          "parent": [Circular],
+        },
+      ],
+      "item": Object {
+        "level": 1,
+        "nodeSize": 1,
+        "position": 1,
+        "text": "h1",
+      },
+      "parent": [Circular],
+    },
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "children": Array [],
+                  "item": Object {
+                    "level": 5,
+                    "nodeSize": 1,
+                    "position": 7,
+                    "text": "h5",
+                  },
+                  "parent": [Circular],
+                },
+              ],
+              "item": Object {
+                "level": 4,
+                "nodeSize": 1,
+                "position": 6,
+                "text": "h4",
+              },
+              "parent": [Circular],
+            },
+          ],
+          "item": Object {
+            "level": 3,
+            "nodeSize": 1,
+            "position": 5,
+            "text": "h3",
+          },
+          "parent": [Circular],
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [],
+              "item": Object {
+                "level": "text",
+                "nodeSize": 1,
+                "position": 9,
+                "text": "anchor",
+              },
+              "parent": [Circular],
+            },
+          ],
+          "item": Object {
+            "level": 2,
+            "nodeSize": 1,
+            "position": 8,
+            "text": undefined,
+          },
+          "parent": [Circular],
+        },
+      ],
+      "item": Object {
+        "level": 1,
+        "nodeSize": 1,
+        "position": 4,
+        "text": "h1\`",
+      },
+      "parent": [Circular],
+    },
+    Object {
+      "children": Array [],
+      "item": Object {
+        "level": 1,
+        "nodeSize": 1,
+        "position": 10,
+        "text": "h1\`\`",
+      },
+      "parent": [Circular],
+    },
+  ],
+  "item": Object {
+    "level": "root",
+    "nodeSize": 1,
+    "position": 0,
+  },
+}
+`;

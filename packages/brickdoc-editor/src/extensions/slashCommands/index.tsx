@@ -84,6 +84,13 @@ const menuItems: SlashMenuItem[] = [
     }
   },
   {
+    key: 'toc',
+    icon: <Icon.Toc className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).setTocBlock().run()
+    }
+  },
+  {
     key: 'image',
     alias: ['img', 'picture'],
     icon: <Icon.FileImage className="menu-item-icon" />,

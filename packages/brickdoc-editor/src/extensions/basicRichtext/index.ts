@@ -22,6 +22,7 @@ import Underline, { UnderlineOptions } from '@tiptap/extension-underline'
 import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import Link, { LinkOptions } from '@tiptap/extension-link'
+import { AnchorExtensioin, AnchorOptions } from '../anchor'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
 import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { PdfSectionExtension, PdfSectionOptions } from '../pdfSection'
@@ -32,6 +33,7 @@ import { CodeBlock, DividerBlock } from '../../components'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
+  anchor: Partial<AnchorOptions> | false
   blockquote: Partial<BlockquoteOptions> | false
   bold: Partial<BoldOptions> | false
   bulletList: Partial<BulletListOptions> | false
@@ -69,6 +71,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     const extensions: Extensions = []
 
     /* eslint-disable @typescript-eslint/no-unnecessary-boolean-literal-compare  */
+    if (this.options.anchor !== false) extensions.push(AnchorExtensioin.configure(this.options?.anchor))
     if (this.options.blockquote !== false) extensions.push(Blockquote.configure(this.options?.blockquote))
     if (this.options.bold !== false) extensions.push(Bold.configure(this.options?.bold))
     if (this.options.bulletList !== false) extensions.push(BulletList.configure(this.options?.bulletList))
@@ -85,7 +88,13 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.dropcursor !== false) extensions.push(Dropcursor.configure(this.options?.dropcursor))
     if (this.options.gapcursor !== false) extensions.push(Gapcursor.configure(this.options?.gapcursor))
     if (this.options.hardBreak !== false) extensions.push(HardBreak.configure(this.options?.hardBreak))
-    if (this.options.heading !== false) extensions.push(Heading.configure(this.options?.heading))
+    if (this.options.heading !== false) {
+      extensions.push(
+        Heading.extend({
+          marks: 'bold italic link strike textStyle'
+        }).configure(this.options?.heading)
+      )
+    }
     if (this.options.history !== false) extensions.push(History.configure(this.options?.history))
     if (this.options.horizontalRule !== false)
       extensions.push(

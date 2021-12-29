@@ -744,6 +744,8 @@ en-US:
   editor:
     placeholder: Type '/' for commands
     copy_hint: Copied to clipboard.
+    toc:
+      untitled: Untitled
     toolbar:
       separator: Menu separator
     block_actions:
@@ -795,6 +797,9 @@ en-US:
         divider:
           title: Divider
           desc: Visually divide blocks
+        toc:
+          title: Toc
+          desc: Table of content
         code:
           title: Code
           desc: Capture a code snippet
@@ -833,6 +838,9 @@ en-US:
         Purplish Red: Purplish Red
       formula:
         title: Formula
+      anchor:
+        add: Mark as anchor
+        remove: Remove anchor mark
       link:
         title: Link
         placeholder: Paste link

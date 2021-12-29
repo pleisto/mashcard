@@ -16,6 +16,7 @@ import {
   SyncExtensionOptions,
   EventHandlerExtension,
   UserBlockExtension,
+  TocBlockExtension,
   PageLinkBlockExtension
 } from './extensions'
 import './styles.less'
@@ -52,24 +53,23 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
 export function useEditor(options: EditorOptions): TiptapEditor | null {
   const { onSave, editable, externalDataSource, ...restOptions } = options
   const { t } = useEditorI18n()
-  const PlaceholderExtension = Placeholder.configure({
-    placeholder: t('placeholder')
-  })
 
   const typesWithUuid = [
     'blockquote',
     'bulletList',
     'codeBlock',
+    'embedBlock',
+    'formulaBlock',
     'hardBreak',
     'heading',
     'horizontalRule',
     'imageBlock',
-    'embedBlock',
     'listItem',
     'orderedList',
     'paragraph',
     'pdfSection',
-    'tableBlock'
+    'tableBlock',
+    'tocBlock'
   ]
 
   const editorDataSource = externalDataSource
@@ -88,8 +88,11 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
         editorDataSource
       }),
       UserBlockExtension,
+      TocBlockExtension,
       PageLinkBlockExtension,
-      PlaceholderExtension,
+      Placeholder.configure({
+        placeholder: t('placeholder')
+      }),
       brickListExtension,
       UniqueID.configure({
         attributeName: 'uuid',

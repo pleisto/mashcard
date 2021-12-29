@@ -22,7 +22,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef(
     const [blockContextData] = useBlockContextDataProvider({ deleteNode, contentForCopy })
     const [documentEditable] = useDocumentEditable()
     const [blockElement] = useBlockElement(children, actionOptions, inline)
-    const asElement = as ?? inline ? 'span' : undefined
+    const asElement = as ?? (inline ? 'span' : undefined)
 
     return (
       <NodeViewWrapper
