@@ -12,7 +12,7 @@ import { useWebidAvailableValidator } from '@/common/hooks'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
 import { omit, omitBy, pick, isNil } from 'lodash-es'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, Skeleton, message } from '@brickdoc/design-system'
+import { Form, Input, Button, Skeleton, toast } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
@@ -51,7 +51,7 @@ export const SignUpPage: React.FC = () => {
     const result = data?.userCreate
     mutationResultHandler(result, () => {
       if (result?.redirectPath && result.isUserActive) {
-        void message.success(t('devise:registrations.signed_up'))
+        void toast.success(t('devise:registrations.signed_up'))
         globalThis.location.href = result.redirectPath
       } else {
         showConfirmationEmailTips()
@@ -117,7 +117,8 @@ export const SignUpPage: React.FC = () => {
           extra={<small>{t('sessions.webid_description')}</small>}
           hasFeedback
           validateTrigger={['onFocus', 'onBlur']}
-          rules={[{ required: true }, webidAvailableValidator]}>
+          rules={[{ required: true }, webidAvailableValidator]}
+        >
           <Input />
         </Form.Item>
         <Form.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>

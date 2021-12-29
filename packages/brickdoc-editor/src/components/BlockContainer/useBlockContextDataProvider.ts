@@ -1,5 +1,5 @@
 import React from 'react'
-import { message } from '@brickdoc/design-system'
+import { toast } from '@brickdoc/design-system'
 import { BlockContainerProps } from '.'
 import { BlockContextData } from '../../context/BlockContext'
 import { EditorContext } from '../../context/EditorContext'
@@ -21,7 +21,7 @@ export function useBlockContextDataProvider({
       moveBlock() {},
       copyContent: async () => {
         await navigator.clipboard.writeText(contentForCopy ?? '')
-        void message.success(t('copy_hint'))
+        void toast.success(t('copy_hint'))
       }
     }),
     [contentForCopy, deleteNode, t]

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Modal, Form, Input, message, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
+import { Modal, Form, Input, toast, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
@@ -30,8 +30,12 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   const [confirmLoading, setConfirmLoading] = React.useState(false)
   const [form] = Form.useForm()
   const [createOrUpdatePod] = useCreateOrUpdatePodMutation()
-  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.url : '')
-  const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(type === PodOperation.Update ? pod.avatarData?.signedId : '')
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(
+    type === PodOperation.Update ? pod.avatarData?.url : ''
+  )
+  const [avatarSignedId, setAvatarSignedId] = useState<string | undefined>(
+    type === PodOperation.Update ? pod.avatarData?.signedId : ''
+  )
   const prepareFileUpload = usePrepareFileUpload()
   const formRef = useRef<FormInstance>(null)
   const webidAvailableValidator = useWebidAvailableValidator()
@@ -60,7 +64,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
         }
         await createOrUpdatePod({ variables: { input } })
         const msg = type === PodOperation.Create ? 'pods.create.success' : 'pods.update.success'
-        void message.success(t(msg))
+        void toast.success(t(msg))
         setConfirmLoading(false)
         setVisible(false)
         globalThis.location.href = `/${values.webid}`
@@ -115,7 +119,12 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   }
 
   const updateDashboard = (
-    <Dashboard fileType="image" prepareFileUpload={prepareFileUpload} onUploaded={onUploaded} importSources={IMPORT_SOURCES} />
+    <Dashboard
+      fileType="image"
+      prepareFileUpload={prepareFileUpload}
+      onUploaded={onUploaded}
+      importSources={IMPORT_SOURCES}
+    />
   )
 
   const formData = (

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Rotation } from '@brickdoc/design-icons'
+import { prefix } from '../../themes'
 
 export interface LoadingIconProps {
   loading?: boolean
@@ -8,5 +9,5 @@ export interface LoadingIconProps {
 export const LoadingIcon: React.FC<LoadingIconProps> = ({ loading }) => {
   if (!loading) return null
 
-  return <Rotation className="brd-icon-spin" />
+  return <Rotation className={`${prefix}-icon-spin`} />
 }

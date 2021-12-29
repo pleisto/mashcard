@@ -1,9 +1,9 @@
-import { message } from '@brickdoc/design-system'
+import { toast } from '@brickdoc/design-system'
 import { isEmpty } from 'lodash-es'
 import { arrayToTree, Config, Item } from 'performant-array-to-tree'
 
 export function triggerErrorMessages(errors: string[]): void {
-  errors.map(error => message.error(error))
+  errors.map(error => toast.error(error))
 }
 
 interface MutationPayload {
@@ -31,7 +31,10 @@ export function mutationResultHandler(
  * @param items array of items
  * @param config please see `performant-array-to-tree`
  */
-export function array2Tree<TItem extends Item>(items: TItem[], config: Partial<Config> = {}): Array<TItem & { children: TItem[] }> {
+export function array2Tree<TItem extends Item>(
+  items: TItem[],
+  config: Partial<Config> = {}
+): Array<TItem & { children: TItem[] }> {
   return arrayToTree(items, {
     ...config,
     dataField: null,

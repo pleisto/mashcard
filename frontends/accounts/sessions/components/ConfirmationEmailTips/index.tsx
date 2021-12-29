@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useCountDown } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, message } from '@brickdoc/design-system'
+import { Button, toast } from '@brickdoc/design-system'
 import { Success } from '@brickdoc/design-system/components/icon'
 import { mutationResultHandler, millisecondsToSeconds } from '@/common/utils'
 import { useUserConfirmationEmailResendMutation } from '@/BrickdocGraphQL'
@@ -19,7 +19,7 @@ export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) =>
     const { data } = await resendEmail({ variables: { input: { email } } })
     const result = data?.userConfirmationEmailResend
     mutationResultHandler(result, () => {
-      void message.success(t('devise:confirmations.send_paranoid_instructions'))
+      void toast.success(t('devise:confirmations.send_paranoid_instructions'))
     })
     setTargetDate(dayjs().add(1, 'minute').unix())
   }

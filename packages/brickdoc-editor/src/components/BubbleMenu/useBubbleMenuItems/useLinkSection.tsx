@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Input, message } from '@brickdoc/design-system'
+import { Icon, Input, toast } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
 import { ToolbarDropdownOption, ToolbarOption, ToolbarSectionOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
@@ -53,7 +53,7 @@ export function useLinkSection(): [ToolbarOption | ToolbarSectionOption | null] 
         label: t('bubble_menu.link.copy'),
         onAction: () => {
           void navigator.clipboard.writeText(href)
-          void message.success(t('copy_hint'))
+          void toast.success(t('copy_hint'))
         },
         closeOnAction: true
       })

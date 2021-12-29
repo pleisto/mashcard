@@ -3,7 +3,7 @@ import { Navigate } from 'react-router'
 
 import { Helmet } from 'react-helmet-async'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
-import { Form, Button, Input, message } from '@brickdoc/design-system'
+import { Form, Button, Input, toast } from '@brickdoc/design-system'
 import { omit } from 'lodash-es'
 import { useBoolean } from 'ahooks'
 
@@ -29,7 +29,7 @@ export const EditPasswordPage: React.FC = () => {
     const { data } = await emailPasswordSignIn({ variables: { input } })
     const result = data?.userPasswordReset
     mutationResultHandler(result, () => {
-      void message.success(t('devise:passwords.updated'))
+      void toast.success(t('devise:passwords.updated'))
       redirectToSignInPage()
       void userSignOutMutation({ variables: { input: signOutInput } })
     })
@@ -59,7 +59,8 @@ export const EditPasswordPage: React.FC = () => {
           label={t('sessions.confirm_password')}
           hasFeedback
           dependencies={['password']}
-          rules={[{ required: true }, passwordConfirmValidator]}>
+          rules={[{ required: true }, passwordConfirmValidator]}
+        >
           <Input.Password />
         </Form.Item>
         <Form.Item>

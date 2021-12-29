@@ -41,7 +41,7 @@
     "uploader": "yarn workspace @brickdoc/uploader"
   },
   "dependencies": {
-    "@apollo/client": "3.4.17",
+    "@apollo/client": "3.5.6",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/editor": "workspace:packages/brickdoc-editor",
     "@brickdoc/formula": "workspace:packages/brickdoc-formula",
@@ -63,7 +63,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet-async": "^1.2.2",
-    "react-i18next": "^11.15.1",
+    "react-i18next": "^11.15.2",
     "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
@@ -75,7 +75,7 @@
     "@graphql-codegen/typescript": "^2.4.1",
     "@graphql-codegen/typescript-operations": "^2.2.1",
     "@graphql-codegen/typescript-react-apollo": "^3.2.2",
-    "@swc/core": "^1.2.123",
+    "@swc/core": "^1.2.124",
     "@swc/jest": "^0.2.15",
     "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.1",
@@ -84,7 +84,7 @@
     "@types/jest": "^27.0.3",
     "@types/jest-axe": "^3.5.3",
     "@types/lodash-es": "^4.17.5",
-    "@types/node": "^17.0.0",
+    "@types/node": "^17.0.5",
     "@types/rails__actioncable": "^6.1.6",
     "@types/rails__activestorage": "^7.0.0",
     "@types/ramda": "^0.27.62",
@@ -107,11 +107,11 @@
     "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-jest": "^25.3.2",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-security-node": "^1.1.0",
     "fs-extra": "^10.0.0",
@@ -128,7 +128,7 @@
     "mocha-junit-reporter": "^2.0.2",
     "postcss": "^8.4.5",
     "postcss-less": "^5.0.0",
-    "postcss-preset-env": "^7.0.2",
+    "postcss-preset-env": "^7.1.0",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4",
     "vite": "^2.7.9",
@@ -141,6 +141,7 @@
     "preact": "10.6.4",
     "@types/react": "17.0.37",
     "@types/react-dom": "17.0.11",
-    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
+    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668",
+    "@apollo/client": "patch:@apollo/client@npm:3.5.6#.yarn/patches/@apollo-client-npm-3.5.6-8b8a361cd5"
   }
 }

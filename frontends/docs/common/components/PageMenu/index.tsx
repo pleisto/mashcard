@@ -6,7 +6,7 @@ import {
   Input,
   DeprecatedMenu as Menu,
   DeprecatedMenuProps as MenuProps,
-  message,
+  toast,
   Popover,
   Tooltip
 } from '@brickdoc/design-system'
@@ -143,7 +143,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
 
   const doCopyLink = async (): Promise<void> => {
     await navigator.clipboard.writeText(link)
-    void message.success(t('copy_link.success_message'))
+    void toast.success(t('copy_link.success_message'))
     setCopied(true)
     setDropdownVisible(false)
     // removeSelectedKey()

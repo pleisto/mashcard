@@ -12,8 +12,6 @@ import LocaleProvider from '../locale-provider'
 import { useLocale } from '../locale-provider/LocaleReceiver'
 import { ConfigConsumer, ConfigContext, CSPConfig, DirectionType, ConfigConsumerProps, Theme } from './context'
 import SizeContext, { SizeContextProvider, SizeType } from './SizeContext'
-import message from '../message'
-import notification from '../notification'
 import { RequiredMark } from '../form/Form'
 
 export { ConfigContext, ConfigConsumer }
@@ -235,12 +233,6 @@ const ConfigProvider: React.FC<ConfigProviderProps> & {
   SizeContext: typeof SizeContext
   config: typeof setGlobalConfig
 } = props => {
-  React.useLayoutEffect(() => {
-    const rtl = props.direction === 'rtl'
-    message.config({ rtl })
-    notification.config({ rtl })
-  })
-
   return (
     <I18nextProvider i18n={props.i18n}>
       <LocaleProvider>

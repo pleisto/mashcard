@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useCountDown } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, message } from '@brickdoc/design-system'
+import { Button, toast } from '@brickdoc/design-system'
 import { Success } from '@brickdoc/design-system/components/icon'
 import { mutationResultHandler, millisecondsToSeconds } from '@/common/utils'
 import { useUserForgetPasswordMailSendMutation } from '@/BrickdocGraphQL'
@@ -18,7 +18,7 @@ export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: bool
     const { data } = await resendEmail({ variables: { input: { email } } })
     const result = data?.userForgetPasswordMailSend
     mutationResultHandler(result, () => {
-      void message.success(t('devise:passwords.send_instructions'))
+      void toast.success(t('devise:passwords.send_instructions'))
     })
     setTargetDate(dayjs().add(1, 'minute').unix())
   }

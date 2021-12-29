@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Input, Checkbox, Divider, message } from '@brickdoc/design-system'
+import { Form, Button, Input, Checkbox, Divider, toast } from '@brickdoc/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
@@ -13,7 +13,7 @@ export const EmailPasswordSignIn: React.FC = () => {
     const { data } = await emailPasswordSignIn({ variables: { input: values } })
     const result = data?.userEmailPasswordSignIn
     mutationResultHandler(result, () => {
-      void message.success(t('devise:sessions.signed_in'))
+      void toast.success(t('devise:sessions.signed_in'))
       if (result?.redirectPath) {
         globalThis.location.href = result.redirectPath
       }
@@ -25,7 +25,8 @@ export const EmailPasswordSignIn: React.FC = () => {
         label={t('sessions.email')}
         name="email"
         validateTrigger={['onBlur']}
-        rules={[{ required: true, type: 'email' }]}>
+        rules={[{ required: true, type: 'email' }]}
+      >
         <Input />
       </Form.Item>
 

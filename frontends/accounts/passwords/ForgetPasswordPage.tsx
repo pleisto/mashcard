@@ -4,7 +4,7 @@ import { useUserForgetPasswordMailSendMutation, UserForgetPasswordMailSendInput 
 import { useBoolean } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, message } from '@brickdoc/design-system'
+import { Form, Input, Button, toast } from '@brickdoc/design-system'
 import { PasswordChangeEmailNotice } from './components/PasswordChangeEmailNotice'
 
 export const ForgetPasswordPage: React.FC = () => {
@@ -23,7 +23,7 @@ export const ForgetPasswordPage: React.FC = () => {
     const { data } = await userForgetPasswordMailSend({ variables: { input } })
     const result = data?.userForgetPasswordMailSend
     mutationResultHandler(result, () => {
-      void message.success(t('devise:passwords.send_instructions'))
+      void toast.success(t('devise:passwords.send_instructions'))
       showPasswordChangeEmailTips()
     })
   }

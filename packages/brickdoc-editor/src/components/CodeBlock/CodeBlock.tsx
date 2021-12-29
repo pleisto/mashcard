@@ -1,7 +1,7 @@
 import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../../components'
-import { Icon, Input, message } from '@brickdoc/design-system'
+import { Icon, Input, toast } from '@brickdoc/design-system'
 import 'highlight.js/styles/atom-one-light.css'
 import './CodeBlock.less'
 import { ActionItemOption } from '../BlockActions'
@@ -73,7 +73,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
           icon: <Icon.Copy />,
           onAction: async () => {
             await navigator.clipboard.writeText(node.text ?? node.textContent ?? '')
-            void message.success(t('copy_hint'))
+            void toast.success(t('copy_hint'))
           }
         }
       ]

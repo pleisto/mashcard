@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react'
 import cx from 'classnames'
-import { Button, Input, Icon, List, Popover, Switch, message } from '@brickdoc/design-system'
+import { Button, Input, Icon, List, Popover, Switch, toast } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { InviteModal } from '../InviteModal'
 import {
@@ -86,7 +86,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const link = `${docMeta.host}${docMeta.path}`
   const handleCopy = async (): Promise<void> => {
     await navigator.clipboard.writeText(link)
-    void message.success(t('share.copy_hint'))
+    void toast.success(t('share.copy_hint'))
     setCopied(true)
   }
 

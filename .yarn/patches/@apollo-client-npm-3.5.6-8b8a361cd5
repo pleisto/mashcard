@@ -1,0 +1,13 @@
+diff --git a/core/ObservableQuery.js b/core/ObservableQuery.js
+index e44109cd178e2c58be792cd22e5349effeb1a43d..16a163e83aa4ee670d8ad7957fba7727d0544133 100644
+--- a/core/ObservableQuery.js
++++ b/core/ObservableQuery.js
+@@ -151,7 +151,7 @@ var ObservableQuery = (function (_super) {
+             pollInterval: 0,
+         };
+         var fetchPolicy = this.options.fetchPolicy;
+-        if (fetchPolicy === 'standby' || fetchPolicy === 'cache-and-network') {
++        if (fetchPolicy === 'cache-and-network') {
+             reobserveOptions.fetchPolicy = fetchPolicy;
+         }
+         else if (fetchPolicy === 'no-cache') {
