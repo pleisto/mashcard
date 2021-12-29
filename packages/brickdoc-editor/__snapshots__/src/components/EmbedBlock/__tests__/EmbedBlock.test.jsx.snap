@@ -7,7 +7,7 @@ exports[`EmbedBlock matches correct snapshot 1`] = `
 >
   <button
     aria-haspopup="dialog"
-    class="brd-c-cLOgmF brd-c-cLOgmF-kEEMvd-btnType-secondary brd-c-cLOgmF-lKjfQ-size-medium brickdoc-link-block-link"
+    class="brd-c-kHdTvl brd-c-kHdTvl-kEEMvd-btnType-secondary brd-c-kHdTvl-lKjfQ-size-medium brickdoc-link-block-link"
     data-testid="editor-embed-block-link"
     role="button"
     type="button"

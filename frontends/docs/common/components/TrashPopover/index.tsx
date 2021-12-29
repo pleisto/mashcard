@@ -13,7 +13,6 @@ interface TrashPopoverProps {
 
 export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, setVisible }) => {
   const [searchObject, setSearchObject] = useState<object>({})
-
   const { t } = useDocsI18n()
 
   const handleVisibleChange = (value: boolean): void => {

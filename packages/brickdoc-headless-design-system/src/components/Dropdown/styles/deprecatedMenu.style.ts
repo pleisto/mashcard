@@ -65,7 +65,7 @@ export const deprecatedMenuStyle = {
       color: '#292323',
       fontWeight: '400',
       fontSize: '1rem',
-      lineHeight: theme.lineHeights.base,
+      lineHeight: theme.lineHeights.body,
       whiteSpace: 'nowrap',
       cursor: 'pointer',
       transition: 'all .3s'

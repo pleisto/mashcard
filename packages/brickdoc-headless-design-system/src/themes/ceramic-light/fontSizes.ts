@@ -1,13 +1,18 @@
+import { rem } from 'polished'
+/*
+ * @example: rem(2) =>  (2px / 16px = 0.125)rem
+ */
+
 export const fontSizes = {
-  footnote: '0.625rem',
-  callout: '0.75rem', // 12px
-  subHeadline: '0.875rem',
-  body: '16px',
-  title5: '1.125rem',
-  title4: '1.25rem',
-  title3: '1.5rem',
-  title2: '1.875rem',
-  title1: '2.25rem',
-  largeTitle: '3rem',
-  superTitle: '4rem'
+  footnote: rem(10),
+  callout: rem(12),
+  subHeadline: rem(14),
+  body: rem(16),
+  title5: rem(18),
+  title4: rem(20),
+  title3: rem(24),
+  title2: rem(30),
+  title1: rem(36),
+  largeTitle: rem(48),
+  superTitle: rem(64)
 }

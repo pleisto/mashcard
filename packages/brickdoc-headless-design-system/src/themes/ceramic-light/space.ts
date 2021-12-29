@@ -1,11 +1,17 @@
+import { rem } from 'polished'
+
+/*
+ * @example: rem(2) =>  (2px / 16px = 0.125)rem
+ * px to rem
+ */
 export const space = {
-  xxxs: '.125rem',
-  xxs: '.25rem',
-  xs: '.375rem',
-  sm: '.5rem',
-  md: '.75rem',
-  lg: '1rem',
-  xl: '1.25rem',
-  xxl: '1.5rem',
-  xxxl: '2rem'
+  xxxs: rem(2),
+  xxs: rem(4),
+  xs: rem(6),
+  sm: rem(8),
+  md: rem(12),
+  lg: rem(16),
+  xl: rem(20),
+  xxl: rem(24),
+  xxxl: rem(32)
 }
