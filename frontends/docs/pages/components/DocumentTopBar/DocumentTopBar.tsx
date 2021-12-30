@@ -1,7 +1,6 @@
 import { CollaboratorsMenu } from '@/docs/common/components/CollaboratorsMenu'
 import { PathBreadcrumb } from '@/docs/common/components/PathBreadcrumb'
 import { PinMenu } from '@/docs/common/components/PinMenu'
-import { SearchModal } from '@/docs/common/components/SearchModal'
 import { useReactiveVar } from '@apollo/client'
 import { Button } from '@brickdoc/design-system'
 import React from 'react'
@@ -68,9 +67,6 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
   return (
     <div className={styles.topBar}>
       <div className={styles.topBarStart}>{headMenu}</div>
-      <div className={styles.topBarCenter}>
-        <SearchModal docMeta={docMeta} />
-      </div>
       <div className={styles.topBarEnd}>
         <div className={styles.menu}>
           {isSaving && (

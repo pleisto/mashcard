@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SlashCommandsMenu matches correct snapshot 1`] = `
+<div
+  class="brickdoc-slash-menu"
+  role="menu"
+>
+  <div
+    class="slash-menu-heading"
+  >
+    slashmenu.heading
+  </div>
+  <button
+    class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-lKjfQ-size-medium slash-menu-item"
+    data-testid="editor-slash-commands-item"
+    role="menuitem"
+    type="button"
+  >
+    <div
+      class="menu-item-icon-wrapper"
+    >
+      <div>
+        icon
+      </div>
+    </div>
+    <div
+      class="menu-item-content"
+    >
+      <div
+        class="menu-item-title"
+      >
+        slashmenu.items.h1.title
+      </div>
+      <div
+        class="menu-item-desc"
+      >
+        slashmenu.items.h1.desc
+      </div>
+    </div>
+  </button>
+  <button
+    class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-lKjfQ-size-medium slash-menu-item"
+    data-testid="editor-slash-commands-item"
+    role="menuitem"
+    type="button"
+  >
+    <div
+      class="menu-item-icon-wrapper"
+    >
+      <div>
+        icon
+      </div>
+    </div>
+    <div
+      class="menu-item-content"
+    >
+      <div
+        class="menu-item-title"
+      >
+        slashmenu.items.h2.title
+      </div>
+      <div
+        class="menu-item-desc"
+      >
+        slashmenu.items.h2.desc
+      </div>
+    </div>
+  </button>
+  <button
+    class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-lKjfQ-size-medium slash-menu-item"
+    data-testid="editor-slash-commands-item"
+    role="menuitem"
+    type="button"
+  >
+    <div
+      class="menu-item-icon-wrapper"
+    >
+      <div>
+        icon
+      </div>
+    </div>
+    <div
+      class="menu-item-content"
+    >
+      <div
+        class="menu-item-title"
+      >
+        slashmenu.items.h3.title
+      </div>
+      <div
+        class="menu-item-desc"
+      >
+        slashmenu.items.h3.desc
+      </div>
+    </div>
+  </button>
+</div>
+`;

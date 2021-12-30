@@ -1,6 +1,5 @@
 import { FC, memo, CSSProperties } from 'react'
 import { Toast, resolveValue, ToastPosition } from 'react-hot-toast'
-import { prefersReducedMotion } from 'react-hot-toast/src/core/utils'
 import { styled, theme, keyframes } from '../../themes'
 interface ToastBarProps {
   toast: Toast
@@ -68,30 +67,11 @@ const exitAnimation = (factor: number): keyframesValue => ({
   }
 })
 
-const fadeInAnimation = {
-  '0%': {
-    opacity: 0
-  },
-  '100%': {
-    opacity: 1
-  }
-}
-const fadeOutAnimation = {
-  '0%': {
-    opacity: 1
-  },
-  '100%': {
-    opacity: 0
-  }
-}
-
 export const getAnimationStyle = (position: ToastPosition, visible: boolean): CSSProperties => {
   const top = position.includes('top')
   const factor = top ? 1 : -1
 
-  const [enter, exit] = prefersReducedMotion()
-    ? [fadeInAnimation, fadeOutAnimation]
-    : [enterAnimation(factor), exitAnimation(factor)]
+  const [enter, exit] = [enterAnimation(factor), exitAnimation(factor)]
 
   return {
     animation: visible
