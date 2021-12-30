@@ -1,4 +1,4 @@
-import { CstParser, defaultParserErrorProvider, IParserErrorMessageProvider } from 'chevrotain'
+import { CstParser, IParserErrorMessageProvider } from 'chevrotain'
 import { allTokens } from '.'
 import { ContextInterface } from '..'
 import {
@@ -47,12 +47,14 @@ const errorProvider: IParserErrorMessageProvider = {
   },
   buildNotAllInputParsedMessage(options) {
     // changing the template of the error message #1
-    return `TODO build not all input parsed :${options.firstRedundant.startOffset}`
+    return `Not all input parsed: ${options.firstRedundant.image}`
   },
 
   buildNoViableAltMessage(options) {
+    return `Parse error: ${JSON.stringify(options.actual[0].image)}`
+    // console.log(options)
     // defer to the default implementation for `buildNoViableAltMessage`
-    return defaultParserErrorProvider.buildNoViableAltMessage(options)
+    // return defaultParserErrorProvider.buildNoViableAltMessage(options)
   },
 
   buildEarlyExitMessage(options) {

@@ -30,6 +30,7 @@ import { CodeFragmentVisitor } from './code_fragment'
 export interface ParseInput {
   readonly meta: VariableMetadata
   readonly activeCompletion?: Completion
+  readonly position?: number
   readonly formulaContext?: ContextInterface
 }
 
@@ -38,6 +39,7 @@ export interface BaseParseResult {
   readonly valid: boolean
   readonly input: string
   readonly version: number
+  readonly position: number
   readonly inputImage: string
   readonly parseImage: string
   readonly cst?: CstNode
@@ -84,8 +86,10 @@ export interface InterpretResult {
 export const parse = ({
   formulaContext,
   meta: { namespaceId, variableId, input, name },
-  activeCompletion
+  activeCompletion,
+  position: pos
 }: ParseInput): ParseResult => {
+  const position = pos ?? 0
   let level = 0
   let variableDependencies: VariableDependency[] = []
   let functionDependencies: Array<FunctionClause<any>> = []
@@ -101,6 +105,7 @@ export const parse = ({
       valid: false,
       cst: undefined,
       input: newInput,
+      position,
       version,
       level,
       errorType: 'parse',
@@ -176,7 +181,6 @@ export const parse = ({
     type: 'any'
   })
 
-  const finalCodeFragments: CodeFragment[] = codeFragments
   const errorCodeFragment = codeFragments.find(f => f.errors.length)
   const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
 
@@ -188,45 +192,6 @@ export const parse = ({
 
   const parseErrors: IRecognitionException[] = parser.errors
 
-  if (lexResult.errors.length > 0 || parseErrors.length > 0) {
-    const errorMessages = (lexResult.errors.length ? lexResult.errors : parseErrors).map(e => ({
-      message: e.message,
-      type: 'syntax'
-    })) as [ErrorMessage, ...ErrorMessage[]]
-
-    finalErrorMessages.push(...errorMessages)
-
-    if (inputImage.startsWith(image)) {
-      const restImages = inputImage.slice(image.length)
-      if (restImages.length > 0) {
-        finalCodeFragments.push({
-          code: 'other',
-          name: restImages,
-          spaceAfter: false,
-          spaceBefore: false,
-          type: 'any',
-          meta: undefined,
-          errors: errorMessages
-        })
-      }
-    } else {
-      console.error({ ParseErrorTODO: { input, newInput, inputImages: inputImage, image } })
-    }
-  }
-
-  const spaceCount = input.length - input.trimEnd().length
-  if (spaceCount) {
-    finalCodeFragments.push({
-      code: 'Space',
-      name: Array(spaceCount).fill(' ').join(''),
-      spaceAfter: false,
-      spaceBefore: false,
-      type: 'any',
-      meta: undefined,
-      errors: []
-    })
-  }
-
   completions = complete({
     input,
     cacheCompletions: baseCompletion,
@@ -237,14 +202,82 @@ export const parse = ({
     variableId
   })
 
+  if (lexResult.errors.length > 0 || parseErrors.length > 0) {
+    const errorMessages = (lexResult.errors.length ? lexResult.errors : parseErrors).map(e => ({
+      message: e.message,
+      type: 'parse'
+    })) as [ErrorMessage, ...ErrorMessage[]]
+
+    finalErrorMessages.push(...errorMessages)
+
+    if (inputImage.startsWith(image)) {
+      const restImages = inputImage.slice(image.length)
+      if (restImages.length > 0) {
+        codeFragments.push({
+          code: 'other',
+          name: restImages,
+          spaceAfter: false,
+          spaceBefore: false,
+          type: 'any',
+          render: undefined,
+          errors: errorMessages
+        })
+      }
+    } else {
+      console.error('ParseErrorTODO', {
+        input,
+        codeFragments,
+        newInput,
+        inputImagesWithoutSpace: inputImage,
+        codeFragmentImage: image
+      })
+    }
+  }
+
+  const finalCodeFragments: CodeFragment[] = []
+
+  const spaceCodeFragment: CodeFragment = {
+    code: 'Space',
+    name: ' ',
+    spaceAfter: false,
+    spaceBefore: false,
+    type: 'any',
+    render: undefined,
+    errors: []
+  }
+
+  // TODO support space
+  // let lastSpace = false
+  codeFragments.forEach(codeFragment => {
+    // if (codeFragment.spaceBefore && !lastSpace) {
+    //   finalCodeFragments.push(spaceCodeFragment)
+    // }
+
+    finalCodeFragments.push(codeFragment)
+
+    // if (codeFragment.spaceAfter) {
+    //   finalCodeFragments.push(spaceCodeFragment)
+    //   position += 1
+    //   lastSpace = true
+    // } else {
+    //   lastSpace = false
+    // }
+  })
+
+  const spaceCount = input.length - input.trimEnd().length
+  if (spaceCount) {
+    finalCodeFragments.push({ ...spaceCodeFragment, name: ' '.repeat(spaceCount) })
+  }
+
   if (finalErrorMessages.length) {
     return {
       success: false,
-      valid: codeFragments.length > 0,
+      valid: finalErrorMessages[0].type !== 'parse' && codeFragments.length > 0,
       input: newInput,
       inputImage,
       parseImage: image,
       version,
+      position,
       cst,
       level,
       errorType: 'syntax',
@@ -264,6 +297,7 @@ export const parse = ({
       valid: true,
       input: newInput,
       inputImage,
+      position,
       parseImage: image,
       errorType: 'syntax',
       errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }],
@@ -287,6 +321,7 @@ export const parse = ({
       inputImage,
       parseImage: image,
       cst,
+      position,
       level,
       version,
       errorType: 'syntax',
@@ -311,6 +346,7 @@ export const parse = ({
       input: newInput,
       inputImage,
       parseImage: image,
+      position,
       cst,
       level,
       version,
@@ -331,6 +367,7 @@ export const parse = ({
     input: newInput,
     inputImage,
     parseImage: image,
+    position,
     cst,
     level,
     version,

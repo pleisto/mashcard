@@ -68,7 +68,7 @@ export interface DatabaseType {
   getRow: (rowId: uuid) => Row | undefined
   getColumn: (columnId: ColumnId) => ColumnInitializer | undefined
   toArray: () => string[][]
-  toRecord: () => Array<{ [key: string]: StringResult }>
+  toRecord: () => Array<Record<string, StringResult>>
   persist: () => DatabasePersistence
 }
 

@@ -24,8 +24,8 @@ Array [
           Object {
             "code": "NumberLiteral",
             "errors": Array [],
-            "meta": undefined,
             "name": "1",
+            "render": undefined,
             "spaceAfter": false,
             "spaceBefore": false,
             "type": "number",

@@ -194,6 +194,10 @@ export class VariableClass implements VariableInterface {
 
   public namespaceName = () => this.formulaContext.blockNameMap[this.t.namespaceId] || 'Untitled'
 
+  public isDraft = () => {
+    return !this.formulaContext.findVariable(this.t.namespaceId, this.t.variableId)
+  }
+
   public meta = (): VariableMetadata => {
     return {
       namespaceId: this.t.namespaceId,
@@ -201,6 +205,14 @@ export class VariableClass implements VariableInterface {
       name: this.t.name,
       input: this.t.definition
     }
+  }
+
+  public destroy = async (): Promise<void> => {
+    await this.formulaContext.removeVariable(this.t.namespaceId, this.t.variableId)
+  }
+
+  public save = async (): Promise<void> => {
+    await this.formulaContext.commitVariable({ variable: this })
   }
 
   public buildFormula = (): Formula => {

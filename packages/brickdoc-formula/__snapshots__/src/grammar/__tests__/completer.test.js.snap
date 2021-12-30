@@ -5,8 +5,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -14,8 +14,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -23,12 +23,9 @@ Array [
   Object {
     "code": "Variable",
     "errors": Array [],
-    "meta": Object {
-      "name": "varvarabcvar",
-      "namespace": "Untitled",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    },
     "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -41,17 +38,12 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [FunctionName, DoubleColon]
-  2. [FunctionName, LParen]
-  3. [StringLiteral]
-  4. [FunctionName]
-but found: ''",
-        "type": "syntax",
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -64,8 +56,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -73,8 +65,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -82,12 +74,9 @@ Array [
   Object {
     "code": "Variable",
     "errors": Array [],
-    "meta": Object {
-      "name": "varvarabcvar",
-      "namespace": "Untitled",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    },
     "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -100,17 +89,12 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [FunctionName, DoubleColon]
-  2. [FunctionName, LParen]
-  3. [StringLiteral]
-  4. [FunctionName]
-but found: ''",
-        "type": "syntax",
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -123,12 +107,9 @@ Array [
   Object {
     "code": "Variable",
     "errors": Array [],
-    "meta": Object {
-      "name": "varvarabcvar",
-      "namespace": "Untitled",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    },
     "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -141,12 +122,9 @@ Array [
   Object {
     "code": "Variable",
     "errors": Array [],
-    "meta": Object {
-      "name": "varvarabcvar",
-      "namespace": "Untitled",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    },
     "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -159,8 +137,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -168,8 +146,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -183,11 +161,11 @@ Array [
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "arvar",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -200,8 +178,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -209,8 +187,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -224,11 +202,11 @@ Array [
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "arvar",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -241,8 +219,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -250,8 +228,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -265,11 +243,11 @@ Array [
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "var",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",

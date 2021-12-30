@@ -1,7 +1,7 @@
 import React, { MutableRefObject } from 'react'
 import { Completion } from '@brickdoc/formula'
-import { KeyDownHandlerType } from '../../extensions/formula/FormulaEditor/extensions/handleKeyDown'
 import { JSONContent } from '@tiptap/core'
+import { KeyDownHandlerType } from '../../extensions/formula/FormulaEditor/extensions/handleKeyDown'
 
 export function useKeydownHandler({
   activeCompletion,

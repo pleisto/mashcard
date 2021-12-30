@@ -12,7 +12,9 @@ import {
   VariableCompletion,
   VariableId,
   VariableInterface,
-  VariableKey
+  VariableKey,
+  RenderCodeFragmentFunction,
+  ErrorMessage
 } from '..'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
@@ -21,6 +23,87 @@ export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): V
 export const spreadsheetKey = (namespaceId: NamespaceId): SpreadsheetKey => `#${namespaceId}`
 
 export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `#${namespaceId}#${columnId}`
+
+export const renderDatabase = (database: DatabaseType, errorMessages: ErrorMessage[]): RenderCodeFragmentFunction => {
+  const error = errorMessages.length === 0 ? '' : errorMessages[0].message
+  return blockId => [
+    {
+      value: spreadsheetKey(database.blockId),
+      display: database.name(),
+      error,
+      code: 'Spreadsheet',
+      type: 'Spreadsheet'
+    }
+  ]
+}
+
+export const renderColumn = (column: ColumnType, errorMessages: ErrorMessage[]): RenderCodeFragmentFunction => {
+  const error = errorMessages.length === 0 ? '' : errorMessages[0].message
+  return blockId => [
+    {
+      value: spreadsheetKey(column.namespaceId),
+      display: column.database.name(),
+      error,
+      code: 'Spreadsheet',
+      type: 'Spreadsheet'
+    },
+    {
+      value: '#',
+      display: '.',
+      error,
+      code: 'Dot',
+      type: 'any'
+    },
+    {
+      value: column.columnId,
+      display: column.name,
+      error,
+      code: 'Column',
+      type: 'Column'
+    }
+  ]
+}
+
+export const renderVariable = (
+  variable: VariableInterface,
+  errorMessages: ErrorMessage[]
+): RenderCodeFragmentFunction => {
+  const error = errorMessages.length === 0 ? '' : errorMessages[0].message
+  return blockId =>
+    blockId === variable.t.namespaceId
+      ? [
+          {
+            value: variableKey(variable.t.namespaceId, variable.t.variableId),
+            display: variable.t.name,
+            error,
+            code: 'Variable',
+            type: variable.t.variableValue.result.type
+          }
+        ]
+      : [
+          {
+            value: `#${variable.t.namespaceId}`,
+            display: variable.namespaceName(),
+            error,
+            code: 'Block',
+            type: 'Block'
+          },
+          {
+            value: '@',
+            display: '.',
+            error,
+            code: 'Dot',
+            type: 'any'
+          },
+          {
+            value: variableKey(variable.t.namespaceId, variable.t.variableId),
+            display: variable.t.name,
+            error,
+            code: 'Variable',
+            type: variable.t.variableValue.result.type
+          }
+        ]
+}
 
 export const database2completion = (database: DatabaseType): SpreadsheetCompletion => {
   const value = spreadsheetKey(database.blockId)
@@ -32,8 +115,10 @@ export const database2completion = (database: DatabaseType): SpreadsheetCompleti
     namespace: database.blockId,
     value,
     preview: database,
+    renderDescription: blockId => '',
     codeFragment: {
-      meta: { name: database.name(), blockId: database.blockId },
+      namespaceId: database.blockId,
+      render: renderDatabase(database, []),
       errors: [],
       name: value,
       code: 'Spreadsheet',
@@ -59,8 +144,10 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
     namespace: column.database.name(),
     value,
     preview: column,
+    renderDescription: blockId => column.database.name(),
     codeFragment: {
-      meta: { name: column.name, spreadsheetName: column.database.name() },
+      namespaceId: column.namespaceId,
+      render: renderColumn(column, []),
       errors: [],
       name: value,
       code: 'Column',
@@ -81,12 +168,10 @@ export const variable2completion = (variable: VariableInterface, weight: number)
     namespace: variable.namespaceName(),
     value,
     preview: variable,
+    renderDescription: blockId => (blockId === variable.t.namespaceId ? '' : variable.namespaceName()),
     codeFragment: {
-      meta: {
-        name: variable.t.name,
-        namespaceId: variable.t.namespaceId,
-        namespace: variable.namespaceName()
-      },
+      namespaceId: variable.t.namespaceId,
+      render: renderVariable(variable, []),
       errors: [],
       name: value,
       code: 'Variable',
@@ -107,8 +192,9 @@ export const function2completion = (functionClause: FunctionClause<any>, weight:
     namespace: functionClause.group,
     value,
     preview: functionClause,
+    renderDescription: blockId => (functionClause.group === 'core' ? '' : functionClause.group),
     codeFragment: {
-      meta: undefined,
+      render: undefined,
       errors: [],
       name: value,
       code: 'Function',

@@ -28,6 +28,30 @@ on:
       - '**/NOTICE'
       - '**/VERSION'
   push:
+    # Make sure same as pull_request
+    paths-ignore:
+      - .github/**
+      - '!.github/workflow/monolith_ci.yml'
+      - .husky/**
+      - bin/**
+      - packages/brickdoc-design-system/**
+      - '!packages/brickdoc-design-system/components/**'
+      - packages/eslint-plugin-brickdoc/**
+      - gems/rubocop-brickdoc/**
+      - public/**
+      - templates/**
+      - config/locales/**
+      - '**/*.template'
+      - '**/*.md'
+      - '**/Dockerfile'
+      - '**/.git*'
+      - '**/crowdin.yml'
+      - '**/LICENSE'
+      - '**/NOTICE'
+      - '**/VERSION'
+    branches:
+      - master
+      - main
     tags:
       - 'v**-saas'
 env:

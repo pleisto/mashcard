@@ -67,8 +67,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "1",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -107,12 +107,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -120,8 +117,8 @@ Array [
       Object {
         "code": "Multi",
         "errors": Array [],
-        "meta": undefined,
         "name": "*",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -129,8 +126,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "2",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -138,8 +135,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -147,8 +144,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "100",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -197,12 +194,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -251,12 +245,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num2",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -264,8 +255,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -273,12 +264,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num1",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -339,12 +327,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num2",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -352,8 +337,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -361,12 +346,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -423,12 +405,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num3",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -436,8 +415,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -445,12 +424,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -458,8 +434,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -467,12 +443,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num2",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -541,12 +514,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num4",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -554,8 +524,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -563,12 +533,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num1",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -693,8 +660,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "1",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -733,8 +700,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "2",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -773,12 +740,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -827,12 +791,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num2",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -840,8 +801,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -849,12 +810,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num1",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -915,12 +873,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num2",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -928,8 +883,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -937,12 +892,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -999,12 +951,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num3",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -1012,8 +961,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -1021,12 +970,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num0",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@cd0755b8-0000-4326-876d-853e59cb0259",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -1034,8 +980,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -1043,12 +989,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num2",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -1117,12 +1060,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num4",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -1130,8 +1070,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -1139,12 +1079,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "num1",
-          "namespace": "Untitled",
-          "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-        },
         "name": "#9dda8306-dbe1-49d3-868d-1a7c86f27328@88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",

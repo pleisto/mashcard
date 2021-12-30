@@ -8,8 +8,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "123",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -217,8 +217,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "123",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -226,8 +226,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -235,8 +235,8 @@ Array [
       Object {
         "code": "Function",
         "errors": Array [],
-        "meta": undefined,
         "name": "RAND",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -244,8 +244,8 @@ Array [
       Object {
         "code": "LParen",
         "errors": Array [],
-        "meta": undefined,
         "name": "(",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": false,
         "type": "any",
@@ -253,8 +253,8 @@ Array [
       Object {
         "code": "RParen",
         "errors": Array [],
-        "meta": undefined,
         "name": ")",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": true,
         "type": "number",
@@ -577,8 +577,8 @@ Array [
               Object {
                 "code": "Function",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "RAND",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "any",
@@ -586,8 +586,8 @@ Array [
               Object {
                 "code": "LParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "(",
+                "render": undefined,
                 "spaceAfter": true,
                 "spaceBefore": false,
                 "type": "any",
@@ -595,8 +595,8 @@ Array [
               Object {
                 "code": "RParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": ")",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "number",
@@ -647,8 +647,8 @@ Array [
       Object {
         "code": "Function",
         "errors": Array [],
-        "meta": undefined,
         "name": "ABS",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -656,8 +656,8 @@ Array [
       Object {
         "code": "LParen",
         "errors": Array [],
-        "meta": undefined,
         "name": "(",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": false,
         "type": "any",
@@ -665,8 +665,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "123",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -674,8 +674,8 @@ Array [
       Object {
         "code": "RParen",
         "errors": Array [],
-        "meta": undefined,
         "name": ")",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": true,
         "type": "number",
@@ -683,8 +683,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -692,12 +692,9 @@ Array [
       Object {
         "code": "Variable",
         "errors": Array [],
-        "meta": Object {
-          "name": "foo",
-          "namespace": "Untitled",
-          "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-        },
         "name": "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+        "render": [Function],
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -1217,8 +1214,8 @@ Array [
               Object {
                 "code": "Function",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "ABS",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "any",
@@ -1226,8 +1223,8 @@ Array [
               Object {
                 "code": "LParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "(",
+                "render": undefined,
                 "spaceAfter": true,
                 "spaceBefore": false,
                 "type": "any",
@@ -1235,8 +1232,8 @@ Array [
               Object {
                 "code": "Minus",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "-",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "any",
@@ -1244,8 +1241,8 @@ Array [
               Object {
                 "code": "NumberLiteral",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "1",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "number",
@@ -1253,8 +1250,8 @@ Array [
               Object {
                 "code": "RParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": ")",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "number",
@@ -1349,18 +1346,32 @@ Array [
     "codeFragments": Array [
       Object {
         "code": "NumberLiteral",
-        "errors": Array [],
-        "meta": undefined,
+        "errors": Array [
+          Object {
+            "message": "Missing right expression",
+            "type": "syntax",
+          },
+          Object {
+            "message": "Parse error: \\"\\"",
+            "type": "parse",
+          },
+        ],
         "name": "123",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
       },
       Object {
         "code": "Plus",
-        "errors": Array [],
-        "meta": undefined,
+        "errors": Array [
+          Object {
+            "message": "Missing right expression",
+            "type": "syntax",
+          },
+        ],
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -1618,28 +1629,7 @@ Array [
       },
       "result": Object {
         "errorKind": "syntax",
-        "result": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ''",
+        "result": "Missing right expression",
         "type": "Error",
       },
       "success": false,
@@ -1659,8 +1649,8 @@ Array [
       Object {
         "code": "Function",
         "errors": Array [],
-        "meta": undefined,
         "name": "ABS",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -1668,8 +1658,8 @@ Array [
       Object {
         "code": "LParen",
         "errors": Array [],
-        "meta": undefined,
         "name": "(",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": false,
         "type": "any",
@@ -1677,8 +1667,8 @@ Array [
       Object {
         "code": "NumberLiteral",
         "errors": Array [],
-        "meta": undefined,
         "name": "123",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "number",
@@ -1686,8 +1676,8 @@ Array [
       Object {
         "code": "RParen",
         "errors": Array [],
-        "meta": undefined,
         "name": ")",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": true,
         "type": "number",
@@ -1695,8 +1685,8 @@ Array [
       Object {
         "code": "Plus",
         "errors": Array [],
-        "meta": undefined,
         "name": "+",
+        "render": undefined,
         "spaceAfter": true,
         "spaceBefore": true,
         "type": "number",
@@ -1704,8 +1694,8 @@ Array [
       Object {
         "code": "Sharp",
         "errors": Array [],
-        "meta": undefined,
         "name": "#",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -1718,8 +1708,8 @@ Array [
             "type": "deps",
           },
         ],
-        "meta": undefined,
         "name": "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "render": undefined,
         "spaceAfter": false,
         "spaceBefore": false,
         "type": "any",
@@ -2234,8 +2224,8 @@ Array [
               Object {
                 "code": "Function",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "ABS",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "any",
@@ -2243,8 +2233,8 @@ Array [
               Object {
                 "code": "LParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "(",
+                "render": undefined,
                 "spaceAfter": true,
                 "spaceBefore": false,
                 "type": "any",
@@ -2252,8 +2242,8 @@ Array [
               Object {
                 "code": "Minus",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "-",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "any",
@@ -2261,8 +2251,8 @@ Array [
               Object {
                 "code": "NumberLiteral",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "1",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "number",
@@ -2270,8 +2260,8 @@ Array [
               Object {
                 "code": "RParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": ")",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "number",

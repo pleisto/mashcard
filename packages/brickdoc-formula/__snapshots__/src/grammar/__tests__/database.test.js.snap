@@ -5,8 +5,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "AVERAGEIFS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -14,8 +14,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -23,11 +23,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -35,8 +33,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -44,11 +42,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -56,8 +52,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -65,8 +61,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -74,8 +70,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -83,8 +79,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -97,8 +93,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "AVERAGEIFS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -106,8 +102,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -115,11 +111,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -127,8 +121,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -136,11 +130,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -148,8 +140,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -157,8 +149,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -166,8 +158,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "100",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -175,8 +167,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -189,11 +181,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -201,8 +191,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -210,8 +200,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "COLUMN_COUNT",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -219,8 +209,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -228,8 +218,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -242,11 +232,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -254,8 +242,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -263,8 +251,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "COUNTA",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -272,8 +260,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -281,8 +269,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -295,11 +283,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "third",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -307,8 +293,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -316,8 +302,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "COUNTA",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -325,8 +311,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -334,8 +320,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -348,8 +334,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "COUNTIFS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -357,8 +343,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -366,11 +352,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -378,8 +362,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -387,8 +371,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -396,8 +380,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -410,8 +394,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "COUNTIFS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -419,8 +403,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -428,11 +412,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -440,8 +422,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -449,8 +431,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -458,8 +440,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -467,8 +449,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -481,11 +463,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -493,8 +473,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -502,8 +482,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "MAX",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -511,8 +491,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -520,8 +500,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -534,11 +514,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -546,8 +524,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -555,8 +533,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "SUM",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -564,8 +542,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -573,8 +551,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -587,8 +565,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "SUMIFS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -596,8 +574,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -605,11 +583,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -617,8 +593,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -626,11 +602,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -638,8 +612,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -647,8 +621,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -656,8 +630,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -665,8 +639,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -679,8 +653,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "SUMIFS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -688,8 +662,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -697,11 +671,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -709,8 +681,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -718,11 +690,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -730,8 +700,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -739,8 +709,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "4",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -748,8 +718,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -762,8 +732,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "SUMPRODUCT",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -771,8 +741,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -780,11 +750,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -792,8 +760,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -801,11 +769,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -813,8 +779,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -827,8 +793,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "Table",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -836,8 +802,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -845,8 +811,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -854,8 +820,8 @@ Array [
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -863,8 +829,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Spreadsheet",
@@ -872,8 +838,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -881,8 +847,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "toArray",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -890,8 +856,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -899,8 +865,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -960,8 +926,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "Table",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -969,8 +935,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -978,8 +944,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -987,8 +953,8 @@ Array [
   Object {
     "code": "LBrace",
     "errors": Array [],
-    "meta": undefined,
     "name": "{",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -996,8 +962,8 @@ Array [
   Object {
     "code": "FunctionName",
     "errors": Array [],
-    "meta": undefined,
     "name": "a",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1005,8 +971,8 @@ Array [
   Object {
     "code": "Colon",
     "errors": Array [],
-    "meta": undefined,
     "name": ":",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1014,8 +980,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1023,8 +989,8 @@ Array [
   Object {
     "code": "RBrace",
     "errors": Array [],
-    "meta": undefined,
     "name": "}",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1032,8 +998,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1041,8 +1007,8 @@ Array [
   Object {
     "code": "LBrace",
     "errors": Array [],
-    "meta": undefined,
     "name": "{",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1050,8 +1016,8 @@ Array [
   Object {
     "code": "FunctionName",
     "errors": Array [],
-    "meta": undefined,
     "name": "a",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1059,8 +1025,8 @@ Array [
   Object {
     "code": "Colon",
     "errors": Array [],
-    "meta": undefined,
     "name": ":",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1068,8 +1034,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1077,8 +1043,8 @@ Array [
   Object {
     "code": "RBrace",
     "errors": Array [],
-    "meta": undefined,
     "name": "}",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1086,8 +1052,8 @@ Array [
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1095,8 +1061,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Spreadsheet",
@@ -1104,8 +1070,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1113,8 +1079,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "toArray",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1122,8 +1088,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1131,8 +1097,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -1180,8 +1146,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "Table",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1189,8 +1155,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1198,8 +1164,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1207,8 +1173,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1216,8 +1182,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1225,8 +1191,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1234,8 +1200,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1243,8 +1209,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1252,8 +1218,8 @@ Array [
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1261,8 +1227,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Spreadsheet",
@@ -1270,8 +1236,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1279,8 +1245,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "toArray",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1288,8 +1254,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1297,8 +1263,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -1313,8 +1279,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1322,8 +1288,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1331,8 +1297,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"2\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1340,8 +1306,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1349,11 +1315,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1361,8 +1325,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1370,11 +1334,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1382,8 +1344,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1396,8 +1358,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1405,8 +1367,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1414,8 +1376,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"2\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1423,8 +1385,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1432,11 +1394,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1444,8 +1404,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1453,11 +1413,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1465,8 +1423,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1474,8 +1432,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1483,8 +1441,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1497,8 +1455,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1506,8 +1464,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1515,8 +1473,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1524,8 +1482,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1533,11 +1491,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1545,8 +1501,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1554,11 +1510,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1566,8 +1520,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1580,8 +1534,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1589,8 +1543,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1598,8 +1552,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"2\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1607,8 +1561,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1616,11 +1570,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1628,8 +1580,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1637,11 +1589,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1649,8 +1599,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1658,8 +1608,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "false",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1667,8 +1617,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1681,8 +1631,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1690,8 +1640,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1699,8 +1649,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1708,8 +1658,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1717,11 +1667,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1729,8 +1677,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1738,11 +1686,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1750,8 +1696,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1764,8 +1710,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1773,8 +1719,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1782,8 +1728,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1791,8 +1737,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1800,11 +1746,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1812,8 +1756,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1821,11 +1765,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1833,8 +1775,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1847,8 +1789,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1856,8 +1798,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1865,8 +1807,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1874,8 +1816,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1883,11 +1825,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1895,8 +1835,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1904,11 +1844,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -1916,8 +1854,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1925,8 +1863,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "false",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1934,8 +1872,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -1948,8 +1886,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1957,8 +1895,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1966,8 +1904,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1975,8 +1913,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1984,11 +1922,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -1996,8 +1932,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2005,11 +1941,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2017,8 +1951,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2026,8 +1960,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -2035,8 +1969,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -2049,8 +1983,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "VLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2058,8 +1992,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2067,8 +2001,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"1\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -2076,8 +2010,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2085,11 +2019,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -2097,8 +2029,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2106,11 +2038,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2118,8 +2048,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -2132,8 +2062,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "XLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2141,8 +2071,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2150,8 +2080,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"1\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -2159,8 +2089,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2168,11 +2098,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2180,8 +2108,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2189,11 +2117,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2201,8 +2127,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -2215,8 +2141,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "XLOOKUP",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2224,8 +2150,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2233,8 +2159,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"123\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -2242,8 +2168,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2251,11 +2177,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2263,8 +2187,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2272,11 +2196,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2284,8 +2206,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2293,8 +2215,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"100\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -2302,8 +2224,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "string",
@@ -2316,11 +2238,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2333,8 +2253,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"foo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -2342,8 +2262,8 @@ Array [
   Object {
     "code": "In",
     "errors": Array [],
-    "meta": undefined,
     "name": "in",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2351,11 +2271,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "third",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2368,8 +2286,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "4",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2377,8 +2295,8 @@ Array [
   Object {
     "code": "In",
     "errors": Array [],
-    "meta": undefined,
     "name": "in",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2386,11 +2304,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2403,8 +2319,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2412,8 +2328,8 @@ Array [
   Object {
     "code": "In",
     "errors": Array [],
-    "meta": undefined,
     "name": "in",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2421,11 +2337,9 @@ Array [
   Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "second",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Column",
@@ -2438,8 +2352,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "4",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2447,8 +2361,8 @@ Array [
   Object {
     "code": "In",
     "errors": Array [],
-    "meta": undefined,
     "name": "in",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2456,11 +2370,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -2473,8 +2385,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2482,8 +2394,8 @@ Array [
   Object {
     "code": "In",
     "errors": Array [],
-    "meta": undefined,
     "name": "in",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2491,11 +2403,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -2508,11 +2418,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -2520,8 +2428,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2529,8 +2437,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "toArray",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2538,8 +2446,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2547,8 +2455,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -2638,11 +2546,9 @@ Array [
   Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Spreadsheet",
@@ -2650,8 +2556,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2659,8 +2565,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "toRecordArray",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2668,8 +2574,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2677,8 +2583,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -2889,11 +2795,9 @@ Object {
   "codeFragment": Object {
     "code": "Spreadsheet",
     "errors": Array [],
-    "meta": Object {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "name": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2908,6 +2812,7 @@ Object {
     "listRows": [Function],
     "name": [Function],
   },
+  "renderDescription": [Function],
   "replacements": Array [
     "MyTable",
   ],
@@ -2921,8 +2826,8 @@ Object {
   "codeFragment": Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "SUM",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2948,8 +2853,8 @@ Object {
           Object {
             "code": "NumberLiteral",
             "errors": Array [],
-            "meta": undefined,
             "name": "123",
+            "render": undefined,
             "spaceAfter": false,
             "spaceBefore": false,
             "type": "number",
@@ -2971,6 +2876,7 @@ Object {
     "returns": "number",
     "testCases": Array [],
   },
+  "renderDescription": [Function],
   "replacements": Array [
     "SUM",
   ],
@@ -2984,11 +2890,9 @@ Object {
   "codeFragment": Object {
     "code": "Column",
     "errors": Array [],
-    "meta": Object {
-      "name": "first",
-      "spreadsheetName": "MyTable",
-    },
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "render": [Function],
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -3015,6 +2919,7 @@ Object {
     ],
     "type": "text",
   },
+  "renderDescription": [Function],
   "replacements": Array [
     "first",
     "#28e28190-63bd-4f70-aeca-26e72574c01a.first",
@@ -3031,8 +2936,8 @@ Object {
   "codeFragment": Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "COLUMN_COUNT",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -3058,8 +2963,8 @@ Object {
           Object {
             "code": "NumberLiteral",
             "errors": Array [],
-            "meta": undefined,
             "name": "123",
+            "render": undefined,
             "spaceAfter": false,
             "spaceBefore": false,
             "type": "number",
@@ -3081,6 +2986,7 @@ Object {
     "returns": "number",
     "testCases": Array [],
   },
+  "renderDescription": [Function],
   "replacements": Array [
     "COLUMN_COUNT",
   ],

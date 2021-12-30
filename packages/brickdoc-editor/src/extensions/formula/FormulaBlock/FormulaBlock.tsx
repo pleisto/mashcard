@@ -39,7 +39,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
       onOk: async () => {
         if (!variable || !getPos || !node) return
         const position = getPos()
-        void (await formulaContext?.removeVariable(variable.t.namespaceId, variable.t.variableId))
+        await variable.destroy()
+        // void (await formulaContext?.removeVariable(variable.t.namespaceId, variable.t.variableId))
         editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
       }
     })
@@ -156,6 +157,14 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     )
   }
 
+  const renderEmpty = (): React.ReactNode => {
+    return (
+      <span className="brickdoc-formula-placeholder">
+        <Icon.Formula className="brickdoc-formula-placeholder-icon" />
+      </span>
+    )
+  }
+
   const renderOther = (variable: VariableInterface): React.ReactNode => {
     return (
       <span
@@ -164,14 +173,16 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
           color: activeColor.color,
           borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
           background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
-        }}
-      >
+        }}>
         {variable.t.name}: {displayValue(variable.t.variableValue.result)}
       </span>
     )
   }
 
-  const renderVariable = (variable: VariableInterface): React.ReactNode => {
+  const renderVariable = (variable: VariableInterface | undefined): React.ReactNode => {
+    if (!variable) return renderEmpty()
+    if (variable.isDraft()) return renderEmpty()
+
     const result = variable.t.variableValue.result
 
     switch (result.type) {
@@ -217,23 +228,13 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   return (
     <BlockContainer inline={true}>
       <FormulaMenu
-        node={node}
-        getPos={getPos}
         defaultVisible={node.attrs.isNew}
         onVisibleChange={handleDefaultPopoverVisibleChange}
         handleDelete={handleDelete}
-        editor={editor}
         updateFormula={updateFormula}
         variable={variable}
-        updateVariable={setVariable}
-      >
-        {variable ? (
-          renderVariable(variable)
-        ) : (
-          <span className="brickdoc-formula-placeholder">
-            <Icon.Formula className="brickdoc-formula-placeholder-icon" />
-          </span>
-        )}
+        updateVariable={setVariable}>
+        {renderVariable(variable)}
       </FormulaMenu>
     </BlockContainer>
   )

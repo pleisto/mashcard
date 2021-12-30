@@ -7,12 +7,9 @@ Object {
     Object {
       "code": "Variable",
       "errors": Array [],
-      "meta": Object {
-        "name": "foo",
-        "namespace": "Untitled",
-        "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-      },
       "name": "#d986e871-cb85-4bd5-b675-87307f60b882@1588aedf-06e1-47f1-9282-d2ffe865974c",
+      "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+      "render": [Function],
       "spaceAfter": false,
       "spaceBefore": false,
       "type": "number",
@@ -20,8 +17,8 @@ Object {
     Object {
       "code": "Plus",
       "errors": Array [],
-      "meta": undefined,
       "name": "+",
+      "render": undefined,
       "spaceAfter": true,
       "spaceBefore": true,
       "type": "number",
@@ -29,12 +26,9 @@ Object {
     Object {
       "code": "Variable",
       "errors": Array [],
-      "meta": Object {
-        "name": "bar",
-        "namespace": "Untitled",
-        "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
-      },
       "name": "#615d7f74-dc97-4aae-8690-b6cba1072a6a@475d9e73-e52a-42b3-8a95-477596812900",
+      "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
+      "render": [Function],
       "spaceAfter": false,
       "spaceBefore": false,
       "type": "number",
@@ -536,8 +530,8 @@ Object {
               Object {
                 "code": "Function",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "ABS",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "any",
@@ -545,8 +539,8 @@ Object {
               Object {
                 "code": "LParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "(",
+                "render": undefined,
                 "spaceAfter": true,
                 "spaceBefore": false,
                 "type": "any",
@@ -554,8 +548,8 @@ Object {
               Object {
                 "code": "Minus",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "-",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "any",
@@ -563,8 +557,8 @@ Object {
               Object {
                 "code": "NumberLiteral",
                 "errors": Array [],
-                "meta": undefined,
                 "name": "1",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": false,
                 "type": "number",
@@ -572,8 +566,8 @@ Object {
               Object {
                 "code": "RParen",
                 "errors": Array [],
-                "meta": undefined,
                 "name": ")",
+                "render": undefined,
                 "spaceAfter": false,
                 "spaceBefore": true,
                 "type": "number",

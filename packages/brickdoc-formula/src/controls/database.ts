@@ -64,14 +64,14 @@ export class DatabaseClass implements DatabaseType {
     return result
   }
 
-  toRecord(): Array<{ [key: string]: StringResult }> {
+  toRecord(): Array<Record<string, StringResult>> {
     const columns: ColumnInitializer[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
-    const result: Array<{ [key: string]: StringResult }> = []
+    const result: Array<Record<string, StringResult>> = []
 
     rows.forEach(row => {
-      const rowData: { [key: string]: StringResult } = {}
+      const rowData: Record<string, StringResult> = {}
       columns.forEach(col => {
         rowData[col.name] = { type: 'string', result: row[col.columnId] || '' }
       })

@@ -62,6 +62,7 @@ export type VariableKind = 'constant' | 'expression'
 
 export type ErrorType =
   | 'type'
+  | 'parse'
   | 'syntax'
   | 'runtime'
   | 'fatal'
@@ -302,6 +303,7 @@ interface BaseCompletion {
   readonly name: string
   readonly value: any
   readonly preview: any
+  readonly renderDescription: (blockId: NamespaceId) => string
   readonly codeFragment: CodeFragment
 }
 export interface FunctionCompletion extends BaseCompletion {
@@ -336,8 +338,8 @@ export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCo
 
 export interface ContextInterface {
   features: string[]
-  databases: { [key: NamespaceId]: DatabaseType }
-  blockNameMap: { [key: NamespaceId]: string }
+  databases: Record<NamespaceId, DatabaseType>
+  blockNameMap: Record<NamespaceId, string>
   reservedNames: string[]
   backendActions: BackendActions | undefined
   variableCount: () => number
@@ -428,37 +430,41 @@ export interface FunctionClause<T extends FormulaType> extends BaseFunctionClaus
   readonly examples: [ExampleWithCodeFragments<T>, ...Array<ExampleWithCodeFragments<T>>]
 }
 
+export interface FormulaCodeFragmentAttrs {
+  readonly display: string
+  readonly value: string
+  readonly code: string
+  readonly type: FormulaType
+  readonly error: string
+}
+
+export type RenderCodeFragmentFunction = (
+  blockId: NamespaceId
+) => [FormulaCodeFragmentAttrs, ...FormulaCodeFragmentAttrs[]]
+
 interface BaseCodeFragment {
   readonly code: string
   readonly name: string
   readonly spaceBefore: boolean
+  readonly namespaceId?: NamespaceId
   readonly spaceAfter: boolean
-  readonly meta: any
+  readonly render?: RenderCodeFragmentFunction
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }
 
-export interface SpreadsheetCodeFragment extends BaseCodeFragment {
-  readonly code: 'Spreadsheet'
-  readonly meta: { name: SpreadsheetName; blockId: NamespaceId }
-}
-
-export interface ColumnCodeFragment extends BaseCodeFragment {
-  readonly code: 'Column'
-  readonly meta: { name: ColumnName; spreadsheetName: SpreadsheetName }
-}
-
-export interface VariableCodeFragment extends BaseCodeFragment {
-  readonly code: 'Variable'
-  readonly meta: { name: VariableName; namespaceId: NamespaceId; namespace: BlockName }
+export interface SpecialCodeFragment extends BaseCodeFragment {
+  readonly code: 'Spreadsheet' | 'Column' | 'Variable'
+  readonly render: RenderCodeFragmentFunction
+  readonly namespaceId: NamespaceId
 }
 
 export interface OtherCodeFragment extends BaseCodeFragment {
   readonly code: Exclude<string, 'Variable' | 'Column' | 'Spreadsheet'>
-  readonly meta: undefined
+  readonly render: undefined
 }
 
-export type CodeFragment = VariableCodeFragment | SpreadsheetCodeFragment | ColumnCodeFragment | OtherCodeFragment
+export type CodeFragment = SpecialCodeFragment | OtherCodeFragment
 
 export interface CodeFragmentResult {
   readonly codeFragments: CodeFragment[]
@@ -520,6 +526,9 @@ export interface VariableMetadata {
 export interface VariableInterface {
   t: VariableData
   buildFormula: () => Formula
+  destroy: () => Promise<void>
+  save: () => Promise<void>
+  isDraft: () => boolean
   namespaceName: () => string
   reparse: VoidFunction
   meta: () => VariableMetadata

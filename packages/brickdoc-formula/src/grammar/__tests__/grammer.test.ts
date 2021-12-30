@@ -307,7 +307,7 @@ const testCases: TestCase[] = [
   {
     input: '={a: }',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences'
+    errorMessage: 'Parse error:'
   },
   {
     input: '={a: 1',
@@ -323,7 +323,7 @@ const testCases: TestCase[] = [
   {
     input: '={"foo":}',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences'
+    errorMessage: 'Parse error:'
   },
   {
     input: '={"fo o": 123}',
@@ -398,13 +398,13 @@ const testCases: TestCase[] = [
     input: '= "hel"lo"',
     label: 'lex error when parse "hel"lo" => parseError',
     parseErrorType: 'syntax',
-    errorMessage: 'TODO build not all input parsed :7'
+    errorMessage: 'Not all input parsed: lo'
   },
   {
     input: "= 'hello'",
     label: 'Single quote => parseError',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences'
+    errorMessage: 'Parse error:'
   },
   // **
   {
@@ -525,7 +525,7 @@ const testCases: TestCase[] = [
     input: '=1+',
     parseErrorType: 'syntax',
     label: 'TODO missing suffix expression',
-    errorMessage: 'Expecting: one of these possible Token sequences:'
+    errorMessage: 'Missing right expression'
   },
   {
     input: '=(1',
@@ -566,7 +566,7 @@ const testCases: TestCase[] = [
   {
     input: '= 1+$',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences:'
+    errorMessage: 'Missing right expression'
   },
   {
     input: '= 1;',
@@ -592,7 +592,7 @@ const testCases: TestCase[] = [
   {
     input: '=1**2',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences:'
+    errorMessage: 'Missing right expression'
   },
   // Function Call
   {
@@ -662,12 +662,12 @@ const testCases: TestCase[] = [
   {
     input: '=1.a',
     parseErrorType: 'syntax',
-    errorMessage: 'TODO build not all input parsed :3'
+    errorMessage: 'Not all input parsed: a'
   },
   {
     input: '=1."a"',
     parseErrorType: 'syntax',
-    errorMessage: 'TODO build not all input parsed :3'
+    errorMessage: 'Not all input parsed: "a"'
   },
   {
     input: '=true.a',
@@ -849,14 +849,14 @@ const testCases: TestCase[] = [
     input: '=;123',
     label: 'multiline error 3',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences'
+    errorMessage: 'Parse error:'
   },
   // TODO List
   {
     input: '= 中文',
     label: 'TODO chinese',
     parseErrorType: 'syntax',
-    errorMessage: 'Expecting: one of these possible Token sequences'
+    errorMessage: 'Parse error:'
   },
   {
     input: '=varvarabc中文var',
@@ -878,18 +878,18 @@ const testCases: TestCase[] = [
     input: '=1.T()',
     label: 'should success',
     parseErrorType: 'syntax',
-    errorMessage: 'TODO build not all input parsed :3'
+    errorMessage: 'Not all input parsed: T'
   },
   {
     input: '=1.START_WITH("123")',
     parseErrorType: 'syntax',
     label: 'TODO chain type 3',
-    errorMessage: 'TODO build not all input parsed :3'
+    errorMessage: 'Not all input parsed: START_WITH'
   },
   {
     input: '=123.ABS()',
     parseErrorType: 'syntax',
-    errorMessage: 'TODO build not all input parsed :5'
+    errorMessage: 'Not all input parsed: ABS'
   }
 ]
 

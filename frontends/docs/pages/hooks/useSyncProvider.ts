@@ -106,6 +106,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     isSavingVar(true)
     const docBlocks = nodeToBlock(doc, 0)
     const deletedIds = new Set(docBlocksMap.current.keys())
+    deletedIds.delete(rootId.current)
 
     // Document Blocks dirty check and maintian
     docBlocks.forEach(newBlock => {

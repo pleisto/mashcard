@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { MutableRefObject } from 'react'
+import React from 'react'
 import cx from 'classnames'
 import { Icon } from '@brickdoc/design-system'
 import {
@@ -12,15 +12,15 @@ import {
 } from '@brickdoc/formula'
 import './AutocompleteList.less'
 import { FormulaEditor } from '../../../extensions/formula/FormulaEditor/FormulaEditor'
-import { codeFragmentsToJSONContent } from '../../../helpers/formula'
+import { codeFragmentsToJSONContentTotal } from '../../../helpers/formula'
 export interface AutocompleteListProps {
-  completions: MutableRefObject<Completion[]>
+  completions: Completion[]
   blockId: string
   handleSelectActiveCompletion: () => void
-  setActiveCompletion: MutableRefObject<React.Dispatch<React.SetStateAction<Completion | undefined>>>
-  setActiveCompletionIndex: MutableRefObject<React.Dispatch<React.SetStateAction<number>>>
-  activeCompletionIndex: MutableRefObject<number>
-  activeCompletion: MutableRefObject<Completion | undefined>
+  setActiveCompletion: React.Dispatch<React.SetStateAction<Completion | undefined>>
+  setActiveCompletionIndex: React.Dispatch<React.SetStateAction<number>>
+  activeCompletionIndex: number
+  activeCompletion: Completion | undefined
 }
 
 const COMPLETION_STYLE_META: {
@@ -121,7 +121,7 @@ const COMPLETION_STYLE_META: {
               {preview.examples.map((example, index) => (
                 <div key={index} className="autocomplete-preview-example">
                   <FormulaEditor
-                    content={codeFragmentsToJSONContent(example.codeFragments, blockId)}
+                    content={codeFragmentsToJSONContentTotal(example.codeFragments, blockId)}
                     editable={false}
                   />
                   <br />
@@ -141,7 +141,7 @@ const COMPLETION_STYLE_META: {
     render: (completion: Completion, blockId: string): React.ReactElement => {
       const { preview } = completion as VariableCompletion
       const content = preview.t.valid
-        ? codeFragmentsToJSONContent(preview.t.codeFragments, blockId)
+        ? codeFragmentsToJSONContentTotal(preview.t.codeFragments, blockId)
         : { type: 'doc', content: [{ type: 'text', text: preview.t.definition }] }
       return (
         <div className="formula-autocomplete-preview-variable">
@@ -177,13 +177,13 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
   activeCompletion,
   handleSelectActiveCompletion
 }) => {
-  const preview = activeCompletion.current
-    ? COMPLETION_STYLE_META[activeCompletion.current.kind].render(activeCompletion.current, blockId)
+  const preview = activeCompletion
+    ? COMPLETION_STYLE_META[activeCompletion.kind].render(activeCompletion, blockId)
     : 'Empty!'
 
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = event => {
     let newIndex: number
-    // TODO Column2 TAB cause error
+
     switch (event.key) {
       case 'Tab':
         handleSelectActiveCompletion()
@@ -192,58 +192,41 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
         handleSelectActiveCompletion()
         break
       case 'ArrowDown':
-        newIndex =
-          activeCompletionIndex.current + 1 > completions.current.length - 1 ? 0 : activeCompletionIndex.current + 1
-        setActiveCompletion.current(completions.current[newIndex])
-        setActiveCompletionIndex.current(newIndex)
+        newIndex = activeCompletionIndex + 1 > completions.length - 1 ? 0 : activeCompletionIndex + 1
+        setActiveCompletion(completions[newIndex])
+        setActiveCompletionIndex(newIndex)
         break
       case 'ArrowUp':
-        newIndex =
-          activeCompletionIndex.current - 1 < 0 ? completions.current.length - 1 : activeCompletionIndex.current - 1
-        setActiveCompletion.current(completions.current[newIndex])
-        setActiveCompletionIndex.current(newIndex)
+        newIndex = activeCompletionIndex - 1 < 0 ? completions.length - 1 : activeCompletionIndex - 1
+        setActiveCompletion(completions[newIndex])
+        setActiveCompletionIndex(newIndex)
         break
     }
-  }
-
-  const desc = (completion: Completion): string => {
-    if (completion.kind === 'function' && completion.namespace !== 'core') {
-      return completion.namespace
-    }
-    if (completion.kind === 'variable' && completion.namespace !== blockId) {
-      return completion.namespace
-    }
-    if (completion.kind === 'column') {
-      return completion.namespace
-    }
-    return ''
   }
 
   return (
     <div className="formula-autocomplete">
       <div className="formula-autocomplete-list">
-        {completions.current.map((completion, index) => {
+        {completions.map((completion, index) => {
           const styleMeta = COMPLETION_STYLE_META[completion.kind]
           return (
             <div
               role="button"
               tabIndex={-1}
               onClick={() => {
-                console.log('click 选中', completion)
-                setActiveCompletion.current(completion)
-                setActiveCompletionIndex.current(index)
+                setActiveCompletion(completion)
+                setActiveCompletionIndex(index)
               }}
               key={completion.value}
               onKeyDown={onKeyDown}
               className={cx('autocomplete-list-item', {
-                active: completion.value === activeCompletion.current?.value
-              })}
-            >
+                active: completion.value === activeCompletion?.value
+              })}>
               {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
               <div className="autocomplete-list-item-content">
                 <span className="autocomplete-list-item-name">{completion.name}</span>
                 <span className="autocomplete-list-item-desc">
-                  {completion.kind} {desc(completion)}
+                  {completion.kind} {completion.renderDescription(blockId)}
                 </span>
               </div>
             </div>

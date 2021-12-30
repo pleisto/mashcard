@@ -1,19 +1,19 @@
 import React, { MutableRefObject, useEffect } from 'react'
-import { Editor } from '@tiptap/core'
 import Document from '@tiptap/extension-document'
 import Text from '@tiptap/extension-text'
 import Paragraph from '@tiptap/extension-paragraph'
 import { useEditor, EditorContent, JSONContent } from '@tiptap/react'
-import { CodeFragmentBlockExtension } from './extensions/codeFragment'
 import { HandleKeyDownExtension, KeyDownHandlerType } from './extensions/handleKeyDown'
 import './FormulaEditor.less'
+import { FormulaTypeExtension } from './extensions/formulaType'
+import { contentArrayToInput, fetchJSONContentArray } from '../../../helpers'
 
 export interface FormulaEditorProps {
   content: JSONContent | undefined
   editable: boolean
   position?: MutableRefObject<number>
   updatePosition?: MutableRefObject<React.Dispatch<React.SetStateAction<number>>>
-  updateContent?: (editor: Editor) => void
+  updateContent?: (text: string) => void
   keyDownHandler?: KeyDownHandlerType
 }
 
@@ -30,15 +30,19 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
 }) => {
   const editor = useEditor({
     editable,
-    extensions: [Document, Text, Paragraph, CodeFragmentBlockExtension, HandleKeyDownExtension(keyDownHandler)],
+    extensions: [
+      Document,
+      Text,
+      Paragraph,
+      FormulaTypeExtension.configure({ editable }),
+      HandleKeyDownExtension(keyDownHandler)
+    ],
     onUpdate: ({ editor, transaction }) => {
-      updateContent?.(editor)
-      if (transaction.selection.from === transaction.selection.to) {
-        const position = transaction.selection.from - 1
-
+      const jsonContent = editor.getJSON()
+      const text = `=${contentArrayToInput(fetchJSONContentArray(jsonContent))}`
+      const position = transaction.selection.from - 1
+      if (transaction.selection.from === transaction.selection.to && position >= 1) {
         updatePosition?.current(position)
-
-        if (position < 1) return
         const blocks: JSONContent[] = editor.getJSON().content?.[0].content ?? []
         let length = 0
 
@@ -61,12 +65,13 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
           length += blockLength
         }
       }
+
+      updateContent?.(text)
     }
   })
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && content) {
-      // console.log({ pos: pos?.current })
       if (pos) {
         editor
           .chain()
@@ -76,9 +81,10 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
       } else {
         editor.commands.replaceRoot(content)
       }
-      // console.log({ content, editor, label: 'after replace root' })
+
+      if (editable) console.log({ content, editor, pos: pos?.current, label: 'after replace root' })
     }
-  }, [editor, content, pos])
+  }, [editor, content, pos, editable])
 
   return (
     <>

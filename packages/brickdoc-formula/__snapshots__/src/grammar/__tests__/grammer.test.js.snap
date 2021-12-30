@@ -5,8 +5,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -14,8 +14,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -23,8 +23,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -32,8 +32,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"foo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -41,8 +41,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -50,8 +50,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -59,8 +59,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -68,8 +68,8 @@ Array [
   Object {
     "code": "NullLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "null",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "null",
@@ -77,8 +77,8 @@ Array [
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -86,8 +86,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -95,8 +95,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "Map",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -104,8 +104,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -113,8 +113,8 @@ Array [
   Object {
     "code": "LambdaArgumentNumber",
     "errors": Array [],
-    "meta": undefined,
     "name": "$1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "Reference",
@@ -122,8 +122,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -136,8 +136,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -145,8 +145,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -154,8 +154,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -163,8 +163,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"foo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -172,8 +172,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -181,8 +181,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -190,8 +190,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -199,8 +199,8 @@ Array [
   Object {
     "code": "NullLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "null",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "null",
@@ -208,8 +208,8 @@ Array [
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -217,8 +217,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -226,8 +226,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "Map",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -235,8 +235,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -244,8 +244,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -253,8 +253,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "Array",
@@ -267,8 +267,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -276,8 +276,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -285,8 +285,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -294,8 +294,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"foo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -303,8 +303,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -312,8 +312,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -321,8 +321,8 @@ Array [
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -337,15 +337,15 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
         "message": "TODO mismatch token parenthesisExpression",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -353,8 +353,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -369,15 +369,15 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
         "message": "TODO mismatch token parenthesisExpression",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -385,8 +385,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -401,7 +401,7 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
         "message": "Miss argument",
@@ -409,11 +409,11 @@ Array [
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "ABS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -423,11 +423,11 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -442,15 +442,15 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "ABS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -460,11 +460,11 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -472,8 +472,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -488,36 +488,15 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ''",
-        "type": "syntax",
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "POWER",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -527,11 +506,11 @@ but found: ''",
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -544,8 +523,8 @@ but found: ''",
         "type": "syntax",
       },
     ],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -558,8 +537,8 @@ but found: ''",
         "type": "syntax",
       },
     ],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -574,15 +553,15 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "POWER",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -592,11 +571,11 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -604,8 +583,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -613,8 +592,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -622,8 +601,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -636,8 +615,8 @@ Array [
   Object {
     "code": "GreaterThanEqual",
     "errors": Array [],
-    "meta": undefined,
     "name": ">=",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -650,8 +629,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -889,8 +868,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -903,33 +882,12 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ''",
-        "type": "syntax",
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -942,8 +900,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -951,8 +909,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -960,8 +918,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -975,33 +933,12 @@ Array [
     "code": "other",
     "errors": Array [
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ''hello''",
-        "type": "syntax",
+        "message": "Parse error: \\"'hello'\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "'hello'",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1019,8 +956,8 @@ Array [
         "type": "deps",
       },
     ],
-    "meta": undefined,
     "name": "AVERAGE",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1028,8 +965,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1037,8 +974,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -1056,17 +993,12 @@ Array [
         "type": "type",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [Sharp]
-  2. [LambdaArgumentNumber]
-  3. [Self]
-  4. [Input]
-but found: '123'",
-        "type": "syntax",
+        "message": "Parse error: \\"123\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "\\"foo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1074,8 +1006,8 @@ but found: '123'",
   Object {
     "code": "And",
     "errors": Array [],
-    "meta": undefined,
     "name": "&&",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1088,8 +1020,8 @@ but found: '123'",
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "&",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1098,17 +1030,12 @@ but found: '123'",
     "code": "other",
     "errors": Array [
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [Sharp]
-  2. [LambdaArgumentNumber]
-  3. [Self]
-  4. [Input]
-but found: '123'",
-        "type": "syntax",
+        "message": "Parse error: \\"123\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "123",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1121,8 +1048,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1130,8 +1057,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1144,8 +1071,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "START_WITH",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1153,8 +1080,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1162,8 +1089,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"123\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1171,8 +1098,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "boolean",
@@ -1185,8 +1112,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1.",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1195,12 +1122,12 @@ Array [
     "code": "other",
     "errors": Array [
       Object {
-        "message": "TODO build not all input parsed :3",
-        "type": "syntax",
+        "message": "Not all input parsed: START_WITH",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "START_WITH(\\"123\\")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1214,33 +1141,12 @@ Array [
     "code": "other",
     "errors": Array [
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: '中文'",
-        "type": "syntax",
+        "message": "Parse error: \\"中文\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "中文",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1259,11 +1165,11 @@ Array [
       },
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "varvarabc",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1273,11 +1179,11 @@ Array [
     "errors": Array [
       Object {
         "message": "TODO mismatch token FunctionCall",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "中文var",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1289,18 +1195,32 @@ exports[`Simple test case [TODO missing suffix expression] =1+ // => ✗ 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
-    "errors": Array [],
-    "meta": undefined,
+    "errors": Array [
+      Object {
+        "message": "Missing right expression",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
+      },
+    ],
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
   },
   Object {
     "code": "Plus",
-    "errors": Array [],
-    "meta": undefined,
+    "errors": Array [
+      Object {
+        "message": "Missing right expression",
+        "type": "syntax",
+      },
+    ],
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -1313,8 +1233,8 @@ Array [
   Object {
     "code": "Not",
     "errors": Array [],
-    "meta": undefined,
     "name": "not",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1322,8 +1242,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1336,8 +1256,8 @@ Array [
   Object {
     "code": "Equal2",
     "errors": Array [],
-    "meta": undefined,
     "name": "==",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1345,8 +1265,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1361,15 +1281,15 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "syntax",
+        "type": "parse",
       },
       Object {
         "message": "TODO mismatch token recordExpression",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "{",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1379,11 +1299,11 @@ Array [
     "errors": Array [
       Object {
         "message": "TODO mismatch token recordExpression",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "1:\\"a\\"}",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1402,11 +1322,11 @@ Array [
       },
       Object {
         "message": "TODO mismatch token NumberLiteralExpression",
-        "type": "syntax",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "-",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1419,8 +1339,8 @@ Array [
   Object {
     "code": "LBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "[",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1433,33 +1353,12 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ']'",
-        "type": "syntax",
+        "message": "Parse error: \\"]\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1472,8 +1371,8 @@ but found: ']'",
         "type": "syntax",
       },
     ],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1481,8 +1380,8 @@ but found: ']'",
   Object {
     "code": "RBracket",
     "errors": Array [],
-    "meta": undefined,
     "name": "]",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1495,8 +1394,8 @@ Array [
   Object {
     "code": "Minus",
     "errors": Array [],
-    "meta": undefined,
     "name": "-",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1504,8 +1403,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "0.123",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1513,8 +1412,8 @@ Array [
   Object {
     "code": "Sign",
     "errors": Array [],
-    "meta": undefined,
     "name": "%",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1527,8 +1426,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"foo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1536,8 +1435,8 @@ Array [
   Object {
     "code": "Dot",
     "errors": Array [],
-    "meta": undefined,
     "name": ".",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1545,8 +1444,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "START_WITH",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1554,8 +1453,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1568,8 +1467,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "123",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1577,8 +1476,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "boolean",
@@ -1591,8 +1490,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1605,8 +1504,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1619,8 +1518,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "=",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1633,8 +1532,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1642,8 +1541,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "boolean",
@@ -1651,8 +1550,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1660,8 +1559,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1674,8 +1573,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1683,8 +1582,8 @@ Array [
   Object {
     "code": "Equal",
     "errors": Array [],
-    "meta": undefined,
     "name": "=",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1692,8 +1591,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1701,8 +1600,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1710,8 +1609,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1724,8 +1623,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1733,8 +1632,8 @@ Array [
   Object {
     "code": "GreaterThan",
     "errors": Array [],
-    "meta": undefined,
     "name": ">",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1742,8 +1641,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1751,8 +1650,8 @@ Array [
   Object {
     "code": "Equal",
     "errors": Array [],
-    "meta": undefined,
     "name": "=",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -1760,8 +1659,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1779,8 +1678,8 @@ Array [
         "type": "deps",
       },
     ],
-    "meta": undefined,
     "name": "if",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1788,8 +1687,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1797,8 +1696,8 @@ Array [
   Object {
     "code": "BooleanLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "true",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "boolean",
@@ -1806,8 +1705,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1815,8 +1714,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1824,8 +1723,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -1833,8 +1732,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1842,8 +1741,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -1851,8 +1750,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"2\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1860,8 +1759,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "any",
@@ -1874,8 +1773,8 @@ Array [
   Object {
     "code": "StringLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "\\"hel\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "string",
@@ -1884,12 +1783,12 @@ Array [
     "code": "other",
     "errors": Array [
       Object {
-        "message": "TODO build not all input parsed :7",
-        "type": "syntax",
+        "message": "Not all input parsed: lo",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "lo\\"",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -1902,8 +1801,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1911,8 +1810,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -1920,8 +1819,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1934,8 +1833,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1943,8 +1842,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -1952,8 +1851,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1961,8 +1860,8 @@ Array [
   Object {
     "code": "Multi",
     "errors": Array [],
-    "meta": undefined,
     "name": "*",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -1970,8 +1869,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -1989,58 +1888,16 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ';'",
-        "type": "syntax",
+        "message": "Parse error: \\";\\"",
+        "type": "parse",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ''",
-        "type": "syntax",
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2053,8 +1910,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2062,8 +1919,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "123",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2076,8 +1933,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2085,8 +1942,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2094,8 +1951,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2108,33 +1965,12 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "Expecting: one of these possible Token sequences:
-  1. [EqualCompareOperator]
-  2. [CompareOperator]
-  3. [Sharp, UUID, Sharp, UUID, EqualCompareOperator]
-  4. [Sharp, UUID, Sharp, UUID, CompareOperator]
-  5. [Ampersand]
-  6. [LParen]
-  7. [LBracket]
-  8. [LBrace]
-  9. [Minus]
-  10. [NumberLiteral]
-  11. [BooleanLiteral]
-  12. [StringLiteral]
-  13. [NullLiteral]
-  14. [LambdaArgumentNumber]
-  15. [Self]
-  16. [Input]
-  17. [FunctionName]
-  18. [Sharp, UUID, At]
-  19. [Sharp, UUID, Sharp, UUID]
-  20. [Sharp, UUID]
-but found: ''",
-        "type": "syntax",
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2147,8 +1983,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "ABS",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2156,8 +1992,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2165,8 +2001,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2174,8 +2010,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2183,8 +2019,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2192,8 +2028,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2201,8 +2037,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2210,8 +2046,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2219,8 +2055,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -2228,8 +2064,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2237,8 +2073,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -2246,8 +2082,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -2260,8 +2096,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2269,8 +2105,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2278,8 +2114,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2287,8 +2123,8 @@ Array [
   Object {
     "code": "Semicolon",
     "errors": Array [],
-    "meta": undefined,
     "name": ";",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "any",
@@ -2296,8 +2132,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2305,8 +2141,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2314,8 +2150,8 @@ Array [
   Object {
     "code": "Plus",
     "errors": Array [],
-    "meta": undefined,
     "name": "+",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -2323,8 +2159,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2332,8 +2168,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -2346,8 +2182,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1.",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2360,8 +2196,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1.",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2370,12 +2206,12 @@ Array [
     "code": "other",
     "errors": Array [
       Object {
-        "message": "TODO build not all input parsed :3",
-        "type": "syntax",
+        "message": "Not all input parsed: T",
+        "type": "parse",
       },
     ],
-    "meta": undefined,
     "name": "T()",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2388,8 +2224,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "AVERAGE",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2397,8 +2233,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2406,8 +2242,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2415,8 +2251,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -2429,8 +2265,8 @@ Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "meta": undefined,
     "name": "AVERAGE",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -2438,8 +2274,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2447,8 +2283,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "1",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2456,8 +2292,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2465,8 +2301,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2474,8 +2310,8 @@ Array [
   Object {
     "code": "Comma",
     "errors": Array [],
-    "meta": undefined,
     "name": ",",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2483,8 +2319,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "3",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2492,8 +2328,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "number",
@@ -2506,8 +2342,8 @@ Array [
   Object {
     "code": "NumberLiteral",
     "errors": Array [],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2515,8 +2351,8 @@ Array [
   Object {
     "code": "Multi",
     "errors": Array [],
-    "meta": undefined,
     "name": "*",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "number",
@@ -2524,8 +2360,8 @@ Array [
   Object {
     "code": "LParen",
     "errors": Array [],
-    "meta": undefined,
     "name": "(",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": false,
     "type": "any",
@@ -2538,8 +2374,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "2",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2552,8 +2388,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "=",
+    "render": undefined,
     "spaceAfter": true,
     "spaceBefore": true,
     "type": "boolean",
@@ -2566,8 +2402,8 @@ Array [
         "type": "type",
       },
     ],
-    "meta": undefined,
     "name": "4",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "number",
@@ -2575,8 +2411,8 @@ Array [
   Object {
     "code": "RParen",
     "errors": Array [],
-    "meta": undefined,
     "name": ")",
+    "render": undefined,
     "spaceAfter": false,
     "spaceBefore": true,
     "type": "boolean",

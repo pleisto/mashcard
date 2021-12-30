@@ -52,7 +52,7 @@ export interface FormulaContextArgs {
 const matchRegex =
   // eslint-disable-next-line max-len
   /(str|num|bool|record|blank|cst|array|null|void|date|predicate|reference|spreadsheet|function|column|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
-export const FormulaTypeCastName: { [key in FormulaType]: SpecialDefaultVariableName } = {
+export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName> = {
   string: 'str',
   number: 'num',
   boolean: 'bool',
@@ -86,16 +86,16 @@ const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
     [value]: key
   }),
   {}
-) as { [key in SpecialDefaultVariableName]: FormulaType }
+) as Record<SpecialDefaultVariableName, FormulaType>
 
 export class FormulaContext implements ContextInterface {
   features: Features
-  context: { [key: VariableKey]: VariableInterface } = {}
-  functionWeights: { [key: FunctionKey]: number } = {}
-  variableWeights: { [key: VariableKey]: number } = {}
-  databases: { [key: NamespaceId]: DatabaseType } = {}
-  blockNameMap: { [key: NamespaceId]: string } = {}
-  variableNameCounter: { [key in FormulaType]: { [n: NamespaceId]: number } } = {
+  context: Record<VariableKey, VariableInterface> = {}
+  functionWeights: Record<FunctionKey, number> = {}
+  variableWeights: Record<VariableKey, number> = {}
+  databases: Record<NamespaceId, DatabaseType> = {}
+  blockNameMap: Record<NamespaceId, string> = {}
+  variableNameCounter: Record<FormulaType, Record<NamespaceId, number>> = {
     string: {},
     number: {},
     Button: {},
@@ -123,9 +123,9 @@ export class FormulaContext implements ContextInterface {
     any: {}
   }
 
-  reverseVariableDependencies: { [key: VariableKey]: VariableDependency[] } = {}
-  reverseFunctionDependencies: { [key: FunctionKey]: VariableDependency[] } = {}
-  functionClausesMap: { [key: FunctionKey]: FunctionClause<any> }
+  reverseVariableDependencies: Record<VariableKey, VariableDependency[]> = {}
+  reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]> = {}
+  functionClausesMap: Record<FunctionKey, FunctionClause<any>>
   backendActions: BackendActions | undefined
   reservedNames: string[] = []
 
@@ -140,7 +140,7 @@ export class FormulaContext implements ContextInterface {
 
     this.reservedNames = baseFunctionClauses.map(({ name }) => name.toUpperCase())
     this.functionClausesMap = baseFunctionClauses.reduce(
-      (o: { [key: FunctionKey]: BaseFunctionClauseWithKey<any> }, acc: BaseFunctionClause<any>) => {
+      (o: Record<FunctionKey, BaseFunctionClauseWithKey<any>>, acc: BaseFunctionClause<any>) => {
         const clause: BaseFunctionClauseWithKey<any> = {
           ...acc,
           key: buildFunctionKey(acc.group, acc.name)
@@ -149,10 +149,10 @@ export class FormulaContext implements ContextInterface {
         return o
       },
       {}
-    ) as { [key: FunctionKey]: FunctionClause<any> }
+    ) as Record<FunctionKey, FunctionClause<any>>
 
     this.functionClausesMap = Object.values(this.functionClausesMap).reduce(
-      (o: { [key: FunctionKey]: FunctionClause<any> }, acc: FunctionClause<any>) => {
+      (o: Record<FunctionKey, FunctionClause<any>>, acc: FunctionClause<any>) => {
         o[acc.key] = {
           ...acc,
           examples: acc.examples.map(e => ({ ...e, codeFragments: this.parseCodeFragments(e.input) })) as [

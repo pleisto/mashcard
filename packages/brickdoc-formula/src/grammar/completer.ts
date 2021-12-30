@@ -1,14 +1,5 @@
 import type { IToken } from 'chevrotain'
-import {
-  CodeFragment,
-  Completion,
-  ContextInterface,
-  FormulaType,
-  NamespaceId,
-  SpreadsheetCodeFragment,
-  spreadsheetKey,
-  VariableId
-} from '..'
+import { CodeFragment, Completion, ContextInterface, FormulaType, NamespaceId, spreadsheetKey, VariableId } from '..'
 
 export interface CompleteInput {
   readonly tokens: IToken[]
@@ -68,8 +59,7 @@ export const complete = ({
 
       if (last2CodeFragment.code === 'Spreadsheet') {
         completions = completions.map(c => {
-          return c.kind === 'column' &&
-            c.preview.namespaceId === (last2CodeFragment as SpreadsheetCodeFragment).meta.blockId
+          return c.kind === 'column' && c.preview.namespaceId === last2CodeFragment.namespaceId
             ? { ...c, weight: c.weight + 1000 }
             : c
         })
