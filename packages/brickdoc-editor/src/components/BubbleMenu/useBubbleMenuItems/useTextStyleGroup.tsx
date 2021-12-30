@@ -1,13 +1,13 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarOption, ToolbarSectionOption } from '../../Toolbar'
+import { ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { BubbleItemMeta, isBubbleMenuVisible } from './useBubbleMenuItems'
 
-export function useTextStyleSection(): [ToolbarOption | ToolbarSectionOption | null] {
+export function useTextStyleGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { t, editor } = React.useContext(EditorContext)
 
-  const option = React.useMemo<ToolbarOption | ToolbarSectionOption | null>(() => {
+  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const textStyleItems: BubbleItemMeta[] = [
@@ -46,8 +46,8 @@ export function useTextStyleSection(): [ToolbarOption | ToolbarSectionOption | n
       }
     ]
 
-    const textStyleSection: ToolbarSectionOption = {
-      type: 'section',
+    const textStyleGroup: ToolbarGroupOption = {
+      type: 'group',
       items: textStyleItems.map(item => ({
         type: 'item',
         name: item.name,
@@ -59,7 +59,7 @@ export function useTextStyleSection(): [ToolbarOption | ToolbarSectionOption | n
       }))
     }
 
-    return textStyleSection
+    return textStyleGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection])
 

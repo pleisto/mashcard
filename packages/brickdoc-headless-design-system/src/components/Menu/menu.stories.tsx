@@ -9,11 +9,8 @@ export default {
     className: {
       description: '`string`'
     },
-    children: {
-      description: '`ReactElement[]`'
-    },
     onAction: {
-      description: '`(key: ReactKey) => void`'
+      description: '`(key: React.Key) => void`'
     }
   },
   parameters: {
@@ -42,7 +39,7 @@ Basic.args = {
   'aria-label': 'menu',
   className: 'menu',
   children: [
-    <Menu.Item itemKey="one" key="one" label="One">
+    <Menu.Item itemKey="one" key="one" title="One">
       One
     </Menu.Item>,
     <Menu.Item itemKey="two" key="two">
@@ -54,12 +51,12 @@ Basic.args = {
   ]
 }
 
-export const withSection = Template.bind({})
-withSection.args = {
+export const withGroup = Template.bind({})
+withGroup.args = {
   'aria-label': 'menu',
   className: 'menu',
   children: [
-    <Menu.Section key="section" title="section one">
+    <Menu.Group key="section" title="section one">
       <Menu.Item itemKey="one" key="one">
         One
       </Menu.Item>
@@ -69,8 +66,9 @@ withSection.args = {
       <Menu.Item itemKey="three" key="three">
         Three
       </Menu.Item>
-    </Menu.Section>,
-    <Menu.Section key="section two" title="section two">
+    </Menu.Group>,
+    <Menu.Separator key="separator" />,
+    <Menu.Group key="section two" title="section two">
       <Menu.Item itemKey="four" key="four">
         four
       </Menu.Item>
@@ -80,6 +78,28 @@ withSection.args = {
       <Menu.Item itemKey="six" key="six">
         six
       </Menu.Item>
-    </Menu.Section>
+    </Menu.Group>
+  ]
+}
+
+export const subMenu = Template.bind({})
+subMenu.args = {
+  'aria-label': 'menu',
+  className: 'menu',
+  children: [
+    <Menu.Item itemKey="one" key="one">
+      One
+    </Menu.Item>,
+    <Menu.Item itemKey="two" key="two">
+      Two
+    </Menu.Item>,
+    <Menu.SubMenuItem label="Three" itemKey="three" key="three">
+      <Menu.Item itemKey="four" key="four">
+        Four
+      </Menu.Item>
+      <Menu.Item itemKey="five" key="five">
+        Five
+      </Menu.Item>
+    </Menu.SubMenuItem>
   ]
 }

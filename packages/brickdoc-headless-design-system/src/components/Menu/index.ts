@@ -1,3 +1,4 @@
 export * from './menu'
-export type { MenuItemProps } from './item'
-export type { MenuSectionProps } from './section'
+export type { MenuItemProps } from './menuItem'
+export type { MenuGroupProps } from './menuGroup'
+export type { MenuSeparatorProps } from './menuSeparator'

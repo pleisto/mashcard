@@ -1,15 +1,5 @@
 import React from 'react'
-import {
-  Button,
-  Dropdown,
-  Icon,
-  Input,
-  DeprecatedMenu as Menu,
-  DeprecatedMenuProps as MenuProps,
-  toast,
-  Popover,
-  Tooltip
-} from '@brickdoc/design-system'
+import { Button, Dropdown, Icon, Input, Menu, MenuProps, toast, Popover, Tooltip } from '@brickdoc/design-system'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -191,31 +181,29 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     />
   )
 
-  const onClickMenu = (): MenuProps['onClick'] => {
-    return async ({ key }) => {
-      switch (key) {
-        case 'delete':
-          void deletePage()
-          break
-        case 'copy_link':
-          void doCopyLink()
-          break
-        case 'duplicate':
-          void duDuplicate()
-          break
-        case 'rename':
-          // TODO focus and select all
-          // inputRef.current.focus({ preventScroll: true })
-          setDropdownVisible(false)
-          setPopoverVisible(true)
-          break
-        case 'pin':
-          void doPin()
-          break
-        default:
-          console.log(`unknown key ${key}`)
-          break
-      }
+  const onClickMenu: MenuProps['onAction'] = async key => {
+    switch (key) {
+      case 'delete':
+        void deletePage()
+        break
+      case 'copy_link':
+        void doCopyLink()
+        break
+      case 'duplicate':
+        void duDuplicate()
+        break
+      case 'rename':
+        // TODO focus and select all
+        // inputRef.current.focus({ preventScroll: true })
+        setDropdownVisible(false)
+        setPopoverVisible(true)
+        break
+      case 'pin':
+        void doPin()
+        break
+      default:
+        console.log(`unknown key ${key}`)
+        break
     }
   }
 
@@ -231,21 +219,21 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   }
 
   const menu = (
-    <Menu onClick={onClickMenu()}>
-      <Menu.Item key="pin" icon={pin ? <Icon.Pin /> : <Icon.Unpin />} disabled={blockPinLoading}>
+    <Menu onAction={onClickMenu}>
+      <Menu.Item itemKey="pin" icon={pin ? <Icon.Pin /> : <Icon.Unpin />} disabled={blockPinLoading}>
         {t(pin ? 'pin.remove' : 'pin.add')}
       </Menu.Item>
-      <Menu.Item key="copy_link" icon={copied ? <Icon.Check /> : <Icon.Link />}>
+      <Menu.Item itemKey="copy_link" icon={copied ? <Icon.Check /> : <Icon.Link />}>
         {t(copied ? 'copy_link.copied' : 'copy_link.button')}
       </Menu.Item>
-      <Menu.Item key="duplicate" icon={<Icon.Copy />} disabled={blockDuplicateLoading}>
+      <Menu.Item itemKey="duplicate" icon={<Icon.Copy />} disabled={blockDuplicateLoading}>
         {t('duplicate.button')}
       </Menu.Item>
-      <Menu.Item key="rename" icon={<Icon.Edit />} disabled={renameBlockLoading}>
+      <Menu.Item itemKey="rename" icon={<Icon.Edit />} disabled={renameBlockLoading}>
         {t('blocks.rename')}
       </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item danger key="delete" icon={<Icon.Delete />} disabled={blockDeleteLoading}>
+      <Menu.Separator />
+      <Menu.Item danger itemKey="delete" icon={<Icon.Delete />} disabled={blockDeleteLoading}>
         {t('blocks.delete')}
       </Menu.Item>
     </Menu>
@@ -264,8 +252,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
-      className={styles.title}
-    >
+      className={styles.title}>
       <Link to={linkPath}>{title}</Link>
     </Popover>
   )
@@ -276,8 +263,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         trigger={['contextMenu']}
         overlay={menu}
         visible={dropdownVisible}
-        onVisibleChange={onDropdownVisibleChange}
-      >
+        onVisibleChange={onDropdownVisibleChange}>
         <div className={styles.menu}>
           {linkData}
           <div>
@@ -292,8 +278,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
                 type="text"
                 onClick={onPressAddSubPage}
                 loading={createBlockLoading}
-                disabled={createBlockLoading}
-              >
+                disabled={createBlockLoading}>
                 <Icon.Add />
               </Button>
             </Tooltip>

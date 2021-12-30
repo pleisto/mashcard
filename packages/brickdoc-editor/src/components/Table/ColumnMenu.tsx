@@ -1,6 +1,6 @@
 import React from 'react'
 import { TableColumnType } from 'react-table'
-import { Popover, Modal, DeprecatedMenu as Menu, Input, Icon } from '@brickdoc/design-system'
+import { Popover, Modal, Menu, Input, Icon } from '@brickdoc/design-system'
 import { COLUMN_TYPE } from './columnType'
 import { useEditorI18n } from '../../hooks'
 
@@ -55,7 +55,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
         destroyTooltipOnHide={true}
         content={
           <Menu className="table-block-menu">
-            <Menu.Item key="Header" className="table-block-menu-item input-item">
+            <Menu.Item itemKey="Header" className="table-block-menu-item input-item">
               <Input
                 onFocus={e => {
                   e.target.setSelectionRange(0, e.target.value?.length ?? 0)
@@ -65,34 +65,43 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
                 value={columnName}
               />
             </Menu.Item>
-            <Menu.ItemGroup title={t('table.column_type')}>
-              <Menu.SubMenu
-                key="type"
+            <Menu.Group label={t('table.column_type')}>
+              <Menu.SubMenuItem
+                itemKey="type"
                 className="table-block-menu-submenu-title"
-                title={
-                  <>
+                title={t(`table.column_types.${currentColumnType.type}`)}
+                label={
+                  <span>
                     {React.createElement(currentColumnType.icon)}
                     <span>{t(`table.column_types.${currentColumnType.type}`)}</span>
-                  </>
-                }>
-                <Menu.ItemGroup title={t('table.column_types.basic')}>
+                  </span>
+                }
+              >
+                <Menu.Group title={t('table.column_types.basic')}>
                   {COLUMN_TYPE.map(type => (
-                    <Menu.Item key={type.type} onClick={() => handleUpdateColumnType(type.type)}>
-                      {React.createElement(type.icon)}
-                      <span>{t(`table.column_types.${type.type}`)}</span>
-                    </Menu.Item>
+                    <Menu.Item
+                      icon={React.createElement(type.icon)}
+                      label={<span>{t(`table.column_types.${type.type}`)}</span>}
+                      key={type.type}
+                      itemKey={type.type}
+                      onClick={() => handleUpdateColumnType(type.type)}
+                    />
                   ))}
-                </Menu.ItemGroup>
-              </Menu.SubMenu>
-            </Menu.ItemGroup>
-            <Menu.Item onClick={removeColumnConfirm} className="table-block-menu-item" key="Delete">
-              <Icon.Delete />
-              <span>{t('table.remove_column.text')}</span>
-            </Menu.Item>
+                </Menu.Group>
+              </Menu.SubMenuItem>
+            </Menu.Group>
+            <Menu.Item
+              onClick={removeColumnConfirm}
+              className="table-block-menu-item"
+              itemKey="Delete"
+              icon={<Icon.Delete />}
+              label={<span>{t('table.remove_column.text')}</span>}
+            />
           </Menu>
         }
         trigger="click"
-        placement="bottomLeft">
+        placement="bottomLeft"
+      >
         {children}
       </Popover>
     </>

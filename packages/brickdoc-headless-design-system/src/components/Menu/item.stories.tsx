@@ -6,13 +6,20 @@ export default {
   title: 'Components/Menu/Item',
   component: Menu.Item,
   args: {
+    itemKey: 'key',
     label: 'label',
     description: 'description',
     tip: '',
-    key: 'item',
-    danger: false
+    danger: false,
+    active: false
   },
   argTypes: {
+    itemKey: {
+      type: 'string'
+    },
+    className: {
+      description: '`string`'
+    },
     label: {
       description: '`string | React.ReactElement`'
     },
@@ -25,14 +32,14 @@ export default {
     tip: {
       description: '`string | React.ReactElement`'
     },
-    key: {
-      type: 'string'
-    },
     danger: {
       type: 'boolean'
     },
+    active: {
+      type: 'boolean'
+    },
     onAction: {
-      description: '`(key: ReactKey) => void`'
+      description: '`(key: React.Key) => void`'
     }
   },
   parameters: {
@@ -58,6 +65,11 @@ const Template: ComponentStory<typeof Menu.Item> = args => (
 
 export const Basic = Template.bind({})
 Basic.args = {}
+
+export const active = Template.bind({})
+active.args = {
+  active: true
+}
 
 export const withIcon = Template.bind({})
 withIcon.args = {

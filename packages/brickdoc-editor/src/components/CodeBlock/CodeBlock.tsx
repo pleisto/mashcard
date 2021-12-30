@@ -41,7 +41,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
 
   const actionOptions: BlockContainerProps['actionOptions'] = [
     {
-      type: 'section',
+      type: 'group',
       items: [
         {
           type: 'dropdown',
@@ -65,7 +65,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
       ]
     },
     {
-      type: 'section',
+      type: 'group',
       items: [
         {
           type: 'item',

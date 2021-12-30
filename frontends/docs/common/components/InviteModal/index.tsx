@@ -1,16 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import {
-  Button,
-  Dropdown,
-  DeprecatedMenu as Menu,
-  DeprecatedMenuProps as MenuProps,
-  Modal,
-  Icon,
-  Select,
-  Spin,
-  Tag
-} from '@brickdoc/design-system'
+import { Button, Dropdown, Menu, MenuProps, Modal, Icon, Select, Spin, Tag } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockCreateShareLinkInput,
@@ -79,22 +69,28 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
     setVisible(false)
   }
 
-  const onClickMenu: MenuProps['onClick'] = ({ key }): void => {
+  const onClickMenu: MenuProps['onAction'] = (key): void => {
     setCurrentPolicy(key as Policytype)
   }
 
   const policyMessage = currentPolicy === Policytype.Edit ? t('invite.edit_message') : t('invite.view_message')
 
   const menu = (
-    <Menu onClick={onClickMenu} selectedKeys={[currentPolicy]}>
-      <Menu.Item className={styles.menuItem} key={Policytype.View}>
-        <div className={styles.head}>{t('invite.view_message')}</div>
-        <div className={styles.desc}>{t('invite.view_message_description')}</div>
-      </Menu.Item>
-      <Menu.Item className={styles.menuItem} key={Policytype.Edit}>
-        <div className={styles.head}>{t('invite.edit_message')}</div>
-        <div className={styles.desc}>{t('invite.edit_message_description')}</div>
-      </Menu.Item>
+    <Menu onAction={onClickMenu}>
+      <Menu.Item
+        label={t('invite.view_message')}
+        description={t('invite.view_message_description')}
+        active={currentPolicy === Policytype.View}
+        className={styles.menuItem}
+        itemKey={Policytype.View}
+      />
+      <Menu.Item
+        label={t('invite.edit_message')}
+        description={t('invite.edit_message_description')}
+        active={currentPolicy === Policytype.Edit}
+        className={styles.menuItem}
+        itemKey={Policytype.Edit}
+      />
     </Menu>
   )
   const policyDropdown = (

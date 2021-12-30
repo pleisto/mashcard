@@ -2,15 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import {
-  Dropdown,
-  Skeleton,
-  DeprecatedMenu as Menu,
-  DeprecatedMenuProps as MenuProps,
-  Tooltip,
-  Button,
-  ButtonProps
-} from '@brickdoc/design-system'
+import { Dropdown, Skeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
 import { PodCard } from '@/common/components/PodCard'
 import { Setting, Change } from '@brickdoc/design-system/components/icon'
 import { useDocsI18n } from '../../hooks'
@@ -44,7 +36,7 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
     }
   }
 
-  const onClick: MenuProps['onClick'] = async ({ key }) => {
+  const onClick: MenuProps['onAction'] = async key => {
     const signOutInput: UserSignOutInput = {}
     switch (key) {
       case 'pod-create':
@@ -67,25 +59,25 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
   }
 
   const dropdown = (
-    <Menu onClick={onClick} selectedKeys={[`pod-${pod.webid}`]}>
-      <Menu.ItemGroup title={<small>@{currentUser?.webid ?? 'undefined'}</small>}>
-        {data?.pods.map(pod => (
-          <Menu.Item key={`pod-${pod.webid}`}>
+    <Menu onAction={onClick}>
+      <Menu.Group label={<small>@{currentUser?.webid ?? 'undefined'}</small>}>
+        {data?.pods.map(p => (
+          <Menu.Item active={p.webid === pod.webid} itemKey={`pod-${p.webid}`} key={p.webid}>
             <div className={styles.menu}>
-              <PodCard pod={pod} label={pod.personal ? 'Personal Pod' : false} />
-              <Tooltip title={t(pod.personal ? 'user_setting.text' : 'pod_setting.text')}>
-                <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(pod.webid)}>
+              <PodCard pod={p} label={p.personal ? 'Personal Pod' : false} />
+              <Tooltip title={t(p.personal ? 'user_setting.text' : 'pod_setting.text')}>
+                <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(p.webid)}>
                   <Setting />
                 </Button>
               </Tooltip>
             </div>
           </Menu.Item>
         ))}
-      </Menu.ItemGroup>
-      <Menu.Divider />
-      <Menu.Item key="pod-create">{t('menu.create_new_pod')}</Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="logout" danger>
+      </Menu.Group>
+      <Menu.Separator />
+      <Menu.Item itemKey="pod-create">{t('menu.create_new_pod')}</Menu.Item>
+      <Menu.Separator />
+      <Menu.Item itemKey="logout" danger>
         {t('menu.logout')}
       </Menu.Item>
     </Menu>

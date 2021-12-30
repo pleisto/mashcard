@@ -75,15 +75,7 @@ export { default as List } from './list'
 // export type { ArgsProps as MessageArgsProps } from './message'
 // export { default as message } from './message'
 
-export type {
-  MenuProps as DeprecatedMenuProps,
-  MenuTheme as DeprecatedMenuTheme,
-  SubMenuProps as DeprecatedSubMenuProps,
-  MenuItemProps as DeprecatedMenuItemProps
-} from './menu/deprecated'
-export { default as DeprecatedMenu } from './menu/deprecated'
-
-export type { MenuProps, MenuSectionProps, MenuItemProps } from './menu'
+export type { MenuProps, MenuGroupProps, MenuSeparatorProps, MenuItemProps } from './menu'
 export { Menu } from './menu'
 
 export type { ModalProps, ModalFuncProps } from './modal'

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarDropdownOption, ToolbarOption, ToolbarSectionOption } from '../../Toolbar'
+import { ToolbarDropdownOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
 
-export function useMoreItem(): [ToolbarOption | ToolbarSectionOption | null] {
+export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
   const { editor, t } = React.useContext(EditorContext)
 
-  const option = React.useMemo<ToolbarOption | ToolbarSectionOption | null>(() => {
+  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const items: ToolbarDropdownOption['items'] = []

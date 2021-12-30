@@ -1,10 +1,10 @@
 import React from 'react'
 import { Icon, Input, toast } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarDropdownOption, ToolbarOption, ToolbarSectionOption } from '../../Toolbar'
+import { ToolbarDropdownOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
 
-export function useLinkSection(): [ToolbarOption | ToolbarSectionOption | null] {
+export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { t, editor } = React.useContext(EditorContext)
   const href = editor?.getAttributes('link').href
   const [inputLink, setInputLink] = React.useState(href)
@@ -13,7 +13,7 @@ export function useLinkSection(): [ToolbarOption | ToolbarSectionOption | null] 
     setInputLink(href)
   }, [href])
 
-  const option = React.useMemo<ToolbarOption | ToolbarSectionOption | null>(() => {
+  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const menuItems: ToolbarDropdownOption['items'] = [
@@ -70,8 +70,8 @@ export function useLinkSection(): [ToolbarOption | ToolbarSectionOption | null] 
       })
     }
 
-    const linkSection: ToolbarSectionOption = {
-      type: 'section',
+    const linkGroup: ToolbarGroupOption = {
+      type: 'group',
       items: [
         {
           type: 'dropdown',
@@ -83,7 +83,7 @@ export function useLinkSection(): [ToolbarOption | ToolbarSectionOption | null] 
       ]
     }
 
-    return linkSection
+    return linkGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection, inputLink])
 

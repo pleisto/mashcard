@@ -3,7 +3,7 @@ import { Icon } from '@brickdoc/design-system'
 import { BlockContext } from '../../context/BlockContext'
 import { EditorContext } from '../../context/EditorContext'
 import { useDocumentEditable } from '../../hooks'
-import { ActionItemOptionGroup, ActionItemSectionOption } from './BlockActions'
+import { ActionItemOptionGroup, ActionItemGroupOption } from './BlockActions'
 
 export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move'
 
@@ -18,7 +18,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
 
   return React.useMemo<ActionItemOptionGroup | null>(() => {
     const group: ActionItemOptionGroup = []
-    const normalGroup: ActionItemSectionOption = { type: 'section', items: [] }
+    const normalGroup: ActionItemGroupOption = { type: 'group', items: [] }
 
     if (!documentEditable || types.length === 0) {
       return null

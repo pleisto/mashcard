@@ -1,14 +1,14 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarOption, ToolbarSectionOption } from '../../Toolbar'
+import { ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { findFirstSelectedNodes } from '../../../helpers'
 import { BubbleItemMeta, isBubbleMenuVisible, NodeIcon } from './useBubbleMenuItems'
 
-export function useNodeSection(): [ToolbarOption | ToolbarSectionOption | null] {
+export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { t, editor } = React.useContext(EditorContext)
 
-  const option = React.useMemo<ToolbarOption | ToolbarSectionOption | null>(() => {
+  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const { nodeKey } = findFirstSelectedNodes(editor)
@@ -60,18 +60,18 @@ export function useNodeSection(): [ToolbarOption | ToolbarSectionOption | null] 
       }
     ]
 
-    const nodeSection: ToolbarSectionOption = {
-      type: 'section',
+    const nodeGroup: ToolbarGroupOption = {
+      type: 'group',
       items: [
         {
           type: 'dropdown',
           name: 'node',
           label: t(`bubble_menu.node.items.${nodeKey ?? 'paragraph'}`),
-          tooltip: t('bubble_menu.node.section_title') as string,
+          tooltip: t('bubble_menu.node.Group_title') as string,
           items: [
             {
-              type: 'section',
-              title: t('bubble_menu.node.section_title'),
+              type: 'group',
+              title: t('bubble_menu.node.Group_title'),
               items: nodeItems.map(item => ({
                 type: 'item',
                 name: item.name,
@@ -86,7 +86,7 @@ export function useNodeSection(): [ToolbarOption | ToolbarSectionOption | null] 
       ]
     }
 
-    return nodeSection
+    return nodeGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection])
 

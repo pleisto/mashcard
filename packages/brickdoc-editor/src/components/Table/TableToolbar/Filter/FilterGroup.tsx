@@ -1,7 +1,7 @@
 import React from 'react'
 import { Column } from 'react-table'
 import cx from 'classnames'
-import { Button, Icon, DeprecatedMenu as Menu, Popover, Select } from '@brickdoc/design-system'
+import { Button, Icon, Menu, Popover, Select } from '@brickdoc/design-system'
 import { useEditorI18n } from '../../../../hooks'
 import { FilterGroupOption, FilterOption } from './Filter'
 import { FilterItem } from './FilterItem'
@@ -97,7 +97,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
                   <Menu.Item
                     data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.deleteButton.id}
                     className="table-block-menu-item"
-                    key="Remove"
+                    itemKey="Remove"
                     onClick={() => onRemoveFilter([...(path ?? []), index])}
                   >
                     <Icon.Delete />
@@ -106,7 +106,7 @@ export const FilterGroup: React.FC<FilterGroupProps> = ({
                   <Menu.Item
                     data-testid={TEST_ID_ENUM.editor.tableBlock.filter.option.duplicateButton.id}
                     className="table-block-menu-item"
-                    key="Duplicate"
+                    itemKey="Duplicate"
                     onClick={() => onDuplicateFilter([...(path ?? []), index])}
                   >
                     <Icon.Copy />

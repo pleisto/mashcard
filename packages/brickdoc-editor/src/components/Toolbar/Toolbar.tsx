@@ -28,14 +28,14 @@ export interface ToolbarItemOption extends ToolbarOptionBase {
   type: 'item'
 }
 
-export interface ToolbarSectionOption {
-  type: 'section'
+export interface ToolbarGroupOption {
+  type: 'group'
   title?: string
   items: ToolbarOption[]
 }
 
-export interface ToolbarItemSectionOption {
-  type: 'section'
+export interface ToolbarItemGroupOption {
+  type: 'group'
   title?: string
   items: ToolbarItemOption[]
 }
@@ -44,14 +44,14 @@ export type ToolbarDropdownItemsRender = () => React.ReactNode
 
 export interface ToolbarDropdownOption extends ToolbarOptionBase {
   type: 'dropdown'
-  items: Array<ToolbarItemSectionOption | ToolbarItemOption> | ToolbarDropdownItemsRender
+  items: Array<ToolbarItemGroupOption | ToolbarItemOption> | ToolbarDropdownItemsRender
 }
 
 export type ToolbarOption = ToolbarItemOption | ToolbarDropdownOption
 
-export type ToolbarItemOptionGroup = Array<ToolbarItemSectionOption | ToolbarItemOption>
+export type ToolbarItemOptionGroup = Array<ToolbarItemGroupOption | ToolbarItemOption>
 
-export type ToolbarOptionGroup = Array<ToolbarSectionOption | ToolbarOption>
+export type ToolbarOptionGroup = Array<ToolbarGroupOption | ToolbarOption>
 
 export interface ToolbarProps {
   options: ToolbarOptionGroup
@@ -73,7 +73,7 @@ const ToolbarMenu = styled('ul', {
   }
 })
 
-const ToolbarMenuSection = styled('ul', {
+const ToolbarMenuGroup = styled('ul', {
   include: ['flexCenter'],
   display: 'flex',
   flexDirection: 'row',
@@ -130,21 +130,21 @@ const ToolbarMenuOption: React.FC<{ option: ToolbarOption }> = ({ option }) => {
   )
 }
 
-// TODO: implement @react-aria/menu
+// TODO: implement by menu
 export const Toolbar: React.FC<ToolbarProps> = ({ options }) => {
   const { t } = React.useContext(EditorContext)
   return (
     <ToolbarMenu role="menu">
       {options?.reduce<React.ReactElement[]>((elements, option, index, array) => {
-        if (option.type === 'section')
+        if (option.type === 'group')
           return [
             ...elements,
-            <ToolbarMenuSection role="presentation" title={option.title} key={option.title ?? `section-${index}`}>
+            <ToolbarMenuGroup role="presentation" title={option.title} key={option.title ?? `section-${index}`}>
               {option.items.map((option, optionIndex) => (
                 <ToolbarMenuOption key={`${index}-${optionIndex}`} option={option} />
               ))}
               {index < array.length - 1 && <ToolbarSeparator aria-label={t('toolbar.separator')} />}
-            </ToolbarMenuSection>
+            </ToolbarMenuGroup>
           ]
 
         return [...elements, <ToolbarMenuOption key={option.name} option={option} />]

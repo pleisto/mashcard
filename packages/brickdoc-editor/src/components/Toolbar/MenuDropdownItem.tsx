@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon, Menu, Popover, styled, theme } from '@brickdoc/design-system'
-import { ToolbarDropdownOption, ToolbarItemOption, ToolbarItemSectionOption } from './Toolbar'
+import { ToolbarDropdownOption, ToolbarItemOption, ToolbarItemGroupOption } from './Toolbar'
 import { ToolbarMenuItem } from './MenuItem'
 import { itemCommon, itemHeight } from './styles/index.style'
 import { variants } from './styles/variants.style'
@@ -31,30 +31,33 @@ export interface ToolbarMenuDropdownItemProps {
 
 const renderMenu = (
   option: ToolbarDropdownOption,
-  items: Array<ToolbarItemSectionOption | ToolbarItemOption>,
+  items: Array<ToolbarItemGroupOption | ToolbarItemOption>,
   closeMenu: () => void
 ): React.ReactElement => {
   return (
     <Menu aria-label={option.name}>
       {items.map((menuItem, index) => {
-        if (menuItem.type === 'section') {
+        if (menuItem.type === 'group') {
           return (
-            <Menu.Section title={menuItem.title} key={index}>
-              {menuItem.items.map(item => (
-                <Menu.Item
-                  key={item.name}
-                  itemKey={item.name}
-                  icon={item.icon}
-                  label={item.label ?? item.name}
-                  onAction={key => {
-                    item.onAction?.(key)
-                    if (item.closeOnAction) closeMenu()
-                  }}
-                >
-                  {item.content}
-                </Menu.Item>
-              ))}
-            </Menu.Section>
+            <>
+              <Menu.Group title={menuItem.title} key={index}>
+                {menuItem.items.map(item => (
+                  <Menu.Item
+                    key={item.name}
+                    itemKey={item.name}
+                    icon={item.icon}
+                    label={item.label ?? item.name}
+                    onAction={key => {
+                      item.onAction?.(key)
+                      if (item.closeOnAction) closeMenu()
+                    }}
+                  >
+                    {item.content}
+                  </Menu.Item>
+                ))}
+              </Menu.Group>
+              {index < items.length - 1 && <Menu.Separator key={`separator-${index}`} />}
+            </>
           )
         }
         return (
@@ -94,7 +97,8 @@ export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = (
       onVisibleChange={handleVisibleChange}
       placement="bottom"
       getPopupContainer={element => element}
-      content={MenuContent}>
+      content={MenuContent}
+    >
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
         <DropdownItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>

@@ -7,19 +7,19 @@ import {
   ToolbarDropdownOption,
   ToolbarItemOption,
   ToolbarItemOptionGroup,
-  ToolbarItemSectionOption,
+  ToolbarItemGroupOption,
   ToolbarOption,
   ToolbarOptionGroup,
-  ToolbarSectionOption
+  ToolbarGroupOption
 } from '../Toolbar'
 
 export type ActionItemOption = ToolbarItemOption
 
 export type ActionDropdownOption = ToolbarDropdownOption
 
-export type ActionSectionOption = ToolbarSectionOption
+export type ActionGroupOption = ToolbarGroupOption
 
-export type ActionItemSectionOption = ToolbarItemSectionOption
+export type ActionItemGroupOption = ToolbarItemGroupOption
 
 export type ActionOption = ToolbarOption
 
@@ -27,7 +27,7 @@ export type ActionItemOptionGroup = ToolbarItemOptionGroup
 
 export type ActionOptionGroup = ToolbarOptionGroup
 
-export type BlockActionOptions = Array<ToolbarSectionOption | ToolbarItemOption | BasicActionOptionType>
+export type BlockActionOptions = Array<ToolbarGroupOption | ToolbarItemOption | BasicActionOptionType>
 
 export interface BlockActionsProps {
   options: BlockActionOptions

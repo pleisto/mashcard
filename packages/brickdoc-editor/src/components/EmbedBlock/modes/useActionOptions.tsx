@@ -1,6 +1,6 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
-import { ActionSectionOption, BlockActionOptions } from '../../../components/BlockActions'
+import { ActionGroupOption, BlockActionOptions } from '../../../components/BlockActions'
 
 export interface UseActionOptionsProps {
   mode: 'link' | 'preview'
@@ -18,8 +18,8 @@ export function useActionOptions({
   onToPreviewMode
 }: UseActionOptionsProps): [BlockActionOptions] {
   return React.useMemo(() => {
-    const firstGroup: ActionSectionOption = {
-      type: 'section',
+    const firstGroup: ActionGroupOption = {
+      type: 'group',
       items: [
         {
           name: 'download',
@@ -42,7 +42,7 @@ export function useActionOptions({
     const actionOptions: BlockActionOptions = [
       firstGroup,
       {
-        type: 'section',
+        type: 'group',
         items: [
           {
             name: 'attachment mode',

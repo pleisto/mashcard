@@ -11,7 +11,7 @@ describe('useBasicActionOptions', () => {
       return (
         <span>
           {group?.map(item => {
-            if (item.type === 'section') {
+            if (item.type === 'group') {
               return (
                 <span>
                   {item.items.map((i, index) => (
@@ -37,7 +37,7 @@ describe('useBasicActionOptions', () => {
       return (
         <span>
           {group?.map(item => {
-            if (item.type === 'section') {
+            if (item.type === 'group') {
               return (
                 <span>
                   {item.items.map((i, index) => (
@@ -68,7 +68,7 @@ describe('useBasicActionOptions', () => {
       return (
         <span>
           {group?.map(item => {
-            if (item.type === 'section') {
+            if (item.type === 'group') {
               return (
                 <span role="group">
                   {item.items.map((i, index) => (

@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { Tag, Button, Icon, Popover, DeprecatedMenu as Menu, Input } from '@brickdoc/design-system'
+import { Tag, Button, Icon, Popover, Menu, Input } from '@brickdoc/design-system'
 import { TableColumnSelectOption } from 'react-table'
 import { bgColor } from './SelectCell'
 import { COLOR } from '../../../../helpers/color'
@@ -44,9 +44,9 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({
         overlayClassName="table-block-menu-popover"
         overlayStyle={{ zIndex: 1054 }}
         content={
-          <Menu className="table-block-menu" onClick={e => e.domEvent.stopPropagation()}>
+          <Menu className="table-block-menu" onClick={e => e.stopPropagation()}>
             <Menu.Item
-              key="Header"
+              itemKey="Header"
               className="table-block-menu-item input-item"
               onClick={() => inputRef.current?.focus()}
             >
@@ -63,16 +63,22 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({
                 value={option.label}
               />
             </Menu.Item>
-            <Menu.Item onClick={() => onOptionRemove(option)} className="table-block-menu-item" key="Delete">
+            <Menu.Item
+              icon={<Icon.Delete />}
+              label="Delete"
+              onClick={() => onOptionRemove(option)}
+              className="table-block-menu-item"
+              itemKey="Delete"
+            >
               <Icon.Delete />
-              <span>Delete</span>
             </Menu.Item>
-            <Menu.ItemGroup className="select-cell-menu-group" key="Colors" title="Colors">
+            <Menu.Group className="select-cell-menu-group" key="Colors" title="Colors">
               {COLOR.map(colorMeta => (
                 <Menu.Item
                   className={cx('select-cell-menu-color-item', { active: option.color === colorMeta.color })}
                   onClick={() => onOptionValueChange({ ...option, color: colorMeta.color })}
                   key={colorMeta.color}
+                  itemKey={colorMeta.color}
                 >
                   <span
                     className="select-cell-menu-color-icon-container"
@@ -84,7 +90,7 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({
                   {option.color === colorMeta.color && <Icon.Check className="select-cell-menu-color-active-icon" />}
                 </Menu.Item>
               ))}
-            </Menu.ItemGroup>
+            </Menu.Group>
           </Menu>
         }
         visible={visible}

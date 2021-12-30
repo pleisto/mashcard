@@ -6,7 +6,7 @@ describe('Toolbar', () => {
   it(`matches snapshot correctly`, () => {
     const options: ToolbarOptionGroup = [
       {
-        type: 'section',
+        type: 'group',
         items: [
           {
             type: 'item',
@@ -40,7 +40,7 @@ describe('Toolbar', () => {
   it('renders separator correctly', () => {
     const options: ToolbarOptionGroup = [
       {
-        type: 'section',
+        type: 'group',
         items: [
           {
             type: 'item',
@@ -49,7 +49,7 @@ describe('Toolbar', () => {
         ]
       },
       {
-        type: 'section',
+        type: 'group',
         items: [
           {
             type: 'item',
@@ -58,7 +58,7 @@ describe('Toolbar', () => {
         ]
       },
       {
-        type: 'section',
+        type: 'group',
         items: [
           {
             type: 'item',

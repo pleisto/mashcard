@@ -1,7 +1,6 @@
 import React from 'react'
+import { MenuStateReturn, MenuBarStateReturn } from 'reakit/Menu'
+import { MenuProps } from './menu'
 
-export interface MenuContextData {
-  onAction?: (key: string) => void
-}
-
-export const MenuContext = React.createContext<MenuContextData>({})
+export const MenuContext = React.createContext<MenuStateReturn | MenuBarStateReturn>(null)
+export const MenuActionContext = React.createContext<MenuProps['onAction']>(null)

@@ -1,40 +1,60 @@
 import React from 'react'
-import { PressEvents } from '@react-types/shared'
-import { styled } from '../../themes'
-import { Item, MenuItemProps } from './item'
-import { Section } from './section'
-import { MenuContext, MenuContextData } from './context'
+import cx from 'classnames'
+import { MenuBar as ReakitMenuBar, MenuBarHTMLProps, useMenuBarState } from 'reakit/Menu'
+import { css } from '../../themes'
+import { MenuItem } from './menuItem'
+import { MenuGroup } from './menuGroup'
+import { MenuSeparator } from './menuSeparator'
+import { MenuActionContext, MenuContext } from './context'
+import { MenuItemSubMenu } from './menuItemSubMenu'
 
-export interface MenuProps extends PressEvents {
-  'aria-label'?: string
-  className?: string
-  searchable?: boolean
-  onAction?: MenuItemProps['onAction']
+export interface MenuProps extends MenuBarHTMLProps {
+  // TODO: add horizontal
+  orientation?: 'vertical'
+  onAction?: (key: string) => void
 }
 
-const MenuRoot = styled('ul', {
+export const menubarStyles = css({
   include: ['ceramicPrimary'],
   borderRadius: '4px',
-  display: 'inline-block',
+  display: 'inline-flex',
   margin: 0,
   listStyle: 'none',
-  padding: 0
+  padding: 0,
+  variants: {
+    orientation: {
+      vertical: {
+        flexDirection: 'column'
+      }
+    }
+  }
 })
 
 export const Menu: React.FC<MenuProps> & {
-  Item: typeof Item
-  Section: typeof Section
-} = ({ children, className, onAction, ...props }) => {
-  const menuContextData = React.useMemo<MenuContextData>(() => ({ onAction }), [onAction])
-
+  Item: typeof MenuItem
+  SubMenuItem: typeof MenuItemSubMenu
+  Group: typeof MenuGroup
+  Separator: typeof MenuSeparator
+} = props => {
+  const { children, className, onAction, ...restProps } = props
+  const orientation = props.orientation ?? 'vertical'
+  const menuBarProps = useMenuBarState({ orientation })
+  const menuBarClass = React.useMemo<string>(
+    () => cx(menubarStyles({ orientation }), className),
+    [className, orientation]
+  )
   return (
-    <MenuContext.Provider value={menuContextData}>
-      <MenuRoot {...props} role="menu" className={className} css={{}}>
-        {children}
-      </MenuRoot>
-    </MenuContext.Provider>
+    <MenuActionContext.Provider value={onAction}>
+      <MenuContext.Provider value={menuBarProps}>
+        <ReakitMenuBar as="ul" {...menuBarProps} {...restProps} orientation={orientation} className={menuBarClass}>
+          {children}
+        </ReakitMenuBar>
+      </MenuContext.Provider>
+    </MenuActionContext.Provider>
   )
 }
 
-Menu.Item = Item
-Menu.Section = Section
+Menu.Item = MenuItem
+Menu.Group = MenuGroup
+Menu.Separator = MenuSeparator
+Menu.SubMenuItem = MenuItemSubMenu

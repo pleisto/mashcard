@@ -6,7 +6,7 @@ import {
   ShareLinkState,
   useBlockCreateShareLinkMutation
 } from '@/BrickdocGraphQL'
-import { Dropdown, DeprecatedMenu as Menu, DeprecatedMenuProps as MenuProps } from '@brickdoc/design-system'
+import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { LineDown } from '@brickdoc/design-system/components/icon'
@@ -26,7 +26,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
 
   const policyMessage = item.policy === Policytype.Edit ? t('invite.edit_message') : t('invite.view_message')
 
-  const onClickMenu: MenuProps['onClick'] = async ({ key }): Promise<void> => {
+  const onClickMenu: MenuProps['onAction'] = async (key): Promise<void> => {
     let policy: Policytype = item.policy
     let state: ShareLinkState = item.state
     switch (key) {
@@ -47,16 +47,16 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
   }
 
   const menu = (
-    <Menu onClick={onClickMenu} selectedKeys={[item.policy]}>
-      <Menu.Item className={styles.menuItem} key={Policytype.View}>
+    <Menu onAction={onClickMenu}>
+      <Menu.Item className={styles.menuItem} itemKey={Policytype.View} active={item.policy === Policytype.View}>
         <div className={styles.head}>{t('invite.view_message')}</div>
         <div className={styles.desc}>{t('invite.view_message_description')}</div>
       </Menu.Item>
-      <Menu.Item className={styles.menuItem} key={Policytype.Edit}>
+      <Menu.Item className={styles.menuItem} itemKey={Policytype.Edit} active={item.policy === Policytype.Edit}>
         <div className={styles.head}>{t('invite.edit_message')}</div>
         <div className={styles.desc}>{t('invite.edit_message_description')}</div>
       </Menu.Item>
-      <Menu.Item className={styles.menuItem} key="remove" danger>
+      <Menu.Item className={styles.menuItem} itemKey="remove" danger>
         {t('invite.remove_message')}
       </Menu.Item>
     </Menu>

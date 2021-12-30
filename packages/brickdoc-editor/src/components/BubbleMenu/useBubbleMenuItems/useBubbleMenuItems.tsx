@@ -2,10 +2,10 @@ import React from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { ToolbarOptionBase, ToolbarOptionGroup } from '../../Toolbar'
 import { Editor } from '@tiptap/react'
-import { useNodeSection } from './useNodeSection'
-import { useTextStyleSection } from './useTextStyleSection'
-import { useFontColorSection } from './useFontColorSection'
-import { useLinkSection } from './useLinkSection'
+import { useNodeGroup } from './useNodeGroup'
+import { useTextStyleGroup } from './useTextStyleGroup'
+import { useFontColorGroup } from './useFontColorGroup'
+import { useLinkGroup } from './useLinkGroup'
 import { useFormulaItem } from './useFormulaItem'
 import { useMoreItem } from './useMoreItem'
 
@@ -35,24 +35,24 @@ export const isBubbleMenuVisible = (editor: Editor | null | undefined): editor i
 }
 
 export function useBubbleMenuItems(): [ToolbarOptionGroup] {
-  const [nodeSection] = useNodeSection()
-  const [textStyleSection] = useTextStyleSection()
-  const [fontColorSection] = useFontColorSection()
-  const [linkSection] = useLinkSection()
+  const [nodeGroup] = useNodeGroup()
+  const [textStyleGroup] = useTextStyleGroup()
+  const [fontColorGroup] = useFontColorGroup()
+  const [linkGroup] = useLinkGroup()
   const [formulaItem] = useFormulaItem()
   const [moreItem] = useMoreItem()
 
   const options = React.useMemo<ToolbarOptionGroup>(() => {
     const options: ToolbarOptionGroup = []
-    if (nodeSection) options.push(nodeSection)
-    if (textStyleSection) options.push(textStyleSection)
-    if (fontColorSection) options.push(fontColorSection)
-    if (linkSection) options.push(linkSection)
+    if (nodeGroup) options.push(nodeGroup)
+    if (textStyleGroup) options.push(textStyleGroup)
+    if (fontColorGroup) options.push(fontColorGroup)
+    if (linkGroup) options.push(linkGroup)
     if (formulaItem) options.push(formulaItem)
     if (moreItem) options.push(moreItem)
 
     return options
-  }, [fontColorSection, formulaItem, linkSection, moreItem, nodeSection, textStyleSection])
+  }, [fontColorGroup, formulaItem, linkGroup, moreItem, nodeGroup, textStyleGroup])
 
   return [options]
 }

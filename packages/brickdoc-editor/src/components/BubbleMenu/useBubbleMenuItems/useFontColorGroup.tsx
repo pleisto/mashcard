@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, styled } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarOption, ToolbarSectionOption } from '../../Toolbar'
+import { ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { COLOR } from '../../../helpers'
 import { BubbleItemMeta, isBubbleMenuVisible, NodeIcon } from './useBubbleMenuItems'
 
@@ -13,10 +13,10 @@ const FontColorIcon = styled('span', {
   width: '100%'
 })
 
-export function useFontColorSection(): [ToolbarOption | ToolbarSectionOption | null] {
+export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { t, editor } = React.useContext(EditorContext)
 
-  const option = React.useMemo<ToolbarOption | ToolbarSectionOption | null>(() => {
+  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const activeColor = COLOR.find(color => editor?.isActive('textStyle', { fontColor: color.color }))
@@ -30,8 +30,8 @@ export function useFontColorSection(): [ToolbarOption | ToolbarSectionOption | n
       onAction: () => editor.chain().focus().setFontColor(colorMeta.color).run()
     }))
 
-    const fontColorSection: ToolbarSectionOption = {
-      type: 'section',
+    const fontColorGroup: ToolbarGroupOption = {
+      type: 'group',
       items: [
         {
           type: 'dropdown',
@@ -55,7 +55,7 @@ export function useFontColorSection(): [ToolbarOption | ToolbarSectionOption | n
       ]
     }
 
-    return fontColorSection
+    return fontColorGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection])
 
