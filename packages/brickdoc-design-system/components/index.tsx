@@ -140,9 +140,6 @@ export type { TreeSelectProps } from './tree-select'
 export { default as TreeSelect } from './tree-select'
 */
 
-/* export type { TabsProps, TabPaneProps } from './tabs'
- export { default as Tabs } from './tabs' */
-
 export type { TagProps, TagType } from './tag'
 export { default as Tag } from './tag'
 

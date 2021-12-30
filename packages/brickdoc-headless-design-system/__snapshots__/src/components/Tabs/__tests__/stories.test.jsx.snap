@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs matches snapshot correctly 1`] = `
+<div
+  class="brd-c-cXCAEb brd-c-cXCAEb-top"
+>
+  <div
+    class="brd-c-cXCAEb-nav"
+    role="tablist"
+  >
+    <div
+      class="brd-c-cXCAEb-nav-wrap"
+    >
+      <div
+        class="brd-c-cXCAEb-nav-list"
+        style="transform: translate(0px, 0px);"
+      >
+        <div
+          class="brd-c-cXCAEb-tab"
+        >
+          <div
+            aria-controls="rc-tabs-test-panel-1"
+            aria-selected="false"
+            class="brd-c-cXCAEb-tab-btn"
+            id="rc-tabs-test-tab-1"
+            role="tab"
+            tabindex="0"
+          >
+            tab 1
+          </div>
+        </div>
+        <div
+          class="brd-c-cXCAEb-tab brd-c-cXCAEb-tab-active"
+        >
+          <div
+            aria-controls="rc-tabs-test-panel-2"
+            aria-selected="true"
+            class="brd-c-cXCAEb-tab-btn"
+            id="rc-tabs-test-tab-2"
+            role="tab"
+            tabindex="0"
+          >
+            tab 2
+          </div>
+        </div>
+        <div
+          class="brd-c-cXCAEb-tab"
+        >
+          <div
+            aria-controls="rc-tabs-test-panel-3"
+            aria-selected="false"
+            class="brd-c-cXCAEb-tab-btn"
+            id="rc-tabs-test-tab-3"
+            role="tab"
+            tabindex="0"
+          >
+            tab 3
+          </div>
+        </div>
+        <div
+          class="brd-c-cXCAEb-ink-bar brd-c-cXCAEb-ink-bar-animated"
+        />
+      </div>
+    </div>
+    <div
+      class="brd-c-cXCAEb-nav-operations brd-c-cXCAEb-nav-operations-hidden"
+    >
+      <button
+        aria-controls="rc-tabs-test-more-popup"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-hidden="true"
+        class="brd-c-cXCAEb-nav-more"
+        id="rc-tabs-test-more"
+        style="visibility: hidden; order: 1;"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          aria-label="more"
+          class="brd-icon brd-icon-more"
+          role="img"
+        >
+          <svg
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div
+    class="brd-c-cXCAEb-content-holder"
+  >
+    <div
+      class="brd-c-cXCAEb-content brd-c-cXCAEb-content-top"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="rc-tabs-test-tab-1"
+        class="brd-c-cXCAEb-tabpane"
+        id="rc-tabs-test-panel-1"
+        role="tabpanel"
+        style="display: none;"
+        tabindex="-1"
+      />
+      <div
+        aria-hidden="false"
+        aria-labelledby="rc-tabs-test-tab-2"
+        class="brd-c-cXCAEb-tabpane brd-c-cXCAEb-tabpane-active"
+        id="rc-tabs-test-panel-2"
+        role="tabpanel"
+        tabindex="0"
+      >
+        second
+      </div>
+      <div
+        aria-hidden="true"
+        aria-labelledby="rc-tabs-test-tab-3"
+        class="brd-c-cXCAEb-tabpane"
+        id="rc-tabs-test-panel-3"
+        role="tabpanel"
+        style="display: none;"
+        tabindex="-1"
+      />
+    </div>
+  </div>
+</div>
+`;
