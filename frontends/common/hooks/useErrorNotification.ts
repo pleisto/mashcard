@@ -3,7 +3,9 @@ import { toast } from '@brickdoc/design-system'
 
 export const useErrorNotification = (message: string): void => {
   useEffect(() => {
-    // todo: custom style
-    if (message) toast.error(message)
+    if (message)
+      toast.notification('Error', message, {
+        type: 'error'
+      })
   }, [message])
 }

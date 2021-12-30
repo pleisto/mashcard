@@ -33,7 +33,19 @@ const Template: ComponentStory<typeof Button> = () => (
     <Button onClick={() => toast.loading('This is a loading message')}>Loading</Button>
     <Button onClick={() => toast.success('This is a success message')}>Success</Button>
     <Button onClick={() => toast.error('This is a error message')}>Error</Button>
-    <Button onClick={() => toast.custom('This is a custom message')}>Custom</Button>
+    <Button
+      onClick={() =>
+        toast.notification(
+          'Notification Title',
+          'This is an message about copywriting.This is an message about copywriting.This is an message about copywriting.',
+          {
+            type: 'info'
+          }
+        )
+      }
+    >
+      Custom
+    </Button>
   </div>
 )
 
