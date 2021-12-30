@@ -13,7 +13,7 @@ import { ISvgIconProps, IconWrapper } from '../icon'
 
 export default IconWrapper('caution', false, (props: ISvgIconProps) => (
   <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <g clipPath={'url(#' + props.id + '43e282b4' + ')'}>
+    <g clipPath={'url(#' + props.id + 'f27891e7' + ')'}>
       <path
         d="M12 16.5001C12.5523 16.5001 13 16.9478 13 17.5001V18.0001C13 18.5524 12.5523 19.0001 12 19.0001C11.4477 19.0001 11 18.5524 11 18.0001V17.5001C11 16.9478 11.4477 16.5001 12 16.5001Z"
         fill="#292333"
@@ -30,7 +30,7 @@ export default IconWrapper('caution', false, (props: ISvgIconProps) => (
       />
     </g>
     <defs>
-      <clipPath id={props.id + '43e282b4'}>
+      <clipPath id={props.id + 'f27891e7'}>
         <rect width="24" height="24" fill={props.colors[2]} />
       </clipPath>
     </defs>

@@ -16,6 +16,7 @@ import {
   SyncExtensionOptions,
   EventHandlerExtension,
   UserBlockExtension,
+  IndentExtension,
   TocBlockExtension,
   PageLinkBlockExtension
 } from './extensions'
@@ -94,6 +95,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
         placeholder: t('placeholder')
       }),
       brickListExtension,
+      IndentExtension,
       UniqueID.configure({
         attributeName: 'uuid',
         types: typesWithUuid

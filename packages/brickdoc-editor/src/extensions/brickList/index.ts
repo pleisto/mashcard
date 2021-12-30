@@ -26,6 +26,9 @@ export const isListType = (nameOrType: string | NodeType) => (editor: Editor) =>
   return parentList ? parentList.node.type === itemType : false
 }
 
+export const isAnyListType = (editor: Editor): boolean =>
+  isListType('bulletList')(editor) || isListType('orderedList')(editor)
+
 export const brickListExtension = Extension.create<brickListOptions>({
   name: 'brickList',
   addCommands() {
@@ -41,38 +44,38 @@ export const brickListExtension = Extension.create<brickListOptions>({
           const itemType = getNodeType('listItem', state.schema)
           const { selection } = state
 
-          const curNode = selection.$from.parent
-          if (curNode.content.size === 0) {
-            const listItem = findParentNode(node => node.type === itemType)(selection)
-            if (listItem) {
-              const listItemNode = listItem.node
-              if (listItemNode.textContent.length === 0) {
-                const parentListItem = findParentNode(node => node.type === itemType && node !== listItemNode)(
-                  selection
-                )
+          const listItem = findParentNode(node => node.type === itemType)(selection)
+          const lineText = state.doc.textBetween(selection.$from.before(), selection.$from.pos)
+          if (listItem) {
+            const listItemNode = listItem.node
+            const parentListItem = findParentNode(node => node.type === itemType && node !== listItemNode)(selection)
+            if (listItemNode.textContent.length === 0) {
+              if (parentListItem) {
+                originalLiftListItem(itemType)(state, dispatch)
+                return commands.splitListItem(itemType)
+              }
 
-                if (parentListItem) {
-                  originalLiftListItem(itemType)(state, dispatch)
-                  return commands.splitListItem(itemType)
-                }
-
-                let deleteFrom = listItem.pos - 1
-                if (deleteFrom < 0) deleteFrom = 0
-                tr.delete(deleteFrom, listItem.start + listItemNode.nodeSize)
-                const newSelection = Selection.findFrom(tr.doc.resolve(tr.mapping.map(listItem.pos, -1)), -1)
-                if (newSelection) tr.setSelection(newSelection)
+              let deleteFrom = listItem.pos - 1
+              if (deleteFrom < 0) deleteFrom = 0
+              tr.delete(deleteFrom, listItem.start + listItemNode.nodeSize)
+              const newSelection = Selection.findFrom(tr.doc.resolve(tr.mapping.map(listItem.pos, -1)), -1)
+              if (newSelection) tr.setSelection(newSelection)
+              if (dispatch) dispatch(tr.scrollIntoView())
+              return true
+            } else if (lineText.length === 0) {
+              if (parentListItem) {
+                originalLiftListItem(itemType)(state, dispatch)
+              }
+              return originalJoinBackward(state, dispatch)
+            }
+          } else {
+            const prevPos = selection.$from.before() - 1
+            if (prevPos > 0) {
+              const prevNode = tr.doc.resolve(prevPos).parent
+              if (prevNode.type.name.endsWith('List')) {
+                tr.delete(selection.$from.before() - 1, selection.$to.after())
                 if (dispatch) dispatch(tr.scrollIntoView())
                 return true
-              }
-            } else {
-              const prevPos = selection.$from.before() - 1
-              if (prevPos > 0) {
-                const prevNode = tr.doc.resolve(prevPos).parent
-                if (prevNode.type.name.endsWith('List')) {
-                  tr.delete(selection.$from.before() - 1, selection.$to.after())
-                  if (dispatch) dispatch(tr.scrollIntoView())
-                  return true
-                }
               }
             }
           }
