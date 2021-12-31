@@ -173,7 +173,7 @@ describe('Table', () => {
 
     fireEvent.click(firstColumnHeader)
 
-    const columnMenu = screen.getByRole('menu')
+    const columnMenu = screen.getByRole('menubar')
     expect(columnMenu).toBeInTheDocument()
 
     const input = columnMenu.querySelector('input')!
