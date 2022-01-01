@@ -396,13 +396,13 @@ GEM
     rspec-support (3.10.3)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.24.0)
+    rubocop (1.24.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.15.0, < 2.0)
+      rubocop-ast (>= 1.15.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.15.1)
@@ -461,7 +461,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.9464)
+    sorbet-runtime (0.5.9465)
     thor (1.1.0)
     tilt (2.0.10)
     tomlrb (1.2.9)
@@ -501,7 +501,7 @@ GEM
     websocket-extensions (0.1.5)
     yard (0.9.27)
       webrick (~> 1.7.0)
-    zeitwerk (2.5.2)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   arm64-darwin-21

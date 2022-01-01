@@ -1,4 +1,4 @@
-import { BasicFunctionClause, DateResult, StringResult, FunctionContext } from '..'
+import { BasicFunctionClause, DateResult, StringResult, FunctionContext } from '../types'
 
 export const NOW = (ctx: FunctionContext): DateResult => ({ result: new Date(), type: 'Date' })
 

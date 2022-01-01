@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, ErrorResult, ReferenceResult, FunctionResult, CstResult } from '..'
+import { FunctionContext, BasicFunctionClause, ErrorResult, ReferenceResult, FunctionResult, CstResult } from '../types'
 
 export const Set = (ctx: FunctionContext, ref: ReferenceResult, cst: CstResult): FunctionResult | ErrorResult => {
   // TODO check ref as constant

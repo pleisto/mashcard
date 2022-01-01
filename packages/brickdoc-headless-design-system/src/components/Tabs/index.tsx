@@ -20,18 +20,27 @@ export interface TabsProps extends Omit<RcTabsProps, 'editable'> {
   onEdit?: (e: React.MouseEvent | React.KeyboardEvent | string, action: 'add' | 'remove') => void
 }
 
-const Tabs = ({ type, className, onEdit, hideAdd, centered, addIcon, size = 'md', ...props }: TabsProps) => {
+const Tabs = ({
+  type,
+  className,
+  onEdit,
+  hideAdd,
+  centered,
+  addIcon,
+  size = 'md',
+  ...props
+}: TabsProps): React.ReactElement => {
   const { moreIcon = <EllipsisOutlined /> } = props
-  const prefixCls = props.prefixCls || tabsStyle()
+  const prefixCls = props.prefixCls ?? tabsStyle()
 
   let editable: EditableConfig | undefined
   if (type === 'editable-card') {
     editable = {
       onEdit: (editType, { key, event }) => {
-        onEdit?.(editType === 'add' ? event : key, editType)
+        onEdit?.(editType === 'add' ? event! : key!, editType)
       },
       removeIcon: <CloseOutlined />,
-      addIcon: addIcon || <PlusOutlined />,
+      addIcon: addIcon ?? <PlusOutlined />,
       showAdd: !hideAdd
     }
   }

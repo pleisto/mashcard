@@ -1,4 +1,4 @@
-import { AnyTypeResult, BasicFunctionClause, FunctionContext, ErrorResult, StringResult } from '..'
+import { AnyTypeResult, BasicFunctionClause, FunctionContext, ErrorResult, StringResult } from '../types'
 
 export const ERROR = (ctx: FunctionContext, reason: StringResult): ErrorResult => ({
   result: reason.result,

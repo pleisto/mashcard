@@ -5,7 +5,6 @@ import {
   Formula,
   ContextInterface,
   FunctionClause,
-  VariableClass,
   VariableData,
   VariableDependency,
   VariableKind,
@@ -18,11 +17,11 @@ import {
   ParseErrorType,
   CodeFragmentResult,
   NamespaceId,
-  castVariable,
-  FormulaLexer,
-  FORMULA_PARSER_VERSION,
   FunctionContext
-} from '..'
+} from '../types'
+import { VariableClass, castVariable } from '../context/variable'
+import { FormulaLexer } from './lexer'
+import { FORMULA_PARSER_VERSION } from '../version'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'

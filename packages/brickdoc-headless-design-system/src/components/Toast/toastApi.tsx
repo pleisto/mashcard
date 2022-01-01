@@ -34,7 +34,7 @@ type ToastHandler = (message: Message, options?: ToastOptions) => string
  */
 const a11yOpts = (opts?: ToastOptions): HotToastOptions => ({
   ...opts,
-  position: placementMaps[opts?.position] as ToastPosition
+  position: !opts?.position ? undefined : (placementMaps[opts?.position] as ToastPosition)
 })
 
 const toast = (msg: Message, opts?: ToastOptions): string => hotToast(msg, a11yOpts(opts))
@@ -51,7 +51,7 @@ toast.notification = (title: ReactNode, description: ReactNode, opts?: Notificat
     a11yOpts({
       ...opts,
       type: 'custom',
-      position: opts?.position || 'topEnd'
+      position: opts?.position ?? 'topEnd'
     })
   )
 toast.dismiss = hotToast.dismiss

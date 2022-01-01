@@ -1,5 +1,5 @@
-import { ColumnInitializer } from '.'
-import { DatabaseType, DatabaseInitializer, DatabasePersistence, NamespaceId, Row, StringResult } from '..'
+import { NamespaceId, StringResult } from '../types'
+import { DatabaseType, DatabaseInitializer, DatabasePersistence, Row, ColumnInitializer } from './types'
 
 export class DatabaseClass implements DatabaseType {
   blockId: NamespaceId

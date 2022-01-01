@@ -1,5 +1,8 @@
 {
-  "extends": "./tsconfig.build.json",
+  "extends": "../../tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
   "references": [
@@ -9,6 +12,6 @@
       "path": "../brickdoc-schema"
     },
     { "path": "../brickdoc-uploader" },
-    { "path": "../brickdoc-test-helper" },
+    { "path": "../brickdoc-test-helper" }
   ]
 }

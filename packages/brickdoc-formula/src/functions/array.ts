@@ -1,13 +1,6 @@
-import {
-  ArrayResult,
-  BasicFunctionClause,
-  CstResult,
-  ErrorResult,
-  extractSubType,
-  FunctionContext,
-  StringResult
-} from '..'
-import { interpret } from '../grammar'
+import { ArrayResult, BasicFunctionClause, CstResult, ErrorResult, FunctionContext, StringResult } from '../types'
+import { interpret } from '../grammar/api'
+import { extractSubType } from '../grammar/util'
 
 export const Join = (
   ctx: FunctionContext,

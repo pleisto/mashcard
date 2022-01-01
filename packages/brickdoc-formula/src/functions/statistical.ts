@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, NumberResult } from '..'
+import { FunctionContext, BasicFunctionClause, NumberResult } from '../types'
 
 export const AVERAGE = (ctx: FunctionContext, ...numbers: NumberResult[]): NumberResult => {
   const sum = numbers.map(number => number.result).reduce((acc, cur) => acc + cur, 0)

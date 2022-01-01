@@ -9,19 +9,21 @@ import {
   BooleanResult,
   ArrayResult,
   SelectResult,
-  SelectOption,
   InputResult,
+  RecordResult,
+  SpreadsheetResult
+} from '../types'
+import {
+  Row,
+  SelectOption,
   ButtonClass,
   SwitchClass,
   SelectClass,
   InputClass,
   DatabaseInitializer,
-  RecordResult,
-  Row,
-  SpreadsheetResult,
   DatabaseClass,
   ColumnInitializer
-} from '..'
+} from '../controls'
 import { FORMULA_FEATURE_CONTROL } from '../context'
 import { v4 as uuid } from 'uuid'
 

@@ -1,5 +1,5 @@
 /* eslint-disable jest/no-conditional-expect */
-import { interpret, parse, quickInsert } from '../..'
+import { interpret, parse, quickInsert } from '../../grammar/api'
 import { FormulaContext } from '../../context'
 
 const formulaContext = new FormulaContext({})

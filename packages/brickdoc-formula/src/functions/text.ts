@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, NumberResult, StringResult } from '..'
+import { FunctionContext, BasicFunctionClause, NumberResult, StringResult } from '../types'
 
 export const LEN = (ctx: FunctionContext, str: StringResult): NumberResult => ({
   result: str.result.length,

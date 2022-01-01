@@ -9,9 +9,9 @@ import {
   PredicateFunction,
   StringResult,
   AnyTypeResult,
-  BooleanResult,
-  buildPredicate
-} from '..'
+  BooleanResult
+} from '../types'
+import { buildPredicate } from '../grammar/lambda'
 
 export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
   const rows: number[] = column.database.listRows().map(row => Number(row[column.columnId]) || 0)

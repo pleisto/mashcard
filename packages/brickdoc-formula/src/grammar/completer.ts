@@ -1,5 +1,6 @@
 import type { IToken } from 'chevrotain'
-import { CodeFragment, Completion, ContextInterface, FormulaType, NamespaceId, spreadsheetKey, VariableId } from '..'
+import { CodeFragment, Completion, ContextInterface, FormulaType, NamespaceId, VariableId } from '../types'
+import { spreadsheetKey } from '../context'
 
 export interface CompleteInput {
   readonly tokens: IToken[]

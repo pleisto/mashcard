@@ -1,7 +1,6 @@
 import { CstNode, ILexingResult } from 'chevrotain'
+import { ColumnType, DatabaseType, ColumnClass, ColumnInitializer } from '../controls'
 import {
-  ColumnType,
-  DatabaseType,
   ContextInterface,
   FunctionClause,
   NamespaceId,
@@ -17,31 +16,25 @@ import {
   FunctionKey,
   VariableKey,
   VariableName,
-  buildFunctionKey,
   DefaultVariableName,
   CodeFragment,
-  FormulaParser,
   ExampleWithCodeFragments,
   BaseFunctionClause,
   BaseFunctionClauseWithKey,
   FunctionCompletion,
   VariableCompletion,
   SpreadsheetCompletion,
-  function2completion,
-  database2completion,
-  variable2completion,
-  variableKey,
   ColumnCompletion,
-  column2completion,
-  FORMULA_PARSER_VERSION,
-  Features,
-  ColumnClass,
-  ColumnInitializer
-} from '..'
-import { BUILTIN_CLAUSES } from '../functions'
-import { CodeFragmentVisitor, FormulaLexer } from '../grammar'
+  Features
+} from '../types'
+import { function2completion, database2completion, variable2completion, variableKey, column2completion } from './util'
+import { FORMULA_PARSER_VERSION } from '../version'
+import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
+import { CodeFragmentVisitor } from '../grammar/code_fragment'
+import { FormulaParser } from '../grammar/parser'
+import { FormulaLexer } from '../grammar/lexer'
 import { BlockNameLoad, BlockTableLoaded, BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
-import { FORMULA_FEATURE_CONTROL } from '.'
+import { FORMULA_FEATURE_CONTROL } from './features'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>

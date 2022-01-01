@@ -16,7 +16,7 @@ export function string2Color(str = 'User'): string {
   let hash = 0
   let i: number
   for (i = 0; i < str.length; i++) {
-    hash = (str!.codePointAt(i) || 1) + hash * multiplier
+    hash = (str!.codePointAt(i) ?? 1) + hash * multiplier
   }
 
   const colorMap = [

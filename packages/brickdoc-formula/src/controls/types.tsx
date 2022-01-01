@@ -7,7 +7,7 @@ import {
   StringResult,
   uuid,
   VariableMetadata
-} from '..'
+} from '../types'
 
 export interface ControlType {
   meta: VariableMetadata

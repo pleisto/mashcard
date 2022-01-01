@@ -1,4 +1,4 @@
-import { BasicFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '..'
+import { BasicFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
 import { CORE_API_CLAUSES } from './api'
 import { CORE_DATABASE_CLAUSES } from './database'
 import { CORE_DATE_CLAUSES } from './date'

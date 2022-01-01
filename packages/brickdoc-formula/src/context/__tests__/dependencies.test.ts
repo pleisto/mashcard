@@ -1,6 +1,6 @@
 /* eslint-disable max-nested-callbacks */
 import { buildVariable, interpret, parse, quickInsert, SuccessParseResult, VariableMetadata } from '../..'
-import { FormulaContext } from '..'
+import { FormulaContext } from '../context'
 
 const formulaContext = new FormulaContext({})
 

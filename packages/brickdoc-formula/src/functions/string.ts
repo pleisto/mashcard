@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, BooleanResult, StringResult, ArrayResult } from '..'
+import { FunctionContext, BasicFunctionClause, BooleanResult, StringResult, ArrayResult } from '../types'
 
 export const START_WITH = (ctx: FunctionContext, string: StringResult, prefix: StringResult): BooleanResult => ({
   result: string.result.startsWith(prefix.result),

@@ -1,11 +1,15 @@
 // tsconfig.json is for editor/eslint support, including every ts/tsx files
 // tsconfig.build.json is for building, including only files needed for the final product
 {
-  "extends": "./tsconfig.build.json",
-  "include": [
-    "**/*",
-    "node_modules/vite-plugin-pwa/client.d.ts"
-  ],
+  "extends": "./tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["frontends/*"]
+    }
+  },
+  "include": ["**/*", "node_modules/vite-plugin-pwa/client.d.ts"],
   "exclude": ["packages/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
     {

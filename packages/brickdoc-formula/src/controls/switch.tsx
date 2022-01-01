@@ -1,6 +1,7 @@
 import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
-import { SwitchInitializer, SwitchType } from '.'
-import { FunctionContext, FunctionResult, functionResult2lambda, VariableMetadata } from '..'
+import { SwitchInitializer, SwitchType } from './types'
+import { FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { functionResult2lambda } from '../grammar/lambda'
 
 export class SwitchClass implements SwitchType {
   checked: boolean

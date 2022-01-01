@@ -15,7 +15,7 @@ export interface TreeProps {
   emptyNode?: string | ReactNode
 }
 
-const findPathById = (tree: TNode[], id: string, path?: string[]): string[] => {
+const findPathById = (tree: TNode[], id: string, path?: string[]): string[] | undefined => {
   for (let i = 0; i < tree.length; i++) {
     const tempPath = [...(path ?? [])]
     tempPath.push(tree[i].value)

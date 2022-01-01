@@ -22,7 +22,7 @@ export const defaultPopupContainer = (): HTMLElement => document.body
 
 const Tooltip: ForwardRefRenderFunction<unknown, TooltipProps> = (props, ref) => {
   const overlayId = useId()
-  const prefixCls = props.prefixCls || tooltipStyle()
+  const prefixCls = props.prefixCls ?? tooltipStyle()
   const [visible, setVisible] = useMergedState(false, {
     value: props.visible,
     defaultValue: props.defaultVisible
@@ -40,7 +40,7 @@ const Tooltip: ForwardRefRenderFunction<unknown, TooltipProps> = (props, ref) =>
 
   const getTooltipPlacements = (): BuildInPlacements => {
     const { builtinPlacements, arrowPointAtCenter, autoAdjustOverflow } = props
-    return builtinPlacements || getPlacements({ arrowPointAtCenter, autoAdjustOverflow })
+    return builtinPlacements ?? getPlacements({ arrowPointAtCenter, autoAdjustOverflow })
   }
 
   const getOverlay = (): ReactNode | RenderFunction => {
@@ -93,7 +93,7 @@ const Tooltip: ForwardRefRenderFunction<unknown, TooltipProps> = (props, ref) =>
     <RcTooltip
       {...otherProps}
       prefixCls={prefixCls}
-      getTooltipContainer={getPopupContainer || getTooltipContainer || defaultPopupContainer}
+      getTooltipContainer={getPopupContainer ?? getTooltipContainer ?? defaultPopupContainer}
       ref={ref}
       builtinPlacements={getTooltipPlacements()}
       overlay={getOverlay()}

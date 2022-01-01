@@ -56,7 +56,7 @@ export interface DropdownProps {
 
 const Dropdown: ForwardRefRenderFunction<unknown, DropdownProps> = (props, ref) => {
   const { prefixCls: customPrefixCls, children, trigger, disabled, getPopupContainer, overlayClassName } = props
-  const prefixCls = customPrefixCls || dropdownStyle()
+  const prefixCls = customPrefixCls ?? dropdownStyle()
 
   const overlayRender = (): ReactElement => {
     /**
@@ -86,7 +86,7 @@ const Dropdown: ForwardRefRenderFunction<unknown, DropdownProps> = (props, ref) 
       {...props}
       overlayClassName={overlayClassName}
       prefixCls={prefixCls}
-      getPopupContainer={getPopupContainer || defaultPopupContainer}
+      getPopupContainer={getPopupContainer ?? defaultPopupContainer}
       trigger={triggerActions}
       overlay={() => overlayRender()}
       placement={getPlacement()}

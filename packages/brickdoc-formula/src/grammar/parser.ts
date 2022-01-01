@@ -1,7 +1,7 @@
 import { CstParser, IParserErrorMessageProvider } from 'chevrotain'
-import { allTokens } from '.'
-import { ContextInterface } from '..'
+import { ContextInterface } from '../types'
 import {
+  allTokens,
   AdditionOperator,
   MultiplicationOperator,
   NumberLiteral,

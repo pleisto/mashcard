@@ -8,15 +8,13 @@ import {
   VariableKind,
   VariableDependency,
   FunctionClause,
-  buildFunctionKey,
   OtherCodeFragment,
   CodeFragmentResult,
   FormulaCheckType,
-  NamespaceId,
-  renderColumn,
-  renderDatabase,
-  renderVariable
-} from '..'
+  NamespaceId
+} from '../types'
+import { renderColumn, renderDatabase, renderVariable } from '../context/util'
+import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
 interface InterpreterConfig {
   readonly formulaContext?: ContextInterface

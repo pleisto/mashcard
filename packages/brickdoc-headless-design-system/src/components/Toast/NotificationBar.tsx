@@ -57,7 +57,7 @@ const DismissStyle = css({
 export const NotificationBar: FC<NotificationBarProps> = props => {
   const { title, description, type = 'info', toast } = props
   const animationStyle: CSSProperties = toast?.height
-    ? getAnimationStyle(toast.position || 'top-right', toast.visible)
+    ? getAnimationStyle(toast.position ?? 'top-right', toast.visible)
     : { opacity: 0 }
   return (
     <NotificationBarBase style={{ ...animationStyle, ...toast.style }}>

@@ -5,9 +5,9 @@ import {
   SpreadsheetResult,
   PredicateResult,
   ErrorResult,
-  PredicateFunction,
-  buildPredicate
-} from '..'
+  PredicateFunction
+} from '../types'
+import { buildPredicate } from '../grammar/lambda'
 
 // TODO https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-filter-lookup
 // Filter Search LookUp

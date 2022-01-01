@@ -1,5 +1,10 @@
 {
-  "extends": "./tsconfig.build.json",
+  "extends": "../../tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "strictNullChecks": false,
+    "noImplicitAny": false
+  },
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
   "references": [

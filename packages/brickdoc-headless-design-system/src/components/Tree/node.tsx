@@ -116,21 +116,20 @@ const InternalNode: FC<NodeProps> = ({
     hover(item: DragItem, monitor: any) {
       const dragIndex = item.index
       const hoverIndex = index
-      if (dragIndex === hoverIndex) {
-        return
-      }
+
+      if (dragIndex === hoverIndex) return
 
       // Determine rectangle on screen
       const hoverBoundingRect = ref.current?.getBoundingClientRect()
 
       // Get vertical middle
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
+      const hoverMiddleY = (hoverBoundingRect!.bottom! - hoverBoundingRect!.top!) / 2
 
       // Determine mouse position
       const clientOffset = monitor.getClientOffset()
 
       // Get pixels to the top
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top
+      const hoverClientY = clientOffset.y - hoverBoundingRect!.top!
 
       setHoverNode({
         hoverMiddleY,
@@ -173,7 +172,7 @@ const InternalNode: FC<NodeProps> = ({
         sourceId: item.id,
         targetIndex: hoverIndex,
         targetId: value,
-        position
+        position: position!
       })
     }
   })

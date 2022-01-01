@@ -1,5 +1,5 @@
 /* eslint-disable jest/no-conditional-expect */
-import { parse, interpret, quickInsert } from '..'
+import { parse, interpret, quickInsert } from '../api'
 import { FormulaContext, ParseErrorType } from '../..'
 
 interface TestCase {

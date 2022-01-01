@@ -33,7 +33,7 @@ const styles = css({
 
 export const PalettePlayground: React.FC = props => {
   const [color, setColor] = useState('#36282b')
-  const handleChange = (color): void => {
+  const handleChange = (color: { hex: string }): void => {
     setColor(color.hex)
   }
 

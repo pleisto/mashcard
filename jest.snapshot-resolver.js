@@ -1,8 +1,9 @@
 module.exports = {
-  resolveSnapshotPath: (testPath, snapshotExtension) => `${testPath}${snapshotExtension}`.replace(/dist/, '__snapshots__'),
+  resolveSnapshotPath: (testPath, snapshotExtension) =>
+    `${testPath}${snapshotExtension}`.replace(/src/, '__snapshots__'),
 
   resolveTestPath: (snapshotFilePath, snapshotExtension) =>
-    snapshotFilePath.replace(snapshotExtension, '').replace('__snapshots__', 'dist'),
+    snapshotFilePath.replace(snapshotExtension, '').replace('__snapshots__', 'src'),
 
-  testPathForConsistencyCheck: 'dist/src/components/some.test.tsx'
+  testPathForConsistencyCheck: 'src/components/some.test.tsx'
 }

@@ -1,5 +1,5 @@
-import { ColumnType, ColumnInitializer, DatabaseType } from '.'
-import { ColumnId, ColumnName, NamespaceId } from '..'
+import { ColumnType, ColumnInitializer, DatabaseType } from './types'
+import { ColumnId, ColumnName, NamespaceId } from '../types'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId

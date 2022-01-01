@@ -1,6 +1,5 @@
 import { CstElement, CstNode, IToken, tokenMatcher } from 'chevrotain'
 import {
-  buildFunctionKey,
   AnyTypeResult,
   ColumnResult,
   NullResult,
@@ -10,12 +9,13 @@ import {
   PredicateResult,
   ReferenceResult,
   PredicateOperator,
-  Row,
   ErrorResult,
   Argument,
-  extractSubType,
   FunctionContext
-} from '..'
+} from '../types'
+import { Row } from '../controls'
+import { extractSubType } from './util'
+import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
 import {
   Div,

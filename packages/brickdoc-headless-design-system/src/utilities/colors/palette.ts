@@ -151,7 +151,8 @@ export const generatePalette = <T extends string>(
   isInverted = false
 ): PaletteObject<T> => {
   const baseColor = cssStr2color(baseColorHex)
-  const paletteStr = (shade: Shade): string => color2cssStr(colorWithShade(baseColor, shade, isInverted))
+  if (!baseColor) throw new Error(`[@brickdoc/design-colors] invalid base color: ${baseColorHex}`)
+  const paletteStr = (shade: Shade): string => color2cssStr(colorWithShade(baseColor, shade, isInverted)!)
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
   return {
     [`${name}1`]: paletteStr(Shade.Shade1),

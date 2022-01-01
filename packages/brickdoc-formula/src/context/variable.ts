@@ -2,23 +2,17 @@ import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
 import { CstNode } from 'chevrotain'
 import {
   ContextInterface,
-  interpret,
   VariableData,
   VariableInterface,
   VariableMetadata,
   Formula,
   AnyTypeResult,
-  DatabaseClass,
-  DatabasePersistence,
   VariableValue,
   FunctionContext,
-  InterpretContext,
-  SwitchClass,
-  ButtonClass,
-  SelectClass,
-  ColumnClass
-} from '..'
-import { parse } from '../grammar'
+  InterpretContext
+} from '../types'
+import { SwitchClass, ButtonClass, SelectClass, ColumnClass, DatabaseClass, DatabasePersistence } from '../controls'
+import { parse, interpret } from '../grammar/api'
 
 export const displayValue = (v: AnyTypeResult): string => {
   switch (v.type) {

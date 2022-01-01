@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
 import { Checkbox, CheckboxProps } from 'reakit/Checkbox'
 import { Rotation } from '@brickdoc/design-icons'
@@ -6,7 +6,7 @@ import { styled } from '../../themes'
 import { FocusRing } from '../FocusRing'
 import { root, switcher } from './styles/index.style'
 
-export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange'> {
+export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange' | 'ref'> {
   size?: 'small' | 'medium' | 'large'
   loading?: boolean
   className?: string
@@ -35,8 +35,9 @@ export const Switch: React.FC<SwitchProps> = props => {
     disabled,
     ...otherProps
   } = props
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   const isDisabled = disabled || loading
-  const ref = React.useRef()
+  const ref = React.useRef<HTMLInputElement>()
   const [unControlledChecked, setUnControlledChecked] = useState(defaultChecked)
   const unControlledToggle = (): void => setUnControlledChecked(!unControlledChecked)
 
@@ -50,13 +51,13 @@ export const Switch: React.FC<SwitchProps> = props => {
               {...otherProps}
               onChange={
                 typeof checked === 'boolean'
-                  ? e => {
-                      onChange(e.target.checked, e)
+                  ? (e: ChangeEvent<HTMLInputElement>) => {
+                      onChange?.(e.target.checked, e)
                     }
                   : unControlledToggle
               }
               checked={checked ?? unControlledChecked}
-              ref={ref}
+              ref={ref as any}
               unstable_clickOnEnter
               unstable_clickOnSpace
               disabled={isDisabled}

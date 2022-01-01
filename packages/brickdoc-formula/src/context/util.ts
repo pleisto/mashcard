@@ -1,9 +1,7 @@
 import {
-  ColumnType,
   ColumnCompletion,
   ColumnId,
   ColumnKey,
-  DatabaseType,
   FunctionClause,
   FunctionCompletion,
   NamespaceId,
@@ -15,7 +13,8 @@ import {
   VariableKey,
   RenderCodeFragmentFunction,
   ErrorMessage
-} from '..'
+} from '../types'
+import { ColumnType, DatabaseType } from '../controls'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
   `#${namespaceId}@${variableId}`

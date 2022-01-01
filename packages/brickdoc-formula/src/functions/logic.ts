@@ -1,4 +1,4 @@
-import { AnyTypeResult, BooleanResult, BasicFunctionClause, FunctionContext } from '..'
+import { AnyTypeResult, BooleanResult, BasicFunctionClause, FunctionContext } from '../types'
 
 export const IF = (
   ctx: FunctionContext,

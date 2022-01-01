@@ -1,6 +1,7 @@
 import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
-import { InputInitializer, InputType } from '.'
-import { FunctionContext, FunctionResult, functionResult2lambda, VariableMetadata } from '..'
+import { InputInitializer, InputType } from './types'
+import { FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { functionResult2lambda } from '../grammar/lambda'
 
 export class InputClass implements InputType {
   meta: VariableMetadata

@@ -1,4 +1,4 @@
-import { FunctionContext, StringResult, BasicFunctionClause, AnyTypeResult } from '..'
+import { FunctionContext, StringResult, BasicFunctionClause, AnyTypeResult } from '../types'
 
 export const T = (ctx: FunctionContext, obj: AnyTypeResult): AnyTypeResult => obj
 

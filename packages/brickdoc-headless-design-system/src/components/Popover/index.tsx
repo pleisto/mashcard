@@ -12,7 +12,7 @@ export interface PopoverProps extends AbstractTriggerProps {
 
 const Popover: ForwardRefRenderFunction<unknown, PopoverProps> = (props, ref) => {
   const { title, content, role = 'dialog', ...otherProps } = props
-  const prefixCls = props.prefixCls || popoverStyle()
+  const prefixCls = props.prefixCls ?? popoverStyle()
 
   const overlay = (
     <>

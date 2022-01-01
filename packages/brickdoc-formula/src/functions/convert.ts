@@ -8,7 +8,7 @@ import {
   RecordResult,
   SpreadsheetResult,
   StringResult
-} from '..'
+} from '../types'
 
 export const toNumber = (ctx: FunctionContext, string: StringResult): NumberResult | ErrorResult => {
   const result = Number(string.result)

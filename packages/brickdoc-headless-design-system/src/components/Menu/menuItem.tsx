@@ -104,7 +104,7 @@ export interface MenuItemProps extends MenuItemHTMLProps {
 }
 
 const getReactElement = (element?: RenderElement): React.ReactElement =>
-  typeof element === 'string' ? <span>{element}</span> : element
+  typeof element === 'string' ? <span>{element}</span> : element!
 
 const getString = (element?: RenderElement): string => (typeof element === 'string' ? element : '')
 
@@ -142,7 +142,7 @@ const _MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = 
       {!children && (
         <ItemContent>
           {icon && <ItemIcon>{icon}</ItemIcon>}
-          {(label || description) && (
+          {(label ?? description) && (
             <ItemMain>
               {label && (
                 <ItemLabel aria-label={getString(label)} danger={danger}>

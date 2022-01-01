@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, NumberResult } from '..'
+import { FunctionContext, BasicFunctionClause, NumberResult } from '../types'
 
 export const ABS = (ctx: FunctionContext, number: NumberResult): NumberResult => ({
   result: Math.abs(number.result),

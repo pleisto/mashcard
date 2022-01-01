@@ -1,4 +1,4 @@
-import { AnyTypeResult, FormulaType } from '..'
+import { AnyTypeResult, FormulaType } from '../types'
 
 export const extractSubType = (array: AnyTypeResult[]): FormulaType => {
   const types = array.map(a => a.type)

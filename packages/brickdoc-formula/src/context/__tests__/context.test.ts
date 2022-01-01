@@ -1,5 +1,6 @@
-import { appendFormulas, buildVariable, Formula, interpret, parse, SuccessParseResult } from '../..'
-import { FormulaContext } from '..'
+import { appendFormulas, buildVariable, interpret, parse, SuccessParseResult } from '../../grammar/api'
+import { Formula } from '../../types'
+import { FormulaContext } from '../context'
 
 describe('Context', () => {
   const formulaContext = new FormulaContext({})

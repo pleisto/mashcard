@@ -83,7 +83,7 @@ export const getAnimationStyle = (position: ToastPosition, visible: boolean): CS
 export const ToastBar: FC<ToastBarProps> = memo(props => {
   const { toast } = props
   const animationStyle: CSSProperties = toast?.height
-    ? getAnimationStyle(toast.position || 'top-center', toast.visible)
+    ? getAnimationStyle(toast.position ?? 'top-center', toast.visible)
     : { opacity: 0 }
 
   return (
