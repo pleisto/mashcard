@@ -13,7 +13,7 @@ module.exports = {
   testURL: 'http://localhost',
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.(t|j)sx?$': ['esbuild-runner/jest']
+    '^.+\\.(t|j)sx?$': ['@swc/jest']
   },
   collectCoverage: isCI,
   // Jest will map files in `dist` back into their source via source maps.
