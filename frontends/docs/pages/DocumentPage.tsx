@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Skeleton, Alert } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { Block } from '@/BrickdocGraphQL'
@@ -29,8 +29,6 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     [docMeta.id, docMeta.snapshotVersion]
   )
 
-  const lastQueryVariables = useRef<typeof queryVariables>()
-
   const { rootBlock, data, loading, refetch, onDocSave, updateBlocks } = useSyncProvider(queryVariables)
 
   const currentRootBlock = rootBlock.current
@@ -53,16 +51,14 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   }, [editor])
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && data?.childrenBlocks && queryVariables !== lastQueryVariables.current) {
-      lastQueryVariables.current = queryVariables
-
+    if (editor && !editor.isDestroyed && data?.childrenBlocks) {
       const content: JSONContent[] = blocksToJSONContents(data?.childrenBlocks as Block[])
 
       if (content.length) {
         editor.chain().setMeta('preventUpdate', true).replaceRoot(content[0]).run()
       }
     }
-  }, [editor, data, data?.childrenBlocks, queryVariables])
+  }, [editor, data, data?.childrenBlocks])
 
   if (docMeta.snapshotVersion === 0) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
