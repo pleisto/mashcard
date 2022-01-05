@@ -40,6 +40,15 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
   const cover = editor?.state.doc.attrs.cover
   const title = editor?.state.doc.attrs.title
 
+  const inputRef = React.useRef<any>(null)
+  const inputComposing = React.useRef(false)
+
+  React.useEffect(() => {
+    if (inputRef.current?.input && title !== undefined) {
+      inputRef.current.input.value = title
+    }
+  }, [title])
+
   const docIconGetter = useBlobGetter('icon', blocks)
   const docCoverGetter = useBlobGetter('cover', blocks)
 
@@ -121,10 +130,33 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
               </Popover>
             )}
             <Input
+              ref={container => {
+                if (container) {
+                  inputRef.current = container
+                  // TODO: fix this hack
+                  ;(container.state as any).value = title
+                }
+              }}
+              defaultValue={title}
               data-testid={TEST_ID_ENUM.page.DocumentPage.titleInput.id}
               className={styles.titleInput}
-              value={title}
-              onChange={e => setTitle(e.target.value)}
+              onCompositionStart={() => {
+                inputComposing.current = true
+              }}
+              onCompositionUpdate={() => {
+                inputComposing.current = true
+              }}
+              onCompositionEnd={e => {
+                inputComposing.current = false
+                setTitle((e.target as any).value)
+              }}
+              onChange={e => {
+                if (inputComposing.current) {
+                  inputComposing.current = false
+                  return
+                }
+                setTitle(e.target.value)
+              }}
               placeholder={t('title.untitled')}
               disabled={!editable}
             />
