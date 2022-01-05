@@ -9,6 +9,7 @@ import {
 import { usePrepareFileUpload } from './usePrepareFileUpload'
 import { useFetchUnsplashImages } from './useFetchUnsplashImages'
 import { useImperativeQuery } from '@/common/hooks'
+import { PageTree } from '@/docs/common/components/PageTree'
 import { DocMeta } from '../DocumentContentPage'
 import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar, pagesVar } from '@/docs/reactiveVars'
@@ -36,6 +37,11 @@ export function useEditorDataSource({
   )
 
   const formulaContext = useReactiveVar(FormulaContextVar)
+
+  // renderPageTree
+  React.useEffect(() => {
+    dataSource.current.renderPageTree = () => <PageTree mode="subPage" docMeta={docMeta} />
+  }, [docMeta])
 
   // updateBlocks
   React.useEffect(() => {

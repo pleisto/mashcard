@@ -13,7 +13,7 @@ import {
 /* import { Tree, TreeProps } from '@brickdoc/design-system' */
 
 // TODO: change to design-system
-import { Tree, TreeProps, TNode, Inserted } from '@brickdoc/brickdoc-headless-design-system'
+import { Tree, TreeProps, TNode, Inserted, css, styled } from '@brickdoc/brickdoc-headless-design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -26,8 +26,33 @@ import { pagesVar } from '@/docs/reactiveVars'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 import { toast } from '@brickdoc/design-system'
 
-export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
+export interface PageTreeProps extends DocMetaProps {
+  mode?: 'default' | 'subPage'
+}
+
+const subPageModeNodeStyle = css({
+  borderRadius: '0 !important',
+  boxShadow: 'none !important'
+})
+
+const PageTreeRoot = styled('div', {
+  variants: {
+    mode: {
+      default: {
+        marginBottom: '2rem'
+      },
+      subPage: {
+        marginBottom: '0'
+      }
+    }
+  }
+})
+
+export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
+
+  const mutable = mode !== 'subPage'
+  const hideHeading = mode === 'subPage'
 
   const { data } = useGetPageBlocksQuery({ variables: { webid: docMeta.webid } })
   const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
@@ -114,6 +139,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
 
     return (
       <PageMenu
+        mutable={mutable}
         docMeta={docMeta}
         // setPopoverKey={setPopoverKey}
         pin={pin}
@@ -156,6 +182,7 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
         emptyNode={t('blocks.no_pages')}
         // selectable={!docMeta.documentInfoLoading}
         selectedNodeId={docMeta.id}
+        treeNodeClassName={mode === 'subPage' ? subPageModeNodeStyle() : ''}
         treeData={treeData as unknown as TNode[]}
         draggable={draggable && isDraggable}
         onDrop={onDrop}
@@ -164,7 +191,27 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
     )
   }
 
-  const pageBlocks = data?.pageBlocks ?? []
+  const pageBlocks = React.useMemo(() => {
+    let blocks = data?.pageBlocks ?? []
+    const findRootParentId = (id: string): string => {
+      const parentId = blocks.find(b => b.id === id)?.parentId
+      if (parentId) return findRootParentId(parentId)
+      return id
+    }
+
+    if (mode === 'subPage') {
+      blocks = blocks.filter(b => {
+        if (b.id === docMeta.id) return false
+        return findRootParentId(b.id) === docMeta.id
+      })
+      return blocks.map(b => ({
+        ...b,
+        parentId: b.parentId === docMeta.id ? undefined : b.parentId
+      }))
+    }
+
+    return blocks
+  }, [data?.pageBlocks, docMeta.id, mode])
 
   pageBlocks.forEach(b => {
     BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
@@ -225,12 +272,12 @@ export const PageTree: React.FC<DocMetaProps> = ({ docMeta }) => {
   )
 
   return pageBlocks.length ? (
-    <div className={styles.pageTree}>
+    <PageTreeRoot mode={mode ?? 'default'}>
       {pinTree}
-      <h2>Pages</h2>
-      {treeElement(pageBlocks, draggable)}
-    </div>
+      {!hideHeading && <h2>Pages</h2>}
+      {treeElement(pageBlocks, draggable && mutable)}
+    </PageTreeRoot>
   ) : (
-    <></>
+    <>{mode === 'subPage' && t('blocks.no_pages')}</>
   )
 }

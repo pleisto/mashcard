@@ -8,6 +8,7 @@ export interface TreeProps {
   treeData: TNode[]
   selectedNodeId?: string
   className?: string
+  treeNodeClassName?: string
   openAll?: boolean
   draggable?: boolean
   onDrop?: (attrs: MoveNode) => void
@@ -37,6 +38,7 @@ const TreeInternal: FC<TreeProps> = ({
   emptyNode,
   selectedNodeId,
   draggable = false,
+  treeNodeClassName,
   onDrop
 }) => {
   const [openedIds, setOpenedIds] = useState<string[]>(
@@ -103,6 +105,7 @@ const TreeInternal: FC<TreeProps> = ({
     <DndProvider backend={HTML5Backend}>
       {renderTree.map((item, index) => (
         <Node
+          className={treeNodeClassName}
           moveNode={moveNode}
           id={item.key}
           index={index}

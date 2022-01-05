@@ -10,6 +10,7 @@ import { TreeRoot } from './style'
 
 export interface NodeProps {
   treeData: TNode
+  className?: string
   emptyNode?: string | ReactNode
   onClick: (node: TNode) => void
   handleSelected: (id: string) => void
@@ -39,6 +40,7 @@ const DND_NODE_TYPE = 'node'
  */
 const InternalNode: FC<NodeProps> = ({
   treeData,
+  className,
   onClick,
   handleSelected,
   titleRender,
@@ -217,6 +219,7 @@ const InternalNode: FC<NodeProps> = ({
         role="button"
         tabIndex={0}
         data-test-id="BrkTree"
+        className={className}
         css={renderBorder}
       >
         <TreeRoot.Indent

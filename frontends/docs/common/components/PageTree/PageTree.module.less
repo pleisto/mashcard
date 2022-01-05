@@ -1,9 +1,5 @@
 @import '@brickdoc/design-system/components/style/themes';
 
-.pageTree {
-  margin-bottom: 2rem;
-}
-
 /* stylelint-disable no-descending-specificity */
 .tree {
   :global(.brk-tree-treenode) {
@@ -11,9 +7,11 @@
     padding: 0;
     margin-top: 2px;
   }
+
   :global(.brk-tree-switcher_open + .brk-tree-node-content-wrapper) {
     width: 100%;
   }
+
   :global(.brk-tree-node-content-wrapper) {
     display: flex;
     width: 100%;
@@ -21,14 +19,17 @@
     margin-left: -28px;
     padding-left: 28px;
   }
-  :global(.brk-tree-node-selected),
-  :global(.brk-tree-node-content-wrapper:hover) {
+
+  :global(.brk-tree-node-content-wrapper:hover),
+  :global(.brk-tree-node-selected) {
     box-sizing: border-box;
     // background-color: transparent !important;
   }
+
   :global(.brk-tree-title) {
     width: 100%;
   }
+
   :global(.brk-tree-indent-unit-start) {
     &::before {
       border: none;
@@ -50,6 +51,7 @@
     background-color: transparent !important;
     cursor: default;
   }
+
   :global(.brk-tree-switcher-leaf-dot) {
     display: none;
   }

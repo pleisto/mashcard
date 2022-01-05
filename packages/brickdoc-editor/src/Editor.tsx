@@ -18,6 +18,7 @@ import {
   UserBlockExtension,
   IndentExtension,
   TocBlockExtension,
+  SubPageMenuBlockExtension,
   PageLinkBlockExtension
 } from './extensions'
 import './styles.less'
@@ -69,6 +70,7 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     'orderedList',
     'paragraph',
     'pdfSection',
+    'subPageMenuBlock',
     'tableBlock',
     'tocBlock'
   ]
@@ -80,11 +82,15 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       BasicRichtextExtension.configure({
         gapcursor: false,
         link: {
+          HTMLAttributes: {
+            class: 'brickdoc-link'
+          },
           autolink: false
         }
       }),
       EventHandlerExtension,
       SlashCommandsExtension,
+      SubPageMenuBlockExtension,
       MentionCommandsExtension.configure({
         editorDataSource
       }),

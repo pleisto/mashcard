@@ -48,6 +48,8 @@ export interface EditorDatabase {
 
   prepareFileUpload: Exclude<DashboardPluginOptions['prepareFileUpload'], undefined>
 
+  renderPageTree: () => React.ReactElement | null
+
   formulaContext?: ContextInterface | null
 
   blobs: {
@@ -85,6 +87,9 @@ export class EditorDataSource {
     blobs: {},
     collaborators: [],
     documentPages: [],
+    renderPageTree() {
+      return null
+    },
     prepareFileUpload() {
       throw new Error('prepareFileUpload unimplement.')
     },
@@ -127,6 +132,15 @@ export class EditorDataSource {
       ...this.source(),
       ...dataSource.source()
     }
+  }
+
+  get renderPageTree(): EditorDatabase['renderPageTree'] {
+    return this.database.renderPageTree
+  }
+
+  set renderPageTree(value: EditorDatabase['renderPageTree']) {
+    this.database.renderPageTree = value
+    this.invokeListeners('renderPageTree')
   }
 
   get formulaContext(): EditorDatabase['formulaContext'] {

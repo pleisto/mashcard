@@ -91,6 +91,13 @@ const menuItems: SlashMenuItem[] = [
     }
   },
   {
+    key: 'subPageMenu',
+    icon: <Icon.MindmapList className="menu-item-icon" />,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).setSubPageMenuBlock().run()
+    }
+  },
+  {
     key: 'image',
     alias: ['img', 'picture'],
     icon: <Icon.FileImage className="menu-item-icon" />,

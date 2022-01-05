@@ -800,6 +800,9 @@ en-US:
         toc:
           title: Toc
           desc: Table of content
+        subPageMenu:
+          title: Subpage menu
+          desc: Table of subpages
         code:
           title: Code
           desc: Capture a code snippet
