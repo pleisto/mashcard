@@ -1,5 +1,5 @@
 export * from './types'
-export * from './database'
+export * from './spreadsheet'
 export * from './column'
 export * from './button'
 export * from './select'

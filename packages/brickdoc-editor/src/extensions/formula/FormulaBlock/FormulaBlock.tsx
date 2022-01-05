@@ -6,7 +6,7 @@ import { BlockContainer, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
-import { DatabaseType, displayValue, FormulaType, VariableClass, VariableInterface } from '@brickdoc/formula'
+import { SpreadsheetType, displayValue, FormulaType, VariableClass, VariableInterface } from '@brickdoc/formula'
 import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
 import { TableRender } from '../../../components/Table/TableRender'
 import { useEditorI18n } from '../../../hooks'
@@ -93,7 +93,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     }
   }
 
-  const renderTable = (result: DatabaseType): React.ReactNode => {
+  const renderTable = (result: SpreadsheetType): React.ReactNode => {
     const columns: Column[] = result.listColumns().map(c => ({
       Header: c.name,
       accessor: c.columnId,

@@ -12,11 +12,11 @@ import { buildPredicate } from '../grammar/lambda'
 // TODO https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-filter-lookup
 // Filter Search LookUp
 // https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-clear-collect-clearcollect
-// TODO database refactor to collection
+// TODO spreadsheet refactor to collection
 
 export const CountIf = (
   ctx: FunctionContext,
-  { result: database }: SpreadsheetResult,
+  { result: spreadsheet }: SpreadsheetResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {
   const column = predicate.column
@@ -24,10 +24,10 @@ export const CountIf = (
     return { type: 'Error', result: 'Column is missing', errorKind: 'runtime' }
   }
 
-  if (database.blockId !== column.namespaceId) {
+  if (spreadsheet.blockId !== column.namespaceId) {
     return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
   }
-  const columns = database.listColumns()
+  const columns = spreadsheet.listColumns()
 
   if (!columns.find(c => c.columnId === column.columnId)) {
     return { type: 'Error', result: 'Column not found', errorKind: 'runtime' }
@@ -36,7 +36,7 @@ export const CountIf = (
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
 
-  database.listRows().forEach(row => {
+  spreadsheet.listRows().forEach(row => {
     const value = Number(row[column.columnId])
     if (predicateFunction(value)) {
       sum += 1
@@ -55,11 +55,11 @@ export const CORE_POWERFX_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     acceptError: false,
     effect: false,
     examples: [{ input: '=CountIf()', output: { type: 'number', result: 123 } }],
-    description: 'Returns the sum of the column in the database.',
+    description: 'Returns the sum of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
-        name: 'database',
+        name: 'spreadsheet',
         type: 'Spreadsheet'
       },
       {

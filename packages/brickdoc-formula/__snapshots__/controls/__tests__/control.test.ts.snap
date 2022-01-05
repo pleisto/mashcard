@@ -226,7 +226,14 @@ Array [
 
 exports[`Controls [button multiple set] =Button("Foo", Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123))) 2`] = `
 Object {
-  "result": ButtonClass {
+  "result": Object {
+    "_formulaContext": "#HIDDEN#",
+    "_meta": Object {
+      "input": "=Button(\\"Foo\\", Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123)))",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    },
     "disabled": false,
     "fn": Object {
       "result": Array [
@@ -927,12 +934,6 @@ Object {
       "type": "Function",
     },
     "kind": "Button",
-    "meta": Object {
-      "input": "=Button(\\"Foo\\", Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123)))",
-      "name": "foo",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
-    },
     "name": "Foo",
     "onClick": [Function],
   },
@@ -1084,7 +1085,14 @@ Array [
 
 exports[`Controls [button] =Button("Foo", Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0))) 2`] = `
 Object {
-  "result": ButtonClass {
+  "result": Object {
+    "_formulaContext": "#HIDDEN#",
+    "_meta": Object {
+      "input": "=Button(\\"Foo\\", Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)))",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    },
     "disabled": false,
     "fn": Object {
       "result": Array [
@@ -1519,12 +1527,6 @@ Object {
       "type": "Function",
     },
     "kind": "Button",
-    "meta": Object {
-      "input": "=Button(\\"Foo\\", Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)))",
-      "name": "foo",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
-    },
     "name": "Foo",
     "onClick": [Function],
   },
@@ -1658,7 +1660,14 @@ Array [
 
 exports[`Controls [input ok] =CInput(Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0))) 2`] = `
 Object {
-  "result": InputClass {
+  "result": Object {
+    "_formulaContext": "#HIDDEN#",
+    "_meta": Object {
+      "input": "=CInput(Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)))",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    },
     "disabled": false,
     "fn": Object {
       "result": Array [
@@ -2093,12 +2102,6 @@ Object {
       "type": "Function",
     },
     "kind": "Input",
-    "meta": Object {
-      "input": "=CInput(Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)))",
-      "name": "foo",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
-    },
     "onChange": [Function],
     "value": "",
   },
@@ -2567,7 +2570,14 @@ Array [
 
 exports[`Controls [select ok] =Select([1,2,3], Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, Input.selected)) 2`] = `
 Object {
-  "result": SelectClass {
+  "result": Object {
+    "_formulaContext": "#HIDDEN#",
+    "_meta": Object {
+      "input": "=Select([1,2,3], Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, Input.selected))",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    },
     "disabled": false,
     "fn": Object {
       "result": Array [
@@ -2750,12 +2760,6 @@ Object {
       "type": "Function",
     },
     "kind": "Select",
-    "meta": Object {
-      "input": "=Select([1,2,3], Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, Input.selected))",
-      "name": "foo",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
-    },
     "onChange": [Function],
     "options": Array [
       "1",
@@ -4984,7 +4988,14 @@ Array [
 
 exports[`Controls [switch set] =Switch(true, Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123))) 2`] = `
 Object {
-  "result": SwitchClass {
+  "result": Object {
+    "_formulaContext": "#HIDDEN#",
+    "_meta": Object {
+      "input": "=Switch(true, Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123)))",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    },
     "checked": true,
     "disabled": false,
     "fn": Object {
@@ -5686,12 +5697,6 @@ Object {
       "type": "Function",
     },
     "kind": "Switch",
-    "meta": Object {
-      "input": "=Switch(true, Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (1 + #57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0)); Set(#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0, (123)))",
-      "name": "foo",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "variableId": "d986e871-cb85-4bd5-b675-87307f60b882",
-    },
     "onChange": [Function],
   },
   "type": "Switch",

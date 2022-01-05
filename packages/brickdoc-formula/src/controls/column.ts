@@ -1,4 +1,4 @@
-import { ColumnType, ColumnInitializer, DatabaseType } from './types'
+import { ColumnType, ColumnInitializer, SpreadsheetType } from './types'
 import { ColumnId, ColumnName, NamespaceId } from '../types'
 
 export class ColumnClass implements ColumnType {
@@ -8,15 +8,15 @@ export class ColumnClass implements ColumnType {
   index: number
   type: string
   rows: string[]
-  database: DatabaseType
+  spreadsheet: SpreadsheetType
 
-  constructor(database: DatabaseType, { columnId, namespaceId, name, index, type, rows }: ColumnInitializer) {
+  constructor(spreadsheet: SpreadsheetType, { columnId, namespaceId, name, index, type, rows }: ColumnInitializer) {
     this.columnId = columnId
     this.namespaceId = namespaceId
     this.name = name
     this.index = index
     this.type = type
     this.rows = rows
-    this.database = database
+    this.spreadsheet = spreadsheet
   }
 }

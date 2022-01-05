@@ -5,7 +5,7 @@ import { spreadsheetKey } from '../context'
 export interface CompleteInput {
   readonly tokens: IToken[]
   readonly input: string
-  readonly formulaContext?: ContextInterface
+  readonly formulaContext: ContextInterface
   readonly codeFragments: CodeFragment[]
   readonly namespaceId: NamespaceId
   readonly variableId: VariableId
@@ -29,7 +29,7 @@ export const complete = ({
   variableId,
   cacheCompletions
 }: CompleteInput): Completion[] => {
-  let completions = cacheCompletions ?? formulaContext?.completions(namespaceId, variableId) ?? []
+  let completions = cacheCompletions ?? formulaContext.completions(namespaceId, variableId)
   const lastCodeFragment = codeFragments[codeFragments.length - 1]
   const lastToken = tokens[tokens.length - 1]
   // const lastToken = tokens[tokens.length - 1]

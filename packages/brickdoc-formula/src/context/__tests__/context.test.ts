@@ -5,6 +5,7 @@ import { FormulaContext } from '../context'
 describe('Context', () => {
   const formulaContext = new FormulaContext({})
   void appendFormulas(formulaContext, [])
+  const interpretContext = { ctx: {}, arguments: [] }
 
   const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
   const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
@@ -92,7 +93,7 @@ describe('Context', () => {
     const name = 'foo'
     const input = '=123'
     const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
-    const parseResult = parse({ formulaContext, meta })
+    const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([
       { message: 'Variable name exist in same namespace', type: 'name_unique' }
     ])
@@ -103,7 +104,7 @@ describe('Context', () => {
     const name = 'if'
     const input = '=123'
     const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
-    const parseResult = parse({ formulaContext, meta })
+    const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is reserved', type: 'name_check' }])
   })
 
@@ -113,13 +114,16 @@ describe('Context', () => {
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const meta = { namespaceId, variableId, name, input }
-    const parseResult = parse({ formulaContext, meta })
+    const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
 
     expect(parseResult.errorMessages).toEqual([{ message: 'Expected boolean but got number', type: 'type' }])
 
     const parseResult2 = parse({
-      formulaContext,
-      meta: { ...meta, input: `=IF((#${fooNamespaceId}@${fooVariableId} = 3), 1, 2)` }
+      ctx: {
+        formulaContext,
+        meta: { ...meta, input: `=IF((#${fooNamespaceId}@${fooVariableId} = 3), 1, 2)` },
+        interpretContext
+      }
     })
     expect(parseResult2.errorMessages).toEqual([])
   })
@@ -131,7 +135,7 @@ describe('Context', () => {
     const input = `=#${fooNamespaceId}@${fooVariableId} + #${barNamespaceId}@${barVariableId}`
     const meta = { namespaceId, variableId, name, input }
     const view = {}
-    const parseInput = { formulaContext, meta }
+    const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 
     expect(parseResult.success).toEqual(true)

@@ -1,5 +1,5 @@
 import { CstNode } from 'chevrotain'
-import { ButtonType, InputType, ColumnType, DatabaseType, SelectType, SwitchType } from '../controls'
+import { ButtonType, InputType, ColumnType, SpreadsheetType, SelectType, SwitchType } from '../controls'
 
 type FormulaBasicType = 'number' | 'string' | 'boolean' | 'null'
 type FormulaObjectType =
@@ -21,6 +21,8 @@ export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Rad
 export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any' | 'void'
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
+
+export type ExpressionType = FormulaCheckType | undefined
 
 export type SpecialDefaultVariableName =
   | 'str'
@@ -160,7 +162,7 @@ export interface ColumnResult extends BaseResult {
 }
 
 export interface SpreadsheetResult extends BaseResult {
-  result: DatabaseType
+  result: SpreadsheetType
   type: 'Spreadsheet'
 }
 
@@ -331,24 +333,24 @@ export interface SpreadsheetCompletion extends BaseCompletion {
   readonly kind: 'spreadsheet'
   readonly namespace: BlockName
   readonly value: SpreadsheetKey
-  readonly preview: DatabaseType
+  readonly preview: SpreadsheetType
 }
 
 export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCompletion | ColumnCompletion
 
 export interface ContextInterface {
   features: string[]
-  databases: Record<NamespaceId, DatabaseType>
+  spreadsheets: Record<NamespaceId, SpreadsheetType>
   blockNameMap: Record<NamespaceId, string>
   reservedNames: string[]
   backendActions: BackendActions | undefined
   variableCount: () => number
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
-  findDatabase: (namespaceId: NamespaceId) => DatabaseType | undefined
+  findSpreadsheet: (namespaceId: NamespaceId) => SpreadsheetType | undefined
   findColumn: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
-  setDatabase: (namespaceId: NamespaceId, database: DatabaseType) => void
-  removeDatabase: (namespaceId: NamespaceId) => void
+  setSpreadsheet: (namespaceId: NamespaceId, spreadsheet: SpreadsheetType) => void
+  removeSpreadsheet: (namespaceId: NamespaceId) => void
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariable: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
   findVariableByName: (namespaceId: NamespaceId, name: VariableName) => VariableInterface | undefined
@@ -375,8 +377,11 @@ export interface ExampleWithCodeFragments<T extends FormulaType> extends Example
   readonly codeFragments: CodeFragment[]
 }
 
-export interface FunctionContext {
+export interface BaseFunctionContext {
   readonly formulaContext: ContextInterface
+  readonly meta?: VariableMetadata
+}
+export interface FunctionContext extends BaseFunctionContext {
   readonly meta: VariableMetadata
   readonly interpretContext: InterpretContext
 }
@@ -531,6 +536,7 @@ export interface VariableInterface {
   isDraft: () => boolean
   namespaceName: () => string
   reparse: VoidFunction
+  updateDefinition: (definition: Definition) => Promise<void>
   meta: () => VariableMetadata
   updateCst: (cst: CstNode, context: InterpretContext) => void
   invokeBackendCreate: () => Promise<void>

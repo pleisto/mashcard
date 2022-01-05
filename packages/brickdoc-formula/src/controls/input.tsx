@@ -1,10 +1,11 @@
 import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
 import { InputInitializer, InputType } from './types'
-import { FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class InputClass implements InputType {
-  meta: VariableMetadata
+  _meta: VariableMetadata
+  _formulaContext: ContextInterface
   kind: 'Input' = 'Input'
   fn: FunctionResult
   value: string
@@ -12,7 +13,8 @@ export class InputClass implements InputType {
   onChange?: (bool: string) => void
 
   constructor(ctx: FunctionContext, { fn, value }: InputInitializer) {
-    this.meta = ctx.meta
+    this._meta = ctx.meta
+    this._formulaContext = ctx.formulaContext
     this.fn = fn
     this.disabled = false
     this.value = value

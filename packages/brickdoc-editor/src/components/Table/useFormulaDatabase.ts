@@ -1,7 +1,7 @@
 import React from 'react'
 import { Column } from 'react-table'
-import { ContextInterface, DatabaseType, DatabaseClass, ColumnInitializer } from '@brickdoc/formula'
-import { BlockTableLoaded, BrickdocEventBus } from '@brickdoc/schema'
+import { ContextInterface, SpreadsheetType, SpreadsheetClass, ColumnInitializer } from '@brickdoc/formula'
+import { BlockSpreadsheetLoaded, BrickdocEventBus } from '@brickdoc/schema'
 import { DatabaseRows } from '../../extensions/table'
 
 // eslint-disable-next-line max-params
@@ -18,6 +18,11 @@ export function useFormulaDatabase(
     if (dynamic) {
       return
     }
+
+    if (!formulaContext) {
+      return
+    }
+
     const spreadsheetName = title ?? 'Untitled'
     const columns: ColumnInitializer[] = tableColumns.map(column => ({
       columnId: column.accessor as string,
@@ -28,22 +33,23 @@ export function useFormulaDatabase(
       rows: tableData.map(row => row[column.accessor as string])
     }))
 
-    const database: DatabaseType = new DatabaseClass({
+    const database: SpreadsheetType = new SpreadsheetClass({
+      ctx: { formulaContext },
       blockId,
       dynamic: false,
-      name: () => spreadsheetName,
+      name: spreadsheetName,
       listColumns: () => columns,
       listRows: () => tableData
     })
 
-    formulaContext?.setDatabase(blockId, database)
+    formulaContext.setSpreadsheet(blockId, database)
 
     if (formulaContext) {
-      BrickdocEventBus.dispatch(BlockTableLoaded({ id: blockId }))
+      BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: blockId }))
     }
 
     return () => {
-      formulaContext?.removeDatabase(blockId)
+      formulaContext.removeSpreadsheet(blockId)
     }
   }, [blockId, title, formulaContext, tableColumns, tableData, dynamic])
 }

@@ -2,7 +2,6 @@ import { CstNode, IToken } from 'chevrotain'
 import {
   CodeFragment,
   ErrorMessage,
-  ContextInterface,
   FormulaType,
   Argument,
   VariableKind,
@@ -11,14 +10,14 @@ import {
   OtherCodeFragment,
   CodeFragmentResult,
   FormulaCheckType,
-  NamespaceId
+  NamespaceId,
+  FunctionContext,
+  ExpressionType
 } from '../types'
-import { renderColumn, renderDatabase, renderVariable } from '../context/util'
+import { renderColumn, renderSpreadsheet, renderVariable } from '../context/util'
 import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
-interface InterpreterConfig {
-  readonly formulaContext?: ContextInterface
-}
+import { intersectType } from './util'
 
 const SpaceBeforeTypes = [
   'In',
@@ -76,62 +75,13 @@ const token2fragment = (token: IToken, type: FormulaType): OtherCodeFragment => 
   return { name: token.image, code: token.tokenType.name, errors: [], type, spaceBefore, spaceAfter, render: undefined }
 }
 
-type ExpressionType = FormulaCheckType | undefined
-
 interface ExpressionArgument {
   readonly type: ExpressionType
   readonly firstArgumentType?: FormulaType
 }
 
-const intersectType = (
-  expectedArgumentType: ExpressionType,
-  contextResultType: FormulaType,
-  label: string
-): { errorMessages: ErrorMessage[]; newType: FormulaType } => {
-  if (expectedArgumentType === undefined) {
-    return { errorMessages: [], newType: contextResultType }
-  }
-
-  if (expectedArgumentType === 'any') {
-    return { errorMessages: [], newType: contextResultType }
-  }
-
-  if (contextResultType === 'any') {
-    return {
-      errorMessages: [],
-      newType: expectedArgumentType instanceof Array ? expectedArgumentType[0] : expectedArgumentType
-    }
-  }
-
-  if (expectedArgumentType instanceof Array && expectedArgumentType.includes(contextResultType)) {
-    return { errorMessages: [], newType: contextResultType }
-  }
-
-  if (expectedArgumentType === contextResultType) {
-    return { errorMessages: [], newType: expectedArgumentType }
-  }
-
-  if (expectedArgumentType === 'Reference') {
-    return { errorMessages: [], newType: expectedArgumentType }
-  }
-  if (expectedArgumentType === 'Cst') {
-    return { errorMessages: [], newType: expectedArgumentType }
-  }
-
-  if (expectedArgumentType === 'Predicate') {
-    return { errorMessages: [], newType: contextResultType }
-  }
-
-  // console.log({ expectedArgumentType, contextResultType, label })
-
-  return {
-    errorMessages: [{ type: 'type', message: `Expected ${expectedArgumentType} but got ${contextResultType}` }],
-    newType: contextResultType
-  }
-}
-
 export class CodeFragmentVisitor extends BaseCstVisitor {
-  formulaContext?: ContextInterface
+  ctx: FunctionContext
   variableDependencies: VariableDependency[] = []
   functionDependencies: Array<FunctionClause<any>> = []
   blockDependencies: NamespaceId[] = []
@@ -139,9 +89,9 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   level: number = 0
   kind: VariableKind = 'constant'
 
-  constructor({ formulaContext }: InterpreterConfig) {
+  constructor({ ctx }: { ctx: FunctionContext }) {
     super()
-    this.formulaContext = formulaContext
+    this.ctx = ctx
     this.validateVisitor()
   }
 
@@ -794,7 +744,9 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       ? (this.visit(ctx.Arguments) as CodeFragmentResult)
       : { codeFragments: [], image: '' }
     const rBracketCodeFragments = ctx.RBracket ? [token2fragment(ctx.RBracket[0], 'any')] : []
-    const finalImage = ctx.RBracket ? `[${image}]` : `[${image}`
+    const finalImage = ctx.RBracket
+      ? `${ctx.LBracket[0].image}${image}${ctx.RBracket[0].image}`
+      : `${ctx.LBracket[0].image}${image}`
 
     const { errorMessages, newType } = intersectType(type, parentType, 'arrayExpression')
 
@@ -862,8 +814,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
         if (ctx.Comma?.[commaIndex]) {
           codeFragments.push(token2fragment(ctx.Comma[commaIndex], 'any'))
+          images.push(ctx.Comma[commaIndex].image)
           commaIndex += 1
-          images.push(',')
         }
       })
 
@@ -902,7 +854,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     images.push(keyImage)
 
     if (ctx.Colon) {
-      images.push(':')
+      images.push(ctx.Colon[0].image)
       codeFragments.push(token2fragment(ctx.Colon[0], 'any'))
     }
 
@@ -931,7 +883,9 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       : [{ message: 'Missing closing parenthesis', type: 'parse' }]
     const { codeFragments, type: expressionType, image }: CodeFragmentResult = this.visit(ctx.expression, { type })
     const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], expressionType)] : []
-    const finalImage = ctx.RParen ? `(${image})` : `(${image}`
+    const finalImage = ctx.RParen
+      ? `${ctx.LParen[0].image}${image}${ctx.RParen[0].image}`
+      : `${ctx.LParen[0].image}${image}`
 
     return {
       codeFragments: [
@@ -1006,7 +960,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     if (ctx.Minus) {
       const errorMessages: ErrorMessage[] = ctx.NumberLiteral ? [] : [{ message: 'Missing number', type: 'syntax' }]
       codeFragments.push({ ...token2fragment(ctx.Minus[0], 'any'), spaceAfter: false, errors: errorMessages })
-      images.push('-')
+      images.push(ctx.Minus[0].image)
     }
 
     const { errorMessages } = intersectType(type, parentType, 'NumberLiteralExpression')
@@ -1052,7 +1006,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     this.blockDependencies.push(namespaceId)
 
-    const column = this.formulaContext?.findColumn(namespaceId, columnId)
+    const column = this.ctx.formulaContext.findColumn(namespaceId, columnId)
 
     const parentType: ExpressionType = 'Column'
 
@@ -1097,13 +1051,13 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     const namespaceId = namespaceToken.image
 
     this.blockDependencies.push(namespaceId)
-    const database = this.formulaContext?.findDatabase(namespaceId)
+    const spreadsheet = this.ctx.formulaContext.findSpreadsheet(namespaceId)
 
     const parentType: FormulaType = 'Spreadsheet'
 
     this.kind = 'expression'
 
-    if (database) {
+    if (spreadsheet) {
       const { errorMessages, newType } = intersectType(type, parentType, 'spreadsheetExpression')
       return {
         codeFragments: [
@@ -1111,8 +1065,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             ...token2fragment(namespaceToken, 'any'),
             code: 'Spreadsheet',
             type: parentType,
-            render: renderDatabase(database, errorMessages),
-            namespaceId: database.blockId,
+            render: renderSpreadsheet(spreadsheet, errorMessages),
+            namespaceId: spreadsheet.blockId,
             name: `#${namespaceId}`,
             errors: errorMessages
           }
@@ -1126,7 +1080,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           SharpFragment,
           {
             ...token2fragment(namespaceToken, 'any'),
-            errors: [{ message: `Database not found: ${namespaceId}`, type: 'deps' }]
+            errors: [{ message: `Spreadsheet not found: ${namespaceId}`, type: 'deps' }]
           }
         ],
         image: `#${namespaceId}`,
@@ -1166,7 +1120,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     const variableFragment = token2fragment(variableToken, 'any')
 
-    const variable = this.formulaContext?.findVariable(namespaceId, variableId)
+    const variable = this.ctx.formulaContext.findVariable(namespaceId, variableId)
 
     this.kind = 'expression'
 
@@ -1247,7 +1201,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       images.push(group, '::', name)
     }
 
-    const clause = this.formulaContext?.findFunctionClause(group, name)
+    const clause = this.ctx.formulaContext.findFunctionClause(group, name)
 
     const functionKey = buildFunctionKey(group, name)
 
@@ -1283,7 +1237,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     const clauseErrorMessages: ErrorMessage[] = []
     if (!clause) {
       clauseErrorMessages.push({ message: `Function ${functionKey} not found`, type: 'deps' })
-    } else if (clause.feature && this.formulaContext && !this.formulaContext.features.includes(clause.feature)) {
+    } else if (clause.feature && !this.ctx.formulaContext.features.includes(clause.feature)) {
       clauseErrorMessages.push({ message: `Feature ${clause.feature} not enabled`, type: 'deps' })
     }
 
@@ -1383,8 +1337,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
       if (ctx.Comma?.[commaIndex]) {
         codeFragments.push(token2fragment(ctx.Comma[commaIndex], 'any'))
+        images.push(ctx.Comma[commaIndex].image)
         commaIndex += 1
-        images.push(',')
       }
     })
 

@@ -14,26 +14,26 @@ import {
 import { buildPredicate } from '../grammar/lambda'
 
 export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const rows: number[] = column.database.listRows().map(row => Number(row[column.columnId]) || 0)
+  const rows: number[] = column.spreadsheet.listRows().map(row => Number(row[column.columnId]) || 0)
   return { type: 'number', result: rows.reduce((a, b) => a + b, 0) }
 }
 
 export const MAX = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const rows: number[] = column.database.listRows().map(row => Number(row[column.columnId]) || 0)
+  const rows: number[] = column.spreadsheet.listRows().map(row => Number(row[column.columnId]) || 0)
   return { type: 'number', result: Math.max(...rows) }
 }
 
 export const COUNTA = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
-  const counta = column.database.listRows().filter(row => !!row[column.columnId]).length
+  const counta = column.spreadsheet.listRows().filter(row => !!row[column.columnId]).length
   return { type: 'number', result: counta }
 }
 
-export const COLUMN_COUNT = (ctx: FunctionContext, database: SpreadsheetResult): NumberResult => {
-  return { type: 'number', result: database.result.columnCount() }
+export const COLUMN_COUNT = (ctx: FunctionContext, spreadsheet: SpreadsheetResult): NumberResult => {
+  return { type: 'number', result: spreadsheet.result.columnCount() }
 }
 
-export const ROW_COUNT = (ctx: FunctionContext, database: SpreadsheetResult): NumberResult => {
-  return { type: 'number', result: database.result.rowCount() }
+export const ROW_COUNT = (ctx: FunctionContext, spreadsheet: SpreadsheetResult): NumberResult => {
+  return { type: 'number', result: spreadsheet.result.rowCount() }
 }
 
 export const SUMIFS = (
@@ -49,7 +49,7 @@ export const SUMIFS = (
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
 
-  column1.database.listRows().forEach(row => {
+  column1.spreadsheet.listRows().forEach(row => {
     const value1 = Number(row[column1.columnId])
     const value2 = Number(row[column2.columnId])
     if (value1 && predicateFunction(value2)) {
@@ -74,7 +74,7 @@ export const AVERAGEIFS = (
   let sum: number = 0
   let count: number = 0
 
-  column1.database.listRows().forEach(row => {
+  column1.spreadsheet.listRows().forEach(row => {
     const value1 = Number(row[column1.columnId])
     const value2 = Number(row[column2.columnId])
     if (value1 && predicateFunction(value2)) {
@@ -98,7 +98,7 @@ export const COUNTIFS = (
   const predicateFunction: PredicateFunction = buildPredicate(predicate)
   let sum: number = 0
 
-  column.database.listRows().forEach(row => {
+  column.spreadsheet.listRows().forEach(row => {
     const value = Number(row[column.columnId])
     if (predicateFunction(value)) {
       sum += 1
@@ -119,7 +119,7 @@ export const SUMPRODUCT = (
 
   let sum: number = 0
 
-  column1.database.listRows().forEach(row => {
+  column1.spreadsheet.listRows().forEach(row => {
     const value1 = Number(row[column1.columnId])
     const value2 = Number(row[column2.columnId])
     sum += value1 * value2
@@ -142,7 +142,7 @@ export const XLOOKUP = (
 
   let result: StringResult = notFoundValue
 
-  lookupColumn.database.listRows().forEach(row => {
+  lookupColumn.spreadsheet.listRows().forEach(row => {
     let bol = false
     const compareData = Number(lookupValue)
     const data = Number(row[lookupColumn.columnId])
@@ -170,19 +170,19 @@ export const XLOOKUP = (
 export const VLOOKUP = (
   ctx: FunctionContext,
   { result: match }: AnyTypeResult,
-  { result: database }: SpreadsheetResult,
+  { result: spreadsheet }: SpreadsheetResult,
   { result: column }: ColumnResult,
   { result: range }: BooleanResult
 ): StringResult | ErrorResult => {
-  if (database.blockId !== column.namespaceId) {
+  if (spreadsheet.blockId !== column.namespaceId) {
     return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
   }
 
-  const columns = database.listColumns()
+  const columns = spreadsheet.listColumns()
 
   const firstColumn = columns[0]
   if (!firstColumn) {
-    return { type: 'Error', result: 'Database is empty', errorKind: 'runtime' }
+    return { type: 'Error', result: 'Spreadsheet is empty', errorKind: 'runtime' }
   }
 
   if (firstColumn.columnId === column.columnId) {
@@ -197,7 +197,7 @@ export const VLOOKUP = (
 
   const matchData = String(match)
 
-  database.listRows().forEach(row => {
+  spreadsheet.listRows().forEach(row => {
     const bol = range ? Number(row[firstColumn.columnId]) <= Number(matchData) : row[firstColumn.columnId] === matchData
 
     if (bol) {
@@ -208,7 +208,7 @@ export const VLOOKUP = (
   return result
 }
 
-export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string'>> = [
+export const CORE_SPREADSHEET_CLAUSES: Array<BasicFunctionClause<'number' | 'string'>> = [
   {
     name: 'VLOOKUP',
     async: false,
@@ -217,7 +217,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
-    description: 'Returns the value of the column in the database that matches the match value.',
+    description: 'Returns the value of the column in the spreadsheet that matches the match value.',
     group: 'core',
     args: [
       {
@@ -225,7 +225,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
         type: 'any'
       },
       {
-        name: 'database',
+        name: 'spreadsheet',
         type: 'Spreadsheet'
       },
       {
@@ -251,7 +251,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
-    description: 'Returns the value of the column in the database that matches the match value.',
+    description: 'Returns the value of the column in the spreadsheet that matches the match value.',
     group: 'core',
     args: [
       {
@@ -290,7 +290,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the sum of the column in the database.',
+    description: 'Returns the sum of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
@@ -311,11 +311,11 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the column size of the database.',
+    description: 'Returns the column size of the spreadsheet.',
     group: 'core',
     args: [
       {
-        name: 'database',
+        name: 'spreadsheet',
         type: 'Spreadsheet'
       }
     ],
@@ -332,11 +332,11 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the row size of the database.',
+    description: 'Returns the row size of the spreadsheet.',
     group: 'core',
     args: [
       {
-        name: 'database',
+        name: 'spreadsheet',
         type: 'Spreadsheet'
       }
     ],
@@ -353,7 +353,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the sum of the column in the database.',
+    description: 'Returns the sum of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
@@ -382,7 +382,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the average of the column in the database.',
+    description: 'Returns the average of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
@@ -411,7 +411,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the sum of the column in the database.',
+    description: 'Returns the sum of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
@@ -436,7 +436,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the sum of the column in the database.',
+    description: 'Returns the sum of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
@@ -461,7 +461,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the max of the column in the database.',
+    description: 'Returns the max of the column in the spreadsheet.',
     group: 'core',
     args: [
       {
@@ -482,7 +482,7 @@ export const CORE_DATABASE_CLAUSES: Array<BasicFunctionClause<'number' | 'string
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
-    description: 'Returns the count of the column in the database.',
+    description: 'Returns the count of the column in the spreadsheet.',
     group: 'core',
     args: [
       {

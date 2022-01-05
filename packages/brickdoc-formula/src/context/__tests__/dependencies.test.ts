@@ -1,5 +1,6 @@
 /* eslint-disable max-nested-callbacks */
-import { buildVariable, interpret, parse, quickInsert, SuccessParseResult, VariableMetadata } from '../..'
+import { buildVariable, interpret, parse, quickInsert, SuccessParseResult } from '../../grammar/api'
+import { VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
 const formulaContext = new FormulaContext({})
@@ -16,6 +17,8 @@ const variableIds = [
 ]
 
 const variableWithNames = variableIds.map((id, index) => ({ variableId: id, name: `num${index}` }))
+
+const interpretContext = { ctx: {}, arguments: [] }
 
 const asyncForEach = async (
   array: string | any[],
@@ -48,7 +51,7 @@ describe('Dependency', () => {
     }))
 
     await asyncForEach(metas, async (meta: VariableMetadata) => {
-      await quickInsert({ formulaContext, meta })
+      await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
     })
   })
 
@@ -74,14 +77,14 @@ describe('Dependency', () => {
   it('circular dependency check', () => {
     const input = `=#${namespaceId}@${variableIds[6]}`
     const meta = { namespaceId, variableId: variableIds[0], name: 'num0', input }
-    const { errorMessages } = parse({ formulaContext, meta })
+    const { errorMessages } = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(errorMessages).toEqual([{ message: 'Circular dependency found', type: 'circular_dependency' }])
   })
 
   it('dependency automatic update', async () => {
     const input = `=#${namespaceId}@${variableIds[0]} * 2 + 100`
     const meta = { namespaceId, variableId: variableIds[1], name: 'num1', input }
-    const parseResult = parse({ formulaContext, meta }) as SuccessParseResult
+    const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } }) as SuccessParseResult
     expect(parseResult.errorMessages).toEqual([])
     const view = {}
     const interpretResult = await interpret({

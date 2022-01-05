@@ -70,7 +70,12 @@ const calculate = async ({
   const variableId = variable ? variable.t.variableId : uuid()
   const meta = { namespaceId, variableId, name, input }
   const view: View = {}
-  const parseResult = parse({ formulaContext, meta, activeCompletion, position })
+  const ctx = {
+    formulaContext,
+    meta,
+    interpretContext: { ctx: {}, arguments: [] }
+  }
+  const parseResult = parse({ ctx, activeCompletion, position })
 
   console.log({
     parseResult,
@@ -89,14 +94,7 @@ const calculate = async ({
   let interpretResult: InterpretResult
 
   if (parseResult.success) {
-    interpretResult = await interpret({
-      cst: parseResult.cst,
-      ctx: {
-        formulaContext,
-        meta,
-        interpretContext: { ctx: {}, arguments: [] }
-      }
-    })
+    interpretResult = await interpret({ cst: parseResult.cst, ctx })
   } else {
     interpretResult = {
       lazy: false,
@@ -310,7 +308,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
     const finalName = newName ?? name ?? defaultName
     const finalInput = newInput ?? input ?? ''
-    // const inputIsEmpty = finalInput.trim() === '='
+    const inputIsEmpty = finalInput.trim() === '='
 
     const result = await calculate({
       namespaceId: rootId,
@@ -322,21 +320,23 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       formulaContext
     })
 
-    console.log('calculate result', {
-      finalName,
-      newName,
-      newInput,
-      input,
-      finalInput,
-      activeCompletion,
-      result,
-      latestActiveCompletion: latestActiveCompletion.current
-    })
-
     if (!result) return
 
     const { interpretResult, newPosition, parseResult, completions, newVariable, errors } = result
-    setPosition(newPosition)
+
+    // console.log('calculate result', {
+    //   finalName,
+    //   newName,
+    //   newInput,
+    //   input,
+    //   finalInput,
+    //   activeCompletion,
+    //   latestPosition: latestPosition.current,
+    //   position,
+    //   newPosition,
+    //   result,
+    //   latestActiveCompletion: latestActiveCompletion.current
+    // })
 
     if (parseResult.valid) {
       setContent(codeFragmentsToJSONContentTotal(parseResult.codeFragments, rootId))
@@ -348,10 +348,17 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       //   setInput(parseResult.input)
     }
 
-    updateVariable(newVariable)
     setCompletions(completions)
     setActiveCompletion(completions[0])
-    setError(errors.length ? errors[0] : undefined)
+    setPosition(newPosition)
+
+    if (inputIsEmpty) {
+      updateVariable(undefined)
+      setError(undefined)
+    } else {
+      updateVariable(newVariable)
+      setError(errors.length ? errors[0] : undefined)
+    }
 
     if (interpretResult.variableValue.success) {
       const type = interpretResult.variableValue.result.type

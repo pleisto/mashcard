@@ -1,5 +1,6 @@
-import { appendFormulas, Formula } from '../..'
-import { FormulaContext } from '..'
+import { appendFormulas } from '../../grammar/api'
+import { Formula } from '../../types'
+import { FormulaContext } from '../context'
 
 describe('appendFormulas', () => {
   it('constant', () => {

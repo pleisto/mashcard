@@ -1,11 +1,12 @@
 import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
 import { SwitchInitializer, SwitchType } from './types'
-import { FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class SwitchClass implements SwitchType {
   checked: boolean
-  meta: VariableMetadata
+  _formulaContext: ContextInterface
+  _meta: VariableMetadata
   kind: 'Switch' = 'Switch'
   fn: FunctionResult
   disabled: boolean
@@ -13,7 +14,8 @@ export class SwitchClass implements SwitchType {
 
   constructor(ctx: FunctionContext, { checked, fn }: SwitchInitializer) {
     this.checked = checked
-    this.meta = ctx.meta
+    this._meta = ctx.meta
+    this._formulaContext = ctx.formulaContext
     this.fn = fn
     this.disabled = false
     this.onChange = checked => {

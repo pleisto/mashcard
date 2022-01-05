@@ -13,12 +13,13 @@ const testName1 = 'varvarabcvar'
 
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
+const interpretContext = { ctx: {}, arguments: [] }
 const meta = { namespaceId, variableId, name: testName1, input: '=24' }
 const barMeta = { namespaceId, variableId: barVariableId, name: 'bar', input: `=#${namespaceId}@${variableId}` }
 describe('Controls', () => {
   beforeAll(async () => {
-    await quickInsert({ formulaContext, meta })
-    await quickInsert({ formulaContext, meta: barMeta })
+    await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
+    await quickInsert({ ctx: { formulaContext, meta: barMeta, interpretContext } })
   })
 
   interface TestCase {
@@ -112,15 +113,20 @@ describe('Controls', () => {
   it('feature', () => {
     const input = `=Button("Foo", Set(#${namespaceId}@${variableId}, (1 + #${namespaceId}@${variableId})))`
     const meta = { namespaceId, variableId: testVariableId, name: 'foo', input }
-    const { errorMessages: errorMessage1 } = parse({ formulaContext: new FormulaContext({ features: [] }), meta })
+    const interpretContext = { ctx: {}, arguments: [] }
+    const { errorMessages: errorMessage1 } = parse({
+      ctx: { formulaContext: new FormulaContext({ features: [] }), meta, interpretContext }
+    })
 
     expect(errorMessage1).toEqual([{ message: 'Function Button not found', type: 'deps' }])
 
-    const { errorMessages: errorMessage2 } = parse({ formulaContext: { ...formulaContext, features: [] }, meta })
+    const { errorMessages: errorMessage2 } = parse({
+      ctx: { formulaContext: { ...formulaContext, features: [] }, meta, interpretContext }
+    })
 
     expect(errorMessage2).toEqual([{ message: 'Feature formula-controls not enabled', type: 'deps' }])
 
-    const { errorMessages: errorMessage3 } = parse({ formulaContext, meta })
+    const { errorMessages: errorMessage3 } = parse({ ctx: { formulaContext, meta, interpretContext } })
 
     expect(errorMessage3).toEqual([])
   })
@@ -129,8 +135,11 @@ describe('Controls', () => {
     it(`[${label}] ${input}`, async () => {
       const meta = { namespaceId, variableId: testVariableId, name: 'foo', input }
       const { errorMessages, valid, codeFragments, cst, success } = parse({
-        formulaContext,
-        meta
+        ctx: {
+          formulaContext,
+          meta,
+          interpretContext
+        }
       })
 
       expect(valid).toBe(true)
@@ -139,13 +148,19 @@ describe('Controls', () => {
 
       if (success) {
         const { variableValue } = await interpret({
-          cst,
+          cst: cst!,
           ctx: { meta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })
 
         expect(variableValue.success).toBe(true)
         if (result === SNAPSHOT_FLAG) {
-          expect(variableValue.result).toMatchSnapshot()
+          const snapshot = variableValue.result
+
+          if (snapshot.result._formulaContext) {
+            expect({ ...snapshot, result: { ...snapshot.result, _formulaContext: '#HIDDEN#' } }).toMatchSnapshot()
+          } else {
+            expect(variableValue.result).toMatchSnapshot()
+          }
         } else {
           expect(variableValue.result.result).toEqual(result)
         }

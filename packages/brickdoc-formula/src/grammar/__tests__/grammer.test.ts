@@ -1,6 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, interpret, quickInsert } from '../api'
-import { FormulaContext, ParseErrorType } from '../..'
+import { FunctionContext, ParseErrorType } from '../../types'
+import { FormulaContext } from '../../context'
 
 interface TestCase {
   input: string
@@ -896,15 +897,21 @@ const testCases: TestCase[] = [
 const formulaContext = new FormulaContext({})
 
 const name = 'foo'
-const meta = { variableId, namespaceId, name }
+const meta = { variableId, namespaceId, name, input: '!!!' }
 
-const parseInput = { formulaContext, meta }
+const ctx: FunctionContext = {
+  formulaContext,
+  meta,
+  interpretContext: {
+    ctx: { bar: { type: 'string', result: 'bar123' } },
+    arguments: [{ type: 'string', result: 'Foo1234123' }]
+  }
+}
 
 describe('Simple test case', () => {
   beforeAll(async () => {
     await quickInsert({
-      formulaContext,
-      meta: { namespaceId: barNamespaceId, name: 'bar', variableId: barVariableId, input: '=24' }
+      ctx: { ...ctx, meta: { namespaceId: barNamespaceId, name: 'bar', variableId: barVariableId, input: '=24' } }
     })
   })
 
@@ -923,10 +930,7 @@ describe('Simple test case', () => {
         input: newInput,
         inputImage,
         parseImage
-      } = parse({
-        ...parseInput,
-        meta: newMeta
-      })
+      } = parse({ ctx: { ...ctx, meta: newMeta } })
 
       expect(completions.length).not.toEqual(0)
 
@@ -940,17 +944,7 @@ describe('Simple test case', () => {
       }
 
       if (value !== undefined) {
-        const { variableValue } = await interpret({
-          cst,
-          ctx: {
-            meta: newMeta,
-            formulaContext,
-            interpretContext: {
-              ctx: { bar: { type: 'string', result: 'bar123' } },
-              arguments: [{ type: 'string', result: 'Foo1234123' }]
-            }
-          }
-        })
+        const { variableValue } = await interpret({ cst: cst!, ctx: { ...ctx, meta: newMeta } })
 
         expect(errorMessages).toEqual([])
 

@@ -1,6 +1,8 @@
-import { complete, FormulaLexer, parse, quickInsert } from '..'
-import { CodeFragment } from '../..'
+import { parse, quickInsert } from '../api'
+import { CodeFragment } from '../../types'
 import { FormulaContext } from '../../context'
+import { FormulaLexer } from '../lexer'
+import { complete } from '../completer'
 
 const formulaContext = new FormulaContext({})
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -9,6 +11,8 @@ const barVariableId = '28e28190-63bd-4f70-aeca-26e72574c01a'
 const test2VariableId = '99499117-5694-4d83-9ccd-85a3ab0b8f25'
 const testNamespaceId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
 const testVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
+
+const interpretContext = { ctx: {}, arguments: [] }
 
 // const testName1 = 'varvarabc中文var'
 const testName1 = 'varvarabcvar'
@@ -20,9 +24,9 @@ const barMeta = { namespaceId, variableId: barVariableId, name: 'bar', input: '=
 const test2Meta = { namespaceId, variableId: test2VariableId, name: testName2, input: '=80' }
 describe('Complete', () => {
   beforeAll(async () => {
-    await quickInsert({ formulaContext, meta })
-    await quickInsert({ formulaContext, meta: barMeta })
-    await quickInsert({ formulaContext, meta: test2Meta })
+    await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
+    await quickInsert({ ctx: { formulaContext, meta: barMeta, interpretContext } })
+    await quickInsert({ ctx: { formulaContext, meta: test2Meta, interpretContext } })
   })
 
   it('basic', () => {
@@ -170,8 +174,16 @@ describe('Complete', () => {
     }) => {
       it(`[${label}] ${input}`, async () => {
         const { completions: oldCompletions } = parse({
-          formulaContext,
-          meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input: input.slice(0, -1) }
+          ctx: {
+            formulaContext,
+            interpretContext,
+            meta: {
+              namespaceId: testcaseNamespaceId,
+              variableId: testVariableId,
+              name: 'foo',
+              input: input.slice(0, -1)
+            }
+          }
         })
 
         const {
@@ -183,9 +195,12 @@ describe('Complete', () => {
           input: newInput,
           parseImage
         } = parse({
-          formulaContext,
-          activeCompletion: oldCompletions[0],
-          meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input }
+          ctx: {
+            formulaContext,
+            interpretContext,
+            meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input }
+          },
+          activeCompletion: oldCompletions[0]
         })
 
         expect(valid).toBe(true)

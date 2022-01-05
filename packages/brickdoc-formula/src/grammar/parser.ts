@@ -1,5 +1,4 @@
 import { CstParser, IParserErrorMessageProvider } from 'chevrotain'
-import { ContextInterface } from '../types'
 import {
   allTokens,
   AdditionOperator,
@@ -37,10 +36,6 @@ import {
   LambdaArgumentNumber
 } from './lexer'
 
-interface ParserConfig {
-  readonly formulaContext?: ContextInterface
-}
-
 const errorProvider: IParserErrorMessageProvider = {
   buildMismatchTokenMessage(options) {
     return `TODO mismatch token ${options.ruleName}`
@@ -64,13 +59,11 @@ const errorProvider: IParserErrorMessageProvider = {
 }
 
 export class FormulaParser extends CstParser {
-  formulaContext?: ContextInterface
-
   // Unfortunately no support for class fields with initializer in ES2015, only in esNext...
   // so the parsing rules are defined inside the constructor, as each parsing rule must be initialized by
   // invoking RULE(...)
   // see: https://github.com/jeffmo/es-class-fields-and-static-properties
-  constructor({ formulaContext }: ParserConfig) {
+  constructor() {
     const tokens = allTokens
     super(tokens, {
       maxLookahead: 5,
@@ -78,7 +71,6 @@ export class FormulaParser extends CstParser {
       errorMessageProvider: errorProvider
     })
 
-    this.formulaContext = formulaContext
     this.performSelfAnalysis()
   }
 
@@ -317,6 +309,6 @@ export class FormulaParser extends CstParser {
   })
 }
 
-export const ParserInstance = new FormulaParser({})
+export const ParserInstance = new FormulaParser()
 
 export const BaseCstVisitor = ParserInstance.getBaseCstVisitorConstructor()

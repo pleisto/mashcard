@@ -42,7 +42,6 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
       const text = `=${contentArrayToInput(fetchJSONContentArray(jsonContent))}`
       const position = transaction.selection.from - 1
       if (transaction.selection.from === transaction.selection.to && position >= 1) {
-        updatePosition?.current(position)
         const blocks: JSONContent[] = editor.getJSON().content?.[0].content ?? []
         let length = 0
 
@@ -66,6 +65,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
         }
       }
 
+      updatePosition?.current(position)
       updateContent?.(text)
     }
   })

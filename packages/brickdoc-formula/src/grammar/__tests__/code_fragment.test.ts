@@ -1,5 +1,6 @@
-import { parse, quickInsert, BaseFunctionClause, NumberResult } from '../..'
+import { parse, quickInsert } from '../api'
 import { FormulaContext } from '../../context'
+import { BaseFunctionClause, NumberResult } from '../../types'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
@@ -64,29 +65,24 @@ const testCases = [
   `=#${namespaceId}@${unknownId} + 3`
 ]
 
-const parseInput = {
+const ctx = {
   formulaContext,
-  meta
+  meta,
+  interpretContext: { ctx: {}, arguments: [] }
 }
 
 describe('Code fragment ok', () => {
   beforeAll(async () => {
-    await quickInsert({ formulaContext, meta })
+    await quickInsert({ ctx })
   })
 
   testCases.forEach(input => {
     // eslint-disable-next-line jest/valid-title
     it(input, () => {
-      const { codeFragments, cst } = parse({ ...parseInput, meta: { ...meta, input } })
+      const { codeFragments, cst } = parse({ ctx: { ...ctx, meta: { ...meta, input } } })
       // expect(success).toBe(true)
       expect(cst).toMatchSnapshot()
       expect(codeFragments).toMatchSnapshot()
     })
-  })
-})
-
-describe('Code fragment error TODO', () => {
-  it('zzz', () => {
-    expect(true).toBe(true)
   })
 })

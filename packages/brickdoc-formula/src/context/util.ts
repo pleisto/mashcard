@@ -14,7 +14,7 @@ import {
   RenderCodeFragmentFunction,
   ErrorMessage
 } from '../types'
-import { ColumnType, DatabaseType } from '../controls'
+import { ColumnType, SpreadsheetType } from '../controls'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
   `#${namespaceId}@${variableId}`
@@ -23,12 +23,15 @@ export const spreadsheetKey = (namespaceId: NamespaceId): SpreadsheetKey => `#${
 
 export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `#${namespaceId}#${columnId}`
 
-export const renderDatabase = (database: DatabaseType, errorMessages: ErrorMessage[]): RenderCodeFragmentFunction => {
+export const renderSpreadsheet = (
+  spreadsheet: SpreadsheetType,
+  errorMessages: ErrorMessage[]
+): RenderCodeFragmentFunction => {
   const error = errorMessages.length === 0 ? '' : errorMessages[0].message
   return blockId => [
     {
-      value: spreadsheetKey(database.blockId),
-      display: database.name(),
+      value: spreadsheetKey(spreadsheet.blockId),
+      display: spreadsheet.name(),
       error,
       code: 'Spreadsheet',
       type: 'Spreadsheet'
@@ -41,7 +44,7 @@ export const renderColumn = (column: ColumnType, errorMessages: ErrorMessage[]):
   return blockId => [
     {
       value: spreadsheetKey(column.namespaceId),
-      display: column.database.name(),
+      display: column.spreadsheet.name(),
       error,
       code: 'Spreadsheet',
       type: 'Spreadsheet'
@@ -104,20 +107,20 @@ export const renderVariable = (
         ]
 }
 
-export const database2completion = (database: DatabaseType): SpreadsheetCompletion => {
-  const value = spreadsheetKey(database.blockId)
+export const spreadsheet2completion = (spreadsheet: SpreadsheetType): SpreadsheetCompletion => {
+  const value = spreadsheetKey(spreadsheet.blockId)
   return {
     kind: 'spreadsheet',
-    replacements: [database.name()],
+    replacements: [spreadsheet.name()],
     weight: 10,
-    name: database.name(),
-    namespace: database.blockId,
+    name: spreadsheet.name(),
+    namespace: spreadsheet.blockId,
     value,
-    preview: database,
+    preview: spreadsheet,
     renderDescription: blockId => '',
     codeFragment: {
-      namespaceId: database.blockId,
-      render: renderDatabase(database, []),
+      namespaceId: spreadsheet.blockId,
+      render: renderSpreadsheet(spreadsheet, []),
       errors: [],
       name: value,
       code: 'Spreadsheet',
@@ -140,10 +143,10 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
     ],
     weight: -3,
     name: column.name,
-    namespace: column.database.name(),
+    namespace: column.spreadsheet.name(),
     value,
     preview: column,
-    renderDescription: blockId => column.database.name(),
+    renderDescription: blockId => column.spreadsheet.name(),
     codeFragment: {
       namespaceId: column.namespaceId,
       render: renderColumn(column, []),

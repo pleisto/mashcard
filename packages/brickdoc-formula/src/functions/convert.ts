@@ -67,11 +67,11 @@ export const toArray = (ctx: FunctionContext, { result, type }: AnyTypeResult): 
   }
 }
 
-export const toRecordArray = (ctx: FunctionContext, { result: database }: SpreadsheetResult): ArrayResult => {
+export const toRecordArray = (ctx: FunctionContext, { result: spreadsheet }: SpreadsheetResult): ArrayResult => {
   return {
     type: 'Array',
     subType: 'Record',
-    result: database.toRecord().map(row => ({ type: 'Record', subType: 'string', result: row }))
+    result: spreadsheet.toRecord().map(row => ({ type: 'Record', subType: 'string', result: row }))
   }
 }
 
@@ -112,7 +112,7 @@ export const CORE_CONVERT_CLAUSES: Array<BasicFunctionClause<'number' | 'Array' 
     group: 'core',
     args: [
       {
-        name: 'database',
+        name: 'spreadsheet',
         type: 'Spreadsheet'
       }
     ],

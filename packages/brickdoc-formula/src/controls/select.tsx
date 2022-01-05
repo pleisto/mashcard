@@ -1,10 +1,11 @@
 import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
 import { SelectInitializer, SelectOption, SelectType } from './types'
-import { FunctionContext, FunctionResult, VariableMetadata } from '../types'
+import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
 import { functionResult2lambda } from '../grammar/lambda'
 
 export class SelectClass implements SelectType {
-  meta: VariableMetadata
+  _meta: VariableMetadata
+  _formulaContext: ContextInterface
   kind: 'Select' = 'Select'
   fn: FunctionResult
   value: SelectOption
@@ -14,7 +15,8 @@ export class SelectClass implements SelectType {
 
   constructor(ctx: FunctionContext, { options, fn, value }: SelectInitializer) {
     this.options = options
-    this.meta = ctx.meta
+    this._meta = ctx.meta
+    this._formulaContext = ctx.formulaContext
     this.fn = fn
     this.disabled = false
     this.value = value

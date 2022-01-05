@@ -1,6 +1,6 @@
 import { BasicFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
 import { CORE_API_CLAUSES } from './api'
-import { CORE_DATABASE_CLAUSES } from './database'
+import { CORE_SPREADSHEET_CLAUSES } from './spreadsheet'
 import { CORE_DATE_CLAUSES } from './date'
 import { CORE_ERROR_CLAUSES } from './error'
 import { CORE_LOGIC_CLAUSES } from './logic'
@@ -25,7 +25,7 @@ export const buildFunctionKey = (group: FunctionGroup, name: FunctionNameType): 
 export const BUILTIN_CLAUSES: Array<BasicFunctionClause<any>> = [
   ...CORE_API_CLAUSES,
   ...CORE_TEXT_CLAUSES,
-  ...CORE_DATABASE_CLAUSES,
+  ...CORE_SPREADSHEET_CLAUSES,
   ...CORE_STRING_CLAUSES,
   ...CORE_LOGIC_CLAUSES,
   ...CORE_MATH_CLAUSES,

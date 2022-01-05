@@ -1,5 +1,5 @@
 import { CstNode, ILexingResult } from 'chevrotain'
-import { ColumnType, DatabaseType, ColumnClass, ColumnInitializer } from '../controls'
+import { ColumnType, SpreadsheetType, ColumnClass, ColumnInitializer } from '../controls'
 import {
   ContextInterface,
   FunctionClause,
@@ -27,13 +27,19 @@ import {
   ColumnCompletion,
   Features
 } from '../types'
-import { function2completion, database2completion, variable2completion, variableKey, column2completion } from './util'
+import {
+  function2completion,
+  spreadsheet2completion,
+  variable2completion,
+  variableKey,
+  column2completion
+} from './util'
 import { FORMULA_PARSER_VERSION } from '../version'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/code_fragment'
 import { FormulaParser } from '../grammar/parser'
 import { FormulaLexer } from '../grammar/lexer'
-import { BlockNameLoad, BlockTableLoaded, BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
+import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
 
 export interface FormulaContextArgs {
@@ -86,7 +92,7 @@ export class FormulaContext implements ContextInterface {
   context: Record<VariableKey, VariableInterface> = {}
   functionWeights: Record<FunctionKey, number> = {}
   variableWeights: Record<VariableKey, number> = {}
-  databases: Record<NamespaceId, DatabaseType> = {}
+  spreadsheets: Record<NamespaceId, SpreadsheetType> = {}
   blockNameMap: Record<NamespaceId, string> = {}
   variableNameCounter: Record<FormulaType, Record<NamespaceId, number>> = {
     string: {},
@@ -171,12 +177,12 @@ export class FormulaContext implements ContextInterface {
       const weight: number = this.variableWeights[key as VariableKey] || 0
       return variable2completion(v, v.t.namespaceId === namespaceId ? weight + 1 : weight - 1)
     })
-    const spreadsheets: SpreadsheetCompletion[] = Object.entries(this.databases).map(([key, database]) => {
-      return database2completion(database)
+    const spreadsheets: SpreadsheetCompletion[] = Object.entries(this.spreadsheets).map(([key, spreadsheet]) => {
+      return spreadsheet2completion(spreadsheet)
     })
 
-    const columns: ColumnCompletion[] = Object.entries(this.databases).flatMap(([key, database]) => {
-      return database.listColumns().map(column => column2completion({ ...column, database }))
+    const columns: ColumnCompletion[] = Object.entries(this.spreadsheets).flatMap(([key, spreadsheet]) => {
+      return spreadsheet.listColumns().map(column => column2completion({ ...column, spreadsheet }))
     })
 
     const dynamicColumns: ColumnCompletion[] = completionVariables
@@ -187,7 +193,7 @@ export class FormulaContext implements ContextInterface {
         return v.t.variableValue.result.result
           .listColumns()
           .map((column: ColumnInitializer) =>
-            column2completion({ ...column, database: v.t.variableValue.result.result })
+            column2completion({ ...column, spreadsheet: v.t.variableValue.result.result })
           )
       })
     return [...functions, ...variables, ...spreadsheets, ...columns, ...dynamicColumns].sort(
@@ -204,32 +210,32 @@ export class FormulaContext implements ContextInterface {
     return Object.keys(this.context).length
   }
 
-  public findDatabase = (namespaceId: NamespaceId): DatabaseType | undefined => {
-    return this.databases[namespaceId]
+  public findSpreadsheet = (namespaceId: NamespaceId): SpreadsheetType | undefined => {
+    return this.spreadsheets[namespaceId]
   }
 
   public findColumn = (namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined => {
-    const database = this.findDatabase(namespaceId)
-    if (!database) {
+    const spreadsheet = this.findSpreadsheet(namespaceId)
+    if (!spreadsheet) {
       return undefined
     }
 
-    const column = database.getColumn(variableId)
+    const column = spreadsheet.getColumn(variableId)
 
     if (!column) {
       return undefined
     }
 
-    return new ColumnClass(database, column)
+    return new ColumnClass(spreadsheet, column)
   }
 
-  public setDatabase = (namespaceId: NamespaceId, database: DatabaseType): void => {
-    this.databases[namespaceId] = database
+  public setSpreadsheet = (namespaceId: NamespaceId, spreadsheet: SpreadsheetType): void => {
+    this.spreadsheets[namespaceId] = spreadsheet
   }
 
-  public removeDatabase = (namespaceId: NamespaceId): void => {
+  public removeSpreadsheet = (namespaceId: NamespaceId): void => {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-    delete this.databases[namespaceId]
+    delete this.spreadsheets[namespaceId]
   }
 
   public findVariable = (namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined => {
@@ -296,7 +302,7 @@ export class FormulaContext implements ContextInterface {
 
     blockDependencies.forEach(blockId => {
       BrickdocEventBus.subscribe(
-        BlockTableLoaded,
+        BlockSpreadsheetLoaded,
         e => {
           variable.reparse()
         },
@@ -414,8 +420,14 @@ export class FormulaContext implements ContextInterface {
     if (lexResult.errors.length > 0) {
       return []
     }
-    const parser = new FormulaParser({ formulaContext: this })
-    const codeFragmentVisitor = new CodeFragmentVisitor({ formulaContext: this })
+    const parser = new FormulaParser()
+    const codeFragmentVisitor = new CodeFragmentVisitor({
+      ctx: {
+        formulaContext: this,
+        meta: { name: 'unknown', input, namespaceId: '', variableId: '' },
+        interpretContext: { ctx: {}, arguments: [] }
+      }
+    })
     const tokens = lexResult.tokens
     parser.input = tokens
 

@@ -20,14 +20,17 @@ import {
   SwitchClass,
   SelectClass,
   InputClass,
-  DatabaseInitializer,
-  DatabaseClass,
+  SpreadsheetInitializer,
+  SpreadsheetClass,
   ColumnInitializer
 } from '../controls'
 import { FORMULA_FEATURE_CONTROL } from '../context'
 import { v4 as uuid } from 'uuid'
 
-export const Table = (ctx: FunctionContext, { result }: ArrayResult): SpreadsheetResult | ErrorResult => {
+export const Spreadsheet = (
+  ctx: FunctionContext,
+  { result, subType }: ArrayResult
+): SpreadsheetResult | ErrorResult => {
   const defaultData: RecordResult[] = [
     {
       type: 'Record',
@@ -43,13 +46,12 @@ export const Table = (ctx: FunctionContext, { result }: ArrayResult): Spreadshee
 
   const recordData: RecordResult[] = result.length ? (result as RecordResult[]) : defaultData
 
-  const nonRecordElement = recordData.find(e => e.type !== 'Record')
-  if (nonRecordElement) {
-    return { type: 'Error', result: 'Table must be an array of records', errorKind: 'runtime' }
+  if (!['void', 'Record'].includes(subType)) {
+    return { type: 'Error', result: `Spreadsheet type unmatched: ${subType}`, errorKind: 'runtime' }
   }
 
   const blockId = uuid()
-  const tableName = 'Dynamic'
+  const defaultName = 'Dynamic Spreadsheet'
   const columns: ColumnInitializer[] = []
   const rows: Row[] = []
 
@@ -64,7 +66,6 @@ export const Table = (ctx: FunctionContext, { result }: ArrayResult): Spreadshee
         columnId: keyWithIds.find(k => k.key === key)!.uuid,
         name: key,
         index,
-        spreadsheetName: tableName,
         type: 'text',
         rows: data.map(e => String(e[key].result || ''))
       }))
@@ -85,16 +86,17 @@ export const Table = (ctx: FunctionContext, { result }: ArrayResult): Spreadshee
 
   // console.log({ recordData, rows, columns })
 
-  const databaseDefinition: DatabaseInitializer = {
+  const spreadsheetDefinition: SpreadsheetInitializer = {
+    ctx,
     blockId,
     dynamic: true,
-    name: () => tableName,
+    name: defaultName,
     listColumns: () => columns,
     listRows: () => rows
   }
 
-  const database = new DatabaseClass(databaseDefinition)
-  return { type: 'Spreadsheet', result: database }
+  const spreadsheet = new SpreadsheetClass(spreadsheetDefinition)
+  return { type: 'Spreadsheet', result: spreadsheet }
 }
 
 export const Button = (
@@ -147,20 +149,20 @@ export const CORE_CONTROL_CLAUSES: Array<
   BasicFunctionClause<'Spreadsheet' | 'Button' | 'Select' | 'Switch' | 'Input'>
 > = [
   {
-    name: 'Table',
+    name: 'Spreadsheet',
     async: false,
     pure: false,
     lazy: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: null }],
-    description: 'Returns the table.',
+    description: 'Returns the spreadsheet.',
     group: 'core',
     args: [{ name: 'array', type: 'Array' }],
     returns: 'Spreadsheet',
     testCases: [],
     chain: true,
-    reference: Table
+    reference: Spreadsheet
   },
   {
     name: 'Button',

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Database Functions [AVERAGEIFS 4] =AVERAGEIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >3) 1`] = `
+exports[`Spreadsheet Functions [AVERAGEIFS 4] =AVERAGEIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >3) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -88,7 +88,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [AVERAGEIFS 100] =AVERAGEIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >100) 1`] = `
+exports[`Spreadsheet Functions [AVERAGEIFS 100] =AVERAGEIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >100) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -176,7 +176,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [COLUMN_COUNT] =#28e28190-63bd-4f70-aeca-26e72574c01a.COLUMN_COUNT() 1`] = `
+exports[`Spreadsheet Functions [COLUMN_COUNT] =#28e28190-63bd-4f70-aeca-26e72574c01a.COLUMN_COUNT() 1`] = `
 Array [
   Object {
     "code": "Spreadsheet",
@@ -227,7 +227,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.COUNTA() 1`] = `
+exports[`Spreadsheet Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.COUNTA() 1`] = `
 Array [
   Object {
     "code": "Column",
@@ -278,7 +278,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64.COUNTA() 1`] = `
+exports[`Spreadsheet Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64.COUNTA() 1`] = `
 Array [
   Object {
     "code": "Column",
@@ -329,7 +329,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [COUNTIFS =1] =COUNTIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, 3) 1`] = `
+exports[`Spreadsheet Functions [COUNTIFS =1] =COUNTIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, 3) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -389,7 +389,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [COUNTIFS >2] =COUNTIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, >2) 1`] = `
+exports[`Spreadsheet Functions [COUNTIFS >2] =COUNTIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, >2) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -458,7 +458,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [MAX] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.MAX() 1`] = `
+exports[`Spreadsheet Functions [MAX] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.MAX() 1`] = `
 Array [
   Object {
     "code": "Column",
@@ -509,7 +509,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [SUM] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.SUM() 1`] = `
+exports[`Spreadsheet Functions [SUM] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.SUM() 1`] = `
 Array [
   Object {
     "code": "Column",
@@ -560,7 +560,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [SUMIFS >3] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >3) 1`] = `
+exports[`Spreadsheet Functions [SUMIFS >3] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >3) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -648,7 +648,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [SUMIFS 4] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, 4) 1`] = `
+exports[`Spreadsheet Functions [SUMIFS 4] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, 4) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -727,7 +727,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [SUMPRODUCT] =SUMPRODUCT(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
+exports[`Spreadsheet Functions [SUMPRODUCT] =SUMPRODUCT(#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -788,12 +788,12 @@ Array [
 ]
 `;
 
-exports[`Database Functions [Table] =Table([]).toArray() 1`] = `
+exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([]).toArray() 1`] = `
 Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "name": "Table",
+    "name": "Spreadsheet",
     "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
@@ -874,7 +874,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [Table] =Table([]).toArray() 2`] = `
+exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([]).toArray() 2`] = `
 Array [
   Object {
     "result": Array [
@@ -921,12 +921,12 @@ Array [
 ]
 `;
 
-exports[`Database Functions [Table] =Table([{a: 1}, {a: 2}]).toArray() 1`] = `
+exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([{a: 1}, {a: 2}]).toArray() 1`] = `
 Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "name": "Table",
+    "name": "Spreadsheet",
     "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1106,7 +1106,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [Table] =Table([{a: 1}, {a: 2}]).toArray() 2`] = `
+exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([{a: 1}, {a: 2}]).toArray() 2`] = `
 Array [
   Object {
     "result": Array [
@@ -1141,12 +1141,12 @@ Array [
 ]
 `;
 
-exports[`Database Functions [Table] =Table([1,2,3]).toArray() 1`] = `
+exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([1,2,3]).toArray() 1`] = `
 Array [
   Object {
     "code": "Function",
     "errors": Array [],
-    "name": "Table",
+    "name": "Spreadsheet",
     "render": undefined,
     "spaceAfter": false,
     "spaceBefore": false,
@@ -1272,9 +1272,9 @@ Array [
 ]
 `;
 
-exports[`Database Functions [Table] =Table([1,2,3]).toArray() 2`] = `"Table must be an array of records"`;
+exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([1,2,3]).toArray() 2`] = `"Spreadsheet type unmatched: number"`;
 
-exports[`Database Functions [VLOOKUP 2 range default] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP 2 range default] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1353,7 +1353,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP 2 range true] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, true) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP 2 range true] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, true) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1450,7 +1450,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP Column check] =VLOOKUP("", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP Column check] =VLOOKUP("", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1529,7 +1529,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP Not found 2 range false] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, false) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP Not found 2 range false] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, false) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1626,7 +1626,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP Not found] =VLOOKUP("", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP Not found] =VLOOKUP("", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1705,7 +1705,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1784,7 +1784,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, false) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, false) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1881,7 +1881,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, true) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, true) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -1978,7 +1978,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [VLOOKUP ok string] =VLOOKUP("1", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
+exports[`Spreadsheet Functions [VLOOKUP ok string] =VLOOKUP("1", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -2057,7 +2057,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [XLOOKUP ok string] =XLOOKUP("1", #28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
+exports[`Spreadsheet Functions [XLOOKUP ok string] =XLOOKUP("1", #28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -2136,7 +2136,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [XLOOKUP ok string] =XLOOKUP("123", #28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, "100") 1`] = `
+exports[`Spreadsheet Functions [XLOOKUP ok string] =XLOOKUP("123", #28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28, "100") 1`] = `
 Array [
   Object {
     "code": "Function",
@@ -2233,7 +2233,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [column] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6 1`] = `
+exports[`Spreadsheet Functions [column] =#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6 1`] = `
 Array [
   Object {
     "code": "Column",
@@ -2248,7 +2248,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [exactin column true] ="foo" in #28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64 1`] = `
+exports[`Spreadsheet Functions [exactin column true] ="foo" in #28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64 1`] = `
 Array [
   Object {
     "code": "StringLiteral",
@@ -2281,7 +2281,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [in column false] =4 in #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
+exports[`Spreadsheet Functions [in column false] =4 in #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -2314,7 +2314,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [in column true] =3 in #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
+exports[`Spreadsheet Functions [in column true] =3 in #28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -2347,7 +2347,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [in database false] =4 in #28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
+exports[`Spreadsheet Functions [in spreadsheet false] =4 in #28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -2380,7 +2380,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [in database true] =3 in #28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
+exports[`Spreadsheet Functions [in spreadsheet true] =3 in #28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
 Array [
   Object {
     "code": "NumberLiteral",
@@ -2413,7 +2413,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [toArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 1`] = `
+exports[`Spreadsheet Functions [toArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 1`] = `
 Array [
   Object {
     "code": "Spreadsheet",
@@ -2464,7 +2464,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [toArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 2`] = `
+exports[`Spreadsheet Functions [toArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 2`] = `
 Array [
   Object {
     "result": Array [
@@ -2541,7 +2541,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [toRecordArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toRecordArray() 1`] = `
+exports[`Spreadsheet Functions [toRecordArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toRecordArray() 1`] = `
 Array [
   Object {
     "code": "Spreadsheet",
@@ -2592,7 +2592,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions [toRecordArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toRecordArray() 2`] = `
+exports[`Spreadsheet Functions [toRecordArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toRecordArray() 2`] = `
 Array [
   Object {
     "result": Object {
@@ -2651,7 +2651,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions Database Factory 1`] = `
+exports[`Spreadsheet Functions Spreadsheet Factory 1`] = `
 Array [
   Object {
     "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -2692,7 +2692,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions Database Factory 2`] = `
+exports[`Spreadsheet Functions Spreadsheet Factory 2`] = `
 Array [
   Object {
     "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "3",
@@ -2718,7 +2718,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions Database Factory 3`] = `
+exports[`Spreadsheet Functions Spreadsheet Factory 3`] = `
 Array [
   Array [
     "first",
@@ -2743,7 +2743,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions Database Factory 4`] = `
+exports[`Spreadsheet Functions Spreadsheet Factory 4`] = `
 Array [
   Object {
     "first": Object {
@@ -2790,7 +2790,7 @@ Array [
 ]
 `;
 
-exports[`Database Functions completion 1`] = `
+exports[`Spreadsheet Functions completion 1`] = `
 Object {
   "codeFragment": Object {
     "code": "Spreadsheet",
@@ -2803,9 +2803,9 @@ Object {
     "type": "any",
   },
   "kind": "spreadsheet",
-  "name": "MyTable",
+  "name": "MySpreadsheet",
   "namespace": "28e28190-63bd-4f70-aeca-26e72574c01a",
-  "preview": DatabaseClass {
+  "preview": SpreadsheetClass {
     "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "dynamic": false,
     "listColumns": [Function],
@@ -2814,14 +2814,14 @@ Object {
   },
   "renderDescription": [Function],
   "replacements": Array [
-    "MyTable",
+    "MySpreadsheet",
   ],
   "value": "#28e28190-63bd-4f70-aeca-26e72574c01a",
   "weight": 10,
 }
 `;
 
-exports[`Database Functions completion 2`] = `
+exports[`Spreadsheet Functions completion 2`] = `
 Object {
   "codeFragment": Object {
     "code": "Function",
@@ -2845,7 +2845,7 @@ Object {
     ],
     "async": false,
     "chain": true,
-    "description": "Returns the sum of the column in the database.",
+    "description": "Returns the sum of the column in the spreadsheet.",
     "effect": false,
     "examples": Array [
       Object {
@@ -2885,7 +2885,7 @@ Object {
 }
 `;
 
-exports[`Database Functions completion 3`] = `
+exports[`Spreadsheet Functions completion 3`] = `
 Object {
   "codeFragment": Object {
     "code": "Column",
@@ -2899,16 +2899,9 @@ Object {
   },
   "kind": "column",
   "name": "first",
-  "namespace": "MyTable",
+  "namespace": "MySpreadsheet",
   "preview": Object {
     "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
-    "database": DatabaseClass {
-      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-      "dynamic": false,
-      "listColumns": [Function],
-      "listRows": [Function],
-      "name": [Function],
-    },
     "index": 0,
     "name": "first",
     "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2917,6 +2910,13 @@ Object {
       "3",
       "5",
     ],
+    "spreadsheet": SpreadsheetClass {
+      "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "dynamic": false,
+      "listColumns": [Function],
+      "listRows": [Function],
+      "name": [Function],
+    },
     "type": "text",
   },
   "renderDescription": [Function],
@@ -2931,7 +2931,7 @@ Object {
 }
 `;
 
-exports[`Database Functions completion 4`] = `
+exports[`Spreadsheet Functions completion 4`] = `
 Object {
   "codeFragment": Object {
     "code": "Function",
@@ -2949,13 +2949,13 @@ Object {
     "acceptError": false,
     "args": Array [
       Object {
-        "name": "database",
+        "name": "spreadsheet",
         "type": "Spreadsheet",
       },
     ],
     "async": false,
     "chain": true,
-    "description": "Returns the column size of the database.",
+    "description": "Returns the column size of the spreadsheet.",
     "effect": false,
     "examples": Array [
       Object {
