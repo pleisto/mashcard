@@ -4,44 +4,19 @@ import React from 'react'
 import dayjs, { Dayjs } from 'dayjs'
 import { CellProps } from 'react-table'
 import { useEditingStatus } from '../useEditingStatus'
-import { DatePicker } from './DatePicker'
 import './DateCell.css'
-import { DatabaseColumns } from '../../useColumns'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface DateCellProps extends CellProps<object> {}
 
 export const DateCell: React.FC<DateCellProps> = props => {
-  const { value, updateData, cell, setColumns } = props
-  const [editing, { show: showEditing, hide: hideEditing }] = useEditingStatus(props)
+  const { value, cell } = props
+  const [editing, { show: showEditing }] = useEditingStatus(props)
   const currentValue = React.useRef<Dayjs | null>(value)
   React.useEffect(() => (currentValue.current = value), [value])
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>): void => {
     event.stopPropagation()
-  }
-
-  const setIncludeTime = (includeTime: boolean): void => {
-    setColumns((prevColumns: DatabaseColumns) =>
-      prevColumns.map(dbColumn =>
-        dbColumn.key === cell.column.id
-          ? {
-              ...dbColumn,
-              dateIncludeTime: includeTime
-            }
-          : dbColumn
-      )
-    )
-  }
-
-  const handleChange = (value: Dayjs | null): void => {
-    currentValue.current = value
-  }
-
-  const handleConfirmChange = (): void => {
-    hideEditing()
-    // TODO: fix type
-    updateData((cell.row.original as any).id, cell.column.id, currentValue.current)
   }
 
   const includeTime = cell.column.dateIncludeTime
@@ -60,13 +35,13 @@ export const DateCell: React.FC<DateCellProps> = props => {
         <>
           <div data-testid="table-date-overlay" className="table-block-cell-overlay" onClick={handleOverlayClick} />
           <div onClick={handleOverlayClick}>
-            <DatePicker
+            {/* <DatePicker
               value={currentValue.current}
               onChange={handleChange}
               onConfirmChange={handleConfirmChange}
               includeTime={includeTime}
               setIncludeTime={setIncludeTime}
-            />
+            /> */}
           </div>
         </>
       )}

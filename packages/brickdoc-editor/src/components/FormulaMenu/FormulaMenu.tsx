@@ -260,7 +260,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         if (!replacement) {
           console.info('replacement not found 1', { text, currentCompletion })
         } else {
-          positionChange = positionChange - text.length + replacement.length
+          positionChange = positionChange - text.length + (replacement.length as number)
           const newText = text.substring(0, text.length - replacement.length)
           oldContent = [attrsToJSONContent({ display: newText, value: newText, code: 'ANY', type: 'any', error: '' })]
         }
@@ -446,7 +446,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="small"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}>
+          disabled={isDisableSave()}
+        >
           {t(`${i18nKey}.save`)}
         </Button>
         <Button className="formula-menu-button" size="small" type="text" danger={true} onClick={handleDelete}>
@@ -465,7 +466,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )

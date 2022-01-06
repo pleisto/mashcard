@@ -241,11 +241,6 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     </Menu>
   )
 
-  // TODO: Refactoring may be required
-  if (pageId.split('mock')?.length === 2) {
-    return <p className={styles.nopage}>No pages inside</p>
-  }
-
   const linkData = (
     <Popover
       content={renamePopoverContent}

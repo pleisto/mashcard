@@ -36,9 +36,7 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({
       role="listitem"
       data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.id}
     >
-      <Tag color={bgColor(option.color)} style={{ color: option.color }}>
-        {option.label}
-      </Tag>
+      <Tag color={bgColor(option.color)} style={{ color: option.color }} text={option.label} />
       <Popover
         trigger="click"
         overlayClassName="table-block-menu-popover"

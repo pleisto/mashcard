@@ -201,6 +201,7 @@ export const DocumentContentPage: React.FC = () => {
     }
   }, [docMeta, loading])
 
+  console.log(docMeta, 'docMetadocMetadocMeta')
   return docMeta.id ? (
     <>
       <Helmet title={editor?.state.doc.attrs.title ?? docMeta.title} />

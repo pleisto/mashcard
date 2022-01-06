@@ -101,17 +101,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
   const OptionTag: SelectProps<object>['tagRender'] = React.useCallback(
     ({ value }) => {
       const { label, color } = selectOptions.find(item => item.value === value) ?? {}
-      return (
-        <Tag
-          className="table-block-select-cell-tag"
-          style={{ color }}
-          color={bgColor(color)}
-          closable={true}
-          onClose={handleRemove}
-        >
-          {label}
-        </Tag>
-      )
+      return <Tag style={{ color }} color={bgColor(color)} closable={true} onClose={handleRemove} text={label} />
     },
     [selectOptions, handleRemove]
   )
@@ -190,11 +180,7 @@ export const SelectCell: React.FC<SelectCellProps> = props => {
       className="table-block-select-cell"
       onClick={showEditing}
     >
-      {label && (
-        <Tag className="table-block-select-cell-tag" color={bgColor(color)} style={{ color }}>
-          {label}
-        </Tag>
-      )}
+      {label && <Tag color={bgColor(color)} style={{ color }} text={label} />}
     </div>
   )
 }

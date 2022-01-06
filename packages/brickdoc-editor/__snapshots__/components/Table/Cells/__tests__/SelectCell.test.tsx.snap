@@ -7,11 +7,11 @@ exports[`SelectCell matches correct snapshot 1`] = `
   role="button"
   tabindex="-1"
 >
-  <span
-    class="brk-tag brk-tag-has-color table-block-select-cell-tag"
-    style="background-color: rgba(62, 62, 62, 0.15); color: rgb(62, 62, 62);"
+  <div
+    class="brd-c-gsZMAK brd-c-gsZMAK-jhuSHf-size-md"
+    style="color: rgb(62, 62, 62);"
   >
     label
-  </span>
+  </div>
 </div>
 `;

@@ -46,7 +46,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     externalDataSource: editorDataSource,
     editable: documentEditable
   })
-  React.useEffect(() => {
+
+  useEffect(() => {
     editorVar(editor)
   }, [editor])
 

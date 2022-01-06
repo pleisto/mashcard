@@ -2,75 +2,11 @@
 import { TFunction } from 'react-i18next'
 
 import { Locale } from '../locale-provider'
-import { PickerLocale } from '../date-picker/generatePicker'
 
 export function getLocaleData(t: TFunction<'design_system'>, language: string): Locale {
   const typeTemplate = t('form.defaultValidateMessages.types.template', '%{label} is not a valid %{type}')
 
-  const pickerLocale: PickerLocale = {
-    lang: {
-      locale: language.replace('-', '_'), // e.g. en_US, zh_CN
-      today: t('calendarPicker.today', 'Today'),
-      now: t('calendarPicker.now', 'Now'),
-      backToToday: t('calendarPicker.backToToday', 'Back to today'),
-      ok: t('calendarPicker.ok', 'Ok'),
-      clear: t('calendarPicker.clear', t('calendarPicker.clear', 'Clear')),
-      month: t('calendarPicker.month', 'Month'),
-      year: t('calendarPicker.year', 'Year'),
-      timeSelect: t('calendarPicker.timeSelect', 'select time'),
-      dateSelect: t('calendarPicker.dateSelect', 'select date'),
-      weekSelect: t('calendarPicker.weekSelect', 'Choose a week'),
-      monthSelect: t('calendarPicker.monthSelect', 'Choose a month'),
-      yearSelect: t('calendarPicker.yearSelect', 'Choose a year'),
-      decadeSelect: t('calendarPicker.decadeSelect', 'Choose a decade'),
-      yearFormat: t('calendarPicker.yearFormat', 'YYYY'),
-      dateFormat: t('calendarPicker.dateFormat', 'M/D/YYYY'),
-      dayFormat: t('calendarPicker.dayFormat', 'D'),
-      dateTimeFormat: t('calendarPicker.dateTimeFormat', 'M/D/YYYY HH:mm:ss'),
-      monthBeforeYear: t('calendarPicker.monthBeforeYear', 'true') === 'true',
-      previousMonth: t('calendarPicker.previousMonth', 'Previous month (PageUp)'),
-      nextMonth: t('calendarPicker.nextMonth', 'Next month (PageDown)'),
-      previousYear: t('calendarPicker.previousYear', 'Last year (Control + left)'),
-      nextYear: t('calendarPicker.nextYear', 'Next year (Control + right)'),
-      previousDecade: t('calendarPicker.previousDecade', 'Last decade'),
-      nextDecade: t('calendarPicker.nextDecade', 'Next decade'),
-      previousCentury: t('calendarPicker.previousCentury', 'Last century'),
-      nextCentury: t('calendarPicker.nextCentury', 'Next century'),
-      placeholder: t('calendarPicker.placeholder', 'Select date'),
-      yearPlaceholder: t('calendarPicker.yearPlaceholder', 'Select year'),
-      quarterPlaceholder: t('calendarPicker.quarterPlaceholder', 'Select quarter'),
-      monthPlaceholder: t('calendarPicker.monthPlaceholder', 'Select month'),
-      weekPlaceholder: t('calendarPicker.weekPlaceholder', 'Select week'),
-      rangePlaceholder: [
-        t('calendarPicker.rangePlaceholder.startDate', 'Start date'),
-        t('calendarPicker.rangePlaceholder.endDate', 'End date')
-      ],
-      rangeYearPlaceholder: [
-        t('calendarPicker.rangeYearPlaceholder.startYear', 'Start year'),
-        t('calendarPicker.rangeYearPlaceholder.endYear', 'End year')
-      ],
-      rangeMonthPlaceholder: [
-        t('calendarPicker.rangeMonthPlaceholder.startMonth', 'Start month'),
-        t('calendarPicker.rangeMonthPlaceholder.endMonth', 'End month')
-      ],
-      rangeWeekPlaceholder: [
-        t('calendarPicker.rangeWeekPlaceholder.startWeek', 'Start week'),
-        t('calendarPicker.rangeWeekPlaceholder.endWeek', 'End week')
-      ]
-    },
-    timePickerLocale: {
-      placeholder: t('timePicker.placeholder', 'Select time'),
-      rangePlaceholder: [t('timePicker.rangePlaceholder.startTime', 'Start time'), t('timePicker.rangePlaceholder.endTime', 'End time')]
-    }
-  }
-
   const locale: Locale = {
-    DatePicker: pickerLocale,
-    TimePicker: {
-      placeholder: t('timePicker.placeholder', 'Select time'),
-      rangePlaceholder: [t('timePicker.rangePlaceholder.startTime', 'Start time'), t('timePicker.rangePlaceholder.endTime', 'End time')]
-    },
-    Calendar: pickerLocale,
     global: {
       placeholder: t('global.placeholder', 'Please select')
     },
@@ -149,7 +85,10 @@ export function getLocaleData(t: TFunction<'design_system'>, language: string): 
           range: t('form.defaultValidationMessages.array.range', 'The amount of %{label} must be between %{min}-%{max}')
         },
         pattern: {
-          mismatch: t('form.defaultValidationMessages.pattern.mismatch', '%{label} does not match the pattern %{pattern}')
+          mismatch: t(
+            'form.defaultValidationMessages.pattern.mismatch',
+            '%{label} does not match the pattern %{pattern}'
+          )
         }
       }
     },

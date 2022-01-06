@@ -31,9 +31,7 @@ export const SelectValue: React.FC<SelectValueProps> = ({ value, onChange, optio
     >
       {options.map(option => (
         <Select.Option key={option.value} value={option.value} title={option.label}>
-          <Tag color={bgColor(option.color)} style={{ color: option.color }}>
-            {option.label}
-          </Tag>
+          <Tag color={bgColor(option.color)} style={{ color: option.color }} text={option.label} />
         </Select.Option>
       ))}
     </Select>

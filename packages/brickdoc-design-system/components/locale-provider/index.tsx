@@ -5,17 +5,12 @@ import { useTranslation } from 'react-i18next'
 import './style'
 import { ModalLocale, changeConfirmLocale } from '../modal/locale'
 import { TransferLocale as TransferLocaleForEmpty } from '../empty'
-import { PickerLocale } from '../date-picker/generatePicker'
 import LocaleContext from './context'
 import { getLocaleData } from './localeData'
-import { TimePickerLocale } from '../time-picker'
 
 export const ANT_MARK = 'internalMark'
 
 export interface Locale {
-  DatePicker?: PickerLocale
-  TimePicker?: TimePickerLocale
-  Calendar?: PickerLocale
   Modal?: ModalLocale
   Transfer?: unknown
   Select?: Record<string, any>

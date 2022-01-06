@@ -1,5 +1,5 @@
 import React from 'react'
-import { DatePicker, Select } from '@brickdoc/design-system'
+import { Select } from '@brickdoc/design-system'
 import dayjs from 'dayjs'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
@@ -34,7 +34,7 @@ export const DateValue: React.FC<DateValueProps> = ({ value, onChange }) => {
     () => value && (value === EXACT_DATE || !options.find(item => item.value.toString() === value)),
     [value]
   )
-  const exactDateValue = !value || value === EXACT_DATE ? null : dayjs(value)
+
   return (
     <>
       <Select
@@ -49,7 +49,6 @@ export const DateValue: React.FC<DateValueProps> = ({ value, onChange }) => {
           </Select.Option>
         ))}
       </Select>
-      {isExactDate && <DatePicker value={exactDateValue} onChange={date => onChange(date?.toString() ?? '')} />}
     </>
   )
 }
