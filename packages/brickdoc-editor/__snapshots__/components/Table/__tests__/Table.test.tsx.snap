@@ -62,7 +62,7 @@ exports[`Table matches correct snapshot 1`] = `
         </span>
       </button>
       <button
-        class="brd-c-kHdTvl brd-c-kHdTvl-bekiLh-btnType-primary brd-c-kHdTvl-lKjfQ-size-medium table-toolbar-add-button"
+        class="brd-c-kHdTvl brd-c-kHdTvl-foEQdY-btnType-primary brd-c-kHdTvl-lKjfQ-size-medium table-toolbar-add-button"
         data-testid="editor-table-block-toolbar-add-button"
         role="button"
         type="button"

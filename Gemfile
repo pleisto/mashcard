@@ -12,7 +12,7 @@ gem 'redis-objects', '~>1.5.1'
 gem 'redis-namespace', '~> 1.8', '>= 1.8.1'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'connection_pool', '~> 2.2', '>= 2.2.5'
-gem 'faraday', '~> 1.8'
+gem 'faraday', '~> 1.8.0'
 gem 'oj'
 gem 'fast_blank', '>= 1.0.1', require: false
 gem 'fast_underscore', '>= 0.3.3', require: false
@@ -27,7 +27,7 @@ gem 'logstop', '>= 0.2.8'
 gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '>= 1.12.5'
 
-gem 'aws-sdk-s3', '~> 1', '>= 1.109.0'
+gem 'aws-sdk-s3', '~> 1', '>= 1.111.0'
 
 # Feature toggles
 gem 'flipper', '~> 0.23.0'
@@ -47,7 +47,7 @@ gem 'apollo_upload_server', '~> 2.1'
 gem 'graphql-batch', '~> 0.4.3'
 
 # Frontend
-gem 'vite_rails', '~> 3.0.3'
+gem 'vite_rails', '~> 3.0.4'
 
 ## IAM
 gem 'action_policy', '~> 0.6.0'

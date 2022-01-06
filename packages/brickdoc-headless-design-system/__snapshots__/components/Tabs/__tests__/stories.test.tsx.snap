@@ -2,26 +2,26 @@
 
 exports[`Tabs matches snapshot correctly 1`] = `
 <div
-  class="brd-c-cXCAEb brd-c-cXCAEb-top"
+  class="brd-c-khUFND brd-c-khUFND-top"
 >
   <div
-    class="brd-c-cXCAEb-nav"
+    class="brd-c-khUFND-nav"
     role="tablist"
   >
     <div
-      class="brd-c-cXCAEb-nav-wrap"
+      class="brd-c-khUFND-nav-wrap"
     >
       <div
-        class="brd-c-cXCAEb-nav-list"
+        class="brd-c-khUFND-nav-list"
         style="transform: translate(0px, 0px);"
       >
         <div
-          class="brd-c-cXCAEb-tab"
+          class="brd-c-khUFND-tab"
         >
           <div
             aria-controls="rc-tabs-test-panel-1"
             aria-selected="false"
-            class="brd-c-cXCAEb-tab-btn"
+            class="brd-c-khUFND-tab-btn"
             id="rc-tabs-test-tab-1"
             role="tab"
             tabindex="0"
@@ -30,12 +30,12 @@ exports[`Tabs matches snapshot correctly 1`] = `
           </div>
         </div>
         <div
-          class="brd-c-cXCAEb-tab brd-c-cXCAEb-tab-active"
+          class="brd-c-khUFND-tab brd-c-khUFND-tab-active"
         >
           <div
             aria-controls="rc-tabs-test-panel-2"
             aria-selected="true"
-            class="brd-c-cXCAEb-tab-btn"
+            class="brd-c-khUFND-tab-btn"
             id="rc-tabs-test-tab-2"
             role="tab"
             tabindex="0"
@@ -44,12 +44,12 @@ exports[`Tabs matches snapshot correctly 1`] = `
           </div>
         </div>
         <div
-          class="brd-c-cXCAEb-tab"
+          class="brd-c-khUFND-tab"
         >
           <div
             aria-controls="rc-tabs-test-panel-3"
             aria-selected="false"
-            class="brd-c-cXCAEb-tab-btn"
+            class="brd-c-khUFND-tab-btn"
             id="rc-tabs-test-tab-3"
             role="tab"
             tabindex="0"
@@ -58,19 +58,19 @@ exports[`Tabs matches snapshot correctly 1`] = `
           </div>
         </div>
         <div
-          class="brd-c-cXCAEb-ink-bar brd-c-cXCAEb-ink-bar-animated"
+          class="brd-c-khUFND-ink-bar brd-c-khUFND-ink-bar-animated"
         />
       </div>
     </div>
     <div
-      class="brd-c-cXCAEb-nav-operations brd-c-cXCAEb-nav-operations-hidden"
+      class="brd-c-khUFND-nav-operations brd-c-khUFND-nav-operations-hidden"
     >
       <button
         aria-controls="rc-tabs-test-more-popup"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-hidden="true"
-        class="brd-c-cXCAEb-nav-more"
+        class="brd-c-khUFND-nav-more"
         id="rc-tabs-test-more"
         style="visibility: hidden; order: 1;"
         tabindex="-1"
@@ -94,15 +94,15 @@ exports[`Tabs matches snapshot correctly 1`] = `
     </div>
   </div>
   <div
-    class="brd-c-cXCAEb-content-holder"
+    class="brd-c-khUFND-content-holder"
   >
     <div
-      class="brd-c-cXCAEb-content brd-c-cXCAEb-content-top"
+      class="brd-c-khUFND-content brd-c-khUFND-content-top"
     >
       <div
         aria-hidden="true"
         aria-labelledby="rc-tabs-test-tab-1"
-        class="brd-c-cXCAEb-tabpane"
+        class="brd-c-khUFND-tabpane"
         id="rc-tabs-test-panel-1"
         role="tabpanel"
         style="display: none;"
@@ -111,7 +111,7 @@ exports[`Tabs matches snapshot correctly 1`] = `
       <div
         aria-hidden="false"
         aria-labelledby="rc-tabs-test-tab-2"
-        class="brd-c-cXCAEb-tabpane brd-c-cXCAEb-tabpane-active"
+        class="brd-c-khUFND-tabpane brd-c-khUFND-tabpane-active"
         id="rc-tabs-test-panel-2"
         role="tabpanel"
         tabindex="0"
@@ -121,7 +121,7 @@ exports[`Tabs matches snapshot correctly 1`] = `
       <div
         aria-hidden="true"
         aria-labelledby="rc-tabs-test-tab-3"
-        class="brd-c-cXCAEb-tabpane"
+        class="brd-c-khUFND-tabpane"
         id="rc-tabs-test-panel-3"
         role="tabpanel"
         style="display: none;"

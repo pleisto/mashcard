@@ -1,31 +1,24 @@
-import React, { useState, ChangeEvent, forwardRef, createRef, ForwardRefRenderFunction } from 'react'
+import { ForwardRefRenderFunction, ChangeEvent, createRef, useState, forwardRef } from 'react'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
-import { Checkbox, CheckboxProps } from 'reakit/Checkbox'
-import { Rotation } from '@brickdoc/design-icons'
+import { Checkbox as ReakitCheckbox, CheckboxProps as ReakitCheckboxProps } from 'reakit/Checkbox'
 import { styled } from '../../themes'
+import { CheckBox as Check } from '@brickdoc/design-icons'
 import { FocusRing } from '../FocusRing'
-import { root, switcher } from './styles/index.style'
+import { root, checkbox } from './styles/index.style'
 
-export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange' | 'ref'> {
-  size?: 'small' | 'medium' | 'large'
-  loading?: boolean
-  className?: string
-  style?: React.CSSProperties
+export interface CheckboxProps extends Omit<ReakitCheckboxProps, 'size' | 'onChange' | 'ref' | 'css'> {
   labelFirst?: boolean
-  disabled?: boolean
   defaultChecked?: boolean
   checked?: boolean
   onChange?: (checked: boolean, event: React.ChangeEvent) => void
 }
 
-const SwitchLabel = styled('label', root)
-const Switcher = styled('div', switcher)
+const CheckboxLabel = styled('label', root)
+const CheckboxUI = styled('div', checkbox)
 
-const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, ref) => {
+const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (props, ref) => {
   const {
     labelFirst = false,
-    loading = false,
-    size = 'medium',
     className,
     style,
     onChange,
@@ -35,20 +28,19 @@ const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, 
     disabled,
     ...otherProps
   } = props
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const isDisabled = disabled || loading
   const inputRef = ref ?? createRef<HTMLInputElement>()
   const [unControlledChecked, setUnControlledChecked] = useState(defaultChecked)
   const unControlledToggle = (): void => setUnControlledChecked(!unControlledChecked)
   const isChecked = checked ?? unControlledChecked
 
   return (
-    <SwitchLabel className={className} style={style}>
+    <CheckboxLabel className={className} style={style}>
       {labelFirst && children && <span>{children}</span>}
       <FocusRing within={true}>
-        <Switcher checked={isChecked} loading={loading} disabled={isDisabled} size={size}>
+        <CheckboxUI checked={isChecked} labelFirst={labelFirst} disabled={disabled}>
+          {isChecked && <Check aria-hidden />}
           <VisuallyHidden>
-            <Checkbox
+            <ReakitCheckbox
               {...otherProps}
               onChange={
                 typeof checked === 'boolean'
@@ -61,18 +53,17 @@ const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, 
               ref={inputRef}
               unstable_clickOnEnter
               unstable_clickOnSpace
-              disabled={isDisabled}
+              disabled={disabled}
             />
           </VisuallyHidden>
-          <div>{loading && <Rotation className="brd-icon-spin" />}</div>
-        </Switcher>
+        </CheckboxUI>
       </FocusRing>
       {!labelFirst && children && <span>{children}</span>}
-    </SwitchLabel>
+    </CheckboxLabel>
   )
 }
 
-const _Switch = forwardRef(Switch)
-_Switch.displayName = 'Switch'
+const _Checkbox = forwardRef(Checkbox)
+_Checkbox.displayName = 'Checkbox'
 
-export { _Switch as Switch }
+export { _Checkbox as Checkbox }

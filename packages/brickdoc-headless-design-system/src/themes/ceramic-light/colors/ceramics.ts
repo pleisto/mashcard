@@ -2,12 +2,12 @@ import { Palettes } from './palettes'
 import { Atomics } from './atomics'
 
 export const Ceramics = {
-  ceramicPrimary: `linear-gradient(0deg, ${Atomics.cyan1_40p}, ${Atomics.cyan1_40p}),
-     ${Atomics.white_64p}`,
-  ceramicSecondary: `linear-gradient(0deg, ${Atomics.cyan1_40p}, ${Atomics.cyan1_40p}),
+  ceramicPrimary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
+     ${Atomics.white_74p}`,
+  ceramicSecondary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
      ${Atomics.grey2_90p}`,
 
-  ceramicQuaternary: `linear-gradient(0deg, ${Atomics.cyan1_40p}, ${Atomics.cyan1_40p}),
+  ceramicQuaternary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
       ${Atomics.grey1_80p}`
 }
 

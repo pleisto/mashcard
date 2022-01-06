@@ -18,7 +18,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
         role="menuitem"
       >
         <span
-          class="brd-c-UqlG brd-c-UqlG-jJXOha-level-1"
+          class="brd-c-bEpxfM brd-c-bEpxfM-jJXOha-level-1"
           data-testid="editor-toc-block-item-title"
         >
           <span
@@ -51,7 +51,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
             role="menuitem"
           >
             <span
-              class="brd-c-UqlG brd-c-UqlG-jpNsBQ-level-2"
+              class="brd-c-bEpxfM brd-c-bEpxfM-jpNsBQ-level-2"
               data-testid="editor-toc-block-item-title"
             >
               <span
@@ -84,7 +84,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                 role="menuitem"
               >
                 <span
-                  class="brd-c-UqlG brd-c-UqlG-cvEtFL-level-5"
+                  class="brd-c-bEpxfM brd-c-bEpxfM-cvEtFL-level-5"
                   data-testid="editor-toc-block-item-title"
                 >
                   h5\`
@@ -104,7 +104,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
         role="menuitem"
       >
         <span
-          class="brd-c-UqlG brd-c-UqlG-jJXOha-level-1"
+          class="brd-c-bEpxfM brd-c-bEpxfM-jJXOha-level-1"
           data-testid="editor-toc-block-item-title"
         >
           <span
@@ -137,7 +137,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
             role="menuitem"
           >
             <span
-              class="brd-c-UqlG brd-c-UqlG-gsgpPJ-level-3"
+              class="brd-c-bEpxfM brd-c-bEpxfM-gsgpPJ-level-3"
               data-testid="editor-toc-block-item-title"
             >
               <span
@@ -170,7 +170,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                 role="menuitem"
               >
                 <span
-                  class="brd-c-UqlG brd-c-UqlG-glOmSq-level-4"
+                  class="brd-c-bEpxfM brd-c-bEpxfM-glOmSq-level-4"
                   data-testid="editor-toc-block-item-title"
                 >
                   <span
@@ -203,7 +203,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                     role="menuitem"
                   >
                     <span
-                      class="brd-c-UqlG brd-c-UqlG-cvEtFL-level-5"
+                      class="brd-c-bEpxfM brd-c-bEpxfM-cvEtFL-level-5"
                       data-testid="editor-toc-block-item-title"
                     >
                       h5
@@ -223,7 +223,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
             role="menuitem"
           >
             <span
-              class="brd-c-UqlG brd-c-UqlG-jpNsBQ-level-2"
+              class="brd-c-bEpxfM brd-c-bEpxfM-jpNsBQ-level-2"
               data-testid="editor-toc-block-item-title"
             >
               <span
@@ -256,7 +256,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                 role="menuitem"
               >
                 <span
-                  class="brd-c-UqlG brd-c-UqlG-jINShw-level-text"
+                  class="brd-c-bEpxfM brd-c-bEpxfM-jINShw-level-text"
                   data-testid="editor-toc-block-item-title"
                 >
                   anchor
@@ -276,7 +276,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
         role="menuitem"
       >
         <span
-          class="brd-c-UqlG brd-c-UqlG-jJXOha-level-1"
+          class="brd-c-bEpxfM brd-c-bEpxfM-jJXOha-level-1"
           data-testid="editor-toc-block-item-title"
         >
           h1\`\`

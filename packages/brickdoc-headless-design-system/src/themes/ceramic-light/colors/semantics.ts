@@ -16,7 +16,7 @@ export const Semantics = {
   typePrimary: Palettes.deepPurple7,
   typeSecondary: Palettes.deepPurple6,
   typeThirdary: Palettes.deepPurple4,
-  typeDisabled: Palettes.deepPurple2,
+  typeDisabled: Palettes.deepPurple3,
 
   /**
    * Icon
@@ -24,7 +24,7 @@ export const Semantics = {
   iconPrimary: Palettes.deepPurple7,
   iconSecondary: Palettes.deepPurple6,
   iconThirdary: Palettes.deepPurple4,
-  iconDisable: Palettes.deepPurple2,
+  iconDisable: Palettes.deepPurple3,
 
   /**
    * Secondary
@@ -59,6 +59,7 @@ export const Semantics = {
   borderThirdary: Palettes.grey8,
   borderOverlayPrimary: Atomics.white_20p,
   borderOverlaySecondary: Atomics.blue6_4p,
+  borderOverlayThirdary: Atomics.blue6_60p,
 
   /**
    * Divider

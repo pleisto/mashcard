@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import { CellProps } from 'react-table'
-import { Input } from '@brickdoc/design-system'
+import { TextArea } from '@brickdoc/design-system'
 import { useEditingStatus } from '../useEditingStatus'
 import './TextCell.css'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -29,7 +29,7 @@ export const TextCell: React.FC<TextCellProps> = props => {
   if (editing) {
     return (
       <>
-        <Input.TextArea
+        <TextArea
           className="table-block-text-input"
           /* eslint-disable-next-line jsx-a11y/no-autofocus */
           autoFocus={true}

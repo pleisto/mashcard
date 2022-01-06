@@ -32,7 +32,31 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{woff,woff2,ttf,js,svg,mp4,jpg,png}']
+        globPatterns: ['**/*.{woff,woff2,ttf,js,svg,mp4,jpg,png,webp}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/s3\.brickdoc\.com\/npmjs\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'brickdoc-npmjs-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/s3\.brickdoc\.com\/webfonts\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'brickdoc-webfonts-cache',
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              }
+            }
+          }
+        ]
       }
     })
   ],

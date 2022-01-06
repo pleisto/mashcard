@@ -2168,7 +2168,7 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
       placeholder="Placeholder"
     />
     <button
-      class="brd-c-kHdTvl brd-c-kHdTvl-bekiLh-btnType-primary brd-c-kHdTvl-lKjfQ-size-medium dashboard-panel-button"
+      class="brd-c-kHdTvl brd-c-kHdTvl-foEQdY-btnType-primary brd-c-kHdTvl-lKjfQ-size-medium dashboard-panel-button"
       data-testid="uploader-dashboard-modules-link-button"
       role="button"
       type="button"
@@ -2217,7 +2217,7 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
       type="file"
     />
     <button
-      class="brd-c-kHdTvl brd-c-kHdTvl-bekiLh-btnType-primary brd-c-kHdTvl-lKjfQ-size-medium dashboard-panel-button"
+      class="brd-c-kHdTvl brd-c-kHdTvl-foEQdY-btnType-primary brd-c-kHdTvl-lKjfQ-size-medium dashboard-panel-button"
       data-testid="uploader-dashboard-modules-upload-button"
       role="button"
       type="button"

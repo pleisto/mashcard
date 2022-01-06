@@ -6,7 +6,6 @@ export const Atomics = {
   white_25p: rgba(Palettes.white, 0.25),
   white_30p: rgba(Palettes.white, 0.3),
   white_70p: rgba(Palettes.white, 0.7),
-  white_64p: rgba(Palettes.white, 0.64),
   white_74p: rgba(Palettes.white, 0.74),
   white_80p: rgba(Palettes.white, 0.8),
 
@@ -26,9 +25,9 @@ export const Atomics = {
   black_35p: rgba(Palettes.black, 0.35),
 
   cyan1_36p: rgba(Palettes.cyan1, 0.36),
-  cyan1_40p: rgba(Palettes.cyan1, 0.4),
 
   blue6_4p: rgba(Palettes.blue6, 0.04),
   blue6_12p: rgba(Palettes.blue6, 0.12),
-  blue6_18p: rgba(Palettes.blue6, 0.18)
+  blue6_18p: rgba(Palettes.blue6, 0.18),
+  blue6_60p: rgba(Palettes.blue6, 0.6)
 }

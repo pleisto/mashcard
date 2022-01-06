@@ -17,9 +17,8 @@ export const Palettes = {
   /**
    * Red
    */
-  ...generatePalette('red', '#d43730'),
+  ...generatePalette('red', '#e6222d'),
   red1: '#fff7f5',
-  red7: '#b0160e',
 
   /**
    * Orange
@@ -33,6 +32,7 @@ export const Palettes = {
    */
   ...generatePalette('yellow', '#ffd84e'),
   yellow1: '#fffbf0',
+  yellow6: '#ffd84e',
   yellow9: '#7e6409',
 
   /**
@@ -51,7 +51,7 @@ export const Palettes = {
   /**
    * Blue
    */
-  ...generatePalette('blue', '#2c5bff'),
+  ...generatePalette('blue', '#356cf9'),
 
   /**
    * Deep Purple
