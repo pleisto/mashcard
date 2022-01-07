@@ -19,4 +19,11 @@ export class ButtonClass implements ButtonType {
     this.disabled = false
     this.onClick = functionResult2lambda<ButtonType>(ctx, fn, this)
   }
+
+  persistence(): ButtonInitializer {
+    return {
+      name: this.name,
+      fn: this.fn
+    }
+  }
 }

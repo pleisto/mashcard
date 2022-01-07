@@ -1,6 +1,7 @@
-import { parse, interpret, quickInsert } from '../api'
+import { parse, interpret } from '../core'
 import { FormulaContext } from '../../context'
 import { BaseFunctionClause, NumberResult } from '../../types'
+import { quickInsert } from '../testHelper'
 
 const functionClauses: Array<BaseFunctionClause<any>> = [
   {
@@ -84,6 +85,16 @@ describe('Custom Function', () => {
     })
     expect(result.variableValue.result.result).toEqual(2)
     expect(cst).toMatchSnapshot()
+  })
+
+  it('invoke', async () => {
+    const result = await ctx.formulaContext.invoke(
+      'custom::PLUS',
+      { ...ctx, meta: { ...ctx.meta, input: '' } },
+      { type: 'number', result: 1 },
+      { type: 'number', result: 1 }
+    )
+    expect(result).toEqual({ type: 'number', result: 2 })
   })
 
   it('Function dependencies', () => {

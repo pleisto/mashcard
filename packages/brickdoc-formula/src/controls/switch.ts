@@ -33,4 +33,11 @@ export class SwitchClass implements SwitchType {
       )
     }
   }
+
+  persistence(): SwitchInitializer {
+    return {
+      checked: this.checked,
+      fn: this.fn
+    }
+  }
 }

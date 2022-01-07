@@ -1,5 +1,5 @@
 import { ArrayResult, BasicFunctionClause, CstResult, ErrorResult, FunctionContext, StringResult } from '../types'
-import { interpret } from '../grammar/api'
+import { interpret } from '../grammar/core'
 import { extractSubType } from '../grammar/util'
 
 export const Join = (

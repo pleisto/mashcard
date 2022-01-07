@@ -1,4 +1,4 @@
-import { appendFormulas, buildVariable, interpret, parse, SuccessParseResult } from '../../grammar/api'
+import { appendFormulas, buildVariable, interpret, parse, SuccessParseResult } from '../../grammar/core'
 import { Formula } from '../../types'
 import { FormulaContext } from '../context'
 
@@ -20,8 +20,7 @@ describe('Context', () => {
       blockId: fooNamespaceId,
       definition: '=123',
       kind: 'constant',
-      updatedAt: new Date().toDateString(),
-      createdAt: 0,
+      dependencyIds: [],
       version: 0,
       level: 0,
       cacheValue: {
@@ -34,10 +33,9 @@ describe('Context', () => {
       name: 'bar',
       id: barVariableId,
       blockId: barNamespaceId,
+      dependencyIds: [fooVariableId],
       definition: `=ABS(120) + #${fooNamespaceId}@${fooVariableId}`,
       kind: 'expression',
-      updatedAt: new Date().toDateString(),
-      createdAt: 0,
       version: 0,
       level: 0,
       cacheValue: {
@@ -59,7 +57,7 @@ describe('Context', () => {
     expect(reverseVariableDependencies).toMatchSnapshot()
     expect(formulaContext.variableCount()).toEqual(2)
 
-    formulaContext.reset()
+    formulaContext.resetFormula()
 
     expect(formulaContext.reverseFunctionDependencies).toEqual({})
     expect(formulaContext.reverseVariableDependencies).toEqual({})
@@ -84,7 +82,7 @@ describe('Context', () => {
     expect(formulaContext.reverseFunctionDependencies).toMatchSnapshot()
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
 
-    formulaContext.reset()
+    formulaContext.resetFormula()
     await appendFormulas(formulaContext, formulas)
   })
 
@@ -94,9 +92,7 @@ describe('Context', () => {
     const input = '=123'
     const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
-    expect(parseResult.errorMessages).toEqual([
-      { message: 'Variable name exist in same namespace', type: 'name_unique' }
-    ])
+    expect(parseResult.errorMessages).toEqual([{ message: 'Name exist in same namespace', type: 'name_unique' }])
   })
 
   it('reserved name check', () => {
@@ -171,7 +167,7 @@ describe('Context', () => {
 
     expect(formulaContext.variableCount()).toEqual(3)
 
-    formulaContext.reset()
+    formulaContext.resetFormula()
     void appendFormulas(formulaContext, formulas)
   })
 })

@@ -49,12 +49,10 @@ const calculate = async ({
   name,
   input,
   position,
-  activeCompletion,
   formulaContext
 }: {
   namespaceId: string
   variable: VariableInterface | undefined
-  activeCompletion: Completion | undefined
   name: string
   input: string
   position: number
@@ -75,9 +73,10 @@ const calculate = async ({
     meta,
     interpretContext: { ctx: {}, arguments: [] }
   }
-  const parseResult = parse({ ctx, activeCompletion, position })
+  const parseResult = parse({ ctx, position })
 
-  console.log({
+  console.log('calculate', {
+    ctx,
     parseResult,
     input,
     position,
@@ -85,8 +84,7 @@ const calculate = async ({
     lastChar: input[position - 1],
     nextChar: input[position],
     newInput: parseResult.input,
-    codeFragments: parseResult.codeFragments,
-    activeCompletion
+    codeFragments: parseResult.codeFragments
   })
 
   const completions = parseResult.completions
@@ -312,7 +310,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
 
     const result = await calculate({
       namespaceId: rootId,
-      activeCompletion: latestActiveCompletion.current,
       variable,
       position: latestPosition.current,
       name: finalName,
@@ -338,6 +335,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     //   latestActiveCompletion: latestActiveCompletion.current
     // })
 
+    setCompletions(completions)
+    setActiveCompletion(completions[0])
+    // setPosition(newPosition)
+    latestSetPosition.current(newPosition)
+
     if (parseResult.valid) {
       setContent(codeFragmentsToJSONContentTotal(parseResult.codeFragments, rootId))
       setInput(`=${parseResult.codeFragments.map(fragment => fragment.name).join('')}`)
@@ -348,9 +350,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       //   setInput(parseResult.input)
     }
 
-    setCompletions(completions)
-    setActiveCompletion(completions[0])
-    setPosition(newPosition)
 
     if (inputIsEmpty) {
       updateVariable(undefined)
@@ -370,6 +369,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     if (!(name ?? defaultName) || !input || !variable) return true
     if (!formulaContext) return true
 
+    if (error && ['name_unique', 'name_check', 'fatal'].includes(error.type)) return true
+
     return false
   }
 
@@ -385,7 +386,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     setName(finalName)
     updateVariable(variable)
 
-    console.log({ label: 'save ...', input, variable, updateVariable, formulaContext })
+    console.log('save ...', { input, variable, updateVariable, formulaContext })
     close()
   }
 
@@ -446,8 +447,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="small"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}
-        >
+          disabled={isDisableSave()}>
           {t(`${i18nKey}.save`)}
         </Button>
         <Button className="formula-menu-button" size="small" type="text" danger={true} onClick={handleDelete}>
@@ -466,8 +466,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

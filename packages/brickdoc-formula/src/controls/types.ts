@@ -16,6 +16,7 @@ export interface ControlType {
   _meta: VariableMetadata
   kind: FormulaControlType
   disabled: boolean
+  persistence: () => ControlInitializer
 }
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ControlInitializer {}
@@ -24,6 +25,16 @@ export interface ButtonType extends ControlType {
   name: string
   fn: FunctionResult
   onClick?: VoidFunction
+}
+
+export interface BlockInitializer {
+  id: NamespaceId
+}
+
+export interface BlockType extends BlockInitializer {
+  _formulaContext: ContextInterface
+  name: () => string
+  persistence: () => BlockInitializer
 }
 
 export interface ColumnInitializer {

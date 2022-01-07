@@ -82,7 +82,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
         editor.commands.replaceRoot(content)
       }
 
-      if (editable) console.log({ content, editor, pos: pos?.current, label: 'after replace root' })
+      if (editable) console.log('after replace root', { content, editor, pos: pos?.current })
     }
   }, [editor, content, pos, editable])
 

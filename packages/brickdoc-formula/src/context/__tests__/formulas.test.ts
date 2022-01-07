@@ -1,4 +1,4 @@
-import { appendFormulas } from '../../grammar/api'
+import { appendFormulas } from '../../grammar/core'
 import { Formula } from '../../types'
 import { FormulaContext } from '../context'
 
@@ -19,10 +19,9 @@ describe('appendFormulas', () => {
         blockId: fooNamespaceId,
         version: 0,
         level: 0,
+        dependencyIds: [],
         definition: '=123',
         kind: 'constant',
-        updatedAt: new Date().toDateString(),
-        createdAt: 0,
         cacheValue: {
           type: 'number',
           result: 123
@@ -61,10 +60,9 @@ describe('appendFormulas', () => {
         blockId: fooNamespaceId,
         definition: '= 123 + RAND()',
         kind: 'constant',
-        updatedAt: new Date().toDateString(),
-        createdAt: 0,
         version: 0,
         level: 0,
+        dependencyIds: [],
         cacheValue: {
           type: 'number',
           result: 123
@@ -78,9 +76,8 @@ describe('appendFormulas', () => {
         version: 0,
         level: 0,
         kind: 'expression',
+        dependencyIds: [fooVariableId],
         definition: `=ABS(123) + #${fooNamespaceId}@${fooVariableId}`,
-        updatedAt: new Date().toDateString(),
-        createdAt: 0,
         cacheValue: {
           type: 'number',
           result: 456
@@ -121,9 +118,8 @@ describe('appendFormulas', () => {
         version: 0,
         level: 0,
         kind: 'expression',
+        dependencyIds: [fooVariableId],
         definition: `=ABS(123) + #${fooNamespaceId}@${fooVariableId}`,
-        updatedAt: new Date().toDateString(),
-        createdAt: 0,
         cacheValue: {
           type: 'number',
           result: 456
@@ -159,10 +155,9 @@ describe('appendFormulas', () => {
         blockId: fooNamespaceId,
         version: 0,
         level: 0,
+        dependencyIds: [],
         definition: '= 123 +',
         kind: 'constant',
-        updatedAt: new Date().toDateString(),
-        createdAt: 0,
         cacheValue: {
           type: 'number',
           result: 123

@@ -184,7 +184,7 @@ export class FormulaParser extends CstParser {
       { ALT: () => this.SUBRULE(this.referenceExpression) },
       { ALT: () => this.SUBRULE(this.simpleAtomicExpression) },
       { ALT: () => this.SUBRULE(this.columnExpression) },
-      { ALT: () => this.SUBRULE(this.spreadsheetExpression) }
+      { ALT: () => this.SUBRULE(this.blockExpression) }
     ])
   })
 
@@ -252,7 +252,7 @@ export class FormulaParser extends CstParser {
     this.CONSUME2(UUID)
   })
 
-  public spreadsheetExpression = this.RULE('spreadsheetExpression', () => {
+  public blockExpression = this.RULE('blockExpression', () => {
     this.CONSUME(Sharp)
     this.CONSUME(UUID)
   })

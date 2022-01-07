@@ -1,6 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
-import { interpret, parse, quickInsert } from '../../grammar/api'
+import { interpret, parse } from '../../grammar/core'
 import { FormulaContext } from '../../context'
+import { quickInsert } from '../../grammar/testHelper'
 
 const formulaContext = new FormulaContext({})
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'

@@ -13,7 +13,8 @@ import {
   Argument,
   FunctionContext,
   FormulaType,
-  ExpressionType
+  ExpressionType,
+  BlockResult
 } from '../types'
 import { Row } from '../controls'
 import { extractSubType, runtimeCheckType } from './util'
@@ -36,6 +37,7 @@ import {
   Or,
   Caret
 } from './lexer'
+import { BlockClass } from '../controls/block'
 
 interface ExpressionArgument {
   readonly type: ExpressionType
@@ -574,7 +576,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
     ctx: {
       simpleAtomicExpression: CstNode | CstNode[]
       columnExpression: CstNode | CstNode[]
-      spreadsheetExpression: CstNode | CstNode[]
+      blockExpression: CstNode | CstNode[]
       referenceExpression: CstNode | CstNode[]
       predicateExpression: CstNode | CstNode[]
     },
@@ -586,8 +588,8 @@ export class FormulaInterpreter extends BaseCstVisitor {
       return this.visit(ctx.columnExpression, args)
     } else if (ctx.referenceExpression) {
       return this.visit(ctx.referenceExpression, args)
-    } else if (ctx.spreadsheetExpression) {
-      return this.visit(ctx.spreadsheetExpression, args)
+    } else if (ctx.blockExpression) {
+      return this.visit(ctx.blockExpression, args)
     } else if (ctx.predicateExpression) {
       return this.visit(ctx.predicateExpression, args)
     } else {
@@ -774,24 +776,35 @@ export class FormulaInterpreter extends BaseCstVisitor {
     }
   }
 
-  spreadsheetExpression(
+  blockExpression(
     ctx: { UUID: Array<{ image: any }> },
     args: ExpressionArgument
-  ): SpreadsheetResult | NullResult | ErrorResult {
-    const parentType: FormulaType = 'Spreadsheet'
-    const typeError = runtimeCheckType(args.type, parentType, 'spreadsheetExpression')
-    if (typeError) {
-      return typeError
-    }
-
+  ): SpreadsheetResult | BlockResult | NullResult | ErrorResult {
     const namespaceId = ctx.UUID[0].image
     const spreadsheet = this.ctx.formulaContext.findSpreadsheet(namespaceId)
 
     if (spreadsheet) {
+      const parentType: FormulaType = 'Spreadsheet'
+      const typeError = runtimeCheckType(args.type, parentType, 'blockExpression')
+      if (typeError) {
+        return typeError
+      }
       return { type: 'Spreadsheet', result: spreadsheet }
-    } else {
-      return { type: 'null', result: null }
     }
+
+    const formulaName = this.ctx.formulaContext.formulaNames.find(f => f.kind === 'Block' && f.key === namespaceId)
+    if (formulaName) {
+      const parentType: FormulaType = 'Block'
+      const typeError = runtimeCheckType(args.type, parentType, 'blockExpression')
+      if (typeError) {
+        return typeError
+      }
+
+      const block = new BlockClass(this.ctx, { id: namespaceId })
+      return { type: 'Block', result: block }
+    }
+
+    return { type: 'null', result: null }
   }
 
   // TODO runtime type check

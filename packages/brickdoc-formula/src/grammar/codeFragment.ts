@@ -14,10 +14,11 @@ import {
   FunctionContext,
   ExpressionType
 } from '../types'
-import { renderColumn, renderSpreadsheet, renderVariable } from '../context/util'
+import { renderBlock, renderColumn, renderSpreadsheet, renderVariable } from '../context/util'
 import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
 import { intersectType } from './util'
+import { BlockClass } from '../controls/block'
 
 const SpaceBeforeTypes = [
   'In',
@@ -605,7 +606,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       simpleAtomicExpression: CstNode | CstNode[]
       columnExpression: CstNode | CstNode[]
       referenceExpression: CstNode | CstNode[]
-      spreadsheetExpression: CstNode | CstNode[]
+      blockExpression: CstNode | CstNode[]
       predicateExpression: CstNode | CstNode[]
     },
     { type }: ExpressionArgument
@@ -616,8 +617,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.visit(ctx.columnExpression, { type })
     } else if (ctx.referenceExpression) {
       return this.visit(ctx.referenceExpression, { type })
-    } else if (ctx.spreadsheetExpression) {
-      return this.visit(ctx.spreadsheetExpression, { type })
+    } else if (ctx.blockExpression) {
+      return this.visit(ctx.blockExpression, { type })
     } else if (ctx.predicateExpression) {
       return this.visit(ctx.predicateExpression, { type })
     }
@@ -739,7 +740,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     const parentType = 'Array'
     const rParenErrorMessages: ErrorMessage[] = ctx.RBracket
       ? []
-      : [{ message: 'Missing closing parenthesis', type: 'parse' }]
+      : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
     const { codeFragments, image } = ctx.Arguments
       ? (this.visit(ctx.Arguments) as CodeFragmentResult)
       : { codeFragments: [], image: '' }
@@ -778,7 +779,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     images.push(ctx.LBrace[0].image)
     const rBraceErrorMessages: ErrorMessage[] = ctx.RBrace
       ? []
-      : [{ message: 'Missing closing parenthesis', type: 'parse' }]
+      : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
     codeFragments.push({ ...token2fragment(ctx.LBrace[0], 'any'), errors: rBraceErrorMessages })
 
     const parentType = 'Record'
@@ -880,7 +881,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     }
     const rParenErrorMessages: ErrorMessage[] = ctx.RParen
       ? []
-      : [{ message: 'Missing closing parenthesis', type: 'parse' }]
+      : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
     const { codeFragments, type: expressionType, image }: CodeFragmentResult = this.visit(ctx.expression, { type })
     const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], expressionType)] : []
     const finalImage = ctx.RParen
@@ -1045,20 +1046,18 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     }
   }
 
-  spreadsheetExpression(ctx: { Sharp: IToken[]; UUID: any[] }, { type }: ExpressionArgument): CodeFragmentResult {
+  blockExpression(ctx: { Sharp: IToken[]; UUID: any[] }, { type }: ExpressionArgument): CodeFragmentResult {
     const SharpFragment = token2fragment(ctx.Sharp[0], 'any')
     const namespaceToken = ctx.UUID[0]
     const namespaceId = namespaceToken.image
 
+    this.kind = 'expression'
     this.blockDependencies.push(namespaceId)
     const spreadsheet = this.ctx.formulaContext.findSpreadsheet(namespaceId)
 
-    const parentType: FormulaType = 'Spreadsheet'
-
-    this.kind = 'expression'
-
     if (spreadsheet) {
-      const { errorMessages, newType } = intersectType(type, parentType, 'spreadsheetExpression')
+      const parentType: FormulaType = 'Spreadsheet'
+      const { errorMessages, newType } = intersectType(type, parentType, 'blockExpression')
       return {
         codeFragments: [
           {
@@ -1074,18 +1073,41 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         image: `#${namespaceId}`,
         type: newType
       }
-    } else {
+    }
+
+    const formulaName = this.ctx.formulaContext.formulaNames.find(f => f.kind === 'Block' && f.key === namespaceId)
+    if (formulaName) {
+      const parentType: FormulaType = 'Block'
+      const { errorMessages, newType } = intersectType(type, parentType, 'blockExpression')
+      const block = new BlockClass(this.ctx, { id: namespaceId })
+
       return {
         codeFragments: [
-          SharpFragment,
           {
             ...token2fragment(namespaceToken, 'any'),
-            errors: [{ message: `Spreadsheet not found: ${namespaceId}`, type: 'deps' }]
+            code: 'Block',
+            type: parentType,
+            render: renderBlock(block.id, block.name, errorMessages),
+            namespaceId: block.id,
+            name: `#${namespaceId}`,
+            errors: errorMessages
           }
         ],
         image: `#${namespaceId}`,
-        type: parentType
+        type: newType
       }
+    }
+
+    return {
+      codeFragments: [
+        SharpFragment,
+        {
+          ...token2fragment(namespaceToken, 'any'),
+          errors: [{ message: `Block not found: ${namespaceId}`, type: 'deps' }]
+        }
+      ],
+      image: `#${namespaceId}`,
+      type: 'Block'
     }
   }
 
@@ -1231,7 +1253,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     const rParenErrorMessages: ErrorMessage[] = ctx.RParen
       ? []
-      : [{ message: 'Missing closing parenthesis', type: 'parse' }]
+      : [{ message: 'Missing closing parenthesis', type: 'syntax' }]
     const rparenCodeFragments = ctx.RParen ? [token2fragment(ctx.RParen[0], clause ? clause.returns : 'any')] : []
 
     const clauseErrorMessages: ErrorMessage[] = []
@@ -1277,7 +1299,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           {
             ...nameFragment,
             code: 'Function',
-            errors: [...rParenErrorMessages, ...chainError, ...errorMessages, ...argsErrorMessages]
+            errors: [...chainError, ...errorMessages, ...argsErrorMessages]
           },
           { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
           ...argsCodeFragments,

@@ -1,38 +1,43 @@
 import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
-import { SelectInitializer, SelectOption, SelectType } from './types'
+import { InputInitializer, InputType } from './types'
 import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
 import { functionResult2lambda } from '../grammar/lambda'
 
-export class SelectClass implements SelectType {
+export class InputClass implements InputType {
   _meta: VariableMetadata
   _formulaContext: ContextInterface
-  kind: 'Select' = 'Select'
+  kind: 'Input' = 'Input'
   fn: FunctionResult
-  value: SelectOption
+  value: string
   disabled: boolean
-  options: [SelectOption, ...SelectOption[]]
   onChange?: (bool: string) => void
 
-  constructor(ctx: FunctionContext, { options, fn, value }: SelectInitializer) {
-    this.options = options
+  constructor(ctx: FunctionContext, { fn, value }: InputInitializer) {
     this._meta = ctx.meta
     this._formulaContext = ctx.formulaContext
     this.fn = fn
     this.disabled = false
     this.value = value
-    this.onChange = option => {
-      functionResult2lambda<SelectType>(
+    this.onChange = value => {
+      functionResult2lambda<InputType>(
         {
           ...ctx,
-          interpretContext: { ...ctx.interpretContext, ctx: { selected: { type: 'string', result: option } } }
+          interpretContext: { ...ctx.interpretContext, ctx: { value: { type: 'string', result: value } } }
         },
         fn,
         this
       )()
-      this.value = option
+      this.value = value
       BrickdocEventBus.dispatch(
         FormulaInnerRefresh({ namespaceId: ctx.meta.namespaceId, variableId: ctx.meta.variableId })
       )
+    }
+  }
+
+  persistence(): InputInitializer {
+    return {
+      value: this.value,
+      fn: this.fn
     }
   }
 }

@@ -45,7 +45,10 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
           <PinMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
         </>
       ) : (
-        <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
+        <>
+          <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
+          <MoreMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+        </>
       )
     ) : (
       <></>

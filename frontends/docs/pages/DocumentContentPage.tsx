@@ -16,7 +16,7 @@ import { queryPageBlocks } from '../common/graphql'
 import { useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '../reactiveVars'
 import { validate as isValidUUID } from 'uuid'
-import { appendFormulas, FormulaContext } from '@brickdoc/formula'
+import { appendFormulas, FormulaContext, FormulaName } from '@brickdoc/formula'
 import { useFormulaQuery } from './hooks'
 import { useFormulaBackendActions } from './hooks/useFormulaBackendActions'
 
@@ -131,7 +131,12 @@ export const DocumentContentPage: React.FC = () => {
   const backendActions = useFormulaBackendActions()
 
   React.useEffect(() => {
-    const formulaContext = new FormulaContext({ backendActions, features: featureFlags })
+    const formulaNames: FormulaName[] = []
+    const formulaContext = new FormulaContext({
+      backendActions,
+      formulaNames,
+      features: featureFlags
+    })
     void getFormulas(webid).then(({ data, success }) => {
       if (!success) return
       appendFormulas(formulaContext, data ?? [])

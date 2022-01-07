@@ -337,7 +337,7 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "parse",
+        "type": "syntax",
       },
       Object {
         "message": "TODO mismatch token parenthesisExpression",
@@ -369,7 +369,7 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "parse",
+        "type": "syntax",
       },
       Object {
         "message": "TODO mismatch token parenthesisExpression",
@@ -400,10 +400,6 @@ Array [
     "code": "Function",
     "errors": Array [
       Object {
-        "message": "Missing closing parenthesis",
-        "type": "parse",
-      },
-      Object {
         "message": "Miss argument",
         "type": "deps",
       },
@@ -423,7 +419,7 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "parse",
+        "type": "syntax",
       },
     ],
     "name": "(",
@@ -439,16 +435,7 @@ exports[`Simple test case [Missing closing parenthesis3] =ABS(1 // => ✗ 1`] = 
 Array [
   Object {
     "code": "Function",
-    "errors": Array [
-      Object {
-        "message": "Missing closing parenthesis",
-        "type": "parse",
-      },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
-    ],
+    "errors": Array [],
     "name": "ABS",
     "render": undefined,
     "spaceAfter": false,
@@ -460,6 +447,10 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "TODO mismatch token FunctionCall",
         "type": "parse",
       },
     ],
@@ -485,16 +476,7 @@ exports[`Simple test case [Missing closing parenthesis4] =POWER(1, // => ✗ 1`]
 Array [
   Object {
     "code": "Function",
-    "errors": Array [
-      Object {
-        "message": "Missing closing parenthesis",
-        "type": "parse",
-      },
-      Object {
-        "message": "Parse error: \\"\\"",
-        "type": "parse",
-      },
-    ],
+    "errors": Array [],
     "name": "POWER",
     "render": undefined,
     "spaceAfter": false,
@@ -506,6 +488,10 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "Parse error: \\"\\"",
         "type": "parse",
       },
     ],
@@ -550,16 +536,7 @@ exports[`Simple test case [Missing closing parenthesis5] =POWER(1,2 // => ✗ 1`
 Array [
   Object {
     "code": "Function",
-    "errors": Array [
-      Object {
-        "message": "Missing closing parenthesis",
-        "type": "parse",
-      },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
-    ],
+    "errors": Array [],
     "name": "POWER",
     "render": undefined,
     "spaceAfter": false,
@@ -571,6 +548,10 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
+        "type": "syntax",
+      },
+      Object {
+        "message": "TODO mismatch token FunctionCall",
         "type": "parse",
       },
     ],
@@ -1281,7 +1262,7 @@ Array [
     "errors": Array [
       Object {
         "message": "Missing closing parenthesis",
-        "type": "parse",
+        "type": "syntax",
       },
       Object {
         "message": "TODO mismatch token recordExpression",

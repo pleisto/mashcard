@@ -19,4 +19,15 @@ export class ColumnClass implements ColumnType {
     this.rows = rows
     this.spreadsheet = spreadsheet
   }
+
+  persistence(): ColumnInitializer {
+    return {
+      columnId: this.columnId,
+      namespaceId: this.namespaceId,
+      name: this.name,
+      index: this.index,
+      type: this.type,
+      rows: this.rows
+    }
+  }
 }

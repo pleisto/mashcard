@@ -42,7 +42,7 @@ export function useFormulaDatabase(
       listRows: () => tableData
     })
 
-    formulaContext.setSpreadsheet(blockId, database)
+    formulaContext.setSpreadsheet(database)
 
     if (formulaContext) {
       BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: blockId }))

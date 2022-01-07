@@ -1,4 +1,4 @@
-import { parse, interpret } from '../api'
+import { parse, interpret } from '../core'
 import { FormulaContext } from '../../context'
 import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass } from '../../controls'
 
@@ -183,7 +183,7 @@ const testCases: TestCase[] = [
 
 describe('Spreadsheet Functions', () => {
   const formulaContext = new FormulaContext({})
-  formulaContext.setSpreadsheet(spreadsheetNamespaceId, spreadsheet)
+  formulaContext.setSpreadsheet(spreadsheet)
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 
   testCases.forEach(({ input, label, value }) => {

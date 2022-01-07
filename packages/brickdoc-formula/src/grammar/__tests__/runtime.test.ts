@@ -1,5 +1,5 @@
-import { quickInsert } from '../../grammar/api'
 import { FormulaContext } from '../../context'
+import { quickInsert } from '../testHelper'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'

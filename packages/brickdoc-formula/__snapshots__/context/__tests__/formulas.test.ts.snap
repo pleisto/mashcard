@@ -2291,7 +2291,7 @@ Array [
         ],
       },
     ],
-    "kind": "constant",
+    "kind": "expression",
     "level": 0,
     "name": "bar",
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",

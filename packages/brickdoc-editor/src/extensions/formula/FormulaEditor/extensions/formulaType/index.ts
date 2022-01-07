@@ -22,7 +22,7 @@ const CODE_STYLES: Record<string, string> = {
   NumberLiteral: '#39b3e8',
   StringLiteral: '#AD1457',
   Column: '#2C5BFF',
-  SpreadSheet: '#2C5BFF',
+  Spreadsheet: '#2C5BFF',
   Function: '#FB8C00',
   Variable: '#AD1457',
   Block: '#2C5BFF'
