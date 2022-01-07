@@ -37,6 +37,9 @@ class Docs::Snapshot < ApplicationRecord
 
   def relative_time
     time_ago_in_words(created_at)
+  rescue => e
+    Rails.logger.error e
+    created_at.to_s
   end
 
   def next_snapshot_name
