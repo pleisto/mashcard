@@ -93,7 +93,7 @@ export const SelectCellOption: React.FC<SelectCellOptionProps> = ({
         }
         visible={visible}
         onVisibleChange={handleVisibleChange}
-        placement="right"
+        placement="end"
       >
         <Button
           data-testid={TEST_ID_ENUM.editor.tableBlock.cell.select.option.menuButton.id}

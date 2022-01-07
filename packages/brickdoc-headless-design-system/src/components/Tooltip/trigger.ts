@@ -28,7 +28,7 @@ export interface PlacementsConfig {
   autoAdjustOverflow?: boolean | AdjustOverflow
 }
 
-export interface AbstractTriggerProps extends Partial<Omit<RcTooltipProps, 'children' | 'color'>> {
+export interface AbstractTriggerProps extends Partial<Omit<RcTooltipProps, 'children' | 'color' | 'placement'>> {
   className?: string
   style?: React.CSSProperties
   children?: React.ReactNode
@@ -38,6 +38,7 @@ export interface AbstractTriggerProps extends Partial<Omit<RcTooltipProps, 'chil
   getPopupContainer?: (triggerNode: HTMLElement) => HTMLElement
   builtinPlacements?: BuildInPlacements
   role?: 'tooltip' | 'dialog' | 'menu'
+  placement?: TriggerPlacement
 }
 
 const autoAdjustOverflowEnabled: AdjustOverflow = {

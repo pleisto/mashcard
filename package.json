@@ -50,7 +50,7 @@
     "@rails/activestorage": "^7.0.0",
     "@sentry/react": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
-    "ahooks": "^3.1.4",
+    "ahooks": "^3.1.5",
     "dayjs": "^1.10.7",
     "graphql": "^16.2.0",
     "graphql-ruby-client": "^1.10.5",

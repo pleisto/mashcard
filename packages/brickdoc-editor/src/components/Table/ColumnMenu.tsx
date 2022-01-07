@@ -100,7 +100,7 @@ export const ColumnMenu: React.FC<ColumnMenuProps> = ({
           </Menu>
         }
         trigger="click"
-        placement="bottomLeft"
+        placement="bottomStart"
       >
         {children}
       </Popover>
