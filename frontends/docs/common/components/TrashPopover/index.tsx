@@ -1,5 +1,5 @@
 import { DocMeta } from '@/docs/pages/DocumentContentPage'
-import { Input, Popover, Icon, Tabs } from '@brickdoc/design-system'
+import { Input, Popover, Icon, Tabs, TabPane } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { PageTrash } from '../PageTrash'
@@ -25,7 +25,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
 
   const tabPaneSkelecton = (tab: string, key: string, docid: string | null): React.ReactElement => {
     return (
-      <Tabs.TabPane tab={tab} key={key}>
+      <TabPane tab={tab} key={key}>
         <Input.Search
           className={styles.btnHide}
           placeholder={t('trash.search')}
@@ -40,7 +40,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
           <Icon.Help />
           <span>{t('trash.learn')}</span>
         </div>
-      </Tabs.TabPane>
+      </TabPane>
     )
   }
 

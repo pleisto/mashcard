@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
+import { range } from 'lodash-es'
 import { a11yTest } from '../../../testHelper'
 import { FC } from 'react'
 import * as TabsStories from '../tabs.stories'
-import { Tabs } from '../index'
+import { Tabs, TabPane } from '../index'
 
 const { Basic } = composeStories(TabsStories)
 
@@ -13,18 +14,32 @@ describe('Tabs', () => {
   it(`matches snapshot correctly`, () => {
     const { container } = render(
       <Tabs defaultActiveKey="2">
-        <Tabs.TabPane tab="tab 1" key="1">
+        <TabPane tab="tab 1" key="1">
           first
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="tab 2" key="2">
+        </TabPane>
+        <TabPane tab="tab 2" key="2">
           second
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="tab 3" key="3">
+        </TabPane>
+        <TabPane tab="tab 3" key="3">
           third
-        </Tabs.TabPane>
+        </TabPane>
       </Tabs>
     )
 
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it(`The number of snapshots is matched correctly`, () => {
+    const list = range(10)
+    const { container } = render(
+      <Tabs defaultActiveKey="2">
+        {list.map(i => (
+          <TabPane tab={`tab-${i}`} key={i}>
+            tab title {i}
+          </TabPane>
+        ))}
+      </Tabs>
+    )
+    expect(container).toMatchSnapshot()
   })
 })

@@ -154,6 +154,7 @@ export {
   toast,
   Tree,
   Tabs,
+  TabPane,
   Tag,
   TagGroup
 } from '@brickdoc/brickdoc-headless-design-system'

@@ -1,4 +1,4 @@
-import { Tabs } from './index'
+import { Tabs, TabPane } from './index'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
@@ -52,15 +52,15 @@ Alert component for feedback.
 
 const Template: ComponentStory<typeof Tabs> = args => (
   <Tabs defaultActiveKey="2">
-    <Tabs.TabPane tab="tab 1" key="1">
+    <TabPane tab="tab 1" key="1">
       first
-    </Tabs.TabPane>
-    <Tabs.TabPane tab="tab 2" key="2">
+    </TabPane>
+    <TabPane tab="tab 2" key="2">
       second
-    </Tabs.TabPane>
-    <Tabs.TabPane tab="tab 3" key="3">
+    </TabPane>
+    <TabPane tab="tab 3" key="3">
       third
-    </Tabs.TabPane>
+    </TabPane>
   </Tabs>
 )
 export const Basic = Template.bind({})

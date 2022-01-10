@@ -1,5 +1,301 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tabs The number of snapshots is matched correctly 1`] = `
+<div>
+  <div
+    class="brd-c-khUFND brd-c-khUFND-top"
+  >
+    <div
+      class="brd-c-khUFND-nav"
+      role="tablist"
+    >
+      <div
+        class="brd-c-khUFND-nav-wrap"
+      >
+        <div
+          class="brd-c-khUFND-nav-list"
+          style="transform: translate(0px, 0px);"
+        >
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-0"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-0"
+              role="tab"
+              tabindex="0"
+            >
+              tab-0
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-1"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-1"
+              role="tab"
+              tabindex="0"
+            >
+              tab-1
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab brd-c-khUFND-tab-active"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-2"
+              aria-selected="true"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-2"
+              role="tab"
+              tabindex="0"
+            >
+              tab-2
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-3"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-3"
+              role="tab"
+              tabindex="0"
+            >
+              tab-3
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-4"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-4"
+              role="tab"
+              tabindex="0"
+            >
+              tab-4
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-5"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-5"
+              role="tab"
+              tabindex="0"
+            >
+              tab-5
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-6"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-6"
+              role="tab"
+              tabindex="0"
+            >
+              tab-6
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-7"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-7"
+              role="tab"
+              tabindex="0"
+            >
+              tab-7
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-8"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-8"
+              role="tab"
+              tabindex="0"
+            >
+              tab-8
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-tab"
+          >
+            <div
+              aria-controls="rc-tabs-test-panel-9"
+              aria-selected="false"
+              class="brd-c-khUFND-tab-btn"
+              id="rc-tabs-test-tab-9"
+              role="tab"
+              tabindex="0"
+            >
+              tab-9
+            </div>
+          </div>
+          <div
+            class="brd-c-khUFND-ink-bar brd-c-khUFND-ink-bar-animated"
+          />
+        </div>
+      </div>
+      <div
+        class="brd-c-khUFND-nav-operations brd-c-khUFND-nav-operations-hidden"
+      >
+        <button
+          aria-controls="rc-tabs-test-more-popup"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          aria-hidden="true"
+          class="brd-c-khUFND-nav-more"
+          id="rc-tabs-test-more"
+          style="visibility: hidden; order: 1;"
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            aria-label="more"
+            class="brd-icon brd-icon-more"
+            role="img"
+          >
+            <svg
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="brd-c-khUFND-content-holder"
+    >
+      <div
+        class="brd-c-khUFND-content brd-c-khUFND-content-top"
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-0"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-0"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-1"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-1"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="false"
+          aria-labelledby="rc-tabs-test-tab-2"
+          class="brd-c-khUFND-tabpane brd-c-khUFND-tabpane-active"
+          id="rc-tabs-test-panel-2"
+          role="tabpanel"
+          tabindex="0"
+        >
+          tab title 
+          2
+        </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-3"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-3"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-4"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-4"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-5"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-5"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-6"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-6"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-7"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-7"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-8"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-8"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+        <div
+          aria-hidden="true"
+          aria-labelledby="rc-tabs-test-tab-9"
+          class="brd-c-khUFND-tabpane"
+          id="rc-tabs-test-panel-9"
+          role="tabpanel"
+          style="display: none;"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Tabs matches snapshot correctly 1`] = `
 <div
   class="brd-c-khUFND brd-c-khUFND-top"
