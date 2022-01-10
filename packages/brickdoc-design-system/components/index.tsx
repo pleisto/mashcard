@@ -39,8 +39,8 @@ export type { DrawerProps } from './drawer'
 export { default as Drawer } from './drawer'
 */
 
-export type { EmptyProps } from './empty'
-export { default as Empty } from './empty'
+/* export type { EmptyProps } from './empty'
+ * export { default as Empty } from './empty' */
 
 export type {
   FormInstance,
@@ -156,7 +156,9 @@ export {
   Tabs,
   TabPane,
   Tag,
-  TagGroup
+  TagGroup,
+  Empty,
+  EmptyType
 } from '@brickdoc/brickdoc-headless-design-system'
 
 export type { ButtonProps } from './button'

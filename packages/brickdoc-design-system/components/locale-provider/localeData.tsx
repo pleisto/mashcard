@@ -27,9 +27,6 @@ export function getLocaleData(t: TFunction<'design_system'>, language: string): 
       removeAll: t('transfer.removeAll', 'Remove all data'),
       selectInvert: t('transfer.selectInvert', 'Invert current page')
     },
-    Empty: {
-      description: t('empty.description', 'No Data')
-    },
     Icon: {
       icon: t('icon.icon', 'icon')
     },

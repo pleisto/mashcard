@@ -48,6 +48,7 @@
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@rails/actioncable": "^6.1.4",
     "@rails/activestorage": "^7.0.0",
+    "@react-aria/utils": "^3.11.0",
     "@sentry/react": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
     "ahooks": "^3.1.5",

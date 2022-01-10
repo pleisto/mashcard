@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import './style'
 import { ModalLocale, changeConfirmLocale } from '../modal/locale'
-import { TransferLocale as TransferLocaleForEmpty } from '../empty'
+// import { TransferLocale as TransferLocaleForEmpty } from '../empty'
 import LocaleContext from './context'
 import { getLocaleData } from './localeData'
 
@@ -14,7 +14,6 @@ export interface Locale {
   Modal?: ModalLocale
   Transfer?: unknown
   Select?: Record<string, any>
-  Empty?: TransferLocaleForEmpty
   global?: Record<string, any>
   PageHeader?: { back: string }
   Icon?: Record<string, any>
