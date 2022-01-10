@@ -78,9 +78,9 @@ export type ParseErrorType = 'parse' | 'syntax'
 
 export type FunctionKey = `${FunctionGroup}::${FunctionNameType}` | FunctionNameType
 export type FunctionCompletionValue = FunctionKey | `${FunctionKey}()`
-export type VariableKey = `#${NamespaceId}@${VariableId}`
+export type VariableKey = `#${NamespaceId}.${VariableId}`
 export type BlockKey = `#${NamespaceId}`
-export type ColumnKey = `#${NamespaceId}#${ColumnId}`
+export type ColumnKey = `#${NamespaceId}.${ColumnId}`
 
 // TODO blockName -> string
 export type BlockName = NamespaceId
@@ -299,7 +299,7 @@ export interface Argument {
   readonly spread?: boolean
 }
 
-export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column'
+export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
 
 interface BaseCompletion {
   readonly kind: CompletionKind
@@ -332,7 +332,12 @@ export interface ColumnCompletion extends BaseCompletion {
   readonly value: ColumnKey
   readonly preview: ColumnType
 }
-
+export interface BlockCompletion extends BaseCompletion {
+  readonly kind: 'block'
+  readonly namespace: BlockName
+  readonly value: BlockKey
+  readonly preview: BlockType
+}
 export interface SpreadsheetCompletion extends BaseCompletion {
   readonly kind: 'spreadsheet'
   readonly namespace: BlockName
@@ -340,18 +345,47 @@ export interface SpreadsheetCompletion extends BaseCompletion {
   readonly preview: SpreadsheetType
 }
 
-export type Completion = FunctionCompletion | VariableCompletion | SpreadsheetCompletion | ColumnCompletion
+export type Completion =
+  | FunctionCompletion
+  | VariableCompletion
+  | SpreadsheetCompletion
+  | ColumnCompletion
+  | BlockCompletion
 
-export interface FormulaName {
+export interface BaseFormulaName {
   kind: SpecialCodeFragmentType
-  value: string
+  render: (namespaceIsExist: boolean) => string
+  prefixLength: (namespaceIsExist: boolean) => number
   key: string
   name: string
-  render: RenderCodeFragmentFunction
 }
+
+export interface VariableFormulaName extends BaseFormulaName {
+  kind: 'Variable'
+  name: VariableName
+  value: VariableKey
+  key: VariableId
+}
+
+export interface BlockFormulaName extends BaseFormulaName {
+  kind: 'Block'
+  name: BlockName
+  value: BlockKey
+  key: NamespaceId
+}
+
+export interface SpreadsheetFormulaName extends BaseFormulaName {
+  kind: 'Spreadsheet'
+  name: SpreadsheetName
+  value: BlockKey
+  key: NamespaceId
+}
+
+export type FormulaName = VariableFormulaName | BlockFormulaName | SpreadsheetFormulaName
 
 export interface ContextInterface {
   features: string[]
+  blocks: Record<NamespaceId, 'Block' | 'Spreadsheet'>
   spreadsheets: Record<NamespaceId, SpreadsheetType>
   formulaNames: FormulaName[]
   reservedNames: string[]
@@ -453,19 +487,17 @@ export interface FormulaCodeFragmentAttrs {
   readonly code: string
   readonly type: FormulaType
   readonly error: string
+  readonly hidden: boolean
 }
-
-export type RenderCodeFragmentFunction = (
-  blockId: NamespaceId
-) => [FormulaCodeFragmentAttrs, ...FormulaCodeFragmentAttrs[]]
 
 interface BaseCodeFragment {
   readonly code: string
+  readonly hidden: boolean
   readonly name: string
   readonly spaceBefore: boolean
   readonly namespaceId?: NamespaceId
   readonly spaceAfter: boolean
-  readonly render?: RenderCodeFragmentFunction
+  readonly display: string
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }
@@ -474,13 +506,11 @@ export type SpecialCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'B
 
 export interface SpecialCodeFragment extends BaseCodeFragment {
   readonly code: SpecialCodeFragmentType
-  readonly render: RenderCodeFragmentFunction
   readonly namespaceId: NamespaceId
 }
 
 export interface OtherCodeFragment extends BaseCodeFragment {
   readonly code: Exclude<string, SpecialCodeFragmentType>
-  readonly render: undefined
 }
 
 export type CodeFragment = SpecialCodeFragment | OtherCodeFragment

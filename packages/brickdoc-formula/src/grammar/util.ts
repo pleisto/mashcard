@@ -1,4 +1,4 @@
-import { AnyTypeResult, ErrorMessage, ErrorResult, ExpressionType, FormulaType } from '../types'
+import { AnyTypeResult, ErrorMessage, ErrorResult, ExpressionType, FormulaType, FunctionContext } from '../types'
 
 export const extractSubType = (array: AnyTypeResult[]): FormulaType => {
   const types = array.map(a => a.type)
@@ -18,7 +18,8 @@ export const extractSubType = (array: AnyTypeResult[]): FormulaType => {
 export const intersectType = (
   expectedArgumentType: ExpressionType,
   contextResultType: FormulaType,
-  label: string
+  label: string,
+  ctx: FunctionContext
 ): { errorMessages: ErrorMessage[]; newType: FormulaType } => {
   if (expectedArgumentType === undefined) {
     return { errorMessages: [], newType: contextResultType }
@@ -54,11 +55,11 @@ export const intersectType = (
     return { errorMessages: [], newType: contextResultType }
   }
 
-  if (expectedArgumentType === 'Error') {
+  if (contextResultType === 'Error') {
     return { errorMessages: [], newType: contextResultType }
   }
 
-  // console.log({ expectedArgumentType, contextResultType, label })
+  // console.error({ expectedArgumentType, contextResultType, label, ctx })
 
   return {
     errorMessages: [{ type: 'type', message: `Expected ${expectedArgumentType} but got ${contextResultType}` }],
@@ -69,9 +70,10 @@ export const intersectType = (
 export const runtimeCheckType = (
   expectedArgumentType: ExpressionType,
   contextResultType: FormulaType,
-  label: string
+  label: string,
+  ctx: FunctionContext
 ): ErrorResult | undefined => {
-  const { errorMessages } = intersectType(expectedArgumentType, contextResultType, label)
+  const { errorMessages } = intersectType(expectedArgumentType, contextResultType, `[Runtime] ${label}`, ctx)
 
   if (errorMessages.length > 0) {
     const { type, message } = errorMessages[0]

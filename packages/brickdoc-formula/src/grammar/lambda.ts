@@ -1,13 +1,16 @@
-import { CstNode } from 'chevrotain'
-import { FunctionContext, FunctionResult, Reference, PredicateFunction, PredicateResult } from '../types'
+import { FunctionContext, FunctionResult, PredicateFunction, PredicateResult } from '../types'
 import { ControlType } from '../controls'
 export type Lambda = VoidFunction
 
 export const functionResult2lambda = <T extends ControlType>(
   ctx: FunctionContext,
-  { result }: FunctionResult,
+  { result, type }: FunctionResult,
   ctrl: T
 ): Lambda => {
+  if (type !== 'Function') {
+    throw new Error('functionResult2lambda: type is not Function')
+  }
+
   result.forEach(({ name }) => {
     if (name !== 'Set') {
       throw new Error('Only Set is supported')
@@ -16,8 +19,16 @@ export const functionResult2lambda = <T extends ControlType>(
 
   return () => {
     result.forEach(({ args: [ref, cst] }) => {
-      const reference = ref.result as Reference
-      const cstdata = cst.result as CstNode
+      if (ref.type !== 'Reference') {
+        throw new Error('Only Reference is supported')
+      }
+
+      if (cst.type !== 'Cst') {
+        throw new Error('Only Cst is supported')
+      }
+
+      const reference = ref.result
+      const cstdata = cst.result
 
       if (reference.kind === 'variable') {
         const variable = ctx.formulaContext.findVariable(reference.namespaceId, reference.variableId)!

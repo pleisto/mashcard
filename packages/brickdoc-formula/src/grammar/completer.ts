@@ -32,18 +32,15 @@ export const complete = ({
   let completions = cacheCompletions ?? formulaContext.completions(namespaceId, variableId)
   const lastCodeFragment = codeFragments[codeFragments.length - 1]
   const lastToken = tokens[tokens.length - 1]
-  // const lastToken = tokens[tokens.length - 1]
   if (!lastCodeFragment || !lastToken) {
     return completions
   }
-
-  // console.log({ lastCodeFragment, lastToken })
 
   const { code, name } = lastCodeFragment
   const lowerCaseName = name.toLowerCase()
   const lastTokenText = lastToken.image
 
-  // console.log({ name, code, input, lastCodeFragment, tokens, codeFragments, completions })
+  console.log({ name, code, input, lastCodeFragment, tokens, codeFragments, completions })
 
   if (code === 'Dot') {
     const last2CodeFragment = codeFragments[codeFragments.length - 2]
@@ -58,12 +55,21 @@ export const complete = ({
           : c
       })
 
-      if (last2CodeFragment.code === 'Spreadsheet') {
-        completions = completions.map(c => {
-          return c.kind === 'column' && c.preview.namespaceId === last2CodeFragment.namespaceId
-            ? { ...c, weight: c.weight + 1000 }
-            : c
-        })
+      switch (last2CodeFragment.type) {
+        case 'Spreadsheet':
+          completions = completions.map(c => {
+            return c.kind === 'column' && c.preview.namespaceId === last2CodeFragment.namespaceId
+              ? { ...c, weight: c.weight + 1000 }
+              : c
+          })
+          break
+        case 'Block':
+          completions = completions.map(c => {
+            return c.kind === 'variable' && c.preview.t.namespaceId === last2CodeFragment.namespaceId
+              ? { ...c, weight: c.weight + 1000 }
+              : c
+          })
+          break
       }
     }
   }
@@ -76,7 +82,7 @@ export const complete = ({
     })
   }
 
-  if (['other', 'NumberLiteral', 'Function'].includes(code)) {
+  if (['FunctionName'].includes(code)) {
     completions = completions.map(c => {
       const replacements = c.kind === 'column' ? [`${blockKey(c.preview.namespaceId)}.${name}`, name] : [name]
 

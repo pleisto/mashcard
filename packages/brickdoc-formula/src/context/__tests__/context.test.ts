@@ -34,7 +34,7 @@ describe('Context', () => {
       id: barVariableId,
       blockId: barNamespaceId,
       dependencyIds: [fooVariableId],
-      definition: `=ABS(120) + #${fooNamespaceId}@${fooVariableId}`,
+      definition: `=ABS(120) + #${fooNamespaceId}.${fooVariableId}`,
       kind: 'expression',
       version: 0,
       level: 0,
@@ -105,7 +105,7 @@ describe('Context', () => {
   })
 
   it('if', () => {
-    const input = `=IF((#${fooNamespaceId}@${fooVariableId}), 1, 2)`
+    const input = `=IF((#${fooNamespaceId}.${fooVariableId}), 1, 2)`
     const name = 'ifname'
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
@@ -117,7 +117,7 @@ describe('Context', () => {
     const parseResult2 = parse({
       ctx: {
         formulaContext,
-        meta: { ...meta, input: `=IF((#${fooNamespaceId}@${fooVariableId} = 3), 1, 2)` },
+        meta: { ...meta, input: `=IF((#${fooNamespaceId}.${fooVariableId} = 3), 1, 2)` },
         interpretContext
       }
     })
@@ -128,7 +128,7 @@ describe('Context', () => {
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const name = 'baz'
-    const input = `=#${fooNamespaceId}@${fooVariableId} + #${barNamespaceId}@${barVariableId}`
+    const input = `=#${fooNamespaceId}.${fooVariableId} + #${barNamespaceId}.${barVariableId}`
     const meta = { namespaceId, variableId, name, input }
     const view = {}
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }

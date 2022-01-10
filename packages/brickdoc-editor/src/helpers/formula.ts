@@ -17,39 +17,32 @@ export const fetchJSONContentArray = (content: JSONContent | undefined): JSONCon
   return content?.content?.[0]?.content ?? []
 }
 
-export const codeFragmentsToJSONContentTotal = (
-  codeFragments: CodeFragment[] | undefined,
-  blockId: string
-): JSONContent | undefined => {
+export const codeFragmentsToJSONContentTotal = (codeFragments: CodeFragment[] | undefined): JSONContent | undefined => {
   if (!codeFragments) return undefined
   if (codeFragments.length === 0) return undefined
 
   const content: JSONContent[] = []
 
   codeFragments.forEach(codeFragment => {
-    content.push(...codeFragmentToJSONContentArray(codeFragment, blockId))
+    content.push(...codeFragmentToJSONContentArray(codeFragment))
   })
 
   return buildJSONContentByArray(content)
 }
 
-export const codeFragmentToJSONContentArray = (codeFragment: CodeFragment, blockId: string): JSONContent[] => {
+export const codeFragmentToJSONContentArray = (codeFragment: CodeFragment): JSONContent[] => {
   const result: JSONContent[] = []
 
-  if (codeFragment.render) {
-    const attrs = codeFragment.render(blockId)
-    attrs.forEach(a => result.push(attrsToJSONContent(a)))
-  } else {
-    const attr = attrsToJSONContent({
-      display: codeFragment.name,
-      value: codeFragment.name,
-      code: codeFragment.code,
-      type: codeFragment.type,
-      error: codeFragment.errors.length === 0 ? '' : codeFragment.errors[0].message
-    })
-    if (codeFragment.name) {
-      result.push(attr)
-    }
+  const attr = attrsToJSONContent({
+    hidden: codeFragment.hidden,
+    display: codeFragment.display,
+    value: codeFragment.name,
+    code: codeFragment.code,
+    type: codeFragment.type,
+    error: codeFragment.errors.length === 0 ? '' : codeFragment.errors[0].message
+  })
+  if (codeFragment.display) {
+    result.push(attr)
   }
 
   return result

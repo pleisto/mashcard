@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Button, Icon, Input, Modal, Select, Switch } from '@brickdoc/design-system'
+import { Button, Icon, Input, Modal } from '@brickdoc/design-system'
 import { BlockContainer, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
@@ -202,21 +202,23 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         )
       case 'Switch':
         return (
-          <Switch
-            disabled={result.result.disabled}
-            size="large"
-            checked={result.result.checked}
-            onChange={result.result.onChange}
-          />
+          <span>Unsupported Switch</span>
+          // <Switch
+          //   disabled={result.result.disabled}
+          //   size="large"
+          //   checked={result.result.checked}
+          //   onChange={result.result.onChange}
+          // />
         )
       case 'Select':
         return (
-          <Select
-            disabled={result.result.disabled}
-            options={result.result.options.map(o => ({ value: o, label: o }))}
-            onChange={result.result.onChange}
-            value={result.result.value}
-          />
+          <span>Unsupported Select</span>
+          // <Select
+          //   disabled={result.result.disabled}
+          //   options={result.result.options.map(o => ({ value: o, label: o }))}
+          //   onChange={result.result.onChange}
+          //   value={result.result.value}
+          // />
         )
       case 'Spreadsheet':
         return renderTable(result.result)

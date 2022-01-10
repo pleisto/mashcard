@@ -3,6 +3,7 @@ import React from 'react'
 import cx from 'classnames'
 import { Icon } from '@brickdoc/design-system'
 import {
+  BlockCompletion,
   ColumnCompletion,
   Completion,
   CompletionKind,
@@ -30,6 +31,14 @@ const COMPLETION_STYLE_META: {
     render: (completion: Completion, blockId: string) => React.ReactElement
   }
 } = {
+  block: {
+    Icon: <Icon.Table />,
+    render: (completion: Completion, blockId: string) => {
+      const { preview: block } = completion as BlockCompletion
+
+      return <span>Block: {block.name()}</span>
+    }
+  },
   column: {
     Icon: <Icon.Table />,
     render: (completion: Completion, blockId: string) => {
@@ -121,10 +130,7 @@ const COMPLETION_STYLE_META: {
               <div className="autocomplete-preview-section-head">Example</div>
               {preview.examples.map((example, index) => (
                 <div key={index} className="autocomplete-preview-example">
-                  <FormulaEditor
-                    content={codeFragmentsToJSONContentTotal(example.codeFragments, blockId)}
-                    editable={false}
-                  />
+                  <FormulaEditor content={codeFragmentsToJSONContentTotal(example.codeFragments)} editable={false} />
                   <br />
                   <span className="autocomplete-preview-example-result">
                     ={JSON.stringify(example?.output?.result)}
@@ -142,7 +148,7 @@ const COMPLETION_STYLE_META: {
     render: (completion: Completion, blockId: string): React.ReactElement => {
       const { preview } = completion as VariableCompletion
       const content = preview.t.valid
-        ? codeFragmentsToJSONContentTotal(preview.t.codeFragments, blockId)
+        ? codeFragmentsToJSONContentTotal(preview.t.codeFragments)
         : { type: 'doc', content: [{ type: 'text', text: preview.t.definition }] }
       return (
         <div className="formula-autocomplete-preview-variable">

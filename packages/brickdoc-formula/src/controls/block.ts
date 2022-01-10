@@ -1,13 +1,13 @@
 import { BlockInitializer, BlockType } from './types'
-import { ContextInterface, FunctionContext, NamespaceId } from '../types'
+import { ContextInterface, NamespaceId } from '../types'
 
 export class BlockClass implements BlockType {
   _formulaContext: ContextInterface
   name: () => string
   id: NamespaceId
 
-  constructor(ctx: FunctionContext, { id }: BlockInitializer) {
-    this._formulaContext = ctx.formulaContext
+  constructor(_formulaContext: ContextInterface, { id }: BlockInitializer) {
+    this._formulaContext = _formulaContext
     this.id = id
     this.name = () => {
       const formulaName = this._formulaContext.formulaNames.find(n => n.key === id && n.kind === 'Block')

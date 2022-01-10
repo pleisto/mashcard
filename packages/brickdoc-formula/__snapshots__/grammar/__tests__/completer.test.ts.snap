@@ -1,256 +1,594 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Complete [dot equal different namespaceId] = 1 + varvarabcvar. 1`] = `
-Array [
-  Object {
-    "code": "NumberLiteral",
-    "errors": Array [],
-    "name": "1",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Plus",
-    "errors": Array [],
-    "name": "+",
-    "render": undefined,
-    "spaceAfter": true,
-    "spaceBefore": true,
-    "type": "number",
-  },
-  Object {
-    "code": "Variable",
-    "errors": Array [],
-    "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    "render": [Function],
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Dot",
-    "errors": Array [
-      Object {
-        "message": "Missing expression",
-        "type": "syntax",
-      },
-      Object {
-        "message": "Parse error: \\"\\"",
-        "type": "parse",
-      },
+exports[`Complete [block completion] =#57622108-1337-4edd-833a-2557835bcfe0. 1`] = `
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "Block",
+      "display": "Unknown",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "Block",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [
+        Object {
+          "message": "Missing expression",
+          "type": "syntax",
+        },
+        Object {
+          "message": "Parse error: \\"\\"",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "variable",
+    "name": "varvarabcvar",
+    "namespace": "Unknown",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "varvarabcvar",
     ],
-    "name": ".",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "weight": 1001,
   },
-]
+}
+`;
+
+exports[`Complete [dot equal different namespaceId] = 1 + varvarabcvar. 1`] = `
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "NumberLiteral",
+      "display": "1",
+      "errors": Array [],
+      "hidden": false,
+      "name": "1",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Plus",
+      "display": "+",
+      "errors": Array [],
+      "hidden": false,
+      "name": "+",
+      "spaceAfter": true,
+      "spaceBefore": true,
+      "type": "number",
+    },
+    Object {
+      "code": "Block",
+      "display": "Unknown",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "Block",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [
+        Object {
+          "message": "Missing expression",
+          "type": "syntax",
+        },
+        Object {
+          "message": "Parse error: \\"\\"",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Function",
+      "display": "VLOOKUP",
+      "errors": Array [],
+      "hidden": false,
+      "name": "VLOOKUP",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "function",
+    "name": "VLOOKUP",
+    "namespace": "core",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "VLOOKUP",
+    ],
+    "value": "VLOOKUP()",
+    "weight": 125,
+  },
+}
 `;
 
 exports[`Complete [dot equal same namespaceId] = 1 + varvarabcvar. 1`] = `
-Array [
-  Object {
-    "code": "NumberLiteral",
-    "errors": Array [],
-    "name": "1",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Plus",
-    "errors": Array [],
-    "name": "+",
-    "render": undefined,
-    "spaceAfter": true,
-    "spaceBefore": true,
-    "type": "number",
-  },
-  Object {
-    "code": "Variable",
-    "errors": Array [],
-    "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    "render": [Function],
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Dot",
-    "errors": Array [
-      Object {
-        "message": "Missing expression",
-        "type": "syntax",
-      },
-      Object {
-        "message": "Parse error: \\"\\"",
-        "type": "parse",
-      },
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "NumberLiteral",
+      "display": "1",
+      "errors": Array [],
+      "hidden": false,
+      "name": "1",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Plus",
+      "display": "+",
+      "errors": Array [],
+      "hidden": false,
+      "name": "+",
+      "spaceAfter": true,
+      "spaceBefore": true,
+      "type": "number",
+    },
+    Object {
+      "code": "Block",
+      "display": "Unknown",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "Block",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [
+        Object {
+          "message": "Missing expression",
+          "type": "syntax",
+        },
+        Object {
+          "message": "Parse error: \\"\\"",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Function",
+      "display": "VLOOKUP",
+      "errors": Array [],
+      "hidden": false,
+      "name": "VLOOKUP",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "function",
+    "name": "VLOOKUP",
+    "namespace": "core",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "VLOOKUP",
     ],
-    "name": ".",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
+    "value": "VLOOKUP()",
+    "weight": 125,
   },
-]
+}
 `;
 
 exports[`Complete [var equal different namespaceId] =varvarabcvar 1`] = `
-Array [
-  Object {
-    "code": "Variable",
-    "errors": Array [],
-    "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    "render": [Function],
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "Block",
+      "display": "Unknown",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "Block",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Function",
+      "display": "LEN",
+      "errors": Array [],
+      "hidden": false,
+      "name": "LEN",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "function",
+    "name": "LEN",
+    "namespace": "core",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "LEN",
+    ],
+    "value": "LEN",
+    "weight": 0,
   },
-]
+}
 `;
 
 exports[`Complete [var equal same namespaceId] =varvarabcvar 1`] = `
-Array [
-  Object {
-    "code": "Variable",
-    "errors": Array [],
-    "name": "#57622108-1337-4edd-833a-2557835bcfe0@481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-    "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-    "render": [Function],
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "Block",
+      "display": "Unknown",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "Block",
+    },
+    Object {
+      "code": "Dot",
+      "display": ".",
+      "errors": Array [],
+      "hidden": false,
+      "name": ".",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "variable",
+    "name": "varvarabcvar",
+    "namespace": "Unknown",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "varvarabcvar",
+    ],
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "weight": 1,
   },
-]
+}
 `;
 
 exports[`Complete [var include different namespaceId] =1+arvar 1`] = `
-Array [
-  Object {
-    "code": "NumberLiteral",
-    "errors": Array [],
-    "name": "1",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Plus",
-    "errors": Array [],
-    "name": "+",
-    "render": undefined,
-    "spaceAfter": true,
-    "spaceBefore": true,
-    "type": "number",
-  },
-  Object {
-    "code": "Function",
-    "errors": Array [
-      Object {
-        "message": "Unknown function arvar",
-        "type": "syntax",
-      },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "NumberLiteral",
+      "display": "1",
+      "errors": Array [],
+      "hidden": false,
+      "name": "1",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Plus",
+      "display": "+",
+      "errors": Array [],
+      "hidden": false,
+      "name": "+",
+      "spaceAfter": true,
+      "spaceBefore": true,
+      "type": "number",
+    },
+    Object {
+      "code": "Function",
+      "display": "arvar",
+      "errors": Array [
+        Object {
+          "message": "Unknown function arvar",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": "arvar",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "variable",
+    "name": "varvarabcvar",
+    "namespace": "Unknown",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "arvar",
+      "varvarabcvar",
     ],
-    "name": "arvar",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "weight": 9,
   },
-]
+}
 `;
 
 exports[`Complete [var include same namespaceId] =1+arvar 1`] = `
-Array [
-  Object {
-    "code": "NumberLiteral",
-    "errors": Array [],
-    "name": "1",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Plus",
-    "errors": Array [],
-    "name": "+",
-    "render": undefined,
-    "spaceAfter": true,
-    "spaceBefore": true,
-    "type": "number",
-  },
-  Object {
-    "code": "Function",
-    "errors": Array [
-      Object {
-        "message": "Unknown function arvar",
-        "type": "syntax",
-      },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "NumberLiteral",
+      "display": "1",
+      "errors": Array [],
+      "hidden": false,
+      "name": "1",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Plus",
+      "display": "+",
+      "errors": Array [],
+      "hidden": false,
+      "name": "+",
+      "spaceAfter": true,
+      "spaceBefore": true,
+      "type": "number",
+    },
+    Object {
+      "code": "Function",
+      "display": "arvar",
+      "errors": Array [
+        Object {
+          "message": "Unknown function arvar",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": "arvar",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "variable",
+    "name": "varvarabcvar",
+    "namespace": "Unknown",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "arvar",
+      "varvarabcvar",
     ],
-    "name": "arvar",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "weight": 11,
   },
-]
+}
 `;
 
 exports[`Complete [var startWith same namespace] = 1 + var 1`] = `
-Array [
-  Object {
-    "code": "NumberLiteral",
-    "errors": Array [],
-    "name": "1",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "number",
-  },
-  Object {
-    "code": "Plus",
-    "errors": Array [],
-    "name": "+",
-    "render": undefined,
-    "spaceAfter": true,
-    "spaceBefore": true,
-    "type": "number",
-  },
-  Object {
-    "code": "Function",
-    "errors": Array [
-      Object {
-        "message": "Unknown function var",
-        "type": "syntax",
-      },
-      Object {
-        "message": "TODO mismatch token FunctionCall",
-        "type": "parse",
-      },
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "NumberLiteral",
+      "display": "1",
+      "errors": Array [],
+      "hidden": false,
+      "name": "1",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "number",
+    },
+    Object {
+      "code": "Plus",
+      "display": "+",
+      "errors": Array [],
+      "hidden": false,
+      "name": "+",
+      "spaceAfter": true,
+      "spaceBefore": true,
+      "type": "number",
+    },
+    Object {
+      "code": "Function",
+      "display": "var",
+      "errors": Array [
+        Object {
+          "message": "Unknown function var",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": "var",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Variable",
+      "display": "varvarabcvar",
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "variable",
+    "name": "varvarabcvar",
+    "namespace": "Unknown",
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "var",
+      "varvarabcvar",
     ],
-    "name": "var",
-    "render": undefined,
-    "spaceAfter": false,
-    "spaceBefore": false,
-    "type": "any",
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "weight": 101,
   },
-]
+}
 `;

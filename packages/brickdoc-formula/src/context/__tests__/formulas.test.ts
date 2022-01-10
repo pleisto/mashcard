@@ -77,7 +77,7 @@ describe('appendFormulas', () => {
         level: 0,
         kind: 'expression',
         dependencyIds: [fooVariableId],
-        definition: `=ABS(123) + #${fooNamespaceId}@${fooVariableId}`,
+        definition: `=ABS(123) + #${fooNamespaceId}.${fooVariableId}`,
         cacheValue: {
           type: 'number',
           result: 456
@@ -119,7 +119,7 @@ describe('appendFormulas', () => {
         level: 0,
         kind: 'expression',
         dependencyIds: [fooVariableId],
-        definition: `=ABS(123) + #${fooNamespaceId}@${fooVariableId}`,
+        definition: `=ABS(123) + #${fooNamespaceId}.${fooVariableId}`,
         cacheValue: {
           type: 'number',
           result: 456

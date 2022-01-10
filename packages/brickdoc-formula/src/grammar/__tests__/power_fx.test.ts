@@ -59,6 +59,7 @@ const spreadsheet: SpreadsheetType = new SpreadsheetClass({
 interface TestCase {
   input: string
   label: string
+  error: string | undefined
   value: any
 }
 
@@ -67,12 +68,14 @@ const SNAPSHOT_FLAG = '<SNAPSHOT>'
 const testCases: TestCase[] = [
   {
     label: 'CountIf ok',
-    input: `=CountIf(#${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${firstColumnId} >= 3)`,
+    input: `=CountIf(#${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${firstColumnId} >= 3)`,
+    error: 'Expected number but got Column',
     value: 2
   },
   {
     label: 'CountIf error1',
     input: `=CountIf(#${spreadsheetNamespaceId}, >= 3)`,
+    error: undefined,
     value: 'Column is missing'
   }
 ]
@@ -82,20 +85,27 @@ describe('Power Fx Functions', () => {
   formulaContext.setSpreadsheet(spreadsheet)
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 
-  testCases.forEach(({ input, label, value }) => {
+  testCases.forEach(({ input, label, value, error }) => {
     it(`[${label}] ${input}`, async () => {
       const newMeta = { ...meta, input }
       const newCtx = { ...ctx, meta: newMeta }
       const { codeFragments, cst, errorMessages } = parse({ ctx: newCtx })
-      expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      const result = (await interpret({ cst: cst!, ctx: newCtx })).variableValue.result.result
-      if (value === SNAPSHOT_FLAG) {
+      if (error) {
         // eslint-disable-next-line jest/no-conditional-expect
-        expect(result).toMatchSnapshot()
+        expect(errorMessages[0]!.message).toEqual(error)
       } else {
         // eslint-disable-next-line jest/no-conditional-expect
-        expect(result).toEqual(value)
+        expect(errorMessages).toEqual([])
+
+        const result = (await interpret({ cst: cst!, ctx: newCtx })).variableValue.result.result
+        if (value === SNAPSHOT_FLAG) {
+          // eslint-disable-next-line jest/no-conditional-expect
+          expect(result).toMatchSnapshot()
+        } else {
+          // eslint-disable-next-line jest/no-conditional-expect
+          expect(result).toEqual(value)
+        }
       }
     })
   })

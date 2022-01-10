@@ -23,9 +23,10 @@ Array [
         "codeFragments": Array [
           Object {
             "code": "NumberLiteral",
+            "display": "1",
             "errors": Array [],
+            "hidden": false,
             "name": "1",
-            "render": undefined,
             "spaceAfter": false,
             "spaceBefore": false,
             "type": "number",

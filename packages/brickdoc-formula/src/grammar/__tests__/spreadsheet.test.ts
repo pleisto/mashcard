@@ -71,7 +71,7 @@ const SNAPSHOT_FLAG = '<SNAPSHOT>'
 const testCases: TestCase[] = [
   {
     label: 'column',
-    input: `=#${spreadsheetNamespaceId}#${firstColumnId}`,
+    input: `=#${spreadsheetNamespaceId}.${firstColumnId}`,
     value: { ...columns[0], spreadsheet }
   },
   { label: 'in spreadsheet true', input: `=3 in #${spreadsheetNamespaceId}`, value: true },
@@ -81,102 +81,102 @@ const testCases: TestCase[] = [
   { label: 'Spreadsheet', input: `=Spreadsheet([1,2,3]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Spreadsheet', input: `=Spreadsheet([{a: 1}, {a: 2}]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'in spreadsheet false', input: `=4 in #${spreadsheetNamespaceId}`, value: false },
-  { label: 'in column true', input: `=3 in #${spreadsheetNamespaceId}#${secondColumnId}`, value: false },
-  { label: 'in column false', input: `=4 in #${spreadsheetNamespaceId}#${secondColumnId}`, value: true },
-  { label: 'exactin column true', input: `="foo" in #${spreadsheetNamespaceId}#${thirdColumnId}`, value: true },
+  { label: 'in column true', input: `=3 in #${spreadsheetNamespaceId}.${secondColumnId}`, value: false },
+  { label: 'in column false', input: `=4 in #${spreadsheetNamespaceId}.${secondColumnId}`, value: true },
+  { label: 'exactin column true', input: `="foo" in #${spreadsheetNamespaceId}.${thirdColumnId}`, value: true },
   { label: 'COLUMN_COUNT', input: `=#${spreadsheetNamespaceId}.COLUMN_COUNT()`, value: 3 },
-  { label: 'SUM', input: `=#${spreadsheetNamespaceId}#${firstColumnId}.SUM()`, value: 1 + 3 + 5 },
-  { label: 'MAX', input: `=#${spreadsheetNamespaceId}#${firstColumnId}.MAX()`, value: 5 },
-  { label: 'COUNTA', input: `=#${spreadsheetNamespaceId}#${firstColumnId}.COUNTA()`, value: 3 },
-  { label: 'COUNTA', input: `=#${spreadsheetNamespaceId}#${thirdColumnId}.COUNTA()`, value: 2 },
+  { label: 'SUM', input: `=#${spreadsheetNamespaceId}.${firstColumnId}.SUM()`, value: 1 + 3 + 5 },
+  { label: 'MAX', input: `=#${spreadsheetNamespaceId}.${firstColumnId}.MAX()`, value: 5 },
+  { label: 'COUNTA', input: `=#${spreadsheetNamespaceId}.${firstColumnId}.COUNTA()`, value: 3 },
+  { label: 'COUNTA', input: `=#${spreadsheetNamespaceId}.${thirdColumnId}.COUNTA()`, value: 2 },
   {
     label: 'SUMPRODUCT',
-    input: `=SUMPRODUCT(#${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId})`,
+    input: `=SUMPRODUCT(#${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId})`,
     value: 1 * 2 + 3 * 4 + 5 * 6
   },
   {
     label: 'SUMIFS >3',
-    input: `=SUMIFS(#${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId}, >3)`,
+    input: `=SUMIFS(#${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId}, >3)`,
     value: 3 + 5
   },
   {
     label: 'SUMIFS 4',
-    input: `=SUMIFS(#${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId}, 4)`,
+    input: `=SUMIFS(#${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId}, 4)`,
     value: 3
   },
   {
     label: 'AVERAGEIFS 4',
-    input: `=AVERAGEIFS(#${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId}, >3)`,
+    input: `=AVERAGEIFS(#${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId}, >3)`,
     value: 4
   },
   {
     label: 'AVERAGEIFS 100',
-    input: `=AVERAGEIFS(#${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId}, >100)`,
+    input: `=AVERAGEIFS(#${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId}, >100)`,
     value: 'No matching values'
   },
   {
     label: 'COUNTIFS >2',
-    input: `=COUNTIFS(#${spreadsheetNamespaceId}#${firstColumnId}, >2)`,
+    input: `=COUNTIFS(#${spreadsheetNamespaceId}.${firstColumnId}, >2)`,
     value: 2
   },
   {
     label: 'COUNTIFS =1',
-    input: `=COUNTIFS(#${spreadsheetNamespaceId}#${firstColumnId}, 3)`,
+    input: `=COUNTIFS(#${spreadsheetNamespaceId}.${firstColumnId}, 3)`,
     value: 1
   },
   {
     label: 'VLOOKUP Not found',
-    input: `=VLOOKUP("", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP("", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId})`,
     value: 'Not found'
   },
   {
     label: 'VLOOKUP Column check',
-    input: `=VLOOKUP("", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${firstColumnId})`,
+    input: `=VLOOKUP("", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${firstColumnId})`,
     value: 'Column cannot be the same as the first column'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP(1, #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId})`,
     value: '2'
   },
   {
     label: 'VLOOKUP Not found 2 range false',
-    input: `=VLOOKUP("2", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId}, false)`,
+    input: `=VLOOKUP("2", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId}, false)`,
     value: 'Not found'
   },
   {
     label: 'VLOOKUP 2 range default',
-    input: `=VLOOKUP("2", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP("2", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId})`,
     value: '2'
   },
   {
     label: 'VLOOKUP 2 range true',
-    input: `=VLOOKUP("2", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId}, true)`,
+    input: `=VLOOKUP("2", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId}, true)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId}, true)`,
+    input: `=VLOOKUP(1, #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId}, true)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId}, false)`,
+    input: `=VLOOKUP(1, #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId}, false)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok string',
-    input: `=VLOOKUP("1", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}#${secondColumnId})`,
+    input: `=VLOOKUP("1", #${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${secondColumnId})`,
     value: '2'
   },
   {
     label: 'XLOOKUP ok string',
-    input: `=XLOOKUP("1", #${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId})`,
+    input: `=XLOOKUP("1", #${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId})`,
     value: '2'
   },
   {
     label: 'XLOOKUP ok string',
-    input: `=XLOOKUP("123", #${spreadsheetNamespaceId}#${firstColumnId}, #${spreadsheetNamespaceId}#${secondColumnId}, "100")`,
+    input: `=XLOOKUP("123", #${spreadsheetNamespaceId}.${firstColumnId}, #${spreadsheetNamespaceId}.${secondColumnId}, "100")`,
     value: '100'
   }
 ]
@@ -217,7 +217,7 @@ describe('Spreadsheet Functions', () => {
     expect(completions[0]).toMatchSnapshot()
     expect(completions.filter(c => c.kind === 'column').length).toEqual(3)
 
-    const input1 = `=#${spreadsheetNamespaceId}#${firstColumnId}.`
+    const input1 = `=#${spreadsheetNamespaceId}.${firstColumnId}.`
     const { completions: input1Completions } = parse({
       ctx: { ...ctx, meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1 } }
     })

@@ -143,7 +143,7 @@ describe('Context', () => {
   })
 
   it('constant variable', async () => {
-    const input = `=#${namespaceId}@${fooVariableId}`
+    const input = `=#${namespaceId}.${fooVariableId}`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { cst, errorMessages } = parse({ ctx: finalCtx })
@@ -161,7 +161,7 @@ describe('Context', () => {
   it('expression variable', async () => {
     const anotherBlockId = '9dda8306-dbe1-49d3-868d-1a7c86f27328'
     const anotherVariableId = '45e4260c-5bf1-4120-957e-1214c5ea7c20'
-    const barInput = `=10 + #${namespaceId}@${fooVariableId}`
+    const barInput = `=10 + #${namespaceId}.${fooVariableId}`
 
     // Insert bar
     const meta = { namespaceId: anotherBlockId, variableId: anotherVariableId, name: 'bar' }
@@ -173,7 +173,7 @@ describe('Context', () => {
     expect(bar.t.variableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
     expect(bar.t.flattenVariableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
 
-    const input = `=#${anotherBlockId}@${anotherVariableId}`
+    const input = `=#${anotherBlockId}.${anotherVariableId}`
     const newMeta = { namespaceId, variableId: fooVariableId, name: 'bar', input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages, flattenVariableDependencies } = parse({ ctx: finalCtx })
@@ -185,7 +185,7 @@ describe('Context', () => {
   })
 
   it('PLUS', async () => {
-    const input = `= custom::PLUS(10, #${namespaceId}@${fooVariableId})`
+    const input = `= custom::PLUS(10, #${namespaceId}.${fooVariableId})`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { cst, errorMessages } = parse({ ctx: finalCtx })
@@ -194,7 +194,7 @@ describe('Context', () => {
   })
 
   it('Type', () => {
-    const input = `= "foo" & #${namespaceId}@${fooVariableId}`
+    const input = `= "foo" & #${namespaceId}.${fooVariableId}`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
@@ -202,18 +202,18 @@ describe('Context', () => {
   })
 
   it('unknown namespace', () => {
-    const input = `=#${unknownId}@${fooVariableId}`
+    const input = `=#${unknownId}.${fooVariableId}`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
-    expect(errorMessages).toEqual([{ message: `Variable not found: ${fooVariableId}`, type: 'deps' }])
+    expect(errorMessages).toEqual([{ message: `Block not found: ${unknownId}`, type: 'deps' }])
   })
 
   it('unknown variable', () => {
-    const input = `=#${namespaceId}@${unknownId}`
+    const input = `=#${namespaceId}.${unknownId}`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
-    expect(errorMessages).toEqual([{ message: `Variable not found: ${unknownId}`, type: 'deps' }])
+    expect(errorMessages).toEqual([{ message: `Unknown variable: ${unknownId}`, type: 'syntax' }])
   })
 })

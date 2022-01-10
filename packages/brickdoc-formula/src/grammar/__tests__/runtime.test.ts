@@ -18,7 +18,7 @@ describe('Runtime', () => {
     await quickInsert({
       ctx: {
         ...ctx,
-        meta: { ...meta, name: 'bar', variableId: barVariableId, input: `=#${namespaceId}@${fooVariableId} + 1` }
+        meta: { ...meta, name: 'bar', variableId: barVariableId, input: `=#${namespaceId}.${fooVariableId} + 1` }
       }
     })
   })

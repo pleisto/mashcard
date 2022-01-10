@@ -27,7 +27,9 @@ import {
   Features,
   FormulaName,
   AnyTypeResult,
-  FunctionContext
+  FunctionContext,
+  BlockCompletion,
+  BlockFormulaName
 } from '../types'
 import {
   function2completion,
@@ -36,7 +38,7 @@ import {
   variableKey,
   blockKey,
   column2completion,
-  renderBlock
+  block2completion
 } from './util'
 import { FORMULA_PARSER_VERSION } from '../version'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
@@ -45,7 +47,6 @@ import { FormulaParser } from '../grammar/parser'
 import { FormulaLexer } from '../grammar/lexer'
 import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
-import { renderSpreadsheet, renderVariable } from '.'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>
@@ -95,6 +96,7 @@ const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
 
 export class FormulaContext implements ContextInterface {
   features: Features
+  blocks: Record<NamespaceId, 'Block' | 'Spreadsheet'> = {}
   context: Record<VariableKey, VariableInterface> = {}
   functionWeights: Record<FunctionKey, number> = {}
   variableWeights: Record<VariableKey, number> = {}
@@ -206,6 +208,12 @@ export class FormulaContext implements ContextInterface {
       return spreadsheet2completion(spreadsheet)
     })
 
+    const blocks: BlockCompletion[] = this.formulaNames
+      .filter(f => f.kind === 'Block')
+      .map(f => {
+        return block2completion(this, f as BlockFormulaName, f.key === namespaceId ? 1 : -1)
+      })
+
     const columns: ColumnCompletion[] = Object.entries(this.spreadsheets).flatMap(([key, spreadsheet]) => {
       return spreadsheet.listColumns().map(column => column2completion({ ...column, spreadsheet }))
     })
@@ -221,7 +229,7 @@ export class FormulaContext implements ContextInterface {
             column2completion({ ...column, spreadsheet: v.t.variableValue.result.result })
           )
       })
-    return [...functions, ...variables, ...spreadsheets, ...columns, ...dynamicColumns].sort(
+    return [...functions, ...variables, ...blocks, ...spreadsheets, ...columns, ...dynamicColumns].sort(
       (a, b) => b.weight - a.weight
     )
   }
@@ -261,9 +269,11 @@ export class FormulaContext implements ContextInterface {
         kind: 'Spreadsheet',
         name: spreadsheet.name(),
         value: blockKey(spreadsheet.blockId),
-        key: spreadsheet.blockId,
-        render: renderSpreadsheet(spreadsheet, [])
+        render: () => blockKey(spreadsheet.blockId),
+        prefixLength: () => 0,
+        key: spreadsheet.blockId
       })
+    this.blocks[spreadsheet.blockId] = 'Spreadsheet'
     this.spreadsheets[spreadsheet.blockId] = spreadsheet
   }
 
@@ -322,18 +332,28 @@ export class FormulaContext implements ContextInterface {
             kind: 'Block',
             name,
             value: blockKey(namespaceId),
-            key: namespaceId,
-            render: renderBlock(namespaceId, () => name, [])
+            render: () => blockKey(namespaceId),
+            prefixLength: () => 0,
+            key: namespaceId
           })
       },
       { eventId: namespaceId, subscribeId: variableId }
     )
 
-    const value = variableKey(namespaceId, variableId)
+    const render = (exist: boolean): string => (exist ? variableId : variableKey(namespaceId, variableId))
     const key = variableId
+    const value = variableKey(namespaceId, variableId)
     this.formulaNames = this.formulaNames
       .filter(n => !(n.kind === 'Variable' && n.key === key))
-      .concat({ kind: 'Variable', name, value, key, render: renderVariable(variable, []) })
+      .concat({
+        kind: 'Variable',
+        name,
+        render,
+        key,
+        value,
+        prefixLength: exist => (exist ? 0 : variable.namespaceName().length + 1)
+      })
+    this.blocks[namespaceId] = 'Block'
 
     BrickdocEventBus.subscribe(
       FormulaInnerRefresh,

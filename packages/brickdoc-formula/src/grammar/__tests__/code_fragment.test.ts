@@ -61,9 +61,9 @@ const testCases = [
   '= custom::PLUS((custom::FORTY_TWO()), 1 + 1)',
   '= ABS("123")',
   '="FOO".T().T() & "Zzz"',
-  `=#${namespaceId}@${fooVariableId} + 1`,
-  `=#${unknownId}@${fooVariableId} + 2`,
-  `=#${namespaceId}@${unknownId} + 3`
+  `=#${namespaceId}.${fooVariableId} + 1`,
+  `=#${unknownId}.${fooVariableId} + 2`,
+  `=#${namespaceId}.${unknownId} + 3`
 ]
 
 const ctx = {

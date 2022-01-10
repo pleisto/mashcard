@@ -9,7 +9,7 @@ import {
 } from '../controls'
 import { BlockClass } from '../controls/block'
 
-export const castValue = (ctx: FunctionContext, cacheValue: BaseResult): BaseResult => {
+export const dumpValue = (ctx: FunctionContext, cacheValue: BaseResult): BaseResult => {
   if (
     cacheValue.result instanceof ColumnClass ||
     cacheValue.result instanceof BlockClass ||
@@ -65,7 +65,7 @@ export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyType
   }
 
   if (cacheValue.type === 'Block' && !(cacheValue.result instanceof BlockClass)) {
-    const blockResult = new BlockClass(ctx, cacheValue.result)
+    const blockResult = new BlockClass(ctx.formulaContext, cacheValue.result)
     return { type: 'Block', result: blockResult }
   }
 
