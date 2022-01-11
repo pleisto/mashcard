@@ -35,6 +35,7 @@ export const block2completion = (
     kind: 'block',
     weight: weight + 0,
     replacements: [name],
+    positionChange: value.length,
     name,
     namespace: key,
     value,
@@ -61,6 +62,7 @@ export const spreadsheet2completion = (spreadsheet: SpreadsheetType): Spreadshee
     replacements: [spreadsheet.name()],
     weight: 10,
     name: spreadsheet.name(),
+    positionChange: value.length,
     namespace: spreadsheet.blockId,
     value,
     preview: spreadsheet,
@@ -91,6 +93,7 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
     ],
     weight: -3,
     name: column.name,
+    positionChange: value.length,
     namespace: column.spreadsheet.name(),
     value,
     preview: column,
@@ -119,6 +122,7 @@ export const variable2completion = (variable: VariableInterface, weight: number)
     namespace: variable.namespaceName(),
     value,
     preview: variable,
+    positionChange: value.length,
     renderDescription: blockId => (blockId === variable.t.namespaceId ? '' : variable.namespaceName()),
     codeFragment: {
       namespaceId: variable.t.namespaceId,
@@ -135,20 +139,22 @@ export const variable2completion = (variable: VariableInterface, weight: number)
 }
 
 export const function2completion = (functionClause: FunctionClause<any>, weight: number): FunctionCompletion => {
+  const value = `${functionClause.key}()`
   return {
     kind: 'function',
     replacements: [functionClause.name],
     weight,
     name: functionClause.name,
     namespace: functionClause.group,
-    value: functionClause.key,
+    value,
     preview: functionClause,
+    positionChange: value.length - 1,
     renderDescription: blockId => (functionClause.group === 'core' ? '' : functionClause.group),
     codeFragment: {
-      display: () => functionClause.key,
+      display: () => value,
       hidden: false,
       errors: [],
-      name: functionClause.key,
+      name: value,
       code: 'Function',
       spaceBefore: false,
       spaceAfter: false,

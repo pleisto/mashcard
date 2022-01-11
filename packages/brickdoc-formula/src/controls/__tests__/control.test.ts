@@ -157,8 +157,11 @@ describe('Controls', () => {
         if (result === SNAPSHOT_FLAG) {
           const snapshot = variableValue.result
 
-          if (snapshot.result._formulaContext) {
-            expect({ ...snapshot, result: { ...snapshot.result, _formulaContext: '#HIDDEN#' } }).toMatchSnapshot()
+          if ((snapshot.result as any)._formulaContext) {
+            expect({
+              ...snapshot,
+              result: { ...(snapshot.result as any), _formulaContext: '#HIDDEN#' }
+            }).toMatchSnapshot()
           } else {
             expect(variableValue.result).toMatchSnapshot()
           }

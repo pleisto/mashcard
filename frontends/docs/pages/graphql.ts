@@ -49,7 +49,6 @@ export const queryFormulas = gql`
     formulas(webid: $webid) {
       id
       name
-      view
       cacheValue
       blockId
       definition

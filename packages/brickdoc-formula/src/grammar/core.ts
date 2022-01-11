@@ -9,7 +9,6 @@ import {
   VariableKind,
   VariableMetadata,
   VariableValue,
-  View,
   VariableInterface,
   Completion,
   AnyTypeResult,
@@ -386,7 +385,6 @@ export const interpret = async ({ cst, ctx }: { cst: CstNode; ctx: FunctionConte
 export const buildVariable = ({
   formulaContext,
   meta: { name, input, namespaceId, variableId },
-  view,
   parseResult: {
     valid,
     cst,
@@ -403,7 +401,6 @@ export const buildVariable = ({
 }: {
   formulaContext: ContextInterface
   meta: VariableMetadata
-  view: View
   parseResult: ParseResult
   interpretResult: InterpretResult
 }): VariableInterface => {
@@ -412,7 +409,6 @@ export const buildVariable = ({
     variableId,
     name,
     cst,
-    view,
     version: lazy ? -1 : version,
     codeFragments,
     definition: input,

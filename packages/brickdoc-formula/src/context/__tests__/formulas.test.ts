@@ -25,8 +25,7 @@ describe('appendFormulas', () => {
         cacheValue: {
           type: 'number',
           result: 123
-        },
-        view: {}
+        }
       }
     ]
 
@@ -66,8 +65,7 @@ describe('appendFormulas', () => {
         cacheValue: {
           type: 'number',
           result: 123
-        },
-        view: {}
+        }
       },
       {
         name: 'bar',
@@ -81,8 +79,7 @@ describe('appendFormulas', () => {
         cacheValue: {
           type: 'number',
           result: 456
-        },
-        view: {}
+        }
       }
     ]
 
@@ -123,8 +120,7 @@ describe('appendFormulas', () => {
         cacheValue: {
           type: 'number',
           result: 456
-        },
-        view: {}
+        }
       }
     ]
 
@@ -161,8 +157,7 @@ describe('appendFormulas', () => {
         cacheValue: {
           type: 'number',
           result: 123
-        },
-        view: {}
+        }
       }
     ]
 

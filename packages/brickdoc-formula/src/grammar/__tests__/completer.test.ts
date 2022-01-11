@@ -159,7 +159,7 @@ describe('Complete', () => {
       input: `= 1 + ${testName1}.`,
       namespaceId,
       errorMessage: 'Missing expression',
-      weight: 125,
+      weight: 250,
       expectParseImage: `=1+#${namespaceId}.${variableId}.`,
       expectInputImage: `=1+#${namespaceId}.${variableId}.`,
       expectNewInput: `=1+#${namespaceId}.${variableId}.`
@@ -169,7 +169,7 @@ describe('Complete', () => {
       input: `= 1 + ${testName1}.`,
       namespaceId: testNamespaceId,
       errorMessage: 'Missing expression',
-      weight: 125,
+      weight: 250,
       expectParseImage: `=1+#${namespaceId}.${variableId}.`,
       expectInputImage: `=1+#${namespaceId}.${variableId}.`,
       expectNewInput: `=1+#${namespaceId}.${variableId}.`

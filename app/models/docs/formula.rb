@@ -30,6 +30,8 @@ class Docs::Formula < ApplicationRecord
   belongs_to :block, class_name: 'Docs::Block'
   belongs_to :pod, optional: true
 
+  # TODO: remove view field
+
   before_create do
     self.pod_id = block.pod_id
   end

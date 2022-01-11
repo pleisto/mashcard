@@ -29,7 +29,8 @@ import {
   AnyTypeResult,
   FunctionContext,
   BlockCompletion,
-  BlockFormulaName
+  BlockFormulaName,
+  SpreadsheetResult
 } from '../types'
 import {
   function2completion,
@@ -223,11 +224,10 @@ export class FormulaContext implements ContextInterface {
         return v.t.variableValue.result.type === 'Spreadsheet' && v.t.variableValue.result.result.dynamic
       })
       .flatMap(([key, v]) => {
-        return v.t.variableValue.result.result
+        const result = v.t.variableValue.result as SpreadsheetResult
+        return result.result
           .listColumns()
-          .map((column: ColumnInitializer) =>
-            column2completion({ ...column, spreadsheet: v.t.variableValue.result.result })
-          )
+          .map((column: ColumnInitializer) => column2completion({ ...column, spreadsheet: result.result }))
       })
     return [...functions, ...variables, ...blocks, ...spreadsheets, ...columns, ...dynamicColumns].sort(
       (a, b) => b.weight - a.weight

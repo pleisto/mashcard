@@ -70,7 +70,7 @@ export const positionBasedContentArrayToInput = (
     }
   })
 
-  console.log({ prevTexts, nextTexts, input, position, content })
+  // console.log({ prevTexts, nextTexts, input, position, content })
   return { prevText: prevTexts.join(''), nextText: nextTexts.join('') }
 }
 

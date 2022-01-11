@@ -11,8 +11,7 @@ import {
   InterpretResult,
   parse,
   ParseResult,
-  VariableInterface,
-  View
+  VariableInterface
 } from '@brickdoc/formula'
 import { v4 as uuid } from 'uuid'
 import { useEditorI18n } from '../../hooks'
@@ -68,7 +67,6 @@ const calculate = async ({
 }> => {
   const variableId = variable ? variable.t.variableId : uuid()
   const meta = { namespaceId, variableId, name, input }
-  const view: View = {}
   const ctx = {
     formulaContext,
     meta,
@@ -114,7 +112,7 @@ const calculate = async ({
     }
   }
 
-  const newVariable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
+  const newVariable = buildVariable({ formulaContext, meta, parseResult, interpretResult })
 
   return {
     newPosition: parseResult.position,
@@ -241,7 +239,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     }
 
     let oldContent = fetchJSONContentArray(currentContent)
-    let positionChange: number = currentCompletion.codeFragment.name.length
+    let positionChange: number = currentCompletion.positionChange
     const oldContentLast = oldContent[oldContent.length - 1]
     const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, latestPosition.current)
 
@@ -252,6 +250,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     //   currentPosition: latestPosition.current,
     //   position,
     //   nextText,
+    //   positionChange,
     //   currentCompletion
     // })
 
@@ -308,9 +307,17 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     const finalContent = buildJSONContentByArray(newContent)
     const finalInput = `=${contentArrayToInput(fetchJSONContentArray(finalContent))}`
     setContent(finalContent)
-    setPosition(position + positionChange)
+    const newPosition = latestPosition.current + positionChange
+    setPosition(newPosition)
+    // latestSetPosition.current(newPosition)
     setInput(finalInput)
-    console.log('selectCompletion', { currentCompletion, content, newContent, finalInput })
+    console.log('selectCompletion', {
+      currentCompletion,
+      newPosition,
+      content,
+      newContent,
+      finalInput
+    })
     void doCalculate({ newInput: finalInput })
   }
 

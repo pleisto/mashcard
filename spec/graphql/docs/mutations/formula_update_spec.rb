@@ -28,7 +28,7 @@ describe Docs::Mutations::FormulaUpdate, type: :mutation do
       new_name = "formula update name"
 
       input = { input: {
-        dependencyIds: [], view: {},
+        dependencyIds: [],
         id: formula.id,
         blockId: block.id,
         name: new_name,

@@ -100,7 +100,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -215,7 +214,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -290,7 +288,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -420,7 +417,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -546,7 +542,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -727,7 +722,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -861,7 +855,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
 ]
 `;
@@ -962,7 +955,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [],
@@ -1003,7 +995,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -1078,7 +1069,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -1208,7 +1198,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -1334,7 +1323,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -1515,7 +1503,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
   Object {
     "blockDependencies": Array [
@@ -1649,7 +1636,6 @@ Array [
       "updatedAt": null,
     },
     "version": 0,
-    "view": Object {},
   },
 ]
 `;

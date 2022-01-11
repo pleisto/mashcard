@@ -1,4 +1,4 @@
-import { VariableData, View, FunctionContext } from '../types'
+import { VariableData, FunctionContext } from '../types'
 import { VariableClass } from '../context/variable'
 import { interpret, parse } from './core'
 
@@ -7,8 +7,6 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
     formulaContext,
     meta: { namespaceId, variableId, name, input }
   } = ctx
-  const view: View = {}
-
   const {
     success,
     cst,
@@ -35,7 +33,6 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
     name,
     dirty: false,
     valid: true,
-    view,
     definition: input,
     cst,
     version: lazy ? -1 : version,

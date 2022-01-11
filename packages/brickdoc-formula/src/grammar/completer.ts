@@ -57,7 +57,6 @@ export const complete = ({
         return c.kind === 'function' && c.preview.chain
           ? {
               ...c,
-              value: `${c.value}()`,
               weight: matchTypeWeight(last2CodeFragment.type, c.preview.args[0].type, c.weight)
             }
           : c

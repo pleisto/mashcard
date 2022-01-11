@@ -87,7 +87,6 @@ describe('Dependency', () => {
     const meta = { namespaceId, variableId: variableIds[1], name: 'num1', input }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } }) as SuccessParseResult
     expect(parseResult.errorMessages).toEqual([])
-    const view = {}
     const interpretResult = await interpret({
       cst: parseResult.cst,
       ctx: {
@@ -98,7 +97,7 @@ describe('Dependency', () => {
     })
     expect(interpretResult.variableValue.success).toEqual(true)
 
-    const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
+    const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult })
     await formulaContext.commitVariable({ variable })
 
     // TODO automatic update dependency

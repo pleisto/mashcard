@@ -14,6 +14,7 @@ import { CORE_CONTROL_CLAUSES } from './control'
 import { CORE_CORE_CLAUSES } from './core'
 import { CORE_CONVERT_CLAUSES } from './convert'
 import { CORE_ARRAY_CLAUSES } from './array'
+import { CUSTOM_CLAUSES } from './custom'
 
 export const buildFunctionKey = (group: FunctionGroup, name: FunctionNameType): FunctionKey => {
   if (group === 'core') {
@@ -37,5 +38,6 @@ export const BUILTIN_CLAUSES: Array<BasicFunctionClause<any>> = [
   ...CORE_CONTROL_CLAUSES,
   ...CORE_CORE_CLAUSES,
   ...CORE_CONVERT_CLAUSES,
-  ...CORE_ARRAY_CLAUSES
+  ...CORE_ARRAY_CLAUSES,
+  ...CUSTOM_CLAUSES
 ]

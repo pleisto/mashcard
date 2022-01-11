@@ -9,7 +9,6 @@ describe Docs::Queries::Formulas, type: :query do
         formulas(webid: $webid) {
           id
           name
-          view
           cacheValue
           blockId
           definition
@@ -38,7 +37,6 @@ describe Docs::Queries::Formulas, type: :query do
         'id' => formula.id,
         'blockId' => formula.block_id,
         'name' => formula.name,
-        'view' => formula.view,
         'definition' => formula.definition,
         'dependencyIds' => formula.dependency_ids,
         'cacheValue' => formula.cache_value

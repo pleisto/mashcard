@@ -60,7 +60,7 @@ export const CORE_TEXT_CLAUSES: Array<BasicFunctionClause<'string' | 'number'>> 
         output: 'abc'
       }
     ],
-    chain: false,
+    chain: true,
     reference: TRIM
   }
 ]

@@ -26,8 +26,7 @@ describe('Context', () => {
       cacheValue: {
         type: 'number',
         result: 123
-      },
-      view: {}
+      }
     },
     {
       name: 'bar',
@@ -41,8 +40,7 @@ describe('Context', () => {
       cacheValue: {
         type: 'number',
         result: 243
-      },
-      view: {}
+      }
     }
   ]
 
@@ -130,7 +128,6 @@ describe('Context', () => {
     const name = 'baz'
     const input = `=#${fooNamespaceId}.${fooVariableId} + #${barNamespaceId}.${barVariableId}`
     const meta = { namespaceId, variableId, name, input }
-    const view = {}
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 
@@ -147,7 +144,7 @@ describe('Context', () => {
 
     expect(interpretResult.variableValue.success).toEqual(true)
 
-    const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult, view })
+    const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult })
 
     await formulaContext.commitVariable({ variable })
 

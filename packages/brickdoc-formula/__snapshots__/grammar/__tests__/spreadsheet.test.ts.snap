@@ -3745,6 +3745,7 @@ Object {
   "kind": "spreadsheet",
   "name": "MySpreadsheet",
   "namespace": "28e28190-63bd-4f70-aeca-26e72574c01a",
+  "positionChange": 37,
   "preview": SpreadsheetClass {
     "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "dynamic": false,
@@ -3768,7 +3769,7 @@ Object {
     "display": [Function],
     "errors": Array [],
     "hidden": false,
-    "name": "SUM",
+    "name": "SUM()",
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -3776,6 +3777,7 @@ Object {
   "kind": "function",
   "name": "SUM",
   "namespace": "core",
+  "positionChange": 4,
   "preview": Object {
     "acceptError": false,
     "args": Array [
@@ -3843,6 +3845,7 @@ Object {
   "kind": "column",
   "name": "first",
   "namespace": "MySpreadsheet",
+  "positionChange": 74,
   "preview": Object {
     "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "index": 0,
@@ -3881,7 +3884,7 @@ Object {
     "display": [Function],
     "errors": Array [],
     "hidden": false,
-    "name": "COLUMN_COUNT",
+    "name": "COLUMN_COUNT()",
     "spaceAfter": false,
     "spaceBefore": false,
     "type": "any",
@@ -3889,6 +3892,7 @@ Object {
   "kind": "function",
   "name": "COLUMN_COUNT",
   "namespace": "core",
+  "positionChange": 13,
   "preview": Object {
     "acceptError": false,
     "args": Array [

@@ -5,7 +5,6 @@ module Docs
     argument :id, BrickGraphQL::Scalars::UUID, 'id', required: true
     argument :name, String, 'name', required: true
     argument :definition, String, 'definition', required: true
-    argument :view, GraphQL::Types::JSON, 'view', required: false
     argument :dependency_ids, [BrickGraphQL::Scalars::UUID], 'dependencies', required: true
     argument :cache_value, GraphQL::Types::JSON, 'dump value', required: false
     argument :version, Integer, 'version', required: false

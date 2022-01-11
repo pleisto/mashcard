@@ -60,7 +60,7 @@ export const displayValue = (v: AnyTypeResult): string => {
 
 export const castVariable = (
   formulaContext: ContextInterface,
-  { name, definition, cacheValue, version, blockId, id, view }: Formula
+  { name, definition, cacheValue, version, blockId, id }: Formula
 ): VariableData => {
   const namespaceId = blockId
   const variableId = id
@@ -101,7 +101,6 @@ export const castVariable = (
     variableValue,
     name,
     cst,
-    view,
     valid,
     version,
     definition,
@@ -168,7 +167,6 @@ export class VariableClass implements VariableInterface {
       // updatedAt: new Date().toISOString(),
       // createdAt: new Date().getTime(),
       cacheValue: dumpValue(ctx, this.t.variableValue.cacheValue),
-      view: this.t.view,
       dependencyIds: this.t.variableDependencies.map(dependency => dependency.variableId)
     }
   }

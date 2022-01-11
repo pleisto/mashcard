@@ -6,7 +6,16 @@ import { BlockContainer, FormulaMenu } from '../../../components'
 import { COLOR } from '../../../helpers/color'
 import './FormulaBlock.less'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
-import { SpreadsheetType, displayValue, FormulaType, VariableClass, VariableInterface } from '@brickdoc/formula'
+import {
+  displayValue,
+  FormulaType,
+  VariableClass,
+  VariableInterface,
+  ButtonResult,
+  InputResult,
+  SpreadsheetResult,
+  StringResult
+} from '@brickdoc/formula'
 import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
 import { TableRender } from '../../../components/Table/TableRender'
 import { useEditorI18n } from '../../../hooks'
@@ -93,8 +102,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     }
   }
 
-  const renderTable = (result: SpreadsheetType): React.ReactNode => {
-    const columns: Column[] = result.listColumns().map(c => ({
+  const renderTable = (result: SpreadsheetResult): React.ReactNode => {
+    const columns: Column[] = result.result.listColumns().map(c => ({
       Header: c.name,
       accessor: c.columnId,
       columnType: c.type,
@@ -105,9 +114,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
 
     const fakeColumns = [{ id: DEFAULT_GROUP_ID, columns }] as unknown as Column[]
 
-    const rows: DatabaseRows = result.listRows()
+    const rows: DatabaseRows = result.result.listRows()
 
-    const databaseColumns: DatabaseColumns = result.listColumns().map(c => ({
+    const databaseColumns: DatabaseColumns = result.result.listColumns().map(c => ({
       index: c.index,
       key: c.columnId,
       type: c.type,
@@ -148,9 +157,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         ]}
         deleteNode={handleDelete}
         updateAttributes={(attributes: Record<string, any>) => {}}
-        parentId={result.blockId}
+        parentId={result.result.blockId}
         prevData={{
-          title: result.name(),
+          title: result.result.name(),
           columns: databaseColumns
         }}
       />
@@ -179,27 +188,39 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     )
   }
 
+  const renderButton = (result: ButtonResult): React.ReactNode => {
+    return (
+      <Button disabled={result.result.disabled} onClick={result.result.onClick}>
+        {result.result.name}
+      </Button>
+    )
+  }
+
+  const renderInput = (result: InputResult): React.ReactNode => {
+    return (
+      <Input
+        disabled={result.result.disabled}
+        onChange={e => result.result.onChange?.(e.target.value)}
+        value={result.result.value}
+      />
+    )
+  }
+
+  const renderQrcode = (result: StringResult): React.ReactNode => {
+    return <span>[QRCODE] {result.result}</span>
+  }
+
   const renderVariable = (variable: VariableInterface | undefined): React.ReactNode => {
     if (!variable) return renderEmpty()
     if (variable.isDraft()) return renderEmpty()
 
     const result = variable.t.variableValue.result
 
-    switch (result.type) {
+    switch (result.view?.type || result.type) {
       case 'Button':
-        return (
-          <Button disabled={result.result.disabled} onClick={result.result.onClick}>
-            {result.result.name}
-          </Button>
-        )
+        return renderButton(result as ButtonResult)
       case 'Input':
-        return (
-          <Input
-            disabled={result.result.disabled}
-            onChange={e => result.result.onChange?.(e.target.value)}
-            value={result.result.value}
-          />
-        )
+        return renderInput(result as InputResult)
       case 'Switch':
         return (
           <span>Unsupported Switch</span>
@@ -221,7 +242,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
           // />
         )
       case 'Spreadsheet':
-        return renderTable(result.result)
+        return renderTable(result as SpreadsheetResult)
+      case 'Qrcode':
+        return renderQrcode(result as StringResult)
       default:
         return renderOther(variable)
     }
