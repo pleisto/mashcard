@@ -43,6 +43,7 @@
     "@tiptap/suggestion": "^2.0.0-beta.86",
     "dayjs": "^1.10.7",
     "highlight.js": "^11.4.0",
+    "popper-max-size-modifier": "^0.2.0",
     "re-resizable": "^6.9.1",
     "react-dnd": "^14.0.5",
     "react-dnd-html5-backend": "^14.1.0",

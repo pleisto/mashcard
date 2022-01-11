@@ -104,7 +104,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
                 editor: props.editor as ReactEditor
               })
 
-              popup = createPopup(props.clientRect!, reactRenderer.element, 'bottom-start')
+              popup = createPopup(props.clientRect!, reactRenderer.element as HTMLElement, 'bottom-start')
             },
             onUpdate: props => {
               if (!this.editor.isEditable) return

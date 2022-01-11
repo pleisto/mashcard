@@ -24,3 +24,29 @@ export const FormulaInnerRefresh = event<{ namespaceId: string; variableId: stri
 export const FormulaUpdated = event<any>()('FormulaUpdated', v => {
   return { id: `${v.t.namespaceId},${v.t.variableId}` }
 })
+
+export const SlashMenuHide = event<void>()('SlashMenuHide')
+
+export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenuKeyboardEventTrigger', ({ key }) => {
+  return { key }
+})
+
+export interface ExplorerMenuItem {
+  label: React.ReactElement
+  labelText: string
+  icon: React.ReactNode
+  onAction?: () => void
+  items?: ExplorerMenuItem[]
+}
+
+export interface ExplorerMenuGroup {
+  label: React.ReactNode
+  items: ExplorerMenuItem[]
+}
+
+export const ExplorerMenuTrigger = event<{ items?: ExplorerMenuGroup[]; visible: boolean }>()(
+  'ExplorerMenuTrigger',
+  ({ visible, items }) => {
+    return { visible, items }
+  }
+)

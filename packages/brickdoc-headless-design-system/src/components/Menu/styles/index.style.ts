@@ -1,8 +1,8 @@
 import { theme, css } from '../../../themes'
 
-export const itemSpacing = '.75rem'
-export const itemMinHeight = '2rem'
-const itemLineHeight = '1.25rem'
+export const itemSpacing = '1.25rem'
+export const itemMinHeight = '2.5rem'
+const itemLineHeight = '1.375rem'
 
 const danger = {
   color: theme.colors.errorDefault

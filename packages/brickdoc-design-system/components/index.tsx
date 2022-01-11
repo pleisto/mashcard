@@ -58,6 +58,7 @@ export type { InputProps } from './input'
 export { default as Input } from './input'
 
 import * as Icon from './icon'
+export type { IconProps } from './icon'
 export { Icon }
 
 /*
@@ -76,7 +77,7 @@ export { default as List } from './list'
 // export { default as message } from './message'
 
 export type { MenuProps, MenuGroupProps, MenuSeparatorProps, MenuItemProps } from './menu'
-export { Menu } from './menu'
+export { Menu, menuItemSpacing } from './menu'
 
 export type { ModalProps, ModalFuncProps } from './modal'
 export { default as Modal } from './modal'

@@ -28,7 +28,7 @@ describe('slashCommands', () => {
   })
 
   it('filters menu items by pressing arrow up/down', () => {
-    cy.get('[contenteditable]').slashCommand('{downArrow}{upArrow}{enter}h1')
-    cy.get('.ProseMirror > h1').should('contain.text', 'h1')
+    cy.get('[contenteditable]').slashCommand('h{downArrow}{downArrow}{upArrow}{enter}h2')
+    cy.get('.ProseMirror > h2').should('contain.text', 'h2')
   })
 })

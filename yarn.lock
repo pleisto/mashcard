@@ -1868,6 +1868,7 @@ __metadata:
     dayjs: ^1.10.7
     highlight.js: ^11.4.0
     i18next: ^21.6.5
+    popper-max-size-modifier: ^0.2.0
     re-resizable: ^6.9.1
     react: ^17.0.2
     react-dnd: ^14.0.5
@@ -20218,6 +20219,15 @@ __metadata:
     style-value-types: 5.0.0
     tslib: ^2.1.0
   checksum: 9fe7d03b4ec0e85bfb9dadc23b745147bfe42e16f466ba06e6327197d0e38b72015afc2f918a8051dedc3680310417f346ffdc463be6518e2e92e98f48e30268
+  languageName: node
+  linkType: hard
+
+"popper-max-size-modifier@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "popper-max-size-modifier@npm:0.2.0"
+  peerDependencies:
+    "@popperjs/core": ^2.2.0
+  checksum: dfff7f91bd584393ef4416399377f5e2e9f7ffd458e176e85dfffa0951dd01eb923c8afb178061833a6c9598c7f0c6fc4693b43daa61423e7eb33247bb94ceb1
   languageName: node
   linkType: hard
 

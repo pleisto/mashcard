@@ -58,7 +58,7 @@ Cypress.Commands.add('slashCommand', (command: string) => {
 
 Cypress.Commands.add('addBlock', (blockName: string) => {
   cy.get('[contenteditable]').type(`/${blockName}`)
-  cy.findByTestId(TEST_ID_ENUM.editor.slashCommands.item.id).click()
+  cy.findAllByTestId(TEST_ID_ENUM.editor.slashCommands.item.id).first().click()
 })
 
 Cypress.Commands.add('waitForResources', (...args) => {
@@ -74,10 +74,10 @@ Cypress.Commands.add('waitForResources', (...args) => {
   const { isPlainObject, last } = Cypress._
 
   if (isPlainObject(last(args))) {
-    names = args.slice(0, args.length - 1)
-    options = last(args)
+    names = args.slice(0, args.length - 1) as string[]
+    options = last(args) as typeof options
   } else {
-    names = args
+    names = args as string[]
     options = {}
   }
 

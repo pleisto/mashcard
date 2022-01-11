@@ -25,7 +25,7 @@ const menuItemStyles = css({
   display: 'flex',
   flexDirection: 'row',
   fontSize: theme.fontSizes.subHeadline,
-  fontWeight: 500,
+  fontWeight: 'normal',
   lineHeight: itemLineHeight,
   minHeight: itemMinHeight,
   minWidth: '15rem',
@@ -55,13 +55,6 @@ const menuItemStyles = css({
   }
 })
 
-const ItemContent = styled('div', {
-  alignItems: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  width: '100%'
-})
-
 const ItemIcon = styled('span', {
   include: ['flexCenter'],
 
@@ -69,7 +62,14 @@ const ItemIcon = styled('span', {
   display: 'flex',
   height: itemLineHeight,
   itemLineHeight,
-  marginRight: theme.space.xs
+  marginRight: '.5375rem'
+})
+
+const ItemContent = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%'
 })
 
 const ItemMain = styled('div', {

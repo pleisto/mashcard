@@ -67,11 +67,11 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
           type: 'dropdown',
           name: 'node',
           label: t(`bubble_menu.node.items.${nodeKey ?? 'paragraph'}`),
-          tooltip: t('bubble_menu.node.Group_title') as string,
+          tooltip: t('bubble_menu.node.section_title') as string,
           items: [
             {
               type: 'group',
-              title: t('bubble_menu.node.Group_title'),
+              title: t('bubble_menu.node.section_title'),
               items: nodeItems.map(item => ({
                 type: 'item',
                 name: item.name,

@@ -741,6 +741,10 @@ en-US:
           button_hint: 'Recommended image size: wider than 1500 pixels'
           button_text: Choose an image
           type_label: Upload an Image
+    explorer_menu:
+      title: Explore
+      search:
+        placeholder: Search
   editor:
     placeholder: Type '/' for commands
     copy_hint: Copied to clipboard.
@@ -755,57 +759,56 @@ en-US:
         duplicate: Duplicate
         delete: Delete
       more: More
-    slashmenu:
-      heading: Brickdoc
+    slash_menu:
+      title: Slash menu
+      recent: Recently used
+      type: Type
+      suggestion: Suggestions
+      no_suggestion: No result
+      footer: Explore
+      explorer_menu:
+        group:
+          data:
+            label: Data
+          embed:
+            label: Embed
+          text:
+            label: Text
+          others:
+            label: Others
       items:
         h1:
-          title: Heading 1
-          desc: First Level of Heading
+          label: Heading 1
         h2:
-          title: Heading 2
-          desc: Second Level of Heading
+          label: Heading 2
         h3:
-          title: Heading 3
-          desc: Third Level of Heading
+          label: Heading 3
         h4:
-          title: Heading 4
-          desc: Fourth Level of Heading
+          label: Heading 4
         h5:
-          title: Heading 5
-          desc: Fifth Level of Heading
-        bulletlist:
-          title: Bulleted List
-          desc: Create a bulleted list
-        orderedlist:
-          title: Numbered List
-          desc: Create a list with numbering
-        pdf:
-          title: PDF
-          desc: Embed a PDF
-        embed:
-          title: Embed
-          desc: PDF、Word、PPT、Excel and more.
-        image:
-          title: Image
-          desc: Upload or embed with a link
-        table:
-          title: Table
-          desc: Create a table
+          label: Heading 5
+        bulletedList:
+          label: Bulleted List
+        orderedList:
+          label: Numbered List
+        webBookmark:
+          label: Web Bookmark
+        upload:
+          label: Upload
+        spreadsheet:
+          label: Spreadsheet
         formula:
-          title: Formula
-          desc: Create a formula
+          label: Formula
         divider:
-          title: Divider
-          desc: Visually divide blocks
+          label: Divider
         toc:
-          title: Toc
-          desc: Table of content
+          label: Toc
         subPageMenu:
-          title: Subpage menu
-          desc: Table of subpages
+          label: Subpage menu
         code:
-          title: Code
-          desc: Capture a code snippet
+          label: Code
+        explore:
+          label: Explore
     bubble_menu:
       node:
         section_title: Turns into

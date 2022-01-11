@@ -1,10 +1,11 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { useReactiveVar } from '@apollo/client'
+import { styled } from '@brickdoc/design-system'
 import { useDocsI18n } from '@/docs/common/hooks'
 import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
-import { styled } from '@brickdoc/design-system'
-import { useReactiveVar } from '@apollo/client'
-import { Outlet } from 'react-router-dom'
+import { ExplorerMenu } from '@/common/components'
 import { base } from './index.style'
 
 const Layout = styled('div', {
@@ -27,7 +28,9 @@ export const SidebarLayoutPage: React.FC = () => {
             <Outlet />
           </article>
         </main>
-        <aside>&nbsp;&nbsp;</aside>
+        <aside>
+          <ExplorerMenu />
+        </aside>
       </Layout>
     </>
   )

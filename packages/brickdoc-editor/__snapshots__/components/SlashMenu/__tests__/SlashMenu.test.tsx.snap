@@ -1,98 +1,211 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SlashMenu matches correct snapshot 1`] = `
-<div
-  class="brickdoc-slash-menu"
-  role="menu"
+<ul
+  aria-label="slash_menu.title"
+  aria-orientation="vertical"
+  class="brd-c-jhHXSA brd-c-jhHXSA-iTKOFX-orientation-vertical brd-c-dLLhok brd-c-dLLhok-iAMRjR-withFooter-true"
+  id="slash-menu"
+  role="menubar"
 >
-  <div
-    class="slash-menu-heading"
+  <ul
+    class="brd-c-jpGEAj"
+    label="[object Object]"
+    role="group"
+    title="slash_menu.recent"
   >
-    slashmenu.heading
-  </div>
-  <button
-    class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-lKjfQ-size-medium slash-menu-item"
-    data-testid="editor-slash-commands-item"
-    role="menuitem"
-    type="button"
+    <span
+      aria-label="slash_menu.recent"
+      class="brd-c-kubJPX"
+    >
+      <span
+        class="brd-c-emmNGU"
+      >
+        slash_menu.recent
+      </span>
+    </span>
+    <ul
+      class="brd-c-jpGEAj brd-c-fMsrTz"
+      role="group"
+      title=""
+    >
+      <li
+        class="brd-c-jjBbCK brd-c-jjBbCK-hlsvbV-active-true brd-c-jIhtkb"
+        data-testid="editor-slash-commands-item"
+        id="slash-menu-1"
+        role="menuitem"
+        tabindex="0"
+        title=""
+      >
+        <span
+          class="brd-c-dKhCQi"
+        >
+          <div>
+            icon
+          </div>
+        </span>
+      </li>
+      <li
+        class="brd-c-jjBbCK brd-c-jIhtkb"
+        data-testid="editor-slash-commands-item"
+        id="slash-menu-2"
+        role="menuitem"
+        tabindex="-1"
+        title=""
+      >
+        <span
+          class="brd-c-dKhCQi"
+        >
+          <div>
+            icon
+          </div>
+        </span>
+      </li>
+      <li
+        class="brd-c-jjBbCK brd-c-jIhtkb"
+        data-testid="editor-slash-commands-item"
+        id="slash-menu-3"
+        role="menuitem"
+        tabindex="-1"
+        title=""
+      >
+        <span
+          class="brd-c-dKhCQi"
+        >
+          <div>
+            icon
+          </div>
+        </span>
+      </li>
+    </ul>
+  </ul>
+  <ul
+    class="brd-c-jpGEAj"
+    label="[object Object]"
+    role="group"
+    title="slash_menu.type"
   >
-    <div
-      class="menu-item-icon-wrapper"
+    <span
+      aria-label="slash_menu.type"
+      class="brd-c-kubJPX"
     >
-      <div>
-        icon
-      </div>
-    </div>
-    <div
-      class="menu-item-content"
-    >
-      <div
-        class="menu-item-title"
+      <span
+        class="brd-c-emmNGU"
       >
-        slashmenu.items.h1.title
-      </div>
-      <div
-        class="menu-item-desc"
-      >
-        slashmenu.items.h1.desc
-      </div>
-    </div>
-  </button>
-  <button
-    class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-lKjfQ-size-medium slash-menu-item"
-    data-testid="editor-slash-commands-item"
-    role="menuitem"
-    type="button"
-  >
-    <div
-      class="menu-item-icon-wrapper"
-    >
-      <div>
-        icon
-      </div>
-    </div>
-    <div
-      class="menu-item-content"
+        slash_menu.type
+      </span>
+    </span>
+    <li
+      class="brd-c-jjBbCK"
+      data-testid="editor-slash-commands-item"
+      id="slash-menu-4"
+      label="slash_menu.items.h1.label"
+      role="menuitem"
+      tabindex="-1"
+      title="slash_menu.items.h1.label"
     >
       <div
-        class="menu-item-title"
+        class="brd-c-fcAYuy"
       >
-        slashmenu.items.h2.title
+        <span
+          class="brd-c-OVPdU"
+        >
+          <span
+            class="brd-c-mEQdo"
+          >
+            <div>
+              icon
+            </div>
+          </span>
+        </span>
+        <div
+          class="brd-c-fNvXDc"
+        >
+          <span
+            aria-label="slash_menu.items.h1.label"
+            class="brd-c-PJLV"
+          >
+            <span>
+              slash_menu.items.h1.label
+            </span>
+          </span>
+        </div>
       </div>
-      <div
-        class="menu-item-desc"
-      >
-        slashmenu.items.h2.desc
-      </div>
-    </div>
-  </button>
-  <button
-    class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-lKjfQ-size-medium slash-menu-item"
-    data-testid="editor-slash-commands-item"
-    role="menuitem"
-    type="button"
-  >
-    <div
-      class="menu-item-icon-wrapper"
+    </li>
+    <li
+      class="brd-c-jjBbCK"
+      data-testid="editor-slash-commands-item"
+      id="slash-menu-5"
+      label="slash_menu.items.h2.label"
+      role="menuitem"
+      tabindex="-1"
+      title="slash_menu.items.h2.label"
     >
-      <div>
-        icon
+      <div
+        class="brd-c-fcAYuy"
+      >
+        <span
+          class="brd-c-OVPdU"
+        >
+          <span
+            class="brd-c-mEQdo"
+          >
+            <div>
+              icon
+            </div>
+          </span>
+        </span>
+        <div
+          class="brd-c-fNvXDc"
+        >
+          <span
+            aria-label="slash_menu.items.h2.label"
+            class="brd-c-PJLV"
+          >
+            <span>
+              slash_menu.items.h2.label
+            </span>
+          </span>
+        </div>
       </div>
-    </div>
-    <div
-      class="menu-item-content"
+    </li>
+    <li
+      class="brd-c-jjBbCK"
+      data-testid="editor-slash-commands-item"
+      id="slash-menu-6"
+      label="slash_menu.items.h3.label"
+      role="menuitem"
+      tabindex="-1"
+      title="slash_menu.items.h3.label"
     >
       <div
-        class="menu-item-title"
+        class="brd-c-fcAYuy"
       >
-        slashmenu.items.h3.title
+        <span
+          class="brd-c-OVPdU"
+        >
+          <span
+            class="brd-c-mEQdo"
+          >
+            <div>
+              icon
+            </div>
+          </span>
+        </span>
+        <div
+          class="brd-c-fNvXDc"
+        >
+          <span
+            aria-label="slash_menu.items.h3.label"
+            class="brd-c-PJLV"
+          >
+            <span>
+              slash_menu.items.h3.label
+            </span>
+          </span>
+        </div>
       </div>
-      <div
-        class="menu-item-desc"
-      >
-        slashmenu.items.h3.desc
-      </div>
-    </div>
-  </button>
-</div>
+    </li>
+  </ul>
+</ul>
 `;

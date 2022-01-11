@@ -17,37 +17,37 @@ export default IconWrapper('mindmap-list', false, (props: ISvgIconProps) => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M12 12C12 11.4477 12.4477 11 13 11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H13C12.4477 13 12 12.5523 12 12Z"
-      fill="currentColor"
+      fill={props.colors[0]}
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M6 12C6 11.4477 6.44772 11 7 11H9C9.55228 11 10 11.4477 10 12C10 12.5523 9.55228 13 9 13H7C6.44772 13 6 12.5523 6 12Z"
-      fill="currentColor"
+      fill={props.colors[0]}
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M8 19C8 18.4477 8.44772 18 9 18H22C22.5523 18 23 18.4477 23 19C23 19.5523 22.5523 20 22 20H9C8.44772 20 8 19.5523 8 19Z"
-      fill="currentColor"
+      fill={props.colors[0]}
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M2 19C2 18.4477 2.44772 18 3 18H5C5.55228 18 6 18.4477 6 19C6 19.5523 5.55228 20 5 20H3C2.44772 20 2 19.5523 2 19Z"
-      fill="currentColor"
+      fill={props.colors[0]}
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M8 5C8 4.44772 8.44772 4 9 4H22C22.5523 4 23 4.44772 23 5C23 5.55228 22.5523 6 22 6H9C8.44772 6 8 5.55228 8 5Z"
-      fill="currentColor"
+      fill={props.colors[0]}
     />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M2 5C2 4.44772 2.44772 4 3 4H5C5.55228 4 6 4.44772 6 5C6 5.55228 5.55228 6 5 6H3C2.44772 6 2 5.55228 2 5Z"
-      fill="currentColor"
+      fill={props.colors[0]}
     />
   </svg>
 ))

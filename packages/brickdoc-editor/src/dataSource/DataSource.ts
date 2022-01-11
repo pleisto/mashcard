@@ -2,7 +2,7 @@ import React from 'react'
 import { ContextInterface } from '@brickdoc/formula'
 import { DashboardPluginOptions } from '@brickdoc/uploader'
 import { DatabaseRow, DatabaseRows } from '../extensions/table'
-import { BlockInput } from '@brickdoc/schema'
+import { BlockInput, BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuTrigger } from '@brickdoc/schema'
 
 export interface WebsiteMeta {
   url: string
@@ -52,6 +52,11 @@ export interface EditorDatabase {
 
   formulaContext?: ContextInterface | null
 
+  explorerMenu: {
+    show: (items: ExplorerMenuGroup[]) => void
+    hide: () => void
+  }
+
   blobs: {
     [blockKey: string]: Array<{
       key: string
@@ -87,6 +92,14 @@ export class EditorDataSource {
     blobs: {},
     collaborators: [],
     documentPages: [],
+    explorerMenu: {
+      show: (items: ExplorerMenuGroup[]) => {
+        BrickdocEventBus.dispatch(ExplorerMenuTrigger({ visible: true, items }))
+      },
+      hide: () => {
+        BrickdocEventBus.dispatch(ExplorerMenuTrigger({ visible: false }))
+      }
+    },
     renderPageTree() {
       return null
     },
@@ -177,6 +190,10 @@ export class EditorDataSource {
   set rootId(value: EditorDatabase['rootId']) {
     this.database.rootId = value
     this.invokeListeners('rootId')
+  }
+
+  get explorerMenu(): EditorDatabase['explorerMenu'] {
+    return this.database.explorerMenu
   }
 
   get documentEditable(): EditorDatabase['documentEditable'] {

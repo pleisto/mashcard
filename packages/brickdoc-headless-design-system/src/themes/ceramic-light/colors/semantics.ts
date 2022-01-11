@@ -14,7 +14,7 @@ export const Semantics = {
    * Type
    */
   typePrimary: Palettes.deepPurple7,
-  typeSecondary: Palettes.deepPurple6,
+  typeSecondary: Palettes.deepPurple5,
   typeThirdary: Palettes.deepPurple4,
   typeDisabled: Palettes.deepPurple3,
 
@@ -22,7 +22,7 @@ export const Semantics = {
    * Icon
    */
   iconPrimary: Palettes.deepPurple7,
-  iconSecondary: Palettes.deepPurple6,
+  iconSecondary: Palettes.deepPurple5,
   iconThirdary: Palettes.deepPurple4,
   iconDisable: Palettes.deepPurple3,
 
@@ -54,7 +54,7 @@ export const Semantics = {
   /**
    * Border
    */
-  borderPrimary: Palettes.grey3,
+  borderPrimary: Palettes.grey2,
   borderSecondary: Palettes.grey4,
   borderThirdary: Palettes.grey8,
   borderOverlayPrimary: Atomics.white_20p,
