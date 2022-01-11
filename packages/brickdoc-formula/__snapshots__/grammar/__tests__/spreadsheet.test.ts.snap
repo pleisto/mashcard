@@ -4,7 +4,7 @@ exports[`Spreadsheet Functions [AVERAGEIFS 4] =AVERAGEIFS(#28e28190-63bd-4f70-ae
 Array [
   Object {
     "code": "Function",
-    "display": "AVERAGEIFS",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "AVERAGEIFS",
@@ -14,7 +14,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -24,7 +24,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -35,7 +35,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -45,7 +45,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -56,7 +56,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -66,7 +66,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -77,7 +77,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -87,7 +87,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -98,7 +98,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -108,7 +108,7 @@ Array [
   },
   Object {
     "code": "GreaterThan",
-    "display": ">",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ">",
@@ -118,7 +118,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -128,7 +128,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -143,7 +143,7 @@ exports[`Spreadsheet Functions [AVERAGEIFS 100] =AVERAGEIFS(#28e28190-63bd-4f70-
 Array [
   Object {
     "code": "Function",
-    "display": "AVERAGEIFS",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "AVERAGEIFS",
@@ -153,7 +153,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -163,7 +163,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -174,7 +174,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -184,7 +184,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -195,7 +195,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -205,7 +205,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -216,7 +216,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -226,7 +226,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -237,7 +237,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -247,7 +247,7 @@ Array [
   },
   Object {
     "code": "GreaterThan",
-    "display": ">",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ">",
@@ -257,7 +257,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "100",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "100",
@@ -267,7 +267,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -282,7 +282,7 @@ exports[`Spreadsheet Functions [COLUMN_COUNT] =#28e28190-63bd-4f70-aeca-26e72574
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -293,7 +293,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -303,7 +303,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "COLUMN_COUNT",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "COLUMN_COUNT",
@@ -313,7 +313,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -323,7 +323,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -338,7 +338,7 @@ exports[`Spreadsheet Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a.6
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -349,7 +349,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -359,7 +359,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -370,7 +370,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -380,7 +380,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "COUNTA",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "COUNTA",
@@ -390,7 +390,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -400,7 +400,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -415,7 +415,7 @@ exports[`Spreadsheet Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a.2
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -426,7 +426,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -436,7 +436,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "third",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
@@ -447,7 +447,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -457,7 +457,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "COUNTA",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "COUNTA",
@@ -467,7 +467,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -477,7 +477,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -492,7 +492,7 @@ exports[`Spreadsheet Functions [COUNTIFS =1] =COUNTIFS(#28e28190-63bd-4f70-aeca-
 Array [
   Object {
     "code": "Function",
-    "display": "COUNTIFS",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "COUNTIFS",
@@ -502,7 +502,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -512,7 +512,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -523,7 +523,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -533,7 +533,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -544,7 +544,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -554,7 +554,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -564,7 +564,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -579,7 +579,7 @@ exports[`Spreadsheet Functions [COUNTIFS >2] =COUNTIFS(#28e28190-63bd-4f70-aeca-
 Array [
   Object {
     "code": "Function",
-    "display": "COUNTIFS",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "COUNTIFS",
@@ -589,7 +589,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -599,7 +599,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -610,7 +610,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -620,7 +620,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -631,7 +631,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -641,7 +641,7 @@ Array [
   },
   Object {
     "code": "GreaterThan",
-    "display": ">",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ">",
@@ -651,7 +651,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "2",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "2",
@@ -661,7 +661,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -676,7 +676,7 @@ exports[`Spreadsheet Functions [MAX] =#28e28190-63bd-4f70-aeca-26e72574c01a.62d9
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -687,7 +687,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -697,7 +697,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -708,7 +708,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -718,7 +718,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "MAX",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "MAX",
@@ -728,7 +728,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -738,7 +738,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -753,7 +753,7 @@ exports[`Spreadsheet Functions [SUM] =#28e28190-63bd-4f70-aeca-26e72574c01a.62d9
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -764,7 +764,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -774,7 +774,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -785,7 +785,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -795,7 +795,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "SUM",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "SUM",
@@ -805,7 +805,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -815,7 +815,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -830,7 +830,7 @@ exports[`Spreadsheet Functions [SUMIFS >3] =SUMIFS(#28e28190-63bd-4f70-aeca-26e7
 Array [
   Object {
     "code": "Function",
-    "display": "SUMIFS",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "SUMIFS",
@@ -840,7 +840,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -850,7 +850,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -861,7 +861,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -871,7 +871,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -882,7 +882,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -892,7 +892,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -903,7 +903,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -913,7 +913,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -924,7 +924,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -934,7 +934,7 @@ Array [
   },
   Object {
     "code": "GreaterThan",
-    "display": ">",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ">",
@@ -944,7 +944,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -954,7 +954,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -969,7 +969,7 @@ exports[`Spreadsheet Functions [SUMIFS 4] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72
 Array [
   Object {
     "code": "Function",
-    "display": "SUMIFS",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "SUMIFS",
@@ -979,7 +979,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -989,7 +989,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1000,7 +1000,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1010,7 +1010,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -1021,7 +1021,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1031,7 +1031,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1042,7 +1042,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1052,7 +1052,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -1063,7 +1063,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1073,7 +1073,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "4",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4",
@@ -1083,7 +1083,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1098,7 +1098,7 @@ exports[`Spreadsheet Functions [SUMPRODUCT] =SUMPRODUCT(#28e28190-63bd-4f70-aeca
 Array [
   Object {
     "code": "Function",
-    "display": "SUMPRODUCT",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "SUMPRODUCT",
@@ -1108,7 +1108,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1118,7 +1118,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1129,7 +1129,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1139,7 +1139,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -1150,7 +1150,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1160,7 +1160,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1171,7 +1171,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1181,7 +1181,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -1192,7 +1192,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1207,7 +1207,7 @@ exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([]).toArray() 1`] = `
 Array [
   Object {
     "code": "Function",
-    "display": "Spreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Spreadsheet",
@@ -1217,7 +1217,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1227,7 +1227,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -1237,7 +1237,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -1247,7 +1247,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1257,7 +1257,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1267,7 +1267,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "toArray",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "toArray",
@@ -1277,7 +1277,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1287,7 +1287,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1349,7 +1349,7 @@ exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([{a: 1}, {a: 2}]).toAr
 Array [
   Object {
     "code": "Function",
-    "display": "Spreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Spreadsheet",
@@ -1359,7 +1359,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1369,7 +1369,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -1379,7 +1379,7 @@ Array [
   },
   Object {
     "code": "LBrace",
-    "display": "{",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "{",
@@ -1389,7 +1389,7 @@ Array [
   },
   Object {
     "code": "FunctionName",
-    "display": "a",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "a",
@@ -1399,7 +1399,7 @@ Array [
   },
   Object {
     "code": "Colon",
-    "display": ":",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ":",
@@ -1409,7 +1409,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -1419,7 +1419,7 @@ Array [
   },
   Object {
     "code": "RBrace",
-    "display": "}",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "}",
@@ -1429,7 +1429,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1439,7 +1439,7 @@ Array [
   },
   Object {
     "code": "LBrace",
-    "display": "{",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "{",
@@ -1449,7 +1449,7 @@ Array [
   },
   Object {
     "code": "FunctionName",
-    "display": "a",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "a",
@@ -1459,7 +1459,7 @@ Array [
   },
   Object {
     "code": "Colon",
-    "display": ":",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ":",
@@ -1469,7 +1469,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "2",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "2",
@@ -1479,7 +1479,7 @@ Array [
   },
   Object {
     "code": "RBrace",
-    "display": "}",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "}",
@@ -1489,7 +1489,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -1499,7 +1499,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1509,7 +1509,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1519,7 +1519,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "toArray",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "toArray",
@@ -1529,7 +1529,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1539,7 +1539,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1589,7 +1589,7 @@ exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([1,2,3]).toArray() 1`]
 Array [
   Object {
     "code": "Function",
-    "display": "Spreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Spreadsheet",
@@ -1599,7 +1599,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1609,7 +1609,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -1619,7 +1619,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -1629,7 +1629,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1639,7 +1639,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "2",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "2",
@@ -1649,7 +1649,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1659,7 +1659,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -1669,7 +1669,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -1679,7 +1679,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1689,7 +1689,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1699,7 +1699,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "toArray",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "toArray",
@@ -1709,7 +1709,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1719,7 +1719,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1736,7 +1736,7 @@ exports[`Spreadsheet Functions [VLOOKUP 2 range default] =VLOOKUP("2", #28e28190
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -1746,7 +1746,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1756,7 +1756,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"2\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"2\\"",
@@ -1766,7 +1766,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1776,7 +1776,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1787,7 +1787,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1797,7 +1797,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1808,7 +1808,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1818,7 +1818,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -1829,7 +1829,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1844,7 +1844,7 @@ exports[`Spreadsheet Functions [VLOOKUP 2 range true] =VLOOKUP("2", #28e28190-63
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -1854,7 +1854,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1864,7 +1864,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"2\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"2\\"",
@@ -1874,7 +1874,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1884,7 +1884,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1895,7 +1895,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1905,7 +1905,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -1916,7 +1916,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1926,7 +1926,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -1937,7 +1937,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1947,7 +1947,7 @@ Array [
   },
   Object {
     "code": "BooleanLiteral",
-    "display": "true",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "true",
@@ -1957,7 +1957,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1972,7 +1972,7 @@ exports[`Spreadsheet Functions [VLOOKUP Column check] =VLOOKUP("", #28e28190-63b
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -1982,7 +1982,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1992,7 +1992,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"\\"",
@@ -2002,7 +2002,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2012,7 +2012,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2023,7 +2023,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2033,7 +2033,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2044,7 +2044,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2054,7 +2054,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -2065,7 +2065,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2080,7 +2080,7 @@ exports[`Spreadsheet Functions [VLOOKUP Not found 2 range false] =VLOOKUP("2", #
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -2090,7 +2090,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2100,7 +2100,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"2\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"2\\"",
@@ -2110,7 +2110,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2120,7 +2120,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2131,7 +2131,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2141,7 +2141,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2152,7 +2152,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2162,7 +2162,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2173,7 +2173,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2183,7 +2183,7 @@ Array [
   },
   Object {
     "code": "BooleanLiteral",
-    "display": "false",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "false",
@@ -2193,7 +2193,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2208,7 +2208,7 @@ exports[`Spreadsheet Functions [VLOOKUP Not found] =VLOOKUP("", #28e28190-63bd-4
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -2218,7 +2218,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2228,7 +2228,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"\\"",
@@ -2238,7 +2238,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2248,7 +2248,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2259,7 +2259,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2269,7 +2269,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2280,7 +2280,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2290,7 +2290,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2301,7 +2301,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2316,7 +2316,7 @@ exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -2326,7 +2326,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2336,7 +2336,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -2346,7 +2346,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2356,7 +2356,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2367,7 +2367,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2377,7 +2377,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2388,7 +2388,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2398,7 +2398,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2409,7 +2409,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2424,7 +2424,7 @@ exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -2434,7 +2434,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2444,7 +2444,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -2454,7 +2454,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2464,7 +2464,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2475,7 +2475,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2485,7 +2485,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2496,7 +2496,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2506,7 +2506,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2517,7 +2517,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2527,7 +2527,7 @@ Array [
   },
   Object {
     "code": "BooleanLiteral",
-    "display": "false",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "false",
@@ -2537,7 +2537,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2552,7 +2552,7 @@ exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -2562,7 +2562,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2572,7 +2572,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -2582,7 +2582,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2592,7 +2592,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2603,7 +2603,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2613,7 +2613,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2624,7 +2624,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2634,7 +2634,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2645,7 +2645,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2655,7 +2655,7 @@ Array [
   },
   Object {
     "code": "BooleanLiteral",
-    "display": "true",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "true",
@@ -2665,7 +2665,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2680,7 +2680,7 @@ exports[`Spreadsheet Functions [VLOOKUP ok string] =VLOOKUP("1", #28e28190-63bd-
 Array [
   Object {
     "code": "Function",
-    "display": "VLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "VLOOKUP",
@@ -2690,7 +2690,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2700,7 +2700,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"1\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"1\\"",
@@ -2710,7 +2710,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2720,7 +2720,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2731,7 +2731,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2741,7 +2741,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2752,7 +2752,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2762,7 +2762,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2773,7 +2773,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2788,7 +2788,7 @@ exports[`Spreadsheet Functions [XLOOKUP ok string] =XLOOKUP("1", #28e28190-63bd-
 Array [
   Object {
     "code": "Function",
-    "display": "XLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "XLOOKUP",
@@ -2798,7 +2798,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2808,7 +2808,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"1\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"1\\"",
@@ -2818,7 +2818,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2828,7 +2828,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2839,7 +2839,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2849,7 +2849,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -2860,7 +2860,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2870,7 +2870,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2881,7 +2881,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2891,7 +2891,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -2902,7 +2902,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2917,7 +2917,7 @@ exports[`Spreadsheet Functions [XLOOKUP ok string] =XLOOKUP("123", #28e28190-63b
 Array [
   Object {
     "code": "Function",
-    "display": "XLOOKUP",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "XLOOKUP",
@@ -2927,7 +2927,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2937,7 +2937,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"123\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"123\\"",
@@ -2947,7 +2947,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2957,7 +2957,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -2968,7 +2968,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2978,7 +2978,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -2989,7 +2989,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2999,7 +2999,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3010,7 +3010,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3020,7 +3020,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -3031,7 +3031,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -3041,7 +3041,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"100\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"100\\"",
@@ -3051,7 +3051,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3066,7 +3066,7 @@ exports[`Spreadsheet Functions [column] =#28e28190-63bd-4f70-aeca-26e72574c01a.6
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3077,7 +3077,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3087,7 +3087,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -3103,7 +3103,7 @@ exports[`Spreadsheet Functions [exactin column true] ="foo" in #28e28190-63bd-4f
 Array [
   Object {
     "code": "StringLiteral",
-    "display": "\\"foo\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"foo\\"",
@@ -3113,7 +3113,7 @@ Array [
   },
   Object {
     "code": "In",
-    "display": "in",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "in",
@@ -3123,7 +3123,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3134,7 +3134,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3144,7 +3144,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "third",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
@@ -3160,7 +3160,7 @@ exports[`Spreadsheet Functions [in column false] =4 in #28e28190-63bd-4f70-aeca-
 Array [
   Object {
     "code": "NumberLiteral",
-    "display": "4",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4",
@@ -3170,7 +3170,7 @@ Array [
   },
   Object {
     "code": "In",
-    "display": "in",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "in",
@@ -3180,7 +3180,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3191,7 +3191,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3201,7 +3201,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -3217,7 +3217,7 @@ exports[`Spreadsheet Functions [in column true] =3 in #28e28190-63bd-4f70-aeca-2
 Array [
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -3227,7 +3227,7 @@ Array [
   },
   Object {
     "code": "In",
-    "display": "in",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "in",
@@ -3237,7 +3237,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3248,7 +3248,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3258,7 +3258,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "second",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
@@ -3274,7 +3274,7 @@ exports[`Spreadsheet Functions [in spreadsheet false] =4 in #28e28190-63bd-4f70-
 Array [
   Object {
     "code": "NumberLiteral",
-    "display": "4",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "4",
@@ -3284,7 +3284,7 @@ Array [
   },
   Object {
     "code": "In",
-    "display": "in",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "in",
@@ -3294,7 +3294,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3310,7 +3310,7 @@ exports[`Spreadsheet Functions [in spreadsheet true] =3 in #28e28190-63bd-4f70-a
 Array [
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -3320,7 +3320,7 @@ Array [
   },
   Object {
     "code": "In",
-    "display": "in",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "in",
@@ -3330,7 +3330,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3346,7 +3346,7 @@ exports[`Spreadsheet Functions [toArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3357,7 +3357,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3367,7 +3367,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "toArray",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "toArray",
@@ -3377,7 +3377,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3387,7 +3387,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3479,7 +3479,7 @@ exports[`Spreadsheet Functions [toRecordArray] =#28e28190-63bd-4f70-aeca-26e7257
 Array [
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3490,7 +3490,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3500,7 +3500,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "toRecordArray",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "toRecordArray",
@@ -3510,7 +3510,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3520,7 +3520,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3733,7 +3733,7 @@ exports[`Spreadsheet Functions completion 1`] = `
 Object {
   "codeFragment": Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3765,7 +3765,7 @@ exports[`Spreadsheet Functions completion 2`] = `
 Object {
   "codeFragment": Object {
     "code": "Function",
-    "display": "SUM",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "SUM",
@@ -3793,7 +3793,7 @@ Object {
         "codeFragments": Array [
           Object {
             "code": "NumberLiteral",
-            "display": "123",
+            "display": [Function],
             "errors": Array [],
             "hidden": false,
             "name": "123",
@@ -3831,7 +3831,7 @@ exports[`Spreadsheet Functions completion 3`] = `
 Object {
   "codeFragment": Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
@@ -3864,10 +3864,10 @@ Object {
   },
   "renderDescription": [Function],
   "replacements": Array [
-    "first",
     "#28e28190-63bd-4f70-aeca-26e72574c01a.first",
     "#28e28190-63bd-4f70-aeca-26e72574c01a.",
     "#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "first",
   ],
   "value": "#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
   "weight": 997,
@@ -3878,7 +3878,7 @@ exports[`Spreadsheet Functions completion 4`] = `
 Object {
   "codeFragment": Object {
     "code": "Function",
-    "display": "COLUMN_COUNT",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "COLUMN_COUNT",
@@ -3906,7 +3906,7 @@ Object {
         "codeFragments": Array [
           Object {
             "code": "NumberLiteral",
-            "display": "123",
+            "display": [Function],
             "errors": Array [],
             "hidden": false,
             "name": "123",

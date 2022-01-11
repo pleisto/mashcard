@@ -37,22 +37,26 @@ describe('Complete', () => {
     const codeFragments: CodeFragment[] = []
 
     const completions = complete({
-      formulaContext,
-      input,
+      ctx: {
+        formulaContext,
+        interpretContext: { ctx: {}, arguments: [] },
+        meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
+      },
       tokens,
-      variableId: testVariableId,
-      namespaceId,
+      position: input.length,
       codeFragments
     })
     expect(completions.length).not.toBe(0)
     expect(completions[0].kind).toBe('variable')
 
     const completions2 = complete({
-      formulaContext,
-      input,
+      ctx: {
+        formulaContext,
+        interpretContext: { ctx: {}, arguments: [] },
+        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input }
+      },
       tokens,
-      variableId: testVariableId,
-      namespaceId: testNamespaceId,
+      position: input.length,
       codeFragments
     })
     expect(completions2[0].kind).toBe('function')
@@ -197,7 +201,8 @@ describe('Complete', () => {
             formulaContext,
             interpretContext,
             meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input }
-          }
+          },
+          position: input.length
         })
 
         expect(valid).toBe(true)

@@ -23,7 +23,7 @@ Array [
         "codeFragments": Array [
           Object {
             "code": "NumberLiteral",
-            "display": "1",
+            "display": [Function],
             "errors": Array [],
             "hidden": false,
             "name": "1",

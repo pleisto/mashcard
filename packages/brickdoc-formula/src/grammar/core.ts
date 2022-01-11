@@ -95,6 +95,8 @@ export const abbrev = ({
 
     const nextToken = tokens[index + 1]
 
+    // Foo(
+    // foo:
     if (nextToken && ['LParen', 'Colon'].includes(nextToken.tokenType.name)) {
       newInput = newInput.concat(token.image)
       return
@@ -104,6 +106,7 @@ export const abbrev = ({
 
     let namespaceIsExist = false
 
+    // foo.bar
     if (prevToken && ['Dot'].includes(prevToken.tokenType.name)) {
       const prev2Token = tokens[index - 2]
 
@@ -124,8 +127,11 @@ export const abbrev = ({
 
     newPosition += formulaName.prefixLength(namespaceIsExist)
     newInput = newInput.concat(formulaName.render(namespaceIsExist))
+    tokens[index] = { ...token, tokenType: { ...token.tokenType, name: 'UUID' } }
     modified = true
   })
+
+  // console.log({ newInput, input })
 
   if (modified) {
     return { lexResult: lexer.tokenize(newInput), newInput, newPosition }
@@ -195,13 +201,11 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
   const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
 
   completions = complete({
-    input,
+    position: newPosition,
     cacheCompletions: baseCompletion,
     codeFragments,
     tokens,
-    formulaContext,
-    namespaceId,
-    variableId
+    ctx
   })
 
   returnValue.level = codeFragmentVisitor.level
@@ -238,7 +242,7 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
           hidden: false,
           spaceBefore: false,
           type: 'any',
-          display: restImages,
+          display: () => restImages,
           errors: errorMessages
         })
       }
@@ -262,7 +266,7 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
     spaceAfter: false,
     spaceBefore: false,
     type: 'any',
-    display: ' ',
+    display: () => ' ',
     errors: []
   }
 

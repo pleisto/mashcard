@@ -7,7 +7,7 @@ Array [
     "codeFragments": Array [
       Object {
         "code": "NumberLiteral",
-        "display": "123",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "123",
@@ -217,7 +217,7 @@ Array [
     "codeFragments": Array [
       Object {
         "code": "NumberLiteral",
-        "display": "123",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "123",
@@ -227,7 +227,7 @@ Array [
       },
       Object {
         "code": "Plus",
-        "display": "+",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "+",
@@ -237,7 +237,7 @@ Array [
       },
       Object {
         "code": "Function",
-        "display": "RAND",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "RAND",
@@ -247,7 +247,7 @@ Array [
       },
       Object {
         "code": "LParen",
-        "display": "(",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "(",
@@ -257,7 +257,7 @@ Array [
       },
       Object {
         "code": "RParen",
-        "display": ")",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": ")",
@@ -582,7 +582,7 @@ Array [
             "codeFragments": Array [
               Object {
                 "code": "Function",
-                "display": "RAND",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "RAND",
@@ -592,7 +592,7 @@ Array [
               },
               Object {
                 "code": "LParen",
-                "display": "(",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "(",
@@ -602,7 +602,7 @@ Array [
               },
               Object {
                 "code": "RParen",
-                "display": ")",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": ")",
@@ -657,7 +657,7 @@ Array [
     "codeFragments": Array [
       Object {
         "code": "Function",
-        "display": "ABS",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "ABS",
@@ -667,7 +667,7 @@ Array [
       },
       Object {
         "code": "LParen",
-        "display": "(",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "(",
@@ -677,7 +677,7 @@ Array [
       },
       Object {
         "code": "NumberLiteral",
-        "display": "123",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "123",
@@ -687,7 +687,7 @@ Array [
       },
       Object {
         "code": "RParen",
-        "display": ")",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": ")",
@@ -697,7 +697,7 @@ Array [
       },
       Object {
         "code": "Plus",
-        "display": "+",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "+",
@@ -707,7 +707,7 @@ Array [
       },
       Object {
         "code": "Block",
-        "display": "Unknown",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "#d986e871-cb85-4bd5-b675-87307f60b882",
@@ -718,7 +718,7 @@ Array [
       },
       Object {
         "code": "Dot",
-        "display": ".",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": ".",
@@ -728,7 +728,7 @@ Array [
       },
       Object {
         "code": "Variable",
-        "display": "foo",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "1588aedf-06e1-47f1-9282-d2ffe865974c",
@@ -1239,7 +1239,7 @@ Array [
             "codeFragments": Array [
               Object {
                 "code": "Function",
-                "display": "ABS",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "ABS",
@@ -1249,7 +1249,7 @@ Array [
               },
               Object {
                 "code": "LParen",
-                "display": "(",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "(",
@@ -1259,7 +1259,7 @@ Array [
               },
               Object {
                 "code": "Minus",
-                "display": "-",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "-",
@@ -1269,7 +1269,7 @@ Array [
               },
               Object {
                 "code": "NumberLiteral",
-                "display": "1",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "1",
@@ -1279,7 +1279,7 @@ Array [
               },
               Object {
                 "code": "RParen",
-                "display": ")",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": ")",
@@ -1377,7 +1377,7 @@ Array [
     "codeFragments": Array [
       Object {
         "code": "NumberLiteral",
-        "display": "123",
+        "display": [Function],
         "errors": Array [
           Object {
             "message": "Missing right expression",
@@ -1396,7 +1396,7 @@ Array [
       },
       Object {
         "code": "Plus",
-        "display": "+",
+        "display": [Function],
         "errors": Array [
           Object {
             "message": "Missing right expression",
@@ -1683,7 +1683,7 @@ Array [
     "codeFragments": Array [
       Object {
         "code": "Function",
-        "display": "ABS",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "ABS",
@@ -1693,7 +1693,7 @@ Array [
       },
       Object {
         "code": "LParen",
-        "display": "(",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "(",
@@ -1703,7 +1703,7 @@ Array [
       },
       Object {
         "code": "NumberLiteral",
-        "display": "123",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "123",
@@ -1713,7 +1713,7 @@ Array [
       },
       Object {
         "code": "RParen",
-        "display": ")",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": ")",
@@ -1723,7 +1723,7 @@ Array [
       },
       Object {
         "code": "Plus",
-        "display": "+",
+        "display": [Function],
         "errors": Array [],
         "hidden": false,
         "name": "+",
@@ -1733,7 +1733,7 @@ Array [
       },
       Object {
         "code": "Sharp",
-        "display": "#",
+        "display": [Function],
         "errors": Array [
           Object {
             "message": "Expected number but got Block",
@@ -1748,7 +1748,7 @@ Array [
       },
       Object {
         "code": "UUID",
-        "display": "d986e871-cb85-4bd5-b675-87307f60b882",
+        "display": [Function],
         "errors": Array [
           Object {
             "message": "Expected number but got Block",
@@ -1767,7 +1767,7 @@ Array [
       },
       Object {
         "code": "Dot",
-        "display": ".",
+        "display": [Function],
         "errors": Array [
           Object {
             "message": "Expected number but got Block",
@@ -1782,7 +1782,7 @@ Array [
       },
       Object {
         "code": "UUID",
-        "display": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "display": [Function],
         "errors": Array [
           Object {
             "message": "Expected number but got Block",
@@ -2296,7 +2296,7 @@ Array [
             "codeFragments": Array [
               Object {
                 "code": "Function",
-                "display": "ABS",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "ABS",
@@ -2306,7 +2306,7 @@ Array [
               },
               Object {
                 "code": "LParen",
-                "display": "(",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "(",
@@ -2316,7 +2316,7 @@ Array [
               },
               Object {
                 "code": "Minus",
-                "display": "-",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "-",
@@ -2326,7 +2326,7 @@ Array [
               },
               Object {
                 "code": "NumberLiteral",
-                "display": "1",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": "1",
@@ -2336,7 +2336,7 @@ Array [
               },
               Object {
                 "code": "RParen",
-                "display": ")",
+                "display": [Function],
                 "errors": Array [],
                 "hidden": false,
                 "name": ")",

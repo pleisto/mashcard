@@ -80,7 +80,7 @@ const token2fragment = (token: IToken, type: FormulaType): OtherCodeFragment => 
     type,
     spaceBefore,
     spaceAfter,
-    display: token.image
+    display: () => token.image
   }
 }
 
@@ -409,7 +409,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           errors: [],
           spaceBefore: true,
           spaceAfter: true,
-          display: '&'
+          display: () => '&'
         },
         ...rhsValue
       )
@@ -538,7 +538,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         type: 'any',
         spaceBefore: false,
         spaceAfter: false,
-        display: '.',
+        display: () => '.',
         errors: missingRhsErrors
       })
       images.push('.')
@@ -574,7 +574,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       if (rhsCst.tokenType.name === 'UUID') {
         this.kind = 'expression'
 
-        const namespaceId = codeFragments[codeFragments.length - 2].namespaceId!
+        const namespaceId = codeFragments[codeFragments.length - 2]?.namespaceId as string
         const namespaceType = this.ctx.formulaContext.blocks[namespaceId]
         const errorMessages: ErrorMessage[] = []
         const variableId = rhsCst.image
@@ -593,7 +593,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
               namespaceId,
               code: 'Variable',
               type: variable.t.variableValue.result.type,
-              display: variable.t.name
+              display: () => variable.t.name
             }
 
             firstArgumentType = variable.t.variableValue.result.type
@@ -630,7 +630,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
               namespaceId,
               code: 'Column',
               type: 'Column',
-              display: column.name
+              display: () => column.name
             }
           } else {
             errorMessages.push({ type: 'syntax', message: 'Unknown column' })
@@ -1095,7 +1095,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
               ...token2fragment(namespaceToken, 'any'),
               code: 'Spreadsheet',
               type: parentType,
-              display: spreadsheet.name(),
+              display: spreadsheet.name,
               namespaceId: spreadsheet.blockId,
               name: `#${namespaceId}`,
               errors: errorMessages
@@ -1118,7 +1118,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             ...token2fragment(namespaceToken, 'any'),
             code: 'Block',
             type: parentType,
-            display: block.name(),
+            display: block.name,
             namespaceId: block.id,
             name: `#${namespaceId}`,
             errors: errorMessages
@@ -1195,7 +1195,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       type: 'any',
       spaceBefore: false,
       spaceAfter: false,
-      display: functionKey
+      display: () => functionKey
     }
 
     if (!ctx.LParen) {

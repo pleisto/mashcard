@@ -482,7 +482,7 @@ export interface FunctionClause<T extends FormulaType> extends BaseFunctionClaus
 }
 
 export interface FormulaCodeFragmentAttrs {
-  readonly display: string
+  readonly display: () => string
   readonly value: string
   readonly code: string
   readonly type: FormulaType
@@ -497,7 +497,7 @@ interface BaseCodeFragment {
   readonly spaceBefore: boolean
   readonly namespaceId?: NamespaceId
   readonly spaceAfter: boolean
-  readonly display: string
+  readonly display: () => string
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }

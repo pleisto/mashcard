@@ -27,7 +27,8 @@ import {
   codeFragmentsToJSONContentTotal,
   codeFragmentToJSONContentArray,
   contentArrayToInput,
-  fetchJSONContentArray
+  fetchJSONContentArray,
+  positionBasedContentArrayToInput
 } from '../../helpers/formula'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
 import { useKeydownHandler } from './useKeyDownHandler'
@@ -242,31 +243,68 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     let oldContent = fetchJSONContentArray(currentContent)
     let positionChange: number = currentCompletion.codeFragment.name.length
     const oldContentLast = oldContent[oldContent.length - 1]
-    const text = contentArrayToInput(oldContent)
+    const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, latestPosition.current)
 
-    // console.log('Before replace', { oldContentLast, oldContent, text, currentContent, currentCompletion })
-    if (oldContentLast && text && currentCompletion.replacements.length) {
-      console.log('start replace', { oldContentLast, currentCompletion, currentContent, text })
-      if (currentCompletion.replacements.includes(text)) {
-        positionChange -= text.length
+    // console.log('Before replace', {
+    //   oldContentLast,
+    //   oldContent,
+    //   prevText,
+    //   currentPosition: latestPosition.current,
+    //   position,
+    //   nextText,
+    //   currentCompletion
+    // })
+
+    if (oldContentLast && prevText && currentCompletion.replacements.length) {
+      // console.log('start replace', {
+      //   oldContentLast,
+      //   currentCompletion,
+      //   currentContent,
+      //   prevText,
+      //   position,
+      //   nextText,
+      //   currentPosition: latestPosition.current
+      // })
+      if (currentCompletion.replacements.includes(prevText)) {
+        positionChange -= prevText.length
         oldContent = []
       } else {
-        const replacement = currentCompletion.replacements.find(replacement => text.endsWith(replacement))
+        const replacement = currentCompletion.replacements.find(replacement => prevText.endsWith(replacement))
         if (!replacement) {
-          console.info('replacement not found 1', { text, currentCompletion })
+          console.info('replacement not found 1', { prevText, currentCompletion, nextText })
         } else {
-          positionChange = positionChange - text.length + (replacement.length as number)
-          const newText = text.substring(0, text.length - replacement.length)
+          positionChange = positionChange - prevText.length + (replacement.length as number)
+          const newText = prevText.substring(0, prevText.length - replacement.length)
           oldContent = [
-            attrsToJSONContent({ display: newText, value: newText, code: 'ANY', type: 'any', error: '', hidden: false })
+            attrsToJSONContent({
+              display: () => newText,
+              value: newText,
+              code: 'ANY',
+              type: 'any',
+              error: '',
+              hidden: false
+            })
           ]
         }
         // console.log('replace..', newText, oldContent)
       }
     }
 
+    const nextContents = nextText
+      ? [
+          attrsToJSONContent({
+            display: () => nextText,
+            value: nextText,
+            code: 'ANY',
+            type: 'any',
+            error: '',
+            hidden: false
+          })
+        ]
+      : []
+
     const completionContents: JSONContent[] = codeFragmentToJSONContentArray(currentCompletion.codeFragment)
-    const newContent = [...oldContent, ...completionContents]
+    const newContent = [...oldContent, ...completionContents, ...nextContents]
     const finalContent = buildJSONContentByArray(newContent)
     const finalInput = `=${contentArrayToInput(fetchJSONContentArray(finalContent))}`
     setContent(finalContent)

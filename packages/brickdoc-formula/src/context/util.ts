@@ -30,6 +30,7 @@ export const block2completion = (
   { key, name, value }: BlockFormulaName,
   weight: number
 ): BlockCompletion => {
+  const block = new BlockClass(ctx, { id: key })
   return {
     kind: 'block',
     weight: weight + 0,
@@ -37,12 +38,12 @@ export const block2completion = (
     name,
     namespace: key,
     value,
-    preview: new BlockClass(ctx, { id: key }),
+    preview: block,
     renderDescription: blockId => '',
     codeFragment: {
       namespaceId: key,
       hidden: false,
-      display: name,
+      display: block.name,
       errors: [],
       name: value,
       code: 'Block',
@@ -67,7 +68,7 @@ export const spreadsheet2completion = (spreadsheet: SpreadsheetType): Spreadshee
     codeFragment: {
       namespaceId: spreadsheet.blockId,
       hidden: false,
-      display: spreadsheet.name(),
+      display: spreadsheet.name,
       errors: [],
       name: value,
       code: 'Spreadsheet',
@@ -83,10 +84,10 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
   return {
     kind: 'column',
     replacements: [
-      `${column.name}`,
       `${blockKey(column.namespaceId)}.${column.name}`,
       `${blockKey(column.namespaceId)}.`,
-      `${blockKey(column.namespaceId)}`
+      `${blockKey(column.namespaceId)}`,
+      `${column.name}`
     ],
     weight: -3,
     name: column.name,
@@ -97,7 +98,7 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
     codeFragment: {
       namespaceId: column.namespaceId,
       hidden: false,
-      display: column.name,
+      display: () => column.name,
       errors: [],
       name: value,
       code: 'Column',
@@ -112,7 +113,7 @@ export const variable2completion = (variable: VariableInterface, weight: number)
   const value = variableKey(variable.t.namespaceId, variable.t.variableId)
   return {
     kind: 'variable',
-    replacements: [variable.t.name],
+    replacements: [`${blockKey(variable.t.namespaceId)}.`, blockKey(variable.t.namespaceId), variable.t.name],
     weight,
     name: variable.t.name,
     namespace: variable.namespaceName(),
@@ -122,7 +123,7 @@ export const variable2completion = (variable: VariableInterface, weight: number)
     codeFragment: {
       namespaceId: variable.t.namespaceId,
       hidden: false,
-      display: variable.t.name,
+      display: () => variable.t.name,
       errors: [],
       name: value,
       code: 'Variable',
@@ -144,7 +145,7 @@ export const function2completion = (functionClause: FunctionClause<any>, weight:
     preview: functionClause,
     renderDescription: blockId => (functionClause.group === 'core' ? '' : functionClause.group),
     codeFragment: {
-      display: functionClause.key,
+      display: () => functionClause.key,
       hidden: false,
       errors: [],
       name: functionClause.key,

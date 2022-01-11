@@ -4,7 +4,7 @@ exports[`Controls [button multiple set] =Button("Foo", Set(#57622108-1337-4edd-8
 Array [
   Object {
     "code": "Function",
-    "display": "Button",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Button",
@@ -14,7 +14,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -24,7 +24,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"Foo\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"Foo\\"",
@@ -34,7 +34,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -44,7 +44,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -54,7 +54,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -64,7 +64,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -75,7 +75,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -85,7 +85,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -96,7 +96,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -106,7 +106,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -116,7 +116,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -126,7 +126,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -136,7 +136,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -147,7 +147,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -157,7 +157,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -168,7 +168,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -178,7 +178,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -188,7 +188,7 @@ Array [
   },
   Object {
     "code": "Semicolon",
-    "display": ";",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ";",
@@ -198,7 +198,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -208,7 +208,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -218,7 +218,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -229,7 +229,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -239,7 +239,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -250,7 +250,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -260,7 +260,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -270,7 +270,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "123",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "123",
@@ -280,7 +280,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -290,7 +290,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -300,7 +300,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1020,7 +1020,7 @@ exports[`Controls [button] =Button("Foo", Set(#57622108-1337-4edd-833a-2557835bc
 Array [
   Object {
     "code": "Function",
-    "display": "Button",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Button",
@@ -1030,7 +1030,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1040,7 +1040,7 @@ Array [
   },
   Object {
     "code": "StringLiteral",
-    "display": "\\"Foo\\"",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "\\"Foo\\"",
@@ -1050,7 +1050,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1060,7 +1060,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -1070,7 +1070,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1080,7 +1080,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -1091,7 +1091,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1101,7 +1101,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -1112,7 +1112,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1122,7 +1122,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1132,7 +1132,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -1142,7 +1142,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -1152,7 +1152,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -1163,7 +1163,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1173,7 +1173,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -1184,7 +1184,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1194,7 +1194,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1204,7 +1204,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1658,7 +1658,7 @@ exports[`Controls [input ok] =CInput(Set(#57622108-1337-4edd-833a-2557835bcfe0.4
 Array [
   Object {
     "code": "Function",
-    "display": "CInput",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "CInput",
@@ -1668,7 +1668,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1678,7 +1678,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -1688,7 +1688,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1698,7 +1698,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -1709,7 +1709,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1719,7 +1719,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -1730,7 +1730,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -1740,7 +1740,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -1750,7 +1750,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -1760,7 +1760,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -1770,7 +1770,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -1781,7 +1781,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -1791,7 +1791,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -1802,7 +1802,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1812,7 +1812,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -1822,7 +1822,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2276,7 +2276,7 @@ exports[`Controls [select [[]]] =Select([[]], Set(#57622108-1337-4edd-833a-25578
 Array [
   Object {
     "code": "Function",
-    "display": "Select",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Select",
@@ -2286,7 +2286,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2296,7 +2296,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -2306,7 +2306,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -2316,7 +2316,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -2326,7 +2326,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -2336,7 +2336,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2346,7 +2346,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -2356,7 +2356,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2366,7 +2366,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -2377,7 +2377,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2387,7 +2387,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -2398,7 +2398,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2408,7 +2408,7 @@ Array [
   },
   Object {
     "code": "Input",
-    "display": "Input",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Input",
@@ -2418,7 +2418,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2428,7 +2428,7 @@ Array [
   },
   Object {
     "code": "FunctionName",
-    "display": "selected",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "selected",
@@ -2438,7 +2438,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2448,7 +2448,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2463,7 +2463,7 @@ exports[`Controls [select []] =Select([], Set(#57622108-1337-4edd-833a-2557835bc
 Array [
   Object {
     "code": "Function",
-    "display": "Select",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Select",
@@ -2473,7 +2473,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2483,7 +2483,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -2493,7 +2493,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -2503,7 +2503,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2513,7 +2513,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -2523,7 +2523,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2533,7 +2533,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -2544,7 +2544,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2554,7 +2554,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -2565,7 +2565,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2575,7 +2575,7 @@ Array [
   },
   Object {
     "code": "Input",
-    "display": "Input",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Input",
@@ -2585,7 +2585,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2595,7 +2595,7 @@ Array [
   },
   Object {
     "code": "FunctionName",
-    "display": "selected",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "selected",
@@ -2605,7 +2605,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2615,7 +2615,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2630,7 +2630,7 @@ exports[`Controls [select ok] =Select([1,2,3], Set(#57622108-1337-4edd-833a-2557
 Array [
   Object {
     "code": "Function",
-    "display": "Select",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Select",
@@ -2640,7 +2640,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2650,7 +2650,7 @@ Array [
   },
   Object {
     "code": "LBracket",
-    "display": "[",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "[",
@@ -2660,7 +2660,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -2670,7 +2670,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2680,7 +2680,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "2",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "2",
@@ -2690,7 +2690,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2700,7 +2700,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -2710,7 +2710,7 @@ Array [
   },
   Object {
     "code": "RBracket",
-    "display": "]",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "]",
@@ -2720,7 +2720,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2730,7 +2730,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -2740,7 +2740,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -2750,7 +2750,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -2761,7 +2761,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2771,7 +2771,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -2782,7 +2782,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -2792,7 +2792,7 @@ Array [
   },
   Object {
     "code": "Input",
-    "display": "Input",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Input",
@@ -2802,7 +2802,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -2812,7 +2812,7 @@ Array [
   },
   Object {
     "code": "FunctionName",
-    "display": "selected",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "selected",
@@ -2822,7 +2822,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -2832,7 +2832,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3051,7 +3051,7 @@ exports[`Controls [set error] = Set(a, 1) 1`] = `
 Array [
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -3061,7 +3061,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3071,7 +3071,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "a",
+    "display": [Function],
     "errors": Array [
       Object {
         "message": "Unknown function a",
@@ -3090,7 +3090,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -3100,7 +3100,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -3110,7 +3110,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3125,7 +3125,7 @@ exports[`Controls [set expression] =Set(#57622108-1337-4edd-833a-2557835bcfe0.28
 Array [
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -3135,7 +3135,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3145,7 +3145,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -3156,7 +3156,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3166,7 +3166,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "bar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -3177,7 +3177,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -3187,7 +3187,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -3197,7 +3197,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3212,7 +3212,7 @@ exports[`Controls [set multiple line] =Set(#57622108-1337-4edd-833a-2557835bcfe0
 Array [
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -3222,7 +3222,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3232,7 +3232,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -3243,7 +3243,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3253,7 +3253,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -3264,7 +3264,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -3274,7 +3274,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3284,7 +3284,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -3294,7 +3294,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -3304,7 +3304,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -3315,7 +3315,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3325,7 +3325,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -3336,7 +3336,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3346,7 +3346,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3356,7 +3356,7 @@ Array [
   },
   Object {
     "code": "Semicolon",
-    "display": ";",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ";",
@@ -3366,7 +3366,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -3376,7 +3376,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3386,7 +3386,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -3397,7 +3397,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -3407,7 +3407,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -3418,7 +3418,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -3428,7 +3428,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -3438,7 +3438,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "123",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "123",
@@ -3448,7 +3448,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -3458,7 +3458,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -4162,7 +4162,7 @@ exports[`Controls [set ok 2] =Set(#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1
 Array [
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -4172,7 +4172,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -4182,7 +4182,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -4193,7 +4193,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -4203,7 +4203,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -4214,7 +4214,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -4224,7 +4224,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -4234,7 +4234,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -4244,7 +4244,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -4254,7 +4254,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -4265,7 +4265,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -4275,7 +4275,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -4286,7 +4286,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -4296,7 +4296,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -4307,7 +4307,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -4317,7 +4317,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -4328,7 +4328,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -4338,7 +4338,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -4921,7 +4921,7 @@ exports[`Controls [set ok] =Set(#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e
 Array [
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -4931,7 +4931,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -4941,7 +4941,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -4952,7 +4952,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -4962,7 +4962,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -4973,7 +4973,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -4983,7 +4983,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -4993,7 +4993,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -5149,7 +5149,7 @@ exports[`Controls [set unknown] =Set(#57622108-1337-4edd-833a-2557835bcfe0.99499
 Array [
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -5159,7 +5159,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -5169,7 +5169,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -5180,7 +5180,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -5190,7 +5190,7 @@ Array [
   },
   Object {
     "code": "UUID",
-    "display": "99499117-5694-4d83-9ccd-85a3ab0b8f25",
+    "display": [Function],
     "errors": Array [
       Object {
         "message": "Unknown variable: 99499117-5694-4d83-9ccd-85a3ab0b8f25",
@@ -5205,7 +5205,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -5215,7 +5215,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -5225,7 +5225,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -5240,7 +5240,7 @@ exports[`Controls [switch set] =Switch(true, Set(#57622108-1337-4edd-833a-255783
 Array [
   Object {
     "code": "Function",
-    "display": "Switch",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Switch",
@@ -5250,7 +5250,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -5260,7 +5260,7 @@ Array [
   },
   Object {
     "code": "BooleanLiteral",
-    "display": "true",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "true",
@@ -5270,7 +5270,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -5280,7 +5280,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -5290,7 +5290,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -5300,7 +5300,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -5311,7 +5311,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -5321,7 +5321,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -5332,7 +5332,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -5342,7 +5342,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -5352,7 +5352,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "1",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "1",
@@ -5362,7 +5362,7 @@ Array [
   },
   Object {
     "code": "Plus",
-    "display": "+",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "+",
@@ -5372,7 +5372,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -5383,7 +5383,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -5393,7 +5393,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -5404,7 +5404,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -5414,7 +5414,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -5424,7 +5424,7 @@ Array [
   },
   Object {
     "code": "Semicolon",
-    "display": ";",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ";",
@@ -5434,7 +5434,7 @@ Array [
   },
   Object {
     "code": "Function",
-    "display": "Set",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "Set",
@@ -5444,7 +5444,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -5454,7 +5454,7 @@ Array [
   },
   Object {
     "code": "Block",
-    "display": "Unknown",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#57622108-1337-4edd-833a-2557835bcfe0",
@@ -5465,7 +5465,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ".",
@@ -5475,7 +5475,7 @@ Array [
   },
   Object {
     "code": "Variable",
-    "display": "varvarabcvar",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
@@ -5486,7 +5486,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -5496,7 +5496,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -5506,7 +5506,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "123",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "123",
@@ -5516,7 +5516,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -5526,7 +5526,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -5536,7 +5536,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",

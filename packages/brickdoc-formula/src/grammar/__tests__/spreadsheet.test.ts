@@ -219,14 +219,19 @@ describe('Spreadsheet Functions', () => {
 
     const input1 = `=#${spreadsheetNamespaceId}.${firstColumnId}.`
     const { completions: input1Completions } = parse({
-      ctx: { ...ctx, meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1 } }
+      ctx: {
+        ...ctx,
+        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1 }
+      },
+      position: input1.length
     })
     expect(input1Completions[0]).toMatchSnapshot()
     expect(input1Completions[0].kind).toEqual('function')
 
     const input2 = `=#${spreadsheetNamespaceId}.`
     const { completions: input2Completions } = parse({
-      ctx: { ...ctx, meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input2 } }
+      ctx: { ...ctx, meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input2 } },
+      position: input2.length
     })
     expect(input2Completions[0].kind).toEqual('column')
     expect(input2Completions[0]).toMatchSnapshot()

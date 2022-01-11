@@ -4,7 +4,7 @@ exports[`Power Fx Functions [CountIf error1] =CountIf(#28e28190-63bd-4f70-aeca-2
 Array [
   Object {
     "code": "Function",
-    "display": "CountIf",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "CountIf",
@@ -14,7 +14,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -24,7 +24,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -35,7 +35,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -45,7 +45,7 @@ Array [
   },
   Object {
     "code": "GreaterThanEqual",
-    "display": ">=",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ">=",
@@ -55,7 +55,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -65,7 +65,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",
@@ -80,7 +80,7 @@ exports[`Power Fx Functions [CountIf ok] =CountIf(#28e28190-63bd-4f70-aeca-26e72
 Array [
   Object {
     "code": "Function",
-    "display": "CountIf",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "CountIf",
@@ -90,7 +90,7 @@ Array [
   },
   Object {
     "code": "LParen",
-    "display": "(",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "(",
@@ -100,7 +100,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "#28e28190-63bd-4f70-aeca-26e72574c01a",
@@ -111,7 +111,7 @@ Array [
   },
   Object {
     "code": "Comma",
-    "display": ",",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ",",
@@ -121,7 +121,7 @@ Array [
   },
   Object {
     "code": "Spreadsheet",
-    "display": "MySpreadsheet",
+    "display": [Function],
     "errors": Array [
       Object {
         "message": "Expected number but got Column",
@@ -137,7 +137,7 @@ Array [
   },
   Object {
     "code": "Dot",
-    "display": ".",
+    "display": [Function],
     "errors": Array [
       Object {
         "message": "Expected number but got Column",
@@ -152,7 +152,7 @@ Array [
   },
   Object {
     "code": "Column",
-    "display": "first",
+    "display": [Function],
     "errors": Array [
       Object {
         "message": "Expected number but got Column",
@@ -168,7 +168,7 @@ Array [
   },
   Object {
     "code": "GreaterThanEqual",
-    "display": ">=",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ">=",
@@ -178,7 +178,7 @@ Array [
   },
   Object {
     "code": "NumberLiteral",
-    "display": "3",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": "3",
@@ -188,7 +188,7 @@ Array [
   },
   Object {
     "code": "RParen",
-    "display": ")",
+    "display": [Function],
     "errors": Array [],
     "hidden": false,
     "name": ")",

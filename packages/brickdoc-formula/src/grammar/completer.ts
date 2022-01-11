@@ -1,14 +1,12 @@
 import type { IToken } from 'chevrotain'
-import { CodeFragment, Completion, ContextInterface, FormulaType, NamespaceId, VariableId } from '../types'
+import { CodeFragment, Completion, FormulaType, FunctionContext } from '../types'
 import { blockKey } from '../context'
 
 export interface CompleteInput {
   readonly tokens: IToken[]
-  readonly input: string
-  readonly formulaContext: ContextInterface
+  readonly position: number
+  readonly ctx: FunctionContext
   readonly codeFragments: CodeFragment[]
-  readonly namespaceId: NamespaceId
-  readonly variableId: VariableId
   readonly cacheCompletions?: Completion[]
 }
 
@@ -21,26 +19,36 @@ const matchTypeWeight = (type1: FormulaType, type2: FormulaType, weight: number)
 
 // TODO: https://github.com/Chevrotain/chevrotain/blob/master/examples/parser/content_assist/content_assist_complex.js
 export const complete = ({
-  input,
   tokens,
-  formulaContext,
-  namespaceId,
+  position,
+  ctx: {
+    formulaContext,
+    meta: { namespaceId, variableId }
+  },
   codeFragments,
-  variableId,
   cacheCompletions
 }: CompleteInput): Completion[] => {
   let completions = cacheCompletions ?? formulaContext.completions(namespaceId, variableId)
-  const lastCodeFragment = codeFragments[codeFragments.length - 1]
-  const lastToken = tokens[tokens.length - 1]
-  if (!lastCodeFragment || !lastToken) {
+  let lastCodeFragment: CodeFragment | undefined = codeFragments[codeFragments.length - 1]
+  let input = ''
+
+  codeFragments.every(codeFragment => {
+    input = input.concat(codeFragment.display())
+    if (input.length < position) {
+      return true
+    }
+
+    lastCodeFragment = codeFragment
+    return false
+  })
+
+  if (!lastCodeFragment) {
     return completions
   }
 
   const { code, name } = lastCodeFragment
-  const lowerCaseName = name.toLowerCase()
-  const lastTokenText = lastToken.image
-
-  console.log({ name, code, input, lastCodeFragment, tokens, codeFragments, completions })
+  const tokenLowerCase = name.toLowerCase()
+  // const lastTokenText = lastToken.image
 
   if (code === 'Dot') {
     const last2CodeFragment = codeFragments[codeFragments.length - 2]
@@ -82,40 +90,34 @@ export const complete = ({
     })
   }
 
-  if (['FunctionName'].includes(code)) {
+  // console.log({ name, code, lastCodeFragment, position, input, tokens, codeFragments, completions })
+
+  if (['FunctionName', 'Function'].includes(code)) {
     completions = completions.map(c => {
-      const replacements = c.kind === 'column' ? [`${blockKey(c.preview.namespaceId)}.${name}`, name] : [name]
+      let replacements: string[] = [name]
+
+      if (c.kind === 'column') {
+        replacements = [`${blockKey(c.preview.namespaceId)}.${name}`, ...replacements]
+      }
+
+      if (c.kind === 'variable') {
+        replacements = [`${blockKey(c.preview.t.namespaceId)}.${name}`, ...replacements]
+      }
 
       if (c.name === name) {
         return { ...c, weight: c.weight + 1000, replacements: [...replacements, ...c.replacements] }
       }
 
-      const cname = c.name.toLowerCase()
-      if (cname === lowerCaseName) {
+      const completionNameLowerCase = c.name.toLowerCase()
+      if (completionNameLowerCase === tokenLowerCase) {
         return { ...c, weight: c.weight + 500, replacements: [...replacements, ...c.replacements] }
       }
 
-      if (cname.startsWith(lowerCaseName)) {
+      if (completionNameLowerCase.startsWith(tokenLowerCase)) {
         return { ...c, weight: c.weight + 100, replacements: [...replacements, ...c.replacements] }
       }
 
-      if (cname.includes(lowerCaseName)) {
-        return { ...c, weight: c.weight + 10, replacements: [...replacements, ...c.replacements] }
-      }
-
-      if (c.name === lastTokenText) {
-        return { ...c, weight: c.weight + 1000, replacements: [...replacements, ...c.replacements] }
-      }
-
-      if (cname === lastTokenText) {
-        return { ...c, weight: c.weight + 500, replacements: [...replacements, ...c.replacements] }
-      }
-
-      if (cname.startsWith(lastTokenText)) {
-        return { ...c, weight: c.weight + 100, replacements: [...replacements, ...c.replacements] }
-      }
-
-      if (cname.includes(lastTokenText)) {
+      if (completionNameLowerCase.includes(tokenLowerCase)) {
         return { ...c, weight: c.weight + 10, replacements: [...replacements, ...c.replacements] }
       }
 
