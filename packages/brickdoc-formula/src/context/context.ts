@@ -267,6 +267,7 @@ export class FormulaContext implements ContextInterface {
       .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
       .concat({
         kind: 'Spreadsheet',
+        namespaceId: spreadsheet.blockId,
         name: spreadsheet.name(),
         value: blockKey(spreadsheet.blockId),
         render: () => blockKey(spreadsheet.blockId),
@@ -316,8 +317,8 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  // TODO flattenVariableDependencies
-  // TODO update level
+  // TODO refresh flattenVariableDependencies
+  // TODO update other variable's level
   public trackDependency = (variable: VariableInterface): void => {
     const {
       t: { variableDependencies, blockDependencies, namespaceId, name, variableId, functionDependencies }
@@ -331,6 +332,7 @@ export class FormulaContext implements ContextInterface {
           .concat({
             kind: 'Block',
             name,
+            namespaceId,
             value: blockKey(namespaceId),
             render: () => blockKey(namespaceId),
             prefixLength: () => 0,
@@ -351,8 +353,20 @@ export class FormulaContext implements ContextInterface {
         render,
         key,
         value,
+        namespaceId,
         prefixLength: exist => (exist ? 0 : variable.namespaceName().length + 1)
       })
+    if (!this.formulaNames.find(n => n.kind === 'Block' && n.key === namespaceId)) {
+      this.formulaNames.push({
+        kind: 'Block',
+        name: 'Untitled',
+        namespaceId,
+        value: blockKey(namespaceId),
+        render: () => blockKey(namespaceId),
+        prefixLength: () => 0,
+        key: namespaceId
+      })
+    }
     this.blocks[namespaceId] = 'Block'
 
     BrickdocEventBus.subscribe(

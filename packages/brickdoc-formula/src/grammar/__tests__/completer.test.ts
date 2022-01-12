@@ -98,6 +98,16 @@ describe('Complete', () => {
       label: 'var equal different namespaceId',
       input: `=${testName1}`,
       namespaceId: testNamespaceId,
+      errorMessage: `Unknown function ${testName1}`,
+      weight: 999,
+      expectParseImage: `=${testName1}`,
+      expectInputImage: `=${testName1}`,
+      expectNewInput: `=${testName1}`
+    },
+    {
+      label: 'var equal different namespaceId with namespaceId',
+      input: `=Untitled.${testName1}`,
+      namespaceId: testNamespaceId,
       errorMessage: undefined,
       weight: 0,
       expectParseImage: `=#${namespaceId}.${variableId}`,
@@ -168,11 +178,11 @@ describe('Complete', () => {
       label: 'dot equal different namespaceId',
       input: `= 1 + ${testName1}.`,
       namespaceId: testNamespaceId,
-      errorMessage: 'Missing expression',
+      errorMessage: `Unknown function ${testName1}`,
       weight: 250,
-      expectParseImage: `=1+#${namespaceId}.${variableId}.`,
-      expectInputImage: `=1+#${namespaceId}.${variableId}.`,
-      expectNewInput: `=1+#${namespaceId}.${variableId}.`
+      expectParseImage: `=1+${testName1}.`,
+      expectInputImage: `=1+${testName1}.`,
+      expectNewInput: `= 1 + ${testName1}.`
     }
   ]
 

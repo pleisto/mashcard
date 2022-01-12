@@ -216,7 +216,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
 
     const result = variable.t.variableValue.result
 
-    switch (result.view?.type || result.type) {
+    switch (result.view?.type ?? result.type) {
       case 'Button':
         return renderButton(result as ButtonResult)
       case 'Input':

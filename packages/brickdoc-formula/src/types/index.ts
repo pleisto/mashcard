@@ -379,6 +379,7 @@ export interface BaseFormulaName {
   prefixLength: (namespaceIsExist: boolean) => number
   key: string
   name: string
+  namespaceId: string
 }
 
 export interface VariableFormulaName extends BaseFormulaName {

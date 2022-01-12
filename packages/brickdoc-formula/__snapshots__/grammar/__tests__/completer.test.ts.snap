@@ -48,7 +48,7 @@ Object {
     },
     "kind": "variable",
     "name": "varvarabcvar",
-    "namespace": "Unknown",
+    "namespace": "Untitled",
     "positionChange": 74,
     "preview": undefined,
     "renderDescription": [Function],
@@ -87,36 +87,27 @@ Object {
       "type": "number",
     },
     Object {
-      "code": "Block",
+      "code": "Function",
       "display": [Function],
-      "errors": Array [],
+      "errors": Array [
+        Object {
+          "message": "Unknown function varvarabcvar",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+        Object {
+          "message": "Parse error: \\"\\"",
+          "type": "parse",
+        },
+      ],
       "hidden": false,
-      "name": "#57622108-1337-4edd-833a-2557835bcfe0",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "spaceAfter": false,
-      "spaceBefore": false,
-      "type": "Block",
-    },
-    Object {
-      "code": "Dot",
-      "display": [Function],
-      "errors": Array [],
-      "hidden": false,
-      "name": ".",
+      "name": "varvarabcvar",
       "spaceAfter": false,
       "spaceBefore": false,
       "type": "any",
-    },
-    Object {
-      "code": "Variable",
-      "display": [Function],
-      "errors": Array [],
-      "hidden": false,
-      "name": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
-      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
-      "spaceAfter": false,
-      "spaceBefore": false,
-      "type": "number",
     },
     Object {
       "code": "Dot",
@@ -125,10 +116,6 @@ Object {
         Object {
           "message": "Missing expression",
           "type": "syntax",
-        },
-        Object {
-          "message": "Parse error: \\"\\"",
-          "type": "parse",
         },
       ],
       "hidden": false,
@@ -144,21 +131,21 @@ Object {
       "display": [Function],
       "errors": Array [],
       "hidden": false,
-      "name": "custom::ADD()",
+      "name": "VLOOKUP()",
       "spaceAfter": false,
       "spaceBefore": false,
       "type": "any",
     },
     "kind": "function",
-    "name": "ADD",
-    "namespace": "custom",
-    "positionChange": 12,
+    "name": "VLOOKUP",
+    "namespace": "core",
+    "positionChange": 8,
     "preview": undefined,
     "renderDescription": [Function],
     "replacements": Array [
-      "ADD",
+      "VLOOKUP",
     ],
-    "value": "custom::ADD()",
+    "value": "VLOOKUP()",
     "weight": 250,
   },
 }
@@ -265,7 +252,7 @@ Object {
 }
 `;
 
-exports[`Complete [var equal different namespaceId] =varvarabcvar 1`] = `
+exports[`Complete [var equal different namespaceId with namespaceId] =Untitled.varvarabcvar 1`] = `
 Object {
   "codeFragments": Array [
     Object {
@@ -327,6 +314,60 @@ Object {
 }
 `;
 
+exports[`Complete [var equal different namespaceId] =varvarabcvar 1`] = `
+Object {
+  "codeFragments": Array [
+    Object {
+      "code": "Function",
+      "display": [Function],
+      "errors": Array [
+        Object {
+          "message": "Unknown function varvarabcvar",
+          "type": "syntax",
+        },
+        Object {
+          "message": "TODO mismatch token FunctionCall",
+          "type": "parse",
+        },
+      ],
+      "hidden": false,
+      "name": "varvarabcvar",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+  ],
+  "firstCompletion": Object {
+    "codeFragment": Object {
+      "code": "Variable",
+      "display": [Function],
+      "errors": Array [],
+      "hidden": false,
+      "name": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+      "spaceAfter": false,
+      "spaceBefore": false,
+      "type": "any",
+    },
+    "kind": "variable",
+    "name": "varvarabcvar",
+    "namespace": "Untitled",
+    "positionChange": 74,
+    "preview": undefined,
+    "renderDescription": [Function],
+    "replacements": Array [
+      "#57622108-1337-4edd-833a-2557835bcfe0.varvarabcvar",
+      "varvarabcvar",
+      "#57622108-1337-4edd-833a-2557835bcfe0.",
+      "#57622108-1337-4edd-833a-2557835bcfe0",
+      "varvarabcvar",
+    ],
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0.481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+    "weight": 999,
+  },
+}
+`;
+
 exports[`Complete [var equal same namespaceId] =varvarabcvar 1`] = `
 Object {
   "codeFragments": Array [
@@ -377,7 +418,7 @@ Object {
     },
     "kind": "variable",
     "name": "varvarabcvar",
-    "namespace": "Unknown",
+    "namespace": "Untitled",
     "positionChange": 74,
     "preview": undefined,
     "renderDescription": [Function],
@@ -449,7 +490,7 @@ Object {
     },
     "kind": "variable",
     "name": "varvarabcvar",
-    "namespace": "Unknown",
+    "namespace": "Untitled",
     "positionChange": 74,
     "preview": undefined,
     "renderDescription": [Function],
@@ -523,7 +564,7 @@ Object {
     },
     "kind": "variable",
     "name": "varvarabcvar",
-    "namespace": "Unknown",
+    "namespace": "Untitled",
     "positionChange": 74,
     "preview": undefined,
     "renderDescription": [Function],
@@ -597,7 +638,7 @@ Object {
     },
     "kind": "variable",
     "name": "varvarabcvar",
-    "namespace": "Unknown",
+    "namespace": "Untitled",
     "positionChange": 74,
     "preview": undefined,
     "renderDescription": [Function],

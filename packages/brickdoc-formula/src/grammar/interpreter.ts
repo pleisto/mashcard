@@ -121,10 +121,13 @@ export class FormulaInterpreter extends BaseCstVisitor {
         return
       }
 
+      const lhsResult: boolean = result.result as boolean
+      const rhsResult: boolean = rhsValue.result
+
       if (tokenMatcher(operator, And)) {
-        result = { result: result.result && rhsValue.result, type: 'boolean' }
+        result = { result: lhsResult && rhsResult, type: 'boolean' }
       } else if (tokenMatcher(operator, Or)) {
-        result = { result: result.result || rhsValue.result, type: 'boolean' }
+        result = { result: lhsResult || rhsResult, type: 'boolean' }
       } else {
         throw new Error(`Unexpected operator ${operator.image}`)
       }

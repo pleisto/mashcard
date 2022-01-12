@@ -67,7 +67,7 @@ export const Spreadsheet = (
         name: key,
         index,
         type: 'text',
-        rows: data.map(e => String(e[key].result || ''))
+        rows: data.map(e => String(e[key].result ?? ''))
       }))
     )
 
@@ -76,7 +76,7 @@ export const Spreadsheet = (
         const row: Row = { id: uuid() }
 
         keyWithIds.forEach(({ key, uuid }) => {
-          row[uuid] = String(source[key].result || '')
+          row[uuid] = String(source[key].result ?? '')
         })
 
         return row

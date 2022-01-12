@@ -16,7 +16,8 @@ import {
   CodeFragmentResult,
   NamespaceId,
   FunctionContext,
-  Formula
+  Formula,
+  BlockKey
 } from '../types'
 import { VariableClass, castVariable } from '../context/variable'
 import { FormulaLexer } from './lexer'
@@ -25,7 +26,7 @@ import { FormulaParser } from './parser'
 import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { CodeFragmentVisitor } from './codeFragment'
-import { variableKey } from '..'
+import { blockKey, variableKey } from '..'
 export interface BaseParseResult {
   success: boolean
   valid: boolean
@@ -103,6 +104,7 @@ export const abbrev = ({
 
     const prevToken = tokens[index - 1]
 
+    let variableNamespace = blockKey(namespaceId)
     let namespaceIsExist = false
 
     // foo.bar
@@ -115,9 +117,14 @@ export const abbrev = ({
       }
 
       namespaceIsExist = true
+      variableNamespace = prev2Token.image as BlockKey
     }
 
-    const formulaName = formulaContext.formulaNames.find(n => n.name === token.image)
+    const formulaName = formulaContext.formulaNames.find(
+      n => n.name === token.image && (n.kind !== 'Variable' || blockKey(n.namespaceId) === variableNamespace)
+    )
+
+    console.log({ formulaNames: formulaContext.formulaNames, variableNamespace, token: token.image, formulaName })
 
     if (!formulaName) {
       newInput = newInput.concat(token.image)
@@ -125,8 +132,9 @@ export const abbrev = ({
     }
 
     newPosition += formulaName.prefixLength(namespaceIsExist)
-    newInput = newInput.concat(formulaName.render(namespaceIsExist))
-    tokens[index] = { ...token, tokenType: { ...token.tokenType, name: 'UUID' } }
+    const render = formulaName.render(namespaceIsExist)
+    newInput = newInput.concat(render)
+    tokens[index] = { ...token, image: render, tokenType: { ...token.tokenType, name: 'UUID' } }
     modified = true
   })
 

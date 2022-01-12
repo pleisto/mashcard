@@ -31,7 +31,7 @@ const asyncForEach = async (
 }
 
 describe('Dependency', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     formulaContext.resetFormula()
 
     const metas: VariableMetadata[] = [
@@ -80,6 +80,33 @@ describe('Dependency', () => {
     const meta = { namespaceId, variableId: variableIds[0], name: 'num0', input }
     const { errorMessages } = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(errorMessages).toEqual([{ message: 'Circular dependency found', type: 'circular_dependency' }])
+  })
+
+  it('modify num0 => number', async () => {
+    const num0 = formulaContext.findVariable(namespaceId, variableIds[0])!
+
+    await num0.updateDefinition('=30')
+    expect(num0.t.variableValue.result.result).toEqual(30)
+
+    const num2 = formulaContext.findVariable(namespaceId, variableIds[2])!
+    expect(num2.t.variableValue.result.result).toEqual(30)
+  })
+
+  it('modify num0 => boolean', async () => {
+    const num0 = formulaContext.findVariable(namespaceId, variableIds[0])!
+
+    await num0.updateDefinition('=true')
+    expect(num0.t.variableValue.result.result).toEqual(true)
+
+    const num4 = formulaContext.findVariable(namespaceId, variableIds[4])!
+    expect(num4.t.variableValue.result.result).toEqual('Expected number but got boolean')
+
+    const num2 = formulaContext.findVariable(namespaceId, variableIds[2])!
+    expect(num2.t.variableValue.result.result).toEqual(true)
+
+    const num3 = formulaContext.findVariable(namespaceId, variableIds[3])!
+    // TODO fix this
+    expect(num3.t.variableValue.result.result).toEqual(3)
   })
 
   it('dependency automatic update', async () => {

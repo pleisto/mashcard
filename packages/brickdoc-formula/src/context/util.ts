@@ -13,7 +13,8 @@ import {
   VariableKey,
   BlockCompletion,
   BlockFormulaName,
-  ContextInterface
+  ContextInterface,
+  FunctionKey
 } from '../types'
 import { ColumnType, SpreadsheetType } from '../controls'
 import { BlockClass } from '../controls/block'
@@ -139,7 +140,7 @@ export const variable2completion = (variable: VariableInterface, weight: number)
 }
 
 export const function2completion = (functionClause: FunctionClause<any>, weight: number): FunctionCompletion => {
-  const value = `${functionClause.key}()`
+  const value: `${FunctionKey}()` = `${functionClause.key}()`
   return {
     kind: 'function',
     replacements: [functionClause.name],
