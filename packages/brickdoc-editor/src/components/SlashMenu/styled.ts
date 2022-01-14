@@ -1,8 +1,9 @@
-import { Icon, Menu, menuItemSpacing, styled, theme } from '@brickdoc/design-system'
+import { FC } from 'react'
+import { Icon, Menu, MenuProps, menuItemSpacing, styled, theme } from '@brickdoc/design-system'
 
 const footerHeight = '2rem'
 
-export const StyledSlashMenu = styled(Menu, {
+export const StyledSlashMenu = styled(Menu as FC<MenuProps>, {
   maxHeight: 'inherit',
   overflow: 'auto',
   paddingBottom: footerHeight,
