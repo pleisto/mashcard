@@ -4,6 +4,7 @@ module Docs
     class BlockMeta < BrickGraphQL::BaseObject
       field :icon, BlockIcon, 'icon', null: true
       field :cover, BlockCover, 'cover', null: true
+      field :embedMeta, BlockEmbedMeta, 'embedMeta', null: true
       field :image, BlockImage, 'image', null: true
       field :attachment, BlockAttachment, 'attachment', null: true
       field :link, BlockLink, 'link', null: true

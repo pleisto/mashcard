@@ -2,7 +2,7 @@ import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { useActionOptions } from '../useActionOptions'
 import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmentMethods'
-import { FileIcon } from '../FileIcon/FileIcon'
+import { FileIcon } from '../../../FileIcon'
 import { FileType } from '../../../../helpers/file'
 import { BlockContainer } from '../../../../components'
 

@@ -44,6 +44,8 @@ export const queryPreviewBox = gql`
       title
       description
       cover
+      type
+      size
     }
   }
 `

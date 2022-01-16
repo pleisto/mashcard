@@ -162,6 +162,28 @@ export type BlockDuplicatePayload = {
   id: Scalars['UUID']
 }
 
+export type BlockEmbedMeta = {
+  __typename?: 'BlockEmbedMeta'
+  /** embedType */
+  embedType?: Maybe<Embedtype>
+  /** height */
+  height?: Maybe<Scalars['Int']>
+  /** url or blob key */
+  key?: Maybe<Scalars['String']>
+  /** mode */
+  mode?: Maybe<Scalars['String']>
+  /** name */
+  name?: Maybe<Scalars['String']>
+  /** size */
+  size?: Maybe<Scalars['Int']>
+  /** source */
+  source?: Maybe<Filesourcetype>
+  /** type */
+  type?: Maybe<Scalars['String']>
+  /** width */
+  width?: Maybe<Scalars['Int']>
+}
+
 export type BlockEmoji = {
   __typename?: 'BlockEmoji'
   /** emoji */
@@ -292,6 +314,8 @@ export type BlockMeta = {
   attachment?: Maybe<BlockAttachment>
   /** cover */
   cover?: Maybe<BlockCover>
+  /** embedMeta */
+  embedMeta?: Maybe<BlockEmbedMeta>
   /** icon */
   icon?: Maybe<BlockIcon>
   /** image */
@@ -594,6 +618,15 @@ export type DirectUploadInput = {
   filename: Scalars['String']
   /** metadata */
   metadata?: InputMaybe<Scalars['JSON']>
+}
+
+export enum Embedtype {
+  /** GALLERY */
+  Gallery = 'GALLERY',
+  /** LINK */
+  Link = 'LINK',
+  /** UPLOAD */
+  Upload = 'UPLOAD'
 }
 
 export type FailureReasons = {
@@ -1468,9 +1501,13 @@ export type Preview_Box = {
   /** preview cover */
   cover?: Maybe<Scalars['String']>
   /** preview description */
-  description: Scalars['String']
+  description?: Maybe<Scalars['String']>
+  /** preview conetent size */
+  size?: Maybe<Scalars['String']>
   /** preview title */
   title: Scalars['String']
+  /** preview conetent type */
+  type?: Maybe<Scalars['String']>
   /** preview url */
   url: Scalars['String']
 }

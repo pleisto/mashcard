@@ -1,32 +1,34 @@
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import 'react-medium-image-zoom/dist/styles.css'
+import { Embedtype, Preview_Box } from '@brickdoc/schema'
+import { AttachmentMode, PreviewMode, WebBookmarkMode } from './modes'
+import { linkStorage, getFileTypeByExtension, FileType, getBlobUrl, getFileTypeByContentType } from '../../helpers'
+import { EditorDataSourceContext } from '../../dataSource/DataSource'
+import { GalleryTypeEmbedBlock, LinkTypeEmbedBlock, UploadTypeEmbedBlock } from './types'
+import { ImageBlock } from '../ImageBlock'
 import './EmbedBlock.less'
-import { linkStorage, getFileTypeByExtension, FileType } from '../../helpers/file'
-import { AttachmentMode, PreviewMode, LinkMode, UploaderMode } from './modes'
-import { getBlobUrl } from '../../helpers/getBlobUrl'
-import { EditorDataSourceContext, WebsiteMeta } from '../../dataSource/DataSource'
 
 export interface EmbedBlockAttributes {
   key: string
   source: string
   name?: string
   size?: number
-  title?: WebsiteMeta['title']
-  description?: WebsiteMeta['description']
-  cover?: WebsiteMeta['cover']
-  icon?: WebsiteMeta['icon']
-  mode: 'link' | 'preview' | undefined
+  title?: Preview_Box['title']
+  description?: Preview_Box['description']
+  cover?: Preview_Box['cover']
+  mode?: 'link' | 'preview' | undefined
+  contentType?: string | null
 }
 
 const canFilePreview = (fileType: FileType, mode: EmbedBlockAttributes['mode']): boolean =>
   mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
-export const EmbedBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttributes, deleteNode }) => {
+export const EmbedBlock: React.FC<NodeViewProps> = props => {
+  const { editor, node, updateAttributes, deleteNode } = props
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const latestEmbedBlockAttributes = React.useRef<Partial<EmbedBlockAttributes>>({})
   const updateEmbedBlockAttributes = React.useCallback(
-    (newAttributes: Partial<EmbedBlockAttributes>, type: 'link' | 'attachment'): void => {
+    (newAttributes: Partial<EmbedBlockAttributes>, type: 'link' | 'image' | 'attachment'): void => {
       latestEmbedBlockAttributes.current = {
         ...latestEmbedBlockAttributes.current,
         ...newAttributes
@@ -34,7 +36,6 @@ export const EmbedBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttrib
 
       updateAttributes({
         [type]: {
-          __typename: type === 'link' ? 'BlockLink' : 'BlockAttachment',
           ...node.attrs[type],
           ...latestEmbedBlockAttributes.current
         }
@@ -43,22 +44,42 @@ export const EmbedBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttrib
     [node.attrs, updateAttributes]
   )
 
-  const fileUrl =
-    getBlobUrl(node.attrs?.uuid, node.attrs?.attachment ?? {}, editorDataSource.blobs) ??
-    linkStorage.get(node.attrs?.uuid)
-  const linkUrl = node.attrs.link?.key
+  const defaultUrl = linkStorage.get(node.attrs.uuid)
 
-  if (fileUrl) {
-    const { name } = node.attrs.attachment
-    const fileType = getFileTypeByExtension(name)
+  // image mode
+  if (node.attrs.image?.key) {
+    const imageUrl = getBlobUrl(node.attrs?.uuid, node.attrs?.image ?? {}, editorDataSource.blobs) ?? defaultUrl
+    if (imageUrl) {
+      return <ImageBlock {...props} />
+    }
+  }
 
-    const updateAttachmentAttributes = (attrs: Record<string, any>): void =>
-      updateEmbedBlockAttributes(attrs, 'attachment')
+  // file mode
+  if (node.attrs.attachment?.key) {
+    const fileUrl = getBlobUrl(node.attrs?.uuid, node.attrs?.attachment ?? {}, editorDataSource.blobs) ?? defaultUrl
+    if (fileUrl) {
+      const { name, contentType } = node.attrs.attachment
+      let fileType = getFileTypeByContentType(contentType ?? '')
+      fileType = fileType === 'unknown' ? getFileTypeByExtension(name) : fileType
 
-    if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
+      const updateAttachmentAttributes = (attrs: Record<string, any>): void =>
+        updateEmbedBlockAttributes(attrs, 'attachment')
+
+      if (canFilePreview(fileType, node.attrs.attachment?.mode)) {
+        return (
+          <PreviewMode
+            fileName={name}
+            fileType={fileType}
+            fileUrl={fileUrl}
+            deleteNode={deleteNode}
+            updateAttachmentAttributes={updateAttachmentAttributes}
+          />
+        )
+      }
+
       return (
-        <PreviewMode
-          fileName={name}
+        <AttachmentMode
+          name={name}
           fileType={fileType}
           fileUrl={fileUrl}
           deleteNode={deleteNode}
@@ -66,23 +87,15 @@ export const EmbedBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttrib
         />
       )
     }
-
-    return (
-      <AttachmentMode
-        name={name}
-        fileType={fileType}
-        fileUrl={fileUrl}
-        deleteNode={deleteNode}
-        updateAttachmentAttributes={updateAttachmentAttributes}
-      />
-    )
   }
 
+  // web bookmark mode
+  const linkUrl = node.attrs.link?.key
   if (linkUrl) {
     const { title, description, cover } = node.attrs.link
 
     return (
-      <LinkMode
+      <WebBookmarkMode
         editor={editor}
         title={title}
         cover={cover}
@@ -93,12 +106,26 @@ export const EmbedBlock: React.FC<NodeViewProps> = ({ editor, node, updateAttrib
     )
   }
 
+  // link embed
+  if (node.attrs.embedMeta?.embedType === Embedtype.Link) {
+    return (
+      <LinkTypeEmbedBlock node={node} deleteNode={deleteNode} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+    )
+  }
+
+  // gallery embed
+  if (node.attrs.embedMeta?.embedType === Embedtype.Gallery) {
+    return (
+      <GalleryTypeEmbedBlock
+        node={node}
+        deleteNode={deleteNode}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
+    )
+  }
+
+  // upload embed
   return (
-    <UploaderMode
-      editor={editor}
-      deleteNode={deleteNode}
-      node={node}
-      updateEmbedBlockAttributes={updateEmbedBlockAttributes}
-    />
+    <UploadTypeEmbedBlock deleteNode={deleteNode} node={node} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
   )
 }

@@ -159,17 +159,11 @@ export const TEST_ID_ENUM = {
       addButton: {
         id: 'editor-embed-block-add-button'
       },
-      menuButton: {
-        id: 'editor-embed-block-menu-button'
-      },
-      deleteButton: {
-        id: 'editor-embed-block-delete-button'
-      },
-      copyButton: {
-        id: 'editor-embed-block-copy-button'
-      },
       link: {
-        id: 'editor-embed-block-link'
+        id: 'editor-embed-block-link',
+        input: {
+          id: 'editor-embed-block-link-input'
+        }
       },
       pdftron: {
         id: 'editor-embed-block-pdftron'

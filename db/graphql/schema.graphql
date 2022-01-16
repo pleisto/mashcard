@@ -252,6 +252,53 @@ type BlockDuplicatePayload {
   id: UUID!
 }
 
+type BlockEmbedMeta {
+  """
+  embedType
+  """
+  embedType: Embedtype
+
+  """
+  height
+  """
+  height: Int
+
+  """
+  url or blob key
+  """
+  key: String
+
+  """
+  mode
+  """
+  mode: String
+
+  """
+  name
+  """
+  name: String
+
+  """
+  size
+  """
+  size: Int
+
+  """
+  source
+  """
+  source: Filesourcetype
+
+  """
+  type
+  """
+  type: String
+
+  """
+  width
+  """
+  width: Int
+}
+
 type BlockEmoji {
   """
   emoji
@@ -520,6 +567,11 @@ type BlockMeta {
   cover
   """
   cover: BlockCover
+
+  """
+  embedMeta
+  """
+  embedMeta: BlockEmbedMeta
 
   """
   icon
@@ -1123,6 +1175,23 @@ input DirectUploadInput {
 Email Address
 """
 scalar Email
+
+enum Embedtype {
+  """
+  GALLERY
+  """
+  GALLERY
+
+  """
+  LINK
+  """
+  LINK
+
+  """
+  UPLOAD
+  """
+  UPLOAD
+}
 
 type FailureReasons {
   """
@@ -2554,12 +2623,22 @@ type preview_box {
   """
   preview description
   """
-  description: String!
+  description: String
+
+  """
+  preview conetent size
+  """
+  size: String
 
   """
   preview title
   """
   title: String!
+
+  """
+  preview conetent type
+  """
+  type: String
 
   """
   preview url

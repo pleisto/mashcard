@@ -13,6 +13,7 @@ gem 'redis-namespace', '~> 1.8', '>= 1.8.1'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'connection_pool', '~> 2.2', '>= 2.2.5'
 gem 'faraday', '~> 1.8.0'
+gem 'faraday_middleware', '~> 1.2.0'
 gem 'oj'
 gem 'fast_blank', '>= 1.0.1', require: false
 gem 'fast_underscore', '>= 0.3.3', require: false

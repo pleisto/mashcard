@@ -1,3 +1,4 @@
+import { Embedtype } from '@brickdoc/schema'
 import { SlashMenuItem } from '../../components'
 import * as EditorIcon from '../../components/Icon'
 import { getRecentItemKey } from './recentItemsManager'
@@ -23,25 +24,26 @@ const UPLOAD = {
   alias: ['up', 'file', 'pdf', 'excel', 'ppt', 'image', 'img'],
   icon: <EditorIcon.Upload />,
   command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor
-      .chain()
-      .deleteRange(range)
-      .setEmbedBlock(range.from - 1)
-      .run()
+    editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Upload).run()
   }
 }
-const WEB_BOOKMARK = {
-  key: 'webBookmark',
-  alias: ['link'],
-  icon: <EditorIcon.Code />,
+const GALLERY = {
+  key: 'gallery',
+  alias: [''],
+  icon: <EditorIcon.Unsplash />,
   command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor
-      .chain()
-      .deleteRange(range)
-      .setEmbedBlock(range.from - 1)
-      .run()
+    editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Gallery).run()
   }
 }
+const LINK = {
+  key: 'link',
+  alias: ['link'],
+  icon: <EditorIcon.Link />,
+  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
+    editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Link).run()
+  }
+}
+
 const HEADING_1 = {
   key: 'h1',
   alias: ['h1', 'heading 1'],
@@ -138,7 +140,7 @@ export const slashMenuGroup = [
   },
   {
     key: 'embed',
-    items: [UPLOAD, WEB_BOOKMARK]
+    items: [UPLOAD, LINK, GALLERY]
   },
   {
     key: 'text',
@@ -154,7 +156,7 @@ const slashMenuItems = [
   FORMULA,
   SPREADSHEET,
   UPLOAD,
-  WEB_BOOKMARK,
+  LINK,
   HEADING_1,
   HEADING_2,
   HEADING_3,
@@ -171,7 +173,8 @@ const slashMenuItems = [
 export const TYPE_ITEMS: SlashMenuItem[] = [
   FORMULA,
   UPLOAD,
-  WEB_BOOKMARK,
+  LINK,
+  GALLERY,
   TOC,
   SUB_PAGE_MENU,
   HEADING_1,

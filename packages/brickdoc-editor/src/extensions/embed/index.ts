@@ -1,5 +1,6 @@
 import { Node, mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
+import { Embedtype } from '@brickdoc/schema'
 import { EmbedBlock } from '../../components'
 import { insertBlockAt } from '../../helpers/commands'
 
@@ -9,7 +10,7 @@ declare module '@tiptap/core' {
       /**
        * Set a embedBlock
        */
-      setEmbedBlock: (position?: number) => ReturnType
+      setEmbedBlock: (embedType: Embedtype) => ReturnType
     }
   }
 }
@@ -28,12 +29,22 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
 
   addAttributes() {
     return {
+      embedMeta: {
+        default: {
+          type: 'EmbedMeta'
+        }
+      },
       isNew: {
         default: false
       },
       link: {
         default: {
           type: 'LINK'
+        }
+      },
+      image: {
+        default: {
+          type: 'IMAGE'
         }
       },
       attachment: {
@@ -63,10 +74,18 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
   addCommands() {
     return {
       setEmbedBlock:
-        (position?: number) =>
+        embedType =>
         ({ chain }) => {
-          const content: Content = { type: this.name, attrs: { isNew: true } }
-          return insertBlockAt(content, chain, position)
+          const content: Content = {
+            type: this.name,
+            attrs: {
+              isNew: true,
+              embedMeta: {
+                embedType
+              }
+            }
+          }
+          return insertBlockAt(content, chain)
         }
     }
   }

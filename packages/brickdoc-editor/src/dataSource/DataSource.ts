@@ -2,15 +2,7 @@ import React from 'react'
 import { ContextInterface } from '@brickdoc/formula'
 import { DashboardPluginOptions } from '@brickdoc/uploader'
 import { DatabaseRow, DatabaseRows } from '../extensions/table'
-import { BlockInput, BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuTrigger } from '@brickdoc/schema'
-
-export interface WebsiteMeta {
-  url: string
-  title?: string
-  description?: string
-  cover?: string | null
-  icon?: string
-}
+import { BlockInput, BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuTrigger, Preview_Box } from '@brickdoc/schema'
 
 export interface Collaborator {
   name: string | null | undefined
@@ -44,7 +36,7 @@ export interface EditorDatabase {
 
   fetchUnsplashImages: Exclude<DashboardPluginOptions['fetchUnsplashImages'], undefined>
 
-  fetchWebsiteMeta: (url: string) => Promise<{ success: boolean; data: WebsiteMeta }>
+  fetchWebsiteMeta: (url: string) => Promise<{ success: boolean; data: Omit<Preview_Box, '__typename'> }>
 
   prepareFileUpload: Exclude<DashboardPluginOptions['prepareFileUpload'], undefined>
 

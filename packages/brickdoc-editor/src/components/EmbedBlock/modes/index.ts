@@ -1,4 +1,3 @@
 export * from './AttachmentMode'
-export * from './LinkMode'
+export * from './WebBookmarkMode'
 export * from './PreviewMode'
-export * from './UploaderMode'

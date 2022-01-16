@@ -8,8 +8,6 @@ describe Brickdoc::PreviewBox do
       VCR.use_cassette('preview_box_google') do
         data = Brickdoc::PreviewBox.preview('https://www.google.com')
         expect(data[:title]).to eq('Google')
-        expect(data[:cover]).to start_with('http')
-        expect(data[:cover]).to end_with('png')
       end
     end
 
@@ -31,6 +29,24 @@ describe Brickdoc::PreviewBox do
         expect(data[:description]).to include('open source')
         expect(data[:cover]).to start_with('http')
         expect(data[:cover]).to end_with('png')
+      end
+    end
+  end
+
+  context 'file' do
+    it 'should be get preview data: image' do
+      VCR.use_cassette('preview_box_image') do
+        data = Brickdoc::PreviewBox.preview('https://avatars.githubusercontent.com/u/41993484?s=120&v=4')
+        expect(data[:type]).to include('image')
+      end
+    end
+
+    it 'should be get preview data: pdf' do
+      VCR.use_cassette('preview_box_pdf') do
+        data = Brickdoc::PreviewBox.preview('https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf')
+        expect(data[:title]).to end_with('pdf')
+        expect(data[:type]).to include('pdf')
+        expect(data[:size]).to be_present
       end
     end
   end

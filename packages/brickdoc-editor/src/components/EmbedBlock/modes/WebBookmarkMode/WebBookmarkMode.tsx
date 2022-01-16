@@ -4,7 +4,7 @@ import { Button } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { BlockContainer } from '../../../../components'
 
-export interface LinkModeProps {
+export interface WebBookmarkModeProps {
   editor: NodeViewProps['editor']
   deleteNode: NodeViewProps['deleteNode']
   cover: string
@@ -13,7 +13,7 @@ export interface LinkModeProps {
   linkUrl: string
 }
 
-export const LinkMode: React.FC<LinkModeProps> = ({ linkUrl, cover, title, description, deleteNode }) => {
+export const WebBookmarkMode: React.FC<WebBookmarkModeProps> = ({ linkUrl, cover, title, description, deleteNode }) => {
   return (
     <BlockContainer contentForCopy={linkUrl} deleteNode={deleteNode} actionOptions={['copy', 'delete']}>
       <Button

@@ -1,0 +1,106 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://iframe.ly/api/iframely?api_key=343dce40eb6be7b7ccf9cb&url=https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf
+      body:
+        encoding: US-ASCII
+        string: ''
+      headers:
+        User-Agent:
+          - Faraday v1.8.0
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - '*/*'
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Server:
+          - nginx
+        Date:
+          - Thu, 13 Jan 2022 04:54:02 GMT
+        Content-Type:
+          - application/json
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Vary:
+          - Accept-Encoding
+        X-Powered-By:
+          - Express
+        Access-Control-Allow-Origin:
+          - '*'
+        Cache-Control:
+          - public, max-age=3600
+        Expires:
+          - Thu, 13 Jan 2022 05:35:34 GMT
+        Etag:
+          - W/"b10d78d74f5b55c9a8d063cfcd642f79"
+      body:
+        encoding: UTF-8
+        string: |-
+          {
+              "url": "https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf",
+              "meta": {
+                  "provider": "Google Docs",
+                  "provider_url": "https://docs.google.com",
+                  "canonical": "https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf",
+                  "medium": "file"
+              },
+              "links": {
+                  "reader": [
+                      {
+                          "href": "https://docs.google.com/viewer?embedded=true&url=https%3A%2F%2Fpdftron.s3.amazonaws.com%2Fdownloads%2Fpl%2Fdemo-annotated.pdf",
+                          "type": "text/html",
+                          "rel": [
+                              "reader",
+                              "file",
+                              "ssl",
+                              "html5"
+                          ],
+                          "media": {
+                              "aspect-ratio": 0.7727272727272727
+                          },
+                          "html": "<div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 129.4118%;\"><iframe src=\"https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fpdftron.s3.amazonaws.com%2Fdownloads%2Fpl%2Fdemo-annotated.pdf\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen></iframe></div>"
+                      }
+                  ],
+                  "file": [
+                      {
+                          "href": "https://docs.google.com/viewer?embedded=true&url=https%3A%2F%2Fpdftron.s3.amazonaws.com%2Fdownloads%2Fpl%2Fdemo-annotated.pdf",
+                          "type": "text/html",
+                          "rel": [
+                              "reader",
+                              "file",
+                              "ssl",
+                              "html5"
+                          ],
+                          "media": {
+                              "aspect-ratio": 0.7727272727272727
+                          },
+                          "html": "<div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 129.4118%;\"><iframe src=\"https://docs.google.com/viewer?embedded=true&amp;url=https%3A%2F%2Fpdftron.s3.amazonaws.com%2Fdownloads%2Fpl%2Fdemo-annotated.pdf\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen></iframe></div>"
+                      },
+                      {
+                          "href": "https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf",
+                          "type": "application/pdf",
+                          "content_length": 365116,
+                          "rel": [
+                              "file",
+                              "ssl"
+                          ]
+                      }
+                  ]
+              },
+              "rel": [
+                  "reader",
+                  "html5",
+                  "ssl",
+                  "file"
+              ],
+              "html": "<div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 129.4118%;\"><iframe src=\"https://docs.google.com/viewer?embedded=true&url=https%3A%2F%2Fpdftron.s3.amazonaws.com%2Fdownloads%2Fpl%2Fdemo-annotated.pdf\" style=\"top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;\" allowfullscreen></iframe></div>"
+          }
+    recorded_at: Thu, 13 Jan 2022 04:54:02 GMT
+recorded_with: VCR 6.0.0

@@ -27,3 +27,4 @@ export const Image = createEditorIcon(<Icon.Image fill={theme.colors.blue4.value
 export const Upload = createEditorIcon(<Icon.Upload fill={theme.colors.deepPurple4.value} />)
 export const Link = createEditorIcon(<Icon.Link fill={theme.colors.deepPurple4.value} />)
 export const Table = createEditorIcon(<Icon.Table fill={theme.colors.deepPurple4.value} />)
+export const Unsplash = createEditorIcon(<Icon.Unsplash fill={theme.colors.deepPurple4.value} />)

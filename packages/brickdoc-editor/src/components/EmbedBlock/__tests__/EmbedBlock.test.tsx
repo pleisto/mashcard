@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { EditorDataSource, EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { EmbedBlock } from '../EmbedBlock'
 
@@ -47,10 +47,10 @@ describe('EmbedBlock', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('renders pending panel when no url', () => {
+  it('renders link placeholder correctly', () => {
     const props: any = {
       editor: {},
-      node: { uuid, attrs: { link: {}, attachment: {} } },
+      node: { uuid, attrs: { link: {}, attachment: {}, embedMeta: { embedType: 'LINK' } } },
       extension: {
         options: {}
       },
@@ -63,7 +63,45 @@ describe('EmbedBlock', () => {
       </EditorDataSourceContext.Provider>
     )
 
-    expect(screen.getByText('embed_block.hint')).toBeInTheDocument()
+    expect(screen.getByText('embed_block.types.link.label')).toBeInTheDocument()
+  })
+
+  it('renders gallery placeholder correctly', () => {
+    const props: any = {
+      editor: {},
+      node: { uuid, attrs: { link: {}, attachment: {}, embedMeta: { embedType: 'GALLERY' } } },
+      extension: {
+        options: {}
+      },
+      updateAttributes: () => {}
+    }
+
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <EmbedBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
+
+    expect(screen.getByText('embed_block.types.gallery.label')).toBeInTheDocument()
+  })
+
+  it('renders uploader placeholder correctly', () => {
+    const props: any = {
+      editor: {},
+      node: { uuid, attrs: { link: {}, attachment: {}, embedMeta: { embedType: 'UPLOAD' } } },
+      extension: {
+        options: {}
+      },
+      updateAttributes: () => {}
+    }
+
+    render(
+      <EditorDataSourceContext.Provider value={editorDataSource}>
+        <EmbedBlock {...props} />
+      </EditorDataSourceContext.Provider>
+    )
+
+    expect(screen.getByText('embed_block.types.upload.label')).toBeInTheDocument()
   })
 
   it('renders link', () => {
@@ -129,29 +167,5 @@ describe('EmbedBlock', () => {
     )
 
     expect(screen.getByText(props.node.attrs.attachment.name)).toBeInTheDocument()
-  })
-
-  it('renders uploader dashboard when click add button', () => {
-    const props: any = {
-      editor: {},
-      node: { attrs: { uuid, link: {}, attachment: {} } },
-      extension: {
-        options: {
-          prepareFileUpload: () => {},
-          getAttachmentUrl: () => ''
-        }
-      },
-      updateAttributes: () => {}
-    }
-
-    render(
-      <EditorDataSourceContext.Provider value={editorDataSource}>
-        <EmbedBlock {...props} />
-      </EditorDataSourceContext.Provider>
-    )
-
-    fireEvent.click(screen.getByText('embed_block.hint'))
-
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 })

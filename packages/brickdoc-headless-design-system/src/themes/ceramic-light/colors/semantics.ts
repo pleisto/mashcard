@@ -46,7 +46,7 @@ export const Semantics = {
   backgroundPrimary: Palettes.grey1,
   backgroundSecondary: Palettes.grey2,
   backgroundThirdary: Palettes.grey4,
-  backgroundOverlayPrimary: Atomics.white_80p,
+  backgroundOverlayPrimary: Atomics.black_35p,
   backgroundOverlaySecondary: Atomics.black_3p,
   backgroundOverlayThirdary: Atomics.grey2_50p,
   backgroundOverlayQuaternary: Atomics.grey2_90p,
@@ -73,7 +73,7 @@ export const Semantics = {
    * Overlays
    */
   overlayPrimary: Atomics.black_35p,
-  overlaySecondary: Atomics.grey4_40p,
+  overlaySecondary: Atomics.black_3p,
 
   /**
    * Error

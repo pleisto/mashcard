@@ -67,11 +67,22 @@ export interface DashboardPluginOptions {
   onFileLoaded?: (file: File) => void
   prepareFileUpload?: (
     blockId: string,
-    type: 'image' | 'pdf',
+    type: string,
     file: any
-  ) => Promise<{ endpoint: string; headers: any; blobKey: string; signedId: string; downloadUrl: string; viewUrl: string }>
-  fetchUnsplashImages?: (query: string, page: number, perPage: number) => Promise<{ success: boolean; data: UnsplashImage[] }>
-  fileType: 'image' | 'pdf'
+  ) => Promise<{
+    endpoint: string
+    headers: any
+    blobKey: string
+    signedId: string
+    downloadUrl: string
+    viewUrl: string
+  }>
+  fetchUnsplashImages?: (
+    query: string,
+    page: number,
+    perPage: number
+  ) => Promise<{ success: boolean; data: UnsplashImage[] }>
+  fileType: string
   importSources: ImportSourceOption[]
 }
 
@@ -121,6 +132,13 @@ export class DashboardPlugin extends BasePlugin {
   }
 
   render(): JSX.Element {
-    return <Dashboard importSources={this.opts.importSources} pluginOptions={this.opts} uppy={this.uppy} pluginId={this.id} />
+    return (
+      <Dashboard
+        importSources={this.opts.importSources}
+        pluginOptions={this.opts}
+        uppy={this.uppy}
+        pluginId={this.id}
+      />
+    )
   }
 }
