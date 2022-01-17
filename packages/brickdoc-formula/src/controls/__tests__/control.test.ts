@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 import { interpret, parse } from '../../grammar/core'
-import { FormulaContext } from '../../context'
+import { FormulaContext, FORMULA_FEATURE_CONTROL } from '../../context'
 import { quickInsert } from '../../grammar/testHelper'
 
 const formulaContext = new FormulaContext({})
@@ -121,11 +121,15 @@ describe('Controls', () => {
 
     expect(errorMessage1).toEqual([{ message: 'Function Button not found', type: 'deps' }])
 
+    formulaContext.features = []
+
     const { errorMessages: errorMessage2 } = parse({
-      ctx: { formulaContext: { ...formulaContext, features: [] }, meta, interpretContext }
+      ctx: { formulaContext, meta, interpretContext }
     })
 
     expect(errorMessage2).toEqual([{ message: 'Feature formula-controls not enabled', type: 'deps' }])
+
+    formulaContext.features = [FORMULA_FEATURE_CONTROL]
 
     const { errorMessages: errorMessage3 } = parse({ ctx: { formulaContext, meta, interpretContext } })
 

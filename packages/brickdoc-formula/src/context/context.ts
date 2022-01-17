@@ -184,7 +184,7 @@ export class FormulaContext implements ContextInterface {
     )
   }
 
-  public invoke = async (name: string, ctx: FunctionContext, ...args: any[]): Promise<AnyTypeResult> => {
+  public async invoke(name: string, ctx: FunctionContext, ...args: any[]): Promise<AnyTypeResult> {
     const clause = this.functionClausesMap[name]
     if (!clause) {
       return { type: 'Error', result: `Function ${name} not found`, errorKind: 'fatal' }
@@ -193,7 +193,7 @@ export class FormulaContext implements ContextInterface {
     return await clause.reference(ctx, ...args)
   }
 
-  public completions = (namespaceId: NamespaceId, variableId: VariableId | undefined): Completion[] => {
+  public completions(namespaceId: NamespaceId, variableId: VariableId | undefined): Completion[] {
     const functions: FunctionCompletion[] = Object.entries(this.functionClausesMap).map(([key, f]) => {
       const weight: number = this.functionWeights[key as FunctionKey] || 0
       return function2completion(f, weight)
@@ -234,20 +234,20 @@ export class FormulaContext implements ContextInterface {
     )
   }
 
-  public getDefaultVariableName = (namespaceId: NamespaceId, type: FormulaType): DefaultVariableName => {
+  public getDefaultVariableName(namespaceId: NamespaceId, type: FormulaType): DefaultVariableName {
     const oldCounter = this.variableNameCounter[type][namespaceId] || 0
     return `${FormulaTypeCastName[type]}${oldCounter + 1}`
   }
 
-  public variableCount = (): number => {
+  public variableCount(): number {
     return Object.keys(this.context).length
   }
 
-  public findSpreadsheet = (namespaceId: NamespaceId): SpreadsheetType | undefined => {
+  public findSpreadsheet(namespaceId: NamespaceId): SpreadsheetType | undefined {
     return this.spreadsheets[namespaceId]
   }
 
-  public findColumn = (namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined => {
+  public findColumn(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
     const spreadsheet = this.findSpreadsheet(namespaceId)
     if (!spreadsheet) {
       return undefined
@@ -262,7 +262,7 @@ export class FormulaContext implements ContextInterface {
     return new ColumnClass(spreadsheet, column)
   }
 
-  public setSpreadsheet = (spreadsheet: SpreadsheetType): void => {
+  public setSpreadsheet(spreadsheet: SpreadsheetType): void {
     this.formulaNames = this.formulaNames
       .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
       .concat({
@@ -278,21 +278,21 @@ export class FormulaContext implements ContextInterface {
     this.spreadsheets[spreadsheet.blockId] = spreadsheet
   }
 
-  public removeSpreadsheet = (namespaceId: NamespaceId): void => {
+  public removeSpreadsheet(namespaceId: NamespaceId): void {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.spreadsheets[namespaceId]
   }
 
-  public findVariable = (namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined => {
+  public findVariable(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
     return this.context[variableKey(namespaceId, variableId)]
   }
 
-  public listVariables = (namespaceId: NamespaceId): VariableInterface[] => {
+  public listVariables(namespaceId: NamespaceId): VariableInterface[] {
     return Object.values(this.context).filter(v => v.t.namespaceId === namespaceId)
   }
 
   // TODO flattenVariableDependencies
-  public clearDependency = (namespaceId: NamespaceId, variableId: VariableId): void => {
+  public clearDependency(namespaceId: NamespaceId, variableId: VariableId): void {
     const variable = this.findVariable(namespaceId, variableId)
     if (variable) {
       variable.t.variableDependencies.forEach(dependency => {
@@ -319,7 +319,7 @@ export class FormulaContext implements ContextInterface {
 
   // TODO refresh flattenVariableDependencies
   // TODO update other variable's level
-  public trackDependency = (variable: VariableInterface): void => {
+  public trackDependency(variable: VariableInterface): void {
     const {
       t: { variableDependencies, blockDependencies, namespaceId, name, variableId, functionDependencies }
     } = variable
@@ -406,7 +406,7 @@ export class FormulaContext implements ContextInterface {
     })
   }
 
-  public handleBroadcast = (variable: VariableInterface): void => {
+  public handleBroadcast(variable: VariableInterface): void {
     const dependencyKey = variableKey(variable.t.namespaceId, variable.t.variableId)
     // console.log('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
     this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
@@ -416,13 +416,13 @@ export class FormulaContext implements ContextInterface {
   }
 
   // TODO update dependencies and check circular references
-  public commitVariable = async ({
+  public async commitVariable({
     variable,
     skipCreate
   }: {
     variable: VariableInterface
     skipCreate?: boolean
-  }): Promise<void> => {
+  }): Promise<void> {
     const { namespaceId, variableId } = variable.t
     const isNew = !this.context[variableKey(namespaceId, variableId)]
 
@@ -468,7 +468,7 @@ export class FormulaContext implements ContextInterface {
     void this.handleBroadcast(variable)
   }
 
-  public removeVariable = async (namespaceId: NamespaceId, variableId: VariableId): Promise<void> => {
+  public async removeVariable(namespaceId: NamespaceId, variableId: VariableId): Promise<void> {
     const key = variableKey(namespaceId, variableId)
     const variable = this.context[key]
     if (variable) {
@@ -482,18 +482,18 @@ export class FormulaContext implements ContextInterface {
     }
   }
 
-  public findFunctionClause = (group: FunctionGroup, name: FunctionNameType): FunctionClause<any> | undefined => {
+  public findFunctionClause(group: FunctionGroup, name: FunctionNameType): FunctionClause<any> | undefined {
     return this.functionClausesMap[buildFunctionKey(group, name)]
   }
 
-  public resetFormula = (): void => {
+  public resetFormula(): void {
     this.context = {}
     this.formulaNames = []
     this.reverseVariableDependencies = {}
     this.reverseFunctionDependencies = {}
   }
 
-  private readonly parseCodeFragments = (input: string): CodeFragment[] => {
+  private parseCodeFragments(input: string): CodeFragment[] {
     const lexResult: ILexingResult = FormulaLexer.tokenize(input)
     if (lexResult.errors.length > 0) {
       return []

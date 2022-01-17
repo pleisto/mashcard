@@ -124,7 +124,7 @@ export class VariableClass implements VariableInterface {
     this.formulaContext = formulaContext
   }
 
-  public namespaceName = () => {
+  namespaceName(): string {
     const formulaName = this.formulaContext.formulaNames.find(n => n.key === this.t.namespaceId && n.kind === 'Block')
     if (formulaName) {
       return formulaName.name
@@ -133,11 +133,11 @@ export class VariableClass implements VariableInterface {
     return 'Unknown'
   }
 
-  public isDraft = () => {
+  isDraft(): boolean {
     return !this.formulaContext.findVariable(this.t.namespaceId, this.t.variableId)
   }
 
-  public meta = (): VariableMetadata => {
+  meta(): VariableMetadata {
     return {
       namespaceId: this.t.namespaceId,
       variableId: this.t.variableId,
@@ -146,15 +146,15 @@ export class VariableClass implements VariableInterface {
     }
   }
 
-  public destroy = async (): Promise<void> => {
+  async destroy(): Promise<void> {
     await this.formulaContext.removeVariable(this.t.namespaceId, this.t.variableId)
   }
 
-  public save = async (): Promise<void> => {
+  async save(): Promise<void> {
     await this.formulaContext.commitVariable({ variable: this })
   }
 
-  public buildFormula = (): Formula => {
+  public buildFormula(): Formula {
     const ctx = { formulaContext: this.formulaContext, meta: this.meta(), interpretContext: { ctx: {}, arguments: [] } }
     return {
       blockId: this.t.namespaceId,
@@ -171,53 +171,53 @@ export class VariableClass implements VariableInterface {
     }
   }
 
-  public invokeBackendCreate = async (): Promise<void> => {
+  public async invokeBackendCreate(): Promise<void> {
     if (this.formulaContext.backendActions) {
       await this.formulaContext.backendActions.createVariable(this.buildFormula())
     }
   }
 
-  public invokeBackendUpdate = async (): Promise<void> => {
+  public async invokeBackendUpdate(): Promise<void> {
     if (this.formulaContext.backendActions) {
       await this.formulaContext.backendActions.updateVariable(this.buildFormula())
     }
   }
 
-  public afterUpdate = (): void => {
+  public afterUpdate(): void {
     // console.log('after update', this.t.name, this.t.variableId)
     BrickdocEventBus.dispatch(FormulaUpdated(this))
   }
 
-  public updateAndPersist = async (): Promise<void> => {
+  public async updateAndPersist(): Promise<void> {
     await this.invokeBackendUpdate()
     this.afterUpdate()
   }
 
-  public reparse = (): void => {
+  public reparse(): void {
     const formula = this.buildFormula()
     this.t = castVariable(this.formulaContext, formula)
     this.afterUpdate()
   }
 
-  public updateCst = (cst: CstNode, interpretContext: InterpretContext): void => {
+  public updateCst(cst: CstNode, interpretContext: InterpretContext): void {
     this.t.cst = cst
     void this.refresh(interpretContext)
   }
 
-  public updateDefinition = async (definition: Definition): Promise<void> => {
+  public async updateDefinition(definition: Definition): Promise<void> {
     this.t.definition = definition
     const formula = this.buildFormula()
     this.t = castVariable(this.formulaContext, formula)
     await this.refresh({ ctx: {}, arguments: [] })
   }
 
-  public refresh = async (interpretContext: InterpretContext): Promise<void> => {
+  public async refresh(interpretContext: InterpretContext): Promise<void> {
     await this.interpret(interpretContext)
     await this.invokeBackendUpdate()
     this.formulaContext.handleBroadcast(this)
   }
 
-  public interpret = async (interpretContext: InterpretContext): Promise<void> => {
+  public async interpret(interpretContext: InterpretContext): Promise<void> {
     const { variableValue } = await interpret({
       cst: this.t.cst!,
       ctx: {
