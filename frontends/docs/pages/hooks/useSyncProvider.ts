@@ -6,7 +6,7 @@ import { BlockInput, Block, useGetChildrenBlocksQuery, useBlockSyncBatchMutation
 import { isEqual } from 'lodash-es'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
-import { BrickdocEventBus, Event, BlockUpdated, BlockDeleted, BlockNameLoad } from '@brickdoc/schema'
+import { BrickdocEventBus, Event, BlockUpdated, BlockDeleted, BlockNameLoad, BlockSynced } from '@brickdoc/schema'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -89,6 +89,9 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       })
 
       await syncPromise
+      blocks.forEach(b => {
+        BrickdocEventBus.dispatch(BlockSynced(b))
+      })
     } catch {
       // Ignored
     } finally {
