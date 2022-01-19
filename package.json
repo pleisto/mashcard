@@ -80,6 +80,7 @@
     "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
     "@types/is-ci": "^3.0.0",
     "@types/jest": "^27.4.0",
     "@types/jest-axe": "^3.5.3",

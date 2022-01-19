@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/testing-react'
-import { a11yTest } from '../../../testHelper'
+import { a11yTest } from '../../../utilities/testing'
 import { FC } from 'react'
 import * as TooltipStories from '../tooltip.stories'
 

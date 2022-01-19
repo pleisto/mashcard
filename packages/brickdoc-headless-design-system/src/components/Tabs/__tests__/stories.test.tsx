@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
 import { range } from 'lodash-es'
-import { a11yTest } from '../../../testHelper'
+import { a11yTest } from '../../../utilities/testing'
 import { FC } from 'react'
 import * as TabsStories from '../tabs.stories'
 import { Tabs, TabPane } from '../index'

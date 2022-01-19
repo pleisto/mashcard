@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { render } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
-import { a11yTest } from '../../../testHelper'
+import { a11yTest } from '../../../utilities/testing'
 import { TagProps } from '../constants'
 import * as TagStories from '../tag.stories'
 import * as TagGroupStories from '../tagGroup.stories'

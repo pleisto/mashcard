@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/testing-react'
-import { a11yTest } from '../../../testHelper'
+import { a11yTest } from '../../../utilities/testing'
 import * as CheckboxStories from '../checkbox.stories'
 
 const { Basic } = composeStories(CheckboxStories)

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { render } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
-import { a11yTest } from '../../../testHelper'
+import { a11yTest } from '../../../utilities/testing'
 import { Button } from '../../'
 import { EmptyType } from '../constants'
 import * as Stories from '../empty.stories'

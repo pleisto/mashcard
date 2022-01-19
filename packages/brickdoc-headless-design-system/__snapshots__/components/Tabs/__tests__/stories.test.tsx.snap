@@ -175,20 +175,9 @@ exports[`Tabs The number of snapshots is matched correctly 1`] = `
           tabindex="-1"
           type="button"
         >
-          <span
-            aria-label="more"
-            class="brd-icon brd-icon-more"
-            role="img"
-          >
-            <svg
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
+          <i
+            data-mock-icon="More"
+          />
         </button>
       </div>
     </div>
@@ -372,20 +361,9 @@ exports[`Tabs matches snapshot correctly 1`] = `
         tabindex="-1"
         type="button"
       >
-        <span
-          aria-label="more"
-          class="brd-icon brd-icon-more"
-          role="img"
-        >
-          <svg
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 7 12zM14 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 14 12zM21 12c0 .537-.211 1.024-.555 1.383A2 2 0 1 1 21 12z"
-              fill="currentColor"
-            />
-          </svg>
-        </span>
+        <i
+          data-mock-icon="More"
+        />
       </button>
     </div>
   </div>

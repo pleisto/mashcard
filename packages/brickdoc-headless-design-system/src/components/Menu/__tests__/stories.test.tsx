@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/testing-react'
-import { a11yTest } from '../../../testHelper'
+import { a11yTest } from '../../../utilities/testing'
 import * as MenuStories from '../menu.stories'
 
 const { withGroup } = composeStories(MenuStories)
