@@ -65,25 +65,9 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           </span>
         </span>
       </div>
-      <span
-        aria-label="arrow-right"
-        class="brd-icon brd-icon-arrow-right brd-c-fdvikV"
-        role="img"
-      >
-        <svg
-          fill="none"
-          height="1em"
-          viewBox="0 0 24 24"
-          width="1em"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M8.793 5.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414-1.414L14.086 12 8.793 6.707a1 1 0 0 1 0-1.414z"
-            fill="currentColor"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </span>
+      <i
+        data-mock-icon="ArrowRight"
+      />
     </div>
   </li>
   <ul
@@ -223,25 +207,9 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           </span>
         </span>
       </div>
-      <span
-        aria-label="arrow-right"
-        class="brd-icon brd-icon-arrow-right brd-c-fdvikV"
-        role="img"
-      >
-        <svg
-          fill="none"
-          height="1em"
-          viewBox="0 0 24 24"
-          width="1em"
-        >
-          <path
-            clip-rule="evenodd"
-            d="M8.793 5.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414-1.414L14.086 12 8.793 6.707a1 1 0 0 1 0-1.414z"
-            fill="currentColor"
-            fill-rule="evenodd"
-          />
-        </svg>
-      </span>
+      <i
+        data-mock-icon="ArrowRight"
+      />
     </div>
   </li>
   <ul
