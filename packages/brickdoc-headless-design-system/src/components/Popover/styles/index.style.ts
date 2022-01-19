@@ -49,7 +49,7 @@ const basicStyle = {
     backgroundColor: theme.colors.white,
     backgroundClip: 'padding-box',
     color: theme.colors.typePrimary,
-    padding: '0',
+    padding: '10px 12px',
     minHeight: '3rem',
     borderRadius: '2px',
     minWidth: '10rem'
