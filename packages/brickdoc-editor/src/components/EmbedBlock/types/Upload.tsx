@@ -43,7 +43,7 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
   )
 
   const [progress, setProgress] = React.useState<UploadProgress>()
-  const onProgress = React.useCallback((progress: UploadProgress): void => setProgress(progress), [])
+  const onProgress = (progress: UploadProgress): void => setProgress(progress)
 
   const inputRef = React.useRef<HTMLInputElement>(null)
   const handleFileInputChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>(
@@ -64,14 +64,32 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
         onProgress
       })
     },
-    [editorDataSource.prepareFileUpload, node.attrs.uuid, onProgress, onUploaded]
+    [editorDataSource.prepareFileUpload, node.attrs.uuid, onUploaded]
   )
   const handleChooseFile = React.useCallback(() => {
     inputRef.current?.click()
   }, [])
 
   React.useEffect(() => {
-    if (node.attrs.isNew) {
+    // upload default file
+    if (node.attrs.defaultFile) {
+      // Problem: upload API requires block exists first
+      // So defaultFile upload hook can not trigger before blockBatchSync
+      // TODO: avoid using setTimeout, manually trigger block sync before upload
+      setTimeout(() => {
+        const file = node.attrs.defaultFile as File
+        const fileType = getFileTypeByExtension(file.name)
+        void imperativeUpload(file, {
+          prepareFileUpload: editorDataSource.prepareFileUpload,
+          blockId: node.attrs.uuid,
+          fileType,
+          onUploaded,
+          onProgress
+        })
+      }, 1000)
+    }
+
+    if (!node.attrs.defaultFile && node.attrs.isNew) {
       handleChooseFile()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

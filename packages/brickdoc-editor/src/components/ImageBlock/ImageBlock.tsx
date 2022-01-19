@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { imperativeUpload } from '@brickdoc/uploader'
 import { linkStorage } from '../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
@@ -44,21 +43,6 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ node, deleteNode, getPos, 
     },
     [node.attrs.image, updateAttributes]
   )
-
-  // upload default file
-  React.useEffect(() => {
-    if (!node.attrs.defaultFile) return
-    void imperativeUpload(node.attrs.defaultFile, {
-      prepareFileUpload: editorDataSource.prepareFileUpload,
-      blockId: node.attrs.uuid,
-      fileType: 'image',
-      onUploaded: (data): void => {
-        linkStorage.set(node.attrs.uuid, data.viewUrl!)
-        updateImageAttributes({ key: data.url, source: data.meta?.source.toUpperCase() })
-      }
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const url =
     getBlobUrl(node.attrs?.uuid, node.attrs?.image ?? {}, editorDataSource.blobs) ?? linkStorage.get(node.attrs.uuid)

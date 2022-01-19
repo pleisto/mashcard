@@ -10,7 +10,7 @@ declare module '@tiptap/core' {
       /**
        * Set a embedBlock
        */
-      setEmbedBlock: (embedType: Embedtype) => ReturnType
+      setEmbedBlock: (embedType: Embedtype, defaultFile?: File) => ReturnType
     }
   }
 }
@@ -36,6 +36,9 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
       },
       isNew: {
         default: false
+      },
+      defaultFile: {
+        default: null
       },
       link: {
         default: {
@@ -74,12 +77,13 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
   addCommands() {
     return {
       setEmbedBlock:
-        embedType =>
+        (embedType, defaultFile) =>
         ({ chain }) => {
           const content: Content = {
             type: this.name,
             attrs: {
               isNew: true,
+              defaultFile,
               embedMeta: {
                 embedType
               }
