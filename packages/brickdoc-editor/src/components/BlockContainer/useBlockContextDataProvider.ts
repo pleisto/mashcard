@@ -6,11 +6,13 @@ import { EditorContext } from '../../context/EditorContext'
 
 export interface UseBlockContextDataProviderProps {
   deleteNode?: BlockContainerProps['deleteNode']
+  getPos: BlockContainerProps['getPos']
   contentForCopy?: BlockContainerProps['contentForCopy']
 }
 
 export function useBlockContextDataProvider({
   deleteNode,
+  getPos,
   contentForCopy
 }: UseBlockContextDataProviderProps): [BlockContextData] {
   const { t } = React.useContext(EditorContext)
@@ -19,12 +21,13 @@ export function useBlockContextDataProvider({
       deleteBlock: () => deleteNode?.(),
       duplicateBlock() {},
       moveBlock() {},
+      getPosition: () => getPos?.(),
       copyContent: async () => {
         await navigator.clipboard.writeText(contentForCopy ?? '')
         void toast.success(t('copy_hint'))
       }
     }),
-    [contentForCopy, deleteNode, t]
+    [contentForCopy, deleteNode, getPos, t]
   )
 
   return [data]

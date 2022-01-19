@@ -11,6 +11,7 @@ declare module '@tiptap/core' {
     formula: {
       setFormula: (id: string) => ReturnType
       setFormulaBlock: () => ReturnType
+      insertFormulaBlock: (position?: number) => ReturnType
       toggleFormula: () => ReturnType
     }
   }
@@ -73,6 +74,15 @@ export const FormulaExtension = Node.create<FormulaOptions>({
             attrs: { isNew: true, formula: { type: 'FORMULA' } }
           }
           return insertBlockAt(content, chain)
+        },
+      insertFormulaBlock:
+        position =>
+        ({ chain }) => {
+          const content = {
+            type: this.name,
+            attrs: { isNew: true, formula: { type: 'FORMULA' } }
+          }
+          return insertBlockAt(content, chain, position)
         },
       toggleFormula:
         () =>

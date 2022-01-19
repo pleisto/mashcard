@@ -13,7 +13,7 @@ const arrowWidth = '6px'
  */
 const arrowRotateWidth = `${Math.sqrt(parseInt(arrowWidth, 10) * parseInt(arrowWidth, 10) * 2) + 3 * 2}px`
 
-export const popoverStyle = css({
+const basicStyle = {
   display: 'inline-flex',
   flexDirection: 'row',
   alignItems: 'center',
@@ -49,7 +49,7 @@ export const popoverStyle = css({
     backgroundColor: theme.colors.white,
     backgroundClip: 'padding-box',
     color: theme.colors.typePrimary,
-    padding: '12px 20px',
+    padding: '0',
     minHeight: '3rem',
     borderRadius: '2px',
     minWidth: '10rem'
@@ -145,5 +145,28 @@ export const popoverStyle = css({
   },
   '&-placement-bottomEnd &-arrow': {
     right: arrowOffset.horizontal
+  }
+}
+
+export const popoverStyle = css({
+  ...basicStyle,
+  variants: {
+    compact: {
+      true: {
+        '&-inner': {
+          padding: 0
+        }
+      },
+      false: {}
+    }
+  }
+})
+
+// variants is not work correctly with prefixCls
+export const popoverCompactStyle = css({
+  ...basicStyle,
+  '&-inner': {
+    ...basicStyle['&-inner'],
+    padding: 0
   }
 })

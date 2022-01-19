@@ -6,27 +6,39 @@ import {
   useMenuState
 } from 'reakit/Menu'
 import cx from 'classnames'
-import { menubarStyles } from './menu'
+import { menubarStyles, MenuProps } from './menu'
 import { MenuContext } from './context'
 import { MenuItem, MenuItemProps } from './menuItem'
 import { css, styled, theme } from '../../themes'
 import { ArrowRight } from '@brickdoc/design-icons'
 
-export interface MenuItemSubMenuProps extends MenuItemProps {}
+export interface MenuItemSubMenuProps extends MenuItemProps {
+  baseId?: MenuProps['baseId']
+  type?: MenuProps['type']
+}
 
-const subMenuStyles = css({
-  marginLeft: '0.5rem'
-})
+const subMenuStyles = css()
 
 const SubMenuRightArrow = styled(ArrowRight, {
   color: theme.colors.typeThirdary
 })
 
+interface SubMenuItemContextValue {
+  baseId?: MenuItemSubMenuProps['baseId']
+  type?: MenuItemSubMenuProps['type']
+}
+
+const SubMenuItemContext = React.createContext<SubMenuItemContextValue>({})
+
 const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props, ref) => {
-  const menuProps = useMenuState()
   const { children, ...restProps } = props
+  const { baseId, type } = React.useContext(SubMenuItemContext)
+  const menuProps = useMenuState({ gutter: 8, baseId })
   const title = props.title ?? (typeof props.label === 'string' ? props.label : '')
-  const className = React.useMemo<string>(() => cx(menubarStyles({ orientation: 'vertical' }), subMenuStyles()), [])
+  const className = React.useMemo<string>(
+    () => cx(menubarStyles({ orientation: 'vertical', theme: type ?? 'default' }), subMenuStyles()),
+    [type]
+  )
   return (
     <MenuContext.Provider value={menuProps}>
       <ReakitMenuButton {...menuProps} {...restProps} ref={ref} tip={<SubMenuRightArrow />} as={MenuItem} />
@@ -39,5 +51,16 @@ const SubMenuItem = React.forwardRef<HTMLLIElement, MenuItemSubMenuProps>((props
 
 export const MenuItemSubMenu: React.FC<MenuItemSubMenuProps> = props => {
   const menuProps = React.useContext(MenuContext)
-  return <ReakitMenuItem {...menuProps} {...props} as={SubMenuItem} />
+  const value = React.useMemo<SubMenuItemContextValue>(
+    () => ({
+      type: props.type,
+      baseId: props.baseId
+    }),
+    [props.baseId, props.type]
+  )
+  return (
+    <SubMenuItemContext.Provider value={value}>
+      <ReakitMenuItem {...menuProps} {...props} as={SubMenuItem} />
+    </SubMenuItemContext.Provider>
+  )
 }

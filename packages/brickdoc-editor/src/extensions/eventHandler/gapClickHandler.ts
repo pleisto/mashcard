@@ -8,6 +8,10 @@ const insertNewLine = (editor: Editor, position: number): void => {
 }
 
 export const gapClickHandler = (editor: Editor, view: EditorView, position: number, event: MouseEvent): void => {
+  if (!(event.target as HTMLElement)?.classList.contains('ProseMirror')) {
+    return
+  }
+
   if (position - 1 < 0) return
   const node = view.state.doc.nodeAt(position - 1)
 

@@ -4,7 +4,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
 <ul
   aria-label="slash_menu.title"
   aria-orientation="vertical"
-  class="brd-c-jhHXSA brd-c-jhHXSA-iTKOFX-orientation-vertical brd-c-dLLhok brd-c-dLLhok-iAMRjR-withFooter-true"
+  class="brd-c-bOsLjs brd-c-bOsLjs-lozdyt-theme-default brd-c-bOsLjs-iTKOFX-orientation-vertical brd-c-dLLhok brd-c-dLLhok-iAMRjR-withFooter-true"
   id="slash-menu"
   role="menubar"
 >
@@ -30,7 +30,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       title=""
     >
       <li
-        class="brd-c-jjBbCK brd-c-jjBbCK-hlsvbV-active-true brd-c-jIhtkb"
+        class="brd-c-bhbgDt brd-c-bhbgDt-hlsvbV-active-true brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-1"
         role="menuitem"
@@ -38,7 +38,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         title=""
       >
         <span
-          class="brd-c-dKhCQi"
+          class="brd-c-jGWQQH brd-c-ktkyHc"
         >
           <div>
             icon
@@ -46,7 +46,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </span>
       </li>
       <li
-        class="brd-c-jjBbCK brd-c-jIhtkb"
+        class="brd-c-bhbgDt brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-2"
         role="menuitem"
@@ -54,7 +54,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         title=""
       >
         <span
-          class="brd-c-dKhCQi"
+          class="brd-c-jGWQQH brd-c-ktkyHc"
         >
           <div>
             icon
@@ -62,7 +62,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </span>
       </li>
       <li
-        class="brd-c-jjBbCK brd-c-jIhtkb"
+        class="brd-c-bhbgDt brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-3"
         role="menuitem"
@@ -70,7 +70,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         title=""
       >
         <span
-          class="brd-c-dKhCQi"
+          class="brd-c-jGWQQH brd-c-ktkyHc"
         >
           <div>
             icon
@@ -96,7 +96,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </span>
     </span>
     <li
-      class="brd-c-jjBbCK"
+      class="brd-c-bhbgDt"
       data-testid="editor-slash-commands-item"
       id="slash-menu-4"
       label="slash_menu.items.h1.label"
@@ -111,7 +111,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           class="brd-c-OVPdU"
         >
           <span
-            class="brd-c-mEQdo"
+            class="brd-c-jGWQQH brd-c-huISce"
           >
             <div>
               icon
@@ -133,7 +133,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </div>
     </li>
     <li
-      class="brd-c-jjBbCK"
+      class="brd-c-bhbgDt"
       data-testid="editor-slash-commands-item"
       id="slash-menu-5"
       label="slash_menu.items.h2.label"
@@ -148,7 +148,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           class="brd-c-OVPdU"
         >
           <span
-            class="brd-c-mEQdo"
+            class="brd-c-jGWQQH brd-c-huISce"
           >
             <div>
               icon
@@ -170,7 +170,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </div>
     </li>
     <li
-      class="brd-c-jjBbCK"
+      class="brd-c-bhbgDt"
       data-testid="editor-slash-commands-item"
       id="slash-menu-6"
       label="slash_menu.items.h3.label"
@@ -185,7 +185,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           class="brd-c-OVPdU"
         >
           <span
-            class="brd-c-mEQdo"
+            class="brd-c-jGWQQH brd-c-huISce"
           >
             <div>
               icon

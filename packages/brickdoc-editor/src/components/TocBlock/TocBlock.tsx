@@ -13,7 +13,7 @@ export interface TocItem {
   position: number
 }
 
-export const TocBlock: React.FC<TocBlockProps> = ({ editor, deleteNode }) => {
+export const TocBlock: React.FC<TocBlockProps> = ({ editor, deleteNode, getPos }) => {
   const [tocRoot, setTocRoot] = React.useState<TocNode>()
   const [tocItemCount, setTocItemCount] = React.useState<number>(0)
 
@@ -35,7 +35,7 @@ export const TocBlock: React.FC<TocBlockProps> = ({ editor, deleteNode }) => {
   }, [editor, updateItems])
 
   return (
-    <BlockContainer deleteNode={deleteNode} actionOptions={['delete']}>
+    <BlockContainer getPos={getPos} deleteNode={deleteNode} actionOptions={['delete']}>
       <TocContainer tocItemCount={tocItemCount}>
         {tocRoot?.children.map((node, index) => (
           <TocNodePanel key={index} tocNode={node} />

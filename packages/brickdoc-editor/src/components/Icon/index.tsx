@@ -1,6 +1,6 @@
 import React from 'react'
 import { rgba } from 'polished'
-import { Icon, IconProps, theme } from '@brickdoc/design-system'
+import { Icon, IconProps, styled, theme } from '@brickdoc/design-system'
 
 const createEditorIcon =
   (Icon: React.ReactElement): React.FC<IconProps> =>
@@ -28,3 +28,20 @@ export const Upload = createEditorIcon(<Icon.Upload fill={theme.colors.deepPurpl
 export const Link = createEditorIcon(<Icon.Link fill={theme.colors.deepPurple4.value} />)
 export const Table = createEditorIcon(<Icon.Table fill={theme.colors.deepPurple4.value} />)
 export const Unsplash = createEditorIcon(<Icon.Unsplash fill={theme.colors.deepPurple4.value} />)
+export const DragSecondary = createEditorIcon(
+  <Icon.DragSecondary theme="multi-color" fill={[theme.colors.primaryDefault.value, theme.colors.blue2.value]} />
+)
+
+export const iconBackgroundStyle = {
+  background: 'linear-gradient(0deg, rgba(248, 251, 255, 0.36), rgba(248, 251, 255, 0.36)), rgba(255, 255, 255, 0.74)',
+  backdropFilter: 'blur(16px)',
+  borderRadius: '2px',
+  boxShadow:
+    '1px 1px 0px rgba(255, 255, 255, 0.8), 0px 2px 4px rgba(167, 167, 167, 0.3), inset 1px 1px 0px rgba(255, 255, 255, 0.25)'
+}
+
+export const IconBackground = styled('span', {
+  include: ['flexCenter'],
+  display: 'flex',
+  ...iconBackgroundStyle
+})

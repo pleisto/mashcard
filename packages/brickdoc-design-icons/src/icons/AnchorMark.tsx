@@ -8,28 +8,37 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('anchor-mark', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M1 12C1 11.4477 1.44772 11 2 11H5C5.55228 11 6 11.4477 6 12C6 12.5523 5.55228 13 5 13H3.05493C3.55237 17.5 7.36744 21 12 21C16.6326 21 20.4476 17.5 20.9451 13H19C18.4477 13 18 12.5523 18 12C18 11.4477 18.4477 11 19 11H22C22.5523 11 23 11.4477 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12Z"
-      fill="currentColor"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M12 6C12.5523 6 13 6.44772 13 7V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V7C11 6.44772 11.4477 6 12 6Z"
-      fill="currentColor"
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M8.5 4.5C8.5 2.567 10.067 1 12 1C13.933 1 15.5 2.567 15.5 4.5C15.5 6.43298 13.933 8 12 8C10.067 8 8.5 6.43298 8.5 4.5ZM12 3C11.1716 3 10.5 3.67158 10.5 4.5C10.5 5.32841 11.1716 6 12 6C12.8284 6 13.5 5.32841 13.5 4.5C13.5 3.67158 12.8284 3 12 3Z"
-      fill="currentColor"
-    />
-  </svg>
-))
+export default IconWrapper(
+    'anchor-mark',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            width={props.size}
+            height={props.size}
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M1 12C1 11.4477 1.44772 11 2 11H5C5.55228 11 6 11.4477 6 12C6 12.5523 5.55228 13 5 13H3.05493C3.55237 17.5 7.36744 21 12 21C16.6326 21 20.4476 17.5 20.9451 13H19C18.4477 13 18 12.5523 18 12C18 11.4477 18.4477 11 19 11H22C22.5523 11 23 11.4477 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12Z"
+                fill="currentColor"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12 6C12.5523 6 13 6.44772 13 7V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V7C11 6.44772 11.4477 6 12 6Z"
+                fill="currentColor"
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.5 4.5C8.5 2.567 10.067 1 12 1C13.933 1 15.5 2.567 15.5 4.5C15.5 6.43298 13.933 8 12 8C10.067 8 8.5 6.43298 8.5 4.5ZM12 3C11.1716 3 10.5 3.67158 10.5 4.5C10.5 5.32841 11.1716 6 12 6C12.8284 6 13.5 5.32841 13.5 4.5C13.5 3.67158 12.8284 3 12 3Z"
+                fill="currentColor"
+            />
+        </svg>
+    )
+);

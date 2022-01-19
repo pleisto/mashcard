@@ -1,10 +1,8 @@
 import React from 'react'
-import { Popover } from '@brickdoc/design-system'
-import { BlockActionsMenu } from './BlockActionsMenu'
-import './BlockActions.less'
+import { MenuProps, styled } from '@brickdoc/design-system'
 import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
 import {
-  ToolbarDropdownOption,
+  ToolbarSubMenuOption,
   ToolbarItemOption,
   ToolbarItemOptionGroup,
   ToolbarItemGroupOption,
@@ -12,10 +10,11 @@ import {
   ToolbarOptionGroup,
   ToolbarGroupOption
 } from '../Toolbar'
+import { BlockActionButton } from './BlockActionButton'
 
 export type ActionItemOption = ToolbarItemOption
 
-export type ActionDropdownOption = ToolbarDropdownOption
+export type ActionSubMenuOption = ToolbarSubMenuOption
 
 export type ActionGroupOption = ToolbarGroupOption
 
@@ -30,10 +29,29 @@ export type ActionOptionGroup = ToolbarOptionGroup
 export type BlockActionOptions = Array<ToolbarGroupOption | ToolbarItemOption | BasicActionOptionType>
 
 export interface BlockActionsProps {
+  baseId?: MenuProps['baseId']
   options: BlockActionOptions
 }
 
-export const BlockActions: React.FC<BlockActionsProps> = ({ options, children }) => {
+const BlockActionButtonContainer = styled(BlockActionButton, {
+  left: 0,
+  opacity: 0,
+  position: 'absolute',
+  transform: 'translateX(calc(-100% - 0.6875rem))',
+  transition: 'opacity 200ms ease-in-out',
+  top: 0
+})
+
+const BlockActionsContainer = styled('div', {
+  position: 'relative',
+  '&:hover': {
+    [`& ${BlockActionButtonContainer}`]: {
+      opacity: 1
+    }
+  }
+})
+
+export const BlockActions: React.FC<BlockActionsProps> = ({ options, baseId, children }) => {
   const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
     () => options.filter(option => typeof option === 'string') as BasicActionOptionType[],
     [options]
@@ -45,15 +63,9 @@ export const BlockActions: React.FC<BlockActionsProps> = ({ options, children })
   const basicOptions = useBasicActionOptions({ types: basicOptionTypes })
 
   return (
-    <Popover
-      // TODO: replace by css-in-js
-      overlayClassName="brickdoc-action-panel-popover"
-      trigger="hover"
-      autoAdjustOverflow={true}
-      placement="topEnd"
-      content={<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />}
-    >
+    <BlockActionsContainer>
       {children}
-    </Popover>
+      <BlockActionButtonContainer baseId={baseId} extraOptions={extraOptions} basicOptions={basicOptions} />
+    </BlockActionsContainer>
   )
 }

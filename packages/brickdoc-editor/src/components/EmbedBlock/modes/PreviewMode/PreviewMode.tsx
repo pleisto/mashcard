@@ -11,12 +11,14 @@ import { BlockContainer } from '../../../../components'
 
 export interface PreviewModeProps extends Omit<UseAttachmentMethodsProps, 'webViewer'> {
   deleteNode: NodeViewProps['deleteNode']
+  getPos: NodeViewProps['getPos']
   fileName: string
   fileType: FileType
 }
 
 export const PreviewMode: React.FC<PreviewModeProps> = ({
   deleteNode,
+  getPos,
   fileName,
   fileType,
   ...attachmentMethodsProps
@@ -56,8 +58,8 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
     <BlockContainer
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
-      actionOptions={actionOptions}
-    >
+      getPos={getPos}
+      actionOptions={actionOptions}>
       <div data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id} className="brickdoc-pdftron-block">
         <div ref={viewer} className="brickdoc-pdftron-container" />
         <div className="brickdoc-pdftron-info">

@@ -34,7 +34,7 @@ export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null]
       type: 'group',
       items: [
         {
-          type: 'dropdown',
+          type: 'subMenu',
           name: 'fontColor',
           css: { background: activeColor ? activeColor.color : 'unset' },
           content: (

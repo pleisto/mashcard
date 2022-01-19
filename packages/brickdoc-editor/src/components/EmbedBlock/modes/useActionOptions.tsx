@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { ActionGroupOption, BlockActionOptions } from '../../../components/BlockActions'
+import { EditorContext } from '../../../context/EditorContext'
 
 export interface UseActionOptionsProps {
   mode: 'link' | 'preview'
@@ -17,12 +18,14 @@ export function useActionOptions({
   onToLinkMode,
   onToPreviewMode
 }: UseActionOptionsProps): [BlockActionOptions] {
+  const { t } = React.useContext(EditorContext)
   return React.useMemo(() => {
-    const firstGroup: ActionGroupOption = {
+    const group: ActionGroupOption = {
       type: 'group',
       items: [
         {
           name: 'download',
+          label: t('block_actions.embed_block.download'),
           type: 'item',
           icon: <Icon.Download />,
           onAction: onDownload
@@ -31,39 +34,35 @@ export function useActionOptions({
     }
 
     if (onFullScreen) {
-      firstGroup.items.push({
+      group.items.unshift({
         name: 'fullscreen',
+        label: t('block_actions.embed_block.full_screen'),
         type: 'item',
         icon: <Icon.ScreenFull />,
         onAction: onFullScreen
       })
     }
 
-    const actionOptions: BlockActionOptions = [
-      firstGroup,
-      {
-        type: 'group',
-        items: [
-          {
-            name: 'attachment mode',
-            type: 'item',
-            icon: <Icon.TextView />,
-            onAction: onToLinkMode,
-            active: mode === 'link'
-          },
-          {
-            name: 'preview mode',
-            type: 'item',
-            icon: <Icon.Preview />,
-            onAction: onToPreviewMode,
-            active: mode === 'preview'
-          }
-        ]
-      },
-      'copy',
-      'delete'
-    ]
+    if (mode === 'link') {
+      group.items.push({
+        name: 'preview mode',
+        label: t('block_actions.embed_block.preview_mode'),
+        type: 'item',
+        icon: <Icon.Preview />,
+        onAction: onToPreviewMode
+      })
+    } else if (mode === 'preview') {
+      group.items.push({
+        name: 'attachment mode',
+        label: t('block_actions.embed_block.attachment_mode'),
+        type: 'item',
+        icon: <Icon.TextView />,
+        onAction: onToLinkMode
+      })
+    }
+
+    const actionOptions: BlockActionOptions = [group, 'copy', 'delete']
 
     return [actionOptions]
-  }, [mode, onDownload, onFullScreen, onToLinkMode, onToPreviewMode])
+  }, [mode, onDownload, onFullScreen, onToLinkMode, onToPreviewMode, t])
 }

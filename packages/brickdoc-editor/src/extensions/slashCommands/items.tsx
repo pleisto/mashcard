@@ -29,7 +29,7 @@ const UPLOAD = {
 }
 const GALLERY = {
   key: 'gallery',
-  alias: [''],
+  alias: ['gal'],
   icon: <EditorIcon.Unsplash />,
   command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
     editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Gallery).run()

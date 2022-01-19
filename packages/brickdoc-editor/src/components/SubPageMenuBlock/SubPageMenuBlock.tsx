@@ -13,11 +13,11 @@ const SubPageMenu = styled('div', {
   padding: '1rem .25rem'
 })
 
-export const SubPageMenuBlock: React.FC<SubPageMenuBlockProps> = () => {
+export const SubPageMenuBlock: React.FC<SubPageMenuBlockProps> = ({ deleteNode, getPos }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
 
   return (
-    <BlockContainer>
+    <BlockContainer deleteNode={deleteNode} getPos={getPos} actionOptions={['delete']}>
       <SubPageMenu>{editorDataSource.renderPageTree()}</SubPageMenu>
     </BlockContainer>
   )

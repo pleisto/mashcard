@@ -2,11 +2,11 @@ import React from 'react'
 import { CSS } from '@stitches/react'
 import { styled, theme, Tooltip } from '@brickdoc/design-system'
 import { ToolbarMenuItem } from './MenuItem'
-import { ToolbarMenuDropdownItem } from './MenuDropdownItem'
+import { ToolbarMenuSubMenuItem } from './MenuSubMenuItem'
 import { EditorContext } from '../../context/EditorContext'
 
 export interface ToolbarOptionBase {
-  type: 'item' | 'dropdown'
+  type: 'item' | 'subMenu'
   name: string
   css?: CSS
   icon?: React.ReactElement
@@ -15,6 +15,7 @@ export interface ToolbarOptionBase {
   onAction?: (key: React.Key) => void
   active?: boolean
   closeOnAction?: boolean
+  tip?: React.ReactElement
   tooltip?:
     | boolean
     | string
@@ -40,14 +41,15 @@ export interface ToolbarItemGroupOption {
   items: ToolbarItemOption[]
 }
 
-export type ToolbarDropdownItemsRender = () => React.ReactNode
+export type ToolbarSubMenuItemsRender = () => React.ReactNode
 
-export interface ToolbarDropdownOption extends ToolbarOptionBase {
-  type: 'dropdown'
-  items: Array<ToolbarItemGroupOption | ToolbarItemOption> | ToolbarDropdownItemsRender
+export interface ToolbarSubMenuOption extends ToolbarOptionBase {
+  type: 'subMenu'
+  baseId?: string
+  items: Array<ToolbarItemGroupOption | ToolbarItemOption> | ToolbarSubMenuItemsRender
 }
 
-export type ToolbarOption = ToolbarItemOption | ToolbarDropdownOption
+export type ToolbarOption = ToolbarItemOption | ToolbarSubMenuOption
 
 export type ToolbarItemOptionGroup = Array<ToolbarItemGroupOption | ToolbarItemOption>
 
@@ -94,7 +96,7 @@ const ToolbarMenuOptionInner: React.FC<{ option: ToolbarOption }> = ({ option, .
     return <ToolbarMenuItem option={option} {...props} />
   }
 
-  return <ToolbarMenuDropdownItem option={option} {...props} />
+  return <ToolbarMenuSubMenuItem option={option} {...props} />
 }
 
 const ToolbarMenuOption: React.FC<{ option: ToolbarOption }> = ({ option }) => {

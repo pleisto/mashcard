@@ -12,6 +12,7 @@ import { debounce } from 'lodash-es'
 
 export interface GalleryTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']
+  getPos: NodeViewProps['getPos']
   node: NodeViewProps['node']
   updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
 }
@@ -92,6 +93,7 @@ const UNSPLASH_PER_PAGE = 20
 export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
   node,
   deleteNode,
+  getPos,
   updateEmbedBlockAttributes
 }) => {
   const { t } = React.useContext(EditorContext)
@@ -177,7 +179,7 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
   )
 
   return (
-    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode}>
+    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
       <Popover
         trigger="click"
         defaultVisible={node.attrs.isNew}
@@ -195,8 +197,7 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
                   css={{
                     backgroundImage: `url(${item.smallUrl})`
                   }}
-                  onClick={handleSelectImage(item)}
-                >
+                  onClick={handleSelectImage(item)}>
                   <GalleryImageInfo>
                     <GalleryImageUsername>{item.username}</GalleryImageUsername>
                   </GalleryImageInfo>
@@ -205,8 +206,7 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
             </GalleryImageList>
             <LoadMorePlaceholder ref={createScrollObserver} />
           </Gallery>
-        }
-      >
+        }>
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Icon.Unsplash />}

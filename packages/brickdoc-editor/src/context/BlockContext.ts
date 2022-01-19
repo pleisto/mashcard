@@ -5,11 +5,15 @@ export interface BlockContextData {
   duplicateBlock: () => void
   moveBlock: () => void
   copyContent: () => void
+  getPosition: () => number | undefined
 }
 
 export const BlockContext = React.createContext<BlockContextData>({
   deleteBlock() {},
   duplicateBlock() {},
   moveBlock() {},
-  copyContent() {}
+  copyContent() {},
+  getPosition() {
+    return undefined
+  }
 })

@@ -1,18 +1,22 @@
-import { forwardRef, ForwardRefRenderFunction } from 'react'
+import { forwardRef, ForwardRefRenderFunction, useMemo } from 'react'
 import { Tooltip } from '../Tooltip'
 import { AbstractTriggerProps, TriggerPlacement } from '../Tooltip/trigger'
 import { DismissButton } from '../DismissButton'
 import { getRenderPropValue } from '../../utilities'
-import { popoverStyle } from './styles/index.style'
+import { popoverCompactStyle, popoverStyle } from './styles/index.style'
 
 export interface PopoverProps extends AbstractTriggerProps {
   title?: React.ReactNode
   content?: React.ReactNode
+  compact?: boolean
 }
 
 const Popover: ForwardRefRenderFunction<unknown, PopoverProps> = (props, ref) => {
-  const { title, content, role = 'dialog', ...otherProps } = props
-  const prefixCls = props.prefixCls ?? popoverStyle()
+  const { title, content, role = 'dialog', compact, ...otherProps } = props
+  const prefixCls = useMemo(
+    () => props.prefixCls ?? (compact ? popoverCompactStyle() : popoverStyle()),
+    [compact, props.prefixCls]
+  )
 
   const overlay = (
     <>

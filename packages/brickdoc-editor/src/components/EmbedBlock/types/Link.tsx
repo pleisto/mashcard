@@ -12,6 +12,7 @@ import { EmbedBlockAttributes } from '../EmbedBlock'
 export interface LinkTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']
   node: NodeViewProps['node']
+  getPos: NodeViewProps['getPos']
   updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
 }
 
@@ -41,6 +42,7 @@ const InputPanelHead = styled('span', {
 export const LinkTypeEmbedBlock: React.FC<LinkTypeEmbedBlockProps> = ({
   node,
   deleteNode,
+  getPos,
   updateEmbedBlockAttributes
 }) => {
   const { t } = React.useContext(EditorContext)
@@ -91,7 +93,7 @@ export const LinkTypeEmbedBlock: React.FC<LinkTypeEmbedBlockProps> = ({
   }, [])
 
   return (
-    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode}>
+    <BlockContainer getPos={getPos} actionOptions={['delete']} deleteNode={deleteNode}>
       <Popover
         defaultVisible={node.attrs.isNew}
         trigger="click"

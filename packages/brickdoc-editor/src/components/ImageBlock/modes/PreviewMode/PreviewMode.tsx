@@ -12,11 +12,12 @@ const MAX_WIDTH = 700
 export interface PreviewModeProps {
   node: NodeViewProps['node']
   deleteNode: NodeViewProps['deleteNode']
+  getPos: NodeViewProps['getPos']
   url: string
   updateImageAttributes: (attrs: Record<string, any>) => void
 }
 
-export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, url, updateImageAttributes }) => {
+export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getPos, url, updateImageAttributes }) => {
   const [loaded, setLoaded] = React.useState(false)
   const [showPreview, setShowPreview] = React.useState(false)
 
@@ -38,7 +39,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, url,
   }
 
   return (
-    <BlockContainer contentForCopy={url} deleteNode={deleteNode} actionOptions={['copy', 'delete']}>
+    <BlockContainer contentForCopy={url} getPos={getPos} deleteNode={deleteNode} actionOptions={['copy', 'delete']}>
       <div role="cell" className="brickdoc-block-image-section-container">
         <Resizable
           lockAspectRatio={true}
@@ -81,16 +82,14 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, url,
             updateImageAttributes({
               width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
             })
-          }}
-        >
+          }}>
           <ImagePreview
             wrapStyle={{ pointerEvents: 'none', width: '100%' }}
             overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
             isZoomed={showPreview}
             onZoomChange={shouldZoom => {
               setShowPreview(shouldZoom)
-            }}
-          >
+            }}>
             {!loaded && (
               <Skeleton.Image
                 style={

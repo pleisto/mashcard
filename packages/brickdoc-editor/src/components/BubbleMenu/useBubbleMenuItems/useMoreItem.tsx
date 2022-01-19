@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarDropdownOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
+import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
 
 export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
@@ -10,7 +10,7 @@ export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
   const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const items: ToolbarDropdownOption['items'] = []
+    const items: ToolbarSubMenuOption['items'] = []
 
     if (!editor.isActive('heading')) {
       if (editor.isActive('anchor')) {
@@ -34,8 +34,8 @@ export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
 
     if (items.length === 0) return null
 
-    const moreItem: ToolbarDropdownOption = {
-      type: 'dropdown',
+    const moreItem: ToolbarSubMenuOption = {
+      type: 'subMenu',
       name: 'more',
       content: <Icon.More />,
       items

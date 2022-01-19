@@ -9,6 +9,7 @@ import { useBlockElement } from './useBlockElement'
 export interface BlockContainerProps {
   inline?: boolean
   deleteNode?: NodeViewProps['deleteNode']
+  getPos?: NodeViewProps['getPos']
   className?: string
   style?: React.CSSProperties
   as?: NodeViewWrapperProps['as']
@@ -18,8 +19,8 @@ export interface BlockContainerProps {
 }
 
 export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef(
-  ({ children, inline, as, style, actionOptions, deleteNode, contentForCopy, ...props }, ref) => {
-    const [blockContextData] = useBlockContextDataProvider({ deleteNode, contentForCopy })
+  ({ children, inline, as, style, actionOptions, deleteNode, getPos, contentForCopy, ...props }, ref) => {
+    const [blockContextData] = useBlockContextDataProvider({ deleteNode, getPos, contentForCopy })
     const [documentEditable] = useDocumentEditable()
     const [blockElement] = useBlockElement(children, actionOptions, inline)
     const asElement = as ?? (inline ? 'span' : undefined)
@@ -29,8 +30,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef(
         {...props}
         as={asElement}
         style={{ ...style, ...{ pointerEvents: documentEditable ? 'unset' : 'none' } }}
-        ref={ref}
-      >
+        ref={ref}>
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )

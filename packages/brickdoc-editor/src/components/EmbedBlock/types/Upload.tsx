@@ -13,6 +13,7 @@ import { EmbedBlockAttributes } from '../EmbedBlock'
 export interface UploadTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']
   node: NodeViewProps['node']
+  getPos: NodeViewProps['getPos']
   updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
 }
 
@@ -23,6 +24,7 @@ const FileInput = styled('input', {
 export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
   node,
   deleteNode,
+  getPos,
   updateEmbedBlockAttributes
 }) => {
   const { t } = React.useContext(EditorContext)
@@ -76,7 +78,7 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
   }, [])
 
   return (
-    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode}>
+    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
       <EmbedBlockPlaceholder
         data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
         icon={<Icon.Upload />}

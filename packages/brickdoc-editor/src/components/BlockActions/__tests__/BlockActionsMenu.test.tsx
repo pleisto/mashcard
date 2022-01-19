@@ -7,70 +7,68 @@ describe('BlockActionsMenu', () => {
       {
         type: 'item',
         name: 'item',
+        label: 'item',
         icon: <span>icon</span>
       },
       {
-        type: 'dropdown',
-        name: 'dropdown',
+        type: 'subMenu',
+        name: 'subMenu',
+        label: 'subMenu',
+        baseId: 'subMenu',
         items: [
           {
             type: 'item',
             name: 'menuItem',
+            label: 'menuItem',
             icon: <span>menu item icon</span>
           }
         ]
       }
     ]
 
-    const basicOptions: BlockActionsMenuProps['basicOptions'] = [
-      {
-        type: 'item',
-        name: 'delete',
-        icon: <span>delete</span>
-      }
-    ]
-    const { container } = render(<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />)
+    const basicOptions: BlockActionsMenuProps['basicOptions'] = {
+      type: 'group',
+      items: [
+        {
+          type: 'item',
+          name: 'delete',
+          label: 'delete',
+          icon: <span>delete</span>
+        }
+      ]
+    }
+    const { container } = render(
+      <BlockActionsMenu baseId="menu" extraOptions={extraOptions} basicOptions={basicOptions} />
+    )
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('puts basicOptions into a dropdown menu item', () => {
+  it('puts extraOptions and basicOptions into menu correctly', () => {
     const extraOptions: BlockActionsMenuProps['extraOptions'] = [
       {
         type: 'item',
         name: 'item',
+        label: 'item',
         icon: <span>icon</span>
       }
     ]
 
-    const basicOptions: BlockActionsMenuProps['basicOptions'] = [
-      {
-        type: 'item',
-        name: 'delete',
-        icon: <span>delete</span>
-      }
-    ]
+    const basicOptions: BlockActionsMenuProps['basicOptions'] = {
+      type: 'group',
+      items: [
+        {
+          type: 'item',
+          name: 'delete',
+          label: 'delete',
+          icon: <span>delete</span>
+        }
+      ]
+    }
 
-    render(<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />)
+    render(<BlockActionsMenu baseId="menu" extraOptions={extraOptions} basicOptions={basicOptions} />)
 
-    expect(screen.getByLabelText('more')).toBeInTheDocument()
-  })
-
-  it('fills extraOptions by basicOptions when extraOptions is empty', () => {
-    const extraOptions: BlockActionsMenuProps['extraOptions'] = []
-
-    const name = 'delete'
-
-    const basicOptions: BlockActionsMenuProps['basicOptions'] = [
-      {
-        type: 'item',
-        name,
-        icon: <span>{name}</span>
-      }
-    ]
-
-    render(<BlockActionsMenu extraOptions={extraOptions} basicOptions={basicOptions} />)
-
-    expect(screen.getByText(name)).toBeInTheDocument()
+    expect(screen.getByLabelText('item')).toBeInTheDocument()
+    expect(screen.getByLabelText('delete')).toBeInTheDocument()
   })
 })

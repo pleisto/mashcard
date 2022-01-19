@@ -39,7 +39,7 @@ const menuItemStyles = css({
     fontSize: theme.fontSizes.subHeadline,
     fontWeight: 500,
     lineHeight: '1.25rem',
-    margin: `${itemSpacing} 0`,
+    margin: `.5rem 0 0`,
     height: '28px',
     outline: 'none',
     padding: '.5rem .625rem',
@@ -92,7 +92,7 @@ const ItemDescription = styled('span', {
 
 type RenderElement = string | React.ReactElement
 
-export interface MenuItemProps extends MenuItemHTMLProps {
+export interface MenuItemProps extends Omit<MenuItemHTMLProps, 'css'> {
   danger?: boolean
   label?: RenderElement
   description?: RenderElement
@@ -136,8 +136,7 @@ const _MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = 
       as="li"
       ref={ref}
       title={title}
-      className={menuItemClass}
-    >
+      className={menuItemClass}>
       {children}
       {!children && (
         <ItemContent>
@@ -163,6 +162,4 @@ const _MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = 
   )
 }
 
-const MenuItemRender = React.forwardRef<HTMLLIElement, MenuItemProps>(_MenuItem)
-
-export const MenuItem: React.FC<MenuItemProps> = props => <MenuItemRender {...props} />
+export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(_MenuItem)

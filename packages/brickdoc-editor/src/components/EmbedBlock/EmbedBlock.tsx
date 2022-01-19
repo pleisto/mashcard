@@ -24,7 +24,7 @@ const canFilePreview = (fileType: FileType, mode: EmbedBlockAttributes['mode']):
   mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
 export const EmbedBlock: React.FC<NodeViewProps> = props => {
-  const { editor, node, updateAttributes, deleteNode } = props
+  const { editor, node, updateAttributes, deleteNode, getPos } = props
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const latestEmbedBlockAttributes = React.useRef<Partial<EmbedBlockAttributes>>({})
   const updateEmbedBlockAttributes = React.useCallback(
@@ -72,6 +72,7 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
             fileType={fileType}
             fileUrl={fileUrl}
             deleteNode={deleteNode}
+            getPos={getPos}
             updateAttachmentAttributes={updateAttachmentAttributes}
           />
         )
@@ -83,6 +84,7 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
           fileType={fileType}
           fileUrl={fileUrl}
           deleteNode={deleteNode}
+          getPos={getPos}
           updateAttachmentAttributes={updateAttachmentAttributes}
         />
       )
@@ -102,6 +104,7 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
         description={description}
         linkUrl={linkUrl}
         deleteNode={deleteNode}
+        getPos={getPos}
       />
     )
   }
@@ -109,7 +112,12 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
   // link embed
   if (node.attrs.embedMeta?.embedType === Embedtype.Link) {
     return (
-      <LinkTypeEmbedBlock node={node} deleteNode={deleteNode} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+      <LinkTypeEmbedBlock
+        node={node}
+        deleteNode={deleteNode}
+        getPos={getPos}
+        updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+      />
     )
   }
 
@@ -119,6 +127,7 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
       <GalleryTypeEmbedBlock
         node={node}
         deleteNode={deleteNode}
+        getPos={getPos}
         updateEmbedBlockAttributes={updateEmbedBlockAttributes}
       />
     )
@@ -126,6 +135,11 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
 
   // upload embed
   return (
-    <UploadTypeEmbedBlock deleteNode={deleteNode} node={node} updateEmbedBlockAttributes={updateEmbedBlockAttributes} />
+    <UploadTypeEmbedBlock
+      deleteNode={deleteNode}
+      getPos={getPos}
+      node={node}
+      updateEmbedBlockAttributes={updateEmbedBlockAttributes}
+    />
   )
 }

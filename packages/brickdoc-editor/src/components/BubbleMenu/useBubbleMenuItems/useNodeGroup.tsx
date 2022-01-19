@@ -64,7 +64,7 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
       type: 'group',
       items: [
         {
-          type: 'dropdown',
+          type: 'subMenu',
           name: 'node',
           label: t(`bubble_menu.node.items.${nodeKey ?? 'paragraph'}`),
           tooltip: t('bubble_menu.node.section_title') as string,

@@ -22,11 +22,11 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       aria-haspopup="dialog"
     >
       <li
-        aria-label="dropdown"
+        aria-label="subMenu"
         class="brd-c-jTwgFr"
         role="menuitem"
       >
-        dropdown
+        subMenu
         <span
           aria-label="arrow-down"
           class="brd-icon brd-icon-arrow-down brd-c-eIxPHM"

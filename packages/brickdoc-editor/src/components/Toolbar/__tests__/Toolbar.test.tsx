@@ -14,13 +14,13 @@ describe('Toolbar', () => {
             icon: <span>item</span>
           },
           {
-            type: 'dropdown',
-            name: 'dropdown',
-            label: 'dropdown',
+            type: 'subMenu',
+            name: 'subMenu',
+            label: 'subMenu',
             items: [
               {
                 type: 'item',
-                name: 'dropdown item'
+                name: 'subMenu item'
               }
             ]
           }

@@ -1,12 +1,11 @@
 import React from 'react'
 import { Icon, Menu, Popover, styled, theme } from '@brickdoc/design-system'
-import { ToolbarDropdownOption, ToolbarItemOption, ToolbarItemGroupOption } from './Toolbar'
+import { ToolbarSubMenuOption, ToolbarItemOption, ToolbarItemGroupOption } from './Toolbar'
 import { ToolbarMenuItem } from './MenuItem'
 import { itemCommon, itemHeight } from './styles/index.style'
 import { variants } from './styles/variants.style'
-import './styles/MenuDropdownPopover.less'
 
-const DropdownItem = styled('li', {
+const SubMenuItem = styled('li', {
   include: ['flexCenter'],
   color: theme.colors.typePrimary,
   cursor: 'pointer',
@@ -25,12 +24,12 @@ const ArrowDown = styled(Icon.ArrowDown, {
   marginLeft: '4px'
 })
 
-export interface ToolbarMenuDropdownItemProps {
-  option: ToolbarDropdownOption
+export interface ToolbarMenuSubMenuItemProps {
+  option: ToolbarSubMenuOption
 }
 
 const renderMenu = (
-  option: ToolbarDropdownOption,
+  option: ToolbarSubMenuOption,
   items: Array<ToolbarItemGroupOption | ToolbarItemOption>,
   closeMenu: () => void
 ): React.ReactElement => {
@@ -39,7 +38,7 @@ const renderMenu = (
       {items.map((menuItem, index) => {
         if (menuItem.type === 'group') {
           return (
-            <>
+            <React.Fragment key={index}>
               <Menu.Group title={menuItem.title} key={index}>
                 {menuItem.items.map(item => (
                   <Menu.Item
@@ -50,14 +49,13 @@ const renderMenu = (
                     onAction={key => {
                       item.onAction?.(key)
                       if (item.closeOnAction) closeMenu()
-                    }}
-                  >
+                    }}>
                     {item.content}
                   </Menu.Item>
                 ))}
               </Menu.Group>
               {index < items.length - 1 && <Menu.Separator key={`separator-${index}`} />}
-            </>
+            </React.Fragment>
           )
         }
         return (
@@ -69,8 +67,7 @@ const renderMenu = (
             onAction={key => {
               menuItem.onAction?.(key)
               if (menuItem.closeOnAction) closeMenu()
-            }}
-          >
+            }}>
             {menuItem.content}
           </Menu.Item>
         )
@@ -79,7 +76,7 @@ const renderMenu = (
   )
 }
 
-export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = ({ option, ...props }) => {
+export const ToolbarMenuSubMenuItem: React.FC<ToolbarMenuSubMenuItemProps> = ({ option, ...props }) => {
   const [visible, setVisible] = React.useState(false)
   const handleVisibleChange = (visible: boolean): void => setVisible(visible)
   const hasContent = !!option.content
@@ -93,18 +90,16 @@ export const ToolbarMenuDropdownItem: React.FC<ToolbarMenuDropdownItemProps> = (
       {...props}
       trigger="click"
       visible={visible}
-      overlayClassName="brickdoc-toolbar-dropdown-popover"
       onVisibleChange={handleVisibleChange}
       placement="bottom"
       getPopupContainer={element => element}
-      content={MenuContent}
-    >
+      content={MenuContent}>
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
-        <DropdownItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>
+        <SubMenuItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>
           {option.icon ?? option.label}
           <ArrowDown />
-        </DropdownItem>
+        </SubMenuItem>
       )}
     </Popover>
   )

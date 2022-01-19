@@ -8,28 +8,37 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('paragraph', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3 6C3 5.44772 3.44772 5 4 5H13C13.5523 5 14 5.44772 14 6C14 6.55228 13.5523 7 13 7H4C3.44772 7 3 6.55228 3 6Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M2.97488 11.9749C2.97488 11.4226 3.4226 10.9749 3.97488 10.9749H19.9749C20.5272 10.9749 20.9749 11.4226 20.9749 11.9749C20.9749 12.5272 20.5272 12.9749 19.9749 12.9749H3.97488C3.4226 12.9749 2.97488 12.5272 2.97488 11.9749Z"
-      fill={props.colors[0]}
-    />
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M2.97488 17.9749C2.97488 17.4226 3.4226 16.9749 3.97488 16.9749H19.9749C20.5272 16.9749 20.9749 17.4226 20.9749 17.9749C20.9749 18.5272 20.5272 18.9749 19.9749 18.9749H3.97488C3.4226 18.9749 2.97488 18.5272 2.97488 17.9749Z"
-      fill={props.colors[0]}
-    />
-  </svg>
-))
+export default IconWrapper(
+    'paragraph',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            width={props.size}
+            height={props.size}
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3 6C3 5.44772 3.44772 5 4 5H13C13.5523 5 14 5.44772 14 6C14 6.55228 13.5523 7 13 7H4C3.44772 7 3 6.55228 3 6Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M2.97488 11.9749C2.97488 11.4226 3.4226 10.9749 3.97488 10.9749H19.9749C20.5272 10.9749 20.9749 11.4226 20.9749 11.9749C20.9749 12.5272 20.5272 12.9749 19.9749 12.9749H3.97488C3.4226 12.9749 2.97488 12.5272 2.97488 11.9749Z"
+                fill={props.colors[0]}
+            />
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M2.97488 17.9749C2.97488 17.4226 3.4226 16.9749 3.97488 16.9749H19.9749C20.5272 16.9749 20.9749 17.4226 20.9749 17.9749C20.9749 18.5272 20.5272 18.9749 19.9749 18.9749H3.97488C3.4226 18.9749 2.97488 18.5272 2.97488 17.9749Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

@@ -8,12 +8,14 @@ import { BlockContainer } from '../../../../components'
 
 export interface AttachmentModeProps extends UseAttachmentMethodsProps {
   deleteNode: NodeViewProps['deleteNode']
+  getPos: NodeViewProps['getPos']
   name: string
   fileType: FileType
 }
 
 export const AttachmentMode: React.FC<AttachmentModeProps> = ({
   deleteNode,
+  getPos,
   name,
   fileType,
   ...attachmentMethodsProps
@@ -30,8 +32,8 @@ export const AttachmentMode: React.FC<AttachmentModeProps> = ({
     <BlockContainer
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
-      actionOptions={actionOptions}
-    >
+      getPos={getPos}
+      actionOptions={actionOptions}>
       <div className="brickdoc-link-block-attachment">
         <FileIcon fileType={fileType} />
         <div className="link-block-attachment-content">

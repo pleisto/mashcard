@@ -758,7 +758,23 @@ en-US:
         move: Move
         duplicate: Duplicate
         delete: Delete
-      more: More
+      embed_block:
+        download: Download
+        full_screen: Full Screen
+        attachment_mode: Turn to text view
+        preview_mode: Turn to preview
+      add_block: Add block below
+      blocks:
+        text: Text
+        h1: Heading 1
+        h2: Heading 2
+        h3: Heading 3
+        h4: Heading 4
+        h5: Heading 5
+        numbered_list: Numbered list
+        bulleted_list: Bulleted list
+        formula: Formula
+        code: code
     slash_menu:
       title: Slash menu
       recent: Recently used
@@ -890,6 +906,7 @@ en-US:
         copy: Copy link
         delete: Delete
     code_block:
+      copy_code: Copy content
       default_language: plain text
       search_placeholder: Search
       deletion_confirm:

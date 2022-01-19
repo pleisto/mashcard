@@ -18,7 +18,7 @@ export interface ImageBlockAttributes {
 }
 
 // TODO: handle image load on error
-export const ImageBlock: React.FC<NodeViewProps> = ({ node, deleteNode, updateAttributes }) => {
+export const ImageBlock: React.FC<NodeViewProps> = ({ node, deleteNode, getPos, updateAttributes }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const latestImageAttributes = React.useRef<Partial<ImageBlockAttributes>>({})
   const updateImageAttributes = React.useCallback(
@@ -64,8 +64,18 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ node, deleteNode, updateAt
     getBlobUrl(node.attrs?.uuid, node.attrs?.image ?? {}, editorDataSource.blobs) ?? linkStorage.get(node.attrs.uuid)
 
   if (url) {
-    return <PreviewMode node={node} deleteNode={deleteNode} updateImageAttributes={updateImageAttributes} url={url} />
+    return (
+      <PreviewMode
+        node={node}
+        deleteNode={deleteNode}
+        getPos={getPos}
+        updateImageAttributes={updateImageAttributes}
+        url={url}
+      />
+    )
   }
 
-  return <UploaderMode node={node} deleteNode={deleteNode} updateImageAttributes={updateImageAttributes} />
+  return (
+    <UploaderMode node={node} deleteNode={deleteNode} getPos={getPos} updateImageAttributes={updateImageAttributes} />
+  )
 }

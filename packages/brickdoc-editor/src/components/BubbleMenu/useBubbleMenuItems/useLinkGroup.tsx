@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon, Input, toast } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
-import { ToolbarDropdownOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
+import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
 
 export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
@@ -16,7 +16,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const menuItems: ToolbarDropdownOption['items'] = [
+    const menuItems: ToolbarSubMenuOption['items'] = [
       {
         type: 'item',
         name: 'linkInput',
@@ -74,7 +74,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
       type: 'group',
       items: [
         {
-          type: 'dropdown',
+          type: 'subMenu',
           name: 'link',
           icon: <Icon.Link />,
           items: menuItems,

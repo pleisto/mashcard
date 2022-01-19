@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Icon, Menu, MenuProps, menuItemSpacing, styled, theme } from '@brickdoc/design-system'
+import { IconBackground } from '../Icon'
 
 const footerHeight = '2rem'
 
@@ -24,18 +25,7 @@ export const SlashMenuGroupLabel = styled('span', {
   fontSize: theme.fontSizes.callout
 })
 
-export const iconBackground = {
-  background: 'linear-gradient(0deg, rgba(248, 251, 255, 0.36), rgba(248, 251, 255, 0.36)), rgba(255, 255, 255, 0.74)',
-  backdropFilter: 'blur(16px)',
-  borderRadius: '2px',
-  boxShadow:
-    '1px 1px 0px rgba(255, 255, 255, 0.8), 0px 2px 4px rgba(167, 167, 167, 0.3), inset 1px 1px 0px rgba(255, 255, 255, 0.25)'
-}
-
-export const MenuIcon = styled('span', {
-  include: ['flexCenter'],
-  ...iconBackground,
-  display: 'flex',
+export const MenuIcon = styled(IconBackground, {
   fontSize: '.8125rem',
   height: '1.3rem',
   width: '1.3rem'
@@ -50,10 +40,7 @@ export const RecentItem = styled(Menu.Item, {
   padding: '5px'
 })
 
-export const RecentItemIconContainer = styled('span', {
-  include: ['flexCenter'],
-  ...iconBackground,
-  display: 'flex',
+export const RecentItemIconContainer = styled(IconBackground, {
   height: '1.6rem',
   width: '1.6rem'
 })

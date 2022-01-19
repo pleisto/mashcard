@@ -8,17 +8,29 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react'
-import { ISvgIconProps, IconWrapper } from '../icon'
+import React from 'react';
+import {ISvgIconProps, IconWrapper} from '../icon';
 
-export default IconWrapper('rte-h1', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M20.407 13H22V22H19.841V15.8875C19.4659 16.1101 19.0496 16.2859 18.5971 16.4168L18 16.5897V14.3786L18.3543 14.2895C18.6603 14.2126 18.9894 14.075 19.3659 13.8653C19.7422 13.6334 20.0385 13.4014 20.2681 13.1513L20.407 13Z"
-      fill={props.colors[0]}
-    />
-    <path d="M2 2V22H4.5777V13.0364H13.4223V22H16V2H13.4223V10.4314H4.5777V2H2Z" fill={props.colors[0]} />
-  </svg>
-))
+export default IconWrapper(
+    'rte-h1',
+    false,
+    (props: ISvgIconProps) => (
+        <svg
+            width={props.size}
+            height={props.size}
+            viewBox="0 0 24 24"
+            fill="none"
+        >
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M20.407 13H22V22H19.841V15.8875C19.4659 16.1101 19.0496 16.2859 18.5971 16.4168L18 16.5897V14.3786L18.3543 14.2895C18.6603 14.2126 18.9894 14.075 19.3659 13.8653C19.7422 13.6334 20.0385 13.4014 20.2681 13.1513L20.407 13Z"
+                fill={props.colors[0]}
+            />
+            <path
+                d="M2 2V22H4.5777V13.0364H13.4223V22H16V2H13.4223V10.4314H4.5777V2H2Z"
+                fill={props.colors[0]}
+            />
+        </svg>
+    )
+);

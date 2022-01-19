@@ -13,16 +13,22 @@ export interface MenuProps extends MenuBarHTMLProps {
   // TODO: add horizontal
   orientation?: 'vertical'
   onAction?: (key: string) => void
+  type?: 'default' | 'ghost'
 }
 
 export const menubarStyles = css({
-  include: ['ceramicPrimary'],
-  borderRadius: '4px',
   display: 'inline-flex',
   margin: 0,
   listStyle: 'none',
   padding: 0,
   variants: {
+    theme: {
+      default: {
+        include: ['ceramicPrimary'],
+        borderRadius: '4px'
+      },
+      ghost: {}
+    },
     orientation: {
       vertical: {
         flexDirection: 'column'
@@ -32,12 +38,12 @@ export const menubarStyles = css({
 })
 
 const _Menu: React.ForwardRefRenderFunction<HTMLUListElement, MenuProps> = (props, ref) => {
-  const { children, className, onAction, baseId, ...restProps } = props
+  const { children, className, onAction, baseId, type, ...restProps } = props
   const orientation = props.orientation ?? 'vertical'
   const menuBarProps = useMenuBarState({ baseId, orientation })
   const menuBarClass = React.useMemo<string>(
-    () => cx(menubarStyles({ orientation }), className),
-    [className, orientation]
+    () => cx(menubarStyles({ orientation, theme: type ?? 'default' }), className),
+    [className, orientation, type]
   )
   return (
     <MenuActionContext.Provider value={onAction}>
