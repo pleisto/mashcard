@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { find, propEq } from 'ramda'
+import { useSize } from 'ahooks'
 import {
   useGetPageBlocksQuery,
   useBlockMoveMutation,
@@ -50,7 +51,7 @@ const PageTreeRoot = styled('div', {
 
 export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
-
+  const navSize = useSize(document.querySelector('nav'))
   const mutable = mode !== 'subPage'
   const hideHeading = mode === 'subPage'
 
@@ -150,7 +151,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     )
   }
 
-  const treeElement = (blocks: BlockType[], isDraggable: boolean): React.ReactElement => {
+  const treeElement = (blocks: BlockType[], isDraggable: boolean, height?: number): React.ReactElement => {
     if (!blocks.length) {
       return <></>
     }
@@ -179,6 +180,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return (
       <Tree
         className={styles.tree}
+        height={height}
         emptyNode={t('blocks.no_pages')}
         // selectable={!docMeta.documentInfoLoading}
         selectedNodeId={docMeta.id}
@@ -271,11 +273,19 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     <></>
   )
 
+  const pageHeight = useMemo(() => {
+    let _h = 200
+    if (navSize?.height) {
+      _h = navSize.height - (pinTreeBlocks?.length ? 470 : 203)
+    }
+    return _h
+  }, [navSize, pinTreeBlocks])
+
   return pageBlocks.length ? (
     <PageTreeRoot mode={mode ?? 'default'}>
       {pinTree}
       {!hideHeading && <h2>Pages</h2>}
-      {treeElement(pageBlocks, draggable && mutable)}
+      {treeElement(pageBlocks, draggable && mutable, pageHeight)}
     </PageTreeRoot>
   ) : (
     <>{mode === 'subPage' && t('blocks.no_pages')}</>

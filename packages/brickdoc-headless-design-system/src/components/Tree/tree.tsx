@@ -1,10 +1,21 @@
-import { FC, useCallback, useState, useMemo, useEffect, ReactNode, memo } from 'react'
+import {
+  ForwardRefRenderFunction,
+  useCallback,
+  useState,
+  useMemo,
+  useRef,
+  useEffect,
+  ReactNode,
+  forwardRef
+} from 'react'
+import List, { ListRef } from 'rc-virtual-list'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import type { TNode, MoveNode } from './constants'
 import { Node } from './node'
 
 export interface TreeProps {
+  height?: number
   treeData: TNode[]
   selectedNodeId?: string
   className?: string
@@ -31,16 +42,21 @@ const findPathById = (tree: TNode[], id: string, path?: string[]): string[] | un
 /** Tree
  * @example
  */
-const TreeInternal: FC<TreeProps> = ({
-  treeData,
-  openAll = false,
-  titleRender,
-  emptyNode,
-  selectedNodeId,
-  draggable = false,
-  treeNodeClassName,
-  onDrop
-}) => {
+const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
+  {
+    height,
+    treeData,
+    openAll = false,
+    titleRender,
+    emptyNode,
+    selectedNodeId,
+    draggable = false,
+    treeNodeClassName,
+    onDrop
+  },
+  ref
+) => {
+  const listRef = useRef<ListRef>()
   const [openedIds, setOpenedIds] = useState<string[]>(
     openAll ? treeData.map(node => node.value) : treeData.filter(node => node.collapsed).map(node => node.value) || []
   )
@@ -103,25 +119,35 @@ const TreeInternal: FC<TreeProps> = ({
 
   return (
     <DndProvider backend={HTML5Backend}>
-      {renderTree.map((item, index) => (
-        <Node
-          className={treeNodeClassName}
-          moveNode={moveNode}
-          id={item.key}
-          index={index}
-          key={item.key}
-          emptyNode={emptyNode}
-          treeData={item}
-          onClick={handleItemClick}
-          handleSelected={handleSelected}
-          titleRender={titleRender}
-          selectedId={selectedId}
-        />
-      ))}
+      <List<TNode>
+        data={renderTree}
+        data-test-id="virtual-list"
+        height={height ?? 200}
+        itemHeight={34}
+        itemKey="key"
+        ref={ref ?? listRef}
+      >
+        {(item, index) => (
+          <Node
+            className={treeNodeClassName}
+            moveNode={moveNode}
+            id={item.key}
+            index={index}
+            key={item.key}
+            emptyNode={emptyNode}
+            treeData={item}
+            onClick={handleItemClick}
+            handleSelected={handleSelected}
+            titleRender={titleRender}
+            selectedId={selectedId}
+          />
+        )}
+      </List>
     </DndProvider>
   )
 }
 
-TreeInternal.displayName = 'BrkTree'
+const _TreeInternal = forwardRef(TreeInternal)
+_TreeInternal.displayName = 'BrkTree'
 
-export const Tree = memo(TreeInternal)
+export { _TreeInternal as Tree }

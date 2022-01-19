@@ -1764,6 +1764,7 @@ __metadata:
     rc-dropdown: ^3.2.2
     rc-tabs: ^11.10.5
     rc-tooltip: ^5.1.1
+    rc-virtual-list: ^3.4.2
     react: ^17.0.2
     react-color: ^2.19.3
     react-dnd: ^14.0.5
@@ -21841,7 +21842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-virtual-list@npm:^3.2.0":
+"rc-virtual-list@npm:^3.2.0, rc-virtual-list@npm:^3.4.2":
   version: 3.4.2
   resolution: "rc-virtual-list@npm:3.4.2"
   dependencies:

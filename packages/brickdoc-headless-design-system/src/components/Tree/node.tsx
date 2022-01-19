@@ -1,4 +1,13 @@
-import { FC, useCallback, memo, MouseEvent, ReactNode, useMemo, useRef, useState } from 'react'
+import {
+  useCallback,
+  MouseEvent,
+  ReactNode,
+  useMemo,
+  useRef,
+  useState,
+  ForwardRefRenderFunction,
+  forwardRef
+} from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import { usePress } from '@react-aria/interactions'
 import { rem } from 'polished'
@@ -38,20 +47,12 @@ const DND_NODE_TYPE = 'node'
 /** Tree
  * @example
  */
-const InternalNode: FC<NodeProps> = ({
-  treeData,
-  className,
-  onClick,
-  handleSelected,
-  titleRender,
-  selectedId,
-  emptyNode,
-  id,
-  index,
-  moveNode
-}) => {
+const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
+  { treeData, className, onClick, handleSelected, titleRender, selectedId, emptyNode, id, index, moveNode },
+  _ref
+) => {
   const { icon = '', hasChildren, parentId, rootId, indent = 0, value, collapsed } = treeData
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(_ref as any)
   const [hoverNode, setHoverNode] = useState<HoverNode | undefined>()
 
   const { pressProps, isPressed } = usePress({
@@ -254,6 +255,9 @@ const InternalNode: FC<NodeProps> = ({
   )
 }
 
-InternalNode.displayName = 'BrkNode'
+const _InternalNode = forwardRef(InternalNode)
+_InternalNode.displayName = 'BrkNode'
 
-export const Node = memo(InternalNode)
+export { _InternalNode as Node }
+
+/* export const Node = memo(InternalNode) */
