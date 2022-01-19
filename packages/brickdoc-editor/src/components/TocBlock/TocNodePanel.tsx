@@ -146,16 +146,15 @@ export const TocNodePanel: React.FC<TocNodePanelProps> = ({ tocNode }) => {
   }, [tocNode.children.length])
 
   const onItemClick = React.useCallback(() => {
-    editor
-      ?.chain()
-      .setTextSelection({
-        from: tocNode.item.position,
-        to: tocNode.item.position + tocNode.item.nodeSize
-      })
-      .focus()
-      .scrollIntoView()
-      .run()
-  }, [editor, tocNode.item.nodeSize, tocNode.item.position])
+    const dom = editor?.view.domAtPos(tocNode.item.position + 1)
+    editor?.chain().setTextSelection(tocNode.item.position).focus().run()
+    // try native scrollIntoView first
+    if (dom?.node && !(dom.node as HTMLElement).classList.contains('ProseMirror')) {
+      ;(dom.node as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+    } else {
+      editor?.commands.scrollIntoView()
+    }
+  }, [editor, tocNode.item.position])
 
   return (
     <TocStyledItem role="menuitem" data-testid={TEST_ID_ENUM.editor.tocBlock.item.id}>

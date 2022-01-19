@@ -47,7 +47,7 @@ export const getFileTypeByContentType = (name: string): FileType => {
 }
 
 export const getFileTypeByExtension = (name: string): FileType => {
-  const extension = name.split('.').pop()
+  const extension = (name ?? '').split('.').pop()
 
   switch (extension) {
     case 'pdf':

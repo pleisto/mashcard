@@ -141,10 +141,18 @@ describe('TocBlock', () => {
   const editor: any = {
     chain: () => editor,
     focus: () => editor,
+    commands: {
+      scrollIntoView: () => editor
+    },
     scrollIntoView: () => editor,
     run: () => editor,
     state: {
       doc
+    },
+    view: {
+      domAtPos() {
+        return null
+      }
     },
     on: () => {},
     off: () => {}
@@ -192,9 +200,6 @@ describe('TocBlock', () => {
 
     const position = 0
     fireEvent.click(screen.getAllByTestId(TEST_ID_ENUM.editor.tocBlock.item.title.id)[position])
-    expect(mockSetTextSelection).toBeCalledWith({
-      from: position,
-      to: Number(nodes[position].nodeSize) + position
-    })
+    expect(mockSetTextSelection).toBeCalledWith(position)
   })
 })
