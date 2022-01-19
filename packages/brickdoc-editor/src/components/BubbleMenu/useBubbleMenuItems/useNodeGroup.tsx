@@ -1,4 +1,5 @@
 import React from 'react'
+import { ChainedCommands } from '@tiptap/core'
 import { Icon } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
 import { ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
@@ -7,6 +8,13 @@ import { BubbleItemMeta, isBubbleMenuVisible, NodeIcon } from './useBubbleMenuIt
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { t, editor } = React.useContext(EditorContext)
+  const actionCommand = React.useCallback(
+    (command: (chain: ChainedCommands) => ChainedCommands): void => {
+      if (!editor) return
+      command(editor.chain()).setTextSelection(editor.state.selection.to).focus().run()
+    },
+    [editor]
+  )
 
   const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
@@ -16,47 +24,47 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
       {
         name: 'paragraph',
         icon: <Icon.TextStyle />,
-        onAction: () => editor.commands.setParagraph()
+        onAction: () => actionCommand(chain => chain.setParagraph())
       },
       {
         name: 'heading1',
         icon: <Icon.RteH1 />,
-        onAction: () => editor.commands.setHeading({ level: 1 })
+        onAction: () => actionCommand(chain => chain.setHeading({ level: 1 }))
       },
       {
         name: 'heading2',
         icon: <Icon.RteH2 />,
-        onAction: () => editor.commands.setHeading({ level: 2 })
+        onAction: () => actionCommand(chain => chain.setHeading({ level: 2 }))
       },
       {
         name: 'heading3',
         icon: <Icon.RteH3 />,
-        onAction: () => editor.commands.setHeading({ level: 3 })
+        onAction: () => actionCommand(chain => chain.setHeading({ level: 3 }))
       },
       {
         name: 'heading4',
         icon: <Icon.RteH4 />,
-        onAction: () => editor.commands.setHeading({ level: 4 })
+        onAction: () => actionCommand(chain => chain.setHeading({ level: 4 }))
       },
       {
         name: 'heading5',
         icon: <Icon.RteH5 />,
-        onAction: () => editor.commands.setHeading({ level: 5 })
+        onAction: () => actionCommand(chain => chain.setHeading({ level: 5 }))
       },
       {
         name: 'bulletList',
         icon: <Icon.ListUnordered />,
-        onAction: () => editor.commands.toggleBulletList()
+        onAction: () => actionCommand(chain => chain.toggleBulletList())
       },
       {
         name: 'orderedList',
         icon: <Icon.ListOrdered />,
-        onAction: () => editor.commands.toggleOrderedList()
+        onAction: () => actionCommand(chain => chain.toggleOrderedList())
       },
       {
         name: 'formulaBlock',
         icon: <Icon.Formula />,
-        onAction: () => editor.commands.toggleFormula()
+        onAction: () => actionCommand(chain => chain.toggleFormula())
       }
     ]
 
