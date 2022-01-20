@@ -33,11 +33,8 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ node, deleteNode, getPos, 
 
       updateAttributes({
         image: {
-          __typename: 'BlockImage',
           ...node.attrs.image,
-          ...latestImageAttributes.current,
-          // remove defaultFile prop
-          defaultFile: undefined
+          ...latestImageAttributes.current
         }
       })
     },

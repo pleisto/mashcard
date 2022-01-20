@@ -89,9 +89,13 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
     if (node.attrs.defaultFile) {
       // upload API requires block exists first,
       // thus uploading should be triggered after block synced
-      syncedListener = BrickdocEventBus.subscribe(BlockSynced, () => {
-        uploadDefaultFile()
-      })
+      syncedListener = BrickdocEventBus.subscribe(
+        BlockSynced,
+        () => {
+          uploadDefaultFile()
+        },
+        { subscribeId: node.attrs.uuid }
+      )
     }
     // setup a timeout for checking defaultFile upload
     setTimeout(() => {
