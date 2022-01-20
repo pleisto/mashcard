@@ -4,209 +4,187 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 export default {
   title: 'Components/Select',
   component: Select,
-  args: {},
+  args: {
+    bordered: true,
+    disabled: false,
+    loading: false,
+    virtual: true
+  },
   argTypes: {
-    defaultInputValue: {
-      control: 'string'
+    allowClear: {
+      control: 'boolean',
+      description: 'Show clear button'
     },
-    defaultMenuIsOpen: {
-      control: 'boolean'
-    },
-    defaultValue: {
-      description: '`One of<null,Option,ReadonlyArray<...>>`'
-    },
-    form: {
-      description: 'Sets the form attribute on the input'
+    autoClearSearchValue: {
+      control: 'boolean',
+      description: 'Whether the current search will be cleared on selecting an item.'
     },
     autoFocus: {
-      description: 'Focus the control when it is mounted',
-      control: 'boolean'
+      control: 'boolean',
+      description: 'Whether to auto focus the component'
     },
-    backspaceRemovesValue: {
-      description:
-        'Remove the currently focused option when the user presses backspace when Select isClearable or isMulti',
-      control: 'boolean'
+    bordered: {
+      control: 'boolean',
+      description: 'Whether to show border'
     },
-    blurInputOnSelect: {
-      description:
-        'Remove focus from the input when the user selects an option (handy for dismissing the keyboard on touch devices)',
-      control: 'boolean'
+    clearIcon: {
+      description: '`ReactNode` The custom clear icon'
     },
-    captureMenuScroll: {
-      description: 'When the user reaches the top/bottom of the menu, prevent scroll on the scroll-parent',
-      control: 'boolean'
+    defaultActiveFirstOption: {
+      control: 'boolean',
+      description: 'Whether to select the first option by default'
     },
-    className: {
-      description: 'Sets a className attribute on the outer component'
+    defaultOpen: {
+      control: 'boolean',
+      description: 'Whether to open the select by default'
     },
-    closeMenuOnSelect: {
-      description: 'Close the select menu when the user selects an option',
-      control: 'boolean'
-    },
-    closeMenuOnScroll: {
-      description: `
-      If true, close the select menu when the user scrolls the document/body.
-      If a function, takes a standard javascript ScrollEvent you return a boolean:
-      \`\`\`
-      true => The menu closes
-      false => The menu stays open
-      \`\`\`
-      This is useful when you have a scrollable modal and want to portal the menu out,
-      but want to avoid graphical issues.
-      `
-    },
-    components: {
-      description: 'see the [components docs](https://react-select.com/components)'
-    },
-    controlShouldRenderValue: {
-      description: 'Whether the value of the select, e.g. SingleValue, should be displayed in the control.',
-      control: 'boolean'
-    },
-    delimiter: {
-      description: 'Delimiter used to join multiple values into a single HTML Input value'
-    },
-    escapeClearsValue: {
-      description: 'Clear all values when the user presses escape AND the menu is closed'
-    },
-    filterOption: {
-      description: 'Custom method to filter whether an option should be displayed in the menu'
-    },
-    formatGroupLabel: {
-      description: 'Formats group labels in the menu as React components'
-    },
-    formatOptionLabel: {
-      description: 'Formats option labels in the menu and control as React components'
-    },
-    getOptionLabel: {
-      description: '`(...) => string`'
-    },
-    getOptionValue: {
-      description: '`(...) => string`'
-    },
-    hideSelectedOptions: {
-      description: 'Hide the selected option from the menu',
-      control: 'boolean'
-    },
-    id: {
-      description: 'The id to set on the SelectContainer component.'
-    },
-    inputId: {
-      description: 'The id of the search input'
-    },
-    instanceId: {
-      description: ' `String[]|Number[]` Define an id prefix for the select components e.g. {your-id}-value'
-    },
-    clearable: {
-      description: 'Is the select value clearable',
-      control: 'boolean'
+    defaultValue: {
+      description: 'Initial selected option'
     },
     disabled: {
-      description: 'Is the select disabled',
+      control: 'boolean',
+      description: 'Whether to disable the select'
+    },
+    dropdownClassName: {
+      description: 'The class name of the dropdown menu'
+    },
+    dropdownMatchSelectWidth: {
+      description:
+        'Determine whether the dropdown menu and the select input are the same width. Default set min-width same as input. Will ignore when value less than select width. false will disable virtual scroll'
+    },
+    dropdownRender: {
+      description: '`(originNode: ReactNode) => ReactNode`  The custom dropdown menu'
+    },
+    dropdownStyle: {
+      description: 'The style of the dropdown menu'
+    },
+    fieldNames: {
+      description: 'Customize node label, value, options field name'
+    },
+    filterOption: {
+      description:
+        'If true, filter options by input, if function, filter options against it. The function will receive two arguments, inputValue and option, if the function returns true, the option will be included in the filtered set; Otherwise, it will be excluded'
+    },
+    filterSort: {
+      description:
+        "`(optionA: Option, optionB: Option) => number	` Sort function for search options sorting, see Array.sort's compareFunction"
+    },
+    getPopupContainer: {
+      description: 'The container of the dropdown menu. default is `() => document.body`'
+    },
+    labelInValue: {
+      description:
+        'Whether to embed label in value, turn the format of value from string to { value: string, label: ReactNode }',
       control: 'boolean'
+    },
+    listHeight: {
+      description: 'Config popup height',
+      control: 'number'
     },
     loading: {
-      description: 'Is the select in a state of loading (async)',
+      description: 'Whether to show loading',
       control: 'boolean'
     },
-    hasValue: {
-      control: 'boolean'
+    maxTagCount: {
+      description: 'Max tag count to show'
     },
-    multi: {
-      description: 'Support multiple selected options',
-      control: 'boolean'
+    maxTagPlaceholder: {
+      description: 'Placeholder for not showing tags'
     },
-    rtl: {
-      description: 'Is the select direction right-to-left',
-      control: 'boolean'
+    maxTagTextLength: {
+      description: 'Max tag text length to show'
     },
-    loadingMessage: {
-      description: 'Async: Text to display when loading options'
+    menuItemSelectedIcon: {
+      description: '`ReactNode` The custom selected icon'
     },
-    minMenuHeight: {
-      description: 'Minimum height of the menu before flipping',
-      control: 'number'
+    mode: {
+      description: 'Select mode',
+      control: {
+        type: 'radio',
+        options: ['combobox', 'multiple', 'tags']
+      }
     },
-    maxMenuHeight: {
-      description: 'Maximum height of the menu before scrolling',
-      control: 'number'
+    notFoundContent: {
+      description: 'Not found content'
     },
-    menuPlacement: {
+    open: {
+      description: 'Controlled open state of dropdown	'
+    },
+    optionFilterProp: {
       description:
-        "Default placement of the menu in relation to the control. `auto` will flip when there isn't enough space below the control.",
-      options: ['bottom', 'auto', 'top'],
-      control: {
-        type: 'radio'
-      }
+        'Which prop value of option will be used for filter if filterOption is true. If options is set, it should be set to label'
     },
-    menuPosition: {
-      description: 'The CSS position value of the menu, when "fixed" extra layout management is required',
-      options: ['absolute', 'fixed'],
-      control: {
-        type: 'radio'
-      }
-    },
-    menuPortalTarget: {
-      description: 'Whether the menu should use a portal, and where it should attach'
-    },
-    menuShouldBlockScroll: {
-      description: 'Whether to block scroll events when the menu is open',
-      control: 'boolean'
-    },
-    menuShouldScrollIntoView: {
-      description: 'Whether the menu should be scrolled into view when it opens',
-      control: 'boolean'
-    },
-    name: {
-      description: 'Name of the HTML Input (optional - without this, no input will be rendered)'
-    },
-    noOptionsMessage: {
-      description: 'Text to display when there are no options `()=>void`'
-    },
-    onBlur: {
-      description: 'Handle focus events on the control'
-    },
-    onFocus: {
-      description: 'Handle focus events on the control'
-    },
-    onKeyDown: {
-      description: 'Handle key down events on the select'
-    },
-    onMenuScrollToTop: {
-      description: 'Fired when the user scrolls to the top of the menu'
-    },
-    onMenuScrollToBottom: {
-      description: 'Fired when the user scrolls to the bottom of the menu'
-    },
-    openMenuOnFocus: {
-      description: 'Allows control of whether the menu is opened when the Select is focused',
-      control: 'boolean'
-    },
-    openMenuOnClick: {
-      description: 'Allows control of whether the menu is opened when the Select is clicked',
-      control: 'boolean'
+    optionLabelProp: {
+      description: 'Which prop value of option will render as content of select.'
     },
     options: {
-      description: 'Array of options that populate the select menu'
-    },
-    pageSize: {
-      description: 'Number of options to jump in menu when page{up|down} keys are used'
+      description: '`{ label, value }[]` | The options of select'
     },
     placeholder: {
-      description: 'Placeholder for the select value'
+      description: 'Placeholder of select'
     },
-    screenReaderStatus: {
-      description: 'Status to relay to screen readers'
+    removeIcon: {
+      description: '`ReactNode` The custom remove icon'
     },
-    styles: {
-      description: 'Style modifier methods'
+    searchValue: {
+      description: 'The current input "search" text'
     },
-    tabIndex: {
-      description: 'Sets the tabIndex attribute on the input',
-      control: 'number'
-    },
-    tabSelectsValue: {
-      description: 'Select the currently focused option when the user presses tab',
+    showArrow: {
+      description: 'Whether to show the drop-down arrow',
       control: 'boolean'
+    },
+    showSearch: {
+      description: 'Whether to show search input',
+      control: 'boolean'
+    },
+    tagRender: {
+      description: '`(props) => ReactNode` The custom tag render'
+    },
+    tokenSeparators: {
+      description: 'Separators of tags'
+    },
+    value: {
+      description: 'Current selected option (considered as a immutable array)	'
+    },
+    virtual: {
+      description: 'Whether to use virtual scroll',
+      control: 'boolean'
+    },
+    onBlur: {
+      description: 'Called when the component is blurred'
+    },
+    onChange: {
+      description: 'Called when the value is changed'
+    },
+    onClear: {
+      description: 'Called when the clear'
+    },
+    onDeselect: {
+      description: 'Called when the option is deselected'
+    },
+    onDropdownVisibleChange: {
+      description: 'Called when the dropdown is visible changed'
+    },
+    onFocus: {
+      description: 'Called when the component is focused'
+    },
+    onInputKeyDown: {
+      description: 'Called when the input is keydown'
+    },
+    onMouseEnter: {
+      description: 'Called when the mouse enters the component'
+    },
+    onMouseLeave: {
+      description: 'Called when the mouse leaves the component'
+    },
+    onPopupScroll: {
+      description: 'Called when the popup is scrolled'
+    },
+    onSearch: {
+      description: 'Called when the search'
+    },
+    onSelect: {
+      description: 'Called when the option is selected'
     }
   },
 
@@ -214,14 +192,34 @@ export default {
     docs: {
       description: {
         component: `
-Select component to select value from options.
-
-See [https://react-select.com/props](https://react-select.com/props) for more information.
-
 
 ## When To Use
 
 - A dropdown menu for displaying choices - an elegant alternative to the native \`<select>\` element.
+
+## API
+
+### Select Methods
+
+- \`blur()\`: Remove focus
+- \`focus()\`: Get focus
+
+### Option props
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | The additional class to option | string | - |
+| disabled | Disable this option | boolean | false |
+| title | \`title\` of Select after select this Option | string | - |
+| value | Default to filter with this property | string \\| number | - |
+
+### OptGroup props
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| key | Group key | string | - |
+| label | Group label | string \\| React.Element | - |
+
+## More Information
+See [\`rc-select\`](https://github.com/react-component/select/)
 `
       }
     },
@@ -232,33 +230,61 @@ See [https://react-select.com/props](https://react-select.com/props) for more in
   }
 } as ComponentMeta<typeof Select>
 
-const exampleDemo = [
-  { value: 'yellow', label: 'Yellow' },
-  { value: 'green', label: 'Green' },
-  { value: 'forest', label: 'Forest' },
-  { value: 'slate', label: 'Slate' }
-]
+const { Option } = Select
 
-const Template: ComponentStory<typeof Select> = args => <Select {...args} />
-export const Basic = Template.bind({})
-Basic.args = {
-  options: exampleDemo
-}
-
-export const MultiSelect = Template.bind({})
-MultiSelect.args = {
-  options: exampleDemo,
-  multi: true
-}
-
-export const SearchableSelect = Template.bind({})
-SearchableSelect.args = {
-  options: exampleDemo,
-  searchable: true,
-  clearable: true
-}
-
-export const LargeDataSet = Template.bind({})
-LargeDataSet.args = {
-  options: [...Array(1000).keys()].map(i => ({ value: i, label: `label${i}` }))
-}
+const Template: ComponentStory<typeof Select> = () => (
+  <>
+    <Select defaultValue="ruby" style={{ width: 120 }}>
+      <Option value="ruby">Ruby</Option>
+      <Option value="lucy">Lucy</Option>
+      <Option value="jack">Jack</Option>
+      <Option value="disabled" disabled>
+        Disabled
+      </Option>
+    </Select>
+    <br />
+    <br />
+    <Select
+      mode="multiple"
+      style={{ width: '100%' }}
+      placeholder="select one country"
+      defaultValue={['china']}
+      optionLabelProp="label"
+    >
+      <Option value="china" label="China">
+        <div className="demo-option-label-item">
+          <span role="img" aria-label="China">
+            🇨🇳
+          </span>
+          China (中国)
+        </div>
+      </Option>
+      <Option value="usa" label="USA">
+        <div className="demo-option-label-item">
+          <span role="img" aria-label="USA">
+            🇺🇸
+          </span>
+          USA (美国)
+        </div>
+      </Option>
+      <Option value="japan" label="Japan">
+        <div className="demo-option-label-item">
+          <span role="img" aria-label="Japan">
+            🇯🇵
+          </span>
+          Japan (日本)
+        </div>
+      </Option>
+      <Option value="korea" label="Korea">
+        <div className="demo-option-label-item">
+          <span role="img" aria-label="Korea">
+            🇰🇷
+          </span>
+          Korea (韩国)
+        </div>
+      </Option>
+    </Select>
+    <br />
+  </>
+)
+export const Base = Template.bind({})

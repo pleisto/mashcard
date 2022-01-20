@@ -1,106 +1,36 @@
-import { ForwardRefRenderFunction, forwardRef, createRef } from 'react'
-import StateSelect, { createFilter } from 'react-select'
-import { theme } from '../../themes'
-import { VirtualMenuList } from './VirtualMenuList'
-import { DropdownIndicator, IndicatorSeparator, IndicatorsContainer } from './Indicator'
-import { CeramicsMixins } from '../../themes/ceramic-light/colors/ceramics'
+import { ForwardRefRenderFunction, forwardRef, ForwardRefExoticComponent, RefAttributes } from 'react'
+import RcSelect, { Option, OptGroup, SelectProps as RcSelectProps, BaseSelectRef } from 'rc-select'
+import { defaultPopupContainer } from '../Tooltip'
+import type { BaseOptionType, DefaultOptionType } from 'rc-select/lib/Select'
+// import { selectStyle } from './styles/index.style'
 
-type StateSelectProps = Parameters<typeof StateSelect>[0]
-export interface SelectProps
-  extends Omit<
-    StateSelectProps,
-    'isMulti' | 'isRtl' | 'isDisabled' | 'isFocused' | 'isSelected' | 'isClearable' | 'isLoading' | 'isSearchable'
-  > {
-  clearable?: boolean
-  disabled?: boolean
-  loading?: boolean
-  searchable?: boolean
-  multi?: boolean
-  rtl?: boolean
-  focused?: boolean
-  selected?: boolean
+export interface SelectProps<ValueType = any, OptionType extends BaseOptionType | DefaultOptionType = DefaultOptionType>
+  extends Omit<RcSelectProps<ValueType, OptionType>, 'prefix'> {
+  bordered?: boolean
 }
 
-type SelectRef = Parameters<typeof StateSelect>[0]['ref']
-
-const Select: ForwardRefRenderFunction<unknown, SelectProps> = (
-  {
-    clearable = false,
-    loading = false,
-    searchable = false,
-    multi = false,
-    rtl = false,
-    disabled = false,
-    focused = false,
-    selected = false,
-    menuPortalTarget = document.body,
-    filterOption,
-    styles,
-    components,
-    ...otherProps
-  },
-  ref
-) => {
-  const selectRef = (ref ?? createRef()) as SelectRef
-  const selectProps = {
-    isClearable: clearable,
-    isLoading: loading,
-    isSearchable: searchable,
-    isMulti: multi,
-    isRtl: rtl,
-    isDisabled: disabled,
-    isFocused: focused,
-    isSelected: selected,
-    menuPortalTarget,
-    filterOption: filterOption ?? createFilter({ ignoreAccents: false }),
-    ...otherProps
-  }
+const Select: ForwardRefRenderFunction<BaseSelectRef, SelectProps> = (props, ref) => {
+  const { virtual = true, bordered = true, getPopupContainer, ...otherProps } = props
   return (
-    <StateSelect
-      {...selectProps}
-      ref={selectRef}
-      components={{
-        MenuList: VirtualMenuList,
-        DropdownIndicator,
-        IndicatorSeparator,
-        IndicatorsContainer,
-        ...components
-      }}
-      styles={{
-        // `react-select` use emotion.css as css-in-js library.
-        control: () => ({
-          display: 'flex',
-          alignItems: 'center',
-          border: `1px solid ${theme.colors.borderSecondary}`,
-          borderRadius: '4px',
-          background: `${theme.colors.ceramicQuaternary}`,
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          minHeight: '38px',
-          outline: '0 !important',
-          position: 'relative',
-          transition: 'all 100ms'
-        }),
-        menuPortal: base => ({
-          ...base,
-          zIndex: `${theme.zIndices.dropdown}` as unknown as number
-        }),
-        menu: base => ({
-          ...base,
-          ...CeramicsMixins.ceramicPrimary
-        }),
-        option: (base, state) => ({
-          ...base,
-          color: `${theme.colors.typePrimary}`,
-          cursor: 'pointer',
-          background: state.isFocused || state.isSelected ? `${theme.colors.secondaryHover}` : 'transparent'
-        }),
-        ...styles
-      }}
+    <RcSelect
+      prefixCls="brk-select"
+      bordered={bordered}
+      ref={ref}
+      virtual={virtual}
+      getPopupContainer={getPopupContainer ?? defaultPopupContainer}
+      {...(otherProps as SelectProps<any, BaseOptionType | DefaultOptionType>)}
     />
   )
 }
 
-const _Select = forwardRef(Select)
+const _Select = forwardRef(Select) as unknown as ForwardRefExoticComponent<
+  SelectProps & RefAttributes<BaseSelectRef>
+> & {
+  Option: typeof Option
+  OptGroup: typeof OptGroup
+}
 _Select.displayName = 'Select'
+_Select.Option = Option
+_Select.OptGroup = OptGroup
+
 export { _Select as Select }

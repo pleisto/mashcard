@@ -1,6 +1,6 @@
-import { Select } from '@brickdoc/design-system'
-import { International } from '@brickdoc/design-system/components/icon'
 import React from 'react'
+import { Select } from '@brickdoc/design-system'
+import { International } from '@brickdoc/design-icons'
 import { useCookieState } from 'ahooks'
 import { useGetAvailableLocalesFromWsQuery } from '@/BrickdocGraphQL'
 import styles from './styles.module.less'
