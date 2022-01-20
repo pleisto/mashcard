@@ -1,14 +1,14 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { EmbedBlockPlaceholder } from '../Placeholder'
+import { debounce } from 'lodash-es'
 import { Icon, Input, Popover, styled, theme } from '@brickdoc/design-system'
+import { UnsplashImage } from '@brickdoc/uploader'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { EmbedBlockPlaceholder } from '../Placeholder'
 import { BlockContainer } from '../../../components'
 import { EditorContext } from '../../../context/EditorContext'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { EmbedBlockAttributes } from '../EmbedBlock'
-import { UnsplashImage } from '@brickdoc/uploader'
-import { debounce } from 'lodash-es'
 
 export interface GalleryTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']

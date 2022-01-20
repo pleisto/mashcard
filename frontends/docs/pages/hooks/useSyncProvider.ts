@@ -51,7 +51,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     rootBlock.current = docBlocksMap.current.get(rootId.current)
   }, [queryVariables, data?.childrenBlocks])
 
-  const commitDirty = async () => {
+  const commitDirty = async (): Promise<void> => {
     if (committing.current) return
 
     committing.current = true

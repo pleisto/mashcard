@@ -9,6 +9,7 @@ import { BlockContainer } from '../../../components'
 import { EditorContext } from '../../../context/EditorContext'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { EmbedBlockAttributes } from '../EmbedBlock'
+import { BlockSynced, BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
 
 export interface UploadTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']
@@ -71,26 +72,40 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
   }, [])
 
   React.useEffect(() => {
+    let syncedListener: EventSubscribed
+    const uploadDefaultFile = (): void => {
+      const file = node.attrs.defaultFile as File
+      const fileType = getFileTypeByExtension(file.name)
+      void imperativeUpload(file, {
+        prepareFileUpload: editorDataSource.prepareFileUpload,
+        blockId: node.attrs.uuid,
+        fileType,
+        onUploaded,
+        onProgress
+      })
+      node.attrs.defaultFile = null
+    }
     // upload default file
     if (node.attrs.defaultFile) {
-      // Problem: upload API requires block exists first
-      // So defaultFile upload hook can not trigger before blockBatchSync
-      // TODO: avoid using setTimeout, manually trigger block sync before upload
-      setTimeout(() => {
-        const file = node.attrs.defaultFile as File
-        const fileType = getFileTypeByExtension(file.name)
-        void imperativeUpload(file, {
-          prepareFileUpload: editorDataSource.prepareFileUpload,
-          blockId: node.attrs.uuid,
-          fileType,
-          onUploaded,
-          onProgress
-        })
-      }, 1000)
+      // upload API requires block exists first,
+      // thus uploading should be triggered after block synced
+      syncedListener = BrickdocEventBus.subscribe(BlockSynced, () => {
+        uploadDefaultFile()
+      })
     }
+    // setup a timeout for checking defaultFile upload
+    setTimeout(() => {
+      if (node.attrs.defaultFile) {
+        uploadDefaultFile()
+      }
+    }, 1000)
 
     if (!node.attrs.defaultFile && node.attrs.isNew) {
       handleChooseFile()
+    }
+
+    return () => {
+      syncedListener.unsubscribe()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
