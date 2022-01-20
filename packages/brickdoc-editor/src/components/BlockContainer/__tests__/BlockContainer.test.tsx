@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import { BlockContainer } from '../'
 import { EditorDataSourceContext, EditorDataSource } from '../../../dataSource/DataSource'
 
@@ -14,7 +14,9 @@ describe('BlockContainer', () => {
     // expect dom has 'pointer-event: none' style
     expect(container.firstChild).toMatchSnapshot()
 
-    editorDataSource.documentEditable = true
+    act(() => {
+      editorDataSource.documentEditable = true
+    })
 
     rerender(
       <EditorDataSourceContext.Provider value={editorDataSource}>
