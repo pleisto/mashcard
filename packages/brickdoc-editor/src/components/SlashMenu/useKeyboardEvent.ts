@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrickdocEventBus, SlashMenuKeyboardEventTrigger } from '@brickdoc/schema'
+import { BrickdocEventBus, SlashMenuKeyboardEventTrigger, SlashMenuHide } from '@brickdoc/schema'
 import { SlashMenuItem, SlashMenuProps } from '.'
 
 export function useKeyboardEvent(
@@ -41,6 +41,9 @@ export function useKeyboardEvent(
           break
         case 'Enter':
           if (currentItem.current) command(currentItem.current)
+          break
+        case 'Escape':
+          BrickdocEventBus.dispatch(SlashMenuHide({}))
           break
       }
     })

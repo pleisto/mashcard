@@ -39,7 +39,7 @@ export const SlashCommandsExtension = Extension.create({
             if (!this.editor.isEditable) return
             popup?.destroy()
             reactRenderer?.destroy()
-            hideListener.unsubscribe()
+            hideListener?.unsubscribe()
           }
 
           return {
@@ -71,7 +71,7 @@ export const SlashCommandsExtension = Extension.create({
 
               const key = event.key
 
-              if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Enter') {
+              if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Enter' || key === 'Escape') {
                 BrickdocEventBus.dispatch(SlashMenuKeyboardEventTrigger({ key }))
                 return true
               }

@@ -928,6 +928,8 @@ en-US:
           label: Add a link to web or file.
           description: You can add a link to web or file.
           panel:
+            link_validate: Please input valid link first.
+            submit_error: Please make sure link is valid and then try again.
             head: Link
             text:
               placeholder: Text to display

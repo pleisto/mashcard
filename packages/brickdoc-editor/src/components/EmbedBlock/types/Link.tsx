@@ -1,13 +1,14 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { Icon, Input, Popover, styled, theme } from '@brickdoc/design-system'
+import { Icon, Input, Popover, styled, theme, toast } from '@brickdoc/design-system'
 import { EmbedBlockPlaceholder } from '../Placeholder'
 import { BlockContainer } from '../../../components'
 import { EditorContext } from '../../../context/EditorContext'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { prependHttp } from '../../../helpers'
 import { EmbedBlockAttributes } from '../EmbedBlock'
+import { useWebsiteMetaProgress } from './useWebsiteProgress'
 
 export interface LinkTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']
@@ -21,11 +22,8 @@ const LinkInput = styled(Input, {
 })
 
 const InputPanel = styled('div', {
-  include: ['ceramicPrimary'],
-  borderRadius: '4px',
   display: 'flex',
   flexDirection: 'column',
-  padding: '.625rem 1rem 1rem',
   [`${LinkInput} + ${LinkInput}`]: {
     marginTop: '.5rem'
   }
@@ -49,13 +47,24 @@ export const LinkTypeEmbedBlock: React.FC<LinkTypeEmbedBlockProps> = ({
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const [url, setUrl] = React.useState('')
   const [displayName, setDisplayName] = React.useState('')
+  const [progress, resetProgress, progressing] = useWebsiteMetaProgress()
 
   const handleSubmit = React.useCallback(async (): Promise<void> => {
-    if (!url) return
+    if (!url) {
+      toast.error(t('embed_block.types.link.panel.link_validate'))
+      return
+    }
 
+    progressing()
     const { success, data } = await editorDataSource.fetchWebsiteMeta(prependHttp(url))
 
-    if (!success) return
+    if (!success) {
+      resetProgress()
+      toast.error(t('embed_block.types.link.panel.submit_error'))
+      return
+    }
+
+    resetProgress(100)
 
     if (data.type === 'website') {
       updateEmbedBlockAttributes(
@@ -82,7 +91,7 @@ export const LinkTypeEmbedBlock: React.FC<LinkTypeEmbedBlockProps> = ({
         'attachment'
       )
     }
-  }, [displayName, editorDataSource, updateEmbedBlockAttributes, url])
+  }, [displayName, editorDataSource, progressing, resetProgress, t, updateEmbedBlockAttributes, url])
 
   const handleLinkChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>(event => {
     setUrl(event.target.value)
@@ -105,6 +114,7 @@ export const LinkTypeEmbedBlock: React.FC<LinkTypeEmbedBlockProps> = ({
               placeholder={t('embed_block.types.link.panel.text.placeholder')}
               value={displayName}
               onChange={handleDisplayNameChange}
+              onPressEnter={handleSubmit}
             />
             <LinkInput
               // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -118,12 +128,14 @@ export const LinkTypeEmbedBlock: React.FC<LinkTypeEmbedBlockProps> = ({
             />
           </InputPanel>
         }
-        placement="bottom">
+        placement="bottom"
+      >
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Icon.Link />}
           label={t('embed_block.types.link.label')}
           description={t('embed_block.types.link.description')}
+          progress={progress}
         />
       </Popover>
     </BlockContainer>
