@@ -55,7 +55,7 @@ export default {
     icon: {
       description: '`React.ReactNode`'
     },
-    onPress: {
+    onClick: {
       description: '`(e: PressEvent) => void`'
     },
     role: {
