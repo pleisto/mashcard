@@ -37,7 +37,7 @@ export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenu
 export interface ExplorerMenuItem {
   label: React.ReactElement
   labelText: string
-  icon: React.ReactNode
+  icon: React.ReactElement
   onAction?: () => void
   items?: ExplorerMenuItem[]
 }

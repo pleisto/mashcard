@@ -1,9 +1,9 @@
 import React from 'react'
-import { Icon, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
+import { css, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
 import { ActionItemGroupOption, ActionOptionGroup } from '../BlockActions'
+import * as EditorIcon from '../../Icon'
 import { ToolbarOption } from '../../Toolbar'
 import { EditorContext } from '../../../context/EditorContext'
-import * as EditorIcon from '../../Icon'
 import { useOptions } from './useOptions'
 
 export interface BlockActionsMenuProps {
@@ -13,9 +13,15 @@ export interface BlockActionsMenuProps {
   onClose?: () => void
 }
 
-export const ActionIcon = styled(EditorIcon.IconBackground, {
+const iconSize = '.8125rem'
+
+export const actionIconStyle = css({
   color: theme.colors.deepPurple4,
-  fontSize: '.8125rem',
+  fontSize: iconSize
+})
+
+export const blockIconStyle = css({
+  fontSize: iconSize,
   height: '1.625rem',
   width: '1.625rem'
 })
@@ -42,7 +48,8 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
             onAction={key => {
               option.onAction?.(key)
               if (option.closeOnAction !== false) onClose?.()
-            }}>
+            }}
+          >
             {option.content}
           </ActionMenuItem>
         )
@@ -53,7 +60,8 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
             key={key}
             itemKey={option.name}
             label={option.label}
-            icon={option.icon}>
+            icon={option.icon}
+          >
             {typeof option.items === 'function'
               ? option.items()
               : option.items?.reduce<React.ReactElement[]>((elements, option, index, array) => {
@@ -85,7 +93,7 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
                 renderMenuItem(
                   {
                     ...option,
-                    icon: <ActionIcon>{option.icon}</ActionIcon>
+                    icon: option.icon ? React.cloneElement(option.icon, { className: actionIconStyle() }) : undefined
                   },
                   option.name,
                   onClose
@@ -101,19 +109,14 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
         baseId={`${baseId}-add-block`}
         itemKey="addBlock"
         label={t('block_actions.add_block')}
-        icon={
-          <ActionIcon>
-            <Icon.Add />
-          </ActionIcon>
-        }>
+        icon={<EditorIcon.Add className={actionIconStyle()} />}
+      >
         {blockOptions?.reduce<React.ReactElement[]>((elements, option, index, array) => {
           if (option.type === 'group')
             return [
               ...elements,
               <Menu.Group label={option.title} key={option.title ?? `group-${index}`}>
-                {option.items.map(option => (
-                  renderMenuItem(option, option.name, onClose)
-                ))}
+                {option.items.map(option => renderMenuItem(option, option.name, onClose))}
                 {index < array.length - 1 && <Menu.Separator aria-label={t('toolbar.separator')} />}
               </Menu.Group>
             ]

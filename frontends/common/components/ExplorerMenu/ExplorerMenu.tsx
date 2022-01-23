@@ -11,7 +11,7 @@ import {
   InnerMenu,
   InnerMenuContainer,
   MenuGroupLabel,
-  MenuIcon,
+  menuIconStyle,
   MenuItem,
   SearchInput,
   SearchInputContainer,
@@ -105,7 +105,7 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
                     key={index}
                     itemKey={`item-${index}`}
                     label={item.label}
-                    icon={<MenuIcon>{item.icon}</MenuIcon>}
+                    icon={React.cloneElement(item.icon, { className: menuIconStyle() })}
                   />
                 ))}
               </Menu.Group>

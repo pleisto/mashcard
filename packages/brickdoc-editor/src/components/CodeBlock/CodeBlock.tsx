@@ -1,13 +1,13 @@
 import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../../components'
-import { Icon, Input, styled, toast } from '@brickdoc/design-system'
+import { Input, Icon, styled, toast } from '@brickdoc/design-system'
 import 'highlight.js/styles/atom-one-light.css'
-import './CodeBlock.less'
+import * as EditorIcon from '../Icon'
 import { ActionItemOption } from '../BlockActions'
 import { BlockContainerProps } from '../BlockContainer'
 import { EditorContext } from '../../context/EditorContext'
-import { ActionIcon } from '../BlockActions/BlockActionsMenu'
+import { actionIconStyle } from '../BlockActions/BlockActionsMenu'
 
 export interface CodeBlockProps extends NodeViewProps {}
 
@@ -53,11 +53,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
           type: 'subMenu',
           name: 'languages',
           label: language ?? defaultLanguage,
-          icon: (
-            <ActionIcon>
-              <Icon.TextMessage />
-            </ActionIcon>
-          ),
+          icon: <EditorIcon.TextMessage className={actionIconStyle()} />,
           items: [
             {
               type: 'item',
@@ -80,11 +76,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
       type: 'item',
       name: 'copy',
       label: t('code_block.copy_code'),
-      icon: (
-        <ActionIcon>
-          <Icon.Copy />
-        </ActionIcon>
-      ),
+      icon: <EditorIcon.Copy className={actionIconStyle()} />,
       onAction: async () => {
         await navigator.clipboard.writeText(node.text ?? node.textContent ?? '')
         void toast.success(t('copy_hint'))

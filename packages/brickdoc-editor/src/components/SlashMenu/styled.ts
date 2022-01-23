@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import { Icon, Menu, MenuProps, menuItemSpacing, styled, theme } from '@brickdoc/design-system'
-import { IconBackground } from '../Icon'
+import { Icon, Menu, MenuProps, menuItemSpacing, styled, theme, css } from '@brickdoc/design-system'
 
 const footerHeight = '2rem'
 
@@ -25,7 +24,7 @@ export const SlashMenuGroupLabel = styled('span', {
   fontSize: theme.fontSizes.callout
 })
 
-export const MenuIcon = styled(IconBackground, {
+export const menuIconStyle = css({
   fontSize: '.8125rem',
   height: '1.3rem',
   width: '1.3rem'
@@ -40,7 +39,7 @@ export const RecentItem = styled(Menu.Item, {
   padding: '5px'
 })
 
-export const RecentItemIconContainer = styled(IconBackground, {
+export const recentItemIconStyle = css({
   height: '1.6rem',
   width: '1.6rem'
 })

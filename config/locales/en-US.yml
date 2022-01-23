@@ -774,7 +774,7 @@ en-US:
         numbered_list: Numbered list
         bulleted_list: Bulleted list
         formula: Formula
-        code: code
+        code: Code
     slash_menu:
       title: Slash menu
       recent: Recently used

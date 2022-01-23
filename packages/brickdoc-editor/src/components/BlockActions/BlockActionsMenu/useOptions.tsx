@@ -4,12 +4,10 @@ import CodeBlock from '@tiptap/extension-code-block'
 import Heading from '@tiptap/extension-heading'
 import OrderedList from '@tiptap/extension-ordered-list'
 import BulletList from '@tiptap/extension-bullet-list'
-import { Icon } from '@brickdoc/design-system'
-import { ActionIcon } from './BlockActionsMenu'
 import * as EditorIcon from '../../Icon'
 import { ToolbarOptionGroup } from '../../Toolbar'
 import { EditorContext } from '../../../context/EditorContext'
-import { BlockActionsMenuProps } from '.'
+import { BlockActionsMenuProps, blockIconStyle } from './BlockActionsMenu'
 import { BlockContext } from '../../../context/BlockContext'
 
 export function useOptions(
@@ -33,11 +31,7 @@ export function useOptions(
             type: 'item',
             name: 'text',
             label: t('block_actions.blocks.text'),
-            icon: (
-              <ActionIcon>
-                <Icon.TextStyle />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.TextStyle className={blockIconStyle()} square={true} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -60,11 +54,7 @@ export function useOptions(
             type: 'item',
             name: 'heading1',
             label: t('block_actions.blocks.h1'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.RteH1 />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.RteH1 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -82,11 +72,7 @@ export function useOptions(
             type: 'item',
             name: 'heading2',
             label: t('block_actions.blocks.h2'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.RteH2 />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.RteH2 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -104,11 +90,7 @@ export function useOptions(
             type: 'item',
             name: 'heading3',
             label: t('block_actions.blocks.h3'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.RteH3 />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.RteH3 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -126,11 +108,7 @@ export function useOptions(
             type: 'item',
             name: 'heading4',
             label: t('block_actions.blocks.h4'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.RteH4 />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.RteH4 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -148,11 +126,7 @@ export function useOptions(
             type: 'item',
             name: 'heading5',
             label: t('block_actions.blocks.h5'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.RteH5 />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.RteH5 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -175,11 +149,7 @@ export function useOptions(
             type: 'item',
             name: 'numberedList',
             label: t('block_actions.blocks.numbered_list'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.ListOrdered />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.ListOrdered square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
               const position = getPosition()
@@ -199,11 +169,7 @@ export function useOptions(
             type: 'item',
             name: 'bulletedList',
             label: t('block_actions.blocks.bulleted_list'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.ListUnordered />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.ListUnordered square={true} className={blockIconStyle()} />,
             onAction: () => {
               const position = getPosition()
 
@@ -222,11 +188,7 @@ export function useOptions(
             type: 'item',
             name: 'formula',
             label: t('block_actions.blocks.formula'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.Formula />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.Formula square={true} className={blockIconStyle()} />,
             onAction: () => {
               const position = getPosition()
 
@@ -243,11 +205,7 @@ export function useOptions(
             type: 'item',
             name: 'code',
             label: t('block_actions.blocks.code'),
-            icon: (
-              <ActionIcon>
-                <EditorIcon.Code />
-              </ActionIcon>
-            ),
+            icon: <EditorIcon.Code square={true} className={blockIconStyle()} />,
             onAction: () => {
               const position = getPosition()
 

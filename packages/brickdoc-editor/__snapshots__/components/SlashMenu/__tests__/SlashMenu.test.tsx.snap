@@ -37,13 +37,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         tabindex="0"
         title=""
       >
-        <span
-          class="brd-c-jGWQQH brd-c-ktkyHc"
+        <div
+          class="brd-c-ktkyHc"
         >
-          <div>
-            icon
-          </div>
-        </span>
+          icon
+        </div>
       </li>
       <li
         class="brd-c-bhbgDt brd-c-jIhtkb"
@@ -53,13 +51,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         tabindex="-1"
         title=""
       >
-        <span
-          class="brd-c-jGWQQH brd-c-ktkyHc"
+        <div
+          class="brd-c-ktkyHc"
         >
-          <div>
-            icon
-          </div>
-        </span>
+          icon
+        </div>
       </li>
       <li
         class="brd-c-bhbgDt brd-c-jIhtkb"
@@ -69,13 +65,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         tabindex="-1"
         title=""
       >
-        <span
-          class="brd-c-jGWQQH brd-c-ktkyHc"
+        <div
+          class="brd-c-ktkyHc"
         >
-          <div>
-            icon
-          </div>
-        </span>
+          icon
+        </div>
       </li>
     </ul>
   </ul>
@@ -110,13 +104,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         <span
           class="brd-c-OVPdU"
         >
-          <span
-            class="brd-c-jGWQQH brd-c-huISce"
+          <div
+            class="brd-c-huISce"
           >
-            <div>
-              icon
-            </div>
-          </span>
+            icon
+          </div>
         </span>
         <div
           class="brd-c-fNvXDc"
@@ -147,13 +139,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         <span
           class="brd-c-OVPdU"
         >
-          <span
-            class="brd-c-jGWQQH brd-c-huISce"
+          <div
+            class="brd-c-huISce"
           >
-            <div>
-              icon
-            </div>
-          </span>
+            icon
+          </div>
         </span>
         <div
           class="brd-c-fNvXDc"
@@ -184,13 +174,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         <span
           class="brd-c-OVPdU"
         >
-          <span
-            class="brd-c-jGWQQH brd-c-huISce"
+          <div
+            class="brd-c-huISce"
           >
-            <div>
-              icon
-            </div>
-          </span>
+            icon
+          </div>
         </span>
         <div
           class="brd-c-fNvXDc"
