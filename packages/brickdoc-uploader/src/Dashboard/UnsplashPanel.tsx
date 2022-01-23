@@ -86,7 +86,11 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
 
   return (
     <div className="uploader-dashboard-unsplash-panel">
-      <input className="dashboard-unsplash-search-input" placeholder="Search for an image..." onChange={handleUnsplashSearchInput} />
+      <input
+        className="dashboard-unsplash-search-input"
+        placeholder="Search for an image..."
+        onChange={handleUnsplashSearchInput}
+      />
       <div className="dashboard-unsplash-image-list">
         {unsplashImages.map(image => (
           <Button type="text" key={image.id} className="unsplash-image-item" onClick={handleUnsplashImageSelect(image)}>

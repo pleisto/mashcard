@@ -38,7 +38,7 @@ export const SpreadsheetMenu = (options: {
               onAction?.(key)
             }}
           >
-            <MenuIcon style={{ marginRight: '10px' }}>{item.icon}</MenuIcon>
+            <MenuIcon css={{ marginRight: '10px' }}>{item.icon}</MenuIcon>
             {title}
           </Menu.Item>
         )

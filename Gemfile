@@ -38,8 +38,8 @@ gem 'flipper-active_support_cache_store', '~> 0.23.0'
 gem 'default_value_for', github: 'brickdoc/default_value_for'
 
 # Sentry
-gem "sentry-ruby", github: 'getsentry/sentry-ruby'
-gem "sentry-rails", github: 'getsentry/sentry-ruby'
+gem "sentry-ruby", '~> 5.0.0'
+gem "sentry-rails", '~> 5.0.0'
 
 # GraphQL
 gem 'graphql', '~> 1.13'

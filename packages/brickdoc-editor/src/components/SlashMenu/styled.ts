@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Icon, Menu, MenuProps, menuItemSpacing, styled, theme, css } from '@brickdoc/design-system'
+import { IconBackground } from '../Icon'
 
 const footerHeight = '2rem'
 
@@ -22,6 +23,12 @@ export const StyledSlashMenu = styled(Menu as FC<MenuProps>, {
 export const SlashMenuGroupLabel = styled('span', {
   color: theme.colors.typeThirdary,
   fontSize: theme.fontSizes.callout
+})
+
+export const MenuIcon = styled(IconBackground, {
+  fontSize: '.8125rem',
+  height: '1.3rem',
+  width: '1.3rem'
 })
 
 export const menuIconStyle = css({

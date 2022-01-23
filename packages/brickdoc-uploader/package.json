@@ -11,9 +11,9 @@
   "dependencies": {
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
-    "@uppy/core": "^2.1.2",
-    "@uppy/dashboard": "^2.1.1",
-    "@uppy/react": "^2.1.1",
-    "@uppy/xhr-upload": "^2.0.5"
+    "@uppy/core": "^2.1.4",
+    "@uppy/dashboard": "^2.1.3",
+    "@uppy/react": "^2.1.2",
+    "@uppy/xhr-upload": "^2.0.7"
   }
 }

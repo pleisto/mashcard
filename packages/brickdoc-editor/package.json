@@ -39,9 +39,8 @@
     "@tiptap/extension-text-style": "^2.0.0-beta.23",
     "@tiptap/extension-underline": "^2.0.0-beta.22",
     "@tiptap/extension-unique-id": "^2.0.0-beta.4",
-    "@tiptap/react": "^2.0.0-beta.104",
+    "@tiptap/react": "^2.0.0-beta.106",
     "@tiptap/suggestion": "^2.0.0-beta.86",
-    "dayjs": "^1.10.7",
     "highlight.js": "^11.4.0",
     "popper-max-size-modifier": "^0.2.0",
     "re-resizable": "^6.9.1",
@@ -53,10 +52,10 @@
   },
   "devDependencies": {
     "@types/react-pdf": "^5.0.9",
-    "i18next": "^21.6.5",
+    "i18next": "^21.6.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.5"
   },
   "peerDependencies": {
     "react": "^17.0.2",

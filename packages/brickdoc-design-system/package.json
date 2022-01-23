@@ -25,15 +25,13 @@
     "rc-dialog": "^8.6.0",
     "rc-field-form": "^1.22.1",
     "rc-motion": "^2.4.4",
-    "rc-picker": "^2.5.19",
-    "rc-select": "^13.2.1",
+    "rc-select": "^14.0.0-alpha.24",
     "rc-textarea": "^0.3.7",
     "rc-util": "^5.16.1",
     "scroll-into-view-if-needed": "^2.2.28"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.5",
-    "dayjs": "^1.10.7",
     "i18next": "^21.6.5",
     "less": "^4.1.2",
     "react": "^17.0.2",
