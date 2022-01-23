@@ -29,7 +29,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
     [docMeta.id, docMeta.snapshotVersion]
   )
 
-  const { rootBlock, data, loading, refetch, onDocSave, updateBlocks } = useSyncProvider(queryVariables)
+  const { rootBlock, data, loading, refetch, onDocSave } = useSyncProvider(queryVariables)
 
   const currentRootBlock = rootBlock.current
   const [documentEditable, setDocumentEditable] = useDocumentEditable(docMeta, currentRootBlock)
@@ -37,8 +37,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   const editorDataSource = useEditorDataSource({
     docMeta,
     documentEditable,
-    blocks: data?.childrenBlocks,
-    updateBlocks
+    blocks: data?.childrenBlocks
   })
 
   const editor = useEditor({

@@ -60,7 +60,7 @@ export type SpreadsheetName = string
 
 export type Definition = string
 
-export type VariableKind = 'constant' | 'expression'
+export type VariableKind = 'literal' | 'constant' | 'expression' | 'unknown'
 
 export type ErrorType =
   | 'type'
@@ -295,7 +295,9 @@ export type AnyTypeResult =
   | ReferenceResult
 
 export type AnyFunctionResult<T> = (AnyTypeResult & { type: T }) | ErrorResult
-export interface Formula {
+
+export type FormulaSourceType = 'normal' | 'spreadsheet'
+export interface BaseFormula {
   blockId: uuid
   definition: string
   id: uuid
@@ -303,8 +305,12 @@ export interface Formula {
   cacheValue: BaseResult
   level: number
   version: number
-  kind: string
-  dependencyIds: uuid[]
+  type: string
+}
+
+export interface Formula extends BaseFormula {
+  definition: Definition
+  type: FormulaSourceType
 }
 
 export interface FormulaWithTime extends Formula {
@@ -567,17 +573,20 @@ interface ErrorVariableValue extends BaseVariableValue {
 
 export type VariableValue = SuccessVariableValue | ErrorVariableValue
 
-export interface VariableData {
+export interface VariableResult {
+  definition: Definition
+  variableValue: VariableValue
+  kind: VariableKind
+  type: FormulaSourceType
+}
+export interface VariableData extends VariableResult {
   name: VariableName
   level: number
   version: number
   namespaceId: NamespaceId
   variableId: VariableId
-  definition: Definition
   dirty: boolean
   valid: boolean
-  kind: VariableKind
-  variableValue: VariableValue
   cst?: CstNode
   codeFragments: CodeFragment[]
   flattenVariableDependencies: VariableDependency[]
@@ -591,6 +600,7 @@ export interface VariableMetadata {
   readonly variableId: VariableId
   readonly input: string
   readonly name: VariableName
+  readonly type: FormulaSourceType
 }
 
 export interface VariableInterface {
@@ -603,6 +613,7 @@ export interface VariableInterface {
   reparse: VoidFunction
   updateDefinition: (definition: Definition) => Promise<void>
   meta: () => VariableMetadata
+  result: () => VariableResult
   updateCst: (cst: CstNode, context: InterpretContext) => void
   invokeBackendCreate: () => Promise<void>
   invokeBackendUpdate: () => Promise<void>

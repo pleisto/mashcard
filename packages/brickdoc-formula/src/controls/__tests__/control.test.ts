@@ -2,6 +2,7 @@
 import { interpret, parse } from '../../grammar/core'
 import { FormulaContext, FORMULA_FEATURE_CONTROL } from '../../context'
 import { quickInsert } from '../../grammar/testHelper'
+import { VariableMetadata } from '../..'
 
 const formulaContext = new FormulaContext({})
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -15,8 +16,14 @@ const testName1 = 'varvarabcvar'
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const interpretContext = { ctx: {}, arguments: [] }
-const meta = { namespaceId, variableId, name: testName1, input: '=24' }
-const barMeta = { namespaceId, variableId: barVariableId, name: 'bar', input: `=#${namespaceId}.${variableId}` }
+const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', type: 'normal' }
+const barMeta: VariableMetadata = {
+  namespaceId,
+  variableId: barVariableId,
+  name: 'bar',
+  input: `=#${namespaceId}.${variableId}`,
+  type: 'normal'
+}
 describe('Controls', () => {
   beforeAll(async () => {
     await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
@@ -113,7 +120,7 @@ describe('Controls', () => {
 
   it('feature', () => {
     const input = `=Button("Foo", Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})))`
-    const meta = { namespaceId, variableId: testVariableId, name: 'foo', input }
+    const meta: VariableMetadata = { namespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
     const interpretContext = { ctx: {}, arguments: [] }
     const { errorMessages: errorMessage1 } = parse({
       ctx: { formulaContext: new FormulaContext({ features: [] }), meta, interpretContext }
@@ -138,8 +145,8 @@ describe('Controls', () => {
 
   testCases.forEach(({ input, label, parseErrorMessage, result }) => {
     it(`[${label}] ${input}`, async () => {
-      const meta = { namespaceId, variableId: testVariableId, name: 'foo', input }
-      const { errorMessages, valid, codeFragments, cst, success } = parse({
+      const meta: VariableMetadata = { namespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
+      const { errorMessages, kind, valid, codeFragments, cst, success } = parse({
         ctx: {
           formulaContext,
           meta,
@@ -153,7 +160,7 @@ describe('Controls', () => {
 
       if (success) {
         const { variableValue } = await interpret({
-          cst: cst!,
+          parseResult: { cst, kind },
           ctx: { meta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })
 

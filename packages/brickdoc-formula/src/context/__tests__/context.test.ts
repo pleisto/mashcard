@@ -1,5 +1,5 @@
 import { appendFormulas, buildVariable, interpret, parse, SuccessParseResult } from '../../grammar/core'
-import { Formula } from '../../types'
+import { Formula, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
 describe('Context', () => {
@@ -19,10 +19,9 @@ describe('Context', () => {
       id: fooVariableId,
       blockId: fooNamespaceId,
       definition: '=123',
-      kind: 'constant',
-      dependencyIds: [],
       version: 0,
       level: 0,
+      type: 'normal',
       cacheValue: {
         type: 'number',
         result: 123
@@ -32,11 +31,10 @@ describe('Context', () => {
       name: 'bar',
       id: barVariableId,
       blockId: barNamespaceId,
-      dependencyIds: [fooVariableId],
       definition: `=ABS(120) + #${fooNamespaceId}.${fooVariableId}`,
-      kind: 'expression',
       version: 0,
       level: 0,
+      type: 'normal',
       cacheValue: {
         type: 'number',
         result: 243
@@ -88,7 +86,13 @@ describe('Context', () => {
     const newFooVariableId = '7fb702f9-8216-47de-a574-e6b8eede5bf5'
     const name = 'foo'
     const input = '=123'
-    const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
+    const meta: VariableMetadata = {
+      namespaceId: fooNamespaceId,
+      variableId: newFooVariableId,
+      name,
+      input,
+      type: 'normal'
+    }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([{ message: 'Name exist in same namespace', type: 'name_unique' }])
   })
@@ -97,7 +101,13 @@ describe('Context', () => {
     const newFooVariableId = '7fb702f9-8216-47de-a574-e6b8eede5bf5'
     const name = 'if'
     const input = '=123'
-    const meta = { namespaceId: fooNamespaceId, variableId: newFooVariableId, name, input }
+    const meta: VariableMetadata = {
+      namespaceId: fooNamespaceId,
+      variableId: newFooVariableId,
+      name,
+      input,
+      type: 'normal'
+    }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is reserved', type: 'name_check' }])
   })
@@ -107,7 +117,7 @@ describe('Context', () => {
     const name = 'ifname'
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
-    const meta = { namespaceId, variableId, name, input }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, type: 'normal' }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
 
     expect(parseResult.errorMessages).toEqual([{ message: 'Expected boolean but got number', type: 'type' }])
@@ -127,14 +137,14 @@ describe('Context', () => {
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const name = 'baz'
     const input = `=#${fooNamespaceId}.${fooVariableId} + #${barNamespaceId}.${barVariableId}`
-    const meta = { namespaceId, variableId, name, input }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, type: 'normal' }
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 
     expect(parseResult.success).toEqual(true)
 
     const interpretResult = await interpret({
-      cst: parseResult.cst,
+      parseResult,
       ctx: {
         formulaContext,
         meta,

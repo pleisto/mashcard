@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, interpret } from '../core'
-import { FunctionContext, ParseErrorType } from '../../types'
+import { FunctionContext, ParseErrorType, VariableMetadata } from '../../types'
 import { FormulaContext } from '../../context'
 import { quickInsert } from '../testHelper'
 
@@ -267,6 +267,19 @@ const testCases: TestCase[] = [
     value: 24
   },
   {
+    input: `=#${barNamespaceId}.bar`,
+    value: 24
+  },
+  {
+    input: `=bar`,
+    parseErrorType: 'syntax',
+    errorMessage: 'Unknown function bar'
+  },
+  {
+    input: `=Untitled.bar`,
+    value: 24
+  },
+  {
     input: `=&#${barNamespaceId}.${barVariableId}`,
     // value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId }
     parseErrorType: 'syntax',
@@ -523,9 +536,13 @@ const testCases: TestCase[] = [
   },
   {
     input: '1+1',
-    parseErrorType: 'syntax',
-    label: 'missing prefix equal',
-    errorMessage: 'TODO mismatch token startExpression'
+    label: 'literal1',
+    value: '1+1'
+  },
+  {
+    input: '1+1 asd n,san 中文测试 asdasd',
+    label: 'literal2',
+    value: '1+1 asd n,san 中文测试 asdasd'
   },
   {
     input: '=1+',
@@ -902,7 +919,7 @@ const testCases: TestCase[] = [
 const formulaContext = new FormulaContext({})
 
 const name = 'foo'
-const meta = { variableId, namespaceId, name, input: '!!!' }
+const meta: VariableMetadata = { variableId, namespaceId, name, input: '!!!', type: 'normal' }
 
 const ctx: FunctionContext = {
   formulaContext,
@@ -916,7 +933,10 @@ const ctx: FunctionContext = {
 describe('Simple test case', () => {
   beforeAll(async () => {
     await quickInsert({
-      ctx: { ...ctx, meta: { namespaceId: barNamespaceId, name: 'bar', variableId: barVariableId, input: '=24' } }
+      ctx: {
+        ...ctx,
+        meta: { namespaceId: barNamespaceId, name: 'bar', variableId: barVariableId, input: '=24', type: 'normal' }
+      }
     })
   })
 
@@ -928,6 +948,7 @@ describe('Simple test case', () => {
       const {
         success,
         cst,
+        kind,
         errorType,
         errorMessages,
         codeFragments,
@@ -937,7 +958,11 @@ describe('Simple test case', () => {
         parseImage
       } = parse({ ctx: { ...ctx, meta: newMeta } })
 
-      expect(completions.length).not.toEqual(0)
+      if (kind === 'literal') {
+        expect(completions.length).toEqual(0)
+      } else {
+        expect(completions.length).not.toEqual(0)
+      }
 
       if (label) {
         expect(codeFragments).toMatchSnapshot()
@@ -949,7 +974,7 @@ describe('Simple test case', () => {
       }
 
       if (value !== undefined) {
-        const { variableValue } = await interpret({ cst: cst!, ctx: { ...ctx, meta: newMeta } })
+        const { variableValue } = await interpret({ parseResult: { cst, kind }, ctx: { ...ctx, meta: newMeta } })
 
         expect(errorMessages).toEqual([])
 

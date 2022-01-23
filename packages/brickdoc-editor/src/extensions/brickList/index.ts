@@ -4,6 +4,7 @@ import { NodeType } from 'prosemirror-model'
 import { liftListItem as originalLiftListItem } from 'prosemirror-schema-list'
 import { TextSelection } from 'prosemirror-state'
 
+/* eslint-disable max-depth */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface brickListOptions {}
 

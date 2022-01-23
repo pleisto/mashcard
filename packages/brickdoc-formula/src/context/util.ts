@@ -114,7 +114,7 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
 }
 
 export const variable2completion = (variable: VariableInterface, weight: number): VariableCompletion => {
-  const value = variableKey(variable.t.namespaceId, variable.t.variableId)
+  const value: VariableKey = `${blockKey(variable.t.namespaceId)}.${variable.t.name}`
   return {
     kind: 'variable',
     replacements: [`${blockKey(variable.t.namespaceId)}.`, blockKey(variable.t.namespaceId), variable.t.name],

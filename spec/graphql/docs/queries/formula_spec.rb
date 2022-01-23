@@ -12,7 +12,7 @@ describe Docs::Queries::Formulas, type: :query do
           cacheValue
           blockId
           definition
-          dependencyIds
+          type
           updatedAt
           createdAt
         }
@@ -27,7 +27,7 @@ describe Docs::Queries::Formulas, type: :query do
       block = create(:docs_block, pod: user.personal_pod)
       formula = Docs::Formula.create!(
         block_id: block.id, id: SecureRandom.uuid, name: 'foo',
-        view: {}, dependency_ids: [], cache_value: { "type" => 'string', 'value' => '123' }, definition: "=123"
+        cache_value: { "type" => 'string', 'value' => '123' }, definition: "=123"
       )
 
       internal_graphql_execute(query, { webid: block.pod.webid })
@@ -36,9 +36,9 @@ describe Docs::Queries::Formulas, type: :query do
       expect(response.data['formulas'][0].slice!('updatedAt', 'createdAt')).to eq({
         'id' => formula.id,
         'blockId' => formula.block_id,
+        'type' => formula.type,
         'name' => formula.name,
         'definition' => formula.definition,
-        'dependencyIds' => formula.dependency_ids,
         'cacheValue' => formula.cache_value
       })
     end

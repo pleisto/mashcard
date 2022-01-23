@@ -1,6 +1,7 @@
 import { parse, interpret } from '../core'
 import { FormulaContext } from '../../context'
 import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass } from '../../controls'
+import { VariableMetadata } from '../..'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
@@ -15,7 +16,7 @@ const firstRowId = 'ec4fdfe8-4a12-4a76-aeae-2dea0229e734'
 const secondRowId = '5d1e4a83-383a-4991-a33c-52a9b3169549'
 const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 
-const meta = { namespaceId, variableId, name: 'example' }
+const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', type: 'normal' }
 
 const spreadsheetData: Row[] = [
   { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', [thirdColumnId]: '3', sort: '100' },
@@ -190,10 +191,10 @@ describe('Spreadsheet Functions', () => {
     it(`[${label}] ${input}`, async () => {
       const newMeta = { ...meta, input }
       const newCtx = { ...ctx, meta: newMeta }
-      const { codeFragments, cst, errorMessages } = parse({ ctx: newCtx })
+      const { codeFragments, cst, kind, errorMessages } = parse({ ctx: newCtx })
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      const result = (await interpret({ cst: cst!, ctx: newCtx })).variableValue.result.result
+      const result = (await interpret({ parseResult: { cst, kind }, ctx: newCtx })).variableValue.result.result
       if (value === SNAPSHOT_FLAG) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(result).toMatchSnapshot()
@@ -221,7 +222,7 @@ describe('Spreadsheet Functions', () => {
     const { completions: input1Completions } = parse({
       ctx: {
         ...ctx,
-        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1 }
+        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input1, type: 'normal' }
       },
       position: input1.length
     })
@@ -230,7 +231,10 @@ describe('Spreadsheet Functions', () => {
 
     const input2 = `=#${spreadsheetNamespaceId}.`
     const { completions: input2Completions } = parse({
-      ctx: { ...ctx, meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input2 } },
+      ctx: {
+        ...ctx,
+        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input: input2, type: 'normal' }
+      },
       position: input2.length
     })
     expect(input2Completions[0].kind).toEqual('column')

@@ -22,13 +22,12 @@ describe Docs::Mutations::FormulaUpdate, type: :mutation do
 
       formula = Docs::Formula.create!(
         block_id: block.id, id: SecureRandom.uuid, name: 'formula update',
-        view: {}, dependency_ids: [], definition: "=123", cache_value: { type: 'string', value: '123' }
+        definition: "=123", cache_value: { type: 'string', value: '123' }
       )
 
       new_name = "formula update name"
 
       input = { input: {
-        dependencyIds: [],
         id: formula.id,
         blockId: block.id,
         name: new_name,

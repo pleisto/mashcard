@@ -1,6 +1,6 @@
 import { parse, interpret } from '../core'
 import { FormulaContext } from '../../context'
-import { BaseFunctionClause, NumberResult } from '../../types'
+import { BaseFunctionClause, NumberResult, VariableMetadata } from '../../types'
 import { quickInsert } from '../testHelper'
 
 const functionClauses: Array<BaseFunctionClause<any>> = [
@@ -49,11 +49,10 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
-const unknownId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
 
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 
-const meta = { namespaceId, variableId, name: 'example' }
+const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', type: 'normal' }
 
 describe('Custom Function', () => {
   const formulaContext = new FormulaContext({ functionClauses })
@@ -77,10 +76,10 @@ describe('Custom Function', () => {
     const input = '=custom::PLUS(1, 1)'
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta, formulaContext: localFormulaContext }
-    const { success, cst } = parse({ ctx: finalCtx })
+    const { success, cst, kind } = parse({ ctx: finalCtx })
     expect(success).toEqual(true)
     const result = await interpret({
-      cst: cst!,
+      parseResult: { cst, kind },
       ctx: finalCtx
     })
     expect(result.variableValue.result.result).toEqual(2)
@@ -128,9 +127,9 @@ describe('Custom Function', () => {
     const input = '=custom::FORTY_TWO()'
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta, formulaContext: localFormulaContext }
-    const { success, cst } = parse({ ctx: finalCtx })
+    const { success, cst, kind } = parse({ ctx: finalCtx })
     expect(success).toEqual(true)
-    expect((await interpret({ cst: cst!, ctx: finalCtx })).variableValue.result.result).toEqual(42)
+    expect((await interpret({ parseResult: { cst, kind }, ctx: finalCtx })).variableValue.result.result).toEqual(42)
   })
 })
 
@@ -143,15 +142,15 @@ describe('Context', () => {
   })
 
   it('constant variable', async () => {
-    const input = `=#${namespaceId}.${fooVariableId}`
+    const input = `=#${namespaceId}.foo`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
-    const { cst, errorMessages } = parse({ ctx: finalCtx })
+    const { cst, kind, errorMessages } = parse({ ctx: finalCtx })
     expect(errorMessages).toEqual([])
     expect(
       (
         await interpret({
-          cst: cst!,
+          parseResult: { cst, kind },
           ctx: { meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })
       ).variableValue.result.result
@@ -161,11 +160,11 @@ describe('Context', () => {
   it('expression variable', async () => {
     const anotherBlockId = '9dda8306-dbe1-49d3-868d-1a7c86f27328'
     const anotherVariableId = '45e4260c-5bf1-4120-957e-1214c5ea7c20'
-    const barInput = `=10 + #${namespaceId}.${fooVariableId}`
+    const barInput = `=10 + #${namespaceId}.foo`
 
     // Insert bar
     const meta = { namespaceId: anotherBlockId, variableId: anotherVariableId, name: 'bar' }
-    await quickInsert({ ctx: { ...ctx, meta: { ...meta, input: barInput } } })
+    await quickInsert({ ctx: { ...ctx, meta: { ...meta, input: barInput, type: 'normal' } } })
 
     const bar = formulaContext.findVariable(anotherBlockId, anotherVariableId)!
 
@@ -174,7 +173,7 @@ describe('Context', () => {
     expect(bar.t.flattenVariableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
 
     const input = `=#${anotherBlockId}.${anotherVariableId}`
-    const newMeta = { namespaceId, variableId: fooVariableId, name: 'bar', input }
+    const newMeta: VariableMetadata = { namespaceId, variableId: fooVariableId, name: 'bar', input, type: 'normal' }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages, flattenVariableDependencies } = parse({ ctx: finalCtx })
     expect(flattenVariableDependencies).toEqual([
@@ -188,13 +187,13 @@ describe('Context', () => {
     const input = `= custom::PLUS(10, #${namespaceId}.${fooVariableId})`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
-    const { cst, errorMessages } = parse({ ctx: finalCtx })
+    const { cst, kind, errorMessages } = parse({ ctx: finalCtx })
     expect(errorMessages).toEqual([])
-    expect((await interpret({ cst: cst!, ctx: finalCtx })).variableValue.result.result).toEqual(34)
+    expect((await interpret({ parseResult: { cst, kind }, ctx: finalCtx })).variableValue.result.result).toEqual(34)
   })
 
   it('Type', () => {
-    const input = `= "foo" & #${namespaceId}.${fooVariableId}`
+    const input = `= "foo" & #${namespaceId}.foo`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
@@ -202,18 +201,21 @@ describe('Context', () => {
   })
 
   it('unknown namespace', () => {
-    const input = `=#${unknownId}.${fooVariableId}`
+    const input = `=Unknown.foo`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
-    expect(errorMessages).toEqual([{ message: `Block not found: ${unknownId}`, type: 'deps' }])
+    expect(errorMessages).toEqual([
+      { message: 'Unknown function Unknown', type: 'syntax' },
+      { message: 'TODO mismatch token FunctionCall', type: 'parse' }
+    ])
   })
 
   it('unknown variable', () => {
-    const input = `=#${namespaceId}.${unknownId}`
+    const input = `=Untitled.unknown`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
-    expect(errorMessages).toEqual([{ message: `Unknown variable: ${unknownId}`, type: 'syntax' }])
+    expect(errorMessages).toEqual([{ message: 'Access error', type: 'syntax' }])
   })
 })

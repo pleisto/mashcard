@@ -49,7 +49,8 @@ const renderMenu = (
                     onAction={key => {
                       item.onAction?.(key)
                       if (item.closeOnAction) closeMenu()
-                    }}>
+                    }}
+                  >
                     {item.content}
                   </Menu.Item>
                 ))}
@@ -67,7 +68,8 @@ const renderMenu = (
             onAction={key => {
               menuItem.onAction?.(key)
               if (menuItem.closeOnAction) closeMenu()
-            }}>
+            }}
+          >
             {menuItem.content}
           </Menu.Item>
         )
@@ -93,7 +95,8 @@ export const ToolbarMenuSubMenuItem: React.FC<ToolbarMenuSubMenuItemProps> = ({ 
       onVisibleChange={handleVisibleChange}
       placement="bottom"
       getPopupContainer={element => element}
-      content={MenuContent}>
+      content={MenuContent}
+    >
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
         <SubMenuItem role="menuitem" aria-label={option.label ?? option.name} active={option.active} css={option.css}>

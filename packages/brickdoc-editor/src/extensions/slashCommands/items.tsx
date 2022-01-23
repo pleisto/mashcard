@@ -16,7 +16,11 @@ const SPREADSHEET = {
   alias: ['table'],
   icon: <EditorIcon.Table square={true} />,
   command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setTableBlock().run()
+    editor
+      .chain()
+      .deleteRange(range)
+      .setSpreadsheetBlock(range.from - 1)
+      .run()
   }
 }
 const UPLOAD = {
@@ -173,6 +177,7 @@ const slashMenuItems = [
 export const TYPE_ITEMS: SlashMenuItem[] = [
   FORMULA,
   UPLOAD,
+  SPREADSHEET,
   LINK,
   GALLERY,
   TOC,

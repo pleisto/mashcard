@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   github
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   google_oauth2
 }
@@ -1239,19 +1239,9 @@ type Formula {
   definition: String!
 
   """
-  formula dependencies
-  """
-  dependencyIds: [UUID!]!
-
-  """
   object unique id
   """
   id: UUID!
-
-  """
-  kind
-  """
-  kind: String!
 
   """
   level
@@ -1262,6 +1252,11 @@ type Formula {
   formula name
   """
   name: String!
+
+  """
+  type
+  """
+  type: String!
 
   """
   updated at
@@ -1299,19 +1294,9 @@ input FormulaCreateInput {
   definition: String!
 
   """
-  dependencies
-  """
-  dependencyIds: [UUID!]!
-
-  """
   id
   """
   id: UUID!
-
-  """
-  kind
-  """
-  kind: String
 
   """
   level
@@ -1322,6 +1307,11 @@ input FormulaCreateInput {
   name
   """
   name: String!
+
+  """
+  type
+  """
+  type: String
 
   """
   version
@@ -1404,19 +1394,9 @@ input FormulaUpdateInput {
   definition: String
 
   """
-  dependencies
-  """
-  dependencyIds: [UUID!]
-
-  """
   id
   """
   id: UUID!
-
-  """
-  kind
-  """
-  kind: String
 
   """
   level
@@ -1427,6 +1407,11 @@ input FormulaUpdateInput {
   name
   """
   name: String
+
+  """
+  type
+  """
+  type: String
 
   """
   version
@@ -1713,6 +1698,7 @@ type RootMutation {
   ): UpdateMemberPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -1723,6 +1709,7 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -1733,6 +1720,7 @@ type RootMutation {
   ): UserCreatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -1743,6 +1731,7 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -1753,6 +1742,7 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -1763,6 +1753,7 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(
@@ -1820,17 +1811,6 @@ type RootQuery {
     List all children from root id
     """
     rootId: String!
-
-    """
-    Snapshot version
-    """
-    snapshotVersion: Int!
-  ): [block!]
-  databaseRowBlocks(
-    """
-    List all children from parent id
-    """
-    parentId: String!
 
     """
     Snapshot version
@@ -1905,6 +1885,12 @@ type RootQuery {
   return preview box data of url
   """
   previewBox(url: String!): preview_box!
+  spreadsheetChildren(
+    """
+    List all children from parent id
+    """
+    parentId: String!
+  ): SpreadsheetChildren
   trashBlocks(blockId: UUID, search: String, webid: String!): [block!]
 
   """
@@ -1996,6 +1982,13 @@ type SnapshotRestorePayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
+}
+
+type SpreadsheetChildren {
+  """
+  blocks
+  """
+  blocks: [block!]
 }
 
 """

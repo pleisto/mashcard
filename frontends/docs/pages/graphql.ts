@@ -52,12 +52,11 @@ export const queryFormulas = gql`
       cacheValue
       blockId
       definition
-      dependencyIds
       updatedAt
       createdAt
       level
       version
-      kind
+      type
     }
   }
 `
@@ -239,16 +238,18 @@ export const queryChildrenBlocks = gql`
   }
 `
 
-export const queryDatabaseRowBlocks = gql`
-  query GetDatabaseRowBlocks($parentId: String!, $snapshotVersion: Int!) {
-    databaseRowBlocks(parentId: $parentId, snapshotVersion: $snapshotVersion) {
-      id
-      sort
-      parentId
-      type
-      text
-      content
-      data
+export const querySpreadsheetChildren = gql`
+  query GetSpreadsheetChildren($parentId: String!) {
+    spreadsheetChildren(parentId: $parentId) {
+      blocks {
+        id
+        sort
+        parentId
+        type
+        text
+        content
+        data
+      }
     }
   }
 `

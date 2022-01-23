@@ -22,6 +22,16 @@ Array [
       Object {
         "codeFragments": Array [
           Object {
+            "code": "Equal",
+            "display": [Function],
+            "errors": Array [],
+            "hidden": false,
+            "name": "=",
+            "spaceAfter": true,
+            "spaceBefore": true,
+            "type": "any",
+          },
+          Object {
             "code": "NumberLiteral",
             "display": [Function],
             "errors": Array [],

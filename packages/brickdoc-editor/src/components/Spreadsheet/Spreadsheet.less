@@ -1,0 +1,263 @@
+@import '@brickdoc/design-system/components/style/themes';
+
+@table-header-color: #908B9C;       // palette/type/thirdary
+@table-bg: rgba(0, 0, 0, 3%);       // palette/type/thirdary
+@table-border-color: #BDBDBD;       // palette/type/thirdary
+
+@table-action-layer-width: 200px; // 36px;
+@table-action-border-color: rgba(0, 0, 0, 5%);   // palette/divider/overlay-primary
+@table-select-bg: rgba(44, 91, 255, 0.18); // palette/secondary/selected
+@table-select-border-color: #C0CDFF;
+@table-action-hover-color: #356CF9;              // palette/primary/default
+
+.brickdoc {
+  .ProseMirror {
+    .brickdoc-spreadsheet-block {
+      overflow:auto;
+      white-space: nowrap;
+      margin-left: 0 - @table-action-layer-width;
+      padding-left: @table-action-layer-width;
+      padding-bottom: 30px;
+      position: relative;
+      input {
+        font-weight: normal;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        &:focus {
+          border: 0;
+        }
+      }
+      .spreadsheet-title {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+      }
+      .spreadsheet-menu-button {
+        background: transparent;
+        border-radius: 11px;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        border: 2px solid @btn-default-border;
+        cursor: pointer;
+        &:hover {
+          // color: @table-action-hover-color;
+          // border-color: @table-action-hover-color;
+        }
+      }
+      table {
+        font-size: 14px;
+        border-collapse: collapse;
+        thead {
+          background: @table-bg;
+        }
+        th {
+          color: @table-header-color;
+          text-align: center;
+          font-weight: normal;
+        }
+        td, th {
+          min-width: 164px;
+          border: 1px solid @table-border-color;
+          line-height: 22px;
+          &.row-action-panel {
+            padding: 0;
+            width: 0;
+            min-width: 0;
+            border: 0;
+            position: relative;
+            .row-action-panel-layer {
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              color: @table-header-color;
+              .spreadsheet-menu-button {
+                position: absolute;
+                right: 14px;
+                top: 3px;
+              }
+              .row-number, .row-action {
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
+                position: absolute;
+                top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                font-size: 12px;
+                line-height: 18px;
+                background: @table-bg;
+                padding: 0;
+                min-width: 0;
+              }
+              .row-number {
+                border-top: 1px solid @table-action-border-color;
+                border-bottom: 1px solid transparent;
+                right: 14px;
+                width: 22px;
+              }
+              .row-action {
+                cursor: pointer;
+                user-select: none;
+                opacity: 0;
+                transition: all 0.3s var(--brd-transitions-easeInOut);
+                border-radius: 0 4px 4px 0;
+                right: 2px;
+                width: 12px;
+              }
+            }
+          }
+        }
+        td, th {
+          position: relative;
+          .column, .cell {
+            width: 100%;
+            min-width: 230px;
+            overflow-x: hidden;
+            position: relative;
+            display: block;
+            line-height: 22px;
+            font-size: 14px;
+            min-height: 22px;
+          }
+          input {
+            display: block;
+            line-height: 22px;
+            font-size: 14px;
+            width: 100%;
+            &:focus {
+              outline: 2px solid @table-action-hover-color;
+            }
+          }
+          .ProseMirror {
+            // background: none;
+            padding: 8px 10px;
+            border: 0;
+            border-radius: 0;
+            line-height: 22px;
+            font-size: 14px;
+            p {
+              line-height: 22px;
+              font-size: 14px;
+            }
+            &:focus {
+              outline: 2px solid @table-action-hover-color;
+            }
+          }
+        }
+        th {
+          .column, .cell {
+            padding: 4px 6px;
+          }
+        }
+        td {
+          .cell {
+            padding: 8px 10px;
+            min-height: 37px;
+          }
+        }
+        th {
+          input {
+            color: @table-header-color;
+            text-align: center;
+            padding: 0;
+            &:focus {
+              color: @deep-purple-9;
+            }
+          }
+          .column-action {
+            opacity: 0;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            height: 100%;
+            line-height: 20px;
+            width: 30px;
+            right: 0;
+            top: -2px;
+            transition: all 0.3s var(--brd-transitions-easeInOut);
+          }
+          &:hover, &.selected {
+            .column-action {
+              opacity: 1;
+            }
+          }
+        }
+        tbody > tr:first-child > td.row-action-panel {
+          .row-number {
+            border-top: 0;
+            border-radius: 4px 4px 0 0;
+          }
+        }
+        tbody > tr:last-child > td.row-action-panel {
+          .row-number {
+            border-radius: 0 0 4px 4px;
+          }
+        }
+        tbody > tr:hover, tbody > tr.selected, tbody > tr.dragging {
+          td.row-action-panel {
+            .row-action {
+              opacity: 1;
+            }
+            .row-number {
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+            }
+          }
+        }
+        tbody > tr.dragging {
+          td.row-action-panel {
+            .row-action-panel-layer {
+              cursor: grabbing;
+              button, .row-action {
+                cursor: grabbing;
+              }
+            }
+          }
+        }
+        th.dragging {
+          cursor: grabbing;
+        }
+        th.dragging-over {
+          border-right: 3px solid @table-select-border-color;
+        }
+        tr.dragging-over {
+          td, th {
+            border-bottom: 3px solid @table-select-border-color;
+          }
+        }
+        tr.selected td, tr.dragging td, th.selected, th.dragging, td.selected {
+          background: @table-select-bg;
+          border-color: @table-select-border-color;
+          user-select: none;
+        }
+        tbody > tr.selected, tbody > tr.dragging {
+          td.row-action-panel {
+            .row-action-panel-layer {
+              color: @table-action-hover-color;
+            }
+            .row-number, .row-action {
+              background: @table-select-bg;
+            }
+            .row-number {
+              border-color: @table-bg;
+            }
+          }
+        }
+      }
+    }
+  }
+}

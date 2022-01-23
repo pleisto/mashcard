@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_105902) do
+ActiveRecord::Schema.define(version: 2022_01_13_023021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -151,17 +151,14 @@ ActiveRecord::Schema.define(version: 2021_12_21_105902) do
     t.bigint "pod_id", null: false
     t.uuid "block_id", null: false
     t.string "name", null: false
-    t.json "view", default: {}, null: false
     t.text "definition", null: false
     t.json "cache_value", null: false
-    t.uuid "dependency_ids", default: [], null: false, array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "level", default: 0, null: false
     t.integer "version", default: 0, null: false
-    t.string "kind", default: "expression", null: false
+    t.integer "type", default: 0, null: false
     t.index ["block_id", "name"], name: "index_docs_formulas_on_block_id_and_name", unique: true
-    t.index ["dependency_ids"], name: "index_docs_formulas_on_dependency_ids", using: :gin
     t.index ["pod_id"], name: "index_docs_formulas_on_pod_id"
   end
 

@@ -6,6 +6,16 @@ Array [
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "NumberLiteral",
         "display": [Function],
         "errors": Array [],
@@ -189,6 +199,7 @@ Array [
     "level": 0,
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
@@ -214,6 +225,16 @@ Array [
   Object {
     "blockDependencies": Array [],
     "codeFragments": Array [
+      Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
       Object {
         "code": "NumberLiteral",
         "display": [Function],
@@ -580,6 +601,16 @@ Array [
           Object {
             "codeFragments": Array [
               Object {
+                "code": "Equal",
+                "display": [Function],
+                "errors": Array [],
+                "hidden": false,
+                "name": "=",
+                "spaceAfter": true,
+                "spaceBefore": true,
+                "type": "any",
+              },
+              Object {
                 "code": "Function",
                 "display": [Function],
                 "errors": Array [],
@@ -631,6 +662,7 @@ Array [
     "level": 0,
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
@@ -653,6 +685,16 @@ Array [
       "d986e871-cb85-4bd5-b675-87307f60b882",
     ],
     "codeFragments": Array [
+      Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
       Object {
         "code": "Function",
         "display": [Function],
@@ -729,7 +771,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "name": "foo",
         "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1236,6 +1278,16 @@ Array [
           Object {
             "codeFragments": Array [
               Object {
+                "code": "Equal",
+                "display": [Function],
+                "errors": Array [],
+                "hidden": false,
+                "name": "=",
+                "spaceAfter": true,
+                "spaceBefore": true,
+                "type": "any",
+              },
+              Object {
                 "code": "Function",
                 "display": [Function],
                 "errors": Array [],
@@ -1314,6 +1366,7 @@ Array [
     "level": 1,
     "name": "bar",
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1372,6 +1425,16 @@ Array [
   Object {
     "blockDependencies": Array [],
     "codeFragments": Array [
+      Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
       Object {
         "code": "NumberLiteral",
         "display": [Function],
@@ -1645,10 +1708,11 @@ Array [
     "dirty": false,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
-    "kind": "constant",
+    "kind": "unknown",
     "level": 0,
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
@@ -1677,6 +1741,16 @@ Array [
       "d986e871-cb85-4bd5-b675-87307f60b882",
     ],
     "codeFragments": Array [
+      Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
       Object {
         "code": "Function",
         "display": [Function],
@@ -2291,6 +2365,16 @@ Array [
           Object {
             "codeFragments": Array [
               Object {
+                "code": "Equal",
+                "display": [Function],
+                "errors": Array [],
+                "hidden": false,
+                "name": "=",
+                "spaceAfter": true,
+                "spaceBefore": true,
+                "type": "any",
+              },
+              Object {
                 "code": "Function",
                 "display": [Function],
                 "errors": Array [],
@@ -2365,10 +2449,11 @@ Array [
         ],
       },
     ],
-    "kind": "expression",
+    "kind": "unknown",
     "level": 0,
     "name": "bar",
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "475d9e73-e52a-42b3-8a95-477596812900",

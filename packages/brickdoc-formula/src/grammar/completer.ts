@@ -34,7 +34,7 @@ export const complete = ({
 
   codeFragments.every(codeFragment => {
     input = input.concat(codeFragment.display())
-    if (input.length < position) {
+    if (input.length <= position) {
       return true
     }
 

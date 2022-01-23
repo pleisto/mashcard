@@ -1,5 +1,5 @@
 import { parse } from '../core'
-import { CodeFragment } from '../../types'
+import { CodeFragment, VariableMetadata } from '../../types'
 import { FormulaContext } from '../../context'
 import { FormulaLexer } from '../lexer'
 import { complete } from '../completer'
@@ -20,9 +20,15 @@ const testName1 = 'varvarabcvar'
 // TODO Chinese name
 const testName2 = '中文baz345'
 
-const meta = { namespaceId, variableId, name: testName1, input: '=24' }
-const barMeta = { namespaceId, variableId: barVariableId, name: 'bar', input: '=43' }
-const test2Meta = { namespaceId, variableId: test2VariableId, name: testName2, input: '=80' }
+const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', type: 'normal' }
+const barMeta: VariableMetadata = { namespaceId, variableId: barVariableId, name: 'bar', input: '=43', type: 'normal' }
+const test2Meta: VariableMetadata = {
+  namespaceId,
+  variableId: test2VariableId,
+  name: testName2,
+  input: '=80',
+  type: 'normal'
+}
 describe('Complete', () => {
   beforeAll(async () => {
     await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
@@ -40,7 +46,7 @@ describe('Complete', () => {
       ctx: {
         formulaContext,
         interpretContext: { ctx: {}, arguments: [] },
-        meta: { namespaceId, variableId: testVariableId, name: 'foo', input }
+        meta: { namespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
       },
       tokens,
       position: input.length,
@@ -53,7 +59,7 @@ describe('Complete', () => {
       ctx: {
         formulaContext,
         interpretContext: { ctx: {}, arguments: [] },
-        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input }
+        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
       },
       tokens,
       position: input.length,
@@ -210,7 +216,7 @@ describe('Complete', () => {
           ctx: {
             formulaContext,
             interpretContext,
-            meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input }
+            meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
           },
           position: input.length
         })

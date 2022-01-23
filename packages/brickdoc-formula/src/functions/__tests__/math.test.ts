@@ -1,4 +1,5 @@
 import { FormulaContext } from '../../context'
+import { FormulaSourceType } from '../../types'
 import { ABS, INT, LOG10, PI, POWER, RAND, RANDBETWEEN, SQRT, SQRTPI, TRUNC, LN } from '../math'
 
 const ctx = {
@@ -11,7 +12,8 @@ const ctx = {
     namespaceId: '57622108-1337-4edd-833a-2557835bcfe0',
     variableId: '481b6dd1-e668-4477-9e47-cfe5cb1239d0',
     name: 'v',
-    input: '=24'
+    input: '=24',
+    type: 'normal' as FormulaSourceType
   }
 }
 

@@ -13,22 +13,14 @@ import { PageTree } from '@/docs/common/components/PageTree'
 import { DocMeta } from '../DocumentContentPage'
 import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar, pagesVar } from '@/docs/reactiveVars'
-import { UpdateBlocks } from './useSyncProvider'
-import { useDatabaseRows } from './useDatabaseRows'
 
 export interface UseEditorDataSourceProps {
   docMeta: DocMeta
   blocks: GetChildrenBlocksQuery['childrenBlocks']
-  updateBlocks: UpdateBlocks
   documentEditable: boolean
 }
 
-export function useEditorDataSource({
-  docMeta,
-  documentEditable,
-  blocks,
-  updateBlocks
-}: UseEditorDataSourceProps): EditorDataSource {
+export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEditorDataSourceProps): EditorDataSource {
   const dataSource = React.useRef<EditorDataSource>(new EditorDataSource())
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
@@ -42,14 +34,6 @@ export function useEditorDataSource({
   React.useEffect(() => {
     dataSource.current.renderPageTree = () => <PageTree mode="subPage" docMeta={docMeta} />
   }, [docMeta])
-
-  // updateBlocks
-  React.useEffect(() => {
-    dataSource.current.updateBlocks = updateBlocks
-  }, [updateBlocks])
-
-  // table
-  dataSource.current.useDatabaseRows = useDatabaseRows
 
   // formula context
   React.useEffect(() => {

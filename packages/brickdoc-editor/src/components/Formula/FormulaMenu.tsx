@@ -1,0 +1,139 @@
+import React from 'react'
+import { Button, Input, Popover } from '@brickdoc/design-system'
+import { VariableInterface } from '@brickdoc/formula'
+import { useEditorI18n } from '../../hooks'
+import './FormulaMenu.less'
+import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
+import { JSONContent } from '@tiptap/core'
+
+export interface FormulaMenuProps {
+  formulaId: string
+  rootId: string
+  defaultVisible: boolean
+  onVisibleChange: (visible: boolean) => void
+  variable?: VariableInterface
+  handleDelete: (variable: VariableInterface) => void
+  doCalculate: () => Promise<void>
+  setName: (name: string) => void
+  name: string | undefined
+  defaultName: string
+  content: JSONContent | undefined
+  position: number
+  isDisableSave: () => boolean
+  doHandleSave: () => Promise<void>
+  formulaResult: React.ReactNode
+}
+
+const i18nKey = 'formula.menu'
+
+export const FormulaMenu: React.FC<FormulaMenuProps> = ({
+  children,
+  formulaId,
+  rootId,
+  doCalculate,
+  setName,
+  handleDelete,
+  content,
+  position,
+  defaultVisible,
+  onVisibleChange,
+  isDisableSave,
+  doHandleSave,
+  variable,
+  defaultName,
+  name,
+  formulaResult
+}) => {
+  const { t } = useEditorI18n()
+  const [visible, setVisible] = React.useState(defaultVisible)
+
+  const close = (): void => {
+    setVisible(false)
+    onVisibleChange?.(false)
+  }
+
+  const onPopoverVisibleChange = (visible: boolean): void => {
+    onVisibleChange?.(visible)
+
+    if (!visible) {
+      close()
+      return
+    }
+    setVisible(visible)
+  }
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setName(e.target.value)
+    void doCalculate()
+  }
+
+  const handleSave = async (): Promise<void> => {
+    if (isDisableSave()) return
+    await doHandleSave()
+    close()
+  }
+
+  const handleCancel = (): void => {
+    close()
+  }
+
+  const menu = (
+    <div className="brickdoc-formula-menu">
+      <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div>
+      <div className="formula-menu-row">
+        <div className="formula-menu-item">
+          <label className="formula-menu-label">
+            <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span>
+            <Input className="formula-menu-field" placeholder={defaultName} value={name} onChange={handleNameChange} />
+          </label>
+        </div>
+      </div>
+      <div className="formula-menu-row">
+        <span className="formula-menu-result-label">=</span>
+        <div className="formula-menu-item">
+          <FormulaEditor content={content} position={position} editable={true} formulaId={formulaId} rootId={rootId} />
+        </div>
+      </div>
+      <div className="formula-menu-divider" />
+      {formulaResult}
+      <div className="formula-menu-footer">
+        <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
+          {t(`${i18nKey}.cancel`)}
+        </Button>
+        <Button
+          className="formula-menu-button"
+          size="small"
+          type="primary"
+          onClick={handleSave}
+          disabled={isDisableSave()}
+        >
+          {t(`${i18nKey}.save`)}
+        </Button>
+        <Button
+          className="formula-menu-button"
+          size="small"
+          type="text"
+          danger={true}
+          onClick={() => handleDelete(variable!)}
+        >
+          {t(`${i18nKey}.delete`)}
+        </Button>
+      </div>
+    </div>
+  )
+
+  return (
+    <Popover
+      onVisibleChange={onPopoverVisibleChange}
+      defaultVisible={defaultVisible}
+      visible={visible}
+      overlayClassName="brickdoc-formula-menu-popover"
+      destroyTooltipOnHide={true}
+      content={menu}
+      placement="bottom"
+      trigger={['click']}
+    >
+      {children}
+    </Popover>
+  )
+}

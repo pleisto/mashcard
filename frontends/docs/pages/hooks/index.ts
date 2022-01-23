@@ -1,4 +1,3 @@
-export { useDatabaseRows } from './useDatabaseRows'
 export { useDocumentSubscription } from './useDocumentSubscription'
 export { useFetchUnsplashImages } from './useFetchUnsplashImages'
 export { usePrepareFileUpload } from './usePrepareFileUpload'

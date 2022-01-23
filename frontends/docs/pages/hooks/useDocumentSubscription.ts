@@ -16,7 +16,7 @@ export function useDocumentSubscription({
   setDocumentEditable: (editable: boolean) => void
   refetchDocument: () => void
 }): void {
-  const applyPatch = (editor: Editor, chainedCommands: ChainedCommands, patch: PatchBaseObject) => {
+  const applyPatch = (editor: Editor, chainedCommands: ChainedCommands, patch: PatchBaseObject): void => {
     const block = patch.payload as Block
     const newNode = block && blockToNode(block)
 

@@ -3,6 +3,16 @@
 exports[`Spreadsheet Functions [AVERAGEIFS 4] =AVERAGEIFS(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >3) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -141,6 +151,16 @@ Array [
 
 exports[`Spreadsheet Functions [AVERAGEIFS 100] =AVERAGEIFS(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >100) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -281,6 +301,16 @@ Array [
 exports[`Spreadsheet Functions [COLUMN_COUNT] =#28e28190-63bd-4f70-aeca-26e72574c01a.COLUMN_COUNT() 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Spreadsheet",
     "display": [Function],
     "errors": Array [],
@@ -336,6 +366,16 @@ Array [
 
 exports[`Spreadsheet Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.COUNTA() 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Spreadsheet",
     "display": [Function],
@@ -414,6 +454,16 @@ Array [
 exports[`Spreadsheet Functions [COUNTA] =#28e28190-63bd-4f70-aeca-26e72574c01a.2723b7d9-22ce-4d93-b2ef-7cce1b122d64.COUNTA() 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Spreadsheet",
     "display": [Function],
     "errors": Array [],
@@ -490,6 +540,16 @@ Array [
 
 exports[`Spreadsheet Functions [COUNTIFS =1] =COUNTIFS(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, 3) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -577,6 +637,16 @@ Array [
 
 exports[`Spreadsheet Functions [COUNTIFS >2] =COUNTIFS(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, >2) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -675,6 +745,16 @@ Array [
 exports[`Spreadsheet Functions [MAX] =#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.MAX() 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Spreadsheet",
     "display": [Function],
     "errors": Array [],
@@ -752,6 +832,16 @@ Array [
 exports[`Spreadsheet Functions [SUM] =#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6.SUM() 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Spreadsheet",
     "display": [Function],
     "errors": Array [],
@@ -828,6 +918,16 @@ Array [
 
 exports[`Spreadsheet Functions [SUMIFS >3] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, >3) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -968,6 +1068,16 @@ Array [
 exports[`Spreadsheet Functions [SUMIFS 4] =SUMIFS(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, 4) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -1097,6 +1207,16 @@ Array [
 exports[`Spreadsheet Functions [SUMPRODUCT] =SUMPRODUCT(#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -1205,6 +1325,16 @@ Array [
 
 exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([]).toArray() 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -1347,6 +1477,16 @@ Array [
 
 exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([{a: 1}, {a: 2}]).toArray() 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -1588,6 +1728,16 @@ Array [
 exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([1,2,3]).toArray() 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -1735,6 +1885,16 @@ exports[`Spreadsheet Functions [Spreadsheet] =Spreadsheet([1,2,3]).toArray() 2`]
 exports[`Spreadsheet Functions [VLOOKUP 2 range default] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -1842,6 +2002,16 @@ Array [
 
 exports[`Spreadsheet Functions [VLOOKUP 2 range true] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, true) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -1971,6 +2141,16 @@ Array [
 exports[`Spreadsheet Functions [VLOOKUP Column check] =VLOOKUP("", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -2078,6 +2258,16 @@ Array [
 
 exports[`Spreadsheet Functions [VLOOKUP Not found 2 range false] =VLOOKUP("2", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, false) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -2207,6 +2397,16 @@ Array [
 exports[`Spreadsheet Functions [VLOOKUP Not found] =VLOOKUP("", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -2315,6 +2515,16 @@ Array [
 exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -2422,6 +2632,16 @@ Array [
 
 exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, false) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -2551,6 +2771,16 @@ Array [
 exports[`Spreadsheet Functions [VLOOKUP ok number] =VLOOKUP(1, #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, true) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -2679,6 +2909,16 @@ Array [
 exports[`Spreadsheet Functions [VLOOKUP ok string] =VLOOKUP("1", #28e28190-63bd-4f70-aeca-26e72574c01a, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -2786,6 +3026,16 @@ Array [
 
 exports[`Spreadsheet Functions [XLOOKUP ok string] =XLOOKUP("1", #28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28) 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -2915,6 +3165,16 @@ Array [
 
 exports[`Spreadsheet Functions [XLOOKUP ok string] =XLOOKUP("123", #28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6, #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28, "100") 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -3065,6 +3325,16 @@ Array [
 exports[`Spreadsheet Functions [column] =#28e28190-63bd-4f70-aeca-26e72574c01a.62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Spreadsheet",
     "display": [Function],
     "errors": Array [],
@@ -3101,6 +3371,16 @@ Array [
 
 exports[`Spreadsheet Functions [exactin column true] ="foo" in #28e28190-63bd-4f70-aeca-26e72574c01a.2723b7d9-22ce-4d93-b2ef-7cce1b122d64 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "StringLiteral",
     "display": [Function],
@@ -3159,6 +3439,16 @@ Array [
 exports[`Spreadsheet Functions [in column false] =4 in #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -3215,6 +3505,16 @@ Array [
 
 exports[`Spreadsheet Functions [in column true] =3 in #28e28190-63bd-4f70-aeca-26e72574c01a.4e6f9adb-6f33-454e-9f9e-635dc98e3f28 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "NumberLiteral",
     "display": [Function],
@@ -3273,6 +3573,16 @@ Array [
 exports[`Spreadsheet Functions [in spreadsheet false] =4 in #28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -3309,6 +3619,16 @@ Array [
 exports[`Spreadsheet Functions [in spreadsheet true] =3 in #28e28190-63bd-4f70-aeca-26e72574c01a 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -3344,6 +3664,16 @@ Array [
 
 exports[`Spreadsheet Functions [toArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toArray() 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Spreadsheet",
     "display": [Function],
@@ -3477,6 +3807,16 @@ Array [
 
 exports[`Spreadsheet Functions [toRecordArray] =#28e28190-63bd-4f70-aeca-26e72574c01a.toRecordArray() 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Spreadsheet",
     "display": [Function],
@@ -3794,6 +4134,16 @@ Object {
       Object {
         "codeFragments": Array [
           Object {
+            "code": "Equal",
+            "display": [Function],
+            "errors": Array [],
+            "hidden": false,
+            "name": "=",
+            "spaceAfter": true,
+            "spaceBefore": true,
+            "type": "any",
+          },
+          Object {
             "code": "NumberLiteral",
             "display": [Function],
             "errors": Array [],
@@ -3908,6 +4258,16 @@ Object {
     "examples": Array [
       Object {
         "codeFragments": Array [
+          Object {
+            "code": "Equal",
+            "display": [Function],
+            "errors": Array [],
+            "hidden": false,
+            "name": "=",
+            "spaceAfter": true,
+            "spaceBefore": true,
+            "type": "any",
+          },
           Object {
             "code": "NumberLiteral",
             "display": [Function],

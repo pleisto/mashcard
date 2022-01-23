@@ -9,6 +9,43 @@ export const buildJSONContentByDefinition = (definition: string | undefined): JS
   return buildJSONContentByArray([{ type: 'text', text: definition }])
 }
 
+export const maybeRemoveDefinitionEqual = (definition: string | undefined, formulaIsNormal: boolean): string => {
+  if (!definition) {
+    return ''
+  }
+
+  if (!formulaIsNormal) {
+    return definition
+  }
+
+  if (definition.startsWith('=')) {
+    return definition.substring(1)
+  }
+
+  return definition
+}
+
+export const maybeRemoveCodeFragmentsEqual = (
+  codeFragments: CodeFragment[] | undefined,
+  formulaIsNormal: boolean
+): CodeFragment[] => {
+  if (!codeFragments?.length) {
+    return []
+  }
+
+  if (!formulaIsNormal) {
+    return codeFragments
+  }
+
+  const firstCodeFragment = codeFragments[0]
+
+  if (firstCodeFragment.code === 'Equal') {
+    return codeFragments.slice(1)
+  }
+
+  return codeFragments
+}
+
 export const buildJSONContentByArray = (content: JSONContent[]): JSONContent => {
   return { type: 'doc', content: [{ type: 'paragraph', content }] }
 }

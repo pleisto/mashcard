@@ -136,7 +136,8 @@ const _MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = 
       as="li"
       ref={ref}
       title={title}
-      className={menuItemClass}>
+      className={menuItemClass}
+    >
       {children}
       {!children && (
         <ItemContent>

@@ -54,7 +54,8 @@ const _Menu: React.ForwardRefRenderFunction<HTMLUListElement, MenuProps> = (prop
           {...restProps}
           orientation={orientation}
           className={menuBarClass}
-          ref={ref}>
+          ref={ref}
+        >
           {children}
         </ReakitMenuBar>
       </MenuContext.Provider>

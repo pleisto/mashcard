@@ -2,11 +2,29 @@
 import React from 'react'
 import { Node } from 'prosemirror-model'
 import { useApolloClient } from '@apollo/client'
-import { BlockInput, Block, useGetChildrenBlocksQuery, useBlockSyncBatchMutation } from '@/BrickdocGraphQL'
+import {
+  BlockInput,
+  Block,
+  useGetChildrenBlocksQuery,
+  useBlockSyncBatchMutation,
+  GetSpreadsheetChildrenDocument
+} from '@/BrickdocGraphQL'
 import { isEqual } from 'lodash-es'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
-import { BrickdocEventBus, Event, BlockUpdated, BlockDeleted, BlockNameLoad, BlockSynced } from '@brickdoc/schema'
+import {
+  BrickdocEventBus,
+  Event,
+  BlockUpdated,
+  BlockDeleted,
+  BlockNameLoad,
+  BlockSynced,
+  UpdateBlock,
+  DeleteBlock,
+  CommitBlocks,
+  loadSpreadsheetBlocks,
+  SpreadsheetLoaded
+} from '@brickdoc/schema'
 
 export type UpdateBlocks = (blocks: BlockInput[], toDeleteIds: string[]) => Promise<void>
 
@@ -31,7 +49,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
 
   const committing = React.useRef(false)
 
-  // const cachedBlocksMap = React.useRef(new Map<string, Block>())
+  const cachedBlocksMap = React.useRef(new Map<string, Block>())
   const docBlocksMap = React.useRef(new Map<string, Block>())
   const rootBlock = React.useRef<Block | undefined>()
 
@@ -40,6 +58,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
 
   React.useEffect(() => {
     rootId.current = queryVariables.rootId
+    cachedBlocksMap.current = new Map<string, Block>()
     docBlocksMap.current = new Map<string, Block>()
     dirtyBlocksMap.current = new Map<string, Block>()
     dirtyToDeleteIds.current = new Set<string>()
@@ -52,46 +71,56 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
   }, [queryVariables, data?.childrenBlocks])
 
   const commitDirty = async (): Promise<void> => {
+    if (!dirtyBlocksMap.current.size && !dirtyToDeleteIds.current.size) return
     if (committing.current) return
 
     committing.current = true
 
     try {
-      const blocks: BlockInput[] = Array.from(dirtyBlocksMap.current.values()).filter(
-        // commit only if parent block in doc
-        ({ parentId, id }) =>
-          !parentId ||
-          id === rootId.current ||
-          parentId === rootId.current ||
-          docBlocksMap.current.get(parentId) ||
-          dirtyBlocksMap.current.get(parentId)
-      )
+      const blocks: BlockInput[] = Array.from(dirtyBlocksMap.current.values())
+        .filter(
+          // commit only if parent block in doc
+          ({ parentId, id }) =>
+            !parentId ||
+            id === rootId.current ||
+            cachedBlocksMap.current.get(parentId) ||
+            docBlocksMap.current.get(parentId) ||
+            dirtyBlocksMap.current.get(parentId)
+        )
+        .map(b => {
+          // HACK: delete all __typename
+          const block = { __typename: undefined, ...b, meta: b.meta ?? {} }
+          delete block.__typename
+          return block
+        })
       const deletedIds = [...dirtyToDeleteIds.current]
-      blocks.forEach(b => {
-        BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
-        BrickdocEventBus.dispatch(BlockUpdated(b))
-        dirtyBlocksMap.current.delete(b.id)
-      })
-      deletedIds.forEach(id => {
-        BrickdocEventBus.dispatch(BlockDeleted({ id }))
-        dirtyToDeleteIds.current.delete(id)
-      })
 
-      const syncPromise = blockSyncBatch({
-        variables: {
-          input: {
-            blocks,
-            deletedIds,
-            rootId: rootId.current,
-            operatorId: globalThis.brickdocContext.uuid
+      if (blocks.length > 0 || deletedIds.length > 0) {
+        blocks.forEach(b => {
+          BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
+          BrickdocEventBus.dispatch(BlockUpdated(b))
+          dirtyBlocksMap.current.delete(b.id)
+        })
+        deletedIds.forEach(id => {
+          BrickdocEventBus.dispatch(BlockDeleted({ id }))
+          dirtyToDeleteIds.current.delete(id)
+        })
+
+        const syncPromise = blockSyncBatch({
+          variables: {
+            input: {
+              blocks,
+              deletedIds,
+              rootId: rootId.current,
+              operatorId: globalThis.brickdocContext.uuid
+            }
           }
-        }
-      })
-
-      await syncPromise
-      blocks.forEach(b => {
-        BrickdocEventBus.dispatch(BlockSynced(b))
-      })
+        })
+        await syncPromise
+        blocks.forEach(b => {
+          BrickdocEventBus.dispatch(BlockSynced(b))
+        })
+      }
     } catch {
       // Ignored
     } finally {
@@ -115,6 +144,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     docBlocks.forEach(newBlock => {
       newBlock.sort = `${newBlock.sort}`
       const oldBlock = docBlocksMap.current.get(newBlock.id)
+      // TODO: Improve dirty check
       if (!oldBlock || !isEqual(oldBlock, newBlock)) {
         dirtyBlocksMap.current.set(newBlock.id, newBlock)
         docBlocksMap.current.set(newBlock.id, newBlock as Block)
@@ -135,7 +165,12 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     (e: Event) => {
       const block: Block = e.payload
       const oldBlock = docBlocksMap.current.get(block.id) ?? {}
-      docBlocksMap.current.set(block.id, { ...oldBlock, ...block })
+      if (docBlocksMap.current.get(block.id)) {
+        // update only on doc blocks
+        docBlocksMap.current.set(block.id, { ...oldBlock, ...block })
+      } else {
+        cachedBlocksMap.current.set(block.id, { ...oldBlock, ...block })
+      }
       if (block.id === rootId.current) {
         client.cache.modify({
           id: client.cache.identify({ __typename: 'BlockInfo', id: block.id }),
@@ -167,7 +202,70 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     { subscribeId: 'SyncProvider' }
   )
 
-  const updateBlocks = async (blocks: BlockInput[], toDeleteIds: string[]) => {
+  BrickdocEventBus.subscribe(
+    UpdateBlock,
+    (e: Event) => {
+      // isSavingVar(true)
+      const { block, commit } = e.payload
+      dirtyBlocksMap.current.set(block.id, block)
+      if (commit) {
+        void commitDirty()
+      }
+    },
+    { subscribeId: 'SyncProvider' }
+  )
+
+  BrickdocEventBus.subscribe(
+    DeleteBlock,
+    (e: Event) => {
+      // isSavingVar(true)
+      const { blockId, commit } = e.payload
+      dirtyToDeleteIds.current.add(blockId)
+      if (commit) {
+        void commitDirty()
+      }
+    },
+    { subscribeId: 'SyncProvider' }
+  )
+
+  BrickdocEventBus.subscribe(
+    CommitBlocks,
+    (e: Event) => {
+      isSavingVar(true)
+      void commitDirty()
+    },
+    { subscribeId: 'SyncProvider' }
+  )
+
+  BrickdocEventBus.subscribe(
+    loadSpreadsheetBlocks,
+    (e: Event) => {
+      const parentId = e.payload
+      console.log(`loading spreadsheet ${parentId}`)
+      void (async () => {
+        const { data } = await client.query({
+          query: GetSpreadsheetChildrenDocument,
+          variables: {
+            parentId
+          },
+          fetchPolicy: 'no-cache'
+        })
+        const { blocks } = data.spreadsheetChildren
+        blocks.forEach((block: Block) => {
+          cachedBlocksMap.current.set(block.id, block)
+        })
+        BrickdocEventBus.dispatch(
+          SpreadsheetLoaded({
+            parentId,
+            blocks
+          })
+        )
+      })()
+    },
+    { subscribeId: 'SyncProvider' }
+  )
+
+  const updateBlocks = async (blocks: BlockInput[], toDeleteIds: string[]): Promise<void> => {
     isSavingVar(true)
     blocks.forEach(block => dirtyBlocksMap.current.set(block.id, block))
     toDeleteIds.forEach(id => dirtyToDeleteIds.current.add(id))

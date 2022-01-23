@@ -5,6 +5,11 @@ export const AVERAGE = (ctx: FunctionContext, ...numbers: NumberResult[]): Numbe
   return { type: 'number', result: sum / numbers.length }
 }
 
+export const SUM = (ctx: FunctionContext, ...numbers: NumberResult[]): NumberResult => {
+  const sum = numbers.map(number => number.result).reduce((acc, cur) => acc + cur, 0)
+  return { type: 'number', result: sum }
+}
+
 export const CORE_STATISTICAL_CLAUSES: Array<BasicFunctionClause<'number'>> = [
   {
     name: 'AVERAGE',
@@ -40,5 +45,27 @@ export const CORE_STATISTICAL_CLAUSES: Array<BasicFunctionClause<'number'>> = [
     ],
     chain: false,
     reference: AVERAGE
+  },
+  {
+    name: 'SUM1',
+    async: false,
+    pure: true,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    description: 'Returns the sum of the numbers in the list.',
+    group: 'core',
+    args: [
+      {
+        name: 'numbers',
+        type: 'number',
+        spread: true
+      }
+    ],
+    examples: [{ input: '=SUM(-1, 0, 4)', output: { type: 'number', result: 3 } }],
+    returns: 'number',
+    testCases: [],
+    chain: false,
+    reference: SUM
   }
 ]

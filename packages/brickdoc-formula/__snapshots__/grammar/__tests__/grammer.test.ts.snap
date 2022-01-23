@@ -3,6 +3,16 @@
 exports[`Simple test case [Array Map $1] =[2, "foo", true, null].Map($1) // => [object Object],[object Object],[object Object],[object Object] 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "LBracket",
     "display": [Function],
     "errors": Array [],
@@ -147,6 +157,16 @@ Array [
 
 exports[`Simple test case [Array Map] =[2, "foo", true, null].Map(1) // => [object Object],[object Object],[object Object],[object Object] 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "LBracket",
     "display": [Function],
@@ -293,6 +313,16 @@ Array [
 exports[`Simple test case [Array ok] =[2, "foo", true] // => [object Object],[object Object],[object Object] 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "LBracket",
     "display": [Function],
     "errors": Array [],
@@ -368,6 +398,16 @@ Array [
 exports[`Simple test case [Missing closing parenthesis1] =(1 // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "LParen",
     "display": [Function],
     "errors": Array [
@@ -402,6 +442,16 @@ Array [
 exports[`Simple test case [Missing closing parenthesis1] =(1 // => ✗ 2`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "LParen",
     "display": [Function],
     "errors": Array [
@@ -435,6 +485,16 @@ Array [
 
 exports[`Simple test case [Missing closing parenthesis2] =ABS( // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -474,6 +534,16 @@ Array [
 
 exports[`Simple test case [Missing closing parenthesis3] =ABS(1 // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -518,6 +588,16 @@ Array [
 
 exports[`Simple test case [Missing closing parenthesis4] =POWER(1, // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -583,6 +663,16 @@ Array [
 exports[`Simple test case [Missing closing parenthesis5] =POWER(1,2 // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Function",
     "display": [Function],
     "errors": Array [],
@@ -646,6 +736,16 @@ Array [
 
 exports[`Simple test case [Predicate check type] =>=true // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "GreaterThanEqual",
     "display": [Function],
@@ -902,6 +1002,16 @@ Object {
 exports[`Simple test case [Semicolon 1] = 1; // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -935,6 +1045,16 @@ Array [
 
 exports[`Simple test case [Semicolon 2] = 1; 2 // => 2 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "NumberLiteral",
     "display": [Function],
@@ -971,6 +1091,16 @@ Array [
 exports[`Simple test case [Single quote => parseError] = 'hello' // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "other",
     "display": [Function],
     "errors": Array [
@@ -990,6 +1120,16 @@ Array [
 
 exports[`Simple test case [Spread operator with no argument] =AVERAGE() // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -1030,6 +1170,16 @@ Array [
 
 exports[`Simple test case [TODO &&&] ="foo" &&& 123 // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "StringLiteral",
     "display": [Function],
@@ -1094,6 +1244,16 @@ Array [
 
 exports[`Simple test case [TODO chain type 2] =true.START_WITH("123") // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "BooleanLiteral",
     "display": [Function],
@@ -1165,6 +1325,16 @@ Array [
 exports[`Simple test case [TODO chain type 3] =1.START_WITH("123") // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -1195,6 +1365,16 @@ Array [
 exports[`Simple test case [TODO chinese] = 中文 // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "other",
     "display": [Function],
     "errors": Array [
@@ -1214,6 +1394,16 @@ Array [
 
 exports[`Simple test case [TODO chinese2] =varvarabc中文var // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -1254,6 +1444,16 @@ Array [
 exports[`Simple test case [TODO missing suffix expression] =1+ // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [
@@ -1293,6 +1493,16 @@ Array [
 exports[`Simple test case [TODO not is a operator] = nottrue // => false 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Not",
     "display": [Function],
     "errors": Array [],
@@ -1318,6 +1528,16 @@ Array [
 exports[`Simple test case [TODO predicate ==1] ==1 // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Equal2",
     "display": [Function],
     "errors": Array [],
@@ -1342,6 +1562,16 @@ Array [
 
 exports[`Simple test case [TODO record number as key] ={1: "a"} // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "LBrace",
     "display": [Function],
@@ -1382,6 +1612,16 @@ Array [
 exports[`Simple test case [Without number] = - // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Minus",
     "display": [Function],
     "errors": Array [
@@ -1405,6 +1645,16 @@ Array [
 
 exports[`Simple test case [array edit] =[1,] // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "LBracket",
     "display": [Function],
@@ -1465,6 +1715,16 @@ Array [
 exports[`Simple test case [caret and sign] = -0.123% // => -0.00123 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Minus",
     "display": [Function],
     "errors": Array [],
@@ -1499,6 +1759,16 @@ Array [
 
 exports[`Simple test case [chain type 1] ="foo".START_WITH(123) // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "StringLiteral",
     "display": [Function],
@@ -1569,6 +1839,16 @@ Array [
 
 exports[`Simple test case [compare chain] = (1 = 1) > 3 // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "LParen",
     "display": [Function],
@@ -1660,6 +1940,16 @@ Array [
 exports[`Simple test case [compare chain] = 1 = 1 > 3 // => false 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -1715,6 +2005,16 @@ Array [
 exports[`Simple test case [compare chain] = 1 > 1 = 3 // => false 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -1769,6 +2069,16 @@ Array [
 
 exports[`Simple test case [downcase] =if(true, 1+2, "2") // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -1880,6 +2190,16 @@ Array [
 exports[`Simple test case [lex error when parse "hel"lo" => parseError] = "hel"lo" // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "StringLiteral",
     "display": [Function],
     "errors": Array [],
@@ -1907,43 +2227,48 @@ Array [
 ]
 `;
 
-exports[`Simple test case [missing prefix equal] 1+1 // => ✗ 1`] = `
+exports[`Simple test case [literal1] 1+1 // => 1+1 1`] = `
 Array [
   Object {
-    "code": "NumberLiteral",
+    "code": "other",
     "display": [Function],
     "errors": Array [],
     "hidden": false,
-    "name": "1",
+    "name": "1+1",
     "spaceAfter": false,
     "spaceBefore": false,
-    "type": "number",
+    "type": "any",
   },
+]
+`;
+
+exports[`Simple test case [literal2] 1+1 asd n,san 中文测试 asdasd // => 1+1 asd n,san 中文测试 asdasd 1`] = `
+Array [
   Object {
-    "code": "Plus",
+    "code": "other",
     "display": [Function],
     "errors": Array [],
     "hidden": false,
-    "name": "+",
-    "spaceAfter": true,
-    "spaceBefore": true,
-    "type": "number",
-  },
-  Object {
-    "code": "NumberLiteral",
-    "display": [Function],
-    "errors": Array [],
-    "hidden": false,
-    "name": "1",
+    "name": "1+1 asd n,san 中文测试 asdasd",
     "spaceAfter": false,
     "spaceBefore": false,
-    "type": "number",
+    "type": "any",
   },
 ]
 `;
 
 exports[`Simple test case [mul > add] = 1 + 2 * 3 // => 7 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "NumberLiteral",
     "display": [Function],
@@ -2000,6 +2325,16 @@ Array [
 exports[`Simple test case [multiline error 2] =; // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Semicolon",
     "display": [Function],
     "errors": Array [
@@ -2028,6 +2363,16 @@ Array [
 exports[`Simple test case [multiline error 3] =;123 // => ✗ 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "Semicolon",
     "display": [Function],
     "errors": Array [],
@@ -2052,6 +2397,16 @@ Array [
 
 exports[`Simple test case [multiline error] =1; 2; // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "NumberLiteral",
     "display": [Function],
@@ -2106,6 +2461,16 @@ Array [
 
 exports[`Simple test case [multiline function call ok] =ABS(1; 2; (1+3)) // => 4 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -2232,6 +2597,16 @@ Array [
 exports[`Simple test case [multiline ok] =1; 2; (1+3) // => 4 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -2327,6 +2702,16 @@ Array [
 exports[`Simple test case [should error] =1. // => 1 1`] = `
 Array [
   Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
+  Object {
     "code": "NumberLiteral",
     "display": [Function],
     "errors": Array [],
@@ -2341,6 +2726,16 @@ Array [
 
 exports[`Simple test case [should success] =1.T() // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "NumberLiteral",
     "display": [Function],
@@ -2371,6 +2766,16 @@ Array [
 
 exports[`Simple test case [spread operator] =AVERAGE(1) // => 1 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -2416,6 +2821,16 @@ Array [
 
 exports[`Simple test case [spread operator] =AVERAGE(1, 2, 3) // => 2 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "Function",
     "display": [Function],
@@ -2501,6 +2916,16 @@ Array [
 
 exports[`Simple test case [type check] = 2 * (2 = 4) // => ✗ 1`] = `
 Array [
+  Object {
+    "code": "Equal",
+    "display": [Function],
+    "errors": Array [],
+    "hidden": false,
+    "name": "=",
+    "spaceAfter": true,
+    "spaceBefore": true,
+    "type": "any",
+  },
   Object {
     "code": "NumberLiteral",
     "display": [Function],

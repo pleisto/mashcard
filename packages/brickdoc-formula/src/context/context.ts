@@ -199,7 +199,7 @@ export class FormulaContext implements ContextInterface {
       return function2completion(f, weight)
     })
     const completionVariables: Array<[string, VariableInterface]> = Object.entries(this.context).filter(
-      ([key, c]) => c.t.variableId !== variableId
+      ([key, c]) => c.t.variableId !== variableId && c.t.type === 'normal'
     )
     const variables: VariableCompletion[] = completionVariables.map(([key, v]) => {
       const weight: number = this.variableWeights[key as VariableKey] || 0
@@ -263,17 +263,17 @@ export class FormulaContext implements ContextInterface {
   }
 
   public setSpreadsheet(spreadsheet: SpreadsheetType): void {
-    this.formulaNames = this.formulaNames
-      .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
-      .concat({
-        kind: 'Spreadsheet',
-        namespaceId: spreadsheet.blockId,
-        name: spreadsheet.name(),
-        value: blockKey(spreadsheet.blockId),
-        render: () => blockKey(spreadsheet.blockId),
-        prefixLength: () => 0,
-        key: spreadsheet.blockId
-      })
+    // this.formulaNames = this.formulaNames
+    //   .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
+    //   .concat({
+    //     kind: 'Spreadsheet',
+    //     namespaceId: spreadsheet.blockId,
+    //     name: spreadsheet.name(),
+    //     value: blockKey(spreadsheet.blockId),
+    //     render: () => blockKey(spreadsheet.blockId),
+    //     prefixLength: () => 0,
+    //     key: spreadsheet.blockId
+    //   })
     this.blocks[spreadsheet.blockId] = 'Spreadsheet'
     this.spreadsheets[spreadsheet.blockId] = spreadsheet
   }
@@ -321,7 +321,7 @@ export class FormulaContext implements ContextInterface {
   // TODO update other variable's level
   public trackDependency(variable: VariableInterface): void {
     const {
-      t: { variableDependencies, blockDependencies, namespaceId, name, variableId, functionDependencies }
+      t: { variableDependencies, blockDependencies, namespaceId, name, variableId, functionDependencies, type }
     } = variable
     BrickdocEventBus.subscribe(
       BlockNameLoad,
@@ -356,7 +356,7 @@ export class FormulaContext implements ContextInterface {
         namespaceId,
         prefixLength: exist => (exist ? 0 : variable.namespaceName().length + 1)
       })
-    if (!this.formulaNames.find(n => n.kind === 'Block' && n.key === namespaceId)) {
+    if (!this.formulaNames.find(n => n.kind === 'Block' && n.key === namespaceId) && type === 'normal' ) {
       this.formulaNames.push({
         kind: 'Block',
         name: 'Untitled',
@@ -416,13 +416,7 @@ export class FormulaContext implements ContextInterface {
   }
 
   // TODO update dependencies and check circular references
-  public async commitVariable({
-    variable,
-    skipCreate
-  }: {
-    variable: VariableInterface
-    skipCreate?: boolean
-  }): Promise<void> {
+  public async commitVariable({ variable }: { variable: VariableInterface }): Promise<void> {
     const { namespaceId, variableId } = variable.t
     const isNew = !this.context[variableKey(namespaceId, variableId)]
 
@@ -451,9 +445,7 @@ export class FormulaContext implements ContextInterface {
 
     // 5. persist
     if (isNew) {
-      if (!skipCreate) {
-        void variable.invokeBackendCreate()
-      }
+      void variable.invokeBackendCreate()
 
       if (variable.t.version < FORMULA_PARSER_VERSION) {
         void variable.interpret({ ctx: {}, arguments: [] })
@@ -502,7 +494,7 @@ export class FormulaContext implements ContextInterface {
     const codeFragmentVisitor = new CodeFragmentVisitor({
       ctx: {
         formulaContext: this,
-        meta: { name: 'unknown', input, namespaceId: '', variableId: '' },
+        meta: { name: 'unknown', input, namespaceId: '', variableId: '', type: 'normal' },
         interpretContext: { ctx: {}, arguments: [] }
       }
     })

@@ -5,11 +5,10 @@ module Docs
     argument :id, BrickGraphQL::Scalars::UUID, 'id', required: true
     argument :name, String, 'name', required: true
     argument :definition, String, 'definition', required: true
-    argument :dependency_ids, [BrickGraphQL::Scalars::UUID], 'dependencies', required: true
     argument :cache_value, GraphQL::Types::JSON, 'dump value', required: false
     argument :version, Integer, 'version', required: false
     argument :level, Integer, 'level', required: false
-    argument :kind, String, 'kind', required: false
+    argument :type, String, 'type', required: false
 
     def resolve(args)
       Docs::Formula.create!(args.to_h)

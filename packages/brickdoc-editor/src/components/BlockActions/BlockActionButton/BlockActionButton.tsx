@@ -27,7 +27,8 @@ const Trigger: React.FC<{ className?: string; onClick?: React.MouseEventHandler 
     }}
     className={className}
     size="small"
-    type="text">
+    type="text"
+  >
     <EditorIcon.DragSecondary />
   </StyledBlockActionButton>
 )
@@ -46,7 +47,8 @@ export const BlockActionButton: React.FC<BlockActionButtonProps> = ({ className,
       autoAdjustOverflow={true}
       trigger="click"
       placement="startTop"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
+      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
+    >
       <Trigger className={className} />
     </Popover>
   )

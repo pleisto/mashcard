@@ -65,6 +65,16 @@ Array [
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "NumberLiteral",
         "display": [Function],
         "errors": Array [],
@@ -84,6 +94,7 @@ Array [
     "level": 0,
     "name": "num0",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
@@ -106,6 +117,16 @@ Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
     "codeFragments": Array [
+      Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
       Object {
         "code": "Block",
         "display": [Function],
@@ -132,7 +153,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -193,6 +214,7 @@ Array [
     "level": 1,
     "name": "num1",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -221,6 +243,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -246,7 +278,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -267,6 +299,7 @@ Array [
     "level": 1,
     "name": "num2",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -296,6 +329,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -321,7 +364,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "name": "num2",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -363,7 +406,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "name": "num1",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -392,6 +435,7 @@ Array [
     "level": 2,
     "name": "num3",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -425,6 +469,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -450,7 +504,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "name": "num2",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -492,7 +546,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -517,6 +571,7 @@ Array [
     "level": 2,
     "name": "num4",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -551,6 +606,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -576,7 +641,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+        "name": "num3",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -618,7 +683,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -660,7 +725,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "name": "num2",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -693,6 +758,7 @@ Array [
     "level": 3,
     "name": "num5",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -730,6 +796,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -755,7 +831,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+        "name": "num4",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -797,7 +873,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "name": "num1",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -830,6 +906,7 @@ Array [
     "level": 3,
     "name": "num6",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -920,6 +997,16 @@ Array [
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "NumberLiteral",
         "display": [Function],
         "errors": Array [],
@@ -939,6 +1026,7 @@ Array [
     "level": 0,
     "name": "num0",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
@@ -960,6 +1048,16 @@ Array [
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "NumberLiteral",
         "display": [Function],
         "errors": Array [],
@@ -979,6 +1077,7 @@ Array [
     "level": 0,
     "name": "num1",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
@@ -1001,6 +1100,16 @@ Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
     "codeFragments": Array [
+      Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
       Object {
         "code": "Block",
         "display": [Function],
@@ -1027,7 +1136,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1048,6 +1157,7 @@ Array [
     "level": 1,
     "name": "num2",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1077,6 +1187,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -1102,7 +1222,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "name": "num2",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1144,7 +1264,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "name": "num1",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1173,6 +1293,7 @@ Array [
     "level": 2,
     "name": "num3",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1206,6 +1327,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -1231,7 +1362,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "name": "num2",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1273,7 +1404,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1298,6 +1429,7 @@ Array [
     "level": 2,
     "name": "num4",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1332,6 +1464,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -1357,7 +1499,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+        "name": "num3",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1399,7 +1541,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "cd0755b8-0000-4326-876d-853e59cb0259",
+        "name": "num0",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1441,7 +1583,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "94a89a9d-2222-4e46-ae48-887238bc2bec",
+        "name": "num2",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1474,6 +1616,7 @@ Array [
     "level": 3,
     "name": "num5",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1511,6 +1654,16 @@ Array [
     ],
     "codeFragments": Array [
       Object {
+        "code": "Equal",
+        "display": [Function],
+        "errors": Array [],
+        "hidden": false,
+        "name": "=",
+        "spaceAfter": true,
+        "spaceBefore": true,
+        "type": "any",
+      },
+      Object {
         "code": "Block",
         "display": [Function],
         "errors": Array [],
@@ -1536,7 +1689,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
+        "name": "num4",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1578,7 +1731,7 @@ Array [
         "display": [Function],
         "errors": Array [],
         "hidden": false,
-        "name": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
+        "name": "num1",
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
         "spaceAfter": false,
         "spaceBefore": false,
@@ -1611,6 +1764,7 @@ Array [
     "level": 3,
     "name": "num6",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {

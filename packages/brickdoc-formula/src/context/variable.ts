@@ -9,7 +9,10 @@ import {
   VariableValue,
   InterpretContext,
   Definition,
-  Formula
+  Formula,
+  BaseFormula,
+  FormulaSourceType,
+  VariableResult
 } from '../types'
 import { parse, interpret } from '../grammar/core'
 import { dumpValue, loadValue } from './persist'
@@ -20,7 +23,7 @@ export const displayValue = (v: AnyTypeResult): string => {
     case 'boolean':
       return String(v.result)
     case 'string':
-      return `"${v.result}"`
+      return v.result
     case 'Date':
       return v.result.toISOString()
     case 'Error':
@@ -60,11 +63,12 @@ export const displayValue = (v: AnyTypeResult): string => {
 
 export const castVariable = (
   formulaContext: ContextInterface,
-  { name, definition, cacheValue, version, blockId, id }: Formula
+  { name, definition, cacheValue, version, blockId, id, type: unknownType }: BaseFormula
 ): VariableData => {
   const namespaceId = blockId
   const variableId = id
-  const meta = { namespaceId, variableId, name, input: definition }
+  const type = unknownType as FormulaSourceType
+  const meta: VariableMetadata = { namespaceId, variableId, name, input: definition, type }
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const castedValue: AnyTypeResult = loadValue(ctx, cacheValue)
   const {
@@ -107,11 +111,12 @@ export const castVariable = (
     codeFragments,
     level,
     kind: kind ?? 'constant',
+    type,
     blockDependencies,
     variableDependencies,
     flattenVariableDependencies,
     functionDependencies,
-    dirty: false
+    dirty: true
   }
 }
 
@@ -142,7 +147,17 @@ export class VariableClass implements VariableInterface {
       namespaceId: this.t.namespaceId,
       variableId: this.t.variableId,
       name: this.t.name,
-      input: this.t.definition
+      input: this.t.definition,
+      type: this.t.type
+    }
+  }
+
+  result(): VariableResult {
+    return {
+      definition: this.t.definition,
+      variableValue: this.t.variableValue,
+      type: this.t.type,
+      kind: this.t.kind
     }
   }
 
@@ -162,25 +177,32 @@ export class VariableClass implements VariableInterface {
       id: this.t.variableId,
       name: this.t.name,
       version: this.t.version,
-      kind: this.t.kind,
       level: this.t.level,
+      type: this.t.type,
       // updatedAt: new Date().toISOString(),
       // createdAt: new Date().getTime(),
-      cacheValue: dumpValue(ctx, this.t.variableValue.cacheValue),
-      dependencyIds: this.t.variableDependencies.map(dependency => dependency.variableId)
+      cacheValue: dumpValue(ctx, this.t.variableValue.cacheValue)
     }
   }
 
   public async invokeBackendCreate(): Promise<void> {
+    if (!this.t.dirty) {
+      return
+    }
     if (this.formulaContext.backendActions) {
       await this.formulaContext.backendActions.createVariable(this.buildFormula())
     }
+    this.t.dirty = false
   }
 
   public async invokeBackendUpdate(): Promise<void> {
+    if (!this.t.dirty) {
+      return
+    }
     if (this.formulaContext.backendActions) {
       await this.formulaContext.backendActions.updateVariable(this.buildFormula())
     }
+    this.t.dirty = false
   }
 
   public afterUpdate(): void {
@@ -219,7 +241,7 @@ export class VariableClass implements VariableInterface {
 
   public async interpret(interpretContext: InterpretContext): Promise<void> {
     const { variableValue } = await interpret({
-      cst: this.t.cst!,
+      parseResult: { cst: this.t.cst!, kind: this.t.kind },
       ctx: {
         formulaContext: this.formulaContext,
         meta: this.meta(),

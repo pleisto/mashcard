@@ -4,7 +4,6 @@ import {
   ErrorMessage,
   FormulaType,
   Argument,
-  VariableKind,
   VariableDependency,
   FunctionClause,
   OtherCodeFragment,
@@ -96,7 +95,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   blockDependencies: NamespaceId[] = []
   flattenVariableDependencies: VariableDependency[] = []
   level: number = 0
-  kind: VariableKind = 'constant'
+  kind: 'constant' | 'expression' = 'constant'
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()
@@ -108,10 +107,13 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     ctx: { expression: CstNode | CstNode[]; Equal: any },
     { type }: ExpressionArgument
   ): CodeFragmentResult {
-    // const operator = ctx.Equal[0] as IToken
-    // return [token2fragment(operator), ...this.visit(ctx.expression)]
+    const operator = ctx.Equal[0] as IToken
     const { type: newType, codeFragments, image } = this.visit(ctx.expression, { type })
-    return { type: newType, codeFragments, image: `${ctx.Equal[0].image}${image}` }
+    return {
+      type: newType,
+      codeFragments: [token2fragment(operator, 'any'), ...codeFragments],
+      image: `${ctx.Equal[0].image}${image}`
+    }
   }
 
   expression(
@@ -559,7 +561,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
       if (rhsCst.name === 'keyExpression') {
         const accessErrorMessages: ErrorMessage[] =
-          ['null', 'string', 'boolean', 'number'].includes(firstArgumentType) && type !== 'Reference'
+          ['null', 'string', 'boolean', 'number', 'Block'].includes(firstArgumentType) && type !== 'Reference'
             ? [{ type: 'syntax', message: 'Access error' }]
             : []
         const args = { type: 'string' }
@@ -591,6 +593,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             codeFragment = {
               ...codeFragment,
               namespaceId,
+              name: variable.t.name,
               code: 'Variable',
               type: variable.t.variableValue.result.type,
               display: () => variable.t.name

@@ -72,7 +72,8 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     'pdfSection',
     'subPageMenuBlock',
     'tableBlock',
-    'tocBlock'
+    'tocBlock',
+    'spreadsheetBlock'
   ]
 
   const editorDataSource = externalDataSource
