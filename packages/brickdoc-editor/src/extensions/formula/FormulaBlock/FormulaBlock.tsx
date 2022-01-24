@@ -2,7 +2,7 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
 import { Modal } from '@brickdoc/design-system'
-import { VariableInterface } from '@brickdoc/formula'
+import { VariableData, VariableInterface } from '@brickdoc/formula'
 import { useEditorI18n } from '../../../hooks'
 import { FormulaBlockRender } from './FormulaBlockRender'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
@@ -16,13 +16,11 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   const isNew = node.attrs.isNew
   const formulaId = node.attrs.uuid
   const updateFormula = (variable: VariableInterface | undefined): void => {}
-  // updateAttributes({ formula: { type: 'FORMULA', id: variable.t.variableId } })
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const rootId = editorDataSource.rootId
+  const formulaContext = editorDataSource.formulaContext
 
-  // console.log({ formulaId, isNew, rootId, attrs: node.attrs })
-
-  const handleDelete = (variable: VariableInterface): void => {
+  const handleDelete = (variableT?: VariableData): void => {
     Modal.confirm({
       zIndex: 1070,
       title: t(`${i18nKey}.delete_confirm.title`),
@@ -31,10 +29,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
       cancelText: t(`${i18nKey}.delete_confirm.cancel`),
       icon: null,
       onOk: async () => {
-        if (!variable || !getPos || !node) return
+        if (!variableT || !getPos || !node || !formulaContext) return
         const position = getPos()
-        await variable.destroy()
-        // void (await formulaContext?.removeVariable(variable.t.namespaceId, variable.t.variableId))
+        void (await formulaContext?.removeVariable(variableT.namespaceId, variableT.variableId))
         editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
       }
     })

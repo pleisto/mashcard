@@ -10,7 +10,6 @@
   ],
   "dependencies": {
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
-    "chevrotain": "^9.1.0",
-    "request": "^2.88.2"
+    "chevrotain": "^10.0.0"
   }
 }

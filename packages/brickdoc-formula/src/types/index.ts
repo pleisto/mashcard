@@ -606,6 +606,7 @@ export interface VariableMetadata {
 export interface VariableInterface {
   t: VariableData
   buildFormula: () => Formula
+  clone: () => VariableInterface
   destroy: () => Promise<void>
   save: () => Promise<void>
   isDraft: () => boolean

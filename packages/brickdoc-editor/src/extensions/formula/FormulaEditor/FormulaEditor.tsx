@@ -9,11 +9,15 @@ import { FormulaTypeExtension } from './extensions/formulaType'
 import { contentArrayToInput, fetchJSONContentArray } from '../../../helpers'
 import { BrickdocEventBus, FormulaEditorUpdateEventTrigger } from '@brickdoc/schema'
 
-export interface FormulaEditorProps {
+export interface EditorContentType {
   content: JSONContent | undefined
+  position: number
+}
+
+export interface FormulaEditorProps {
+  editorContent: EditorContentType
   editable: boolean
-  position?: number
-  onBlur?: (props: EditorEvents['blur']) => void
+  onBlur?: () => void
   rootId?: string
   formulaId?: string
 }
@@ -21,14 +25,7 @@ export interface FormulaEditorProps {
 const findNearestWord = (content: string, targetIndex: number): string | undefined =>
   content.split(' ').find((word, index) => index + word.length >= targetIndex)
 
-export const FormulaEditor: React.FC<FormulaEditorProps> = ({
-  content,
-  editable,
-  position,
-  onBlur,
-  rootId,
-  formulaId
-}) => {
+export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorContent, onBlur, rootId, formulaId }) => {
   const editor = useEditor({
     editable,
     extensions: [
@@ -38,7 +35,13 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
       FormulaTypeExtension.configure({ editable }),
       HandleKeyDownExtension({ formulaId, rootId })
     ],
-    onBlur,
+    onFocus: (props: EditorEvents['focus']) => {
+      // console.debug('FormulaEditor:onFocus', props)
+    },
+    onBlur: (props: EditorEvents['blur']) => {
+      console.debug('FormulaEditor:onBlur', props)
+      onBlur?.()
+    },
     onUpdate: ({ editor, transaction }) => {
       const jsonContent = editor.getJSON()
       const input = contentArrayToInput(fetchJSONContentArray(jsonContent))
@@ -76,20 +79,20 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
   })
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && content) {
-      if (position) {
+    if (editor && !editor.isDestroyed && editorContent.content) {
+      if (editorContent.position) {
         editor
           .chain()
-          .replaceRoot(content)
-          .setTextSelection(position + 1)
+          .replaceRoot(editorContent.content)
+          .setTextSelection(editorContent.position + 1)
           .run()
       } else {
-        editor.commands.replaceRoot(content)
+        editor.commands.replaceRoot(editorContent.content)
       }
 
-      if (editable) console.log('after replace root', { content, editor, position })
+      if (editable) console.log('after replace root', { editorContent, editor })
     }
-  }, [editor, content, position, editable])
+  }, [editor, editorContent, editable])
 
   return (
     <>

@@ -1,24 +1,21 @@
 import React from 'react'
 import { Button, Input, Popover } from '@brickdoc/design-system'
-import { VariableInterface } from '@brickdoc/formula'
+import { VariableData } from '@brickdoc/formula'
 import { useEditorI18n } from '../../hooks'
 import './FormulaMenu.less'
-import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
-import { JSONContent } from '@tiptap/core'
+import { EditorContentType, FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
 
 export interface FormulaMenuProps {
   formulaId: string
   rootId: string
   defaultVisible: boolean
   onVisibleChange: (visible: boolean) => void
-  variable?: VariableInterface
-  handleDelete: (variable: VariableInterface) => void
-  doCalculate: () => Promise<void>
-  setName: (name: string) => void
+  variableT?: VariableData
+  handleDelete: (variable?: VariableData) => void
+  doCalculate: (newName?: string) => Promise<void>
   name: string | undefined
   defaultName: string
-  content: JSONContent | undefined
-  position: number
+  editorContent: EditorContentType
   isDisableSave: () => boolean
   doHandleSave: () => Promise<void>
   formulaResult: React.ReactNode
@@ -31,15 +28,13 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   formulaId,
   rootId,
   doCalculate,
-  setName,
   handleDelete,
-  content,
-  position,
+  editorContent,
   defaultVisible,
   onVisibleChange,
   isDisableSave,
   doHandleSave,
-  variable,
+  variableT,
   defaultName,
   name,
   formulaResult
@@ -63,8 +58,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   }
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setName(e.target.value)
-    void doCalculate()
+    // setName(e.target.value)
+    void doCalculate(e.target.value)
   }
 
   const handleSave = async (): Promise<void> => {
@@ -91,7 +86,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       <div className="formula-menu-row">
         <span className="formula-menu-result-label">=</span>
         <div className="formula-menu-item">
-          <FormulaEditor content={content} position={position} editable={true} formulaId={formulaId} rootId={rootId} />
+          <FormulaEditor editorContent={editorContent} editable={true} formulaId={formulaId} rootId={rootId} />
         </div>
       </div>
       <div className="formula-menu-divider" />
@@ -105,8 +100,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="small"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}
-        >
+          disabled={isDisableSave()}>
           {t(`${i18nKey}.save`)}
         </Button>
         <Button
@@ -114,8 +108,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="small"
           type="text"
           danger={true}
-          onClick={() => handleDelete(variable!)}
-        >
+          onClick={() => handleDelete(variableT!)}>
           {t(`${i18nKey}.delete`)}
         </Button>
       </div>
@@ -131,8 +124,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

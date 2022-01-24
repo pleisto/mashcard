@@ -129,6 +129,10 @@ export class VariableClass implements VariableInterface {
     this.formulaContext = formulaContext
   }
 
+  public clone(): VariableInterface {
+    return new VariableClass({ t: this.t, formulaContext: this.formulaContext })
+  }
+
   namespaceName(): string {
     const formulaName = this.formulaContext.formulaNames.find(n => n.key === this.t.namespaceId && n.kind === 'Block')
     if (formulaName) {

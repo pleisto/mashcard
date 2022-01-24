@@ -3,12 +3,13 @@ import React from 'react'
 import { Icon, Popover, Tooltip } from '@brickdoc/design-system'
 import { BlockContainer, FormulaMenu } from '../../../components'
 import './FormulaBlock.less'
-import { VariableInterface, FormulaSourceType } from '@brickdoc/formula'
+import { VariableInterface, FormulaSourceType, VariableData } from '@brickdoc/formula'
 import { FormulaRender } from '../../../components/Formula/FormulaRender'
 import { useFormula } from '../../../components/Formula/useFormula'
 import { FormulaResult } from '../../../components/Formula/FormulaResult'
 import { FormulaEditor } from '../FormulaEditor/FormulaEditor'
 import { BrickdocEventBus, FormulaEditorSaveEventTrigger } from '@brickdoc/schema'
+import { AutocompleteList } from '../../../components/Formula/AutocompleteList/AutocompleteList'
 
 export interface FormulaBlockRenderProps {
   formulaId: string
@@ -18,7 +19,7 @@ export interface FormulaBlockRenderProps {
   defaultVisible?: boolean
   saveOnBlur?: boolean
   handleTurnOffVisible?: () => void
-  handleDelete: (variable: VariableInterface) => void
+  handleDelete: (variable?: VariableData) => void
   updateFormula: (variable: VariableInterface | undefined) => void
 }
 
@@ -35,22 +36,17 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
 }) => {
   const {
     doCalculate,
-    variable,
-    setName,
+    variableT,
+    isDraft,
     isDisableSave,
     name,
-    error,
     doHandleSave,
     formulaIsNormal,
     defaultName,
-    content,
-    position,
-    completions,
+    editorContent,
     handleSelectActiveCompletion,
-    setActiveCompletion,
-    activeCompletionIndex,
-    setActiveCompletionIndex,
-    activeCompletion
+    completion,
+    setCompletion
   } = useFormula({
     rootId,
     formulaId,
@@ -59,9 +55,6 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
     formulaName
   })
 
-  const isDraft = variable?.isDraft() === true
-  const variableT = variable?.t
-
   const handleDefaultPopoverVisibleChange = (visible: boolean): void => {
     if (!visible && defaultVisible) {
       handleTurnOffVisible?.()
@@ -69,28 +62,27 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   }
 
   const formulaResult = (
-    <FormulaResult
-      error={error}
-      rootId={rootId}
-      variable={variable}
-      completions={completions}
-      handleSelectActiveCompletion={handleSelectActiveCompletion}
-      setActiveCompletion={setActiveCompletion}
-      activeCompletionIndex={activeCompletionIndex}
-      setActiveCompletionIndex={setActiveCompletionIndex}
-      activeCompletion={activeCompletion}
-    />
+    <>
+      <FormulaResult variableT={variableT} />
+      <AutocompleteList
+        blockId={rootId}
+        completion={completion}
+        handleSelectActiveCompletion={handleSelectActiveCompletion}
+        setCompletion={setCompletion}
+      />
+    </>
   )
 
   if (formulaIsNormal) {
-    const resultData = <FormulaRender t={variableT} formulaType={formulaType} />
     const renderData =
       !variableT || isDraft ? (
         <span className="brickdoc-formula-placeholder">
           <Icon.Formula className="brickdoc-formula-placeholder-icon" />
         </span>
       ) : (
-        <Tooltip title={variableT.name}>{resultData}</Tooltip>
+        <Tooltip title={variableT.name}>
+          <FormulaRender t={variableT} formulaType={formulaType} />
+        </Tooltip>
       )
 
     return (
@@ -99,15 +91,13 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
           rootId={rootId}
           formulaId={formulaId}
           doCalculate={doCalculate}
-          setName={setName}
           formulaResult={formulaResult}
-          content={content}
-          position={position}
+          editorContent={editorContent}
           defaultVisible={defaultVisible}
           onVisibleChange={handleDefaultPopoverVisibleChange}
           isDisableSave={isDisableSave}
           doHandleSave={doHandleSave}
-          variable={variable}
+          variableT={variableT}
           defaultName={defaultName}
           name={name}
           handleDelete={handleDelete}>
@@ -125,8 +115,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
 
   const editor = (
     <FormulaEditor
-      content={content}
-      position={position}
+      editorContent={editorContent}
       editable={true}
       onBlur={onEditorBlur}
       formulaId={formulaId}
