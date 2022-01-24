@@ -28,6 +28,7 @@ const findNearestWord = (content: string, targetIndex: number): string | undefin
 export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorContent, onBlur, rootId, formulaId }) => {
   const editor = useEditor({
     editable,
+    autofocus: 'end',
     extensions: [
       Document,
       Text,
@@ -39,8 +40,14 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
       // console.debug('FormulaEditor:onFocus', props)
     },
     onBlur: (props: EditorEvents['blur']) => {
-      console.debug('FormulaEditor:onBlur', props)
-      onBlur?.()
+      // NOTE Very hacky way to prevent blur hook
+      // TODO WHY IS THIS CALLED?
+      // = -> =1
+      // =1 -> =
+      if (props.event.relatedTarget) {
+        console.debug('FormulaEditor:onBlur', props)
+        onBlur?.()
+      }
     },
     onUpdate: ({ editor, transaction }) => {
       const jsonContent = editor.getJSON()

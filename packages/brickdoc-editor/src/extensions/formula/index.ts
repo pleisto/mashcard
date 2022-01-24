@@ -35,8 +35,7 @@ export const FormulaExtension = Node.create<FormulaOptions>({
       },
       formula: {
         default: {
-          type: 'FORMULA',
-          color: ''
+          type: 'FORMULA'
         }
       }
     }

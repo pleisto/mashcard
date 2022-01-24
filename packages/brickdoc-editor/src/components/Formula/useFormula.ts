@@ -230,10 +230,7 @@ export const useFormula = ({
 
       const { interpretResult, newPosition, parseResult, completions, newVariable } = result
 
-      console.log('calculate result', {
-        newPosition,
-        result
-      })
+      // console.log('calculate result', { newPosition, result })
 
       setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
@@ -381,13 +378,16 @@ export const useFormula = ({
       nameRef.current = defaultName
     }
 
-    variableRef.current!.t.definition = inputRef.current!
-    variableRef.current!.t.name = nameRef.current!
-    updateFormula(variableRef.current!)
+    const v = variableRef.current
+    v.t.definition = inputRef.current!
+    v.t.name = nameRef.current!
 
-    await variableRef.current!.save()
+    updateFormula(v)
+    await v.save()
+
+    variableRef.current = v
     isDraftRef.current = false
-    setVariableT(variableRef.current!.t)
+    setVariableT(v.t)
 
     console.log('save ...', { input: inputRef.current, variable: variableRef.current, formulaContext })
   }, [defaultName, formulaContext, isDisableSave, updateFormula])
