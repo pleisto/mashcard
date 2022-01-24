@@ -278,7 +278,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     if (navSize?.height) {
       _h = navSize.height - (pinTreeBlocks?.length ? 470 : 203)
     }
-    return _h
+    return _h < 200 ? 200 : _h
   }, [navSize, pinTreeBlocks])
 
   return pageBlocks.length ? (

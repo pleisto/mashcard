@@ -25,8 +25,9 @@ export const base = {
       width: '100%'
     },
     '& > nav': {
+      height: '100%',
       maxHeight: 'calc(100vh - 7rem)',
-      overflow: 'scroll',
+      overflow: 'hidden',
       h2: {
         fontSize: '0.75rem',
         color: theme.colors.typeSecondary,
