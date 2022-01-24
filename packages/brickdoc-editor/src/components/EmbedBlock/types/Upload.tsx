@@ -109,7 +109,7 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
     }
 
     return () => {
-      syncedListener.unsubscribe()
+      syncedListener?.unsubscribe()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

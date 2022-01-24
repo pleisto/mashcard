@@ -28,7 +28,7 @@ import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { EmbedBlockExtension, EmbedBlockOptions } from '../embed'
 import { SpreadsheetBlockExtension, SpreadsheetBlockOptions } from '../spreadsheet'
 import { FormulaExtension, FormulaOptions } from '../formula'
-import { CodeBlock, DividerBlock } from '../../components'
+import { CodeBlock, DividerBlock, HeadingBlock } from '../../components'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
@@ -89,7 +89,10 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.heading !== false) {
       extensions.push(
         Heading.extend({
-          marks: 'bold italic link strike textStyle'
+          marks: 'bold italic link strike textStyle',
+          addNodeView() {
+            return ReactNodeViewRenderer(HeadingBlock)
+          }
         }).configure(this.options?.heading)
       )
     }

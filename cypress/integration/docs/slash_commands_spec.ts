@@ -19,7 +19,7 @@ describe('slashCommands', () => {
   it('turns into h1 when select Heading 1 command', () => {
     cy.get('[contenteditable]').type('/h1{enter}')
     cy.focused().type('h1')
-    cy.get('.ProseMirror > h1').should('contain.text', 'h1')
+    cy.get('.ProseMirror .node-heading h1').should('contain.text', 'h1')
   })
 
   it(`won't open slash commands menu when typing slash char from the non-start position`, () => {
@@ -29,6 +29,6 @@ describe('slashCommands', () => {
 
   it('filters menu items by pressing arrow up/down', () => {
     cy.get('[contenteditable]').slashCommand('h{downArrow}{downArrow}{upArrow}{enter}h2')
-    cy.get('.ProseMirror > h2').should('contain.text', 'h2')
+    cy.get('.ProseMirror .node-heading h2').should('contain.text', 'h2')
   })
 })
