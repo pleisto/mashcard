@@ -31,6 +31,7 @@ export type BlockActionOptions = Array<ToolbarGroupOption | ToolbarItemOption | 
 export interface BlockActionsProps {
   baseId?: MenuProps['baseId']
   options: BlockActionOptions
+  atListStart: boolean
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {
@@ -39,7 +40,17 @@ const BlockActionButtonContainer = styled(BlockActionButton, {
   position: 'absolute',
   transform: 'translateX(calc(-100% - 0.6875rem))',
   transition: 'opacity 200ms ease-in-out',
-  top: 0
+  top: 0,
+  variants: {
+    atListStart: {
+      true: {
+        left: '-20px'
+      },
+      false: {
+        left: 0
+      }
+    }
+  }
 })
 
 const BlockActionsContainer = styled('div', {
@@ -51,7 +62,7 @@ const BlockActionsContainer = styled('div', {
   }
 })
 
-export const BlockActions: React.FC<BlockActionsProps> = ({ options, baseId, children }) => {
+export const BlockActions: React.FC<BlockActionsProps> = ({ options, baseId, children, atListStart }) => {
   const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
     () => options.filter(option => typeof option === 'string') as BasicActionOptionType[],
     [options]
@@ -65,7 +76,12 @@ export const BlockActions: React.FC<BlockActionsProps> = ({ options, baseId, chi
   return (
     <BlockActionsContainer>
       {children}
-      <BlockActionButtonContainer baseId={baseId} extraOptions={extraOptions} basicOptions={basicOptions} />
+      <BlockActionButtonContainer
+        atListStart={atListStart}
+        baseId={baseId}
+        extraOptions={extraOptions}
+        basicOptions={basicOptions}
+      />
     </BlockActionsContainer>
   )
 }

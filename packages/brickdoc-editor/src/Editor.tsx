@@ -5,7 +5,6 @@ import {
   Editor as TiptapEditor
 } from '@tiptap/react'
 import { EditorOptions as TiptapEditorOptions } from '@tiptap/core'
-import Placeholder from '@tiptap/extension-placeholder'
 import UniqueID from '@tiptap/extension-unique-id'
 import {
   BasicRichtextExtension,
@@ -54,7 +53,6 @@ export interface EditorOptions extends Partial<TiptapEditorOptions> {
 
 export function useEditor(options: EditorOptions): TiptapEditor | null {
   const { onSave, editable, externalDataSource, ...restOptions } = options
-  const { t } = useEditorI18n()
 
   const typesWithUuid = [
     'blockquote',
@@ -98,9 +96,6 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
       UserBlockExtension,
       TocBlockExtension,
       PageLinkBlockExtension,
-      Placeholder.configure({
-        placeholder: t('placeholder')
-      }),
       brickListExtension,
       IndentExtension,
       UniqueID.configure({

@@ -10,7 +10,8 @@ const Pseudo = styled('span', {
 export function useBlockElement(
   originElement: React.ReactNode,
   actionOptions: BlockContainerProps['actionOptions'],
-  inline?: boolean
+  inline: boolean,
+  atListStart: boolean
 ): [React.ReactNode] {
   let blockElement = originElement
   if (inline) {
@@ -26,7 +27,11 @@ export function useBlockElement(
   }
 
   if ((actionOptions?.length ?? 0) > 0) {
-    blockElement = <BlockActions options={actionOptions!}>{blockElement}</BlockActions>
+    blockElement = (
+      <BlockActions atListStart={atListStart} options={actionOptions!}>
+        {blockElement}
+      </BlockActions>
+    )
   }
 
   return [blockElement]

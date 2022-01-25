@@ -28,7 +28,7 @@ import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { EmbedBlockExtension, EmbedBlockOptions } from '../embed'
 import { SpreadsheetBlockExtension, SpreadsheetBlockOptions } from '../spreadsheet'
 import { FormulaExtension, FormulaOptions } from '../formula'
-import { CodeBlock, DividerBlock, HeadingBlock } from '../../components'
+import { CodeBlock, DividerBlock, HeadingBlock, ParagraphBlock } from '../../components'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
@@ -108,7 +108,14 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.italic !== false) extensions.push(Italic.configure(this.options?.italic))
     if (this.options.listItem !== false) extensions.push(ListItem.configure(this.options?.listItem))
     if (this.options.orderedList !== false) extensions.push(OrderedList.configure(this.options?.orderedList))
-    if (this.options.paragraph !== false) extensions.push(Paragraph.configure(this.options?.paragraph))
+    if (this.options.paragraph !== false)
+      extensions.push(
+        Paragraph.extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(ParagraphBlock)
+          }
+        }).configure(this.options?.paragraph)
+      )
     if (this.options.strike !== false) extensions.push(Strike.configure(this.options?.strike))
     if (this.options.underline !== false) extensions.push(Underline.configure(this.options?.underline))
     if (this.options.text !== false) extensions.push(Text.configure(this.options?.text))

@@ -106,6 +106,7 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
 
     if (!node.attrs.defaultFile && node.attrs.isNew) {
       handleChooseFile()
+      node.attrs.isNew = false
     }
 
     return () => {

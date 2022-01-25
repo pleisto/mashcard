@@ -19,11 +19,12 @@ export interface BlockContainerProps {
   ref?: any
 }
 
-export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef(
+export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HTMLElement, BlockContainerProps>(
   ({ children, inline, as, style, actionOptions, deleteNode, editable, getPos, contentForCopy, ...props }, ref) => {
+    const [atListStart, setAtListStart] = React.useState(false)
     const [blockContextData] = useBlockContextDataProvider({ deleteNode, getPos, contentForCopy })
     const [documentEditable] = useDocumentEditable(editable)
-    const [blockElement] = useBlockElement(children, actionOptions, inline)
+    const [blockElement] = useBlockElement(children, actionOptions, inline ?? false, atListStart)
     const asElement = as ?? (inline ? 'span' : undefined)
 
     return (
@@ -31,8 +32,22 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef(
         {...props}
         as={asElement}
         style={{ ...style, ...{ pointerEvents: documentEditable ? 'unset' : 'none' } }}
-        ref={ref}
-      >
+        ref={(container: HTMLElement) => {
+          if (typeof ref === 'function') {
+            ref(container)
+          } else if (ref) {
+            ref.current = container
+          }
+
+          // check if block is the first element of list
+          const element = container?.parentElement
+          const parentElement = element?.parentElement
+          if (parentElement?.firstChild === element && parentElement?.tagName === 'LI') {
+            setAtListStart(true)
+          } else {
+            setAtListStart(false)
+          }
+        }}>
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )
