@@ -1,7 +1,7 @@
 import React from 'react'
 import { EditorDataSourceContext } from '../dataSource/DataSource'
 
-export function useDocumentEditable(): [boolean] {
+export function useDocumentEditable(defaultEditable: boolean | undefined): [boolean] {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const [documentEditable, setEditable] = React.useState(editorDataSource.documentEditable)
   editorDataSource.onUpdate(type => {
@@ -10,5 +10,5 @@ export function useDocumentEditable(): [boolean] {
     }
   })
 
-  return [documentEditable]
+  return [defaultEditable ?? documentEditable]
 }

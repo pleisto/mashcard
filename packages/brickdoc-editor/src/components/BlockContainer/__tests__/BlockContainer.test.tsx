@@ -51,4 +51,12 @@ describe('BlockContainer', () => {
 
     expect(container.firstChild).toMatchSnapshot()
   })
+
+  it('with editable = false', () => {
+    const { container } = render(<BlockContainer editable={false}>block</BlockContainer>)
+
+    expect(container.firstChild).toHaveStyle({
+      'pointer-events': 'none'
+    })
+  })
 })

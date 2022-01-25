@@ -14,7 +14,7 @@ export interface UseActionOptionsProps {
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionItemGroupOption | null {
   const { deleteBlock, duplicateBlock, copyContent, moveBlock } = React.useContext(BlockContext)
   const { t } = React.useContext(EditorContext)
-  const [documentEditable] = useDocumentEditable()
+  const [documentEditable] = useDocumentEditable(undefined)
 
   return React.useMemo<ActionItemGroupOption | null>(() => {
     const group: ActionItemGroupOption = { type: 'group', items: [] }
