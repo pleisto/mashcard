@@ -101,7 +101,10 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
               <Menu.Group key={index} label={<MenuGroupLabel>{group.label}</MenuGroupLabel>}>
                 {group.items.map((item, index) => (
                   <MenuItem
-                    onAction={item.onAction}
+                    onAction={() => {
+                      item.onAction?.()
+                      handleClose()
+                    }}
                     key={index}
                     itemKey={`item-${index}`}
                     label={item.label}
