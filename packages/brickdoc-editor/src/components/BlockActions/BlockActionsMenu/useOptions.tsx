@@ -22,6 +22,21 @@ export function useOptions(
     return value
   }, [basicOptions, extraOptions])
 
+  const getCurrentPosition = React.useCallback((): number | undefined => {
+    const position = getPosition()
+
+    if (position === undefined) return
+    const node = editor?.view.state.doc.nodeAt(position)
+    if (!node) return
+    let nodeSize = node.nodeSize
+    // Heading nodeSize
+    if (node.type.name === Heading.name) {
+      nodeSize = node.nodeSize - 2
+    }
+
+    return position + nodeSize
+  }, [editor?.view.state.doc, getPosition])
+
   const blockOptions = React.useMemo<ToolbarOptionGroup>(
     () => [
       {
@@ -34,7 +49,7 @@ export function useOptions(
             icon: <EditorIcon.TextStyle className={blockIconStyle()} square={true} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -57,7 +72,7 @@ export function useOptions(
             icon: <EditorIcon.RteH1 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -75,10 +90,14 @@ export function useOptions(
             icon: <EditorIcon.RteH2 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
+              console.log(position)
 
               if (position === undefined) return
-              const nodeSize = 1
+              const node = editor?.view.state.doc.nodeAt(position)
+              if (!node) return
+              const nodeSize = node.nodeSize
+
               editor
                 ?.chain()
                 .insertContentAt(position + nodeSize, { type: Heading.name, attrs: { level: 2 } })
@@ -93,7 +112,7 @@ export function useOptions(
             icon: <EditorIcon.RteH3 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -111,7 +130,7 @@ export function useOptions(
             icon: <EditorIcon.RteH4 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -129,7 +148,7 @@ export function useOptions(
             icon: <EditorIcon.RteH5 square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -152,7 +171,7 @@ export function useOptions(
             icon: <EditorIcon.ListOrdered square={true} className={blockIconStyle()} />,
             closeOnAction: true,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -171,7 +190,7 @@ export function useOptions(
             label: t('block_actions.blocks.bulleted_list'),
             icon: <EditorIcon.ListUnordered square={true} className={blockIconStyle()} />,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -190,7 +209,7 @@ export function useOptions(
             label: t('block_actions.blocks.formula'),
             icon: <EditorIcon.Formula square={true} className={blockIconStyle()} />,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -207,7 +226,7 @@ export function useOptions(
             label: t('block_actions.blocks.code'),
             icon: <EditorIcon.Code square={true} className={blockIconStyle()} />,
             onAction: () => {
-              const position = getPosition()
+              const position = getCurrentPosition()
 
               if (position === undefined) return
               const nodeSize = 1
@@ -221,7 +240,7 @@ export function useOptions(
         ]
       }
     ],
-    [editor, getPosition, t]
+    [editor, getCurrentPosition, t]
   )
 
   return [options, blockOptions]

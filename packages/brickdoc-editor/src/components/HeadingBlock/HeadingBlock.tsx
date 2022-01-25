@@ -4,7 +4,7 @@ import { BlockContainer } from '../BlockContainer'
 
 export interface HeadingBlockProps extends NodeViewProps {}
 
-export const HeadingBlock: React.FC<HeadingBlockProps> = ({ node, deleteNode }) => {
+export const HeadingBlock: React.FC<HeadingBlockProps> = ({ node, deleteNode, getPos }) => {
   const as = React.useMemo(() => {
     switch (Number(node.attrs.level)) {
       case 2:
@@ -22,7 +22,12 @@ export const HeadingBlock: React.FC<HeadingBlockProps> = ({ node, deleteNode }) 
   }, [node.attrs.level])
 
   return (
-    <BlockContainer actionOptions={['copy', 'delete']} deleteNode={deleteNode} contentForCopy={node.textContent}>
+    <BlockContainer
+      actionOptions={['copy', 'delete']}
+      getPos={getPos}
+      deleteNode={deleteNode}
+      contentForCopy={node.textContent}
+    >
       <NodeViewContent as={as} />
     </BlockContainer>
   )

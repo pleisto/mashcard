@@ -11,11 +11,11 @@ export interface EditorIconProps extends IconProps {
 
 const createEditorIcon =
   (Icon: React.ReactElement, bgColor: string): React.FC<EditorIconProps> =>
-  ({ square, color, ...props }) => {
+  ({ square, color, fill, ...props }) => {
     if (square)
       return (
         <IconBackground color={bgColor} {...props}>
-          {React.cloneElement(Icon, { color })}
+          {React.cloneElement(Icon, { color, fill })}
         </IconBackground>
       )
     return React.cloneElement(Icon, props)
@@ -72,7 +72,13 @@ export const Unsplash = createEditorIcon(
   <Icon.Unsplash fill={theme.colors.deepPurple4.value} />,
   theme.colors.deepPurple4.value
 )
+
 export const DragSecondary = createEditorIcon(
   <Icon.DragSecondary theme="multi-color" fill={[theme.colors.primaryDefault.value, theme.colors.blue2.value]} />,
   theme.colors.primaryDefault.value
+)
+
+export const DragSecondaryGrey = createEditorIcon(
+  <Icon.DragSecondary theme="multi-color" fill={[theme.colors.iconPrimary.value, theme.colors.grey3.value]} />,
+  theme.colors.iconPrimary.value
 )

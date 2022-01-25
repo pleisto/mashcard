@@ -14,24 +14,36 @@ const StyledBlockActionButton = styled(Button, {
   width: '1.375rem'
 })
 
-const Trigger: React.FC<{ className?: string; onClick?: React.MouseEventHandler }> = ({
-  className,
-  onClick,
-  ...restProps
-}) => (
-  <StyledBlockActionButton
-    {...restProps}
-    onClick={event => {
-      event.stopPropagation()
-      onClick?.(event)
-    }}
-    className={className}
-    size="small"
-    type="text"
-  >
-    <EditorIcon.DragSecondary />
-  </StyledBlockActionButton>
-)
+const Trigger: React.FC<{
+  className?: string
+  onClick?: React.MouseEventHandler
+  onMouseEnter?: React.MouseEventHandler
+  onMouseLeave?: React.MouseEventHandler
+}> = ({ className, onClick, onMouseEnter, onMouseLeave, ...restProps }) => {
+  const [hovered, setHovered] = React.useState(false)
+  return (
+    <StyledBlockActionButton
+      {...restProps}
+      onClick={event => {
+        event.stopPropagation()
+        onClick?.(event)
+      }}
+      onMouseLeave={event => {
+        setHovered(false)
+        onMouseLeave?.(event)
+      }}
+      onMouseEnter={event => {
+        setHovered(true)
+        onMouseEnter?.(event)
+      }}
+      className={className}
+      size="small"
+      type="text"
+    >
+      {hovered ? <EditorIcon.DragSecondary /> : <EditorIcon.DragSecondaryGrey />}
+    </StyledBlockActionButton>
+  )
+}
 
 export const BlockActionButton: React.FC<BlockActionButtonProps> = ({ className, children, ...props }) => {
   const [visible, setVisible] = React.useState(false)
@@ -45,7 +57,7 @@ export const BlockActionButton: React.FC<BlockActionButtonProps> = ({ className,
       visible={visible}
       compact={true}
       autoAdjustOverflow={true}
-      trigger="click"
+      trigger="hover"
       placement="startTop"
       content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
     >
