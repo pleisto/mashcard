@@ -25,8 +25,8 @@ export function useOptions(
   const { getPosition } = React.useContext(BlockContext)
 
   const options = React.useMemo<ToolbarOptionGroup>(() => {
-    const value: ToolbarOptionGroup = extraOptions ?? []
-    if (basicOptions) value.push(basicOptions)
+    let value: ToolbarOptionGroup = extraOptions ?? []
+    if (basicOptions) value = [...value, basicOptions]
     return value
   }, [basicOptions, extraOptions])
 

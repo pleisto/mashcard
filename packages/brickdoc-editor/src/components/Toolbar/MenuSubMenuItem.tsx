@@ -94,6 +94,7 @@ export const ToolbarMenuSubMenuItem: React.FC<ToolbarMenuSubMenuItemProps> = ({ 
       visible={visible}
       onVisibleChange={handleVisibleChange}
       placement="bottom"
+      compact={true}
       getPopupContainer={element => element}
       content={MenuContent}
     >

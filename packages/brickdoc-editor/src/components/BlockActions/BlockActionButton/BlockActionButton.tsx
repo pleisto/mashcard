@@ -61,10 +61,10 @@ export const BlockActionButton: React.FC<BlockActionButtonProps> = ({ className,
       visible={visible}
       compact={true}
       autoAdjustOverflow={true}
+      destroyTooltipOnHide={true}
       trigger="hover"
       placement="startTop"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
-    >
+      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
       <Trigger className={className} />
     </Popover>
   )
