@@ -10,7 +10,6 @@
 #  state        :integer          default("0"), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  share_webid  :string           not null
 #  policy       :integer          not null
 #  share_pod_id :integer
 #
