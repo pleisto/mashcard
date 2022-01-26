@@ -1,14 +1,16 @@
 import React from 'react'
+import cx from 'classnames'
 import { css, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
-import { ActionItemGroupOption, ActionOptionGroup } from '../BlockActions'
+import { ActionOptionGroup } from '../BlockActions'
 import * as EditorIcon from '../../Icon'
 import { ToolbarOption } from '../../Toolbar'
 import { EditorContext } from '../../../context/EditorContext'
 import { useOptions } from './useOptions'
+import { ActionGroupOption } from '..'
 
 export interface BlockActionsMenuProps {
   baseId?: MenuProps['baseId']
-  basicOptions?: ActionItemGroupOption | null
+  basicOptions?: ActionGroupOption | null
   extraOptions?: ActionOptionGroup | null
   onClose?: () => void
 }
@@ -18,6 +20,11 @@ const iconSize = '.8125rem'
 export const actionIconStyle = css({
   color: theme.colors.deepPurple4,
   fontSize: iconSize
+})
+
+export const actionIconBackgroundStyle = css({
+  height: '1.3rem',
+  width: '1.3rem'
 })
 
 export const blockIconStyle = css({
@@ -93,7 +100,11 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
                 renderMenuItem(
                   {
                     ...option,
-                    icon: option.icon ? React.cloneElement(option.icon, { className: actionIconStyle() }) : undefined
+                    icon: option.icon ? (
+                      <EditorIcon.IconBackground className={actionIconBackgroundStyle()}>
+                        {React.cloneElement(option.icon, { className: actionIconStyle() })}
+                      </EditorIcon.IconBackground>
+                    ) : undefined
                   },
                   option.name,
                   onClose
@@ -109,7 +120,7 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
         baseId={`${baseId}-add-block`}
         itemKey="addBlock"
         label={t('block_actions.add_block')}
-        icon={<EditorIcon.Add className={actionIconStyle()} />}
+        icon={<EditorIcon.Add square={true} className={cx(actionIconStyle(), actionIconBackgroundStyle())} />}
       >
         {blockOptions?.reduce<React.ReactElement[]>((elements, option, index, array) => {
           if (option.type === 'group')

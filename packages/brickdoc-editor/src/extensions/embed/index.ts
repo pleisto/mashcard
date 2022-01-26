@@ -2,15 +2,14 @@ import { Node, mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { Embedtype } from '@brickdoc/schema'
 import { EmbedBlock } from '../../components'
-import { insertBlockAt } from '../../helpers/commands'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     embedBlock: {
       /**
-       * Set a embedBlock
+       * Set an embedBlock
        */
-      setEmbedBlock: (embedType: Embedtype, defaultFile?: File) => ReturnType
+      setEmbedBlock: (embedType: Embedtype, defaultFile?: File, postion?: number) => ReturnType
     }
   }
 }
@@ -77,7 +76,7 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
   addCommands() {
     return {
       setEmbedBlock:
-        (embedType, defaultFile) =>
+        (embedType, defaultFile, position) =>
         ({ chain }) => {
           const content: Content = {
             type: this.name,
@@ -89,7 +88,7 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
               }
             }
           }
-          return insertBlockAt(content, chain)
+          return chain().insertBlockAt(content, position).run()
         }
     }
   }

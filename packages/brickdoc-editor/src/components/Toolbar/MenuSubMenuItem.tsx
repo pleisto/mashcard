@@ -34,7 +34,7 @@ const renderMenu = (
   closeMenu: () => void
 ): React.ReactElement => {
   return (
-    <Menu aria-label={option.name}>
+    <Menu aria-label={option.name} type="ghost">
       {items.map((menuItem, index) => {
         if (menuItem.type === 'group') {
           return (

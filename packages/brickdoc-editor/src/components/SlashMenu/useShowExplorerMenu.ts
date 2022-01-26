@@ -11,8 +11,8 @@ export function useShowExplorerMenu(command: SlashMenuProps['command']): [VoidFu
       slashMenuGroup.map(group => ({
         label: t(`slash_menu.explorer_menu.group.${group.key}.label`),
         items: group.items.map(item => ({
-          label: t(`slash_menu.items.${item.key}.label`),
-          labelText: t(`slash_menu.items.${item.key}.label`),
+          label: t(`blocks.${item.key}.label`),
+          labelText: t(`blocks.${item.key}.label`),
           icon: item.icon,
           onAction: () => {
             command(item)

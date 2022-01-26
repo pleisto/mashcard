@@ -1,6 +1,5 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { insertBlockAt } from '../../helpers/commands'
 import { Spreadsheet } from '../../components'
 
 declare module '@tiptap/core' {
@@ -61,7 +60,7 @@ export const SpreadsheetBlockExtension = Node.create<SpreadsheetBlockOptions>({
       setSpreadsheetBlock:
         (position?: number) =>
         ({ chain }) => {
-          return insertBlockAt({ type: this.name }, chain, position)
+          return chain().insertBlockAt({ type: this.name }, position).run()
         }
     }
   }

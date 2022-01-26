@@ -1,11 +1,31 @@
-import { Extension } from '@tiptap/core'
+import { Content, Extension } from '@tiptap/core'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { pasteImageHandler } from './pasteImageHandler'
 // import { backspaceHandler } from './backspaceHandler'
 import { gapClickHandler } from './gapClickHandler'
 
+declare module '@tiptap/core' {
+  interface Commands<ReturnType> {
+    eventHandler: {
+      insertBlockAt: (content: Content, position?: number) => ReturnType
+    }
+  }
+}
+
 export const EventHandlerExtension = Extension.create({
   name: 'eventHandler',
+
+  addCommands() {
+    return {
+      insertBlockAt:
+        (content, position) =>
+        ({ chain }) => {
+          return position === undefined
+            ? chain().insertContent(content).run()
+            : chain().insertContentAt(position, content).run()
+        }
+    }
+  },
 
   addProseMirrorPlugins() {
     const editor = this.editor

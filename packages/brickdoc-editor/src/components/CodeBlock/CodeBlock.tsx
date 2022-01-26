@@ -13,8 +13,6 @@ export interface CodeBlockProps extends NodeViewProps {}
 
 const defaultLanguage = 'plain text'
 
-const LIMIT = 10
-
 const LanguageChecked = styled(Icon.Check, {
   fontSize: '1rem'
 })
@@ -67,7 +65,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
               ),
               closeOnAction: false
             },
-            ...items.slice(0, LIMIT)
+            ...items
           ]
         }
       ]

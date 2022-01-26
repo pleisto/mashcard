@@ -1,7 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { SubPageMenuBlock } from '../../components'
-import { insertBlockAt } from '../../helpers/commands'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -9,7 +8,7 @@ declare module '@tiptap/core' {
       /**
        * Set a subPage menu block
        */
-      setSubPageMenuBlock: () => ReturnType
+      setSubPageMenuBlock: (position?: number) => ReturnType
     }
   }
 }
@@ -45,9 +44,9 @@ export const SubPageMenuBlockExtension = Node.create<SubPageMenuBlockOptions>({
   addCommands() {
     return {
       setSubPageMenuBlock:
-        () =>
+        position =>
         ({ chain }) => {
-          return insertBlockAt({ type: this.name }, chain)
+          return chain().insertBlockAt({ type: this.name }, position).run()
         }
     }
   }

@@ -1,7 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ImageBlock } from '../../components'
-import { insertBlockAt } from '../../helpers/commands'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -61,7 +60,7 @@ export const ImageBlockExtension = Node.create<ImageBlockOptions>({
         (position?: number, defaultFile?: File) =>
         ({ chain }) => {
           const content = { type: this.name, attrs: { defaultFile, isNew: true } }
-          return insertBlockAt(content, chain, position)
+          return chain().insertBlockAt(content, position).run()
         }
     }
   }

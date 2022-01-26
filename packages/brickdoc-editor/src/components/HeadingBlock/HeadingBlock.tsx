@@ -23,7 +23,7 @@ export const HeadingBlock: React.FC<HeadingBlockProps> = ({ node, deleteNode, ge
 
   return (
     <BlockContainer
-      actionOptions={['copy', 'delete']}
+      actionOptions={['copy', 'delete', 'transform']}
       getPos={getPos}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}

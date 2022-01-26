@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Popover, styled } from '@brickdoc/design-system'
-import * as EditorIcon from '../../Icon'
+import { Button, IconProps, Popover, styled, theme } from '@brickdoc/design-system'
 import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
+import * as EditorIcon from '../../Icon'
 
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
@@ -21,6 +21,10 @@ const Trigger: React.FC<{
   onMouseLeave?: React.MouseEventHandler
 }> = ({ className, onClick, onMouseEnter, onMouseLeave, ...restProps }) => {
   const [hovered, setHovered] = React.useState(false)
+  const iconProps = React.useMemo<IconProps>(() => {
+    if (hovered) return {}
+    return { fill: [theme.colors.iconPrimary.value, theme.colors.grey3.value] }
+  }, [hovered])
   return (
     <StyledBlockActionButton
       {...restProps}
@@ -40,7 +44,7 @@ const Trigger: React.FC<{
       size="small"
       type="text"
     >
-      {hovered ? <EditorIcon.DragSecondary /> : <EditorIcon.DragSecondaryGrey />}
+      <EditorIcon.DragSecondary {...iconProps} />
     </StyledBlockActionButton>
   )
 }

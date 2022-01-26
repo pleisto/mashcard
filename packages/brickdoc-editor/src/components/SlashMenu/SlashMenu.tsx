@@ -95,7 +95,7 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
                 active={index === activeIndex}
                 itemKey={item.key}
                 icon={React.cloneElement(item.icon, { className: menuIconStyle() })}
-                label={t(`slash_menu.items.${item.key}.label`)}
+                label={t(`blocks.${item.key}.label`)}
                 tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}
               >
                 {item.key === EXPLORE_KEY && (
@@ -124,7 +124,7 @@ export const SlashMenu: React.FC<SlashMenuProps> = ({ items, command }) => {
                 active={recent.length + index === activeIndex}
                 itemKey={item.key}
                 icon={React.cloneElement(item.icon, { className: menuIconStyle() })}
-                label={t(`slash_menu.items.${item.key}.label`)}
+                label={t(`blocks.${item.key}.label`)}
                 tip={item.alias?.[0] && <Shortcut>{item.alias[0]}</Shortcut>}
               />
             ))}

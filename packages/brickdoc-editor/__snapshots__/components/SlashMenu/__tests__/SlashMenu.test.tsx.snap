@@ -93,10 +93,10 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       class="brd-c-gZVDUl"
       data-testid="editor-slash-commands-item"
       id="slash-menu-4"
-      label="slash_menu.items.h1.label"
+      label="blocks.h1.label"
       role="menuitem"
       tabindex="-1"
-      title="slash_menu.items.h1.label"
+      title="blocks.h1.label"
     >
       <div
         class="brd-c-fcAYuy"
@@ -114,11 +114,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           class="brd-c-fNvXDc"
         >
           <span
-            aria-label="slash_menu.items.h1.label"
+            aria-label="blocks.h1.label"
             class="brd-c-PJLV"
           >
             <span>
-              slash_menu.items.h1.label
+              blocks.h1.label
             </span>
           </span>
         </div>
@@ -128,10 +128,10 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       class="brd-c-gZVDUl"
       data-testid="editor-slash-commands-item"
       id="slash-menu-5"
-      label="slash_menu.items.h2.label"
+      label="blocks.h2.label"
       role="menuitem"
       tabindex="-1"
-      title="slash_menu.items.h2.label"
+      title="blocks.h2.label"
     >
       <div
         class="brd-c-fcAYuy"
@@ -149,11 +149,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           class="brd-c-fNvXDc"
         >
           <span
-            aria-label="slash_menu.items.h2.label"
+            aria-label="blocks.h2.label"
             class="brd-c-PJLV"
           >
             <span>
-              slash_menu.items.h2.label
+              blocks.h2.label
             </span>
           </span>
         </div>
@@ -163,10 +163,10 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       class="brd-c-gZVDUl"
       data-testid="editor-slash-commands-item"
       id="slash-menu-6"
-      label="slash_menu.items.h3.label"
+      label="blocks.h3.label"
       role="menuitem"
       tabindex="-1"
-      title="slash_menu.items.h3.label"
+      title="blocks.h3.label"
     >
       <div
         class="brd-c-fcAYuy"
@@ -184,11 +184,11 @@ exports[`SlashMenu matches correct snapshot 1`] = `
           class="brd-c-fNvXDc"
         >
           <span
-            aria-label="slash_menu.items.h3.label"
+            aria-label="blocks.h3.label"
             class="brd-c-PJLV"
           >
             <span>
-              slash_menu.items.h3.label
+              blocks.h3.label
             </span>
           </span>
         </div>

@@ -1,23 +1,43 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
+import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../helpers/block'
 import { BlockContext } from '../../context/BlockContext'
 import { EditorContext } from '../../context/EditorContext'
 import { useDocumentEditable } from '../../hooks'
-import { ActionItemGroupOption } from './BlockActions'
+import { ActionGroupOption, ActionItemOption } from './BlockActions'
 
-export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move'
+export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move' | 'transform'
 
 export interface UseActionOptionsProps {
   types: BasicActionOptionType[]
 }
 
-export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionItemGroupOption | null {
-  const { deleteBlock, duplicateBlock, copyContent, moveBlock } = React.useContext(BlockContext)
-  const { t } = React.useContext(EditorContext)
+const transformBlocks = ORDER_TOGGLE_BLOCK.map(key => Object.values(BLOCK).find(block => block.key === key))
+
+export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
+  const { deleteBlock, duplicateBlock, copyContent, moveBlock, getPosition } = React.useContext(BlockContext)
+  const { t, editor } = React.useContext(EditorContext)
   const [documentEditable] = useDocumentEditable(undefined)
 
-  return React.useMemo<ActionItemGroupOption | null>(() => {
-    const group: ActionItemGroupOption = { type: 'group', items: [] }
+  const createActionOption = React.useCallback(
+    (blockItem: BlockCommandItem): ActionItemOption => ({
+      type: 'item',
+      name: blockItem.key,
+      label: t(`blocks.${blockItem.key}.label`),
+      icon: blockItem.squareIcon,
+      onAction: () => {
+        if (!editor) return
+        const position = getPosition()
+        if (position === undefined) return
+        const chain = editor.chain().setNodeSelection(position)
+        blockItem.setBlock(chain).run()
+      }
+    }),
+    [editor, getPosition, t]
+  )
+
+  return React.useMemo<ActionGroupOption | null>(() => {
+    const group: ActionGroupOption = { type: 'group', items: [] }
 
     if (!documentEditable || types.length === 0) {
       return null
@@ -43,6 +63,25 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
       })
     }
 
+    if (types.includes('delete'))
+      group.items.push({
+        label: t('block_actions.basic.delete'),
+        name: 'delete',
+        type: 'item',
+        icon: <Icon.Delete />,
+        onAction: deleteBlock
+      })
+
+    if (types.includes('transform')) {
+      group.items.push({
+        label: t('block_actions.basic.transform'),
+        name: 'transform',
+        type: 'subMenu',
+        icon: <Icon.CornerDownRight />,
+        items: transformBlocks.filter(i => !!i).map(item => createActionOption(item!))
+      })
+    }
+
     if (types.includes('move')) {
       group.items.push({
         label: t('block_actions.basic.move'),
@@ -53,15 +92,6 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionI
       })
     }
 
-    if (types.includes('delete'))
-      group.items.push({
-        label: t('block_actions.basic.delete'),
-        name: 'delete',
-        type: 'item',
-        icon: <Icon.Delete />,
-        onAction: deleteBlock
-      })
-
     return group
-  }, [copyContent, deleteBlock, documentEditable, duplicateBlock, moveBlock, t, types])
+  }, [copyContent, createActionOption, deleteBlock, documentEditable, duplicateBlock, moveBlock, t, types])
 }

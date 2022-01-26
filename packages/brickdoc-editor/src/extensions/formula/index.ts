@@ -1,7 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { FormulaBlock } from './FormulaBlock'
-import { insertBlockAt } from '../../helpers/commands'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FormulaOptions {}
@@ -63,7 +62,7 @@ export const FormulaExtension = Node.create<FormulaOptions>({
         id =>
         ({ chain }) => {
           const content = { type: this.name, attrs: { formula: { type: 'FORMULA', id } } }
-          return insertBlockAt(content, chain)
+          return chain().insertBlockAt(content).run()
         },
       setFormulaBlock:
         () =>
@@ -72,7 +71,7 @@ export const FormulaExtension = Node.create<FormulaOptions>({
             type: this.name,
             attrs: { isNew: true, formula: { type: 'FORMULA' } }
           }
-          return insertBlockAt(content, chain)
+          return chain().insertBlockAt(content).run()
         },
       insertFormulaBlock:
         position =>
@@ -81,7 +80,7 @@ export const FormulaExtension = Node.create<FormulaOptions>({
             type: this.name,
             attrs: { isNew: true, formula: { type: 'FORMULA' } }
           }
-          return insertBlockAt(content, chain, position)
+          return chain().insertBlockAt(content, position).run()
         },
       toggleFormula:
         () =>
@@ -93,7 +92,7 @@ export const FormulaExtension = Node.create<FormulaOptions>({
               type: this.name,
               attrs: { isNew: true, formula: { type: 'FORMULA' } }
             }
-            return insertBlockAt(content, chain)
+            return chain().insertBlockAt(content).run()
           }
         }
     }

@@ -1,6 +1,5 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { insertBlockAt } from '../../helpers/commands'
 import { User } from '../../components'
 
 declare module '@tiptap/core' {
@@ -57,8 +56,8 @@ export const UserBlockExtension = Node.create<UserBlockOptions>({
       setUserBlock:
         (webid, name, avatarUrl) =>
         ({ chain }) => {
-          return insertBlockAt(
-            {
+          return chain()
+            .insertBlockAt({
               type: this.name,
               attrs: {
                 people: {
@@ -68,9 +67,8 @@ export const UserBlockExtension = Node.create<UserBlockOptions>({
                   avatarUrl
                 }
               }
-            },
-            chain
-          )
+            })
+            .run()
         }
     }
   }

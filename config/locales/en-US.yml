@@ -752,12 +752,48 @@ en-US:
       untitled: Untitled
     toolbar:
       separator: Menu separator
+    blocks:
+      text:
+        label: Text
+      h1:
+        label: Heading 1
+      h2:
+        label: Heading 2
+      h3:
+        label: Heading 3
+      h4:
+        label: Heading 4
+      h5:
+        label: Heading 5
+      bulletedList:
+        label: Bulleted List
+      orderedList:
+        label: Numbered List
+      link:
+        label: Link
+      upload:
+        label: Upload
+      gallery:
+        label: Gallery
+      spreadsheet:
+        label: Spreadsheet
+      formula:
+        label: Formula
+      divider:
+        label: Divider
+      toc:
+        label: Toc
+      subPageMenu:
+        label: Subpage menu
+      code:
+        label: Code
     block_actions:
       basic:
         copy: Copy
         move: Move
         duplicate: Duplicate
         delete: Delete
+        transform: Turn into
       embed_block:
         download: Download
         full_screen: Full Screen
@@ -775,6 +811,9 @@ en-US:
         bulleted_list: Bulleted list
         formula: Formula
         code: Code
+        spreadsheet: Spreadsheet
+        upload: Upload
+        gallery: Gallery
     slash_menu:
       title: Slash menu
       recent: Recently used
@@ -793,38 +832,6 @@ en-US:
           others:
             label: Others
       items:
-        h1:
-          label: Heading 1
-        h2:
-          label: Heading 2
-        h3:
-          label: Heading 3
-        h4:
-          label: Heading 4
-        h5:
-          label: Heading 5
-        bulletedList:
-          label: Bulleted List
-        orderedList:
-          label: Numbered List
-        link:
-          label: Link
-        upload:
-          label: Upload
-        gallery:
-          label: Gallery
-        spreadsheet:
-          label: Spreadsheet
-        formula:
-          label: Formula
-        divider:
-          label: Divider
-        toc:
-          label: Toc
-        subPageMenu:
-          label: Subpage menu
-        code:
-          label: Code
         explore:
           label: Explore
     bubble_menu:

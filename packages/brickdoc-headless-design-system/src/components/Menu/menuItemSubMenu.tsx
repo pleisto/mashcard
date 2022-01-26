@@ -17,7 +17,10 @@ export interface MenuItemSubMenuProps extends MenuItemProps {
   type?: MenuProps['type']
 }
 
-const subMenuStyles = css()
+const subMenuStyles = css({
+  maxHeight: '60vh',
+  overflow: 'auto'
+})
 
 const SubMenuRightArrow = styled(ArrowRight, {
   color: theme.colors.typeThirdary

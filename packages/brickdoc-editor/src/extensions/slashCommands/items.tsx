@@ -1,141 +1,35 @@
-import { Embedtype } from '@brickdoc/schema'
 import { SlashMenuItem } from '../../components'
-import * as EditorIcon from '../../components/Icon'
+import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock } from '../../helpers/block'
 import { getRecentItemKey } from './recentItemsManager'
 
-const FORMULA = {
-  key: 'formula',
-  alias: ['for'],
-  icon: <EditorIcon.Formula square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setFormulaBlock().run()
-  }
-}
-const SPREADSHEET = {
-  key: 'spreadsheet',
-  alias: ['table'],
-  icon: <EditorIcon.Table square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor
-      .chain()
-      .deleteRange(range)
-      .setSpreadsheetBlock(range.from - 1)
-      .run()
-  }
-}
-const UPLOAD = {
-  key: 'upload',
-  alias: ['up', 'file', 'pdf', 'excel', 'ppt', 'image', 'img'],
-  icon: <EditorIcon.Upload square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Upload).run()
-  }
-}
-const GALLERY = {
-  key: 'gallery',
-  alias: ['gal'],
-  icon: <EditorIcon.Unsplash square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Gallery).run()
-  }
-}
-const LINK = {
-  key: 'link',
-  alias: ['link'],
-  icon: <EditorIcon.Link square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().deleteRange(range).setEmbedBlock(Embedtype.Link).run()
+function createSlashMenuItem(blockItem: BlockCommandItem): SlashMenuItem {
+  return {
+    key: blockItem.key,
+    alias: blockItem.alias,
+    icon: blockItem.squareIcon,
+    command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
+      const chain = editor.chain().focus().deleteRange(range)
+      blockItem.setBlock(chain).run()
+    }
   }
 }
 
-const HEADING_1 = {
-  key: 'h1',
-  alias: ['h1', 'heading 1'],
-  icon: <EditorIcon.RteH1 square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setNode('heading', { level: 1 }).run()
-  }
-}
-const HEADING_2 = {
-  key: 'h2',
-  alias: ['h2', 'heading 2'],
-  icon: <EditorIcon.RteH2 square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
-  }
-}
-const HEADING_3 = {
-  key: 'h3',
-  alias: ['h3', 'heading 3'],
-  icon: <EditorIcon.RteH3 square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setNode('heading', { level: 3 }).run()
-  }
-}
-const HEADING_4 = {
-  key: 'h4',
-  alias: ['h4', 'heading 4'],
-  icon: <EditorIcon.RteH4 square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setNode('heading', { level: 4 }).run()
-  }
-}
-const HEADING_5 = {
-  key: 'h5',
-  alias: ['h5', 'heading 5'],
-  icon: <EditorIcon.RteH5 square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setNode('heading', { level: 5 }).run()
-  }
-}
-const BULLETED_LIST = {
-  key: 'bulletedList',
-  alias: ['bul'],
-  icon: <EditorIcon.ListUnordered square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).wrapInBrickList('bulletList').run()
-  }
-}
-const ORDERED_LIST = {
-  key: 'orderedList',
-  alias: ['num', 'numberedList'],
-  icon: <EditorIcon.ListOrdered square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).wrapInBrickList('orderedList').run()
-  }
-}
-const CODE = {
-  key: 'code',
-  alias: ['co'],
-  icon: <EditorIcon.Code square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setCodeBlock().run()
-  }
-}
-const DIVIDER = {
-  key: 'divider',
-  alias: ['div', 'hr'],
-  icon: <EditorIcon.Divider square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setHorizontalRule().run()
-  }
-}
-const TOC = {
-  key: 'toc',
-  alias: ['toc', 'table of content'],
-  icon: <EditorIcon.Toc square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setTocBlock().run()
-  }
-}
-const SUB_PAGE_MENU = {
-  key: 'subPageMenu',
-  alias: ['sub'],
-  icon: <EditorIcon.MindmapList square={true} />,
-  command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-    editor.chain().focus().deleteRange(range).setSubPageMenuBlock().run()
-  }
-}
+const FORMULA = createSlashMenuItem(BLOCK.FORMULA)
+const SPREADSHEET = createSlashMenuItem(BLOCK.SPREADSHEET)
+const UPLOAD = createSlashMenuItem(BLOCK.UPLOAD)
+const GALLERY = createSlashMenuItem(BLOCK.GALLERY)
+const LINK = createSlashMenuItem(BLOCK.LINK)
+const HEADING_1 = createSlashMenuItem(BLOCK.HEADING_1)
+const HEADING_2 = createSlashMenuItem(BLOCK.HEADING_2)
+const HEADING_3 = createSlashMenuItem(BLOCK.HEADING_3)
+const HEADING_4 = createSlashMenuItem(BLOCK.HEADING_4)
+const HEADING_5 = createSlashMenuItem(BLOCK.HEADING_5)
+const BULLETED_LIST = createSlashMenuItem(BLOCK.BULLETED_LIST)
+const ORDERED_LIST = createSlashMenuItem(BLOCK.ORDERED_LIST)
+const CODE = createSlashMenuItem(BLOCK.CODE)
+const DIVIDER = createSlashMenuItem(BLOCK.DIVIDER)
+const TOC = createSlashMenuItem(BLOCK.TOC)
+const SUB_PAGE_MENU = createSlashMenuItem(BLOCK.SUB_PAGE_MENU)
 
 export const slashMenuGroup = [
   {
@@ -174,24 +68,9 @@ const slashMenuItems = [
   SUB_PAGE_MENU
 ]
 
-export const TYPE_ITEMS: SlashMenuItem[] = [
-  FORMULA,
-  UPLOAD,
-  SPREADSHEET,
-  LINK,
-  GALLERY,
-  TOC,
-  SUB_PAGE_MENU,
-  HEADING_1,
-  HEADING_2,
-  HEADING_3,
-  HEADING_4,
-  HEADING_5,
-  ORDERED_LIST,
-  BULLETED_LIST,
-  CODE,
-  DIVIDER
-]
+export const TYPE_ITEMS: SlashMenuItem[] = slashMenuItems.sort(
+  sortBlock(ORDER_NEW_BLOCK, (item: SlashMenuItem) => item.key)
+)
 
 const RECENT_COUNT = 6
 
