@@ -2,7 +2,7 @@ import { ForwardRefRenderFunction, forwardRef, ForwardRefExoticComponent, RefAtt
 import RcSelect, { Option, OptGroup, SelectProps as RcSelectProps, BaseSelectRef } from 'rc-select'
 import { defaultPopupContainer } from '../Tooltip'
 import type { BaseOptionType, DefaultOptionType } from 'rc-select/lib/Select'
-// import { selectStyle } from './styles/index.style'
+import { selectStyle } from './styles/index.style'
 
 export interface SelectProps<ValueType = any, OptionType extends BaseOptionType | DefaultOptionType = DefaultOptionType>
   extends Omit<RcSelectProps<ValueType, OptionType>, 'prefix'> {
@@ -11,9 +11,11 @@ export interface SelectProps<ValueType = any, OptionType extends BaseOptionType 
 
 const Select: ForwardRefRenderFunction<BaseSelectRef, SelectProps> = (props, ref) => {
   const { virtual = true, bordered = true, getPopupContainer, ...otherProps } = props
+  const prefixCls = props.prefixCls ?? selectStyle()
+
   return (
     <RcSelect
-      prefixCls="brk-select"
+      prefixCls={prefixCls}
       bordered={bordered}
       ref={ref}
       virtual={virtual}
