@@ -2038,6 +2038,7 @@ __metadata:
     eslint-plugin-react: ^7.28.0
     eslint-plugin-react-hooks: ^4.3.0
     eslint-plugin-security-node: ^1.1.1
+    framer-motion: ^6.2.1
     fs-extra: ^10.0.0
     graphql: ^16.2.0
     graphql-ruby-client: ^1.10.6

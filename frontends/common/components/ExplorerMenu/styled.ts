@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { css, Icon, Input, Menu, styled, theme } from '@brickdoc/design-system'
 
 export const ExplorerOverlay = styled('div', {
@@ -26,26 +27,16 @@ export const ExplorerOverlay = styled('div', {
 
 export const explorerPadding = '1rem'
 
-export const StyledExplorerMenu = styled('div', {
+export const exploreWidth = '17.5rem'
+
+export const StyledExplorerMenu = styled(motion.div, {
   background: theme.colors.ceramicSecondary,
   bottom: 0,
   overflow: 'scroll',
-  position: 'absolute',
-  right: 0,
-  transform: 'translateX(100%)',
-  transition: 'transform 300ms ease-in-out',
+  position: 'fixed',
+  right: `-${exploreWidth}`,
   top: 0,
-  width: '17.5rem',
-  variants: {
-    visible: {
-      true: {
-        transform: 'translateX(0%)'
-      },
-      false: {
-        transform: 'translateX(100%)'
-      }
-    }
-  }
+  width: exploreWidth
 })
 
 export const ExplorerHeader = styled('div', {
