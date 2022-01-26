@@ -1,7 +1,7 @@
 export const transitions = {
   easeBaseOut: 'cubic-bezier(0.7, 0.3, 0.1, 1)',
   easeBaseIn: 'cubic-bezier(0.9, 0, 0.3, 0.7)',
-  easeOut: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+  easeOut: 'cubic-bezier(0.00,0.00,0.61,-0.14)',
   easeIn: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
   easeInOut: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
   easeOutBack: 'cubic-bezier(0.12, 0.4, 0.29, 1.46)',

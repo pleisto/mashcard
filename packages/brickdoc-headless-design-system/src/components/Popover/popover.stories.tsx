@@ -47,7 +47,8 @@ const Template: ComponentStory<typeof Popover> = args => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center'
-    }}>
+    }}
+  >
     <Popover {...args} />
   </div>
 )
@@ -73,7 +74,8 @@ ContextMenu.args = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#efefef'
-      }}>
+      }}
+    >
       Right Click on Here
     </div>
   )

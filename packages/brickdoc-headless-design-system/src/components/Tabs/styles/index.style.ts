@@ -90,7 +90,7 @@ export const tabsStyle = css({
     bottom: 0,
 
     '&-animated': {
-      transition: 'all 0.3s'
+      transition: 'all .2s'
     }
   },
 

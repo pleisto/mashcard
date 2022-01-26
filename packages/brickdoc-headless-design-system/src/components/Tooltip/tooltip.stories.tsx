@@ -52,10 +52,14 @@ const Template: ComponentStory<typeof Tooltip> = args => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center'
-    }}>
+    }}
+  >
     <Tooltip {...args} />
   </div>
 )
 
 export const Basic = Template.bind({})
-Basic.args = { title: '42 is the meaning of life', children: <Button>What does 42 mean?</Button> }
+Basic.args = {
+  title: '42 is the meaning of life',
+  children: <Button>What does 42 mean?</Button>
+}

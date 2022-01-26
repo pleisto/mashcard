@@ -1,4 +1,6 @@
 import { theme, css } from '../../../themes'
+// import { Inner } from '../..//Tooltip/styles/index.style'
+
 const arrowOffset = {
   vertical: '12px',
   horizontal: '16px'
@@ -24,13 +26,14 @@ const basicStyle = {
   cursor: 'auto',
   userSelect: 'text',
   textDecoration: 'none',
+  // transition: 'all 2.3s',
   '&:after': {
     position: 'absolute',
     background: theme.colors.white_20p,
     content: '""'
   },
   '&-hidden': {
-    display: 'none'
+    // opacity: 0
   },
   '&-placement-top, &-placement-topStart, &-placement-topEnd': {
     paddingBottom: distance

@@ -1,4 +1,5 @@
-import { theme, css } from '../../../themes'
+import { motion } from 'framer-motion'
+import { theme, css, styled } from '../../../themes'
 
 export const root = css({
   include: ['flexCenter'],
@@ -8,6 +9,16 @@ export const root = css({
   isolation: 'isolation'
 })
 
+export const switcherHandle = styled(motion.div, {
+  transform: 'translateX(0)',
+  background: theme.colors.ceramicQuaternary,
+  borderRadius: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  boxSize: '1em'
+})
+
 export const switcher = css({
   background: theme.colors.deepPurple2,
   borderRadius: '100px',
@@ -15,22 +26,14 @@ export const switcher = css({
   justifyContent: 'flex-start',
   alignItems: 'center',
   paddingLeft: '2px',
-  '&>div': {
-    transition: `all .2s ${theme.transitions.easeInOutQuint}`,
-    transform: 'translateX(0)',
-    background: theme.colors.ceramicQuaternary,
-    borderRadius: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    boxSize: '1em'
-  },
+  transitionProperty: 'all',
+  transition: `all .2s ${theme.transitions.easeOut}`,
   variants: {
     checked: {
       true: {
         borderColor: theme.colors.primaryDefault,
         background: theme.colors.primaryDefault,
-        '&>div': {
+        [`${switcherHandle}`]: {
           background: theme.colors.white
         }
       }
@@ -50,7 +53,7 @@ export const switcher = css({
         '& + span, span + &': {
           marginLeft: '8px'
         },
-        '&>div': {
+        [`${switcherHandle}`]: {
           fontSize: '12px'
         }
       },
@@ -60,7 +63,7 @@ export const switcher = css({
         '& + span, span + &': {
           marginLeft: '10px'
         },
-        '&>div': {
+        [`${switcherHandle}`]: {
           fontSize: '14px'
         }
       },
@@ -70,7 +73,7 @@ export const switcher = css({
         '& + span, span + &': {
           marginLeft: '12px'
         },
-        '&>div': {
+        [`${switcherHandle}`]: {
           fontSize: '16px'
         }
       }
@@ -87,7 +90,7 @@ export const switcher = css({
       checked: false,
       css: {
         background: theme.colors.typeDisabled,
-        '&>div': {
+        [`${switcherHandle}`]: {
           background: theme.colors.typeThirdary
         }
       }
@@ -98,35 +101,8 @@ export const switcher = css({
       css: {
         background: theme.colors.primaryDisable,
         borderColor: theme.colors.primaryDisable,
-        '&>div': {
+        [`${switcherHandle}`]: {
           background: theme.colors.primaryDefault
-        }
-      }
-    },
-    {
-      checked: true,
-      size: 'small',
-      css: {
-        '&>div': {
-          transform: 'translateX(10px)'
-        }
-      }
-    },
-    {
-      checked: true,
-      size: 'medium',
-      css: {
-        '&>div': {
-          transform: 'translateX(12px)'
-        }
-      }
-    },
-    {
-      checked: true,
-      size: 'large',
-      css: {
-        '&>div': {
-          transform: 'translateX(12px)'
         }
       }
     }

@@ -16,7 +16,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
   >
     <span
       aria-label="slash_menu.recent"
-      class="brd-c-kubJPX"
+      class="brd-c-cdAvaf"
     >
       <span
         class="brd-c-emmNGU"
@@ -30,7 +30,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       title=""
     >
       <li
-        class="brd-c-bhbgDt brd-c-bhbgDt-hlsvbV-active-true brd-c-jIhtkb"
+        class="brd-c-gZVDUl brd-c-gZVDUl-duyZwV-active-true brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-1"
         role="menuitem"
@@ -44,7 +44,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-bhbgDt brd-c-jIhtkb"
+        class="brd-c-gZVDUl brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-2"
         role="menuitem"
@@ -58,7 +58,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-bhbgDt brd-c-jIhtkb"
+        class="brd-c-gZVDUl brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-3"
         role="menuitem"
@@ -81,7 +81,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
   >
     <span
       aria-label="slash_menu.type"
-      class="brd-c-kubJPX"
+      class="brd-c-cdAvaf"
     >
       <span
         class="brd-c-emmNGU"
@@ -90,7 +90,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </span>
     </span>
     <li
-      class="brd-c-bhbgDt"
+      class="brd-c-gZVDUl"
       data-testid="editor-slash-commands-item"
       id="slash-menu-4"
       label="slash_menu.items.h1.label"
@@ -125,7 +125,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </div>
     </li>
     <li
-      class="brd-c-bhbgDt"
+      class="brd-c-gZVDUl"
       data-testid="editor-slash-commands-item"
       id="slash-menu-5"
       label="slash_menu.items.h2.label"
@@ -160,7 +160,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </div>
     </li>
     <li
-      class="brd-c-bhbgDt"
+      class="brd-c-gZVDUl"
       data-testid="editor-slash-commands-item"
       id="slash-menu-6"
       label="slash_menu.items.h3.label"

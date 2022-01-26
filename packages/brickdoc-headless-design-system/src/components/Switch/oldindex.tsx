@@ -1,11 +1,10 @@
-import React, { useState, ChangeEvent, forwardRef, createRef, ForwardRefRenderFunction, useMemo } from 'react'
+import React, { useState, ChangeEvent, forwardRef, createRef, ForwardRefRenderFunction } from 'react'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
 import { Checkbox, CheckboxProps } from 'reakit/Checkbox'
-import { motion } from 'framer-motion'
 import { Rotation } from '@brickdoc/design-icons'
 import { styled } from '../../themes'
 import { FocusRing } from '../FocusRing'
-import { root, switcher, switcherHandle as SwitcherHandle } from './styles/index.style'
+import { root, switcher } from './styles/index.style'
 
 export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange' | 'ref'> {
   size?: 'small' | 'medium' | 'large'
@@ -19,8 +18,8 @@ export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange' | '
   onChange?: (checked: boolean, event: React.ChangeEvent) => void
 }
 
-const SwitchLabel = styled(motion.label, root)
-const Switcher = styled(motion.div, switcher)
+const SwitchLabel = styled('label', root)
+const Switcher = styled('div', switcher)
 
 const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, ref) => {
   const {
@@ -42,10 +41,6 @@ const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, 
   const [unControlledChecked, setUnControlledChecked] = useState(defaultChecked)
   const unControlledToggle = (): void => setUnControlledChecked(!unControlledChecked)
   const isChecked = checked ?? unControlledChecked
-
-  const offsetX = useMemo(() => (size === 'small' ? 10 : 12), [size])
-  const spring = { type: 'spring', stiffness: 800, damping: 50, mass: 1 }
-  const animate = { x: isChecked ? offsetX : 0 }
 
   return (
     <SwitchLabel className={className} style={style}>
@@ -69,9 +64,7 @@ const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, 
               disabled={isDisabled}
             />
           </VisuallyHidden>
-          <SwitcherHandle transition={spring} animate={animate}>
-            {loading && <Rotation className="brd-icon-spin" />}
-          </SwitcherHandle>
+          <div>{loading && <Rotation className="brd-icon-spin" />}</div>
         </Switcher>
       </FocusRing>
       {!labelFirst && children && <span>{children}</span>}

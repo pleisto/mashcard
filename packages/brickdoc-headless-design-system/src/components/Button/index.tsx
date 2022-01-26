@@ -105,7 +105,8 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
       loading={!!innerLoading}
       size={size}
       block={block}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {iconPosition === 'start' && iconNode}
       {childrenDom}
       {iconPosition === 'end' && iconNode}

@@ -1815,7 +1815,7 @@ __metadata:
     rc-dropdown: ^3.2.2
     rc-select: ^14.0.0-alpha.24
     rc-tabs: ^11.10.5
-    rc-tooltip: ^5.1.1
+    rc-trigger: ^5.2.10
     rc-virtual-list: ^3.4.2
     react: ^17.0.2
     react-color: ^2.19.3
@@ -21272,20 +21272,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-tooltip@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "rc-tooltip@npm:5.1.1"
-  dependencies:
-    "@babel/runtime": ^7.11.2
-    rc-trigger: ^5.0.0
-  peerDependencies:
-    react: ">=16.9.0"
-    react-dom: ">=16.9.0"
-  checksum: e65b175c28356cee101db56217d02a1eb1d96e727620bb1f6551f98e3ab49d3ec4381f1d408d19054b46349cba0e89056a4b4f09eeebbe70a1013733ad0e1fc9
-  languageName: node
-  linkType: hard
-
-"rc-trigger@npm:^5.0.0, rc-trigger@npm:^5.0.4, rc-trigger@npm:^5.1.2":
+"rc-trigger@npm:^5.0.4, rc-trigger@npm:^5.1.2, rc-trigger@npm:^5.2.10":
   version: 5.2.10
   resolution: "rc-trigger@npm:5.2.10"
   dependencies:

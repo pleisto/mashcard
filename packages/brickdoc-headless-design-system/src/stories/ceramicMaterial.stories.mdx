@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs'
-import { Figma } from "storybook-addon-designs/blocks"
-import { DemoGrid } from "./components/DemoGrid"
+import { Figma } from 'storybook-addon-designs/blocks'
+import { DemoGrid } from './components/DemoGrid'
 import { css, theme } from '../themes'
 
 <Meta title="Docs/Ceramic Material" />
@@ -15,49 +15,52 @@ at different depths along the z-axis. Depth is depicted by placing elements at v
 z-axis in the positive direction towards the observer. The depth of field of the material is first simulated
 by rotating the angles of the Y and Z axes. At the same time the depth of the z-axis appears as a refracted light.
 
-
 ## Colors
 
 <DemoGrid>
-  <div className={css({
-    background: theme.colors.ceramicPrimary,
-    border: `1px solid ${theme.colors.grey4_40p}`
-  })()}>
+  <div
+    className={css({
+      background: theme.colors.ceramicPrimary,
+      border: `1px solid ${theme.colors.grey4_40p}`
+    })()}
+  >
     CeramicPrimary
   </div>
-  <div className={css({
-    background: theme.colors.ceramicSecondary,
-    border: `1px solid ${theme.colors.grey4_40p}`
-  })()}>
+  <div
+    className={css({
+      background: theme.colors.ceramicSecondary,
+      border: `1px solid ${theme.colors.grey4_40p}`
+    })()}
+  >
     CeramicSecondary
   </div>
-  <div className={css({
-    background: theme.colors.ceramicQuaternary,
-    border: `1px solid ${theme.colors.grey4_40p}`
-  })()}>
+  <div
+    className={css({
+      background: theme.colors.ceramicQuaternary,
+      border: `1px solid ${theme.colors.grey4_40p}`
+    })()}
+  >
     CeramicQuaternary
-    </div>
+  </div>
 </DemoGrid>
-
-
-
-
 
 ## Card
 
-
 <DemoGrid>
-  <div className={css({
-    include: ['ceramicPrimary']
-  })()}>
+  <div
+    className={css({
+      include: ['ceramicPrimary']
+    })()}
+  >
     CeramicPrimary Card
   </div>
-  <div className={css({
-    include: ['ceramicSecondary']
-  })()}>
+  <div
+    className={css({
+      include: ['ceramicSecondary']
+    })()}
+  >
     CeramicSecondary Card
   </div>
 </DemoGrid>
 
 <Figma url="https://www.figma.com/file/iESKwh7T5e40p9drS2MZRZ/Base-Styles?node-id=14505%3A1957" />
-

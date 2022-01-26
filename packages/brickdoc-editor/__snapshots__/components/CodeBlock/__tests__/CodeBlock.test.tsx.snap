@@ -17,7 +17,7 @@ exports[`CodeBlock matches snapshot correctly 1`] = `
     </pre>
     <button
       aria-haspopup="dialog"
-      class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-fdOzqt-size-small brd-c-ivBjhy brd-c-iAZzvg"
+      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-fdOzqt-size-small brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
       type="button"
     >

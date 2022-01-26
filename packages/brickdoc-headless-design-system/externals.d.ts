@@ -13,7 +13,6 @@ declare module '*.webp' {
   export = src
 }
 
-
 declare namespace JSX {
   interface IntrinsicElements {
     'iconpark-icon': { name: string }

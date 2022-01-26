@@ -1,5 +1,5 @@
 import { ForwardRefRenderFunction, forwardRef, ReactNode, isValidElement, cloneElement } from 'react'
-import RcTooltip from 'rc-tooltip'
+import RcTooltip from './rcTooltip'
 import { BuildInPlacements } from 'rc-trigger'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import { AbstractTriggerProps, getPlacements } from './trigger'

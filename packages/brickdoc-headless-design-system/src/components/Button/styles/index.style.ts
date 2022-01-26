@@ -21,7 +21,7 @@ export const buttonStyle = css({
   verticalAlign: 'middle',
   whiteSpace: 'nowrap',
   touchAction: 'manipulation',
-  transition: `all .3s ${theme.transitions.easeInOut}`,
+  transition: `all .2s cubic-bezier(0.00, 0.00, 0.58, 1.00)`,
   isolation: 'isolation',
   '&:focus-visible': {
     include: ['focusOutline']

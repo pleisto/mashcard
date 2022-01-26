@@ -9,7 +9,7 @@ exports[`EmbedBlock matches correct snapshot 1`] = `
     class="brd-c-bfhcug"
   >
     <button
-      class="brd-c-kHdTvl brd-c-kHdTvl-kEEMvd-btnType-secondary brd-c-kHdTvl-lKjfQ-size-medium brickdoc-link-block-link"
+      class="brd-c-iYqWMG brd-c-iYqWMG-kEEMvd-btnType-secondary brd-c-iYqWMG-lKjfQ-size-medium brickdoc-link-block-link"
       data-testid="editor-embed-block-link"
       role="button"
       type="button"
@@ -40,7 +40,7 @@ exports[`EmbedBlock matches correct snapshot 1`] = `
     </button>
     <button
       aria-haspopup="dialog"
-      class="brd-c-kHdTvl brd-c-kHdTvl-eWWUXK-btnType-text brd-c-kHdTvl-fdOzqt-size-small brd-c-ivBjhy brd-c-iAZzvg"
+      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-fdOzqt-size-small brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
       type="button"
     >

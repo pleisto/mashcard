@@ -1,4 +1,4 @@
-import { TooltipProps as RcTooltipProps } from 'rc-tooltip/lib/Tooltip'
+import { TooltipProps as RcTooltipProps } from './rcTooltip/tooltip'
 import { BuildInPlacements } from 'rc-trigger'
 
 export type TriggerPlacement =

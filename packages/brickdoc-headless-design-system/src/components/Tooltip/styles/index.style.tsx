@@ -14,6 +14,17 @@ const arrowWidth = '5px'
  */
 const arrowRotateWidth = `${Math.sqrt(parseInt(arrowWidth, 10) * parseInt(arrowWidth, 10) * 2) + 3 * 2}px`
 
+/* export const Inner = styled(motion.div, {
+ *   minHeight: '2rem',
+ *   minWidth: '3rem',
+ *   borderRadius: '2px',
+ *   padding: '6px 8px',
+ *   backgroundColor: theme.colors.grey9,
+ *   color: theme.colors.white,
+ *   textDecoration: 'none',
+ *   textAlign: 'left',
+ * }) */
+
 export const tooltipStyle = css({
   position: 'absolute',
   display: 'inline-flex',
@@ -25,7 +36,7 @@ export const tooltipStyle = css({
   listStyle: 'none',
   zIndex: theme.zIndices.tooltip,
   '&-hidden': {
-    display: 'none'
+    // opacity: 0
   },
   '&-placement-top, &-placement-topStart, &-placement-topEnd': {
     paddingBottom: distance
