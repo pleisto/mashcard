@@ -36,7 +36,7 @@ export const tooltipStyle = css({
   listStyle: 'none',
   zIndex: theme.zIndices.tooltip,
   '&-hidden': {
-    // opacity: 0
+    opacity: 0
   },
   '&-placement-top, &-placement-topStart, &-placement-topEnd': {
     paddingBottom: distance

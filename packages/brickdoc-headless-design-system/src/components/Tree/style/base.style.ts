@@ -99,7 +99,7 @@ export const ContentTitle = styled('div', {
 
 export const ContentAction = styled('div', {
   marginBottom: theme.space.xxxs,
-  width: '100%',
+  width: `calc(100% - ${theme.space.lg})`,
   fontSize: theme.fontSizes.body,
   fontWeight: '500',
   lineHeight: theme.space.xxl
