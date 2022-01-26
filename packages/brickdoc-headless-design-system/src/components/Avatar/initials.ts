@@ -4,6 +4,7 @@ export function name2Initials(name: string): string {
     .join(' ') // Split string by uppercase
     .replace(/ +/gi, ' ') // replace multiple spaces to one
     .split(/ /) // break the name into parts
+    .filter(Boolean) // filter empty parts
     .reduce((acc, item) => acc + item[0], '') // assemble an abbreviation from the parts
     .replace(/^(.).*(.)$/, '$1$2') // first and last character
     .toUpperCase() // uppercase

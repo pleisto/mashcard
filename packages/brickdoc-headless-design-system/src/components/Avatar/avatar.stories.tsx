@@ -58,8 +58,8 @@ Basic.args = {
   initials: 'John Smith'
 }
 
-export const imageAvatar = Template.bind({})
-imageAvatar.args = {
+export const ImageAvatar = Template.bind({})
+ImageAvatar.args = {
   src: 'https://i.pravatar.cc/150?img=42',
   alt: 'John Smith Avatar'
 }
@@ -68,4 +68,11 @@ export const AnonymousAvatar = Template.bind({})
 AnonymousAvatar.args = {
   initials: undefined,
   src: undefined
+}
+
+export const SquareAvatar = Template.bind({})
+SquareAvatar.args = {
+  shape: 'square',
+  size: 'large',
+  initials: 'John Smith'
 }

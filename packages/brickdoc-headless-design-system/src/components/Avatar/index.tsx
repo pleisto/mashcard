@@ -85,16 +85,18 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
   const avatarRef = (ref as RefObject<HTMLSpanElement>) || createRef<HTMLSpanElement>()
   const { focusableProps } = useFocusable(props, avatarRef)
 
-  const initialsObj = useMemo(
-    () =>
-      initials
-        ? {
-            color: { background: string2Color(initials) },
-            text: name2Initials(initials)
-          }
-        : undefined,
-    [initials]
-  )
+  const initialsObj = useMemo(() => {
+    // format the initials up ahead, otherwise it may
+    // render a colored avatar but has no text within,
+    // in case the `intiials` consists of whitespaces.
+    const formatted = name2Initials(initials ?? '')
+    return formatted
+      ? {
+          color: { background: string2Color(initials) },
+          text: formatted
+        }
+      : undefined
+  }, [initials])
 
   const isCustomSize = typeof size === 'number' ? size : undefined
   let childrenNode = src ?? (initialsObj ? <span>{initialsObj.text}</span> : null) ?? <User theme="filled" />
