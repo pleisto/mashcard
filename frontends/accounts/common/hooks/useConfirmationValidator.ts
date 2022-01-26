@@ -1,7 +1,7 @@
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { FormRuleRender } from '@brickdoc/design-system'
+import { DeprecatedFormRuleRender } from '@brickdoc/design-system'
 
-export const useConfirmationValidator = (fieldName: string): FormRuleRender => {
+export const useConfirmationValidator = (fieldName: string): DeprecatedFormRuleRender => {
   const { t } = useAccountsI18n()
   return ({ getFieldValue }) => ({
     async validator(_, value) {

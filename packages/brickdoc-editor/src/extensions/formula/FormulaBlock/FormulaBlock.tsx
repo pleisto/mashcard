@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Icon, Modal } from '@brickdoc/design-system'
+import { Icon, DeprecatedModal } from '@brickdoc/design-system'
 import { VariableData, VariableInterface } from '@brickdoc/formula'
 import { useEditorI18n } from '../../../hooks'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
@@ -25,7 +25,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
 
   const handleDelete = React.useCallback(
     (variableT?: VariableData): void => {
-      Modal.confirm({
+      DeprecatedModal.confirm({
         zIndex: 1070,
         title: t(`${i18nKey}.delete_confirm.title`),
         okText: t(`${i18nKey}.delete_confirm.ok`),

@@ -1,5 +1,15 @@
 import React from 'react'
-import { Button, Dropdown, Icon, Input, Menu, MenuProps, toast, Popover, Tooltip } from '@brickdoc/design-system'
+import {
+  Button,
+  Dropdown,
+  Icon,
+  DeprecatedInput,
+  Menu,
+  MenuProps,
+  toast,
+  Popover,
+  Tooltip
+} from '@brickdoc/design-system'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import {
@@ -171,7 +181,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
 
   const inputRef = React.useRef<any>(null)
   const renamePopoverContent = (
-    <Input
+    <DeprecatedInput
       prefix={<Icon.Edit />}
       disabled={renameBlockLoading}
       size="small"
@@ -183,7 +193,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     />
   )
 
-  const onClickMenu: MenuProps['onAction'] = async key => {
+  const onClickMenu: MenuProps['onAction'] = async (key: string) => {
     switch (key) {
       case 'delete':
         void deletePage()
@@ -249,8 +259,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
-      className={styles.title}
-    >
+      className={styles.title}>
       <Link to={linkPath}>{title}</Link>
     </Popover>
   )
@@ -265,8 +274,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         trigger={['contextMenu']}
         overlay={menu}
         visible={dropdownVisible}
-        onVisibleChange={onDropdownVisibleChange}
-      >
+        onVisibleChange={onDropdownVisibleChange}>
         <div className={styles.menu}>
           {linkData}
           <div>
@@ -281,8 +289,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
                 type="text"
                 onClick={onPressAddSubPage}
                 loading={createBlockLoading}
-                disabled={createBlockLoading}
-              >
+                disabled={createBlockLoading}>
                 <Icon.Add />
               </Button>
             </Tooltip>

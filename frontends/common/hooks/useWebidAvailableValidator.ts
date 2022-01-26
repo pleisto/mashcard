@@ -5,9 +5,9 @@ import {
   QueryWebidAvailableFromWsQuery as Query,
   QueryWebidAvailableFromWsQueryVariables as Variables
 } from '@/BrickdocGraphQL'
-import { FormRuleRender } from '@brickdoc/design-system'
+import { DeprecatedFormRuleRender } from '@brickdoc/design-system'
 
-export const useWebidAvailableValidator = (): FormRuleRender => {
+export const useWebidAvailableValidator = (): DeprecatedFormRuleRender => {
   const queryWebidAvailable = useImperativeQuery<Query, Variables>(QueryWebidAvailableFromWsDocument)
   return () => ({
     validator: async (_, value) => {

@@ -14,7 +14,7 @@ import {
 /* import { Tree, TreeProps } from '@brickdoc/design-system' */
 
 // TODO: change to design-system
-import { Tree, TreeProps, TNode, Inserted, css, styled } from '@brickdoc/brickdoc-headless-design-system'
+import { Tree, TreeProps, TNode, Inserted, css, styled, toast } from '@brickdoc/design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -25,7 +25,6 @@ import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
-import { toast } from '@brickdoc/design-system'
 
 export interface PageTreeProps extends DocMetaProps {
   mode?: 'default' | 'subPage'

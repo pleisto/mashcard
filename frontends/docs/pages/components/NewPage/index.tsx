@@ -1,5 +1,5 @@
 import React from 'react'
-import { Add } from '@brickdoc/design-system/components/icon'
+import { Add } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../../common/hooks'
 import { Button } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'

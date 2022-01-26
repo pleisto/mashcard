@@ -4,14 +4,14 @@ import { useUserForgetPasswordMailSendMutation, UserForgetPasswordMailSendInput 
 import { useBoolean } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, DeprecatedInput, Button, toast } from '@brickdoc/design-system'
 import { PasswordChangeEmailNotice } from './components/PasswordChangeEmailNotice'
 
 export const ForgetPasswordPage: React.FC = () => {
   const [didShowPasswordChangeEmailTips, { setTrue: showPasswordChangeEmailTips }] = useBoolean(false)
 
   // Set Form initial values
-  const [form] = Form.useForm()
+  const [form] = DeprecatedForm.useForm()
   const { t } = useAccountsI18n()
 
   // On Form Submit
@@ -41,16 +41,16 @@ export const ForgetPasswordPage: React.FC = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <h1>{pageTitle}</h1>
-      <Form form={form} layout="vertical" onFinish={onFinish}>
-        <Form.Item label={t('sessions.email')} name="email" hasFeedback rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item>
+      <DeprecatedForm form={form} layout="vertical" onFinish={onFinish}>
+        <DeprecatedForm.Item label={t('sessions.email')} name="email" hasFeedback rules={[{ required: true }]}>
+          <DeprecatedInput />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item>
           <Button type="primary" htmlType="submit" loading={userForgetPasswordMailSendLoading} size="large" block>
             {t('sessions.forget_password')}
           </Button>
-        </Form.Item>
-      </Form>
+        </DeprecatedForm.Item>
+      </DeprecatedForm>
     </div>
   )
 }

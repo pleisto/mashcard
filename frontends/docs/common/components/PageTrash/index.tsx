@@ -1,5 +1,5 @@
 import { Block, useGetTrashBlocksQuery } from '@/BrickdocGraphQL'
-import { List, Skeleton } from '@brickdoc/design-system'
+import { DeprecatedList, DeprecatedSkeleton } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { BlockListItem } from '../BlockListItem'
@@ -25,7 +25,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
   const { data, loading } = useGetTrashBlocksQuery({ variables: input })
 
   if (loading) {
-    return <Skeleton active />
+    return <DeprecatedSkeleton active />
   }
 
   if (!data?.trashBlocks?.length) {
@@ -33,7 +33,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
   }
 
   return (
-    <List
+    <DeprecatedList
       className={styles.list}
       size="small"
       split={false}
@@ -42,9 +42,9 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
       dataSource={data.trashBlocks as Block[]}
       renderItem={(item: Block) => {
         return (
-          <List.Item className={styles.item}>
+          <DeprecatedList.Item className={styles.item}>
             <BlockListItem webid={webid} block={item} setVisible={setVisible} />
-          </List.Item>
+          </DeprecatedList.Item>
         )
       }}
     />

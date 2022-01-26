@@ -1,0 +1,365 @@
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+@import '../color/colors';
+
+@theme: variable;
+
+// The prefix to use on all css classes from ant.
+@brd-prefix: brd;
+
+// An override for the html selector for theme prefixes
+@html-selector: html;
+
+
+
+// -------- Colors -----------
+// >>> Primary
+@primary-color: ~'var(--brd-colors-primaryDefault)';
+@primary-color-hover: ~'var(--brd-colors-primaryHover)';
+@primary-color-active: ~'var(--brd-colors-primaryPressed)';
+@primary-color-outline: @blue-7;
+
+@processing-color: @primary-color;
+
+// >>> Info
+@info-color: @cyan-base;
+@info-color-deprecated-bg: @cyan-1;
+@info-color-deprecated-border: @cyan-3;
+
+// >>> Success
+@success-color: ~'var(--brd-colors-hueGreenDefault)';
+@success-color-hover: ~'var(--brd-colors-hueGreenHove)';
+@success-color-active: ~'var(--brd-colors-hueGreenPressed)';
+@success-color-outline: @green-7;
+@success-color-deprecated-bg: ~'var(--brd-colors-statusSuccessBg)';
+@success-color-deprecated-border: ~'var(--brd-colors-green3)';
+
+// >>> Warning
+@warning-color: ~'var(--brd-colors-hueOrangeDefault)';
+@warning-color-hover: ~'var(--brd-colors-hueOrangeHover)';
+@warning-color-active: ~'var(--brd-colors-hueOrangePressed)';
+@warning-color-outline: @orange-7;
+@warning-color-deprecated-bg: ~'var(--brd-colors-statusWarningBg)';
+@warning-color-deprecated-border: ~'var(--brd-colors-orange3)';
+
+// >>> Error
+@error-color: ~'var(--brd-colors-errorDefault)';
+@error-color-hover: ~'var(--brd-colors-errorPressed)';
+@error-color-active: ~'var(--brd-colors-errorPressed)';
+@error-color-outline: @red-7;
+@error-color-deprecated-bg: ~'var(--brd-colors-errorBg)';
+@error-color-deprecated-border: ~'var(--brd-colors-errorBorder)';
+
+@highlight-color: @red-3;
+@normal-color: #d9d9d9;
+
+// Color used by default to control hover and active backgrounds and for
+// alert info backgrounds.
+@primary-1: ~'var(--brd-colors-blue1)'; // replace tint(@primary-color, 90%)
+@primary-2: ~'var(--brd-colors-blue2)'; // replace tint(@primary-color, 80%)
+@primary-3: ~'var(--brd-colors-blue3)'; // unused
+@primary-4: ~'var(--brd-colors-blue4)'; // unused
+@primary-5: ~'var(--brd-colors-blue5)'; // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
+@primary-6: ~'var(--brd-colors-blue6)'; // color used to control the text color of active buttons, don't use, use @primary-color
+@primary-7: ~'var(--brd-colors-blue7)'; // replace shade(@primary-color, 5%)
+@primary-8: ~'var(--brd-colors-blue8)'; // unused
+@primary-9: ~'var(--brd-colors-blue9)'; // unused
+
+// Base Scaffolding Variables
+// ---
+
+// Base background color for most components
+@component-background: @white;
+// Popover background color
+@popover-background: @component-background;
+@popover-customize-border-color: @border-color-split;
+@font-family: 'var(--brd-fonts-defaultSans)';
+@code-family: 'var(--brd-fonts-defaultMonospace)';
+@text-color: 'var(--brd-colors-typePrimary)';
+@text-color-secondary: var(--brd-colors-typeSecondary);
+@text-color-disable: var(--brd-colors-typeDisabled);
+@text-color-inverse: @white;
+@icon-color: inherit;
+@icon-color-hover: fade(@black, 75%);
+@heading-color: @text-color;
+@text-color-dark: fade(@white, 85%);
+@text-color-secondary-dark: fade(@white, 65%);
+@text-selection-bg: @primary-color;
+@font-variant-base: tabular-nums;
+@font-feature-settings-base: 'tnum';
+@font-size-base: 16px;
+@font-size-lg: 18px;
+@font-size-sm: 14px;
+@font-size-xs: 12px;
+@heading-1-size: 30px;
+@heading-2-size: 24px;
+@heading-3-size: 20px;
+@heading-4-size: 18px;
+@heading-5-size: 1.05;
+@line-height-base: 1.6;
+@line-height-sm: 16px;
+@line-height-md: 20px;
+@border-radius-base: 4px;
+@border-radius-sm: 2px;
+
+// vertical paddings
+@padding-lg: 24px; // containers
+@padding-md: 16px; // small containers and buttons
+@padding-sm: 12px; // Form controls and items
+@padding-xs: 8px; // small items
+@padding-xss: 4px; // more small
+
+// vertical padding for all form controls
+@control-padding-horizontal: @padding-sm;
+@control-padding-horizontal-sm: @padding-xs;
+
+// vertical margins
+@margin-lg: 24px; // containers
+@margin-md: 16px; // small containers and buttons
+@margin-sm: 12px; // Form controls and items
+@margin-xs: 8px; // small items
+@margin-xss: 4px; // more small
+
+// height rules
+@height-base: 32px;
+@height-lg: 40px;
+@height-sm: 27px;
+
+// The background colors for active and hover states for things like
+// list items or table cells.
+@item-active-bg: @grey-1;
+@item-hover-bg: #f5f5f5;
+
+
+// LINK
+@link-color: @primary-color;
+@link-hover-color: @primary-color-hover;
+@link-active-color: @primary-color-active;
+@link-decoration: none;
+@link-hover-decoration: none;
+@link-focus-decoration: none;
+@link-focus-outline: 1px dotted rgba(0, 0, 0, 0.65);
+
+// Animation
+@ease-base-out: var(--brd-transitions-easeBaseOut);
+@ease-base-in: var(--brd-transitions-easeBaseIn);
+@ease-out: var(--brd-transitions-easeOut);
+@ease-in: var(--brd-transitions-easeIn);
+@ease-in-out: var(--brd-transitions-easeInOut);
+@ease-out-back: var(--brd-transitions-easeOutBack);
+@ease-in-back: var(--brd-transitions-easeInBack);
+@ease-in-out-back: var(--brd-transitions-easeInOutBack);
+@ease-out-circ: var(--brd-transitions-easeOutCirc);
+@ease-in-circ: var(--brd-transitions-easeInCirc);
+@ease-in-out-circ: var(--brd-transitions-easeInOutCirc);
+@ease-out-quint: var(--brd-transitions-easeOutQuint);
+@ease-in-quint: var(--brd-transitions-easeInQuint);
+@ease-in-out-quint: var(--brd-transitions-easeInOutQuint);
+
+// Border color
+@border-color-base: @grey-3; // base border outline a component
+@border-color-split: #f6f6f6; // split border inside a component
+@border-color-inverse: @white;
+@border-width-base: 1px; // width of the border for a component
+@border-style-base: solid; // style of a components border
+
+// Outline
+@outline-blur-size: 0;
+@outline-width: 2px;
+@outline-color: @primary-color; // No use anymore
+@outline-fade: 20%;
+
+@background-color-light: hsv(0, 0, 98%); // background of header and selected item
+@background-color-base: hsv(0, 0, 96%); // Default grey background color
+
+// Disabled states
+@disabled-color: fade(#000, 25%);
+@disabled-bg: @background-color-base;
+@disabled-active-bg: tint(@black, 90%);
+@disabled-color-dark: fade(#fff, 35%);
+
+// Shadow
+@shadow-color: rgba(0, 0, 0, 0.15);
+@shadow-color-inverse: @component-background;
+
+@iconfont-css-prefix: brd-icon;
+// Divider
+@divider-text-padding: 1em;
+@divider-orientation-margin: 5%;
+@divider-color: rgba(0, 0, 0, 6%);
+
+
+// Media queries breakpoints
+// @screen-xs and @screen-xs-min is not used in Grid
+// smallest break point is @screen-md
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+// 👆 Extra small screen / phone
+
+// 👇 Small screen / tablet
+@screen-sm: 576px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen / desktop
+@screen-md: 768px;
+@screen-md-min: @screen-md;
+
+// Large screen / wide desktop
+@screen-lg: 992px;
+@screen-lg-min: @screen-lg;
+
+// Extra large screen / full hd
+@screen-xl: 1200px;
+@screen-xl-min: @screen-xl;
+
+// Extra extra large screen / large desktop
+@screen-xxl: 1600px;
+@screen-xxl-min: @screen-xxl;
+
+// provide a maximum
+@screen-xs-max: (@screen-sm-min - 1px);
+@screen-sm-max: (@screen-md-min - 1px);
+@screen-md-max: (@screen-lg-min - 1px);
+@screen-lg-max: (@screen-xl-min - 1px);
+@screen-xl-max: (@screen-xxl-min - 1px);
+
+// Grid system
+@grid-columns: 24;
+
+// Layout
+
+@layout-header-height: 56px;
+
+// z-index list, order by `z-index`
+@zindex-badge: auto;
+@zindex-table-fixed: 2;
+@zindex-affix: 10;
+@zindex-back-top: 10;
+@zindex-picker-panel: 10;
+@zindex-popup-close: 10;
+@zindex-modal: 1000;
+@zindex-modal-mask: 1000;
+@zindex-message: 1010;
+@zindex-notification: 1010;
+@zindex-popover: 1030;
+@zindex-dropdown: 1050;
+@zindex-picker: 1050;
+@zindex-popoconfirm: 1060;
+@zindex-tooltip: 1070;
+@zindex-image: 1080;
+
+// Animation
+@animation-duration-slow: 0.3s; // Modal
+@animation-duration-base: 0.2s;
+@animation-duration-fast: 0.1s; // Tooltip
+
+
+
+// Form
+// ---
+@label-required-color: @highlight-color;
+@label-color: @heading-color;
+@form-warning-input-bg: @input-bg;
+@form-item-margin-bottom: 25px;
+@form-item-trailing-colon: true;
+@form-vertical-label-padding: 0 0 8px;
+@form-vertical-label-margin: 0;
+@form-item-label-font-size: @font-size-base;
+@form-item-label-height: @input-height-base;
+@form-item-label-colon-margin-right: 8px;
+@form-item-label-colon-margin-left: 2px;
+@form-error-input-bg: @input-bg;
+
+// Input
+// ---
+@input-height-base: @height-base;
+@input-height-lg: @height-lg;
+@input-height-sm: @height-sm;
+@input-padding-horizontal: @control-padding-horizontal - 1px;
+@input-padding-horizontal-base: @input-padding-horizontal;
+@input-padding-horizontal-sm: @control-padding-horizontal-sm - 1px;
+@input-padding-horizontal-lg: @input-padding-horizontal;
+@input-padding-vertical-base: 0.15em;
+@input-padding-vertical-sm: 0px;
+@input-padding-vertical-lg: 0.28em;
+@input-placeholder-color: hsv(0, 0, 75%);
+@input-placeholder-size: @font-size-sm;
+@input-color: @text-color;
+@input-icon-color: @input-color;
+@input-border-color: @border-color-base;
+@input-bg: @component-background;
+@input-number-hover-border-color: @input-hover-border-color;
+@input-number-handler-active-bg: #f4f4f4;
+@input-number-handler-hover-bg: @primary-5;
+@input-number-handler-bg: @component-background;
+@input-number-handler-border-color: @border-color-base;
+@input-addon-bg: @background-color-light;
+@input-hover-border-color: @primary-5;
+@input-disabled-bg: @disabled-bg;
+@input-outline-offset: 0 0;
+@input-icon-hover-color: fade(@black, 85%);
+@input-disabled-color: @disabled-color;
+
+
+// Modal
+// --
+@modal-header-padding-vertical: @padding-md;
+@modal-header-padding-horizontal: @padding-lg;
+@modal-body-padding: @padding-lg;
+@modal-header-bg: @component-background;
+@modal-header-padding: @modal-header-padding-vertical @modal-header-padding-horizontal;
+@modal-header-border-width: @border-width-base;
+@modal-header-border-style: @border-style-base;
+@modal-header-title-line-height: 22px;
+@modal-header-title-font-size: @font-size-lg;
+@modal-header-border-color-split: @border-color-split;
+@modal-header-close-size: 56px;
+@modal-content-bg: @component-background;
+@modal-heading-color: @heading-color;
+@modal-close-color: @text-color-secondary;
+@modal-footer-bg: transparent;
+@modal-footer-border-color-split: @border-color-split;
+@modal-footer-border-style: @border-style-base;
+@modal-footer-padding-vertical: 10px;
+@modal-footer-padding-horizontal: 16px;
+@modal-footer-border-width: @border-width-base;
+@modal-mask-bg: fade(@black, 45%);
+@modal-confirm-body-padding: 32px 32px 24px;
+
+
+
+// Spin
+// ---
+@spin-dot-size-sm: 14px;
+@spin-dot-size: 20px;
+@spin-dot-size-lg: 32px;
+
+
+// Skeleton
+// ---
+@skeleton-color: rgba(190, 190, 190, 0.2);
+@skeleton-to-color: shade(@skeleton-color, 5%);
+@skeleton-paragraph-margin-top: 28px;
+@skeleton-paragraph-li-margin-top: @margin-md;
+@skeleton-paragraph-li-height: 16px;
+@skeleton-title-height: 16px;
+@skeleton-title-paragraph-margin-top: @margin-lg;
+
+// Motion
+// ---
+@wave-animation-width: 6px;
+
+
+// List
+// ---
+@list-header-background: transparent;
+@list-footer-background: transparent;
+@list-empty-text-padding: @padding-md;
+@list-item-padding: @padding-sm 0;
+@list-item-padding-sm: @padding-xs @padding-md;
+@list-item-padding-lg: 16px 24px;
+@list-item-meta-margin-bottom: @padding-md;
+@list-item-meta-avatar-margin-right: @padding-md;
+@list-item-meta-title-margin-bottom: @padding-sm;
+@list-customize-card-bg: @component-background;
+@list-item-meta-description-font-size: @font-size-base;
+

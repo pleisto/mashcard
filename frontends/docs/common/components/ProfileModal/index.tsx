@@ -1,5 +1,13 @@
 import React, { useState, useRef } from 'react'
-import { Modal, Form, Input, toast, Avatar, Popover, FormInstance } from '@brickdoc/design-system'
+import {
+  DeprecatedModal,
+  DeprecatedForm,
+  DeprecatedInput,
+  toast,
+  Avatar,
+  Popover,
+  DeprecatedFormInstance
+} from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
@@ -28,7 +36,7 @@ const IMPORT_SOURCES: ImportSourceOption[] = [
 export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title, type, setVisible }) => {
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
-  const [form] = Form.useForm()
+  const [form] = DeprecatedForm.useForm()
   const [createOrUpdatePod] = useCreateOrUpdatePodMutation()
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(
     type === PodOperation.Update ? pod.avatarData?.url : ''
@@ -37,7 +45,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
     type === PodOperation.Update ? pod.avatarData?.signedId : ''
   )
   const prepareFileUpload = usePrepareFileUpload()
-  const formRef = useRef<FormInstance>(null)
+  const formRef = useRef<DeprecatedFormInstance>(null)
   const webidAvailableValidator = useWebidAvailableValidator()
 
   const handleCancel = (): void => {
@@ -51,7 +59,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
 
     form
       .validateFields()
-      .then(async values => {
+      .then(async (values: any) => {
         form.resetFields()
         const input: CreateOrUpdatePodInput = {
           type,
@@ -69,7 +77,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
         setVisible(false)
         globalThis.location.href = `/${values.webid}`
       })
-      .catch(info => {
+      .catch((info: any) => {
         console.log('Validate Failed:', info)
       })
   }
@@ -87,17 +95,16 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
 
   const webidFormItem =
     type === PodOperation.Create ? (
-      <Form.Item
+      <DeprecatedForm.Item
         name="webid"
         label={t('pods.webid')}
-        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}
-      >
-        <Input />
-      </Form.Item>
+        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}>
+        <DeprecatedInput />
+      </DeprecatedForm.Item>
     ) : (
-      <Form.Item name="webid" label={t('pods.webid')}>
+      <DeprecatedForm.Item name="webid" label={t('pods.webid')}>
         <span>{pod.webid}</span>
-      </Form.Item>
+      </DeprecatedForm.Item>
     )
 
   const onUploaded = (attrs: UploadResultData): void => {
@@ -128,33 +135,35 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
   )
 
   const formData = (
-    <Form form={form} ref={formRef} name={formName} layout="vertical" initialValues={initialValues}>
+    <DeprecatedForm form={form} ref={formRef} name={formName} layout="vertical" initialValues={initialValues}>
       {webidFormItem}
-      <Form.Item name="name" label={t('pods.name')} rules={[{ required: true, message: t('pods.required.name') }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item name="bio" label={t('pods.bio')}>
-        <Input />
-      </Form.Item>
-      <Form.Item name="avatar" label={t('pods.avatar')}>
+      <DeprecatedForm.Item
+        name="name"
+        label={t('pods.name')}
+        rules={[{ required: true, message: t('pods.required.name') }]}>
+        <DeprecatedInput />
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item name="bio" label={t('pods.bio')}>
+        <DeprecatedInput />
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item name="avatar" label={t('pods.avatar')}>
         <Popover overlayClassName={styles.popover} content={updateDashboard}>
           {avatar}
         </Popover>
-      </Form.Item>
-    </Form>
+      </DeprecatedForm.Item>
+    </DeprecatedForm>
   )
 
   return (
-    <Modal
+    <DeprecatedModal
       title={title}
       okText={t('design_system:modal.okText')}
       cancelText={t('design_system:modal.cancelText')}
       visible={visible}
       onOk={handleOk}
       confirmLoading={confirmLoading}
-      onCancel={handleCancel}
-    >
+      onCancel={handleCancel}>
       {formData}
-    </Modal>
+    </DeprecatedModal>
   )
 }

@@ -5,9 +5,9 @@ import {
   QueryEmailAvailableFromWsQuery as Query,
   QueryEmailAvailableFromWsQueryVariables as Variables
 } from '@/BrickdocGraphQL'
-import { FormRuleRender } from '@brickdoc/design-system'
+import { DeprecatedFormRuleRender } from '@brickdoc/design-system'
 
-export const useEmailAvailableValidator = (): FormRuleRender => {
+export const useEmailAvailableValidator = (): DeprecatedFormRuleRender => {
   const queryEmailAvailable = useImperativeQuery<Query, Variables>(QueryEmailAvailableFromWsDocument)
   return () => ({
     validator: async (_, value) => {

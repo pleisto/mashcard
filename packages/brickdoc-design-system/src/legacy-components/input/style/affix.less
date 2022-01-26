@@ -1,0 +1,69 @@
+@import './mixin';
+@import (reference) '../../style/themes/index';
+@input-prefix-cls: ~'@{brd-prefix}-input';
+
+@input-affix-margin: 4px;
+
+.@{brd-prefix}-input {
+  &-affix-wrapper {
+    .input();
+
+    display: inline-flex;
+
+    &:not(&-disabled):hover {
+      .hover();
+
+      z-index: 1;
+      .@{brd-prefix}-input-search-with-button & {
+        z-index: 0;
+      }
+    }
+
+    &-focused,
+    &:focus {
+      z-index: 1;
+    }
+
+    &-disabled {
+      .@{brd-prefix}-input[disabled] {
+        background: transparent;
+      }
+    }
+
+    > input.@{brd-prefix}-input {
+      padding: 0;
+      border: none;
+      outline: none;
+
+      &:focus {
+        box-shadow: none !important;
+      }
+    }
+
+    &::before {
+      width: 0;
+      visibility: hidden;
+      content: '\a0';
+    }
+  }
+
+  &-prefix,
+  &-suffix {
+    display: flex;
+    flex: none;
+    align-items: center;
+    & span {
+      color: @input-placeholder-color;
+    }
+  }
+
+  &-prefix {
+    margin-right: @input-affix-margin;
+    font-size: @font-size-base;
+  }
+
+  &-suffix {
+    margin-left: @input-affix-margin;
+    font-size: @font-size-xs;
+  }
+}

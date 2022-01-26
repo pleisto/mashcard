@@ -36,7 +36,7 @@ export const base = {
         marginTop: '1.875rem'
       }
     },
-    '& > nav > .brd-btn-text, & > footer .brd-btn-text, & > .brk-btn-text ': {
+    '& > nav > .brd-btn-text, & > footer .brd-btn-text, & > .brd-btn-text ': {
       border: 0,
       padding: '0.375rem 0.75rem',
       height: 'auto',

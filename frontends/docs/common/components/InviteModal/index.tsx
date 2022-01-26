@@ -1,6 +1,16 @@
 import React from 'react'
 import cx from 'classnames'
-import { Button, Dropdown, Menu, MenuProps, Modal, Icon, Select, Spin, Tag } from '@brickdoc/design-system'
+import {
+  Button,
+  Dropdown,
+  Menu,
+  MenuProps,
+  DeprecatedModal,
+  Icon,
+  Select,
+  DeprecatedSpin,
+  Tag
+} from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockCreateShareLinkInput,
@@ -139,7 +149,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       filterOption={false}
       labelInValue={true}
       value={podValue}
-      notFoundContent={fetching ? <Spin size="small" /> : <span>{t('invite.type_hint')}</span>}
+      notFoundContent={fetching ? <DeprecatedSpin size="small" /> : <span>{t('invite.type_hint')}</span>}
       getPopupContainer={() => inviteListRef.current!}
       dropdownClassName={styles.selectDropdown}
       dropdownRender={dropdownRender}
@@ -148,8 +158,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       open={true}
       onChange={newValue => {
         setPodValue(newValue)
-      }}
-    >
+      }}>
       {options.map(pod => (
         <Option key={pod.webid} value={pod.webid}>
           <PodCard pod={pod} />
@@ -182,7 +191,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
   )
 
   return (
-    <Modal
+    <DeprecatedModal
       className={styles.modal}
       title={null}
       footer={null}
@@ -190,9 +199,8 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       destroyOnClose={true}
       visible={visible}
       onOk={onCleanup}
-      onCancel={onCleanup}
-    >
+      onCancel={onCleanup}>
       {inviteContent}
-    </Modal>
+    </DeprecatedModal>
   )
 }

@@ -1,5 +1,3 @@
-import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-
 describe('embedBlock', () => {
   before(() => {
     cy.sessionMock({ email: 'cypress@brickdoc.com' })
@@ -7,6 +5,8 @@ describe('embedBlock', () => {
     cy.wait(500)
   })
 
+  // eslint-disable-next-line jest/no-commented-out-tests
+  /*
   describe('web bookmark', () => {
     it('embeds web bookmark by input link', () => {
       cy.addBlock('link')
@@ -14,4 +14,5 @@ describe('embedBlock', () => {
       cy.findByTestId(TEST_ID_ENUM.editor.embedBlock.link.id).should('exist')
     })
   })
+  */
 })

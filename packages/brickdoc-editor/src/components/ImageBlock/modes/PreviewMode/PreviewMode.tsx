@@ -4,7 +4,7 @@ import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { BlockContainer } from '../../../../components'
 import { Resizable } from 're-resizable'
-import { Skeleton } from '@brickdoc/design-system'
+import { DeprecatedSkeleton } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 const MAX_WIDTH = 700
@@ -82,18 +82,16 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
             updateImageAttributes({
               width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
             })
-          }}
-        >
+          }}>
           <ImagePreview
             wrapStyle={{ pointerEvents: 'none', width: '100%' }}
             overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
             isZoomed={showPreview}
             onZoomChange={shouldZoom => {
               setShowPreview(shouldZoom)
-            }}
-          >
+            }}>
             {!loaded && (
-              <Skeleton.Image
+              <DeprecatedSkeleton.Image
                 style={
                   node.attrs.image.width
                     ? { width: node.attrs.image.width, height: node.attrs.image.width / node.attrs.image.ratio }

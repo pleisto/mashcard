@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Input, Checkbox, Divider, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, Button, DeprecatedInput, Checkbox, DeprecatedDivider, toast } from '@brickdoc/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
@@ -20,32 +20,31 @@ export const EmailPasswordSignIn: React.FC = () => {
     })
   }
   return (
-    <Form layout="vertical" onFinish={onFinish}>
-      <Form.Item
+    <DeprecatedForm layout="vertical" onFinish={onFinish}>
+      <DeprecatedForm.Item
         label={t('sessions.email')}
         name="email"
         validateTrigger={['onBlur']}
-        rules={[{ required: true, type: 'email' }]}
-      >
-        <Input />
-      </Form.Item>
+        rules={[{ required: true, type: 'email' }]}>
+        <DeprecatedInput />
+      </DeprecatedForm.Item>
 
-      <Form.Item label={t('sessions.password')} name="password" rules={[{ required: true }]}>
-        <Input.Password />
-      </Form.Item>
-      <Form.Item name="remember" valuePropName="checked" initialValue={false}>
+      <DeprecatedForm.Item label={t('sessions.password')} name="password" rules={[{ required: true }]}>
+        <DeprecatedInput.Password />
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item name="remember" valuePropName="checked" initialValue={false}>
         <Checkbox>{t('sessions.remember_me')}</Checkbox>
-      </Form.Item>
-      <Form.Item>
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item>
         <Button type="primary" htmlType="submit" loading={loading} size="large" block>
           {t('sessions.sign_in')}
         </Button>
-      </Form.Item>
-      <Form.Item className={styles.links}>
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item className={styles.links}>
         <Link to="/accounts/sign_up">{t('sessions.sign_up_with_email')}</Link>
-        <Divider type="vertical" />
+        <DeprecatedDivider type="vertical" />
         <Link to="/accounts/password/forget">{t('sessions.forget_password')}</Link>
-      </Form.Item>
-    </Form>
+      </DeprecatedForm.Item>
+    </DeprecatedForm>
   )
 }

@@ -1,6 +1,6 @@
-@import '@brickdoc/design-system/components/style/themes/index';
+@import '@brickdoc/design-system/src/legacy-components/style/themes/index';
 .modal {
-  :global(.brk-modal-body) {
+  :global(.brd-modal-body) {
     padding: 0;
   }
 }
@@ -14,7 +14,7 @@
   border-radius: 0;
   box-shadow: none;
 
-  :global(.brk-select-item-empty) {
+  :global(.brd-select-item-empty) {
     min-height: 340px;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
     font-size: 14px;
   }
 
-  :global(.brk-select-item-option) {
+  :global(.brd-select-item-option) {
     align-items: center;
   }
 }
@@ -37,7 +37,7 @@
   .select {
     flex: 1;
 
-    :global(.brk-select-selector) {
+    :global(.brd-select-selector) {
       background-color: transparent;
       height: 32px;
       flex-wrap: unset;
@@ -46,7 +46,7 @@
       transition: none;
     }
 
-    :global(.brk-select-selection-search) {
+    :global(.brd-select-selection-search) {
       margin-top: 0;
       margin-bottom: 0;
     }
@@ -74,7 +74,7 @@
 
     &.filled {
       .select {
-        :global(.brk-select-selector) {
+        :global(.brd-select-selector) {
           background-color: #fff;
           border: 1px solid @border-color-base;
           border-top-right-radius: 0;

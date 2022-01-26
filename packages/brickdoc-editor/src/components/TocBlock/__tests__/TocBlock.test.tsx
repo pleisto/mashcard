@@ -173,17 +173,6 @@ describe('TocBlock', () => {
     expect(screen.getAllByRole('menuitem')).toHaveLength(nodes.length - 1)
   })
 
-  it('toggles toc item normally', () => {
-    const props: any = { editor }
-    render(<TocBlock {...props} />)
-
-    fireEvent.click(screen.getAllByTestId(TEST_ID_ENUM.editor.tocBlock.item.toggleIcon.id)[0])
-
-    expect(screen.getAllByTestId(TEST_ID_ENUM.editor.tocBlock.item.contentPanel.id)[0]).toHaveStyle({
-      'max-height': '0px'
-    })
-  })
-
   it('triggers toc item click normally', () => {
     const props: any = { editor }
     const mockSetTextSelection = jest.fn()

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react'
-import { Skeleton, Alert } from '@brickdoc/design-system'
+import { DeprecatedSkeleton, Alert } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
@@ -71,7 +71,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   }
 
   if (loading || docMeta.documentInfoLoading) {
-    return <Skeleton active />
+    return <DeprecatedSkeleton active />
   }
 
   if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {

@@ -5,9 +5,9 @@ import {
   QueryPasswordAvailableFromWsQuery as Query,
   QueryPasswordAvailableFromWsQueryVariables as Variables
 } from '@/BrickdocGraphQL'
-import { FormRuleRender } from '@brickdoc/design-system'
+import { DeprecatedFormRuleRender } from '@brickdoc/design-system'
 
-export const usePasswordAvailableValidator = (): FormRuleRender => {
+export const usePasswordAvailableValidator = (): DeprecatedFormRuleRender => {
   const queryPasswordAvailable = useImperativeQuery<Query, Variables>(QueryPasswordAvailableFromWsDocument)
   return () => ({
     validator: async (_, value) => {

@@ -9,7 +9,7 @@ import {
 import { Dropdown, Menu, MenuProps } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
-import { LineDown } from '@brickdoc/design-system/components/icon'
+import { LineDown } from '@brickdoc/design-icons'
 import { queryBlockShareLinks } from '../../graphql'
 import styles from './index.module.less'
 import { PodCard, PodType } from '@/common/components/PodCard'

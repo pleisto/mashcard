@@ -3,7 +3,7 @@ import { Navigate } from 'react-router'
 
 import { Helmet } from 'react-helmet-async'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
-import { Form, Button, Input, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, Button, DeprecatedInput, toast } from '@brickdoc/design-system'
 import { omit } from 'lodash-es'
 import { useBoolean } from 'ahooks'
 
@@ -47,28 +47,27 @@ export const EditPasswordPage: React.FC = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <h1>{pageTitle}</h1>
-      <Form layout="vertical" initialValues={{ token }} onFinish={onFinish}>
-        <Form.Item hidden name="token" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }]}>
-          <Input.Password />
-        </Form.Item>
-        <Form.Item
+      <DeprecatedForm layout="vertical" initialValues={{ token }} onFinish={onFinish}>
+        <DeprecatedForm.Item hidden name="token" rules={[{ required: true }]}>
+          <DeprecatedInput />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }]}>
+          <DeprecatedInput.Password />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item
           name="confirm_password"
           label={t('sessions.confirm_password')}
           hasFeedback
           dependencies={['password']}
-          rules={[{ required: true }, passwordConfirmValidator]}
-        >
-          <Input.Password />
-        </Form.Item>
-        <Form.Item>
+          rules={[{ required: true }, passwordConfirmValidator]}>
+          <DeprecatedInput.Password />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item>
           <Button type="primary" htmlType="submit" size="large" loading={loading} block>
             {t('sessions.reset_password')}
           </Button>
-        </Form.Item>
-      </Form>
+        </DeprecatedForm.Item>
+      </DeprecatedForm>
     </div>
   )
 }

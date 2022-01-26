@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Popover, Icon, Input } from '@brickdoc/design-system'
+import { Button, Popover, Icon, DeprecatedInput } from '@brickdoc/design-system'
 import styles from './DocumentTitle.module.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { DocumentIcon } from './DocumentIcon'
@@ -114,8 +114,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="text"
                     className={styles.item}
-                    disabled={!editable}
-                  >
+                    disabled={!editable}>
                     <Icon.Image className={styles.icon} />
                     <span className={styles.name}>{t('title.add_cover')}</span>
                   </Button>
@@ -129,8 +128,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
                 <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
-            <Input
-              ref={container => {
+            <DeprecatedInput
+              ref={(container: any) => {
                 if (container) {
                   inputRef.current = container
                   // TODO: fix this hack
@@ -146,11 +145,11 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
               onCompositionUpdate={() => {
                 inputComposing.current = true
               }}
-              onCompositionEnd={e => {
+              onCompositionEnd={(e: any) => {
                 inputComposing.current = false
                 setTitle((e.target as any).value)
               }}
-              onChange={e => {
+              onChange={(e: any) => {
                 if (inputComposing.current) {
                   inputComposing.current = false
                   return

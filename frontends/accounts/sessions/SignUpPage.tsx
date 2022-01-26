@@ -12,7 +12,7 @@ import { useWebidAvailableValidator } from '@/common/hooks'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
 import { omit, omitBy, pick, isNil } from 'lodash-es'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, Skeleton, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, DeprecatedInput, Button, DeprecatedSkeleton, toast } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
@@ -23,7 +23,7 @@ export const SignUpPage: React.FC = () => {
   const { loading: configLoading, data: configData } = useGetAccountsConfigFromWsQuery()
 
   // Set Form initial values
-  const [form] = Form.useForm()
+  const [form] = DeprecatedForm.useForm()
   const { loading: sessionLoading, data: sessionData } = useGetFederatedIdentitySessionQuery()
   const { initialValues, setFill } = useSignUpInitialValues()
   useEffect(() => {
@@ -61,7 +61,7 @@ export const SignUpPage: React.FC = () => {
 
   // Loading Status
   if (configLoading || sessionLoading) {
-    return <Skeleton active />
+    return <DeprecatedSkeleton active />
   }
 
   // Email unactive tips
@@ -76,31 +76,28 @@ export const SignUpPage: React.FC = () => {
 
   const EmailPasswordFields = (
     <>
-      <Form.Item
+      <DeprecatedForm.Item
         name="email"
         label={t('sessions.email')}
         hasFeedback
-        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
+        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}>
+        <DeprecatedInput />
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item
         name="password"
         label={t('sessions.password')}
         hasFeedback
-        rules={[{ required: true }, passwordAvailableValidator]}
-      >
-        <Input.Password />
-      </Form.Item>
-      <Form.Item
+        rules={[{ required: true }, passwordAvailableValidator]}>
+        <DeprecatedInput.Password />
+      </DeprecatedForm.Item>
+      <DeprecatedForm.Item
         name="confirm_password"
         label={t('sessions.confirm_password')}
         hasFeedback
         dependencies={['password']}
-        rules={[{ required: true }, passwordConfirmValidator]}
-      >
-        <Input.Password />
-      </Form.Item>
+        rules={[{ required: true }, passwordConfirmValidator]}>
+        <DeprecatedInput.Password />
+      </DeprecatedForm.Item>
     </>
   )
 
@@ -110,35 +107,34 @@ export const SignUpPage: React.FC = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <h1>{pageTitle}</h1>
-      <Form form={form} initialValues={initialValues} layout="vertical" onFinish={onFinish}>
-        <Form.Item
+      <DeprecatedForm form={form} initialValues={initialValues} layout="vertical" onFinish={onFinish}>
+        <DeprecatedForm.Item
           label={t('sessions.webid')}
           name="webid"
           extra={<small>{t('sessions.webid_description')}</small>}
           hasFeedback
           validateTrigger={['onFocus', 'onBlur']}
-          rules={[{ required: true }, webidAvailableValidator]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
+          rules={[{ required: true }, webidAvailableValidator]}>
+          <DeprecatedInput />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>
+          <DeprecatedInput />
+        </DeprecatedForm.Item>
         {
           // Federated Sign Up could skip email and password
           !sessionData?.federatedIdentitySession?.hasSession && EmailPasswordFields
         }
-        <Form.Item hidden name="locale" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item hidden name="timezone" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item>
+        <DeprecatedForm.Item hidden name="locale" rules={[{ required: true }]}>
+          <DeprecatedInput />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item hidden name="timezone" rules={[{ required: true }]}>
+          <DeprecatedInput />
+        </DeprecatedForm.Item>
+        <DeprecatedForm.Item>
           <Button type="primary" htmlType="submit" size="large" loading={userCreateLoading} block>
             {t('sessions.sign_up')}
           </Button>
-        </Form.Item>
+        </DeprecatedForm.Item>
         <div>
           <small>
             <Trans
@@ -152,7 +148,7 @@ export const SignUpPage: React.FC = () => {
             />
           </small>
         </div>
-      </Form>
+      </DeprecatedForm>
     </div>
   )
 }

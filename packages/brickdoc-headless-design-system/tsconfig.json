@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.shared.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["**/*", "__mocks__"],
-  "exclude": ["dist/**/*"],
-  "references": [{ "path": "../brickdoc-design-icons" }]
-}

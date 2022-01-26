@@ -1,4 +1,4 @@
-@import '@brickdoc/design-system/components/style/themes';
+@import '@brickdoc/design-system/src/legacy-components/style/themes';
 
 .select {
   display: flex;
@@ -10,7 +10,7 @@
 
   &:hover {
     cursor: pointer;
-    background: @btn-text-hover-bg;
+    background: rgba(0, 0, 0, 0.05);
     transition: background @animation-duration-slow, background @animation-duration-slow cubic-bezier(0.2, 0, 0, 1) 0s;
   }
 
@@ -58,12 +58,12 @@
 .overlay {
   min-width: 20rem !important;
 
-  :global(.brk-dropdown-menu-item-group-list) {
+  :global(.brd-dropdown-menu-item-group-list) {
     margin: 0;
   }
 
-  :global(.brk-dropdown-menu-item),
-  :global(.brk-dropdown-menu-submenu-title) {
+  :global(.brd-dropdown-menu-item),
+  :global(.brd-dropdown-menu-submenu-title) {
     padding: 6px 12px;
   }
 }

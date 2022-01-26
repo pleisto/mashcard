@@ -1,18 +1,18 @@
 {
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "strictNullChecks": false,
-    "noImplicitAny": false
+    "outDir": "dist"
   },
-  "include": ["**/*"],
-  "exclude": ["dist/**/*"],
+  "include": [
+    "**/*",
+    "__mocks__"
+  ],
+  "exclude": [
+    "dist/**/*"
+  ],
   "references": [
     {
       "path": "../brickdoc-design-icons"
-    },
-    {
-      "path": "../brickdoc-headless-design-system"
     }
   ]
 }

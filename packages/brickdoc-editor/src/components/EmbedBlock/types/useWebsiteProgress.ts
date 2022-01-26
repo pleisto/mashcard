@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import { UploadProgress } from '@brickdoc/uploader'
 import React from 'react'
 

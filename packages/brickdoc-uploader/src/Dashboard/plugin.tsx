@@ -93,7 +93,7 @@ export class DashboardPlugin extends BasePlugin {
 
   constructor(uppy: Uppy, opts: DashboardPluginOptions) {
     super(uppy, opts)
-    this.id = 'brk-dashboard'
+    this.id = 'brd-dashboard'
     this.type = 'orchestrator'
     this.opts = opts
   }

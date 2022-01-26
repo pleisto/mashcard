@@ -1,4 +1,4 @@
-@import '@brickdoc/design-system/components/style/themes';
+@import '@brickdoc/design-system/src/legacy-components/style/themes';
 
 @table-header-color: #908B9C;       // palette/type/thirdary
 @table-bg: rgba(0, 0, 0, 3%);       // palette/type/thirdary
@@ -45,12 +45,8 @@
         font-size: 12px;
         margin: 0;
         padding: 0;
-        border: 2px solid @btn-default-border;
+        border: 2px solid var(--brd-colors-grey5);
         cursor: pointer;
-        &:hover {
-          // color: @table-action-hover-color;
-          // border-color: @table-action-hover-color;
-        }
       }
       table {
         font-size: 14px;

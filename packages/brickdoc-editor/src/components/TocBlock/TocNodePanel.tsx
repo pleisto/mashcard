@@ -1,5 +1,6 @@
 import React from 'react'
-import { Icon, styled, theme } from '@brickdoc/design-system'
+import { styled, theme } from '@brickdoc/design-system'
+import { ArrowFilleRight } from '@brickdoc/design-icons'
 import { isEmpty } from 'lodash'
 import { TocNode } from './tocTree'
 import { EditorContext } from '../../context/EditorContext'
@@ -62,7 +63,7 @@ const TocStyledItem = styled('div', {
   flexDirection: 'column'
 })
 
-const ToggleIcon = styled(Icon.ArrowFilleRight, {
+const ToggleIcon = styled(ArrowFilleRight, {
   color: theme.colors.typePrimary,
   display: 'inline',
   fontSize: '.45rem',

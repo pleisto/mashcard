@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { List, Button } from '@brickdoc/design-system'
+import { DeprecatedList, Button } from '@brickdoc/design-system'
 import { DocumentPage } from '@/docs/pages/DocumentPage'
 import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMutation } from '@/BrickdocGraphQL'
 import styles from './index.module.less'
@@ -52,8 +52,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
               disabled={disabled}
               loading={loading}
               onClick={onRestore}
-              block
-            >
+              block>
               {loading ? t('snapshots.restoring') : t('snapshots.restore')}
             </Button>
             <Button className={styles.button} onClick={onCleanup} block>
@@ -88,19 +87,20 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   )
 
   const snapshotData = (
-    <List
+    <DeprecatedList
       size="small"
       footer={null}
       header={null}
       dataSource={dataSource}
       split={false}
       renderItem={item => (
-        <List.Item className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}>
+        <DeprecatedList.Item
+          className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}>
           <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
             <span className={styles.title}>{item.name || t('title.untitled')}</span>
             <span className={styles.desc}>{item.relativeTime}</span>
           </Button>
-        </List.Item>
+        </DeprecatedList.Item>
       )}
     />
   )

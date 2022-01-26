@@ -13,7 +13,7 @@
 }
 
 .item {
-  &:global(.brk-list-item) {
+  &:global(.brd-list-item) {
     position: relative;
     display: flex;
     flex-direction: row;

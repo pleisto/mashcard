@@ -10,9 +10,9 @@ import {
   useBlockHardDeleteMutation,
   useBlockRestoreMutation
 } from '@/BrickdocGraphQL'
-import { Avatar, Button, Modal } from '@brickdoc/design-system'
+import { Avatar, Button, DeprecatedModal } from '@brickdoc/design-system'
 import React, { useState } from 'react'
-import { FilePages, Delete, Undo } from '@brickdoc/design-system/components/icon'
+import { FilePages, Delete, Undo } from '@brickdoc/design-icons'
 import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
@@ -99,12 +99,11 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
           className={styles.button}
           onClick={() => {
             setHardDeleteModalVisible(true)
-          }}
-        >
+          }}>
           <Delete />
         </Button>
       </div>
-      <Modal
+      <DeprecatedModal
         zIndex={1070}
         title={null}
         okText={t('trash.delete_confirmation_ok')}
@@ -114,10 +113,9 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
         confirmLoading={hardDeleteConfirmLoading}
         onCancel={onCancelDelete}
         onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}
-      >
+        visible={hardDeleteModalVisible}>
         {t('trash.delete_confirmation_body')}
-      </Modal>
+      </DeprecatedModal>
     </div>
   )
 }

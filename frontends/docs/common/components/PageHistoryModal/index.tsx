@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal } from '@brickdoc/design-system'
+import { DeprecatedModal } from '@brickdoc/design-system'
 import { SnapshotList } from '../SnapshotList'
 import styles from './index.module.css'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
@@ -21,7 +21,7 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ docMeta, vis
   }
 
   return (
-    <Modal
+    <DeprecatedModal
       width={1100}
       title={null}
       footer={null}
@@ -40,6 +40,6 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ docMeta, vis
         onCleanup={onCleanup}
         setConfirmLoading={setConfirmLoading}
       />
-    </Modal>
+    </DeprecatedModal>
   )
 }

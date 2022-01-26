@@ -1,5 +1,5 @@
 import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/BrickdocGraphQL'
-import { ImageIcon } from '@brickdoc/design-system/components/icon'
+import { ImageIcon } from '@brickdoc/design-icons'
 import Email from '../assets/email-auth-icon.svg'
 import { sortBy } from 'lodash-es'
 import { BrickdocContext } from '@/common/brickdocContext'

@@ -4,7 +4,7 @@ import { useBoolean } from 'ahooks'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from './hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Skeleton, Button } from '@brickdoc/design-system'
+import { DeprecatedSkeleton, Button } from '@brickdoc/design-system'
 import { MoreAuthMethods } from './components/MoreAuthMethods'
 import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
 
@@ -19,7 +19,7 @@ export const SignInPage: React.FC = () => {
   })
 
   if (loading) {
-    return <Skeleton active />
+    return <DeprecatedSkeleton active />
   }
 
   const otherAuthMethods = renderEmailPasswordForm
@@ -46,8 +46,7 @@ export const SignInPage: React.FC = () => {
               id={`auth-btn-${preferredAuthMethod.name}`}
               style={{ marginTop: '2rem' }}
               onClick={preferredAuthMethod.action}
-              block
-            >
+              block>
               {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod.name}`) })}
             </Button>
           )

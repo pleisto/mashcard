@@ -1,0 +1,12 @@
+@import (reference) '../../style/themes/index';
+
+@form-prefix-cls: ~'@{brd-prefix}-form';
+@form-item-prefix-cls: ~'@{form-prefix-cls}-item';
+.@{form-prefix-cls}-horizontal {
+  .@{form-item-prefix-cls}-label {
+    flex-grow: 0;
+  }
+  .@{form-item-prefix-cls}-control {
+    flex: 1 1 0;
+  }
+}
