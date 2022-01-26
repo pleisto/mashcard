@@ -60,7 +60,7 @@ export const useSpreadsheet = (options: {
     })
   }, [updateAttributeData, data])
 
-  const loaded = React.useRef(false)
+  const loaded = React.useRef(columns.length === 0 && data.rowsCount === 0)
 
   const getRowBlock = React.useCallback(
     (index: number) => {
@@ -260,16 +260,16 @@ export const useSpreadsheet = (options: {
   React.useEffect(() => {
     if (loaded.current) {
       if (latestColumns.current.length === 0 && latestRowsCount.current === 0) {
-        addColumn()
-        addColumn()
-        // addRow()
-        // addRow()
-        // addRow()
+        latestColumns.current = [
+          { uuid: uuid(), sort: 0 },
+          { uuid: uuid(), sort: 1 }
+        ]
+        saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)])
       }
     } else {
       BrickdocEventBus.dispatch(loadSpreadsheetBlocks(parentId))
     }
-  }, [parentId, latestColumns, latestRowsCount, addColumn, addRow])
+  }, [parentId, latestColumns, latestRowsCount, addColumn, saveRowBlocks, getRowBlock])
 
   return {
     columns: latestColumns.current,

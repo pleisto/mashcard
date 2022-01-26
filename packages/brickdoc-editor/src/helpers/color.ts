@@ -1,3 +1,5 @@
+import { FormulaColorType } from '@brickdoc/formula'
+
 export interface ColorMeta {
   color: string
   rgb: [number, number, number]
@@ -56,3 +58,100 @@ export const COLOR: ColorMeta[] = [
     label: 'Purplish Red'
   }
 ]
+
+const defaultColorMeta: ColorMeta = COLOR[0]
+
+const blockColorMeta: ColorMeta = {
+  color: '#356CF9',
+  rgb: [53, 108, 249],
+  label: 'palette/hue/blue/6'
+}
+
+export const FORMULA_COLORS: Record<FormulaColorType, ColorMeta> = {
+  null: {
+    color: '#6D47B9',
+    rgb: [109, 71, 185],
+    label: 'palette/hue/purple/5'
+  },
+  number: {
+    color: '#39B3E8',
+    rgb: [57, 179, 232],
+    label: 'palette/hue/cyan/6'
+  },
+  string: {
+    color: '#D81B60',
+    rgb: [216, 27, 96],
+    label: 'palette/hue/pink/6'
+  },
+  Record: blockColorMeta,
+  Array: blockColorMeta,
+  Date: {
+    color: '#39B3E8',
+    rgb: [57, 179, 232],
+    label: 'palette/hue/cyan/6'
+  },
+  Error: {
+    color: '#CF1F28',
+    rgb: [207, 31, 40],
+    label: 'palette/hue/red/7'
+  },
+  Column: {
+    color: '#218470',
+    rgb: [33, 132, 112],
+    label: 'palette/hue/green/8'
+  },
+  Block: blockColorMeta,
+  Spreadsheet: blockColorMeta,
+  Function: {
+    color: '#C84116',
+    rgb: [200, 65, 22],
+    label: 'palette/hue/orange/8'
+  },
+  Blank: {
+    color: '#218470',
+    rgb: [33, 132, 112],
+    label: 'palette/hue/green/8'
+  },
+  Predicate: {
+    color: '#39B3E8',
+    rgb: [57, 179, 232],
+    label: 'palette/hue/cyan/6'
+  },
+  Button: {
+    color: '#356CF9',
+    rgb: [53, 108, 249],
+    label: 'palette/hue/blue/6'
+  },
+
+  // Unknown
+  Switch: defaultColorMeta,
+  Select: defaultColorMeta,
+  Slider: defaultColorMeta,
+  Input: defaultColorMeta,
+  Radio: defaultColorMeta,
+  Rate: defaultColorMeta,
+  void: defaultColorMeta,
+  Cst: defaultColorMeta,
+  Reference: {
+    color: '#D81B60',
+    rgb: [216, 27, 96],
+    label: 'palette/hue/pink/6'
+  },
+  any: defaultColorMeta,
+  // Other
+  TRUE: {
+    color: '#218470',
+    rgb: [33, 132, 112],
+    label: 'palette/hue/green/8'
+  },
+  FALSE: {
+    color: '#CF1F28',
+    rgb: [207, 31, 40],
+    label: 'palette/hue/red/7'
+  },
+  Variable: {
+    color: '#D81B60',
+    rgb: [216, 27, 96],
+    label: 'palette/hue/pink/6'
+  }
+}

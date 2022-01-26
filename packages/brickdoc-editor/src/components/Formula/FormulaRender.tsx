@@ -10,48 +10,20 @@ import {
   SpreadsheetCellContainer,
   useSpreadsheetContext
 } from '..'
-import { COLOR } from '../../helpers/color'
 import {
   displayValue,
-  FormulaType,
   ButtonResult,
   InputResult,
   SpreadsheetResult,
   StringResult,
   AnyTypeResult,
   FormulaSourceType,
-  VariableResult
+  VariableResult,
+  resultToColorType
 } from '@brickdoc/formula'
+import { FORMULA_COLORS } from '../../helpers/color'
 
-const COLOR_ARRAY: { [key in FormulaType]: number } = {
-  Date: 6,
-  Error: 3,
-  Column: 6,
-  Block: 6,
-  void: 3,
-  Spreadsheet: 6,
-  Button: 1,
-  Switch: 1,
-  Select: 1,
-  Slider: 1,
-  Input: 1,
-  Radio: 1,
-  Rate: 1,
-  number: 0,
-  null: 0,
-  Predicate: 1,
-  Cst: 0,
-  Function: 3,
-  Reference: 0,
-  Blank: 0,
-  string: 4,
-  boolean: 4,
-  any: 6,
-  Record: 6,
-  Array: 6
-}
-
-const renderTable = (result: SpreadsheetResult): React.ReactElement => {
+const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType): React.ReactElement => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const spreadsheetContext = useSpreadsheetContext()
   const columns = result.result.listColumns()
@@ -93,25 +65,7 @@ const renderTable = (result: SpreadsheetResult): React.ReactElement => {
   )
 }
 
-const renderOther = (result: AnyTypeResult, type: FormulaSourceType): React.ReactElement => {
-  const activeColorIndex = COLOR_ARRAY[result.type] || 0
-  const activeColor = COLOR[activeColorIndex]
-
-  return (
-    <span
-      className="brickdoc-formula"
-      style={{
-        color: activeColor.color,
-        borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`,
-        background: activeColor.label === 'Default' ? 'unset' : `rgb(${activeColor.rgb.join(',')}, 0.1)`
-      }}
-    >
-      {displayValue(result)}
-    </span>
-  )
-}
-
-const renderButton = (result: ButtonResult): React.ReactElement => {
+const renderButton = (result: ButtonResult, formulaType: FormulaSourceType): React.ReactElement => {
   return (
     <Button disabled={result.result.disabled} onClick={result.result.onClick}>
       {result.result.name}
@@ -119,7 +73,7 @@ const renderButton = (result: ButtonResult): React.ReactElement => {
   )
 }
 
-const renderInput = (result: InputResult): React.ReactElement => {
+const renderInput = (result: InputResult, formulaType: FormulaSourceType): React.ReactElement => {
   return (
     <Input
       disabled={result.result.disabled}
@@ -129,24 +83,39 @@ const renderInput = (result: InputResult): React.ReactElement => {
   )
 }
 
-const renderQrcode = (result: StringResult): React.ReactElement => {
+const renderQrcode = (result: StringResult, formulaType: FormulaSourceType): React.ReactElement => {
   return <span>[QRCODE] {result.result}</span>
 }
 
-const renderLiteral = (result: AnyTypeResult): React.ReactElement => {
+const renderLiteral = (result: AnyTypeResult, formulaType: FormulaSourceType): React.ReactElement => {
   return <span>{result.result}</span>
 }
 
+const renderOther = (result: AnyTypeResult, type: FormulaSourceType): React.ReactElement => {
+  const activeColor = FORMULA_COLORS[resultToColorType(result)]
+  const className = type === 'normal' ? 'brickdoc-formula' : 'brickdoc-formula-other'
+  const style = {
+    color: activeColor.color,
+    fontFamily: 'Fira Code',
+    borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`
+  }
+
+  return (
+    <span className={className} style={style}>
+      {displayValue(result)}
+    </span>
+  )
+}
 export interface FormulaRenderProps {
   t?: VariableResult
   formulaType: FormulaSourceType
 }
 
-export const FormulaRender: React.FC<FormulaRenderProps> = ({ t, formulaType }) => {
+export const FormulaRender: React.FC<FormulaRenderProps> = ({ t, formulaType, ...props }) => {
   if (!t) {
     if (formulaType === 'normal') {
       return (
-        <span className="brickdoc-formula-placeholder">
+        <span {...props} className="brickdoc-formula-placeholder">
           <Icon.Formula className="brickdoc-formula-placeholder-icon" />
         </span>
       )
@@ -160,20 +129,28 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({ t, formulaType }) 
     type
   } = t
 
+  let data: React.ReactElement | null = null
   if (kind === 'literal') {
-    return renderLiteral(result)
+    data = renderLiteral(result, type)
+  } else {
+    switch (result.view?.type ?? result.type) {
+      case 'Button':
+        data = renderButton(result as ButtonResult, type)
+        break
+      case 'Input':
+        data = renderInput(result as InputResult, type)
+        break
+      case 'Spreadsheet':
+        data = renderTable(result as SpreadsheetResult, type)
+        break
+      case 'Qrcode':
+        data = renderQrcode(result as StringResult, type)
+        break
+      default:
+        data = renderOther(result, type)
+        break
+    }
   }
 
-  switch (result.view?.type ?? result.type) {
-    case 'Button':
-      return renderButton(result as ButtonResult)
-    case 'Input':
-      return renderInput(result as InputResult)
-    case 'Spreadsheet':
-      return renderTable(result as SpreadsheetResult)
-    case 'Qrcode':
-      return renderQrcode(result as StringResult)
-    default:
-      return renderOther(result, type)
-  }
+  return <div {...props}>{data}</div>
 }

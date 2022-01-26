@@ -1,4 +1,6 @@
+import { attrsToColorType, FormulaCodeFragmentAttrs } from '@brickdoc/formula'
 import { JSONContent, Mark, mergeAttributes } from '@tiptap/core'
+import { FORMULA_COLORS } from '../../../../../helpers/color'
 import { SetDocAttrStep } from '../../../../sync/SetDocAttrStep'
 
 export interface FormulaTypeOptions {
@@ -13,19 +15,6 @@ declare module '@tiptap/core' {
       replaceRoot: (content: JSONContent) => ReturnType
     }
   }
-}
-
-// TODO refactor this
-const CODE_STYLES: Record<string, string> = {
-  NullLiteral: '#5E35B1',
-  BooleanLiteral: '#2CAD94',
-  NumberLiteral: '#39b3e8',
-  StringLiteral: '#AD1457',
-  Column: '#2C5BFF',
-  Spreadsheet: '#2C5BFF',
-  Function: '#FB8C00',
-  Variable: '#AD1457',
-  Block: '#2C5BFF'
 }
 
 export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
@@ -48,17 +37,18 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
             return {}
           }
 
-          const color = CODE_STYLES[attributes.code]
+          const colorMeta = FORMULA_COLORS[attrsToColorType(attributes as FormulaCodeFragmentAttrs)]
 
-          if (!color) {
+          if (!colorMeta) {
             return {
-              'data-code': attributes.code
+              'data-code': attributes.code,
+              style: 'font-family: Fira Code'
             }
           }
 
           return {
             'data-code': attributes.code,
-            style: `color: ${color}`
+            style: `color: ${colorMeta.color}; font-family: Fira Code;`
           }
         }
       },

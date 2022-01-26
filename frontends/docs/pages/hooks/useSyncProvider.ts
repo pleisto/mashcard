@@ -93,6 +93,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
           delete block.__typename
           return block
         })
+
       const deletedIds = [...dirtyToDeleteIds.current]
 
       if (blocks.length > 0 || deletedIds.length > 0) {
@@ -126,10 +127,11 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     } finally {
       committing.current = false
     }
-    if (!dirtyBlocksMap.current.size && !dirtyToDeleteIds.current.size) {
+    if (dirtyBlocksMap.current.size === 0 && dirtyToDeleteIds.current.size === 0) {
       isSavingVar(false)
-    } else {
-      await commitDirty()
+      // TODO: will not commit repeatedly immediately
+      // } else {
+      //   await commitDirty()
     }
   }
 

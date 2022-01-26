@@ -4,6 +4,9 @@ import { VariableData } from '@brickdoc/formula'
 import { useEditorI18n } from '../../hooks'
 import './FormulaMenu.less'
 import { EditorContentType, FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
+import { FormulaResult } from './FormulaResult'
+import { AutocompleteList } from './AutocompleteList/AutocompleteList'
+import { CompletionType } from './useFormula'
 
 export interface FormulaMenuProps {
   formulaId: string
@@ -18,7 +21,9 @@ export interface FormulaMenuProps {
   editorContent: EditorContentType
   isDisableSave: () => boolean
   doHandleSave: () => Promise<void>
-  formulaResult: React.ReactNode
+  handleSelectActiveCompletion: () => void
+  completion: CompletionType
+  setCompletion: React.Dispatch<React.SetStateAction<CompletionType>>
 }
 
 const i18nKey = 'formula.menu'
@@ -37,7 +42,9 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   variableT,
   defaultName,
   name,
-  formulaResult
+  handleSelectActiveCompletion,
+  completion,
+  setCompletion
 }) => {
   const { t } = useEditorI18n()
   const [visible, setVisible] = React.useState(defaultVisible)
@@ -48,12 +55,11 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   }
 
   const onPopoverVisibleChange = (visible: boolean): void => {
-    onVisibleChange?.(visible)
-
     if (!visible) {
       close()
       return
     }
+    onVisibleChange?.(visible)
     setVisible(visible)
   }
 
@@ -90,7 +96,13 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         </div>
       </div>
       <div className="formula-menu-divider" />
-      {formulaResult}
+      <FormulaResult variableT={variableT} />
+      <AutocompleteList
+        blockId={rootId}
+        completion={completion}
+        handleSelectActiveCompletion={handleSelectActiveCompletion}
+        setCompletion={setCompletion}
+      />
       <div className="formula-menu-footer">
         <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
           {t(`${i18nKey}.cancel`)}

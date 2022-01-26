@@ -1,4 +1,13 @@
-import { AnyTypeResult, ErrorMessage, ErrorResult, ExpressionType, FormulaType, FunctionContext } from '../types'
+import {
+  AnyTypeResult,
+  ErrorMessage,
+  ErrorResult,
+  ExpressionType,
+  FormulaCodeFragmentAttrs,
+  FormulaColorType,
+  FormulaType,
+  FunctionContext
+} from '../types'
 
 export const extractSubType = (array: AnyTypeResult[]): FormulaType => {
   const types = array.map(a => a.type)
@@ -82,4 +91,29 @@ export const runtimeCheckType = (
   }
 
   return undefined
+}
+
+export const resultToColorType = ({ type, result }: AnyTypeResult): FormulaColorType => {
+  if (type === 'boolean') {
+    return result ? 'TRUE' : 'FALSE'
+  }
+  return type
+}
+
+export const attrsToColorType = ({ code, value }: FormulaCodeFragmentAttrs): FormulaColorType => {
+  switch (code) {
+    case 'NullLiteral':
+      return 'null'
+    case 'NumberLiteral':
+      return 'number'
+    case 'StringLiteral':
+      return 'string'
+    case 'BooleanLiteral':
+      return value === 'true' ? 'TRUE' : 'FALSE'
+    case 'Function':
+    case 'Variable':
+      return code
+    default:
+      return code as FormulaColorType
+  }
 }
