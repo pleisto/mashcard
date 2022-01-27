@@ -110,22 +110,25 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     }
   }, [dragging, moveRow, moveColumn, spreadsheetContext])
 
-  const actionOptions: BlockContainerProps['actionOptions'] = documentEditable
-    ? [
-        'delete',
-        {
-          type: 'item',
-          name: 'addRow',
-          label: t('spreadsheet.row.add_below'),
-          icon: (
-            <EditorIcon.IconBackground>
-              <Icon.ArrowDown />
-            </EditorIcon.IconBackground>
-          ),
-          onAction: () => addRow(0)
-        }
-      ]
-    : []
+  const actionOptions: BlockContainerProps['actionOptions'] = {
+    options: documentEditable
+      ? [
+          'delete',
+          {
+            type: 'item',
+            name: 'addRow',
+            label: t('spreadsheet.row.add_below'),
+            icon: (
+              <EditorIcon.IconBackground>
+                <Icon.ArrowDown />
+              </EditorIcon.IconBackground>
+            ),
+            onAction: () => addRow(0)
+          }
+        ]
+      : [],
+    buttonClassName: ''
+  }
 
   return (
     <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions}>

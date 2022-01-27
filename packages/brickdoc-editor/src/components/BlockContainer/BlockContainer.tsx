@@ -14,7 +14,7 @@ export interface BlockContainerProps {
   className?: string
   style?: React.CSSProperties
   as?: NodeViewWrapperProps['as']
-  actionOptions?: BlockActionsProps['options']
+  actionOptions?: BlockActionsProps['options'] | BlockActionsProps
   contentForCopy?: string
   ref?: any
 }

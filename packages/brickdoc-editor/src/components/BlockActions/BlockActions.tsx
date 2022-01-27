@@ -29,9 +29,10 @@ export type ActionOptionGroup = ToolbarOptionGroup
 export type BlockActionOptions = Array<ToolbarGroupOption | ToolbarItemOption | BasicActionOptionType>
 
 export interface BlockActionsProps {
+  buttonClassName?: string
   baseId?: MenuProps['baseId']
   options: BlockActionOptions
-  atListStart: boolean
+  atListStart?: boolean
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {
@@ -62,7 +63,13 @@ const BlockActionsContainer = styled('div', {
   }
 })
 
-export const BlockActions: React.FC<BlockActionsProps> = ({ options, baseId, children, atListStart }) => {
+export const BlockActions: React.FC<BlockActionsProps> = ({
+  options,
+  buttonClassName,
+  baseId,
+  children,
+  atListStart
+}) => {
   const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
     () => options.filter(option => typeof option === 'string') as BasicActionOptionType[],
     [options]
@@ -78,6 +85,7 @@ export const BlockActions: React.FC<BlockActionsProps> = ({ options, baseId, chi
       {children}
       <BlockActionButtonContainer
         atListStart={atListStart}
+        className={buttonClassName}
         baseId={baseId}
         extraOptions={extraOptions}
         basicOptions={basicOptions}

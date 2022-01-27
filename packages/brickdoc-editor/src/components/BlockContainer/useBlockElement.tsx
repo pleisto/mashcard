@@ -1,5 +1,5 @@
 import { styled } from '@brickdoc/design-system'
-import { BlockActions } from '../BlockActions'
+import { BlockActions, BlockActionsProps } from '../BlockActions'
 import { BlockContainerProps } from './BlockContainer'
 
 const Pseudo = styled('span', {
@@ -26,9 +26,13 @@ export function useBlockElement(
     )
   }
 
-  if ((actionOptions?.length ?? 0) > 0) {
+  const blockActionProps: BlockActionsProps | undefined = Array.isArray(actionOptions)
+    ? { options: actionOptions }
+    : actionOptions
+
+  if ((blockActionProps?.options?.length ?? 0) > 0) {
     blockElement = (
-      <BlockActions atListStart={atListStart} options={actionOptions!}>
+      <BlockActions {...blockActionProps!} atListStart={atListStart}>
         {blockElement}
       </BlockActions>
     )
