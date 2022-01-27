@@ -6,6 +6,7 @@ export interface BlockContextData {
   moveBlock: () => void
   copyContent: () => void
   getPosition: () => number | undefined
+  insideList: boolean
 }
 
 export const BlockContext = React.createContext<BlockContextData>({
@@ -15,5 +16,6 @@ export const BlockContext = React.createContext<BlockContextData>({
   copyContent() {},
   getPosition() {
     return undefined
-  }
+  },
+  insideList: false
 })

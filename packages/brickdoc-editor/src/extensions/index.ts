@@ -1,5 +1,4 @@
 export * from './basicRichtext'
-export * from './blockCommands'
 export * from './brickList'
 export * from './embed'
 export * from './eventHandler'

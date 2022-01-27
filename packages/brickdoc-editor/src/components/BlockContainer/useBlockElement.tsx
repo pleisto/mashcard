@@ -1,3 +1,4 @@
+import React from 'react'
 import { styled } from '@brickdoc/design-system'
 import { BlockActions, BlockActionsProps } from '../BlockActions'
 import { BlockContainerProps } from './BlockContainer'
@@ -11,7 +12,7 @@ export function useBlockElement(
   originElement: React.ReactNode,
   actionOptions: BlockContainerProps['actionOptions'],
   inline: boolean,
-  atListStart: boolean
+  disableActionOptions: boolean
 ): [React.ReactNode] {
   let blockElement = originElement
   if (inline) {
@@ -26,16 +27,14 @@ export function useBlockElement(
     )
   }
 
-  const blockActionProps: BlockActionsProps | undefined = Array.isArray(actionOptions)
-    ? { options: actionOptions }
-    : actionOptions
+  const blockActionProps = React.useMemo<BlockActionsProps | undefined>(() => {
+    if (disableActionOptions) return undefined
+    if (Array.isArray(actionOptions)) return { options: actionOptions }
+    return actionOptions
+  }, [actionOptions, disableActionOptions])
 
   if ((blockActionProps?.options?.length ?? 0) > 0) {
-    blockElement = (
-      <BlockActions {...blockActionProps!} atListStart={atListStart}>
-        {blockElement}
-      </BlockActions>
-    )
+    blockElement = <BlockActions {...blockActionProps!}>{blockElement}</BlockActions>
   }
 
   return [blockElement]

@@ -28,7 +28,7 @@ import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { EmbedBlockExtension, EmbedBlockOptions } from '../embed'
 import { SpreadsheetBlockExtension, SpreadsheetBlockOptions } from '../spreadsheet'
 import { FormulaExtension, FormulaOptions } from '../formula'
-import { CodeBlock, DividerBlock, HeadingBlock, ParagraphBlock } from '../../components'
+import { CodeBlock, DividerBlock, HeadingBlock, ListBlock, ParagraphBlock } from '../../components'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
@@ -72,7 +72,14 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.anchor !== false) extensions.push(AnchorExtensioin.configure(this.options?.anchor))
     if (this.options.blockquote !== false) extensions.push(Blockquote.configure(this.options?.blockquote))
     if (this.options.bold !== false) extensions.push(Bold.configure(this.options?.bold))
-    if (this.options.bulletList !== false) extensions.push(BulletList.configure(this.options?.bulletList))
+    if (this.options.bulletList !== false)
+      extensions.push(
+        BulletList.extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(ListBlock)
+          }
+        }).configure(this.options?.bulletList)
+      )
     if (this.options.code !== false) extensions.push(Code.configure(this.options?.code))
     if (this.options.codeBlock !== false)
       extensions.push(
@@ -107,7 +114,14 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
       )
     if (this.options.italic !== false) extensions.push(Italic.configure(this.options?.italic))
     if (this.options.listItem !== false) extensions.push(ListItem.configure(this.options?.listItem))
-    if (this.options.orderedList !== false) extensions.push(OrderedList.configure(this.options?.orderedList))
+    if (this.options.orderedList !== false)
+      extensions.push(
+        OrderedList.extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(ListBlock)
+          }
+        }).configure(this.options?.orderedList)
+      )
     if (this.options.paragraph !== false)
       extensions.push(
         Paragraph.extend({

@@ -8,12 +8,14 @@ export interface UseBlockContextDataProviderProps {
   deleteNode?: BlockContainerProps['deleteNode']
   getPos: BlockContainerProps['getPos']
   contentForCopy?: BlockContainerProps['contentForCopy']
+  insideList: boolean
 }
 
 export function useBlockContextDataProvider({
   deleteNode,
   getPos,
-  contentForCopy
+  contentForCopy,
+  insideList
 }: UseBlockContextDataProviderProps): [BlockContextData] {
   const { t } = React.useContext(EditorContext)
   const data = React.useMemo<BlockContextData>(
@@ -25,9 +27,10 @@ export function useBlockContextDataProvider({
       copyContent: async () => {
         await navigator.clipboard.writeText(contentForCopy ?? '')
         void toast.success(t('copy_hint'))
-      }
+      },
+      insideList
     }),
-    [contentForCopy, deleteNode, getPos, t]
+    [contentForCopy, deleteNode, getPos, insideList, t]
   )
 
   return [data]

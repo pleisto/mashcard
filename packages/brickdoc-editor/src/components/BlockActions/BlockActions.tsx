@@ -32,7 +32,6 @@ export interface BlockActionsProps {
   buttonClassName?: string
   baseId?: MenuProps['baseId']
   options: BlockActionOptions
-  atListStart?: boolean
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {
@@ -41,17 +40,7 @@ const BlockActionButtonContainer = styled(BlockActionButton, {
   position: 'absolute',
   transform: 'translateX(calc(-100% - 0.6875rem))',
   transition: 'opacity 200ms ease-in-out',
-  top: 0,
-  variants: {
-    atListStart: {
-      true: {
-        left: '-20px'
-      },
-      false: {
-        left: 0
-      }
-    }
-  }
+  top: 0
 })
 
 const BlockActionsContainer = styled('div', {
@@ -63,13 +52,7 @@ const BlockActionsContainer = styled('div', {
   }
 })
 
-export const BlockActions: React.FC<BlockActionsProps> = ({
-  options,
-  buttonClassName,
-  baseId,
-  children,
-  atListStart
-}) => {
+export const BlockActions: React.FC<BlockActionsProps> = ({ options, buttonClassName, baseId, children }) => {
   const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
     () => options.filter(option => typeof option === 'string') as BasicActionOptionType[],
     [options]
@@ -84,7 +67,6 @@ export const BlockActions: React.FC<BlockActionsProps> = ({
     <BlockActionsContainer>
       {children}
       <BlockActionButtonContainer
-        atListStart={atListStart}
         className={buttonClassName}
         baseId={baseId}
         extraOptions={extraOptions}
