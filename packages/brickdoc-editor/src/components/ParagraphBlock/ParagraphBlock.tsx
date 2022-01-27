@@ -45,7 +45,8 @@ export const ParagraphBlock: React.FC<ParagraphBlockProps> = ({ node, getPos, de
       deleteNode={deleteNode}
       contentForCopy={node.textContent}
       style={{ position: 'relative' }}
-      actionOptions={['copy', 'delete']}>
+      actionOptions={['copy', 'delete', 'transform']}
+    >
       <NodeViewContent data-placeholder={placeholder} as="p" className={placeholderClassName} />
     </BlockContainer>
   )
