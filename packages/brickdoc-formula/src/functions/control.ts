@@ -22,7 +22,8 @@ import {
   InputClass,
   SpreadsheetInitializer,
   SpreadsheetClass,
-  ColumnInitializer
+  ColumnInitializer,
+  Cell
 } from '../controls'
 import { FORMULA_FEATURE_CONTROL } from '../context'
 import { v4 as uuid } from 'uuid'
@@ -54,34 +55,39 @@ export const Spreadsheet = (
   const defaultName = 'Dynamic Spreadsheet'
   const columns: ColumnInitializer[] = []
   const rows: Row[] = []
+  const cells: Cell[] = []
 
   if (recordData.length) {
     const data = recordData.map(e => e.result)
     const keys = Object.keys(data[0])
     const keyWithIds = keys.map(key => ({ key, uuid: uuid() }))
 
-    columns.push(
-      ...keys.map((key, index) => ({
+    keys.forEach((key, index) => {
+      const column: ColumnInitializer = {
         namespaceId: blockId,
         columnId: keyWithIds.find(k => k.key === key)!.uuid,
         name: key,
-        index,
-        type: 'text',
-        rows: data.map(e => String(e[key].result ?? ''))
-      }))
-    )
+        index
+      }
 
-    rows.push(
-      ...data.map(source => {
-        const row: Row = { id: uuid() }
+      columns.push(column)
+    })
 
-        keyWithIds.forEach(({ key, uuid }) => {
-          row[uuid] = String(source[key].result ?? '')
-        })
+    data.forEach(row => {
+      const rowId = uuid()
+      rows.push({ rowId })
 
-        return row
+      columns.forEach(({ name, columnId }) => {
+        const cell: Cell = {
+          columnId,
+          rowId,
+          cellId: uuid(),
+          value: String(row[name]?.result ?? ''),
+          data: {}
+        }
+        cells.push(cell)
       })
-    )
+    })
   }
 
   // console.log({ recordData, rows, columns })
@@ -92,7 +98,17 @@ export const Spreadsheet = (
     dynamic: true,
     name: defaultName,
     listColumns: () => columns,
-    listRows: () => rows
+    listRows: () => rows,
+    listCells: ({ rowId, columnId }) => {
+      let finalCells = cells
+      if (rowId) {
+        finalCells = finalCells.filter(cell => cell.rowId === rowId)
+      }
+      if (columnId) {
+        finalCells = finalCells.filter(cell => cell.columnId === columnId)
+      }
+      return finalCells
+    }
   }
 
   const spreadsheet = new SpreadsheetClass(spreadsheetDefinition)

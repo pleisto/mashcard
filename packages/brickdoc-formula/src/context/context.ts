@@ -216,7 +216,7 @@ export class FormulaContext implements ContextInterface {
       })
 
     const columns: ColumnCompletion[] = Object.entries(this.spreadsheets).flatMap(([key, spreadsheet]) => {
-      return spreadsheet.listColumns().map(column => column2completion({ ...column, spreadsheet }))
+      return spreadsheet.listColumns().map(column => column2completion(new ColumnClass(spreadsheet, column)))
     })
 
     const dynamicColumns: ColumnCompletion[] = completionVariables
@@ -227,7 +227,7 @@ export class FormulaContext implements ContextInterface {
         const result = v.t.variableValue.result as SpreadsheetResult
         return result.result
           .listColumns()
-          .map((column: ColumnInitializer) => column2completion({ ...column, spreadsheet: result.result }))
+          .map((column: ColumnInitializer) => column2completion(new ColumnClass(result.result, column)))
       })
     return [...functions, ...variables, ...blocks, ...spreadsheets, ...columns, ...dynamicColumns].sort(
       (a, b) => b.weight - a.weight
@@ -276,6 +276,8 @@ export class FormulaContext implements ContextInterface {
     //   })
     this.blocks[spreadsheet.blockId] = 'Spreadsheet'
     this.spreadsheets[spreadsheet.blockId] = spreadsheet
+
+    BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: spreadsheet.blockId }))
   }
 
   public removeSpreadsheet(namespaceId: NamespaceId): void {

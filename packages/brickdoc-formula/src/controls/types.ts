@@ -42,17 +42,23 @@ export interface ColumnInitializer {
   namespaceId: NamespaceId
   name: ColumnName
   index: number
-  type: string
-  rows: string[]
 }
 
 export interface ColumnType extends ColumnInitializer {
   spreadsheet: SpreadsheetType
+  cells: () => Cell[]
 }
 
 export interface Row {
-  id: string
-  [key: string]: string
+  rowId: uuid
+}
+
+export interface Cell {
+  cellId: uuid
+  columnId: ColumnId
+  rowId: uuid
+  value: string
+  data: object
 }
 
 export interface SpreadsheetInitializer {
@@ -62,6 +68,7 @@ export interface SpreadsheetInitializer {
   name: string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
+  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
 }
 
 export interface SpreadsheetPersistence {
@@ -69,6 +76,7 @@ export interface SpreadsheetPersistence {
   spreadsheetName: string
   columns: ColumnInitializer[]
   rows: Row[]
+  cells: Cell[]
 }
 
 export interface SpreadsheetType {
@@ -80,6 +88,8 @@ export interface SpreadsheetType {
   name: () => string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
+  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
+  findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined
   getRow: (rowId: uuid) => Row | undefined
   getColumn: (columnId: ColumnId) => ColumnInitializer | undefined
   toArray: () => string[][]

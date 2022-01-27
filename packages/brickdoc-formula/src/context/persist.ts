@@ -33,7 +33,7 @@ export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyType
 
   if (cacheValue.type === 'Spreadsheet' && !(cacheValue.result instanceof SpreadsheetClass)) {
     if (cacheValue.result.dynamic) {
-      const { blockId, spreadsheetName, columns, rows }: SpreadsheetPersistence = cacheValue.result.persistence!
+      const { blockId, spreadsheetName, columns, rows, cells }: SpreadsheetPersistence = cacheValue.result.persistence!
       return {
         type: 'Spreadsheet',
         result: new SpreadsheetClass({
@@ -42,7 +42,17 @@ export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyType
           dynamic: true,
           name: spreadsheetName,
           listColumns: () => columns,
-          listRows: () => rows
+          listRows: () => rows,
+          listCells: ({ rowId, columnId }) => {
+            let finalCells = cells
+            if (rowId) {
+              finalCells = finalCells.filter(cell => cell.rowId === rowId)
+            }
+            if (columnId) {
+              finalCells = finalCells.filter(cell => cell.columnId === columnId)
+            }
+            return finalCells
+          }
         })
       }
     } else {

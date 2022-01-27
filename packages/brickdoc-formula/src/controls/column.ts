@@ -1,4 +1,4 @@
-import { ColumnType, ColumnInitializer, SpreadsheetType } from './types'
+import { ColumnType, ColumnInitializer, SpreadsheetType, Cell } from './types'
 import { ColumnId, ColumnName, NamespaceId } from '../types'
 
 export class ColumnClass implements ColumnType {
@@ -6,18 +6,18 @@ export class ColumnClass implements ColumnType {
   name: ColumnName
   namespaceId: NamespaceId
   index: number
-  type: string
-  rows: string[]
   spreadsheet: SpreadsheetType
 
-  constructor(spreadsheet: SpreadsheetType, { columnId, namespaceId, name, index, type, rows }: ColumnInitializer) {
+  constructor(spreadsheet: SpreadsheetType, { columnId, namespaceId, name, index }: ColumnInitializer) {
     this.columnId = columnId
     this.namespaceId = namespaceId
     this.name = name
     this.index = index
-    this.type = type
-    this.rows = rows
     this.spreadsheet = spreadsheet
+  }
+
+  cells(): Cell[] {
+    return this.spreadsheet.listCells({ columnId: this.columnId })
   }
 
   persistence(): ColumnInitializer {
@@ -25,9 +25,7 @@ export class ColumnClass implements ColumnType {
       columnId: this.columnId,
       namespaceId: this.namespaceId,
       name: this.name,
-      index: this.index,
-      type: this.type,
-      rows: this.rows
+      index: this.index
     }
   }
 }

@@ -26,12 +26,13 @@ import { FORMULA_COLORS } from '../../helpers/color'
 const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType): React.ReactElement => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const spreadsheetContext = useSpreadsheetContext()
-  const columns = result.result.listColumns()
-  const rows = result.result.listRows()
+  const spreadsheet = result.result
+  const columns = spreadsheet.listColumns()
+  const rows = spreadsheet.listRows()
   return (
     <span className="brickdoc-formula-spreadsheet">
       <SpreadsheetContainer>
-        <div className="spreadsheet-title">{result.result.name()}</div>
+        <div className="spreadsheet-title">{spreadsheet.name()}</div>
         <SpreadsheetView>
           <SpreadsheetHeader context={spreadsheetContext}>
             <SpreadsheetHeaderColumn className="row-action-panel" context={spreadsheetContext} columnId="" />
@@ -42,16 +43,16 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
             ))}
           </SpreadsheetHeader>
           <SpreadsheetBody>
-            {rows.map((row, rowIdx) => {
+            {rows.map(({ rowId }, rowIdx) => {
               const rowNumber = String((rowIdx as number) + 1)
               return (
-                <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowNumber} rowNumber={rowNumber}>
+                <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowId} rowNumber={rowNumber}>
                   {columns.map(c => (
                     <SpreadsheetCellContainer
                       key={c.columnId}
                       context={spreadsheetContext}
-                      cellId={{ rowId: rowNumber, columnId: c.columnId }}>
-                      <div className="column">{row[c.columnId]}</div>
+                      cellId={{ rowId, columnId: c.columnId }}>
+                      <div className="column">{spreadsheet.findCellValue({ columnId: c.columnId, rowId })}</div>
                     </SpreadsheetCellContainer>
                   ))}
                 </SpreadsheetRow>

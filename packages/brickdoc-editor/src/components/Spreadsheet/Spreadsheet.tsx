@@ -23,6 +23,7 @@ import { useSpreadsheetContext } from './SpreadsheetContext'
 
 import { SpreadsheetCell } from './SpreadsheetCell'
 import './Spreadsheet.less'
+import { useFormulaSpreadsheet } from './useFormulaSpreadsheet'
 
 export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode, updateAttributes }) => {
   const [documentEditable] = useDocumentEditable(undefined)
@@ -59,6 +60,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     data: prevData,
     updateAttributeData
   })
+
+  useFormulaSpreadsheet({ blockId: parentId, rows, columns, getCellBlock, title })
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const title = event.target.value
@@ -180,8 +183,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           ]
                         : []
                     }
-                    draggable={documentEditable}
-                  >
+                    draggable={documentEditable}>
                     {documentEditable ? (
                       <SpreadsheetEditable
                         context={spreadsheetContext}
@@ -228,16 +230,14 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           ]
                         : []
                     }
-                    draggable={documentEditable}
-                  >
+                    draggable={documentEditable}>
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
-                        >
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}

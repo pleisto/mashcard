@@ -1,6 +1,6 @@
 import { parse, interpret } from '../core'
 import { FormulaContext } from '../../context'
-import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass } from '../../controls'
+import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass, Cell } from '../../controls'
 import { VariableMetadata } from '../..'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -16,35 +16,38 @@ const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 
 const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', type: 'normal' }
 
-const spreadsheetData: Row[] = [
-  { id: firstRowId, [firstColumnId]: '1', [secondColumnId]: '2', [thirdColumnId]: '3', sort: '100' },
-  { id: secondRowId, [firstColumnId]: '3', [secondColumnId]: '4', [thirdColumnId]: '', sort: '100' },
-  { id: thirdRowId, [firstColumnId]: '5', [secondColumnId]: '6', [thirdColumnId]: 'Foo', sort: '100' }
+const rows: Row[] = [{ rowId: firstRowId }, { rowId: secondRowId }, { rowId: thirdRowId }]
+
+const cells: Cell[] = [
+  { rowId: firstRowId, columnId: firstColumnId, value: '1', data: {}, cellId: '' },
+  { rowId: firstRowId, columnId: secondColumnId, value: '2', data: {}, cellId: '' },
+  { rowId: firstRowId, columnId: thirdColumnId, value: '3', data: {}, cellId: '' },
+  { rowId: secondRowId, columnId: firstColumnId, value: '3', data: {}, cellId: '' },
+  { rowId: secondRowId, columnId: secondColumnId, value: '4', data: {}, cellId: '' },
+  { rowId: secondRowId, columnId: thirdColumnId, value: '', data: {}, cellId: '' },
+  { rowId: thirdRowId, columnId: firstColumnId, value: '5', data: {}, cellId: '' },
+  { rowId: thirdRowId, columnId: secondColumnId, value: '6', data: {}, cellId: '' },
+  { rowId: thirdRowId, columnId: thirdColumnId, value: 'Foo', data: {}, cellId: '' }
 ]
+
 const columns: ColumnInitializer[] = [
   {
     columnId: firstColumnId,
     namespaceId: spreadsheetNamespaceId,
-    type: 'text',
     name: 'first',
-    index: 0,
-    rows: spreadsheetData.map(row => row[firstColumnId])
+    index: 0
   },
   {
     columnId: secondColumnId,
     namespaceId: spreadsheetNamespaceId,
-    type: 'text',
     name: 'second',
-    index: 1,
-    rows: spreadsheetData.map(row => row[secondColumnId])
+    index: 1
   },
   {
     columnId: thirdColumnId,
     namespaceId: spreadsheetNamespaceId,
-    type: 'text',
     name: 'third',
-    index: 2,
-    rows: spreadsheetData.map(row => row[thirdColumnId])
+    index: 2
   }
 ]
 
@@ -54,7 +57,17 @@ const spreadsheet: SpreadsheetType = new SpreadsheetClass({
   ctx: { formulaContext: new FormulaContext({}) },
   blockId: spreadsheetNamespaceId,
   listColumns: () => columns,
-  listRows: () => spreadsheetData
+  listRows: () => rows,
+  listCells: ({ rowId, columnId }) => {
+    let finalCells = cells
+    if (rowId) {
+      finalCells = finalCells.filter(cell => cell.rowId === rowId)
+    }
+    if (columnId) {
+      finalCells = finalCells.filter(cell => cell.columnId === columnId)
+    }
+    return finalCells
+  }
 })
 
 interface TestCase {

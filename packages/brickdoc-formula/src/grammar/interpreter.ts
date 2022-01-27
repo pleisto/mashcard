@@ -16,7 +16,7 @@ import {
   BlockResult,
   StringResult
 } from '../types'
-import { Row } from '../controls'
+import { ColumnClass, Row, SpreadsheetType } from '../controls'
 import { extractSubType, runtimeCheckType } from './util'
 import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
@@ -300,7 +300,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
 
     if (result2.type === 'Spreadsheet') {
       const match = String(result.result)
-      const spreadsheet = result2.result
+      const spreadsheet: SpreadsheetType = result2.result
 
       const columns = spreadsheet.listColumns()
 
@@ -310,10 +310,11 @@ export class FormulaInterpreter extends BaseCstVisitor {
       }
 
       const row = spreadsheet.listRows().find((row: Row) => {
+        const firstCellValue = spreadsheet.findCellValue({ rowId: row.rowId, columnId: firstColumn.columnId })!
         if (operator === 'ExactIn') {
-          return row[firstColumn.columnId] === match
+          return firstCellValue === match
         } else {
-          return row[firstColumn.columnId].toUpperCase() === match.toUpperCase()
+          return firstCellValue.toUpperCase() === match.toUpperCase()
         }
       })
 
@@ -329,10 +330,11 @@ export class FormulaInterpreter extends BaseCstVisitor {
       }
 
       const row = spreadsheet.listRows().find((row: Row) => {
+        const cellValue = spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId })!
         if (operator === 'ExactIn') {
-          return row[column.columnId] === match
+          return cellValue === match
         } else {
-          return row[column.columnId].toUpperCase() === match.toUpperCase()
+          return cellValue.toUpperCase() === match.toUpperCase()
         }
       })
 
@@ -580,7 +582,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
         if (result.type === 'Spreadsheet') {
           const column = result.result.getColumn(key)
           result = column
-            ? { type: 'Column', result: { ...column, spreadsheet: result.result } }
+            ? { type: 'Column', result: new ColumnClass(result.result, column) }
             : { type: 'Error', result: `Column ${key} not found`, errorKind: 'runtime' }
           return true
         }

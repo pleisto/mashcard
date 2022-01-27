@@ -3937,36 +3937,18 @@ Array [
     "index": 0,
     "name": "first",
     "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-    "rows": Array [
-      "1",
-      "3",
-      "5",
-    ],
-    "type": "text",
   },
   Object {
     "columnId": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "index": 1,
     "name": "second",
     "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-    "rows": Array [
-      "2",
-      "4",
-      "6",
-    ],
-    "type": "text",
   },
   Object {
     "columnId": "2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
     "index": 2,
     "name": "third",
     "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-    "rows": Array [
-      "3",
-      "",
-      "Foo",
-    ],
-    "type": "text",
   },
 ]
 `;
@@ -3974,25 +3956,13 @@ Array [
 exports[`Spreadsheet Functions Spreadsheet Factory 2`] = `
 Array [
   Object {
-    "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "3",
-    "4e6f9adb-6f33-454e-9f9e-635dc98e3f28": "2",
-    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6": "1",
-    "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
-    "sort": "100",
+    "rowId": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
   },
   Object {
-    "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "",
-    "4e6f9adb-6f33-454e-9f9e-635dc98e3f28": "4",
-    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6": "3",
-    "id": "5d1e4a83-383a-4991-a33c-52a9b3169549",
-    "sort": "100",
+    "rowId": "5d1e4a83-383a-4991-a33c-52a9b3169549",
   },
   Object {
-    "2723b7d9-22ce-4d93-b2ef-7cce1b122d64": "Foo",
-    "4e6f9adb-6f33-454e-9f9e-635dc98e3f28": "6",
-    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6": "5",
-    "id": "05f5ae67-b982-406e-a92f-e559c10a7ba6",
-    "sort": "100",
+    "rowId": "05f5ae67-b982-406e-a92f-e559c10a7ba6",
   },
 ]
 `;
@@ -4089,6 +4059,7 @@ Object {
   "preview": SpreadsheetClass {
     "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "dynamic": false,
+    "listCells": [Function],
     "listColumns": [Function],
     "listRows": [Function],
     "name": [Function],
@@ -4196,24 +4167,19 @@ Object {
   "name": "first",
   "namespace": "MySpreadsheet",
   "positionChange": 74,
-  "preview": Object {
+  "preview": ColumnClass {
     "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "index": 0,
     "name": "first",
     "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
-    "rows": Array [
-      "1",
-      "3",
-      "5",
-    ],
     "spreadsheet": SpreadsheetClass {
       "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "dynamic": false,
+      "listCells": [Function],
       "listColumns": [Function],
       "listRows": [Function],
       "name": [Function],
     },
-    "type": "text",
   },
   "renderDescription": [Function],
   "replacements": Array [

@@ -4,7 +4,7 @@ import cx from 'classnames'
 import { Icon } from '@brickdoc/design-system'
 import {
   BlockCompletion,
-  ColumnCompletion,
+  ColumnType,
   Completion,
   CompletionKind,
   displayValue,
@@ -40,20 +40,19 @@ const COMPLETION_STYLE_META: {
   column: {
     Icon: <Icon.Table />,
     render: (completion: Completion, blockId: string) => {
-      const {
-        preview: { rows, name }
-      } = completion as ColumnCompletion
+      const column = completion.preview as ColumnType
+      const rows = column.cells()
       const borderStyle = { border: '1px solid' }
 
       return (
         <table style={{ ...borderStyle, height: '100%' }}>
           <tbody>
             <tr>
-              <th style={borderStyle}>{name}</th>
+              <th style={borderStyle}>{column.name}</th>
             </tr>
             {rows.map((o, idx) => (
               <tr key={idx}>
-                <td style={borderStyle}>{o}</td>
+                <td style={borderStyle}>{o.value}</td>
               </tr>
             ))}
           </tbody>
@@ -231,7 +230,8 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
               onKeyDown={onKeyDown}
               className={cx('autocomplete-list-item', {
                 active: c.value === completion.activeCompletion?.value
-              })}>
+              })}
+            >
               {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
               <div className="autocomplete-list-item-content">
                 <span className="autocomplete-list-item-name">{c.name}</span>
