@@ -42,8 +42,8 @@ export const useSpreadsheet = (options: {
   saveCellBlock: (block: BlockInput) => void
 } => {
   const { parentId, data, updateAttributeData } = options
-  const columns = data.columns ?? []
-  const latestColumns = React.useRef<SpreadsheetColumns>(columns)
+  const [columns, setColumns] = React.useState<SpreadsheetColumns>(data.columns ?? [])
+  // const latestColumns = React.useRef<SpreadsheetColumns>(columns)
   const latestRowsCount = React.useRef<number>(data.rowsCount || 0)
   // const latestRows = React.useRef<SpreadsheetRows>([])
 
@@ -52,13 +52,17 @@ export const useSpreadsheet = (options: {
   const blocksMap = React.useRef<Map<string, BlockInput>>(new Map<string, BlockInput>())
   const cellsMap = React.useRef<SpreadsheetCellsMap>(new Map<string, Map<string, BlockInput>>())
 
-  const updateSpreadsheetAttributes = React.useCallback((): void => {
-    updateAttributeData({
-      ...data,
-      columns: latestColumns.current,
-      rowsCount: latestRowsCount.current
-    })
-  }, [updateAttributeData, data])
+  const updateSpreadsheetAttributes = React.useCallback(
+    (columns): void => {
+      setColumns(columns)
+      updateAttributeData({
+        ...data,
+        columns,
+        rowsCount: latestRowsCount.current
+      })
+    },
+    [updateAttributeData, data]
+  )
 
   const loaded = React.useRef(columns.length === 0 && data.rowsCount === 0)
 
@@ -141,61 +145,61 @@ export const useSpreadsheet = (options: {
         }
       })
       latestRowsCount.current = newRows.length
-      updateSpreadsheetAttributes()
+      updateSpreadsheetAttributes(columns)
       BrickdocEventBus.dispatch(CommitBlocks({}))
     },
-    [updateSpreadsheetAttributes, rows]
+    [updateSpreadsheetAttributes, rows, columns]
   )
 
   const updateColumn = React.useCallback(
     (column: SpreadsheetColumn): void => {
-      const oldColumns = latestColumns.current.filter(c => c.uuid !== column.uuid)
-      latestColumns.current = [...oldColumns.slice(0, column.sort), column, ...oldColumns.slice(column.sort)].map(
-        (c, i) => ({ ...c, sort: i })
+      const oldColumns = columns.filter(c => c.uuid !== column.uuid)
+      updateSpreadsheetAttributes(
+        [...oldColumns.slice(0, column.sort), column, ...oldColumns.slice(column.sort)].map((c, i) => ({
+          ...c,
+          sort: i
+        }))
       )
-      updateSpreadsheetAttributes()
     },
-    [updateSpreadsheetAttributes]
+    [updateSpreadsheetAttributes, columns]
   )
 
   const addColumn = React.useCallback(
     (sort = -1): void => {
-      const oldColumns = latestColumns.current
       const newColumn = {
         uuid: uuid(),
-        sort: sort === -1 ? oldColumns.length : sort
+        sort: sort === -1 ? columns.length : sort
       }
       updateColumn(newColumn)
     },
-    [updateColumn]
+    [updateColumn, columns]
   )
 
   const removeColumn = React.useCallback(
     (column: SpreadsheetColumn): void => {
-      latestColumns.current = latestColumns.current
-        .filter(c => c.uuid !== column.uuid)
-        .map((c, i) => ({ ...c, sort: i }))
-      updateSpreadsheetAttributes()
+      updateSpreadsheetAttributes(columns.filter(c => c.uuid !== column.uuid).map((c, i) => ({ ...c, sort: i })))
       // TODO: remove cell blocks of column
     },
-    [updateSpreadsheetAttributes]
+    [updateSpreadsheetAttributes, columns]
   )
 
   const moveColumn = React.useCallback(
     (srcId: string, targetId: string): void => {
       if (srcId !== targetId) {
-        const oldColumn = latestColumns.current.find(c => c.uuid === srcId)
+        const oldColumn = columns.find(c => c.uuid === srcId)
         if (oldColumn) {
-          const oldColumns = latestColumns.current.filter(c => c.uuid !== srcId)
+          const oldColumns = columns.filter(c => c.uuid !== srcId)
           const targetIdx = targetId === 'first' ? 0 : oldColumns.findIndex(c => c.uuid === targetId) + 1
-          latestColumns.current = [...oldColumns.slice(0, targetIdx), oldColumn, ...oldColumns.slice(targetIdx)].map(
-            (c, i) => ({ ...c, sort: i })
+          updateSpreadsheetAttributes(
+            [...oldColumns.slice(0, targetIdx), oldColumn, ...oldColumns.slice(targetIdx)].map((c, i) => ({
+              ...c,
+              sort: i
+            }))
           )
-          updateSpreadsheetAttributes()
         }
       }
     },
-    [updateSpreadsheetAttributes]
+    [updateSpreadsheetAttributes, columns]
   )
 
   const addRow = React.useCallback(
@@ -259,20 +263,20 @@ export const useSpreadsheet = (options: {
 
   React.useEffect(() => {
     if (loaded.current) {
-      if (latestColumns.current.length === 0 && latestRowsCount.current === 0) {
-        latestColumns.current = [
+      if (columns.length === 0 && latestRowsCount.current === 0) {
+        updateSpreadsheetAttributes([
           { uuid: uuid(), sort: 0 },
           { uuid: uuid(), sort: 1 }
-        ]
+        ])
         saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)])
       }
     } else {
       BrickdocEventBus.dispatch(loadSpreadsheetBlocks(parentId))
     }
-  }, [parentId, latestColumns, latestRowsCount, addColumn, saveRowBlocks, getRowBlock])
+  }, [parentId, columns, latestRowsCount, addColumn, saveRowBlocks, getRowBlock, updateSpreadsheetAttributes])
 
   return {
-    columns: latestColumns.current,
+    columns,
     addColumn,
     updateColumn,
     removeColumn,
