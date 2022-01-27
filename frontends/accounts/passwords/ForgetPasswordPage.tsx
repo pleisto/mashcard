@@ -46,7 +46,7 @@ export const ForgetPasswordPage: React.FC = () => {
           <DeprecatedInput />
         </DeprecatedForm.Item>
         <DeprecatedForm.Item>
-          <Button type="primary" htmlType="submit" loading={userForgetPasswordMailSendLoading} size="large" block>
+          <Button type="primary" htmlType="submit" loading={userForgetPasswordMailSendLoading} size="lg" block>
             {t('sessions.forget_password')}
           </Button>
         </DeprecatedForm.Item>

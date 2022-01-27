@@ -39,7 +39,7 @@ export const Alert: FC<AlertProps> = props => {
     onClose?.()
   }, [onClose])
 
-  const size = title ? 'large' : 'small'
+  const size = title ? 'lg' : 'sm'
 
   const titleDom = title ? <AlertRoot.Title>{title}</AlertRoot.Title> : null
 

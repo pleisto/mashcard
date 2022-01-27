@@ -13,13 +13,13 @@ const inputCommonStyle = {
 }
 
 const size = {
-  small: {
+  sm: {
     padding: '3px 6px'
   },
-  medium: {
+  md: {
     padding: '5px 10px'
   },
-  large: {
+  lg: {
     padding: '7px 14px',
     fontSize: '16px'
   }

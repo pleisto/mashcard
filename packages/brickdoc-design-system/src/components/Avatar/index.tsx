@@ -5,7 +5,7 @@ import { name2Initials, string2Color } from './initials'
 import { styled, theme } from '../../themes'
 import { useFocusable } from '../../utilities'
 
-type AvatarSize = 'small' | 'default' | 'large'
+type AvatarSize = 'sm' | 'md' | 'lg'
 
 export interface AvatarProps extends FocusableProps, FocusableDOMProps {
   shape?: 'circle' | 'square'
@@ -47,17 +47,17 @@ const AvatarWrapper = styled('span', {
       }
     },
     size: {
-      large: {
+      lg: {
         boxSize: '2.5rem',
         lineHeight: '2.5rem',
         fontSize: '2.5rem'
       },
-      default: {
+      md: {
         boxSize: '2rem',
         lineHeight: '2rem',
         fontSize: '2rem'
       },
-      small: {
+      sm: {
         boxSize: '1.5rem',
         lineHeight: '1.5rem',
         fontSize: '1.5rem',
@@ -81,7 +81,7 @@ const AvatarWrapper = styled('span', {
 })
 
 const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, ref) => {
-  const { shape = 'circle', size = 'default', alt, initials, src, className, style = {} } = props
+  const { shape = 'circle', size = 'md', alt, initials, src, className, style = {} } = props
   const avatarRef = (ref as RefObject<HTMLSpanElement>) || createRef<HTMLSpanElement>()
   const { focusableProps } = useFocusable(props, avatarRef)
 

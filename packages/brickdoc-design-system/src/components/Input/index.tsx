@@ -6,7 +6,7 @@ import { usePressEnterHandler } from './usePressEnterHandler'
 
 export interface InputProps extends Omit<ReakitInputProps, 'as' | 'ref' | 'css' | 'size' | 'prefix'> {
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>
-  size?: 'small' | 'medium' | 'large'
+  size?: 'sm' | 'md' | 'lg'
   prefix?: React.ReactNode
   suffix?: React.ReactNode
 }
@@ -15,7 +15,7 @@ const StyledInput = styled(ReakitInput, inputStyle)
 const StyledAffixWrapper = styled('div', affixWrapperStyle)
 
 const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (props, ref) => {
-  const { className, prefix, suffix, onKeyDown, onPressEnter, size = 'medium', disabled = false, ...otherProps } = props
+  const { className, prefix, suffix, onKeyDown, onPressEnter, size = 'md', disabled = false, ...otherProps } = props
   const inputRef = ref ?? createRef<HTMLInputElement>()
   const keydownHandler = usePressEnterHandler(onPressEnter, onKeyDown)
   const commonProps = {

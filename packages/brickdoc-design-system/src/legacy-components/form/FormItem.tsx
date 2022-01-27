@@ -80,6 +80,11 @@ function genEmptyMeta(): Meta {
   }
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 function FormItem<Values = any>(props: FormItemProps<Values>): React.ReactElement {
   const {
     name,
@@ -240,7 +245,13 @@ function FormItem<Values = any>(props: FormItemProps<Values>): React.ReactElemen
         ])}
       >
         {/* Label */}
-        <FormItemLabel htmlFor={fieldId} required={isRequired} requiredMark={requiredMark} {...props} prefixCls={prefixCls} />
+        <FormItemLabel
+          htmlFor={fieldId}
+          required={isRequired}
+          requiredMark={requiredMark}
+          {...props}
+          prefixCls={prefixCls}
+        />
         {/* Input Group */}
         <FormItemInput
           {...props}
@@ -272,7 +283,13 @@ function FormItem<Values = any>(props: FormItemProps<Values>): React.ReactElemen
 
   // >>>>> With Field
   return (
-    <Field {...props} messageVariables={variables} trigger={trigger} validateTrigger={mergedValidateTrigger} onMetaChange={onMetaChange}>
+    <Field
+      {...props}
+      messageVariables={variables}
+      trigger={trigger}
+      validateTrigger={mergedValidateTrigger}
+      onMetaChange={onMetaChange}
+    >
       {(control, renderMeta, context) => {
         const mergedName = toArray(name).length && renderMeta ? renderMeta.name : []
         const fieldId = getFieldId(mergedName, formName)

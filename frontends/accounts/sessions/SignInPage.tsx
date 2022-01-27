@@ -41,12 +41,13 @@ export const SignInPage: React.FC = () => {
             <EmailPasswordSignIn />
           ) : (
             <Button
-              size="large"
+              size="lg"
               icon={preferredAuthMethod.logo}
               id={`auth-btn-${preferredAuthMethod.name}`}
               style={{ marginTop: '2rem' }}
               onClick={preferredAuthMethod.action}
-              block>
+              block
+            >
               {t('sessions.login_via', { provider: t(`provider.${preferredAuthMethod.name}`) })}
             </Button>
           )

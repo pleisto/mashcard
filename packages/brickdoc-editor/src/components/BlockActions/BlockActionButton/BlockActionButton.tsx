@@ -41,7 +41,7 @@ const Trigger: React.FC<{
         onMouseEnter?.(event)
       }}
       className={className}
-      size="small"
+      size="sm"
       type="text"
     >
       <EditorIcon.DragSecondary {...iconProps} />
@@ -64,7 +64,8 @@ export const BlockActionButton: React.FC<BlockActionButtonProps> = ({ className,
       destroyTooltipOnHide={true}
       trigger="hover"
       placement="startTop"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
+      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
+    >
       <Trigger className={className} />
     </Popover>
   )

@@ -2,27 +2,22 @@ import * as React from 'react'
 import { SpaceContext } from '.'
 
 export interface ItemProps {
-  className: string;
-  children: React.ReactNode;
-  index: number;
-  direction?: 'horizontal' | 'vertical';
-  marginDirection: 'marginLeft' | 'marginRight';
-  split?: string | React.ReactNode;
-  wrap?: boolean;
+  className: string
+  children: React.ReactNode
+  index: number
+  direction?: 'horizontal' | 'vertical'
+  marginDirection: 'marginLeft' | 'marginRight'
+  split?: string | React.ReactNode
+  wrap?: boolean
 }
 
-export default function Item({
-  className,
-  direction,
-  index,
-  marginDirection,
-  children,
-  split,
-  wrap,
-}: ItemProps) {
-  const { horizontalSize, verticalSize, latestIndex, supportFlexGap } = React.useContext(
-    SpaceContext,
-  )
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
+export default function Item({ className, direction, index, marginDirection, children, split, wrap }: ItemProps) {
+  const { horizontalSize, verticalSize, latestIndex, supportFlexGap } = React.useContext(SpaceContext)
 
   let style: React.CSSProperties = {}
 
@@ -34,7 +29,7 @@ export default function Item({
     } else {
       style = {
         ...(index < latestIndex && { [marginDirection]: horizontalSize / (split ? 2 : 1) }),
-        ...(wrap && { paddingBottom: verticalSize }),
+        ...(wrap && { paddingBottom: verticalSize })
       }
     }
   }

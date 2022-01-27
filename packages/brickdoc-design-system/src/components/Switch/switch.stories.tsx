@@ -7,7 +7,7 @@ export default {
   args: {
     disabled: false,
     loading: false,
-    size: 'small'
+    size: 'sm'
   },
   argTypes: {
     name: {
@@ -37,7 +37,7 @@ export default {
       description: 'For uncontrolled components'
     },
     size: {
-      options: ['small', 'medium', 'large'],
+      options: ['sm', 'md', 'lg'],
       control: {
         type: 'radio'
       }

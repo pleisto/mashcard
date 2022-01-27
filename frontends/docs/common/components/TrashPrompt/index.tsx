@@ -69,10 +69,10 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
         icon={false}
         action={
           <DeprecatedSpace>
-            <Button size="small" disabled={restoreButtonLoading} onClick={onRestoreClick}>
+            <Button size="sm" disabled={restoreButtonLoading} onClick={onRestoreClick}>
               {t('trash.restore_action')}
             </Button>
-            <Button size="small" type="primary" danger onClick={onHardDeleteClick}>
+            <Button size="sm" type="primary" danger onClick={onHardDeleteClick}>
               {t('trash.hard_delete_action')}
             </Button>
           </DeprecatedSpace>
@@ -87,7 +87,8 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
         confirmLoading={hardDeleteConfirmLoading}
         onCancel={onCancelDelete}
         onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}>
+        visible={hardDeleteModalVisible}
+      >
         {t('trash.delete_confirmation_body')}
       </DeprecatedModal>
     </>

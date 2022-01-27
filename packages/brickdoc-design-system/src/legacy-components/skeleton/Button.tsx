@@ -8,6 +8,11 @@ export interface SkeletonButtonProps extends Omit<SkeletonElementProps, 'size'> 
   block?: boolean
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const SkeletonButton = (props: SkeletonButtonProps) => {
   const renderSkeletonButton = ({ getPrefixCls }: ConfigConsumerProps) => {
     const { prefixCls: customizePrefixCls, className, active, block = false } = props

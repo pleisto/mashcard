@@ -8,7 +8,7 @@ import { FocusRing } from '../FocusRing'
 import { root, switcher, switcherHandle as SwitcherHandle } from './styles/index.style'
 
 export interface SwitchProps extends Omit<CheckboxProps, 'size' | 'onChange' | 'ref'> {
-  size?: 'small' | 'medium' | 'large'
+  size?: 'sm' | 'md' | 'lg'
   loading?: boolean
   className?: string
   style?: React.CSSProperties
@@ -26,7 +26,7 @@ const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, 
   const {
     labelFirst = false,
     loading = false,
-    size = 'medium',
+    size = 'md',
     className,
     style,
     onChange,
@@ -43,7 +43,7 @@ const Switch: ForwardRefRenderFunction<HTMLInputElement, SwitchProps> = (props, 
   const unControlledToggle = (): void => setUnControlledChecked(!unControlledChecked)
   const isChecked = checked ?? unControlledChecked
 
-  const offsetX = useMemo(() => (size === 'small' ? 10 : 12), [size])
+  const offsetX = useMemo(() => (size === 'sm' ? 10 : 12), [size])
   const spring = { type: 'spring', stiffness: 800, damping: 50, mass: 1 }
   const animate = { x: isChecked ? offsetX : 0 }
 

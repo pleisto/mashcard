@@ -59,13 +59,13 @@ export const Base = styled('div', {
 
   variants: {
     size: {
-      small: {
+      sm: {
         [`& ${ContentIcon}`]: {},
         [`& ${Description}`]: {
           fontWeight: 500
         }
       },
-      large: {
+      lg: {
         [`& ${Content}`]: {
           fontSize: theme.fontSizes.title4,
           marginRight: theme.space.md,

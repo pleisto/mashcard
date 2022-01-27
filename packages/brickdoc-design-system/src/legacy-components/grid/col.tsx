@@ -45,11 +45,29 @@ function parseFlex(flex: FlexType): string {
   return flex
 }
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const
+
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Col = React.forwardRef<HTMLDivElement, ColProps>((props, ref) => {
   const { getPrefixCls, direction } = React.useContext(ConfigContext)
   const { gutter, wrap, supportFlexGap } = React.useContext(RowContext)
 
-  const { prefixCls: customizePrefixCls, span, order, offset, push, pull, className, children, flex, style, ...others } = props
+  const {
+    prefixCls: customizePrefixCls,
+    span,
+    order,
+    offset,
+    push,
+    pull,
+    className,
+    children,
+    flex,
+    style,
+    ...others
+  } = props
 
   const prefixCls = getPrefixCls('col', customizePrefixCls)
 

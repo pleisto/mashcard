@@ -19,6 +19,11 @@ const ActionMap: Record<string, string> = {
   hover: 'onMouseOver'
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Password = React.forwardRef<any, PasswordProps>((props, ref) => {
   const [visible, setVisible] = useState(false)
 

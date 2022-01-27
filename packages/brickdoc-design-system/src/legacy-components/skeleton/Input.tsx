@@ -7,6 +7,11 @@ export interface SkeletonInputProps extends Omit<SkeletonElementProps, 'size' | 
   size?: 'large' | 'small' | 'default'
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const SkeletonInput = (props: SkeletonInputProps) => {
   const renderSkeletonInput = ({ getPrefixCls }: ConfigConsumerProps) => {
     const { prefixCls: customizePrefixCls, className, active } = props

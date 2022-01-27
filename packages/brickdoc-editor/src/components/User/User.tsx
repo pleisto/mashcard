@@ -14,7 +14,7 @@ export const User: React.FC<UserProps> = ({ node }) => {
   return (
     <BlockContainer inline={true}>
       <Avatar
-        size="small"
+        size="sm"
         initials={attributes.name ?? attributes.webid}
         src={attributes.avatarUrl ? attributes.avatarUrl : undefined}
         className="brickdoc-user-block-avatar"

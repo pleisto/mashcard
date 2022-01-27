@@ -4,6 +4,7 @@ import { ceramicLightTheme, ceramicLightMixins } from './ceramic-light'
 import { globalStyleSheet } from './common/globalStyle.style'
 import { commonUtils } from './common/utils'
 import { commonMixins } from './common/mixins'
+import { media } from './common/media'
 
 /**
  * For Storybook
@@ -22,6 +23,7 @@ export const utils = {
 export const { theme, css, styled, config, globalCss, keyframes, prefix } = createStitches({
   prefix: 'brd',
   theme: ceramicLightTheme,
+  media,
   utils: {
     ...commonUtils,
     include: mixins({

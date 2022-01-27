@@ -11,6 +11,11 @@ interface ConfirmDialogProps extends ModalFuncProps {
   rootPrefixCls: string
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const ConfirmDialog = (props: ConfirmDialogProps) => {
   const {
     icon,

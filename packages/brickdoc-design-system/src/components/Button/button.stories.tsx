@@ -7,7 +7,7 @@ export default {
   component: Button,
   args: {
     type: 'secondary',
-    size: 'medium',
+    size: 'md',
     block: false,
     disabled: false,
     circle: false,
@@ -22,7 +22,7 @@ export default {
       }
     },
     size: {
-      options: ['small', 'medium', 'large'],
+      options: ['sm', 'md', 'lg'],
       control: {
         type: 'radio'
       }
@@ -93,7 +93,7 @@ export const Basic = Template.bind({})
 Basic.args = { type: 'primary', children: '42 is the meaning of life' }
 
 export const iconOnly = Template.bind({})
-iconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'large' }
+iconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'lg' }
 
 export const loadding = Template.bind({})
 loadding.args = { loading: true, children: 'Loading...' }

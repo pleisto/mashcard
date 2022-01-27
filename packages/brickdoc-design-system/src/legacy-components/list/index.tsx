@@ -64,6 +64,11 @@ export const ListContext = React.createContext<ListConsumerProps>({})
 
 export const ListConsumer = ListContext.Consumer
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 function List<T>({
   prefixCls: customizePrefixCls,
   bordered = false,
@@ -215,9 +220,4 @@ function List<T>({
 
 List.Item = Item
 
-/**
- * @deprecated Legacy Component.
- * @param props
- * @returns
- */
 export default List

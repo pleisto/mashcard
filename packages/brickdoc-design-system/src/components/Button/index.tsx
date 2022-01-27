@@ -4,7 +4,7 @@ import { LoadingIcon } from './LoadingIcon'
 import { styled } from '../../themes'
 import { buttonStyle } from './styles/index.style'
 
-export type Size = 'large' | 'medium' | 'small'
+export type Size = 'lg' | 'md' | 'sm'
 export type BtnType = 'primary' | 'secondary' | 'danger' | 'text'
 
 export interface ButtonProps extends Omit<HeadlessButtonProps, 'type' | 'css'> {
@@ -48,7 +48,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
     circle = false,
     danger = false,
     type = 'secondary',
-    size = 'medium',
+    size = 'md',
     children,
     icon,
     onClick,

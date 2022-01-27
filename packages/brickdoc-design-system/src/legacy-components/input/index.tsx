@@ -15,9 +15,4 @@ Input.Group = Group
 Input.Search = Search
 Input.TextArea = TextArea
 Input.Password = Password
-/**
- * @deprecated Legacy Component.
- * @param props
- * @returns
- */
 export default Input

@@ -18,6 +18,11 @@ export interface RowProps extends React.HTMLAttributes<HTMLDivElement> {
   wrap?: boolean
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Row = React.forwardRef<HTMLDivElement, RowProps>((props, ref) => {
   const {
     prefixCls: customizePrefixCls,

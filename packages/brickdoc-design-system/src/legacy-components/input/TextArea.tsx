@@ -30,6 +30,11 @@ export interface TextAreaRef {
   resizableTextArea?: ResizableTextArea
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
   (
     {
@@ -184,7 +189,8 @@ const TextArea = React.forwardRef<TextAreaRef, TextAreaProps>(
             className
           )}
           style={style}
-          data-count={dataCount}>
+          data-count={dataCount}
+        >
           {textareaNode}
         </div>
       )

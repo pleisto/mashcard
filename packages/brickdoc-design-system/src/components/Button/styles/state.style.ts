@@ -32,17 +32,17 @@ export const state = {
     }
   },
   circle: {
-    small: {
+    sm: {
       ...circleBase,
       width: theme.space.lg,
       height: theme.space.lg
     },
-    medium: {
+    md: {
       ...circleBase,
       width: theme.space.xxxl,
       height: theme.space.xxxl
     },
-    large: {
+    lg: {
       ...circleBase,
       width: '32px',
       height: '32px'

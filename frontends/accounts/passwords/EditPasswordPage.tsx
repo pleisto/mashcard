@@ -59,11 +59,12 @@ export const EditPasswordPage: React.FC = () => {
           label={t('sessions.confirm_password')}
           hasFeedback
           dependencies={['password']}
-          rules={[{ required: true }, passwordConfirmValidator]}>
+          rules={[{ required: true }, passwordConfirmValidator]}
+        >
           <DeprecatedInput.Password />
         </DeprecatedForm.Item>
         <DeprecatedForm.Item>
-          <Button type="primary" htmlType="submit" size="large" loading={loading} block>
+          <Button type="primary" htmlType="submit" size="lg" loading={loading} block>
             {t('sessions.reset_password')}
           </Button>
         </DeprecatedForm.Item>

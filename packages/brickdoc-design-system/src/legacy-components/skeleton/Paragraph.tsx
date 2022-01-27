@@ -1,16 +1,21 @@
 import * as React from 'react'
 import classNames from 'classnames'
 
-type widthUnit = number | string;
+type widthUnit = number | string
 
 export interface SkeletonParagraphProps {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  width?: widthUnit | widthUnit[];
-  rows?: number;
+  prefixCls?: string
+  className?: string
+  style?: React.CSSProperties
+  width?: widthUnit | widthUnit[]
+  rows?: number
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Paragraph = (props: SkeletonParagraphProps) => {
   const getWidth = (index: number) => {
     const { width, rows = 2 } = props

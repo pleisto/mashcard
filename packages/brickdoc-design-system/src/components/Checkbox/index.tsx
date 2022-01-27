@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, ChangeEvent, createRef, useState, forwardRef } from 'react'
+import { ForwardRefRenderFunction, createRef, useState, forwardRef } from 'react'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
 import { Checkbox as ReakitCheckbox, CheckboxProps as ReakitCheckboxProps } from 'reakit/Checkbox'
 import { styled } from '../../themes'
@@ -6,11 +6,10 @@ import { CheckBox as Check } from '@brickdoc/design-icons'
 import { FocusRing } from '../FocusRing'
 import { root, checkbox } from './styles/index.style'
 
-export interface CheckboxProps extends Omit<ReakitCheckboxProps, 'size' | 'onChange' | 'ref' | 'css'> {
+export interface CheckboxProps extends Omit<ReakitCheckboxProps, 'size' | 'ref' | 'css'> {
   labelFirst?: boolean
   defaultChecked?: boolean
   checked?: boolean
-  onChange?: (checked: boolean, event: React.ChangeEvent) => void
 }
 
 const CheckboxLabel = styled('label', root)
@@ -30,7 +29,10 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (pro
   } = props
   const inputRef = ref ?? createRef<HTMLInputElement>()
   const [unControlledChecked, setUnControlledChecked] = useState(defaultChecked)
-  const unControlledToggle = (): void => setUnControlledChecked(!unControlledChecked)
+  const unControlledToggle = (e: any): void => {
+    setUnControlledChecked(!unControlledChecked)
+    onChange?.(e)
+  }
   const isChecked = checked ?? unControlledChecked
 
   return (
@@ -42,13 +44,7 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (pro
           <VisuallyHidden>
             <ReakitCheckbox
               {...otherProps}
-              onChange={
-                typeof checked === 'boolean'
-                  ? (e: ChangeEvent<HTMLInputElement>) => {
-                      onChange?.(e.target.checked, e)
-                    }
-                  : unControlledToggle
-              }
+              onChange={typeof checked === 'boolean' ? onChange : unControlledToggle}
               checked={isChecked}
               ref={inputRef}
               unstable_clickOnEnter

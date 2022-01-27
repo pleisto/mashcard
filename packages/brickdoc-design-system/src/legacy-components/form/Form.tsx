@@ -133,6 +133,11 @@ const InternalForm: React.ForwardRefRenderFunction<FormInstance, FormProps> = (p
   )
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Form = React.forwardRef<FormInstance, FormProps>(InternalForm) as <Values = any>(
   props: React.PropsWithChildren<FormProps<Values>> & { ref?: React.Ref<FormInstance<Values>> }
 ) => React.ReactElement

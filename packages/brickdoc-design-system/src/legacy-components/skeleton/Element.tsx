@@ -9,6 +9,11 @@ export interface SkeletonElementProps {
   active?: boolean
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Element = (props: SkeletonElementProps) => {
   const { prefixCls, className, style, size, shape } = props
 

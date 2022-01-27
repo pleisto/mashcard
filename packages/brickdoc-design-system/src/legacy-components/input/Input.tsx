@@ -131,6 +131,11 @@ export interface InputState {
   prevValue: any
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 class Input extends React.Component<InputProps, InputState> {
   static Group: typeof Group
 

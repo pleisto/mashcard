@@ -7,6 +7,11 @@ export interface AvatarProps extends Omit<SkeletonElementProps, 'shape'> {
   shape?: 'circle' | 'square'
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const SkeletonAvatar = (props: AvatarProps) => {
   const renderSkeletonAvatar = ({ getPrefixCls }: ConfigConsumerProps) => {
     const { prefixCls: customizePrefixCls, className, active } = props

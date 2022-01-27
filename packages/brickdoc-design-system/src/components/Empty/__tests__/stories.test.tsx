@@ -19,7 +19,7 @@ describe('tag', () => {
       type: EmptyType.Empty,
       id: 'testid',
       action: (
-        <Button size="small" type="primary">
+        <Button size="sm" type="primary">
           go to
         </Button>
       )

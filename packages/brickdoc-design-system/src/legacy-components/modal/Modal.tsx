@@ -122,6 +122,11 @@ export interface ModalFuncProps {
   focusTriggerAfterClose?: boolean
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Modal: React.FC<ModalProps> = props => {
   const { getPopupContainer: getContextPopupContainer, getPrefixCls, direction } = React.useContext(ConfigContext)
 

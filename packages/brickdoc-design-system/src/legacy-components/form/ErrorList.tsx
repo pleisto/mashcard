@@ -14,7 +14,12 @@ interface ErrorEntity {
   key: string
 }
 
-function toErrorEntity(error: React.ReactNode, errorStatus: ValidateStatus | undefined, prefix: string, index: number = 0): ErrorEntity {
+function toErrorEntity(
+  error: React.ReactNode,
+  errorStatus: ValidateStatus | undefined,
+  prefix: string,
+  index: number = 0
+): ErrorEntity {
   return {
     key: typeof error === 'string' ? error : `${prefix}-${index}`,
     error,
@@ -30,6 +35,11 @@ export interface ErrorListProps {
   className?: string
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 export default function ErrorList({
   help,
   helpStatus,
@@ -74,7 +84,12 @@ export default function ErrorList({
 
         return (
           <div className={classNames(baseClassName, holderClassName, rootClassName)} style={holderStyle}>
-            <CSSMotionList keys={fullKeyList} {...collapseMotion} motionName={`${rootPrefixCls}-show-help-item`} component={false}>
+            <CSSMotionList
+              keys={fullKeyList}
+              {...collapseMotion}
+              motionName={`${rootPrefixCls}-show-help-item`}
+              component={false}
+            >
               {itemProps => {
                 const { key, error, errorStatus, className: itemClassName, style: itemStyle } = itemProps
 

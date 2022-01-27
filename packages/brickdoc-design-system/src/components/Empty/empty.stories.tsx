@@ -76,7 +76,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   description: 'There is empty.',
   action: (
-    <Button size="small" type="primary">
+    <Button size="sm" type="primary">
       go to
     </Button>
   )
@@ -87,7 +87,7 @@ Found.args = {
   description: 'There is found.',
   type: EmptyType.Found,
   action: (
-    <Button size="small" type="primary">
+    <Button size="sm" type="primary">
       go to
     </Button>
   )

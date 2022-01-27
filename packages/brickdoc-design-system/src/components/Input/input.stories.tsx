@@ -6,7 +6,7 @@ export default {
   title: 'Components/Input',
   component: Input,
   args: {
-    size: 'medium'
+    size: 'md'
   },
   argTypes: {
     name: {
@@ -41,7 +41,7 @@ export default {
       description: '`string`'
     },
     size: {
-      options: ['small', 'medium', 'large'],
+      options: ['sm', 'md', 'lg'],
       control: {
         type: 'radio'
       }

@@ -17,7 +17,11 @@ export interface SearchProps extends InputProps {
   enterButton?: React.ReactNode
   loading?: boolean
 }
-
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
   const {
     prefixCls: customizePrefixCls,
@@ -84,18 +88,17 @@ const Search = React.forwardRef<Input, SearchProps>((props, ref) => {
         : {})
     })
   } else {
-    const btnSize: 'small' | 'medium' | 'large' = size === 'middle' ? 'medium' : size!
     button = (
       <Button
         className={btnClassName}
         type={enterButton ? 'primary' : undefined}
-        size={btnSize}
         disabled={disabled}
         key="enterButton"
         onMouseDown={onMouseDown}
         onClick={onSearch}
         loading={loading}
-        icon={searchIcon}>
+        icon={searchIcon}
+      >
         {enterButton}
       </Button>
     )

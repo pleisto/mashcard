@@ -6,11 +6,11 @@ export default {
   component: Avatar,
   args: {
     shape: 'circle',
-    size: 'default'
+    size: 'md'
   },
   argTypes: {
     size: {
-      options: ['default', 'small', 'large'],
+      options: ['sm', 'md', 'lg'],
       control: {
         type: 'radio'
       }
@@ -73,6 +73,6 @@ AnonymousAvatar.args = {
 export const SquareAvatar = Template.bind({})
 SquareAvatar.args = {
   shape: 'square',
-  size: 'large',
+  size: 'lg',
   initials: 'John Smith'
 }

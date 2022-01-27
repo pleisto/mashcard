@@ -80,14 +80,16 @@ export const SignUpPage: React.FC = () => {
         name="email"
         label={t('sessions.email')}
         hasFeedback
-        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}>
+        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}
+      >
         <DeprecatedInput />
       </DeprecatedForm.Item>
       <DeprecatedForm.Item
         name="password"
         label={t('sessions.password')}
         hasFeedback
-        rules={[{ required: true }, passwordAvailableValidator]}>
+        rules={[{ required: true }, passwordAvailableValidator]}
+      >
         <DeprecatedInput.Password />
       </DeprecatedForm.Item>
       <DeprecatedForm.Item
@@ -95,7 +97,8 @@ export const SignUpPage: React.FC = () => {
         label={t('sessions.confirm_password')}
         hasFeedback
         dependencies={['password']}
-        rules={[{ required: true }, passwordConfirmValidator]}>
+        rules={[{ required: true }, passwordConfirmValidator]}
+      >
         <DeprecatedInput.Password />
       </DeprecatedForm.Item>
     </>
@@ -114,7 +117,8 @@ export const SignUpPage: React.FC = () => {
           extra={<small>{t('sessions.webid_description')}</small>}
           hasFeedback
           validateTrigger={['onFocus', 'onBlur']}
-          rules={[{ required: true }, webidAvailableValidator]}>
+          rules={[{ required: true }, webidAvailableValidator]}
+        >
           <DeprecatedInput />
         </DeprecatedForm.Item>
         <DeprecatedForm.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>
@@ -131,7 +135,7 @@ export const SignUpPage: React.FC = () => {
           <DeprecatedInput />
         </DeprecatedForm.Item>
         <DeprecatedForm.Item>
-          <Button type="primary" htmlType="submit" size="large" loading={userCreateLoading} block>
+          <Button type="primary" htmlType="submit" size="lg" loading={userCreateLoading} block>
             {t('sessions.sign_up')}
           </Button>
         </DeprecatedForm.Item>

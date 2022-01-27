@@ -29,6 +29,11 @@ export interface FormListProps {
   ) => React.ReactNode
 }
 
+/**
+ * @deprecated Legacy Component.
+ * @param props
+ * @returns
+ */
 const FormList: React.FC<FormListProps> = ({ prefixCls: customizePrefixCls, children, ...props }) => {
   devWarning(!!props.name, 'Form.List', 'Miss `name` prop.')
 

@@ -109,23 +109,25 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         setCompletion={setCompletion}
       />
       <div className="formula-menu-footer">
-        <Button className="formula-menu-button" size="small" type="text" onClick={handleCancel}>
+        <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
           {t(`${i18nKey}.cancel`)}
         </Button>
         <Button
           className="formula-menu-button"
-          size="small"
+          size="sm"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}>
+          disabled={isDisableSave()}
+        >
           {t(`${i18nKey}.save`)}
         </Button>
         <Button
           className="formula-menu-button"
-          size="small"
+          size="sm"
           type="text"
           danger={true}
-          onClick={() => handleDelete(variableT!)}>
+          onClick={() => handleDelete(variableT!)}
+        >
           {t(`${i18nKey}.delete`)}
         </Button>
       </div>
@@ -141,7 +143,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )

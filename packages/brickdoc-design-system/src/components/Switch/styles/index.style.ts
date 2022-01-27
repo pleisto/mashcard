@@ -47,7 +47,7 @@ export const switcher = css({
       }
     },
     size: {
-      small: {
+      sm: {
         width: '26px',
         height: '16px',
         '& + span, span + &': {
@@ -57,7 +57,7 @@ export const switcher = css({
           fontSize: '12px'
         }
       },
-      medium: {
+      md: {
         width: '30px',
         height: '18px',
         '& + span, span + &': {
@@ -67,7 +67,7 @@ export const switcher = css({
           fontSize: '14px'
         }
       },
-      large: {
+      lg: {
         width: '32px',
         height: '20px',
         '& + span, span + &': {
