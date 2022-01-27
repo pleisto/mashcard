@@ -25,24 +25,23 @@ export const SpreadsheetMenu = (options: {
   const { items, onAction } = options
   return (
     <Menu>
-      {items.map(item => {
-        const title = item.title ?? item.name
-        return (
-          <Menu.Item
-            key={item.name}
-            itemKey={item.name}
-            // icon={<MenuIcon>{item.icon}</MenuIcon>} TODO: bugfix
-            label={title}
-            onAction={key => {
-              item.onAction?.(key)
-              onAction?.(key)
-            }}
-          >
-            <MenuIcon css={{ marginRight: '10px' }}>{item.icon}</MenuIcon>
-            {title}
-          </Menu.Item>
-        )
-      })}
+      <Menu.Group>
+        {items.map(item => {
+          const title = item.title ?? item.name
+          return (
+            <Menu.Item
+              key={item.name}
+              itemKey={item.name}
+              icon={item.icon ? <MenuIcon>{item.icon}</MenuIcon> : null}
+              label={title}
+              onAction={key => {
+                item.onAction?.(key)
+                onAction?.(key)
+              }}
+            />
+          )
+        })}
+      </Menu.Group>
     </Menu>
   )
 }

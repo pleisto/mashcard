@@ -129,9 +129,10 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     }
     if (dirtyBlocksMap.current.size === 0 && dirtyToDeleteIds.current.size === 0) {
       isSavingVar(false)
-      // TODO: will not commit repeatedly immediately
-      // } else {
-      //   await commitDirty()
+    } else {
+      setTimeout(() => {
+        void commitDirty()
+      }, 500)
     }
   }
 

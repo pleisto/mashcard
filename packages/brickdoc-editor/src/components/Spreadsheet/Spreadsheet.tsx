@@ -1,14 +1,14 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { DeprecatedInput, Dropdown, Icon } from '@brickdoc/design-system'
+import { DeprecatedInput, Icon } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
+import * as EditorIcon from '../Icon'
 
 import { useSpreadsheet } from './useSpreadsheet'
 import { columnDisplayTitle } from './helper'
 
 import {
-  SpreadsheetMenu,
   SpreadsheetContainer,
   SpreadsheetView,
   SpreadsheetHeader,
@@ -110,26 +110,22 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     }
   }, [dragging, moveRow, moveColumn, spreadsheetContext])
 
-  const menu = SpreadsheetMenu({
-    items: documentEditable
-      ? [
-          {
-            name: 'delete',
-            title: t('spreadsheet.delete'),
-            icon: <Icon.Delete />,
-            onAction: deleteNode
-          },
-          {
-            name: 'addRow',
-            title: t('spreadsheet.row.add_below'),
-            icon: <Icon.ArrowDown />,
-            onAction: () => addRow(0)
-          }
-        ]
-      : []
-  })
-
-  const actionOptions: BlockContainerProps['actionOptions'] = []
+  const actionOptions: BlockContainerProps['actionOptions'] = documentEditable
+    ? [
+        'delete',
+        {
+          type: 'item',
+          name: 'addRow',
+          label: t('spreadsheet.row.add_below'),
+          icon: (
+            <EditorIcon.IconBackground>
+              <Icon.ArrowDown />
+            </EditorIcon.IconBackground>
+          ),
+          onAction: () => addRow(0)
+        }
+      ]
+    : []
 
   return (
     <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions}>
@@ -147,17 +143,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
           )}
           <SpreadsheetView>
             <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
-              <SpreadsheetHeaderColumn className="row-action-panel" context={spreadsheetContext} columnId="first">
-                <div className="row-action-panel-layer">
-                  <Dropdown
-                    className="spreadsheet-menu-button"
-                    trigger={['click', 'contextMenu']}
-                    placement="bottomEnd"
-                    overlay={menu}>
-                    <Icon.HamburgerButton />
-                  </Dropdown>
-                </div>
-              </SpreadsheetHeaderColumn>
+              <SpreadsheetHeaderColumn className="row-action-panel" context={spreadsheetContext} columnId="first" />
               {columns.map((column, i) => {
                 const handleTitleSave = (value: string): void => {
                   updateColumn({ ...column, title: value })
@@ -191,7 +177,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           ]
                         : []
                     }
-                    draggable={documentEditable}>
+                    draggable={documentEditable}
+                  >
                     {documentEditable ? (
                       <SpreadsheetEditable
                         context={spreadsheetContext}
@@ -238,14 +225,16 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           ]
                         : []
                     }
-                    draggable={documentEditable}>
+                    draggable={documentEditable}
+                  >
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
+                        >
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}

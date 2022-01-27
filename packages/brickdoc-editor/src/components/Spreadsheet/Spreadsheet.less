@@ -12,6 +12,9 @@
 
 .brickdoc {
   .ProseMirror {
+    .node-spreadsheetBlock {
+      
+    }
     .brickdoc-spreadsheet-block {
       overflow:auto;
       white-space: nowrap;
@@ -19,6 +22,7 @@
       padding-left: @table-action-layer-width;
       padding-bottom: 30px;
       position: relative;
+
       input {
         font-weight: normal;
         padding: 0;
@@ -75,11 +79,6 @@
               top: 0;
               bottom: 0;
               color: @table-header-color;
-              .spreadsheet-menu-button {
-                position: absolute;
-                right: 14px;
-                top: 3px;
-              }
               .row-number, .row-action {
                 border-radius: 0;
                 border-left: 0;
