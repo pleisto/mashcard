@@ -29,10 +29,13 @@ export function usePlaceholder(editor: Editor, node: ProsemirrorNode, getPos: Pa
       }
     }
 
+    listener()
     editor.on('selectionUpdate', listener)
+    editor.on('update', listener)
 
     return () => {
       editor.off('selectionUpdate', listener)
+      editor.off('update', listener)
     }
   }, [editor, getPos, insideList, t])
 

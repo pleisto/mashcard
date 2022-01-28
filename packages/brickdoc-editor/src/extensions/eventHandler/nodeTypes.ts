@@ -5,6 +5,7 @@ export const unselectableNodes = [
   'tableBlock',
   'horizontalRule',
   'tocBlock',
-  'subPageMenuBlock'
+  'subPageMenuBlock',
+  'spreadsheetBlock'
 ]
 export const paragraphLikeNodes = ['paragraph', 'heading']

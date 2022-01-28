@@ -28,3 +28,32 @@ exports[`ParagraphBlock matches snapshot correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`ParagraphBlock shows placeholder normally 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="position: relative; pointer-events: none; white-space: normal;"
+>
+  <div
+    class="brd-c-bfhcug"
+  >
+    <p
+      as="p"
+      class="brd-c-hMGRDP"
+      data-node-view-content=""
+      data-placeholder="placeholder"
+      style="white-space: pre-wrap;"
+    />
+    <button
+      aria-haspopup="dialog"
+      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      role="button"
+      type="button"
+    >
+      <i
+        data-mock-icon="DragSecondary"
+      />
+    </button>
+  </div>
+</div>
+`;
