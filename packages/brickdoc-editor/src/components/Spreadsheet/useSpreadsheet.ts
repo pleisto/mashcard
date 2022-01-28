@@ -263,12 +263,14 @@ export const useSpreadsheet = (options: {
 
   React.useEffect(() => {
     if (loaded.current) {
-      if (columns.length === 0 && latestRowsCount.current === 0) {
+      if (latestRowsCount.current === 0) {
+        saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)])
+      }
+      if (columns.length === 0) {
         updateSpreadsheetAttributes([
           { uuid: uuid(), sort: 0 },
           { uuid: uuid(), sort: 1 }
         ])
-        saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)])
       }
     } else {
       BrickdocEventBus.dispatch(loadSpreadsheetBlocks(parentId))

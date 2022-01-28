@@ -3,7 +3,7 @@ import { NodeViewProps } from '@tiptap/react'
 import { DeprecatedInput, Icon } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
-import * as EditorIcon from '../Icon'
+import { MenuIcon } from '../SlashMenu/styled'
 
 import { useSpreadsheet } from './useSpreadsheet'
 import { columnDisplayTitle } from './helper'
@@ -122,15 +122,15 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
             name: 'addRow',
             label: t('spreadsheet.row.add_below'),
             icon: (
-              <EditorIcon.IconBackground>
+              <MenuIcon>
                 <Icon.ArrowDown />
-              </EditorIcon.IconBackground>
+              </MenuIcon>
             ),
             onAction: () => addRow(0)
           }
         ]
       : [],
-    buttonClassName: ''
+    buttonClassName: 'spreadsheet-action'
   }
 
   return (
@@ -183,7 +183,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           ]
                         : []
                     }
-                    draggable={documentEditable}>
+                    draggable={documentEditable}
+                  >
                     {documentEditable ? (
                       <SpreadsheetEditable
                         context={spreadsheetContext}
@@ -230,14 +231,16 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           ]
                         : []
                     }
-                    draggable={documentEditable}>
+                    draggable={documentEditable}
+                  >
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
+                        >
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
