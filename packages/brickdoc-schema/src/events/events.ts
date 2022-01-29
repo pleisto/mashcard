@@ -72,12 +72,12 @@ export const FormulaEditorSaveEventTrigger = event<{ formulaId: string; rootId: 
 )
 
 export const FormulaEditorUpdateEventTrigger = event<{
-  input: string
+  content: any
   position: number
   rootId: string
   formulaId: string
-}>()('FormulaEditorUpdateEventTrigger', ({ input, position, formulaId, rootId }) => {
-  return { input, position, id: `${rootId},${formulaId}` }
+}>()('FormulaEditorUpdateEventTrigger', ({ content, position, formulaId, rootId }) => {
+  return { content, position, id: `${rootId},${formulaId}` }
 })
 
 export interface ExplorerMenuItem {

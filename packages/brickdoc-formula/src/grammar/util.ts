@@ -1,9 +1,9 @@
 import {
   AnyTypeResult,
+  CodeFragment,
   ErrorMessage,
   ErrorResult,
   ExpressionType,
-  FormulaCodeFragmentAttrs,
   FormulaColorType,
   FormulaType,
   FunctionContext
@@ -100,7 +100,7 @@ export const resultToColorType = ({ type, result }: AnyTypeResult): FormulaColor
   return type
 }
 
-export const attrsToColorType = ({ code, value }: FormulaCodeFragmentAttrs): FormulaColorType => {
+export const attrsToColorType = ({ code, value }: CodeFragment): FormulaColorType => {
   switch (code) {
     case 'NullLiteral':
       return 'null'

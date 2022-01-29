@@ -1,4 +1,4 @@
-import { CodeFragment, FormulaCodeFragmentAttrs } from '@brickdoc/formula'
+import { CodeFragment } from '@brickdoc/formula'
 import { JSONContent } from '@tiptap/core'
 
 export const buildJSONContentByDefinition = (definition: string | undefined): JSONContent | undefined => {
@@ -70,23 +70,16 @@ export const codeFragmentsToJSONContentTotal = (codeFragments: CodeFragment[] | 
 export const codeFragmentToJSONContentArray = (codeFragment: CodeFragment): JSONContent[] => {
   const result: JSONContent[] = []
 
-  const attr = attrsToJSONContent({
-    hidden: codeFragment.hidden,
-    display: codeFragment.display,
-    value: codeFragment.name,
-    code: codeFragment.code,
-    type: codeFragment.type,
-    error: codeFragment.errors.length === 0 ? '' : codeFragment.errors[0].message
-  })
-  if (codeFragment.display()) {
+  const attr = attrsToJSONContent(codeFragment)
+  if (codeFragment.display) {
     result.push(attr)
   }
 
   return result
 }
 
-export const attrsToJSONContent = (attrs: FormulaCodeFragmentAttrs): JSONContent => {
-  return { type: 'text', text: attrs.display(), marks: [{ type: 'FormulaType', attrs }] }
+export const attrsToJSONContent = (attrs: CodeFragment): JSONContent => {
+  return { type: 'text', text: attrs.display, marks: [{ type: 'FormulaType', attrs }] }
 }
 
 export const positionBasedContentArrayToInput = (
@@ -144,24 +137,16 @@ const JSONContentToText = (c: JSONContent, textOnly: boolean = false): string =>
     return text
   }
 
-  const attrs: FormulaCodeFragmentAttrs | undefined = mark.attrs as FormulaCodeFragmentAttrs
+  const attrs: CodeFragment | undefined = mark.attrs as CodeFragment
 
   if (!attrs) {
     console.error('JSONContentToText: no attrs', c)
     return text
   }
 
-  if (attrs.display() === text) {
+  if (attrs.display === text) {
     return attrs.value
   }
-
-  // if (text.startsWith(attrs.display)) {
-  //   return `${attrs.value}${text.slice(attrs.display.length)}`
-  // }
-
-  // if (text.endsWith(attrs.display)) {
-  //   return `${text.slice(0, -attrs.display.length)}${attrs.value}`
-  // }
 
   return text
 }

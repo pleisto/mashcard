@@ -149,7 +149,7 @@ export const abbrev = ({
     modified = true
   })
 
-  // console.log({ newInput, input })
+  // console.log({ newInput, input, tokens })
 
   if (modified) {
     return { lexResult: lexer.tokenize(newInput), newInput, newPosition }
@@ -200,13 +200,11 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
       codeFragments: [
         {
           code: 'other',
-          name: input,
-          spaceAfter: false,
-          hidden: false,
-          spaceBefore: false,
+          value: input,
           type: 'any',
-          display: () => input,
-          errors: []
+          display: input,
+          errors: [],
+          attrs: undefined
         }
       ]
     }
@@ -280,13 +278,11 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
       if (restImages.length > 0) {
         codeFragments.push({
           code: 'other',
-          name: restImages,
-          spaceAfter: false,
-          hidden: false,
-          spaceBefore: false,
+          value: restImages,
           type: 'any',
-          display: () => restImages,
-          errors: errorMessages
+          display: restImages,
+          errors: errorMessages,
+          attrs: undefined
         })
       }
     } else {
@@ -304,13 +300,11 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
 
   const spaceCodeFragment: CodeFragment = {
     code: 'Space',
-    name: ' ',
-    hidden: false,
-    spaceAfter: false,
-    spaceBefore: false,
+    value: ' ',
     type: 'any',
-    display: () => ' ',
-    errors: []
+    display: ' ',
+    errors: [],
+    attrs: undefined
   }
 
   // TODO support space
@@ -333,7 +327,7 @@ export const parse = ({ ctx, position: pos }: { ctx: FunctionContext; position?:
 
   const spaceCount = input.length - input.trimEnd().length
   if (spaceCount) {
-    finalCodeFragments.push({ ...spaceCodeFragment, name: ' '.repeat(spaceCount) })
+    finalCodeFragments.push({ ...spaceCodeFragment, value: ' '.repeat(spaceCount) })
   }
 
   returnValue.codeFragments = finalCodeFragments

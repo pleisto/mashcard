@@ -34,7 +34,11 @@ const COMPLETION_STYLE_META: {
     render: (completion: Completion, blockId: string) => {
       const { preview: block } = completion as BlockCompletion
 
-      return <span>Block: {block.name()}</span>
+      return (
+        <div className="autocomplete-preview-block">
+          <div className="autocomplete-preview-block-name">{block.name()}</div>
+        </div>
+      )
     }
   },
   column: {
@@ -64,30 +68,14 @@ const COMPLETION_STYLE_META: {
     Icon: <Icon.Table />,
     render: (completion: Completion, blockId: string) => {
       const { preview } = completion as SpreadsheetCompletion
-      const [header, ...body] = preview.toArray()
-      const borderStyle = { border: '1px solid' }
 
       return (
-        <table style={{ ...borderStyle, width: '100%', height: '100%' }}>
-          <tbody>
-            <tr>
-              {header.map((o, idx) => (
-                <th style={borderStyle} key={idx}>
-                  {o}
-                </th>
-              ))}
-            </tr>
-            {body.map((row, idx) => (
-              <tr key={idx}>
-                {row.map((o, rowIdx) => (
-                  <td style={borderStyle} key={rowIdx}>
-                    {o}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="autocomplete-preview-spreadsheet">
+          <div className="autocomplete-preview-spreadsheet-name">{preview.name()}</div>
+          <div className="autocomplete-preview-spreadsheet-description">
+            A table with {preview.rowCount()} rows and {preview.columnCount()} columns.
+          </div>
+        </div>
       )
     }
   },
@@ -226,7 +214,7 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
               onClick={() => {
                 setCompletion(com => ({ ...com, activeCompletion: c, activeCompletionIndex: index }))
               }}
-              key={c.value}
+              key={index}
               onKeyDown={onKeyDown}
               className={cx('autocomplete-list-item', {
                 active: c.value === completion.activeCompletion?.value

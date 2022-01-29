@@ -330,6 +330,18 @@ export interface Argument {
 }
 
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
+export type ComplexCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block'
+export type SimpleCodeFragmentType =
+  | 'FunctionName'
+  | 'Function'
+  | 'StringLiteral'
+  | 'NumberLiteral'
+  | 'BooleanLiteral'
+  | 'NullLiteral'
+  | 'Dot'
+  | 'Equal'
+export type SpecialCodeFragmentType = 'unknown' | 'other' | 'Space'
+export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
 
 interface BaseCompletion {
   readonly kind: CompletionKind
@@ -384,7 +396,7 @@ export type Completion =
   | BlockCompletion
 
 export interface BaseFormulaName {
-  kind: SpecialCodeFragmentType
+  kind: ComplexCodeFragmentType
   render: (namespaceIsExist: boolean) => string
   prefixLength: (namespaceIsExist: boolean) => number
   key: string
@@ -513,36 +525,27 @@ export interface FunctionClause<T extends FormulaType> extends BaseFunctionClaus
   readonly examples: [ExampleWithCodeFragments<T>, ...Array<ExampleWithCodeFragments<T>>]
 }
 
-export interface FormulaCodeFragmentAttrs {
-  readonly display: () => string
+export interface BaseCodeFragment {
+  readonly code: CodeFragmentCodes
   readonly value: string
-  readonly code: string
-  readonly type: FormulaType
-  readonly error: string
-  readonly hidden: boolean
-}
-
-interface BaseCodeFragment {
-  readonly code: string
-  readonly hidden: boolean
-  readonly name: string
-  readonly spaceBefore: boolean
-  readonly namespaceId?: NamespaceId
-  readonly spaceAfter: boolean
-  readonly display: () => string
+  readonly display: string
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
 }
-
-export type SpecialCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block'
-
 export interface SpecialCodeFragment extends BaseCodeFragment {
-  readonly code: SpecialCodeFragmentType
-  readonly namespaceId: NamespaceId
+  readonly code: ComplexCodeFragmentType
+  readonly attrs: CodeFragmentAttrs
+}
+export interface OtherCodeFragment extends BaseCodeFragment {
+  readonly code: Exclude<CodeFragmentCodes, ComplexCodeFragmentType>
+  readonly attrs: undefined
 }
 
-export interface OtherCodeFragment extends BaseCodeFragment {
-  readonly code: Exclude<string, SpecialCodeFragmentType>
+export interface CodeFragmentAttrs {
+  readonly kind: ComplexCodeFragmentType
+  readonly namespaceId: NamespaceId
+  readonly id: uuid
+  readonly name: string
 }
 
 export type CodeFragment = SpecialCodeFragment | OtherCodeFragment

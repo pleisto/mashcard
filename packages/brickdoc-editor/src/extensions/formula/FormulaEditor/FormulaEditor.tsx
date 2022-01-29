@@ -6,7 +6,6 @@ import { useEditor, EditorContent, JSONContent, EditorEvents } from '@tiptap/rea
 import { HandleKeyDownExtension } from './extensions/handleKeyDown'
 import './FormulaEditor.less'
 import { FormulaTypeExtension } from './extensions/formulaType'
-import { contentArrayToInput, fetchJSONContentArray } from '../../../helpers'
 import { BrickdocEventBus, FormulaEditorUpdateEventTrigger } from '@brickdoc/schema'
 
 export interface EditorContentType {
@@ -50,8 +49,6 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
       }
     },
     onUpdate: ({ editor, transaction }) => {
-      const jsonContent = editor.getJSON()
-      const input = contentArrayToInput(fetchJSONContentArray(jsonContent))
       const editorPosition = transaction.selection.from - 1
       if (transaction.selection.from === transaction.selection.to && editorPosition >= 1) {
         const blocks: JSONContent[] = editor.getJSON().content?.[0].content ?? []
@@ -78,8 +75,9 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
       }
 
       if (rootId && formulaId) {
+        const jsonContent = editor.getJSON()
         BrickdocEventBus.dispatch(
-          FormulaEditorUpdateEventTrigger({ position: editorPosition, input, formulaId, rootId })
+          FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
         )
       }
     }

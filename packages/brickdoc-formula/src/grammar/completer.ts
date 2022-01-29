@@ -33,7 +33,7 @@ export const complete = ({
   let input = ''
 
   codeFragments.every(codeFragment => {
-    input = input.concat(codeFragment.display())
+    input = input.concat(codeFragment.display)
     if (input.length <= position) {
       return true
     }
@@ -46,8 +46,8 @@ export const complete = ({
     return completions
   }
 
-  const { code, name } = lastCodeFragment
-  const tokenLowerCase = name.toLowerCase()
+  const { code, value } = lastCodeFragment
+  const tokenLowerCase = value.toLowerCase()
   // const lastTokenText = lastToken.image
 
   if (code === 'Dot') {
@@ -65,14 +65,14 @@ export const complete = ({
       switch (last2CodeFragment.type) {
         case 'Spreadsheet':
           completions = completions.map(c => {
-            return c.kind === 'column' && c.preview.namespaceId === last2CodeFragment.namespaceId
+            return c.kind === 'column' && c.preview.namespaceId === last2CodeFragment.attrs?.id
               ? { ...c, weight: c.weight + 1000 }
               : c
           })
           break
         case 'Block':
           completions = completions.map(c => {
-            return c.kind === 'variable' && c.preview.t.namespaceId === last2CodeFragment.namespaceId
+            return c.kind === 'variable' && c.preview.t.namespaceId === last2CodeFragment.attrs?.id
               ? { ...c, weight: c.weight + 1000 }
               : c
           })
@@ -93,17 +93,17 @@ export const complete = ({
 
   if (['FunctionName', 'Function'].includes(code)) {
     completions = completions.map(c => {
-      let replacements: string[] = [name]
+      let replacements: string[] = [value]
 
       if (c.kind === 'column') {
-        replacements = [`${blockKey(c.preview.namespaceId)}.${name}`, ...replacements]
+        replacements = [`${blockKey(c.preview.namespaceId)}.${value}`, ...replacements]
       }
 
       if (c.kind === 'variable') {
-        replacements = [`${blockKey(c.preview.t.namespaceId)}.${name}`, ...replacements]
+        replacements = [`${blockKey(c.preview.t.namespaceId)}.${value}`, ...replacements]
       }
 
-      if (c.name === name) {
+      if (c.name === value) {
         return { ...c, weight: c.weight + 1000, replacements: [...replacements, ...c.replacements] }
       }
 

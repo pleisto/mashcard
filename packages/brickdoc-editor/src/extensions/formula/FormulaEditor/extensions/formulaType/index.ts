@@ -1,5 +1,5 @@
-import { attrsToColorType, FormulaCodeFragmentAttrs } from '@brickdoc/formula'
-import { JSONContent, Mark, mergeAttributes } from '@tiptap/core'
+import { attrsToColorType, CodeFragment } from '@brickdoc/formula'
+import { Attribute, JSONContent, Mark, mergeAttributes } from '@tiptap/core'
 import { FORMULA_COLORS } from '../../../../../helpers/color'
 import { SetDocAttrStep } from '../../../../sync/SetDocAttrStep'
 
@@ -28,16 +28,17 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
   },
 
   addAttributes() {
-    return {
+    const attrs: Record<Exclude<keyof CodeFragment, 'attrs'>, Attribute> = {
       code: {
         default: null,
+        keepOnSplit: true,
         parseHTML: element => element.getAttribute('data-code'),
         renderHTML: attributes => {
           if (!attributes.code) {
             return {}
           }
 
-          const colorMeta = FORMULA_COLORS[attrsToColorType(attributes as FormulaCodeFragmentAttrs)]
+          const colorMeta = FORMULA_COLORS[attrsToColorType(attributes as CodeFragment)]
 
           if (!colorMeta) {
             return {
@@ -52,16 +53,18 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
           }
         }
       },
-      error: {
-        default: null,
-        parseHTML: element => element.getAttribute('data-error'),
+      errors: {
+        default: [],
+        keepOnSplit: true,
+        parseHTML: element => element.getAttribute('data-errors'),
         renderHTML: attributes => {
-          if (!attributes.error) {
+          const errors = attributes.errors
+          if (!errors || errors.length === 0) {
             return {}
           }
 
           return {
-            'data-error': attributes.error,
+            'data-errors': attributes.errors[0].message,
             // TODO refactor this
             style: 'text-decoration: underline; text-decoration-color: #D43730;'
           }
@@ -69,6 +72,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
       },
       type: {
         default: null,
+        keepOnSplit: true,
         parseHTML: element => element.getAttribute('data-type'),
         renderHTML: attributes => {
           if (!attributes.type) {
@@ -82,6 +86,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
       },
       display: {
         default: null,
+        keepOnSplit: true,
         parseHTML: element => element.getAttribute('data-display'),
         renderHTML: attributes => {
           if (!attributes.display) {
@@ -95,6 +100,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
       },
       value: {
         default: null,
+        keepOnSplit: true,
         parseHTML: element => element.getAttribute('data-value'),
         renderHTML: attributes => {
           if (!attributes.value) {
@@ -107,6 +113,8 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
         }
       }
     }
+
+    return attrs
   },
 
   parseHTML() {

@@ -14,9 +14,10 @@ import {
   BlockCompletion,
   BlockFormulaName,
   ContextInterface,
-  FunctionKey
+  FunctionKey,
+  CodeFragmentAttrs
 } from '../types'
-import { ColumnType, SpreadsheetType } from '../controls'
+import { BlockType, ColumnType, SpreadsheetType } from '../controls'
 import { BlockClass } from '../controls/block'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
@@ -25,6 +26,34 @@ export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): V
 export const blockKey = (namespaceId: NamespaceId): BlockKey => `#${namespaceId}`
 
 export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `#${namespaceId}.${columnId}`
+
+export const block2attrs = (block: BlockType): CodeFragmentAttrs => ({
+  kind: 'Block',
+  namespaceId: block.id,
+  id: block.id,
+  name: block.name()
+})
+
+export const variable2attrs = (variable: VariableInterface): CodeFragmentAttrs => ({
+  kind: 'Variable',
+  namespaceId: variable.t.namespaceId,
+  id: variable.t.variableId,
+  name: variable.t.name
+})
+
+export const spreadsheet2attrs = (spreadsheet: SpreadsheetType): CodeFragmentAttrs => ({
+  kind: 'Spreadsheet',
+  namespaceId: spreadsheet.blockId,
+  id: spreadsheet.blockId,
+  name: spreadsheet.name()
+})
+
+export const column2attrs = (column: ColumnType): CodeFragmentAttrs => ({
+  kind: 'Column',
+  namespaceId: column.spreadsheet.blockId,
+  id: column.columnId,
+  name: column.name
+})
 
 export const block2completion = (
   ctx: ContextInterface,
@@ -43,15 +72,12 @@ export const block2completion = (
     preview: block,
     renderDescription: blockId => '',
     codeFragment: {
-      namespaceId: key,
-      hidden: false,
-      display: block.name,
+      display: block.name(),
       errors: [],
-      name: value,
+      value,
       code: 'Block',
-      spaceBefore: false,
-      spaceAfter: false,
-      type: 'any'
+      type: 'any',
+      attrs: block2attrs(block)
     }
   }
 }
@@ -69,15 +95,12 @@ export const spreadsheet2completion = (spreadsheet: SpreadsheetType): Spreadshee
     preview: spreadsheet,
     renderDescription: blockId => '',
     codeFragment: {
-      namespaceId: spreadsheet.blockId,
-      hidden: false,
-      display: spreadsheet.name,
+      display: spreadsheet.name(),
       errors: [],
-      name: value,
+      value,
       code: 'Spreadsheet',
-      spaceBefore: false,
-      spaceAfter: false,
-      type: 'any'
+      type: 'any',
+      attrs: spreadsheet2attrs(spreadsheet)
     }
   }
 }
@@ -100,15 +123,12 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
     preview: column,
     renderDescription: blockId => column.spreadsheet.name(),
     codeFragment: {
-      namespaceId: column.namespaceId,
-      hidden: false,
-      display: () => column.name,
+      display: column.name,
       errors: [],
-      name: value,
+      value,
       code: 'Column',
-      spaceBefore: false,
-      spaceAfter: false,
-      type: 'any'
+      type: 'any',
+      attrs: column2attrs(column)
     }
   }
 }
@@ -126,15 +146,12 @@ export const variable2completion = (variable: VariableInterface, weight: number)
     positionChange: value.length,
     renderDescription: blockId => (blockId === variable.t.namespaceId ? '' : variable.namespaceName()),
     codeFragment: {
-      namespaceId: variable.t.namespaceId,
-      hidden: false,
-      display: () => variable.t.name,
+      display: variable.t.name,
       errors: [],
-      name: value,
+      value,
       code: 'Variable',
-      spaceBefore: false,
-      spaceAfter: false,
-      type: 'any'
+      type: 'any',
+      attrs: variable2attrs(variable)
     }
   }
 }
@@ -152,14 +169,12 @@ export const function2completion = (functionClause: FunctionClause<any>, weight:
     positionChange: value.length - 1,
     renderDescription: blockId => (functionClause.group === 'core' ? '' : functionClause.group),
     codeFragment: {
-      display: () => value,
-      hidden: false,
+      display: value,
       errors: [],
-      name: value,
+      value,
       code: 'Function',
-      spaceBefore: false,
-      spaceAfter: false,
-      type: 'any'
+      type: 'any',
+      attrs: undefined
     }
   }
 }

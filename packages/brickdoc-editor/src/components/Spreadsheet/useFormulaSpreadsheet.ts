@@ -25,7 +25,7 @@ export function useFormulaSpreadsheet({
 
   React.useEffect(() => {
     if (!formulaContext) return
-    const spreadsheetName = title ?? 'Untitled'
+    const spreadsheetName = title || 'Untitled Spreadsheet'
     const columnData: ColumnInitializer[] = columns.map(column => ({
       columnId: column.uuid,
       namespaceId: blockId,

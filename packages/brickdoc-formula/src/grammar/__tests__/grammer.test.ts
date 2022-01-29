@@ -882,6 +882,12 @@ const testCases: TestCase[] = [
     errorMessage: 'Parse error:'
   },
   {
+    input: '= 1a1',
+    label: 'TODO 1a1',
+    parseErrorType: 'syntax',
+    errorMessage: 'Not all input parsed: a1'
+  },
+  {
     input: '=varvarabc中文var',
     label: 'TODO chinese2',
     parseErrorType: 'syntax',
