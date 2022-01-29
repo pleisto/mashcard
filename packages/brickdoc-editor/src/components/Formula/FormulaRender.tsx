@@ -24,11 +24,27 @@ import {
 import { FORMULA_COLORS } from '../../helpers/color'
 
 const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType): React.ReactElement => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const spreadsheetContext = useSpreadsheetContext()
   const spreadsheet = result.result
   const columns = spreadsheet.listColumns()
   const rows = spreadsheet.listRows()
+
+  const valuesMatrix = new Map(
+    rows.map(r => {
+      const { rowId } = r
+      return [
+        r.rowId,
+        new Map(columns.map(c => [c.columnId, spreadsheet.findCellValue({ columnId: c.columnId, rowId }) ?? '']))
+      ]
+    })
+  )
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const spreadsheetContext = useSpreadsheetContext({
+    rowIds: rows.map(r => r.rowId),
+    columnIds: columns.map(c => c.columnId),
+    columnHeaders: new Map(columns.map(c => [c.columnId, c.name])),
+    valuesMatrix
+  })
   return (
     <span className="brickdoc-formula-spreadsheet">
       <SpreadsheetContainer>
@@ -51,8 +67,9 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
                     <SpreadsheetCellContainer
                       key={c.columnId}
                       context={spreadsheetContext}
-                      cellId={{ rowId, columnId: c.columnId }}>
-                      <div className="column">{spreadsheet.findCellValue({ columnId: c.columnId, rowId })}</div>
+                      cellId={{ rowId, columnId: c.columnId }}
+                    >
+                      <div className="column">{valuesMatrix.get(rowId)?.get(c.columnId)}</div>
                     </SpreadsheetCellContainer>
                   ))}
                 </SpreadsheetRow>

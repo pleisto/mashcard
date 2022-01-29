@@ -25,6 +25,7 @@ export interface SpreadsheetRows extends Array<BlockInput> {}
 export interface SpreadsheetCellsMap extends Map<string, Map<string, BlockInput>> {}
 
 export const useSpreadsheet = (options: {
+  isNew: boolean
   parentId: string
   data: Record<string, any>
   updateAttributeData: (data: Record<string, any>) => void
@@ -39,14 +40,18 @@ export const useSpreadsheet = (options: {
   removeRow: (index: number) => void
   moveRow: (srcId: string, targetId: string) => void
   getCellBlock: (rowId: string, columnId: string) => BlockInput
+  // getCellBlockByIdx: (rowIdx: number, columnIdx: number) => BlockInput
+  // getCellIdxByBlockId: (cellId: string) => ([number, number] | undefined)
   saveCellBlock: (block: BlockInput) => void
+  cellsMap: SpreadsheetCellsMap
 } => {
-  const { parentId, data, updateAttributeData } = options
+  const { isNew, parentId, data, updateAttributeData } = options
   const [columns, setColumns] = React.useState<SpreadsheetColumns>(data.columns ?? [])
   // const latestColumns = React.useRef<SpreadsheetColumns>(columns)
   const latestRowsCount = React.useRef<number>(data.rowsCount || 0)
   // const latestRows = React.useRef<SpreadsheetRows>([])
 
+  const isNewRef = React.useRef<boolean>(isNew)
   const [rows, setRows] = React.useState<SpreadsheetRows>([])
 
   const blocksMap = React.useRef<Map<string, BlockInput>>(new Map<string, BlockInput>())
@@ -64,7 +69,7 @@ export const useSpreadsheet = (options: {
     [updateAttributeData, data]
   )
 
-  const loaded = React.useRef(columns.length === 0 && data.rowsCount === 0)
+  const loaded = React.useRef(isNew)
 
   const getRowBlock = React.useCallback(
     (index: number) => {
@@ -253,6 +258,31 @@ export const useSpreadsheet = (options: {
     return block
   }
 
+  // const getCellBlockByIdx = React.useCallback(
+  //   (rowIdx: number, columnIdx: number): BlockInput => {
+  //     return getCellBlock(
+  //       rows[rowIdx].id,
+  //       columns[columnIdx].uuid
+  //     )
+  //   },
+  //   [rows, columns]
+  // )
+
+  // const getCellIdxByBlockId = React.useCallback(
+  //   (blockId: string): ([number, number] | undefined) => {
+  //     const block = blocksMap.current.get(blockId)
+  //     if (block) {
+  //       const rowId = block.parentId
+  //       const { columnId } = block.data
+  //       const rowIdx = rows.findIndex(row => row.id === rowId)
+  //       const columnIdx = columns.findIndex(column => column.uuid === columnId)
+  //       return [rowIdx, columnIdx]
+  //     }
+  //     return undefined
+  //   },
+  //   [rows, columns]
+  // )
+
   const saveCellBlock = React.useCallback((block: BlockInput): void => {
     console.log(`Saving cell block`, block)
     setBlockToCellsMap(block)
@@ -262,17 +292,11 @@ export const useSpreadsheet = (options: {
   }, [])
 
   React.useEffect(() => {
-    if (loaded.current) {
-      if (latestRowsCount.current === 0) {
-        saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)])
-      }
-      if (columns.length === 0) {
-        updateSpreadsheetAttributes([
-          { uuid: uuid(), sort: 0 },
-          { uuid: uuid(), sort: 1 }
-        ])
-      }
-    } else {
+    if (isNewRef.current) {
+      saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)])
+      isNewRef.current = false
+      loaded.current = true
+    } else if (!loaded.current) {
       BrickdocEventBus.dispatch(loadSpreadsheetBlocks(parentId))
     }
   }, [parentId, columns, latestRowsCount, addColumn, saveRowBlocks, getRowBlock, updateSpreadsheetAttributes])
@@ -288,6 +312,9 @@ export const useSpreadsheet = (options: {
     removeRow,
     moveRow,
     getCellBlock,
-    saveCellBlock
+    // getCellBlockByIdx,
+    // getCellIdxByBlock,
+    saveCellBlock,
+    cellsMap: cellsMap.current
   }
 }

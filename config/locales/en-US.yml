@@ -971,6 +971,7 @@ en-US:
         no_content: PAGE NO RESULT
     spreadsheet:
       delete: Delete
+      copy: Copy
       row:
         actions: Actions
         add_above: Add row above

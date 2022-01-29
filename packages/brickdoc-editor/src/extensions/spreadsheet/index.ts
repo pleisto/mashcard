@@ -1,5 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
+import { v4 as uuid } from 'uuid'
 import { Spreadsheet } from '../../components'
 
 declare module '@tiptap/core' {
@@ -27,6 +28,9 @@ export const SpreadsheetBlockExtension = Node.create<SpreadsheetBlockOptions>({
 
   addAttributes() {
     return {
+      isNew: {
+        default: false
+      },
       data: {
         default: {
           columns: [],
@@ -60,7 +64,24 @@ export const SpreadsheetBlockExtension = Node.create<SpreadsheetBlockOptions>({
       setSpreadsheetBlock:
         (position?: number) =>
         ({ chain }) => {
-          return chain().insertBlockAt({ type: this.name }, position).run()
+          return chain()
+            .insertBlockAt(
+              {
+                type: this.name,
+                attrs: {
+                  isNew: true,
+                  data: {
+                    columns: [
+                      { uuid: uuid(), sort: 0 },
+                      { uuid: uuid(), sort: 1 }
+                    ],
+                    rowCount: 0
+                  }
+                }
+              },
+              position
+            )
+            .run()
         }
     }
   }
