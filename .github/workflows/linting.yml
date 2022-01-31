@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ES files
         id: changed-es-files
-        uses: tj-actions/changed-files@v12
+        uses: tj-actions/changed-files@v14.1
         with:
           files: |
             .(ts|tsx|js|jsx)$
@@ -54,7 +54,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ruby files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v12
+        uses: tj-actions/changed-files@v14.1
         with:
           files: |
             .(rb)$
