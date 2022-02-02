@@ -1,10 +1,16 @@
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import type { DirectionType } from '../config-provider'
 import type { SizeType } from '../config-provider/SizeContext'
 import type { ClearableInputProps } from './ClearableLabeledInput'
 import type { InputProps } from './Input'
 
-export function getInputClassName(prefixCls: string, bordered: boolean, size?: SizeType, disabled?: boolean, direction?: DirectionType) {
+export function getInputClassName(
+  prefixCls: string,
+  bordered: boolean,
+  size?: SizeType,
+  disabled?: boolean,
+  direction?: DirectionType
+) {
   return classNames(prefixCls, {
     [`${prefixCls}-sm`]: size === 'small',
     [`${prefixCls}-lg`]: size === 'large',

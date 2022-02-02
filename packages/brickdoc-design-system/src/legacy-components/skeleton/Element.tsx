@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 
 export interface SkeletonElementProps {
   prefixCls?: string

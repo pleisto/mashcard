@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { useCountDown } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, toast } from '@brickdoc/design-system'
+import { Button, toast, useCountDown } from '@brickdoc/design-system'
 import { Success } from '@brickdoc/design-icons'
 import { mutationResultHandler, millisecondsToSeconds } from '@/common/utils'
 import { useUserForgetPasswordMailSendMutation } from '@/BrickdocGraphQL'

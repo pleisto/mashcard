@@ -1,6 +1,5 @@
 import React from 'react'
-import cx from 'classnames'
-import { css, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
+import { cx, css, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
 import { ActionOptionGroup } from '../BlockActions'
 import * as EditorIcon from '../../Icon'
 import { ToolbarOption } from '../../Toolbar'

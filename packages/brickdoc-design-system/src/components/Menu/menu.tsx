@@ -1,5 +1,5 @@
 import React from 'react'
-import cx from 'classnames'
+import { cx } from '../../utilities'
 import { MenuBar as ReakitMenuBar, MenuBarHTMLProps, useMenuBarState } from 'reakit/Menu'
 import { css } from '../../themes'
 import { MenuItem } from './menuItem'

@@ -81,6 +81,9 @@ export const switcher = css({
     disabled: {
       true: {
         cursor: 'not-allowed'
+      },
+      false: {
+        cursor: 'pointer'
       }
     }
   },

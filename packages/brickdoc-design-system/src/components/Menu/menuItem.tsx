@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { MenuItem as ReakitMenuItem, MenuItemHTMLProps } from 'reakit/Menu'
-import cx from 'classnames'
+import { cx } from '../../utilities'
 import { css, theme, styled } from '../../themes'
 import { MenuActionContext, MenuContext } from './context'
 import { itemMinHeight, itemSpacing } from './styles/index.style'

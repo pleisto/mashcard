@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import toArray from 'rc-util/lib/Children/toArray'
 
 import './style'
@@ -101,7 +101,8 @@ const Space: React.FC<SpaceProps> = props => {
         index={i}
         marginDirection={marginDirection}
         split={split}
-        wrap={wrap}>
+        wrap={wrap}
+      >
         {child}
       </Item>
     )
@@ -142,7 +143,8 @@ const Space: React.FC<SpaceProps> = props => {
         ...(wrap && { flexWrap: 'wrap', marginBottom: -verticalSize }),
         ...style
       }}
-      {...otherProps}>
+      {...otherProps}
+    >
       <SpaceContext.Provider value={spaceContext}>{nodes}</SpaceContext.Provider>
     </div>
   )

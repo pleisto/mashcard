@@ -6,6 +6,7 @@ import { a11yTest, toStoryTable } from '../../../utilities/testing'
 
 import * as AlertStories from '../alert.stories'
 
+jest.mock('../../../hooks/useId')
 const storyTable = toStoryTable(composeStories(AlertStories))
 
 describe('Alert', () => {

@@ -7,7 +7,7 @@ export default {
   args: {
     disabled: false,
     loading: false,
-    size: 'sm'
+    size: 'md'
   },
   argTypes: {
     name: {
@@ -47,7 +47,7 @@ export default {
     },
     onChange: {
       description:
-        "`(checked: boolean, e: ChangedEvent) => void` Handler that is called when the Switch's selection state changes."
+        "`FormEventHandler<any> & ChangeEventHandler<any>` Handler that is called when the Switch's selection state changes."
     },
     onFocus: {
       description: '`(e: FocusEvent) => void` Handler that is called when the element receives focus.'

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx } from '../../utilities'
 import CSSMotion, { CSSMotionList } from 'rc-motion'
 import { FormItemPrefixContext } from './context'
 import { ConfigContext } from '../config-provider'
@@ -83,7 +83,7 @@ export default function ErrorList({
         const { className: holderClassName, style: holderStyle } = holderProps
 
         return (
-          <div className={classNames(baseClassName, holderClassName, rootClassName)} style={holderStyle}>
+          <div className={cx(baseClassName, holderClassName, rootClassName)} style={holderStyle}>
             <CSSMotionList
               keys={fullKeyList}
               {...collapseMotion}
@@ -97,7 +97,7 @@ export default function ErrorList({
                   <div
                     key={key}
                     role="alert"
-                    className={classNames(itemClassName, {
+                    className={cx(itemClassName, {
                       [`${baseClassName}-${errorStatus}`]: errorStatus
                     })}
                     style={itemStyle}

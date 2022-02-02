@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import Dialog, { ModalFuncProps } from './Modal'
 import ActionButton from '../_util/ActionButton'
 import devWarning from '../_util/devWarning'

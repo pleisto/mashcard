@@ -3,9 +3,8 @@ import { Navigate } from 'react-router'
 
 import { Helmet } from 'react-helmet-async'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
-import { DeprecatedForm, Button, DeprecatedInput, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, Button, DeprecatedInput, toast, useBoolean } from '@brickdoc/design-system'
 import { omit } from 'lodash-es'
-import { useBoolean } from 'ahooks'
 
 import {
   useUserPasswordResetMutation,

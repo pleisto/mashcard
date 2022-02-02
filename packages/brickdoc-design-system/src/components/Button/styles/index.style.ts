@@ -23,9 +23,6 @@ export const buttonStyle = css({
   touchAction: 'manipulation',
   transition: `all .2s cubic-bezier(0.00, 0.00, 0.58, 1.00)`,
   isolation: 'isolation',
-  '&:focus-visible': {
-    include: ['focusOutline']
-  },
   variants: {
     btnType,
     size,

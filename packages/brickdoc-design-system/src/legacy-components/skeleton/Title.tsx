@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 
 export interface SkeletonTitleProps {
   prefixCls?: string

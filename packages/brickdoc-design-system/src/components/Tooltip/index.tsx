@@ -4,7 +4,8 @@ import { BuildInPlacements } from 'rc-trigger'
 import useMergedState from 'rc-util/lib/hooks/useMergedState'
 import { AbstractTriggerProps, getPlacements } from './trigger'
 import { tooltipStyle } from './styles/index.style'
-import { useId, RenderFunction } from '../../utilities'
+import { useId } from '../../hooks'
+import { RenderFunction } from '../../utilities'
 
 interface TooltipPropsWithOverlay extends AbstractTriggerProps {
   title?: React.ReactNode | RenderFunction

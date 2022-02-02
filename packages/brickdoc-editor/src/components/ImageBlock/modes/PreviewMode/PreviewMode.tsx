@@ -1,10 +1,9 @@
 import React from 'react'
-import cx from 'classnames'
 import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { BlockContainer } from '../../../../components'
 import { Resizable } from 're-resizable'
-import { DeprecatedSkeleton } from '@brickdoc/design-system'
+import { DeprecatedSkeleton, cx } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 const MAX_WIDTH = 700
@@ -82,14 +81,16 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
             updateImageAttributes({
               width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
             })
-          }}>
+          }}
+        >
           <ImagePreview
             wrapStyle={{ pointerEvents: 'none', width: '100%' }}
             overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
             isZoomed={showPreview}
             onZoomChange={shouldZoom => {
               setShowPreview(shouldZoom)
-            }}>
+            }}
+          >
             {!loaded && (
               <DeprecatedSkeleton.Image
                 style={

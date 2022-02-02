@@ -81,4 +81,8 @@ Tag component for feedback.
 
 const Template: ComponentStory<typeof Tag> = args => <Tag {...args} />
 export const TagBasic = Template.bind({})
-TagBasic.args = {}
+TagBasic.args = {
+  onClick: e => {
+    console.log(e)
+  }
+}

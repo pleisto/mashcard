@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Dialog from 'rc-dialog'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import { Close as CloseOutlined } from '@brickdoc/design-icons'
 
 import { Button, ButtonProps } from '../../components/Button'

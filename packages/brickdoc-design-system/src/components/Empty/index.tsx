@@ -1,5 +1,5 @@
 import { ForwardRefRenderFunction, createRef, forwardRef } from 'react'
-import { useId } from '@react-aria/utils'
+import { useId } from '../../hooks'
 import { EmptyOrFound } from './EmptyOrFound'
 import { EmptyProps, EmptyType } from './constants'
 import { EmptyRoot, EmptyBody, EmptyDes, EmptyFooter } from './styles/index.style'

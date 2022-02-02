@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import cx from 'classnames'
 import { Editor, Range } from '@tiptap/core'
-import { Avatar } from '@brickdoc/design-system'
+import { Avatar, cx } from '@brickdoc/design-system'
 import './PeoplePanel.less'
 import { EditorContext } from '../../../context/EditorContext'
 

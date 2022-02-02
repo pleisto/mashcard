@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import RowContext from './RowContext'
 import { ConfigContext } from '../config-provider'
 

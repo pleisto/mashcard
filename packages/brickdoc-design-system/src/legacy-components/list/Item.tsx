@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import { ListGridType, ListContext } from './index'
 import { Col } from '../grid'
 import { ConfigContext } from '../config-provider'
@@ -26,7 +26,14 @@ export interface ListItemMetaProps {
   title?: React.ReactNode
 }
 
-export const Meta: React.FC<ListItemMetaProps> = ({ prefixCls: customizePrefixCls, className, avatar, title, description, ...others }) => {
+export const Meta: React.FC<ListItemMetaProps> = ({
+  prefixCls: customizePrefixCls,
+  className,
+  avatar,
+  title,
+  description,
+  ...others
+}) => {
   const { getPrefixCls } = React.useContext(ConfigContext)
 
   const prefixCls = getPrefixCls('list', customizePrefixCls)
@@ -51,7 +58,15 @@ export interface ListItemTypeProps extends React.FC<ListItemProps> {
   Meta: typeof Meta
 }
 
-const Item: ListItemTypeProps = ({ prefixCls: customizePrefixCls, children, actions, extra, className, colStyle, ...others }) => {
+const Item: ListItemTypeProps = ({
+  prefixCls: customizePrefixCls,
+  children,
+  actions,
+  extra,
+  className,
+  colStyle,
+  ...others
+}) => {
   const { grid, itemLayout } = React.useContext(ListContext)
   const { getPrefixCls } = React.useContext(ConfigContext)
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx } from '../../utilities'
 
 import './style'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
@@ -36,7 +36,7 @@ const Divider: React.FC<DividerProps> = props => (
       const prefixCls = getPrefixCls('divider', customizePrefixCls)
       const orientationPrefix = orientation.length > 0 ? `-${orientation}` : orientation
       const hasChildren = !!children
-      const classString = classNames(
+      const classString = cx(
         prefixCls,
         `${prefixCls}-${type}`,
         {

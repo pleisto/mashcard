@@ -1,10 +1,9 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useUserForgetPasswordMailSendMutation, UserForgetPasswordMailSendInput } from '@/BrickdocGraphQL'
-import { useBoolean } from 'ahooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { mutationResultHandler } from '@/common/utils'
-import { DeprecatedForm, DeprecatedInput, Button, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, DeprecatedInput, Button, toast, useBoolean } from '@brickdoc/design-system'
 import { PasswordChangeEmailNotice } from './components/PasswordChangeEmailNotice'
 
 export const ForgetPasswordPage: React.FC = () => {

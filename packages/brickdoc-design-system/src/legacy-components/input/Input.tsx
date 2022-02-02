@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import omit from 'rc-util/lib/omit'
 import type Group from './Group'
 import type Search from './Search'

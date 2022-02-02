@@ -1,5 +1,4 @@
 import { forwardRef, ForwardRefRenderFunction, useCallback } from 'react'
-import { usePress } from '@react-aria/interactions'
 import { Close as CloseOutlined } from '@brickdoc/design-icons'
 
 import type { TagProps } from './constants'
@@ -7,7 +6,7 @@ import { TagRoot } from './styles/index.style'
 
 export * from './TagGroup'
 
-const Tag: ForwardRefRenderFunction<unknown, TagProps> = (props, ref) => {
+const Tag: ForwardRefRenderFunction<HTMLDivElement, TagProps> = (props, ref) => {
   const {
     text,
     value,
@@ -19,13 +18,13 @@ const Tag: ForwardRefRenderFunction<unknown, TagProps> = (props, ref) => {
     prefixCls,
     ...otherProps
   } = props
-  const { pressProps, isPressed } = usePress({
-    onPress: e => {
-      if (e.type === 'press') {
-        onClick?.(e, value ?? text)
-      }
-    }
-  })
+
+  const handleClick = useCallback(
+    e => {
+      onClick?.(e, value ?? text)
+    },
+    [onClick, value, text]
+  )
 
   const handleClose = useCallback(
     e => {
@@ -35,15 +34,16 @@ const Tag: ForwardRefRenderFunction<unknown, TagProps> = (props, ref) => {
   )
 
   const icon = closable ? <CloseOutlined onClick={handleClose} /> : <></>
+  const clickable = closable || onClose !== undefined
 
   return (
     <>
       <TagRoot
         ref={ref}
+        clickable={clickable}
         color={color ?? 'primary'}
         size={size}
-        pressed={isPressed}
-        {...(pressProps as any)}
+        onClick={handleClick}
         {...otherProps}
       >
         {text ?? ''}

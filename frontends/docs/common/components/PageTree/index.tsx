@@ -1,6 +1,4 @@
 import React, { useMemo, useState } from 'react'
-import { find, propEq } from 'ramda'
-import { useSize } from 'ahooks'
 import {
   useGetPageBlocksQuery,
   useBlockMoveMutation,
@@ -14,7 +12,7 @@ import {
 /* import { Tree, TreeProps } from '@brickdoc/design-system' */
 
 // TODO: change to design-system
-import { Tree, TreeProps, TNode, Inserted, css, styled, toast } from '@brickdoc/design-system'
+import { Tree, TreeProps, TNode, Inserted, css, styled, toast, useSize } from '@brickdoc/design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -88,8 +86,9 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     const { sourceId, targetId, position } = attrs
     setDraggable(false)
     let targetParentId: string | undefined | null, sort: number
-    const node = find<Block>(propEq('id', sourceId))((data?.pageBlocks ?? []) as Block[])
-    const targetNode = find<Block>(propEq('id', targetId))((data?.pageBlocks ?? []) as Block[])
+    const pageBlocks = (data?.pageBlocks ?? []) as Block[]
+    const node = pageBlocks.find(i => i.id === sourceId)
+    const targetNode = pageBlocks.find(i => i.id === targetId)
     if (!node?.id) {
       setDraggable(true)
       return

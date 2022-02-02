@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import Col, { ColProps } from '../grid/col'
 import { FormLabelAlign } from './interface'
 import { FormContext, FormContextProps } from './context'

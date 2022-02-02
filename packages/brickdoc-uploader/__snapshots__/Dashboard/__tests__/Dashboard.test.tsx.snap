@@ -9,8 +9,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md uploader-dashboard-navbar-item active"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md uploader-dashboard-navbar-item active"
       role="menuitem"
+      tabindex="0"
       type="button"
     >
       <span>
@@ -21,8 +22,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
       class="uploader-dashboard-action-buttons"
     >
       <button
-        class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-action-button"
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-action-button"
         role="button"
+        tabindex="0"
         type="button"
       >
         <div
@@ -57,8 +59,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
           role="list"
         >
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -70,8 +73,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -83,8 +87,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -96,8 +101,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -109,8 +115,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -122,8 +129,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -135,8 +143,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -148,8 +157,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -161,8 +171,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -174,8 +185,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -187,8 +199,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -200,8 +213,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -213,8 +227,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -226,8 +241,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -239,8 +255,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -252,8 +269,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -265,8 +283,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -278,8 +297,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -291,8 +311,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -304,8 +325,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -317,8 +339,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -330,8 +353,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -343,8 +367,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -356,8 +381,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -369,8 +395,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -382,8 +409,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -395,8 +423,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -408,8 +437,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -421,8 +451,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -434,8 +465,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -447,8 +479,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -460,8 +493,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -473,8 +507,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -486,8 +521,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -499,8 +535,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -512,8 +549,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -525,8 +563,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -538,8 +577,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -551,8 +591,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -564,8 +605,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -577,8 +619,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -590,8 +633,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -603,8 +647,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -616,8 +661,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -629,8 +675,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -642,8 +689,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -655,8 +703,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -668,8 +717,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -681,8 +731,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -694,8 +745,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -707,8 +759,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -720,8 +773,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -733,8 +787,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -746,8 +801,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -759,8 +815,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -772,8 +829,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -785,8 +843,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -798,8 +857,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -811,8 +871,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -824,8 +885,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -837,8 +899,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -850,8 +913,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -863,8 +927,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -876,8 +941,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -889,8 +955,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -902,8 +969,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -915,8 +983,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -928,8 +997,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -941,8 +1011,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -954,8 +1025,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -967,8 +1039,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -980,8 +1053,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -993,8 +1067,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1006,8 +1081,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1019,8 +1095,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1032,8 +1109,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1045,8 +1123,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1058,8 +1137,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1071,8 +1151,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1084,8 +1165,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1097,8 +1179,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1110,8 +1193,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1123,8 +1207,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1136,8 +1221,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1149,8 +1235,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1162,8 +1249,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1175,8 +1263,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1188,8 +1277,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1201,8 +1291,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1214,8 +1305,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1227,8 +1319,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1240,8 +1333,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1253,8 +1347,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1266,8 +1361,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1279,8 +1375,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1292,8 +1389,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1305,8 +1403,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1318,8 +1417,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1331,8 +1431,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1344,8 +1445,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1357,8 +1459,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1370,8 +1473,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1383,8 +1487,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1396,8 +1501,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1409,8 +1515,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1422,8 +1529,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1435,8 +1543,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1448,8 +1557,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1461,8 +1571,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1474,8 +1585,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1487,8 +1599,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1500,8 +1613,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1513,8 +1627,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1526,8 +1641,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1539,8 +1655,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1552,8 +1669,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1565,8 +1683,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1578,8 +1697,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1591,8 +1711,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1604,8 +1725,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1617,8 +1739,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1630,8 +1753,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1643,8 +1767,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1656,8 +1781,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1669,8 +1795,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1682,8 +1809,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1695,8 +1823,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1708,8 +1837,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1721,8 +1851,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1734,8 +1865,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1747,8 +1879,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1760,8 +1893,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1773,8 +1907,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1786,8 +1921,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1799,8 +1935,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1812,8 +1949,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1825,8 +1963,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1838,8 +1977,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1851,8 +1991,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1864,8 +2005,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1877,8 +2019,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1890,8 +2033,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1903,8 +2047,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1916,8 +2061,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1929,8 +2075,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1942,8 +2089,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1955,8 +2103,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1968,8 +2117,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1981,8 +2131,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -1994,8 +2145,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -2007,8 +2159,9 @@ exports[`Dashboard Emoji matches correct snapshot 1`] = `
             </span>
           </button>
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-emoji-item"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-emoji-item"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span
@@ -2038,8 +2191,9 @@ exports[`Dashboard Gallery matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md uploader-dashboard-navbar-item active"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md uploader-dashboard-navbar-item active"
       role="menuitem"
+      tabindex="0"
       type="button"
     >
       <span>
@@ -2050,8 +2204,9 @@ exports[`Dashboard Gallery matches correct snapshot 1`] = `
       class="uploader-dashboard-action-buttons"
     >
       <button
-        class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md dashboard-action-button"
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md dashboard-action-button"
         role="button"
+        tabindex="0"
         type="button"
       >
         <div
@@ -2147,8 +2302,9 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md uploader-dashboard-navbar-item active"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md uploader-dashboard-navbar-item active"
       role="menuitem"
+      tabindex="0"
       type="button"
     >
       <span>
@@ -2168,9 +2324,10 @@ exports[`Dashboard Link matches correct snapshot 1`] = `
       placeholder="Placeholder"
     />
     <button
-      class="brd-c-iYqWMG brd-c-iYqWMG-foEQdY-btnType-primary brd-c-iYqWMG-lKjfQ-size-md dashboard-panel-button"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md dashboard-panel-button"
       data-testid="uploader-dashboard-modules-link-button"
       role="button"
+      tabindex="0"
       type="button"
     >
       <span>
@@ -2195,9 +2352,10 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
     class="uploader-dashboard-navbar"
   >
     <button
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md uploader-dashboard-navbar-item active"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md uploader-dashboard-navbar-item active"
       data-testid="uploader-dashboard-tabs-upload"
       role="menuitem"
+      tabindex="0"
       type="button"
     >
       <span>
@@ -2217,9 +2375,10 @@ exports[`Dashboard Upload matches correct snapshot 1`] = `
       type="file"
     />
     <button
-      class="brd-c-iYqWMG brd-c-iYqWMG-foEQdY-btnType-primary brd-c-iYqWMG-lKjfQ-size-md dashboard-panel-button"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md dashboard-panel-button"
       data-testid="uploader-dashboard-modules-upload-button"
       role="button"
+      tabindex="0"
       type="button"
     >
       <span>

@@ -1,6 +1,6 @@
 import { ForwardRefRenderFunction, forwardRef, ForwardRefExoticComponent, RefAttributes } from 'react'
 import RcSelect, { Option, OptGroup, SelectProps as RcSelectProps, BaseSelectRef } from 'rc-select'
-import cx from 'classnames'
+import { cx } from '../../utilities'
 import { defaultPopupContainer } from '../Tooltip'
 import type { BaseOptionType, DefaultOptionType } from 'rc-select/lib/Select'
 import { selectStyle } from './styles/index.style'

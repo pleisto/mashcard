@@ -161,5 +161,9 @@ export const globalStyleSheet = {
     '100%': {
       transform: 'rotate(360deg)'
     }
+  },
+  // MUI Global State Classes
+  '.Mui-focusVisible': {
+    include: ['focusOutline']
   }
 }

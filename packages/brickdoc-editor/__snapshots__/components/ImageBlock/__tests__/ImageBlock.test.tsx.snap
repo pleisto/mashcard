@@ -70,8 +70,9 @@ exports[`ImageBlock matches correct snapshot 1`] = `
     </div>
     <button
       aria-haspopup="dialog"
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
+      tabindex="0"
       type="button"
     >
       <i

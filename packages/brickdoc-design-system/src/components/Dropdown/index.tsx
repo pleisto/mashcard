@@ -1,8 +1,7 @@
 import { cloneElement, ReactElement, forwardRef, ForwardRefRenderFunction, Children, ReactNode } from 'react'
 import RcDropdown from 'rc-dropdown'
-import { RenderFunction } from '../../utilities'
+import { RenderFunction, cx } from '../../utilities'
 import { defaultPopupContainer } from '../Tooltip'
-import classNames from 'classnames'
 import { dropdownStyle } from './styles/index.style'
 /**
  * Use `start` and `end` instead of `top` and `bottom` to ensure
@@ -92,7 +91,7 @@ const Dropdown: ForwardRefRenderFunction<unknown, DropdownProps> = (props, ref) 
       placement={getPlacement()}
     >
       {cloneElement(child, {
-        className: classNames(`${prefixCls}-trigger`, child?.props?.className),
+        className: cx(`${prefixCls}-trigger`, child?.props?.className),
         'aria-haspopup': 'menu',
         disabled
       })}

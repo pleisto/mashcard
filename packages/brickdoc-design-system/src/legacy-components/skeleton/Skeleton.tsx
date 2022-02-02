@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import Title, { SkeletonTitleProps } from './Title'
 import Paragraph, { SkeletonParagraphProps } from './Paragraph'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'

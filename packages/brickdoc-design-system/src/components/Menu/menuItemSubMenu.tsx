@@ -5,7 +5,7 @@ import {
   MenuItem as ReakitMenuItem,
   useMenuState
 } from 'reakit/Menu'
-import cx from 'classnames'
+import { cx } from '../../utilities'
 import { menubarStyles, MenuProps } from './menu'
 import { MenuContext } from './context'
 import { MenuItem, MenuItemProps } from './menuItem'

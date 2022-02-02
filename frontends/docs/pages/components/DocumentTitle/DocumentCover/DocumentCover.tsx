@@ -1,7 +1,6 @@
 import * as React from 'react'
-import cx from 'classnames'
 import styles from './DocumentCover.module.less'
-import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
+import { Button, Popover, PopoverProps, cx } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'

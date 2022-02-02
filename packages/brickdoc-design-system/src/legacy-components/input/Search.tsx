@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import { composeRef } from 'rc-util/lib/ref'
 import { Search as SearchOutlined } from '@brickdoc/design-icons'
 import Input, { InputProps } from './Input'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { MenuSeparator as ReakitMenuSeparator, MenuSeparatorHTMLProps } from 'reakit/Menu'
-import cx from 'classnames'
+import { cx } from '../../utilities'
 import { css, theme } from '../../themes'
 import { itemSpacing } from './styles/index.style'
 import { MenuContext } from './context'

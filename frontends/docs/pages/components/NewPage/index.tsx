@@ -1,12 +1,11 @@
 import React from 'react'
 import { Add } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../../common/hooks'
-import { Button } from '@brickdoc/design-system'
+import { Button, cx } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
 import { useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
-import classNames from 'classnames'
 
 import styles from './index.module.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -31,7 +30,7 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
     <Button
       data-testid={TEST_ID_ENUM.page.DocumentPage.addPageButton.id}
       type="text"
-      className={classNames([styles.createBtn, 'brd-btn-text'])}
+      className={cx([styles.createBtn, 'brd-btn-text'])}
       onClick={onClick}
       loading={createBlockLoading}
       icon={<Add />}

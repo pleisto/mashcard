@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import cx from 'classnames'
 import { Editor, Range } from '@tiptap/core'
-import { Icon } from '@brickdoc/design-system'
+import { Icon, cx } from '@brickdoc/design-system'
 import './PagePanel.less'
 import { EditorContext } from '../../../context/EditorContext'
 

@@ -39,8 +39,9 @@ exports[`Alert Basic should match the snapshot 1`] = `
         </div>
         <button
           aria-label="Dismiss Button"
-          class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md brd-c-PJLV"
+          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md brd-c-PJLV"
           role="button"
+          tabindex="0"
           type="button"
         >
           <i
@@ -87,8 +88,9 @@ exports[`Alert MessageOnly should match the snapshot 1`] = `
         </div>
         <button
           aria-label="Dismiss Button"
-          class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md brd-c-PJLV"
+          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md brd-c-PJLV"
           role="button"
+          tabindex="0"
           type="button"
         >
           <i
@@ -142,8 +144,9 @@ exports[`Alert WithAction should match the snapshot 1`] = `
           class="brd-c-lkAHsY"
         >
           <button
-            class="brd-c-iYqWMG brd-c-iYqWMG-foEQdY-btnType-primary brd-c-iYqWMG-lKjfQ-size-md"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md"
             role="button"
+            tabindex="0"
             type="button"
           >
             <span>
@@ -153,8 +156,9 @@ exports[`Alert WithAction should match the snapshot 1`] = `
         </div>
         <button
           aria-label="Dismiss Button"
-          class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-lKjfQ-size-md brd-c-PJLV"
+          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md brd-c-PJLV"
           role="button"
+          tabindex="0"
           type="button"
         >
           <i

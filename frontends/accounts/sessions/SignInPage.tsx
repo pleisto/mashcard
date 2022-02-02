@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
 import { AuthMethod } from '@/BrickdocGraphQL'
-import { useBoolean } from 'ahooks'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from './hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { DeprecatedSkeleton, Button } from '@brickdoc/design-system'
+import { DeprecatedSkeleton, Button, useBoolean } from '@brickdoc/design-system'
 import { MoreAuthMethods } from './components/MoreAuthMethods'
 import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
 

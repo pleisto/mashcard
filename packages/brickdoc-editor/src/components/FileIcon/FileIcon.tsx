@@ -1,6 +1,5 @@
 import React from 'react'
-import cx from 'classnames'
-import { Icon } from '@brickdoc/design-system'
+import { Icon, cx } from '@brickdoc/design-system'
 import { FileType } from '../../helpers'
 import IconPdf from '../../assets/file-pdf.png'
 import IconExcel from '../../assets/file-excel.png'

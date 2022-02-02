@@ -1,37 +1,37 @@
-import { ForwardRefRenderFunction, createRef, forwardRef } from 'react'
-import { Input as ReakitInput, InputProps as ReakitInputProps } from 'reakit'
-import { inputStyle, affixWrapperStyle } from './styles/index.style'
-import { styled } from '../../themes'
+import { ForwardRefRenderFunction, createRef, forwardRef, InputHTMLAttributes } from 'react'
+import InputUnstyled from '@mui/base/InputUnstyled'
+import { inputStyle } from './styles/index.style'
 import { usePressEnterHandler } from './usePressEnterHandler'
+import { styled } from '../../themes'
 
-export interface InputProps extends Omit<ReakitInputProps, 'as' | 'ref' | 'css' | 'size' | 'prefix'> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'css' | 'startAdornment' | 'endAdornment'> {
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>
   size?: 'sm' | 'md' | 'lg'
   prefix?: React.ReactNode
   suffix?: React.ReactNode
 }
 
-const StyledInput = styled(ReakitInput, inputStyle)
-const StyledAffixWrapper = styled('div', affixWrapperStyle)
-
 const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (props, ref) => {
-  const { className, prefix, suffix, onKeyDown, onPressEnter, size = 'md', disabled = false, ...otherProps } = props
+  const { prefix, suffix, onKeyDown, onPressEnter, size = 'md', disabled = false, ...otherProps } = props
   const inputRef = ref ?? createRef<HTMLInputElement>()
   const keydownHandler = usePressEnterHandler(onPressEnter, onKeyDown)
+  const InputComponent = styled(InputUnstyled, inputStyle)
   const commonProps = {
     ...otherProps,
     disabled,
     onKeyDown: keydownHandler,
     ref: inputRef
   }
-  return prefix ?? suffix ? (
-    <StyledAffixWrapper size={size} disabled={commonProps.disabled} invalid={!!commonProps['aria-invalid']}>
-      {prefix && <span className="prefix">{prefix}</span>}
-      <ReakitInput {...commonProps} as="input" />
-      {suffix && <span className="suffix">{suffix}</span>}
-    </StyledAffixWrapper>
-  ) : (
-    <StyledInput {...commonProps} size={size} as="input" />
+  return (
+    <InputComponent
+      {...commonProps}
+      disabledVariant={disabled}
+      size={size}
+      invalid={!!commonProps['aria-invalid']}
+      startAdornment={prefix}
+      endAdornment={suffix}
+    />
   )
 }
 

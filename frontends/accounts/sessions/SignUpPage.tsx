@@ -6,13 +6,12 @@ import {
   useUserCreateMutation,
   UserCreateInput
 } from '@/BrickdocGraphQL'
-import { useBoolean } from 'ahooks'
 import { useSignUpInitialValues } from './hooks/useSignUpInitialValues'
 import { useWebidAvailableValidator } from '@/common/hooks'
 import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
 import { omit, omitBy, pick, isNil } from 'lodash-es'
 import { mutationResultHandler } from '@/common/utils'
-import { DeprecatedForm, DeprecatedInput, Button, DeprecatedSkeleton, toast } from '@brickdoc/design-system'
+import { DeprecatedForm, DeprecatedInput, Button, DeprecatedSkeleton, toast, useBoolean } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'

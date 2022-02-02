@@ -15,8 +15,9 @@ exports[`HeadingBlock matches snapshot correctly 1`] = `
     />
     <button
       aria-haspopup="dialog"
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
+      tabindex="0"
       type="button"
     >
       <i
@@ -42,8 +43,9 @@ exports[`HeadingBlock renders correspond heading according to level 1`] = `
     />
     <button
       aria-haspopup="dialog"
-      class="brd-c-iYqWMG brd-c-iYqWMG-eWWUXK-btnType-text brd-c-iYqWMG-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
+      tabindex="0"
       type="button"
     >
       <i

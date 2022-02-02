@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React, { useEffect } from 'react'
-import cx from 'classnames'
-import { Button, DeprecatedInput, Icon, DeprecatedList, Popover, Switch, toast } from '@brickdoc/design-system'
+import { Button, DeprecatedInput, Icon, DeprecatedList, Popover, Switch, toast, cx } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { InviteModal } from '../InviteModal'
 import {
@@ -102,7 +101,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
           <Switch
             id="allow-edit-content-switch"
             size="sm"
-            onChange={onSwitchAnonymousEditable}
+            onChange={async e => await onSwitchAnonymousEditable(e.target.checked)}
             loading={anonymousEditableLoading}
             checked={anonymousEditableValue}
           />
@@ -155,7 +154,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
           <Switch
             id="share-to-web-switch"
             size="sm"
-            onChange={onSwitchShareAnonymous}
+            onChange={async e => await onSwitchShareAnonymous(e.target.checked)}
             loading={shareWithAnonymousLoading}
             checked={shareWithAnonymousValue}
           />

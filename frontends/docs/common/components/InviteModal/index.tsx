@@ -1,6 +1,6 @@
 import React from 'react'
-import cx from 'classnames'
 import {
+  cx,
   Button,
   Dropdown,
   Menu,
@@ -158,7 +158,8 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       open={true}
       onChange={newValue => {
         setPodValue(newValue)
-      }}>
+      }}
+    >
       {options.map(pod => (
         <Option key={pod.webid} value={pod.webid}>
           <PodCard pod={pod} />
@@ -199,7 +200,8 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       destroyOnClose={true}
       visible={visible}
       onOk={onCleanup}
-      onCancel={onCleanup}>
+      onCancel={onCleanup}
+    >
       {inviteContent}
     </DeprecatedModal>
   )

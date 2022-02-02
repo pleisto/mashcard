@@ -90,7 +90,13 @@ A button means an operation (or a series of operations). Clicking a button will 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
 export const Basic = Template.bind({})
-Basic.args = { type: 'primary', children: '42 is the meaning of life' }
+Basic.args = {
+  type: 'primary',
+  children: '42 is the meaning of life',
+  onClick: () => {
+    console.log('click')
+  }
+}
 
 export const iconOnly = Template.bind({})
 iconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'lg' }

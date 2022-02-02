@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import { SkeletonElementProps } from './Element'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 

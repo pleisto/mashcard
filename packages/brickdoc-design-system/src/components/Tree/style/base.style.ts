@@ -130,19 +130,17 @@ export const Base = styled('div', {
     background: theme.colors.secondaryHover,
     backdropFilter: 'blur(40px)'
   },
+
+  '&:active:hover': {
+    background: theme.colors.thirdaryPressed
+  },
+
   '&:focus-visible': {
     outline: 'none'
   },
 
   variants: {
     size: {},
-    pressed: {
-      true: {
-        '&:hover': {
-          background: theme.colors.thirdaryPressed
-        }
-      }
-    },
     dragging: {
       true: {
         cursor: 'move'

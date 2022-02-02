@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
-import cx from 'classnames'
-import { Icon } from '@brickdoc/design-system'
+import { Icon, cx } from '@brickdoc/design-system'
 import {
   BlockCompletion,
   ColumnType,

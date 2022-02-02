@@ -1,5 +1,5 @@
 import omit from 'rc-util/lib/omit'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
 import Element, { SkeletonElementProps } from './Element'
 

@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react'
-import { Button as HeadlessButton, ButtonProps as HeadlessButtonProps } from 'reakit/Button'
+import { useRef, useEffect, useState, ButtonHTMLAttributes, Ref, RefObject, createRef, forwardRef } from 'react'
+import ButtonUnstyled, { ButtonUnstyledActions } from '@mui/base/ButtonUnstyled'
 import { LoadingIcon } from './LoadingIcon'
 import { styled } from '../../themes'
 import { buttonStyle } from './styles/index.style'
@@ -7,7 +7,8 @@ import { buttonStyle } from './styles/index.style'
 export type Size = 'lg' | 'md' | 'sm'
 export type BtnType = 'primary' | 'secondary' | 'danger' | 'text'
 
-export interface ButtonProps extends Omit<HeadlessButtonProps, 'type' | 'css'> {
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'css'> {
+  action?: Ref<ButtonUnstyledActions>
   block?: boolean
   circle?: boolean
   icon?: React.ReactNode
@@ -25,14 +26,14 @@ export interface ButtonProps extends Omit<HeadlessButtonProps, 'type' | 'css'> {
    * Use `htmlType` as an alias for `type` to be compatible
    * with older version design system.
    */
-  htmlType?: HeadlessButtonProps['type']
+  htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type']
   size?: Size
   type?: BtnType
 }
 
 type Loading = number | boolean
 
-const ButtonRoot = styled(HeadlessButton, buttonStyle)
+const ButtonRoot = styled(ButtonUnstyled, buttonStyle)
 
 /** Button
  * @example
@@ -63,7 +64,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
 
   const [innerLoading, setLoading] = useState<Loading>(!!loading)
   const delayTimeoutRef = useRef<number>()
-  const buttonRef = (ref as React.RefObject<HTMLButtonElement>) || React.createRef<HTMLButtonElement>()
+  const buttonRef = (ref as RefObject<HTMLButtonElement>) || createRef<HTMLButtonElement>()
 
   /**
    * Update Loading
@@ -93,8 +94,6 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
     <ButtonRoot
       {...otherProps}
       role={role}
-      unstable_clickOnEnter
-      unstable_clickOnSpace
       hasIcon={!!icon || !!innerLoading}
       ref={buttonRef}
       disabled={disabled || !!innerLoading}
@@ -114,7 +113,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
   )
 }
 
-const _Button = React.forwardRef(Button)
+const _Button = forwardRef(Button)
 _Button.displayName = 'Button'
 
 export { _Button as Button }

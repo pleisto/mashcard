@@ -9,7 +9,6 @@ import {
   forwardRef
 } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
-import { usePress } from '@react-aria/interactions'
 import { rem } from 'polished'
 import { Right } from '@brickdoc/design-icons'
 import { MoveNode, TNode, Inserted } from './constants'
@@ -55,13 +54,7 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
   const ref = useRef<HTMLDivElement>(_ref as any)
   const [hoverNode, setHoverNode] = useState<HoverNode | undefined>()
 
-  const { pressProps, isPressed } = usePress({
-    onPress: e => {
-      if (e.type === 'press') {
-        handleSelected(value)
-      }
-    }
-  })
+  const handleClick = useCallback(_e => handleSelected(value), [handleSelected, value])
 
   const handleOpen = useCallback(
     (e: MouseEvent) => {
@@ -214,7 +207,6 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
       <TreeRoot.Base
         ref={ref}
         data-handler-id={handlerId}
-        pressed={isPressed}
         dragging={isDragging}
         selected={Boolean(value === selectedId)}
         role="button"
@@ -243,7 +235,7 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
               )}
               {icon ? <TreeRoot.ContentIcon data-test-id="content-icon">{icon}</TreeRoot.ContentIcon> : <></>}
               {/* Todo: fixed TS2769: No overload matches this call. pressProps.css */}
-              <TreeRoot.ContentAction data-test-id="content-action" {...(pressProps as any)}>
+              <TreeRoot.ContentAction data-test-id="content-action" onClick={handleClick}>
                 {titleRender?.(treeData)}
               </TreeRoot.ContentAction>
             </TreeRoot.Content>

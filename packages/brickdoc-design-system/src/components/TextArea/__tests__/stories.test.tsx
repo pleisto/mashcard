@@ -4,4 +4,4 @@ import * as TextAreaStories from '../textArea.stories'
 
 const { Basic } = composeStories(TextAreaStories)
 
-it('TextArea Should be passed a11y test', async () => await a11yTest(Basic))
+it('TextArea Should be passed a11y test', async () => await a11yTest(Basic as any))

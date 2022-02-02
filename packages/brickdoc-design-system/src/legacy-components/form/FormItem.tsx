@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useContext } from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import { Field, FormInstance } from 'rc-field-form'
 import { FieldProps } from 'rc-field-form/lib/Field'
 import FieldContext from 'rc-field-form/lib/FieldContext'

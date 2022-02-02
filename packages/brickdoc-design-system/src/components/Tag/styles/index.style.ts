@@ -11,6 +11,15 @@ export const TagRoot = styled('div', {
   cursor: 'default',
   marginRight: 6,
 
+  '&:active': {
+    background: theme.colors.thirdaryPressed,
+    borderColor: theme.colors.borderSecondary,
+    '&:hover': {
+      background: theme.colors.thirdaryPressed,
+      borderColor: theme.colors.borderSecondary
+    }
+  },
+
   [`& .${prefix}-icon`]: {
     cursor: 'pointer',
     fontSize: 12,
@@ -19,6 +28,11 @@ export const TagRoot = styled('div', {
   },
 
   variants: {
+    clickable: {
+      true: {
+        cursor: 'pointer'
+      }
+    },
     size: {
       sm: {
         fontSize: theme.fontSizes.callout,
@@ -78,6 +92,14 @@ export const TagRoot = styled('div', {
         '&:hover': {
           background: theme.colors.red2,
           borderColor: theme.colors.red3
+        },
+        '&:active': {
+          background: theme.colors.red3,
+          borderColor: theme.colors.red3,
+          '&:hover': {
+            background: theme.colors.red3,
+            borderColor: theme.colors.red3
+          }
         }
       },
       cyan: {
@@ -104,32 +126,6 @@ export const TagRoot = styled('div', {
           borderColor: theme.colors.blue3
         }
       }
-    },
-
-    pressed: {
-      true: {
-        background: theme.colors.thirdaryPressed,
-        borderColor: theme.colors.borderSecondary,
-        '&:hover': {
-          background: theme.colors.thirdaryPressed,
-          borderColor: theme.colors.borderSecondary
-        }
-      }
     }
-  },
-
-  compoundVariants: [
-    {
-      color: 'red',
-      pressed: true,
-      css: {
-        background: theme.colors.red3,
-        borderColor: theme.colors.red3,
-        '&:hover': {
-          background: theme.colors.red3,
-          borderColor: theme.colors.red3
-        }
-      }
-    }
-  ]
+  }
 })

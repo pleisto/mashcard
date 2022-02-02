@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import omit from 'rc-util/lib/omit'
 import { PreviewOpen as EyeOutlined, PreviewClose as EyeInvisibleOutlined } from '@brickdoc/design-icons'
 

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { VisuallyHidden } from '@react-aria/visually-hidden'
+import { VisuallyHidden } from '../VisuallyHidden'
 
 interface DismissButtonProps {
   /** Called when the dismiss button is activated. */

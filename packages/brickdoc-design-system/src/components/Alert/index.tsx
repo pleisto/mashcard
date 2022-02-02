@@ -1,6 +1,6 @@
 import { FC, useCallback, useState, AriaAttributes, AriaRole } from 'react'
 import { Success, Info, Caution, CloseOne, Close } from '@brickdoc/design-icons'
-import { useId } from '../../utilities'
+import { useId } from '../../hooks'
 
 import * as AlertRoot from './style/index.style'
 

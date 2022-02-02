@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useMemo } from 'react'
-import classNames from 'classnames'
+import { cx as classNames } from '../../utilities'
 import FieldForm, { List } from 'rc-field-form'
 import { FormProps as RcFormProps } from 'rc-field-form/lib/Form'
 import { ValidateErrorEntity } from 'rc-field-form/lib/interface'
