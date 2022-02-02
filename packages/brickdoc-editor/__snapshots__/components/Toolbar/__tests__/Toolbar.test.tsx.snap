@@ -28,7 +28,7 @@ exports[`Toolbar matches snapshot correctly 1`] = `
       >
         subMenu
         <i
-          data-mock-icon="ArrowDown"
+          data-testid="mock-icon-ArrowDown"
         />
       </li>
     </span>

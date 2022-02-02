@@ -62,7 +62,7 @@ exports[`MentionMenuPagePanel matches correct snapshot 1`] = `
       tabindex="-1"
     >
       <i
-        data-mock-icon="FilePages"
+        data-testid="mock-icon-FilePages"
       />
       <div
         class="mention-menu-page-content"

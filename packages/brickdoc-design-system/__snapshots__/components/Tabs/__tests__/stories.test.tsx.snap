@@ -176,7 +176,7 @@ exports[`Tabs The number of snapshots is matched correctly 1`] = `
           type="button"
         >
           <i
-            data-mock-icon="More"
+            data-testid="mock-icon-More"
           />
         </button>
       </div>
@@ -362,7 +362,7 @@ exports[`Tabs matches snapshot correctly 1`] = `
         type="button"
       >
         <i
-          data-mock-icon="More"
+          data-testid="mock-icon-More"
         />
       </button>
     </div>

@@ -20,7 +20,7 @@ exports[`HeadingBlock matches snapshot correctly 1`] = `
       type="button"
     >
       <i
-        data-mock-icon="DragSecondary"
+        data-testid="mock-icon-DragSecondary"
       />
     </button>
   </div>
@@ -47,7 +47,7 @@ exports[`HeadingBlock renders correspond heading according to level 1`] = `
       type="button"
     >
       <i
-        data-mock-icon="DragSecondary"
+        data-testid="mock-icon-DragSecondary"
       />
     </button>
   </div>

@@ -19,7 +19,7 @@ exports[`Alert Basic should match the snapshot 1`] = `
           role="presentation"
         >
           <i
-            data-mock-icon="Info"
+            data-testid="mock-icon-Info"
           />
         </div>
         <div
@@ -44,7 +44,7 @@ exports[`Alert Basic should match the snapshot 1`] = `
           type="button"
         >
           <i
-            data-mock-icon="Close"
+            data-testid="mock-icon-Close"
           />
         </button>
       </div>
@@ -72,7 +72,7 @@ exports[`Alert MessageOnly should match the snapshot 1`] = `
           role="presentation"
         >
           <i
-            data-mock-icon="CloseOne"
+            data-testid="mock-icon-CloseOne"
           />
         </div>
         <div
@@ -92,7 +92,7 @@ exports[`Alert MessageOnly should match the snapshot 1`] = `
           type="button"
         >
           <i
-            data-mock-icon="Close"
+            data-testid="mock-icon-Close"
           />
         </button>
       </div>
@@ -120,7 +120,7 @@ exports[`Alert WithAction should match the snapshot 1`] = `
           role="presentation"
         >
           <i
-            data-mock-icon="Caution"
+            data-testid="mock-icon-Caution"
           />
         </div>
         <div
@@ -158,7 +158,7 @@ exports[`Alert WithAction should match the snapshot 1`] = `
           type="button"
         >
           <i
-            data-mock-icon="Close"
+            data-testid="mock-icon-Close"
           />
         </button>
       </div>

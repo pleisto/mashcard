@@ -23,7 +23,7 @@ exports[`PageLink matches correct snapshot 1`] = `
     >
       icon
       <i
-        data-mock-icon="ArrowShortcut"
+        data-testid="mock-icon-ArrowShortcut"
       />
     </span>
     <span

@@ -25,7 +25,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
             data-testid="editor-toc-block-item-title"
           >
             <i
-              data-mock-icon="ArrowFilleRight"
+              data-testid="mock-icon-ArrowFilleRight"
             />
             h1
           </span>
@@ -43,7 +43,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                 data-testid="editor-toc-block-item-title"
               >
                 <i
-                  data-mock-icon="ArrowFilleRight"
+                  data-testid="mock-icon-ArrowFilleRight"
                 />
                 h2
               </span>
@@ -81,7 +81,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
             data-testid="editor-toc-block-item-title"
           >
             <i
-              data-mock-icon="ArrowFilleRight"
+              data-testid="mock-icon-ArrowFilleRight"
             />
             h1\`
           </span>
@@ -99,7 +99,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                 data-testid="editor-toc-block-item-title"
               >
                 <i
-                  data-mock-icon="ArrowFilleRight"
+                  data-testid="mock-icon-ArrowFilleRight"
                 />
                 h3
               </span>
@@ -117,7 +117,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                     data-testid="editor-toc-block-item-title"
                   >
                     <i
-                      data-mock-icon="ArrowFilleRight"
+                      data-testid="mock-icon-ArrowFilleRight"
                     />
                     h4
                   </span>
@@ -155,7 +155,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                 data-testid="editor-toc-block-item-title"
               >
                 <i
-                  data-mock-icon="ArrowFilleRight"
+                  data-testid="mock-icon-ArrowFilleRight"
                 />
                 toc.untitled
               </span>
@@ -208,7 +208,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
       type="button"
     >
       <i
-        data-mock-icon="DragSecondary"
+        data-testid="mock-icon-DragSecondary"
       />
     </button>
   </div>

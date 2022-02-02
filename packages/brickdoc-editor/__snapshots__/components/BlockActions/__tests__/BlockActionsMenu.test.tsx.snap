@@ -66,7 +66,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </span>
       </div>
       <i
-        data-mock-icon="ArrowRight"
+        data-testid="mock-icon-ArrowRight"
       />
     </div>
   </li>
@@ -198,7 +198,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
             class="brd-c-jVLVTy"
           >
             <i
-              data-mock-icon="Add"
+              data-testid="mock-icon-Add"
             />
           </span>
         </span>
@@ -216,7 +216,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </span>
       </div>
       <i
-        data-mock-icon="ArrowRight"
+        data-testid="mock-icon-ArrowRight"
       />
     </div>
   </li>
@@ -263,7 +263,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="TextStyle"
+                  data-testid="mock-icon-TextStyle"
                 />
               </span>
             </span>
@@ -309,7 +309,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Formula"
+                  data-testid="mock-icon-Formula"
                 />
               </span>
             </span>
@@ -355,7 +355,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Table"
+                  data-testid="mock-icon-Table"
                 />
               </span>
             </span>
@@ -401,7 +401,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Upload"
+                  data-testid="mock-icon-Upload"
                 />
               </span>
             </span>
@@ -447,7 +447,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Unsplash"
+                  data-testid="mock-icon-Unsplash"
                 />
               </span>
             </span>
@@ -493,7 +493,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Link"
+                  data-testid="mock-icon-Link"
                 />
               </span>
             </span>
@@ -539,7 +539,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="RteH1"
+                  data-testid="mock-icon-RteH1"
                 />
               </span>
             </span>
@@ -585,7 +585,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="RteH2"
+                  data-testid="mock-icon-RteH2"
                 />
               </span>
             </span>
@@ -631,7 +631,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="RteH3"
+                  data-testid="mock-icon-RteH3"
                 />
               </span>
             </span>
@@ -677,7 +677,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="RteH4"
+                  data-testid="mock-icon-RteH4"
                 />
               </span>
             </span>
@@ -723,7 +723,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="RteH5"
+                  data-testid="mock-icon-RteH5"
                 />
               </span>
             </span>
@@ -769,7 +769,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="ListUnordered"
+                  data-testid="mock-icon-ListUnordered"
                 />
               </span>
             </span>
@@ -815,7 +815,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="ListOrdered"
+                  data-testid="mock-icon-ListOrdered"
                 />
               </span>
             </span>
@@ -861,7 +861,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Code"
+                  data-testid="mock-icon-Code"
                 />
               </span>
             </span>
@@ -907,7 +907,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Divider"
+                  data-testid="mock-icon-Divider"
                 />
               </span>
             </span>
@@ -953,7 +953,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="Toc"
+                  data-testid="mock-icon-Toc"
                 />
               </span>
             </span>
@@ -999,7 +999,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
                 class="brd-c-jVLVTy"
               >
                 <i
-                  data-mock-icon="MindmapList"
+                  data-testid="mock-icon-MindmapList"
                 />
               </span>
             </span>

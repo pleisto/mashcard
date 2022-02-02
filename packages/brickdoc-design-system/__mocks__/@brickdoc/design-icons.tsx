@@ -10,7 +10,8 @@ const icons = new Proxy(
       if (BYPASSED_EXPORTS.includes(key)) {
         return obj[key]
       }
-      return () => <i data-mock-icon={key.toString()} />
+      const name = `mock-icon-${key.toString()}`
+      return () => <i data-testid={name} />
     }
   }
 )
