@@ -1,5 +1,5 @@
 import { Button } from './index'
-import { Add } from '@brickdoc/design-icons'
+import { Add, ArrowRight, Delete } from '@brickdoc/design-icons'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
@@ -98,8 +98,30 @@ Basic.args = {
   }
 }
 
-export const iconOnly = Template.bind({})
-iconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'lg' }
+export const WithStartIcon = Template.bind({})
+WithStartIcon.args = {
+  type: 'danger',
+  children: (
+    <span>
+      Confirm to <strong>delete</strong>
+    </span>
+  ),
+  icon: <Delete />
+}
 
-export const loadding = Template.bind({})
-loadding.args = { loading: true, children: 'Loading...' }
+export const WithEndIcon = Template.bind({})
+WithEndIcon.args = {
+  type: 'primary',
+  children: 'Get started',
+  icon: <ArrowRight />,
+  iconPosition: 'end'
+}
+
+export const IconOnly = Template.bind({})
+IconOnly.args = { icon: <Add />, 'aria-label': 'Add Record', circle: true, size: 'lg' }
+
+export const Loading = Template.bind({})
+Loading.args = { loading: true, children: 'Loading...' }
+
+export const LoadingAfter5Seconds = Template.bind({})
+LoadingAfter5Seconds.args = { loading: { delay: 5000 }, children: 'Loading after 5 seconds...' }
