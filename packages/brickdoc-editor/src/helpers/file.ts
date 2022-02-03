@@ -1,3 +1,5 @@
+import { devLog } from '@brickdoc/design-system'
+
 export const sizeFormat = (size?: number): string => {
   if (size === undefined) return ''
   if (size < 1024) return `${size} b`
@@ -86,7 +88,7 @@ const getContentType = async (url: string): Promise<string | null> =>
 
 export const getFileTypeFromUrl = async (url: string): Promise<FileType> => {
   const contentType = await getContentType(url)
-  console.log(contentType)
+  devLog(contentType)
 
   return 'unknown'
 }

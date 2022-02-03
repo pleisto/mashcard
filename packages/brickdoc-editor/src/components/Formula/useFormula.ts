@@ -18,6 +18,7 @@ import {
   FormulaUpdated
 } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
+import { devLog, devWarning } from '@brickdoc/design-system'
 import React from 'react'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
 import { EditorContentType } from '../../extensions/formula/FormulaEditor/FormulaEditor'
@@ -97,7 +98,7 @@ const calculate = async ({
   }
   const parseResult = parse({ ctx, position })
 
-  console.log('calculate', {
+  devLog('calculate', {
     ctx,
     parseResult,
     input,
@@ -221,7 +222,7 @@ export const useFormula = ({
   const doCalculate = React.useCallback(
     async (newName?: string): Promise<void> => {
       if (!formulaContext || !inputRef.current) {
-        console.log('formula no input!')
+        devLog('formula no input!')
         return
       }
 
@@ -247,7 +248,7 @@ export const useFormula = ({
 
       const { interpretResult, newPosition, parseResult, completions, newVariable } = result
 
-      // console.log('calculate result', { newPosition, result })
+      // devLog('calculate result', { newPosition, result })
 
       setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
@@ -267,7 +268,7 @@ export const useFormula = ({
         setVariableT(newVariable.t)
       }
 
-      // console.log({ variable, ref: variableRef.current, finalInput, inputIsEmpty, parseResult, newVariable })
+      // devLog({ variable, ref: variableRef.current, finalInput, inputIsEmpty, parseResult, newVariable })
 
       if (interpretResult.variableValue.success) {
         const type = interpretResult.variableValue.result.type
@@ -282,7 +283,7 @@ export const useFormula = ({
   const handleSelectActiveCompletion = React.useCallback((): void => {
     const currentCompletion = completion.activeCompletion
     if (!currentCompletion) {
-      console.error('No active completion!')
+      devWarning(true, 'No active completion!')
       return
     }
 
@@ -292,7 +293,7 @@ export const useFormula = ({
     const oldContentLast = oldContent[oldContent.length - 1]
     const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, position)
 
-    // console.log('Before replace', {
+    // devLog('Before replace', {
     //   oldContentLast,
     //   oldContent,
     //   prevText,
@@ -304,7 +305,7 @@ export const useFormula = ({
     // })
 
     if (oldContentLast && prevText && currentCompletion.replacements.length) {
-      // console.log('start replace', {
+      // devLog('start replace', {
       //   oldContentLast,
       //   currentCompletion,
       //   currentContent,
@@ -319,7 +320,7 @@ export const useFormula = ({
       } else {
         const replacement = currentCompletion.replacements.find(replacement => prevText.endsWith(replacement))
         if (!replacement) {
-          console.info('replacement not found 1', { prevText, currentCompletion, nextText })
+          devLog('replacement not found 1', { prevText, currentCompletion, nextText })
         } else {
           positionChange = positionChange - prevText.length + (replacement.length as number)
           const newText = prevText.substring(0, prevText.length - replacement.length)
@@ -362,7 +363,7 @@ export const useFormula = ({
     setEditorContent(newEditorContent)
     inputRef.current = finalInputAfterEqual
 
-    console.log('selectCompletion', {
+    devLog('selectCompletion', {
       finalContent,
       currentCompletion,
       newPosition,
@@ -385,7 +386,7 @@ export const useFormula = ({
   }, [formulaContext])
 
   const doHandleSave = React.useCallback(async (): Promise<void> => {
-    // console.log({ variable: variableRef.current, name, defaultName })
+    // devLog({ variable: variableRef.current, name, defaultName })
     if (!variableRef.current) {
       updateFormula(undefined)
       return
@@ -409,7 +410,7 @@ export const useFormula = ({
     setVariableT(v.t)
     setSavedVariableT(v.t)
 
-    console.log('save ...', { input: inputRef.current, variable: variableRef.current, formulaContext })
+    devLog('save ...', { input: inputRef.current, variable: variableRef.current, formulaContext })
   }, [formulaContext, isDisableSave, updateFormula])
 
   // Effects
@@ -467,7 +468,7 @@ export const useFormula = ({
     const listener = BrickdocEventBus.subscribe(
       FormulaEditorUpdateEventTrigger,
       event => {
-        // console.log('update subscribe', { event })
+        // devLog('update subscribe', { event })
         const newContent = event.payload.content
         const newPosition = event.payload.position
         const newInput = contentArrayToInput(fetchJSONContentArray(newContent))

@@ -88,7 +88,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
   const buttonRef = (ref as RefObject<HTMLButtonElement>) || createRef<HTMLButtonElement>()
   useEffect(() => {
     if (typeof loadingOrDelay === 'number') {
-      const timeout = window.setTimeout(() => {
+      const timeout = setTimeout(() => {
         setLoading(loadingOrDelay)
       }, loadingOrDelay)
       return () => {

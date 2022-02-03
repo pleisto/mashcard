@@ -2,7 +2,16 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
-import { Dropdown, DeprecatedSkeleton, Menu, MenuProps, Tooltip, Button, ButtonProps } from '@brickdoc/design-system'
+import {
+  Dropdown,
+  DeprecatedSkeleton,
+  Menu,
+  MenuProps,
+  Tooltip,
+  Button,
+  ButtonProps,
+  devWarning
+} from '@brickdoc/design-system'
 import { PodCard } from '@/common/components/PodCard'
 import { Setting, Change } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../hooks'
@@ -51,7 +60,7 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
           const webid = key.replace('pod-', '')
           globalThis.location.href = `/${webid}`
         } else {
-          console.log(`unknown key ${key}`)
+          devWarning(true, 'PodSelect.onClick unknown key', key)
         }
 
         break

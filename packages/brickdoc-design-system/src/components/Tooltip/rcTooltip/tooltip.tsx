@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useRef, useImperativeHandle, forwardRef } from 'react'
 import Trigger, { TriggerProps } from 'rc-trigger'
 import type { AlignType, AnimationType, ActionType } from 'rc-trigger/lib/interface'
+import { devLog } from '../../../utilities'
 import { placements } from './placements'
 import Content from './content'
 
@@ -73,7 +74,7 @@ const RcTooltip: React.ForwardRefRenderFunction<unknown, TooltipProps> = (props,
 
   const getPopupElement = () => {
     const { showArrow = true, arrowContent = null, overlay, id } = props
-    console.log('debug: overlay', overlay)
+    devLog('debug: overlay', overlay)
     return [
       showArrow && (
         <div className={`${prefixCls}-arrow`} key="arrow">

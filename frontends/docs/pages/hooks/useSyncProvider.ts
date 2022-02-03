@@ -2,6 +2,7 @@
 import React from 'react'
 import { Node } from 'prosemirror-model'
 import { useApolloClient } from '@apollo/client'
+import { devLog } from '@brickdoc/design-system'
 import {
   BlockInput,
   Block,
@@ -244,7 +245,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
     loadSpreadsheetBlocks,
     (e: Event) => {
       const parentId = e.payload
-      console.log(`loading spreadsheet ${parentId}`)
+      devLog(`loading spreadsheet ${parentId}`)
       void (async () => {
         const { data } = await client.query({
           query: GetSpreadsheetChildrenDocument,

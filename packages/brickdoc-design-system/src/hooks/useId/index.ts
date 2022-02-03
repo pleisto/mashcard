@@ -2,10 +2,11 @@ import { useState, useEffect, useRef, useContext, useMemo } from 'react'
 import { useIsomorphicLayoutEffect as useLayoutEffect } from '../useIsomorphicLayoutEffect'
 import { IDContext, defaultContext } from '../../components/Provider/IDProvider'
 import { prefix } from '../../themes'
+import { devWarning } from '../../utilities'
 
 const idsUpdaterMap: Map<string, (v: string) => void> = new Map()
 
-const canUseDOM = Boolean(typeof window !== 'undefined' && window.document && window.document.createElement)
+const canUseDOM = Boolean(window?.document?.createElement)
 
 /**
  * @internal
@@ -17,11 +18,10 @@ function useSSRSafeId(defaultId?: string): string {
 
   // If we are rendering in a non-DOM environment, and there's no SSRProvider,
   // provide a warning to hint to the developer to add one.
-  if (ctx === defaultContext && !canUseDOM) {
-    console.warn(
-      'When server rendering, you must wrap your application in an <Provider> to ensure consistent ids are generated between the client and server.'
-    )
-  }
+  devWarning(
+    ctx === defaultContext && !canUseDOM,
+    'When server rendering, you must wrap your application in an <Provider> to ensure consistent ids are generated between the client and server.'
+  )
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => defaultId ?? `${prefix}-instance${ctx.prefix}-${++ctx.current}`, [defaultId])

@@ -1,5 +1,6 @@
 import { CodeFragment } from '@brickdoc/formula'
 import { JSONContent } from '@tiptap/core'
+import { devWarning } from '@brickdoc/design-system'
 
 export const buildJSONContentByDefinition = (definition: string | undefined): JSONContent | undefined => {
   if (!definition) {
@@ -100,19 +101,19 @@ export const positionBasedContentArrayToInput = (
     }
   })
 
-  // console.log({ prevTexts, nextTexts, input, position, content })
+  // devLog({ prevTexts, nextTexts, input, position, content })
   return { prevText: prevTexts.join(''), nextText: nextTexts.join('') }
 }
 
 export const contentArrayToInput = (content: JSONContent[]): string => {
   const input = content.map((c: JSONContent) => JSONContentToText(c, true)).join('') ?? ''
-  // console.log({ content, input })
+  // devLog({ content, input })
   return input
 }
 
 const JSONContentToText = (c: JSONContent, textOnly: boolean = false): string => {
   if (c.type !== 'text') {
-    console.error('JSONContentToText: not text', c)
+    devWarning(true, 'JSONContentToText: not text', c)
     return ''
   }
 
@@ -133,14 +134,14 @@ const JSONContentToText = (c: JSONContent, textOnly: boolean = false): string =>
   }
 
   if (mark.type !== 'FormulaType') {
-    console.error('JSONContentToText: not FormulaType', c)
+    devWarning(true, 'JSONContentToText: not FormulaType', c)
     return text
   }
 
   const attrs: CodeFragment | undefined = mark.attrs as CodeFragment
 
   if (!attrs) {
-    console.error('JSONContentToText: no attrs', c)
+    devWarning(true, 'JSONContentToText: no attrs', c)
     return text
   }
 

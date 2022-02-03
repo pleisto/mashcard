@@ -1,5 +1,6 @@
 import { useNewPatchSubscription, PatchBaseObject, Patchtype, Patchstate, Block } from '@/BrickdocGraphQL'
 import { Fragment } from 'prosemirror-model'
+import { devLog, devWarning } from '@brickdoc/design-system'
 import { Editor, ChainedCommands } from '@tiptap/core'
 import { EditorContentProps } from '@brickdoc/editor'
 import { blockToNode } from '../../common/blocks'
@@ -23,7 +24,7 @@ export function useDocumentSubscription({
     chainedCommands.command(({ tr }) => {
       let targetNode = tr.doc
       if (patch.path[0] !== targetNode.attrs.uuid) {
-        console.warn("Root node uuid doesn't match patch.path", tr.doc.attrs?.uuid, patch.path[0])
+        devWarning(true, "Root node uuid doesn't match patch.path", tr.doc.attrs?.uuid, patch.path[0])
         return false
       }
       let startPos = -1
@@ -38,7 +39,7 @@ export function useDocumentSubscription({
             }
             startPos += child.nodeSize
           }
-          console.warn('Patch path not found', patch.path, tr.doc)
+          devWarning(true, 'Patch path not found', patch.path, tr.doc)
         })
       }
 
@@ -94,7 +95,7 @@ export function useDocumentSubscription({
           break
         case Patchtype.Delete:
           if (patch.path.length < 1) {
-            console.warn('Root node cannot be deleted')
+            devWarning(true, 'Root node cannot be deleted')
           } else {
             tr.delete(startPos, endPos)
           }
@@ -112,14 +113,14 @@ export function useDocumentSubscription({
     onSubscriptionData: ({ subscriptionData: { data } }) => {
       if (!data?.newPatch?.patches?.length) return
       if (!editor) {
-        console.warn('New patch arrived but the editor has not been initialized')
+        devWarning(true, 'New patch arrived but the editor has not been initialized')
         return
       }
 
       const { newPatch } = data
 
       if (newPatch.state === Patchstate.Deleted) {
-        console.log('Delete page ...')
+        devLog('Delete page ...')
         return
       }
 
@@ -132,7 +133,7 @@ export function useDocumentSubscription({
         const chainedCommands = editor.chain().setMeta('preventUpdate', true)
         patches.forEach(patch => applyPatch(editor, chainedCommands, patch))
         chainedCommands.setDocAttrs({ ...editor.state.doc.attrs, seq: newPatch.seq }).run()
-        console.log('Patch applied', { uuid: globalThis.brickdocContext.uuid, patches, newPatch })
+        devLog('Patch applied', { uuid: globalThis.brickdocContext.uuid, patches, newPatch })
       } catch (e) {
         console.error(e)
         setDocumentEditable(false)

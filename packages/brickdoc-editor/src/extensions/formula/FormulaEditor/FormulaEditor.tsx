@@ -3,6 +3,7 @@ import Document from '@tiptap/extension-document'
 import Text from '@tiptap/extension-text'
 import Paragraph from '@tiptap/extension-paragraph'
 import { useEditor, EditorContent, JSONContent, EditorEvents } from '@tiptap/react'
+import { devLog } from '@brickdoc/design-system'
 import { HandleKeyDownExtension } from './extensions/handleKeyDown'
 import './FormulaEditor.less'
 import { FormulaTypeExtension } from './extensions/formulaType'
@@ -95,7 +96,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
         editor.commands.replaceRoot(editorContent.content)
       }
 
-      if (editable) console.log('after replace root', { editorContent, editor })
+      if (editable) devLog('after replace root', { editorContent, editor })
     }
   }, [editor, editorContent, editable])
 

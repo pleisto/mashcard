@@ -6,7 +6,9 @@ import { Button } from '../'
 export default {
   title: 'Components/Empty',
   component: Empty,
-  args: {},
+  args: {
+    type: EmptyType.Empty
+  },
   argTypes: {
     prefixCls: {
       description: '',
@@ -25,8 +27,7 @@ export default {
     type: {
       description: '`Switching display types` ',
       options: [EmptyType.Empty, EmptyType.Found],
-      control: { type: 'radio' },
-      defaultValue: EmptyType.Empty
+      control: { type: 'radio' }
     },
 
     description: {

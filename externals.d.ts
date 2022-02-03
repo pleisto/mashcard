@@ -5,8 +5,12 @@ declare module '*.less' {
 
 declare module '*.mp4' {
   const src: string
-  // eslint-disable-next-line import/no-default-export
-  export default src
+  export = src
+}
+
+declare module '*.webp' {
+  const src: string
+  export = src
 }
 
 declare namespace JSX {

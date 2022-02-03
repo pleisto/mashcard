@@ -636,7 +636,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
     } else if (ctx.lazyVariableExpression) {
       return this.visit(ctx.lazyVariableExpression, args)
     } else {
-      // console.log({ ctx })
+      // devLog({ ctx })
       throw new Error('unsupported expression')
     }
   }
@@ -659,7 +659,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
     } else if (ctx.predicateExpression) {
       return this.visit(ctx.predicateExpression, args)
     } else {
-      // console.log({ ctx })
+      // devLog({ ctx })
       throw new Error('unsupported expression')
     }
   }
@@ -888,7 +888,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
         result: this.ctx.interpretContext.ctx
       }
     } else {
-      // console.log({ ctx })
+      // devLog({ ctx })
       throw new Error('unsupported expression')
     }
   }
@@ -1013,7 +1013,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
       })
     }
 
-    // console.log({ args })
+    // devLog({ args })
 
     return clause.reference(this.ctx, ...functionArgs)
   }

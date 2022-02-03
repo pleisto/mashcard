@@ -31,7 +31,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, paren
         setCurrentBlock(newBlock)
         saveBlock(newBlock)
       }
-      // console.log('updateFormula', { variable, block, newBlock, parentId, formulaId })
+      // devLog('updateFormula', { variable, block, newBlock, parentId, formulaId })
       setEditing(false)
     },
     [block, saveBlock]

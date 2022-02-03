@@ -7,7 +7,8 @@ export default {
   component: Tag,
   args: {
     text: 'default',
-    value: 1
+    value: 1,
+    color: 'primary'
   },
   argTypes: {
     text: {
@@ -38,8 +39,7 @@ export default {
       control: {
         type: 'select',
         options: ['none', 'primary', 'red', 'cyan', 'blue']
-      },
-      defaultValue: 'primary'
+      }
     },
     border: {
       control: {

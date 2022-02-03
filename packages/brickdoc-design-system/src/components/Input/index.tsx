@@ -17,18 +17,17 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (props, re
   const inputRef = ref ?? createRef<HTMLInputElement>()
   const keydownHandler = usePressEnterHandler(onPressEnter, onKeyDown)
   const InputComponent = styled(InputUnstyled, inputStyle)
-  const commonProps = {
-    ...otherProps,
-    disabled,
-    onKeyDown: keydownHandler,
-    ref: inputRef
-  }
+  const invalid = props['aria-invalid'] === 'true' || props['aria-invalid'] === true
+
   return (
     <InputComponent
-      {...commonProps}
+      ref={inputRef}
+      {...otherProps}
+      onKeyDown={keydownHandler}
+      disabled={disabled}
       disabledVariant={disabled}
       size={size}
-      invalid={!!commonProps['aria-invalid']}
+      invalid={invalid}
       startAdornment={prefix}
       endAdornment={suffix}
     />

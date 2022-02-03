@@ -135,7 +135,7 @@ export const abbrev = ({
       n => n.name === token.image && (n.kind !== 'Variable' || blockKey(n.namespaceId) === variableNamespace)
     )
 
-    // console.log({ formulaNames: formulaContext.formulaNames, variableNamespace, token: token.image, formulaName })
+    // devLog({ formulaNames: formulaContext.formulaNames, variableNamespace, token: token.image, formulaName })
 
     if (!formulaName) {
       newInput = newInput.concat(token.image)
@@ -149,7 +149,7 @@ export const abbrev = ({
     modified = true
   })
 
-  // console.log({ newInput, input, tokens })
+  // devLog({ newInput, input, tokens })
 
   if (modified) {
     return { lexResult: lexer.tokenize(newInput), newInput, newPosition }

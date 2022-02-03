@@ -1,4 +1,5 @@
 import React from 'react'
+import { devLog } from '@brickdoc/design-system'
 
 export interface SpreadsheetSelectionCellId {
   columnId: string
@@ -96,7 +97,7 @@ export const useSpreadsheetContext = (options: {
 
   React.useEffect(() => {
     const onKeyDown = (e: KeyboardEvent): void => {
-      console.log(`key down ${e.code}`)
+      devLog(`key down ${e.code}`)
       const { cellIds, columnIds: selectedColumnIds, rowIds: selectedRowIds } = selection
       const thisSelected = cellIds?.length ?? selectedRowIds?.length ?? selectedColumnIds?.length
       if (thisSelected && columnIds && rowIds) {

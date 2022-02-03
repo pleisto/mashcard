@@ -94,7 +94,7 @@ export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyType
     return { type: 'Select', result: selectResult }
   }
 
-  // console.log({ cacheValue })
+  // devLog({ cacheValue })
 
   return cacheValue as AnyTypeResult
 }

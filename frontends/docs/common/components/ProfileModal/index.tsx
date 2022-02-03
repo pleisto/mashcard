@@ -6,7 +6,8 @@ import {
   toast,
   Avatar,
   Popover,
-  DeprecatedFormInstance
+  DeprecatedFormInstance,
+  devLog
 } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
@@ -78,7 +79,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
         globalThis.location.href = `/${values.webid}`
       })
       .catch((info: any) => {
-        console.log('Validate Failed:', info)
+        devLog('ProfileModal.handleOk Validate Failed:', info)
       })
   }
 
@@ -98,7 +99,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       <DeprecatedForm.Item
         name="webid"
         label={t('pods.webid')}
-        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}>
+        rules={[{ required: true, message: t('pods.required.webid') }, webidAvailableValidator]}
+      >
         <DeprecatedInput />
       </DeprecatedForm.Item>
     ) : (
@@ -140,7 +142,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       <DeprecatedForm.Item
         name="name"
         label={t('pods.name')}
-        rules={[{ required: true, message: t('pods.required.name') }]}>
+        rules={[{ required: true, message: t('pods.required.name') }]}
+      >
         <DeprecatedInput />
       </DeprecatedForm.Item>
       <DeprecatedForm.Item name="bio" label={t('pods.bio')}>
@@ -162,7 +165,8 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
       visible={visible}
       onOk={handleOk}
       confirmLoading={confirmLoading}
-      onCancel={handleCancel}>
+      onCancel={handleCancel}
+    >
       {formData}
     </DeprecatedModal>
   )

@@ -31,7 +31,7 @@ export const Map = async (
     })
   )
 
-  // console.log({ interpretContexts, newResult })
+  // devLog({ interpretContexts, newResult })
 
   return { type: 'Array', result: newResult, subType: extractSubType(newResult) }
 }

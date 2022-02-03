@@ -12,7 +12,6 @@ export interface SwitchProps extends CheckboxProps {
   loading?: boolean
 }
 
-const SwitchLabel = styled(motion.label, root)
 const Switcher = styled(motion.div, switcher)
 
 const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
@@ -35,9 +34,10 @@ const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
   const offsetX = useMemo(() => (size === 'sm' ? 10 : 12), [size])
   const spring = { type: 'spring', stiffness: 800, damping: 50, mass: 1 }
   const animate = { x: checked ? offsetX : 0 }
+  const SwitchWrapper = styled(children ? motion.label : motion.div, root)
 
   return (
-    <SwitchLabel ref={ref} className={className} style={style}>
+    <SwitchWrapper ref={ref} className={className} style={style}>
       {labelFirst && children && <span>{children}</span>}
       <Switcher checked={checked} loading={loading} disabled={disabled} size={size}>
         <VisuallyHidden>
@@ -48,7 +48,7 @@ const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
         </SwitcherHandle>
       </Switcher>
       {!labelFirst && children && <span>{children}</span>}
-    </SwitchLabel>
+    </SwitchWrapper>
   )
 }
 

@@ -358,7 +358,7 @@ export class FormulaContext implements ContextInterface {
         namespaceId,
         prefixLength: exist => (exist ? 0 : variable.namespaceName().length + 1)
       })
-    if (!this.formulaNames.find(n => n.kind === 'Block' && n.key === namespaceId) && type === 'normal' ) {
+    if (!this.formulaNames.find(n => n.kind === 'Block' && n.key === namespaceId) && type === 'normal') {
       this.formulaNames.push({
         kind: 'Block',
         name: 'Untitled',
@@ -410,7 +410,7 @@ export class FormulaContext implements ContextInterface {
 
   public handleBroadcast(variable: VariableInterface): void {
     const dependencyKey = variableKey(variable.t.namespaceId, variable.t.variableId)
-    // console.log('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
+    // devLog('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
     this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
       const childrenVariable = this.context[variableKey(namespaceId, variableId)]!
       void childrenVariable.refresh({ ctx: {}, arguments: [] })

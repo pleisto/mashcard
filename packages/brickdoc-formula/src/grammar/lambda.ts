@@ -1,5 +1,6 @@
 import { FunctionContext, FunctionResult, PredicateFunction, PredicateResult } from '../types'
 import { ControlType } from '../controls'
+import { devLog } from '@brickdoc/design-system'
 export type Lambda = VoidFunction
 
 export const functionResult2lambda = <T extends ControlType>(
@@ -39,11 +40,11 @@ export const functionResult2lambda = <T extends ControlType>(
 
         variable.updateCst(cstdata, ctx.interpretContext)
       } else if (reference.kind === 'self' && reference.attribute) {
-        console.log('self', { reference, cstdata })
+        devLog('self', { reference, cstdata })
       }
     })
 
-    console.log('lambda called', { ctx, result, ctrl })
+    devLog('lambda called', { ctx, result, ctrl })
   }
 }
 

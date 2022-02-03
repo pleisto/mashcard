@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { DeprecatedInput, Icon } from '@brickdoc/design-system'
+import { DeprecatedInput, Icon, devLog } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { MenuIcon } from '../SlashMenu/styled'
@@ -80,7 +80,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const title = event.target.value
     updateAttributes({ title })
-    console.log(title)
+    devLog(title)
     setTitle(title)
   }
 

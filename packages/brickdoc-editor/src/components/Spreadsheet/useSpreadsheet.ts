@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { isEqual } from 'lodash-es'
+import { devLog } from '@brickdoc/design-system'
 import {
   BrickdocEventBus,
   Event,
@@ -103,8 +104,7 @@ export const useSpreadsheet = (options: {
     SpreadsheetLoaded,
     (e: Event) => {
       const { parentId, blocks } = e.payload
-      console.log(`loaded spreadsheet ${parentId}`)
-      console.log(blocks)
+      devLog(`loaded spreadsheet ${parentId}`, blocks)
       const newRows = [...rows]
       blocks.forEach((block: BlockInput) => {
         blocksMap.current.set(block.id, block)
@@ -131,7 +131,7 @@ export const useSpreadsheet = (options: {
             const oldBlock = blocksMap.current.get(block.id)
             const newBlock = { ...block, sort: i }
             if (!isEqual(oldBlock, newBlock)) {
-              console.log(`Saving row block ${newBlock.id}`)
+              devLog(`Saving row block ${newBlock.id}`)
               BrickdocEventBus.dispatch(UpdateBlock({ block: newBlock }))
               blocksMap.current.set(block.id, newBlock)
             }
@@ -284,7 +284,7 @@ export const useSpreadsheet = (options: {
   // )
 
   const saveCellBlock = React.useCallback((block: BlockInput): void => {
-    console.log(`Saving cell block`, block)
+    devLog(`Saving cell block`, block)
     setBlockToCellsMap(block)
     blocksMap.current.set(block.id, block)
     BrickdocEventBus.dispatch(UpdateBlock({ block }))

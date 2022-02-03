@@ -90,7 +90,7 @@ export const Spreadsheet = (
     })
   }
 
-  // console.log({ recordData, rows, columns })
+  // devLog({ recordData, rows, columns })
 
   const spreadsheetDefinition: SpreadsheetInitializer = {
     ctx,

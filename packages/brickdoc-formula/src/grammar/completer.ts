@@ -89,7 +89,7 @@ export const complete = ({
     })
   }
 
-  // console.log({ name, code, lastCodeFragment, position, input, tokens, codeFragments, completions })
+  // devLog({ name, code, lastCodeFragment, position, input, tokens, codeFragments, completions })
 
   if (['FunctionName', 'Function'].includes(code)) {
     completions = completions.map(c => {

@@ -3,6 +3,7 @@ import { MAX_COLOR_RGB } from './rgb'
 import { HSV } from './hsv'
 import { hsv2hsl, hsv2rgb, rgb2color, cssStr2color, color2cssStr } from './converter'
 import { clamp } from './clamp'
+import { devWarning } from '../logger'
 
 // Soften: to get closer to the background color's luminance
 // (softening with a white background would be lightening, with black it'd be darkening)
@@ -102,7 +103,7 @@ export function colorWithShade(color: Color, shade: Shade, isInverted: boolean =
   }
 
   if (!isValidShade(shade)) {
-    console.warn(`[@brickdoc/design-colors] valid shade: ${shade} type: ${typeof shade}`)
+    devWarning(true, `color palette valid shade: ${shade} type: ${typeof shade}`)
     return color
   }
 

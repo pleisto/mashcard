@@ -626,7 +626,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.visit(ctx.lazyVariableExpression, { type })
     }
 
-    // console.log('debugAtomic', {ctx, type})
+    // devLog('debugAtomic', {ctx, type})
     return { codeFragments: [], type: 'any', image: '' }
   }
 
@@ -649,7 +649,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.visit(ctx.predicateExpression, { type })
     }
 
-    // console.log('debugAtomic', {ctx, type})
+    // devLog('debugAtomic', {ctx, type})
     return { codeFragments: [], type: 'any', image: '' }
   }
 
@@ -657,7 +657,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     const codeFragments: CodeFragment[] = []
     const images: string[] = []
     const parentType: FormulaType = 'Reference'
-    // console.log('reference', { ctx })
+    // devLog('reference', { ctx })
     const token = ctx.Ampersand[0]
 
     images.push(token.image)
@@ -934,7 +934,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       return this.StringLiteralExpression(ctx, { type })
     }
 
-    // console.log('debugConstant', { ctx, type })
+    // devLog('debugConstant', { ctx, type })
     return { codeFragments: [], type: 'any', image: '' }
   }
 

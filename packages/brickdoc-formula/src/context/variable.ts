@@ -210,7 +210,7 @@ export class VariableClass implements VariableInterface {
   }
 
   public afterUpdate(): void {
-    // console.log('after update', this.t.name, this.t.variableId)
+    // devLog('after update', this.t.name, this.t.variableId)
     BrickdocEventBus.dispatch(FormulaUpdated(this))
   }
 
