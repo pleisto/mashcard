@@ -17,7 +17,6 @@
     "react-dom": ">= 17.0"
   },
   "devDependencies": {
-    "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
     "@icon-park/compiler": "^1.0.7",
     "glob": "^7.2.0",
     "mkdirp": "^1.0.4"

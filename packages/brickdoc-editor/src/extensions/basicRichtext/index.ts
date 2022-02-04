@@ -4,8 +4,6 @@ import Blockquote, { BlockquoteOptions } from '@tiptap/extension-blockquote'
 import Bold, { BoldOptions } from '@tiptap/extension-bold'
 import BulletList, { BulletListOptions } from '@tiptap/extension-bullet-list'
 import Code, { CodeOptions } from '@tiptap/extension-code'
-import { CodeBlockLowlight, CodeBlockLowlightOptions } from '@tiptap/extension-code-block-lowlight'
-import lowlight from 'lowlight'
 import Document from '@tiptap/extension-document'
 import Dropcursor, { DropcursorOptions } from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
@@ -22,6 +20,7 @@ import Underline, { UnderlineOptions } from '@tiptap/extension-underline'
 import Text from '@tiptap/extension-text'
 import TextStyle, { TextStyleOptions } from '@tiptap/extension-text-style'
 import Link, { LinkOptions } from '@tiptap/extension-link'
+import { CodeBlockRefractor, CodeBlockRefractorOptions } from '../codeBlockRefractor'
 import { AnchorExtensioin, AnchorOptions } from '../anchor'
 import { FontColorExtension, FontColorOptions } from '../fontColor'
 import { ImageBlockExtension, ImageBlockOptions } from '../image'
@@ -37,7 +36,7 @@ export interface BasicRichtextOptions {
   bold: Partial<BoldOptions> | false
   bulletList: Partial<BulletListOptions> | false
   code: Partial<CodeOptions> | false
-  codeBlock: Partial<CodeBlockLowlightOptions> | false
+  codeBlock: Partial<CodeBlockRefractorOptions> | false
   document: false
   dropcursor: Partial<DropcursorOptions> | false
   gapcursor: false
@@ -83,11 +82,11 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.code !== false) extensions.push(Code.configure(this.options?.code))
     if (this.options.codeBlock !== false)
       extensions.push(
-        CodeBlockLowlight.extend({
+        CodeBlockRefractor.extend({
           addNodeView() {
             return ReactNodeViewRenderer(CodeBlock)
           }
-        }).configure({ lowlight, ...this.options.codeBlock })
+        }).configure(this.options.codeBlock)
       )
     if (this.options.document !== false) extensions.push(Document.configure(this.options?.document))
     if (this.options.dropcursor !== false) extensions.push(Dropcursor.configure(this.options?.dropcursor))

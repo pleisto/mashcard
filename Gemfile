@@ -3,11 +3,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '~> 7.0.1'
-gem 'pg', '~> 1.3.0'
+gem 'pg', '~> 1.3.1'
 gem 'puma', '~> 5.6'
 gem 'puma_worker_killer', '~> 0.3.1'
 gem 'hiredis', '~> 0.6.3'
-gem 'redis', '~>4.5.1'
+gem 'redis', '~>4.6.0'
 gem 'redis-objects', '~>1.5.1'
 gem 'redis-namespace', '~> 1.8', '>= 1.8.1'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
@@ -38,14 +38,14 @@ gem 'flipper-active_support_cache_store', '~> 0.23.1'
 gem 'default_value_for', github: 'brickdoc/default_value_for'
 
 # Sentry
-gem "sentry-ruby", '~> 5.0.1'
-gem "sentry-rails", '~> 5.0.1'
+gem "sentry-ruby", '~> 5.0.2'
+gem "sentry-rails", '~> 5.0.2'
 
 # GraphQL
 gem 'graphql', '~> 1.13'
-gem 'graphql-fragment_cache', '~> 1.9.1'
+gem 'graphql-fragment_cache', '~> 1.10'
 gem 'apollo_upload_server', '~> 2.1'
-gem 'graphql-batch', '~> 0.4.3'
+gem 'graphql-batch', '~> 0.5'
 
 # Frontend
 gem 'vite_rails', '~> 3.0.5'
@@ -76,10 +76,10 @@ group :development, :test do
   gem 'cypress-on-rails', '~> 1.12.1'
   gem 'brakeman'
   gem 'ffaker'
-  gem 'rubocop', '>= 1.25.0'
+  gem 'rubocop', '>= 1.25.1'
   gem 'rubocop-brickdoc', require: false, path: 'gems/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
-  gem 'rspec-rails', '>= 5.0.2'
+  gem 'rspec-rails', '>= 5.1.0'
   gem 'rspec_junit_formatter', '>= 0.4'
   # gem 'debug', '~> 1.3', '>= 1.3.4', platforms: [:mri, :mingw, :x64_mingw]
 end

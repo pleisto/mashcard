@@ -11,6 +11,9 @@ export default {
     reValidateMode: 'onChange'
   },
   argTypes: {
+    yup: {
+      description: 'Yup schema for validation, only works when `resolver` is not provided.'
+    },
     onSubmit: {
       description: '`(data: Object, e?: Event) => void` A successful callback.'
     },

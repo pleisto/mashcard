@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import RubyPlugin from 'vite-plugin-ruby'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
   plugins: [
@@ -58,15 +59,34 @@ export default defineConfig({
           }
         ]
       }
+    }),
+    visualizer({
+      brotliSize: true,
+      filename: './tmp/esm-bundle-stats.html'
     })
   ],
   build: {
     chunkSizeWarningLimit: 1024,
     sourcemap: false,
     cssCodeSplit: false,
-    target: ['chrome74', 'ios13']
+    target: ['chrome74', 'ios13'],
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          common: ['react', 'react-dom', 'lodash-es', 'i18next', '@apollo/client', 'yup'],
+          telemetry: ['@sentry/react', '@sentry/tracing', '@sentry/integrations'],
+          'design-system': ['@brickdoc/design-system', '@brickdoc/design-icons', 'framer-motion']
+        }
+      }
+    }
   },
   optimizeDeps: {
-    include: ['dayjs', 'react', 'react-dom']
+    include: ['dayjs', 'yup', 'lodash-es', 'framer-motion', 'yup']
+  },
+  resolve: {
+    alias: {
+      lodash: 'lodash-es'
+    },
+    dedupe: ['react', 'react-dom', 'i18next', 'react-i18next']
   }
 })

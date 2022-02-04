@@ -7,7 +7,7 @@ const isCI = require('is-ci')
  * @type {import('@jest/types').Config.InitialOptions}
  */
 
-const esModules = ['lodash-es'].join('|')
+const esModules = ['lodash-es', 'refractor', 'decode-named-character-reference', 'character-entities'].join('|')
 
 module.exports = {
   testURL: 'http://localhost',
@@ -28,5 +28,5 @@ module.exports = {
   reporters: isCI
     ? ['default', ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]]
     : ['default'],
-  transformIgnorePatterns: [`/node_modules/(?!${esModules})`]
+  transformIgnorePatterns: [`<rootDir>/node_modules/(?!(${esModules})/)`]
 }

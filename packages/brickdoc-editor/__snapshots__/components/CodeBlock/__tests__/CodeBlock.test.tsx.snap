@@ -2,6 +2,7 @@
 
 exports[`CodeBlock matches snapshot correctly 1`] = `
 <div
+  class="brd-c-hIBjYz"
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >

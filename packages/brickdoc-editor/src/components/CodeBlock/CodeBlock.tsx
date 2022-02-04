@@ -2,7 +2,8 @@ import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../../components'
 import { DeprecatedInput, Icon, styled, toast } from '@brickdoc/design-system'
-import 'highlight.js/styles/atom-one-light.css'
+import { highlightStyle } from './styles/highlight.style'
+import { languageNames } from '../../extensions/codeBlockRefractor/refractorLanguagesBundle'
 import * as EditorIcon from '../Icon'
 import { ActionItemOption } from '../BlockActions'
 import { BlockContainerProps } from '../BlockContainer'
@@ -25,12 +26,12 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
   const [search, setSearch] = React.useState<string | undefined>('')
   const items: ActionItemOption[] = React.useMemo(
     () =>
-      ([defaultLanguage, ...extension.options.lowlight.listLanguages()] as string[])
+      ([defaultLanguage, ...languageNames] as string[])
         .filter(lang => lang.toLowerCase().includes(search?.toLowerCase() ?? ''))
         .map<ActionItemOption>(lang => ({
           type: 'item',
           name: lang,
-          label: lang,
+          label: t(`code_block.languages.${lang}`),
           tip: lang === language ? <LanguageChecked /> : undefined,
           onAction: () => {
             updateAttributes({
@@ -40,7 +41,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
           closeOnAction: true
         }))
         .sort(i => (i.name === language ?? defaultLanguage ? -1 : 0)),
-    [extension.options.lowlight, language, search, updateAttributes]
+    [language, search, t, updateAttributes]
   )
 
   const actionOptions: BlockContainerProps['actionOptions'] = [
@@ -50,7 +51,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
         {
           type: 'subMenu',
           name: 'languages',
-          label: language ?? defaultLanguage,
+          label: t(`code_block.languages.${language ?? defaultLanguage}`),
           icon: <EditorIcon.TextMessage className={actionIconStyle()} />,
           items: [
             {
@@ -85,7 +86,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
   ]
 
   return (
-    <BlockContainer getPos={getPos} deleteNode={deleteNode} actionOptions={actionOptions}>
+    <BlockContainer className={highlightStyle()} getPos={getPos} deleteNode={deleteNode} actionOptions={actionOptions}>
       <pre>
         <NodeViewContent as="code" />
       </pre>

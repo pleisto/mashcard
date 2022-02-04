@@ -920,6 +920,56 @@ en-US:
         title: Are you sure you want to delete this property?
         ok: Delete
         cancel: Cancel
+      languages:
+        'plain text': Plaintext
+        markdown: Markdown
+        css: CSS
+        javascript: JavaScript
+        typescript: TypeScript
+        bash: Bash
+        json: JSON
+        yaml: YAML
+        sql: SQL
+        cpp: C/C++
+        csharp: C#
+        java: Java
+        python: Python
+        ruby: Ruby
+        objectivec: Objective-C
+        docker: Dockerfile
+        elixir: Elixir
+        rust: Rust
+        lisp: Lisp
+        haskell: Haskell
+        php: PHP
+        go: Go
+        kotlin: Kotlin
+        graphql: GraphQL
+        powershell: PowerShell
+        groovy: Groovy
+        solidity: Solidity
+        xml-doc: XML
+        lua: Lua
+        scala: Scala
+        matlab: Matlab
+        applescript: AppleScript
+        arduino: Arduino
+        basic: BASIC
+        diff: Diff
+        r: R
+        swift: Swift
+        toml: TOML
+        tcl: TCL
+        wasm: WASM
+        ebnf: EBNF
+        latex: LaTeX
+        tsx: TSX
+        jsx: JSX
+        protobuf: Protocol Buffer
+        ignore: .ignore files
+        regex: Regex
+        ini: INI
+        properties: Properties
     embed_block:
       types:
         gallery:

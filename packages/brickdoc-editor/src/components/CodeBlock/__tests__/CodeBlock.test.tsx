@@ -13,7 +13,7 @@ describe('CodeBlock', () => {
     },
     extension: {
       options: {
-        lowlight: {
+        refractor: {
           listLanguages() {
             return ['typescript']
           }

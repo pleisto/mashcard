@@ -19,8 +19,7 @@
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.54",
     "@tiptap/extension-bullet-list": "^2.0.0-beta.26",
     "@tiptap/extension-code": "^2.0.0-beta.26",
-    "@tiptap/extension-code-block": "^2.0.0-beta.35",
-    "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.65",
+    "@tiptap/extension-code-block": "^2.0.0-beta.37",
     "@tiptap/extension-document": "^2.0.0-beta.15",
     "@tiptap/extension-dropcursor": "^2.0.0-beta.25",
     "@tiptap/extension-gapcursor": "^2.0.0-beta.34",
@@ -40,12 +39,12 @@
     "@tiptap/extension-unique-id": "^2.0.0-beta.4",
     "@tiptap/react": "^2.0.0-beta.107",
     "@tiptap/suggestion": "^2.0.0-beta.86",
-    "highlight.js": "^11.4.0",
     "popper-max-size-modifier": "^0.2.0",
     "re-resizable": "^6.9.1",
     "react-dnd": "^14.0.5",
     "react-dnd-html5-backend": "^14.1.0",
     "react-medium-image-zoom": "^4.3.5",
+    "refractor": "^4.4.0",
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {

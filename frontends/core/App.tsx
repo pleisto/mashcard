@@ -6,8 +6,9 @@ import { Loading, globalStyle, Provider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
+import { withProfiler } from '@sentry/react'
 
-export const BrickdocPWA: FC = () => {
+export const App: FC = () => {
   // Inject global styles
   globalStyle()
 
@@ -29,3 +30,7 @@ export const BrickdocPWA: FC = () => {
     </Suspense>
   )
 }
+
+export const BrickdocPWA = withProfiler(App, {
+  name: 'BrickdocPWA'
+})

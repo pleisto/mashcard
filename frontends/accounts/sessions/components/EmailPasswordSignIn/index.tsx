@@ -3,17 +3,14 @@ import { Button, Input, Checkbox, DeprecatedDivider, toast, Form, SubmitHandler 
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+import { object, string, boolean } from 'yup'
 import { Link } from 'react-router-dom'
 
-const resolver = zodResolver(
-  z.object({
-    email: z.string().email(),
-    password: z.string().min(1),
-    remember: z.boolean()
-  })
-)
+const validation = object({
+  email: string().email(),
+  password: string().required(),
+  remember: boolean()
+})
 
 export const EmailPasswordSignIn: React.FC = () => {
   const { t } = useAccountsI18n()
@@ -32,7 +29,7 @@ export const EmailPasswordSignIn: React.FC = () => {
 
   return (
     <div>
-      <Form onSubmit={onSubmit} resolver={resolver}>
+      <Form onSubmit={onSubmit} yup={validation}>
         <Form.Field name="email">
           <Input type="email" />
         </Form.Field>
