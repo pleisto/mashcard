@@ -4,6 +4,7 @@ import { cx } from '../../utilities'
 import { css, theme, styled } from '../../themes'
 import { MenuActionContext, MenuContext } from './context'
 import { itemMinHeight, itemSpacing } from './styles/index.style'
+import { useMemoizedFn } from '../../hooks'
 import { MenuProps } from './menu'
 
 const itemLineHeight = '1.25rem'
@@ -119,14 +120,11 @@ const _MenuItem: React.ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = 
   )
   const label = props.label ?? props.title
   const title = props.title ?? (typeof label === 'string' ? label : '')
-  const handleClick = React.useCallback(
-    (event: React.MouseEvent): void => {
-      onClick?.(event)
-      onAction?.(itemKey)
-      globalOnAction?.(itemKey)
-    },
-    [onClick, onAction, itemKey, globalOnAction]
-  )
+  const handleClick = useMemoizedFn((event: React.MouseEvent): void => {
+    onClick?.(event)
+    onAction?.(itemKey)
+    globalOnAction?.(itemKey)
+  })
 
   return (
     <ReakitMenuItem

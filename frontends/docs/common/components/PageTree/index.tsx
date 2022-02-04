@@ -9,10 +9,7 @@ import {
   useGetBlockPinsQuery,
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
-/* import { Tree, TreeProps } from '@brickdoc/design-system' */
-
-// TODO: change to design-system
-import { Tree, TreeProps, TNode, Inserted, css, styled, toast, useSize } from '@brickdoc/design-system'
+import { Tree, TreeProps, TNode, Inserted, css, styled, toast, useSize, useMemoizedFn } from '@brickdoc/design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -61,25 +58,22 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   const { data: pinData } = useGetBlockPinsQuery()
   const pinIds = pinData?.blockPins?.map(pin => pin.blockId) ?? []
 
-  const getTitle = React.useCallback(
-    (block: BlockType): string => {
-      const text = block.text
-      if (/^\s*$/.test(text)) {
-        return t('title.untitled')
-      } else {
-        return text
-      }
-    },
-    [t]
-  )
+  const getTitle = useMemoizedFn((block: BlockType): string => {
+    const text = block.text
+    if (/^\s*$/.test(text)) {
+      return t('title.untitled')
+    } else {
+      return text
+    }
+  })
 
-  const getIcon = React.useCallback((block: BlockType): string | null => {
+  const getIcon = useMemoizedFn((block: BlockType): string | null => {
     if (block.meta.icon?.type === Blocktype.Emoji) {
       return (block.meta.icon as BlockEmoji).emoji
     }
 
     return ''
-  }, [])
+  })
 
   //
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {

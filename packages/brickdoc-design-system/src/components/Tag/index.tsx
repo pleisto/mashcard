@@ -1,6 +1,6 @@
-import { forwardRef, ForwardRefRenderFunction, useCallback } from 'react'
+import { forwardRef, ForwardRefRenderFunction } from 'react'
 import { Close as CloseOutlined } from '@brickdoc/design-icons'
-
+import { useMemoizedFn } from '../../hooks'
 import type { TagProps } from './constants'
 import { TagRoot } from './styles/index.style'
 
@@ -19,19 +19,13 @@ const Tag: ForwardRefRenderFunction<HTMLDivElement, TagProps> = (props, ref) => 
     ...otherProps
   } = props
 
-  const handleClick = useCallback(
-    e => {
-      onClick?.(e, value ?? text)
-    },
-    [onClick, value, text]
-  )
+  const handleClick = useMemoizedFn(e => {
+    onClick?.(e, value ?? text)
+  })
 
-  const handleClose = useCallback(
-    e => {
-      onClose?.(e, value ?? text)
-    },
-    [onClose, value, text]
-  )
+  const handleClose = useMemoizedFn(e => {
+    onClose?.(e, value ?? text)
+  })
 
   const icon = closable ? <CloseOutlined onClick={handleClose} /> : <></>
   const clickable = closable || onClose !== undefined

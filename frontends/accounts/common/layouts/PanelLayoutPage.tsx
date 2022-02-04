@@ -53,7 +53,7 @@ const PanelLayout = styled('div', {
           borderRadius: '0.5rem',
           width: '40rem',
           marginTop: '-5rem',
-          padding: '5rem 10rem'
+          padding: '5rem 7rem'
         }
       }
     }

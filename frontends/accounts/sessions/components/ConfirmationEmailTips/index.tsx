@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, toast, useCountDown } from '@brickdoc/design-system'
+import { Button, toast, useCountDown, Box, theme, prefix } from '@brickdoc/design-system'
 import { Success } from '@brickdoc/design-icons'
 import { mutationResultHandler, millisecondsToSeconds } from '@/common/utils'
 import { useUserConfirmationEmailResendMutation } from '@/BrickdocGraphQL'
 import dayjs from 'dayjs'
-
-import styles from './index.module.less'
 
 export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) => {
   const [targetDate, setTargetDate] = useState<number>()
@@ -24,8 +22,22 @@ export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) =>
   }
 
   return (
-    <div className={styles.container}>
-      <Success theme="filled" className={styles.icon} />
+    <Box
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        [`.${prefix}-icon-success`]: {
+          fontSize: '4rem',
+          marginBottom: '1rem',
+          color: theme.colors.green6
+        },
+        h4: {
+          margin: '2rem 0'
+        }
+      }}
+    >
+      <Success theme="filled" />
       <h1>{t('sessions.confirmation_email_required_heading')}</h1>
       <p>{t('devise:registrations.signed_up_but_unconfirmed')}</p>
       <Button loading={loading} onClick={onClick} disabled={countdown !== 0}>
@@ -33,6 +45,6 @@ export const ConfirmationEmailTips: React.FC<{ email: string }> = ({ email }) =>
           ? t('sessions.resend_confirmed_email')
           : t('sessions.resend_after', { seconds: millisecondsToSeconds(countdown) })}
       </Button>
-    </div>
+    </Box>
   )
 }

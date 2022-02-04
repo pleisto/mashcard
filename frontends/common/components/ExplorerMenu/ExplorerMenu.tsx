@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Menu } from '@brickdoc/design-system'
+import { Icon, Menu, useMemoizedFn } from '@brickdoc/design-system'
 import { BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuItem, ExplorerMenuTrigger } from '@brickdoc/schema'
 import { useDocsI18n } from '@/docs/common/hooks'
 import {
@@ -67,16 +67,16 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
     [groupSource, search]
   )
 
-  const handleSearchChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>(event => {
+  const handleSearchChange = useMemoizedFn<React.ChangeEventHandler<HTMLInputElement>>(event => {
     setSearch(event.target.value)
-  }, [])
+  })
 
-  const handleClose = React.useCallback(() => {
+  const handleClose = useMemoizedFn(() => {
     setVisible(false)
-  }, [])
-  const handleExplorerMenuClick = React.useCallback<React.MouseEventHandler>(event => {
+  })
+  const handleExplorerMenuClick = useMemoizedFn<React.MouseEventHandler>(event => {
     event.stopPropagation()
-  }, [])
+  })
 
   return (
     <>

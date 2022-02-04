@@ -10,6 +10,7 @@ export interface FormControlProps extends Omit<HTMLAttributes<HTMLDivElement>, '
   label?: ReactNode
   invalidMessage?: ReactNode
   children: ReactNode
+  hidden?: boolean
 }
 
 export const FormControl: FC<FormControlProps> = props => {

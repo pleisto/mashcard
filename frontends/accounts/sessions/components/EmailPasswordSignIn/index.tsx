@@ -1,5 +1,15 @@
 import React from 'react'
-import { Button, Input, Checkbox, DeprecatedDivider, toast, Form, SubmitHandler } from '@brickdoc/design-system'
+import {
+  Button,
+  Input,
+  Checkbox,
+  DeprecatedDivider,
+  toast,
+  Form,
+  SubmitHandler,
+  Box,
+  theme
+} from '@brickdoc/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
@@ -7,7 +17,7 @@ import { object, string, boolean } from 'yup'
 import { Link } from 'react-router-dom'
 
 const validation = object({
-  email: string().email(),
+  email: string().email().required(),
   password: string().required(),
   remember: boolean()
 })
@@ -15,6 +25,7 @@ const validation = object({
 export const EmailPasswordSignIn: React.FC = () => {
   const { t } = useAccountsI18n()
   const [emailPasswordSignIn, { loading }] = useUserEmailPasswordSignInMutation()
+  const form = Form.useForm<UserEmailPasswordSignInInput>({ yup: validation })
 
   const onSubmit: SubmitHandler<UserEmailPasswordSignInInput> = async input => {
     const { data } = await emailPasswordSignIn({ variables: { input } })
@@ -29,11 +40,11 @@ export const EmailPasswordSignIn: React.FC = () => {
 
   return (
     <div>
-      <Form onSubmit={onSubmit} yup={validation}>
-        <Form.Field name="email">
+      <Form form={form} onSubmit={onSubmit}>
+        <Form.Field name="email" label={t('sessions.email')}>
           <Input type="email" />
         </Form.Field>
-        <Form.Field name="password">
+        <Form.Field name="password" label={t('sessions.password')}>
           <Input type="password" />
         </Form.Field>
         <Form.Field name="remember" label={false}>
@@ -45,9 +56,18 @@ export const EmailPasswordSignIn: React.FC = () => {
           </Button>
         </Form.Field>
       </Form>
-      <Link to="/accounts/sign_up">{t('sessions.sign_up_with_email')}</Link>
-      <DeprecatedDivider type="vertical" />
-      <Link to="/accounts/password/forget">{t('sessions.forget_password')}</Link>
+      <Box
+        css={{
+          textAlign: 'right',
+          a: {
+            color: theme.colors.typeThirdary
+          }
+        }}
+      >
+        <Link to="/accounts/sign_up">{t('sessions.sign_up_with_email')}</Link>
+        <DeprecatedDivider type="vertical" />
+        <Link to="/accounts/password/forget">{t('sessions.forget_password')}</Link>
+      </Box>
     </div>
   )
 }

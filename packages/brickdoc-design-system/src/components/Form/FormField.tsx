@@ -9,9 +9,6 @@ export interface FormFieldProps extends Omit<FormControlProps, 'invalidMessage'>
   options?: RegisterOptions
 }
 
-/**
- * @see https://react-hook-form.com/advanced-usage#FormProviderPerformance
- */
 const MemoizedFormField = memo(
   (props: FormFieldProps & Pick<FromContextValue, 'register' | 'formState'>) => {
     const { name, options = {}, children, label, layout, formState, register, ...controlProps } = props
@@ -38,7 +35,13 @@ const MemoizedFormField = memo(
       </FormControl>
     )
   },
-  (prevProps, nextProps) => prevProps?.formState?.isDirty === nextProps?.formState?.isDirty
+  (prevProps, nextProps) => false
+  // TODO:  memoize has a bug when yup resolver is used
+  /**
+   * @see https://react-hook-form.com/advanced-usage#FormProviderPerformance
+   * prevProps?.formState?.isDirty === nextProps?.formState?.isDirty &&
+   * prevProps?.formState?.errors === nextProps?.formState?.errors
+   */
 )
 
 export const FormField: FC<FormFieldProps> = props => {

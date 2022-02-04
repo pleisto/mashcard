@@ -7,7 +7,6 @@ import { Button, ButtonProps } from '../../components/Button'
 import LocaleReceiver from '../locale-provider/LocaleReceiver'
 import { ConfigContext, DirectionType } from '../config-provider'
 import { canUseDocElement } from '../_util/styleChecker'
-import { getTransitionName } from '../_util/motion'
 import { ModalLocale } from './locale'
 
 let mousePosition: { x: number; y: number } | null
@@ -140,15 +139,15 @@ const Modal: React.FC<ModalProps> = props => {
     onOk?.(e)
   }
 
-  const renderFooter = (locale: ModalLocale) => {
+  const renderFooter = (_: ModalLocale) => {
     const { okText, okType, cancelText, confirmLoading } = props
     return (
       <>
         <Button onClick={handleCancel} {...props.cancelButtonProps}>
-          {cancelText || locale.cancelText}
+          {cancelText || 'Cancel'}
         </Button>
         <Button type={okType} loading={confirmLoading} onClick={handleOk} {...props.okButtonProps}>
-          {okText || locale.okText}
+          {okText || 'Ok'}
         </Button>
       </>
     )
@@ -167,7 +166,6 @@ const Modal: React.FC<ModalProps> = props => {
   } = props
 
   const prefixCls = getPrefixCls('modal', customizePrefixCls)
-  const rootPrefixCls = getPrefixCls()
 
   const defaultFooter = <LocaleReceiver componentName="Modal">{renderFooter}</LocaleReceiver>
 
@@ -193,8 +191,6 @@ const Modal: React.FC<ModalProps> = props => {
       onClose={handleCancel}
       closeIcon={closeIconToRender}
       focusTriggerAfterClose={focusTriggerAfterClose}
-      transitionName={getTransitionName(rootPrefixCls, 'zoom', props.transitionName)}
-      maskTransitionName={getTransitionName(rootPrefixCls, 'fade', props.maskTransitionName)}
     />
   )
 }

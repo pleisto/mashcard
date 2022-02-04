@@ -1,17 +1,13 @@
 import * as React from 'react'
 import { i18n } from 'i18next'
 import { I18nextProvider } from 'react-i18next'
-import { FormProvider as RcFormProvider } from 'rc-field-form'
-import { ValidateMessages } from 'rc-field-form/lib/interface'
 import useMemo from 'rc-util/lib/hooks/useMemo'
 
 import './style'
 import { RenderEmptyHandler } from './renderEmpty'
 import LocaleProvider from '../locale-provider'
-import { useLocale } from '../locale-provider/LocaleReceiver'
 import { ConfigConsumer, ConfigContext, CSPConfig, DirectionType, ConfigConsumerProps, Theme } from './context'
 import SizeContext, { SizeContextProvider, SizeType } from './SizeContext'
-import { RequiredMark } from '../form/Form'
 
 export { ConfigContext, ConfigConsumer }
 
@@ -34,8 +30,7 @@ const PASSED_PROPS: Array<Exclude<keyof ConfigConsumerProps, 'rootPrefixCls' | '
   'getPopupContainer',
   'renderEmpty',
   'pageHeader',
-  'input',
-  'form'
+  'input'
 ]
 
 export interface ConfigProviderProps {
@@ -46,10 +41,6 @@ export interface ConfigProviderProps {
   renderEmpty?: RenderEmptyHandler
   csp?: CSPConfig
   autoInsertSpaceInButton?: boolean
-  form?: {
-    validateMessages?: ValidateMessages
-    requiredMark?: RequiredMark
-  }
   input?: {
     autoComplete?: string
   }
@@ -120,7 +111,6 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
     children,
     csp,
     autoInsertSpaceInButton,
-    form,
     componentSize,
     direction,
     space,
@@ -176,19 +166,6 @@ const ProviderChildren: React.FC<ProviderChildrenProps> = props => {
 
   let childNode = children
   // Additional Form provider
-  let validateMessages: ValidateMessages = {}
-
-  const locale = useLocale()
-  if (locale?.Form?.defaultValidateMessages) {
-    validateMessages = locale.Form.defaultValidateMessages
-  }
-  if (form?.validateMessages) {
-    validateMessages = { ...validateMessages, ...form.validateMessages }
-  }
-
-  if (Object.keys(validateMessages).length > 0) {
-    childNode = <RcFormProvider validateMessages={validateMessages}>{children}</RcFormProvider>
-  }
 
   if (componentSize) {
     childNode = <SizeContextProvider size={componentSize}>{childNode}</SizeContextProvider>

@@ -1,7 +1,8 @@
-import { ForwardRefRenderFunction, createRef, forwardRef, InputHTMLAttributes, useState } from 'react'
+import { ForwardRefRenderFunction, createRef, forwardRef, InputHTMLAttributes } from 'react'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SwitchInputProps } from '@mui/base/SwitchUnstyled'
 import { styled } from '../../themes'
+import { useControllableValue } from '../../hooks'
 import { CheckBox as Check } from '@brickdoc/design-icons'
 import { root, checkbox } from './styles/index.style'
 
@@ -23,35 +24,24 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (pro
    * Do not use `useSwitch`(@mui/base/SwitchUnstyled),
    * Because `react-hook-form` required uncontrolled component.
    */
-  const {
-    labelFirst = false,
-    className,
-    style,
-    onChange,
-    defaultChecked = false,
-    checked = undefined,
-    children,
-    disabled,
-    ...otherProps
-  } = props
+  const { labelFirst = false, className, style, onChange, children, disabled, ...otherProps } = props
   const inputRef = ref ?? createRef<HTMLInputElement>()
-  const [unControlledChecked, setUnControlledChecked] = useState(defaultChecked)
-  const unControlledToggle = (e: any): void => {
-    setUnControlledChecked(!unControlledChecked)
-    onChange?.(e)
-  }
-  const isChecked = checked ?? unControlledChecked
+  const [checked, setChecked] = useControllableValue<boolean>(props, {
+    defaultValuePropName: 'defaultChecked',
+    valuePropName: 'checked',
+    defaultValue: false
+  })
   return (
     <CheckboxLabel className={className} style={style}>
       {labelFirst && children && <span>{children}</span>}
-      <CheckboxUI checked={isChecked} labelFirst={labelFirst} disabled={disabled}>
-        {isChecked && <Check aria-hidden />}
+      <CheckboxUI checked={checked} labelFirst={labelFirst} disabled={disabled}>
+        {checked && <Check aria-hidden />}
         <VisuallyHidden>
           <input
             type="checkbox"
             {...otherProps}
-            onChange={typeof checked === 'boolean' ? onChange : unControlledToggle}
-            checked={isChecked}
+            onChange={e => setChecked(e.target.checked)}
+            checked={checked}
             ref={inputRef}
             disabled={disabled}
           />

@@ -6,23 +6,22 @@ import {
   useUserCreateMutation,
   UserCreateInput
 } from '@/BrickdocGraphQL'
+import { object, string, ref } from 'yup'
 import { useSignUpInitialValues } from './hooks/useSignUpInitialValues'
 import { useWebidAvailableValidator } from '@/common/hooks'
-import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
+import { useAccountsI18n } from '@/accounts/common/hooks'
 import { omit, omitBy, pick, isNil } from 'lodash-es'
 import { mutationResultHandler } from '@/common/utils'
-import { DeprecatedForm, DeprecatedInput, Button, DeprecatedSkeleton, toast, useBoolean } from '@brickdoc/design-system'
+import { Form, Input, Button, DeprecatedSkeleton, toast, useBoolean } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
-import { usePasswordAvailableValidator } from '@/common/hooks/usePasswordAvailableValidator'
 
 export const SignUpPage: React.FC = () => {
   const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
   const { loading: configLoading, data: configData } = useGetAccountsConfigFromWsQuery()
 
   // Set Form initial values
-  const [form] = DeprecatedForm.useForm()
   const { loading: sessionLoading, data: sessionData } = useGetFederatedIdentitySessionQuery()
   const { initialValues, setFill } = useSignUpInitialValues()
   useEffect(() => {
@@ -33,14 +32,30 @@ export const SignUpPage: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionLoading, sessionData])
+  const hasFederatedIdentity = sessionData?.federatedIdentitySession?.hasSession
   const providerName = sessionData?.federatedIdentitySession?.provider
   const { t } = useAccountsI18n()
 
   // Set Validator
-  const passwordConfirmValidator = useConfirmationValidator('password')
   const webidAvailableValidator = useWebidAvailableValidator()
   const emailAvailableValidator = useEmailAvailableValidator()
-  const passwordAvailableValidator = usePasswordAvailableValidator()
+
+  const basicValidation = object({
+    webid: string().required().test(webidAvailableValidator),
+    name: string().required(),
+    locale: string().required(),
+    timezone: string().required()
+  })
+
+  const emailPasswordFormValidation = object({
+    email: string().email().required().test(emailAvailableValidator),
+    password: string().required().min(8).max(128),
+    confirm_password: string()
+      .min(8)
+      .max(128)
+      .required()
+      .oneOf([ref('password'), null])
+  }).concat(basicValidation)
 
   // On Form Submit
   const [userCreate, { loading: userCreateLoading }] = useUserCreateMutation()
@@ -58,6 +73,13 @@ export const SignUpPage: React.FC = () => {
     })
   }
 
+  const form = Form.useForm<UserCreateInput>({
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
+    yup: hasFederatedIdentity ? basicValidation : emailPasswordFormValidation,
+    defaultValues: initialValues
+  })
+
   // Loading Status
   if (configLoading || sessionLoading) {
     return <DeprecatedSkeleton active />
@@ -65,7 +87,7 @@ export const SignUpPage: React.FC = () => {
 
   // Email unactive tips
   if (didShowConfirmationEmailTips) {
-    return <ConfirmationEmailTips email={form.getFieldValue('email')} />
+    return <ConfirmationEmailTips email={form.getValues('email')!} />
   }
 
   // View
@@ -75,31 +97,15 @@ export const SignUpPage: React.FC = () => {
 
   const EmailPasswordFields = (
     <>
-      <DeprecatedForm.Item
-        name="email"
-        label={t('sessions.email')}
-        hasFeedback
-        rules={[{ required: !sessionData?.federatedIdentitySession?.hasSession }, emailAvailableValidator]}
-      >
-        <DeprecatedInput />
-      </DeprecatedForm.Item>
-      <DeprecatedForm.Item
-        name="password"
-        label={t('sessions.password')}
-        hasFeedback
-        rules={[{ required: true }, passwordAvailableValidator]}
-      >
-        <DeprecatedInput.Password />
-      </DeprecatedForm.Item>
-      <DeprecatedForm.Item
-        name="confirm_password"
-        label={t('sessions.confirm_password')}
-        hasFeedback
-        dependencies={['password']}
-        rules={[{ required: true }, passwordConfirmValidator]}
-      >
-        <DeprecatedInput.Password />
-      </DeprecatedForm.Item>
+      <Form.Field name="email" typeof="email" label={t('sessions.email')}>
+        <Input />
+      </Form.Field>
+      <Form.Field name="password" label={t('sessions.password')}>
+        <Input type="password" />
+      </Form.Field>
+      <Form.Field name="confirm_password" label={t('sessions.confirm_password')}>
+        <Input type="password" />
+      </Form.Field>
     </>
   )
 
@@ -109,35 +115,39 @@ export const SignUpPage: React.FC = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <h1>{pageTitle}</h1>
-      <DeprecatedForm form={form} initialValues={initialValues} layout="vertical" onFinish={onFinish}>
-        <DeprecatedForm.Item
+      <Form
+        form={form}
+        css={{
+          marginBottom: '48px'
+        }}
+        layout="vertical"
+        onSubmit={onFinish}
+      >
+        <Form.Field
           label={t('sessions.webid')}
           name="webid"
-          extra={<small>{t('sessions.webid_description')}</small>}
-          hasFeedback
-          validateTrigger={['onFocus', 'onBlur']}
-          rules={[{ required: true }, webidAvailableValidator]}
+          description={<small>{t('sessions.webid_description')}</small>}
         >
-          <DeprecatedInput />
-        </DeprecatedForm.Item>
-        <DeprecatedForm.Item label={t('sessions.name')} name="name" hasFeedback rules={[{ required: true }]}>
-          <DeprecatedInput />
-        </DeprecatedForm.Item>
+          <Input />
+        </Form.Field>
+        <Form.Field label={t('sessions.name')} name="name">
+          <Input />
+        </Form.Field>
         {
           // Federated Sign Up could skip email and password
-          !sessionData?.federatedIdentitySession?.hasSession && EmailPasswordFields
+          !hasFederatedIdentity && EmailPasswordFields
         }
-        <DeprecatedForm.Item hidden name="locale" rules={[{ required: true }]}>
-          <DeprecatedInput />
-        </DeprecatedForm.Item>
-        <DeprecatedForm.Item hidden name="timezone" rules={[{ required: true }]}>
-          <DeprecatedInput />
-        </DeprecatedForm.Item>
-        <DeprecatedForm.Item>
+        <Form.Field hidden name="locale">
+          <Input type="hidden" />
+        </Form.Field>
+        <Form.Field hidden name="timezone">
+          <Input type="hidden" />
+        </Form.Field>
+        <Form.Field>
           <Button type="primary" htmlType="submit" size="lg" loading={userCreateLoading} block>
             {t('sessions.sign_up')}
           </Button>
-        </DeprecatedForm.Item>
+        </Form.Field>
         <div>
           <small>
             <Trans
@@ -151,7 +161,7 @@ export const SignUpPage: React.FC = () => {
             />
           </small>
         </div>
-      </DeprecatedForm>
+      </Form>
     </div>
   )
 }

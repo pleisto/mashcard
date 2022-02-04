@@ -2,7 +2,6 @@ import { cx as classNames } from '../../utilities'
 import Dialog, { ModalFuncProps } from './Modal'
 import ActionButton from '../_util/ActionButton'
 import devWarning from '../_util/devWarning'
-import { getTransitionName } from '../_util/motion'
 
 interface ConfirmDialogProps extends ModalFuncProps {
   afterClose?: () => void
@@ -92,8 +91,6 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
       visible={visible}
       title=""
       footer=""
-      transitionName={getTransitionName(rootPrefixCls, 'zoom', props.transitionName)}
-      maskTransitionName={getTransitionName(rootPrefixCls, 'fade', props.maskTransitionName)}
       mask={mask}
       maskClosable={maskClosable}
       maskStyle={maskStyle}

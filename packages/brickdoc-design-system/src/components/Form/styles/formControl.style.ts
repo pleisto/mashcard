@@ -23,13 +23,14 @@ export const FormControlWrapper = styled('div', {
   '& > label': {
     display: 'inline-flex'
   },
-  '&+&': {
-    marginTop: '1.5rem'
+  '&[hidden]': {
+    display: 'none'
   },
   variants: {
     layout: {
       vertical: {
         flexDirection: 'column',
+        marginBottom: '1.5rem',
         '& > label': {
           marginBottom: gap
         },

@@ -5,17 +5,19 @@ import {
   QueryEmailAvailableFromWsQuery as Query,
   QueryEmailAvailableFromWsQueryVariables as Variables
 } from '@/BrickdocGraphQL'
-import { DeprecatedFormRuleRender } from '@brickdoc/design-system'
+import { TestConfig } from 'yup'
 
-export const useEmailAvailableValidator = (): DeprecatedFormRuleRender => {
+// TODO: merge with useWebidAvailableValidator --> useAvailableValidator
+export const useEmailAvailableValidator = (): TestConfig => {
   const queryEmailAvailable = useImperativeQuery<Query, Variables>(QueryEmailAvailableFromWsDocument)
-  return () => ({
-    validator: async (_, value) => {
+  return {
+    name: 'emailAvailable',
+    test: async (value, ctx) => {
       if (isEmpty(value)) {
-        return
+        return false
       }
-      const { message, success } = (await queryEmailAvailable({ email: value })).data.emailAvailable
-      success ? await Promise.resolve() : await Promise.reject(new Error(message))
+      const { message, success } = (await queryEmailAvailable({ email: value as string })).data.emailAvailable
+      return success ? true : ctx.createError({ message: `${value} ${message}` })
     }
-  })
+  }
 }

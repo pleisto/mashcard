@@ -1,6 +1,6 @@
-import { FC, useCallback, useState, AriaAttributes, AriaRole } from 'react'
+import { FC, useState, AriaAttributes, AriaRole } from 'react'
 import { Success, Info, Caution, CloseOne, Close } from '@brickdoc/design-icons'
-import { useId } from '../../hooks'
+import { useId, useMemoizedFn } from '../../hooks'
 
 import * as AlertRoot from './style/index.style'
 
@@ -34,10 +34,10 @@ export const Alert: FC<AlertProps> = props => {
   const [visible, setVisible] = useState<boolean>(true)
   const contentId = useId()
 
-  const handleClose = useCallback(() => {
+  const handleClose = useMemoizedFn(() => {
     setVisible(false)
     onClose?.()
-  }, [onClose])
+  })
 
   const size = title ? 'lg' : 'sm'
 

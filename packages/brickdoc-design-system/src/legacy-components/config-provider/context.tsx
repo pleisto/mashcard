@@ -1,7 +1,6 @@
 import * as React from 'react'
 import defaultRenderEmpty, { RenderEmptyHandler } from './renderEmpty'
 import { SizeType } from './SizeContext'
-import { RequiredMark } from '../form/Form'
 
 export interface Theme {
   primaryColor?: string
@@ -39,9 +38,6 @@ export interface ConfigConsumerProps {
   }
   virtual?: boolean
   dropdownMatchSelectWidth?: boolean
-  form?: {
-    requiredMark?: RequiredMark
-  }
 }
 
 const defaultGetPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {

@@ -1,16 +1,6 @@
 export type { DividerProps as DeprecatedDividerProps } from './divider'
 export { default as DeprecatedDivider } from './divider'
 
-export type {
-  FormInstance as DeprecatedFormInstance,
-  FormProps as DeprecatedFormProps,
-  FormItemProps as DeprecatedFormItemProps,
-  Rule as DeprecatedFormRule,
-  RuleObject as DeprecatedFormRuleObject,
-  RuleRender as DeprecatedFormRuleRender
-} from './form'
-export { default as DeprecatedForm } from './form'
-
 export type { InputProps as DeprecatedInputProps } from './input'
 export { default as DeprecatedInput } from './input'
 

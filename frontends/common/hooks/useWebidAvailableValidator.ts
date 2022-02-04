@@ -5,17 +5,18 @@ import {
   QueryWebidAvailableFromWsQuery as Query,
   QueryWebidAvailableFromWsQueryVariables as Variables
 } from '@/BrickdocGraphQL'
-import { DeprecatedFormRuleRender } from '@brickdoc/design-system'
+import { TestConfig } from 'yup'
 
-export const useWebidAvailableValidator = (): DeprecatedFormRuleRender => {
+export const useWebidAvailableValidator = (): TestConfig => {
   const queryWebidAvailable = useImperativeQuery<Query, Variables>(QueryWebidAvailableFromWsDocument)
-  return () => ({
-    validator: async (_, value) => {
+  return {
+    name: 'webidAvailable',
+    test: async (value, ctx) => {
       if (isEmpty(value)) {
-        return
+        return false
       }
-      const { message, success } = (await queryWebidAvailable({ webid: value })).data.webidAvailable
-      success ? await Promise.resolve() : await Promise.reject(new Error(message))
+      const { success, message } = (await queryWebidAvailable({ webid: value as string })).data.webidAvailable
+      return success ? true : ctx.createError({ message: `${value} ${message}` })
     }
-  })
+  }
 }

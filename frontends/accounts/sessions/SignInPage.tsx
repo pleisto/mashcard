@@ -3,7 +3,7 @@ import { AuthMethod } from '@/BrickdocGraphQL'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from './hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { DeprecatedSkeleton, Button, useBoolean } from '@brickdoc/design-system'
+import { DeprecatedSkeleton, Button, useBoolean, Box } from '@brickdoc/design-system'
 import { MoreAuthMethods } from './components/MoreAuthMethods'
 import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
 
@@ -33,7 +33,7 @@ export const SignInPage: React.FC = () => {
         <title>{t('sessions.sign_in')}</title>
       </Helmet>
       <h1>{t('sessions.sign_in_to_brickdoc')}</h1>
-      <div>
+      <Box css={{ marginTop: '48px' }}>
         {
           // Primary Area
           renderEmailPasswordForm ? (
@@ -52,7 +52,7 @@ export const SignInPage: React.FC = () => {
           )
         }
         {otherAuthMethods.length >= 1 && <MoreAuthMethods methods={otherAuthMethods} />}
-      </div>
+      </Box>
     </div>
   )
 }

@@ -1,18 +1,9 @@
-import {
-  useCallback,
-  MouseEvent,
-  ReactNode,
-  useMemo,
-  useRef,
-  useState,
-  ForwardRefRenderFunction,
-  forwardRef
-} from 'react'
+import { MouseEvent, ReactNode, useMemo, useRef, useState, ForwardRefRenderFunction, forwardRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import { rem } from 'polished'
 import { Right } from '@brickdoc/design-icons'
 import { MoveNode, TNode, Inserted } from './constants'
-/* import { Inserted } from './constants' */
+import { useMemoizedFn } from '../../hooks'
 
 import { TreeRoot } from './style'
 
@@ -54,15 +45,12 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
   const ref = useRef<HTMLDivElement>(_ref as any)
   const [hoverNode, setHoverNode] = useState<HoverNode | undefined>()
 
-  const handleClick = useCallback(_e => handleSelected(value), [handleSelected, value])
+  const handleClick = useMemoizedFn(_e => handleSelected(value))
 
-  const handleOpen = useCallback(
-    (e: MouseEvent) => {
-      e.stopPropagation()
-      onClick(treeData)
-    },
-    [treeData, onClick]
-  )
+  const handleOpen = useMemoizedFn((e: MouseEvent) => {
+    e.stopPropagation()
+    onClick(treeData)
+  })
 
   const hasEmptyNode = useMemo(
     () => !parentId && rootId === value && !hasChildren,
@@ -81,24 +69,21 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
     })
   })
 
-  const calculate = useCallback(
-    (node: HoverNode | undefined) => {
-      const item = node ?? hoverNode
-      if (!item) {
-        return null
-      }
-      const topRange = item.hoverMiddleY - 10
-      const bottomRange = item.hoverMiddleY + 10
-      if (item.hoverClientY <= topRange) {
-        return Inserted.Top
-      }
-      if (item.hoverClientY >= bottomRange) {
-        return Inserted.Bottom
-      }
-      return Inserted.Child
-    },
-    [hoverNode]
-  )
+  const calculate = useMemoizedFn((node: HoverNode | undefined) => {
+    const item = node ?? hoverNode
+    if (!item) {
+      return null
+    }
+    const topRange = item.hoverMiddleY - 10
+    const bottomRange = item.hoverMiddleY + 10
+    if (item.hoverClientY <= topRange) {
+      return Inserted.Top
+    }
+    if (item.hoverClientY >= bottomRange) {
+      return Inserted.Bottom
+    }
+    return Inserted.Child
+  })
 
   const [{ handlerId, isOver, isOverCurrent }, drop] = useDrop({
     accept: DND_NODE_TYPE,

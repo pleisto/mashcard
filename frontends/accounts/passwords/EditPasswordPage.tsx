@@ -1,11 +1,9 @@
 import React from 'react'
 import { Navigate } from 'react-router'
-
 import { Helmet } from 'react-helmet-async'
-import { useConfirmationValidator, useAccountsI18n } from '@/accounts/common/hooks'
-import { DeprecatedForm, Button, DeprecatedInput, toast, useBoolean } from '@brickdoc/design-system'
+import { useAccountsI18n } from '@/accounts/common/hooks'
+import { Form, Button, Input, toast, useBoolean } from '@brickdoc/design-system'
 import { omit } from 'lodash-es'
-
 import {
   useUserPasswordResetMutation,
   UserPasswordResetInput,
@@ -13,11 +11,21 @@ import {
   UserSignOutInput
 } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
+import { object, string, ref } from 'yup'
+
+const validate = object({
+  password: string().required().min(8).max(128),
+  confirm_password: string()
+    .min(8)
+    .max(128)
+    .required()
+    .oneOf([ref('password'), null]),
+  token: string().required()
+})
 
 export const EditPasswordPage: React.FC = () => {
   const { t } = useAccountsI18n()
   const pageTitle = t('sessions.reset_password')
-  const passwordConfirmValidator = useConfirmationValidator('password')
   const [didRedirectToSignInPage, { setTrue: redirectToSignInPage }] = useBoolean(false)
 
   const [emailPasswordSignIn, { loading }] = useUserPasswordResetMutation()
@@ -33,12 +41,15 @@ export const EditPasswordPage: React.FC = () => {
       void userSignOutMutation({ variables: { input: signOutInput } })
     })
   }
+  const token = new URLSearchParams(window.location.search).get('reset_password_token')!
+  const form = Form.useForm<UserPasswordResetInput>({
+    defaultValues: { token },
+    yup: validate
+  })
 
   if (didRedirectToSignInPage) {
     return <Navigate to="/sign_in" />
   }
-
-  const token = new URLSearchParams(window.location.search).get('reset_password_token')
 
   return (
     <div>
@@ -46,28 +57,22 @@ export const EditPasswordPage: React.FC = () => {
         <title>{pageTitle}</title>
       </Helmet>
       <h1>{pageTitle}</h1>
-      <DeprecatedForm layout="vertical" initialValues={{ token }} onFinish={onFinish}>
-        <DeprecatedForm.Item hidden name="token" rules={[{ required: true }]}>
-          <DeprecatedInput />
-        </DeprecatedForm.Item>
-        <DeprecatedForm.Item name="password" label={t('sessions.password')} hasFeedback rules={[{ required: true }]}>
-          <DeprecatedInput.Password />
-        </DeprecatedForm.Item>
-        <DeprecatedForm.Item
-          name="confirm_password"
-          label={t('sessions.confirm_password')}
-          hasFeedback
-          dependencies={['password']}
-          rules={[{ required: true }, passwordConfirmValidator]}
-        >
-          <DeprecatedInput.Password />
-        </DeprecatedForm.Item>
-        <DeprecatedForm.Item>
+      <Form form={form} layout="vertical" onSubmit={onFinish}>
+        <Form.Field hidden name="token">
+          <Input type="hidden" />
+        </Form.Field>
+        <Form.Field name="password" label={t('sessions.password')}>
+          <Input type="password" />
+        </Form.Field>
+        <Form.Field name="confirm_password" label={t('sessions.confirm_password')}>
+          <Input type="password" />
+        </Form.Field>
+        <Form.Field>
           <Button type="primary" htmlType="submit" size="lg" loading={loading} block>
             {t('sessions.reset_password')}
           </Button>
-        </DeprecatedForm.Item>
-      </DeprecatedForm>
+        </Form.Field>
+      </Form>
     </div>
   )
 }

@@ -1,18 +1,10 @@
-import {
-  ForwardRefRenderFunction,
-  useCallback,
-  useState,
-  useMemo,
-  useRef,
-  useEffect,
-  ReactNode,
-  forwardRef
-} from 'react'
+import { ForwardRefRenderFunction, useState, useMemo, useRef, useEffect, ReactNode, forwardRef } from 'react'
 import List, { ListRef } from 'rc-virtual-list'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import type { TNode, MoveNode } from './constants'
 import { Node } from './node'
+import { useMemoizedFn } from '../../hooks'
 
 export interface TreeProps {
   height?: number
@@ -69,27 +61,23 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const flattened = useCallback(
-    (node, indent: number, result: TNode[]) => {
-      const { children, value } = node
-      const collapsed = openedIds.includes(value)
+  const flattened = useMemoizedFn((node, indent: number, result: TNode[]) => {
+    const { children, value } = node
+    const collapsed = openedIds.includes(value)
 
-      result.push({
-        ...node,
-        hasChildren: (children ?? []).length > 0,
-        indent: indent ?? 0,
-        collapsed
-      })
+    result.push({
+      ...node,
+      hasChildren: (children ?? []).length > 0,
+      indent: indent ?? 0,
+      collapsed
+    })
 
-      if (collapsed && children) {
-        for (const child of children) {
-          flattened(child, indent + 1, result)
-        }
+    if (collapsed && children) {
+      for (const child of children) {
+        flattened(child, indent + 1, result)
       }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [openedIds]
-  )
+    }
+  })
 
   const renderTree = useMemo(() => {
     const result: TNode[] = []
@@ -99,23 +87,16 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
     return result
   }, [treeData, flattened])
 
-  const handleSelected = useCallback((id: string) => setSelectedId(id), [setSelectedId])
+  const handleSelected = useMemoizedFn((id: string) => setSelectedId(id))
 
-  const handleItemClick = useCallback(
-    (node: TNode) =>
-      node.collapsed
-        ? setOpenedIds(i => i.filter(value => value !== node.value))
-        : setOpenedIds(i => [...i, node.value]),
-    [setOpenedIds]
+  const handleItemClick = useMemoizedFn((node: TNode) =>
+    node.collapsed ? setOpenedIds(i => i.filter(value => value !== node.value)) : setOpenedIds(i => [...i, node.value])
   )
 
-  const moveNode = useCallback(
-    (item: MoveNode) => {
-      if (!draggable) return
-      onDrop?.(item)
-    },
-    [draggable, onDrop]
-  )
+  const moveNode = useMemoizedFn((item: MoveNode) => {
+    if (!draggable) return
+    onDrop?.(item)
+  })
 
   return (
     <DndProvider backend={HTML5Backend}>

@@ -10,7 +10,7 @@ module Accounts
     def resolve(token:, password:)
       reset_password_token = Devise.token_generator.digest(Accounts::User, :reset_password_token, token)
       user = Accounts::User.find_by(reset_password_token: reset_password_token)
-      return { errors: ["Token #{I18n.t('devise.passwords.no_token')}"] } if user.nil?
+      return { errors: [I18n.t('devise.passwords.no_token')] } if user.nil?
 
       return { errors: [I18n.t("devise.failure.reset_password_token_expired")] } unless user.reset_password_period_valid?
 

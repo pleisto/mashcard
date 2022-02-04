@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { Button, toast, useCountDown } from '@brickdoc/design-system'
+import { Button, toast, useCountDown, Box, prefix, theme } from '@brickdoc/design-system'
 import { Success } from '@brickdoc/design-icons'
 import { mutationResultHandler, millisecondsToSeconds } from '@/common/utils'
 import { useUserForgetPasswordMailSendMutation } from '@/BrickdocGraphQL'
 import dayjs from 'dayjs'
-import styles from './index.module.less'
 
 export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: boolean }> = ({ email, pending }) => {
   const [targetDate, setTargetDate] = useState<number>(pending ? dayjs().add(1, 'minute').unix() : 0)
@@ -23,14 +22,28 @@ export const PasswordChangeEmailNotice: React.FC<{ email: string; pending?: bool
   }
 
   return (
-    <div className={styles.container}>
-      <Success theme="filled" className={styles.icon} />
+    <Box
+      css={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        [`.${prefix}-icon-success`]: {
+          fontSize: '4rem',
+          marginBottom: '1rem',
+          color: theme.colors.green6
+        },
+        h4: {
+          margin: '2rem 0'
+        }
+      }}
+    >
+      <Success theme="filled" />
       <p>{t('devise:passwords.send_instructions')}</p>
       <Button loading={loading} onClick={onClick} disabled={countdown !== 0}>
         {countdown === 0
           ? t('sessions.resend_confirmed_email')
           : t('sessions.resend_after', { seconds: millisecondsToSeconds(countdown) })}
       </Button>
-    </div>
+    </Box>
   )
 }
