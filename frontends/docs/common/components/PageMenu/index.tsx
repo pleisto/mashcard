@@ -3,7 +3,7 @@ import {
   Button,
   Dropdown,
   Icon,
-  DeprecatedInput,
+  Input,
   Menu,
   MenuProps,
   toast,
@@ -182,10 +182,10 @@ export const PageMenu: React.FC<PageMenuProps> = ({
 
   const inputRef = React.useRef<any>(null)
   const renamePopoverContent = (
-    <DeprecatedInput
+    <Input
       prefix={<Icon.Edit />}
       disabled={renameBlockLoading}
-      size="small"
+      size="sm"
       bordered={false}
       onPressEnter={onRename}
       onBlur={onRename}

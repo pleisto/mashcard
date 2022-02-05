@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, DeprecatedInput } from '@brickdoc/design-system'
+import { Button, Icon, Input } from '@brickdoc/design-system'
 import {
   SpreadsheetContainer,
   SpreadsheetView,
@@ -92,7 +92,7 @@ const renderButton = (result: ButtonResult, formulaType: FormulaSourceType): Rea
 
 const renderInput = (result: InputResult, formulaType: FormulaSourceType): React.ReactElement => {
   return (
-    <DeprecatedInput
+    <Input
       disabled={result.result.disabled}
       onChange={e => result.result.onChange?.(e.target.value)}
       value={result.result.value}

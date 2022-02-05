@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { cx as classNames } from '../../utilities'
 import { ListGridType, ListContext } from './index'
-import { Col } from '../grid'
+import { Box } from '../../components/Box'
 import { ConfigContext } from '../config-provider'
 import { cloneElement } from '../_util/reactNode'
 
@@ -99,7 +99,7 @@ const Item: ListItemTypeProps = ({
       ))}
     </ul>
   )
-  const Element = grid ? 'div' : 'li'
+  const Element = 'li'
   const itemChildren = (
     <Element
       {...(others as any)} // `li` element `onCopy` prop args is not same as `div`
@@ -126,9 +126,15 @@ const Item: ListItemTypeProps = ({
   )
 
   return grid ? (
-    <Col flex={1} style={colStyle}>
+    <Box
+      css={{
+        display: 'flex',
+        flex: 1
+      }}
+      style={colStyle}
+    >
       {itemChildren}
-    </Col>
+    </Box>
   ) : (
     itemChildren
   )

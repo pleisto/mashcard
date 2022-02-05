@@ -9,7 +9,6 @@ import { getConfirmLocale } from './locale'
 import type { ModalFuncProps } from './Modal'
 import ConfirmDialog from './ConfirmDialog'
 import { globalConfig } from '../config-provider'
-import devWarning from '../_util/devWarning'
 import destroyFns from './destroyFns'
 
 let defaultRootPrefixCls = ''
@@ -155,6 +154,5 @@ export function withConfirm(props: ModalFuncProps): ModalFuncProps {
 }
 
 export function modalGlobalConfig({ rootPrefixCls }: { rootPrefixCls: string }) {
-  devWarning(false, 'Modal', 'Modal.config is deprecated. Please use ConfigProvider.config instead.')
   defaultRootPrefixCls = rootPrefixCls
 }

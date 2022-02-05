@@ -10,8 +10,12 @@ export const usePressEnterHandler = <T = HTMLElement>(
   onPressEnter?: KeyboardEventHandler<T>,
   onKeyDown?: KeyboardEventHandler<T>
 ): KeyboardEventHandler<T> => {
-  return (event: KeyboardEvent<T>): void => {
-    if (onPressEnter && event.key === 'Enter') onPressEnter(event)
-    if (onKeyDown) onKeyDown(event)
+  if (onPressEnter === undefined) {
+    return onKeyDown === undefined ? () => {} : onKeyDown
+  } else {
+    return (event: KeyboardEvent<T>): void => {
+      if (onPressEnter && event.key === 'Enter') onPressEnter(event)
+      if (onKeyDown) onKeyDown(event)
+    }
   }
 }

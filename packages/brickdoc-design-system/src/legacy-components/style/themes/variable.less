@@ -9,8 +9,6 @@
 // An override for the html selector for theme prefixes
 @html-selector: html;
 
-
-
 // -------- Colors -----------
 // >>> Primary
 @primary-color: ~'var(--brd-colors-primaryDefault)';
@@ -182,10 +180,6 @@
 @shadow-color-inverse: @component-background;
 
 @iconfont-css-prefix: brd-icon;
-// Divider
-@divider-text-padding: 1em;
-@divider-orientation-margin: 5%;
-@divider-color: rgba(0, 0, 0, 6%);
 
 
 // Media queries breakpoints
@@ -222,8 +216,7 @@
 @screen-lg-max: (@screen-xl-min - 1px);
 @screen-xl-max: (@screen-xxl-min - 1px);
 
-// Grid system
-@grid-columns: 24;
+
 
 // Layout
 
@@ -253,51 +246,6 @@
 @animation-duration-fast: 0.1s; // Tooltip
 
 
-
-// Form
-// ---
-@label-required-color: @highlight-color;
-@label-color: @heading-color;
-@form-warning-input-bg: @input-bg;
-@form-item-margin-bottom: 25px;
-@form-item-trailing-colon: true;
-@form-vertical-label-padding: 0 0 8px;
-@form-vertical-label-margin: 0;
-@form-item-label-font-size: @font-size-base;
-@form-item-label-height: @input-height-base;
-@form-item-label-colon-margin-right: 8px;
-@form-item-label-colon-margin-left: 2px;
-@form-error-input-bg: @input-bg;
-
-// Input
-// ---
-@input-height-base: @height-base;
-@input-height-lg: @height-lg;
-@input-height-sm: @height-sm;
-@input-padding-horizontal: @control-padding-horizontal - 1px;
-@input-padding-horizontal-base: @input-padding-horizontal;
-@input-padding-horizontal-sm: @control-padding-horizontal-sm - 1px;
-@input-padding-horizontal-lg: @input-padding-horizontal;
-@input-padding-vertical-base: 0.15em;
-@input-padding-vertical-sm: 0px;
-@input-padding-vertical-lg: 0.28em;
-@input-placeholder-color: hsv(0, 0, 75%);
-@input-placeholder-size: @font-size-sm;
-@input-color: @text-color;
-@input-icon-color: @input-color;
-@input-border-color: @border-color-base;
-@input-bg: @component-background;
-@input-number-hover-border-color: @input-hover-border-color;
-@input-number-handler-active-bg: #f4f4f4;
-@input-number-handler-hover-bg: @primary-5;
-@input-number-handler-bg: @component-background;
-@input-number-handler-border-color: @border-color-base;
-@input-addon-bg: @background-color-light;
-@input-hover-border-color: @primary-5;
-@input-disabled-bg: @disabled-bg;
-@input-outline-offset: 0 0;
-@input-icon-hover-color: fade(@black, 85%);
-@input-disabled-color: @disabled-color;
 
 
 // Modal
@@ -348,6 +296,9 @@
 // ---
 @wave-animation-width: 6px;
 
+@input-height-base: @height-base;
+@input-height-lg: @height-lg;
+@input-height-sm: @height-sm;
 
 // List
 // ---

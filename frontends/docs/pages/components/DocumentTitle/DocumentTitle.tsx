@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Popover, Icon, DeprecatedInput } from '@brickdoc/design-system'
+import { Button, Popover, Icon, Input } from '@brickdoc/design-system'
 import styles from './DocumentTitle.module.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { DocumentIcon } from './DocumentIcon'
@@ -44,8 +44,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
   const inputComposing = React.useRef(false)
 
   React.useEffect(() => {
-    if (inputRef.current?.input && title !== undefined) {
-      inputRef.current.input.value = title
+    if (inputRef.current && title !== undefined) {
+      inputRef.current.value = title
     }
   }, [title])
 
@@ -114,7 +114,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="text"
                     className={styles.item}
-                    disabled={!editable}>
+                    disabled={!editable}
+                  >
                     <Icon.Image className={styles.icon} />
                     <span className={styles.name}>{t('title.add_cover')}</span>
                   </Button>
@@ -128,17 +129,24 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
                 <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
-            <DeprecatedInput
-              ref={(container: any) => {
+            <Input
+              type="text"
+              bordered={false}
+              css={{
+                fontSize: '1em',
+                input: {
+                  fontWeight: 500
+                }
+              }}
+              ref={container => {
                 if (container) {
                   inputRef.current = container
                   // TODO: fix this hack
-                  ;(container.state as any).value = title
+                  container.value = title
                 }
               }}
               defaultValue={title}
               data-testid={TEST_ID_ENUM.page.DocumentPage.titleInput.id}
-              className={styles.titleInput}
               onCompositionStart={() => {
                 inputComposing.current = true
               }}

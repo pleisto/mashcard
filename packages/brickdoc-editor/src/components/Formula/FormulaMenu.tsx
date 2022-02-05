@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, DeprecatedInput, Popover } from '@brickdoc/design-system'
+import { Button, Input, Popover } from '@brickdoc/design-system'
 import { VariableData } from '@brickdoc/formula'
 import { useEditorI18n } from '../../hooks'
 import './FormulaMenu.less'
@@ -85,12 +85,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         <div className="formula-menu-item">
           <label className="formula-menu-label">
             <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span>
-            <DeprecatedInput
-              className="formula-menu-field"
-              placeholder={defaultName}
-              value={name}
-              onChange={handleNameChange}
-            />
+            <Input className="formula-menu-field" placeholder={defaultName} value={name} onChange={handleNameChange} />
           </label>
         </div>
       </div>

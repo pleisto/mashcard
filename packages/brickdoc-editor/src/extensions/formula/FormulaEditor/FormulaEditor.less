@@ -1,9 +1,19 @@
-@import '@brickdoc/design-system/src/legacy-components/style/themes/index';
-@import '@brickdoc/design-system/src/legacy-components/input/style/mixin';
 
 .brickdoc-formula-editor {
   .ProseMirror {
-    .input();
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 0.15em 11px;
+    color: var(--brd-colors-typePrimary);
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: var(--brd-colors-white);
+    background-image: none;
+    border: 1px solid var(--brd-colors-grey3);
+    border-radius: 4px;
+    transition: all .3s;
   }
 
   p {

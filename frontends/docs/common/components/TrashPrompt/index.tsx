@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Button, DeprecatedModal, DeprecatedSpace } from '@brickdoc/design-system'
+import { Alert, Button, DeprecatedModal } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockHardDeleteInput,
@@ -68,14 +68,15 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
         type="error"
         icon={false}
         action={
-          <DeprecatedSpace>
+          <>
             <Button size="sm" disabled={restoreButtonLoading} onClick={onRestoreClick}>
               {t('trash.restore_action')}
             </Button>
+            &nbsp;
             <Button size="sm" type="primary" danger onClick={onHardDeleteClick}>
               {t('trash.hard_delete_action')}
             </Button>
-          </DeprecatedSpace>
+          </>
         }
       />
       <DeprecatedModal

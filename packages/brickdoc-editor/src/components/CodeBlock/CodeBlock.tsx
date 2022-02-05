@@ -1,7 +1,7 @@
 import React from 'react'
 import { NodeViewProps, NodeViewContent } from '@tiptap/react'
 import { BlockContainer } from '../../components'
-import { DeprecatedInput, Icon, styled, toast } from '@brickdoc/design-system'
+import { Input, Icon, styled, toast } from '@brickdoc/design-system'
 import { highlightStyle } from './styles/highlight.style'
 import { languageNames } from '../../extensions/codeBlockRefractor/refractorLanguagesBundle'
 import * as EditorIcon from '../Icon'
@@ -58,7 +58,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ node, updateAttributes, ex
               type: 'item',
               name: 'search',
               content: (
-                <DeprecatedInput
+                <Input
+                  bordered={false}
                   placeholder={t('code_block.search_placeholder')}
                   value={search}
                   onChange={e => setSearch(e.target.value)}

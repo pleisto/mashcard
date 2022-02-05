@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, DeprecatedInput, toast } from '@brickdoc/design-system'
+import { Icon, Input, toast } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
@@ -21,7 +21,8 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
         type: 'item',
         name: 'linkInput',
         content: (
-          <DeprecatedInput
+          <Input
+            bordered={false}
             value={inputLink}
             onChange={e => {
               setInputLink(e.target.value)

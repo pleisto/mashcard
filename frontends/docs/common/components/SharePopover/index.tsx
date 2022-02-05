@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React, { useEffect } from 'react'
-import { Button, DeprecatedInput, Icon, DeprecatedList, Popover, Switch, toast, cx } from '@brickdoc/design-system'
+import { Button, Input, Icon, DeprecatedList, Popover, Switch, toast, cx } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { InviteModal } from '../InviteModal'
 import {
@@ -164,7 +164,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
 
       <div className={cx(styles.row, styles.bordered)}>
         <div role="button" tabIndex={-1} className={styles.inputWrapper} onClick={onClickInviteButton}>
-          <DeprecatedInput className={styles.input} placeholder={t('share.invite_placeholder')} value="" />
+          <Input className={styles.input} placeholder={t('share.invite_placeholder')} readOnly />
           <Button className={styles.inputButton} type="primary">
             {t('share.invite_button')}
           </Button>

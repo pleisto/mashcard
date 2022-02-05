@@ -1,5 +1,5 @@
 import { DocMeta } from '@/docs/pages/DocumentContentPage'
-import { DeprecatedInput, Popover, Icon, Tabs, TabPane } from '@brickdoc/design-system'
+import { Input, Popover, Icon, Tabs, TabPane } from '@brickdoc/design-system'
 import React, { useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { PageTrash } from '../PageTrash'
@@ -26,11 +26,11 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
   const tabPaneSkelecton = (tab: string, key: string, docid: string | null): React.ReactElement => {
     return (
       <TabPane tab={tab} key={key}>
-        <DeprecatedInput.Search
+        <Input
           className={styles.btnHide}
           placeholder={t('trash.search')}
-          onSearch={(value: string) => {
-            handleSearch(value, key)
+          onChange={e => {
+            handleSearch(e.target.value, key)
           }}
         />
         <div className={styles.list}>

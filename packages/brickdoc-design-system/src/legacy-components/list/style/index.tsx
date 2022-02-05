@@ -3,4 +3,3 @@ import './index.less'
 
 // style dependencies
 import '../../spin/style'
-import '../../grid/style'

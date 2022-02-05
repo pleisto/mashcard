@@ -5,9 +5,9 @@ import { debounce } from 'lodash-es'
 
 import './style'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'
-import { tuple } from '../_util/type'
 import { isValidElement, cloneElement } from '../_util/reactNode'
 
+const tuple = <T extends string[]>(...args: T) => args
 const SpinSizes = tuple('small', 'default', 'large')
 export type SpinSize = typeof SpinSizes[number]
 export type SpinIndicator = React.ReactElement<HTMLElement>

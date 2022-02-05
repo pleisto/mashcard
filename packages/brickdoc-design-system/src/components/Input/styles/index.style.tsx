@@ -1,17 +1,11 @@
 import { theme, css } from '../../../themes'
 
-const commonStyle = {
-  fontSize: '14px',
-  width: '100%',
-  lineHeight: '1.5'
-}
-
 export const inputStyle = css({
-  ...commonStyle,
+  width: '100%',
+  fontSize: '14px',
   position: 'relative',
-  backgroundColor: theme.colors.backgroundOverlayPrimary,
-  border: `1px solid ${theme.colors.borderSecondary}`,
   color: theme.colors.typePrimary,
+  lineHeight: '1.5',
   borderRadius: '4px',
   margin: '0',
   display: 'inline-flex',
@@ -29,10 +23,12 @@ export const inputStyle = css({
     marginRight: '4px'
   },
   input: {
+    fontSize: '1em',
+    lineHeight: 'inherit',
     borderColor: 'transparent',
     background: 'transparent',
     flex: '1',
-    ...commonStyle,
+    width: '100%',
     display: 'inline-block',
     '&::placeholder': {
       color: theme.colors.typeDisabled
@@ -55,15 +51,7 @@ export const inputStyle = css({
       }
     },
     disabledVariant: {
-      false: {
-        '&:hover': {
-          borderColor: theme.colors.borderOverlayThirdary
-        },
-        '&:focus-within': {
-          outline: `1px solid ${theme.colors.borderOverlayThirdary}`,
-          border: `1px solid ${theme.colors.borderOverlayThirdary}`
-        }
-      },
+      false: {},
       true: {
         cursor: 'not-allowed',
         color: theme.colors.typeDisabled,
@@ -76,7 +64,38 @@ export const inputStyle = css({
         borderColor: theme.colors.errorDefault,
         boxShadow: `0 0 0 2px ${theme.colors.errorBorder}`,
         backgroundColor: theme.colors.errorBg,
-        color: theme.colors.errorDefault,
+        color: theme.colors.errorDefault
+      }
+    },
+    bordered: {
+      false: {
+        border: '0'
+      },
+      true: {
+        backgroundColor: theme.colors.backgroundOverlayPrimary,
+        border: `1px solid ${theme.colors.borderSecondary}`
+      }
+    }
+  },
+  compoundVariants: [
+    {
+      disabledVariant: false,
+      bordered: true,
+      css: {
+        '&:hover': {
+          borderColor: theme.colors.borderOverlayThirdary
+        },
+        '&:focus-within': {
+          outline: `1px solid ${theme.colors.borderOverlayThirdary}`,
+          border: `1px solid ${theme.colors.borderOverlayThirdary}`
+        }
+      }
+    },
+    {
+      invalid: true,
+      disabledVariant: false,
+      bordered: true,
+      css: {
         '&:hover': {
           borderColor: theme.colors.errorDefault
         },
@@ -85,5 +104,5 @@ export const inputStyle = css({
         }
       }
     }
-  }
+  ]
 })

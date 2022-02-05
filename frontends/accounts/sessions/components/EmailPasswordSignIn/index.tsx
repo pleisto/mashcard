@@ -1,15 +1,5 @@
 import React from 'react'
-import {
-  Button,
-  Input,
-  Checkbox,
-  DeprecatedDivider,
-  toast,
-  Form,
-  SubmitHandler,
-  Box,
-  theme
-} from '@brickdoc/design-system'
+import { Button, Input, Checkbox, toast, Form, SubmitHandler, Box, theme } from '@brickdoc/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { useUserEmailPasswordSignInMutation, UserEmailPasswordSignInInput } from '@/BrickdocGraphQL'
 import { mutationResultHandler } from '@/common/utils'
@@ -61,11 +51,15 @@ export const EmailPasswordSignIn: React.FC = () => {
           textAlign: 'right',
           a: {
             color: theme.colors.typeThirdary
+          },
+          '.divider': {
+            color: theme.colors.dividerPrimary,
+            padding: '0 .5em'
           }
         }}
       >
         <Link to="/accounts/sign_up">{t('sessions.sign_up_with_email')}</Link>
-        <DeprecatedDivider type="vertical" />
+        <span className="divider">|</span>
         <Link to="/accounts/password/forget">{t('sessions.forget_password')}</Link>
       </Box>
     </div>

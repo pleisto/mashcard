@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { DeprecatedInput, Icon, devLog } from '@brickdoc/design-system'
+import { Input, Icon, devLog } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { MenuIcon } from '../SlashMenu/styled'
@@ -152,7 +152,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
       <span>
         <SpreadsheetContainer>
           {documentEditable ? (
-            <DeprecatedInput
+            <Input
+              bordered={false}
               className="spreadsheet-title"
               value={title}
               placeholder="Untitled Spreadsheet"

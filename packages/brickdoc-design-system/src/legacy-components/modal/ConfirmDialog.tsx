@@ -1,7 +1,6 @@
 import { cx as classNames } from '../../utilities'
 import Dialog, { ModalFuncProps } from './Modal'
 import ActionButton from '../_util/ActionButton'
-import devWarning from '../_util/devWarning'
 
 interface ConfirmDialogProps extends ModalFuncProps {
   afterClose?: () => void
@@ -41,13 +40,6 @@ const ConfirmDialog = (props: ConfirmDialogProps) => {
     modalRender,
     focusTriggerAfterClose
   } = props
-
-  devWarning(
-    !(typeof icon === 'string' && icon.length > 2),
-    'Modal',
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
-    `\`icon\` is using ReactNode instead of string naming in v4. Please check \`${icon}\` at https://ant.design/components/icon`
-  )
 
   // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
   const okType = props.okType || 'text'

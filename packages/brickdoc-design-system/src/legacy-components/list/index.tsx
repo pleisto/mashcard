@@ -1,10 +1,7 @@
 import * as React from 'react'
 import { cx as classNames } from '../../utilities'
 import Spin, { SpinProps } from '../spin'
-import useBreakpoint from '../grid/hooks/useBreakpoint'
-import { Breakpoint, responsiveArray } from '../_util/responsiveObserve'
 import { RenderEmptyHandler, ConfigContext } from '../config-provider'
-import { Row } from '../grid'
 import Item from './Item'
 import './style'
 
@@ -151,7 +148,6 @@ function List<T>({
       [`${prefixCls}-split`]: split,
       [`${prefixCls}-bordered`]: bordered,
       [`${prefixCls}-loading`]: isLoading,
-      [`${prefixCls}-grid`]: !!grid,
       [`${prefixCls}-something-after-last-item`]: isSomethingAfterLastItem(),
       [`${prefixCls}-rtl`]: direction === 'rtl'
     },
@@ -160,44 +156,11 @@ function List<T>({
 
   const splitDataSource = [...dataSource]
 
-  const screens = useBreakpoint()
-  const currentBreakpoint = React.useMemo(() => {
-    for (let i = 0; i < responsiveArray.length; i += 1) {
-      const breakpoint: Breakpoint = responsiveArray[i]
-      if (screens[breakpoint]) {
-        return breakpoint
-      }
-    }
-    return undefined
-  }, [screens])
-
-  const colStyle = React.useMemo(() => {
-    if (!grid) {
-      return undefined
-    }
-    const columnCount = currentBreakpoint && grid[currentBreakpoint] ? grid[currentBreakpoint] : grid.column
-    if (columnCount) {
-      return {
-        width: `${100 / columnCount}%`,
-        maxWidth: `${100 / columnCount}%`
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [grid?.column, currentBreakpoint])
-
   let childrenContent = isLoading && <div style={{ minHeight: 53 }} />
   if (splitDataSource.length > 0) {
     const items = splitDataSource.map((item: T, index: number) => renderInnerItem(item, index))
-    const childrenList = React.Children.map(items, (child: React.ReactNode, index: number) => (
-      <div key={listItemsKeys[index]} style={colStyle}>
-        {child}
-      </div>
-    ))
-    childrenContent = grid ? (
-      <Row gutter={grid.gutter}>{childrenList}</Row>
-    ) : (
-      <ul className={`${prefixCls}-items`}>{items}</ul>
-    )
+
+    childrenContent = <ul className={`${prefixCls}-items`}>{items}</ul>
   } else if (!children && !isLoading) {
     childrenContent = renderEmptyFunc(prefixCls, renderEmpty)
   }
