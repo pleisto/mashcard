@@ -2,11 +2,9 @@ name: Deploy SaaS Prod on BAE
 concurrency:
   group: sass-prod-deploy
 on:
-  workflow_run:
-    workflows: ['Monolith Application CI']
-    tags: ['v**-saas']
-    types:
-      - completed
+  push:
+    tags:
+      - 'v**-saas'
 env:
   image: ghcr.io/brickdoc/brickdoc-saas
   domain: brickdoc.app
