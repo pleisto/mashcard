@@ -1,5 +1,6 @@
 import { MouseEvent, ReactNode, useMemo, useRef, useState, ForwardRefRenderFunction, forwardRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
+import type { Identifier } from 'dnd-core'
 import { rem } from 'polished'
 import { Right } from '@brickdoc/design-icons'
 import { MoveNode, TNode, Inserted } from './constants'
@@ -85,7 +86,15 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
     return Inserted.Child
   })
 
-  const [{ handlerId, isOver, isOverCurrent }, drop] = useDrop({
+  const [{ handlerId, isOver, isOverCurrent }, drop] = useDrop<
+    DragItem,
+    void,
+    {
+      handlerId: Identifier | null
+      isOver: boolean
+      isOverCurrent: boolean
+    }
+  >({
     accept: DND_NODE_TYPE,
     collect(monitor) {
       return {

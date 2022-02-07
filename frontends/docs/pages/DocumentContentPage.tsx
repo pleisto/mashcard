@@ -7,10 +7,10 @@ import { PageTree } from '@/docs/common/components/PageTree'
 import { PodSelect } from '@/docs/common/components/PodSelect'
 import { PageHead } from '@/docs/common/components/PageHead'
 import { TrashButton } from '@/docs/common/components/TrashButton'
+import { ExplorerMenu } from '@/docs/common/components/ExplorerMenu'
 import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
 import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
-import { headerBarVar, siderBarVar } from '@/common/reactiveVars'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
 import { useReactiveVar } from '@apollo/client'
@@ -19,6 +19,8 @@ import { validate as isValidUUID } from 'uuid'
 import { appendFormulas, FormulaContext, FormulaName } from '@brickdoc/formula'
 import { useFormulaQuery } from './hooks'
 import { useFormulaBackendActions } from './hooks/useFormulaBackendActions'
+import { styled } from '@brickdoc/design-system'
+import { base } from './DocumentContentPage.style'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -57,6 +59,10 @@ export interface NonNullDocMeta extends DocMeta {
 export interface DocMetaProps {
   docMeta: DocMeta
 }
+
+const Layout = styled('div', {
+  ...base
+})
 
 export const DocumentContentPage: React.FC = () => {
   const { webid, docid, snapshotVersion } = useParams() as unknown as {
@@ -170,49 +176,56 @@ export const DocumentContentPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blockCreate, docid, history, webid, docMeta, lastWebid, lastBlockIds])
 
-  useEffect(() => {
-    // HeaderBar
-    if (!loading || docMeta.isMine) {
-      headerBarVar(<DocumentTopBar docMeta={docMeta} />)
-    }
+  const siderBar =
+    !docMeta.isAnonymous &&
+    (docMeta.isMine ? (
+      <>
+        <header>
+          <PageHead />
+        </header>
 
-    // SideBar
-    if (!docMeta.isAnonymous) {
-      if (docMeta.isMine) {
-        siderBarVar(
-          <>
-            <header>
-              <PageHead />
-            </header>
+        <nav>
+          <PageTree docMeta={docMeta} />
+          <NewPage docMeta={docMeta} />
+          <TrashButton docMeta={docMeta} />
+        </nav>
 
-            <nav>
-              <PageTree docMeta={docMeta} />
-              <NewPage docMeta={docMeta} />
-              <TrashButton docMeta={docMeta} />
-            </nav>
+        <footer>
+          <PodSelect docMeta={docMeta} />
+        </footer>
+      </>
+    ) : (
+      <PodSelect docMeta={docMeta} />
+    ))
 
-            <footer>
-              <PodSelect docMeta={docMeta} />
-            </footer>
-          </>
-        )
-      } else {
-        siderBarVar(
-          <>
-            <PodSelect docMeta={docMeta} />
-          </>
-        )
-      }
-    }
-  }, [docMeta, loading])
-
-  return docMeta.id ? (
+  return (
     <>
-      <Helmet title={editor?.state.doc.attrs.title ?? docMeta.title} />
-      <DocumentPage docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }} />
+      <Helmet
+        titleTemplate={`%s - ${t('app_title')}`}
+        defaultTitle={t('app_title')}
+        title={docMeta.id && (editor?.state.doc.attrs.title ?? docMeta.title)}
+      />
+      <Layout>
+        {siderBar && <section>{siderBar}</section>}
+        <main>
+          {(!loading || docMeta.isMine) && (
+            <header>
+              <DocumentTopBar docMeta={docMeta} />
+            </header>
+          )}
+          <article>
+            {docMeta.id && (
+              <DocumentPage
+                docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
+              />
+            )}
+          </article>
+        </main>
+        <aside>
+          <ExplorerMenu />
+        </aside>
+      </Layout>
     </>
-  ) : (
-    <></>
   )
 }
 

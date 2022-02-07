@@ -78,7 +78,10 @@ export const ContentIcon = styled('a', {
   height: theme.space.xl,
   fontSize: theme.fontSizes.title4,
   marginRight: '4px',
-  position: 'relative'
+  position: 'relative',
+  '&:hover,&:active': {
+    textDecoration: 'none'
+  }
 })
 
 export const ContentTitle = styled('div', {

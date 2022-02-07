@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { siderBarVar } from '@/common/reactiveVars'
-import { Sidebar } from './components/Sidebar'
+// import { Sidebar } from './components/Sidebar'
 import { GeneralPage } from './GeneralPage'
 
 const SettingsModule: FC = () => {
-  siderBarVar(<Sidebar />)
+  // siderBarVar(<Sidebar />)
 
   return (
     <Routes>

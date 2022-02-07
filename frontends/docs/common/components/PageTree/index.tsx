@@ -14,7 +14,6 @@ import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'
-import styles from './PageTree.module.less'
 import { useDocsI18n } from '../../hooks'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
@@ -171,7 +170,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
 
     return (
       <Tree
-        className={styles.tree}
         height={height}
         emptyNode={t('blocks.no_pages')}
         // selectable={!docMeta.documentInfoLoading}

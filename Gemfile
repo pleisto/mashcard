@@ -63,7 +63,6 @@ gem 'blake3', '~> 0.1.3'
 ## Background Tasks
 gem 'sidekiq', '~> 6.4'
 gem 'sidekiq-cron', '~> 1.2'
-gem 'premailer-rails', '~> 1.11', '>= 1.11.1' # mailer
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.5' # Don't rely on Linux/macOS timezone data.
@@ -81,7 +80,6 @@ group :development, :test do
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 5.1.0'
   gem 'rspec_junit_formatter', '>= 0.4'
-  # gem 'debug', '~> 1.3', '>= 1.3.4', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :test do

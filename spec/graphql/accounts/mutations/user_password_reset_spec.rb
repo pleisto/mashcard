@@ -20,7 +20,7 @@ describe Accounts::Mutations::UserPasswordReset, type: :mutation do
 
     it 'should check token exists' do
       internal_graphql_execute(mutation, { input: { token: FFaker::Guid.guid, password: FFaker::Internet.password } })
-      expect(response.data[:userPasswordReset][:errors][0]).to eq("Token #{I18n.t('devise.passwords.no_token')}")
+      expect(response.data[:userPasswordReset][:errors][0]).to eq(I18n.t('devise.passwords.no_token'))
     end
 
     it 'token expired' do
