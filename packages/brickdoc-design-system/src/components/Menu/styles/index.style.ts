@@ -22,6 +22,7 @@ export const menuStyle = css({
     cursor: 'pointer',
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     fontSize: theme.fontSizes.subHeadline,
     fontWeight: 500,
     lineHeight: itemLineHeight,

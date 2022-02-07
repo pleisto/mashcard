@@ -18,7 +18,7 @@ export const SignInPage: React.FC = () => {
   })
 
   if (loading) {
-    return <DeprecatedSkeleton active />
+    return <DeprecatedSkeleton />
   }
 
   const otherAuthMethods = renderEmailPasswordForm

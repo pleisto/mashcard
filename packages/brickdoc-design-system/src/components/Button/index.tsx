@@ -1,17 +1,19 @@
 import { useEffect, useState, ButtonHTMLAttributes, Ref, RefObject, createRef, forwardRef } from 'react'
 import ButtonUnstyled, { ButtonUnstyledActions } from '@mui/base/ButtonUnstyled'
 import { LoadingIcon } from './LoadingIcon'
-import { styled } from '../../themes'
+import { styled, config } from '../../themes'
+import { CSS } from '@stitches/react'
 import { buttonStyle } from './styles/index.style'
 
 export type Size = 'lg' | 'md' | 'sm'
-export type BtnType = 'primary' | 'secondary' | 'danger' | 'text'
+export type BtnType = 'primary' | 'secondary' | 'danger' | 'text' | 'unstyled'
 
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'css'> {
   action?: Ref<ButtonUnstyledActions>
   block?: boolean
   circle?: boolean
   icon?: React.ReactNode
+  css?: CSS<typeof config>
   iconPosition?: 'start' | 'end'
   /**
    * @deprecated use `type: danger` instead
@@ -59,6 +61,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
     type = 'secondary',
     size = 'md',
     children,
+    css,
     icon,
     onClick,
     block = false,
@@ -104,6 +107,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
   return (
     <ButtonRoot
       {...otherProps}
+      css={css as any}
       role={role}
       hasIcon={!!icon || !!innerLoading}
       ref={buttonRef}

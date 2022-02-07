@@ -61,12 +61,14 @@ class BrickdocConfig < ApplicationRecord
     end
 
     def to_frontend
-      frontend_fields.map do |scope, keys|
+      result = frontend_fields.map do |scope, keys|
         values = keys.uniq.map do |key|
           [key, get(key, scope: scope)]
         end.to_h
         [scope, values]
       end.to_h
+      # fetch null string key could fix the null scope bug
+      result.fetch('', result)
     end
   end
 
@@ -119,4 +121,9 @@ class BrickdocConfig < ApplicationRecord
   field :sentry_dsn, default: ENV['SENTRY_DSN']
 
   field :lockbox_test, type: :encrypted
+
+  # helpdesk Knowledge Base
+  field :kb_articles, type: :hash, default: {
+    changing_webid: 'https://brickdoc.zendesk.com/hc/todo'
+  }, frontend: true
 end

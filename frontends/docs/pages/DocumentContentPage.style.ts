@@ -12,21 +12,20 @@ export const base = {
   '& > section': {
     display: 'flex',
     flexDirection: 'column',
-    position: 'relative',
     width: '270px',
     height: '100vh',
     padding: '0.1px 0.5rem 0',
     marginTop: '-0.1px',
+    justifyContent: 'space-between',
+    '.mainActions header img': {
+      height: '22px',
+      marginTop: '1rem'
+    },
     '& > footer': {
-      marginTop: 'auto',
-      bottom: '1rem',
-      padding: '0 0.5rem',
-      position: 'absolute',
+      marginBottom: '1rem',
       width: '100%'
     },
-    '& > nav': {
-      height: '100%',
-      maxHeight: 'calc(100vh - 7rem)',
+    '.mainActions nav': {
       overflow: 'hidden',
       h2: {
         fontSize: '0.75rem',
@@ -35,14 +34,6 @@ export const base = {
         padding: '.5rem 1rem',
         marginTop: '1.875rem'
       }
-    },
-    '& > nav > .brd-btn-text, & > footer .brd-btn-text, & > .brd-btn-text ': {
-      border: 0,
-      padding: '0.375rem 0.75rem',
-      height: 'auto',
-      width: '100%',
-      textAlign: 'left',
-      color: theme.colors.typeSecondary
     }
   },
   '& > main': {

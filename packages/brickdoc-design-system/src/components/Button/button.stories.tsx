@@ -87,7 +87,10 @@ A button means an operation (or a series of operations). Clicking a button will 
   }
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = args => <Button {...args} />
+const Template: ComponentStory<typeof Button> = args => {
+  const { css, ...otherArgs } = args
+  return <Button {...otherArgs} />
+}
 
 export const Basic = Template.bind({})
 Basic.args = {

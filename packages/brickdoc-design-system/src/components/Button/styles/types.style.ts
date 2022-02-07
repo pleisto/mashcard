@@ -53,5 +53,11 @@ export const btnType = {
       backgroundColor: theme.colors.errorPressed,
       color: theme.colors.white
     }
+  },
+  unstyled: {
+    backgroundColor: 'unset',
+    border: 'none',
+    padding: 'unset',
+    minWidth: 'unset'
   }
 }

@@ -5,7 +5,6 @@ import { DocumentPage } from './DocumentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { PodSelect } from '@/docs/common/components/PodSelect'
-import { PageHead } from '@/docs/common/components/PageHead'
 import { TrashButton } from '@/docs/common/components/TrashButton'
 import { ExplorerMenu } from '@/docs/common/components/ExplorerMenu'
 import { NewPage } from './components/NewPage'
@@ -21,6 +20,7 @@ import { useFormulaQuery } from './hooks'
 import { useFormulaBackendActions } from './hooks/useFormulaBackendActions'
 import { styled } from '@brickdoc/design-system'
 import { base } from './DocumentContentPage.style'
+import Logo from '@/common/assets/logo_brickdoc.svg'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -60,9 +60,7 @@ export interface DocMetaProps {
   docMeta: DocMeta
 }
 
-const Layout = styled('div', {
-  ...base
-})
+const Layout = styled('div', base)
 
 export const DocumentContentPage: React.FC = () => {
   const { webid, docid, snapshotVersion } = useParams() as unknown as {
@@ -180,16 +178,16 @@ export const DocumentContentPage: React.FC = () => {
     !docMeta.isAnonymous &&
     (docMeta.isMine ? (
       <>
-        <header>
-          <PageHead />
-        </header>
-
-        <nav>
-          <PageTree docMeta={docMeta} />
-          <NewPage docMeta={docMeta} />
-          <TrashButton docMeta={docMeta} />
-        </nav>
-
+        <div className="mainActions">
+          <header>
+            <img src={Logo} alt="Brickdoc" />
+          </header>
+          <nav>
+            <PageTree docMeta={docMeta} />
+            <NewPage docMeta={docMeta} />
+            <TrashButton docMeta={docMeta} />
+          </nav>
+        </div>
         <footer>
           <PodSelect docMeta={docMeta} />
         </footer>

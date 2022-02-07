@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useGetPodsQuery, useUserSignOutMutation, UserSignOutInput, PodOperation } from '@/BrickdocGraphQL'
 import {
+  Box,
   Dropdown,
   DeprecatedSkeleton,
   Menu,
@@ -10,12 +10,13 @@ import {
   Tooltip,
   Button,
   ButtonProps,
-  devWarning
+  devWarning,
+  css
 } from '@brickdoc/design-system'
+import { selectStyle, menuItemStyle } from './index.styles'
 import { PodCard } from '@/common/components/PodCard'
 import { Setting, Change } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../hooks'
-import styles from './index.module.less'
 import { ProfileModal } from '../ProfileModal'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
@@ -25,7 +26,6 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()
   const [modalCreateVisible, setModalCreateVisible] = useState<boolean>(false)
   const { currentUser } = useContext(BrickdocContext)
-  const navigate = useNavigate()
 
   if (loading || signOutLoading) {
     return <DeprecatedSkeleton avatar active paragraph={false} />
@@ -41,7 +41,7 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
   const onClickPodSetting = (webid: string): ButtonProps['onClick'] => {
     return (event): void => {
       void event.stopPropagation()
-      navigate(`/${webid}/settings/general`)
+      globalThis.location.href = `/${webid}/settings/general`
     }
   }
 
@@ -71,15 +71,16 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
     <Menu onAction={onClick}>
       <Menu.Group label={<small>@{currentUser?.webid ?? 'undefined'}</small>}>
         {data?.pods.map(p => (
-          <Menu.Item active={p.webid === pod.webid} itemKey={`pod-${p.webid}`} key={p.webid}>
-            <div className={styles.menu}>
-              <PodCard pod={p} label={p.personal ? 'Personal Pod' : false} />
-              <Tooltip title={t(p.personal ? 'user_setting.text' : 'pod_setting.text')}>
-                <Button className={styles.addBtn} type="text" onClick={onClickPodSetting(p.webid)}>
-                  <Setting />
-                </Button>
-              </Tooltip>
-            </div>
+          <Menu.Item
+            active={p.webid === pod.webid}
+            itemKey={`pod-${p.webid}`}
+            key={p.webid}
+            className={css(menuItemStyle)()}
+          >
+            <PodCard pod={p} label={p.personal ? 'Personal Pod' : false} />
+            <Tooltip title={t(p.personal ? 'user_setting.text' : 'pod_setting.text')}>
+              <Button type="unstyled" icon={<Setting />} onClick={onClickPodSetting(p.webid)} />
+            </Tooltip>
           </Menu.Item>
         ))}
       </Menu.Group>
@@ -94,13 +95,11 @@ export const PodSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   return (
     <>
-      <Dropdown trigger={['click']} overlay={dropdown} overlayClassName={styles.overlay} placement="topEnd">
-        <div className={styles.select}>
+      <Dropdown trigger={['click']} overlay={dropdown} placement="topEnd">
+        <Box css={selectStyle}>
           <PodCard pod={pod} label={false} />
-          <div className={styles.icon}>
-            <Change />
-          </div>
-        </div>
+          <Change />
+        </Box>
       </Dropdown>
       <ProfileModal
         title={t('menu.create_new_pod')}

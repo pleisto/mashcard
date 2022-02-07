@@ -15,6 +15,7 @@ declare global {
     version: string
     locale: string
     rtl: boolean
+    settings: { [key: string]: any }
     timezone: string
     defaultTimezone: string
     host: string
