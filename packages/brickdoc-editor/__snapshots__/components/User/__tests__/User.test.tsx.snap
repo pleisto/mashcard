@@ -13,7 +13,7 @@ exports[`User matches correct snapshot 1`] = `
      
   </span>
   <span
-    class="brd-c-dSfAPu brd-c-dSfAPu-hECRKn-shape-circle brd-c-dSfAPu-exvrTV-size-sm brd-c-dSfAPu-idZPaNd-css brickdoc-user-block-avatar"
+    class="brd-c-jjxMLt brd-c-jjxMLt-hECRKn-shape-circle brd-c-jjxMLt-lhlSdI-size-sm brd-c-jjxMLt-idZPaNd-css brickdoc-user-block-avatar"
   >
     <img
       src="avatarUrl"

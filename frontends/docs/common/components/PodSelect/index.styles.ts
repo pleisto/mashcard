@@ -5,7 +5,7 @@ export const selectStyle = {
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '.25rem 1rem',
-  [`&>${prefix}-icon`]: {
+  [`&>.${prefix}-icon`]: {
     color: theme.colors.typeSecondary
   },
   '&:hover': {

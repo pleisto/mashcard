@@ -1,4 +1,4 @@
-import { SubmitHandler, FieldValues, SubmitErrorHandler, UseFormReturn } from 'react-hook-form'
+import { SubmitHandler, FieldValues, SubmitErrorHandler, UseFormReturn, Controller } from 'react-hook-form'
 import { useForm } from './hook'
 import { FormField, FormFieldProps } from './FormField'
 import { FormProvider, useFormContext } from './context'
@@ -35,6 +35,7 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
 
 Form.Field = FormField
 Form.useForm = useForm
+Form.Controller = Controller
 
 export type { FormControlProps, FormFieldProps, SubmitHandler, SubmitErrorHandler }
 export { Form, useFormContext, FormControl }

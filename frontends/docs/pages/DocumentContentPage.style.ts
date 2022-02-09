@@ -19,7 +19,8 @@ export const base = {
     justifyContent: 'space-between',
     '.mainActions header img': {
       height: '22px',
-      marginTop: '1rem'
+      width: '84px',
+      margin: '1rem 18px'
     },
     '& > footer': {
       marginBottom: '1rem',

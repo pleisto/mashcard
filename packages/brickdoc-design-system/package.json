@@ -31,7 +31,6 @@
     "framer-motion": "^6.2.4",
     "lodash-es": "^4.17.21",
     "polished": "^4.1.4",
-    "rc-dialog": "^8.6.0",
     "rc-dropdown": "^3.3.0",
     "rc-select": "^14.0.0-alpha.25",
     "rc-tabs": "^11.10.5",

@@ -8,37 +8,16 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
+import React from 'react'
+import { ISvgIconProps, IconWrapper } from '../icon'
 
-export default IconWrapper(
-    'code',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            width={props.size}
-            height={props.size}
-            viewBox="0 0 24 24"
-            fill="none"
-        >
-            <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M7.69449 6.2805C8.09186 6.66405 8.10306 7.29712 7.7195 7.69449L3.41444 12.1546L7.69402 16.28C8.09164 16.6633 8.10325 17.2964 7.71995 17.694C7.33665 18.0916 6.7036 18.1033 6.30598 17.72L1.30598 12.9C1.11495 12.7159 1.00494 12.4634 1.00016 12.1981C0.995383 11.9328 1.09623 11.6765 1.2805 11.4856L6.2805 6.30551C6.66405 5.90814 7.29712 5.89694 7.69449 6.2805Z"
-                fill={props.colors[0]}
-            />
-            <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M16.3055 6.2805C16.7029 5.89694 17.3359 5.90814 17.7195 6.30551L22.7195 11.4856C22.9038 11.6765 23.0046 11.9328 22.9998 12.1981C22.9951 12.4634 22.885 12.7159 22.694 12.9L17.694 17.72C17.2964 18.1033 16.6633 18.0916 16.28 17.694C15.8967 17.2964 15.9084 16.6633 16.306 16.28L20.5856 12.1546L16.2805 7.69449C15.8969 7.29712 15.9081 6.66405 16.3055 6.2805Z"
-                fill={props.colors[0]}
-            />
-            <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M14.2169 2.02381C14.7561 2.14362 15.096 2.6778 14.9762 3.21693L10.9762 21.2169C10.8564 21.7561 10.3222 22.096 9.78307 21.9762C9.24394 21.8564 8.90401 21.3222 9.02381 20.7831L13.0238 2.78307C13.1436 2.24394 13.6778 1.90401 14.2169 2.02381Z"
-                fill={props.colors[0]}
-            />
-        </svg>
-    )
-);
+export default IconWrapper('code', false, (props: ISvgIconProps) => (
+  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.694 6.28a1 1 0 0 1 .026 1.414l-4.306 4.46 4.28 4.126a1 1 0 0 1-1.388 1.44l-5-4.82a1 1 0 0 1-.026-1.414l5-5.18a1 1 0 0 1 1.414-.026ZM16.305 6.28a1 1 0 0 1 1.415.026l5 5.18a1 1 0 0 1-.026 1.414l-5 4.82a1 1 0 0 1-1.388-1.44l4.28-4.125-4.305-4.46a1 1 0 0 1 .024-1.415ZM14.217 2.024a1 1 0 0 1 .76 1.193l-4 18a1 1 0 1 1-1.953-.434l4-18a1 1 0 0 1 1.193-.76Z"
+      fill={props.colors[0]}
+    />
+  </svg>
+))

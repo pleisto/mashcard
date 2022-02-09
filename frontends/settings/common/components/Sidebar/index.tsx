@@ -1,10 +1,11 @@
 import { FC, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { PodCard } from '@/common/components/PodCard'
 import { SettingsContext } from '@/settings/SettingContext'
-import { Button, Box } from '@brickdoc/design-system'
+import { SwitchSettingPod } from '../SwitchSettingPod'
+import { Button } from '@brickdoc/design-system'
 import { ArrowLeft } from '@brickdoc/design-icons'
 import { SidebarWrapper, MenuItem } from './index.styles'
+import Logo from '@/common/assets/logo_brickdoc.svg'
 import { useSettingsI18n } from '../../hooks'
 
 export const Sidebar: FC = () => {
@@ -15,14 +16,10 @@ export const Sidebar: FC = () => {
   return (
     <SidebarWrapper>
       <div className="actions">
-        <h1>{pod!.personal ? 'User' : 'Pod'} Settings </h1>
-        <Box
-          css={{
-            padding: '1rem 12px'
-          }}
-        >
-          <PodCard pod={pod!} />
-        </Box>
+        <header>
+          <img src={Logo} alt="Brickdoc" />
+          <SwitchSettingPod />
+        </header>
         <nav>
           {actions.map(i => (
             <MenuItem to={i.key} key={i.key}>

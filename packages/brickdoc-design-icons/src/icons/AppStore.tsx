@@ -12,7 +12,7 @@ import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
 
 export default IconWrapper('app-store', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
+  <svg viewBox="0 0 24 24" fill="none">
     <path
       strokeWidth="2"
       stroke={props.colors[0]}
@@ -23,7 +23,7 @@ export default IconWrapper('app-store', false, (props: ISvgIconProps) => (
       strokeLinecap="round"
       strokeWidth="2"
       stroke={props.colors[0]}
-      d="M14 6.5 10.75 12l-.813 1.375-.406.688M7.5 17.5l.406-.688M6 14.5h5.5M15 14.5h3M9.5 6.5l1.75 2.75.438.688M16.5 17.5l-1.75-2.75-.875-1.375-.438-.688"
+      d="M14 6.5 10.75 12l-.813 1.375-.406.688M7.5 17.5l.406-.688M6 14.5h5.5m3.5 0h3m-8.5-8 1.75 2.75.438.688M16.5 17.5l-1.75-2.75-.875-1.375-.438-.688"
     />
   </svg>
 ))

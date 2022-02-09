@@ -1,5 +1,5 @@
 import React from 'react'
-import { DeprecatedModal, Form, Input, toast } from '@brickdoc/design-system'
+import { Form, Input, toast, Modal, Button } from '@brickdoc/design-system'
 import { object, string } from 'yup'
 import { useDocsI18n } from '../../hooks'
 import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
@@ -34,55 +34,51 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
     form.reset()
   }
 
-  const handleOk = (): void => {
+  const handleOk = async (values: any) => {
     setConfirmLoading(true)
-    form.handleSubmit(
-      async (values: any) => {
-        const input: CreateOrUpdatePodInput = {
-          type,
-          webid: values.webid,
-          name: values.name,
-          bio: values.bio
-        }
-        await createOrUpdatePod({ variables: { input } })
-        form.reset()
-        void toast.success(t('pods.create.success'))
-        setConfirmLoading(false)
-        setVisible(false)
-        globalThis.location.href = `/${values.webid}`
-      },
-      () => {
-        // onError
-        setConfirmLoading(false)
-      }
-    )()
+    const input: CreateOrUpdatePodInput = {
+      type,
+      webid: values.webid,
+      name: values.name,
+      bio: values.bio
+    }
+    await createOrUpdatePod({ variables: { input } })
+    form.reset()
+    void toast.success(t('pods.create.success'))
+    setConfirmLoading(false)
+    setVisible(false)
+    globalThis.location.href = `/${values.webid}`
   }
 
-  const formData = (
-    <Form form={form} layout="vertical">
-      <Form.Field name="webid" label={t('pods.webid')}>
-        <Input />
-      </Form.Field>
-      <Form.Field name="name" label={t('pods.name')}>
-        <Input />
-      </Form.Field>
-      <Form.Field name="bio" label={t('pods.bio')}>
-        <Input />
-      </Form.Field>
-    </Form>
-  )
-
   return (
-    <DeprecatedModal
-      title={title}
-      okText={t('design_system:modal.okText')}
-      cancelText={t('design_system:modal.cancelText')}
-      visible={visible}
-      onOk={handleOk}
-      confirmLoading={confirmLoading}
-      onCancel={handleCancel}
-    >
-      {formData}
-    </DeprecatedModal>
+    <Modal open={visible} onClose={handleCancel} title={title}>
+      <Form
+        form={form}
+        layout="vertical"
+        onSubmit={handleOk}
+        onError={() => {
+          // onError
+          setConfirmLoading(false)
+        }}
+      >
+        <Form.Field name="webid" label={t('pods.webid')}>
+          <Input />
+        </Form.Field>
+        <Form.Field name="name" label={t('pods.name')}>
+          <Input />
+        </Form.Field>
+        <Form.Field name="bio" label={t('pods.bio')}>
+          <Input />
+        </Form.Field>
+        <Form.Field inlineWrapper>
+          <Button onClick={handleCancel} size="lg" block>
+            Cancel
+          </Button>
+          <Button loading={confirmLoading} type="primary" htmlType="submit" size="lg" block>
+            Create
+          </Button>
+        </Form.Field>
+      </Form>
+    </Modal>
   )
 }

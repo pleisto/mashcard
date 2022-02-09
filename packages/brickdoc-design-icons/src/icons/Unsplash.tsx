@@ -12,12 +12,7 @@ import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
 
 export default IconWrapper('unsplash', false, (props: ISvgIconProps) => (
-  <svg width={props.size} height={props.size} viewBox="0 0 24 24" fill="none">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M8 3H16V8H8V3ZM8 11H2V17V21V22H22V21V17V11H16V17H8V11Z"
-      fill={props.colors[0]}
-    />
+  <svg viewBox="0 0 24 24" width={props.size} height={props.size} fill="none">
+    <path fillRule="evenodd" clipRule="evenodd" d="M8 3h8v5H8V3Zm0 8H2v11h20V11h-6v6H8v-6Z" fill={props.colors[0]} />
   </svg>
 ))

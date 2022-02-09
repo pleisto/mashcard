@@ -87,7 +87,23 @@ export const FormControlWrapper = styled('div', {
 
 export const FieldWrapper = styled('div', {
   display: 'flex',
-  flexDirection: 'column',
   alignItems: 'start',
-  width: '100%'
+  width: '100%',
+  variants: {
+    inlineWrapper: {
+      false: {
+        flexDirection: 'column'
+      },
+      true: {
+        flexDirection: 'row',
+        flexWrap: 'nowrap',
+        '&>button': {
+          marginRight: '1rem'
+        },
+        '&>button:last-child': {
+          marginRight: 0
+        }
+      }
+    }
+  }
 })

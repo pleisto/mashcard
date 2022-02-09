@@ -956,6 +956,8 @@ en-US:
           Show recently contacted customers.
   settings:
     app_title: Brickdoc Settings
+    personal_pod_desc: Your Personal Pod
+    group_pod_desc: Group Pod
     menu:
       general: General
       account: My Account
@@ -966,4 +968,11 @@ en-US:
       group_profile: Group Profile
       update_profile: Update Profile
       change_webid: Change username
-      change_webid_desc: Changing your username can have <0>unintended consequences</0>.
+      change_webid_btn: Update
+      change_webid_desc: Unless you really need it, we recommended that you do not change your username. This will cause the related links, such as the Pages, Mentions, etc. that were linked to you before not being opened. <0>Learn More</0>
+      avatar_updated: Avatar updated successfully.
+      profile_updated: Profile updated successfully.
+      appearance: Appearance
+      timezone: Timezone
+      locale: Language
+      update_appearance: Save Appearance

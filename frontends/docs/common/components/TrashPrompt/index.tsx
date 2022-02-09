@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Button, DeprecatedModal } from '@brickdoc/design-system'
+import { Alert, Button, ConfirmDialog } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockHardDeleteInput,
@@ -79,19 +79,18 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
           </>
         }
       />
-      <DeprecatedModal
-        title={null}
-        okText={t('trash.delete_confirmation_ok')}
-        cancelText={t('trash.delete_confirmation_cancel')}
-        closable={false}
-        destroyOnClose={true}
-        confirmLoading={hardDeleteConfirmLoading}
+      <ConfirmDialog
         onCancel={onCancelDelete}
-        onOk={onConfirmDelete}
-        visible={hardDeleteModalVisible}
+        onConfirm={onConfirmDelete}
+        cancelBtnText={t('trash.delete_confirmation_cancel')}
+        confirmBtnText={t('trash.delete_confirmation_ok')}
+        confirmBtnProps={{
+          loading: hardDeleteConfirmLoading
+        }}
+        open={hardDeleteModalVisible}
       >
         {t('trash.delete_confirmation_body')}
-      </DeprecatedModal>
+      </ConfirmDialog>
     </>
   )
 }

@@ -12,7 +12,7 @@ import React from 'react'
 import { ISvgIconProps, IconWrapper } from '../icon'
 
 export default IconWrapper('message', false, (props: ISvgIconProps) => (
-  <svg fill="none" viewBox="0 0 24 24">
+  <svg viewBox="0 0 24 24" fill="none">
     <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
     <path
       strokeLinejoin="round"
@@ -21,6 +21,6 @@ export default IconWrapper('message', false, (props: ISvgIconProps) => (
       stroke={props.colors[0]}
       d="M2 3h20v15h-7.5L12 20.5 9.5 18H2V3z"
     />
-    <path strokeLinecap="round" strokeWidth="2" stroke={props.colors[0]} d="M11.5 10.5h1.001M16.5 10.5h1M6.5 10.5h1" />
+    <path strokeLinecap="round" strokeWidth="2" stroke={props.colors[0]} d="M11.5 10.5h1.001m3.999 0h1m-11 0h1" />
   </svg>
 ))

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { DeprecatedModal } from '@brickdoc/design-system'
+import { Modal } from '@brickdoc/design-system'
 import { SnapshotList } from '../SnapshotList'
-import styles from './index.module.css'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface PageHistoryModalProps {
@@ -21,17 +20,7 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ docMeta, vis
   }
 
   return (
-    <DeprecatedModal
-      width={1100}
-      title={null}
-      footer={null}
-      closable={false}
-      destroyOnClose={true}
-      visible={visible}
-      confirmLoading={confirmLoading}
-      onOk={onCleanup}
-      onCancel={onCleanup}
-      className={styles.modal}>
+    <Modal width={1100} open={visible} onClose={onCleanup} dialogCss={{ padding: '0' }}>
       <SnapshotList
         docMeta={docMeta}
         currentVersion={currentVersion}
@@ -40,6 +29,6 @@ export const PageHistoryModal: React.FC<PageHistoryModalProps> = ({ docMeta, vis
         onCleanup={onCleanup}
         setConfirmLoading={setConfirmLoading}
       />
-    </DeprecatedModal>
+    </Modal>
   )
 }

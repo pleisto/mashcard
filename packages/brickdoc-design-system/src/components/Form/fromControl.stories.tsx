@@ -30,6 +30,12 @@ export default {
     },
     invalidMessage: {
       description: 'Message to display when the control is invalid'
+    },
+    inlineWrapper: {
+      control: {
+        type: 'boolean'
+      },
+      description: 'inline wrapper for the action buttons'
     }
   },
   parameters: {

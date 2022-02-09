@@ -8,33 +8,22 @@
 
 /* tslint:disable: max-line-length */
 /* eslint-disable max-len */
-import React from 'react';
-import {ISvgIconProps, IconWrapper} from '../icon';
+import React from 'react'
+import { ISvgIconProps, IconWrapper } from '../icon'
 
-export default IconWrapper(
-    'international',
-    false,
-    (props: ISvgIconProps) => (
-        <svg
-            fill="none"
-            viewBox="0 0 24 24"
-        >
-            <path
-                fillOpacity=".01"
-                fill={props.colors[2]}
-                d="M24 0H0v24h24V0z"
-            />
-            <path
-                strokeWidth="2"
-                stroke={props.colors[0]}
-                d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
-            />
-            <path
-                strokeLinecap="round"
-                strokeWidth="2"
-                stroke={props.colors[0]}
-                d="M3 15.493c1.316.527 2.263.527 2.842 0 .868-.792.119-3.194 1.335-3.857 1.215-.662 3.067 2.275 4.798 1.308 1.731-.966-.163-3.543 1.039-4.588 1.2-1.044 2.763.134 3.036-1.613.273-1.746-1.274-.989-1.57-2.64-.199-1.1-.199-1.679 0-1.735M14.51 21.675c-.937-.959-1.274-1.85-1.011-2.674.393-1.236 1.042-1.163 1.325-1.927.284-.764-.516-1.852 1.258-2.783 1.183-.62 2.81.099 4.88 2.156"
-            />
-        </svg>
-    )
-);
+export default IconWrapper('international', false, (props: ISvgIconProps) => (
+  <svg viewBox="0 0 24 24" fill="none">
+    <path fillOpacity=".01" fill={props.colors[2]} d="M24 0H0v24h24V0z" />
+    <path
+      strokeWidth="2"
+      stroke={props.colors[0]}
+      d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeWidth="2"
+      stroke={props.colors[0]}
+      d="M3 15.493c1.316.527 2.263.527 2.842 0 .868-.792.119-3.194 1.335-3.857 1.215-.662 3.067 2.275 4.798 1.308 1.731-.966-.163-3.543 1.039-4.588 1.2-1.044 2.763.134 3.036-1.613.273-1.746-1.274-.989-1.57-2.64-.199-1.1-.199-1.679 0-1.735m.03 19.307c-.937-.959-1.274-1.85-1.011-2.674.393-1.236 1.042-1.163 1.325-1.927.284-.764-.516-1.852 1.258-2.783 1.183-.62 2.81.099 4.88 2.156"
+    />
+  </svg>
+))

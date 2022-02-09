@@ -1,5 +1,0 @@
-.modal {
-  & :global(.brd-modal-body) {
-    padding: 0;
-  }
-}

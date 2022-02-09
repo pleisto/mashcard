@@ -33,7 +33,7 @@ const AvatarWrapper = styled('span', {
   },
   '& > span': {
     color: theme.colors.white,
-    fontSize: '0.8rem'
+    fontSize: '0.5em'
   },
   variants: {
     shape: {
@@ -58,10 +58,7 @@ const AvatarWrapper = styled('span', {
       sm: {
         boxSize: '1.5rem',
         lineHeight: '1.5rem',
-        fontSize: '1.5rem',
-        '& > span': {
-          fontSize: '0.625rem'
-        }
+        fontSize: '1.5rem'
       }
     },
     default: {
@@ -102,7 +99,8 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
   const customSizeCss = isCustomSize
     ? {
         boxSize: `${size}px`,
-        lineHeight: `${size}px`
+        lineHeight: `${size}px`,
+        fontSize: `${size}px`
       }
     : undefined
 

@@ -14,7 +14,8 @@ const BUILD_CONFIG = {
   colors: [
     {
       type: 'color',
-      color: '#3E3E3E'
+      // theme.colors.iconPrimary
+      color: '#34313c'
     },
     {
       type: 'color',
@@ -120,12 +121,17 @@ const compiler = IconCompiler.instance({
 
 const sourceDirPath = p.join(__dirname, '../assets')
 glob.sync('**/*.svg', { cwd: sourceDirPath }).forEach(item => {
-  compiler.appendIcon({
-    name: p.basename(item, '.svg'),
-    description: item,
-    content: fs.readFileSync(p.join(sourceDirPath, item), 'utf-8'),
-    rtl: false
-  })
+  try {
+    compiler.appendIcon({
+      name: p.basename(item, '.svg'),
+      description: item,
+      content: fs.readFileSync(p.join(sourceDirPath, item), 'utf-8'),
+      rtl: false
+    })
+  } catch (e) {
+    console.error(`compiler failed for ${item}`, e)
+    process.exit(1)
+  }
 })
 
 const files = compiler.getIconFiles()

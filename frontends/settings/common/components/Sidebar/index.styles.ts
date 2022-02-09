@@ -6,18 +6,22 @@ export const SidebarWrapper = styled('section', {
   flexDirection: 'column',
   width: '270px',
   height: '100vh',
-  padding: '56px 8px 32px 8px',
+  padding: '0 8px 32px 8px',
   justifyContent: 'space-between',
-  '.actions>h1': {
-    fontSize: theme.fontSizes.title4,
-    lineHeight: '30px',
-    marginBottom: '.5rem',
-    marginLeft: '1rem'
+  '.actions': {
+    header: {
+      img: {
+        height: '22px',
+        width: '84px',
+        margin: '1rem 18px'
+      }
+    },
+    nav: {
+      display: 'flex',
+      flexDirection: 'column'
+    }
   },
-  '.actions>nav': {
-    display: 'flex',
-    flexDirection: 'column'
-  },
+
   '& > footer': {
     width: '100%',
     display: 'flex',

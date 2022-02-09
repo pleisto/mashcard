@@ -8,14 +8,15 @@ export const queryWebidExists = gql`
     }
   }
 `
-export const getAvaailableLocales = gql`
-  query GetAvailableLocalesFromWS {
+export const queryMetadata = gql`
+  query GetMetadataFromWS {
     metadata {
       id
       availableLocales {
         label
         value
       }
+      availableTimezones
     }
   }
 `

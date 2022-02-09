@@ -5,7 +5,7 @@ import {
   Dropdown,
   Menu,
   MenuProps,
-  DeprecatedModal,
+  Modal,
   Icon,
   Select,
   DeprecatedSpin,
@@ -169,7 +169,7 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
   )
 
   const inviteContent = (
-    <div>
+    <>
       <div className={styles.header}>
         <div className={cx(styles.input, { [styles.filled]: podValue.length > 0 })}>
           {selectData}
@@ -188,21 +188,18 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
         <Icon.Help />
         <span>{t('invite.learn')}</span>
       </div>
-    </div>
+    </>
   )
 
   return (
-    <DeprecatedModal
-      className={styles.modal}
-      title={null}
-      footer={null}
-      closable={false}
-      destroyOnClose={true}
-      visible={visible}
-      onOk={onCleanup}
-      onCancel={onCleanup}
+    <Modal
+      open={visible}
+      onClose={onCleanup}
+      dialogCss={{
+        padding: '0'
+      }}
     >
       {inviteContent}
-    </DeprecatedModal>
+    </Modal>
   )
 }

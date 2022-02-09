@@ -1,9 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Icon, DeprecatedModal } from '@brickdoc/design-system'
+import { Icon } from '@brickdoc/design-system'
 import { VariableData, VariableInterface } from '@brickdoc/formula'
-import { useEditorI18n } from '../../../hooks'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { useFormula } from '../../../components/Formula/useFormula'
 import { BlockContainer, FormulaMenu } from '../../../components'
@@ -11,10 +10,7 @@ import { FormulaRender } from '../../../components/Formula/FormulaRender'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 
-const i18nKey = 'formula.menu'
-
 export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, updateAttributes, extension, getPos }) => {
-  const { t } = useEditorI18n()
   const defaultVisible = node.attrs.isNew
   const formulaId = node.attrs.uuid
   const editorDataSource = React.useContext(EditorDataSourceContext)
@@ -24,23 +20,13 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   const updateFormula = React.useCallback((variable: VariableInterface | undefined): void => {}, [])
 
   const handleDelete = React.useCallback(
-    (variableT?: VariableData): void => {
-      DeprecatedModal.confirm({
-        zIndex: 1070,
-        title: t(`${i18nKey}.delete_confirm.title`),
-        okText: t(`${i18nKey}.delete_confirm.ok`),
-        okButtonProps: { danger: true },
-        cancelText: t(`${i18nKey}.delete_confirm.cancel`),
-        icon: null,
-        onOk: async () => {
-          if (!variableT || !getPos || !node || !formulaContext) return
-          const position = getPos()
-          void (await formulaContext?.removeVariable(variableT.namespaceId, variableT.variableId))
-          editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
-        }
-      })
+    async (variableT?: VariableData): Promise<void> => {
+      const position = getPos()
+      variableT && (await formulaContext?.removeVariable(variableT.namespaceId, variableT.variableId))
+      if (!position || !node) return
+      editor.commands.deleteRange({ from: position, to: position + node.nodeSize })
     },
-    [editor.commands, formulaContext, getPos, node, t]
+    [editor.commands, formulaContext, getPos, node]
   )
 
   const handleTurnOffVisible = React.useCallback(() => updateAttributes({ isNew: false }), [updateAttributes])
@@ -103,7 +89,8 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         completion={completion}
         handleSelectActiveCompletion={handleSelectActiveCompletion}
         setCompletion={setCompletion}
-        handleDelete={handleDelete}>
+        handleDelete={handleDelete}
+      >
         {renderData}
       </FormulaMenu>
     </BlockContainer>
