@@ -608,8 +608,6 @@ en-US:
   editor:
     placeholder: Type '/' for commands
     copy_hint: Copied to clipboard.
-    toc:
-      untitled: Untitled
     toolbar:
       separator: Menu separator
     blocks:
@@ -643,6 +641,8 @@ en-US:
         label: Divider
       toc:
         label: Toc
+        placeholder: Add headings/anchors to create a table of contents
+        untitled: Untitled
       subPageMenu:
         label: Subpage menu
       code:

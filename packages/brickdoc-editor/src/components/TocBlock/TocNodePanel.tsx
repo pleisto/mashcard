@@ -39,19 +39,19 @@ const TocItemTitle = styled('span', {
         marginLeft: '0'
       },
       2: {
-        marginLeft: '2em'
+        marginLeft: '1em'
       },
       3: {
-        marginLeft: '3em'
+        marginLeft: '2em'
       },
       4: {
-        marginLeft: '4em'
+        marginLeft: '3em'
       },
       5: {
-        marginLeft: '5em'
+        marginLeft: '4em'
       },
       text: {
-        marginLeft: '6em'
+        marginLeft: '5em'
       }
     }
   }
@@ -92,8 +92,10 @@ const TocItemContent = styled('div', {
 const containerVerticalPadding = 16
 
 const TocStyledContainer = styled('div', {
+  background: theme.colors.backgroundPrimary,
   border: `1px solid ${theme.colors.borderPrimary}`,
   borderRadius: '8px',
+  display: 'inline-block',
   padding: `${containerVerticalPadding}px 0`
 })
 
@@ -102,7 +104,7 @@ const TocStyledContainerInner = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
-  padding: `0 28px`
+  padding: `0 32px`
 })
 
 export interface TocContainerProps {
@@ -114,7 +116,7 @@ export const TocContainer: React.FC<TocContainerProps> = ({ tocItemCount, childr
     <TocStyledContainer
       role="presentation"
       css={{
-        height: `${containerVerticalPadding * 2 + tocItemCount * (itemHeight + itemGap)}px`
+        height: tocItemCount > 0 ? `${containerVerticalPadding * 2 + tocItemCount * (itemHeight + itemGap)}px` : 'unset'
       }}
     >
       <TocStyledContainerInner>{children}</TocStyledContainerInner>
@@ -172,7 +174,7 @@ export const TocNodePanel: React.FC<TocNodePanelProps> = ({ tocNode }) => {
           />
         )}
         {/* TODO: handle inline block case */}
-        {isEmpty(tocNode.item.text) ? t('toc.untitled') : tocNode.item.text}
+        {isEmpty(tocNode.item.text) ? t('blocks.toc.untitled') : tocNode.item.text}
       </TocItemTitle>
       <TocItemContent data-testid={TEST_ID_ENUM.editor.tocBlock.item.contentPanel.id} ref={contentRef}>
         {tocNode.children.map((node, index) => (
