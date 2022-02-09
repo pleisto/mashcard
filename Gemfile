@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 7.0.1'
+gem 'rails', '~> 7.0.2'
 gem 'pg', '~> 1.3.1'
 gem 'puma', '~> 5.6'
 gem 'puma_worker_killer', '~> 0.3.1'
