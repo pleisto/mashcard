@@ -23,8 +23,8 @@ export const Loading: React.FC<LoadingProps> = ({ delayDuration, style, classNam
       <video
         autoPlay
         playsInline
-        width={75}
-        height={120}
+        width={300}
+        height={300}
         muted
         loop
         x-webkit-airplay="deny"
