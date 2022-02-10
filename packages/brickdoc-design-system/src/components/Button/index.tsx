@@ -3,10 +3,8 @@ import ButtonUnstyled, { ButtonUnstyledActions } from '@mui/base/ButtonUnstyled'
 import { LoadingIcon } from './LoadingIcon'
 import { styled, config } from '../../themes'
 import { CSS } from '@stitches/react'
+import type { BtnType, Size } from './constants'
 import { buttonStyle } from './styles/index.style'
-
-export type Size = 'lg' | 'md' | 'sm'
-export type BtnType = 'primary' | 'secondary' | 'danger' | 'text' | 'unstyled'
 
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'css'> {
   action?: Ref<ButtonUnstyledActions>
@@ -101,7 +99,7 @@ const Button: React.ForwardRefRenderFunction<unknown, ButtonProps> = (props, ref
     setLoading(loadingOrDelay)
   }, [loadingOrDelay])
 
-  const iconNode = icon && !innerLoading ? icon : <LoadingIcon loading={!!innerLoading} />
+  const iconNode = icon && !innerLoading ? icon : <LoadingIcon loading={!!innerLoading} size={size} type={type} />
   const childrenDom = typeof children === 'string' || typeof children === 'number' ? <span>{children}</span> : children
 
   return (
