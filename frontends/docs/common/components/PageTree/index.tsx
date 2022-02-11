@@ -9,7 +9,18 @@ import {
   useGetBlockPinsQuery,
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
-import { Tree, TreeProps, TNode, Inserted, css, styled, toast, useSize, useMemoizedFn } from '@brickdoc/design-system'
+import {
+  Tree,
+  TreeProps,
+  TNode,
+  Inserted,
+  css,
+  styled,
+  toast,
+  useSize,
+  useMemoizedFn,
+  theme
+} from '@brickdoc/design-system'
 import { array2Tree } from '@/common/utils'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -27,6 +38,14 @@ export interface PageTreeProps extends DocMetaProps {
 const subPageModeNodeStyle = css({
   borderRadius: '0 !important',
   boxShadow: 'none !important'
+})
+
+const SubPageModeEmptyNode = styled('span', {
+  color: theme.colors.typeDisabled,
+  fontSize: theme.fontSizes.body,
+  fontWeight: 400,
+  lineHeight: '1.5rem',
+  paddingLeft: '1.75rem'
 })
 
 const PageTreeRoot = styled('div', {
@@ -278,6 +297,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
       {treeElement(pageBlocks, draggable && mutable, pageHeight)}
     </PageTreeRoot>
   ) : (
-    <>{mode === 'subPage' && t('blocks.no_pages')}</>
+    <>{mode === 'subPage' && <SubPageModeEmptyNode>{t('blocks.no_pages')}</SubPageModeEmptyNode>}</>
   )
 }

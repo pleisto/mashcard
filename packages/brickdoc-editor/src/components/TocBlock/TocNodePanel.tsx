@@ -104,7 +104,7 @@ const TocStyledContainerInner = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   overflow: 'hidden',
-  padding: `0 32px`
+  padding: `0 2rem`
 })
 
 export interface TocContainerProps {

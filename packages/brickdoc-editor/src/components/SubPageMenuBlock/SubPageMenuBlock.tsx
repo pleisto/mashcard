@@ -9,6 +9,8 @@ export interface SubPageMenuBlockProps extends NodeViewProps {}
 const SubPageMenu = styled('div', {
   background: theme.colors.backgroundPrimary,
   border: `1px solid ${theme.colors.borderPrimary}`,
+  borderRadius: '8px',
+  display: 'inline-block',
   minWidth: '23.375rem',
   padding: '1rem .25rem'
 })
