@@ -23,6 +23,8 @@ export interface SpreadsheetDragging {
 }
 
 export interface SpreadsheetContext {
+  hoverRowId: string
+  setHoverRowId: (hoverRowId: string) => void
   selection: SpreadsheetSelection
   setSelection: (selection: SpreadsheetSelection) => void
   clearSelection: () => void
@@ -49,6 +51,7 @@ export const useSpreadsheetContext = (options: {
 }): SpreadsheetContext => {
   const [selection, setSelection] = React.useState<SpreadsheetSelection>({})
   const [dragging, setDragging] = React.useState<SpreadsheetDragging>({})
+  const [hoverRowId, setHoverRowId] = React.useState<string>('')
 
   const { columnIds, rowIds, columnHeaders, valuesMatrix } = options ?? {}
 
@@ -142,6 +145,8 @@ export const useSpreadsheetContext = (options: {
   }, [selection, rowIds, columnIds, copyToClipboard])
 
   return {
+    hoverRowId,
+    setHoverRowId,
     selection,
     setSelection,
     clearSelection,

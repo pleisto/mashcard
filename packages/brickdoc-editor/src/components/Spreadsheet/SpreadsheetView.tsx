@@ -62,12 +62,37 @@ export const SpreadsheetMenu = (options: {
   )
 }
 
-export const SpreadsheetContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SpreadsheetContainer: React.FC<{
+  children: React.ReactNode
+  context: SpreadsheetContext
+  className?: string
+}> = ({ children, context, className = '' }) => {
+  const { selection } = context
+
+  const hover = selection.all ?? selection.columnIds?.length ?? selection.rowIds?.length ?? selection.cellIds?.length
+
+  return <span className={`${className} ${hover ? 'hover' : ''}`}>{children}</span>
+}
+
+export const SpreadsheetScrollView: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <div className="brickdoc-spreadsheet-block">{children}</div>
 }
 
 export const SpreadsheetView: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <table>{children}</table>
+  return <table className="spreadsheet-rows">{children}</table>
+}
+
+export const SpreadsheetPanel: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <table className="spreadsheet-row-actions">
+      <thead>
+        <tr data-row-id="first">
+          <th />
+        </tr>
+      </thead>
+      <tbody>{children}</tbody>
+    </table>
+  )
 }
 
 export const SpreadsheetHeader: React.FC<{
@@ -185,16 +210,18 @@ export const SpreadsheetBody: React.FC<{ children: React.ReactNode }> = ({ child
   return <tbody>{children}</tbody>
 }
 
-export const SpreadsheetRow: React.FC<{
+export const SpreadsheetRowAction: React.FC<{
   context: SpreadsheetContext
   rowId: string
-  children: React.ReactNode
   rowNumber?: string
   rowActions?: SpreadsheetActionItem[]
   draggable?: boolean
 }> = ({ context, rowId, children, rowNumber, rowActions, draggable }) => {
   const { t } = useEditorI18n()
 
+  const { hoverRowId } = context
+
+  const hover = hoverRowId === rowId
   const selected = context.selection.rowIds?.includes(rowId)
   const dragging = context.dragging.rowId === rowId
   const draggingOver = context.dragging.overRowId === rowId
@@ -241,7 +268,9 @@ export const SpreadsheetRow: React.FC<{
 
   return (
     <tr
-      className={`${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${draggingOver ? 'dragging-over' : ''}`}
+      className={`${hover ? 'hover' : ''} ${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${
+        draggingOver ? 'dragging-over' : ''
+      }`}
       style={
         dragging
           ? {
@@ -286,6 +315,40 @@ export const SpreadsheetRow: React.FC<{
           )}
         </div>
       </td>
+    </tr>
+  )
+}
+
+export const SpreadsheetRow: React.FC<{
+  context: SpreadsheetContext
+  rowId: string
+  children: React.ReactNode
+}> = ({ context, rowId, children }) => {
+  const { setHoverRowId } = context
+
+  const selected = context.selection.rowIds?.includes(rowId)
+  const dragging = context.dragging.rowId === rowId
+  const draggingOver = context.dragging.overRowId === rowId
+
+  const onOver = () => setHoverRowId(rowId)
+  const onOut = () => setHoverRowId('')
+
+  return (
+    <tr
+      className={`${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${draggingOver ? 'dragging-over' : ''}`}
+      style={
+        dragging
+          ? {
+              transform: `translateY(${context.dragging.movementY}px)`
+            }
+          : {}
+      }
+      data-row-id={rowId}
+      onMouseOver={onOver}
+      onFocus={onOver}
+      onMouseOut={onOut}
+      onBlur={onOut}
+    >
       {children}
     </tr>
   )

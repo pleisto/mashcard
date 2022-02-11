@@ -2,6 +2,9 @@ import React from 'react'
 import { Button, Icon, Input } from '@brickdoc/design-system'
 import {
   SpreadsheetContainer,
+  SpreadsheetPanel,
+  SpreadsheetRowAction,
+  SpreadsheetScrollView,
   SpreadsheetView,
   SpreadsheetHeader,
   SpreadsheetHeaderColumn,
@@ -46,9 +49,15 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
     valuesMatrix
   })
   return (
-    <span className="brickdoc-formula-spreadsheet">
-      <SpreadsheetContainer>
-        <div className="spreadsheet-title">{spreadsheet.name()}</div>
+    <SpreadsheetContainer context={spreadsheetContext} className="brickdoc-formula-spreadsheet">
+      <div className="spreadsheet-title">{spreadsheet.name()}</div>
+      <SpreadsheetPanel>
+        {rows.map(({ rowId }, rowIdx) => {
+          const rowNumber = String((rowIdx as number) + 1)
+          return <SpreadsheetRowAction key={rowIdx} context={spreadsheetContext} rowId={rowId} rowNumber={rowNumber} />
+        })}
+      </SpreadsheetPanel>
+      <SpreadsheetScrollView>
         <SpreadsheetView>
           <SpreadsheetHeader context={spreadsheetContext}>
             <SpreadsheetHeaderColumn className="row-action-panel" context={spreadsheetContext} columnId="" />
@@ -60,9 +69,8 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
           </SpreadsheetHeader>
           <SpreadsheetBody>
             {rows.map(({ rowId }, rowIdx) => {
-              const rowNumber = String((rowIdx as number) + 1)
               return (
-                <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowId} rowNumber={rowNumber}>
+                <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowId}>
                   {columns.map(c => (
                     <SpreadsheetCellContainer
                       key={c.columnId}
@@ -77,8 +85,8 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
             })}
           </SpreadsheetBody>
         </SpreadsheetView>
-      </SpreadsheetContainer>
-    </span>
+      </SpreadsheetScrollView>
+    </SpreadsheetContainer>
   )
 }
 
