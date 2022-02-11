@@ -1,5 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
+import { name } from './name'
 import { SubPageMenuBlock } from '../../components'
 
 declare module '@tiptap/core' {
@@ -17,7 +18,7 @@ declare module '@tiptap/core' {
 export interface SubPageMenuBlockOptions {}
 
 export const SubPageMenuBlockExtension = Node.create<SubPageMenuBlockOptions>({
-  name: 'subPageMenuBlock',
+  name,
 
   group: 'block',
 

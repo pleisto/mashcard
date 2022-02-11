@@ -1,5 +1,4 @@
 export * from './color'
-export * from './block'
 export * from './file'
 export * from './formula'
 export * from './getBlobUrl'

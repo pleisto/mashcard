@@ -1,7 +1,7 @@
 import { Editor } from '@tiptap/core'
 import Paragraph from '@tiptap/extension-paragraph'
 import { EditorView } from 'prosemirror-view'
-import { unselectableNodes, paragraphLikeNodes } from './nodeTypes'
+import { unselectableBlockType, paragraphLikeBlockType } from '../../helpers/block'
 
 const insertNewLine = (editor: Editor, position: number): void => {
   editor.chain().insertContentAt(position, { type: Paragraph.name }).run()
@@ -17,10 +17,10 @@ export const gapClickHandler = (editor: Editor, view: EditorView, position: numb
 
   if (!node) return
 
-  if (!unselectableNodes.includes(node?.type.name)) return
+  if (!unselectableBlockType.includes(node?.type.name)) return
 
   const nextNode = view.state.doc.nodeAt(position)
-  if (nextNode && paragraphLikeNodes.includes(nextNode.type.name)) return
+  if (nextNode && paragraphLikeBlockType.includes(nextNode.type.name)) return
 
   insertNewLine(editor, position)
 }

@@ -1,6 +1,6 @@
 import { Editor } from '@tiptap/core'
 import { EditorView } from 'prosemirror-view'
-import { unselectableNodes, paragraphLikeNodes } from './nodeTypes'
+import { unselectableBlockType, paragraphLikeBlockType } from '../../helpers/block'
 
 const deleteEmptyLine = (editor: Editor, from: number): void => {
   editor
@@ -24,7 +24,7 @@ export function backspaceHandler(editor: Editor, view: EditorView, event: Keyboa
   }
 
   // at the start position of a paragraph like node
-  if (node && paragraphLikeNodes.includes(node.type.name) && !node.text) {
+  if (node && paragraphLikeBlockType.includes(node.type.name) && !node.text) {
     emptyLineFrom = position
     isEmptyLine = true
     // get the previous node
@@ -34,7 +34,7 @@ export function backspaceHandler(editor: Editor, view: EditorView, event: Keyboa
 
   if (!node) return false
 
-  if (!unselectableNodes.includes(node.type.name)) return false
+  if (!unselectableBlockType.includes(node.type.name)) return false
 
   // delete empty line
   if (isEmptyLine) deleteEmptyLine(editor, emptyLineFrom)

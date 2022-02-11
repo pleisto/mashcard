@@ -1,6 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { TocBlock } from '../../components'
+import { name } from './name'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -17,7 +18,7 @@ declare module '@tiptap/core' {
 export interface TocBlockOptions {}
 
 export const TocBlockExtension = Node.create<TocBlockOptions>({
-  name: 'tocBlock',
+  name,
 
   group: 'block',
 

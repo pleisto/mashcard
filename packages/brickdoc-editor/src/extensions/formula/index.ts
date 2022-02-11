@@ -1,6 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { FormulaBlock } from './FormulaBlock'
+import { name } from './name'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FormulaOptions {}
@@ -17,7 +18,7 @@ declare module '@tiptap/core' {
 }
 
 export const FormulaExtension = Node.create<FormulaOptions>({
-  name: 'formulaBlock',
+  name,
 
   group: 'inline',
 

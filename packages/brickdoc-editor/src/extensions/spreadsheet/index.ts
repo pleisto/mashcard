@@ -2,6 +2,7 @@ import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { v4 as uuid } from 'uuid'
 import { Spreadsheet } from '../../components'
+import { name } from './name'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -18,7 +19,7 @@ declare module '@tiptap/core' {
 export interface SpreadsheetBlockOptions {}
 
 export const SpreadsheetBlockExtension = Node.create<SpreadsheetBlockOptions>({
-  name: 'spreadsheetBlock',
+  name,
 
   group: 'block',
 

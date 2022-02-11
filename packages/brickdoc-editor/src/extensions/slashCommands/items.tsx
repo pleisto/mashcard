@@ -1,5 +1,6 @@
+import Paragraph from '@tiptap/extension-paragraph'
 import { SlashMenuItem } from '../../components'
-import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock } from '../../helpers/block'
+import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock, unselectableBlockType } from '../../helpers/block'
 import { getRecentItemKey } from './recentItemsManager'
 
 function createSlashMenuItem(blockItem: BlockCommandItem): SlashMenuItem {
@@ -8,8 +9,15 @@ function createSlashMenuItem(blockItem: BlockCommandItem): SlashMenuItem {
     alias: blockItem.alias,
     icon: blockItem.squareIcon,
     command: ({ editor, range }: Parameters<SlashMenuItem['command']>[0]) => {
-      const chain = editor.chain().focus().deleteRange(range)
-      blockItem.setBlock(chain).run()
+      let chain = editor.chain().focus().deleteRange(range)
+      chain = blockItem.setBlock(chain)
+
+      // create a new line to prevent block from selected
+      if (unselectableBlockType.includes(blockItem.blockType)) {
+        chain = chain.insertBlockAt({ type: Paragraph.name }, range.from).focus()
+      }
+
+      chain.run()
     }
   }
 }

@@ -2,6 +2,7 @@ import { Node, mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { Embedtype } from '@brickdoc/schema'
 import { EmbedBlock } from '../../components'
+import { name } from './name'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -18,7 +19,7 @@ declare module '@tiptap/core' {
 export interface EmbedBlockOptions {}
 
 export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
-  name: 'embedBlock',
+  name,
 
   group: 'block',
 

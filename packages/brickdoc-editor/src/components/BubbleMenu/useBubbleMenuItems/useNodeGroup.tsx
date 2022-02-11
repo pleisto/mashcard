@@ -1,7 +1,8 @@
 import React from 'react'
 import { EditorContext } from '../../../context/EditorContext'
 import { ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
-import { BLOCK, BlockCommandItem, findFirstSelectedNodes, ORDER_TOGGLE_BLOCK } from '../../../helpers'
+import { findFirstSelectedNodes } from '../../../helpers/selection'
+import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../helpers/block'
 import { isBubbleMenuVisible, NodeIcon } from './useBubbleMenuItems'
 import { theme } from '@brickdoc/design-system'
 
