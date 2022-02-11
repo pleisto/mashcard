@@ -16,6 +16,8 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
+    const handleConfirm = () => editor.chain().focus().setLink({ href: inputLink }).run()
+
     const menuItems: ToolbarSubMenuOption['items'] = [
       {
         type: 'item',
@@ -27,6 +29,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
             onChange={e => {
               setInputLink(e.target.value)
             }}
+            onPressEnter={handleConfirm}
             placeholder={t('bubble_menu.link.placeholder')}
           />
         )
@@ -39,9 +42,7 @@ export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
         icon: <Icon.Link />,
         name: 'confirm',
         label: t('bubble_menu.link.confirm'),
-        onAction: () => {
-          editor.chain().focus().setLink({ href: inputLink }).run()
-        },
+        onAction: handleConfirm,
         closeOnAction: true
       })
     }
