@@ -34,7 +34,7 @@ const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
   const offsetX = useMemo(() => (size === 'sm' ? 10 : 12), [size])
   const spring = { type: 'spring', stiffness: 800, damping: 50, mass: 1 }
   const animate = { x: checked ? offsetX : 0 }
-  const SwitchWrapper = styled(children ? motion.label : motion.div, root)
+  const SwitchWrapper = styled(motion.label, root)
 
   return (
     <SwitchWrapper ref={ref} className={className} style={style}>

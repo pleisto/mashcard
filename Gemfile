@@ -20,6 +20,7 @@ gem 'fast_underscore', '>= 0.3.3', require: false
 gem 'actionview_precompiler'
 gem 'second_level_cache', '~> 2.7'
 gem 'packwerk', '~> 2.0'
+gem 'paranoia', '~> 2.5', '>= 2.5.2'
 
 gem 'cloak-rb', '>= 0.1.0'
 gem 'lockbox', '>= 0.6.8'

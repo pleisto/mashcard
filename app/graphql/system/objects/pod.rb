@@ -14,6 +14,7 @@ module System
       field :personal, Boolean, 'personal', null: false
       field :invite_enable, Boolean, 'enable invite feature', null: false
       field :invite_secret, String, 'invite secret', null: true
+      field :owned, Boolean, 'owner is current user', null: false
     end
   end
 end

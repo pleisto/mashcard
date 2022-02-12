@@ -9,7 +9,8 @@ module System
     def resolve
       pods = current_user.pods.with_attached_avatar.to_a
       pods.map do |pod|
-        pod.pod_attributes.merge(email: current_user.email)
+        is_owner = pod.owner_id == current_user.id
+        pod.pod_attributes.merge(email: current_user.email, owned: is_owner, invite_secret: is_owner ? pod.invite_secret : nil)
       end
     end
   end

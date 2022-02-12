@@ -15,7 +15,7 @@ module System
       webid = attrs.fetch(:webid)
       type = attrs.fetch(:type)
       # TODO: permission check
-      pod = current_user.pods.find { |p| p.webid == webid }
+      pod = current_user.own_pods.find { |p| p.webid == webid }
 
       extra = { avatar: attrs[:avatar_signed_id] }.merge(attrs.slice(:bio, :name, :invite_secret, :invite_enable)).compact
 

@@ -44,6 +44,7 @@ export const queryPods = gql`
       email
       personal
       inviteEnable
+      owned
       avatarData {
         url
         downloadUrl
@@ -81,6 +82,7 @@ export const queryCurrentPod = gql`
       webid
       name
       personal
+      owned
       inviteEnable
       inviteSecret
       avatarData {

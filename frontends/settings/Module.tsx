@@ -1,9 +1,11 @@
 import { FC, useMemo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Loading } from '@brickdoc/design-system'
-import { Setting, People, Me, Agreement } from '@brickdoc/design-icons'
+import { Setting, People, Me } from '@brickdoc/design-icons'
 import { SettingsLayout } from './common/layout'
 import { GeneralPage } from './general/GeneralPage'
+import { AccountPage } from './account/AccountPage'
+import { TeamPage } from './team/TeamPage'
 import { useGetCurrentPodQuery, GetCurrentPodQuery } from '@/BrickdocGraphQL'
 import { SettingsContext } from './SettingContext'
 
@@ -17,22 +19,16 @@ const getRoutes = (currentPod: GetCurrentPodQuery['pod'] | undefined) => {
       available: true
     },
     {
-      key: 'member',
+      key: 'team',
       icon: <People />,
-      page: <GeneralPage />,
+      page: <TeamPage />,
       available: !isPersonal
     },
     {
       key: 'account',
       icon: <Me />,
-      page: <GeneralPage />,
+      page: <AccountPage />,
       available: isPersonal
-    },
-    {
-      key: 'logs',
-      icon: <Agreement />,
-      page: <GeneralPage />,
-      available: true
     }
   ].filter(i => i.available)
 }
@@ -49,6 +45,8 @@ const SettingsModule: FC = () => {
   }, [pod])
 
   if (loading) return <Loading />
+  // only owner could use settings
+  if (!pod?.owned) return <div>403 Forbidden</div>
 
   return (
     <SettingsContext.Provider value={context}>

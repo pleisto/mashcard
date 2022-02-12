@@ -39,6 +39,7 @@
 #
 
 class Accounts::User < ApplicationRecord
+  acts_as_paranoid
   ## Devise
   devise :database_authenticatable, :registerable, :lockable, :async,
          :recoverable, :rememberable, :confirmable, :trackable, :omniauthable, :validatable
@@ -164,5 +165,38 @@ class Accounts::User < ApplicationRecord
 
   def staff?
     Stafftools::RoleAssignment.exists?(accounts_user_id: id)
+  end
+
+  def has_team_pods?
+    pods.select { |p| !p.personal }.count > 0
+  end
+
+  def hashed_id
+    BrickGraphQL::ReversibleIntHash.encode(id)
+  end
+
+  def destroy_user!
+    if has_team_pods?
+      errors.add(:base, 'You cannot delete a user with team pods')
+      return false
+    end
+
+    # split personal data to make compliance with GDPR
+    masking_data = {
+      current_sign_in_ip: '',
+      last_sign_in_ip: ''
+    }
+    masking_data['encrypted_password'] = '' if encrypted_password.present?
+    masking_data['unconfirmed_email'] = "#{unconfirmed_email.to_data_masking}.#{id}@#{hashed_id}.localhost" if unconfirmed_email.present?
+    masking_data['email'] = "#{email.to_data_masking}@#{hashed_id}.localhost" if email.present?
+
+    ActiveRecord::Base.transaction do
+      federated_identities.destroy_all
+      personal_pod.destroy_pod!
+      # all validatrs and callbacks are skipped
+      update_columns(masking_data)
+      destroy!
+      true
+    end
   end
 end

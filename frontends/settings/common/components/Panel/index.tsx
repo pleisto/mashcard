@@ -16,9 +16,9 @@ const PanelWrapper = styled('div', {
   }
 })
 
-export const Panel: FC<{ title: ReactNode }> = ({ children, title }) => {
+export const Panel: FC<{ title: ReactNode; css?: any }> = ({ children, title, css }) => {
   return (
-    <PanelWrapper>
+    <PanelWrapper css={css}>
       <h2>{title}</h2>
       <div className="body">{children}</div>
     </PanelWrapper>

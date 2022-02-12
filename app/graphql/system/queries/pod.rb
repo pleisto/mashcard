@@ -9,7 +9,12 @@ module System
     authenticate_user!
 
     def resolve(webid:)
-      current_user.pods.find_by(webid: webid)
+      pod = current_user.pods.find_by(webid: webid)
+      is_owner = pod.owner_id == current_user.id
+      pod.as_json.merge({
+        owned: is_owner,
+        invite_secret: is_owner ? pod.invite_secret : nil
+      })
     end
   end
 end

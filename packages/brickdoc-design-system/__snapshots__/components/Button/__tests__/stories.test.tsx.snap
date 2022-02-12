@@ -40,9 +40,55 @@ exports[`Button rendering Loading should match the snapshot 1`] = `
     tabindex="-1"
     type="button"
   >
-    <i
-      data-testid="mock-icon-Rotation"
-    />
+    <svg
+      class="brd-c-hsxsfB brd-c-hsxsfB-iixNcA-size-md brd-c-hsxsfB-jSsSsB-color-dark"
+      fill="none"
+      height="20"
+      style="opacity: 1;"
+      viewBox="0 0 20 20"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.05"
+        r="9"
+        stroke="black"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.1"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="0.2"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        opacity="1.0"
+        r="9"
+        stroke="black"
+        stroke-dasharray="1000"
+        stroke-linecap="round"
+        stroke-width="2"
+      />
+    </svg>
     <span>
       Loading...
     </span>

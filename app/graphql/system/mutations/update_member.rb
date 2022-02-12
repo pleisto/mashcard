@@ -12,7 +12,7 @@ module System
 
       current_webid = current_pod.fetch('webid')
       pod = Pod.find_by(webid: current_webid)
-      raise BrickGraphQL::Errors::ArgumentError, :invalid_pod if pod.nil?
+      raise BrickGraphQL::Errors::ArgumentError, :invalid_pod if pod.nil? || pod.owner != current_user
 
       user = Pod.find_by(webid: webid)&.owner
       raise BrickGraphQL::Errors::ArgumentError, :invalid_user if user.nil?

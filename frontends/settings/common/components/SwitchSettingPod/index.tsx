@@ -35,11 +35,13 @@ export const SwitchSettingPod: FC = () => {
         globalThis.location.href = `/${webid}/settings/general`
       }}
     >
-      {data?.pods.map(p => (
-        <Menu.Item active={p.webid === pod?.webid} itemKey={p.webid} key={p.webid}>
-          <PodCard pod={p} label={false} />
-        </Menu.Item>
-      ))}
+      {data?.pods
+        .filter(p => p.owned)
+        .map(p => (
+          <Menu.Item active={p.webid === pod?.webid} itemKey={p.webid} key={p.webid}>
+            <PodCard pod={p} label={false} />
+          </Menu.Item>
+        ))}
     </Menu>
   )
 

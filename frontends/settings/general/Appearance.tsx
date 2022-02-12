@@ -55,7 +55,6 @@ export const Appearance: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =>
 
   const availableTimezones = data!.metadata.availableTimezones.map(i => ({ label: i, value: i }))
   const availableLocales = data!.metadata.availableLocales.map(i => ({ label: i.label, value: i.value }))
-  console.log(availableLocales, locale)
 
   return (
     <Panel title={t('general.appearance')}>

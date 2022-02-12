@@ -70,6 +70,8 @@ export const CreateOrUpdatePod = gql`
       pod {
         webid
         name
+        inviteEnable
+        inviteSecret
       }
     }
   }

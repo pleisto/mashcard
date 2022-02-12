@@ -1,11 +1,12 @@
 import { FC, lazy, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { JoinSpacePage } from '@/docs/invite/JoinSpacePage'
+import { DocumentContentPage } from '@/docs/pages/DocumentContentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { rootPath } from '@/common/utils'
 
 const AccountsModule = lazy(async () => await import('@/accounts/Module'))
 const SettingsModule = lazy(async () => await import('@/settings/Module'))
-const DocsModule = lazy(async () => await import('@/docs/Module'))
 
 const RequireLogin: FC = ({ children }) => {
   const context = useContext(BrickdocContext)
@@ -27,12 +28,20 @@ export const RootRoutes: FC = () => {
               </RequireLogin>
             }
           />
-          <Route path=":docid/*" element={<DocsModule />} />
+          <Route
+            path="join/:secret"
+            element={
+              <RequireLogin>
+                <JoinSpacePage />
+              </RequireLogin>
+            }
+          />
+          <Route path=":docid/*" element={<DocumentContentPage />} />
           <Route
             path="*"
             element={
               <RequireLogin>
-                <DocsModule />
+                <DocumentContentPage />
               </RequireLogin>
             }
           />
