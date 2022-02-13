@@ -29,12 +29,14 @@
         z-index: 100;
       }
       table.spreadsheet-row-actions {
-        z-index: 150;
         opacity: 0;
         transition: opacity 0.3s var(--brd-transitions-easeInOut);
         position: absolute;
         border-collapse: collapse;
         left: 0px - @table-action-layer-width;
+        &.dragging {
+          z-index: 150;
+        }
         thead th {
           height: 33px;
         }

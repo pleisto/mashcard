@@ -164,7 +164,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
         <div className="spreadsheet-title">{title}</div>
       )}
       <SpreadsheetContainer context={spreadsheetContext}>
-        <SpreadsheetPanel>
+        <SpreadsheetPanel context={spreadsheetContext}>
           {rows.map((rowBlock, rowIdx) => {
             return (
               <SpreadsheetRowAction

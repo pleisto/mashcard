@@ -51,7 +51,7 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
   return (
     <SpreadsheetContainer context={spreadsheetContext} className="brickdoc-formula-spreadsheet">
       <div className="spreadsheet-title">{spreadsheet.name()}</div>
-      <SpreadsheetPanel>
+      <SpreadsheetPanel context={spreadsheetContext}>
         {rows.map(({ rowId }, rowIdx) => {
           const rowNumber = String((rowIdx as number) + 1)
           return <SpreadsheetRowAction key={rowIdx} context={spreadsheetContext} rowId={rowId} rowNumber={rowNumber} />

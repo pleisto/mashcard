@@ -82,9 +82,12 @@ export const SpreadsheetView: React.FC<{ children: React.ReactNode }> = ({ child
   return <table className="spreadsheet-rows">{children}</table>
 }
 
-export const SpreadsheetPanel: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SpreadsheetPanel: React.FC<{
+  children: React.ReactNode
+  context: SpreadsheetContext
+}> = ({ children, context }) => {
   return (
-    <table className="spreadsheet-row-actions">
+    <table className={`spreadsheet-row-actions ${context.dragging?.rowId ? 'dragging' : ''}`}>
       <thead>
         <tr data-row-id="first">
           <th />
