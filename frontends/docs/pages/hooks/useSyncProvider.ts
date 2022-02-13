@@ -10,7 +10,7 @@ import {
   useBlockSyncBatchMutation,
   GetSpreadsheetChildrenDocument
 } from '@/BrickdocGraphQL'
-import { isEqual } from 'lodash-es'
+import { isEqual } from '@brickdoc/active-support'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
 import {

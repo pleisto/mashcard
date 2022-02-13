@@ -1,7 +1,7 @@
 import { Node } from 'prosemirror-model'
 import { JSONContent } from '@tiptap/core'
 import { BlockInput, Block } from '@/BrickdocGraphQL'
-import { isNil } from 'lodash-es'
+import { isNil } from '@brickdoc/active-support'
 
 export const nodeChildren = (node: Node): Node[] => (node.content as any)?.content ?? []
 

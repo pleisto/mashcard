@@ -22,6 +22,8 @@ gem 'second_level_cache', '~> 2.7'
 gem 'packwerk', '~> 2.0'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
 
+gem 'grpc', '~> 1.43', '>= 1.43.1'
+
 gem 'cloak-rb', '>= 0.1.0'
 gem 'lockbox', '>= 0.6.8'
 gem 'lograge', '~> 0.11.2'
@@ -107,4 +109,4 @@ group :development do
 end
 
 # Plugin dependencies
-Dir.glob('plugins/*/Gemfile').each { |p| eval_gemfile(p) }
+Dir.glob('gems/plugins/*/Gemfile').each { |p| eval_gemfile(p) }

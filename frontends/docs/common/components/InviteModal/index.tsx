@@ -22,7 +22,7 @@ import {
   useBlockCreateShareLinkMutation
 } from '@/BrickdocGraphQL'
 import { queryBlockShareLinks } from '../../graphql'
-import { debounce } from 'lodash-es'
+import { debounce } from '@brickdoc/active-support'
 import styles from './index.module.less'
 import { useImperativeQuery } from '@/common/hooks'
 import { PodCard, PodType } from '@/common/components/PodCard'

@@ -7,5 +7,15 @@
   },
   "include": ["**/*", "**/*.json"],
   "exclude": ["dist/**/*", "*.json"],
-  "references": [{ "path": "../brickdoc-design-system" }, { "path": "../brickdoc-test-helper" }]
+  "references": [
+    {
+      "path": "../active-support"
+    },
+    {
+      "path": "../brickdoc-design-system"
+    },
+    {
+      "path": "../brickdoc-test-helper"
+    }
+  ]
 }

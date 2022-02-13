@@ -3,16 +3,14 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": [
-    "**/*",
-    "__mocks__"
-  ],
-  "exclude": [
-    "dist/**/*"
-  ],
+  "include": ["**/*", "__mocks__"],
+  "exclude": ["dist/**/*"],
   "references": [
     {
       "path": "../brickdoc-design-icons"
+    },
+    {
+      "path": "../active-support"
     }
   ]
 }

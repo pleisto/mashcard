@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash-es'
+import { isEmpty } from '@brickdoc/active-support'
 import { useImperativeQuery } from '@/common/hooks/index'
 import {
   QueryWebidAvailableFromWsDocument,

@@ -13,6 +13,9 @@
   "exclude": ["packages/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
     {
+      "path": "packages/active-support"
+    },
+    {
       "path": "packages/brickdoc-test-helper"
     },
     {

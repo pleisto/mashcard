@@ -20,6 +20,7 @@
     "**/style/*"
   ],
   "dependencies": {
+    "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons",
     "@hookform/resolvers": "^2.8.8",
     "@mui/base": "^5.0.0-alpha.68",
@@ -29,7 +30,6 @@
     "ahooks": "^3.1.9",
     "classnames": "^2.3.1",
     "framer-motion": "^6.2.5",
-    "lodash-es": "^4.17.21",
     "polished": "^4.1.4",
     "rc-dropdown": "^3.3.2",
     "rc-select": "^14.0.0-alpha.25",
@@ -58,7 +58,6 @@
     "@storybook/react": "^6.5.0-alpha.39",
     "@storybook/testing-react": "^1.2.3",
     "@storybook/theming": "^6.5.0-alpha.39",
-    "@types/lodash-es": "^4.17.5",
     "@types/react-color": "^3.0.6",
     "@types/react-transition-group": "^4.4.4",
     "babel-loader": "^8.2.3",

@@ -129,12 +129,12 @@ files: [
       # Source files filter
       # e.g. "/resources/en/*.json"
       #
-      'source': '/plugins/*/config/locales/en-US.yml',
+      'source': '/gems/plugins/*/config/locales/en-US.yml',
 
       #
       # Where translations will be placed
       # e.g. "/resources/%two_letters_code%/%original_file_name%"
       #
-      'translation': '/plugins/*/config/locales/%locale%.yml'
+      'translation': '/gems/plugins/*/config/locales/%locale%.yml'
     }
   ]

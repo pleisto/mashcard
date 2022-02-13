@@ -1,0 +1,26 @@
+{
+  "name": "@brickdoc/active-support",
+  "version": "0.1.0",
+  "description": "A TypeScript utility library designed to optimize for programmer happiness.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brickdoc/brickdoc-ce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brickdoc/brickdoc-ce/labels/active-support"
+  },
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "moize": "^6.1.0",
+    "ms": "^3.0.0-canary.1",
+    "neverthrow": "^4.3.1",
+    "performant-array-to-tree": "^1.9.1"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/lodash": "^4.14.178"
+  }
+}

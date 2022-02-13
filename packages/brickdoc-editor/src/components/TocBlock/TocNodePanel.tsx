@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { ArrowFilleRight } from '@brickdoc/design-icons'
-import { isEmpty } from 'lodash-es'
+import { isEmpty } from '@brickdoc/active-support'
 import { TocNode } from './tocTree'
 import { EditorContext } from '../../context/EditorContext'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'

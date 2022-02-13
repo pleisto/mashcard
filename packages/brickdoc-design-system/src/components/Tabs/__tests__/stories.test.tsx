@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
-import { range } from 'lodash-es'
+import { range } from '@brickdoc/active-support'
 import { a11yTest } from '../../../utilities/testing'
 import { FC } from 'react'
 import * as TabsStories from '../tabs.stories'

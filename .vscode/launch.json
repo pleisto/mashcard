@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "name": "Attach Node Server",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "restart": true,
+      "stopOnEntry": false,
+      "protocol": "inspector",
+      "autoAttachChildProcesses": true
+    }
+  ]
+}

@@ -9,6 +9,7 @@
     "dist"
   ],
   "dependencies": {
+    "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader",

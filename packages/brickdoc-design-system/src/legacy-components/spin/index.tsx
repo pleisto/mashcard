@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { cx as classNames } from '../../utilities'
 import omit from 'rc-util/lib/omit'
-import { debounce } from 'lodash-es'
+import { debounce } from '@brickdoc/active-support'
 
 import './style'
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider'

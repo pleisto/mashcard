@@ -96,7 +96,8 @@ module.exports = {
         '@typescript-eslint/prefer-ts-expect-error': 'warn',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off'
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/restrict-plus-operands': 'warn'
       }
     }
   ]

@@ -6,7 +6,9 @@ extends:
 parserOptions:
   project:
     - ./tsconfig.json
+    - ./tools/*/tsconfig.json
+    - ./apps/*/tsconfig.json
     - ./packages/*/tsconfig.json
-    - ./plugins/*/tsconfig.json
+    - ./gems/plugins/*/tsconfig.json
     - ./spec/dummy/plugins/*/tsconfig.json
     - ./cypress/tsconfig.json

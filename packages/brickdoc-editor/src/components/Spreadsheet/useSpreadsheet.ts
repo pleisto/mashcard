@@ -1,6 +1,6 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { isEqual } from 'lodash-es'
+import { isEqual } from '@brickdoc/active-support'
 import { devLog } from '@brickdoc/design-system'
 import {
   BrickdocEventBus,

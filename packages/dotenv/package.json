@@ -1,0 +1,16 @@
+{
+  "name": "@brickdoc/dotenv",
+  "version": "0.1.0",
+  "description": "Smart load environment variables from a .env file.",
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "dotenv-expand": "^8.0.1"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.2"
+  }
+}

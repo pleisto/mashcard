@@ -1,0 +1,301 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model accounts_federated_identities {
+  id               BigInt   @id @default(autoincrement())
+  accounts_user_id BigInt?
+  provider         String   @db.VarChar
+  uid              String   @db.VarChar
+  created_at       DateTime @db.Timestamp(6)
+  updated_at       DateTime @db.Timestamp(6)
+
+  @@unique([provider, uid], map: "index_accounts_federated_identities_on_provider_and_uid")
+  @@index([accounts_user_id], map: "index_accounts_federated_identities_on_accounts_user_id")
+}
+
+model accounts_members {
+  id         BigInt   @id @default(autoincrement())
+  pod_id     BigInt
+  user_id    BigInt
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+  role       Int
+  state      Int      @default(0)
+
+  @@index([pod_id], map: "index_accounts_members_on_pod_id")
+  @@index([user_id], map: "index_accounts_members_on_user_id")
+}
+
+model accounts_users {
+  id                          BigInt                        @id @default(autoincrement())
+  email                       String?                       @unique(map: "index_accounts_users_on_email") @db.VarChar
+  encrypted_password          String                        @default("") @db.VarChar
+  reset_password_token        String?                       @unique(map: "index_accounts_users_on_reset_password_token") @db.VarChar
+  reset_password_sent_at      DateTime?                     @db.Timestamp(6)
+  remember_created_at         DateTime?                     @db.Timestamp(6)
+  sign_in_count               Int                           @default(0)
+  current_sign_in_at          DateTime?                     @db.Timestamp(6)
+  last_sign_in_at             DateTime?                     @db.Timestamp(6)
+  current_sign_in_ip          String?                       @db.VarChar
+  last_sign_in_ip             String?                       @db.VarChar
+  confirmation_token          String?                       @unique(map: "index_accounts_users_on_confirmation_token") @db.VarChar
+  confirmed_at                DateTime?                     @db.Timestamp(6)
+  confirmation_sent_at        DateTime?                     @db.Timestamp(6)
+  unconfirmed_email           String?                       @db.VarChar
+  failed_attempts             Int                           @default(0)
+  unlock_token                String?                       @unique(map: "index_accounts_users_on_unlock_token") @db.VarChar
+  locked_at                   DateTime?                     @db.Timestamp(6)
+  locale                      String?                       @db.VarChar(17)
+  timezone                    String?                       @db.VarChar
+  deleted_at                  DateTime?                     @db.Timestamp(6)
+  created_at                  DateTime                      @db.Timestamp(6)
+  updated_at                  DateTime                      @db.Timestamp(6)
+  last_webid                  String?                       @db.VarChar
+  last_block_ids              Json                          @default("{}") @db.Json
+  stafftools_role_assignments stafftools_role_assignments[]
+
+  @@index([deleted_at], map: "index_accounts_users_on_deleted_at")
+}
+
+model active_storage_attachments {
+  id                   BigInt               @id @default(autoincrement())
+  name                 String               @db.VarChar
+  record_id            String               @db.VarChar
+  record_type          String               @db.VarChar
+  blob_id              BigInt
+  created_at           DateTime             @db.Timestamp(6)
+  active_storage_blobs active_storage_blobs @relation(fields: [blob_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_c3b3935057")
+
+  @@unique([record_type, record_id, name, blob_id], map: "index_active_storage_attachments_uniqueness")
+  @@index([blob_id], map: "index_active_storage_attachments_on_blob_id")
+}
+
+model active_storage_blobs {
+  id                             BigInt                           @id @default(autoincrement())
+  key                            String                           @unique(map: "index_active_storage_blobs_on_key") @db.VarChar
+  filename                       String                           @db.VarChar
+  content_type                   String?                          @db.VarChar
+  metadata                       String?
+  service_name                   String                           @db.VarChar
+  byte_size                      BigInt
+  checksum                       String?                          @db.VarChar
+  created_at                     DateTime                         @db.Timestamp(6)
+  pod_id                         BigInt?
+  user_id                        BigInt?
+  block_id                       String?                          @db.Uuid
+  operation_type                 String                           @default("THIRD") @db.VarChar
+  active_storage_attachments     active_storage_attachments[]
+  active_storage_variant_records active_storage_variant_records[]
+}
+
+model active_storage_variant_records {
+  id                   BigInt               @id @default(autoincrement())
+  blob_id              BigInt
+  variation_digest     String               @db.VarChar
+  active_storage_blobs active_storage_blobs @relation(fields: [blob_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_993965df05")
+
+  @@unique([blob_id, variation_digest], map: "index_active_storage_variant_records_uniqueness")
+}
+
+model ar_internal_metadata {
+  key        String   @id @db.VarChar
+  value      String?  @db.VarChar
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+}
+
+model brickdoc_configs {
+  id         BigInt   @id @default(autoincrement())
+  key        String   @db.VarChar
+  value      String?
+  scope      String   @db.VarChar
+  domain     String   @db.VarChar
+  domain_len Int?
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+
+  @@unique([key, scope, domain], map: "index_brickdoc_configs_on_key_and_scope_and_domain")
+}
+
+model docs_aliases {
+  id         BigInt   @id @default(autoincrement())
+  pod_id     BigInt
+  alias      String   @db.VarChar
+  block_id   String   @db.Uuid
+  payload    Json     @default("{}") @db.Json
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+  state      Int      @default(0)
+
+  @@unique([pod_id, alias], map: "index_docs_aliases_on_pod_id_and_alias")
+  @@index([block_id], map: "index_docs_aliases_on_block_id")
+}
+
+model docs_blocks {
+  id                     String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  pod_id                 BigInt
+  type                   String?   @db.VarChar(32)
+  parent_id              String?   @db.Uuid
+  meta                   Json      @default("{}")
+  data                   Json
+  history_version        BigInt    @default(0)
+  snapshot_version       BigInt    @default(0)
+  sort                   BigInt    @default(0)
+  collaborators          BigInt[]
+  deleted_at             DateTime? @db.Timestamp(6)
+  created_at             DateTime  @db.Timestamp(6)
+  updated_at             DateTime  @db.Timestamp(6)
+  root_id                String    @db.Uuid
+  content                Json?     @default("[]")
+  text                   String?   @default("")
+  page                   Boolean   @default(false)
+  deleted_permanently_at DateTime? @db.Timestamp(6)
+
+  @@index([collaborators], map: "index_docs_blocks_on_collaborators")
+  @@index([parent_id], map: "index_docs_blocks_on_parent_id")
+  @@index([pod_id], map: "index_docs_blocks_on_pod_id")
+}
+
+model docs_formulas {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  pod_id      BigInt
+  block_id    String   @db.Uuid
+  name        String   @db.VarChar
+  definition  String
+  cache_value Json     @db.Json
+  created_at  DateTime @db.Timestamp(6)
+  updated_at  DateTime @db.Timestamp(6)
+  level       Int      @default(0)
+  version     Int      @default(0)
+  type        Int      @default(0)
+
+  @@unique([block_id, name], map: "index_docs_formulas_on_block_id_and_name")
+  @@index([pod_id], map: "index_docs_formulas_on_pod_id")
+}
+
+model docs_histories {
+  id              BigInt    @id @default(autoincrement())
+  pod_id          BigInt?
+  meta            Json
+  data            Json
+  block_id        String    @db.Uuid
+  parent_id       String?   @db.Uuid
+  type            String?   @db.VarChar(32)
+  sort            BigInt
+  history_version BigInt
+  created_at      DateTime  @db.Timestamp(6)
+  updated_at      DateTime  @db.Timestamp(6)
+  content         Json?     @default("[]")
+  text            String?   @default("")
+  deleted_at      DateTime? @db.Timestamp(6)
+
+  @@unique([block_id, history_version], map: "index_docs_histories_on_block_id_and_history_version")
+  @@index([pod_id], map: "index_docs_histories_on_pod_id")
+}
+
+model docs_pins {
+  id         BigInt    @id @default(autoincrement())
+  user_id    BigInt
+  pod_id     BigInt
+  block_id   String    @db.Uuid
+  deleted_at DateTime? @db.Timestamp(6)
+  created_at DateTime  @db.Timestamp(6)
+  updated_at DateTime  @db.Timestamp(6)
+
+  @@unique([user_id, pod_id, block_id], map: "index_docs_pins_on_user_id_and_pod_id_and_block_id")
+}
+
+model docs_share_links {
+  id           BigInt   @id @default(autoincrement())
+  block_id     String   @db.Uuid
+  pod_id       BigInt
+  key          String   @unique(map: "index_docs_share_links_on_key") @db.VarChar
+  state        BigInt   @default(0)
+  created_at   DateTime @db.Timestamp(6)
+  updated_at   DateTime @db.Timestamp(6)
+  policy       Int
+  share_pod_id BigInt?
+
+  @@index([share_pod_id], map: "index_docs_share_links_on_share_pod_id")
+}
+
+model docs_snapshots {
+  id               BigInt   @id @default(autoincrement())
+  pod_id           BigInt?
+  block_id         String   @db.Uuid
+  snapshot_version BigInt
+  version_meta     Json?
+  name             String?  @db.VarChar
+  created_at       DateTime @db.Timestamp(6)
+  updated_at       DateTime @db.Timestamp(6)
+
+  @@unique([block_id, snapshot_version], map: "index_docs_snapshots_on_block_id_and_snapshot_version")
+  @@index([pod_id], map: "index_docs_snapshots_on_pod_id")
+}
+
+model flipper_features {
+  id         BigInt   @id @default(autoincrement())
+  key        String   @unique(map: "index_flipper_features_on_key") @db.VarChar
+  created_at DateTime @db.Timestamp(6)
+  updated_at DateTime @db.Timestamp(6)
+}
+
+model flipper_gates {
+  id          BigInt   @id @default(autoincrement())
+  feature_key String   @db.VarChar
+  key         String   @db.VarChar
+  value       String?  @db.VarChar
+  created_at  DateTime @db.Timestamp(6)
+  updated_at  DateTime @db.Timestamp(6)
+
+  @@unique([feature_key, key, value], map: "index_flipper_gates_on_feature_key_and_key_and_value")
+}
+
+model pods {
+  id            BigInt    @id @default(autoincrement())
+  owner_id      BigInt
+  webid         String    @db.VarChar
+  name          String    @db.VarChar
+  bio           String?   @db.VarChar(140)
+  personal      Boolean   @default(false)
+  deleted_at    DateTime? @db.Timestamp(6)
+  created_at    DateTime  @db.Timestamp(6)
+  updated_at    DateTime  @db.Timestamp(6)
+  invite_enable Boolean   @default(false)
+  invite_secret String?   @unique(map: "index_pods_on_invite_secret") @db.VarChar
+
+  @@index([deleted_at], map: "index_pods_on_deleted_at")
+  @@index([owner_id], map: "index_pods_on_owner_id")
+}
+
+model schema_migrations {
+  version String @id @db.VarChar
+}
+
+model stafftools_role_assignments {
+  id                 BigInt           @id @default(autoincrement())
+  accounts_user_id   BigInt
+  stafftools_role_id BigInt
+  created_at         DateTime         @db.Timestamp(6)
+  updated_at         DateTime         @db.Timestamp(6)
+  accounts_users     accounts_users   @relation(fields: [accounts_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_0e5ee8f5b7")
+  stafftools_roles   stafftools_roles @relation(fields: [stafftools_role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_rails_1835425809")
+
+  @@index([accounts_user_id], map: "index_stafftools_role_assignments_on_accounts_user_id")
+  @@index([stafftools_role_id], map: "index_stafftools_role_assignments_on_stafftools_role_id")
+}
+
+model stafftools_roles {
+  id                          BigInt                        @id @default(autoincrement())
+  name                        String                        @unique(map: "index_stafftools_roles_on_name") @db.VarChar
+  permissions                 String[]                      @db.VarChar
+  created_at                  DateTime                      @db.Timestamp(6)
+  updated_at                  DateTime                      @db.Timestamp(6)
+  stafftools_role_assignments stafftools_role_assignments[]
+}

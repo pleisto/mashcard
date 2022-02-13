@@ -3,7 +3,7 @@ import { Navigate } from 'react-router'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { Form, Button, Input, toast, useBoolean } from '@brickdoc/design-system'
-import { omit } from 'lodash-es'
+import { omit } from '@brickdoc/active-support'
 import {
   useUserPasswordResetMutation,
   UserPasswordResetInput,

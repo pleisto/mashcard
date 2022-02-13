@@ -1,5 +1,5 @@
 import React from 'react'
-import { debounce } from 'lodash-es'
+import { debounce } from '@brickdoc/active-support'
 import { Button } from '@brickdoc/design-system'
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions, UploadResultData } from './plugin'

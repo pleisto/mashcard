@@ -21,7 +21,7 @@ import {
   useMemoizedFn,
   theme
 } from '@brickdoc/design-system'
-import { array2Tree } from '@/common/utils'
+import { array2Tree } from '@brickdoc/active-support'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'

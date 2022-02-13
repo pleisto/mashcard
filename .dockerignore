@@ -29,7 +29,7 @@ storybook-static/
 /junit-reports/
 /packages/*/spec/
 /gems/*/spec/
-/plugins/*/spec/
+/gems/plugins/*/spec/
 Dockerfile
 .env.*
 .rspec

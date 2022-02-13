@@ -1,0 +1,23 @@
+{
+  "name": "@brickdoc/devkit",
+  "private": true,
+  "schematics": "./src/collection.json",
+  "sideEffects": false,
+  "module": "./src/index.ts",
+  "dependencies": {
+    "@angular-devkit/core": "^13.2.3",
+    "@angular-devkit/schematics": "^13.2.3",
+    "@angular-devkit/schematics-cli": "^13.2.3",
+    "@brickdoc/dotenv": "workspace:^",
+    "chalk": "4.1.2",
+    "enquirer": "^2.3.6",
+    "pg": "^8.7.3",
+    "v8-compile-cache": "^2.3.0",
+    "yargs": "^17.3.1",
+    "yargs-parser": "^21.0.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.6.4",
+    "cpx": "^1.5.0"
+  }
+}

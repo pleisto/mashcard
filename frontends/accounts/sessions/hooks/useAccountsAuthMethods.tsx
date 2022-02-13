@@ -1,7 +1,7 @@
 import { AuthMethod, useGetAccountsConfigFromWsQuery } from '@/BrickdocGraphQL'
 import { ImageIcon } from '@brickdoc/design-icons'
 import Email from '../assets/email-auth-icon.svg'
-import { sortBy } from 'lodash-es'
+import { sortBy } from '@brickdoc/active-support'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useContext } from 'react'
 
@@ -32,7 +32,9 @@ function redirectToOAuthProvider(provider: string, csrfToken: string): void {
  *
  * @param emailPwdBtnOnClick - If emailPasssword is not preferred, the function triggered when it is clicked
  */
-export const useAccountsAuthMethods = (emailPwdBtnOnClick: () => void): { authMethods: authMethod[]; loading: boolean } => {
+export const useAccountsAuthMethods = (
+  emailPwdBtnOnClick: () => void
+): { authMethods: authMethod[]; loading: boolean } => {
   const { csrfToken } = useContext(BrickdocContext)
   const { loading, data } = useGetAccountsConfigFromWsQuery()
   if (loading) {

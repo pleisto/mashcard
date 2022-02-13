@@ -15,7 +15,7 @@ BrickDoc is an open-source human intellect application and collaboration platfor
 Prerequisites:
 
 - Ruby 3.0+ (we've setup `.ruby-version` to use with `rbenv`)
-- NodeJS 14+
+- NodeJS 16+
 - Yarn
 - Docker / Docker Compose
 - Rust (as the build tooling for some dependent gems)
@@ -59,9 +59,22 @@ yarn $(package-dir-name) build
 yarn $(package-dir-name) test
 ```
 
+### New NodeJS Server
+
+```bash
+# API Server
+yarn api start
+yarn api prisma {generate | migrate | pull | push}
+
+# Devtools
+yarn dev console # rails-like console
+yarn dev db:{create | drop}
+yarn dev g {dotenv} # angular schematics tools
+```
+
 ## Documentation
 
-Detailed documentation is available at https://brickdoc.com/about/community-edition
+Detailed documentation is available at <https://brickdoc.com/about/community-edition>
 
 - If you want to set up a Brickdoc for production use, see our [Install Guide](https://brickdoc.com/about/install)
 - If you're looking for business support or hosting service, see [Brickdoc Enterprise Edition](https://brickdoc.com/pricing)

@@ -193,11 +193,6 @@ jobs:
         env:
           RAILS_ENV: test
         run: bundle exec rspec --format RspecJunitFormatter --out junit-reports/rspec.xml
-      - name: Run RSpec plugin tests
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
-        env:
-          RAILS_ENV: test
-        run: bundle exec rspec plugins --format RspecJunitFormatter --out junit-reports/rspec_plugin.xml
       - name: Run RSpec setting tests
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         env:
@@ -209,12 +204,6 @@ jobs:
         with:
           report_paths: junit-reports/rspec.xml
           check_name: Rails RSpec Test Report
-      - name: Publish RSpec plugin test reports
-        if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
-        uses: mikepenz/action-junit-report@v2
-        with:
-          report_paths: junit-reports/rspec_plugin.xml
-          check_name: Rails RSpec Test Plugin Report
       - name: Publish RSpec setting test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
         uses: mikepenz/action-junit-report@v2

@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import { debounce } from 'lodash-es'
+import { debounce } from '@brickdoc/active-support'
 import { Icon, Input, Popover, styled, theme } from '@brickdoc/design-system'
 import { UnsplashImage } from '@brickdoc/uploader'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'

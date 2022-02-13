@@ -1,6 +1,5 @@
 import { toast } from '@brickdoc/design-system'
-import { isEmpty } from 'lodash-es'
-import { arrayToTree, Config, Item } from 'performant-array-to-tree'
+import { isEmpty } from '@brickdoc/active-support'
 
 export function triggerErrorMessages(errors: string[]): void {
   errors.map(error => toast.error(error))
@@ -23,30 +22,6 @@ export function mutationResultHandler(
   onError = triggerErrorMessages
 ): void {
   result && isEmpty(result.errors) ? onSuccess() : onError(result?.errors ?? [])
-}
-
-/**
- * Converts an array of items with ids and parent ids to a nested tree in a performant way (time complexity `O(n)`).
- *
- * @param items array of items
- * @param config please see `performant-array-to-tree`
- */
-export function array2Tree<TItem extends Item>(
-  items: TItem[],
-  config: Partial<Config> = {}
-): Array<TItem & { children: TItem[] }> {
-  return arrayToTree(items, {
-    ...config,
-    dataField: null,
-    nestedIds: false
-  }) as Array<TItem & { children: TItem[] }>
-}
-
-/**
- * Converts milliseconds to seconds
- */
-export function millisecondsToSeconds(milliseconds: number): number {
-  return Math.round(milliseconds / 1000)
 }
 
 export * from './paths'

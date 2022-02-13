@@ -97,7 +97,7 @@ jobs:
           name: brickdoc-preview-pr${{ github.event.pull_request.number }}
           image: ${{ env.image }}
           host: ${{ env.domain }}
-          chart: ${{ github.workspace }}/templates/helm-charts/brickdoc
+          chart: ${{ github.workspace }}/tools/helm-charts/brickdoc
           extraArgs: '--set previewEnv=true --timeout 10m --cleanup-on-fail'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}

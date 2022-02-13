@@ -83,7 +83,7 @@ jobs:
           namespace: saas
           image: ${{ env.image }}:${{ steps.get_version.outputs.VERSION }}
           host: ${{ env.domain }}
-          chart: ${{ github.workspace }}/templates/helm-charts/brickdoc
+          chart: ${{ github.workspace }}/tools/helm-charts/brickdoc
           extraArgs: '--timeout 15m --cleanup-on-fail'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_PROD_AK }}

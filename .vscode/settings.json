@@ -75,9 +75,6 @@
     "editor.tabSize": 2,
     "editor.formatOnType": true
   },
-  "[ruby]": {
-    "editor.defaultFormatter": "rebornix.ruby"
-  },
   "cSpell.words": [
     "affordance",
     "ahooks",
@@ -142,18 +139,5 @@
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "eslint.lintTask.enable": true,
   "eslint.packageManager": "yarn",
-  "eslint.useESLintClass": true,
-  "ruby.intellisense": "rubyLocate",
-  "ruby.useLanguageServer": true,
-  "ruby.useBundler": true,
-  "ruby.lint": {
-    "rubocop": {
-      "useBundler": true // enable rubocop via bundler
-    }
-  },
-  "ruby.format": "rubocop", // use rubocop for formatting
-  "solargraph.useBundler": true,
-  "solargraph.references": true,
-  "solargraph.autoformat": true,
-  "solargraph.formatting": true
+  "eslint.useESLintClass": true
 }

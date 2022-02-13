@@ -6,6 +6,9 @@
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
   "references": [
+    {
+      "path": "../active-support"
+    },
     { "path": "../brickdoc-design-system" },
     { "path": "../brickdoc-formula" },
     {

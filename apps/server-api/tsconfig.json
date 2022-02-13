@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.shared.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["**/*"],
+  "exclude": ["dist/**/*"],
+  "references": [
+    {
+      "path": "../../packages/active-support"
+    },
+    {
+      "path": "../../packages/dotenv"
+    }
+  ]
+}

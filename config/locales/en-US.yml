@@ -475,7 +475,7 @@ en-US:
       webid: 'Username'
       webid_description: 'Only alphabet and numbers are allowed'
       agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
-      resend_after: 'Resendable after %{seconds} seconds'
+      resend_after: 'Resendable after %{ms}'
     common:
       confirm_not_match: '%{field} and confirm %{field} do not match'
     errors:

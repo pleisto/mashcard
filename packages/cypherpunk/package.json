@@ -1,0 +1,23 @@
+{
+  "name": "@brickdoc/cypherpunk",
+  "version": "0.1.0",
+  "description": "An omakase-style high-level wrapper for modern crypto libraries for NodeJS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brickdoc/brickdoc-ce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brickdoc/brickdoc-ce/labels/cypherpunk"
+  },
+  "license": "Apache-2.0",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "dependencies": {
+    "blake3": "2.1.7",
+    "sodium-native": "3.3.0"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/sodium-native": "2.3.5"
+  }
+}
