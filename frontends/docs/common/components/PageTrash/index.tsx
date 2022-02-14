@@ -1,4 +1,4 @@
-import { Block, useGetTrashBlocksQuery } from '@/BrickdocGraphQL'
+import { Block, GetTrashBlocksQueryVariables, useGetTrashBlocksQuery } from '@/BrickdocGraphQL'
 import { DeprecatedList, DeprecatedSkeleton } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
@@ -9,20 +9,29 @@ interface PageTrashProps {
   webid: string
   docid: string | null
   search: string | undefined
+  visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setVisible }) => {
+export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, visible, setVisible }) => {
   const { t } = useDocsI18n()
 
-  const input: any = { webid }
-  if (docid) {
-    input.blockId = docid
-  }
-  if (search) {
-    input.search = search
-  }
-  const { data, loading } = useGetTrashBlocksQuery({ variables: input })
+  const input: GetTrashBlocksQueryVariables = React.useMemo(
+    () => ({
+      webid,
+      blockId: docid ?? undefined,
+      search
+    }),
+    [docid, search, webid]
+  )
+
+  const { data, loading, refetch } = useGetTrashBlocksQuery({ variables: input })
+
+  React.useEffect(() => {
+    if (visible) {
+      void refetch()
+    }
+  }, [refetch, visible])
 
   if (loading) {
     return <DeprecatedSkeleton active />
@@ -42,7 +51,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, setV
       dataSource={data.trashBlocks as Block[]}
       renderItem={(item: Block) => {
         return (
-          <DeprecatedList.Item className={styles.item}>
+          <DeprecatedList.Item key={item.id} className={styles.item}>
             <BlockListItem webid={webid} block={item} setVisible={setVisible} />
           </DeprecatedList.Item>
         )

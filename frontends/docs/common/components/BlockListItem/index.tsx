@@ -10,6 +10,7 @@ import { useDocsI18n } from '../../hooks'
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import styles from './BlockListItem.module.less'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import { useApolloClient } from '@apollo/client'
 
 interface BlockListItemProps {
   block: Block
@@ -19,6 +20,7 @@ interface BlockListItemProps {
 
 export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setVisible }) => {
   const { t } = useDocsI18n()
+  const client = useApolloClient()
 
   // TODO support image type
   const avatar = block.meta.icon?.type === Blocktype.Emoji ? (block.meta.icon as BlockEmoji).emoji : <FilePages />
@@ -40,6 +42,14 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
     setRestoreButtonLoading(true)
     const input: BlockRestoreInput = { id: block.id }
     await blockRestore({ variables: { input } })
+    client.cache.modify({
+      id: client.cache.identify({ __typename: 'BlockInfo', id: block.id }),
+      fields: {
+        isDeleted() {
+          return false
+        }
+      }
+    })
     setRestoreButtonLoading(false)
   }
 
