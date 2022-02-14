@@ -17,7 +17,7 @@ import {
   StringResult
 } from '../types'
 import { ColumnClass, Row, SpreadsheetType } from '../controls'
-import { extractSubType, runtimeCheckType } from './util'
+import { extractSubType, parseString, runtimeCheckType } from './util'
 import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
 import {
@@ -525,11 +525,28 @@ export class FormulaInterpreter extends BaseCstVisitor {
       }
 
       if (cst.name === 'keyExpression') {
-        const { result: key } = this.visit(cst, args)
+        const { result: key } = this.visit(cst, { ...args, type: 'any' })
 
         if (result.type === 'Error' && ['errorKind', 'result'].includes(key)) {
           result = { type: 'string', result: result[key as 'errorKind' | 'result'] }
 
+          return true
+        }
+
+        if (result.type === 'Block') {
+          const name = key
+          const variable = this.ctx.formulaContext.findVariableByName(result.result.id, name)
+          if (!variable) {
+            result = { type: 'Error', result: `Variable "${name}" not found`, errorKind: 'runtime' }
+            return true
+          }
+
+          if (['constant', 'unknown'].includes(variable.t.kind)) {
+            result = variable.t.variableValue.result
+            return true
+          }
+
+          result = this.visit(variable.t.cst!, args)
           return true
         }
 
@@ -553,6 +570,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
         return true
       }
 
+      // TODO remove this
       if (cst.tokenType.name === 'UUID') {
         if (result.type === 'Error') {
           return true
@@ -571,8 +589,9 @@ export class FormulaInterpreter extends BaseCstVisitor {
             return true
           }
 
-          if (variable.t.kind === 'constant') {
+          if (['constant', 'unknown'].includes(variable.t.kind)) {
             result = variable.t.variableValue.result
+            return true
           }
 
           result = this.visit(variable.t.cst!, args)
@@ -781,9 +800,8 @@ export class FormulaInterpreter extends BaseCstVisitor {
     if (typeError) {
       return typeError
     }
-    // TODO: dirty hack to get the string literal value
     const str = ctx.StringLiteral[0].image
-    return { result: str.substring(1, str.length - 1).replace(/""/g, '"'), type: 'string' }
+    return { result: parseString(str), type: 'string' }
   }
 
   FunctionNameExpression(ctx: { FunctionName: Array<{ image: any }> }, args: ExpressionArgument): AnyTypeResult {
@@ -828,9 +846,9 @@ export class FormulaInterpreter extends BaseCstVisitor {
     args: ExpressionArgument
   ): SpreadsheetResult | BlockResult | NullResult | ErrorResult {
     const namespaceId = ctx.UUID[0].image
-    const namespaceType = this.ctx.formulaContext.blocks[namespaceId]
+    const formulaName = this.ctx.formulaContext.findFormulaName(namespaceId)
 
-    if (namespaceType === 'Spreadsheet') {
+    if (formulaName?.kind === 'Spreadsheet') {
       const parentType: FormulaType = 'Spreadsheet'
       const typeError = runtimeCheckType(args.type, parentType, 'blockExpression', this.ctx)
       if (typeError) {
@@ -844,7 +862,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
       return { type: 'Spreadsheet', result: spreadsheet }
     }
 
-    if (namespaceType === 'Block') {
+    if (formulaName?.kind === 'Block') {
       const parentType: FormulaType = 'Block'
       const typeError = runtimeCheckType(args.type, parentType, 'blockExpression', this.ctx)
       if (typeError) {

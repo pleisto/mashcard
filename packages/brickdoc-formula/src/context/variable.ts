@@ -1,4 +1,11 @@
-import { BrickdocEventBus, FormulaUpdated } from '@brickdoc/schema'
+import {
+  BlockSpreadsheetLoaded,
+  BrickdocEventBus,
+  EventSubscribed,
+  FormulaInnerRefresh,
+  FormulaUpdatedViaId,
+  FormulaUpdatedViaName
+} from '@brickdoc/schema'
 import { CstNode } from 'chevrotain'
 import {
   ContextInterface,
@@ -12,10 +19,13 @@ import {
   Formula,
   BaseFormula,
   FormulaSourceType,
-  VariableResult
+  VariableResult,
+  ErrorMessage
 } from '../types'
 import { parse, interpret } from '../grammar/core'
 import { dumpValue, loadValue } from './persist'
+import { block2name, variable2name, variableKey } from '../grammar/convert'
+import { BlockClass } from '../controls/block'
 
 export const displayValue = (v: AnyTypeResult): string => {
   switch (v.type) {
@@ -79,10 +89,10 @@ export const castVariable = (
     errorMessages,
     blockDependencies,
     variableDependencies,
+    variableNameDependencies,
     flattenVariableDependencies,
     codeFragments,
-    functionDependencies,
-    level
+    functionDependencies
   } = parse({ ctx })
 
   const variableValue: VariableValue = success
@@ -109,11 +119,11 @@ export const castVariable = (
     version,
     definition,
     codeFragments,
-    level,
     kind: kind ?? 'constant',
     type,
     blockDependencies,
     variableDependencies,
+    variableNameDependencies,
     flattenVariableDependencies,
     functionDependencies,
     dirty: true
@@ -123,14 +133,80 @@ export const castVariable = (
 export class VariableClass implements VariableInterface {
   t: VariableData
   formulaContext: ContextInterface
+  eventListeners: EventSubscribed[] = []
+  reparsing: boolean = false
 
   constructor({ t, formulaContext }: { t: VariableData; formulaContext: ContextInterface }) {
     this.t = t
     this.formulaContext = formulaContext
   }
 
+  public afterUpdate(): void {
+    // console.log('after update', this.t.name, this.t.variableId, this.t.namespaceId)
+    BrickdocEventBus.dispatch(FormulaUpdatedViaId(this))
+    BrickdocEventBus.dispatch(FormulaUpdatedViaName(this))
+  }
+
   public clone(): VariableInterface {
     return new VariableClass({ t: this.t, formulaContext: this.formulaContext })
+  }
+
+  public clearDependency(): void {
+    this.unsubscripeEvents()
+
+    this.t.variableDependencies.forEach(dependency => {
+      const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
+      const variableDependencies = this.formulaContext.reverseVariableDependencies[dependencyKey]
+        ? this.formulaContext.reverseVariableDependencies[dependencyKey].filter(
+            x => !(x.namespaceId === this.t.namespaceId && x.variableId === this.t.variableId)
+          )
+        : []
+      this.formulaContext.reverseVariableDependencies[dependencyKey] = [...variableDependencies]
+    })
+
+    this.t.functionDependencies.forEach(dependency => {
+      const dependencyKey = dependency.key
+      const functionDependencies = this.formulaContext.reverseFunctionDependencies[dependencyKey]
+        ? this.formulaContext.reverseFunctionDependencies[dependencyKey].filter(
+            x => !(x.namespaceId === this.t.namespaceId && x.variableId === this.t.variableId)
+          )
+        : []
+      this.formulaContext.reverseFunctionDependencies[dependencyKey] = [...functionDependencies]
+    })
+  }
+
+  public trackDependency(): void {
+    this.subscripeEvents()
+
+    this.formulaContext.formulaNames = this.formulaContext.formulaNames
+      .filter(n => !(n.kind === 'Variable' && n.key === this.t.variableId))
+      .concat(variable2name(this))
+
+    if (
+      !this.formulaContext.formulaNames.find(n => n.kind === 'Block' && n.key === this.t.namespaceId) &&
+      this.t.type === 'normal'
+    ) {
+      const block = new BlockClass(this.formulaContext, { id: this.t.namespaceId })
+      this.formulaContext.formulaNames.push({ ...block2name(block), name: 'Untitled' })
+    }
+
+    this.t.variableDependencies.forEach(dependency => {
+      const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
+      this.formulaContext.reverseVariableDependencies[dependencyKey] ||= []
+      this.formulaContext.reverseVariableDependencies[dependencyKey] = [
+        ...this.formulaContext.reverseVariableDependencies[dependencyKey],
+        { namespaceId: this.t.namespaceId, variableId: this.t.variableId }
+      ]
+    })
+
+    this.t.functionDependencies.forEach(dependency => {
+      const dependencyKey = dependency.key
+      this.formulaContext.reverseFunctionDependencies[dependencyKey] ||= []
+      this.formulaContext.reverseFunctionDependencies[dependencyKey] = [
+        ...this.formulaContext.reverseFunctionDependencies[dependencyKey],
+        { namespaceId: this.t.namespaceId, variableId: this.t.variableId }
+      ]
+    })
   }
 
   namespaceName(): string {
@@ -181,7 +257,6 @@ export class VariableClass implements VariableInterface {
       id: this.t.variableId,
       name: this.t.name,
       version: this.t.version,
-      level: this.t.level,
       type: this.t.type,
       // updatedAt: new Date().toISOString(),
       // createdAt: new Date().getTime(),
@@ -209,20 +284,23 @@ export class VariableClass implements VariableInterface {
     this.t.dirty = false
   }
 
-  public afterUpdate(): void {
-    // devLog('after update', this.t.name, this.t.variableId)
-    BrickdocEventBus.dispatch(FormulaUpdated(this))
-  }
-
-  public async updateAndPersist(): Promise<void> {
+  private async updateAndPersist(): Promise<void> {
     await this.invokeBackendUpdate()
     this.afterUpdate()
   }
 
-  public reparse(): void {
+  private async maybeReparse(): Promise<void> {
+    // console.log('reparse', this.t.variableId, this.t.name)
+    if (this.reparsing) {
+      return
+    }
+    this.reparsing = true
     const formula = this.buildFormula()
+    this.clearDependency()
     this.t = castVariable(this.formulaContext, formula)
-    this.afterUpdate()
+    this.trackDependency()
+    await this.refresh({ ctx: {}, arguments: [] })
+    this.reparsing = false
   }
 
   public updateCst(cst: CstNode, interpretContext: InterpretContext): void {
@@ -232,20 +310,27 @@ export class VariableClass implements VariableInterface {
 
   public async updateDefinition(definition: Definition): Promise<void> {
     this.t.definition = definition
-    const formula = this.buildFormula()
-    this.t = castVariable(this.formulaContext, formula)
-    await this.refresh({ ctx: {}, arguments: [] })
+    await this.maybeReparse()
   }
 
-  public async refresh(interpretContext: InterpretContext): Promise<void> {
+  private async refresh(interpretContext: InterpretContext): Promise<void> {
     await this.interpret(interpretContext)
     await this.invokeBackendUpdate()
-    this.formulaContext.handleBroadcast(this)
+    this.afterUpdate()
+  }
+
+  private errorMessages(): ErrorMessage[] {
+    const { result, success } = this.t.variableValue
+    if (result.type === 'Error' && !success) {
+      return [{ message: result.result, type: result.errorKind }]
+    } else {
+      return []
+    }
   }
 
   public async interpret(interpretContext: InterpretContext): Promise<void> {
     const { variableValue } = await interpret({
-      parseResult: { cst: this.t.cst!, kind: this.t.kind },
+      parseResult: { cst: this.t.cst!, kind: this.t.kind, errorMessages: this.errorMessages() },
       ctx: {
         formulaContext: this.formulaContext,
         meta: this.meta(),
@@ -254,7 +339,63 @@ export class VariableClass implements VariableInterface {
     })
 
     this.t = { ...this.t, variableValue }
+  }
 
-    this.afterUpdate()
+  private subscripeEvents(): void {
+    const t = this.t
+    const innerRefreshSubscription = BrickdocEventBus.subscribe(
+      FormulaInnerRefresh,
+      e => {
+        void this.updateAndPersist()
+      },
+      { eventId: `${t.namespaceId},${t.variableId}`, subscribeId: `InnerRefresh#${t.variableId}` }
+    )
+    this.eventListeners.push(innerRefreshSubscription)
+
+    t.blockDependencies.forEach(blockId => {
+      const result = BrickdocEventBus.subscribe(
+        BlockSpreadsheetLoaded,
+        e => {
+          void this.maybeReparse()
+        },
+        { eventId: blockId, subscribeId: `SpreadsheetDependency#${t.variableId}` }
+      )
+      this.eventListeners.push(result)
+    })
+
+    t.variableDependencies.forEach(({ variableId, namespaceId }) => {
+      const result = BrickdocEventBus.subscribe(
+        FormulaUpdatedViaId,
+        e => {
+          void this.maybeReparse()
+        },
+        {
+          eventId: `${namespaceId},${variableId}`,
+          subscribeId: `Dependency#${t.namespaceId},${t.variableId}`
+        }
+      )
+      this.eventListeners.push(result)
+    })
+
+    t.variableNameDependencies.forEach(({ name, namespaceId }) => {
+      const result = BrickdocEventBus.subscribe(
+        FormulaUpdatedViaName,
+        e => {
+          void this.maybeReparse()
+        },
+        {
+          eventId: `${namespaceId}#${name}`,
+          subscribeId: `Dependency#${t.namespaceId},${t.variableId}`
+        }
+      )
+      this.eventListeners.push(result)
+    })
+  }
+
+  private unsubscripeEvents(): void {
+    this.eventListeners.forEach(listener => {
+      listener.unsubscribe()
+    })
+    this.eventListeners = []
   }
 }

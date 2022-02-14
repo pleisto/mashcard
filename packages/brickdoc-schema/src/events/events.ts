@@ -47,8 +47,12 @@ export const FormulaInnerRefresh = event<{ namespaceId: string; variableId: stri
   }
 )
 
-export const FormulaUpdated = event<any>()('FormulaUpdated', v => {
+export const FormulaUpdatedViaId = event<any>()('FormulaUpdatedViaId', v => {
   return { id: `${v.t.namespaceId},${v.t.variableId}` }
+})
+
+export const FormulaUpdatedViaName = event<any>()('FormulaUpdatedViaName', v => {
+  return { id: `${v.t.namespaceId}#${v.t.name}` }
 })
 
 export const SlashMenuHide = event<void>()('SlashMenuHide')
@@ -78,6 +82,23 @@ export const FormulaEditorUpdateEventTrigger = event<{
   formulaId: string
 }>()('FormulaEditorUpdateEventTrigger', ({ content, position, formulaId, rootId }) => {
   return { content, position, id: `${rootId},${formulaId}` }
+})
+
+export const FormulaEditorReplaceRootTrigger = event<{
+  content: any
+  position: number
+  rootId: string
+  formulaId: string
+}>()('FormulaEditorReplaceRootTrigger', ({ content, position, formulaId, rootId }) => {
+  return { content, position, id: `${rootId},${formulaId}` }
+})
+
+export const FormulaEditorUpdateNameTrigger = event<{
+  name: string
+  rootId: string
+  formulaId: string
+}>()('FormulaEditorUpdateNameTrigger', ({ name, formulaId, rootId }) => {
+  return { name, id: `${rootId},${formulaId}` }
 })
 
 export interface ExplorerMenuItem {

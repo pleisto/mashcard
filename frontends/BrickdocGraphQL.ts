@@ -659,8 +659,6 @@ export type Formula = {
   definition: Scalars['String']
   /** object unique id */
   id: Scalars['UUID']
-  /** level */
-  level: Scalars['Int']
   /** formula name */
   name: Scalars['String']
   /** type */
@@ -683,8 +681,6 @@ export type FormulaCreateInput = {
   definition: Scalars['String']
   /** id */
   id: Scalars['UUID']
-  /** level */
-  level?: InputMaybe<Scalars['Int']>
   /** name */
   name: Scalars['String']
   /** type */
@@ -733,8 +729,6 @@ export type FormulaUpdateInput = {
   definition?: InputMaybe<Scalars['String']>
   /** id */
   id: Scalars['UUID']
-  /** level */
-  level?: InputMaybe<Scalars['Int']>
   /** name */
   name?: InputMaybe<Scalars['String']>
   /** type */
@@ -2281,7 +2275,6 @@ export type GetFormulasQuery = {
     definition: string
     updatedAt: any
     createdAt: number
-    level: number
     version: number
     type: string
   }> | null
@@ -4580,7 +4573,6 @@ export const GetFormulasDocument = gql`
       definition
       updatedAt
       createdAt
-      level
       version
       type
     }

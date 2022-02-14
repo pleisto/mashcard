@@ -37,17 +37,19 @@ import {
   spreadsheet2completion,
   variable2completion,
   variableKey,
-  blockKey,
   column2completion,
-  block2completion
-} from './util'
+  block2completion,
+  block2name,
+  spreadsheet2name
+} from '../grammar/convert'
 import { FORMULA_PARSER_VERSION } from '../version'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import { FormulaParser } from '../grammar/parser'
 import { FormulaLexer } from '../grammar/lexer'
-import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
+import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus } from '@brickdoc/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
+import { BlockClass } from '../controls/block'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>
@@ -97,7 +99,6 @@ const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
 
 export class FormulaContext implements ContextInterface {
   features: Features
-  blocks: Record<NamespaceId, 'Block' | 'Spreadsheet'> = {}
   context: Record<VariableKey, VariableInterface> = {}
   functionWeights: Record<FunctionKey, number> = {}
   variableWeights: Record<VariableKey, number> = {}
@@ -151,6 +152,15 @@ export class FormulaContext implements ContextInterface {
     if (formulaNames) {
       this.formulaNames = formulaNames
     }
+
+    BrickdocEventBus.subscribe(BlockNameLoad, e => {
+      const namespaceId = e.payload.id
+      const name = e.payload.name || 'Untitled'
+      const block = new BlockClass(this, { id: namespaceId })
+      this.formulaNames = this.formulaNames
+        .filter(n => !(n.kind === 'Block' && n.key === namespaceId))
+        .concat({ ...block2name(block), name })
+    })
 
     const baseFunctionClauses: Array<BaseFunctionClause<any>> = [...BUILTIN_CLAUSES, ...functionClauses].filter(
       f => !f.feature || this.features.includes(f.feature)
@@ -247,6 +257,10 @@ export class FormulaContext implements ContextInterface {
     return this.spreadsheets[namespaceId]
   }
 
+  public findFormulaName(namespaceId: NamespaceId): FormulaName | undefined {
+    return this.formulaNames.find(f => f.key === namespaceId)
+  }
+
   public findColumn(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
     const spreadsheet = this.findSpreadsheet(namespaceId)
     if (!spreadsheet) {
@@ -263,20 +277,10 @@ export class FormulaContext implements ContextInterface {
   }
 
   public setSpreadsheet(spreadsheet: SpreadsheetType): void {
-    // this.formulaNames = this.formulaNames
-    //   .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
-    //   .concat({
-    //     kind: 'Spreadsheet',
-    //     namespaceId: spreadsheet.blockId,
-    //     name: spreadsheet.name(),
-    //     value: blockKey(spreadsheet.blockId),
-    //     render: () => blockKey(spreadsheet.blockId),
-    //     prefixLength: () => 0,
-    //     key: spreadsheet.blockId
-    //   })
-    this.blocks[spreadsheet.blockId] = 'Spreadsheet'
     this.spreadsheets[spreadsheet.blockId] = spreadsheet
-
+    this.formulaNames = this.formulaNames
+      .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
+      .concat(spreadsheet2name(spreadsheet))
     BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: spreadsheet.blockId }))
   }
 
@@ -289,149 +293,30 @@ export class FormulaContext implements ContextInterface {
     return this.context[variableKey(namespaceId, variableId)]
   }
 
+  public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {
+    return Object.values(this.context).find(v => v.t.namespaceId === namespaceId && v.t.name === name)
+  }
+
   public listVariables(namespaceId: NamespaceId): VariableInterface[] {
     return Object.values(this.context).filter(v => v.t.namespaceId === namespaceId)
   }
 
-  // TODO flattenVariableDependencies
-  public clearDependency(namespaceId: NamespaceId, variableId: VariableId): void {
-    const variable = this.findVariable(namespaceId, variableId)
-    if (variable) {
-      variable.t.variableDependencies.forEach(dependency => {
-        const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
-        const variableDependencies = this.reverseVariableDependencies[dependencyKey]
-          ? this.reverseVariableDependencies[dependencyKey].filter(
-              x => !(x.namespaceId === namespaceId && x.variableId === variableId)
-            )
-          : []
-        this.reverseVariableDependencies[dependencyKey] = [...variableDependencies]
-      })
-
-      variable.t.functionDependencies.forEach(dependency => {
-        const dependencyKey = dependency.key
-        const functionDependencies = this.reverseFunctionDependencies[dependencyKey]
-          ? this.reverseFunctionDependencies[dependencyKey].filter(
-              x => !(x.namespaceId === namespaceId && x.variableId === variableId)
-            )
-          : []
-        this.reverseFunctionDependencies[dependencyKey] = [...functionDependencies]
-      })
-    }
-  }
-
-  // TODO refresh flattenVariableDependencies
-  // TODO update other variable's level
-  public trackDependency(variable: VariableInterface): void {
-    const {
-      t: { variableDependencies, blockDependencies, namespaceId, name, variableId, functionDependencies, type }
-    } = variable
-    BrickdocEventBus.subscribe(
-      BlockNameLoad,
-      e => {
-        const name = e.payload.name || 'Untitled'
-        this.formulaNames = this.formulaNames
-          .filter(n => !(n.kind === 'Block' && n.key === namespaceId))
-          .concat({
-            kind: 'Block',
-            name,
-            namespaceId,
-            value: blockKey(namespaceId),
-            render: () => blockKey(namespaceId),
-            prefixLength: () => 0,
-            key: namespaceId
-          })
-      },
-      { eventId: namespaceId, subscribeId: variableId }
-    )
-
-    const render = (exist: boolean): string => (exist ? variableId : variableKey(namespaceId, variableId))
-    const key = variableId
-    const value = variableKey(namespaceId, variableId)
-    this.formulaNames = this.formulaNames
-      .filter(n => !(n.kind === 'Variable' && n.key === key))
-      .concat({
-        kind: 'Variable',
-        name,
-        render,
-        key,
-        value,
-        namespaceId,
-        prefixLength: exist => (exist ? 0 : variable.namespaceName().length + 1)
-      })
-    if (!this.formulaNames.find(n => n.kind === 'Block' && n.key === namespaceId) && type === 'normal') {
-      this.formulaNames.push({
-        kind: 'Block',
-        name: 'Untitled',
-        namespaceId,
-        value: blockKey(namespaceId),
-        render: () => blockKey(namespaceId),
-        prefixLength: () => 0,
-        key: namespaceId
-      })
-    }
-    this.blocks[namespaceId] = 'Block'
-
-    BrickdocEventBus.subscribe(
-      FormulaInnerRefresh,
-      e => {
-        void variable.updateAndPersist()
-      },
-      { eventId: `${namespaceId},${variableId}`, subscribeId: variableId }
-    )
-
-    blockDependencies.forEach(blockId => {
-      BrickdocEventBus.subscribe(
-        BlockSpreadsheetLoaded,
-        e => {
-          variable.reparse()
-        },
-        { eventId: blockId, subscribeId: variableId }
-      )
-    })
-
-    variableDependencies.forEach(dependency => {
-      const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
-      this.reverseVariableDependencies[dependencyKey] ||= []
-      this.reverseVariableDependencies[dependencyKey] = [
-        ...this.reverseVariableDependencies[dependencyKey],
-        { namespaceId, variableId }
-      ]
-    })
-
-    functionDependencies.forEach(dependency => {
-      const dependencyKey = dependency.key
-      this.reverseFunctionDependencies[dependencyKey] ||= []
-      this.reverseFunctionDependencies[dependencyKey] = [
-        ...this.reverseFunctionDependencies[dependencyKey],
-        { namespaceId, variableId }
-      ]
-    })
-  }
-
-  public handleBroadcast(variable: VariableInterface): void {
-    const dependencyKey = variableKey(variable.t.namespaceId, variable.t.variableId)
-    // devLog('handleBroadcast', dependencyKey, this.reverseVariableDependencies[dependencyKey])
-    this.reverseVariableDependencies[dependencyKey]?.forEach(({ namespaceId, variableId }) => {
-      const childrenVariable = this.context[variableKey(namespaceId, variableId)]!
-      void childrenVariable.refresh({ ctx: {}, arguments: [] })
-    })
-  }
-
-  // TODO update dependencies and check circular references
   public async commitVariable({ variable }: { variable: VariableInterface }): Promise<void> {
     const { namespaceId, variableId } = variable.t
-    const isNew = !this.context[variableKey(namespaceId, variableId)]
+    const oldVariable = this.findVariable(namespaceId, variableId)
 
     // 1. clear old dependencies
-    if (!isNew) {
-      // Update
-      this.clearDependency(namespaceId, variableId)
+    if (oldVariable) {
+      oldVariable.clearDependency()
     }
 
     // 2. replace variable object
     this.context[variableKey(namespaceId, variableId)] = variable
 
-    // 3. update name counter
+    // 3. track dependencies
+    variable.trackDependency()
+
+    // 4. update name counter
     const match = variable.t.name.match(matchRegex)
     if (match) {
       const [, defaultName, count] = match
@@ -442,37 +327,35 @@ export class FormulaContext implements ContextInterface {
       )
     }
 
-    // 4. track dependencies
-    this.trackDependency(variable)
-
     // 5. persist
-    if (isNew) {
-      void variable.invokeBackendCreate()
-
-      if (variable.t.version < FORMULA_PARSER_VERSION) {
-        void variable.interpret({ ctx: {}, arguments: [] })
-      }
+    if (oldVariable) {
+      await variable.invokeBackendUpdate()
     } else {
-      void variable.invokeBackendUpdate()
+      if (variable.t.version < FORMULA_PARSER_VERSION) {
+        await variable.interpret({ ctx: {}, arguments: [] })
+      }
+      await variable.invokeBackendCreate()
     }
 
-    void variable.afterUpdate()
-
     // 6. broadcast update
-    void this.handleBroadcast(variable)
+    variable.afterUpdate()
   }
 
   public async removeVariable(namespaceId: NamespaceId, variableId: VariableId): Promise<void> {
     const key = variableKey(namespaceId, variableId)
     const variable = this.context[key]
     if (variable) {
-      void this.clearDependency(namespaceId, variableId)
+      variable.clearDependency()
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete this.context[key]
+
+      this.formulaNames = this.formulaNames.filter(n => !(n.kind === 'Variable' && n.key === variableId))
 
       if (this.backendActions) {
         await this.backendActions.deleteVariable(variable.buildFormula())
       }
+
+      variable.afterUpdate()
     }
   }
 

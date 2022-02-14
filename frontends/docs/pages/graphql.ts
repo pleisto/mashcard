@@ -54,7 +54,6 @@ export const queryFormulas = gql`
       definition
       updatedAt
       createdAt
-      level
       version
       type
     }

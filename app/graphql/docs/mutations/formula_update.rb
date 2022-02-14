@@ -7,7 +7,6 @@ module Docs
     argument :definition, String, 'definition', required: false
     argument :cache_value, GraphQL::Types::JSON, 'dump value', required: false
     argument :version, Integer, 'version', required: false
-    argument :level, Integer, 'level', required: false
     argument :type, String, 'type', required: false
 
     def resolve(args)
@@ -18,8 +17,7 @@ module Docs
         definition: args[:definition],
         view: args[:view],
         cache_value: args[:cache_value],
-        version: args[:version],
-        level: args[:level]
+        version: args[:version]
       }.compact
       formula.update!(update_params)
 

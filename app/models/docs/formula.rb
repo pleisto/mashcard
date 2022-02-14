@@ -11,7 +11,6 @@
 #  cache_value :json             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  level       :integer          default("0"), not null
 #  version     :integer          default("0"), not null
 #  type        :integer          default("0"), not null
 #

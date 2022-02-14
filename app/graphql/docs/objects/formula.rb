@@ -8,7 +8,6 @@ module Docs
     field :cache_value, GraphQL::Types::JSON, "dump value", null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, 'updated at', null: false
     field :created_at, Integer, 'created at', null: false
-    field :level, Integer, 'level', null: false
     field :version, Integer, 'version', null: false
     field :type, String, 'type', null: false
   end

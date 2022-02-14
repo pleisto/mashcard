@@ -1,3 +1,4 @@
+import { ILexingResult } from 'chevrotain'
 import {
   AnyTypeResult,
   CodeFragment,
@@ -8,6 +9,34 @@ import {
   FormulaType,
   FunctionContext
 } from '../types'
+import { FormulaLexer } from './lexer'
+
+// TODO: dirty hack to get the string literal value
+export const parseString = (str: string): string => {
+  if (!str.startsWith('"')) {
+    return str
+  }
+  return str.substring(1, str.length - 1).replace(/""/g, '"')
+}
+
+const checkValidToken = (input: string): boolean => {
+  const lexer = FormulaLexer
+  const lexResult: ILexingResult = lexer.tokenize(input)
+  const tokens = lexResult.tokens
+  return tokens.length === 1
+}
+
+export const maybeEncodeString = (str: string): [boolean, string] => {
+  const valid = checkValidToken(str)
+  if (valid) {
+    return [true, str]
+  }
+  return [false, encodeString(str)]
+}
+
+const encodeString = (str: string): string => {
+  return `"${str}"`
+}
 
 export const extractSubType = (array: AnyTypeResult[]): FormulaType => {
   const types = array.map(a => a.type)

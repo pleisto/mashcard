@@ -149,6 +149,11 @@ export const FORMULA_COLORS: Record<FormulaColorType, ColorMeta> = {
     rgb: [207, 31, 40],
     label: 'palette/hue/red/7'
   },
+  FunctionName: {
+    color: '#D81B60',
+    rgb: [216, 27, 96],
+    label: 'palette/hue/pink/6'
+  },
   Variable: {
     color: '#D81B60',
     rgb: [216, 27, 96],

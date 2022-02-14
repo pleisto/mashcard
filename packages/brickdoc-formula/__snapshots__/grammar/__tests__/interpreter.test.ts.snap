@@ -1,5 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Context Type 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"barbarbar\\"",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "\\"barbarbar\\"",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Ampersand",
+    "display": "&",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "&",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionName",
+    "display": "foo",
+    "errors": Array [
+      Object {
+        "message": "Expected string but got number",
+        "type": "type",
+      },
+    ],
+    "hide": false,
+    "renderText": [Function],
+    "type": "string",
+    "value": "foo",
+  },
+]
+`;
+
 exports[`Custom Function Function dependencies 1`] = `
 Array [
   Object {
@@ -26,6 +106,8 @@ Array [
             "code": "Equal",
             "display": "=",
             "errors": Array [],
+            "hide": false,
+            "renderText": undefined,
             "type": "any",
             "value": "=",
           },
@@ -34,6 +116,8 @@ Array [
             "code": "NumberLiteral",
             "display": "1",
             "errors": Array [],
+            "hide": false,
+            "renderText": undefined,
             "type": "number",
             "value": "1",
           },

@@ -160,7 +160,7 @@ describe('Controls', () => {
 
       if (success) {
         const { variableValue } = await interpret({
-          parseResult: { cst, kind },
+          parseResult: { cst, kind, errorMessages },
           ctx: { meta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })
 

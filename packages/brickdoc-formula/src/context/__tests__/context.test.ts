@@ -20,7 +20,6 @@ describe('Context', () => {
       blockId: fooNamespaceId,
       definition: '=123',
       version: 0,
-      level: 0,
       type: 'normal',
       cacheValue: {
         type: 'number',
@@ -33,7 +32,6 @@ describe('Context', () => {
       blockId: barNamespaceId,
       definition: `=ABS(120) + #${fooNamespaceId}.${fooVariableId}`,
       version: 0,
-      level: 0,
       type: 'normal',
       cacheValue: {
         type: 'number',
@@ -68,8 +66,12 @@ describe('Context', () => {
     const foo = formulaContext.findVariable(fooNamespaceId, fooVariableId)!
     const bar = formulaContext.findVariable(barNamespaceId, barVariableId)!
 
-    expect({ foo: [foo.t.functionDependencies, foo.t.variableDependencies] }).toMatchSnapshot()
-    expect({ bar: [bar.t.functionDependencies, bar.t.variableDependencies] }).toMatchSnapshot()
+    expect({
+      foo: [foo.t.functionDependencies, foo.t.variableDependencies, foo.t.variableNameDependencies]
+    }).toMatchSnapshot()
+    expect({
+      bar: [bar.t.functionDependencies, bar.t.variableDependencies, bar.t.variableNameDependencies]
+    }).toMatchSnapshot()
   })
 
   it('removeVariable', async () => {

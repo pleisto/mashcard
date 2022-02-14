@@ -18,7 +18,7 @@ const interpretContext = { ctx: {}, arguments: [] }
 // const testName1 = 'varvarabc中文var'
 const testName1 = 'varvarabcvar'
 // TODO Chinese name
-const testName2 = '中文baz345'
+const testName2 = '中文baz345 space foo'
 
 const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', type: 'normal' }
 const barMeta: VariableMetadata = { namespaceId, variableId: barVariableId, name: 'bar', input: '=43', type: 'normal' }
@@ -95,7 +95,7 @@ describe('Complete', () => {
       input: `=#${namespaceId}.`,
       namespaceId,
       errorMessage: 'Missing expression',
-      weight: 1001,
+      weight: 250,
       expectParseImage: `=#${namespaceId}.`,
       expectInputImage: `=#${namespaceId}.`,
       expectNewInput: `=#${namespaceId}.`
@@ -115,20 +115,20 @@ describe('Complete', () => {
       input: `=Untitled.${testName1}`,
       namespaceId: testNamespaceId,
       errorMessage: undefined,
-      weight: 0,
-      expectParseImage: `=#${namespaceId}.${variableId}`,
-      expectInputImage: `=#${namespaceId}.${variableId}`,
-      expectNewInput: `=#${namespaceId}.${variableId}`
+      weight: 999,
+      expectParseImage: `=#${namespaceId}.${testName1}`,
+      expectInputImage: `=#${namespaceId}.${testName1}`,
+      expectNewInput: `=#${namespaceId}.${testName1}`
     },
     {
       label: 'var equal same namespaceId',
       input: `=${testName1}`,
       namespaceId,
       errorMessage: undefined,
-      weight: 1,
-      expectParseImage: `=#${namespaceId}.${variableId}`,
-      expectInputImage: `=#${namespaceId}.${variableId}`,
-      expectNewInput: `=#${namespaceId}.${variableId}`
+      weight: 1001,
+      expectParseImage: `=#${namespaceId}.${testName1}`,
+      expectInputImage: `=#${namespaceId}.${testName1}`,
+      expectNewInput: `=#${namespaceId}.${testName1}`
     },
     {
       label: 'var include same namespaceId',
@@ -176,9 +176,9 @@ describe('Complete', () => {
       namespaceId,
       errorMessage: 'Missing expression',
       weight: 250,
-      expectParseImage: `=1+#${namespaceId}.${variableId}.`,
-      expectInputImage: `=1+#${namespaceId}.${variableId}.`,
-      expectNewInput: `=1+#${namespaceId}.${variableId}.`
+      expectParseImage: `=1+#${namespaceId}.${testName1}.`,
+      expectInputImage: `=1+#${namespaceId}.${testName1}.`,
+      expectNewInput: `= 1 + #${namespaceId}.${testName1}.`
     },
     {
       label: 'dot equal different namespaceId',

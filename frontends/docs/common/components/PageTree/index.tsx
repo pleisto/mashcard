@@ -272,9 +272,13 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return blocks
   }, [dataPageBlocks, docMeta.id, mode])
 
-  pageBlocks.forEach(b => {
-    BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
-  })
+  React.useEffect(() => {
+    pageBlocks.forEach(b => {
+      if (!b.parentId || b.type === 'doc') {
+        BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
+      }
+    })
+  }, [pageBlocks])
 
   React.useEffect(() => {
     const flattedData = (dataPageBlocks ?? [])

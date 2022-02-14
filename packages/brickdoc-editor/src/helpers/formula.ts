@@ -59,22 +59,18 @@ export const codeFragmentsToJSONContentTotal = (codeFragments: CodeFragment[] | 
   if (!codeFragments) return undefined
   if (codeFragments.length === 0) return undefined
 
-  const content: JSONContent[] = []
-
-  codeFragments.forEach(codeFragment => {
-    content.push(...codeFragmentToJSONContentArray(codeFragment))
-  })
-
-  return buildJSONContentByArray(content)
+  return buildJSONContentByArray(codeFragmentsToJSONContentArray(codeFragments))
 }
 
-export const codeFragmentToJSONContentArray = (codeFragment: CodeFragment): JSONContent[] => {
+export const codeFragmentsToJSONContentArray = (codeFragments: CodeFragment[]): JSONContent[] => {
   const result: JSONContent[] = []
 
-  const attr = attrsToJSONContent(codeFragment)
-  if (codeFragment.display) {
-    result.push(attr)
-  }
+  codeFragments.forEach(codeFragment => {
+    const attr = attrsToJSONContent(codeFragment)
+    if (codeFragment.display) {
+      result.push(attr)
+    }
+  })
 
   return result
 }
@@ -91,8 +87,8 @@ export const positionBasedContentArrayToInput = (
   const nextTexts: string[] = []
   let input = ''
 
-  content.forEach((c: JSONContent) => {
-    const text = JSONContentToText(c)
+  content.forEach((c: JSONContent, idx) => {
+    const text = JSONContentToText(c, content[idx - 1])
     input = input.concat(c.text ?? '')
     if (input.length > position) {
       nextTexts.push(text)
@@ -106,22 +102,18 @@ export const positionBasedContentArrayToInput = (
 }
 
 export const contentArrayToInput = (content: JSONContent[]): string => {
-  const input = content.map((c: JSONContent) => JSONContentToText(c, true)).join('') ?? ''
-  // devLog({ content, input })
+  const input = content.map((c: JSONContent, idx) => JSONContentToText(c, content[idx - 1])).join('') ?? ''
+  // devWarning(true, 'contentArrayToInput', { content, input })
   return input
 }
 
-const JSONContentToText = (c: JSONContent, textOnly: boolean = false): string => {
+const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined): string => {
   if (c.type !== 'text') {
     devWarning(true, 'JSONContentToText: not text', c)
     return ''
   }
 
   const text = c.text ?? ''
-
-  if (textOnly) {
-    return text
-  }
 
   if (!c.marks) {
     return text
@@ -145,9 +137,15 @@ const JSONContentToText = (c: JSONContent, textOnly: boolean = false): string =>
     return text
   }
 
-  if (attrs.display === text) {
-    return attrs.value
+  if (!attrs.renderText) {
+    if (attrs.display === text) {
+      return attrs.value
+    }
+
+    return text
   }
 
-  return text
+  const prevText = prevC?.text ?? ''
+
+  return attrs.renderText(text, attrs, prevText)
 }

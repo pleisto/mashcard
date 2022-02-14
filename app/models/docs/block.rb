@@ -133,9 +133,9 @@ class Docs::Block < ApplicationRecord
       rest_keys = exist_values.select { |_, v| v.nil? }.keys
       rest_hash = persist_values.slice(*rest_keys)
 
-      redis.pipelined do
+      redis.pipelined do |pipeline|
         rest_hash.each do |k, v|
-          redis.setex(k, REDIS_EXPIRE_TIME, v)
+          pipeline.setex(k, REDIS_EXPIRE_TIME, v)
         end
       end
       final_hash = exist_values.merge(rest_hash)

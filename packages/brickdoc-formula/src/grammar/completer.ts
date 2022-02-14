@@ -1,6 +1,6 @@
 import type { IToken } from 'chevrotain'
 import { CodeFragment, Completion, FormulaType, FunctionContext } from '../types'
-import { blockKey } from '../context'
+import { blockKey } from './convert'
 
 export interface CompleteInput {
   readonly tokens: IToken[]

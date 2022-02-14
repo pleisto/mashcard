@@ -28,7 +28,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
   },
 
   addAttributes() {
-    const attrs: Record<Exclude<keyof CodeFragment, 'attrs'>, Attribute> = {
+    const attrs: Record<Exclude<keyof CodeFragment, 'attrs' | 'hide'>, Attribute> = {
       code: {
         default: null,
         keepOnSplit: true,
@@ -98,6 +98,35 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
           }
         }
       },
+      renderText: {
+        default: null,
+        keepOnSplit: true,
+        parseHTML: element => element.getAttribute('data-renderText'),
+        renderHTML: attributes => {
+          if (!attributes.renderText) {
+            return {}
+          }
+
+          return {
+            'data-renderText': attributes.renderText
+          }
+        }
+      },
+      // hide: {
+      //   default: null,
+      //   keepOnSplit: true,
+      //   parseHTML: element => element.getAttribute('data-hide'),
+      //   renderHTML: attributes => {
+      //     if (!attributes.hide) {
+      //       return {}
+      //     }
+
+      //     return {
+      //       'data-hide': attributes.hide,
+      //       style: 'font-size: 0 !important;'
+      //     }
+      //   }
+      // },
       value: {
         default: null,
         keepOnSplit: true,

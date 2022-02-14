@@ -206,7 +206,8 @@ describe('Spreadsheet Functions', () => {
       const { codeFragments, cst, kind, errorMessages } = parse({ ctx: newCtx })
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      const result = (await interpret({ parseResult: { cst, kind }, ctx: newCtx })).variableValue.result.result
+      const result = (await interpret({ parseResult: { cst, kind, errorMessages }, ctx: newCtx })).variableValue.result
+        .result
       if (value === SNAPSHOT_FLAG) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(result).toMatchSnapshot()
@@ -249,7 +250,7 @@ describe('Spreadsheet Functions', () => {
       },
       position: input2.length
     })
-    expect(input2Completions[0].kind).toEqual('column')
+    expect(input2Completions[0].kind).toEqual('function')
     expect(input2Completions[0]).toMatchSnapshot()
     expect(input2Completions.find(c => c.kind === 'function')).toMatchSnapshot()
   })

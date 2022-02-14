@@ -31,13 +31,13 @@ const asyncForEach = async (
 }
 
 const metas: VariableMetadata[] = [
-  { name: 'num0', input: '=1' },
-  { name: 'num1', input: '=2' },
-  { name: 'num2', input: '=$num0' },
-  { name: 'num3', input: '=$num2 + $num1' },
-  { name: 'num4', input: '=$num2 + $num0' },
-  { name: 'num5', input: '=$num3 + $num0 + $num2' },
-  { name: 'num6', input: '=$num4 + $num1' }
+  { name: 'num0', input: '=1' }, // num0 = 1
+  { name: 'num1', input: '=2' }, // num1 = 2
+  { name: 'num2', input: '=$num0' }, // num2 = num0 = 1
+  { name: 'num3', input: '=$num2 + $num1' }, // num3 = num2 + num1 = 3
+  { name: 'num4', input: '=$num2 + $num0' }, // num4 = num2 + num0 = 2
+  { name: 'num5', input: '=$num3 + $num0 + $num2' }, // num5 = num3 + num0 + num2 = 5
+  { name: 'num6', input: '=$num4 + $num1' } // num6 = num4 + num1 = 4
 ].map(({ name, input }) => ({
   name,
   namespaceId,
@@ -93,6 +93,20 @@ describe('Dependency', () => {
     expect(num2.t.variableValue.result.result).toEqual(30)
   })
 
+  it('modify num0 => invalid', async () => {
+    const num0 = formulaContext.findVariable(namespaceId, variableIds[0])!
+
+    await num0.updateDefinition('=30foobar')
+    expect(num0.t.variableValue.result.result).toEqual('Not all input parsed: foobar')
+
+    const num2 = formulaContext.findVariable(namespaceId, variableIds[2])!
+    expect(num2.t.variableValue.result.result).toEqual('Not all input parsed: foobar')
+
+    await num0.updateDefinition('=233')
+    expect(num0.t.variableValue.result.result).toEqual(233)
+    expect(num2.t.variableValue.result.result).toEqual(233)
+  })
+
   it('modify num0 => boolean', async () => {
     const num0 = formulaContext.findVariable(namespaceId, variableIds[0])!
 
@@ -106,11 +120,15 @@ describe('Dependency', () => {
     expect(num2.t.variableValue.result.result).toEqual(true)
 
     const num3 = formulaContext.findVariable(namespaceId, variableIds[3])!
+
+    // const num1 = formulaContext.findVariable(namespaceId, variableIds[1])!
+    // num3 = num2 + num1 = 3
     // TODO fix this
     expect(num3.t.variableValue.result.result).toEqual(3)
   })
 
   it('dependency automatic update', async () => {
+    // num1 = 2 -> num1 = num0 * 2 + 100 = 102
     const input = `=#${namespaceId}.${variableIds[0]} * 2 + 100`
     const meta: VariableMetadata = { namespaceId, variableId: variableIds[1], name: 'num1', input, type: 'normal' }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } }) as SuccessParseResult
@@ -128,9 +146,8 @@ describe('Dependency', () => {
     const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult })
     await formulaContext.commitVariable({ variable })
 
-    // TODO automatic update dependency
-    // expect(formulaContext.findVariable(namespaceId, variableIds[5]).t.variableValue.value).toEqual(105)
-    // expect(formulaContext.findVariable(namespaceId, variableIds[6]).t.variableValue.value).toEqual(104)
+    expect(formulaContext.findVariable(namespaceId, variableIds[5])!.t.variableValue.result.result).toEqual(5) // TODO 105
+    expect(formulaContext.findVariable(namespaceId, variableIds[6])!.t.variableValue.result.result).toEqual(4) // TODO 104
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
     expect(
       Object.values(formulaContext.context).map(v => ({

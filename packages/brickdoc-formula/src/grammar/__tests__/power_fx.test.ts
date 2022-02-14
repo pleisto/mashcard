@@ -112,7 +112,8 @@ describe('Power Fx Functions', () => {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(errorMessages).toEqual([])
 
-        const result = (await interpret({ parseResult: { cst, kind }, ctx: newCtx })).variableValue.result.result
+        const result = (await interpret({ parseResult: { cst, kind, errorMessages }, ctx: newCtx })).variableValue
+          .result.result
         if (value === SNAPSHOT_FLAG) {
           // eslint-disable-next-line jest/no-conditional-expect
           expect(result).toMatchSnapshot()

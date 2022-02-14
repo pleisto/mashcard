@@ -8,6 +8,7 @@ import { FormulaResult } from './FormulaResult'
 import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
 import { BrickdocEventBus, FormulaEditorSaveEventTrigger } from '@brickdoc/schema'
 import { AutocompleteList } from './AutocompleteList/AutocompleteList'
+import { EditorDataSourceContext } from '../../dataSource/DataSource'
 
 export interface FormulaBlockRenderProps {
   formulaId: string
@@ -26,24 +27,30 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   saveOnBlur,
   updateFormula
 }) => {
+  const editorDataSource = React.useContext(EditorDataSourceContext)
+  const formulaContext = editorDataSource.formulaContext
   const { variableT, editorContent, handleSelectActiveCompletion, completion, setCompletion } = useFormula({
     rootId,
     formulaId,
     updateFormula,
     formulaType,
-    formulaName
+    formulaName,
+    formulaContext
   })
 
-  const formulaResult = (
-    <>
-      <FormulaResult variableT={variableT} />
-      <AutocompleteList
-        blockId={rootId}
-        completion={completion}
-        handleSelectActiveCompletion={handleSelectActiveCompletion}
-        setCompletion={setCompletion}
-      />
-    </>
+  const formulaResult = React.useMemo(
+    () => (
+      <>
+        <FormulaResult variableT={variableT} />
+        <AutocompleteList
+          blockId={rootId}
+          completion={completion}
+          handleSelectActiveCompletion={handleSelectActiveCompletion}
+          setCompletion={setCompletion}
+        />
+      </>
+    ),
+    [completion, handleSelectActiveCompletion, rootId, setCompletion, variableT]
   )
 
   const onEditorBlur = React.useCallback((): void => {
@@ -52,14 +59,17 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
     }
   }, [formulaId, rootId, saveOnBlur])
 
-  const editor = (
-    <FormulaEditor
-      editorContent={editorContent}
-      editable={true}
-      onBlur={onEditorBlur}
-      formulaId={formulaId}
-      rootId={rootId}
-    />
+  const editor = React.useMemo(
+    () => (
+      <FormulaEditor
+        editorContent={editorContent}
+        editable={true}
+        onBlur={onEditorBlur}
+        formulaId={formulaId}
+        rootId={rootId}
+      />
+    ),
+    [editorContent, formulaId, onEditorBlur, rootId]
   )
 
   if (!completion.completions.length && (!variableT || variableT.kind === 'literal')) {
