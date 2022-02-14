@@ -68,6 +68,20 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   const hideHeading = mode === 'subPage'
 
   const { data } = useGetPageBlocksQuery({ variables: { webid: docMeta.webid } })
+  // recreate these blocks because we can't modify [data.pageBlocks]'s properties
+  const [dataPageBlocks, setDataPageBlocks] = React.useState(
+    data?.pageBlocks?.map(block => ({
+      ...block
+    })) ?? []
+  )
+  React.useEffect(() => {
+    setDataPageBlocks(
+      data?.pageBlocks?.map(block => ({
+        ...block
+      })) ?? []
+    )
+  }, [data?.pageBlocks])
+
   const [blockMove, { client: blockMoveClient }] = useBlockMoveMutation({ refetchQueries: [queryPageBlocks] })
   const [draggable, setDraggable] = useState<boolean>(true)
 
@@ -98,7 +112,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     const { sourceId, targetId, position } = attrs
     setDraggable(false)
     let targetParentId: string | undefined | null, sort: number
-    const pageBlocks = (data?.pageBlocks ?? []) as Block[]
+    const pageBlocks = (dataPageBlocks ?? []) as Block[]
     const node = pageBlocks.find(i => i.id === sourceId)
     const targetNode = pageBlocks.find(i => i.id === targetId)
     if (!node?.id) {
@@ -124,6 +138,28 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         break
     }
 
+    // update move result locally for performance
+    const originTargetSort = node.sort
+    const originTargetParentId = node.parentId
+
+    setDataPageBlocks(prevBlocks => {
+      const result = prevBlocks
+        .map(block => {
+          if (block.id !== node.id) return block
+
+          return {
+            ...block,
+            sort: sort.toString(),
+            parentId: targetParentId ?? block.parentId
+          }
+        })
+        .sort((a, b) => Number(a.sort) - Number(b.sort))
+
+      return result
+    })
+
+    setDraggable(true)
+
     const input: BlockMoveInput = {
       id: node.id,
       sort
@@ -138,11 +174,23 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
 
     if (errorMessage) {
       void toast.error(errorMessage)
+      // revert local update if error occurred
+      setDataPageBlocks(prevBlocks =>
+        prevBlocks
+          .map(block => {
+            if (block.id !== node.id) return block
+
+            return {
+              ...block,
+              sort: originTargetSort,
+              parentId: originTargetParentId
+            }
+          })
+          .sort((a, b) => a.sort - b.sort)
+      )
     } else if (docMeta.id === node.id) {
       await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
-
-    setDraggable(true)
   }
 
   const titleRender = (node: any): React.ReactElement => {
@@ -203,7 +251,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   }
 
   const pageBlocks = React.useMemo(() => {
-    let blocks = data?.pageBlocks ?? []
+    let blocks = dataPageBlocks
     const findRootParentId = (id: string): string => {
       const parentId = blocks.find(b => b.id === id)?.parentId
       if (parentId) return findRootParentId(parentId)
@@ -222,14 +270,14 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     }
 
     return blocks
-  }, [data?.pageBlocks, docMeta.id, mode])
+  }, [dataPageBlocks, docMeta.id, mode])
 
   pageBlocks.forEach(b => {
     BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
   })
 
   React.useEffect(() => {
-    const flattedData = (data?.pageBlocks ?? [])
+    const flattedData = (dataPageBlocks ?? [])
       .map(b => {
         const title = getTitle(b)
         return {
@@ -248,7 +296,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
       .sort((a, b) => Number(a.sort) - Number(b.sort))
 
     pagesVar(flattedData)
-  }, [data?.pageBlocks, getTitle, getIcon])
+  }, [dataPageBlocks, getTitle, getIcon])
 
   const recursionFilter = (blocks: BlockType[], cursor: string): BlockType[] => {
     if (!cursor) {
