@@ -95,6 +95,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
       split={false}
       renderItem={item => (
         <DeprecatedList.Item
+          key={item.id}
           className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}
         >
           <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
@@ -110,6 +111,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
     <div className={styles.page}>
       {snapshotTitle}
       <DocumentPage
+        snapshot={true}
         docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }}
       />
     </div>,

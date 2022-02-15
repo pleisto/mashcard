@@ -15,9 +15,10 @@ import { useEditorDataSource } from './hooks/useEditorDataSource'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 interface DocumentPageProps {
   docMeta: DocMeta
+  snapshot?: boolean
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, snapshot }) => {
   // apollo doesn't work well with React Suspense. We must place this suspense-related hook above
   // apollo useQuery API to avoid issues like sending request twice.
   // useEditorI18n() is called inside useEditor(), which is below useGetChildrenBlocksQuery(). So we
@@ -47,8 +48,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta }) => {
   })
 
   useEffect(() => {
-    editorVar(editor)
-  }, [editor])
+    if (!snapshot) editorVar(editor)
+  }, [editor, snapshot])
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data?.childrenBlocks) {
