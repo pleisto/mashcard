@@ -12,8 +12,7 @@ import { Helmet } from 'react-helmet-async'
 import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '../common/hooks'
 import { queryPageBlocks } from '../common/graphql'
-import { useReactiveVar } from '@apollo/client'
-import { editorVar, FormulaContextVar } from '../reactiveVars'
+import { FormulaContextVar } from '../reactiveVars'
 import { validate as isValidUUID } from 'uuid'
 import { appendFormulas, FormulaContext, FormulaName } from '@brickdoc/formula'
 import { useFormulaQuery } from './hooks'
@@ -71,7 +70,6 @@ export const DocumentContentPage: React.FC = () => {
   const { currentPod, currentUser, host, lastWebid, lastBlockIds, featureFlags } = useContext(BrickdocContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
-  const editor = useReactiveVar(editorVar)
 
   const loginWebid = currentPod.webid
 
@@ -201,7 +199,7 @@ export const DocumentContentPage: React.FC = () => {
       <Helmet
         titleTemplate={`%s - ${t('app_title')}`}
         defaultTitle={t('app_title')}
-        title={docMeta.id && (editor?.state.doc.attrs.title ?? docMeta.title)}
+        title={docMeta.id && docMeta.title}
       />
       <Layout>
         {siderBar && <section>{siderBar}</section>}

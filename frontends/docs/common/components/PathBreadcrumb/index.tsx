@@ -1,11 +1,9 @@
 import React from 'react'
 import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
-import { editorVar } from '../../../reactiveVars'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import styles from './index.module.less'
-import { useReactiveVar } from '@apollo/client'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface PathBreadcrumbProps {
@@ -14,9 +12,8 @@ interface PathBreadcrumbProps {
 }
 
 export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, className }) => {
-  const editor = useReactiveVar(editorVar)
   const paths: NonNullDocMeta['pathArray'] = docMeta.pathArray.concat([
-    { id: docMeta.id, text: editor?.state.doc.attrs.title ?? docMeta.title, icon: editor?.state.doc.attrs.icon ?? docMeta.icon }
+    { id: docMeta.id, text: docMeta.title, icon: docMeta.icon }
   ])
   const { t } = useDocsI18n()
 
