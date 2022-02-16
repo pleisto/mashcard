@@ -16,12 +16,13 @@ const testName1 = 'varvarabcvar'
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const interpretContext = { ctx: {}, arguments: [] }
-const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', type: 'normal' }
+const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', position: 0, type: 'normal' }
 const barMeta: VariableMetadata = {
   namespaceId,
   variableId: barVariableId,
   name: 'bar',
   input: `=#${namespaceId}.${variableId}`,
+  position: 0,
   type: 'normal'
 }
 describe('Controls', () => {
@@ -120,7 +121,14 @@ describe('Controls', () => {
 
   it('feature', () => {
     const input = `=Button("Foo", Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})))`
-    const meta: VariableMetadata = { namespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
+    const meta: VariableMetadata = {
+      namespaceId,
+      variableId: testVariableId,
+      name: 'foo',
+      input,
+      position: 0,
+      type: 'normal'
+    }
     const interpretContext = { ctx: {}, arguments: [] }
     const { errorMessages: errorMessage1 } = parse({
       ctx: { formulaContext: new FormulaContext({ features: [] }), meta, interpretContext }
@@ -145,7 +153,14 @@ describe('Controls', () => {
 
   testCases.forEach(({ input, label, parseErrorMessage, result }) => {
     it(`[${label}] ${input}`, async () => {
-      const meta: VariableMetadata = { namespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
+      const meta: VariableMetadata = {
+        namespaceId,
+        variableId: testVariableId,
+        name: 'foo',
+        input,
+        position: 0,
+        type: 'normal'
+      }
       const { errorMessages, kind, valid, codeFragments, cst, success } = parse({
         ctx: {
           formulaContext,

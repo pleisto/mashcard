@@ -925,7 +925,7 @@ const testCases: TestCase[] = [
 const formulaContext = new FormulaContext({})
 
 const name = 'foo'
-const meta: VariableMetadata = { variableId, namespaceId, name, input: '!!!', type: 'normal' }
+const meta: VariableMetadata = { variableId, namespaceId, name, input: '!!!', position: 0, type: 'normal' }
 
 const ctx: FunctionContext = {
   formulaContext,
@@ -941,7 +941,14 @@ describe('Simple test case', () => {
     await quickInsert({
       ctx: {
         ...ctx,
-        meta: { namespaceId: barNamespaceId, name: 'bar', variableId: barVariableId, input: '=24', type: 'normal' }
+        meta: {
+          namespaceId: barNamespaceId,
+          name: 'bar',
+          variableId: barVariableId,
+          input: '=24',
+          position: 0,
+          type: 'normal'
+        }
       }
     })
   })

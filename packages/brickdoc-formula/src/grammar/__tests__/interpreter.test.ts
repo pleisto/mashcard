@@ -52,7 +52,7 @@ const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 
-const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', type: 'normal' }
+const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', position: 0, type: 'normal' }
 
 describe('Custom Function', () => {
   const formulaContext = new FormulaContext({ functionClauses })
@@ -183,7 +183,7 @@ describe('Context', () => {
 
     // Insert bar
     const meta = { namespaceId: anotherBlockId, variableId: anotherVariableId, name: 'bar' }
-    await quickInsert({ ctx: { ...ctx, meta: { ...meta, input: barInput, type: 'normal' } } })
+    await quickInsert({ ctx: { ...ctx, meta: { ...meta, input: barInput, position: 0, type: 'normal' } } })
 
     const bar = formulaContext.findVariable(anotherBlockId, anotherVariableId)!
 
@@ -193,7 +193,14 @@ describe('Context', () => {
     expect(bar.t.flattenVariableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
 
     const input = `=#${anotherBlockId}.${anotherVariableId}`
-    const newMeta: VariableMetadata = { namespaceId, variableId: fooVariableId, name: 'bar', input, type: 'normal' }
+    const newMeta: VariableMetadata = {
+      namespaceId,
+      variableId: fooVariableId,
+      name: 'bar',
+      input,
+      position: 0,
+      type: 'normal'
+    }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages, flattenVariableDependencies } = parse({ ctx: finalCtx })
     expect(flattenVariableDependencies).toEqual([

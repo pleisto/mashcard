@@ -70,6 +70,8 @@ class EventBus {
       }
     }
 
+    // console.log('dispatch', event, subscribers)
+
     subscribers
       .sort((a, b) => (a.config.priority ?? 0) - (b.config.priority ?? 0))
       .forEach(s => {

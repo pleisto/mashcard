@@ -78,7 +78,7 @@ export const castVariable = (
   const namespaceId = blockId
   const variableId = id
   const type = unknownType as FormulaSourceType
-  const meta: VariableMetadata = { namespaceId, variableId, name, input: definition, type }
+  const meta: VariableMetadata = { namespaceId, variableId, name, input: definition, position: 0, type }
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const castedValue: AnyTypeResult = loadValue(ctx, cacheValue)
   const {
@@ -227,6 +227,7 @@ export class VariableClass implements VariableInterface {
       namespaceId: this.t.namespaceId,
       variableId: this.t.variableId,
       name: this.t.name,
+      position: 0,
       input: this.t.definition,
       type: this.t.type
     }

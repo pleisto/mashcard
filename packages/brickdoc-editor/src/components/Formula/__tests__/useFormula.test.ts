@@ -67,6 +67,7 @@ const simpleMetas: VariableMetadata[] = [
   name,
   namespaceId,
   type: 'normal',
+  position: 0,
   variableId: variableWithNames.find(v => v.name === name)!.variableId,
   input: input.replace(/\$([a-zA-Z0-9_-]+)/g, (a, variableName): string => {
     return `#${namespaceId}.${variableWithNames.find(v => v.name === variableName)!.variableId}`
@@ -74,47 +75,60 @@ const simpleMetas: VariableMetadata[] = [
 }))
 
 const complexMetas: VariableMetadata[] = [
-  { name: 'foo bar', input: '=123123', namespaceId, type: 'normal', variableId: '781a575f-37a6-4e03-b125-595b72b8d6fe' }
+  {
+    name: 'foo bar',
+    input: '=123123',
+    position: 0,
+    namespaceId,
+    type: 'normal',
+    variableId: '781a575f-37a6-4e03-b125-595b72b8d6fe'
+  }
 ]
 
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const simpleCommonTestCases = [
-  { input: '  123     ', resultData: 123 },
-  { input: '123asdasd', resultData: 'Not all input parsed: asdasd' },
-  { input: '1 1', resultData: 'Not all input parsed: 1' },
-  { input: '1  1', resultData: 'Not all input parsed: 1' },
-  { input: '1  a', resultData: 'Not all input parsed: a' },
-  { input: 'a a', resultData: 'Function a not found' },
-  { input: 'a123 1', resultData: 'Function a123 not found' },
+  { input: '123', positions: [0, 1, 3], resultData: 123 },
+  { input: '  123     ', positions: [1, 2, 4, 6, 8], resultData: 123 },
+  { input: '123asdasd', positions: [1, 9], resultData: 'Not all input parsed: asdasd' },
+  { input: '1 1', positions: [1, 2, 3], resultData: 'Not all input parsed: 1' },
+  { input: '1  1', positions: [1, 2, 3, 4], resultData: 'Not all input parsed: 1' },
+  { input: '1  a', positions: [1, 2, 3], resultData: 'Not all input parsed: a' },
+  { input: 'a a', positions: [1, 3], resultData: 'Function a not found' },
+  { input: 'a123 1', positions: [4, 5, 6], resultData: 'Function a123 not found' },
   { input: 'a123 ', resultData: 'Unknown function a123' },
   { input: ' 123   + 123 ', resultData: 246 },
   { input: ' barasd asd 123   + 123 1 ', resultData: 'Function barasd not found' },
   { input: ' 123 ', resultData: 123 },
   { input: ' a123', resultData: 'Unknown function a123' },
-  { input: '    a123 ', resultData: 'Unknown function a123' },
+  { input: '    a123 ', positions: [1, 3, 5], resultData: 'Unknown function a123' },
 
   // Block
-  { input: ' Untitled', newInput: ` #${namespaceId}`, resultData: 'BlockClass' },
-  { input: `#${namespaceId}`, resultData: 'BlockClass' },
+  { input: ' Untitled', positions: [1, 4, 9], newInput: ` #${namespaceId}`, resultData: 'BlockClass' },
+  { input: `#${namespaceId}`, positions: [0], resultData: 'BlockClass' },
 
   // Block dot
-  { input: 'Untitled.', newInput: `#${namespaceId}.`, resultData: 'Missing expression' },
-  { input: `#${namespaceId}.`, resultData: 'Missing expression' },
-  { input: `  #${namespaceId}  .`, resultData: 'Missing expression' },
+  { input: 'Untitled.', positions: [1, 4, 8, 9], newInput: `#${namespaceId}.`, resultData: 'Missing expression' },
+  { input: `#${namespaceId}.`, positions: [0], resultData: 'Missing expression' },
+  { input: `  #${namespaceId}  .`, positions: [0, 1], resultData: 'Missing expression' },
 
   // Variable simple
-  { input: 'num1', newInput: `#${namespaceId}.num1`, resultData: 2 },
+  { input: 'num1', positions: [1, 2, 4], newInput: `#${namespaceId}.num1`, resultData: 2 },
   { input: '"num1"', newInput: `#${namespaceId}.num1`, resultData: 2 },
   { input: `#${namespaceId}.num1`, resultData: 2 },
   { input: `#${namespaceId}."num1"`, newInput: `#${namespaceId}.num1`, resultData: 2 },
 
   // Variable complex
-  { input: '"foo bar"', newInput: `#${namespaceId}."foo bar"`, resultData: 123123 },
+  { input: '"foo bar"', positions: [3, 9], newInput: `#${namespaceId}."foo bar"`, resultData: 123123 },
   { input: `#${namespaceId}."foo bar"`, resultData: 123123 },
 
   // Variable with space
-  { input: ' num1 + 1 ', newInput: ` #${namespaceId}.num1 + 1 `, resultData: 3 },
+  {
+    input: '  num1  +  1  ',
+    positions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    newInput: `  #${namespaceId}.num1  +  1  `,
+    resultData: 3
+  },
   { input: ' "num1" + 1 ', newInput: ` #${namespaceId}.num1 + 1 `, resultData: 3 },
   { input: ` #${namespaceId}.num1 + 1 `, resultData: 3 },
   { input: ` #${namespaceId}."num1" + 1 `, newInput: ` #${namespaceId}.num1 + 1 `, resultData: 3 },
@@ -125,29 +139,47 @@ const simpleCommonTestCases = [
   { input: `#${namespaceId}."foo ba1r"`, resultData: 'Variable "foo ba1r" not found' },
 
   // Variable with error
-  { input: ' " " & num1 ', newInput: ` " " & #${namespaceId}.num1 `, resultData: 'Expected string but got number' },
+  {
+    input: ' " " & num1 ',
+    positions: [5, 6, 7, 8, 9, 10, 11, 12],
+    newInput: ` " " & #${namespaceId}.num1 `,
+    resultData: 'Expected string but got number'
+  },
   { input: ' num1 & " "', newInput: ` #${namespaceId}.num1 & " "`, resultData: 'Expected string but got number' },
 
   // TODO parse error
-  { input: 'a+num1', newInput: 'a.num1', resultData: 'Unknown function a' }
+  { input: 'a+num1', positions: [1], newInput: 'a.num1', resultData: 'Unknown function a' }
 ]
 
-const simpleNormalTestCases = [{ input: '', newInput: undefined, resultData: undefined }, ...simpleCommonTestCases]
+const simpleNormalTestCases = [
+  { input: '', newInput: undefined, positions: [], resultData: undefined },
+  ...simpleCommonTestCases
+]
+
+const simpleNormalTestCasesWithPosition = simpleNormalTestCases.flatMap(t =>
+  (t.positions ?? [0]).map(p => ({ ...t, position: p }))
+)
+
 const simpleSpreadsheetTestCases = [
-  { input: '', newInput: undefined, resultData: '' },
-  { input: '=', newInput: undefined, resultData: '=' },
-  { input: '=  ', newInput: undefined, resultData: '=  ' },
+  { input: '', newInput: undefined, positions: [], resultData: '' },
+  { input: '=', newInput: undefined, positions: [], resultData: '=' },
+  { input: '=  ', newInput: undefined, positions: [], resultData: '=  ' },
 
-  { input: ' =', newInput: undefined, resultData: ' =' },
-  { input: ' foo baz ', newInput: undefined, resultData: ' foo baz ' },
-  { input: '   ', newInput: undefined, resultData: '   ' },
+  { input: ' =', newInput: undefined, positions: [], resultData: ' =' },
+  { input: ' foo baz ', newInput: undefined, positions: [], resultData: ' foo baz ' },
+  { input: '   ', newInput: undefined, positions: [], resultData: '   ' },
 
-  ...simpleCommonTestCases.map(({ input, newInput, resultData }) => ({
+  ...simpleCommonTestCases.map(({ input, newInput, positions, resultData }) => ({
     input: `=${input}`,
     newInput: newInput ? `=${newInput}` : undefined,
+    positions,
     resultData
   }))
 ]
+
+const simpleSpreadsheetTestCasesWithPosition = simpleSpreadsheetTestCases.flatMap(t =>
+  (t.positions ?? [0]).map(p => ({ ...t, position: p }))
+)
 
 const normalTestCases = [
   {
@@ -210,8 +242,7 @@ const normalTestCases = [
       ]
     },
     output: {
-      // TODO fix 41
-      position: 41,
+      position: 3,
       content: SNAPSHOT_FLAG
     }
   }
@@ -285,7 +316,7 @@ const spreadsheetTestCases = [
       ]
     },
     output: {
-      position: 41,
+      position: 3,
       content: SNAPSHOT_FLAG
     }
   }
@@ -305,6 +336,7 @@ describe('useFormula', () => {
     expect(result.current.variableT).toBe(undefined)
     expect(result.current.editorContent).toEqual({
       content: undefined,
+      input: '',
       position: 0
     })
     expect(result.current.name).toBe(undefined)
@@ -316,50 +348,19 @@ describe('useFormula', () => {
     expect(result.current.variableT).toBe(undefined)
     expect(result.current.editorContent).toEqual({
       content: undefined,
+      input: '',
       position: 0
     })
     expect(result.current.name).toBe(undefined)
     expect(result.current.defaultName).toBe('var1')
   })
 
-  it.each(simpleNormalTestCases)('normal: "$input" -> "$resultData"', async ({ input, newInput, resultData }) => {
-    const { result, waitForNextUpdate } = renderHook(() => useFormula(normalInput))
+  it.each(simpleNormalTestCasesWithPosition)(
+    'normal: "$input"($position) -> "$resultData"',
+    async ({ input, newInput, position, resultData }) => {
+      const { result, waitForNextUpdate } = renderHook(() => useFormula(normalInput))
 
-    const editorPosition = 0
-    const jsonContent = buildJSONContentByArray([
-      {
-        type: 'text',
-        text: input
-      }
-    ])
-
-    act(() => {
-      BrickdocEventBus.dispatch(
-        FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
-      )
-    })
-
-    await waitForNextUpdate()
-
-    // expect(result.current.editorContent.position).toEqual(0)
-    expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(newInput ?? input)
-
-    const data = result.current.variableT?.variableValue.result.result
-    if (typeof data === 'object') {
-      // eslint-disable-next-line jest/no-conditional-expect
-      expect(data!.constructor.name).toEqual(resultData)
-    } else {
-      // eslint-disable-next-line jest/no-conditional-expect
-      expect(data).toEqual(resultData)
-    }
-  })
-
-  it.each(simpleSpreadsheetTestCases)(
-    'spreadsheet: "$input" -> "$resultData"',
-    async ({ input, newInput, resultData }) => {
-      const { result, waitForNextUpdate } = renderHook(() => useFormula(spreadsheetInput))
-
-      const editorPosition = 0
+      const editorPosition = position
       const jsonContent = buildJSONContentByArray([
         {
           type: 'text',
@@ -375,7 +376,52 @@ describe('useFormula', () => {
 
       await waitForNextUpdate()
 
-      // expect(result.current.editorContent.position).toEqual(0)
+      // expect(result.current.editorContentRef.current.position).toEqual(position)
+      if (result.current.editorContent.position !== position) {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(result.current.editorContent).toMatchSnapshot()
+      }
+      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
+        newInput ?? input
+      )
+
+      const data = result.current.variableT?.variableValue.result.result
+      if (typeof data === 'object') {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(data!.constructor.name).toEqual(resultData)
+      } else {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(data).toEqual(resultData)
+      }
+    }
+  )
+
+  it.each(simpleSpreadsheetTestCasesWithPosition)(
+    'spreadsheet: "$input"($position) -> "$resultData"',
+    async ({ input, newInput, position, resultData }) => {
+      const { result, waitForNextUpdate } = renderHook(() => useFormula(spreadsheetInput))
+
+      const editorPosition = position
+      const jsonContent = buildJSONContentByArray([
+        {
+          type: 'text',
+          text: input
+        }
+      ])
+
+      act(() => {
+        BrickdocEventBus.dispatch(
+          FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
+        )
+      })
+
+      await waitForNextUpdate()
+
+      // expect(result.current.editorContentRef.current.position).toEqual(position)
+      if (result.current.editorContent.position !== position) {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(result.current.editorContent).toMatchSnapshot()
+      }
       expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
         newInput ?? input
       )

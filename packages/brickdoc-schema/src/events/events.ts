@@ -94,10 +94,11 @@ export const FormulaEditorUpdateEventTrigger = event<{
 export const FormulaEditorReplaceRootTrigger = event<{
   content: any
   position: number
+  input: string
   rootId: string
   formulaId: string
-}>()('FormulaEditorReplaceRootTrigger', ({ content, position, formulaId, rootId }) => {
-  return { content, position, id: `${rootId},${formulaId}` }
+}>()('FormulaEditorReplaceRootTrigger', ({ content, position, input, formulaId, rootId }) => {
+  return { content, position, input, id: `${rootId},${formulaId}` }
 })
 
 export const FormulaEditorUpdateNameTrigger = event<{

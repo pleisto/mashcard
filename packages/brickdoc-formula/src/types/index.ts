@@ -613,6 +613,7 @@ export interface VariableMetadata {
   readonly namespaceId: NamespaceId
   readonly variableId: VariableId
   readonly input: string
+  readonly position: number
   readonly name: VariableName
   readonly type: FormulaSourceType
 }

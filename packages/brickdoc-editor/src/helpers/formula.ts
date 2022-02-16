@@ -86,18 +86,42 @@ export const positionBasedContentArrayToInput = (
   const prevTexts: string[] = []
   const nextTexts: string[] = []
   let input = ''
+  let firstTime = true
 
   content.forEach((c: JSONContent, idx) => {
     const text = JSONContentToText(c, content[idx - 1])
-    input = input.concat(c.text ?? '')
-    if (input.length > position) {
+    const display = c.text ?? ''
+    input = input.concat(display)
+    if (!firstTime) {
       nextTexts.push(text)
-    } else {
+      return
+    }
+
+    if (input.length <= position) {
       prevTexts.push(text)
+      return
+    }
+
+    firstTime = false
+    const nextSize = input.length - position
+    const prevSize = text.length - nextSize
+    const prevText = text.substring(0, prevSize)
+    const nextText = text.substring(prevSize)
+    if (display.includes(prevText) || !prevText.endsWith('.')) {
+      prevTexts.push(prevText)
+      nextTexts.push(nextText)
+    } else if (nextSize <= display.length) {
+      const prevDisplaySize = display.length - nextSize
+      const prevDisplayText = display.substring(0, prevDisplaySize)
+      const nextDisplayText = display.substring(prevDisplaySize)
+      prevTexts.push(prevDisplayText)
+      nextTexts.push(nextDisplayText)
+    } else {
+      nextTexts.push(text)
     }
   })
 
-  // devLog({ prevTexts, nextTexts, input, position, content })
+  // console.log('debug position', { prevTexts, nextTexts, input, position, content })
   return { prevText: prevTexts.join(''), nextText: nextTexts.join('') }
 }
 
@@ -138,11 +162,7 @@ const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined): stri
   }
 
   if (!attrs.renderText) {
-    if (attrs.display === text) {
-      return attrs.value
-    }
-
-    return text
+    return attrs.display === text ? attrs.value : text
   }
 
   const prevText = prevC?.text ?? ''

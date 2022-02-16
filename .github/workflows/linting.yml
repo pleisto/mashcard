@@ -23,8 +23,11 @@ jobs:
         uses: tj-actions/changed-files@v14.6
         with:
           files: |
-            .(ts|tsx|js|jsx)$
             yarn.lock
+            **/*.ts
+            **/*.tsx
+            **/*.js
+            **/*.jsx
       - name: Setup NodeJS
         if: steps.changed-es-files.outputs.any_changed == 'true'
         uses: actions/setup-node@v2

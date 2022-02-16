@@ -26,6 +26,7 @@ import {
   variableRenderText
 } from './convert'
 import { devWarning } from '@brickdoc/design-system'
+import { PositionFragment } from './core'
 
 const token2fragment = (token: IToken, type: FormulaType): CodeFragment => {
   return {
@@ -1340,10 +1341,10 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
 export const hideDot = (
   codeFragments: CodeFragment[],
-  position: number
-): { finalCodeFragments: CodeFragment[]; newPositionAfterHide: number } => {
+  positionFragment: PositionFragment
+): { finalCodeFragments: CodeFragment[]; finalPositionFragment: PositionFragment } => {
   const finalCodeFragments: CodeFragment[] = []
-  const newPositionAfterHide = position
+  let finalPositionFragment = positionFragment
   codeFragments.forEach((c, idx) => {
     if (c.code === 'Dot' && !c.hide) {
       const prevCodeFragment = codeFragments[idx - 1]
@@ -1352,7 +1353,9 @@ export const hideDot = (
         const nextErrors = nextCodeFragment.errors
         if (nextErrors.length === 0 || (nextErrors.length === 1 && nextErrors[0].type !== 'deps')) {
           finalCodeFragments.pop()
-          // newPositionAfterHide -= 2 + prevCodeFragment.display.length
+          if (finalPositionFragment.tokenIndex >= idx - 1) {
+            finalPositionFragment = { ...finalPositionFragment, tokenIndex: finalPositionFragment.tokenIndex - 3 }
+          }
           return
         }
       }
@@ -1361,12 +1364,15 @@ export const hideDot = (
     finalCodeFragments.push(c)
   })
 
-  // console.log({ codeFragments, finalCodeFragments, newPositionAfterHide, position })
-
-  return { finalCodeFragments, newPositionAfterHide }
+  // console.log({ codeFragments, finalCodeFragments, positionFragment, finalPositionFragment })
+  return { finalCodeFragments, finalPositionFragment }
 }
 
-export const addSpace = (codeFragments: CodeFragment[], input: string): CodeFragment[] => {
+export const addSpace = (
+  codeFragments: CodeFragment[],
+  input: string,
+  positionFragment: PositionFragment
+): { finalCodeFragments: CodeFragment[]; finalPositionFragment: PositionFragment } => {
   const finalCodeFragments: CodeFragment[] = []
   const spaceCodeFragment: CodeFragment = {
     code: 'Space',
@@ -1382,7 +1388,7 @@ export const addSpace = (codeFragments: CodeFragment[], input: string): CodeFrag
   let restInput = input
   let error = false
   let image = ''
-  codeFragments.forEach(codeFragment => {
+  codeFragments.forEach((codeFragment, idx) => {
     let match = false
     if (error) return
     image = codeFragment.value
@@ -1420,8 +1426,8 @@ export const addSpace = (codeFragments: CodeFragment[], input: string): CodeFrag
     //   }
     // ]
 
-    return codeFragments
+    return { finalCodeFragments: codeFragments, finalPositionFragment: positionFragment }
   }
 
-  return finalCodeFragments
+  return { finalCodeFragments, finalPositionFragment: positionFragment }
 }

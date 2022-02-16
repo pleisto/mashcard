@@ -115,7 +115,7 @@ const COMPLETION_STYLE_META: {
               {preview.examples.map((example, index) => (
                 <div key={index} className="autocomplete-preview-example">
                   <FormulaEditor
-                    editorContent={{ content: codeFragmentsToJSONContentTotal(example.codeFragments), position: 0 }}
+                    editorContent={{ content: codeFragmentsToJSONContentTotal(example.codeFragments), input: '', position: 0 }}
                     editable={false}
                   />
                   <br />
@@ -143,7 +143,7 @@ const COMPLETION_STYLE_META: {
           <div className="autocomplete-preview-section">
             <div className="autocomplete-preview-section-head">Definition</div>
             <div className="autocomplete-preview-definition">
-              <FormulaEditor editorContent={{ content, position: 0 }} editable={false} />
+              <FormulaEditor editorContent={{ content, input: '', position: 0 }} editable={false} />
             </div>
           </div>
           <div className="autocomplete-preview-section">

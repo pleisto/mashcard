@@ -32,6 +32,161 @@ Object {
 }
 `;
 
+exports[`useFormula normal: ""foo bar""(3) -> "123123" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "StringLiteral",
+                  "display": "foo bar",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": [Function],
+                  "type": "string",
+                  "value": "\\"foo bar\\"",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "foo bar",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "=#eb373fbc-a6e9-40a6-8c4b-45cda7230dda.\\"foo bar\\"",
+  "position": 1,
+}
+`;
+
+exports[`useFormula normal: ""foo bar""(9) -> "123123" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "StringLiteral",
+                  "display": "foo bar",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": [Function],
+                  "type": "string",
+                  "value": "\\"foo bar\\"",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "foo bar",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "=#eb373fbc-a6e9-40a6-8c4b-45cda7230dda.\\"foo bar\\"",
+  "position": 7,
+}
+`;
+
+exports[`useFormula normal: "a+num1"(1) -> "Unknown function a" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Function",
+                  "display": "a",
+                  "errors": Array [
+                    Object {
+                      "message": "Unknown function a",
+                      "type": "syntax",
+                    },
+                    Object {
+                      "message": "TODO mismatch token FunctionCall",
+                      "type": "parse",
+                    },
+                  ],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "a",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "a",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Dot",
+                  "display": ".",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": ".",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": ".",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "FunctionName",
+                  "display": "num1",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "string",
+                  "value": "num1",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "num1",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "=a.num1",
+  "position": 6,
+}
+`;
+
 exports[`useFormula spreadsheet expression 1 1`] = `
 Object {
   "content": Array [
@@ -80,5 +235,470 @@ Object {
     },
   ],
   "type": "doc",
+}
+`;
+
+exports[`useFormula spreadsheet: "= " " & num1 "(5) -> "Expected string but got number" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "=",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "=",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Space",
+                  "display": " ",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": " ",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": " ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "StringLiteral",
+                  "display": "\\" \\"",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "string",
+                  "value": "\\" \\"",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "\\" \\"",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Space",
+                  "display": " ",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": " ",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": " ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Ampersand",
+                  "display": "&",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "&",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "&",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Space",
+                  "display": " ",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": " ",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": " ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "FunctionName",
+                  "display": "num1",
+                  "errors": Array [
+                    Object {
+                      "message": "Expected string but got number",
+                      "type": "type",
+                    },
+                  ],
+                  "hide": false,
+                  "renderText": [Function],
+                  "type": "string",
+                  "value": "num1",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "num1",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Space",
+                  "display": " ",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": " ",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": " ",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "= \\" \\" & #eb373fbc-a6e9-40a6-8c4b-45cda7230dda.num1 ",
+  "position": 8,
+}
+`;
+
+exports[`useFormula spreadsheet: "= Untitled"(1) -> "BlockClass" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "=",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "=",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Space",
+                  "display": " ",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": " ",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": " ",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": Object {
+                    "id": "eb373fbc-a6e9-40a6-8c4b-45cda7230dda",
+                    "kind": "Block",
+                    "name": "Untitled",
+                    "namespaceId": "eb373fbc-a6e9-40a6-8c4b-45cda7230dda",
+                  },
+                  "code": "Block",
+                  "display": "Untitled",
+                  "errors": Array [],
+                  "hide": true,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "#eb373fbc-a6e9-40a6-8c4b-45cda7230dda",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "Untitled",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "= #eb373fbc-a6e9-40a6-8c4b-45cda7230dda",
+  "position": 2,
+}
+`;
+
+exports[`useFormula spreadsheet: "="foo bar""(3) -> "123123" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "=",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "=",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "StringLiteral",
+                  "display": "foo bar",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": [Function],
+                  "type": "string",
+                  "value": "\\"foo bar\\"",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "foo bar",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "=#eb373fbc-a6e9-40a6-8c4b-45cda7230dda.\\"foo bar\\"",
+  "position": 1,
+}
+`;
+
+exports[`useFormula spreadsheet: "="foo bar""(9) -> "123123" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "=",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "=",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "StringLiteral",
+                  "display": "foo bar",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": [Function],
+                  "type": "string",
+                  "value": "\\"foo bar\\"",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "foo bar",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "=#eb373fbc-a6e9-40a6-8c4b-45cda7230dda.\\"foo bar\\"",
+  "position": 7,
+}
+`;
+
+exports[`useFormula spreadsheet: "=a+num1"(1) -> "Unknown function a" 1`] = `
+Object {
+  "content": Object {
+    "content": Array [
+      Object {
+        "content": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Equal",
+                  "display": "=",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "=",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "=",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Function",
+                  "display": "a",
+                  "errors": Array [
+                    Object {
+                      "message": "Unknown function a",
+                      "type": "syntax",
+                    },
+                    Object {
+                      "message": "TODO mismatch token FunctionCall",
+                      "type": "parse",
+                    },
+                  ],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": "a",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "a",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "Dot",
+                  "display": ".",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "any",
+                  "value": ".",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": ".",
+            "type": "text",
+          },
+          Object {
+            "marks": Array [
+              Object {
+                "attrs": Object {
+                  "attrs": undefined,
+                  "code": "FunctionName",
+                  "display": "num1",
+                  "errors": Array [],
+                  "hide": false,
+                  "renderText": undefined,
+                  "type": "string",
+                  "value": "num1",
+                },
+                "type": "FormulaType",
+              },
+            ],
+            "text": "num1",
+            "type": "text",
+          },
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "doc",
+  },
+  "input": "=a.num1",
+  "position": 7,
 }
 `;

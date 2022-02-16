@@ -11,6 +11,7 @@ import { BrickdocEventBus, FormulaEditorReplaceRootTrigger, FormulaEditorUpdateE
 
 export interface EditorContentType {
   content: JSONContent | undefined
+  input: string
   position: number
 }
 
@@ -35,7 +36,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
       Text,
       Paragraph,
       FormulaTypeExtension.configure({ editable }),
-      HandleKeyDownExtension({ formulaId, rootId })
+      HandleKeyDownExtension.configure({ formulaId, rootId })
     ],
     onFocus: (props: EditorEvents['focus']) => {
       // console.debug('FormulaEditor:onFocus', props)
@@ -94,15 +95,11 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
           const content = e.payload.content
           const position: number = e.payload.position
           if (content) {
-            if (position) {
-              editor
-                .chain()
-                .replaceRoot(content)
-                .setTextSelection(position + 1)
-                .run()
-            } else {
-              editor.commands.replaceRoot(content)
-            }
+            editor
+              .chain()
+              .replaceRoot(content)
+              .setTextSelection(position + 1)
+              .run()
           }
 
           // if (editable) console.log('after replace root', { content, position })

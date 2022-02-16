@@ -54,7 +54,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
 
 const formulaContext = new FormulaContext({ functionClauses })
 
-const meta: VariableMetadata = { namespaceId, variableId, name: 'foo', input: '=24', type: 'normal' }
+const meta: VariableMetadata = { namespaceId, variableId, name: 'foo', input: '=24', position: 0, type: 'normal' }
 
 const testCases = [
   '= (1 + 1) / 2 * 0.1 == (!!true and false or true) == "123"',

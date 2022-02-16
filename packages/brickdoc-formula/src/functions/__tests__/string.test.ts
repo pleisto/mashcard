@@ -13,6 +13,7 @@ const ctx = {
     variableId: '481b6dd1-e668-4477-9e47-cfe5cb1239d0',
     name: 'v',
     input: '=24',
+    position: 0,
     type: 'normal' as FormulaSourceType
   }
 }

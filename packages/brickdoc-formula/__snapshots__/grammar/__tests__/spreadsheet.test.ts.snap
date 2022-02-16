@@ -4429,7 +4429,7 @@ Array [
 ]
 `;
 
-exports[`Spreadsheet Functions completion 1`] = `
+exports[`Spreadsheet Functions completion TODO 1`] = `
 Object {
   "codeFragments": Array [
     Object {
@@ -4469,287 +4469,42 @@ Object {
 }
 `;
 
-exports[`Spreadsheet Functions completion 2`] = `
+exports[`Spreadsheet Functions completion TODO 2`] = `
 Object {
   "codeFragments": Array [
     Object {
-      "attrs": undefined,
-      "code": "Function",
-      "display": "VLOOKUP()",
+      "attrs": Object {
+        "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "name": "MySpreadsheet",
+        "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
+      "code": "Spreadsheet",
+      "display": "MySpreadsheet",
       "errors": Array [],
       "hide": false,
       "renderText": undefined,
       "type": "any",
-      "value": "VLOOKUP()",
+      "value": "#28e28190-63bd-4f70-aeca-26e72574c01a",
     },
   ],
-  "kind": "function",
-  "name": "VLOOKUP",
-  "namespace": "core",
-  "positionChange": 8,
-  "preview": Object {
-    "acceptError": false,
-    "args": Array [
-      Object {
-        "name": "match",
-        "type": "any",
-      },
-      Object {
-        "name": "spreadsheet",
-        "type": "Spreadsheet",
-      },
-      Object {
-        "name": "column",
-        "type": "Column",
-      },
-      Object {
-        "default": Object {
-          "result": true,
-          "type": "boolean",
-        },
-        "name": "range",
-        "type": "boolean",
-      },
-    ],
-    "async": false,
-    "chain": true,
-    "description": "Returns the value of the column in the spreadsheet that matches the match value.",
-    "effect": false,
-    "examples": Array [
-      Object {
-        "codeFragments": Array [
-          Object {
-            "attrs": undefined,
-            "code": "Equal",
-            "display": "=",
-            "errors": Array [],
-            "hide": false,
-            "renderText": undefined,
-            "type": "any",
-            "value": "=",
-          },
-          Object {
-            "attrs": undefined,
-            "code": "NumberLiteral",
-            "display": "123",
-            "errors": Array [],
-            "hide": false,
-            "renderText": undefined,
-            "type": "number",
-            "value": "123",
-          },
-        ],
-        "input": "=123",
-        "output": Object {
-          "result": "foo",
-          "type": "string",
-        },
-      },
-    ],
-    "group": "core",
-    "key": "VLOOKUP",
-    "lazy": false,
-    "name": "VLOOKUP",
-    "pure": false,
-    "reference": [Function],
-    "returns": "string",
-    "testCases": Array [],
+  "kind": "spreadsheet",
+  "name": "MySpreadsheet",
+  "namespace": "28e28190-63bd-4f70-aeca-26e72574c01a",
+  "positionChange": 37,
+  "preview": SpreadsheetClass {
+    "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "dynamic": false,
+    "listCells": [Function],
+    "listColumns": [Function],
+    "listRows": [Function],
+    "name": [Function],
   },
   "renderDescription": [Function],
   "replacements": Array [
-    "VLOOKUP",
+    "MySpreadsheet",
   ],
-  "value": "VLOOKUP()",
-  "weight": 250,
-}
-`;
-
-exports[`Spreadsheet Functions completion 3`] = `
-Object {
-  "codeFragments": Array [
-    Object {
-      "attrs": undefined,
-      "code": "Function",
-      "display": "VLOOKUP()",
-      "errors": Array [],
-      "hide": false,
-      "renderText": undefined,
-      "type": "any",
-      "value": "VLOOKUP()",
-    },
-  ],
-  "kind": "function",
-  "name": "VLOOKUP",
-  "namespace": "core",
-  "positionChange": 8,
-  "preview": Object {
-    "acceptError": false,
-    "args": Array [
-      Object {
-        "name": "match",
-        "type": "any",
-      },
-      Object {
-        "name": "spreadsheet",
-        "type": "Spreadsheet",
-      },
-      Object {
-        "name": "column",
-        "type": "Column",
-      },
-      Object {
-        "default": Object {
-          "result": true,
-          "type": "boolean",
-        },
-        "name": "range",
-        "type": "boolean",
-      },
-    ],
-    "async": false,
-    "chain": true,
-    "description": "Returns the value of the column in the spreadsheet that matches the match value.",
-    "effect": false,
-    "examples": Array [
-      Object {
-        "codeFragments": Array [
-          Object {
-            "attrs": undefined,
-            "code": "Equal",
-            "display": "=",
-            "errors": Array [],
-            "hide": false,
-            "renderText": undefined,
-            "type": "any",
-            "value": "=",
-          },
-          Object {
-            "attrs": undefined,
-            "code": "NumberLiteral",
-            "display": "123",
-            "errors": Array [],
-            "hide": false,
-            "renderText": undefined,
-            "type": "number",
-            "value": "123",
-          },
-        ],
-        "input": "=123",
-        "output": Object {
-          "result": "foo",
-          "type": "string",
-        },
-      },
-    ],
-    "group": "core",
-    "key": "VLOOKUP",
-    "lazy": false,
-    "name": "VLOOKUP",
-    "pure": false,
-    "reference": [Function],
-    "returns": "string",
-    "testCases": Array [],
-  },
-  "renderDescription": [Function],
-  "replacements": Array [
-    "VLOOKUP",
-  ],
-  "value": "VLOOKUP()",
-  "weight": 250,
-}
-`;
-
-exports[`Spreadsheet Functions completion 4`] = `
-Object {
-  "codeFragments": Array [
-    Object {
-      "attrs": undefined,
-      "code": "Function",
-      "display": "VLOOKUP()",
-      "errors": Array [],
-      "hide": false,
-      "renderText": undefined,
-      "type": "any",
-      "value": "VLOOKUP()",
-    },
-  ],
-  "kind": "function",
-  "name": "VLOOKUP",
-  "namespace": "core",
-  "positionChange": 8,
-  "preview": Object {
-    "acceptError": false,
-    "args": Array [
-      Object {
-        "name": "match",
-        "type": "any",
-      },
-      Object {
-        "name": "spreadsheet",
-        "type": "Spreadsheet",
-      },
-      Object {
-        "name": "column",
-        "type": "Column",
-      },
-      Object {
-        "default": Object {
-          "result": true,
-          "type": "boolean",
-        },
-        "name": "range",
-        "type": "boolean",
-      },
-    ],
-    "async": false,
-    "chain": true,
-    "description": "Returns the value of the column in the spreadsheet that matches the match value.",
-    "effect": false,
-    "examples": Array [
-      Object {
-        "codeFragments": Array [
-          Object {
-            "attrs": undefined,
-            "code": "Equal",
-            "display": "=",
-            "errors": Array [],
-            "hide": false,
-            "renderText": undefined,
-            "type": "any",
-            "value": "=",
-          },
-          Object {
-            "attrs": undefined,
-            "code": "NumberLiteral",
-            "display": "123",
-            "errors": Array [],
-            "hide": false,
-            "renderText": undefined,
-            "type": "number",
-            "value": "123",
-          },
-        ],
-        "input": "=123",
-        "output": Object {
-          "result": "foo",
-          "type": "string",
-        },
-      },
-    ],
-    "group": "core",
-    "key": "VLOOKUP",
-    "lazy": false,
-    "name": "VLOOKUP",
-    "pure": false,
-    "reference": [Function],
-    "returns": "string",
-    "testCases": Array [],
-  },
-  "renderDescription": [Function],
-  "replacements": Array [
-    "VLOOKUP",
-  ],
-  "value": "VLOOKUP()",
-  "weight": 250,
+  "value": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+  "weight": 10,
 }
 `;

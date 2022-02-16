@@ -33,19 +33,21 @@ const formulaHandleKeyDown: ({
   }
 }
 
-export const HandleKeyDownExtension: HandleKeyDownType = ({ formulaId, rootId }) => {
-  return Extension.create({
-    name: 'handleKeyDown',
+export const HandleKeyDownExtension = Extension.create({
+  name: 'handleKeyDown',
 
-    addProseMirrorPlugins() {
-      return [
-        new Plugin({
-          key: new PluginKey('handleKeyDown'),
-          props: {
-            handleKeyDown: formulaHandleKeyDown({ formulaId, rootId })
-          }
-        })
-      ]
-    }
-  })
-}
+  addProseMirrorPlugins() {
+    const {
+      options: { formulaId, rootId }
+    } = this
+
+    return [
+      new Plugin({
+        key: new PluginKey('handleKeyDown'),
+        props: {
+          handleKeyDown: formulaHandleKeyDown({ formulaId, rootId })
+        }
+      })
+    ]
+  }
+})

@@ -20,13 +20,21 @@ const testName1 = 'varvarabcvar'
 // TODO Chinese name
 const testName2 = '中文baz345 space foo'
 
-const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', type: 'normal' }
-const barMeta: VariableMetadata = { namespaceId, variableId: barVariableId, name: 'bar', input: '=43', type: 'normal' }
+const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', position: 0, type: 'normal' }
+const barMeta: VariableMetadata = {
+  namespaceId,
+  variableId: barVariableId,
+  name: 'bar',
+  input: '=43',
+  position: 0,
+  type: 'normal'
+}
 const test2Meta: VariableMetadata = {
   namespaceId,
   variableId: test2VariableId,
   name: testName2,
   input: '=80',
+  position: 0,
   type: 'normal'
 }
 describe('Complete', () => {
@@ -46,7 +54,7 @@ describe('Complete', () => {
       ctx: {
         formulaContext,
         interpretContext: { ctx: {}, arguments: [] },
-        meta: { namespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
+        meta: { namespaceId, variableId: testVariableId, name: 'foo', input, position: 0, type: 'normal' }
       },
       tokens,
       position: input.length,
@@ -59,7 +67,14 @@ describe('Complete', () => {
       ctx: {
         formulaContext,
         interpretContext: { ctx: {}, arguments: [] },
-        meta: { namespaceId: testNamespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
+        meta: {
+          namespaceId: testNamespaceId,
+          variableId: testVariableId,
+          name: 'foo',
+          input,
+          position: 0,
+          type: 'normal'
+        }
       },
       tokens,
       position: input.length,
@@ -85,7 +100,7 @@ describe('Complete', () => {
       input: '= 1 + var',
       namespaceId,
       errorMessage: 'Unknown function var',
-      weight: 101,
+      weight: 1,
       expectInputImage: '=1+var',
       expectParseImage: '=1+var',
       expectNewInput: '= 1 + var'
@@ -95,7 +110,7 @@ describe('Complete', () => {
       input: `=#${namespaceId}.`,
       namespaceId,
       errorMessage: 'Missing expression',
-      weight: 250,
+      weight: 1,
       expectParseImage: `=#${namespaceId}.`,
       expectInputImage: `=#${namespaceId}.`,
       expectNewInput: `=#${namespaceId}.`
@@ -105,7 +120,7 @@ describe('Complete', () => {
       input: `=${testName1}`,
       namespaceId: testNamespaceId,
       errorMessage: `Unknown function ${testName1}`,
-      weight: 999,
+      weight: 0,
       expectParseImage: `=${testName1}`,
       expectInputImage: `=${testName1}`,
       expectNewInput: `=${testName1}`
@@ -115,7 +130,7 @@ describe('Complete', () => {
       input: `=Untitled.${testName1}`,
       namespaceId: testNamespaceId,
       errorMessage: undefined,
-      weight: 999,
+      weight: 0,
       expectParseImage: `=#${namespaceId}.${testName1}`,
       expectInputImage: `=#${namespaceId}.${testName1}`,
       expectNewInput: `=#${namespaceId}.${testName1}`
@@ -125,7 +140,7 @@ describe('Complete', () => {
       input: `=${testName1}`,
       namespaceId,
       errorMessage: undefined,
-      weight: 1001,
+      weight: 1,
       expectParseImage: `=#${namespaceId}.${testName1}`,
       expectInputImage: `=#${namespaceId}.${testName1}`,
       expectNewInput: `=#${namespaceId}.${testName1}`
@@ -135,7 +150,7 @@ describe('Complete', () => {
       input: `=1+arvar`,
       namespaceId,
       errorMessage: 'Unknown function arvar',
-      weight: 11,
+      weight: 1,
       expectInputImage: '=1+arvar',
       expectParseImage: '=1+arvar',
       expectNewInput: '=1+arvar'
@@ -145,7 +160,7 @@ describe('Complete', () => {
       input: `=1+arvar`,
       namespaceId: testNamespaceId,
       errorMessage: 'Unknown function arvar',
-      weight: 9,
+      weight: 0,
       expectInputImage: '=1+arvar',
       expectParseImage: '=1+arvar',
       expectNewInput: '=1+arvar'
@@ -175,7 +190,7 @@ describe('Complete', () => {
       input: `= 1 + ${testName1}.`,
       namespaceId,
       errorMessage: 'Missing expression',
-      weight: 250,
+      weight: 1,
       expectParseImage: `=1+#${namespaceId}.${testName1}.`,
       expectInputImage: `=1+#${namespaceId}.${testName1}.`,
       expectNewInput: `= 1 + #${namespaceId}.${testName1}.`
@@ -185,7 +200,7 @@ describe('Complete', () => {
       input: `= 1 + ${testName1}.`,
       namespaceId: testNamespaceId,
       errorMessage: `Unknown function ${testName1}`,
-      weight: 250,
+      weight: 0,
       expectParseImage: `=1+${testName1}.`,
       expectInputImage: `=1+${testName1}.`,
       expectNewInput: `= 1 + ${testName1}.`
@@ -216,7 +231,14 @@ describe('Complete', () => {
           ctx: {
             formulaContext,
             interpretContext,
-            meta: { namespaceId: testcaseNamespaceId, variableId: testVariableId, name: 'foo', input, type: 'normal' }
+            meta: {
+              namespaceId: testcaseNamespaceId,
+              variableId: testVariableId,
+              name: 'foo',
+              input,
+              position: 0,
+              type: 'normal'
+            }
           },
           position: input.length
         })

@@ -379,7 +379,7 @@ export class FormulaContext implements ContextInterface {
     const codeFragmentVisitor = new CodeFragmentVisitor({
       ctx: {
         formulaContext: this,
-        meta: { name: 'unknown', input, namespaceId: '', variableId: '', type: 'normal' },
+        meta: { name: 'unknown', input, namespaceId: '', variableId: '', position: 0, type: 'normal' },
         interpretContext: { ctx: {}, arguments: [] }
       }
     })

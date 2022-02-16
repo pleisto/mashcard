@@ -59,8 +59,11 @@ jobs:
         uses: tj-actions/changed-files@v14.6
         with:
           files: |
-            .(ts|tsx|js|jsx)$
             yarn.lock
+            **/*.ts
+            **/*.tsx
+            **/*.js
+            **/*.jsx
       - name: Setup NodeJS
         uses: actions/setup-node@v2
         if: steps.changed-es-files.outputs.any_changed == 'true'
@@ -172,8 +175,9 @@ jobs:
         uses: tj-actions/changed-files@v14.6
         with:
           files: |
-            .(rb|gemspec)$
             Gemfile.lock
+            **/*.rb
+            **/*.gemspec
       - name: Install Dependencies
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         run: sudo apt-get update && sudo apt-get install libsodium23 rustc

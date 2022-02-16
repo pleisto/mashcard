@@ -66,7 +66,6 @@ export interface CalculateInput {
   variable: VariableInterface | undefined
   formulaType: FormulaSourceType
   name: string
-  input: string
   editorContent: EditorContentType
   formulaContext: ContextInterface
 }
@@ -84,33 +83,18 @@ const calculate = async ({
   variable,
   formulaId,
   name,
-  input,
-  editorContent,
+  editorContent: { input, position },
   formulaType,
   formulaContext
 }: CalculateInput): Promise<CalculateOutput> => {
   const variableId = variable ? variable.t.variableId : formulaId
-  const meta = { namespaceId, variableId, name, input, type: formulaType }
-  const position = editorContent.position
+  const meta = { namespaceId, variableId, name, input, position, type: formulaType }
   const ctx = {
     formulaContext,
     meta,
     interpretContext: { ctx: {}, arguments: [] }
   }
-  const parseResult = parse({ ctx, position })
-
-  // devLog('calculate', {
-  //   ctx,
-  //   parseResult,
-  //   input,
-  //   position,
-  //   newPosition: parseResult.position,
-  //   lastChar: input[position - 1],
-  //   nextChar: input[position],
-  //   newInput: parseResult.input,
-  //   codeFragments: parseResult.codeFragments
-  // })
-
+  const parseResult = parse({ ctx })
   const completions = parseResult.completions
 
   let interpretResult: InterpretResult
@@ -161,6 +145,7 @@ const replaceRoot = ({
     FormulaEditorReplaceRootTrigger({
       position: editorContent.position,
       content: editorContent.content,
+      input: editorContent.input,
       formulaId,
       rootId
     })
@@ -216,11 +201,10 @@ export const useFormula = ({
     ? codeFragmentsToJSONContentTotal(oldCodeFragments)
     : buildJSONContentByDefinition(realDefinition)
 
-  const defaultEditorContent: EditorContentType = { content: defaultContent, position: 0 }
+  const defaultEditorContent: EditorContentType = { content: defaultContent, input: formulaValue ?? '', position: 0 }
 
   // Refs
   const nameRef = React.useRef(formulaName ?? defaultVariable?.t.name)
-  const inputRef = React.useRef(formulaValue)
   const variableRef = React.useRef(defaultVariable)
   const editorContentRef = React.useRef(defaultEditorContent)
   const isDraftRef = React.useRef(defaultVariable?.isDraft() === true)
@@ -243,17 +227,20 @@ export const useFormula = ({
       return
     }
 
-    const finalInput = inputRef.current ?? ''
-    const inputIsEmpty = ['', '='].includes(finalInput.trim())
+    const inputIsEmpty = ['', '='].includes(editorContentRef.current.input.trim())
+
+    const realInputs = positionBasedContentArrayToInput(
+      fetchJSONContentArray(editorContentRef.current.content),
+      editorContentRef.current.position
+    )
 
     const result = await calculate({
       namespaceId: rootId,
       formulaId,
       variable: variableRef.current,
       formulaType,
-      editorContent: editorContentRef.current,
+      editorContent: { ...editorContentRef.current, position: realInputs.prevText.length },
       name: nameRef.current ?? defaultNameRef.current,
-      input: finalInput,
       formulaContext
     })
 
@@ -261,7 +248,7 @@ export const useFormula = ({
 
     const { interpretResult, newPosition, parseResult, completions, newVariable } = result
 
-    // console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current })
+    // console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current, realInputs })
 
     setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
@@ -270,11 +257,9 @@ export const useFormula = ({
       const newContent = codeFragmentsToJSONContentTotal(codeFragments)
       const newInput = contentArrayToInput(fetchJSONContentArray(newContent))
       const newInputWithEqual = formulaIsNormal ? `=${newInput}` : newInput
-      const editorContent = { content: newContent, position: newPosition }
-      // console.log('replace editorContent', editorContent)
-      editorContentRef.current = editorContent
-      replaceRoot({ editorContent, rootId, formulaId })
-      inputRef.current = newInputWithEqual
+      editorContentRef.current = { content: newContent, input: newInputWithEqual, position: newPosition }
+      // console.log('replace editorContent', editorContentRef.current)
+      replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
     }
 
     if (formulaIsNormal && inputIsEmpty) {
@@ -367,10 +352,12 @@ export const useFormula = ({
     const finalInputAfterEqual = formulaIsNormal ? `=${finalInput}` : finalInput
     const newPosition = editorContentRef.current.position + positionChange
 
-    const newEditorContent: EditorContentType = { content: finalContent, position: newPosition }
-    editorContentRef.current = newEditorContent
-    replaceRoot({ editorContent: newEditorContent, rootId, formulaId })
-    inputRef.current = finalInputAfterEqual
+    editorContentRef.current = {
+      content: finalContent,
+      input: finalInputAfterEqual,
+      position: newPosition
+    }
+    replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
 
     devLog('selectCompletion', {
       finalContent,
@@ -408,8 +395,9 @@ export const useFormula = ({
       nameRef.current = defaultNameRef.current
     }
 
+    const input = editorContentRef.current.input
     const v = variableRef.current
-    v.t.definition = inputRef.current!
+    v.t.definition = input
     v.t.name = nameRef.current!
 
     updateFormula(v)
@@ -420,7 +408,7 @@ export const useFormula = ({
     setVariableT(v.t)
     setSavedVariableT(v.t)
 
-    devLog('save ...', { input: inputRef.current, variable: variableRef.current, formulaContext })
+    devLog('save ...', { input, variable: variableRef.current, formulaContext })
   }, [formulaContext, isDisableSave, updateFormula])
 
   // Effects
@@ -483,8 +471,7 @@ export const useFormula = ({
         const newPosition = event.payload.position
         const newInput = contentArrayToInput(fetchJSONContentArray(newContent))
         const value = formulaIsNormal ? `=${newInput}` : newInput
-        editorContentRef.current = { content: newContent, position: newPosition }
-        inputRef.current = value
+        editorContentRef.current = { content: newContent, input: value, position: newPosition }
         void doCalculate()
       },
       {
