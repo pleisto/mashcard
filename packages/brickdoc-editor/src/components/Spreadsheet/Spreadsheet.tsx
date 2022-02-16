@@ -72,6 +72,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
   )
 
   const spreadsheetContext = useSpreadsheetContext({
+    parentId,
     columnIds: columns.map(c => c.uuid),
     rowIds: rows.map(r => r.id),
     columnHeaders: new Map(columns.map(c => [c.uuid, columnDisplayTitle(c)])),
@@ -268,7 +269,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
-                              parentId={parentId}
+                              rootId={parentId}
                               key={block.id}
                               block={block}
                               saveBlock={saveCellBlock}

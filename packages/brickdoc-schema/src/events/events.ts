@@ -29,6 +29,13 @@ export const SpreadsheetLoaded = event<{ parentId: string; blocks: Block[] }>()(
   }
 )
 
+export const SpreadsheetUpdateCellValue = event<{ parentId: string; cellId: string; value: string }>()(
+  'SpreadsheetUpdateCellValue',
+  ({ parentId, cellId, value }) => {
+    return { id: `${parentId},${cellId}` }
+  }
+)
+
 export const BlockSynced = event<Block>()('BlockSynced', (block: Block) => {
   return { id: block.id }
 })

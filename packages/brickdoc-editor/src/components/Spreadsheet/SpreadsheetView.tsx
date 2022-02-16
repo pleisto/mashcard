@@ -379,9 +379,11 @@ export const SpreadsheetCellContainer: React.FC<{
   })
 
   const selectCell = (): void => {
-    window.getSelection()?.removeAllRanges()
-    context.selectCell(cellIdStr)
-    document.addEventListener('mousedown', unselectCell)
+    if (!context.editingCellId) {
+      window.getSelection()?.removeAllRanges()
+      context.selectCell(cellIdStr)
+      document.addEventListener('mousedown', unselectCell)
+    }
   }
 
   const onContextMenu: React.MouseEventHandler = (e: React.MouseEvent): void => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { devLog } from '@brickdoc/design-system'
+import { BrickdocEventBus, SpreadsheetUpdateCellValue } from '@brickdoc/schema'
 
 export interface SpreadsheetSelectionCellId {
   columnId: string
@@ -31,6 +32,8 @@ export interface SpreadsheetContext {
   selectRows: (rowIds: string[]) => void
   selectColumns: (columnIds: string[]) => void
   selectCell: (cellId: string) => void
+  editingCellId: string
+  setEditingCellId: (editingCellId: string) => void
   dragging: SpreadsheetDragging
   setDragging: (dragging: SpreadsheetDragging) => void
   copyToClipboard: (curSelections?: { columnIds?: string[]; rowIds?: string[]; cellIds?: string[] }) => void
@@ -44,6 +47,7 @@ export const keyDownMovements: { [key: string]: [number, number] } = {
 }
 
 export const useSpreadsheetContext = (options: {
+  parentId?: string
   columnIds: string[]
   rowIds: string[]
   columnHeaders: Map<string, string>
@@ -52,8 +56,9 @@ export const useSpreadsheetContext = (options: {
   const [selection, setSelection] = React.useState<SpreadsheetSelection>({})
   const [dragging, setDragging] = React.useState<SpreadsheetDragging>({})
   const [hoverRowId, setHoverRowId] = React.useState<string>('')
+  const [editingCellId, setEditingCellId] = React.useState<string>('')
 
-  const { columnIds, rowIds, columnHeaders, valuesMatrix } = options ?? {}
+  const { parentId, columnIds, rowIds, columnHeaders, valuesMatrix } = options ?? {}
 
   const clearSelection = (): void => {
     setSelection({})
@@ -98,6 +103,10 @@ export const useSpreadsheetContext = (options: {
     [selection, columnHeaders, valuesMatrix]
   )
 
+  // const setCellValue = (cellId: string): void => {
+
+  // }
+
   React.useEffect(() => {
     const onKeyDown = (e: KeyboardEvent): void => {
       devLog(`key down ${e.code}`)
@@ -137,12 +146,20 @@ export const useSpreadsheetContext = (options: {
       if (e.code === 'KeyC') {
         copyToClipboard()
       }
+
+      if (e.code === 'Backspace') {
+        if (cellIds?.length && parentId) {
+          cellIds.forEach(cellId => {
+            BrickdocEventBus.dispatch(SpreadsheetUpdateCellValue({ parentId, cellId, value: '' }))
+          })
+        }
+      }
     }
     document.addEventListener('keydown', onKeyDown)
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [selection, rowIds, columnIds, copyToClipboard])
+  }, [selection, rowIds, columnIds, parentId, copyToClipboard])
 
   return {
     hoverRowId,
@@ -153,6 +170,8 @@ export const useSpreadsheetContext = (options: {
     selectRows,
     selectColumns,
     selectCell,
+    editingCellId,
+    setEditingCellId,
     dragging,
     setDragging,
     copyToClipboard

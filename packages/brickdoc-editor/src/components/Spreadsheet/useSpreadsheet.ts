@@ -70,7 +70,7 @@ export const useSpreadsheet = (options: {
     [updateAttributeData, data]
   )
 
-  const loaded = React.useRef(isNew)
+  const loaded = React.useRef(false)
 
   const getRowBlock = React.useCallback(
     (index: number) => {
@@ -292,7 +292,7 @@ export const useSpreadsheet = (options: {
   }, [])
 
   React.useEffect(() => {
-    if (isNewRef.current) {
+    if (isNewRef.current && latestRowsCount.current === 0) {
       // TODO: temp fix for delay tiptap doc quick update
       setTimeout(() => saveRowBlocks([getRowBlock(0), getRowBlock(1), getRowBlock(2)]), 50)
       isNewRef.current = false
