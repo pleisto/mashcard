@@ -111,7 +111,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
     <div className={styles.page}>
       {snapshotTitle}
       <DocumentPage
-        snapshot={true}
+        mode="presentation"
         docMeta={{ ...docMeta, snapshotVersion: currentVersion ?? firstVersion, editable: false, viewable: true }}
       />
     </div>,

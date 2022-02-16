@@ -5,14 +5,16 @@ import React from 'react'
 import { DocMeta } from '../DocumentContentPage'
 
 export function useDocumentEditable(
+  freeze: boolean,
   docMeta: DocMeta,
   currentRootBlock: Block | undefined
 ): [boolean, React.Dispatch<React.SetStateAction<boolean>>] {
   // if there is no doc id, document will not have deleted status
-  const [documentEditable, setDocumentEditable] = React.useState(!docMeta.id)
+  const [documentEditable, setDocumentEditable] = React.useState(!freeze && !docMeta.id)
   const editor = useReactiveVar(editorVar)
 
   React.useEffect(() => {
+    if (freeze) return
     if (currentRootBlock) {
       if (editor) {
         const nextEditable = docMeta.editable
@@ -23,7 +25,7 @@ export function useDocumentEditable(
         }
       }
     }
-  }, [currentRootBlock, editor, docMeta.editable])
+  }, [currentRootBlock, editor, docMeta.editable, freeze])
 
   return [documentEditable, setDocumentEditable]
 }

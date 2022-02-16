@@ -15,10 +15,12 @@ import { useEditorDataSource } from './hooks/useEditorDataSource'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 interface DocumentPageProps {
   docMeta: DocMeta
-  snapshot?: boolean
+  // default: user can edit/view document normally
+  // presentation: just for viewing and can not edit it.
+  mode?: 'default' | 'presentation'
 }
 
-export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, snapshot }) => {
+export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => {
   // apollo doesn't work well with React Suspense. We must place this suspense-related hook above
   // apollo useQuery API to avoid issues like sending request twice.
   // useEditorI18n() is called inside useEditor(), which is below useGetChildrenBlocksQuery(). So we
@@ -32,8 +34,9 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, snapshot })
 
   const { rootBlock, data, loading, refetch, onDocSave } = useSyncProvider(queryVariables)
 
+  const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
-  const [documentEditable, setDocumentEditable] = useDocumentEditable(docMeta, currentRootBlock)
+  const [documentEditable, setDocumentEditable] = useDocumentEditable(freeze ?? false, docMeta, currentRootBlock)
 
   const editorDataSource = useEditorDataSource({
     docMeta,
@@ -48,8 +51,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, snapshot })
   })
 
   useEffect(() => {
-    if (!snapshot) editorVar(editor)
-  }, [editor, snapshot])
+    if (!freeze) editorVar(editor)
+  }, [editor, freeze])
 
   useEffect(() => {
     if (editor && !editor.isDestroyed && data?.childrenBlocks) {
