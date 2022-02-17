@@ -786,7 +786,7 @@ Array [
         "display": "Untitled",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
+        "renderText": [Function],
         "type": "any",
         "value": "#d986e871-cb85-4bd5-b675-87307f60b882",
       },

@@ -88,7 +88,7 @@ export const useSpreadsheet = (options: {
     [parentId]
   )
 
-  const setBlockToCellsMap = (block: BlockInput): void => {
+  const setBlockToCellsMap = React.useCallback((block: BlockInput): void => {
     const rowId = block.parentId
     if (rowId) {
       let rowCellsMap = cellsMap.current.get(rowId)
@@ -98,7 +98,7 @@ export const useSpreadsheet = (options: {
       }
       rowCellsMap.set(block.data.columnId, block)
     }
-  }
+  }, [])
 
   BrickdocEventBus.subscribe(
     SpreadsheetLoaded,
@@ -240,23 +240,26 @@ export const useSpreadsheet = (options: {
     [rows, saveRowBlocks]
   )
 
-  const getCellBlock = (rowId: string, columnId: string): BlockInput => {
-    let block = cellsMap.current.get(rowId)?.get(columnId)
-    if (!block) {
-      block = {
-        id: uuid(),
-        sort: 0,
-        type: 'spreadsheetCell',
-        parentId: rowId, // Save rowId to cell block parentId
-        content: [],
-        meta: {},
-        text: '',
-        data: { columnId, formulaId: uuid() }
+  const getCellBlock = React.useCallback(
+    (rowId: string, columnId: string): BlockInput => {
+      let block = cellsMap.current.get(rowId)?.get(columnId)
+      if (!block) {
+        block = {
+          id: uuid(),
+          sort: 0,
+          type: 'spreadsheetCell',
+          parentId: rowId, // Save rowId to cell block parentId
+          content: [],
+          meta: {},
+          text: '',
+          data: { columnId, formulaId: uuid() }
+        }
+        setBlockToCellsMap(block)
       }
-      setBlockToCellsMap(block)
-    }
-    return block
-  }
+      return block
+    },
+    [setBlockToCellsMap]
+  )
 
   // const getCellBlockByIdx = React.useCallback(
   //   (rowIdx: number, columnIdx: number): BlockInput => {
@@ -283,13 +286,16 @@ export const useSpreadsheet = (options: {
   //   [rows, columns]
   // )
 
-  const saveCellBlock = React.useCallback((block: BlockInput): void => {
-    devLog(`Saving cell block`, block)
-    setBlockToCellsMap(block)
-    blocksMap.current.set(block.id, block)
-    BrickdocEventBus.dispatch(UpdateBlock({ block }))
-    BrickdocEventBus.dispatch(CommitBlocks({}))
-  }, [])
+  const saveCellBlock = React.useCallback(
+    (block: BlockInput): void => {
+      devLog(`Saving cell block`, block)
+      setBlockToCellsMap(block)
+      blocksMap.current.set(block.id, block)
+      BrickdocEventBus.dispatch(UpdateBlock({ block }))
+      BrickdocEventBus.dispatch(CommitBlocks({}))
+    },
+    [setBlockToCellsMap]
+  )
 
   React.useEffect(() => {
     if (isNewRef.current && latestRowsCount.current === 0) {

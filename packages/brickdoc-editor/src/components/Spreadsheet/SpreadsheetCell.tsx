@@ -1,8 +1,15 @@
 import React from 'react'
 
-import { BrickdocEventBus, Event, BlockInput, SpreadsheetUpdateCellValue } from '@brickdoc/schema'
+import {
+  BrickdocEventBus,
+  Event,
+  BlockInput,
+  SpreadsheetUpdateCellValue,
+  FormulaUpdatedViaId,
+  BlockSpreadsheetLoaded
+} from '@brickdoc/schema'
 import { FormulaBlockRender } from '../Formula/FormulaBlockRender'
-import { displayValue, VariableInterface } from '@brickdoc/formula'
+import { displayValue } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { FormulaRender } from '../Formula/FormulaRender'
 import { devLog } from '@brickdoc/design-system'
@@ -25,7 +32,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
   const formulaId = currentBlock.data.formulaId
   const formulaName = `${currentBlock.parentId}_${currentBlock.data.columnId}`
 
-  const variable = formulaContext?.findVariable(rootId, formulaId)
+  const variableRef = React.useRef(formulaContext?.findVariable(rootId, formulaId))
 
   const editing = context?.editingCellId === formulaName
   const { setEditingCellId } = context
@@ -34,43 +41,70 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
     [setEditingCellId, formulaName]
   )
 
-  const updateFormula = React.useCallback(
-    (variable: VariableInterface | undefined): void => {
-      if (variable) {
-        const value = displayValue(variable.t.variableValue.result)
-        devLog('Spreadsheet cell formula updated', { cellId, value })
-        const newBlock = {
-          ...block,
-          data: { ...block.data, t: variable.result() },
-          text: value
-        }
-        setCurrentBlock(newBlock)
-        saveBlock(newBlock)
+  const refreshCell = React.useCallback((): void => {
+    if (variableRef.current) {
+      const value = displayValue(variableRef.current.t.variableValue.result)
+      devLog('Spreadsheet cell formula updated', { cellId, value })
+      const newBlock = {
+        ...block,
+        data: { ...block.data, t: variableRef.current.result() },
+        text: value
       }
-      // devLog('updateFormula', { variable, block, newBlock, parentId, formulaId })
-      setEditing(false)
+      setCurrentBlock(newBlock)
+      saveBlock(newBlock)
+      BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: rootId }))
+    }
+    // devLog('updateFormula', { variable, block, newBlock, parentId, formulaId })
+    setEditing(false)
+  }, [setEditing, cellId, block, saveBlock, rootId])
+
+  const updateFormula = React.useCallback(
+    (variable): void => {
+      variableRef.current = variable
+      refreshCell()
     },
-    [block, saveBlock, cellId, setEditing]
+    [refreshCell]
   )
 
   const eventId = `${rootId},${cellId}`
 
-  const updateCellValue = async (value: string) => {
-    if (variable) {
-      await variable.updateDefinition(value)
-      updateFormula(variable)
-    }
-  }
-
-  BrickdocEventBus.subscribe(
-    SpreadsheetUpdateCellValue,
-    (e: Event) => {
-      const { value } = e.payload
-      devLog('Spreadsheet update cell', { eventId, value })
-      void updateCellValue(value)
+  const updateCellValue = React.useCallback(
+    async (value: string) => {
+      if (variableRef.current) {
+        await variableRef.current.updateDefinition(value)
+        refreshCell()
+      }
     },
-    { eventId, subscribeId: eventId }
+    [refreshCell]
   )
+
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      FormulaUpdatedViaId,
+      e => {
+        variableRef.current = e.payload
+        refreshCell()
+      },
+      {
+        eventId: `${rootId},${formulaId}`,
+        subscribeId: `UseFormula#${rootId},${formulaId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [formulaId, refreshCell, rootId])
+
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      SpreadsheetUpdateCellValue,
+      (e: Event) => {
+        const { value } = e.payload
+        devLog('Spreadsheet update cell', { eventId, value })
+        void updateCellValue(value)
+      },
+      { eventId, subscribeId: eventId }
+    )
+    return () => listener.unsubscribe()
+  }, [eventId, updateCellValue])
 
   const handleEnterEdit = (): void => {
     context.clearSelection()

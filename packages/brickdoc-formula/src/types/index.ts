@@ -76,6 +76,7 @@ export type ErrorType =
   | 'circular_dependency'
   | 'name_unique'
   | 'name_check'
+  | 'name_invalid'
   | 'custom'
 
 export type ParseErrorType = 'parse' | 'syntax'
@@ -627,6 +628,7 @@ export interface VariableInterface {
   trackDependency: VoidFunction
   destroy: () => Promise<void>
   save: () => Promise<void>
+  reparseOnly: VoidFunction
   isDraft: () => boolean
   namespaceName: () => string
   updateDefinition: (definition: Definition) => Promise<void>

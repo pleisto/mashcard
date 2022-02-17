@@ -78,6 +78,34 @@ export interface CalculateOutput {
   interpretResult: InterpretResult
 }
 
+const variableErrorFatal = (variable: VariableInterface | undefined): boolean => {
+  if (!variable) return false
+
+  const { success, result } = variable.t.variableValue
+  if (
+    !success &&
+    result.type === 'Error' &&
+    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.errorKind)
+  ) {
+    return true
+  }
+
+  return false
+}
+
+const fetchEditorContent = (variable: VariableInterface | undefined, formulaIsNormal: boolean): EditorContentType => {
+  const formulaValue = variable?.t.valid
+    ? variable.t.codeFragments.map(fragment => fragment.value).join('')
+    : variable?.t.definition
+  const realDefinition = maybeRemoveDefinitionEqual(formulaValue, formulaIsNormal)
+  const oldCodeFragments = maybeRemoveCodeFragmentsEqual(variable?.t.codeFragments, formulaIsNormal)
+  const defaultContent = variable?.t.valid
+    ? codeFragmentsToJSONContentTotal(oldCodeFragments)
+    : buildJSONContentByDefinition(realDefinition)
+
+  return { content: defaultContent, input: formulaValue ?? '', position: 0 }
+}
+
 const calculate = async ({
   namespaceId,
   variable,
@@ -194,14 +222,7 @@ export const useFormula = ({
     [formulaId, formulaContext, formulaIsNormal, formulaValue, rootId]
   )
 
-  const realDefinition = maybeRemoveDefinitionEqual(formulaValue, formulaIsNormal)
-
-  const oldCodeFragments = maybeRemoveCodeFragmentsEqual(defaultVariable?.t.codeFragments, formulaIsNormal)
-  const defaultContent = defaultVariable?.t.valid
-    ? codeFragmentsToJSONContentTotal(oldCodeFragments)
-    : buildJSONContentByDefinition(realDefinition)
-
-  const defaultEditorContent: EditorContentType = { content: defaultContent, input: formulaValue ?? '', position: 0 }
+  const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal)
 
   // Refs
   const nameRef = React.useRef(formulaName ?? defaultVariable?.t.name)
@@ -248,7 +269,7 @@ export const useFormula = ({
 
     const { interpretResult, newPosition, parseResult, completions, newVariable } = result
 
-    // console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current, realInputs })
+    console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current, realInputs })
 
     setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
@@ -262,7 +283,7 @@ export const useFormula = ({
       replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
     }
 
-    if (formulaIsNormal && inputIsEmpty) {
+    if (formulaIsNormal && inputIsEmpty && !variableErrorFatal(newVariable)) {
       variableRef.current = undefined
       setVariableT(undefined)
     } else {
@@ -303,10 +324,11 @@ export const useFormula = ({
     //   currentCompletion
     // })
     if (oldContentLast && prevText && currentCompletion.replacements.length) {
-      if (currentCompletion.replacements.includes(prevText)) {
+      if (currentCompletion.replacements.includes(prevText) || currentCompletion.name.startsWith(prevText)) {
         positionChange -= prevText.length
         oldContent = []
       } else {
+        // TODO ("a b c") "1 + a b" -> "1 + a b c"
         const replacement = currentCompletion.replacements.find(replacement => prevText.endsWith(replacement))
         if (!replacement) {
           devLog('replacement not found 1', { prevText, currentCompletion, nextText })
@@ -377,7 +399,9 @@ export const useFormula = ({
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     if (!(nameRef.current || defaultNameRef.current)) return true
     // if (!inputRef.current) return true
-    // if (error && ['name_unique', 'name_check', 'fatal'].includes(error.type)) return true
+
+    const errorFatal = variableErrorFatal(variableRef.current)
+    if (errorFatal) return true
 
     return false
   }, [formulaContext])
@@ -502,6 +526,7 @@ export const useFormula = ({
       FormulaUpdatedViaId,
       e => {
         variableRef.current = e.payload
+        editorContentRef.current = fetchEditorContent(e.payload, formulaIsNormal)
         setVariableT(e.payload.t)
         setSavedVariableT(e.payload.t)
       },
@@ -511,7 +536,7 @@ export const useFormula = ({
       }
     )
     return () => listener.unsubscribe()
-  }, [formulaId, rootId])
+  }, [formulaId, formulaIsNormal, rootId])
 
   return {
     variableT,

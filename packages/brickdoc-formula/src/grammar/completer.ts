@@ -30,17 +30,30 @@ export const complete = ({
 }: CompleteInput): Completion[] => {
   let completions = cacheCompletions ?? formulaContext.completions(namespaceId, variableId)
   let lastCodeFragment: CodeFragment | undefined = codeFragments[codeFragments.length - 1]
-  let input = ''
+  const inputs: CodeFragment[] = []
 
   codeFragments.every(codeFragment => {
-    input = input.concat(codeFragment.display)
-    if (input.length <= position) {
+    inputs.push(codeFragment)
+    if (inputs.map(i => i.display).join('').length <= position) {
       return true
     }
 
-    lastCodeFragment = codeFragment
     return false
   })
+
+  let extraSpaces = ''
+
+  inputs.reverse().every(codeFragment => {
+    if (codeFragment.code === 'Space') {
+      extraSpaces = extraSpaces.concat(codeFragment.display)
+      return true
+    }
+
+    lastCodeFragment = { ...codeFragment, value: codeFragment.value.concat(extraSpaces) }
+    return false
+  })
+
+  // console.log('completion', { lastCodeFragment, position, inputs, tokens, codeFragments, completions })
 
   if (!lastCodeFragment) {
     return completions
@@ -88,8 +101,6 @@ export const complete = ({
         : c
     })
   }
-
-  // devLog({ name, code, lastCodeFragment, position, input, tokens, codeFragments, completions })
 
   if (['FunctionName', 'Function'].includes(code)) {
     completions = completions.map(c => {

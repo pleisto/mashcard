@@ -259,6 +259,7 @@ const changePosition = (
   return newPosition
 }
 
+// eslint-disable-next-line complexity
 export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): ParseResult => {
   const {
     formulaContext,
@@ -285,6 +286,40 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     functionDependencies: [],
     blockDependencies: [],
     flattenVariableDependencies: []
+  }
+
+  if (type === 'normal' && !/[a-zA-Z]/.test(name[0])) {
+    return {
+      ...returnValue,
+      success: false,
+      kind: 'unknown',
+      errorType: 'syntax',
+      errorMessages: [{ message: 'Variable name should start with letters', type: 'name_invalid' }]
+    }
+  }
+
+  if (formulaContext.reservedNames.includes(name.toUpperCase())) {
+    return {
+      ...returnValue,
+      success: false,
+      kind: 'unknown',
+      errorType: 'syntax',
+      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }]
+    }
+  }
+
+  const sameNameVariable = formulaContext.formulaNames.find(
+    v => v.name.toUpperCase() === name.toUpperCase() && v.namespaceId === namespaceId && v.key !== variableId
+  )
+
+  if (type === 'normal' && sameNameVariable) {
+    return {
+      ...returnValue,
+      success: false,
+      kind: 'unknown',
+      errorType: 'syntax',
+      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }]
+    }
   }
 
   if (!input.startsWith('=') || (type !== 'normal' && input.trim() === '=')) {
@@ -343,14 +378,6 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   const errorCodeFragment = codeFragments.find(f => f.errors.length)
   const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
 
-  completions = complete({
-    position,
-    cacheCompletions: baseCompletion,
-    codeFragments,
-    tokens,
-    ctx
-  })
-
   returnValue.kind = codeFragmentVisitor.kind
   returnValue.variableDependencies = codeFragmentVisitor.variableDependencies
   returnValue.variableNameDependencies = codeFragmentVisitor.variableNameDependencies
@@ -362,7 +389,6 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   returnValue.cst = cst
   returnValue.input = newInput
   returnValue.parseImage = image
-  returnValue.completions = completions
 
   const parseErrors: IRecognitionException[] = parser.errors
 
@@ -407,12 +433,20 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   )
 
   const { finalCodeFragments, finalPositionFragment } = hideDot(addSpaceCodeFragment, addSpacePositionFragment)
-
   const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
   const newPositionWithoutEqual = type === 'normal' ? newPosition - 1 : newPosition
 
+  completions = complete({
+    position: newPositionWithoutEqual,
+    cacheCompletions: baseCompletion,
+    codeFragments: finalCodeFragments,
+    tokens,
+    ctx
+  })
+
   returnValue.codeFragments = finalCodeFragments
   returnValue.position = newPositionWithoutEqual
+  returnValue.completions = completions
 
   if (finalErrorMessages.length) {
     return {
@@ -436,30 +470,6 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
       kind: 'unknown',
       errorType: 'syntax',
       errorMessages: [{ message: 'Circular dependency found', type: 'circular_dependency' }]
-    }
-  }
-
-  if (formulaContext.reservedNames.includes(name.toUpperCase())) {
-    return {
-      ...returnValue,
-      success: false,
-      kind: 'unknown',
-      errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }]
-    }
-  }
-
-  const sameNameVariable = formulaContext.formulaNames.find(
-    v => v.name.toUpperCase() === name.toUpperCase() && v.namespaceId === namespaceId && v.key !== variableId
-  )
-
-  if (sameNameVariable) {
-    return {
-      ...returnValue,
-      success: false,
-      kind: 'unknown',
-      errorType: 'syntax',
-      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }]
     }
   }
 

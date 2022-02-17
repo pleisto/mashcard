@@ -290,7 +290,7 @@ export class VariableClass implements VariableInterface {
     this.afterUpdate()
   }
 
-  private async maybeReparse(): Promise<void> {
+  private async maybeReparseAndPersist(): Promise<void> {
     // console.log('reparse', this.t.variableId, this.t.name)
     if (this.reparsing) {
       return
@@ -304,6 +304,11 @@ export class VariableClass implements VariableInterface {
     this.reparsing = false
   }
 
+  public reparseOnly(): void {
+    const formula = this.buildFormula()
+    this.t = castVariable(this.formulaContext, formula)
+  }
+
   public updateCst(cst: CstNode, interpretContext: InterpretContext): void {
     this.t.cst = cst
     void this.refresh(interpretContext)
@@ -311,7 +316,7 @@ export class VariableClass implements VariableInterface {
 
   public async updateDefinition(definition: Definition): Promise<void> {
     this.t.definition = definition
-    await this.maybeReparse()
+    await this.maybeReparseAndPersist()
   }
 
   private async refresh(interpretContext: InterpretContext): Promise<void> {
@@ -357,7 +362,7 @@ export class VariableClass implements VariableInterface {
       const result = BrickdocEventBus.subscribe(
         BlockSpreadsheetLoaded,
         e => {
-          void this.maybeReparse()
+          void this.maybeReparseAndPersist()
         },
         { eventId: blockId, subscribeId: `SpreadsheetDependency#${t.variableId}` }
       )
@@ -368,7 +373,7 @@ export class VariableClass implements VariableInterface {
       const result = BrickdocEventBus.subscribe(
         FormulaUpdatedViaId,
         e => {
-          void this.maybeReparse()
+          void this.maybeReparseAndPersist()
         },
         {
           eventId: `${namespaceId},${variableId}`,
@@ -382,7 +387,7 @@ export class VariableClass implements VariableInterface {
       const result = BrickdocEventBus.subscribe(
         FormulaUpdatedViaName,
         e => {
-          void this.maybeReparse()
+          void this.maybeReparseAndPersist()
         },
         {
           eventId: `${namespaceId}#${name}`,

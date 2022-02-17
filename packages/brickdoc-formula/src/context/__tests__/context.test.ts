@@ -116,6 +116,25 @@ describe('Context', () => {
     expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is reserved', type: 'name_check' }])
   })
 
+
+  it('invalid name check', () => {
+    const newFooVariableId = '7fb702f9-8216-47de-a574-e6b8eede5bf5'
+    const name = '1asd'
+    const input = '=123'
+    const meta: VariableMetadata = {
+      namespaceId: fooNamespaceId,
+      variableId: newFooVariableId,
+      name,
+      input,
+      position: 0,
+      type: 'normal'
+    }
+    const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
+    expect(parseResult.errorMessages).toEqual([
+      { message: 'Variable name should start with letters', type: 'name_invalid' }
+    ])
+  })
+
   it('if', () => {
     const input = `=IF((#${fooNamespaceId}.${fooVariableId}), 1, 2)`
     const name = 'ifname'

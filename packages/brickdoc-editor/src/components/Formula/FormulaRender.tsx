@@ -26,6 +26,7 @@ import {
 } from '@brickdoc/formula'
 import { FORMULA_COLORS } from '../../helpers/color'
 
+// TODO refactor me
 const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType): React.ReactElement => {
   const spreadsheet = result.result
   const columns = spreadsheet.listColumns()
@@ -60,7 +61,6 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
       <SpreadsheetScrollView>
         <SpreadsheetView>
           <SpreadsheetHeader context={spreadsheetContext}>
-            <SpreadsheetHeaderColumn className="row-action-panel" context={spreadsheetContext} columnId="" />
             {columns.map(c => (
               <SpreadsheetHeaderColumn key={c.columnId} context={spreadsheetContext} columnId={c.columnId}>
                 <div className="column">{c.name}</div>
@@ -75,8 +75,7 @@ const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType):
                     <SpreadsheetCellContainer
                       key={c.columnId}
                       context={spreadsheetContext}
-                      cellId={{ rowId, columnId: c.columnId }}
-                    >
+                      cellId={{ rowId, columnId: c.columnId }}>
                       <div className="column">{valuesMatrix.get(rowId)?.get(c.columnId)}</div>
                     </SpreadsheetCellContainer>
                   ))}

@@ -5957,7 +5957,7 @@ Array [
     "display": "Untitled",
     "errors": Array [],
     "hide": true,
-    "renderText": undefined,
+    "renderText": [Function],
     "type": "any",
     "value": "#57622108-1337-4edd-833a-2557835bcfe0",
   },
