@@ -28,6 +28,7 @@ type icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['i
 export interface DocMeta {
   id: string | undefined
   webid: string
+  personalWebid: string
   loginWebid: string
   isAlias: boolean
   alias: string | undefined
@@ -79,6 +80,7 @@ export const DocumentContentPage: React.FC = () => {
   })
   const loading = !data || getBlockInfoLoading || createBlockLoading
   const isAnonymous = !currentUser
+  const personalWebid = currentUser?.webid ?? loginWebid
 
   const { state } = useLocation()
 
@@ -124,10 +126,11 @@ export const DocumentContentPage: React.FC = () => {
       collaborators,
       pathArray,
       icon,
+      personalWebid,
       documentInfoLoading: loading,
       snapshotVersion: Number(snapshotVersion ?? '0')
     }
-  }, [data, docid, host, isAnonymous, loading, loginWebid, snapshotVersion, state, t, webid])
+  }, [data, docid, host, isAnonymous, loading, personalWebid, loginWebid, snapshotVersion, state, t, webid])
 
   const getFormulas = useFormulaQuery(docMeta)
   const backendActions = useFormulaBackendActions()

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react'
-import { DeprecatedSkeleton, Alert } from '@brickdoc/design-system'
+import { DeprecatedSkeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
@@ -79,9 +79,12 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
     return <DeprecatedSkeleton active />
   }
 
+  const redirectPersonalPodPath = `/${docMeta.personalWebid}`
+
   if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {
     if (docMeta.isRedirect) {
-      return <Alert message="TODO Page not found" type="error" />
+      return <Navigate to={redirectPersonalPodPath} />
+      // return <Alert message="TODO Page not found" type="error" />
     } else {
       return <Navigate to="/" />
     }
@@ -106,6 +109,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
   if (data?.childrenBlocks?.length) {
     return PageElement
   } else {
-    return <Alert message="TODO Page not found" type="error" />
+    return <Navigate to={redirectPersonalPodPath} />
+    // return <Alert message="TODO Page not found" type="error" />
   }
 }
