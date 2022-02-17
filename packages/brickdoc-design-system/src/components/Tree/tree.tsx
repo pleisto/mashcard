@@ -1,4 +1,13 @@
-import { ForwardRefRenderFunction, useState, useMemo, useRef, useEffect, ReactNode, forwardRef } from 'react'
+import {
+  ForwardRefRenderFunction,
+  useState,
+  useCallback,
+  useMemo,
+  useRef,
+  useEffect,
+  ReactNode,
+  forwardRef
+} from 'react'
 import List, { ListRef } from 'rc-virtual-list'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -61,23 +70,26 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const flattened = useMemoizedFn((node, indent: number, result: TNode[]) => {
-    const { children, value } = node
-    const collapsed = openedIds.includes(value)
+  const flattened = useCallback(
+    (node, indent: number, result: TNode[]) => {
+      const { children, value } = node
+      const collapsed = openedIds.includes(value)
 
-    result.push({
-      ...node,
-      hasChildren: (children ?? []).length > 0,
-      indent: indent ?? 0,
-      collapsed
-    })
+      result.push({
+        ...node,
+        hasChildren: (children ?? []).length > 0,
+        indent: indent ?? 0,
+        collapsed
+      })
 
-    if (collapsed && children) {
-      for (const child of children) {
-        flattened(child, indent + 1, result)
+      if (collapsed && children) {
+        for (const child of children) {
+          flattened(child, indent + 1, result)
+        }
       }
-    }
-  })
+    },
+    [openedIds]
+  )
 
   const renderTree = useMemo(() => {
     const result: TNode[] = []
@@ -89,9 +101,9 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
 
   const handleSelected = useMemoizedFn((id: string) => setSelectedId(id))
 
-  const handleItemClick = useMemoizedFn((node: TNode) =>
+  const handleItemClick = useMemoizedFn((node: TNode) => {
     node.collapsed ? setOpenedIds(i => i.filter(value => value !== node.value)) : setOpenedIds(i => [...i, node.value])
-  )
+  })
 
   const moveNode = useMemoizedFn((item: MoveNode) => {
     if (!draggable) return
@@ -106,8 +118,7 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
         height={height ?? 200}
         itemHeight={34}
         itemKey="key"
-        ref={ref ?? listRef}
-      >
+        ref={ref ?? listRef}>
         {(item, index) => (
           <Node
             className={treeNodeClassName}
