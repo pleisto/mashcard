@@ -187,6 +187,14 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
           }
         })
         client.cache.modify({
+          id: client.cache.identify({ __typename: 'BlockPath', id: block.id }),
+          fields: {
+            text() {
+              return block.text
+            }
+          }
+        })
+        client.cache.modify({
           id: client.cache.identify({ __typename: 'block', id: block.id }),
           fields: {
             text() {
