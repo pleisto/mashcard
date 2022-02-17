@@ -31,7 +31,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const [inviteModalVisible, setInviteModalVisible] = React.useState<boolean>(false)
   const [copied, setCopied] = React.useState<boolean>(false)
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation()
-  const { data } = useGetBlockShareLinksQuery({ variables: { id: docMeta.id } })
+  const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id: docMeta.id } })
 
   const ANYONE_WEBID = 'anyone'
 

@@ -136,7 +136,8 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
                 fontSize: '1em',
                 input: {
                   fontWeight: 500
-                }
+                },
+                background: 'none'
               }}
               ref={container => {
                 if (container) {

@@ -213,6 +213,7 @@ export const DocumentContentPage: React.FC = () => {
             {docMeta.id && (
               <DocumentPage
                 docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
+                mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'}
               />
             )}
           </article>

@@ -64,7 +64,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
     }
   }, [editor, data, data?.childrenBlocks])
 
-  if (docMeta.snapshotVersion === 0) {
+  // due to #914, to reduce conflicts, temporarily disable subscription for documents in presentation mode
+  if (docMeta.snapshotVersion === 0 && !freeze) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDocumentSubscription({
       docid: docMeta.id as string,
