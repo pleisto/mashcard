@@ -1,9 +1,9 @@
 import { Block, GetTrashBlocksQueryVariables, useGetTrashBlocksQuery } from '@/BrickdocGraphQL'
-import { DeprecatedList, DeprecatedSkeleton } from '@brickdoc/design-system'
+import { DeprecatedSkeleton, useList } from '@brickdoc/design-system'
 import React from 'react'
 import { useDocsI18n } from '../../hooks'
 import { BlockListItem } from '../BlockListItem'
-import styles from './PageTrash.module.css'
+import { List, Item, NotFound } from './PageTrash.style'
 
 interface PageTrashProps {
   webid: string
@@ -15,6 +15,7 @@ interface PageTrashProps {
 
 export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, visible, setVisible }) => {
   const { t } = useDocsI18n()
+  const { list, getKey, addList } = useList<Block>()
 
   const input: GetTrashBlocksQueryVariables = React.useMemo(
     () => ({
@@ -28,6 +29,11 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, visi
   const { data, loading, refetch } = useGetTrashBlocksQuery({ variables: input })
 
   React.useEffect(() => {
+    addList(data?.trashBlocks as Block[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data])
+          
+  React.useEffect(() => {
     if (visible) {
       void refetch()
     }
@@ -38,24 +44,16 @@ export const PageTrash: React.FC<PageTrashProps> = ({ webid, docid, search, visi
   }
 
   if (!data?.trashBlocks?.length) {
-    return <p className={styles.notFound}>{t('trash.not_found')}</p>
+    return <NotFound>{t('trash.not_found')}</NotFound>
   }
 
   return (
-    <DeprecatedList
-      className={styles.list}
-      size="small"
-      split={false}
-      footer={null}
-      header={null}
-      dataSource={data.trashBlocks as Block[]}
-      renderItem={(item: Block) => {
-        return (
-          <DeprecatedList.Item key={item.id} className={styles.item}>
-            <BlockListItem webid={webid} block={item} setVisible={setVisible} />
-          </DeprecatedList.Item>
-        )
-      }}
-    />
+    <List>
+      {list.map((item: Block, index: number) => (
+        <Item key={getKey(index)}>
+          <BlockListItem webid={webid} block={item} setVisible={setVisible} />
+        </Item>
+      ))}
+    </List>
   )
 }

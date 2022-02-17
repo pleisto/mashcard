@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-
-import React, { useEffect } from 'react'
-import { Button, Input, Icon, DeprecatedList, Popover, Switch, toast, cx } from '@brickdoc/design-system'
+import React, { useEffect, useMemo } from 'react'
+import { Button, Input, Icon, Popover, Switch, toast, cx, useList } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import { InviteModal } from '../InviteModal'
 import {
@@ -13,8 +12,9 @@ import {
   ShareLink
 } from '@/BrickdocGraphQL'
 import { ShareLinkListItem } from '../ShareLinkListItem'
-import styles from './index.module.less'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import styles from './index.module.less'
+import { List, Item } from './index.style'
 
 interface SharePopoverProps {
   docMeta: NonNullDocMeta
@@ -32,6 +32,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const [copied, setCopied] = React.useState<boolean>(false)
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation()
   const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id: docMeta.id } })
+  const { list, getKey, addList } = useList<ShareLink>()
 
   const ANYONE_WEBID = 'anyone'
 
@@ -110,29 +111,31 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     </>
   ) : null
 
-  const inviteData =
-    data?.blockShareLinks.filter(
-      link => link.state === ShareLinkState.Enabled && link.sharePodData.webid !== ANYONE_WEBID
-    ) ?? []
+  const inviteData = useMemo(
+    () =>
+      data?.blockShareLinks.filter(
+        link => link.state === ShareLinkState.Enabled && link.sharePodData.webid !== ANYONE_WEBID
+      ) ?? [],
+    [data]
+  )
+
   const suggestPods =
     data?.blockShareLinks.filter(link => link.sharePodData.webid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
 
-  const inviteList = inviteData.length ? (
+  useEffect(() => {
+    addList(inviteData as ShareLink[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inviteData])
+
+  const inviteList = list.length ? (
     <div className={styles.invite_list}>
-      <DeprecatedList
-        size="small"
-        footer={null}
-        header={null}
-        dataSource={inviteData as ShareLink[]}
-        split={false}
-        renderItem={(item: ShareLink) => {
-          return (
-            <DeprecatedList.Item>
-              <ShareLinkListItem docMeta={docMeta} item={item} />
-            </DeprecatedList.Item>
-          )
-        }}
-      />
+      <List>
+        {list.map((item: ShareLink, index: number) => (
+          <Item key={getKey(index)}>
+            <ShareLinkListItem docMeta={docMeta} item={item} />
+          </Item>
+        ))}
+      </List>
     </div>
   ) : (
     <></>

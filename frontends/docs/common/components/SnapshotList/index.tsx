@@ -1,5 +1,5 @@
 import React from 'react'
-import { DeprecatedList, Button, cx } from '@brickdoc/design-system'
+import { Button, cx, useList } from '@brickdoc/design-system'
 import { DocumentPage } from '@/docs/pages/DocumentPage'
 import { SnapshotRestoreInput, useGetBlockSnapshotsQuery, useSnapshotRestoreMutation } from '@/BrickdocGraphQL'
 import styles from './index.module.less'
@@ -7,6 +7,7 @@ import { useDocsI18n } from '../../hooks'
 import Pic from '@/common/assets/cloud_brain_2.svg'
 import { queryBlockInfo, queryChildrenBlocks } from '@/docs/pages/graphql'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
+import { List } from './index.style'
 
 interface SnapshotListProps {
   docMeta: NonNullDocMeta
@@ -27,6 +28,7 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
 }) => {
   const { t } = useDocsI18n()
   const { data } = useGetBlockSnapshotsQuery({ variables: { id: docMeta.id } })
+  const { list, getKey } = useList(data?.blockSnapshots ?? [])
   const [snapshotRestore, { loading }] = useSnapshotRestoreMutation({
     refetchQueries: [queryChildrenBlocks, queryBlockInfo]
   })
@@ -76,8 +78,6 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
     )
   }
 
-  const dataSource = data.blockSnapshots
-
   const firstVersion = Math.max(...data.blockSnapshots.map(snapshot => snapshot.snapshotVersion))
 
   const snapshotTitle = (
@@ -87,24 +87,19 @@ export const SnapshotList: React.FC<SnapshotListProps> = ({
   )
 
   const snapshotData = (
-    <DeprecatedList
-      size="small"
-      footer={null}
-      header={null}
-      dataSource={dataSource}
-      split={false}
-      renderItem={item => (
-        <DeprecatedList.Item
-          key={item.id}
+    <List>
+      {list.map((item: any, index: number) => (
+        <li
+          key={getKey(index)}
           className={cx(styles.listItem, { [styles.active]: item.snapshotVersion === currentVersion })}
         >
           <Button type="text" className={styles.item} onClick={() => setCurrentVersion(item.snapshotVersion)}>
             <span className={styles.title}>{item.name || t('title.untitled')}</span>
             <span className={styles.desc}>{item.relativeTime}</span>
           </Button>
-        </DeprecatedList.Item>
-      )}
-    />
+        </li>
+      ))}
+    </List>
   )
 
   return skelecton(
