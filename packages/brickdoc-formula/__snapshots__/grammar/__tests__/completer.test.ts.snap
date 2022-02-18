@@ -25,7 +25,7 @@ Object {
       "errors": Array [],
       "hide": true,
       "renderText": [Function],
-      "type": "any",
+      "type": "Block",
       "value": "#57622108-1337-4edd-833a-2557835bcfe0",
     },
     Object {
@@ -368,7 +368,7 @@ Object {
       "errors": Array [],
       "hide": false,
       "renderText": [Function],
-      "type": "any",
+      "type": "Block",
       "value": "#57622108-1337-4edd-833a-2557835bcfe0",
     },
     Object {

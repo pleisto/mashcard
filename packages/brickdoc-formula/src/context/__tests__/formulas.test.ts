@@ -68,7 +68,7 @@ describe('appendFormulas', () => {
         id: barVariableId,
         blockId: barNamespaceId,
         version: 0,
-        definition: `=ABS(123) + #${fooNamespaceId}.${fooVariableId}`,
+        definition: `=ABS(123) + #${fooNamespaceId}.foo`,
         type: 'normal',
         cacheValue: {
           type: 'number',
@@ -95,7 +95,7 @@ describe('appendFormulas', () => {
     void appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
-    const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
+    // const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
     const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
     const barVariableId = '475d9e73-e52a-42b3-8a95-477596812900'
@@ -108,7 +108,7 @@ describe('appendFormulas', () => {
         blockId: barNamespaceId,
         version: 0,
         type: 'normal',
-        definition: `=ABS(123) + #${fooNamespaceId}.${fooVariableId}`,
+        definition: `=ABS(123) + #${fooNamespaceId}.foo`,
         cacheValue: {
           type: 'number',
           result: 456

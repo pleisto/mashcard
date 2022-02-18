@@ -515,6 +515,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
 
     let result: AnyTypeResult = this.visit(ctx.lhs, { ...args, type: 'any' })
 
+    // eslint-disable-next-line complexity
     ctx.rhs.every(cst => {
       if (cst.name === 'FunctionCall') {
         if (result.type === 'Error') {
@@ -550,6 +551,15 @@ export class FormulaInterpreter extends BaseCstVisitor {
           return true
         }
 
+        if (result.type === 'Spreadsheet') {
+          const name = key
+          const column = result.result.getColumnByName(name)
+          result = column
+            ? { type: 'Column', result: new ColumnClass(result.result, column) }
+            : { type: 'Error', result: `Column ${key} not found`, errorKind: 'runtime' }
+          return true
+        }
+
         if (result.type === 'Record') {
           const value = result.result[key]
           if (value) {
@@ -563,46 +573,6 @@ export class FormulaInterpreter extends BaseCstVisitor {
 
         if (result.type === 'Reference') {
           result = { type: 'Reference', result: { ...result.result, attribute: key } }
-          return true
-        }
-
-        result = { type: 'Error', result: `Access not supported for ${result.type}`, errorKind: 'runtime' }
-        return true
-      }
-
-      // TODO remove this
-      if (cst.tokenType.name === 'UUID') {
-        if (result.type === 'Error') {
-          return true
-        }
-
-        const key = cst.image
-        if (result.type === 'Block') {
-          if (args?.lazy) {
-            result = { type: 'Reference', result: { kind: 'variable', namespaceId: result.result.id, variableId: key } }
-            return true
-          }
-
-          const variable = this.ctx.formulaContext.findVariable(result.result.id, key)
-          if (!variable) {
-            result = { type: 'Error', result: `Variable ${key} not found`, errorKind: 'runtime' }
-            return true
-          }
-
-          if (['constant', 'unknown'].includes(variable.t.kind)) {
-            result = variable.t.variableValue.result
-            return true
-          }
-
-          result = this.visit(variable.t.cst!, args)
-          return true
-        }
-
-        if (result.type === 'Spreadsheet') {
-          const column = result.result.getColumn(key)
-          result = column
-            ? { type: 'Column', result: new ColumnClass(result.result, column) }
-            : { type: 'Error', result: `Column ${key} not found`, errorKind: 'runtime' }
           return true
         }
 

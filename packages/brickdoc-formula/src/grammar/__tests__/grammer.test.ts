@@ -263,7 +263,7 @@ const testCases: TestCase[] = [
     value: { kind: 'self' }
   },
   {
-    input: `=#${barNamespaceId}.${barVariableId}`,
+    input: `=#${barNamespaceId}.bar`,
     value: 24
   },
   {
@@ -280,16 +280,16 @@ const testCases: TestCase[] = [
     value: 24
   },
   {
-    input: `=&#${barNamespaceId}.${barVariableId}`,
+    input: `=&#${barNamespaceId}.bar`,
     // value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId }
     parseErrorType: 'syntax',
-    errorMessage: 'Unknown namespace undefined'
+    errorMessage: 'Parse error: "#"'
   },
   {
-    input: `=&#${barNamespaceId}.${barVariableId}.foo`,
+    input: `=&#${barNamespaceId}.bar.foo`,
     // value: { kind: 'variable', namespaceId: barNamespaceId, variableId: barVariableId, attribute: 'foo' }
     parseErrorType: 'syntax',
-    errorMessage: 'Unknown namespace undefined'
+    errorMessage: 'Parse error: "#"'
   },
   {
     input: '=&Self',

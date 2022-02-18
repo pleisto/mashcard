@@ -442,7 +442,8 @@ export interface ContextInterface {
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findSpreadsheet: (namespaceId: NamespaceId) => SpreadsheetType | undefined
-  findColumn: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
+  findColumnById: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
+  findColumnByName: (namespaceId: NamespaceId, name: ColumnName) => ColumnType | undefined
   setSpreadsheet: (spreadsheet: SpreadsheetType) => void
   removeSpreadsheet: (namespaceId: NamespaceId) => void
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]

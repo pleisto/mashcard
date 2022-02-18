@@ -30,7 +30,7 @@ describe('Context', () => {
       name: 'bar',
       id: barVariableId,
       blockId: barNamespaceId,
-      definition: `=ABS(120) + #${fooNamespaceId}.${fooVariableId}`,
+      definition: `=ABS(120) + #${fooNamespaceId}.foo`,
       version: 0,
       type: 'normal',
       cacheValue: {
@@ -116,7 +116,6 @@ describe('Context', () => {
     expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is reserved', type: 'name_check' }])
   })
 
-
   it('invalid name check', () => {
     const newFooVariableId = '7fb702f9-8216-47de-a574-e6b8eede5bf5'
     const name = '1asd'
@@ -136,7 +135,7 @@ describe('Context', () => {
   })
 
   it('if', () => {
-    const input = `=IF((#${fooNamespaceId}.${fooVariableId}), 1, 2)`
+    const input = `=IF((#${fooNamespaceId}.foo), 1, 2)`
     const name = 'ifname'
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
@@ -148,7 +147,7 @@ describe('Context', () => {
     const parseResult2 = parse({
       ctx: {
         formulaContext,
-        meta: { ...meta, input: `=IF((#${fooNamespaceId}.${fooVariableId} = 3), 1, 2)` },
+        meta: { ...meta, input: `=IF((#${fooNamespaceId}.foo = 3), 1, 2)` },
         interpretContext
       }
     })
@@ -159,7 +158,7 @@ describe('Context', () => {
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const name = 'baz'
-    const input = `=#${fooNamespaceId}.${fooVariableId} + #${barNamespaceId}.${barVariableId}`
+    const input = `= #${fooNamespaceId}."foo"+#${barNamespaceId}."bar" `
     const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, type: 'normal' }
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult

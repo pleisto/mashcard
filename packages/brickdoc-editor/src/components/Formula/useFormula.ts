@@ -269,7 +269,7 @@ export const useFormula = ({
 
     const { interpretResult, newPosition, parseResult, completions, newVariable } = result
 
-    console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current, realInputs })
+    // console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current, realInputs })
 
     setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
@@ -314,7 +314,7 @@ export const useFormula = ({
     const oldContentLast = oldContent[oldContent.length - 1]
     const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, position)
 
-    // console.log('Before replace', {
+    // console.log('replace', {
     //   oldContentLast,
     //   oldContent,
     //   prevText,

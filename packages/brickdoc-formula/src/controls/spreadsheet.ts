@@ -63,8 +63,12 @@ export class SpreadsheetClass implements SpreadsheetType {
     return this.listRows().find(row => row.rowId === rowId)
   }
 
-  getColumn(columnId: string): ColumnInitializer | undefined {
+  getColumnById(columnId: string): ColumnInitializer | undefined {
     return this.listColumns().find(col => col.columnId === columnId)
+  }
+
+  getColumnByName(name: string): ColumnInitializer | undefined {
+    return this.listColumns().find(col => col.name === name)
   }
 
   findCellValue({ rowId, columnId }: { rowId: uuid; columnId: uuid }): string | undefined {

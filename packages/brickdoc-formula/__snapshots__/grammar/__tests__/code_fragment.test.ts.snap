@@ -3618,7 +3618,7 @@ Array [
 ]
 `;
 
-exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0.cd4f6e1e-765e-4064-badd-b5585c7eff8e + 3 1`] = `
+exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0."bar" + 3 1`] = `
 Object {
   "children": Object {
     "Equal": Array [
@@ -3688,13 +3688,13 @@ Object {
                                                   "children": Object {
                                                     "AdditionOperator": Array [
                                                       Object {
-                                                        "endColumn": 77,
+                                                        "endColumn": 46,
                                                         "endLine": 1,
-                                                        "endOffset": 76,
+                                                        "endOffset": 45,
                                                         "image": "+",
-                                                        "startColumn": 77,
+                                                        "startColumn": 46,
                                                         "startLine": 1,
-                                                        "startOffset": 76,
+                                                        "startOffset": 45,
                                                         "tokenType": Object {
                                                           "CATEGORIES": Array [
                                                             Object {
@@ -3808,23 +3808,30 @@ Object {
                                                                 ],
                                                                 "rhs": Array [
                                                                   Object {
-                                                                    "endColumn": 75,
-                                                                    "endLine": 1,
-                                                                    "endOffset": 74,
-                                                                    "image": "cd4f6e1e-765e-4064-badd-b5585c7eff8e",
-                                                                    "startColumn": 40,
-                                                                    "startLine": 1,
-                                                                    "startOffset": 39,
-                                                                    "tokenType": Object {
-                                                                      "CATEGORIES": Array [],
-                                                                      "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
-                                                                      "categoryMatches": Array [],
-                                                                      "categoryMatchesMap": Object {},
-                                                                      "isParent": false,
-                                                                      "name": "UUID",
-                                                                      "tokenTypeIdx": 32,
+                                                                    "children": Object {
+                                                                      "StringLiteral": Array [
+                                                                        Object {
+                                                                          "endColumn": 44,
+                                                                          "endLine": 1,
+                                                                          "endOffset": 43,
+                                                                          "image": "\\"bar\\"",
+                                                                          "startColumn": 40,
+                                                                          "startLine": 1,
+                                                                          "startOffset": 39,
+                                                                          "tokenType": Object {
+                                                                            "CATEGORIES": Array [],
+                                                                            "PATTERN": /"\\(""\\|\\[\\^"\\]\\)\\*"/,
+                                                                            "categoryMatches": Array [],
+                                                                            "categoryMatchesMap": Object {},
+                                                                            "isParent": false,
+                                                                            "name": "StringLiteral",
+                                                                            "tokenTypeIdx": 45,
+                                                                          },
+                                                                          "tokenTypeIdx": 45,
+                                                                        },
+                                                                      ],
                                                                     },
-                                                                    "tokenTypeIdx": 32,
+                                                                    "name": "keyExpression",
                                                                   },
                                                                 ],
                                                               },
@@ -3855,13 +3862,13 @@ Object {
                                                                                       "children": Object {
                                                                                         "NumberLiteral": Array [
                                                                                           Object {
-                                                                                            "endColumn": 79,
+                                                                                            "endColumn": 48,
                                                                                             "endLine": 1,
-                                                                                            "endOffset": 78,
+                                                                                            "endOffset": 47,
                                                                                             "image": "3",
-                                                                                            "startColumn": 79,
+                                                                                            "startColumn": 48,
                                                                                             "startLine": 1,
-                                                                                            "startOffset": 78,
+                                                                                            "startOffset": 47,
                                                                                             "tokenType": Object {
                                                                                               "CATEGORIES": Array [],
                                                                                               "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
@@ -3935,7 +3942,7 @@ Object {
 }
 `;
 
-exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0.cd4f6e1e-765e-4064-badd-b5585c7eff8e + 3 2`] = `
+exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0."bar" + 3 2`] = `
 Array [
   Object {
     "attrs": undefined,
@@ -3948,19 +3955,44 @@ Array [
     "value": "=",
   },
   Object {
+    "attrs": Object {
+      "id": "57622108-1337-4edd-833a-2557835bcfe0",
+      "kind": "Block",
+      "name": "Untitled",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Block",
+    "display": "Untitled",
+    "errors": Array [],
+    "hide": true,
+    "renderText": [Function],
+    "type": "Block",
+    "value": "#57622108-1337-4edd-833a-2557835bcfe0",
+  },
+  Object {
     "attrs": undefined,
-    "code": "UUID",
-    "display": "cd4f6e1e-765e-4064-badd-b5585c7eff8e",
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"bar\\"",
     "errors": Array [
       Object {
-        "message": "Unknown variable: cd4f6e1e-765e-4064-badd-b5585c7eff8e",
-        "type": "syntax",
+        "message": "Variable \\"bar\\" not found",
+        "type": "deps",
       },
     ],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
-    "value": "cd4f6e1e-765e-4064-badd-b5585c7eff8e",
+    "type": "string",
+    "value": "\\"bar\\"",
   },
   Object {
     "attrs": undefined,
@@ -4001,393 +4033,6 @@ Array [
     "renderText": undefined,
     "type": "number",
     "value": "3",
-  },
-]
-`;
-
-exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0.d986e871-cb85-4bd5-b675-87307f60b882 + 1 1`] = `
-Object {
-  "children": Object {
-    "Equal": Array [
-      Object {
-        "endColumn": 1,
-        "endLine": 1,
-        "endOffset": 0,
-        "image": "=",
-        "startColumn": 1,
-        "startLine": 1,
-        "startOffset": 0,
-        "tokenType": Object {
-          "CATEGORIES": Array [
-            Object {
-              "CATEGORIES": Array [],
-              "PATTERN": /NOT_APPLICABLE/,
-              "categoryMatches": Array [
-                17,
-                18,
-                20,
-                21,
-              ],
-              "categoryMatchesMap": Object {
-                "17": true,
-                "18": true,
-                "20": true,
-                "21": true,
-              },
-              "isParent": true,
-              "name": "EqualCompareOperator",
-              "tokenTypeIdx": 3,
-            },
-          ],
-          "PATTERN": /=/,
-          "categoryMatches": Array [],
-          "categoryMatchesMap": Object {},
-          "isParent": false,
-          "name": "Equal",
-          "tokenTypeIdx": 17,
-        },
-        "tokenTypeIdx": 17,
-      },
-    ],
-    "expression": Array [
-      Object {
-        "children": Object {
-          "lhs": Array [
-            Object {
-              "children": Object {
-                "lhs": Array [
-                  Object {
-                    "children": Object {
-                      "rhs": Array [
-                        Object {
-                          "children": Object {
-                            "lhs": Array [
-                              Object {
-                                "children": Object {
-                                  "lhs": Array [
-                                    Object {
-                                      "children": Object {
-                                        "lhs": Array [
-                                          Object {
-                                            "children": Object {
-                                              "lhs": Array [
-                                                Object {
-                                                  "children": Object {
-                                                    "AdditionOperator": Array [
-                                                      Object {
-                                                        "endColumn": 77,
-                                                        "endLine": 1,
-                                                        "endOffset": 76,
-                                                        "image": "+",
-                                                        "startColumn": 77,
-                                                        "startLine": 1,
-                                                        "startOffset": 76,
-                                                        "tokenType": Object {
-                                                          "CATEGORIES": Array [
-                                                            Object {
-                                                              "CATEGORIES": Array [],
-                                                              "PATTERN": /NOT_APPLICABLE/,
-                                                              "categoryMatches": Array [
-                                                                24,
-                                                                33,
-                                                              ],
-                                                              "categoryMatchesMap": Object {
-                                                                "24": true,
-                                                                "33": true,
-                                                              },
-                                                              "isParent": true,
-                                                              "name": "AdditionOperator",
-                                                              "tokenTypeIdx": 5,
-                                                            },
-                                                          ],
-                                                          "PATTERN": /\\\\\\+/,
-                                                          "categoryMatches": Array [],
-                                                          "categoryMatchesMap": Object {},
-                                                          "isParent": false,
-                                                          "name": "Plus",
-                                                          "tokenTypeIdx": 24,
-                                                        },
-                                                        "tokenTypeIdx": 24,
-                                                      },
-                                                    ],
-                                                    "lhs": Array [
-                                                      Object {
-                                                        "children": Object {
-                                                          "lhs": Array [
-                                                            Object {
-                                                              "children": Object {
-                                                                "Dot": Array [
-                                                                  Object {
-                                                                    "endColumn": 39,
-                                                                    "endLine": 1,
-                                                                    "endOffset": 38,
-                                                                    "image": ".",
-                                                                    "startColumn": 39,
-                                                                    "startLine": 1,
-                                                                    "startOffset": 38,
-                                                                    "tokenType": Object {
-                                                                      "CATEGORIES": Array [],
-                                                                      "PATTERN": /\\\\\\./,
-                                                                      "categoryMatches": Array [],
-                                                                      "categoryMatchesMap": Object {},
-                                                                      "isParent": false,
-                                                                      "name": "Dot",
-                                                                      "tokenTypeIdx": 31,
-                                                                    },
-                                                                    "tokenTypeIdx": 31,
-                                                                  },
-                                                                ],
-                                                                "lhs": Array [
-                                                                  Object {
-                                                                    "children": Object {
-                                                                      "blockExpression": Array [
-                                                                        Object {
-                                                                          "children": Object {
-                                                                            "Sharp": Array [
-                                                                              Object {
-                                                                                "endColumn": 2,
-                                                                                "endLine": 1,
-                                                                                "endOffset": 1,
-                                                                                "image": "#",
-                                                                                "startColumn": 2,
-                                                                                "startLine": 1,
-                                                                                "startOffset": 1,
-                                                                                "tokenType": Object {
-                                                                                  "CATEGORIES": Array [],
-                                                                                  "PATTERN": /#/,
-                                                                                  "categoryMatches": Array [],
-                                                                                  "categoryMatchesMap": Object {},
-                                                                                  "isParent": false,
-                                                                                  "name": "Sharp",
-                                                                                  "tokenTypeIdx": 30,
-                                                                                },
-                                                                                "tokenTypeIdx": 30,
-                                                                              },
-                                                                            ],
-                                                                            "UUID": Array [
-                                                                              Object {
-                                                                                "endColumn": 38,
-                                                                                "endLine": 1,
-                                                                                "endOffset": 37,
-                                                                                "image": "57622108-1337-4edd-833a-2557835bcfe0",
-                                                                                "startColumn": 3,
-                                                                                "startLine": 1,
-                                                                                "startOffset": 2,
-                                                                                "tokenType": Object {
-                                                                                  "CATEGORIES": Array [],
-                                                                                  "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
-                                                                                  "categoryMatches": Array [],
-                                                                                  "categoryMatchesMap": Object {},
-                                                                                  "isParent": false,
-                                                                                  "name": "UUID",
-                                                                                  "tokenTypeIdx": 32,
-                                                                                },
-                                                                                "tokenTypeIdx": 32,
-                                                                              },
-                                                                            ],
-                                                                          },
-                                                                          "name": "blockExpression",
-                                                                        },
-                                                                      ],
-                                                                    },
-                                                                    "name": "atomicExpression",
-                                                                  },
-                                                                ],
-                                                                "rhs": Array [
-                                                                  Object {
-                                                                    "endColumn": 75,
-                                                                    "endLine": 1,
-                                                                    "endOffset": 74,
-                                                                    "image": "d986e871-cb85-4bd5-b675-87307f60b882",
-                                                                    "startColumn": 40,
-                                                                    "startLine": 1,
-                                                                    "startOffset": 39,
-                                                                    "tokenType": Object {
-                                                                      "CATEGORIES": Array [],
-                                                                      "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
-                                                                      "categoryMatches": Array [],
-                                                                      "categoryMatchesMap": Object {},
-                                                                      "isParent": false,
-                                                                      "name": "UUID",
-                                                                      "tokenTypeIdx": 32,
-                                                                    },
-                                                                    "tokenTypeIdx": 32,
-                                                                  },
-                                                                ],
-                                                              },
-                                                              "name": "chainExpression",
-                                                            },
-                                                          ],
-                                                        },
-                                                        "name": "multiplicationExpression",
-                                                      },
-                                                    ],
-                                                    "rhs": Array [
-                                                      Object {
-                                                        "children": Object {
-                                                          "lhs": Array [
-                                                            Object {
-                                                              "children": Object {
-                                                                "lhs": Array [
-                                                                  Object {
-                                                                    "children": Object {
-                                                                      "simpleAtomicExpression": Array [
-                                                                        Object {
-                                                                          "children": Object {
-                                                                            "constantExpression": Array [
-                                                                              Object {
-                                                                                "children": Object {
-                                                                                  "NumberLiteralExpression": Array [
-                                                                                    Object {
-                                                                                      "children": Object {
-                                                                                        "NumberLiteral": Array [
-                                                                                          Object {
-                                                                                            "endColumn": 79,
-                                                                                            "endLine": 1,
-                                                                                            "endOffset": 78,
-                                                                                            "image": "1",
-                                                                                            "startColumn": 79,
-                                                                                            "startLine": 1,
-                                                                                            "startOffset": 78,
-                                                                                            "tokenType": Object {
-                                                                                              "CATEGORIES": Array [],
-                                                                                              "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
-                                                                                              "categoryMatches": Array [],
-                                                                                              "categoryMatchesMap": Object {},
-                                                                                              "isParent": false,
-                                                                                              "name": "NumberLiteral",
-                                                                                              "tokenTypeIdx": 43,
-                                                                                            },
-                                                                                            "tokenTypeIdx": 43,
-                                                                                          },
-                                                                                        ],
-                                                                                      },
-                                                                                      "name": "NumberLiteralExpression",
-                                                                                    },
-                                                                                  ],
-                                                                                },
-                                                                                "name": "constantExpression",
-                                                                              },
-                                                                            ],
-                                                                          },
-                                                                          "name": "simpleAtomicExpression",
-                                                                        },
-                                                                      ],
-                                                                    },
-                                                                    "name": "atomicExpression",
-                                                                  },
-                                                                ],
-                                                              },
-                                                              "name": "chainExpression",
-                                                            },
-                                                          ],
-                                                        },
-                                                        "name": "multiplicationExpression",
-                                                      },
-                                                    ],
-                                                  },
-                                                  "name": "additionExpression",
-                                                },
-                                              ],
-                                            },
-                                            "name": "concatExpression",
-                                          },
-                                        ],
-                                      },
-                                      "name": "inExpression",
-                                    },
-                                  ],
-                                },
-                                "name": "compareExpression",
-                              },
-                            ],
-                          },
-                          "name": "equalCompareExpression",
-                        },
-                      ],
-                    },
-                    "name": "notExpression",
-                  },
-                ],
-              },
-              "name": "combineExpression",
-            },
-          ],
-        },
-        "name": "expression",
-      },
-    ],
-  },
-  "name": "startExpression",
-}
-`;
-
-exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0.d986e871-cb85-4bd5-b675-87307f60b882 + 1 2`] = `
-Array [
-  Object {
-    "attrs": undefined,
-    "code": "Equal",
-    "display": "=",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "=",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "UUID",
-    "display": "d986e871-cb85-4bd5-b675-87307f60b882",
-    "errors": Array [
-      Object {
-        "message": "Unknown variable: d986e871-cb85-4bd5-b675-87307f60b882",
-        "type": "syntax",
-      },
-    ],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "d986e871-cb85-4bd5-b675-87307f60b882",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Space",
-    "display": " ",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": " ",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Plus",
-    "display": "+",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "number",
-    "value": "+",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Space",
-    "display": " ",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": " ",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "NumberLiteral",
-    "display": "1",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "number",
-    "value": "1",
   },
 ]
 `;
@@ -4781,7 +4426,7 @@ Array [
 ]
 `;
 
-exports[`Code fragment ok =#cd4f6e1e-765e-4064-badd-b5585c7eff8e.d986e871-cb85-4bd5-b675-87307f60b882 + 2 1`] = `
+exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0.foo + 1 3`] = `
 Object {
   "children": Object {
     "Equal": Array [
@@ -4851,13 +4496,402 @@ Object {
                                                   "children": Object {
                                                     "AdditionOperator": Array [
                                                       Object {
-                                                        "endColumn": 77,
+                                                        "endColumn": 44,
                                                         "endLine": 1,
-                                                        "endOffset": 76,
+                                                        "endOffset": 43,
                                                         "image": "+",
-                                                        "startColumn": 77,
+                                                        "startColumn": 44,
                                                         "startLine": 1,
-                                                        "startOffset": 76,
+                                                        "startOffset": 43,
+                                                        "tokenType": Object {
+                                                          "CATEGORIES": Array [
+                                                            Object {
+                                                              "CATEGORIES": Array [],
+                                                              "PATTERN": /NOT_APPLICABLE/,
+                                                              "categoryMatches": Array [
+                                                                24,
+                                                                33,
+                                                              ],
+                                                              "categoryMatchesMap": Object {
+                                                                "24": true,
+                                                                "33": true,
+                                                              },
+                                                              "isParent": true,
+                                                              "name": "AdditionOperator",
+                                                              "tokenTypeIdx": 5,
+                                                            },
+                                                          ],
+                                                          "PATTERN": /\\\\\\+/,
+                                                          "categoryMatches": Array [],
+                                                          "categoryMatchesMap": Object {},
+                                                          "isParent": false,
+                                                          "name": "Plus",
+                                                          "tokenTypeIdx": 24,
+                                                        },
+                                                        "tokenTypeIdx": 24,
+                                                      },
+                                                    ],
+                                                    "lhs": Array [
+                                                      Object {
+                                                        "children": Object {
+                                                          "lhs": Array [
+                                                            Object {
+                                                              "children": Object {
+                                                                "Dot": Array [
+                                                                  Object {
+                                                                    "endColumn": 39,
+                                                                    "endLine": 1,
+                                                                    "endOffset": 38,
+                                                                    "image": ".",
+                                                                    "startColumn": 39,
+                                                                    "startLine": 1,
+                                                                    "startOffset": 38,
+                                                                    "tokenType": Object {
+                                                                      "CATEGORIES": Array [],
+                                                                      "PATTERN": /\\\\\\./,
+                                                                      "categoryMatches": Array [],
+                                                                      "categoryMatchesMap": Object {},
+                                                                      "isParent": false,
+                                                                      "name": "Dot",
+                                                                      "tokenTypeIdx": 31,
+                                                                    },
+                                                                    "tokenTypeIdx": 31,
+                                                                  },
+                                                                ],
+                                                                "lhs": Array [
+                                                                  Object {
+                                                                    "children": Object {
+                                                                      "blockExpression": Array [
+                                                                        Object {
+                                                                          "children": Object {
+                                                                            "Sharp": Array [
+                                                                              Object {
+                                                                                "endColumn": 2,
+                                                                                "endLine": 1,
+                                                                                "endOffset": 1,
+                                                                                "image": "#",
+                                                                                "startColumn": 2,
+                                                                                "startLine": 1,
+                                                                                "startOffset": 1,
+                                                                                "tokenType": Object {
+                                                                                  "CATEGORIES": Array [],
+                                                                                  "PATTERN": /#/,
+                                                                                  "categoryMatches": Array [],
+                                                                                  "categoryMatchesMap": Object {},
+                                                                                  "isParent": false,
+                                                                                  "name": "Sharp",
+                                                                                  "tokenTypeIdx": 30,
+                                                                                },
+                                                                                "tokenTypeIdx": 30,
+                                                                              },
+                                                                            ],
+                                                                            "UUID": Array [
+                                                                              Object {
+                                                                                "endColumn": 38,
+                                                                                "endLine": 1,
+                                                                                "endOffset": 37,
+                                                                                "image": "57622108-1337-4edd-833a-2557835bcfe0",
+                                                                                "startColumn": 3,
+                                                                                "startLine": 1,
+                                                                                "startOffset": 2,
+                                                                                "tokenType": Object {
+                                                                                  "CATEGORIES": Array [],
+                                                                                  "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
+                                                                                  "categoryMatches": Array [],
+                                                                                  "categoryMatchesMap": Object {},
+                                                                                  "isParent": false,
+                                                                                  "name": "UUID",
+                                                                                  "tokenTypeIdx": 32,
+                                                                                },
+                                                                                "tokenTypeIdx": 32,
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          "name": "blockExpression",
+                                                                        },
+                                                                      ],
+                                                                    },
+                                                                    "name": "atomicExpression",
+                                                                  },
+                                                                ],
+                                                                "rhs": Array [
+                                                                  Object {
+                                                                    "children": Object {
+                                                                      "FunctionName": Array [
+                                                                        Object {
+                                                                          "endColumn": 42,
+                                                                          "endLine": 1,
+                                                                          "endOffset": 41,
+                                                                          "image": "foo",
+                                                                          "startColumn": 40,
+                                                                          "startLine": 1,
+                                                                          "startOffset": 39,
+                                                                          "tokenType": Object {
+                                                                            "CATEGORIES": Array [],
+                                                                            "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
+                                                                            "categoryMatches": Array [],
+                                                                            "categoryMatchesMap": Object {},
+                                                                            "isParent": false,
+                                                                            "name": "FunctionName",
+                                                                            "tokenTypeIdx": 51,
+                                                                          },
+                                                                          "tokenTypeIdx": 51,
+                                                                        },
+                                                                      ],
+                                                                    },
+                                                                    "name": "keyExpression",
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "name": "chainExpression",
+                                                            },
+                                                          ],
+                                                        },
+                                                        "name": "multiplicationExpression",
+                                                      },
+                                                    ],
+                                                    "rhs": Array [
+                                                      Object {
+                                                        "children": Object {
+                                                          "lhs": Array [
+                                                            Object {
+                                                              "children": Object {
+                                                                "lhs": Array [
+                                                                  Object {
+                                                                    "children": Object {
+                                                                      "simpleAtomicExpression": Array [
+                                                                        Object {
+                                                                          "children": Object {
+                                                                            "constantExpression": Array [
+                                                                              Object {
+                                                                                "children": Object {
+                                                                                  "NumberLiteralExpression": Array [
+                                                                                    Object {
+                                                                                      "children": Object {
+                                                                                        "NumberLiteral": Array [
+                                                                                          Object {
+                                                                                            "endColumn": 46,
+                                                                                            "endLine": 1,
+                                                                                            "endOffset": 45,
+                                                                                            "image": "1",
+                                                                                            "startColumn": 46,
+                                                                                            "startLine": 1,
+                                                                                            "startOffset": 45,
+                                                                                            "tokenType": Object {
+                                                                                              "CATEGORIES": Array [],
+                                                                                              "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
+                                                                                              "categoryMatches": Array [],
+                                                                                              "categoryMatchesMap": Object {},
+                                                                                              "isParent": false,
+                                                                                              "name": "NumberLiteral",
+                                                                                              "tokenTypeIdx": 43,
+                                                                                            },
+                                                                                            "tokenTypeIdx": 43,
+                                                                                          },
+                                                                                        ],
+                                                                                      },
+                                                                                      "name": "NumberLiteralExpression",
+                                                                                    },
+                                                                                  ],
+                                                                                },
+                                                                                "name": "constantExpression",
+                                                                              },
+                                                                            ],
+                                                                          },
+                                                                          "name": "simpleAtomicExpression",
+                                                                        },
+                                                                      ],
+                                                                    },
+                                                                    "name": "atomicExpression",
+                                                                  },
+                                                                ],
+                                                              },
+                                                              "name": "chainExpression",
+                                                            },
+                                                          ],
+                                                        },
+                                                        "name": "multiplicationExpression",
+                                                      },
+                                                    ],
+                                                  },
+                                                  "name": "additionExpression",
+                                                },
+                                              ],
+                                            },
+                                            "name": "concatExpression",
+                                          },
+                                        ],
+                                      },
+                                      "name": "inExpression",
+                                    },
+                                  ],
+                                },
+                                "name": "compareExpression",
+                              },
+                            ],
+                          },
+                          "name": "equalCompareExpression",
+                        },
+                      ],
+                    },
+                    "name": "notExpression",
+                  },
+                ],
+              },
+              "name": "combineExpression",
+            },
+          ],
+        },
+        "name": "expression",
+      },
+    ],
+  },
+  "name": "startExpression",
+}
+`;
+
+exports[`Code fragment ok =#57622108-1337-4edd-833a-2557835bcfe0.foo + 1 4`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionName",
+    "display": "foo",
+    "errors": Array [],
+    "hide": false,
+    "renderText": [Function],
+    "type": "string",
+    "value": "foo",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Plus",
+    "display": "+",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "+",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+]
+`;
+
+exports[`Code fragment ok =#cd4f6e1e-765e-4064-badd-b5585c7eff8e.foo + 2 1`] = `
+Object {
+  "children": Object {
+    "Equal": Array [
+      Object {
+        "endColumn": 1,
+        "endLine": 1,
+        "endOffset": 0,
+        "image": "=",
+        "startColumn": 1,
+        "startLine": 1,
+        "startOffset": 0,
+        "tokenType": Object {
+          "CATEGORIES": Array [
+            Object {
+              "CATEGORIES": Array [],
+              "PATTERN": /NOT_APPLICABLE/,
+              "categoryMatches": Array [
+                17,
+                18,
+                20,
+                21,
+              ],
+              "categoryMatchesMap": Object {
+                "17": true,
+                "18": true,
+                "20": true,
+                "21": true,
+              },
+              "isParent": true,
+              "name": "EqualCompareOperator",
+              "tokenTypeIdx": 3,
+            },
+          ],
+          "PATTERN": /=/,
+          "categoryMatches": Array [],
+          "categoryMatchesMap": Object {},
+          "isParent": false,
+          "name": "Equal",
+          "tokenTypeIdx": 17,
+        },
+        "tokenTypeIdx": 17,
+      },
+    ],
+    "expression": Array [
+      Object {
+        "children": Object {
+          "lhs": Array [
+            Object {
+              "children": Object {
+                "lhs": Array [
+                  Object {
+                    "children": Object {
+                      "rhs": Array [
+                        Object {
+                          "children": Object {
+                            "lhs": Array [
+                              Object {
+                                "children": Object {
+                                  "lhs": Array [
+                                    Object {
+                                      "children": Object {
+                                        "lhs": Array [
+                                          Object {
+                                            "children": Object {
+                                              "lhs": Array [
+                                                Object {
+                                                  "children": Object {
+                                                    "AdditionOperator": Array [
+                                                      Object {
+                                                        "endColumn": 44,
+                                                        "endLine": 1,
+                                                        "endOffset": 43,
+                                                        "image": "+",
+                                                        "startColumn": 44,
+                                                        "startLine": 1,
+                                                        "startOffset": 43,
                                                         "tokenType": Object {
                                                           "CATEGORIES": Array [
                                                             Object {
@@ -4971,23 +5005,30 @@ Object {
                                                                 ],
                                                                 "rhs": Array [
                                                                   Object {
-                                                                    "endColumn": 75,
-                                                                    "endLine": 1,
-                                                                    "endOffset": 74,
-                                                                    "image": "d986e871-cb85-4bd5-b675-87307f60b882",
-                                                                    "startColumn": 40,
-                                                                    "startLine": 1,
-                                                                    "startOffset": 39,
-                                                                    "tokenType": Object {
-                                                                      "CATEGORIES": Array [],
-                                                                      "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
-                                                                      "categoryMatches": Array [],
-                                                                      "categoryMatchesMap": Object {},
-                                                                      "isParent": false,
-                                                                      "name": "UUID",
-                                                                      "tokenTypeIdx": 32,
+                                                                    "children": Object {
+                                                                      "FunctionName": Array [
+                                                                        Object {
+                                                                          "endColumn": 42,
+                                                                          "endLine": 1,
+                                                                          "endOffset": 41,
+                                                                          "image": "foo",
+                                                                          "startColumn": 40,
+                                                                          "startLine": 1,
+                                                                          "startOffset": 39,
+                                                                          "tokenType": Object {
+                                                                            "CATEGORIES": Array [],
+                                                                            "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
+                                                                            "categoryMatches": Array [],
+                                                                            "categoryMatchesMap": Object {},
+                                                                            "isParent": false,
+                                                                            "name": "FunctionName",
+                                                                            "tokenTypeIdx": 51,
+                                                                          },
+                                                                          "tokenTypeIdx": 51,
+                                                                        },
+                                                                      ],
                                                                     },
-                                                                    "tokenTypeIdx": 32,
+                                                                    "name": "keyExpression",
                                                                   },
                                                                 ],
                                                               },
@@ -5018,13 +5059,13 @@ Object {
                                                                                       "children": Object {
                                                                                         "NumberLiteral": Array [
                                                                                           Object {
-                                                                                            "endColumn": 79,
+                                                                                            "endColumn": 46,
                                                                                             "endLine": 1,
-                                                                                            "endOffset": 78,
+                                                                                            "endOffset": 45,
                                                                                             "image": "2",
-                                                                                            "startColumn": 79,
+                                                                                            "startColumn": 46,
                                                                                             "startLine": 1,
-                                                                                            "startOffset": 78,
+                                                                                            "startOffset": 45,
                                                                                             "tokenType": Object {
                                                                                               "CATEGORIES": Array [],
                                                                                               "PATTERN": /\\[0-9\\]\\+\\[\\.\\]\\?\\[0-9\\]\\*\\(\\[eE\\]\\[\\+-\\]\\[0-9\\]\\+\\)\\?/,
@@ -5098,7 +5139,7 @@ Object {
 }
 `;
 
-exports[`Code fragment ok =#cd4f6e1e-765e-4064-badd-b5585c7eff8e.d986e871-cb85-4bd5-b675-87307f60b882 + 2 2`] = `
+exports[`Code fragment ok =#cd4f6e1e-765e-4064-badd-b5585c7eff8e.foo + 2 2`] = `
 Array [
   Object {
     "attrs": undefined,
@@ -5147,18 +5188,18 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "UUID",
-    "display": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "code": "FunctionName",
+    "display": "foo",
     "errors": Array [
       Object {
-        "message": "Unknown namespace undefined",
-        "type": "syntax",
+        "message": "Variable \\"foo\\" not found",
+        "type": "deps",
       },
     ],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
-    "value": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "type": "string",
+    "value": "foo",
   },
   Object {
     "attrs": undefined,
@@ -5958,7 +5999,7 @@ Array [
     "errors": Array [],
     "hide": true,
     "renderText": [Function],
-    "type": "any",
+    "type": "Block",
     "value": "#57622108-1337-4edd-833a-2557835bcfe0",
   },
   Object {

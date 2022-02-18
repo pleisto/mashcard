@@ -55,6 +55,29 @@ export const variableRenderText = (variable: VariableInterface): CodeFragment['r
   }
 }
 
+export const columnRenderText = (column: ColumnType): CodeFragment['renderText'] => {
+  return (text, { display }, prevText) => {
+    const [valid, finalText] = maybeEncodeString(text)
+    let result = finalText
+    let prefix = ''
+
+    if (!valid && text !== display) {
+      if (text.startsWith(display)) {
+        const body = maybeEncodeString(display)[1]
+        const rest = text.substring(display.length)
+        result = body.concat(rest)
+      }
+
+      if (text.endsWith(display)) {
+        result = maybeEncodeString(display)[1]
+        prefix = text.substring(0, text.length - display.length)
+      }
+    }
+
+    return prefix.concat(result)
+  }
+}
+
 const blockRenderText = (block: BlockType | SpreadsheetType): CodeFragment['renderText'] => {
   return (text, { display, value }, prevText) => {
     if (text === display) {
@@ -112,7 +135,7 @@ export const block2codeFragment = (block: BlockType): CodeFragment => {
     hide: false,
     value: blockKey(block.id),
     code: 'Block',
-    type: 'any',
+    type: 'Block',
     attrs: block2attrs(block)
   }
 }
@@ -137,7 +160,7 @@ export const spreadsheet2codeFragment = (spreadsheet: SpreadsheetType): CodeFrag
     errors: [],
     value,
     code: 'Spreadsheet',
-    type: 'any',
+    type: 'Spreadsheet',
     renderText: blockRenderText(spreadsheet),
     hide: false,
     attrs: spreadsheet2attrs(spreadsheet)
@@ -145,14 +168,14 @@ export const spreadsheet2codeFragment = (spreadsheet: SpreadsheetType): CodeFrag
 }
 
 export const column2codeFragment = (column: ColumnType): CodeFragment => {
-  const value = columnKey(column.namespaceId, column.columnId)
+  // const value = columnKey(column.namespaceId, column.columnId)
   return {
     display: column.name,
     errors: [],
-    value,
+    value: maybeEncodeString(column.name)[1],
     code: 'Column',
-    type: 'any',
-    renderText: undefined,
+    type: 'Column',
+    renderText: columnRenderText(column),
     hide: false,
     attrs: column2attrs(column)
   }
@@ -242,12 +265,7 @@ export const column2completion = (column: ColumnType): ColumnCompletion => {
   const value = columnKey(column.namespaceId, column.columnId)
   return {
     kind: 'column',
-    replacements: [
-      `${blockKey(column.namespaceId)}.${column.name}`,
-      `${blockKey(column.namespaceId)}.`,
-      `${blockKey(column.namespaceId)}`,
-      `${column.name}`
-    ],
+    replacements: [`${column.name}`],
     weight: -3,
     name: column.name,
     positionChange: value.length,

@@ -767,6 +767,16 @@ Array [
       },
       Object {
         "attrs": undefined,
+        "code": "Space",
+        "display": " ",
+        "errors": Array [],
+        "hide": false,
+        "renderText": undefined,
+        "type": "any",
+        "value": " ",
+      },
+      Object {
+        "attrs": undefined,
         "code": "Plus",
         "display": "+",
         "errors": Array [],
@@ -774,6 +784,16 @@ Array [
         "renderText": undefined,
         "type": "number",
         "value": "+",
+      },
+      Object {
+        "attrs": undefined,
+        "code": "Space",
+        "display": " ",
+        "errors": Array [],
+        "hide": false,
+        "renderText": undefined,
+        "type": "any",
+        "value": " ",
       },
       Object {
         "attrs": Object {
@@ -787,7 +807,7 @@ Array [
         "errors": Array [],
         "hide": false,
         "renderText": [Function],
-        "type": "any",
+        "type": "Block",
         "value": "#d986e871-cb85-4bd5-b675-87307f60b882",
       },
       Object {
@@ -801,18 +821,13 @@ Array [
         "value": ".",
       },
       Object {
-        "attrs": Object {
-          "id": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-          "kind": "Variable",
-          "name": "foo",
-          "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-        },
-        "code": "Variable",
+        "attrs": undefined,
+        "code": "FunctionName",
         "display": "foo",
         "errors": Array [],
         "hide": false,
         "renderText": [Function],
-        "type": "number",
+        "type": "string",
         "value": "foo",
       },
     ],
@@ -1229,23 +1244,30 @@ Array [
                                                                     ],
                                                                     "rhs": Array [
                                                                       Object {
-                                                                        "endColumn": 86,
-                                                                        "endLine": 1,
-                                                                        "endOffset": 85,
-                                                                        "image": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-                                                                        "startColumn": 51,
-                                                                        "startLine": 1,
-                                                                        "startOffset": 50,
-                                                                        "tokenType": Object {
-                                                                          "CATEGORIES": Array [],
-                                                                          "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
-                                                                          "categoryMatches": Array [],
-                                                                          "categoryMatchesMap": Object {},
-                                                                          "isParent": false,
-                                                                          "name": "UUID",
-                                                                          "tokenTypeIdx": 32,
+                                                                        "children": Object {
+                                                                          "FunctionName": Array [
+                                                                            Object {
+                                                                              "endColumn": 53,
+                                                                              "endLine": 1,
+                                                                              "endOffset": 52,
+                                                                              "image": "foo",
+                                                                              "startColumn": 51,
+                                                                              "startLine": 1,
+                                                                              "startOffset": 50,
+                                                                              "tokenType": Object {
+                                                                                "CATEGORIES": Array [],
+                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
+                                                                                "categoryMatches": Array [],
+                                                                                "categoryMatchesMap": Object {},
+                                                                                "isParent": false,
+                                                                                "name": "FunctionName",
+                                                                                "tokenTypeIdx": 51,
+                                                                              },
+                                                                              "tokenTypeIdx": 51,
+                                                                            },
+                                                                          ],
                                                                         },
-                                                                        "tokenTypeIdx": 32,
+                                                                        "name": "keyExpression",
                                                                       },
                                                                     ],
                                                                   },
@@ -1291,7 +1313,7 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.1588aedf-06e1-47f1-9282-d2ffe865974c",
+    "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.foo",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -1921,18 +1943,18 @@ Array [
       },
       Object {
         "attrs": undefined,
-        "code": "UUID",
-        "display": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "code": "FunctionName",
+        "display": "foo",
         "errors": Array [
           Object {
-            "message": "Unknown namespace undefined",
-            "type": "syntax",
+            "message": "Variable \\"foo\\" not found",
+            "type": "deps",
           },
         ],
         "hide": false,
         "renderText": undefined,
-        "type": "any",
-        "value": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "type": "string",
+        "value": "foo",
       },
     ],
     "cst": Object {
@@ -2348,23 +2370,30 @@ Array [
                                                                     ],
                                                                     "rhs": Array [
                                                                       Object {
-                                                                        "endColumn": 86,
-                                                                        "endLine": 1,
-                                                                        "endOffset": 85,
-                                                                        "image": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-                                                                        "startColumn": 51,
-                                                                        "startLine": 1,
-                                                                        "startOffset": 50,
-                                                                        "tokenType": Object {
-                                                                          "CATEGORIES": Array [],
-                                                                          "PATTERN": /\\[0-9a-f\\]\\{8\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{4\\}-\\[0-9a-f\\]\\{12\\}/,
-                                                                          "categoryMatches": Array [],
-                                                                          "categoryMatchesMap": Object {},
-                                                                          "isParent": false,
-                                                                          "name": "UUID",
-                                                                          "tokenTypeIdx": 32,
+                                                                        "children": Object {
+                                                                          "FunctionName": Array [
+                                                                            Object {
+                                                                              "endColumn": 53,
+                                                                              "endLine": 1,
+                                                                              "endOffset": 52,
+                                                                              "image": "foo",
+                                                                              "startColumn": 51,
+                                                                              "startLine": 1,
+                                                                              "startOffset": 50,
+                                                                              "tokenType": Object {
+                                                                                "CATEGORIES": Array [],
+                                                                                "PATTERN": /\\[a-zA-Z\\]\\[a-zA-Z0-9_\\]\\*/,
+                                                                                "categoryMatches": Array [],
+                                                                                "categoryMatchesMap": Object {},
+                                                                                "isParent": false,
+                                                                                "name": "FunctionName",
+                                                                                "tokenTypeIdx": 51,
+                                                                              },
+                                                                              "tokenTypeIdx": 51,
+                                                                            },
+                                                                          ],
                                                                         },
-                                                                        "tokenTypeIdx": 32,
+                                                                        "name": "keyExpression",
                                                                       },
                                                                     ],
                                                                   },
@@ -2410,7 +2439,7 @@ Array [
       },
       "name": "startExpression",
     },
-    "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.1588aedf-06e1-47f1-9282-d2ffe865974c",
+    "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.foo",
     "dirty": false,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [
@@ -2521,7 +2550,12 @@ Array [
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
-    "variableNameDependencies": Array [],
+    "variableNameDependencies": Array [
+      Object {
+        "name": "foo",
+        "namespaceId": undefined,
+      },
+    ],
     "variableValue": Object {
       "cacheValue": Object {
         "result": 456,

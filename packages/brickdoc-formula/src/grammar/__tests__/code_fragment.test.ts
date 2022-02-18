@@ -6,7 +6,6 @@ import { quickInsert } from '../testHelper'
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 const unknownId = 'cd4f6e1e-765e-4064-badd-b5585c7eff8e'
-const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
 const functionClauses: Array<BaseFunctionClause<any>> = [
   {
@@ -61,9 +60,9 @@ const testCases = [
   '= custom::PLUS((custom::FORTY_TWO()), 1 + 1)',
   '= ABS("123")',
   '="FOO".T().T() & "Zzz"',
-  `=#${namespaceId}.${fooVariableId} + 1`,
-  `=#${unknownId}.${fooVariableId} + 2`,
-  `=#${namespaceId}.${unknownId} + 3`,
+  `=#${namespaceId}.foo + 1`,
+  `=#${unknownId}.foo + 2`,
+  `=#${namespaceId}."bar" + 3`,
   `=foo + 1`,
   `=#${namespaceId}.foo + 1`,
   `=Untitled.foo + 1`,

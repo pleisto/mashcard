@@ -18,13 +18,7 @@ import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
 import { intersectType, parseString } from './util'
 import { BlockClass } from '../controls/block'
-import {
-  block2codeFragment,
-  column2codeFragment,
-  spreadsheet2codeFragment,
-  variable2codeFragment,
-  variableRenderText
-} from './convert'
+import { block2codeFragment, columnRenderText, spreadsheet2codeFragment, variableRenderText } from './convert'
 import { devWarning } from '@brickdoc/design-system'
 import { PositionFragment } from './core'
 
@@ -478,6 +472,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     let firstArgumentType: FormulaType = lhsType
 
+    // eslint-disable-next-line complexity
     ctx.Dot.forEach((dotOperand: CstNode | CstNode[], idx: number) => {
       const rhsCst = ctx.rhs?.[idx]
       const missingRhsErrors: ErrorMessage[] = rhsCst ? [] : [{ message: 'Missing expression', type: 'syntax' }]
@@ -530,6 +525,12 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           if (variable) {
             firstArgumentType = variable.t.variableValue.result.type
 
+            if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
+              finalRhsCodeFragments = [
+                { ...finalRhsCodeFragments[0], display: variableName, renderText: variableRenderText(variable) }
+              ]
+            }
+
             this.variableDependencies = [
               ...new Map(
                 [...this.variableDependencies, { namespaceId, variableId: variable.t.variableId }].map(item => [
@@ -551,11 +552,23 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           } else {
             unknownVariableError.push({ type: 'deps', message: `Variable "${variableName}" not found` })
           }
+        }
 
-          if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code) && variable) {
-            finalRhsCodeFragments = [
-              { ...finalRhsCodeFragments[0], display: variableName, renderText: variableRenderText(variable) }
-            ]
+        if (firstArgumentType === 'Spreadsheet') {
+          const namespaceId = codeFragments[codeFragments.length - 2]?.attrs?.id as string
+          const columnName = parseString(rhsImage)
+          const column = this.ctx.formulaContext.findColumnByName(namespaceId, columnName)
+
+          if (column) {
+            firstArgumentType = 'Column'
+
+            if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
+              finalRhsCodeFragments = [
+                { ...finalRhsCodeFragments[0], display: columnName, renderText: columnRenderText(column) }
+              ]
+            }
+          } else {
+            unknownVariableError.push({ type: 'deps', message: `Column "${columnName}" not found` })
           }
         }
 
@@ -566,79 +579,6 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
             errors: [...unknownVariableError, ...accessErrorMessages, ...f.errors]
           }))
         )
-        return
-      }
-
-      // TODO remove this
-      if (rhsCst.tokenType.name === 'UUID') {
-        this.kind = 'expression'
-
-        const namespaceId = codeFragments[codeFragments.length - 2]?.attrs?.id as string
-        const formulaName = this.ctx.formulaContext.findFormulaName(namespaceId)
-        const errorMessages: ErrorMessage[] = []
-        const variableId = rhsCst.image
-        let codeFragment: CodeFragment = token2fragment(rhsCst, 'any')
-
-        if (!formulaName) {
-          errorMessages.push({ type: 'syntax', message: `Unknown namespace ${namespaceId}` })
-        }
-
-        if (formulaName?.kind === 'Block') {
-          const variable = this.ctx.formulaContext.findVariable(namespaceId, variableId)
-
-          if (variable) {
-            codeFragment = {
-              ...codeFragment,
-              ...variable2codeFragment(variable)
-            }
-
-            firstArgumentType = variable.t.variableValue.result.type
-
-            this.variableDependencies = [
-              ...new Map(
-                [...this.variableDependencies, { namespaceId, variableId }].map(item => [item.variableId, item])
-              ).values()
-            ]
-
-            this.variableNameDependencies = [
-              ...new Map(
-                [...this.variableNameDependencies, { namespaceId, name: variable.t.name }].map(item => [
-                  `${item.namespaceId},${item.name}`,
-                  item
-                ])
-              ).values()
-            ]
-
-            this.flattenVariableDependencies = [
-              ...new Map(
-                [
-                  ...this.flattenVariableDependencies,
-                  ...variable.t.flattenVariableDependencies,
-                  { namespaceId, variableId }
-                ].map(item => [item.variableId, item])
-              ).values()
-            ]
-          } else {
-            errorMessages.push({ type: 'syntax', message: `Unknown variable: ${variableId}` })
-          }
-        }
-
-        if (formulaName?.kind === 'Spreadsheet') {
-          this.blockDependencies.push(namespaceId)
-          const column = this.ctx.formulaContext.findColumn(namespaceId, variableId)
-          firstArgumentType = 'Column'
-          if (column) {
-            codeFragment = {
-              ...codeFragment,
-              ...column2codeFragment(column)
-            }
-          } else {
-            errorMessages.push({ type: 'syntax', message: 'Unknown column' })
-          }
-        }
-
-        images.push(variableId)
-        codeFragments.push({ ...codeFragment, errors: errorMessages })
         return
       }
 

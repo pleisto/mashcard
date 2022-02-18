@@ -91,7 +91,8 @@ export interface SpreadsheetType {
   listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
   findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined
   getRow: (rowId: uuid) => Row | undefined
-  getColumn: (columnId: ColumnId) => ColumnInitializer | undefined
+  getColumnById: (columnId: ColumnId) => ColumnInitializer | undefined
+  getColumnByName: (name: string) => ColumnInitializer | undefined
   toArray: () => string[][]
   toRecord: () => Array<Record<string, StringResult>>
   persist: () => SpreadsheetPersistence

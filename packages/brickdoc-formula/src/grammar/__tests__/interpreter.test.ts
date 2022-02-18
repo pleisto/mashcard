@@ -192,7 +192,7 @@ describe('Context', () => {
     expect(bar.t.variableNameDependencies).toEqual([{ namespaceId, name: 'foo' }])
     expect(bar.t.flattenVariableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
 
-    const input = `=#${anotherBlockId}.${anotherVariableId}`
+    const input = `=#${anotherBlockId}.bar`
     const newMeta: VariableMetadata = {
       namespaceId,
       variableId: fooVariableId,
@@ -211,7 +211,7 @@ describe('Context', () => {
   })
 
   it('PLUS', async () => {
-    const input = `= custom::PLUS(10, #${namespaceId}.${fooVariableId})`
+    const input = `= custom::PLUS(10, #${namespaceId}.foo)`
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { cst, kind, errorMessages } = parse({ ctx: finalCtx })

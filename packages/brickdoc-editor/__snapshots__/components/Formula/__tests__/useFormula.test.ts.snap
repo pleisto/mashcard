@@ -471,7 +471,7 @@ Object {
                   "errors": Array [],
                   "hide": true,
                   "renderText": [Function],
-                  "type": "any",
+                  "type": "Block",
                   "value": "#eb373fbc-a6e9-40a6-8c4b-45cda7230dda",
                 },
                 "type": "FormulaType",

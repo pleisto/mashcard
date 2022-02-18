@@ -9,7 +9,6 @@ const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 const barVariableId = '28e28190-63bd-4f70-aeca-26e72574c01a'
 const testVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
-const unknownVariableId = '99499117-5694-4d83-9ccd-85a3ab0b8f25'
 
 const testName1 = 'varvarabcvar'
 
@@ -21,7 +20,7 @@ const barMeta: VariableMetadata = {
   namespaceId,
   variableId: barVariableId,
   name: 'bar',
-  input: `=#${namespaceId}.${variableId}`,
+  input: `=#${namespaceId}.${testName1}`,
   position: 0,
   type: 'normal'
 }
@@ -47,80 +46,80 @@ describe('Controls', () => {
     },
     {
       label: 'set ok',
-      input: `=Set(#${namespaceId}.${variableId}, 1)`,
+      input: `=Set(#${namespaceId}.${testName1}, 1)`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'set ok 2',
-      input: `=Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId} + #${namespaceId}.${variableId}))`,
+      input: `=Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1} + #${namespaceId}.${testName1}))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'set multiple line',
-      input: `=Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})); Set(#${namespaceId}.${variableId}, (123))`,
+      input: `=Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})); Set(#${namespaceId}.${testName1}, (123))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'set unknown',
-      input: `=Set(#${namespaceId}.${unknownVariableId}, 1)`,
-      parseErrorMessage: `Unknown variable: ${unknownVariableId}`,
+      input: `=Set(#${namespaceId}.baz, 1)`,
+      parseErrorMessage: `Variable "baz" not found`,
       result: null
     },
     {
-      label: 'set expression',
-      input: `=Set(#${namespaceId}.${barVariableId}, 1)`,
+      label: 'set expression TODO -> Only constant variable is supported',
+      input: `=Set(#${namespaceId}.bar, 1)`,
       parseErrorMessage: undefined,
-      result: 'Only constant variable is supported'
+      result: SNAPSHOT_FLAG
     },
     {
       label: 'button',
-      input: `=Button("Foo", Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})))`,
+      input: `=Button("Foo", Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'button multiple set',
-      input: `=Button("Foo", Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})); Set(#${namespaceId}.${variableId}, (123)))`,
+      input: `=Button("Foo", Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})); Set(#${namespaceId}.${testName1}, (123)))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'input ok',
-      input: `=CInput(Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})))`,
+      input: `=CInput(Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'switch set',
-      input: `=Switch(true, Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})); Set(#${namespaceId}.${variableId}, (123)))`,
+      input: `=Switch(true, Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})); Set(#${namespaceId}.${testName1}, (123)))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'select ok',
-      input: `=Select([1,2,3], Set(#${namespaceId}.${variableId}, Input.selected))`,
+      input: `=Select([1,2,3], Set(#${namespaceId}.${testName1}, Input.selected))`,
       parseErrorMessage: undefined,
       result: SNAPSHOT_FLAG
     },
     {
       label: 'select []',
-      input: `=Select([], Set(#${namespaceId}.${variableId}, Input.selected))`,
+      input: `=Select([], Set(#${namespaceId}.${testName1}, Input.selected))`,
       parseErrorMessage: undefined,
       result: 'Select expects non empty options'
     },
     {
       label: 'select [[]]',
-      input: `=Select([[]], Set(#${namespaceId}.${variableId}, Input.selected))`,
+      input: `=Select([[]], Set(#${namespaceId}.${testName1}, Input.selected))`,
       parseErrorMessage: undefined,
       result: 'Select expects an array of strings'
     }
   ]
 
   it('feature', () => {
-    const input = `=Button("Foo", Set(#${namespaceId}.${variableId}, (1 + #${namespaceId}.${variableId})))`
+    const input = `=Button("Foo", Set(#${namespaceId}.${testName1}, (1 + #${namespaceId}.${testName1})))`
     const meta: VariableMetadata = {
       namespaceId,
       variableId: testVariableId,

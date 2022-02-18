@@ -45,7 +45,7 @@ const metas: VariableMetadata[] = [
   position: 0,
   variableId: variableWithNames.find(v => v.name === name)!.variableId,
   input: input.replace(/\$([a-zA-Z0-9_-]+)/g, (a, variableName): string => {
-    return `#${namespaceId}.${variableWithNames.find(v => v.name === variableName)!.variableId}`
+    return `#${namespaceId}."${variableWithNames.find(v => v.name === variableName)!.name}"`
   })
 }))
 
@@ -78,7 +78,7 @@ describe('Dependency', () => {
   })
 
   it('circular dependency check', async () => {
-    const input = `=#${namespaceId}.${variableIds[6]}`
+    const input = `=#${namespaceId}.num6`
     const meta: VariableMetadata = {
       namespaceId,
       variableId: variableIds[0],
@@ -137,7 +137,7 @@ describe('Dependency', () => {
 
   it('dependency automatic update', async () => {
     // num1 = 2 -> num1 = num0 * 2 + 100 = 102
-    const input = `=#${namespaceId}.${variableIds[0]} * 2 + 100`
+    const input = `=#${namespaceId}.num0 * 2 + 100`
     const meta: VariableMetadata = {
       namespaceId,
       variableId: variableIds[1],

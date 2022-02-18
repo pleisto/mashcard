@@ -70,7 +70,7 @@ const simpleMetas: VariableMetadata[] = [
   position: 0,
   variableId: variableWithNames.find(v => v.name === name)!.variableId,
   input: input.replace(/\$([a-zA-Z0-9_-]+)/g, (a, variableName): string => {
-    return `#${namespaceId}.${variableWithNames.find(v => v.name === variableName)!.variableId}`
+    return `#${namespaceId}."${variableWithNames.find(v => v.name === variableName)!.name}"`
   })
 }))
 

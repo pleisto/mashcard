@@ -30,7 +30,8 @@ import {
   FunctionContext,
   BlockCompletion,
   BlockFormulaName,
-  SpreadsheetResult
+  SpreadsheetResult,
+  ColumnName
 } from '../types'
 import {
   function2completion,
@@ -261,13 +262,28 @@ export class FormulaContext implements ContextInterface {
     return this.formulaNames.find(f => f.key === namespaceId)
   }
 
-  public findColumn(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
+  public findColumnById(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
     const spreadsheet = this.findSpreadsheet(namespaceId)
     if (!spreadsheet) {
       return undefined
     }
 
-    const column = spreadsheet.getColumn(variableId)
+    const column = spreadsheet.getColumnById(variableId)
+
+    if (!column) {
+      return undefined
+    }
+
+    return new ColumnClass(spreadsheet, column)
+  }
+
+  public findColumnByName(namespaceId: NamespaceId, name: ColumnName): ColumnType | undefined {
+    const spreadsheet = this.findSpreadsheet(namespaceId)
+    if (!spreadsheet) {
+      return undefined
+    }
+
+    const column = spreadsheet.getColumnByName(name)
 
     if (!column) {
       return undefined

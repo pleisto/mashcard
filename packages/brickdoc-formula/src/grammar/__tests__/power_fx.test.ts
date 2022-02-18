@@ -82,7 +82,7 @@ const SNAPSHOT_FLAG = '<SNAPSHOT>'
 const testCases: TestCase[] = [
   {
     label: 'CountIf ok',
-    input: `=CountIf(#${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}.${firstColumnId} >= 3)`,
+    input: `=CountIf(#${spreadsheetNamespaceId}, #${spreadsheetNamespaceId}."first" >= 3)`,
     error: 'Expected number but got Column',
     value: 2
   },
