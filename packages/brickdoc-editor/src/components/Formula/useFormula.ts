@@ -273,7 +273,7 @@ export const useFormula = ({
 
     setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
-    if (parseResult.valid || inputIsEmpty) {
+    if ((parseResult.valid && !variableErrorFatal(newVariable)) || inputIsEmpty) {
       const codeFragments = maybeRemoveCodeFragmentsEqual(parseResult.codeFragments, formulaIsNormal)
       const newContent = codeFragmentsToJSONContentTotal(codeFragments)
       const newInput = contentArrayToInput(fetchJSONContentArray(newContent))
