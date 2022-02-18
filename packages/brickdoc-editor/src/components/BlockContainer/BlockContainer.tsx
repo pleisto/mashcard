@@ -26,6 +26,27 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
     const [documentEditable] = useDocumentEditable(editable)
     const [blockElement] = useBlockElement(children, actionOptions, inline ?? false, insideList)
     const asElement = as ?? (inline ? 'span' : undefined)
+    const innerRef = React.useRef<HTMLElement | null>(null)
+
+    // this effect is for checking dom element when mounted
+    React.useEffect(() => {
+      // waiting for dom mounted by ProseMirror
+      // TODO: find a better way to check if paragraph inside list
+      setTimeout(() => {
+        if (!innerRef.current) return
+        // check if block is in the list
+        const element = innerRef.current.parentElement
+        const parentElement = element?.parentElement
+        const newInsideList = parentElement?.tagName === 'LI'
+
+        if (insideList !== newInsideList) setInsideList(newInsideList)
+      }, 100)
+
+      return () => {
+        innerRef.current = null
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
       <NodeViewWrapper
@@ -39,10 +60,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
             ref.current = container
           }
 
-          // check if block is in the list
-          const element = container?.parentElement
-          const parentElement = element?.parentElement
-          setInsideList(parentElement?.tagName === 'LI')
+          innerRef.current = container
         }}
       >
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
