@@ -16,7 +16,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
   >
     <span
       aria-label="slash_menu.recent"
-      class="brd-c-cdAvaf"
+      class="brd-c-kubJPX"
     >
       <span
         class="brd-c-emmNGU"
@@ -81,7 +81,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
   >
     <span
       aria-label="slash_menu.type"
-      class="brd-c-cdAvaf"
+      class="brd-c-kubJPX"
     >
       <span
         class="brd-c-emmNGU"

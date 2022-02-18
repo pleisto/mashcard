@@ -14,7 +14,7 @@ export const Semantics = {
    * Type
    */
   typePrimary: Palettes.deepPurple7,
-  typeSecondary: Palettes.deepPurple6,
+  typeSecondary: Palettes.deepPurple5,
   typeThirdary: Palettes.deepPurple4,
   typeDisabled: Palettes.deepPurple3,
 

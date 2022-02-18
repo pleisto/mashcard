@@ -1,11 +1,10 @@
-import { Button, cx } from '@brickdoc/design-system'
 import React, { useState } from 'react'
-import { useDocsI18n } from '../../hooks'
 import { Delete } from '@brickdoc/design-icons'
-import { TrashPopover } from '../TrashPopover'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
-
-import styles from './index.module.less'
+import { useDocsI18n } from '../../hooks'
+import { TrashPopover } from '../TrashPopover'
+import { sidebarButtonStyles } from '@/docs/pages/DocumentContentPage.style'
+import { Button } from '@brickdoc/design-system'
 
 export const TrashButton: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
@@ -17,7 +16,7 @@ export const TrashButton: React.FC<DocMetaProps> = ({ docMeta }) => {
 
   return (
     <>
-      <Button type="text" className={cx([styles.delBtn, 'brd-btn-text'])} icon={<Delete />} onClick={onClick}>
+      <Button type="text" css={sidebarButtonStyles} icon={<Delete />} onClick={onClick}>
         {t('trash.name')}
       </Button>
       <TrashPopover docMeta={docMeta} visible={trashModalVisible} setVisible={setTrashModalVisible} />

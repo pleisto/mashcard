@@ -27,14 +27,7 @@ export const base = {
       width: '100%'
     },
     '.mainActions nav': {
-      overflow: 'hidden',
-      h2: {
-        fontSize: '0.75rem',
-        color: theme.colors.typeSecondary,
-        fontWeight: '600',
-        padding: '.5rem 1rem',
-        marginTop: '1.875rem'
-      }
+      overflow: 'hidden'
     }
   },
   '& > main': {
@@ -60,4 +53,13 @@ export const base = {
   '& > aside': {
     width: '3rem'
   }
+}
+
+export const sidebarButtonStyles = {
+  color: theme.colors.typeSecondary,
+  display: 'flex',
+  fontSize: theme.fontSizes.subHeadline,
+  justifyContent: 'flex-start',
+  marginBottom: '1.5rem',
+  width: '100%'
 }

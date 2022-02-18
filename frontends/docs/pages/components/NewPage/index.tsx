@@ -1,14 +1,14 @@
 import React from 'react'
 import { Add } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../../common/hooks'
-import { Button, cx } from '@brickdoc/design-system'
+import { Button } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
 import { useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
 import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
-import styles from './index.module.less'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { sidebarButtonStyles } from '../../DocumentContentPage.style'
 
 export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
@@ -30,7 +30,7 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
     <Button
       data-testid={TEST_ID_ENUM.page.DocumentPage.addPageButton.id}
       type="text"
-      className={cx([styles.createBtn, 'brd-btn-text'])}
+      css={sidebarButtonStyles}
       onClick={onClick}
       loading={createBlockLoading}
       icon={<Add />}

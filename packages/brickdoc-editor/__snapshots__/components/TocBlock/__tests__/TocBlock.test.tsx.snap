@@ -21,7 +21,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
           role="menuitem"
         >
           <span
-            class="brd-c-bEpxfM brd-c-bEpxfM-jJXOha-level-1"
+            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <i
@@ -39,7 +39,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
               role="menuitem"
             >
               <span
-                class="brd-c-bEpxfM brd-c-bEpxfM-ccDUaf-level-2"
+                class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
                 data-testid="editor-toc-block-item-title"
               >
                 <i
@@ -57,7 +57,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                   role="menuitem"
                 >
                   <span
-                    class="brd-c-bEpxfM brd-c-bEpxfM-glOmSq-level-5"
+                    class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
                     data-testid="editor-toc-block-item-title"
                   >
                     h5\`
@@ -77,7 +77,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
           role="menuitem"
         >
           <span
-            class="brd-c-bEpxfM brd-c-bEpxfM-jJXOha-level-1"
+            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <i
@@ -95,7 +95,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
               role="menuitem"
             >
               <span
-                class="brd-c-bEpxfM brd-c-bEpxfM-jpNsBQ-level-3"
+                class="brd-c-jXsEGA brd-c-jXsEGA-jpNsBQ-level-3"
                 data-testid="editor-toc-block-item-title"
               >
                 <i
@@ -113,7 +113,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                   role="menuitem"
                 >
                   <span
-                    class="brd-c-bEpxfM brd-c-bEpxfM-gsgpPJ-level-4"
+                    class="brd-c-jXsEGA brd-c-jXsEGA-gsgpPJ-level-4"
                     data-testid="editor-toc-block-item-title"
                   >
                     <i
@@ -131,7 +131,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                       role="menuitem"
                     >
                       <span
-                        class="brd-c-bEpxfM brd-c-bEpxfM-glOmSq-level-5"
+                        class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
                         data-testid="editor-toc-block-item-title"
                       >
                         h5
@@ -151,7 +151,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
               role="menuitem"
             >
               <span
-                class="brd-c-bEpxfM brd-c-bEpxfM-ccDUaf-level-2"
+                class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
                 data-testid="editor-toc-block-item-title"
               >
                 <i
@@ -169,7 +169,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
                   role="menuitem"
                 >
                   <span
-                    class="brd-c-bEpxfM brd-c-bEpxfM-cvEtFL-level-text"
+                    class="brd-c-jXsEGA brd-c-jXsEGA-cvEtFL-level-text"
                     data-testid="editor-toc-block-item-title"
                   >
                     anchor
@@ -189,7 +189,7 @@ exports[`TocBlock matches correct snapshot 1`] = `
           role="menuitem"
         >
           <span
-            class="brd-c-bEpxfM brd-c-bEpxfM-jJXOha-level-1"
+            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
             data-testid="editor-toc-block-item-title"
           >
             h1\`\`

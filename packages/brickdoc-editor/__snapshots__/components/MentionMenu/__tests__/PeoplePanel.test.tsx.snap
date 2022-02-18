@@ -18,7 +18,7 @@ exports[`MentionMenuPeoplePanel matches correct snapshot 1`] = `
       tabindex="-1"
     >
       <span
-        class="brd-c-jjxMLt brd-c-jjxMLt-hECRKn-shape-circle brd-c-jjxMLt-kRzPmM-size-md brd-c-jjxMLt-iOOMir-css mention-menu-people-avatar"
+        class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-iOOMir-css mention-menu-people-avatar"
       >
         <img
           src="avatar 0"
@@ -36,7 +36,7 @@ exports[`MentionMenuPeoplePanel matches correct snapshot 1`] = `
       tabindex="-1"
     >
       <span
-        class="brd-c-jjxMLt brd-c-jjxMLt-hECRKn-shape-circle brd-c-jjxMLt-kRzPmM-size-md brd-c-jjxMLt-ieOMneJ-css mention-menu-people-avatar"
+        class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-ieOMneJ-css mention-menu-people-avatar"
       >
         <img
           src="avatar 1"
@@ -54,7 +54,7 @@ exports[`MentionMenuPeoplePanel matches correct snapshot 1`] = `
       tabindex="-1"
     >
       <span
-        class="brd-c-jjxMLt brd-c-jjxMLt-hECRKn-shape-circle brd-c-jjxMLt-kRzPmM-size-md brd-c-jjxMLt-iliJASM-css mention-menu-people-avatar"
+        class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-iliJASM-css mention-menu-people-avatar"
       >
         <img
           src="avatar 2"

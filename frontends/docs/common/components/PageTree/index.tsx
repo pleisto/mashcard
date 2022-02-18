@@ -49,16 +49,17 @@ const SubPageModeEmptyNode = styled('span', {
 })
 
 const PageTreeRoot = styled('div', {
-  variants: {
-    mode: {
-      default: {
-        marginBottom: '2rem'
-      },
-      subPage: {
-        marginBottom: '0'
-      }
-    }
-  }
+  marginBottom: '2px',
+  maxHeight: '63vh',
+  overflow: 'auto'
+})
+
+const PageTreeHeading = styled('div', {
+  color: theme.colors.typeSecondary,
+  fontSize: theme.fontSizes.callout,
+  fontWeight: 500,
+  lineHeight: '2rem',
+  paddingLeft: theme.space.md
 })
 
 export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
@@ -327,7 +328,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
 
   const pinTree = pinTreeBlocks.length ? (
     <>
-      <h2>Pin</h2>
+      <PageTreeHeading>Pin</PageTreeHeading>
       {treeElement(pinTreeBlocks, false)}
     </>
   ) : (
@@ -343,9 +344,9 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   }, [navSize, pinTreeBlocks])
 
   return pageBlocks.length ? (
-    <PageTreeRoot mode={mode ?? 'default'}>
+    <PageTreeRoot>
       {pinTree}
-      {!hideHeading && <h2>Pages</h2>}
+      {!hideHeading && <PageTreeHeading>Pages</PageTreeHeading>}
       {treeElement(pageBlocks, draggable && mutable, pageHeight)}
     </PageTreeRoot>
   ) : (
