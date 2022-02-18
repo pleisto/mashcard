@@ -76,7 +76,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     columnIds: columns.map(c => c.uuid),
     rowIds: rows.map(r => r.id),
     columnHeaders: new Map(columns.map(c => [c.uuid, columnDisplayTitle(c)])),
-    valuesMatrix
+    valuesMatrix,
+    editable: documentEditable
   })
 
   useFormulaSpreadsheet({ blockId: parentId, rows, columns, getCellBlock, title })

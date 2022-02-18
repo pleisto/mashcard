@@ -304,9 +304,10 @@ export class VariableClass implements VariableInterface {
     this.reparsing = false
   }
 
-  public reparseOnly(): void {
+  public async reinterpret(): Promise<void> {
     const formula = this.buildFormula()
     this.t = castVariable(this.formulaContext, formula)
+    await this.interpret({ ctx: {}, arguments: [] })
   }
 
   public updateCst(cst: CstNode, interpretContext: InterpretContext): void {

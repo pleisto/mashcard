@@ -9,7 +9,7 @@ import {
   BlockSpreadsheetLoaded
 } from '@brickdoc/schema'
 import { FormulaBlockRender } from '../Formula/FormulaBlockRender'
-import { displayValue } from '@brickdoc/formula'
+import { displayValue, VariableClass, VariableData } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { FormulaRender } from '../Formula/FormulaRender'
 import { devLog } from '@brickdoc/design-system'
@@ -70,12 +70,35 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
 
   const updateCellValue = React.useCallback(
     async (value: string) => {
+      if (!variableRef.current && formulaContext) {
+        const variableT = {
+          namespaceId: rootId,
+          definition: value,
+          variableId: formulaId,
+          name: formulaName,
+          version: 0,
+          type: 'spreadsheet',
+          variableValue: {
+            success: true,
+            result: { type: 'string', result: value },
+            cacheValue: { type: 'string', result: value },
+            updatedAt: new Date()
+          }
+        } as unknown as VariableData
+        // TODO refactor this
+        variableRef.current = new VariableClass({
+          t: variableT,
+          formulaContext
+        })
+        await variableRef.current.reinterpret()
+        await variableRef.current.save()
+      }
       if (variableRef.current) {
         await variableRef.current.updateDefinition(value)
-        refreshCell()
       }
+      refreshCell()
     },
-    [refreshCell]
+    [refreshCell, formulaContext, rootId, formulaId, formulaName]
   )
 
   React.useEffect(() => {

@@ -629,7 +629,7 @@ export interface VariableInterface {
   trackDependency: VoidFunction
   destroy: () => Promise<void>
   save: () => Promise<void>
-  reparseOnly: VoidFunction
+  reinterpret: () => Promise<void>
   isDraft: () => boolean
   namespaceName: () => string
   updateDefinition: (definition: Definition) => Promise<void>

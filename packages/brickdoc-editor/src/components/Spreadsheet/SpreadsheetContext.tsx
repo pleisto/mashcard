@@ -37,6 +37,7 @@ export interface SpreadsheetContext {
   dragging: SpreadsheetDragging
   setDragging: (dragging: SpreadsheetDragging) => void
   copyToClipboard: (curSelections?: { columnIds?: string[]; rowIds?: string[]; cellIds?: string[] }) => void
+  editable: boolean
 }
 
 export const keyDownMovements: { [key: string]: [number, number] } = {
@@ -52,13 +53,14 @@ export const useSpreadsheetContext = (options: {
   rowIds: string[]
   columnHeaders: Map<string, string>
   valuesMatrix: Map<string, Map<string, string>>
+  editable?: boolean
 }): SpreadsheetContext => {
   const [selection, setSelection] = React.useState<SpreadsheetSelection>({})
   const [dragging, setDragging] = React.useState<SpreadsheetDragging>({})
   const [hoverRowId, setHoverRowId] = React.useState<string>('')
   const [editingCellId, setEditingCellId] = React.useState<string>('')
 
-  const { parentId, columnIds, rowIds, columnHeaders, valuesMatrix } = options ?? {}
+  const { parentId, columnIds, rowIds, columnHeaders, valuesMatrix, editable } = options ?? {}
 
   const clearSelection = (): void => {
     setSelection({})
@@ -75,6 +77,22 @@ export const useSpreadsheetContext = (options: {
   const selectCell = (cellId: string): void => {
     setSelection({ cellIds: [...(selection.cellIds ?? []), cellId] })
   }
+
+  const getSelectedIdx = React.useCallback(() => {
+    const { cellIds, columnIds: selectedColumnIds, rowIds: selectedRowIds } = selection
+    let rowIdx = rowIds.length
+    let columnIdx = columnIds.length
+    if (cellIds?.length === 1) {
+      const [rowId, columnId] = cellIds[0].split(',')
+      rowIdx = rowIds.indexOf(rowId)
+      columnIdx = columnIds.indexOf(columnId)
+    } else if (selectedColumnIds?.length === 1) {
+      columnIdx = columnIds.indexOf(selectedColumnIds[0])
+    } else if (selectedRowIds?.length === 1) {
+      rowIdx = rowIds.indexOf(selectedRowIds[0])
+    }
+    return { rowIdx, columnIdx }
+  }, [selection, rowIds, columnIds])
 
   const copyToClipboard = React.useCallback(
     (curSelections?: { columnIds?: string[]; rowIds?: string[]; cellIds?: string[] }): void => {
@@ -103,29 +121,39 @@ export const useSpreadsheetContext = (options: {
     [selection, columnHeaders, valuesMatrix]
   )
 
-  // const setCellValue = (cellId: string): void => {
-
-  // }
+  const pasteToSpreadsheet = React.useCallback(
+    text => {
+      let { rowIdx, columnIdx } = getSelectedIdx()
+      if (rowIdx === rowIds.length) {
+        rowIdx = 0
+      }
+      if (columnIdx === columnIds.length) {
+        columnIdx = 0
+      }
+      const pasteMatrix = text.split('\n').map((r: string) => r.split('\t'))
+      pasteMatrix.forEach((r: string[], ri: number) => {
+        r.forEach((c: string, ci: number) => {
+          const rowId = rowIds[rowIdx + ri]
+          const columnId = columnIds[columnIdx + ci]
+          if (rowId && columnId) {
+            const cellId = `${rowId},${columnId}`
+            BrickdocEventBus.dispatch(SpreadsheetUpdateCellValue({ parentId, cellId, value: c }))
+          }
+        })
+      })
+    },
+    [parentId, rowIds, columnIds, getSelectedIdx]
+  )
 
   React.useEffect(() => {
     const onKeyDown = (e: KeyboardEvent): void => {
       devLog(`key down ${e.code}`)
       const { cellIds, columnIds: selectedColumnIds, rowIds: selectedRowIds } = selection
       const thisSelected = cellIds?.length ?? selectedRowIds?.length ?? selectedColumnIds?.length
-      if (thisSelected && columnIds && rowIds) {
+      if (thisSelected) {
         const movement = keyDownMovements[e.code]
         if (movement) {
-          let rowIdx = rowIds.length
-          let columnIdx = columnIds.length
-          if (cellIds?.length === 1) {
-            const [rowId, columnId] = cellIds[0].split(',')
-            rowIdx = rowIds.indexOf(rowId)
-            columnIdx = columnIds.indexOf(columnId)
-          } else if (selectedColumnIds?.length === 1) {
-            columnIdx = columnIds.indexOf(selectedColumnIds[0])
-          } else if (selectedRowIds?.length === 1) {
-            rowIdx = rowIds.indexOf(selectedRowIds[0])
-          }
+          const { rowIdx, columnIdx } = getSelectedIdx()
           let nRowIdx = rowIdx + movement[0]
           let nColumnIdx = columnIdx + movement[1]
           if (nRowIdx > rowIds.length) nRowIdx = 0
@@ -155,11 +183,24 @@ export const useSpreadsheetContext = (options: {
         }
       }
     }
+    const onPaste = (e: ClipboardEvent): void => {
+      const text = e.clipboardData?.getData('text/plain')
+      const { cellIds, columnIds: selectedColumnIds, rowIds: selectedRowIds } = selection
+      const thisSelected = cellIds?.length ?? selectedRowIds?.length ?? selectedColumnIds?.length
+      if (text && thisSelected) {
+        pasteToSpreadsheet(text)
+        e.preventDefault()
+      }
+    }
     document.addEventListener('keydown', onKeyDown)
+    if (editable) {
+      document.addEventListener('paste', onPaste)
+    }
     return () => {
       document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('paste', onPaste)
     }
-  }, [selection, rowIds, columnIds, parentId, copyToClipboard])
+  }, [editable, selection, rowIds, columnIds, parentId, getSelectedIdx, copyToClipboard, pasteToSpreadsheet])
 
   return {
     hoverRowId,
@@ -174,6 +215,7 @@ export const useSpreadsheetContext = (options: {
     setEditingCellId,
     dragging,
     setDragging,
-    copyToClipboard
+    copyToClipboard,
+    editable: editable === true
   }
 }
