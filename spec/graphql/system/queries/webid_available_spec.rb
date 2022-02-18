@@ -32,6 +32,16 @@ describe System::Queries::WebidAvailable, type: :query do
       stub = create(:pod)
       internal_graphql_execute(query, { webid: stub.webid })
       expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.taken") })
+
+      # Soft deleted
+      stub.destroy
+      internal_graphql_execute(query, { webid: stub.webid })
+      expect(response.data['webidAvailable']).to eq({ "success" => false, "message" => I18n.t("errors.messages.taken") })
+
+      # Hard deleted
+      stub.really_destroy!
+      internal_graphql_execute(query, { webid: stub.webid })
+      expect(response.data['webidAvailable']).to eq({ "success" => true, "message" => "ok" })
     end
 
     it 'blacklist' do

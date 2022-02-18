@@ -26,7 +26,7 @@
 class Pod < ApplicationRecord
   acts_as_paranoid
   belongs_to :owner, class_name: 'Accounts::User'
-  validates :webid, presence: true, webid: true, uniqueness: { case_sensitive: false }
+  validates :webid, presence: true, webid: true, uniqueness: { case_sensitive: false, conditions: ->{ with_deleted }}
   validates :name, presence: true
   validates_presence_of :name
   validates_uniqueness_of :owner_id, scope: :personal, if: proc { personal? }

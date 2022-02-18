@@ -82,12 +82,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
   const redirectPersonalPodPath = `/${docMeta.personalWebid}`
 
   if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {
-    if (docMeta.isRedirect) {
-      return <Navigate to={redirectPersonalPodPath} />
-      // return <Alert message="TODO Page not found" type="error" />
-    } else {
-      return <Navigate to="/" />
-    }
+    return <Navigate to={redirectPersonalPodPath} />
+    // return <Alert message="TODO Page not found" type="error" />
   }
 
   const PageElement = (
