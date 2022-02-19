@@ -37,8 +37,8 @@ module Docs
         end
       end
 
-      pod_id = current_pod.fetch('id')
-      current_user.save_last_position!(current_pod.fetch('webid'), root_id)
+      space_id = current_space.fetch('id')
+      current_user.save_last_position!(current_space.fetch('domain'), root_id)
 
       insert_data = []
       upsert_data = []
@@ -61,11 +61,11 @@ module Docs
         block.meta = args.meta
         block.parent_id ||= args.parent_id
         block.type ||= args.type
-        block.pod_id ||= pod_id
+        block.space_id ||= space_id
         block.root_id ||= root_id
         block.deleted_at = nil
         # TODO: fix this in collab (Readonly mode)
-        block.collaborators = (block.collaborators + [current_user.id]).uniq if current_pod.fetch('owner_id') == current_user.id
+        block.collaborators = (block.collaborators + [current_user.id]).uniq if current_space.fetch('owner_id') == current_user.id
 
         if args.attachments
           # block.attachments = args.attachments

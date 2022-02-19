@@ -13,7 +13,7 @@
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader",
-    "@pdftron/webviewer": "^8.2.0",
+    "@pdftron/webviewer": "^8.3.0",
     "@tiptap/core": "^2.0.0-beta.160",
     "@tiptap/extension-blockquote": "^2.0.0-beta.26",
     "@tiptap/extension-bold": "^2.0.0-beta.25",
@@ -45,7 +45,7 @@
     "react-dnd": "^15.1.1",
     "react-dnd-html5-backend": "^15.1.2",
     "react-medium-image-zoom": "^4.3.5",
-    "refractor": "^4.4.0",
+    "refractor": "^4.5.0",
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {

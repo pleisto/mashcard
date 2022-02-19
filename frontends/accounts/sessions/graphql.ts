@@ -13,7 +13,7 @@ export const FederatedIdentitySession = gql`
   query GetFederatedIdentitySession {
     federatedIdentitySession {
       hasSession
-      webid
+      domain
       name
       provider
     }

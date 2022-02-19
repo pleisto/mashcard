@@ -6,26 +6,26 @@ RSpec.describe Docs::ShareLink, type: :model do
 
   it 'anyone' do
     target = create(:docs_block)
-    target.upsert_share_links!([{ webid: Pod::ANYONE_WEBID, state: "enabled", policy: "edit" }])
+    target.upsert_share_links!([{ domain: Space::ANYONE_DOMAIN, state: "enabled", policy: "edit" }])
 
     expect(target.share_links.count).to eq(1)
     share_link = target.share_links.first
-    expect(share_link.share_pod_id).to eq(nil)
+    expect(share_link.share_space_id).to eq(nil)
   end
 
   it 'work' do
-    pod = create(:pod)
+    space = create(:space)
     expect(block.share_links.count).to eq(0)
-    block.upsert_share_links!([{ webid: pod.webid, state: "enabled", policy: "edit" }])
+    block.upsert_share_links!([{ domain: space.domain, state: "enabled", policy: "edit" }])
 
     expect(block.share_links.count).to eq(1)
     share_link = block.share_links.first
-    expect(share_link.share_pod_id).to eq(pod.id)
-    expect(share_link.pod_id).to eq(block.pod_id)
+    expect(share_link.share_space_id).to eq(space.id)
+    expect(share_link.space_id).to eq(block.space_id)
     expect(share_link.state).to eq("enabled")
     expect(share_link.enabled?).to eq(true)
 
-    block.upsert_share_links!([{ webid: pod.webid, state: "disabled", policy: "edit" }])
+    block.upsert_share_links!([{ domain: space.domain, state: "disabled", policy: "edit" }])
 
     expect(block.share_links.count).to eq(1)
     share_link.reload
@@ -33,29 +33,29 @@ RSpec.describe Docs::ShareLink, type: :model do
     expect(share_link.enabled?).to eq(false)
     expect(share_link.disabled?).to eq(true)
 
-    pod2 = create(:pod)
-    block.upsert_share_links!([{ webid: pod.webid, state: "enabled", policy: "view" },
-                               { webid: pod2.webid, state: "enabled", policy: "edit" }])
+    space2 = create(:space)
+    block.upsert_share_links!([{ domain: space.domain, state: "enabled", policy: "view" },
+                               { domain: space2.domain, state: "enabled", policy: "edit" }])
 
     expect(block.share_links.count).to eq(2)
   end
 
   it 'invalid policy' do
     expect do
-      pod = create(:pod)
-      block.upsert_share_links!([{ webid: pod.webid, state: "enabled", policy: "FOOBAR" }])
+      space = create(:space)
+      block.upsert_share_links!([{ domain: space.domain, state: "enabled", policy: "FOOBAR" }])
     end.to raise_error(ArgumentError)
   end
 
-  it 'invalid webid' do
+  it 'invalid domain' do
     expect do
-      block.upsert_share_links!([{ webid: "foo_bar", state: "enabled", policy: "edit" }])
+      block.upsert_share_links!([{ domain: "foo_bar", state: "enabled", policy: "edit" }])
     end.to raise_error(ArgumentError)
   end
 
-  it 'special webid' do
+  it 'special domain' do
     expect do
-      block.upsert_share_links!([{ webid: Pod::ANYONE_WEBID, state: "enabled", policy: "view" }])
+      block.upsert_share_links!([{ domain: Space::ANYONE_DOMAIN, state: "enabled", policy: "view" }])
     end.not_to raise_error
   end
 end

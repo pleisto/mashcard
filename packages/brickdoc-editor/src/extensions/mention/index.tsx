@@ -27,7 +27,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
     const filterMenuItemsByQuery = ({ query }: { query: string }): MenuItems => {
       const searchValue = (query ?? '').toLowerCase()
       const pages = this.options.editorDataSource.documentPages
-      const webid = this.options.editorDataSource.webid
+      const domain = this.options.editorDataSource.domain
       const pagePath = (parentId: string | null | undefined, path: string[] = []): string[] => {
         const parent = pages.find(p => p.key === parentId)
 
@@ -40,10 +40,10 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
             .filter(item => (item.name ?? '').toLowerCase().includes(searchValue))
             .map(item => ({
               name: item.name,
-              webid: item.webid,
+              domain: item.domain,
               avatar: item.avatar,
               command(editor: Editor, range: Range) {
-                editor.chain().focus().deleteRange(range).setUserBlock(item.webid, item.name, item.avatar).run()
+                editor.chain().focus().deleteRange(range).setUserBlock(item.domain, item.name, item.avatar).run()
               }
             }))
             .slice(0, 5) ?? [],
@@ -62,7 +62,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
                   .chain()
                   .focus()
                   .deleteRange(range)
-                  .setPageLinkBlock(item.key, `/${webid}/${item.key}`, item.title, item.icon)
+                  .setPageLinkBlock(item.key, `/${domain}/${item.key}`, item.title, item.icon)
                   .run()
               }
             }))

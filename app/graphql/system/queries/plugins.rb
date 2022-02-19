@@ -2,12 +2,12 @@
 
 module System
   class Queries::Plugins < BrickGraphQL::BaseResolver
-    description 'return all plugins for pod.'
+    description 'return all plugins for space.'
     type [System::Objects::Plugin], null: false
     authenticate_user!
 
     def resolve
-      domain = current_pod.present? ? Pod.find(current_pod['id']) : :global
+      domain = current_space.present? ? Space.find(current_space['id']) : :global
       BrickdocConfig.on(domain) do
         BrickdocPlugin.enabled_plugins.map(&:attributes)
       end

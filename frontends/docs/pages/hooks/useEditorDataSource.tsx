@@ -87,7 +87,7 @@ export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEd
   React.useEffect(() => {
     dataSource.current.collaborators = docMeta.collaborators.map(user => ({
       name: user.name,
-      webid: user.webid,
+      domain: user.domain,
       avatar: user.avatarData?.url ?? undefined
     }))
   }, [docMeta.collaborators])
@@ -97,10 +97,10 @@ export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEd
     dataSource.current.documentEditable = documentEditable
   }, [documentEditable])
 
-  // webid
+  // domain
   React.useEffect(() => {
-    dataSource.current.webid = docMeta.webid
-  }, [docMeta.webid])
+    dataSource.current.domain = docMeta.domain
+  }, [docMeta.domain])
 
   // rootId
   React.useEffect(() => {

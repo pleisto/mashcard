@@ -7,7 +7,7 @@ module Accounts
       graphql_name 'accounts_user'
       description 'A user is an individual\'s accounts on Brickdoc can make new content.'
 
-      field :webid, String, 'Like a username, Unique within this instance of Brickdoc.', null: false
+      field :domain, String, 'Like a username, Unique within this instance of Brickdoc.', null: false
       field :name, String, 'Human-readable name of the user', null: false
       field :bio, String, 'the user\'s public profile bio', null: true
       field :email, String, 'User\'s email address', null: true, authorize_field: true

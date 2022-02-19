@@ -2,15 +2,15 @@ declare global {
   interface BrickdocServerContext {
     internalApiEndpoint: string
     currentUser?: {
-      webid: string
+      domain: string
     }
-    currentPod: {
-      webid: string
+    currentSpace: {
+      domain: string
     }
     lastBlockIds?: {
-      [webid: string]: string
+      [domain: string]: string
     }
-    lastWebid?: string
+    lastDomain?: string
     env: string
     version: string
     locale: string

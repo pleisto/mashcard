@@ -10,10 +10,10 @@
 return if Rails.env.production?
 
 users = 5.times.map do |n|
-  Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com", webid: "ADMIN#{n}").tap(&:confirm)
+  Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com", username: "ADMIN#{n}").tap(&:confirm)
 end
 
-pods = users.map { |u| u.pods.first }
+spaces = users.map { |u| u.spaces.first }
 
 BLOCK_TYPE = 'doc'
 COLLABORATOR_COUNT = 1..5
@@ -23,17 +23,17 @@ THIRD_LEVEL_CHILDREN_COUNT = 5..10
 
 BLOCK_SEEDS = [5..5, 50..100, 200..300]
 
-def random_collaborators(pod, pods)
-  (pods.sample(COLLABORATOR_COUNT.to_a.sample) + [pod]).map(&:id).uniq
+def random_collaborators(space, spaces)
+  (spaces.sample(COLLABORATOR_COUNT.to_a.sample) + [space]).map(&:id).uniq
 end
 
-def create_block(pod, id, parent_id, pods)
+def create_block(space, id, parent_id, spaces)
   params = {
     id: id,
-    pod: pod,
+    space: space,
     page: true,
     type: BLOCK_TYPE,
-    collaborators: random_collaborators(pod, pods),
+    collaborators: random_collaborators(space, spaces),
     meta: { title: FFaker::Lorem.phrase },
     data: {},
     parent_id: parent_id,
@@ -50,10 +50,10 @@ parent_map = BLOCK_SEEDS.reduce([{}, []]) do |(result, prev), seed|
   [result, uuids]
 end.first
 
-ROOT_POD = pods.last
+ROOT_space = spaces.last
 
 parent_map.each do |k, v|
-  create_block(ROOT_POD, k, v, pods)
+  create_block(ROOT_space, k, v, spaces)
 end
 
 #### Snapshot and history

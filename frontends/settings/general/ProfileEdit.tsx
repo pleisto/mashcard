@@ -5,54 +5,61 @@ import { SettingsContextProps } from '@/settings/SettingContext'
 import { Form, Input, TextArea, Button, toast } from '@brickdoc/design-system'
 import { AvatarEditor } from './components/AvatarEditor'
 import { object, string } from 'yup'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput } from '@/BrickdocGraphQL'
+import {
+  useGetCurrentSpaceQuery,
+  SpaceOperation,
+  useCreateOrUpdateSpaceMutation,
+  CreateOrUpdateSpaceInput
+} from '@/BrickdocGraphQL'
 
 const profileValidation = object({
   name: string().required(),
   bio: string().max(140)
 })
 
-export const ProfileEdit: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
+export const ProfileEdit: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
+  const { refetch } = useGetCurrentSpaceQuery({})
   const { t } = useSettingsI18n(['docs'])
-  const [updatePod, { loading: profileSubmitting }] = useCreateOrUpdatePodMutation()
+  const [updateSpace, { loading: profileSubmitting }] = useCreateOrUpdateSpaceMutation()
   const profileForm = Form.useForm({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
     defaultValues: {
-      name: pod?.name,
-      bio: pod?.bio
+      name: space?.name,
+      bio: space?.bio
     },
     yup: profileValidation
   })
 
-  const onProfileSubmit = async (values: Omit<CreateOrUpdatePodInput, 'webid' | 'type'>) => {
-    const result = await updatePod({
+  const onProfileSubmit = async (values: Omit<CreateOrUpdateSpaceInput, 'domain' | 'type'>) => {
+    const result = await updateSpace({
       variables: {
         input: {
-          type: PodOperation.Update,
-          webid: pod!.webid,
+          type: SpaceOperation.Update,
+          domain: space!.domain,
           ...values
         }
       }
     })
-    const errors = result.data?.createOrUpdatePod?.errors
+    const errors = result.data?.createOrUpdateSpace?.errors
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
+      void refetch()
       toast.success(t('general.profile_updated'))
     }
   }
 
   return (
-    <Panel title={t(`general.${pod?.personal ? 'user' : 'group'}_profile`)}>
+    <Panel title={t(`general.${space?.personal ? 'user' : 'group'}_profile`)}>
       <Form form={profileForm} onSubmit={onProfileSubmit}>
-        <Form.Field label={t('docs:pods.avatar')}>
+        <Form.Field label={t('docs:spaces.avatar')}>
           <AvatarEditor />
         </Form.Field>
-        <Form.Field name="name" label={t('docs:pods.name')}>
+        <Form.Field name="name" label={t('docs:spaces.name')}>
           <Input type="text" />
         </Form.Field>
-        <Form.Field name="bio" label={t('docs:pods.bio')}>
+        <Form.Field name="bio" label={t('docs:spaces.bio')}>
           <TextArea />
         </Form.Field>
         <Form.Field>

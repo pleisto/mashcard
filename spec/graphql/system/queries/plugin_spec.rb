@@ -23,14 +23,14 @@ describe System::Queries::Plugins, type: :query do
 
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
       internal_graphql_execute(query)
 
       expect(response.success?).to be true
       expect(response.data['plugins'].present?).to be true
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

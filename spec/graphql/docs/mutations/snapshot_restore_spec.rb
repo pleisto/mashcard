@@ -14,11 +14,11 @@ describe Docs::Mutations::SnapshotRestore, type: :mutation do
 
     let(:user) { create(:accounts_user) }
     let(:share_user) { create(:accounts_user) }
-    let(:block) { create(:docs_block, pod: user.personal_pod) }
+    let(:block) { create(:docs_block, space: user.personal_space) }
 
     it 'ok' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       block.save_snapshot!
       input = { input: { blockId: block.id, snapshotVersion: block.snapshot_version } }
@@ -27,7 +27,7 @@ describe Docs::Mutations::SnapshotRestore, type: :mutation do
       expect(response.data).to eq({ "snapshotRestore" => nil })
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

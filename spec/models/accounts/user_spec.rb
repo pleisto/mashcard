@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe Accounts::User, type: :model do
   context '.password_required?' do
-    let(:user) { Accounts::User.new(name: FFaker::Name.name, webid: Time.now.to_i.to_s(36)) }
+    let(:user) { Accounts::User.new(name: FFaker::Name.name, domain: Time.now.to_i.to_s(36)) }
     it "should return email and password can't be blank" do
       expect(user).to_not be_valid
       expect(user.errors.messages.keys).to include(:email, :password)
@@ -16,9 +16,9 @@ describe Accounts::User, type: :model do
     end
   end
 
-  context '.personal_pod' do
-    it 'should personal pod created' do
-      expect(Pod.find_by(personal: true, owner_id: create(:accounts_user).id)).to be_present
+  context '.personal_space' do
+    it 'should personal space created' do
+      expect(Space.find_by(personal: true, owner_id: create(:accounts_user).id)).to be_present
     end
   end
 end

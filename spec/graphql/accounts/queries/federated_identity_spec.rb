@@ -8,7 +8,7 @@ describe Accounts::Queries::FederatedIdentitySession, type: :query do
        query GetFederatedIdentitySession {
           federatedIdentitySession {
             hasSession
-            webid
+            domain
             name
             provider
           }
@@ -27,7 +27,7 @@ describe Accounts::Queries::FederatedIdentitySession, type: :query do
         # test with_indifferent_access
         'provider' => :github,
         info: {
-          webid: 'cccp',
+          domain: 'cccp',
           name: 'USSR'
         }
       }

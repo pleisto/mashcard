@@ -18,15 +18,15 @@ class Accounts::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
   def omniauth_auth
     return @omniauth_auth if defined? @omniauth_auth
     auth = request.env["omniauth.auth"]
-    webid = auth&.webid || auth.info&.nickname || auth.info&.login
-    webid = auth.info&.email&.split('@')&.first if webid.blank?
+
+    domain = auth.info&.nickname || auth.info&.login || auth.info&.email&.split('@')&.first
     @omniauth_auth = {
       provider: auth.provider,
       uid: auth.uid,
       info: {
-        webid: webid,
+        domain: domain,
         email: auth.info&.email,
-        name: auth.info&.name || webid,
+        name: auth.info&.name || domain,
         avatar: auth.info&.image
       }
     }

@@ -2,31 +2,31 @@ import React from 'react'
 import { Form, Input, toast, Modal, Button } from '@brickdoc/design-system'
 import { object, string } from 'yup'
 import { useDocsI18n } from '../../hooks'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput, Pod } from '@/BrickdocGraphQL'
-import { useWebidAvailableValidator } from '@/common/hooks'
+import { SpaceOperation, useCreateOrUpdateSpaceMutation, CreateOrUpdateSpaceInput, Space } from '@/BrickdocGraphQL'
+import { useDomainAvailableValidator } from '@/common/hooks'
 
 interface ProfileModalProps {
-  pod: Pod
+  space: Space
   visible: boolean
   title: string
-  type: PodOperation
+  type: SpaceOperation
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title, type, setVisible }) => {
+export const ProfileModal: React.FC<ProfileModalProps> = ({ space, visible, title, type, setVisible }) => {
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
-  const webidAvailableValidator = useWebidAvailableValidator()
+  const domainAvailableValidator = useDomainAvailableValidator()
 
-  const form = Form.useForm<CreateOrUpdatePodInput>({
+  const form = Form.useForm<CreateOrUpdateSpaceInput>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
     yup: object({
-      webid: string().required(t('pods.required.webid')).test(webidAvailableValidator),
-      name: string().required(t('pods.required.name'))
+      domain: string().required(t('spaces.required.domain')).test(domainAvailableValidator),
+      name: string().required(t('spaces.required.name'))
     })
   })
-  const [createOrUpdatePod] = useCreateOrUpdatePodMutation()
+  const [createOrUpdateSpace] = useCreateOrUpdateSpaceMutation()
 
   const handleCancel = (): void => {
     setVisible(false)
@@ -36,18 +36,18 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
 
   const handleOk = async (values: any) => {
     setConfirmLoading(true)
-    const input: CreateOrUpdatePodInput = {
+    const input: CreateOrUpdateSpaceInput = {
       type,
-      webid: values.webid,
+      domain: values.domain,
       name: values.name,
       bio: values.bio
     }
-    await createOrUpdatePod({ variables: { input } })
+    await createOrUpdateSpace({ variables: { input } })
     form.reset()
-    void toast.success(t('pods.create.success'))
+    void toast.success(t('spaces.create.success'))
     setConfirmLoading(false)
     setVisible(false)
-    globalThis.location.href = `/${values.webid}`
+    globalThis.location.href = `/${values.domain}`
   }
 
   return (
@@ -61,13 +61,13 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ pod, visible, title,
           setConfirmLoading(false)
         }}
       >
-        <Form.Field name="webid" label={t('pods.webid')}>
+        <Form.Field name="domain" label={t('spaces.domain')}>
           <Input />
         </Form.Field>
-        <Form.Field name="name" label={t('pods.name')}>
+        <Form.Field name="name" label={t('spaces.name')}>
           <Input />
         </Form.Field>
-        <Form.Field name="bio" label={t('pods.bio')}>
+        <Form.Field name="bio" label={t('spaces.bio')}>
           <Input />
         </Form.Field>
         <Form.Field inlineWrapper>

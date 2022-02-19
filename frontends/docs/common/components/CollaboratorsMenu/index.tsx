@@ -1,7 +1,7 @@
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { Tooltip } from '@brickdoc/design-system'
 import React from 'react'
-import { PodAvatar } from '@/common/components/PodAvatar'
+import { SpaceAvatar } from '@/common/components/SpaceAvatar'
 
 interface CollaboratorsMenuProps {
   docMeta: NonNullDocMeta
@@ -12,9 +12,9 @@ export const CollaboratorsMenu: React.FC<CollaboratorsMenuProps> = ({ docMeta })
     return <></>
   }
 
-  const avatars = docMeta.collaborators.map((pod, i) => (
-    <Tooltip title={pod.webid} key={i}>
-      <PodAvatar pod={pod} />
+  const avatars = docMeta.collaborators.map((space, i) => (
+    <Tooltip title={space.domain} key={i}>
+      <SpaceAvatar space={space} />
     </Tooltip>
   ))
 

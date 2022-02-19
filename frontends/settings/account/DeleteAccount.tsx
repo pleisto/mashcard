@@ -3,7 +3,7 @@ import { BrickdocContext } from '@/common/brickdocContext'
 import { Input, Button, Box, Modal, theme, useBoolean, FormControl, toast } from '@brickdoc/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
-import { useGetPodsQuery, useUserDestroyMutation } from '@/BrickdocGraphQL'
+import { useGetSpacesQuery, useUserDestroyMutation } from '@/BrickdocGraphQL'
 import { Trans } from 'react-i18next'
 
 const DangerText: FC = ({ children }) => (
@@ -18,13 +18,13 @@ export const DeleteAccount: FC = () => {
   const [deleteAccount, { loading: deleting }] = useUserDestroyMutation()
   const context = useContext(BrickdocContext)
   const [inputVal, setInputVal] = useState('')
-  const userWebid = context.currentUser!.webid
+  const userDomain = context.currentUser!.domain
   const title = <DangerText>{t('account.delete_account')}</DangerText>
-  const { loading, data } = useGetPodsQuery()
+  const { loading, data } = useGetSpacesQuery()
   if (loading) return <></>
 
-  const teamPods = data?.pods.filter(p => !p.personal)
-  const hasTeamPods = teamPods && teamPods.length > 0
+  const teamSpaces = data?.spaces.filter(p => !p.personal)
+  const hasTeamSpaces = teamSpaces && teamSpaces.length > 0
 
   const deleteAccountHandler = async () => {
     const result = await deleteAccount({
@@ -44,19 +44,19 @@ export const DeleteAccount: FC = () => {
     <>
       <Panel title={title}>
         <p>
-          {hasTeamPods ? (
+          {hasTeamSpaces ? (
             <Trans
               t={t}
               i18nKey="account.delete_account_unavailable"
               values={{
-                spaces: teamPods!.map(p => p.name).join(', ')
+                spaces: teamSpaces!.map(p => p.name).join(', ')
               }}
             />
           ) : (
             t('account.delete_account_desc')
           )}
         </p>
-        <Button size="lg" onClick={setOpen} disabled={hasTeamPods}>
+        <Button size="lg" onClick={setOpen} disabled={hasTeamSpaces}>
           <DangerText>{t('account.delete_account_btn')}</DangerText>
         </Button>
       </Panel>
@@ -65,7 +65,7 @@ export const DeleteAccount: FC = () => {
           t={t}
           i18nKey="account.delete_account_modal_desc"
           values={{
-            webid: userWebid
+            domain: userDomain
           }}
         />
 
@@ -75,7 +75,7 @@ export const DeleteAccount: FC = () => {
               t={t}
               i18nKey="account.delete_account_confirm"
               values={{
-                webid: userWebid
+                domain: userDomain
               }}
             />
           }
@@ -88,7 +88,7 @@ export const DeleteAccount: FC = () => {
           loading={deleting}
           block
           size="lg"
-          disabled={inputVal !== userWebid}
+          disabled={inputVal !== userDomain}
         >
           {t('account.delete_account_confirm_btn')}
         </Button>

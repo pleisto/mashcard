@@ -14,11 +14,11 @@ import { useApolloClient } from '@apollo/client'
 
 interface BlockListItemProps {
   block: Block
-  webid: string
+  domain: string
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setVisible }) => {
+export const BlockListItem: React.FC<BlockListItemProps> = ({ domain, block, setVisible }) => {
   const { t } = useDocsI18n()
   const client = useApolloClient()
 
@@ -31,7 +31,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({ webid, block, setV
 
   const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryTrashBlocks, queryPageBlocks] })
 
-  const link = `/${webid}/${block.id}`
+  const link = `/${domain}/${block.id}`
 
   const onClickLink = (): void => {
     setVisible(false)

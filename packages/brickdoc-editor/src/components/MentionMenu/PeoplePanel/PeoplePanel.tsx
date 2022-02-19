@@ -8,7 +8,7 @@ import { EditorContext } from '../../../context/EditorContext'
 export interface PeopleItem {
   avatar: string | undefined
   name: string | null | undefined
-  webid: string
+  domain: string
   command: (editor: Editor, range: Range) => void
 }
 
@@ -41,7 +41,7 @@ export const PeoplePanel: React.FC<PeoplePanelProps> = ({ editor, items, range, 
             onClick={handlePeopleSelect(item)}
             className={cx('mention-menu-people', { active: active && index === activeIndex })}
           >
-            <Avatar className="mention-menu-people-avatar" initials={item.name ?? item.webid} src={item.avatar} />
+            <Avatar className="mention-menu-people-avatar" initials={item.name ?? item.domain} src={item.avatar} />
             <span className="mention-menu-people-name">{item.name}</span>
           </div>
         ))}

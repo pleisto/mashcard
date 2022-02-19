@@ -5,9 +5,9 @@
   "sideEffects": false,
   "module": "./src/index.ts",
   "dependencies": {
-    "@angular-devkit/core": "^13.2.3",
-    "@angular-devkit/schematics": "^13.2.3",
-    "@angular-devkit/schematics-cli": "^13.2.3",
+    "@angular-devkit/core": "^13.2.4",
+    "@angular-devkit/schematics": "^13.2.4",
+    "@angular-devkit/schematics-cli": "^13.2.4",
     "@brickdoc/dotenv": "workspace:^",
     "chalk": "4.1.2",
     "enquirer": "^2.3.6",
@@ -17,7 +17,6 @@
     "yargs-parser": "^21.0.0"
   },
   "devDependencies": {
-    "@types/pg": "^8.6.4",
-    "cpx": "^1.5.0"
+    "@types/pg": "^8.6.4"
   }
 }

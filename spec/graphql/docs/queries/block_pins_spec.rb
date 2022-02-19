@@ -29,7 +29,7 @@ describe Docs::Queries::BlockPins, type: :query do
     GRAPHQL
 
     it 'anonymous' do
-      self.current_pod = Pod::ANONYMOUS_CONTEXT
+      self.current_space = Space::ANONYMOUS_CONTEXT
 
       internal_graphql_execute(query)
 
@@ -40,14 +40,14 @@ describe Docs::Queries::BlockPins, type: :query do
     it 'normal' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       internal_graphql_execute(query)
       expect(response.success?).to be true
       expect(response.data).to eq('blockPins' => [])
 
-      block = create(:docs_block, pod: user.personal_pod)
-      pin = Docs::Pin.create!(user_id: user.id, pod_id: user.personal_pod.id, block_id: block.id)
+      block = create(:docs_block, space: user.personal_space)
+      pin = Docs::Pin.create!(user_id: user.id, space_id: user.personal_space.id, block_id: block.id)
 
       internal_graphql_execute(query)
       expect(response.success?).to be true

@@ -16,7 +16,7 @@ interface TrashPromptProps {
   docMeta: NonNullDocMeta
 }
 
-export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid } }) => {
+export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain } }) => {
   const { t } = useDocsI18n()
   const client = useApolloClient()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
@@ -58,7 +58,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, webid }
     await blockHardDelete({ variables: { input } })
     setHardDeleteModalVisible(false)
     setHardDeleteConfirmLoading(false)
-    navigate(`/${webid}`)
+    navigate(`/${domain}`)
   }
 
   return (

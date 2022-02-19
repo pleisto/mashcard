@@ -4,7 +4,7 @@ import { DocumentTopBar } from './components/DocumentTopBar'
 import { DocumentPage } from './DocumentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { PageTree } from '@/docs/common/components/PageTree'
-import { PodSelect } from '@/docs/common/components/PodSelect'
+import { SpaceSelect } from '@/docs/common/components/SpaceSelect'
 import { TrashButton } from '@/docs/common/components/TrashButton'
 import { ExplorerMenu } from '@/docs/common/components/ExplorerMenu'
 import { NewPage } from './components/NewPage'
@@ -27,9 +27,9 @@ type icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['i
 
 export interface DocMeta {
   id: string | undefined
-  webid: string
-  personalWebid: string
-  loginWebid: string
+  domain: string
+  personalDomain: string
+  loginDomain: string
   isAlias: boolean
   alias: string | undefined
   payload: object
@@ -63,30 +63,30 @@ export interface DocMetaProps {
 const Layout = styled('div', base)
 
 export const DocumentContentPage: React.FC = () => {
-  const { webid, docid, snapshotVersion } = useParams() as unknown as {
-    webid: string
+  const { domain, docid, snapshotVersion } = useParams() as unknown as {
+    domain: string
     docid?: string
     snapshotVersion?: string
   }
-  const { currentPod, currentUser, host, lastWebid, lastBlockIds, featureFlags } = useContext(BrickdocContext)
+  const { currentSpace, currentUser, host, lastDomain, lastBlockIds, featureFlags } = useContext(BrickdocContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
 
-  const loginWebid = currentPod.webid
+  const loginDomain = currentSpace.domain
 
-  const { data, loading: getBlockInfoLoading } = useGetBlockInfoQuery({ variables: { id: docid as string, webid } })
+  const { data, loading: getBlockInfoLoading } = useGetBlockInfoQuery({ variables: { id: docid as string, domain } })
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
   const loading = !data || getBlockInfoLoading || createBlockLoading
   const isAnonymous = !currentUser
-  const personalWebid = currentUser?.webid ?? loginWebid
+  const personalDomain = currentUser?.domain ?? loginDomain
 
   const { state } = useLocation()
 
   const docMeta: DocMeta = useMemo(() => {
     const policy = data?.blockInfo?.permission?.policy
-    const isMine = loginWebid === webid || !!data?.blockInfo?.isMaster
+    const isMine = loginDomain === domain || !!data?.blockInfo?.isMaster
     const pin = !!data?.blockInfo?.pin
     const icon = data?.blockInfo?.icon
     const isAlias = docid ? !isValidUUID(docid) : false
@@ -99,7 +99,7 @@ export const DocumentContentPage: React.FC = () => {
     const payload = data?.blockInfo?.enabledAlias?.payload ?? {}
     const collaborators = data?.blockInfo?.collaborators ?? []
     const pathArray = data?.blockInfo?.pathArray ?? []
-    const path = `/${webid}/${docid}`
+    const path = `/${domain}/${docid}`
 
     const id = isAlias ? data?.blockInfo?.id : docid
     const alias = isAlias ? docid : data?.blockInfo?.enabledAlias?.key
@@ -109,7 +109,7 @@ export const DocumentContentPage: React.FC = () => {
       id,
       alias,
       isAlias,
-      webid,
+      domain,
       title,
       payload,
       isDeleted,
@@ -119,18 +119,18 @@ export const DocumentContentPage: React.FC = () => {
       isAnonymous,
       isMine,
       isRedirect,
-      loginWebid,
+      loginDomain,
       shareable,
       editable,
       viewable,
       collaborators,
       pathArray,
       icon,
-      personalWebid,
+      personalDomain,
       documentInfoLoading: loading,
       snapshotVersion: Number(snapshotVersion ?? '0')
     }
-  }, [data, docid, host, isAnonymous, loading, personalWebid, loginWebid, snapshotVersion, state, t, webid])
+  }, [data, docid, host, isAnonymous, loading, personalDomain, loginDomain, snapshotVersion, state, t, domain])
 
   const getFormulas = useFormulaQuery(docMeta)
   const backendActions = useFormulaBackendActions()
@@ -142,7 +142,7 @@ export const DocumentContentPage: React.FC = () => {
       formulaNames,
       features: featureFlags
     })
-    void getFormulas(webid).then(({ data, success }) => {
+    void getFormulas(domain).then(({ data, success }) => {
       if (!success) return
       appendFormulas(formulaContext, data ?? [])
     })
@@ -153,12 +153,12 @@ export const DocumentContentPage: React.FC = () => {
 
   useEffect(() => {
     async function createAndNavigateToNewPage(): Promise<void> {
-      if (lastBlockIds && (lastBlockIds as any)[webid]) {
-        navigate(`/${webid}/${(lastBlockIds as any)[webid]}`)
+      if (lastBlockIds && (lastBlockIds as any)[domain]) {
+        navigate(`/${domain}/${(lastBlockIds as any)[domain]}`)
       } else {
         const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '' } } })
         if (blockCreateData?.blockCreate?.id) {
-          navigate(`/${webid}/${blockCreateData?.blockCreate?.id}`)
+          navigate(`/${domain}/${blockCreateData?.blockCreate?.id}`)
         }
       }
     }
@@ -169,11 +169,11 @@ export const DocumentContentPage: React.FC = () => {
 
     // NOTE redirect if has its `alias` and current id is `uuid`
     if (!docMeta.isAlias && docMeta.alias) {
-      navigate(`/${webid}/${docMeta.alias}`, { replace: true })
+      navigate(`/${domain}/${docMeta.alias}`, { replace: true })
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [blockCreate, docid, history, webid, docMeta, lastWebid, lastBlockIds])
+  }, [blockCreate, docid, history, domain, docMeta, lastDomain, lastBlockIds])
 
   const siderBar =
     !docMeta.isAnonymous &&
@@ -190,11 +190,11 @@ export const DocumentContentPage: React.FC = () => {
           </nav>
         </div>
         <footer>
-          <PodSelect docMeta={docMeta} />
+          <SpaceSelect docMeta={docMeta} />
         </footer>
       </>
     ) : (
-      <PodSelect docMeta={docMeta} />
+      <SpaceSelect docMeta={docMeta} />
     ))
 
   return (

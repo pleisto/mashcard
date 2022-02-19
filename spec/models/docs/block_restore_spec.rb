@@ -17,10 +17,10 @@ RSpec.describe Docs::Block, type: :model do
     old_text = "foo"
     new_text = "bar"
     block = create(:docs_block, text: old_text)
-    child_block1 = create(:docs_block, text: old_text, pod: block.pod, parent: block, root_id: block.id)
-    child_block2 = create(:docs_block, text: old_text, pod: block.pod, parent: block, root_id: block.id)
-    _sub_block1 = create(:docs_block, text: old_text, pod: block.pod, parent: block, id: SecureRandom.uuid)
-    sub_block2 = create(:docs_block, text: old_text, pod: block.pod, parent: block, id: SecureRandom.uuid)
+    child_block1 = create(:docs_block, text: old_text, space: block.space, parent: block, root_id: block.id)
+    child_block2 = create(:docs_block, text: old_text, space: block.space, parent: block, root_id: block.id)
+    _sub_block1 = create(:docs_block, text: old_text, space: block.space, parent: block, id: SecureRandom.uuid)
+    sub_block2 = create(:docs_block, text: old_text, space: block.space, parent: block, id: SecureRandom.uuid)
 
     expect(block.descendants.ids.sort).to eq([block.id, child_block1.id, child_block2.id].sort)
 
@@ -30,7 +30,7 @@ RSpec.describe Docs::Block, type: :model do
     block.save_snapshot!
 
     child_block1.soft_delete!
-    child_block3 = create(:docs_block, text: old_text, pod: block.pod, parent: block, root_id: block.id)
+    child_block3 = create(:docs_block, text: old_text, space: block.space, parent: block, root_id: block.id)
 
     expect(child_block1.histories.count).to eq(2)
 
@@ -66,7 +66,7 @@ RSpec.describe Docs::Block, type: :model do
     expect(block.snapshot_version).to eq(3)
 
     sub_block2.update!(text: new_text)
-    child_block4 = create(:docs_block, text: old_text, pod: block.pod, parent: block, root_id: block.id)
+    child_block4 = create(:docs_block, text: old_text, space: block.space, parent: block, root_id: block.id)
     child_block1.update!(text: new_text)
     child_block2.soft_delete!
 

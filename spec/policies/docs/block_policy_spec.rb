@@ -4,15 +4,15 @@ require 'rails_helper'
 RSpec.describe Docs::BlockPolicy, type: :policy do
   let(:user) { create(:accounts_user) }
   let(:collaborator_user) { create(:accounts_user) }
-  let(:pod) { create(:pod) }
-  let(:block) { create(:docs_block, pod: pod, collaborators: [collaborator_user.id]) }
+  let(:space) { create(:space) }
+  let(:block) { create(:docs_block, space: space, collaborators: [collaborator_user.id]) }
 
   it 'owner' do
     expect(described_class.new(block, user: user).apply(:show?)).to be false
-    expect(described_class.new(block, user: pod.owner).apply(:show?)).to be true
+    expect(described_class.new(block, user: space.owner).apply(:show?)).to be true
 
     expect(block.show_policy?(user)).to be false
-    expect(block.show_policy?(pod.owner)).to be true
+    expect(block.show_policy?(space.owner)).to be true
   end
 
   it 'collaborators' do
@@ -21,8 +21,8 @@ RSpec.describe Docs::BlockPolicy, type: :policy do
   end
 
   it 'owner 2' do
-    new_pod = user.own_pods.create!(webid: "PolicyOwner", name: "PolicyOwner")
-    block2 = create(:docs_block, pod: new_pod)
+    new_space = user.own_spaces.create!(domain: "PolicyOwner", name: "PolicyOwner")
+    block2 = create(:docs_block, space: new_space)
     expect(described_class.new(block2, user: user).apply(:show?)).to be true
     expect(block2.show_policy?(user)).to be true
   end
@@ -37,12 +37,12 @@ RSpec.describe Docs::BlockPolicy, type: :policy do
     new_block = create(:docs_block)
     expect(new_block.show_policy?(nil)).to be false
 
-    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'view'])
+    new_block.upsert_share_links!([domain: Space::ANYONE_DOMAIN, state: 'enabled', policy: 'view'])
     new_block.enabled_share_links.reload
 
     expect(new_block.show_policy?(nil)).to be true
 
-    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'disabled', policy: 'view'])
+    new_block.upsert_share_links!([domain: Space::ANYONE_DOMAIN, state: 'disabled', policy: 'view'])
     new_block.enabled_share_links.reload
 
     expect(new_block.show_policy?(nil)).to be false
@@ -53,12 +53,12 @@ RSpec.describe Docs::BlockPolicy, type: :policy do
     new_block = create(:docs_block)
     expect(new_block.show_policy?(new_user)).to be false
 
-    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'view'])
+    new_block.upsert_share_links!([domain: Space::ANYONE_DOMAIN, state: 'enabled', policy: 'view'])
     new_block.enabled_share_links.reload
 
     expect(new_block.show_policy?(new_user)).to be true
 
-    new_block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'disabled', policy: 'view'])
+    new_block.upsert_share_links!([domain: Space::ANYONE_DOMAIN, state: 'disabled', policy: 'view'])
     new_block.enabled_share_links.reload
 
     expect(new_block.show_policy?(new_user)).to be false
@@ -69,12 +69,12 @@ RSpec.describe Docs::BlockPolicy, type: :policy do
     new_block = create(:docs_block)
     expect(new_block.show_policy?(new_user)).to be false
 
-    new_block.upsert_share_links!([webid: new_user.webid, state: 'enabled', policy: 'view'])
+    new_block.upsert_share_links!([domain: new_user.domain, state: 'enabled', policy: 'view'])
     new_block.enabled_share_links.reload
 
     expect(new_block.show_policy?(new_user)).to be true
 
-    new_block.upsert_share_links!([webid: new_user.webid, state: 'disabled', policy: 'view'])
+    new_block.upsert_share_links!([domain: new_user.domain, state: 'disabled', policy: 'view'])
     new_block.enabled_share_links.reload
 
     expect(new_block.show_policy?(new_user)).to be false

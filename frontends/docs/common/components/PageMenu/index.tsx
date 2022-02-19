@@ -40,7 +40,7 @@ interface PageMenuProps {
 }
 
 export const PageMenu: React.FC<PageMenuProps> = ({
-  docMeta: { id, webid, host },
+  docMeta: { id, domain, host },
   // setPopoverKey,
   pageId,
   mutable = true,
@@ -94,12 +94,12 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     const input = { parentId: pageId, title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      navigate(`/${webid}/${data?.blockCreate?.id}`)
+      navigate(`/${domain}/${data?.blockCreate?.id}`)
     }
   }
 
   const { t } = useDocsI18n()
-  const linkPath = `/${webid}/${pageId}`
+  const linkPath = `/${domain}/${pageId}`
   const link = `${host}${linkPath}`
 
   /* const addSelectedKey = (): void => {

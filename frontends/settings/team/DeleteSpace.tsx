@@ -3,7 +3,7 @@ import { SettingsContextProps } from '@/settings/SettingContext'
 import { Input, Button, Box, Modal, theme, useBoolean, FormControl, toast } from '@brickdoc/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
-import { usePodDestroyMutation } from '@/BrickdocGraphQL'
+import { useSpaceDestroyMutation } from '@/BrickdocGraphQL'
 import { Trans } from 'react-i18next'
 
 const DangerText: FC = ({ children }) => (
@@ -12,23 +12,23 @@ const DangerText: FC = ({ children }) => (
   </Box>
 )
 
-export const DeleteSpace: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
+export const DeleteSpace: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
   const { t } = useSettingsI18n()
-  const [deleteSpace, { loading: deleting }] = usePodDestroyMutation()
+  const [deleteSpace, { loading: deleting }] = useSpaceDestroyMutation()
   const [inputVal, setInputVal] = useState('')
   const title = <DangerText>{t('team.delete_space')}</DangerText>
-  const podUsername = pod!.webid
+  const spaceUsername = space!.domain
 
   const deleteSpaceHandler = async () => {
     const result = await deleteSpace({
       variables: {
         input: {
-          webid: podUsername
+          domain: spaceUsername
         }
       }
     })
-    const errors = result.data?.podDestroy?.errors
+    const errors = result.data?.spaceDestroy?.errors
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
@@ -49,7 +49,7 @@ export const DeleteSpace: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =
           t={t}
           i18nKey="team.delete_space_modal_desc"
           values={{
-            webid: podUsername
+            domain: spaceUsername
           }}
         />
 
@@ -59,7 +59,7 @@ export const DeleteSpace: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =
               t={t}
               i18nKey="team.delete_space_confirm"
               values={{
-                webid: podUsername
+                domain: spaceUsername
               }}
             />
           }
@@ -72,7 +72,7 @@ export const DeleteSpace: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =
           loading={deleting}
           block
           size="lg"
-          disabled={inputVal !== podUsername}
+          disabled={inputVal !== spaceUsername}
         >
           {t('team.delete_space_confirm_btn')}
         </Button>

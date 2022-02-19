@@ -2,7 +2,7 @@
 
 class StoragesController < ActionController::Base
   include Apiable
-  include CurrentPod
+  include CurrentSpace
   include ActionController::Cookies
 
   include ActiveStorage::SetCurrent
@@ -85,14 +85,14 @@ disposition: key[:disposition]
   def authenticate_blob
     return :ok if blob_can_view?
 
-    Rails.logger.info("No pod permission")
+    Rails.logger.info("No space permission")
     head :not_found
   end
 
   def blob_can_view?
-    pod = current_pod
+    space = current_space
 
-    return true if pod&.fetch('id', nil) == @blob.pod_id
+    return true if space&.fetch('id', nil) == @blob.space_id
 
     return false if @blob.block_id.blank?
 

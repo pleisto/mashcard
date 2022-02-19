@@ -289,7 +289,7 @@ io-EN:
       not_saved:
         one: 'crwdns2439:1%{resource}crwdne2439:1'
         other: 'crwdns2439:5%{count}crwdnd2439:5%{resource}crwdne2439:5'
-      is_not_valid_webid: 'crwdns3407:0%{webid}crwdne3407:0'
+      is_not_valid_domain: 'crwdns3407:0%{domain}crwdne3407:0'
       is_not_valid_email: 'crwdns2443:0%{email}crwdne2443:0'
       send_interval: crwdns2445:0crwdne2445:0
       accepted: crwdns2447:0crwdne2447:0
@@ -307,10 +307,10 @@ io-EN:
       less_than_or_equal_to: crwdns2471:0%{count}crwdne2471:0
       model_invalid: 'crwdns2473:0%{errors}crwdne2473:0'
       email_invalid: crwdns2475:0crwdne2475:0
-      webid_invalid: crwdns3409:0crwdne3409:0
+      domain_invalid: crwdns3409:0crwdne3409:0
       uuid_invalid: crwdns2479:0crwdne2479:0
       mobile_phone_invalid: crwdns2481:0crwdne2481:0
-      webid_presence_invalid: crwdns2483:0crwdne2483:0
+      domain_presence_invalid: crwdns2483:0crwdne2483:0
       not_a_number: crwdns2485:0crwdne2485:0
       not_an_integer: crwdns2487:0crwdne2487:0
       odd: crwdns2489:0crwdne2489:0
@@ -607,19 +607,19 @@ io-EN:
       confirm_password: crwdns2867:0crwdne2867:0
       sign_up_via: 'crwdns2869:0%{provider}crwdne2869:0'
       name: 'crwdns2871:0crwdne2871:0'
-      webid: 'crwdns3415:0crwdne3415:0'
-      webid_description: 'crwdns2875:0crwdne2875:0'
+      domain: 'crwdns3415:0crwdne3415:0'
+      domain_description: 'crwdns2875:0crwdne2875:0'
       agree_to_agreement: 'crwdns2877:0crwdne2877:0'
       resend_after: 'crwdns2879:0%{seconds}crwdne2879:0'
     common:
       confirm_not_match: 'crwdns2881:0%{field}crwdnd2881:0%{field}crwdne2881:0'
     errors:
       invalid_operation_type: 'crwdns2883:0crwdne2883:0'
-      invalid_pod_webid: 'crwdns3417:0crwdne3417:0'
-      pod_has_already_switched: 'crwdns2887:0crwdne2887:0'
-      pod_exist: 'crwdns2889:0crwdne2889:0'
+      invalid_space_domain: 'crwdns3417:0crwdne3417:0'
+      space_has_already_switched: 'crwdns2887:0crwdne2887:0'
+      space_exist: 'crwdns2889:0crwdne2889:0'
       user_not_exist: 'crwdns2891:0crwdne2891:0'
-      pod_not_exist: 'crwdns2893:0crwdne2893:0'
+      space_not_exist: 'crwdns2893:0crwdne2893:0'
   docs:
     app_title: crwdns2895:0crwdne2895:0
     saving: crwdns2897:0crwdne2897:0
@@ -628,7 +628,7 @@ io-EN:
       general: crwdns3225:0crwdne3225:0
       member: crwdns3227:0crwdne3227:0
       account: crwdns3229:0crwdne3229:0
-    pod_setting:
+    space_setting:
       text: crwdns3231:0crwdne3231:0
     anonymous:
       edit_button: crwdns2901:0crwdne2901:0
@@ -696,20 +696,20 @@ io-EN:
       restoring: crwdns3303:0crwdne3303:0
       cancel: crwdns2981:0crwdne2981:0
       empty: crwdns2983:0crwdne2983:0
-    pods:
-      webid: crwdns3421:0crwdne3421:0
+    spaces:
+      domain: crwdns3421:0crwdne3421:0
       name: crwdns2987:0crwdne2987:0
       bio: crwdns2989:0crwdne2989:0
       avatar: crwdns2991:0crwdne2991:0
       required:
-        webid: crwdns3423:0crwdne3423:0
+        domain: crwdns3423:0crwdne3423:0
         name: crwdns2995:0crwdne2995:0
       create:
         success: crwdns2997:0crwdne2997:0
       update:
         success: crwdns2999:0crwdne2999:0
     menu:
-      create_new_pod: crwdns3233:0crwdne3233:0
+      create_new_space: crwdns3233:0crwdne3233:0
       logout: crwdns3243:0crwdne3243:0
     title:
       add_icon: crwdns3009:0crwdne3009:0

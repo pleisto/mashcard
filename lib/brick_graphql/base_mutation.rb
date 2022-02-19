@@ -18,8 +18,8 @@ module BrickGraphQL
       context[:current_user]
     end
 
-    def current_pod
-      context[:current_pod]
+    def current_space
+      context[:current_space]
     end
 
     # Returns Array of errors on an ActiveRecord object

@@ -14,23 +14,23 @@ describe Docs::Mutations::BlockMove, type: :mutation do
 
     let(:user) { create(:accounts_user) }
     let(:block1) do
-      root = create(:docs_block, pod: user.personal_pod)
-      create(:docs_block, pod: user.personal_pod, sort: 100, parent: root, root_id: root.id)
-      create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
-      create(:docs_block, pod: user.personal_pod, sort: 300, parent: root, root_id: root.id)
+      root = create(:docs_block, space: user.personal_space)
+      create(:docs_block, space: user.personal_space, sort: 100, parent: root, root_id: root.id)
+      create(:docs_block, space: user.personal_space, sort: 200, parent: root, root_id: root.id)
+      create(:docs_block, space: user.personal_space, sort: 300, parent: root, root_id: root.id)
       root
     end
     let(:block2) do
-      root = create(:docs_block, pod: user.personal_pod)
-      create(:docs_block, pod: user.personal_pod, sort: 100, parent: root, root_id: root.id)
-      create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
-      create(:docs_block, pod: user.personal_pod, sort: 300, parent: root, root_id: root.id)
+      root = create(:docs_block, space: user.personal_space)
+      create(:docs_block, space: user.personal_space, sort: 100, parent: root, root_id: root.id)
+      create(:docs_block, space: user.personal_space, sort: 200, parent: root, root_id: root.id)
+      create(:docs_block, space: user.personal_space, sort: 300, parent: root, root_id: root.id)
       root
     end
 
     it 'root to root' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
 
@@ -41,12 +41,12 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'child to child: same parent' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
       child = root.descendants.find_by!(sort: 100)
@@ -58,12 +58,12 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'child to child: different parent' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
       root2 = block2
@@ -76,12 +76,12 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'root to child' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
       child = root.descendants.find_by!(sort: 300)
@@ -93,12 +93,12 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'child to root' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
 
@@ -109,12 +109,12 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'self' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
 
@@ -124,17 +124,17 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq({ "errors" => ['Invalid target'] })
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'descendants' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root = block1
 
       id = SecureRandom.uuid
-      child = create(:docs_block, pod: user.personal_pod, id: id, root_id: id, parent: root)
+      child = create(:docs_block, space: user.personal_space, id: id, root_id: id, parent: root)
 
       input = { input: { id: root.id, targetParentId: child.id, sort: 300 } }
       internal_graphql_execute(mutation, input)
@@ -142,7 +142,7 @@ describe Docs::Mutations::BlockMove, type: :mutation do
       expect(response.data[:blockMove]).to eq({ "errors" => ['Invalid target'] })
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

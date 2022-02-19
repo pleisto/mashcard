@@ -2,7 +2,7 @@
 FactoryBot.define do
   factory :docs_block, class: 'Docs::Block' do
     id { SecureRandom.uuid }
-    pod
+    space
     page { true }
     sort { 0 }
     type { 'doc' }
@@ -10,14 +10,14 @@ FactoryBot.define do
     data { {} }
     text { FFaker::Lorem.phrase }
     content { [] }
-    collaborators { [pod.owner.id] }
+    collaborators { [space.owner.id] }
   end
 
   factory :docs_block_child, class: 'Docs::Block' do
     parent { association :docs_block }
     id { SecureRandom.uuid }
     root_id { parent_id }
-    pod
+    space
     page { true }
     sort { 0 }
     type { 'doc' }
@@ -25,6 +25,6 @@ FactoryBot.define do
     data { {} }
     text { FFaker::Lorem.phrase }
     content { [] }
-    collaborators { [pod.owner.id] }
+    collaborators { [space.owner.id] }
   end
 end

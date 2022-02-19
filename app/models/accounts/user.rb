@@ -3,31 +3,31 @@
 #
 # Table name: accounts_users
 #
-#  id                     :integer          not null, primary key
-#  email                  :string
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  sign_in_count          :integer          default("0"), not null
-#  current_sign_in_at     :datetime
-#  last_sign_in_at        :datetime
-#  current_sign_in_ip     :string
-#  last_sign_in_ip        :string
-#  confirmation_token     :string
-#  confirmed_at           :datetime
-#  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string
-#  failed_attempts        :integer          default("0"), not null
-#  unlock_token           :string
-#  locked_at              :datetime
-#  locale                 :string(17)
-#  timezone               :string
-#  deleted_at             :datetime
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  last_webid             :string
-#  last_block_ids         :json             default("{}"), not null
+#  id                            :bigint           not null, primary key
+#  confirmation_sent_at          :datetime
+#  confirmation_token            :string
+#  confirmed_at                  :datetime
+#  current_sign_in_at            :datetime
+#  current_sign_in_ip            :string
+#  deleted_at                    :datetime
+#  email                         :string
+#  encrypted_password            :string           default(""), not null
+#  failed_attempts               :integer          default(0), not null
+#  last_block_ids                :json             not null
+#  last_sign_in_at               :datetime
+#  last_sign_in_ip               :string
+#  last_space_domain             :string
+#  locale(BCP47 language codes.) :string(17)
+#  locked_at                     :datetime
+#  remember_created_at           :datetime
+#  reset_password_sent_at        :datetime
+#  reset_password_token          :string
+#  sign_in_count                 :integer          default(0), not null
+#  timezone                      :string
+#  unconfirmed_email             :string
+#  unlock_token                  :string
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
 #
 # Indexes
 #
@@ -61,19 +61,19 @@ class Accounts::User < ApplicationRecord
 
   def as_global_context
     {
-      webid: webid,
+      domain: domain,
       name: name
     }
   end
 
-  def save_last_position!(webid, block_id)
-    return true if last_webid == webid && last_block_ids[webid] == block_id
+  def save_last_position!(domain, block_id)
+    return true if last_space_domain == domain && last_block_ids[domain] == block_id
 
-    unless last_block_ids.keys.include?(webid)
-      return false unless pods.find_by(webid: webid)
+    unless last_block_ids.keys.include?(domain)
+      return false unless spaces.find_by(domain: domain)
     end
 
-    update!(last_webid: webid, last_block_ids: last_block_ids.merge(webid => block_id))
+    update!(last_space_domain: domain, last_block_ids: last_block_ids.merge(domain => block_id))
   end
 
   def self.email_available?(email)
@@ -104,37 +104,37 @@ class Accounts::User < ApplicationRecord
     end
   end
 
-  ## Pod
+  ## Space
   has_many :members, -> { enabled }, class_name: 'Accounts::Member'
-  has_many :own_pods, class_name: 'Pod', foreign_key: :owner_id, inverse_of: :owner
-  has_many :pods, class_name: 'Pod', through: :members
+  has_many :own_spaces, class_name: 'Space', foreign_key: :owner_id, inverse_of: :owner
+  has_many :spaces, class_name: 'Space', through: :members
 
-  has_one :personal_pod, -> { where(personal: true) },
-          class_name: 'Pod', dependent: :destroy,
+  has_one :personal_space, -> { where(personal: true) },
+          class_name: 'Space', dependent: :destroy,
           foreign_key: :owner_id, inverse_of: :owner, autosave: true
 
-  delegate :webid, :webid=, :name, :name=, :bio, :bio=, :avatar, :avatar=, :avatar_data,
-           to: :personal_pod
-  alias_method :original_personal_pod, :personal_pod
+  delegate :domain, :domain=, :name, :name=, :bio, :bio=, :avatar, :avatar=, :avatar_data,
+           to: :personal_space
+  alias_method :original_personal_space, :personal_space
 
-  attribute :current_pod_id, :integer
-  attribute :current_pod_cache
+  attribute :current_space_id, :integer
+  attribute :current_space_cache
 
-  def personal_pod
-    original_personal_pod || build_personal_pod
+  def personal_space
+    original_personal_space || build_personal_space
   end
 
-  def fetch_current_pod_cache
-    return current_pod_cache if current_pod_cache
+  def fetch_current_space_cache
+    return current_space_cache if current_space_cache
 
-    current_pod_cache = guess_pod
-    current_pod_cache
+    current_space_cache = guess_space
+    current_space_cache
   end
 
-  def guess_pod
-    return personal_pod if last_webid.nil?
+  def guess_space
+    return personal_space if last_space_domain.nil?
 
-    pods.find_by(webid: last_webid) || personal_pod
+    spaces.find_by(domain: last_space_domain) || personal_space
   end
 
   ## FederatedIdentity
@@ -167,8 +167,8 @@ class Accounts::User < ApplicationRecord
     Stafftools::RoleAssignment.exists?(accounts_user_id: id)
   end
 
-  def has_team_pods?
-    pods.select { |p| !p.personal }.count > 0
+  def has_team_spaces?
+    spaces.select { |p| !p.personal }.count > 0
   end
 
   def hashed_id
@@ -176,8 +176,8 @@ class Accounts::User < ApplicationRecord
   end
 
   def destroy_user!
-    if has_team_pods?
-      errors.add(:base, 'You cannot delete a user with team pods')
+    if has_team_spaces?
+      errors.add(:base, 'You cannot delete a user with team spaces')
       return false
     end
 
@@ -192,7 +192,7 @@ class Accounts::User < ApplicationRecord
 
     ActiveRecord::Base.transaction do
       federated_identities.destroy_all
-      personal_pod.destroy_pod!
+      personal_space.destroy_space!
       # all validatrs and callbacks are skipped
       update_columns(masking_data)
       destroy!

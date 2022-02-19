@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SettingsContext } from '@/settings/SettingContext'
-import { SwitchSettingPod } from '../SwitchSettingPod'
+import { SwitchSettingSpace } from '../SwitchSettingSpace'
 import { Button } from '@brickdoc/design-system'
 import { ArrowLeft } from '@brickdoc/design-icons'
 import { SidebarWrapper, MenuItem } from './index.styles'
@@ -11,14 +11,14 @@ import { useSettingsI18n } from '../../hooks'
 export const Sidebar: FC = () => {
   const navigate = useNavigate()
   const { t } = useSettingsI18n()
-  const { pod, actions } = useContext(SettingsContext)!
+  const { space, actions } = useContext(SettingsContext)!
 
   return (
     <SidebarWrapper>
       <div className="actions">
         <header>
           <img src={Logo} alt="Brickdoc" />
-          <SwitchSettingPod />
+          <SwitchSettingSpace />
         </header>
         <nav>
           {actions.map(i => (
@@ -34,9 +34,9 @@ export const Sidebar: FC = () => {
           block
           icon={<ArrowLeft />}
           css={{ height: '40px', margin: '0 1rem' }}
-          onClick={() => navigate(`/${pod!.webid}`)}
+          onClick={() => navigate(`/${space!.domain}`)}
         >
-          Back to Pod
+          Back to Space
         </Button>
       </footer>
     </SidebarWrapper>

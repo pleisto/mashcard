@@ -3,12 +3,12 @@
 #
 # Table name: accounts_federated_identities
 #
-#  id               :integer          not null, primary key
-#  accounts_user_id :integer
-#  provider         :string           not null
-#  uid              :string           not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                     :bigint           not null, primary key
+#  provider               :string           not null
+#  uid(unique identifier) :string           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  accounts_user_id       :bigint
 #
 # Indexes
 #

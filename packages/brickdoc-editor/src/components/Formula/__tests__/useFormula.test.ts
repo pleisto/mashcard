@@ -145,10 +145,10 @@ const simpleCommonTestCases = [
     newInput: ` " " & #${namespaceId}.num1 `,
     resultData: 'Expected string but got number'
   },
-  { input: ' num1 & " "', newInput: ` #${namespaceId}.num1 & " "`, resultData: 'Expected string but got number' },
+  { input: ' num1 & " "', newInput: ` #${namespaceId}.num1 & " "`, resultData: 'Expected string but got number' }
 
   // TODO parse error
-  { input: 'a+num1', positions: [1], newInput: 'a.num1', resultData: 'Unknown function a' }
+  // { input: 'a+num1', positions: [1], newInput: 'a.num1', resultData: 'Unknown function a' }
 ]
 
 const simpleNormalTestCases = [
@@ -423,7 +423,8 @@ describe('useFormula', () => {
         expect(result.current.editorContent).toMatchSnapshot()
       }
       expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
-        newInput ?? input
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+        newInput || input
       )
 
       const data = result.current.variableT?.variableValue.result.result

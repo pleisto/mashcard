@@ -34,7 +34,7 @@ const Spin: FC<SpinProps> = props => {
       spinnerRef.current.style.opacity = '1'
     }
 
-    controls.start(i => ({
+    void controls.start(i => ({
       strokeDashoffset: strokeDashOffsetArray,
       rotate: rotateArray,
       transition: {
@@ -57,7 +57,7 @@ const Spin: FC<SpinProps> = props => {
   }, [controls])
 
   const spinnerStop = useCallback(() => {
-    controls.start(i => ({
+    void controls.start(i => ({
       strokeDashoffset: 1000,
       rotate: -90,
       transition: { duration: 0 }

@@ -5,7 +5,7 @@ module Docs
       field :policy, Enums::Policytype, null: false
       field :state, Enums::ShareLinkStateType, null: false
       field :key, String, null: false
-      field :share_pod_data, System::Objects::Pod, null: false
+      field :share_space_data, System::Objects::Space, null: false
     end
   end
 end

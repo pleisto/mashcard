@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Docs::Block, type: :model do
   context '.basic' do
-    let(:pod) { create(:pod) }
+    let(:space) { create(:space) }
     let(:block) { create(:docs_block) }
     let(:child) { create(:docs_block_child) }
     let(:attrs) do
@@ -30,7 +30,7 @@ RSpec.describe Docs::Block, type: :model do
     end
 
     it 'create' do
-      params = attrs.merge({ page: true, pod: pod, id: SecureRandom.uuid, collaborators: [pod.owner.id] })
+      params = attrs.merge({ page: true, space: space, id: SecureRandom.uuid, collaborators: [space.owner.id] })
       block = Docs::Block.create!(params)
 
       expect(block.histories.count).to eq(1)

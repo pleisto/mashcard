@@ -18,7 +18,7 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
   const { t } = useDocsI18n()
 
   const pathData = paths.map((path, idx) => {
-    const link = docMeta.isMine ? `/${docMeta.webid}/${path.id}` : '#'
+    const link = docMeta.isMine ? `/${docMeta.domain}/${path.id}` : '#'
     const emoji = path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
     return (
       <div className={styles.path} key={idx}>

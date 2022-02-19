@@ -16,9 +16,9 @@ describe Docs::Mutations::BlockSoftDelete, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
-      block = create(:docs_block, pod: user.personal_pod)
+      block = create(:docs_block, space: user.personal_space)
       title = "new title"
 
       input = { input: { id: block.id, title: title } }
@@ -36,7 +36,7 @@ describe Docs::Mutations::BlockSoftDelete, type: :mutation do
       expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.empty_title"))
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

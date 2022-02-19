@@ -21,14 +21,14 @@ module System
       new_input = input.to_h.merge(service_name: service)
 
       block_id = args[:block_id] || "global"
-      key = "#{current_pod.fetch('id_hash')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
+      key = "#{current_space.fetch('id_hash')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
 
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
       blob = ActiveStorage::Blob.create!(
         new_input.merge(
           key: key,
           operation_type: type,
-          pod_id: current_pod.fetch('id'),
+          space_id: current_space.fetch('id'),
           user_id: current_user.id,
           block_id: args[:block_id]
         )

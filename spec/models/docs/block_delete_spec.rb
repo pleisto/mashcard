@@ -5,11 +5,11 @@ RSpec.describe Docs::Block, type: :model do
   let(:user) { create(:accounts_user) }
 
   it '[child] soft delete and restore' do
-    root = create(:docs_block, pod: user.personal_pod)
-    block = create(:docs_block, pod: user.personal_pod, sort: 100, parent: root, root_id: root.id)
-    create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
+    root = create(:docs_block, space: user.personal_space)
+    block = create(:docs_block, space: user.personal_space, sort: 100, parent: root, root_id: root.id)
+    create(:docs_block, space: user.personal_space, sort: 200, parent: root, root_id: root.id)
 
-    child = create(:docs_block, pod: user.personal_pod, sort: 300, parent: block, root_id: root.id)
+    child = create(:docs_block, space: user.personal_space, sort: 300, parent: block, root_id: root.id)
 
     expect(root.descendants.count).to eq(4)
     expect(root.descendants_raw.count).to eq(4)
@@ -47,11 +47,11 @@ RSpec.describe Docs::Block, type: :model do
   end
 
   it '[child] delete permanently' do
-    root = create(:docs_block, pod: user.personal_pod)
-    block = create(:docs_block, pod: user.personal_pod, sort: 100, parent: root, root_id: root.id)
-    create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
+    root = create(:docs_block, space: user.personal_space)
+    block = create(:docs_block, space: user.personal_space, sort: 100, parent: root, root_id: root.id)
+    create(:docs_block, space: user.personal_space, sort: 200, parent: root, root_id: root.id)
 
-    child = create(:docs_block, pod: user.personal_pod, sort: 300, parent: block, root_id: root.id)
+    child = create(:docs_block, space: user.personal_space, sort: 300, parent: block, root_id: root.id)
 
     expect(root.descendants.count).to eq(4)
     expect(root.descendants_raw.count).to eq(4)
@@ -78,11 +78,11 @@ RSpec.describe Docs::Block, type: :model do
   end
 
   it '[sub] soft delete and restore' do
-    root = create(:docs_block, pod: user.personal_pod)
-    block = create(:docs_block, pod: user.personal_pod, sort: 100, parent: root)
-    create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
+    root = create(:docs_block, space: user.personal_space)
+    block = create(:docs_block, space: user.personal_space, sort: 100, parent: root)
+    create(:docs_block, space: user.personal_space, sort: 200, parent: root, root_id: root.id)
 
-    child = create(:docs_block, pod: user.personal_pod, sort: 300, parent: block, root_id: block.id)
+    child = create(:docs_block, space: user.personal_space, sort: 300, parent: block, root_id: block.id)
 
     expect(root.descendants.count).to eq(2)
     expect(root.descendants_raw.count).to eq(4)
@@ -120,11 +120,11 @@ RSpec.describe Docs::Block, type: :model do
   end
 
   it '[sub] delete permanently' do
-    root = create(:docs_block, pod: user.personal_pod)
-    block = create(:docs_block, pod: user.personal_pod, sort: 100, parent: root)
-    create(:docs_block, pod: user.personal_pod, sort: 200, parent: root, root_id: root.id)
+    root = create(:docs_block, space: user.personal_space)
+    block = create(:docs_block, space: user.personal_space, sort: 100, parent: root)
+    create(:docs_block, space: user.personal_space, sort: 200, parent: root, root_id: root.id)
 
-    child = create(:docs_block, pod: user.personal_pod, sort: 300, parent: block, root_id: block.id)
+    child = create(:docs_block, space: user.personal_space, sort: 300, parent: block, root_id: block.id)
 
     expect(root.descendants.count).to eq(2)
     expect(root.descendants_raw.count).to eq(4)

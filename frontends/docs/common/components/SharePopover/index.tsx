@@ -34,10 +34,10 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id: docMeta.id } })
   const { list, getKey, addList } = useList<ShareLink>()
 
-  const ANYONE_WEBID = 'anyone'
+  const ANYONE_DOMAIN = 'anyone'
 
   useEffect(() => {
-    const anyoneShareLink = data?.blockShareLinks.find(link => link.sharePodData.webid === ANYONE_WEBID)
+    const anyoneShareLink = data?.blockShareLinks.find(link => link.shareSpaceData.domain === ANYONE_DOMAIN)
     if (anyoneShareLink) {
       setShareWithAnonymousValue(anyoneShareLink.state === ShareLinkState.Enabled)
       setAnonymousEditableValue(anyoneShareLink.policy === Policytype.Edit)
@@ -45,7 +45,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
       setShareWithAnonymousValue(false)
       setAnonymousEditableValue(false)
     }
-  }, [data, docMeta.webid, docMeta.id])
+  }, [data, docMeta.domain, docMeta.id])
 
   const onClickInviteButton = (): void => {
     setInviteModalVisible(true)
@@ -63,7 +63,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     const policy: Policytype = anonymousEditableValue ? Policytype.Edit : Policytype.View
     const input: BlockCreateShareLinkInput = {
       id: docMeta.id,
-      target: [{ webid: ANYONE_WEBID, policy, state }]
+      target: [{ domain: ANYONE_DOMAIN, policy, state }]
     }
     await blockCreateShareLink({ variables: { input } })
     setShareWithAnonymousValue(checked)
@@ -76,7 +76,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     const policy: Policytype = checked ? Policytype.Edit : Policytype.View
     const input: BlockCreateShareLinkInput = {
       id: docMeta.id,
-      target: [{ webid: ANYONE_WEBID, policy, state }]
+      target: [{ domain: ANYONE_DOMAIN, policy, state }]
     }
     await blockCreateShareLink({ variables: { input } })
     setAnonymousEditableValue(checked)
@@ -114,13 +114,15 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
   const inviteData = useMemo(
     () =>
       data?.blockShareLinks.filter(
-        link => link.state === ShareLinkState.Enabled && link.sharePodData.webid !== ANYONE_WEBID
+        link => link.state === ShareLinkState.Enabled && link.shareSpaceData.domain !== ANYONE_DOMAIN
       ) ?? [],
     [data]
   )
 
-  const suggestPods =
-    data?.blockShareLinks.filter(link => link.sharePodData.webid !== ANYONE_WEBID).map(link => link.sharePodData) ?? []
+  const suggestSpaces =
+    data?.blockShareLinks
+      .filter(link => link.shareSpaceData.domain !== ANYONE_DOMAIN)
+      .map(link => link.shareSpaceData) ?? []
 
   useEffect(() => {
     addList(inviteData as ShareLink[])
@@ -203,7 +205,7 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
       <InviteModal
         docMeta={docMeta}
         visible={inviteModalVisible}
-        suggestPods={suggestPods}
+        suggestSpaces={suggestSpaces}
         setVisible={setInviteModalVisible}
       />
     </>

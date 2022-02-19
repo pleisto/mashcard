@@ -6,19 +6,19 @@ describe('MentionMenuPeoplePanel', () => {
     {
       name: 'name 0',
       avatar: 'avatar 0',
-      webid: 'webid 0',
+      domain: 'domain 0',
       command: jest.fn()
     },
     {
       name: 'name 1',
       avatar: 'avatar 1',
-      webid: 'webid 1',
+      domain: 'domain 1',
       command: jest.fn()
     },
     {
       name: 'name 2',
       avatar: 'avatar 2',
-      webid: 'webid 2',
+      domain: 'domain 2',
       command: jest.fn()
     }
   ]

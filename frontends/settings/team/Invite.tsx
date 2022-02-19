@@ -3,33 +3,36 @@ import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
 import { Box, Switch, useId, theme, toast, useBoolean, Input, Button, ConfirmDialog } from '@brickdoc/design-system'
-import { PodOperation, useCreateOrUpdatePodMutation, CreateOrUpdatePodInput } from '@/BrickdocGraphQL'
+import { SpaceOperation, useCreateOrUpdateSpaceMutation, CreateOrUpdateSpaceInput } from '@/BrickdocGraphQL'
 
-export const Invite: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
+export const Invite: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
   const { t } = useSettingsI18n(['docs'])
-  const [updateSpace, { loading }] = useCreateOrUpdatePodMutation()
+  const [updateSpace, { loading }] = useCreateOrUpdateSpaceMutation()
   const [open, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
-  const [inviteEnabled, { set: setEnable }] = useBoolean(pod!.inviteEnable)
-  const [inviteSecret, setInviteSecret] = useState(pod!.inviteSecret)
+  const [inviteEnabled, { set: setEnable }] = useBoolean(space!.inviteEnable)
+  const [inviteSecret, setInviteSecret] = useState(space!.inviteSecret)
   const switchLabelId = useId()
-  const inviteUrl = `${window.location.protocol}//${window.location.host}/${pod!.webid}/join/${inviteSecret}`
+  const inviteUrl = `${window.location.protocol}//${window.location.host}/${space!.domain}/join/${inviteSecret}`
 
-  const updateSpaceHandler = async (values: Omit<CreateOrUpdatePodInput, 'webid' | 'type'>, onSuccess: () => void) => {
+  const updateSpaceHandler = async (
+    values: Omit<CreateOrUpdateSpaceInput, 'domain' | 'type'>,
+    onSuccess: () => void
+  ) => {
     const result = await updateSpace({
       variables: {
         input: {
-          type: PodOperation.Update,
-          webid: pod!.webid,
+          type: SpaceOperation.Update,
+          domain: space!.domain,
           ...values
         }
       }
     })
 
-    const errors = result.data?.createOrUpdatePod?.errors
+    const errors = result.data?.createOrUpdateSpace?.errors
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
-      setInviteSecret(result.data?.createOrUpdatePod?.pod?.inviteSecret)
+      setInviteSecret(result.data?.createOrUpdateSpace?.space?.inviteSecret)
       onSuccess()
     }
   }

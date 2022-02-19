@@ -139,8 +139,8 @@ en-US:
     format: '%{attribute} %{message}'
     graphql:
       argument_error:
-        invalid_pod: Token is invalid or expired.
-        pod_disable_invite: Space is disabled for invites.
+        invalid_space: Token is invalid or expired.
+        space_disable_invite: Space is disabled for invites.
         already_invited: You are already a member of this space.
       docs:
         initialized_not_yet_completed: Initialized not yet completed
@@ -154,7 +154,7 @@ en-US:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: '%{count} errors prohibited this %{resource} from being saved:'
-      is_not_valid_webid: 'Username "%{webid}" is not available'
+      is_not_valid_domain: 'Space domain "%{domain}" is not available'
       is_not_valid_email: 'Email "%{email}" is not available'
       send_interval: Sending interval is too short, please try again after 1 minute
       accepted: must be accepted
@@ -172,10 +172,10 @@ en-US:
       less_than_or_equal_to: must be less than or equal to %{count}
       model_invalid: 'Validation failed: %{errors}'
       email_invalid: is not an email
-      webid_invalid: is not a username
+      domain_invalid: is not a vaild domain name
       uuid_invalid: is not an uuid
       mobile_phone_invalid: is not a valid mobile phone number
-      webid_presence_invalid: is not presence
+      domain_presence_invalid: is not presence
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd
@@ -472,19 +472,19 @@ en-US:
       confirm_password: Confirm Password
       sign_up_via: 'Sign Up with %{provider}'
       name: 'Name'
-      webid: 'Username'
-      webid_description: 'Only alphabet and numbers are allowed'
+      domain: 'Domain Name'
+      domain_description: 'Only alphabet and numbers are allowed'
       agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
       resend_after: 'Resendable after %{ms}'
     common:
       confirm_not_match: '%{field} and confirm %{field} do not match'
     errors:
       invalid_operation_type: 'Invalid operation type'
-      invalid_pod_webid: 'No access to the username'
-      pod_has_already_switched: 'Space has already switched'
-      pod_exist: 'Space has already exist'
+      invalid_space_domain: 'No access to the space domain'
+      space_has_already_switched: 'Space has already switched'
+      space_exist: 'Space has already exist'
       user_not_exist: "User doesn't exist"
-      pod_not_exist: "Space doesn't exist"
+      space_not_exist: "Space doesn't exist"
   docs:
     app_title: Brickdoc
     saving: Saving
@@ -493,7 +493,7 @@ en-US:
       general: General
       member: Member
       account: Account
-    pod_setting:
+    space_setting:
       text: Space Setting
     anonymous:
       edit_button: Edit
@@ -547,7 +547,7 @@ en-US:
       tooltip: share or publish to the web
     invite:
       learn: Learn more about sharing
-      type_hint: Type or paste in username above, separated by commas.
+      type_hint: Type or paste in space domain above, separated by commas.
       search: Add people by Web ID
       button: Invite
       confirm_button: Confirm
@@ -562,20 +562,20 @@ en-US:
       restoring: Restoring...
       cancel: Cancel
       empty: Version history is empty
-    pods:
-      webid: Username
+    spaces:
+      domain: Domain Name
       name: Name
       bio: Bio
       avatar: Avatar
       required:
-        webid: Username is required
+        domain: Domain is required
         name: Name is required
       create:
         success: Create successfully.
       update:
         success: Update successfully.
     menu:
-      create_new_pod: Create other space
+      create_new_space: Create other space
       logout: Log out
     title:
       add_icon: Add icon
@@ -960,8 +960,8 @@ en-US:
           Show recently contacted customers.
   settings:
     app_title: Brickdoc Settings
-    personal_pod_desc: My Space
-    group_pod_desc: Team Space
+    personal_space_desc: My Space
+    group_space_desc: Team Space
     errors:
       invalid_operation_type: Invalid operation type
     menu:
@@ -973,9 +973,9 @@ en-US:
       user_profile: User Profile
       group_profile: Group Profile
       update_profile: Update Profile
-      change_webid: Change username
-      change_webid_btn: Update
-      change_webid_desc: Unless you really need it, we recommended that you do not change your username. This will cause the related links, such as the Pages, Mentions, etc. that were linked to you before not being opened. <0>Learn More</0>
+      change_domain: Change Domain Name
+      change_domain_btn: Update
+      change_domain_desc: Unless you really need it, we recommended that you do not change your space domain. This will cause the related links, such as the Pages, Mentions, etc. that were linked to you before not being opened. <0>Learn More</0>
       avatar_updated: Avatar updated successfully.
       profile_updated: Profile updated successfully.
       appearance: Appearance
@@ -986,8 +986,8 @@ en-US:
       joined_spaces: Joined Spaces
       leave_btn: Leave
       owner_cant_leave_tips: You are the owner of this space. You can not leave it.
-      leave_pod_confirm: Are you sure you want to leave %{space}?
-      pod_leave_success: You have left %{space} successfully.
+      leave_space_confirm: Are you sure you want to leave %{space}?
+      space_leave_success: You have left %{space} successfully.
       delete_account: Delete account
       delete_account_desc: Since you delete your account, there is no going back. Please be certain.
       delete_account_unavailable: |
@@ -997,8 +997,8 @@ en-US:
       delete_account_modal_title: Are you sure you want to delete your account?
       delete_account_modal_desc: |
         This is a non-reversible action that will permanently delete all your data and cannot be undone.<br/><br/>
-        You will no longer be billed, and your username will be available for anyone to use. <br/><br/>
-      delete_account_confirm: 'To verify, type your username %{webid} below:'
+        You will no longer be billed, and your domain will be available for anyone to use. <br/><br/>
+      delete_account_confirm: 'To verify, type your space domain %{domain} below:'
       delete_account_confirm_btn: Confirm Delete
     team:
       members: Members
@@ -1010,8 +1010,8 @@ en-US:
       delete_space_modal_title: Are you sure you want to delete this team space?
       delete_space_modal_desc: |
         This is a non-reversible action that will permanently delete all your data and cannot be undone.<br/><br/>
-        And, Your team space's username will be available for anyone to use. <br/><br/>
-      delete_space_confirm: "To verify, type your team space's username %{webid} below:"
+        And, Your team space domain will be available for anyone to use. <br/><br/>
+      delete_space_confirm: 'To verify, type your team space domain %{domain} below:'
       delete_space_confirm_btn: Confirm Delete this team space
       invite: Invite Member
       invite_label: Enable Invite link

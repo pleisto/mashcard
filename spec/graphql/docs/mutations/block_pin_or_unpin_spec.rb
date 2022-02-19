@@ -16,16 +16,16 @@ describe Docs::Mutations::BlockPinOrUnpin, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
-      block = create(:docs_block, pod: user.personal_pod)
+      block = create(:docs_block, space: user.personal_space)
 
       input = { input: { blockId: block.id, pin: true } }
       internal_graphql_execute(mutation, input)
       expect(response.errors).to eq({})
       expect(response.data).to eq({ "blockPinOrUnpin" => nil })
 
-      pin = Docs::Pin.find_by!(user_id: user.id, pod_id: block.pod_id, block_id: block.id)
+      pin = Docs::Pin.find_by!(user_id: user.id, space_id: block.space_id, block_id: block.id)
       expect(pin.deleted_at).to be(nil)
 
       input = { input: { blockId: block.id, pin: false } }
@@ -37,7 +37,7 @@ describe Docs::Mutations::BlockPinOrUnpin, type: :mutation do
       expect(pin.deleted_at).not_to be(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

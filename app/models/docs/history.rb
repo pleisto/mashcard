@@ -3,31 +3,31 @@
 #
 # Table name: docs_histories
 #
-#  id              :integer          not null, primary key
-#  pod_id          :integer
-#  meta            :jsonb            not null
-#  data            :jsonb            not null
-#  block_id        :uuid             not null
-#  parent_id       :uuid
-#  type            :string(32)
-#  sort            :integer          not null
-#  history_version :integer          not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  content         :jsonb            default("[]")
-#  text            :text             default("")
-#  deleted_at      :datetime
+#  id                    :bigint           not null, primary key
+#  content(node content) :jsonb
+#  data                  :jsonb            not null
+#  deleted_at            :datetime
+#  history_version       :bigint           not null
+#  meta                  :jsonb            not null
+#  sort                  :bigint           not null
+#  text(node text)       :text             default("")
+#  type                  :string(32)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  block_id              :uuid             not null
+#  parent_id             :uuid
+#  space_id              :bigint
 #
 # Indexes
 #
 #  index_docs_histories_on_block_id_and_history_version  (block_id,history_version) UNIQUE
-#  index_docs_histories_on_pod_id                        (pod_id)
+#  index_docs_histories_on_space_id                      (space_id)
 #
 
 class Docs::History < ApplicationRecord
   self.inheritance_column = :_type_disabled
 
-  belongs_to :pod, optional: true
+  belongs_to :space, optional: true
   belongs_to :block
 
   def self.from_version_meta(version_meta)
@@ -61,7 +61,7 @@ class Docs::History < ApplicationRecord
   ## try `def id = block_id`
   def cast_block
     attributes.slice(
-      'sort', 'history_version', 'created_at', 'updated_at', 'meta', 'data', 'parent_id', 'type', 'pod_id', 'text', 'content'
+      'sort', 'history_version', 'created_at', 'updated_at', 'meta', 'data', 'parent_id', 'type', 'space_id', 'text', 'content'
     ).merge('id' => block_id)
   end
 end

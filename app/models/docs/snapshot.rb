@@ -3,28 +3,28 @@
 #
 # Table name: docs_snapshots
 #
-#  id               :integer          not null, primary key
-#  pod_id           :integer
-#  block_id         :uuid             not null
-#  snapshot_version :integer          not null
-#  version_meta     :jsonb
-#  name             :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                                                   :bigint           not null, primary key
+#  name                                                 :string
+#  snapshot_version                                     :bigint           not null
+#  version_meta(child block_id and history_version map) :jsonb
+#  created_at                                           :datetime         not null
+#  updated_at                                           :datetime         not null
+#  block_id                                             :uuid             not null
+#  space_id                                             :bigint
 #
 # Indexes
 #
 #  index_docs_snapshots_on_block_id_and_snapshot_version  (block_id,snapshot_version) UNIQUE
-#  index_docs_snapshots_on_pod_id                         (pod_id)
+#  index_docs_snapshots_on_space_id                       (space_id)
 #
 
 class Docs::Snapshot < ApplicationRecord
-  belongs_to :pod, optional: true
+  belongs_to :space, optional: true
   belongs_to :block
   include ActionView::Helpers::DateHelper
 
   before_create do
-    self.pod_id = block.pod_id
+    self.space_id = block.space_id
     self.name ||= generate_default_name
 
     ## NOTE save children's version as snapshot
@@ -67,7 +67,7 @@ class Docs::Snapshot < ApplicationRecord
       update_blocks = []
       now = Time.current
 
-      block.descendants(unscoped: true).includes(:pod).each do |child_block|
+      block.descendants(unscoped: true).includes(:space).each do |child_block|
         child_history = preload_histories[child_block.id]
         if child_history.nil?
           child_block.deleted_at = now

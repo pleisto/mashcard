@@ -2,37 +2,37 @@ import { FC, useContext, useState } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { Button, Box, ConfirmDialog, theme, useBoolean, toast } from '@brickdoc/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
-import { PodCard } from '@/common/components/PodCard'
+import { SpaceCard } from '@/common/components/SpaceCard'
 import { Panel } from '@/settings/common/components/Panel'
-import { useGetPodsQuery, GetPodsQuery, usePodLeaveMutation } from '@/BrickdocGraphQL'
+import { useGetSpacesQuery, GetSpacesQuery, useSpaceLeaveMutation } from '@/BrickdocGraphQL'
 import { Trans } from 'react-i18next'
 
 export const LeaveSpaces: FC = () => {
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
-  const [selectedPod, setSelectedPod] = useState<GetPodsQuery['pods'][0]>()
-  const [podLeave, { loading: leaveing }] = usePodLeaveMutation()
+  const [selectedSpace, setSelectedSpace] = useState<GetSpacesQuery['spaces'][0]>()
+  const [spaceLeave, { loading: leaveing }] = useSpaceLeaveMutation()
   const { t } = useSettingsI18n()
   const context = useContext(BrickdocContext)
-  const userWebid = context.currentUser!.webid
-  const { loading, data, refetch } = useGetPodsQuery()
+  const userDomain = context.currentUser!.domain
+  const { loading, data, refetch } = useGetSpacesQuery()
   if (loading) return <></>
 
-  const teamPods = data?.pods.filter(p => !p.personal)
+  const teamSpaces = data?.spaces.filter(p => !p.personal)
 
-  const handleLeave = async (podWebId: string) => {
-    const result = await podLeave({
+  const handleLeave = async (spaceWebId: string) => {
+    const result = await spaceLeave({
       variables: {
         input: {
-          webid: podWebId,
-          userWebid
+          domain: spaceWebId,
+          userDomain
         }
       }
     })
-    const errors = result.data?.podLeave?.errors
+    const errors = result.data?.spaceLeave?.errors
     if (errors && errors.length > 0) {
       toast.error(errors.join('\n'))
     } else {
-      toast.success(t('account.pod_leave_success', { space: `@${podWebId}` }))
+      toast.success(t('account.space_leave_success', { space: `@${spaceWebId}` }))
       await refetch()
       setClose()
     }
@@ -63,17 +63,17 @@ export const LeaveSpaces: FC = () => {
           }}
           as="ul"
         >
-          {teamPods?.map(pod => (
-            <li key={pod.webid}>
-              <PodCard
-                pod={pod}
-                key={pod.webid}
-                label={pod.owned ? (t('account.owner_cant_leave_tips') as string) : ''}
+          {teamSpaces?.map(space => (
+            <li key={space.domain}>
+              <SpaceCard
+                space={space}
+                key={space.domain}
+                label={space.owned ? (t('account.owner_cant_leave_tips') as string) : ''}
               />
               <Button
-                disabled={pod.owned}
+                disabled={space.owned}
                 onClick={() => {
-                  setSelectedPod(pod)
+                  setSelectedSpace(space)
                   setOpen()
                 }}
               >
@@ -91,14 +91,14 @@ export const LeaveSpaces: FC = () => {
         open={isOpen}
         onCancel={setClose}
         onConfirm={async () => {
-          await handleLeave(selectedPod!.webid)
+          await handleLeave(selectedSpace!.domain)
         }}
       >
         <Trans
           t={t}
-          i18nKey="account.leave_pod_confirm"
+          i18nKey="account.leave_space_confirm"
           values={{
-            space: `${selectedPod?.name} (@${selectedPod?.webid})`
+            space: `${selectedSpace?.name} (@${selectedSpace?.domain})`
           }}
         />
       </ConfirmDialog>

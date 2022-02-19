@@ -12,23 +12,23 @@ describe System::Mutations::UpdateMember, type: :mutation do
       }
     GRAPHQL
 
-    it 'invalid pod' do
-      self.current_pod = Pod::ANONYMOUS_CONTEXT
-      input = { input: { webid: "123", role: "admin", state: "enabled" } }
+    it 'invalid space' do
+      self.current_space = Space::ANONYMOUS_CONTEXT
+      input = { input: { domain: "123", role: "admin", state: "enabled" } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to be false
-      expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_pod'))
+      expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_space'))
     end
 
     it 'invalid user' do
       user = create(:accounts_user)
-      webid = "invalid-user-spec"
-      pod = user.own_pods.create!(webid: webid, name: webid)
+      domain = "invalid-user-spec"
+      space = user.own_spaces.create!(domain: domain, name: domain)
 
       self.current_user = user
-      self.current_pod = pod.as_session_context
+      self.current_space = space.as_session_context
 
-      input = { input: { webid: "foo bar", role: "admin", state: "enabled" } }
+      input = { input: { domain: "foo bar", role: "admin", state: "enabled" } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to be false
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_user'))
@@ -36,14 +36,14 @@ describe System::Mutations::UpdateMember, type: :mutation do
 
     it 'invalid member' do
       user = create(:accounts_user)
-      webid = "invalid-member-spec"
-      pod = user.own_pods.create!(webid: webid, name: webid)
+      domain = "invalid-member-spec"
+      space = user.own_spaces.create!(domain: domain, name: domain)
 
       self.current_user = user
-      self.current_pod = pod.as_session_context
+      self.current_space = space.as_session_context
 
       user2 = create(:accounts_user)
-      input = { input: { webid: user2.webid, role: "admin", state: "enabled" } }
+      input = { input: { domain: user2.domain, role: "admin", state: "enabled" } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to be false
       expect(response.errors[0]['message']).to eq(I18n.t('errors.graphql.argument_error.invalid_member'))
@@ -51,17 +51,17 @@ describe System::Mutations::UpdateMember, type: :mutation do
 
     it 'work' do
       user = create(:accounts_user)
-      webid = "work-spec"
-      pod = user.own_pods.create!(webid: webid, name: webid)
+      domain = "work-spec"
+      space = user.own_spaces.create!(domain: domain, name: domain)
 
       self.current_user = user
-      self.current_pod = pod.as_session_context
+      self.current_space = space.as_session_context
 
       user2 = create(:accounts_user)
 
-      member = pod.members.create!(user_id: user2.id, role: 'admin')
+      member = space.members.create!(user_id: user2.id, role: 'admin')
 
-      input = { input: { webid: user2.webid, role: "member", state: "enabled" } }
+      input = { input: { domain: user2.domain, role: "member", state: "enabled" } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to be true
       expect(response.errors).to eq({})

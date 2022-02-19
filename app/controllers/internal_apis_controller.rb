@@ -2,7 +2,7 @@
 
 class InternalApisController < ActionController::API
   include Apiable
-  include CurrentPod
+  include CurrentSpace
   include I18nable
   include ActionController::Cookies
   around_action :switch_locale
@@ -27,15 +27,15 @@ class InternalApisController < ActionController::API
   private
 
   def context
-    pod = current_pod
+    space = current_space
     user = current_user
-    user&.current_pod_id = current_pod&.fetch('id')
+    user&.current_space_id = current_space&.fetch('id')
     {
       protocol: 'http',
       real_ip: request.remote_ip,
       entrypoint: :internal,
       current_user: user,
-      current_pod: pod,
+      current_space: space,
       session: session,
       request_id: request.uuid,
       routes: Rails.application.routes.url_helpers,

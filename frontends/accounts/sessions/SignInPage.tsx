@@ -3,7 +3,7 @@ import { AuthMethod } from '@/BrickdocGraphQL'
 import { Helmet } from 'react-helmet-async'
 import { useAccountsAuthMethods } from './hooks/useAccountsAuthMethods'
 import { useAccountsI18n } from '@/accounts/common/hooks'
-import { DeprecatedSkeleton, Button, useBoolean, Box } from '@brickdoc/design-system'
+import { Button, useBoolean, Box } from '@brickdoc/design-system'
 import { MoreAuthMethods } from './components/MoreAuthMethods'
 import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
 
@@ -18,7 +18,7 @@ export const SignInPage: React.FC = () => {
   })
 
   if (loading) {
-    return <DeprecatedSkeleton />
+    return <></>
   }
 
   const otherAuthMethods = renderEmailPasswordForm

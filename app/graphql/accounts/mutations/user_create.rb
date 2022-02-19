@@ -4,7 +4,7 @@ module Accounts
     include DeviseGraphQLHelper
     requires_entrypoint_to_be :internal
 
-    argument :webid, String, description_same(Objects::User, :webid), required: true
+    argument :domain, String, description_same(Objects::User, :domain), required: true
     argument :name, String, description_same(Objects::User, :name), required: true
     argument :email, BrickGraphQL::Scalars::Email, description_same(Objects::User, :email), required: false
     argument :password, String, 'user password', required: false
@@ -19,7 +19,7 @@ module Accounts
       context[:session].keys
 
       user = Accounts::User.new
-      user.webid = args[:webid]
+      user.domain = args[:domain]
       user.name = args[:name]
       user.locale = args[:locale]
       user.timezone = args[:timezone]
@@ -31,7 +31,7 @@ module Accounts
         email_password_sign_up(user, args[:email], args[:password])
       end
       user.save
-      user.personal_pod.fix_avatar! if omniauth
+      user.personal_space.fix_avatar! if omniauth
 
       return { errors: errors_on_object(user) } unless user.valid?
 
@@ -59,7 +59,7 @@ module Accounts
     def federated_identity_sign_up(user)
       omniauth = context[:session][:omniauth].with_indifferent_access
       user.email = omniauth[:info][:email]
-      user.avatar = Pod.import_avatar omniauth[:info][:avatar]
+      user.avatar = Space.import_avatar omniauth[:info][:avatar]
       user.omniauth_provider = omniauth[:provider]
       user.omniauth_uid = omniauth[:uid]
     end

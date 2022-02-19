@@ -6,7 +6,7 @@ module Docs
 
     def resolve(block_id:, pin:)
       obj = Docs::Pin.find_or_create_by!(
-        user_id: current_user.id, pod_id: current_pod.fetch('id'), block_id: block_id
+        user_id: current_user.id, space_id: current_space.fetch('id'), block_id: block_id
       )
       obj.update!(deleted_at: pin ? nil : Time.current)
 

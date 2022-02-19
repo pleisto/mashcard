@@ -17,7 +17,7 @@ module Sortable
       target.uniq(&:id)
     end
 
-    def fill_sorts(webid, blocks)
+    def fill_sorts(domain, blocks)
       tree_map = blocks.group_by(&:parent_id).transform_values do |a|
         [a.count, flatten_hash(a)]
       end
@@ -44,7 +44,7 @@ module Sortable
         if need_rebalance
           new_sorts = size.times.map { |idx| idx * Docs::Block::SORT_GAP }
           current_blocks = size.times.map { |idx| hash.fetch("idx_#{idx}") }
-          current_blocks = do_rebalance(webid, parent_id, current_blocks, new_sorts)
+          current_blocks = do_rebalance(domain, parent_id, current_blocks, new_sorts)
           hash = flatten_hash(current_blocks)
         end
 
@@ -63,8 +63,8 @@ module Sortable
       end
     end
 
-    def do_rebalance(webid, parent_id, blocks, new_sorts)
-      throttle_key = "rebalance:#{webid}:#{parent_id}"
+    def do_rebalance(domain, parent_id, blocks, new_sorts)
+      throttle_key = "rebalance:#{domain}:#{parent_id}"
 
       Brickdoc::Redis.with(:state) do |redis|
         bol = redis.get(throttle_key)
@@ -73,7 +73,7 @@ module Sortable
         redis.set(throttle_key, 1)
       end
 
-      Rails.logger.info("rebalance #{webid} #{parent_id} #{new_sorts}")
+      Rails.logger.info("rebalance #{domain} #{parent_id} #{new_sorts}")
 
       blocks = blocks.each_with_index.map do |block, idx|
         block.update!(sort: new_sorts[idx])

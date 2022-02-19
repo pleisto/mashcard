@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SketchPicker } from 'react-color'
+import { HexColorPicker } from 'react-colorful'
 import { css } from '../../themes'
 import { generatePalette } from '../../utilities'
 
@@ -33,9 +33,6 @@ const styles = css({
 
 export const PalettePlayground: React.FC = props => {
   const [color, setColor] = useState('#36282b')
-  const handleChange = (color: { hex: string }): void => {
-    setColor(color.hex)
-  }
 
   return (
     <div
@@ -44,7 +41,7 @@ export const PalettePlayground: React.FC = props => {
       }}
     >
       <div className={toolbar()}>
-        <SketchPicker className={picker()} color={color} onChange={handleChange} />
+        <HexColorPicker className={picker()} color={color} onChange={setColor} />
       </div>
       <ul
         style={{

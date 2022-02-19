@@ -3,7 +3,7 @@ import { NodeViewProps } from '@tiptap/react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { BlockContainer } from '../../../../components'
 import { Resizable } from 're-resizable'
-import { DeprecatedSkeleton, cx } from '@brickdoc/design-system'
+import { Skeleton, cx } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 const MAX_WIDTH = 700
@@ -92,7 +92,8 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
             }}
           >
             {!loaded && (
-              <DeprecatedSkeleton.Image
+              <Skeleton
+                type="list"
                 style={
                   node.attrs.image.width
                     ? { width: node.attrs.image.width, height: node.attrs.image.width / node.attrs.image.ratio }

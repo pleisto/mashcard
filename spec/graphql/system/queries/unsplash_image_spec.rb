@@ -7,7 +7,7 @@ describe System::Queries::UnsplashImage, type: :query do
     it 'works' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       query = <<-'GRAPHQL'
         query QueryUnsplashImage($query: String, $page: Int, $per_page: Int) {
@@ -38,7 +38,7 @@ describe System::Queries::UnsplashImage, type: :query do
     it 'works with blank search' do
       user = create(:accounts_user)
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       query = <<-'GRAPHQL'
         query QueryUnsplashImage($query: String, $page: Int, $per_page: Int) {

@@ -5,11 +5,11 @@ module Docs
     type Docs::Objects::BlockInfo, null: true
 
     argument :id, GraphQL::Types::String, 'id', required: true
-    argument :webid, GraphQL::Types::String, 'webid', required: true
+    argument :domain, GraphQL::Types::String, 'domain', required: true
 
-    def resolve(id:, webid:)
+    def resolve(id:, domain:)
       return nil if id.blank?
-      block, enabled_alias = Docs::Block.find_by_slug(id, webid, current_pod)
+      block, enabled_alias = Docs::Block.find_by_slug(id, domain, current_space)
       return nil if block.nil?
 
       is_master = master?(block)
@@ -17,7 +17,7 @@ module Docs
 
       return nil if !is_master && (permission.nil? || permission.disabled?)
 
-      current_user&.save_last_position!(webid, id)
+      current_user&.save_last_position!(domain, id)
 
       result = {
         title: block.title,
@@ -37,9 +37,9 @@ module Docs
     end
 
     def fetch_pin(block)
-      return false if current_pod.fetch('webid') == Pod::ANONYMOUS_WEBID
+      return false if current_space.fetch('domain') == Space::ANONYMOUS_DOMAIN
 
-      pin = Docs::Pin.find_by(user_id: current_user.id, pod_id: current_pod.fetch('id'), block_id: block.id)
+      pin = Docs::Pin.find_by(user_id: current_user.id, space_id: current_space.fetch('id'), block_id: block.id)
 
       return false if pin.nil? || pin.deleted_at
 
@@ -49,27 +49,27 @@ module Docs
     def master?(block)
       return false if current_user.nil?
 
-      block.pod_id.in?(current_user.pods.ids)
+      block.space_id.in?(current_user.spaces.ids)
     end
 
     def get_permission(block)
       base_query = block.share_links
 
-      if current_pod.fetch('webid') == Pod::ANONYMOUS_WEBID
-        base_query.find_by(share_pod_id: nil)
+      if current_space.fetch('domain') == Space::ANONYMOUS_DOMAIN
+        base_query.find_by(share_space_id: nil)
       else
-        share_links = base_query.where(share_pod_id: [current_pod.fetch('id'), nil]).all
+        share_links = base_query.where(share_space_id: [current_space.fetch('id'), nil]).all
         return nil if share_links.blank?
         return share_links.first if share_links.one?
 
-        share_links.find { |s| s.share_pod_id == current_pod.fetch('id') }
+        share_links.find { |s| s.share_space_id == current_space.fetch('id') }
       end
     end
 
     def collaborators(block)
       return [] if block.collaborators.length <= 1
 
-      Accounts::User.where(id: block.collaborators).includes(personal_pod: :avatar_attachment)
+      Accounts::User.where(id: block.collaborators).includes(personal_space: :avatar_attachment)
     end
   end
 end

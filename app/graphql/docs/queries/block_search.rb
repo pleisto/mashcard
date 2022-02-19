@@ -4,14 +4,14 @@ module Docs
   class Queries::BlockSearch < BrickGraphQL::BaseResolver
     type [Docs::Objects::Block], null: true
 
-    argument :webid, GraphQL::Types::String, required: true, description: 'webid'
+    argument :domain, GraphQL::Types::String, required: true, description: 'domain'
     argument :input, GraphQL::Types::String, required: true, description: 'input'
 
-    def resolve(webid:, input:)
+    def resolve(domain:, input:)
       if input.blank?
-        Docs::Block.non_deleted.joins(:pod).where(pod: { webid: webid }).pageable
+        Docs::Block.non_deleted.joins(:space).where(space: { domain: domain }).pageable
       else
-        Docs::Block.non_deleted.joins(:pod).where(pod: { webid: webid }).where("text like ?", "%#{input}%")
+        Docs::Block.non_deleted.joins(:space).where(space: { domain: domain }).where("text like ?", "%#{input}%")
       end
     end
   end

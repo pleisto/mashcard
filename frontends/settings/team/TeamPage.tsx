@@ -8,14 +8,14 @@ import { Members } from './Members'
 
 export const TeamPage: FC = () => {
   const { t } = useSettingsI18n()
-  const { pod } = useContext(SettingsContext)!
+  const { space } = useContext(SettingsContext)!
 
   return (
     <>
       <Helmet title={t('menu.team')} />
-      <Invite pod={pod} />
-      <Members pod={pod} />
-      <DeleteSpace pod={pod} />
+      <Invite space={space} />
+      <Members space={space} />
+      <DeleteSpace space={space} />
     </>
   )
 }

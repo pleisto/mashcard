@@ -3,16 +3,21 @@
 #
 # Table name: stafftools_role_assignments
 #
-#  id                 :integer          not null, primary key
-#  accounts_user_id   :integer          not null
-#  stafftools_role_id :integer          not null
+#  id                 :bigint           not null, primary key
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  accounts_user_id   :bigint           not null
+#  stafftools_role_id :bigint           not null
 #
 # Indexes
 #
 #  index_stafftools_role_assignments_on_accounts_user_id    (accounts_user_id)
 #  index_stafftools_role_assignments_on_stafftools_role_id  (stafftools_role_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (accounts_user_id => accounts_users.id)
+#  fk_rails_...  (stafftools_role_id => stafftools_roles.id)
 #
 
 class Stafftools::RoleAssignment < ApplicationRecord

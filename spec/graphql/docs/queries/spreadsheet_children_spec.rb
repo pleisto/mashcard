@@ -7,11 +7,11 @@ describe Docs::Queries::SpreadsheetChildren, type: :query do
     it 'can query all blocks and formulas under a spreadsheetBlock' do
       user = create(:accounts_user)
       self.current_user = user
-      pod = create(:pod)
-      self.current_pod = pod.as_session_context
+      space = create(:space)
+      self.current_space = space.as_session_context
 
-      parent_block = create(:docs_block, pod: pod, type: 'spreadsheetBlock', collaborators: [user.id])
-      _rows_blocks = 10.times { create(:docs_block, pod: pod, type: 'spreadsheetRow', parent: parent_block) }
+      parent_block = create(:docs_block, space: space, type: 'spreadsheetBlock', collaborators: [user.id])
+      _rows_blocks = 10.times { create(:docs_block, space: space, type: 'spreadsheetRow', parent: parent_block) }
 
       # block
       query = <<-'GRAPHQL'

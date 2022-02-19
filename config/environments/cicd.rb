@@ -79,7 +79,7 @@ Rails.application.configure do
       request_id: event.payload[:request_id],
       params: event.payload[:params]&.except(*exceptions),
       current_user_id: event.payload[:current_user]&.id,
-      current_pod_id: event.payload[:current_pod]&.fetch('id')
+      current_space_id: event.payload[:current_space]&.fetch('id')
     }
   end
 

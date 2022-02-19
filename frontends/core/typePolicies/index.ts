@@ -1,5 +1,5 @@
 import { TypePolicies, TypePolicy } from '@apollo/client'
-import { currentPodWebid } from './brickdocContext'
+import { currentSpaceDomain } from './brickdocContext'
 
 export const typePolicies: TypePolicies = {
   ...[
@@ -21,7 +21,7 @@ export const typePolicies: TypePolicies = {
   }, {}),
   Query: {
     fields: {
-      currentPodWebid,
+      currentSpaceDomain,
       childrenBlocks: {
         merge(existing, incoming) {
           return [...incoming]

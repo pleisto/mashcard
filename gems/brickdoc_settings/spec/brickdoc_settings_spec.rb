@@ -98,18 +98,18 @@ describe BrickdocSettings do
 
   it 'can match value by domain' do
     BrickSettings.set('int', 1)
-    BrickSettings.set('int', 2, domain: 'pod1')
-    BrickSettings.set('int', 3, domain: 'pod1.user1')
+    BrickSettings.set('int', 2, domain: 'space1')
+    BrickSettings.set('int', 3, domain: 'space1.user1')
 
     expect(BrickSettings.get('int')).to eq(1)
-    expect(BrickSettings.get('int', domain: 'pod1')).to eq(2)
-    expect(BrickSettings.get('int', domain: 'pod2')).to eq(1)
-    expect(BrickSettings.get('int', domain: 'pod1.user1')).to eq(3)
-    expect(BrickSettings.get('int', domain: 'pod1.user3')).to eq(2)
+    expect(BrickSettings.get('int', domain: 'space1')).to eq(2)
+    expect(BrickSettings.get('int', domain: 'space2')).to eq(1)
+    expect(BrickSettings.get('int', domain: 'space1.user1')).to eq(3)
+    expect(BrickSettings.get('int', domain: 'space1.user3')).to eq(2)
 
-    BrickSettings.at('pod3').set('int', 4)
-    expect(BrickSettings.at('pod1').get('int')).to eq(2)
-    expect(BrickSettings.at('pod3').get('int')).to eq(4)
+    BrickSettings.at('space3').set('int', 4)
+    expect(BrickSettings.at('space1').get('int')).to eq(2)
+    expect(BrickSettings.at('space3').get('int')).to eq(4)
   end
 
   it 'can set encrypted value' do
@@ -125,28 +125,28 @@ describe BrickdocSettings do
     expect(BrickSettings.domains_test).to eq('test')
     expect(BrickSettings.scope(:test_scope).domains_test2).to eq('test')
 
-    pod1_settings = BrickSettings.at('pod1')
-    pod2_settings = BrickSettings.at('pod2')
+    space1_settings = BrickSettings.at('space1')
+    space2_settings = BrickSettings.at('space2')
 
-    expect(pod1_settings.instance_variable_get(:@domain)).to eq('pod1')
-    expect(pod2_settings.instance_variable_get(:@domain)).to eq('pod2')
-    expect(pod1_settings.instance_variable_get(:@scope)).to eq('')
-    expect(pod2_settings.instance_variable_get(:@scope)).to eq('')
+    expect(space1_settings.instance_variable_get(:@domain)).to eq('space1')
+    expect(space2_settings.instance_variable_get(:@domain)).to eq('space2')
+    expect(space1_settings.instance_variable_get(:@scope)).to eq('')
+    expect(space2_settings.instance_variable_get(:@scope)).to eq('')
 
-    pod2_settings.domains_test = 'test2'
-    expect(BrickSettings.scope(:test_scope).at('pod2').instance_variable_get(:@domain)).to eq('pod2')
-    expect(BrickSettings.scope(:test_scope).at('pod2').instance_variable_get(:@scope)).to eq('test_scope')
-    BrickSettings.scope(:test_scope).at('pod2').domains_test2 = 'test2'
+    space2_settings.domains_test = 'test2'
+    expect(BrickSettings.scope(:test_scope).at('space2').instance_variable_get(:@domain)).to eq('space2')
+    expect(BrickSettings.scope(:test_scope).at('space2').instance_variable_get(:@scope)).to eq('test_scope')
+    BrickSettings.scope(:test_scope).at('space2').domains_test2 = 'test2'
 
-    expect(pod1_settings.domains_test).to eq('test')
-    expect(pod1_settings.scope(:test_scope).instance_variable_get(:@domain)).to eq('pod1')
-    expect(pod1_settings.scope(:test_scope).instance_variable_get(:@scope)).to eq('test_scope')
-    expect(pod1_settings.scope(:test_scope).domains_test2).to eq('test')
+    expect(space1_settings.domains_test).to eq('test')
+    expect(space1_settings.scope(:test_scope).instance_variable_get(:@domain)).to eq('space1')
+    expect(space1_settings.scope(:test_scope).instance_variable_get(:@scope)).to eq('test_scope')
+    expect(space1_settings.scope(:test_scope).domains_test2).to eq('test')
 
-    expect(pod2_settings.domains_test).to eq('test2')
-    expect(pod2_settings.scope(:test_scope).domains_test2).to eq('test2')
+    expect(space2_settings.domains_test).to eq('test2')
+    expect(space2_settings.scope(:test_scope).domains_test2).to eq('test2')
 
-    expect(BrickSettings.at('pod2.user1').domains_test).to eq('test2')
+    expect(BrickSettings.at('space2.user1').domains_test).to eq('test2')
   end
 
   it 'can set scope or domain on accessor' do

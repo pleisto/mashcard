@@ -1,5 +1,5 @@
 import { createContext, ReactElement } from 'react'
-import { GetCurrentPodQuery } from '@/BrickdocGraphQL'
+import { GetCurrentSpaceQuery } from '@/BrickdocGraphQL'
 
 export interface SettingAction {
   key: string
@@ -7,7 +7,7 @@ export interface SettingAction {
 }
 
 export interface SettingsContextProps {
-  pod?: GetCurrentPodQuery['pod']
+  space?: GetCurrentSpaceQuery['space']
   actions: SettingAction[]
 }
 

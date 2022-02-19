@@ -1,7 +1,7 @@
 import { FieldPolicy } from '@apollo/client'
 
-export const currentPodWebid: FieldPolicy = {
+export const currentSpaceDomain: FieldPolicy = {
   read(_) {
-    return globalThis.brickdocContext.currentPod?.webid || ''
+    return globalThis.brickdocContext.currentSpace?.domain || ''
   }
 }

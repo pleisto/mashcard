@@ -13,7 +13,7 @@ export interface WebsiteMeta {
 
 export interface Collaborator {
   name: string | null | undefined
-  webid: string
+  domain: string
   avatar: string | undefined
 }
 
@@ -60,7 +60,7 @@ export interface EditorDatabase {
 
   collaborators: Collaborator[]
 
-  webid: string
+  domain: string
 
   rootId: string
 }
@@ -70,7 +70,7 @@ export type DataSourceListener = (type: DataSourceListenerType) => void
 
 export class EditorDataSource {
   private database: EditorDatabase = {
-    webid: '',
+    domain: '',
     rootId: '',
     documentEditable: false,
     blobs: {},
@@ -165,13 +165,13 @@ export class EditorDataSource {
     this.invokeListeners('documentEditable')
   }
 
-  get webid(): EditorDatabase['webid'] {
-    return this.database.webid
+  get domain(): EditorDatabase['domain'] {
+    return this.database.domain
   }
 
-  set webid(value: EditorDatabase['webid']) {
-    this.database.webid = value
-    this.invokeListeners('webid')
+  set domain(value: EditorDatabase['domain']) {
+    this.database.domain = value
+    this.invokeListeners('domain')
   }
 
   get blobs(): EditorDatabase['blobs'] {

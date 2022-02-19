@@ -1,2 +1,2 @@
-export * from './PodAvatar'
-export * from './PodCard'
+export * from './SpaceAvatar'
+export * from './SpaceCard'

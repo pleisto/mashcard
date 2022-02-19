@@ -8,7 +8,7 @@ module Accounts
       field :has_session, Boolean, null: false
       field :provider, String,
             description_same(Accounts::Objects::FederatedProvider, :name), null: true
-      field :webid, String, description_same(Accounts::Objects::User, :webid), null: true
+      field :domain, String, description_same(Accounts::Objects::User, :domain), null: true
       field :name, String, description_same(Accounts::Objects::User, :name), null: true
     end
   end

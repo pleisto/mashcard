@@ -15,14 +15,14 @@ describe BrickdocPlugin do
     expect(BrickdocConfig.scope('plugin.test_plugin').test_plugin_key).to eq('value')
     expect(the_plugin.settings.test_plugin_key).to eq('value')
 
-    BrickdocConfig.current = BrickdocConfig.at('pod1')
+    BrickdocConfig.current = BrickdocConfig.at('space1')
 
-    the_plugin.settings.test_plugin_key = 'pod1_value'
+    the_plugin.settings.test_plugin_key = 'space1_value'
 
     expect(BrickdocConfig.scope('plugin.test_plugin').test_plugin_key).to eq('value')
-    expect(BrickdocConfig.scope('plugin.test_plugin').at('pod1').test_plugin_key).to eq('pod1_value')
+    expect(BrickdocConfig.scope('plugin.test_plugin').at('space1').test_plugin_key).to eq('space1_value')
 
-    BrickdocConfig.current = BrickdocConfig.at('pod2')
+    BrickdocConfig.current = BrickdocConfig.at('space2')
 
     expect(the_plugin.settings.test_plugin_key).to eq('value')
 
@@ -30,15 +30,15 @@ describe BrickdocPlugin do
 
     expect(BrickdocPlugin.enabled?(:test_plugin)).to be(false)
 
-    the_plugin.enabled = true # enable the plugin on current domain (pod2) only
+    the_plugin.enabled = true # enable the plugin on current domain (space2) only
 
     expect(BrickdocPlugin.enabled?(:test_plugin)).to be(true)
 
     expect(BrickdocPlugin.enabled_plugin_keys).to include(:test_plugin)
 
-    # switch back to domain (pod1)
+    # switch back to domain (space1)
 
-    BrickdocConfig.current = BrickdocConfig.at('pod1')
+    BrickdocConfig.current = BrickdocConfig.at('space1')
 
     expect(BrickdocPlugin.enabled?(:test_plugin)).to be(false)
 
@@ -49,8 +49,8 @@ describe BrickdocPlugin do
     github_auth_plugin = BrickdocPlugin.plugin(:github_auth)
     github_auth_plugin.enabled = true
     expect(github_auth_plugin.enabled?).to be(true)
-    pod = create(:pod)
-    BrickdocConfig.on(pod) do
+    space = create(:space)
+    BrickdocConfig.on(space) do
       github_auth_plugin.enabled!
       expect(github_auth_plugin.enabled?).to be(true)
       BrickdocConfig.current.set("#{github_auth_plugin.plugin_name}_enabled", false, scope: 'plugins')
@@ -67,8 +67,8 @@ describe BrickdocPlugin do
       github_auth_plugin.disabled!
       expect(github_auth_plugin.enabled?).to be(false)
     end
-    pod2 = create(:pod)
-    BrickdocConfig.on(pod2) { expect(github_auth_plugin.enabled?).to be(true) }
+    space2 = create(:space)
+    BrickdocConfig.on(space2) { expect(github_auth_plugin.enabled?).to be(true) }
   end
 
   it 'can load plugin dummy_plugin' do

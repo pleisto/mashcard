@@ -7,7 +7,7 @@ import {
 } from '@/BrickdocGraphQL'
 import { TestConfig } from 'yup'
 
-// TODO: merge with useWebidAvailableValidator --> useAvailableValidator
+// TODO: merge with useDomainAvailableValidator --> useAvailableValidator
 export const useEmailAvailableValidator = (): TestConfig => {
   const queryEmailAvailable = useImperativeQuery<Query, Variables>(QueryEmailAvailableFromWsDocument)
   return {

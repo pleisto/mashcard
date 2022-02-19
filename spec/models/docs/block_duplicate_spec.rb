@@ -5,10 +5,10 @@ RSpec.describe Docs::Block, type: :model do
   it 'normal' do
     title = "foo"
     block = create(:docs_block, text: title)
-    _child_block1 = create(:docs_block, text: title, pod: block.pod, parent: block, root_id: block.id)
-    _child_block2 = create(:docs_block, text: title, pod: block.pod, parent: block, root_id: block.id)
-    _sub_block1 = create(:docs_block, text: title, pod: block.pod, parent: block, id: SecureRandom.uuid)
-    _sub_block2 = create(:docs_block, text: title, pod: block.pod, parent: block, id: SecureRandom.uuid)
+    _child_block1 = create(:docs_block, text: title, space: block.space, parent: block, root_id: block.id)
+    _child_block2 = create(:docs_block, text: title, space: block.space, parent: block, root_id: block.id)
+    _sub_block1 = create(:docs_block, text: title, space: block.space, parent: block, id: SecureRandom.uuid)
+    _sub_block2 = create(:docs_block, text: title, space: block.space, parent: block, id: SecureRandom.uuid)
 
     expect(block.descendants_raw.count).to eq(5)
     expect(block.descendants.count).to eq(3)
@@ -28,10 +28,10 @@ RSpec.describe Docs::Block, type: :model do
 
   it 'soft delete' do
     block = create(:docs_block)
-    child_block1 = create(:docs_block, pod: block.pod, parent: block, root_id: block.id)
-    _child_block2 = create(:docs_block, pod: block.pod, parent: block, root_id: block.id)
-    sub_block1 = create(:docs_block, pod: block.pod, parent: block, id: SecureRandom.uuid)
-    _sub_block2 = create(:docs_block, pod: block.pod, parent: block, id: SecureRandom.uuid)
+    child_block1 = create(:docs_block, space: block.space, parent: block, root_id: block.id)
+    _child_block2 = create(:docs_block, space: block.space, parent: block, root_id: block.id)
+    sub_block1 = create(:docs_block, space: block.space, parent: block, id: SecureRandom.uuid)
+    _sub_block2 = create(:docs_block, space: block.space, parent: block, id: SecureRandom.uuid)
 
     expect(block.descendants_raw.count).to eq(5)
     expect(block.descendants.count).to eq(3)
@@ -51,10 +51,10 @@ RSpec.describe Docs::Block, type: :model do
 
   it 'sub block parent_id' do
     block = create(:docs_block)
-    _child_block1 = create(:docs_block, pod: block.pod, parent: block, root_id: block.id)
-    _child_block2 = create(:docs_block, pod: block.pod, parent: block, root_id: block.id)
-    sub_block1 = create(:docs_block, pod: block.pod, parent: block, id: SecureRandom.uuid)
-    _sub_block2 = create(:docs_block, pod: block.pod, parent: block, id: SecureRandom.uuid)
+    _child_block1 = create(:docs_block, space: block.space, parent: block, root_id: block.id)
+    _child_block2 = create(:docs_block, space: block.space, parent: block, root_id: block.id)
+    sub_block1 = create(:docs_block, space: block.space, parent: block, id: SecureRandom.uuid)
+    _sub_block2 = create(:docs_block, space: block.space, parent: block, id: SecureRandom.uuid)
 
     new_id = sub_block1.duplicate!
     new_block = Docs::Block.find(new_id)

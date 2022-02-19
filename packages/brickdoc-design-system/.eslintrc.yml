@@ -10,19 +10,3 @@ overrides:
       - '**/stories.test.tsx'
     rules:
       'jest/expect-expect': 'off'
-  - files:
-      - 'src/legacy-components/**/*'
-    rules:
-        import/no-default-export: off
-        '@typescript-eslint/prefer-nullish-coalescing': off
-        '@typescript-eslint/explicit-function-return-type': off
-        '@typescript-eslint/no-floating-promises': off
-        max-nested-callbacks:
-          - warn
-          - 4
-        complexity:
-          - warn
-          - 31
-        max-params:
-          - warn
-          - 8

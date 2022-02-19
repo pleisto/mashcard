@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
 
 interface FilledInitialValues {
-  webid?: string
+  domain?: string
   name?: string
 }
 

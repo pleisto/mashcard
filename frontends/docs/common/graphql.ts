@@ -50,10 +50,10 @@ export const queryPreviewBox = gql`
   }
 `
 
-export const queryPodSearch = gql`
-  query QueryPodSearch($input: String!) {
-    podSearch(input: $input) {
-      webid
+export const querySpaceSearch = gql`
+  query QuerySpaceSearch($input: String!) {
+    spaceSearch(input: $input) {
+      domain
       email
       name
       avatarData {
@@ -63,12 +63,12 @@ export const queryPodSearch = gql`
   }
 `
 
-export const CreateOrUpdatePod = gql`
-  mutation createOrUpdatePod($input: CreateOrUpdatePodInput!) {
-    createOrUpdatePod(input: $input) {
+export const CreateOrUpdateSpace = gql`
+  mutation createOrUpdateSpace($input: CreateOrUpdateSpaceInput!) {
+    createOrUpdateSpace(input: $input) {
       errors
-      pod {
-        webid
+      space {
+        domain
         name
         inviteEnable
         inviteSecret
@@ -77,9 +77,9 @@ export const CreateOrUpdatePod = gql`
   }
 `
 
-export const JoinPod = gql`
-  mutation joinPod($input: JoinPodInput!) {
-    joinPod(input: $input) {
+export const JoinSpace = gql`
+  mutation joinSpace($input: JoinSpaceInput!) {
+    joinSpace(input: $input) {
       errors
     }
   }
@@ -94,8 +94,8 @@ export const UpdateMember = gql`
 `
 
 export const queryBlockSearch = gql`
-  query GetBlockSearch($webid: String!, $input: String!) {
-    blockSearch(webid: $webid, input: $input) {
+  query GetBlockSearch($domain: String!, $input: String!) {
+    blockSearch(domain: $domain, input: $input) {
       id
       type
       text
@@ -105,8 +105,8 @@ export const queryBlockSearch = gql`
 `
 
 export const queryPageBlocks = gql`
-  query GetPageBlocks($webid: String!) {
-    pageBlocks(webid: $webid) {
+  query GetPageBlocks($domain: String!) {
+    pageBlocks(domain: $domain) {
       id
       sort
       nextSort
@@ -148,8 +148,8 @@ export const queryPageBlocks = gql`
 `
 
 export const queryTrashBlocks = gql`
-  query GetTrashBlocks($webid: String!, $blockId: UUID, $search: String) {
-    trashBlocks(webid: $webid, blockId: $blockId, search: $search) {
+  query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
+    trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
       id
       pathArray {
         id
@@ -220,9 +220,9 @@ export const queryBlockShareLinks = gql`
       key
       policy
       state
-      sharePodData {
+      shareSpaceData {
         name
-        webid
+        domain
         email
         avatarData {
           url

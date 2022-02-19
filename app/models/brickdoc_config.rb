@@ -3,12 +3,12 @@
 #
 # Table name: brickdoc_configs
 #
-#  id         :integer          not null, primary key
-#  key        :string           not null
-#  value      :text
-#  scope      :string           not null
+#  id         :bigint           not null, primary key
 #  domain     :string           not null
 #  domain_len :integer
+#  key        :string           not null
+#  scope      :string           not null
+#  value      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -37,11 +37,11 @@ class BrickdocConfig < ApplicationRecord
     #
     # example:
     # BrickdocConfig.on(:global) { Brickdoc.current.something }
-    # BrickdocConfig.on(Pod.find(1)) { Brickdoc.current.something = 1 }
+    # BrickdocConfig.on(Space.find(1)) { Brickdoc.current.something = 1 }
     def on(domain, &block)
-      # domian argument must is :global or Pod instance
-      raise ArgumentError, "unsupported domain: #{domain}" unless domain == :global || domain.class == Pod
-      config = domain == :global ? self : at("pod.#{domain.id}")
+      # domian argument must is :global or Space instance
+      raise ArgumentError, "unsupported domain: #{domain}" unless domain == :global || domain.class == Space
+      config = domain == :global ? self : at("space.#{domain.id}")
       old_current = current
       self.current = config
       begin
@@ -124,6 +124,6 @@ class BrickdocConfig < ApplicationRecord
 
   # helpdesk Knowledge Base
   field :kb_articles, type: :hash, default: {
-    changing_webid: 'https://brickdoc.zendesk.com/hc/todo'
+    changing_domain: 'https://brickdoc.zendesk.com/hc/todo'
   }, frontend: true
 end

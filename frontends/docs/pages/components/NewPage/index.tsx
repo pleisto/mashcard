@@ -22,7 +22,7 @@ export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
     const input = { title: '' }
     const { data } = await blockCreate({ variables: { input } })
     if (data?.blockCreate?.id) {
-      navigate(`/${docMeta.webid}/${data?.blockCreate?.id}`)
+      navigate(`/${docMeta.domain}/${data?.blockCreate?.id}`)
     }
   }
 

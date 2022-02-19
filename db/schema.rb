@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_132057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -26,13 +26,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
   end
 
   create_table "accounts_members", force: :cascade do |t|
-    t.bigint "pod_id", null: false
+    t.bigint "space_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", null: false
     t.integer "state", default: 0, null: false
-    t.index ["pod_id"], name: "index_accounts_members_on_pod_id"
+    t.index ["space_id"], name: "index_accounts_members_on_space_id"
     t.index ["user_id"], name: "index_accounts_members_on_user_id"
   end
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "last_webid"
+    t.string "last_space_domain"
     t.json "last_block_ids", default: {}, null: false
     t.index ["confirmation_token"], name: "index_accounts_users_on_confirmation_token", unique: true
     t.index ["deleted_at"], name: "index_accounts_users_on_deleted_at"
@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
-    t.bigint "pod_id"
+    t.bigint "space_id"
     t.bigint "user_id"
     t.uuid "block_id"
     t.string "operation_type", default: "THIRD", null: false
@@ -112,7 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
   end
 
   create_table "docs_aliases", force: :cascade do |t|
-    t.bigint "pod_id", null: false
+    t.bigint "space_id", null: false
     t.string "alias", null: false
     t.uuid "block_id", null: false
     t.json "payload", default: {}, null: false
@@ -120,11 +120,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.datetime "updated_at", null: false
     t.integer "state", default: 0, null: false
     t.index ["block_id"], name: "index_docs_aliases_on_block_id"
-    t.index ["pod_id", "alias"], name: "index_docs_aliases_on_pod_id_and_alias", unique: true
+    t.index ["space_id", "alias"], name: "index_docs_aliases_on_space_id_and_alias", unique: true
   end
 
   create_table "docs_blocks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "pod_id", null: false
+    t.bigint "space_id", null: false
     t.string "type", limit: 32
     t.uuid "parent_id"
     t.jsonb "meta", default: {}, null: false, comment: "metadata"
@@ -143,11 +143,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.datetime "deleted_permanently_at"
     t.index ["collaborators"], name: "index_docs_blocks_on_collaborators", using: :gin
     t.index ["parent_id"], name: "index_docs_blocks_on_parent_id"
-    t.index ["pod_id"], name: "index_docs_blocks_on_pod_id"
+    t.index ["space_id"], name: "index_docs_blocks_on_space_id"
   end
 
   create_table "docs_formulas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "pod_id", null: false
+    t.bigint "space_id", null: false
     t.uuid "block_id", null: false
     t.string "name", null: false
     t.text "definition", null: false
@@ -157,11 +157,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.integer "version", default: 0, null: false
     t.integer "type", default: 0, null: false
     t.index ["block_id", "name"], name: "index_docs_formulas_on_block_id_and_name", unique: true
-    t.index ["pod_id"], name: "index_docs_formulas_on_pod_id"
+    t.index ["space_id"], name: "index_docs_formulas_on_space_id"
   end
 
   create_table "docs_histories", force: :cascade do |t|
-    t.bigint "pod_id"
+    t.bigint "space_id"
     t.jsonb "meta", null: false
     t.jsonb "data", null: false
     t.uuid "block_id", null: false
@@ -175,34 +175,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.text "text", default: "", comment: "node text"
     t.datetime "deleted_at"
     t.index ["block_id", "history_version"], name: "index_docs_histories_on_block_id_and_history_version", unique: true, comment: "history identifier"
-    t.index ["pod_id"], name: "index_docs_histories_on_pod_id"
+    t.index ["space_id"], name: "index_docs_histories_on_space_id"
   end
 
   create_table "docs_pins", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "pod_id", null: false
+    t.bigint "space_id", null: false
     t.uuid "block_id", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "pod_id", "block_id"], name: "index_docs_pins_on_user_id_and_pod_id_and_block_id", unique: true
+    t.index ["user_id", "space_id", "block_id"], name: "index_docs_pins_on_user_id_and_space_id_and_block_id", unique: true
   end
 
   create_table "docs_share_links", force: :cascade do |t|
     t.uuid "block_id", null: false, comment: "Page id"
-    t.bigint "pod_id", null: false
+    t.bigint "space_id", null: false
     t.string "key", null: false, comment: "Unique key"
     t.bigint "state", default: 0, null: false, comment: "Status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "policy", null: false
-    t.bigint "share_pod_id"
+    t.bigint "share_space_id"
     t.index ["key"], name: "index_docs_share_links_on_key", unique: true
-    t.index ["share_pod_id"], name: "index_docs_share_links_on_share_pod_id"
+    t.index ["share_space_id"], name: "index_docs_share_links_on_share_space_id"
   end
 
   create_table "docs_snapshots", force: :cascade do |t|
-    t.bigint "pod_id"
+    t.bigint "space_id"
     t.uuid "block_id", null: false
     t.bigint "snapshot_version", null: false
     t.jsonb "version_meta", comment: "child block_id and history_version map"
@@ -210,7 +210,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["block_id", "snapshot_version"], name: "index_docs_snapshots_on_block_id_and_snapshot_version", unique: true, comment: "snapshot identifier"
-    t.index ["pod_id"], name: "index_docs_snapshots_on_pod_id"
+    t.index ["space_id"], name: "index_docs_snapshots_on_space_id"
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -229,9 +229,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
   end
 
-  create_table "pods", force: :cascade do |t|
+  create_table "spaces", force: :cascade do |t|
     t.bigint "owner_id", null: false
-    t.string "webid", null: false
+    t.string "domain", null: false
     t.string "name", null: false
     t.string "bio", limit: 140, comment: "\"Bio\" means Biography in social media."
     t.boolean "personal", default: false, null: false
@@ -240,10 +240,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_10_065822) do
     t.datetime "updated_at", null: false
     t.boolean "invite_enable", default: false, null: false
     t.string "invite_secret"
-    t.index "lower((webid)::text)", name: "index_pods_on_lower_webid_text", unique: true
-    t.index ["deleted_at"], name: "index_pods_on_deleted_at"
-    t.index ["invite_secret"], name: "index_pods_on_invite_secret", unique: true
-    t.index ["owner_id"], name: "index_pods_on_owner_id"
+    t.index "lower((domain)::text)", name: "index_spaces_on_lower_domain_text", unique: true
+    t.index ["deleted_at"], name: "index_spaces_on_deleted_at"
+    t.index ["invite_secret"], name: "index_spaces_on_invite_secret", unique: true
+    t.index ["owner_id"], name: "index_spaces_on_owner_id"
   end
 
   create_table "stafftools_role_assignments", force: :cascade do |t|

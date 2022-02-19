@@ -1,23 +1,12 @@
 import React from 'react'
-import {
-  cx,
-  Button,
-  Dropdown,
-  Menu,
-  MenuProps,
-  Modal,
-  Icon,
-  Select,
-  DeprecatedSpin,
-  Tag
-} from '@brickdoc/design-system'
+import { cx, Button, Dropdown, Menu, MenuProps, Modal, Icon, Select, Spin, Tag } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockCreateShareLinkInput,
   Policytype,
-  QueryPodSearchDocument,
-  QueryPodSearchQuery as Query,
-  QueryPodSearchQueryVariables as Variables,
+  QuerySpaceSearchDocument,
+  QuerySpaceSearchQuery as Query,
+  QuerySpaceSearchQueryVariables as Variables,
   ShareLinkState,
   useBlockCreateShareLinkMutation
 } from '@/BrickdocGraphQL'
@@ -25,39 +14,39 @@ import { queryBlockShareLinks } from '../../graphql'
 import { debounce } from '@brickdoc/active-support'
 import styles from './index.module.less'
 import { useImperativeQuery } from '@/common/hooks'
-import { PodCard, PodType } from '@/common/components/PodCard'
+import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 interface InviteModalProps {
   docMeta: NonNullDocMeta
   visible: boolean
-  suggestPods: PodType[]
+  suggestSpaces: SpaceType[]
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setVisible, suggestPods }) => {
+export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setVisible, suggestSpaces }) => {
   const { t } = useDocsI18n()
   const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
   const [inviteButtonLoading, setInviteButtonLoading] = React.useState<boolean>(false)
   const defaultPolicy: Policytype = Policytype.View
   const [currentPolicy, setCurrentPolicy] = React.useState<Policytype>(defaultPolicy)
 
-  const podSearch = useImperativeQuery<Query, Variables>(QueryPodSearchDocument)
-  const defaultOptions = suggestPods
+  const spaceSearch = useImperativeQuery<Query, Variables>(QuerySpaceSearchDocument)
+  const defaultOptions = suggestSpaces
 
-  interface PodValue {
+  interface SpaceValue {
     label: string
     value: string
   }
 
-  const [podValue, setPodValue] = React.useState<PodValue[]>([])
+  const [spaceValue, setSpaceValue] = React.useState<SpaceValue[]>([])
   const [fetching, setFetching] = React.useState(false)
-  const [options, setOptions] = React.useState<PodType[]>(defaultOptions)
+  const [options, setOptions] = React.useState<SpaceType[]>(defaultOptions)
   const debounceTimeout = 800
 
   const onCleanup = (): void => {
     setVisible(false)
     setInviteButtonLoading(false)
-    setPodValue([])
+    setSpaceValue([])
     setOptions(defaultOptions)
   }
 
@@ -67,14 +56,14 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
     const policy: Policytype = currentPolicy
     const input: BlockCreateShareLinkInput = {
       id: docMeta.id,
-      target: podValue.map(podValue => ({ webid: podValue.value, policy, state }))
+      target: spaceValue.map(spaceValue => ({ domain: spaceValue.value, policy, state }))
     }
-    if (podValue.length) {
+    if (spaceValue.length) {
       await blockCreateShareLink({ variables: { input } })
     }
     setInviteButtonLoading(false)
     setCurrentPolicy(defaultPolicy)
-    setPodValue([])
+    setSpaceValue([])
     setOptions(defaultOptions)
     setVisible(false)
   }
@@ -115,14 +104,14 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
     const loadOptions = async (value: string): Promise<void> => {
       setOptions([])
       setFetching(true)
-      const { data } = await podSearch({ input: value })
-      const pods: PodType[] = data?.podSearch?.filter(pod => pod.webid !== docMeta.webid) ?? []
-      setOptions(pods)
+      const { data } = await spaceSearch({ input: value })
+      const spaces: SpaceType[] = data?.spaceSearch?.filter(space => space.domain !== docMeta.domain) ?? []
+      setOptions(spaces)
       setFetching(false)
     }
 
     return debounce(loadOptions, debounceTimeout)
-  }, [podSearch, docMeta.webid])
+  }, [spaceSearch, docMeta.domain])
 
   const { Option } = Select
 
@@ -148,8 +137,8 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       mode="multiple"
       filterOption={false}
       labelInValue={true}
-      value={podValue}
-      notFoundContent={fetching ? <DeprecatedSpin size="small" /> : <span>{t('invite.type_hint')}</span>}
+      value={spaceValue}
+      notFoundContent={fetching ? <Spin size="sm" /> : <span>{t('invite.type_hint')}</span>}
       getPopupContainer={() => inviteListRef.current!}
       dropdownClassName={styles.selectDropdown}
       dropdownRender={dropdownRender}
@@ -157,12 +146,12 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
       tagRender={tagRender}
       open={true}
       onChange={newValue => {
-        setPodValue(newValue)
+        setSpaceValue(newValue)
       }}
     >
-      {options.map(pod => (
-        <Option key={pod.webid} value={pod.webid}>
-          <PodCard pod={pod} />
+      {options.map(space => (
+        <Option key={space.domain} value={space.domain}>
+          <SpaceCard space={space} />
         </Option>
       ))}
     </Select>
@@ -171,11 +160,11 @@ export const InviteModal: React.FC<InviteModalProps> = ({ docMeta, visible, setV
   const inviteContent = (
     <>
       <div className={styles.header}>
-        <div className={cx(styles.input, { [styles.filled]: podValue.length > 0 })}>
+        <div className={cx(styles.input, { [styles.filled]: spaceValue.length > 0 })}>
           {selectData}
           {policyDropdown}
           <Button className={styles.inviteButton} type="primary" onClick={onInviteClick} loading={inviteButtonLoading}>
-            {t(podValue.length ? 'invite.confirm_button' : 'invite.button')}
+            {t(spaceValue.length ? 'invite.confirm_button' : 'invite.button')}
           </Button>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
-export const queryWebidExists = gql`
-  query QueryWebidAvailableFromWS($webid: String!) {
-    webidAvailable(webid: $webid) {
+export const queryDomainExists = gql`
+  query QueryDomainAvailableFromWS($domain: String!) {
+    domainAvailable(domain: $domain) {
       success
       message
     }
@@ -35,11 +35,11 @@ export const CreateDirectUpload = gql`
     }
   }
 `
-export const queryPods = gql`
-  query GetPods {
-    pods {
+export const querySpaces = gql`
+  query GetSpaces {
+    spaces {
       id
-      webid
+      domain
       name
       email
       personal
@@ -55,11 +55,11 @@ export const queryPods = gql`
   }
 `
 
-export const queryPod = gql`
-  query GetPod($webid: String!) {
-    pod(webid: $webid) {
+export const querySpace = gql`
+  query GetSpace($domain: String!) {
+    space(domain: $domain) {
       id
-      webid
+      domain
       name
       personal
       inviteEnable
@@ -74,12 +74,12 @@ export const queryPod = gql`
   }
 `
 
-export const queryCurrentPod = gql`
-  query GetCurrentPod($webid: String!) {
-    currentPodWebid @client @export(as: "webid")
-    pod(webid: $webid) {
+export const queryCurrentSpace = gql`
+  query GetCurrentSpace($domain: String!) {
+    currentSpaceDomain @client @export(as: "domain")
+    space(domain: $domain) {
       id
-      webid
+      domain
       name
       personal
       owned
@@ -95,10 +95,10 @@ export const queryCurrentPod = gql`
   }
 `
 
-export const queryPodMembers = gql`
-  query GetPodMembers {
-    podMembers {
-      webid
+export const querySpaceMembers = gql`
+  query GetSpaceMembers {
+    spaceMembers {
+      domain
       email
       name
       role

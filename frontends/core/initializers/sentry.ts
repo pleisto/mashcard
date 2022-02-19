@@ -16,18 +16,18 @@ export const sentryInit = (): void => {
     maxValueLength: 2048,
     release: `brickdoc@${ctx.version}`
   })
-  const userWebid = ctx?.currentUser?.webid
-  userWebid &&
+  const userDomain = ctx?.currentUser?.domain
+  userDomain &&
     setUser({
-      username: userWebid,
+      username: userDomain,
       // Sentry will infer the IP address from the
       // connection between your app and Sentry's server.
       ip_address: '{{auto}}'
     })
-  const currentPod = ctx?.currentPod?.webid
-  currentPod &&
-    setContext('pod', {
-      currentPod,
-      lastBlockIds: ctx?.lastBlockIds?.[currentPod]
+  const currentSpace = ctx?.currentSpace?.domain
+  currentSpace &&
+    setContext('space', {
+      currentSpace,
+      lastBlockIds: ctx?.lastBlockIds?.[currentSpace]
     })
 }

@@ -4,12 +4,12 @@ module Docs
   class Queries::TrashBlocks < BrickGraphQL::BaseResolver
     type [Docs::Objects::Block], null: true
 
-    argument :webid, GraphQL::Types::String, required: true
+    argument :domain, GraphQL::Types::String, required: true
     argument :block_id, BrickGraphQL::Scalars::UUID, required: false
     argument :search, GraphQL::Types::String, required: false
 
     def resolve(args)
-      webid = args[:webid]
+      domain = args[:domain]
       block_id = args[:block_id]
       search = args[:search]
 
@@ -17,7 +17,7 @@ module Docs
         if block_id
           Docs::Block.find(block_id).descendants_raw(unscoped: true).soft_deleted.pageable
         else
-          Docs::Block.soft_deleted.joins(:pod).pageable.where(pod: { webid: webid })
+          Docs::Block.soft_deleted.joins(:space).pageable.where(space: { domain: domain })
         end
 
       blocks = blocks.where("text like ?", "%#{search}%") if search.present?

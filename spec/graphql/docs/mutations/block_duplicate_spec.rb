@@ -17,9 +17,9 @@ describe Docs::Mutations::BlockDuplicate, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
-      root_block = create(:docs_block, pod: user.personal_pod)
+      root_block = create(:docs_block, space: user.personal_space)
 
       input = { input: { id: root_block.id } }
       internal_graphql_execute(mutation, input)
@@ -28,7 +28,7 @@ describe Docs::Mutations::BlockDuplicate, type: :mutation do
       expect(response.data['blockDuplicate']['id']).to_not eq(nil)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

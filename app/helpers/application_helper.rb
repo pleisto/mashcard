@@ -4,9 +4,9 @@ module ApplicationHelper
     {
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
-      lastWebid: Brickdoc::Runtime.cypress? ? nil : Current.user&.last_webid,
+      lastDomain: Brickdoc::Runtime.cypress? ? nil : Current.user&.last_space_domain,
       lastBlockIds: Brickdoc::Runtime.cypress? ? nil : Current.user&.last_block_ids,
-      currentPod: Current.pod,
+      currentSpace: Current.space,
       env: Rails.env,
       locale: Brickdoc::I18n.locale,
       rtl: t('meta.dir') == 'rtl',

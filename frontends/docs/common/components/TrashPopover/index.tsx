@@ -36,7 +36,7 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
         <div className={styles.list}>
           <PageTrash
             visible={visible}
-            webid={docMeta.webid}
+            domain={docMeta.domain}
             search={(searchObject as any)[key]}
             docid={docid}
             setVisible={setVisible}

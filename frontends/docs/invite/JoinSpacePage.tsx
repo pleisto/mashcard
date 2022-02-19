@@ -1,19 +1,19 @@
 import { FC, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useGetPodsQuery, useJoinPodMutation } from '@/BrickdocGraphQL'
+import { useGetSpacesQuery, useJoinSpaceMutation } from '@/BrickdocGraphQL'
 import { Loading, Alert, Box } from '@brickdoc/design-system'
 
 export const JoinSpacePage: FC = () => {
   const navigate = useNavigate()
-  const { loading, data } = useGetPodsQuery()
-  const [joinSpace, { loading: joinLoading }] = useJoinPodMutation()
+  const { loading, data } = useGetSpacesQuery()
+  const [joinSpace, { loading: joinLoading }] = useJoinSpaceMutation()
   const [errorMsg, setErrorMsg] = useState<string | undefined>()
-  const { webid, secret } = useParams() as unknown as {
-    webid: string
+  const { domain, secret } = useParams() as unknown as {
+    domain: string
     secret?: string
   }
-  const spaceUrl = `/${webid}`
-  const existed = !loading && data?.pods.filter(p => p.webid === webid).length === 1
+  const spaceUrl = `/${domain}`
+  const existed = !loading && data?.spaces.filter(p => p.domain === domain).length === 1
 
   useEffect(() => {
     const join = async () => {
@@ -25,7 +25,7 @@ export const JoinSpacePage: FC = () => {
           }
         }
       })
-      const errors = result.data?.joinPod?.errors
+      const errors = result.data?.joinSpace?.errors
       if (errors) {
         setErrorMsg(errors?.join('\n'))
       } else {

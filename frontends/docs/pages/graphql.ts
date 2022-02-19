@@ -45,8 +45,8 @@ export const FormulaDelete = gql`
 `
 
 export const queryFormulas = gql`
-  query GetFormulas($webid: String!) {
-    formulas(webid: $webid) {
+  query GetFormulas($domain: String!) {
+    formulas(domain: $domain) {
       id
       name
       cacheValue
@@ -77,8 +77,8 @@ export const NewPatch = gql`
 `
 
 export const queryBlockInfo = gql`
-  query GetBlockInfo($id: String!, $webid: String!) {
-    blockInfo(id: $id, webid: $webid) {
+  query GetBlockInfo($id: String!, $domain: String!) {
+    blockInfo(id: $id, domain: $domain) {
       title
       id
       enabledAlias {
@@ -129,7 +129,7 @@ export const queryBlockInfo = gql`
       }
       collaborators {
         name
-        webid
+        domain
         email
         avatarData {
           url
@@ -178,7 +178,7 @@ export const queryChildrenBlocks = gql`
         }
         people {
           type
-          webid
+          domain
           name
           avatarUrl
         }

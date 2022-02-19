@@ -20,7 +20,7 @@ describe Accounts::Mutations::UserCreate, type: :mutation do
     it 'emailPassword sign up work' do
       variables = {
         input: {
-          webid: 'machine-learning',
+          domain: 'machine-learning',
           name: FFaker::Name.name,
           email: FFaker::Internet.email(Time.now.to_i.to_s(36)),
           password: FFaker::Internet.password,
@@ -35,7 +35,7 @@ describe Accounts::Mutations::UserCreate, type: :mutation do
 
     it 'omniauth sign up work' do
       email = 'admin@github.com'
-      webid = 'railsway'
+      domain = 'railsway'
       # omniauth session
       request.session[:omniauth] = {
         'provider' => :github,
@@ -48,7 +48,7 @@ describe Accounts::Mutations::UserCreate, type: :mutation do
 
       variables = {
         input: {
-          webid: webid,
+          domain: domain,
           name: FFaker::Name.name,
           locale: 'enUS',
           timezone: 'utc'
@@ -57,13 +57,13 @@ describe Accounts::Mutations::UserCreate, type: :mutation do
 
       internal_graphql_execute(mutation, variables)
       expect(response.data[:userCreate][:isUserActive]).to be true
-      expect(Accounts::User.find_by(email: email).webid).to eq(webid)
+      expect(Accounts::User.find_by(email: email).domain).to eq(domain)
     end
 
     it 'email&password sign up requires password' do
       variables = {
         input: {
-          webid: 'no-password-errors', name: FFaker::Name.name, locale: 'enUS', timezone: 'utc'
+          domain: 'no-password-errors', name: FFaker::Name.name, locale: 'enUS', timezone: 'utc'
         }
       }
       internal_graphql_execute(mutation, variables)

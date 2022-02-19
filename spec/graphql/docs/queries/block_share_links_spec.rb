@@ -10,8 +10,8 @@ describe Docs::Queries::BlockShareLinks, type: :query do
           key
           policy
           state
-          sharePodData {
-            webid
+          shareSpaceData {
+            domain
             name
             email
             avatarData {
@@ -27,26 +27,26 @@ describe Docs::Queries::BlockShareLinks, type: :query do
     it 'global' do
       user = create(:accounts_user)
       self.current_user = user
-      pod = create(:pod)
-      self.current_pod = pod.as_session_context
-      block = create(:docs_block, pod: pod, collaborators: [user.id])
+      space = create(:space)
+      self.current_space = space.as_session_context
+      block = create(:docs_block, space: space, collaborators: [user.id])
 
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
       expect(response.data).to eq({ 'blockShareLinks' => [] })
 
-      block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'enabled', policy: 'view'])
+      block.upsert_share_links!([domain: Space::ANYONE_DOMAIN, state: 'enabled', policy: 'view'])
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
-      expect(response.data['blockShareLinks'][0]['sharePodData']['webid']).to eq(Pod::ANYONE_WEBID)
+      expect(response.data['blockShareLinks'][0]['shareSpaceData']['domain']).to eq(Space::ANYONE_DOMAIN)
 
-      block.upsert_share_links!([webid: Pod::ANYONE_WEBID, state: 'disabled', policy: 'view'])
+      block.upsert_share_links!([domain: Space::ANYONE_DOMAIN, state: 'disabled', policy: 'view'])
       internal_graphql_execute(query, { id: block.id })
       expect(response.success?).to be true
       expect(response.data['blockShareLinks'][0]['state']).to eq('disabled')
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

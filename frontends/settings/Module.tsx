@@ -6,11 +6,11 @@ import { SettingsLayout } from './common/layout'
 import { GeneralPage } from './general/GeneralPage'
 import { AccountPage } from './account/AccountPage'
 import { TeamPage } from './team/TeamPage'
-import { useGetCurrentPodQuery, GetCurrentPodQuery } from '@/BrickdocGraphQL'
+import { useGetCurrentSpaceQuery, GetCurrentSpaceQuery } from '@/BrickdocGraphQL'
 import { SettingsContext } from './SettingContext'
 
-const getRoutes = (currentPod: GetCurrentPodQuery['pod'] | undefined) => {
-  const isPersonal = currentPod?.personal
+const getRoutes = (currentSpace: GetCurrentSpaceQuery['space'] | undefined) => {
+  const isPersonal = currentSpace?.personal
   return [
     {
       key: 'general',
@@ -34,25 +34,25 @@ const getRoutes = (currentPod: GetCurrentPodQuery['pod'] | undefined) => {
 }
 
 const SettingsModule: FC = () => {
-  const { loading, data } = useGetCurrentPodQuery({})
-  const pod = data?.pod
+  const { loading, data } = useGetCurrentSpaceQuery({})
+  const space = data?.space
 
   const context = useMemo(() => {
     return {
-      pod,
-      actions: getRoutes(pod).map(i => ({ key: i.key, icon: i.icon }))
+      space,
+      actions: getRoutes(space).map(i => ({ key: i.key, icon: i.icon }))
     }
-  }, [pod])
+  }, [space])
 
   if (loading) return <Loading />
   // only owner could use settings
-  if (!pod?.owned) return <div>403 Forbidden</div>
+  if (!space?.owned) return <div>403 Forbidden</div>
 
   return (
     <SettingsContext.Provider value={context}>
       <SettingsLayout>
         <Routes>
-          {getRoutes(pod).map(i => (
+          {getRoutes(space).map(i => (
             <Route key={i.key} path={i.key} element={i.page} />
           ))}
           <Route path="*" element={<Navigate replace={true} to="general" />} />

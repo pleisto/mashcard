@@ -4,7 +4,7 @@ import { MentionCommandsMenu, MentionCommandsMenuProps } from '../MentionMenu'
 describe('MentionMenu', () => {
   const items: MentionCommandsMenuProps['items'] = {
     page: [{ icon: 'icon', name: 'page name', command: () => {} }],
-    people: [{ avatar: 'avatar', name: 'people name', webid: 'webid', command: () => {} }]
+    people: [{ avatar: 'avatar', name: 'people name', domain: 'domain', command: () => {} }]
   }
   const props: any = { items }
 

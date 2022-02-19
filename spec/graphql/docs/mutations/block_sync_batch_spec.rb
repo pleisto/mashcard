@@ -17,7 +17,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
 
     it 'empty' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root_id = SecureRandom.uuid
 
@@ -39,16 +39,16 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       expect(root.descendants.count).to eq(1)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
-    it 'last webid and last block_id' do
+    it 'last domain and last block_id' do
       user = create(:accounts_user)
       self.current_user = user
-      pod = user.personal_pod
-      self.current_pod = pod.as_session_context
+      space = user.personal_space
+      self.current_space = space.as_session_context
 
-      expect(user.last_webid).to eq(nil)
+      expect(user.last_space_domain).to eq(nil)
       expect(user.last_block_ids).to eq({})
 
       root_id = SecureRandom.uuid
@@ -65,13 +65,13 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
 
       user.reload
 
-      expect(user.last_webid).to eq(user.webid)
-      expect(user.last_block_ids).to eq({ user.webid => root_id })
+      expect(user.last_space_domain).to eq(user.domain)
+      expect(user.last_block_ids).to eq({ user.domain => root_id })
     end
 
     it 'works' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root_id = SecureRandom.uuid
 
@@ -118,12 +118,12 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       expect(response.data).to eq({ "blockSyncBatch" => nil })
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'deleteIds' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       root_id = SecureRandom.uuid
       block_id = SecureRandom.uuid
@@ -165,9 +165,9 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
 
     it 'edit deleted blocks' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
-      block = create(:docs_block, pod: user.personal_pod)
+      block = create(:docs_block, space: user.personal_space)
       root_id = block.id
 
       input = { input: { operatorId: operator_id, rootId: root_id, deletedIds: [], blocks: [{
@@ -199,7 +199,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
       expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.cannot_modify_deleted_blocks"))
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

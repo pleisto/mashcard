@@ -68,7 +68,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   const mutable = mode !== 'subPage'
   const hideHeading = mode === 'subPage'
 
-  const { data } = useGetPageBlocksQuery({ variables: { webid: docMeta.webid } })
+  const { data } = useGetPageBlocksQuery({ variables: { domain: docMeta.domain } })
   // recreate these blocks because we can't modify [data.pageBlocks]'s properties
   const [dataPageBlocks, setDataPageBlocks] = React.useState(
     data?.pageBlocks?.map(block => ({

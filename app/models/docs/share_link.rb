@@ -3,27 +3,26 @@
 #
 # Table name: docs_share_links
 #
-#  id           :integer          not null, primary key
-#  block_id     :uuid             not null
-#  pod_id       :integer          not null
-#  key          :string           not null
-#  state        :integer          default("0"), not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  share_webid  :string           not null
-#  policy       :integer          not null
-#  share_pod_id :integer
+#  id                :bigint           not null, primary key
+#  key(Unique key)   :string           not null
+#  policy            :integer          not null
+#  state(Status)     :bigint           default("enabled"), not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  block_id(Page id) :uuid             not null
+#  share_space_id    :bigint
+#  space_id          :bigint           not null
 #
 # Indexes
 #
-#  index_docs_share_links_on_key           (key) UNIQUE
-#  index_docs_share_links_on_share_pod_id  (share_pod_id)
+#  index_docs_share_links_on_key             (key) UNIQUE
+#  index_docs_share_links_on_share_space_id  (share_space_id)
 #
 
 class Docs::ShareLink < ApplicationRecord
-  belongs_to :pod, optional: true
+  belongs_to :space, optional: true
   belongs_to :block, optional: true
-  belongs_to :share_pod, optional: true, class_name: "Pod"
+  belongs_to :share_space, optional: true, class_name: "Space"
 
   enum state: {
     enabled: 0,
@@ -36,11 +35,11 @@ class Docs::ShareLink < ApplicationRecord
   }
 
   def anyone?
-    share_pod_id.nil?
+    share_space_id.nil?
   end
 
   before_create do
-    self.pod_id ||= block.pod_id
+    self.space_id ||= block.space_id
     self.key = SecureRandom.uuid
   end
 
@@ -50,15 +49,15 @@ class Docs::ShareLink < ApplicationRecord
     true
   end
 
-  def share_webid
-    return Pod::ANYONE_WEBID if share_pod_id.nil?
+  def share_domain
+    return Space::ANYONE_DOMAIN if share_space_id.nil?
 
-    share_pod.webid
+    share_space.domain
   end
 
-  def share_pod_data
-    return share_pod if share_pod_id
+  def share_space_data
+    return share_space if share_space_id
 
-    OpenStruct.new(id: 0, webid: Pod::ANYONE_WEBID, name: Pod::ANYONE_WEBID, avatar_data: nil, bio: nil, email: nil)
+    OpenStruct.new(id: 0, domain: Space::ANYONE_DOMAIN, name: Space::ANYONE_DOMAIN, avatar_data: nil, bio: nil, email: nil)
   end
 end

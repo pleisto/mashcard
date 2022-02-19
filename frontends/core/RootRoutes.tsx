@@ -19,7 +19,7 @@ export const RootRoutes: FC = () => {
     <Router>
       <Routes>
         <Route path="accounts/*" element={<AccountsModule />} />
-        <Route path=":webid/*">
+        <Route path=":domain/*">
           <Route
             path="settings/*"
             element={

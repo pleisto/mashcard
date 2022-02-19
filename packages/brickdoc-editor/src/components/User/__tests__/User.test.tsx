@@ -8,7 +8,7 @@ describe('User', () => {
       attrs: {
         people: {
           name: 'name',
-          webid: 'webid',
+          domain: 'domain',
           avatarUrl: 'avatarUrl'
         }
       }

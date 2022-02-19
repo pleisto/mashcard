@@ -8,11 +8,11 @@ import {
 } from '@/BrickdocGraphQL'
 import { object, string, ref } from 'yup'
 import { useSignUpInitialValues } from './hooks/useSignUpInitialValues'
-import { useWebidAvailableValidator } from '@/common/hooks'
+import { useDomainAvailableValidator } from '@/common/hooks'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import { omit, omitBy, pick, isNil } from '@brickdoc/active-support'
 import { mutationResultHandler } from '@/common/utils'
-import { Form, Input, Button, DeprecatedSkeleton, toast, useBoolean } from '@brickdoc/design-system'
+import { Form, Input, Button, toast, useBoolean } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
@@ -27,7 +27,10 @@ export const SignUpPage: React.FC = () => {
   useEffect(() => {
     if (!sessionLoading) {
       setFill(
-        omitBy(pick(sessionData?.federatedIdentitySession, ['webid', 'name']), isNil) as { webid: string; name: string }
+        omitBy(pick(sessionData?.federatedIdentitySession, ['domain', 'name']), isNil) as {
+          domain: string
+          name: string
+        }
       )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,11 +40,11 @@ export const SignUpPage: React.FC = () => {
   const { t } = useAccountsI18n()
 
   // Set Validator
-  const webidAvailableValidator = useWebidAvailableValidator()
+  const domainAvailableValidator = useDomainAvailableValidator()
   const emailAvailableValidator = useEmailAvailableValidator()
 
   const basicValidation = object({
-    webid: string().required().test(webidAvailableValidator),
+    domain: string().required().test(domainAvailableValidator),
     name: string().required(),
     locale: string().required(),
     timezone: string().required()
@@ -82,7 +85,7 @@ export const SignUpPage: React.FC = () => {
 
   // Loading Status
   if (configLoading || sessionLoading) {
-    return <DeprecatedSkeleton active />
+    return <></>
   }
 
   // Email unactive tips
@@ -124,9 +127,9 @@ export const SignUpPage: React.FC = () => {
         onSubmit={onFinish}
       >
         <Form.Field
-          label={t('sessions.webid')}
-          name="webid"
-          description={<small>{t('sessions.webid_description')}</small>}
+          label={t('sessions.domain')}
+          name="domain"
+          description={<small>{t('sessions.domain_description')}</small>}
         >
           <Input />
         </Form.Field>

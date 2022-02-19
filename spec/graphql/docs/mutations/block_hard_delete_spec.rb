@@ -16,9 +16,9 @@ describe Docs::Mutations::BlockHardDelete, type: :mutation do
 
     it 'work' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
-      root_block = create(:docs_block, pod: user.personal_pod)
+      root_block = create(:docs_block, space: user.personal_space)
       expect(root_block.deleted_at).to eq(nil)
 
       input = { input: { id: root_block.id } }
@@ -42,7 +42,7 @@ describe Docs::Mutations::BlockHardDelete, type: :mutation do
       expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.already_hard_delete"))
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

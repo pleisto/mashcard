@@ -3,30 +3,30 @@
 #
 # Table name: docs_blocks
 #
-#  id                     :uuid             not null, primary key
-#  pod_id                 :integer          not null
-#  type                   :string(32)
-#  parent_id              :uuid
-#  meta                   :jsonb            default("{}"), not null
-#  data                   :jsonb            not null
-#  history_version        :integer          default("0"), not null
-#  snapshot_version       :integer          default("0"), not null
-#  sort                   :integer          default("0"), not null
-#  collaborators          :integer          default("{}"), not null, is an Array
-#  deleted_at             :datetime
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  root_id                :uuid             not null
-#  content                :jsonb            default("[]")
-#  text                   :text             default("")
-#  page                   :boolean          default("false"), not null
-#  deleted_permanently_at :datetime
+#  id                       :uuid             not null, primary key
+#  collaborators            :bigint           default([]), not null, is an Array
+#  content(node content)    :jsonb
+#  data(data props)         :jsonb            not null
+#  deleted_at               :datetime
+#  deleted_permanently_at   :datetime
+#  history_version          :bigint           default(0), not null
+#  meta(metadata)           :jsonb            not null
+#  page                     :boolean          default(FALSE), not null
+#  snapshot_version         :bigint           default(0), not null
+#  sort                     :bigint           default(0), not null
+#  text(node text)          :text             default("")
+#  type                     :string(32)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  parent_id                :uuid
+#  root_id                  :uuid             not null
+#  space_id                 :bigint           not null
 #
 # Indexes
 #
-#  index_docs_blocks_on_collaborators  (collaborators)
+#  index_docs_blocks_on_collaborators  (collaborators) USING gin
 #  index_docs_blocks_on_parent_id      (parent_id)
-#  index_docs_blocks_on_pod_id         (pod_id)
+#  index_docs_blocks_on_space_id       (space_id)
 #
 
 class Docs::Block < ApplicationRecord
@@ -42,7 +42,7 @@ class Docs::Block < ApplicationRecord
   scope :soft_deleted, -> { where.not(deleted_at: nil) }
   scope :non_deleted, -> { where(deleted_at: nil) }
 
-  belongs_to :pod, optional: true
+  belongs_to :space, optional: true
   belongs_to :parent, class_name: 'Docs::Block', optional: true
   has_many :children, class_name: 'Docs::Block', foreign_key: :parent_id, dependent: :restrict_with_exception
   has_many :histories, dependent: :restrict_with_exception
@@ -54,7 +54,7 @@ class Docs::Block < ApplicationRecord
 
   validates :meta, presence: true, allow_blank: true
   # validates :data, presence: true
-  validates :pod_id, presence: true
+  validates :space_id, presence: true
   validates :collaborators, presence: true
 
   attribute :next_sort, :integer, default: 0
@@ -67,21 +67,21 @@ class Docs::Block < ApplicationRecord
   DUPLICATE_SORT_GAP = 4
   has_many_attached :attachments
 
-  def self.find_by_slug(id, webid, current_pod = {})
-    pod_id =
-      if current_pod.present? && current_pod['webid'] == webid
-        current_pod.fetch('id')
+  def self.find_by_slug(id, domain, current_space = {})
+    space_id =
+      if current_space.present? && current_space['domain'] == domain
+        current_space.fetch('id')
       else
-        Pod.find_by(webid: webid)&.id
+        Space.find_by(domain: domain)&.id
       end
 
-    return [nil, nil] if pod_id.nil?
+    return [nil, nil] if space_id.nil?
 
     if id =~ Brickdoc::Validators::UUIDValidator::REGEXP
-      o = find_by(pod_id: pod_id, id: id)
+      o = find_by(space_id: space_id, id: id)
       [o, nil]
     else
-      a = Docs::Alias.enabled.find_by(pod_id: pod_id, alias: id)
+      a = Docs::Alias.enabled.find_by(space_id: space_id, alias: id)
       return [nil, nil] if a.nil?
       [a.block, a]
     end
@@ -203,10 +203,10 @@ class Docs::Block < ApplicationRecord
   end
 
   def upsert_share_links!(target)
-    exists_share_links = share_links.includes(:share_pod).to_a.index_by(&:share_webid)
+    exists_share_links = share_links.includes(:share_space).to_a.index_by(&:share_domain)
     transaction do
       target.each do |obj|
-        exist = exists_share_links[obj[:webid]]
+        exist = exists_share_links[obj[:domain]]
         params = { policy: obj[:policy], state: obj[:state] }
         if exist
           if exist.state == obj[:state]
@@ -215,15 +215,15 @@ class Docs::Block < ApplicationRecord
             exist.update!(state: obj[:state])
           end
         else
-          pod_id =
-            if obj[:webid] == Pod::ANYONE_WEBID
+          space_id =
+            if obj[:domain] == Space::ANYONE_DOMAIN
               nil
             else
-              pod = Pod.find_by(webid: obj[:webid])
-              raise ArgumentError, I18n.t("errors.messages.webid_presence_invalid") if pod.nil?
-              pod.id
+              space = Space.find_by(domain: obj[:domain])
+              raise ArgumentError, I18n.t("errors.messages.domain_presence_invalid") if space.nil?
+              space.id
             end
-          share_links.create!(params.merge(share_pod_id: pod_id))
+          share_links.create!(params.merge(share_space_id: space_id))
         end
       end
     end
@@ -392,7 +392,7 @@ class Docs::Block < ApplicationRecord
       type: 'doc',
       meta: { title: title },
       sort: max_sort + SORT_GAP,
-      pod_id: pod_id,
+      space_id: space_id,
       collaborators: collaborators,
       data: {},
       content: [],
@@ -550,7 +550,7 @@ class Docs::Block < ApplicationRecord
 
     ## Anonymous user
     if user.nil?
-      preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_pod_id)
+      preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_space_id)
 
       anyone_share_link = preload_enabled_share_links[nil]
 
@@ -563,21 +563,21 @@ class Docs::Block < ApplicationRecord
     return true if collaborators.include?(user.id)
 
     ## Fast check cache
-    if user.current_pod_id
-      return true if pod_id == user.current_pod_id
+    if user.current_space_id
+      return true if space_id == user.current_space_id
     end
 
-    preload_pods = user.pods.to_a
+    preload_spaces = user.spaces.to_a
 
     ## Owner
-    return true if pod_id.in?(preload_pods.map(&:id))
+    return true if space_id.in?(preload_spaces.map(&:id))
 
     ## Share links
-    pod_ids = preload_pods.map(&:id) + [nil]
-    preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_pod_id)
+    space_ids = preload_spaces.map(&:id) + [nil]
+    preload_enabled_share_links ||= enabled_share_links.to_a.index_by(&:share_space_id)
 
-    pod_ids.each do |pod_id|
-      return true if preload_enabled_share_links[pod_id]
+    space_ids.each do |space_id|
+      return true if preload_enabled_share_links[space_id]
     end
 
     false

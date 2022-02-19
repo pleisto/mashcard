@@ -11,8 +11,8 @@ module Docs
         block = Docs::Block.non_deleted.find(args[:parent_id])
         result = block.create_sub_block!(args[:title])
       else
-        pod_id = current_pod.fetch('id')
-        max_sort = Docs::Block.non_deleted.pageable.where(pod_id: pod_id, parent_id: nil).maximum(:sort) || 0
+        space_id = current_space.fetch('id')
+        max_sort = Docs::Block.non_deleted.pageable.where(space_id: space_id, parent_id: nil).maximum(:sort) || 0
         result = Docs::Block.create!(
           data: {},
           content: [],
@@ -23,7 +23,7 @@ module Docs
           sort: max_sort + Docs::Block::SORT_GAP,
           type: 'doc',
           meta: { title: args[:title] },
-          pod_id: pod_id,
+          space_id: space_id,
           collaborators: [current_user.id],
         )
       end

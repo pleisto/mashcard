@@ -12,7 +12,7 @@ import { useDocsI18n } from '../../hooks'
 import { LineDown } from '@brickdoc/design-icons'
 import { queryBlockShareLinks } from '../../graphql'
 import styles from './index.module.less'
-import { PodCard, PodType } from '@/common/components/PodCard'
+import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 
 interface ShareLinkListItemProps {
@@ -40,7 +40,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
         state = ShareLinkState.Disabled
         break
     }
-    const shareLink: ShareLinkInput = { webid: item.sharePodData.webid, policy, state }
+    const shareLink: ShareLinkInput = { domain: item.shareSpaceData.domain, policy, state }
     const input: BlockCreateShareLinkInput = { id: docMeta.id, target: [shareLink] }
 
     await blockCreateShareLink({ variables: { input } })
@@ -71,7 +71,7 @@ export const ShareLinkListItem: React.FC<ShareLinkListItemProps> = ({ docMeta, i
 
   return (
     <div className={styles.row}>
-      <PodCard pod={item.sharePodData as PodType} />
+      <SpaceCard space={item.shareSpaceData as SpaceType} />
       <div className={styles.action}>{policyData}</div>
     </div>
   )

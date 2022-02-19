@@ -23,7 +23,7 @@ module Docs
             data: {},
             text: '',
             content: [],
-            pod_id: current_pod.fetch('id'),
+            space_id: current_space.fetch('id'),
             collaborators: [current_user.id]
           }
           root = Docs::Block.create!(params)

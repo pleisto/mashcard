@@ -12,7 +12,7 @@ module Accounts
       {
         has_session: true,
         provider: omniauth[:provider],
-        webid: omniauth[:info][:webid],
+        domain: omniauth[:info][:domain],
         name: omniauth[:info][:name]
       }
     end

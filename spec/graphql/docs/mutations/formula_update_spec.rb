@@ -14,11 +14,11 @@ describe Docs::Mutations::FormulaUpdate, type: :mutation do
 
     let(:user) { create(:accounts_user) }
     let(:share_user) { create(:accounts_user) }
-    let(:block) { create(:docs_block, pod: user.personal_pod) }
+    let(:block) { create(:docs_block, space: user.personal_space) }
 
     it 'update' do
       self.current_user = user
-      self.current_pod = user.personal_pod.as_session_context
+      self.current_space = user.personal_space.as_session_context
 
       formula = Docs::Formula.create!(
         block_id: block.id, id: SecureRandom.uuid, name: 'formula update',
@@ -42,7 +42,7 @@ describe Docs::Mutations::FormulaUpdate, type: :mutation do
       expect(formula.name).to eq(new_name)
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

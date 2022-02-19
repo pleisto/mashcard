@@ -10,7 +10,7 @@ module Docs
       field :is_master, Boolean, 'is master', null: false
       field :permission, ShareLink, 'permission', null: true
       field :enabled_alias, BlockAlias, 'alias', null: true
-      field :collaborators, [System::Objects::Pod], 'pod', null: false
+      field :collaborators, [System::Objects::Space], 'space', null: false
       field :path_array, [BlockPath], 'path', null: false
     end
   end

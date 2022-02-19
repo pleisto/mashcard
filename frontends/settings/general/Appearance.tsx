@@ -25,11 +25,11 @@ const AppearanceSelect: FC<{
   />
 )
 
-export const Appearance: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) => {
+export const Appearance: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
   const { t } = useSettingsI18n()
   const { timezone, locale } = useContext(BrickdocContext)
   const { data, loading: getMetadataLoading } = useGetMetadataFromWsQuery()
-  const [updatePod, { loading }] = useUserAppearanceUpdateMutation()
+  const [updateSpace, { loading }] = useUserAppearanceUpdateMutation()
   const form = Form.useForm({
     defaultValues: {
       timezone,
@@ -38,7 +38,7 @@ export const Appearance: FC<{ pod: SettingsContextProps['pod'] }> = ({ pod }) =>
   })
 
   const onSubmit = async (values: UserAppearanceUpdateInput) => {
-    const result = await updatePod({
+    const result = await updateSpace({
       variables: {
         input: values
       }

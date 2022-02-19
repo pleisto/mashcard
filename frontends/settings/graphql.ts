@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
-export const ChangeWebid = gql`
-  mutation updateWebid($input: UpdateWebidInput!) {
-    updateWebid(input: $input) {
+export const ChangeDomain = gql`
+  mutation updateDomain($input: UpdateDomainInput!) {
+    updateDomain(input: $input) {
       errors
     }
   }
@@ -24,17 +24,17 @@ export const UserDestroy = gql`
   }
 `
 
-export const PodDestroy = gql`
-  mutation PodDestroy($input: PodDestroyInput!) {
-    podDestroy(input: $input) {
+export const SpaceDestroy = gql`
+  mutation SpaceDestroy($input: SpaceDestroyInput!) {
+    spaceDestroy(input: $input) {
       errors
     }
   }
 `
 
-export const PodLeave = gql`
-  mutation PodLeave($input: PodLeaveInput!) {
-    podLeave(input: $input) {
+export const SpaceLeave = gql`
+  mutation SpaceLeave($input: SpaceLeaveInput!) {
+    spaceLeave(input: $input) {
       errors
     }
   }

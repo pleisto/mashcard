@@ -276,7 +276,7 @@ zh-CN:
       not_locked: was not locked
       not_saved:
         other: '%{count} errors prohibited this %{resource} from being saved:'
-      is_not_valid_webid: 'Username "%{webid}" is not available'
+      is_not_valid_domain: 'Username "%{domain}" is not available'
       is_not_valid_email: '邮箱“%{email}”不可用'
       send_interval: Sending interval is too short, please try again after 1 minute
       accepted: must be accepted
@@ -294,10 +294,10 @@ zh-CN:
       less_than_or_equal_to: must be less than or equal to %{count}
       model_invalid: 'Validation failed: %{errors}'
       email_invalid: 不是有效的电子邮件地址
-      webid_invalid: is not a username
+      domain_invalid: is not a username
       uuid_invalid: 不是有效的 uuid
       mobile_phone_invalid: 不是有效的手机号码
-      webid_presence_invalid: 不存在
+      domain_presence_invalid: 不存在
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd
@@ -590,19 +590,19 @@ zh-CN:
       confirm_password: Confirm Password
       sign_up_via: 'Sign Up with %{provider}'
       name: 'Name'
-      webid: 'Username'
-      webid_description: 'Only alphabet and numbers are allowed'
+      domain: 'Username'
+      domain_description: 'Only alphabet and numbers are allowed'
       agree_to_agreement: 'Sign Up indicate you agree to our <0>User Agreement</0>.'
       resend_after: 'Resendable after %{ms}'
     common:
       confirm_not_match: '%{field} and confirm %{field} do not match'
     errors:
       invalid_operation_type: '无效的实体类型'
-      invalid_pod_webid: 'No access to the username'
-      pod_has_already_switched: 'Pod 已切换'
-      pod_exist: 'Pod 已经存在'
+      invalid_space_domain: 'No access to the username'
+      space_has_already_switched: 'Space 已切换'
+      space_exist: 'Space 已经存在'
       user_not_exist: '用户不存在'
-      pod_not_exist: 'Pod 不存在'
+      space_not_exist: 'Space 不存在'
   docs:
     app_title: Brickdoc
     saving: 保存中
@@ -611,8 +611,8 @@ zh-CN:
       general: General
       member: Member
       account: Account
-    pod_setting:
-      text: Pod Setting
+    space_setting:
+      text: Space Setting
     anonymous:
       edit_button: Edit
     search:
@@ -679,20 +679,20 @@ zh-CN:
       restoring: Restoring...
       cancel: Cancel
       empty: 版本历史为空
-    pods:
-      webid: Username
+    spaces:
+      domain: Username
       name: Name
       bio: 个人简介
       avatar: 头像
       required:
-        webid: Username is required
+        domain: Username is required
         name: 名称是必需的
       create:
         success: 创建成功。
       update:
         success: 更新成功。
     menu:
-      create_new_pod: Create other pod
+      create_new_space: Create other space
       logout: Log out
     title:
       add_icon: 添加图标

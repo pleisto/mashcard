@@ -18,8 +18,8 @@ describe Docs::Queries::Block, type: :query do
     GRAPHQL
 
     page_block_query = <<-'GRAPHQL'
-      query GetPageBlocks($webid: String!) {
-        pageBlocks(webid: $webid) {
+      query GetPageBlocks($domain: String!) {
+        pageBlocks(domain: $domain) {
           id
           sort
           rootId
@@ -74,15 +74,15 @@ describe Docs::Queries::Block, type: :query do
       user = create(:accounts_user)
       self.current_user = user
 
-      pod = create(:pod)
+      space = create(:space)
 
-      self.current_pod = pod.as_session_context
+      self.current_space = space.as_session_context
 
-      block1 = create(:docs_block, pod: pod)
-      block2 = create(:docs_block, pod: pod, collaborators: [user.id])
-      child1 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block2, root_id: block2.id)
-      child2 = create(:docs_block, pod: pod, sort: 200, collaborators: [user.id], parent: block2, root_id: block2.id)
-      child3 = create(:docs_block, pod: pod, sort: 300, collaborators: [user.id], parent: block2, root_id: block2.id)
+      block1 = create(:docs_block, space: space)
+      block2 = create(:docs_block, space: space, collaborators: [user.id])
+      child1 = create(:docs_block, space: space, sort: 100, collaborators: [user.id], parent: block2, root_id: block2.id)
+      child2 = create(:docs_block, space: space, sort: 200, collaborators: [user.id], parent: block2, root_id: block2.id)
+      child3 = create(:docs_block, space: space, sort: 300, collaborators: [user.id], parent: block2, root_id: block2.id)
 
       expect do
         internal_graphql_execute(get_block_query, { id: block1.id })
@@ -95,7 +95,7 @@ describe Docs::Queries::Block, type: :query do
 
       # pageBlocks
 
-      internal_graphql_execute(page_block_query, { webid: pod.webid })
+      internal_graphql_execute(page_block_query, { domain: space.domain })
       expect(response.success?).to be true
       expect(response.data['pageBlocks'].length).to eq 4
       root = response.data['pageBlocks'].find { |b| b.fetch('parentId').nil? }
@@ -132,13 +132,13 @@ describe Docs::Queries::Block, type: :query do
       user = create(:accounts_user)
       self.current_user = user
 
-      pod = create(:pod)
+      space = create(:space)
 
-      self.current_pod = pod.as_session_context
+      self.current_space = space.as_session_context
 
-      block = create(:docs_block, pod: pod, collaborators: [user.id])
-      _child1 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block, root_id: block.id)
-      _child2 = create(:docs_block, pod: pod, sort: 100, collaborators: [user.id], parent: block, root_id: block.id)
+      block = create(:docs_block, space: space, collaborators: [user.id])
+      _child1 = create(:docs_block, space: space, sort: 100, collaborators: [user.id], parent: block, root_id: block.id)
+      _child2 = create(:docs_block, space: space, sort: 100, collaborators: [user.id], parent: block, root_id: block.id)
 
       expect do
         internal_graphql_execute(children_blocks_query, { root_id: block.id, snapshot_version: 1 })
@@ -152,18 +152,18 @@ describe Docs::Queries::Block, type: :query do
       expect(response.data['childrenBlocks'].length).to eq 3
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
 
     it 'hard deleted' do
       user = create(:accounts_user)
       self.current_user = user
 
-      pod = create(:pod)
+      space = create(:space)
 
-      self.current_pod = pod.as_session_context
+      self.current_space = space.as_session_context
 
-      block = create(:docs_block, pod: pod, collaborators: [user.id])
+      block = create(:docs_block, space: space, collaborators: [user.id])
       block.soft_delete!
       block.hard_delete!
 
@@ -173,7 +173,7 @@ describe Docs::Queries::Block, type: :query do
       expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.already_hard_deleted"))
 
       self.current_user = nil
-      self.current_pod = nil
+      self.current_space = nil
     end
   end
 end

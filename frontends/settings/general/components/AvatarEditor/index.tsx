@@ -4,7 +4,7 @@ import { Edit } from '@brickdoc/design-icons'
 import { SettingsContext } from '@/settings/SettingContext'
 import { usePrepareFileUpload } from '@/docs/pages/hooks'
 import { Dashboard, ImportSourceOption, UploadResultData } from '@brickdoc/uploader'
-import { PodOperation, useCreateOrUpdatePodMutation } from '@/BrickdocGraphQL'
+import { SpaceOperation, useCreateOrUpdateSpaceMutation } from '@/BrickdocGraphQL'
 import { useSettingsI18n } from '@/settings/common/hooks'
 
 const Wrapper = styled(Popover, {
@@ -24,22 +24,22 @@ const IMPORT_SOURCES: ImportSourceOption[] = [
 ]
 
 export const AvatarEditor: FC = () => {
-  const { pod } = useContext(SettingsContext)!
+  const { space } = useContext(SettingsContext)!
   const prepareFileUpload = usePrepareFileUpload()
-  const [updatePod] = useCreateOrUpdatePodMutation()
-  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(pod?.avatarData?.url)
+  const [updateSpace] = useCreateOrUpdateSpaceMutation()
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(space?.avatarData?.url)
   const { t } = useSettingsI18n()
   const onUploaded = async (attrs: UploadResultData): Promise<void> => {
-    const result = await updatePod({
+    const result = await updateSpace({
       variables: {
         input: {
-          type: PodOperation.Update,
-          webid: pod!.webid,
+          type: SpaceOperation.Update,
+          domain: space!.domain,
           avatarSignedId: attrs.signedId
         }
       }
     })
-    const errors = result.data?.createOrUpdatePod?.errors
+    const errors = result.data?.createOrUpdateSpace?.errors
     if (errors && errors?.length > 0) {
       toast.error(errors.join('\n'))
     } else {
@@ -61,7 +61,7 @@ export const AvatarEditor: FC = () => {
         />
       }
     >
-      <Avatar role="button" initials={pod?.name ?? pod?.webid} src={avatarUrl} size={100} />
+      <Avatar role="button" initials={space?.name ?? space?.domain} src={avatarUrl} size={100} />
       <Button
         icon={<Edit />}
         circle={true}
