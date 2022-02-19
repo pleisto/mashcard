@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Icon } from '@brickdoc/design-system'
+import { Icon, Tooltip } from '@brickdoc/design-system'
 import { VariableData, VariableInterface } from '@brickdoc/formula'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { useFormula } from '../../../components/Formula/useFormula'
@@ -69,7 +69,9 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
         <Icon.Formula className="brickdoc-formula-placeholder-icon" />
       </span>
     ) : (
-      <FormulaRender t={savedVariableT} formulaType={formulaType} />
+      <Tooltip title={savedVariableT.name}>
+        <FormulaRender t={savedVariableT} formulaType={formulaType} />
+      </Tooltip>
     )
 
   return (

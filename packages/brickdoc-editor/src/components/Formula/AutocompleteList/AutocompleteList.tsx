@@ -6,7 +6,6 @@ import {
   ColumnType,
   Completion,
   CompletionKind,
-  displayValue,
   FunctionCompletion,
   SpreadsheetCompletion,
   VariableCompletion
@@ -15,6 +14,7 @@ import './AutocompleteList.less'
 import { FormulaEditor } from '../../../extensions/formula/FormulaEditor/FormulaEditor'
 import { codeFragmentsToJSONContentTotal } from '../../../helpers/formula'
 import { CompletionType } from '../useFormula'
+import { FormulaValue } from '../FormulaValue'
 export interface AutocompleteListProps {
   blockId: string
   handleSelectActiveCompletion: () => void
@@ -115,7 +115,11 @@ const COMPLETION_STYLE_META: {
               {preview.examples.map((example, index) => (
                 <div key={index} className="autocomplete-preview-example">
                   <FormulaEditor
-                    editorContent={{ content: codeFragmentsToJSONContentTotal(example.codeFragments), input: '', position: 0 }}
+                    editorContent={{
+                      content: codeFragmentsToJSONContentTotal(example.codeFragments),
+                      input: '',
+                      position: 0
+                    }}
                     editable={false}
                   />
                   <br />
@@ -152,7 +156,9 @@ const COMPLETION_STYLE_META: {
           </div>
           <div className="autocomplete-preview-section">
             <div className="autocomplete-preview-section-head">Value</div>
-            <span className="autocomplete-preview-output-tag">{displayValue(preview.t.variableValue.result)}</span>
+            <span className="autocomplete-preview-output-tag">
+              <FormulaValue t={preview.t} />
+            </span>
           </div>
         </div>
       )

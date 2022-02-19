@@ -14,17 +14,15 @@ import {
   useSpreadsheetContext
 } from '..'
 import {
-  displayValue,
   ButtonResult,
   InputResult,
   SpreadsheetResult,
   StringResult,
   AnyTypeResult,
   FormulaSourceType,
-  VariableResult,
-  resultToColorType
+  VariableResult
 } from '@brickdoc/formula'
-import { FORMULA_COLORS } from '../../helpers/color'
+import { FormulaValue } from './FormulaValue'
 
 // TODO refactor me
 const renderTable = (result: SpreadsheetResult, formulaType: FormulaSourceType): React.ReactElement => {
@@ -115,21 +113,6 @@ const renderLiteral = (result: AnyTypeResult, formulaType: FormulaSourceType): R
   return <span>{result.result}</span>
 }
 
-const renderOther = (result: AnyTypeResult, type: FormulaSourceType): React.ReactElement => {
-  const activeColor = FORMULA_COLORS[resultToColorType(result)]
-  const className = type === 'normal' ? 'brickdoc-formula' : 'brickdoc-formula-other'
-  const style = {
-    color: activeColor.color,
-    fontFamily: 'Fira Code',
-    borderColor: `rgb(${activeColor.rgb.join(',')}, 0.3)`
-  }
-
-  return (
-    <span className={className} style={style}>
-      {displayValue(result)}
-    </span>
-  )
-}
 export interface FormulaRenderProps {
   t?: VariableResult
   formulaType: FormulaSourceType
@@ -171,7 +154,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({ t, formulaType, ..
         data = renderQrcode(result as StringResult, type)
         break
       default:
-        data = renderOther(result, type)
+        data = <FormulaValue t={t} border={true} />
         break
     }
   }

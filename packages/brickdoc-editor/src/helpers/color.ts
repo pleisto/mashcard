@@ -1,3 +1,4 @@
+import { Palettes } from '@brickdoc/design-system/src/themes/ceramic-light/colors/palettes'
 import { FormulaColorType } from '@brickdoc/formula'
 
 export interface ColorMeta {
@@ -58,70 +59,102 @@ export const COLOR: ColorMeta[] = [
     label: 'Purplish Red'
   }
 ]
-
-const defaultColorMeta: ColorMeta = COLOR[0]
-
-const blockColorMeta: ColorMeta = {
-  color: '#356CF9',
-  rgb: [53, 108, 249],
-  label: 'palette/hue/blue/6'
+export interface FormulaColorMeta {
+  color: string
+  rgb: [number, number, number]
+  label: string
+  backgroundColor: string
+  hoverBackgroundColor: string
+  pressedBackgroundColor: string
 }
 
-export const FORMULA_COLORS: Record<FormulaColorType, ColorMeta> = {
-  null: {
-    color: '#6D47B9',
-    rgb: [109, 71, 185],
-    label: 'palette/hue/purple/5'
-  },
-  number: {
-    color: '#39B3E8',
-    rgb: [57, 179, 232],
-    label: 'palette/hue/cyan/6'
-  },
-  string: {
-    color: '#D81B60',
-    rgb: [216, 27, 96],
-    label: 'palette/hue/pink/6'
-  },
-  Record: blockColorMeta,
-  Array: blockColorMeta,
-  Date: {
-    color: '#39B3E8',
-    rgb: [57, 179, 232],
-    label: 'palette/hue/cyan/6'
-  },
-  Error: {
-    color: '#CF1F28',
-    rgb: [207, 31, 40],
-    label: 'palette/hue/red/7'
-  },
-  Column: {
-    color: '#218470',
-    rgb: [33, 132, 112],
-    label: 'palette/hue/green/8'
-  },
-  Block: blockColorMeta,
-  Spreadsheet: blockColorMeta,
-  Function: {
-    color: '#C84116',
-    rgb: [200, 65, 22],
-    label: 'palette/hue/orange/8'
-  },
-  Blank: {
-    color: '#218470',
-    rgb: [33, 132, 112],
-    label: 'palette/hue/green/8'
-  },
-  Predicate: {
-    color: '#39B3E8',
-    rgb: [57, 179, 232],
-    label: 'palette/hue/cyan/6'
-  },
-  Button: {
-    color: '#356CF9',
-    rgb: [53, 108, 249],
-    label: 'palette/hue/blue/6'
-  },
+const defaultColorMeta: FormulaColorMeta = {
+  color: '#908B9C',
+  rgb: [249, 249, 249],
+  label: 'palette/bg/primary',
+  backgroundColor: '#F9F9F9',
+  hoverBackgroundColor: '#F0F0F0',
+  pressedBackgroundColor: '#F0F0F0'
+}
+
+const blueColorMeta: FormulaColorMeta = {
+  color: '#356CF9',
+  rgb: [53, 108, 249],
+  label: 'palette/hue/blue/6',
+  backgroundColor: Palettes.blue1,
+  hoverBackgroundColor: Palettes.blue2,
+  pressedBackgroundColor: Palettes.blue3
+}
+
+const cyanColorMeta: FormulaColorMeta = {
+  color: Palettes.cyan6,
+  rgb: [57, 179, 232],
+  label: 'palette/hue/cyan/6',
+  backgroundColor: Palettes.cyan1,
+  hoverBackgroundColor: Palettes.cyan2,
+  pressedBackgroundColor: Palettes.cyan3
+}
+
+const greenColorMeta: FormulaColorMeta = {
+  color: Palettes.green8,
+  rgb: [33, 132, 112],
+  label: 'palette/hue/green/8',
+  backgroundColor: Palettes.green1,
+  hoverBackgroundColor: Palettes.green2,
+  pressedBackgroundColor: Palettes.green3
+}
+
+const pinkColorMeta: FormulaColorMeta = {
+  color: Palettes.pink6,
+  rgb: [216, 27, 96],
+  label: 'palette/hue/pink/6',
+  backgroundColor: Palettes.pink1,
+  hoverBackgroundColor: Palettes.pink2,
+  pressedBackgroundColor: Palettes.pink3
+}
+
+const redColorMeta: FormulaColorMeta = {
+  color: Palettes.red7,
+  rgb: [207, 31, 40],
+  label: 'palette/hue/red/7',
+  backgroundColor: Palettes.red1,
+  hoverBackgroundColor: Palettes.red2,
+  pressedBackgroundColor: Palettes.red3
+}
+
+const purpleColorMeta: FormulaColorMeta = {
+  color: Palettes.purple6,
+  rgb: [109, 71, 185],
+  label: 'palette/hue/purple/5',
+  backgroundColor: Palettes.purple1,
+  hoverBackgroundColor: Palettes.purple2,
+  pressedBackgroundColor: Palettes.purple3
+}
+
+const orangeColorMeta: FormulaColorMeta = {
+  color: Palettes.orange8,
+  rgb: [200, 65, 22],
+  label: 'palette/hue/orange/8',
+  backgroundColor: Palettes.orange1,
+  hoverBackgroundColor: Palettes.orange2,
+  pressedBackgroundColor: Palettes.orange3
+}
+
+export const FORMULA_COLORS: Record<FormulaColorType, FormulaColorMeta> = {
+  null: purpleColorMeta,
+  number: cyanColorMeta,
+  string: pinkColorMeta,
+  Record: blueColorMeta,
+  Array: blueColorMeta,
+  Date: cyanColorMeta,
+  Error: redColorMeta,
+  Column: greenColorMeta,
+  Block: blueColorMeta,
+  Spreadsheet: blueColorMeta,
+  Function: orangeColorMeta,
+  Blank: greenColorMeta,
+  Predicate: cyanColorMeta,
+  Button: blueColorMeta,
 
   // Unknown
   Switch: defaultColorMeta,
@@ -132,31 +165,11 @@ export const FORMULA_COLORS: Record<FormulaColorType, ColorMeta> = {
   Rate: defaultColorMeta,
   void: defaultColorMeta,
   Cst: defaultColorMeta,
-  Reference: {
-    color: '#D81B60',
-    rgb: [216, 27, 96],
-    label: 'palette/hue/pink/6'
-  },
+  Reference: pinkColorMeta,
   any: defaultColorMeta,
   // Other
-  TRUE: {
-    color: '#218470',
-    rgb: [33, 132, 112],
-    label: 'palette/hue/green/8'
-  },
-  FALSE: {
-    color: '#CF1F28',
-    rgb: [207, 31, 40],
-    label: 'palette/hue/red/7'
-  },
-  FunctionName: {
-    color: '#D81B60',
-    rgb: [216, 27, 96],
-    label: 'palette/hue/pink/6'
-  },
-  Variable: {
-    color: '#D81B60',
-    rgb: [216, 27, 96],
-    label: 'palette/hue/pink/6'
-  }
+  TRUE: greenColorMeta,
+  FALSE: redColorMeta,
+  FunctionName: pinkColorMeta,
+  Variable: pinkColorMeta
 }

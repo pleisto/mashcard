@@ -80,7 +80,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
     <Popover
       defaultVisible={true}
       visible={true}
-      overlayClassName="brickdoc-formula-menu-popover"
+      className="brickdoc-formula-menu-popover"
       destroyTooltipOnHide={true}
       content={formulaResult}
       placement="bottom"
