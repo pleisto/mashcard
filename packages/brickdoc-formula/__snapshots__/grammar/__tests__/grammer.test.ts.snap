@@ -1819,6 +1819,111 @@ Array [
 ]
 `;
 
+exports[`Simple test case [WhiteSpace /\\s+/] =1 +　2　 　- 　 3 // => 0 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Plus",
+    "display": "+",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "+",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "   ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "   ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Minus",
+    "display": "-",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "-",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "   ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "   ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "3",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "3",
+  },
+]
+`;
+
 exports[`Simple test case [Without number] = - // => ✗ 1`] = `
 Array [
   Object {

@@ -113,8 +113,8 @@ const abbrev = ({
   tokens.forEach((token, index) => {
     newTokens.push(token)
 
-    if (restInput.startsWith(' ')) {
-      const prefixSpaceCount = restInput.length - restInput.trimStart().length
+    const prefixSpaceCount = restInput.length - restInput.trimStart().length
+    if (prefixSpaceCount > 0) {
       const spaceValue = ' '.repeat(prefixSpaceCount)
       newInput = newInput.concat(spaceValue)
       restInput = restInput.substring(prefixSpaceCount)
@@ -204,8 +204,8 @@ const abbrev = ({
   })
 
   // NOTE tail space
-  if (restInput.startsWith(' ')) {
-    const prefixSpaceCount = restInput.length - restInput.trimStart().length
+  const prefixSpaceCount = restInput.length - restInput.trimStart().length
+  if (prefixSpaceCount > 0) {
     const spaceValue = ' '.repeat(prefixSpaceCount)
     newInput = newInput.concat(spaceValue)
     restInput = restInput.substring(prefixSpaceCount)

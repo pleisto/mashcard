@@ -88,6 +88,7 @@ const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const simpleCommonTestCases = [
   { input: '123', positions: [0, 1, 3], resultData: 123 },
+  { input: '1 +　1 　 +　 　1', newInput: '1 + 1   +   1', positions: [0, 1, 13], resultData: 3 },
   { input: '  123     ', positions: [1, 2, 4, 6, 8], resultData: 123 },
   { input: '123asdasd', positions: [1, 9], resultData: 'Not all input parsed: asdasd' },
   { input: '1 1', positions: [1, 2, 3], resultData: 'Not all input parsed: 1' },

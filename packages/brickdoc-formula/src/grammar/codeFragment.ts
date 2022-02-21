@@ -1339,8 +1339,8 @@ export const addSpace = (
       match = true
     }
 
-    if (restInput.startsWith(' ')) {
-      const prefixSpaceCount = restInput.length - restInput.trimStart().length
+    const prefixSpaceCount = restInput.length - restInput.trimStart().length
+    if (prefixSpaceCount > 0) {
       const spaceValue = ' '.repeat(prefixSpaceCount)
       finalCodeFragments.push({ ...spaceCodeFragment, value: spaceValue, display: spaceValue })
       restInput = restInput.substring(prefixSpaceCount)

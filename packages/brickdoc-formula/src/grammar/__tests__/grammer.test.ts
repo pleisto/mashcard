@@ -919,6 +919,76 @@ const testCases: TestCase[] = [
     input: '=123.ABS()',
     parseErrorType: 'syntax',
     errorMessage: 'Not all input parsed: ABS'
+  },
+  // Space https://emptycharacter.com/
+  {
+    input: '=1 +　2　 　- 　 3',
+    label: 'WhiteSpace /\\s+/',
+    value: 0
+  },
+  {
+    input: '=\u0020"space U+0020"\u0020',
+    value: 'space U+0020'
+  },
+  {
+    input: '=\u00A0"No-Break Space U+00A0"\u00A0',
+    value: 'No-Break Space U+00A0'
+  },
+  {
+    input: '=\u2000"En Quad U+2000"\u2000',
+    value: 'En Quad U+2000'
+  },
+  {
+    input: '=\u2001"Em Quad U+2001"\u2001',
+    value: 'Em Quad U+2001'
+  },
+  {
+    input: '=\u2002"En Space U+2002"\u2002',
+    value: 'En Space U+2002'
+  },
+  {
+    input: '=\u2003"Em Space U+2003"\u2003',
+    value: 'Em Space U+2003'
+  },
+  {
+    input: '=\u2004"Three-Per-Em Space U+2004"\u2004',
+    value: 'Three-Per-Em Space U+2004'
+  },
+  {
+    input: '=\u2005"Four-Per-Em Space U+2005"\u2005',
+    value: 'Four-Per-Em Space U+2005'
+  },
+  {
+    input: '=\u2006"Six-Per-Em Space U+2006"\u2006',
+    value: 'Six-Per-Em Space U+2006'
+  },
+  {
+    input: '=\u2007"Figure Space U+2007"\u2007',
+    value: 'Figure Space U+2007'
+  },
+  {
+    input: '=\u2008"Punctuation Space U+2008"\u2008',
+    value: 'Punctuation Space U+2008'
+  },
+  {
+    input: '=\u2009"Thin Space U+2009"\u2009',
+    value: 'Thin Space U+2009'
+  },
+  {
+    input: '=\u200A"Hair Space U+200A"\u200A',
+    value: 'Hair Space U+200A'
+  },
+  {
+    input: '=\u2028"Line Separator U+2028"\u2028',
+    value: 'Line Separator U+2028'
+  },
+  {
+    input: '=\u205F"Medium Mathematical Space U+205F"\u205F',
+    value: 'Medium Mathematical Space U+205F'
+  },
+  {
+    input: '=\u3000"Ideographic Space U+3000"\u3000',
+    value: 'Ideographic Space U+3000'
   }
 ]
 
