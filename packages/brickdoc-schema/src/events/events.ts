@@ -82,15 +82,6 @@ export const FormulaEditorSaveEventTrigger = event<{ formulaId: string; rootId: 
   }
 )
 
-export const FormulaEditorUpdateEventTrigger = event<{
-  content: any
-  position: number
-  rootId: string
-  formulaId: string
-}>()('FormulaEditorUpdateEventTrigger', ({ content, position, formulaId, rootId }) => {
-  return { content, position, id: `${rootId},${formulaId}` }
-})
-
 export const FormulaEditorReplaceRootTrigger = event<{
   content: any
   position: number
@@ -101,12 +92,11 @@ export const FormulaEditorReplaceRootTrigger = event<{
   return { content, position, input, id: `${rootId},${formulaId}` }
 })
 
-export const FormulaEditorUpdateNameTrigger = event<{
-  name: string
+export const FormulaCalculateTrigger = event<{
   rootId: string
   formulaId: string
-}>()('FormulaEditorUpdateNameTrigger', ({ name, formulaId, rootId }) => {
-  return { name, id: `${rootId},${formulaId}` }
+}>()('FormulaCalculateTrigger', ({ formulaId, rootId }) => {
+  return { id: `${rootId},${formulaId}` }
 })
 
 export interface ExplorerMenuItem {

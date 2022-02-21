@@ -14,8 +14,7 @@ import {
   BrickdocEventBus,
   FormulaEditorReplaceRootTrigger,
   FormulaEditorSaveEventTrigger,
-  FormulaEditorUpdateEventTrigger,
-  FormulaEditorUpdateNameTrigger,
+  FormulaCalculateTrigger,
   FormulaKeyboardEventTrigger,
   FormulaUpdatedViaId
 } from '@brickdoc/schema'
@@ -49,11 +48,12 @@ export interface UseFormulaOutput {
   variableT: VariableData | undefined
   savedVariableT: VariableData | undefined
   isDraft: boolean
-  name: string | undefined
+  nameRef: React.MutableRefObject<string | undefined>
   defaultName: string
   formulaIsNormal: boolean
-  editorContent: EditorContentType
+  editorContentRef: React.MutableRefObject<EditorContentType>
   isDisableSave: () => boolean
+  updateEditor: (content: JSONContent, position: number) => void
   doHandleSave: () => Promise<void>
   handleSelectActiveCompletion: () => void
   completion: CompletionType
@@ -406,6 +406,16 @@ export const useFormula = ({
     return false
   }, [formulaContext])
 
+  const updateEditor = React.useCallback(
+    (jsonContent: JSONContent, editorPosition: number): void => {
+      const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent))
+      const value = formulaType === 'normal' ? `=${newInput}` : newInput
+      editorContentRef.current = { content: jsonContent, input: value, position: editorPosition }
+      BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId }))
+    },
+    [formulaId, formulaType, rootId]
+  )
+
   const doHandleSave = React.useCallback(async (): Promise<void> => {
     // devLog({ variable: variableRef.current, name, defaultName })
     if (!variableRef.current) {
@@ -488,29 +498,8 @@ export const useFormula = ({
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
-      FormulaEditorUpdateEventTrigger,
-      event => {
-        devLog('update subscribe', { event })
-        const newContent = event.payload.content
-        const newPosition = event.payload.position
-        const newInput = contentArrayToInput(fetchJSONContentArray(newContent))
-        const value = formulaIsNormal ? `=${newInput}` : newInput
-        editorContentRef.current = { content: newContent, input: value, position: newPosition }
-        void doCalculate()
-      },
-      {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
-      }
-    )
-    return () => listener.unsubscribe()
-  }, [doCalculate, formulaId, formulaIsNormal, rootId])
-
-  React.useEffect(() => {
-    const listener = BrickdocEventBus.subscribe(
-      FormulaEditorUpdateNameTrigger,
+      FormulaCalculateTrigger,
       e => {
-        nameRef.current = e.payload.name
         void doCalculate()
       },
       {
@@ -542,9 +531,10 @@ export const useFormula = ({
     variableT,
     savedVariableT,
     isDraft: isDraftRef.current,
-    editorContent: editorContentRef.current,
-    name: nameRef.current,
+    editorContentRef,
+    nameRef,
     isDisableSave,
+    updateEditor,
     doHandleSave,
     formulaIsNormal,
     defaultName,

@@ -7,7 +7,7 @@ import { devLog } from '@brickdoc/design-system'
 import { HandleKeyDownExtension } from './extensions/handleKeyDown'
 import './FormulaEditor.less'
 import { FormulaTypeExtension } from './extensions/formulaType'
-import { BrickdocEventBus, FormulaEditorReplaceRootTrigger, FormulaEditorUpdateEventTrigger } from '@brickdoc/schema'
+import { BrickdocEventBus, FormulaEditorReplaceRootTrigger } from '@brickdoc/schema'
 
 export interface EditorContentType {
   content: JSONContent | undefined
@@ -19,6 +19,7 @@ export interface FormulaEditorProps {
   editorContent: EditorContentType
   editable: boolean
   onBlur?: () => void
+  updateEditor?: (content: JSONContent, position: number) => void
   rootId?: string
   formulaId?: string
 }
@@ -26,7 +27,14 @@ export interface FormulaEditorProps {
 const findNearestWord = (content: string, targetIndex: number): string | undefined =>
   content.split(' ').find((word, index) => index + word.length >= targetIndex)
 
-export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorContent, onBlur, rootId, formulaId }) => {
+export const FormulaEditor: React.FC<FormulaEditorProps> = ({
+  editable,
+  editorContent,
+  updateEditor,
+  onBlur,
+  rootId,
+  formulaId
+}) => {
   const editor = useEditor({
     editable,
     autofocus: 'end',
@@ -77,12 +85,9 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({ editable, editorCo
         }
       }
 
-      if (rootId && formulaId) {
+      if (rootId && formulaId && updateEditor) {
         const jsonContent = editor.getJSON()
-        // devLog('formualEditor debug', { jsonContent, editorContent })
-        BrickdocEventBus.dispatch(
-          FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
-        )
+        updateEditor(jsonContent, editorPosition)
       }
     }
   })

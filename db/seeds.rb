@@ -10,7 +10,7 @@
 return if Rails.env.production?
 
 users = 5.times.map do |n|
-  Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com", username: "ADMIN#{n}").tap(&:confirm)
+  Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com", domain: "ADMIN#{n}").tap(&:confirm)
 end
 
 spaces = users.map { |u| u.spaces.first }

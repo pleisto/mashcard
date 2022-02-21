@@ -29,14 +29,15 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
 }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
-  const { variableT, editorContent, handleSelectActiveCompletion, completion, setCompletion } = useFormula({
-    rootId,
-    formulaId,
-    updateFormula,
-    formulaType,
-    formulaName,
-    formulaContext
-  })
+  const { variableT, editorContentRef, handleSelectActiveCompletion, completion, setCompletion, updateEditor } =
+    useFormula({
+      rootId,
+      formulaId,
+      updateFormula,
+      formulaType,
+      formulaName,
+      formulaContext
+    })
 
   const formulaResult = React.useMemo(
     () => (
@@ -62,14 +63,15 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   const editor = React.useMemo(
     () => (
       <FormulaEditor
-        editorContent={editorContent}
+        editorContent={editorContentRef.current}
+        updateEditor={updateEditor}
         editable={true}
         onBlur={onEditorBlur}
         formulaId={formulaId}
         rootId={rootId}
       />
     ),
-    [editorContent, formulaId, onEditorBlur, rootId]
+    [editorContentRef, formulaId, onEditorBlur, rootId, updateEditor]
   )
 
   if (!completion.completions.length && (!variableT || variableT.kind === 'literal')) {
@@ -84,7 +86,8 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
       destroyTooltipOnHide={true}
       content={formulaResult}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {editor}
     </Popover>
   )

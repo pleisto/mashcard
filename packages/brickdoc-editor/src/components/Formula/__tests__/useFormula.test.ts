@@ -1,5 +1,4 @@
 import { FormulaContext, FormulaSourceType, quickInsert, VariableMetadata } from '@brickdoc/formula'
-import { BrickdocEventBus, FormulaEditorUpdateEventTrigger } from '@brickdoc/schema'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { JSONContent } from '@tiptap/core'
 import { buildJSONContentByArray, contentArrayToInput, fetchJSONContentArray } from '../../../helpers'
@@ -332,24 +331,24 @@ describe('useFormula', () => {
     const { result } = renderHook(() => useFormula(spreadsheetInput))
 
     expect(result.current.variableT).toBe(undefined)
-    expect(result.current.editorContent).toEqual({
+    expect(result.current.editorContentRef.current).toEqual({
       content: undefined,
       input: '',
       position: 0
     })
-    expect(result.current.name).toBe(undefined)
+    expect(result.current.nameRef.current).toBe(undefined)
     expect(result.current.defaultName).toBe('var1')
   })
   it('spreadsheet initial', () => {
     const { result } = renderHook(() => useFormula(normalInput))
 
     expect(result.current.variableT).toBe(undefined)
-    expect(result.current.editorContent).toEqual({
+    expect(result.current.editorContentRef.current).toEqual({
       content: undefined,
       input: '',
       position: 0
     })
-    expect(result.current.name).toBe(undefined)
+    expect(result.current.nameRef.current).toBe(undefined)
     expect(result.current.defaultName).toBe('var1')
   })
 
@@ -367,19 +366,17 @@ describe('useFormula', () => {
       ])
 
       act(() => {
-        BrickdocEventBus.dispatch(
-          FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
-        )
+        result.current.updateEditor(jsonContent, editorPosition)
       })
 
       await waitForNextUpdate()
 
       // expect(result.current.editorContentRef.current.position).toEqual(position)
-      if (result.current.editorContent.position !== position) {
+      if (result.current.editorContentRef.current.position !== position) {
         // eslint-disable-next-line jest/no-conditional-expect
-        expect(result.current.editorContent).toMatchSnapshot()
+        expect(result.current.editorContentRef.current).toMatchSnapshot()
       }
-      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
+      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContentRef.current.content))).toEqual(
         newInput ?? input
       )
 
@@ -408,19 +405,17 @@ describe('useFormula', () => {
       ])
 
       act(() => {
-        BrickdocEventBus.dispatch(
-          FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
-        )
+        result.current.updateEditor(jsonContent, editorPosition)
       })
 
       await waitForNextUpdate()
 
       // expect(result.current.editorContentRef.current.position).toEqual(position)
-      if (result.current.editorContent.position !== position) {
+      if (result.current.editorContentRef.current.position !== position) {
         // eslint-disable-next-line jest/no-conditional-expect
-        expect(result.current.editorContent).toMatchSnapshot()
+        expect(result.current.editorContentRef.current).toMatchSnapshot()
       }
-      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
+      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContentRef.current.content))).toEqual(
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         newInput ?? input
       )
@@ -443,20 +438,20 @@ describe('useFormula', () => {
     const jsonContent = buildJSONContentByArray(input.content)
 
     act(() => {
-      BrickdocEventBus.dispatch(
-        FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
-      )
+      result.current.updateEditor(jsonContent, editorPosition)
     })
 
     await waitForNextUpdate()
 
-    expect(result.current.editorContent.position).toEqual(output.position)
+    expect(result.current.editorContentRef.current.position).toEqual(output.position)
     if (output.content === SNAPSHOT_FLAG) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.editorContent.content).toMatchSnapshot()
+      expect(result.current.editorContentRef.current.content).toMatchSnapshot()
     } else {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.editorContent.content).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
+      expect(result.current.editorContentRef.current.content).toEqual(
+        buildJSONContentByArray(output.content as JSONContent[])
+      )
     }
   })
 
@@ -467,20 +462,20 @@ describe('useFormula', () => {
     const jsonContent = buildJSONContentByArray(input.content)
 
     act(() => {
-      BrickdocEventBus.dispatch(
-        FormulaEditorUpdateEventTrigger({ position: editorPosition, content: jsonContent, formulaId, rootId })
-      )
+      result.current.updateEditor(jsonContent, editorPosition)
     })
 
     await waitForNextUpdate()
 
-    expect(result.current.editorContent.position).toEqual(output.position)
+    expect(result.current.editorContentRef.current.position).toEqual(output.position)
     if (output.content === SNAPSHOT_FLAG) {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.editorContent.content).toMatchSnapshot()
+      expect(result.current.editorContentRef.current.content).toMatchSnapshot()
     } else {
       // eslint-disable-next-line jest/no-conditional-expect
-      expect(result.current.editorContent.content).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
+      expect(result.current.editorContentRef.current.content).toEqual(
+        buildJSONContentByArray(output.content as JSONContent[])
+      )
     }
   })
 })

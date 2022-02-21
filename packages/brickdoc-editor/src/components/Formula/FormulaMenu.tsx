@@ -7,7 +7,8 @@ import { EditorContentType, FormulaEditor } from '../../extensions/formula/Formu
 import { FormulaResult } from './FormulaResult'
 import { AutocompleteList } from './AutocompleteList/AutocompleteList'
 import { CompletionType } from './useFormula'
-import { BrickdocEventBus, FormulaEditorUpdateNameTrigger } from '@brickdoc/schema'
+import { BrickdocEventBus, FormulaCalculateTrigger } from '@brickdoc/schema'
+import { JSONContent } from '@tiptap/core'
 
 export interface FormulaMenuProps {
   formulaId: string
@@ -16,9 +17,10 @@ export interface FormulaMenuProps {
   onVisibleChange: (visible: boolean) => void
   variableT?: VariableData
   handleDelete: (variable?: VariableData) => void
-  name: string | undefined
+  nameRef: React.MutableRefObject<string | undefined>
   defaultName: string
-  editorContent: EditorContentType
+  updateEditor: (content: JSONContent, position: number) => void
+  editorContentRef: React.MutableRefObject<EditorContentType>
   isDisableSave: () => boolean
   doHandleSave: () => Promise<void>
   handleSelectActiveCompletion: () => void
@@ -33,24 +35,35 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   formulaId,
   rootId,
   handleDelete,
-  editorContent,
+  editorContentRef,
   defaultVisible,
   onVisibleChange,
   isDisableSave,
   doHandleSave,
   variableT,
   defaultName,
-  name,
+  nameRef,
+  updateEditor,
   handleSelectActiveCompletion,
   completion,
   setCompletion
 }) => {
   const { t } = useEditorI18n()
   const [visible, setVisible] = React.useState(defaultVisible)
+  const [inputName, setInputName] = React.useState(nameRef.current)
 
   const close = (): void => {
     setVisible(false)
     onVisibleChange?.(false)
+  }
+
+  const triggerCalculate = (): void => {
+    BrickdocEventBus.dispatch(
+      FormulaCalculateTrigger({
+        formulaId,
+        rootId
+      })
+    )
   }
 
   const onPopoverVisibleChange = (visible: boolean): void => {
@@ -58,18 +71,16 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       close()
       return
     }
+    triggerCalculate()
     onVisibleChange?.(visible)
     setVisible(visible)
   }
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    BrickdocEventBus.dispatch(
-      FormulaEditorUpdateNameTrigger({
-        name: e.target.value,
-        formulaId,
-        rootId
-      })
-    )
+    const name = e.target.value
+    nameRef.current = name
+    setInputName(name)
+    triggerCalculate()
   }
 
   const handleSave = async (): Promise<void> => {
@@ -89,14 +100,25 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         <div className="formula-menu-item">
           <label className="formula-menu-label">
             <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span>
-            <Input className="formula-menu-field" placeholder={defaultName} value={name} onChange={handleNameChange} />
+            <Input
+              className="formula-menu-field"
+              placeholder={defaultName}
+              value={inputName}
+              onChange={handleNameChange}
+            />
           </label>
         </div>
       </div>
       <div className="formula-menu-row">
         <span className="formula-menu-result-label">=</span>
         <div className="formula-menu-item">
-          <FormulaEditor editorContent={editorContent} editable={true} formulaId={formulaId} rootId={rootId} />
+          <FormulaEditor
+            editorContent={editorContentRef.current}
+            updateEditor={updateEditor}
+            editable={true}
+            formulaId={formulaId}
+            rootId={rootId}
+          />
         </div>
       </div>
       <div className="formula-menu-divider" />
