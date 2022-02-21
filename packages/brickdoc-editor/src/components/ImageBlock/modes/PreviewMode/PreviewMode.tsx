@@ -93,6 +93,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
           >
             {!loaded && (
               <Skeleton
+                uniqueKey={`image-block-skeleton-${node.attrs.uuid}`}
                 type="list"
                 style={
                   node.attrs.image.width
