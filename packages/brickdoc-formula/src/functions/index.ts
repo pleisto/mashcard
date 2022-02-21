@@ -16,11 +16,16 @@ import { CORE_CONVERT_CLAUSES } from './convert'
 import { CORE_ARRAY_CLAUSES } from './array'
 import { CUSTOM_CLAUSES } from './custom'
 
-export const buildFunctionKey = (group: FunctionGroup, name: FunctionNameType): FunctionKey => {
+export const buildFunctionKey = (
+  group: FunctionGroup,
+  name: FunctionNameType,
+  disableUpcase?: boolean
+): FunctionKey => {
+  const upcaseName = disableUpcase ? name : name.toUpperCase()
   if (group === 'core') {
-    return name
+    return upcaseName
   }
-  return `${group}::${name}`
+  return `${group}::${upcaseName}`
 }
 
 export const BUILTIN_CLAUSES: Array<BasicFunctionClause<any>> = [

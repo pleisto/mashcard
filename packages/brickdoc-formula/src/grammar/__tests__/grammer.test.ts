@@ -267,8 +267,10 @@ const testCases: TestCase[] = [
     value: 24
   },
   {
-    input: `=#${barNamespaceId}.bar`,
-    value: 24
+    input: `=#${barNamespaceId}.Bar`,
+    label: 'variable name is case sensitive',
+    parseErrorType: 'syntax',
+    errorMessage: 'Variable "Bar" not found'
   },
   {
     input: `=bar`,
@@ -681,6 +683,16 @@ const testCases: TestCase[] = [
     parseErrorType: 'syntax',
     errorMessage: 'Function UNKNOWN not found'
   },
+  // Case insensitive
+  {
+    input: '=if(true, 1+2, "2")',
+    label: 'Case insensitive',
+    value: 3
+  },
+  {
+    input: '=Abs(-1) + abs(1) + ABS(1)',
+    value: 3
+  },
   // Access
   {
     input: '=1.a',
@@ -835,12 +847,6 @@ const testCases: TestCase[] = [
     label: 'type check',
     parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
-  },
-  {
-    input: '=if(true, 1+2, "2")',
-    parseErrorType: 'syntax',
-    label: 'downcase',
-    errorMessage: 'Function if not found'
   },
   {
     input: '=1; 2; (1+3)',

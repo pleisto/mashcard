@@ -1121,7 +1121,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
     const clause = this.ctx.formulaContext.findFunctionClause(group, name)
 
-    const functionKey = buildFunctionKey(group, name)
+    const functionKey = buildFunctionKey(group, name, true)
 
     const nameFragment: CodeFragment = {
       value: functionKey,

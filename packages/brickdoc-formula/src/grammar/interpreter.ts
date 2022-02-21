@@ -922,7 +922,7 @@ export class FormulaInterpreter extends BaseCstVisitor {
 
     const clause = this.ctx.formulaContext.findFunctionClause(group, name)
 
-    const functionKey = buildFunctionKey(group, name)
+    const functionKey = buildFunctionKey(group, name, true)
 
     if (!clause) {
       throw new Error(`Function ${functionKey} not found`)
