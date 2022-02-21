@@ -15,7 +15,7 @@ interface PageTrashProps {
 
 export const PageTrash: React.FC<PageTrashProps> = ({ domain, docid, search, visible, setVisible }) => {
   const { t } = useDocsI18n()
-  const { list, getKey, addList } = useList<Block>()
+  const { list, getKey, addList, resetList } = useList<Block>()
 
   const input: GetTrashBlocksQueryVariables = React.useMemo(
     () => ({
@@ -27,8 +27,8 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, docid, search, vis
   )
 
   const { data, loading, refetch } = useGetTrashBlocksQuery({ variables: input })
-
   React.useEffect(() => {
+    resetList([])
     addList(data?.trashBlocks as Block[])
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
