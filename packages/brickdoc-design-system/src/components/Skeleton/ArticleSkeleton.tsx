@@ -10,11 +10,12 @@ const ArticleSkeleton: FC<ArticleSkeletonProps> = props => {
 
   return (
     <ContentLoader
-      width={width}
-      height={height}
+      speed={2}
+      width="100%"
+      height="100%"
       viewBox={`0 0 ${width} ${height}`}
-      backgroundColor="#eaeced"
-      foregroundColor="#ffffff"
+      backgroundColor="#E0E0E0"
+      foregroundColor="#ecebeb"
     >
       <rect x="42" y="57" rx="4" ry="4" width="417" height="29" />
       <rect x="42" y="105" rx="4" ry="4" width="67" height="15" />
