@@ -16,6 +16,7 @@ export default defineConfig({
       }
     }),
     VitePWA({
+      injectRegister: 'script',
       manifest: {
         name: 'BrickDoc',
         theme_color: '#ffffff',

@@ -6,6 +6,7 @@ import { useAccountsI18n } from '@/accounts/common/hooks'
 import { Button, useBoolean, Box } from '@brickdoc/design-system'
 import { MoreAuthMethods } from './components/MoreAuthMethods'
 import { EmailPasswordSignIn } from './components/EmailPasswordSignIn'
+import { isLoadingVar } from '@/common/reactiveVars'
 
 export const SignInPage: React.FC = () => {
   const { t } = useAccountsI18n()
@@ -17,9 +18,8 @@ export const SignInPage: React.FC = () => {
     if (!loading && preferredAuthMethod.name === AuthMethod.EmailPassword) enableEmailPwdSignIn()
   })
 
-  if (loading) {
-    return <></>
-  }
+  isLoadingVar(loading)
+  if (loading) return <></>
 
   const otherAuthMethods = renderEmailPasswordForm
     ? // skip EmailPassword if emailPassword has been rendered.

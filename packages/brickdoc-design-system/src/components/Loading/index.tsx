@@ -14,7 +14,10 @@ const Launcher = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: theme.colors.white
+  backgroundColor: theme.colors.white,
+  position: 'fixed',
+  inset: 0,
+  zIndex: theme.zIndices.loading
 })
 
 export const Loading: React.FC<LoadingProps> = ({ delayDuration, style, className }) => {

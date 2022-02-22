@@ -1,18 +1,20 @@
 import { Suspense, FC, useContext } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useErrorNotification } from '@/common/hooks'
-import { ApolloProvider } from '@apollo/client'
+import { ApolloProvider, useReactiveVar } from '@apollo/client'
 import { Loading, globalStyle, Provider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
 import { withProfiler } from '@sentry/react'
+import { isLoadingVar } from '@/common/reactiveVars'
 
 export const App: FC = () => {
   // Inject global styles
   globalStyle()
 
   const context = useContext(BrickdocContext)
+  const isLoading = useReactiveVar(isLoadingVar)
 
   useErrorNotification(context.serverMessage)
 
@@ -22,6 +24,7 @@ export const App: FC = () => {
         <Provider>
           <ApolloProvider client={apolloClient}>
             <HelmetProvider>
+              {isLoading && <Loading />}
               <RootRoutes />
             </HelmetProvider>
           </ApolloProvider>

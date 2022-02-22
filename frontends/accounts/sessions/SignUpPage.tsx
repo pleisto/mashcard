@@ -16,6 +16,7 @@ import { Form, Input, Button, toast, useBoolean } from '@brickdoc/design-system'
 import { Trans } from 'react-i18next'
 import { ConfirmationEmailTips } from './components/ConfirmationEmailTips'
 import { useEmailAvailableValidator } from '@/common/hooks/useEmailAvailableValidator'
+import { isLoadingVar } from '@/common/reactiveVars'
 
 export const SignUpPage: React.FC = () => {
   const [didShowConfirmationEmailTips, { setTrue: showConfirmationEmailTips }] = useBoolean(false)
@@ -84,7 +85,9 @@ export const SignUpPage: React.FC = () => {
   })
 
   // Loading Status
-  if (configLoading || sessionLoading) {
+  const loading = configLoading || sessionLoading
+  isLoadingVar(loading)
+  if (loading) {
     return <></>
   }
 

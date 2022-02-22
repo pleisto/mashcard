@@ -24,7 +24,9 @@
     <%= vite_react_refresh_tag %>
     <%= vite_typescript_tag 'entrypoints/application.tsx' %>
     <%= vite_stylesheet_bundle_tag %>
-
+    <% if Rails.env.production? %>
+    <script src="/esm-bundle/registerSW.js"></script>
+    <% end %>
 
   </head>
   <body style="overflow-y: hidden">
@@ -38,7 +40,7 @@
   gtag('js', new Date());
   gtag('config', 'G-8D93T65J3Z'<%= ", {
     'user_id': '#{ Current.user&.hashed_id}'
-    });".html_safe if current_user.present? %>);
+    }".html_safe if current_user.present? %>);
   </script>
   <% end %>
   </body>
