@@ -5,6 +5,13 @@ on:
   push:
     tags:
       - 'v**-saas'
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
 env:
   image: ghcr.io/brickdoc/brickdoc-saas
   domain: brickdoc.com
@@ -84,28 +91,37 @@ jobs:
           service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-central'
+          location: 'us-central1'
       - name: 'Deploy to GKE'
         run: |-
           helm upgrade brickdoc-prod ${{ github.workspace }}/tools/helm-charts/brickdoc \
            --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=saas \
-            --set image.name=${{ env.image }}:${{ steps.get_version.outputs.VERSION }} \
-            --set ingress.domain=${{ env.domain }} \
+            --set-string image.name=${{ env.image }}:${{ steps.get_version.outputs.VERSION }} \
+            --set-string ingress.domain=${{ env.domain }} \
             --set serviceAccount.create=false \
-            --set serviceAccount.name=saas-main-app \
-            --set envs.SMTP_FROM=saas-no-reply@push-service.brickdoc.com \
-            --set envs.SENTRY_DSN=https://f44be883f4d7479bb089213767508c1a@o1150336.ingest.sentry.io/6223078 \
-            --set envs.HOST=${{ env.domain }} \
-            --set envs.ASSET_HOST=https://s3.brickapis.com/globalcdn/brickdoc-saas-prod \
-            --set envs.BRICKDOC_BUILD=${{ github.sha }}.saas-prod \
-            --set envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
-            --set envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/global/keyRings/global-saas/cryptoKeys/sass-master-key \
-            --set secrets.SECRET_KEY_SEED=${{ secrets.SAAS_PROD_SECRET_KEY_SEED }} \
-            --set secrets.BRICKDOC_DATABASE_URL=${{ secrets.SAAS_PROD_POSTGRE_URL }} \
-            --set secrets.REDIS_URL=${{ secrets.SAAS_PROD_REDIS_URL }} \
-            --set secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
-            --set secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
-            --set secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.SAAS_PROD_IFRAMELY_API_ACCESS_KEY }} \
-            --set secrets.SECURITY_REVERSIBLE_INT_INVERSE=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_INVERSE }} \
-            --set secrets.SECURITY_REVERSIBLE_INT_RANDOM=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_RANDOM }} \
-            --set secrets.SECURITY_REVERSIBLE_INT_PRIME=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_PRIME }} \
-            --set secrets.SMTP_URL=${{ secrets.SAAS_PROD_SMTP_URL }}
+            --set-string serviceAccount.name=saas-main-app \
+            --set-string envs.SMTP_FROM=saas-no-reply@push-service.brickdoc.com \
+            --set-string envs.SENTRY_DSN=https://f44be883f4d7479bb089213767508c1a@o1150336.ingest.sentry.io/6223078 \
+            --set-string envs.HOST=${{ env.domain }} \
+            --set-string envs.ASSET_HOST=https://s3.brickapis.com/globalcdn/brickdoc-saas-prod \
+            --set-string envs.BRICKDOC_BUILD=${{ github.sha }}.saas-prod \
+            --set-string envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
+            --set-string envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/global/keyRings/global-saas/cryptoKeys/sass-master-key \
+            --set-string secrets.SECRET_KEY_SEED=${{ secrets.SAAS_PROD_SECRET_KEY_SEED }} \
+            --set-string secrets.BRICKDOC_DATABASE_URL=${{ secrets.SAAS_PROD_POSTGRE_URL }} \
+            --set-string secrets.REDIS_URL=${{ secrets.SAAS_PROD_REDIS_URL }} \
+            --set-string secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
+            --set-string secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
+            --set-string secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.SAAS_PROD_IFRAMELY_API_ACCESS_KEY }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_INVERSE=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_INVERSE }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_RANDOM=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_RANDOM }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_PRIME=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_PRIME }} \
+            --set-string secrets.SMTP_URL=${{ secrets.SAAS_PROD_SMTP_URL }} \
+            --set-string secrets.GOOGLE_OAUTH2_ID=${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_ID }} \
+            --set-string secrets.GOOGLE_OAUTH2_SECRET=${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}

@@ -58,7 +58,10 @@ module Brickdoc
           url: url,
           logger: Rails.logger,
           db: DB_MAPPING[db],
-          namespace: "#{Rails.env}:brickdoc:#{db}"
+          namespace: "#{Rails.env}:brickdoc:#{db}",
+          ssl_params: {
+            verify_mode: OpenSSL::SSL::VERIFY_NONE
+          }
         }
       end
     end
