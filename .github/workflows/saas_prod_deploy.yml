@@ -75,7 +75,7 @@ jobs:
     name: 'Deployment to GKE'
     environment:
       name: production
-      url: ${{ env.domain }}
+      url: https://${{ env.domain }}
     runs-on: ubuntu-latest
     needs: build
     steps:
