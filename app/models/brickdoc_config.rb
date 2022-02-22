@@ -114,7 +114,7 @@ class BrickdocConfig < ApplicationRecord
     public_bucket: ENV['GCS_PUBLIC_BUCKET']
   }
 
-  field :user_agreement_link, type: :string, default: 'https://www.contributor-covenant.org/version/2/0/code_of_conduct/'
+  field :user_agreement_link, type: :string, default: 'https://help.brickdoc.com/en/articles/5971105-terms-of-service'
 
   # Accounts
   field :accounts_email_password_auth, type: :boolean, default: true
@@ -131,6 +131,6 @@ class BrickdocConfig < ApplicationRecord
 
   # helpdesk Knowledge Base
   field :kb_articles, type: :hash, default: {
-    changing_domain: 'https://brickdoc.zendesk.com/hc/todo'
+    changing_domain: 'https://help.brickdoc.com/en/articles/5972616-brickdoc-username-policy'
   }, frontend: true
 end

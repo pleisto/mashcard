@@ -56,6 +56,7 @@ module Brickdoc
       def params(db)
         {
           url: url,
+          id: nil,
           logger: Rails.logger,
           db: DB_MAPPING[db],
           namespace: "#{Rails.env}:brickdoc:#{db}",
