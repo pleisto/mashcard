@@ -94,7 +94,9 @@ class BrickdocConfig < ApplicationRecord
 
   # Rails.application.config.active_storage.service
   field :active_storage_service, default: (
-    if Rails.env.test?
+    if ENV['GOOGLE_CLOUD_PROJECT'].present?
+      'gcs_privtae'
+    elsif Rails.env.test?
       "test"
     else
       (Rails.env.development? ? "local" : "amazon_private")
@@ -105,6 +107,11 @@ class BrickdocConfig < ApplicationRecord
     region: ENV['AWS_REGION'],
     public_bucket: ENV['AWS_PUBLIC_BUCKET'],
     private_bucket: ENV['AWS_PRIVATE_BUCKET']
+  }
+
+  field :gcs_config, type: :hash, symbolize_keys: true, default: {
+    private_bucket: ENV['GCS_PRIVATE_BUCKET'],
+    public_bucket: ENV['GCS_PUBLIC_BUCKET']
   }
 
   field :user_agreement_link, type: :string, default: 'https://www.contributor-covenant.org/version/2/0/code_of_conduct/'

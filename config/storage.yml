@@ -27,6 +27,18 @@ amazon_public:
   region: <%= BrickdocConfig.amazon_private_config[:region] %>
   public: true
   bucket: <%= BrickdocConfig.amazon_private_config[:public_bucket] %>
+
+gcs_privtae:
+  service: GCS
+  cache_control: private, max-age=0
+  iam: true
+  bucket: <%= BrickdocConfig.gcs_config[:private_bucket] %>
+
+gcs_public:
+  service: GCS
+  cache_control: public, max-age=3600
+  iam: true
+  bucket: <%= BrickdocConfig.gcs_config[:public_bucket] %>
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

@@ -7,7 +7,8 @@ on:
       - 'v**-saas'
 env:
   image: ghcr.io/brickdoc/brickdoc-saas
-  domain: brickdoc.app
+  domain: brickdoc.com
+  GCP_PROJECT: golden-union-341912
 jobs:
   build:
     name: 'Build and Push Docker Image'
@@ -64,7 +65,7 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deploy:
-    name: 'Deployment to BAE'
+    name: 'Deployment to GKE'
     environment:
       name: production
       url: ${{ env.domain }}
@@ -76,36 +77,35 @@ jobs:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      - name: Deployment to App Engine
-        uses: brickdoc/app-engine@v1.2
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
         with:
-          name: brickdoc-saas-prod
-          namespace: saas
-          image: ${{ env.image }}:${{ steps.get_version.outputs.VERSION }}
-          host: ${{ env.domain }}
-          chart: ${{ github.workspace }}/tools/helm-charts/brickdoc
-          extraArgs: '--timeout 15m --cleanup-on-fail'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_PROD_AK }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_PROD_SECRET }}
-          AWS_DEFAULT_REGION: us-west-2
-          AWS_EKS_CLUSTER: prod-kube
-          APP_ENV_SECRET_KEY_SEED_DECODER: aws_kms
-          APP_SECRET_SECRET_KEY_SEED: ${{ secrets.SAAS_PROD_SECRET_KEY_SEED }}
-          APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.SAAS_PROD_POSTGRE_URL }}
-          APP_SECRET_REDIS_URL: ${{ secrets.SAAS_PROD_REDIS_URL }}
-          APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
-          APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
-          APP_SECRET_IFRAMELY_API_ACCESS_KEY: ${{ secrets.IFRAMELY_API_ACCESS_KEY }}
-          APP_SECRET_SECURITY_REVERSIBLE_INT_INVERSE: ${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_INVERSE }}
-          APP_SECRET_SECURITY_REVERSIBLE_INT_RANDOM: ${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_RANDOM }}
-          APP_SECRET_SECURITY_REVERSIBLE_INT_PRIME: ${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_PRIME }}
-          APP_ENV_SMTP_FROM: saas-no-reply@push-service.brickdoc.com
-          APP_ENV_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          APP_SECRET_SMTP_URL: ${{ secrets.SAAS_PROD_SMTP_URL }}
-          APP_ENV_HOST: ${{ env.domain }}
-          APP_ENV_ASSET_HOST: https://s3.brickapis.com/globalcdn/brickdoc-saas-prod
-          APP_ENV_BRICKDOC_BUILD: ${{ github.sha }}.saas-prod
-          APP_ENV_AWS_REGION: us-west-2
-          APP_ENV_AWS_PUBLIC_BUCKET: brickdoc-prod-public
-          APP_ENV_AWS_PRIVATE_BUCKET: brickdoc-prod-private
+          workload_identity_provider: 'projects/909250635156/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - name: 'Deploy to GKE'
+        run: |-
+          helm upgrade brickdoc-prod ${{ github.workspace }}/tools/helm-charts/brickdoc \
+           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=saas \
+            --set image.name=${{ env.image }}:${{ steps.get_version.outputs.VERSION }} \
+            --set ingress.domain=${{ env.domain }} \
+            --set serviceAccount.create=false \
+            --set serviceAccount.name=saas-main-app \
+            --set envs.SMTP_FROM=saas-no-reply@push-service.brickdoc.com \
+            --set envs.SENTRY_DSN=https://f44be883f4d7479bb089213767508c1a@o1150336.ingest.sentry.io/6223078 \
+            --set envs.HOST=${{ env.domain }} \
+            --set envs.ASSET_HOST=https://s3.brickapis.com/globalcdn/brickdoc-saas-prod \
+            --set envs.BRICKDOC_BUILD=${{ github.sha }}.saas-prod \
+            --set envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
+            --set envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/global/keyRings/global-saas/cryptoKeys/sass-master-key \
+            --set secrets.SECRET_KEY_SEED=${{ secrets.SAAS_PROD_SECRET_KEY_SEED }} \
+            --set secrets.BRICKDOC_DATABASE_URL=${{ secrets.SAAS_PROD_POSTGRE_URL }} \
+            --set secrets.REDIS_URL=${{ secrets.SAAS_PROD_REDIS_URL }} \
+            --set secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
+            --set secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
+            --set secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.SAAS_PROD_IFRAMELY_API_ACCESS_KEY }} \
+            --set secrets.SECURITY_REVERSIBLE_INT_INVERSE=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_INVERSE }} \
+            --set secrets.SECURITY_REVERSIBLE_INT_RANDOM=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_RANDOM }} \
+            --set secrets.SECURITY_REVERSIBLE_INT_PRIME=${{ secrets.SAAS_PROD_SECURITY_REVERSIBLE_INT_PRIME }} \
+            --set secrets.SMTP_URL=${{ secrets.SAAS_PROD_SMTP_URL }}

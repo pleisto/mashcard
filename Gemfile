@@ -32,6 +32,8 @@ gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '>= 1.13.0'
 
 gem 'aws-sdk-s3', '~> 1', '>= 1.111.3'
+gem 'google-cloud-storage', '~> 1.36', '>= 1.36.1'
+gem 'google-cloud-kms', '~> 2.3'
 
 # Feature toggles
 gem 'flipper', '~> 0.23.1'

@@ -7,7 +7,9 @@ module System
     field :direct_upload, Objects::DirectUpload, null: false
 
     SERVICE_MAP =
-      if Rails.env.in?(["development", "test"])
+      if ENV['GOOGLE_CLOUD_PROJECT'].present?
+        { "AVATAR" => :gcs_public, "DOC" => :gcs_privtae, "THIRD" => :gcs_public }
+      elsif Rails.env.in?(["development", "test"])
         { "AVATAR" => :local_public, "DOC" => :local_private, "THIRD" => :local_public }
       else
         { "AVATAR" => :amazon_public, "DOC" => :amazon_private, "THIRD" => :amazon_public }
@@ -22,7 +24,14 @@ module System
 
       block_id = args[:block_id] || "global"
       key = "#{current_space.fetch('id_hash')}/#{block_id}/#{ActiveStorage::Blob.generate_unique_secure_token}_#{input[:filename]}"
-
+      todo = new_input.merge(
+        key: key,
+        operation_type: type,
+        space_id: current_space.fetch('id'),
+        user_id: current_user.id,
+        block_id: args[:block_id]
+      )
+      puts todo.to_json
       # https://github.com/rails/rails/blob/main/activestorage/app/models/active_storage/blob.rb#L116
       blob = ActiveStorage::Blob.create!(
         new_input.merge(

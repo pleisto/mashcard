@@ -35,8 +35,6 @@ Rails.application.reloader.to_prepare do
 
   ## ActiveStorage
   Rails.application.config.active_storage.service = BrickdocConfig.active_storage_service.to_sym
-  Rails.application.config.active_storage.analyzers.delete ActiveStorage::Analyzer::VideoAnalyzer
-  Rails.application.config.active_storage.analyzers.delete ActiveStorage::Analyzer::ImageAnalyzer
   Rails.application.config.active_storage.draw_routes = false
   ActiveStorage.draw_routes = false
 
