@@ -20,7 +20,7 @@ export interface FormulaMenuProps {
   nameRef: React.MutableRefObject<string | undefined>
   defaultName: string
   updateEditor: (content: JSONContent, position: number) => void
-  editorContentRef: React.MutableRefObject<EditorContentType>
+  editorContent: EditorContentType
   isDisableSave: () => boolean
   doHandleSave: () => Promise<void>
   handleSelectActiveCompletion: () => void
@@ -35,7 +35,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   formulaId,
   rootId,
   handleDelete,
-  editorContentRef,
+  editorContent,
   defaultVisible,
   onVisibleChange,
   isDisableSave,
@@ -113,7 +113,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         <span className="formula-menu-result-label">=</span>
         <div className="formula-menu-item">
           <FormulaEditor
-            editorContent={editorContentRef.current}
+            editorContent={editorContent}
             updateEditor={updateEditor}
             editable={true}
             formulaId={formulaId}

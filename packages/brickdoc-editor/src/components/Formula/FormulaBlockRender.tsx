@@ -29,7 +29,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
 }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
-  const { variableT, editorContentRef, handleSelectActiveCompletion, completion, setCompletion, updateEditor } =
+  const { variableT, editorContent, handleSelectActiveCompletion, completion, setCompletion, updateEditor } =
     useFormula({
       rootId,
       formulaId,
@@ -63,7 +63,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   const editor = React.useMemo(
     () => (
       <FormulaEditor
-        editorContent={editorContentRef.current}
+        editorContent={editorContent}
         updateEditor={updateEditor}
         editable={true}
         onBlur={onEditorBlur}
@@ -71,17 +71,15 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
         rootId={rootId}
       />
     ),
-    [editorContentRef, formulaId, onEditorBlur, rootId, updateEditor]
+    [editorContent, formulaId, onEditorBlur, rootId, updateEditor]
   )
 
-  if (!completion.completions.length && (!variableT || variableT.kind === 'literal')) {
-    return editor
-  }
+  const visible = !!(variableT && variableT.kind !== 'literal')
 
   return (
     <Popover
       defaultVisible={true}
-      visible={true}
+      visible={visible}
       className="brickdoc-formula-menu-popover"
       destroyTooltipOnHide={true}
       content={formulaResult}

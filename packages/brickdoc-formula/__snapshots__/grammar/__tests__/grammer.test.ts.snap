@@ -2687,6 +2687,31 @@ Array [
 ]
 `;
 
+exports[`Simple test case [js precision] =123123123123123123123 // => 123123123123123130000 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "123123123123123123123",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "123123123123123123123",
+  },
+]
+`;
+
 exports[`Simple test case [lex error when parse "hel"lo" => parseError] = "hel"lo" // => ✗ 1`] = `
 Array [
   Object {

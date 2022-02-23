@@ -42,7 +42,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
     doHandleSave,
     updateEditor,
     defaultName,
-    editorContentRef,
+    editorContent,
     handleSelectActiveCompletion,
     completion,
     setCompletion
@@ -80,7 +80,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
       <FormulaMenu
         rootId={rootId}
         formulaId={formulaId}
-        editorContentRef={editorContentRef}
+        editorContent={editorContent}
         defaultVisible={defaultVisible}
         onVisibleChange={handleDefaultPopoverVisibleChange}
         updateEditor={updateEditor}

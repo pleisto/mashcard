@@ -37,6 +37,11 @@ const testCases: TestCase[] = [
     value: 33
   },
   {
+    input: '=123123123123123123123',
+    label: 'js precision',
+    value: 123123123123123130000
+  },
+  {
     input: '= 1 + 1 - 1',
     value: 1
   },
