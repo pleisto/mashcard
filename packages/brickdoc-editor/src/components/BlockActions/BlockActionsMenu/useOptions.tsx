@@ -54,7 +54,7 @@ export function useOptions(
       {
         type: 'group',
         items: [
-          BLOCK.TEXT,
+          BLOCK.PARAPGRAPH,
           BLOCK.FORMULA,
           BLOCK.SPREADSHEET,
           BLOCK.UPLOAD,

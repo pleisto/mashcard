@@ -16,20 +16,22 @@ exports[`PageLink matches correct snapshot 1`] = `
     class="text"
     href="/link"
   >
-    <span
-      aria-label=""
-      class="brickdoc-page-link-block-icon"
-      role="img"
-    >
-      icon
-      <i
-        data-testid="mock-icon-ArrowShortcut"
-      />
-    </span>
-    <span
-      class="brickdoc-page-link-block-name"
-    >
-      title
+    <span>
+      <span
+        aria-label=""
+        class="brickdoc-page-link-block-icon"
+        role="img"
+      >
+        icon
+        <i
+          data-testid="mock-icon-ArrowShortcut"
+        />
+      </span>
+      <span
+        class="brickdoc-page-link-block-name"
+      >
+        title
+      </span>
     </span>
   </a>
   <span

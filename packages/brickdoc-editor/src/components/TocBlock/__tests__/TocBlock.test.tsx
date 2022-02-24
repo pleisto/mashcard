@@ -23,7 +23,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h1[0],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h1[0]
+        }
+      ],
       attrs: {
         level: 1
       },
@@ -33,7 +40,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h2[0],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h2[0]
+        }
+      ],
       attrs: {
         level: 2
       },
@@ -43,7 +57,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h5[1],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h5[1]
+        }
+      ],
       attrs: {
         level: 5
       },
@@ -53,7 +74,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h1[1],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h1[1]
+        }
+      ],
       attrs: {
         level: 1
       },
@@ -63,7 +91,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h3[0],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h3[0]
+        }
+      ],
       attrs: {
         level: 3
       },
@@ -73,7 +108,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h4[0],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h4[0]
+        }
+      ],
       attrs: {
         level: 4
       },
@@ -83,7 +125,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h5[0],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h5[0]
+        }
+      ],
       attrs: {
         level: 5
       },
@@ -93,7 +142,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h2[1],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h2[1]
+        }
+      ],
       attrs: {
         level: 2
       },
@@ -103,7 +159,14 @@ describe('TocBlock', () => {
       type: {
         name: 'text'
       },
-      textContent: anchor[0],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: anchor[0]
+        }
+      ],
       marks: [
         {
           type: {
@@ -117,7 +180,14 @@ describe('TocBlock', () => {
       type: {
         name: 'heading'
       },
-      textContent: h1[2],
+      content: [
+        {
+          type: {
+            name: 'text'
+          },
+          text: h1[2]
+        }
+      ],
       attrs: {
         level: 1
       },

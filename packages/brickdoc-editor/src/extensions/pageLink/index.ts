@@ -1,6 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { PageLink } from '../../components'
+import { name } from './name'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -22,7 +23,7 @@ declare module '@tiptap/core' {
 export interface PageLinkBlockOptions {}
 
 export const PageLinkBlockExtension = Node.create<PageLinkBlockOptions>({
-  name: 'pageLinkBlock',
+  name,
 
   inline: true,
 

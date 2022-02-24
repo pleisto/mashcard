@@ -10,7 +10,7 @@ export interface TocBlockProps extends NodeViewProps {}
 
 export interface TocItem {
   level: 'root' | 1 | 2 | 3 | 4 | 5 | 'text'
-  text?: string
+  content?: React.ReactNode
   nodeSize: number
   position: number
 }

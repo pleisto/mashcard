@@ -11,7 +11,7 @@ import {
 import { FormulaBlockRender } from '../Formula/FormulaBlockRender'
 import { displayValue, VariableClass, VariableData } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
-import { FormulaRender } from '../Formula/FormulaRender'
+import { FormulaDisplay } from '../Formula/FormulaDisplay'
 import { devLog } from '@brickdoc/design-system'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
 
@@ -149,7 +149,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
 
   return (
     <div className="cell" onDoubleClick={handleEnterEdit}>
-      <FormulaRender t={currentBlock.data.t} formulaType="spreadsheet" />
+      <FormulaDisplay t={currentBlock.data.t} formulaType="spreadsheet" />
     </div>
   )
 }

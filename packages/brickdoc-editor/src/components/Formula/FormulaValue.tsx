@@ -1,6 +1,6 @@
 import React from 'react'
 import { displayValue, resultToColorType, VariableResult } from '@brickdoc/formula'
-import './FormulaMenu.less'
+import './FormulaBlockRender.less'
 import { FORMULA_COLORS } from '../../helpers'
 import { css, cx } from '@brickdoc/design-system'
 

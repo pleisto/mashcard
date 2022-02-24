@@ -12,17 +12,19 @@ exports[`User matches correct snapshot 1`] = `
   >
      
   </span>
-  <span
-    class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-lhlSdI-size-sm brd-c-cdJFWN-idZPaNd-css brickdoc-user-block-avatar"
-  >
-    <img
-      src="avatarUrl"
-    />
-  </span>
-  <span
-    class="brickdoc-user-block-name"
-  >
-    name
+  <span>
+    <span
+      class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-lhlSdI-size-sm brd-c-cdJFWN-idZPaNd-css brickdoc-user-block-avatar"
+    >
+      <img
+        src="avatarUrl"
+      />
+    </span>
+    <span
+      class="brickdoc-user-block-name"
+    >
+      name
+    </span>
   </span>
   <span
     class="brd-c-bbClCh"

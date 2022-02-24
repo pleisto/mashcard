@@ -1,6 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { User } from '../../components'
+import { name } from './name'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -17,7 +18,7 @@ declare module '@tiptap/core' {
 export interface UserBlockOptions {}
 
 export const UserBlockExtension = Node.create<UserBlockOptions>({
-  name: 'userBlock',
+  name,
 
   inline: true,
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tocTree create normally toc tree correctly 1`] = `
+exports[`tocTree create toc tree correctly 1`] = `
 Object {
   "children": Array [
     Object {
@@ -10,28 +10,40 @@ Object {
             Object {
               "children": Array [],
               "item": Object {
+                "content": Array [
+                  <React.Fragment>
+                    h5\`
+                  </React.Fragment>,
+                ],
                 "level": 5,
                 "nodeSize": 1,
                 "position": 3,
-                "text": "h5\`",
               },
               "parent": [Circular],
             },
           ],
           "item": Object {
+            "content": Array [
+              <React.Fragment>
+                h2
+              </React.Fragment>,
+            ],
             "level": 2,
             "nodeSize": 1,
             "position": 2,
-            "text": "h2",
           },
           "parent": [Circular],
         },
       ],
       "item": Object {
+        "content": Array [
+          <React.Fragment>
+            h1
+          </React.Fragment>,
+        ],
         "level": 1,
         "nodeSize": 1,
         "position": 1,
-        "text": "h1",
       },
       "parent": [Circular],
     },
@@ -44,28 +56,40 @@ Object {
                 Object {
                   "children": Array [],
                   "item": Object {
+                    "content": Array [
+                      <React.Fragment>
+                        h5
+                      </React.Fragment>,
+                    ],
                     "level": 5,
                     "nodeSize": 1,
                     "position": 7,
-                    "text": "h5",
                   },
                   "parent": [Circular],
                 },
               ],
               "item": Object {
+                "content": Array [
+                  <React.Fragment>
+                    h4
+                  </React.Fragment>,
+                ],
                 "level": 4,
                 "nodeSize": 1,
                 "position": 6,
-                "text": "h4",
               },
               "parent": [Circular],
             },
           ],
           "item": Object {
+            "content": Array [
+              <React.Fragment>
+                h3
+              </React.Fragment>,
+            ],
             "level": 3,
             "nodeSize": 1,
             "position": 5,
-            "text": "h3",
           },
           "parent": [Circular],
         },
@@ -74,38 +98,99 @@ Object {
             Object {
               "children": Array [],
               "item": Object {
+                "content": Array [
+                  <React.Fragment>
+                    anchor
+                  </React.Fragment>,
+                ],
                 "level": "text",
                 "nodeSize": 1,
                 "position": 9,
-                "text": "anchor",
               },
               "parent": [Circular],
             },
           ],
           "item": Object {
+            "content": null,
             "level": 2,
             "nodeSize": 1,
             "position": 8,
-            "text": undefined,
           },
           "parent": [Circular],
         },
       ],
       "item": Object {
+        "content": Array [
+          <React.Fragment>
+            h1\`
+          </React.Fragment>,
+        ],
         "level": 1,
         "nodeSize": 1,
         "position": 4,
-        "text": "h1\`",
       },
       "parent": [Circular],
     },
     Object {
       "children": Array [],
       "item": Object {
+        "content": Array [
+          <React.Fragment>
+            h1\`\`
+          </React.Fragment>,
+        ],
         "level": 1,
         "nodeSize": 1,
         "position": 10,
-        "text": "h1\`\`",
+      },
+      "parent": [Circular],
+    },
+  ],
+  "item": Object {
+    "level": "root",
+    "nodeSize": 1,
+    "position": 0,
+  },
+}
+`;
+
+exports[`tocTree renders tree node content correctly 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [],
+      "item": Object {
+        "content": Array [
+          <React.Fragment>
+            heading
+          </React.Fragment>,
+          <React.Fragment>
+            <PageLinkRender
+              attributes={
+                Object {
+                  "pageLink": Object {
+                    "title": "title",
+                  },
+                }
+              }
+            />
+          </React.Fragment>,
+          <React.Fragment>
+            <UserRender
+              attributes={
+                Object {
+                  "people": Object {
+                    "domain": "domain",
+                    "name": "name",
+                  },
+                }
+              }
+            />
+          </React.Fragment>,
+        ],
+        "level": 1,
+        "nodeSize": 1,
+        "position": 0,
       },
       "parent": [Circular],
     },

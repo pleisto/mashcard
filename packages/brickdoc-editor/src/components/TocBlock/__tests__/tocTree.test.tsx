@@ -20,7 +20,56 @@ describe('tocTree', () => {
     expect(tree.children).toHaveLength(0)
   })
 
-  it('create normally toc tree correctly', () => {
+  it('renders tree node content correctly', () => {
+    const nodes: any[] = [
+      {
+        type: {
+          name: 'heading'
+        },
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: 'heading'
+          },
+          {
+            type: {
+              name: 'pageLinkBlock'
+            },
+            attrs: {
+              pageLink: {
+                title: 'title'
+              }
+            }
+          },
+          {
+            type: {
+              name: 'userBlock'
+            },
+            attrs: {
+              people: {
+                name: 'name',
+                domain: 'domain'
+              }
+            }
+          }
+        ],
+        attrs: {
+          level: 1
+        },
+        nodeSize: 1
+      }
+    ]
+
+    const doc = buildDoc(nodes)
+
+    const [tree] = initialTocTree(doc)
+
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('create toc tree correctly', () => {
     const h1 = ['h1', 'h1`', 'h1``']
     const h2 = ['h2']
     const h3 = ['h3']
@@ -45,7 +94,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h1[0],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h1[0]
+          }
+        ],
         attrs: {
           level: 1
         },
@@ -55,7 +111,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h2[0],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h2[0]
+          }
+        ],
         attrs: {
           level: 2
         },
@@ -65,7 +128,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h5[1],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h5[1]
+          }
+        ],
         attrs: {
           level: 5
         },
@@ -75,7 +145,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h1[1],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h1[1]
+          }
+        ],
         attrs: {
           level: 1
         },
@@ -85,7 +162,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h3[0],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h3[0]
+          }
+        ],
         attrs: {
           level: 3
         },
@@ -95,7 +179,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h4[0],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h4[0]
+          }
+        ],
         attrs: {
           level: 4
         },
@@ -105,7 +196,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h5[0],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h5[0]
+          }
+        ],
         attrs: {
           level: 5
         },
@@ -115,7 +213,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h2[1],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h2[1]
+          }
+        ],
         attrs: {
           level: 2
         },
@@ -125,7 +230,14 @@ describe('tocTree', () => {
         type: {
           name: 'text'
         },
-        textContent: anchor[0],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: anchor[0]
+          }
+        ],
         marks: [
           {
             type: {
@@ -139,7 +251,14 @@ describe('tocTree', () => {
         type: {
           name: 'heading'
         },
-        textContent: h1[2],
+        content: [
+          {
+            type: {
+              name: 'text'
+            },
+            text: h1[2]
+          }
+        ],
         attrs: {
           level: 1
         },
@@ -152,7 +271,6 @@ describe('tocTree', () => {
 
     expect(count).toBe(nodes.length - 1)
     expect(tree.children.map(item => item.item.level)).toEqual([1, 1, 1])
-    expect(tree.children.map(item => item.item.text)).toEqual(h1)
     expect(tree).toMatchSnapshot()
   })
 })

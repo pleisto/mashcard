@@ -61,7 +61,7 @@ export interface BlockCommandItem {
   insertBlockAt: (chain: ChainedCommands, position: number) => ChainedCommands
 }
 
-export const TEXT: BlockCommandItem = {
+export const PARAPGRAPH: BlockCommandItem = {
   key: 'text',
   blockType: Paragraph.name,
   squareIcon: <TextStyle square={true} />,
@@ -250,7 +250,7 @@ export const SUB_PAGE_MENU: BlockCommandItem = {
 }
 
 export const BLOCK = {
-  TEXT,
+  PARAPGRAPH,
   FORMULA,
   SPREADSHEET,
   UPLOAD,
@@ -270,7 +270,7 @@ export const BLOCK = {
 }
 
 export const ORDER_NEW_BLOCK: BlockItemKey[] = [
-  TEXT.key,
+  PARAPGRAPH.key,
   FORMULA.key,
   SPREADSHEET.key,
   UPLOAD.key,
@@ -290,7 +290,7 @@ export const ORDER_NEW_BLOCK: BlockItemKey[] = [
 ]
 
 export const ORDER_TOGGLE_BLOCK: BlockItemKey[] = [
-  TEXT.key,
+  PARAPGRAPH.key,
   HEADING_1.key,
   HEADING_2.key,
   HEADING_3.key,

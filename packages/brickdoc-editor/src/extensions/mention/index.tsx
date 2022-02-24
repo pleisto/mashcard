@@ -8,6 +8,7 @@ import { MentionCommandsMenu, MentionCommandsMenuProps } from '../../components'
 import { PageItem } from '../../components/MentionMenu/PagePanel'
 import { PeopleItem } from '../../components/MentionMenu/PeoplePanel'
 import { EditorDataSource } from '../../dataSource/DataSource'
+import { name } from './name'
 
 const TRIGGER_CHAR = '@'
 
@@ -21,7 +22,7 @@ export interface MentionCommandsOptions {
 }
 
 export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>({
-  name: 'mentionCommands',
+  name,
 
   addProseMirrorPlugins() {
     const filterMenuItemsByQuery = ({ query }: { query: string }): MenuItems => {

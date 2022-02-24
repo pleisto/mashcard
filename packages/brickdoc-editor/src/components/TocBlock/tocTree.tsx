@@ -1,11 +1,44 @@
+import React from 'react'
 import { Editor } from '@tiptap/core'
+import Text from '@tiptap/extension-text'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { TocItem } from './TocBlock'
+import { name as UserBlockName } from '../../extensions/user/name'
+import { name as PageLinkName } from '../../extensions/pageLink/name'
+import { name as FormulaName } from '../../extensions/formula/name'
+import { UserRender } from '../User'
+import { PageLinkRender } from '../PageLink'
+import { FormulaRender } from '../../extensions/formula/FormulaBlock'
 
 export interface TocNode {
   parent?: TocNode
   children: TocNode[]
   item: TocItem
+}
+
+const createContentFromNode = (node: ProsemirrorNode): React.ReactNode => {
+  const content: React.ReactNode[] = []
+  node.content.forEach(node => {
+    switch (node.type.name) {
+      case Text.name:
+        content.push(node.text ?? null)
+        break
+      case UserBlockName:
+        content.push(<UserRender attributes={node.attrs} />)
+        break
+      case PageLinkName:
+        content.push(<PageLinkRender attributes={node.attrs} />)
+        break
+      case FormulaName:
+        content.push(<FormulaRender attributes={node.attrs as any} />)
+        break
+      default:
+        break
+    }
+  })
+
+  if (content.filter(i => i).length === 0) return null
+  return content.map((node, index) => <React.Fragment key={index}>{node}</React.Fragment>)
 }
 
 const findTocNode = (node: ProsemirrorNode, pos: number): TocNode | undefined => {
@@ -15,7 +48,7 @@ const findTocNode = (node: ProsemirrorNode, pos: number): TocNode | undefined =>
       item: {
         level: node.attrs.level,
         position: pos,
-        text: node.textContent,
+        content: createContentFromNode(node),
         nodeSize: node.nodeSize
       }
     }
@@ -24,7 +57,7 @@ const findTocNode = (node: ProsemirrorNode, pos: number): TocNode | undefined =>
       children: [],
       item: {
         level: 'text',
-        text: node.textContent,
+        content: createContentFromNode(node),
         position: pos,
         nodeSize: node.nodeSize
       }
