@@ -8,6 +8,23 @@ import { useActionOptions } from '../useActionOptions'
 import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmentMethods'
 import './PreviewMode.less'
 import { BlockContainer } from '../../../../components'
+import { Skeleton, styled } from '@brickdoc/design-system'
+
+const containerHeight = '29.5rem'
+
+const PreviewContainer = styled('div', {
+  height: containerHeight,
+  variants: {
+    ready: {
+      false: {
+        height: 0
+      },
+      true: {
+        height: containerHeight
+      }
+    }
+  }
+})
 
 export interface PreviewModeProps extends Omit<UseAttachmentMethodsProps, 'webViewer'> {
   deleteNode: NodeViewProps['deleteNode']
@@ -24,6 +41,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
   ...attachmentMethodsProps
 }) => {
   const viewer = React.useRef<HTMLDivElement>(null)
+  const [documentReady, setDocumentReady] = React.useState(false)
   const [viewerInstance, setViewerInstance] = React.useState<WebViewerInstance>()
   React.useEffect(() => {
     void WebViewer(
@@ -37,6 +55,10 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
     ).then(instance => {
       setViewerInstance(instance)
       instance.UI.setFitMode(instance.UI.FitMode.FitWidth)
+      const { documentViewer } = instance.Core
+      documentViewer.addEventListener('documentLoaded', () => {
+        setDocumentReady(true)
+      })
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -62,7 +84,8 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
       actionOptions={actionOptions}
     >
       <div data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id} className="brickdoc-pdftron-block">
-        <div ref={viewer} className="brickdoc-pdftron-container" />
+        {!documentReady && <Skeleton height={containerHeight} />}
+        <PreviewContainer ref={viewer} ready={documentReady} />
         <div className="brickdoc-pdftron-info">
           <FileIcon className="brickdoc-pdftron-info-icon" fileType={fileType} />
           {fileName}
