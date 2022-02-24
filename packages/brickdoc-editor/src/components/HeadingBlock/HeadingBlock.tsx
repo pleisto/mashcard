@@ -1,8 +1,13 @@
 import React from 'react'
 import { NodeViewContent, NodeViewProps } from '@tiptap/react'
+import { css } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
 
 export interface HeadingBlockProps extends NodeViewProps {}
+
+const h1ActionButtonStyle = css({
+  marginTop: '.5rem'
+})
 
 export const HeadingBlock: React.FC<HeadingBlockProps> = ({ node, deleteNode, getPos }) => {
   const as = React.useMemo(() => {
@@ -21,9 +26,23 @@ export const HeadingBlock: React.FC<HeadingBlockProps> = ({ node, deleteNode, ge
     }
   }, [node.attrs.level])
 
+  const actionButtonClassName = React.useMemo(() => {
+    switch (Number(node.attrs.level)) {
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        return ''
+      case 1:
+      default:
+        return h1ActionButtonStyle()
+    }
+  }, [node.attrs.level])
+
   return (
     <BlockContainer
       actionOptions={['copy', 'delete', 'transform']}
+      actionButtonClassName={actionButtonClassName}
       getPos={getPos}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}

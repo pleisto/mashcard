@@ -8,11 +8,16 @@ const Pseudo = styled('span', {
   width: '1px'
 })
 
+interface Options {
+  inline: boolean
+  disableActionOptions: boolean
+  blockActionClassName?: string
+}
+
 export function useBlockElement(
   originElement: React.ReactNode,
   actionOptions: BlockContainerProps['actionOptions'],
-  inline: boolean,
-  disableActionOptions: boolean
+  { inline, disableActionOptions, blockActionClassName }: Options
 ): [React.ReactNode] {
   let blockElement = originElement
   if (inline) {
@@ -34,7 +39,11 @@ export function useBlockElement(
   }, [actionOptions, disableActionOptions])
 
   if ((blockActionProps?.options?.length ?? 0) > 0) {
-    blockElement = <BlockActions {...blockActionProps!}>{blockElement}</BlockActions>
+    blockElement = (
+      <BlockActions buttonClassName={blockActionClassName} {...blockActionProps!}>
+        {blockElement}
+      </BlockActions>
+    )
   }
 
   return [blockElement]

@@ -15,16 +15,36 @@ export interface BlockContainerProps {
   style?: React.CSSProperties
   as?: NodeViewWrapperProps['as']
   actionOptions?: BlockActionsProps['options'] | BlockActionsProps
+  actionButtonClassName?: BlockActionsProps['buttonClassName']
   contentForCopy?: string
   ref?: any
 }
 
 export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HTMLElement, BlockContainerProps>(
-  ({ children, inline, as, style, actionOptions, deleteNode, editable, getPos, contentForCopy, ...props }, ref) => {
+  (
+    {
+      children,
+      inline,
+      as,
+      actionButtonClassName,
+      style,
+      actionOptions,
+      deleteNode,
+      editable,
+      getPos,
+      contentForCopy,
+      ...props
+    },
+    ref
+  ) => {
     const [insideList, setInsideList] = React.useState(false)
     const [blockContextData] = useBlockContextDataProvider({ deleteNode, getPos, contentForCopy, insideList })
     const [documentEditable] = useDocumentEditable(editable)
-    const [blockElement] = useBlockElement(children, actionOptions, inline ?? false, insideList)
+    const [blockElement] = useBlockElement(children, actionOptions, {
+      inline: inline ?? false,
+      disableActionOptions: insideList,
+      blockActionClassName: actionButtonClassName
+    })
     const asElement = as ?? (inline ? 'span' : undefined)
     const innerRef = React.useRef<HTMLElement | null>(null)
 

@@ -15,7 +15,7 @@ exports[`HeadingBlock matches snapshot correctly 1`] = `
     />
     <button
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg brd-c-glpRAv"
       role="button"
       tabindex="0"
       type="button"
