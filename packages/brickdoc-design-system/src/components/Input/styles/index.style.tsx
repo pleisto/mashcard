@@ -31,7 +31,7 @@ export const inputStyle = css({
     width: '100%',
     display: 'inline-block',
     '&::placeholder': {
-      color: theme.colors.typeDisabled
+      color: theme.colors.typeThirdary
     }
   },
   'input:focus-visible': {

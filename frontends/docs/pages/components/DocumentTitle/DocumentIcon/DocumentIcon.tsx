@@ -1,6 +1,5 @@
-import { Button } from '@brickdoc/design-system'
 import * as React from 'react'
-import styles from './DocumentIcon.module.less'
+import { Root, EmojiIcon, ImageIcon } from './DocumentIcon.style'
 import { BlockEmoji, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 
 interface DocumentIconImage extends BlockImage {
@@ -24,15 +23,17 @@ export const DocumentIcon: React.FC<DocumentIconProps> = ({ documentIconMeta, on
   if (!documentIconMeta) return null
 
   return (
-    <Button type="text" className={styles.icon} onClick={onClick}>
+    <Root type="unstyled" onClick={onClick}>
       {documentIconMeta.type === Blocktype.Emoji && (
-        <span className={styles.emoji} aria-label={documentIconMeta.name}>
-          {documentIconMeta.emoji}
-        </span>
+        <EmojiIcon aria-label={documentIconMeta.name}>{documentIconMeta.emoji}</EmojiIcon>
       )}
       {documentIconMeta.type === Blocktype.Image && (
-        <div className={styles.image} style={{ backgroundImage: `url("${getDocIconUrl() ?? localUrl ?? ''}")` }} />
+        <ImageIcon
+          css={{
+            backgroundImage: `url("${getDocIconUrl() ?? localUrl ?? ''}")`
+          }}
+        />
       )}
-    </Button>
+    </Root>
   )
 }
