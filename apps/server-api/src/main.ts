@@ -4,6 +4,8 @@ import { ConfigService } from '@nestjs/config'
 import { Logger } from '@nestjs/common'
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
 import { loadInitializers } from './common/initializers'
+import { MicroserviceOptions } from '@nestjs/microservices'
+import { grpcClientOptions } from './anti-corruption/grpc/grpc-client.options'
 
 /**
  * Create Server Application instance.
@@ -13,6 +15,10 @@ async function startServer(): Promise<void> {
 
   // load initializers
   await loadInitializers(app)
+
+  // anti-corruption layer grpc service
+  app.connectMicroservice<MicroserviceOptions>(grpcClientOptions)
+  await app.startAllMicroservices()
 
   const configService = app.get(ConfigService)
   const port = configService.get<number>('application.port')!

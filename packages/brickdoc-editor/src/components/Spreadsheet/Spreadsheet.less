@@ -1,5 +1,3 @@
-@import '@brickdoc/design-system/src/legacy-components/style/themes';
-
 @table-header-color: #908B9C;       // palette/type/thirdary
 @table-bg: rgba(0, 0, 0, 3%);       // palette/type/thirdary
 @table-border-color: #BDBDBD;       // palette/type/thirdary
@@ -206,7 +204,7 @@
             text-align: center;
             padding: 0;
             &:focus {
-              color: @deep-purple-9;
+              color: var(--brd-colors-deepPurple9);
             }
           }
           .column-action {
@@ -246,7 +244,7 @@
           border-color: @table-select-border-color;
           user-select: none;
         }
-        
+
       }
     }
     .brickdoc-spreadsheet-block {

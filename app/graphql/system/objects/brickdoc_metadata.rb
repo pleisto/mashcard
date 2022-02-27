@@ -11,10 +11,12 @@ module System
       field :config, BrickdocConfig, 'Brickdoc Global Config', null: false
 
       def available_locales
+        # GrpcService.metadata.supportedLocales.map{ |i| {label: i.description, value: i.tag } }
         Brickdoc::I18n::AVAILABLE_LANGUAGES.map { |k, v| { label: v, value: k } }
       end
 
       def available_timezones
+        # GrpcService.metadata.supportedTimezones
         TZInfo::Timezone.all_identifiers
       end
 

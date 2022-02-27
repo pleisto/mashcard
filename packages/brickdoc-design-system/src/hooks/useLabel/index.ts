@@ -1,24 +1,25 @@
-import { AriaLabelingProps, DOMProps, LabelableProps } from '@react-types/shared'
-import { ElementType, LabelHTMLAttributes } from 'react'
+import { ElementType, HTMLAttributes, LabelHTMLAttributes, ReactNode } from 'react'
 import { useId } from '../useId'
-
 /**
  * Formed from https://github.com/adobe/react-spectrum
  * Copyright 2020 Adobe | Apache License
  */
-export interface LabelAriaProps extends LabelableProps, DOMProps, AriaLabelingProps {
+export interface LabelAriaProps extends HTMLAttributes<HTMLElement> {
   /**
    * The HTML element used to render the label, e.g. 'label', or 'span'.
    * @default 'label'
    */
   labelElementType?: ElementType
+
+  /** The content to display as the label. */
+  label?: ReactNode
 }
 
 export interface LabelAria {
   /** Props to apply to the label container element. */
   labelProps: LabelHTMLAttributes<HTMLLabelElement>
   /** Props to apply to the field container element being labeled. */
-  fieldProps: AriaLabelingProps & DOMProps
+  fieldProps: HTMLAttributes<HTMLElement>
 }
 
 /**
@@ -27,7 +28,7 @@ export interface LabelAria {
  * @param defaultLabel - Default value for aria-label when not present.
  * @see https://github.com/adobe/react-spectrum/blob/main/packages/@react-aria/utils/src/useLabels.ts
  */
-export function useLabels(props: DOMProps & AriaLabelingProps, defaultLabel?: string): DOMProps & AriaLabelingProps {
+export function useLabels(props: LabelAriaProps, defaultLabel?: string): HTMLAttributes<HTMLElement> {
   let { id, 'aria-label': label, 'aria-labelledby': labelledBy } = props
 
   // If there is both an aria-label and aria-labelledby,

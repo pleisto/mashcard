@@ -7,7 +7,7 @@ on:
 env:
   # GitHub-hosted runner have 7 gb RAM.
   # 5250mb === 7gb * 0.75
-  NODE_OPTIONS: '--max-old-space-size=5250'
+  NODE_OPTIONS: '--max-old-space-size=5950'
 jobs:
   es:
     name: ECMAScript
@@ -36,7 +36,7 @@ jobs:
           cache: yarn
       - name: Run yarn install
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn install --immutable
+        run: yarn install --immutable  --inline-builds
         env:
           CYPRESS_INSTALL_BINARY: '0'
       - name: Run TypeScript checks

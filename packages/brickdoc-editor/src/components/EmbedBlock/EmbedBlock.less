@@ -1,9 +1,7 @@
-@import '@brickdoc/design-system/src/legacy-components/style/themes';
-
 .brickdoc-link-block-placeholder {
   width: 100%;
   background: #f9f9f9;
-  border: 1px dashed @border-color-base;
+  border: 1px dashed var(--brd-colors-grey3);
   border-radius: 4px;
   display: flex;
   flex-direction: row;
@@ -157,7 +155,7 @@
       color: #292333;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: box;
+      display: flex;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       white-space: normal;
@@ -171,7 +169,7 @@
       color: #847e8e;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: box;
+      display: flex;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       white-space: normal;

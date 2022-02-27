@@ -4,6 +4,7 @@
   "extends": "./tsconfig.shared.json",
   "compilerOptions": {
     "outDir": "dist",
+    "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["frontends/*"]

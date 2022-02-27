@@ -1,11 +1,10 @@
-@import '@brickdoc/design-system/src/legacy-components/style/themes/index';
 .topBar {
   display: flex;
   flex-direction: row;
   align-items: center;
   // justify-content: flex-end;
   justify-content: space-between;
-  height: @layout-header-height;
+  height: 56px;
 
   .menu {
     display: flex;
@@ -24,7 +23,7 @@
       font-size: 18px;
       svg {
         path {
-          fill: @text-color-secondary;
+          fill: var(--brd-colors-typeSecondary);
         }
       }
       &:hover {

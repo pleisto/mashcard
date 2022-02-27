@@ -41,7 +41,7 @@
     "@tiptap/react": "^2.0.0-beta.108",
     "@tiptap/suggestion": "^2.0.0-beta.86",
     "popper-max-size-modifier": "^0.2.0",
-    "re-resizable": "^6.9.1",
+    "re-resizable": "^6.9.2",
     "react-dnd": "^15.1.1",
     "react-dnd-html5-backend": "^15.1.2",
     "react-medium-image-zoom": "^4.3.5",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@types/react-pdf": "^5.0.9",
-    "i18next": "^21.6.11",
+    "i18next": "^21.6.12",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.5.5"

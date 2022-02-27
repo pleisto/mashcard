@@ -43,7 +43,7 @@ env:
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
   # GitHub-hosted runner have 7 gb RAM.
   # 5250mb === 7gb * 0.75
-  NODE_OPTIONS: '--max-old-space-size=5250'
+  NODE_OPTIONS: '--max-old-space-size=5950'
 
 jobs:
   jest:
@@ -234,9 +234,9 @@ jobs:
             app\/graphql
             lib\/brick_graphql
             graphql.ts$
-      - name: Dump the graphql schema
+      - name: Dump the graphql schema & GRPC schema
         if: steps.changed-gql-typeds.outputs.any_changed == 'true'
-        run: yarn install --immutable && yarn graphql
+        run: yarn install --immutable && yarn graphql && yarn grpc
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
         run: bundle exec rails db:prepare db:schema:dump

@@ -105,12 +105,12 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.7'
-  # Spring speeds up development by keeping your appli
-  # cation running in the background. Read more: https://github.com/rails/spring
   gem 'annotate'
 
   # vsocode ruby solargraph
   gem 'solargraph', require: false
+
+  gem 'grpc-tools', '~> 0.14.1.pre1', require: false
 end
 
 # Plugin dependencies

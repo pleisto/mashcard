@@ -5,9 +5,9 @@
   "sideEffects": false,
   "module": "./src/index.ts",
   "dependencies": {
-    "@angular-devkit/core": "^13.2.4",
-    "@angular-devkit/schematics": "^13.2.4",
-    "@angular-devkit/schematics-cli": "^13.2.4",
+    "@angular-devkit/core": "^13.2.5",
+    "@angular-devkit/schematics": "^13.2.5",
+    "@angular-devkit/schematics-cli": "^13.2.5",
     "@brickdoc/dotenv": "workspace:^",
     "chalk": "4.1.2",
     "enquirer": "^2.3.6",

@@ -5,8 +5,6 @@ import { security } from './security'
 import { application } from './application'
 import { envFilePath } from '@brickdoc/dotenv'
 
-console.log(999, envFilePath, process.cwd())
-
 /**
  * Options for `ConfigModule.forRoot`
  */

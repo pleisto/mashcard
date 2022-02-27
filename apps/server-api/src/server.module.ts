@@ -2,11 +2,12 @@ import { Module, OnApplicationShutdown } from '@nestjs/common'
 import { PinoLogger } from 'nestjs-pino'
 import { CommonModule } from './common/common.module'
 import { CoreModule } from './core/core.module'
+import { AntiCorruptionModule } from './anti-corruption/anti-corruption.module'
 /**
  * The root module of the server application.
  */
 @Module({
-  imports: [CommonModule, CoreModule]
+  imports: [CommonModule, CoreModule, AntiCorruptionModule]
 })
 export class ServerModule implements OnApplicationShutdown {
   constructor(private readonly logger: PinoLogger) {

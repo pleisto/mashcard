@@ -1,11 +1,9 @@
-@import '@brickdoc/design-system/src/legacy-components/style/themes/index';
-
 .formula-autocomplete {
   display: flex;
   flex-direction: row;
   align-items: center;
   background: #fcfcfa;
-  border: 1px solid @border-color-base;
+  border: 1px solid var(--brd-colors-grey3);
   border-radius: 4px;
   // height: 148px;
   height: 280px;
@@ -131,7 +129,7 @@
 
     background: #dde4ff;
     border-color: #c0cdff;
-    color: @primary-color;
+    color: var(--brd-colors-primaryDefault);
   }
 
   .autocomplete-preview-output-tag {
@@ -157,7 +155,7 @@
 
   .autocomplete-preview-code-section {
     background: #fff;
-    border: 1px solid @border-color-base;
+    border: 1px solid var(--brd-colors-grey3);
     border-radius: 4px;
     padding: 6px 12px;
     font-size: 14px;
@@ -166,10 +164,6 @@
 
   .formula-autocomplete-preview-variable {
     padding: @preview-padding;
-
-    .autocomplete-preview-definition {
-      // .autocomplete-preview-code-section();
-    }
   }
 
   .formula-autocomplete-preview-function {

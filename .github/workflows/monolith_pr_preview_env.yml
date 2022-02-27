@@ -36,6 +36,7 @@ jobs:
       - run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: '0'
+          NODE_OPTIONS: '--max-old-space-size=5950'
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

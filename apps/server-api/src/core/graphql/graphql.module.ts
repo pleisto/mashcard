@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { GraphQLModule as ApolloGraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { ConfigService } from '@nestjs/config'
 import { AppEnv } from '../../common/config/application'
 import { join } from 'path/posix'
@@ -16,7 +17,8 @@ import { join } from 'path/posix'
         debug: configService.get('application.env') !== AppEnv.Production,
         path: '/.internal-apis/$graph',
         autoSchemaFile: join(process.cwd(), 'db/schema.gql'),
-        playground: false
+        playground: false,
+        plugins: [ApolloServerPluginLandingPageLocalDefault()]
       })
     })
   ]
