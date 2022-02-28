@@ -125,8 +125,8 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
           BrickdocEventBus.dispatch(BlockSynced(b))
         })
       }
-    } catch {
-      // Ignored
+    } catch (e) {
+      console.error(e)
     } finally {
       committing.current = false
     }

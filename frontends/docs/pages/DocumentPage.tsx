@@ -3,7 +3,7 @@ import { Skeleton } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
-import { useDocumentSubscription, useSyncProvider } from './hooks'
+import { useSyncProvider } from './hooks'
 import { blocksToJSONContents } from '../common/blocks'
 import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
@@ -32,11 +32,11 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
     [docMeta.id, docMeta.snapshotVersion]
   )
 
-  const { rootBlock, data, loading, refetch, onDocSave } = useSyncProvider(queryVariables)
+  const { rootBlock, data, loading, onDocSave } = useSyncProvider(queryVariables)
 
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
-  const [documentEditable, setDocumentEditable] = useDocumentEditable(freeze ?? false, docMeta, currentRootBlock)
+  const [documentEditable] = useDocumentEditable(freeze ?? false, docMeta, currentRootBlock)
 
   const editorDataSource = useEditorDataSource({
     docMeta,
@@ -66,13 +66,13 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   // due to #914, to reduce conflicts, temporarily disable subscription for documents in presentation mode
   if (docMeta.snapshotVersion === 0 && !freeze) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useDocumentSubscription({
-      docid: docMeta.id as string,
-      editor,
-      setDocumentEditable,
-      refetchDocument: refetch
-    })
+    // Fix #1155
+    // useDocumentSubscription({
+    //   docid: docMeta.id as string,
+    //   editor,
+    //   setDocumentEditable,
+    //   refetchDocument: refetch
+    // })
   }
 
   if (loading || docMeta.documentInfoLoading) {
