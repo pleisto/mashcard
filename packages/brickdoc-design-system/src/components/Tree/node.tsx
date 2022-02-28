@@ -215,7 +215,12 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
           }}
           data-test-id="indent"
         />
-        <TreeRoot.PageItem data-test-id="page-item">
+        <TreeRoot.PageItem
+          data-test-id="page-item"
+          css={{
+            width: `calc(100% - ${rem(`${16 * indent}px`)})`
+          }}
+        >
           <TreeRoot.ItemContent data-test-id="item-content">
             <TreeRoot.Content data-test-id="content">
               {hasChildren || hasEmptyNode ? (
