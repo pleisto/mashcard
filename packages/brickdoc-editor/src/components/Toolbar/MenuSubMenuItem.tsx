@@ -97,6 +97,7 @@ export const ToolbarMenuSubMenuItem: React.FC<ToolbarMenuSubMenuItemProps> = ({ 
       compact={true}
       getPopupContainer={element => element}
       content={MenuContent}
+      destroyTooltipOnHide={true}
     >
       {hasContent && <ToolbarMenuItem option={option} />}
       {!hasContent && (
