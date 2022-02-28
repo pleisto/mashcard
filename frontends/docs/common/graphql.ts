@@ -236,6 +236,7 @@ export const BlockDuplicate = gql`
   mutation blockDuplicate($input: BlockDuplicateInput!) {
     blockDuplicate(input: $input) {
       id
+      formulaIds
       errors
     }
   }

@@ -13,7 +13,7 @@ RSpec.describe Docs::Block, type: :model do
     expect(block.descendants_raw.count).to eq(5)
     expect(block.descendants.count).to eq(3)
 
-    new_id = block.duplicate!
+    new_id = block.duplicate!.fetch('id')
     new_block = Docs::Block.find(new_id)
     new_title = I18n.t('docs.duplicate.new_title', title: block.text)
 
@@ -42,7 +42,7 @@ RSpec.describe Docs::Block, type: :model do
     expect(block.descendants_raw.count).to eq(3)
     expect(block.descendants.count).to eq(2)
 
-    new_id = block.duplicate!
+    new_id = block.duplicate!.fetch('id')
     new_block = Docs::Block.find(new_id)
 
     expect(new_block.descendants_raw.count).to eq(3)
@@ -56,7 +56,7 @@ RSpec.describe Docs::Block, type: :model do
     sub_block1 = create(:docs_block, space: block.space, parent: block, id: SecureRandom.uuid)
     _sub_block2 = create(:docs_block, space: block.space, parent: block, id: SecureRandom.uuid)
 
-    new_id = sub_block1.duplicate!
+    new_id = sub_block1.duplicate!.fetch('id')
     new_block = Docs::Block.find(new_id)
 
     expect(new_block.parent_id).to eq(block.id)

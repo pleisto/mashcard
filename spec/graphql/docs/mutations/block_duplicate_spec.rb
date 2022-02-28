@@ -8,6 +8,7 @@ describe Docs::Mutations::BlockDuplicate, type: :mutation do
       mutation blockDuplicate($input: BlockDuplicateInput!) {
         blockDuplicate(input: $input) {
           id
+          formulaIds
           errors
         }
       }

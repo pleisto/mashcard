@@ -4,14 +4,11 @@ module Docs
     argument :id, BrickGraphQL::Scalars::UUID, 'block unique id', required: true
 
     field :id, BrickGraphQL::Scalars::UUID, null: false
+    field :formula_ids, [BrickGraphQL::Scalars::UUID], null: false
 
     def resolve(id:)
       block = Docs::Block.find(id)
-      id = block.duplicate!
-
-      {
-        'id' => id
-      }
+      block.duplicate!
     rescue => e
       raise BrickGraphQL::Errors::ArgumentError, e.message
     end

@@ -14,12 +14,12 @@ enum AuthMethod {
   email_password
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   github
 
   """
-  Federated Authentication
+   Federated Authentication
   """
   google_oauth2
 }
@@ -249,6 +249,7 @@ type BlockDuplicatePayload {
   Errors encountered during execution of the mutation.
   """
   errors: [String!]!
+  formulaIds: [UUID!]!
   id: UUID!
 }
 
@@ -1692,6 +1693,7 @@ type RootMutation {
   ): UserAppearanceUpdatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userConfirmationEmailResend(
@@ -1702,6 +1704,7 @@ type RootMutation {
   ): UserConfirmationEmailResendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userCreate(
@@ -1712,6 +1715,7 @@ type RootMutation {
   ): UserCreatePayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userDestroy(
@@ -1722,6 +1726,7 @@ type RootMutation {
   ): UserDestroyPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userEmailPasswordSignIn(
@@ -1732,6 +1737,7 @@ type RootMutation {
   ): UserEmailPasswordSignInPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userForgetPasswordMailSend(
@@ -1742,6 +1748,7 @@ type RootMutation {
   ): UserForgetPasswordMailSendPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userPasswordReset(
@@ -1752,6 +1759,7 @@ type RootMutation {
   ): UserPasswordResetPayload
 
   """
+
   Required `context[:entrypoints]` is `[:internal]`.
   """
   userSignOut(
@@ -1841,6 +1849,7 @@ type RootQuery {
     List all formulas for space domain
     """
     domain: String!
+    ids: String
   ): [Formula!]
 
   """

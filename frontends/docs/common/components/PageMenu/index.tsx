@@ -25,7 +25,9 @@ import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import styles from './styles.module.less'
 import { DocMeta } from '@/docs/pages/DocumentContentPage'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
-import { editorVar } from '@/docs/reactiveVars'
+import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
+import { useFormulaQuery } from '@/docs/pages/hooks'
+import { appendFormulas } from '@brickdoc/formula'
 
 type UUID = Scalars['UUID']
 
@@ -51,6 +53,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const navigate = useNavigate()
   const client = useApolloClient()
   const editor = useReactiveVar(editorVar)
+  const formulaContext = useReactiveVar(FormulaContextVar)
+
   const [popoverVisible, setPopoverVisible] = React.useState(false)
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
   const [copied, setCopied] = React.useState<boolean>(false)
@@ -138,9 +142,20 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     setPopoverVisible(false)
   }
 
-  const duDuplicate = async (): Promise<void> => {
+  const getFormulas = useFormulaQuery()
+
+  const doDuplicate = async (): Promise<void> => {
     const input = { id: pageId }
-    await blockDuplicate({ variables: { input } })
+    const { data } = await blockDuplicate({ variables: { input } })
+    const formulaIds = data?.blockDuplicate?.formulaIds ?? []
+
+    if (formulaContext && formulaIds.length) {
+      void getFormulas(domain, formulaIds.join(',')).then(({ data, success }) => {
+        if (!success) return
+        appendFormulas(formulaContext, data ?? [])
+      })
+    }
+
     setDropdownVisible(false)
   }
 
@@ -203,7 +218,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         void doCopyLink()
         break
       case 'duplicate':
-        void duDuplicate()
+        void doDuplicate()
         break
       case 'rename':
         // TODO focus and select all
@@ -260,8 +275,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
-      className={styles.title}
-    >
+      className={styles.title}>
       <Link to={linkPath}>{title}</Link>
     </Popover>
   )
@@ -276,8 +290,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         trigger={['contextMenu']}
         overlay={menu}
         visible={dropdownVisible}
-        onVisibleChange={onDropdownVisibleChange}
-      >
+        onVisibleChange={onDropdownVisibleChange}>
         <div className={styles.menu}>
           {linkData}
           <div>
@@ -292,8 +305,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
                 type="text"
                 onClick={onPressAddSubPage}
                 loading={createBlockLoading}
-                disabled={createBlockLoading}
-              >
+                disabled={createBlockLoading}>
                 <Icon.Add />
               </Button>
             </Tooltip>

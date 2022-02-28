@@ -45,8 +45,8 @@ export const FormulaDelete = gql`
 `
 
 export const queryFormulas = gql`
-  query GetFormulas($domain: String!) {
-    formulas(domain: $domain) {
+  query GetFormulas($domain: String!, $ids: String) {
+    formulas(domain: $domain, ids: $ids) {
       id
       name
       cacheValue

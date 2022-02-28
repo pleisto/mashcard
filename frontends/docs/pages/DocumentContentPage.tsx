@@ -132,16 +132,12 @@ export const DocumentContentPage: React.FC = () => {
     }
   }, [data, docid, host, isAnonymous, loading, personalDomain, loginDomain, snapshotVersion, state, t, domain])
 
-  const getFormulas = useFormulaQuery(docMeta)
+  const getFormulas = useFormulaQuery()
   const backendActions = useFormulaBackendActions()
 
   React.useEffect(() => {
     const formulaNames: FormulaName[] = []
-    const formulaContext = new FormulaContext({
-      backendActions,
-      formulaNames,
-      features: featureFlags
-    })
+    const formulaContext = new FormulaContext({ backendActions, formulaNames, features: featureFlags })
     void getFormulas(domain).then(({ data, success }) => {
       if (!success) return
       appendFormulas(formulaContext, data ?? [])

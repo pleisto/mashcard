@@ -5,8 +5,8 @@ require 'rails_helper'
 describe Docs::Queries::Formulas, type: :query do
   describe '#resolver' do
     query = <<-'GRAPHQL'
-      query GetFormulas($domain: String!) {
-        formulas(domain: $domain) {
+      query GetFormulas($domain: String!, $ids: String) {
+        formulas(domain: $domain, ids: $ids) {
           id
           name
           cacheValue

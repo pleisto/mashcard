@@ -1,25 +1,15 @@
-import React from 'react'
 import {
   GetFormulasDocument,
   GetFormulasQueryVariables as Variables,
   GetFormulasQuery as Query
 } from '@/BrickdocGraphQL'
-import { DocMeta } from '../DocumentContentPage'
 import { useImperativeQuery } from '@/common/hooks'
 
-export function useFormulaQuery(docMeta: DocMeta) {
-  const blockId = React.useRef(docMeta.id)
+export function useFormulaQuery() {
   const query = useImperativeQuery<Query, Variables>(GetFormulasDocument)
 
-  React.useEffect(() => {
-    blockId.current = docMeta.id
-  }, [docMeta.id])
-
-  return async (domain: string) => {
-    const { data, error } = await query({ domain })
-    return {
-      success: !error,
-      data: data.formulas
-    }
+  return async (domain: string, ids?: string) => {
+    const { data, error } = await query(ids ? { domain, ids } : { domain })
+    return { success: !error, data: data.formulas }
   }
 }

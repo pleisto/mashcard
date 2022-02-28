@@ -321,7 +321,12 @@ class Docs::Block < ApplicationRecord
       descendants_ids_map = preload_descendants.map(&:id).each_with_object({}) { |old_id, hash| hash[old_id] = SecureRandom.uuid }
       descendants_ids_map[parent_id] = parent_id
       new_root_id = descendants_ids_map.fetch(id)
-      insert_data = preload_descendants.map do |block|
+      formula_ids = preload_descendants.filter { |b| b.type == 'formulaBlock' }.map(&:id)
+      preload_formulas = (formula_ids.blank? ? [] : Docs::Formula.where(id: formula_ids)).index_by(&:id)
+      new_formulas = []
+      formula_id_conversions = []
+      insert_data = {}
+      preload_descendants.map do |block|
         new_block = block.dup
         if block.id == id
           new_block.text = I18n.t('docs.duplicate.new_title', title: block.text)
@@ -333,16 +338,41 @@ class Docs::Block < ApplicationRecord
           new_block.id = descendants_ids_map.fetch(block.id)
           new_block.root_id = descendants_ids_map.fetch(block.root_id)
           new_block.parent_id = descendants_ids_map.fetch(block.parent_id)
+
+          if new_block.type == 'formulaBlock'
+            new_formula = preload_formulas.fetch(block.id).dup
+            new_formula.id = new_block.id
+            new_formula.block_id = new_block.root_id
+            new_formula.created_at = now
+            new_formula.updated_at = now
+
+            new_formulas << new_formula.attributes.slice(*Docs::Formula.column_names)
+
+            formula_id_conversions.push([new_block.parent_id, block.id, new_block.id])
+          end
         end
 
-        new_block.block_attributes.merge('created_at' => now, 'updated_at' => now)
+        insert_data[new_block.id] = new_block.block_attributes.merge('created_at' => now, 'updated_at' => now)
       end
 
-      Docs::Block.insert_all(insert_data)
+      formula_id_conversions.each do |conversion_block_id, old_id, new_id|
+        target = insert_data.fetch(conversion_block_id)
+        new_content = target.fetch('content').map do |c|
+          if c['type'] === 'formulaBlock' && c['attrs'].fetch('uuid') === old_id
+            c.merge('attrs' => c.fetch('attrs').merge('uuid' => new_id))
+          else
+            c
+          end
+        end
+        insert_data[conversion_block_id] = target.merge('content' => new_content)
+      end
+
+      Docs::Formula.insert_all(new_formulas) if new_formulas.present?
+      Docs::Block.insert_all(insert_data.values)
 
       Docs::Block.find(new_root_id).save_snapshot!
 
-      new_root_id
+      { 'id' => new_root_id, 'formula_ids' => formula_id_conversions.map { |_, _, new_id| new_id } }
     end
   end
 
