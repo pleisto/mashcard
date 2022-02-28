@@ -30,7 +30,7 @@ jobs:
             **/*.jsx
       - name: Setup NodeJS
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
