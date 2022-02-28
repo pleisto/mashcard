@@ -48,7 +48,7 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
 
   // image mode
   if (node.attrs.image?.key) {
-    const imageUrl = getBlobUrl(node.attrs?.uuid, node.attrs?.image ?? {}, editorDataSource.blobs) ?? defaultUrl
+    const imageUrl = getBlobUrl(editorDataSource.rootId, node.attrs?.image ?? {}, editorDataSource.blobs) ?? defaultUrl
     if (imageUrl) {
       return <ImageBlock {...props} />
     }
@@ -56,7 +56,8 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
 
   // file mode
   if (node.attrs.attachment?.key) {
-    const fileUrl = getBlobUrl(node.attrs?.uuid, node.attrs?.attachment ?? {}, editorDataSource.blobs) ?? defaultUrl
+    const fileUrl =
+      getBlobUrl(editorDataSource.rootId, node.attrs?.attachment ?? {}, editorDataSource.blobs) ?? defaultUrl
     if (fileUrl) {
       const { name, contentType } = node.attrs.attachment
       let fileType = getFileTypeByContentType(contentType ?? '')

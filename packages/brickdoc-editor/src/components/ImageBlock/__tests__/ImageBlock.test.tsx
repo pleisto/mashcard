@@ -7,6 +7,7 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 describe('ImageBlock', () => {
   const editorDataSource = new EditorDataSource()
   const imageUuid = 'image-uuid'
+  editorDataSource.rootId = imageUuid
   editorDataSource.prepareFileUpload = (() => {}) as any
 
   const imageUrl =

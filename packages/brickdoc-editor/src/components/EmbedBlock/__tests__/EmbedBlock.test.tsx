@@ -7,6 +7,7 @@ describe('EmbedBlock', () => {
   const url = 'https://www.brickdoc.com'
   const editorDataSource = new EditorDataSource()
   const uuid = 'uuid'
+  editorDataSource.rootId = uuid
   editorDataSource.fetchUnsplashImages = async () => {
     return await new Promise(resolve => {
       resolve({

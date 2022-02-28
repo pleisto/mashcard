@@ -68,11 +68,13 @@ export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEd
       blocks?.reduce<EditorDataSource['blobs']>((prev, cur) => {
         return {
           ...prev,
-          [cur.id]:
-            cur.blobs?.map(blob => ({
+          [cur.rootId ?? cur.id]: [
+            ...(prev[cur.rootId ?? cur.id] ?? []),
+            ...(cur.blobs?.map(blob => ({
               key: blob.blobKey,
               url: blob.url
-            })) ?? []
+            })) ?? [])
+          ]
         }
       }, {}) ?? {}
   }, [blocks])

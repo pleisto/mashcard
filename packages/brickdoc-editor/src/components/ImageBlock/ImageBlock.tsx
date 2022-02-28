@@ -42,7 +42,8 @@ export const ImageBlock: React.FC<NodeViewProps> = ({ node, deleteNode, getPos, 
   )
 
   const url =
-    getBlobUrl(node.attrs?.uuid, node.attrs?.image ?? {}, editorDataSource.blobs) ?? linkStorage.get(node.attrs.uuid)
+    getBlobUrl(editorDataSource.rootId, node.attrs?.image ?? {}, editorDataSource.blobs) ??
+    linkStorage.get(node.attrs.uuid)
 
   if (url) {
     return (
