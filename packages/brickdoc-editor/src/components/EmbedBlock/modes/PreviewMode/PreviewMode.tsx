@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import WebViewer, { WebViewerInstance } from '@pdftron/webviewer'
+import WebViewer, { WebViewerInstance } from '@pdftron/pdfjs-express-viewer'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { FileIcon } from '../../../FileIcon'
 import { FileType } from '../../../../helpers/file'
@@ -46,7 +46,8 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
   React.useEffect(() => {
     void WebViewer(
       {
-        path: '/pdftron',
+        licenseKey: 'b6kvL5YZiMM4wdhtAN7i',
+        path: '/pdfjs',
         css: '/pdftron.css',
         disabledElements: ['toolsHeader', 'header', 'textPopup', 'contextMenuPopup'],
         initialDoc: attachmentMethodsProps.fileUrl
@@ -81,8 +82,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}
-    >
+      actionOptions={actionOptions}>
       <div data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id} className="brickdoc-pdftron-block">
         {!documentReady && <Skeleton height={containerHeight} />}
         <PreviewContainer ref={viewer} ready={documentReady} />

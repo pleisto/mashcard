@@ -11,6 +11,7 @@ yargs(hideBin(process.argv))
     async () => {
       try {
         await fs.copy('./node_modules/@pdftron/webviewer/public', './public/pdftron')
+        await fs.copy('./node_modules/@pdftron/pdfjs-express-viewer/public', './public/pdfjs')
       } catch (err) {
         console.error(err)
       }

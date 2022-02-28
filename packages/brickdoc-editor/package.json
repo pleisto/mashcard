@@ -13,6 +13,7 @@
     "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
     "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
     "@brickdoc/uploader": "workspace:packages/brickdoc-uploader",
+    "@pdftron/pdfjs-express-viewer": "^8.2.1",
     "@pdftron/webviewer": "^8.3.0",
     "@tiptap/core": "^2.0.0-beta.160",
     "@tiptap/extension-blockquote": "^2.0.0-beta.26",
