@@ -13,6 +13,7 @@ import { PageTree } from '@/docs/common/components/PageTree'
 import { DocMeta } from '../DocumentContentPage'
 import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar, pagesVar } from '@/docs/reactiveVars'
+import { BrickdocContext } from '@/common/brickdocContext'
 
 export interface UseEditorDataSourceProps {
   docMeta: DocMeta
@@ -29,6 +30,12 @@ export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEd
   )
 
   const formulaContext = useReactiveVar(FormulaContextVar)
+  const { settings } = React.useContext(BrickdocContext)
+
+  // settings
+  React.useEffect(() => {
+    dataSource.current.settings = settings
+  }, [settings])
 
   // renderPageTree
   React.useEffect(() => {

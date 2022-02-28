@@ -40,6 +40,7 @@ env:
   UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
   UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
   IFRAMELY_API_ACCESS_KEY: ${{ secrets.IFRAMELY_API_ACCESS_KEY }}
+  PDFJS_EXPRESS_LICENSE: ${{ secrets.PDFJS_EXPRESS_LICENSE }}
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
   # GitHub-hosted runner have 7 gb RAM.
   # 5250mb === 7gb * 0.75

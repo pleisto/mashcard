@@ -129,6 +129,9 @@ class BrickdocConfig < ApplicationRecord
 
   field :lockbox_test, type: :encrypted
 
+   # Pdftron
+  field :pdfjs_express_license, type: :string, default: ENV['PDFJS_EXPRESS_LICENSE'], frontend: true 
+
   # helpdesk Knowledge Base
   field :kb_articles, type: :hash, default: {
     changing_domain: 'https://help.brickdoc.com/en/articles/5972616-brickdoc-username-policy'

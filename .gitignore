@@ -103,3 +103,4 @@ node_modules
 
 # Pdftron
 /public/pdftron
+/public/pdfjs

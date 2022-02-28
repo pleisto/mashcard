@@ -32,6 +32,8 @@ export interface DocumentPageData {
 export interface EditorDatabase {
   // define data here
 
+  settings: Record<string, any>
+
   fetchUnsplashImages: Exclude<DashboardPluginOptions['fetchUnsplashImages'], undefined>
 
   fetchWebsiteMeta: (url: string) => Promise<{ success: boolean; data: Omit<Preview_Box, '__typename'> }>
@@ -74,6 +76,7 @@ export class EditorDataSource {
     rootId: '',
     documentEditable: false,
     blobs: {},
+    settings: {},
     collaborators: [],
     documentPages: [],
     explorerMenu: {
@@ -141,6 +144,15 @@ export class EditorDataSource {
   set formulaContext(value: EditorDatabase['formulaContext']) {
     this.database.formulaContext = value
     this.invokeListeners('formulaContext')
+  }
+
+  get settings(): EditorDatabase['settings'] {
+    return this.database.settings
+  }
+
+  set settings(value: EditorDatabase['settings']) {
+    this.database.settings = value
+    this.invokeListeners('settings')
   }
 
   get rootId(): EditorDatabase['rootId'] {

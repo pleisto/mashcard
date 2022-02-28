@@ -112,6 +112,7 @@ jobs:
           APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
           APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
           APP_SECRET_IFRAMELY_API_ACCESS_KEY: ${{ secrets.IFRAMELY_API_ACCESS_KEY }}
+          APP_SECRET_PDFJS_EXPRESS_LICENSE: ${{ secrets.PDFJS_EXPRESS_LICENSE }}
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: fc

@@ -1,6 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
-import WebViewer, { WebViewerInstance } from '@pdftron/pdfjs-express-viewer'
+import { WebViewerInstance } from '@pdftron/webviewer'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { FileIcon } from '../../../FileIcon'
 import { FileType } from '../../../../helpers/file'
@@ -9,6 +9,7 @@ import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmen
 import './PreviewMode.less'
 import { BlockContainer } from '../../../../components'
 import { Skeleton, styled } from '@brickdoc/design-system'
+import { useWebViewer } from './useWebViewer'
 
 const containerHeight = '29.5rem'
 
@@ -43,26 +44,15 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
   const viewer = React.useRef<HTMLDivElement>(null)
   const [documentReady, setDocumentReady] = React.useState(false)
   const [viewerInstance, setViewerInstance] = React.useState<WebViewerInstance>()
-  React.useEffect(() => {
-    void WebViewer(
-      {
-        licenseKey: 'b6kvL5YZiMM4wdhtAN7i',
-        path: '/pdfjs',
-        css: '/pdftron.css',
-        disabledElements: ['toolsHeader', 'header', 'textPopup', 'contextMenuPopup'],
-        initialDoc: attachmentMethodsProps.fileUrl
-      },
-      viewer.current as HTMLDivElement
-    ).then(instance => {
-      setViewerInstance(instance)
-      instance.UI.setFitMode(instance.UI.FitMode.FitWidth)
-      const { documentViewer } = instance.Core
-      documentViewer.addEventListener('documentLoaded', () => {
-        setDocumentReady(true)
-      })
+
+  useWebViewer(fileType, attachmentMethodsProps.fileUrl, viewer, instance => {
+    setViewerInstance(instance)
+    instance.UI.setFitMode(instance.UI.FitMode.FitWidth)
+    const { documentViewer } = instance.Core
+    documentViewer.addEventListener('documentLoaded', () => {
+      setDocumentReady(true)
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  })
 
   const [{ onDownload, onToLinkMode, onFullScreen, onToPreviewMode }] = useAttachmentMethods({
     webViewer: viewerInstance,
@@ -82,7 +72,8 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <div data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id} className="brickdoc-pdftron-block">
         {!documentReady && <Skeleton height={containerHeight} />}
         <PreviewContainer ref={viewer} ready={documentReady} />
