@@ -129,8 +129,8 @@ class BrickdocConfig < ApplicationRecord
 
   field :lockbox_test, type: :encrypted
 
-   # Pdftron
-  field :pdfjs_express_license, type: :string, default: ENV['PDFJS_EXPRESS_LICENSE'], frontend: true 
+  # Pdftron
+  field :pdfjs_express_license, type: :string, default: ENV['PDFJS_EXPRESS_LICENSE'], frontend: true
 
   # helpdesk Knowledge Base
   field :kb_articles, type: :hash, default: {

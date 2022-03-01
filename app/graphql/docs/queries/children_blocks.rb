@@ -30,7 +30,7 @@ module Docs
         end
 
         # TODO: storageType?
-        blocks = root.descendants.where('type NOT IN (?)', ['databaseRow', 'spreadsheetRow', 'spreadsheetCell'])
+        blocks = root.descendants.where('type NOT IN (?)', ['spreadsheetRow', 'spreadsheetCell'])
           .with_attached_attachments.to_a
 
         root.show_policy?(current_user) ? blocks : []

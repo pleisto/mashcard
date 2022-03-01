@@ -25,15 +25,14 @@ import { EditorDataSourceContext } from '../../dataSource/DataSource'
 export interface SpreadsheetCellProps {
   context: SpreadsheetContext
   block: BlockInput
-  rootId: string
+  tableId: string
   saveBlock: (block: BlockInput) => void
 }
 
-export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootId, block, saveBlock }) => {
+export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, tableId, block, saveBlock }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
-
-  // TODO fix rootId
+  const rootId = editorDataSource.rootId
 
   const [currentBlock, setCurrentBlock] = React.useState(block)
 
@@ -61,11 +60,11 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
       }
       setCurrentBlock(newBlock)
       saveBlock(newBlock)
-      BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: rootId }))
+      BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: tableId }))
     }
     // devLog('updateFormula', { variable, block, newBlock, parentId, formulaId })
     setEditing(false)
-  }, [setEditing, cellId, block, saveBlock, rootId])
+  }, [setEditing, rootId, cellId, block, saveBlock, tableId])
 
   const updateFormula = React.useCallback(
     (variable): void => {
@@ -74,8 +73,6 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
     },
     [refreshCell]
   )
-
-  const eventId = `${rootId},${cellId}`
 
   const updateCellValue = React.useCallback(
     async (value: string) => {
@@ -124,6 +121,8 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
     )
     return () => listener.unsubscribe()
   }, [formulaId, refreshCell, rootId])
+
+  const eventId = `${tableId},${cellId}`
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(

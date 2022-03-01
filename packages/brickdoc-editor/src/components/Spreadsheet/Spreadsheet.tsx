@@ -270,7 +270,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
-                              rootId={parentId}
+                              tableId={parentId}
                               key={block.id}
                               block={block}
                               saveBlock={saveCellBlock}
