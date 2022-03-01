@@ -811,11 +811,16 @@ export class FormulaInterpreter extends BaseCstVisitor {
     }
   }
 
-  blockExpression(
-    ctx: { UUID: Array<{ image: any }> },
-    args: ExpressionArgument
-  ): SpreadsheetResult | BlockResult | NullResult | ErrorResult {
-    const namespaceId = ctx.UUID[0].image
+  blockExpression(ctx: any, args: ExpressionArgument): SpreadsheetResult | BlockResult | NullResult | ErrorResult {
+    let namespaceId
+    if (ctx.UUID) {
+      namespaceId = ctx.UUID[0].image
+    } else if (ctx.CurrentBlock) {
+      namespaceId = this.ctx.meta.namespaceId
+    } else {
+      throw new Error('unsupported expression')
+    }
+
     const formulaName = this.ctx.formulaContext.findFormulaName(namespaceId)
 
     if (formulaName?.kind === 'Spreadsheet') {

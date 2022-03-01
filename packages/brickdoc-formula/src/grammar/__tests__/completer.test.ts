@@ -15,10 +15,8 @@ const testVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
 const interpretContext = { ctx: {}, arguments: [] }
 
-// const testName1 = 'varvarabc中文var'
 const testName1 = 'varvarabcvar'
-// TODO Chinese name
-const testName2 = 'a中文baz345 space foo'
+const testName2 = 'a中文baz345_space_foo'
 
 const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', position: 0, type: 'normal' }
 const barMeta: VariableMetadata = {
@@ -111,9 +109,9 @@ describe('Complete', () => {
       namespaceId,
       errorMessage: 'Missing expression',
       weight: 1,
-      expectParseImage: `=#${namespaceId}.`,
-      expectInputImage: `=#${namespaceId}.`,
-      expectNewInput: `=#${namespaceId}.`
+      expectParseImage: `=#CurrentBlock.`,
+      expectInputImage: `=#CurrentBlock.`,
+      expectNewInput: `=#CurrentBlock.`
     },
     {
       label: 'var equal different namespaceId',
@@ -141,9 +139,9 @@ describe('Complete', () => {
       namespaceId,
       errorMessage: undefined,
       weight: 1,
-      expectParseImage: `=#${namespaceId}.${testName1}`,
-      expectInputImage: `=#${namespaceId}.${testName1}`,
-      expectNewInput: `=#${namespaceId}.${testName1}`
+      expectParseImage: `=#CurrentBlock.${testName1}`,
+      expectInputImage: `=#CurrentBlock.${testName1}`,
+      expectNewInput: `=#CurrentBlock.${testName1}`
     },
     {
       label: 'var include same namespaceId',
@@ -191,9 +189,9 @@ describe('Complete', () => {
       namespaceId,
       errorMessage: 'Missing expression',
       weight: 1,
-      expectParseImage: `=1+#${namespaceId}.${testName1}.`,
-      expectInputImage: `=1+#${namespaceId}.${testName1}.`,
-      expectNewInput: `= 1 + #${namespaceId}.${testName1}.`
+      expectParseImage: `=1+#CurrentBlock.${testName1}.`,
+      expectInputImage: `=1+#CurrentBlock.${testName1}.`,
+      expectNewInput: `= 1 + #CurrentBlock.${testName1}.`
     },
     {
       label: 'dot equal different namespaceId',

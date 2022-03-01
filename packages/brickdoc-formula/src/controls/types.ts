@@ -33,7 +33,7 @@ export interface BlockInitializer {
 
 export interface BlockType extends BlockInitializer {
   _formulaContext: ContextInterface
-  name: () => string
+  name: (pageId: NamespaceId) => string
   persistence: () => BlockInitializer
 }
 

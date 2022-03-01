@@ -32,7 +32,8 @@ import {
   Colon,
   Self,
   Input,
-  LambdaArgumentNumber
+  LambdaArgumentNumber,
+  CurrentBlock
 } from './lexer'
 
 const errorProvider: IParserErrorMessageProvider = {
@@ -239,7 +240,7 @@ export class FormulaParser extends CstParser {
 
   public blockExpression = this.RULE('blockExpression', () => {
     this.CONSUME(Sharp)
-    this.CONSUME(UUID)
+    this.OR([{ ALT: () => this.CONSUME(UUID) }, { ALT: () => this.CONSUME(CurrentBlock) }])
   })
 
   public constantExpression = this.RULE('constantExpression', () => {

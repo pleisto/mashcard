@@ -1,4 +1,4 @@
-import { AnyTypeResult, BaseResult, FunctionContext } from '../types'
+import { AnyTypeResult, BaseResult, FunctionContext, VariableData, VariableDisplayData } from '../types'
 import {
   SwitchClass,
   ButtonClass,
@@ -9,7 +9,23 @@ import {
 } from '../controls'
 import { BlockClass } from '../controls/block'
 
-export const dumpValue = (ctx: FunctionContext, cacheValue: BaseResult): BaseResult => {
+const VARIABLE_VERSION = 0
+
+export const dumpDisplayResult = (t: VariableData): VariableDisplayData => {
+  return {
+    definition: t.definition,
+    result: dumpValue(t.variableValue.result) as any,
+    type: t.type,
+    kind: t.kind,
+    version: VARIABLE_VERSION
+  }
+}
+
+export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
+  return { ...displayResult, result: loadValue(ctx, displayResult.result) as any }
+}
+
+export const dumpValue = (cacheValue: BaseResult): BaseResult => {
   if (
     cacheValue.result instanceof ColumnClass ||
     cacheValue.result instanceof BlockClass ||

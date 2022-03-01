@@ -82,6 +82,13 @@ export const FormulaEditorSaveEventTrigger = event<{ formulaId: string; rootId: 
   }
 )
 
+export const FormulaEditorSavedTrigger = event<{ formulaId: string; rootId: string }>()(
+  'FormulaEditorSavedTrigger',
+  ({ formulaId, rootId }) => {
+    return { id: `${rootId},${formulaId}` }
+  }
+)
+
 export const FormulaEditorReplaceRootTrigger = event<{
   content: any
   position: number

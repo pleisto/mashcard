@@ -19,6 +19,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+          cache-dependency-path: |
+            yarn.lock
       - name: yarn dedupe
         run: yarn dedupe
         env:

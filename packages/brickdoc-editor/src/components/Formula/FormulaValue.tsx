@@ -1,24 +1,25 @@
 import React from 'react'
-import { displayValue, resultToColorType, VariableResult } from '@brickdoc/formula'
+import { resultToColorType, VariableDisplayData } from '@brickdoc/formula'
 import './FormulaBlockRender.less'
 import { FORMULA_COLORS } from '../../helpers'
 import { css, cx } from '@brickdoc/design-system'
 
 export interface FormulaValueProps {
-  t: VariableResult
+  displayData: VariableDisplayData
+  display: string
   border?: boolean
 }
 
-export const FormulaValue: React.FC<FormulaValueProps> = ({ border, t: { variableValue, type } }) => {
+export const FormulaValue: React.FC<FormulaValueProps> = ({ border, display, displayData: { result, type } }) => {
   const { color, rgb, backgroundColor, hoverBackgroundColor, pressedBackgroundColor } =
-    FORMULA_COLORS[resultToColorType(variableValue.result)]
+    FORMULA_COLORS[resultToColorType(result)]
   const hasBorder = type === 'normal' && border
-  const text = displayValue(variableValue.result)
+  // const text = displayValue(result, pageId)
 
   if (!hasBorder) {
     return (
       <span className="brickdoc-formula-borderless" style={{ color, fontFamily: 'Fira Code' }}>
-        {text}
+        {display}
       </span>
     )
   }
@@ -41,7 +42,7 @@ export const FormulaValue: React.FC<FormulaValueProps> = ({ border, t: { variabl
         fontFamily: 'Fira Code',
         borderColor: `rgb(${rgb.join(',')}, 0.3)`
       }}>
-      {text}
+      {display}
     </span>
   )
 }

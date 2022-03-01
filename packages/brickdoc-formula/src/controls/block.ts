@@ -3,13 +3,16 @@ import { ContextInterface, NamespaceId } from '../types'
 
 export class BlockClass implements BlockType {
   _formulaContext: ContextInterface
-  name: () => string
+  name: (pageId: NamespaceId) => string
   id: NamespaceId
 
   constructor(_formulaContext: ContextInterface, { id }: BlockInitializer) {
     this._formulaContext = _formulaContext
     this.id = id
-    this.name = () => {
+    this.name = (pageId: NamespaceId) => {
+      // if (pageId === this.id) {
+      //   return 'Current Page'
+      // }
       const formulaName = this._formulaContext.formulaNames.find(n => n.key === id && n.kind === 'Block')
       if (formulaName) {
         return formulaName.name

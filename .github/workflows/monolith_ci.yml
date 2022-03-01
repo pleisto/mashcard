@@ -71,6 +71,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+          cache-dependency-path: |
+            yarn.lock
       - name: Run yarn install
         run: yarn install --immutable
         if: steps.changed-es-files.outputs.any_changed == 'true'
@@ -102,13 +104,15 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+          cache-dependency-path: |
+            yarn.lock
       - name: Check Cypress binary cache
         id: cache-cypress-binary
         uses: actions/cache@v2
         with:
           path: |
             ~/.cache/Cypress
-          key: cypress-binary-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: cypress-binary-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: install cypress
         uses: cypress-io/github-action@v2
         if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
@@ -131,13 +135,13 @@ jobs:
         uses: actions/cache@v2
         with:
           path: public
-          key: ${{ github.ref }}-public-doll
+          key: ${{ secrets.CACHE_VERSION }}-${{ github.ref }}-public-doll
       - name: Cache Dist
         id: cache-dist
         uses: actions/cache@v2
         with:
           path: public
-          key: ${{ github.sha }}-public
+          key: ${{ secrets.CACHE_VERSION }}-${{ github.sha }}-public
       - name: build frontend dist
         run: yarn dist:prod
   rspec_and_dump_schema:
@@ -292,6 +296,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+          cache-dependency-path: |
+            yarn.lock
       - name: Run yarn install without cypress
         run: yarn install --immutable
         env:
@@ -301,7 +307,7 @@ jobs:
         with:
           path: |
             ~/.cache/Cypress
-          key: cypress-binary-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: cypress-binary-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install Dependencies
         run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Setup Ruby
@@ -316,7 +322,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: public
-          key: ${{ github.sha }}-public
+          key: ${{ secrets.CACHE_VERSION }}-${{ github.sha }}-public
       - name: build dist
         if: steps.cache-dist.outputs.cache-hit != 'true'
         run: yarn dist:prod

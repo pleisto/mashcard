@@ -9,7 +9,14 @@ import {
   BlockSpreadsheetLoaded
 } from '@brickdoc/schema'
 import { FormulaBlockRender } from '../Formula/FormulaBlockRender'
-import { displayValue, VariableClass, VariableData } from '@brickdoc/formula'
+import {
+  displayValue,
+  dumpDisplayResult,
+  FunctionContext,
+  loadDisplayResult,
+  VariableClass,
+  VariableData
+} from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { FormulaDisplay } from '../Formula/FormulaDisplay'
 import { devLog } from '@brickdoc/design-system'
@@ -26,11 +33,13 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
 
+  // TODO fix rootId
+
   const [currentBlock, setCurrentBlock] = React.useState(block)
 
   const cellId = `${currentBlock.parentId},${currentBlock.data.columnId}`
   const formulaId = currentBlock.data.formulaId
-  const formulaName = `${currentBlock.parentId}_${currentBlock.data.columnId}`
+  const formulaName = `Cell_${currentBlock.parentId}_${currentBlock.data.columnId}`.replaceAll('-', '')
 
   const variableRef = React.useRef(formulaContext?.findVariable(rootId, formulaId))
 
@@ -43,11 +52,11 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
 
   const refreshCell = React.useCallback((): void => {
     if (variableRef.current) {
-      const value = displayValue(variableRef.current.t.variableValue.result)
+      const value = displayValue(variableRef.current.t.variableValue.result, rootId)
       devLog('Spreadsheet cell formula updated', { cellId, value })
       const newBlock = {
         ...block,
-        data: { ...block.data, t: variableRef.current.result() },
+        data: { ...block.data, displayData: dumpDisplayResult(variableRef.current.t) },
         text: value
       }
       setCurrentBlock(newBlock)
@@ -147,9 +156,27 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, rootI
     )
   }
 
+  let displayData = currentBlock.data.displayData
+  if (displayData) {
+    const ctx: FunctionContext = {
+      formulaContext: formulaContext!,
+      meta: {
+        namespaceId: rootId,
+        variableId: formulaId,
+        name: formulaName,
+        type: 'spreadsheet',
+        input: displayData.definition,
+        position: 0
+      },
+      interpretContext: { ctx: {}, arguments: [] }
+    }
+
+    displayData = loadDisplayResult(ctx, displayData)
+  }
+
   return (
     <div className="cell" onDoubleClick={handleEnterEdit}>
-      <FormulaDisplay t={currentBlock.data.t} formulaType="spreadsheet" />
+      <FormulaDisplay display={currentBlock.text} displayData={displayData} formulaType="spreadsheet" />
     </div>
   )
 }

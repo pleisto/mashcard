@@ -42,7 +42,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   const formulaResult = React.useMemo(
     () => (
       <>
-        <FormulaResult variableT={variableT} />
+        <FormulaResult variableT={variableT} pageId={rootId} />
         <AutocompleteList
           blockId={rootId}
           completion={completion}

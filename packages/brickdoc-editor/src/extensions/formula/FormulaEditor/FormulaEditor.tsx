@@ -94,18 +94,19 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
 
   React.useEffect(() => {
     if (editor && !editor.isDestroyed && editable && rootId && formulaId) {
+      const defaultContent: JSONContent = { type: 'doc', content: [{ type: 'paragraph', content: [] }] }
+
       const listener = BrickdocEventBus.subscribe(
         FormulaEditorReplaceRootTrigger,
         e => {
-          const content = e.payload.content
+          const content = e.payload.content ?? defaultContent
           const position: number = e.payload.position
-          if (content) {
-            editor
-              .chain()
-              .replaceRoot(content)
-              .setTextSelection(position + 1)
-              .run()
-          }
+
+          editor
+            .chain()
+            .replaceRoot(content)
+            .setTextSelection(position + 1)
+            .run()
 
           // if (editable) console.log('after replace root', { content, position })
         },

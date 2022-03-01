@@ -7,7 +7,7 @@ import { EditorContentType, FormulaEditor } from '../../extensions/formula/Formu
 import { FormulaResult } from './FormulaResult'
 import { AutocompleteList } from './AutocompleteList/AutocompleteList'
 import { CompletionType } from './useFormula'
-import { BrickdocEventBus, FormulaCalculateTrigger } from '@brickdoc/schema'
+import { BrickdocEventBus, FormulaCalculateTrigger, FormulaEditorSavedTrigger } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
 
 export interface FormulaMenuProps {
@@ -52,10 +52,24 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const [visible, setVisible] = React.useState(defaultVisible)
   const [inputName, setInputName] = React.useState(nameRef.current)
 
-  const close = (): void => {
+  const close = React.useCallback((): void => {
     setVisible(false)
     onVisibleChange?.(false)
-  }
+  }, [onVisibleChange])
+
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      FormulaEditorSavedTrigger,
+      e => {
+        close()
+      },
+      {
+        eventId: `${rootId},${formulaId}`,
+        subscribeId: `FormulaMenu#${rootId},${formulaId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [close, formulaId, rootId])
 
   const triggerCalculate = (): void => {
     BrickdocEventBus.dispatch(
@@ -86,7 +100,6 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   const handleSave = async (): Promise<void> => {
     if (isDisableSave()) return
     await doHandleSave()
-    close()
   }
 
   const handleCancel = (): void => {
@@ -122,7 +135,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         </div>
       </div>
       <div className="formula-menu-divider" />
-      <FormulaResult variableT={variableT} />
+      <FormulaResult variableT={variableT} pageId={rootId} />
       <AutocompleteList
         blockId={rootId}
         completion={completion}

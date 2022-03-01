@@ -16,7 +16,8 @@ import {
   FormulaEditorSaveEventTrigger,
   FormulaCalculateTrigger,
   FormulaKeyboardEventTrigger,
-  FormulaUpdatedViaId
+  FormulaUpdatedViaId,
+  FormulaEditorSavedTrigger
 } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
 import { devLog, devWarning } from '@brickdoc/design-system'
@@ -453,8 +454,10 @@ export const useFormula = ({
     setVariableT(v.t)
     setSavedVariableT(v.t)
 
+    BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId, rootId }))
+
     devLog('save ...', { input, variable: variableRef.current, formulaContext })
-  }, [formulaContext, isDisableSave, updateFormula])
+  }, [formulaContext, formulaId, isDisableSave, rootId, updateFormula])
 
   // Effects
   React.useEffect(() => {

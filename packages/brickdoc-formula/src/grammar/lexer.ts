@@ -11,6 +11,7 @@ export const In = createToken({ name: 'In', pattern: /in/, categories: InOperato
 export const ExactIn = createToken({ name: 'ExactIn', pattern: /exactin/, categories: InOperator })
 
 export const Self = createToken({ name: 'Self', pattern: /Self/ })
+export const CurrentBlock = createToken({ name: 'CurrentBlock', pattern: /CurrentBlock/ })
 export const Input = createToken({ name: 'Input', pattern: /Input/ })
 
 export const And = createToken({
@@ -184,7 +185,8 @@ export const Colon = createToken({ name: 'Colon', pattern: /:/ })
 
 export const FunctionName = createToken({
   name: 'FunctionName',
-  pattern: /[a-zA-Z][a-zA-Z0-9_]*/
+  // pattern: /[a-zA-Z][a-zA-Z0-9_]*/
+  pattern: /[a-zA-Z_]((?![,"'`&#@:!$%^<>/?*=.;~|[(){}+\\\-\]\s]).)*/
   // pattern: /\S+/
 })
 
@@ -269,6 +271,7 @@ export const allTokens = [
   Comma, // ,
   Semicolon, // ;
 
+  CurrentBlock, // CurrentBlock
   Self, // Self
   Input, // Input
   // FunctionName,

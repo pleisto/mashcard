@@ -129,9 +129,7 @@ describe('Context', () => {
       type: 'normal'
     }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
-    expect(parseResult.errorMessages).toEqual([
-      { message: 'Variable name should start with letters', type: 'name_invalid' }
-    ])
+    expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is not valid', type: 'name_invalid' }])
   })
 
   it('if', () => {

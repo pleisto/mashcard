@@ -33,6 +33,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+          cache-dependency-path: |
+            yarn.lock
       - run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: '0'
@@ -54,9 +56,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: brickdocCE-pr-${{ runner.os }}-buildx-${{ github.sha }}
+          key: brickdocCE-pr-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            brickdocCE-pr-${{ runner.os }}-buildx-
+            brickdocCE-pr-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-
       - name: Build and push
         uses: docker/build-push-action@v2
         with:

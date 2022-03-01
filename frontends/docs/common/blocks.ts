@@ -156,6 +156,7 @@ export const blockToNode = (block: Block): JSONContent => {
   }
 
   if (block?.content?.length) {
+    // TODO fix this #1095
     result.content = block.content
   }
 

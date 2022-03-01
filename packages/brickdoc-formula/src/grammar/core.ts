@@ -30,7 +30,7 @@ import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { addSpace, CodeFragmentVisitor, hideDot } from './codeFragment'
 import { blockKey } from './convert'
-import { parseString } from './util'
+import { checkValidName, parseString } from './util'
 import { devWarning } from '@brickdoc/design-system'
 export interface BaseParseResult {
   success: boolean
@@ -110,6 +110,7 @@ const abbrev = ({
   let offset = 0
   let renderTokenNumberChange = 0
 
+  // eslint-disable-next-line complexity
   tokens.forEach((token, index) => {
     newTokens.push(token)
 
@@ -140,7 +141,22 @@ const abbrev = ({
       }
     }
 
-    if (!['FunctionName', 'StringLiteral'].includes(token.tokenType.name)) {
+    const tokenTypeName = token.tokenType.name
+
+    if (tokenTypeName === 'UUID') {
+      if (token.image === namespaceId) {
+        newInput = newInput.concat('CurrentBlock')
+        newTokens.pop()
+        newTokens.push({ ...token, image: 'CurrentBlock', tokenType: { ...token.tokenType, name: 'CurrentBlock' } })
+        modified = true
+        return
+      } else {
+        newInput = newInput.concat(token.image)
+        return
+      }
+    }
+
+    if (!['FunctionName', 'StringLiteral'].includes(tokenTypeName)) {
       newInput = newInput.concat(token.image)
       return
     }
@@ -164,13 +180,17 @@ const abbrev = ({
     if (prevToken && ['Dot'].includes(prevToken.tokenType.name)) {
       const prev2Token = newTokens[newIndex - 2]
 
-      if (prev2Token && prev2Token.tokenType.name !== 'UUID') {
+      if (prev2Token && !['UUID', 'CurrentBlock'].includes(prev2Token.tokenType.name)) {
         newInput = newInput.concat(token.image)
         return
       }
 
       variableNamespace = prev2Token.image.startsWith('#') ? (prev2Token.image as BlockKey) : blockKey(prev2Token.image)
       namespaceIsExist = true
+    }
+
+    if (variableNamespace === '#CurrentBlock') {
+      variableNamespace = blockKey(namespaceId)
     }
 
     const match = token.tokenType.name === 'StringLiteral' ? parseString(token.image) : token.image
@@ -186,7 +206,7 @@ const abbrev = ({
       return
     }
 
-    const renderTokens = formulaName.renderTokens(namespaceIsExist)
+    const renderTokens = formulaName.renderTokens(namespaceIsExist, namespaceId)
 
     newTokens.pop()
     const newRenderTokens = renderTokens.map(({ image, type }) => ({
@@ -288,13 +308,13 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     flattenVariableDependencies: []
   }
 
-  if (type === 'normal' && !/[a-zA-Z]/.test(name[0])) {
+  if (type === 'normal' && !checkValidName(name)) {
     return {
       ...returnValue,
       success: false,
       kind: 'unknown',
       errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name should start with letters', type: 'name_invalid' }]
+      errorMessages: [{ message: 'Variable name is not valid', type: 'name_invalid' }]
     }
   }
 

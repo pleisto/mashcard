@@ -272,6 +272,16 @@ const testCases: TestCase[] = [
     value: 24
   },
   {
+    input: `=#`,
+    parseErrorType: 'syntax',
+    errorMessage: 'Miss expression'
+  },
+  {
+    input: `=#CurrentBlock`,
+    parseErrorType: 'syntax',
+    errorMessage: `Block not found: ${namespaceId}`
+  },
+  {
     input: `=#${barNamespaceId}.Bar`,
     label: 'variable name is case sensitive',
     parseErrorType: 'syntax',

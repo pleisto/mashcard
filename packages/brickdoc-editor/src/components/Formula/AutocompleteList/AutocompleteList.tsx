@@ -6,6 +6,8 @@ import {
   ColumnType,
   Completion,
   CompletionKind,
+  displayValue,
+  dumpDisplayResult,
   FunctionCompletion,
   SpreadsheetCompletion,
   VariableCompletion
@@ -35,7 +37,7 @@ const COMPLETION_STYLE_META: {
 
       return (
         <div className="autocomplete-preview-block">
-          <div className="autocomplete-preview-block-name">{block.name()}</div>
+          <div className="autocomplete-preview-block-name">{block.name(blockId)}</div>
         </div>
       )
     }
@@ -157,7 +159,10 @@ const COMPLETION_STYLE_META: {
           <div className="autocomplete-preview-section">
             <div className="autocomplete-preview-section-head">Value</div>
             <span className="autocomplete-preview-output-tag">
-              <FormulaValue t={preview.t} />
+              <FormulaValue
+                displayData={dumpDisplayResult(preview.t)}
+                display={displayValue(preview.t.variableValue.result, blockId)}
+              />
             </span>
           </div>
         </div>
@@ -172,6 +177,10 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
   setCompletion,
   handleSelectActiveCompletion
 }) => {
+  if (!completion.completions.length) {
+    return <></>
+  }
+
   const preview = completion.activeCompletion
     ? COMPLETION_STYLE_META[completion.activeCompletion.kind].render(completion.activeCompletion, blockId)
     : 'Empty!'
@@ -203,8 +212,12 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
     }
   }
 
-  if (!completion.completions.length) {
-    return <></>
+  const handleOnClick = (c: Completion, index: number): void => {
+    if (index === completion.activeCompletionIndex) {
+      handleSelectActiveCompletion()
+    } else {
+      setCompletion(com => ({ ...com, activeCompletion: c, activeCompletionIndex: index }))
+    }
   }
 
   return (
@@ -216,15 +229,12 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
             <div
               role="button"
               tabIndex={-1}
-              onClick={() => {
-                setCompletion(com => ({ ...com, activeCompletion: c, activeCompletionIndex: index }))
-              }}
+              onClick={() => handleOnClick(c, index)}
               key={index}
               onKeyDown={onKeyDown}
               className={cx('autocomplete-list-item', {
                 active: c.value === completion.activeCompletion?.value
-              })}
-            >
+              })}>
               {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
               <div className="autocomplete-list-item-content">
                 <span className="autocomplete-list-item-name">{c.name}</span>

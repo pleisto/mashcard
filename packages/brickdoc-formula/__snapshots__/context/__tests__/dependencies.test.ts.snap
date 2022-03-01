@@ -311,7 +311,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num0\\"",
+    "definition": "=#CurrentBlock.\\"num0\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -420,7 +420,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num2\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num1\\"",
+    "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
     "dirty": true,
     "flattenVariableDependencies": Array [
       Object {
@@ -545,7 +545,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num2\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num0\\"",
+    "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num0\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -707,7 +707,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num3\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num0\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num2\\"",
+    "definition": "=#CurrentBlock.\\"num3\\" + #CurrentBlock.\\"num0\\" + #CurrentBlock.\\"num2\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -844,7 +844,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num4\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num1\\"",
+    "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
     "dirty": true,
     "flattenVariableDependencies": Array [
       Object {
@@ -1094,7 +1094,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num0\\"",
+    "definition": "=#CurrentBlock.\\"num0\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -1203,7 +1203,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num2\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num1\\"",
+    "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -1328,7 +1328,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num2\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num0\\"",
+    "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num0\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -1490,7 +1490,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num3\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num0\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num2\\"",
+    "definition": "=#CurrentBlock.\\"num3\\" + #CurrentBlock.\\"num0\\" + #CurrentBlock.\\"num2\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {
@@ -1627,7 +1627,7 @@ Array [
       },
     ],
     "cst": null,
-    "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num4\\" + #9dda8306-dbe1-49d3-868d-1a7c86f27328.\\"num1\\"",
+    "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
     "dirty": false,
     "flattenVariableDependencies": Array [
       Object {

@@ -19,11 +19,30 @@ export const parseString = (str: string): string => {
   return str.substring(1, str.length - 1).replace(/""/g, '"')
 }
 
+const lexer = FormulaLexer
+
 const checkValidToken = (input: string): boolean => {
-  const lexer = FormulaLexer
   const lexResult: ILexingResult = lexer.tokenize(input)
   const tokens = lexResult.tokens
   return tokens.length === 1
+}
+
+export const checkValidName = (name: string): boolean => {
+  if (name.length !== name.trim().length) {
+    return false
+  }
+
+  const { tokens, errors } = lexer.tokenize(name)
+
+  if (errors.length > 0) {
+    return false
+  }
+
+  if (tokens.length !== 1) {
+    return false
+  }
+
+  return tokens[0].tokenType.name === 'FunctionName'
 }
 
 export const maybeEncodeString = (str: string): [boolean, string] => {

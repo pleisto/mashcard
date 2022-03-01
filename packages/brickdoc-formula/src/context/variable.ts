@@ -19,15 +19,15 @@ import {
   Formula,
   BaseFormula,
   FormulaSourceType,
-  VariableResult,
-  ErrorMessage
+  ErrorMessage,
+  NamespaceId
 } from '../types'
 import { parse, interpret } from '../grammar/core'
 import { dumpValue, loadValue } from './persist'
 import { block2name, variable2name, variableKey } from '../grammar/convert'
 import { BlockClass } from '../controls/block'
 
-export const displayValue = (v: AnyTypeResult): string => {
+export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
   switch (v.type) {
     case 'number':
     case 'boolean':
@@ -41,17 +41,17 @@ export const displayValue = (v: AnyTypeResult): string => {
     case 'Spreadsheet':
       return `#<Spreadsheet> ${v.result.name()}`
     case 'Block':
-      return `#<Block> ${v.result.name()}`
+      return `#<Block> ${v.result.name(pageId)}`
     case 'Column':
       return `#<Column> ${v.result.spreadsheet.name()}.${v.result.name}`
     case 'Predicate':
-      return `[${v.operator}] ${displayValue(v.result)}`
+      return `[${v.operator}] ${displayValue(v.result, pageId)}`
     case 'Record':
       return `{ ${Object.entries(v.result)
-        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeResult)}`)
+        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeResult, pageId)}`)
         .join(', ')} }`
     case 'Array':
-      return `[${v.result.map((v: AnyTypeResult) => displayValue(v)).join(', ')}]`
+      return `[${v.result.map((v: AnyTypeResult) => displayValue(v, pageId)).join(', ')}]`
     case 'Button':
       return `#<${v.type}> ${v.result.name}`
     case 'Switch':
@@ -61,7 +61,9 @@ export const displayValue = (v: AnyTypeResult): string => {
     case 'Reference':
       return `#<Reference> ${JSON.stringify(v.result)}`
     case 'Function':
-      return `#<Function> ${v.result.map(({ name, args }) => `${name} ${args.map(a => displayValue(a)).join(', ')}`)}`
+      return `#<Function> ${v.result.map(
+        ({ name, args }) => `${name} ${args.map(a => displayValue(a, pageId)).join(', ')}`
+      )}`
     case 'Cst':
       return '#<Cst>'
     case 'Blank':
@@ -209,7 +211,10 @@ export class VariableClass implements VariableInterface {
     })
   }
 
-  namespaceName(): string {
+  namespaceName(pageId: NamespaceId): string {
+    // if (this.t.namespaceId === pageId) {
+    //   return 'Current Page'
+    // }
     const formulaName = this.formulaContext.formulaNames.find(n => n.key === this.t.namespaceId && n.kind === 'Block')
     if (formulaName) {
       return formulaName.name
@@ -233,15 +238,6 @@ export class VariableClass implements VariableInterface {
     }
   }
 
-  result(): VariableResult {
-    return {
-      definition: this.t.definition,
-      variableValue: this.t.variableValue,
-      type: this.t.type,
-      kind: this.t.kind
-    }
-  }
-
   async destroy(): Promise<void> {
     await this.formulaContext.removeVariable(this.t.namespaceId, this.t.variableId)
   }
@@ -251,7 +247,6 @@ export class VariableClass implements VariableInterface {
   }
 
   public buildFormula(): Formula {
-    const ctx = { formulaContext: this.formulaContext, meta: this.meta(), interpretContext: { ctx: {}, arguments: [] } }
     return {
       blockId: this.t.namespaceId,
       definition: this.t.definition,
@@ -261,7 +256,7 @@ export class VariableClass implements VariableInterface {
       type: this.t.type,
       // updatedAt: new Date().toISOString(),
       // createdAt: new Date().getTime(),
-      cacheValue: dumpValue(ctx, this.t.variableValue.cacheValue)
+      cacheValue: dumpValue(this.t.variableValue.cacheValue)
     }
   }
 

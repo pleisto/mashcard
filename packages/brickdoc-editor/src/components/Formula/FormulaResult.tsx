@@ -1,13 +1,14 @@
 import React from 'react'
-import { ErrorMessage, VariableData } from '@brickdoc/formula'
+import { displayValue, dumpDisplayResult, ErrorMessage, VariableData } from '@brickdoc/formula'
 import './FormulaMenu.less'
 import { FormulaValue } from './FormulaValue'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined
+  pageId: string
 }
 
-export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT }) => {
+export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId }) => {
   if (!variableT) {
     return <></>
   }
@@ -27,7 +28,12 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT }) => {
             <span className="formula-menu-result-error-message">{error.message}</span>
           </span>
         )}
-        {!error && <FormulaValue t={variableT} />}
+        {!error && (
+          <FormulaValue
+            displayData={dumpDisplayResult(variableT)}
+            display={displayValue(variableT.variableValue.result, pageId)}
+          />
+        )}
       </div>
       <div className="formula-menu-divider" />
     </>

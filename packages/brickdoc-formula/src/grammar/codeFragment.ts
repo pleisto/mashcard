@@ -527,7 +527,11 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
             if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
               finalRhsCodeFragments = [
-                { ...finalRhsCodeFragments[0], display: variableName, renderText: variableRenderText(variable) }
+                {
+                  ...finalRhsCodeFragments[0],
+                  display: variableName,
+                  renderText: variableRenderText(variable, this.ctx.meta.namespaceId)
+                }
               ]
             }
 
@@ -1017,10 +1021,20 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     }
   }
 
-  blockExpression(ctx: { Sharp: IToken[]; UUID: any[] }, { type }: ExpressionArgument): CodeFragmentResult {
+  blockExpression(ctx: any, { type }: ExpressionArgument): CodeFragmentResult {
     const SharpFragment = token2fragment(ctx.Sharp[0], 'any')
-    const namespaceToken = ctx.UUID[0]
-    const namespaceId = namespaceToken.image
+    const namespaceToken = ctx.UUID?.[0] ?? ctx.CurrentBlock?.[0]
+
+    if (!namespaceToken) {
+      return {
+        codeFragments: [{ ...SharpFragment, errors: [{ message: `Miss expression`, type: 'syntax' }] }],
+        image: SharpFragment.display,
+        type: 'any'
+      }
+    }
+
+    const namespaceId =
+      namespaceToken.tokenType.name === 'CurrentBlock' ? this.ctx.meta.namespaceId : namespaceToken.image
 
     this.kind = 'expression'
     this.blockDependencies.push(namespaceId)
@@ -1035,11 +1049,11 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           codeFragments: [
             {
               ...token2fragment(namespaceToken, 'any'),
-              ...spreadsheet2codeFragment(spreadsheet),
+              ...spreadsheet2codeFragment(spreadsheet, this.ctx.meta.namespaceId),
               errors: errorMessages
             }
           ],
-          image: `#${namespaceId}`,
+          image: `#${namespaceToken.image}`,
           type: newType
         }
       }
@@ -1055,12 +1069,12 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         codeFragments: [
           {
             ...token2fragment(namespaceToken, 'any'),
-            ...block2codeFragment(block),
+            ...block2codeFragment(block, this.ctx.meta.namespaceId),
             hide,
             errors: errorMessages
           }
         ],
-        image: `#${namespaceId}`,
+        image: `#${namespaceToken.image}`,
         type: newType
       }
     }
@@ -1073,7 +1087,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           errors: [{ message: `Block not found: ${namespaceId}`, type: 'deps' }]
         }
       ],
-      image: `#${namespaceId}`,
+      image: `#${namespaceToken.image}`,
       type: 'Block'
     }
   }
