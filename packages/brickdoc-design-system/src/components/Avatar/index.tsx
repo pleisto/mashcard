@@ -1,6 +1,7 @@
 import { ForwardRefRenderFunction, useMemo, RefObject, forwardRef, createRef, HTMLProps } from 'react'
 import { User } from '@brickdoc/design-icons'
 import { name2Initials, string2Color } from './initials'
+import defaultAvatar from './assets/avatars.png'
 import { styled, theme } from '../../themes'
 
 type AvatarSize = 'sm' | 'md' | 'lg'
@@ -94,7 +95,8 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
 
   const isCustomSize = typeof size === 'number' ? size : undefined
   let childrenNode = src ?? (initialsObj ? <span>{initialsObj.text}</span> : null) ?? <User theme="filled" />
-  if (typeof childrenNode === 'string') childrenNode = <img src={childrenNode} alt={alt} />
+  if (typeof childrenNode === 'string')
+    childrenNode = <img src={childrenNode === '' ? defaultAvatar : childrenNode} alt={alt} />
 
   const customSizeCss = isCustomSize
     ? {

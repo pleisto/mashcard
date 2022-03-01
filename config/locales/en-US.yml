@@ -575,7 +575,7 @@ en-US:
       update:
         success: Update successfully.
     menu:
-      create_new_space: Create other space
+      create_new_space: Create New space
       logout: Log out
     title:
       add_icon: Add icon
@@ -976,6 +976,8 @@ en-US:
       change_domain: Change Domain Name
       change_domain_btn: Update
       change_domain_desc: Unless you really need it, we recommended that you do not change your space domain. This will cause the related links, such as the Pages, Mentions, etc. that were linked to you before not being opened. <0>Learn More</0>
+      avatar_uploaded_success: Avatar uploaded successfully.
+      avatar_uploaded_error: Avatar uploaded failed.
       avatar_updated: Avatar updated successfully.
       profile_updated: Profile updated successfully.
       appearance: Appearance

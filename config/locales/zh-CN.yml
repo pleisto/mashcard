@@ -692,7 +692,7 @@ zh-CN:
       update:
         success: 更新成功。
     menu:
-      create_new_space: Create other space
+      create_new_space: 创建新空间
       logout: Log out
     title:
       add_icon: 添加图标

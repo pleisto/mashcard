@@ -8,6 +8,11 @@ declare module '*.mp4' {
   export = src
 }
 
+declare module '*.png' {
+  const src: string
+  export = src
+}
+
 declare module '*.webp' {
   const src: string
   export = src

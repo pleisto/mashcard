@@ -1,6 +1,7 @@
 import React from 'react'
 import { SpaceAvatar } from '../SpaceAvatar'
-import styles from './index.module.less'
+import * as Root from './index.style'
+/* import styles from './index.module.less' */
 
 export interface SpaceType {
   name?: string | null | undefined
@@ -13,19 +14,20 @@ export interface SpaceType {
 interface SpaceCardProps {
   space: SpaceType
   label?: JSX.Element | string | false
+  size?: 'sm' | 'md'
 }
 
-export const SpaceCard: React.FC<SpaceCardProps> = ({ space, label }) => {
+export const SpaceCard: React.FC<SpaceCardProps> = ({ space, label, size = 'md' }) => {
   const extra = label !== false && (label ?? (space.personal ? space.email : `@${space.domain}`))
   return (
-    <div className={styles.card}>
-      <div className={styles.avatarWrapper}>
-        <SpaceAvatar space={space} size="sm" />
-      </div>
-      <div className={styles.content}>
-        <span className={styles.name}>{space.name}</span>
-        {extra && <span className={styles.email}>{extra}</span>}
-      </div>
-    </div>
+    <Root.Card size={size}>
+      <Root.AvatarWrapper>
+        <SpaceAvatar space={space} size={size} />
+      </Root.AvatarWrapper>
+      <Root.Content>
+        <Root.Name>{space.name}</Root.Name>
+        {extra && size !== 'sm' && <Root.Email>{extra}</Root.Email>}
+      </Root.Content>
+    </Root.Card>
   )
 }
