@@ -37,7 +37,7 @@ export const CountIf = (
   let sum: number = 0
 
   spreadsheet.listRows().forEach(row => {
-    const value = Number(spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId }) ?? 0)
+    const value = Number(spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display ?? 0)
     if (predicateFunction(value)) {
       sum += 1
     }

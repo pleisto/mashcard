@@ -8,7 +8,8 @@ import {
   StringResult,
   uuid,
   VariableMetadata,
-  ContextInterface
+  ContextInterface,
+  VariableDisplayData
 } from '../types'
 
 export interface ControlType {
@@ -71,7 +72,7 @@ export interface SpreadsheetInitializer {
   listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
 }
 
-export interface SpreadsheetPersistence {
+export interface SpreadsheetDynamicPersistence {
   blockId: NamespaceId
   spreadsheetName: string
   columns: ColumnInitializer[]
@@ -79,23 +80,30 @@ export interface SpreadsheetPersistence {
   cells: Cell[]
 }
 
+export interface SpreadsheetAllPersistence {
+  blockId: NamespaceId
+  rowCount: number
+  columnCount: number
+  persistence?: SpreadsheetDynamicPersistence
+}
+
 export interface SpreadsheetType {
   blockId: NamespaceId
   dynamic: boolean
-  persistence?: SpreadsheetPersistence
+  persistence?: SpreadsheetDynamicPersistence
   columnCount: () => number
   rowCount: () => number
   name: () => string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
   listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
-  findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined
+  findCellDisplayData: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => VariableDisplayData | undefined
   getRow: (rowId: uuid) => Row | undefined
   getColumnById: (columnId: ColumnId) => ColumnInitializer | undefined
   getColumnByName: (name: string) => ColumnInitializer | undefined
   toArray: () => string[][]
   toRecord: () => Array<Record<string, StringResult>>
-  persist: () => SpreadsheetPersistence
+  persistAll: () => SpreadsheetAllPersistence
 }
 
 export interface ButtonInitializer extends ControlInitializer {

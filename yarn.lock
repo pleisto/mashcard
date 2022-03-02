@@ -1938,9 +1938,11 @@ __metadata:
     "@tiptap/extension-unique-id": ^2.0.0-beta.4
     "@tiptap/react": ^2.0.0-beta.108
     "@tiptap/suggestion": ^2.0.0-beta.86
+    "@types/qrcode.react": ^1.0.2
     "@types/react-pdf": ^5.0.9
     i18next: ^21.6.12
     popper-max-size-modifier: ^0.2.0
+    qrcode.react: ^1.0.1
     re-resizable: ^6.9.2
     react: ^17.0.2
     react-dnd: ^15.1.1
@@ -7424,6 +7426,15 @@ __metadata:
     "@types/prosemirror-state": "*"
     "@types/prosemirror-transform": "*"
   checksum: 72adfe67376b1d19af728b377e9450568d21aa6c4eda8207d84aed1e15483eff970b265f7d8e389d3c5ea11fed796c4697465ee3196e4a520d4d489354f71d69
+  languageName: node
+  linkType: hard
+
+"@types/qrcode.react@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@types/qrcode.react@npm:1.0.2"
+  dependencies:
+    "@types/react": "*"
+  checksum: be256f0192366b4c0822da43c732bf3e29beb954c89d739aa770f09e5160842a3ca4d6814cb57bbcbbf8997cf7af0b998de318dab957f0820f267bb746c9a329
   languageName: node
   linkType: hard
 
@@ -21171,6 +21182,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prop-types@npm:^15.6.0":
+  version: 15.8.1
+  resolution: "prop-types@npm:15.8.1"
+  dependencies:
+    loose-envify: ^1.4.0
+    object-assign: ^4.1.1
+    react-is: ^16.13.1
+  checksum: c056d3f1c057cb7ff8344c645450e14f088a915d078dcda795041765047fa080d38e5d626560ccaac94a4e16e3aa15f3557c1a9a8d1174530955e992c675e459
+  languageName: node
+  linkType: hard
+
 "property-expr@npm:^2.0.4":
   version: 2.0.5
   resolution: "property-expr@npm:2.0.5"
@@ -21409,6 +21431,26 @@ __metadata:
   version: 1.5.1
   resolution: "q@npm:1.5.1"
   checksum: 147baa93c805bc1200ed698bdf9c72e9e42c05f96d007e33a558b5fdfd63e5ea130e99313f28efc1783e90e6bdb4e48b67a36fcc026b7b09202437ae88a1fb12
+  languageName: node
+  linkType: hard
+
+"qr.js@npm:0.0.0":
+  version: 0.0.0
+  resolution: "qr.js@npm:0.0.0"
+  checksum: 5ac6c393967bdeaa660e7fd3a501a25eb538c1f6008a4d30ab2b97bbe520e5c236530090773f1578aa0a523cdaa6923c866615e21143f9e7cd22abd41c789b69
+  languageName: node
+  linkType: hard
+
+"qrcode.react@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "qrcode.react@npm:1.0.1"
+  dependencies:
+    loose-envify: ^1.4.0
+    prop-types: ^15.6.0
+    qr.js: 0.0.0
+  peerDependencies:
+    react: ^15.5.3 || ^16.0.0 || ^17.0.0
+  checksum: 154a9557d103fa776cd99bc0d2600b862be74872ff965052533bc38ea0606c4d0965b4dd6df93e53f1db86699517a25db2718bbbc08c5d535a90c0d335552e9a
   languageName: node
   linkType: hard
 
@@ -21928,7 +21970,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.12.0, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
+"react-is@npm:^16.12.0, react-is@npm:^16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f

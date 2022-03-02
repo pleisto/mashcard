@@ -1,10 +1,19 @@
-import { NamespaceId, StringResult, uuid } from '../types'
-import { SpreadsheetType, SpreadsheetInitializer, SpreadsheetPersistence, Row, ColumnInitializer, Cell } from './types'
+import { ContextInterface, NamespaceId, StringResult, uuid, VariableDisplayData } from '../types'
+import {
+  SpreadsheetType,
+  SpreadsheetInitializer,
+  SpreadsheetDynamicPersistence,
+  Row,
+  ColumnInitializer,
+  Cell,
+  SpreadsheetAllPersistence
+} from './types'
 
 export class SpreadsheetClass implements SpreadsheetType {
+  _formulaContext: ContextInterface
   blockId: NamespaceId
   dynamic: boolean
-  persistence?: SpreadsheetPersistence
+  persistence?: SpreadsheetDynamicPersistence
   name: () => string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
@@ -19,6 +28,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     dynamic,
     ctx: { meta, formulaContext }
   }: SpreadsheetInitializer) {
+    this._formulaContext = formulaContext
     this.dynamic = dynamic
     this.blockId = blockId
     if (meta) {
@@ -37,17 +47,26 @@ export class SpreadsheetClass implements SpreadsheetType {
     this.listCells = listCells
 
     if (dynamic) {
-      this.persistence = this.persist()
+      this.persistence = this.persistDynamic()
     }
   }
 
-  persist(): SpreadsheetPersistence {
+  persistDynamic(): SpreadsheetDynamicPersistence {
     return {
       blockId: this.blockId,
       spreadsheetName: this.name(),
       columns: this.listColumns(),
       rows: this.listRows(),
       cells: this.listCells({})
+    }
+  }
+
+  persistAll(): SpreadsheetAllPersistence {
+    return {
+      blockId: this.blockId,
+      rowCount: this.columnCount(),
+      columnCount: this.columnCount(),
+      persistence: this.persistence
     }
   }
 
@@ -71,9 +90,13 @@ export class SpreadsheetClass implements SpreadsheetType {
     return this.listColumns().find(col => col.name === name)
   }
 
-  findCellValue({ rowId, columnId }: { rowId: uuid; columnId: uuid }): string | undefined {
-    const cells = this.listCells({ rowId, columnId })
-    return cells[0]?.value
+  findCellDisplayData({ rowId, columnId }: { rowId: uuid; columnId: uuid }): VariableDisplayData | undefined {
+    const cell = this.listCells({ rowId, columnId })[0]
+    if (!cell) {
+      return undefined
+    }
+
+    return (cell.data as any).displayData
   }
 
   toArray(): string[][] {

@@ -1,24 +1,79 @@
-import { AnyTypeResult, BaseResult, FunctionContext, VariableData, VariableDisplayData } from '../types'
+import { AnyTypeResult, BaseResult, FunctionContext, NamespaceId, VariableData, VariableDisplayData } from '../types'
 import {
   SwitchClass,
   ButtonClass,
   SelectClass,
   ColumnClass,
   SpreadsheetClass,
-  SpreadsheetPersistence
+  SpreadsheetDynamicPersistence
 } from '../controls'
 import { BlockClass } from '../controls/block'
 
 const VARIABLE_VERSION = 0
 
-export const dumpDisplayResult = (t: VariableData): VariableDisplayData => {
+export const dumpDisplayResult = (t: VariableData, disableDump: boolean): VariableDisplayData => {
   return {
     definition: t.definition,
-    result: dumpValue(t.variableValue.result) as any,
+    result: disableDump ? t.variableValue.result : (dumpValue(t.variableValue.result) as any),
     type: t.type,
     kind: t.kind,
-    version: VARIABLE_VERSION
+    version: VARIABLE_VERSION,
+    display: displayValue(t.variableValue.result, ''),
+    meta: {
+      namespaceId: t.namespaceId,
+      variableId: t.variableId,
+      name: t.name,
+      position: 0,
+      input: t.definition,
+      type: t.type
+    }
   }
+}
+
+export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
+  switch (v.type) {
+    case 'number':
+    case 'boolean':
+      return String(v.result)
+    case 'string':
+      return v.result
+    case 'Date':
+      return v.result.toISOString()
+    case 'Error':
+      return `#<Error> ${v.result}`
+    case 'Spreadsheet':
+      return `#<Spreadsheet> ${v.result.name()}`
+    case 'Block':
+      return `#<Block> ${v.result.name(pageId)}`
+    case 'Column':
+      return `#<Column> ${v.result.spreadsheet.name()}.${v.result.name}`
+    case 'Predicate':
+      return `[${v.operator}] ${displayValue(v.result, pageId)}`
+    case 'Record':
+      return `{ ${Object.entries(v.result)
+        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeResult, pageId)}`)
+        .join(', ')} }`
+    case 'Array':
+      return `[${v.result.map((v: AnyTypeResult) => displayValue(v, pageId)).join(', ')}]`
+    case 'Button':
+      return `#<${v.type}> ${v.result.name}`
+    case 'Switch':
+      return `#<${v.type}> ${v.result.checked}`
+    case 'Select':
+      return `#<${v.type}> ${JSON.stringify(v.result.options)}`
+    case 'Reference':
+      return `#<Reference> ${JSON.stringify(v.result)}`
+    case 'Function':
+      return `#<Function> ${v.result.map(
+        ({ name, args }) => `${name} ${args.map(a => displayValue(a, pageId)).join(', ')}`
+      )}`
+    case 'Cst':
+      return '#<Cst>'
+    case 'Blank':
+      return `#N/A`
+  }
+
+  return JSON.stringify(v.result)
 }
 
 export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableDisplayData): VariableDisplayData => {
@@ -36,6 +91,13 @@ export const dumpValue = (cacheValue: BaseResult): BaseResult => {
     return { type: cacheValue.type, result: cacheValue.result.persistence() }
   }
 
+  if (cacheValue.result instanceof SpreadsheetClass) {
+    return {
+      type: cacheValue.type,
+      result: cacheValue.result.persistAll()
+    }
+  }
+
   return cacheValue
 }
 
@@ -49,7 +111,8 @@ export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyType
 
   if (cacheValue.type === 'Spreadsheet' && !(cacheValue.result instanceof SpreadsheetClass)) {
     if (cacheValue.result.dynamic) {
-      const { blockId, spreadsheetName, columns, rows, cells }: SpreadsheetPersistence = cacheValue.result.persistence!
+      const { blockId, spreadsheetName, columns, rows, cells }: SpreadsheetDynamicPersistence =
+        cacheValue.result.persistence!
       return {
         type: 'Spreadsheet',
         result: new SpreadsheetClass({

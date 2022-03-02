@@ -42,6 +42,7 @@
     "@tiptap/react": "^2.0.0-beta.108",
     "@tiptap/suggestion": "^2.0.0-beta.86",
     "popper-max-size-modifier": "^0.2.0",
+    "qrcode.react": "^1.0.1",
     "re-resizable": "^6.9.2",
     "react-dnd": "^15.1.1",
     "react-dnd-html5-backend": "^15.1.2",
@@ -50,6 +51,7 @@
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {
+    "@types/qrcode.react": "^1.0.2",
     "@types/react-pdf": "^5.0.9",
     "i18next": "^21.6.12",
     "react": "^17.0.2",

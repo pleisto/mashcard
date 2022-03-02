@@ -602,6 +602,8 @@ export interface VariableDisplayData {
   kind: VariableKind
   type: FormulaSourceType
   version: number
+  meta: VariableMetadata
+  display: string
 }
 
 export interface VariableData extends VariableResult {

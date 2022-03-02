@@ -2,6 +2,7 @@ import {
   buildVariable,
   Completion,
   ContextInterface,
+  errorIsFatal,
   FormulaSourceType,
   interpret,
   InterpretResult,
@@ -77,21 +78,6 @@ export interface CalculateOutput {
   newPosition: number
   parseResult: ParseResult
   interpretResult: InterpretResult
-}
-
-const variableErrorFatal = (variable: VariableInterface | undefined): boolean => {
-  if (!variable) return false
-
-  const { success, result } = variable.t.variableValue
-  if (
-    !success &&
-    result.type === 'Error' &&
-    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.errorKind)
-  ) {
-    return true
-  }
-
-  return false
 }
 
 const fetchEditorContent = (
@@ -271,7 +257,7 @@ export const useFormula = ({
       editorContentRef.current.position
     )
 
-    const result = await calculate({
+    const { interpretResult, newPosition, parseResult, completions, newVariable } = await calculate({
       namespaceId: rootId,
       formulaId,
       variable: variableRef.current,
@@ -281,27 +267,16 @@ export const useFormula = ({
       formulaContext
     })
 
-    if (!result) return
-
-    const { interpretResult, newPosition, parseResult, completions, newVariable } = result
-
-    // console.log('calculate result', { newPosition, result, editorContent: editorContentRef.current, realInputs })
-
     setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
 
-    if ((parseResult.valid && !variableErrorFatal(newVariable)) || inputIsEmpty) {
+    if ((parseResult.valid && !errorIsFatal(newVariable.t)) || inputIsEmpty) {
       editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, newPosition)
       // console.log('replace editorContent', editorContentRef.current)
       replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
     }
 
-    if (formulaIsNormal && inputIsEmpty && !variableErrorFatal(newVariable)) {
-      variableRef.current = undefined
-      setVariableT(undefined)
-    } else {
-      variableRef.current = newVariable
-      setVariableT(newVariable.t)
-    }
+    variableRef.current = newVariable
+    setVariableT(newVariable.t)
 
     // devLog({ variable, ref: variableRef.current, finalInput, inputIsEmpty, parseResult, newVariable })
 
@@ -412,7 +387,7 @@ export const useFormula = ({
     if (!(nameRef.current || defaultNameRef.current)) return true
     // if (!inputRef.current) return true
 
-    const errorFatal = variableErrorFatal(variableRef.current)
+    const errorFatal = errorIsFatal(variableRef.current.t)
     if (errorFatal) return true
 
     return false

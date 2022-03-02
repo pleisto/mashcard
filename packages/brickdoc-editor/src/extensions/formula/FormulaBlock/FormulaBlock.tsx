@@ -60,7 +60,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     ) : (
       <FormulaDisplay
         display={displayValue(savedVariableT.variableValue.result, rootId)}
-        displayData={dumpDisplayResult(savedVariableT)}
+        displayData={dumpDisplayResult(savedVariableT, true)}
         formulaType={formulaType}
       />
     )
@@ -75,7 +75,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       <Tooltip title={savedVariableT.name}>
         <FormulaDisplay
           display={displayValue(savedVariableT.variableValue.result, rootId)}
-          displayData={dumpDisplayResult(savedVariableT)}
+          displayData={dumpDisplayResult(savedVariableT, true)}
           formulaType={formulaType}
         />
       </Tooltip>
@@ -97,7 +97,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       completion={completion}
       handleSelectActiveCompletion={handleSelectActiveCompletion}
       setCompletion={setCompletion}
-      handleDelete={handleDelete}>
+      handleDelete={handleDelete}
+    >
       {renderData}
     </FormulaMenu>
   )

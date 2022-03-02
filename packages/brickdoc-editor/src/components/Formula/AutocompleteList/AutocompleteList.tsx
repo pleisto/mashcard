@@ -70,6 +70,9 @@ const COMPLETION_STYLE_META: {
     render: (completion: Completion, blockId: string) => {
       const { preview } = completion as SpreadsheetCompletion
 
+      // TODO
+      // <FormulaSpreadsheet spreadsheet={preview} />
+
       return (
         <div className="autocomplete-preview-spreadsheet">
           <div className="autocomplete-preview-spreadsheet-name">{preview.name()}</div>
@@ -160,7 +163,7 @@ const COMPLETION_STYLE_META: {
             <div className="autocomplete-preview-section-head">Value</div>
             <span className="autocomplete-preview-output-tag">
               <FormulaValue
-                displayData={dumpDisplayResult(preview.t)}
+                displayData={dumpDisplayResult(preview.t, true)}
                 display={displayValue(preview.t.variableValue.result, blockId)}
               />
             </span>
@@ -234,7 +237,8 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
               onKeyDown={onKeyDown}
               className={cx('autocomplete-list-item', {
                 active: c.value === completion.activeCompletion?.value
-              })}>
+              })}
+            >
               {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
               <div className="autocomplete-list-item-content">
                 <span className="autocomplete-list-item-name">{c.name}</span>

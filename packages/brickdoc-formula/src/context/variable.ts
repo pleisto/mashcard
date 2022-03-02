@@ -27,50 +27,17 @@ import { dumpValue, loadValue } from './persist'
 import { block2name, variable2name, variableKey } from '../grammar/convert'
 import { BlockClass } from '../controls/block'
 
-export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
-  switch (v.type) {
-    case 'number':
-    case 'boolean':
-      return String(v.result)
-    case 'string':
-      return v.result
-    case 'Date':
-      return v.result.toISOString()
-    case 'Error':
-      return `#<Error> ${v.result}`
-    case 'Spreadsheet':
-      return `#<Spreadsheet> ${v.result.name()}`
-    case 'Block':
-      return `#<Block> ${v.result.name(pageId)}`
-    case 'Column':
-      return `#<Column> ${v.result.spreadsheet.name()}.${v.result.name}`
-    case 'Predicate':
-      return `[${v.operator}] ${displayValue(v.result, pageId)}`
-    case 'Record':
-      return `{ ${Object.entries(v.result)
-        .map(([key, value]) => `${key}: ${displayValue(value as AnyTypeResult, pageId)}`)
-        .join(', ')} }`
-    case 'Array':
-      return `[${v.result.map((v: AnyTypeResult) => displayValue(v, pageId)).join(', ')}]`
-    case 'Button':
-      return `#<${v.type}> ${v.result.name}`
-    case 'Switch':
-      return `#<${v.type}> ${v.result.checked}`
-    case 'Select':
-      return `#<${v.type}> ${JSON.stringify(v.result.options)}`
-    case 'Reference':
-      return `#<Reference> ${JSON.stringify(v.result)}`
-    case 'Function':
-      return `#<Function> ${v.result.map(
-        ({ name, args }) => `${name} ${args.map(a => displayValue(a, pageId)).join(', ')}`
-      )}`
-    case 'Cst':
-      return '#<Cst>'
-    case 'Blank':
-      return `#N/A`
+export const errorIsFatal = (t: VariableData): boolean => {
+  const { success, result } = t.variableValue
+  if (
+    !success &&
+    result.type === 'Error' &&
+    ['name_unique', 'name_check', 'name_invalid', 'fatal'].includes(result.errorKind)
+  ) {
+    return true
   }
 
-  return JSON.stringify(v.result)
+  return false
 }
 
 export const castVariable = (

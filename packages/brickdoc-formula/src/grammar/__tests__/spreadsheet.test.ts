@@ -41,15 +41,15 @@ const columns: ColumnInitializer[] = [
 ]
 
 const cells: Cell[] = [
-  { rowId: firstRowId, columnId: firstColumnId, value: '1', data: {}, cellId: '' },
-  { rowId: firstRowId, columnId: secondColumnId, value: '2', data: {}, cellId: '' },
-  { rowId: firstRowId, columnId: thirdColumnId, value: '3', data: {}, cellId: '' },
-  { rowId: secondRowId, columnId: firstColumnId, value: '3', data: {}, cellId: '' },
-  { rowId: secondRowId, columnId: secondColumnId, value: '4', data: {}, cellId: '' },
-  { rowId: secondRowId, columnId: thirdColumnId, value: '', data: {}, cellId: '' },
-  { rowId: thirdRowId, columnId: firstColumnId, value: '5', data: {}, cellId: '' },
-  { rowId: thirdRowId, columnId: secondColumnId, value: '6', data: {}, cellId: '' },
-  { rowId: thirdRowId, columnId: thirdColumnId, value: 'Foo', data: {}, cellId: '' }
+  { rowId: firstRowId, columnId: firstColumnId, value: '1', data: { displayData: { display: '1' } }, cellId: '' },
+  { rowId: firstRowId, columnId: secondColumnId, value: '2', data: { displayData: { display: '2' } }, cellId: '' },
+  { rowId: firstRowId, columnId: thirdColumnId, value: '3', data: { displayData: { display: '3' } }, cellId: '' },
+  { rowId: secondRowId, columnId: firstColumnId, value: '3', data: { displayData: { display: '3' } }, cellId: '' },
+  { rowId: secondRowId, columnId: secondColumnId, value: '4', data: { displayData: { display: '4' } }, cellId: '' },
+  { rowId: secondRowId, columnId: thirdColumnId, value: '', data: { displayData: { display: '' } }, cellId: '' },
+  { rowId: thirdRowId, columnId: firstColumnId, value: '5', data: { displayData: { display: '5' } }, cellId: '' },
+  { rowId: thirdRowId, columnId: secondColumnId, value: '6', data: { displayData: { display: '6' } }, cellId: '' },
+  { rowId: thirdRowId, columnId: thirdColumnId, value: 'Foo', data: { displayData: { display: 'Foo' } }, cellId: '' }
 ]
 
 const spreadsheet: SpreadsheetType = new SpreadsheetClass({

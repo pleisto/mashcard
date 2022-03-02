@@ -1,5 +1,5 @@
 import React from 'react'
-import { displayValue, dumpDisplayResult, ErrorMessage, VariableData } from '@brickdoc/formula'
+import { displayValue, dumpDisplayResult, errorIsFatal, ErrorMessage, VariableData } from '@brickdoc/formula'
 import './FormulaMenu.less'
 import { FormulaValue } from './FormulaValue'
 
@@ -10,6 +10,10 @@ export interface FormulaResultProps {
 
 export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId }) => {
   if (!variableT) {
+    return <></>
+  }
+
+  if (variableT.type === 'normal' && variableT.definition.trim() === '=' && !errorIsFatal(variableT)) {
     return <></>
   }
 
@@ -30,7 +34,7 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId 
         )}
         {!error && (
           <FormulaValue
-            displayData={dumpDisplayResult(variableT)}
+            displayData={dumpDisplayResult(variableT, true)}
             display={displayValue(variableT.variableValue.result, pageId)}
           />
         )}
