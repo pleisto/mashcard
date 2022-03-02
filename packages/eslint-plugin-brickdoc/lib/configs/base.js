@@ -97,7 +97,14 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/restrict-plus-operands': 'warn'
+        '@typescript-eslint/restrict-plus-operands': 'warn',
+        '@typescript-eslint/no-misused-promises': [
+          'error',
+          {
+            checksConditionals: true,
+            checksVoidReturn: false
+          }
+        ]
       }
     }
   ]

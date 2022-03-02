@@ -25,14 +25,6 @@ node_modules
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
-.yarn/cache/@pdftron*
-.yarn/cache/typescript*
-.yarn/cache/pdfjs*
-.yarn/cache/esbuild*
-.yarn/cache/@swc*
-.yarn/cache/@babel*
-.yarn/cache/@postcss*
-.yarn/cache/rc-*
 .pnp.*
 /.bundle/*
 

@@ -4,15 +4,15 @@ concurrency:
   cancel-in-progress: true
 on:
   pull_request:
-env:
-  # GitHub-hosted runner have 7 gb RAM.
-  # 5250mb === 7gb * 0.75
-  NODE_OPTIONS: '--max-old-space-size=5950'
 jobs:
   es:
     name: ECMAScript
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      # GitHub-hosted runner have 7 gb RAM.
+      # 5250mb === 7gb * 0.75
+      NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v2
@@ -34,11 +34,9 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          cache-dependency-path: |
-            yarn.lock
       - name: Run yarn install
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn install --immutable  --inline-builds
+        run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: '0'
       - name: Run TypeScript checks

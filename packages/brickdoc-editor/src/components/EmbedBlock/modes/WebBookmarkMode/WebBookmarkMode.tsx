@@ -5,7 +5,6 @@ import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { BlockContainer } from '../../../../components'
 
 export interface WebBookmarkModeProps {
-  editor: NodeViewProps['editor']
   deleteNode: NodeViewProps['deleteNode']
   getPos: NodeViewProps['getPos']
   cover: string

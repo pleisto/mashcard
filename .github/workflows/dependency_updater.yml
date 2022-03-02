@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       YARN_ENABLE_IMMUTABLE_INSTALLS: false
+      NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v2
@@ -32,7 +33,7 @@ jobs:
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
           CYPRESS_INSTALL_BINARY: '0'
-          PATTERNS: "'!(rc-cascader|eslint|react-router-dom)' '@!(brickdoc|rails|tiptap|pmmmwh|uppy)/*'"
+          PATTERNS: "'!(chalk|fastify-secure-session|ms|typescript)' '@!(brickdoc|mdx-js|storybook|rails|tiptap)/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         env:

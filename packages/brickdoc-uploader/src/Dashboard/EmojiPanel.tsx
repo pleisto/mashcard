@@ -5,7 +5,9 @@ import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions, UploadResultData } from './plugin'
 
 export interface EmojiPanelProps {
+  // eslint-disable-next-line react/no-unused-prop-types
   importSource: ImportSourceOption
+  // eslint-disable-next-line react/no-unused-prop-types
   pluginOptions: DashboardPluginOptions
   emojiData: { [key: string]: EmojiMeta[] }
   recentEmojis: EmojiMeta[]

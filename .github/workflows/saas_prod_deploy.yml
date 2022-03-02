@@ -16,7 +16,6 @@ env:
   image: ghcr.io/brickdoc/brickdoc-saas
   domain: brickdoc.com
   GCP_PROJECT: golden-union-341912
-  NODE_OPTIONS: '--max-old-space-size=5950'
 jobs:
   build:
     name: 'Build and Push Docker Image'
@@ -32,8 +31,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          cache-dependency-path: |
-            yarn.lock
       - run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: '0'

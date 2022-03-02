@@ -24,7 +24,7 @@ const canFilePreview = (fileType: FileType, mode: EmbedBlockAttributes['mode']):
   mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
 export const EmbedBlock: React.FC<NodeViewProps> = props => {
-  const { editor, node, updateAttributes, deleteNode, getPos } = props
+  const { node, updateAttributes, deleteNode, getPos } = props
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const latestEmbedBlockAttributes = React.useRef<Partial<EmbedBlockAttributes>>({})
   const updateEmbedBlockAttributes = React.useCallback(
@@ -99,7 +99,6 @@ export const EmbedBlock: React.FC<NodeViewProps> = props => {
 
     return (
       <WebBookmarkMode
-        editor={editor}
         title={title}
         cover={cover}
         description={description}

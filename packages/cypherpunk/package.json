@@ -13,11 +13,11 @@
   "main": "./src/index.ts",
   "module": "./src/index.ts",
   "dependencies": {
-    "blake3": "2.1.7",
-    "sodium-native": "3.3.0"
+    "blake3": "^2.1.7",
+    "sodium-native": "^3.3.0"
   },
   "sideEffects": false,
   "devDependencies": {
-    "@types/sodium-native": "2.3.5"
+    "@types/sodium-native": "^2.3.5"
   }
 }

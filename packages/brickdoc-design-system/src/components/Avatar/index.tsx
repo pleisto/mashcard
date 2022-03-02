@@ -14,7 +14,6 @@ export interface AvatarProps extends Omit<HTMLProps<HTMLDivElement>, 'size' | 's
   src?: React.ReactNode | string
   className?: string
   style?: React.CSSProperties
-  children?: React.ReactNode
 }
 
 const AvatarWrapper = styled('span', {
@@ -109,6 +108,7 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
   return (
     <AvatarWrapper
       ref={avatarRef}
+      // @ts-expect-error
       css={{
         ...customSizeCss,
         ...initialsObj?.color,

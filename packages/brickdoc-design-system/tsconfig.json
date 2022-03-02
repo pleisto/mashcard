@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["**/*", "__mocks__"],
+  "include": ["**/*"],
   "exclude": ["dist/**/*"],
   "references": [
     {

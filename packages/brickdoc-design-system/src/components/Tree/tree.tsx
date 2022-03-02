@@ -52,6 +52,7 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
     emptyNode,
     selectedNodeId,
     draggable = false,
+    className,
     treeNodeClassName,
     onDrop
   },
@@ -113,12 +114,14 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
   return (
     <DndProvider backend={HTML5Backend}>
       <List<TNode>
+        className={className}
         data={renderTree}
         data-test-id="virtual-list"
         height={height ?? 200}
         itemHeight={34}
         itemKey="key"
-        ref={ref ?? listRef}>
+        ref={ref ?? listRef}
+      >
         {(item, index) => (
           <Node
             className={treeNodeClassName}

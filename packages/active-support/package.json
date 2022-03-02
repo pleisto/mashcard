@@ -21,6 +21,6 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@types/lodash": "^4.14.178"
+    "@types/lodash": "^4.14.179"
   }
 }

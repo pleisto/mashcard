@@ -19,7 +19,7 @@ module.exports = {
     ],
     'react/jsx-key': 'error',
     'react/jsx-fragments': ['error', 'syntax'],
-    'react/jsx-curly-brace-presence': ['error', 'never'],
+    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never', propElementValues: 'always' }],
     'react/no-did-update-set-state': 'error',
     'react/no-unknown-property': 'error',
     'react/no-unused-prop-types': 'error',

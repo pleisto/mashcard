@@ -19,7 +19,6 @@ on:
 env:
   image: ghcr.io/brickdoc/brickdoc:latest
   domain: trunk.brickdoc.dev
-  NODE_OPTIONS: '--max-old-space-size=5950'
 concurrency:
   group: monolith-trunk-cd
 jobs:
@@ -34,8 +33,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          cache-dependency-path: |
-            yarn.lock
       - run: yarn install --immutable
         env:
           CYPRESS_INSTALL_BINARY: '0'

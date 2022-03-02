@@ -1,5 +1,4 @@
 // tsconfig.json is for editor/eslint support, including every ts/tsx files
-// tsconfig.build.json is for building, including only files needed for the final product
 {
   "extends": "./tsconfig.shared.json",
   "compilerOptions": {
@@ -11,16 +10,13 @@
     }
   },
   "include": ["**/*", "node_modules/vite-plugin-pwa/client.d.ts"],
-  "exclude": ["packages/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
+  "exclude": ["packages/**/*", "apps/**/*", "tools/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
   "references": [
     {
       "path": "packages/active-support"
     },
     {
-      "path": "packages/brickdoc-test-helper"
-    },
-    {
-      "path": "packages/brickdoc-uploader"
+      "path": "packages/brickdoc-design-icons"
     },
     {
       "path": "packages/brickdoc-design-system"
@@ -33,6 +29,24 @@
     },
     {
       "path": "packages/brickdoc-schema"
+    },
+    {
+      "path": "packages/brickdoc-test-helper"
+    },
+    {
+      "path": "packages/brickdoc-uploader"
+    },
+    {
+      "path": "packages/cypherpunk"
+    },
+    {
+      "path": "packages/dotenv"
+    },
+    {
+      "path": "apps/server-api"
+    },
+    {
+      "path": "tools/devkit"
     }
   ]
 }
