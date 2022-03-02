@@ -5,13 +5,14 @@ import { useReactiveVar } from '@apollo/client'
 import { Button } from '@brickdoc/design-system'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MoreMenu } from '../../../common/components/MoreMenu'
+import { HistoryMenu } from '../../../common/components/HistoryMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
 import { isSavingVar } from '../../../reactiveVars'
 import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
 import styles from './DocumentTopBar.module.less'
 import loadingIcon from './loading.png'
+import { BrickdocContext } from '@/common/brickdocContext'
 
 export interface DocumentTopBarProps {
   docMeta: DocMeta
@@ -21,6 +22,7 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
   const navigate = useNavigate()
   const isSaving = useReactiveVar(isSavingVar)
+  const { features } = React.useContext(BrickdocContext)
 
   if (!docMeta.viewable) {
     return <></>
@@ -37,19 +39,16 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
   const editableMenu =
     // eslint-disable-next-line no-nested-ternary
     docMeta.id && !docMeta.isDeleted ? (
-      docMeta.isMine ? (
-        <>
-          <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
-          <ShareMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
-          <MoreMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
-          <PinMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
-        </>
-      ) : (
-        <>
-          <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
-          <MoreMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
-        </>
-      )
+      <>
+        <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
+        <ShareMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+        {features.page_history ? (
+          <HistoryMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+        ) : (
+          <></>
+        )}
+        {docMeta.isMine ? <PinMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} /> : <></>}
+      </>
     ) : (
       <></>
     )

@@ -3,12 +3,12 @@ import { Button } from '@brickdoc/design-system'
 import { Time } from '@brickdoc/design-icons'
 import React, { useState } from 'react'
 import { PageHistoryModal } from '../PageHistoryModal'
-interface MoreMenuProps {
+interface HistoryMenuProps {
   docMeta: NonNullDocMeta
   className: string
 }
 
-export const MoreMenu: React.FC<MoreMenuProps> = ({ docMeta, className }) => {
+export const HistoryMenu: React.FC<HistoryMenuProps> = ({ docMeta, className }) => {
   const [pageHistoryModalVisible, setPageHistoryModalVisible] = useState<boolean>(false)
 
   const onClick = (): void => {

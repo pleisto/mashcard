@@ -53,6 +53,7 @@ class BrickdocConfig < ApplicationRecord
 
     def field(key, scope: '', **opts)
       key = key.to_s
+      scope = scope.to_s
       if opts[:frontend]
         frontend_fields[scope] ||= []
         frontend_fields[scope].push key
@@ -60,15 +61,11 @@ class BrickdocConfig < ApplicationRecord
       super key, scope: scope, **opts
     end
 
-    def to_frontend
-      result = frontend_fields.map do |scope, keys|
-        values = keys.uniq.map do |key|
-          [key, get(key, scope: scope)]
-        end.to_h
-        [scope, values]
+    def to_frontend(scope: '')
+      scope = scope.to_s
+      frontend_fields[scope].uniq.map do |key|
+        [key, get(key, scope: scope)]
       end.to_h
-      # fetch null string key could fix the null scope bug
-      result.fetch('', result)
     end
   end
 
@@ -136,4 +133,8 @@ class BrickdocConfig < ApplicationRecord
   field :kb_articles, type: :hash, default: {
     changing_domain: 'https://help.brickdoc.com/en/articles/5972616-brickdoc-username-policy'
   }, frontend: true
+
+  scope :features do
+    field :page_history, type: :boolean, default: (Rails.env.development? ? true : false), frontend: true
+  end
 end
