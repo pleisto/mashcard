@@ -18,6 +18,7 @@ export interface BlockContainerProps {
   actionButtonClassName?: BlockActionsProps['buttonClassName']
   contentForCopy?: string
   ref?: any
+  onClick?: React.MouseEventHandler
 }
 
 export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HTMLElement, BlockContainerProps>(

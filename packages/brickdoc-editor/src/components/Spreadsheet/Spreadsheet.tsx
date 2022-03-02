@@ -1,5 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/react'
+import { TextSelection } from 'prosemirror-state'
 import { Input, Icon, devLog } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
@@ -28,7 +29,7 @@ import { SpreadsheetCell } from './SpreadsheetCell'
 import './Spreadsheet.less'
 import { useFormulaSpreadsheet } from './useFormulaSpreadsheet'
 
-export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode, updateAttributes }) => {
+export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode, updateAttributes, getPos }) => {
   const [documentEditable] = useDocumentEditable(undefined)
 
   const parentId: string = node.attrs.uuid
@@ -152,8 +153,21 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     buttonClassName: 'spreadsheet-action'
   }
 
+  const onSpreadsheetClick = (event: React.MouseEvent<HTMLInputElement>): void => {
+    // // editor.chain().setNodeSelection(getPos()).run()
+    const { state, view } = editor
+    const { tr } = state
+    let pos = getPos() - 1
+    if (pos < 0) {
+      pos = 0
+    }
+    // TODO: need fix for co-editing cursor
+    view.dispatch(tr.setSelection(TextSelection.create(tr.doc, pos)))
+    editor.commands.blur()
+  }
+
   return (
-    <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions}>
+    <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions} onClick={onSpreadsheetClick}>
       {documentEditable ? (
         <Input
           bordered={false}
