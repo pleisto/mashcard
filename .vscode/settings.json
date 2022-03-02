@@ -140,5 +140,6 @@
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "eslint.lintTask.enable": true,
   "eslint.packageManager": "yarn",
-  "eslint.useESLintClass": true
+  "eslint.useESLintClass": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

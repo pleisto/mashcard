@@ -9,6 +9,6 @@
     "dist"
   ],
   "dependencies": {
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
+    "@brickdoc/test-helper": "workspace:^"
   }
 }

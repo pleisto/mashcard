@@ -9,8 +9,8 @@
     "dist"
   ],
   "dependencies": {
-    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
+    "@brickdoc/design-system": "workspace:^",
+    "@brickdoc/test-helper": "workspace:^",
     "@uppy/core": "^2.1.5",
     "@uppy/dashboard": "^2.1.4",
     "@uppy/react": "^2.1.2",

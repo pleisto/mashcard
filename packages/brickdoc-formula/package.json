@@ -9,7 +9,7 @@
     "dist"
   ],
   "dependencies": {
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
+    "@brickdoc/test-helper": "workspace:^",
     "chevrotain": "^10.1.1"
   }
 }

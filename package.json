@@ -44,11 +44,11 @@
   "dependencies": {
     "@apollo/client": "^3.5.9",
     "@brickdoc/active-support": "workspace:^",
-    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system",
-    "@brickdoc/editor": "workspace:packages/brickdoc-editor",
-    "@brickdoc/formula": "workspace:packages/brickdoc-formula",
-    "@brickdoc/schema": "workspace:packages/brickdoc-schema",
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper",
+    "@brickdoc/design-system": "workspace:^",
+    "@brickdoc/editor": "workspace:^",
+    "@brickdoc/formula": "workspace:^",
+    "@brickdoc/schema": "workspace:^",
+    "@brickdoc/test-helper": "workspace:^",
     "@rails/actioncable": "^7.0.1",
     "@rails/activestorage": "^7.0.1",
     "@sentry/integrations": "^6.18.0",
@@ -68,7 +68,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc",
+    "@brickdoc/eslint-plugin": "workspace:^",
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
     "@cypress/code-coverage": "^3.9.12",

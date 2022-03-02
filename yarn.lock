@@ -1802,7 +1802,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/design-icons@workspace:packages/brickdoc-design-icons":
+"@brickdoc/design-icons@workspace:^, @brickdoc/design-icons@workspace:packages/brickdoc-design-icons":
   version: 0.0.0-use.local
   resolution: "@brickdoc/design-icons@workspace:packages/brickdoc-design-icons"
   dependencies:
@@ -1815,13 +1815,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/design-system@workspace:packages/brickdoc-design-system":
+"@brickdoc/design-system@workspace:^, @brickdoc/design-system@workspace:packages/brickdoc-design-system":
   version: 0.0.0-use.local
   resolution: "@brickdoc/design-system@workspace:packages/brickdoc-design-system"
   dependencies:
     "@babel/core": ^7.17.5
     "@brickdoc/active-support": "workspace:^"
-    "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons"
+    "@brickdoc/design-icons": "workspace:^"
     "@hookform/resolvers": ^2.8.8
     "@mdx-js/react": 1.6.22
     "@mui/base": ^5.0.0-alpha.69
@@ -1902,14 +1902,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/editor@workspace:packages/brickdoc-editor":
+"@brickdoc/editor@workspace:^, @brickdoc/editor@workspace:packages/brickdoc-editor":
   version: 0.0.0-use.local
   resolution: "@brickdoc/editor@workspace:packages/brickdoc-editor"
   dependencies:
     "@brickdoc/active-support": "workspace:^"
-    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
-    "@brickdoc/uploader": "workspace:packages/brickdoc-uploader"
+    "@brickdoc/design-system": "workspace:^"
+    "@brickdoc/test-helper": "workspace:^"
+    "@brickdoc/uploader": "workspace:^"
     "@pdftron/pdfjs-express-viewer": ^8.2.1
     "@pdftron/webviewer": ^8.3.0
     "@tiptap/core": ^2.0.0-beta.160
@@ -1958,7 +1958,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/eslint-plugin@workspace:packages/eslint-plugin-brickdoc":
+"@brickdoc/eslint-plugin@workspace:^, @brickdoc/eslint-plugin@workspace:packages/eslint-plugin-brickdoc":
   version: 0.0.0-use.local
   resolution: "@brickdoc/eslint-plugin@workspace:packages/eslint-plugin-brickdoc"
   dependencies:
@@ -1981,11 +1981,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/formula@workspace:packages/brickdoc-formula":
+"@brickdoc/formula@workspace:^, @brickdoc/formula@workspace:packages/brickdoc-formula":
   version: 0.0.0-use.local
   resolution: "@brickdoc/formula@workspace:packages/brickdoc-formula"
   dependencies:
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
+    "@brickdoc/test-helper": "workspace:^"
     chevrotain: ^10.1.1
   languageName: unknown
   linkType: soft
@@ -1996,12 +1996,12 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.5.9
     "@brickdoc/active-support": "workspace:^"
-    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
-    "@brickdoc/editor": "workspace:packages/brickdoc-editor"
-    "@brickdoc/eslint-plugin": "workspace:packages/eslint-plugin-brickdoc"
-    "@brickdoc/formula": "workspace:packages/brickdoc-formula"
-    "@brickdoc/schema": "workspace:packages/brickdoc-schema"
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
+    "@brickdoc/design-system": "workspace:^"
+    "@brickdoc/editor": "workspace:^"
+    "@brickdoc/eslint-plugin": "workspace:^"
+    "@brickdoc/formula": "workspace:^"
+    "@brickdoc/schema": "workspace:^"
+    "@brickdoc/test-helper": "workspace:^"
     "@commitlint/cli": ^16.2.1
     "@commitlint/config-conventional": ^16.2.1
     "@cypress/code-coverage": ^3.9.12
@@ -2092,11 +2092,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/schema@workspace:packages/brickdoc-schema":
+"@brickdoc/schema@workspace:^, @brickdoc/schema@workspace:packages/brickdoc-schema":
   version: 0.0.0-use.local
   resolution: "@brickdoc/schema@workspace:packages/brickdoc-schema"
   dependencies:
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
+    "@brickdoc/test-helper": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -2139,7 +2139,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/test-helper@workspace:packages/brickdoc-test-helper":
+"@brickdoc/test-helper@workspace:^, @brickdoc/test-helper@workspace:packages/brickdoc-test-helper":
   version: 0.0.0-use.local
   resolution: "@brickdoc/test-helper@workspace:packages/brickdoc-test-helper"
   dependencies:
@@ -2147,12 +2147,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/uploader@workspace:packages/brickdoc-uploader":
+"@brickdoc/uploader@workspace:^, @brickdoc/uploader@workspace:packages/brickdoc-uploader":
   version: 0.0.0-use.local
   resolution: "@brickdoc/uploader@workspace:packages/brickdoc-uploader"
   dependencies:
-    "@brickdoc/design-system": "workspace:packages/brickdoc-design-system"
-    "@brickdoc/test-helper": "workspace:packages/brickdoc-test-helper"
+    "@brickdoc/design-system": "workspace:^"
+    "@brickdoc/test-helper": "workspace:^"
     "@uppy/core": ^2.1.5
     "@uppy/dashboard": ^2.1.4
     "@uppy/react": ^2.1.2

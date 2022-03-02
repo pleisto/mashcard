@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
-    "@brickdoc/design-icons": "workspace:packages/brickdoc-design-icons",
+    "@brickdoc/design-icons": "workspace:^",
     "@hookform/resolvers": "^2.8.8",
     "@mui/base": "^5.0.0-alpha.69",
     "@stitches/core": "^1.2.6",
