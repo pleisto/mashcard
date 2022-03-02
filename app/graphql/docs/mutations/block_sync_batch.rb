@@ -28,10 +28,11 @@ module Docs
       if root
         preloads = root.descendants(unscoped: true).index_by(&:id)
         paths_cache = root.paths_cache
-        if deleted_ids.present?
-          patches += deleted_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
+        final_delete_ids = deleted_ids & paths_cache.keys
+        if final_delete_ids.present?
+          patches += final_delete_ids.map { |id| { id: id, path: paths_cache.fetch(id), payload: {}, patch_type: "DELETE" } }
           preloads = preloads.each_with_object({}) do |(id, b), h|
-            b.soft_delete! if id.in?(deleted_ids)
+            b.soft_delete! if id.in?(final_delete_ids)
             h[id] = b
           end
         end
