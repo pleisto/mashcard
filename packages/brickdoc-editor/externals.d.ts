@@ -18,5 +18,3 @@ declare module '*.mp4' {
   const src: string
   export = src
 }
-
-declare module '@pdftron/pdfjs-express-viewer'

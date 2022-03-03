@@ -1881,7 +1881,6 @@ __metadata:
     "@brickdoc/design-system": "workspace:^"
     "@brickdoc/test-helper": "workspace:^"
     "@brickdoc/uploader": "workspace:^"
-    "@pdftron/pdfjs-express-viewer": ^8.2.1
     "@pdftron/webviewer": ^8.3.0
     "@tiptap/core": ^2.0.0-beta.160
     "@tiptap/extension-blockquote": ^2.0.0-beta.26
@@ -4080,13 +4079,6 @@ __metadata:
   bin:
     opencollective: bin/opencollective.js
   checksum: fd3737c12edf55b5c2279674664c3ed5e756410ea82e9cd324c3f0e032ed5ccd8df1959ec69ea97f2f1c9c33c884aae3d7a7108a73ea0faa90d74ea47cf364d4
-  languageName: node
-  linkType: hard
-
-"@pdftron/pdfjs-express-viewer@npm:^8.2.1":
-  version: 8.2.1
-  resolution: "@pdftron/pdfjs-express-viewer@npm:8.2.1"
-  checksum: 6fdb0430f7604d9cffe62ed7158b253406f15aa9930b458447cc9573b3b2db641d3eb7ed73f297af9cc79a2732bf219fd257e7e8402ade192b8181ab64fdf4c1
   languageName: node
   linkType: hard
 
