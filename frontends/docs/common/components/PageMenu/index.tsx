@@ -122,7 +122,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   }
 
   const onRename = async (e: any): Promise<void> => {
-    const title = e.target.value
+    const title = e?.target?.value
     const input = { id: pageId, title }
     await blockRename({ variables: { input } })
     if (pageId === id) {
@@ -275,7 +275,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       trigger="customEvent"
       visible={popoverVisible}
       onVisibleChange={onRenamePopoverVisibleChange}
-      className={styles.title}>
+      destroyTooltipOnHide={true}
+      className={styles.title}
+    >
       <Link to={linkPath}>{title}</Link>
     </Popover>
   )
@@ -289,8 +291,10 @@ export const PageMenu: React.FC<PageMenuProps> = ({
       <Dropdown
         trigger={['contextMenu']}
         overlay={menu}
+        destoryPopupOnHide={true}
         visible={dropdownVisible}
-        onVisibleChange={onDropdownVisibleChange}>
+        onVisibleChange={onDropdownVisibleChange}
+      >
         <div className={styles.menu}>
           {linkData}
           <div>
@@ -305,7 +309,8 @@ export const PageMenu: React.FC<PageMenuProps> = ({
                 type="text"
                 onClick={onPressAddSubPage}
                 loading={createBlockLoading}
-                disabled={createBlockLoading}>
+                disabled={createBlockLoading}
+              >
                 <Icon.Add />
               </Button>
             </Tooltip>
