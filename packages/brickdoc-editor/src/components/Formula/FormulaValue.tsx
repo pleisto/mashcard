@@ -23,7 +23,7 @@ export const FormulaValue: React.FC<FormulaValueProps> = ({
 
   if (!hasBorder) {
     return (
-      <span className="brickdoc-formula-borderless" style={{ color, fontFamily: 'Fira Code' }}>
+      <span {...props} className="brickdoc-formula-borderless" style={{ color, fontFamily: 'Fira Code' }}>
         {display}
       </span>
     )
@@ -39,6 +39,9 @@ export const FormulaValue: React.FC<FormulaValueProps> = ({
     }
   })
 
+  // eslint-disable-next-line no-nested-ternary
+  const finalDisplay = result.type === 'boolean' ? (result.result ? '✓' : '✗') : display
+
   return (
     <span
       {...props}
@@ -49,7 +52,7 @@ export const FormulaValue: React.FC<FormulaValueProps> = ({
         borderColor: `rgb(${rgb.join(',')}, 0.3)`
       }}>
       <span className="brickdoc-formula-value-icon">{icon}</span>
-      <span className="brickdoc-formula-value-display">{display}</span>
+      <span className="brickdoc-formula-value-display">{finalDisplay}</span>
     </span>
   )
 }

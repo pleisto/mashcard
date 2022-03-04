@@ -35,6 +35,7 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
     case 'number':
       return String(v.result)
     case 'boolean':
+      // return v.result ? '✓' : '✗'
       return String(v.result)
     case 'string':
       return v.result

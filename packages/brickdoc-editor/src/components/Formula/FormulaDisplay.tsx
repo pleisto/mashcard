@@ -85,11 +85,9 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, dis
   }
 
   return (
-    <>
-      <span {...props}>
-        <FormulaValue displayData={newDisplayData} display={display ?? newDisplayData.display} border={true} />
-      </span>
+    <span {...props}>
+      <FormulaValue displayData={newDisplayData} display={display ?? newDisplayData.display} border={true} />
       {preview}
-    </>
+    </span>
   )
 }

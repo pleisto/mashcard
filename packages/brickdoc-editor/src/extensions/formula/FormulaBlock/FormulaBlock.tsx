@@ -72,7 +72,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
         <Icon.Formula className="brickdoc-formula-empty-icon" />
       </span>
     ) : (
-      <Tooltip title={savedVariableT.name}>
+      <Tooltip title={savedVariableT.name} destroyTooltipOnHide={true}>
         <FormulaDisplay
           display={displayValue(savedVariableT.variableValue.result, rootId)}
           displayData={dumpDisplayResult(savedVariableT, true)}
