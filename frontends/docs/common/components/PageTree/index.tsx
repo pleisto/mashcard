@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import {
   useGetPageBlocksQuery,
   useBlockMoveMutation,
@@ -9,18 +9,7 @@ import {
   useGetBlockPinsQuery,
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
-import {
-  Tree,
-  TreeProps,
-  TNode,
-  Inserted,
-  css,
-  styled,
-  toast,
-  useSize,
-  useMemoizedFn,
-  theme
-} from '@brickdoc/design-system'
+import { Tree, TreeProps, TNode, Inserted, css, styled, toast, useMemoizedFn, theme } from '@brickdoc/design-system'
 import { array2Tree } from '@brickdoc/active-support'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -64,7 +53,6 @@ const PageTreeHeading = styled('div', {
 
 export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
-  const navSize = useSize(document.querySelector('nav'))
   const mutable = mode !== 'subPage'
   const hideHeading = mode === 'subPage'
 
@@ -210,7 +198,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     )
   }
 
-  const treeElement = (blocks: BlockType[], isDraggable: boolean, height?: number): React.ReactElement => {
+  const treeElement = (blocks: BlockType[], isDraggable: boolean): React.ReactElement => {
     if (!blocks.length) {
       return <></>
     }
@@ -238,7 +226,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
 
     return (
       <Tree
-        height={height}
         emptyNode={t('blocks.no_pages')}
         // selectable={!docMeta.documentInfoLoading}
         selectedNodeId={docMeta.id}
@@ -338,19 +325,11 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     <></>
   )
 
-  const pageHeight = useMemo(() => {
-    let _h = 200
-    if (navSize?.height) {
-      _h = navSize.height - (pinTreeBlocks?.length ? 470 : 203)
-    }
-    return _h < 200 ? 200 : _h
-  }, [navSize, pinTreeBlocks])
-
   return pageBlocks.length ? (
     <PageTreeRoot>
       {pinTree}
       {!hideHeading && <PageTreeHeading>Pages</PageTreeHeading>}
-      {treeElement(pageBlocks, draggable && mutable, pageHeight)}
+      {treeElement(pageBlocks, draggable && mutable)}
     </PageTreeRoot>
   ) : (
     <>{mode === 'subPage' && <SubPageModeEmptyNode>{t('blocks.no_pages')}</SubPageModeEmptyNode>}</>

@@ -40,6 +40,9 @@ const findPathById = (tree: TNode[], id: string, path?: string[]): string[] | un
   }
 }
 
+const NODE_HEIGHT = 34
+const DEFAULT_HEIGHT = 200
+
 /** Tree
  * @example
  */
@@ -117,8 +120,8 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
         className={className}
         data={renderTree}
         data-test-id="virtual-list"
-        height={height ?? 200}
-        itemHeight={34}
+        height={Math.min(renderTree.length * NODE_HEIGHT, DEFAULT_HEIGHT)}
+        itemHeight={NODE_HEIGHT}
         itemKey="key"
         ref={ref ?? listRef}
       >
