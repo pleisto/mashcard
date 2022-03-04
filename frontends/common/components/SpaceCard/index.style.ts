@@ -41,7 +41,11 @@ export const Card = styled('div', {
           fontWeight: 600
         }
       },
-      md: {}
+      md: {
+        [`${Name}`]: {
+          fontWeight: 500
+        }
+      }
     }
   }
 })

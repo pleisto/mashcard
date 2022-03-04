@@ -1,4 +1,5 @@
 import bg from '@/common/assets/ceramicBg.webp'
+import { theme } from '@brickdoc/design-system'
 
 export const layoutStyle = {
   display: 'flex',
@@ -9,21 +10,21 @@ export const layoutStyle = {
   backgroundSize: 'cover, cover',
   backgroundClip: 'border-box',
   '& > main': {
-    margin: '24px 24px 0',
-    paddingTop: '56px',
+    paddingTop: '80px',
     display: 'flex',
     justifyContent: 'center',
     flex: 'auto',
-    height: 'calc(100vh - 24px)',
+    height: '100vh',
     scrollbarGutter: 'stable both-edges',
     overflowY: 'auto',
-    include: ['ceramicSecondary'],
+    background: theme.colors.backgroundPrimary,
+    // include: ['ceramicSecondary'],
     '&>.container:last-child:after': {
       // fix scrollbar bottom padding
       // @see https://stackoverflow.com/questions/61380918/add-extra-scroll-space-of-the-bottom-of-an-html-sidebar
       display: 'block',
       width: '100%',
-      height: '56px',
+      height: '80px',
       content: ''
     }
   },
@@ -31,13 +32,12 @@ export const layoutStyle = {
     width: {
       fluid: {
         '&>main>.container': {
-          width: '100%',
-          margin: '0 2rem'
+          width: '100%'
         }
       },
       fixed: {
         '&>main>.container': {
-          width: '900px'
+          width: '44rem'
         }
       }
     }

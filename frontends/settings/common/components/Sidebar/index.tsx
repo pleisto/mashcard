@@ -17,7 +17,7 @@ export const Sidebar: FC = () => {
     <SidebarWrapper>
       <div className="actions">
         <header>
-          <img src={Logo} alt="Brickdoc" />
+          <img className="brk-logo" src={Logo} alt="Brickdoc" />
           <SwitchSettingSpace />
         </header>
         <nav>

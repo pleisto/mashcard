@@ -177,7 +177,7 @@ export const DocumentContentPage: React.FC = () => {
       <>
         <div className="mainActions">
           <header>
-            <img src={Logo} alt="Brickdoc" />
+            <img className="brk-logo" src={Logo} alt="Brickdoc" />
           </header>
           <nav>
             <PageTree docMeta={docMeta} />

@@ -17,7 +17,7 @@ exports[`ParagraphBlock matches snapshot correctly 1`] = `
     />
     <button
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
       tabindex="0"
       type="button"
@@ -47,7 +47,7 @@ exports[`ParagraphBlock shows placeholder normally 1`] = `
     />
     <button
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
       tabindex="0"
       type="button"

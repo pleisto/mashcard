@@ -5,12 +5,14 @@ export const inputStyle = css({
   fontSize: '14px',
   position: 'relative',
   color: theme.colors.typePrimary,
+  backgroundColor: theme.colors.ceramicQuaternary,
   lineHeight: '1.5',
   borderRadius: '4px',
   margin: '0',
   display: 'inline-flex',
   alignItems: 'center',
   flexWrap: 'nowrap',
+  transition: `all .2s ${theme.transitions.easeOut}`,
   '&.MuiInput-adornedStart, &.MuiInput-adornedEnd': {
     display: 'flex',
     flex: 'none',
@@ -32,10 +34,15 @@ export const inputStyle = css({
     display: 'inline-block',
     '&::placeholder': {
       color: theme.colors.typeThirdary
+    },
+    '&::selection': {
+      background: theme.colors.secondarySelected
     }
   },
   'input:focus-visible': {
-    outline: 'none'
+    outline: 'none',
+    caretColor: theme.colors.primaryDefault
+    // background: theme.colors.backgroundOverlayPrimary
   },
   variants: {
     size: {
@@ -72,7 +79,6 @@ export const inputStyle = css({
         border: '0'
       },
       true: {
-        backgroundColor: theme.colors.backgroundOverlayPrimary,
         border: `1px solid ${theme.colors.borderSecondary}`
       }
     }
@@ -83,10 +89,11 @@ export const inputStyle = css({
       bordered: true,
       css: {
         '&:hover': {
-          borderColor: theme.colors.borderOverlayThirdary
+          borderColor: theme.colors.borderOverlayThirdary,
+          background: theme.colors.secondaryHover
         },
         '&:focus-within': {
-          outline: `1px solid ${theme.colors.borderOverlayThirdary}`,
+          outline: `none`,
           border: `1px solid ${theme.colors.borderOverlayThirdary}`
         }
       }

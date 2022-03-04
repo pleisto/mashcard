@@ -8,7 +8,7 @@ export const Ceramics = {
      ${Atomics.grey2_90p}`,
 
   ceramicQuaternary: `linear-gradient(0deg, ${Atomics.cyan1_36p}, ${Atomics.cyan1_36p}),
-      ${Atomics.grey1_80p}`
+      ${Atomics.grey1_90p}`
 }
 
 export const CeramicsMixins = {

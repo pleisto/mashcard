@@ -30,7 +30,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       title=""
     >
       <li
-        class="brd-c-gZVDUl brd-c-gZVDUl-duyZwV-active-true brd-c-jIhtkb"
+        class="brd-c-cpzHyL brd-c-cpzHyL-duyZwV-active-true brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-1"
         role="menuitem"
@@ -44,7 +44,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-jIhtkb"
+        class="brd-c-cpzHyL brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-2"
         role="menuitem"
@@ -58,7 +58,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-jIhtkb"
+        class="brd-c-cpzHyL brd-c-jIhtkb"
         data-testid="editor-slash-commands-item"
         id="slash-menu-3"
         role="menuitem"
@@ -90,7 +90,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </span>
     </span>
     <li
-      class="brd-c-gZVDUl"
+      class="brd-c-cpzHyL"
       data-testid="editor-slash-commands-item"
       id="slash-menu-4"
       label="blocks.h1.label"
@@ -125,7 +125,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </div>
     </li>
     <li
-      class="brd-c-gZVDUl"
+      class="brd-c-cpzHyL"
       data-testid="editor-slash-commands-item"
       id="slash-menu-5"
       label="blocks.h2.label"
@@ -160,7 +160,7 @@ exports[`SlashMenu matches correct snapshot 1`] = `
       </div>
     </li>
     <li
-      class="brd-c-gZVDUl"
+      class="brd-c-cpzHyL"
       data-testid="editor-slash-commands-item"
       id="slash-menu-6"
       label="blocks.h3.label"

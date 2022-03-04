@@ -3,7 +3,7 @@ import { useSettingsI18n } from '@/settings/common/hooks'
 import { Helmet } from 'react-helmet-async'
 import { SettingsContext } from '@/settings/SettingContext'
 import { ProfileEdit } from './ProfileEdit'
-import { Appearance } from './Appearance'
+import { Display } from './Display'
 import { DomainUpdate } from './DomainUpdate'
 
 export const GeneralPage: FC = () => {
@@ -15,7 +15,7 @@ export const GeneralPage: FC = () => {
       <Helmet title={t('menu.general')} />
       <ProfileEdit space={space} />
       <DomainUpdate space={space} />
-      {space?.personal && <Appearance space={space} />}
+      {space?.personal && <Display space={space} />}
     </>
   )
 }

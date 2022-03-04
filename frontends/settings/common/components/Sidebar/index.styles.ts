@@ -10,7 +10,7 @@ export const SidebarWrapper = styled('section', {
   justifyContent: 'space-between',
   '.actions': {
     header: {
-      img: {
+      [`.brk-logo`]: {
         height: '22px',
         width: '84px',
         margin: '1rem 18px'

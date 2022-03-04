@@ -11,6 +11,7 @@ export const Atomics = {
 
   grey1_8p: rgba(Palettes.grey1, 0.08),
   grey1_80p: rgba(Palettes.grey1, 0.8),
+  grey1_90p: rgba(Palettes.grey1, 0.9),
   grey2_50p: rgba(Palettes.grey2, 0.5),
   grey2_90p: rgba(Palettes.grey2, 0.9),
   grey4_40p: rgba(Palettes.grey4, 0.4),

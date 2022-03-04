@@ -1,14 +1,13 @@
 import { prefix, theme, styled } from '@brickdoc/design-system'
+import { motion } from 'framer-motion'
 
 export const ActionsGroup = styled('div', {
-  [`& .${prefix}-icon`]: {
-    display: 'none',
-    color: theme.colors.iconThirdary
-  },
-  [`& .${prefix}-icon-check`]: {
-    marginLeft: 13,
-    color: theme.colors.iconPrimary,
-    display: 'block'
+  position: 'relative',
+  height: '2rem',
+  button: {
+    position: 'absolute',
+    right: 0,
+    top: 8
   }
 })
 
@@ -28,21 +27,35 @@ export const selectStyle = {
   }
 }
 
-export const menuItemStyle = {
+export const MenuItem = styled(motion.li, {
   justifyContent: 'space-between',
   alignItems: 'center !important',
   minHeight: '3rem !important',
   minWidth: '316px !important',
   padding: '8px 16px !important',
-  '&:last-child': {
-    marginBottom: 8
+
+  [`& .${prefix}-icon`]: {
+    transition: `all .2s ${theme.transitions.easeOut}`,
+    color: theme.colors.iconThirdary,
+    opacity: 0
+  },
+  [`& .${prefix}-icon-check`]: {
+    marginLeft: 13,
+    color: theme.colors.iconPrimary,
+    opacity: 1
   },
   '&:hover': {
     [`& .${prefix}-icon`]: {
-      display: 'block'
+      opacity: 1
+    },
+    [`&  .action-check`]: {
+      opacity: 0
     }
+  },
+  '&:last-child': {
+    marginBottom: 8
   }
-}
+})
 
 export const actionStyle = {
   fontWeight: '500 !important',
@@ -54,7 +67,7 @@ export const logoutStyle = {
   marginBottom: 13
 }
 
-export const MenuLabel = styled('small', {
+export const MenuLabel = styled(motion.small, {
   fontSize: theme.fontSizes.subHeadline,
   lineHeight: theme.lineHeights.subHeadline,
   color: theme.colors.typeSecondary,

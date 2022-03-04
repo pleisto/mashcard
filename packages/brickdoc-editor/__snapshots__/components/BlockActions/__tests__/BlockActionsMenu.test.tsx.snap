@@ -8,7 +8,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
   role="menubar"
 >
   <li
-    class="brd-c-gZVDUl brd-c-hcJSiJ"
+    class="brd-c-cpzHyL brd-c-hcJSiJ"
     id="menu-1"
     label="item"
     role="menuitem"
@@ -43,7 +43,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
     aria-controls="subMenu"
     aria-expanded="false"
     aria-haspopup="menu"
-    class="brd-c-gZVDUl"
+    class="brd-c-cpzHyL"
     id="subMenu-2"
     label="subMenu"
     role="menuitem"
@@ -82,7 +82,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
     tabindex="-1"
   >
     <li
-      class="brd-c-gZVDUl brd-c-hcJSiJ"
+      class="brd-c-cpzHyL brd-c-hcJSiJ"
       id="subMenu-2"
       label="menuItem"
       role="menuitem"
@@ -120,7 +120,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
     title=""
   >
     <li
-      class="brd-c-gZVDUl brd-c-hcJSiJ"
+      class="brd-c-cpzHyL brd-c-hcJSiJ"
       id="menu-3"
       label="delete"
       role="menuitem"
@@ -172,7 +172,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
     aria-controls="menu-add-block"
     aria-expanded="false"
     aria-haspopup="menu"
-    class="brd-c-gZVDUl"
+    class="brd-c-cpzHyL"
     id="menu-add-block-4"
     label="block_actions.add_block"
     role="menuitem"
@@ -237,7 +237,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
       title=""
     >
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-2"
         label="blocks.text.label"
         role="menuitem"
@@ -283,7 +283,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-3"
         label="blocks.formula.label"
         role="menuitem"
@@ -329,7 +329,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-4"
         label="blocks.spreadsheet.label"
         role="menuitem"
@@ -375,7 +375,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-5"
         label="blocks.upload.label"
         role="menuitem"
@@ -421,7 +421,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-6"
         label="blocks.gallery.label"
         role="menuitem"
@@ -467,7 +467,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-7"
         label="blocks.link.label"
         role="menuitem"
@@ -513,7 +513,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-8"
         label="blocks.h1.label"
         role="menuitem"
@@ -559,7 +559,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-9"
         label="blocks.h2.label"
         role="menuitem"
@@ -605,7 +605,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-10"
         label="blocks.h3.label"
         role="menuitem"
@@ -651,7 +651,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-11"
         label="blocks.h4.label"
         role="menuitem"
@@ -697,7 +697,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-12"
         label="blocks.h5.label"
         role="menuitem"
@@ -743,7 +743,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-13"
         label="blocks.bulletedList.label"
         role="menuitem"
@@ -789,7 +789,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-14"
         label="blocks.orderedList.label"
         role="menuitem"
@@ -835,7 +835,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-15"
         label="blocks.code.label"
         role="menuitem"
@@ -881,7 +881,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-16"
         label="blocks.divider.label"
         role="menuitem"
@@ -927,7 +927,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-17"
         label="blocks.toc.label"
         role="menuitem"
@@ -973,7 +973,7 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
         </div>
       </li>
       <li
-        class="brd-c-gZVDUl brd-c-hcJSiJ"
+        class="brd-c-cpzHyL brd-c-hcJSiJ"
         id="menu-add-block-18"
         label="blocks.subPageMenu.label"
         role="menuitem"

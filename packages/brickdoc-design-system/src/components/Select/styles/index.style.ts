@@ -13,7 +13,7 @@ export const selectStyle = css({
   [selector]: {
     position: 'relative',
     padding: '5px 0 5px',
-    background: theme.colors.backgroundOverlayPrimary,
+    background: theme.colors.ceramicQuaternary,
     border: `1px solid ${theme.colors.borderSecondary}`,
     borderRadius: '4px',
     transition: `all 0.2s ${theme.transitions.easeOut}`,

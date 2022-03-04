@@ -18,21 +18,32 @@ const textareaStyle = css({
   width: '100%',
   resize: 'none',
   cursor: 'text',
+  fontSize: theme.fontSizes.subHeadline,
+  lineHeight: theme.lineHeights.subHeadline,
   verticalAlign: 'bottom',
+  caretColor: theme.colors.primaryDefault,
   color: theme.colors.typePrimary,
   borderColor: theme.colors.borderSecondary,
-  backgroundColor: theme.colors.backgroundOverlayPrimary,
+  backgroundColor: theme.colors.ceramicQuaternary,
+  borderRadius: '4px',
   padding: '5px 12px',
-  lineHeight: theme.lineHeights.body,
+  transition: `all .2s ${theme.transitions.easeOut}`,
   '&::placeholder': {
     color: theme.colors.typeDisabled
   },
+  '&::selection': {
+    background: theme.colors.secondarySelected
+  },
   '&:hover:not(:disabled)': {
-    borderColor: theme.colors.borderOverlayThirdary
+    borderColor: theme.colors.borderOverlayThirdary,
+    background: theme.colors.secondaryHover
   },
   '&:focus-visible': {
-    outlineColor: theme.colors.borderOverlayThirdary,
-    borderColor: 'transparent'
+    outline: 'none',
+    border: `1px solid ${theme.colors.borderOverlayThirdary}`
+  },
+  '&:focus-within': {
+    background: theme.colors.backgroundOverlayPrimary
   },
   '&:disabled': {
     cursor: 'not-allowed',

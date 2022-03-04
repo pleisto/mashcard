@@ -1,11 +1,12 @@
 import { FC, useContext, useState } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
-import { Button, Box, ConfirmDialog, theme, useBoolean, toast } from '@brickdoc/design-system'
+import { Button, ConfirmDialog, useBoolean, toast } from '@brickdoc/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { SpaceCard } from '@/common/components/SpaceCard'
 import { Panel } from '@/settings/common/components/Panel'
 import { useGetSpacesQuery, GetSpacesQuery, useSpaceLeaveMutation } from '@/BrickdocGraphQL'
 import { Trans } from 'react-i18next'
+import * as Root from './styles/LeaveSpaces.style'
 
 export const LeaveSpaces: FC = () => {
   const [isOpen, { setTrue: setOpen, setFalse: setClose }] = useBoolean(false)
@@ -40,29 +41,8 @@ export const LeaveSpaces: FC = () => {
 
   return (
     <>
-      <Panel title={t('account.joined_spaces')}>
-        <Box
-          css={{
-            display: 'flex',
-            flexDirection: 'column',
-            listStyle: 'none',
-            width: '100%',
-            border: `1px solid ${theme.colors.grey5}`,
-            borderRadius: '6px',
-            padding: 0,
-            li: {
-              padding: '1rem',
-              borderBottom: `1px solid ${theme.colors.grey5}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              '&:last-child': {
-                borderBottom: 'none'
-              }
-            }
-          }}
-          as="ul"
-        >
+      <Panel title={t('account.joined_team_spaces')}>
+        <Root.List>
           {teamSpaces?.map(space => (
             <li key={space.domain}>
               <SpaceCard
@@ -81,7 +61,7 @@ export const LeaveSpaces: FC = () => {
               </Button>
             </li>
           ))}
-        </Box>
+        </Root.List>
       </Panel>
       <ConfirmDialog
         confirmBtnProps={{

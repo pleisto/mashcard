@@ -2,19 +2,20 @@ import { theme } from '../../../themes'
 export const size = {
   sm: {
     padding: `${theme.space.xxs} ${theme.space.sm}`,
-    lineHeight: theme.space.lg,
+    lineHeight: theme.lineHeights.callout,
+    fontSize: theme.fontSizes.callout,
     minWidth: '.85rem'
   },
   md: {
     padding: `${theme.space.xs} ${theme.space.lg}`,
-    lineHeight: theme.space.xl,
-    minWidth: theme.space.xl,
-    fontSize: '1rem'
+    lineHeight: theme.lineHeights.subHeadline,
+    fontSize: theme.fontSizes.subHeadline,
+    minWidth: theme.space.xl
   },
   lg: {
     padding: `${theme.space.sm} ${theme.space.lg}`,
-    lineHeight: theme.space.xxl,
-    minWidth: theme.space.xxl,
-    fontSize: '1.2rem'
+    lineHeight: theme.lineHeights.body,
+    fontSize: theme.fontSizes.body,
+    minWidth: theme.space.xxl
   }
 }

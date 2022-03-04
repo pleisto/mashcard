@@ -31,17 +31,18 @@ const Backdrop = styled('div', {
 
 const ModalDialog = styled('div', {
   include: ['ceramicPrimary'],
-  padding: '36px 80px',
+  padding: '1.5rem 1.25rem',
   borderRadius: '8px',
   maxWidth: '100%',
   '&>h1.dialogTitle': {
-    fontSize: theme.fontSizes.title3,
-    marginBottom: '48px'
+    fontSize: theme.fontSizes.title5,
+    lineHeight: theme.lineHeights.title5,
+    marginBottom: '8px'
   }
 })
 
 const Modal: ForwardRefRenderFunction<any, ModalProps> = (props, ref) => {
-  const { title, children, dialogCss, width = '550px', ...otherProps } = props
+  const { title, children, dialogCss, width = '380px', ...otherProps } = props
   return (
     <StyledModal {...otherProps} BackdropComponent={Backdrop} ref={ref}>
       <ModalDialog

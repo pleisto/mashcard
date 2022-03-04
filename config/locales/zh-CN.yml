@@ -682,8 +682,10 @@ zh-CN:
     spaces:
       domain: Username
       name: Name
-      bio: 个人简介
-      avatar: 头像
+      bio:
+        label: 个人简介
+        placeholder: 告诉大家一些关于你的事情。
+      upload_avatar: 上传头像
       required:
         domain: Username is required
         name: 名称是必需的

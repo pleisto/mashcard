@@ -9,6 +9,7 @@ import {
   UserAppearanceUpdateInput,
   useGetMetadataFromWsQuery
 } from '@/BrickdocGraphQL'
+import * as Root from './styles/Display.style'
 
 const AppearanceSelect: FC<{
   name: string
@@ -25,7 +26,7 @@ const AppearanceSelect: FC<{
   />
 )
 
-export const Appearance: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
+export const Display: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
   const { t } = useSettingsI18n()
   const { timezone, locale } = useContext(BrickdocContext)
   const { data, loading: getMetadataLoading } = useGetMetadataFromWsQuery()
@@ -57,20 +58,22 @@ export const Appearance: FC<{ space: SettingsContextProps['space'] }> = ({ space
   const availableLocales = data!.metadata.availableLocales.map(i => ({ label: i.label, value: i.value }))
 
   return (
-    <Panel title={t('general.appearance')}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <FormControl label={t('general.timezone')}>
-          <AppearanceSelect name="timezone" control={form.control} options={availableTimezones} />
-        </FormControl>
-        <FormControl label={t('general.locale')}>
-          <AppearanceSelect name="locale" control={form.control} options={availableLocales} />
-        </FormControl>
-        <FormControl>
-          <Button htmlType="submit" loading={loading}>
-            {t('general.update_appearance')}
-          </Button>
-        </FormControl>
-      </form>
+    <Panel title={t('general.display')}>
+      <Root.Warp>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormControl label={t('general.timezone')}>
+            <AppearanceSelect name="timezone" control={form.control} options={availableTimezones} />
+          </FormControl>
+          <FormControl label={t('general.locale')}>
+            <AppearanceSelect name="locale" control={form.control} options={availableLocales} />
+          </FormControl>
+          <FormControl>
+            <Button type="primary" htmlType="submit" loading={loading}>
+              {t('general.update_appearance')}
+            </Button>
+          </FormControl>
+        </form>
+      </Root.Warp>
     </Panel>
   )
 }

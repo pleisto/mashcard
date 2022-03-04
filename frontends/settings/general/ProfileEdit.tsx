@@ -11,6 +11,7 @@ import {
   useCreateOrUpdateSpaceMutation,
   CreateOrUpdateSpaceInput
 } from '@/BrickdocGraphQL'
+import * as Root from './styles/ProfileEdit.style'
 
 const profileValidation = object({
   name: string().required(),
@@ -53,20 +54,27 @@ export const ProfileEdit: FC<{ space: SettingsContextProps['space'] }> = ({ spac
   return (
     <Panel title={t(`general.${space?.personal ? 'user' : 'group'}_profile`)}>
       <Form form={profileForm} onSubmit={onProfileSubmit}>
-        <Form.Field label={t('docs:spaces.avatar')}>
-          <AvatarEditor />
-        </Form.Field>
-        <Form.Field name="name" label={t('docs:spaces.name')}>
-          <Input type="text" />
-        </Form.Field>
-        <Form.Field name="bio" label={t('docs:spaces.bio')}>
-          <TextArea />
-        </Form.Field>
-        <Form.Field>
-          <Button type="primary" htmlType="submit" loading={profileSubmitting}>
-            {t('general.update_profile')}
-          </Button>
-        </Form.Field>
+        <Root.Box>
+          <Root.BoxLeft>
+            <Form.Field name="name" label={t('docs:spaces.name')}>
+              <Input type="text" />
+            </Form.Field>
+            <Form.Field name="bio" label={t('docs:spaces.bio.label')}>
+              <TextArea placeholder={t('docs:spaces.bio.placeholder')} />
+            </Form.Field>
+            <Form.Field>
+              <Button type="primary" htmlType="submit" loading={profileSubmitting}>
+                {t('general.update_profile')}
+              </Button>
+            </Form.Field>
+          </Root.BoxLeft>
+
+          <Root.BoxRight id="sdfsdf">
+            <Form.Field label={t('docs:spaces.upload_avatar')}>
+              <AvatarEditor />
+            </Form.Field>
+          </Root.BoxRight>
+        </Root.Box>
       </Form>
     </Panel>
   )

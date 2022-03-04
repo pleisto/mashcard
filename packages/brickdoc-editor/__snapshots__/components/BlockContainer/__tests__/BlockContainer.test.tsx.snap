@@ -47,7 +47,7 @@ exports[`BlockContainer with actionOptions 1`] = `
     block
     <button
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fdOzqt-size-sm brd-c-ivBjhy brd-c-iAZzvg"
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy brd-c-iAZzvg"
       role="button"
       tabindex="0"
       type="button"

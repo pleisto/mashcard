@@ -89,6 +89,7 @@ export const FieldWrapper = styled('div', {
   display: 'flex',
   alignItems: 'start',
   width: '100%',
+  outline: 'none',
   variants: {
     inlineWrapper: {
       false: {

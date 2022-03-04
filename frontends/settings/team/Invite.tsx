@@ -2,8 +2,9 @@ import { FC, ChangeEventHandler, useState } from 'react'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { Panel } from '@/settings/common/components/Panel'
 import { SettingsContextProps } from '@/settings/SettingContext'
-import { Box, Switch, useId, theme, toast, useBoolean, Input, Button, ConfirmDialog } from '@brickdoc/design-system'
+import { Switch, useId, toast, useBoolean, Input, Button, ConfirmDialog } from '@brickdoc/design-system'
 import { SpaceOperation, useCreateOrUpdateSpaceMutation, CreateOrUpdateSpaceInput } from '@/BrickdocGraphQL'
+import * as Root from './styles/Invite.style'
 
 export const Invite: FC<{ space: SettingsContextProps['space'] }> = ({ space }) => {
   const { t } = useSettingsI18n(['docs'])
@@ -64,22 +65,11 @@ export const Invite: FC<{ space: SettingsContextProps['space'] }> = ({ space }) 
   return (
     <>
       <Panel title={t('team.invite')}>
-        <Box
-          css={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '1rem',
-            'div.desc': {
-              color: theme.colors.typeSecondary,
-              fontSize: theme.fontSizes.callout
-            }
-          }}
-        >
-          <div>
+        <Root.Warp>
+          <Root.Label>
             <label id={switchLabelId}>{t('team.invite_label')}</label>
             <div className="desc">{t('team.invite_desc')}</div>
-          </div>
+          </Root.Label>
           <Switch
             checked={inviteEnabled}
             aria-describedby={switchLabelId}
@@ -87,22 +77,14 @@ export const Invite: FC<{ space: SettingsContextProps['space'] }> = ({ space }) 
             onChange={updateInviteEnable}
             loading={loading}
           />
-        </Box>
+        </Root.Warp>
         {inviteEnabled && (
-          <Box
-            css={{
-              display: 'flex',
-              width: '100%',
-              '&>button': {
-                marginLeft: '.5rem'
-              }
-            }}
-          >
+          <Root.InviteLink>
             <Input value={inviteUrl} readOnly />
             <Button type="secondary" onClick={setOpen}>
               {t(`team.invite_secret_reset`)}
             </Button>
-          </Box>
+          </Root.InviteLink>
         )}
       </Panel>
       <ConfirmDialog

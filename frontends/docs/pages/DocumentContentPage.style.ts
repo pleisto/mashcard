@@ -17,7 +17,7 @@ export const base = {
     padding: '0.1px 0.5rem 0',
     marginTop: '-0.1px',
     justifyContent: 'space-between',
-    '.mainActions header img': {
+    '.mainActions header > .brk-logo': {
       height: '22px',
       width: '84px',
       margin: '1rem 18px'

@@ -3,7 +3,7 @@
 exports[`Button rendering Basic should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"
@@ -19,7 +19,7 @@ exports[`Button rendering IconOnly should match the snapshot 1`] = `
 <div>
   <button
     aria-label="Add Record"
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-APANR-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-dfQaBM-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
     role="button"
     tabindex="0"
     type="button"
@@ -34,7 +34,7 @@ exports[`Button rendering IconOnly should match the snapshot 1`] = `
 exports[`Button rendering Loading should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root Mui-disabled brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-lKjfQ-size-md brd-c-dsuUsp-gvlAwB-loading-true brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root Mui-disabled brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-gvlAwB-loading-true brd-c-dsuUsp-iDpwiq-hasIcon-true"
     disabled=""
     role="button"
     tabindex="-1"
@@ -99,7 +99,7 @@ exports[`Button rendering Loading should match the snapshot 1`] = `
 exports[`Button rendering LoadingAfter5Seconds should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"
@@ -114,7 +114,7 @@ exports[`Button rendering LoadingAfter5Seconds should match the snapshot 1`] = `
 exports[`Button rendering WithEndIcon should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true"
     role="button"
     tabindex="0"
     type="button"
@@ -132,7 +132,7 @@ exports[`Button rendering WithEndIcon should match the snapshot 1`] = `
 exports[`Button rendering WithStartIcon should match the snapshot 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-juMjLD-btnType-danger brd-c-dsuUsp-lKjfQ-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-juMjLD-btnType-danger brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true"
     role="button"
     tabindex="0"
     type="button"
@@ -153,7 +153,7 @@ exports[`Button rendering WithStartIcon should match the snapshot 1`] = `
 exports[`Button rendering should match the snapshot as a block button 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md brd-c-dsuUsp-iqjHSX-block-true"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iqjHSX-block-true"
     role="button"
     tabindex="0"
     type="button"
@@ -168,7 +168,7 @@ exports[`Button rendering should match the snapshot as a block button 1`] = `
 exports[`Button rendering should match the snapshot by size "lg" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-APANR-size-lg"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-dfQaBM-size-lg"
     role="button"
     tabindex="0"
     type="button"
@@ -183,7 +183,7 @@ exports[`Button rendering should match the snapshot by size "lg" 1`] = `
 exports[`Button rendering should match the snapshot by size "md" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"
@@ -198,7 +198,7 @@ exports[`Button rendering should match the snapshot by size "md" 1`] = `
 exports[`Button rendering should match the snapshot by size "sm" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-fdOzqt-size-sm"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-fXZnrp-size-sm"
     role="button"
     tabindex="0"
     type="button"
@@ -213,7 +213,7 @@ exports[`Button rendering should match the snapshot by size "sm" 1`] = `
 exports[`Button rendering should match the snapshot by type "danger" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-juMjLD-btnType-danger brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-juMjLD-btnType-danger brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"
@@ -228,7 +228,7 @@ exports[`Button rendering should match the snapshot by type "danger" 1`] = `
 exports[`Button rendering should match the snapshot by type "primary" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"
@@ -243,7 +243,7 @@ exports[`Button rendering should match the snapshot by type "primary" 1`] = `
 exports[`Button rendering should match the snapshot by type "secondary" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"
@@ -258,7 +258,7 @@ exports[`Button rendering should match the snapshot by type "secondary" 1`] = `
 exports[`Button rendering should match the snapshot by type "text" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-lKjfQ-size-md"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md"
     role="button"
     tabindex="0"
     type="button"

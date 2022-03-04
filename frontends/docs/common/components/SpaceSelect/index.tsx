@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { useGetSpacesQuery, useUserSignOutMutation, UserSignOutInput, SpaceOperation } from '@/BrickdocGraphQL'
 import { Box, Dropdown, Menu, MenuProps, Tooltip, Button, ButtonProps, devWarning, css } from '@brickdoc/design-system'
-import { selectStyle, menuItemStyle, logoutStyle, actionStyle, MenuLabel, ActionsGroup } from './index.styles'
+import { selectStyle, logoutStyle, actionStyle, MenuLabel, ActionsGroup, MenuItem } from './index.styles'
 import { SpaceCard } from '@/common/components/SpaceCard'
 import { Setting, Change, Check } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../hooks'
@@ -62,24 +62,29 @@ export const SpaceSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
     <Menu onAction={onClick}>
       <MenuLabel aria-label={userDomain}>{userDomain}</MenuLabel>
       {data?.spaces.map(p => (
-        <Menu.Item
-          active={p.domain === space.domain}
-          itemKey={`space-${p.domain}`}
-          key={p.domain}
-          className={css(menuItemStyle)()}
-        >
+        <MenuItem as={Menu.Item} active={p.domain === space.domain} itemKey={`space-${p.domain}`} key={p.domain}>
           <SpaceCard space={p} label={p.personal ? 'My Space' : false} />
           <ActionsGroup>
             {p.owned && (
               <Tooltip title={t(p.personal ? 'user_setting.text' : 'space_setting.text')}>
-                <Button type="unstyled" icon={<Setting />} onClick={onClickSpaceSetting(p.domain)} />
+                <Button
+                  className="action-setting"
+                  type="unstyled"
+                  icon={<Setting />}
+                  onClick={onClickSpaceSetting(p.domain)}
+                />
               </Tooltip>
             )}
             {p.domain === space.domain ? (
-              <Button type="unstyled" icon={<Check />} onClick={onClickSpaceSetting(p.domain)} />
+              <Button
+                className="action-check"
+                type="unstyled"
+                icon={<Check />}
+                onClick={onClickSpaceSetting(p.domain)}
+              />
             ) : null}
           </ActionsGroup>
-        </Menu.Item>
+        </MenuItem>
       ))}
 
       <Menu.Separator />

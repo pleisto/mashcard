@@ -1,6 +1,6 @@
 import { FC, useContext, useState } from 'react'
 import { BrickdocContext } from '@/common/brickdocContext'
-import { Button, Box, ConfirmDialog, theme, useBoolean, toast } from '@brickdoc/design-system'
+import { Button, Box, ConfirmDialog, useBoolean, toast } from '@brickdoc/design-system'
 import { useSettingsI18n } from '@/settings/common/hooks'
 import { SettingsContextProps } from '@/settings/SettingContext'
 import { SpaceCard } from '@/common/components/SpaceCard'
@@ -47,13 +47,13 @@ export const Members: FC<{ space: SettingsContextProps['space'] }> = ({ space })
             flexDirection: 'column',
             listStyle: 'none',
             width: '100%',
-            border: `1px solid ${theme.colors.grey5}`,
             borderRadius: '6px',
             padding: 0,
+            margin: 0,
+            marginBottom: '2rem',
             li: {
-              padding: '1rem',
-              borderBottom: `1px solid ${theme.colors.grey5}`,
               display: 'flex',
+              padding: '8px 0',
               alignItems: 'center',
               justifyContent: 'space-between',
               '&:last-child': {
@@ -73,7 +73,7 @@ export const Members: FC<{ space: SettingsContextProps['space'] }> = ({ space })
                   setOpen()
                 }}
               >
-                {t('account.leave_btn')}
+                {t(user.domain === currentUserDomain ? 'account.leave_btn' : 'account.remove_btn')}
               </Button>
             </li>
           ))}

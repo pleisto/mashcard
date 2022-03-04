@@ -32,6 +32,7 @@ const menuItemStyles = css({
   minWidth: '15rem',
   outline: 'none',
   padding: `0 ${itemSpacing}`,
+  transition: `all .2s ${theme.transitions.easeOut}`,
   '&:hover, &:focus, &:active': active,
   input: {
     background: theme.colors.ceramicQuaternary,
