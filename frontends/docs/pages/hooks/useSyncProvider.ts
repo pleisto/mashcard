@@ -183,6 +183,9 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
           fields: {
             title() {
               return block.text
+            },
+            icon() {
+              return block.meta.icon
             }
           }
         })
@@ -199,6 +202,9 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
           fields: {
             text() {
               return block.text
+            },
+            meta() {
+              return block.meta
             }
           }
         })

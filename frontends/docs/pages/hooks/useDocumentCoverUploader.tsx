@@ -88,6 +88,7 @@ export function useDocumentCoverUploader(
     overlayClassName: styles.popover,
     trigger: 'click',
     placement: 'top',
+    destroyTooltipOnHide: true,
     content: (
       <Dashboard
         blockId={blockId}

@@ -89,6 +89,7 @@ export function useDocumentIconUploader(
     overlayClassName: styles.popover,
     trigger: 'click',
     placement: 'top',
+    destroyTooltipOnHide: true,
     content: (
       <Dashboard
         blockId={blockId}
