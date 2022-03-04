@@ -263,7 +263,8 @@ export const useFormula = ({
       variable: variableRef.current,
       formulaType,
       editorContent: { ...editorContentRef.current, position: realInputs.prevText.length },
-      name: nameRef.current ?? defaultNameRef.current,
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+      name: nameRef.current || defaultNameRef.current,
       formulaContext
     })
 

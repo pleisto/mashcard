@@ -33,6 +33,7 @@ export const dumpDisplayResult = (t: VariableData, disableDump: boolean): Variab
 export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
   switch (v.type) {
     case 'number':
+      return String(v.result)
     case 'boolean':
       return String(v.result)
     case 'string':
@@ -42,11 +43,11 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
     case 'Error':
       return `#<Error> ${v.result}`
     case 'Spreadsheet':
-      return `#<Spreadsheet> ${v.result.name()}`
+      return v.result.name()
     case 'Block':
-      return `#<Block> ${v.result.name(pageId)}`
+      return v.result.name(pageId)
     case 'Column':
-      return `#<Column> ${v.result.spreadsheet.name()}.${v.result.name}`
+      return `${v.result.spreadsheet.name()}.${v.result.name}`
     case 'Predicate':
       return `[${v.operator}] ${displayValue(v.result, pageId)}`
     case 'Record':

@@ -1,0 +1,176 @@
+@basic-color: #847e8e;
+
+.brickdoc-formula-menu-popover {
+  display: inline;
+}
+
+// .brickdoc-formula-menu-popover {
+//   .brd-popover-arrow {
+//     display: none;
+//   }
+
+//   .brd-popover-inner-content {
+//     padding: 0;
+//     box-shadow: none;
+//   }
+// }
+
+
+.formula-divider {
+  padding: 0 12px;
+  background: #f6f6f6;
+  height: 1px;
+}
+
+.formula-result {
+  color: @basic-color;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'Fira Code';
+
+  .formula-result-error {
+    // display: inline-flex;
+    flex-direction: column;
+    .formula-result-error-type {
+      margin-right: 12px;
+      color: #df5641;
+    }
+
+    .formula-result-error-message {
+      color: #bfbcc6;
+    }
+  }
+
+  .formula-result-ok {
+    .formula-result-ok-equal {
+      margin-right: 12px;
+    }
+  }
+}
+
+.brickdoc-formula-menu {
+  min-width: 600px;
+  width: 720px;
+  max-width: 100%;
+  padding: 4px, 0px, 16px, 0px;
+
+  // .formula-menu-header {
+  //   display: flex;
+  //   align-items: center;
+  //   height: 32px;
+  //   color: @basic-color;
+  //   font-size: 14px;
+  // }
+
+  .formula-menu-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .formula-menu-item {
+      flex: 1;
+
+      .formula-menu-field {
+        flex: 1;
+        padding: 1px
+      }
+    }
+
+    .formula-menu-item + .formula-menu-item {
+      margin-left: 24px;
+    }
+
+    .formula-menu-label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: 500;
+    }
+  }
+
+  .formula-menu-footer {
+    position: relative;
+    padding: 2rem 0 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .formula-menu-button {
+      height: 22px;
+      line-height: 16px;
+      font-size: 12px;
+    }
+
+    .formula-menu-button + .formula-menu-button {
+      margin-left: 12px;
+    }
+  }
+}
+
+.brickdoc-formula-value {
+  cursor: pointer;
+  padding: 3px 8px;
+  margin: 0 3px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-size: 16px;
+
+  .brickdoc-formula-value-icon {
+    margin-right: 10px;
+  }
+}
+
+.brickdoc-formula-borderless {
+  cursor: pointer;
+  // padding: 3px 8px;
+  // margin: 0 3px;
+  // border-radius: 20px;
+  // border: 1px solid black;
+  // font-size: 16px;
+}
+
+.brickdoc-formula-empty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+  .brickdoc-formula-empty-icon {
+    font-size: 12px;
+    color: #bfbcc6;
+  }
+}
+
+.brickdoc-formula-error {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+
+  &::before {
+    content: " ";
+    border: 3px solid red;
+    border-radius: 3px;
+    position: absolute;
+    z-index: 1000;
+    right: 0%;
+    margin-top: -20px;
+    margin-right: -2px;
+  }
+
+  .brickdoc-formula-error-icon {
+    font-size: 12px;
+    color: #bfbcc6;
+  }
+}

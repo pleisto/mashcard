@@ -16,6 +16,7 @@ import { FormulaButton } from './Render/FormulaButton'
 import { FormulaLiteral } from './Render/FormulaLiteral'
 import { FormulaSpreadsheet } from './Render/FormulaSpreadsheet'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
+import { BlockContainer } from '../BlockContainer'
 
 export interface FormulaDisplayProps {
   displayData?: VariableDisplayData
@@ -27,22 +28,15 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, dis
   if (!displayData) {
     if (formulaType === 'normal') {
       return (
-        <span {...props} className="brickdoc-formula-placeholder">
-          <Icon.Formula className="brickdoc-formula-placeholder-icon" />
+        <span {...props} className="brickdoc-formula-empty">
+          <Icon.Formula className="brickdoc-formula-empty-icon" />
         </span>
       )
     }
     return <div />
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const editorDataSource = React.useContext(EditorDataSourceContext)
-  const formulaContext = editorDataSource.formulaContext!
-
-  const ctx = { formulaContext, meta: displayData.meta, interpretContext: { ctx: {}, arguments: [] } }
-  const newDisplayData = loadDisplayResult(ctx, displayData)
-
-  const { result, kind, type } = newDisplayData
+  const { kind, result, type, meta } = displayData
 
   if (kind === 'literal') {
     return (
@@ -52,20 +46,39 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, dis
     )
   }
 
+  if (formulaType === 'normal' && result.type === 'Error') {
+    return (
+      <span {...props} className="brickdoc-formula-error">
+        <Icon.Formula className="brickdoc-formula-error-icon" />
+      </span>
+    )
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const editorDataSource = React.useContext(EditorDataSourceContext)
+  const formulaContext = editorDataSource.formulaContext!
+
+  const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
+  const newDisplayData = loadDisplayResult(ctx, displayData)
+
   let preview: React.ReactElement | null = <></>
 
-  switch (result.view?.type ?? result.type) {
+  switch (newDisplayData.result.view?.type ?? newDisplayData.result.type) {
     case 'Button':
-      preview = <FormulaButton result={result as ButtonResult} formulaType={type} />
+      preview = <FormulaButton result={newDisplayData.result as ButtonResult} formulaType={newDisplayData.type} />
       break
     case 'Input':
-      preview = <FormulaInput result={result as InputResult} formulaType={type} />
+      preview = <FormulaInput result={newDisplayData.result as InputResult} formulaType={newDisplayData.type} />
       break
     case 'Spreadsheet':
-      preview = <FormulaSpreadsheet spreadsheet={result.result as SpreadsheetType} />
+      preview = (
+        <BlockContainer>
+          <FormulaSpreadsheet spreadsheet={newDisplayData.result.result as SpreadsheetType} />
+        </BlockContainer>
+      )
       break
     case 'Qrcode':
-      preview = <FormulaQrcode result={result as StringResult} formulaType={type} />
+      preview = <FormulaQrcode result={newDisplayData.result as StringResult} formulaType={newDisplayData.type} />
       break
     default:
       break

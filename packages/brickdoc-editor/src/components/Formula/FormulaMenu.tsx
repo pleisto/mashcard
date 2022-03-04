@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Input, Popover } from '@brickdoc/design-system'
+import { Button, Icon, Input, Popover } from '@brickdoc/design-system'
 import { VariableData } from '@brickdoc/formula'
 import { useEditorI18n } from '../../hooks'
-import './FormulaMenu.less'
+import './Formula.less'
 import { EditorContentType, FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEditor'
 import { FormulaResult } from './FormulaResult'
 import { AutocompleteList } from './AutocompleteList/AutocompleteList'
@@ -106,16 +106,20 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     close()
   }
 
+  const namePlaceholder = editorContent.input.trim() === '=' ? 'Add Name' : defaultName
+
   const menu = (
     <div className="brickdoc-formula-menu">
-      <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div>
+      {/* <div className="formula-menu-header">{t(`${i18nKey}.header`)}</div> */}
       <div className="formula-menu-row">
         <div className="formula-menu-item">
           <label className="formula-menu-label">
-            <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span>
+            {/* <span className="formula-menu-label-text">{t(`${i18nKey}.name`)}</span> */}
             <Input
+              prefix={<Icon.Edit />}
+              size="sm"
               className="formula-menu-field"
-              placeholder={defaultName}
+              placeholder={namePlaceholder}
               value={inputName ?? nameRef.current}
               onChange={handleNameChange}
             />
@@ -123,7 +127,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
         </div>
       </div>
       <div className="formula-menu-row">
-        <span className="formula-menu-result-label">=</span>
+        {/* <span className="formula-menu-result-label">=</span> */}
         <div className="formula-menu-item">
           <FormulaEditor
             editorContent={editorContent}
@@ -134,7 +138,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           />
         </div>
       </div>
-      <div className="formula-menu-divider" />
+      <div className="formula-divider" />
       <FormulaResult variableT={variableT} pageId={rootId} />
       <AutocompleteList
         blockId={rootId}
@@ -151,8 +155,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}
-        >
+          disabled={isDisableSave()}>
           {t(`${i18nKey}.save`)}
         </Button>
         <Button
@@ -160,8 +163,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="text"
           danger={true}
-          onClick={() => handleDelete(variableT!)}
-        >
+          onClick={() => handleDelete(variableT!)}>
           {t(`${i18nKey}.delete`)}
         </Button>
       </div>
@@ -177,8 +179,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}
-    >
+      trigger={['click']}>
       {children}
     </Popover>
   )

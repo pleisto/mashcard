@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react'
 import { Popover } from '@brickdoc/design-system'
-import './FormulaBlockRender.less'
+import './Formula.less'
 import { VariableInterface, FormulaSourceType } from '@brickdoc/formula'
 import { useFormula } from './useFormula'
 import { FormulaResult } from './FormulaResult'
@@ -43,7 +43,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
 
   const formulaResult = React.useMemo(
     () => (
-      <>
+      <div className="brickdoc-formula-menu">
         <FormulaResult variableT={variableT} pageId={rootId} />
         <AutocompleteList
           blockId={rootId}
@@ -51,7 +51,7 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
           handleSelectActiveCompletion={handleSelectActiveCompletion}
           setCompletion={setCompletion}
         />
-      </>
+      </div>
     ),
     [completion, handleSelectActiveCompletion, rootId, setCompletion, variableT]
   )

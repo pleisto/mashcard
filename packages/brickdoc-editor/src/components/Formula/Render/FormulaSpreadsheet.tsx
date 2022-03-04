@@ -3,9 +3,10 @@ import { SpreadsheetRender } from '../../Spreadsheet'
 
 export interface FormulaSpreadsheetProps {
   spreadsheet: SpreadsheetType
+  columnIds?: string[]
 }
 
-export const FormulaSpreadsheet: React.FC<FormulaSpreadsheetProps> = ({ spreadsheet }) => {
+export const FormulaSpreadsheet: React.FC<FormulaSpreadsheetProps> = ({ spreadsheet, columnIds }) => {
   const columns = spreadsheet.listColumns()
   const rows = spreadsheet.listRows()
 
@@ -19,5 +20,15 @@ export const FormulaSpreadsheet: React.FC<FormulaSpreadsheetProps> = ({ spreadsh
     })
   )
 
-  return <SpreadsheetRender title={spreadsheet.name()} valuesMatrix={valuesMatrix} rows={rows} columns={columns} />
+  const defaultSelection = columnIds ? { columnIds } : {}
+
+  return (
+    <SpreadsheetRender
+      title={spreadsheet.name()}
+      valuesMatrix={valuesMatrix}
+      rows={rows}
+      columns={columns}
+      defaultSelection={defaultSelection}
+    />
+  )
 }

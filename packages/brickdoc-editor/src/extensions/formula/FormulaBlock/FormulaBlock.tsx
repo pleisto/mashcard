@@ -68,8 +68,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
 
   const renderData =
     !savedVariableT || isDraft ? (
-      <span className="brickdoc-formula-placeholder">
-        <Icon.Formula className="brickdoc-formula-placeholder-icon" />
+      <span className="brickdoc-formula-empty">
+        <Icon.Formula className="brickdoc-formula-empty-icon" />
       </span>
     ) : (
       <Tooltip title={savedVariableT.name}>

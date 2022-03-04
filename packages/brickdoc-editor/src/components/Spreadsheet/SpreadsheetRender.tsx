@@ -1,4 +1,4 @@
-import { useSpreadsheetContext } from './SpreadsheetContext'
+import { SpreadsheetSelection, useSpreadsheetContext } from './SpreadsheetContext'
 import {
   SpreadsheetContainer,
   SpreadsheetPanel,
@@ -12,9 +12,9 @@ import {
   SpreadsheetCellContainer
 } from './SpreadsheetView'
 import './Spreadsheet.less'
-import { BlockContainer } from '../BlockContainer'
 import { VariableDisplayData } from '@brickdoc/formula'
 import { FormulaDisplay } from '../Formula/FormulaDisplay'
+import React from 'react'
 
 export interface Row {
   rowId: string
@@ -30,9 +30,16 @@ export interface SpreadsheetRenderProps {
   rows: Row[]
   valuesMatrix: Map<string, Map<string, VariableDisplayData | undefined>>
   columns: Column[]
+  defaultSelection: SpreadsheetSelection
 }
 
-export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({ rows, title, columns, valuesMatrix }) => {
+export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({
+  rows,
+  title,
+  columns,
+  valuesMatrix,
+  defaultSelection
+}) => {
   const spreadsheetContext = useSpreadsheetContext({
     editable: false,
     rowIds: rows.map(r => r.rowId),
@@ -49,68 +56,70 @@ export const SpreadsheetRender: React.FC<SpreadsheetRenderProps> = ({ rows, titl
     )
   })
 
+  React.useEffect(() => {
+    spreadsheetContext.setSelection(defaultSelection)
+  }, [defaultSelection, spreadsheetContext])
+
   return (
-    <BlockContainer>
-      <SpreadsheetContainer context={spreadsheetContext} className="brickdoc-formula-spreadsheet">
-        {/* <div className="spreadsheet-title">{title}</div> */}
-        <SpreadsheetPanel context={spreadsheetContext}>
-          {rows.map(({ rowId }, rowIdx) => {
-            return (
-              <SpreadsheetRowAction
-                key={rowIdx}
-                context={spreadsheetContext}
-                rowId={rowId}
-                rowNumber={`${rowIdx + 1}`}
-                rowActions={[]}
-                draggable={false}
-              />
-            )
-          })}
-        </SpreadsheetPanel>
-        <SpreadsheetScrollView>
-          <SpreadsheetView>
-            <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
-              {columns.map((column, i) => {
-                return (
-                  <SpreadsheetHeaderColumn
-                    key={column.columnId}
-                    context={spreadsheetContext}
-                    columnId={column.columnId}
-                    columnActions={[]}
-                    draggable={false}
-                  >
-                    <div className="column">{column.name}</div>
-                  </SpreadsheetHeaderColumn>
-                )
-              })}
-            </SpreadsheetHeader>
-            <SpreadsheetBody>
-              {rows.map((rowBlock, rowIdx) => {
-                return (
-                  <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowBlock.rowId}>
-                    {columns.map((column, columnIdx) => {
-                      return (
-                        <SpreadsheetCellContainer
-                          key={column.columnId}
-                          context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}
-                        >
-                          <div className="cell">
-                            <FormulaDisplay
-                              displayData={valuesMatrix.get(rowBlock.rowId)?.get(column.columnId)}
-                              formulaType="spreadsheet"
-                            />
-                          </div>
-                        </SpreadsheetCellContainer>
-                      )
-                    })}
-                  </SpreadsheetRow>
-                )
-              })}
-            </SpreadsheetBody>
-          </SpreadsheetView>
-        </SpreadsheetScrollView>
-      </SpreadsheetContainer>
-    </BlockContainer>
+    <SpreadsheetContainer context={spreadsheetContext} className="brickdoc-formula-spreadsheet">
+      {/* <div className="spreadsheet-title">{title}</div> */}
+      <SpreadsheetPanel context={spreadsheetContext}>
+        {rows.map(({ rowId }, rowIdx) => {
+          return (
+            <SpreadsheetRowAction
+              key={rowIdx}
+              context={spreadsheetContext}
+              rowId={rowId}
+              rowNumber={`${rowIdx + 1}`}
+              rowActions={[]}
+              draggable={false}
+            />
+          )
+        })}
+      </SpreadsheetPanel>
+      <SpreadsheetScrollView>
+        <SpreadsheetView>
+          <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
+            {columns.map((column, i) => {
+              return (
+                <SpreadsheetHeaderColumn
+                  key={column.columnId}
+                  context={spreadsheetContext}
+                  columnId={column.columnId}
+                  columnActions={[]}
+                  draggable={false}
+                >
+                  <div className="column">{column.name}</div>
+                </SpreadsheetHeaderColumn>
+              )
+            })}
+          </SpreadsheetHeader>
+          <SpreadsheetBody>
+            {rows.map((rowBlock, rowIdx) => {
+              return (
+                <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowBlock.rowId}>
+                  {columns.map((column, columnIdx) => {
+                    return (
+                      <SpreadsheetCellContainer
+                        key={column.columnId}
+                        context={spreadsheetContext}
+                        cellId={{ rowId: rowBlock.rowId, columnId: column.columnId }}
+                      >
+                        <div className="cell">
+                          <FormulaDisplay
+                            displayData={valuesMatrix.get(rowBlock.rowId)?.get(column.columnId)}
+                            formulaType="spreadsheet"
+                          />
+                        </div>
+                      </SpreadsheetCellContainer>
+                    )
+                  })}
+                </SpreadsheetRow>
+              )
+            })}
+          </SpreadsheetBody>
+        </SpreadsheetView>
+      </SpreadsheetScrollView>
+    </SpreadsheetContainer>
   )
 }

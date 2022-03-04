@@ -1,3 +1,4 @@
+import { Icon } from '@brickdoc/design-system'
 import { Palettes } from '@brickdoc/design-system/src/themes/ceramic-light/colors/palettes'
 import { FormulaColorType } from '@brickdoc/formula'
 
@@ -172,4 +173,39 @@ export const FORMULA_COLORS: Record<FormulaColorType, FormulaColorMeta> = {
   FALSE: redColorMeta,
   FunctionName: pinkColorMeta,
   Variable: pinkColorMeta
+}
+
+const defaultIcon = <Icon.Function />
+export const FORMULA_ICONS: Record<FormulaColorType, JSX.Element> = {
+  null: defaultIcon,
+  number: <Icon.Number />,
+  string: <Icon.String />,
+  Record: <Icon.Copy />,
+  Array: defaultIcon,
+  Date: <Icon.Calendar />,
+  Error: defaultIcon,
+  Column: <Icon.Column />,
+  Block: defaultIcon,
+  Spreadsheet: <Icon.Table />,
+  Function: defaultIcon,
+  Blank: defaultIcon,
+  Predicate: defaultIcon,
+  Button: defaultIcon,
+
+  // Unknown
+  Switch: defaultIcon,
+  Select: defaultIcon,
+  Slider: defaultIcon,
+  Input: defaultIcon,
+  Radio: defaultIcon,
+  Rate: defaultIcon,
+  void: defaultIcon,
+  Cst: defaultIcon,
+  Reference: defaultIcon,
+  any: defaultIcon,
+  // Other
+  TRUE: defaultIcon,
+  FALSE: defaultIcon,
+  FunctionName: defaultIcon,
+  Variable: defaultIcon
 }
