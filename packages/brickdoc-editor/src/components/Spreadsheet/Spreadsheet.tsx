@@ -92,6 +92,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
 
   const { dragging } = spreadsheetContext
 
+  const [columnWidths, setColumnWidths] = React.useState(Object.fromEntries(columns.map(c => [c.uuid, c.width])))
+
   React.useEffect(() => {
     const onDraggingMouseMove = (e: MouseEvent): void => {
       if (dragging.rowId ?? dragging.columnId) {
@@ -224,6 +226,9 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                 const handleTitleSave = (value: string): void => {
                   updateColumn({ ...column, title: value })
                 }
+                const onResize = (width: number): void => {
+                  updateColumn({ ...column, width })
+                }
                 return (
                   <SpreadsheetHeaderColumn
                     key={column.uuid}
@@ -254,6 +259,9 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                         : []
                     }
                     draggable={documentEditable}
+                    onResize={onResize}
+                    width={columnWidths[column.uuid]}
+                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
                   >
                     {documentEditable ? (
                       <SpreadsheetEditable
@@ -288,6 +296,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                               key={block.id}
                               block={block}
                               saveBlock={saveCellBlock}
+                              width={columnWidths[column.uuid]}
                             />
                           ) : (
                             <div className="cell">{block.text}</div>

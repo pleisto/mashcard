@@ -143,7 +143,6 @@
           font-weight: normal;
         }
         td, th {
-          min-width: 164px;
           border: 1px solid @table-border-color;
           line-height: 22px;
         }
@@ -151,7 +150,6 @@
           position: relative;
           .column, .cell {
             width: 100%;
-            min-width: 230px;
             overflow-x: hidden;
             position: relative;
             display: block;
@@ -188,6 +186,7 @@
           }
         }
         th {
+          min-width: 230px;
           .column, .cell {
             padding: 4px 6px;
           }
@@ -196,6 +195,11 @@
           .cell {
             padding: 8px 10px;
             min-height: 38px;
+            width: auto;
+            height: 100%;
+            word-wrap: break-word;
+            white-space: normal;
+            font-family: 'Fira Code';
           }
         }
         th {
@@ -226,6 +230,17 @@
             .column-action {
               opacity: 1;
             }
+          }
+          .resize-handler {
+            height: 100%;
+            width: 2px;
+            position: absolute;
+            right: -1px;
+            top: 0;
+            border: 0;
+            padding: 0;
+            cursor: ew-resize;
+            background: transparent;
           }
         }
         th.dragging {

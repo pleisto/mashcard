@@ -20,9 +20,10 @@ export interface SpreadsheetCellProps {
   block: BlockInput
   tableId: string
   saveBlock: (block: BlockInput) => void
+  width?: number
 }
 
-export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, tableId, block, saveBlock }) => {
+export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, tableId, block, saveBlock, width }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
   const rootId = editorDataSource.rootId
@@ -144,12 +145,19 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, table
         formulaId={formulaId}
         updateFormula={updateFormula}
         formulaType="spreadsheet"
+        width={width}
       />
     )
   }
 
   return (
-    <div className="cell" onDoubleClick={handleEnterEdit}>
+    <div
+      className="cell"
+      style={{
+        ...(width ? { width: `${width}px` } : {})
+      }}
+      onDoubleClick={handleEnterEdit}
+    >
       <FormulaDisplay
         display={currentBlock.text}
         displayData={currentBlock.data.displayData}

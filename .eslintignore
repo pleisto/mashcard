@@ -4,6 +4,7 @@ public/vite-dev/
 public/esm-bundle/
 public/packs-test/
 public/pdftron/
+public/pdfjs/
 dist/
 vendor/
 coverage/

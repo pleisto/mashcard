@@ -17,6 +17,7 @@ export interface SpreadsheetColumn {
   uuid: string
   title?: string
   sort: number
+  width?: number
 }
 
 export interface SpreadsheetColumns extends Array<SpreadsheetColumn> {}

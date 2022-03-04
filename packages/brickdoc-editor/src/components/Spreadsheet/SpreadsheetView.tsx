@@ -120,12 +120,17 @@ export const SpreadsheetHeaderColumn: React.FC<{
   className?: string
   columnActions?: SpreadsheetActionItem[]
   draggable?: boolean
-}> = ({ context, columnId, children, className = '', columnActions, draggable }) => {
+  onResize?: (width: number) => void
+  width?: number
+  setWidth?: (width: number) => void
+}> = ({ context, columnId, children, className = '', columnActions, draggable, onResize, width, setWidth }) => {
   const { t } = useEditorI18n()
+  const columnRef = React.createRef<HTMLTableHeaderCellElement>()
   const selected = context.selection.columnIds?.includes(columnId)
   const dragging = context.dragging.columnId === columnId
   const draggingOver = context.dragging.overColumnId === columnId
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
+  const latestMovement = React.useRef<number>(0)
 
   const unselectColumn = unselectFn({
     context,
@@ -150,6 +155,30 @@ export const SpreadsheetHeaderColumn: React.FC<{
     context.setDragging({ columnId })
   }
 
+  const onResizeMouseMove = (e: MouseEvent): void => {
+    latestMovement.current += e.movementX
+    if (setWidth) {
+      setWidth((width ?? columnRef.current?.clientWidth ?? 230) + latestMovement.current)
+    }
+  }
+
+  const onResizeMouseUp = (e: MouseEvent): void => {
+    document.removeEventListener('mousemove', onResizeMouseMove)
+    document.removeEventListener('mouseup', onResizeMouseUp)
+    if (onResize && width) {
+      onResize(width)
+    }
+  }
+
+  const onResizeMouseDown: React.MouseEventHandler<HTMLElement> = (e): void => {
+    e.preventDefault()
+    e.stopPropagation()
+    document.addEventListener('mousemove', onResizeMouseMove)
+    document.addEventListener('mouseup', onResizeMouseUp)
+    context.clearSelection()
+    latestMovement.current = 0
+  }
+
   const onContextMenu: React.MouseEventHandler = (e: React.MouseEvent): void => {
     if (!selected) {
       selectColumn()
@@ -161,18 +190,21 @@ export const SpreadsheetHeaderColumn: React.FC<{
 
   return (
     <th
+      ref={columnRef}
       data-column-id={columnId}
       className={`${className} ${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${
         draggingOver ? 'dragging-over' : ''
       }`}
       onClick={selectColumn}
-      style={
-        dragging
+      style={{
+        ...(dragging ? { transform: `translateX(${context.dragging.movementX}px)` } : {}),
+        ...(width
           ? {
-              transform: `translateX(${context.dragging.movementX}px)`
+              width: `${width}px`,
+              minWidth: `${width}px`
             }
-          : {}
-      }
+          : {})
+      }}
       onMouseDown={onMouseDown}
       onContextMenu={onContextMenu}
     >
@@ -203,8 +235,9 @@ export const SpreadsheetHeaderColumn: React.FC<{
           <span>⌄</span>
         </Dropdown>
       ) : (
-        ''
+        <></>
       )}
+      {onResize ? <button className="resize-handler" onMouseDown={onResizeMouseDown} /> : <></>}
     </th>
   )
 }
@@ -269,18 +302,40 @@ export const SpreadsheetRowAction: React.FC<{
     e.stopPropagation()
   }
 
+  const [height, setHeight] = React.useState<number | undefined>()
+
+  const resizeObserver = React.useRef<ResizeObserver>()
+
+  React.useEffect(() => {
+    resizeObserver.current = new ResizeObserver(entries => {
+      setHeight(entries[0].contentRect.height)
+    })
+    const element = document.querySelector(`table.spreadsheet-rows tr[data-row-id='${rowId}']`)
+    if (element) {
+      resizeObserver.current.observe(element)
+    }
+    return () => {
+      resizeObserver.current?.disconnect()
+    }
+  })
+
   return (
     <tr
       className={`${hover ? 'hover' : ''} ${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${
         draggingOver ? 'dragging-over' : ''
       }`}
-      style={
-        dragging
+      style={{
+        ...(dragging
           ? {
               transform: `translateY(${context.dragging.movementY}px)`
             }
-          : {}
-      }
+          : {}),
+        ...(height
+          ? {
+              height: `${height}px`
+            }
+          : {})
+      }}
       data-row-id={rowId}
     >
       <td className="row-action-panel" onContextMenu={onContextMenu}>
