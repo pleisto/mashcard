@@ -15,17 +15,24 @@ exports[`SubPageMenuBlock matches correct snapshot 1`] = `
         page tree
       </div>
     </div>
-    <button
+    <div
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy brd-c-iAZzvg"
-      role="button"
-      tabindex="0"
-      type="button"
+      class="brd-c-iAZzvg"
+      contenteditable="false"
+      data-drag-handle="true"
+      draggable="true"
     >
-      <i
-        data-testid="mock-icon-DragSecondary"
-      />
-    </button>
+      <button
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        <i
+          data-testid="mock-icon-DragSecondary"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;

@@ -24,6 +24,8 @@ export const TocBlockExtension = Node.create<TocBlockOptions>({
 
   selectable: false,
 
+  draggable: true,
+
   allowGapCursor: false,
 
   parseHTML() {

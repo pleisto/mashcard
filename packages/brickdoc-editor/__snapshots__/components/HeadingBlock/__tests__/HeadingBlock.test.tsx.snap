@@ -13,17 +13,24 @@ exports[`HeadingBlock matches snapshot correctly 1`] = `
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
-    <button
+    <div
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy brd-c-iAZzvg brd-c-glpRAv"
-      role="button"
-      tabindex="0"
-      type="button"
+      class="brd-c-iAZzvg brd-c-glpRAv"
+      contenteditable="false"
+      data-drag-handle="true"
+      draggable="true"
     >
-      <i
-        data-testid="mock-icon-DragSecondary"
-      />
-    </button>
+      <button
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        <i
+          data-testid="mock-icon-DragSecondary"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;
@@ -41,17 +48,24 @@ exports[`HeadingBlock renders correspond heading according to level 1`] = `
       data-node-view-content=""
       style="white-space: pre-wrap;"
     />
-    <button
+    <div
       aria-haspopup="dialog"
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy brd-c-iAZzvg"
-      role="button"
-      tabindex="0"
-      type="button"
+      class="brd-c-iAZzvg"
+      contenteditable="false"
+      data-drag-handle="true"
+      draggable="true"
     >
-      <i
-        data-testid="mock-icon-DragSecondary"
-      />
-    </button>
+      <button
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        <i
+          data-testid="mock-icon-DragSecondary"
+        />
+      </button>
+    </div>
   </div>
 </div>
 `;

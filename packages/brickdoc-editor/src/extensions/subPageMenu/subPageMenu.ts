@@ -24,6 +24,8 @@ export const SubPageMenuBlockExtension = Node.create<SubPageMenuBlockOptions>({
 
   selectable: false,
 
+  draggable: true,
+
   allowGapCursor: false,
 
   parseHTML() {

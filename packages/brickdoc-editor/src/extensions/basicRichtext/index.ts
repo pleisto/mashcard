@@ -74,6 +74,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.bulletList !== false)
       extensions.push(
         BulletList.extend({
+          draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(ListBlock)
           }
@@ -83,19 +84,21 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.codeBlock !== false)
       extensions.push(
         CodeBlockRefractor.extend({
+          draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(CodeBlock)
           }
         }).configure(this.options.codeBlock)
       )
     if (this.options.document !== false) extensions.push(Document.configure(this.options?.document))
-    if (this.options.dropcursor !== false) extensions.push(Dropcursor.configure(this.options?.dropcursor))
+    if (this.options.dropcursor !== false) extensions.push(Dropcursor.extend({}).configure(this.options?.dropcursor))
     if (this.options.gapcursor !== false) extensions.push(Gapcursor.configure(this.options?.gapcursor))
     if (this.options.hardBreak !== false) extensions.push(HardBreak.configure(this.options?.hardBreak))
     if (this.options.heading !== false) {
       extensions.push(
         Heading.extend({
           marks: 'bold italic link strike textStyle',
+          draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(HeadingBlock)
           }
@@ -106,6 +109,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.horizontalRule !== false)
       extensions.push(
         HorizontalRule.extend({
+          draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(DividerBlock)
           }
@@ -116,6 +120,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.orderedList !== false)
       extensions.push(
         OrderedList.extend({
+          draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(ListBlock)
           }
@@ -124,6 +129,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.paragraph !== false)
       extensions.push(
         Paragraph.extend({
+          draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(ParagraphBlock)
           }

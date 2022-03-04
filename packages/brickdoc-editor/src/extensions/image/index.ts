@@ -23,6 +23,8 @@ export const ImageBlockExtension = Node.create<ImageBlockOptions>({
 
   selectable: false,
 
+  draggable: true,
+
   allowGapCursor: false,
 
   addAttributes() {

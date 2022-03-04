@@ -25,6 +25,7 @@ import { useEditorI18n } from './hooks'
 import { EditorDataSource, EditorDataSourceContext } from './dataSource/DataSource'
 import { EditorContext, EditorContextData } from './context/EditorContext'
 import { BubbleMenu } from './components'
+import { theme } from '@brickdoc/design-system'
 
 export { useEditorI18n }
 
@@ -80,6 +81,10 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
     extensions: [
       BasicRichtextExtension.configure({
         gapcursor: false,
+        dropcursor: {
+          color: theme.colors.primaryDisable.value,
+          width: 2
+        },
         link: {
           HTMLAttributes: {
             class: 'brickdoc-link'

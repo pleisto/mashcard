@@ -53,11 +53,11 @@ Cypress.Commands.add(
 )
 
 Cypress.Commands.add('slashCommand', (command: string) => {
-  cy.get('[contenteditable]').type(`/${command}`)
+  cy.get('[contenteditable]').first().type(`/${command}`)
 })
 
 Cypress.Commands.add('addBlock', (blockName: string) => {
-  cy.get('[contenteditable]').type(`/${blockName}`)
+  cy.get('[contenteditable]').first().type(`/${blockName}`)
   cy.findAllByTestId(TEST_ID_ENUM.editor.slashCommands.item.id).first().click()
 })
 

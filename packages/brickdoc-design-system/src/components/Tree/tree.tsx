@@ -114,34 +114,43 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
     onDrop?.(item)
   })
 
+  // add a root element to limit dnd scope
+  const [dndRoot, setDndRoot] = useState()
+  const handleDndAreaRef = useCallback(node => setDndRoot(node), [])
+  const html5Options = useMemo(() => ({ rootElement: dndRoot }), [dndRoot])
+
   return (
-    <DndProvider backend={HTML5Backend}>
-      <List<TNode>
-        className={className}
-        data={renderTree}
-        data-test-id="virtual-list"
-        height={Math.min(renderTree.length * NODE_HEIGHT, DEFAULT_HEIGHT)}
-        itemHeight={NODE_HEIGHT}
-        itemKey="key"
-        ref={ref ?? listRef}
-      >
-        {(item, index) => (
-          <Node
-            className={treeNodeClassName}
-            moveNode={moveNode}
-            id={item.key}
-            index={index}
-            key={item.key}
-            emptyNode={emptyNode}
-            treeData={item}
-            onClick={handleItemClick}
-            handleSelected={handleSelected}
-            titleRender={titleRender}
-            selectedId={selectedId}
-          />
-        )}
-      </List>
-    </DndProvider>
+    <div ref={handleDndAreaRef}>
+      {/* make sure root area is mounted, then mount dnd area */}
+      {dndRoot && (
+        <DndProvider backend={HTML5Backend} options={html5Options}>
+          <List<TNode>
+            className={className}
+            data={renderTree}
+            data-test-id="virtual-list"
+            height={Math.min(renderTree.length * NODE_HEIGHT, DEFAULT_HEIGHT)}
+            itemHeight={NODE_HEIGHT}
+            itemKey="key"
+            ref={ref ?? listRef}>
+            {(item, index) => (
+              <Node
+                className={treeNodeClassName}
+                moveNode={moveNode}
+                id={item.key}
+                index={index}
+                key={item.key}
+                emptyNode={emptyNode}
+                treeData={item}
+                onClick={handleItemClick}
+                handleSelected={handleSelected}
+                titleRender={titleRender}
+                selectedId={selectedId}
+              />
+            )}
+          </List>
+        </DndProvider>
+      )}
+    </div>
   )
 }
 

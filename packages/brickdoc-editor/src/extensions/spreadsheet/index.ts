@@ -27,6 +27,8 @@ export const SpreadsheetBlockExtension = Node.create<SpreadsheetBlockOptions>({
 
   atom: true,
 
+  draggable: true,
+
   allowGapCursor: false,
 
   addAttributes() {

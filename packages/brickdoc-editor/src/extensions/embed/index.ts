@@ -25,6 +25,8 @@ export const EmbedBlockExtension = Node.create<EmbedBlockOptions>({
 
   selectable: false,
 
+  draggable: true,
+
   allowGapCursor: false,
 
   addAttributes() {

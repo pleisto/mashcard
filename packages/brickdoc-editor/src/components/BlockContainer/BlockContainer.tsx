@@ -39,7 +39,15 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
     ref
   ) => {
     const [insideList, setInsideList] = React.useState(false)
-    const [blockContextData] = useBlockContextDataProvider({ deleteNode, getPos, contentForCopy, insideList })
+    const [blockDragging, setBlockDragging] = React.useState(false)
+    const [blockContextData] = useBlockContextDataProvider({
+      deleteNode,
+      getPos,
+      contentForCopy,
+      updateDragging: (dragging: boolean) => setBlockDragging(dragging),
+      insideList,
+      dragging: blockDragging
+    })
     const [documentEditable] = useDocumentEditable(editable)
     const [blockElement] = useBlockElement(children, actionOptions, {
       inline: inline ?? false,
@@ -73,7 +81,11 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
       <NodeViewWrapper
         {...props}
         as={asElement}
-        style={{ ...style, ...{ pointerEvents: documentEditable ? 'unset' : 'none' } }}
+        style={{
+          ...style,
+          pointerEvents: documentEditable ? 'unset' : 'none',
+          opacity: blockDragging ? '0.2' : 'unset'
+        }}
         ref={(container: HTMLElement) => {
           if (typeof ref === 'function') {
             ref(container)
@@ -82,8 +94,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
           }
 
           innerRef.current = container
-        }}
-      >
+        }}>
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )
