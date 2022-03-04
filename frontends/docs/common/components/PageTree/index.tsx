@@ -252,26 +252,29 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   }
 
   const pageBlocks = React.useMemo(() => {
-    let blocks = dataPageBlocks
-    const findRootParentId = (id: string): string => {
-      const parentId = blocks.find(b => b.id === id)?.parentId
-      if (parentId) return findRootParentId(parentId)
-      return id
-    }
+    const blocks = dataPageBlocks
 
     if (mode === 'subPage') {
-      blocks = blocks.filter(b => {
-        if (b.id === docMeta.id) return false
-        return findRootParentId(b.id) === docMeta.id
-      })
-      return blocks.map(b => ({
-        ...b,
-        parentId: b.parentId === docMeta.id ? undefined : b.parentId
-      }))
+      const isNodeInsideCurrentRoot = (id: string): boolean => {
+        const parentId = blocks.find(b => b.id === id)?.parentId
+        // docMeta.id is the root of current page
+        if (parentId === docMeta.id) return true
+        if (parentId) return isNodeInsideCurrentRoot(parentId)
+        return false
+      }
+
+      return blocks
+        .filter(b => isNodeInsideCurrentRoot(b.id))
+        .map(b => ({
+          ...b,
+          parentId: b.parentId === docMeta.id ? undefined : b.parentId
+        }))
     }
 
     return blocks
   }, [dataPageBlocks, docMeta.id, mode])
+
+  console.log(pageBlocks)
 
   React.useEffect(() => {
     pageBlocks.forEach(b => {
