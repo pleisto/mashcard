@@ -1,5 +1,7 @@
 import {
+  attrs2completion,
   buildVariable,
+  CodeFragmentAttrs,
   Completion,
   ContextInterface,
   errorIsFatal,
@@ -18,7 +20,8 @@ import {
   FormulaCalculateTrigger,
   FormulaKeyboardEventTrigger,
   FormulaUpdatedViaId,
-  FormulaEditorSavedTrigger
+  FormulaEditorSavedTrigger,
+  FormulaEditorClickEventTrigger
 } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
 import { devLog, devWarning } from '@brickdoc/design-system'
@@ -184,6 +187,7 @@ const replaceRoot = ({
 
 export interface CompletionType {
   completions: Completion[]
+  kind: 'Completion' | 'Preview'
   activeCompletion: Completion | undefined
   activeCompletionIndex: number
 }
@@ -199,7 +203,7 @@ export const useFormula = ({
   const formulaIsNormal = formulaType === 'normal'
 
   const defaultVariable = React.useMemo(
-    () => formulaContext?.findVariable(rootId, formulaId),
+    () => formulaContext?.findVariableById(rootId, formulaId),
     [formulaContext, formulaId, rootId]
   )
 
@@ -239,6 +243,7 @@ export const useFormula = ({
   const [defaultName, setDefaultName] = React.useState(contextDefaultName)
   const [completion, setCompletion] = React.useState<CompletionType>({
     completions: contextCompletions,
+    kind: 'Completion',
     activeCompletion: contextCompletions[0],
     activeCompletionIndex: 0
   })
@@ -268,7 +273,7 @@ export const useFormula = ({
       formulaContext
     })
 
-    setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0 })
+    setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0, kind: 'Completion' })
 
     if ((parseResult.valid && !errorIsFatal(newVariable.t)) || inputIsEmpty) {
       editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, newPosition)
@@ -471,6 +476,29 @@ export const useFormula = ({
     )
     return () => listener.unsubscribe()
   }, [completion, doHandleSave, formulaId, handleSelectActiveCompletion, rootId])
+
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      FormulaEditorClickEventTrigger,
+      event => {
+        const attrs = event.payload.attrs as CodeFragmentAttrs | undefined
+        if (attrs) {
+          const attrCompletion = attrs2completion(formulaContext!, attrs, rootId)
+          if (attrCompletion) {
+            setCompletion(c => ({ ...c, activeCompletion: attrCompletion, kind: 'Preview' }))
+            return
+          }
+        }
+
+        setCompletion(c => ({ ...c, activeCompletion: c.completions[c.activeCompletionIndex], kind: 'Completion' }))
+      },
+      {
+        eventId: `${rootId},${formulaId}`,
+        subscribeId: `UseFormula#${rootId},${formulaId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [formulaContext, formulaId, rootId])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(

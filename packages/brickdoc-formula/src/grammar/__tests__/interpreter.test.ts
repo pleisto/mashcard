@@ -185,7 +185,7 @@ describe('Context', () => {
     const meta = { namespaceId: anotherBlockId, variableId: anotherVariableId, name: 'bar' }
     await quickInsert({ ctx: { ...ctx, meta: { ...meta, input: barInput, position: 0, type: 'normal' } } })
 
-    const bar = formulaContext.findVariable(anotherBlockId, anotherVariableId)!
+    const bar = formulaContext.findVariableById(anotherBlockId, anotherVariableId)!
 
     expect(bar.t.functionDependencies).toEqual([])
     expect(bar.t.variableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])

@@ -821,8 +821,13 @@ Array [
         "value": ".",
       },
       Object {
-        "attrs": undefined,
-        "code": "FunctionName",
+        "attrs": Object {
+          "id": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+          "kind": "Variable",
+          "name": "foo",
+          "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+        },
+        "code": "Variable",
         "display": "foo",
         "errors": Array [],
         "hide": false,

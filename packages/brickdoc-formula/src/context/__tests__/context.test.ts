@@ -63,8 +63,8 @@ describe('Context', () => {
   })
 
   it('findVariable', () => {
-    const foo = formulaContext.findVariable(fooNamespaceId, fooVariableId)!
-    const bar = formulaContext.findVariable(barNamespaceId, barVariableId)!
+    const foo = formulaContext.findVariableById(fooNamespaceId, fooVariableId)!
+    const bar = formulaContext.findVariableById(barNamespaceId, barVariableId)!
 
     expect({
       foo: [foo.t.functionDependencies, foo.t.variableDependencies, foo.t.variableNameDependencies]

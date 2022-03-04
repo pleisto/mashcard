@@ -1,7 +1,8 @@
-import { Extension } from '@tiptap/core'
+import { Editor, Extension } from '@tiptap/core'
 import { EditorView } from 'prosemirror-view'
 import { Plugin, PluginKey } from 'prosemirror-state'
-import { BrickdocEventBus, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
+import { BrickdocEventBus, FormulaEditorClickEventTrigger, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
+import { CodeFragment } from '@brickdoc/formula'
 
 export type KeyDownHandlerType = (view: EditorView<any>, event: KeyboardEvent) => boolean
 export type HandleKeyDownType = ({
@@ -33,19 +34,60 @@ const formulaHandleKeyDown: ({
   }
 }
 
+const gapClickHandler = ({
+  view,
+  position,
+  formulaId,
+  rootId
+}: {
+  editor: Editor
+  view: EditorView
+  position: number
+  event: MouseEvent
+  formulaId: string
+  rootId: string
+}): void => {
+  if (!formulaId || !rootId) return
+  // if (!(event.target as HTMLElement)?.classList.contains('ProseMirror')) {
+  //   return
+  // }
+
+  // if (position - 1 < 0) return
+  const node = view.state.doc.nodeAt(position)
+  if (!node) {
+    BrickdocEventBus.dispatch(FormulaEditorClickEventTrigger({ attrs: undefined, formulaId, rootId }))
+    return
+  }
+
+  const mark = node.marks[0]
+  if (!mark) return
+
+  if (mark.type.name !== 'FormulaType') return
+
+  const { attrs } = mark.attrs as CodeFragment
+  // if (!['Spreadsheet', 'Column', 'Variable', 'Block'].includes(code)) return
+
+  BrickdocEventBus.dispatch(FormulaEditorClickEventTrigger({ attrs, formulaId, rootId }))
+}
+
 export const HandleKeyDownExtension = Extension.create({
   name: 'handleKeyDown',
 
   addProseMirrorPlugins() {
     const {
-      options: { formulaId, rootId }
+      options: { formulaId, rootId },
+      editor
     } = this
 
     return [
       new Plugin({
         key: new PluginKey('handleKeyDown'),
         props: {
-          handleKeyDown: formulaHandleKeyDown({ formulaId, rootId })
+          handleKeyDown: formulaHandleKeyDown({ formulaId, rootId }),
+          handleClick(view, position, event) {
+            gapClickHandler({ editor, view, position, event, formulaId, rootId })
+            return false
+          }
         }
       })
     ]

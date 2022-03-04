@@ -191,7 +191,7 @@ export class VariableClass implements VariableInterface {
   }
 
   isDraft(): boolean {
-    return !this.formulaContext.findVariable(this.t.namespaceId, this.t.variableId)
+    return !this.formulaContext.findVariableById(this.t.namespaceId, this.t.variableId)
   }
 
   meta(): VariableMetadata {

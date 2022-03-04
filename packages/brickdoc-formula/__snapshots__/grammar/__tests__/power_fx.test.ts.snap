@@ -213,8 +213,13 @@ Array [
     "value": ".",
   },
   Object {
-    "attrs": undefined,
-    "code": "StringLiteral",
+    "attrs": Object {
+      "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "name": "first",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Column",
     "display": "first",
     "errors": Array [
       Object {

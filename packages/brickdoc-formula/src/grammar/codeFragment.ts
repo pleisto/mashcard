@@ -18,7 +18,14 @@ import { buildFunctionKey } from '../functions'
 import { BaseCstVisitor } from './parser'
 import { intersectType, parseString } from './util'
 import { BlockClass } from '../controls/block'
-import { block2codeFragment, columnRenderText, spreadsheet2codeFragment, variableRenderText } from './convert'
+import {
+  block2codeFragment,
+  column2attrs,
+  columnRenderText,
+  spreadsheet2codeFragment,
+  variable2attrs,
+  variableRenderText
+} from './convert'
 import { devWarning } from '@brickdoc/design-system'
 import { PositionFragment } from './core'
 
@@ -530,6 +537,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
                 {
                   ...finalRhsCodeFragments[0],
                   display: variableName,
+                  code: 'Variable',
+                  attrs: variable2attrs(variable),
                   renderText: variableRenderText(variable, this.ctx.meta.namespaceId)
                 }
               ]
@@ -568,7 +577,13 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
             if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
               finalRhsCodeFragments = [
-                { ...finalRhsCodeFragments[0], display: columnName, renderText: columnRenderText(column) }
+                {
+                  ...finalRhsCodeFragments[0],
+                  display: columnName,
+                  code: 'Column',
+                  attrs: column2attrs(column),
+                  renderText: columnRenderText(column)
+                }
               ]
             }
           } else {
@@ -1385,3 +1400,4 @@ export const addSpace = (
 
   return { finalCodeFragments, finalPositionFragment: positionFragment }
 }
+

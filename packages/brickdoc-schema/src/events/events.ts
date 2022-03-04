@@ -75,6 +75,13 @@ export const FormulaKeyboardEventTrigger = event<{ key: string; formulaId: strin
   }
 )
 
+export const FormulaEditorClickEventTrigger = event<{ attrs: any; formulaId: string; rootId: string }>()(
+  'FormulaEditorClickEventTrigger',
+  ({ attrs, formulaId, rootId }) => {
+    return { attrs, id: `${rootId},${formulaId}` }
+  }
+)
+
 export const FormulaEditorSaveEventTrigger = event<{ formulaId: string; rootId: string }>()(
   'FormulaEditorSaveEventTrigger',
   ({ formulaId, rootId }) => {

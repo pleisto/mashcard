@@ -607,7 +607,7 @@ export const buildVariable = ({
     functionDependencies
   }
 
-  const oldVariable = formulaContext.findVariable(namespaceId, variableId)
+  const oldVariable = formulaContext.findVariableById(namespaceId, variableId)
   if (oldVariable) {
     oldVariable.t = t
     return oldVariable.clone()

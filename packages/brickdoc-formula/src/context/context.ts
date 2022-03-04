@@ -306,7 +306,7 @@ export class FormulaContext implements ContextInterface {
     delete this.spreadsheets[namespaceId]
   }
 
-  public findVariable(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
+  public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
     return this.context[variableKey(namespaceId, variableId)]
   }
 
@@ -320,7 +320,7 @@ export class FormulaContext implements ContextInterface {
 
   public async commitVariable({ variable }: { variable: VariableInterface }): Promise<void> {
     const { namespaceId, variableId } = variable.t
-    const oldVariable = this.findVariable(namespaceId, variableId)
+    const oldVariable = this.findVariableById(namespaceId, variableId)
 
     // 1. clear old dependencies
     if (oldVariable) {

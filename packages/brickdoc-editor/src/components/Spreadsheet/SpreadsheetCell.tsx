@@ -34,7 +34,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, table
   const formulaId = currentBlock.data.formulaId
   const formulaName = `Cell_${currentBlock.parentId}_${currentBlock.data.columnId}`.replaceAll('-', '')
 
-  const variableRef = React.useRef(formulaContext?.findVariable(rootId, formulaId))
+  const variableRef = React.useRef(formulaContext?.findVariableById(rootId, formulaId))
 
   const editing = context?.editingCellId === formulaName
   const [editingCell, setEditingCell] = React.useState(editing)

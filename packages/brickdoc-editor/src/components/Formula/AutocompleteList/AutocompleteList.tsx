@@ -173,7 +173,7 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
   setCompletion,
   handleSelectActiveCompletion
 }) => {
-  if (!completion.completions.length) {
+  if (completion.kind === 'Completion' && !completion.completions.length) {
     return <></>
   }
 
@@ -218,31 +218,32 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
 
   return (
     <div className="formula-autocomplete">
-      <div className="formula-autocomplete-list">
-        {completion.completions.map((c, index) => {
-          const styleMeta = COMPLETION_STYLE_META[c.kind]
-          return (
-            <div
-              role="button"
-              tabIndex={-1}
-              onClick={() => handleOnClick(c, index)}
-              key={index}
-              onKeyDown={onKeyDown}
-              className={cx('autocomplete-list-item', {
-                active: c.value === completion.activeCompletion?.value
-              })}
-            >
-              {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
-              <div className="autocomplete-list-item-content">
-                <span className="autocomplete-list-item-name">{c.name}</span>
-                <span className="autocomplete-list-item-desc">
-                  {c.kind} {c.renderDescription(blockId)}
-                </span>
+      {completion.kind === 'Completion' && (
+        <div className="formula-autocomplete-list">
+          {completion.completions.map((c, index) => {
+            const styleMeta = COMPLETION_STYLE_META[c.kind]
+            return (
+              <div
+                role="button"
+                tabIndex={-1}
+                onClick={() => handleOnClick(c, index)}
+                key={index}
+                onKeyDown={onKeyDown}
+                className={cx('autocomplete-list-item', {
+                  active: c.value === completion.activeCompletion?.value
+                })}>
+                {React.cloneElement(styleMeta.Icon ?? <Icon.Formula />, { className: 'autocomplete-list-item-icon' })}
+                <div className="autocomplete-list-item-content">
+                  <span className="autocomplete-list-item-name">{c.name}</span>
+                  <span className="autocomplete-list-item-desc">
+                    {c.kind} {c.renderDescription(blockId)}
+                  </span>
+                </div>
               </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      )}
       <div className="formula-autocomplete-preview">{preview}</div>
     </div>
   )

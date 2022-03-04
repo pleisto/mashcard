@@ -33,7 +33,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     this.blockId = blockId
     if (meta) {
       this.name = () => {
-        const v = formulaContext.findVariable(meta.namespaceId, meta.variableId)
+        const v = formulaContext.findVariableById(meta.namespaceId, meta.variableId)
         if (v) {
           return v.t.name
         }

@@ -53,8 +53,13 @@ Object {
       "value": ".",
     },
     Object {
-      "attrs": undefined,
-      "code": "FunctionName",
+      "attrs": Object {
+        "id": "1588aedf-06e1-47f1-9282-d2ffe865974c",
+        "kind": "Variable",
+        "name": "foo",
+        "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+      },
+      "code": "Variable",
       "display": "foo",
       "errors": Array [],
       "hide": false,
@@ -98,8 +103,13 @@ Object {
       "value": ".",
     },
     Object {
-      "attrs": undefined,
-      "code": "FunctionName",
+      "attrs": Object {
+        "id": "475d9e73-e52a-42b3-8a95-477596812900",
+        "kind": "Variable",
+        "name": "bar",
+        "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
+      },
+      "code": "Variable",
       "display": "bar",
       "errors": Array [],
       "hide": false,

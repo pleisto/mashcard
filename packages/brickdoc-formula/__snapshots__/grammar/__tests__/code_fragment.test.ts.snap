@@ -4374,8 +4374,13 @@ Array [
     "value": "=",
   },
   Object {
-    "attrs": undefined,
-    "code": "FunctionName",
+    "attrs": Object {
+      "id": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "kind": "Variable",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Variable",
     "display": "foo",
     "errors": Array [],
     "hide": false,
@@ -4763,8 +4768,13 @@ Array [
     "value": "=",
   },
   Object {
-    "attrs": undefined,
-    "code": "FunctionName",
+    "attrs": Object {
+      "id": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "kind": "Variable",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Variable",
     "display": "foo",
     "errors": Array [],
     "hide": false,
@@ -6407,8 +6417,13 @@ Array [
     "value": "=",
   },
   Object {
-    "attrs": undefined,
-    "code": "FunctionName",
+    "attrs": Object {
+      "id": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "kind": "Variable",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Variable",
     "display": "foo",
     "errors": Array [],
     "hide": false,
@@ -6796,8 +6811,13 @@ Array [
     "value": "=",
   },
   Object {
-    "attrs": undefined,
-    "code": "FunctionName",
+    "attrs": Object {
+      "id": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "kind": "Variable",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Variable",
     "display": "foo",
     "errors": Array [],
     "hide": false,

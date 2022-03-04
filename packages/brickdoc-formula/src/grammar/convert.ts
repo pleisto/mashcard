@@ -18,7 +18,8 @@ import {
   CodeFragmentAttrs,
   VariableFormulaName,
   CodeFragment,
-  SpreadsheetFormulaName
+  SpreadsheetFormulaName,
+  Completion
 } from '../types'
 import { BlockType, ColumnType, SpreadsheetType } from '../controls'
 import { BlockClass } from '../controls/block'
@@ -112,7 +113,7 @@ const block2attrs = (block: BlockType, pageId: NamespaceId): CodeFragmentAttrs =
   name: block.name(pageId)
 })
 
-const variable2attrs = (variable: VariableInterface): CodeFragmentAttrs => ({
+export const variable2attrs = (variable: VariableInterface): CodeFragmentAttrs => ({
   kind: 'Variable',
   namespaceId: variable.t.namespaceId,
   id: variable.t.variableId,
@@ -126,7 +127,7 @@ const spreadsheet2attrs = (spreadsheet: SpreadsheetType): CodeFragmentAttrs => (
   name: spreadsheet.name()
 })
 
-const column2attrs = (column: ColumnType): CodeFragmentAttrs => ({
+export const column2attrs = (column: ColumnType): CodeFragmentAttrs => ({
   kind: 'Column',
   namespaceId: column.spreadsheet.blockId,
   id: column.columnId,
@@ -335,4 +336,18 @@ export const function2completion = (functionClause: FunctionClause<any>, weight:
       }
     ]
   }
+}
+
+export const attrs2completion = (
+  formulaContext: ContextInterface,
+  { kind, id, namespaceId }: CodeFragmentAttrs,
+  pageId: string
+): Completion | undefined => {
+  if (kind === 'Variable') {
+    const variable = formulaContext.findVariableById(namespaceId, id)
+    if (!variable) return undefined
+    return variable2completion(variable, pageId)
+  }
+
+  return undefined
 }
