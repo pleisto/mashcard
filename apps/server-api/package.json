@@ -12,8 +12,8 @@
     "@nestjs/testing": "^8.4.0",
     "cross-spawn": "^7.0.3",
     "leaked-handles": "^5.2.0",
-    "node-dev": "^7.1.0",
-    "pino-pretty": "^7.5.2"
+    "node-dev": "^7.2.0",
+    "pino-pretty": "^7.5.3"
   },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
