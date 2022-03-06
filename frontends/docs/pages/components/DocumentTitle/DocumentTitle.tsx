@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Popover, Icon, Input } from '@brickdoc/design-system'
 import styles from './DocumentTitle.module.less'
-import * as style from './DocumentTitle.style'
+import * as Root from './DocumentTitle.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { DocumentIcon } from './DocumentIcon'
 import { DocumentCover } from './DocumentCover'
@@ -86,7 +86,6 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
     onChange: setCover,
     onFileLoaded: setLocalCover
   })
-  const { TitleWrapper, Actions } = style
 
   return (
     <>
@@ -98,44 +97,48 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
         popoverProps={coverPopoverProps}
       />
 
-      <TitleWrapper>
-        <div className={style.maxWidth()}>
+      <Root.TitleWrapper
+        width={{
+          '@smDown': 'sm'
+        }}
+      >
+        <Root.MaxWidth>
           {editable && (
-            <Actions>
+            <Root.Actions>
               {!documentIconMeta && (
                 <Popover {...iconPopoverProps}>
-                  <Button type="unstyled" className={style.item()} disabled={!editable}>
-                    <Icon.Face className={style.icon()} />
-                    <span className={style.name()}>{t('title.add_icon')}</span>
-                  </Button>
+                  <Root.Item as={Button} type="unstyled" disabled={!editable}>
+                    <Root.Icon as={Icon.Face} />
+                    <Root.Name>{t('title.add_icon')}</Root.Name>
+                  </Root.Item>
                 </Popover>
               )}
               {!documentCoverMeta && (
                 <Popover {...coverPopoverProps}>
-                  <Button
+                  <Root.Item
+                    as={Button}
                     data-testid={TEST_ID_ENUM.page.DocumentPage.coverButton.id}
                     type="unstyled"
-                    className={style.item()}
                     disabled={!editable}
                   >
-                    <Icon.Image className={style.icon()} />
-                    <span className={style.name()}>{t('title.add_cover')}</span>
-                  </Button>
+                    <Root.Icon as={Icon.Image} />
+                    <Root.Name>{t('title.add_cover')}</Root.Name>
+                  </Root.Item>
                 </Popover>
               )}
-            </Actions>
+            </Root.Actions>
           )}
-          <div className={style.titleRow()}>
+          <Root.TitleRow>
             {documentIconMeta && (
               <Popover {...iconPopoverProps} visible={!editable ? false : undefined}>
                 <DocumentIcon getDocIconUrl={getDocIconUrl} localUrl={localIcon} documentIconMeta={documentIconMeta} />
               </Popover>
             )}
-            <Input
+            <Root.Input
+              as={Input}
               type="text"
               bordered={false}
-              className={style.input()}
-              ref={container => {
+              ref={(container: HTMLInputElement) => {
                 if (container) {
                   inputRef.current = container
                   // TODO: fix this hack
@@ -164,9 +167,9 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
               placeholder={t('title.untitled')}
               disabled={!editable}
             />
-          </div>
-        </div>
-      </TitleWrapper>
+          </Root.TitleRow>
+        </Root.MaxWidth>
+      </Root.TitleWrapper>
     </>
   )
 }

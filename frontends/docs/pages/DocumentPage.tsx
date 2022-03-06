@@ -5,7 +5,6 @@ import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
 import { useSyncProvider } from './hooks'
 import { blocksToJSONContents } from '../common/blocks'
-import styles from './DocumentPage.module.less'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate } from 'react-router-dom'
@@ -13,6 +12,8 @@ import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 import { editorVar } from '../reactiveVars'
 import { useEditorDataSource } from './hooks/useEditorDataSource'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
+import * as Root from './DocumentPage.style'
+
 interface DocumentPageProps {
   docMeta: DocMeta
   // default: user can edit/view document normally
@@ -89,12 +90,17 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
   const PageElement = (
     <>
       {docMeta.id && docMeta.isDeleted && <TrashPrompt docMeta={docMeta as NonNullDocMeta} />}
-      <div className={styles.page}>
+      <Root.Page
+        width={{
+          '@mdOnly': 'md',
+          '@smDown': 'sm'
+        }}
+      >
         <DocumentTitle blocks={data?.childrenBlocks} editable={documentEditable} />
-        <div className={styles.pageWrap}>
+        <Root.PageContent>
           <EditorContent editor={editor} editorDataSource={editorDataSource} />
-        </div>
-      </div>
+        </Root.PageContent>
+      </Root.Page>
     </>
   )
 
@@ -106,6 +112,5 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
     return PageElement
   } else {
     return <Navigate to={redirectPersonalSpacePath} />
-    // return <Alert message="TODO Page not found" type="error" />
   }
 }

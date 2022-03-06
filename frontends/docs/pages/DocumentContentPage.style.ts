@@ -1,7 +1,17 @@
 import bg from '@/common/assets/ceramicBg.webp'
-import { theme } from '@brickdoc/design-system'
+import { theme, styled } from '@brickdoc/design-system'
 
-export const base = {
+export const Section = styled('section', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '270px',
+  height: '100vh',
+  padding: '0.1px 0.5rem 0',
+  marginTop: '-0.1px',
+  justifyContent: 'space-between'
+})
+
+export const Layout = styled('div', {
   display: 'flex',
   flex: 'auto',
   flexDirection: 'row',
@@ -9,14 +19,7 @@ export const base = {
   background: `url(${bg}) no-repeat center center fixed`,
   backgroundSize: 'cover, cover',
   backgroundClip: 'border-box',
-  '& > section': {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '270px',
-    height: '100vh',
-    padding: '0.1px 0.5rem 0',
-    marginTop: '-0.1px',
-    justifyContent: 'space-between',
+  [`${Section}`]: {
     '.mainActions header > .brk-logo': {
       height: '22px',
       width: '84px',
@@ -52,8 +55,50 @@ export const base = {
   },
   '& > aside': {
     width: '3rem'
+  },
+
+  variants: {
+    width: {
+      md: {
+        [`${Section}`]: {
+          display: 'none'
+        },
+        '& > main': {
+          flex: 1,
+          '& > header': {
+            // include: ['ceramicSecondary']
+            background: theme.colors.ceramicSecondary
+          },
+          '& > article': {
+            background: theme.colors.ceramicSecondary,
+            boxShadow: 'unset'
+          }
+        },
+        '& > aside': {
+          display: 'none'
+        }
+      },
+      sm: {
+        [`${Section}`]: {
+          display: 'none'
+        },
+        '& > main': {
+          flex: 1,
+          '& > header': {
+            background: theme.colors.backgroundSecondary
+          },
+          '& > article': {
+            background: theme.colors.backgroundSecondary,
+            boxShadow: 'unset'
+          }
+        },
+        '& > aside': {
+          display: 'none'
+        }
+      }
+    }
   }
-}
+})
 
 export const sidebarButtonStyles = {
   color: theme.colors.typeSecondary,

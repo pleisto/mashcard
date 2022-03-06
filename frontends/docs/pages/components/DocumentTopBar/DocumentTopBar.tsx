@@ -1,18 +1,20 @@
+import React from 'react'
 import { CollaboratorsMenu } from '@/docs/common/components/CollaboratorsMenu'
 import { PathBreadcrumb } from '@/docs/common/components/PathBreadcrumb'
 import { PinMenu } from '@/docs/common/components/PinMenu'
 import { useReactiveVar } from '@apollo/client'
-import { Button } from '@brickdoc/design-system'
-import React from 'react'
+import { Button, Box } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
 import { HistoryMenu } from '../../../common/components/HistoryMenu'
 import { ShareMenu } from '../../../common/components/ShareMenu'
 import { useDocsI18n } from '../../../common/hooks'
 import { isSavingVar } from '../../../reactiveVars'
 import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
-import styles from './DocumentTopBar.module.less'
-import loadingIcon from './loading.png'
 import { BrickdocContext } from '@/common/brickdocContext'
+import Logo from '@/common/assets/logo_brickdoc.svg'
+/* import styles from './DocumentTopBar.module.less' */
+import * as Root from './DocumentTopBar.style'
+import loadingIcon from './loading.png'
 
 export interface DocumentTopBarProps {
   docMeta: DocMeta
@@ -30,7 +32,8 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
 
   const headMenu = docMeta.id ? (
     <>
-      <PathBreadcrumb className={styles.menu} docMeta={docMeta as NonNullDocMeta} />
+      <Root.Menu as={PathBreadcrumb as any} docMeta={docMeta as NonNullDocMeta} />
+      <Root.LogoIcon src={Logo} alt="Brickdoc" />
     </>
   ) : (
     <></>
@@ -40,14 +43,14 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     // eslint-disable-next-line no-nested-ternary
     docMeta.id && !docMeta.isDeleted ? (
       <>
-        <CollaboratorsMenu docMeta={docMeta as NonNullDocMeta} />
-        <ShareMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+        <Root.HiddenItem as={CollaboratorsMenu} docMeta={docMeta as NonNullDocMeta} />
+        <Root.Item as={ShareMenu as any} docMeta={docMeta as NonNullDocMeta} />
         {features.page_history ? (
-          <HistoryMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} />
+          <Root.HiddenItem as={HistoryMenu as any} docMeta={docMeta as NonNullDocMeta} />
         ) : (
           <></>
         )}
-        {docMeta.isMine ? <PinMenu className={styles.menuItem} docMeta={docMeta as NonNullDocMeta} /> : <></>}
+        {docMeta.isMine ? <Root.HiddenItem as={PinMenu as any} docMeta={docMeta as NonNullDocMeta} /> : <></>}
       </>
     ) : (
       <></>
@@ -65,22 +68,25 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     ) : (
       <></>
     )
-
   return (
-    <div className={styles.topBar}>
-      <div className={styles.topBarStart}>{headMenu}</div>
-      <div className={styles.topBarEnd}>
-        <div className={styles.menu}>
+    <Root.TopBar
+      width={{
+        '@mdDown': 'md'
+      }}
+    >
+      <Box>{headMenu}</Box>
+      <Box>
+        <Root.Menu>
           {isSaving && (
-            <div className={styles.loading}>
-              <img className={styles.loadingIcon} src={loadingIcon} alt="" />
+            <Root.Loading>
+              <Root.LoadingIcon src={loadingIcon} alt="" />
               <span>{t('saving')}</span>
-            </div>
+            </Root.Loading>
           )}
           {editableMenu}
           {loginMenu}
-        </div>
-      </div>
-    </div>
+        </Root.Menu>
+      </Box>
+    </Root.TopBar>
   )
 }

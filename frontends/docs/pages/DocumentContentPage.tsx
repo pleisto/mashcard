@@ -17,9 +17,8 @@ import { validate as isValidUUID } from 'uuid'
 import { appendFormulas, FormulaContext, FormulaName } from '@brickdoc/formula'
 import { useFormulaQuery } from './hooks'
 import { useFormulaBackendActions } from './hooks/useFormulaBackendActions'
-import { styled } from '@brickdoc/design-system'
-import { base } from './DocumentContentPage.style'
 import Logo from '@/common/assets/logo_brickdoc.svg'
+import * as Root from './DocumentContentPage.style'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -60,7 +59,7 @@ export interface DocMetaProps {
   docMeta: DocMeta
 }
 
-const Layout = styled('div', base)
+/* const Layout = styled('div', base) */
 
 export const DocumentContentPage: React.FC = () => {
   const { domain, docid, snapshotVersion } = useParams() as unknown as {
@@ -200,8 +199,13 @@ export const DocumentContentPage: React.FC = () => {
         defaultTitle={t('app_title')}
         title={docMeta.id && docMeta.title}
       />
-      <Layout>
-        {siderBar && <section>{siderBar}</section>}
+      <Root.Layout
+        width={{
+          '@mdOnly': 'md',
+          '@smDown': 'sm'
+        }}
+      >
+        {siderBar && <Root.Section>{siderBar}</Root.Section>}
         <main>
           {(!loading || docMeta.isMine) && (
             <header>
@@ -220,7 +224,7 @@ export const DocumentContentPage: React.FC = () => {
         <aside>
           <ExplorerMenu />
         </aside>
-      </Layout>
+      </Root.Layout>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { css, theme, styled } from '@brickdoc/design-system'
 
-export const maxWidth = css({
+export const MaxWidth = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
@@ -17,7 +17,7 @@ export const Actions = styled('div', {
   opacity: 0
 })
 
-export const item = css({
+export const Item = styled('div', {
   flexDirection: 'row',
   justifyContent: 'center',
   padding: '4px 6px !important',
@@ -32,7 +32,7 @@ export const item = css({
   }
 })
 
-export const icon = css({
+export const Icon = styled('span', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -41,31 +41,14 @@ export const icon = css({
   lineHeight: theme.lineHeights.body
 })
 
-export const name = css({
+export const Name = styled('span', {
   color: theme.colors.typeThirdary,
   fontSize: theme.fontSizes.subHeadline,
   lineHeight: theme.lineHeights.subHeadline,
   marginLeft: 6
 })
 
-export const TitleWrapper = styled('div', {
-  width: '100%',
-  marginBottom: '3rem',
-  padding: '0 5.5rem',
-  fontSize: '2.5rem',
-  marginTop: '4.25rem',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  '&:hover': {
-    [`${Actions}`]: {
-      pointerEvents: 'unset',
-      opacity: 1
-    }
-  }
-})
-
-export const titleRow = css({
+export const TitleRow = styled('div', {
   display: 'flex',
   alignItems: 'center',
   width: '100%',
@@ -82,7 +65,7 @@ export const popover = css({
   }
 })
 
-export const input = css({
+export const Input = styled('div', {
   fontSize: theme.fontSizes.title1,
   padding: '0px !important',
   input: {
@@ -92,4 +75,47 @@ export const input = css({
     padding: 0
   },
   background: 'none'
+})
+
+export const TitleWrapper = styled('div', {
+  width: '100%',
+  marginBottom: '3rem',
+  marginTop: '4.25rem',
+  padding: '0 5.5rem',
+  fontSize: '2.5rem',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  '&:hover': {
+    [`${Actions}`]: {
+      pointerEvents: 'unset',
+      opacity: 1
+    }
+  },
+  variants: {
+    width: {
+      md: {},
+      sm: {
+        marginBottom: '3rem',
+        margin: '24px 0',
+        padding: '0 19px',
+        [`${Actions}`]: {
+          display: 'none'
+        },
+        [`${Item}`]: {
+          height: '42px',
+          w: '42px'
+        },
+        [`${TitleRow}`]: {
+          height: '42px'
+        },
+        [`${Input}`]: {
+          input: {
+            fontSize: '26px',
+            lineHeight: '32px'
+          }
+        }
+      }
+    }
+  }
 })

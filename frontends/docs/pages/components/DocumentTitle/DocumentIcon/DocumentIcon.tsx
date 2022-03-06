@@ -23,7 +23,13 @@ export const DocumentIcon: React.FC<DocumentIconProps> = ({ documentIconMeta, on
   if (!documentIconMeta) return null
 
   return (
-    <Root type="unstyled" onClick={onClick}>
+    <Root
+      type="unstyled"
+      onClick={onClick}
+      width={{
+        '@smDown': 'sm'
+      }}
+    >
       {documentIconMeta.type === Blocktype.Emoji && (
         <EmojiIcon aria-label={documentIconMeta.name}>{documentIconMeta.emoji}</EmojiIcon>
       )}
