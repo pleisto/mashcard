@@ -130,7 +130,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
   const dragging = context.dragging.columnId === columnId
   const draggingOver = context.dragging.overColumnId === columnId
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
-  const latestMovement = React.useRef<number>(0)
+  const latestWidth = React.useRef<number>(0)
 
   const unselectColumn = unselectFn({
     context,
@@ -156,17 +156,17 @@ export const SpreadsheetHeaderColumn: React.FC<{
   }
 
   const onResizeMouseMove = (e: MouseEvent): void => {
-    latestMovement.current += e.movementX
+    latestWidth.current += e.movementX
     if (setWidth) {
-      setWidth((width ?? columnRef.current?.clientWidth ?? 230) + latestMovement.current)
+      setWidth(latestWidth.current)
     }
   }
 
   const onResizeMouseUp = (e: MouseEvent): void => {
     document.removeEventListener('mousemove', onResizeMouseMove)
     document.removeEventListener('mouseup', onResizeMouseUp)
-    if (onResize && width) {
-      onResize(width)
+    if (onResize) {
+      onResize(latestWidth.current)
     }
   }
 
@@ -176,7 +176,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
     document.addEventListener('mousemove', onResizeMouseMove)
     document.addEventListener('mouseup', onResizeMouseUp)
     context.clearSelection()
-    latestMovement.current = 0
+    latestWidth.current = width ?? columnRef.current?.clientWidth ?? 230
   }
 
   const onContextMenu: React.MouseEventHandler = (e: React.MouseEvent): void => {
@@ -252,7 +252,8 @@ export const SpreadsheetRowAction: React.FC<{
   rowNumber?: string
   rowActions?: SpreadsheetActionItem[]
   draggable?: boolean
-}> = ({ context, rowId, children, rowNumber, rowActions, draggable }) => {
+  height?: number
+}> = ({ context, rowId, children, rowNumber, rowActions, draggable, height }) => {
   const { t } = useEditorI18n()
 
   const { hoverRowId } = context
@@ -301,23 +302,6 @@ export const SpreadsheetRowAction: React.FC<{
     e.preventDefault()
     e.stopPropagation()
   }
-
-  const [height, setHeight] = React.useState<number | undefined>()
-
-  const resizeObserver = React.useRef<ResizeObserver>()
-
-  React.useEffect(() => {
-    resizeObserver.current = new ResizeObserver(entries => {
-      setHeight(entries[0].contentRect.height)
-    })
-    const element = document.querySelector(`table.spreadsheet-rows tr[data-row-id='${rowId}']`)
-    if (element) {
-      resizeObserver.current.observe(element)
-    }
-    return () => {
-      resizeObserver.current?.disconnect()
-    }
-  })
 
   return (
     <tr
@@ -381,8 +365,11 @@ export const SpreadsheetRow: React.FC<{
   context: SpreadsheetContext
   rowId: string
   children: React.ReactNode
-}> = ({ context, rowId, children }) => {
+  onHeightChange?: (height: number) => void
+}> = ({ context, rowId, children, onHeightChange }) => {
   const { setHoverRowId } = context
+
+  const rowRef = React.createRef<HTMLTableRowElement>()
 
   const selected = context.selection.rowIds?.includes(rowId)
   const dragging = context.dragging.rowId === rowId
@@ -391,8 +378,29 @@ export const SpreadsheetRow: React.FC<{
   const onOver = () => setHoverRowId(rowId)
   const onOut = () => setHoverRowId('')
 
+  const latestHeight = React.useRef<number | undefined>()
+
+  const resizeObserver = React.useRef<ResizeObserver>()
+
+  React.useEffect(() => {
+    resizeObserver.current = new ResizeObserver(entries => {
+      const height = entries[0].contentRect.height
+      if (latestHeight.current !== height) {
+        onHeightChange?.(height)
+        latestHeight.current = height
+      }
+    })
+    if (rowRef.current) {
+      resizeObserver.current.observe(rowRef.current)
+    }
+    return () => {
+      resizeObserver.current?.disconnect()
+    }
+  }, [onHeightChange, rowRef])
+
   return (
     <tr
+      ref={rowRef}
       className={`${selected ? 'selected' : ''} ${dragging ? 'dragging' : ''} ${draggingOver ? 'dragging-over' : ''}`}
       style={
         dragging

@@ -23,6 +23,7 @@ export interface FormulaEditorProps {
   rootId?: string
   formulaId?: string
   width?: number
+  minHeight?: number
 }
 
 const findNearestWord = (content: string, targetIndex: number): string | undefined =>
@@ -35,7 +36,8 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
   onBlur,
   rootId,
   formulaId,
-  width
+  width,
+  minHeight
 }) => {
   const editor = useEditor({
     editable,
@@ -125,7 +127,8 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
     <>
       <EditorContent
         style={{
-          ...(width ? { width: `${width}px` } : {})
+          ...(width ? { width: `${width}px` } : {}),
+          ...(minHeight ? { minHeight: `${minHeight}px` } : {})
         }}
         className="brickdoc-formula-editor"
         editor={editor}

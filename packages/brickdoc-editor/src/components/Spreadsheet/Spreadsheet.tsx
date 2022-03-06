@@ -168,6 +168,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     editor.commands.blur()
   }
 
+  const [rowLayoutHeights, setRowLayoutHeights] = React.useState<{ [rowId: string]: number }>({})
+
   return (
     <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions} onClick={onSpreadsheetClick}>
       {documentEditable ? (
@@ -215,6 +217,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                     : []
                 }
                 draggable={documentEditable}
+                height={rowLayoutHeights[rowBlock.id]}
               />
             )
           })}
@@ -280,7 +283,14 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
             <SpreadsheetBody>
               {rows.map((rowBlock, rowIdx) => {
                 return (
-                  <SpreadsheetRow key={rowIdx} context={spreadsheetContext} rowId={rowBlock.id}>
+                  <SpreadsheetRow
+                    key={rowIdx}
+                    context={spreadsheetContext}
+                    rowId={rowBlock.id}
+                    onHeightChange={(height: number) =>
+                      setRowLayoutHeights({ ...rowLayoutHeights, [rowBlock.id]: height })
+                    }
+                  >
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
@@ -297,6 +307,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                               block={block}
                               saveBlock={saveCellBlock}
                               width={columnWidths[column.uuid]}
+                              height={rowLayoutHeights[rowBlock.id]}
                             />
                           ) : (
                             <div className="cell">{block.text}</div>

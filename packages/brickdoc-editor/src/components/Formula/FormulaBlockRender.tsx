@@ -18,6 +18,7 @@ export interface FormulaBlockRenderProps {
   saveOnBlur: boolean
   updateFormula: (variable: VariableInterface | undefined) => void
   width?: number
+  minHeight?: number
 }
 
 export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
@@ -27,7 +28,8 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   formulaType,
   saveOnBlur,
   updateFormula,
-  width
+  width,
+  minHeight
 }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
@@ -72,9 +74,10 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
         formulaId={formulaId}
         rootId={rootId}
         width={width}
+        minHeight={minHeight}
       />
     ),
-    [editorContent, formulaId, onEditorBlur, rootId, updateEditor, width]
+    [editorContent, formulaId, onEditorBlur, rootId, updateEditor, width, minHeight]
   )
 
   const visible = !!(variableT && variableT.kind !== 'literal')

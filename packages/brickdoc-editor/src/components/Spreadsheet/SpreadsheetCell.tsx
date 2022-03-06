@@ -21,9 +21,17 @@ export interface SpreadsheetCellProps {
   tableId: string
   saveBlock: (block: BlockInput) => void
   width?: number
+  height?: number
 }
 
-export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, tableId, block, saveBlock, width }) => {
+export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
+  context,
+  tableId,
+  block,
+  saveBlock,
+  width,
+  height
+}) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
   const rootId = editorDataSource.rootId
@@ -154,6 +162,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({ context, table
         updateFormula={updateFormula}
         formulaType="spreadsheet"
         width={width}
+        minHeight={height ? height - 4 : undefined}
       />
     )
   }
