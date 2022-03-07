@@ -18,15 +18,18 @@ export function usePlaceholder(editor: Editor, node: ProsemirrorNode, getPos: Pa
     if (insideList) return
 
     const listener = () => {
-      const isEmpty = !nodeRef.current.isLeaf && nodeRef.current.childCount === 0
-      const position = getPos()
-      const anchor = editor.state.selection.anchor
-      const hasAnchor = anchor >= position && anchor <= position + nodeRef.current.nodeSize
-      if (hasAnchor && isEmpty) {
-        setPlaceholder(t('placeholder'))
-      } else {
-        setPlaceholder('')
-      }
+      // TODO: remove this setTimeout
+      setTimeout(() => {
+        const isEmpty = !nodeRef.current.isLeaf && nodeRef.current.childCount === 0
+        const position = getPos()
+        const anchor = editor.state.selection.anchor
+        const hasAnchor = anchor >= position && anchor <= position + nodeRef.current.nodeSize
+        if (hasAnchor && isEmpty) {
+          setPlaceholder(t('placeholder'))
+        } else {
+          setPlaceholder('')
+        }
+      }, 50)
     }
 
     listener()

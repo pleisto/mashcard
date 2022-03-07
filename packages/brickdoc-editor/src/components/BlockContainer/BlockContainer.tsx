@@ -39,6 +39,8 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
     ref
   ) => {
     const [insideList, setInsideList] = React.useState(false)
+    // hide block actions default
+    const [disableActionOptions, setDisableActionOptions] = React.useState(true)
     const [blockDragging, setBlockDragging] = React.useState(false)
     const [blockContextData] = useBlockContextDataProvider({
       deleteNode,
@@ -51,7 +53,7 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
     const [documentEditable] = useDocumentEditable(editable)
     const [blockElement] = useBlockElement(children, actionOptions, {
       inline: inline ?? false,
-      disableActionOptions: insideList,
+      disableActionOptions,
       blockActionClassName: actionButtonClassName
     })
     const asElement = as ?? (inline ? 'span' : undefined)
@@ -68,8 +70,9 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
         const parentElement = element?.parentElement
         const newInsideList = parentElement?.tagName === 'LI'
 
+        if (newInsideList !== disableActionOptions) setDisableActionOptions(newInsideList)
         if (insideList !== newInsideList) setInsideList(newInsideList)
-      }, 100)
+      }, 50)
 
       return () => {
         innerRef.current = null
@@ -94,7 +97,8 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
           }
 
           innerRef.current = container
-        }}>
+        }}
+      >
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )

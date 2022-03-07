@@ -31,7 +31,7 @@ export type BlockActionOptions = Array<ToolbarGroupOption | ToolbarItemOption | 
 export interface BlockActionsProps {
   buttonClassName?: string
   baseId?: MenuProps['baseId']
-  options: BlockActionOptions
+  options?: BlockActionOptions
 }
 
 const BlockActionButtonContainer = styled(BlockActionButton, {
@@ -49,22 +49,38 @@ const BlockActionsContainer = styled('div', {
     [`& ${BlockActionButtonContainer}`]: {
       opacity: 1
     }
+  },
+  variants: {
+    disabled: {
+      true: {
+        [`& ${BlockActionButtonContainer}`]: {
+          display: 'none',
+          opacity: 0,
+          pointerEvents: 'none'
+        },
+        '&:hover': {
+          [`& ${BlockActionButtonContainer}`]: {
+            opacity: 0
+          }
+        }
+      }
+    }
   }
 })
 
 export const BlockActions: React.FC<BlockActionsProps> = ({ options, buttonClassName, baseId, children }) => {
   const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
-    () => options.filter(option => typeof option === 'string') as BasicActionOptionType[],
+    () => (options?.filter(option => typeof option === 'string') as BasicActionOptionType[]) ?? [],
     [options]
   )
   const extraOptions = React.useMemo<ActionOptionGroup>(
-    () => options.filter(option => typeof option !== 'string') as ActionOptionGroup,
+    () => (options?.filter(option => typeof option !== 'string') as ActionOptionGroup) ?? [],
     [options]
   )
   const basicOptions = useBasicActionOptions({ types: basicOptionTypes })
 
   return (
-    <BlockActionsContainer>
+    <BlockActionsContainer disabled={!options || options.length === 0}>
       {children}
       <BlockActionButtonContainer
         className={buttonClassName}

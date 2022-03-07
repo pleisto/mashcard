@@ -38,13 +38,11 @@ export function useBlockElement(
     return actionOptions
   }, [actionOptions, disableActionOptions])
 
-  if ((blockActionProps?.options?.length ?? 0) > 0) {
-    blockElement = (
-      <BlockActions buttonClassName={blockActionClassName} {...blockActionProps!}>
-        {blockElement}
-      </BlockActions>
-    )
-  }
+  blockElement = (
+    <BlockActions buttonClassName={blockActionClassName} {...blockActionProps}>
+      {blockElement}
+    </BlockActions>
+  )
 
   return [blockElement]
 }

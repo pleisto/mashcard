@@ -6,39 +6,61 @@ exports[`PageLink matches correct snapshot 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <span
-    class="brd-c-bbClCh"
-    contenteditable="false"
+  <div
+    class="brd-c-bfhcug brd-c-bfhcug-iRIwWx-disabled-true"
   >
-     
-  </span>
-  <a
-    class="text"
-    href="/link"
-  >
-    <span>
-      <span
-        aria-label=""
-        class="brickdoc-page-link-block-icon"
-        role="img"
-      >
-        icon
-        <i
-          data-testid="mock-icon-ArrowShortcut"
-        />
-      </span>
-      <span
-        class="brickdoc-page-link-block-name"
-      >
-        title
-      </span>
+    <span
+      class="brd-c-bbClCh"
+      contenteditable="false"
+    >
+       
     </span>
-  </a>
-  <span
-    class="brd-c-bbClCh"
-    contenteditable="false"
-  >
-     
-  </span>
+    <a
+      class="text"
+      href="/link"
+    >
+      <span>
+        <span
+          aria-label=""
+          class="brickdoc-page-link-block-icon"
+          role="img"
+        >
+          icon
+          <i
+            data-testid="mock-icon-ArrowShortcut"
+          />
+        </span>
+        <span
+          class="brickdoc-page-link-block-name"
+        >
+          title
+        </span>
+      </span>
+    </a>
+    <span
+      class="brd-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+    <div
+      aria-haspopup="dialog"
+      class="brd-c-iAZzvg"
+      contenteditable="false"
+      data-drag-handle="true"
+      draggable="true"
+    >
+      <button
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        role="button"
+        tabindex="0"
+        type="button"
+      >
+        <i
+          data-testid="mock-icon-DragSecondary"
+        />
+      </button>
+    </div>
+  </div>
 </span>
 `;
