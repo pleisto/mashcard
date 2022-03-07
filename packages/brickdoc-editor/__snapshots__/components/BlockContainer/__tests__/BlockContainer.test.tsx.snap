@@ -16,7 +16,7 @@ exports[`BlockContainer changes block pointer event when editor editable state c
       draggable="true"
     >
       <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
         role="button"
         tabindex="0"
         type="button"
@@ -46,7 +46,7 @@ exports[`BlockContainer changes block pointer event when editor editable state c
       draggable="true"
     >
       <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
         role="button"
         tabindex="0"
         type="button"
@@ -90,7 +90,7 @@ exports[`BlockContainer inline 1`] = `
       draggable="true"
     >
       <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-fXZnrp-size-sm brd-c-ivBjhy"
+        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
         role="button"
         tabindex="0"
         type="button"
