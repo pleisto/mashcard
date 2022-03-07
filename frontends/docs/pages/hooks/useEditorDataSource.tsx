@@ -30,7 +30,12 @@ export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEd
   )
 
   const formulaContext = useReactiveVar(FormulaContextVar)
-  const { settings } = React.useContext(BrickdocContext)
+  const { settings, features } = React.useContext(BrickdocContext)
+
+  // feature flags
+  React.useEffect(() => {
+    dataSource.current.featureFlags = features
+  }, [features])
 
   // settings
   React.useEffect(() => {

@@ -7,7 +7,7 @@ import { useTextStyleGroup } from './useTextStyleGroup'
 import { useFontColorGroup } from './useFontColorGroup'
 import { useLinkGroup } from './useLinkGroup'
 import { useFormulaItem } from './useFormulaItem'
-import { useMoreItem } from './useMoreItem'
+import { useExtraItemsGroup } from './useExtraItemsGroup'
 
 export const NodeIcon = styled('span', {
   include: ['flexCenter'],
@@ -40,7 +40,7 @@ export function useBubbleMenuItems(): [ToolbarOptionGroup] {
   const [fontColorGroup] = useFontColorGroup()
   const [linkGroup] = useLinkGroup()
   const [formulaItem] = useFormulaItem()
-  const [moreItem] = useMoreItem()
+  const [extraItemsGroup] = useExtraItemsGroup()
 
   const options = React.useMemo<ToolbarOptionGroup>(() => {
     const options: ToolbarOptionGroup = []
@@ -49,10 +49,10 @@ export function useBubbleMenuItems(): [ToolbarOptionGroup] {
     if (fontColorGroup) options.push(fontColorGroup)
     if (linkGroup) options.push(linkGroup)
     if (formulaItem) options.push(formulaItem)
-    if (moreItem) options.push(moreItem)
+    if (extraItemsGroup) options.push(extraItemsGroup)
 
     return options
-  }, [fontColorGroup, formulaItem, linkGroup, moreItem, nodeGroup, textStyleGroup])
+  }, [extraItemsGroup, fontColorGroup, formulaItem, linkGroup, nodeGroup, textStyleGroup])
 
   return [options]
 }

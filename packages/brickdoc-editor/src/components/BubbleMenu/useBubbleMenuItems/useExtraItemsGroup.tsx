@@ -3,18 +3,38 @@ import { Icon } from '@brickdoc/design-system'
 import { EditorContext } from '../../../context/EditorContext'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../Toolbar'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
+import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 
-export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
+export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null] {
   const { editor, t } = React.useContext(EditorContext)
+  const { featureFlags } = React.useContext(EditorDataSourceContext)
 
   const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const items: ToolbarSubMenuOption['items'] = []
+    const extraItemsGroup: ToolbarGroupOption = {
+      type: 'group',
+      items: []
+    }
+
+    if (featureFlags.experiment_discussion) {
+      extraItemsGroup.items.push({
+        type: 'item',
+        name: 'comment',
+        icon: <Icon.Message />,
+        tooltip: t('bubble_menu.comment.title') as string,
+        onAction: () => {
+          // TODO: create conversation first
+          editor.chain().focus().setDiscussion().run()
+        }
+      })
+    }
+
+    const moreItems: ToolbarSubMenuOption['items'] = []
 
     if (!editor.isActive('heading')) {
       if (editor.isActive('anchor')) {
-        items.push({
+        moreItems.push({
           type: 'item',
           name: 'removeAnchor',
           icon: <Icon.RemoveAnchorMark />,
@@ -22,7 +42,7 @@ export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
           onAction: () => editor.chain().focus().unsetAnchor().run()
         })
       } else {
-        items.push({
+        moreItems.push({
           type: 'item',
           name: 'anchor',
           icon: <Icon.AnchorMark />,
@@ -32,16 +52,18 @@ export function useMoreItem(): [ToolbarOption | ToolbarGroupOption | null] {
       }
     }
 
-    if (items.length === 0) return null
-
-    const moreItem: ToolbarSubMenuOption = {
-      type: 'subMenu',
-      name: 'more',
-      content: <Icon.More />,
-      items
+    if (moreItems.length !== 0) {
+      extraItemsGroup.items.push({
+        type: 'subMenu',
+        name: 'more',
+        content: <Icon.More />,
+        items: moreItems
+      })
     }
 
-    return moreItem
+    if (extraItemsGroup.items.length === 0) return null
+
+    return extraItemsGroup
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state.selection])
 

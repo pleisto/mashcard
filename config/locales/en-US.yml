@@ -733,6 +733,8 @@ en-US:
         Blue: Blue
         Purple: Purple
         Purplish Red: Purplish Red
+      comment:
+        title: Comment
       formula:
         title: Formula
       anchor:

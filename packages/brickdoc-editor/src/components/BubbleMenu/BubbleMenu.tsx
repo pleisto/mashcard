@@ -42,7 +42,11 @@ export const BubbleMenu: React.FC<BubbleMenuProps> = ({ editor }) => {
   if (!editor) return null
 
   return (
-    <TiptapBubbleMenu tippyOptions={{ placement: 'top-start' }} shouldShow={shouldShow} editor={editor}>
+    <TiptapBubbleMenu
+      tippyOptions={{ placement: 'top-start', maxWidth: '500px' }}
+      shouldShow={shouldShow}
+      editor={editor}
+    >
       <Toolbar options={options} />
     </TiptapBubbleMenu>
   )

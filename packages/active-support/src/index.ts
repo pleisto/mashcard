@@ -1,5 +1,6 @@
 import ms from 'ms'
 import { arrayToTree, Config, Item } from 'performant-array-to-tree'
+export { v4 as uuid } from 'uuid'
 
 export * from './isType'
 export * from './modernLodash'

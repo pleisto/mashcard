@@ -32,6 +32,8 @@ export interface DocumentPageData {
 export interface EditorDatabase {
   // define data here
 
+  featureFlags: Record<string, boolean>
+
   settings: Record<string, any>
 
   fetchUnsplashImages: Exclude<DashboardPluginOptions['fetchUnsplashImages'], undefined>
@@ -77,6 +79,7 @@ export class EditorDataSource {
     documentEditable: false,
     blobs: {},
     settings: {},
+    featureFlags: {},
     collaborators: [],
     documentPages: [],
     explorerMenu: {
@@ -144,6 +147,15 @@ export class EditorDataSource {
   set formulaContext(value: EditorDatabase['formulaContext']) {
     this.database.formulaContext = value
     this.invokeListeners('formulaContext')
+  }
+
+  get featureFlags(): EditorDatabase['featureFlags'] {
+    return this.database.featureFlags
+  }
+
+  set featureFlags(value: EditorDatabase['featureFlags']) {
+    this.database.featureFlags = value
+    this.invokeListeners('featureFlags')
   }
 
   get settings(): EditorDatabase['settings'] {

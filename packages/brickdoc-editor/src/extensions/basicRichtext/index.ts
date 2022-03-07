@@ -1,5 +1,6 @@
 // forked from https://github.com/ueberdosis/tiptap/blob/main/packages/starter-kit/src/starter-kit.ts
 import { Extension, Extensions } from '@tiptap/core'
+import { ReactNodeViewRenderer } from '@tiptap/react'
 import Blockquote, { BlockquoteOptions } from '@tiptap/extension-blockquote'
 import Bold, { BoldOptions } from '@tiptap/extension-bold'
 import BulletList, { BulletListOptions } from '@tiptap/extension-bullet-list'
@@ -27,8 +28,8 @@ import { ImageBlockExtension, ImageBlockOptions } from '../image'
 import { EmbedBlockExtension, EmbedBlockOptions } from '../embed'
 import { SpreadsheetBlockExtension, SpreadsheetBlockOptions } from '../spreadsheet'
 import { FormulaExtension, FormulaOptions } from '../formula'
+import { DiscussionMark, DiscussionOptions } from '../discussion'
 import { CodeBlock, DividerBlock, HeadingBlock, ListBlock, ParagraphBlock } from '../../components'
-import { ReactNodeViewRenderer } from '@tiptap/react'
 
 export interface BasicRichtextOptions {
   anchor: Partial<AnchorOptions> | false
@@ -38,6 +39,7 @@ export interface BasicRichtextOptions {
   code: Partial<CodeOptions> | false
   codeBlock: Partial<CodeBlockRefractorOptions> | false
   document: false
+  discussion: Partial<DiscussionOptions> | false
   dropcursor: Partial<DropcursorOptions> | false
   gapcursor: false
   hardBreak: Partial<HardBreakOptions> | false
@@ -97,7 +99,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.heading !== false) {
       extensions.push(
         Heading.extend({
-          marks: 'bold italic link strike textStyle',
+          marks: 'bold italic link strike textStyle discussion',
           draggable: true,
           addNodeView() {
             return ReactNodeViewRenderer(HeadingBlock)
@@ -146,6 +148,7 @@ export const BasicRichtextExtension = Extension.create<BasicRichtextOptions>({
     if (this.options.spreadsheetBlock !== false)
       extensions.push(SpreadsheetBlockExtension.configure(this.options?.spreadsheetBlock))
     if (this.options.link !== false) extensions.push(Link.configure(this.options?.link))
+    if (this.options.discussion !== false) extensions.push(DiscussionMark.configure(this.options?.discussion))
     /* eslint-enable @typescript-eslint/no-unnecessary-boolean-literal-compare */
 
     return extensions
