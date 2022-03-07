@@ -349,5 +349,17 @@ export const attrs2completion = (
     return variable2completion(variable, pageId)
   }
 
+  if (kind === 'Spreadsheet') {
+    const spreadsheet = formulaContext.findSpreadsheet(id)
+    if (!spreadsheet) return undefined
+    return spreadsheet2completion(spreadsheet, pageId)
+  }
+
+  if (kind === 'Column') {
+    const column = formulaContext.findColumnById(namespaceId, id)
+    if (!column) return undefined
+    return column2completion(column, pageId)
+  }
+
   return undefined
 }

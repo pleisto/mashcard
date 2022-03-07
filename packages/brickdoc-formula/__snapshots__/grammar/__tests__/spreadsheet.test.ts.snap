@@ -9424,7 +9424,7 @@ Object {
                 "type": "string",
                 "view": Object {
                   "attrs": Object {},
-                  "type": "Qrcode",
+                  "type": "qrcode",
                 },
               },
             },
@@ -10515,6 +10515,9 @@ Object {
         "void": Object {},
       },
       "variableWeights": Object {},
+      "viewRenders": Object {
+        "qrcode": [Function],
+      },
     },
     "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "dynamic": false,
@@ -15087,7 +15090,7 @@ Object {
                 "type": "string",
                 "view": Object {
                   "attrs": Object {},
-                  "type": "Qrcode",
+                  "type": "qrcode",
                 },
               },
             },
@@ -16178,6 +16181,9 @@ Object {
         "void": Object {},
       },
       "variableWeights": Object {},
+      "viewRenders": Object {
+        "qrcode": [Function],
+      },
     },
     "blockId": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "dynamic": false,

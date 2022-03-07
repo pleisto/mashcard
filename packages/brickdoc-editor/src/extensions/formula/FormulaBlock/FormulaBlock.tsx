@@ -1,12 +1,9 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
 import { Icon, Tooltip } from '@brickdoc/design-system'
 import { displayValue, dumpDisplayResult, VariableData } from '@brickdoc/formula'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
-import { useFormula } from '../../../components/Formula/useFormula'
-import { BlockContainer, FormulaMenu, FormulaMenuProps } from '../../../components'
-import { FormulaDisplay } from '../../../components/Formula/FormulaDisplay'
+import { useFormula, BlockContainer, FormulaMenu, FormulaMenuProps, FormulaDisplay } from '../../../components/'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 

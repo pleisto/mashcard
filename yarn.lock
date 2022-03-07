@@ -1908,11 +1908,9 @@ __metadata:
     "@tiptap/extension-unique-id": ^2.0.0-beta.4
     "@tiptap/react": ^2.0.0-beta.108
     "@tiptap/suggestion": ^2.0.0-beta.86
-    "@types/qrcode.react": ^1.0.2
     "@types/react-pdf": ^5.0.9
     i18next: ^21.6.13
     popper-max-size-modifier: ^0.2.0
-    qrcode.react: ^2.0.0
     re-resizable: ^6.9.2
     react: ^17.0.2
     react-dnd: ^15.1.1
@@ -1956,7 +1954,10 @@ __metadata:
   resolution: "@brickdoc/formula@workspace:packages/brickdoc-formula"
   dependencies:
     "@brickdoc/test-helper": "workspace:^"
+    "@types/qrcode.react": ^1.0.2
     chevrotain: ^10.1.2
+    qrcode.react: ^2.0.0
+    react-vega: ^7.4.4
   languageName: unknown
   linkType: soft
 
@@ -13619,6 +13620,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-json-patch@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "fast-json-patch@npm:3.1.0"
+  checksum: bad25a6121650d5e138fba787f8e8c6c738779a9a84a978513261110632b1450d96b92a7fedd17188ae847cd5a2b0560725b400a0214aefd3c6506e1be36c66e
+  languageName: node
+  linkType: hard
+
 "fast-json-stable-stringify@npm:2.1.0, fast-json-stable-stringify@npm:^2.0.0, fast-json-stable-stringify@npm:^2.1.0":
   version: 2.1.0
   resolution: "fast-json-stable-stringify@npm:2.1.0"
@@ -17344,6 +17352,13 @@ __metadata:
   dependencies:
     jsonify: ~0.0.0
   checksum: 3a148d4c32bf65c61ceba1a10ffe3e91b8f106135cc203ab464cfe7792e545426294beb60711406a4ef62c001c20c916efc600e44e3ce66d1927bb7f781f8201
+  languageName: node
+  linkType: hard
+
+"json-stringify-pretty-compact@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "json-stringify-pretty-compact@npm:3.0.0"
+  checksum: 01ab5c5c8260299414868d96db97f53aef93c290fe469edd9a1363818e795006e01c952fa2fd7b47cbbab506d5768998eccc25e1da4fa2ccfebd1788c6098791
   languageName: node
   linkType: hard
 
@@ -22128,6 +22143,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-vega@npm:^7.4.4":
+  version: 7.4.4
+  resolution: "react-vega@npm:7.4.4"
+  dependencies:
+    "@types/react": ^16.9.19
+    fast-deep-equal: ^3.1.1
+    vega-embed: ^6.5.1
+  peerDependencies:
+    react: ^16 || ^17
+    vega: "*"
+    vega-lite: "*"
+  checksum: 4322b3a462bbda960d0d36a1711450d319af21093581e833decf035d67232b36985746dfef1cddcbcda72b3b35fd3a824dbe29170d7b4aed608c147b42f92963
+  languageName: node
+  linkType: hard
+
 "react@npm:^17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
@@ -24888,7 +24918,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.3.1, tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:~2.3.0":
+"tslib@npm:2.3.1, tslib@npm:^2, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.3.1, tslib@npm:~2.3.0":
   version: 2.3.1
   resolution: "tslib@npm:2.3.1"
   checksum: de17a98d4614481f7fcb5cd53ffc1aaf8654313be0291e1bfaee4b4bb31a20494b7d218ff2e15017883e8ea9626599b3b0e0229c18383ba9dce89da2adf15cb9
@@ -25577,6 +25607,65 @@ __metadata:
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
   checksum: ae0123222c6df65b437669d63dfa8c36cee20a504101b2fcd97b8bf76f91259c17f9f2b4d70a1e3c6bbcee7f51b28392833adb6b2770b23b01abec84e369660b
+  languageName: node
+  linkType: hard
+
+"vega-embed@npm:^6.5.1":
+  version: 6.20.8
+  resolution: "vega-embed@npm:6.20.8"
+  dependencies:
+    fast-json-patch: ^3.1.0
+    json-stringify-pretty-compact: ^3.0.0
+    semver: ^7.3.5
+    tslib: ^2.3.1
+    vega-interpreter: ^1.0.4
+    vega-schema-url-parser: ^2.2.0
+    vega-themes: ^2.10.0
+    vega-tooltip: ^0.28.0
+  peerDependencies:
+    vega: ^5.21.0
+    vega-lite: "*"
+  checksum: b0bde3a00462783df20bb7470b980b3e4189e7ea7c898c3c61091fc346006021f0a69818620db69b1dbcd362243f99627851227569c2ed0452fd223d4b54eb59
+  languageName: node
+  linkType: hard
+
+"vega-interpreter@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "vega-interpreter@npm:1.0.4"
+  checksum: 84756bd6d9289872da928b90bada6415d3d89def7bdd7c6a99a6eb62a449c83b87195849ca8774facdb7edba264c68590c2250e82d15ac7a06523b30b63882e9
+  languageName: node
+  linkType: hard
+
+"vega-schema-url-parser@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "vega-schema-url-parser@npm:2.2.0"
+  checksum: 1ab17cde0a2514f42cfd0a1a19c7451e104025c68c09a15c9fe6a0f09bcc7b1c814a8a40f28ab5a69f3c9bda9824ca3f553a7b4338c5c64f7072edcd7bc3d130
+  languageName: node
+  linkType: hard
+
+"vega-themes@npm:^2.10.0":
+  version: 2.10.0
+  resolution: "vega-themes@npm:2.10.0"
+  peerDependencies:
+    vega: "*"
+    vega-lite: "*"
+  checksum: 92fb43cabc5d9085b4b986141ad5e90aadddc58d1db247b4fed9afa1d1ede5b492103e0a4387087a65d4b9de327d35522f62a16957f8c9ed918693d672ea8de1
+  languageName: node
+  linkType: hard
+
+"vega-tooltip@npm:^0.28.0":
+  version: 0.28.0
+  resolution: "vega-tooltip@npm:0.28.0"
+  dependencies:
+    vega-util: ^1.17.0
+  checksum: 9610f64b51b2d84b6371c0f9d214ddefa9921d3c555c6c70ab1600ae00222f4cfc5759a910bc3aa0f0a21b9bbd2bd6bfbf5206ec32ddb82d065722768d702edd
+  languageName: node
+  linkType: hard
+
+"vega-util@npm:^1.17.0":
+  version: 1.17.0
+  resolution: "vega-util@npm:1.17.0"
+  checksum: 9f54e4795d6b43aeced2249ab081c98ebe5bb7b1d911fdfbc59c831a611b51877a7792ad10cd11828c74eaaedf46d65f6b6661d860e59f151cc04376ec4ca82b
   languageName: node
   linkType: hard
 

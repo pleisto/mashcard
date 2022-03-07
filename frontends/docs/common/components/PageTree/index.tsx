@@ -261,7 +261,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return blocks
   }, [dataPageBlocks, docMeta.id, mode])
 
-  console.log(pageBlocks)
+  // console.log(pageBlocks)
 
   React.useEffect(() => {
     pageBlocks.forEach(b => {

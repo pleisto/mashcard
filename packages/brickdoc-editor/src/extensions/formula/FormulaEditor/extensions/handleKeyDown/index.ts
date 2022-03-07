@@ -34,7 +34,7 @@ const formulaHandleKeyDown: ({
   }
 }
 
-const gapClickHandler = ({
+const gapHoverHandler = ({
   view,
   position,
   formulaId,
@@ -84,9 +84,16 @@ export const HandleKeyDownExtension = Extension.create({
         key: new PluginKey('handleKeyDown'),
         props: {
           handleKeyDown: formulaHandleKeyDown({ formulaId, rootId }),
-          handleClick(view, position, event) {
-            gapClickHandler({ editor, view, position, event, formulaId, rootId })
-            return false
+          // handleClick(view, position, event) {
+          //   gapClickHandler({ editor, view, position, event, formulaId, rootId })
+          //   return false
+          // },
+          handleDOMEvents: {
+            mouseover(view, event) {
+              const position = view.posAtDOM(event.target as Node, 0)
+              gapHoverHandler({ editor, view, position, event, formulaId, rootId })
+              return false
+            }
           }
         }
       })

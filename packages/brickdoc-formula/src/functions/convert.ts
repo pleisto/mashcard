@@ -22,7 +22,7 @@ export const toNumber = (ctx: FunctionContext, string: StringResult): NumberResu
 }
 
 export const toQrcode = (ctx: FunctionContext, { result }: StringResult): StringResult => {
-  return { type: 'string', result, view: { type: 'Qrcode', attrs: {} } }
+  return { type: 'string', result, view: { type: 'qrcode', attrs: {} } }
 }
 
 export const toRecord = (ctx: FunctionContext, { type, result }: AnyTypeResult): RecordResult | ErrorResult => {
@@ -121,7 +121,7 @@ export const CORE_CONVERT_CLAUSES: Array<BasicFunctionClause<'number' | 'string'
       }
     ],
     examples: [
-      { input: '=toQrcode("123")', output: { type: 'string', result: '123', view: { type: 'Qrcode', attrs: {} } } }
+      { input: '=toQrcode("123")', output: { type: 'string', result: '123', view: { type: 'qrcode', attrs: {} } } }
     ],
     returns: 'string',
     testCases: [],

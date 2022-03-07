@@ -31,7 +31,10 @@ import {
   BlockCompletion,
   BlockFormulaName,
   SpreadsheetResult,
-  ColumnName
+  ColumnName,
+  ViewType,
+  ViewRender,
+  View
 } from '../types'
 import {
   function2completion,
@@ -51,6 +54,7 @@ import { FormulaLexer } from '../grammar/lexer'
 import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus } from '@brickdoc/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
 import { BlockClass } from '../controls/block'
+import { DEFAULT_VIEWS } from '../render'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>
@@ -101,6 +105,7 @@ const ReverseCastName = Object.entries(FormulaTypeCastName).reduce(
 export class FormulaContext implements ContextInterface {
   features: Features
   context: Record<VariableKey, VariableInterface> = {}
+  viewRenders: Record<ViewType, ViewRender> = {}
   functionWeights: Record<FunctionKey, number> = {}
   variableWeights: Record<VariableKey, number> = {}
   spreadsheets: Record<NamespaceId, SpreadsheetType> = {}
@@ -153,6 +158,11 @@ export class FormulaContext implements ContextInterface {
     if (formulaNames) {
       this.formulaNames = formulaNames
     }
+
+    this.viewRenders = DEFAULT_VIEWS.reduce((o: Record<ViewType, ViewRender>, acc: View) => {
+      o[acc.type] = acc.render
+      return o
+    }, {})
 
     BrickdocEventBus.subscribe(BlockNameLoad, e => {
       const namespaceId = e.payload.id
@@ -253,6 +263,10 @@ export class FormulaContext implements ContextInterface {
 
   public variableCount(): number {
     return Object.keys(this.context).length
+  }
+
+  public findViewRender(viewType: ViewType): ViewRender | undefined {
+    return this.viewRenders[viewType]
   }
 
   public findSpreadsheet(namespaceId: NamespaceId): SpreadsheetType | undefined {

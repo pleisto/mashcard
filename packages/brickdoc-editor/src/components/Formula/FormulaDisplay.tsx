@@ -4,14 +4,12 @@ import {
   ButtonResult,
   InputResult,
   SpreadsheetType,
-  StringResult,
   FormulaSourceType,
   VariableDisplayData,
   loadDisplayResult
 } from '@brickdoc/formula'
 import { FormulaValue } from './FormulaValue'
 import { FormulaInput } from './Render/FormulaInput'
-import { FormulaQrcode } from './Render/FormulaQrcode'
 import { FormulaButton } from './Render/FormulaButton'
 import { FormulaLiteral } from './Render/FormulaLiteral'
 import { FormulaSpreadsheet } from './Render/FormulaSpreadsheet'
@@ -61,33 +59,41 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, dis
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const newDisplayData = loadDisplayResult(ctx, displayData)
 
-  let preview: React.ReactElement | null = <></>
+  let preview: React.ReactElement | null = null
 
-  switch (newDisplayData.result.view?.type ?? newDisplayData.result.type) {
-    case 'Button':
-      preview = <FormulaButton result={newDisplayData.result as ButtonResult} formulaType={newDisplayData.type} />
-      break
-    case 'Input':
-      preview = <FormulaInput result={newDisplayData.result as InputResult} formulaType={newDisplayData.type} />
-      break
-    case 'Spreadsheet':
-      preview = (
-        <BlockContainer>
-          <FormulaSpreadsheet spreadsheet={newDisplayData.result.result as SpreadsheetType} />
-        </BlockContainer>
-      )
-      break
-    case 'Qrcode':
-      preview = <FormulaQrcode result={newDisplayData.result as StringResult} formulaType={newDisplayData.type} />
-      break
-    default:
-      break
+  const dataResult = newDisplayData.result
+
+  if (dataResult.view) {
+    const viewRender = formulaContext.findViewRender(dataResult.view.type)
+    if (viewRender) {
+      preview = viewRender(dataResult.view.attrs, newDisplayData)
+    }
+  }
+
+  if (!preview) {
+    switch (dataResult.type) {
+      case 'Button':
+        preview = <FormulaButton result={newDisplayData.result as ButtonResult} formulaType={newDisplayData.type} />
+        break
+      case 'Input':
+        preview = <FormulaInput result={newDisplayData.result as InputResult} formulaType={newDisplayData.type} />
+        break
+      case 'Spreadsheet':
+        preview = (
+          <BlockContainer>
+            <FormulaSpreadsheet spreadsheet={newDisplayData.result.result as SpreadsheetType} />
+          </BlockContainer>
+        )
+        break
+      default:
+        break
+    }
   }
 
   return (
     <span {...props}>
       <FormulaValue displayData={newDisplayData} display={display ?? newDisplayData.display} border={true} />
-      {preview}
+      {preview ?? <></>}
     </span>
   )
 }

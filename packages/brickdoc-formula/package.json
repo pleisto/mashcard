@@ -10,6 +10,11 @@
   ],
   "dependencies": {
     "@brickdoc/test-helper": "workspace:^",
-    "chevrotain": "^10.1.2"
+    "chevrotain": "^10.1.2",
+    "qrcode.react": "^2.0.0",
+    "react-vega": "^7.4.4"
+  },
+  "devDependencies": {
+    "@types/qrcode.react": "^1.0.2"
   }
 }
