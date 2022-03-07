@@ -9,10 +9,16 @@ export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onC
 }
 
 const StyledBlockActionButton = styled(Button, {
-  borderRadius: '100%',
-  fontSize: '1.375rem',
-  height: '1.375rem',
-  width: '1.375rem'
+  variants: {
+    size: {
+      sm: {
+        borderRadius: '100%',
+        fontSize: '1.375rem',
+        height: '1.375rem',
+        width: '1.375rem'
+      }
+    }
+  }
 })
 
 const Trigger: React.FC<{
@@ -43,7 +49,8 @@ const Trigger: React.FC<{
       suppressContentEditableWarning={true}
       draggable={true}
       data-drag-handle
-      {...restProps}>
+      {...restProps}
+    >
       <StyledBlockActionButton
         onClick={event => {
           event.stopPropagation()
@@ -56,7 +63,8 @@ const Trigger: React.FC<{
           setHovered(true)
         }}
         size="sm"
-        type="text">
+        type="text"
+      >
         <EditorIcon.DragSecondary {...iconProps} />
       </StyledBlockActionButton>
     </div>
@@ -91,7 +99,8 @@ export const BlockActionButton: React.FC<BlockActionButtonProps> = ({ className,
       destroyTooltipOnHide={true}
       trigger="hover"
       placement="startTop"
-      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}>
+      content={<BlockActionsMenu onClose={handleCloseMenu} {...props} />}
+    >
       <Trigger className={className} onDragStart={handleDragStart} onDragEnd={handleDragEnd} />
     </Popover>
   )
