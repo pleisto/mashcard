@@ -21306,7 +21306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-view@npm:^1.0.0, prosemirror-view@npm:^1.1.0, prosemirror-view@npm:^1.23.5, prosemirror-view@npm:^1.23.6":
+"prosemirror-view@npm:1.23.7":
   version: 1.23.7
   resolution: "prosemirror-view@npm:1.23.7"
   dependencies:
@@ -21314,6 +21314,17 @@ __metadata:
     prosemirror-state: ^1.0.0
     prosemirror-transform: ^1.1.0
   checksum: 6d0c16002dd379cf33d71d37542df0705f37966c15c4afcc87e3361d015ffce088d52ce6a776cbfb9ebc3cb2b9260354370f8d156358ebe2130e3bef878bf670
+  languageName: node
+  linkType: hard
+
+"prosemirror-view@patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b::locator=%40brickdoc%2Fmonorepo%40workspace%3A.":
+  version: 1.23.7
+  resolution: "prosemirror-view@patch:prosemirror-view@npm%3A1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b::version=1.23.7&hash=50d454&locator=%40brickdoc%2Fmonorepo%40workspace%3A."
+  dependencies:
+    prosemirror-model: ^1.16.0
+    prosemirror-state: ^1.0.0
+    prosemirror-transform: ^1.1.0
+  checksum: f37b017ced324534882c487341d25dbfcc46212852501342cad2274a3adf7cf9087511d0464e0eacb39b8b716ffaabd4c5152065b7815a90595876ebd4a70e21
   languageName: node
   linkType: hard
 

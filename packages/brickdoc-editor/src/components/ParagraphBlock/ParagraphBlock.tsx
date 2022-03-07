@@ -25,7 +25,7 @@ const Paragraph: React.FC<ParagraphBlockProps> = ({ node, getPos, editor }) => {
   const [placeholder] = usePlaceholder(editor, node, getPos)
   const placeholderClassName = React.useMemo(() => placeholderStyle().className, [])
 
-  return <NodeViewContent data-placeholder={placeholder} as="p" className={placeholderClassName} />
+  return <NodeViewContent draggable={false} data-placeholder={placeholder} as="p" className={placeholderClassName} />
 }
 
 export const ParagraphBlock: React.FC<ParagraphBlockProps> = props => {

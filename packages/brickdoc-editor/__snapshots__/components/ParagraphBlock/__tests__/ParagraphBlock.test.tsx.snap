@@ -13,6 +13,7 @@ exports[`ParagraphBlock matches snapshot correctly 1`] = `
       class="brd-c-hMGRDP"
       data-node-view-content=""
       data-placeholder=""
+      draggable="false"
       style="white-space: pre-wrap;"
     />
     <div
@@ -50,6 +51,7 @@ exports[`ParagraphBlock shows placeholder normally 1`] = `
       class="brd-c-hMGRDP"
       data-node-view-content=""
       data-placeholder=""
+      draggable="false"
       style="white-space: pre-wrap;"
     />
     <div

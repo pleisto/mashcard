@@ -156,6 +156,7 @@
     "postcss": ">=8.4.6",
     "dayjs": "^1.10.7",
     "cpy": "npm:@brickdoc/cpy@>=8.1.2-patch.1",
-    "@jest/transform": "npm:@jest/transform@>=27"
+    "@jest/transform": "npm:@jest/transform@>=27",
+    "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b"
   }
 }
