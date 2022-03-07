@@ -15,7 +15,7 @@ jobs:
       NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ES files

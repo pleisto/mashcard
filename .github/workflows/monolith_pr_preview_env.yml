@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout the codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
@@ -90,7 +90,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
       - name: Checkout the codebase
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Deployment to App Engine
         uses: brickdoc/app-engine@v1.beta3
         with:
