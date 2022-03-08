@@ -1,4 +1,4 @@
-import { AnyTypeResult, BasicFunctionClause, FunctionContext, ErrorResult, StringResult } from '../types'
+import { AnyTypeResult, BaseFunctionClause, FunctionContext, ErrorResult, StringResult } from '../types'
 
 export const ERROR = (ctx: FunctionContext, reason: StringResult): ErrorResult => ({
   result: reason.result,
@@ -14,7 +14,7 @@ export const IFERROR = (ctx: FunctionContext, expr1: AnyTypeResult, expr2: AnyTy
   }
 }
 
-const ERROR_CLAUSE: BasicFunctionClause<'Error'> = {
+const ERROR_CLAUSE: BaseFunctionClause<'Error'> = {
   name: 'ERROR',
   async: false,
   pure: true,
@@ -31,7 +31,7 @@ const ERROR_CLAUSE: BasicFunctionClause<'Error'> = {
   reference: ERROR
 }
 
-const IFERROR_CLAUSE: BasicFunctionClause<any> = {
+const IFERROR_CLAUSE: BaseFunctionClause<any> = {
   name: 'IFERROR',
   async: false,
   pure: true,
@@ -54,4 +54,4 @@ const IFERROR_CLAUSE: BasicFunctionClause<any> = {
   reference: IFERROR
 }
 
-export const CORE_ERROR_CLAUSES = [ERROR_CLAUSE, IFERROR_CLAUSE]
+export const CORE_ERROR_CLAUSES: Array<BaseFunctionClause<'Error' | any>> = [ERROR_CLAUSE, IFERROR_CLAUSE]

@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, ErrorResult, ReferenceResult, FunctionResult, CstResult } from '../types'
+import { FunctionContext, BaseFunctionClause, ErrorResult, ReferenceResult, FunctionResult, CstResult } from '../types'
 
 export const Set = (ctx: FunctionContext, ref: ReferenceResult, cst: CstResult): FunctionResult | ErrorResult => {
   // TODO check ref as constant
@@ -19,7 +19,7 @@ export const Set = (ctx: FunctionContext, ref: ReferenceResult, cst: CstResult):
   return { type: 'Function', result: [{ name: 'Set', args: [ref, cst] }] }
 }
 
-export const CORE_CORE_CLAUSES: Array<BasicFunctionClause<'Function'>> = [
+export const CORE_CORE_CLAUSES: Array<BaseFunctionClause<'Function'>> = [
   {
     name: 'Set',
     async: false,

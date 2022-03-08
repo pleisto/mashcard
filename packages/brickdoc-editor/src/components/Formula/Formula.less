@@ -114,7 +114,6 @@
   padding: 3px 8px;
   margin: 0 3px;
   border-radius: 20px;
-  border: 1px solid black;
   font-size: 16px;
 
   .brickdoc-formula-value-icon {
@@ -147,6 +146,38 @@
   }
 }
 
+.brickdoc-formula-pending {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+
+  &::before {
+    content: " ";
+    border: 3px solid #FFFFFF;
+    border-bottom-color: #3E3E3E;
+    border-radius: 50%;
+    display: inline-block;
+    -webkit-animation: rotation 1s linear infinite;
+    animation: rotation 1s linear infinite;
+    position: absolute;
+    z-index: 1000;
+    right: 0%;
+    margin-top: -20px;
+    margin-right: -2px;
+  }
+
+  .brickdoc-formula-pending-icon {
+    font-size: 12px;
+    color: #bfbcc6;
+  }
+}
+
 .brickdoc-formula-error {
   display: inline-flex;
   align-items: center;
@@ -174,3 +205,13 @@
     color: #bfbcc6;
   }
 }
+
+
+@keyframes rotation {
+   0% {
+     transform: rotate(0deg);
+   }
+   100% {
+     transform: rotate(360deg);
+   }
+ }

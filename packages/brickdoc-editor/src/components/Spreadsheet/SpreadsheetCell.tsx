@@ -9,7 +9,7 @@ import {
   BlockSpreadsheetLoaded
 } from '@brickdoc/schema'
 import { FormulaBlockRender } from '../Formula/FormulaBlockRender'
-import { displayValue, dumpDisplayResult, VariableClass, VariableData } from '@brickdoc/formula'
+import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableClass, VariableData } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { FormulaDisplay } from '../Formula/FormulaDisplay'
 import { devLog } from '@brickdoc/design-system'
@@ -59,13 +59,14 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     [setEditingCellId, formulaName, editing]
   )
 
-  const refreshCell = React.useCallback((): void => {
+  const refreshCell = React.useCallback(async (): Promise<void> => {
     if (variableRef.current) {
-      const value = displayValue(variableRef.current.t.variableValue.result, rootId)
-      devLog('Spreadsheet cell formula updated', { cellId, value })
+      const displayData = await dumpDisplayResultForDisplay(variableRef.current.t)
+      const value = displayValue(fetchResult(variableRef.current.t), rootId)
+      devLog('Spreadsheet cell formula updated', { cellId, value, displayData })
       const newBlock = {
         ...block,
-        data: { ...block.data, displayData: dumpDisplayResult(variableRef.current.t, false) },
+        data: { ...block.data, displayData },
         text: value
       }
       setCurrentBlock(newBlock)
@@ -79,7 +80,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const updateFormula = React.useCallback(
     (variable): void => {
       variableRef.current = variable
-      refreshCell()
+      void refreshCell()
     },
     [refreshCell]
   )
@@ -112,7 +113,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       if (variableRef.current) {
         await variableRef.current.updateDefinition(value)
       }
-      refreshCell()
+      void refreshCell()
     },
     [refreshCell, formulaContext, rootId, formulaId, formulaName]
   )
@@ -122,7 +123,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       FormulaUpdatedViaId,
       e => {
         variableRef.current = e.payload
-        refreshCell()
+        void refreshCell()
       },
       {
         eventId: `${rootId},${formulaId}`,
@@ -173,8 +174,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       style={{
         ...(width ? { width: `${width}px` } : {})
       }}
-      onDoubleClick={handleEnterEdit}
-    >
+      onDoubleClick={handleEnterEdit}>
       <FormulaDisplay
         display={currentBlock.text}
         displayData={currentBlock.data.displayData}

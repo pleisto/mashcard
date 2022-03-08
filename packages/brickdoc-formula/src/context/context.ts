@@ -34,7 +34,8 @@ import {
   ColumnName,
   ViewType,
   ViewRender,
-  View
+  View,
+  VariableValue
 } from '../types'
 import {
   function2completion,
@@ -55,6 +56,7 @@ import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus } from '@brickd
 import { FORMULA_FEATURE_CONTROL } from './features'
 import { BlockClass } from '../controls/block'
 import { DEFAULT_VIEWS } from '../render'
+import { fetchResult } from './variable'
 
 export interface FormulaContextArgs {
   functionClauses?: Array<BaseFunctionClause<any>>
@@ -65,7 +67,7 @@ export interface FormulaContextArgs {
 
 const matchRegex =
   // eslint-disable-next-line max-len
-  /(str|num|bool|record|blank|cst|array|null|void|date|predicate|reference|spreadsheet|function|column|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
+  /(str|num|bool|record|blank|cst|array|null|void|date|predicate|reference|spreadsheet|pending|function|column|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
 export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName> = {
   string: 'str',
   number: 'num',
@@ -81,6 +83,7 @@ export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName
   Rate: 'rate',
   Button: 'button',
   Predicate: 'predicate',
+  Pending: 'pending',
   Function: 'function',
   Reference: 'reference',
   null: 'null',
@@ -134,6 +137,7 @@ export class FormulaContext implements ContextInterface {
     Date: {},
     Column: {},
     Block: {},
+    Pending: {},
     any: {}
   }
 
@@ -211,7 +215,7 @@ export class FormulaContext implements ContextInterface {
       return { type: 'Error', result: `Function ${name} not found`, errorKind: 'fatal' }
     }
 
-    return await clause.reference(ctx, ...args)
+    return await(clause.reference as (ctx: FunctionContext, ...args: any[]) => Promise<any>)(ctx, ...args)
   }
 
   public completions(namespaceId: NamespaceId, variableId: VariableId | undefined): Completion[] {
@@ -243,10 +247,10 @@ export class FormulaContext implements ContextInterface {
 
     const dynamicColumns: ColumnCompletion[] = completionVariables
       .filter(([key, v]) => {
-        return v.t.variableValue.result.type === 'Spreadsheet' && v.t.variableValue.result.result.dynamic
+        return fetchResult(v.t).type === 'Spreadsheet' && (v.t.variableValue as any).result.result.dynamic
       })
       .flatMap(([key, v]) => {
-        const result = v.t.variableValue.result as SpreadsheetResult
+        const result = (v.t.variableValue as VariableValue).result as SpreadsheetResult
         return result.result
           .listColumns()
           .map((column: ColumnInitializer) => column2completion(new ColumnClass(result.result, column), namespaceId))

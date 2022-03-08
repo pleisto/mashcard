@@ -1,7 +1,7 @@
 /* eslint-disable max-nested-callbacks */
-import { buildVariable, interpret, parse, SuccessParseResult } from '../../grammar/core'
+import { buildVariableSync, interpret, parse, SuccessParseResult } from '../../grammar/core'
 import { quickInsert } from '../../grammar/testHelper'
-import { VariableMetadata } from '../../types'
+import { VariableMetadata, VariableValue } from '../../types'
 import { FormulaContext } from '../context'
 
 const formulaContext = new FormulaContext({})
@@ -60,11 +60,15 @@ describe('Dependency', () => {
 
   it('snapshot', async () => {
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
-    expect(formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue.result).toEqual({
+    expect(
+      (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue as VariableValue).result
+    ).toEqual({
       result: 5,
       type: 'number'
     })
-    expect(formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue.result).toEqual({
+    expect(
+      (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue as VariableValue).result
+    ).toEqual({
       result: 4,
       type: 'number'
     })
@@ -95,44 +99,44 @@ describe('Dependency', () => {
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
     await num0.updateDefinition('=30')
-    expect(num0.t.variableValue.result.result).toEqual(30)
+    expect((num0.t.variableValue as VariableValue).result.result).toEqual(30)
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
-    expect(num2.t.variableValue.result.result).toEqual(30)
+    expect((num2.t.variableValue as VariableValue).result.result).toEqual(30)
   })
 
   it('modify num0 => invalid', async () => {
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
     await num0.updateDefinition('=30foobar')
-    expect(num0.t.variableValue.result.result).toEqual('Not all input parsed: foobar')
+    expect((num0.t.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
-    expect(num2.t.variableValue.result.result).toEqual('Not all input parsed: foobar')
+    expect((num2.t.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
 
     await num0.updateDefinition('=233')
-    expect(num0.t.variableValue.result.result).toEqual(233)
-    expect(num2.t.variableValue.result.result).toEqual(233)
+    expect((num0.t.variableValue as VariableValue).result.result).toEqual(233)
+    expect((num2.t.variableValue as VariableValue).result.result).toEqual(233)
   })
 
   it('modify num0 => boolean', async () => {
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
     await num0.updateDefinition('=true')
-    expect(num0.t.variableValue.result.result).toEqual(true)
+    expect((num0.t.variableValue as VariableValue).result.result).toEqual(true)
 
     const num4 = formulaContext.findVariableById(namespaceId, variableIds[4])!
-    expect(num4.t.variableValue.result.result).toEqual('Expected number but got boolean')
+    expect((num4.t.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
-    expect(num2.t.variableValue.result.result).toEqual(true)
+    expect((num2.t.variableValue as VariableValue).result.result).toEqual(true)
 
     const num3 = formulaContext.findVariableById(namespaceId, variableIds[3])!
 
     // const num1 = formulaContext.findVariable(namespaceId, variableIds[1])!
     // num3 = num2 + num1 = 3
     // TODO fix this
-    expect(num3.t.variableValue.result.result).toEqual(3)
+    expect((num3.t.variableValue as VariableValue).result.result).toEqual(3)
   })
 
   it('dependency automatic update', async () => {
@@ -156,13 +160,17 @@ describe('Dependency', () => {
         interpretContext: { ctx: {}, arguments: [] }
       }
     })
-    expect(interpretResult.variableValue.success).toEqual(true)
+    expect(interpretResult.success).toEqual(true)
 
-    const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult })
+    const variable = buildVariableSync({ formulaContext, meta, parseResult, interpretResult })
     await formulaContext.commitVariable({ variable })
 
-    expect(formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue.result.result).toEqual(5) // TODO 105
-    expect(formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue.result.result).toEqual(4) // TODO 104
+    expect(
+      (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue as VariableValue).result.result
+    ).toEqual(5) // TODO 105
+    expect(
+      (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue as VariableValue).result.result
+    ).toEqual(4) // TODO 104
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
     expect(
       Object.values(formulaContext.context).map(v => ({

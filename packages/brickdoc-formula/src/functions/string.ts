@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, BooleanResult, StringResult, ArrayResult } from '../types'
+import { FunctionContext, BaseFunctionClause, BooleanResult, StringResult, ArrayResult } from '../types'
 
 export const START_WITH = (ctx: FunctionContext, string: StringResult, prefix: StringResult): BooleanResult => ({
   result: string.result.startsWith(prefix.result),
@@ -11,7 +11,7 @@ export const Split = (ctx: FunctionContext, string: StringResult, separator: Str
   type: 'Array'
 })
 
-export const CORE_STRING_CLAUSES: Array<BasicFunctionClause<'boolean' | 'Array'>> = [
+export const CORE_STRING_CLAUSES: Array<BaseFunctionClause<'boolean' | 'Array'>> = [
   {
     name: 'START_WITH',
     async: false,

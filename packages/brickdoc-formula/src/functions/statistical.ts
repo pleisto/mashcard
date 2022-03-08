@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, NumberResult } from '../types'
+import { FunctionContext, BaseFunctionClause, NumberResult } from '../types'
 
 export const AVERAGE = (ctx: FunctionContext, ...numbers: NumberResult[]): NumberResult => {
   const sum = numbers.map(number => number.result).reduce((acc, cur) => acc + cur, 0)
@@ -10,7 +10,7 @@ export const SUM = (ctx: FunctionContext, ...numbers: NumberResult[]): NumberRes
   return { type: 'number', result: sum }
 }
 
-export const CORE_STATISTICAL_CLAUSES: Array<BasicFunctionClause<'number'>> = [
+export const CORE_STATISTICAL_CLAUSES: Array<BaseFunctionClause<'number'>> = [
   {
     name: 'AVERAGE',
     async: false,

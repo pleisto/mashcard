@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, NumberResult, StringResult } from '../types'
+import { FunctionContext, BaseFunctionClause, NumberResult, StringResult } from '../types'
 
 export const LEN = (ctx: FunctionContext, str: StringResult): NumberResult => ({
   result: str.result.length,
@@ -10,7 +10,7 @@ export const TRIM = (ctx: FunctionContext, str: StringResult): StringResult => (
   type: 'string'
 })
 
-export const CORE_TEXT_CLAUSES: Array<BasicFunctionClause<'string' | 'number'>> = [
+export const CORE_TEXT_CLAUSES: Array<BaseFunctionClause<'string' | 'number'>> = [
   {
     name: 'LEN',
     async: false,

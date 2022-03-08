@@ -1,4 +1,5 @@
 import type { IToken } from 'chevrotain'
+import { fetchResult } from '../context'
 import { CodeFragment, Completion, FormulaType, FunctionContext } from '../types'
 
 export interface CompleteInput {
@@ -95,9 +96,7 @@ export const complete = ({
 
   if (['GreaterThan', 'GreaterThanEqual', 'LessThan', 'LessThanEqual'].includes(code)) {
     completions = completions.map(c => {
-      return c.kind === 'variable' && c.preview.t.variableValue.result.type === 'number'
-        ? { ...c, weight: c.weight + 1000 }
-        : c
+      return c.kind === 'variable' && fetchResult(c.preview.t).type === 'number' ? { ...c, weight: c.weight + 1000 } : c
     })
   }
 

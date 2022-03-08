@@ -1,7 +1,6 @@
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Icon, Tooltip } from '@brickdoc/design-system'
-import { displayValue, dumpDisplayResult, VariableData } from '@brickdoc/formula'
+import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableData } from '@brickdoc/formula'
 import { EditorDataSourceContext } from '../../../dataSource/DataSource'
 import { useFormula, BlockContainer, FormulaMenu, FormulaMenuProps, FormulaDisplay } from '../../../components/'
 
@@ -29,8 +28,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const formulaName = undefined
   const {
     variableT,
+    selected,
     savedVariableT,
-    isDraft,
     isDisableSave,
     nameRef,
     doHandleSave,
@@ -51,32 +50,20 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
 
   const hasMenu = handleDefaultPopoverVisibleChange && handleDelete
 
-  if (!hasMenu) {
-    return !savedVariableT || isDraft ? (
-      <></>
-    ) : (
-      <FormulaDisplay
-        display={displayValue(savedVariableT.variableValue.result, rootId)}
-        displayData={dumpDisplayResult(savedVariableT, true)}
-        formulaType={formulaType}
-      />
-    )
-  }
+  const renderData = (
+    <FormulaDisplay
+      disablePopover={!hasMenu}
+      selected={selected}
+      name={savedVariableT?.name}
+      display={savedVariableT ? displayValue(fetchResult(savedVariableT), rootId) : undefined}
+      displayData={savedVariableT ? dumpDisplayResultForDisplay(savedVariableT) : undefined}
+      formulaType={formulaType}
+    />
+  )
 
-  const renderData =
-    !savedVariableT || isDraft ? (
-      <span className="brickdoc-formula-empty">
-        <Icon.Formula className="brickdoc-formula-empty-icon" />
-      </span>
-    ) : (
-      <Tooltip title={savedVariableT.name} destroyTooltipOnHide={true}>
-        <FormulaDisplay
-          display={displayValue(savedVariableT.variableValue.result, rootId)}
-          displayData={dumpDisplayResult(savedVariableT, true)}
-          formulaType={formulaType}
-        />
-      </Tooltip>
-    )
+  if (!hasMenu) {
+    return renderData
+  }
 
   return (
     <FormulaMenu
@@ -94,8 +81,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       completion={completion}
       handleSelectActiveCompletion={handleSelectActiveCompletion}
       setCompletion={setCompletion}
-      handleDelete={handleDelete}
-    >
+      handleDelete={handleDelete}>
       {renderData}
     </FormulaMenu>
   )

@@ -15,14 +15,26 @@ import { FormulaLiteral } from './Render/FormulaLiteral'
 import { FormulaSpreadsheet } from './Render/FormulaSpreadsheet'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
 import { BlockContainer } from '../BlockContainer'
+import { SelectedType } from './useFormula'
 
 export interface FormulaDisplayProps {
   displayData?: VariableDisplayData
   display?: string
   formulaType: FormulaSourceType
+  name?: string
+  disablePopover?: boolean
+  selected?: SelectedType
 }
 
-export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, display, formulaType, ...props }) => {
+export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
+  displayData,
+  display,
+  formulaType,
+  name,
+  selected,
+  disablePopover,
+  ...props
+}) => {
   if (!displayData) {
     if (formulaType === 'normal') {
       return (
@@ -44,12 +56,23 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, dis
     )
   }
 
-  if (formulaType === 'normal' && result.type === 'Error') {
-    return (
-      <span {...props} className="brickdoc-formula-error">
-        <Icon.Formula className="brickdoc-formula-error-icon" />
-      </span>
-    )
+  if (formulaType === 'normal') {
+    // TODO error and pending hover
+    if (result.type === 'Error') {
+      return (
+        <span {...props} className="brickdoc-formula-error">
+          <Icon.Formula className="brickdoc-formula-error-icon" />
+        </span>
+      )
+    }
+
+    if (result.type === 'Pending') {
+      return (
+        <span {...props} className="brickdoc-formula-pending">
+          <Icon.Formula className="brickdoc-formula-pending-icon" />
+        </span>
+      )
+    }
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -92,7 +115,14 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ displayData, dis
 
   return (
     <span {...props}>
-      <FormulaValue displayData={newDisplayData} display={display ?? newDisplayData.display} border={true} />
+      <FormulaValue
+        displayData={newDisplayData}
+        name={name}
+        selected={selected}
+        disablePopover={disablePopover}
+        display={display ?? newDisplayData.display}
+        border={true}
+      />
       {preview ?? <></>}
     </span>
   )

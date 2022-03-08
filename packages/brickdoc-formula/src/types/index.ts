@@ -18,7 +18,7 @@ type FormulaObjectType =
 
 export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Radio' | 'Rate' | 'Slider'
 
-export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any' | 'void'
+export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any' | 'void' | 'Pending'
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
@@ -54,6 +54,7 @@ export type SpecialDefaultVariableName =
   | 'radio'
   | 'rate'
   | 'slider'
+  | 'pending'
 
 export type FunctionGroup = 'core' | 'custom' | string
 
@@ -243,6 +244,11 @@ export interface SelectResult extends BaseResult {
   result: SelectType
 }
 
+export interface PendingResult extends BaseResult {
+  result: string
+  type: 'Pending'
+}
+
 export interface AnyResult extends BaseResult {
   result: any
   type: 'any'
@@ -286,6 +292,7 @@ export type AnyTypeResult =
   | FunctionResult
   | CstResult
   | ReferenceResult
+  | PendingResult
 
 export type AnyFunctionResult<T> = (AnyTypeResult & { type: T }) | ErrorResult
 
@@ -454,10 +461,6 @@ interface Example<T extends FormulaType> {
   readonly output: AnyFunctionResult<T> | null
 }
 
-export interface ExampleWithCodeFragments<T extends FormulaType> extends Example<T> {
-  readonly codeFragments: CodeFragment[]
-}
-
 export interface BaseFunctionContext {
   readonly formulaContext: ContextInterface
   readonly meta?: VariableMetadata
@@ -472,14 +475,43 @@ export interface InterpretContext {
   readonly arguments: AnyTypeResult[]
 }
 
-export interface BaseFunctionClause<T extends FormulaType> {
+type FunctionReference<T extends FormulaType> =
+  | {
+      readonly reference: (ctx: FunctionContext, ...args: any[]) => Promise<AnyFunctionResult<T>>
+      readonly async: true
+      readonly chain: false
+    }
+  | {
+      readonly reference: (ctx: FunctionContext, ...args: any[]) => AnyFunctionResult<T>
+      readonly async: false
+      readonly chain: false
+    }
+  | {
+      readonly reference: (ctx: FunctionContext, chainResult: any, ...args: any[]) => Promise<AnyFunctionResult<T>>
+      readonly async: true
+      readonly chain: true
+    }
+  | {
+      readonly reference: (ctx: FunctionContext, chainResult: any, ...args: any[]) => AnyFunctionResult<T>
+      readonly async: false
+      readonly chain: true
+    }
+
+type FunctionChain =
+  | {
+      readonly chain: false
+    }
+  | {
+      readonly chain: true
+      readonly args: [Argument, ...Argument[]]
+    }
+
+export type BaseFunctionClause<T extends FormulaType> = {
   readonly name: FunctionNameType
   readonly pure: boolean
   readonly effect: false
   readonly feature?: Feature
   readonly lazy: boolean
-  readonly async: false
-  readonly chain: boolean
   readonly acceptError: boolean
   readonly description: string
   readonly group: FunctionGroup
@@ -487,32 +519,18 @@ export interface BaseFunctionClause<T extends FormulaType> {
   readonly args: Argument[]
   readonly returns: T
   readonly testCases: TestCase[]
-  readonly reference: (ctx: FunctionContext, ...args: any[]) => AnyFunctionResult<T> | Promise<AnyFunctionResult<T>>
-}
+} & FunctionReference<T> &
+  FunctionChain
 
-export interface NormalFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
-  readonly chain: false
-}
-
-// TODO reference argument type!
-export interface ChainFunctionClause<T extends FormulaType> extends BaseFunctionClause<T> {
-  readonly chain: true
-  readonly returns: T
-  readonly args: [Argument, ...Argument[]]
-  readonly reference: (
-    ctx: FunctionContext,
-    chainResult: any,
-    ...args: any[]
-  ) => AnyFunctionResult<T> | Promise<AnyFunctionResult<T>>
-}
-
-export type BasicFunctionClause<T extends FormulaType> = NormalFunctionClause<T> | ChainFunctionClause<T>
-
-export interface BaseFunctionClauseWithKey<T extends FormulaType> extends BaseFunctionClause<T> {
+export type BaseFunctionClauseWithKey<T extends FormulaType> = BaseFunctionClause<T> & {
   readonly key: FunctionKey
 }
 
-export interface FunctionClause<T extends FormulaType> extends BaseFunctionClauseWithKey<T> {
+export interface ExampleWithCodeFragments<T extends FormulaType> extends Example<T> {
+  readonly codeFragments: CodeFragment[]
+}
+
+export type FunctionClause<T extends FormulaType> = Omit<BaseFunctionClauseWithKey<T>, 'examples'> & {
   readonly examples: [ExampleWithCodeFragments<T>, ...Array<ExampleWithCodeFragments<T>>]
 }
 
@@ -577,14 +595,6 @@ interface ErrorVariableValue extends BaseVariableValue {
 }
 
 export type VariableValue = SuccessVariableValue | ErrorVariableValue
-
-export interface VariableResult {
-  definition: Definition
-  variableValue: VariableValue
-  kind: VariableKind
-  type: FormulaSourceType
-}
-
 export interface VariableDisplayData {
   definition: Definition
   result: AnyTypeResult
@@ -595,7 +605,12 @@ export interface VariableDisplayData {
   display: string
 }
 
-export interface VariableData extends VariableResult {
+export interface BaseVariableData {
+  definition: Definition
+  async: boolean
+  variableValue: VariableValue | Promise<VariableValue>
+  kind: VariableKind
+  type: FormulaSourceType
   name: VariableName
   version: number
   namespaceId: NamespaceId
@@ -611,6 +626,17 @@ export interface VariableData extends VariableResult {
   functionDependencies: Array<FunctionClause<FormulaType>>
 }
 
+export interface SyncVariableData extends BaseVariableData {
+  async: false
+  variableValue: VariableValue
+}
+
+export interface AsyncVariableData extends BaseVariableData {
+  async: true
+  variableValue: Promise<VariableValue>
+}
+
+export type VariableData = SyncVariableData | AsyncVariableData
 export interface VariableMetadata {
   readonly namespaceId: NamespaceId
   readonly variableId: VariableId
@@ -630,6 +656,7 @@ export interface VariableInterface {
   destroy: () => Promise<void>
   save: () => Promise<void>
   reinterpret: () => Promise<void>
+  subscribePromise: VoidFunction
   isDraft: () => boolean
   namespaceName: (pageId: NamespaceId) => string
   updateDefinition: (definition: Definition) => Promise<void>

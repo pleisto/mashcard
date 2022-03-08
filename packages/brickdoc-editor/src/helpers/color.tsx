@@ -61,84 +61,84 @@ export const COLOR: ColorMeta[] = [
   }
 ]
 export interface FormulaColorMeta {
-  color: string
-  rgb: [number, number, number]
+  colorMain: string
+  colorSecond: string
   label: string
-  backgroundColor: string
-  hoverBackgroundColor: string
-  pressedBackgroundColor: string
+  color1: string
+  color2: string
+  color3: string
 }
 
 const defaultColorMeta: FormulaColorMeta = {
-  color: '#908B9C',
-  rgb: [249, 249, 249],
+  colorMain: '#908B9C',
+  colorSecond: '#908B9C',
   label: 'palette/bg/primary',
-  backgroundColor: '#F9F9F9',
-  hoverBackgroundColor: '#F0F0F0',
-  pressedBackgroundColor: '#F0F0F0'
+  color1: '#F9F9F9',
+  color2: '#F0F0F0',
+  color3: '#F0F0F0'
 }
 
 const blueColorMeta: FormulaColorMeta = {
-  color: '#356CF9',
-  rgb: [53, 108, 249],
+  colorMain: Palettes.blue6,
+  colorSecond: Palettes.blue8,
   label: 'palette/hue/blue/6',
-  backgroundColor: Palettes.blue1,
-  hoverBackgroundColor: Palettes.blue2,
-  pressedBackgroundColor: Palettes.blue3
+  color1: Palettes.blue1,
+  color2: Palettes.blue2,
+  color3: Palettes.blue3
 }
 
 const cyanColorMeta: FormulaColorMeta = {
-  color: Palettes.cyan6,
-  rgb: [57, 179, 232],
+  colorMain: Palettes.cyan6,
+  colorSecond: Palettes.cyan9,
   label: 'palette/hue/cyan/6',
-  backgroundColor: Palettes.cyan1,
-  hoverBackgroundColor: Palettes.cyan2,
-  pressedBackgroundColor: Palettes.cyan3
+  color1: Palettes.cyan1,
+  color2: Palettes.cyan2,
+  color3: Palettes.cyan3
 }
 
 const greenColorMeta: FormulaColorMeta = {
-  color: Palettes.green8,
-  rgb: [33, 132, 112],
+  colorMain: Palettes.green8,
+  colorSecond: Palettes.green9,
   label: 'palette/hue/green/8',
-  backgroundColor: Palettes.green1,
-  hoverBackgroundColor: Palettes.green2,
-  pressedBackgroundColor: Palettes.green3
+  color1: Palettes.green1,
+  color2: Palettes.green2,
+  color3: Palettes.green3
 }
 
 const pinkColorMeta: FormulaColorMeta = {
-  color: Palettes.pink6,
-  rgb: [216, 27, 96],
+  colorMain: Palettes.pink6,
+  colorSecond: Palettes.pink9,
   label: 'palette/hue/pink/6',
-  backgroundColor: Palettes.pink1,
-  hoverBackgroundColor: Palettes.pink2,
-  pressedBackgroundColor: Palettes.pink3
+  color1: Palettes.pink1,
+  color2: Palettes.pink2,
+  color3: Palettes.pink3
 }
 
 const redColorMeta: FormulaColorMeta = {
-  color: Palettes.red7,
-  rgb: [207, 31, 40],
+  colorMain: Palettes.red7,
+  colorSecond: Palettes.red9,
   label: 'palette/hue/red/7',
-  backgroundColor: Palettes.red1,
-  hoverBackgroundColor: Palettes.red2,
-  pressedBackgroundColor: Palettes.red3
+  color1: Palettes.red1,
+  color2: Palettes.red2,
+  color3: Palettes.red3
 }
 
 const purpleColorMeta: FormulaColorMeta = {
-  color: Palettes.purple6,
-  rgb: [109, 71, 185],
+  colorMain: Palettes.purple5,
+  colorSecond: Palettes.purple8,
   label: 'palette/hue/purple/5',
-  backgroundColor: Palettes.purple1,
-  hoverBackgroundColor: Palettes.purple2,
-  pressedBackgroundColor: Palettes.purple3
+  color1: Palettes.purple1,
+  color2: Palettes.purple2,
+  color3: Palettes.purple3
 }
 
 const orangeColorMeta: FormulaColorMeta = {
-  color: Palettes.orange8,
-  rgb: [200, 65, 22],
+  colorMain: Palettes.orange8,
+  colorSecond: Palettes.orange9,
   label: 'palette/hue/orange/8',
-  backgroundColor: Palettes.orange1,
-  hoverBackgroundColor: Palettes.orange2,
-  pressedBackgroundColor: Palettes.orange3
+  color1: Palettes.orange1,
+  color2: Palettes.orange2,
+  color3: Palettes.orange3
 }
 
 export const FORMULA_COLORS: Record<FormulaColorType, FormulaColorMeta> = {
@@ -165,14 +165,15 @@ export const FORMULA_COLORS: Record<FormulaColorType, FormulaColorMeta> = {
   Radio: defaultColorMeta,
   Rate: defaultColorMeta,
   void: defaultColorMeta,
-  Cst: defaultColorMeta,
+  Cst: cyanColorMeta,
   Reference: pinkColorMeta,
   any: defaultColorMeta,
   // Other
   TRUE: greenColorMeta,
   FALSE: redColorMeta,
   FunctionName: pinkColorMeta,
-  Variable: pinkColorMeta
+  Variable: pinkColorMeta,
+  Pending: blueColorMeta
 }
 
 const defaultIcon = <Icon.Function />
@@ -207,5 +208,6 @@ export const FORMULA_ICONS: Record<FormulaColorType, JSX.Element> = {
   TRUE: defaultIcon,
   FALSE: defaultIcon,
   FunctionName: defaultIcon,
-  Variable: defaultIcon
+  Variable: defaultIcon,
+  Pending: defaultIcon
 }

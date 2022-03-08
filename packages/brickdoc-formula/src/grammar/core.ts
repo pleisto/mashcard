@@ -35,6 +35,7 @@ import { devWarning } from '@brickdoc/design-system'
 export interface BaseParseResult {
   success: boolean
   valid: boolean
+  async: boolean
   input: string
   version: number
   position: number
@@ -72,15 +73,13 @@ export interface LiteralParseResult extends BaseParseResult {
 export interface ErrorParseResult extends BaseParseResult {
   success: false
   kind: 'unknown'
+  cst: CstNode | undefined
   errorType: ParseErrorType
   errorMessages: [ErrorMessage, ...ErrorMessage[]]
 }
 
 export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult
-export interface InterpretResult {
-  readonly variableValue: VariableValue
-  readonly lazy: boolean
-}
+export type InterpretResult = VariableValue
 
 export interface PositionFragment {
   readonly tokenIndex: number
@@ -292,6 +291,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     inputImage: '',
     parseImage: '',
     valid: true,
+    async: false,
     cst: undefined,
     input,
     position,
@@ -306,40 +306,6 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     functionDependencies: [],
     blockDependencies: [],
     flattenVariableDependencies: []
-  }
-
-  if (type === 'normal' && !checkValidName(name)) {
-    return {
-      ...returnValue,
-      success: false,
-      kind: 'unknown',
-      errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is not valid', type: 'name_invalid' }]
-    }
-  }
-
-  if (formulaContext.reservedNames.includes(name.toUpperCase())) {
-    return {
-      ...returnValue,
-      success: false,
-      kind: 'unknown',
-      errorType: 'syntax',
-      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }]
-    }
-  }
-
-  const sameNameVariable = formulaContext.formulaNames.find(
-    v => v.name.toUpperCase() === name.toUpperCase() && v.namespaceId === namespaceId && v.key !== variableId
-  )
-
-  if (type === 'normal' && sameNameVariable) {
-    return {
-      ...returnValue,
-      success: false,
-      kind: 'unknown',
-      errorType: 'syntax',
-      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }]
-    }
   }
 
   if (!input.startsWith('=') || (type !== 'normal' && input.trim() === '=')) {
@@ -398,6 +364,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   const errorCodeFragment = codeFragments.find(f => f.errors.length)
   const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
 
+  returnValue.async = codeFragmentVisitor.async
   returnValue.kind = codeFragmentVisitor.kind
   returnValue.variableDependencies = codeFragmentVisitor.variableDependencies
   returnValue.variableNameDependencies = codeFragmentVisitor.variableNameDependencies
@@ -493,6 +460,40 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     }
   }
 
+  if (type === 'normal' && !checkValidName(name)) {
+    return {
+      ...returnValue,
+      success: false,
+      kind: 'unknown',
+      errorType: 'syntax',
+      errorMessages: [{ message: 'Variable name is not valid', type: 'name_invalid' }]
+    }
+  }
+
+  if (formulaContext.reservedNames.includes(name.toUpperCase())) {
+    return {
+      ...returnValue,
+      success: false,
+      kind: 'unknown',
+      errorType: 'syntax',
+      errorMessages: [{ message: 'Variable name is reserved', type: 'name_check' }]
+    }
+  }
+
+  const sameNameVariable = formulaContext.formulaNames.find(
+    v => v.name.toUpperCase() === name.toUpperCase() && v.namespaceId === namespaceId && v.key !== variableId
+  )
+
+  if (type === 'normal' && sameNameVariable) {
+    return {
+      ...returnValue,
+      success: false,
+      kind: 'unknown',
+      errorType: 'syntax',
+      errorMessages: [{ message: 'Name exist in same namespace', type: 'name_unique' }]
+    }
+  }
+
   return {
     ...returnValue,
     cst: cst!,
@@ -505,67 +506,70 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
 }
 
 export const interpret = async ({
-  parseResult: { cst, kind, errorMessages },
+  parseResult: { cst, kind, errorMessages, async },
   ctx
 }: {
-  parseResult: { cst: CstNode | undefined; kind: VariableKind; errorMessages: ErrorMessage[] }
+  parseResult: {
+    cst: CstNode | undefined
+    kind: VariableKind
+    errorMessages: ErrorMessage[]
+    async: boolean
+  }
   ctx: FunctionContext
 }): Promise<InterpretResult> => {
   if (errorMessages.length > 0) {
     const result: ErrorResult = { result: errorMessages[0].message, type: 'Error', errorKind: errorMessages[0].type }
     return {
-      lazy: false,
-      variableValue: {
-        success: true,
-        updatedAt: new Date(),
-        cacheValue: result,
-        result
-      }
+      success: false,
+      updatedAt: new Date(),
+      cacheValue: result,
+      result
     }
   }
+
+  // if (async) {
+  //   const result: PendingResult = { type: 'Pending', result: `Pending: ${ctx.meta.input}` }
+  //   return {
+  //     success: true,
+  //     updatedAt: new Date(),
+  //     cacheValue: result,
+  //     result
+  //   }
+  // }
   if (!cst || kind === 'literal') {
     const result: StringResult = { type: 'string', result: ctx.meta.input }
     return {
-      lazy: false,
-      variableValue: {
-        success: true,
-        updatedAt: new Date(),
-        cacheValue: result,
-        result
-      }
+      success: true,
+      updatedAt: new Date(),
+      cacheValue: result,
+      result
     }
   }
 
   try {
     const interpreter = new FormulaInterpreter({ ctx })
     const result: AnyTypeResult = await interpreter.visit(cst, { type: 'any' })
-    const lazy = interpreter.lazy
+    // const lazy = interpreter.lazy
 
     return {
-      lazy,
-      variableValue: {
-        success: true,
-        updatedAt: new Date(),
-        cacheValue: result,
-        result
-      }
+      success: true,
+      updatedAt: new Date(),
+      cacheValue: result,
+      result
     }
   } catch (e) {
     console.error(e)
     const message = `[FATAL] ${(e as any).message as string}`
     return {
-      lazy: false,
-      variableValue: {
-        updatedAt: new Date(),
-        success: false,
-        cacheValue: { result: message, type: 'Error', errorKind: 'fatal' },
-        result: { result: message, type: 'Error', errorKind: 'fatal' }
-      }
+      updatedAt: new Date(),
+      success: false,
+      cacheValue: { result: message, type: 'Error', errorKind: 'fatal' },
+      result: { result: message, type: 'Error', errorKind: 'fatal' }
     }
   }
 }
 
-export const buildVariable = ({
+export const buildVariableSync = ({
   formulaContext,
   meta: { name, input, namespaceId, variableId, type },
   parseResult: {
@@ -580,7 +584,7 @@ export const buildVariable = ({
     blockDependencies,
     flattenVariableDependencies
   },
-  interpretResult: { variableValue, lazy }
+  interpretResult
 }: {
   formulaContext: ContextInterface
   meta: VariableMetadata
@@ -593,11 +597,12 @@ export const buildVariable = ({
     name,
     cst,
     type,
-    version: lazy ? -1 : version,
+    version,
     codeFragments,
     definition: input,
     dirty: true,
-    variableValue,
+    async: false,
+    variableValue: interpretResult,
     valid,
     kind: kind ?? 'constant',
     variableDependencies,
@@ -606,14 +611,76 @@ export const buildVariable = ({
     blockDependencies,
     functionDependencies
   }
+  return generateVariable(formulaContext, t, undefined)
+}
 
-  const oldVariable = formulaContext.findVariableById(namespaceId, variableId)
+export const buildVariableAsync = ({
+  variable,
+  formulaContext,
+  meta: { name, input, namespaceId, variableId, type },
+  parseResult: {
+    valid,
+    cst,
+    kind,
+    codeFragments,
+    version,
+    variableDependencies,
+    variableNameDependencies,
+    functionDependencies,
+    blockDependencies,
+    flattenVariableDependencies
+  },
+  interpretResult
+}: {
+  variable: VariableInterface | undefined
+  formulaContext: ContextInterface
+  meta: VariableMetadata
+  parseResult: ParseResult
+  interpretResult: Promise<InterpretResult>
+}): VariableInterface => {
+  const t: VariableData = {
+    namespaceId,
+    variableId,
+    name,
+    cst,
+    type,
+    version,
+    codeFragments,
+    definition: input,
+    dirty: true,
+    async: true,
+    variableValue: interpretResult,
+    valid,
+    kind: kind ?? 'constant',
+    variableDependencies,
+    variableNameDependencies,
+    flattenVariableDependencies,
+    blockDependencies,
+    functionDependencies
+  }
+  return generateVariable(formulaContext, t, variable)
+}
+
+const generateVariable = (
+  formulaContext: ContextInterface,
+  t: VariableData,
+  variable: VariableInterface | undefined
+): VariableInterface => {
+  const oldVariable = formulaContext.findVariableById(t.namespaceId, t.variableId)
+  let newVariable: VariableInterface
   if (oldVariable) {
     oldVariable.t = t
-    return oldVariable.clone()
+    newVariable = oldVariable.clone()
+  } else if (variable) {
+    newVariable = variable
+    newVariable.t = t
   } else {
-    return new VariableClass({ t, formulaContext })
+    newVariable = new VariableClass({ t, formulaContext })
   }
+
+  newVariable.subscribePromise()
+
+  return newVariable
 }
 
 export const appendFormulas = (formulaContext: ContextInterface, formulas: BaseFormula[]): void => {

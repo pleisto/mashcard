@@ -24,6 +24,7 @@ import {
 import { BlockType, ColumnType, SpreadsheetType } from '../controls'
 import { BlockClass } from '../controls/block'
 import { maybeEncodeString } from './util'
+import { fetchResult } from '../context'
 
 export const variableKey = (namespaceId: NamespaceId, variableId: VariableId): VariableKey =>
   `#${namespaceId}.${variableId}`
@@ -155,7 +156,7 @@ const variable2codeFragment = (variable: VariableInterface, pageId: NamespaceId)
     code: 'Variable',
     renderText: variableRenderText(variable, pageId),
     hide: false,
-    type: variable.t.variableValue.result.type,
+    type: fetchResult(variable.t).type,
     attrs: variable2attrs(variable)
   }
 }

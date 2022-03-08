@@ -82,6 +82,10 @@ export const intersectType = (
     return { errorMessages: [], newType: contextResultType }
   }
 
+  // if (contextResultType === 'Pending') {
+  //   return { errorMessages: [], newType: 'any' }
+  // }
+
   if (expectedArgumentType === 'any') {
     return { errorMessages: [], newType: contextResultType }
   }

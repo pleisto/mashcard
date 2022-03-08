@@ -3,6 +3,7 @@
 exports[`appendFormulas constant 1`] = `
 Array [
   Object {
+    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -223,6 +224,7 @@ Array [
 exports[`appendFormulas expression 1`] = `
 Array [
   Object {
+    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -711,6 +713,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "d986e871-cb85-4bd5-b675-87307f60b882",
     ],
@@ -1493,6 +1496,7 @@ Object {
 exports[`appendFormulas parse error 1`] = `
 Array [
   Object {
+    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -1827,6 +1831,7 @@ Array [
 exports[`appendFormulas unmatched variable 1`] = `
 Array [
   Object {
+    "async": false,
     "blockDependencies": Array [
       "d986e871-cb85-4bd5-b675-87307f60b882",
     ],

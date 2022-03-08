@@ -1,7 +1,7 @@
 /* eslint-disable max-params */
 import {
   FunctionContext,
-  BasicFunctionClause,
+  BaseFunctionClause,
   NumberResult,
   ColumnResult,
   SpreadsheetResult,
@@ -249,7 +249,7 @@ export const VLOOKUP = (
   return result
 }
 
-export const CORE_SPREADSHEET_CLAUSES: Array<BasicFunctionClause<'number' | 'string'>> = [
+export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'string'>> = [
   {
     name: 'VLOOKUP',
     async: false,

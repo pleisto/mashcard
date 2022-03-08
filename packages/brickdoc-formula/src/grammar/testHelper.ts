@@ -7,6 +7,7 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
     formulaContext,
     meta: { namespaceId, variableId, name, input, type }
   } = ctx
+  const parseResult = parse({ ctx })
   const {
     success,
     cst,
@@ -19,13 +20,13 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
     functionDependencies,
     blockDependencies,
     flattenVariableDependencies
-  } = parse({ ctx })
+  } = parseResult
 
   if (!success) {
     throw new Error(errorMessages[0]!.message)
   }
 
-  const { variableValue, lazy } = await interpret({ parseResult: { cst, kind, errorMessages }, ctx })
+  const variableValue = await interpret({ parseResult, ctx })
 
   const variable: VariableData = {
     namespaceId,
@@ -36,7 +37,8 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
     definition: input,
     cst,
     type,
-    version: lazy ? -1 : version,
+    version,
+    async: false,
     kind: kind ?? 'constant',
     codeFragments,
     variableValue,

@@ -1,4 +1,4 @@
-import { AnyTypeResult, BooleanResult, BasicFunctionClause, FunctionContext } from '../types'
+import { AnyTypeResult, BooleanResult, BaseFunctionClause, FunctionContext } from '../types'
 
 export const IF = (
   ctx: FunctionContext,
@@ -22,8 +22,7 @@ export const NOT = (ctx: FunctionContext, term: BooleanResult): BooleanResult =>
   result: !term.result
 })
 
-// TODO: add any type validate
-const IF_CLAUSE: BasicFunctionClause<any> = {
+const IF_CLAUSE: BaseFunctionClause<any> = {
   name: 'IF',
   async: false,
   pure: true,
@@ -53,7 +52,7 @@ const IF_CLAUSE: BasicFunctionClause<any> = {
   reference: IF
 }
 
-const BOOLEAN_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
+const BOOLEAN_CLAUSES: Array<BaseFunctionClause<'boolean'>> = [
   {
     name: 'NOT',
     async: false,
@@ -121,4 +120,4 @@ const BOOLEAN_CLAUSES: Array<BasicFunctionClause<'boolean'>> = [
   }
 ]
 
-export const CORE_LOGIC_CLAUSES = [IF_CLAUSE, ...BOOLEAN_CLAUSES]
+export const CORE_LOGIC_CLAUSES: Array<BaseFunctionClause<'boolean' | any>> = [IF_CLAUSE, ...BOOLEAN_CLAUSES]

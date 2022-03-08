@@ -8,17 +8,39 @@ import {
   SpreadsheetDynamicPersistence
 } from '../controls'
 import { BlockClass } from '../controls/block'
+import { fetchResult } from './variable'
 
 const VARIABLE_VERSION = 0
 
-export const dumpDisplayResult = (t: VariableData, disableDump: boolean): VariableDisplayData => {
+export const dumpDisplayResultForPersist = async (t: VariableData): Promise<VariableDisplayData> => {
+  const value = t.async ? await t.variableValue : t.variableValue
+
   return {
     definition: t.definition,
-    result: disableDump ? t.variableValue.result : (dumpValue(t.variableValue.result) as any),
+    result: dumpValue(value.result) as AnyTypeResult,
     type: t.type,
     kind: t.kind,
     version: VARIABLE_VERSION,
-    display: displayValue(t.variableValue.result, ''),
+    display: t.async ? 'Loading...' : displayValue(t.variableValue.result, ''),
+    meta: {
+      namespaceId: t.namespaceId,
+      variableId: t.variableId,
+      name: t.name,
+      position: 0,
+      input: t.definition,
+      type: t.type
+    }
+  }
+}
+
+export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
+  return {
+    definition: t.definition,
+    result: fetchResult(t),
+    type: t.type,
+    kind: t.kind,
+    version: VARIABLE_VERSION,
+    display: t.async ? 'Loading...' : displayValue(t.variableValue.result, ''),
     meta: {
       namespaceId: t.namespaceId,
       variableId: t.variableId,

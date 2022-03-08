@@ -1,4 +1,4 @@
-import { BasicFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
+import { BaseFunctionClause, FunctionGroup, FunctionKey, FunctionNameType } from '../types'
 import { CORE_API_CLAUSES } from './api'
 import { CORE_SPREADSHEET_CLAUSES } from './spreadsheet'
 import { CORE_DATE_CLAUSES } from './date'
@@ -15,6 +15,7 @@ import { CORE_CORE_CLAUSES } from './core'
 import { CORE_CONVERT_CLAUSES } from './convert'
 import { CORE_ARRAY_CLAUSES } from './array'
 import { CUSTOM_CLAUSES } from './custom'
+import { CORE_PROCESS_CLAUSES } from './process'
 
 export const buildFunctionKey = (
   group: FunctionGroup,
@@ -28,8 +29,9 @@ export const buildFunctionKey = (
   return `${group}::${upcaseName}`
 }
 
-export const BUILTIN_CLAUSES: Array<BasicFunctionClause<any>> = [
+export const BUILTIN_CLAUSES: Array<BaseFunctionClause<any>> = [
   ...CORE_API_CLAUSES,
+  ...CORE_PROCESS_CLAUSES,
   ...CORE_TEXT_CLAUSES,
   ...CORE_SPREADSHEET_CLAUSES,
   ...CORE_STRING_CLAUSES,

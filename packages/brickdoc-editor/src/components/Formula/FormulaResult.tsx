@@ -1,5 +1,12 @@
 import React from 'react'
-import { displayValue, dumpDisplayResult, errorIsFatal, ErrorMessage, VariableData } from '@brickdoc/formula'
+import {
+  displayValue,
+  dumpDisplayResultForDisplay,
+  errorIsFatal,
+  ErrorMessage,
+  fetchResult,
+  VariableData
+} from '@brickdoc/formula'
 import './Formula.less'
 import { FormulaValue } from './FormulaValue'
 
@@ -17,11 +24,10 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId 
     return <></>
   }
 
-  const variableValue = variableT.variableValue
-
-  const error: ErrorMessage | undefined = variableValue.success
-    ? undefined
-    : { message: variableValue.result.result, type: variableValue.result.errorKind }
+  const error: ErrorMessage | undefined =
+    !variableT.async && !variableT.variableValue.success
+      ? { message: variableT.variableValue.result.result, type: variableT.variableValue.result.errorKind }
+      : undefined
 
   const result = error ? (
     <span className="formula-result-error">
@@ -32,8 +38,8 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId 
     <span className="formula-result-ok">
       <span className="formula-result-ok-equal">=</span>
       <FormulaValue
-        displayData={dumpDisplayResult(variableT, true)}
-        display={displayValue(variableT.variableValue.result, pageId)}
+        displayData={dumpDisplayResultForDisplay(variableT)}
+        display={displayValue(fetchResult(variableT), pageId)}
       />
     </span>
   )

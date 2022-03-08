@@ -1,36 +1,68 @@
-/* eslint-disable max-len */
-// import { ContextInterface, BaseFunctionClause, RecordResult } from '../..'
+import { BaseFunctionClause, FunctionContext, RecordResult } from '../types'
 
-// import { ContextInterface, BaseFunctionClause, RecordResult } from '../..'
+export const CURRENT_POSITION = async (ctx: FunctionContext): Promise<RecordResult> => {
+  if (!navigator.geolocation) {
+    return {
+      type: 'Record',
+      result: {
+        long: { result: 0, type: 'number' },
+        lat: { result: 0, type: 'number' }
+      },
+      subType: 'number'
+    }
+  }
 
-// // TODO { long: number; lat: number; msg: string }
-// export const CURRENT_POSITION = async (ctx: ContextInterface): Promise<RecordResult> => {
-//   if (!navigator.geolocation) {
-//     return { type: 'Object', result: { long: 0, lat: 0, msg: 'Geolocation is not supported by your browser' } }
-//   }
+  try {
+    const position: GeolocationPosition = await new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject)
+    )
+    return {
+      type: 'Record',
+      result: {
+        long: { result: position.coords.longitude, type: 'number' },
+        lat: { result: position.coords.latitude, type: 'number' }
+      },
+      subType: 'number'
+    }
+  } catch (e) {
+    return {
+      type: 'Record',
+      result: {
+        long: { result: 0, type: 'number' },
+        lat: { result: 0, type: 'number' }
+      },
+      subType: 'number'
+    }
+  }
+}
 
-//   try {
-//     const position: GeolocationPosition = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject))
-//     return { type: 'Object', result: { long: position.coords.longitude, lat: position.coords.latitude, msg: 'ok' } }
-//   } catch (e) {
-//     return { type: 'Object', result: { long: 0, lat: 0, msg: (e as any).message } }
-//   }
-// }
-
-// export const CORE_API_CLAUSES: BaseFunctionClause[] = [
-//   {
-//     name: 'CURRENT_POSITION',
-//     async: true,
-//     pure: false,
-//     effect: false,
-//     description: 'Returns current position',
-//     group: 'core',
-//     args: [],
-//     returns: 'Object',
-//     examples: [{ input: [], output: { long: 0, lat: 0, msg: 'Geolocation is not supported by your browser' } }],
-//     chain: false,
-//     reference: CURRENT_POSITION
-//   }
-// ]
-
-export const CORE_API_CLAUSES = []
+export const CORE_API_CLAUSES: Array<BaseFunctionClause<'Record'>> = [
+  {
+    name: 'CURRENT_POSITION',
+    async: true,
+    pure: false,
+    effect: false,
+    lazy: false,
+    acceptError: false,
+    testCases: [],
+    description: 'Returns current position',
+    group: 'core',
+    args: [],
+    returns: 'Record',
+    examples: [
+      {
+        input: '=CURRENT_POSITION()',
+        output: {
+          type: 'Record',
+          result: {
+            long: { result: 0, type: 'number' },
+            lat: { result: 0, type: 'number' }
+          },
+          subType: 'number'
+        }
+      }
+    ],
+    chain: false,
+    reference: CURRENT_POSITION
+  }
+]

@@ -28,6 +28,7 @@ import {
 } from './convert'
 import { devWarning } from '@brickdoc/design-system'
 import { PositionFragment } from './core'
+import { fetchResult } from '../context'
 
 const token2fragment = (token: IToken, type: FormulaType): CodeFragment => {
   return {
@@ -55,6 +56,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   blockDependencies: NamespaceId[] = []
   flattenVariableDependencies: VariableDependency[] = []
   kind: 'constant' | 'expression' = 'constant'
+  async: boolean = false
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()
@@ -530,7 +532,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           ]
 
           if (variable) {
-            firstArgumentType = variable.t.variableValue.result.type
+            firstArgumentType = fetchResult(variable.t).type
 
             if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
               finalRhsCodeFragments = [
@@ -1194,6 +1196,10 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
       if (clause.effect || !clause.pure) {
         this.kind = 'expression'
+      }
+
+      if(clause.async) {
+        this.async = true
       }
 
       const chainError: ErrorMessage[] = []

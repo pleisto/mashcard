@@ -1,4 +1,4 @@
-import { BasicFunctionClause, DateResult, StringResult, FunctionContext } from '../types'
+import { BaseFunctionClause, DateResult, StringResult, FunctionContext } from '../types'
 
 export const NOW = (ctx: FunctionContext): DateResult => ({ result: new Date(), type: 'Date' })
 
@@ -7,7 +7,7 @@ export const DATE = (ctx: FunctionContext, date: StringResult): DateResult => ({
   type: 'Date'
 })
 
-export const CORE_DATE_CLAUSES: Array<BasicFunctionClause<'Date'>> = [
+export const CORE_DATE_CLAUSES: Array<BaseFunctionClause<'Date'>> = [
   {
     name: 'NOW',
     async: false,

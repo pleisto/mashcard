@@ -1,5 +1,5 @@
-import { appendFormulas, buildVariable, interpret, parse, SuccessParseResult } from '../../grammar/core'
-import { Formula, VariableMetadata } from '../../types'
+import { appendFormulas, buildVariableSync, interpret, parse, SuccessParseResult } from '../../grammar/core'
+import { Formula, SyncVariableData, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
 describe('Context', () => {
@@ -172,15 +172,15 @@ describe('Context', () => {
       }
     })
 
-    expect(interpretResult.variableValue.success).toEqual(true)
+    expect(interpretResult.success).toEqual(true)
 
-    const variable = buildVariable({ formulaContext, meta, parseResult, interpretResult })
+    const variable = buildVariableSync({ formulaContext, meta, parseResult, interpretResult })
 
     await formulaContext.commitVariable({ variable })
 
     expect(formulaContext.variableCount()).toEqual(3)
 
-    const v = variable.t
+    const v = variable.t as SyncVariableData
 
     expect(v.variableValue.result.result).toEqual(366)
 

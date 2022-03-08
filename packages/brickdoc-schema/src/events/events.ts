@@ -71,28 +71,38 @@ export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenu
 export const FormulaKeyboardEventTrigger = event<{ key: string; formulaId: string; rootId: string }>()(
   'FormulaKeyboardEventTrigger',
   ({ key, formulaId, rootId }) => {
-    return { key, id: `${rootId},${formulaId}` }
+    return { key, formulaId, rootId, id: `${rootId},${formulaId}` }
   }
 )
 
-export const FormulaEditorClickEventTrigger = event<{ attrs: any; formulaId: string; rootId: string }>()(
-  'FormulaEditorClickEventTrigger',
+export const FormulaEditorHoverEventTrigger = event<{ attrs: any; formulaId: string; rootId: string }>()(
+  'FormulaEditorHoverEventTrigger',
   ({ attrs, formulaId, rootId }) => {
-    return { attrs, id: `${rootId},${formulaId}` }
+    return { attrs, formulaId, rootId, id: `${rootId},${formulaId}` }
   }
 )
+
+export const FormulaEditorSelectEventTrigger = event<{
+  selected: boolean
+  formulaId: string
+  rootId: string
+  parentFormulaId: string
+  parentRootId: string
+}>()('FormulaEditorSelectEventTrigger', ({ formulaId, rootId, parentFormulaId, parentRootId, selected }) => {
+  return { id: `${rootId},${formulaId}`, formulaId, rootId, parentFormulaId, parentRootId, selected }
+})
 
 export const FormulaEditorSaveEventTrigger = event<{ formulaId: string; rootId: string }>()(
   'FormulaEditorSaveEventTrigger',
   ({ formulaId, rootId }) => {
-    return { id: `${rootId},${formulaId}` }
+    return { id: `${rootId},${formulaId}`, formulaId, rootId }
   }
 )
 
 export const FormulaEditorSavedTrigger = event<{ formulaId: string; rootId: string }>()(
   'FormulaEditorSavedTrigger',
   ({ formulaId, rootId }) => {
-    return { id: `${rootId},${formulaId}` }
+    return { id: `${rootId},${formulaId}`, formulaId, rootId }
   }
 )
 
@@ -103,14 +113,14 @@ export const FormulaEditorReplaceRootTrigger = event<{
   rootId: string
   formulaId: string
 }>()('FormulaEditorReplaceRootTrigger', ({ content, position, input, formulaId, rootId }) => {
-  return { content, position, input, id: `${rootId},${formulaId}` }
+  return { content, position, input, id: `${rootId},${formulaId}`, formulaId, rootId }
 })
 
 export const FormulaCalculateTrigger = event<{
   rootId: string
   formulaId: string
 }>()('FormulaCalculateTrigger', ({ formulaId, rootId }) => {
-  return { id: `${rootId},${formulaId}` }
+  return { id: `${rootId},${formulaId}`, formulaId, rootId }
 })
 
 export interface ExplorerMenuItem {

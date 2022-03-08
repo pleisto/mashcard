@@ -49,7 +49,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
 
           return {
             'data-code': attributes.code,
-            style: `color: ${colorMeta.color}; font-family: Fira Code;`
+            style: `color: ${colorMeta.colorMain}; font-family: Fira Code;`
           }
         }
       },

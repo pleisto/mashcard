@@ -20,7 +20,9 @@ import {
   BaseFormula,
   FormulaSourceType,
   ErrorMessage,
-  NamespaceId
+  NamespaceId,
+  SyncVariableData,
+  BaseResult
 } from '../types'
 import { parse, interpret } from '../grammar/core'
 import { dumpValue, loadValue } from './persist'
@@ -28,6 +30,10 @@ import { block2name, variable2name, variableKey } from '../grammar/convert'
 import { BlockClass } from '../controls/block'
 
 export const errorIsFatal = (t: VariableData): boolean => {
+  if (t.async) {
+    return false
+  }
+
   const { success, result } = t.variableValue
   if (
     !success &&
@@ -38,6 +44,22 @@ export const errorIsFatal = (t: VariableData): boolean => {
   }
 
   return false
+}
+
+export const fetchResult = (t: VariableData): AnyTypeResult => {
+  if (t.async) {
+    return { type: 'Pending', result: 'Loading...' }
+  }
+
+  return t.variableValue.result
+}
+
+export const fetchCacheValue = (t: VariableData): BaseResult => {
+  if (t.async) {
+    return { type: 'Pending', result: 'Loading...' }
+  }
+
+  return t.variableValue.cacheValue
 }
 
 export const castVariable = (
@@ -81,6 +103,7 @@ export const castVariable = (
   return {
     namespaceId,
     variableId,
+    async: false,
     variableValue,
     name,
     cst,
@@ -96,6 +119,14 @@ export const castVariable = (
     flattenVariableDependencies,
     functionDependencies,
     dirty: true
+  }
+}
+
+const errorMessages = ({ variableValue: { result, success } }: SyncVariableData): ErrorMessage[] => {
+  if (result.type === 'Error' && !success) {
+    return [{ message: result.result, type: result.errorKind }]
+  } else {
+    return []
   }
 }
 
@@ -118,6 +149,14 @@ export class VariableClass implements VariableInterface {
 
   public clone(): VariableInterface {
     return new VariableClass({ t: this.t, formulaContext: this.formulaContext })
+  }
+
+  public subscribePromise(): void {
+    if (!this.t.async) return
+    void this.t.variableValue.then(result => {
+      this.t.variableValue = result
+      this.t.async = false
+    })
   }
 
   public clearDependency(): void {
@@ -223,7 +262,7 @@ export class VariableClass implements VariableInterface {
       type: this.t.type,
       // updatedAt: new Date().toISOString(),
       // createdAt: new Date().getTime(),
-      cacheValue: dumpValue(this.t.variableValue.cacheValue)
+      cacheValue: dumpValue(fetchCacheValue(this.t))
     }
   }
 
@@ -288,18 +327,14 @@ export class VariableClass implements VariableInterface {
     this.afterUpdate()
   }
 
-  private errorMessages(): ErrorMessage[] {
-    const { result, success } = this.t.variableValue
-    if (result.type === 'Error' && !success) {
-      return [{ message: result.result, type: result.errorKind }]
-    } else {
-      return []
-    }
-  }
-
   public async interpret(interpretContext: InterpretContext): Promise<void> {
-    const { variableValue } = await interpret({
-      parseResult: { cst: this.t.cst!, kind: this.t.kind, errorMessages: this.errorMessages() },
+    const variableValue = await interpret({
+      parseResult: {
+        cst: this.t.cst!,
+        kind: this.t.kind,
+        async: false,
+        errorMessages: errorMessages(this.t as SyncVariableData)
+      },
       ctx: {
         formulaContext: this.formulaContext,
         meta: this.meta(),
@@ -307,7 +342,7 @@ export class VariableClass implements VariableInterface {
       }
     })
 
-    this.t = { ...this.t, variableValue }
+    this.t = { ...this.t, async: false, variableValue }
   }
 
   private subscripeEvents(): void {

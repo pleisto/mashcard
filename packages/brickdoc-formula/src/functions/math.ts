@@ -1,4 +1,4 @@
-import { FunctionContext, BasicFunctionClause, NumberResult } from '../types'
+import { FunctionContext, BaseFunctionClause, NumberResult } from '../types'
 
 export const ABS = (ctx: FunctionContext, number: NumberResult): NumberResult => ({
   result: Math.abs(number.result),
@@ -53,7 +53,7 @@ export const ROUND = (ctx: FunctionContext, number: NumberResult): NumberResult 
   type: 'number'
 })
 
-export const CORE_MATH_CLAUSES: Array<BasicFunctionClause<'number'>> = [
+export const CORE_MATH_CLAUSES: Array<BaseFunctionClause<'number'>> = [
   {
     name: 'ABS',
     async: false,

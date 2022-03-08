@@ -86,6 +86,7 @@ Object {
 exports[`Dependency dependency automatic update 2`] = `
 Array [
   Object {
+    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -137,6 +138,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
@@ -290,6 +292,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
@@ -363,6 +366,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -498,6 +502,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -629,6 +634,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -822,6 +828,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1021,6 +1028,7 @@ Object {
 exports[`Dependency snapshot 2`] = `
 Array [
   Object {
+    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -1072,6 +1080,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -1123,6 +1132,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
@@ -1196,6 +1206,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1331,6 +1342,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1462,6 +1474,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1655,6 +1668,7 @@ Array [
     "version": 0,
   },
   Object {
+    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",

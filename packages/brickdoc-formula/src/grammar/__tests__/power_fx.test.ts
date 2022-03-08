@@ -103,7 +103,8 @@ describe('Power Fx Functions', () => {
     it(`[${label}] ${input}`, async () => {
       const newMeta = { ...meta, input }
       const newCtx = { ...ctx, meta: newMeta }
-      const { codeFragments, kind, cst, errorMessages } = parse({ ctx: newCtx })
+      const parseResult = parse({ ctx: newCtx })
+      const { codeFragments, errorMessages } = parseResult
       expect(codeFragments).toMatchSnapshot()
       if (error) {
         // eslint-disable-next-line jest/no-conditional-expect
@@ -112,8 +113,7 @@ describe('Power Fx Functions', () => {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(errorMessages).toEqual([])
 
-        const result = (await interpret({ parseResult: { cst, kind, errorMessages }, ctx: newCtx })).variableValue
-          .result.result
+        const result = (await interpret({ parseResult, ctx: newCtx })).result.result
         if (value === SNAPSHOT_FLAG) {
           // eslint-disable-next-line jest/no-conditional-expect
           expect(result).toMatchSnapshot()

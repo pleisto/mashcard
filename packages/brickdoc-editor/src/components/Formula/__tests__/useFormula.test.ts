@@ -1,4 +1,4 @@
-import { FormulaContext, FormulaSourceType, quickInsert, VariableMetadata } from '@brickdoc/formula'
+import { FormulaContext, FormulaSourceType, quickInsert, VariableMetadata, VariableValue } from '@brickdoc/formula'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { JSONContent } from '@tiptap/core'
 import { buildJSONContentByArray, contentArrayToInput, fetchJSONContentArray } from '../../../helpers'
@@ -388,7 +388,7 @@ describe('useFormula', () => {
         newInput ?? input
       )
 
-      const data = result.current.variableT?.variableValue.result.result
+      const data = (result.current.variableT!.variableValue as VariableValue).result.result
       if (typeof data === 'object') {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(data!.constructor.name).toEqual(resultData)
@@ -428,7 +428,7 @@ describe('useFormula', () => {
         newInput ?? input
       )
 
-      const data = result.current.variableT?.variableValue.result.result
+      const data = (result.current.variableT!.variableValue as VariableValue).result.result
       if (typeof data === 'object') {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(data!.constructor.name).toEqual(resultData)

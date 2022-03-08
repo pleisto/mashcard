@@ -1,4 +1,4 @@
-import { ArrayResult, BasicFunctionClause, CstResult, ErrorResult, FunctionContext, StringResult } from '../types'
+import { ArrayResult, BaseFunctionClause, CstResult, ErrorResult, FunctionContext, StringResult } from '../types'
 import { interpret } from '../grammar/core'
 import { extractSubType } from '../grammar/util'
 
@@ -23,8 +23,8 @@ export const Map = async (
 
   const newResult = await Promise.all(
     interpretContexts.map(async interpretContext => {
-      const { variableValue } = await interpret({
-        parseResult: { cst, kind: 'expression', errorMessages: [] },
+      const variableValue = await interpret({
+        parseResult: { cst, kind: 'expression', errorMessages: [], async: false },
         ctx: { ...ctx, interpretContext }
       })
       return variableValue.result
@@ -36,7 +36,7 @@ export const Map = async (
   return { type: 'Array', result: newResult, subType: extractSubType(newResult) }
 }
 
-export const CORE_ARRAY_CLAUSES: Array<BasicFunctionClause<'string' | 'Array'>> = [
+export const CORE_ARRAY_CLAUSES: Array<BaseFunctionClause<'string' | 'Array'>> = [
   {
     name: 'Join',
     async: false,
@@ -62,42 +62,42 @@ export const CORE_ARRAY_CLAUSES: Array<BasicFunctionClause<'string' | 'Array'>> 
     testCases: [],
     chain: true,
     reference: Join
-  },
-  {
-    name: 'Map',
-    async: false,
-    lazy: true,
-    acceptError: false,
-    pure: true,
-    effect: false,
-    description: 'Maps an array of values',
-    group: 'core',
-    args: [
-      {
-        name: 'array',
-        type: 'Array'
-      },
-      {
-        name: 'value',
-        type: 'Cst'
-      }
-    ],
-    examples: [
-      {
-        input: '=Map([1,2], "hello")',
-        output: {
-          type: 'Array',
-          subType: 'string',
-          result: [
-            { type: 'string', result: 'hello' },
-            { type: 'string', result: 'hello' }
-          ]
-        }
-      }
-    ],
-    returns: 'Array',
-    testCases: [],
-    chain: true,
-    reference: Map
   }
+  // {
+  //   name: 'Map',
+  //   async: false,
+  //   lazy: true,
+  //   acceptError: false,
+  //   pure: true,
+  //   effect: false,
+  //   description: 'Maps an array of values',
+  //   group: 'core',
+  //   args: [
+  //     {
+  //       name: 'array',
+  //       type: 'Array'
+  //     },
+  //     {
+  //       name: 'value',
+  //       type: 'Cst'
+  //     }
+  //   ],
+  //   examples: [
+  //     {
+  //       input: '=Map([1,2], "hello")',
+  //       output: {
+  //         type: 'Array',
+  //         subType: 'string',
+  //         result: [
+  //           { type: 'string', result: 'hello' },
+  //           { type: 'string', result: 'hello' }
+  //         ]
+  //       }
+  //     }
+  //   ],
+  //   returns: 'Array',
+  //   testCases: [],
+  //   chain: true,
+  //   reference: Map
+  // }
 ]
