@@ -20,7 +20,7 @@ import {
   SpreadsheetRow,
   SpreadsheetRowAction,
   SpreadsheetCellContainer,
-  SpreadsheetEditable
+  SpreadsheetColumnEditable
 } from './SpreadsheetView'
 
 import { useSpreadsheetContext } from './SpreadsheetContext'
@@ -266,16 +266,13 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                     width={columnWidths[column.uuid]}
                     setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
                   >
-                    {documentEditable ? (
-                      <SpreadsheetEditable
-                        context={spreadsheetContext}
-                        className="column"
-                        value={columnDisplayTitle(column)}
-                        onSave={handleTitleSave}
-                      />
-                    ) : (
-                      <div className="column">{columnDisplayTitle(column)}</div>
-                    )}
+                    <SpreadsheetColumnEditable
+                      context={spreadsheetContext}
+                      index={i}
+                      column={column}
+                      onSave={handleTitleSave}
+                      editable={documentEditable}
+                    />
                   </SpreadsheetHeaderColumn>
                 )
               })}

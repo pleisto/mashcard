@@ -7,6 +7,8 @@ import { useEditorI18n } from '../../hooks'
 import { MenuIcon } from '../SlashMenu/styled'
 
 import { SpreadsheetContext, SpreadsheetSelectionCellId } from './SpreadsheetContext'
+import { SpreadsheetColumn } from './useSpreadsheet'
+import { columnDisplayIndex } from './helper'
 
 /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/interactive-supports-focus,
   jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
@@ -130,7 +132,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
   const dragging = context.dragging.columnId === columnId
   const draggingOver = context.dragging.overColumnId === columnId
   const [dropdownVisible, setDropdownVisible] = React.useState(false)
-  const latestWidth = React.useRef<number>(0)
+  const latestMovement = React.useRef<number>(0)
 
   const unselectColumn = unselectFn({
     context,
@@ -156,9 +158,9 @@ export const SpreadsheetHeaderColumn: React.FC<{
   }
 
   const onResizeMouseMove = (e: MouseEvent): void => {
-    latestWidth.current += e.movementX
+    latestMovement.current += e.movementX
     if (setWidth) {
-      setWidth(latestWidth.current)
+      setWidth(latestMovement.current)
     }
   }
 
@@ -166,7 +168,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
     document.removeEventListener('mousemove', onResizeMouseMove)
     document.removeEventListener('mouseup', onResizeMouseUp)
     if (onResize) {
-      onResize(latestWidth.current)
+      onResize(latestMovement.current)
     }
   }
 
@@ -176,7 +178,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
     document.addEventListener('mousemove', onResizeMouseMove)
     document.addEventListener('mouseup', onResizeMouseUp)
     context.clearSelection()
-    latestWidth.current = width ?? columnRef.current?.clientWidth ?? 230
+    latestMovement.current = width ?? columnRef.current?.clientWidth ?? 230
   }
 
   const onContextMenu: React.MouseEventHandler = (e: React.MouseEvent): void => {
@@ -493,12 +495,13 @@ export const SpreadsheetCellContainer: React.FC<{
   )
 }
 
-export const SpreadsheetEditable: React.FC<{
+export const SpreadsheetColumnEditable: React.FC<{
   context?: SpreadsheetContext
-  className?: string
-  value?: string
+  column: SpreadsheetColumn
+  index: number
   onSave?: (value: string) => void
-}> = ({ className, value, onSave, context }) => {
+  editable?: boolean
+}> = ({ column, index, onSave, context, editable }) => {
   const [editing, setEditing] = React.useState(false)
 
   const handleEnterEdit = (): void => {
@@ -511,12 +514,20 @@ export const SpreadsheetEditable: React.FC<{
     onSave?.(e.target.value)
   }
 
+  const displayIndex = columnDisplayIndex(index)
+
   return editing ? (
     // eslint-disable-next-line jsx-a11y/no-autofocus
-    <input autoFocus className={className} defaultValue={value} onBlur={handleBlur} />
+    <input autoFocus className="column" defaultValue={column.title} onBlur={handleBlur} />
   ) : (
-    <div onDoubleClick={handleEnterEdit} className={className}>
-      {value}
+    <div className="column" onDoubleClick={editable ? handleEnterEdit : undefined}>
+      {column.title ? (
+        <>
+          <strong>{column.title}</strong> ({displayIndex})
+        </>
+      ) : (
+        displayIndex
+      )}
     </div>
   )
 }
