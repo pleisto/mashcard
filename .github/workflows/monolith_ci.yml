@@ -233,4 +233,4 @@ jobs:
         with:
           default_author: github_actions
           message: 'chore: bump schemas and dists'
-          add: 'app lib packages spec config db frontends'
+          add: 'app lib packages spec config db apps/client-web'

@@ -29,7 +29,10 @@ const websocketLink = new ActionCableLink({ cable, channelName: 'InternalGraphQL
 const brickdocLink = split(
   ({ query, operationName }) => {
     const definition = getMainDefinition(query)
-    return (definition.kind === 'OperationDefinition' && definition.operation === 'subscription') || operationName.endsWith('FromWS')
+    return (
+      (definition.kind === 'OperationDefinition' && definition.operation === 'subscription') ||
+      operationName.endsWith('FromWS')
+    )
   },
   websocketLink,
   httpLink

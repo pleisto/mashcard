@@ -1,6 +1,6 @@
 {
   "all": {
-    "sourceCodeDir": "frontends",
+    "sourceCodeDir": "apps/client-web",
     "watchAdditionalPaths": ["packages/**/*"],
     "publicOutputDir": "esm-bundle"
   },

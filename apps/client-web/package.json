@@ -1,6 +1,6 @@
 {
-  "name": "@brickdoc/client-app",
-  "description": "The client app for the Brickdoc website.",
+  "name": "@brickdoc/client-web",
+  "description": "The web client app for the Brickdoc website.",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.5.10",

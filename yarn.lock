@@ -1757,9 +1757,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/client-app@workspace:frontends":
+"@brickdoc/client-web@workspace:apps/client-web":
   version: 0.0.0-use.local
-  resolution: "@brickdoc/client-app@workspace:frontends"
+  resolution: "@brickdoc/client-web@workspace:apps/client-web"
   dependencies:
     "@apollo/client": ^3.5.10
     "@brickdoc/active-support": "workspace:^"

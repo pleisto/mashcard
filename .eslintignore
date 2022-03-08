@@ -1,4 +1,4 @@
-frontends/BrickdocGraphQL.ts
+apps/client-web/BrickdocGraphQL.ts
 packages/brickdoc-schema/src/BrickdocModels.ts
 public/vite-dev/
 public/esm-bundle/

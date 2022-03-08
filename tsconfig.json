@@ -5,7 +5,6 @@
   "exclude": [
     "packages/**/*",
     "apps/**/*",
-    "frontends/**/*",
     "tools/**/*",
     "gems/**/*",
     "dist/**/*",
@@ -13,8 +12,8 @@
     "gems/plugins/**/*"
   ],
   "references": [
+    { "path": "apps/client-web" },
     { "path": "apps/server-api" },
-    { "path": "frontends" },
     { "path": "packages/active-support" },
     { "path": "packages/brickdoc-design-icons" },
     { "path": "packages/brickdoc-design-system" },

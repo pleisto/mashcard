@@ -8,7 +8,7 @@
 db/schema.gql linguist-generated merge=ours
 db/schema.rb linguist-generated merge=ours
 db/graphql/* linguist-generated merge=ours
-frontends/BrickdocGraphQL.ts linguist-generated merge=ours
+apps/client-web/BrickdocGraphQL.ts linguist-generated merge=ours
 yarn.lock linguist-generated
 Gemfile.lock linguist-generated
 *.mdx linguist-language=TypeScript
@@ -28,5 +28,5 @@ packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
 # This way Git won't bother showing massive diffs when each time we subsequently add or update yarn & plugins:
 /.yarn/releases/** binary linguist-generated
 /.yarn/plugins/** binary linguist-generated
-/.yarn/cache/* linguist-generated filter=lfs diff=lfs merge=lfs
+/.yarn/cache/* linguist-generated
 /.vscode/*.json linguist-language=JSON5

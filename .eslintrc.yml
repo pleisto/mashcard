@@ -6,7 +6,6 @@ extends:
 parserOptions:
   project:
     - ./tsconfig.json
-    - ./frontends/tsconfig.json
     - ./tools/*/tsconfig.json
     - ./apps/*/tsconfig.json
     - ./packages/*/tsconfig.json

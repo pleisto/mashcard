@@ -12,7 +12,7 @@ ignore:
   - 'config'
   - 'templates'
   - 'packages/brickdoc-design-icons'
-  - 'frontends/BrickdocGraphQL.ts'
+  - 'apps/client-web/BrickdocGraphQL.ts'
   - 'packages/briockdoc-design-system/.storybook'
   - 'packages/brickdoc-design-system/components/*/demos'
   - '**/*.stories.*'

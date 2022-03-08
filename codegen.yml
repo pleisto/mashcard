@@ -1,10 +1,10 @@
 overwrite: true
 schema:
   - db/graphql/schema.json
-  - frontends/core/typePolicies/clientFileds.graphql
-documents: ['./frontends/**/*.graphql.ts', './frontends/**/graphql.ts']
+  - apps/client-web/core/typePolicies/clientFileds.graphql
+documents: ['./apps/client-web/**/*.graphql.ts', './apps/client-web/**/graphql.ts']
 generates:
-  ./frontends/BrickdocGraphQL.ts:
+  ./apps/client-web/BrickdocGraphQL.ts:
     plugins:
       - typescript
       - typescript-operations

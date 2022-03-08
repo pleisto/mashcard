@@ -11,18 +11,14 @@ import { useQuery, QueryHookOptions, OperationVariables, DocumentNode, QueryResu
  *   const{ data, error } = await callQuery()
  * }
  */
-export  function useImperativeQuery<
-  TData = any,
-  TVariables = OperationVariables
-  >(
+export function useImperativeQuery<TData = any, TVariables = OperationVariables>(
   query: DocumentNode,
   options: QueryHookOptions<TData, TVariables> = {}
 ): QueryResult<TData, TVariables>['refetch'] {
   const { refetch } = useQuery<TData, TVariables>(query, {
     ...options,
-    skip: true,
+    skip: true
   })
 
-
-  return async (queryVariables: TVariables) =>  await refetch(queryVariables)
+  return async (queryVariables: TVariables) => await refetch(queryVariables)
 }

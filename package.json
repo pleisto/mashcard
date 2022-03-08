@@ -5,7 +5,6 @@
   "description": "Brickdoc Monorepo Root",
   "private": true,
   "workspaces": [
-    "frontends",
     "packages/*",
     "apps/*",
     "tools/*"
