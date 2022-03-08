@@ -4,7 +4,6 @@ node_modules/
 coverage/
 storybook-static/
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins

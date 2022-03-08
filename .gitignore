@@ -19,7 +19,6 @@
 # dependencies
 node_modules
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins
