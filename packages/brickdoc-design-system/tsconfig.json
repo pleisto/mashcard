@@ -3,5 +3,8 @@
   "compilerOptions": { "outDir": "dist" },
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
-  "references": [{ "path": "../active-support" }, { "path": "../brickdoc-design-icons" }]
+  "references": [
+    { "path": "../active-support" },
+    { "path": "../brickdoc-design-icons" }
+  ]
 }

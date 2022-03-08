@@ -3,5 +3,8 @@
   "compilerOptions": { "outDir": "dist" },
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
-  "references": [{ "path": "../brickdoc-design-system" }, { "path": "../brickdoc-schema" }]
+  "references": [
+    { "path": "../brickdoc-design-system" },
+    { "path": "../brickdoc-schema" }
+  ]
 }
