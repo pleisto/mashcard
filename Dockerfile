@@ -15,7 +15,6 @@ ENV BUNDLE_WITHOUT="test development"
 COPY . .
 RUN bundle install --retry 2 --jobs 4
 
-ENV CYPRESS_INSTALL_BINARY=0
 RUN yarn install --immutable
 # set production to fixed `vite-ruby` plugin hardcode errror.
 RUN RAILS_ENV=production yarn dist

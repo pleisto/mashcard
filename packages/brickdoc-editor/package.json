@@ -10,7 +10,10 @@
   ],
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
+    "@brickdoc/design-icons": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
+    "@brickdoc/formula": "workspace:^",
+    "@brickdoc/schema": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
     "@brickdoc/uploader": "workspace:^",
     "@pdftron/webviewer": "^8.3.0",
@@ -46,14 +49,14 @@
     "react-dnd-html5-backend": "^15.1.2",
     "react-medium-image-zoom": "^4.3.5",
     "refractor": "^4.5.0",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react-pdf": "^5.0.9",
     "i18next": "^21.6.13",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.5.5"
+    "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "react": "^17.0.2",

@@ -7,5 +7,6 @@
     "strictNullChecks": false
   },
   "include": ["**/*"],
-  "exclude": ["dist/**/*"]
+  "exclude": ["dist/**/*"],
+  "references": []
 }

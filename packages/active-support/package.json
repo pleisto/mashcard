@@ -17,7 +17,8 @@
     "moize": "^6.1.0",
     "ms": "^3.0.0-canary.1",
     "neverthrow": "^4.3.1",
-    "performant-array-to-tree": "^1.11.0"
+    "performant-array-to-tree": "^1.11.0",
+    "uuid": "^8.3.2"
   },
   "sideEffects": false,
   "devDependencies": {

@@ -76,8 +76,6 @@ ehthumbs.db
 .nyc_output
 junit-reports/
 coverage/
-cypress/screenshots/
-cypress/videos/
 
 # build
 dist/

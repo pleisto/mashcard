@@ -9,6 +9,7 @@
     "dist"
   ],
   "dependencies": {
+    "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
     "@uppy/core": "^2.1.5",

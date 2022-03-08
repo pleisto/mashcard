@@ -1,52 +1,31 @@
-// tsconfig.json is for editor/eslint support, including every ts/tsx files
 {
   "extends": "./tsconfig.shared.json",
-  "compilerOptions": {
-    "outDir": "dist",
-    "strictPropertyInitialization": false,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["frontends/*"]
-    }
-  },
+  "compilerOptions": { "outDir": "dist", "baseUrl": "." },
   "include": ["**/*", "node_modules/vite-plugin-pwa/client.d.ts"],
-  "exclude": ["packages/**/*", "apps/**/*", "tools/**/*", "gems/**/*", "dist/**/*", "cypress/**/*"],
+  "exclude": [
+    "packages/**/*",
+    "apps/**/*",
+    "frontends/**/*",
+    "tools/**/*",
+    "gems/**/*",
+    "dist/**/*",
+    "spec/dummy/plugins/**/*",
+    "gems/plugins/**/*"
+  ],
   "references": [
-    {
-      "path": "packages/active-support"
-    },
-    {
-      "path": "packages/brickdoc-design-icons"
-    },
-    {
-      "path": "packages/brickdoc-design-system"
-    },
-    {
-      "path": "packages/brickdoc-editor"
-    },
-    {
-      "path": "packages/brickdoc-formula"
-    },
-    {
-      "path": "packages/brickdoc-schema"
-    },
-    {
-      "path": "packages/brickdoc-test-helper"
-    },
-    {
-      "path": "packages/brickdoc-uploader"
-    },
-    {
-      "path": "packages/cypherpunk"
-    },
-    {
-      "path": "packages/dotenv"
-    },
-    {
-      "path": "apps/server-api"
-    },
-    {
-      "path": "tools/devkit"
-    }
+    { "path": "apps/server-api" },
+    { "path": "frontends" },
+    { "path": "packages/active-support" },
+    { "path": "packages/brickdoc-design-icons" },
+    { "path": "packages/brickdoc-design-system" },
+    { "path": "packages/brickdoc-editor" },
+    { "path": "packages/brickdoc-formula" },
+    { "path": "packages/brickdoc-schema" },
+    { "path": "packages/brickdoc-test-helper" },
+    { "path": "packages/brickdoc-uploader" },
+    { "path": "packages/cypherpunk" },
+    { "path": "packages/dotenv" },
+    { "path": "spec/dummy/plugins/dummy_plugin" },
+    { "path": "tools/devkit" }
   ]
 }

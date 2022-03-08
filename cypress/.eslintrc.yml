@@ -1,3 +1,0 @@
-rules:
-  'jest/expect-expect': 'off'
-  'max-nested-callbacks': 'off'

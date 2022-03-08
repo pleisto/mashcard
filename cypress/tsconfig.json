@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "target": "ES2016",
-    "module": "CommonJS",
-    "types": ["cypress", "node", "@testing-library/cypress", "cypress-file-upload", "cypress-real-events"],
-    "esModuleInterop": true
-  },
-  "include": ["./**/*.ts"]
-}

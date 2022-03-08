@@ -1,16 +1,7 @@
 {
   "extends": "../../tsconfig.shared.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
+  "compilerOptions": { "outDir": "dist" },
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
-  "references": [
-    {
-      "path": "../brickdoc-design-icons"
-    },
-    {
-      "path": "../active-support"
-    }
-  ]
+  "references": [{ "path": "../active-support" }, { "path": "../brickdoc-design-icons" }]
 }

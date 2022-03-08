@@ -7,8 +7,5 @@
   "module": "./src/index.ts",
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "@brickdoc/test-helper": "workspace:^"
-  }
+  ]
 }

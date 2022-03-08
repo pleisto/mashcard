@@ -32,7 +32,6 @@ jobs:
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
-          CYPRESS_INSTALL_BINARY: '0'
           PATTERNS: "'!(chalk|fastify-secure-session|ms|typescript)' '@!(brickdoc|mdx-js|storybook|rails|tiptap)/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3

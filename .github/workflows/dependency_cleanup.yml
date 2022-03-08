@@ -21,8 +21,6 @@ jobs:
           cache: yarn
       - name: yarn dedupe
         run: yarn dedupe
-        env:
-          CYPRESS_INSTALL_BINARY: '0'
       - name: Create Pull Request
         if: github.ref != 'refs/heads/master'
         uses: peter-evans/create-pull-request@v3

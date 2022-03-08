@@ -1,13 +1,11 @@
 {
   "extends": "../../tsconfig.shared.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
+  "compilerOptions": { "outDir": "dist" },
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
   "references": [
-    {
-      "path": "../../packages/active-support"
-    }
+    { "path": "../../packages/active-support" },
+    { "path": "../../packages/cypherpunk" },
+    { "path": "../../packages/dotenv" }
   ]
 }

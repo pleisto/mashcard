@@ -4,7 +4,6 @@
 ##   text and leave all files detected as binary untouched.
 ##   This will handle all files NOT defined below.
 *                  text=auto
-
 .yarn/**/* linguist-vendored merge=ours
 db/schema.gql linguist-generated merge=ours
 db/schema.rb linguist-generated merge=ours
@@ -14,7 +13,6 @@ yarn.lock linguist-generated
 Gemfile.lock linguist-generated
 *.mdx linguist-language=TypeScript
 packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
-
 # Fonts
 *.ttf             binary
 *.eot             binary
@@ -27,9 +25,8 @@ packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
 *.png             binary
 *.wbmp            binary
 *.webp            binary
-
 # This way Git won't bother showing massive diffs when each time we subsequently add or update yarn & plugins:
-/.yarn/releases/** binary linguist-vendored
-/.yarn/plugins/** binary linguist-vendored
-/.yarn/cache/*     linguist-vendored
-/.vscode/*.json    linguist-language=JSON5
+/.yarn/releases/** binary linguist-generated
+/.yarn/plugins/** binary linguist-generated
+/.yarn/cache/* linguist-generated filter=lfs diff=lfs merge=lfs
+/.vscode/*.json linguist-language=JSON5

@@ -14,6 +14,7 @@ BrickDoc is an open-source human intellect application and collaboration platfor
 
 Prerequisites:
 
+- Git LFS
 - Ruby 3.0+ (we've setup `.ruby-version` to use with `rbenv`)
 - NodeJS 16+
 - Yarn

@@ -1,15 +1,8 @@
 module.exports = {
-  extends: [
-    'standard-with-typescript',
-    'plugin:import/typescript',
-    'plugin:jest/recommended',
-    'plugin:cypress/recommended',
-    'prettier'
-  ],
+  extends: ['standard-with-typescript', 'plugin:import/typescript', 'plugin:jest/recommended', 'prettier'],
   plugins: ['jest', 'import'],
   env: {
     'jest/globals': true,
-    'cypress/globals': true,
     browser: true
   },
   rules: {

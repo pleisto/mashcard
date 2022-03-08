@@ -7,8 +7,5 @@
   "module": "./src/index.ts",
   "files": [
     "dist"
-  ],
-  "devDependencies": {
-    "typescript": "^4.5.5"
-  }
+  ]
 }

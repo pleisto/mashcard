@@ -8,14 +8,8 @@
   "include": ["**/*", "**/*.json"],
   "exclude": ["dist/**/*", "*.json"],
   "references": [
-    {
-      "path": "../active-support"
-    },
-    {
-      "path": "../brickdoc-design-system"
-    },
-    {
-      "path": "../brickdoc-test-helper"
-    }
+    { "path": "../active-support" },
+    { "path": "../brickdoc-design-system" },
+    { "path": "../brickdoc-test-helper" }
   ]
 }

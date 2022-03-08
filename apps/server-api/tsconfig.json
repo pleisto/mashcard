@@ -7,11 +7,8 @@
   "include": ["**/*"],
   "exclude": ["dist/**/*"],
   "references": [
-    {
-      "path": "../../packages/active-support"
-    },
-    {
-      "path": "../../packages/dotenv"
-    }
+    { "path": "../../packages/active-support" },
+    { "path": "../../packages/cypherpunk" },
+    { "path": "../../packages/dotenv" }
   ]
 }

@@ -10,7 +10,6 @@ ignore:
   - 'db'
   - 'bin'
   - 'config'
-  - 'cypress'
   - 'templates'
   - 'packages/brickdoc-design-icons'
   - 'frontends/BrickdocGraphQL.ts'
