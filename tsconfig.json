@@ -13,6 +13,7 @@
   ],
   "references": [
     { "path": "apps/client-web" },
+    { "path": "apps/landing-page" },
     { "path": "apps/server-api" },
     { "path": "packages/active-support" },
     { "path": "packages/brickdoc-design-icons" },

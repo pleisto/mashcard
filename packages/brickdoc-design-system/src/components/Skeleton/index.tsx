@@ -17,7 +17,7 @@ const Skeleton: ForwardRefRenderFunction<unknown, SkeletonProps> = (props, ref) 
     case 'bullet-list':
       return <BulletList {...otherProps} />
     default:
-      return <ArticleSkeleton />
+      return <ArticleSkeleton {...otherProps} />
   }
 }
 

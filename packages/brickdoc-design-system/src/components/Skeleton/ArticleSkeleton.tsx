@@ -1,12 +1,10 @@
 import { FC } from 'react'
-import ContentLoader from 'react-content-loader'
+import ContentLoader, { IContentLoaderProps } from 'react-content-loader'
 
-export interface ArticleSkeletonProps {
-  width?: number
-  height?: number
-}
+export interface ArticleSkeletonProps extends IContentLoaderProps {}
+
 const ArticleSkeleton: FC<ArticleSkeletonProps> = props => {
-  const { width = 850, height = 800 } = props
+  const { width = 850, height = 800, ...otherProps } = props
 
   return (
     <ContentLoader
@@ -16,6 +14,7 @@ const ArticleSkeleton: FC<ArticleSkeletonProps> = props => {
       viewBox={`0 0 ${width} ${height}`}
       backgroundColor="#E0E0E0"
       foregroundColor="#ecebeb"
+      {...otherProps}
     >
       <rect x="42" y="57" rx="4" ry="4" width="417" height="29" />
       <rect x="42" y="105" rx="4" ry="4" width="67" height="15" />
