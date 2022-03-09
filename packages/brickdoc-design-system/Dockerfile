@@ -1,5 +1,6 @@
 FROM node:16 as build
 WORKDIR /app
+ENV NODE_OPTIONS=--max-old-space-size=5950
 # temp fixed monorepo dependency
 ADD ./ /app
 RUN yarn install && yarn design-system build-storybook

@@ -1,0 +1,55 @@
+name: E2E Testing
+on: [deployment_status]
+concurrency:
+  group: monolith-e2e-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  playwright:
+    name: Playwright Test
+    if: github.event.deployment_status.state == 'success' && (github.event.deployment_status.environment == 'pr_preview' || github.event.deployment_status.environment == 'trunk')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # run 3 copies of the current job in parallel
+        shard: [1, 2, 3]
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Run yarn install
+        run: yarn install --immutable
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install libsodium23 rustc
+      - name: Install Playwright
+        run: yarn playwright install --with-deps
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run Playwright tests
+        run: yarn test:playwright:run --shard=${{ matrix.shard }}/3
+        env:
+          NODE_OPTIONS: '--max-old-space-size=5950'
+          PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
+      - name: Fix coverage files
+        run: (find .nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn test:playwright:report
+        continue-on-error: true
+      - name: Publish Playwright code coverage reports
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: frontend-e2e
+          directory: ./coverage/playwright/
+      - name: Upload Playwright screenshots/traces/videos (when failed)
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: playwright-test-results
+          if-no-files-found: ignore
+          retention-days: 3
+          path: test-results/

@@ -1,4 +1,4 @@
-name: Destroyed Monolith Application Pull Request Preview Env
+name: Destroy PR Preview Env
 concurrency:
   group: monolith-preview-destoryed-${{ github.ref }}
 on:

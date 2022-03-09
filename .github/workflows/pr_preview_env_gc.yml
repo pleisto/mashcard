@@ -1,0 +1,35 @@
+---
+name: PR Preview Env GC
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 * * *'
+
+jobs:
+  app_engine_gc:
+    name: Garbage Collection of Unused Container
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_GLOBAL_CORP_AK }}
+          aws-secret-access-key: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
+          aws-region: us-east-1
+      - name: Update EKS configure
+        run: aws eks update-kubeconfig --name global-corp-kube
+      - name: get helm deployments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPS_PREFIX: brickdoc-preview-pr
+        run: |
+          OPENED_PR=$(gh pr list -s open --json number | jq 'map(.number)|join(",")')
+          echo "Opened PRs: $OPENED_PR"
+          OPENED_HELM=$(helm list -n cicd -f "$brickdoc-preview-pr.+" -o json  | jq "map(.name|sub(\"$APPS_PREFIX\";\"\"))|join(\",\")")
+          echo "Opened Helm releases: $OPENED_HELM"
+          jq -n -r "{gh:$OPENED_PR|split(\",\"),helm:$OPENED_HELM|split(\",\")}|.helm-.gh|map(\"$APPS_PREFIX\(.)\") |.[]" | while read i; do
+            echo "uninstall $i...."
+            helm uninstall $i -n cicd
+          done

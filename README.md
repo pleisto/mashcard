@@ -46,7 +46,7 @@ yarn commit # instead of `git commit`, equivalent to `git add . && git-cz`
 yarn lint # lint code with eslint / rubocop / brakeman / packwerk
 yarn tsc:check # run TypeScript checking
 yarn test # run tsc:check / lint / jest / rspec
-yarn test:cypress # open Cypress GUI
+yarn test:playwright # run e2e tests with playwright
 yarn cleanup # clean up all the building artifacts / intermediates
 
 # webapp

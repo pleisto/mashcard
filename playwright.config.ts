@@ -1,14 +1,16 @@
 import { devices, PlaywrightTestConfig } from '@playwright/test'
+import isCI from 'is-ci'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
   testDir: './e2e-testing/tests',
-  forbidOnly: Boolean(process.env.CI),
+  forbidOnly: isCI,
   retries: 2,
-  reporter: process.env.CI ? 'dot' : 'list',
+  reporter: isCI ? [['dot'], ['github']] : 'list',
   use: {
+    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure'
@@ -33,10 +35,12 @@ const config: PlaywrightTestConfig = {
       }
     }
   ],
-  webServer: {
-    command: 'COLLECT_COVERAGE=1 yarn dist && RAILS_ENV=test ./bin/rails server',
-    port: 3000
-  }
+  webServer: !isCI
+    ? {
+        command: 'NODE_ENV=test RAILS_ENV=test yarn dist && RAILS_ENV=test ./bin/rails server',
+        port: 3000
+      }
+    : undefined
 }
 
 // eslint-disable-next-line import/no-default-export

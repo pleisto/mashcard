@@ -1,6 +1,6 @@
 # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idsteps
 ---
-name: Monolith Application CI
+name: CI
 concurrency:
   group: monolith-ci-${{ github.ref }}
   cancel-in-progress: true
@@ -9,7 +9,7 @@ on:
     # Make sure same as push
     paths-ignore:
       - .github/**
-      - '!.github/workflow/monolith_ci.yml'
+      - '!.github/workflow/ci.yml'
       - .husky/**
       - packages/eslint-plugin-brickdoc/**
       - gems/rubocop-brickdoc/**
@@ -20,7 +20,7 @@ on:
     # Make sure same as pull_request
     paths-ignore:
       - .github/**
-      - '!.github/workflow/monolith_ci.yml'
+      - '!.github/workflow/ci.yml'
       - .husky/**
       - packages/eslint-plugin-brickdoc/**
       - gems/rubocop-brickdoc/**
@@ -88,42 +88,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: frontend-unit
-  # cache_dist:
-  #   name: Cache Frontend Dist
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout the codebase
-  #       uses: actions/checkout@v3
-  #     - name: Setup NodeJS
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 16
-  #         cache: yarn
-  #     - name: Run yarn install
-  #       run: yarn install --immutable
-  #     - name: Install Dependencies
-  #       run: sudo apt-get update && sudo apt-get install libsodium23 rustc
-  #     - name: Setup Ruby
-  #       uses: ruby/setup-ruby@v1
-  #       with:
-  #         ruby-version: 3.0.2
-  #         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-  #     - name: Dist Russian doll caching
-  #       id: cache-dist-doll
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: public
-  #         key: ${{ secrets.CACHE_VERSION }}-${{ github.ref }}-public-doll
-  #     - name: Cache Dist
-  #       id: cache-dist
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: public
-  #         key: ${{ secrets.CACHE_VERSION }}-${{ github.sha }}-public
-  #     - name: build frontend dist
-  #       run: yarn dist:prod
-  #       env:
-  #         NODE_OPTIONS: '--max-old-space-size=5950'
+          directory: ./coverage/jest/
   rspec_and_dump_schema:
     name: Rails RSpec & Schema Dump
     runs-on: ubuntu-latest
@@ -163,7 +128,7 @@ jobs:
             Gemfile.lock
             **/*.rb
             **/*.gemspec
-      - name: Install Dependencies
+      - name: Install dependencies
         if: steps.changed-ruby-files.outputs.any_changed == 'true'
         run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Setup Ruby
@@ -205,6 +170,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: backend-unit
+          directory: ./coverage/rspec/
       - name: Get changed database migrations
         id: changed-db-migrations
         uses: tj-actions/changed-files@v17.2

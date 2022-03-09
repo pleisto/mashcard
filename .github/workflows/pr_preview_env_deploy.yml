@@ -1,4 +1,4 @@
-name: Create Monolith Application Pull Request Preview Env
+name: Deploy PR Preview Env
 concurrency:
   group: monolith-preview-env-${{ github.ref }}
   cancel-in-progress: true
@@ -75,7 +75,7 @@ jobs:
     name: 'Deployment to BAE'
     environment:
       name: pr_preview
-      url: ${{ env.domain }}
+      url: https://${{ env.domain }}/
     runs-on: ubuntu-latest
     needs: build
     steps:

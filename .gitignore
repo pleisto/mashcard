@@ -75,6 +75,7 @@ ehthumbs.db
 .nyc_output
 junit-reports/
 coverage/
+test-results/
 
 # build
 dist/
@@ -93,5 +94,3 @@ node_modules
 # Pdftron
 /public/pdftron
 /public/pdfjs
-test-results/
-playwright-report/
