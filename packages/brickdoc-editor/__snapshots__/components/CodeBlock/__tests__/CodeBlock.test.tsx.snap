@@ -6,34 +6,12 @@ exports[`CodeBlock matches snapshot correctly 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <div
-    class="brd-c-bfhcug brd-c-bfhcug-iRIwWx-disabled-true"
-  >
-    <pre>
-      <code
-        as="code"
-        data-node-view-content=""
-        style="white-space: pre-wrap;"
-      />
-    </pre>
-    <div
-      aria-haspopup="dialog"
-      class="brd-c-iAZzvg"
-      contenteditable="false"
-      data-drag-handle="true"
-      draggable="true"
-    >
-      <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
-        role="button"
-        tabindex="0"
-        type="button"
-      >
-        <i
-          data-testid="mock-icon-DragSecondary"
-        />
-      </button>
-    </div>
-  </div>
+  <pre>
+    <code
+      as="code"
+      data-node-view-content=""
+      style="white-space: pre-wrap;"
+    />
+  </pre>
 </div>
 `;

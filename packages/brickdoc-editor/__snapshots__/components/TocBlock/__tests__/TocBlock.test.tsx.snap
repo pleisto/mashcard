@@ -6,218 +6,196 @@ exports[`TocBlock matches correct snapshot 1`] = `
   style="pointer-events: none; white-space: normal;"
 >
   <div
-    class="brd-c-bfhcug brd-c-bfhcug-iRIwWx-disabled-true"
+    class="brd-c-exlRqC brd-c-exlRqC-ikPUvHx-css"
+    role="presentation"
   >
     <div
-      class="brd-c-exlRqC brd-c-exlRqC-ikPUvHx-css"
-      role="presentation"
+      class="brd-c-ihePFc"
     >
       <div
-        class="brd-c-ihePFc"
+        class="brd-c-lnjkAt"
+        data-testid="editor-toc-block-item-id"
+        role="menuitem"
       >
-        <div
-          class="brd-c-lnjkAt"
-          data-testid="editor-toc-block-item-id"
-          role="menuitem"
+        <span
+          class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
+          data-testid="editor-toc-block-item-title"
         >
-          <span
-            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
-            data-testid="editor-toc-block-item-title"
-          >
-            <i
-              data-testid="mock-icon-ArrowFilleRight"
-            />
-            h1
-          </span>
+          <i
+            data-testid="mock-icon-ArrowFilleRight"
+          />
+          h1
+        </span>
+        <div
+          class="brd-c-iIBnpv"
+          data-testid="editor-toc-block-item-content-panel"
+        >
           <div
-            class="brd-c-iIBnpv"
-            data-testid="editor-toc-block-item-content-panel"
+            class="brd-c-lnjkAt"
+            data-testid="editor-toc-block-item-id"
+            role="menuitem"
           >
-            <div
-              class="brd-c-lnjkAt"
-              data-testid="editor-toc-block-item-id"
-              role="menuitem"
+            <span
+              class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
+              data-testid="editor-toc-block-item-title"
             >
-              <span
-                class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
-                data-testid="editor-toc-block-item-title"
-              >
-                <i
-                  data-testid="mock-icon-ArrowFilleRight"
-                />
-                h2
-              </span>
+              <i
+                data-testid="mock-icon-ArrowFilleRight"
+              />
+              h2
+            </span>
+            <div
+              class="brd-c-iIBnpv"
+              data-testid="editor-toc-block-item-content-panel"
+            >
               <div
-                class="brd-c-iIBnpv"
-                data-testid="editor-toc-block-item-content-panel"
+                class="brd-c-lnjkAt"
+                data-testid="editor-toc-block-item-id"
+                role="menuitem"
               >
-                <div
-                  class="brd-c-lnjkAt"
-                  data-testid="editor-toc-block-item-id"
-                  role="menuitem"
+                <span
+                  class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
+                  data-testid="editor-toc-block-item-title"
                 >
-                  <span
-                    class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
-                    data-testid="editor-toc-block-item-title"
-                  >
-                    h5\`
-                  </span>
-                  <div
-                    class="brd-c-iIBnpv"
-                    data-testid="editor-toc-block-item-content-panel"
-                  />
-                </div>
+                  h5\`
+                </span>
+                <div
+                  class="brd-c-iIBnpv"
+                  data-testid="editor-toc-block-item-content-panel"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="brd-c-lnjkAt"
-          data-testid="editor-toc-block-item-id"
-          role="menuitem"
+      </div>
+      <div
+        class="brd-c-lnjkAt"
+        data-testid="editor-toc-block-item-id"
+        role="menuitem"
+      >
+        <span
+          class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
+          data-testid="editor-toc-block-item-title"
         >
-          <span
-            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
-            data-testid="editor-toc-block-item-title"
-          >
-            <i
-              data-testid="mock-icon-ArrowFilleRight"
-            />
-            h1\`
-          </span>
+          <i
+            data-testid="mock-icon-ArrowFilleRight"
+          />
+          h1\`
+        </span>
+        <div
+          class="brd-c-iIBnpv"
+          data-testid="editor-toc-block-item-content-panel"
+        >
           <div
-            class="brd-c-iIBnpv"
-            data-testid="editor-toc-block-item-content-panel"
+            class="brd-c-lnjkAt"
+            data-testid="editor-toc-block-item-id"
+            role="menuitem"
           >
-            <div
-              class="brd-c-lnjkAt"
-              data-testid="editor-toc-block-item-id"
-              role="menuitem"
+            <span
+              class="brd-c-jXsEGA brd-c-jXsEGA-jpNsBQ-level-3"
+              data-testid="editor-toc-block-item-title"
             >
-              <span
-                class="brd-c-jXsEGA brd-c-jXsEGA-jpNsBQ-level-3"
-                data-testid="editor-toc-block-item-title"
-              >
-                <i
-                  data-testid="mock-icon-ArrowFilleRight"
-                />
-                h3
-              </span>
+              <i
+                data-testid="mock-icon-ArrowFilleRight"
+              />
+              h3
+            </span>
+            <div
+              class="brd-c-iIBnpv"
+              data-testid="editor-toc-block-item-content-panel"
+            >
               <div
-                class="brd-c-iIBnpv"
-                data-testid="editor-toc-block-item-content-panel"
+                class="brd-c-lnjkAt"
+                data-testid="editor-toc-block-item-id"
+                role="menuitem"
               >
-                <div
-                  class="brd-c-lnjkAt"
-                  data-testid="editor-toc-block-item-id"
-                  role="menuitem"
+                <span
+                  class="brd-c-jXsEGA brd-c-jXsEGA-gsgpPJ-level-4"
+                  data-testid="editor-toc-block-item-title"
                 >
-                  <span
-                    class="brd-c-jXsEGA brd-c-jXsEGA-gsgpPJ-level-4"
-                    data-testid="editor-toc-block-item-title"
-                  >
-                    <i
-                      data-testid="mock-icon-ArrowFilleRight"
-                    />
-                    h4
-                  </span>
+                  <i
+                    data-testid="mock-icon-ArrowFilleRight"
+                  />
+                  h4
+                </span>
+                <div
+                  class="brd-c-iIBnpv"
+                  data-testid="editor-toc-block-item-content-panel"
+                >
                   <div
-                    class="brd-c-iIBnpv"
-                    data-testid="editor-toc-block-item-content-panel"
+                    class="brd-c-lnjkAt"
+                    data-testid="editor-toc-block-item-id"
+                    role="menuitem"
                   >
-                    <div
-                      class="brd-c-lnjkAt"
-                      data-testid="editor-toc-block-item-id"
-                      role="menuitem"
+                    <span
+                      class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
+                      data-testid="editor-toc-block-item-title"
                     >
-                      <span
-                        class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
-                        data-testid="editor-toc-block-item-title"
-                      >
-                        h5
-                      </span>
-                      <div
-                        class="brd-c-iIBnpv"
-                        data-testid="editor-toc-block-item-content-panel"
-                      />
-                    </div>
+                      h5
+                    </span>
+                    <div
+                      class="brd-c-iIBnpv"
+                      data-testid="editor-toc-block-item-content-panel"
+                    />
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="brd-c-lnjkAt"
-              data-testid="editor-toc-block-item-id"
-              role="menuitem"
+          </div>
+          <div
+            class="brd-c-lnjkAt"
+            data-testid="editor-toc-block-item-id"
+            role="menuitem"
+          >
+            <span
+              class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
+              data-testid="editor-toc-block-item-title"
             >
-              <span
-                class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
-                data-testid="editor-toc-block-item-title"
-              >
-                <i
-                  data-testid="mock-icon-ArrowFilleRight"
-                />
-                blocks.toc.untitled
-              </span>
+              <i
+                data-testid="mock-icon-ArrowFilleRight"
+              />
+              blocks.toc.untitled
+            </span>
+            <div
+              class="brd-c-iIBnpv"
+              data-testid="editor-toc-block-item-content-panel"
+            >
               <div
-                class="brd-c-iIBnpv"
-                data-testid="editor-toc-block-item-content-panel"
+                class="brd-c-lnjkAt"
+                data-testid="editor-toc-block-item-id"
+                role="menuitem"
               >
-                <div
-                  class="brd-c-lnjkAt"
-                  data-testid="editor-toc-block-item-id"
-                  role="menuitem"
+                <span
+                  class="brd-c-jXsEGA brd-c-jXsEGA-cvEtFL-level-text"
+                  data-testid="editor-toc-block-item-title"
                 >
-                  <span
-                    class="brd-c-jXsEGA brd-c-jXsEGA-cvEtFL-level-text"
-                    data-testid="editor-toc-block-item-title"
-                  >
-                    anchor
-                  </span>
-                  <div
-                    class="brd-c-iIBnpv"
-                    data-testid="editor-toc-block-item-content-panel"
-                  />
-                </div>
+                  anchor
+                </span>
+                <div
+                  class="brd-c-iIBnpv"
+                  data-testid="editor-toc-block-item-content-panel"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="brd-c-lnjkAt"
-          data-testid="editor-toc-block-item-id"
-          role="menuitem"
-        >
-          <span
-            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
-            data-testid="editor-toc-block-item-title"
-          >
-            h1\`\`
-          </span>
-          <div
-            class="brd-c-iIBnpv"
-            data-testid="editor-toc-block-item-content-panel"
-          />
-        </div>
       </div>
-    </div>
-    <div
-      aria-haspopup="dialog"
-      class="brd-c-iAZzvg"
-      contenteditable="false"
-      data-drag-handle="true"
-      draggable="true"
-    >
-      <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
-        role="button"
-        tabindex="0"
-        type="button"
+      <div
+        class="brd-c-lnjkAt"
+        data-testid="editor-toc-block-item-id"
+        role="menuitem"
       >
-        <i
-          data-testid="mock-icon-DragSecondary"
+        <span
+          class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
+          data-testid="editor-toc-block-item-title"
+        >
+          h1\`\`
+        </span>
+        <div
+          class="brd-c-iIBnpv"
+          data-testid="editor-toc-block-item-content-panel"
         />
-      </button>
+      </div>
     </div>
   </div>
 </div>

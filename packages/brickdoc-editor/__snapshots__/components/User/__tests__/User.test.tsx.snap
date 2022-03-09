@@ -6,53 +6,31 @@ exports[`User matches correct snapshot 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <div
-    class="brd-c-bfhcug brd-c-bfhcug-iRIwWx-disabled-true"
+  <span
+    class="brd-c-bbClCh"
+    contenteditable="false"
   >
+     
+  </span>
+  <span>
     <span
-      class="brd-c-bbClCh"
-      contenteditable="false"
+      class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-lhlSdI-size-sm brd-c-cdJFWN-idZPaNd-css brickdoc-user-block-avatar"
     >
-       
-    </span>
-    <span>
-      <span
-        class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-lhlSdI-size-sm brd-c-cdJFWN-idZPaNd-css brickdoc-user-block-avatar"
-      >
-        <img
-          src="avatarUrl"
-        />
-      </span>
-      <span
-        class="brickdoc-user-block-name"
-      >
-        name
-      </span>
+      <img
+        src="avatarUrl"
+      />
     </span>
     <span
-      class="brd-c-bbClCh"
-      contenteditable="false"
+      class="brickdoc-user-block-name"
     >
-       
+      name
     </span>
-    <div
-      aria-haspopup="dialog"
-      class="brd-c-iAZzvg"
-      contenteditable="false"
-      data-drag-handle="true"
-      draggable="true"
-    >
-      <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
-        role="button"
-        tabindex="0"
-        type="button"
-      >
-        <i
-          data-testid="mock-icon-DragSecondary"
-        />
-      </button>
-    </div>
-  </div>
+  </span>
+  <span
+    class="brd-c-bbClCh"
+    contenteditable="false"
+  >
+     
+  </span>
 </span>
 `;

@@ -5,58 +5,36 @@ exports[`EmbedBlock matches correct snapshot 1`] = `
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"
 >
-  <div
-    class="brd-c-bfhcug brd-c-bfhcug-iRIwWx-disabled-true"
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brickdoc-link-block-link"
+    data-testid="editor-embed-block-link"
+    role="button"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brickdoc-link-block-link"
-      data-testid="editor-embed-block-link"
-      role="button"
-      tabindex="0"
-      type="button"
-    >
-      <div
-        class="link-block-cover"
-        style="background-image: url(cover);"
-      />
-      <div
-        class="link-block-content"
-      >
-        <div
-          class="link-block-title"
-        >
-          brickdoc
-        </div>
-        <div
-          class="link-block-description"
-        >
-          desc
-        </div>
-        <div
-          class="link-block-url"
-        >
-          https://www.brickdoc.com
-        </div>
-      </div>
-    </button>
     <div
-      aria-haspopup="dialog"
-      class="brd-c-iAZzvg"
-      contenteditable="false"
-      data-drag-handle="true"
-      draggable="true"
+      class="link-block-cover"
+      style="background-image: url(cover);"
+    />
+    <div
+      class="link-block-content"
     >
-      <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
-        role="button"
-        tabindex="0"
-        type="button"
+      <div
+        class="link-block-title"
       >
-        <i
-          data-testid="mock-icon-DragSecondary"
-        />
-      </button>
+        brickdoc
+      </div>
+      <div
+        class="link-block-description"
+      >
+        desc
+      </div>
+      <div
+        class="link-block-url"
+      >
+        https://www.brickdoc.com
+      </div>
     </div>
-  </div>
+  </button>
 </div>
 `;

@@ -6,184 +6,162 @@ exports[`ImageBlock matches correct snapshot 1`] = `
   style="pointer-events: none; white-space: normal;"
 >
   <div
-    class="brd-c-bfhcug brd-c-bfhcug-iRIwWx-disabled-true"
+    class="brickdoc-block-image-section-container"
+    role="cell"
   >
     <div
-      class="brickdoc-block-image-section-container"
-      role="cell"
+      class="image-section-control-panel"
+      style="position: relative; user-select: auto; width: 700px; height: auto; max-width: 100%; min-width: 40px; box-sizing: border-box; flex-shrink: 0;"
     >
       <div
-        class="image-section-control-panel"
-        style="position: relative; user-select: auto; width: 700px; height: auto; max-width: 100%; min-width: 40px; box-sizing: border-box; flex-shrink: 0;"
+        data-rmiz-wrap="visible"
+        style="pointer-events: none; width: 100%;"
       >
-        <div
-          data-rmiz-wrap="visible"
-          style="pointer-events: none; width: 100%;"
+        <svg
+          aria-labelledby="image-block-skeleton-image-uuid-aria"
+          role="img"
+          style="width: 700px; height: 700px;"
+          viewBox="0 0 400 110"
         >
-          <svg
-            aria-labelledby="image-block-skeleton-image-uuid-aria"
-            role="img"
-            style="width: 700px; height: 700px;"
-            viewBox="0 0 400 110"
+          <title
+            id="image-block-skeleton-image-uuid-aria"
           >
-            <title
-              id="image-block-skeleton-image-uuid-aria"
+            Loading...
+          </title>
+          <rect
+            clip-path="url(#image-block-skeleton-image-uuid-diff)"
+            height="100%"
+            role="presentation"
+            style="fill: url(#image-block-skeleton-image-uuid-animated-diff);"
+            width="100%"
+            x="0"
+            y="0"
+          />
+          <defs>
+            <clippath
+              id="image-block-skeleton-image-uuid-diff"
             >
-              Loading...
-            </title>
-            <rect
-              clip-path="url(#image-block-skeleton-image-uuid-diff)"
-              height="100%"
-              role="presentation"
-              style="fill: url(#image-block-skeleton-image-uuid-animated-diff);"
-              width="100%"
-              x="0"
-              y="0"
-            />
-            <defs>
-              <clippath
-                id="image-block-skeleton-image-uuid-diff"
+              <rect
+                height="10"
+                rx="3"
+                ry="3"
+                width="250"
+                x="0"
+                y="0"
+              />
+              <rect
+                height="10"
+                rx="3"
+                ry="3"
+                width="220"
+                x="20"
+                y="20"
+              />
+              <rect
+                height="10"
+                rx="3"
+                ry="3"
+                width="170"
+                x="20"
+                y="40"
+              />
+              <rect
+                height="10"
+                rx="3"
+                ry="3"
+                width="250"
+                x="0"
+                y="60"
+              />
+              <rect
+                height="10"
+                rx="3"
+                ry="3"
+                width="200"
+                x="20"
+                y="80"
+              />
+              <rect
+                height="10"
+                rx="3"
+                ry="3"
+                width="80"
+                x="20"
+                y="100"
+              />
+            </clippath>
+            <lineargradient
+              id="image-block-skeleton-image-uuid-animated-diff"
+            >
+              <stop
+                offset="0%"
+                stop-color="#f5f6f7"
+                stop-opacity="1"
               >
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="250"
-                  x="0"
-                  y="0"
+                <animate
+                  attributeName="offset"
+                  dur="1.2s"
+                  keyTimes="0; 0.25; 1"
+                  repeatCount="indefinite"
+                  values="-2; -2; 1"
                 />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="220"
-                  x="20"
-                  y="20"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="170"
-                  x="20"
-                  y="40"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="250"
-                  x="0"
-                  y="60"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="200"
-                  x="20"
-                  y="80"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="80"
-                  x="20"
-                  y="100"
-                />
-              </clippath>
-              <lineargradient
-                id="image-block-skeleton-image-uuid-animated-diff"
+              </stop>
+              <stop
+                offset="50%"
+                stop-color="#eee"
+                stop-opacity="1"
               >
-                <stop
-                  offset="0%"
-                  stop-color="#f5f6f7"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="-2; -2; 1"
-                  />
-                </stop>
-                <stop
-                  offset="50%"
-                  stop-color="#eee"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="-1; -1; 2"
-                  />
-                </stop>
-                <stop
-                  offset="100%"
-                  stop-color="#f5f6f7"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="0; 0; 3"
-                  />
-                </stop>
-              </lineargradient>
-            </defs>
-          </svg>
-          <img
-            alt=""
-            class="brickdoc-block-image loading"
-            data-testid="editor-image-block-image"
-            role="img"
-            src="https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80"
-          />
-          <button
-            aria-label="Zoom image"
-            data-rmiz-btn-open="true"
-            type="button"
-          />
-        </div>
+                <animate
+                  attributeName="offset"
+                  dur="1.2s"
+                  keyTimes="0; 0.25; 1"
+                  repeatCount="indefinite"
+                  values="-1; -1; 2"
+                />
+              </stop>
+              <stop
+                offset="100%"
+                stop-color="#f5f6f7"
+                stop-opacity="1"
+              >
+                <animate
+                  attributeName="offset"
+                  dur="1.2s"
+                  keyTimes="0; 0.25; 1"
+                  repeatCount="indefinite"
+                  values="0; 0; 3"
+                />
+              </stop>
+            </lineargradient>
+          </defs>
+        </svg>
+        <img
+          alt=""
+          class="brickdoc-block-image loading"
+          data-testid="editor-image-block-image"
+          role="img"
+          src="https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80"
+        />
         <button
-          class="image-section-zoom-in-button"
-          data-testid="editor-image-block-zoom-in-button"
+          aria-label="Zoom image"
+          data-rmiz-btn-open="true"
+          type="button"
         />
-        <div>
-          <div
-            class="image-section-control-left-drag"
-            style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; left: 8px; cursor: col-resize;"
-          />
-          <div
-            class="image-section-control-right-drag"
-            style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; right: 8px; cursor: col-resize;"
-          />
-        </div>
       </div>
-    </div>
-    <div
-      aria-haspopup="dialog"
-      class="brd-c-iAZzvg"
-      contenteditable="false"
-      data-drag-handle="true"
-      draggable="true"
-    >
       <button
-        class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV brd-c-PJLV-ivBjhy-size-sm"
-        role="button"
-        tabindex="0"
-        type="button"
-      >
-        <i
-          data-testid="mock-icon-DragSecondary"
+        class="image-section-zoom-in-button"
+        data-testid="editor-image-block-zoom-in-button"
+      />
+      <div>
+        <div
+          class="image-section-control-left-drag"
+          style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; left: 8px; cursor: col-resize;"
         />
-      </button>
+        <div
+          class="image-section-control-right-drag"
+          style="position: absolute; user-select: none; width: 6px; height: 40px; top: 50%; right: 8px; cursor: col-resize;"
+        />
+      </div>
     </div>
   </div>
 </div>
