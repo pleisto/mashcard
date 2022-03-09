@@ -3,10 +3,10 @@ import { FormulaSpreadsheet } from '../Render/FormulaSpreadsheet'
 
 export interface SpreadsheetPreviewProps {
   spreadsheet: SpreadsheetType
-  blockId: string
+  rootId: string
 }
 
-export const SpreadsheetPreview: React.FC<SpreadsheetPreviewProps> = ({ spreadsheet, blockId }) => {
+export const SpreadsheetPreview: React.FC<SpreadsheetPreviewProps> = ({ spreadsheet, rootId }) => {
   return (
     <div className="brickdoc">
       <div className="ProseMirror">

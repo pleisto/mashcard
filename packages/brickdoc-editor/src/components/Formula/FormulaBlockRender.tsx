@@ -9,9 +9,10 @@ import { FormulaEditor } from '../../extensions/formula/FormulaEditor/FormulaEdi
 import { BrickdocEventBus, FormulaEditorSaveEventTrigger } from '@brickdoc/schema'
 import { AutocompleteList } from './AutocompleteList/AutocompleteList'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
-
+import * as Sentry from '@sentry/react'
 export interface FormulaBlockRenderProps {
   formulaId: string
+  display: string
   formulaName: string
   formulaType: FormulaSourceType
   rootId: string
@@ -24,6 +25,7 @@ export interface FormulaBlockRenderProps {
 export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
   formulaId,
   rootId,
+  display,
   formulaName,
   formulaType,
   saveOnBlur,
@@ -33,29 +35,35 @@ export const FormulaBlockRender: React.FC<FormulaBlockRenderProps> = ({
 }) => {
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext
-  const { variableT, editorContent, handleSelectActiveCompletion, completion, setCompletion, updateEditor } =
-    useFormula({
-      rootId,
-      formulaId,
-      updateFormula,
-      formulaType,
-      formulaName,
-      formulaContext
+  const { variableT, editorContent, completion, updateEditor } = useFormula({
+    rootId,
+    formulaId,
+    updateFormula,
+    formulaType,
+    formulaName,
+    formulaContext
+  })
+
+  if (!variableT && display) {
+    Sentry.withScope(scope => {
+      const error = new Error(`Variable is undefined`)
+      scope.setExtra('display', display)
+      scope.setExtra('formulaId', formulaId)
+      scope.setExtra('rootId', rootId)
+      scope.setExtra('formulaName', formulaName)
+      error.message = `Variable is undefined`
+      Sentry.captureException(error)
     })
+  }
 
   const formulaResult = React.useMemo(
     () => (
       <div className="brickdoc-formula-menu">
         <FormulaResult variableT={variableT} pageId={rootId} />
-        <AutocompleteList
-          blockId={rootId}
-          completion={completion}
-          handleSelectActiveCompletion={handleSelectActiveCompletion}
-          setCompletion={setCompletion}
-        />
+        <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
       </div>
     ),
-    [completion, handleSelectActiveCompletion, rootId, setCompletion, variableT]
+    [completion, formulaId, rootId, variableT]
   )
 
   const onEditorBlur = React.useCallback((): void => {

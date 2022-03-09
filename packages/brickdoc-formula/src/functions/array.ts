@@ -1,5 +1,5 @@
 import { ArrayResult, BaseFunctionClause, CstResult, ErrorResult, FunctionContext, StringResult } from '../types'
-import { interpret } from '../grammar/core'
+import { innerInterpret } from '../grammar/core'
 import { extractSubType } from '../grammar/util'
 
 export const Join = (
@@ -23,7 +23,7 @@ export const Map = async (
 
   const newResult = await Promise.all(
     interpretContexts.map(async interpretContext => {
-      const variableValue = await interpret({
+      const variableValue = await innerInterpret({
         parseResult: { cst, kind: 'expression', errorMessages: [], async: false },
         ctx: { ...ctx, interpretContext }
       })

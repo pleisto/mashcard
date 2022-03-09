@@ -1,4 +1,4 @@
-import { parse, interpret } from '../core'
+import { parse, innerInterpret } from '../core'
 import { FormulaContext } from '../../context'
 import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass, Cell } from '../../controls'
 import { VariableMetadata } from '../..'
@@ -207,7 +207,7 @@ describe('Spreadsheet Functions', () => {
       const { codeFragments, errorMessages } = parseResult
       expect(errorMessages).toEqual([])
       expect(codeFragments).toMatchSnapshot()
-      const result = (await interpret({ parseResult, ctx: newCtx })).result.result
+      const result = (await innerInterpret({ parseResult, ctx: newCtx })).result.result
       if (value === SNAPSHOT_FLAG) {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(result).toMatchSnapshot()

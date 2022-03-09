@@ -1,4 +1,4 @@
-import { parse, interpret } from '../core'
+import { parse, innerInterpret } from '../core'
 import { FormulaContext } from '../../context/context'
 import { BaseFunctionClause, NumberResult, VariableMetadata } from '../../types'
 import { quickInsert } from '../testHelper'
@@ -79,7 +79,7 @@ describe('Custom Function', () => {
     const parseResult = parse({ ctx: finalCtx })
     const { success, cst } = parseResult
     expect(success).toEqual(true)
-    const result = await interpret({ parseResult, ctx: finalCtx })
+    const result = await innerInterpret({ parseResult, ctx: finalCtx })
     expect(result.result.result).toEqual(2)
     expect(cst).toMatchSnapshot()
   })
@@ -129,7 +129,7 @@ describe('Custom Function', () => {
     const parseResult = parse({ ctx: finalCtx })
     const { success } = parseResult
     expect(success).toEqual(true)
-    expect((await interpret({ parseResult, ctx: finalCtx })).result.result).toEqual(42)
+    expect((await innerInterpret({ parseResult, ctx: finalCtx })).result.result).toEqual(42)
   })
 })
 
@@ -150,7 +150,7 @@ describe('Context', () => {
     expect(errorMessages).toEqual([])
     expect(
       (
-        await interpret({
+        await innerInterpret({
           parseResult,
           ctx: { meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })
@@ -167,7 +167,7 @@ describe('Context', () => {
     expect(errorMessages).toEqual([])
     expect(
       (
-        await interpret({
+        await innerInterpret({
           parseResult,
           ctx: { meta: newMeta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })
@@ -216,7 +216,7 @@ describe('Context', () => {
     const parseResult = parse({ ctx: finalCtx })
     const { errorMessages } = parseResult
     expect(errorMessages).toEqual([])
-    expect((await interpret({ parseResult, ctx: finalCtx })).result.result).toEqual(34)
+    expect((await innerInterpret({ parseResult, ctx: finalCtx })).result.result).toEqual(34)
   })
 
   it('Type', () => {

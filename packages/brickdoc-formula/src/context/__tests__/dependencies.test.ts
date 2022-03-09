@@ -1,5 +1,5 @@
 /* eslint-disable max-nested-callbacks */
-import { buildVariableSync, interpret, parse, SuccessParseResult } from '../../grammar/core'
+import { interpretSync, parse, SuccessParseResult } from '../../grammar/core'
 import { quickInsert } from '../../grammar/testHelper'
 import { VariableMetadata, VariableValue } from '../../types'
 import { FormulaContext } from '../context'
@@ -76,7 +76,8 @@ describe('Dependency', () => {
       Object.values(formulaContext.context).map(v => ({
         ...v.t,
         cst: null,
-        variableValue: { ...v.t.variableValue, updatedAt: null }
+        execEndTime: null,
+        execStartTime: null
       }))
     ).toMatchSnapshot()
   })
@@ -152,17 +153,13 @@ describe('Dependency', () => {
     }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } }) as SuccessParseResult
     expect(parseResult.errorMessages).toEqual([])
-    const interpretResult = await interpret({
-      parseResult,
-      ctx: {
-        formulaContext,
-        meta,
-        interpretContext: { ctx: {}, arguments: [] }
-      }
-    })
-    expect(interpretResult.success).toEqual(true)
+    const ctx = {
+      formulaContext,
+      meta,
+      interpretContext: { ctx: {}, arguments: [] }
+    }
 
-    const variable = buildVariableSync({ formulaContext, meta, parseResult, interpretResult })
+    const variable = await interpretSync({ ctx, parseResult })
     await formulaContext.commitVariable({ variable })
 
     expect(
@@ -176,7 +173,8 @@ describe('Dependency', () => {
       Object.values(formulaContext.context).map(v => ({
         ...v.t,
         cst: null,
-        variableValue: { ...v.t.variableValue, updatedAt: null }
+        execStartTime: null,
+        execEndTime: null
       }))
     ).toMatchSnapshot()
   })

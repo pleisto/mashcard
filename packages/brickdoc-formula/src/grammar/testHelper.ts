@@ -1,6 +1,6 @@
 import { VariableData, FunctionContext } from '../types'
 import { VariableClass } from '../context/variable'
-import { interpret, parse } from './core'
+import { innerInterpret, parse } from './core'
 
 export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<void> => {
   const {
@@ -25,13 +25,15 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
   if (!success) {
     throw new Error(errorMessages[0]!.message)
   }
-
-  const variableValue = await interpret({ parseResult, ctx })
+  const execStartTime = new Date()
+  const variableValue = await innerInterpret({ parseResult, ctx })
 
   const variable: VariableData = {
     namespaceId,
     variableId,
     name,
+    execStartTime,
+    execEndTime: new Date(),
     dirty: true,
     valid: true,
     definition: input,

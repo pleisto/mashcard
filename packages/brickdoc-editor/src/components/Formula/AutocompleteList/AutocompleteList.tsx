@@ -10,11 +10,11 @@ import { ColumnPreview } from '../Preview/ColumnPreview'
 import { SpreadsheetPreview } from '../Preview/SpreadsheetPreview'
 import { FunctionPreview } from '../Preview/FunctionPreview'
 import { VariablePreview } from '../Preview/VariablePreview'
+import { BrickdocEventBus, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
 export interface AutocompleteListProps {
-  blockId: string
-  handleSelectActiveCompletion: () => void
+  rootId: string
+  formulaId: string
   completion: CompletionType
-  setCompletion: React.Dispatch<React.SetStateAction<CompletionType>>
 }
 
 const ICON_META: { [key in CompletionKind]: React.ReactElement } = {
@@ -25,12 +25,7 @@ const ICON_META: { [key in CompletionKind]: React.ReactElement } = {
   variable: <Icon.Formula />
 }
 
-export const AutocompleteList: React.FC<AutocompleteListProps> = ({
-  blockId,
-  completion,
-  setCompletion,
-  handleSelectActiveCompletion
-}) => {
+export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, formulaId, completion }) => {
   if (completion.kind === 'Completion' && !completion.completions.length) {
     return <></>
   }
@@ -39,55 +34,32 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
 
   switch (completion.activeCompletion?.kind) {
     case 'block':
-      preview = <BlockPreview block={completion.activeCompletion.preview} blockId={blockId} />
+      preview = <BlockPreview block={completion.activeCompletion.preview} rootId={rootId} />
       break
     case 'column':
-      preview = <ColumnPreview column={completion.activeCompletion.preview} blockId={blockId} />
+      preview = <ColumnPreview column={completion.activeCompletion.preview} rootId={rootId} />
       break
     case 'spreadsheet':
-      preview = <SpreadsheetPreview spreadsheet={completion.activeCompletion.preview} blockId={blockId} />
+      preview = <SpreadsheetPreview spreadsheet={completion.activeCompletion.preview} rootId={rootId} />
       break
     case 'function':
-      preview = <FunctionPreview functionClause={completion.activeCompletion.preview} blockId={blockId} />
+      preview = <FunctionPreview functionClause={completion.activeCompletion.preview} rootId={rootId} />
       break
     case 'variable':
-      preview = <VariablePreview variable={completion.activeCompletion.preview} blockId={blockId} />
+      preview = <VariablePreview variable={completion.activeCompletion.preview} rootId={rootId} />
       break
   }
 
   const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = event => {
-    let newIndex: number
-
-    switch (event.key) {
-      case 'Tab':
-        handleSelectActiveCompletion()
-        break
-      case 'Enter':
-        handleSelectActiveCompletion()
-        break
-      case 'ArrowDown':
-        newIndex =
-          completion.activeCompletionIndex + 1 > completion.completions.length - 1
-            ? 0
-            : completion.activeCompletionIndex + 1
-        setCompletion(c => ({ ...c, activeCompletionIndex: newIndex, activeCompletion: c.completions[newIndex] }))
-        break
-      case 'ArrowUp':
-        newIndex =
-          completion.activeCompletionIndex - 1 < 0
-            ? completion.completions.length - 1
-            : completion.activeCompletionIndex - 1
-        setCompletion(c => ({ ...c, activeCompletionIndex: newIndex, activeCompletion: c.completions[newIndex] }))
-        break
-    }
+    BrickdocEventBus.dispatch(
+      FormulaKeyboardEventTrigger({ key: event.key, formulaId, rootId, isEditor: false, completionIndex: -1 })
+    )
   }
 
-  const handleOnClick = (c: Completion, index: number): void => {
-    if (index === completion.activeCompletionIndex) {
-      handleSelectActiveCompletion()
-    } else {
-      setCompletion(com => ({ ...com, activeCompletion: c, activeCompletionIndex: index }))
-    }
+  const handleOnClick = (index: number): void => {
+    BrickdocEventBus.dispatch(
+      FormulaKeyboardEventTrigger({ key: 'Click', formulaId, rootId, isEditor: false, completionIndex: index })
+    )
   }
 
   return (
@@ -100,17 +72,15 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({
               <div
                 role="button"
                 tabIndex={-1}
-                onClick={() => handleOnClick(c, index)}
+                onClick={() => handleOnClick(index)}
                 key={index}
                 onKeyDown={onKeyDown}
-                className={cx('autocomplete-list-item', {
-                  active: c.value === completion.activeCompletion?.value
-                })}>
+                className={cx('autocomplete-list-item', { active: index === completion.activeCompletionIndex })}>
                 {React.cloneElement(icon, { className: 'autocomplete-list-item-icon' })}
                 <div className="autocomplete-list-item-content">
                   <span className="autocomplete-list-item-name">{c.name}</span>
                   <span className="autocomplete-list-item-desc">
-                    {c.kind} {c.renderDescription(blockId)}
+                    {c.kind} {c.renderDescription(rootId)}
                   </span>
                 </div>
               </div>

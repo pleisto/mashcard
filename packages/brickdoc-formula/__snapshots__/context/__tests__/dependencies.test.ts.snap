@@ -113,6 +113,8 @@ Array [
     "cst": null,
     "definition": "=1",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "kind": "constant",
@@ -133,7 +135,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -252,6 +253,8 @@ Array [
     "cst": null,
     "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.num0 * 2 + 100",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -287,7 +290,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -326,6 +328,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num0\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -361,7 +365,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -446,6 +449,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
     "dirty": true,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -497,7 +502,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -582,6 +586,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num0\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -629,7 +635,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -760,6 +765,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num3\\" + #CurrentBlock.\\"num0\\" + #CurrentBlock.\\"num2\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -823,7 +830,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -908,6 +914,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
     "dirty": true,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -963,7 +971,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1055,6 +1062,8 @@ Array [
     "cst": null,
     "definition": "=1",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "kind": "constant",
@@ -1075,7 +1084,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1107,6 +1115,8 @@ Array [
     "cst": null,
     "definition": "=2",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "kind": "constant",
@@ -1127,7 +1137,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1166,6 +1175,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num0\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1201,7 +1212,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1286,6 +1296,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1337,7 +1349,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1422,6 +1433,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num0\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1469,7 +1482,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1600,6 +1612,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num3\\" + #CurrentBlock.\\"num0\\" + #CurrentBlock.\\"num2\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1663,7 +1677,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },
@@ -1748,6 +1761,8 @@ Array [
     "cst": null,
     "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
     "dirty": false,
+    "execEndTime": null,
+    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1803,7 +1818,6 @@ Array [
         "type": "number",
       },
       "success": true,
-      "updatedAt": null,
     },
     "version": 0,
   },

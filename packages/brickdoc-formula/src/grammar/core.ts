@@ -7,7 +7,6 @@ import {
   VariableData,
   VariableDependency,
   VariableKind,
-  VariableMetadata,
   VariableValue,
   VariableInterface,
   Completion,
@@ -79,7 +78,6 @@ export interface ErrorParseResult extends BaseParseResult {
 }
 
 export type ParseResult = SuccessParseResult | ErrorParseResult | LiteralParseResult
-export type InterpretResult = VariableValue
 
 export interface PositionFragment {
   readonly tokenIndex: number
@@ -505,7 +503,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   }
 }
 
-export const interpret = async ({
+export const innerInterpret = async ({
   parseResult: { cst, kind, errorMessages, async },
   ctx
 }: {
@@ -516,12 +514,11 @@ export const interpret = async ({
     async: boolean
   }
   ctx: FunctionContext
-}): Promise<InterpretResult> => {
+}): Promise<VariableValue> => {
   if (errorMessages.length > 0) {
     const result: ErrorResult = { result: errorMessages[0].message, type: 'Error', errorKind: errorMessages[0].type }
     return {
       success: false,
-      updatedAt: new Date(),
       cacheValue: result,
       result
     }
@@ -531,7 +528,6 @@ export const interpret = async ({
   //   const result: PendingResult = { type: 'Pending', result: `Pending: ${ctx.meta.input}` }
   //   return {
   //     success: true,
-  //     updatedAt: new Date(),
   //     cacheValue: result,
   //     result
   //   }
@@ -540,7 +536,6 @@ export const interpret = async ({
     const result: StringResult = { type: 'string', result: ctx.meta.input }
     return {
       success: true,
-      updatedAt: new Date(),
       cacheValue: result,
       result
     }
@@ -553,7 +548,6 @@ export const interpret = async ({
 
     return {
       success: true,
-      updatedAt: new Date(),
       cacheValue: result,
       result
     }
@@ -561,7 +555,6 @@ export const interpret = async ({
     console.error(e)
     const message = `[FATAL] ${(e as any).message as string}`
     return {
-      updatedAt: new Date(),
       success: false,
       cacheValue: { result: message, type: 'Error', errorKind: 'fatal' },
       result: { result: message, type: 'Error', errorKind: 'fatal' }
@@ -569,10 +562,16 @@ export const interpret = async ({
   }
 }
 
-export const buildVariableSync = ({
-  formulaContext,
-  meta: { name, input, namespaceId, variableId, type },
-  parseResult: {
+export const interpretSync = async ({
+  variable,
+  ctx,
+  parseResult
+}: {
+  variable?: VariableInterface
+  ctx: FunctionContext
+  parseResult: ParseResult
+}): Promise<VariableInterface> => {
+  const {
     valid,
     cst,
     kind,
@@ -583,17 +582,20 @@ export const buildVariableSync = ({
     functionDependencies,
     blockDependencies,
     flattenVariableDependencies
-  },
-  interpretResult
-}: {
-  formulaContext: ContextInterface
-  meta: VariableMetadata
-  parseResult: ParseResult
-  interpretResult: InterpretResult
-}): VariableInterface => {
+  } = parseResult
+  const {
+    formulaContext,
+    meta: { name, input, namespaceId, variableId, type }
+  } = ctx
+  const execStartTime = new Date()
+  const interpretResult = await innerInterpret({ parseResult, ctx })
+  const execEndTime = new Date()
+
   const t: VariableData = {
     namespaceId,
     variableId,
+    execStartTime,
+    execEndTime,
     name,
     cst,
     type,
@@ -611,14 +613,19 @@ export const buildVariableSync = ({
     blockDependencies,
     functionDependencies
   }
-  return generateVariable(formulaContext, t, undefined)
+  return generateVariable(formulaContext, t, variable)
 }
 
-export const buildVariableAsync = ({
+export const interpretAsync = ({
   variable,
-  formulaContext,
-  meta: { name, input, namespaceId, variableId, type },
-  parseResult: {
+  ctx,
+  parseResult
+}: {
+  variable?: VariableInterface
+  ctx: FunctionContext
+  parseResult: ParseResult
+}): VariableInterface => {
+  const {
     valid,
     cst,
     kind,
@@ -629,18 +636,19 @@ export const buildVariableAsync = ({
     functionDependencies,
     blockDependencies,
     flattenVariableDependencies
-  },
-  interpretResult
-}: {
-  variable: VariableInterface | undefined
-  formulaContext: ContextInterface
-  meta: VariableMetadata
-  parseResult: ParseResult
-  interpretResult: Promise<InterpretResult>
-}): VariableInterface => {
+  } = parseResult
+  const {
+    formulaContext,
+    meta: { name, input, namespaceId, variableId, type }
+  } = ctx
+  const execStartTime = new Date()
+  const interpretResult = innerInterpret({ parseResult, ctx })
+
   const t: VariableData = {
     namespaceId,
     variableId,
+    execStartTime,
+    execEndTime: undefined,
     name,
     cst,
     type,

@@ -516,17 +516,16 @@ export class FormulaInterpreter extends BaseCstVisitor {
             return true
           }
 
-          if (['constant', 'unknown'].includes(variable.t.kind)) {
-            if (variable.t.async) {
-              result = (await variable.t.variableValue).result
-            } else {
-              result = variable.t.variableValue.result
-            }
-            return true
+          // if (['constant', 'unknown'].includes(variable.t.kind)) {
+          if (variable.t.async) {
+            result = (await variable.t.variableValue).result
+          } else {
+            result = variable.t.variableValue.result
           }
-
-          result = this.visit(variable.t.cst!, args)
           return true
+
+          // result = this.visit(variable.t.cst!, args)
+          // return true
         }
 
         if (result.type === 'Spreadsheet') {

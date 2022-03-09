@@ -578,7 +578,6 @@ export interface VariableNameDependency {
 }
 
 interface BaseVariableValue {
-  updatedAt: Date
   readonly success: boolean
   readonly result: AnyTypeResult
   readonly cacheValue: BaseResult
@@ -608,6 +607,8 @@ export interface VariableDisplayData {
 export interface BaseVariableData {
   definition: Definition
   async: boolean
+  execStartTime: Date
+  execEndTime: Date | undefined
   variableValue: VariableValue | Promise<VariableValue>
   kind: VariableKind
   type: FormulaSourceType
@@ -629,11 +630,13 @@ export interface BaseVariableData {
 export interface SyncVariableData extends BaseVariableData {
   async: false
   variableValue: VariableValue
+  execEndTime: Date
 }
 
 export interface AsyncVariableData extends BaseVariableData {
   async: true
   variableValue: Promise<VariableValue>
+  execEndTime: undefined
 }
 
 export type VariableData = SyncVariableData | AsyncVariableData

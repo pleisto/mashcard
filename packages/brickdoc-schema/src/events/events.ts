@@ -68,12 +68,15 @@ export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenu
   return { key }
 })
 
-export const FormulaKeyboardEventTrigger = event<{ key: string; formulaId: string; rootId: string }>()(
-  'FormulaKeyboardEventTrigger',
-  ({ key, formulaId, rootId }) => {
-    return { key, formulaId, rootId, id: `${rootId},${formulaId}` }
-  }
-)
+export const FormulaKeyboardEventTrigger = event<{
+  key: string
+  formulaId: string
+  rootId: string
+  completionIndex: number
+  isEditor: boolean
+}>()('FormulaKeyboardEventTrigger', ({ key, formulaId, rootId, isEditor, completionIndex }) => {
+  return { key, formulaId, rootId, isEditor, completionIndex, id: `${rootId},${formulaId}` }
+})
 
 export const FormulaEditorHoverEventTrigger = event<{ attrs: any; formulaId: string; rootId: string }>()(
   'FormulaEditorHoverEventTrigger',

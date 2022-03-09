@@ -4,10 +4,10 @@ import { codeFragmentsToJSONContentTotal } from '../../../helpers'
 
 export interface FunctionPreviewProps {
   functionClause: FunctionClause<FormulaType>
-  blockId: string
+  rootId: string
 }
 
-export const FunctionPreview: React.FC<FunctionPreviewProps> = ({ functionClause, blockId }) => {
+export const FunctionPreview: React.FC<FunctionPreviewProps> = ({ functionClause, rootId }) => {
   return (
     <div className="formula-autocomplete-preview-function">
       <div className="autocomplete-preview-name">

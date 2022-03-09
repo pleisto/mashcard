@@ -25,7 +25,9 @@ const formulaHandleKeyDown: ({
 
     if (['Enter', 'Tab', 'ArrowUp', 'ArrowDown'].includes(key)) {
       if (rootId && formulaId) {
-        BrickdocEventBus.dispatch(FormulaKeyboardEventTrigger({ key, formulaId, rootId }))
+        BrickdocEventBus.dispatch(
+          FormulaKeyboardEventTrigger({ key, formulaId, rootId, isEditor: true, completionIndex: -1 })
+        )
       }
       return true
     }

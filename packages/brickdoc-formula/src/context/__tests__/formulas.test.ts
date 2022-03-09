@@ -32,7 +32,8 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        variableValue: { ...t.variableValue, updatedAt: null }
+        execStartTime: null,
+        execEndTime: null
       }
     })
     expect(value).toMatchSnapshot()
@@ -82,7 +83,8 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        variableValue: { ...t.variableValue, updatedAt: null }
+        execStartTime: null,
+        execEndTime: null
       }
     })
     expect(value).toMatchSnapshot()
@@ -121,7 +123,8 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        variableValue: { ...t.variableValue, updatedAt: null }
+        execStartTime: null,
+        execEndTime: null
       }
     })
     expect(value).toMatchSnapshot()
@@ -156,7 +159,8 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        variableValue: { ...t.variableValue, updatedAt: null }
+        execStartTime: null,
+        execEndTime: null
       }
     })
     expect(value).toMatchSnapshot()

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable jest/no-conditional-expect */
-import { interpret, parse } from '../../grammar/core'
+import { innerInterpret, parse } from '../../grammar/core'
 import { FormulaContext, FORMULA_FEATURE_CONTROL } from '../../context'
 import { quickInsert } from '../../grammar/testHelper'
 import { VariableMetadata } from '../..'
@@ -175,7 +175,7 @@ describe('Controls', () => {
       expect(errorMessages[0]?.message).toEqual(parseErrorMessage)
 
       if (success) {
-        const variableValue = await interpret({
+        const variableValue = await innerInterpret({
           parseResult,
           ctx: { meta, formulaContext, interpretContext: { ctx: {}, arguments: [] } }
         })

@@ -56,25 +56,6 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     )
   }
 
-  if (formulaType === 'normal') {
-    // TODO error and pending hover
-    if (result.type === 'Error') {
-      return (
-        <span {...props} className="brickdoc-formula-error">
-          <Icon.Formula className="brickdoc-formula-error-icon" />
-        </span>
-      )
-    }
-
-    if (result.type === 'Pending') {
-      return (
-        <span {...props} className="brickdoc-formula-pending">
-          <Icon.Formula className="brickdoc-formula-pending-icon" />
-        </span>
-      )
-    }
-  }
-
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const editorDataSource = React.useContext(EditorDataSourceContext)
   const formulaContext = editorDataSource.formulaContext!

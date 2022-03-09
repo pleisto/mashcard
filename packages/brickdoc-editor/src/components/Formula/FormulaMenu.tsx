@@ -23,9 +23,7 @@ export interface FormulaMenuProps {
   editorContent: EditorContentType
   isDisableSave: () => boolean
   doHandleSave: () => Promise<void>
-  handleSelectActiveCompletion: () => void
   completion: CompletionType
-  setCompletion: React.Dispatch<React.SetStateAction<CompletionType>>
 }
 
 const i18nKey = 'formula.menu'
@@ -44,9 +42,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   defaultName,
   nameRef,
   updateEditor,
-  handleSelectActiveCompletion,
-  completion,
-  setCompletion
+  completion
 }) => {
   const { t } = useEditorI18n()
   const [visible, setVisible] = React.useState(defaultVisible)
@@ -140,12 +136,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       </div>
       <div className="formula-divider" />
       <FormulaResult variableT={variableT} pageId={rootId} />
-      <AutocompleteList
-        blockId={rootId}
-        completion={completion}
-        handleSelectActiveCompletion={handleSelectActiveCompletion}
-        setCompletion={setCompletion}
-      />
+      <AutocompleteList rootId={rootId} formulaId={formulaId} completion={completion} />
       <div className="formula-menu-footer">
         <Button className="formula-menu-button" size="sm" type="text" onClick={handleCancel}>
           {t(`${i18nKey}.cancel`)}
@@ -155,7 +146,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="primary"
           onClick={handleSave}
-          disabled={isDisableSave()}>
+          disabled={isDisableSave()}
+        >
           {t(`${i18nKey}.save`)}
         </Button>
         <Button
@@ -163,7 +155,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
           size="sm"
           type="text"
           danger={true}
-          onClick={() => handleDelete(variableT!)}>
+          onClick={() => handleDelete(variableT!)}
+        >
           {t(`${i18nKey}.delete`)}
         </Button>
       </div>
@@ -179,7 +172,8 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
       destroyTooltipOnHide={true}
       content={menu}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {children}
     </Popover>
   )

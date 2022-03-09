@@ -24,7 +24,7 @@ import {
   SyncVariableData,
   BaseResult
 } from '../types'
-import { parse, interpret } from '../grammar/core'
+import { parse, innerInterpret } from '../grammar/core'
 import { dumpValue, loadValue } from './persist'
 import { block2name, variable2name, variableKey } from '../grammar/convert'
 import { BlockClass } from '../controls/block'
@@ -88,13 +88,11 @@ export const castVariable = (
 
   const variableValue: VariableValue = success
     ? {
-        updatedAt: new Date(),
         success: true,
         result: castedValue,
         cacheValue
       }
     : {
-        updatedAt: new Date(),
         success: false,
         result: { type: 'Error', result: errorMessages[0]!.message, errorKind: errorMessages[0]!.type },
         cacheValue
@@ -104,6 +102,8 @@ export const castVariable = (
     namespaceId,
     variableId,
     async: false,
+    execStartTime: new Date(),
+    execEndTime: new Date(),
     variableValue,
     name,
     cst,
@@ -154,8 +154,7 @@ export class VariableClass implements VariableInterface {
   public subscribePromise(): void {
     if (!this.t.async) return
     void this.t.variableValue.then(result => {
-      this.t.variableValue = result
-      this.t.async = false
+      this.t = { ...this.t, variableValue: result, async: false, execEndTime: new Date() }
     })
   }
 
@@ -260,8 +259,6 @@ export class VariableClass implements VariableInterface {
       name: this.t.name,
       version: this.t.version,
       type: this.t.type,
-      // updatedAt: new Date().toISOString(),
-      // createdAt: new Date().getTime(),
       cacheValue: dumpValue(fetchCacheValue(this.t))
     }
   }
@@ -328,7 +325,8 @@ export class VariableClass implements VariableInterface {
   }
 
   public async interpret(interpretContext: InterpretContext): Promise<void> {
-    const variableValue = await interpret({
+    const execStartTime = new Date()
+    const variableValue = await innerInterpret({
       parseResult: {
         cst: this.t.cst!,
         kind: this.t.kind,
@@ -342,7 +340,7 @@ export class VariableClass implements VariableInterface {
       }
     })
 
-    this.t = { ...this.t, async: false, variableValue }
+    this.t = { ...this.t, async: false, variableValue, execStartTime, execEndTime: new Date() }
   }
 
   private subscripeEvents(): void {

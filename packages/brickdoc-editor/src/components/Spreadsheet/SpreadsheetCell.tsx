@@ -157,6 +157,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     return (
       <FormulaBlockRender
         saveOnBlur={true}
+        display={currentBlock.text}
         formulaName={formulaName}
         rootId={rootId}
         formulaId={formulaId}

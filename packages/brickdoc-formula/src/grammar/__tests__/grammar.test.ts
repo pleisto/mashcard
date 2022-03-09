@@ -1,5 +1,5 @@
 /* eslint-disable jest/no-conditional-expect */
-import { parse, interpret } from '../core'
+import { parse, innerInterpret } from '../core'
 import { FunctionContext, ParseErrorType, VariableMetadata } from '../../types'
 import { FormulaContext } from '../../context/context'
 import { quickInsert } from '../testHelper'
@@ -1085,7 +1085,7 @@ describe('Simple test case', () => {
       }
 
       if (value !== undefined) {
-        const variableValue = await interpret({ parseResult, ctx: { ...ctx, meta: newMeta } })
+        const variableValue = await innerInterpret({ parseResult, ctx: { ...ctx, meta: newMeta } })
 
         expect(errorMessages).toEqual([])
 

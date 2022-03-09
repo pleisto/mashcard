@@ -36,9 +36,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     updateEditor,
     defaultName,
     editorContent,
-    handleSelectActiveCompletion,
-    completion,
-    setCompletion
+    completion
   } = useFormula({
     rootId,
     formulaId,
@@ -79,9 +77,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       defaultName={defaultName}
       nameRef={nameRef}
       completion={completion}
-      handleSelectActiveCompletion={handleSelectActiveCompletion}
-      setCompletion={setCompletion}
-      handleDelete={handleDelete}>
+      handleDelete={handleDelete}
+    >
       {renderData}
     </FormulaMenu>
   )

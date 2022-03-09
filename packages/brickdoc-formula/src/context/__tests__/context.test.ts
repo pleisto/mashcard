@@ -1,4 +1,4 @@
-import { appendFormulas, buildVariableSync, interpret, parse, SuccessParseResult } from '../../grammar/core'
+import { appendFormulas, interpretSync, parse, SuccessParseResult } from '../../grammar/core'
 import { Formula, SyncVariableData, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
@@ -162,19 +162,13 @@ describe('Context', () => {
     const parseResult = parse(parseInput) as SuccessParseResult
 
     expect(parseResult.success).toEqual(true)
+    const ctx = {
+      formulaContext,
+      meta,
+      interpretContext: { ctx: {}, arguments: [] }
+    }
 
-    const interpretResult = await interpret({
-      parseResult,
-      ctx: {
-        formulaContext,
-        meta,
-        interpretContext: { ctx: {}, arguments: [] }
-      }
-    })
-
-    expect(interpretResult.success).toEqual(true)
-
-    const variable = buildVariableSync({ formulaContext, meta, parseResult, interpretResult })
+    const variable = await interpretSync({ ctx, parseResult })
 
     await formulaContext.commitVariable({ variable })
 
@@ -184,7 +178,7 @@ describe('Context', () => {
 
     expect(v.variableValue.result.result).toEqual(366)
 
-    expect({ ...v, variableValue: { ...v.variableValue, updatedAt: null } }).toMatchSnapshot()
+    expect({ ...v, execStartTime: null, execEndTime: null }).toMatchSnapshot()
     expect(formulaContext.reverseFunctionDependencies).toMatchSnapshot()
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
 

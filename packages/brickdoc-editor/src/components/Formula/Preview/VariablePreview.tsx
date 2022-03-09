@@ -5,10 +5,10 @@ import { FormulaValue } from '../FormulaValue'
 
 export interface VariablePreviewProps {
   variable: VariableInterface
-  blockId: string
+  rootId: string
 }
 
-export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, blockId }) => {
+export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, rootId }) => {
   const content = variable.t.valid
     ? codeFragmentsToJSONContentTotal(variable.t.codeFragments)
     : { type: 'doc', content: [{ type: 'text', text: variable.t.definition }] }
@@ -31,7 +31,7 @@ export const VariablePreview: React.FC<VariablePreviewProps> = ({ variable, bloc
         <span className="autocomplete-preview-output-tag">
           <FormulaValue
             displayData={dumpDisplayResultForDisplay(variable.t)}
-            display={displayValue(fetchResult(variable.t), blockId)}
+            display={displayValue(fetchResult(variable.t), rootId)}
           />
         </span>
       </div>
