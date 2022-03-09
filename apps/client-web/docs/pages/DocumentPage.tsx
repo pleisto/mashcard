@@ -82,6 +82,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   const redirectPersonalSpacePath = `/${docMeta.personalDomain}`
 
+  if (data === undefined) {
+    return null
+  }
+
   if (!docMeta.viewable || (docMeta.isAnonymous && !data?.childrenBlocks?.length)) {
     return <Navigate to={redirectPersonalSpacePath} />
     // return <Alert message="TODO Page not found" type="error" />
