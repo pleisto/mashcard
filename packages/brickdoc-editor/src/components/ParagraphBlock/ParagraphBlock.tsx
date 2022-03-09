@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, useMemo } from 'react'
 import { NodeViewContent, NodeViewProps } from '@tiptap/react'
 import { css, theme } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
@@ -21,15 +21,16 @@ const placeholderStyle = css({
   }
 })
 
-const Paragraph: React.FC<ParagraphBlockProps> = ({ node, getPos, editor }) => {
+const Paragraph: FC<ParagraphBlockProps> = ({ node, getPos, editor }) => {
   const [placeholder] = usePlaceholder(editor, node, getPos)
-  const placeholderClassName = React.useMemo(() => placeholderStyle().className, [])
+  const placeholderClassName = useMemo(() => placeholderStyle().className, [])
 
   return <NodeViewContent draggable={false} data-placeholder={placeholder} as="p" className={placeholderClassName} />
 }
 
 export const ParagraphBlock: React.FC<ParagraphBlockProps> = props => {
   const { node, getPos, deleteNode } = props
+
   return (
     <BlockContainer
       getPos={getPos}

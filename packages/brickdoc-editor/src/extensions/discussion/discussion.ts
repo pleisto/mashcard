@@ -1,8 +1,9 @@
 import { Mark, mergeAttributes } from '@tiptap/core'
+import { Plugin, PluginKey } from 'prosemirror-state'
 import { uuid } from '@brickdoc/active-support'
+import { BrickdocEventBus, DiscussionMarkActive } from '@brickdoc/schema'
+import { MARK_CLASS_NAME, MARK_ID_ATTR_NAME, focusDiscussionMark } from '../../helpers/discussion'
 import { name } from './name'
-
-const MARK_CLASS_NAME = 'brickdoc-discussion-mark'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -18,17 +19,23 @@ export interface DiscussionOptions {}
 export const DiscussionMark = Mark.create<DiscussionOptions>({
   name,
 
+  // check for focused discussion mark
+  onSelectionUpdate() {
+    const node = this.editor.view.domAtPos(this.editor.state.selection.anchor).node
+    focusDiscussionMark(node)
+  },
+
   addAttributes() {
     return {
       markId: {
-        parseHTML: element => element.getAttribute('mark-id'),
+        parseHTML: element => element.getAttribute(MARK_ID_ATTR_NAME),
         renderHTML: attributes => {
           if (!attributes.markId) {
             return {}
           }
 
           return {
-            'mark-id': attributes.markId
+            [MARK_ID_ATTR_NAME]: attributes.markId
           }
         }
       }
@@ -56,5 +63,23 @@ export const DiscussionMark = Mark.create<DiscussionOptions>({
           return commands.setMark(this.name, { markId: uuid() })
         }
     }
+  },
+
+  addProseMirrorPlugins() {
+    return [
+      new Plugin({
+        key: new PluginKey('discussionMarkEvents'),
+        props: {
+          handleClick: (view, pos, event) => {
+            // check if click event occurred on discussion mark
+            const mark = (event.target as HTMLElement)?.closest('mark')
+            if (mark?.classList.contains(MARK_CLASS_NAME)) {
+              BrickdocEventBus.dispatch(DiscussionMarkActive({ markId: mark.getAttribute(MARK_ID_ATTR_NAME) }))
+            }
+            return false
+          }
+        }
+      })
+    ]
   }
 })

@@ -159,6 +159,14 @@
       background-color: inherit;
       border-bottom: 2px solid var(--brd-colors-blue3);
       color: inherit;
+      outline: none;
+
+      &.brickdoc-discussion-mark-active,
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: var(--brd-colors-secondarySelected);
+      }
     }
 
     a.brickdoc-link {

@@ -212,7 +212,7 @@ export const DocumentContentPage: React.FC = () => {
               <DocumentTopBar docMeta={docMeta} />
             </header>
           )}
-          <article>
+          <article id="article">
             {docMeta.id && (
               <DocumentPage
                 docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
@@ -221,7 +221,7 @@ export const DocumentContentPage: React.FC = () => {
             )}
           </article>
         </main>
-        <aside>
+        <aside id="aside">
           <ExplorerMenu />
         </aside>
       </Root.Layout>

@@ -7,8 +7,12 @@ describe('ParagraphBlock', () => {
   it(`matches snapshot correctly`, () => {
     const props: any = {
       editor: {
-        on() {},
-        off() {},
+        on() {
+          return props.editor
+        },
+        off() {
+          return props.editor
+        },
         state: {
           selection: {
             anchor: 1
@@ -36,8 +40,12 @@ describe('ParagraphBlock', () => {
   it(`shows placeholder normally`, () => {
     const props: any = {
       editor: {
-        on() {},
-        off() {},
+        on() {
+          return props.editor
+        },
+        off() {
+          return props.editor
+        },
         state: {
           selection: {
             anchor: 1

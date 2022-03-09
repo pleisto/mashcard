@@ -187,7 +187,7 @@ export const tabsStyle = css({
     position: 'relative',
     border: 0,
     fontSize: theme.fontSizes.subHeadline,
-    color: theme.colors.typePrimary,
+    color: theme.colors.typeSecondary,
     margin: 0,
     padding: `${theme.space.sm} 0`,
     marginRight: theme.space.xxl,

@@ -614,6 +614,11 @@ en-US:
   editor:
     placeholder: Type '/' for commands
     copy_hint: Copied to clipboard.
+    discussion:
+      title: Comments
+      tabs:
+        all: All
+        resolved: Resolved
     toolbar:
       separator: Menu separator
     blocks:
