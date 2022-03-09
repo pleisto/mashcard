@@ -59,7 +59,7 @@
     "@storybook/theming": "^6.5.0-alpha.42",
     "@types/react-transition-group": "^4.4.4",
     "babel-loader": "^8.2.3",
-    "i18next": "^21.6.13",
+    "i18next": "^21.6.14",
     "react": "^17.0.2",
     "react-colorful": "^5.5.1",
     "react-dom": "^17.0.2",
