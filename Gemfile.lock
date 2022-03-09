@@ -280,6 +280,9 @@ GEM
     graphql-fragment_cache (1.11.0)
       graphql (>= 1.12.0)
       ruby-next (>= 0.10.0)
+    grpc (1.43.1)
+      google-protobuf (~> 3.18)
+      googleapis-common-protos-types (~> 1.0)
     grpc (1.43.1-universal-darwin)
       google-protobuf (~> 3.18)
       googleapis-common-protos-types (~> 1.0)
@@ -335,6 +338,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.15.0)
     miscreant (0.3.0)
     msgpack (1.4.5)
@@ -357,6 +361,9 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.3)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.13.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.3-x86_64-darwin)
@@ -609,6 +616,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  ruby
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-linux

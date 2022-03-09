@@ -68,22 +68,6 @@ export const LeafDot = styled('div', {
   top: rem('14px')
 })
 
-export const ContentIcon = styled('a', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexShrink: 0,
-  flexGrow: 0,
-  width: theme.space.xl,
-  height: theme.space.xl,
-  fontSize: theme.fontSizes.title4,
-  marginRight: '4px',
-  position: 'relative',
-  '&:hover,&:active': {
-    textDecoration: 'none'
-  }
-})
-
 export const ContentTitle = styled('div', {
   flex: '1 1 auto',
   whiteSpace: 'nowrap',
@@ -106,6 +90,25 @@ export const ContentAction = styled('div', {
   fontSize: theme.fontSizes.body,
   fontWeight: '500',
   lineHeight: theme.space.xxl
+})
+
+export const ContentIcon = styled('a', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+  flexGrow: 0,
+  width: theme.space.xl,
+  height: theme.space.xl,
+  fontSize: theme.fontSizes.title4,
+  marginRight: '4px',
+  position: 'relative',
+  [`& + ${ContentAction}`]: {
+    width: `calc(100% - ${theme.space.lg} - ${theme.space.xl})`
+  },
+  '&:hover,&:active': {
+    textDecoration: 'none'
+  }
 })
 
 export const EmptyNode = styled('p', {
