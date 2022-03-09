@@ -73,8 +73,7 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
     <DiscussionDrawer
       container={document.getElementById('article')?.firstElementChild as HTMLElement}
       overlay={false}
-      visible={true}
-    >
+      visible={false}>
       <StyledDiscussionList>
         <ListTitle>{t('discussion.title')}</ListTitle>
         <FilterTabs defaultActiveKey={TAB_ALL}>
@@ -87,8 +86,7 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
                     ref={setConversationRef(commentedNode.markId)}
                     onClick={handleConversationSelect(commentedNode)}
                     onMouseEnter={handleConversationHover(commentedNode)}
-                    onMouseLeave={handleConversationLeave(commentedNode)}
-                  >
+                    onMouseLeave={handleConversationLeave(commentedNode)}>
                     <Conversation />
                   </ConversationWrapper>
                 ))}
