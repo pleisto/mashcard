@@ -26,6 +26,7 @@ export const ListTitle = styled('div', {
 
 export const DiscussionDrawer = styled(Drawer, {
   position: 'absolute',
+  display: 'none',
   bottom: 'unset'
 })
 
