@@ -93,3 +93,5 @@ node_modules
 # Pdftron
 /public/pdftron
 /public/pdfjs
+test-results/
+playwright-report/

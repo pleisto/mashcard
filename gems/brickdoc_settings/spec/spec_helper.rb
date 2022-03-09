@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'simplecov'
-SimpleCov.start
 
 require 'rspec/active_model/mocks'
 require 'securerandom'

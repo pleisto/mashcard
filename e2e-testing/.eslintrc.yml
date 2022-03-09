@@ -1,0 +1,2 @@
+rules:
+  jest/no-done-callback: off

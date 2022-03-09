@@ -36,7 +36,7 @@ To start development:
 
 - To run back end tests: `bundle exec rspec`
 - To run frond end unit tests: `yarn test:jest`
-- To run frond end E2E tests: `yarn dist:test`, `RAILS_ENV=test ./bin/rails server`, and then `yarn cypress run`
+- To run frond end E2E tests: `yarn test:playwright`
 
 ### yarn scripts
 

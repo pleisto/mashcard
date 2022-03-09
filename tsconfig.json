@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.shared.json",
   "compilerOptions": { "outDir": "dist", "baseUrl": "." },
-  "include": ["**/*", "node_modules/vite-plugin-pwa/client.d.ts"],
+  "include": ["**/*"],
   "exclude": [
     "packages/**/*",
     "apps/**/*",

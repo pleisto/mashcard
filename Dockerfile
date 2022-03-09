@@ -16,8 +16,7 @@ COPY . .
 RUN bundle install --retry 2 --jobs 4
 
 RUN yarn install --immutable
-# set production to fixed `vite-ruby` plugin hardcode errror.
-RUN RAILS_ENV=production yarn dist
+RUN yarn dist
 RUN rm -rf node_modules .yarn apps/client-web dist public/esm-bundle/stats.json *.js *.json *.yml yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
   && rm -rf ./packages/* \
