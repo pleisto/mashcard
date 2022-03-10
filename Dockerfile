@@ -22,7 +22,7 @@ ENV SENTRY_PROJECT=$SENTRY_PROJECT
 ENV YARN_CHECKSUM_BEHAVIOR=update
 
 COPY . .
-RUN sed -i 's/"0.0.0"/"$VERSION"/g' package.json
+RUN sed -i "s/0.0.0/$VERSION/g" package.json
 RUN bundle install --retry 2 --jobs 4 \
   && yarn install --immutable
 RUN NODE_ENV=$RAILS_ENV yarn dist

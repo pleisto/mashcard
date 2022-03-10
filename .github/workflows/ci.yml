@@ -89,7 +89,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: frontend-unit
-          directory: ./coverage/jest/
   rspec_and_dump_schema:
     name: Rails RSpec & Schema Dump
     runs-on: ubuntu-latest
@@ -165,13 +164,6 @@ jobs:
         with:
           report_paths: junit-reports/rspec_setting.xml
           check_name: Rails RSpec Test Setting Report
-      - name: Publish RSpec code coverage reports
-        if: steps.changed-ruby-files.outputs.any_changed == 'true'
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: backend-unit
-          directory: ./coverage/rspec/
       - name: Get changed database migrations
         id: changed-db-migrations
         uses: tj-actions/changed-files@v17.2

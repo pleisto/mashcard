@@ -46,7 +46,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: frontend-e2e
-          directory: ./coverage/playwright/
       - name: Upload Playwright screenshots/traces/videos (when failed)
         if: failure()
         uses: actions/upload-artifact@v2
