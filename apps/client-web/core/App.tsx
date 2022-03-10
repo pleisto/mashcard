@@ -6,7 +6,7 @@ import { Loading, globalStyle, Provider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
-import { withProfiler } from '@sentry/react'
+import { withProfiler, ErrorBoundary } from '@sentry/react'
 import { isLoadingVar } from '@/common/reactiveVars'
 
 export const App: FC = () => {
@@ -19,18 +19,20 @@ export const App: FC = () => {
   useErrorNotification(context.serverMessage)
 
   return (
-    <Suspense fallback={<Loading />}>
-      <BrickdocContext.Provider value={context}>
-        <Provider>
-          <ApolloProvider client={apolloClient}>
-            <HelmetProvider>
-              {isLoading && <Loading />}
-              <RootRoutes />
-            </HelmetProvider>
-          </ApolloProvider>
-        </Provider>
-      </BrickdocContext.Provider>
-    </Suspense>
+    <ErrorBoundary showDialog dialogOptions={{ user: { name: context.currentUser?.domain } }}>
+      <Suspense fallback={<Loading />}>
+        <BrickdocContext.Provider value={context}>
+          <Provider>
+            <ApolloProvider client={apolloClient}>
+              <HelmetProvider>
+                {isLoading && <Loading />}
+                <RootRoutes />
+              </HelmetProvider>
+            </ApolloProvider>
+          </Provider>
+        </BrickdocContext.Provider>
+      </Suspense>
+    </ErrorBoundary>
   )
 }
 

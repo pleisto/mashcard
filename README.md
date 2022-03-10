@@ -1,9 +1,10 @@
 # Brickdoc
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
+[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![crowdin](https://badges.crowdin.net/brickdoc/localized.svg)](https://crowdin.com/project/brickdoc)
 [![linting](https://github.com/brickdoc/brickdoc/actions/workflows/linting.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/linting.yml)
-[![Monolith Application CI](https://github.com/brickdoc/brickdoc/actions/workflows/monolith_ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/monolith_ci.yml)
+[![CI](https://github.com/brickdoc/brickdoc/actions/workflows/ci.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/ci.yml)
+[![E2E Testing](https://github.com/brickdoc/brickdoc/actions/workflows/e2e.yml/badge.svg)](https://github.com/brickdoc/brickdoc/actions/workflows/e2e.yml)
 [![codecov](https://codecov.io/gh/brickdoc/brickdoc/branch/master/graph/badge.svg?token=BE6RWP2F9E)](https://codecov.io/gh/brickdoc/brickdoc)
 
 > Brickdoc is built on an open core model. This is Brickdoc **Community Edition** mono repository.
@@ -14,7 +15,6 @@ BrickDoc is an open-source human intellect application and collaboration platfor
 
 Prerequisites:
 
-- Git LFS
 - Ruby 3.0+ (we've setup `.ruby-version` to use with `rbenv`)
 - NodeJS 16+
 - Yarn

@@ -6,18 +6,27 @@ WORKDIR /app
 
 # Add NodeJS & PostgreSQL apt sources.
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-  && apt-get install --no-install-recommends -y nodejs build-essential && npm install -g yarn
+  && apt-get install --no-install-recommends -y nodejs build-essential && npm install -g yarn @sentry/cli
 
 ARG RAILS_ENV=production
+ARG VERSION=0.0.0
+ARG SENTRY_AUTH_TOKEN
+ARG SENTRY_ORG
+ARG SENTRY_PROJECT
 ENV RAILS_ENV=$RAILS_ENV
 ENV BUNDLE_WITHOUT="test development"
 ENV NODE_OPTIONS=--max-old-space-size=5950
+ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
+ENV SENTRY_ORG=$SENTRY_ORG
+ENV SENTRY_PROJECT=$SENTRY_PROJECT
 
 COPY . .
-RUN bundle install --retry 2 --jobs 4
-
-RUN yarn install --immutable
+RUN sed -i 's/"0.0.0"/"$VERSION"/g' package.json
+RUN bundle install --retry 2 --jobs 4 \
+  && yarn install --immutable
 RUN NODE_ENV=$RAILS_ENV yarn dist
+RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files brickdoc@$VERSION upload-sourcemaps --ext map ./public/esm-bundle; fi
+
 RUN rm -rf node_modules .yarn apps/client-web dist public/esm-bundle/stats.json *.js *.json *.yml yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
   && rm -rf ./packages/* \

@@ -33,7 +33,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-      - run: yarn install --immutable
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

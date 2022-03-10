@@ -4,6 +4,7 @@ module ApplicationHelper
     puts 'x'
     puts BrickdocConfig.to_frontend(scope: :features)
     {
+      version: Brickdoc::Runtime.version,
       internalApiEndpoint: internal_graphql_api_path,
       currentUser: Current.user&.as_global_context,
       lastDomain: Brickdoc::Runtime.cypress? ? nil : Current.user&.last_space_domain,

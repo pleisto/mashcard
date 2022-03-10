@@ -16,6 +16,9 @@ env:
   image: ghcr.io/brickdoc/brickdoc-saas
   domain: brickdoc.com
   GCP_PROJECT: golden-union-341912
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: brickdoc-inc
+  SENTRY_PROJECT: brickdoc-saas-prod
 jobs:
   build:
     name: 'Build and Push Docker Image'
@@ -23,6 +26,8 @@ jobs:
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
@@ -30,8 +35,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: yarn
-      - run: yarn install --immutable
+          cache: npm
+      - run: npm install -g @sentry/cli
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -52,19 +57,25 @@ jobs:
           key: brickdocCE-saas-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             brickdocCE-saas-${{ secrets.CACHE_VERSION }}-${{ runner.os }}-buildx-
+      - run: sentry-cli releases new brickdoc@${{ steps.get_version.outputs.VERSION }} && sentry-cli releases set-commits brickdoc@${{ steps.get_version.outputs.VERSION }} --auto --ignore-missing
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           build-args: |
-            "RAILS_ENV=production"
+            RAILS_ENV=production
+            VERSION=${{ steps.get_version.outputs.VERSION }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            SENTRY_ORG=brickdoc-inc
+            SENTRY_PROJECT=brickdoc-saas-prod
           tags: ${{ env.image }}:${{ steps.get_version.outputs.VERSION }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
         # Temp fix
         # https://github.com/docker/build-push-action/issues/252
         # https://github.com/moby/buildkit/issues/1896
+      - run: sentry-cli releases finalize brickdoc@${{ steps.get_version.outputs.VERSION }}
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
@@ -82,6 +93,15 @@ jobs:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: Get the start time
+        id: get_start_time
+        run: echo ::set-output name=START_TIME::$(date +%s)
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm install -g @sentry/cli
       - name: GCP Login
         uses: google-github-actions/auth@v0
         with:
@@ -125,3 +145,4 @@ jobs:
             --set-string secrets.SMTP_URL=${{ secrets.SAAS_PROD_SMTP_URL }} \
             --set-string secrets.GOOGLE_OAUTH2_ID=${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_ID }} \
             --set-string secrets.GOOGLE_OAUTH2_SECRET=${{ secrets.SAAS_PROD_GOOGLE_OAUTH2_SECRET }}
+      - run: sentry-cli releases deploys brickdoc@${{ steps.get_version.outputs.VERSION }} new -e production -t $(($(date +%s)-${{ steps.get_start_time.outputs.START_TIME }}))

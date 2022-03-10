@@ -7,6 +7,7 @@ export const sentryInit = (): void => {
   SentryInit({
     dsn: ctx.sentryDsn,
     environment: ctx.env,
+    // TODO: Integrate with react router v6
     integrations: [new Integrations.BrowserTracing(), new OfflineIntegration()],
 
     // Set tracesSampleRate to 1.0 to capture 100%

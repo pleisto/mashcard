@@ -21,6 +21,7 @@ env:
   domain: trunk.brickdoc.dev
 concurrency:
   group: monolith-trunk-cd
+  cancel-in-progress: true
 jobs:
   build:
     name: 'Build and Push Docker Image'
@@ -33,7 +34,6 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-      - run: yarn install --immutable
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

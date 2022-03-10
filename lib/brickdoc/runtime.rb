@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'socket'
+
 module Brickdoc
   # Provides routines to identify the current application runtime.
   module Runtime
@@ -59,6 +60,10 @@ module Brickdoc
         end
 
         threads
+      end
+
+      def version
+        Brickdoc::VERSION
       end
     end
   end
