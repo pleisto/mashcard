@@ -76,6 +76,7 @@ ehthumbs.db
 junit-reports/
 coverage/
 test-results/
+storageState.json
 
 # build
 dist/

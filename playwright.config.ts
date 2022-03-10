@@ -13,8 +13,10 @@ const config: PlaywrightTestConfig = {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
-    screenshot: 'only-on-failure'
+    screenshot: 'only-on-failure',
+    storageState: './e2e-testing/storageState.json'
   },
+  globalSetup: './e2e-testing/global-setup',
   projects: [
     {
       name: 'chromium',
