@@ -8,6 +8,7 @@ import * as Stories from '../empty.stories'
 import { Empty } from '../index'
 
 jest.mock('../../../hooks/useId')
+jest.setTimeout(10_000)
 const { Basic, Found } = composeStories(Stories)
 
 it('Empty-Basic Should be passed a11y test', async () => await a11yTest(Basic as FC))

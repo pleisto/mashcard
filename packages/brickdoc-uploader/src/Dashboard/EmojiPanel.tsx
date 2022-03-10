@@ -73,7 +73,7 @@ export const EmojiPanel: React.FC<EmojiPanelProps> = ({ emojiData, recentEmojis,
         })
       }, 300)
 
-      if (observeY.current > y) {
+      if (observeY.current! > y) {
         if (activeGroups.length === groups.length) {
           return
         }
@@ -113,7 +113,7 @@ export const EmojiPanel: React.FC<EmojiPanelProps> = ({ emojiData, recentEmojis,
                 ))}
                 <div
                   ref={container => {
-                    createScrollObserver(container)
+                    createScrollObserver(container!)
                   }}
                   className="emoji-load-more-placeholder"
                 />

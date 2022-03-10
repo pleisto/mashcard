@@ -27,9 +27,26 @@ exports[`Toolbar matches snapshot correctly 1`] = `
         role="menuitem"
       >
         subMenu
-        <i
-          data-testid="mock-icon-ArrowDown"
-        />
+        <span
+          aria-label="arrow-down"
+          class="brd-icon brd-icon-arrow-down brd-c-eIxPHM"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              d="m19 9-7 6-7-6"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
       </li>
     </span>
     <li

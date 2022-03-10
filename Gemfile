@@ -22,7 +22,7 @@ gem 'second_level_cache', '~> 2.7'
 gem 'packwerk', '~> 2.0'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
 
-gem 'grpc', '~> 1.43', '>= 1.43.1'
+gem 'grpc', '~> 1.44.0.pre2'
 
 gem 'cloak-rb', '>= 0.1.0'
 gem 'lockbox', '>= 0.6.8'
@@ -84,7 +84,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'ffaker'
   gem 'rubocop', '>= 1.25.1'
-  gem 'rubocop-brickdoc', require: false, path: 'gems/rubocop-brickdoc'
+  gem 'rubocop-brickdoc', require: false, github: 'brickdoc/rubocop-brickdoc'
   gem 'factory_bot_rails', '>= 6.2'
   gem 'rspec-rails', '>= 5.1.0'
   gem 'rspec_junit_formatter', '>= 0.4'
@@ -92,8 +92,6 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'simplecov', require: false
-  gem 'simplecov-lcov', require: false
   gem 'vcr', '~> 6.0'
   gem 'webmock', '~> 3.14'
 end

@@ -111,8 +111,7 @@ export class Vocabulary {
 
   private applyRules(rules: Rule[], word: string, skipFirstRule: boolean): string {
     if (word == null) {
-      // @ts-expect-error
-      return null
+      return ''
     }
 
     if (this.isUncountable(word)) {

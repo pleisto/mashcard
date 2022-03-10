@@ -17,6 +17,7 @@
 !.vscode/extensions.json
 
 # dependencies
+.turbo
 node_modules
 .yarn/*
 !.yarn/patches
@@ -88,9 +89,7 @@ vendor
 /public/vite
 /public/vite-dev
 /public/vite-test
-node_modules
 *.local
-.DS_Store
 
 # Pdftron
 /public/pdftron

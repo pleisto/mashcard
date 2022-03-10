@@ -58,11 +58,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
   }
 
   const handleRemoveEmoji = (): void => {
-    handleSelectEmoji(null, 'remove')
+    handleSelectEmoji({} as any, 'remove')
   }
 
   const handleRemoveGalleryImage = (): void => {
-    pluginOptions.onUploaded?.({ color: null, action: 'remove' })
+    pluginOptions.onUploaded?.({ color: undefined, action: 'remove' })
   }
 
   const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = [
@@ -98,10 +98,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
             role="menuitem"
             key={source.type}
             className={cx('uploader-dashboard-navbar-item', { active: activeSource.type === source.type })}
-            data-testid={IMPORT_SOURCE_TEST_ID[source.type]}
+            data-testid={IMPORT_SOURCE_TEST_ID[source.type as 'upload' | 'unsplash']}
             onClick={handleNavbarItemClick(source)}
           >
-            {source.typeLabel || IMPORT_SOURCE_LABEL[source.type]}
+            {source.typeLabel ?? IMPORT_SOURCE_LABEL[source.type]}
           </Button>
         ))}
         <div className="uploader-dashboard-action-buttons">

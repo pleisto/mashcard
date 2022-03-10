@@ -32,6 +32,7 @@ on:
       - main
 
 env:
+  YARN_CHECKSUM_BEHAVIOR: update
   POSTGRES_PASS: '123456'
   REDIS_URL: redis://127.0.0.1:6379
   SECURITY_REVERSIBLE_INT_PRIME: 1911469727
@@ -73,7 +74,7 @@ jobs:
         if: steps.changed-es-files.outputs.any_changed == 'true'
       - name: Run Jest tests
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn test:jest --silent
+        run: yarn test:jest
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
       - name: Publish Jest test reports

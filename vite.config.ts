@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 import { defineConfig } from 'vite'
 import RubyPlugin from 'vite-plugin-ruby'
 import react from '@vitejs/plugin-react'
@@ -6,6 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { visualizer } from 'rollup-plugin-visualizer'
 import IstanbulPlugin from 'vite-plugin-istanbul'
 
+// eslint-disable-next-line import/no-default-export
 export default defineConfig({
   plugins: [
     RubyPlugin(),

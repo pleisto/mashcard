@@ -28,7 +28,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
     fetching.current = true
 
     try {
-      const response = await pluginOptions.fetchUnsplashImages(lastQuery.current, page.current, UNSPLASH_PER_PAGE)
+      const response = await pluginOptions.fetchUnsplashImages!(lastQuery.current!, page.current!, UNSPLASH_PER_PAGE)
 
       if (response.success) {
         const prevData = page.current === 1 ? [] : unsplashImages
@@ -67,7 +67,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
 
     new IntersectionObserver((entities): void => {
       const y = entities[0].boundingClientRect.y
-      if (observeY.current > y) {
+      if (observeY.current! > y) {
         void handleFetchUnsplashImage()
       }
       observeY.current = y
@@ -100,7 +100,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
         ))}
         <div
           ref={container => {
-            createScrollObserver(container)
+            createScrollObserver(container!)
           }}
           className="unsplash-load-more-placeholder"
         />

@@ -5,18 +5,19 @@ GIT
     default_value_for (3.4.0)
       activerecord (>= 3.2.0, < 8.0)
 
+GIT
+  remote: https://github.com/brickdoc/rubocop-brickdoc.git
+  revision: 01e39e9ec7779195aa77574db6b6e19111944b4f
+  specs:
+    rubocop-brickdoc (0.1.2)
+      rubocop (>= 1.25)
+
 PATH
   remote: gems/brickdoc_settings
   specs:
     brickdoc_settings (0.0.1)
       activesupport (>= 7.0.0)
       lockbox (>= 0.6.6)
-
-PATH
-  remote: gems/rubocop-brickdoc
-  specs:
-    rubocop-brickdoc (0.1.1)
-      rubocop (>= 1.10)
 
 GEM
   remote: https://rubygems.org/
@@ -162,7 +163,6 @@ GEM
     digest (3.1.0)
     digest-crc (0.6.4)
       rake (>= 12.0.0, < 14.0.0)
-    docile (1.4.0)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
@@ -280,14 +280,14 @@ GEM
     graphql-fragment_cache (1.11.0)
       graphql (>= 1.12.0)
       ruby-next (>= 0.10.0)
-    grpc (1.43.1)
-      google-protobuf (~> 3.18)
+    grpc (1.44.0.pre2)
+      google-protobuf (~> 3.19)
       googleapis-common-protos-types (~> 1.0)
-    grpc (1.43.1-universal-darwin)
-      google-protobuf (~> 3.18)
+    grpc (1.44.0.pre2-universal-darwin)
+      google-protobuf (~> 3.19)
       googleapis-common-protos-types (~> 1.0)
-    grpc (1.43.1-x86_64-linux)
-      google-protobuf (~> 3.18)
+    grpc (1.44.0.pre2-x86_64-linux)
+      google-protobuf (~> 3.19)
       googleapis-common-protos-types (~> 1.0)
     grpc-google-iam-v1 (1.0.0)
       google-protobuf (~> 3.14)
@@ -545,13 +545,6 @@ GEM
       faraday (>= 0.17.5, < 3.0)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    simplecov (0.21.2)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.12.3)
-    simplecov-lcov (0.8.0)
-    simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     solargraph (0.44.3)
       backport (~> 1.2)
@@ -654,7 +647,7 @@ DEPENDENCIES
   graphql (~> 1.13)
   graphql-batch (~> 0.5)
   graphql-fragment_cache (~> 1.10)
-  grpc (~> 1.43, >= 1.43.1)
+  grpc (~> 1.44.0.pre2)
   grpc-tools (~> 0.14.1.pre1)
   hiredis (~> 0.6.3)
   listen (~> 3.7)
@@ -688,8 +681,6 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 6.4)
   sidekiq-cron (~> 1.2)
-  simplecov
-  simplecov-lcov
   solargraph
   tzinfo-data (~> 1.2021, >= 1.2021.5)
   unsplash

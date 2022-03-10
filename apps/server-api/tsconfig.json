@@ -2,13 +2,13 @@
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
     "outDir": "dist",
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "lib": [
+      "es2021"
+    ]
   },
   "include": ["**/*"],
-  "exclude": ["dist/**/*"],
-  "references": [
-    { "path": "../../packages/active-support" },
-    { "path": "../../packages/cypherpunk" },
-    { "path": "../../packages/dotenv" }
+  "exclude": [
+    "dist/**/*"
   ]
 }

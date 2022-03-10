@@ -6,7 +6,11 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "cleanup": "rm -rf dist"
+    "cleanup": "rm -rf dist",
+    "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:type": "tsc --incremental --noEmit",
+    "test:jest": "run -T jest"
   },
   "main": "./src/index.ts",
   "module": "./src/index.ts",
@@ -48,15 +52,15 @@
     "@babel/core": "^7.17.5",
     "@mdx-js/react": "1.6.22",
     "@pxblue/storybook-rtl-addon": "^1.1.0",
-    "@storybook/addon-a11y": "^6.5.0-alpha.42",
-    "@storybook/addon-actions": "^6.5.0-alpha.42",
-    "@storybook/addon-docs": "^6.5.0-alpha.42",
-    "@storybook/addon-essentials": "^6.5.0-alpha.42",
-    "@storybook/addon-links": "^6.5.0-alpha.42",
-    "@storybook/addons": "^6.5.0-alpha.42",
-    "@storybook/react": "^6.5.0-alpha.42",
+    "@storybook/addon-a11y": "^6.5.0-alpha.46",
+    "@storybook/addon-actions": "^6.5.0-alpha.46",
+    "@storybook/addon-docs": "^6.5.0-alpha.46",
+    "@storybook/addon-essentials": "^6.5.0-alpha.46",
+    "@storybook/addon-links": "^6.5.0-alpha.46",
+    "@storybook/addons": "^6.5.0-alpha.46",
+    "@storybook/react": "^6.5.0-alpha.46",
     "@storybook/testing-react": "^1.2.3",
-    "@storybook/theming": "^6.5.0-alpha.42",
+    "@storybook/theming": "^6.5.0-alpha.46",
     "@types/react-transition-group": "^4.4.4",
     "babel-loader": "^8.2.3",
     "i18next": "^21.6.14",
@@ -67,8 +71,7 @@
     "react-json-view": "^1.21.3",
     "storybook-addon-designs": "^6.2.1",
     "storybook-addon-performance": "^0.16.1",
-    "storybook-builder-vite": "^0.1.18",
-    "typescript": "^4.5.5"
+    "storybook-builder-vite": "^0.1.18"
   },
   "peerDependencies": {
     "i18next": ">=21.3.3",

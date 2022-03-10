@@ -1,15 +1,11 @@
 {
   "extends": "../../tsconfig.shared.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "noImplicitAny": false,
-    "strictNullChecks": false
+    "outDir": "dist"
   },
   "include": ["**/*", "**/*.json"],
-  "exclude": ["dist/**/*", "*.json"],
-  "references": [
-    { "path": "../active-support" },
-    { "path": "../brickdoc-design-system" },
-    { "path": "../brickdoc-test-helper" }
+  "exclude": [
+    "dist/**/*",
+    "*.json"
   ]
 }

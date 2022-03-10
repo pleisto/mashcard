@@ -3,6 +3,8 @@ on: [deployment_status]
 concurrency:
   group: monolith-e2e-${{ github.ref }}
   cancel-in-progress: true
+env:
+  YARN_CHECKSUM_BEHAVIOR: update
 jobs:
   playwright:
     name: Playwright Test

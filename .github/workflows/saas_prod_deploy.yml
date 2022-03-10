@@ -13,6 +13,7 @@ permissions:
   packages: write
   statuses: write
 env:
+  YARN_CHECKSUM_BEHAVIOR: update
   image: ghcr.io/brickdoc/brickdoc-saas
   domain: brickdoc.com
   GCP_PROJECT: golden-union-341912

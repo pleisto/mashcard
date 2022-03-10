@@ -17,6 +17,7 @@ on:
       - master
       - main
 env:
+  YARN_CHECKSUM_BEHAVIOR: update
   image: ghcr.io/brickdoc/brickdoc:latest
   domain: trunk.brickdoc.dev
 concurrency:

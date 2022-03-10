@@ -12,6 +12,7 @@ jobs:
     env:
       # GitHub-hosted runner have 7 gb RAM.
       # 5250mb === 7gb * 0.75
+      YARN_CHECKSUM_BEHAVIOR: update
       NODE_OPTIONS: '--max-old-space-size=5950'
     steps:
       - name: Checkout the codebase
@@ -39,7 +40,4 @@ jobs:
         run: yarn install --immutable
       - name: Run TypeScript checks
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn tsc:check
-      - name: Run ESLint
-        if: steps.changed-es-files.outputs.any_changed == 'true'
-        run: yarn lint:eslint
+        run: yarn lint

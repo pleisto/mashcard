@@ -9,8 +9,10 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "scripts": {
-    "eslint:fix": "eslint --fix --cache ./src",
-    "generator": "bin/icons-react-component-generator"
+    "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:type": "tsc --incremental --noEmit",
+    "generator": "bin/icons-react-component-generator && yarn lint"
   },
   "peerDependencies": {
     "react": ">= 17.0",

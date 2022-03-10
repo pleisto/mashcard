@@ -43,8 +43,8 @@ To start development:
 ```bash
 # global
 yarn commit # instead of `git commit`, equivalent to `git add . && git-cz`
-yarn lint # lint code with eslint / rubocop / brakeman / packwerk
-yarn tsc:check # run TypeScript checking
+yarn lint # lint code with eslint and run typescript check
+yarn lint:type # run TypeScript checking
 yarn test # run tsc:check / lint / jest / rspec
 yarn test:playwright # run e2e tests with playwright
 yarn cleanup # clean up all the building artifacts / intermediates

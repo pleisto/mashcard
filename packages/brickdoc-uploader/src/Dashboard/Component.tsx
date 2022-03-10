@@ -3,7 +3,14 @@ import { Uppy } from '@uppy/core'
 import XhrUploadPlugin from '@uppy/xhr-upload'
 import { DashboardPlugin, DashboardPluginOptions } from './plugin'
 
-export type { UploadResultData, ImportSourceOption, DashboardPluginOptions, UploadProgress, UnsplashImage, EmojiMeta } from './plugin'
+export type {
+  UploadResultData,
+  ImportSourceOption,
+  DashboardPluginOptions,
+  UploadProgress,
+  UnsplashImage,
+  EmojiMeta
+} from './plugin'
 
 export interface DashboardProps {
   blockId?: DashboardPluginOptions['blockId']
@@ -40,7 +47,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           return
         }
 
-        container.current = ele
+        container.current = ele ?? undefined
         uppy.current = new Uppy()
         // TODO: use active storage instead
         uppy.current.use(XhrUploadPlugin, {
@@ -52,7 +59,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           })
         })
         uppy.current.use(DashboardPlugin, {
-          target: container.current,
+          target: container.current!,
           blockId,
           onProgress,
           onUploaded,
@@ -60,7 +67,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           prepareFileUpload,
           fetchUnsplashImages,
           importSources,
-          fileType
+          fileType: fileType!
         })
       }}
     />

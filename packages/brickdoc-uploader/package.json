@@ -16,5 +16,14 @@
     "@uppy/dashboard": "^2.1.4",
     "@uppy/react": "^2.1.2",
     "@uppy/xhr-upload": "^2.0.7"
+  },
+  "devDependencies": {
+    "@brickdoc/eslint-plugin": "workspace:^"
+  },
+  "scripts": {
+    "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:type": "tsc --incremental --noEmit",
+    "test:jest": "run -T jest"
   }
 }

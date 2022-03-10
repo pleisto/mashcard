@@ -29,5 +29,26 @@
     "react-i18next": "^11.15.6",
     "react-router-dom": "^6.2.2",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.5",
+    "@graphql-codegen/typescript-operations": "^2.3.2",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.8",
+    "@types/rails__actioncable": "^6.1.6",
+    "@types/rails__activestorage": "^7.0.0",
+    "autoprefixer": "^10.4.2",
+    "browserlist": "^1.0.1",
+    "postcss": "^8.4.8",
+    "postcss-less": "^6.0.0",
+    "postcss-preset-env": "^7.4.2",
+    "vite-plugin-pwa": "^0.11.13",
+    "vite-plugin-ruby": "^3.0.8"
+  },
+  "scripts": {
+    "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:type": "tsc --incremental --noEmit",
+    "test:jest": "run -T jest"
   }
 }

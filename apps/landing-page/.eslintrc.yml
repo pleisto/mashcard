@@ -4,3 +4,7 @@ extends:
 
 rules:
   import/no-default-export: off
+
+parserOptions:
+  project:
+    - ./tsconfig.json

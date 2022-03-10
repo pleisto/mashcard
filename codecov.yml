@@ -2,15 +2,13 @@ flag_management:
   default_rules:
     carryforward: true
 ignore:
-  - 'app/graphql' # false positive. @see spec/graphql
-  - 'app/policies'
-  - 'app/jobs'
-  - 'app/controllers'
-  - 'lib/brick_graphql'
+  - 'app'
+  - 'lib'
   - 'db'
   - 'bin'
   - 'config'
   - 'templates'
+  - 'tools'
   - 'packages/brickdoc-design-icons'
   - 'apps/client-web/BrickdocGraphQL.ts'
   - 'packages/briockdoc-design-system/.storybook'

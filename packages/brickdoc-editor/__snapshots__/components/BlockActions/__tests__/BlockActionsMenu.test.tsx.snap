@@ -65,9 +65,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           </span>
         </span>
       </div>
-      <i
-        data-testid="mock-icon-ArrowRight"
-      />
+      <span
+        aria-label="arrow-right"
+        class="brd-icon brd-icon-arrow-right brd-c-fdvikV"
+        role="img"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M8.793 5.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414-1.414L14.086 12 8.793 6.707a1 1 0 0 1 0-1.414z"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
     </div>
   </li>
   <ul
@@ -197,9 +213,23 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           <span
             class="brd-c-jVLVTy"
           >
-            <i
-              data-testid="mock-icon-Add"
-            />
+            <span
+              aria-label="add"
+              class="brd-icon brd-icon-add"
+              role="img"
+            >
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm11-9a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 4a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H8a1 1 0 1 1 0-2h3V8a1 1 0 0 1 1-1z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </span>
           </span>
         </span>
       </span>
@@ -215,9 +245,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
           </span>
         </span>
       </div>
-      <i
-        data-testid="mock-icon-ArrowRight"
-      />
+      <span
+        aria-label="arrow-right"
+        class="brd-icon brd-icon-arrow-right brd-c-fdvikV"
+        role="img"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          viewBox="0 0 24 24"
+          width="1em"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M8.793 5.293a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1 0 1.414l-6 6a1 1 0 0 1-1.414-1.414L14.086 12 8.793 6.707a1 1 0 0 1 0-1.414z"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
     </div>
   </li>
   <ul
@@ -262,9 +308,39 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-TextStyle"
-                />
+                <span
+                  aria-label="text-style"
+                  class="brd-icon brd-icon-text-style"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M11.328 14.824H4.66L3.164 19H1L7.077 3h1.836L15 19h-2.153l-1.52-4.176Zm-6.033-1.736h5.41l-2.71-7.484-2.7 7.484Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M6.973 2.85h2.043l6.202 16.3h-2.476l-1.52-4.176H4.768L3.269 19.15H.783l6.19-16.3Zm.207.3-5.963 15.7h1.841l1.498-4.176h6.877l1.519 4.176h1.83L8.81 3.15H7.18Zm.814 2.013 2.925 8.075H5.082l2.912-8.075Zm0 .883L5.51 12.938h4.982L7.995 6.046Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      d="M21.262 18.822c-.096-.19-.173-.53-.233-1.016-.77.796-1.69 1.194-2.76 1.194-.955 0-1.74-.267-2.355-.802-.61-.54-.914-1.224-.914-2.05 0-1.004.382-1.783 1.147-2.335.77-.559 1.851-.838 3.243-.838h1.612v-.758c0-.576-.173-1.033-.52-1.372-.346-.345-.856-.517-1.531-.517-.591 0-1.087.149-1.487.446-.4.297-.6.656-.6 1.078h-1.667c0-.481.17-.945.51-1.39.347-.452.813-.808 1.398-1.07A4.753 4.753 0 0 1 19.05 9c1.117 0 1.992.28 2.625.838.633.552.962 1.316.986 2.29v4.439c0 .885.113 1.59.34 2.112v.143h-1.738Zm-2.75-1.257c.52 0 1.012-.134 1.478-.401.466-.267.803-.615 1.012-1.043v-1.978h-1.299c-2.03 0-3.046.59-3.046 1.773 0 .517.174.921.52 1.212.346.291.791.437 1.335.437Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M19.05 9.15c-.686 0-1.313.127-1.884.38-.565.252-1.01.594-1.34 1.023-.286.376-.442.758-.473 1.149h1.368c.044-.413.268-.763.653-1.049.43-.32.96-.475 1.577-.475.699 0 1.253.179 1.637.56.38.372.564.871.564 1.48v.907H19.39c-1.374 0-2.42.276-3.155.81-.723.522-1.085 1.253-1.085 2.213 0 .783.287 1.425.863 1.937.583.507 1.331.765 2.257.765 1.027 0 1.908-.38 2.651-1.149l.219-.225.038.312c.05.414.113.705.182.884h1.474c-.219-.541-.324-1.245-.324-2.105V12.13c-.024-.939-.339-1.66-.934-2.18-.598-.527-1.434-.8-2.527-.8Zm-2.005.105a4.903 4.903 0 0 1 2.004-.405c1.142 0 2.056.286 2.724.875.67.585 1.012 1.39 1.037 2.4v4.442c0 .875.112 1.556.328 2.052l.012.029v.324h-1.98l-.042-.083c-.085-.17-.153-.43-.207-.77a3.818 3.818 0 0 1-2.651 1.031c-.985 0-1.808-.276-2.455-.839v-.001c-.643-.57-.965-1.294-.965-2.162 0-1.049.402-1.874 1.209-2.457.805-.584 1.921-.866 3.33-.866h1.463v-.607c0-.545-.162-.96-.474-1.266h-.001c-.31-.308-.776-.474-1.426-.474-.566 0-1.028.142-1.398.416-.37.275-.54.593-.54.958v.15h-1.966v-.15c0-.52.185-1.014.541-1.481.364-.474.851-.846 1.457-1.116Zm.298 5.201c.542-.315 1.335-.463 2.36-.463h1.45v2.163l-.016.031c-.224.458-.584.827-1.072 1.107a3.075 3.075 0 0 1-1.553.421c-.572 0-1.053-.154-1.432-.472-.385-.324-.573-.773-.573-1.327 0-.644.282-1.137.836-1.46Zm.151.26c-.46.268-.687.662-.687 1.2 0 .48.159.84.466 1.098.315.264.723.401 1.239.401.492 0 .96-.126 1.403-.381.432-.248.742-.564.937-.948v-1.793h-1.149c-1.005 0-1.735.147-2.209.423Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -308,9 +384,24 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Formula"
-                />
+                <span
+                  aria-label="formula"
+                  class="brd-icon brd-icon-formula"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+                      stroke="#85d1f1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -354,9 +445,32 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Table"
-                />
+                <span
+                  aria-label="table"
+                  class="brd-icon brd-icon-table"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M21 3H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
+                      stroke="#908b9c"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M2 9h20M8.75 9v12m6.5-12v12M2 15h20m0-11v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4"
+                      stroke="#908b9c"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -400,9 +514,33 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Upload"
-                />
+                <span
+                  aria-label="upload"
+                  class="brd-icon brd-icon-upload"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="m12.004 20.5-.004-9m8.259 5.658A4.605 4.605 0 0 0 22 12c-.607-1.915-2.465-2.964-4.474-2.963h-1.16A7.369 7.369 0 1 0 3.71 15.752"
+                      stroke="#908b9c"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M15.182 13.818 12 10.636l-3.182 3.182"
+                      stroke="#908b9c"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -446,9 +584,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Unsplash"
-                />
+                <span
+                  aria-label="unsplash"
+                  class="brd-icon brd-icon-unsplash"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M8 3h8v5H8V3Zm0 8H2v11h20V11h-6v6H8v-6Z"
+                      fill="#908b9c"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -492,9 +646,23 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Link"
-                />
+                <span
+                  aria-label="link"
+                  class="brd-icon brd-icon-link"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M10.456 8.178c1.424 0 2.789.565 3.795 1.571a1 1 0 0 1-1.414 1.415 3.368 3.368 0 0 0-4.6-.152l-.162.152-3.089 3.087a3.368 3.368 0 0 0 4.6 4.915l.163-.152 1.544-1.544a1 1 0 0 1 1.498 1.32l-.084.094-1.544 1.544A5.368 5.368 0 0 1 3.39 13.03l.183-.193 3.09-3.088a5.368 5.368 0 0 1 3.794-1.571zM16.633 2a5.368 5.368 0 0 1 3.979 8.97l-.184.194-3.089 3.088a5.368 5.368 0 0 1-7.59 0 1 1 0 1 1 1.414-1.415 3.368 3.368 0 0 0 4.6.152l.162-.152 3.09-3.088a3.368 3.368 0 0 0-4.601-4.915l-.163.152-1.544 1.544a1 1 0 0 1-1.497-1.32l.083-.094 1.544-1.544A5.368 5.368 0 0 1 16.633 2z"
+                      fill="#908b9c"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -538,9 +706,29 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-RteH1"
-                />
+                <span
+                  aria-label="rte-h1"
+                  class="brd-icon brd-icon-rte-h1"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M20.407 13H22v9h-2.159v-6.113a5.331 5.331 0 0 1-1.244.53L18 16.59v-2.211l.354-.09a4.204 4.204 0 0 0 1.012-.424 4.19 4.19 0 0 0 .902-.714l.139-.151Z"
+                      fill="#85a6fc"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      d="M2 2v20h2.578v-8.964h8.844V22H16V2h-2.578v8.431H4.578V2H2Z"
+                      fill="#85a6fc"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -584,9 +772,29 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-RteH2"
-                />
+                <span
+                  aria-label="rte-h2"
+                  class="brd-icon brd-icon-rte-h2"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M20.682 16.848c.295-.353.431-.707.431-1.07 0-.385-.098-.607-.237-.74-.146-.14-.4-.241-.8-.241-.396 0-.643.133-.809.368l-.004.006-.004.005c-.189.25-.31.641-.33 1.261l-.011.365h-1.88l.005-.383c.012-.976.28-1.798.834-2.424.572-.679 1.34-.995 2.241-.995.8 0 1.504.238 2.056.766l.003.003c.538.528.812 1.208.812 2.02 0 .811-.3 1.533-.844 2.168l-.008.01c-.328.358-.881.807-1.646 1.352l-.003.002a6.507 6.507 0 0 0-1 .837H23V22h-6v-.378c0-.893.277-1.683.85-2.364.315-.395.932-.906 1.794-1.535.51-.38.848-.667 1.038-.875Z"
+                      fill="#908b9c"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
+                      fill="#908b9c"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -630,9 +838,29 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-RteH3"
-                />
+                <span
+                  aria-label="rte-h3"
+                  class="brd-icon brd-icon-rte-h3"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M20.592 14.087c-.19-.175-.506-.281-.987-.281-.48 0-.816.125-1.039.333-.226.212-.388.547-.432 1.046l-.026.287H16.17l.028-.342c.08-.963.429-1.739 1.08-2.306.61-.567 1.393-.824 2.314-.824.938 0 1.716.227 2.328.725l.006.005c.595.506.901 1.204.901 2.06 0 .549-.138 1.032-.43 1.428a2.198 2.198 0 0 1-.58.541c.26.151.483.335.663.552.354.408.52.928.52 1.52 0 .915-.316 1.683-.938 2.276l-.007.007c-.658.589-1.512.886-2.512.886-.955 0-1.76-.255-2.372-.781-.695-.597-1.067-1.454-1.146-2.529L16 18.351h1.987l.012.303c.022.544.185.92.474 1.176l.008.006c.253.24.593.371 1.05.371.498 0 .875-.152 1.156-.417.238-.245.362-.53.362-.896 0-.462-.136-.748-.36-.924l-.01-.008c-.219-.186-.58-.305-1.124-.305h-.95V15.99h.938c.502 0 .826-.117 1.02-.29.192-.169.313-.428.313-.809 0-.384-.111-.635-.284-.804Z"
+                      fill="#9578d0"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
+                      fill="#9578d0"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -676,9 +904,29 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-RteH4"
-                />
+                <span
+                  aria-label="rte-h4"
+                  class="brd-icon brd-icon-rte-h4"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
+                      fill="#85a6fc"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M21.95 13.182h-1.656l-4.316 5.564v1.668h4.14v1.836h1.832v-1.836h1.272v-1.616H21.95v-5.616Zm-1.832 5.616v-2.904l-2.241 2.904h2.241Z"
+                      fill="#85a6fc"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -722,9 +970,29 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-RteH5"
-                />
+                <span
+                  aria-label="rte-h5"
+                  class="brd-icon brd-icon-rte-h5"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      d="M1 2v20h2.578v-8.964h8.844V22H15V2h-2.578v8.431H3.578V2H1Z"
+                      fill="#85d1f1"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M23.628 11.754h-6.567l-.594 6.128h1.948l.071-.128c.172-.306.4-.522.702-.667l.004-.001c.262-.132.599-.198 1.008-.198.598 0 1.02.168 1.294.487l.003.003c.286.321.455.789.455 1.416 0 .552-.185.973-.52 1.285-.356.318-.798.481-1.33.481-.51 0-.887-.118-1.14-.302-.296-.215-.48-.551-.544-1.048l-.028-.218h-2.1l.02.269c.076.992.501 1.801 1.29 2.393.691.526 1.53.792 2.488.792 1.048 0 1.958-.312 2.733-.938l.004-.002c.84-.706 1.265-1.617 1.265-2.726 0-1.127-.323-2.048-.965-2.72-.64-.672-1.479-1.002-2.477-1.002a3.62 3.62 0 0 0-1.304.225c-.257.09-.494.21-.713.36l.199-1.947h4.798v-1.942Z"
+                      fill="#85d1f1"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -768,9 +1036,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-ListUnordered"
-                />
+                <span
+                  aria-label="list-unordered"
+                  class="brd-icon brd-icon-list-unordered"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm2-10a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
+                      fill="#9578d0"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -814,9 +1098,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-ListOrdered"
-                />
+                <span
+                  aria-label="list-ordered"
+                  class="brd-icon brd-icon-list-ordered"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M4.004 1H5v5H3.65V2.604a3.568 3.568 0 0 1-.777.294l-.373.096V1.766l.221-.05a2.82 2.82 0 0 0 .633-.235c.235-.13.42-.258.564-.397L4.004 1Zm.45 10.351c.198-.215.288-.431.288-.653 0-.235-.066-.371-.158-.452-.097-.086-.266-.148-.534-.148-.263 0-.428.081-.539.225l-.002.004-.003.003c-.126.152-.206.392-.22.77l-.008.223H2.026l.003-.233c.007-.597.186-1.1.556-1.482C2.966 9.193 3.478 9 4.079 9c.533 0 1.003.145 1.37.468l.002.002c.36.323.542.738.542 1.235 0 .495-.2.936-.563 1.324l-.005.006c-.22.22-.588.493-1.098.827h-.002a4.288 4.288 0 0 0-.667.512H6V14.5H2v-.23c0-.547.185-1.03.566-1.446.21-.24.622-.553 1.197-.938.34-.232.565-.407.691-.534Zm-.394 6.732c.275 0 .455.064.564.17.099.1.162.251.162.482 0 .228-.069.384-.178.485-.112.104-.297.174-.583.174h-.537v1h.544c.31 0 .517.072.641.183l.006.005c.128.106.206.277.206.554 0 .22-.07.39-.207.538-.16.159-.376.25-.66.25-.261 0-.456-.079-.6-.222l-.005-.004c-.165-.154-.258-.38-.27-.706l-.008-.181H2l.014.203c.045.645.258 1.16.655 1.517.35.316.81.469 1.355.469.572 0 1.06-.178 1.436-.532l.004-.004C5.82 22.108 6 21.648 6 21.1c0-.356-.095-.668-.297-.913-.103-.13-.23-.24-.38-.33.132-.09.243-.198.333-.326.166-.237.245-.527.245-.856 0-.513-.175-.932-.515-1.236l-.003-.003c-.35-.299-.794-.435-1.33-.435-.527 0-.974.154-1.323.494-.372.34-.571.806-.617 1.384l-.016.205h1.108l.014-.172c.026-.3.118-.5.247-.627.128-.126.32-.2.594-.2ZM8 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 20a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM8 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1Z"
+                      fill="#85a6fc"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -860,9 +1160,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Code"
-                />
+                <span
+                  aria-label="code"
+                  class="brd-icon brd-icon-code"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M7.694 6.28a1 1 0 0 1 .026 1.414l-4.306 4.46 4.28 4.126a1 1 0 0 1-1.388 1.44l-5-4.82a1 1 0 0 1-.026-1.414l5-5.18a1 1 0 0 1 1.414-.026ZM16.305 6.28a1 1 0 0 1 1.415.026l5 5.18a1 1 0 0 1-.026 1.414l-5 4.82a1 1 0 0 1-1.388-1.44l4.28-4.125-4.305-4.46a1 1 0 0 1 .024-1.415ZM14.217 2.024a1 1 0 0 1 .76 1.193l-4 18a1 1 0 1 1-1.953-.434l4-18a1 1 0 0 1 1.193-.76Z"
+                      fill="#85d1f1"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -906,9 +1222,31 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Divider"
-                />
+                <span
+                  aria-label="divider"
+                  class="brd-icon brd-icon-divider"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M1 12a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z"
+                      fill="#9578d0"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M2 5a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1ZM2 19a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1Z"
+                      fill="rgba(149,120,208,0.3)"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -952,9 +1290,31 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-Toc"
-                />
+                <span
+                  aria-label="toc"
+                  class="brd-icon brd-icon-toc"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M1 5a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1ZM6 10a1 1 0 0 1 1-1h15a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM6 15a1 1 0 0 1 1-1h15a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Z"
+                      fill="#85a6fc"
+                      fill-rule="evenodd"
+                    />
+                    <path
+                      clip-rule="evenodd"
+                      d="M1 20a1 1 0 0 1 1-1h20a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1Z"
+                      fill="rgba(133,166,252,0.3)"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>
@@ -998,9 +1358,25 @@ exports[`BlockActionsMenu matches snapshot correctly 1`] = `
               <span
                 class="brd-c-jVLVTy"
               >
-                <i
-                  data-testid="mock-icon-MindmapList"
-                />
+                <span
+                  aria-label="mindmap-list"
+                  class="brd-icon brd-icon-mindmap-list"
+                  role="img"
+                >
+                  <svg
+                    fill="none"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M12 12a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1ZM6 12a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1ZM8 19a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM2 19a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1ZM8 5a1 1 0 0 1 1-1h13a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1ZM2 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1Z"
+                      fill="#908b9c"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </span>
             </span>
           </span>

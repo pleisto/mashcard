@@ -26,7 +26,7 @@ export const imperativeUpload = async (
   })
 
   const handleUploadProgress = (file: UppyFile, progress: FileProgress): void => {
-    onProgress({
+    onProgress!({
       name: file.name,
       bytesTotal: progress.bytesTotal,
       bytesUploaded: progress.bytesUploaded,
@@ -35,7 +35,7 @@ export const imperativeUpload = async (
   }
 
   const handleUploadSuccess = (file: UppyFile): void => {
-    onUploaded({
+    onUploaded!({
       action: 'add',
       url: uploadMeta.blobKey,
       signedId: uploadMeta.signedId,
@@ -68,8 +68,8 @@ export const imperativeUpload = async (
     uppy.log(err as string)
   }
 
-  const { endpoint, headers, blobKey, viewUrl, signedId, downloadUrl } = await prepareFileUpload(
-    blockId,
+  const { endpoint, headers, blobKey, viewUrl, signedId, downloadUrl } = await prepareFileUpload!(
+    blockId!,
     fileType,
     file
   )
@@ -79,7 +79,7 @@ export const imperativeUpload = async (
     signedId,
     downloadUrl
   }
-  uppy.getPlugin('XHRUpload').setOptions({
+  uppy.getPlugin('XHRUpload')!.setOptions({
     endpoint,
     headers
   })

@@ -29,7 +29,9 @@ describe('Dashboard', () => {
         fileType: 'image'
       }
 
-      const { container } = render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
+      const { container } = render(
+        <Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />
+      )
 
       expect(container.firstChild).toMatchSnapshot()
     })
@@ -43,8 +45,8 @@ describe('Dashboard', () => {
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      expect(screen.getByText(source.typeLabel)).toBeInTheDocument()
-      expect(screen.getByText(source.buttonText)).toBeInTheDocument()
+      expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
+      expect(screen.getByText(source.buttonText!)).toBeInTheDocument()
     })
   })
 
@@ -66,7 +68,9 @@ describe('Dashboard', () => {
         fileType: 'image'
       }
 
-      const { container } = render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
+      const { container } = render(
+        <Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />
+      )
 
       expect(container.firstChild).toMatchSnapshot()
     })
@@ -80,10 +84,10 @@ describe('Dashboard', () => {
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      expect(screen.getByText(source.typeLabel)).toBeInTheDocument()
-      expect(screen.getByText(source.buttonHint)).toBeInTheDocument()
-      expect(screen.getByText(source.buttonText)).toBeInTheDocument()
-      expect(screen.getByPlaceholderText(source.linkInputPlaceholder)).toBeInTheDocument()
+      expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
+      expect(screen.getByText(source.buttonHint!)).toBeInTheDocument()
+      expect(screen.getByText(source.buttonText!)).toBeInTheDocument()
+      expect(screen.getByPlaceholderText(source.linkInputPlaceholder!)).toBeInTheDocument()
     })
 
     it('do nothing if no link specified', () => {
@@ -96,7 +100,7 @@ describe('Dashboard', () => {
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      fireEvent.click(screen.getByText(source.buttonText))
+      fireEvent.click(screen.getByText(source.buttonText!))
 
       expect(options.onUploaded).toBeCalledTimes(0)
     })
@@ -112,8 +116,8 @@ describe('Dashboard', () => {
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      fireEvent.change(screen.getByPlaceholderText(source.linkInputPlaceholder), { target: { value: url } })
-      fireEvent.click(screen.getByText(source.buttonText))
+      fireEvent.change(screen.getByPlaceholderText(source.linkInputPlaceholder!), { target: { value: url } })
+      fireEvent.click(screen.getByText(source.buttonText!))
 
       expect(options.onUploaded).toBeCalledTimes(1)
       expect(options.onUploaded).toBeCalledWith({ action: 'add', url, meta: { source: 'external' } })
@@ -135,7 +139,9 @@ describe('Dashboard', () => {
         fileType: 'image'
       }
 
-      const { container } = render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
+      const { container } = render(
+        <Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />
+      )
 
       expect(container.firstChild).toMatchSnapshot()
     })
@@ -149,7 +155,7 @@ describe('Dashboard', () => {
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      expect(screen.getByText(source.typeLabel)).toBeInTheDocument()
+      expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
       expect(screen.getByRole('list')).toBeInTheDocument()
       expect(screen.getAllByRole('img')).toHaveLength(11)
     })
@@ -190,7 +196,7 @@ Array [
       fireEvent.click(screen.getByText('Remove'))
 
       expect(options.onUploaded).toHaveBeenCalledTimes(1)
-      expect(options.onUploaded).toBeCalledWith({ action: 'remove', color: null })
+      expect(options.onUploaded).toBeCalledWith({ action: 'remove', color: undefined })
     })
   })
 
@@ -213,7 +219,9 @@ Array [
         fileType: 'image'
       }
 
-      const { container } = render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
+      const { container } = render(
+        <Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />
+      )
 
       expect(container.firstChild).toMatchSnapshot()
     })
@@ -227,7 +235,7 @@ Array [
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      expect(screen.getByText(source.typeLabel)).toBeInTheDocument()
+      expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
       expect(screen.getByRole('group')).toBeInTheDocument()
     })
 
@@ -241,9 +249,9 @@ Array [
 
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
-      expect(screen.getByText(source.typeLabel)).toBeInTheDocument()
+      expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
       const list = screen.getByRole('list')
-      fireEvent.click(list.firstChild)
+      fireEvent.click(list.firstChild!)
 
       expect(screen.getAllByRole('group')).toHaveLength(2)
       expect(options.onUploaded).toHaveBeenCalledTimes(1)
@@ -277,7 +285,7 @@ Array [
       fireEvent.click(screen.getByText('Remove'))
 
       expect(options.onUploaded).toHaveBeenCalledTimes(1)
-      expect(options.onUploaded).toBeCalledWith({ action: 'remove', emoji: null })
+      expect(options.onUploaded).toBeCalledWith({ action: 'remove', emoji: {} })
     })
   })
 })

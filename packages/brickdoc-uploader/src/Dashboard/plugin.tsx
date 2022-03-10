@@ -98,7 +98,7 @@ export class DashboardPlugin extends BasePlugin {
     this.opts = opts
   }
 
-  install(): void {
+  override install(): void {
     const { target } = this.opts
 
     if (target) {
@@ -106,9 +106,9 @@ export class DashboardPlugin extends BasePlugin {
     }
   }
 
-  uninstall(): void {}
+  override uninstall(): void {}
 
-  mount(target, plugin): void {
+  mount(target: any, plugin: any): void {
     const callerPluginName = plugin.id
 
     const targetElement = findDOMElement(target)

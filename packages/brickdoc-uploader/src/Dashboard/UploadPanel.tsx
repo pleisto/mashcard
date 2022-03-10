@@ -15,12 +15,12 @@ interface UploadPanelProps {
 export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pluginId, pluginOptions }) => {
   React.useEffect(() => {
     const handleUploadSuccess = (file: UppyFile): void => {
-      pluginOptions.onUploaded({
+      pluginOptions.onUploaded!({
         action: 'add',
-        url: uploadMeta.current.blobKey,
-        signedId: uploadMeta.current.signedId,
-        viewUrl: uploadMeta.current.viewUrl,
-        downloadUrl: uploadMeta.current.downloadUrl,
+        url: uploadMeta.current!.blobKey,
+        signedId: uploadMeta.current!.signedId,
+        viewUrl: uploadMeta.current!.viewUrl,
+        downloadUrl: uploadMeta.current!.downloadUrl,
         meta: {
           name: file.name,
           size: file.size,
@@ -55,8 +55,8 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
 
   // TODO: handle error
   const handleUpload = async (file: File): Promise<void> => {
-    const { endpoint, headers, blobKey, viewUrl, signedId, downloadUrl } = await pluginOptions.prepareFileUpload(
-      pluginOptions.blockId,
+    const { endpoint, headers, blobKey, viewUrl, signedId, downloadUrl } = await pluginOptions.prepareFileUpload!(
+      pluginOptions.blockId!,
       pluginOptions.fileType,
       file
     )
@@ -66,7 +66,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
       signedId,
       downloadUrl
     }
-    uppy.getPlugin('XHRUpload').setOptions({
+    uppy.getPlugin('XHRUpload')!.setOptions({
       endpoint,
       headers
     })
@@ -77,11 +77,11 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
   }
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    const file = event.target.files[0]
+    const file = event.target!.files![0]
     // We clear the input after a file is selected, because otherwise
     // change event is not fired in Chrome and Safari when a file
     // with the same name is selected.
-    event.target.value = null
+    event.target.value = ''
 
     addFile(file)
     await handleUpload(file)
@@ -95,7 +95,7 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
     <div role="tabpanel" className="uploader-dashboard-upload-panel">
       <input
         className="dashboard-upload-file-input"
-        ref={input}
+        ref={input as any}
         type="file"
         multiple={false}
         accept={importSource.acceptType}
@@ -105,7 +105,8 @@ export const UploadPanel: React.FC<UploadPanelProps> = ({ importSource, uppy, pl
         data-testid={TEST_ID_ENUM.uploader.Dashboard.modules.upload.button.id}
         type="primary"
         onClick={handleChooseFile}
-        className="dashboard-panel-button">
+        className="dashboard-panel-button"
+      >
         {importSource.buttonText}
       </Button>
       <div className="dashboard-panel-hint">{importSource.buttonHint}</div>

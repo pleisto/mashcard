@@ -5,16 +5,15 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in brickdoc-settings.gemspec
 gemspec
 
-gem "rake", "~> 13.0"
+gem "rake", ">= 13.0"
 
-gem "rspec", "~> 3.0"
+gem "rspec", ">= 3.0"
 gem "rspec-activemodel-mocks"
 gem 'rspec_junit_formatter', '>= 0.4'
-gem "simplecov"
 
-gem "rubocop", "~> 1.7"
+gem "rubocop", ">= 1.7"
 
 gem "sqlite3"
 
-gem "rails", "~> 7.0"
+gem "rails", ">= 7.0"
 gem "lockbox", ">= 0.6.5"

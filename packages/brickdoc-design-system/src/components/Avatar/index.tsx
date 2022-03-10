@@ -108,11 +108,10 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
   return (
     <AvatarWrapper
       ref={avatarRef}
-      // @ts-expect-error
       css={{
         ...customSizeCss,
         ...initialsObj?.color,
-        ...style
+        ...(style as any)
       }}
       default={!src && !initials}
       shape={shape}

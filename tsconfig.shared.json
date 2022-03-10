@@ -1,15 +1,15 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "composite": true,
-    "target": "ESNext",
-    "module": "ESNext",
+    "lib": ["es2021", "dom"],
+    "target": "es2021",
+    "module": "es2022",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "jsx": "preserve",
     "skipLibCheck": true,
     "importHelpers": true,
     "sourceMap": true,
-    "declarationMap": true,
     "strict": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
@@ -18,10 +18,9 @@
     "emitDecoratorMetadata": true,
     "noEmitOnError": true,
     "useDefineForClassFields": true,
-    "incremental": true,
-    "allowJs": false,
-    "noEmit": false
+    "noFallthroughCasesInSwitch": true
   },
+  "exclude": ["**/node_modules"],
   "ts-node": {
     "swc": true,
     "compilerOptions": {

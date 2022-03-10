@@ -1,31 +1,3 @@
 {
-  "extends": "./tsconfig.shared.json",
-  "compilerOptions": { "outDir": "dist", "baseUrl": "." },
-  "include": ["**/*"],
-  "exclude": [
-    "packages/**/*",
-    "apps/**/*",
-    "tools/**/*",
-    "gems/**/*",
-    "dist/**/*",
-    "spec/dummy/plugins/**/*",
-    "gems/plugins/**/*"
-  ],
-  "references": [
-    { "path": "apps/client-web" },
-    { "path": "apps/landing-page" },
-    { "path": "apps/server-api" },
-    { "path": "packages/active-support" },
-    { "path": "packages/brickdoc-design-icons" },
-    { "path": "packages/brickdoc-design-system" },
-    { "path": "packages/brickdoc-editor" },
-    { "path": "packages/brickdoc-formula" },
-    { "path": "packages/brickdoc-schema" },
-    { "path": "packages/brickdoc-test-helper" },
-    { "path": "packages/brickdoc-uploader" },
-    { "path": "packages/cypherpunk" },
-    { "path": "packages/dotenv" },
-    { "path": "spec/dummy/plugins/dummy_plugin" },
-    { "path": "tools/devkit" }
-  ]
+  "extends": "./tsconfig.shared.json"
 }

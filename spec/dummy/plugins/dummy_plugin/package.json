@@ -10,8 +10,5 @@
   "types": "./dist/frontend/index.d.ts",
   "files": [
     "dist"
-  ],
-  "devDependencies": {
-    "typescript": ">=4.4.4"
-  }
+  ]
 }

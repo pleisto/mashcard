@@ -15,7 +15,6 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'simplecov'
 require 'vcr'
 
 RSpec.configure do |config|
