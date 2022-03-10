@@ -23,7 +23,7 @@
   "scripts": {
     "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
-    "lint:type": "tsc --incremental --noEmit",
+    "lint:type": "run -T tsc",
     "test:jest": "run -T jest"
   }
 }

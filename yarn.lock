@@ -13308,7 +13308,7 @@ __metadata:
     sodium-native: ^3.3.0
   bin:
     fastify-secure-session: genkey.js
-  checksum: c11ff76737554850f81fb2d92a3e878ab4c3a8acac334c3057f451ce9abdc3c28cd502828064673b7108a88a92d16f33d5b5a5b98669d800c9542273fc01c6f3
+  checksum: b4b1903983cf2345805abd031dfb0401a71f4b88dd5486d5ecee930c60e4d5de0bb3d1954707a49c74570a32d29f3d6058acb230f9a334a9f5dbf2c1375abaf4
   languageName: node
   linkType: hard
 

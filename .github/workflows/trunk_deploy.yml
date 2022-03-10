@@ -30,11 +30,6 @@ jobs:
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
-      - name: Setup NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: yarn
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

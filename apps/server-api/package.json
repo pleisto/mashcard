@@ -8,7 +8,7 @@
     "prisma": "ts-node --swc ./src/dotenvBin.ts prisma",
     "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
-    "lint:type": "tsc --incremental --noEmit"
+    "lint:type": "run -T tsc"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0-beta.0",

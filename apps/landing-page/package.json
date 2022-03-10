@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "TIMING=1 next lint",
     "lint:fix": "TIMING=1 next lint --fix",
-    "lint:type": "tsc --incremental --noEmit"
+    "lint:type": "run -T tsc"
   },
   "dependencies": {
     "@brickdoc/design-icons": "workspace:^",
