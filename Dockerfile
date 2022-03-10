@@ -28,7 +28,7 @@ RUN bundle install --retry 2 --jobs 4 \
 RUN NODE_ENV=$RAILS_ENV yarn dist
 RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files brickdoc@$VERSION upload-sourcemaps --ext map ./public/esm-bundle; fi
 
-RUN rm -rf node_modules .yarn apps/client-web dist public/esm-bundle/stats.json *.js *.json *.yml yarn.lock \
+RUN rm -rf node_modules .yarn apps/client-web dist public/esm-bundle/stats.json yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
   && rm -rf ./packages/* \
   && mkdir tmp/pids
