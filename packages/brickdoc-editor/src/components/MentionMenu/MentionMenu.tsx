@@ -2,7 +2,6 @@ import * as React from 'react'
 import { SuggestionProps } from '@tiptap/suggestion'
 import { PeopleItem, PeoplePanel } from './PeoplePanel/PeoplePanel'
 import { PageItem, PagePanel } from './PagePanel/PagePanel'
-import './MentionMenu.less'
 
 export interface MentionCommandsMenuProps extends Omit<SuggestionProps, 'items'> {
   activeCategory: 'people' | 'page'

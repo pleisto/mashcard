@@ -6,8 +6,8 @@ import { TocItem } from './TocBlock'
 import { name as UserBlockName } from '../../extensions/user/name'
 import { name as PageLinkName } from '../../extensions/pageLink/name'
 import { name as FormulaName } from '../../extensions/formula/name'
-import { UserRender } from '../User'
-import { PageLinkRender } from '../PageLink'
+import { User } from '../UserBlock'
+import { PageLink } from '../PageLinkBlock'
 import { FormulaRender } from '../../extensions/formula/FormulaBlock'
 
 export interface TocNode {
@@ -24,10 +24,10 @@ const createContentFromNode = (node: ProsemirrorNode): React.ReactNode => {
         content.push(node.text ?? null)
         break
       case UserBlockName:
-        content.push(<UserRender attributes={node.attrs} />)
+        content.push(<User attributes={node.attrs} />)
         break
       case PageLinkName:
-        content.push(<PageLinkRender attributes={node.attrs} />)
+        content.push(<PageLink attributes={node.attrs} />)
         break
       case FormulaName:
         content.push(<FormulaRender attributes={node.attrs as any} />)

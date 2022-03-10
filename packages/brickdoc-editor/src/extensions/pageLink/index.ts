@@ -1,6 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { PageLink } from '../../components'
+import { PageLinkBlock } from '../../components'
 import { name } from './name'
 
 declare module '@tiptap/core' {
@@ -19,8 +19,9 @@ declare module '@tiptap/core' {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface PageLinkBlockOptions {}
+export interface PageLinkBlockOptions {
+  size?: 'sm' | 'md'
+}
 
 export const PageLinkBlockExtension = Node.create<PageLinkBlockOptions>({
   name,
@@ -54,7 +55,7 @@ export const PageLinkBlockExtension = Node.create<PageLinkBlockOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(PageLink)
+    return ReactNodeViewRenderer(PageLinkBlock)
   },
 
   addCommands() {

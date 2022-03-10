@@ -1,11 +1,15 @@
-import { FC, MouseEvent, useCallback, useContext, useEffect, useState } from 'react'
+import { FC, MouseEvent, useCallback, useContext, useEffect } from 'react'
 import Document from '@tiptap/extension-document'
 import Text from '@tiptap/extension-text'
 import Paragraph from '@tiptap/extension-paragraph'
-import { useEditor, EditorContent } from '@tiptap/react'
+import { useEditor, EditorContent, JSONContent } from '@tiptap/react'
 import { Avatar, Button, styled, theme } from '@brickdoc/design-system'
-import { EditorContext } from '../../context/EditorContext'
 import { BrickdocEventBus, DiscussionMarkInactive } from '@brickdoc/schema'
+import { EditorContext } from '../../context/EditorContext'
+import { usePlaceholder } from './usePlaceholder'
+import { EditorDataSourceContext } from '../../dataSource/DataSource'
+import { UserBlockExtension, PageLinkBlockExtension, MentionCommandsExtension } from '../../extensions'
+import { EventHandlerExtension } from './eventHandler'
 
 export interface CommentEditorProps {
   markId: string
@@ -65,36 +69,55 @@ const EditorAvatar = styled(Avatar, {
 
 const DRAFT_KEY = (markId: string) => `brk-comment-draft-${markId}`
 
+const getDraft = (markId: string): JSONContent | undefined => {
+  try {
+    const local = window.localStorage.getItem(DRAFT_KEY(markId))
+    if (!local) return undefined
+    return JSON.parse(local)
+  } catch (error) {
+    console.error(error)
+  }
+
+  return undefined
+}
+
+const setDraft = (markId: string, content: JSONContent): void => {
+  try {
+    window.localStorage.setItem(DRAFT_KEY(markId), JSON.stringify(content))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const CommentEditor: FC<CommentEditorProps> = ({ markId }) => {
   const { t } = useContext(EditorContext)
-  const placeholderText = t('discussion.editor.placeholder')
+  const editorDataSource = useContext(EditorDataSourceContext)
   const editor = useEditor({
     autofocus: 'end',
-    content: window.localStorage.getItem(DRAFT_KEY(markId)) ?? '',
-    extensions: [Document, Text, Paragraph]
+    content: getDraft(markId),
+    extensions: [
+      Document,
+      Text,
+      Paragraph,
+      EventHandlerExtension,
+      MentionCommandsExtension.configure({
+        editorDataSource
+      }),
+      UserBlockExtension.configure({
+        size: 'sm'
+      }),
+      PageLinkBlockExtension.configure({
+        size: 'sm'
+      })
+    ]
   })
-  const [placeholder, setPlaceholder] = useState(editor?.isEmpty ? placeholderText : '')
-  useEffect(() => {
-    const checkPlaceholder = () => {
-      if (editor?.isDestroyed) return
-      if (editor?.isEmpty && !placeholder) setPlaceholder(placeholderText)
-      if (!editor?.isEmpty && placeholder) setPlaceholder('')
-    }
-
-    editor?.on('update', checkPlaceholder).on('create', checkPlaceholder)
-
-    return () => {
-      editor?.off('update', checkPlaceholder).off('create', checkPlaceholder)
-    }
-  }, [editor, placeholder, placeholderText])
+  const [placeholder] = usePlaceholder(editor)
 
   useEffect(() => {
     const onContentUpdate = () => {
-      window.localStorage.setItem(DRAFT_KEY(markId), editor?.getHTML() ?? '')
+      setDraft(markId, editor?.getJSON() ?? [])
     }
-
     editor?.on('update', onContentUpdate)
-
     return () => {
       editor?.off('update', onContentUpdate)
     }
@@ -119,14 +142,18 @@ export const CommentEditor: FC<CommentEditorProps> = ({ markId }) => {
     [markId]
   )
 
+  const handleContainerClick = useCallback((event: MouseEvent) => {
+    event.stopPropagation()
+  }, [])
+
   return (
     <>
-      <EditorContainer>
+      <EditorContainer onClick={handleContainerClick}>
         <EditorAvatar size="sm" />
         <EditorInput editor={editor} data-placeholder={placeholder} />
       </EditorContainer>
       {!editor?.isEmpty && (
-        <ActionsRow>
+        <ActionsRow onClick={handleContainerClick}>
           <Button onClick={handleCancel} size="sm">
             {t('discussion.editor.cancel')}
           </Button>

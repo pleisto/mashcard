@@ -1,6 +1,6 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { User } from '../../components'
+import { UserBlock } from '../../components'
 import { name } from './name'
 
 declare module '@tiptap/core' {
@@ -14,8 +14,9 @@ declare module '@tiptap/core' {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface UserBlockOptions {}
+export interface UserBlockOptions {
+  size?: 'sm' | 'md'
+}
 
 export const UserBlockExtension = Node.create<UserBlockOptions>({
   name,
@@ -49,7 +50,7 @@ export const UserBlockExtension = Node.create<UserBlockOptions>({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(User)
+    return ReactNodeViewRenderer(UserBlock)
   },
 
   addCommands() {

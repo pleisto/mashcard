@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, Dispatch, SetStateAction } from 'react'
+import { useState, useEffect, useContext, Dispatch, SetStateAction, useRef } from 'react'
 import { BrickdocEventBus, DiscussionListToggle, ExplorerMenuTrigger } from '@brickdoc/schema'
 import { EditorDataSourceContext } from '../../dataSource/DataSource'
 import { selectDiscussionMark } from '../../helpers/discussion'
@@ -10,15 +10,19 @@ export function useDiscussionListVisible(
 ): [boolean, Dispatch<SetStateAction<boolean>>] {
   const { pageQuery } = useContext(EditorDataSourceContext)
   const [visible, setVisible] = useState(false)
+  const latestPageQuery = useRef<URLSearchParams | null>()
 
   // open discussion list when open an url with comment info
   useEffect(() => {
     const markId = pageQuery?.get('discussionMarkId')
+    if (latestPageQuery.current?.get('discussionMarkId') === markId) return
+
     const commentedNode = commentedNodes.find(node => node.markId === markId)
     if (!commentedNode) return
 
     setVisible(true)
     selectDiscussionMark(commentedNode.domNode)
+    latestPageQuery.current = pageQuery
 
     // wait for drawer open animation
     setTimeout(() => {

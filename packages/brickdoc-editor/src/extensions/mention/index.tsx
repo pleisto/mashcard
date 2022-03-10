@@ -37,7 +37,7 @@ export const MentionCommandsExtension = Extension.create<MentionCommandsOptions>
       }
       return {
         people:
-          this.options.editorDataSource.collaborators
+          this.options.editorDataSource.spaceMembers
             .filter(item => (item.name ?? '').toLowerCase().includes(searchValue))
             .map(item => ({
               name: item.name,

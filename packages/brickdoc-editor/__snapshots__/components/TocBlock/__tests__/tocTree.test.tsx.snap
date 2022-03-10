@@ -165,7 +165,7 @@ Object {
             heading
           </React.Fragment>,
           <React.Fragment>
-            <PageLinkRender
+            <PageLink
               attributes={
                 Object {
                   "pageLink": Object {
@@ -176,7 +176,7 @@ Object {
             />
           </React.Fragment>,
           <React.Fragment>
-            <UserRender
+            <User
               attributes={
                 Object {
                   "people": Object {

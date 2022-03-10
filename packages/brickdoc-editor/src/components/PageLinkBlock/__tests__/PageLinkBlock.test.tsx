@@ -1,8 +1,8 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
-import { PageLink } from '../PageLink'
+import { PageLinkBlock } from '../PageLinkBlock'
 
-describe('PageLink', () => {
+describe('PageLinkBlock', () => {
   const props: any = {
     editor: {},
     node: {
@@ -19,7 +19,7 @@ describe('PageLink', () => {
   it('matches correct snapshot', () => {
     const { container } = render(
       <Router>
-        <PageLink {...props} />
+        <PageLinkBlock {...props} />
       </Router>
     )
     expect(container.firstChild).toMatchSnapshot()
@@ -28,7 +28,7 @@ describe('PageLink', () => {
   it('renders page link normally', () => {
     render(
       <Router>
-        <PageLink {...props} />
+        <PageLinkBlock {...props} />
       </Router>
     )
     expect(screen.getByText(props.node.attrs.page.title)).toBeInTheDocument()

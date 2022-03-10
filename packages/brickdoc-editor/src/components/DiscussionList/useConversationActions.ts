@@ -1,5 +1,5 @@
 import { Dispatch, MouseEventHandler, RefCallback, RefObject, SetStateAction, useCallback } from 'react'
-import { focusDiscussionMark, leaveDiscussionMark, selectDiscussionMark } from '../../helpers/discussion'
+import { hoverDiscussionMark, leaveDiscussionMark, selectDiscussionMark } from '../../helpers/discussion'
 import { CommentedNode } from './useCommentedNodes'
 
 export function useConversationActions(
@@ -33,7 +33,7 @@ export function useConversationActions(
     (commentedNode: CommentedNode): MouseEventHandler =>
       () => {
         if (activeMarkId === commentedNode.markId) return
-        focusDiscussionMark(commentedNode.domNode)
+        hoverDiscussionMark(commentedNode.domNode)
       },
     [activeMarkId]
   )

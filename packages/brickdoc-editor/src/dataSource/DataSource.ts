@@ -11,6 +11,12 @@ export interface WebsiteMeta {
   icon?: string
 }
 
+export interface SpaceMember {
+  name: string | null | undefined
+  domain: string
+  avatar: string | undefined
+}
+
 export interface Collaborator {
   name: string | null | undefined
   domain: string
@@ -64,6 +70,8 @@ export interface EditorDatabase {
 
   collaborators: Collaborator[]
 
+  spaceMembers: SpaceMember[]
+
   domain: string
 
   rootId: string
@@ -84,6 +92,7 @@ export class EditorDataSource {
     settings: {},
     featureFlags: {},
     collaborators: [],
+    spaceMembers: [],
     documentPages: [],
     explorerMenu: {
       show: (items: ExplorerMenuGroup[]) => {
@@ -217,6 +226,15 @@ export class EditorDataSource {
   set documentPages(value: EditorDatabase['documentPages']) {
     this.database.documentPages = value
     this.invokeListeners('documentPages')
+  }
+
+  get spaceMembers(): EditorDatabase['spaceMembers'] {
+    return this.database.spaceMembers
+  }
+
+  set spaceMembers(value: EditorDatabase['spaceMembers']) {
+    this.database.spaceMembers = value
+    this.invokeListeners('spaceMembers')
   }
 
   get collaborators(): EditorDatabase['collaborators'] {
