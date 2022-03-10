@@ -1,9 +1,7 @@
 import { BaseFunctionClause, FunctionContext, NumberResult } from '../types'
 
-const sleep = async (delay: number) => await new Promise(resolve => setTimeout(resolve, delay))
-
 export const SLEEP = async (ctx: FunctionContext, number: NumberResult): Promise<NumberResult> => {
-  await sleep(number.result)
+  await new Promise(resolve => setTimeout(resolve, number.result))
   return number
 }
 

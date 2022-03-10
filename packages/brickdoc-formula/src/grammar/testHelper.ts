@@ -40,6 +40,7 @@ export const quickInsert = async ({ ctx }: { ctx: FunctionContext }): Promise<vo
     cst,
     type,
     version,
+    isAsync: false,
     async: false,
     kind: kind ?? 'constant',
     codeFragments,

@@ -53,6 +53,15 @@ export const maybeEncodeString = (str: string): [boolean, string] => {
   return [false, encodeString(str)]
 }
 
+export const shouldReturnEarly = (result: AnyTypeResult | undefined): boolean => {
+  if (!result) return false
+  if (['Error', 'Blank', 'Pending'].includes(result.type)) {
+    return true
+  }
+
+  return false
+}
+
 const encodeString = (str: string): string => {
   return `"${str}"`
 }
@@ -90,7 +99,7 @@ export const intersectType = (
     return { errorMessages: [], newType: contextResultType }
   }
 
-  if (contextResultType === 'any') {
+  if (contextResultType === 'any' || contextResultType === 'Pending') {
     return {
       errorMessages: [],
       newType: expectedArgumentType instanceof Array ? expectedArgumentType[0] : expectedArgumentType

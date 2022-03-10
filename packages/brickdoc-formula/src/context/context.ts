@@ -47,7 +47,6 @@ import {
   block2name,
   spreadsheet2name
 } from '../grammar/convert'
-import { FORMULA_PARSER_VERSION } from '../version'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import { FormulaParser } from '../grammar/parser'
@@ -215,7 +214,7 @@ export class FormulaContext implements ContextInterface {
       return { type: 'Error', result: `Function ${name} not found`, errorKind: 'fatal' }
     }
 
-    return await(clause.reference as (ctx: FunctionContext, ...args: any[]) => Promise<any>)(ctx, ...args)
+    return await (clause.reference as (ctx: FunctionContext, ...args: any[]) => Promise<any>)(ctx, ...args)
   }
 
   public completions(namespaceId: NamespaceId, variableId: VariableId | undefined): Completion[] {
@@ -325,11 +324,17 @@ export class FormulaContext implements ContextInterface {
   }
 
   public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
-    return this.context[variableKey(namespaceId, variableId)]
+    const v = this.context[variableKey(namespaceId, variableId)]
+    if (!v) return undefined
+    v.subscribePromise()
+    return v
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {
-    return Object.values(this.context).find(v => v.t.namespaceId === namespaceId && v.t.name === name)
+    const v = Object.values(this.context).find(v => v.t.namespaceId === namespaceId && v.t.name === name)
+    if (!v) return undefined
+    v.subscribePromise()
+    return v
   }
 
   public listVariables(namespaceId: NamespaceId): VariableInterface[] {
@@ -363,14 +368,7 @@ export class FormulaContext implements ContextInterface {
     }
 
     // 5. persist
-    if (oldVariable) {
-      await variable.invokeBackendUpdate()
-    } else {
-      if (variable.t.version < FORMULA_PARSER_VERSION) {
-        await variable.interpret({ ctx: {}, arguments: [] })
-      }
-      await variable.invokeBackendCreate()
-    }
+    await variable.invokeBackendCommit()
 
     // 6. broadcast update
     variable.afterUpdate()
@@ -387,7 +385,7 @@ export class FormulaContext implements ContextInterface {
       this.formulaNames = this.formulaNames.filter(n => !(n.kind === 'Variable' && n.key === variableId))
 
       if (this.backendActions) {
-        await this.backendActions.deleteVariable(variable.buildFormula())
+        await this.backendActions.delete(variable.buildFormula())
       }
 
       variable.afterUpdate()

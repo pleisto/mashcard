@@ -20,17 +20,9 @@ export const BlockSyncBatch = gql`
   }
 `
 
-export const FormulaCreate = gql`
-  mutation formulaCreate($input: FormulaCreateInput!) {
-    formulaCreate(input: $input) {
-      errors
-    }
-  }
-`
-
-export const FormulaUpdate = gql`
-  mutation formulaUpdate($input: FormulaUpdateInput!) {
-    formulaUpdate(input: $input) {
+export const FormulaCommit = gql`
+  mutation formulaCommit($input: FormulaCommitInput!) {
+    formulaCommit(input: $input) {
       errors
     }
   }

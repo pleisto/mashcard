@@ -9,7 +9,8 @@ import {
   VariableData,
   VariableInterface,
   VariableValue,
-  interpretAsync
+  interpretAsync,
+  FormulaType
 } from '@brickdoc/formula'
 import {
   BrickdocEventBus,
@@ -203,6 +204,17 @@ export const useFormula = ({
     [formulaId, rootId]
   )
 
+  const updateDefaultName = React.useCallback(
+    (type: FormulaType) => {
+      if (!formulaContext) return
+      if (type === 'any' && defaultNameRef.current && defaultNameRef.current !== 'any') return
+      const newDefaultName = formulaContext.getDefaultVariableName(rootId, type)
+      defaultNameRef.current = newDefaultName
+      setDefaultName(newDefaultName)
+    },
+    [formulaContext, rootId]
+  )
+
   const doUnselectedFormula = React.useCallback(() => {
     if (!selectFormula.current) return
     BrickdocEventBus.dispatch(
@@ -217,59 +229,52 @@ export const useFormula = ({
     selectFormula.current = undefined
   }, [formulaId, rootId])
 
-  const doCalculate = React.useCallback((): void => {
-    if (!formulaContext) {
-      devLog('formula no input!')
-      return
-    }
-
-    const inputIsEmpty = ['', '='].includes(editorContentRef.current.input.trim())
-
-    const realInputs = positionBasedContentArrayToInput(
-      fetchJSONContentArray(editorContentRef.current.content),
-      editorContentRef.current.position
-    )
-
-    const variableId = variableRef.current ? variableRef.current.t.variableId : formulaId
-    const meta = {
-      namespaceId: rootId,
-      variableId,
-      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-      name: nameRef.current || defaultNameRef.current,
-      input: editorContentRef.current.input,
-      position: realInputs.prevText.length,
-      type: formulaType
-    }
-    const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
-    const parseResult = parse({ ctx })
-    const completions = parseResult.completions
-    const newVariable = interpretAsync({ parseResult, ctx, variable: variableRef.current })
-
-    setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0, kind: 'Completion' })
-    doUnselectedFormula()
-
-    if (inputIsEmpty || parseResult.valid) {
-      editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, parseResult.position)
-      // console.log('replace editorContent', editorContentRef.current, newVariable)
-      replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
-    }
-
-    variableRef.current = newVariable
-    setVariableT(newVariable.t)
-
-    // devLog({ variable, ref: variableRef.current, finalInput, inputIsEmpty, parseResult, newVariable })
-
-    void (newVariable.t.variableValue as Promise<VariableValue>).then(result => {
-      setVariableT({ ...variableRef.current!.t })
-
-      if (result.success) {
-        const type = result.result.type
-        const newDefaultName = formulaContext.getDefaultVariableName(rootId, type)
-        defaultNameRef.current = newDefaultName
-        setDefaultName(newDefaultName)
+  const doCalculate = React.useCallback(
+    (skipAsync: boolean): void => {
+      if (!formulaContext) {
+        devLog('formula no input!')
+        return
       }
-    })
-  }, [doUnselectedFormula, formulaContext, formulaId, formulaIsNormal, formulaType, rootId])
+
+      const inputIsEmpty = ['', '='].includes(editorContentRef.current.input.trim())
+
+      const realInputs = positionBasedContentArrayToInput(
+        fetchJSONContentArray(editorContentRef.current.content),
+        editorContentRef.current.position
+      )
+
+      const variableId = variableRef.current ? variableRef.current.t.variableId : formulaId
+      const meta = {
+        namespaceId: rootId,
+        variableId,
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+        name: nameRef.current || defaultNameRef.current,
+        input: editorContentRef.current.input,
+        position: realInputs.prevText.length,
+        type: formulaType
+      }
+      const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
+      const parseResult = parse({ ctx })
+      const { completions, expressionType, success } = parseResult
+      updateDefaultName(success ? expressionType : 'Error')
+      const newVariable = interpretAsync({ parseResult, ctx, skipAsync, variable: variableRef.current })
+
+      setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0, kind: 'Completion' })
+      doUnselectedFormula()
+
+      if (inputIsEmpty || parseResult.valid) {
+        editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, parseResult.position)
+        // console.log('replace editorContent', editorContentRef.current, newVariable)
+        replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
+      }
+
+      variableRef.current = newVariable
+      setVariableT(newVariable.t)
+
+      // devLog({ variable, ref: variableRef.current, finalInput, inputIsEmpty, parseResult, newVariable })
+    },
+    [doUnselectedFormula, formulaContext, formulaId, formulaIsNormal, formulaType, rootId, updateDefaultName]
+  )
 
   const handleSelectActiveCompletion = React.useCallback((): void => {
     const currentCompletion = completion.activeCompletion
@@ -360,7 +365,7 @@ export const useFormula = ({
       finalInput,
       finalInputAfterEqual
     })
-    void doCalculate()
+    void doCalculate(false)
   }, [completion.activeCompletion, doCalculate, formulaId, formulaIsNormal, rootId])
 
   const isDisableSave = React.useCallback((): boolean => {
@@ -381,7 +386,7 @@ export const useFormula = ({
       const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent))
       const value = formulaType === 'normal' ? `=${newInput}` : newInput
       editorContentRef.current = { content: jsonContent, input: value, position: editorPosition }
-      BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId }))
+      BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId, skipAsync: false }))
     },
     [formulaId, formulaType, rootId]
   )
@@ -548,7 +553,7 @@ export const useFormula = ({
     const listener = BrickdocEventBus.subscribe(
       FormulaCalculateTrigger,
       e => {
-        doCalculate()
+        doCalculate(e.payload.skipAsync)
       },
       {
         eventId: `${rootId},${formulaId}`,
@@ -563,9 +568,16 @@ export const useFormula = ({
       FormulaUpdatedViaId,
       e => {
         variableRef.current = e.payload
-        editorContentRef.current = fetchEditorContent(e.payload, formulaIsNormal, 0)
-        setVariableT(e.payload.t)
-        setSavedVariableT(e.payload.t)
+        setVariableT(variableRef.current!.t)
+        if (!variableRef.current?.isDraft()) {
+          setSavedVariableT(variableRef.current!.t)
+        }
+        editorContentRef.current = fetchEditorContent(e.payload, formulaIsNormal, editorContentRef.current.position)
+
+        if (formulaContext && variableRef.current?.latestWaitingPromiseState?.state === 'notifying') {
+          const result = variableRef.current.t.variableValue as VariableValue
+          updateDefaultName(result.success ? result.result.type : 'Error')
+        }
       },
       {
         eventId: `${rootId},${formulaId}`,
@@ -573,7 +585,7 @@ export const useFormula = ({
       }
     )
     return () => listener.unsubscribe()
-  }, [formulaId, formulaIsNormal, rootId])
+  }, [formulaContext, formulaId, formulaIsNormal, rootId, updateDefaultName])
 
   return {
     variableT,

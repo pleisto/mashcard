@@ -19,9 +19,10 @@ export const dumpDisplayResultForPersist = async (t: VariableData): Promise<Vari
     definition: t.definition,
     result: dumpValue(value.result) as AnyTypeResult,
     type: t.type,
+    isAsync: t.isAsync,
     kind: t.kind,
     version: VARIABLE_VERSION,
-    display: t.async ? 'Loading...' : displayValue(t.variableValue.result, ''),
+    display: displayValue(fetchResult(t), ''),
     meta: {
       namespaceId: t.namespaceId,
       variableId: t.variableId,
@@ -37,10 +38,11 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   return {
     definition: t.definition,
     result: fetchResult(t),
+    isAsync: t.isAsync,
     type: t.type,
     kind: t.kind,
     version: VARIABLE_VERSION,
-    display: t.async ? 'Loading...' : displayValue(t.variableValue.result, ''),
+    display: displayValue(fetchResult(t), ''),
     meta: {
       namespaceId: t.namespaceId,
       variableId: t.variableId,
@@ -95,6 +97,8 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
       return '#<Cst>'
     case 'Blank':
       return `#N/A`
+    case 'Pending':
+      return v.result
   }
 
   return JSON.stringify(v.result)
@@ -104,39 +108,39 @@ export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableD
   return { ...displayResult, result: loadValue(ctx, displayResult.result) as any }
 }
 
-export const dumpValue = (cacheValue: BaseResult): BaseResult => {
+export const dumpValue = (result: BaseResult): BaseResult => {
   if (
-    cacheValue.result instanceof ColumnClass ||
-    cacheValue.result instanceof BlockClass ||
-    cacheValue.result instanceof ButtonClass ||
-    cacheValue.result instanceof SelectClass ||
-    cacheValue.result instanceof SwitchClass
+    result.result instanceof ColumnClass ||
+    result.result instanceof BlockClass ||
+    result.result instanceof ButtonClass ||
+    result.result instanceof SelectClass ||
+    result.result instanceof SwitchClass
   ) {
-    return { type: cacheValue.type, result: cacheValue.result.persistence() }
+    return { type: result.type, result: result.result.persistence() }
   }
 
-  if (cacheValue.result instanceof SpreadsheetClass) {
+  if (result.result instanceof SpreadsheetClass) {
     return {
-      type: cacheValue.type,
-      result: cacheValue.result.persistAll()
+      type: result.type,
+      result: result.result.persistAll()
     }
   }
 
-  return cacheValue
+  return result
 }
 
-export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyTypeResult => {
-  if (cacheValue.type === 'Date' && !(cacheValue.result instanceof Date)) {
+export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResult => {
+  if (result.type === 'Date' && !(result.result instanceof Date)) {
     return {
       type: 'Date',
-      result: new Date(cacheValue.result)
+      result: new Date(result.result)
     }
   }
 
-  if (cacheValue.type === 'Spreadsheet' && !(cacheValue.result instanceof SpreadsheetClass)) {
-    if (cacheValue.result.dynamic) {
+  if (result.type === 'Spreadsheet' && !(result.result instanceof SpreadsheetClass)) {
+    if (result.result.dynamic) {
       const { blockId, spreadsheetName, columns, rows, cells }: SpreadsheetDynamicPersistence =
-        cacheValue.result.persistence!
+        result.result.persistence!
       return {
         type: 'Spreadsheet',
         result: new SpreadsheetClass({
@@ -159,45 +163,45 @@ export const loadValue = (ctx: FunctionContext, cacheValue: BaseResult): AnyType
         })
       }
     } else {
-      const spreadsheet = ctx.formulaContext.findSpreadsheet(cacheValue.result.blockId)
+      const spreadsheet = ctx.formulaContext.findSpreadsheet(result.result.blockId)
       if (spreadsheet) {
         return { type: 'Spreadsheet', result: spreadsheet }
       } else {
-        return { type: 'Error', result: `Spreadsheet ${cacheValue.result.blockId} not found`, errorKind: 'deps' }
+        return { type: 'Error', result: `Spreadsheet ${result.result.blockId} not found`, errorKind: 'deps' }
       }
     }
   }
 
-  if (cacheValue.type === 'Column' && !(cacheValue.result instanceof ColumnClass)) {
-    const spreadsheet = ctx.formulaContext.findSpreadsheet(cacheValue.result.namespaceId)
+  if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {
+    const spreadsheet = ctx.formulaContext.findSpreadsheet(result.result.namespaceId)
     if (spreadsheet) {
-      return { type: 'Column', result: new ColumnClass(spreadsheet, cacheValue.result) }
+      return { type: 'Column', result: new ColumnClass(spreadsheet, result.result) }
     } else {
-      return { type: 'Error', result: `Spreadsheet ${cacheValue.result.namespaceId} not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Spreadsheet ${result.result.namespaceId} not found`, errorKind: 'deps' }
     }
   }
 
-  if (cacheValue.type === 'Block' && !(cacheValue.result instanceof BlockClass)) {
-    const blockResult = new BlockClass(ctx.formulaContext, cacheValue.result)
+  if (result.type === 'Block' && !(result.result instanceof BlockClass)) {
+    const blockResult = new BlockClass(ctx.formulaContext, result.result)
     return { type: 'Block', result: blockResult }
   }
 
-  if (cacheValue.type === 'Button' && !(cacheValue.result instanceof ButtonClass)) {
-    const buttonResult = new ButtonClass(ctx, cacheValue.result)
+  if (result.type === 'Button' && !(result.result instanceof ButtonClass)) {
+    const buttonResult = new ButtonClass(ctx, result.result)
     return { type: 'Button', result: buttonResult }
   }
 
-  if (cacheValue.type === 'Switch' && !(cacheValue.result instanceof SwitchClass)) {
-    const switchResult = new SwitchClass(ctx, cacheValue.result)
+  if (result.type === 'Switch' && !(result.result instanceof SwitchClass)) {
+    const switchResult = new SwitchClass(ctx, result.result)
     return { type: 'Switch', result: switchResult }
   }
 
-  if (cacheValue.type === 'Select' && !(cacheValue.result instanceof SelectClass)) {
-    const selectResult = new SelectClass(ctx, cacheValue.result)
+  if (result.type === 'Select' && !(result.result instanceof SelectClass)) {
+    const selectResult = new SelectClass(ctx, result.result)
     return { type: 'Select', result: selectResult }
   }
 
-  // devLog({ cacheValue })
+  // devLog({ result })
 
-  return cacheValue as AnyTypeResult
+  return result as AnyTypeResult
 }

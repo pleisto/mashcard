@@ -21,15 +21,6 @@ const variableWithNames = variableIds.map((id, index) => ({ variableId: id, name
 
 const interpretContext = { ctx: {}, arguments: [] }
 
-const asyncForEach = async (
-  array: string | any[],
-  callback: { (meta: VariableMetadata): Promise<void>; (arg0: any, arg1: number, arg2: any): any }
-): Promise<void> => {
-  for (let index = 0; index < array.length; index++) {
-    await callback(array[index], index, array)
-  }
-}
-
 const metas: VariableMetadata[] = [
   { name: 'num0', input: '=1' }, // num0 = 1
   { name: 'num1', input: '=2' }, // num1 = 2
@@ -53,9 +44,9 @@ describe('Dependency', () => {
   beforeEach(async () => {
     formulaContext.resetFormula()
 
-    await asyncForEach(metas, async (meta: VariableMetadata) => {
+    for (const meta of metas) {
       await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
-    })
+    }
   })
 
   it('snapshot', async () => {
@@ -97,34 +88,46 @@ describe('Dependency', () => {
   })
 
   it('modify num0 => number', async () => {
+    jest.useRealTimers()
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
     await num0.updateDefinition('=30')
+    await new Promise(resolve => setTimeout(resolve, 50))
+
     expect((num0.t.variableValue as VariableValue).result.result).toEqual(30)
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
     expect((num2.t.variableValue as VariableValue).result.result).toEqual(30)
+    jest.clearAllTimers()
   })
 
   it('modify num0 => invalid', async () => {
+    jest.useRealTimers()
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
     await num0.updateDefinition('=30foobar')
+    await new Promise(resolve => setTimeout(resolve, 50))
+
     expect((num0.t.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
     expect((num2.t.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
 
     await num0.updateDefinition('=233')
+    await new Promise(resolve => setTimeout(resolve, 50))
     expect((num0.t.variableValue as VariableValue).result.result).toEqual(233)
     expect((num2.t.variableValue as VariableValue).result.result).toEqual(233)
+    jest.clearAllTimers()
   })
 
   it('modify num0 => boolean', async () => {
+    jest.useRealTimers()
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
     await num0.updateDefinition('=true')
     expect((num0.t.variableValue as VariableValue).result.result).toEqual(true)
+
+    await new Promise(resolve => setTimeout(resolve, 50))
 
     const num4 = formulaContext.findVariableById(namespaceId, variableIds[4])!
     expect((num4.t.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
@@ -136,11 +139,12 @@ describe('Dependency', () => {
 
     // const num1 = formulaContext.findVariable(namespaceId, variableIds[1])!
     // num3 = num2 + num1 = 3
-    // TODO fix this
-    expect((num3.t.variableValue as VariableValue).result.result).toEqual(3)
+    expect((num3.t.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
+    jest.clearAllTimers()
   })
 
   it('dependency automatic update', async () => {
+    jest.useRealTimers()
     // num1 = 2 -> num1 = num0 * 2 + 100 = 102
     const input = `=#${namespaceId}.num0 * 2 + 100`
     const meta: VariableMetadata = {
@@ -162,12 +166,14 @@ describe('Dependency', () => {
     const variable = await interpretSync({ ctx, parseResult })
     await formulaContext.commitVariable({ variable })
 
+    await new Promise(resolve => setTimeout(resolve, 50))
+
     expect(
       (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue as VariableValue).result.result
-    ).toEqual(5) // TODO 105
+    ).toEqual(105)
     expect(
       (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue as VariableValue).result.result
-    ).toEqual(4) // TODO 104
+    ).toEqual(104)
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
     expect(
       Object.values(formulaContext.context).map(v => ({
@@ -177,5 +183,7 @@ describe('Dependency', () => {
         execEndTime: null
       }))
     ).toMatchSnapshot()
+
+    jest.clearAllTimers()
   })
 })

@@ -25,19 +25,15 @@ Object {
     },
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
-    },
-    Object {
-      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
     },
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
+      "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
     },
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-      "variableId": "f78cb1af-3333-4d8b-8cd4-4e8a7da3a373",
+      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
     },
   ],
   "#9dda8306-dbe1-49d3-868d-1a7c86f27328.cd0755b8-0000-4326-876d-853e59cb0259": Array [
@@ -55,26 +51,18 @@ Object {
     },
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
-    },
-    Object {
-      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "variableId": "74d1a0a2-4444-407b-a470-ac6ae1f3e8e2",
-    },
-    Object {
-      "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
-      "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
     },
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
     },
-  ],
-  "#9dda8306-dbe1-49d3-868d-1a7c86f27328.f78cb1af-3333-4d8b-8cd4-4e8a7da3a373": Array [
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
     },
+  ],
+  "#9dda8306-dbe1-49d3-868d-1a7c86f27328.f78cb1af-3333-4d8b-8cd4-4e8a7da3a373": Array [
     Object {
       "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "variableId": "a17872fd-5555-4fe1-9cc9-57169a46b645",
@@ -117,6 +105,7 @@ Array [
     "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "constant",
     "name": "num0",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -126,10 +115,6 @@ Array [
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
     "variableNameDependencies": Array [],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 1,
-        "type": "number",
-      },
       "result": Object {
         "result": 1,
         "type": "number",
@@ -262,6 +247,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num1",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -281,10 +267,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 102,
-        "type": "number",
-      },
       "result": Object {
         "result": 102,
         "type": "number",
@@ -337,6 +319,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num2",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -356,10 +339,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 1,
-        "type": "number",
-      },
       "result": Object {
         "result": 1,
         "type": "number",
@@ -448,7 +427,7 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
-    "dirty": true,
+    "dirty": false,
     "execEndTime": null,
     "execStartTime": null,
     "flattenVariableDependencies": Array [
@@ -466,6 +445,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num3",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -493,12 +473,8 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 3,
-        "type": "number",
-      },
       "result": Object {
-        "result": 3,
+        "result": 103,
         "type": "number",
       },
       "success": true,
@@ -599,6 +575,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num4",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -626,10 +603,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 2,
-        "type": "number",
-      },
       "result": Object {
         "result": 2,
         "type": "number",
@@ -786,6 +759,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num5",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -821,12 +795,8 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 5,
-        "type": "number",
-      },
       "result": Object {
-        "result": 5,
+        "result": 105,
         "type": "number",
       },
       "success": true,
@@ -913,7 +883,7 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
-    "dirty": true,
+    "dirty": false,
     "execEndTime": null,
     "execStartTime": null,
     "flattenVariableDependencies": Array [
@@ -935,6 +905,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num6",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -962,12 +933,8 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 4,
-        "type": "number",
-      },
       "result": Object {
-        "result": 4,
+        "result": 104,
         "type": "number",
       },
       "success": true,
@@ -1066,6 +1033,7 @@ Array [
     "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "constant",
     "name": "num0",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1075,10 +1043,6 @@ Array [
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
     "variableNameDependencies": Array [],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 1,
-        "type": "number",
-      },
       "result": Object {
         "result": 1,
         "type": "number",
@@ -1119,6 +1083,7 @@ Array [
     "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "constant",
     "name": "num1",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1128,10 +1093,6 @@ Array [
     "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
     "variableNameDependencies": Array [],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 2,
-        "type": "number",
-      },
       "result": Object {
         "result": 2,
         "type": "number",
@@ -1184,6 +1145,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num2",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1203,10 +1165,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 1,
-        "type": "number",
-      },
       "result": Object {
         "result": 1,
         "type": "number",
@@ -1313,6 +1271,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num3",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1340,10 +1299,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 3,
-        "type": "number",
-      },
       "result": Object {
         "result": 3,
         "type": "number",
@@ -1446,6 +1401,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num4",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1473,10 +1429,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 2,
-        "type": "number",
-      },
       "result": Object {
         "result": 2,
         "type": "number",
@@ -1633,6 +1585,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num5",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1668,10 +1621,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 5,
-        "type": "number",
-      },
       "result": Object {
         "result": 5,
         "type": "number",
@@ -1782,6 +1731,7 @@ Array [
       },
     ],
     "functionDependencies": Array [],
+    "isAsync": false,
     "kind": "expression",
     "name": "num6",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1809,10 +1759,6 @@ Array [
       },
     ],
     "variableValue": Object {
-      "cacheValue": Object {
-        "result": 4,
-        "type": "number",
-      },
       "result": Object {
         "result": 4,
         "type": "number",

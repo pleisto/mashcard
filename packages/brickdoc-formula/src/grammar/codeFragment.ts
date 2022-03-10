@@ -534,6 +534,10 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           if (variable) {
             firstArgumentType = fetchResult(variable.t).type
 
+            if (variable.t.isAsync) {
+              this.async = true
+            }
+
             if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
               finalRhsCodeFragments = [
                 {

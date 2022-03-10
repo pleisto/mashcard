@@ -19,7 +19,10 @@ import {
   StringResult,
   BaseFormula,
   ErrorResult,
-  VariableNameDependency
+  VariableNameDependency,
+  AsyncVariableData,
+  SyncVariableData,
+  FormulaType
 } from '../types'
 import { VariableClass, castVariable } from '../context/variable'
 import { FormulaLexer } from './lexer'
@@ -29,7 +32,7 @@ import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
 import { addSpace, CodeFragmentVisitor, hideDot } from './codeFragment'
 import { blockKey } from './convert'
-import { checkValidName, parseString } from './util'
+import { checkValidName, parseString, shouldReturnEarly } from './util'
 import { devWarning } from '@brickdoc/design-system'
 export interface BaseParseResult {
   success: boolean
@@ -40,6 +43,7 @@ export interface BaseParseResult {
   position: number
   inputImage: string
   parseImage: string
+  expressionType: FormulaType
   cst?: CstNode
   errorType?: ParseErrorType
   kind: VariableKind
@@ -288,6 +292,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     success: false,
     inputImage: '',
     parseImage: '',
+    expressionType: 'any',
     valid: true,
     async: false,
     cst: undefined,
@@ -330,16 +335,6 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     }
   }
 
-  if (!variableId) {
-    return {
-      ...returnValue,
-      valid: false,
-      success: false,
-      kind: 'unknown',
-      errorType: 'parse',
-      errorMessages: [{ message: 'Miss variableId', type: 'fatal' }]
-    }
-  }
   const baseCompletion = formulaContext.completions(namespaceId, variableId)
   let completions: Completion[] = baseCompletion
 
@@ -357,11 +352,16 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   const inputImage = tokens.map(t => t.image).join('')
 
   const cst: CstNode = parser.startExpression()
-  const { codeFragments, image }: CodeFragmentResult = codeFragmentVisitor.visit(cst, { type: 'any' })
+  const {
+    codeFragments,
+    image,
+    type: expressionType
+  }: CodeFragmentResult = codeFragmentVisitor.visit(cst, { type: 'any' })
 
   const errorCodeFragment = codeFragments.find(f => f.errors.length)
   const finalErrorMessages: ErrorMessage[] = errorCodeFragment ? errorCodeFragment.errors : []
 
+  returnValue.expressionType = expressionType
   returnValue.async = codeFragmentVisitor.async
   returnValue.kind = codeFragmentVisitor.kind
   returnValue.variableDependencies = codeFragmentVisitor.variableDependencies
@@ -503,6 +503,37 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   }
 }
 
+const innerInterpretFirst = ({
+  parseResult: { cst, kind, errorMessages, async },
+  ctx
+}: {
+  parseResult: {
+    cst: CstNode | undefined
+    kind: VariableKind
+    errorMessages: ErrorMessage[]
+    async: boolean
+  }
+  ctx: FunctionContext
+}): VariableValue | undefined => {
+  if (errorMessages.length > 0) {
+    const result: ErrorResult = { result: errorMessages[0].message, type: 'Error', errorKind: errorMessages[0].type }
+    return { success: false, result }
+  }
+
+  // if (async) {
+  //   const result: PendingResult = { type: 'Pending', result: `Pending: ${ctx.meta.input}` }
+  //   return {
+  //     success: true,
+  //     result
+  //   }
+  // }
+  if (!cst || kind === 'literal') {
+    const result: StringResult = { type: 'string', result: ctx.meta.input }
+    return { success: true, result }
+  }
+  return undefined
+}
+
 export const innerInterpret = async ({
   parseResult: { cst, kind, errorMessages, async },
   ctx
@@ -515,50 +546,18 @@ export const innerInterpret = async ({
   }
   ctx: FunctionContext
 }): Promise<VariableValue> => {
-  if (errorMessages.length > 0) {
-    const result: ErrorResult = { result: errorMessages[0].message, type: 'Error', errorKind: errorMessages[0].type }
-    return {
-      success: false,
-      cacheValue: result,
-      result
-    }
-  }
-
-  // if (async) {
-  //   const result: PendingResult = { type: 'Pending', result: `Pending: ${ctx.meta.input}` }
-  //   return {
-  //     success: true,
-  //     cacheValue: result,
-  //     result
-  //   }
-  // }
-  if (!cst || kind === 'literal') {
-    const result: StringResult = { type: 'string', result: ctx.meta.input }
-    return {
-      success: true,
-      cacheValue: result,
-      result
-    }
-  }
-
+  const result = innerInterpretFirst({ parseResult: { cst, kind, errorMessages, async }, ctx })
+  if (result) return result
   try {
     const interpreter = new FormulaInterpreter({ ctx })
-    const result: AnyTypeResult = await interpreter.visit(cst, { type: 'any' })
+    const result: AnyTypeResult = await interpreter.visit(cst!, { type: 'any' })
     // const lazy = interpreter.lazy
 
-    return {
-      success: true,
-      cacheValue: result,
-      result
-    }
+    return { success: true, result }
   } catch (e) {
     console.error(e)
     const message = `[FATAL] ${(e as any).message as string}`
-    return {
-      success: false,
-      cacheValue: { result: message, type: 'Error', errorKind: 'fatal' },
-      result: { result: message, type: 'Error', errorKind: 'fatal' }
-    }
+    return { success: false, result: { result: message, type: 'Error', errorKind: 'fatal' } }
   }
 }
 
@@ -604,6 +603,7 @@ export const interpretSync = async ({
     definition: input,
     dirty: true,
     async: false,
+    isAsync: false,
     variableValue: interpretResult,
     valid,
     kind: kind ?? 'constant',
@@ -619,9 +619,13 @@ export const interpretSync = async ({
 export const interpretAsync = ({
   variable,
   ctx,
+  skipAsync,
+  cachedVariableValue,
   parseResult
 }: {
   variable?: VariableInterface
+  cachedVariableValue?: VariableValue
+  skipAsync: boolean
   ctx: FunctionContext
   parseResult: ParseResult
 }): VariableInterface => {
@@ -631,6 +635,7 @@ export const interpretAsync = ({
     kind,
     codeFragments,
     version,
+    async,
     variableDependencies,
     variableNameDependencies,
     functionDependencies,
@@ -641,23 +646,17 @@ export const interpretAsync = ({
     formulaContext,
     meta: { name, input, namespaceId, variableId, type }
   } = ctx
-  const execStartTime = new Date()
-  const interpretResult = innerInterpret({ parseResult, ctx })
-
-  const t: VariableData = {
+  const t: Omit<VariableData, 'variableValue' | 'async' | 'execStartTime' | 'execEndTime'> = {
     namespaceId,
     variableId,
-    execStartTime,
-    execEndTime: undefined,
     name,
     cst,
     type,
     version,
+    isAsync: async,
     codeFragments,
     definition: input,
     dirty: true,
-    async: true,
-    variableValue: interpretResult,
     valid,
     kind: kind ?? 'constant',
     variableDependencies,
@@ -666,7 +665,64 @@ export const interpretAsync = ({
     blockDependencies,
     functionDependencies
   }
-  return generateVariable(formulaContext, t, variable)
+
+  const result = innerInterpretFirst({ parseResult, ctx })
+  if (result) {
+    const restAttrs: Pick<SyncVariableData, 'async' | 'execStartTime' | 'execEndTime' | 'variableValue'> = {
+      async: false,
+      execStartTime: new Date(),
+      execEndTime: new Date(),
+      variableValue: result
+    }
+
+    return generateVariable(formulaContext, { ...t, ...restAttrs }, variable)
+  }
+
+  if (!async) {
+    if (cachedVariableValue) {
+      const restAttrs: Pick<SyncVariableData, 'async' | 'execStartTime' | 'execEndTime' | 'variableValue'> = {
+        async: false,
+        execStartTime: new Date(),
+        execEndTime: new Date(),
+        variableValue: cachedVariableValue
+      }
+
+      return generateVariable(formulaContext, { ...t, ...restAttrs }, variable)
+    }
+  }
+
+  if (skipAsync && variable) {
+    if (variable.t.async) {
+      const restAttrs: Pick<AsyncVariableData, 'async' | 'execStartTime' | 'execEndTime' | 'variableValue'> = {
+        async: variable.t.async,
+        execStartTime: variable.t.execStartTime,
+        execEndTime: variable.t.execEndTime,
+        variableValue: variable.t.variableValue
+      }
+      return generateVariable(formulaContext, { ...t, ...restAttrs }, variable)
+    }
+
+    if (!shouldReturnEarly(variable.t.variableValue.result)) {
+      const restAttrs: Pick<SyncVariableData, 'async' | 'execStartTime' | 'execEndTime' | 'variableValue'> = {
+        async: variable.t.async,
+        execStartTime: variable.t.execStartTime,
+        execEndTime: variable.t.execEndTime,
+        variableValue: variable.t.variableValue
+      }
+      return generateVariable(formulaContext, { ...t, ...restAttrs }, variable)
+    }
+  }
+
+  const execStartTime = new Date()
+  const interpretResult = innerInterpret({ parseResult, ctx })
+  const restAttrs: Pick<AsyncVariableData, 'async' | 'execStartTime' | 'execEndTime' | 'variableValue'> = {
+    async: true,
+    execStartTime,
+    execEndTime: undefined,
+    variableValue: interpretResult
+  }
+
+  return generateVariable(formulaContext, { ...t, ...restAttrs }, variable)
 }
 
 const generateVariable = (
@@ -694,7 +750,8 @@ const generateVariable = (
 export const appendFormulas = (formulaContext: ContextInterface, formulas: BaseFormula[]): void => {
   const dupFormulas = [...formulas]
   dupFormulas.forEach(formula => {
-    const variable = castVariable(formulaContext, formula)
-    void new VariableClass({ t: { ...variable, dirty: false }, formulaContext }).save()
+    const oldVariable = formulaContext.findVariableById(formula.blockId, formula.id)
+    const variable = castVariable(oldVariable, formulaContext, formula)
+    void variable.save()
   })
 }

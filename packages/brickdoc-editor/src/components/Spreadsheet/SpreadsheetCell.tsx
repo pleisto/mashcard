@@ -9,7 +9,14 @@ import {
   BlockSpreadsheetLoaded
 } from '@brickdoc/schema'
 import { FormulaBlockRender } from '../Formula/FormulaBlockRender'
-import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableClass, VariableData } from '@brickdoc/formula'
+import {
+  displayValue,
+  dumpDisplayResultForDisplay,
+  fetchResult,
+  VariableClass,
+  VariableData,
+  VariableValue
+} from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { FormulaDisplay } from '../Formula/FormulaDisplay'
 import { devLog } from '@brickdoc/design-system'
@@ -59,9 +66,9 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     [setEditingCellId, formulaName, editing]
   )
 
-  const refreshCell = React.useCallback(async (): Promise<void> => {
+  const refreshCell = React.useCallback((): void => {
     if (variableRef.current) {
-      const displayData = await dumpDisplayResultForDisplay(variableRef.current.t)
+      const displayData = dumpDisplayResultForDisplay(variableRef.current.t)
       const value = displayValue(fetchResult(variableRef.current.t), rootId)
       devLog('Spreadsheet cell formula updated', { cellId, value, displayData })
       const newBlock = {
@@ -88,6 +95,10 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const updateCellValue = React.useCallback(
     async (value: string) => {
       if (!variableRef.current && formulaContext) {
+        const variableValue: VariableValue = {
+          success: true,
+          result: { type: 'string', result: value }
+        }
         const variableT = {
           namespaceId: rootId,
           definition: value,
@@ -95,12 +106,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
           name: formulaName,
           version: 0,
           type: 'spreadsheet',
-          variableValue: {
-            success: true,
-            result: { type: 'string', result: value },
-            cacheValue: { type: 'string', result: value },
-            updatedAt: new Date()
-          }
+          variableValue
         } as unknown as VariableData
         // TODO refactor this
         variableRef.current = new VariableClass({
@@ -123,7 +129,9 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       FormulaUpdatedViaId,
       e => {
         variableRef.current = e.payload
-        void refreshCell()
+        if (!(editingCell || editing)) {
+          void refreshCell()
+        }
       },
       {
         eventId: `${rootId},${formulaId}`,
@@ -131,7 +139,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       }
     )
     return () => listener.unsubscribe()
-  }, [formulaId, refreshCell, rootId])
+  }, [editing, editingCell, formulaId, refreshCell, rootId])
 
   const eventId = `${tableId},${cellId}`
 
@@ -169,6 +177,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     )
   }
 
+  // TODO support async
   return (
     <div
       className="cell"

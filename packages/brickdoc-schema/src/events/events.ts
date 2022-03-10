@@ -122,8 +122,9 @@ export const FormulaEditorReplaceRootTrigger = event<{
 export const FormulaCalculateTrigger = event<{
   rootId: string
   formulaId: string
-}>()('FormulaCalculateTrigger', ({ formulaId, rootId }) => {
-  return { id: `${rootId},${formulaId}`, formulaId, rootId }
+  skipAsync: boolean
+}>()('FormulaCalculateTrigger', ({ formulaId, rootId, skipAsync }) => {
+  return { id: `${rootId},${formulaId}`, formulaId, rootId, skipAsync }
 })
 
 export interface ExplorerMenuItem {

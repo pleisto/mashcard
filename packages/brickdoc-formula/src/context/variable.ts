@@ -13,7 +13,6 @@ import {
   VariableInterface,
   VariableMetadata,
   AnyTypeResult,
-  VariableValue,
   InterpretContext,
   Definition,
   Formula,
@@ -21,13 +20,13 @@ import {
   FormulaSourceType,
   ErrorMessage,
   NamespaceId,
-  SyncVariableData,
-  BaseResult
+  VariableWaitPromiseState
 } from '../types'
-import { parse, innerInterpret } from '../grammar/core'
+import { parse, innerInterpret, interpretAsync } from '../grammar/core'
 import { dumpValue, loadValue } from './persist'
 import { block2name, variable2name, variableKey } from '../grammar/convert'
 import { BlockClass } from '../controls/block'
+import { v4 as uuidv4 } from 'uuid'
 
 export const errorIsFatal = (t: VariableData): boolean => {
   if (t.async) {
@@ -54,77 +53,34 @@ export const fetchResult = (t: VariableData): AnyTypeResult => {
   return t.variableValue.result
 }
 
-export const fetchCacheValue = (t: VariableData): BaseResult => {
-  if (t.async) {
-    return { type: 'Pending', result: 'Loading...' }
-  }
-
-  return t.variableValue.cacheValue
-}
-
 export const castVariable = (
+  oldVariable: VariableInterface | undefined,
   formulaContext: ContextInterface,
   { name, definition, cacheValue, version, blockId, id, type: unknownType }: BaseFormula
-): VariableData => {
+): VariableInterface => {
+  // const oldVariable = formulaContext.findVariableById(blockId, id)
   const namespaceId = blockId
   const variableId = id
   const type = unknownType as FormulaSourceType
   const meta: VariableMetadata = { namespaceId, variableId, name, input: definition, position: 0, type }
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const castedValue: AnyTypeResult = loadValue(ctx, cacheValue)
-  const {
-    success,
-    cst,
-    kind,
-    valid,
-    errorMessages,
-    blockDependencies,
-    variableDependencies,
-    variableNameDependencies,
-    flattenVariableDependencies,
-    codeFragments,
-    functionDependencies
-  } = parse({ ctx })
+  const parseResult = parse({ ctx })
 
-  const variableValue: VariableValue = success
-    ? {
-        success: true,
-        result: castedValue,
-        cacheValue
-      }
-    : {
-        success: false,
-        result: { type: 'Error', result: errorMessages[0]!.message, errorKind: errorMessages[0]!.type },
-        cacheValue
-      }
-
-  return {
-    namespaceId,
-    variableId,
-    async: false,
-    execStartTime: new Date(),
-    execEndTime: new Date(),
-    variableValue,
-    name,
-    cst,
-    valid,
-    version,
-    definition,
-    codeFragments,
-    kind: kind ?? 'constant',
-    type,
-    blockDependencies,
-    variableDependencies,
-    variableNameDependencies,
-    flattenVariableDependencies,
-    functionDependencies,
-    dirty: true
-  }
+  const newVariable = interpretAsync({
+    variable: oldVariable,
+    ctx,
+    cachedVariableValue: { success: true, result: castedValue },
+    parseResult,
+    skipAsync: false
+  })
+  return newVariable
 }
 
-const errorMessages = ({ variableValue: { result, success } }: SyncVariableData): ErrorMessage[] => {
-  if (result.type === 'Error' && !success) {
-    return [{ message: result.result, type: result.errorKind }]
+const errorMessages = (t: VariableData): ErrorMessage[] => {
+  if (t.async) return []
+  if (t.variableValue.result.type === 'Error' && !t.variableValue.success) {
+    return [{ message: t.variableValue.result.result, type: t.variableValue.result.errorKind }]
   } else {
     return []
   }
@@ -135,6 +91,7 @@ export class VariableClass implements VariableInterface {
   formulaContext: ContextInterface
   eventListeners: EventSubscribed[] = []
   reparsing: boolean = false
+  latestWaitingPromiseState: VariableWaitPromiseState | undefined = undefined
 
   constructor({ t, formulaContext }: { t: VariableData; formulaContext: ContextInterface }) {
     this.t = t
@@ -152,9 +109,20 @@ export class VariableClass implements VariableInterface {
   }
 
   public subscribePromise(): void {
-    if (!this.t.async) return
+    const uuid = uuidv4()
+    if (!this.t.async) {
+      this.latestWaitingPromiseState = { uuid, state: 'resolved' }
+      return
+    }
+    this.latestWaitingPromiseState = { uuid, state: 'pending' }
     void this.t.variableValue.then(result => {
-      this.t = { ...this.t, variableValue: result, async: false, execEndTime: new Date() }
+      if (this.latestWaitingPromiseState?.uuid === uuid) {
+        this.t = { ...this.t, variableValue: result, async: false, execEndTime: new Date() }
+        this.latestWaitingPromiseState = { uuid, state: 'notifying' }
+        void this.updateAndPersist().then(() => {
+          this.latestWaitingPromiseState = { uuid, state: 'resolved' }
+        })
+      }
     })
   }
 
@@ -184,6 +152,7 @@ export class VariableClass implements VariableInterface {
 
   public trackDependency(): void {
     this.subscripeEvents()
+    this.subscribePromise()
 
     this.formulaContext.formulaNames = this.formulaContext.formulaNames
       .filter(n => !(n.kind === 'Variable' && n.key === this.t.variableId))
@@ -259,32 +228,23 @@ export class VariableClass implements VariableInterface {
       name: this.t.name,
       version: this.t.version,
       type: this.t.type,
-      cacheValue: dumpValue(fetchCacheValue(this.t))
+      cacheValue: dumpValue(fetchResult(this.t))
     }
   }
 
-  public async invokeBackendCreate(): Promise<void> {
+  public async invokeBackendCommit(): Promise<void> {
     if (!this.t.dirty) {
       return
     }
+    if (this.isDraft()) return
     if (this.formulaContext.backendActions) {
-      await this.formulaContext.backendActions.createVariable(this.buildFormula())
-    }
-    this.t.dirty = false
-  }
-
-  public async invokeBackendUpdate(): Promise<void> {
-    if (!this.t.dirty) {
-      return
-    }
-    if (this.formulaContext.backendActions) {
-      await this.formulaContext.backendActions.updateVariable(this.buildFormula())
+      await this.formulaContext.backendActions.commit(this.buildFormula())
     }
     this.t.dirty = false
   }
 
   private async updateAndPersist(): Promise<void> {
-    await this.invokeBackendUpdate()
+    await this.invokeBackendCommit()
     this.afterUpdate()
   }
 
@@ -296,7 +256,7 @@ export class VariableClass implements VariableInterface {
     this.reparsing = true
     const formula = this.buildFormula()
     this.clearDependency()
-    this.t = castVariable(this.formulaContext, formula)
+    this.t = castVariable(this, this.formulaContext, formula).t
     this.trackDependency()
     await this.refresh({ ctx: {}, arguments: [] })
     this.reparsing = false
@@ -304,7 +264,7 @@ export class VariableClass implements VariableInterface {
 
   public async reinterpret(): Promise<void> {
     const formula = this.buildFormula()
-    this.t = castVariable(this.formulaContext, formula)
+    this.t = castVariable(this, this.formulaContext, formula).t
     await this.interpret({ ctx: {}, arguments: [] })
   }
 
@@ -320,7 +280,7 @@ export class VariableClass implements VariableInterface {
 
   private async refresh(interpretContext: InterpretContext): Promise<void> {
     await this.interpret(interpretContext)
-    await this.invokeBackendUpdate()
+    await this.invokeBackendCommit()
     this.afterUpdate()
   }
 
@@ -331,7 +291,7 @@ export class VariableClass implements VariableInterface {
         cst: this.t.cst!,
         kind: this.t.kind,
         async: false,
-        errorMessages: errorMessages(this.t as SyncVariableData)
+        errorMessages: errorMessages(this.t)
       },
       ctx: {
         formulaContext: this.formulaContext,

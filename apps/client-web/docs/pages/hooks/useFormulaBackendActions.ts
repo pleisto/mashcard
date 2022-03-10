@@ -1,28 +1,20 @@
-import { useFormulaCreateMutation, useFormulaDeleteMutation, useFormulaUpdateMutation } from '@/BrickdocGraphQL'
+import { useFormulaCommitMutation, useFormulaDeleteMutation } from '@/BrickdocGraphQL'
 import { BackendActions } from '@brickdoc/formula'
 
 export function useFormulaBackendActions(): BackendActions {
-  const [creation] = useFormulaCreateMutation()
-  const [update] = useFormulaUpdateMutation()
-  const [deletion] = useFormulaDeleteMutation()
+  const [commitFormula] = useFormulaCommitMutation()
+  const [deleteFormula] = useFormulaDeleteMutation()
 
   return {
-    createVariable: async formula => {
-      const { errors } = await creation({ variables: { input: formula } })
+    commit: async formula => {
+      const { errors } = await commitFormula({ variables: { input: formula } })
 
       return {
         success: !errors || errors.length === 0
       }
     },
-    updateVariable: async formula => {
-      const { errors } = await update({ variables: { input: formula } })
-
-      return {
-        success: !errors || errors.length === 0
-      }
-    },
-    deleteVariable: async ({ id, blockId }) => {
-      const { errors } = await deletion({ variables: { input: { blockId, id } } })
+    delete: async ({ id, blockId }) => {
+      const { errors } = await deleteFormula({ variables: { input: { blockId, id } } })
 
       return {
         success: !errors || errors.length === 0

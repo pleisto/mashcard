@@ -580,7 +580,6 @@ export interface VariableNameDependency {
 interface BaseVariableValue {
   readonly success: boolean
   readonly result: AnyTypeResult
-  readonly cacheValue: BaseResult
 }
 
 interface SuccessVariableValue extends BaseVariableValue {
@@ -598,6 +597,7 @@ export interface VariableDisplayData {
   definition: Definition
   result: AnyTypeResult
   kind: VariableKind
+  isAsync: boolean
   type: FormulaSourceType
   version: number
   meta: VariableMetadata
@@ -607,6 +607,7 @@ export interface VariableDisplayData {
 export interface BaseVariableData {
   definition: Definition
   async: boolean
+  isAsync: boolean
   execStartTime: Date
   execEndTime: Date | undefined
   variableValue: VariableValue | Promise<VariableValue>
@@ -649,8 +650,14 @@ export interface VariableMetadata {
   readonly type: FormulaSourceType
 }
 
+export interface VariableWaitPromiseState {
+  readonly uuid: uuid
+  readonly state: 'pending' | 'notifying' | 'resolved'
+}
+
 export interface VariableInterface {
   t: VariableData
+  latestWaitingPromiseState: VariableWaitPromiseState | undefined
   formulaContext: ContextInterface
   buildFormula: () => Formula
   clone: () => VariableInterface
@@ -665,16 +672,14 @@ export interface VariableInterface {
   updateDefinition: (definition: Definition) => Promise<void>
   meta: () => VariableMetadata
   updateCst: (cst: CstNode, context: InterpretContext) => void
-  invokeBackendCreate: () => Promise<void>
-  invokeBackendUpdate: () => Promise<void>
+  invokeBackendCommit: () => Promise<void>
   afterUpdate: VoidFunction
   interpret: (context: InterpretContext) => Promise<void>
 }
 
 export interface BackendActions {
-  createVariable: (formula: Formula) => Promise<{ success: boolean }>
-  updateVariable: (formula: Formula) => Promise<{ success: boolean }>
-  deleteVariable: (formula: Formula) => Promise<{ success: boolean }>
+  commit: (formula: Formula) => Promise<{ success: boolean }>
+  delete: (formula: Formula) => Promise<{ success: boolean }>
 }
 
 export interface ErrorMessage {
