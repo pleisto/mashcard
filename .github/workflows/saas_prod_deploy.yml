@@ -4,7 +4,7 @@ concurrency:
 on:
   push:
     tags:
-      - 'v**-saas'
+      - 'v**'
 permissions:
   id-token: write
   pull-requests: write
