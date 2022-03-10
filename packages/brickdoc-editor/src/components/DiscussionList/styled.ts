@@ -17,7 +17,7 @@ export const ListTitle = styled('div', {
 export const ListWrapper = styled('div', {})
 
 export const ListPanel = styled('div', {
-  overflow: 'hidden'
+  overflow: 'scroll'
 })
 
 export const ConversationWrapper = styled('div', {})

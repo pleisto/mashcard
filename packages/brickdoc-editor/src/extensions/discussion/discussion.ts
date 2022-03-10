@@ -75,7 +75,10 @@ export const DiscussionMark = Mark.create<DiscussionOptions>({
             const mark = (event.target as HTMLElement)?.closest('mark')
             if (mark?.classList.contains(MARK_CLASS_NAME)) {
               BrickdocEventBus.dispatch(DiscussionListToggle({ visible: true }))
-              BrickdocEventBus.dispatch(DiscussionMarkActive({ markId: mark.getAttribute(MARK_ID_ATTR_NAME) }))
+              // wait for drawer open animation
+              setTimeout(() => {
+                BrickdocEventBus.dispatch(DiscussionMarkActive({ markId: mark.getAttribute(MARK_ID_ATTR_NAME) }))
+              }, 120)
             }
             return false
           }

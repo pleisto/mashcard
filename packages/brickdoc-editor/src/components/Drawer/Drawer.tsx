@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import { Button, styled, theme } from '@brickdoc/design-system'
@@ -10,9 +10,11 @@ export interface DrawerProps {
   visible?: boolean
   container?: HTMLElement
   onClose?: () => void
+  renderBody?: () => ReactNode
 }
 
 const width = '17.5rem'
+export const horizontalPadding = '1.125rem'
 
 const DrawerContainer = styled(motion.div, {
   include: ['ceramicSecondary'],
@@ -21,7 +23,7 @@ const DrawerContainer = styled(motion.div, {
   display: 'flex',
   flexDirection: 'column',
   height: '100%',
-  padding: '0.75rem 1.125rem',
+  padding: '0.75rem 0',
   position: 'relative',
   width,
   variants: {
@@ -55,7 +57,12 @@ const Title = styled('div', {
   fontSize: theme.fontSizes.body,
   fontWeight: 600,
   lineHeight: '1.5rem',
-  marginBottom: '1.625rem'
+  marginBottom: '1.625rem',
+  padding: `0 ${horizontalPadding}`
+})
+
+const Body = styled('div', {
+  padding: `0 ${horizontalPadding}`
 })
 
 const drawerAnimation = (visible?: boolean) => ({
@@ -65,7 +72,7 @@ const drawerTransition = (visible?: boolean) => ({
   width: visible ? { type: 'spring', stiffness: 1400, damping: 80 } : { ease: 'linear', duration: 0 }
 })
 
-export const Drawer: FC<DrawerProps> = ({ visible, className, title, container, onClose, children }) => {
+export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody, container, onClose, children }) => {
   const element = container ?? document.body
 
   if (!element) return null
@@ -76,13 +83,13 @@ export const Drawer: FC<DrawerProps> = ({ visible, className, title, container, 
         visible={visible}
         className={className}
         animate={drawerAnimation(visible)}
-        transition={drawerTransition(visible)}
-      >
+        transition={drawerTransition(visible)}>
         {visible && (
           <>
             <CloseButton onClick={onClose} type="text" icon={<Close />} />
             <Title>{title}</Title>
-            {children}
+            {renderBody?.()}
+            <Body>{children}</Body>
           </>
         )}
       </DrawerContainer>

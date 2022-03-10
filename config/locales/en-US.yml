@@ -610,18 +610,22 @@ en-US:
           button_hint: 'Recommended image size: wider than 1500 pixels'
           button_text: Choose an image
           type_label: Upload an Image
+  editor:
+    placeholder: Type '/' for commands
+    copy_hint: Copied to clipboard.
     explorer_menu:
       title: Explore
       search:
         placeholder: Search
-  editor:
-    placeholder: Type '/' for commands
-    copy_hint: Copied to clipboard.
     discussion:
       title: Comments
       tabs:
         all: All
         resolved: Resolved
+      editor:
+        placeholder: Comment...
+        send: Send
+        cancel: Cancel
     toolbar:
       separator: Menu separator
     blocks:

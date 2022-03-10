@@ -34,7 +34,7 @@ const CommentAt = styled('span', {
 export const Comment: FC<CommentProps> = () => {
   return (
     <CommentCard>
-      <Avatar />
+      <Avatar size="sm" />
       <CommentMain>
         <div>
           <Username>Ziyan</Username>

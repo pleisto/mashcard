@@ -100,7 +100,7 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
                     onMouseEnter={handleConversationHover(commentedNode)}
                     onMouseLeave={handleConversationLeave(commentedNode)}
                   >
-                    <Conversation />
+                    <Conversation active={activeMarkId === commentedNode.markId} markId={commentedNode.markId} />
                   </ConversationWrapper>
                 ))}
               </ListWrapper>

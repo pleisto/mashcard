@@ -4,9 +4,12 @@ import { Button, css, Menu, Popover, styled, theme } from '@brickdoc/design-syst
 import { Link, IconBackground } from '../Icon'
 import { Comment } from './Comment'
 import { EditorContext } from '../../context/EditorContext'
+import { CommentEditor } from '../CommentEditor'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface ConversationProps {}
+export interface ConversationProps {
+  active: boolean
+  markId: string
+}
 
 const ConversationCard = styled('div', {
   backgroundColor: theme.colors.ceramicPrimary,
@@ -65,7 +68,7 @@ const menuIconStyles = css({
   width: '1.3rem'
 })
 
-export const Conversation: FC<ConversationProps> = props => {
+export const Conversation: FC<ConversationProps> = ({ active, markId }) => {
   const { t } = useContext(EditorContext)
   const menu = (
     <Menu>
@@ -105,6 +108,7 @@ export const Conversation: FC<ConversationProps> = props => {
       </ConversationHeader>
       <Comment />
       <Comment />
+      {active && <CommentEditor markId={markId} />}
     </ConversationCard>
   )
 }

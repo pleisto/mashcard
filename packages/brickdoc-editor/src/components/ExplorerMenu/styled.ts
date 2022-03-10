@@ -1,9 +1,8 @@
 import { css, Input, Menu, styled, theme } from '@brickdoc/design-system'
-
-const explorerPadding = '1rem'
+import { horizontalPadding as drawHorizontalPadding } from '../Drawer'
 
 export const SearchInputContainer = styled('div', {
-  padding: `.625rem ${explorerPadding}`
+  padding: `.625rem ${drawHorizontalPadding}`
 })
 
 export const SearchInput = styled(Input, {

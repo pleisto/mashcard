@@ -89,35 +89,38 @@ export const ExplorerMenu: React.FC<ExplorerMenuProps> = () => {
       visible={visible}
       onClose={() => setVisible(false)}
       title={t('explorer_menu.title')}
-    >
-      <SearchInputContainer>
-        <SearchInput
-          prefix={<Icon.Search />}
-          placeholder={t('explorer_menu.search.placeholder')}
-          onChange={handleSearchChange}
-          value={search}
-        />
-      </SearchInputContainer>
-      <InnerMenuContainer>
-        <InnerMenu type="ghost">
-          {groups?.map((group, index) => (
-            <Menu.Group key={index} label={<MenuGroupLabel>{group.label}</MenuGroupLabel>}>
-              {group.items.map((item, index) => (
-                <MenuItem
-                  onAction={() => {
-                    item.onAction?.()
-                    handleClose()
-                  }}
-                  key={index}
-                  itemKey={`item-${index}`}
-                  label={item.label}
-                  icon={cloneElement(item.icon, { className: menuIconStyle() })}
-                />
+      renderBody={() => (
+        <>
+          <SearchInputContainer>
+            <SearchInput
+              prefix={<Icon.Search />}
+              placeholder={t('explorer_menu.search.placeholder')}
+              onChange={handleSearchChange}
+              value={search}
+            />
+          </SearchInputContainer>
+          <InnerMenuContainer>
+            <InnerMenu type="ghost">
+              {groups?.map((group, index) => (
+                <Menu.Group key={index} label={<MenuGroupLabel>{group.label}</MenuGroupLabel>}>
+                  {group.items.map((item, index) => (
+                    <MenuItem
+                      onAction={() => {
+                        item.onAction?.()
+                        handleClose()
+                      }}
+                      key={index}
+                      itemKey={`item-${index}`}
+                      label={item.label}
+                      icon={cloneElement(item.icon, { className: menuIconStyle() })}
+                    />
+                  ))}
+                </Menu.Group>
               ))}
-            </Menu.Group>
-          ))}
-        </InnerMenu>
-      </InnerMenuContainer>
-    </Drawer>
+            </InnerMenu>
+          </InnerMenuContainer>
+        </>
+      )}
+    />
   )
 }
