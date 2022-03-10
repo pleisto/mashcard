@@ -9,6 +9,17 @@ let latestActiveNode: Element | null = null
 const getActualNode = (node: Node | null): Node | null =>
   node?.nodeType === Node.TEXT_NODE ? node.parentElement : node
 
+export const selectDiscussionMark = (node: Node | null) => {
+  let element: Element | null = null
+  if (node?.nodeType === Node.TEXT_NODE) {
+    element = node.parentElement
+  } else if (node?.nodeType === Node.ELEMENT_NODE) {
+    element = node as Element
+  }
+  element?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+  focusDiscussionMark(node)
+}
+
 export const focusDiscussionMark = (node: Node | null) => {
   const markNode = getActualNode(node)
 

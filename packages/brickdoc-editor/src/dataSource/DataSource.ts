@@ -67,6 +67,8 @@ export interface EditorDatabase {
   domain: string
 
   rootId: string
+
+  pageQuery: URLSearchParams | null
 }
 
 export type DataSourceListenerType = keyof EditorDatabase
@@ -76,6 +78,7 @@ export class EditorDataSource {
   private database: EditorDatabase = {
     domain: '',
     rootId: '',
+    pageQuery: null,
     documentEditable: false,
     blobs: {},
     settings: {},
@@ -250,6 +253,15 @@ export class EditorDataSource {
   set fetchUnsplashImages(value: EditorDatabase['fetchUnsplashImages']) {
     this.database.fetchUnsplashImages = value
     this.invokeListeners('fetchUnsplashImages')
+  }
+
+  get pageQuery(): EditorDatabase['pageQuery'] {
+    return this.database.pageQuery
+  }
+
+  set pageQuery(value: EditorDatabase['pageQuery']) {
+    this.database.pageQuery = value
+    this.invokeListeners('pageQuery')
   }
 }
 

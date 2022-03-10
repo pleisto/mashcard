@@ -1,6 +1,6 @@
-import { FC, useContext } from 'react'
+import { FC, useCallback, useContext } from 'react'
 import { Check, Delete, More } from '@brickdoc/design-icons'
-import { Button, css, Menu, Popover, styled, theme } from '@brickdoc/design-system'
+import { Button, css, Menu, Popover, styled, theme, toast } from '@brickdoc/design-system'
 import { Link, IconBackground } from '../Icon'
 import { Comment } from './Comment'
 import { EditorContext } from '../../context/EditorContext'
@@ -70,10 +70,18 @@ const menuIconStyles = css({
 
 export const Conversation: FC<ConversationProps> = ({ active, markId }) => {
   const { t } = useContext(EditorContext)
+  const handleCopyUrl = useCallback(async () => {
+    await navigator.clipboard.writeText(
+      `${window.location.origin}${window.location.pathname}?discussionMarkId=${markId}`
+    )
+    void toast.success(t('copy_hint'))
+  }, [markId, t])
+
   const menu = (
     <Menu>
       <Menu.Item
         itemKey="copy"
+        onAction={handleCopyUrl}
         icon={<Link className={menuIconStyles()} square={true} />}
         label={t('action_panel.more.copy')}
       />

@@ -14,6 +14,7 @@ import { DocMeta } from '../DocumentContentPage'
 import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar, pagesVar } from '@/docs/reactiveVars'
 import { BrickdocContext } from '@/common/brickdocContext'
+import { useLocation } from 'react-router-dom'
 
 export interface UseEditorDataSourceProps {
   docMeta: DocMeta
@@ -21,8 +22,15 @@ export interface UseEditorDataSourceProps {
   documentEditable: boolean
 }
 
+function useQuery(): URLSearchParams {
+  const { search } = useLocation()
+
+  return React.useMemo(() => new URLSearchParams(search), [search])
+}
+
 export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEditorDataSourceProps): EditorDataSource {
   const dataSource = React.useRef<EditorDataSource>(new EditorDataSource())
+  const pageQuery = useQuery()
   const prepareFileUpload = usePrepareFileUpload()
   const fetchUnsplashImages = useFetchUnsplashImages()
   const queryPreviewBox = useImperativeQuery<QueryPreviewBoxQuery, QueryPreviewBoxQueryVariables>(
@@ -31,6 +39,11 @@ export function useEditorDataSource({ docMeta, documentEditable, blocks }: UseEd
 
   const formulaContext = useReactiveVar(FormulaContextVar)
   const { settings, features } = React.useContext(BrickdocContext)
+
+  // pageQuery
+  React.useEffect(() => {
+    dataSource.current.pageQuery = pageQuery
+  }, [pageQuery])
 
   // feature flags
   React.useEffect(() => {
