@@ -2,6 +2,7 @@ import React from 'react'
 import { CollaboratorsMenu } from '@/docs/common/components/CollaboratorsMenu'
 import { PathBreadcrumb } from '@/docs/common/components/PathBreadcrumb'
 import { PinMenu } from '@/docs/common/components/PinMenu'
+import { DiscussionMenu } from '@/docs/common/components/DiscussionMenu'
 import { useReactiveVar } from '@apollo/client'
 import { Button, Box } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
@@ -30,44 +31,33 @@ export const DocumentTopBar: React.FC<DocumentTopBarProps> = ({ docMeta }) => {
     return <></>
   }
 
-  const headMenu = docMeta.id ? (
+  const headMenu = docMeta.id && (
     <>
       <Root.Menu as={PathBreadcrumb as any} docMeta={docMeta as NonNullDocMeta} />
       <Root.LogoIcon src={Logo} alt="Brickdoc" />
     </>
-  ) : (
-    <></>
   )
 
-  const editableMenu =
-    // eslint-disable-next-line no-nested-ternary
-    docMeta.id && !docMeta.isDeleted ? (
-      <>
-        <Root.HiddenItem as={CollaboratorsMenu} docMeta={docMeta as NonNullDocMeta} />
-        <Root.Item as={ShareMenu as any} docMeta={docMeta as NonNullDocMeta} />
-        {features.page_history ? (
-          <Root.HiddenItem as={HistoryMenu as any} docMeta={docMeta as NonNullDocMeta} />
-        ) : (
-          <></>
-        )}
-        {docMeta.isMine ? <Root.HiddenItem as={PinMenu as any} docMeta={docMeta as NonNullDocMeta} /> : <></>}
-      </>
-    ) : (
-      <></>
-    )
+  const editableMenu = docMeta.id && !docMeta.isDeleted && (
+    <>
+      <Root.HiddenItem as={CollaboratorsMenu} docMeta={docMeta as NonNullDocMeta} />
+      <ShareMenu docMeta={docMeta as NonNullDocMeta} />
+      {features.page_history && <HistoryMenu docMeta={docMeta as NonNullDocMeta} />}
+      {docMeta.isMine && <PinMenu docMeta={docMeta as NonNullDocMeta} />}
+      {features.experiment_discussion && <DiscussionMenu />}
+    </>
+  )
 
   const handleLogin = (): void => {
     navigate('/')
   }
 
-  const loginMenu =
-    docMeta.editable && docMeta.isAnonymous ? (
-      <Button type="text" onClick={handleLogin}>
-        {t('anonymous.edit_button')}
-      </Button>
-    ) : (
-      <></>
-    )
+  const loginMenu = docMeta.editable && docMeta.isAnonymous && (
+    <Button type="text" onClick={handleLogin}>
+      {t('anonymous.edit_button')}
+    </Button>
+  )
+
   return (
     <Root.TopBar
       width={{

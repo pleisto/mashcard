@@ -6,7 +6,6 @@ import { BrickdocContext } from '@/common/brickdocContext'
 import { PageTree } from '@/docs/common/components/PageTree'
 import { SpaceSelect } from '@/docs/common/components/SpaceSelect'
 import { TrashButton } from '@/docs/common/components/TrashButton'
-import { ExplorerMenu } from '@/docs/common/components/ExplorerMenu'
 import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
 import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
@@ -212,18 +211,18 @@ export const DocumentContentPage: React.FC = () => {
               <DocumentTopBar docMeta={docMeta} />
             </header>
           )}
-          <article id="article">
-            {docMeta.id && (
-              <DocumentPage
-                docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
-                mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'}
-              />
-            )}
-          </article>
+          <section>
+            <article id="article">
+              {docMeta.id && (
+                <DocumentPage
+                  docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
+                  mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'}
+                />
+              )}
+            </article>
+            <aside id="aside" />
+          </section>
         </main>
-        <aside id="aside">
-          <ExplorerMenu />
-        </aside>
       </Root.Layout>
     </>
   )

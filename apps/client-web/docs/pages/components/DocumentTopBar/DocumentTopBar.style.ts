@@ -18,20 +18,22 @@ export const Menu = styled('div', {
   }
 })
 
-const itemStyle = {
+export const itemStyle = {
   padding: 8,
   color: theme.colors.typeSecondary,
   height: 'auto',
   borderRadius: 4,
-  fontSize: theme.fontSizes.callout,
-  lineHeight: theme.lineHeights.callout,
+  fontSize: '1.25rem',
+  lineHeight: '1.25rem',
   '&:hover': {
-    background: theme.colors.black_5p
-  },
-  svg: {
-    path: {
-      fill: theme.colors.typeSecondary
-    }
+    background: theme.colors.secondaryHover
+  }
+}
+
+export const hiddenItemStyle = {
+  ...itemStyle,
+  '@mdDown': {
+    display: 'none'
   }
 }
 

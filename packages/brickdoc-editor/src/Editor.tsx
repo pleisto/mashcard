@@ -24,7 +24,7 @@ import './styles.less'
 import { useEditorI18n } from './hooks'
 import { EditorDataSource, EditorDataSourceContext } from './dataSource/DataSource'
 import { EditorContext, EditorContextData } from './context/EditorContext'
-import { BubbleMenu, DiscussionList } from './components'
+import { BubbleMenu, DiscussionList, ExplorerMenu } from './components'
 import { theme } from '@brickdoc/design-system'
 
 export { useEditorI18n }
@@ -43,6 +43,7 @@ export const EditorContent: React.FC<EditorContentProps> = ({ editor, editorData
         <BubbleMenu editor={editor} />
         <TiptapEditorContent id="brickdoc-editor" className="brickdoc" editor={editor} />
         <DiscussionList />
+        <ExplorerMenu />
       </EditorDataSourceContext.Provider>
     </EditorContext.Provider>
   )

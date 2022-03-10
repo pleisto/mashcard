@@ -153,3 +153,7 @@ export const DiscussionMarkActive = event<{ markId: string }>()('DiscussionMarkA
 export const DiscussionMarkInactive = event<{ markId?: string }>()('DiscussionMarkInactive', ({ markId }) => {
   return { markId }
 })
+
+export const DiscussionListToggle = event<{ visible: boolean }>()('DiscussionListTrigger', ({ visible }) => {
+  return { visible }
+})

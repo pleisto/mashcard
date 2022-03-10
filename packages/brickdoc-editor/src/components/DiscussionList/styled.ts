@@ -1,20 +1,10 @@
-import { styled, Tabs, theme } from '@brickdoc/design-system'
-import { Drawer } from '../Drawer'
+import { Button, styled, Tabs, theme } from '@brickdoc/design-system'
 
 export const FilterTabs = styled(Tabs, {
   paddingLeft: 0
 })
 
-export const StyledDiscussionList = styled('div', {
-  include: ['ceramicSecondary'],
-  borderLeft: `1px solid ${theme.colors.dividerOverlayPrimary}`,
-  borderTopRightRadius: '2px',
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-  padding: '0.75rem 1.125rem',
-  width: '17.5rem'
-})
+export const DiscussionListContainer = styled('div', {})
 
 export const ListTitle = styled('div', {
   color: theme.colors.typeSecondary,
@@ -24,12 +14,6 @@ export const ListTitle = styled('div', {
   marginBottom: '1.625rem'
 })
 
-export const DiscussionDrawer = styled(Drawer, {
-  position: 'absolute',
-  display: 'none',
-  bottom: 'unset'
-})
-
 export const ListWrapper = styled('div', {})
 
 export const ListPanel = styled('div', {
@@ -37,3 +21,19 @@ export const ListPanel = styled('div', {
 })
 
 export const ConversationWrapper = styled('div', {})
+
+export const CloseButton = styled(Button, {
+  position: 'absolute',
+  height: '1rem',
+  right: '1rem',
+  top: '1rem',
+  width: '1rem',
+  variants: {
+    size: {
+      md: {
+        fontSize: '1rem',
+        padding: 0
+      }
+    }
+  }
+})

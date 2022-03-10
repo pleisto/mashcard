@@ -51,7 +51,10 @@ const ActionButton = styled(Button, {
       sm: {
         height: '1rem',
         padding: 0,
-        width: '1rem'
+        width: '1rem',
+        '&:hover, &:focus, &:active': {
+          background: theme.colors.secondaryHover
+        }
       }
     }
   }
@@ -87,7 +90,15 @@ export const Conversation: FC<ConversationProps> = props => {
     <ConversationCard>
       <ConversationHeader>
         <ContentQuote>long long long long long long long long long content</ContentQuote>
-        <Popover compact={true} content={menu} placement="bottomEnd" trigger="click">
+        <Popover
+          compact={true}
+          content={menu}
+          placement="bottomEnd"
+          trigger="click"
+          // stick it to aside panel
+          // avoid popover locate at wrong place when discussion list be scrolled
+          getPopupContainer={() => document.getElementById('aside') ?? document.body}
+        >
           <ActionButton type="text" size="sm" icon={<More />} />
         </Popover>
         <ActionButton type="text" size="sm" icon={<Check />} />

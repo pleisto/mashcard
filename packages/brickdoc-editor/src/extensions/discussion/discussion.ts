@@ -1,7 +1,7 @@
 import { Mark, mergeAttributes } from '@tiptap/core'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { uuid } from '@brickdoc/active-support'
-import { BrickdocEventBus, DiscussionMarkActive } from '@brickdoc/schema'
+import { BrickdocEventBus, DiscussionListToggle, DiscussionMarkActive } from '@brickdoc/schema'
 import { MARK_CLASS_NAME, MARK_ID_ATTR_NAME, focusDiscussionMark } from '../../helpers/discussion'
 import { name } from './name'
 
@@ -74,6 +74,7 @@ export const DiscussionMark = Mark.create<DiscussionOptions>({
             // check if click event occurred on discussion mark
             const mark = (event.target as HTMLElement)?.closest('mark')
             if (mark?.classList.contains(MARK_CLASS_NAME)) {
+              BrickdocEventBus.dispatch(DiscussionListToggle({ visible: true }))
               BrickdocEventBus.dispatch(DiscussionMarkActive({ markId: mark.getAttribute(MARK_ID_ATTR_NAME) }))
             }
             return false

@@ -26,6 +26,7 @@ const getPositionInfo = (listContainer: HTMLElement, container: HTMLElement, com
 }
 
 export function useConversationPositionEffect(
+  drawerVisible: boolean,
   activeMarkId: string | null,
   commentedNodes: CommentedNode[]
 ): [RefObject<HTMLDivElement>, RefObject<Record<string, HTMLElement | null>>] {
@@ -52,7 +53,7 @@ export function useConversationPositionEffect(
     const newListOffset = domNodeY - y
     listRef.current.style.transition = 'transform 100ms ease-out'
     listRef.current.style.transform = `translateY(${listOffset + newListOffset}px)`
-  }, [activeMarkId, commentedNodes])
+  }, [activeMarkId, commentedNodes, drawerVisible])
 
   // update conversation position
   useEffect(() => {
@@ -78,7 +79,7 @@ export function useConversationPositionEffect(
     commentedNodes.forEach(commentedNode => {
       updateConversationPosition(commentedNode, conversationRefs.current[commentedNode.markId])
     })
-  }, [activeMarkId, commentedNodes])
+  }, [activeMarkId, commentedNodes, drawerVisible])
 
   return [listRef, conversationRefs]
 }

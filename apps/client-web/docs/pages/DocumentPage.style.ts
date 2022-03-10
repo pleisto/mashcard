@@ -9,8 +9,6 @@ export const PageContent = styled('div', {
 })
 
 export const Page = styled('div', {
-  scrollbarGutter: 'stable both-edges',
-  overflowY: 'auto',
   flex: 1,
   borderRadius: '2px',
   variants: {

@@ -40,21 +40,28 @@ export const Layout = styled('div', {
     height: '100vh',
     '& > header': {
       height: '3.5rem',
-      padding: '0 0.5rem 0 0',
+      padding: '0 3.5rem 0 0',
       lineHeight: '3.5rem'
     },
-    '& > article': {
-      display: 'flex',
-      minHeight: '0',
-      flex: 'auto',
-      flexDirection: 'column',
-      '--brd-editor-max-width': '960px',
-      borderRadius: '2px',
-      include: ['ceramicSecondary']
+    '& > section': {
+      display: 'grid',
+      gridTemplateColumns: '1fr auto',
+      gridAutoRows: 'minmax(min-content, 100%)',
+      scrollbarGutter: 'stable both-edges',
+      overflowY: 'auto',
+      height: '100vh',
+
+      '& > article': {
+        include: ['ceramicSecondary'],
+        display: 'flex',
+        minHeight: '0',
+        '--brd-editor-max-width': '960px',
+        borderRadius: '2px'
+      },
+      '& > aside': {
+        minWidth: '3rem'
+      }
     }
-  },
-  '& > aside': {
-    width: '3rem'
   },
 
   variants: {
@@ -66,16 +73,17 @@ export const Layout = styled('div', {
         '& > main': {
           flex: 1,
           '& > header': {
-            // include: ['ceramicSecondary']
             background: theme.colors.ceramicSecondary
           },
-          '& > article': {
-            background: theme.colors.ceramicSecondary,
-            boxShadow: 'unset'
+          '& > section': {
+            '& > article': {
+              background: theme.colors.ceramicSecondary,
+              boxShadow: 'unset'
+            },
+            '& > aside': {
+              minWidth: '0rem'
+            }
           }
-        },
-        '& > aside': {
-          display: 'none'
         }
       },
       sm: {
@@ -87,13 +95,15 @@ export const Layout = styled('div', {
           '& > header': {
             background: theme.colors.backgroundSecondary
           },
-          '& > article': {
-            background: theme.colors.backgroundSecondary,
-            boxShadow: 'unset'
+          '& > section': {
+            '& > article': {
+              background: theme.colors.backgroundSecondary,
+              boxShadow: 'unset'
+            },
+            '& > aside': {
+              minWidth: '0rem'
+            }
           }
-        },
-        '& > aside': {
-          display: 'none'
         }
       }
     }

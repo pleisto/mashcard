@@ -1,17 +1,11 @@
 import { TabPane } from '@brickdoc/design-system'
-import { FC, useCallback, useContext } from 'react'
+import { BrickdocEventBus, DiscussionListToggle, ExplorerMenuTrigger } from '@brickdoc/schema'
+import { FC, useCallback, useContext, useEffect, useState } from 'react'
 import { EditorContext } from '../../context/EditorContext'
 import { focusDiscussionMark, leaveDiscussionMark } from '../../helpers/discussion'
+import { Drawer } from '../Drawer'
 import { Conversation } from './Conversation'
-import {
-  DiscussionDrawer,
-  StyledDiscussionList,
-  ListTitle,
-  FilterTabs,
-  ListWrapper,
-  ConversationWrapper,
-  ListPanel
-} from './styled'
+import { FilterTabs, ListWrapper, ConversationWrapper, ListPanel, DiscussionListContainer } from './styled'
 import { useActiveMarkId } from './useActiveMarkId'
 import { CommentedNode, useCommentedNodes } from './useCommentedNodes'
 import { useConversationPositionEffect } from './useConversationPositionEffect'
@@ -25,9 +19,26 @@ const TAB_RESOLVED = 'resolved'
 export const DiscussionList: FC<DiscussionListProps> = () => {
   const { t } = useContext(EditorContext)
 
+  const [drawerVisible, setDrawerVisible] = useState(false)
   const [commentedNodes] = useCommentedNodes()
   const [activeMarkId, setActiveMarkId] = useActiveMarkId(commentedNodes)
-  const [listRef, conversationRefs] = useConversationPositionEffect(activeMarkId, commentedNodes)
+  const [listRef, conversationRefs] = useConversationPositionEffect(drawerVisible, activeMarkId, commentedNodes)
+
+  useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(DiscussionListToggle, ({ payload }) => {
+      setDrawerVisible(visible => payload.visible ?? !visible)
+    })
+
+    // TODO: create a drawer manager to manage all drawers' visible state
+    const listener2 = BrickdocEventBus.subscribe(ExplorerMenuTrigger, ({ payload }) => {
+      if (payload.visible) setDrawerVisible(false)
+    })
+
+    return () => {
+      listener.unsubscribe()
+      listener2.unsubscribe()
+    }
+  }, [])
 
   const setConversationRef = useCallback(
     (markId: string) => (container: HTMLElement | null) => {
@@ -70,12 +81,13 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
   )
 
   return (
-    <DiscussionDrawer
-      container={document.getElementById('article')?.firstElementChild as HTMLElement}
-      overlay={false}
-      visible={false}>
-      <StyledDiscussionList>
-        <ListTitle>{t('discussion.title')}</ListTitle>
+    <Drawer
+      container={document.getElementById('aside') as HTMLElement}
+      visible={drawerVisible}
+      onClose={() => setDrawerVisible(false)}
+      title={t('discussion.title')}
+    >
+      <DiscussionListContainer>
         <FilterTabs defaultActiveKey={TAB_ALL}>
           <TabPane tab={t(`discussion.tabs.${TAB_ALL}`)} key={TAB_ALL}>
             <ListPanel>
@@ -86,7 +98,8 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
                     ref={setConversationRef(commentedNode.markId)}
                     onClick={handleConversationSelect(commentedNode)}
                     onMouseEnter={handleConversationHover(commentedNode)}
-                    onMouseLeave={handleConversationLeave(commentedNode)}>
+                    onMouseLeave={handleConversationLeave(commentedNode)}
+                  >
                     <Conversation />
                   </ConversationWrapper>
                 ))}
@@ -97,7 +110,7 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
             tab resolved
           </TabPane>
         </FilterTabs>
-      </StyledDiscussionList>
-    </DiscussionDrawer>
+      </DiscussionListContainer>
+    </Drawer>
   )
 }
