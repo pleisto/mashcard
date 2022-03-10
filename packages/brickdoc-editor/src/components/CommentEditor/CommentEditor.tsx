@@ -76,6 +76,7 @@ export const CommentEditor: FC<CommentEditorProps> = ({ markId }) => {
   const [placeholder, setPlaceholder] = useState(editor?.isEmpty ? placeholderText : '')
   useEffect(() => {
     const checkPlaceholder = () => {
+      if (editor?.isDestroyed) return
       if (editor?.isEmpty && !placeholder) setPlaceholder(placeholderText)
       if (!editor?.isEmpty && placeholder) setPlaceholder('')
     }

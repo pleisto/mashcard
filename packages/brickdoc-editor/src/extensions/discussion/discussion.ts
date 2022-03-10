@@ -78,7 +78,7 @@ export const DiscussionMark = Mark.create<DiscussionOptions>({
               // wait for drawer open animation
               setTimeout(() => {
                 BrickdocEventBus.dispatch(DiscussionMarkActive({ markId: mark.getAttribute(MARK_ID_ATTR_NAME) }))
-              }, 120)
+              }, 200)
             }
             return false
           }

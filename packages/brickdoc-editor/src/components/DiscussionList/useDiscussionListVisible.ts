@@ -23,7 +23,7 @@ export function useDiscussionListVisible(
     // wait for drawer open animation
     setTimeout(() => {
       setActiveMarkId(commentedNode.markId)
-    }, 120)
+    }, 200)
   }, [commentedNodes, pageQuery, setActiveMarkId])
 
   useEffect(() => {

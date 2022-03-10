@@ -1,13 +1,11 @@
 import { TabPane } from '@brickdoc/design-system'
-import { FC, useContext } from 'react'
+import { FC, useCallback, useContext, useState } from 'react'
 import { EditorContext } from '../../context/EditorContext'
 import { Drawer } from '../Drawer'
-import { Conversation } from './Conversation'
-import { FilterTabs, ListWrapper, ConversationWrapper, ListPanel, DiscussionListContainer } from './styled'
+import { DiscussionPanel } from './DiscussionPanel'
+import { FilterTabs, DiscussionListContainer } from './styled'
 import { useActiveMarkId } from './useActiveMarkId'
 import { useCommentedNodes } from './useCommentedNodes'
-import { useConversationActions } from './useConversationActions'
-import { useConversationPositionEffect } from './useConversationPositionEffect'
 import { useDiscussionListVisible } from './useDiscussionListVisible'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -19,12 +17,17 @@ const TAB_RESOLVED = 'resolved'
 export const DiscussionList: FC<DiscussionListProps> = () => {
   const { t } = useContext(EditorContext)
 
+  const [activeTab, setActiveTab] = useState(TAB_ALL)
   const [commentedNodes] = useCommentedNodes()
   const [activeMarkId, setActiveMarkId] = useActiveMarkId(commentedNodes)
   const [visible, setVisible] = useDiscussionListVisible(commentedNodes, setActiveMarkId)
-  const [listRef, conversationRefs] = useConversationPositionEffect(visible, activeMarkId, commentedNodes)
-  const [setConversationRef, handleConversationSelect, handleConversationHover, handleConversationLeave] =
-    useConversationActions(conversationRefs, activeMarkId, setActiveMarkId)
+  const handleTabClick = useCallback(
+    (activeTab: string) => {
+      setActiveTab(activeTab)
+      setActiveMarkId(null)
+    },
+    [setActiveMarkId]
+  )
 
   return (
     <Drawer
@@ -34,26 +37,23 @@ export const DiscussionList: FC<DiscussionListProps> = () => {
       title={t('discussion.title')}
     >
       <DiscussionListContainer>
-        <FilterTabs defaultActiveKey={TAB_ALL}>
+        <FilterTabs activeKey={activeTab} onTabClick={handleTabClick}>
           <TabPane tab={t(`discussion.tabs.${TAB_ALL}`)} key={TAB_ALL}>
-            <ListPanel>
-              <ListWrapper ref={listRef}>
-                {commentedNodes.map(commentedNode => (
-                  <ConversationWrapper
-                    key={commentedNode.markId}
-                    ref={setConversationRef(commentedNode.markId)}
-                    onClick={handleConversationSelect(commentedNode)}
-                    onMouseEnter={handleConversationHover(commentedNode)}
-                    onMouseLeave={handleConversationLeave(commentedNode)}
-                  >
-                    <Conversation active={activeMarkId === commentedNode.markId} markId={commentedNode.markId} />
-                  </ConversationWrapper>
-                ))}
-              </ListWrapper>
-            </ListPanel>
+            <DiscussionPanel
+              visible={visible && activeTab === TAB_ALL}
+              activeMarkId={activeMarkId}
+              setActiveMarkId={setActiveMarkId}
+              commentedNodes={commentedNodes}
+            />
           </TabPane>
           <TabPane tab={t(`discussion.tabs.${TAB_RESOLVED}`)} key={TAB_RESOLVED}>
-            tab resolved
+            <DiscussionPanel
+              visible={visible && activeTab === TAB_RESOLVED}
+              activeMarkId={activeMarkId}
+              setActiveMarkId={setActiveMarkId}
+              // filter by resolved status
+              commentedNodes={commentedNodes.filter((node, index) => index === 0)}
+            />
           </TabPane>
         </FilterTabs>
       </DiscussionListContainer>
