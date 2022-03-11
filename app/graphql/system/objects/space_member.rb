@@ -7,7 +7,7 @@ module System
 
       field :domain, String, 'Like a username, Unique within this instance of Brickdoc', null: false
       field :name, String, 'Space Name', null: false
-      field :email, String, 'owner email', null: false
+      field :email, String, 'owner email', null: true
       field :avatar_data, Avatar, 'Space Avatar', null: true
 
       field :role, Enums::MemberRole, 'role', null: false
