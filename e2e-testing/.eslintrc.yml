@@ -1,3 +1,9 @@
+extends:
+  - plugin:@brickdoc/eslint-plugin/base
+
 rules:
   jest/no-done-callback: off
   import/no-default-export: off
+
+parserOptions:
+  project: ./tsconfig.json

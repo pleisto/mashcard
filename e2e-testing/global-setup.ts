@@ -1,8 +1,8 @@
 import { chromium, FullConfig } from '@playwright/test'
 import { ACCOUNT_SELECTORS } from './selectors/account'
 
-const email = process.env.E2E_LOGIN_EMAIL ?? 'ADMIN4@brickdoc.com'
-const password = process.env.E2E_LOGIN_PASSWORD ?? 'PASSWORD4'
+const email = process.env.E2E_LOGIN_EMAIL ?? 'ADMIN3@brickdoc.com'
+const password = process.env.E2E_LOGIN_PASSWORD ?? 'PASSWORD3'
 
 async function globalSetup(config: FullConfig): Promise<void> {
   const { baseURL = '/', storageState } = config.projects[0].use
