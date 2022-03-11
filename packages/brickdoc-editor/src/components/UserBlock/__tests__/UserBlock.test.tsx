@@ -12,6 +12,9 @@ describe('UserBlock', () => {
           avatarUrl: 'avatarUrl'
         }
       }
+    },
+    extension: {
+      options: {}
     }
   }
 

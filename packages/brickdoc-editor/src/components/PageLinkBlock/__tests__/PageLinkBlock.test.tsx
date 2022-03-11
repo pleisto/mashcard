@@ -13,6 +13,9 @@ describe('PageLinkBlock', () => {
           title: 'title'
         }
       }
+    },
+    extension: {
+      options: {}
     }
   }
 
