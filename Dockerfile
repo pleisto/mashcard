@@ -26,7 +26,7 @@ RUN sed -i "s/0.0.0/$VERSION/g" package.json
 RUN bundle install --retry 2 --jobs 4 \
   && yarn install --immutable
 RUN NODE_ENV=$RAILS_ENV yarn dist
-RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files brickdoc@$VERSION upload-sourcemaps --ext map ./public/esm-bundle; fi
+RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files brickdoc@$VERSION upload-sourcemaps --url-prefix=~/globalcdn/brickdoc-saas-prod/esm-bundle ./public/esm-bundle; fi
 
 RUN rm -rf node_modules .yarn apps/client-web dist public/esm-bundle/stats.json yarn.lock \
   && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + \
