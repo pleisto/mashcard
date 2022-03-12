@@ -48,7 +48,7 @@ export const getFileTypeByContentType = (name: string): FileType => {
   }
 }
 
-export const getFileTypeByExtension = (name: string): FileType => {
+export const getFileTypeByExtension = (name: string | undefined): FileType => {
   const extension = (name ?? '').split('.').pop()
 
   switch (extension) {

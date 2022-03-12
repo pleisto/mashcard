@@ -1,6 +1,6 @@
-import React from 'react'
+import { useCallback } from 'react'
 import { Upload, useCreateDirectUploadMutation } from '@/BrickdocGraphQL'
-import { EditorDatabase } from '@brickdoc/editor'
+import { ExternalDatabase } from '@brickdoc/editor'
 import { FileChecksum } from '@rails/activestorage/src/file_checksum'
 
 const checksum = async (file: File): Promise<string> =>
@@ -15,10 +15,10 @@ const checksum = async (file: File): Promise<string> =>
     })
   })
 
-export function usePrepareFileUpload(): EditorDatabase['prepareFileUpload'] {
+export function usePrepareFileUpload(): ExternalDatabase['prepareFileUpload'] {
   const [directUpload] = useCreateDirectUploadMutation()
 
-  return React.useCallback(
+  return useCallback(
     async (blockId: string, type: string, file: File) => {
       let inputType: Upload
 

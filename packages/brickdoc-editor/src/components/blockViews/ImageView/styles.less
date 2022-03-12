@@ -1,0 +1,239 @@
+.brickdoc-block-image-section {
+  position: relative;
+  width: 100%;
+  background: #f9f9f9;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 14px 17px;
+  box-sizing: border-box;
+  border: none;
+  height: unset;
+
+  &:hover {
+    background: #efefef;
+    cursor: pointer;
+  }
+
+  .image-section-progressing {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--brd-colors-primaryDefault);
+    opacity: 18%;
+  }
+
+  .image-section-icon {
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+    color: #bfbcc6;
+  }
+
+  .image-section-content {
+    color: #847e8e;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin-left: 17px;
+
+    .image-section-desc {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}
+
+.brickdoc-block-image-section-resize-container {
+  max-width: 100%;
+  min-width: 40px;
+}
+
+.brickdoc-block-image-section-popover {
+  .brd-popover-arrow {
+    display: none;
+  }
+
+  .brd-popover-inner-content {
+    padding: 0;
+    color: unset;
+  }
+}
+
+.brickdoc-block-image {
+  width: 100%;
+  max-width: 100%;
+  min-width: 40px;
+
+  &.loading {
+    position: absolute;
+  }
+}
+
+.image-section-menu-popover {
+  z-index: 999;
+
+  & .brd-popover-arrow {
+    display: none;
+  }
+
+  & .brd-popover-inner-content {
+    padding: 0;
+    border-radius: .8rem;
+  }
+
+  & .brd-menu-item {
+    padding: .6rem 1.2rem;
+    font-size: 14px;
+    line-height: 20px;
+
+    & .brd-icon {
+      margin-right: .8rem;
+    }
+  }
+}
+
+.image-section-menu {
+  border-radius: .8rem;
+}
+
+.brickdoc-block-image-section-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  position: relative;
+
+  [data-rmiz-wrap='hidden'],
+  [data-rmiz-wrap='visible'] {
+    display: flex;
+  }
+
+  // TODO: repeat it in PdfSection/styles.less. Keep it DRY
+  .image-section-control-panel {
+    display: inline-block;
+
+    .image-section-control-bottom-drag,
+    .image-section-control-bottom-left-drag,
+    .image-section-control-bottom-right-drag,
+    .image-section-control-left-drag,
+    .image-section-control-right-drag,
+    .image-section-menu-button {
+      transition: opacity .3s ease-in;
+    }
+
+    .image-section-menu-button {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      right: 12px;
+      top: 12px;
+      background: rgb(255 255 255 / 70%);
+      border-radius: 2px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .image-section-control-drag {
+      width: 6px;
+      height: 40px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      background-image: url('./assets/control.png');
+      background-size: 6px 40px;
+    }
+
+    .image-section-control-left-drag {
+      .image-section-control-drag();
+
+      left: 8px;
+    }
+
+    .image-section-control-right-drag {
+      .image-section-control-drag();
+
+      right: 8px;
+    }
+
+    .image-section-control-bottom-drag {
+      .image-section-control-drag();
+
+      top: unset;
+      left: 50%;
+      bottom: 8px;
+      width: 40px;
+      height: 6px;
+      transform: translateX(-50%);
+      background-image: url('./assets/control-bottom.png');
+      background-size: 40px 6px;
+    }
+
+    .image-section-control-corner-drag {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      opacity: 0;
+      background-image: url('./assets/control-corner.png');
+      background-size: 24px 24px;
+    }
+
+    .image-section-control-bottom-left-drag {
+      .image-section-control-corner-drag();
+
+      left: 8px;
+    }
+
+    .image-section-control-bottom-right-drag {
+      .image-section-control-corner-drag();
+
+      transform: rotate(270deg);
+      right: 8px;
+    }
+
+    &:hover {
+      .image-section-control-bottom-drag,
+      .image-section-control-bottom-left-drag,
+      .image-section-control-bottom-right-drag,
+      .image-section-control-left-drag,
+      .image-section-control-right-drag,
+      .image-section-menu-button {
+        opacity: 100%;
+      }
+    }
+
+    .image-section-zoom-in-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      /* reset styles */
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      font: inherit;
+      color: inherit;
+      background: none;
+      appearance: none;
+    }
+  }
+}

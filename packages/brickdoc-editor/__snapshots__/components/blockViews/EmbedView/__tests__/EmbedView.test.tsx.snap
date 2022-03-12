@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmbedView matches correct snapshot 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brickdoc-link-block-link"
+    data-testid="editor-embed-block-link"
+    role="button"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="link-block-cover"
+      style="background-image: url(cover);"
+    />
+    <div
+      class="link-block-content"
+    >
+      <div
+        class="link-block-title"
+      >
+        brickdoc
+      </div>
+      <div
+        class="link-block-description"
+      >
+        desc
+      </div>
+      <div
+        class="link-block-url"
+      >
+        https://www.brickdoc.com
+      </div>
+    </div>
+  </button>
+</div>
+`;

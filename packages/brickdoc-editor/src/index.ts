@@ -1,2 +1,3 @@
 export * from './Editor'
-export * from './dataSource/DataSource'
+export { useEditorI18n } from './hooks'
+export * from './context/ExternalPropsContext'

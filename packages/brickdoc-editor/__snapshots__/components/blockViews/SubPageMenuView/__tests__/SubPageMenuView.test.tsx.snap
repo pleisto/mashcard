@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubPageMenuView matches correct snapshot 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  <div
+    class="brd-c-fLVmAJ"
+  >
+    <div>
+      page tree
+    </div>
+  </div>
+</div>
+`;

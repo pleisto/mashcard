@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadingView matches snapshot correctly 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  <h1
+    as="h1"
+    data-node-view-content=""
+    style="white-space: pre-wrap;"
+  />
+</div>
+`;
+
+exports[`HeadingView renders correspond heading according to level 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  <h2
+    as="h2"
+    data-node-view-content=""
+    style="white-space: pre-wrap;"
+  />
+</div>
+`;

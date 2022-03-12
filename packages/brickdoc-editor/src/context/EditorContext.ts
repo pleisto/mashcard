@@ -1,4 +1,4 @@
-import React from 'react'
+import { createContext } from 'react'
 import { Editor } from '@tiptap/react'
 import { TFunction } from 'react-i18next'
 
@@ -7,7 +7,7 @@ export interface EditorContextData {
   t: TFunction<string[], undefined>
 }
 
-export const EditorContext = React.createContext<EditorContextData>({
+export const EditorContext = createContext<EditorContextData>({
   editor: null,
   t: (key?: string) => key
 })

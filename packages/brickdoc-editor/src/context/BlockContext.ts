@@ -1,4 +1,4 @@
-import React from 'react'
+import { createContext } from 'react'
 
 export interface BlockContextData {
   deleteBlock: () => void
@@ -11,7 +11,7 @@ export interface BlockContextData {
   dragging: boolean
 }
 
-export const BlockContext = React.createContext<BlockContextData>({
+export const BlockContext = createContext<BlockContextData>({
   deleteBlock() {},
   duplicateBlock() {},
   moveBlock() {},

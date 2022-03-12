@@ -10,7 +10,7 @@ import { TrashPrompt } from '../common/components/TrashPrompt'
 import { Navigate } from 'react-router-dom'
 import { DocMeta, NonNullDocMeta } from './DocumentContentPage'
 import { editorVar } from '../reactiveVars'
-import { useEditorDataSource } from './hooks/useEditorDataSource'
+import { useEditorExternalProps } from './hooks/useEditorExternalProps'
 import { useDocumentEditable } from './hooks/useDocumentEditable'
 import * as Root from './DocumentPage.style'
 
@@ -39,7 +39,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
   const currentRootBlock = rootBlock.current
   const [documentEditable] = useDocumentEditable(freeze ?? false, docMeta, currentRootBlock)
 
-  const editorDataSource = useEditorDataSource({
+  const externalProps = useEditorExternalProps({
     docMeta,
     documentEditable,
     blocks: data?.childrenBlocks
@@ -47,7 +47,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   const editor = useEditor({
     onSave: onDocSave,
-    externalDataSource: editorDataSource,
+    externalProps,
     editable: documentEditable
   })
 
@@ -98,11 +98,10 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
-        }}
-      >
+        }}>
         <DocumentTitle blocks={data?.childrenBlocks} editable={documentEditable} />
         <Root.PageContent>
-          <EditorContent editor={editor} editorDataSource={editorDataSource} />
+          <EditorContent editor={editor} externalProps={externalProps} />
         </Root.PageContent>
       </Root.Page>
     </>
