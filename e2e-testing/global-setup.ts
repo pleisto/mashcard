@@ -5,15 +5,16 @@ const email = process.env.E2E_LOGIN_EMAIL ?? 'ADMIN3@brickdoc.com'
 const password = process.env.E2E_LOGIN_PASSWORD ?? 'PASSWORD3'
 
 async function globalSetup(config: FullConfig): Promise<void> {
-  const { baseURL = '/', storageState } = config.projects[0].use
+  const { baseURL, storageState } = config.projects[0].use
   const browser = await chromium.launch()
-  const page = await browser.newPage()
-  await page.goto(baseURL)
+  const page = await browser.newPage({ baseURL })
+  await page.goto(`/accounts/sign_in`)
 
-  await page.fill(ACCOUNT_SELECTORS.sigIn.emailInput, email)
-  await page.fill(ACCOUNT_SELECTORS.sigIn.passwordInput, password)
+  await page.fill(ACCOUNT_SELECTORS.signIn.emailInput, email)
+  await page.fill(ACCOUNT_SELECTORS.signIn.passwordInput, password)
+  await page.locator(ACCOUNT_SELECTORS.signIn.signInButton).click()
 
-  await Promise.all([page.waitForNavigation(), page.locator(ACCOUNT_SELECTORS.sigIn.signInButton).click()])
+  await page.waitForNavigation()
   await page.context().storageState({
     path: `./${storageState}`
   })

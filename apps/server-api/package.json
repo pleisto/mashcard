@@ -6,7 +6,8 @@
     "start:dist": "node --enable-source-maps  dist/main.js",
     "build": "run -T swc src -s -d ./dist -C module.type=commonjs",
     "prisma": "ts-node --swc ./src/dotenvBin.ts prisma",
-    "lint": "TIMING=1 run -T eslint --ext ts,tsx src",
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
     "lint:type": "run -T tsc"
   },

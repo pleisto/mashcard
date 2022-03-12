@@ -2,14 +2,14 @@ flag_management:
   default_rules:
     carryforward: true
 ignore:
-  - 'app'
-  - 'lib'
-  - 'db'
-  - 'bin'
-  - 'config'
-  - 'templates'
-  - 'tools'
-  - 'packages/brickdoc-design-icons'
+  - 'app/**/*'
+  - 'lib/**/*'
+  - 'db/**/*'
+  - 'bin/**/*'
+  - 'config/**/*'
+  - 'templates/**/*'
+  - 'tools/**/*'
+  - 'packages/brickdoc-design-icons/**/*'
   - 'apps/client-web/BrickdocGraphQL.ts'
   - 'packages/briockdoc-design-system/.storybook'
   - 'packages/brickdoc-design-system/components/*/demos'

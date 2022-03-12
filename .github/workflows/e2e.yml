@@ -27,19 +27,19 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install libsodium23 rustc
       - name: Install Playwright
-        run: yarn playwright install --with-deps
+        run: yarn e2e-testing install-deps
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run Playwright tests
-        run: yarn test:playwright:run --shard=${{ matrix.shard }}/3
+        run: yarn e2e-testing run-playwright --shard=${{ matrix.shard }}/3
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
           PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
       - name: Fix coverage files
-        run: (find .nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn test:playwright:report
+        run: (find e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
         continue-on-error: true
       - name: Publish Playwright code coverage reports
         uses: codecov/codecov-action@v2
@@ -53,4 +53,4 @@ jobs:
           name: playwright-test-results
           if-no-files-found: ignore
           retention-days: 3
-          path: test-results/
+          path: e2e-testing/test-results/

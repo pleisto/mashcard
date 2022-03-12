@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test'
-import { SIDEBAR_SELECTORS } from '../../selectors/sidebar'
+import { SIDEBAR_SELECTORS } from '@/selectors/sidebar'
 
 export class Trash {
   private readonly page: Page

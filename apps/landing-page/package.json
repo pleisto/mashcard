@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "TIMING=1 next lint",
+    "lint": "yarn lint:eslint && yarn lint:type",
+    "lint:eslint": "TIMING=1 next lint",
     "lint:fix": "TIMING=1 next lint --fix",
     "lint:type": "run -T tsc"
   },

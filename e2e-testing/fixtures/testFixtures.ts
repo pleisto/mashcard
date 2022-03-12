@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as crypto from 'crypto'
 import { test as baseTest } from '@playwright/test'
-import { PageExtend } from '../helpers/utils/PageExtend'
+import { PageExtend } from '@/helpers/utils/PageExtend'
 
 const istanbulCLIOutput = path.join(process.cwd(), '.nyc_output')
 

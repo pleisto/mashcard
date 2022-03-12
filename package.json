@@ -7,7 +7,8 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "tools/*"
+    "tools/*",
+    "e2e-testing"
   ],
   "scripts": {
     "postinstall": "husky install && ./bin/pdftron static && yarn api prisma generate",
@@ -15,17 +16,15 @@
     "dist": "./bin/vite build",
     "analyze": "BUNDLE_STATS=1 yarn dist && open ./tmp/esm-bundle-stats.html",
     "dev": "ts-node tools/devkit/src/index.ts",
-    "lint": "turbo run lint lint:type",
+    "lint": "turbo run lint:eslint lint:type",
+    "lint:eslint": "turbo run lint:eslint",
     "lint:fix": "yarn workspaces foreach --since -p -j unlimited run lint:fix",
     "lint:type": "turbo run lint:type",
     "test": "turbo run lint lint:type test:jest && yarn test:rspec",
     "test:update-snap": "yarn workspaces foreach --since -p -j unlimited run test:jest --runInBand -u",
     "test:jest": "turbo run test:jest",
     "test:rspec": "bundle exec rspec",
-    "test:playwright": "yarn test:playwright:cleanup && yarn test:playwright:run && yarn test:playwright:report",
-    "test:playwright:cleanup": "rm -rf .nyc_output test-results",
-    "test:playwright:run": "playwright test",
-    "test:playwright:report": "nyc report --reporter=lcov --reporter=text-summary --report-dir=coverage/playwright",
+    "test:playwright": "yarn e2e-testing start",
     "commit": "git add . && cz",
     "graphql": "bundle exec rails graphql:schema:dump && yarn workspace @brickdoc/client-web graphql-codegen --config codegen.yml",
     "cleanup": "rm -rf dist packages/*/dist apps/*/dist tools/*/dist public/esm-bundle junit-reports node_modules/.cache coverage .nyc_output test-results",
@@ -36,6 +35,7 @@
     "formula": "yarn workspace @brickdoc/formula",
     "uploader": "yarn workspace @brickdoc/uploader",
     "api": "yarn workspace @brickdoc/server-api",
+    "e2e-testing": "yarn workspace @brickdoc/e2e-testing",
     "grpc": "grpc_tools_ruby_protoc -I apps/server-api/src/anti-corruption --ruby_out=lib --grpc_out=lib grpc/main.proto"
   },
   "devDependencies": {
@@ -46,7 +46,6 @@
     "@graphql-codegen/typescript": "^2.4.7",
     "@graphql-codegen/typescript-operations": "^2.3.4",
     "@graphql-codegen/typescript-react-apollo": "^3.2.10",
-    "@playwright/test": "^1.19.2",
     "@swc/cli": "^0.1.55",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.2",
@@ -92,7 +91,6 @@
     "lint-staged": "^12.3.5",
     "mocha": "^9.2.1",
     "mocha-junit-reporter": "^2.0.2",
-    "nyc": "^15.1.0",
     "prettier": "^2.5.1",
     "rollup-plugin-visualizer": "^5.6.0",
     "turbo": "^1.1.6",

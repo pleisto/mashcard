@@ -1952,6 +1952,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@brickdoc/e2e-testing@workspace:e2e-testing":
+  version: 0.0.0-use.local
+  resolution: "@brickdoc/e2e-testing@workspace:e2e-testing"
+  dependencies:
+    "@playwright/test": ^1.19.2
+    nyc: ^15.1.0
+  languageName: unknown
+  linkType: soft
+
 "@brickdoc/editor@workspace:^, @brickdoc/editor@workspace:packages/brickdoc-editor":
   version: 0.0.0-use.local
   resolution: "@brickdoc/editor@workspace:packages/brickdoc-editor"
@@ -2069,7 +2078,6 @@ __metadata:
     "@graphql-codegen/typescript": ^2.4.7
     "@graphql-codegen/typescript-operations": ^2.3.4
     "@graphql-codegen/typescript-react-apollo": ^3.2.10
-    "@playwright/test": ^1.19.2
     "@swc/cli": ^0.1.55
     "@swc/core": ^1.2.152
     "@swc/helpers": ^0.3.6
@@ -2117,7 +2125,6 @@ __metadata:
     lint-staged: ^12.3.5
     mocha: ^9.2.1
     mocha-junit-reporter: ^2.0.2
-    nyc: ^15.1.0
     prettier: ^2.5.1
     rollup-plugin-visualizer: ^5.6.0
     ts-node: ^10.7.0

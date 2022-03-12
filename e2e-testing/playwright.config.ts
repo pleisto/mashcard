@@ -5,18 +5,18 @@ import isCI from 'is-ci'
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './e2e-testing/tests',
+  testDir: './tests',
   forbidOnly: isCI,
   retries: 2,
   reporter: isCI ? [['dot'], ['github']] : 'list',
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000',
+    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000/',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    storageState: './e2e-testing/storageState.json'
+    storageState: './storageState.json'
   },
-  globalSetup: './e2e-testing/global-setup',
+  globalSetup: './global-setup',
   projects: [
     {
       name: 'chromium',
@@ -39,7 +39,7 @@ const config: PlaywrightTestConfig = {
   ],
   webServer: !isCI
     ? {
-        command: 'NODE_ENV=test RAILS_ENV=test yarn dist && RAILS_ENV=test ./bin/rails server',
+        command: 'NODE_ENV=test RAILS_ENV=test yarn run -T dist && (cd ..; RAILS_ENV=test ./bin/rails server)',
         port: 3000
       }
     : undefined

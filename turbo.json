@@ -2,14 +2,14 @@
   "$schema": "https://turborepo.org/schema.json",
   "baseBranch": "origin/master",
   "pipeline": {
-    "lint": {
+    "lint:eslint": {
       "outputs": []
     },
     "lint:type": {
-      "outputs": []
+      "outputs": ["dist/tsconfig.tsbuildinfo"]
     },
     "test:jest": {
-      "outputs": []
+      "outputs": ["coverage/**"]
     }
   }
 }

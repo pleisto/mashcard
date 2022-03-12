@@ -1,5 +1,5 @@
 export const ACCOUNT_SELECTORS = {
-  sigIn: {
+  signIn: {
     emailInput: 'input[name="email"]',
     passwordInput: 'input[name="password"]',
     signInButton: 'button[type="submit"]:has-text("Sign In")'

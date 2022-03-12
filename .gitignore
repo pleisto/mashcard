@@ -72,12 +72,10 @@ ehthumbs.db
 ._*
 
 # testing
-.coverage-cache
-.nyc_output
+.coverage-cache/
+.nyc_output/
 junit-reports/
 coverage/
-test-results/
-storageState.json
 
 # build
 dist/
