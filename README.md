@@ -9,7 +9,7 @@
 
 > Brickdoc is built on an open core model. This is Brickdoc **Community Edition** mono repository.
 
-BrickDoc is an open-source human intellect application and collaboration platform to Break the boundary between documents, spreadsheets, and software.
+Brickdoc is an open-source human intellect application and collaboration platform to Break the boundary between documents, spreadsheets, and software.
 
 ## Development
 

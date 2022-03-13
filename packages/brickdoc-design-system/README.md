@@ -1,6 +1,6 @@
 # Brickdoc Design System
 
-BrickDoc is the next-generation online Office system designed around the concept of “Augmented Intelligence” working to
+Brickdoc is the next-generation online Office system designed around the concept of “Augmented Intelligence” working to
 break the boundaries between documents, spreadsheets, and software.
 
 Our design system helps us to create a consistent look and feel across our entire product suite.
