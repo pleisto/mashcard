@@ -1,9 +1,9 @@
 import React from 'react'
-import { NodeViewProps } from '@tiptap/react'
 import { TextSelection } from 'prosemirror-state'
 import { Input, Icon, devLog } from '@brickdoc/design-system'
 import { useEditorI18n, useDocumentEditable } from '../../../hooks'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
+import { SpreadsheetViewProps } from '../../../extensions/blocks/spreadsheet/meta'
 import { MenuIcon } from '../../extensionViews/SlashMenu/styled'
 
 import { useSpreadsheet } from './useSpreadsheet'
@@ -29,7 +29,13 @@ import { SpreadsheetCell } from './SpreadsheetCell'
 import './Spreadsheet.less'
 import { useFormulaSpreadsheet } from './useFormulaSpreadsheet'
 
-export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode, updateAttributes, getPos }) => {
+export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
+  editor,
+  node,
+  deleteNode,
+  updateAttributes,
+  getPos
+}) => {
   const [documentEditable] = useDocumentEditable(undefined)
 
   const parentId: string = node.attrs.uuid
@@ -59,7 +65,7 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
     saveCellBlock,
     cellsMap
   } = useSpreadsheet({
-    isNew: node.attrs.isNew,
+    isNew: node.attrs.isNew ?? false,
     parentId,
     data: prevData,
     updateAttributeData
@@ -264,7 +270,8 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                     draggable={documentEditable}
                     onResize={onResize}
                     width={columnWidths[column.uuid]}
-                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}>
+                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
+                  >
                     <SpreadsheetColumnEditable
                       context={spreadsheetContext}
                       index={i}
@@ -285,14 +292,16 @@ export const Spreadsheet: React.FC<NodeViewProps> = ({ editor, node, deleteNode,
                     rowId={rowBlock.id}
                     onHeightChange={(height: number) =>
                       setRowLayoutHeights({ ...rowLayoutHeights, [rowBlock.id]: height })
-                    }>
+                    }
+                  >
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
+                        >
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}

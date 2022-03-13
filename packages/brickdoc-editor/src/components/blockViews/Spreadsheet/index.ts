@@ -1,4 +1,2 @@
-export * from './Spreadsheet'
-export * from './SpreadsheetView'
-export * from './SpreadsheetContext'
+export * from './SpreadsheetBlockView'
 export * from './SpreadsheetRender'

@@ -1,9 +1,9 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { v4 as uuid } from 'uuid'
-import { Spreadsheet as SpreadsheetView } from '../../../components/blockViews'
+import { SpreadsheetBlockView } from '../../../components/blockViews'
 import { createBlock } from '../../common'
-import { meta } from './meta'
+import { SpreadsheetOptions, SpreadsheetAttributes, meta } from './meta'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -14,11 +14,6 @@ declare module '@tiptap/core' {
       setSpreadsheetBlock: (position?: number) => ReturnType
     }
   }
-}
-
-export interface SpreadsheetOptions {}
-export interface SpreadsheetAttributes {
-  // TODO: add attributes types
 }
 
 export const Spreadsheet = createBlock<SpreadsheetOptions, SpreadsheetAttributes>({
@@ -64,7 +59,7 @@ export const Spreadsheet = createBlock<SpreadsheetOptions, SpreadsheetAttributes
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(SpreadsheetView)
+    return ReactNodeViewRenderer(SpreadsheetBlockView)
   },
 
   addCommands() {
