@@ -34,11 +34,26 @@ jobs:
         with:
           ruby-version: 3.0.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Get E2E account email & password
+        id: get_e2e_account
+        run: |
+          if [$DEPLOY_ENV == 'trunk']
+          then
+              echo ::set-output name=email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL }}
+              echo ::set-output name=password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD }}
+          else
+              echo ::set-output name=email::ADMIN3@brickdoc.com
+              echo ::set-output name=password::PASSWORD3
+          fi
+        env:
+          DEPLOY_ENV: ${{ github.event.deployment_status.environment }}
       - name: Run Playwright tests
         run: yarn e2e-testing run-playwright --shard=${{ matrix.shard }}/3
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
           PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
+          E2E_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.email }}
+          E2E_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.password }}
       - name: Fix coverage files
         run: (find e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
         continue-on-error: true
