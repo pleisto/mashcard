@@ -12,6 +12,7 @@ permissions:
   deployments: write
   packages: write
   statuses: write
+  actions: write
 env:
   YARN_CHECKSUM_BEHAVIOR: update
   image: ghcr.io/brickdoc/brickdoc-saas

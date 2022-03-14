@@ -16,6 +16,14 @@ on:
     branches:
       - master
       - main
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
+  actions: write
 env:
   YARN_CHECKSUM_BEHAVIOR: update
   image: ghcr.io/brickdoc/brickdoc:latest

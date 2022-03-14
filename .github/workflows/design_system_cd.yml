@@ -15,6 +15,7 @@ permissions:
   deployments: write
   packages: write
   statuses: write
+  actions: write
 env:
   YARN_CHECKSUM_BEHAVIOR: update
   GCP_PROJECT: golden-union-341912
@@ -92,4 +93,4 @@ jobs:
            --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=corp \
             --set-string image.name=ghcr.io/brickdoc/design-system:latest \
             --set-string ingress.host=design-system.brickdoc.app \
-            --set-string envs.BRICKDOC_BUILD=${{ github.sha }}
+            --set-string envs.BRICKDOC_BUILD=${{ github.sha }} \

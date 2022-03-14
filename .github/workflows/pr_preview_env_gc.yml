@@ -11,6 +11,7 @@ permissions:
   deployments: write
   packages: write
   statuses: write
+  actions: write
 env:
   GCP_PROJECT: brickdoc-testnet
 jobs:
