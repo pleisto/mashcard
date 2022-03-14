@@ -12,7 +12,6 @@ ignore:
   - 'gems/**/*'
   - 'e2e-testing/**/*'
   - 'tools/**/*'
-  - 'public/**/*'
   - 'packages/brickdoc-design-icons/**/*'
   - 'apps/client-web/BrickdocGraphQL.ts'
   - 'packages/briockdoc-design-system/.storybook'

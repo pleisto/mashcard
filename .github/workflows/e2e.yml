@@ -14,6 +14,7 @@ jobs:
       matrix:
         # run 3 copies of the current job in parallel
         shard: [1, 2, 3]
+      fail-fast: false
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
