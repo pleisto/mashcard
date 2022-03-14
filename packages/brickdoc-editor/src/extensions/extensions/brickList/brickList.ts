@@ -13,8 +13,10 @@ declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     brickList: {
       wrapInBrickList: (listType: string) => ReturnType
+      toggleBrickList: (listType: string) => ReturnType
       joinBackward: () => ReturnType
       liftEmptyBlock: () => ReturnType
+      liftBrickList: () => ReturnType
     }
   }
 }
@@ -39,6 +41,11 @@ export const BrickList = createExtension<BrickListOptions, BrickListAttributes>(
         listType =>
         ({ commands }) => {
           return commands.wrapInList(listType)
+        },
+      toggleBrickList:
+        listType =>
+        ({ commands }) => {
+          return commands.toggleList(listType, 'listItem')
         },
       joinBackward:
         () =>
@@ -84,6 +91,18 @@ export const BrickList = createExtension<BrickListOptions, BrickListAttributes>(
         () =>
         ({ state, dispatch }) => {
           return originalLiftEmptyBlock(state, dispatch)
+        },
+      liftBrickList:
+        () =>
+        ({ state, dispatch }) => {
+          const { selection } = state
+          const itemType = getNodeType('listItem', state.schema)
+          const listItem = findParentNode(node => node.type === itemType)(selection)
+          if (listItem) {
+            return originalLiftListItem(itemType)(state, dispatch)
+          } else {
+            return true
+          }
         }
     }
   }
