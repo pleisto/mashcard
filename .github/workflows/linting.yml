@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ES files
         id: changed-es-files
-        uses: tj-actions/changed-files@v17.2
+        uses: tj-actions/changed-files@v17.3
         with:
           files: |
             yarn.lock

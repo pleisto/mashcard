@@ -55,7 +55,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed ES files
         id: changed-es-files
-        uses: tj-actions/changed-files@v17.2
+        uses: tj-actions/changed-files@v17.3
         with:
           files: |
             yarn.lock
@@ -122,7 +122,7 @@ jobs:
           fetch-depth: 2 # To retrieve the preceding commit.
       - name: Get changed Ruby files
         id: changed-ruby-files
-        uses: tj-actions/changed-files@v17.2
+        uses: tj-actions/changed-files@v17.3
         with:
           files: |
             Gemfile.lock
@@ -166,13 +166,13 @@ jobs:
           check_name: Rails RSpec Test Setting Report
       - name: Get changed database migrations
         id: changed-db-migrations
-        uses: tj-actions/changed-files@v17.2
+        uses: tj-actions/changed-files@v17.3
         with:
           files: |
             db\/migrate
       - name: Get changed GraphQL type definitions
         id: changed-gql-typeds
-        uses: tj-actions/changed-files@v17.2
+        uses: tj-actions/changed-files@v17.3
         with:
           files: |
             app\/graphql
