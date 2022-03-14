@@ -37,8 +37,7 @@ jobs:
       - name: Get E2E account email & password
         id: get_e2e_account
         run: |
-          if [$DEPLOY_ENV == 'trunk']
-          then
+          if [[ $DEPLOY_ENV == 'trunk' ]]; then
               echo ::set-output name=email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL }}
               echo ::set-output name=password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD }}
           else
