@@ -2989,6 +2989,266 @@ Array [
 ]
 `;
 
+exports[`Simple test case [newline 1] = 1
+2 // => ✗ 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "other",
+    "display": "2",
+    "errors": Array [
+      Object {
+        "message": "Not all input parsed: 2",
+        "type": "parse",
+      },
+    ],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "2",
+  },
+]
+`;
+
+exports[`Simple test case [newline 2] = 1;
+2 // => 2 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Semicolon",
+    "display": ";",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ";",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+]
+`;
+
+exports[`Simple test case [newline 3] = 1
+;2 // => 2 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Semicolon",
+    "display": ";",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ";",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+]
+`;
+
+exports[`Simple test case [newline 4] = 
+1;2
+ // => 2 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "  ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "  ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Semicolon",
+    "display": ";",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ";",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+]
+`;
+
 exports[`Simple test case [should error] =1. // => 1 1`] = `
 Array [
   Object {

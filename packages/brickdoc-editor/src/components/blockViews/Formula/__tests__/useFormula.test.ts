@@ -6,10 +6,10 @@ import { useFormula } from '../useFormula'
 
 const rootId = 'eb373fbc-a6e9-40a6-8c4b-45cda7230dda'
 const formulaId = '2838c176-9a82-4e4f-a197-969d70c64694'
-const updateFormula = () => {}
+const updateFormula = (): void => {}
 const normalFormulaType: FormulaSourceType = 'normal'
 const formulaName = undefined
-const formulaContext = new FormulaContext({})
+const formulaContext = new FormulaContext({ domain: 'test' })
 
 const normalInput = {
   rootId,

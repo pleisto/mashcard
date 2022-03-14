@@ -4,7 +4,7 @@ import { quickInsert } from '../../grammar/testHelper'
 import { VariableMetadata, VariableValue } from '../../types'
 import { FormulaContext } from '../context'
 
-const formulaContext = new FormulaContext({})
+const formulaContext = new FormulaContext({ domain: 'test' })
 
 const namespaceId = '9dda8306-dbe1-49d3-868d-1a7c86f27328'
 const variableIds = [
@@ -164,7 +164,7 @@ describe('Dependency', () => {
     }
 
     const variable = await interpretSync({ ctx, parseResult })
-    await formulaContext.commitVariable({ variable })
+    formulaContext.commitVariable({ variable })
 
     await new Promise(resolve => setTimeout(resolve, 50))
 

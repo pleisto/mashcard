@@ -4895,6 +4895,8 @@ Object {
   "preview": SpreadsheetClass {
     "_formulaContext": FormulaContext {
       "context": Object {},
+      "dirtyFormulas": Object {},
+      "domain": "test",
       "features": Array [
         "formula-controls",
       ],
@@ -10491,6 +10493,8 @@ Object {
       "reverseFunctionDependencies": Object {},
       "reverseVariableDependencies": Object {},
       "spreadsheets": Object {},
+      "tickKey": "FormulaContext#test",
+      "tickTimeout": 1000,
       "variableNameCounter": Object {
         "Array": Object {},
         "Blank": Object {},
@@ -10566,6 +10570,8 @@ Object {
   "preview": SpreadsheetClass {
     "_formulaContext": FormulaContext {
       "context": Object {},
+      "dirtyFormulas": Object {},
+      "domain": "test",
       "features": Array [
         "formula-controls",
       ],
@@ -16162,6 +16168,8 @@ Object {
       "reverseFunctionDependencies": Object {},
       "reverseVariableDependencies": Object {},
       "spreadsheets": Object {},
+      "tickKey": "FormulaContext#test",
+      "tickTimeout": 1000,
       "variableNameCounter": Object {
         "Array": Object {},
         "Blank": Object {},

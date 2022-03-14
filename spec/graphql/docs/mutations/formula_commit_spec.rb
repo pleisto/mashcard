@@ -21,13 +21,15 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
       self.current_space = user.personal_space.as_session_context
 
       input = { input: {
-        id: SecureRandom.uuid,
-        blockId: block.id,
-        type: 'normal',
-        name: 'create_formula',
-        cacheValue: { type: 'string', result: '123' },
-        definition: '=123',
-        version: 0
+        commitFormulas: [{
+          id: SecureRandom.uuid,
+          blockId: block.id,
+          type: 'normal',
+          name: 'create_formula',
+          cacheValue: { type: 'string', result: '123' },
+          definition: '=123',
+          version: 0
+        }], deleteFormulas: []
       } }
 
       internal_graphql_execute(mutation, input)
@@ -53,7 +55,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
 
       new_name = "formula_update_name"
 
-      input = { input: {
+      input = { input: { commitFormulas: [{
         id: formula.id,
         blockId: block.id,
         name: new_name,
@@ -61,7 +63,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
         cacheValue: { type: 'string', result: '123' },
         version: 0,
         type: 'normal'
-      } }
+      }], deleteFormulas: [] } }
 
       internal_graphql_execute(mutation, input)
       expect(response.success?).to eq(true)
@@ -69,6 +71,31 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
       formula.reload
 
       expect(formula.name).to eq(new_name)
+
+      self.current_user = nil
+      self.current_space = nil
+    end
+
+    it 'delete' do
+      self.current_user = user
+      self.current_space = user.personal_space.as_session_context
+
+      formula = Docs::Formula.create!(
+        block_id: block.id, id: SecureRandom.uuid, name: 'formula delete',
+        definition: "=123", cache_value: { 'value' => "123", 'type' => 'number' }
+      )
+
+      input = { input: { commitFormulas: [], deleteFormulas: [{
+        id: formula.id,
+        blockId: block.id
+      }] } }
+
+      internal_graphql_execute(mutation, input)
+      expect(response.success?).to eq(true)
+
+      expect do
+        formula.reload
+      end.to raise_error(ActiveRecord::RecordNotFound)
 
       self.current_user = nil
       self.current_space = nil

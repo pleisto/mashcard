@@ -22,7 +22,7 @@ export interface FormulaMenuProps {
   updateEditor: (content: JSONContent, position: number) => void
   editorContent: EditorContentType
   isDisableSave: () => boolean
-  doHandleSave: () => Promise<void>
+  onSaveFormula: () => void
   completion: CompletionType
 }
 
@@ -37,7 +37,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   defaultVisible,
   onVisibleChange,
   isDisableSave,
-  doHandleSave,
+  onSaveFormula,
   variableT,
   defaultName,
   nameRef,
@@ -94,9 +94,9 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
     triggerCalculate()
   }
 
-  const handleSave = async (): Promise<void> => {
+  const handleSave = (): void => {
     if (isDisableSave()) return
-    await doHandleSave()
+    onSaveFormula()
   }
 
   const handleCancel = (): void => {

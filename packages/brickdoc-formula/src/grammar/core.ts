@@ -601,7 +601,6 @@ export const interpretSync = async ({
     version,
     codeFragments,
     definition: input,
-    dirty: true,
     async: false,
     isAsync: false,
     variableValue: interpretResult,
@@ -656,7 +655,6 @@ export const interpretAsync = ({
     isAsync: async,
     codeFragments,
     definition: input,
-    dirty: true,
     valid,
     kind: kind ?? 'constant',
     variableDependencies,
@@ -730,18 +728,13 @@ const generateVariable = (
   t: VariableData,
   variable: VariableInterface | undefined
 ): VariableInterface => {
-  const oldVariable = formulaContext.findVariableById(t.namespaceId, t.variableId)
   let newVariable: VariableInterface
-  if (oldVariable) {
-    oldVariable.t = t
-    newVariable = oldVariable.clone()
-  } else if (variable) {
+  if (variable) {
     newVariable = variable
     newVariable.t = t
   } else {
     newVariable = new VariableClass({ t, formulaContext })
   }
-
   newVariable.subscribePromise()
 
   return newVariable
@@ -752,6 +745,7 @@ export const appendFormulas = (formulaContext: ContextInterface, formulas: BaseF
   dupFormulas.forEach(formula => {
     const oldVariable = formulaContext.findVariableById(formula.blockId, formula.id)
     const variable = castVariable(oldVariable, formulaContext, formula)
-    void variable.save()
+    variable.isDirty = false
+    variable.save()
   })
 }

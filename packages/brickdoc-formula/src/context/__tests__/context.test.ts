@@ -3,8 +3,8 @@ import { Formula, SyncVariableData, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
 describe('Context', () => {
-  const formulaContext = new FormulaContext({})
-  void appendFormulas(formulaContext, [])
+  const formulaContext = new FormulaContext({ domain: 'test' })
+  appendFormulas(formulaContext, [])
   const interpretContext = { ctx: {}, arguments: [] }
 
   const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
@@ -40,9 +40,9 @@ describe('Context', () => {
     }
   ]
 
-  void appendFormulas(formulaContext, formulas)
+  appendFormulas(formulaContext, formulas)
 
-  it('reset', async () => {
+  it('reset', () => {
     const reverseFunctionDependencies = formulaContext.reverseFunctionDependencies
     const reverseVariableDependencies = formulaContext.reverseVariableDependencies
 
@@ -56,7 +56,7 @@ describe('Context', () => {
     expect(formulaContext.reverseFunctionDependencies).toEqual({})
     expect(formulaContext.reverseVariableDependencies).toEqual({})
 
-    await appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
 
     expect(formulaContext.reverseFunctionDependencies).toEqual(reverseFunctionDependencies)
     expect(formulaContext.reverseVariableDependencies).toEqual(reverseVariableDependencies)
@@ -81,7 +81,7 @@ describe('Context', () => {
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
 
     formulaContext.resetFormula()
-    await appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
   })
 
   it('unique name check', () => {
@@ -170,7 +170,7 @@ describe('Context', () => {
 
     const variable = await interpretSync({ ctx, parseResult })
 
-    await formulaContext.commitVariable({ variable })
+    formulaContext.commitVariable({ variable })
 
     expect(formulaContext.variableCount()).toEqual(3)
 
@@ -184,11 +184,11 @@ describe('Context', () => {
 
     // Update
     variable.t.name = 'bazNew'
-    void formulaContext.commitVariable({ variable })
+    formulaContext.commitVariable({ variable })
 
     expect(formulaContext.variableCount()).toEqual(3)
 
     formulaContext.resetFormula()
-    void appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
   })
 })

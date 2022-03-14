@@ -630,6 +630,27 @@ const testCases: TestCase[] = [
     value: 3
   },
   {
+    input: '= 1\n2',
+    label: 'newline 1',
+    parseErrorType: 'syntax',
+    errorMessage: 'Not all input parsed: 2'
+  },
+  {
+    input: '= 1;\n2',
+    label: 'newline 2',
+    value: 2
+  },
+  {
+    input: '= 1\n;2',
+    label: 'newline 3',
+    value: 2
+  },
+  {
+    input: '= \n1;2\n',
+    label: 'newline 4',
+    value: 2
+  },
+  {
     input: '="foo" &&& 123',
     parseErrorType: 'syntax',
     label: 'TODO &&&',
@@ -1019,7 +1040,7 @@ const testCases: TestCase[] = [
   }
 ]
 
-const formulaContext = new FormulaContext({})
+const formulaContext = new FormulaContext({ domain: 'test' })
 
 const name = 'foo'
 const meta: VariableMetadata = { variableId, namespaceId, name, input: '!!!', position: 0, type: 'normal' }

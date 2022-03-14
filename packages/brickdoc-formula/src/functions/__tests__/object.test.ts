@@ -3,7 +3,7 @@ import { FormulaSourceType } from '../../types'
 import { T, TYPE } from '../object'
 
 const ctx = {
-  formulaContext: new FormulaContext({}),
+  formulaContext: new FormulaContext({ domain: 'test' }),
   interpretContext: {
     ctx: {},
     arguments: []

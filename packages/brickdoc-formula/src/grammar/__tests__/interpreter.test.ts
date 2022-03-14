@@ -55,14 +55,14 @@ const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', position: 0, type: 'normal' }
 
 describe('Custom Function', () => {
-  const formulaContext = new FormulaContext({ functionClauses })
+  const formulaContext = new FormulaContext({ domain: 'test', functionClauses })
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 
   beforeAll(async () => {
     await quickInsert({ ctx: { ...ctx, meta: { ...meta, name: 'foo', variableId: fooVariableId, input: '=24' } } })
   })
 
-  const localFormulaContext = new FormulaContext({ functionClauses })
+  const localFormulaContext = new FormulaContext({ domain: 'test', functionClauses })
 
   it('Simple cst', () => {
     const newMeta = { ...meta, input: '=1+1' }
@@ -134,7 +134,7 @@ describe('Custom Function', () => {
 })
 
 describe('Context', () => {
-  const formulaContext = new FormulaContext({ functionClauses })
+  const formulaContext = new FormulaContext({ domain: 'test', functionClauses })
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 
   beforeAll(async () => {

@@ -4,13 +4,17 @@ const validNames: Array<{ name: string }> = [{ name: 'a213' }, { name: '_a' }, {
 const invalidNames: Array<{ name: string }> = [
   { name: '123' },
   { name: '1a' },
-  { name: 'a a' },
   { name: 'a+1' },
   { name: 'a;a' },
   { name: ' aa' },
   { name: 'a ' },
   { name: '' },
   { name: '测试' },
+
+  // Blank
+  { name: 'a a' },
+  { name: 'a\na' },
+  { name: 'a\u2003a' },
 
   // Special char
   { name: 'a!' },

@@ -307,6 +307,11 @@ export interface BaseFormula {
   type: string
 }
 
+export interface DeleteFormula {
+  blockId: uuid
+  id: uuid
+}
+
 export interface Formula extends BaseFormula {
   definition: Definition
   type: FormulaSourceType
@@ -423,10 +428,14 @@ export interface SpreadsheetFormulaName extends BaseFormulaName {
 
 export type FormulaName = VariableFormulaName | BlockFormulaName | SpreadsheetFormulaName
 
+export interface DirtyFormulaInfo {
+  updatedAt: Date
+}
 export interface ContextInterface {
   features: string[]
   spreadsheets: Record<NamespaceId, SpreadsheetType>
   formulaNames: FormulaName[]
+  dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
   reservedNames: string[]
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]>
   reverseFunctionDependencies: Record<FunctionKey, VariableDependency[]>
@@ -445,7 +454,7 @@ export interface ContextInterface {
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariableById: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
   findVariableByName: (namespaceId: NamespaceId, name: string) => VariableInterface | undefined
-  commitVariable: ({ variable, skipCreate }: { variable: VariableInterface; skipCreate?: boolean }) => Promise<void>
+  commitVariable: ({ variable }: { variable: VariableInterface }) => void
   removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>
   findFunctionClause: (group: FunctionGroup, name: FunctionNameType) => FunctionClause<FormulaType> | undefined
   resetFormula: VoidFunction
@@ -617,7 +626,6 @@ export interface BaseVariableData {
   version: number
   namespaceId: NamespaceId
   variableId: VariableId
-  dirty: boolean
   valid: boolean
   cst?: CstNode
   codeFragments: CodeFragment[]
@@ -650,36 +658,30 @@ export interface VariableMetadata {
   readonly type: FormulaSourceType
 }
 
-export interface VariableWaitPromiseState {
-  readonly uuid: uuid
-  readonly state: 'pending' | 'notifying' | 'resolved'
-}
-
 export interface VariableInterface {
   t: VariableData
-  latestWaitingPromiseState: VariableWaitPromiseState | undefined
+  isNew: boolean
+  isDirty: boolean
+  cloneVariable: () => VariableInterface
   formulaContext: ContextInterface
   buildFormula: () => Formula
-  clone: () => VariableInterface
   clearDependency: VoidFunction
   trackDependency: VoidFunction
-  destroy: () => Promise<void>
-  save: () => Promise<void>
+  trackDirty: VoidFunction
+  save: VoidFunction
   reinterpret: () => Promise<void>
   subscribePromise: VoidFunction
-  isDraft: () => boolean
   namespaceName: (pageId: NamespaceId) => string
   updateDefinition: (definition: Definition) => Promise<void>
   meta: () => VariableMetadata
   updateCst: (cst: CstNode, context: InterpretContext) => void
-  invokeBackendCommit: () => Promise<void>
-  afterUpdate: VoidFunction
+  onUpdate: VoidFunction
+  onCommitDirty: VoidFunction
   interpret: (context: InterpretContext) => Promise<void>
 }
 
 export interface BackendActions {
-  commit: (formula: Formula) => Promise<{ success: boolean }>
-  delete: (formula: Formula) => Promise<{ success: boolean }>
+  commit: (commitFormulas: Formula[], deleteFormulas: DeleteFormula[]) => Promise<{ success: boolean }>
 }
 
 export interface ErrorMessage {

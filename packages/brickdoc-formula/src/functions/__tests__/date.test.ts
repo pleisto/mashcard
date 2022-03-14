@@ -3,7 +3,7 @@ import { FormulaContext } from '../../context'
 import { NOW } from '../date'
 
 const ctx = {
-  formulaContext: new FormulaContext({}),
+  formulaContext: new FormulaContext({ domain: 'test' }),
   interpretContext: {
     ctx: {},
     arguments: []

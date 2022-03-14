@@ -55,7 +55,7 @@ const cells: Cell[] = [
 const spreadsheet: SpreadsheetType = new SpreadsheetClass({
   name: 'MySpreadsheet',
   ctx: {
-    formulaContext: new FormulaContext({})
+    formulaContext: new FormulaContext({ domain: 'test' })
   },
   dynamic: false,
   blockId: spreadsheetNamespaceId,
@@ -195,7 +195,7 @@ const testCases: TestCase[] = [
 ]
 
 describe('Spreadsheet Functions', () => {
-  const formulaContext = new FormulaContext({})
+  const formulaContext = new FormulaContext({ domain: 'test' })
   formulaContext.setSpreadsheet(spreadsheet)
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 

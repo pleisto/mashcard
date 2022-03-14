@@ -28,14 +28,6 @@ export const FormulaCommit = gql`
   }
 `
 
-export const FormulaDelete = gql`
-  mutation formulaDelete($input: FormulaDeleteInput!) {
-    formulaDelete(input: $input) {
-      errors
-    }
-  }
-`
-
 export const queryFormulas = gql`
   query GetFormulas($domain: String!, $ids: String) {
     formulas(domain: $domain, ids: $ids) {

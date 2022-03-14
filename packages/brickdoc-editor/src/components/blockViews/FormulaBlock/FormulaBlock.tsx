@@ -33,7 +33,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     savedVariableT,
     isDisableSave,
     nameRef,
-    doHandleSave,
+    onSaveFormula,
     updateEditor,
     defaultName,
     editorContent,
@@ -73,7 +73,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       onVisibleChange={handleDefaultPopoverVisibleChange}
       updateEditor={updateEditor}
       isDisableSave={isDisableSave}
-      doHandleSave={doHandleSave}
+      onSaveFormula={onSaveFormula}
       variableT={variableT}
       defaultName={defaultName}
       nameRef={nameRef}

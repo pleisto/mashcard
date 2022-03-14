@@ -3,7 +3,7 @@ import { FormulaSourceType } from '../../types'
 import { ABS, INT, LOG10, PI, POWER, RAND, RANDBETWEEN, SQRT, SQRTPI, TRUNC, LN } from '../math'
 
 const ctx = {
-  formulaContext: new FormulaContext({}),
+  formulaContext: new FormulaContext({ domain: 'test' }),
   interpretContext: {
     ctx: {},
     arguments: []

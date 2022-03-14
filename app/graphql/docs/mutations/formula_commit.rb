@@ -1,27 +1,34 @@
 # frozen_string_literal: true
 module Docs
   class Mutations::FormulaCommit < BrickGraphQL::BaseMutation
-    argument :block_id, BrickGraphQL::Scalars::UUID, 'block id', required: true
-    argument :id, BrickGraphQL::Scalars::UUID, 'id', required: true
-    argument :name, String, 'name', required: true
-    argument :definition, String, 'definition', required: true
-    argument :cache_value, GraphQL::Types::JSON, 'dump value', required: true
-    argument :version, Integer, 'version', required: true
-    argument :type, String, 'type', required: true
+    argument :commit_formulas, [Inputs::FormulaModifyInput], required: true
+    argument :delete_formulas, [Inputs::FormulaDeleteInput], required: true
 
-    def resolve(args)
-      formula = Docs::Formula.find_by(id: args[:id], block_id: args[:block_id])
-      if formula
-        update_params = {
-          name: args[:name],
-          type: args[:type],
-          definition: args[:definition],
-          cache_value: args[:cache_value],
-          version: args[:version]
-        }.compact
-        formula.update!(update_params)
-      else
-        Docs::Formula.create!(args.to_h)
+    def resolve(commit_formulas:, delete_formulas:)
+      Docs::Formula.transaction do
+        preload_formulas = Docs::Formula.where(id: commit_formulas.map { |f| f[:id] } + delete_formulas.map do |f|
+                                                                                          f[:id]
+                                                                                        end).to_a.index_by(&:id)
+
+        commit_formulas.each do |args|
+          formula = preload_formulas[args[:id]]
+          if formula
+            update_params = {
+              name: args[:name],
+              type: args[:type],
+              definition: args[:definition],
+              cache_value: args[:cache_value],
+              version: args[:version]
+            }.compact
+            formula.update!(update_params)
+          else
+            Docs::Formula.create!(args.to_h)
+          end
+        end
+
+        delete_formulas.each do |args|
+          preload_formulas[args[:id]]&.destroy
+        end
       end
 
       nil

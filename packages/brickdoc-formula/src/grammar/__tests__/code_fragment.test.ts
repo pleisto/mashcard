@@ -51,7 +51,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
   }
 ]
 
-const formulaContext = new FormulaContext({ functionClauses })
+const formulaContext = new FormulaContext({ domain: 'test', functionClauses })
 
 const meta: VariableMetadata = { namespaceId, variableId, name: 'foo', input: '=24', position: 0, type: 'normal' }
 

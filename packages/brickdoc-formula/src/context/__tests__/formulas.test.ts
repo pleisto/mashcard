@@ -4,8 +4,8 @@ import { FormulaContext } from '../context'
 
 describe('appendFormulas', () => {
   it('constant', () => {
-    const formulaContext = new FormulaContext({})
-    void appendFormulas(formulaContext, [])
+    const formulaContext = new FormulaContext({ domain: 'test' })
+    appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
 
@@ -27,7 +27,7 @@ describe('appendFormulas', () => {
       }
     ]
 
-    void appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
     const value = Object.values(formulaContext.context).map((v: any) => {
       const t = v.t
       return {
@@ -40,8 +40,8 @@ describe('appendFormulas', () => {
   })
 
   it('expression', () => {
-    const formulaContext = new FormulaContext({})
-    void appendFormulas(formulaContext, [])
+    const formulaContext = new FormulaContext({ domain: 'test' })
+    appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
 
@@ -78,7 +78,7 @@ describe('appendFormulas', () => {
       }
     ]
 
-    void appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
     const value = Object.values(formulaContext.context).map((v: any) => {
       const t = v.t
       return {
@@ -93,8 +93,8 @@ describe('appendFormulas', () => {
   })
 
   it('unmatched variable', () => {
-    const formulaContext = new FormulaContext({})
-    void appendFormulas(formulaContext, [])
+    const formulaContext = new FormulaContext({ domain: 'test' })
+    appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
     // const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
@@ -118,7 +118,7 @@ describe('appendFormulas', () => {
       }
     ]
 
-    void appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
     const value = Object.values(formulaContext.context).map((v: any) => {
       const t = v.t
       return {
@@ -131,8 +131,8 @@ describe('appendFormulas', () => {
   })
 
   it('parse error', () => {
-    const formulaContext = new FormulaContext({})
-    void appendFormulas(formulaContext, [])
+    const formulaContext = new FormulaContext({ domain: 'test' })
+    appendFormulas(formulaContext, [])
 
     expect(formulaContext.context).toEqual({})
 
@@ -154,7 +154,7 @@ describe('appendFormulas', () => {
       }
     ]
 
-    void appendFormulas(formulaContext, formulas)
+    appendFormulas(formulaContext, formulas)
     const value = Object.values(formulaContext.context).map((v: any) => {
       const t = v.t
       return {

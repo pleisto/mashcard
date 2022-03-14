@@ -3,7 +3,7 @@ import { FormulaContext } from '../../context'
 import { IF, NOT, AND, OR } from '../logic'
 
 const ctx = {
-  formulaContext: new FormulaContext({}),
+  formulaContext: new FormulaContext({ domain: 'test' }),
   interpretContext: {
     ctx: {},
     arguments: []

@@ -135,7 +135,12 @@ export const DocumentContentPage: React.FC = () => {
 
   React.useEffect(() => {
     const formulaNames: FormulaName[] = []
-    const formulaContext = new FormulaContext({ backendActions, formulaNames, features: featureFlags })
+    const formulaContext = new FormulaContext({
+      domain: loginDomain,
+      backendActions,
+      formulaNames,
+      features: featureFlags
+    })
     void getFormulas(domain).then(({ data, success }) => {
       if (!success) return
       appendFormulas(formulaContext, data ?? [])

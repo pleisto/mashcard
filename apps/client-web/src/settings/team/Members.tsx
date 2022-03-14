@@ -65,7 +65,7 @@ export const Members: FC<{ space: SettingsContextProps['space'] }> = ({ space })
         >
           {members?.map(user => (
             <li key={user.domain}>
-              <SpaceCard space={user} key={user.domain} label={user.email || user.domain} />
+              <SpaceCard space={user} key={user.domain} label={user.email ?? user.domain} />
               <Button
                 disabled={user.domain === currentUserDomain}
                 onClick={() => {
