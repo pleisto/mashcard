@@ -7,12 +7,10 @@ module System
     field :direct_upload, Objects::DirectUpload, null: false
 
     SERVICE_MAP =
-      if ENV['GOOGLE_CLOUD_PROJECT'].present?
-        { "AVATAR" => :gcs_public, "DOC" => :gcs_privtae, "THIRD" => :gcs_public }
-      elsif Rails.env.in?(["development", "test"])
+      if Rails.env.in?(["development", "test"])
         { "AVATAR" => :local_public, "DOC" => :local_private, "THIRD" => :local_public }
       else
-        { "AVATAR" => :amazon_public, "DOC" => :amazon_private, "THIRD" => :amazon_public }
+        { "AVATAR" => :gcs_public, "DOC" => :gcs_privtae, "THIRD" => :gcs_public }
       end
 
     def resolve(args)

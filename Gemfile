@@ -31,14 +31,13 @@ gem 'logstop', '>= 0.2.8'
 gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '>= 1.13.0'
 
-gem 'aws-sdk-s3', '~> 1', '>= 1.111.3'
 gem 'google-cloud-storage', '~> 1.36', '>= 1.36.1'
 gem 'google-cloud-kms', '~> 2.3'
 
 # Feature toggles
-gem 'flipper', '~> 0.23.1'
-gem 'flipper-active_record', '~> 0.23.1'
-gem 'flipper-active_support_cache_store', '~> 0.23.1'
+gem 'flipper', '~> 0.24.0'
+gem 'flipper-active_record', '~> 0.24.0'
+gem 'flipper-active_support_cache_store', '~> 0.24.0'
 
 gem 'default_value_for', github: 'brickdoc/default_value_for'
 

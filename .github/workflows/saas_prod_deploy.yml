@@ -68,8 +68,8 @@ jobs:
             RAILS_ENV=production
             VERSION=${{ steps.get_version.outputs.VERSION }}
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
-            SENTRY_ORG=brickdoc-inc
-            SENTRY_PROJECT=brickdoc-saas-prod
+            SENTRY_ORG=${{ env.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
           tags: ${{ env.image }}:v${{ steps.get_version.outputs.VERSION }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new

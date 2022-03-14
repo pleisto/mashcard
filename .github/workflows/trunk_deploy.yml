@@ -20,6 +20,10 @@ env:
   YARN_CHECKSUM_BEHAVIOR: update
   image: ghcr.io/brickdoc/brickdoc:latest
   domain: trunk.brickdoc.dev
+  GCP_PROJECT: brickdoc-testnet
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: brickdoc-inc
+  SENTRY_PROJECT: brickdoc-dev
 concurrency:
   group: monolith-trunk-cd
   cancel-in-progress: true
@@ -30,6 +34,9 @@ jobs:
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::trunk-$(git rev-parse --short HEAD)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -56,7 +63,11 @@ jobs:
           context: .
           push: true
           build-args: |
-            "RAILS_ENV=production"
+            RAILS_ENV=production
+            VERSION=${{ steps.get_version.outputs.VERSION }}
+            SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+            SENTRY_ORG=${{ env.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
           tags: ${{ env.image }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
@@ -68,7 +79,7 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deploy:
-    name: 'Deployment to BAE'
+    name: 'Deployment to GKE'
     environment:
       name: trunk
       url: https://${{ env.domain }}/
@@ -77,34 +88,44 @@ jobs:
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
-      - name: Deployment to App Engine
-        uses: brickdoc/app-engine@v1.beta3
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
         with:
-          name: brickdoc-ce-trunk
-          image: ${{ env.image }}
-          host: ${{ env.domain }}
-          chart: ${{ github.workspace }}/tools/helm-charts/brickdoc
-          extraArgs: '--timeout 10m --cleanup-on-fail'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
-          APP_SECRET_SECRET_KEY_SEED: ${{ secrets.TRUNK_SECRET_KEY_SEED }}
-          APP_SECRET_BRICKDOC_DATABASE_URL: ${{ secrets.TRUNK_POSTGRE_URL }}
-          APP_SECRET_REDIS_URL: ${{ secrets.TRUNK_REDIS_URL }}
-          APP_SECRET_UNSPLASH_API_ACCESS_KEY: ${{ secrets.UNSPLASH_API_ACCESS_KEY }}
-          APP_SECRET_UNSPLASH_API_SECRET: ${{ secrets.UNSPLASH_API_SECRET }}
-          APP_SECRET_IFRAMELY_API_ACCESS_KEY: ${{ secrets.IFRAMELY_API_ACCESS_KEY }}
-          APP_SECRET_PDFJS_EXPRESS_LICENSE: ${{ secrets.PDFJS_EXPRESS_LICENSE }}
-          APP_SECRET_SECURITY_REVERSIBLE_INT_INVERSE: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_INVERSE }}
-          APP_SECRET_SECURITY_REVERSIBLE_INT_RANDOM: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_RANDOM }}
-          APP_SECRET_SECURITY_REVERSIBLE_INT_PRIME: ${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_PRIME }}
-          APP_ENV_SMTP_FROM: brickdoc-ce-trunk@intl-email-service.brickdoc.app
-          APP_ENV_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          APP_SECRET_SMTP_URL: ${{ secrets.TRUNK_SMTP_URL }}
-          APP_ENV_GITHUB_KEY: 70835aac65b5971f7774
-          APP_SECRET_GITHUB_SECRET: ${{ secrets.TRUNK_GITHUB_SECRET }}
-          APP_ENV_HOST: ${{ env.domain }}
-          APP_ENV_AWS_REGION: us-east-1
-          APP_ENV_AWS_PUBLIC_BUCKET: brickdoc-trunk-public
-          APP_ENV_AWS_PRIVATE_BUCKET: brickdoc-trunk-private
-          APP_ENV_BRICKDOC_BUILD: ${{ github.sha }}.trunk
+          workload_identity_provider: 'projects/992882677538/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-dev'
+          location: 'us-central1'
+      - name: 'Deploy to GKE'
+        run: |-
+          helm upgrade brickdoc-trunk ${{ github.workspace }}/tools/helm-charts/brickdoc \
+           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=cicd \
+            --set-string image.name=${{ env.image }} \
+            --set-string ingress.host=${{ env.domain }} \
+            --set serviceAccount.create=false \
+            --set-string serviceAccount.name=trunk-or-pr-main \
+            --set-string envs.SMTP_FROM=brickdoc-ce-trunk@intl-email-service.brickdoc.app \
+            --set-string envs.SENTRY_DSN=https://4aa5075a3b484af6a251f3677a9f665e@o1150336.ingest.sentry.io/6257651 \
+            --set-string envs.HOST=${{ env.domain }} \
+            --set-string envs.GOOGLE_CLOUD_PROJECT=${{ env.GCP_PROJECT }} \
+            --set-string envs.GCP_KMS_FRN=projects/${{ env.GCP_PROJECT }}/locations/us-central1/keyRings/testnet/cryptoKeys/cicd \
+            --set-string envs.GCS_PRIVATE_BUCKET=trunk-pvt.testnet.brickdocusercontent.com \
+            --set-string envs.GCS_PUBLIC_BUCKET=trunk-pub.testnet.brickdocusercontent.com \
+            --set-string secrets.SECRET_KEY_SEED=${{ secrets.TRUNK_SECRET_KEY_SEED }} \
+            --set-string secrets.BRICKDOC_DATABASE_URL=${{ secrets.TRUNK_POSTGRE_URL }} \
+            --set-string secrets.REDIS_URL=${{ secrets.TRUNK_REDIS_URL }} \
+            --set-string secrets.UNSPLASH_API_ACCESS_KEY=${{ secrets.UNSPLASH_API_ACCESS_KEY }} \
+            --set-string secrets.UNSPLASH_API_SECRET=${{ secrets.UNSPLASH_API_SECRET }} \
+            --set-string secrets.IFRAMELY_API_ACCESS_KEY=${{ secrets.IFRAMELY_API_ACCESS_KEY }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_INVERSE=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_INVERSE }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_RANDOM=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_RANDOM }} \
+            --set-string secrets.SECURITY_REVERSIBLE_INT_PRIME=${{ secrets.TRUNK_SECURITY_REVERSIBLE_INT_PRIME }} \
+            --set-string secrets.SMTP_URL=${{ secrets.TRUNK_SMTP_URL }} \
+            --set-string secrets.GOOGLE_OAUTH2_ID=${{ secrets.TRUNK_GOOGLE_OAUTH2_ID }} \
+            --set-string secrets.GOOGLE_OAUTH2_SECRET=${{ secrets.TRUNK_GOOGLE_OAUTH2_SECRET }}

@@ -91,20 +91,12 @@ class BrickdocConfig < ApplicationRecord
 
   # Rails.application.config.active_storage.service
   field :active_storage_service, default: (
-    if ENV['GOOGLE_CLOUD_PROJECT'].present?
-      'gcs_privtae'
-    elsif Rails.env.test?
+    if Rails.env.test?
       "test"
     else
-      (Rails.env.development? ? "local" : "amazon_private")
+      (Rails.env.development? ? 'local' : 'gcs_privtae')
     end
   )
-
-  field :amazon_private_config, type: :hash, symbolize_keys: true, default: {
-    region: ENV['AWS_REGION'],
-    public_bucket: ENV['AWS_PUBLIC_BUCKET'],
-    private_bucket: ENV['AWS_PRIVATE_BUCKET']
-  }
 
   field :gcs_config, type: :hash, symbolize_keys: true, default: {
     private_bucket: ENV['GCS_PRIVATE_BUCKET'],

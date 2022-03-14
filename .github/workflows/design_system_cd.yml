@@ -8,8 +8,16 @@ on:
     branches:
       - master
       - main
+permissions:
+  id-token: write
+  pull-requests: write
+  contents: read
+  deployments: write
+  packages: write
+  statuses: write
 env:
   YARN_CHECKSUM_BEHAVIOR: update
+  GCP_PROJECT: golden-union-341912
 jobs:
   cancel:
     # Cancel any previous CI runs to save GH Actions minutes
@@ -58,18 +66,30 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deploy:
-    name: 'Deployment to BAE'
+    name: 'Deployment to GKE'
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deployment to App Engine
-        uses: brickdoc/app-engine@v1.beta2
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - name: GCP Login
+        uses: google-github-actions/auth@v0
         with:
-          image: ghcr.io/brickdoc/design-system:latest
-          name: design-system
-          host: design-system.brickdoc.dev
-          extraArgs: '--timeout 10m --cleanup-on-fail'
-        env:
-          APP_ENV_BRICKDOC_BUILD: ${{ github.sha }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_GLOBAL_CORP_AK }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_GLOBAL_CORP_SECRET }}
+          workload_identity_provider: 'projects/909250635156/locations/global/workloadIdentityPools/cicd/providers/github-action'
+          service_account: 'cicd-bot@${{ env.GCP_PROJECT }}.iam.gserviceaccount.com'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - run: |-
+          gcloud --quiet auth configure-docker
+      - name: 'Get the GKE cluster Configuration'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: 'kube-us-central'
+          location: 'us-central1'
+      - name: 'Deploy to GKE'
+        run: |-
+          helm upgrade design-system ${{ github.workspace }}/tools/helm-charts/simple-website \
+           --install --atomic --timeout 15m --cleanup-on-fail --wait --namespace=corp \
+            --set-string image.name=ghcr.io/brickdoc/design-system:latest \
+            --set-string ingress.host=design-system.brickdoc.app \
+            --set-string envs.BRICKDOC_BUILD=${{ github.sha }}

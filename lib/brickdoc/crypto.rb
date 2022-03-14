@@ -15,7 +15,7 @@ module Brickdoc
           raise 'SECRET_KEY_SEED is not set' unless seed.present?
           raw = Base64.strict_decode64(seed)
           # Use Google Cloud KMS to decrypt the seed if it's available
-          ENV['GOOGLE_CLOUD_PROJECT'].present? ? gcp_kms_decrypt(raw) : raw
+          ENV['GCP_KMS_FRN'].present? ? gcp_kms_decrypt(raw) : raw
         end
       end
 

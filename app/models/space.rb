@@ -53,7 +53,6 @@ class Space < ApplicationRecord
     nil
     # io = URI.open(url)
     # filename = File.basename(URI.parse(url).path)
-    # service_name = Rails.env.in?(["development", "test"]) ? :local_public : :amazon_public
     # key = "global/#{ActiveStorage::Blob.generate_unique_secure_token}_#{filename}"
     # blob = ActiveStorage::Blob.create_and_upload!(key: key, io: io, service_name: service_name, filename: filename)
     # blob.signed_id
