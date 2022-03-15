@@ -3,7 +3,6 @@
 exports[`appendFormulas constant 1`] = `
 Array [
   Object {
-    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -193,26 +192,24 @@ Array [
       "name": "startExpression",
     },
     "definition": "=123",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "kind": "constant",
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "task": Object {
+      "async": true,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Promise {},
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
     "variableNameDependencies": Array [],
-    "variableValue": Object {
-      "result": Object {
-        "result": 123,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
 ]
@@ -221,7 +218,6 @@ Array [
 exports[`appendFormulas expression 1`] = `
 Array [
   Object {
-    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -616,8 +612,6 @@ Array [
       "name": "startExpression",
     },
     "definition": "= 123 + RAND()",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [
       Object {
@@ -692,22 +686,21 @@ Array [
     "kind": "expression",
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "task": Object {
+      "async": true,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Promise {},
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
     "variableNameDependencies": Array [],
-    "variableValue": Object {
-      "result": Object {
-        "result": 123,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "d986e871-cb85-4bd5-b675-87307f60b882",
     ],
@@ -1316,8 +1309,6 @@ Array [
       "name": "startExpression",
     },
     "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.foo",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
@@ -1429,6 +1420,13 @@ Array [
     "kind": "expression",
     "name": "bar",
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
+    "task": Object {
+      "async": true,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Promise {},
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -1444,13 +1442,6 @@ Array [
         "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 456,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
 ]
@@ -1487,7 +1478,6 @@ Object {
 exports[`appendFormulas parse error 1`] = `
 Array [
   Object {
-    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -1790,27 +1780,31 @@ Array [
       "recoveredNode": true,
     },
     "definition": "= 123 +",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "kind": "unknown",
     "name": "foo",
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "errorKind": "syntax",
+          "result": "Missing right expression",
+          "type": "Error",
+        },
+        "success": false,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
     "variableNameDependencies": Array [],
-    "variableValue": Object {
-      "result": Object {
-        "errorKind": "syntax",
-        "result": "Missing right expression",
-        "type": "Error",
-      },
-      "success": false,
-    },
     "version": 0,
   },
 ]
@@ -1819,7 +1813,6 @@ Array [
 exports[`appendFormulas unmatched variable 1`] = `
 Array [
   Object {
-    "async": false,
     "blockDependencies": Array [
       "d986e871-cb85-4bd5-b675-87307f60b882",
     ],
@@ -2438,8 +2431,6 @@ Array [
       "name": "startExpression",
     },
     "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.foo",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [
       Object {
@@ -2546,6 +2537,20 @@ Array [
     "kind": "unknown",
     "name": "bar",
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "errorKind": "deps",
+          "result": "Block not found: d986e871-cb85-4bd5-b675-87307f60b882",
+          "type": "Error",
+        },
+        "success": false,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
@@ -2556,14 +2561,6 @@ Array [
         "namespaceId": undefined,
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "errorKind": "deps",
-        "result": "Block not found: d986e871-cb85-4bd5-b675-87307f60b882",
-        "type": "Error",
-      },
-      "success": false,
-    },
     "version": 0,
   },
 ]

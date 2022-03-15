@@ -38,7 +38,7 @@ export const functionResult2lambda = <T extends ControlType>(
           throw new Error('Only constant variable is supported')
         }
 
-        variable.updateCst(cstdata, ctx.interpretContext)
+        // variable.updateCst(cstdata, ctx.interpretContext)
       } else if (reference.kind === 'self' && reference.attribute) {
         devLog('self', { reference, cstdata })
       }

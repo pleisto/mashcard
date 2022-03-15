@@ -25,6 +25,10 @@ export const toQrcode = (ctx: FunctionContext, { result }: StringResult): String
   return { type: 'string', result, view: { type: 'qrcode', attrs: {} } }
 }
 
+export const toBar = (ctx: FunctionContext, record: RecordResult): RecordResult => {
+  return { ...record, view: { type: 'bar', attrs: {} } }
+}
+
 export const toRecord = (ctx: FunctionContext, { type, result }: AnyTypeResult): RecordResult | ErrorResult => {
   if (!['Date'].includes(type)) {
     return { type: 'Error', result: 'Not support', errorKind: 'runtime' }
@@ -127,6 +131,32 @@ export const CORE_CONVERT_CLAUSES: Array<BaseFunctionClause<'number' | 'string' 
     testCases: [],
     chain: true,
     reference: toQrcode
+  },
+  {
+    name: 'toBar',
+    async: false,
+    lazy: false,
+    acceptError: false,
+    pure: true,
+    effect: false,
+    description: 'Converts a record to a bar',
+    group: 'core',
+    args: [
+      {
+        name: 'record',
+        type: 'Record'
+      }
+    ],
+    examples: [
+      {
+        input: '=toBar({})',
+        output: { type: 'Record', result: {}, subType: 'string', view: { type: 'bar', attrs: {} } }
+      }
+    ],
+    returns: 'Record',
+    testCases: [],
+    chain: true,
+    reference: toBar
   },
   {
     name: 'toRecordArray',

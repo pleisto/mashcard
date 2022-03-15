@@ -1,5 +1,5 @@
-import { appendFormulas, interpretSync, parse, SuccessParseResult } from '../../grammar/core'
-import { Formula, SyncVariableData, VariableMetadata } from '../../types'
+import { appendFormulas, interpretAsync, parse, SuccessParseResult } from '../../grammar/core'
+import { Formula, SyncVariableTask, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
 describe('Context', () => {
@@ -153,6 +153,7 @@ describe('Context', () => {
   })
 
   it('commitVariable normal', async () => {
+    jest.useRealTimers()
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const name = 'baz'
@@ -168,17 +169,18 @@ describe('Context', () => {
       interpretContext: { ctx: {}, arguments: [] }
     }
 
-    const variable = await interpretSync({ ctx, parseResult })
+    const variable = interpretAsync({ ctx, parseResult })
 
     formulaContext.commitVariable({ variable })
 
     expect(formulaContext.variableCount()).toEqual(3)
 
-    const v = variable.t as SyncVariableData
+    await new Promise(resolve => setTimeout(resolve, 50))
+    const v = variable.t.task as SyncVariableTask
 
     expect(v.variableValue.result.result).toEqual(366)
 
-    expect({ ...v, execStartTime: null, execEndTime: null }).toMatchSnapshot()
+    expect({ ...v, execStartTime: null, uuid: null, execEndTime: null }).toMatchSnapshot()
     expect(formulaContext.reverseFunctionDependencies).toMatchSnapshot()
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
 
@@ -190,5 +192,6 @@ describe('Context', () => {
 
     formulaContext.resetFormula()
     appendFormulas(formulaContext, formulas)
+    jest.clearAllTimers()
   })
 })

@@ -50,10 +50,10 @@ describe('async', () => {
     expect(parseResult.errorMessages).toEqual([])
     expect(parseResult.success).toBe(true)
 
-    const newVariable = interpretAsync({ ctx: newCtx, parseResult, skipAsync: false })
-    expect(newVariable.t.async).toBe(true)
+    const newVariable = interpretAsync({ ctx: newCtx, parseResult })
+    expect(newVariable.t.task.async).toBe(true)
 
-    await (newVariable.t.variableValue as Promise<VariableValue>).then(result => {
+    await (newVariable.t.task.variableValue as Promise<VariableValue>).then(result => {
       expect(result.result.result).toEqual(output)
     })
 

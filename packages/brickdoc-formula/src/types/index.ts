@@ -613,13 +613,31 @@ export interface VariableDisplayData {
   display: string
 }
 
-export interface BaseVariableData {
-  definition: Definition
+export interface BaseVariableTask {
   async: boolean
-  isAsync: boolean
+  uuid: string
   execStartTime: Date
   execEndTime: Date | undefined
   variableValue: VariableValue | Promise<VariableValue>
+}
+
+export interface AsyncVariableTask extends BaseVariableTask {
+  async: true
+  execEndTime: undefined
+  variableValue: Promise<VariableValue>
+}
+
+export interface SyncVariableTask extends BaseVariableTask {
+  async: false
+  execEndTime: Date
+  variableValue: VariableValue
+}
+
+export type VariableTask = AsyncVariableTask | SyncVariableTask
+export interface VariableData {
+  definition: Definition
+  isAsync: boolean
+  task: VariableTask
   kind: VariableKind
   type: FormulaSourceType
   name: VariableName
@@ -635,20 +653,6 @@ export interface BaseVariableData {
   blockDependencies: NamespaceId[]
   functionDependencies: Array<FunctionClause<FormulaType>>
 }
-
-export interface SyncVariableData extends BaseVariableData {
-  async: false
-  variableValue: VariableValue
-  execEndTime: Date
-}
-
-export interface AsyncVariableData extends BaseVariableData {
-  async: true
-  variableValue: Promise<VariableValue>
-  execEndTime: undefined
-}
-
-export type VariableData = SyncVariableData | AsyncVariableData
 export interface VariableMetadata {
   readonly namespaceId: NamespaceId
   readonly variableId: VariableId
@@ -660,24 +664,19 @@ export interface VariableMetadata {
 
 export interface VariableInterface {
   t: VariableData
+  savedT: VariableData | undefined
   isNew: boolean
-  isDirty: boolean
-  cloneVariable: () => VariableInterface
   formulaContext: ContextInterface
+
   buildFormula: () => Formula
   clearDependency: VoidFunction
   trackDependency: VoidFunction
   trackDirty: VoidFunction
   save: VoidFunction
-  reinterpret: () => Promise<void>
-  subscribePromise: VoidFunction
   namespaceName: (pageId: NamespaceId) => string
-  updateDefinition: (definition: Definition) => Promise<void>
+  updateDefinition: (definition: Definition) => void
   meta: () => VariableMetadata
-  updateCst: (cst: CstNode, context: InterpretContext) => void
-  onUpdate: VoidFunction
-  onCommitDirty: VoidFunction
-  interpret: (context: InterpretContext) => Promise<void>
+  onUpdate: (skipPersist?: boolean) => void
 }
 
 export interface BackendActions {

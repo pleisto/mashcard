@@ -25,8 +25,8 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId 
   }
 
   const error: ErrorMessage | undefined =
-    !variableT.async && !variableT.variableValue.success
-      ? { message: variableT.variableValue.result.result, type: variableT.variableValue.result.errorKind }
+    !variableT.task.async && !variableT.task.variableValue.success
+      ? { message: variableT.task.variableValue.result.result, type: variableT.task.variableValue.result.errorKind }
       : undefined
 
   const result = error ? (

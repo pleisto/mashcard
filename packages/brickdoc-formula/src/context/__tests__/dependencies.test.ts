@@ -1,5 +1,5 @@
 /* eslint-disable max-nested-callbacks */
-import { interpretSync, parse, SuccessParseResult } from '../../grammar/core'
+import { interpretAsync, parse, SuccessParseResult } from '../../grammar/core'
 import { quickInsert } from '../../grammar/testHelper'
 import { VariableMetadata, VariableValue } from '../../types'
 import { FormulaContext } from '../context'
@@ -52,13 +52,13 @@ describe('Dependency', () => {
   it('snapshot', async () => {
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
     expect(
-      (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue as VariableValue).result
+      (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.task.variableValue as VariableValue).result
     ).toEqual({
       result: 5,
       type: 'number'
     })
     expect(
-      (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue as VariableValue).result
+      (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.task.variableValue as VariableValue).result
     ).toEqual({
       result: 4,
       type: 'number'
@@ -67,8 +67,7 @@ describe('Dependency', () => {
       Object.values(formulaContext.context).map(v => ({
         ...v.t,
         cst: null,
-        execEndTime: null,
-        execStartTime: null
+        task: { ...v.t.task, execStartTime: null, execEndTime: null, uuid: null }
       }))
     ).toMatchSnapshot()
   })
@@ -91,13 +90,13 @@ describe('Dependency', () => {
     jest.useRealTimers()
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
-    await num0.updateDefinition('=30')
+    num0.updateDefinition('=30')
     await new Promise(resolve => setTimeout(resolve, 50))
 
-    expect((num0.t.variableValue as VariableValue).result.result).toEqual(30)
+    expect((num0.t.task.variableValue as VariableValue).result.result).toEqual(30)
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
-    expect((num2.t.variableValue as VariableValue).result.result).toEqual(30)
+    expect((num2.t.task.variableValue as VariableValue).result.result).toEqual(30)
     jest.clearAllTimers()
   })
 
@@ -105,18 +104,18 @@ describe('Dependency', () => {
     jest.useRealTimers()
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
-    await num0.updateDefinition('=30foobar')
+    num0.updateDefinition('=30foobar')
     await new Promise(resolve => setTimeout(resolve, 50))
 
-    expect((num0.t.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
+    expect((num0.t.task.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
-    expect((num2.t.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
+    expect((num2.t.task.variableValue as VariableValue).result.result).toEqual('Not all input parsed: foobar')
 
-    await num0.updateDefinition('=233')
+    num0.updateDefinition('=233')
     await new Promise(resolve => setTimeout(resolve, 50))
-    expect((num0.t.variableValue as VariableValue).result.result).toEqual(233)
-    expect((num2.t.variableValue as VariableValue).result.result).toEqual(233)
+    expect((num0.t.task.variableValue as VariableValue).result.result).toEqual(233)
+    expect((num2.t.task.variableValue as VariableValue).result.result).toEqual(233)
     jest.clearAllTimers()
   })
 
@@ -124,22 +123,23 @@ describe('Dependency', () => {
     jest.useRealTimers()
     const num0 = formulaContext.findVariableById(namespaceId, variableIds[0])!
 
-    await num0.updateDefinition('=true')
-    expect((num0.t.variableValue as VariableValue).result.result).toEqual(true)
+    num0.updateDefinition('=true')
+    await new Promise(resolve => setTimeout(resolve, 10))
+    expect((num0.t.task.variableValue as VariableValue).result.result).toEqual(true)
 
     await new Promise(resolve => setTimeout(resolve, 50))
 
     const num4 = formulaContext.findVariableById(namespaceId, variableIds[4])!
-    expect((num4.t.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
+    expect((num4.t.task.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
-    expect((num2.t.variableValue as VariableValue).result.result).toEqual(true)
+    expect((num2.t.task.variableValue as VariableValue).result.result).toEqual(true)
 
     const num3 = formulaContext.findVariableById(namespaceId, variableIds[3])!
 
     // const num1 = formulaContext.findVariable(namespaceId, variableIds[1])!
     // num3 = num2 + num1 = 3
-    expect((num3.t.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
+    expect((num3.t.task.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
     jest.clearAllTimers()
   })
 
@@ -163,24 +163,25 @@ describe('Dependency', () => {
       interpretContext: { ctx: {}, arguments: [] }
     }
 
-    const variable = await interpretSync({ ctx, parseResult })
+    const variable = interpretAsync({ ctx, parseResult })
     formulaContext.commitVariable({ variable })
 
     await new Promise(resolve => setTimeout(resolve, 50))
 
     expect(
-      (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.variableValue as VariableValue).result.result
+      (formulaContext.findVariableById(namespaceId, variableIds[5])!.t.task.variableValue as VariableValue).result
+        .result
     ).toEqual(105)
     expect(
-      (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.variableValue as VariableValue).result.result
+      (formulaContext.findVariableById(namespaceId, variableIds[6])!.t.task.variableValue as VariableValue).result
+        .result
     ).toEqual(104)
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
     expect(
       Object.values(formulaContext.context).map(v => ({
         ...v.t,
         cst: null,
-        execStartTime: null,
-        execEndTime: null
+        task: { ...v.t.task, execStartTime: null, execEndTime: null, uuid: null }
       }))
     ).toMatchSnapshot()
 

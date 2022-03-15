@@ -11,10 +11,13 @@
   "dependencies": {
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/schema": "workspace:^",
+    "axios": "^0.26.1",
     "chevrotain": "^10.1.2",
     "qrcode.react": "^2.0.0",
     "react-vega": "^7.4.4",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vega": "^5.22.0",
+    "vega-lite": "^5.2.0"
   },
   "devDependencies": {
     "@types/qrcode.react": "^1.0.2"
@@ -24,6 +27,7 @@
     "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
-    "test:jest": "run -T jest"
+    "test:jest": "run -T jest --silent",
+    "test:jest:fix": "run -T jest --silent -u"
   }
 }

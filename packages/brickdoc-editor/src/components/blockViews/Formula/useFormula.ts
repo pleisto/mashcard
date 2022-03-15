@@ -43,7 +43,7 @@ export interface UseFormulaInput {
   rootId: string
   formulaId: string
   formulaName?: string
-  updateFormula: (variable: VariableInterface | undefined) => void
+  onUpdateFormula?: (variable: VariableInterface | undefined) => void
   formulaType: FormulaSourceType
   formulaContext: ContextInterface | undefined | null
 }
@@ -131,39 +131,25 @@ export interface SelectType {
 export const useFormula = ({
   rootId,
   formulaId,
-  updateFormula,
+  onUpdateFormula,
   formulaType,
   formulaName,
   formulaContext
 }: UseFormulaInput): UseFormulaOutput => {
   const formulaIsNormal = formulaType === 'normal'
 
-  const defaultVariable = React.useMemo(() => {
-    const variable = formulaContext?.findVariableById(rootId, formulaId)
-    if (!variable) return undefined
-    return variable.cloneVariable()
-  }, [formulaContext, formulaId, rootId])
+  const defaultVariable = formulaContext?.findVariableById(rootId, formulaId)
 
-  const formulaValue = React.useMemo(
-    () =>
-      defaultVariable?.t.valid
-        ? defaultVariable.t.codeFragments.map(fragment => fragment.value).join('')
-        : defaultVariable?.t.definition,
-    [defaultVariable]
-  )
+  const formulaValue = defaultVariable?.t.valid
+    ? defaultVariable.t.codeFragments.map(fragment => fragment.value).join('')
+    : defaultVariable?.t.definition
 
-  const contextDefaultName = React.useMemo(
-    () => (formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''),
-    [formulaContext, rootId]
-  )
+  const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''
 
-  const contextCompletions = React.useMemo(
-    () =>
-      formulaContext && (formulaIsNormal || formulaValue?.startsWith('='))
-        ? formulaContext.completions(rootId, formulaId)
-        : [],
-    [formulaId, formulaContext, formulaIsNormal, formulaValue, rootId]
-  )
+  const contextCompletions =
+    formulaContext && (formulaIsNormal || formulaValue?.startsWith('='))
+      ? formulaContext.completions(rootId, formulaId)
+      : []
 
   const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal, 0)
 
@@ -176,7 +162,7 @@ export const useFormula = ({
 
   // States
   const [variableT, setVariableT] = React.useState(defaultVariable?.t)
-  const [savedVariableT, setSavedVariableT] = React.useState(defaultVariable?.t)
+  const [savedVariableT, setSavedVariableT] = React.useState(defaultVariable?.savedT)
   const [defaultName, setDefaultName] = React.useState(contextDefaultName)
   const [selected, setSelected] = React.useState<SelectedType>()
   const [completion, setCompletion] = React.useState<CompletionType>({
@@ -412,18 +398,18 @@ export const useFormula = ({
       variableRef.current = variable
       setVariableT({ ...variable.t })
       if (!variable.isNew) {
-        setSavedVariableT({ ...variable.t })
-        updateFormula(variable)
+        setSavedVariableT({ ...variable.savedT! })
+        onUpdateFormula?.(variable)
       }
 
       editorContentRef.current = fetchEditorContent(variable, formulaIsNormal, editorContentRef.current.position)
 
-      if (!variable.t.async && variable.isNew) {
-        const result = variable.t.variableValue
+      if (variable.isNew && !variable.t.task.async) {
+        const result = variable.t.task.variableValue
         updateDefaultName(result.success ? result.result.type : 'any')
       }
     },
-    [formulaIsNormal, updateDefaultName, updateFormula]
+    [formulaIsNormal, updateDefaultName, onUpdateFormula]
   )
 
   const saveFormula = React.useCallback((): void => {
@@ -449,14 +435,15 @@ export const useFormula = ({
   const onSaveFormula = React.useCallback((): void => {
     // devLog({ variable: variableRef.current, name, defaultName })
     if (!variableRef.current) {
-      updateFormula(undefined)
+      onUpdateFormula?.(undefined)
+      BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId, rootId }))
       return
     }
 
     if (isDisableSave()) return
 
     saveFormula()
-  }, [saveFormula, isDisableSave, updateFormula])
+  }, [isDisableSave, saveFormula, onUpdateFormula, formulaId, rootId])
 
   const commitFormula = React.useCallback(
     async (definition: string): Promise<void> => {
@@ -605,8 +592,7 @@ export const useFormula = ({
     const listener = BrickdocEventBus.subscribe(
       FormulaUpdatedViaId,
       e => {
-        const variable: VariableInterface = e.payload
-        updateVariable(variable)
+        updateVariable(e.payload)
       },
       {
         eventId: `${rootId},${formulaId}`,

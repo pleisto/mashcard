@@ -32,8 +32,7 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        execStartTime: null,
-        execEndTime: null
+        task: { ...t.task, execStartTime: null, execEndTime: null, uuid: null }
       }
     })
     expect(value).toMatchSnapshot()
@@ -83,8 +82,7 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        execStartTime: null,
-        execEndTime: null
+        task: { ...t.task, execStartTime: null, execEndTime: null, uuid: null }
       }
     })
     expect(value).toMatchSnapshot()
@@ -123,8 +121,7 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        execStartTime: null,
-        execEndTime: null
+        task: { ...t.task, execStartTime: null, execEndTime: null, uuid: null }
       }
     })
     expect(value).toMatchSnapshot()
@@ -159,8 +156,7 @@ describe('appendFormulas', () => {
       const t = v.t
       return {
         ...t,
-        execStartTime: null,
-        execEndTime: null
+        task: { ...t.task, execStartTime: null, execEndTime: null, uuid: null }
       }
     })
     expect(value).toMatchSnapshot()

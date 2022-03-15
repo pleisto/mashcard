@@ -62,7 +62,6 @@ Object {
 exports[`Dependency dependency automatic update 2`] = `
 Array [
   Object {
-    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -88,30 +87,33 @@ Array [
     ],
     "cst": null,
     "definition": "=1",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "kind": "constant",
     "name": "num0",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 1,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
     "variableNameDependencies": Array [],
-    "variableValue": Object {
-      "result": Object {
-        "result": 1,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
@@ -224,8 +226,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#9dda8306-dbe1-49d3-868d-1a7c86f27328.num0 * 2 + 100",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -237,6 +237,19 @@ Array [
     "kind": "expression",
     "name": "num1",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 102,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -252,17 +265,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 102,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
@@ -295,8 +300,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num0\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -308,6 +311,19 @@ Array [
     "kind": "expression",
     "name": "num2",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 1,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -323,17 +339,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 1,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -412,8 +420,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -433,6 +439,19 @@ Array [
     "kind": "expression",
     "name": "num3",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 103,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -456,17 +475,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 103,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -545,8 +556,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num0\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -562,6 +571,19 @@ Array [
     "kind": "expression",
     "name": "num4",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 2,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -585,17 +607,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 2,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -720,8 +734,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num3\\" + #CurrentBlock.\\"num0\\" + #CurrentBlock.\\"num2\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -745,6 +757,19 @@ Array [
     "kind": "expression",
     "name": "num5",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 105,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -776,17 +801,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 105,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -865,8 +882,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -890,6 +905,19 @@ Array [
     "kind": "expression",
     "name": "num6",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 104,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -913,13 +941,6 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 104,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
 ]
@@ -983,7 +1004,6 @@ Object {
 exports[`Dependency snapshot 2`] = `
 Array [
   Object {
-    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -1009,30 +1029,33 @@ Array [
     ],
     "cst": null,
     "definition": "=1",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "kind": "constant",
     "name": "num0",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 1,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
     "variableNameDependencies": Array [],
-    "variableValue": Object {
-      "result": Object {
-        "result": 1,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [],
     "codeFragments": Array [
       Object {
@@ -1058,30 +1081,33 @@ Array [
     ],
     "cst": null,
     "definition": "=2",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "kind": "constant",
     "name": "num1",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 2,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
     "variableNameDependencies": Array [],
-    "variableValue": Object {
-      "result": Object {
-        "result": 2,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
     ],
@@ -1114,8 +1140,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num0\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1127,6 +1151,19 @@ Array [
     "kind": "expression",
     "name": "num2",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 1,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -1142,17 +1179,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 1,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1231,8 +1260,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num1\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1252,6 +1279,19 @@ Array [
     "kind": "expression",
     "name": "num3",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 3,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -1275,17 +1315,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 3,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1364,8 +1396,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num2\\" + #CurrentBlock.\\"num0\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1381,6 +1411,19 @@ Array [
     "kind": "expression",
     "name": "num4",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 2,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -1404,17 +1447,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 2,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1539,8 +1574,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num3\\" + #CurrentBlock.\\"num0\\" + #CurrentBlock.\\"num2\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1564,6 +1597,19 @@ Array [
     "kind": "expression",
     "name": "num5",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 5,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -1595,17 +1641,9 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 5,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
   Object {
-    "async": false,
     "blockDependencies": Array [
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1684,8 +1722,6 @@ Array [
     ],
     "cst": null,
     "definition": "=#CurrentBlock.\\"num4\\" + #CurrentBlock.\\"num1\\"",
-    "execEndTime": null,
-    "execStartTime": null,
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
@@ -1709,6 +1745,19 @@ Array [
     "kind": "expression",
     "name": "num6",
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "task": Object {
+      "async": false,
+      "execEndTime": null,
+      "execStartTime": null,
+      "uuid": null,
+      "variableValue": Object {
+        "result": Object {
+          "result": 4,
+          "type": "number",
+        },
+        "success": true,
+      },
+    },
     "type": "normal",
     "valid": true,
     "variableDependencies": Array [
@@ -1732,13 +1781,6 @@ Array [
         "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
       },
     ],
-    "variableValue": Object {
-      "result": Object {
-        "result": 4,
-        "type": "number",
-      },
-      "success": true,
-    },
     "version": 0,
   },
 ]

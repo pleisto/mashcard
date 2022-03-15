@@ -508,16 +508,16 @@ export class FormulaInterpreter extends BaseCstVisitor {
         if (result.type === 'Block') {
           const name = key
           const variable = this.ctx.formulaContext.findVariableByName(result.result.id, name)
-          if (!variable) {
+          if (!variable || !variable.savedT) {
             result = { type: 'Error', result: `Variable "${name}" not found`, errorKind: 'runtime' }
             continue
           }
 
           // if (['constant', 'unknown'].includes(variable.t.kind)) {
-          if (variable.t.async) {
-            result = (await variable.t.variableValue).result
+          if (variable.savedT.task.async) {
+            result = (await variable.savedT.task.variableValue).result
           } else {
-            result = variable.t.variableValue.result
+            result = variable.savedT.task.variableValue.result
           }
           continue
 
