@@ -9,6 +9,7 @@
   --brd-editor-max-width: 100%;
 
   width: 100%;
+  height: 100vh;
 
   @width: 220px;
   .contentWrapper {
@@ -16,6 +17,7 @@
     justify-content: center;
     align-items: center;
     width: calc(100% - @width);
+    overflow-y: scroll;
   }
 
   .side {
@@ -85,26 +87,28 @@
 
 .page {
   min-height: unset;
-  height: 70vh;
-  overflow: auto;
-  scrollbar-width: none;
+  height: 100vh;
+  // overflow: auto;
+  overflow-y: auto;
+  // scrollbar-width: none;
   width: 100%;
 }
 
-.page::-webkit-scrollbar {
-  display: none;
-}
+// .page::-webkit-scrollbar {
+//   display: none;
+// }
 
 .snapshot {
   min-height: unset;
   height: 100%;
-  overflow: auto;
-  scrollbar-width: none;
+  // overflow: auto;
+  overflow-y: scroll;
+  // scrollbar-width: none;
 }
 
-.snapshot::-webkit-scrollbar {
-  display: none;
-}
+// .snapshot::-webkit-scrollbar {
+//   display: none;
+// }
 
 .topBar {
   display: flex;
