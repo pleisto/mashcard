@@ -1,9 +1,9 @@
 import React from 'react'
 import { BlockEmoji, Blocktype } from '@/BrickdocGraphQL'
+import { Tooltip } from '@brickdoc/design-system'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { Link } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
-import styles from './index.module.less'
+import * as Root from './index.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 interface PathBreadcrumbProps {
@@ -16,18 +16,38 @@ export const PathBreadcrumb: React.FC<PathBreadcrumbProps> = ({ docMeta, classNa
     { id: docMeta.id, text: docMeta.title, icon: docMeta.icon }
   ])
   const { t } = useDocsI18n()
+  const folding =
+    paths.length >= 4
+      ? [
+          paths[0],
+          paths[1],
+          {
+            ...paths[paths.length - 2],
+            text: '...'
+          },
+          paths[paths.length - 1]
+        ]
+      : paths
 
-  const pathData = paths.map((path, idx) => {
+  const pathData = folding.map((path, idx) => {
     const link = docMeta.isMine ? `/${docMeta.domain}/${path.id}` : '#'
-    const emoji = path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
+    const hasEmoji = path.icon && path.icon.type === Blocktype.Emoji
+    const emoji = hasEmoji ? (path.icon as BlockEmoji).emoji : ''
     return (
-      <div className={styles.path} key={idx}>
-        <Link className={styles.path} to={link}>
-          <span className={styles.emoji}>{emoji}</span>
-          {path.text || t('title.untitled')}
-        </Link>
-        {idx < paths.length - 1 ? <span className={styles.splicing}>&nbsp;/&nbsp;</span> : <></>}
-      </div>
+      <Tooltip
+        key={idx}
+        title={
+          <Root.Tip>
+            {emoji} {path.text || t('title.untitled')}
+          </Root.Tip>
+        }
+      >
+        <Root.Warp>
+          <Root.Emoji show={Boolean(hasEmoji)}>{emoji}</Root.Emoji>
+          <Root.Path to={link}>{path.text || t('title.untitled')}</Root.Path>
+          <Root.Split show={Boolean(idx < folding.length - 1)}>/</Root.Split>
+        </Root.Warp>
+      </Tooltip>
     )
   })
 
