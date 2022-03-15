@@ -1,73 +1,43 @@
-# Contribute to Brickdoc Community Edition
-
-> #### **Did you find a bug?**
->
-> - **Do not open up a GitHub issue if the bug is a security vulnerability in Brickdoc**, and instead to refer to our [security policy](SECURITY.md).
->
-> - **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/brickdoc/brickdoc/issues).
->
-> - If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/brickdoc/brickdoc/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
+# Contribute to Brickdoc
 
 Welcome and thank you for your interest in contributing to Brickdoc Community Edition. Brickdoc is developed in the open and continually improved by our users, contributors, and maintainers. It is because of you that we can bring great software to the community.
 
 This guide provides information on filing issues and guidelines for open source contributors. Please leave comments/suggestions if you find something is missing or incorrect.
 
+## Did you find a bug?
+
+- **Do not open up a GitHub issue if the bug is a security vulnerability in Brickdoc**, and instead to refer to our [security policy](SECURITY.md).
+
+- **Ensure the bug was not already reported** by searching on GitHub under [Issues](https://github.com/brickdoc/brickdoc/issues).
+
+- If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/brickdoc/brickdoc/issues/new). Be sure to include a **title and clear description**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occurring.
+
 > _P.S._ In addition to Open Source Development, there are also Documentation, Translation, and UX Design tracks. Documentation, Translation, and UX Design are all just as important as code.
 
-## Legal Stuff: Sign the Contributor License Agreement
+## Set up your development environment
 
-> Apologies in advance for the extra work required here - this is necessary to comply with the Brickdoc's strict open source IP policy.
+This [guide](<(./docs/SETUP_DEV_ENV.md)>) will help you set up your development environment for Brickdoc.
 
-Before we can use your code, you must sign the [Brickdoc Open Source Contributor License Agreement (CLA)](https://cla-assistant.io/brickdoc/brickdoc), which you can do online.
-The CLA is necessary mainly because you own the copyright to your changes, even after your contribution becomes part of our codebase, so we need your permission to use and distribute your code.
+## Submission Guidelines
 
-**It can be signed now, or right after raising a Pull Request (Credits to CLA-Assistant for their cool, automated CLA form, integrated into the pull request)**
+Please follow [these guidelines](./docs/SUBMISSION_GUIDELINE.md) when submitting a pull request.
 
-## Workflow
+## Style Guides
 
-> Brickdoc Uses this [GitHub flow](https://guides.github.com/introduction/flow/) model.
+Please follow these style guidelines to ensure your work is consistent with the rest of the community:
 
-### Setup Development Environment
-
-> If you want to install Ruby and NodeJS development environment in macOS, please refer to: https://github.com/brickdoc/macos-init/blob/master/init.sh
-
-```bash
-git clone git@github.com:brickdoc/brickdoc.git && cd brickdoc/
-# Install dependencies
-yarn install && bundle install
-# Configure
-cp .env.local.template .evn.local && vim .env.local
-# Setup Database
-rake db:setup
-# Start Development Server
-./bin/vite dev && \
-rails s -b 0.0.0.0
-```
-
-### Preparation for Commits
-
-- Write tests
-- Run all linting with auto fixing: `yarn lint:fix`
-- Make sure the tests pass: `yarn spec`
-
-### Committing
-
-> This repo demonstrates git hooks integration with [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog).
-
-#### Git Message Scope
-
-- If the change is related to `packages/*` then the scope is the name of the package,
-- And, if the change is related to a functional module with a namespace (e.g. :accounts, :admin) then the scope is namespace,
-- Else the scope name is empty.
-
----
-
-- **use `yarn commit` and not `git commit`**
-- Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-- Push to your fork and [Submit a pull request](https://github.com/brickdoc/brickdoc/compare/)
-- Wait for us. We try to at least comment on pull requests within one business day.
-- We may suggest changes.
-- Please, squash your commits to a single one if you introduced a new changes or pushed more than
-  one commit. Let's keep the history clean.
+- [Philosophy of Engineering](./docs/styleguildes/PHILOSOPHY.md)
+- [Folder Structure and Naming Conventions](./docs/styleguildes/STRUCTURE_AND_NAMING.md)
+- [TypeScript Style Guide](./docs/styleguildes/TYPESCRIPT.md)
+- [GraphQL Style Guide](./docs/styleguildes/GRAPHQL.md)
+- [HTML/CSS Style Guide](./docs/styleguildes/HTML_CSS.md)
+- [Database/SQL Style Guide](./docs/styleguildes/DATABASE_SQL.md)
+- [Error Handling](./docs/styleguildes/ERROR_HANDLING.md)
+- [Logging](./docs/styleguildes/LOGGING.md)
+- [Testing](./docs/styleguildes/TESTING.md)
+- [Accessibility](./docs/styleguildes/A11Y.md)
+- [Internationalization](./docs/styleguildes/I18N.md)
+- [Security](./docs/styleguildes/SECURITY.md)
+- [RFC based workflow](./docs/styleguildes/RFC.md)
 
 Thank you for your contribution! :handshake:
