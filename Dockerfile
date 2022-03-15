@@ -13,6 +13,7 @@ ARG VERSION=0.0.0
 ARG SENTRY_AUTH_TOKEN
 ARG SENTRY_ORG
 ARG SENTRY_PROJECT
+ARG COVERAGE
 ENV RAILS_ENV=$RAILS_ENV
 ENV BUNDLE_WITHOUT="test development"
 ENV NODE_OPTIONS=--max-old-space-size=5950
@@ -25,7 +26,7 @@ COPY . .
 RUN sed -i "s/0.0.0/$VERSION/g" package.json
 RUN bundle install --retry 2 --jobs 4 \
   && yarn install --immutable
-RUN NODE_ENV=$RAILS_ENV yarn dist
+RUN COVERAGE=$COVERAGE NODE_ENV=$RAILS_ENV yarn dist
 RUN if [ "$VERSION" != "0.0.0" ] && [ "$SENTRY_AUTH_TOKEN" ]; then sentry-cli releases files brickdoc@$VERSION upload-sourcemaps ./public/esm-bundle --url-prefix '~/globalcdn/brickdoc-saas-prod/esm-bundle'; fi
 
 RUN rm -rf node_modules .yarn apps/client-web dist public/esm-bundle/stats.json yarn.lock \

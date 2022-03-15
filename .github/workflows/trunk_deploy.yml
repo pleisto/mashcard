@@ -76,6 +76,7 @@ jobs:
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
             SENTRY_ORG=${{ env.SENTRY_ORG }}
             SENTRY_PROJECT=${{ env.SENTRY_PROJECT }}
+            COVERAGE=1
           tags: ${{ env.image }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
