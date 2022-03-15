@@ -438,7 +438,8 @@ class Docs::Block < ApplicationRecord
 
   def soft_delete!
     raise 'already_soft_delete' unless deleted_at.nil?
-    update!(deleted_at: Time.current)
+    self.deleted_at = Time.current
+    save!(validate: false)
     patch_seq.del
     self.class.broadcast(id, { state: "DELETED" })
   end

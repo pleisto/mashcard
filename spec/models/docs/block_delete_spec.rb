@@ -4,6 +4,12 @@ require 'rails_helper'
 RSpec.describe Docs::Block, type: :model do
   let(:user) { create(:accounts_user) }
 
+  it 'delete block without validate collaborators' do
+    block = create(:docs_block, space: user.personal_space)
+    block.collaborators = []
+    block.soft_delete!
+  end
+
   it '[child] soft delete and restore' do
     root = create(:docs_block, space: user.personal_space)
     block = create(:docs_block, space: user.personal_space, sort: 100, parent: root, root_id: root.id)
