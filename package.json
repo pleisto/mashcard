@@ -35,8 +35,7 @@
     "formula": "yarn workspace @brickdoc/formula",
     "uploader": "yarn workspace @brickdoc/uploader",
     "api": "yarn workspace @brickdoc/server-api",
-    "e2e-testing": "yarn workspace @brickdoc/e2e-testing",
-    "grpc": "grpc_tools_ruby_protoc -I apps/server-api/src/anti-corruption --ruby_out=lib --grpc_out=lib grpc/main.proto"
+    "e2e-testing": "yarn workspace @brickdoc/e2e-testing"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:^",

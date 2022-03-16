@@ -22,3 +22,6 @@ ignore:
   - '**/__tests__'
   - '**/node_modules'
   - '**/vendor'
+  - 'docs/**/*'
+  - 'spec/**/*'
+  - 'tmp/**/*'

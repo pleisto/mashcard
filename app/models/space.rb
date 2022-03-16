@@ -7,21 +7,21 @@
 #  id                                          :bigint           not null, primary key
 #  bio("Bio" means Biography in social media.) :string(140)
 #  deleted_at                                  :datetime
+#  domain                                      :string           not null
 #  invite_enable                               :boolean          default(FALSE), not null
 #  invite_secret                               :string
 #  name                                        :string           not null
 #  personal                                    :boolean          default(FALSE), not null
-#  domain                                       :string           not null
 #  created_at                                  :datetime         not null
 #  updated_at                                  :datetime         not null
 #  owner_id                                    :bigint           not null
 #
 # Indexes
 #
-#  index_spaces_on_deleted_at        (deleted_at)
-#  index_spaces_on_invite_secret     (invite_secret) UNIQUE
+#  index_spaces_on_deleted_at         (deleted_at)
+#  index_spaces_on_invite_secret      (invite_secret) UNIQUE
 #  index_spaces_on_lower_domain_text  (lower((domain)::text)) UNIQUE
-#  index_spaces_on_owner_id          (owner_id)
+#  index_spaces_on_owner_id           (owner_id)
 #
 class Space < ApplicationRecord
   acts_as_paranoid

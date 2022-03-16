@@ -178,9 +178,9 @@ jobs:
             app\/graphql
             lib\/brick_graphql
             graphql.ts$
-      - name: Dump the graphql schema & GRPC schema
+      - name: Dump the graphql schema
         if: steps.changed-gql-typeds.outputs.any_changed == 'true'
-        run: yarn install --immutable && yarn graphql && yarn grpc
+        run: yarn install --immutable && yarn graphql
       - name: Dump the database schema
         if: steps.changed-db-migrations.outputs.any_changed == 'true'
         run: bundle exec rails db:prepare db:schema:dump

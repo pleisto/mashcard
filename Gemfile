@@ -22,8 +22,6 @@ gem 'second_level_cache', '~> 2.7'
 gem 'packwerk', '~> 2.0'
 gem 'paranoia', '~> 2.5', '>= 2.5.2'
 
-gem 'grpc', '~> 1.44.0.pre2'
-
 gem 'cloak-rb', '>= 0.1.0'
 gem 'lockbox', '>= 0.6.8'
 gem 'lograge', '~> 0.11.2'
@@ -107,7 +105,6 @@ group :development do
   # vsocode ruby solargraph
   gem 'solargraph', require: false
 
-  gem 'grpc-tools', '~> 0.14.1.pre1', require: false
 end
 
 # Plugin dependencies
