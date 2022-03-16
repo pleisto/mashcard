@@ -72,7 +72,7 @@
     "react-json-view": "^1.21.3",
     "storybook-addon-designs": "^6.2.1",
     "storybook-addon-performance": "^0.16.1",
-    "storybook-builder-vite": "^0.1.18"
+    "storybook-builder-vite": "^0.1.20"
   },
   "peerDependencies": {
     "i18next": ">=21.3.3",
