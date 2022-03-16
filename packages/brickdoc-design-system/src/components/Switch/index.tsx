@@ -13,6 +13,7 @@ export interface SwitchProps extends CheckboxProps {
 }
 
 const Switcher = styled(motion.div, switcher)
+const SwitchWrapper = styled(motion.label, root)
 
 const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
   const {
@@ -34,18 +35,15 @@ const Switch: ForwardRefRenderFunction<any, SwitchProps> = (props, ref) => {
   const offsetX = useMemo(() => (size === 'sm' ? 10 : 12), [size])
   const spring = { type: 'spring', stiffness: 800, damping: 50, mass: 1 }
   const animate = { x: checked ? offsetX : 0 }
-  const SwitchWrapper = styled(motion.label, root)
 
   return (
-    <SwitchWrapper ref={ref} className={className} style={style}>
+    <SwitchWrapper transition={spring} ref={ref} className={className} style={style}>
       {labelFirst && children && <span>{children}</span>}
       <Switcher checked={checked} loading={loading} disabled={disabled} size={size}>
         <VisuallyHidden>
           <input {...getInputProps()} />
         </VisuallyHidden>
-        <SwitcherHandle transition={spring} animate={animate}>
-          {loading && <Rotation className="brd-icon-spin" />}
-        </SwitcherHandle>
+        <SwitcherHandle animate={animate}>{loading && <Rotation className="brd-icon-spin" />}</SwitcherHandle>
       </Switcher>
       {!labelFirst && children && <span>{children}</span>}
     </SwitchWrapper>

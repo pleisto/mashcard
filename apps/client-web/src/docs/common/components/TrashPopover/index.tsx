@@ -60,13 +60,14 @@ export const TrashPopover: React.FC<TrashPopoverProps> = ({ docMeta, visible, se
     </Tabs>
   )
 
+  // TODO: UI needs to be refactored
   return (
     <Popover
       content={popoverContent}
       overlayClassName={styles.popover}
       destroyTooltipOnHide={true}
       trigger="click"
-      placement="end"
+      placement="bottomStart"
       title={null}
       visible={visible}
       onVisibleChange={handleVisibleChange}
