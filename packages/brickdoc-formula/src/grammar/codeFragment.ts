@@ -15,7 +15,7 @@ import {
   VariableNameDependency
 } from '../types'
 import { buildFunctionKey } from '../functions'
-import { BaseCstVisitor } from './parser'
+import { ParserInstance } from './parser'
 import { intersectType, parseString } from './util'
 import { BlockClass } from '../controls/block'
 import {
@@ -26,7 +26,6 @@ import {
   variable2attrs,
   variableRenderText
 } from './convert'
-import { devWarning } from '@brickdoc/design-system'
 import { PositionFragment } from './core'
 import { fetchResult } from '../context'
 
@@ -48,7 +47,9 @@ interface ExpressionArgument {
   readonly firstArgumentType?: FormulaType
 }
 
-export class CodeFragmentVisitor extends BaseCstVisitor {
+const CodeFragmentCstVisitor = ParserInstance.getBaseCstVisitorConstructor<ExpressionArgument, CodeFragmentResult>()
+
+export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
   ctx: FunctionContext
   variableDependencies: VariableDependency[] = []
   variableNameDependencies: VariableNameDependency[] = []
@@ -57,6 +58,8 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
   flattenVariableDependencies: VariableDependency[] = []
   kind: 'constant' | 'expression' = 'constant'
   async: boolean = false
+  pure: boolean = true
+  effect: boolean = false
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()
@@ -497,8 +500,10 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       }
 
       if (rhsCst.name === 'FunctionCall') {
-        const args = { type: 'any', firstArgumentType }
-        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult = this.visit(rhsCst, args)
+        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult = this.visit(rhsCst, {
+          type: 'any',
+          firstArgumentType
+        })
 
         firstArgumentType = 'any'
         images.push(rhsImage)
@@ -511,14 +516,19 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
           ['null', 'string', 'boolean', 'number'].includes(firstArgumentType) && type !== 'Reference'
             ? [{ type: 'syntax', message: 'Access error' }]
             : []
-        const args = { type: 'string' }
-        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult = this.visit(rhsCst, args)
+        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult = this.visit(rhsCst, {
+          type: 'string'
+        })
         const unknownVariableError: ErrorMessage[] = []
         let finalRhsCodeFragments = rhsCodeFragments
         const finalRhsImage = rhsImage
 
         if (firstArgumentType === 'Block') {
-          const namespaceId = codeFragments[codeFragments.length - 2]?.attrs?.id as string
+          const blockCodeFragment = codeFragments[codeFragments.length - 2]
+          const namespaceId =
+            blockCodeFragment?.display === 'CurrentBlock'
+              ? this.ctx.meta.namespaceId
+              : (blockCodeFragment?.attrs?.id as string)
           const variableName = parseString(rhsImage)
           const variable = this.ctx.formulaContext.findVariableByName(namespaceId, variableName)
 
@@ -536,6 +546,12 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
 
             if (variable.t.isAsync) {
               this.async = true
+            }
+            if (variable.t.isEffect) {
+              this.effect = true
+            }
+            if (!variable.t.isPure) {
+              this.pure = false
             }
 
             if (['StringLiteral', 'FunctionName'].includes(finalRhsCodeFragments[0].code)) {
@@ -1202,8 +1218,14 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         this.kind = 'expression'
       }
 
-      if(clause.async) {
+      if (clause.async) {
         this.async = true
+      }
+      if (clause.effect) {
+        this.effect = true
+      }
+      if (!clause.pure) {
+        this.pure = false
       }
 
       const chainError: ErrorMessage[] = []
@@ -1220,7 +1242,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
         clauseArgs = clause.args.slice(1)
       }
       const { codeFragments: argsCodeFragments, image } = ctx.Arguments
-        ? (this.visit(ctx.Arguments, clauseArgs) as CodeFragmentResult)
+        ? (this.visit(ctx.Arguments, clauseArgs as any) as CodeFragmentResult)
         : { codeFragments: [], image: '' }
       const argsErrorMessages: ErrorMessage[] =
         clauseArgs.filter(a => !a.default).length > 0 && argsCodeFragments.length === 0
@@ -1246,7 +1268,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
       }
     } else {
       const { codeFragments: argsCodeFragments, image } = ctx.Arguments
-        ? (this.visit(ctx.Arguments, null) as CodeFragmentResult)
+        ? (this.visit(ctx.Arguments, undefined) as CodeFragmentResult)
         : { codeFragments: [], image: '' }
       images.push(ctx.LParen[0].image, image, ctx.RParen ? ctx.RParen[0].image : '')
 
@@ -1267,7 +1289,7 @@ export class CodeFragmentVisitor extends BaseCstVisitor {
     }
   }
 
-  Arguments(ctx: { expression: any[]; Comma: IToken[] }, args: Argument[] | null): CodeFragmentResult {
+  Arguments(ctx: { expression: any[]; Comma: IToken[] }, args: Argument[] | undefined): CodeFragmentResult {
     const firstArgs = args?.[0]
     const argumentTypes = firstArgs?.spread
       ? Array(ctx.expression.length).fill(firstArgs.type)
@@ -1391,7 +1413,7 @@ export const addSpace = (
   })
 
   if (error) {
-    devWarning(true, 'addSpaceError', { input, codeFragments, restInput, finalCodeFragments, image })
+    // devWarning(true, 'addSpaceError', { input, codeFragments, restInput, finalCodeFragments, image })
     // const errorMessage = `[Parse Error] ${input}`
     // return [
     //   {
@@ -1410,4 +1432,3 @@ export const addSpace = (
 
   return { finalCodeFragments, finalPositionFragment: positionFragment }
 }
-

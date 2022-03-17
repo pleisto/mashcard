@@ -340,7 +340,7 @@ export type SimpleCodeFragmentType =
   | 'NullLiteral'
   | 'Dot'
   | 'Equal'
-export type SpecialCodeFragmentType = 'unknown' | 'other' | 'Space'
+export type SpecialCodeFragmentType = 'unknown' | 'parseErrorOther' | 'Space' | 'literal'
 export type CodeFragmentCodes = ComplexCodeFragmentType | SimpleCodeFragmentType | SpecialCodeFragmentType
 
 interface BaseCompletion {
@@ -518,7 +518,7 @@ type FunctionChain =
 export type BaseFunctionClause<T extends FormulaType> = {
   readonly name: FunctionNameType
   readonly pure: boolean
-  readonly effect: false
+  readonly effect: boolean
   readonly feature?: Feature
   readonly lazy: boolean
   readonly acceptError: boolean
@@ -606,7 +606,6 @@ export interface VariableDisplayData {
   definition: Definition
   result: AnyTypeResult
   kind: VariableKind
-  isAsync: boolean
   type: FormulaSourceType
   version: number
   meta: VariableMetadata
@@ -637,6 +636,8 @@ export type VariableTask = AsyncVariableTask | SyncVariableTask
 export interface VariableData {
   definition: Definition
   isAsync: boolean
+  isEffect: boolean
+  isPure: boolean
   task: VariableTask
   kind: VariableKind
   type: FormulaSourceType

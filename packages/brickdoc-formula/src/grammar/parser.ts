@@ -296,5 +296,3 @@ export class FormulaParser extends CstParser {
 }
 
 export const ParserInstance = new FormulaParser()
-
-export const BaseCstVisitor = ParserInstance.getBaseCstVisitorConstructor()

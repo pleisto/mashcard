@@ -18,7 +18,7 @@ export const CORE_REQUEST_CLAUSES: Array<BaseFunctionClause<'Record'>> = [
     pure: false,
     lazy: false,
     acceptError: false,
-    effect: false,
+    effect: true,
     examples: [{ input: '=REQUEST_GET(10)', output: { type: 'Record', subType: 'any', result: {} } }],
     description: 'request get',
     group: 'core',

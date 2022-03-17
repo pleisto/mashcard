@@ -20,7 +20,6 @@ import {
 import { ColumnClass, Row, SpreadsheetType } from '../controls'
 import { extractSubType, parseString, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
-import { BaseCstVisitor } from './parser'
 import {
   Div,
   Equal2,
@@ -39,6 +38,7 @@ import {
   Caret
 } from './lexer'
 import { BlockClass } from '../controls/block'
+import { ParserInstance } from './parser'
 
 interface ExpressionArgument {
   readonly type: ExpressionType
@@ -47,7 +47,11 @@ interface ExpressionArgument {
   lazy?: boolean
   chainArgs?: any
 }
-export class FormulaInterpreter extends BaseCstVisitor {
+
+// const InterpretCstVisitor = ParserInstance.getBaseCstVisitorConstructor<ExpressionArgument, Promise<AnyTypeResult>>()
+const InterpretCstVisitor = ParserInstance.getBaseCstVisitorConstructor()
+
+export class FormulaInterpreter extends InterpretCstVisitor {
   ctx: FunctionContext
   lazy: boolean = false
 

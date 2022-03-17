@@ -8,7 +8,7 @@ import {
   parse,
   VariableData,
   VariableInterface,
-  interpretAsync,
+  interpret,
   FormulaType
 } from '@brickdoc/formula'
 import {
@@ -113,6 +113,8 @@ const replaceRoot = ({
 
 export interface CompletionType {
   completions: Completion[]
+  formulaType: FormulaSourceType
+  input: string
   kind: 'Completion' | 'Preview'
   activeCompletion: Completion | undefined
   activeCompletionIndex: number
@@ -146,10 +148,7 @@ export const useFormula = ({
 
   const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''
 
-  const contextCompletions =
-    formulaContext && (formulaIsNormal || formulaValue?.startsWith('='))
-      ? formulaContext.completions(rootId, formulaId)
-      : []
+  const contextCompletions = formulaContext ? formulaContext.completions(rootId, formulaId) : []
 
   const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal, 0)
 
@@ -168,6 +167,8 @@ export const useFormula = ({
   const [completion, setCompletion] = React.useState<CompletionType>({
     completions: contextCompletions,
     kind: 'Completion',
+    formulaType,
+    input: formulaValue ?? '',
     activeCompletion: contextCompletions[0],
     activeCompletionIndex: 0
   })
@@ -215,7 +216,7 @@ export const useFormula = ({
   }, [formulaId, rootId])
 
   const doCalculate = React.useCallback(
-    (skipAsync: boolean): void => {
+    (skipExecute: boolean): void => {
       if (!formulaContext) {
         devLog('formula no input!')
         return
@@ -242,9 +243,17 @@ export const useFormula = ({
       const parseResult = parse({ ctx })
       const { completions, expressionType, success } = parseResult
       updateDefaultName(success ? expressionType : 'any')
-      const newVariable = interpretAsync({ parseResult, ctx, skipAsync, variable: variableRef.current })
+      const newVariable = interpret({ parseResult, ctx, skipExecute, variable: variableRef.current })
+      // console.log('parseResult', parseResult, newVariable)
 
-      setCompletion({ completions, activeCompletion: completions[0], activeCompletionIndex: 0, kind: 'Completion' })
+      setCompletion({
+        completions,
+        activeCompletion: completions[0],
+        activeCompletionIndex: 0,
+        kind: 'Completion',
+        formulaType,
+        input: editorContentRef.current.input
+      })
       doUnselectedFormula()
 
       if (inputIsEmpty || parseResult.valid) {
@@ -371,7 +380,7 @@ export const useFormula = ({
       const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent))
       const value = formulaType === 'normal' ? `=${newInput}` : newInput
       editorContentRef.current = { content: jsonContent, input: value, position: editorPosition }
-      BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId, skipAsync: false }))
+      BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId, skipExecute: false }))
     },
     [formulaId, formulaType, rootId]
   )
@@ -578,7 +587,7 @@ export const useFormula = ({
     const listener = BrickdocEventBus.subscribe(
       FormulaCalculateTrigger,
       e => {
-        doCalculate(e.payload.skipAsync)
+        doCalculate(e.payload.skipExecute)
       },
       {
         eventId: `${rootId},${formulaId}`,

@@ -20,7 +20,6 @@ export const dumpDisplayResultForPersist = async (t: VariableData): Promise<Vari
     definition: t.definition,
     result: dumpValue(value.result) as AnyTypeResult,
     type: t.type,
-    isAsync: t.isAsync,
     kind: t.kind,
     version: VARIABLE_VERSION,
     display: displayValue(fetchResult(t), ''),
@@ -39,7 +38,6 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   return {
     definition: t.definition,
     result: fetchResult(t),
-    isAsync: t.isAsync,
     type: t.type,
     kind: t.kind,
     version: VARIABLE_VERSION,

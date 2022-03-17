@@ -603,7 +603,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "\\"Hello",
     "errors": Array [
       Object {
@@ -1027,7 +1027,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "'hello'",
     "errors": Array [
       Object {
@@ -1171,7 +1171,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "123",
     "errors": Array [
       Object {
@@ -1221,7 +1221,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "a1",
     "errors": Array [
       Object {
@@ -1341,7 +1341,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "START_WITH(\\"123\\")",
     "errors": Array [
       Object {
@@ -1381,7 +1381,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "中文",
     "errors": Array [
       Object {
@@ -1593,7 +1593,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "1:\\"a\\"}",
     "errors": Array [
       Object {
@@ -2401,7 +2401,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "lo\\"",
     "errors": Array [
       Object {
@@ -2421,7 +2421,7 @@ exports[`Simple test case [literal1] 1+1 // => 1+1 1`] = `
 Array [
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "literal",
     "display": "1+1",
     "errors": Array [],
     "hide": false,
@@ -2436,7 +2436,7 @@ exports[`Simple test case [literal2] 1+1 asd n,san 中文测试 asdasd // => 1+1
 Array [
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "literal",
     "display": "1+1 asd n,san 中文测试 asdasd",
     "errors": Array [],
     "hide": false,
@@ -3034,7 +3034,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "2",
     "errors": Array [
       Object {
@@ -3298,7 +3298,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "other",
+    "code": "parseErrorOther",
     "display": "T()",
     "errors": Array [
       Object {

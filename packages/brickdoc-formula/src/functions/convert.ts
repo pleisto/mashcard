@@ -161,7 +161,7 @@ export const CORE_CONVERT_CLAUSES: Array<BaseFunctionClause<'number' | 'string' 
   {
     name: 'toRecordArray',
     async: false,
-    pure: false,
+    pure: true,
     lazy: false,
     acceptError: false,
     effect: false,
@@ -182,7 +182,7 @@ export const CORE_CONVERT_CLAUSES: Array<BaseFunctionClause<'number' | 'string' 
   {
     name: 'toArray',
     async: false,
-    pure: false,
+    pure: true,
     lazy: false,
     acceptError: false,
     effect: false,

@@ -22,7 +22,7 @@ import {
   NamespaceId,
   VariableTask
 } from '../types'
-import { parse, interpretAsync } from '../grammar/core'
+import { parse, interpret } from '../grammar/core'
 import { dumpValue } from './persist'
 import { block2name, variable2name, variableKey } from '../grammar/convert'
 import { BlockClass } from '../controls/block'
@@ -62,13 +62,12 @@ export const castVariable = (
   formulaContext: ContextInterface,
   { name, definition, cacheValue, version, blockId, id, type: unknownType }: BaseFormula
 ): VariableInterface => {
-  // const oldVariable = formulaContext.findVariableById(blockId, id)
   const type = unknownType as FormulaSourceType
   const meta: VariableMetadata = { namespaceId: blockId, variableId: id, name, input: definition, position: 0, type }
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const parseResult = parse({ ctx })
 
-  return interpretAsync({ variable: oldVariable, isLoad: true, ctx, parseResult })
+  return interpret({ variable: oldVariable, isLoad: true, ctx, parseResult })
 }
 
 export class VariableClass implements VariableInterface {

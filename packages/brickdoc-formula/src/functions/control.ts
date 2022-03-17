@@ -161,117 +161,116 @@ export const Select = (
   return { result: selectResult, type: 'Select' }
 }
 
-export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'Button' | 'Select' | 'Switch' | 'Input'>> =
-  [
-    {
-      name: 'Spreadsheet',
-      async: false,
-      pure: false,
-      lazy: false,
-      acceptError: false,
-      effect: false,
-      examples: [{ input: '=123', output: null }],
-      description: 'Returns the spreadsheet.',
-      group: 'core',
-      args: [{ name: 'array', type: 'Array' }],
-      returns: 'Spreadsheet',
-      testCases: [],
-      chain: true,
-      reference: Spreadsheet
-    },
-    {
-      name: 'Button',
-      async: false,
-      pure: false,
-      lazy: false,
-      acceptError: false,
-      effect: false,
-      feature: FORMULA_FEATURE_CONTROL,
-      examples: [{ input: '=Button("name")', output: null }],
-      description: 'Build button',
-      group: 'core',
-      args: [
-        {
-          name: 'name',
-          type: 'string'
-        },
-        {
-          name: 'onClick',
-          type: 'Function'
-        }
-      ],
-      testCases: [],
-      returns: 'Button',
-      chain: false,
-      reference: Button
-    },
-    {
-      name: 'CInput',
-      async: false,
-      pure: false,
-      lazy: false,
-      acceptError: false,
-      effect: false,
-      feature: FORMULA_FEATURE_CONTROL,
-      examples: [{ input: '=Input()', output: null }],
-      description: 'Build input',
-      group: 'core',
-      args: [{ name: 'onChange', type: 'Function' }],
-      testCases: [],
-      returns: 'Input',
-      chain: false,
-      reference: Input
-    },
-    {
-      name: 'Switch',
-      async: false,
-      pure: false,
-      lazy: false,
-      feature: FORMULA_FEATURE_CONTROL,
-      acceptError: false,
-      effect: false,
-      examples: [{ input: '=Switch("name")', output: null }],
-      description: 'Build switch',
-      group: 'core',
-      args: [
-        {
-          name: 'name',
-          type: 'boolean'
-        },
-        {
-          name: 'onChange',
-          type: 'Function'
-        }
-      ],
-      testCases: [],
-      returns: 'Switch',
-      chain: false,
-      reference: Switch
-    },
-    {
-      name: 'Select',
-      async: false,
-      pure: false,
-      lazy: false,
-      feature: FORMULA_FEATURE_CONTROL,
-      acceptError: false,
-      effect: false,
-      examples: [{ input: '=Select("name")', output: null }],
-      description: 'Build select',
-      group: 'core',
-      args: [
-        {
-          name: 'options',
-          type: 'Array'
-        },
-        {
-          name: 'onChange',
-          type: 'Function'
-        }
-      ],
-      testCases: [],
-      returns: 'Select',
-      chain: false,
-      reference: Select
-    }
-  ]
+export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'Button' | 'Select' | 'Switch' | 'Input'>> = [
+  {
+    name: 'Spreadsheet',
+    async: false,
+    pure: true,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=123', output: null }],
+    description: 'Returns the spreadsheet.',
+    group: 'core',
+    args: [{ name: 'array', type: 'Array' }],
+    returns: 'Spreadsheet',
+    testCases: [],
+    chain: true,
+    reference: Spreadsheet
+  },
+  {
+    name: 'Button',
+    async: false,
+    pure: true,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    feature: FORMULA_FEATURE_CONTROL,
+    examples: [{ input: '=Button("name")', output: null }],
+    description: 'Build button',
+    group: 'core',
+    args: [
+      {
+        name: 'name',
+        type: 'string'
+      },
+      {
+        name: 'onClick',
+        type: 'Function'
+      }
+    ],
+    testCases: [],
+    returns: 'Button',
+    chain: false,
+    reference: Button
+  },
+  {
+    name: 'CInput',
+    async: false,
+    pure: true,
+    lazy: false,
+    acceptError: false,
+    effect: false,
+    feature: FORMULA_FEATURE_CONTROL,
+    examples: [{ input: '=Input()', output: null }],
+    description: 'Build input',
+    group: 'core',
+    args: [{ name: 'onChange', type: 'Function' }],
+    testCases: [],
+    returns: 'Input',
+    chain: false,
+    reference: Input
+  },
+  {
+    name: 'Switch',
+    async: false,
+    pure: true,
+    lazy: false,
+    feature: FORMULA_FEATURE_CONTROL,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=Switch("name")', output: null }],
+    description: 'Build switch',
+    group: 'core',
+    args: [
+      {
+        name: 'name',
+        type: 'boolean'
+      },
+      {
+        name: 'onChange',
+        type: 'Function'
+      }
+    ],
+    testCases: [],
+    returns: 'Switch',
+    chain: false,
+    reference: Switch
+  },
+  {
+    name: 'Select',
+    async: false,
+    pure: true,
+    lazy: false,
+    feature: FORMULA_FEATURE_CONTROL,
+    acceptError: false,
+    effect: false,
+    examples: [{ input: '=Select("name")', output: null }],
+    description: 'Build select',
+    group: 'core',
+    args: [
+      {
+        name: 'options',
+        type: 'Array'
+      },
+      {
+        name: 'onChange',
+        type: 'Function'
+      }
+    ],
+    testCases: [],
+    returns: 'Select',
+    chain: false,
+    reference: Select
+  }
+]

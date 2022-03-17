@@ -1,4 +1,4 @@
-import { appendFormulas, interpretAsync, parse, SuccessParseResult } from '../../grammar/core'
+import { appendFormulas, interpret, parse, SuccessParseResult } from '../../grammar/core'
 import { Formula, SyncVariableTask, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
@@ -169,7 +169,7 @@ describe('Context', () => {
       interpretContext: { ctx: {}, arguments: [] }
     }
 
-    const variable = interpretAsync({ ctx, parseResult })
+    const variable = interpret({ ctx, parseResult })
 
     formulaContext.commitVariable({ variable })
 

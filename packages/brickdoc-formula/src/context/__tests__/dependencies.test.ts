@@ -1,5 +1,5 @@
 /* eslint-disable max-nested-callbacks */
-import { interpretAsync, parse, SuccessParseResult } from '../../grammar/core'
+import { interpret, parse, SuccessParseResult } from '../../grammar/core'
 import { quickInsert } from '../../grammar/testHelper'
 import { VariableMetadata, VariableValue } from '../../types'
 import { FormulaContext } from '../context'
@@ -163,7 +163,7 @@ describe('Dependency', () => {
       interpretContext: { ctx: {}, arguments: [] }
     }
 
-    const variable = interpretAsync({ ctx, parseResult })
+    const variable = interpret({ ctx, parseResult })
     formulaContext.commitVariable({ variable })
 
     await new Promise(resolve => setTimeout(resolve, 50))
