@@ -4,6 +4,7 @@ extends:
 rules:
   jest/no-done-callback: off
   import/no-default-export: off
+  jest/no-conditional-expect: off
 
 parserOptions:
   project: ./tsconfig.json

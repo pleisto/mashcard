@@ -19,6 +19,7 @@ import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface PageTreeProps extends DocMetaProps {
   mode?: 'default' | 'subPage'
@@ -326,7 +327,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   return pageBlocks.length ? (
     <PageTreeRoot>
       {pinTree}
-      {!hideHeading && <PageTreeHeading>Pages</PageTreeHeading>}
+      {!hideHeading && <PageTreeHeading data-test-id={TEST_ID_ENUM.page.pageTree.heading.id}>Pages</PageTreeHeading>}
       {treeElement(pageBlocks, draggable && mutable)}
     </PageTreeRoot>
   ) : (

@@ -7,6 +7,11 @@ export const TEST_ID_ENUM = {
     }
   },
   page: {
+    pageTree: {
+      heading: {
+        id: 'page-tree-heading'
+      }
+    },
     DocumentPage: {
       iconButton: {
         id: 'page-document-page-icon-button'
