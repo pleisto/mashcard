@@ -1,5 +1,5 @@
-import { colorWithShade, cssStr2color, color2cssStr, generatePalette } from '../index'
-import { Shade } from '../palette'
+import { cssStr2color, color2cssStr } from '../converter'
+import { colorWithShade, generatePalette, Shade } from '../palette'
 
 describe('colorPalette', () => {
   it('shoudle color2sahde work', () => {
