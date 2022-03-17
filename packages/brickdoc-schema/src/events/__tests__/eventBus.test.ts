@@ -1,4 +1,5 @@
-import { BrickdocEventBus, event } from '../'
+import { BrickdocEventBus } from '../eventBus'
+import { event } from '../event'
 
 describe('BrickdocEventBus', () => {
   it('can subscribe and dispatch', () => {

@@ -1,4 +1,7 @@
-import { FormulaContext, FunctionContext, parse, quickInsert, VariableMetadata } from '@brickdoc/formula'
+import { parse } from '../../grammar'
+import { FormulaContext } from '../../context'
+import { VariableMetadata, FunctionContext } from '../../types'
+import { quickInsert } from '../testHelper'
 
 const formulaContext = new FormulaContext({ domain: 'test' })
 

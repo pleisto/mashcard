@@ -3,7 +3,7 @@
 import { innerInterpret, parse } from '../../grammar/core'
 import { FormulaContext, FORMULA_FEATURE_CONTROL } from '../../context'
 import { quickInsert } from '../../grammar/testHelper'
-import { VariableMetadata } from '../..'
+import { VariableMetadata } from '../../types'
 
 const formulaContext = new FormulaContext({ domain: 'test' })
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'

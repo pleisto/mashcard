@@ -1,4 +1,3 @@
 module.exports = {
-  ...require('../../tools/jest').baseConfig(true),
-  name: '@brickdoc/formula'
+  ...require('../../tools/jest').baseConfig(true)
 }
