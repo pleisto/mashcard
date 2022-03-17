@@ -1,4 +1,8 @@
-import { HSL, RGB, HSV, hsv2hsl, hsl2rgb, hsv2rgb, rgb2hsv, rgb2hex, hex2rgb, cssStr2color, rgb2color } from '../index'
+import { hsv2hsl, hsl2rgb, hsv2rgb, rgb2hsv, rgb2hex, hex2rgb, cssStr2color, rgb2color } from '../converter'
+import { HSL } from '../hsl'
+import { HSV } from '../hsv'
+import { RGB } from '../rgb'
+
 describe('Color Converter', () => {
   it('should convert hsv to hsl', () => {
     expect(hsv2hsl(0, 0, 0)).toEqual<HSL>({ h: 0, s: 0, l: 0 })
