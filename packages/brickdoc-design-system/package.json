@@ -68,7 +68,7 @@
     "react": "^17.0.2",
     "react-colorful": "^5.5.1",
     "react-dom": "^17.0.2",
-    "react-i18next": "^11.15.7",
+    "react-i18next": "^11.16.1",
     "react-json-view": "^1.21.3",
     "storybook-addon-designs": "^6.2.1",
     "storybook-addon-performance": "^0.16.1",

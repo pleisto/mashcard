@@ -42,9 +42,9 @@
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/typescript": "^2.4.7",
-    "@graphql-codegen/typescript-operations": "^2.3.4",
-    "@graphql-codegen/typescript-react-apollo": "^3.2.10",
+    "@graphql-codegen/typescript": "^2.4.8",
+    "@graphql-codegen/typescript-operations": "^2.3.5",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.11",
     "@swc/cli": "^0.1.55",
     "@swc/jest": "^0.2.20",
     "@testing-library/jest-dom": "^5.16.2",
@@ -118,7 +118,7 @@
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b"
   },
   "dependencies": {
-    "@swc/core": "^1.2.156",
+    "@swc/core": "^1.2.157",
     "@swc/helpers": "^0.3.8",
     "ts-node": "^10.7.0"
   },
