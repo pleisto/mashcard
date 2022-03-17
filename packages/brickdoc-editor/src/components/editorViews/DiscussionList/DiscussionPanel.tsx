@@ -33,7 +33,7 @@ export const DiscussionPanel: FC<DiscussionPanelProps> = ({
             onMouseEnter={handleConversationHover(commentedNode)}
             onMouseLeave={handleConversationLeave(commentedNode)}
           >
-            <Conversation active={activeMarkId === commentedNode.markId} markId={commentedNode.markId} />
+            <Conversation active={activeMarkId === commentedNode.markId} commentedNode={commentedNode} />
           </ConversationWrapper>
         ))}
       </ListWrapper>

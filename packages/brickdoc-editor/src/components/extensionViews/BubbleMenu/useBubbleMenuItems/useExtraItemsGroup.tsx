@@ -24,7 +24,6 @@ export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null
         icon: <Icon.Message />,
         tooltip: t('bubble_menu.comment.title') as string,
         onAction: () => {
-          // TODO: create conversation first
           editor.chain().focus().setDiscussion().run()
         }
       })

@@ -10,6 +10,7 @@ declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     discussion: {
       setDiscussion: () => ReturnType
+      removeDiscussion: (from: number, to: number) => ReturnType
     }
   }
 }
@@ -17,6 +18,15 @@ declare module '@tiptap/core' {
 export interface DiscussionOptions {}
 export interface DiscussionAttributes {
   markId: string
+}
+
+const openDiscussionList = (markId: string | null): void => {
+  BrickdocEventBus.dispatch(DiscussionListToggle({ visible: true }))
+  if (!markId) return
+  // wait for drawer open animation
+  setTimeout(() => {
+    BrickdocEventBus.dispatch(DiscussionMarkActive({ markId }))
+  }, 300)
 }
 
 export const DiscussionMark = createMark<DiscussionOptions, DiscussionAttributes>({
@@ -62,8 +72,23 @@ export const DiscussionMark = createMark<DiscussionOptions, DiscussionAttributes
     return {
       setDiscussion:
         () =>
-        ({ commands }) => {
-          return commands.setMark(this.name, { markId: uuid() })
+        ({ commands, editor }) => {
+          const markId = uuid()
+          if (!editor.isActive(this.name)) {
+            const isMarked = commands.setMark(this.name, { markId })
+
+            if (!isMarked) return false
+          }
+
+          openDiscussionList(markId)
+
+          return true
+        },
+      removeDiscussion:
+        (from, to) =>
+        ({ tr, dispatch }) => {
+          dispatch?.(tr.removeMark(from, to, this.type))
+          return true
         }
     }
   },
@@ -77,11 +102,7 @@ export const DiscussionMark = createMark<DiscussionOptions, DiscussionAttributes
             // check if click event occurred on discussion mark
             const mark = (event.target as HTMLElement)?.closest('mark')
             if (mark?.classList.contains(MARK_CLASS_NAME)) {
-              BrickdocEventBus.dispatch(DiscussionListToggle({ visible: true }))
-              // wait for drawer open animation
-              setTimeout(() => {
-                BrickdocEventBus.dispatch(DiscussionMarkActive({ markId: mark.getAttribute(MARK_ID_ATTR_NAME) }))
-              }, 200)
+              openDiscussionList(mark.getAttribute(MARK_ID_ATTR_NAME))
             }
             return false
           }

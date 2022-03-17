@@ -15,7 +15,7 @@ export function usePlaceholder(editor: Editor | null): [string] {
     []
   )
   useEffect(() => {
-    const checkPlaceholder = () => {
+    const checkPlaceholder = (): void => {
       if (unmount.current) return
       if (editor?.isDestroyed) return
       if (editor?.isEmpty && !placeholder) setPlaceholder(placeholderText)

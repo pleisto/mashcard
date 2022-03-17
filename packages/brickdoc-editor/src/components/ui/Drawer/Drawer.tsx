@@ -13,7 +13,7 @@ export interface DrawerProps {
   renderBody?: () => ReactNode
 }
 
-const width = '17.5rem'
+export const width = '17.5rem'
 export const horizontalPadding = '1.125rem'
 
 const DrawerContainer = styled(motion.div, {
@@ -83,7 +83,8 @@ export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody,
         visible={visible}
         className={className}
         animate={drawerAnimation(visible)}
-        transition={drawerTransition(visible)}>
+        transition={drawerTransition(visible)}
+      >
         {visible && (
           <>
             <CloseButton onClick={onClose} type="text" icon={<Close />} />

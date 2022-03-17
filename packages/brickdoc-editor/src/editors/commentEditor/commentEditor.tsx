@@ -1,125 +1,25 @@
 import { FC, MouseEvent, useCallback, useContext, useEffect } from 'react'
-import { useEditor, EditorContent, JSONContent } from '@tiptap/react'
-import { Avatar, Button, styled, theme } from '@brickdoc/design-system'
+import { Editor, JSONContent } from '@tiptap/core'
+import { Button } from '@brickdoc/design-system'
 import { BrickdocEventBus, DiscussionMarkInactive } from '@brickdoc/schema'
 import { EditorContext } from '../../context/EditorContext'
 import { usePlaceholder } from './usePlaceholder'
-import { useExternalProps } from '../../hooks/useExternalProps'
-import { Base } from '../../extensions/base'
+import { EditorContainer, EditorAvatar, EditorInput, ActionsRow } from './styled'
+import { useCommentEditor } from './useCommentEditor'
+import { clearDraft, getDraft } from './draft'
+import { useContentUpdated } from './useContentUpdated'
 
 export interface CommentEditorProps {
   markId: string
+  onSend?: (editor: Editor, content: JSONContent | undefined) => void
 }
 
-const EditorInput = styled(EditorContent, {
-  background: theme.colors.backgroundOverlayPrimary,
-  border: `1px solid ${theme.colors.borderOverlayThirdary}`,
-  borderRadius: '4px',
-  flex: 1,
-  padding: '.5rem .625rem',
-  position: 'relative',
-
-  '&:before': {
-    content: 'attr(data-placeholder)',
-    color: theme.colors.typeThirdary,
-    lineHeight: '1.125rem',
-    position: 'absolute',
-    left: '.625rem'
-  },
-  '& .ProseMirror': {
-    caretColor: theme.colors.blue6,
-    outline: 'none',
-
-    '& p': {
-      fontSize: theme.fontSizes.callout,
-      lineHeight: '1rem',
-      marginBottom: 0
-    }
-  }
-})
-
-const padding = '.5rem .75rem'
-
-const EditorContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'row',
-  padding
-})
-
-const ActionsRow = styled('div', {
-  alignItems: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
-  padding,
-  paddingTop: 0,
-  'button + button': {
-    marginLeft: '.5rem'
-  }
-})
-
-const EditorAvatar = styled(Avatar, {
-  marginRight: '.625rem',
-  marginTop: '.2rem'
-})
-
-const DRAFT_KEY = (markId: string): string => `brk-comment-draft-${markId}`
-
-const getDraft = (markId: string): JSONContent | undefined => {
-  try {
-    const local = window.localStorage.getItem(DRAFT_KEY(markId))
-    if (!local) return undefined
-    return JSON.parse(local)
-  } catch (error) {
-    console.error(error)
-  }
-
-  return undefined
-}
-
-const setDraft = (markId: string, content: JSONContent): void => {
-  try {
-    window.localStorage.setItem(DRAFT_KEY(markId), JSON.stringify(content))
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-export const CommentEditorContent: FC<CommentEditorProps> = ({ markId }) => {
+export const CommentEditorContent: FC<CommentEditorProps> = ({ markId, onSend }) => {
   const { t } = useContext(EditorContext)
-  const externalProps = useExternalProps()
-  const editor = useEditor({
-    autofocus: 'end',
-    content: getDraft(markId),
-    extensions: [
-      Base.configure({
-        commandHelper: true,
-        document: true,
-        mentionCommands: {
-          externalProps
-        },
-        pageLink: {
-          size: 'sm'
-        },
-        paragraph: true,
-        text: true,
-        user: {
-          size: 'sm'
-        }
-      })
-    ]
-  })
+  const editor = useCommentEditor(getDraft(markId))
   const [placeholder] = usePlaceholder(editor)
 
-  useEffect(() => {
-    const onContentUpdate = (): void => {
-      setDraft(markId, editor?.getJSON() ?? [])
-    }
-    editor?.on('update', onContentUpdate)
-    return () => {
-      editor?.off('update', onContentUpdate)
-    }
-  }, [editor, markId])
+  useContentUpdated(editor, markId)
 
   useEffect(() => {
     // setTimeout for avoiding scroll event conflict with discussion mark
@@ -132,12 +32,19 @@ export const CommentEditorContent: FC<CommentEditorProps> = ({ markId }) => {
   const handleCancel = useCallback(
     (event: MouseEvent) => {
       event.stopPropagation()
-      // clear draft
-      window.localStorage.setItem(DRAFT_KEY(markId), '')
-      // inactive mark
+      clearDraft(markId)
       BrickdocEventBus.dispatch(DiscussionMarkInactive({}))
     },
     [markId]
+  )
+
+  const handleSend = useCallback(
+    (event: MouseEvent) => {
+      event.stopPropagation()
+      if (!editor) return
+      onSend?.(editor, getDraft(markId))
+    },
+    [editor, markId, onSend]
   )
 
   const handleContainerClick = useCallback((event: MouseEvent) => {
@@ -155,7 +62,7 @@ export const CommentEditorContent: FC<CommentEditorProps> = ({ markId }) => {
           <Button onClick={handleCancel} size="sm">
             {t('discussion.editor.cancel')}
           </Button>
-          <Button size="sm" type="primary">
+          <Button size="sm" type="primary" onClick={handleSend}>
             {t('discussion.editor.send')}
           </Button>
         </ActionsRow>

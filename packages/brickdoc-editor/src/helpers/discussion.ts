@@ -9,7 +9,7 @@ let latestActiveNode: Element | null = null
 const getActualNode = (node: Node | null): Node | null =>
   node?.nodeType === Node.TEXT_NODE ? node.parentElement : node
 
-export const selectDiscussionMark = (node: Node | null) => {
+export const selectDiscussionMark = (node: Node | null): void => {
   let element: Element | null = null
   if (node?.nodeType === Node.TEXT_NODE) {
     element = node.parentElement
@@ -20,7 +20,7 @@ export const selectDiscussionMark = (node: Node | null) => {
   focusDiscussionMark(node)
 }
 
-export const focusDiscussionMark = (node: Node | null) => {
+export const focusDiscussionMark = (node: Node | null): void => {
   const markNode = getActualNode(node)
 
   if (!markNode) return
@@ -44,7 +44,7 @@ export const focusDiscussionMark = (node: Node | null) => {
   })
 }
 
-export const hoverDiscussionMark = (node: Node | null) => {
+export const hoverDiscussionMark = (node: Node | null): void => {
   const markNode = getActualNode(node)
 
   if ((markNode as Element).classList.contains(MARK_CLASS_NAME)) {
@@ -52,7 +52,7 @@ export const hoverDiscussionMark = (node: Node | null) => {
   }
 }
 
-export const leaveDiscussionMark = (node: Node | null) => {
+export const leaveDiscussionMark = (node: Node | null): void => {
   const markNode = getActualNode(node)
   // TODO: without setTimeout, modify dom will cause dom node be replaced
   // figure out why

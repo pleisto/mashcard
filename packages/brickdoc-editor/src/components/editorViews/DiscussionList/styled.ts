@@ -1,7 +1,9 @@
 import { Button, styled, Tabs, theme } from '@brickdoc/design-system'
+import { width as drawerWidth, horizontalPadding as drawerPadding } from '../../ui/Drawer'
 
 export const FilterTabs = styled(Tabs, {
-  paddingLeft: 0
+  paddingLeft: 0,
+  width: `calc(${drawerWidth} - 2 * ${drawerPadding})`
 })
 
 export const DiscussionListContainer = styled('div', {})

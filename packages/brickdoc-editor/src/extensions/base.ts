@@ -107,8 +107,13 @@ export const Base = Extension.create<BaseOptions>({
       extensions.push(EXTENSION.OrderedList.configure(getConfigure(this.options?.orderedList)))
     if (this.options.all ?? this.options.pageLink)
       extensions.push(EXTENSION.PageLink.configure(getConfigure(this.options?.pageLink)))
-    if (this.options.all ?? this.options.paragraph)
-      extensions.push(EXTENSION.Paragraph.configure(getConfigure(this.options?.paragraph)))
+    if (this.options.all ?? this.options.paragraph) {
+      if (typeof this.options.paragraph !== 'boolean' && this.options.paragraph?.native) {
+        extensions.push(EXTENSION.NativeParagraph.configure(getConfigure(this.options?.paragraph)))
+      } else {
+        extensions.push(EXTENSION.Paragraph.configure(getConfigure(this.options?.paragraph)))
+      }
+    }
     if (this.options.all ?? this.options.slashCommands)
       extensions.push(EXTENSION.SlashCommands.configure(getConfigure(this.options?.slashCommands)))
     if (this.options.all ?? this.options.spreadsheet)

@@ -9,7 +9,9 @@ export function useActiveMarkId(
 
   // remove active mark id if it has been removed in document
   useEffect(() => {
-    if (commentedNodes.every(node => node.markId !== activeMarkId)) setActiveMarkId(null)
+    if (commentedNodes.every(node => node.markId !== activeMarkId)) {
+      setActiveMarkId(null)
+    }
   }, [activeMarkId, commentedNodes])
 
   // listener for active mark event

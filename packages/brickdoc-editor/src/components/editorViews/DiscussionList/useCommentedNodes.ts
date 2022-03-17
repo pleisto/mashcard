@@ -8,10 +8,13 @@ export interface CommentedNode {
   markId: string
   node: ProsemirrorNode
   domNode: Node
+  position: number
 }
 
-const findDiscussionMark = (marks: Mark[]) => marks.find(mark => mark.type.name === discussionMeta.name)
-const isCommentedNodeExist = (nodes: CommentedNode[], markId: string) => nodes.some(node => node.markId === markId)
+const findDiscussionMark = (marks: Mark[]): Mark | undefined =>
+  marks.find(mark => mark.type.name === discussionMeta.name)
+const isCommentedNodeExist = (nodes: CommentedNode[], markId: string): boolean =>
+  nodes.some(node => node.markId === markId)
 
 export function useCommentedNodes(): [CommentedNode[]] {
   const { editor } = useContext(EditorContext)
@@ -20,19 +23,20 @@ export function useCommentedNodes(): [CommentedNode[]] {
   useEffect(() => {
     const getCommentedNodes = debounce(() => {
       const newCommentedNodes: CommentedNode[] = []
-      editor?.state.doc.descendants((node, pos) => {
+      editor?.state.doc.descendants((node, position) => {
         const discussionMark = findDiscussionMark(node.marks)
         if (!discussionMark) return
         if (isCommentedNodeExist(newCommentedNodes, discussionMark.attrs.markId)) return
 
-        let domNode = editor.view.nodeDOM(pos)
+        let domNode = editor.view.nodeDOM(position)
         if (domNode?.nodeType === Node.TEXT_NODE) domNode = domNode.parentElement
         if (!domNode) return
 
         newCommentedNodes.push({
           node,
           domNode,
-          markId: discussionMark.attrs.markId
+          markId: discussionMark.attrs.markId,
+          position
         })
       })
       setCommentedNodes(newCommentedNodes)
