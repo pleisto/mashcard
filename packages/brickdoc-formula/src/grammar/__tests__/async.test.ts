@@ -1,6 +1,6 @@
 import { interpret, parse } from '../core'
 import { FormulaContext } from '../../context'
-import { VariableMetadata, VariableValue } from '../../types'
+import { VariableMetadata } from '../../types'
 import { quickInsert } from '../testHelper'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
@@ -51,12 +51,11 @@ describe('async', () => {
     expect(parseResult.errorMessages).toEqual([])
     expect(parseResult.success).toBe(true)
 
-    const newVariable = interpret({ ctx: newCtx, parseResult })
-    expect(newVariable.t.task.async).toBe(true)
+    const newVariable = await interpret({ ctx: newCtx, parseResult })
+    expect(newVariable.t.task.async).toBe(async)
 
-    await (newVariable.t.task.variableValue as Promise<VariableValue>).then(result => {
-      expect(result.result.result).toEqual(output)
-    })
+    const result = await newVariable.t.task.variableValue
+    expect(result.result.result).toEqual(output)
 
     jest.clearAllTimers()
   })

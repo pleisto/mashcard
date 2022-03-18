@@ -18,6 +18,7 @@ const ERROR_CLAUSE: BaseFunctionClause<'Error'> = {
   name: 'ERROR',
   async: false,
   pure: true,
+  persist: true,
   lazy: false,
   acceptError: false,
   effect: false,
@@ -36,6 +37,7 @@ const IFERROR_CLAUSE: BaseFunctionClause<any> = {
   async: false,
   pure: true,
   lazy: false,
+  persist: true,
   acceptError: true,
   effect: false,
   examples: [

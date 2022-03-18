@@ -14,10 +14,9 @@ import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
 import { validate as isValidUUID } from 'uuid'
 import { appendFormulas, FormulaContext, FormulaName } from '@brickdoc/formula'
-import { useFormulaQuery } from './hooks'
-import { useFormulaBackendActions } from './hooks/useFormulaBackendActions'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import * as Root from './DocumentContentPage.style'
+import { useFormulaActions } from './hooks/useFormulaActions'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -130,20 +129,21 @@ export const DocumentContentPage: React.FC = () => {
     }
   }, [data, docid, host, isAnonymous, loading, personalDomain, loginDomain, snapshotVersion, state, t, domain])
 
-  const getFormulas = useFormulaQuery()
-  const backendActions = useFormulaBackendActions()
+  const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
   React.useEffect(() => {
     const formulaNames: FormulaName[] = []
+    const functionClauses = generateFormulaFunctionClauses(docMeta)
     const formulaContext = new FormulaContext({
       domain: loginDomain,
-      backendActions,
+      backendActions: { commit: commitFormula },
       formulaNames,
+      functionClauses,
       features: featureFlags
     })
-    void getFormulas(domain).then(({ data, success }) => {
+    void queryFormulas(domain).then(({ data, success }) => {
       if (!success) return
-      appendFormulas(formulaContext, data ?? [])
+      void appendFormulas(formulaContext, data ?? [])
     })
 
     FormulaContextVar(formulaContext)

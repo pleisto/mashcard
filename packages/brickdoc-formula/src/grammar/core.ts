@@ -20,7 +20,8 @@ import {
   BaseFormula,
   ErrorResult,
   VariableNameDependency,
-  FormulaType
+  FormulaType,
+  VariableTask
 } from '../types'
 import { VariableClass, castVariable } from '../context/variable'
 import { FormulaLexer } from './lexer'
@@ -39,6 +40,7 @@ export interface BaseParseResult {
   async: boolean
   pure: boolean
   effect: boolean
+  persist: boolean
   input: string
   version: number
   position: number
@@ -297,6 +299,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     valid: true,
     async: false,
     effect: false,
+    persist: true,
     pure: true,
     cst: undefined,
     input,
@@ -367,6 +370,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   returnValue.expressionType = expressionType
   returnValue.async = codeFragmentVisitor.async
   returnValue.effect = codeFragmentVisitor.effect
+  returnValue.persist = codeFragmentVisitor.persist
   returnValue.pure = codeFragmentVisitor.pure
   returnValue.kind = codeFragmentVisitor.kind
   returnValue.variableDependencies = codeFragmentVisitor.variableDependencies
@@ -586,21 +590,66 @@ export const innerInterpret = async ({
   }
 }
 
-export const interpret = ({
+const generateTask = async ({
   variable,
   ctx,
   skipExecute,
-  cachedVariableValue,
+  parseResult
+}: {
+  variable?: VariableInterface
+  skipExecute?: boolean
+  ctx: FunctionContext
+  parseResult: ParseResult
+}): Promise<VariableTask> => {
+  const result = innerInterpretFirst({ parseResult, ctx })
+  // Fail fast
+  if (result) {
+    return createVariableTask({ async: false, variableValue: result, ctx, parseResult })
+  }
+
+  if (skipExecute && variable) {
+    // SkipExecute and async
+    if (variable.t.task.async) {
+      return variable.t.task
+    }
+
+    // SkipExecute and normal
+    if (!shouldReturnEarly(variable.t.task.variableValue.result)) {
+      return variable.t.task
+    }
+  }
+
+  // TODO check isChanged
+
+  // Execute
+  // 1. Non async
+  if (!parseResult.async) {
+    const interpretResult = await innerInterpret({ parseResult, ctx })
+    return createVariableTask({ async: parseResult.async, variableValue: interpretResult, ctx, parseResult })
+  }
+
+  // 2. Async
+  return createVariableTask({
+    async: parseResult.async,
+    variableValue: innerInterpret({ parseResult, ctx }),
+    ctx,
+    parseResult
+  })
+}
+
+export const interpret = async ({
+  variable,
+  ctx,
+  skipExecute,
   isLoad,
   parseResult
 }: {
   isLoad?: boolean
   variable?: VariableInterface
-  cachedVariableValue?: VariableValue
   skipExecute?: boolean
   ctx: FunctionContext
   parseResult: ParseResult
-}): VariableInterface => {
+}): Promise<VariableInterface> => {
   const {
     valid,
     cst,
@@ -609,6 +658,7 @@ export const interpret = ({
     version,
     async,
     effect,
+    persist,
     pure,
     variableDependencies,
     variableNameDependencies,
@@ -620,7 +670,9 @@ export const interpret = ({
     formulaContext,
     meta: { name, input, namespaceId, variableId, type }
   } = ctx
-  const t: Omit<VariableData, 'task'> = {
+  const task = await generateTask({ variable, ctx, skipExecute, parseResult })
+
+  const t: VariableData = {
     namespaceId,
     variableId,
     name,
@@ -630,6 +682,7 @@ export const interpret = ({
     isAsync: async,
     isEffect: effect,
     isPure: pure,
+    isPersist: persist,
     codeFragments,
     definition: input,
     valid,
@@ -638,37 +691,11 @@ export const interpret = ({
     variableNameDependencies,
     flattenVariableDependencies,
     blockDependencies,
-    functionDependencies
+    functionDependencies,
+    task
   }
 
-  const result = innerInterpretFirst({ parseResult, ctx })
-  if (result) {
-    const task = createVariableTask({ ...t, async: false, variableValue: result })
-    return generateVariable({ formulaContext, t: { ...t, task }, variable, isLoad, skipExecute })
-  }
-
-  if (!async) {
-    if (cachedVariableValue) {
-      const task = createVariableTask({ ...t, async: false, variableValue: cachedVariableValue })
-      return generateVariable({ formulaContext, t: { ...t, task }, variable, isLoad, skipExecute })
-    }
-  }
-
-  if (skipExecute && variable) {
-    if (variable.t.task.async) {
-      return generateVariable({ formulaContext, t: { ...t, task: variable.t.task }, variable, isLoad, skipExecute })
-    }
-
-    // NOTE: Normal variable
-    if (!shouldReturnEarly(variable.t.task.variableValue.result)) {
-      return generateVariable({ formulaContext, t: { ...t, task: variable.t.task }, variable, isLoad, skipExecute })
-    }
-  }
-
-  const interpretResult = innerInterpret({ parseResult, ctx })
-  const task = createVariableTask({ ...t, async: true, variableValue: interpretResult })
-
-  return generateVariable({ formulaContext, t: { ...t, task }, variable, isLoad, skipExecute })
+  return generateVariable({ formulaContext, t, variable, isLoad, skipExecute })
 }
 
 const generateVariable = ({
@@ -704,11 +731,10 @@ const generateVariable = ({
   return newVariable
 }
 
-export const appendFormulas = (formulaContext: ContextInterface, formulas: BaseFormula[]): void => {
-  const dupFormulas = [...formulas]
-  dupFormulas.forEach(formula => {
+export const appendFormulas = async (formulaContext: ContextInterface, formulas: BaseFormula[]): Promise<void> => {
+  for (const formula of formulas) {
     const oldVariable = formulaContext.findVariableById(formula.blockId, formula.id)
-    const variable = castVariable(oldVariable, formulaContext, formula)
+    const variable = await castVariable(oldVariable, formulaContext, formula)
     variable.save()
-  })
+  }
 }

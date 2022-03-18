@@ -216,7 +216,7 @@ export const useFormula = ({
   }, [formulaId, rootId])
 
   const doCalculate = React.useCallback(
-    (skipExecute: boolean): void => {
+    async (skipExecute: boolean): Promise<void> => {
       if (!formulaContext) {
         devLog('formula no input!')
         return
@@ -243,7 +243,7 @@ export const useFormula = ({
       const parseResult = parse({ ctx })
       const { completions, expressionType, success } = parseResult
       updateDefaultName(success ? expressionType : 'any')
-      const newVariable = interpret({ parseResult, ctx, skipExecute, variable: variableRef.current })
+      const newVariable = await interpret({ parseResult, ctx, skipExecute, variable: variableRef.current })
       // console.log('parseResult', parseResult, newVariable)
 
       setCompletion({
@@ -359,7 +359,7 @@ export const useFormula = ({
       finalInput,
       finalInputAfterEqual
     })
-    doCalculate(false)
+    void doCalculate(false)
   }, [completion.activeCompletion, doCalculate, formulaId, formulaIsNormal, rootId])
 
   const isDisableSave = React.useCallback((): boolean => {
@@ -467,7 +467,7 @@ export const useFormula = ({
         position: definition.length
       }
 
-      doCalculate(false)
+      void doCalculate(false)
 
       saveFormula()
     },
@@ -587,7 +587,7 @@ export const useFormula = ({
     const listener = BrickdocEventBus.subscribe(
       FormulaCalculateTrigger,
       e => {
-        doCalculate(e.payload.skipExecute)
+        void doCalculate(e.payload.skipExecute)
       },
       {
         eventId: `${rootId},${formulaId}`,

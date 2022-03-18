@@ -26,6 +26,7 @@ export const CORE_OBJECT_CLAUSES: Array<BaseFunctionClause<any>> = [
     lazy: false,
     acceptError: true,
     effect: false,
+    persist: true,
     description: 'Returns current object',
     group: 'core',
     args: [
@@ -48,6 +49,7 @@ export const CORE_OBJECT_CLAUSES: Array<BaseFunctionClause<any>> = [
     async: false,
     pure: true,
     lazy: false,
+    persist: true,
     acceptError: true,
     effect: false,
     description: 'Returns type of current object',
@@ -74,6 +76,7 @@ export const CORE_OBJECT_CLAUSES: Array<BaseFunctionClause<any>> = [
     lazy: false,
     acceptError: true,
     effect: false,
+    persist: true,
     description: 'Returns string representation of current object',
     group: 'core',
     args: [

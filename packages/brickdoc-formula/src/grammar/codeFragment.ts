@@ -60,6 +60,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
   async: boolean = false
   pure: boolean = true
   effect: boolean = false
+  persist: boolean = true
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()
@@ -526,9 +527,12 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
         if (firstArgumentType === 'Block') {
           const blockCodeFragment = codeFragments[codeFragments.length - 2]
           const namespaceId =
+            // eslint-disable-next-line no-nested-ternary
             blockCodeFragment?.display === 'CurrentBlock'
               ? this.ctx.meta.namespaceId
-              : (blockCodeFragment?.attrs?.id as string)
+              : blockCodeFragment?.code === 'UUID'
+              ? blockCodeFragment?.value
+              : blockCodeFragment?.attrs?.id ?? ''
           const variableName = parseString(rhsImage)
           const variable = this.ctx.formulaContext.findVariableByName(namespaceId, variableName)
 
@@ -549,6 +553,9 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             }
             if (variable.t.isEffect) {
               this.effect = true
+            }
+            if (!variable.t.isPersist) {
+              this.persist = false
             }
             if (!variable.t.isPure) {
               this.pure = false
@@ -1223,6 +1230,9 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       }
       if (clause.effect) {
         this.effect = true
+      }
+      if (!clause.persist) {
+        this.persist = false
       }
       if (!clause.pure) {
         this.pure = false

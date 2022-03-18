@@ -2,47 +2,49 @@ import { appendFormulas, interpret, parse, SuccessParseResult } from '../../gram
 import { Formula, SyncVariableTask, VariableMetadata } from '../../types'
 import { FormulaContext } from '../context'
 
-describe('Context', () => {
-  const formulaContext = new FormulaContext({ domain: 'test' })
-  appendFormulas(formulaContext, [])
-  const interpretContext = { ctx: {}, arguments: [] }
+const formulaContext = new FormulaContext({ domain: 'test' })
 
-  const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
-  const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
+const interpretContext = { ctx: {}, arguments: [] }
 
-  const barVariableId = '475d9e73-e52a-42b3-8a95-477596812900'
-  const barNamespaceId = '615d7f74-dc97-4aae-8690-b6cba1072a6a'
+const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
+const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
-  const formulas: Formula[] = [
-    {
-      name: 'foo',
-      id: fooVariableId,
-      blockId: fooNamespaceId,
-      definition: '=123',
-      version: 0,
-      type: 'normal',
-      cacheValue: {
-        type: 'number',
-        result: 123
-      }
-    },
-    {
-      name: 'bar',
-      id: barVariableId,
-      blockId: barNamespaceId,
-      definition: `=ABS(120) + #${fooNamespaceId}.foo`,
-      version: 0,
-      type: 'normal',
-      cacheValue: {
-        type: 'number',
-        result: 243
-      }
+const barVariableId = '475d9e73-e52a-42b3-8a95-477596812900'
+const barNamespaceId = '615d7f74-dc97-4aae-8690-b6cba1072a6a'
+
+const formulas: Formula[] = [
+  {
+    name: 'foo',
+    id: fooVariableId,
+    blockId: fooNamespaceId,
+    definition: '=123',
+    version: 0,
+    type: 'normal',
+    cacheValue: {
+      type: 'number',
+      result: 123
     }
-  ]
+  },
+  {
+    name: 'bar',
+    id: barVariableId,
+    blockId: barNamespaceId,
+    definition: `=ABS(120) + #${fooNamespaceId}.foo`,
+    version: 0,
+    type: 'normal',
+    cacheValue: {
+      type: 'number',
+      result: 243
+    }
+  }
+]
 
-  appendFormulas(formulaContext, formulas)
+describe('Context', () => {
+  beforeAll(async () => {
+    await appendFormulas(formulaContext, formulas)
+  })
 
-  it('reset', () => {
+  it('reset', async () => {
     const reverseFunctionDependencies = formulaContext.reverseFunctionDependencies
     const reverseVariableDependencies = formulaContext.reverseVariableDependencies
 
@@ -56,7 +58,7 @@ describe('Context', () => {
     expect(formulaContext.reverseFunctionDependencies).toEqual({})
     expect(formulaContext.reverseVariableDependencies).toEqual({})
 
-    appendFormulas(formulaContext, formulas)
+    await appendFormulas(formulaContext, formulas)
 
     expect(formulaContext.reverseFunctionDependencies).toEqual(reverseFunctionDependencies)
     expect(formulaContext.reverseVariableDependencies).toEqual(reverseVariableDependencies)
@@ -81,7 +83,7 @@ describe('Context', () => {
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
 
     formulaContext.resetFormula()
-    appendFormulas(formulaContext, formulas)
+    await appendFormulas(formulaContext, formulas)
   })
 
   it('unique name check', () => {
@@ -169,7 +171,7 @@ describe('Context', () => {
       interpretContext: { ctx: {}, arguments: [] }
     }
 
-    const variable = interpret({ ctx, parseResult })
+    const variable = await interpret({ ctx, parseResult })
 
     formulaContext.commitVariable({ variable })
 
@@ -191,7 +193,7 @@ describe('Context', () => {
     expect(formulaContext.variableCount()).toEqual(3)
 
     formulaContext.resetFormula()
-    appendFormulas(formulaContext, formulas)
+    await appendFormulas(formulaContext, formulas)
     jest.clearAllTimers()
   })
 })

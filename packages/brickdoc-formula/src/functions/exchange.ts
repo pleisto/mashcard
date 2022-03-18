@@ -18,6 +18,7 @@ export const CORE_EXCHANGE_CLAUSES: Array<BaseFunctionClause<'Record'>> = [
     async: true,
     pure: false,
     lazy: false,
+    persist: true,
     acceptError: false,
     effect: true,
     examples: [{ input: '=EXCHANGE(10)', output: { type: 'Record', subType: 'any', result: {} } }],

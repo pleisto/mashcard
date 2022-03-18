@@ -163,7 +163,7 @@ describe('Dependency', () => {
       interpretContext: { ctx: {}, arguments: [] }
     }
 
-    const variable = interpret({ ctx, parseResult })
+    const variable = await interpret({ ctx, parseResult })
     formulaContext.commitVariable({ variable })
 
     await new Promise(resolve => setTimeout(resolve, 50))

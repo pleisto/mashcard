@@ -26,8 +26,8 @@ import styles from './styles.module.less'
 import { DocMeta } from '@/docs/pages/DocumentContentPage'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
-import { useFormulaQuery } from '@/docs/pages/hooks'
 import { appendFormulas } from '@brickdoc/formula'
+import { useFormulaActions } from '@/docs/pages/hooks/useFormulaActions'
 
 type UUID = Scalars['UUID']
 
@@ -142,7 +142,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     setPopoverVisible(false)
   }
 
-  const getFormulas = useFormulaQuery()
+  const { queryFormulas } = useFormulaActions()
 
   const doDuplicate = async (): Promise<void> => {
     const input = { id: pageId }
@@ -150,9 +150,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({
     const formulaIds = data?.blockDuplicate?.formulaIds ?? []
 
     if (formulaContext && formulaIds.length) {
-      void getFormulas(domain, formulaIds.join(',')).then(({ data, success }) => {
+      void queryFormulas(domain, formulaIds.join(',')).then(({ data, success }) => {
         if (!success) return
-        appendFormulas(formulaContext, data ?? [])
+        void appendFormulas(formulaContext, data ?? [])
       })
     }
 

@@ -13,27 +13,6 @@ import { truncateArray, truncateString } from '../grammar'
 
 const VARIABLE_VERSION = 0
 
-export const dumpDisplayResultForPersist = async (t: VariableData): Promise<VariableDisplayData> => {
-  const value = t.task.async ? await t.task.variableValue : t.task.variableValue
-
-  return {
-    definition: t.definition,
-    result: dumpValue(value.result) as AnyTypeResult,
-    type: t.type,
-    kind: t.kind,
-    version: VARIABLE_VERSION,
-    display: displayValue(fetchResult(t), ''),
-    meta: {
-      namespaceId: t.namespaceId,
-      variableId: t.variableId,
-      name: t.name,
-      position: 0,
-      input: t.definition,
-      type: t.type
-    }
-  }
-}
-
 export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayData => {
   return {
     definition: t.definition,
@@ -115,7 +94,11 @@ export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableD
   return { ...displayResult, result: loadValue(ctx, displayResult.result) as any }
 }
 
-export const dumpValue = (result: BaseResult): BaseResult => {
+export const dumpValue = (result: BaseResult, t: VariableData): BaseResult => {
+  if (!t.isPersist) {
+    return { type: 'NoPersist', result: null }
+  }
+
   if (
     result.result instanceof ColumnClass ||
     result.result instanceof BlockClass ||

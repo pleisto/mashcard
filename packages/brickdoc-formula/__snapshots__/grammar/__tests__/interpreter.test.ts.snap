@@ -138,6 +138,7 @@ Array [
     "key": "custom::PLUS",
     "lazy": false,
     "name": "PLUS",
+    "persist": true,
     "pure": true,
     "reference": [Function],
     "returns": "number",

@@ -66,6 +66,7 @@ export const FormulaValue: React.FC<FormulaValueProps> = ({
         </span>
       )
       break
+    case 'Waiting':
     case 'Pending':
       data = (
         <span className={cx(formulaStyle(), 'brickdoc-formula-pending')}>

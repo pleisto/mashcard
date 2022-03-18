@@ -149,6 +149,7 @@ Object {
         "key": "ABS",
         "lazy": false,
         "name": "ABS",
+        "persist": true,
         "pure": true,
         "reference": [Function],
         "returns": "number",

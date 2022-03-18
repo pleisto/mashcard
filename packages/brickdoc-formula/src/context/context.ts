@@ -73,7 +73,7 @@ type ContextState = any
 
 const matchRegex =
   // eslint-disable-next-line max-len
-  /(str|num|bool|record|blank|cst|array|null|void|date|predicate|reference|spreadsheet|pending|function|column|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
+  /(str|num|bool|record|blank|cst|array|null|date|predicate|reference|spreadsheet|function|column|button|switch|select|slider|input|radio|rate|error|block|var)([0-9]+)$/
 export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName> = {
   string: 'str',
   number: 'num',
@@ -90,6 +90,8 @@ export const FormulaTypeCastName: Record<FormulaType, SpecialDefaultVariableName
   Button: 'button',
   Predicate: 'predicate',
   Pending: 'pending',
+  Waiting: 'waiting',
+  NoPersist: 'noPersist',
   Function: 'function',
   Reference: 'reference',
   null: 'null',
@@ -148,6 +150,8 @@ export class FormulaContext implements ContextInterface {
     Column: {},
     Block: {},
     Pending: {},
+    Waiting: {},
+    NoPersist: {},
     any: {}
   }
 
@@ -450,7 +454,7 @@ export class FormulaContext implements ContextInterface {
       }
     })
     if (commitFormulas.length > 0 || deleteFormulas.length > 0) {
-      // console.log('commit dirty', commitFormulas, deleteFormulas)
+      // console.log('commit dirty', commitFormulas, deleteFormulas, this.backendActions)
       await this.backendActions?.commit(commitFormulas, deleteFormulas)
     }
     this.dirtyFormulas = {}

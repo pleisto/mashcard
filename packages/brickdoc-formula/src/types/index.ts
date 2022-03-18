@@ -18,7 +18,15 @@ type FormulaObjectType =
 
 export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Radio' | 'Rate' | 'Slider'
 
-export type FormulaType = FormulaBasicType | FormulaObjectType | FormulaControlType | 'any' | 'void' | 'Pending'
+export type FormulaType =
+  | FormulaBasicType
+  | FormulaObjectType
+  | FormulaControlType
+  | 'any'
+  | 'void'
+  | 'Pending'
+  | 'Waiting'
+  | 'NoPersist'
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
@@ -55,6 +63,8 @@ export type SpecialDefaultVariableName =
   | 'rate'
   | 'slider'
   | 'pending'
+  | 'waiting'
+  | 'noPersist'
 
 export type FunctionGroup = 'core' | 'custom' | string
 
@@ -249,6 +259,16 @@ export interface PendingResult extends BaseResult {
   type: 'Pending'
 }
 
+export interface WaitingResult extends BaseResult {
+  result: string
+  type: 'Waiting'
+}
+
+export interface NoPersistResult extends BaseResult {
+  result: null
+  type: 'NoPersist'
+}
+
 export interface AnyResult extends BaseResult {
   result: any
   type: 'any'
@@ -293,6 +313,8 @@ export type AnyTypeResult =
   | CstResult
   | ReferenceResult
   | PendingResult
+  | WaitingResult
+  | NoPersistResult
 
 export type AnyFunctionResult<T> = (AnyTypeResult & { type: T }) | ErrorResult
 
@@ -330,7 +352,7 @@ export interface Argument {
 }
 
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
-export type ComplexCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block'
+export type ComplexCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block' | 'UUID'
 export type SimpleCodeFragmentType =
   | 'FunctionName'
   | 'Function'
@@ -519,6 +541,7 @@ export type BaseFunctionClause<T extends FormulaType> = {
   readonly name: FunctionNameType
   readonly pure: boolean
   readonly effect: boolean
+  readonly persist: boolean
   readonly feature?: Feature
   readonly lazy: boolean
   readonly acceptError: boolean
@@ -638,6 +661,7 @@ export interface VariableData {
   isAsync: boolean
   isEffect: boolean
   isPure: boolean
+  isPersist: boolean
   task: VariableTask
   kind: VariableKind
   type: FormulaSourceType

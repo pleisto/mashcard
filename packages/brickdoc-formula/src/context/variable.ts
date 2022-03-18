@@ -57,17 +57,18 @@ export const fetchResult = ({ task }: VariableData): AnyTypeResult => {
   return task.variableValue.result
 }
 
-export const castVariable = (
+export const castVariable = async (
   oldVariable: VariableInterface | undefined,
   formulaContext: ContextInterface,
   { name, definition, cacheValue, version, blockId, id, type: unknownType }: BaseFormula
-): VariableInterface => {
+): Promise<VariableInterface> => {
   const type = unknownType as FormulaSourceType
   const meta: VariableMetadata = { namespaceId: blockId, variableId: id, name, input: definition, position: 0, type }
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
   const parseResult = parse({ ctx })
 
-  return interpret({ variable: oldVariable, isLoad: true, ctx, parseResult })
+  const variable = await interpret({ variable: oldVariable, isLoad: true, ctx, parseResult })
+  return variable
 }
 
 export class VariableClass implements VariableInterface {
@@ -276,11 +277,11 @@ export class VariableClass implements VariableInterface {
       name: this.t.name,
       version: this.t.version,
       type: this.t.type,
-      cacheValue: dumpValue(fetchResult(this.t))
+      cacheValue: dumpValue(fetchResult(this.t), this.t)
     }
   }
 
-  private maybeReparseAndPersist(sourceUuid: string): void {
+  private async maybeReparseAndPersist(sourceUuid: string): Promise<void> {
     if (this.currentUUID === sourceUuid) {
       return
     }
@@ -288,7 +289,7 @@ export class VariableClass implements VariableInterface {
 
     const formula = this.buildFormula()
     this.clearDependency()
-    castVariable(this, this.formulaContext, formula)
+    await castVariable(this, this.formulaContext, formula)
     this.trackDependency()
     this.currentUUID = undefined
     if (this.savedT?.task.async === false) {
@@ -298,7 +299,7 @@ export class VariableClass implements VariableInterface {
 
   public updateDefinition(definition: Definition): void {
     this.t.definition = definition
-    this.maybeReparseAndPersist(uuid())
+    void this.maybeReparseAndPersist(uuid())
   }
 
   private subscripeEvents(): void {

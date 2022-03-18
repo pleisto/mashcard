@@ -11,6 +11,7 @@ export const CORE_PROCESS_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     async: true,
     pure: false,
     lazy: false,
+    persist: true,
     acceptError: false,
     effect: false,
     examples: [{ input: '=SLEEP(10)', output: { type: 'number', result: 10 } }],

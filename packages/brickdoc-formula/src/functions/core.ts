@@ -25,6 +25,7 @@ export const CORE_CORE_CLAUSES: Array<BaseFunctionClause<'Function'>> = [
     async: false,
     pure: false,
     lazy: true,
+    persist: true,
     acceptError: false,
     effect: false,
     examples: [{ input: '=Set(A, A+1)', output: null }],
