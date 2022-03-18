@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MentionMenuUserGroup matches correct snapshot 1`] = `
+<ul
+  aria-orientation="vertical"
+  class="brd-c-bOsLjs brd-c-bOsLjs-lozdyt-theme-default brd-c-bOsLjs-iTKOFX-orientation-vertical"
+  id="user-group"
+  role="menubar"
+>
+  <ul
+    class="brd-c-jpGEAj brd-c-PJLV"
+    label="[object Object]"
+    role="group"
+    title="mention.people.head"
+  >
+    <span
+      aria-label="mention.people.head"
+      class="brd-c-kubJPX"
+    >
+      <span
+        class="brd-c-emmNGU"
+      >
+        mention.people.head
+      </span>
+    </span>
+    <div
+      class="brd-c-llTUqV"
+    >
+      <li
+        class="brd-c-cpzHyL brd-c-klLbby"
+        id="user-group-1"
+        role="menuitem"
+        tabindex="0"
+        title=""
+      >
+        <span
+          class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-iOOMir-css"
+        >
+          <img
+            src="avatar 0"
+          />
+        </span>
+        <span
+          class="brd-c-jlNfug"
+        >
+          name 0
+        </span>
+      </li>
+      <li
+        class="brd-c-cpzHyL brd-c-klLbby"
+        id="user-group-2"
+        role="menuitem"
+        tabindex="-1"
+        title=""
+      >
+        <span
+          class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-ieOMneJ-css"
+        >
+          <img
+            src="avatar 1"
+          />
+        </span>
+        <span
+          class="brd-c-jlNfug"
+        >
+          name 1
+        </span>
+      </li>
+      <li
+        class="brd-c-cpzHyL brd-c-klLbby"
+        id="user-group-3"
+        role="menuitem"
+        tabindex="-1"
+        title=""
+      >
+        <span
+          class="brd-c-cdJFWN brd-c-cdJFWN-hECRKn-shape-circle brd-c-cdJFWN-kRzPmM-size-md brd-c-cdJFWN-iliJASM-css"
+        >
+          <img
+            src="avatar 2"
+          />
+        </span>
+        <span
+          class="brd-c-jlNfug"
+        >
+          name 2
+        </span>
+      </li>
+    </div>
+  </ul>
+</ul>
+`;

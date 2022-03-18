@@ -3,19 +3,19 @@ import { MentionCommandsMenu, MentionCommandsMenuProps } from '../MentionMenu'
 
 describe('MentionMenu', () => {
   const items: MentionCommandsMenuProps['items'] = {
-    page: [{ icon: 'icon', name: 'page name', command: () => {} }],
-    people: [{ avatar: 'avatar', name: 'people name', domain: 'domain', command: () => {} }]
+    pages: [{ icon: 'icon', name: 'page name', command: () => {} }],
+    users: [{ avatar: 'avatar', name: 'people name', domain: 'domain', command: () => {} }]
   }
   const props: any = { items }
 
   it('matches correct snapshot', () => {
-    const { container } = render(<MentionCommandsMenu {...props} />)
+    const { container } = render(<MentionCommandsMenu {...props} baseId="mention" />)
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders menu normally', () => {
     render(<MentionCommandsMenu {...props} />)
-    expect(screen.getByRole('menu')).toBeInTheDocument()
+    expect(screen.getByRole('menubar')).toBeInTheDocument()
   })
 
   it('renders nothing if there are no matched items', () => {
@@ -23,8 +23,8 @@ describe('MentionMenu', () => {
       <MentionCommandsMenu
         {...props}
         items={{
-          page: [],
-          people: []
+          users: [],
+          pages: []
         }}
       />
     )

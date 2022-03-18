@@ -1,5 +1,5 @@
 const INDEX_CACHE = new Map<string, number>()
-export const useId = (defaultId?: string) => {
+export const useId = (defaultId?: string): string => {
   const testName = expect.getState().currentTestName
   const testId = testName.toLowerCase().replace(/\s/g, '-')
   const index = (INDEX_CACHE.get(testId) ?? -1) + 1

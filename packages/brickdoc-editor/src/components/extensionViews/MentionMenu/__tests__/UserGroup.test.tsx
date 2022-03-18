@@ -1,8 +1,9 @@
+import { Menu } from '@brickdoc/design-system'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { PeoplePanel, PeoplePanelProps } from '../PeoplePanel'
+import { UserGroup, UserGroupProps } from '../UserGroup'
 
-describe('MentionMenuPeoplePanel', () => {
-  const items: PeoplePanelProps['items'] = [
+describe('MentionMenuUserGroup', () => {
+  const items: UserGroupProps['items'] = [
     {
       name: 'name 0',
       avatar: 'avatar 0',
@@ -28,28 +29,24 @@ describe('MentionMenuPeoplePanel', () => {
   }
 
   it('matches correct snapshot', () => {
-    const { container } = render(<PeoplePanel {...props} />)
+    const { container } = render(
+      <Menu baseId="user-group">
+        <UserGroup {...props} />
+      </Menu>
+    )
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders page items normally', () => {
-    render(<PeoplePanel {...props} />)
+    render(<UserGroup {...props} />)
     expect(screen.getAllByRole('menuitem')).toHaveLength(items.length)
-  })
-
-  it('renders active item correspond to active index', () => {
-    const activeIndex = 1
-    render(<PeoplePanel {...props} active={true} activeIndex={activeIndex} />)
-    const items = screen.getAllByRole('menuitem')
-
-    expect(items[activeIndex]).toHaveClass('active')
   })
 
   it('handles item onSelect correctly', () => {
     const editor: any = {}
     const range = { from: 1, to: 2 }
 
-    render(<PeoplePanel {...props} editor={editor} range={range} />)
+    render(<UserGroup {...props} editor={editor} range={range} />)
 
     const menuItems = screen.getAllByRole('menuitem')
 

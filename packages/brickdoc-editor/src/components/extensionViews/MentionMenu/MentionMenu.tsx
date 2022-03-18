@@ -1,45 +1,63 @@
 import * as React from 'react'
 import { SuggestionProps } from '@tiptap/suggestion'
-import { PeopleItem, PeoplePanel } from './PeoplePanel/PeoplePanel'
-import { PageItem, PagePanel } from './PagePanel/PagePanel'
+import { UserGroup, UserItem } from './UserGroup'
+import { Menu, styled } from '@brickdoc/design-system'
+import { PageGroup, PageItem } from './PageGroup'
 
 export interface MentionCommandsMenuProps extends Omit<SuggestionProps, 'items'> {
-  activeCategory: 'people' | 'page'
+  activeCategory: 'users' | 'pages'
   activeIndex: number
+  baseId?: string
   items: {
-    people: PeopleItem[]
-    page: PageItem[]
+    users: UserItem[]
+    pages: PageItem[]
   }
+  size?: 'sm' | 'md'
 }
+
+const MentionMenu = styled(Menu, {
+  width: '22rem',
+  variants: {
+    size: {
+      md: {
+        width: '22rem'
+      },
+      sm: {
+        width: '15.5rem'
+      }
+    }
+  }
+})
 
 export const MentionCommandsMenu: React.FC<MentionCommandsMenuProps> = ({
   editor,
   range,
   items,
-  activeCategory = 'people',
+  baseId,
+  size = 'md',
+  activeCategory = 'users',
   activeIndex = 0
 }) => {
-  if (items.page.length === 0 && items.people.length === 0) {
+  if (items.pages.length === 0 && items.users.length === 0) {
     return null
   }
 
   return (
-    <div role="menu" className="brickdoc-mention-menu">
-      <PeoplePanel
-        active={activeCategory === 'people'}
+    <MentionMenu size={size} baseId={baseId}>
+      <UserGroup
+        active={activeCategory === 'users'}
         activeIndex={activeIndex}
         editor={editor}
         range={range}
-        items={items.people}
+        items={items.users}
       />
-      <div className="mention-menu-divider" />
-      <PagePanel
-        active={activeCategory === 'page'}
+      <PageGroup
+        active={activeCategory === 'pages'}
         activeIndex={activeIndex}
         editor={editor}
         range={range}
-        items={items.page}
+        items={items.pages}
       />
-    </div>
+    </MentionMenu>
   )
 }

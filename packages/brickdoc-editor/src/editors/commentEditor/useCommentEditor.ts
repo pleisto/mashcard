@@ -12,7 +12,8 @@ export function useCommentEditor(defaultContent?: Content): Editor | null {
         commandHelper: true,
         document: true,
         mentionCommands: {
-          externalProps
+          externalProps,
+          size: 'sm'
         },
         pageLink: {
           size: 'sm'

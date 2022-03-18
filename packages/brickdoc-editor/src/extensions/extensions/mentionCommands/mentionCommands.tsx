@@ -5,8 +5,8 @@ import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'
 import { MentionCommandsMenu, MentionCommandsMenuProps } from '../../../components/extensionViews'
-import { PageItem } from '../../../components/extensionViews/MentionMenu/PagePanel'
-import { PeopleItem } from '../../../components/extensionViews/MentionMenu/PeoplePanel'
+import { UserItem } from '../../../components/extensionViews/MentionMenu/UserGroup'
+import { PageItem } from '../../../components/extensionViews/MentionMenu/PageGroup'
 import { meta } from './meta'
 import { createExtension } from '../../common'
 import { ExternalProps } from '../../../context'
@@ -14,12 +14,13 @@ import { ExternalProps } from '../../../context'
 const TRIGGER_CHAR = '@'
 
 interface MenuItems {
-  people: PeopleItem[]
-  page: PageItem[]
+  users: UserItem[]
+  pages: PageItem[]
 }
 
 export interface MentionCommandsOptions {
   externalProps: ExternalProps
+  size?: 'sm' | 'md'
 }
 
 export interface MentionCommandsAttributes {}
@@ -39,7 +40,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
         return pagePath(parent.parentId, [parent.title ?? 'Untitled', ...path])
       }
       return {
-        people:
+        users:
           this.options.externalProps.spaceMembers
             .filter(item => (item.name ?? '').toLowerCase().includes(searchValue))
             .map(item => ({
@@ -51,7 +52,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
               }
             }))
             .slice(0, 5) ?? [],
-        page:
+        pages:
           pages
             .filter(item => {
               if (searchValue) return (item.title ?? '').toLowerCase().includes(searchValue)
@@ -87,7 +88,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
         render: () => {
           let reactRenderer: ReactRenderer
           let popup: PopupInstance
-          let activeCategory: MentionCommandsMenuProps['activeCategory'] = 'people'
+          let activeCategory: MentionCommandsMenuProps['activeCategory'] = 'users'
           let activeIndex = 0
 
           const handleIndexChange = (category: MentionCommandsMenuProps['activeCategory'], index: number): void => {
@@ -104,7 +105,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
               if (!this.editor.isEditable) return
 
               reactRenderer = new ReactRenderer(MentionCommandsMenu as any, {
-                props,
+                props: { ...props, size: this.options.size },
                 editor: props.editor as ReactEditor
               })
 
@@ -125,18 +126,19 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
               const key = event.key
               const moving = (category: MentionCommandsMenuProps['activeCategory'], index: number): void => {
                 handleIndexChange(category, index)
-                reactRenderer?.element
-                  ?.getElementsByClassName(`mention-menu-${category}`)
+                ;(reactRenderer?.element as HTMLElement)
+                  .querySelectorAll("ul[role='group']")
+                  [category === 'users' ? 0 : 1].querySelectorAll("li[role='menuitem']")
                   [index]?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
               }
 
-              if (activeCategory === 'people') {
+              if (activeCategory === 'users') {
                 if (key === 'ArrowUp') {
                   return true
                 }
 
                 if (key === 'ArrowDown') {
-                  moving('page', 0)
+                  moving('pages', 0)
                   return true
                 }
 
@@ -154,10 +156,10 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
                 }
               }
 
-              if (activeCategory === 'page') {
+              if (activeCategory === 'pages') {
                 if (key === 'ArrowUp') {
                   if (activeIndex === 0) {
-                    moving('people', 0)
+                    moving('users', 0)
                   } else {
                     moving(activeCategory, Math.max(activeIndex - 1, 0))
                   }
@@ -175,7 +177,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
 
               if (key === 'Enter') {
                 reactRenderer?.props.command(reactRenderer.props.items[activeCategory][activeIndex])
-                handleIndexChange('people', 0)
+                handleIndexChange('users', 0)
                 return true
               }
 

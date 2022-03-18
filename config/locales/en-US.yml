@@ -897,11 +897,11 @@ en-US:
       untitled: Untitled
     mention:
       people:
-        head: PEOPLE
-        no_content: PEOPLE NO RESULT
+        head: People
+        no_content: People no result
       page_link:
-        head: LINK TO PAGE
-        no_content: PAGE NO RESULT
+        head: Link to page
+        no_content: Page no result
     spreadsheet:
       delete: Delete
       copy: Copy

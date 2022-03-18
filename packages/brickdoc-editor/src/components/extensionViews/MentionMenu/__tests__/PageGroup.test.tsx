@@ -1,8 +1,9 @@
+import { Menu } from '@brickdoc/design-system'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { PagePanel, PagePanelProps } from '../PagePanel'
+import { PageGroup, PageGroupProps } from '../PageGroup'
 
-describe('MentionMenuPagePanel', () => {
-  const items: PagePanelProps['items'] = [
+describe('MentionMenuPageGroup', () => {
+  const items: PageGroupProps['items'] = [
     {
       name: 'page name 0',
       icon: 'icon 0',
@@ -25,28 +26,24 @@ describe('MentionMenuPagePanel', () => {
   }
 
   it('matches correct snapshot', () => {
-    const { container } = render(<PagePanel {...props} />)
+    const { container } = render(
+      <Menu baseId="page-group">
+        <PageGroup {...props} />
+      </Menu>
+    )
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders page items normally', () => {
-    render(<PagePanel {...props} />)
+    render(<PageGroup {...props} />)
     expect(screen.getAllByRole('menuitem')).toHaveLength(items.length)
-  })
-
-  it('renders active item correspond to active index', () => {
-    const activeIndex = 1
-    render(<PagePanel {...props} active={true} activeIndex={activeIndex} />)
-    const items = screen.getAllByRole('menuitem')
-
-    expect(items[activeIndex]).toHaveClass('active')
   })
 
   it('handles item onSelect correctly', () => {
     const editor: any = {}
     const range = { from: 1, to: 2 }
 
-    render(<PagePanel {...props} editor={editor} range={range} />)
+    render(<PageGroup {...props} editor={editor} range={range} />)
 
     const menuItems = screen.getAllByRole('menuitem')
 
