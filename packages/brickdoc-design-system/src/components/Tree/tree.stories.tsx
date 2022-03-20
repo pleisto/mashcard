@@ -1,51 +1,44 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import { styled } from '../../themes'
-import { TreeNode, Tree } from '.'
+import { type TreeNode, Tree } from '.'
+import { NodeMovement } from './constants'
 
 const demoData: TreeNode[] = [
   {
     id: 'sun',
-    value: 'sun',
     text: 'Sun',
     icon: '🔆',
     isExpanded: true,
     children: [
       {
         id: 'mercury',
-        value: 'mercury',
         text: 'Mercury'
       },
       {
         id: 'venus',
-        value: 'venus',
         text: 'Venus'
       },
       {
         id: 'earth',
-        value: 'earth',
         text: 'Earth',
         children: [
           {
             id: 'moon',
-            value: 'moon',
             text: 'The Moon'
           }
         ]
       },
       {
         id: 'mars',
-        value: 'mars',
         text: 'Mars',
         children: [
           {
             id: 'deimos',
-            value: 'deimos',
             text: 'Deimos'
           },
           {
             id: 'phobos',
-            value: 'phobos',
             text: 'Phobos'
           }
         ]
@@ -60,7 +53,7 @@ export default {
   args: {
     height: 300,
     draggable: false,
-    treeData: demoData
+    data: demoData
   },
   argTypes: {
     height: {
@@ -72,7 +65,7 @@ If not specified, it'll fit automatically with a maximum value.`
     expandOnSelect: { control: 'boolean', description: `Whether to expand a node when it's selected by user.` },
     initialSelectedId: {
       control: 'text',
-      description: `If specified, the node with the given value will be selected on load.`
+      description: `If specified, the node with the given id will be selected on load.`
     },
     draggable: {
       control: 'boolean',
@@ -95,7 +88,13 @@ If not specified, it'll render plain text.`,
     docs: {
       description: {
         component: `
-## Todo: Component description
+A tree-structured list view.
+
+#### When To Use
+
+- To represents a hierarchical data structure.
+- To allow user to expand and collapse nodes.
+- To allow user to rearrange the hierarchcal nodes by dragging and dropping.
 `
       },
       design: {
@@ -140,4 +139,15 @@ const StyledNode = styled('div', {
 export const RenderCustomNode = Template.bind({})
 RenderCustomNode.args = {
   renderNode
+}
+export const SortByDragging: FC = () => {
+  const onDrop = (movement: NodeMovement): void => {
+    console.log('onDrop', movement)
+  }
+  return (
+    <>
+      <p>Check the console to see the drop data.</p>
+      <Tree data={demoData} draggable onDrop={onDrop} expandAll />
+    </>
+  )
 }

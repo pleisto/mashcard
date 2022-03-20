@@ -4,13 +4,21 @@ import { ReactNode } from 'react'
  * A type that represents the data held by a tree node.
  */
 export interface TreeNode {
+  /** The identifier of the node. */
   id: string
-  value: string
+  /** The text to be displayed on the node. */
   text: string
-  parentId?: string | null | undefined
+  /** Any additional data to be stored on the node. */
+  value?: any
+  /** The parent's ID. */
+  parentId?: string | null
+  /** The ID of the node's root ancestor. */
   rootId?: string
+  /** The icon content to be rendered prior to the node's content. */
   icon?: string | null
+  /** Indicates if the node is expanded. */
   isExpanded?: boolean
+  /** The list of the node's children. */
   children?: TreeNode[]
 }
 

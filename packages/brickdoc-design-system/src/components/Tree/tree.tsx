@@ -16,12 +16,12 @@ import type { TreeNode, NodeMovement, InternalTreeNode, TreeNodeRenderer } from 
 import { Node } from './node'
 import { useMemoizedFn } from '../../hooks'
 import { useDeepMemo } from '../../hooks/useDeepMemo'
-import { joinNodeIdsByPath } from './helpers'
+import { flattenNodes, joinNodeIdsByPath } from './helpers'
 import { useUpdate } from 'ahooks'
 
 export interface TreeProps {
   height?: number
-  treeData: TreeNode[]
+  data: TreeNode[]
   initialSelectedId?: string
   className?: string
   treeNodeClassName?: string
@@ -47,7 +47,7 @@ const DEFAULT_HEIGHT = 200
 const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   {
     height,
-    treeData: nextTreeData,
+    data: nextData,
     expandAll,
     expandOnSelect,
     renderNode,
@@ -64,22 +64,18 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   // in order to optimize everything in the rendering flow corresponding
   // to the tree data.
   const redraw = useUpdate()
-  const treeData = useDeepMemo(nextTreeData, redraw)
+  const data = useDeepMemo(nextData, redraw)
 
   const listRef = useRef<ListRef>(null)
   const [expandedIds, setExpandedIds] = useState<string[]>(() => {
-    function flatten(node: TreeNode): TreeNode[] {
-      const self = [node]
-      return node.children ? node.children.reduce<TreeNode[]>((acc, child) => [...acc, ...flatten(child)], self) : self
-    }
     if (expandAll) {
-      const allNodes = treeData.reduce<TreeNode[]>((acc, node) => [...acc, ...flatten(node)], [])
+      const allNodes = flattenNodes(data)
       return allNodes.map(({ id }) => id)
     }
-    let ids = treeData.filter(node => node.isExpanded).map(node => node.id)
+    let ids = data.filter(node => node.isExpanded).map(node => node.id)
     if (initialSelectedId) {
       // The selected node is initially expanded on the component mount.
-      ids = joinNodeIdsByPath(treeData, initialSelectedId, ids)
+      ids = joinNodeIdsByPath(data, initialSelectedId, ids)
     }
     return ids
   })
@@ -106,16 +102,16 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
     }
 
     const result: InternalTreeNode[] = []
-    for (const node of treeData) {
+    for (const node of data) {
       flatten(node, 0, result)
     }
     return result
-  }, [treeData, expandedIds])
+  }, [data, expandedIds])
 
   const handleSelectNode = useMemoizedFn((node: InternalTreeNode) => {
     setSelectedId(node.id)
     if (expandOnSelect && !node.isExpanded && node.id) {
-      const nextExpandedIds = joinNodeIdsByPath(treeData, node.id, expandedIds)
+      const nextExpandedIds = joinNodeIdsByPath(data, node.id, expandedIds)
       if (!deepEqual(nextExpandedIds, expandedIds)) {
         setExpandedIds(nextExpandedIds)
       }

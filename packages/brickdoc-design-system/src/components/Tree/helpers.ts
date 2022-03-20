@@ -59,3 +59,12 @@ export function calculateRelativeSpot(pos: XYCoord | null, targetNode: HTMLEleme
   }
   return NodeRelativeSpot.AsChild
 }
+
+export function flattenNodes(nodes: TreeNode[]): TreeNode[] {
+  return nodes.reduce<TreeNode[]>((acc, node) => [...acc, ...flattenNode(node)], [])
+}
+
+export function flattenNode(node: TreeNode): TreeNode[] {
+  const self = [node]
+  return node.children ? node.children.reduce<TreeNode[]>((acc, child) => [...acc, ...flattenNode(child)], self) : self
+}

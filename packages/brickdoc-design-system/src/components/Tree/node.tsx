@@ -37,7 +37,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
   { data, className, onToggleExpansion, onSelect, nodeRenderer, selected, emptyNode, index, onMoveNode },
   _ref
 ) => {
-  const { id: nodeId, icon = '', parentId, rootId, isExpanded, hasChildren, indent } = data
+  const { id, icon = '', parentId, rootId, isExpanded, hasChildren, indent } = data
   const ref = useForwardedRef(_ref)
   const [dropSpot, setDropSpot] = useState<NodeRelativeSpot | null>(null)
 
@@ -48,10 +48,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
     onToggleExpansion(data)
   })
 
-  const hasEmptyNode = useMemo(
-    () => !parentId && rootId === nodeId && !hasChildren,
-    [parentId, rootId, nodeId, hasChildren]
-  )
+  const hasEmptyNode = useMemo(() => !parentId && rootId === id && !hasChildren, [parentId, rootId, id, hasChildren])
 
   const emptyItem = typeof emptyNode === 'string' ? <TreeRoot.EmptyNode>{emptyNode}</TreeRoot.EmptyNode> : emptyNode
 
@@ -59,7 +56,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
 
   const [{ isDragging }, drag] = useDrag({
     type: DND_NODE_TYPE,
-    item: { nodeId, index },
+    item: { id, index },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging()
     })
@@ -104,12 +101,12 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
       const dropSpot = calculateRelativeSpot(monitor.getClientOffset(), ref.current)
 
       // Time to actually perform the action
-      if (dropSpot) {
+      if (dropSpot !== null) {
         onMoveNode?.({
           sourceIndex: dragIndex,
           sourceId: item.id,
           targetIndex: hoverIndex,
-          targetId: nodeId,
+          targetId: id,
           targetSpot: dropSpot
         })
       }

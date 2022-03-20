@@ -1,19 +1,19 @@
 import { NodeRelativeSpot, type TreeNode } from '../constants'
-import { calculateRelativeSpot, joinNodeIdsByPath } from '../helpers'
+import { calculateRelativeSpot, flattenNodes, joinNodeIdsByPath } from '../helpers'
+
+const tree: TreeNode[] = [
+  { id: 'a', text: 'a' },
+  {
+    id: 'b',
+    text: 'b',
+    children: [
+      { id: 'b.1', text: 'b.1' },
+      { id: 'b.2', text: 'b.2' }
+    ]
+  }
+]
 
 describe('joinNodeIdsByPath', () => {
-  const tree: TreeNode[] = [
-    { id: 'a', value: 'a', text: 'a' },
-    {
-      id: 'b',
-      value: 'b',
-      text: 'b',
-      children: [
-        { id: 'b.1', value: 'b.1', text: 'b.1' },
-        { id: 'b.2', value: 'b.2', text: 'b.2' }
-      ]
-    }
-  ]
   describe('for top-level nodes', () => {
     it(`should add a top-level node id to an empty list`, () => {
       const list = joinNodeIdsByPath(tree, 'a', [])
@@ -94,5 +94,21 @@ describe('calculateRelativeSpot', () => {
     expect(pos).toBeNull()
     pos = calculateRelativeSpot({ x: 0, y: 0 }, null)
     expect(pos).toBeNull()
+  })
+})
+
+describe('flattenNodes', () => {
+  it('should flatten a tree by the depth-first order', () => {
+    expect(flattenNodes(tree).map(node => node.id)).toEqual(['a', 'b', 'b.1', 'b.2'])
+  })
+  it('should do nothing on a empty tree', () => {
+    expect(flattenNodes([])).toEqual([])
+  })
+  it('should return a flattend tree as-is', () => {
+    const t: TreeNode[] = [
+      { id: '1', text: '1' },
+      { id: '2', text: '2' }
+    ]
+    expect(flattenNodes(t)).toEqual(t)
   })
 })
