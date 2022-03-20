@@ -35,6 +35,11 @@
       margin-bottom: 0;
     }
 
+    > .ProseMirror-gapcursor + * {
+      margin-top: 0;
+      animation: ProseMirror-cursor-blink 1.1s steps(start, 2) infinite;
+    }
+
     color: @font-color;
 
     .baseText {

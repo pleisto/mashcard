@@ -177,7 +177,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   const [rowLayoutHeights, setRowLayoutHeights] = React.useState<{ [rowId: string]: number }>({})
 
   return (
-    <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions} onClick={onSpreadsheetClick}>
+    <BlockContainer deleteNode={deleteNode} actionOptions={actionOptions} onMouseDown={onSpreadsheetClick}>
       {documentEditable ? (
         <Input
           bordered={false}
