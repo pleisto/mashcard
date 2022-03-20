@@ -44,7 +44,8 @@ export const HeadingView: React.FC<HeadingViewProps> = ({ node, deleteNode, getP
       actionButtonClassName={actionButtonClassName}
       getPos={getPos}
       deleteNode={deleteNode}
-      contentForCopy={node.textContent}>
+      contentForCopy={node.textContent}
+    >
       <NodeViewContent as={as} />
     </BlockContainer>
   )

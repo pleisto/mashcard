@@ -31,7 +31,8 @@ export const ParagraphView: React.FC<ParagraphViewProps> = props => {
       deleteNode={deleteNode}
       contentForCopy={node.textContent}
       style={{ position: 'relative' }}
-      actionOptions={['copy', 'delete', 'transform']}>
+      actionOptions={['copy', 'delete', 'transform']}
+    >
       <NodeViewContent draggable={false} data-placeholder={placeholder} as="p" className={placeholderClassName} />
     </BlockContainer>
   )

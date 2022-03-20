@@ -1889,6 +1889,7 @@ __metadata:
     ahooks: ^3.1.13
     babel-loader: ^8.2.3
     classnames: ^2.3.1
+    fast-deep-equal: ^3.1.3
     framer-motion: ^6.2.8
     i18next: ^21.6.14
     polished: ^4.1.4

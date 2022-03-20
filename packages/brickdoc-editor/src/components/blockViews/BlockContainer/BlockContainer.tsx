@@ -97,7 +97,8 @@ export const BlockContainer: React.FC<BlockContainerProps> = React.forwardRef<HT
           }
 
           innerRef.current = container
-        }}>
+        }}
+      >
         <BlockContext.Provider value={blockContextData}>{blockElement}</BlockContext.Provider>
       </NodeViewWrapper>
     )

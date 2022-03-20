@@ -33,7 +33,8 @@ export const AttachmentMode: React.FC<AttachmentModeProps> = ({
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <div className="brickdoc-link-block-attachment">
         <FileIcon fileType={fileType} />
         <div className="link-block-attachment-content">

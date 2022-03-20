@@ -213,7 +213,7 @@ exports[`Tabs The number of snapshots is matched correctly 1`] = `
           role="tabpanel"
           tabindex="0"
         >
-          tab title
+          tab title 
           2
         </div>
         <div

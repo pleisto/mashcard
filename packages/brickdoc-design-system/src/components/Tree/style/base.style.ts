@@ -49,7 +49,7 @@ export const ContentArrow = styled('div', {
     transition: 'transform .1s ease-in-out'
   },
   variants: {
-    isOpen: {
+    isExpanded: {
       true: {
         '& span': {
           transform: 'rotate(90deg)'

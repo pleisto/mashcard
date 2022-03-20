@@ -1,24 +1,25 @@
-import { MouseEvent, ReactNode, useMemo, useRef, useState, ForwardRefRenderFunction, forwardRef } from 'react'
+import { MouseEvent, ReactNode, useMemo, useState, forwardRef, ForwardRefRenderFunction } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 import type { Identifier } from 'dnd-core'
 import { rem } from 'polished'
 import { Right } from '@brickdoc/design-icons'
-import { MoveNode, TNode, Inserted } from './constants'
 import { useMemoizedFn } from '../../hooks'
+import { useForwardedRef } from '../../hooks/useForwardedRef'
 
+import { NodeMovement, NodeRelativeSpot, InternalTreeNode, TreeNodeRenderer, TreeNode } from './constants'
 import { TreeRoot } from './style'
+import { calculateRelativeSpot } from './helpers'
 
 export interface NodeProps {
-  treeData: TNode
+  data: InternalTreeNode
   className?: string
   emptyNode?: string | ReactNode
-  onClick: (node: TNode) => void
-  handleSelected: (id: string) => void
-  titleRender?: (node: TNode) => ReactNode
-  selectedId?: string
-  id: any
+  onToggleExpansion: (node: InternalTreeNode) => void
+  onSelect?: (node: InternalTreeNode) => void
+  nodeRenderer?: TreeNodeRenderer
+  selected?: boolean
   index: number
-  moveNode: (item: MoveNode) => void
+  onMoveNode: (item: NodeMovement) => void
 }
 
 interface DragItem {
@@ -27,63 +28,41 @@ interface DragItem {
   type: string
 }
 
-interface HoverNode {
-  hoverClientY: number
-  hoverMiddleY: number
-  handlerId: string
-}
-
 const DND_NODE_TYPE = 'node'
 
 /** Tree
  * @example
  */
-const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
-  { treeData, className, onClick, handleSelected, titleRender, selectedId, emptyNode, id, index, moveNode },
+export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> = (
+  { data, className, onToggleExpansion, onSelect, nodeRenderer, selected, emptyNode, index, onMoveNode },
   _ref
 ) => {
-  const { icon = '', hasChildren, parentId, rootId, indent = 0, value, collapsed } = treeData
-  const ref = useRef<HTMLDivElement>(_ref as any)
-  const [hoverNode, setHoverNode] = useState<HoverNode | undefined>()
+  const { id: nodeId, icon = '', parentId, rootId, isExpanded, hasChildren, indent } = data
+  const ref = useForwardedRef(_ref)
+  const [dropSpot, setDropSpot] = useState<NodeRelativeSpot | null>(null)
 
-  const handleClick = useMemoizedFn(_e => handleSelected(value))
+  const handleSelect = useMemoizedFn(_e => onSelect?.(data))
 
-  const handleOpen = useMemoizedFn((e: MouseEvent) => {
+  const handleToggleExpand = useMemoizedFn((e: MouseEvent) => {
     e.stopPropagation()
-    onClick(treeData)
+    onToggleExpansion(data)
   })
 
   const hasEmptyNode = useMemo(
-    () => !parentId && rootId === value && !hasChildren,
-    [parentId, rootId, value, hasChildren]
+    () => !parentId && rootId === nodeId && !hasChildren,
+    [parentId, rootId, nodeId, hasChildren]
   )
 
   const emptyItem = typeof emptyNode === 'string' ? <TreeRoot.EmptyNode>{emptyNode}</TreeRoot.EmptyNode> : emptyNode
 
-  const showEmptyItem = hasEmptyNode && collapsed ? emptyItem : null
+  const showEmptyItem = hasEmptyNode && isExpanded ? emptyItem : null
 
   const [{ isDragging }, drag] = useDrag({
     type: DND_NODE_TYPE,
-    item: { id, index },
+    item: { nodeId, index },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging()
     })
-  })
-
-  const calculate = useMemoizedFn((node: HoverNode | undefined) => {
-    const item = node ?? hoverNode
-    if (!item) {
-      return null
-    }
-    const topRange = item.hoverMiddleY - 10
-    const bottomRange = item.hoverMiddleY + 10
-    if (item.hoverClientY <= topRange) {
-      return Inserted.Top
-    }
-    if (item.hoverClientY >= bottomRange) {
-      return Inserted.Bottom
-    }
-    return Inserted.Child
   })
 
   const [{ handlerId, isOver, isOverCurrent }, drop] = useDrop<
@@ -103,31 +82,15 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
         isOverCurrent: monitor.isOver()
       }
     },
-    hover(item: DragItem, monitor: any) {
+    hover(item, monitor: any) {
       const dragIndex = item.index
       const hoverIndex = index
 
       if (dragIndex === hoverIndex) return
 
-      // Determine rectangle on screen
-      const hoverBoundingRect = ref.current?.getBoundingClientRect()
-
-      // Get vertical middle
-      const hoverMiddleY = (hoverBoundingRect!.bottom! - hoverBoundingRect!.top!) / 2
-
-      // Determine mouse position
-      const clientOffset = monitor.getClientOffset()
-
-      // Get pixels to the top
-      const hoverClientY = clientOffset.y - hoverBoundingRect!.top!
-
-      setHoverNode({
-        hoverMiddleY,
-        hoverClientY,
-        handlerId: monitor?.targetId ?? ''
-      })
+      setDropSpot(calculateRelativeSpot(monitor.getClientOffset(), ref.current))
     },
-    drop(item: DragItem, monitor: any) {
+    drop(item, monitor) {
       if (!ref.current) {
         return
       }
@@ -138,51 +101,35 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
         return
       }
 
-      // Determine rectangle on screen
-      const hoverBoundingRect = ref.current?.getBoundingClientRect()
+      const dropSpot = calculateRelativeSpot(monitor.getClientOffset(), ref.current)
 
-      // Get vertical middle
-      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
-
-      // Determine mouse position
-      const clientOffset = monitor.getClientOffset()
-
-      // Get pixels to the top
-      const hoverClientY = clientOffset.y - hoverBoundingRect.top
-
-      const position = calculate({
-        hoverMiddleY,
-        hoverClientY,
-        handlerId: monitor?.targetId ?? ''
-      })
       // Time to actually perform the action
-
-      moveNode?.({
-        sourceIndex: dragIndex,
-        sourceId: item.id,
-        targetIndex: hoverIndex,
-        targetId: value,
-        position: position!
-      })
+      if (dropSpot) {
+        onMoveNode?.({
+          sourceIndex: dragIndex,
+          sourceId: item.id,
+          targetIndex: hoverIndex,
+          targetId: nodeId,
+          targetSpot: dropSpot
+        })
+      }
     }
   })
 
   const renderBorder = useMemo(() => {
     let css = {}
-    const borderPos = calculate(hoverNode)
-
-    switch (borderPos) {
-      case Inserted.Top:
+    switch (dropSpot) {
+      case NodeRelativeSpot.Before:
         css = {
           borderTop: isOver && isOverCurrent ? '2px dashed blue' : 'none'
         }
         break
-      case Inserted.Child:
+      case NodeRelativeSpot.AsChild:
         css = {
           border: isOver && isOverCurrent ? '1px dashed blue' : 'none'
         }
         break
-      case Inserted.Bottom:
+      case NodeRelativeSpot.After:
         css = {
           borderBottom: isOver && isOverCurrent ? '2px dashed blue' : 'none'
         }
@@ -192,7 +139,7 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
         break
     }
     return css
-  }, [calculate, isOver, isOverCurrent, hoverNode])
+  }, [isOver, isOverCurrent, dropSpot])
 
   drag(drop(ref))
 
@@ -202,7 +149,7 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
         ref={ref}
         data-handler-id={handlerId}
         dragging={isDragging}
-        selected={Boolean(value === selectedId)}
+        selected={selected}
         role="button"
         tabIndex={0}
         data-testid="BrkTree"
@@ -221,21 +168,21 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
             width: `calc(100% - ${rem(`${16 * indent}px`)})`
           }}
         >
-          <TreeRoot.ItemContent data-testid="item-content">
+          <TreeRoot.ItemContent data-testid="item-content" onClick={handleSelect}>
             <TreeRoot.Content data-testid="content">
               {hasChildren || hasEmptyNode ? (
-                <TreeRoot.ContentArrow isOpen={collapsed} data-testid="content-arrow" onClick={handleOpen}>
+                <TreeRoot.ContentArrow isExpanded={isExpanded} data-testid="content-arrow" onClick={handleToggleExpand}>
                   <Right data-testid="content-icon" />
                 </TreeRoot.ContentArrow>
               ) : (
-                <TreeRoot.ContentArrow data-testid="content-arrow" onClick={handleOpen}>
+                <TreeRoot.ContentArrow data-testid="content-arrow" onClick={handleToggleExpand}>
                   <TreeRoot.LeafDot data-testid="leaf-dot" />
                 </TreeRoot.ContentArrow>
               )}
               {icon ? <TreeRoot.ContentIcon data-testid="content-icon">{icon}</TreeRoot.ContentIcon> : <></>}
               {/* Todo: fixed TS2769: No overload matches this call. pressProps.css */}
-              <TreeRoot.ContentAction data-testid="content-action" onClick={handleClick}>
-                {titleRender?.(treeData)}
+              <TreeRoot.ContentAction data-testid="content-action">
+                {(nodeRenderer ?? defaultNodeRenderer)(data)}
               </TreeRoot.ContentAction>
             </TreeRoot.Content>
           </TreeRoot.ItemContent>
@@ -246,9 +193,9 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
   )
 }
 
-const _InternalNode = forwardRef(InternalNode)
-_InternalNode.displayName = 'Node'
+export const Node = forwardRef(InternalNode)
+Node.displayName = 'Node'
 
-export { _InternalNode as Node }
-
-/* export const Node = memo(InternalNode) */
+function defaultNodeRenderer(node: TreeNode): ReactNode {
+  return <div>{node.text}</div>
+}

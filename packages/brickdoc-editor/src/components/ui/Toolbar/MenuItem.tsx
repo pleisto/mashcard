@@ -36,7 +36,8 @@ export const ToolbarMenuItem: React.FC<ToolbarMenuItemProps> = ({ option, ...pro
       {...props}
       onClick={handleClick}
       active={option.active}
-      css={option.css}>
+      css={option.css}
+    >
       {option.content ?? option.icon ?? option.label}
     </MenuItem>
   )

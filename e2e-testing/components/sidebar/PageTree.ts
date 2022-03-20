@@ -24,7 +24,7 @@ export class PageTree {
       }
 
       const arrowClassName = await pageList.getArrow(index).getAttribute('class')
-      if (!arrowClassName?.includes('-isOpen-true')) {
+      if (!arrowClassName?.includes('-isExpanded-true')) {
         await pageList.getArrow(index).click()
       }
 

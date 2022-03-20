@@ -75,7 +75,8 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       defaultName={defaultName}
       nameRef={nameRef}
       completion={completion}
-      handleDelete={handleDelete}>
+      handleDelete={handleDelete}
+    >
       {renderData}
     </FormulaMenu>
   )

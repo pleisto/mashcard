@@ -1,33 +1,49 @@
 import { ReactNode } from 'react'
 
-export interface TNode {
-  key: string
+/**
+ * A type that represents the data held by a tree node.
+ */
+export interface TreeNode {
+  id: string
   value: string
+  text: string
   parentId?: string | null | undefined
   rootId?: string
-  title: ReactNode | string
-  icon: string | null
-  hasItemIcon?: boolean
+  icon?: string | null
+  isExpanded?: boolean
+  children?: TreeNode[]
+}
+
+/**
+ * The node data type used internally by the `Tree` component.
+ * It contains contextual information to form the tree.
+ */
+export type InternalTreeNode = TreeNode & {
   hasChildren: boolean
-  firstChildSort: string
   indent: number
-  isOpen: boolean
-  collapsed: boolean
-  sort: number
-  lastPlaceholder: ReactNode | string
-  children: TNode[]
 }
 
-export enum Inserted {
-  Top,
-  Bottom,
-  Child
+/**
+ * The spots relative to a node.
+ */
+export enum NodeRelativeSpot {
+  Before,
+  After,
+  AsChild
 }
 
-export interface MoveNode {
+export interface NodeMovement {
+  /** The index of the moving node. */
   sourceIndex: number
+  /** The node's ID that is being moved. */
   sourceId: string
+  /** The index of the node being placed upon. */
   targetIndex: number
+  /** The node's ID upon which the moving node is placed. */
   targetId: string
-  position: Inserted
+  /** The relative position, to the target node,
+   * of where the moving node will be placed. */
+  targetSpot: NodeRelativeSpot
 }
+
+export type TreeNodeRenderer = (node: TreeNode) => ReactNode

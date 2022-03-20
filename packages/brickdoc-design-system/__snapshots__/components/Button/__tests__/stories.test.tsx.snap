@@ -141,7 +141,7 @@ exports[`Button rendering WithStartIcon should match the snapshot 1`] = `
       data-testid="mock-icon-Delete"
     />
     <span>
-      Confirm to
+      Confirm to 
       <strong>
         delete
       </strong>

@@ -98,7 +98,8 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
         width={{
           '@mdOnly': 'md',
           '@smDown': 'sm'
-        }}>
+        }}
+      >
         <DocumentTitle blocks={data?.childrenBlocks} editable={documentEditable} />
         <Root.PageContent>
           <EditorContent editor={editor} externalProps={externalProps} />

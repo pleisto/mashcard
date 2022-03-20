@@ -53,7 +53,8 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
             onAction={key => {
               option.onAction?.(key)
               if (option.closeOnAction !== false) onClose?.()
-            }}>
+            }}
+          >
             {option.content}
           </ActionMenuItem>
         )
@@ -64,7 +65,8 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
             key={key}
             itemKey={option.name}
             label={option.label}
-            icon={option.icon}>
+            icon={option.icon}
+          >
             {typeof option.items === 'function'
               ? option.items()
               : option.items?.reduce<React.ReactElement[]>((elements, option, index, array) => {
@@ -116,7 +118,8 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
         baseId={`${baseId}-add-block`}
         itemKey="addBlock"
         label={t('block_actions.add_block')}
-        icon={<Add square={true} className={cx(actionIconStyle(), actionIconBackgroundStyle())} />}>
+        icon={<Add square={true} className={cx(actionIconStyle(), actionIconBackgroundStyle())} />}
+      >
         {blockOptions?.reduce<React.ReactElement[]>((elements, option, index, array) => {
           if (option.type === 'group')
             return [

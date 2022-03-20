@@ -126,7 +126,8 @@ const ToolbarMenuOption: React.FC<{ option: ToolbarOption }> = ({ option }) => {
           <div>{tooltipDescription}</div>
         </>
       }
-      placement="top">
+      placement="top"
+    >
       <ToolbarMenuOptionInner option={option} />
     </Tooltip>
   )

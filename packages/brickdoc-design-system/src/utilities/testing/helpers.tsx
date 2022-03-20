@@ -1,7 +1,8 @@
 import { type ComponentStory } from '@storybook/react'
+import { composeStories } from '@storybook/testing-react'
 import { render, act } from '@testing-library/react'
 import { axe } from 'jest-axe'
-import React from 'react'
+import React, { FC } from 'react'
 
 export const a11yTest = async (Component: React.FC): Promise<void> => {
   jest.useRealTimers()
@@ -11,13 +12,14 @@ export const a11yTest = async (Component: React.FC): Promise<void> => {
   })
 }
 
-interface StoryTableRow<T extends React.FC> {
+type Stories = ReturnType<typeof composeStories>
+interface StoryTableRow<> {
   /** The name of the story. */
   name: string
   /** The raw story object for advanced usages. */
-  story: ComponentStory<T>
+  story: ComponentStory<FC>
   /** The component to be rendered. */
-  Component: React.FC
+  Component: FC
 }
 
 /**
@@ -49,13 +51,11 @@ interface StoryTableRow<T extends React.FC> {
  *
  * @param stories An array or a map of component stories to be tested.
  */
-export function toStoryTable<T extends React.FC>(
-  stories: Array<ComponentStory<T>> | Record<string, ComponentStory<T>>
-): Array<StoryTableRow<T>> {
+export function toStoryTable(stories: Stories): StoryTableRow[] {
   const arr = Array.isArray(stories) ? stories : Object.values(stories)
   return arr.map(story => ({
     name: `${story.storyName}`,
     story,
-    Component: story as React.FC
+    Component: story as FC
   }))
 }

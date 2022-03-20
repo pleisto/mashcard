@@ -75,7 +75,8 @@ export const FormulaBlockRender: FC<FormulaBlockRenderProps> = ({
       destroyTooltipOnHide={true}
       content={formulaResult}
       placement="bottom"
-      trigger={['click']}>
+      trigger={['click']}
+    >
       {editor}
     </Popover>
   )

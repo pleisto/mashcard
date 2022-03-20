@@ -26,16 +26,16 @@ test.describe('Page List', () => {
 
   test('Verify page can collapse when click arrow', async () => {
     const arrowClass = await pageList.getArrow().getAttribute('class')
-    if (arrowClass?.includes('-isOpen-true')) {
+    if (arrowClass?.includes('-isExpanded-true')) {
       await pageList.getArrow().click()
-      expect(await pageList.getArrow().getAttribute('class')).not.toMatch(/.+-isOpen-true.*/g)
+      expect(await pageList.getArrow().getAttribute('class')).not.toMatch(/.+-isExpanded-true.*/g)
       await pageList.getArrow().click()
-      expect(await pageList.getArrow().getAttribute('class')).toMatch(/.+-isOpen-true.*/g)
+      expect(await pageList.getArrow().getAttribute('class')).toMatch(/.+-isExpanded-true.*/g)
     } else {
       await pageList.getArrow().click()
-      expect(await pageList.getArrow().getAttribute('class')).toMatch(/.+-isOpen-true.*/g)
+      expect(await pageList.getArrow().getAttribute('class')).toMatch(/.+-isExpanded-true.*/g)
       await pageList.getArrow().click()
-      expect(await pageList.getArrow().getAttribute('class')).not.toMatch(/.+-isOpen-true.*/g)
+      expect(await pageList.getArrow().getAttribute('class')).not.toMatch(/.+-isExpanded-true.*/g)
     }
   })
 

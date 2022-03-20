@@ -9,7 +9,18 @@ import {
   useGetBlockPinsQuery,
   GetPageBlocksQuery
 } from '@/BrickdocGraphQL'
-import { Tree, TreeProps, TNode, Inserted, css, styled, toast, useMemoizedFn, theme } from '@brickdoc/design-system'
+import {
+  Tree,
+  type TreeProps,
+  type TreeNode,
+  type TreeNodeRenderer,
+  NodeRelativeSpot,
+  css,
+  styled,
+  toast,
+  useMemoizedFn,
+  theme
+} from '@brickdoc/design-system'
 import { array2Tree } from '@brickdoc/active-support'
 import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
@@ -80,8 +91,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   const { data: pinData } = useGetBlockPinsQuery()
   const pinIds = pinData?.blockPins?.map(pin => pin.blockId) ?? []
 
-  const getTitle = useMemoizedFn((block: BlockType): string => {
-    const text = block.text
+  const getTitle = useMemoizedFn((text: string): string => {
     if (/^\s*$/.test(text)) {
       return t('title.untitled')
     } else {
@@ -99,43 +109,43 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
 
   //
   const onDrop: TreeProps['onDrop'] = async (attrs): Promise<void> => {
-    const { sourceId, targetId, position } = attrs
+    const { sourceId, targetId, targetSpot } = attrs
     setDraggable(false)
     let targetParentId: string | undefined | null, sort: number
     const pageBlocks = (dataPageBlocks ?? []) as Block[]
-    const node = pageBlocks.find(i => i.id === sourceId)
-    const targetNode = pageBlocks.find(i => i.id === targetId)
-    if (!node?.id) {
+    const sourceBlock = pageBlocks.find(i => i.id === sourceId)
+    const targetBlock = pageBlocks.find(i => i.id === targetId)
+    if (!sourceBlock?.id) {
       setDraggable(true)
       return
     }
 
-    if (targetNode?.parentId) {
+    if (targetBlock?.parentId) {
       // root node
-      targetParentId = targetNode.parentId
+      targetParentId = targetBlock.parentId
     }
 
-    switch (position) {
-      case Inserted.Top:
-        sort = (targetNode?.sort ?? 0) - 1
+    switch (targetSpot) {
+      case NodeRelativeSpot.Before:
+        sort = (targetBlock?.sort ?? 0) - 1
         break
-      case Inserted.Child:
+      case NodeRelativeSpot.AsChild:
         targetParentId = targetId
-        sort = Number(node.firstChildSort) - SIZE_GAP
+        sort = Number(sourceBlock.firstChildSort) - SIZE_GAP
         break
-      case Inserted.Bottom:
-        sort = Math.round(0.5 * (Number(targetNode?.sort ?? 0) + Number(targetNode?.nextSort ?? 0)))
+      case NodeRelativeSpot.After:
+        sort = Math.round(0.5 * (Number(targetBlock?.sort ?? 0) + Number(targetBlock?.nextSort ?? 0)))
         break
     }
 
     // update move result locally for performance
-    const originTargetSort = node.sort
-    const originTargetParentId = node.parentId
+    const originTargetSort = sourceBlock.sort
+    const originTargetParentId = sourceBlock.parentId
 
     setDataPageBlocks(prevBlocks => {
       const result = prevBlocks
         .map(block => {
-          if (block.id !== node.id) return block
+          if (block.id !== sourceBlock.id) return block
 
           return {
             ...block,
@@ -151,7 +161,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     setDraggable(true)
 
     const input: BlockMoveInput = {
-      id: node.id,
+      id: sourceBlock.id,
       sort
     }
     if (targetParentId) {
@@ -168,7 +178,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
       setDataPageBlocks(prevBlocks =>
         prevBlocks
           .map(block => {
-            if (block.id !== node.id) return block
+            if (block.id !== sourceBlock.id) return block
 
             return {
               ...block,
@@ -178,13 +188,13 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
           })
           .sort((a, b) => a.sort - b.sort)
       )
-    } else if (docMeta.id === node.id) {
+    } else if (docMeta.id === sourceBlock.id) {
       await blockMoveClient.refetchQueries({ include: [queryBlockInfo] })
     }
   }
 
-  const titleRender = (node: any): React.ReactElement => {
-    const pin = pinIds.includes(node.key)
+  const titleRender: TreeNodeRenderer = node => {
+    const pin = pinIds.includes(node.id)
 
     return (
       <PageMenu
@@ -192,8 +202,8 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         docMeta={docMeta}
         // setPopoverKey={setPopoverKey}
         pin={pin}
-        pageId={node.key}
-        title={node.title}
+        pageId={node.id}
+        title={getTitle(node.text)}
         titleText={node.text}
       />
     )
@@ -205,11 +215,9 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     }
 
     const flattedData = blocks
-      .map(b => {
-        const title = getTitle(b)
-
+      .map<TreeNode & { sort: number }>(b => {
         return {
-          key: b.id,
+          id: b.id,
           value: b.id,
           rootId: b.rootId,
           parentId: b.parentId,
@@ -217,24 +225,23 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
           icon: getIcon(b),
           nextSort: b.nextSort,
           firstChildSort: b.firstChildSort,
-          text: b.text,
-          title
+          text: b.text
         }
       })
       .sort((a, b) => Number(a.sort) - Number(b.sort))
 
-    const treeData = array2Tree(flattedData, { id: 'key' })
+    const treeData = array2Tree(flattedData)
 
     return (
       <Tree
         emptyNode={t('blocks.no_pages')}
         // selectable={!docMeta.documentInfoLoading}
-        selectedNodeId={docMeta.id}
+        initialSelectedId={docMeta.id}
         treeNodeClassName={mode === 'subPage' ? subPageModeNodeStyle() : ''}
-        treeData={treeData as unknown as TNode[]}
+        treeData={treeData as unknown as TreeNode[]}
         draggable={draggable && isDraggable}
         onDrop={onDrop}
-        titleRender={titleRender}
+        renderNode={titleRender}
       />
     )
   }
@@ -273,7 +280,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   React.useEffect(() => {
     const flattedData = (dataPageBlocks ?? [])
       .map(b => {
-        const title = getTitle(b)
+        const title = getTitle(b.text)
         return {
           key: b.id,
           value: b.id,

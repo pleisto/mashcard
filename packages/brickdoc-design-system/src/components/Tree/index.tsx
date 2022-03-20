@@ -1,5 +1,5 @@
 export { Tree } from './tree'
-export { Inserted } from './constants'
+export { NodeRelativeSpot } from './constants'
 
-export type { TNode } from './constants'
+export type { NodeMovement, TreeNode, TreeNodeRenderer } from './constants'
 export type { TreeProps } from './tree'

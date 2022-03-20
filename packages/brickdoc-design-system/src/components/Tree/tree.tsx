@@ -4,41 +4,39 @@ import {
   useCallback,
   useMemo,
   useRef,
-  useEffect,
   ReactNode,
-  forwardRef
+  forwardRef,
+  RefCallback
 } from 'react'
+import deepEqual from 'fast-deep-equal'
 import List, { ListRef } from 'rc-virtual-list'
 import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import type { TNode, MoveNode } from './constants'
+import { HTML5Backend, HTML5BackendOptions } from 'react-dnd-html5-backend'
+import type { TreeNode, NodeMovement, InternalTreeNode, TreeNodeRenderer } from './constants'
 import { Node } from './node'
 import { useMemoizedFn } from '../../hooks'
+import { useDeepMemo } from '../../hooks/useDeepMemo'
+import { joinNodeIdsByPath } from './helpers'
+import { useUpdate } from 'ahooks'
 
 export interface TreeProps {
   height?: number
-  treeData: TNode[]
-  selectedNodeId?: string
+  treeData: TreeNode[]
+  initialSelectedId?: string
   className?: string
   treeNodeClassName?: string
-  openAll?: boolean
+  expandAll?: boolean
+  expandOnSelect?: boolean
   draggable?: boolean
-  onDrop?: (attrs: MoveNode) => void
-  titleRender?: (node: TNode) => ReactNode
+  onDrop?: (attrs: NodeMovement) => void
+  renderNode?: TreeNodeRenderer
   emptyNode?: string | ReactNode
 }
 
-const findPathById = (tree: TNode[], id: string, path?: string[]): string[] | undefined => {
-  for (let i = 0; i < tree.length; i++) {
-    const tempPath = [...(path ?? [])]
-    tempPath.push(tree[i].value)
-    if (tree[i].value === id) return tempPath
-    if (tree[i].children) {
-      const result = findPathById(tree[i].children, id, tempPath)
-      if (result) return result
-    }
-  }
-}
+/**
+ * A ref object that can perform actions on the tree.
+ */
+export type TreeRef = ListRef
 
 const NODE_HEIGHT = 34
 const DEFAULT_HEIGHT = 200
@@ -46,106 +44,128 @@ const DEFAULT_HEIGHT = 200
 /** Tree
  * @example
  */
-const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
+const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   {
     height,
-    treeData,
-    openAll = false,
-    titleRender,
+    treeData: nextTreeData,
+    expandAll,
+    expandOnSelect,
+    renderNode,
     emptyNode,
-    selectedNodeId,
-    draggable = false,
+    initialSelectedId,
+    draggable,
     className,
     treeNodeClassName,
     onDrop
   },
   ref
 ) => {
-  const listRef = useRef<ListRef>()
-  const [openedIds, setOpenedIds] = useState<string[]>(
-    openAll ? treeData.map(node => node.value) : treeData.filter(node => node.collapsed).map(node => node.value) || []
-  )
-  const [selectedId, setSelectedId] = useState<string | undefined>(selectedNodeId)
+  // To cache tree data in case its reference changes outside the component
+  // in order to optimize everything in the rendering flow corresponding
+  // to the tree data.
+  const redraw = useUpdate()
+  const treeData = useDeepMemo(nextTreeData, redraw)
 
-  useEffect(() => {
-    if (selectedNodeId) {
-      setOpenedIds(findPathById(treeData, selectedNodeId, openedIds) ?? [])
+  const listRef = useRef<ListRef>(null)
+  const [expandedIds, setExpandedIds] = useState<string[]>(() => {
+    function flatten(node: TreeNode): TreeNode[] {
+      const self = [node]
+      return node.children ? node.children.reduce<TreeNode[]>((acc, child) => [...acc, ...flatten(child)], self) : self
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (expandAll) {
+      const allNodes = treeData.reduce<TreeNode[]>((acc, node) => [...acc, ...flatten(node)], [])
+      return allNodes.map(({ id }) => id)
+    }
+    let ids = treeData.filter(node => node.isExpanded).map(node => node.id)
+    if (initialSelectedId) {
+      // The selected node is initially expanded on the component mount.
+      ids = joinNodeIdsByPath(treeData, initialSelectedId, ids)
+    }
+    return ids
+  })
 
-  const flattened = useCallback(
-    (node, indent: number, result: TNode[]) => {
-      const { children, value } = node
-      const collapsed = openedIds.includes(value)
+  const [selectedId, setSelectedId] = useState<string | undefined>(initialSelectedId)
+
+  const nodeList = useMemo(() => {
+    function flatten(node: TreeNode, indent: number, result: InternalTreeNode[]): void {
+      const { children, id } = node
+      const isExpanded = expandedIds.includes(id)
 
       result.push({
         ...node,
+        isExpanded,
         hasChildren: (children ?? []).length > 0,
-        indent: indent ?? 0,
-        collapsed
+        indent: indent ?? 0
       })
 
-      if (collapsed && children) {
+      if (isExpanded && children) {
         for (const child of children) {
-          flattened(child, indent + 1, result)
+          flatten(child, indent + 1, result)
         }
       }
-    },
-    [openedIds]
-  )
+    }
 
-  const renderTree = useMemo(() => {
-    const result: TNode[] = []
+    const result: InternalTreeNode[] = []
     for (const node of treeData) {
-      flattened(node, 0, result)
+      flatten(node, 0, result)
     }
     return result
-  }, [treeData, flattened])
+  }, [treeData, expandedIds])
 
-  const handleSelected = useMemoizedFn((id: string) => setSelectedId(id))
-
-  const handleItemClick = useMemoizedFn((node: TNode) => {
-    node.collapsed ? setOpenedIds(i => i.filter(value => value !== node.value)) : setOpenedIds(i => [...i, node.value])
+  const handleSelectNode = useMemoizedFn((node: InternalTreeNode) => {
+    setSelectedId(node.id)
+    if (expandOnSelect && !node.isExpanded && node.id) {
+      const nextExpandedIds = joinNodeIdsByPath(treeData, node.id, expandedIds)
+      if (!deepEqual(nextExpandedIds, expandedIds)) {
+        setExpandedIds(nextExpandedIds)
+      }
+    }
   })
 
-  const moveNode = useMemoizedFn((item: MoveNode) => {
+  const handleToggleExpansion = useMemoizedFn((node: TreeNode) => {
+    node.isExpanded ? setExpandedIds(ids => ids.filter(id => id !== node.id)) : setExpandedIds(ids => [...ids, node.id])
+  })
+
+  const moveNode = useMemoizedFn((item: NodeMovement) => {
     if (!draggable) return
     onDrop?.(item)
   })
 
   // add a root element to limit dnd scope
-  const [dndRoot, setDndRoot] = useState()
-  const handleDndAreaRef = useCallback(node => setDndRoot(node), [])
-  const html5Options = useMemo(() => ({ rootElement: dndRoot }), [dndRoot])
+  const [html5Options, setHtml5Options] = useState<HTML5BackendOptions>()
+  const handleDndAreaRef = useCallback<RefCallback<HTMLDivElement>>(node => {
+    if (node) {
+      setHtml5Options({ rootElement: node })
+    }
+  }, [])
 
+  const finalHeight = height ?? Math.min(nodeList.length * NODE_HEIGHT, DEFAULT_HEIGHT)
   return (
     <div ref={handleDndAreaRef}>
       {/* make sure root area is mounted, then mount dnd area */}
-      {dndRoot && (
+      {html5Options?.rootElement && (
         <DndProvider backend={HTML5Backend} options={html5Options}>
-          <List<TNode>
+          <List<InternalTreeNode>
             className={className}
-            data={renderTree}
+            data={nodeList}
             data-testid="virtual-list"
-            height={Math.min(renderTree.length * NODE_HEIGHT, DEFAULT_HEIGHT)}
+            height={finalHeight}
             itemHeight={NODE_HEIGHT}
-            itemKey="key"
+            itemKey="id"
             ref={ref ?? listRef}
           >
             {(item, index) => (
               <Node
                 className={treeNodeClassName}
-                moveNode={moveNode}
-                id={item.key}
                 index={index}
-                key={item.key}
+                key={item.id}
                 emptyNode={emptyNode}
-                treeData={item}
-                onClick={handleItemClick}
-                handleSelected={handleSelected}
-                titleRender={titleRender}
-                selectedId={selectedId}
+                data={item}
+                selected={item.id === selectedId}
+                onToggleExpansion={handleToggleExpansion}
+                onSelect={handleSelectNode}
+                onMoveNode={moveNode}
+                nodeRenderer={renderNode}
               />
             )}
           </List>
@@ -155,7 +175,5 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
   )
 }
 
-const _TreeInternal = forwardRef(TreeInternal)
-_TreeInternal.displayName = 'Tree'
-
-export { _TreeInternal as Tree }
+export const Tree = forwardRef(TreeInternal)
+Tree.displayName = 'Tree'

@@ -43,7 +43,8 @@ describe('BlockContainer', () => {
             type: 'item',
             name: 'item'
           }
-        ]}>
+        ]}
+      >
         block
       </BlockContainer>
     )
