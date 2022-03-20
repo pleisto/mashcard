@@ -127,11 +127,12 @@ const TreeInternal: ForwardRefRenderFunction<any, TreeProps> = (
           <List<TNode>
             className={className}
             data={renderTree}
-            data-test-id="virtual-list"
+            data-testid="virtual-list"
             height={Math.min(renderTree.length * NODE_HEIGHT, DEFAULT_HEIGHT)}
             itemHeight={NODE_HEIGHT}
             itemKey="key"
-            ref={ref ?? listRef}>
+            ref={ref ?? listRef}
+          >
             {(item, index) => (
               <Node
                 className={treeNodeClassName}

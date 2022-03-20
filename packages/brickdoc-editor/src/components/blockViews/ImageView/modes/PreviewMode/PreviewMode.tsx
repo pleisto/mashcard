@@ -81,14 +81,16 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
             updateImageAttributes({
               width: Math.min(Number(node.attrs.image?.width) + d.width, MAX_WIDTH)
             })
-          }}>
+          }}
+        >
           <ImagePreview
             wrapStyle={{ pointerEvents: 'none', width: '100%' }}
             overlayBgColorEnd="rgba(153, 153, 153, 0.4)"
             isZoomed={showPreview}
             onZoomChange={shouldZoom => {
               setShowPreview(shouldZoom)
-            }}>
+            }}
+          >
             {!loaded && (
               <Skeleton
                 uniqueKey={`image-block-skeleton-${node.attrs.uuid}`}

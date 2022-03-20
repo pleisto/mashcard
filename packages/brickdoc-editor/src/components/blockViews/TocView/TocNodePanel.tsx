@@ -118,7 +118,8 @@ export const TocContainer: React.FC<TocContainerProps> = ({ tocItemCount, childr
       role="presentation"
       css={{
         height: tocItemCount > 0 ? `${containerVerticalPadding * 2 + tocItemCount * (itemHeight + itemGap)}px` : 'unset'
-      }}>
+      }}
+    >
       <TocStyledContainerInner>{children}</TocStyledContainerInner>
     </TocStyledContainer>
   )
@@ -164,7 +165,8 @@ export const TocNodePanel: React.FC<TocNodePanelProps> = ({ tocNode }) => {
       <TocItemTitle
         level={tocNode.item.level}
         onClick={onItemClick}
-        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}>
+        data-testid={TEST_ID_ENUM.editor.tocBlock.item.title.id}
+      >
         {tocNode.children.length > 0 && (
           <ToggleIcon
             data-testid={TEST_ID_ENUM.editor.tocBlock.item.toggleIcon.id}

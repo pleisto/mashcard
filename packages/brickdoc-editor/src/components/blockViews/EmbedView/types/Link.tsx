@@ -128,7 +128,8 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
             />
           </InputPanel>
         }
-        placement="bottom">
+        placement="bottom"
+      >
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Icon.Link />}

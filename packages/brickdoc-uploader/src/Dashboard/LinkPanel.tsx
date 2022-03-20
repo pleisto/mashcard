@@ -35,7 +35,8 @@ export const LinkPanel: React.FC<LinkPanelProps> = ({ importSource, pluginOption
         type="primary"
         data-testid={TEST_ID_ENUM.uploader.Dashboard.modules.link.button.id}
         onClick={handleLinkSubmit}
-        className="dashboard-panel-button">
+        className="dashboard-panel-button"
+      >
         {importSource.buttonText}
       </Button>
       <div className="dashboard-panel-hint">{importSource.buttonHint}</div>

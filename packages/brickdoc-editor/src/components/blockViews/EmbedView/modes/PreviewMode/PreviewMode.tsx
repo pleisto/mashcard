@@ -72,7 +72,8 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
-      actionOptions={actionOptions}>
+      actionOptions={actionOptions}
+    >
       <div data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id} className="brickdoc-pdftron-block">
         {!documentReady && <Skeleton height={containerHeight} />}
         <PreviewContainer ref={viewer} ready={documentReady} />

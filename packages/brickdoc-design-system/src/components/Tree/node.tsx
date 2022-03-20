@@ -205,7 +205,7 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
         selected={Boolean(value === selectedId)}
         role="button"
         tabIndex={0}
-        data-test-id="BrkTree"
+        data-testid="BrkTree"
         className={className}
         css={renderBorder}
       >
@@ -213,28 +213,28 @@ const InternalNode: ForwardRefRenderFunction<any, NodeProps> = (
           css={{
             width: rem(`${16 * indent}px`)
           }}
-          data-test-id="indent"
+          data-testid="indent"
         />
         <TreeRoot.PageItem
-          data-test-id="page-item"
+          data-testid="page-item"
           css={{
             width: `calc(100% - ${rem(`${16 * indent}px`)})`
           }}
         >
-          <TreeRoot.ItemContent data-test-id="item-content">
-            <TreeRoot.Content data-test-id="content">
+          <TreeRoot.ItemContent data-testid="item-content">
+            <TreeRoot.Content data-testid="content">
               {hasChildren || hasEmptyNode ? (
-                <TreeRoot.ContentArrow isOpen={collapsed} data-test-id="content-arrow" onClick={handleOpen}>
-                  <Right data-test-id="content-icon" />
+                <TreeRoot.ContentArrow isOpen={collapsed} data-testid="content-arrow" onClick={handleOpen}>
+                  <Right data-testid="content-icon" />
                 </TreeRoot.ContentArrow>
               ) : (
-                <TreeRoot.ContentArrow data-test-id="content-arrow" onClick={handleOpen}>
-                  <TreeRoot.LeafDot data-test-id="leaf-dot" />
+                <TreeRoot.ContentArrow data-testid="content-arrow" onClick={handleOpen}>
+                  <TreeRoot.LeafDot data-testid="leaf-dot" />
                 </TreeRoot.ContentArrow>
               )}
-              {icon ? <TreeRoot.ContentIcon data-test-id="content-icon">{icon}</TreeRoot.ContentIcon> : <></>}
+              {icon ? <TreeRoot.ContentIcon data-testid="content-icon">{icon}</TreeRoot.ContentIcon> : <></>}
               {/* Todo: fixed TS2769: No overload matches this call. pressProps.css */}
-              <TreeRoot.ContentAction data-test-id="content-action" onClick={handleClick}>
+              <TreeRoot.ContentAction data-testid="content-action" onClick={handleClick}>
                 {titleRender?.(treeData)}
               </TreeRoot.ContentAction>
             </TreeRoot.Content>

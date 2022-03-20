@@ -327,7 +327,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   return pageBlocks.length ? (
     <PageTreeRoot>
       {pinTree}
-      {!hideHeading && <PageTreeHeading data-test-id={TEST_ID_ENUM.page.pageTree.heading.id}>Pages</PageTreeHeading>}
+      {!hideHeading && <PageTreeHeading data-testid={TEST_ID_ENUM.page.pageTree.heading.id}>Pages</PageTreeHeading>}
       {treeElement(pageBlocks, draggable && mutable)}
     </PageTreeRoot>
   ) : (

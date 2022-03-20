@@ -198,7 +198,8 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
                   css={{
                     backgroundImage: `url(${item.smallUrl})`
                   }}
-                  onClick={handleSelectImage(item)}>
+                  onClick={handleSelectImage(item)}
+                >
                   <GalleryImageInfo>
                     <GalleryImageUsername>{item.username}</GalleryImageUsername>
                   </GalleryImageInfo>
@@ -207,7 +208,8 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
             </GalleryImageList>
             <LoadMorePlaceholder ref={createScrollObserver} />
           </Gallery>
-        }>
+        }
+      >
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Icon.Unsplash />}
