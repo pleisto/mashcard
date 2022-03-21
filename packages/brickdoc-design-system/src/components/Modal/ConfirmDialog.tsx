@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { ModalProps, Modal } from './index'
 import { ButtonProps, Button } from '../Button'
 import { FormControl } from '../Form/FormControl'
@@ -32,10 +32,19 @@ export const ConfirmDialog: FC<ConfirmDialogProps> = props => {
     dialogCss,
     ...otherProps
   } = props
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>): void => {
+      if (e.key === 'Enter') {
+        onConfirm()
+      }
+    },
+    [onConfirm]
+  )
   return (
     <Modal
       {...otherProps}
       onClose={onCancel}
+      onKeyDown={handleKeyDown}
       dialogCss={{
         width,
         padding: '12px',

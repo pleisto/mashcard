@@ -10,6 +10,7 @@ export interface ModalProps extends Omit<ModalUnstyledProps, 'children'> {
   title?: ReactNode
   dialogCss?: CSS<typeof config>
   width?: CSSProperties['width']
+  onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>
 }
 
 const StyledModal = styled(ModalUnstyled, {
