@@ -1,4 +1,4 @@
-import React from 'react'
+import { useContext, useMemo } from 'react'
 import { Icon, styled } from '@brickdoc/design-system'
 import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
@@ -14,9 +14,9 @@ const FontColorIcon = styled('span', {
 })
 
 export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = React.useContext(EditorContext)
+  const { t, editor } = useContext(EditorContext)
 
-  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
+  const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const activeColor = COLOR.find(color => editor?.isActive('textStyle', { fontColor: color.color }))

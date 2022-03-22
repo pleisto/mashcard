@@ -14,7 +14,15 @@ interface MockEditor {
   toggleOrderedList: jest.Mock
   toggleUnderline: jest.Mock
   setFontColor: jest.Mock
-  state: any
+  state: {
+    schema: {
+      nodes: {}
+    }
+    selection: {
+      from: number
+      to: number
+    }
+  }
 }
 
 function mockEditor(): MockEditor {
@@ -83,5 +91,15 @@ describe('BubbleMenu', () => {
     render(<BubbleMenu editor={editor as any} />)
 
     expect(screen.getByRole('menu', byRoleOptions)).toBeInTheDocument()
+  })
+
+  it('renders nothing if editor selection is empty', () => {
+    const editor = mockEditor()
+    editor.state.selection.from = 1
+    editor.state.selection.to = 1
+
+    render(<BubbleMenu editor={editor as any} />)
+
+    expect(() => screen.getByRole('menu', byRoleOptions)).toThrow()
   })
 })

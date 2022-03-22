@@ -1,22 +1,24 @@
-import React from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { Icon, Input, toast } from '@brickdoc/design-system'
 import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { isBubbleMenuVisible } from './useBubbleMenuItems'
 
 export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = React.useContext(EditorContext)
+  const { t, editor } = useContext(EditorContext)
   const href = editor?.getAttributes('link').href
-  const [inputLink, setInputLink] = React.useState(href)
+  const [inputLink, setInputLink] = useState(href)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setInputLink(href)
   }, [href])
 
-  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
+  const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
-    const handleConfirm = () => editor.chain().focus().setLink({ href: inputLink }).run()
+    const handleConfirm = (): void => {
+      editor.chain().focus().setLink({ href: inputLink }).run()
+    }
 
     const menuItems: ToolbarSubMenuOption['items'] = [
       {

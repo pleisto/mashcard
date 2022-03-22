@@ -1,4 +1,4 @@
-import React from 'react'
+import { useMemo } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { ToolbarOptionBase, ToolbarOptionGroup } from '../../../ui'
 import { Editor } from '@tiptap/react'
@@ -42,7 +42,7 @@ export function useBubbleMenuItems(): [ToolbarOptionGroup] {
   const [formulaItem] = useFormulaItem()
   const [extraItemsGroup] = useExtraItemsGroup()
 
-  const options = React.useMemo<ToolbarOptionGroup>(() => {
+  const options = useMemo<ToolbarOptionGroup>(() => {
     const options: ToolbarOptionGroup = []
     if (nodeGroup) options.push(nodeGroup)
     if (textStyleGroup) options.push(textStyleGroup)

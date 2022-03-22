@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from 'react'
+import { ReactNode, useContext, useMemo } from 'react'
 import { CSS } from '@stitches/react'
 import { styled, theme, Tooltip } from '@brickdoc/design-system'
 import { ToolbarMenuItem } from './MenuItem'
@@ -136,9 +136,10 @@ const ToolbarMenuOption: React.FC<{ option: ToolbarOption }> = ({ option }) => {
 // TODO: implement by menu
 export const Toolbar: React.FC<ToolbarProps> = ({ options }) => {
   const { t } = useContext(EditorContext)
-  return (
-    <ToolbarMenu role="menu">
-      {options?.reduce<React.ReactElement[]>((elements, option, index, array) => {
+
+  const menuOptions = useMemo(
+    () =>
+      options?.reduce<React.ReactElement[]>((elements, option, index, array) => {
         if (option.type === 'group')
           return [
             ...elements,
@@ -151,7 +152,9 @@ export const Toolbar: React.FC<ToolbarProps> = ({ options }) => {
           ]
 
         return [...elements, <ToolbarMenuOption key={option.name} option={option} />]
-      }, [])}
-    </ToolbarMenu>
+      }, []),
+    [options, t]
   )
+
+  return <ToolbarMenu role="menu">{menuOptions}</ToolbarMenu>
 }

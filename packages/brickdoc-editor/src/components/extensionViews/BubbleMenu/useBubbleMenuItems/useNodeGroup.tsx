@@ -1,4 +1,4 @@
-import React from 'react'
+import { cloneElement, useContext, useMemo } from 'react'
 import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { findFirstSelectedNodes } from '../../../../helpers/selection'
@@ -11,9 +11,9 @@ const blockItems: BlockCommandItem[] = ORDER_TOGGLE_BLOCK.map(
 )
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = React.useContext(EditorContext)
+  const { t, editor } = useContext(EditorContext)
 
-  const option = React.useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
+  const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null
 
     const { nodeKey } = findFirstSelectedNodes(editor)
@@ -35,7 +35,7 @@ export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
                 name: item.key,
                 active: nodeKey === item.key,
                 label: t(`blocks.${item.key}.label`),
-                icon: <NodeIcon>{React.cloneElement(item.icon, { fill: [theme.colors.iconPrimary.value] })}</NodeIcon>,
+                icon: <NodeIcon>{cloneElement(item.icon, { fill: [theme.colors.iconPrimary.value] })}</NodeIcon>,
                 onAction: () => {
                   if (!editor) return
                   item.setBlock(editor.chain()).setTextSelection(editor.state.selection.to).focus().run()
