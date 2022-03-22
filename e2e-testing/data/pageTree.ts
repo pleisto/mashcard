@@ -1,4 +1,4 @@
-import { PageTreeNode } from '@/components/sidebar/PageTree'
+import { PageTreeNode } from '@/components/sidebar/PageList'
 
 export const pageTrees: PageTreeNode[] = [
   { pageName: '1' },

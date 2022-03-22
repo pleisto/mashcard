@@ -1,5 +1,4 @@
 import { PageList } from '@/components/sidebar/PageList'
-import { PageTree } from '@/components/sidebar/PageTree'
 import { test, expect } from '@/fixtures/testFixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
 
@@ -7,10 +6,9 @@ test.describe('Page List', () => {
   let pageList: PageList
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-    const pageTree = new PageTree(page)
-    await pageTree.removeAllPages()
+    await page.goto('/', { waitUntil: 'networkidle' })
     pageList = new PageList(page)
+    await pageList.removeAllPages()
     await pageList.addPage()
   })
 
