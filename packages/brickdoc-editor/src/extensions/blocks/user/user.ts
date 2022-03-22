@@ -1,7 +1,7 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { UserView } from '../../../components/blockViews'
-import { createBlock } from '../../common'
+import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { meta, UserAttributes, UserOptions } from './meta'
 
 declare module '@tiptap/core' {
@@ -29,7 +29,9 @@ export const User = createBlock<UserOptions, UserAttributes>({
       people: {
         default: {
           type: 'PEOPLE'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-people'),
+        renderHTML: createJSONAttributeHtmlRender('people', 'data-people')
       }
     }
   },

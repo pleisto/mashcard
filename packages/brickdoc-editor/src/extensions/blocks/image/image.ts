@@ -1,7 +1,7 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ImageView } from '../../../components/blockViews'
-import { createBlock } from '../../common'
+import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { ImageAttributes, ImageOptions, meta } from './meta'
 
 declare module '@tiptap/core' {
@@ -34,7 +34,9 @@ export const Image = createBlock<ImageOptions, ImageAttributes>({
       image: {
         default: {
           type: 'IMAGE'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-image'),
+        renderHTML: createJSONAttributeHtmlRender('image', 'data-image')
       }
     }
   },

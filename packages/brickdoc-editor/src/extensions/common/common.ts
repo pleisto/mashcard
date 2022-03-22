@@ -79,3 +79,26 @@ export const createExtension = <
 >(
   config: ExtensionConfig<Options, Attributes, Storage>
 ): Extension<Options, Storage> => Extension.create(config)
+
+export const createJSONAttributeHtmlParser = (attributeName: string) => (element: HTMLElement) => {
+  const value = element.getAttribute(attributeName)
+  if (!value) return null
+
+  try {
+    return JSON.parse(value)
+  } catch (error) {
+    console.error(error)
+  }
+
+  return null
+}
+
+export const createJSONAttributeHtmlRender = (key: string, htmlKey: string) => (attributes: Record<string, any>) => {
+  try {
+    return { [htmlKey]: JSON.stringify(attributes[key]) }
+  } catch (error) {
+    console.error(error)
+  }
+
+  return {}
+}

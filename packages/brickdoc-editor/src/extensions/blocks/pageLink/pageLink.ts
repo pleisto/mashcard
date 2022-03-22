@@ -1,7 +1,7 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { PageLinkView } from '../../../components/blockViews'
-import { createBlock } from '../../common'
+import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { meta, PageLinkAttributes, PageLinkOptions } from './meta'
 
 declare module '@tiptap/core' {
@@ -34,7 +34,9 @@ export const PageLink = createBlock<PageLinkOptions, PageLinkAttributes>({
       page: {
         default: {
           type: 'PAGE'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-page'),
+        renderHTML: createJSONAttributeHtmlRender('page', 'data-page')
       }
     }
   },

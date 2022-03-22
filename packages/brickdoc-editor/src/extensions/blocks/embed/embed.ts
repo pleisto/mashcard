@@ -2,7 +2,7 @@ import { mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { Embedtype } from '@brickdoc/schema'
 import { EmbedView } from '../../../components/blockViews'
-import { createBlock } from '../../common'
+import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { EmbedAttributes, EmbedOptions, meta } from './meta'
 
 declare module '@tiptap/core' {
@@ -32,7 +32,9 @@ export const Embed = createBlock<EmbedOptions, EmbedAttributes>({
       embedMeta: {
         default: {
           type: 'EmbedMeta'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-embed-meta'),
+        renderHTML: createJSONAttributeHtmlRender('embedMeta', 'data-embed-meta')
       },
       isNew: {
         default: false
@@ -43,17 +45,23 @@ export const Embed = createBlock<EmbedOptions, EmbedAttributes>({
       link: {
         default: {
           type: 'LINK'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-link'),
+        renderHTML: createJSONAttributeHtmlRender('link', 'data-link')
       },
       image: {
         default: {
           type: 'IMAGE'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-image'),
+        renderHTML: createJSONAttributeHtmlRender('image', 'data-image')
       },
       attachment: {
         default: {
           type: 'ATTACHMENT'
-        }
+        },
+        parseHTML: createJSONAttributeHtmlParser('data-attachment'),
+        renderHTML: createJSONAttributeHtmlRender('attachment', 'data-attachment')
       }
     }
   },
