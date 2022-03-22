@@ -232,8 +232,15 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
           <SpreadsheetView>
             <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
               {columns.map((column, i) => {
-                const handleTitleSave = (value: string): void => {
-                  updateColumn({ ...column, title: value })
+                const handleTitleSave = (value: string): boolean => {
+                  if (columns.some(c => c.title === value && c.uuid !== column.uuid)) {
+                    // TODO: UI
+                    console.error('duplicate column name')
+                    return false
+                  } else {
+                    updateColumn({ ...column, title: value })
+                    return true
+                  }
                 }
                 const onResize = (width: number): void => {
                   updateColumn({ ...column, width })

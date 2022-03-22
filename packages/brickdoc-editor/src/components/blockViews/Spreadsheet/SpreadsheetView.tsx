@@ -504,21 +504,45 @@ export const SpreadsheetColumnEditable: React.FC<{
 }> = ({ column, index, onSave, context, editable }) => {
   const [editing, setEditing] = React.useState(false)
 
+  const inputRef = React.createRef<HTMLInputElement>()
+
   const handleEnterEdit = (): void => {
     context?.clearSelection()
     setEditing(true)
   }
 
+  const handleSave = (): void => {
+    if (inputRef.current) {
+      if (onSave?.(inputRef.current.value)) {
+        setEditing(false)
+      } else {
+        inputRef.current?.focus()
+        setEditing(true)
+      }
+    }
+  }
+
   const handleBlur: React.FocusEventHandler<HTMLInputElement> = (e): void => {
-    setEditing(false)
-    onSave?.(e.target.value)
+    handleSave()
+  }
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e): void => {
+    if (e.key === 'Enter') {
+      handleSave()
+    }
   }
 
   const displayIndex = columnDisplayIndex(index)
 
   return editing ? (
-    // eslint-disable-next-line jsx-a11y/no-autofocus
-    <input autoFocus className="column" defaultValue={column.title} onBlur={handleBlur} />
+    <input
+      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+      ref={inputRef}
+      className="column"
+      defaultValue={column.title}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+    />
   ) : (
     <div className="column" onDoubleClick={editable ? handleEnterEdit : undefined}>
       {column.title ? (

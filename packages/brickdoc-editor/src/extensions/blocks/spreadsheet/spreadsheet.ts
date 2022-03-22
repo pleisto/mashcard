@@ -38,6 +38,15 @@ export const Spreadsheet = createBlock<SpreadsheetOptions, SpreadsheetAttributes
         default: {
           columns: [],
           rowsCount: 0
+        },
+        renderHTML: attributes => {
+          return {
+            'data-spreadsheet': JSON.stringify(attributes.data)
+          }
+        },
+        parseHTML: element => {
+          const str = element.getAttribute('data-spreadsheet')
+          return str ? JSON.parse(str) : { columns: [], rowCount: 0 }
         }
       },
       title: {
