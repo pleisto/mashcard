@@ -42,8 +42,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
           h1
         </span>
         <div
-          class="brd-c-iIBnpv"
+          class="brd-c-bRVPOb"
           data-testid="editor-toc-block-item-content-panel"
+          style="max-height: 0px;"
         >
           <div
             class="brd-c-lnjkAt"
@@ -75,8 +76,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
               h2
             </span>
             <div
-              class="brd-c-iIBnpv"
+              class="brd-c-bRVPOb"
               data-testid="editor-toc-block-item-content-panel"
+              style="max-height: 0px;"
             >
               <div
                 class="brd-c-lnjkAt"
@@ -90,8 +92,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
                   h5\`
                 </span>
                 <div
-                  class="brd-c-iIBnpv"
+                  class="brd-c-bRVPOb"
                   data-testid="editor-toc-block-item-content-panel"
+                  style="max-height: 0px;"
                 />
               </div>
             </div>
@@ -128,8 +131,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
           h1\`
         </span>
         <div
-          class="brd-c-iIBnpv"
+          class="brd-c-bRVPOb"
           data-testid="editor-toc-block-item-content-panel"
+          style="max-height: 0px;"
         >
           <div
             class="brd-c-lnjkAt"
@@ -161,8 +165,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
               h3
             </span>
             <div
-              class="brd-c-iIBnpv"
+              class="brd-c-bRVPOb"
               data-testid="editor-toc-block-item-content-panel"
+              style="max-height: 0px;"
             >
               <div
                 class="brd-c-lnjkAt"
@@ -194,8 +199,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
                   h4
                 </span>
                 <div
-                  class="brd-c-iIBnpv"
+                  class="brd-c-bRVPOb"
                   data-testid="editor-toc-block-item-content-panel"
+                  style="max-height: 0px;"
                 >
                   <div
                     class="brd-c-lnjkAt"
@@ -209,8 +215,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
                       h5
                     </span>
                     <div
-                      class="brd-c-iIBnpv"
+                      class="brd-c-bRVPOb"
                       data-testid="editor-toc-block-item-content-panel"
+                      style="max-height: 0px;"
                     />
                   </div>
                 </div>
@@ -247,8 +254,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
               blocks.toc.untitled
             </span>
             <div
-              class="brd-c-iIBnpv"
+              class="brd-c-bRVPOb"
               data-testid="editor-toc-block-item-content-panel"
+              style="max-height: 0px;"
             >
               <div
                 class="brd-c-lnjkAt"
@@ -262,8 +270,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
                   anchor
                 </span>
                 <div
-                  class="brd-c-iIBnpv"
+                  class="brd-c-bRVPOb"
                   data-testid="editor-toc-block-item-content-panel"
+                  style="max-height: 0px;"
                 />
               </div>
             </div>
@@ -282,8 +291,9 @@ exports[`TocBlock matches correct snapshot 1`] = `
           h1\`\`
         </span>
         <div
-          class="brd-c-iIBnpv"
+          class="brd-c-bRVPOb"
           data-testid="editor-toc-block-item-content-panel"
+          style="max-height: 0px;"
         />
       </div>
     </div>

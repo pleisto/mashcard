@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment, ReactNode } from 'react'
 import { Editor } from '@tiptap/core'
 import Text from '@tiptap/extension-text'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
@@ -15,8 +15,8 @@ export interface TocNode {
   item: TocItem
 }
 
-const createContentFromNode = (node: ProsemirrorNode): React.ReactNode => {
-  const content: React.ReactNode[] = []
+const createContentFromNode = (node: ProsemirrorNode): ReactNode => {
+  const content: ReactNode[] = []
   node.content.forEach(node => {
     switch (node.type.name) {
       case Text.name:
@@ -37,7 +37,7 @@ const createContentFromNode = (node: ProsemirrorNode): React.ReactNode => {
   })
 
   if (content.filter(i => i).length === 0) return null
-  return content.map((node, index) => <React.Fragment key={index}>{node}</React.Fragment>)
+  return content.map((node, index) => <Fragment key={index}>{node}</Fragment>)
 }
 
 const findTocNode = (node: ProsemirrorNode, pos: number): TocNode | undefined => {
