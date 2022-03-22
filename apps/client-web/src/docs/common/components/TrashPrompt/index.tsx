@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
-import { Alert, Button, ConfirmDialog } from '@brickdoc/design-system'
+import { Button, ConfirmDialog } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockHardDeleteInput,
   BlockRestoreInput,
   useBlockHardDeleteMutation,
-  useBlockRestoreMutation
+  useBlockRestoreMutation,
+  useBlockCreateMutation,
+  useGetPageBlocksQuery
 } from '@/BrickdocGraphQL'
 import { useNavigate } from 'react-router-dom'
 import { queryPageBlocks } from '../../graphql'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
 import { useApolloClient } from '@apollo/client'
+import * as Root from './index.style'
 
 interface TrashPromptProps {
   docMeta: NonNullDocMeta
 }
 
-export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain } }) => {
+export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain, pathArray } }) => {
   const { t } = useDocsI18n()
   const client = useApolloClient()
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState<boolean>(false)
@@ -25,6 +28,8 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain 
 
   const [blockHardDelete] = useBlockHardDeleteMutation()
   const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryPageBlocks] })
+  const [blockCreate] = useBlockCreateMutation()
+  const { data, refetch } = useGetPageBlocksQuery({ variables: { domain } })
 
   const navigate = useNavigate()
 
@@ -53,17 +58,34 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain 
   }
 
   const onConfirmDelete = async (): Promise<void> => {
+    let path = `/${domain}`
     setHardDeleteConfirmLoading(true)
     const input: BlockHardDeleteInput = { id }
     await blockHardDelete({ variables: { input } })
+    if (pathArray?.length) {
+      path = `/${domain}/${pathArray[pathArray.length - 1].id}`
+    } else {
+      const hasPages = data?.pageBlocks?.length
+      if (hasPages && data.pageBlocks?.[0]?.id) {
+        path = `/${domain}/${data.pageBlocks[0].id}`
+      } else {
+        const { data: blockCreateData } = await blockCreate({ variables: { input: { title: '' } } })
+        if (blockCreateData?.blockCreate?.id) {
+          await refetch()
+          setHardDeleteModalVisible(false)
+          setHardDeleteConfirmLoading(false)
+          return navigate(`/${domain}/${blockCreateData?.blockCreate?.id}`, { replace: true })
+        }
+      }
+    }
     setHardDeleteModalVisible(false)
     setHardDeleteConfirmLoading(false)
-    navigate(`/${domain}`)
+    navigate(path)
   }
 
   return (
     <>
-      <Alert
+      <Root.TrashAlert
         message={t('trash.in_trash_prompt')}
         type="error"
         icon={false}

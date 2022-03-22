@@ -49,7 +49,7 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-Ymfja"
+                      class="brd-c-bsmMAn"
                       data-testid="content-icon"
                     >
                       🔆
@@ -297,7 +297,7 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-Ymfja"
+                      class="brd-c-bsmMAn"
                       data-testid="content-icon"
                     >
                       🔆
@@ -677,7 +677,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-Ymfja"
+                      class="brd-c-bsmMAn"
                       data-testid="content-icon"
                     >
                       🔆
@@ -969,7 +969,7 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-Ymfja"
+                      class="brd-c-bsmMAn"
                       data-testid="content-icon"
                     >
                       🔆
@@ -1217,7 +1217,7 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-Ymfja"
+                      class="brd-c-bsmMAn"
                       data-testid="content-icon"
                     >
                       🔆
@@ -1478,7 +1478,7 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                       />
                     </div>
                     <a
-                      class="brd-c-Ymfja"
+                      class="brd-c-bsmMAn"
                       data-testid="content-icon"
                     >
                       🔆

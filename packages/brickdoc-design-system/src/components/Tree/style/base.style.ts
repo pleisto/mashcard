@@ -104,7 +104,7 @@ export const ContentIcon = styled('a', {
   marginRight: '4px',
   position: 'relative',
   [`& + ${ContentAction}`]: {
-    width: `calc(100% - ${theme.space.lg} - ${theme.space.xl})`
+    width: `calc(100% - ${theme.space.lg} - ${theme.space.xl} - 4px)`
   },
   '&:hover,&:active': {
     textDecoration: 'none'
