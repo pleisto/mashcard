@@ -32,6 +32,7 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   }
 }
 
+// eslint-disable-next-line complexity
 export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
   switch (v.type) {
     case 'number':
@@ -51,6 +52,12 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
       return v.result.name(pageId)
     case 'Column':
       return `${v.result.spreadsheet.name()}.${v.result.name}`
+    case 'Row':
+      return `[${v.result.rowIndex}] ${truncateArray(v.result.cells.map(c => c.value)).join(', ')}`
+    case 'Range':
+      return `${v.result.columnSize}*${v.result.rowSize}`
+    case 'Cell':
+      return `${v.result.value}`
     case 'Predicate':
       return `[${v.operator}] ${displayValue(v.result, pageId)}`
     case 'Record':
@@ -160,6 +167,11 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
         return { type: 'Error', result: `Spreadsheet ${result.result.blockId} not found`, errorKind: 'deps' }
       }
     }
+  }
+
+  if (result.type === 'Range') {
+    const spreadsheet = ctx.formulaContext.findSpreadsheet(result.result.spreadsheetId)
+    return { type: 'Range', result: { ...result.result, spreadsheet } }
   }
 
   if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {

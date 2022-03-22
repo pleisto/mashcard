@@ -67,6 +67,7 @@
     "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
-    "test:jest": "run -T jest"
+    "test:jest": "run -T jest",
+    "test:jest:fix": "run -T jest --silent -u"
   }
 }

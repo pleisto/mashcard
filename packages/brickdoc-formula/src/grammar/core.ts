@@ -619,7 +619,7 @@ const generateTask = async ({
     }
   }
 
-  // TODO check isChanged
+  // TODO effect check isChanged
 
   // Execute
   // 1. Non async

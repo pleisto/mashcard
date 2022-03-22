@@ -157,7 +157,13 @@ export const LambdaArgumentNumber = createToken({ name: 'LambdaArgumentNumber', 
 
 export const NumberLiteral = createToken({
   name: 'NumberLiteral',
-  pattern: /[0-9]+[.]?[0-9]*([eE][+-][0-9]+)?/
+  pattern: /[0-9]+/
+  // pattern: /[0-9]+[.]?[0-9]*([eE][+-][0-9]+)?/
+})
+
+export const DecimalLiteral = createToken({
+  name: 'DecimalLiteral',
+  pattern: /[0-9]+\.[0-9]+/
 })
 
 export const BooleanLiteral = createToken({
@@ -252,6 +258,8 @@ export const allTokens = [
   Sharp, // #
   DoubleColon, // ::
   Colon, // :
+
+  DecimalLiteral,
   Dot, // .
 
   UUID,

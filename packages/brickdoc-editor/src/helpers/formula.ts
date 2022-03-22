@@ -161,7 +161,7 @@ const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined): stri
     return text
   }
 
-  if (!attrs.renderText) {
+  if (!attrs.renderText || typeof attrs.renderText === 'string') {
     return attrs.display === text ? attrs.value : text
   }
 

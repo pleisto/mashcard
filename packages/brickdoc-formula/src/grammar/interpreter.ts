@@ -15,9 +15,10 @@ import {
   FormulaType,
   ExpressionType,
   BlockResult,
-  StringResult
+  StringResult,
+  CellResult
 } from '../types'
-import { ColumnClass, Row, SpreadsheetType } from '../controls'
+import { Row, SpreadsheetType } from '../controls'
 import { extractSubType, parseString, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
 import {
@@ -40,10 +41,11 @@ import {
 import { BlockClass } from '../controls/block'
 import { ParserInstance } from './parser'
 
-interface ExpressionArgument {
+export interface ExpressionArgument {
   readonly type: ExpressionType
   readonly firstArgumentType?: FormulaType
   readonly finalTypes: ExpressionType[]
+  skipCheck?: boolean
   lazy?: boolean
   chainArgs?: any
 }
@@ -100,7 +102,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'boolean'
-    const typeError = runtimeCheckType(args.type, parentType, 'combineExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'combineExpression', this.ctx)
     if (typeError) {
       return typeError
     }
@@ -143,7 +145,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'any'
-    const typeError = runtimeCheckType(args.type, parentType, 'notExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'notExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const newArgs = { ...args, type: childrenType }
@@ -172,7 +174,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'any'
-    const typeError = runtimeCheckType(args.type, parentType, 'equalCompareExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'equalCompareExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const newArgs = { ...args, type: childrenType }
@@ -217,7 +219,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'boolean'
     const childrenType: FormulaType = 'number'
-    const typeError = runtimeCheckType(args.type, parentType, 'compareExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'compareExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const newArgs = { ...args, type: childrenType }
@@ -269,7 +271,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     }
 
     const parentType: FormulaType = 'boolean'
-    const typeError = runtimeCheckType(args.type, parentType, 'inExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'inExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const result = await this.visit(ctx.lhs, { ...args, type: ['number', 'boolean', 'null', 'string'] })
@@ -295,10 +297,10 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
       const row = spreadsheet.listRows().find((row: Row) => {
         const firstCellValue =
-          spreadsheet.findCellDisplayData({
+          spreadsheet.findCellValue({
             rowId: row.rowId,
             columnId: firstColumn.columnId
-          })?.display ?? ''
+          }) ?? ''
         if (operator === 'ExactIn') {
           return firstCellValue === match
         } else {
@@ -318,8 +320,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       }
 
       const row = spreadsheet.listRows().find((row: Row) => {
-        const cellValue =
-          spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display ?? ''
+        const cellValue = spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId }) ?? ''
         if (operator === 'ExactIn') {
           return cellValue === match
         } else {
@@ -358,7 +359,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'string'
     const childrenType: FormulaType = 'string'
-    const typeError = runtimeCheckType(args.type, parentType, 'concatExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'concatExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const newArgs = { ...args, type: childrenType }
@@ -396,7 +397,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'number'
     const childrenType: FormulaType = 'number'
-    const typeError = runtimeCheckType(args.type, parentType, 'additionExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'additionExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const newArgs = { ...args, type: childrenType }
@@ -445,7 +446,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     const parentType: FormulaType = 'number'
     const childrenType: FormulaType = 'number'
-    const typeError = runtimeCheckType(args.type, parentType, 'multiplicationExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'multiplicationExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const newArgs = { ...args, type: childrenType }
@@ -485,7 +486,50 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     return result
   }
 
-  // TODO runtime type check
+  async rangeExpression(
+    ctx: { lhs: CstNode | CstNode[]; rhs: any[] },
+    args: ExpressionArgument
+  ): Promise<AnyTypeResult> {
+    if (!ctx.rhs) {
+      return this.visit(ctx.lhs, args)
+    }
+
+    const { result: startCell }: CellResult = await this.visit(ctx.lhs, args)
+    const { result: endCell }: CellResult = await this.visit(ctx.rhs, args)
+    const spreadsheet = this.ctx.formulaContext.findSpreadsheet(startCell.spreadsheetId)
+
+    if (!spreadsheet) {
+      return { type: 'Error', result: 'Spreadsheet not found', errorKind: 'runtime' }
+    }
+
+    const columnIndexMax = Math.max(startCell.columnIndex, endCell.columnIndex)
+    const columnIndexMin = Math.min(startCell.columnIndex, endCell.columnIndex)
+    const rowIndexMax = Math.max(startCell.rowIndex, endCell.rowIndex)
+    const rowIndexMin = Math.min(startCell.rowIndex, endCell.rowIndex)
+
+    const columnIds = spreadsheet
+      .listColumns()
+      .filter(c => c.index >= columnIndexMin && c.index <= columnIndexMax)
+      .map(c => c.columnId)
+    const rowIds = spreadsheet
+      .listRows()
+      .filter(r => r.rowIndex >= rowIndexMin && r.rowIndex <= rowIndexMax)
+      .map(r => r.rowId)
+
+    return {
+      type: 'Range',
+      result: {
+        startCell,
+        spreadsheetId: startCell.spreadsheetId,
+        columnIds,
+        rowIds,
+        endCell,
+        columnSize: columnIndexMax - columnIndexMin + 1,
+        rowSize: rowIndexMax - rowIndexMin + 1
+      }
+    }
+  }
+
   async chainExpression(
     ctx: { lhs: CstNode | CstNode[]; rhs: any[] },
     args: ExpressionArgument
@@ -497,7 +541,6 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     let result: AnyTypeResult = await this.visit(ctx.lhs, { ...args, type: 'any' })
     if (shouldReturnEarly(result)) return result
 
-    // eslint-disable-next-line complexity
     for (const cst of ctx.rhs) {
       if (shouldReturnEarly(result)) break
 
@@ -509,32 +552,8 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       if (cst.name === 'keyExpression') {
         const { result: key } = await this.visit(cst, { ...args, type: 'any' })
 
-        if (result.type === 'Block') {
-          const name = key
-          const variable = this.ctx.formulaContext.findVariableByName(result.result.id, name)
-          if (!variable || !variable.savedT) {
-            result = { type: 'Error', result: `Variable "${name}" not found`, errorKind: 'runtime' }
-            continue
-          }
-
-          // if (['constant', 'unknown'].includes(variable.t.kind)) {
-          if (variable.savedT.task.async) {
-            result = (await variable.savedT.task.variableValue).result
-          } else {
-            result = variable.savedT.task.variableValue.result
-          }
-          continue
-
-          // result = this.visit(variable.t.cst!, args)
-          // return true
-        }
-
-        if (result.type === 'Spreadsheet') {
-          const name = key
-          const column = result.result.getColumnByName(name)
-          result = column
-            ? { type: 'Column', result: new ColumnClass(result.result, column) }
-            : { type: 'Error', result: `Column ${key} not found`, errorKind: 'runtime' }
+        if (result.type === 'Block' || result.type === 'Spreadsheet' || result.type === 'Column') {
+          result = await result.result.handleInterpret(key)
           continue
         }
 
@@ -546,6 +565,20 @@ export class FormulaInterpreter extends InterpretCstVisitor {
             result = { type: 'Error', result: `Key ${key} not found`, errorKind: 'runtime' }
           }
 
+          continue
+        }
+
+        if (result.type === 'Array') {
+          const number = Number(key)
+          if (isNaN(number)) {
+            result = { type: 'Error', result: `Need a number: ${key}`, errorKind: 'syntax' }
+          } else {
+            result = result.result[number - 1] || {
+              type: 'Error',
+              result: `Index ${number} out of bounds`,
+              errorKind: 'runtime'
+            }
+          }
           continue
         }
 
@@ -561,7 +594,68 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       throw new Error(`Unexpected CST node ${cst.name}`)
     }
 
-    const typeError = runtimeCheckType(args.type, result.type, 'chainExpression', this.ctx)
+    const typeError = runtimeCheckType(args, result.type, 'chainExpression', this.ctx)
+    if (shouldReturnEarly(typeError)) return typeError!
+
+    return result
+  }
+
+  async accessExpression(
+    ctx: { lhs: CstNode | CstNode[]; rhs: any[] },
+    args: ExpressionArgument
+  ): Promise<AnyTypeResult> {
+    if (!ctx.rhs) {
+      return this.visit(ctx.lhs, args)
+    }
+
+    let result: AnyTypeResult = await this.visit(ctx.lhs, { ...args, type: 'any' })
+    if (shouldReturnEarly(result)) return result
+
+    for (const cst of ctx.rhs) {
+      if (shouldReturnEarly(result)) break
+
+      const { result: key } = await this.visit(cst, { ...args, type: 'any' })
+
+      if (result.type === 'Block' || result.type === 'Spreadsheet' || result.type === 'Column') {
+        result = await result.result.handleInterpret(key)
+        continue
+      }
+
+      if (result.type === 'Record') {
+        const value = result.result[key]
+        if (value) {
+          result = value
+        } else {
+          result = { type: 'Error', result: `Key ${key} not found`, errorKind: 'runtime' }
+        }
+
+        continue
+      }
+
+      if (result.type === 'Array') {
+        const number = Number(key)
+        if (isNaN(number)) {
+          result = { type: 'Error', result: `Need a number: ${key}`, errorKind: 'syntax' }
+        } else {
+          result = result.result[number - 1] || {
+            type: 'Error',
+            result: `Index ${number} out of bounds`,
+            errorKind: 'runtime'
+          }
+        }
+        continue
+      }
+
+      if (result.type === 'Reference') {
+        result = { type: 'Reference', result: { ...result.result, attribute: key } }
+        continue
+      }
+
+      result = { type: 'Error', result: `Access not supported for ${result.type}`, errorKind: 'runtime' }
+      continue
+    }
+
+    const typeError = runtimeCheckType(args, result.type, 'accessExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     return result
@@ -572,6 +666,8 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       return this.FunctionNameExpression(ctx, args)
     } else if (ctx.StringLiteral) {
       return this.StringLiteralExpression(ctx, args)
+    } else if (ctx.NumberLiteral) {
+      return this.NumberLiteralExpression(ctx, { ...args, skipCheck: true })
     } else {
       throw new Error('Unexpected key expression')
     }
@@ -638,7 +734,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     args: ExpressionArgument
   ): Promise<PredicateResult | ErrorResult> {
     const parentType: FormulaType = 'Predicate'
-    const typeError = runtimeCheckType(args.type, parentType, 'predicateExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'predicateExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     let operator: PredicateOperator
@@ -683,7 +779,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
   async arrayExpression(ctx: { Arguments: CstNode | CstNode[] }, args: ExpressionArgument): Promise<AnyTypeResult> {
     const parentType: FormulaType = 'Array'
-    const typeError = runtimeCheckType(args.type, parentType, 'arrayExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'arrayExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const arrayArgs: AnyTypeResult[] = []
@@ -697,7 +793,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
   async recordExpression(ctx: any, args: ExpressionArgument): Promise<AnyTypeResult> {
     const parentType: FormulaType = 'Record'
-    const typeError = runtimeCheckType(args.type, parentType, 'recordExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'recordExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     if (!ctx.recordField) {
@@ -737,7 +833,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     args: ExpressionArgument
   ): AnyTypeResult {
     const parentType: FormulaType = 'string'
-    const typeError = runtimeCheckType(args.type, parentType, 'StringLiteralExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'StringLiteralExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     const str = ctx.StringLiteral[0].image
@@ -746,7 +842,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
   FunctionNameExpression(ctx: { FunctionName: Array<{ image: any }> }, args: ExpressionArgument): AnyTypeResult {
     const parentType: FormulaType = 'string'
-    const typeError = runtimeCheckType(args.type, parentType, 'FunctionNameExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'FunctionNameExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     return { result: ctx.FunctionName[0].image, type: 'string' }
@@ -767,7 +863,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       return this.visit(ctx.BooleanLiteralExpression, args)
     } else if (ctx.NullLiteral) {
       const parentType: FormulaType = 'null'
-      const typeError = runtimeCheckType(args.type, parentType, 'constantExpression', this.ctx)
+      const typeError = runtimeCheckType(args, parentType, 'constantExpression', this.ctx)
       if (shouldReturnEarly(typeError)) return typeError!
 
       return { type: 'null', result: null }
@@ -795,7 +891,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     if (formulaName?.kind === 'Spreadsheet') {
       const parentType: FormulaType = 'Spreadsheet'
-      const typeError = runtimeCheckType(args.type, parentType, 'blockExpression', this.ctx)
+      const typeError = runtimeCheckType(args, parentType, 'blockExpression', this.ctx)
       if (shouldReturnEarly(typeError)) return typeError!
 
       const spreadsheet = this.ctx.formulaContext.findSpreadsheet(namespaceId)
@@ -807,7 +903,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
 
     if (formulaName?.kind === 'Block') {
       const parentType: FormulaType = 'Block'
-      const typeError = runtimeCheckType(args.type, parentType, 'blockExpression', this.ctx)
+      const typeError = runtimeCheckType(args, parentType, 'blockExpression', this.ctx)
       if (shouldReturnEarly(typeError)) return typeError!
 
       const block = new BlockClass(this.ctx.formulaContext, { id: namespaceId })
@@ -840,7 +936,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       return { type: 'Error', result: `Argument ${number} not found`, errorKind: 'runtime' }
     } else if (ctx.Input) {
       const parentType: FormulaType = 'Record'
-      const typeError = runtimeCheckType(args.type, parentType, 'lazyVariableExpression', this.ctx)
+      const typeError = runtimeCheckType(args, parentType, 'lazyVariableExpression', this.ctx)
       if (shouldReturnEarly(typeError)) return typeError!
 
       return {
@@ -855,14 +951,16 @@ export class FormulaInterpreter extends InterpretCstVisitor {
   }
 
   NumberLiteralExpression(
-    ctx: { NumberLiteral: Array<{ image: any }>; Sign: any; Minus: any },
+    ctx: { NumberLiteral: Array<{ image: any }>; DecimalLiteral: any; Sign: any; Minus: any },
     args: ExpressionArgument
   ): NumberResult | ErrorResult {
     const parentType: FormulaType = 'number'
-    const typeError = runtimeCheckType(args.type, parentType, 'NumberLiteralExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'NumberLiteralExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
-    const number = Number(ctx.NumberLiteral[0].image)
+    const image = ctx.DecimalLiteral ? ctx.DecimalLiteral[0].image : ctx.NumberLiteral[0].image
+    const number = Number(image)
+
     const numberAfterSign = ctx.Sign ? number * 0.01 : number
 
     return { result: ctx.Minus ? numberAfterSign * -1 : numberAfterSign, type: 'number' }
@@ -873,7 +971,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     args: ExpressionArgument
   ): BooleanResult | ErrorResult {
     const parentType: FormulaType = 'boolean'
-    const typeError = runtimeCheckType(args.type, parentType, 'BooleanLiteralExpression', this.ctx)
+    const typeError = runtimeCheckType(args, parentType, 'BooleanLiteralExpression', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
     return { result: ['true'].includes(ctx.BooleanLiteral[0].image), type: 'boolean' }
   }
@@ -902,7 +1000,7 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       throw new Error(`Feature ${clause.feature} not enabled`)
     }
 
-    const typeError = runtimeCheckType(args.type, clause.returns, 'FunctionCall', this.ctx)
+    const typeError = runtimeCheckType(args, clause.returns, 'FunctionCall', this.ctx)
     if (shouldReturnEarly(typeError)) return typeError!
 
     let functionArgs: AnyTypeResult[] = []

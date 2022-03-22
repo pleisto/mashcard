@@ -1,3 +1,4 @@
+import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import {
   ColumnId,
   ColumnName,
@@ -9,7 +10,11 @@ import {
   uuid,
   VariableMetadata,
   ContextInterface,
-  VariableDisplayData
+  VariableDisplayData,
+  AnyTypeResult,
+  CodeFragment,
+  ErrorMessage,
+  FormulaType
 } from '../types'
 
 export interface ControlType {
@@ -32,10 +37,23 @@ export interface BlockInitializer {
   id: NamespaceId
 }
 
+type handleInterpretType = (name: string) => Promise<AnyTypeResult>
+export interface handleCodeFragmentsResult {
+  errors: ErrorMessage[]
+  firstArgumentType: FormulaType | undefined
+  codeFragments: CodeFragment[]
+}
+type handleCodeFragmentsType = (
+  visitor: CodeFragmentVisitor,
+  name: string,
+  rhsCodeFragments: CodeFragment[]
+) => handleCodeFragmentsResult
 export interface BlockType extends BlockInitializer {
   _formulaContext: ContextInterface
   name: (pageId: NamespaceId) => string
   persistence: () => BlockInitializer
+  handleCodeFragments: handleCodeFragmentsType
+  handleInterpret: handleInterpretType
 }
 
 export interface ColumnInitializer {
@@ -47,19 +65,39 @@ export interface ColumnInitializer {
 
 export interface ColumnType extends ColumnInitializer {
   spreadsheet: SpreadsheetType
-  cells: () => Cell[]
+  handleCodeFragments: handleCodeFragmentsType
+  handleInterpret: handleInterpretType
+  cells: () => CellType[]
 }
 
 export interface Row {
   rowId: uuid
+  rowIndex: number
 }
 
-export interface Cell {
+export interface RowType extends Row {
+  cells: CellType[]
+}
+
+export interface RangeType {
+  spreadsheetId: uuid
+  columnSize: number
+  rowSize: number
+  rowIds: uuid[]
+  columnIds: uuid[]
+  startCell: CellType
+  endCell: CellType
+}
+
+export interface CellType {
+  spreadsheetId: uuid
   cellId: uuid
   columnId: ColumnId
   rowId: uuid
+  columnIndex: number
+  rowIndex: number
   value: string
-  data: object
+  displayData: VariableDisplayData | undefined
 }
 
 export interface SpreadsheetInitializer {
@@ -69,7 +107,7 @@ export interface SpreadsheetInitializer {
   name: string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
-  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
+  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => CellType[]
 }
 
 export interface SpreadsheetDynamicPersistence {
@@ -77,7 +115,7 @@ export interface SpreadsheetDynamicPersistence {
   spreadsheetName: string
   columns: ColumnInitializer[]
   rows: Row[]
-  cells: Cell[]
+  cells: CellType[]
 }
 
 export interface SpreadsheetAllPersistence {
@@ -91,12 +129,15 @@ export interface SpreadsheetType {
   blockId: NamespaceId
   dynamic: boolean
   persistence?: SpreadsheetDynamicPersistence
+  handleCodeFragments: handleCodeFragmentsType
+  handleInterpret: handleInterpretType
   columnCount: () => number
   rowCount: () => number
   name: () => string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
-  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
+  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => CellType[]
+  findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined
   findCellDisplayData: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => VariableDisplayData | undefined
   getRow: (rowId: uuid) => Row | undefined
   getColumnById: (columnId: ColumnId) => ColumnInitializer | undefined

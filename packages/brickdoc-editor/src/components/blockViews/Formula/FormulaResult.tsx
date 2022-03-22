@@ -5,10 +5,12 @@ import {
   errorIsFatal,
   ErrorMessage,
   fetchResult,
+  resultToColorType,
   VariableData
 } from '@brickdoc/formula'
 import './Formula.less'
 import { FormulaValue } from './FormulaValue'
+import { FORMULA_ICONS } from '../../../helpers'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined
@@ -24,12 +26,16 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId 
     return <></>
   }
 
+  const result = fetchResult(variableT)
+  const colorType = resultToColorType(result)
+  const icon = FORMULA_ICONS[colorType]
+
   const error: ErrorMessage | undefined =
     !variableT.task.async && !variableT.task.variableValue.success
       ? { message: variableT.task.variableValue.result.result, type: variableT.task.variableValue.result.errorKind }
       : undefined
 
-  const result = error ? (
+  const formulaResult = error ? (
     <span className="formula-result-error">
       <span className="formula-result-error-type">{error.type}</span>
       <span className="formula-result-error-message">{error.message}</span>
@@ -41,12 +47,13 @@ export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId 
         displayData={dumpDisplayResultForDisplay(variableT)}
         display={displayValue(fetchResult(variableT), pageId)}
       />
+      <span className="formula-result-ok-icon">{icon}</span>
     </span>
   )
 
   return (
     <>
-      <div className="formula-result">{result}</div>
+      <div className="formula-result">{formulaResult}</div>
       <div className="formula-divider" />
     </>
   )

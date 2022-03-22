@@ -108,7 +108,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
           }
 
           return {
-            'data-renderText': attributes.renderText
+            'data-renderText': JSON.stringify(attributes.renderText)
           }
         }
       },
@@ -122,7 +122,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
           }
 
           return {
-            'data-attrs': attributes.attrs
+            'data-attrs': JSON.stringify(attributes.attrs)
           }
         }
       },

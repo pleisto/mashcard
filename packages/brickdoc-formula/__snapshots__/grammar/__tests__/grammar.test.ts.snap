@@ -1,5 +1,515 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Simple test case [Array access [] 1] =[2, "foo", true][2] // => foo 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LBracket",
+    "display": "[",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "[",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"foo\\"",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "\\"foo\\"",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "BooleanLiteral",
+    "display": "true",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "boolean",
+    "value": "true",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBracket",
+    "display": "]",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "]",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LBracket",
+    "display": "[",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "[",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBracket",
+    "display": "]",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "]",
+  },
+]
+`;
+
+exports[`Simple test case [Array access 1] =[2, "foo", true].2 // => foo 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LBracket",
+    "display": "[",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "[",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"foo\\"",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "\\"foo\\"",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "BooleanLiteral",
+    "display": "true",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "boolean",
+    "value": "true",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBracket",
+    "display": "]",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "]",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+]
+`;
+
+exports[`Simple test case [Array access 2] =[2, "foo", true].4 // => Index 4 out of bounds 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LBracket",
+    "display": "[",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "[",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"foo\\"",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "\\"foo\\"",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "BooleanLiteral",
+    "display": "true",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "boolean",
+    "value": "true",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBracket",
+    "display": "]",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "]",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "4",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "4",
+  },
+]
+`;
+
+exports[`Simple test case [Array access 3] =[2, "foo", true].foo // => Need a number: foo 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LBracket",
+    "display": "[",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "[",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"foo\\"",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "\\"foo\\"",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ",",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "BooleanLiteral",
+    "display": "true",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "boolean",
+    "value": "true",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBracket",
+    "display": "]",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "]",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionName",
+    "display": "foo",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "foo",
+  },
+]
+`;
+
 exports[`Simple test case [Array ok] =[2, "foo", true] // => [object Object],[object Object],[object Object] 1`] = `
 Array [
   Object {
@@ -712,10 +1222,10 @@ Object {
                 "lhs": Array [
                   Object {
                     "children": Object {
-                      "rhs": Array [
+                      "lhs": Array [
                         Object {
                           "children": Object {
-                            "lhs": Array [
+                            "rhs": Array [
                               Object {
                                 "children": Object {
                                   "lhs": Array [
@@ -736,134 +1246,148 @@ Object {
                                                                 "lhs": Array [
                                                                   Object {
                                                                     "children": Object {
-                                                                      "predicateExpression": Array [
+                                                                      "lhs": Array [
                                                                         Object {
                                                                           "children": Object {
-                                                                            "CompareOperator": Array [
-                                                                              Object {
-                                                                                "endColumn": 3,
-                                                                                "endLine": 1,
-                                                                                "endOffset": 2,
-                                                                                "image": ">=",
-                                                                                "startColumn": 2,
-                                                                                "startLine": 1,
-                                                                                "startOffset": 1,
-                                                                                "tokenType": Object {
-                                                                                  "CATEGORIES": Array [
-                                                                                    Object {
-                                                                                      "CATEGORIES": Array [],
-                                                                                      "PATTERN": /NOT_APPLICABLE/,
-                                                                                      "categoryMatches": Array [
-                                                                                        17,
-                                                                                        20,
-                                                                                        23,
-                                                                                        24,
-                                                                                      ],
-                                                                                      "categoryMatchesMap": Object {
-                                                                                        "17": true,
-                                                                                        "20": true,
-                                                                                        "23": true,
-                                                                                        "24": true,
-                                                                                      },
-                                                                                      "isParent": true,
-                                                                                      "name": "CompareOperator",
-                                                                                      "tokenTypeIdx": 4,
-                                                                                    },
-                                                                                  ],
-                                                                                  "PATTERN": />=/,
-                                                                                  "categoryMatches": Array [],
-                                                                                  "categoryMatchesMap": Object {},
-                                                                                  "isParent": false,
-                                                                                  "name": "GreaterThanEqual",
-                                                                                  "tokenTypeIdx": 23,
-                                                                                },
-                                                                                "tokenTypeIdx": 23,
-                                                                              },
-                                                                            ],
-                                                                            "simpleAtomicExpression": Array [
+                                                                            "lhs": Array [
                                                                               Object {
                                                                                 "children": Object {
-                                                                                  "constantExpression": Array [
+                                                                                  "predicateExpression": Array [
                                                                                     Object {
                                                                                       "children": Object {
-                                                                                        "BooleanLiteralExpression": Array [
+                                                                                        "CompareOperator": Array [
+                                                                                          Object {
+                                                                                            "endColumn": 3,
+                                                                                            "endLine": 1,
+                                                                                            "endOffset": 2,
+                                                                                            "image": ">=",
+                                                                                            "startColumn": 2,
+                                                                                            "startLine": 1,
+                                                                                            "startOffset": 1,
+                                                                                            "tokenType": Object {
+                                                                                              "CATEGORIES": Array [
+                                                                                                Object {
+                                                                                                  "CATEGORIES": Array [],
+                                                                                                  "PATTERN": /NOT_APPLICABLE/,
+                                                                                                  "categoryMatches": Array [
+                                                                                                    17,
+                                                                                                    20,
+                                                                                                    23,
+                                                                                                    24,
+                                                                                                  ],
+                                                                                                  "categoryMatchesMap": Object {
+                                                                                                    "17": true,
+                                                                                                    "20": true,
+                                                                                                    "23": true,
+                                                                                                    "24": true,
+                                                                                                  },
+                                                                                                  "isParent": true,
+                                                                                                  "name": "CompareOperator",
+                                                                                                  "tokenTypeIdx": 4,
+                                                                                                },
+                                                                                              ],
+                                                                                              "PATTERN": />=/,
+                                                                                              "categoryMatches": Array [],
+                                                                                              "categoryMatchesMap": Object {},
+                                                                                              "isParent": false,
+                                                                                              "name": "GreaterThanEqual",
+                                                                                              "tokenTypeIdx": 23,
+                                                                                            },
+                                                                                            "tokenTypeIdx": 23,
+                                                                                          },
+                                                                                        ],
+                                                                                        "simpleAtomicExpression": Array [
                                                                                           Object {
                                                                                             "children": Object {
-                                                                                              "BooleanLiteral": Array [
+                                                                                              "constantExpression": Array [
                                                                                                 Object {
-                                                                                                  "endColumn": 7,
-                                                                                                  "endLine": 1,
-                                                                                                  "endOffset": 6,
-                                                                                                  "image": "true",
-                                                                                                  "startColumn": 4,
-                                                                                                  "startLine": 1,
-                                                                                                  "startOffset": 3,
-                                                                                                  "tokenType": Object {
-                                                                                                    "CATEGORIES": Array [],
-                                                                                                    "PATTERN": /true\\|false/,
-                                                                                                    "categoryMatches": Array [],
-                                                                                                    "categoryMatchesMap": Object {},
-                                                                                                    "isParent": false,
-                                                                                                    "name": "BooleanLiteral",
-                                                                                                    "tokenTypeIdx": 45,
+                                                                                                  "children": Object {
+                                                                                                    "BooleanLiteralExpression": Array [
+                                                                                                      Object {
+                                                                                                        "children": Object {
+                                                                                                          "BooleanLiteral": Array [
+                                                                                                            Object {
+                                                                                                              "endColumn": 7,
+                                                                                                              "endLine": 1,
+                                                                                                              "endOffset": 6,
+                                                                                                              "image": "true",
+                                                                                                              "startColumn": 4,
+                                                                                                              "startLine": 1,
+                                                                                                              "startOffset": 3,
+                                                                                                              "tokenType": Object {
+                                                                                                                "CATEGORIES": Array [],
+                                                                                                                "PATTERN": /true\\|false/,
+                                                                                                                "categoryMatches": Array [],
+                                                                                                                "categoryMatchesMap": Object {},
+                                                                                                                "isParent": false,
+                                                                                                                "name": "BooleanLiteral",
+                                                                                                                "tokenTypeIdx": 46,
+                                                                                                              },
+                                                                                                              "tokenTypeIdx": 46,
+                                                                                                            },
+                                                                                                          ],
+                                                                                                        },
+                                                                                                        "name": "BooleanLiteralExpression",
+                                                                                                      },
+                                                                                                    ],
                                                                                                   },
-                                                                                                  "tokenTypeIdx": 45,
+                                                                                                  "name": "constantExpression",
                                                                                                 },
                                                                                               ],
                                                                                             },
-                                                                                            "name": "BooleanLiteralExpression",
+                                                                                            "name": "simpleAtomicExpression",
                                                                                           },
                                                                                         ],
                                                                                       },
-                                                                                      "name": "constantExpression",
+                                                                                      "name": "predicateExpression",
                                                                                     },
                                                                                   ],
                                                                                 },
-                                                                                "name": "simpleAtomicExpression",
+                                                                                "name": "atomicExpression",
                                                                               },
                                                                             ],
                                                                           },
-                                                                          "name": "predicateExpression",
+                                                                          "name": "chainExpression",
                                                                         },
                                                                       ],
                                                                     },
-                                                                    "name": "atomicExpression",
+                                                                    "name": "rangeExpression",
                                                                   },
                                                                 ],
                                                               },
-                                                              "name": "chainExpression",
+                                                              "name": "multiplicationExpression",
                                                             },
                                                           ],
                                                         },
-                                                        "name": "multiplicationExpression",
+                                                        "name": "additionExpression",
                                                       },
                                                     ],
                                                   },
-                                                  "name": "additionExpression",
+                                                  "name": "concatExpression",
                                                 },
                                               ],
                                             },
-                                            "name": "concatExpression",
+                                            "name": "inExpression",
                                           },
                                         ],
                                       },
-                                      "name": "inExpression",
+                                      "name": "compareExpression",
                                     },
                                   ],
                                 },
-                                "name": "compareExpression",
+                                "name": "equalCompareExpression",
                               },
                             ],
                           },
-                          "name": "equalCompareExpression",
+                          "name": "notExpression",
                         },
                       ],
                     },
-                    "name": "notExpression",
+                    "name": "combineExpression",
                   },
                 ],
               },
-              "name": "combineExpression",
+              "name": "accessExpression",
             },
           ],
         },
@@ -1317,46 +1841,6 @@ Array [
 ]
 `;
 
-exports[`Simple test case [TODO chain type 3] =1.START_WITH("123") // => ✗ 1`] = `
-Array [
-  Object {
-    "attrs": undefined,
-    "code": "Equal",
-    "display": "=",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "=",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "NumberLiteral",
-    "display": "1.",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "number",
-    "value": "1.",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "parseErrorOther",
-    "display": "START_WITH(\\"123\\")",
-    "errors": Array [
-      Object {
-        "message": "Not all input parsed: START_WITH",
-        "type": "parse",
-      },
-    ],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "START_WITH(\\"123\\")",
-  },
-]
-`;
-
 exports[`Simple test case [TODO chinese] = 中文 // => ✗ 1`] = `
 Array [
   Object {
@@ -1560,55 +2044,6 @@ Array [
 ]
 `;
 
-exports[`Simple test case [TODO record number as key] ={1: "a"} // => ✗ 1`] = `
-Array [
-  Object {
-    "attrs": undefined,
-    "code": "Equal",
-    "display": "=",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "=",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "LBrace",
-    "display": "{",
-    "errors": Array [
-      Object {
-        "message": "Missing closing parenthesis",
-        "type": "syntax",
-      },
-      Object {
-        "message": "TODO mismatch token recordExpression",
-        "type": "parse",
-      },
-    ],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "{",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "parseErrorOther",
-    "display": "1:\\"a\\"}",
-    "errors": Array [
-      Object {
-        "message": "TODO mismatch token recordExpression",
-        "type": "parse",
-      },
-    ],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "1:\\"a\\"}",
-  },
-]
-`;
-
 exports[`Simple test case [WhiteSpace /\\s+/] =1 +　2　 　- 　 3 // => 0 1`] = `
 Array [
   Object {
@@ -1738,7 +2173,7 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "Minus",
+    "code": "NumberLiteral",
     "display": "-",
     "errors": Array [
       Object {
@@ -1746,13 +2181,13 @@ Array [
         "type": "syntax",
       },
       Object {
-        "message": "TODO mismatch token NumberLiteralExpression",
+        "message": "Parse error: \\"\\"",
         "type": "parse",
       },
     ],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "number",
     "value": "-",
   },
 ]
@@ -1851,23 +2286,13 @@ Array [
   },
   Object {
     "attrs": undefined,
-    "code": "Minus",
-    "display": "-",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "-",
-  },
-  Object {
-    "attrs": undefined,
     "code": "NumberLiteral",
-    "display": "0.123",
+    "display": "-0.123",
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
     "type": "number",
-    "value": "0.123",
+    "value": "-0.123",
   },
   Object {
     "attrs": undefined,
@@ -3249,7 +3674,7 @@ Array [
 ]
 `;
 
-exports[`Simple test case [should error] =1. // => 1 1`] = `
+exports[`Simple test case [record number as key] ={1: "a"} // => [object Object] 1`] = `
 Array [
   Object {
     "attrs": undefined,
@@ -3263,18 +3688,68 @@ Array [
   },
   Object {
     "attrs": undefined,
+    "code": "LBrace",
+    "display": "{",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "{",
+  },
+  Object {
+    "attrs": undefined,
     "code": "NumberLiteral",
-    "display": "1.",
+    "display": "1",
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
     "type": "number",
-    "value": "1.",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Colon",
+    "display": ":",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ":",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": " ",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"a\\"",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "string",
+    "value": "\\"a\\"",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBrace",
+    "display": "}",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "}",
   },
 ]
 `;
 
-exports[`Simple test case [should success] =1.T() // => ✗ 1`] = `
+exports[`Simple test case [should success] =1.T() // => 1 1`] = `
 Array [
   Object {
     "attrs": undefined,
@@ -3289,27 +3764,52 @@ Array [
   Object {
     "attrs": undefined,
     "code": "NumberLiteral",
-    "display": "1.",
+    "display": "1",
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
     "type": "number",
-    "value": "1.",
+    "value": "1",
   },
   Object {
     "attrs": undefined,
-    "code": "parseErrorOther",
-    "display": "T()",
-    "errors": Array [
-      Object {
-        "message": "Not all input parsed: T",
-        "type": "parse",
-      },
-    ],
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
     "hide": false,
     "renderText": undefined,
     "type": "any",
-    "value": "T()",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "T",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "T",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "(",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ")",
   },
 ]
 `;

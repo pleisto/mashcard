@@ -71,6 +71,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const onUpdateFormula = React.useCallback(
     (variable: VariableInterface | undefined): void => {
       if (variable) {
+        // TODO check no persist
         const displayData = dumpDisplayResultForDisplay(variable.t)
         const value = displayValue(fetchResult(variable.t), rootId)
         devLog('Spreadsheet cell formula updated', { cellId, value, displayData })

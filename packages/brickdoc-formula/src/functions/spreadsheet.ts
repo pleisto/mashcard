@@ -17,27 +17,21 @@ import { buildPredicate } from '../grammar/lambda'
 export const SUM = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
   const rows: number[] = column.spreadsheet
     .listRows()
-    .map(row =>
-      Number(column.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display ?? 0)
-    )
+    .map(row => Number(column.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId }) ?? 0))
   return { type: 'number', result: rows.reduce((a, b) => a + b, 0) }
 }
 
 export const MAX = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
   const rows: number[] = column.spreadsheet
     .listRows()
-    .map(row =>
-      Number(column.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display ?? 0)
-    )
+    .map(row => Number(column.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId }) ?? 0))
   return { type: 'number', result: Math.max(...rows) }
 }
 
 export const COUNTA = (ctx: FunctionContext, { result: column }: ColumnResult): NumberResult | ErrorResult => {
   const counta = column.spreadsheet
     .listRows()
-    .filter(
-      row => !!column.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display
-    ).length
+    .filter(row => !!column.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId })).length
   return { type: 'number', result: counta }
 }
 
@@ -63,12 +57,8 @@ export const SUMIFS = (
   let sum: number = 0
 
   column1.spreadsheet.listRows().forEach(row => {
-    const value1 = Number(
-      column1.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column1.columnId })?.display ?? 0
-    )
-    const value2 = Number(
-      column1.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column2.columnId })?.display ?? 0
-    )
+    const value1 = Number(column1.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column1.columnId }) ?? 0)
+    const value2 = Number(column1.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column2.columnId }) ?? 0)
     if (value1 && predicateFunction(value2)) {
       sum += value1
     }
@@ -92,12 +82,8 @@ export const AVERAGEIFS = (
   let count: number = 0
 
   column1.spreadsheet.listRows().forEach(row => {
-    const value1 = Number(
-      column1.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column1.columnId })?.display ?? 0
-    )
-    const value2 = Number(
-      column1.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column2.columnId })?.display ?? 0
-    )
+    const value1 = Number(column1.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column1.columnId }) ?? 0)
+    const value2 = Number(column1.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column2.columnId }) ?? 0)
     if (value1 && predicateFunction(value2)) {
       count += 1
       sum += value1
@@ -120,9 +106,7 @@ export const COUNTIFS = (
   let sum: number = 0
 
   column.spreadsheet.listRows().forEach(row => {
-    const value = Number(
-      column.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display ?? 0
-    )
+    const value = Number(column.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId }) ?? 0)
     if (predicateFunction(value)) {
       sum += 1
     }
@@ -143,12 +127,8 @@ export const SUMPRODUCT = (
   let sum: number = 0
 
   column1.spreadsheet.listRows().forEach(row => {
-    const value1 = Number(
-      column1.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column1.columnId })?.display ?? 0
-    )
-    const value2 = Number(
-      column1.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column2.columnId })?.display ?? 0
-    )
+    const value1 = Number(column1.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column1.columnId }) ?? 0)
+    const value2 = Number(column1.spreadsheet.findCellValue({ rowId: row.rowId, columnId: column2.columnId }) ?? 0)
     sum += value1 * value2
   })
 
@@ -173,7 +153,7 @@ export const XLOOKUP = (
     let bol = false
     const compareData = Number(lookupValue)
     const data = Number(
-      lookupColumn.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: lookupColumn.columnId })?.display ?? 0
+      lookupColumn.spreadsheet.findCellValue({ rowId: row.rowId, columnId: lookupColumn.columnId }) ?? 0
     )
 
     switch (matchMode) {
@@ -191,9 +171,7 @@ export const XLOOKUP = (
     if (bol) {
       result = {
         type: 'string',
-        result:
-          lookupColumn.spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: returnColumn.columnId })
-            ?.display ?? ''
+        result: lookupColumn.spreadsheet.findCellValue({ rowId: row.rowId, columnId: returnColumn.columnId }) ?? ''
       }
     }
   })
@@ -232,16 +210,16 @@ export const VLOOKUP = (
   const matchData = String(match)
 
   spreadsheet.listRows().forEach(row => {
-    const firstCellValue = spreadsheet.findCellDisplayData({
+    const firstCellValue = spreadsheet.findCellValue({
       rowId: row.rowId,
       columnId: firstColumn.columnId
-    })?.display
+    })
     const bol = range ? Number(firstCellValue) <= Number(matchData) : firstCellValue === matchData
 
     if (bol) {
       result = {
         type: 'string',
-        result: spreadsheet.findCellDisplayData({ rowId: row.rowId, columnId: column.columnId })?.display ?? ''
+        result: spreadsheet.findCellValue({ rowId: row.rowId, columnId: column.columnId }) ?? ''
       }
     }
   })

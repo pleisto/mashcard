@@ -9,6 +9,7 @@ import {
   FormulaType,
   FunctionContext
 } from '../types'
+import { ExpressionArgument } from './interpreter'
 import { FormulaLexer } from './lexer'
 
 // TODO: dirty hack to get the string literal value
@@ -151,11 +152,15 @@ export const intersectType = (
 }
 
 export const runtimeCheckType = (
-  expectedArgumentType: ExpressionType,
+  { type: expectedArgumentType, skipCheck }: ExpressionArgument,
   contextResultType: FormulaType,
   label: string,
   ctx: FunctionContext
 ): ErrorResult | undefined => {
+  if (skipCheck) {
+    return undefined
+  }
+
   const { errorMessages } = intersectType(expectedArgumentType, contextResultType, `[Runtime] ${label}`, ctx)
 
   if (errorMessages.length > 0) {

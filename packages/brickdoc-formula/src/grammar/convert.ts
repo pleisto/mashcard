@@ -37,29 +37,7 @@ export const currentBlockKey = (namespaceId: NamespaceId, pageId: NamespaceId): 
 export const columnKey = (namespaceId: NamespaceId, columnId: ColumnId): ColumnKey => `#${namespaceId}.${columnId}`
 
 export const variableRenderText = (variable: VariableInterface, pageId: NamespaceId): CodeFragment['renderText'] => {
-  return (text, { display }, prevText) => {
-    const [valid, finalText] = maybeEncodeString(text)
-    let result = finalText
-    let prefix = ''
-
-    if (!valid && text !== display) {
-      if (text.startsWith(display)) {
-        const body = maybeEncodeString(display)[1]
-        const rest = text.substring(display.length)
-        result = body.concat(rest)
-      }
-
-      if (text.endsWith(display)) {
-        result = maybeEncodeString(display)[1]
-        prefix = text.substring(0, text.length - display.length)
-      }
-    }
-
-    const namespaceId = pageId === variable.t.namespaceId ? 'CurrentBlock' : variable.t.namespaceId
-
-    const resultAfterNamespace = prevText === '.' ? result : `#${namespaceId}.${result}`
-    return prefix.concat(resultAfterNamespace)
-  }
+  return undefined
 }
 
 export const columnRenderText = (column: ColumnType): CodeFragment['renderText'] => {

@@ -1,12 +1,24 @@
-import { ContextInterface, NamespaceId, StringResult, uuid, VariableDisplayData } from '../types'
+import { CodeFragmentVisitor, column2attrs, columnRenderText } from '../grammar'
+import {
+  AnyTypeResult,
+  CodeFragment,
+  ContextInterface,
+  ErrorMessage,
+  NamespaceId,
+  StringResult,
+  uuid,
+  VariableDisplayData
+} from '../types'
+import { ColumnClass } from './column'
 import {
   SpreadsheetType,
   SpreadsheetInitializer,
   SpreadsheetDynamicPersistence,
   Row,
   ColumnInitializer,
-  Cell,
-  SpreadsheetAllPersistence
+  CellType,
+  SpreadsheetAllPersistence,
+  handleCodeFragmentsResult
 } from './types'
 
 export class SpreadsheetClass implements SpreadsheetType {
@@ -17,7 +29,7 @@ export class SpreadsheetClass implements SpreadsheetType {
   name: () => string
   listColumns: () => ColumnInitializer[]
   listRows: () => Row[]
-  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
+  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => CellType[]
 
   constructor({
     blockId,
@@ -48,6 +60,111 @@ export class SpreadsheetClass implements SpreadsheetType {
 
     if (dynamic) {
       this.persistence = this.persistDynamic()
+    }
+  }
+
+  async handleInterpret(name: string): Promise<AnyTypeResult> {
+    const number = Number(name)
+    if (!isNaN(number)) {
+      return this.handleInterpretRow(number)
+    }
+    return this.handleInterpretColumn(name)
+  }
+
+  private handleInterpretColumn(name: string): AnyTypeResult {
+    const column = this.getColumnByName(name)
+
+    if (column) {
+      return { type: 'Column', result: new ColumnClass(this, column) }
+    }
+
+    return { type: 'Error', result: `Column ${name} not found`, errorKind: 'runtime' }
+  }
+
+  private handleInterpretRow(number: number): AnyTypeResult {
+    const row = this.listRows()[number]
+    if (!row) {
+      return { type: 'Error', result: `Row ${number} not found`, errorKind: 'runtime' }
+    }
+    const cells: CellType[] = this.listCells({ rowId: row.rowId })
+
+    return { type: 'Row', result: { ...row, cells } }
+  }
+
+  handleCodeFragments(
+    visitor: CodeFragmentVisitor,
+    name: string,
+    codeFragments: CodeFragment[]
+  ): handleCodeFragmentsResult {
+    const number = Number(name)
+    if (!isNaN(number)) {
+      return this.handleCodeFragmentsRow(visitor, number, codeFragments)
+    }
+    return this.handleCodeFragmentsColumn(visitor, name, codeFragments)
+  }
+
+  private handleCodeFragmentsRow(
+    visitor: CodeFragmentVisitor,
+    number: number,
+    codeFragments: CodeFragment[]
+  ): handleCodeFragmentsResult {
+    const errors: ErrorMessage[] = []
+    const row = this.listRows()[number]
+
+    if (!row) {
+      errors.push({ type: 'deps', message: `Row "${number}" not found` })
+      return {
+        errors,
+        firstArgumentType: undefined,
+        codeFragments
+      }
+    }
+
+    const firstArgumentType = 'Row'
+    const finalRhsCodeFragments = codeFragments
+    return {
+      errors,
+      firstArgumentType,
+      codeFragments: finalRhsCodeFragments
+    }
+  }
+
+  private handleCodeFragmentsColumn(
+    visitor: CodeFragmentVisitor,
+    name: string,
+    codeFragments: CodeFragment[]
+  ): handleCodeFragmentsResult {
+    const errors: ErrorMessage[] = []
+    const column = this._formulaContext.findColumnByName(this.blockId, name)
+
+    if (!column) {
+      errors.push({ type: 'deps', message: `Column "${name}" not found` })
+      return {
+        errors,
+        firstArgumentType: undefined,
+        codeFragments
+      }
+    }
+
+    const firstArgumentType = 'Column'
+    let finalRhsCodeFragments = codeFragments
+
+    if (['StringLiteral', 'FunctionName'].includes(codeFragments[0].code)) {
+      finalRhsCodeFragments = [
+        {
+          ...codeFragments[0],
+          display: name,
+          code: 'Column',
+          attrs: column2attrs(column),
+          renderText: columnRenderText(column)
+        }
+      ]
+    }
+
+    return {
+      errors,
+      firstArgumentType,
+      codeFragments: finalRhsCodeFragments
     }
   }
 
@@ -90,13 +207,22 @@ export class SpreadsheetClass implements SpreadsheetType {
     return this.listColumns().find(col => col.name === name)
   }
 
+  findCellValue({ rowId, columnId }: { rowId: uuid; columnId: uuid }): string | undefined {
+    const cell = this.listCells({ rowId, columnId })[0]
+    if (!cell) {
+      return undefined
+    }
+
+    return cell.displayData?.display ?? cell.value
+  }
+
   findCellDisplayData({ rowId, columnId }: { rowId: uuid; columnId: uuid }): VariableDisplayData | undefined {
     const cell = this.listCells({ rowId, columnId })[0]
     if (!cell) {
       return undefined
     }
 
-    return (cell.data as any).displayData
+    return cell.displayData
   }
 
   toArray(): string[][] {

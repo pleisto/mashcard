@@ -33,7 +33,8 @@ import {
   Self,
   Input,
   LambdaArgumentNumber,
-  CurrentBlock
+  CurrentBlock,
+  DecimalLiteral
 } from './lexer'
 
 const errorProvider: IParserErrorMessageProvider = {
@@ -80,10 +81,19 @@ export class FormulaParser extends CstParser {
   })
 
   public expression = this.RULE('expression', () => {
-    this.SUBRULE(this.combineExpression, { LABEL: 'lhs' })
+    this.SUBRULE(this.accessExpression, { LABEL: 'lhs' })
     this.MANY(() => {
       this.CONSUME(Semicolon)
-      this.SUBRULE2(this.combineExpression, { LABEL: 'rhs' })
+      this.SUBRULE2(this.accessExpression, { LABEL: 'rhs' })
+    })
+  })
+
+  public accessExpression = this.RULE('accessExpression', () => {
+    this.SUBRULE(this.combineExpression, { LABEL: 'lhs' })
+    this.MANY(() => {
+      this.CONSUME(LBracket)
+      this.SUBRULE2(this.expression, { LABEL: 'rhs' })
+      this.CONSUME(RBracket)
     })
   })
 
@@ -144,9 +154,17 @@ export class FormulaParser extends CstParser {
   })
 
   public multiplicationExpression = this.RULE('multiplicationExpression', () => {
-    this.SUBRULE(this.chainExpression, { LABEL: 'lhs' })
+    this.SUBRULE(this.rangeExpression, { LABEL: 'lhs' })
     this.MANY(() => {
       this.CONSUME(MultiplicationOperator)
+      this.SUBRULE2(this.rangeExpression, { LABEL: 'rhs' })
+    })
+  })
+
+  public rangeExpression = this.RULE('rangeExpression', () => {
+    this.SUBRULE(this.chainExpression, { LABEL: 'lhs' })
+    this.OPTION(() => {
+      this.CONSUME(Colon)
       this.SUBRULE2(this.chainExpression, { LABEL: 'rhs' })
     })
   })
@@ -165,7 +183,11 @@ export class FormulaParser extends CstParser {
   })
 
   public keyExpression = this.RULE('keyExpression', () => {
-    this.OR([{ ALT: () => this.CONSUME(StringLiteral) }, { ALT: () => this.CONSUME(FunctionName) }])
+    this.OR([
+      { ALT: () => this.CONSUME(StringLiteral) },
+      { ALT: () => this.CONSUME(NumberLiteral) },
+      { ALT: () => this.CONSUME(FunctionName) }
+    ])
   })
 
   public simpleAtomicExpression = this.RULE('simpleAtomicExpression', () => {
@@ -262,8 +284,9 @@ export class FormulaParser extends CstParser {
     this.OPTION(() => {
       this.CONSUME(Minus)
     })
-    this.CONSUME(NumberLiteral)
-    this.OPTION2(() => {
+
+    this.OR([{ ALT: () => this.CONSUME(NumberLiteral) }, { ALT: () => this.CONSUME(DecimalLiteral) }])
+    this.OPTION3(() => {
       this.CONSUME(Sign)
     })
   })

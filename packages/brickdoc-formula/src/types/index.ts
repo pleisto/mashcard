@@ -1,10 +1,24 @@
 import { CstNode } from 'chevrotain'
-import { ButtonType, InputType, ColumnType, SpreadsheetType, SelectType, SwitchType, BlockType } from '../controls'
+import {
+  ButtonType,
+  InputType,
+  ColumnType,
+  SpreadsheetType,
+  SelectType,
+  SwitchType,
+  BlockType,
+  CellType,
+  RowType,
+  RangeType
+} from '../controls'
 
 type FormulaBasicType = 'number' | 'string' | 'boolean' | 'null'
 type FormulaObjectType =
   | 'Date'
   | 'Column'
+  | 'Row'
+  | 'Cell'
+  | 'Range'
   | 'Spreadsheet'
   | 'Block'
   | 'Blank'
@@ -46,6 +60,9 @@ export type SpecialDefaultVariableName =
   | 'date'
   | 'blank'
   | 'column'
+  | 'row'
+  | 'cell'
+  | 'range'
   | 'block'
   | 'var'
   | 'null'
@@ -192,6 +209,21 @@ export interface ColumnResult extends BaseResult {
   type: 'Column'
 }
 
+export interface RowResult extends BaseResult {
+  result: RowType
+  type: 'Row'
+}
+
+export interface CellResult extends BaseResult {
+  result: CellType
+  type: 'Cell'
+}
+
+export interface RangeResult extends BaseResult {
+  result: RangeType
+  type: 'Range'
+}
+
 export interface SpreadsheetResult extends BaseResult {
   result: SpreadsheetType
   type: 'Spreadsheet'
@@ -301,6 +333,9 @@ export type AnyTypeResult =
   | ArrayResult
   | DateResult
   | ColumnResult
+  | RowResult
+  | RangeResult
+  | CellResult
   | SpreadsheetResult
   | BlockResult
   | PredicateResult

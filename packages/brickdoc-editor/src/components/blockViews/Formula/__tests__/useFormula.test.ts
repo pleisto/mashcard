@@ -110,41 +110,40 @@ const simpleCommonTestCases = [
   },
 
   // Variable simple
-  { input: 'num1', positions: [1, 2, 4], newInput: `#CurrentBlock.num1`, resultData: 2 },
-  { input: '"num1"', newInput: `#CurrentBlock.num1`, resultData: 2 },
-  { input: `#CurrentBlock.num1`, resultData: 2 },
-  { input: `#${namespaceId}."num1"`, newInput: `#CurrentBlock.num1`, resultData: 2 },
+  { input: 'num1', positions: [1, 2, 4], resultData: 2 },
+  { input: '"num1"', newInput: `num1`, resultData: 2 },
+  { input: `#CurrentBlock.num1`, newInput: 'num1', resultData: 2 },
+  { input: `#${namespaceId}."num1"`, newInput: `num1`, resultData: 2 },
 
   // Variable complex
-  { input: 'foo_bar', positions: [3, 9], newInput: `#CurrentBlock.foo_bar`, resultData: 123123 },
-  { input: `#CurrentBlock.foo_bar`, resultData: 123123 },
+  { input: 'foo_bar', positions: [3, 9], resultData: 123123 },
+  { input: `#CurrentBlock.foo_bar`, newInput: `foo_bar`, resultData: 123123 },
 
   // Variable with space
   {
     input: '  num1  +  1  ',
     positions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-    newInput: `  #CurrentBlock.num1  +  1  `,
     resultData: 3
   },
-  { input: ' "num1" + 1 ', newInput: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
-  { input: ` #${namespaceId}.num1 + 1 `, newInput: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
-  { input: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
-  { input: ` #${namespaceId}."num1" + 1 `, newInput: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
+  { input: ' "num1" + 1 ', newInput: ` num1 + 1 `, resultData: 3 },
+  { input: ` #${namespaceId}.num1 + 1 `, newInput: ` num1 + 1 `, resultData: 3 },
+  { input: ` #CurrentBlock.num1 + 1 `, newInput: ` num1 + 1 `, resultData: 3 },
+  { input: ` #${namespaceId}."num1" + 1 `, newInput: ` num1 + 1 `, resultData: 3 },
 
   // Variable complex input
+  { input: `+foo_bar`, resultData: 'Parse error: "+"' },
   { input: `+#CurrentBlock.foo_bar`, resultData: 'Parse error: "+"' },
-  { input: `#CurrentBlock.foo_bar+`, resultData: 'Missing right expression' },
+  { input: `#CurrentBlock.foo_bar+`, newInput: `foo_bar+`, resultData: 'Missing right expression' },
   { input: `#CurrentBlock.foo_ba1r`, resultData: 'Variable "foo_ba1r" not found' },
 
   // Variable with error
   {
     input: ' " " & num1 ',
     positions: [5, 6, 7, 8, 9, 10, 11, 12],
-    newInput: ` " " & #CurrentBlock.num1 `,
     resultData: 'Expected string but got number'
   },
-  { input: ' num1 & " "', newInput: ` #CurrentBlock.num1 & " "`, resultData: 'Expected string but got number' },
-  { input: 'a+num1', positions: [1], newInput: `a+#CurrentBlock.num1`, resultData: 'Unknown function a' }
+  { input: ' num1 & " "', resultData: 'Expected string but got number' },
+  { input: 'a+num1', positions: [1], resultData: 'Unknown function a' }
 ]
 
 const simpleNormalTestCases = [

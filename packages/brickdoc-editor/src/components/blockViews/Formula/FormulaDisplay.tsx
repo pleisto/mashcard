@@ -6,7 +6,8 @@ import {
   SpreadsheetType,
   FormulaSourceType,
   VariableDisplayData,
-  loadDisplayResult
+  loadDisplayResult,
+  RangeType
 } from '@brickdoc/formula'
 import { FormulaValue } from './FormulaValue'
 import { FormulaInput } from './Render/FormulaInput'
@@ -85,6 +86,18 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
         preview = (
           <BlockContainer>
             <FormulaSpreadsheet spreadsheet={newDisplayData.result.result as SpreadsheetType} />
+          </BlockContainer>
+        )
+        break
+      case 'Range':
+        preview = (
+          <BlockContainer>
+            <FormulaSpreadsheet
+              spreadsheet={(newDisplayData.result.result as any).spreadsheet}
+              columnIds={(newDisplayData.result.result as RangeType).columnIds}
+              rowIds={(newDisplayData.result.result as RangeType).rowIds}
+              clip={true}
+            />
           </BlockContainer>
         )
         break

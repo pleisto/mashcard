@@ -11,7 +11,7 @@ export const ColumnPreview: React.FC<ColumnPreviewProps> = ({ column, rootId }) 
     <div className="brickdoc">
       <div className="ProseMirror">
         <div className="autocomplete-preview-column">
-          <FormulaSpreadsheet spreadsheet={column.spreadsheet} columnIds={[column.columnId]} />
+          <FormulaSpreadsheet spreadsheet={column.spreadsheet} columnIds={[column.columnId]} select={true} />
         </div>
       </div>
     </div>

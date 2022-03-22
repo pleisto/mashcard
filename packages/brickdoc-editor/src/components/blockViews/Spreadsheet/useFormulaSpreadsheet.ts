@@ -1,5 +1,5 @@
 import React from 'react'
-import { SpreadsheetType, SpreadsheetClass, ColumnInitializer, Row, Cell } from '@brickdoc/formula'
+import { SpreadsheetType, SpreadsheetClass, ColumnInitializer, Row, CellType } from '@brickdoc/formula'
 import { BlockInput } from '@brickdoc/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayTitle } from './helper'
@@ -26,14 +26,15 @@ export function useFormulaSpreadsheet({
   React.useEffect(() => {
     if (!formulaContext) return
     const spreadsheetName = title || 'Untitled Spreadsheet'
-    const columnData: ColumnInitializer[] = columns.map(column => ({
+    const columnData: ColumnInitializer[] = columns.map((column, index) => ({
       columnId: column.uuid,
       namespaceId: blockId,
       name: columnDisplayTitle(column),
-      index: column.sort
+      // index: column.sort
+      index
     }))
 
-    const rowData: Row[] = rows.map(row => ({ rowId: row.id }))
+    const rowData: Row[] = rows.map((row, rowIndex) => ({ rowId: row.id, rowIndex }))
 
     const spreadsheet: SpreadsheetType = new SpreadsheetClass({
       ctx: { formulaContext },
@@ -43,18 +44,26 @@ export function useFormulaSpreadsheet({
       listColumns: () => columnData,
       listRows: () => rowData,
       listCells: ({ rowId, columnId }) => {
-        const finalRowIds = rowId ? [rowId] : rows.map(row => row.id)
-        const finalColumnIds = columnId ? [columnId] : columns.map(column => column.uuid)
+        const rowIdsWithIndex = rows.map((row, index) => ({ rowId: row.id, rowIndex: index }))
+        const columnIdsWithIndex = columns.map((column, index) => ({ columnId: column.uuid, columnIndex: index }))
 
-        return finalRowIds.flatMap(rowId =>
-          finalColumnIds.map(columnId => {
+        const finalRowIdsWithIndex = rowId ? rowIdsWithIndex.filter(row => row.rowId === rowId) : rowIdsWithIndex
+        const finalColumnIdsWithIndex = columnId
+          ? columnIdsWithIndex.filter(column => column.columnId === columnId)
+          : columnIdsWithIndex
+
+        return finalRowIdsWithIndex.flatMap(({ rowId, rowIndex }) =>
+          finalColumnIdsWithIndex.map(({ columnId, columnIndex }) => {
             const cellBlock = getCellBlock(rowId, columnId)
-            const cell: Cell = {
+            const cell: CellType = {
+              spreadsheetId: blockId,
               columnId,
+              rowIndex,
+              columnIndex,
               rowId,
               cellId: cellBlock.id,
               value: cellBlock.text,
-              data: cellBlock.data
+              displayData: cellBlock.data.displayData
             }
             return cell
           })
