@@ -81,10 +81,17 @@ export const BrickList = createExtension<BrickListOptions, BrickListAttributes>(
                     let newPos = null
                     const prevPos = $prev.pos
                     state.doc.nodesBetween(selection.from, selection.from, (curNode, curPos) => {
-                      tr.deleteRange(curPos, curPos + curNode.nodeSize)
+                      const curEnd = curPos + curNode.nodeSize
+                      tr.deleteRange(curPos, curEnd)
                       tr.insert(prevPos, curNode.content)
                       newPos = prevPos
-                      // TODO: merge below list
+                      const newEndPos = prevPos + curNode.nodeSize
+                      state.doc.nodesBetween(curEnd + 1, curEnd + 1, (nextNode, nextPos) => {
+                        if (nextNode.type === prevNode.type) {
+                          tr.deleteRange(newEndPos, newEndPos + nextNode.nodeSize)
+                          tr.insert(newEndPos, nextNode.content)
+                        }
+                      })
                     })
                     if (newPos) {
                       const newSelection = new TextSelection(tr.doc.resolve(newPos))
@@ -93,7 +100,6 @@ export const BrickList = createExtension<BrickListOptions, BrickListAttributes>(
                       return true
                     }
                   }
-                  // throw new Error('for the right backward.')
                 }
               }
             }
