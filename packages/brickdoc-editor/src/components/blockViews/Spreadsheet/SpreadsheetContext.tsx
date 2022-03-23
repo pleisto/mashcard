@@ -1,6 +1,7 @@
 import React from 'react'
 import { devLog } from '@brickdoc/design-system'
 import { BrickdocEventBus, SpreadsheetUpdateCellValue } from '@brickdoc/schema'
+import { parsePasteTable } from './helper'
 
 export interface SpreadsheetSelectionCellId {
   columnId: string
@@ -122,7 +123,7 @@ export const useSpreadsheetContext = (options: {
   )
 
   const pasteToSpreadsheet = React.useCallback(
-    text => {
+    (pasteMatrix: string[][]) => {
       let { rowIdx, columnIdx } = getSelectedIdx()
       if (rowIdx === rowIds.length) {
         rowIdx = 0
@@ -130,7 +131,7 @@ export const useSpreadsheetContext = (options: {
       if (columnIdx === columnIds.length) {
         columnIdx = 0
       }
-      const pasteMatrix = text.split('\n').map((r: string) => r.split('\t'))
+
       pasteMatrix.forEach((r: string[], ri: number) => {
         r.forEach((c: string, ci: number) => {
           const rowId = rowIds[rowIdx + ri]
@@ -188,7 +189,10 @@ export const useSpreadsheetContext = (options: {
       const { cellIds, columnIds: selectedColumnIds, rowIds: selectedRowIds } = selection
       const thisSelected = cellIds?.length ?? selectedRowIds?.length ?? selectedColumnIds?.length
       if (text && thisSelected) {
-        pasteToSpreadsheet(text)
+        const pasteMatrix = parsePasteTable(text)
+        devLog('paste to spreadsheet', [text])
+        devLog('parsed', pasteMatrix)
+        pasteToSpreadsheet(pasteMatrix)
         e.preventDefault()
       }
     }
