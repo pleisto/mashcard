@@ -187,7 +187,7 @@ export const BULLETED_LIST: BlockCommandItem = {
   alias: ['bul'],
   squareIcon: <ListUnordered square={true} />,
   icon: <ListUnordered />,
-  setBlock: chain => chain.setParagraph().toggleBrickList(BulletList.name),
+  setBlock: chain => chain.setToBrickList(BulletList.name),
   toggleBlock: chain => chain.toggleBrickList(BulletList.name),
   insertBlockAt: (chain, position) =>
     chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(BulletList.name)
@@ -199,7 +199,7 @@ export const ORDERED_LIST: BlockCommandItem = {
   alias: ['num', 'numberedList'],
   squareIcon: <ListOrdered square={true} />,
   icon: <ListOrdered />,
-  setBlock: chain => chain.setParagraph().toggleBrickList(OrderedList.name),
+  setBlock: chain => chain.setToBrickList(OrderedList.name),
   toggleBlock: chain => chain.toggleBrickList(OrderedList.name),
   insertBlockAt: (chain, position) =>
     chain.insertBlockAt({ type: Paragraph.name }, position).wrapInBrickList(OrderedList.name)
