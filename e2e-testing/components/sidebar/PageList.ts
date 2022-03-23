@@ -45,6 +45,10 @@ export class PageList extends BasePage {
   async addSubPage(index: number = 0): Promise<void> {
     await this.hover(index)
     await this.waitForResponse('GetPageBlocks', this.getAddSubPageButton(index).click())
+    const arrowClass = await this.getArrow().getAttribute('class')
+    if (!arrowClass?.includes('-isExpanded-true')) {
+      await this.getArrow().click()
+    }
   }
 
   async removePage(index: number = 0): Promise<void> {
