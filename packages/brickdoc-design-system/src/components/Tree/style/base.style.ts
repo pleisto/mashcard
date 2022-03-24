@@ -130,7 +130,7 @@ export const Base = styled('div', {
   background: 'transparent',
   marginRight: theme.space.xxxs,
   marginBottom: theme.space.xxxs,
-
+  outline: 'none',
   '&:hover': {
     include: ['treeDefault'],
     background: theme.colors.secondaryHover,
@@ -139,10 +139,6 @@ export const Base = styled('div', {
 
   '&:active:hover': {
     background: theme.colors.thirdaryPressed
-  },
-
-  '&:focus-visible': {
-    outline: 'none'
   },
 
   variants: {
@@ -156,6 +152,7 @@ export const Base = styled('div', {
       true: {
         background: theme.colors.secondaryDrag,
         borderColor: rgba(44, 91, 255, 0.04),
+        outline: 'none',
         include: ['treeSelected'],
         '&:hover': {
           include: ['treeSelected'],

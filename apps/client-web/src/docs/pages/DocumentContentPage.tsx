@@ -71,15 +71,25 @@ export const DocumentContentPage: React.FC = () => {
 
   const loginDomain = currentSpace.domain
 
-  const { data, loading: getBlockInfoLoading } = useGetBlockInfoQuery({ variables: { id: docid as string, domain } })
+  const {
+    data,
+    loading: getBlockInfoLoading,
+    refetch
+  } = useGetBlockInfoQuery({ variables: { id: docid as string, domain } })
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
     refetchQueries: [queryPageBlocks]
   })
   const loading = !data || getBlockInfoLoading || createBlockLoading
   const isAnonymous = !currentUser
   const personalDomain = currentUser?.domain ?? loginDomain
+  const { state, pathname } = useLocation()
 
-  const { state } = useLocation()
+  React.useEffect(() => {
+    // https://github.com/brickdoc/brickdoc/issues/1261
+    // The cache is not updated in time during the switchover
+    refetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
 
   const docMeta: DocMeta = useMemo(() => {
     const policy = data?.blockInfo?.permission?.policy
