@@ -1,7 +1,6 @@
 import { Editor } from '@/components/document/Editor'
 import { PageList } from '@/components/sidebar/PageList'
-import { test, expect } from '@/fixtures/testFixtures'
-import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
+import { test } from '@/fixtures/testFixtures'
 
 test.describe('Editor Basic', () => {
   let editor: Editor
@@ -15,7 +14,8 @@ test.describe('Editor Basic', () => {
     await pageList.addPage()
   })
 
+  // eslint-disable-next-line jest/expect-expect
   test('Verify editor can add new line when click on the end of document', () => {
-    editor.getEditorContent().type('hello')
+    void editor.getEditorContent().type('hello')
   })
 })

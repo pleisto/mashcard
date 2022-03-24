@@ -7,7 +7,7 @@
   "module": "./src/index.ts",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "dotenv-expand": "^8.0.2"
+    "dotenv-expand": "^8.0.3"
   },
   "sideEffects": false,
   "devDependencies": {
