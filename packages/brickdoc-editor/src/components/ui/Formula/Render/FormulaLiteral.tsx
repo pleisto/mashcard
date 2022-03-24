@@ -6,5 +6,19 @@ export interface FormulaLiteralProps {
 }
 
 export const FormulaLiteral: React.FC<FormulaLiteralProps> = ({ result }) => {
-  return <span>{result.result}</span>
+  const displayValue = result.result
+  if (typeof displayValue === 'string') {
+    // use dummy div to escape html chars
+    const dummyDiv = document.createElement('div')
+    dummyDiv.textContent = displayValue
+    return (
+      <span
+        dangerouslySetInnerHTML={{
+          __html: dummyDiv.innerHTML.replaceAll('\n', '<br />')
+        }}
+      />
+    )
+  } else {
+    return <span>{displayValue}</span>
+  }
 }

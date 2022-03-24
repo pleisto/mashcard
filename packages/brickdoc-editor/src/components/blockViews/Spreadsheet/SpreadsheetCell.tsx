@@ -42,7 +42,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const externalProps = useExternalProps()
   const formulaContext = externalProps.formulaContext
   const rootId = externalProps.rootId
-  const minHeight = height ? height - 4 : undefined
+  const minHeight = height ? height - 3 : undefined
 
   const [currentBlock, setCurrentBlock] = React.useState(block)
 

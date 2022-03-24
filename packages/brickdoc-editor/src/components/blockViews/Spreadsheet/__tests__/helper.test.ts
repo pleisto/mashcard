@@ -1,4 +1,4 @@
-import { columnDisplayIndex, parsePasteTable } from '../helper'
+import { columnDisplayIndex, columnIndexFromDisplay, parsePasteTable } from '../helper'
 
 describe('Spreadsheet Helper', () => {
   it('index to display', () => {
@@ -11,6 +11,20 @@ describe('Spreadsheet Helper', () => {
     expect(columnDisplayIndex(52)).toEqual('BA')
 
     expect(columnDisplayIndex(702)).toEqual('AAA')
+  })
+
+  it('display to index', () => {
+    expect(columnIndexFromDisplay('1')).toEqual(-1)
+
+    expect(columnIndexFromDisplay('A')).toEqual(0)
+    expect(columnIndexFromDisplay('Z')).toEqual(25)
+
+    expect(columnIndexFromDisplay('AA')).toEqual(26)
+    expect(columnIndexFromDisplay('AZ')).toEqual(51)
+
+    expect(columnIndexFromDisplay('BA')).toEqual(52)
+
+    expect(columnIndexFromDisplay('AAA')).toEqual(702)
   })
 
   it('parse pasteboard data', () => {
