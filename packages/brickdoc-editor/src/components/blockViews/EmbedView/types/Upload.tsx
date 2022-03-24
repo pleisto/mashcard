@@ -1,4 +1,4 @@
-import React from 'react'
+import { useCallback, ChangeEventHandler, FC, useContext, useEffect, useRef, useState } from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { EmbedBlockPlaceholder } from '../Placeholder'
 import { Icon, styled } from '@brickdoc/design-system'
@@ -21,16 +21,16 @@ const FileInput = styled('input', {
   display: 'none'
 })
 
-export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
+export const UploadTypeEmbedBlock: FC<UploadTypeEmbedBlockProps> = ({
   node,
   deleteNode,
   getPos,
   updateEmbedBlockAttributes
 }) => {
-  const { t } = React.useContext(EditorContext)
+  const { t } = useContext(EditorContext)
   const externalProps = useExternalProps()
 
-  const onUploaded = React.useCallback(
+  const onUploaded = useCallback(
     (data: UploadResultData): void => {
       linkStorage.set(node.attrs.uuid, data.downloadUrl ?? '')
       const fileType = getFileTypeByExtension(data.meta?.name ?? '')
@@ -42,11 +42,11 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
     [node.attrs.uuid, updateEmbedBlockAttributes]
   )
 
-  const [progress, setProgress] = React.useState<UploadProgress>()
+  const [progress, setProgress] = useState<UploadProgress>()
   const onProgress = (progress: UploadProgress): void => setProgress(progress)
 
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const handleFileInputChange = React.useCallback<React.ChangeEventHandler<HTMLInputElement>>(
+  const inputRef = useRef<HTMLInputElement>(null)
+  const handleFileInputChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     event => {
       const file = event.target.files?.[0]
       // We clear the input after a file is selected, because otherwise
@@ -66,11 +66,11 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
     },
     [externalProps.prepareFileUpload, externalProps.rootId, onUploaded]
   )
-  const handleChooseFile = React.useCallback(() => {
+  const handleChooseFile = useCallback(() => {
     inputRef.current?.click()
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const uploadDefaultFile = (): void => {
       const file = node.attrs.defaultFile as File
       const fileType = getFileTypeByExtension(file.name)
@@ -96,7 +96,7 @@ export const UploadTypeEmbedBlock: React.FC<UploadTypeEmbedBlockProps> = ({
   }, [])
 
   return (
-    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
+    <BlockContainer node={node} actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
       <EmbedBlockPlaceholder
         data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
         icon={<Icon.Upload />}

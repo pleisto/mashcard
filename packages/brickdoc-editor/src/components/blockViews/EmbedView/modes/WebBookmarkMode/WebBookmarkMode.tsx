@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { Button } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -7,22 +7,30 @@ import { BlockContainer } from '../../../BlockContainer'
 export interface WebBookmarkModeProps {
   deleteNode: NodeViewProps['deleteNode']
   getPos: NodeViewProps['getPos']
+  node: NodeViewProps['node']
   cover: string
   title: string
   description: string
   linkUrl: string
 }
 
-export const WebBookmarkMode: React.FC<WebBookmarkModeProps> = ({
+export const WebBookmarkMode: FC<WebBookmarkModeProps> = ({
   linkUrl,
   cover,
   title,
   description,
+  node,
   getPos,
   deleteNode
 }) => {
   return (
-    <BlockContainer contentForCopy={linkUrl} deleteNode={deleteNode} getPos={getPos} actionOptions={['copy', 'delete']}>
+    <BlockContainer
+      node={node}
+      contentForCopy={linkUrl}
+      deleteNode={deleteNode}
+      getPos={getPos}
+      actionOptions={['copy', 'delete']}
+    >
       <Button
         data-testid={TEST_ID_ENUM.editor.embedBlock.link.id}
         className="brickdoc-link-block-link"

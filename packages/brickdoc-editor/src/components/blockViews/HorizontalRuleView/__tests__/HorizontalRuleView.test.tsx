@@ -1,20 +1,12 @@
 import { render } from '@testing-library/react'
+import { HorizontalRuleOptions, HorizontalRuleAttributes } from '../../../../extensions'
+import { mockBlockViewProps } from '../../common/tests'
 import { HorizontalRuleView } from '../HorizontalRuleView'
 
 describe('HorizontalRuleView', () => {
-  const uuid = 'uuid'
-  const props: any = {
-    editor: {},
-    node: {
-      attrs: {
-        uuid
-      }
-    },
-    extension: {},
-    updateAttributes: () => {}
-  }
   it(`matches snapshot correctly`, () => {
-    const { container } = render(<HorizontalRuleView {...(props as any)} />)
+    const props = mockBlockViewProps<HorizontalRuleOptions, HorizontalRuleAttributes>()
+    const { container } = render(<HorizontalRuleView {...props} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })

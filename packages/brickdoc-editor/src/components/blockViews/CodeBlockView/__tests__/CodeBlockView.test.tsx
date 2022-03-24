@@ -1,13 +1,12 @@
 import { render } from '@testing-library/react'
+import { CodeBlockAttributes, CodeBlockOptions } from '../../../../extensions'
+import { mockBlockViewProps } from '../../common/tests'
 import { CodeBlockView } from '../CodeBlockView'
 
 describe('CodeBlockView', () => {
-  const uuid = 'uuid'
-  const props: any = {
-    editor: {},
+  const props = mockBlockViewProps<CodeBlockOptions, CodeBlockAttributes>({
     node: {
       attrs: {
-        uuid,
         language: 'javascript'
       }
     },
@@ -19,11 +18,11 @@ describe('CodeBlockView', () => {
           }
         }
       }
-    },
-    updateAttributes: () => {}
-  }
+    }
+  })
+
   it(`matches snapshot correctly`, () => {
-    const { container } = render(<CodeBlockView {...(props as any)} />)
+    const { container } = render(<CodeBlockView {...props} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })

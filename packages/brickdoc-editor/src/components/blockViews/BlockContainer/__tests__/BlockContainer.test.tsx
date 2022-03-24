@@ -6,9 +6,10 @@ describe('BlockContainer', () => {
   it(`changes block pointer event when editor editable state change`, () => {
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     const externalProps = new ExternalProps()
+    const node: any = { attrs: { uuid: 1 } }
     const { container, rerender } = render(
       <ExternalPropsContext.Provider value={externalProps}>
-        <BlockContainer />
+        <BlockContainer node={node} />
       </ExternalPropsContext.Provider>
     )
     // expect dom has 'pointer-event: none' style
@@ -20,7 +21,7 @@ describe('BlockContainer', () => {
 
     rerender(
       <ExternalPropsContext.Provider value={externalProps}>
-        <BlockContainer />
+        <BlockContainer node={node} />
       </ExternalPropsContext.Provider>
     )
 
@@ -29,15 +30,23 @@ describe('BlockContainer', () => {
   })
 
   it('inline', () => {
-    const { container } = render(<BlockContainer inline={true}>block</BlockContainer>)
+    const node: any = { attrs: { uuid: 1 } }
+    const { container } = render(
+      <BlockContainer node={node} inline={true}>
+        block
+      </BlockContainer>
+    )
 
     // expect dom has two pseudo span element at before and after
     expect(container.firstChild).toMatchSnapshot()
   })
 
+  // TODO: move to e2e test
   it('with actionOptions', () => {
+    const node: any = { attrs: { uuid: 1 } }
     const { container } = render(
       <BlockContainer
+        node={node}
         actionOptions={[
           {
             type: 'item',
@@ -53,10 +62,27 @@ describe('BlockContainer', () => {
   })
 
   it('with editable = false', () => {
-    const { container } = render(<BlockContainer editable={false}>block</BlockContainer>)
+    const node: any = { attrs: { uuid: 1 } }
+    const { container } = render(
+      <BlockContainer node={node} editable={false}>
+        block
+      </BlockContainer>
+    )
 
     expect(container.firstChild).toHaveStyle({
       'pointer-events': 'none'
     })
+  })
+
+  // TODO: move to e2e test
+  it('hide action options when node without uuid', () => {
+    const node: any = { attrs: {} }
+    const { container } = render(
+      <BlockContainer node={node} editable={false}>
+        block
+      </BlockContainer>
+    )
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

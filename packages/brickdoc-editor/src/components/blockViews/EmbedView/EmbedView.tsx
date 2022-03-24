@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { FC, useCallback, useRef } from 'react'
 import { Embedtype, Preview_Box } from '@brickdoc/schema'
 import { AttachmentMode, PreviewMode, WebBookmarkMode } from './modes'
 import { linkStorage, getFileTypeByExtension, FileType, getBlobUrl, getFileTypeByContentType } from '../../../helpers'
@@ -23,11 +23,11 @@ export interface EmbedBlockAttributes {
 const canFilePreview = (fileType: FileType, mode: EmbedBlockAttributes['mode']): boolean =>
   mode !== 'link' && ['pdf', 'excel', 'word', 'ppt'].includes(fileType)
 
-export const EmbedView: React.FC<EmbedViewProps> = props => {
+export const EmbedView: FC<EmbedViewProps> = props => {
   const { node, updateAttributes, deleteNode, getPos } = props
   const externalProps = useExternalProps()
-  const latestEmbedBlockAttributes = React.useRef<Partial<EmbedBlockAttributes>>({})
-  const updateEmbedBlockAttributes = React.useCallback(
+  const latestEmbedBlockAttributes = useRef<Partial<EmbedBlockAttributes>>({})
+  const updateEmbedBlockAttributes = useCallback(
     (newAttributes: Partial<EmbedBlockAttributes>, type: 'link' | 'image' | 'attachment'): void => {
       latestEmbedBlockAttributes.current = {
         ...latestEmbedBlockAttributes.current,
@@ -73,6 +73,7 @@ export const EmbedView: React.FC<EmbedViewProps> = props => {
             fileUrl={fileUrl}
             deleteNode={deleteNode}
             getPos={getPos}
+            node={node}
             updateAttachmentAttributes={updateAttachmentAttributes}
           />
         )
@@ -84,6 +85,7 @@ export const EmbedView: React.FC<EmbedViewProps> = props => {
           fileType={fileType}
           fileUrl={fileUrl}
           deleteNode={deleteNode}
+          node={node}
           getPos={getPos}
           updateAttachmentAttributes={updateAttachmentAttributes}
         />
@@ -102,6 +104,7 @@ export const EmbedView: React.FC<EmbedViewProps> = props => {
         cover={cover!}
         description={description!}
         linkUrl={linkUrl}
+        node={node}
         deleteNode={deleteNode}
         getPos={getPos}
       />

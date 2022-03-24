@@ -102,7 +102,7 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
   }, [])
 
   return (
-    <BlockContainer getPos={getPos} actionOptions={['delete']} deleteNode={deleteNode}>
+    <BlockContainer node={node} getPos={getPos} actionOptions={['delete']} deleteNode={deleteNode}>
       <Popover
         defaultVisible={node.attrs.isNew}
         trigger="click"

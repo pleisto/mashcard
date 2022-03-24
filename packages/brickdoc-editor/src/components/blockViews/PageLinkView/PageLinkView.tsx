@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { styled } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
@@ -13,9 +14,9 @@ const StyledLink = styled(Link, {
   }
 })
 
-export const PageLinkView: React.FC<PageLinkViewProps> = ({ node, extension }) => {
+export const PageLinkView: FC<PageLinkViewProps> = ({ node, extension }) => {
   return (
-    <BlockContainer inline={true}>
+    <BlockContainer node={node} inline={true}>
       <StyledLink to={node.attrs?.page?.link ?? '/'}>
         <PageLink attributes={node.attrs} options={extension.options} />
       </StyledLink>

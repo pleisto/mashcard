@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, useContext, useMemo, useState } from 'react'
 import { NodeViewContent } from '@tiptap/react'
 import { BlockContainer, BlockContainerProps } from '../BlockContainer'
 import { Input, Icon, styled, toast } from '@brickdoc/design-system'
@@ -16,19 +16,13 @@ const LanguageChecked = styled(Icon.Check, {
   fontSize: '1rem'
 })
 
-export const CodeBlockView: React.FC<CodeBlockViewProps> = ({
-  node,
-  updateAttributes,
-  extension,
-  deleteNode,
-  getPos
-}) => {
+export const CodeBlockView: FC<CodeBlockViewProps> = ({ node, updateAttributes, extension, deleteNode, getPos }) => {
   const {
     attrs: { language = defaultLanguage }
   } = node
-  const { t } = React.useContext(EditorContext)
-  const [search, setSearch] = React.useState<string | undefined>('')
-  const items: ActionItemOption[] = React.useMemo(
+  const { t } = useContext(EditorContext)
+  const [search, setSearch] = useState<string | undefined>('')
+  const items: ActionItemOption[] = useMemo(
     () =>
       ([defaultLanguage, ...languageNames] as string[])
         .filter(lang => lang.toLowerCase().includes(search?.toLowerCase() ?? ''))
@@ -91,7 +85,13 @@ export const CodeBlockView: React.FC<CodeBlockViewProps> = ({
   ]
 
   return (
-    <BlockContainer className={highlightStyle()} getPos={getPos} deleteNode={deleteNode} actionOptions={actionOptions}>
+    <BlockContainer
+      node={node}
+      className={highlightStyle()}
+      getPos={getPos}
+      deleteNode={deleteNode}
+      actionOptions={actionOptions}
+    >
       <pre>
         <NodeViewContent as="code" />
       </pre>

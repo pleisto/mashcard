@@ -7,7 +7,7 @@ import {
   Node,
   Extension
 } from '@tiptap/core'
-import { NodeViewProps } from '@tiptap/react'
+import { Editor, NodeViewProps } from '@tiptap/react'
 import { Node as ProseMirrorNode } from 'prosemirror-model'
 
 type GenericConfig = TipTapMarkConfig | TipTapNodeConfig | TipTapExtensionConfig
@@ -29,7 +29,9 @@ export interface ExtensionMeta {
   extensionType: 'mark' | 'block' | 'extension'
 }
 
-export interface BlockViewProps<ExtensionOptions, ExtensionAttributes> extends Omit<NodeViewProps, 'updateAttributes'> {
+export interface BlockViewProps<ExtensionOptions, ExtensionAttributes>
+  extends Omit<NodeViewProps, 'updateAttributes' | 'editor'> {
+  editor: Editor
   node: BlockNode<ExtensionAttributes>
   updateAttributes: (attributes: Partial<ExtensionAttributes>) => void
   extension: Node<ExtensionOptions>

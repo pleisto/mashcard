@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TocBlock matches correct snapshot 1`] = `
+exports[`TocView matches correct snapshot 1`] = `
 <div
   data-node-view-wrapper=""
   style="pointer-events: none; white-space: normal;"

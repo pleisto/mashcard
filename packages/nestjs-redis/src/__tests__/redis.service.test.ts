@@ -27,6 +27,7 @@ class RedisMockClient {
   }
 
   async del(key: string) {
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.dataStore[key]
     return true
   }

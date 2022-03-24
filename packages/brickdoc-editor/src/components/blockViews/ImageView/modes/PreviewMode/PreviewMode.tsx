@@ -1,31 +1,32 @@
-import React from 'react'
-import { NodeViewProps } from '@tiptap/react'
+import { FC, SyntheticEvent, useState } from 'react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { BlockContainer } from '../../../BlockContainer'
 import { Resizable } from 're-resizable'
 import { Skeleton, cx } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import { ImageViewProps } from '../../../../../extensions/blocks/image/meta'
 
 const MAX_WIDTH = 700
 
 export interface PreviewModeProps {
-  node: NodeViewProps['node']
-  deleteNode: NodeViewProps['deleteNode']
-  getPos: NodeViewProps['getPos']
+  node: ImageViewProps['node']
+  deleteNode: ImageViewProps['deleteNode']
+  getPos: ImageViewProps['getPos']
   url: string
   updateImageAttributes: (attrs: Record<string, any>) => void
 }
 
-export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getPos, url, updateImageAttributes }) => {
-  const [loaded, setLoaded] = React.useState(false)
-  const [showPreview, setShowPreview] = React.useState(false)
+export const PreviewMode: FC<PreviewModeProps> = ({ node, deleteNode, getPos, url, updateImageAttributes }) => {
+  const [loaded, setLoaded] = useState(false)
+  const [showPreview, setShowPreview] = useState(false)
 
   const previewImage = (): void => {
-    if ((node.attrs.image?.key && !loaded) || showPreview) return
+    if (node.attrs.image?.key && !loaded) return
+    if (showPreview) return
     setShowPreview(true)
   }
 
-  const onImageLoad = (event: React.SyntheticEvent<HTMLImageElement>): void => {
+  const onImageLoad = (event: SyntheticEvent<HTMLImageElement>): void => {
     const img = event.target as HTMLImageElement
     // Update image dimensions on loaded if there is no dimensions data before
     if (!node.attrs.image?.ratio) {
@@ -38,7 +39,13 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
   }
 
   return (
-    <BlockContainer contentForCopy={url} getPos={getPos} deleteNode={deleteNode} actionOptions={['copy', 'delete']}>
+    <BlockContainer
+      node={node}
+      contentForCopy={url}
+      getPos={getPos}
+      deleteNode={deleteNode}
+      actionOptions={['copy', 'delete']}
+    >
       <div role="cell" className="brickdoc-block-image-section-container">
         <Resizable
           lockAspectRatio={true}
@@ -97,7 +104,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({ node, deleteNode, getP
                 type="list"
                 style={
                   node.attrs.image.width
-                    ? { width: node.attrs.image.width, height: node.attrs.image.width / node.attrs.image.ratio }
+                    ? { width: node.attrs.image.width, height: node.attrs.image.width / (node.attrs.image.ratio ?? 1) }
                     : { width: MAX_WIDTH }
                 }
               />

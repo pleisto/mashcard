@@ -27,6 +27,7 @@ export const ParagraphView: React.FC<ParagraphViewProps> = props => {
 
   return (
     <BlockContainer
+      node={node}
       getPos={getPos}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}

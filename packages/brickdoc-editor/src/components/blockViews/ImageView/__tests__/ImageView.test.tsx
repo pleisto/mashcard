@@ -2,6 +2,8 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { ImageView } from '../ImageView'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { ExternalProps, ExternalPropsContext } from '../../../../context'
+import { mockBlockViewProps } from '../../common/tests'
+import { ImageOptions, ImageAttributes } from '../../../../extensions/blocks/image/meta'
 
 describe('ImageView', () => {
   const externalProps = new ExternalProps()
@@ -13,24 +15,20 @@ describe('ImageView', () => {
     'https://images.unsplash.com/photo-1628189847457-b4607de7d222?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=564&q=80'
 
   it('matches correct snapshot', () => {
-    const props: any = {
-      editor: {},
+    const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
       node: {
+        uuid: imageUuid,
         attrs: {
-          uuid: imageUuid,
           image: {
+            type: 'IMAGE',
             key: imageUrl,
             source: 'EXTERNAL',
             width: 700,
             ratio: 1
           }
         }
-      },
-      extension: {
-        options: {}
-      },
-      updateAttributes: () => {}
-    }
+      }
+    })
 
     const { container } = render(
       <ExternalPropsContext.Provider value={externalProps}>
@@ -41,19 +39,16 @@ describe('ImageView', () => {
   })
 
   it('renders pending panel when no image', () => {
-    const props: any = {
-      editor: {},
+    const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
       node: {
+        uuid: imageUuid,
         attrs: {
-          uuid: imageUuid,
-          image: {}
+          image: {
+            type: 'IMAGE'
+          }
         }
-      },
-      extension: {
-        options: {}
-      },
-      updateAttributes: () => {}
-    }
+      }
+    })
 
     render(
       <ExternalPropsContext.Provider value={externalProps}>
@@ -65,22 +60,20 @@ describe('ImageView', () => {
   })
 
   it('renders image', () => {
-    const props: any = {
-      editor: {},
+    const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
       node: {
+        uuid: imageUuid,
         attrs: {
-          uuid: imageUuid,
           image: {
+            type: 'IMAGE',
             key: imageUrl,
             source: 'EXTERNAL',
             width: 700,
             ratio: 1
           }
         }
-      },
-      extension: {},
-      updateAttributes: () => {}
-    }
+      }
+    })
 
     render(
       <ExternalPropsContext.Provider value={externalProps}>
@@ -93,12 +86,13 @@ describe('ImageView', () => {
 
   describe('Uploader Dashboard', () => {
     it('renders uploader dashboard when click add button', () => {
-      const props: any = {
-        editor: {},
+      const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
         node: {
+          uuid: imageUuid,
           attrs: {
-            uuid: imageUuid,
-            image: {}
+            image: {
+              type: 'IMAGE'
+            }
           }
         },
         extension: {
@@ -106,9 +100,8 @@ describe('ImageView', () => {
             prepareFileUpload: () => {},
             fetchUnsplashImages: () => {}
           }
-        },
-        updateAttributes: () => {}
-      }
+        }
+      })
 
       render(
         <ExternalPropsContext.Provider value={externalProps}>
@@ -122,12 +115,13 @@ describe('ImageView', () => {
     })
 
     it('embeds image by paste link', () => {
-      const props: any = {
-        editor: {},
+      const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
         node: {
+          uuid: imageUuid,
           attrs: {
-            uuid: imageUuid,
-            image: {}
+            image: {
+              type: 'IMAGE'
+            }
           }
         },
         extension: {
@@ -136,19 +130,14 @@ describe('ImageView', () => {
             fetchUnsplashImages: () => {}
           }
         },
-        updateAttributes: (attrs: any) => {
-          props.node.attrs = {
-            ...props.node.attrs,
-            ...attrs
-          }
-
+        onUpdateAttributes: () => {
           rerender(
             <ExternalPropsContext.Provider value={externalProps}>
               <ImageView {...props} />
             </ExternalPropsContext.Provider>
           )
         }
-      }
+      })
 
       const { rerender } = render(
         <ExternalPropsContext.Provider value={externalProps}>

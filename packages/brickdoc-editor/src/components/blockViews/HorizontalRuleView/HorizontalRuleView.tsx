@@ -1,10 +1,10 @@
-import React from 'react'
+import { FC } from 'react'
 import { HorizontalRuleViewProps } from '../../../extensions/blocks/horizontalRule/meta'
 import { BlockContainer } from '../BlockContainer'
 
-export const HorizontalRuleView: React.FC<HorizontalRuleViewProps> = ({ deleteNode, getPos }) => {
+export const HorizontalRuleView: FC<HorizontalRuleViewProps> = ({ node, deleteNode, getPos }) => {
   return (
-    <BlockContainer deleteNode={deleteNode} getPos={getPos} actionOptions={['delete']}>
+    <BlockContainer node={node} deleteNode={deleteNode} getPos={getPos} actionOptions={['delete']}>
       <hr />
     </BlockContainer>
   )

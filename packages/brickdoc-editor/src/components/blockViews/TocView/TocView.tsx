@@ -20,7 +20,7 @@ const TocPlaceholder = styled('span', {
   lineHeight: '1.5rem'
 })
 
-export const TocView: FC<TocViewProps> = ({ editor, deleteNode, getPos }) => {
+export const TocView: FC<TocViewProps> = ({ editor, node, deleteNode, getPos }) => {
   const [tocRoot, setTocRoot] = useState<TocNode>()
   const [tocItemCount, setTocItemCount] = useState<number>(0)
   const { t } = useContext(EditorContext)
@@ -43,7 +43,7 @@ export const TocView: FC<TocViewProps> = ({ editor, deleteNode, getPos }) => {
   }, [editor, updateItems])
 
   return (
-    <BlockContainer getPos={getPos} deleteNode={deleteNode} actionOptions={['delete']}>
+    <BlockContainer node={node} getPos={getPos} deleteNode={deleteNode} actionOptions={['delete']}>
       <TocContainer tocItemCount={tocItemCount}>
         {tocItemCount === 0 && <TocPlaceholder>{t('blocks.toc.placeholder')}</TocPlaceholder>}
         {tocRoot?.children.map((node, index) => (

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, useMemo } from 'react'
 import { NodeViewContent } from '@tiptap/react'
 import { css } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
@@ -8,8 +8,8 @@ const h1ActionButtonStyle = css({
   marginTop: '.5rem'
 })
 
-export const HeadingView: React.FC<HeadingViewProps> = ({ node, deleteNode, getPos }) => {
-  const as = React.useMemo(() => {
+export const HeadingView: FC<HeadingViewProps> = ({ node, deleteNode, getPos }) => {
+  const as = useMemo(() => {
     switch (Number(node.attrs.level)) {
       case 2:
         return 'h2'
@@ -25,7 +25,7 @@ export const HeadingView: React.FC<HeadingViewProps> = ({ node, deleteNode, getP
     }
   }, [node.attrs.level])
 
-  const actionButtonClassName = React.useMemo(() => {
+  const actionButtonClassName = useMemo(() => {
     switch (Number(node.attrs.level)) {
       case 2:
       case 3:
@@ -40,6 +40,7 @@ export const HeadingView: React.FC<HeadingViewProps> = ({ node, deleteNode, getP
 
   return (
     <BlockContainer
+      node={node}
       actionOptions={['copy', 'delete', 'transform']}
       actionButtonClassName={actionButtonClassName}
       getPos={getPos}

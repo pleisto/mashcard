@@ -1,10 +1,12 @@
 import { SubPageMenuView } from '../SubPageMenuView'
 import { render } from '@testing-library/react'
 import { ExternalProps, ExternalPropsContext } from '../../../../context'
+import { mockBlockViewProps } from '../../common/tests'
+import { SubPageMenuAttributes, SubPageMenuOptions } from '../../../../extensions'
 
 describe('SubPageMenuView', () => {
   it('matches correct snapshot', () => {
-    const props: any = {}
+    const props = mockBlockViewProps<SubPageMenuOptions, SubPageMenuAttributes>()
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     const externalProps = new ExternalProps()
     externalProps.renderPageTree = () => <div>page tree</div>

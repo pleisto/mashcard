@@ -1,6 +1,8 @@
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { EditorContext } from '../../../../context/EditorContext'
+import { TocAttributes, TocOptions } from '../../../../extensions'
+import { mockBlockViewProps } from '../../common/tests'
 import { TocView } from '../TocView'
 
 const buildDoc = (nodes: any[]): any => {
@@ -11,7 +13,7 @@ const buildDoc = (nodes: any[]): any => {
   }
 }
 
-describe('TocBlock', () => {
+describe('TocView', () => {
   const h1 = ['h1', 'h1`', 'h1``']
   const h2 = ['h2']
   const h3 = ['h3']
@@ -208,35 +210,28 @@ describe('TocBlock', () => {
     }
   ]
   const doc = buildDoc(nodes)
-  const editor: any = {
-    chain: () => editor,
-    focus: () => editor,
-    commands: {
-      scrollIntoView: () => editor
-    },
-    scrollIntoView: () => editor,
-    run: () => editor,
-    state: {
-      doc
-    },
-    view: {
-      domAtPos() {
-        return null
-      }
-    },
-    on: () => {},
-    off: () => {}
-  }
 
   it('matches correct snapshot', () => {
-    const props: any = { editor }
+    const props = mockBlockViewProps<TocOptions, TocAttributes>({
+      editor: {
+        state: {
+          doc
+        }
+      }
+    })
     const { container } = render(<TocView {...props} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('renders toc tree normally', () => {
-    const props: any = { editor }
+    const props = mockBlockViewProps<TocOptions, TocAttributes>({
+      editor: {
+        state: {
+          doc
+        }
+      }
+    })
     render(<TocView {...props} />)
 
     expect(screen.getByRole('presentation')).toBeInTheDocument()
@@ -244,15 +239,22 @@ describe('TocBlock', () => {
   })
 
   it('triggers toc item click normally', () => {
-    const props: any = { editor }
     const mockSetTextSelection = jest.fn()
-    editor.setTextSelection = (...args: any) => {
-      mockSetTextSelection(...args)
-      return editor
-    }
+
+    const props = mockBlockViewProps<TocOptions, TocAttributes>({
+      editor: {
+        commands: {
+          setTextSelection: mockSetTextSelection
+        },
+        state: {
+          doc
+        }
+      }
+    })
+
     render(
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      <EditorContext.Provider value={{ editor, t: key => key }}>
+      <EditorContext.Provider value={{ editor: props.editor, t: key => key }}>
         <TocView {...props} />
       </EditorContext.Provider>
     )

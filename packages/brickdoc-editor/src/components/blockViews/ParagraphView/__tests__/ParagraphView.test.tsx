@@ -1,71 +1,37 @@
 import { render } from '@testing-library/react'
+import { ParagraphAttributes, ParagraphOptions } from '../../../../extensions'
+import { mockBlockViewProps } from '../../common/tests'
 import { ParagraphView } from '../ParagraphView'
 
 describe('ParagraphView', () => {
-  const uuid = 'uuid'
-
   it(`matches snapshot correctly`, () => {
-    const props: any = {
+    const props = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
       editor: {
-        on() {
-          return props.editor
-        },
-        off() {
-          return props.editor
-        },
         state: {
           selection: {
             anchor: 1
           }
         }
       },
-      node: {
-        isLeaf: false,
-        childCount: 0,
-        nodeSiz: 1,
-        attrs: {
-          uuid
-        }
-      },
-      updateAttributes: () => {},
-      getPos() {
-        return 0
-      }
-    }
-    const { container } = render(<ParagraphView {...(props as any)} />)
+      getPos: () => 0
+    })
+    const { container } = render(<ParagraphView {...props} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it(`shows placeholder normally`, () => {
-    const props: any = {
+    const props = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
       editor: {
-        on() {
-          return props.editor
-        },
-        off() {
-          return props.editor
-        },
         state: {
           selection: {
             anchor: 1
           }
         }
       },
-      node: {
-        isLeaf: false,
-        childCount: 0,
-        nodeSize: 1,
-        attrs: {
-          uuid
-        }
-      },
-      updateAttributes: () => {},
-      getPos() {
-        return 1
-      }
-    }
-    const { container } = render(<ParagraphView {...(props as any)} />)
+      getPos: () => 0
+    })
+    const { container } = render(<ParagraphView {...props} />)
 
     // expect data-placeholder="placeholder" exist
     expect(container.firstChild).toMatchSnapshot()

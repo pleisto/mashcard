@@ -11,6 +11,10 @@ export interface ImageAttributes {
   isNew?: boolean
   image: {
     type: 'IMAGE'
+    key?: string
+    ratio?: number
+    width?: number
+    height?: number
     source?: 'EXTERNAL' | 'ORIGIN'
   }
 }

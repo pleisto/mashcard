@@ -14,6 +14,15 @@ exports[`BlockContainer changes block pointer event when editor editable state c
 />
 `;
 
+exports[`BlockContainer hide action options when node without uuid 1`] = `
+<div
+  data-node-view-wrapper=""
+  style="pointer-events: none; white-space: normal;"
+>
+  block
+</div>
+`;
+
 exports[`BlockContainer inline 1`] = `
 <span
   as="span"

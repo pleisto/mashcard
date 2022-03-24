@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
 import { SubPageMenuViewProps } from '../../../extensions/blocks/subPageMenu/meta'
@@ -12,11 +13,11 @@ const SubPageMenu = styled('div', {
   padding: '1rem .25rem'
 })
 
-export const SubPageMenuView: React.FC<SubPageMenuViewProps> = ({ deleteNode, getPos }) => {
+export const SubPageMenuView: FC<SubPageMenuViewProps> = ({ node, deleteNode, getPos }) => {
   const externalProps = useExternalProps()
 
   return (
-    <BlockContainer deleteNode={deleteNode} getPos={getPos} actionOptions={['delete']}>
+    <BlockContainer node={node} deleteNode={deleteNode} getPos={getPos} actionOptions={['delete']}>
       <SubPageMenu>{externalProps.renderPageTree()}</SubPageMenu>
     </BlockContainer>
   )

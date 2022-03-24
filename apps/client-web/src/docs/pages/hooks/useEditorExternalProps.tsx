@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom'
 import { useMemo, useRef, useContext, useEffect } from 'react'
 import { ExternalProps } from '@brickdoc/editor'
 import {
-  GetChildrenBlocksQuery,
   QueryPreviewBoxQuery,
   QueryPreviewBoxQueryVariables,
   QueryPreviewBoxDocument,
@@ -16,10 +15,11 @@ import { DocMeta } from '../DocumentContentPage'
 import { useReactiveVar } from '@apollo/client'
 import { FormulaContextVar, pagesVar } from '@/docs/reactiveVars'
 import { BrickdocContext } from '@/common/brickdocContext'
+import { Block } from '@brickdoc/schema'
 
 export interface UseEditorExternalProps {
   docMeta: DocMeta
-  blocks: GetChildrenBlocksQuery['childrenBlocks']
+  blocks: Block[]
   documentEditable: boolean
 }
 
@@ -41,6 +41,11 @@ export function useEditorExternalProps({ docMeta, documentEditable, blocks }: Us
 
   const formulaContext = useReactiveVar(FormulaContextVar)
   const { settings, features } = useContext(BrickdocContext)
+
+  // blocks
+  useEffect(() => {
+    externalProps.current.blocks = blocks
+  }, [blocks])
 
   // space members
   useEffect(() => {

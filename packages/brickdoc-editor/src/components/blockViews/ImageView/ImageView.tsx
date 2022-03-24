@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { FC, useCallback, useRef } from 'react'
 import { linkStorage } from '../../../helpers/file'
 import 'react-medium-image-zoom/dist/styles.css'
 import './styles.less'
@@ -9,10 +9,10 @@ import { ImageAttributes, ImageViewProps } from '../../../extensions/blocks/imag
 import { useExternalProps } from '../../../hooks/useExternalProps'
 
 // TODO: handle image load on error
-export const ImageView: React.FC<ImageViewProps> = ({ node, deleteNode, getPos, updateAttributes }) => {
+export const ImageView: FC<ImageViewProps> = ({ node, deleteNode, getPos, updateAttributes }) => {
   const externalProps = useExternalProps()
-  const latestImageAttributes = React.useRef<Partial<ImageAttributes['image']>>({})
-  const updateImageAttributes = React.useCallback(
+  const latestImageAttributes = useRef<Partial<ImageAttributes['image']>>({})
+  const updateImageAttributes = useCallback(
     (newAttributes: Partial<ImageAttributes['image']>): void => {
       latestImageAttributes.current = {
         ...latestImageAttributes.current,

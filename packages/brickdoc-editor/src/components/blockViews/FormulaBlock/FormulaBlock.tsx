@@ -75,8 +75,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
       defaultName={defaultName}
       nameRef={nameRef}
       completion={completion}
-      handleDelete={handleDelete}
-    >
+      handleDelete={handleDelete}>
       {renderData}
     </FormulaMenu>
   )
@@ -109,7 +108,7 @@ export const FormulaBlock: React.FC<FormulaBlockProps> = ({ editor, node, update
   )
 
   return (
-    <BlockContainer inline={true}>
+    <BlockContainer node={node} inline={true}>
       <FormulaRender
         attributes={node.attrs as any}
         handleDefaultPopoverVisibleChange={handleDefaultPopoverVisibleChange}

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { useActionOptions } from '../useActionOptions'
 import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmentMethods'
@@ -9,13 +9,15 @@ import { BlockContainer } from '../../../BlockContainer'
 export interface AttachmentModeProps extends UseAttachmentMethodsProps {
   deleteNode: NodeViewProps['deleteNode']
   getPos: NodeViewProps['getPos']
+  node: NodeViewProps['node']
   name: string
   fileType: FileType
 }
 
-export const AttachmentMode: React.FC<AttachmentModeProps> = ({
+export const AttachmentMode: FC<AttachmentModeProps> = ({
   deleteNode,
   getPos,
+  node,
   name,
   fileType,
   ...attachmentMethodsProps
@@ -30,6 +32,7 @@ export const AttachmentMode: React.FC<AttachmentModeProps> = ({
 
   return (
     <BlockContainer
+      node={node}
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}

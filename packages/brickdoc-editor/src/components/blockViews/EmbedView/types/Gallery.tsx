@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { NodeViewProps } from '@tiptap/react'
 import { debounce } from '@brickdoc/active-support'
 import { Icon, Input, Popover, styled, theme } from '@brickdoc/design-system'
@@ -91,20 +91,20 @@ const LoadMorePlaceholder = styled('div', {})
 
 const UNSPLASH_PER_PAGE = 20
 
-export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
+export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
   node,
   deleteNode,
   getPos,
   updateEmbedBlockAttributes
 }) => {
-  const { t } = React.useContext(EditorContext)
+  const { t } = useContext(EditorContext)
   const externalProps = useExternalProps()
-  const [unsplashImages, setUnsplashImages] = React.useState<UnsplashImage[]>([])
-  const fetching = React.useRef(false)
-  const lastQuery = React.useRef('')
-  const page = React.useRef(1)
+  const [unsplashImages, setUnsplashImages] = useState<UnsplashImage[]>([])
+  const fetching = useRef(false)
+  const lastQuery = useRef('')
+  const page = useRef(1)
 
-  const fetchUnsplashImage = React.useCallback(
+  const fetchUnsplashImage = useCallback(
     async (query?: string): Promise<void> => {
       if (fetching.current) {
         return
@@ -135,14 +135,14 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
     [externalProps, unsplashImages]
   )
 
-  React.useEffect(() => {
+  useEffect(() => {
     void fetchUnsplashImage()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleUnsplashSearchChange = React.useCallback(
+  const handleUnsplashSearchChange = useCallback(
     debounce((event: any): void => {
       const query = event.target.value
       void fetchUnsplashImage(query)
@@ -150,7 +150,7 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
     []
   )
 
-  const observeY = React.useRef<number>()
+  const observeY = useRef<number>()
 
   const createScrollObserver = (ele: HTMLDivElement | null): void => {
     if (!ele) {
@@ -172,7 +172,7 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
     }, options).observe(ele)
   }
 
-  const handleSelectImage = React.useCallback(
+  const handleSelectImage = useCallback(
     (item: UnsplashImage) => () => {
       updateEmbedBlockAttributes({ key: item.fullUrl, source: 'EXTERNAL' }, 'image')
     },
@@ -180,7 +180,7 @@ export const GalleryTypeEmbedBlock: React.FC<GalleryTypeEmbedBlockProps> = ({
   )
 
   return (
-    <BlockContainer actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
+    <BlockContainer node={node} actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>
       <Popover
         trigger="click"
         defaultVisible={node.attrs.isNew}

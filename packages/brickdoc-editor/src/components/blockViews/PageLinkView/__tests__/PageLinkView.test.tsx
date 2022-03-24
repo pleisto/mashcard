@@ -1,23 +1,24 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 import { PageLinkView } from '../PageLinkView'
+import { mockBlockViewProps } from '../../common/tests'
+import { PageLinkAttributes, PageLinkOptions } from '../../../../extensions'
 
 describe('PageLinkView', () => {
-  const props: any = {
-    editor: {},
+  const title = 'title'
+  const props = mockBlockViewProps<PageLinkOptions, PageLinkAttributes>({
     node: {
       attrs: {
         page: {
+          type: 'PAGE',
+          key: 'key',
           link: '/link',
           icon: 'icon',
-          title: 'title'
+          title
         }
       }
-    },
-    extension: {
-      options: {}
     }
-  }
+  })
 
   it('matches correct snapshot', () => {
     const { container } = render(
@@ -34,6 +35,6 @@ describe('PageLinkView', () => {
         <PageLinkView {...props} />
       </Router>
     )
-    expect(screen.getByText(props.node.attrs.page.title)).toBeInTheDocument()
+    expect(screen.getByText(title)).toBeInTheDocument()
   })
 })

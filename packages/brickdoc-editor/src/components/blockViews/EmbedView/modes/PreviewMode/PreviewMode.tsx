@@ -1,5 +1,4 @@
-import React from 'react'
-import { NodeViewProps } from '@tiptap/react'
+import { FC, useRef, useState } from 'react'
 import { WebViewerInstance } from '@pdftron/webviewer'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { FileIcon } from '../../../../ui'
@@ -10,40 +9,43 @@ import './PreviewMode.less'
 import { BlockContainer } from '../../../BlockContainer'
 import { Skeleton, styled } from '@brickdoc/design-system'
 import { useWebViewer } from './useWebViewer'
+import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 
-const containerHeight = '29.5rem'
+const containerHeight = 472
 
 const PreviewContainer = styled('div', {
-  height: containerHeight,
+  height: `${containerHeight / 16}rem`,
   variants: {
     ready: {
       false: {
         height: 0
       },
       true: {
-        height: containerHeight
+        height: `${containerHeight / 16}rem`
       }
     }
   }
 })
 
 export interface PreviewModeProps extends Omit<UseAttachmentMethodsProps, 'webViewer'> {
-  deleteNode: NodeViewProps['deleteNode']
-  getPos: NodeViewProps['getPos']
+  deleteNode: EmbedViewProps['deleteNode']
+  getPos: EmbedViewProps['getPos']
+  node: EmbedViewProps['node']
   fileName: string
   fileType: FileType
 }
 
-export const PreviewMode: React.FC<PreviewModeProps> = ({
+export const PreviewMode: FC<PreviewModeProps> = ({
   deleteNode,
   getPos,
   fileName,
   fileType,
+  node,
   ...attachmentMethodsProps
 }) => {
-  const viewer = React.useRef<HTMLDivElement>(null)
-  const [documentReady, setDocumentReady] = React.useState(false)
-  const [viewerInstance, setViewerInstance] = React.useState<WebViewerInstance>()
+  const viewer = useRef<HTMLDivElement>(null)
+  const [documentReady, setDocumentReady] = useState(false)
+  const [viewerInstance, setViewerInstance] = useState<WebViewerInstance>()
 
   useWebViewer(fileType, attachmentMethodsProps.fileUrl, viewer, instance => {
     setViewerInstance(instance)
@@ -69,6 +71,7 @@ export const PreviewMode: React.FC<PreviewModeProps> = ({
 
   return (
     <BlockContainer
+      node={node}
       contentForCopy={attachmentMethodsProps.fileUrl}
       deleteNode={deleteNode}
       getPos={getPos}
