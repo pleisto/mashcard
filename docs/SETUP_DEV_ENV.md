@@ -53,10 +53,9 @@ Some plugins require external dependencies such as api keys, credentials, etc. Y
 
 1. Run `yarn install` to install all dependencies.
 2. Run `yarn dev generate dotenv` to initialize the dotenv file.
-3. Run `yarn api prisma migrate dev` to updates your database using migrations.
-4. (Optionally)Run `yarn api prisma db seed` to seeding your database.
-5. Run `yarn start` to start the development server.
-6. Visit `http://localhost:3000`, and you should now see the login page.
+3. Run `yarn dev dev db:create && yarn dev db:migrate` to updates your database using migrations.
+4. Run `yarn start` to start the development server.
+5. Visit `http://localhost:3000`, and you should now see the login page.
 
 - To lint your code, run `yarn lint`
 - To run unit tests: `yarn test:jest`
@@ -78,9 +77,8 @@ yarn graphql # Generate GraphQL schema and run graphql-codegen
 
 # API Server
 yarn api start
-yarn api prisma {generate | migrate | pull | push}
 yarn dev console # Rails-like console
-yarn dev db:{create | drop} # Create or drop database
+yarn dev db:{create | migrate | drop} # Create or drop database
 
 # Generator
 yarn dev g {dotenv} # Angular schematics tools

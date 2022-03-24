@@ -1,7 +1,11 @@
 import { Injectable, Inject } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
-import { REDIS_CLIENT, RedisClientType, RedisCommandOptions } from './redis.interface'
-import { KMSService } from '../kms/kms.service'
+import {
+  REDIS_CLIENT,
+  RedisClientType,
+  RedisCommandOptions,
+  RedisModuleOptions,
+  CryptoService
+} from './redis.interface'
 import type { transformArguments } from '@node-redis/client/dist/lib/commands/SET'
 
 type SetOptions = Parameters<typeof transformArguments>[2]
@@ -13,11 +17,13 @@ export class RedisService {
     encrypted: false
   }
 
-  constructor(
-    @Inject(REDIS_CLIENT) private readonly redisClient: RedisClientType,
-    private readonly configService: ConfigService,
-    private readonly kmsService: KMSService
-  ) {}
+  constructor(@Inject(REDIS_CLIENT) private readonly redisClient: RedisClientType) {
+    // Inject cryptoService if provided by options
+    const options = this.redisClient.options as RedisModuleOptions
+    if (options.cryptoService) this.cryptoService = options.cryptoService
+  }
+
+  protected cryptoService: CryptoService | undefined
 
   /**
    * Extract namespace from key
@@ -34,7 +40,8 @@ export class RedisService {
   }
 
   /**
-   * Get Redis client instance
+   * Get node-redis client instance
+   * @see https://redis.js.org/
    */
   get client(): RedisClientType {
     return this.redisClient
@@ -65,7 +72,7 @@ export class RedisService {
 
     let encodedValue = JSON.stringify(value)
     // Use Redis key as a context to generate encrypt sub-key
-    options?.encrypted && (encodedValue = this.kmsService.symmetricEncrypt(encodedValue, key))
+    options?.encrypted && this.cryptoService && (encodedValue = this.cryptoService.symmetricEncrypt(encodedValue, key))
 
     return await this.redisClient.set(
       this.redisKey(key, options), // key
@@ -87,7 +94,8 @@ export class RedisService {
     if (!result) return null
     try {
       // Use Redis key as a context to generate encrypt sub-key
-      const rawValue = options.encrypted ? this.kmsService.symmetricDecrypt(result, key) : result
+      const rawValue =
+        options.encrypted && this.cryptoService ? this.cryptoService.symmetricDecrypt(result, key) : result
       return JSON.parse(rawValue)
     } catch (_e) {
       return null
@@ -95,7 +103,7 @@ export class RedisService {
   }
 
   /**
-   * delete by key
+   * Delete by key
    * @param key redis key
    * @returns delete result
    */
@@ -104,7 +112,7 @@ export class RedisService {
   }
 
   /**
-   * ping redis
+   * Ping redis
    * @returns string - 'PONG'
    */
   public async ping(): Promise<string> {
@@ -117,10 +125,11 @@ export class RedisService {
    * @returns masked key
    */
   protected redisKey(key: string, options: RedisCommandOptions): string {
-    if (!options.hashedKey) return key
+    if (!options.hashedKey || this.cryptoService === undefined) return key
 
     const k = RedisService.extractKey(key)
-    const hash = (str: string): string => this.kmsService.dataMasking(str)
-    return k.namespace ? `${k.namespace}:${hash(k.key)}` : hash(k.key)
+    return k.namespace
+      ? `${k.namespace}:${this.cryptoService.dataMasking(k.key)}`
+      : this.cryptoService.dataMasking(k.key)
   }
 }

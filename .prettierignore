@@ -12,6 +12,5 @@ CHANGELOG.*
 *.env
 tools/helm-charts/**/*.yaml
 *.datauri.ts
-*.prisma
 .next
 *.tsbuildinfo

@@ -1,10 +1,29 @@
+import { ModuleMetadata } from '@nestjs/common/interfaces'
 import { RedisClientOptions, RedisClientType } from '@node-redis/client/dist/lib/client'
 
 export type { RedisClientType }
 
-export type RedisOptionsType = RedisClientOptions<never, Record<string, never>>
-
+export const REDIS_MODULE_OPTIONS = Symbol('REDIS_MODULE_OPTIONS')
 export const REDIS_CLIENT = Symbol('REDIS_CLIENT')
+
+export interface CryptoService {
+  symmetricEncrypt: (data: string, key: string) => string
+  symmetricDecrypt: (data: string, key: string) => string
+  dataMasking: (data: string) => string
+}
+
+export interface RedisModuleOptions extends RedisClientOptions<never, Record<string, never>> {
+  /**
+   * Crypto service to use for encrypting and decrypting data.
+   * If not provided, data will be stored in plain text.
+   */
+  cryptoService?: CryptoService
+}
+
+export interface RedisModuleAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
+  useFactory: (...args: any[]) => Promise<RedisModuleOptions> | RedisModuleOptions
+  inject?: any[]
+}
 
 export interface RedisCommandOptions {
   /**
