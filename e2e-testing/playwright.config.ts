@@ -9,12 +9,14 @@ const config: PlaywrightTestConfig = {
   forbidOnly: isCI,
   retries: 2,
   reporter: isCI ? [['dot'], ['github']] : 'list',
+  timeout: 50000,
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000/',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    storageState: './storageState.json'
+    storageState: './storageState.json',
+    navigationTimeout: 10000
   },
   globalSetup: './global-setup',
   projects: [

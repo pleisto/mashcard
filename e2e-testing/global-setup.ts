@@ -12,7 +12,7 @@ async function globalSetup(config: FullConfig): Promise<void> {
 
   await page.fill(ACCOUNT_SELECTORS.signIn.emailInput, email)
   await page.fill(ACCOUNT_SELECTORS.signIn.passwordInput, password)
-  await page.locator(ACCOUNT_SELECTORS.signIn.signInButton).click()
+  await page.click(ACCOUNT_SELECTORS.signIn.signInButton)
 
   await page.waitForNavigation()
   await page.context().storageState({
