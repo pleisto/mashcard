@@ -14,17 +14,12 @@ export const gapClickHandler = (editor: Editor, view: EditorView, position: numb
 
   if (position - 1 < 0) return
 
-  let node = view.state.doc.nodeAt(position - 1)
-  if (node && paragraphLikeBlockType.includes(node.type.name)) return
-
-  const nextNode = view.state.doc.nodeAt(position)
-  if (nextNode && paragraphLikeBlockType.includes(nextNode.type.name)) return
-
   // when clicked at the end of document, the latest two position will be null
-  if (!node && !nextNode) {
-    node = view.state.doc.nodeAt(position - 2)
-    if (node && paragraphLikeBlockType.includes(node.type.name)) return
-  }
+  const node = view.state.doc.nodeAt(position - 2)
+  const nextNode = view.state.doc.nodeAt(position)
 
-  insertNewLine(editor, position)
+  if (!nextNode) {
+    if (node && paragraphLikeBlockType.includes(node.type.name)) return
+    insertNewLine(editor, position)
+  }
 }
