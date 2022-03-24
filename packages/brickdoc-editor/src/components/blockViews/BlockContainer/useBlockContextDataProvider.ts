@@ -1,4 +1,4 @@
-import React from 'react'
+import { useContext, useMemo } from 'react'
 import { toast } from '@brickdoc/design-system'
 import { BlockContainerProps } from '.'
 import { BlockContextData } from '../../../context/BlockContext'
@@ -11,6 +11,7 @@ export interface UseBlockContextDataProviderProps {
   insideList: boolean
   dragging: boolean
   updateDragging: (dragging: boolean) => void
+  node: BlockContainerProps['node']
 }
 
 export function useBlockContextDataProvider({
@@ -19,10 +20,11 @@ export function useBlockContextDataProvider({
   contentForCopy,
   insideList,
   dragging,
-  updateDragging
+  updateDragging,
+  node
 }: UseBlockContextDataProviderProps): [BlockContextData] {
-  const { t } = React.useContext(EditorContext)
-  const data = React.useMemo<BlockContextData>(
+  const { t } = useContext(EditorContext)
+  const data = useMemo<BlockContextData>(
     () => ({
       deleteBlock: () => deleteNode?.(),
       duplicateBlock() {},
@@ -34,9 +36,10 @@ export function useBlockContextDataProvider({
       },
       updateDraggingStatus: updateDragging,
       insideList,
-      dragging
+      dragging,
+      node
     }),
-    [contentForCopy, deleteNode, dragging, getPos, insideList, t, updateDragging]
+    [contentForCopy, deleteNode, dragging, getPos, insideList, node, t, updateDragging]
   )
 
   return [data]

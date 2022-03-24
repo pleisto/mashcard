@@ -54,7 +54,8 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
       contentForCopy,
       updateDragging: (dragging: boolean) => setBlockDragging(dragging),
       insideList,
-      dragging: blockDragging
+      dragging: blockDragging,
+      node
     })
     const [documentEditable] = useDocumentEditable(editable)
     const [blockElement] = useBlockElement(children, actionOptions, {
