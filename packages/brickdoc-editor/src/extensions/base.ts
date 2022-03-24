@@ -19,6 +19,8 @@ export interface BaseOptions {
   eventHandler: Partial<EXTENSION.EventHandlerOptions> | boolean
   fontColor: Partial<EXTENSION.FontColorOptions> | boolean
   formula: Partial<EXTENSION.FormulaOptions> | boolean
+  formulaKeyDown: Partial<EXTENSION.FormulaHandleKeyDownOptions> | boolean
+  formulaType: Partial<EXTENSION.FormulaTypeOptions> | boolean
   gapcursor: boolean
   hardBreak: Partial<EXTENSION.HardBreakOptions> | boolean
   heading: Partial<EXTENSION.HeadingOptions> | boolean
@@ -82,6 +84,11 @@ export const Base = Extension.create<BaseOptions>({
       extensions.push(EXTENSION.FontColorExtension.configure(getConfigure(this.options?.fontColor)))
     if (this.options.all ?? this.options.formula)
       extensions.push(EXTENSION.Formula.configure(getConfigure(this.options?.formula)))
+    // NOTE: formula only
+    if (this.options.formulaKeyDown)
+      extensions.push(EXTENSION.FormulaHandleKeyDownExtension.configure(getConfigure(this.options?.formulaKeyDown)))
+    if (this.options.formulaType)
+      extensions.push(EXTENSION.FormulaTypeMark.configure(getConfigure(this.options?.formulaType)))
     if (this.options.all ?? this.options.gapcursor) extensions.push(EXTENSION.Gapcursor)
     if (this.options.all ?? this.options.hardBreak)
       extensions.push(EXTENSION.HardBreak.configure(getConfigure(this.options?.hardBreak)))

@@ -1,5 +1,5 @@
 import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableInterface } from '@brickdoc/formula'
-import { FormulaEditor } from '../../../../extensions/blocks/formula/FormulaEditor/FormulaEditor'
+import { FormulaEditor } from '../../../../editors/formulaEditor'
 import { codeFragmentsToJSONContentTotal } from '../../../../helpers'
 import { FormulaValue } from '../FormulaValue'
 

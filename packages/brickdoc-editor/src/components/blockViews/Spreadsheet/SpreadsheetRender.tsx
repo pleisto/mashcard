@@ -13,8 +13,8 @@ import {
 } from './SpreadsheetView'
 import './Spreadsheet.less'
 import { VariableDisplayData } from '@brickdoc/formula'
-import { FormulaDisplay } from '../Formula/FormulaDisplay'
 import React from 'react'
+import { FormulaDisplay } from '../../ui/Formula'
 
 export interface Row {
   rowId: string

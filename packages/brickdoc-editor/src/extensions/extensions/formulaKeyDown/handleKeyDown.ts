@@ -1,17 +1,12 @@
-import { Editor, Extension } from '@tiptap/core'
+import { Editor } from '@tiptap/core'
 import { EditorView } from 'prosemirror-view'
 import { Plugin, PluginKey } from 'prosemirror-state'
 import { BrickdocEventBus, FormulaEditorHoverEventTrigger, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
 import { CodeFragment } from '@brickdoc/formula'
+import { meta } from './meta'
+import { createExtension } from '../../common'
 
 export type KeyDownHandlerType = (view: EditorView<any>, event: KeyboardEvent) => boolean
-export type HandleKeyDownType = ({
-  formulaId,
-  rootId
-}: {
-  formulaId: string | undefined
-  rootId: string | undefined
-}) => Extension<any, any>
 
 const formulaHandleKeyDown: ({
   formulaId,
@@ -46,8 +41,8 @@ const gapHoverHandler = ({
   view: EditorView
   position: number
   event: MouseEvent
-  formulaId: string
-  rootId: string
+  formulaId: string | undefined
+  rootId: string | undefined
 }): void => {
   if (!formulaId || !rootId) return
   // if (!(event.target as HTMLElement)?.classList.contains('ProseMirror')) {
@@ -76,8 +71,17 @@ const gapHoverHandler = ({
   BrickdocEventBus.dispatch(FormulaEditorHoverEventTrigger({ attrs, formulaId, rootId }))
 }
 
-export const HandleKeyDownExtension = Extension.create({
-  name: 'handleKeyDown',
+export interface FormulaHandleKeyDownOptions {
+  formulaId: string | undefined
+  rootId: string | undefined
+}
+export interface FormulaHandleKeyDownAttributes {}
+
+export const FormulaHandleKeyDownExtension = createExtension<
+  FormulaHandleKeyDownOptions,
+  FormulaHandleKeyDownAttributes
+>({
+  name: meta.name,
 
   addProseMirrorPlugins() {
     const {
@@ -87,7 +91,7 @@ export const HandleKeyDownExtension = Extension.create({
 
     return [
       new Plugin({
-        key: new PluginKey('handleKeyDown'),
+        key: new PluginKey(meta.name),
         props: {
           handleKeyDown: formulaHandleKeyDown({ formulaId, rootId }),
           handleClick(view, position, event) {

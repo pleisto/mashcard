@@ -1,5 +1,5 @@
 import { SpreadsheetType } from '@brickdoc/formula'
-import { FormulaSpreadsheet } from '../Render/FormulaSpreadsheet'
+import { FormulaSpreadsheet } from '../Render'
 
 export interface SpreadsheetPreviewProps {
   spreadsheet: SpreadsheetType

@@ -3,7 +3,7 @@ import { resultToColorType, VariableDisplayData } from '@brickdoc/formula'
 import './Formula.less'
 import { FORMULA_COLORS, FORMULA_ICONS } from '../../../helpers'
 import { css, cx, Icon, Tooltip } from '@brickdoc/design-system'
-import { SelectedType } from './useFormula'
+import { SelectedType } from '../../blockViews/FormulaView'
 
 export interface FormulaValueProps {
   displayData: VariableDisplayData

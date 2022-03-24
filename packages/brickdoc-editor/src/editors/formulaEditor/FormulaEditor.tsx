@@ -1,13 +1,9 @@
 import React from 'react'
-import Document from '@tiptap/extension-document'
-import Text from '@tiptap/extension-text'
-import Paragraph from '@tiptap/extension-paragraph'
 import { useEditor, EditorContent, JSONContent, EditorEvents } from '@tiptap/react'
 import { devLog } from '@brickdoc/design-system'
-import { HandleKeyDownExtension } from './extensions/handleKeyDown'
 import './FormulaEditor.less'
-import { FormulaTypeExtension } from './extensions/formulaType'
 import { BrickdocEventBus, FormulaEditorReplaceRootTrigger } from '@brickdoc/schema'
+import { Base } from '../../extensions/base'
 
 export interface EditorContentType {
   content: JSONContent | undefined
@@ -44,11 +40,16 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
     autofocus: 'end',
     content: editorContent.content,
     extensions: [
-      Document,
-      Text,
-      Paragraph,
-      FormulaTypeExtension.configure({ editable }),
-      HandleKeyDownExtension.configure({ formulaId, rootId })
+      Base.configure({
+        document: true,
+        text: true,
+        paragraph: true,
+        formulaType: true,
+        formulaKeyDown: {
+          formulaId,
+          rootId
+        }
+      })
     ],
     onFocus: (props: EditorEvents['focus']) => {
       // console.debug('FormulaEditor:onFocus', props)

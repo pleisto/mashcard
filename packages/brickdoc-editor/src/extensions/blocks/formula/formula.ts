@@ -1,7 +1,7 @@
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { createBlock } from '../../common'
-import { FormulaBlock } from '../../../components/blockViews/FormulaBlock'
+import { FormulaBlock } from '../../../components/blockViews'
 import { meta } from './meta'
 
 export interface FormulaOptions {}

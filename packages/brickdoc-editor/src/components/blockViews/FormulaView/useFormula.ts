@@ -25,7 +25,7 @@ import {
 import { JSONContent } from '@tiptap/core'
 import { devLog, devWarning } from '@brickdoc/design-system'
 import React from 'react'
-import { EditorContentType } from '../../../extensions/blocks/formula/FormulaEditor/FormulaEditor'
+import { EditorContentType } from '../../../editors/formulaEditor'
 import {
   attrsToJSONContent,
   buildJSONContentByArray,
@@ -467,7 +467,7 @@ export const useFormula = ({
         position: definition.length
       }
 
-      void doCalculate(false)
+      await doCalculate(false)
 
       saveFormula()
     },

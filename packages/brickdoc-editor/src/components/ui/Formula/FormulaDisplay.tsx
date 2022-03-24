@@ -9,13 +9,9 @@ import {
   loadDisplayResult,
   RangeType
 } from '@brickdoc/formula'
-import { FormulaValue } from './FormulaValue'
-import { FormulaInput } from './Render/FormulaInput'
-import { FormulaButton } from './Render/FormulaButton'
-import { FormulaLiteral } from './Render/FormulaLiteral'
-import { FormulaSpreadsheet } from './Render/FormulaSpreadsheet'
-import { SelectedType } from './useFormula'
+import { SelectedType } from '../../blockViews/FormulaView/useFormula'
 import { useExternalProps } from '../../../hooks/useExternalProps'
+import { FormulaButton, FormulaInput, FormulaLiteral, FormulaSpreadsheet, FormulaValue } from '.'
 
 export interface FormulaDisplayProps {
   displayData?: VariableDisplayData

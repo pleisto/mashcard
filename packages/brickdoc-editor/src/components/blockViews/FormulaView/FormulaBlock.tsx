@@ -2,8 +2,9 @@ import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
 import { displayValue, dumpDisplayResultForDisplay, fetchResult, VariableData } from '@brickdoc/formula'
 import { BlockContainer } from '../BlockContainer'
-import { useFormula, FormulaMenu, FormulaMenuProps, FormulaDisplay } from '../Formula'
 import { useExternalProps } from '../../../hooks/useExternalProps'
+import { FormulaDisplay } from '../../ui/Formula'
+import { FormulaMenuProps, useFormula, FormulaMenu } from '.'
 
 export interface FormulaBlockProps extends NodeViewProps {}
 

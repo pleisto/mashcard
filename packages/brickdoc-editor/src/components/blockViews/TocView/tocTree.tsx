@@ -7,7 +7,7 @@ import { meta as userMeta, UserAttributes } from '../../../extensions/blocks/use
 import { meta as pageLinkMeta, PageLinkAttributes } from '../../../extensions/blocks/pageLink/meta'
 import { meta as formulaMeta } from '../../../extensions/blocks/formula/meta'
 import { PageLink, User } from '../../ui'
-import { FormulaRender } from '../FormulaBlock'
+import { FormulaRender } from '../FormulaView'
 
 export interface TocNode {
   parent?: TocNode

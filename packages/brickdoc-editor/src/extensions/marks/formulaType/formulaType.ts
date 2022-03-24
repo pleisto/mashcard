@@ -1,12 +1,9 @@
 import { attrsToColorType, CodeFragment } from '@brickdoc/formula'
-import { Attribute, JSONContent, Mark, mergeAttributes } from '@tiptap/core'
-import { FORMULA_COLORS } from '../../../../../../helpers/color'
-import { SetDocAttrStep } from '../../../../../extensions/sync/SetDocAttrStep'
-
-export interface FormulaTypeOptions {
-  HTMLAttributes: Record<string, any>
-  editable: boolean
-}
+import { JSONContent, mergeAttributes } from '@tiptap/core'
+import { FORMULA_COLORS } from '../../../helpers'
+import { SetDocAttrStep } from '../../extensions/sync/SetDocAttrStep'
+import { meta } from './meta'
+import { createMark } from '../../common'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -17,18 +14,16 @@ declare module '@tiptap/core' {
   }
 }
 
-export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
-  name: 'FormulaType',
+export const FORMULA_CLASS_NAME = 'brickdoc-formula-mark'
 
-  addOptions() {
-    return {
-      editable: true,
-      HTMLAttributes: {}
-    }
-  },
+export interface FormulaTypeOptions {}
+export type FormulaTypeAttributes = Omit<CodeFragment, 'hide'>
+
+export const FormulaTypeMark = createMark<FormulaTypeOptions, FormulaTypeAttributes>({
+  name: meta.name,
 
   addAttributes() {
-    const attrs: Record<Exclude<keyof CodeFragment, 'hide'>, Attribute> = {
+    return {
       code: {
         default: null,
         keepOnSplit: true,
@@ -141,8 +136,6 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
         }
       }
     }
-
-    return attrs
   },
 
   parseHTML() {
@@ -154,7 +147,7 @@ export const FormulaTypeExtension = Mark.create<FormulaTypeOptions>({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['mark', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
+    return ['mark', mergeAttributes({ class: FORMULA_CLASS_NAME }, HTMLAttributes), 0]
   },
 
   addCommands() {

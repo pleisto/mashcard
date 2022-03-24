@@ -9,8 +9,8 @@ import {
   VariableData
 } from '@brickdoc/formula'
 import './Formula.less'
-import { FormulaValue } from './FormulaValue'
 import { FORMULA_ICONS } from '../../../helpers'
+import { FormulaValue } from '.'
 
 export interface FormulaResultProps {
   variableT: VariableData | undefined

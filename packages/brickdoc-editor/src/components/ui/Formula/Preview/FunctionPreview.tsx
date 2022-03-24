@@ -1,5 +1,5 @@
 import { FormulaType, FunctionClause } from '@brickdoc/formula'
-import { FormulaEditor } from '../../../../extensions/blocks/formula/FormulaEditor/FormulaEditor'
+import { FormulaEditor } from '../../../../editors/formulaEditor'
 import { codeFragmentsToJSONContentTotal } from '../../../../helpers'
 
 export interface FunctionPreviewProps {

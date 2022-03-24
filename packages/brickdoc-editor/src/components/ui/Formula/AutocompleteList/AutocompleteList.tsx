@@ -2,14 +2,10 @@
 import React from 'react'
 import { Icon, cx } from '@brickdoc/design-system'
 import { Completion, CompletionKind } from '@brickdoc/formula'
-import '../../Spreadsheet/Spreadsheet.less'
+import '../../../blockViews/Spreadsheet/Spreadsheet.less'
 import './AutocompleteList.less'
-import { CompletionType } from '../useFormula'
-import { BlockPreview } from '../Preview/BlockPreview'
-import { ColumnPreview } from '../Preview/ColumnPreview'
-import { SpreadsheetPreview } from '../Preview/SpreadsheetPreview'
-import { FunctionPreview } from '../Preview/FunctionPreview'
-import { VariablePreview } from '../Preview/VariablePreview'
+import { CompletionType } from '../../../blockViews/FormulaView'
+import { BlockPreview, ColumnPreview, SpreadsheetPreview, FunctionPreview, VariablePreview } from '../Preview'
 import { BrickdocEventBus, FormulaKeyboardEventTrigger } from '@brickdoc/schema'
 export interface AutocompleteListProps {
   rootId: string
