@@ -36,7 +36,9 @@
     "uploader": "yarn workspace @brickdoc/uploader",
     "api": "yarn workspace @brickdoc/server-api",
     "e2e-testing": "yarn workspace @brickdoc/e2e-testing",
-    "devkit": "yarn workspace @brickdoc/devkit"
+    "devkit": "yarn workspace @brickdoc/devkit",
+    "redis": "yarn workspace @brickdoc/nestjs-redis",
+    "slonik": "yarn workspace @brickdoc/nestjs-slonik"
   },
   "devDependencies": {
     "@brickdoc/eslint-plugin": "workspace:^",

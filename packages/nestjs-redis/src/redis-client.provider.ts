@@ -23,7 +23,7 @@ export const createClient = (): Provider => ({
   scope: Scope.DEFAULT
 })
 
-export const createAsyncClientOptions = (options: RedisModuleAsyncOptions) => ({
+export const createAsyncClientOptions = (options: RedisModuleAsyncOptions): Provider => ({
   provide: REDIS_MODULE_OPTIONS,
   useFactory: options.useFactory,
   inject: options.inject

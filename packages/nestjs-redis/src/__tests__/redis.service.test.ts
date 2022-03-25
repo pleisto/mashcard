@@ -1,13 +1,13 @@
 import { Test } from '@nestjs/testing'
 import { RedisService } from '../redis.service'
-import { REDIS_CLIENT } from '../redis.interface'
+import { REDIS_CLIENT, RedisModuleOptions } from '../redis.interface'
 
 /**
  * node-redis client mock
  */
 class RedisMockClient {
   private dataStore: { [key: string]: string } = {}
-  get options() {
+  get options(): RedisModuleOptions {
     return {
       cryptoService: {
         symmetricEncrypt: (value: string, key: string) => `${value}_encrypted`,
@@ -17,22 +17,22 @@ class RedisMockClient {
     }
   }
 
-  async set(key: string, value: string) {
+  async set(key: string, value: string): Promise<boolean> {
     this.dataStore[key] = value
     return true
   }
 
-  async get(key: string) {
+  async get(key: string): Promise<string | boolean> {
     return this.dataStore[key] || false
   }
 
-  async del(key: string) {
+  async del(key: string): Promise<boolean> {
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete this.dataStore[key]
     return true
   }
 
-  async ping() {
+  async ping(): Promise<'PONG'> {
     return 'PONG'
   }
 }
