@@ -187,6 +187,15 @@ Object {
               }
             />
           </React.Fragment>,
+          <React.Fragment>
+            <FormulaRender
+              attributes={
+                Object {
+                  "formula": Object {},
+                }
+              }
+            />
+          </React.Fragment>,
         ],
         "level": 1,
         "nodeSize": 1,

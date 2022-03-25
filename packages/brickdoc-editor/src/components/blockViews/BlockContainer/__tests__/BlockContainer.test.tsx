@@ -13,7 +13,7 @@ describe('BlockContainer', () => {
       </ExternalPropsContext.Provider>
     )
     // expect dom has 'pointer-event: none' style
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
 
     act(() => {
       externalProps.documentEditable = true
@@ -26,7 +26,7 @@ describe('BlockContainer', () => {
     )
 
     // expect dom has 'pointer-event: unset' style
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('inline', () => {
@@ -38,7 +38,7 @@ describe('BlockContainer', () => {
     )
 
     // expect dom has two pseudo span element at before and after
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   // TODO: move to e2e test
@@ -58,7 +58,7 @@ describe('BlockContainer', () => {
       </BlockContainer>
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('with editable = false', () => {
@@ -83,6 +83,6 @@ describe('BlockContainer', () => {
       </BlockContainer>
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

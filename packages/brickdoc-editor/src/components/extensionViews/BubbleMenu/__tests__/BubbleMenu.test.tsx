@@ -1,82 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { BubbleMenu } from '../BubbleMenu'
-
-interface MockEditor {
-  isActive: (value: string, options: any) => boolean
-  chain: () => MockEditor
-  focus: () => MockEditor
-  run: () => MockEditor
-  setHeading: jest.Mock
-  toggleBold: jest.Mock
-  toggleStrike: jest.Mock
-  toggleItalic: jest.Mock
-  toggleBulletList: jest.Mock
-  toggleOrderedList: jest.Mock
-  toggleUnderline: jest.Mock
-  setFontColor: jest.Mock
-  state: {
-    schema: {
-      nodes: {}
-    }
-    selection: {
-      from: number
-      to: number
-    }
-  }
-}
-
-function mockEditor(): MockEditor {
-  const editor: MockEditor = {
-    chain: () => editor,
-    focus: () => editor,
-    run: () => editor,
-    isActive: () => false,
-    setHeading: jest.fn(),
-    toggleBold: jest.fn(),
-    toggleStrike: jest.fn(),
-    toggleItalic: jest.fn(),
-    toggleBulletList: jest.fn(),
-    toggleOrderedList: jest.fn(),
-    toggleUnderline: jest.fn(),
-    setFontColor: jest.fn(),
-    state: {
-      schema: {
-        nodes: new Proxy(
-          {},
-          {
-            get(target, prop) {
-              return prop
-            }
-          }
-        )
-      },
-      selection: {
-        from: 0,
-        to: 1
-      }
-    }
-  }
-
-  editor.setHeading = editor.setHeading.mockReturnValue(editor)
-  editor.toggleBold = editor.toggleBold.mockReturnValue(editor)
-  editor.toggleStrike = editor.toggleStrike.mockReturnValue(editor)
-  editor.toggleItalic = editor.toggleItalic.mockReturnValue(editor)
-  editor.toggleBulletList = editor.toggleBulletList.mockReturnValue(editor)
-  editor.toggleOrderedList = editor.toggleOrderedList.mockReturnValue(editor)
-  editor.toggleUnderline = editor.toggleUnderline.mockReturnValue(editor)
-  editor.setFontColor = editor.setFontColor.mockReturnValue(editor)
-
-  return new Proxy<MockEditor>(editor, {
-    get(target, prop) {
-      if (!(prop in target)) {
-        return () => this
-      }
-
-      // @ts-expect-error
-      return target[prop]
-    }
-  })
-}
+import { mockEditor } from '../../../common/tests/editor'
+import { BubbleMenu, shouldShow } from '../BubbleMenu'
+import * as helpers from '../../../../helpers/selection'
 
 describe('BubbleMenu', () => {
   const byRoleOptions = { hidden: true }
@@ -87,19 +12,183 @@ describe('BubbleMenu', () => {
   })
 
   it('renders normally if `editor` is supplied', () => {
-    const editor = mockEditor()
-    render(<BubbleMenu editor={editor as any} />)
+    const editor = mockEditor({
+      state: {
+        selection: {
+          from: 0,
+          to: 1
+        }
+      }
+    })
+    render(<BubbleMenu editor={editor} />)
 
     expect(screen.getByRole('menu', byRoleOptions)).toBeInTheDocument()
   })
 
   it('renders nothing if editor selection is empty', () => {
-    const editor = mockEditor()
-    editor.state.selection.from = 1
-    editor.state.selection.to = 1
+    const editor = mockEditor({
+      state: {
+        selection: {
+          from: 1,
+          to: 1
+        }
+      }
+    })
 
-    render(<BubbleMenu editor={editor as any} />)
+    render(<BubbleMenu editor={editor} />)
 
     expect(() => screen.getByRole('menu', byRoleOptions)).toThrow()
+  })
+
+  describe('BubbleMenu shouldShow', () => {
+    it('should not show when editor is not editable', () => {
+      const editor = mockEditor({
+        isEditable: false,
+        isDestroyed: true
+      })
+      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+
+      expect(result).toBeFalsy()
+    })
+
+    it('should not show when selection is anchor', () => {
+      const editor = mockEditor({
+        isEditable: true,
+        isDestroyed: false
+      })
+      const result = shouldShow?.({ editor, from: 1, to: 1, view: editor.view, state: editor.state })
+
+      expect(result).toBeFalsy()
+    })
+
+    it('should show when selection does not contain forbidden node', () => {
+      /* eslint-disable max-nested-callbacks */
+      jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
+        {
+          node: { type: { name: 'text' }, text: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'paragraph' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'bulletList' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'orderedList' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'listItem' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'heading' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        }
+      ])
+      /* eslint-enable max-nested-callbacks */
+
+      const editor = mockEditor({
+        isEditable: true,
+        isDestroyed: false
+      })
+      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+
+      expect(result).toBeTruthy()
+    })
+
+    it('should not show when selection contains forbidden node', () => {
+      /* eslint-disable max-nested-callbacks */
+      jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
+        {
+          node: { type: { name: 'text' }, text: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'imageBlock' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'bulletList' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'orderedList' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'listItem' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'heading' }, textContent: 'text' } as any,
+          from: 1,
+          to: 2
+        }
+      ])
+      /* eslint-enable max-nested-callbacks */
+
+      const editor = mockEditor({
+        isEditable: true,
+        isDestroyed: false
+      })
+      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+
+      expect(result).toBeFalsy()
+    })
+
+    it('should not show when selection contains empty node', () => {
+      /* eslint-disable max-nested-callbacks */
+      jest.spyOn(helpers, 'findNodesInSelection').mockImplementation(() => [
+        {
+          node: { type: { name: 'text' }, text: '' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'bulletList' }, textContent: '' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'orderedList' }, textContent: '' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'listItem' }, textContent: '' } as any,
+          from: 1,
+          to: 2
+        },
+        {
+          node: { type: { name: 'heading' }, textContent: '' } as any,
+          from: 1,
+          to: 2
+        }
+      ])
+      /* eslint-enable max-nested-callbacks */
+
+      const editor = mockEditor({
+        isEditable: true,
+        isDestroyed: false
+      })
+      const result = shouldShow?.({ editor, from: 1, to: 2, view: editor.view, state: editor.state })
+
+      expect(result).toBeFalsy()
+    })
   })
 })

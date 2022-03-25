@@ -1,17 +1,18 @@
-import { cloneElement, useContext, useMemo } from 'react'
-import { EditorContext } from '../../../../context/EditorContext'
+import { cloneElement, useMemo } from 'react'
+import { theme } from '@brickdoc/design-system'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { findFirstSelectedNodes } from '../../../../helpers/selection'
 import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../../helpers/block'
-import { isBubbleMenuVisible, NodeIcon } from './useBubbleMenuItems'
-import { theme } from '@brickdoc/design-system'
+import { isBubbleMenuVisible } from '../BubbleMenu'
+import { NodeIcon } from './useBubbleMenuItems'
+import { useEditorContext } from '../../../../hooks'
 
 const blockItems: BlockCommandItem[] = ORDER_TOGGLE_BLOCK.map(
   key => Object.values(BLOCK).find(block => block.key === key)!
 )
 
 export function useNodeGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useContext(EditorContext)
+  const { t, editor } = useEditorContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

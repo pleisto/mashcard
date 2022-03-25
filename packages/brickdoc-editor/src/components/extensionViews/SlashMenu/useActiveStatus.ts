@@ -1,4 +1,4 @@
-import React from 'react'
+import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 import { SlashMenuProps } from '.'
 import { SlashMenuItem } from './SlashMenu'
 import { useKeyboardEvent } from './useKeyboardEvent'
@@ -8,13 +8,13 @@ export function useActiveStatus(
   suggestion: SlashMenuItem[],
   type: SlashMenuItem[],
   command: SlashMenuProps['command']
-): [number | undefined, (activeIndex: number) => void, React.MutableRefObject<HTMLUListElement | undefined>] {
-  const [activeIndex, setActiveIndex] = React.useState<number>(0)
-  const itemLength = React.useRef(0)
-  const currentItem = React.useRef<SlashMenuItem>()
+): [number | undefined, (activeIndex: number) => void, MutableRefObject<HTMLUListElement | undefined>] {
+  const [activeIndex, setActiveIndex] = useState<number>(0)
+  const itemLength = useRef(0)
+  const currentItem = useRef<SlashMenuItem>()
 
   // record active item
-  React.useEffect(() => {
+  useEffect(() => {
     if (activeIndex === undefined) return
     if (suggestion.length > 0) {
       currentItem.current = suggestion[activeIndex]
@@ -24,7 +24,7 @@ export function useActiveStatus(
   }, [activeIndex, recent, suggestion, type])
 
   // record item length
-  React.useEffect(() => {
+  useEffect(() => {
     setActiveIndex(0)
 
     if (suggestion.length > 0) {
@@ -37,7 +37,7 @@ export function useActiveStatus(
   // keyboard events
   const [menuRef] = useKeyboardEvent(currentItem, itemLength, setActiveIndex, command)
 
-  const handleActiveIndexChange = React.useCallback((index: number) => {
+  const handleActiveIndexChange = useCallback((index: number) => {
     setActiveIndex((index + itemLength.current) % itemLength.current)
   }, [])
 

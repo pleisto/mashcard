@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
 import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
 
 describe('BlockActionsMenu', () => {
@@ -41,7 +41,7 @@ describe('BlockActionsMenu', () => {
       <BlockActionsMenu baseId="menu" extraOptions={extraOptions} basicOptions={basicOptions} />
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('puts extraOptions and basicOptions into menu correctly', () => {
@@ -70,5 +70,28 @@ describe('BlockActionsMenu', () => {
 
     expect(screen.getByLabelText('item')).toBeInTheDocument()
     expect(screen.getByLabelText('delete')).toBeInTheDocument()
+  })
+
+  it('clicks action item normally', () => {
+    const mockAction = jest.fn()
+    const basicOptions: BlockActionsMenuProps['basicOptions'] = {
+      type: 'group',
+      items: [
+        {
+          type: 'item',
+          name: 'delete',
+          label: 'delete',
+          closeOnAction: true,
+          onAction: mockAction,
+          icon: <span>delete</span>
+        }
+      ]
+    }
+
+    render(<BlockActionsMenu baseId="menu" basicOptions={basicOptions} />)
+
+    fireEvent.click(screen.getByLabelText('delete'))
+
+    expect(mockAction).toBeCalled()
   })
 })

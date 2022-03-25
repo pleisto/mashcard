@@ -1,23 +1,21 @@
-import React from 'react'
-import { EditorContext } from '../../../context/EditorContext'
-import {} from './ParagraphView'
-import { BlockContext } from '../../../context/BlockContext'
+import { useEffect, useRef, useState } from 'react'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
+import { useBlockContext, useEditorContext } from '../../../hooks'
 
 export function usePlaceholder(
   editor: ParagraphViewProps['editor'],
   node: ParagraphViewProps['node'],
   getPos: ParagraphViewProps['getPos']
 ): [string] {
-  const { t } = React.useContext(EditorContext)
-  const { insideList } = React.useContext(BlockContext)
-  const [placeholder, setPlaceholder] = React.useState('')
-  const nodeRef = React.useRef(node)
-  React.useEffect(() => {
+  const { t } = useEditorContext()
+  const { insideList } = useBlockContext()
+  const [placeholder, setPlaceholder] = useState('')
+  const nodeRef = useRef(node)
+  useEffect(() => {
     nodeRef.current = node
   }, [node])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (insideList) return
 
     const listener = (): void => {

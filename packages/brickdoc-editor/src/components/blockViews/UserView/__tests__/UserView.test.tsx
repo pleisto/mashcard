@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { UserAttributes, UserOptions } from '../../../../extensions'
-import { mockBlockViewProps } from '../../common/tests'
+import { mockBlockViewProps } from '../../../common/tests'
 import { UserView } from '../UserView'
 
 describe('UserView', () => {
@@ -20,7 +20,7 @@ describe('UserView', () => {
 
   it('matches correct snapshot', () => {
     const { container } = render(<UserView {...props} />)
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders user normally', () => {

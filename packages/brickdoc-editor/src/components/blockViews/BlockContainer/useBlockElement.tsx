@@ -1,4 +1,4 @@
-import React from 'react'
+import { ReactNode, useMemo } from 'react'
 import { styled } from '@brickdoc/design-system'
 import { BlockActions, BlockActionsProps } from '../BlockActions'
 import { BlockContainerProps } from './BlockContainer'
@@ -15,10 +15,10 @@ interface Options {
 }
 
 export function useBlockElement(
-  originElement: React.ReactNode,
+  originElement: ReactNode,
   actionOptions: BlockContainerProps['actionOptions'],
   { inline, disableActionOptions, blockActionClassName }: Options
-): [React.ReactNode] {
+): [ReactNode] {
   let blockElement = originElement
   if (inline) {
     // add two empty span before and after the block element,
@@ -32,7 +32,7 @@ export function useBlockElement(
     )
   }
 
-  const blockActionProps = React.useMemo<BlockActionsProps | undefined>(() => {
+  const blockActionProps = useMemo<BlockActionsProps | undefined>(() => {
     if (disableActionOptions) return undefined
     if (Array.isArray(actionOptions)) return { options: actionOptions }
     return actionOptions

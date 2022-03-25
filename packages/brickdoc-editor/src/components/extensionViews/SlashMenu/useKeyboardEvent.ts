@@ -1,14 +1,14 @@
-import React from 'react'
+import { Dispatch, MutableRefObject, SetStateAction, useEffect, useRef } from 'react'
 import { BrickdocEventBus, SlashMenuKeyboardEventTrigger, SlashMenuHide } from '@brickdoc/schema'
 import { SlashMenuItem, SlashMenuProps } from '.'
 
 export function useKeyboardEvent(
-  currentItem: React.MutableRefObject<SlashMenuItem | undefined>,
-  itemLength: React.MutableRefObject<number>,
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>,
+  currentItem: MutableRefObject<SlashMenuItem | undefined>,
+  itemLength: MutableRefObject<number>,
+  setActiveIndex: Dispatch<SetStateAction<number>>,
   command: SlashMenuProps['command']
-): [React.MutableRefObject<HTMLUListElement | undefined>] {
-  const menuRef = React.useRef<HTMLUListElement>()
+): [MutableRefObject<HTMLUListElement | undefined>] {
+  const menuRef = useRef<HTMLUListElement>()
 
   const scrollItemIntoView = (index: number): void =>
     menuRef.current
@@ -16,7 +16,7 @@ export function useKeyboardEvent(
       .item(index)
       ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
 
-  React.useEffect(() => {
+  useEffect(() => {
     const listener = BrickdocEventBus.subscribe(SlashMenuKeyboardEventTrigger, event => {
       switch (event.payload.key) {
         case 'ArrowUp':

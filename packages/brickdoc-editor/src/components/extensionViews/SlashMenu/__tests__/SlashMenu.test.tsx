@@ -28,7 +28,7 @@ describe('SlashMenu', () => {
     }
 
     const { container } = render(<SlashMenu items={items} command={() => {}} />)
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders menu items correctly', () => {

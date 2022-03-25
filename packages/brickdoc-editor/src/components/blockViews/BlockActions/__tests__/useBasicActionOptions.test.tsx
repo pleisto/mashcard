@@ -1,67 +1,56 @@
-import { FC } from 'react'
-import { render, screen } from '@testing-library/react'
-import { ExternalProps, ExternalPropsContext } from '../../../../context'
-import { useBasicActionOptions } from '../useBasicActionOptions'
+import { renderHook } from '@testing-library/react-hooks'
+import { mockEditor } from '../../../common/tests/editor'
+import { ToolbarItemOption, ToolbarSubMenuOption } from '../../../ui'
+import { UseActionOptionsProps, useBasicActionOptions } from '../useBasicActionOptions'
+
+jest.mock('../../../../hooks/useDocumentEditable.ts', () => ({
+  useDocumentEditable: () => [true]
+}))
+
+jest.mock('../../../../hooks/useEditorContext.ts', () => ({
+  useEditorContext: () => ({
+    t: (k: string) => k,
+    editor: mockEditor()
+  })
+}))
+
+jest.mock('../../../../hooks/useBlockContext.ts', () => ({
+  useBlockContext: () => ({
+    deleteBlock() {},
+    duplicateBlock() {},
+    moveBlock() {},
+    copyContent() {},
+    getPosition() {
+      return 1
+    },
+    updateDraggingStatus() {},
+    insideList: false,
+    dragging: false,
+    node: {
+      textContent: 'text'
+    }
+  })
+}))
 
 describe('useBasicActionOptions', () => {
-  it('returns null document is not editable', () => {
-    const Demo: FC<{}> = () => {
-      const group = useBasicActionOptions({ types: ['copy', 'delete', 'duplicate', 'move'] })
-
-      return (
-        <span>
-          {group?.items.map(item => {
-            return <span key={item.name}>{item.name}</span>
-          }) ?? <span>empty</span>}
-        </span>
-      )
-    }
-
-    render(<Demo />)
-    expect(screen.getByText('empty')).toBeInTheDocument()
-  })
   it('returns null when no types specified', () => {
-    const Demo: FC<{}> = () => {
-      const group = useBasicActionOptions({ types: [] })
-
-      return (
-        <span>
-          {group?.items.map(item => {
-            return <span key={item.name}>{item.name}</span>
-          }) ?? <span>empty</span>}
-        </span>
-      )
-    }
-
-    render(<Demo />)
-    expect(screen.getByText('empty')).toBeInTheDocument()
+    const { result } = renderHook(() => useBasicActionOptions({ types: [] }))
+    expect(result.current).toBeNull()
   })
 
   it('returns options according to types', () => {
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    const externalProps = new ExternalProps()
-    externalProps.documentEditable = true
+    const types: UseActionOptionsProps['types'] = ['copy', 'delete', 'duplicate', 'move', 'transform']
+    const { result } = renderHook(() => useBasicActionOptions({ types }))
 
-    const Demo: FC<{}> = () => {
-      const group = useBasicActionOptions({ types: ['copy', 'delete', 'duplicate', 'move'] })
+    expect(result.current?.items.length).toBe(types.length)
+  })
 
-      return (
-        <span>
-          {group?.items.map(item => {
-            return <span key={item.name}>{item.name}</span>
-          }) ?? <span>empty</span>}
-        </span>
-      )
-    }
+  it('clicks transform option will trigger action correctly', () => {
+    const types: UseActionOptionsProps['types'] = ['transform']
+    const { result } = renderHook(() => useBasicActionOptions({ types }))
 
-    render(
-      <ExternalPropsContext.Provider value={externalProps}>
-        <Demo />
-      </ExternalPropsContext.Provider>
-    )
-    expect(screen.getByText('copy')).toBeInTheDocument()
-    expect(screen.getByText('delete')).toBeInTheDocument()
-    expect(screen.getByText('duplicate')).toBeInTheDocument()
-    expect(screen.getByText('move')).toBeInTheDocument()
+    expect(() =>
+      ((result.current?.items[0] as ToolbarSubMenuOption).items as ToolbarItemOption[])[0].onAction!('')
+    ).not.toThrow()
   })
 })

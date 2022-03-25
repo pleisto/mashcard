@@ -1,12 +1,11 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
-import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui/Toolbar'
-import { isBubbleMenuVisible } from './useBubbleMenuItems'
-import { useExternalProps } from '../../../../hooks/useExternalProps'
+import { isBubbleMenuVisible } from '../BubbleMenu'
+import { useEditorContext, useExternalProps } from '../../../../hooks'
 
 export function useExtraItemsGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { editor, t } = useContext(EditorContext)
+  const { editor, t } = useEditorContext()
   const { featureFlags } = useExternalProps()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {

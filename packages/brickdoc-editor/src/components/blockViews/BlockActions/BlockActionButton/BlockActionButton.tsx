@@ -1,8 +1,8 @@
-import { DragEventHandler, FC, MouseEventHandler, useCallback, useContext, useMemo, useState } from 'react'
+import { DragEventHandler, FC, MouseEventHandler, useCallback, useMemo, useState } from 'react'
 import { Button, IconProps, Popover, styled, theme } from '@brickdoc/design-system'
 import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
-import { BlockContext } from '../../../../context/BlockContext'
 import { DragSecondary } from '../../../ui'
+import { useBlockContext } from '../../../../hooks/useBlockContext'
 
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
@@ -72,7 +72,7 @@ const Trigger: FC<{
 }
 
 export const BlockActionButton: FC<BlockActionButtonProps> = ({ className, children, ...props }) => {
-  const { updateDraggingStatus } = useContext(BlockContext)
+  const { updateDraggingStatus } = useBlockContext()
   const [visible, setVisible] = useState(false)
   const handleVisibleChange = useCallback((visible: boolean) => {
     setVisible(visible)

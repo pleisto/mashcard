@@ -1,55 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BlockContainer changes block pointer event when editor editable state change 1`] = `
-<div
-  data-node-view-wrapper=""
-  style="pointer-events: none; white-space: normal;"
-/>
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  />
+</div>
 `;
 
 exports[`BlockContainer changes block pointer event when editor editable state change 2`] = `
-<div
-  data-node-view-wrapper=""
-  style="pointer-events: unset; white-space: normal;"
-/>
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: unset; white-space: normal;"
+  />
+</div>
 `;
 
 exports[`BlockContainer hide action options when node without uuid 1`] = `
-<div
-  data-node-view-wrapper=""
-  style="pointer-events: none; white-space: normal;"
->
-  block
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  >
+    block
+  </div>
 </div>
 `;
 
 exports[`BlockContainer inline 1`] = `
-<span
-  as="span"
-  data-node-view-wrapper=""
-  style="pointer-events: none; white-space: normal;"
->
+<div>
   <span
-    class="brd-c-bbClCh"
-    contenteditable="false"
+    as="span"
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
   >
-     
+    <span
+      class="brd-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
+    block
+    <span
+      class="brd-c-bbClCh"
+      contenteditable="false"
+    >
+       
+    </span>
   </span>
-  block
-  <span
-    class="brd-c-bbClCh"
-    contenteditable="false"
-  >
-     
-  </span>
-</span>
+</div>
 `;
 
 exports[`BlockContainer with actionOptions 1`] = `
-<div
-  data-node-view-wrapper=""
-  style="pointer-events: none; white-space: normal;"
->
-  block
+<div>
+  <div
+    data-node-view-wrapper=""
+    style="pointer-events: none; white-space: normal;"
+  >
+    block
+  </div>
 </div>
 `;

@@ -1,9 +1,10 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Icon, styled } from '@brickdoc/design-system'
-import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
 import { COLOR } from '../../../../helpers'
-import { BubbleItemMeta, isBubbleMenuVisible, NodeIcon } from './useBubbleMenuItems'
+import { BubbleItemMeta, NodeIcon } from './useBubbleMenuItems'
+import { isBubbleMenuVisible } from '../BubbleMenu'
+import { useEditorContext } from '../../../../hooks'
 
 const FontColorIcon = styled('span', {
   include: ['flexCenter'],
@@ -14,7 +15,7 @@ const FontColorIcon = styled('span', {
 })
 
 export function useFontColorGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useContext(EditorContext)
+  const { t, editor } = useEditorContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

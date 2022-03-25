@@ -1,4 +1,4 @@
-import React from 'react'
+import { cloneElement, FC, Key, ReactElement, useCallback, useContext } from 'react'
 import { cx, css, Menu, MenuProps, styled, theme } from '@brickdoc/design-system'
 import { ActionOptionGroup } from '../BlockActions'
 import { Add, IconBackground, ToolbarOption } from '../../../ui'
@@ -35,12 +35,12 @@ const ActionMenuItem = styled(Menu.Item, {
   minWidth: 'calc(15rem - 10px)'
 })
 
-export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions, basicOptions, baseId, onClose }) => {
-  const { t } = React.useContext(EditorContext)
+export const BlockActionsMenu: FC<BlockActionsMenuProps> = ({ extraOptions, basicOptions, baseId, onClose }) => {
+  const { t } = useContext(EditorContext)
   const [options, blockOptions] = useOptions(extraOptions, basicOptions)
 
-  const renderMenuItem = React.useCallback(
-    (option: ToolbarOption, key: React.Key, onClose: BlockActionsMenuProps['onClose']): React.ReactElement => {
+  const renderMenuItem = useCallback(
+    (option: ToolbarOption, key: Key, onClose: BlockActionsMenuProps['onClose']): ReactElement => {
       if (option.type === 'item')
         return (
           <ActionMenuItem
@@ -69,7 +69,7 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
           >
             {typeof option.items === 'function'
               ? option.items()
-              : option.items?.reduce<React.ReactElement[]>((elements, option, index, array) => {
+              : option.items?.reduce<ReactElement[]>((elements, option, index, array) => {
                   if (option.type === 'group')
                     return [
                       ...elements,
@@ -89,7 +89,7 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
 
   return (
     <Menu type="ghost" baseId={baseId}>
-      {options?.reduce<React.ReactElement[]>((elements, option, index, array) => {
+      {options?.reduce<ReactElement[]>((elements, option, index, array) => {
         if (option.type === 'group')
           return [
             ...elements,
@@ -100,7 +100,7 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
                     ...option,
                     icon: option.icon ? (
                       <IconBackground className={actionIconBackgroundStyle()}>
-                        {React.cloneElement(option.icon, { className: actionIconStyle() })}
+                        {cloneElement(option.icon, { className: actionIconStyle() })}
                       </IconBackground>
                     ) : undefined
                   },
@@ -120,7 +120,7 @@ export const BlockActionsMenu: React.FC<BlockActionsMenuProps> = ({ extraOptions
         label={t('block_actions.add_block')}
         icon={<Add square={true} className={cx(actionIconStyle(), actionIconBackgroundStyle())} />}
       >
-        {blockOptions?.reduce<React.ReactElement[]>((elements, option, index, array) => {
+        {blockOptions?.reduce<ReactElement[]>((elements, option, index, array) => {
           if (option.type === 'group')
             return [
               ...elements,

@@ -1,67 +1,124 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Toolbar matches snapshot correctly 1`] = `
-<ul
-  class="brd-c-ijmYxO"
-  role="menu"
->
+<div>
   <ul
-    class="brd-c-gYAvyC"
-    role="presentation"
+    class="brd-c-ijmYxO"
+    role="menu"
   >
+    <ul
+      class="brd-c-gYAvyC"
+      role="presentation"
+    >
+      <li
+        aria-describedby="toolbar-matches-snapshot-correctly-0"
+        aria-haspopup="false"
+        aria-label="item1"
+        class="brd-c-gGXCgU"
+        role="menuitem"
+      >
+        <span>
+          item1
+        </span>
+      </li>
+      <li
+        aria-describedby="toolbar-matches-snapshot-correctly-1"
+        aria-haspopup="false"
+        aria-label="item2"
+        class="brd-c-gGXCgU"
+        role="menuitem"
+      >
+        <span>
+          item2
+        </span>
+      </li>
+      <li
+        aria-describedby="toolbar-matches-snapshot-correctly-2"
+        aria-haspopup="false"
+        aria-label="item3"
+        class="brd-c-gGXCgU"
+        role="menuitem"
+      >
+        <span>
+          item3
+        </span>
+      </li>
+      <span
+        aria-haspopup="dialog"
+      >
+        <li
+          aria-label="subMenu renderItems"
+          class="brd-c-ejBKFn"
+          role="menuitem"
+        >
+          subMenu renderItems
+          <span
+            aria-label="arrow-down"
+            class="brd-icon brd-icon-arrow-down brd-c-eIxPHM"
+            role="img"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                d="m19 9-7 6-7-6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+        </li>
+      </span>
+      <span
+        aria-haspopup="dialog"
+      >
+        <li
+          aria-label="subMenu"
+          class="brd-c-ejBKFn"
+          role="menuitem"
+        >
+          subMenu
+          <span
+            aria-label="arrow-down"
+            class="brd-icon brd-icon-arrow-down brd-c-eIxPHM"
+            role="img"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              viewBox="0 0 24 24"
+              width="1em"
+            >
+              <path
+                d="m19 9-7 6-7-6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+            </svg>
+          </span>
+        </li>
+      </span>
+      <li
+        aria-label="toolbar.separator"
+        class="brd-c-rmqRb"
+      />
+    </ul>
     <li
-      aria-label="item"
+      aria-label="item2"
       class="brd-c-gGXCgU"
       role="menuitem"
     >
       <span>
-        item
+        item2
       </span>
     </li>
-    <span
-      aria-haspopup="dialog"
-    >
-      <li
-        aria-label="subMenu"
-        class="brd-c-ejBKFn"
-        role="menuitem"
-      >
-        subMenu
-        <span
-          aria-label="arrow-down"
-          class="brd-icon brd-icon-arrow-down brd-c-eIxPHM"
-          role="img"
-        >
-          <svg
-            fill="none"
-            height="1em"
-            viewBox="0 0 24 24"
-            width="1em"
-          >
-            <path
-              d="m19 9-7 6-7-6"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-          </svg>
-        </span>
-      </li>
-    </span>
-    <li
-      aria-label="toolbar.separator"
-      class="brd-c-rmqRb"
-    />
   </ul>
-  <li
-    aria-label="item2"
-    class="brd-c-gGXCgU"
-    role="menuitem"
-  >
-    <span>
-      item2
-    </span>
-  </li>
-</ul>
+</div>
 `;

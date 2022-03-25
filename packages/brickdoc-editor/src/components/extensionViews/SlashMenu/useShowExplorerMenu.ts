@@ -1,12 +1,12 @@
-import React from 'react'
+import { useCallback, useContext, useMemo } from 'react'
 import { ExplorerMenuGroup, BrickdocEventBus, SlashMenuHide, ExplorerMenuTrigger } from '@brickdoc/schema'
 import { EditorContext } from '../../../context/EditorContext'
 import { slashMenuGroup } from '../../../extensions/extensions/slashCommands/items'
 import { SlashMenuProps } from './SlashMenu'
 
 export function useShowExplorerMenu(command: SlashMenuProps['command']): [VoidFunction] {
-  const { t } = React.useContext(EditorContext)
-  const explorerMenuGroups = React.useMemo<ExplorerMenuGroup[]>(
+  const { t } = useContext(EditorContext)
+  const explorerMenuGroups = useMemo<ExplorerMenuGroup[]>(
     () =>
       slashMenuGroup.map(group => ({
         label: t(`slash_menu.explorer_menu.group.${group.key}.label`),
@@ -22,7 +22,7 @@ export function useShowExplorerMenu(command: SlashMenuProps['command']): [VoidFu
     [command, t]
   )
 
-  const handleShowExplorerMenu = React.useCallback(() => {
+  const handleShowExplorerMenu = useCallback(() => {
     BrickdocEventBus.dispatch(SlashMenuHide({}))
     BrickdocEventBus.dispatch(ExplorerMenuTrigger({ visible: true, items: explorerMenuGroups }))
   }, [explorerMenuGroups])

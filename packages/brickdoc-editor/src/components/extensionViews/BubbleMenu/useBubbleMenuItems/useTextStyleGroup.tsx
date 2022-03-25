@@ -1,11 +1,12 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
-import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarOption, ToolbarGroupOption } from '../../../ui'
-import { BubbleItemMeta, isBubbleMenuVisible } from './useBubbleMenuItems'
+import { BubbleItemMeta } from './useBubbleMenuItems'
+import { isBubbleMenuVisible } from '../BubbleMenu'
+import { useEditorContext } from '../../../../hooks'
 
 export function useTextStyleGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useContext(EditorContext)
+  const { t, editor } = useEditorContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

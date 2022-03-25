@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`documentEditor renders document editor correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="brickdoc"
+    >
+      <div
+        class="ProseMirror"
+        contenteditable="true"
+        translate="no"
+      >
+        <div
+          class="react-renderer node-paragraph"
+        >
+          <div
+            data-node-view-wrapper=""
+            style="position: relative; pointer-events: none; white-space: normal;"
+          >
+            <p
+              as="p"
+              class="brd-c-hMGRDP"
+              data-node-view-content=""
+              data-placeholder=""
+              draggable="false"
+              style="white-space: pre-wrap;"
+            >
+              <div
+                style="white-space: inherit;"
+              >
+                <br
+                  class="ProseMirror-trailingBreak"
+                />
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

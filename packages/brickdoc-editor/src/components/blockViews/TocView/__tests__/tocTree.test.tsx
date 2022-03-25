@@ -53,6 +53,14 @@ describe('tocTree', () => {
                 domain: 'domain'
               }
             }
+          },
+          {
+            type: {
+              name: 'formulaBlock'
+            },
+            attrs: {
+              formula: {}
+            }
           }
         ],
         attrs: {

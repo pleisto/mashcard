@@ -4,7 +4,8 @@ import { UserGroup, UserItem } from './UserGroup'
 import { Menu, styled } from '@brickdoc/design-system'
 import { PageGroup, PageItem } from './PageGroup'
 
-export interface MentionCommandsMenuProps extends Omit<SuggestionProps, 'items'> {
+export interface MentionCommandsMenuProps
+  extends Omit<SuggestionProps, 'items' | 'decorationNode' | 'text' | 'clientRect'> {
   activeCategory: 'users' | 'pages'
   activeIndex: number
   baseId?: string

@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { ToolbarOptionBase, ToolbarOptionGroup } from '../../../ui'
-import { Editor } from '@tiptap/react'
 import { useNodeGroup } from './useNodeGroup'
 import { useTextStyleGroup } from './useTextStyleGroup'
 import { useFontColorGroup } from './useFontColorGroup'
@@ -25,13 +24,6 @@ export interface BubbleItemMeta {
   icon: React.ReactElement
   tooltip?: ToolbarOptionBase['tooltip']
   onAction: () => void
-}
-
-export const isBubbleMenuVisible = (editor: Editor | null | undefined): editor is Editor => {
-  if (!editor) return false
-  const { from, to } = editor.state.selection
-  if (from === to) return false
-  return true
 }
 
 export function useBubbleMenuItems(): [ToolbarOptionGroup] {

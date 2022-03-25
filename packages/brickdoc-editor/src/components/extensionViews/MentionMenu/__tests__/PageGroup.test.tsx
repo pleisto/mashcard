@@ -1,5 +1,6 @@
 import { Menu } from '@brickdoc/design-system'
 import { render, screen, fireEvent } from '@testing-library/react'
+import { mockEditor } from '../../../common/tests/editor'
 import { PageGroup, PageGroupProps } from '../PageGroup'
 
 describe('MentionMenuPageGroup', () => {
@@ -21,7 +22,12 @@ describe('MentionMenuPageGroup', () => {
     }
   ]
 
-  const props: any = {
+  const editor = mockEditor()
+  const props: PageGroupProps = {
+    editor,
+    range: { from: 0, to: 1 },
+    activeIndex: 0,
+    active: false,
     items
   }
 
@@ -31,7 +37,7 @@ describe('MentionMenuPageGroup', () => {
         <PageGroup {...props} />
       </Menu>
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders page items normally', () => {
@@ -40,15 +46,14 @@ describe('MentionMenuPageGroup', () => {
   })
 
   it('handles item onSelect correctly', () => {
-    const editor: any = {}
     const range = { from: 1, to: 2 }
 
-    render(<PageGroup {...props} editor={editor} range={range} />)
+    render(<PageGroup {...props} range={range} />)
 
     const menuItems = screen.getAllByRole('menuitem')
 
     fireEvent.click(menuItems[0])
 
-    expect(items[0].command).toBeCalledWith(editor, range)
+    expect(items[0].command).toBeCalled()
   })
 })

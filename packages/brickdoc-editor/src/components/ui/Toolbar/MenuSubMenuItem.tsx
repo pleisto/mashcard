@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, Fragment, ReactElement, useState } from 'react'
 import { Icon, Menu, Popover, styled, theme } from '@brickdoc/design-system'
 import { ToolbarSubMenuOption, ToolbarItemOption, ToolbarItemGroupOption } from './Toolbar'
 import { ToolbarMenuItem } from './MenuItem'
@@ -32,13 +32,13 @@ const renderMenu = (
   option: ToolbarSubMenuOption,
   items: Array<ToolbarItemGroupOption | ToolbarItemOption>,
   closeMenu: () => void
-): React.ReactElement => {
+): ReactElement => {
   return (
     <Menu aria-label={option.name} type="ghost">
       {items.map((menuItem, index) => {
         if (menuItem.type === 'group') {
           return (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               <Menu.Group title={menuItem.title} key={index}>
                 {menuItem.items.map(item => (
                   <Menu.Item
@@ -56,7 +56,7 @@ const renderMenu = (
                 ))}
               </Menu.Group>
               {index < items.length - 1 && <Menu.Separator key={`separator-${index}`} />}
-            </React.Fragment>
+            </Fragment>
           )
         }
         return (
@@ -78,8 +78,8 @@ const renderMenu = (
   )
 }
 
-export const ToolbarMenuSubMenuItem: React.FC<ToolbarMenuSubMenuItemProps> = ({ option, ...props }) => {
-  const [visible, setVisible] = React.useState(false)
+export const ToolbarMenuSubMenuItem: FC<ToolbarMenuSubMenuItemProps> = ({ option, ...props }) => {
+  const [visible, setVisible] = useState(false)
   const handleVisibleChange = (visible: boolean): void => setVisible(visible)
   const hasContent = !!option.content
 

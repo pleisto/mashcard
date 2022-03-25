@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, MouseEvent, useCallback } from 'react'
 import { styled, theme } from '@brickdoc/design-system'
 import { ToolbarOption } from './Toolbar'
 import { itemCommon, itemHeight } from './styles/index.style'
@@ -20,9 +20,9 @@ export interface ToolbarMenuItemProps {
   option: ToolbarOption
 }
 
-export const ToolbarMenuItem: React.FC<ToolbarMenuItemProps> = ({ option, ...props }) => {
-  const handleClick = React.useCallback(
-    (event: React.MouseEvent<HTMLLIElement>) => {
+export const ToolbarMenuItem: FC<ToolbarMenuItemProps> = ({ option, ...props }) => {
+  const handleClick = useCallback(
+    (event: MouseEvent<HTMLLIElement>) => {
       option.onAction?.(option.name)
       ;(props as any).onClick?.(event)
     },

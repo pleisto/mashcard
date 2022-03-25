@@ -1,7 +1,7 @@
-import React from 'react'
+import { useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { ActionGroupOption, BlockActionOptions } from '../../BlockActions'
-import { EditorContext } from '../../../../context/EditorContext'
+import { useEditorContext } from '../../../../hooks'
 
 export interface UseActionOptionsProps {
   mode: 'link' | 'preview'
@@ -18,8 +18,8 @@ export function useActionOptions({
   onToLinkMode,
   onToPreviewMode
 }: UseActionOptionsProps): [BlockActionOptions] {
-  const { t } = React.useContext(EditorContext)
-  return React.useMemo(() => {
+  const { t } = useEditorContext()
+  return useMemo(() => {
     const group: ActionGroupOption = {
       type: 'group',
       items: [

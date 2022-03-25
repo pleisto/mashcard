@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 import { PageLinkView } from '../PageLinkView'
-import { mockBlockViewProps } from '../../common/tests'
+import { mockBlockViewProps } from '../../../common/tests'
 import { PageLinkAttributes, PageLinkOptions } from '../../../../extensions'
 
 describe('PageLinkView', () => {
@@ -26,7 +26,7 @@ describe('PageLinkView', () => {
         <PageLinkView {...props} />
       </Router>
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders page link normally', () => {

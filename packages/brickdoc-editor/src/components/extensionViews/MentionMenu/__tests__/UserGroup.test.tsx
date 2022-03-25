@@ -1,5 +1,6 @@
 import { Menu } from '@brickdoc/design-system'
 import { render, screen, fireEvent } from '@testing-library/react'
+import { mockEditor } from '../../../common/tests/editor'
 import { UserGroup, UserGroupProps } from '../UserGroup'
 
 describe('MentionMenuUserGroup', () => {
@@ -24,7 +25,12 @@ describe('MentionMenuUserGroup', () => {
     }
   ]
 
-  const props: any = {
+  const editor = mockEditor()
+  const props: UserGroupProps = {
+    active: false,
+    activeIndex: 0,
+    editor,
+    range: { from: 0, to: 1 },
     items
   }
 
@@ -34,7 +40,7 @@ describe('MentionMenuUserGroup', () => {
         <UserGroup {...props} />
       </Menu>
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders page items normally', () => {
@@ -43,15 +49,14 @@ describe('MentionMenuUserGroup', () => {
   })
 
   it('handles item onSelect correctly', () => {
-    const editor: any = {}
     const range = { from: 1, to: 2 }
 
-    render(<UserGroup {...props} editor={editor} range={range} />)
+    render(<UserGroup {...props} range={range} />)
 
     const menuItems = screen.getAllByRole('menuitem')
 
     fireEvent.click(menuItems[0])
 
-    expect(items[0].command).toBeCalledWith(editor, range)
+    expect(items[0].command).toBeCalled()
   })
 })

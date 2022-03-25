@@ -1,199 +1,230 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SlashMenu matches correct snapshot 1`] = `
-<ul
-  aria-label="slash_menu.title"
-  aria-orientation="vertical"
-  class="brd-c-bOsLjs brd-c-bOsLjs-lozdyt-theme-default brd-c-bOsLjs-iTKOFX-orientation-vertical brd-c-dLLhok brd-c-dLLhok-iAMRjR-withFooter-true"
-  id="slash-menu"
-  role="menubar"
->
+<div>
   <ul
-    class="brd-c-jpGEAj"
-    label="[object Object]"
-    role="group"
-    title="slash_menu.recent"
+    aria-label="slash_menu.title"
+    aria-orientation="vertical"
+    class="brd-c-bOsLjs brd-c-bOsLjs-lozdyt-theme-default brd-c-bOsLjs-iTKOFX-orientation-vertical brd-c-dLLhok brd-c-dLLhok-iAMRjR-withFooter-true"
+    id="slash-menu"
+    role="menubar"
   >
-    <span
-      aria-label="slash_menu.recent"
-      class="brd-c-kubJPX"
+    <ul
+      class="brd-c-jpGEAj"
+      label="[object Object]"
+      role="group"
+      title="slash_menu.recent"
     >
       <span
-        class="brd-c-emmNGU"
+        aria-label="slash_menu.recent"
+        class="brd-c-kubJPX"
       >
-        slash_menu.recent
+        <span
+          class="brd-c-emmNGU"
+        >
+          slash_menu.recent
+        </span>
       </span>
-    </span>
+      <ul
+        class="brd-c-jpGEAj brd-c-fMsrTz"
+        role="group"
+        title=""
+      >
+        <li
+          class="brd-c-cpzHyL brd-c-cpzHyL-duyZwV-active-true brd-c-jIhtkb"
+          data-testid="editor-slash-commands-item"
+          id="slash-menu-1"
+          role="menuitem"
+          tabindex="0"
+          title=""
+        >
+          <div
+            class="brd-c-ktkyHc"
+          >
+            icon
+          </div>
+        </li>
+        <li
+          class="brd-c-cpzHyL brd-c-jIhtkb"
+          data-testid="editor-slash-commands-item"
+          id="slash-menu-2"
+          role="menuitem"
+          tabindex="-1"
+          title=""
+        >
+          <div
+            class="brd-c-ktkyHc"
+          >
+            icon
+          </div>
+        </li>
+        <li
+          class="brd-c-cpzHyL brd-c-jIhtkb"
+          data-testid="editor-slash-commands-item"
+          id="slash-menu-3"
+          role="menuitem"
+          tabindex="-1"
+          title=""
+        >
+          <div
+            class="brd-c-ktkyHc"
+          >
+            icon
+          </div>
+        </li>
+      </ul>
+    </ul>
     <ul
-      class="brd-c-jpGEAj brd-c-fMsrTz"
+      class="brd-c-jpGEAj"
+      label="[object Object]"
       role="group"
-      title=""
+      title="slash_menu.type"
     >
+      <span
+        aria-label="slash_menu.type"
+        class="brd-c-kubJPX"
+      >
+        <span
+          class="brd-c-emmNGU"
+        >
+          slash_menu.type
+        </span>
+      </span>
       <li
-        class="brd-c-cpzHyL brd-c-cpzHyL-duyZwV-active-true brd-c-jIhtkb"
+        class="brd-c-cpzHyL"
         data-testid="editor-slash-commands-item"
-        id="slash-menu-1"
+        id="slash-menu-4"
+        label="blocks.h1.label"
         role="menuitem"
-        tabindex="0"
-        title=""
+        tabindex="-1"
+        title="blocks.h1.label"
       >
         <div
-          class="brd-c-ktkyHc"
+          class="brd-c-fcAYuy"
         >
-          icon
+          <span
+            class="brd-c-OVPdU"
+          >
+            <div
+              class="brd-c-huISce"
+            >
+              icon
+            </div>
+          </span>
+          <div
+            class="brd-c-fNvXDc"
+          >
+            <span
+              aria-label="blocks.h1.label"
+              class="brd-c-PJLV"
+            >
+              <span>
+                blocks.h1.label
+              </span>
+            </span>
+          </div>
         </div>
       </li>
       <li
-        class="brd-c-cpzHyL brd-c-jIhtkb"
+        class="brd-c-cpzHyL"
         data-testid="editor-slash-commands-item"
-        id="slash-menu-2"
+        id="slash-menu-5"
+        label="blocks.h2.label"
         role="menuitem"
         tabindex="-1"
-        title=""
+        title="blocks.h2.label"
       >
         <div
-          class="brd-c-ktkyHc"
+          class="brd-c-fcAYuy"
         >
-          icon
+          <span
+            class="brd-c-OVPdU"
+          >
+            <div
+              class="brd-c-huISce"
+            >
+              icon
+            </div>
+          </span>
+          <div
+            class="brd-c-fNvXDc"
+          >
+            <span
+              aria-label="blocks.h2.label"
+              class="brd-c-PJLV"
+            >
+              <span>
+                blocks.h2.label
+              </span>
+            </span>
+          </div>
         </div>
       </li>
       <li
-        class="brd-c-cpzHyL brd-c-jIhtkb"
+        class="brd-c-cpzHyL"
         data-testid="editor-slash-commands-item"
-        id="slash-menu-3"
+        id="slash-menu-6"
+        label="blocks.h3.label"
         role="menuitem"
         tabindex="-1"
-        title=""
+        title="blocks.h3.label"
       >
         <div
-          class="brd-c-ktkyHc"
+          class="brd-c-fcAYuy"
         >
-          icon
+          <span
+            class="brd-c-OVPdU"
+          >
+            <div
+              class="brd-c-huISce"
+            >
+              icon
+            </div>
+          </span>
+          <div
+            class="brd-c-fNvXDc"
+          >
+            <span
+              aria-label="blocks.h3.label"
+              class="brd-c-PJLV"
+            >
+              <span>
+                blocks.h3.label
+              </span>
+            </span>
+          </div>
         </div>
       </li>
     </ul>
   </ul>
-  <ul
-    class="brd-c-jpGEAj"
-    label="[object Object]"
-    role="group"
-    title="slash_menu.type"
+  <div
+    class="brd-c-eKZami"
   >
-    <span
-      aria-label="slash_menu.type"
-      class="brd-c-kubJPX"
-    >
-      <span
-        class="brd-c-emmNGU"
-      >
-        slash_menu.type
-      </span>
+    <span>
+      slash_menu.footer
     </span>
-    <li
-      class="brd-c-cpzHyL"
-      data-testid="editor-slash-commands-item"
-      id="slash-menu-4"
-      label="blocks.h1.label"
-      role="menuitem"
-      tabindex="-1"
-      title="blocks.h1.label"
+    <span
+      aria-label="hamburger-button"
+      class="brd-icon brd-icon-hamburger-button brd-c-idDXvx"
+      role="img"
     >
-      <div
-        class="brd-c-fcAYuy"
+      <svg
+        viewBox="0 0 24 24"
       >
-        <span
-          class="brd-c-OVPdU"
-        >
-          <div
-            class="brd-c-huISce"
-          >
-            icon
-          </div>
-        </span>
-        <div
-          class="brd-c-fNvXDc"
-        >
-          <span
-            aria-label="blocks.h1.label"
-            class="brd-c-PJLV"
-          >
-            <span>
-              blocks.h1.label
-            </span>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li
-      class="brd-c-cpzHyL"
-      data-testid="editor-slash-commands-item"
-      id="slash-menu-5"
-      label="blocks.h2.label"
-      role="menuitem"
-      tabindex="-1"
-      title="blocks.h2.label"
-    >
-      <div
-        class="brd-c-fcAYuy"
-      >
-        <span
-          class="brd-c-OVPdU"
-        >
-          <div
-            class="brd-c-huISce"
-          >
-            icon
-          </div>
-        </span>
-        <div
-          class="brd-c-fNvXDc"
-        >
-          <span
-            aria-label="blocks.h2.label"
-            class="brd-c-PJLV"
-          >
-            <span>
-              blocks.h2.label
-            </span>
-          </span>
-        </div>
-      </div>
-    </li>
-    <li
-      class="brd-c-cpzHyL"
-      data-testid="editor-slash-commands-item"
-      id="slash-menu-6"
-      label="blocks.h3.label"
-      role="menuitem"
-      tabindex="-1"
-      title="blocks.h3.label"
-    >
-      <div
-        class="brd-c-fcAYuy"
-      >
-        <span
-          class="brd-c-OVPdU"
-        >
-          <div
-            class="brd-c-huISce"
-          >
-            icon
-          </div>
-        </span>
-        <div
-          class="brd-c-fNvXDc"
-        >
-          <span
-            aria-label="blocks.h3.label"
-            class="brd-c-PJLV"
-          >
-            <span>
-              blocks.h3.label
-            </span>
-          </span>
-        </div>
-      </div>
-    </li>
-  </ul>
-</ul>
+        <path
+          d="M24 0H0v24h24V0z"
+          fill="currentColor"
+          fill-opacity=".01"
+        />
+        <path
+          d="M3.975 5.975h16m-16 6h16m-16 6h16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+        />
+      </svg>
+    </span>
+  </div>
+</div>
 `;

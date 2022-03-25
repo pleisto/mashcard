@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Node as ProsemirrorNode, Mark } from 'prosemirror-model'
 import { debounce } from '@brickdoc/active-support'
-import { EditorContext } from '../../../context/EditorContext'
 import { meta as discussionMeta } from '../../../extensions/marks/discussion/meta'
+import { useEditorContext } from '../../../hooks'
 
 export interface CommentedNode {
   markId: string
@@ -17,7 +17,7 @@ const isCommentedNodeExist = (nodes: CommentedNode[], markId: string): boolean =
   nodes.some(node => node.markId === markId)
 
 export function useCommentedNodes(): [CommentedNode[]] {
-  const { editor } = useContext(EditorContext)
+  const { editor } = useEditorContext()
   const [commentedNodes, setCommentedNodes] = useState<CommentedNode[]>([])
 
   useEffect(() => {

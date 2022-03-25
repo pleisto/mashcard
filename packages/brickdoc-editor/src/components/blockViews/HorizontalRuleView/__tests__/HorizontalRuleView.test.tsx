@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { HorizontalRuleOptions, HorizontalRuleAttributes } from '../../../../extensions'
-import { mockBlockViewProps } from '../../common/tests'
+import { mockBlockViewProps } from '../../../common/tests'
 import { HorizontalRuleView } from '../HorizontalRuleView'
 
 describe('HorizontalRuleView', () => {
@@ -8,6 +8,6 @@ describe('HorizontalRuleView', () => {
     const props = mockBlockViewProps<HorizontalRuleOptions, HorizontalRuleAttributes>()
     const { container } = render(<HorizontalRuleView {...props} />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

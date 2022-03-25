@@ -1,11 +1,11 @@
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
-import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarItemOption, ToolbarOption, ToolbarGroupOption } from '../../../ui'
-import { isBubbleMenuVisible } from './useBubbleMenuItems'
+import { isBubbleMenuVisible } from '../BubbleMenu'
+import { useEditorContext } from '../../../../hooks'
 
 export function useFormulaItem(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { editor, t } = useContext(EditorContext)
+  const { editor, t } = useEditorContext()
 
   const option = useMemo<ToolbarOption | ToolbarGroupOption | null>(() => {
     if (!isBubbleMenuVisible(editor)) return null

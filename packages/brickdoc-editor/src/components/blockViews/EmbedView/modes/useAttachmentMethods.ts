@@ -1,4 +1,4 @@
-import React from 'react'
+import { useCallback } from 'react'
 import { WebViewerInstance } from '@pdftron/webviewer'
 
 export interface UseAttachmentMethodsProps {
@@ -19,15 +19,15 @@ export function useAttachmentMethods({
   fileUrl,
   updateAttachmentAttributes
 }: UseAttachmentMethodsProps): [AttachmentMethods] {
-  const handleChangeModeToLink = React.useCallback((): void => {
+  const handleChangeModeToLink = useCallback((): void => {
     updateAttachmentAttributes({ mode: 'link' })
   }, [updateAttachmentAttributes])
 
-  const handleChangeModeToPreview = React.useCallback((): void => {
+  const handleChangeModeToPreview = useCallback((): void => {
     updateAttachmentAttributes({ mode: 'preview' })
   }, [updateAttachmentAttributes])
 
-  const handleDownload = React.useCallback((): void => {
+  const handleDownload = useCallback((): void => {
     if (webViewer?.UI) {
       void webViewer.UI.downloadPdf()
       return
@@ -39,7 +39,7 @@ export function useAttachmentMethods({
     link.click()
   }, [fileUrl, webViewer?.UI])
 
-  const handleFullscreen = React.useCallback(() => {
+  const handleFullscreen = useCallback(() => {
     webViewer?.UI.toggleFullScreen()
   }, [webViewer?.UI])
 

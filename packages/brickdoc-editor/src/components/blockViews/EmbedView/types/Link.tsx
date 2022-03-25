@@ -7,7 +7,7 @@ import { BlockContainer } from '../../BlockContainer'
 import { EditorContext } from '../../../../context/EditorContext'
 import { prependHttp } from '../../../../helpers'
 import { EmbedBlockAttributes } from '../EmbedView'
-import { useWebsiteMetaProgress } from './useWebsiteProgress'
+import { useWebsiteMetaProgress } from './useWebsiteMetaProgress'
 import { useExternalProps } from '../../../../hooks/useExternalProps'
 
 export interface LinkTypeEmbedBlockProps {

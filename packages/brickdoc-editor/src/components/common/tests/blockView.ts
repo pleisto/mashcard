@@ -1,5 +1,5 @@
-import { merge } from 'lodash'
-import { BlockViewProps } from '../../../../extensions/common'
+import { BlockViewProps } from '../../../extensions/common'
+import { mockEditor } from './editor'
 
 type DeepPartial<T> = T extends object
   ? {
@@ -37,64 +37,7 @@ export const mockBlockViewProps = <Option, Attribute>(
     options: props?.extension?.options ?? {}
   }
 
-  const mockEditor = new Proxy(
-    {
-      state: {
-        doc: {},
-        selection: {
-          anchor: 1,
-          from: 1,
-          to: 1
-        }
-      }
-    },
-    {
-      get(target, key: keyof MockBlockViewPropsProps<Option, Attribute>['editor']) {
-        if (key === 'state') {
-          return merge(target.state, props?.editor?.state)
-        }
-
-        if (key === 'view') {
-          return new Proxy(
-            {},
-            {
-              get(_target, _key) {
-                return () => target
-              }
-            }
-          )
-        }
-
-        const commandsProxy = new Proxy(props?.editor?.commands ?? {}, {
-          get(_target, _key: keyof NonNullable<MockBlockViewPropsProps<Option, Attribute>['editor']>['commands']) {
-            if (_key in _target) {
-              return (...args: any): any => {
-                ;(_target[_key] as Function)(...args)
-                return commandsProxy
-              }
-            }
-
-            return () => commandsProxy
-          }
-        })
-
-        if (key === 'chain') {
-          return () => commandsProxy
-        }
-
-        if (key === 'commands') {
-          return commandsProxy
-        }
-
-        if (props?.editor?.[key]) {
-          return props.editor[key]
-        }
-
-        return () => mockEditor
-      }
-    }
-  )
-
+  const mockedEditor = mockEditor(props?.editor)
   const mockUpdateAttributes: BlockViewProps<Option, Attribute>['updateAttributes'] = attrs => {
     mockNode.attrs = {
       ...mockNode.attrs,
@@ -112,7 +55,7 @@ export const mockBlockViewProps = <Option, Attribute>(
     updateAttributes: props?.updateAttributes ?? mockUpdateAttributes,
     deleteNode: props?.deleteNode ?? mockDeleteNode,
     extension: mockExtension as BlockViewProps<Option, Attribute>['extension'],
-    editor: mockEditor as BlockViewProps<Option, Attribute>['editor'],
+    editor: mockedEditor as BlockViewProps<Option, Attribute>['editor'],
     decorations: props?.decorations ?? [],
     selected: props?.selected ?? false,
     getPos: props?.getPos ?? mockGetPos

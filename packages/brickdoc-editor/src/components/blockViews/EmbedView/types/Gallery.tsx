@@ -194,6 +194,7 @@ export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
             <GalleryImageList>
               {unsplashImages.map(item => (
                 <GalleryImage
+                  role="img"
                   key={item.id}
                   css={{
                     backgroundImage: `url(${item.smallUrl})`

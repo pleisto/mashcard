@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, useMemo } from 'react'
 import { MenuProps, styled } from '@brickdoc/design-system'
 import { BasicActionOptionType, useBasicActionOptions } from './useBasicActionOptions'
 import {
@@ -68,12 +68,12 @@ const BlockActionsContainer = styled('div', {
   }
 })
 
-export const BlockActions: React.FC<BlockActionsProps> = ({ options, buttonClassName, baseId, children }) => {
-  const basicOptionTypes = React.useMemo<BasicActionOptionType[]>(
+export const BlockActions: FC<BlockActionsProps> = ({ options, buttonClassName, baseId, children }) => {
+  const basicOptionTypes = useMemo<BasicActionOptionType[]>(
     () => (options?.filter(option => typeof option === 'string') as BasicActionOptionType[]) ?? [],
     [options]
   )
-  const extraOptions = React.useMemo<ActionOptionGroup>(
+  const extraOptions = useMemo<ActionOptionGroup>(
     () => (options?.filter(option => typeof option !== 'string') as ActionOptionGroup) ?? [],
     [options]
   )

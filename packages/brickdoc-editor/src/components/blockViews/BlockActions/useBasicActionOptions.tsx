@@ -1,10 +1,9 @@
-import { useCallback, useContext, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { Icon } from '@brickdoc/design-system'
 import { BLOCK, BlockCommandItem, ORDER_TOGGLE_BLOCK } from '../../../helpers/block'
-import { BlockContext } from '../../../context/BlockContext'
-import { EditorContext } from '../../../context/EditorContext'
-import { useDocumentEditable } from '../../../hooks'
+import { useDocumentEditable, useEditorContext } from '../../../hooks'
 import { ActionGroupOption, ActionItemOption } from './BlockActions'
+import { useBlockContext } from '../../../hooks/useBlockContext'
 
 export type BasicActionOptionType = 'delete' | 'duplicate' | 'copy' | 'move' | 'transform'
 
@@ -15,8 +14,8 @@ export interface UseActionOptionsProps {
 const transformBlocks = ORDER_TOGGLE_BLOCK.map(key => Object.values(BLOCK).find(block => block.key === key))
 
 export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionGroupOption | null {
-  const { deleteBlock, duplicateBlock, copyContent, moveBlock, getPosition, node } = useContext(BlockContext)
-  const { t, editor } = useContext(EditorContext)
+  const { deleteBlock, duplicateBlock, copyContent, moveBlock, getPosition, node } = useBlockContext()
+  const { t, editor } = useEditorContext()
   const [documentEditable] = useDocumentEditable(undefined)
 
   const createActionOption = useCallback(
@@ -29,7 +28,7 @@ export function useBasicActionOptions({ types }: UseActionOptionsProps): ActionG
         if (!editor) return
         const position = getPosition()
         if (position === undefined) return
-        const chain = editor.chain().setNodeSelection(position)
+        const chain = editor?.chain().setNodeSelection(position)
         blockItem.setBlock(chain).run()
       }
     }),

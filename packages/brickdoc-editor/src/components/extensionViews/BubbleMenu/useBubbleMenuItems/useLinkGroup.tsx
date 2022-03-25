@@ -1,11 +1,11 @@
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Icon, Input, toast } from '@brickdoc/design-system'
-import { EditorContext } from '../../../../context/EditorContext'
 import { ToolbarSubMenuOption, ToolbarOption, ToolbarGroupOption } from '../../../ui'
-import { isBubbleMenuVisible } from './useBubbleMenuItems'
+import { isBubbleMenuVisible } from '../BubbleMenu'
+import { useEditorContext } from '../../../../hooks'
 
 export function useLinkGroup(): [ToolbarOption | ToolbarGroupOption | null] {
-  const { t, editor } = useContext(EditorContext)
+  const { t, editor } = useEditorContext()
   const href = editor?.getAttributes('link').href
   const [inputLink, setInputLink] = useState(href)
 

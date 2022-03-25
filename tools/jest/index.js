@@ -17,7 +17,8 @@ module.exports = {
     coverageReporters: ['lcov', 'text-summary'],
     moduleNameMapper: hasDom
       ? {
-          '\\.(css|less|scss|sass|png|mp4|webp|gif)$': 'identity-obj-proxy'
+          '\\.(css|less|scss|sass|mp4)$': 'identity-obj-proxy',
+          '\\.(png|webp|gif)$': `${monoRoot}/tools/jest/image-mock.js`
         }
       : {},
     setupFilesAfterEnv: hasDom ? [`${monoRoot}/tools/jest/dom.js`] : [],

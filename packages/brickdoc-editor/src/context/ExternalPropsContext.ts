@@ -1,7 +1,7 @@
 import { createContext, ReactElement } from 'react'
 import { ContextInterface } from '@brickdoc/formula'
 import { DashboardPluginOptions } from '@brickdoc/uploader'
-import { BrickdocEventBus, ExplorerMenuGroup, ExplorerMenuTrigger, Preview_Box, Block } from '@brickdoc/schema'
+import { Preview_Box, Block } from '@brickdoc/schema'
 
 export interface WebsiteMeta {
   url: string
@@ -54,11 +54,6 @@ export interface ExternalDatabase {
 
   formulaContext?: ContextInterface | null
 
-  explorerMenu: {
-    show: (items: ExplorerMenuGroup[]) => void
-    hide: () => void
-  }
-
   blobs: {
     [blockKey: string]: Array<{
       key: string
@@ -97,14 +92,6 @@ export class ExternalProps {
     collaborators: [],
     spaceMembers: [],
     documentPages: [],
-    explorerMenu: {
-      show: (items: ExplorerMenuGroup[]) => {
-        BrickdocEventBus.dispatch(ExplorerMenuTrigger({ visible: true, items }))
-      },
-      hide: () => {
-        BrickdocEventBus.dispatch(ExplorerMenuTrigger({ visible: false }))
-      }
-    },
     renderPageTree() {
       return null
     },
@@ -198,10 +185,6 @@ export class ExternalProps {
   set rootId(value: ExternalDatabase['rootId']) {
     this.database.rootId = value
     this.invokeListeners('rootId')
-  }
-
-  get explorerMenu(): ExternalDatabase['explorerMenu'] {
-    return this.database.explorerMenu
   }
 
   get documentEditable(): ExternalDatabase['documentEditable'] {

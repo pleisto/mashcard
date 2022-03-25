@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { mockEditor } from '../../../common/tests/editor'
 import { MentionCommandsMenu, MentionCommandsMenuProps } from '../MentionMenu'
 
 describe('MentionMenu', () => {
@@ -6,11 +7,20 @@ describe('MentionMenu', () => {
     pages: [{ icon: 'icon', name: 'page name', command: () => {} }],
     users: [{ avatar: 'avatar', name: 'people name', domain: 'domain', command: () => {} }]
   }
-  const props: any = { items }
+  const editor = mockEditor()
+  const props: MentionCommandsMenuProps = {
+    items,
+    activeCategory: 'users',
+    activeIndex: 0,
+    editor,
+    range: { from: 0, to: 1 },
+    query: '',
+    command: () => {}
+  }
 
   it('matches correct snapshot', () => {
     const { container } = render(<MentionCommandsMenu {...props} baseId="mention" />)
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders menu normally', () => {

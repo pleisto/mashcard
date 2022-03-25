@@ -1,7 +1,7 @@
 import { SubPageMenuView } from '../SubPageMenuView'
 import { render } from '@testing-library/react'
 import { ExternalProps, ExternalPropsContext } from '../../../../context'
-import { mockBlockViewProps } from '../../common/tests'
+import { mockBlockViewProps } from '../../../common/tests'
 import { SubPageMenuAttributes, SubPageMenuOptions } from '../../../../extensions'
 
 describe('SubPageMenuView', () => {
@@ -16,6 +16,6 @@ describe('SubPageMenuView', () => {
         <SubPageMenuView {...props} />
       </ExternalPropsContext.Provider>
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

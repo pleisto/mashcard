@@ -1,5 +1,3 @@
-import { devLog } from '@brickdoc/design-system'
-
 export const sizeFormat = (size?: number): string => {
   if (size === undefined) return ''
   if (size < 1024) return `${size} b`
@@ -72,23 +70,4 @@ export const getFileTypeByExtension = (name: string | undefined): FileType => {
     default:
       return 'unknown'
   }
-}
-
-const getContentType = async (url: string): Promise<string | null> =>
-  await new Promise(resolve => {
-    const xhr = new XMLHttpRequest()
-    xhr.open('HEAD', url)
-    xhr.onreadystatechange = function onreadystatechange() {
-      if (this.readyState === this.DONE) {
-        resolve(this.getResponseHeader('Content-Type'))
-      }
-    }
-    xhr.send()
-  })
-
-export const getFileTypeFromUrl = async (url: string): Promise<FileType> => {
-  const contentType = await getContentType(url)
-  devLog(contentType)
-
-  return 'unknown'
 }

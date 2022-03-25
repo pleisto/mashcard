@@ -3,9 +3,11 @@ import { CodeBlock as TiptapCodeBlock } from '@tiptap/extension-code-block'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { RefractorPlugin } from './refractor-plugin'
 import { CodeBlockView } from '../../../components/blockViews'
-import { CodeBlockOptions } from './meta'
+import { CodeBlockOptions, meta } from './meta'
 
 export const CodeBlock = TiptapCodeBlock.extend<CodeBlockOptions>({
+  name: meta.name,
+
   draggable: true,
 
   addOptions() {

@@ -1,16 +1,16 @@
-import React from 'react'
+import { cloneElement, useCallback, useMemo } from 'react'
 import { ToolbarItemOption, ToolbarOptionGroup } from '../../../ui'
-import { EditorContext } from '../../../../context/EditorContext'
 import { BlockActionsMenuProps, blockIconStyle } from './BlockActionsMenu'
-import { BlockContext, BlockContextData } from '../../../../context/BlockContext'
+import { BlockContextData } from '../../../../context/BlockContext'
 import { BlockCommandItem, BLOCK, ORDER_NEW_BLOCK, sortBlock } from '../../../../helpers/block'
 import { Editor } from '@tiptap/core'
+import { useBlockContext, useEditorContext } from '../../../../hooks'
 
 const getEndPosition = (editor: Editor, getPosition: BlockContextData['getPosition']): number | undefined => {
   const position = getPosition()
 
   if (position === undefined) return
-  const node = editor?.view.state.doc.nodeAt(position)
+  const node = editor?.state.doc.nodeAt(position)
   if (!node) return
   const nodeSize = node.nodeSize
 
@@ -21,21 +21,21 @@ export function useOptions(
   extraOptions: BlockActionsMenuProps['extraOptions'],
   basicOptions: BlockActionsMenuProps['basicOptions']
 ): [ToolbarOptionGroup, ToolbarOptionGroup] {
-  const { t, editor } = React.useContext(EditorContext)
-  const { getPosition } = React.useContext(BlockContext)
+  const { t, editor } = useEditorContext()
+  const { getPosition } = useBlockContext()
 
-  const options = React.useMemo<ToolbarOptionGroup>(() => {
+  const options = useMemo<ToolbarOptionGroup>(() => {
     let value: ToolbarOptionGroup = extraOptions ?? []
     if (basicOptions) value = [...value, basicOptions]
     return value
   }, [basicOptions, extraOptions])
 
-  const createToolbarItem = React.useCallback(
+  const createToolbarItem = useCallback(
     (blockItem: BlockCommandItem): ToolbarItemOption => ({
       type: 'item',
       name: blockItem.key,
       label: t(`blocks.${blockItem.key}.label`),
-      icon: React.cloneElement(blockItem.squareIcon, { className: blockIconStyle() }),
+      icon: cloneElement(blockItem.squareIcon, { className: blockIconStyle() }),
       closeOnAction: true,
       onAction: () => {
         if (!editor) return
@@ -49,7 +49,7 @@ export function useOptions(
     [editor, getPosition, t]
   )
 
-  const blockOptions = React.useMemo<ToolbarOptionGroup>(
+  const blockOptions = useMemo<ToolbarOptionGroup>(
     () => [
       {
         type: 'group',

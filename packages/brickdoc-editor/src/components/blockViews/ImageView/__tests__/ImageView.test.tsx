@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { ImageView } from '../ImageView'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { ExternalProps, ExternalPropsContext } from '../../../../context'
-import { mockBlockViewProps } from '../../common/tests'
+import { mockBlockViewProps } from '../../../common/tests'
 import { ImageOptions, ImageAttributes } from '../../../../extensions/blocks/image/meta'
 
 describe('ImageView', () => {
@@ -35,7 +35,7 @@ describe('ImageView', () => {
         <ImageView {...props} />
       </ExternalPropsContext.Provider>
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders pending panel when no image', () => {

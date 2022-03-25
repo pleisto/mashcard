@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useMemo } from 'react'
+import { FC, Key, ReactElement, ReactNode, useContext, useMemo } from 'react'
 import { CSS } from '@stitches/react'
 import { styled, theme, Tooltip } from '@brickdoc/design-system'
 import { ToolbarMenuItem } from './MenuItem'
@@ -9,13 +9,13 @@ export interface ToolbarOptionBase {
   type: 'item' | 'subMenu'
   name: string
   css?: CSS
-  icon?: React.ReactElement
+  icon?: ReactElement
   label?: string
-  content?: React.ReactNode
-  onAction?: (key: React.Key) => void
+  content?: ReactNode
+  onAction?: (key: Key) => void
   active?: boolean
   closeOnAction?: boolean
-  tip?: React.ReactElement
+  tip?: ReactElement
   tooltip?:
     | boolean
     | string
@@ -41,7 +41,7 @@ export interface ToolbarItemGroupOption {
   items: ToolbarItemOption[]
 }
 
-export type ToolbarSubMenuItemsRender = () => React.ReactNode
+export type ToolbarSubMenuItemsRender = () => ReactNode
 
 export interface ToolbarSubMenuOption extends ToolbarOptionBase {
   [x: string]: ReactNode
@@ -92,7 +92,7 @@ const ToolbarSeparator = styled('li', {
   width: '1px'
 })
 
-const ToolbarMenuOptionInner: React.FC<{ option: ToolbarOption }> = ({ option, ...props }) => {
+const ToolbarMenuOptionInner: FC<{ option: ToolbarOption }> = ({ option, ...props }) => {
   if (option.type === 'item') {
     return <ToolbarMenuItem option={option} {...props} />
   }
@@ -100,7 +100,7 @@ const ToolbarMenuOptionInner: React.FC<{ option: ToolbarOption }> = ({ option, .
   return <ToolbarMenuSubMenuItem option={option} {...props} />
 }
 
-const ToolbarMenuOption: React.FC<{ option: ToolbarOption }> = ({ option }) => {
+const ToolbarMenuOption: FC<{ option: ToolbarOption }> = ({ option }) => {
   if (!option.tooltip) {
     return <ToolbarMenuOptionInner option={option} />
   }
@@ -134,12 +134,12 @@ const ToolbarMenuOption: React.FC<{ option: ToolbarOption }> = ({ option }) => {
 }
 
 // TODO: implement by menu
-export const Toolbar: React.FC<ToolbarProps> = ({ options }) => {
+export const Toolbar: FC<ToolbarProps> = ({ options }) => {
   const { t } = useContext(EditorContext)
 
   const menuOptions = useMemo(
     () =>
-      options?.reduce<React.ReactElement[]>((elements, option, index, array) => {
+      options?.reduce<ReactElement[]>((elements, option, index, array) => {
         if (option.type === 'group')
           return [
             ...elements,

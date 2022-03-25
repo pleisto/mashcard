@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import { BulletList, OrderedList } from '../../../../extensions'
-import { mockBlockViewProps } from '../../common/tests'
+import { mockBlockViewProps } from '../../../common/tests'
 import { ListView } from '../ListView'
 
 describe('ListView', () => {
@@ -14,7 +14,7 @@ describe('ListView', () => {
     })
     const { container } = render(<ListView {...props} />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it(`renders as ordered list`, () => {
@@ -27,6 +27,6 @@ describe('ListView', () => {
     })
     const { container } = render(<ListView {...props} />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 })

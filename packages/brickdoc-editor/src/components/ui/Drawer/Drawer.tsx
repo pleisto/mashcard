@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-import { motion } from 'framer-motion'
+import { motion, Transition } from 'framer-motion'
 import { Button, styled, theme } from '@brickdoc/design-system'
 import { Close } from '@brickdoc/design-icons'
 
@@ -65,10 +65,10 @@ const Body = styled('div', {
   padding: `0 ${horizontalPadding}`
 })
 
-const drawerAnimation = (visible?: boolean) => ({
+const drawerAnimation = (visible?: boolean): { width: string | number } => ({
   width: visible ? width : 0
 })
-const drawerTransition = (visible?: boolean) => ({
+const drawerTransition = (visible?: boolean): Transition => ({
   width: visible ? { type: 'spring', stiffness: 1400, damping: 80 } : { ease: 'linear', duration: 0 }
 })
 

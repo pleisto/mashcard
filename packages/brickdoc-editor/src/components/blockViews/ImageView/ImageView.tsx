@@ -19,10 +19,6 @@ export const ImageView: FC<ImageViewProps> = ({ node, deleteNode, getPos, update
         ...newAttributes
       }
 
-      if (!node.attrs.image?.source && !latestImageAttributes.current.source) {
-        return
-      }
-
       updateAttributes({
         image: {
           ...node.attrs.image,

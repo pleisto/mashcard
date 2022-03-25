@@ -2,6 +2,8 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { ToolbarOptionGroup } from '..'
 import { Toolbar } from '../Toolbar'
 
+jest.mock('../../../../../../brickdoc-design-system/src/hooks/useId')
+
 describe('Toolbar', () => {
   it(`matches snapshot correctly`, () => {
     const options: ToolbarOptionGroup = [
@@ -10,8 +12,33 @@ describe('Toolbar', () => {
         items: [
           {
             type: 'item',
-            name: 'item',
-            icon: <span>item</span>
+            name: 'item1',
+            label: 'item1',
+            tooltip: true,
+            icon: <span>item1</span>
+          },
+          {
+            type: 'item',
+            name: 'item2',
+            label: 'item2',
+            tooltip: 'tooltip',
+            icon: <span>item2</span>
+          },
+          {
+            type: 'item',
+            name: 'item3',
+            label: 'item3',
+            tooltip: {
+              title: 'tooltip title',
+              description: 'tooltip description'
+            },
+            icon: <span>item3</span>
+          },
+          {
+            type: 'subMenu',
+            name: 'subMenu renderItems',
+            label: 'subMenu renderItems',
+            items: () => <span>subMenu render items</span>
           },
           {
             type: 'subMenu',
@@ -21,6 +48,15 @@ describe('Toolbar', () => {
               {
                 type: 'item',
                 name: 'subMenu item'
+              },
+              {
+                type: 'group',
+                items: [
+                  {
+                    type: 'item',
+                    name: 'group item inside subMenu'
+                  }
+                ]
               }
             ]
           }
@@ -34,7 +70,7 @@ describe('Toolbar', () => {
     ]
     const { container } = render(<Toolbar options={options} />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchSnapshot()
   })
 
   it('renders separator correctly', () => {

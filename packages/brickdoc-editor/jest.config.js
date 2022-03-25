@@ -1,3 +1,6 @@
+const baseConfig = require('../../tools/jest').baseConfig(true)
+
 module.exports = {
-  ...require('../../tools/jest').baseConfig(true)
+  ...baseConfig,
+  collectCoverageFrom: [...baseConfig.collectCoverageFrom, '!**/src/**/index.(ts|tsx)']
 }
