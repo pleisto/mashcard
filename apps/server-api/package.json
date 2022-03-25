@@ -15,7 +15,7 @@
     "@nestjs/testing": "^8.4.2",
     "cross-spawn": "^7.0.3",
     "leaked-handles": "^5.2.0",
-    "node-dev": "^7.3.0",
+    "node-dev": "^7.3.1",
     "pino-pretty": "^7.5.4"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
     "fastify-helmet": "^7.0.1",
     "fastify-secure-session": "github:brickdoc/fastify-secure-session",
     "graphql": "^16.3.0",
-    "nestjs-pino": "^2.5.0",
+    "nestjs-pino": "^2.5.1",
     "pino-http": "^6.6.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
