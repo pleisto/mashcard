@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Popover, Icon, Input } from '@brickdoc/design-system'
+import { Button, Popover, Icon } from '@brickdoc/design-system'
 import styles from './DocumentTitle.module.less'
 import * as Root from './DocumentTitle.style'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -135,7 +135,6 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
               </Popover>
             )}
             <Root.Input
-              as={Input}
               type="text"
               bordered={false}
               ref={(container: HTMLInputElement) => {

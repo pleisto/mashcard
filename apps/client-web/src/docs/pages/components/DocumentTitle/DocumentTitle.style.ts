@@ -1,4 +1,4 @@
-import { css, theme, styled } from '@brickdoc/design-system'
+import { css, theme, styled, Input as input } from '@brickdoc/design-system'
 
 export const MaxWidth = styled('div', {
   width: '100%',
@@ -65,7 +65,7 @@ export const popover = css({
   }
 })
 
-export const Input = styled('div', {
+export const Input = styled(input, {
   fontSize: theme.fontSizes.title1,
   padding: '0px !important',
   input: {
@@ -86,6 +86,7 @@ export const TitleWrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+
   '&:hover': {
     [`${Actions}`]: {
       pointerEvents: 'unset',
