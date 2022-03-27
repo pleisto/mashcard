@@ -31,7 +31,6 @@ The `forRoot()` method supports configuration properties described below.
 * `connectionUri`: [Connection URI](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
 * `clientConfiguration`: [Slonik configuration object](https://github.com/gajus/slonik#api)
 * `name`: Connection pool name. Used to inject different db connections (default: `default`)
-* `toRetry`: Function that determines whether the module should attempt to connect upon failure  `(err: any) => boolean`  err parameter is error that was thrown
 * `verboseRetryLog`: If `true`, will show verbose error messages on each connection retry (default: `false`)
 * `retryAttempts`: Number of attempts to connect to the database (default: `10`)
 * `retryDelay`: Delay between connection retry attempts (ms) (default: `3000`)

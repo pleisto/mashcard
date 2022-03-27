@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 next lint",
+    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx pages",
     "lint:fix": "TIMING=1 next lint --fix",
     "lint:type": "run -T tsc"
   },
@@ -15,12 +15,9 @@
     "@brickdoc/design-icons": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/eslint-plugin": "workspace:^",
-    "next": "^12.1.0",
+    "next": "^12.1.1",
     "next-transpile-modules": "^9.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "eslint-config-next": "^12.1.0"
   }
 }

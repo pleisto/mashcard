@@ -7,7 +7,7 @@ const fieldTest = (field: Field): boolean => {
   return underscoreFieldRegex.test(field.name)
 }
 
-export const camelCaseFieldNameTransformationInterceptor = (): Interceptor => {
+export const camelCaseFieldNameInterceptor = (): Interceptor => {
   return {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     transformRow: (context: any, query, row, fields) => {
@@ -27,10 +27,6 @@ export const camelCaseFieldNameTransformationInterceptor = (): Interceptor => {
       const transformedRow: QueryResultRow = {}
 
       for (const field of formattedFields) {
-        if (typeof field.formatted !== 'string') {
-          throw new TypeError('Unexpected field name type.')
-        }
-
         transformedRow[field.formatted] = row[field.original]
       }
 

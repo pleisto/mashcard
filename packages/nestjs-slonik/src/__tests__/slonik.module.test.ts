@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { DatabasePool, sql, createMockPool, createMockQueryResult, ConnectionError } from 'slonik'
-import { getPoolToken } from '../slonik.utils'
+import { getPoolToken, logger } from '../slonik.utils'
 import { InjectPool } from '../slonik.decorator'
 import { SlonikModule } from '../slonik.module'
 
@@ -39,16 +39,22 @@ describe('SlonikModule', () => {
   })
 
   it('should throw ConnectionError', async () => {
+    const errorLogger = jest.spyOn(logger, 'error').mockImplementation(() => {})
     const module = Test.createTestingModule({
       imports: [
-        SlonikModule.forRoot({
-          connectionUri: 'postgres://nonExistingHost:5432/test',
-          retryAttempts: 0,
-          retryDelay: 100,
-          verboseRetryLog: true
+        SlonikModule.forRootAsync({
+          useFactory: () => ({
+            connectionUri: 'postgres://nonExistingHost:5432/test',
+            retryAttempts: 0,
+            retryDelay: 100,
+            verboseRetryLog: true,
+            camelCaseFieldNames: true
+          })
         })
       ]
     })
     await expect(module.compile()).rejects.toThrowError(ConnectionError)
+    expect(errorLogger.mock.calls[0][1]).toContain('ConnectionError')
+    errorLogger.mockRestore()
   })
 })

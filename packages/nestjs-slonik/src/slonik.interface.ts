@@ -4,6 +4,7 @@ import { ClientConfigurationInput } from 'slonik'
 export const SLONIK_MODULE_OPTIONS = Symbol('SlonikModuleOptions')
 export const SLONIK_MODULE_ID = Symbol('SlonikModuleID')
 export const DEFAULT_POOL_NAME = 'default'
+export const LOGGER_NAME = 'SlonikModule'
 
 export interface SlonikOptions {
   connectionUri: string
@@ -16,14 +17,6 @@ export interface SlonikModuleOptions extends SlonikOptions {
    */
   name?: string
 
-  /**
-   * Function that determines whether the module should
-   * attempt to connect upon failure.
-   *
-   * @param err error that was thrown
-   * @returns whether to retry connection or not
-   */
-  toRetry?: (err: any) => boolean
   /**
    * If `true`, will show verbose error messages on each connection retry.
    */
@@ -40,7 +33,7 @@ export interface SlonikModuleOptions extends SlonikOptions {
   retryDelay?: number
 
   /**
-   * open camelCaseFieldNameTransformationInterceptor
+   * open camelCaseFieldNameInterceptor
    */
   camelCaseFieldNames?: boolean
 }

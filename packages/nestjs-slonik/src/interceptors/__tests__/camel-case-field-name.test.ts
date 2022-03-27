@@ -1,7 +1,7 @@
-import { camelCaseFieldNameTransformationInterceptor } from '../camel-case-field-name-transformation.interceptor'
-describe('camelCaseFieldNameTransformationInterceptor.interceptor.ts', () => {
+import { camelCaseFieldNameInterceptor } from '../camel-case-field-name.interceptor'
+describe('camelCaseFieldName.interceptor.ts', () => {
   it('should work', () => {
-    const interceptor = camelCaseFieldNameTransformationInterceptor()
+    const interceptor = camelCaseFieldNameInterceptor()
     const { transformRow } = interceptor
     const result = transformRow!(
       {
@@ -14,15 +14,22 @@ describe('camelCaseFieldNameTransformationInterceptor.interceptor.ts', () => {
         values: []
       },
       {
-        foo_bar: 1
+        foo_bar: 1,
+        bazQux: 2
       },
       [
         {
           name: 'foo_bar',
           dataTypeId: 1
+        },
+        {
+          name: 'bazQux',
+          dataTypeId: 2
         }
       ]
     )
     expect(result.fooBar).toBe(1)
+    expect(result.bazQux).toBe(2)
+    expect(result.foo_bar).toBeUndefined()
   })
 })

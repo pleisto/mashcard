@@ -7,13 +7,14 @@ import {
   SLONIK_MODULE_OPTIONS,
   SlonikModuleAsyncOptions,
   SlonikModuleOptions,
-  SlonikOptionsFactory
+  SlonikOptionsFactory,
+  LOGGER_NAME
 } from './slonik.interface'
-
+import { err } from 'pino-std-serializers'
 @Global()
 @Module({})
 export class SlonikCoreModule implements OnApplicationShutdown {
-  private readonly logger = new Logger('SlonikModule')
+  private readonly logger = new Logger(LOGGER_NAME)
 
   constructor(
     @Inject(SLONIK_MODULE_OPTIONS)
@@ -78,7 +79,7 @@ export class SlonikCoreModule implements OnApplicationShutdown {
       // Note: pool.end() does not terminate active connections/ transactions.
       await pool?.end()
     } catch (e: any) {
-      this.logger.error(e?.message)
+      this.logger.error(err(e))
     }
   }
 

@@ -1,1 +1,2 @@
-export * from './camel-case-field-name-transformation.interceptor'
+export * from './camel-case-field-name.interceptor'
+export * from './query-logging.interceptor'

@@ -24,9 +24,9 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@nestjs/common": "^8.4.2",
-    "@nestjs/core": "^8.4.2",
-    "@nestjs/testing": "^8.4.2"
+    "@nestjs/common": "^8.4.3",
+    "@nestjs/core": "^8.4.3",
+    "@nestjs/testing": "^8.4.3"
   },
   "peerDependencies": {
     "@nestjs/common": "^8",
