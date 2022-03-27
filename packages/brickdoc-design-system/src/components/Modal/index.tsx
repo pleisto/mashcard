@@ -36,9 +36,10 @@ const ModalDialog = styled('div', {
   borderRadius: '8px',
   maxWidth: '100%',
   '&>h1.dialogTitle': {
-    fontSize: theme.fontSizes.title5,
-    lineHeight: theme.lineHeights.title5,
-    marginBottom: '8px'
+    fontSize: theme.fontSizes.title3,
+    lineHeight: theme.lineHeights.title3,
+    marginBottom: '8px',
+    fontWeight: 600
   }
 })
 

@@ -21,7 +21,11 @@ export const InvalidMsg = styled('div', {
 export const FormControlWrapper = styled('div', {
   display: 'flex',
   '& > label': {
-    display: 'inline-flex'
+    display: 'inline-flex',
+    color: theme.colors.typePrimary,
+    fontSize: theme.fontSizes.subHeadline,
+    lineHeight: theme.lineHeights.subHeadline,
+    fontWeight: 500
   },
   '&[hidden]': {
     display: 'none'

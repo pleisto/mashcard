@@ -12,6 +12,14 @@ interface ProfileModalProps {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+const DialogCss = {
+  width: 480,
+  padding: '54px 80px 30px 54px',
+  '&>h1.dialogTitle': {
+    marginBottom: '3rem'
+  }
+}
+
 export const ProfileModal: React.FC<ProfileModalProps> = ({ space, visible, title, type, setVisible }) => {
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
@@ -49,7 +57,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ space, visible, titl
   }
 
   return (
-    <Modal open={visible} onClose={handleCancel} title={title}>
+    <Modal open={visible} onClose={handleCancel} title={title} dialogCss={{ ...DialogCss }}>
       <Form
         form={form}
         layout="vertical"
