@@ -134,7 +134,7 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: This pull request is automatically built and testable in
       - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
