@@ -159,7 +159,7 @@ const testCases: TestCase[] = [
   {
     input: '= "foo" in',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing right expression'
+    errorMessage: 'Missing expression'
   },
   {
     input: '= 1 in []',
@@ -210,17 +210,17 @@ const testCases: TestCase[] = [
   {
     input: '=[',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '=[1',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '=[1,',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '=[1,]',
@@ -231,7 +231,7 @@ const testCases: TestCase[] = [
   {
     input: '=[1,2',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '=[2, "foo", true]',
@@ -374,22 +374,27 @@ const testCases: TestCase[] = [
   {
     input: '={',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
+  },
+  {
+    input: '={a}',
+    parseErrorType: 'syntax',
+    errorMessage: 'TODO mismatch token recordField'
   },
   {
     input: '={a',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '={a: }',
     parseErrorType: 'syntax',
-    errorMessage: 'Parse error:'
+    errorMessage: 'Missing expression'
   },
   {
     input: '={a: 1',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '={1: "a"}',
@@ -400,7 +405,7 @@ const testCases: TestCase[] = [
   {
     input: '={"foo":}',
     parseErrorType: 'syntax',
-    errorMessage: 'Parse error:'
+    errorMessage: 'Missing expression'
   },
   {
     input: '={"fo o": 123}',
@@ -560,6 +565,12 @@ const testCases: TestCase[] = [
     value: true
   },
   {
+    input: '=!1+1',
+    label: 'not operator vs addition',
+    parseErrorType: 'syntax',
+    errorMessage: 'Expected number but got boolean'
+  },
+  {
     input: '=1 and 2',
     parseErrorType: 'syntax',
     errorMessage: 'Expected boolean but got number'
@@ -630,19 +641,19 @@ const testCases: TestCase[] = [
     input: '=1+',
     parseErrorType: 'syntax',
     label: 'TODO missing suffix expression',
-    errorMessage: 'Missing right expression'
+    errorMessage: 'Missing expression'
+  },
+  {
+    input: '=()',
+    parseErrorType: 'syntax',
+    label: 'Empty parentheses',
+    errorMessage: 'Parse error: ")"'
   },
   {
     input: '=(1',
     parseErrorType: 'syntax',
     label: 'Missing closing parenthesis1',
-    errorMessage: 'Missing closing parenthesis'
-  },
-  {
-    input: '=(1',
-    parseErrorType: 'syntax',
-    label: 'Missing closing parenthesis1',
-    errorMessage: 'Missing closing parenthesis'
+    errorMessage: 'Missing closing token'
   },
   {
     input: '=ABS(',
@@ -671,7 +682,7 @@ const testCases: TestCase[] = [
   {
     input: '= 1+$',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing right expression'
+    errorMessage: 'Missing expression'
   },
   {
     input: '= 1;',
@@ -718,7 +729,7 @@ const testCases: TestCase[] = [
   {
     input: '=1**2',
     parseErrorType: 'syntax',
-    errorMessage: 'Missing right expression'
+    errorMessage: 'Missing expression'
   },
   // Function Call
   {
@@ -1169,6 +1180,7 @@ describe('Simple test case', () => {
         expect(variableValue.result.result).toEqual(value)
         expect(variableValue.success).toEqual(true)
       } else if (parseErrorType) {
+        expect(errorMessage).not.toEqual([])
         expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual(parseErrorType)
       } else {

@@ -965,6 +965,186 @@ Array [
 ]
 `;
 
+exports[`Spreadsheet Functions [Range 1] =#28e28190-63bd-4f70-aeca-26e72574c01a.first.1:#28e28190-63bd-4f70-aeca-26e72574c01a.first.2 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": Object {
+      "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "name": "MySpreadsheet",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Spreadsheet",
+    "display": "MySpreadsheet",
+    "errors": Array [],
+    "hide": false,
+    "renderText": [Function],
+    "type": "Spreadsheet",
+    "value": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": Object {
+      "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "name": "first",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Column",
+    "display": "first",
+    "errors": Array [],
+    "hide": false,
+    "renderText": [Function],
+    "type": "string",
+    "value": "first",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Colon",
+    "display": ":",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "Range",
+    "value": ":",
+  },
+  Object {
+    "attrs": Object {
+      "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "name": "MySpreadsheet",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Spreadsheet",
+    "display": "MySpreadsheet",
+    "errors": Array [],
+    "hide": false,
+    "renderText": [Function],
+    "type": "Spreadsheet",
+    "value": "#28e28190-63bd-4f70-aeca-26e72574c01a",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": Object {
+      "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "name": "first",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Column",
+    "display": "first",
+    "errors": Array [],
+    "hide": false,
+    "renderText": [Function],
+    "type": "string",
+    "value": "first",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ".",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "2",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions [Range 1] =#28e28190-63bd-4f70-aeca-26e72574c01a.first.1:#28e28190-63bd-4f70-aeca-26e72574c01a.first.2 2`] = `
+Object {
+  "columnIds": Array [
+    "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+  ],
+  "columnSize": 1,
+  "endCell": Object {
+    "cellId": "",
+    "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "columnIndex": 0,
+    "displayData": undefined,
+    "rowId": "5d1e4a83-383a-4991-a33c-52a9b3169549",
+    "rowIndex": 1,
+    "spreadsheetId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "value": "3",
+  },
+  "rowIds": Array [
+    "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "5d1e4a83-383a-4991-a33c-52a9b3169549",
+  ],
+  "rowSize": 2,
+  "spreadsheetId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+  "startCell": Object {
+    "cellId": "",
+    "columnId": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "columnIndex": 0,
+    "displayData": undefined,
+    "rowId": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "rowIndex": 0,
+    "spreadsheetId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "value": "1",
+  },
+}
+`;
+
 exports[`Spreadsheet Functions [SUM] =#28e28190-63bd-4f70-aeca-26e72574c01a.first.SUM() 1`] = `
 Array [
   Object {
@@ -1786,7 +1966,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "Record",
     "value": ":",
   },
   Object {
@@ -1866,7 +2046,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "Record",
     "value": ":",
   },
   Object {
@@ -4418,7 +4598,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "boolean",
     "value": "in",
   },
   Object {
@@ -4513,7 +4693,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "boolean",
     "value": "in",
   },
   Object {
@@ -4608,7 +4788,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "boolean",
     "value": "in",
   },
   Object {
@@ -4703,7 +4883,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "boolean",
     "value": "in",
   },
   Object {
@@ -4773,7 +4953,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "boolean",
     "value": "in",
   },
   Object {

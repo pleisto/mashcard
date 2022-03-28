@@ -193,6 +193,11 @@ const testCases: TestCase[] = [
     input: `=#${spreadsheetId}."first".100`,
     error: 'Cell out of range: 3'
   },
+  {
+    label: 'Range 1',
+    input: `=#${spreadsheetId}.first.1:#${spreadsheetId}.first.2`,
+    value: SNAPSHOT_FLAG
+  },
   { label: 'in spreadsheet true', input: `=3 in #${spreadsheetId}`, value: true },
   { label: 'toArray', input: `=#${spreadsheetId}.toArray()`, value: SNAPSHOT_FLAG },
   { label: 'toRecordArray', input: `=#${spreadsheetId}.toRecordArray()`, value: SNAPSHOT_FLAG },

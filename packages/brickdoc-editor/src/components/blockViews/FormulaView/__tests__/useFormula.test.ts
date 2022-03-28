@@ -133,7 +133,7 @@ const simpleCommonTestCases = [
   // Variable complex input
   { input: `+foo_bar`, resultData: 'Parse error: "+"' },
   { input: `+#CurrentBlock.foo_bar`, resultData: 'Parse error: "+"' },
-  { input: `#CurrentBlock.foo_bar+`, newInput: `foo_bar+`, resultData: 'Missing right expression' },
+  { input: `#CurrentBlock.foo_bar+`, newInput: `foo_bar+`, resultData: 'Missing expression' },
   { input: `#CurrentBlock.foo_ba1r`, resultData: 'Variable "foo_ba1r" not found' },
 
   // Variable with error

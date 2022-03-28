@@ -81,7 +81,7 @@ Array [
                           "lhs": Array [
                             Object {
                               "children": Object {
-                                "rhs": Array [
+                                "lhs": Array [
                                   Object {
                                     "children": Object {
                                       "lhs": Array [
@@ -163,31 +163,31 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
                                                             },
-                                                            "name": "additionExpression",
+                                                            "name": "multiplicationExpression",
                                                           },
                                                         ],
                                                       },
-                                                      "name": "concatExpression",
+                                                      "name": "additionExpression",
                                                     },
                                                   ],
                                                 },
-                                                "name": "inExpression",
+                                                "name": "concatExpression",
                                               },
                                             ],
                                           },
-                                          "name": "compareExpression",
+                                          "name": "inExpression",
                                         },
                                       ],
                                     },
-                                    "name": "equalCompareExpression",
+                                    "name": "compareExpression",
                                   },
                                 ],
                               },
-                              "name": "notExpression",
+                              "name": "equalCompareExpression",
                             },
                           ],
                         },
@@ -369,7 +369,7 @@ Array [
                           "lhs": Array [
                             Object {
                               "children": Object {
-                                "rhs": Array [
+                                "lhs": Array [
                                   Object {
                                     "children": Object {
                                       "lhs": Array [
@@ -381,46 +381,46 @@ Array [
                                                   "lhs": Array [
                                                     Object {
                                                       "children": Object {
+                                                        "AdditionOperator": Array [
+                                                          Object {
+                                                            "endColumn": 7,
+                                                            "endLine": 1,
+                                                            "endOffset": 6,
+                                                            "image": "+",
+                                                            "startColumn": 7,
+                                                            "startLine": 1,
+                                                            "startOffset": 6,
+                                                            "tokenType": Object {
+                                                              "CATEGORIES": Array [
+                                                                Object {
+                                                                  "CATEGORIES": Array [],
+                                                                  "PATTERN": /NOT_APPLICABLE/,
+                                                                  "categoryMatches": Array [
+                                                                    25,
+                                                                    34,
+                                                                  ],
+                                                                  "categoryMatchesMap": Object {
+                                                                    "25": true,
+                                                                    "34": true,
+                                                                  },
+                                                                  "isParent": true,
+                                                                  "name": "AdditionOperator",
+                                                                  "tokenTypeIdx": 5,
+                                                                },
+                                                              ],
+                                                              "PATTERN": /\\\\\\+/,
+                                                              "categoryMatches": Array [],
+                                                              "categoryMatchesMap": Object {},
+                                                              "isParent": false,
+                                                              "name": "Plus",
+                                                              "tokenTypeIdx": 25,
+                                                            },
+                                                            "tokenTypeIdx": 25,
+                                                          },
+                                                        ],
                                                         "lhs": Array [
                                                           Object {
                                                             "children": Object {
-                                                              "AdditionOperator": Array [
-                                                                Object {
-                                                                  "endColumn": 7,
-                                                                  "endLine": 1,
-                                                                  "endOffset": 6,
-                                                                  "image": "+",
-                                                                  "startColumn": 7,
-                                                                  "startLine": 1,
-                                                                  "startOffset": 6,
-                                                                  "tokenType": Object {
-                                                                    "CATEGORIES": Array [
-                                                                      Object {
-                                                                        "CATEGORIES": Array [],
-                                                                        "PATTERN": /NOT_APPLICABLE/,
-                                                                        "categoryMatches": Array [
-                                                                          25,
-                                                                          34,
-                                                                        ],
-                                                                        "categoryMatchesMap": Object {
-                                                                          "25": true,
-                                                                          "34": true,
-                                                                        },
-                                                                        "isParent": true,
-                                                                        "name": "AdditionOperator",
-                                                                        "tokenTypeIdx": 5,
-                                                                      },
-                                                                    ],
-                                                                    "PATTERN": /\\\\\\+/,
-                                                                    "categoryMatches": Array [],
-                                                                    "categoryMatchesMap": Object {},
-                                                                    "isParent": false,
-                                                                    "name": "Plus",
-                                                                    "tokenTypeIdx": 25,
-                                                                  },
-                                                                  "tokenTypeIdx": 25,
-                                                                },
-                                                              ],
                                                               "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
@@ -488,10 +488,17 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
-                                                              "rhs": Array [
+                                                            },
+                                                            "name": "multiplicationExpression",
+                                                          },
+                                                        ],
+                                                        "rhs": Array [
+                                                          Object {
+                                                            "children": Object {
+                                                              "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
                                                                     "lhs": Array [
@@ -558,31 +565,31 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
                                                             },
-                                                            "name": "additionExpression",
+                                                            "name": "multiplicationExpression",
                                                           },
                                                         ],
                                                       },
-                                                      "name": "concatExpression",
+                                                      "name": "additionExpression",
                                                     },
                                                   ],
                                                 },
-                                                "name": "inExpression",
+                                                "name": "concatExpression",
                                               },
                                             ],
                                           },
-                                          "name": "compareExpression",
+                                          "name": "inExpression",
                                         },
                                       ],
                                     },
-                                    "name": "equalCompareExpression",
+                                    "name": "compareExpression",
                                   },
                                 ],
                               },
-                              "name": "notExpression",
+                              "name": "equalCompareExpression",
                             },
                           ],
                         },
@@ -811,7 +818,7 @@ Array [
                           "lhs": Array [
                             Object {
                               "children": Object {
-                                "rhs": Array [
+                                "lhs": Array [
                                   Object {
                                     "children": Object {
                                       "lhs": Array [
@@ -823,46 +830,46 @@ Array [
                                                   "lhs": Array [
                                                     Object {
                                                       "children": Object {
+                                                        "AdditionOperator": Array [
+                                                          Object {
+                                                            "endColumn": 11,
+                                                            "endLine": 1,
+                                                            "endOffset": 10,
+                                                            "image": "+",
+                                                            "startColumn": 11,
+                                                            "startLine": 1,
+                                                            "startOffset": 10,
+                                                            "tokenType": Object {
+                                                              "CATEGORIES": Array [
+                                                                Object {
+                                                                  "CATEGORIES": Array [],
+                                                                  "PATTERN": /NOT_APPLICABLE/,
+                                                                  "categoryMatches": Array [
+                                                                    25,
+                                                                    34,
+                                                                  ],
+                                                                  "categoryMatchesMap": Object {
+                                                                    "25": true,
+                                                                    "34": true,
+                                                                  },
+                                                                  "isParent": true,
+                                                                  "name": "AdditionOperator",
+                                                                  "tokenTypeIdx": 5,
+                                                                },
+                                                              ],
+                                                              "PATTERN": /\\\\\\+/,
+                                                              "categoryMatches": Array [],
+                                                              "categoryMatchesMap": Object {},
+                                                              "isParent": false,
+                                                              "name": "Plus",
+                                                              "tokenTypeIdx": 25,
+                                                            },
+                                                            "tokenTypeIdx": 25,
+                                                          },
+                                                        ],
                                                         "lhs": Array [
                                                           Object {
                                                             "children": Object {
-                                                              "AdditionOperator": Array [
-                                                                Object {
-                                                                  "endColumn": 11,
-                                                                  "endLine": 1,
-                                                                  "endOffset": 10,
-                                                                  "image": "+",
-                                                                  "startColumn": 11,
-                                                                  "startLine": 1,
-                                                                  "startOffset": 10,
-                                                                  "tokenType": Object {
-                                                                    "CATEGORIES": Array [
-                                                                      Object {
-                                                                        "CATEGORIES": Array [],
-                                                                        "PATTERN": /NOT_APPLICABLE/,
-                                                                        "categoryMatches": Array [
-                                                                          25,
-                                                                          34,
-                                                                        ],
-                                                                        "categoryMatchesMap": Object {
-                                                                          "25": true,
-                                                                          "34": true,
-                                                                        },
-                                                                        "isParent": true,
-                                                                        "name": "AdditionOperator",
-                                                                        "tokenTypeIdx": 5,
-                                                                      },
-                                                                    ],
-                                                                    "PATTERN": /\\\\\\+/,
-                                                                    "categoryMatches": Array [],
-                                                                    "categoryMatchesMap": Object {},
-                                                                    "isParent": false,
-                                                                    "name": "Plus",
-                                                                    "tokenTypeIdx": 25,
-                                                                  },
-                                                                  "tokenTypeIdx": 25,
-                                                                },
-                                                              ],
                                                               "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
@@ -896,7 +903,7 @@ Array [
                                                                                                                           "lhs": Array [
                                                                                                                             Object {
                                                                                                                               "children": Object {
-                                                                                                                                "rhs": Array [
+                                                                                                                                "lhs": Array [
                                                                                                                                   Object {
                                                                                                                                     "children": Object {
                                                                                                                                       "lhs": Array [
@@ -978,31 +985,31 @@ Array [
                                                                                                                                                                       },
                                                                                                                                                                     ],
                                                                                                                                                                   },
-                                                                                                                                                                  "name": "multiplicationExpression",
+                                                                                                                                                                  "name": "notExpression",
                                                                                                                                                                 },
                                                                                                                                                               ],
                                                                                                                                                             },
-                                                                                                                                                            "name": "additionExpression",
+                                                                                                                                                            "name": "multiplicationExpression",
                                                                                                                                                           },
                                                                                                                                                         ],
                                                                                                                                                       },
-                                                                                                                                                      "name": "concatExpression",
+                                                                                                                                                      "name": "additionExpression",
                                                                                                                                                     },
                                                                                                                                                   ],
                                                                                                                                                 },
-                                                                                                                                                "name": "inExpression",
+                                                                                                                                                "name": "concatExpression",
                                                                                                                                               },
                                                                                                                                             ],
                                                                                                                                           },
-                                                                                                                                          "name": "compareExpression",
+                                                                                                                                          "name": "inExpression",
                                                                                                                                         },
                                                                                                                                       ],
                                                                                                                                     },
-                                                                                                                                    "name": "equalCompareExpression",
+                                                                                                                                    "name": "compareExpression",
                                                                                                                                   },
                                                                                                                                 ],
                                                                                                                               },
-                                                                                                                              "name": "notExpression",
+                                                                                                                              "name": "equalCompareExpression",
                                                                                                                             },
                                                                                                                           ],
                                                                                                                         },
@@ -1105,10 +1112,17 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
-                                                              "rhs": Array [
+                                                            },
+                                                            "name": "multiplicationExpression",
+                                                          },
+                                                        ],
+                                                        "rhs": Array [
+                                                          Object {
+                                                            "children": Object {
+                                                              "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
                                                                     "lhs": Array [
@@ -1231,31 +1245,31 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
                                                             },
-                                                            "name": "additionExpression",
+                                                            "name": "multiplicationExpression",
                                                           },
                                                         ],
                                                       },
-                                                      "name": "concatExpression",
+                                                      "name": "additionExpression",
                                                     },
                                                   ],
                                                 },
-                                                "name": "inExpression",
+                                                "name": "concatExpression",
                                               },
                                             ],
                                           },
-                                          "name": "compareExpression",
+                                          "name": "inExpression",
                                         },
                                       ],
                                     },
-                                    "name": "equalCompareExpression",
+                                    "name": "compareExpression",
                                   },
                                 ],
                               },
-                              "name": "notExpression",
+                              "name": "equalCompareExpression",
                             },
                           ],
                         },
@@ -1463,16 +1477,7 @@ Array [
         "attrs": undefined,
         "code": "NumberLiteral",
         "display": "123",
-        "errors": Array [
-          Object {
-            "message": "Missing right expression",
-            "type": "syntax",
-          },
-          Object {
-            "message": "Parse error: \\"\\"",
-            "type": "parse",
-          },
-        ],
+        "errors": Array [],
         "hide": false,
         "renderText": undefined,
         "type": "number",
@@ -1494,8 +1499,12 @@ Array [
         "display": "+",
         "errors": Array [
           Object {
-            "message": "Missing right expression",
+            "message": "Missing expression",
             "type": "syntax",
+          },
+          Object {
+            "message": "Parse error: \\"\\"",
+            "type": "parse",
           },
         ],
         "hide": false,
@@ -1559,7 +1568,7 @@ Array [
                           "lhs": Array [
                             Object {
                               "children": Object {
-                                "rhs": Array [
+                                "lhs": Array [
                                   Object {
                                     "children": Object {
                                       "lhs": Array [
@@ -1571,46 +1580,46 @@ Array [
                                                   "lhs": Array [
                                                     Object {
                                                       "children": Object {
+                                                        "AdditionOperator": Array [
+                                                          Object {
+                                                            "endColumn": 7,
+                                                            "endLine": 1,
+                                                            "endOffset": 6,
+                                                            "image": "+",
+                                                            "startColumn": 7,
+                                                            "startLine": 1,
+                                                            "startOffset": 6,
+                                                            "tokenType": Object {
+                                                              "CATEGORIES": Array [
+                                                                Object {
+                                                                  "CATEGORIES": Array [],
+                                                                  "PATTERN": /NOT_APPLICABLE/,
+                                                                  "categoryMatches": Array [
+                                                                    25,
+                                                                    34,
+                                                                  ],
+                                                                  "categoryMatchesMap": Object {
+                                                                    "25": true,
+                                                                    "34": true,
+                                                                  },
+                                                                  "isParent": true,
+                                                                  "name": "AdditionOperator",
+                                                                  "tokenTypeIdx": 5,
+                                                                },
+                                                              ],
+                                                              "PATTERN": /\\\\\\+/,
+                                                              "categoryMatches": Array [],
+                                                              "categoryMatchesMap": Object {},
+                                                              "isParent": false,
+                                                              "name": "Plus",
+                                                              "tokenTypeIdx": 25,
+                                                            },
+                                                            "tokenTypeIdx": 25,
+                                                          },
+                                                        ],
                                                         "lhs": Array [
                                                           Object {
                                                             "children": Object {
-                                                              "AdditionOperator": Array [
-                                                                Object {
-                                                                  "endColumn": 7,
-                                                                  "endLine": 1,
-                                                                  "endOffset": 6,
-                                                                  "image": "+",
-                                                                  "startColumn": 7,
-                                                                  "startLine": 1,
-                                                                  "startOffset": 6,
-                                                                  "tokenType": Object {
-                                                                    "CATEGORIES": Array [
-                                                                      Object {
-                                                                        "CATEGORIES": Array [],
-                                                                        "PATTERN": /NOT_APPLICABLE/,
-                                                                        "categoryMatches": Array [
-                                                                          25,
-                                                                          34,
-                                                                        ],
-                                                                        "categoryMatchesMap": Object {
-                                                                          "25": true,
-                                                                          "34": true,
-                                                                        },
-                                                                        "isParent": true,
-                                                                        "name": "AdditionOperator",
-                                                                        "tokenTypeIdx": 5,
-                                                                      },
-                                                                    ],
-                                                                    "PATTERN": /\\\\\\+/,
-                                                                    "categoryMatches": Array [],
-                                                                    "categoryMatchesMap": Object {},
-                                                                    "isParent": false,
-                                                                    "name": "Plus",
-                                                                    "tokenTypeIdx": 25,
-                                                                  },
-                                                                  "tokenTypeIdx": 25,
-                                                                },
-                                                              ],
                                                               "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
@@ -1678,10 +1687,17 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
-                                                              "rhs": Array [
+                                                            },
+                                                            "name": "multiplicationExpression",
+                                                          },
+                                                        ],
+                                                        "rhs": Array [
+                                                          Object {
+                                                            "children": Object {
+                                                              "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
                                                                     "lhs": Array [
@@ -1708,37 +1724,37 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                   "recoveredNode": true,
                                                                 },
                                                               ],
                                                             },
-                                                            "name": "additionExpression",
+                                                            "name": "multiplicationExpression",
                                                             "recoveredNode": true,
                                                           },
                                                         ],
                                                       },
-                                                      "name": "concatExpression",
+                                                      "name": "additionExpression",
                                                       "recoveredNode": true,
                                                     },
                                                   ],
                                                 },
-                                                "name": "inExpression",
+                                                "name": "concatExpression",
                                                 "recoveredNode": true,
                                               },
                                             ],
                                           },
-                                          "name": "compareExpression",
+                                          "name": "inExpression",
                                           "recoveredNode": true,
                                         },
                                       ],
                                     },
-                                    "name": "equalCompareExpression",
+                                    "name": "compareExpression",
                                     "recoveredNode": true,
                                   },
                                 ],
                               },
-                              "name": "notExpression",
+                              "name": "equalCompareExpression",
                               "recoveredNode": true,
                             },
                           ],
@@ -1779,7 +1795,7 @@ Array [
       "variableValue": Object {
         "result": Object {
           "errorKind": "syntax",
-          "result": "Missing right expression",
+          "result": "Missing expression",
           "type": "Error",
         },
         "success": false,
@@ -1988,7 +2004,7 @@ Array [
                           "lhs": Array [
                             Object {
                               "children": Object {
-                                "rhs": Array [
+                                "lhs": Array [
                                   Object {
                                     "children": Object {
                                       "lhs": Array [
@@ -2000,46 +2016,46 @@ Array [
                                                   "lhs": Array [
                                                     Object {
                                                       "children": Object {
+                                                        "AdditionOperator": Array [
+                                                          Object {
+                                                            "endColumn": 11,
+                                                            "endLine": 1,
+                                                            "endOffset": 10,
+                                                            "image": "+",
+                                                            "startColumn": 11,
+                                                            "startLine": 1,
+                                                            "startOffset": 10,
+                                                            "tokenType": Object {
+                                                              "CATEGORIES": Array [
+                                                                Object {
+                                                                  "CATEGORIES": Array [],
+                                                                  "PATTERN": /NOT_APPLICABLE/,
+                                                                  "categoryMatches": Array [
+                                                                    25,
+                                                                    34,
+                                                                  ],
+                                                                  "categoryMatchesMap": Object {
+                                                                    "25": true,
+                                                                    "34": true,
+                                                                  },
+                                                                  "isParent": true,
+                                                                  "name": "AdditionOperator",
+                                                                  "tokenTypeIdx": 5,
+                                                                },
+                                                              ],
+                                                              "PATTERN": /\\\\\\+/,
+                                                              "categoryMatches": Array [],
+                                                              "categoryMatchesMap": Object {},
+                                                              "isParent": false,
+                                                              "name": "Plus",
+                                                              "tokenTypeIdx": 25,
+                                                            },
+                                                            "tokenTypeIdx": 25,
+                                                          },
+                                                        ],
                                                         "lhs": Array [
                                                           Object {
                                                             "children": Object {
-                                                              "AdditionOperator": Array [
-                                                                Object {
-                                                                  "endColumn": 11,
-                                                                  "endLine": 1,
-                                                                  "endOffset": 10,
-                                                                  "image": "+",
-                                                                  "startColumn": 11,
-                                                                  "startLine": 1,
-                                                                  "startOffset": 10,
-                                                                  "tokenType": Object {
-                                                                    "CATEGORIES": Array [
-                                                                      Object {
-                                                                        "CATEGORIES": Array [],
-                                                                        "PATTERN": /NOT_APPLICABLE/,
-                                                                        "categoryMatches": Array [
-                                                                          25,
-                                                                          34,
-                                                                        ],
-                                                                        "categoryMatchesMap": Object {
-                                                                          "25": true,
-                                                                          "34": true,
-                                                                        },
-                                                                        "isParent": true,
-                                                                        "name": "AdditionOperator",
-                                                                        "tokenTypeIdx": 5,
-                                                                      },
-                                                                    ],
-                                                                    "PATTERN": /\\\\\\+/,
-                                                                    "categoryMatches": Array [],
-                                                                    "categoryMatchesMap": Object {},
-                                                                    "isParent": false,
-                                                                    "name": "Plus",
-                                                                    "tokenTypeIdx": 25,
-                                                                  },
-                                                                  "tokenTypeIdx": 25,
-                                                                },
-                                                              ],
                                                               "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
@@ -2073,7 +2089,7 @@ Array [
                                                                                                                           "lhs": Array [
                                                                                                                             Object {
                                                                                                                               "children": Object {
-                                                                                                                                "rhs": Array [
+                                                                                                                                "lhs": Array [
                                                                                                                                   Object {
                                                                                                                                     "children": Object {
                                                                                                                                       "lhs": Array [
@@ -2155,31 +2171,31 @@ Array [
                                                                                                                                                                       },
                                                                                                                                                                     ],
                                                                                                                                                                   },
-                                                                                                                                                                  "name": "multiplicationExpression",
+                                                                                                                                                                  "name": "notExpression",
                                                                                                                                                                 },
                                                                                                                                                               ],
                                                                                                                                                             },
-                                                                                                                                                            "name": "additionExpression",
+                                                                                                                                                            "name": "multiplicationExpression",
                                                                                                                                                           },
                                                                                                                                                         ],
                                                                                                                                                       },
-                                                                                                                                                      "name": "concatExpression",
+                                                                                                                                                      "name": "additionExpression",
                                                                                                                                                     },
                                                                                                                                                   ],
                                                                                                                                                 },
-                                                                                                                                                "name": "inExpression",
+                                                                                                                                                "name": "concatExpression",
                                                                                                                                               },
                                                                                                                                             ],
                                                                                                                                           },
-                                                                                                                                          "name": "compareExpression",
+                                                                                                                                          "name": "inExpression",
                                                                                                                                         },
                                                                                                                                       ],
                                                                                                                                     },
-                                                                                                                                    "name": "equalCompareExpression",
+                                                                                                                                    "name": "compareExpression",
                                                                                                                                   },
                                                                                                                                 ],
                                                                                                                               },
-                                                                                                                              "name": "notExpression",
+                                                                                                                              "name": "equalCompareExpression",
                                                                                                                             },
                                                                                                                           ],
                                                                                                                         },
@@ -2282,10 +2298,17 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
-                                                              "rhs": Array [
+                                                            },
+                                                            "name": "multiplicationExpression",
+                                                          },
+                                                        ],
+                                                        "rhs": Array [
+                                                          Object {
+                                                            "children": Object {
+                                                              "lhs": Array [
                                                                 Object {
                                                                   "children": Object {
                                                                     "lhs": Array [
@@ -2408,31 +2431,31 @@ Array [
                                                                       },
                                                                     ],
                                                                   },
-                                                                  "name": "multiplicationExpression",
+                                                                  "name": "notExpression",
                                                                 },
                                                               ],
                                                             },
-                                                            "name": "additionExpression",
+                                                            "name": "multiplicationExpression",
                                                           },
                                                         ],
                                                       },
-                                                      "name": "concatExpression",
+                                                      "name": "additionExpression",
                                                     },
                                                   ],
                                                 },
-                                                "name": "inExpression",
+                                                "name": "concatExpression",
                                               },
                                             ],
                                           },
-                                          "name": "compareExpression",
+                                          "name": "inExpression",
                                         },
                                       ],
                                     },
-                                    "name": "equalCompareExpression",
+                                    "name": "compareExpression",
                                   },
                                 ],
                               },
-                              "name": "notExpression",
+                              "name": "equalCompareExpression",
                             },
                           ],
                         },

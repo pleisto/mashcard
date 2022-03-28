@@ -750,6 +750,41 @@ Array [
 ]
 `;
 
+exports[`Simple test case [Empty parentheses] =() // => ✗ 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "(",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": ")",
+  },
+]
+`;
+
 exports[`Simple test case [Missing closing parenthesis1] =(1 // => ✗ 1`] = `
 Array [
   Object {
@@ -768,51 +803,7 @@ Array [
     "display": "(",
     "errors": Array [
       Object {
-        "message": "Missing closing parenthesis",
-        "type": "syntax",
-      },
-      Object {
-        "message": "TODO mismatch token parenthesisExpression",
-        "type": "parse",
-      },
-    ],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "(",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "NumberLiteral",
-    "display": "1",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "number",
-    "value": "1",
-  },
-]
-`;
-
-exports[`Simple test case [Missing closing parenthesis1] =(1 // => ✗ 2`] = `
-Array [
-  Object {
-    "attrs": undefined,
-    "code": "Equal",
-    "display": "=",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "=",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "LParen",
-    "display": "(",
-    "errors": Array [
-      Object {
-        "message": "Missing closing parenthesis",
+        "message": "Missing closing token",
         "type": "syntax",
       },
       Object {
@@ -1225,7 +1216,7 @@ Object {
                       "lhs": Array [
                         Object {
                           "children": Object {
-                            "rhs": Array [
+                            "lhs": Array [
                               Object {
                                 "children": Object {
                                   "lhs": Array [
@@ -1355,31 +1346,31 @@ Object {
                                                                   },
                                                                 ],
                                                               },
-                                                              "name": "multiplicationExpression",
+                                                              "name": "notExpression",
                                                             },
                                                           ],
                                                         },
-                                                        "name": "additionExpression",
+                                                        "name": "multiplicationExpression",
                                                       },
                                                     ],
                                                   },
-                                                  "name": "concatExpression",
+                                                  "name": "additionExpression",
                                                 },
                                               ],
                                             },
-                                            "name": "inExpression",
+                                            "name": "concatExpression",
                                           },
                                         ],
                                       },
-                                      "name": "compareExpression",
+                                      "name": "inExpression",
                                     },
                                   ],
                                 },
-                                "name": "equalCompareExpression",
+                                "name": "compareExpression",
                               },
                             ],
                           },
-                          "name": "notExpression",
+                          "name": "equalCompareExpression",
                         },
                       ],
                     },
@@ -1931,16 +1922,7 @@ Array [
     "attrs": undefined,
     "code": "NumberLiteral",
     "display": "1",
-    "errors": Array [
-      Object {
-        "message": "Missing right expression",
-        "type": "syntax",
-      },
-      Object {
-        "message": "Parse error: \\"\\"",
-        "type": "parse",
-      },
-    ],
+    "errors": Array [],
     "hide": false,
     "renderText": undefined,
     "type": "number",
@@ -1952,8 +1934,12 @@ Array [
     "display": "+",
     "errors": Array [
       Object {
-        "message": "Missing right expression",
+        "message": "Missing expression",
         "type": "syntax",
+      },
+      Object {
+        "message": "Parse error: \\"\\"",
+        "type": "parse",
       },
     ],
     "hide": false,
@@ -2491,7 +2477,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "boolean",
+    "type": "any",
     "value": ")",
   },
   Object {
@@ -3273,7 +3259,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "number",
+    "type": "any",
     "value": ")",
   },
   Object {
@@ -3408,7 +3394,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "number",
+    "type": "any",
     "value": ")",
   },
 ]
@@ -3674,6 +3660,71 @@ Array [
 ]
 `;
 
+exports[`Simple test case [not operator vs addition] =!1+1 // => ✗ 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "any",
+    "value": "=",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Not",
+    "display": "!",
+    "errors": Array [
+      Object {
+        "message": "Expected number but got boolean",
+        "type": "type",
+      },
+    ],
+    "hide": false,
+    "renderText": undefined,
+    "type": "boolean",
+    "value": "!",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [
+      Object {
+        "message": "Expected number but got boolean",
+        "type": "type",
+      },
+    ],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Plus",
+    "display": "+",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "+",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "renderText": undefined,
+    "type": "number",
+    "value": "1",
+  },
+]
+`;
+
 exports[`Simple test case [record number as key] ={1: "a"} // => [object Object] 1`] = `
 Array [
   Object {
@@ -3713,7 +3764,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "any",
+    "type": "Record",
     "value": ":",
   },
   Object {
@@ -4128,7 +4179,7 @@ Array [
     "errors": Array [],
     "hide": false,
     "renderText": undefined,
-    "type": "boolean",
+    "type": "any",
     "value": ")",
   },
 ]
