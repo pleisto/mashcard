@@ -143,8 +143,6 @@ export const DocumentContentPage: React.FC = () => {
     }
   }, [data, docid, host, isAnonymous, loading, personalDomain, loginDomain, snapshotVersion, state, t, domain])
 
-  console.log(docMeta)
-
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
   React.useEffect(() => {
