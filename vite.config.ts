@@ -35,7 +35,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{woff,woff2,ttf,js,svg,mp4,jpg,png,webp}'],
+        globPatterns: ['**/*.{woff,woff2,ttf,js,svg,mp4,jpg,png,webp,webm,mov}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/s3\.brickdoc\.com\/npmjs\/.*/i,

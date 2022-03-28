@@ -17,6 +17,7 @@ import { appendFormulas, FormulaContext, FormulaName } from '@brickdoc/formula'
 import Logo from '@/common/assets/logo_brickdoc.svg'
 import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
+import { AppError404 } from '@/AppError'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
 type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
@@ -35,6 +36,7 @@ export interface DocMeta {
   isDeleted: boolean
   isMine: boolean
   isRedirect: boolean
+  isNotExist?: boolean
   pin: boolean
   title: string
   icon?: icon
@@ -111,6 +113,7 @@ export const DocumentContentPage: React.FC = () => {
     const id = isAlias ? data?.blockInfo?.id : docid
     const alias = isAlias ? docid : data?.blockInfo?.enabledAlias?.key
     const isRedirect = !!(state as any)?.redirect
+    const isNotExist = !loading && !id
 
     return {
       id,
@@ -135,9 +138,12 @@ export const DocumentContentPage: React.FC = () => {
       icon,
       personalDomain,
       documentInfoLoading: loading,
-      snapshotVersion: Number(snapshotVersion ?? '0')
+      snapshotVersion: Number(snapshotVersion ?? '0'),
+      isNotExist
     }
   }, [data, docid, host, isAnonymous, loading, personalDomain, loginDomain, snapshotVersion, state, t, domain])
+
+  console.log(docMeta)
 
   const { queryFormulas, commitFormula, generateFormulaFunctionClauses } = useFormulaActions()
 
@@ -205,7 +211,9 @@ export const DocumentContentPage: React.FC = () => {
     ) : (
       <SpaceSelect docMeta={docMeta} />
     ))
-
+  if (docMeta.isNotExist) {
+    return <AppError404 btnCallback={() => navigate('/')} />
+  }
   return (
     <>
       <Helmet

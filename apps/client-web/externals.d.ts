@@ -36,3 +36,13 @@ declare module '*.webp' {
 
   export = content
 }
+
+declare module '*.mov' {
+  const src: string
+  export = src
+}
+
+declare module '*.webm' {
+  const src: string
+  export = src
+}

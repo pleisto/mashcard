@@ -192,6 +192,13 @@ en-US:
         wrong_length:
           one: is the wrong length (should be 1 character)
           other: is the wrong length (should be %{count} characters)
+    app_error:
+      not_found_title: Whoops! Lost in Brickdoc?
+      not_found_content: The page you're looking for couldn't be found.
+      server_error_title: Uh-Oh! Server Error.
+      server_error_content: Our servers are feeling a little down.
+      btn_back: Back to Home
+      btn_return: Return
     template:
       body: 'There were problems with the following fields:'
       header:

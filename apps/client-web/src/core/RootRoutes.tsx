@@ -2,6 +2,7 @@ import { FC, lazy, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { JoinSpacePage } from '@/docs/invite/JoinSpacePage'
 import { DocumentContentPage } from '@/docs/pages/DocumentContentPage'
+import { AppError404, AppError403, AppError500 } from '@/AppError'
 import { BrickdocContext } from '@/common/brickdocContext'
 import { rootPath } from '@/common/utils'
 
@@ -18,6 +19,9 @@ export const RootRoutes: FC = () => {
   return (
     <Router>
       <Routes>
+        <Route path="code-404" element={<AppError404 />} />
+        <Route path="code-403" element={<AppError403 />} />
+        <Route path="code-500" element={<AppError500 />} />
         <Route path="accounts/*" element={<AccountsModule />} />
         <Route path=":domain/*">
           <Route
