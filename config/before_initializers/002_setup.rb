@@ -47,7 +47,7 @@ Rails.application.reloader.to_prepare do
   smtp_settings = URI(BrickdocConfig.mailer[:url])
   Rails.application.configure do
     config.action_mailer.default_url_options = Rails.application.default_url_options
-    config.action_mailer.delivery_method = Rails.env.test? ? :test : :smtp
+    config.action_mailer.delivery_method = Rails.env.production? ? :smtp : :test
     config.action_mailer.default_options = {
       from: BrickdocConfig.mailer[:from]
     }
@@ -59,7 +59,7 @@ Rails.application.reloader.to_prepare do
       password: smtp_settings.password,
       enable_starttls_auto: true
     }
-    Devise::Async.enabled = false if Rails.env.test?
+    Devise::Async.enabled = false unless Rails.env.production?
     config.active_storage.default_url_options = Rails.application.default_url_options
     ActiveStorage::Current.url_options = Rails.application.default_url_options
     config.action_mailer.preview_path = Rails.root.join('spec', 'mailer_previews')
