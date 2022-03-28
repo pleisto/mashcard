@@ -100,7 +100,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
 
   const [columnWidths, setColumnWidths] = React.useState(Object.fromEntries(columns.map(c => [c.uuid, c.width])))
 
-  const finalColumnWidths = Object.fromEntries(Object.entries(columnWidths).map((id, width) => [id, width ?? 230]))
+  const finalColumnWidths = Object.fromEntries(Object.entries(columnWidths).map(([id, width]) => [id, width ?? 230]))
 
   React.useEffect(() => {
     const onDraggingMouseMove = (e: MouseEvent): void => {
