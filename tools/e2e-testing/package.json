@@ -6,7 +6,7 @@
     "start": "yarn cleanup && yarn run-playwright && yarn report",
     "run-playwright": "yarn playwright test",
     "cleanup": "rm -rf .nyc_output test-results",
-    "report": "nyc report --reporter=lcov --reporter=text-summary --cwd ../ --temp-dir e2e-testing/.nyc_output",
+    "report": "nyc report --reporter=lcov --reporter=text-summary --cwd ../../ --temp-dir tools/e2e-testing/.nyc_output",
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx .",
     "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx . --fix",

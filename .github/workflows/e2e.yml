@@ -54,7 +54,7 @@ jobs:
           E2E_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.email }}
           E2E_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.password }}
       - name: Fix coverage files
-        run: (find e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
+        run: (find tools/e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
         continue-on-error: true
       - name: Publish Playwright code coverage reports
         uses: codecov/codecov-action@v2
@@ -68,4 +68,4 @@ jobs:
           name: playwright-test-results
           if-no-files-found: ignore
           retention-days: 3
-          path: e2e-testing/test-results/
+          path: tools/e2e-testing/test-results/

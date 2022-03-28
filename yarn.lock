@@ -1952,9 +1952,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@brickdoc/e2e-testing@workspace:e2e-testing":
+"@brickdoc/e2e-testing@workspace:tools/e2e-testing":
   version: 0.0.0-use.local
-  resolution: "@brickdoc/e2e-testing@workspace:e2e-testing"
+  resolution: "@brickdoc/e2e-testing@workspace:tools/e2e-testing"
   dependencies:
     "@playwright/test": ^1.20.1
     nyc: ^15.1.0
