@@ -21,8 +21,8 @@ const placeholderStyle = css({
 })
 
 export const ParagraphView: React.FC<ParagraphViewProps> = props => {
-  const { node, getPos, deleteNode, editor } = props
-  const [placeholder] = usePlaceholder(editor, node, getPos)
+  const { node, getPos, deleteNode, editor, extension } = props
+  const [placeholder] = usePlaceholder(editor, extension, node, getPos)
   const placeholderClassName = useMemo(() => placeholderStyle().className, [])
 
   return (

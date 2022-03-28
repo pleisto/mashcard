@@ -8,6 +8,7 @@ export const meta: ExtensionMeta = {
 
 export interface ParagraphOptions extends TiptapParagraphOptions {
   native?: boolean
+  placeholder?: string
 }
 
 export interface ParagraphAttributes {}

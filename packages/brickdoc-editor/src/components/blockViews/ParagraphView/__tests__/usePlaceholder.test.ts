@@ -8,9 +8,9 @@ jest.useFakeTimers()
 
 describe('ParagraphView > usePlaceholder', () => {
   it('shows placeholder normally', () => {
-    const { editor, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>()
+    const { editor, extension, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>()
 
-    const { result } = renderHook(() => usePlaceholder(editor, node, () => 1))
+    const { result } = renderHook(() => usePlaceholder(editor, extension, node, () => 1))
 
     act(() => {
       jest.runAllTimers()
@@ -22,13 +22,13 @@ describe('ParagraphView > usePlaceholder', () => {
   })
 
   it('hides placeholder when content is not empty', () => {
-    const { editor, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
+    const { editor, extension, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
       node: {
         childCount: 1
       }
     })
 
-    const { result } = renderHook(() => usePlaceholder(editor, node, () => 1))
+    const { result } = renderHook(() => usePlaceholder(editor, extension, node, () => 1))
 
     act(() => {
       jest.runAllTimers()

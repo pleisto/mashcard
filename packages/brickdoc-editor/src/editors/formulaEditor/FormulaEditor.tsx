@@ -43,7 +43,9 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
       Base.configure({
         document: true,
         text: true,
-        paragraph: true,
+        paragraph: {
+          placeholder: ''
+        },
         formulaType: true,
         formulaKeyDown: {
           formulaId,
