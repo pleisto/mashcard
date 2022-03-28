@@ -9,7 +9,10 @@ describe('ParagraphView', () => {
       editor: {
         state: {
           selection: {
-            anchor: 1
+            anchor: 1,
+            $from: {
+              depth: 0
+            }
           }
         }
       },

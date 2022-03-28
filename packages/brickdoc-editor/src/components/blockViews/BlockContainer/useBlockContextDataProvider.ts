@@ -8,7 +8,6 @@ export interface UseBlockContextDataProviderProps {
   deleteNode?: BlockContainerProps['deleteNode']
   getPos: BlockContainerProps['getPos']
   contentForCopy?: BlockContainerProps['contentForCopy']
-  insideList: boolean
   dragging: boolean
   updateDragging: (dragging: boolean) => void
   node: BlockContainerProps['node']
@@ -18,7 +17,6 @@ export function useBlockContextDataProvider({
   deleteNode,
   getPos,
   contentForCopy,
-  insideList,
   dragging,
   updateDragging,
   node
@@ -35,11 +33,10 @@ export function useBlockContextDataProvider({
         void toast.success(t('copy_hint'))
       },
       updateDraggingStatus: updateDragging,
-      insideList,
       dragging,
       node
     }),
-    [contentForCopy, deleteNode, dragging, getPos, insideList, node, t, updateDragging]
+    [contentForCopy, deleteNode, dragging, getPos, node, t, updateDragging]
   )
 
   return [data]

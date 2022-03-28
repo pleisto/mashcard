@@ -13,15 +13,22 @@ export const mockEditor = (editorProps?: MockEditorProps): Editor => {
   const editor = new Proxy(
     {
       state: {
-        doc: {},
+        doc: {
+          resolve() {
+            return {}
+          }
+        },
         selection: {
           anchor: 1,
           from: 1,
-          to: 1
+          to: 1,
+          $from: {
+            depth: 0
+          }
         }
       },
       view: {}
-    },
+    } as any,
     {
       get(target, key: keyof MockEditorProps) {
         if (key === 'state') {

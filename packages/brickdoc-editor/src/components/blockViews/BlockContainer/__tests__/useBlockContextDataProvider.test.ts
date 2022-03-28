@@ -12,7 +12,6 @@ describe('useBlockContextDataProvider', () => {
     const mockUpdateDragging = jest.fn()
     const { result } = renderHook(() =>
       useBlockContextDataProvider({
-        insideList: true,
         dragging: true,
         getPos: () => 1,
         updateDragging: mockUpdateDragging,
@@ -23,7 +22,6 @@ describe('useBlockContextDataProvider', () => {
     const data = result.current[0]
 
     expect(data.dragging).toBeTruthy()
-    expect(data.insideList).toBeTruthy()
 
     data.updateDraggingStatus(true)
     expect(mockUpdateDragging).toBeCalledWith(true)
@@ -32,7 +30,6 @@ describe('useBlockContextDataProvider', () => {
   it('moves node normally', () => {
     const { result } = renderHook(() =>
       useBlockContextDataProvider({
-        insideList: true,
         dragging: true,
         getPos: () => 1,
         updateDragging: () => {},
@@ -47,7 +44,6 @@ describe('useBlockContextDataProvider', () => {
   it('duplicates node normally', () => {
     const { result } = renderHook(() =>
       useBlockContextDataProvider({
-        insideList: true,
         dragging: true,
         getPos: () => 1,
         updateDragging: () => {},
@@ -63,7 +59,6 @@ describe('useBlockContextDataProvider', () => {
     const position = 1
     const { result } = renderHook(() =>
       useBlockContextDataProvider({
-        insideList: true,
         dragging: true,
         getPos: () => position,
         updateDragging: () => {},
@@ -79,7 +74,6 @@ describe('useBlockContextDataProvider', () => {
     const mockDelete = jest.fn()
     const { result } = renderHook(() =>
       useBlockContextDataProvider({
-        insideList: true,
         dragging: true,
         deleteNode: mockDelete,
         getPos: () => 1,
@@ -100,7 +94,6 @@ describe('useBlockContextDataProvider', () => {
     jest.spyOn(navigator.clipboard, 'writeText').mockImplementation(content => mockCopy(content))
     const { result } = renderHook(() =>
       useBlockContextDataProvider({
-        insideList: true,
         dragging: true,
         contentForCopy: content,
         getPos: () => 1,

@@ -1,41 +1,60 @@
+import { useRef } from 'react'
 import { renderHook } from '@testing-library/react-hooks'
-import { act } from 'react-dom/test-utils'
 import { ParagraphAttributes, ParagraphOptions } from '../../../../extensions'
 import { mockBlockViewProps } from '../../../common/tests'
 import { usePlaceholder } from '../usePlaceholder'
-
-jest.useFakeTimers()
+import * as editableHooks from '../../../../hooks/useDocumentEditable'
 
 describe('ParagraphView > usePlaceholder', () => {
   it('shows placeholder normally', () => {
-    const { editor, extension, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>()
-
-    const { result } = renderHook(() => usePlaceholder(editor, extension, node, () => 1))
-
-    act(() => {
-      jest.runAllTimers()
+    jest.spyOn(editableHooks, 'useDocumentEditable').mockImplementation(() => [true])
+    const { editor, extension, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
+      editor: {
+        state: {
+          selection: {
+            anchor: 1,
+            $from: {
+              depth: 0
+            }
+          }
+        }
+      }
     })
 
-    const [placeholder] = result.current
+    const p = document.createElement('p')
+    p.setAttribute('data-node-view-content', '')
+    const dom = document.createElement('div')
+    dom.appendChild(p)
+    const getPos = (): number => 1
 
-    expect(placeholder).not.toEqual('')
+    renderHook(() => {
+      const ref = useRef<HTMLDivElement>(dom)
+      return usePlaceholder(editor, extension, node, ref, getPos)
+    })
+
+    expect(p.getAttribute('data-placeholder')).toEqual('placeholder')
   })
 
   it('hides placeholder when content is not empty', () => {
+    jest.spyOn(editableHooks, 'useDocumentEditable').mockImplementation(() => [true])
     const { editor, extension, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
       node: {
         childCount: 1
       }
     })
 
-    const { result } = renderHook(() => usePlaceholder(editor, extension, node, () => 1))
+    const p = document.createElement('p')
+    p.setAttribute('data-node-view-content', '')
+    p.textContent = 'p'
+    const dom = document.createElement('div')
+    dom.appendChild(p)
+    const getPos = (): number => 1
 
-    act(() => {
-      jest.runAllTimers()
+    renderHook(() => {
+      const ref = useRef<HTMLDivElement>(dom)
+      return usePlaceholder(editor, extension, node, ref, getPos)
     })
 
-    const [placeholder] = result.current
-
-    expect(placeholder).toEqual('')
+    expect(p.getAttribute('data-placeholder') ?? '').toEqual('')
   })
 })

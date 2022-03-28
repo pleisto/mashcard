@@ -175,6 +175,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       } else {
         cachedBlocksMap.current.set(block.id, { ...oldBlock, ...block })
       }
+
       if (block.id === rootId.current) {
         client.cache.modify({
           id: client.cache.identify({ __typename: 'BlockInfo', id: block.id }),

@@ -1,51 +1,51 @@
-import { useEffect, useRef, useState } from 'react'
+import { findParentNode } from '@tiptap/react'
+import { RefObject, useEffect, useRef } from 'react'
+import { BulletList, OrderedList } from '../../../extensions'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
-import { useBlockContext, useEditorContext } from '../../../hooks'
+import { useDocumentEditable, useEditorContext } from '../../../hooks'
 
 export function usePlaceholder(
   editor: ParagraphViewProps['editor'],
   extension: ParagraphViewProps['extension'],
   node: ParagraphViewProps['node'],
+  blockContainerRef: RefObject<HTMLDivElement>,
   getPos: ParagraphViewProps['getPos']
-): [string] {
+): void {
   const { t } = useEditorContext()
-  const { insideList } = useBlockContext()
-  const [placeholder, setPlaceholder] = useState('')
-
-  const placeholderText = extension?.options?.placeholder ?? t('placeholder')
-
-  const nodeRef = useRef(node)
-  useEffect(() => {
-    nodeRef.current = node
-  }, [node])
+  const placeholderText = extension?.options?.placeholder ?? t('placeholder') ?? ''
+  const [documentEditable] = useDocumentEditable(undefined)
+  const dataRef = useRef({ node, documentEditable })
 
   useEffect(() => {
-    if (insideList) return
+    dataRef.current = {
+      node,
+      documentEditable
+    }
+  }, [documentEditable, node])
 
+  useEffect(() => {
     const listener = (): void => {
-      // TODO: remove this setTimeout
-      setTimeout(() => {
-        if (placeholderText && placeholderText?.length > 0) {
-          const isEmpty = !nodeRef.current.isLeaf && nodeRef.current.childCount === 0
-          const position = getPos()
-          const anchor = editor.state.selection.anchor
-          const hasAnchor = anchor >= position && anchor <= position + nodeRef.current.nodeSize
-          if (hasAnchor && isEmpty) {
-            setPlaceholder(placeholderText)
-          } else {
-            setPlaceholder('')
-          }
-        }
-      }, 50)
+      const { node, documentEditable } = dataRef.current
+      const paragraphElement = blockContainerRef.current?.querySelector('p[data-node-view-content]')
+
+      const isEmpty = (paragraphElement?.textContent?.length ?? 0) === 0
+      const position = getPos()
+      const anchor = editor.state.selection.anchor
+      const hasAnchor = anchor >= position && anchor <= position + node.nodeSize
+
+      const insideList = !!findParentNode(
+        node => node.type.name === BulletList.name || node.type.name === OrderedList.name
+      )(editor.state.selection)?.node
+
+      const needPlaceholder = hasAnchor && isEmpty && documentEditable && !insideList
+      paragraphElement?.setAttribute('data-placeholder', needPlaceholder ? placeholderText : '')
     }
 
     listener()
-    editor.on('selectionUpdate', listener).on('update', listener)
+    editor.on('selectionUpdate', listener).on('update', listener).on('focus', listener)
 
     return () => {
-      editor.off('selectionUpdate', listener).off('update', listener)
+      editor.off('selectionUpdate', listener).off('update', listener).off('focus', listener)
     }
-  }, [editor, getPos, insideList, placeholderText])
-
-  return [insideList ? '' : placeholder]
+  }, [blockContainerRef, editor, getPos, placeholderText, t])
 }

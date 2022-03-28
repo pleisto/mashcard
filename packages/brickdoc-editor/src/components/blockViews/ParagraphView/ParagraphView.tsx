@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { FC, useMemo, useRef } from 'react'
 import { NodeViewContent } from '@tiptap/react'
 import { css, theme } from '@brickdoc/design-system'
 import { BlockContainer } from '../BlockContainer'
@@ -20,9 +20,10 @@ const placeholderStyle = css({
   }
 })
 
-export const ParagraphView: React.FC<ParagraphViewProps> = props => {
+export const ParagraphView: FC<ParagraphViewProps> = props => {
   const { node, getPos, deleteNode, editor, extension } = props
-  const [placeholder] = usePlaceholder(editor, extension, node, getPos)
+  const blockContainerRef = useRef<HTMLDivElement>(null)
+  usePlaceholder(editor, extension, node, blockContainerRef, getPos)
   const placeholderClassName = useMemo(() => placeholderStyle().className, [])
 
   return (
@@ -32,9 +33,9 @@ export const ParagraphView: React.FC<ParagraphViewProps> = props => {
       deleteNode={deleteNode}
       contentForCopy={node.textContent}
       style={{ position: 'relative' }}
-      actionOptions={['copy', 'delete', 'transform']}
-    >
-      <NodeViewContent draggable={false} data-placeholder={placeholder} as="p" className={placeholderClassName} />
+      ref={blockContainerRef}
+      actionOptions={['copy', 'delete', 'transform']}>
+      <NodeViewContent draggable={false} data-placeholder="" as="p" className={placeholderClassName} />
     </BlockContainer>
   )
 }

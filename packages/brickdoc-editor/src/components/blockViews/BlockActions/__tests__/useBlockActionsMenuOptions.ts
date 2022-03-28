@@ -33,7 +33,6 @@ jest.mock('../../../../hooks/useBlockContext.ts', () => ({
       return 1
     },
     updateDraggingStatus() {},
-    insideList: false,
     dragging: false
   })
 }))

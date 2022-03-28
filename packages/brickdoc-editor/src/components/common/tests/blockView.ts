@@ -47,8 +47,8 @@ export const mockBlockViewProps = <Option, Attribute>(
     props?.onUpdateAttributes?.()
   }
 
-  const mockDeleteNode = () => {}
-  const mockGetPos = () => 1
+  const mockDeleteNode = (): void => {}
+  const mockGetPos = (): number => 1
 
   return {
     node: mockNode as BlockViewProps<Option, Attribute>['node'],

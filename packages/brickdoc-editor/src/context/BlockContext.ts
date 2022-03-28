@@ -8,7 +8,6 @@ export interface BlockContextData {
   copyContent: () => void
   getPosition: () => number | undefined
   updateDraggingStatus: (dragging: boolean) => void
-  insideList: boolean
   dragging: boolean
   node: NodeViewProps['node'] | null
 }
@@ -22,7 +21,6 @@ export const BlockContext = createContext<BlockContextData>({
     return undefined
   },
   updateDraggingStatus() {},
-  insideList: false,
   dragging: false,
   node: null
 })

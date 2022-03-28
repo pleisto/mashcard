@@ -1,11 +1,11 @@
-import { CSSProperties, FC, forwardRef, MouseEventHandler, useMemo, useState } from 'react'
-import { NodeViewWrapper, NodeViewWrapperProps, NodeViewProps } from '@tiptap/react'
+import { CSSProperties, FC, forwardRef, MouseEventHandler, useState } from 'react'
+import { NodeViewWrapper, NodeViewWrapperProps, NodeViewProps, findParentNodeClosestToPos } from '@tiptap/react'
 import { BlockActionsProps } from '../BlockActions'
 import { BlockContext } from '../../../context/BlockContext'
-import { useDocumentEditable } from '../../../hooks'
+import { useDocumentEditable, useEditorContext } from '../../../hooks'
 import { useBlockContextDataProvider } from './useBlockContextDataProvider'
 import { useBlockElement } from './useBlockElement'
-import { useExternalProps } from '../../../hooks/useExternalProps'
+import { BulletList, OrderedList } from '../../../extensions'
 export interface BlockContainerProps {
   inline?: boolean
   editable?: boolean
@@ -41,10 +41,17 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
     },
     ref
   ) => {
-    const { blocks } = useExternalProps()
+    const { editor } = useEditorContext()
 
-    // if node can not be found in first level blocks, it must be inside other blocks.
-    const insideList = useMemo(() => !blocks.find(block => block.id === node.attrs.uuid), [blocks, node.attrs.uuid])
+    // check if block inside a list
+    const blockResolvedPosition = editor?.state.doc.resolve(getPos?.() ?? 0)
+    const insideList = !blockResolvedPosition
+      ? true
+      : !!findParentNodeClosestToPos(
+          blockResolvedPosition,
+          node => node.type.name === BulletList.name || node.type.name === OrderedList.name
+        )?.node
+
     const disableActionOptions = insideList
 
     const [blockDragging, setBlockDragging] = useState(false)
@@ -53,7 +60,6 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
       getPos,
       contentForCopy,
       updateDragging: (dragging: boolean) => setBlockDragging(dragging),
-      insideList,
       dragging: blockDragging,
       node
     })
