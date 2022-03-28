@@ -8,7 +8,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 return if Rails.env.production?
-require 'ffaker'
 
 users = 5.times.map do |n|
   Accounts::User.create!(name: "ADMIN#{n}", password: "PASSWORD#{n}", email: "ADMIN#{n}@brickdoc.com", domain: "ADMIN#{n}").tap(&:confirm)
