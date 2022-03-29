@@ -2,7 +2,7 @@ import { css, Input, Menu, styled, theme } from '@brickdoc/design-system'
 import { horizontalPadding as drawHorizontalPadding } from '../../ui/Drawer'
 
 export const SearchInputContainer = styled('div', {
-  padding: `.625rem ${drawHorizontalPadding}`
+  padding: `0 ${drawHorizontalPadding} .625rem`
 })
 
 export const SearchInput = styled(Input, {
@@ -11,6 +11,11 @@ export const SearchInput = styled(Input, {
   borderRadius: '4px',
   '&::placeholder': {
     fontWeight: 'normal'
+  },
+  input: {
+    border: 0,
+    margin: 0,
+    padding: 0
   }
 })
 
