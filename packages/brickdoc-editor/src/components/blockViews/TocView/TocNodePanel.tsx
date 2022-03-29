@@ -10,15 +10,23 @@ export interface TocNodePanelProps {
   tocNode: TocNode
 }
 
-const itemHeight = 24
 const itemGap = 7
+
+const TocItemTitleText = styled('span', {
+  display: 'inline-block',
+  lineHeight: 1,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+  maxWidth: '100%'
+})
 
 const TocItemTitle = styled('span', {
   color: theme.colors.typeSecondary,
   cursor: 'pointer',
   display: 'inline-block',
   fontSize: theme.fontSizes.body,
-  lineHeight: `${itemHeight}px`,
+  lineHeight: 1.3,
   position: 'relative',
 
   '&:after': {
@@ -33,25 +41,32 @@ const TocItemTitle = styled('span', {
   variants: {
     level: {
       root: {
-        marginLeft: '0'
+        marginLeft: '0',
+        maxWidth: '100%'
       },
       1: {
-        marginLeft: '0'
+        marginLeft: '0',
+        maxWidth: '100%'
       },
       2: {
-        marginLeft: '1em'
+        marginLeft: '1em',
+        maxWidth: 'calc(100% - 1em)'
       },
       3: {
-        marginLeft: '2em'
+        marginLeft: '2em',
+        maxWidth: 'calc(100% - 2em)'
       },
       4: {
-        marginLeft: '3em'
+        marginLeft: '3em',
+        maxWidth: 'calc(100% - 3em)'
       },
       5: {
-        marginLeft: '4em'
+        marginLeft: '4em',
+        maxWidth: 'calc(100% - 4em)'
       },
       text: {
-        marginLeft: '5em'
+        marginLeft: '5em',
+        maxWidth: 'calc(100% - 5em)'
       }
     }
   }
@@ -60,7 +75,8 @@ const TocItemTitle = styled('span', {
 const TocStyledItem = styled('div', {
   alignItems: 'start',
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  width: '100%'
 })
 
 const ToggleIcon = styled(ArrowFilleRight, {
@@ -87,7 +103,8 @@ const ToggleIcon = styled(ArrowFilleRight, {
 const TocItemContent = styled('div', {
   marginTop: `${itemGap}px`,
   overflow: 'hidden',
-  transition: 'max-height .1s ease-out'
+  transition: 'max-height .1s ease-out',
+  width: '100%'
 })
 
 const containerVerticalPadding = 16
@@ -97,6 +114,7 @@ const TocStyledContainer = styled('div', {
   border: `1px solid ${theme.colors.borderPrimary}`,
   borderRadius: '8px',
   display: 'inline-block',
+  maxWidth: '100%',
   minWidth: '23.375rem',
   padding: `${containerVerticalPadding}px 0`
 })
@@ -115,12 +133,7 @@ export interface TocContainerProps {
 
 export const TocContainer: FC<TocContainerProps> = ({ tocItemCount, children }) => {
   return (
-    <TocStyledContainer
-      role="presentation"
-      css={{
-        height: tocItemCount > 0 ? `${containerVerticalPadding * 2 + tocItemCount * (itemHeight + itemGap)}px` : 'unset'
-      }}
-    >
+    <TocStyledContainer role="presentation">
       <TocStyledContainerInner>{children}</TocStyledContainerInner>
     </TocStyledContainer>
   )
@@ -135,7 +148,7 @@ export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
       event.stopPropagation()
       if (!contentRef.current) return
       if (collapse) {
-        contentRef.current.style.maxHeight = `${contentRef.current?.scrollHeight}px`
+        contentRef.current.style.maxHeight = '100%'
       } else {
         contentRef.current.style.maxHeight = `0px`
       }
@@ -146,7 +159,7 @@ export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
 
   useEffect(() => {
     if (!contentRef.current) return
-    contentRef.current.style.maxHeight = `${contentRef.current?.scrollHeight}px`
+    contentRef.current.style.maxHeight = '100%'
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tocNode.children.length])
 
@@ -175,7 +188,9 @@ export const TocNodePanel: FC<TocNodePanelProps> = ({ tocNode }) => {
             onClick={toggleCollapse}
           />
         )}
-        {isEmpty(tocNode.item.content) ? t('blocks.toc.untitled') : tocNode.item.content}
+        <TocItemTitleText>
+          {isEmpty(tocNode.item.content) ? t('blocks.toc.untitled') : tocNode.item.content}
+        </TocItemTitleText>
       </TocItemTitle>
       <TocItemContent data-testid={TEST_ID_ENUM.editor.tocBlock.item.contentPanel.id} ref={contentRef}>
         {tocNode.children.map((node, index) => (

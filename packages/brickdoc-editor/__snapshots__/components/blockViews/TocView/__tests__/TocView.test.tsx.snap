@@ -7,19 +7,19 @@ exports[`TocView matches correct snapshot 1`] = `
     style="pointer-events: none; white-space: normal;"
   >
     <div
-      class="brd-c-exlRqC brd-c-exlRqC-ikPUvHx-css"
+      class="brd-c-xqKPi"
       role="presentation"
     >
       <div
         class="brd-c-ihePFc"
       >
         <div
-          class="brd-c-lnjkAt"
+          class="brd-c-jhjCFt"
           data-testid="editor-toc-block-item-id"
           role="menuitem"
         >
           <span
-            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
+            class="brd-c-iCILOi brd-c-iCILOi-ftgEku-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <span
@@ -40,20 +40,24 @@ exports[`TocView matches correct snapshot 1`] = `
                 />
               </svg>
             </span>
-            h1
+            <span
+              class="brd-c-dCRzg"
+            >
+              h1
+            </span>
           </span>
           <div
-            class="brd-c-bRVPOb"
+            class="brd-c-dEbctz"
             data-testid="editor-toc-block-item-content-panel"
-            style="max-height: 0px;"
+            style="max-height: 100%;"
           >
             <div
-              class="brd-c-lnjkAt"
+              class="brd-c-jhjCFt"
               data-testid="editor-toc-block-item-id"
               role="menuitem"
             >
               <span
-                class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
+                class="brd-c-iCILOi brd-c-iCILOi-khxYkf-level-2"
                 data-testid="editor-toc-block-item-title"
               >
                 <span
@@ -74,28 +78,36 @@ exports[`TocView matches correct snapshot 1`] = `
                     />
                   </svg>
                 </span>
-                h2
+                <span
+                  class="brd-c-dCRzg"
+                >
+                  h2
+                </span>
               </span>
               <div
-                class="brd-c-bRVPOb"
+                class="brd-c-dEbctz"
                 data-testid="editor-toc-block-item-content-panel"
-                style="max-height: 0px;"
+                style="max-height: 100%;"
               >
                 <div
-                  class="brd-c-lnjkAt"
+                  class="brd-c-jhjCFt"
                   data-testid="editor-toc-block-item-id"
                   role="menuitem"
                 >
                   <span
-                    class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
+                    class="brd-c-iCILOi brd-c-iCILOi-bjpAUv-level-5"
                     data-testid="editor-toc-block-item-title"
                   >
-                    h5\`
+                    <span
+                      class="brd-c-dCRzg"
+                    >
+                      h5\`
+                    </span>
                   </span>
                   <div
-                    class="brd-c-bRVPOb"
+                    class="brd-c-dEbctz"
                     data-testid="editor-toc-block-item-content-panel"
-                    style="max-height: 0px;"
+                    style="max-height: 100%;"
                   />
                 </div>
               </div>
@@ -103,12 +115,12 @@ exports[`TocView matches correct snapshot 1`] = `
           </div>
         </div>
         <div
-          class="brd-c-lnjkAt"
+          class="brd-c-jhjCFt"
           data-testid="editor-toc-block-item-id"
           role="menuitem"
         >
           <span
-            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
+            class="brd-c-iCILOi brd-c-iCILOi-ftgEku-level-1"
             data-testid="editor-toc-block-item-title"
           >
             <span
@@ -129,20 +141,24 @@ exports[`TocView matches correct snapshot 1`] = `
                 />
               </svg>
             </span>
-            h1\`
+            <span
+              class="brd-c-dCRzg"
+            >
+              h1\`
+            </span>
           </span>
           <div
-            class="brd-c-bRVPOb"
+            class="brd-c-dEbctz"
             data-testid="editor-toc-block-item-content-panel"
-            style="max-height: 0px;"
+            style="max-height: 100%;"
           >
             <div
-              class="brd-c-lnjkAt"
+              class="brd-c-jhjCFt"
               data-testid="editor-toc-block-item-id"
               role="menuitem"
             >
               <span
-                class="brd-c-jXsEGA brd-c-jXsEGA-jpNsBQ-level-3"
+                class="brd-c-iCILOi brd-c-iCILOi-euyVNX-level-3"
                 data-testid="editor-toc-block-item-title"
               >
                 <span
@@ -163,20 +179,24 @@ exports[`TocView matches correct snapshot 1`] = `
                     />
                   </svg>
                 </span>
-                h3
+                <span
+                  class="brd-c-dCRzg"
+                >
+                  h3
+                </span>
               </span>
               <div
-                class="brd-c-bRVPOb"
+                class="brd-c-dEbctz"
                 data-testid="editor-toc-block-item-content-panel"
-                style="max-height: 0px;"
+                style="max-height: 100%;"
               >
                 <div
-                  class="brd-c-lnjkAt"
+                  class="brd-c-jhjCFt"
                   data-testid="editor-toc-block-item-id"
                   role="menuitem"
                 >
                   <span
-                    class="brd-c-jXsEGA brd-c-jXsEGA-gsgpPJ-level-4"
+                    class="brd-c-iCILOi brd-c-iCILOi-hfNeJr-level-4"
                     data-testid="editor-toc-block-item-title"
                   >
                     <span
@@ -197,28 +217,36 @@ exports[`TocView matches correct snapshot 1`] = `
                         />
                       </svg>
                     </span>
-                    h4
+                    <span
+                      class="brd-c-dCRzg"
+                    >
+                      h4
+                    </span>
                   </span>
                   <div
-                    class="brd-c-bRVPOb"
+                    class="brd-c-dEbctz"
                     data-testid="editor-toc-block-item-content-panel"
-                    style="max-height: 0px;"
+                    style="max-height: 100%;"
                   >
                     <div
-                      class="brd-c-lnjkAt"
+                      class="brd-c-jhjCFt"
                       data-testid="editor-toc-block-item-id"
                       role="menuitem"
                     >
                       <span
-                        class="brd-c-jXsEGA brd-c-jXsEGA-glOmSq-level-5"
+                        class="brd-c-iCILOi brd-c-iCILOi-bjpAUv-level-5"
                         data-testid="editor-toc-block-item-title"
                       >
-                        h5
+                        <span
+                          class="brd-c-dCRzg"
+                        >
+                          h5
+                        </span>
                       </span>
                       <div
-                        class="brd-c-bRVPOb"
+                        class="brd-c-dEbctz"
                         data-testid="editor-toc-block-item-content-panel"
-                        style="max-height: 0px;"
+                        style="max-height: 100%;"
                       />
                     </div>
                   </div>
@@ -226,12 +254,12 @@ exports[`TocView matches correct snapshot 1`] = `
               </div>
             </div>
             <div
-              class="brd-c-lnjkAt"
+              class="brd-c-jhjCFt"
               data-testid="editor-toc-block-item-id"
               role="menuitem"
             >
               <span
-                class="brd-c-jXsEGA brd-c-jXsEGA-ccDUaf-level-2"
+                class="brd-c-iCILOi brd-c-iCILOi-khxYkf-level-2"
                 data-testid="editor-toc-block-item-title"
               >
                 <span
@@ -252,28 +280,36 @@ exports[`TocView matches correct snapshot 1`] = `
                     />
                   </svg>
                 </span>
-                blocks.toc.untitled
+                <span
+                  class="brd-c-dCRzg"
+                >
+                  blocks.toc.untitled
+                </span>
               </span>
               <div
-                class="brd-c-bRVPOb"
+                class="brd-c-dEbctz"
                 data-testid="editor-toc-block-item-content-panel"
-                style="max-height: 0px;"
+                style="max-height: 100%;"
               >
                 <div
-                  class="brd-c-lnjkAt"
+                  class="brd-c-jhjCFt"
                   data-testid="editor-toc-block-item-id"
                   role="menuitem"
                 >
                   <span
-                    class="brd-c-jXsEGA brd-c-jXsEGA-cvEtFL-level-text"
+                    class="brd-c-iCILOi brd-c-iCILOi-jmJBBb-level-text"
                     data-testid="editor-toc-block-item-title"
                   >
-                    anchor
+                    <span
+                      class="brd-c-dCRzg"
+                    >
+                      anchor
+                    </span>
                   </span>
                   <div
-                    class="brd-c-bRVPOb"
+                    class="brd-c-dEbctz"
                     data-testid="editor-toc-block-item-content-panel"
-                    style="max-height: 0px;"
+                    style="max-height: 100%;"
                   />
                 </div>
               </div>
@@ -281,20 +317,24 @@ exports[`TocView matches correct snapshot 1`] = `
           </div>
         </div>
         <div
-          class="brd-c-lnjkAt"
+          class="brd-c-jhjCFt"
           data-testid="editor-toc-block-item-id"
           role="menuitem"
         >
           <span
-            class="brd-c-jXsEGA brd-c-jXsEGA-jJXOha-level-1"
+            class="brd-c-iCILOi brd-c-iCILOi-ftgEku-level-1"
             data-testid="editor-toc-block-item-title"
           >
-            h1\`\`
+            <span
+              class="brd-c-dCRzg"
+            >
+              h1\`\`
+            </span>
           </span>
           <div
-            class="brd-c-bRVPOb"
+            class="brd-c-dEbctz"
             data-testid="editor-toc-block-item-content-panel"
-            style="max-height: 0px;"
+            style="max-height: 100%;"
           />
         </div>
       </div>
