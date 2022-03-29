@@ -57,4 +57,27 @@ describe('ParagraphView > usePlaceholder', () => {
 
     expect(p.getAttribute('data-placeholder') ?? '').toEqual('')
   })
+
+  it('hides placeholder when content is not editable', () => {
+    jest.spyOn(editableHooks, 'useDocumentEditable').mockImplementation(() => [false])
+    const { editor, extension, node } = mockBlockViewProps<ParagraphOptions, ParagraphAttributes>({
+      node: {
+        childCount: 0
+      }
+    })
+
+    const p = document.createElement('p')
+    p.setAttribute('data-node-view-content', '')
+    p.textContent = 'p'
+    const dom = document.createElement('div')
+    dom.appendChild(p)
+    const getPos = (): number => 1
+
+    renderHook(() => {
+      const ref = useRef<HTMLDivElement>(dom)
+      return usePlaceholder(editor, extension, node, ref, getPos)
+    })
+
+    expect(p.getAttribute('data-placeholder') ?? '').toEqual('')
+  })
 })

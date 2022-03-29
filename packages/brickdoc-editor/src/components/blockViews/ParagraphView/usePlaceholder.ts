@@ -24,6 +24,13 @@ export function usePlaceholder(
   }, [documentEditable, node])
 
   useEffect(() => {
+    if (!documentEditable) {
+      const paragraphElement = blockContainerRef.current?.querySelector('p[data-node-view-content]')
+      paragraphElement?.setAttribute('data-placeholder', '')
+    }
+  }, [blockContainerRef, documentEditable])
+
+  useEffect(() => {
     const listener = (): void => {
       const { node, documentEditable } = dataRef.current
       const paragraphElement = blockContainerRef.current?.querySelector('p[data-node-view-content]')
