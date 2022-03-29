@@ -13,21 +13,14 @@ export interface TocNodePanelProps {
 const itemGap = 7
 
 const TocItemTitleText = styled('span', {
-  display: 'inline-block',
   lineHeight: 1,
+  display: '-webkit-box',
+  '-webkit-line-clamp': 1,
+  '-webkit-box-orient': 'vertical',
   overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-  maxWidth: '100%'
-})
-
-const TocItemTitle = styled('span', {
-  color: theme.colors.typeSecondary,
-  cursor: 'pointer',
-  display: 'inline-block',
-  fontSize: theme.fontSizes.body,
-  lineHeight: 1.3,
+  maxWidth: '100%',
   position: 'relative',
+  wordBreak: 'break-all',
 
   '&:after': {
     background: theme.colors.typeDisabled,
@@ -37,7 +30,16 @@ const TocItemTitle = styled('span', {
     left: 0,
     position: 'absolute',
     right: 0
-  },
+  }
+})
+
+const TocItemTitle = styled('span', {
+  color: theme.colors.typeSecondary,
+  cursor: 'pointer',
+  display: 'inline-block',
+  fontSize: theme.fontSizes.body,
+  lineHeight: 1.3,
+
   variants: {
     level: {
       root: {
