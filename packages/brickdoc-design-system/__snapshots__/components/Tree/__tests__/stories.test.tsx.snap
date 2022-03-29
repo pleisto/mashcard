@@ -826,7 +826,7 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
               </div>
             </div>
             <div
-              class="brd-c-cGgXIw brd-c-cGgXIw-cRSgRz-selected-true brd-c-cGgXIw-iPJLV-css"
+              class="brd-c-cGgXIw brd-c-cGgXIw-iPJLV-css"
               data-handler-id="mock-id"
               data-testid="BrkTree"
               role="button"

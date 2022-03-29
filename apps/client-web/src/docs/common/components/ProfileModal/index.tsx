@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Input, toast, Modal, Button } from '@brickdoc/design-system'
 import { object, string } from 'yup'
+import { useDomainAvailableValidator } from '@/common/hooks'
 import { useDocsI18n } from '../../hooks'
 import { SpaceOperation, useCreateOrUpdateSpaceMutation, CreateOrUpdateSpaceInput, Space } from '@/BrickdocGraphQL'
 
@@ -23,14 +24,14 @@ const DialogCss = {
 export const ProfileModal: React.FC<ProfileModalProps> = ({ space, visible, title, type, setVisible }) => {
   const { t } = useDocsI18n()
   const [confirmLoading, setConfirmLoading] = React.useState(false)
-  /*   const domainAvailableValidator = useDomainAvailableValidator() */
+  const domainAvailableValidator = useDomainAvailableValidator()
 
   const form = Form.useForm<CreateOrUpdateSpaceInput>({
     mode: 'onBlur',
     reValidateMode: 'onBlur',
     yup: object({
       /*       domain: string().required(t('spaces.required.domain')).test(domainAvailableValidator), */
-      name: string().required(t('spaces.required.name'))
+      name: string().required(t('spaces.required.name')).test(domainAvailableValidator)
     })
   })
   const [createOrUpdateSpace] = useCreateOrUpdateSpaceMutation()

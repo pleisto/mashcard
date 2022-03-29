@@ -67,6 +67,10 @@ If not specified, it'll fit automatically with a maximum value.`
       control: 'text',
       description: `If specified, the node with the given id will be selected on load.`
     },
+    currentSelectedId: {
+      control: 'text',
+      description: `Select items by external control.`
+    },
     draggable: {
       control: 'boolean',
       description: `Whether allow the user drag and drop tree node.

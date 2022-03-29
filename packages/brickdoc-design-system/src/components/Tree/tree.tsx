@@ -6,7 +6,8 @@ import {
   useRef,
   ReactNode,
   forwardRef,
-  RefCallback
+  RefCallback,
+  useEffect
 } from 'react'
 import deepEqual from 'fast-deep-equal'
 import List, { ListRef } from 'rc-virtual-list'
@@ -22,6 +23,7 @@ import { useUpdate } from 'ahooks'
 export interface TreeProps {
   height?: number
   data: TreeNode[]
+  currentSelectedId?: string
   initialSelectedId?: string
   className?: string
   treeNodeClassName?: string
@@ -53,6 +55,7 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
     renderNode,
     emptyNode,
     initialSelectedId,
+    currentSelectedId,
     draggable,
     className,
     treeNodeClassName,
@@ -81,6 +84,13 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   })
 
   const [selectedId, setSelectedId] = useState<string | undefined>(initialSelectedId)
+
+  useEffect(() => {
+    /**
+     * To replace the highlights
+     */
+    setSelectedId(currentSelectedId)
+  }, [currentSelectedId])
 
   const nodeList = useMemo(() => {
     function flatten(node: TreeNode, indent: number, result: InternalTreeNode[]): void {
