@@ -64,26 +64,60 @@ export function useEditor(options: EditorOptions): TiptapEditor | null {
   return useTiptapEditor({
     extensions: [
       Base.configure({
-        all: true,
+        anchor: true,
+        blockquote: true,
+        bold: true,
+        brickList: true,
+        bulletList: true,
+        commandHelper: true,
+        code: true,
+        codeBlock: true,
+        document: true,
+        discussion: true,
         dropcursor: {
           color: theme.colors.primaryDisable.value,
           width: 2
         },
+        embed: true,
+        eventHandler: true,
+        fontColor: true,
+        formula: true,
         gapcursor: false,
+        hardBreak: true,
+        heading: true,
+        history: true,
+        horizontalRule: true,
+        indent: true,
+        image: true,
+        italic: true,
+        keyboardShortcut: true,
         link: {
           autolink: false
         },
+        listItem: true,
         mentionCommands: {
           externalProps
         },
+        orderedList: true,
+        pageLink: true,
+        paragraph: true,
+        slashCommands: true,
+        spreadsheet: true,
+        strike: true,
+        subPageMenu: true,
         sync: {
           onSave,
           types: typesWithUuid
         },
+        text: true,
+        textStyle: true,
+        toc: true,
+        underline: true,
         uniqueID: {
           attributeName: 'uuid',
           types: typesWithUuid
-        }
+        },
+        user: true
       })
     ],
     autofocus: true,
