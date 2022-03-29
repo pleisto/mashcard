@@ -29,6 +29,7 @@ export interface BaseOptions {
   indent: Partial<EXTENSION.IndentOptions> | boolean
   image: Partial<EXTENSION.ImageOptions> | boolean
   italic: Partial<EXTENSION.ItalicOptions> | boolean
+  keyboardShortcut: boolean
   link: Partial<EXTENSION.LinkOptions> | boolean
   listItem: Partial<EXTENSION.ListItemOptions> | boolean
   mentionCommands: Partial<EXTENSION.MentionCommandsOptions> | boolean
@@ -104,6 +105,7 @@ export const Base = Extension.create<BaseOptions>({
       extensions.push(EXTENSION.Image.configure(getConfigure(this.options?.image)))
     if (this.options.all ?? this.options.italic)
       extensions.push(EXTENSION.Italic.configure(getConfigure(this.options?.italic)))
+    if (this.options.all ?? this.options.keyboardShortcut) extensions.push(EXTENSION.KeyboardShortcut)
     if (this.options.all ?? this.options.link)
       extensions.push(EXTENSION.Link.configure(getConfigure(this.options?.link)))
     if (this.options.all ?? this.options.listItem)
