@@ -4,7 +4,7 @@ import { BlockContainer } from '../BlockContainer'
 import { BlockViewProps } from '../../../extensions/common'
 import { BulletList } from '../../../extensions'
 
-export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node }) => {
+export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node, getPos }) => {
   const as = node.type.name === BulletList.name ? 'ul' : 'ol'
   return (
     <BlockContainer
@@ -12,6 +12,7 @@ export const ListView: FC<BlockViewProps<{}, {}>> = ({ deleteNode, node }) => {
       actionOptions={['copy', 'delete']}
       deleteNode={deleteNode}
       contentForCopy={node.textContent}
+      getPos={getPos}
     >
       <NodeViewContent as={as} />
     </BlockContainer>

@@ -5,7 +5,7 @@ import { BlockContext } from '../../../context/BlockContext'
 import { useDocumentEditable, useEditorContext } from '../../../hooks'
 import { useBlockContextDataProvider } from './useBlockContextDataProvider'
 import { useBlockElement } from './useBlockElement'
-import { BulletList, OrderedList } from '../../../extensions'
+import { ListItem } from '../../../extensions'
 export interface BlockContainerProps {
   inline?: boolean
   editable?: boolean
@@ -47,10 +47,7 @@ export const BlockContainer: FC<BlockContainerProps> = forwardRef<HTMLElement, B
     const blockResolvedPosition = editor?.state.doc.resolve(getPos?.() ?? 0)
     const insideList = !blockResolvedPosition
       ? true
-      : !!findParentNodeClosestToPos(
-          blockResolvedPosition,
-          node => node.type.name === BulletList.name || node.type.name === OrderedList.name
-        )?.node
+      : !!findParentNodeClosestToPos(blockResolvedPosition, node => node.type.name === ListItem.name)?.node
 
     const disableActionOptions = insideList
 
