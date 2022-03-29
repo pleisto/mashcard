@@ -1,3 +1,4 @@
+// TODO: implement these helpers in tiptap and prosemirror way
 import { BrickdocEventBus, DiscussionMarkInactive } from '@brickdoc/schema'
 
 export const MARK_CLASS_NAME = 'brickdoc-discussion-mark'
