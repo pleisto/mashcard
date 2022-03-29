@@ -44,6 +44,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
         document: true,
         text: true,
         paragraph: {
+          native: true,
           placeholder: ''
         },
         formulaType: true,
