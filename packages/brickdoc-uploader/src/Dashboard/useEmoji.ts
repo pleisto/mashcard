@@ -13,11 +13,12 @@ export function useEmoji(
   const updateRecentEmojis = (newEmoji?: EmojiMeta): void => {
     if (!newEmoji || !newEmoji.name) return
 
-    if (recentEmojis.find(emoji => emoji.name === newEmoji.name)) {
-      return
-    }
+    const matchEmoji = recentEmojis.find(emoji => emoji.name === newEmoji.name)
 
-    const newRecentEmojis = [newEmoji, ...recentEmojis].slice(0, 24)
+    const newRecentEmojis = matchEmoji
+      ? [matchEmoji, ...recentEmojis.filter(emoji => emoji.name !== newEmoji.name)]
+      : [newEmoji, ...recentEmojis].slice(0, 24)
+
     setRecentEmojis(newRecentEmojis)
     localStorage.setItem(RECENT_EMOJI_LOCAL_STORAGE_KEY, JSON.stringify(newRecentEmojis))
   }
