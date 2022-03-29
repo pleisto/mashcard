@@ -4,11 +4,19 @@ import { styled, theme, Button, ButtonProps } from '@brickdoc/design-system'
 import { useAccountsI18n } from '@/accounts/common/hooks'
 import ceramicBackground from '@/common/assets/ceramicBg.webp'
 import logo from '@/common/assets/logo_brickdoc_2.svg'
-import webmVideo403 from '@/common/assets/403.webm'
-import mp4Video403 from '@/common/assets/403.mp4'
-import webmVideo404 from '@/common/assets/404.webm'
-import mp4Video404 from '@/common/assets/404.mp4'
-import serverErrorImg from '@/common/assets/server_error.png'
+import pic403 from '@/common/assets/http-status/403.png'
+import webmVideo403 from '@/common/assets/http-status/403.webm'
+import mp4Video403 from '@/common/assets/http-status/403.mp4'
+import pic404 from '@/common/assets/http-status/404.png'
+import webmVideo404 from '@/common/assets/http-status/404.webm'
+import mp4Video404 from '@/common/assets/http-status/404.mp4'
+import pic500 from '@/common/assets/http-status/500.png'
+import mp4Video500 from '@/common/assets/http-status/500.mp4'
+import webmVideo500 from '@/common/assets/http-status/500.webm'
+
+// safari platform needs hevc-encoded video,
+// chrome-like platform needs vp9-encoded video,
+// plus they both need a poster attribute for the cover
 
 const ErrorLayout = styled('div', {
   display: 'flex',
@@ -102,7 +110,7 @@ export const AppError404: React.FC<Partial<AppErrorType>> = props => {
       content={t('errors:app_error.not_found_content')}
       btnContent={t('errors:app_error.btn_back')}
       mediaContent={
-        <video autoPlay loop muted playsInline style={{ width: 568 }}>
+        <video autoPlay loop muted playsInline style={{ width: 568 }} poster={pic404}>
           <source src={mp4Video404} type='video/mp4; codecs="hvc1"' />
           <source src={webmVideo404} type="video/webm" />
         </video>
@@ -120,7 +128,7 @@ export const AppError403: React.FC<Partial<AppErrorType>> = props => {
       content={t('errors:app_error.not_found_content')}
       btnContent={t('errors:app_error.btn_back')}
       mediaContent={
-        <video autoPlay loop muted playsInline style={{ width: 568 }}>
+        <video autoPlay loop muted playsInline style={{ width: 568 }} poster={pic403}>
           <source src={mp4Video403} type='video/mp4; codecs="hvc1"' />
           <source src={webmVideo403} type="video/webm" />
         </video>
@@ -138,11 +146,10 @@ export const AppError500: React.FC<Partial<AppErrorType>> = props => {
       content={t('errors:app_error.server_error_content')}
       btnContent={t('errors:app_error.btn_back')}
       mediaContent={
-        <img
-          alt={t('errors:app_error.server_error_content')}
-          src={serverErrorImg}
-          style={{ height: 568, width: 568 }}
-        />
+        <video autoPlay loop muted playsInline style={{ width: 568 }} poster={pic500}>
+          <source src={mp4Video500} type='video/mp4; codecs="hvc1"' />
+          <source src={webmVideo500} type="video/webm" />
+        </video>
       }
       {...props}
     />
