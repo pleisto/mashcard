@@ -11,7 +11,7 @@ export function useEmoji(
   const [recentEmojis, setRecentEmojis] = React.useState<EmojiMeta[]>([])
 
   const updateRecentEmojis = (newEmoji?: EmojiMeta): void => {
-    if (!newEmoji) return
+    if (!newEmoji || !newEmoji.name) return
 
     if (recentEmojis.find(emoji => emoji.name === newEmoji.name)) {
       return

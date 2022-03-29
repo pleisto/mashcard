@@ -42,7 +42,7 @@ export const EmojiPanel: React.FC<EmojiPanelProps> = ({ emojiData, recentEmojis,
 
     if (!search) return data
 
-    return data.filter(emoji => emoji.name.includes(search))
+    return data.filter(emoji => emoji?.name?.includes(search))
   }
 
   const [activeGroups, setActiveGroups] = React.useState<string[]>([RECENT_GROUP, Object.keys(emojiData)[0]])
@@ -99,18 +99,23 @@ export const EmojiPanel: React.FC<EmojiPanelProps> = ({ emojiData, recentEmojis,
             <div role="group" key={name} className="dashboard-emoji-group">
               <div className="dashboard-emoji-group-name">{name}</div>
               <div role="list" className="dashboard-emoji-list">
-                {emojis.map(item => (
-                  <Button
-                    type="text"
-                    key={item.name}
-                    className="dashboard-emoji-item"
-                    onClick={() => onSelectEmoji(item, 'add')}
-                  >
-                    <span aria-label={item.name} className="dashboard-emoji" role="img">
-                      {item.emoji}
-                    </span>
-                  </Button>
-                ))}
+                {emojis.map(item => {
+                  if (!item.name) {
+                    return null
+                  }
+                  return (
+                    <Button
+                      type="text"
+                      key={item.name}
+                      className="dashboard-emoji-item"
+                      onClick={() => onSelectEmoji(item, 'add')}
+                    >
+                      <span aria-label={item.name} className="dashboard-emoji" role="img">
+                        {item.emoji}
+                      </span>
+                    </Button>
+                  )
+                })}
                 <div
                   ref={container => {
                     createScrollObserver(container!)
