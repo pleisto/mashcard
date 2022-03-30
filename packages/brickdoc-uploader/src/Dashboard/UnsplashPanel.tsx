@@ -1,5 +1,6 @@
-import { Button, styled, theme } from '@brickdoc/design-system'
+import { Button, Spin, styled, theme } from '@brickdoc/design-system'
 import React from 'react'
+import { useBoolean } from 'ahooks'
 import { debounce } from '@brickdoc/active-support'
 import { DashboardPluginOptions, UnsplashImage } from './plugin'
 
@@ -13,12 +14,21 @@ const Notfound = styled('p', {
   color: theme.colors.typeSecondary,
   fontSize: theme.fontSizes.subHeadline,
   lineHeight: theme.lineHeights.subHeadline,
-  marginTop: '1rem'
+  marginTop: '1rem',
+  display: 'block',
+  width: '100%',
+  textAlign: 'center'
+})
+
+const Loading = styled(Spin, {
+  display: 'block',
+  width: '100%',
+  textAlign: 'center'
 })
 
 export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) => {
   const [unsplashImages, setUnsplashImages] = React.useState<UnsplashImage[]>([])
-  const [isErr, setIsErr] = React.useState<boolean>(false)
+  const [loading, { setTrue, setFalse }] = useBoolean(false)
   const fetching = React.useRef(false)
   const lastQuery = React.useRef('')
   const page = React.useRef(1)
@@ -34,22 +44,20 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
     }
 
     fetching.current = true
-
+    setTrue()
     try {
       const response = await pluginOptions.fetchUnsplashImages!(lastQuery.current!, page.current!, UNSPLASH_PER_PAGE)
 
       if (response.success) {
         const prevData = page.current === 1 ? [] : unsplashImages
-        setIsErr(false)
         setUnsplashImages([...prevData, ...response.data])
         page.current += 1
       }
     } catch (error) {
       // https://github.com/brickdoc/brickdoc/issues/1471
-      setIsErr(true)
       setUnsplashImages([])
     }
-
+    setFalse()
     fetching.current = false
   }
 
@@ -101,11 +109,13 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
         placeholder="Search for an image..."
         onChange={handleUnsplashSearchInput}
       />
-      {isErr ? (
-        <Notfound>No result found.</Notfound>
-      ) : (
-        <div className="dashboard-unsplash-image-list">
-          {unsplashImages.map(image => (
+
+      <div className="dashboard-unsplash-image-list">
+        {!loading && !unsplashImages.length && <Notfound>No result found.</Notfound>}
+        {loading ? (
+          <Loading />
+        ) : (
+          unsplashImages.map(image => (
             <Button
               type="text"
               key={image.id}
@@ -115,15 +125,15 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
               <div style={{ backgroundImage: `url("${image.smallUrl}")` }} className="unsplash-image" />
               <div className="unsplash-image-username">@{image.username}</div>
             </Button>
-          ))}
-          <div
-            ref={container => {
-              createScrollObserver(container!)
-            }}
-            className="unsplash-load-more-placeholder"
-          />
-        </div>
-      )}
+          ))
+        )}
+        <div
+          ref={container => {
+            createScrollObserver(container!)
+          }}
+          className="unsplash-load-more-placeholder"
+        />
+      </div>
     </div>
   )
 }
