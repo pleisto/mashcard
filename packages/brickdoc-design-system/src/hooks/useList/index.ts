@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { useDynamicList } from '../../hooks'
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useList = <T>(initialList: T[] = []) => {
   const {
     list,

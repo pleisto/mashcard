@@ -20,7 +20,7 @@ export const DeleteAccount: FC = () => {
   const teamSpaces = data?.spaces.filter(p => !p.personal)
   const hasTeamSpaces = teamSpaces && teamSpaces.length > 0
 
-  const deleteAccountHandler = async () => {
+  const deleteAccountHandler = async (): Promise<void> => {
     const result = await deleteAccount({
       variables: {
         input: {}

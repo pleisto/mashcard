@@ -32,7 +32,7 @@ export const ProfileEdit: FC<{ space: SettingsContextProps['space'] }> = ({ spac
     yup: profileValidation
   })
 
-  const onProfileSubmit = async (values: Omit<CreateOrUpdateSpaceInput, 'domain' | 'type'>) => {
+  const onProfileSubmit = async (values: Omit<CreateOrUpdateSpaceInput, 'domain' | 'type'>): Promise<void> => {
     const result = await updateSpace({
       variables: {
         input: {

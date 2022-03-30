@@ -16,7 +16,7 @@
     "@brickdoc/schema": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
     "@brickdoc/uploader": "workspace:^",
-    "@pdftron/webviewer": "^8.3.2",
+    "@pdftron/webviewer": "^8.3.3",
     "@tiptap/core": "^2.0.0-beta.174",
     "@tiptap/extension-blockquote": "^2.0.0-beta.26",
     "@tiptap/extension-bold": "^2.0.0-beta.26",
@@ -59,13 +59,13 @@
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest",
     "test:jest:fix": "run -T jest --silent -u"

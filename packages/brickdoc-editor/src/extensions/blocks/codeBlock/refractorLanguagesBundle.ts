@@ -103,7 +103,7 @@ const langs = [
 
 const languageNames = langs.map(lang => lang.displayName)
 
-const registerLangs = (langs: any[]) => {
+const registerLangs = (langs: any[]): void => {
   langs.forEach(lang => {
     lang.aliases = []
     refractor.register(lang)

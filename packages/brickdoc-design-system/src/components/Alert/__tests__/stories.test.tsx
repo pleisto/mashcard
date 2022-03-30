@@ -20,17 +20,17 @@ describe('Alert', () => {
   })
 
   describe('Dismiss button', () => {
-    it('should invoke the callback when invoked', () => {
+    it('should invoke the callback when invoked', async () => {
       const onClose = jest.fn()
       render(<AlertStories.Basic onClose={onClose} />)
       const button = screen.getByRole('button', { name: 'Dismiss Button' })
-      userEvent.click(button)
+      await userEvent.click(button)
       expect(onClose).toBeCalledTimes(1)
     })
-    it('does nothing if the callback is not provided', () => {
+    it('does nothing if the callback is not provided', async () => {
       render(<AlertStories.Basic />)
       const button = screen.getByRole('button', { name: 'Dismiss Button' })
-      expect(() => userEvent.click(button)).not.toThrow()
+      await expect(userEvent.click(button)).resolves.toBeUndefined()
     })
   })
 })

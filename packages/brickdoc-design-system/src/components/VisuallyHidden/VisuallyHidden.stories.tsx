@@ -1,3 +1,4 @@
+import { Story } from '@storybook/react'
 import { VisuallyHidden } from './'
 
 export default {
@@ -14,7 +15,7 @@ Visually hides content while preserving it for assistive technology.
   }
 }
 
-export const Basic = () => (
+export const Basic: Story = () => (
   <button>
     <VisuallyHidden>Save the file</VisuallyHidden>
     <span aria-hidden>💾</span>

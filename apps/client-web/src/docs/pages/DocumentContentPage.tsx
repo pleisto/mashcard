@@ -89,7 +89,7 @@ export const DocumentContentPage: React.FC = () => {
   React.useEffect(() => {
     // https://github.com/brickdoc/brickdoc/issues/1261
     // The cache is not updated in time during the switchover
-    refetch()
+    void refetch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 

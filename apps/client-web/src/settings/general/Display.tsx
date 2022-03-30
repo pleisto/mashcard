@@ -38,7 +38,7 @@ export const Display: FC<{ space: SettingsContextProps['space'] }> = ({ space })
     }
   })
 
-  const onSubmit = async (values: UserAppearanceUpdateInput) => {
+  const onSubmit = async (values: UserAppearanceUpdateInput): Promise<void> => {
     const result = await updateSpace({
       variables: {
         input: values

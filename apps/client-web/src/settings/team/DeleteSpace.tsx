@@ -15,7 +15,7 @@ export const DeleteSpace: FC<{ space: SettingsContextProps['space'] }> = ({ spac
 
   const spaceUsername = space!.domain
 
-  const deleteSpaceHandler = async () => {
+  const deleteSpaceHandler = async (): Promise<void> => {
     const result = await deleteSpace({
       variables: {
         input: {

@@ -14,14 +14,14 @@
   "module": "./src/index.ts",
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest"
   },
   "dependencies": {
     "pino-std-serializers": "^5.1.1",
-    "slonik": "^27.1.1"
+    "slonik": "^28.0.0"
   },
   "sideEffects": false,
   "devDependencies": {

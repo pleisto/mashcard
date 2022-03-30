@@ -72,6 +72,7 @@ export const BrickList = createExtension<BrickListOptions, BrickListAttributes>(
                   let $prev = null
                   while (pos > 0) {
                     $prev = tr.doc.resolve(pos)
+                    // eslint-disable-next-line max-depth
                     if (!$prev.parent.type.name.endsWith('List') && $prev.parent.type !== itemType) {
                       break
                     }
@@ -93,8 +94,10 @@ export const BrickList = createExtension<BrickListOptions, BrickListAttributes>(
                         }
                       })
                     })
+                    // eslint-disable-next-line max-depth
                     if (newPos) {
                       const newSelection = new TextSelection(tr.doc.resolve(newPos))
+                      // eslint-disable-next-line max-depth
                       if (newSelection) tr.setSelection(newSelection)
                       dispatch?.(tr.scrollIntoView())
                       return true

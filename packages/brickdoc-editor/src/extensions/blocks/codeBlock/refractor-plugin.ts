@@ -2,7 +2,7 @@ import { Plugin, PluginKey } from 'prosemirror-state'
 import { Decoration, DecorationSet } from 'prosemirror-view'
 import { Node as ProsemirrorNode } from 'prosemirror-model'
 import { findChildren } from '@tiptap/core'
-import type { Refractor } from 'refractor/lib/core'
+import type { Refractor, RefractorRoot, RefractorElement, Text } from 'refractor/lib/core'
 
 function parseNodes(nodes: any[], className: string[] = []): Array<{ text: string; classes: string[] }> {
   return nodes
@@ -21,7 +21,7 @@ function parseNodes(nodes: any[], className: string[] = []): Array<{ text: strin
     .flat()
 }
 
-function getHighlightNodes(result: any) {
+function getHighlightNodes(result: RefractorRoot): Array<RefractorElement | Text> {
   return result.children || []
 }
 
@@ -35,7 +35,7 @@ function getDecorations({
   name: string
   refractor: Refractor
   defaultLanguage: string
-}) {
+}): DecorationSet {
   const decorations: Decoration[] = []
 
   findChildren(doc, node => node.type.name === name).forEach(block => {
@@ -75,7 +75,7 @@ export function RefractorPlugin({
   name: string
   refractor: Refractor
   defaultLanguage: string
-}) {
+}): Plugin {
   return new Plugin({
     key: new PluginKey('refractor'),
 

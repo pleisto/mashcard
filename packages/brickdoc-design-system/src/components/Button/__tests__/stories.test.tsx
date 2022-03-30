@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -38,10 +39,10 @@ describe('Button', () => {
   })
 
   describe('interaction', () => {
-    it('should trigger the onClick callback when being clicked', () => {
+    it('should trigger the onClick callback when being clicked', async () => {
       const onClick = jest.fn()
       render(<Basic onClick={onClick} />)
-      userEvent.click(screen.getByRole('button'))
+      await userEvent.click(screen.getByRole('button'))
       expect(onClick).toBeCalledTimes(1)
     })
     it('should not trigger the onClick callback if disabled', () => {
@@ -53,19 +54,16 @@ describe('Button', () => {
       fireEvent.click(screen.getByRole('button'))
       expect(onClick).not.toBeCalledTimes(1)
     })
-    it('should not throw an error if the onClick callback is not set', () => {
+    it('should not throw an error if the onClick callback is not set', async () => {
       render(<Basic />)
-      function doClick() {
-        userEvent.click(screen.getByRole('button'))
-      }
-      expect(doClick).not.toThrow()
+      await expect(userEvent.click(screen.getByRole('button'))).resolves.toBeUndefined()
     })
   })
 
   describe('as a form button', () => {
     const onSubmit = jest.fn(e => e.preventDefault())
     const onReset = jest.fn()
-    const getForm = (htmlType: ButtonHTMLProps['type']) => (
+    const getForm = (htmlType: ButtonHTMLProps['type']): ReactElement => (
       <form onSubmit={onSubmit} onReset={onReset}>
         <input type="text" name="foo" />
         <Basic htmlType={htmlType} />
@@ -74,15 +72,15 @@ describe('Button', () => {
     afterEach(() => {
       jest.clearAllMocks()
     })
-    it('should submit the form when being clicked by htmlType="submit"', () => {
+    it('should submit the form when being clicked by htmlType="submit"', async () => {
       render(getForm('submit'))
-      userEvent.click(screen.getByRole('button'))
+      await userEvent.click(screen.getByRole('button'))
       expect(onSubmit).toBeCalledTimes(1)
       expect(onReset).not.toBeCalled()
     })
-    it('should reset the form when being clicked by htmlType="reset"', () => {
+    it('should reset the form when being clicked by htmlType="reset"', async () => {
       render(getForm('reset'))
-      userEvent.click(screen.getByRole('button'))
+      await userEvent.click(screen.getByRole('button'))
       expect(onSubmit).not.toBeCalled()
       expect(onReset).toBeCalledTimes(1)
     })

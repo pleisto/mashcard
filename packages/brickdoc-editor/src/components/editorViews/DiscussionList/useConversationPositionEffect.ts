@@ -1,7 +1,16 @@
 import { useRef, useEffect, RefObject } from 'react'
 import { CommentedNode } from './useCommentedNodes'
 
-const getPositionInfo = (listContainer: HTMLElement, container: HTMLElement, commentedNode: CommentedNode) => {
+const getPositionInfo = (
+  listContainer: HTMLElement,
+  container: HTMLElement,
+  commentedNode: CommentedNode
+): {
+  y: number
+  offsetToPrev: number
+  listOffset: number
+  domNodeY: number | null
+} => {
   const y = container.getBoundingClientRect().y
   const currentMarginTop = container.style.marginTop === '' ? 0 : parseInt(container.style.marginTop, 10)
   const transformValue = listContainer.style.transform.match(/translateY\((-?[0-9]+)px\)/)
@@ -60,7 +69,7 @@ export function useConversationPositionEffect(
     // skip when any conversation has been focused
     if (activeMarkId !== null) return
 
-    const updateConversationPosition = (commentedNode: CommentedNode, container: HTMLElement | null) => {
+    const updateConversationPosition = (commentedNode: CommentedNode, container: HTMLElement | null): void => {
       if (!listRef.current) return
       if (!container) return
 

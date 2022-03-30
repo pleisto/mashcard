@@ -16,7 +16,7 @@ describe('useKeyboardEvent', () => {
     activeIndex = 1
   })
 
-  const setActiveIndex = (cb: number | ((prevIndex: number) => number)) => {
+  const setActiveIndex = (cb: number | ((prevIndex: number) => number)): void => {
     if (typeof cb === 'number') {
       activeIndex = cb
       return

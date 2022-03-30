@@ -8,8 +8,8 @@
     "cleanup": "rm -rf .nyc_output test-results",
     "report": "nyc report --reporter=lcov --reporter=text-summary --cwd ../../ --temp-dir tools/e2e-testing/.nyc_output",
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx .",
-    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx . --fix",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx .",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx . --fix",
     "lint:type": "run -T tsc"
   },
   "devDependencies": {

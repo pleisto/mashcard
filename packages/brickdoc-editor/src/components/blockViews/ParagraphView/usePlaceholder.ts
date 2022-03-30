@@ -4,6 +4,7 @@ import { BulletList, OrderedList } from '../../../extensions'
 import { ParagraphViewProps } from '../../../extensions/blocks/paragraph/meta'
 import { useDocumentEditable, useEditorContext } from '../../../hooks'
 
+// eslint-disable-next-line max-params
 export function usePlaceholder(
   editor: ParagraphViewProps['editor'],
   extension: ParagraphViewProps['extension'],

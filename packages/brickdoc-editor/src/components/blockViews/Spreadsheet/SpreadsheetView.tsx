@@ -377,8 +377,8 @@ export const SpreadsheetRow: React.FC<{
   const dragging = context.dragging.rowId === rowId
   const draggingOver = context.dragging.overRowId === rowId
 
-  const onOver = () => setHoverRowId(rowId)
-  const onOut = () => setHoverRowId('')
+  const onOver = (): void => setHoverRowId(rowId)
+  const onOut = (): void => setHoverRowId('')
 
   const latestHeight = React.useRef<number | undefined>()
 

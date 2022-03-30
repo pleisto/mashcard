@@ -72,7 +72,7 @@ const RcTooltip: React.ForwardRefRenderFunction<unknown, TooltipProps> = (props,
     extraProps.popupVisible = props.visible
   }
 
-  const getPopupElement = () => {
+  const getPopupElement: React.ReactNode = () => {
     const { showArrow = true, arrowContent = null, overlay, id } = props
     devLog('debug: overlay', overlay)
     return [

@@ -19,7 +19,7 @@ export const Members: FC<{ space: SettingsContextProps['space'] }> = ({ space })
   if (loading) return <></>
   const members = data?.spaceMembers
 
-  const handleLeave = async (userDomain: string) => {
+  const handleLeave = async (userDomain: string): Promise<void> => {
     const result = await spaceLeave({
       variables: {
         input: {

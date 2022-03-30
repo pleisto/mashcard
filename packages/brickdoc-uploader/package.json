@@ -12,7 +12,7 @@
     "@brickdoc/active-support": "workspace:^",
     "@brickdoc/design-system": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
-    "@uppy/core": "^2.1.6",
+    "@uppy/core": "^2.1.7",
     "@uppy/dashboard": "^2.1.4",
     "@uppy/react": "^2.1.2",
     "@uppy/xhr-upload": "^2.0.7"
@@ -22,8 +22,8 @@
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
     "test:jest": "run -T jest"
   }

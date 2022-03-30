@@ -16,7 +16,7 @@ export const JoinSpacePage: FC = () => {
   const existed = !loading && data?.spaces.filter(p => p.domain === domain).length === 1
 
   useEffect(() => {
-    const join = async () => {
+    const join = async (): Promise<void> => {
       if (existed) navigate(spaceUrl)
       const result = await joinSpace({
         variables: {

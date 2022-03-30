@@ -12,12 +12,6 @@
     ".eslintrc": "jsonc",
     ".eslintrc*.json": "jsonc"
   },
-  "files.exclude": {
-    "**/.cache": true,
-    "**/.git": true,
-    "**/.DS_Store": true,
-    "**/.eslintcache": true
-  },
   "files.watcherExclude": {
     "**/.git": true,
     "**/node_modules": true,

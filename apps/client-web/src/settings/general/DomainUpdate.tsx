@@ -32,7 +32,7 @@ export const DomainUpdate: FC<{ space: SettingsContextProps['space'] }> = ({ spa
     yup: domainValidation
   })
 
-  const onSubmit = async (values: { new_domain?: string }) => {
+  const onSubmit = async (values: { new_domain?: string }): Promise<false | void> => {
     if (values.new_domain === space?.domain) {
       return false
     }

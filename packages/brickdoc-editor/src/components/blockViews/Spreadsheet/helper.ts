@@ -34,6 +34,7 @@ export const parsePasteTable = (str: string): string[][] => {
   let curRow = matrix[0]
   str.replace(
     /(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^\t\n]+))\t?(\n)?/g,
+    // eslint-disable-next-line max-params
     (m, g1, g2, g3, g4) => {
       if (g1 !== undefined) {
         curRow.push(g1.replace(/\\'/g, "'"))

@@ -42,11 +42,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({ space, visible, titl
     form.reset()
   }
 
-  const handleOk = async (values: any) => {
+  const handleOk = async (values: CreateOrUpdateSpaceInput): Promise<void> => {
     setConfirmLoading(true)
     const input: CreateOrUpdateSpaceInput = {
       type,
-      domain: values.name,
+      domain: values.name!,
       name: values.name
     }
     await createOrUpdateSpace({ variables: { input } })

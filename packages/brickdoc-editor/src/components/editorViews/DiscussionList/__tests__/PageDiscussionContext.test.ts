@@ -30,7 +30,7 @@ describe('PageDiscussionContext', () => {
 
     it('triggers addComment normally', async () => {
       const markId = 'markId'
-      const { result } = renderHook(() => usePageDiscussionContextValue())
+      const { result } = renderHook(usePageDiscussionContextValue)
       const { addConversation, addComment } = result.current
 
       await addConversation?.(
@@ -56,7 +56,7 @@ describe('PageDiscussionContext', () => {
 
     it('triggers removeConversation normally', async () => {
       const markId = 'markId'
-      const { result } = renderHook(() => usePageDiscussionContextValue())
+      const { result } = renderHook(usePageDiscussionContextValue)
       const { addConversation, removeConversation } = result.current
 
       await addConversation?.(
@@ -80,7 +80,7 @@ describe('PageDiscussionContext', () => {
 
     it('triggers resolveConversation normally', async () => {
       const markId = 'markId'
-      const { result } = renderHook(() => usePageDiscussionContextValue())
+      const { result } = renderHook(usePageDiscussionContextValue)
       const { addConversation, resolveConversation } = result.current
 
       await addConversation?.(
@@ -101,7 +101,7 @@ describe('PageDiscussionContext', () => {
 
     it('triggers openConversation normally', async () => {
       const markId = 'markId'
-      const { result } = renderHook(() => usePageDiscussionContextValue())
+      const { result } = renderHook(usePageDiscussionContextValue)
       const { addConversation, resolveConversation, openConversation } = result.current
 
       await addConversation?.(

@@ -20,7 +20,7 @@ export const LeaveSpaces: FC = () => {
 
   const teamSpaces = data?.spaces.filter(p => !p.personal)
 
-  const handleLeave = async (spaceWebId: string) => {
+  const handleLeave = async (spaceWebId: string): Promise<void> => {
     const result = await spaceLeave({
       variables: {
         input: {

@@ -18,7 +18,7 @@ export const Invite: FC<{ space: SettingsContextProps['space'] }> = ({ space }) 
   const updateSpaceHandler = async (
     values: Omit<CreateOrUpdateSpaceInput, 'domain' | 'type'>,
     onSuccess: () => void
-  ) => {
+  ): Promise<void> => {
     const result = await updateSpace({
       variables: {
         input: {
@@ -49,7 +49,7 @@ export const Invite: FC<{ space: SettingsContextProps['space'] }> = ({ space }) 
     )
   }
 
-  const resetInviteSecret = async () => {
+  const resetInviteSecret = async (): Promise<void> => {
     await updateSpaceHandler(
       {
         // Setting the invite secret to empty string will trigger the reset

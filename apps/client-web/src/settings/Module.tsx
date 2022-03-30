@@ -9,6 +9,7 @@ import { TeamPage } from './team/TeamPage'
 import { useGetCurrentSpaceQuery, GetCurrentSpaceQuery } from '@/BrickdocGraphQL'
 import { SettingsContext } from './SettingContext'
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const getRoutes = (currentSpace: GetCurrentSpaceQuery['space'] | undefined) => {
   const isPersonal = currentSpace?.personal
   return [

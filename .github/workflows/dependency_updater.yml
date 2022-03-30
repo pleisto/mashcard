@@ -32,7 +32,7 @@ jobs:
       - name: Update yarn packages
         run: eval "yarn up $PATTERNS --mode=update-lockfile && yarn up $PATTERNS --recursive --mode=update-lockfile"
         env:
-          PATTERNS: "'!(chalk|fastify-secure-session|ms|typescript)' '@!(brickdoc|mdx-js|storybook|rails|tiptap)/*'"
+          PATTERNS: "'!(fastify-secure-session|ms|react)' '@!(brickdoc|storybook|rails|tiptap)/*'"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         env:

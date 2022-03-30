@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { SubmitHandler, FieldValues, SubmitErrorHandler, UseFormReturn, Controller } from 'react-hook-form'
 import { useForm } from './hook'
 import { FormField, FormFieldProps } from './FormField'
@@ -22,7 +23,7 @@ export interface FormProps<TFieldValues extends FieldValues> {
  * @param props
  * @returns
  */
-const Form = <T extends FieldValues>(props: FormProps<T>) => {
+const Form = <T extends FieldValues>(props: FormProps<T>): ReactElement => {
   const { css, onError, onSubmit, children, layout, form } = props
   return (
     <FormProvider {...form} layout={layout}>

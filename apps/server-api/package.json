@@ -6,17 +6,17 @@
     "start:dist": "node --enable-source-maps  dist/main.js",
     "build": "run -T swc src -s -d ./dist -C module.type=commonjs",
     "lint": "yarn lint:eslint && yarn lint:type",
-    "lint:eslint": "TIMING=1 run -T eslint --ext ts,tsx src",
-    "lint:fix": "TIMING=1 run -T eslint --ext ts,tsx src --fix",
+    "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
+    "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc"
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.0.0",
-    "@nestjs/testing": "^8.4.2",
+    "@faker-js/faker": "^6.1.1",
+    "@nestjs/testing": "^8.4.3",
     "cross-spawn": "^7.0.3",
     "leaked-handles": "^5.2.0",
-    "node-dev": "^7.3.1",
-    "pino-pretty": "^7.5.4"
+    "node-dev": "^7.4.2",
+    "pino-pretty": "^7.6.0"
   },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
@@ -30,12 +30,12 @@
     "@nestjs/graphql": "^10.0.8",
     "@nestjs/platform-fastify": "^8.4.3",
     "@nestjs/terminus": "^8.0.6",
-    "apollo-server-fastify": "^3.6.6",
+    "apollo-server-fastify": "^3.6.7",
     "fastify-cookie": "^5.6.0",
     "fastify-helmet": "^7.0.1",
     "fastify-secure-session": "github:brickdoc/fastify-secure-session",
     "graphql": "^16.3.0",
-    "nestjs-pino": "^2.5.1",
+    "nestjs-pino": "^2.5.2",
     "pino-http": "^6.6.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
