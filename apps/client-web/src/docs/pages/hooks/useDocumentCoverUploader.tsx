@@ -39,7 +39,8 @@ export function useDocumentCoverUploader(
       typeLabel: t('document_cover.import_sources.link.type_label'),
       linkInputPlaceholder: t('document_cover.import_sources.link.placeholder'),
       buttonText: t('document_cover.import_sources.link.button_text'),
-      buttonHint: t('document_cover.import_sources.link.button_hint')
+      buttonHint: t('document_cover.import_sources.link.button_hint'),
+      invalidImageUrlMessage: t('document_cover.import_sources.link.invalidImageUrlMessage')
     }
   ]
   const [documentCoverMeta, setDocumentCoverMeta] = React.useState(cover)

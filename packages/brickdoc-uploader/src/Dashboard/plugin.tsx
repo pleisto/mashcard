@@ -1,9 +1,10 @@
 import ReactDOM from 'react-dom'
 import { BasePlugin, Uppy } from '@uppy/core'
 import findDOMElement from '@uppy/utils/lib/findDOMElement'
-import { Dashboard } from './Dashboard'
+import { Dashboard, ImportSourceOption } from './Dashboard'
 import './index.less'
 
+export type { ImportSourceOption } from './Dashboard'
 export interface UploadProgress {
   bytesTotal: number
   bytesUploaded: number
@@ -33,15 +34,6 @@ export interface UploadResultData {
     size?: number
     source: 'origin' | 'external'
   }
-}
-
-export interface ImportSourceOption {
-  type: SourceType
-  typeLabel?: string
-  buttonText?: string
-  buttonHint?: string
-  acceptType?: string
-  linkInputPlaceholder?: string
 }
 
 export interface ActionButtonOption {

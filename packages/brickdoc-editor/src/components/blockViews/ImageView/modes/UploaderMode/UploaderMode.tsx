@@ -35,7 +35,8 @@ export const UploaderMode: FC<UploaderModeProps> = ({ node, deleteNode, getPos, 
         type: 'link',
         linkInputPlaceholder: t('image_block.import_sources.link.placeholder'),
         buttonText: t('image_block.import_sources.link.button_text'),
-        buttonHint: t('image_block.import_sources.link.button_hint')
+        buttonHint: t('image_block.import_sources.link.button_hint'),
+        invalidImageUrlMessage: t('document_cover.import_sources.link.invalidImageUrlMessage')
       },
       {
         type: 'upload',
@@ -66,11 +67,13 @@ export const UploaderMode: FC<UploaderModeProps> = ({ node, deleteNode, getPos, 
             onProgress={onProgress}
             importSources={importSources}
           />
-        }>
+        }
+      >
         <Button
           type="text"
           className="brickdoc-block-image-section"
-          data-testid={TEST_ID_ENUM.editor.imageBlock.addButton.id}>
+          data-testid={TEST_ID_ENUM.editor.imageBlock.addButton.id}
+        >
           <div className="image-section-progressing" style={{ width: `${progress?.percentage ?? 0}%` }} />
           <Icon.Image className="image-section-icon" />
           <div className="image-section-content">

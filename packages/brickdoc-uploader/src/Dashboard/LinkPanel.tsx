@@ -1,8 +1,9 @@
-import { Button } from '@brickdoc/design-system'
+import { Button, toast } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import React from 'react'
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions } from './plugin'
+import { isValidImageUrl } from './checkImageUrl'
 
 interface LinkPanelProps {
   importSource: ImportSourceOption
@@ -15,12 +16,17 @@ export const LinkPanel: React.FC<LinkPanelProps> = ({ importSource, pluginOption
     link.current = event.target.value
   }
 
-  const handleLinkSubmit = (): void => {
+  const handleLinkSubmit = async (): Promise<void> => {
     if (!link.current) {
       return
     }
+    const isLinkValid = await isValidImageUrl(link.current)
+    if (!isLinkValid) {
+      importSource.invalidImageUrlMessage && toast.error(importSource.invalidImageUrlMessage)
+      return
+    }
 
-    pluginOptions.onUploaded?.({ action: 'add', url: link.current, meta: { source: 'external' } })
+    await pluginOptions.onUploaded?.({ action: 'add', url: link.current, meta: { source: 'external' } })
   }
 
   return (

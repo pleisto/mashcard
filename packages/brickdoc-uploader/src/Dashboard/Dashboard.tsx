@@ -18,6 +18,7 @@ export interface ImportSourceOption {
   buttonHint?: string
   acceptType?: string
   linkInputPlaceholder?: string
+  invalidImageUrlMessage?: string
 }
 
 const IMPORT_SOURCE_LABEL = {

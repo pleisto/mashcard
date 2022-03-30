@@ -17,7 +17,7 @@ export function useEmoji(
 
     const newRecentEmojis = matchEmoji
       ? [matchEmoji, ...recentEmojis.filter(emoji => emoji.name !== newEmoji.name)]
-      : [newEmoji, ...recentEmojis].slice(0, 24)
+      : [newEmoji, ...recentEmojis].slice(0, 32)
 
     setRecentEmojis(newRecentEmojis)
     localStorage.setItem(RECENT_EMOJI_LOCAL_STORAGE_KEY, JSON.stringify(newRecentEmojis))

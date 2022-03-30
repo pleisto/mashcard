@@ -183,6 +183,7 @@ en-US:
       present: must be blank
       required: must exist
       taken: has already been taken
+      InvalidImageUrl: Invalid image url
       too_long:
         one: is too long (maximum is 1 character)
         other: is too long (maximum is %{count} characters)
@@ -602,6 +603,7 @@ en-US:
           button_text: Submit
           button_hint: Works with any image from the web
           type_label: Link
+          invalidImageUrlMessage: Invalid image url
         upload:
           button_hint: Recommended size is 280x280 pixels
           button_text: Choose an image
@@ -612,6 +614,7 @@ en-US:
           placeholder: Paste the image link...
           button_text: Submit
           button_hint: Works with any image from the web
+          invalidImageUrlMessage: Invalid image url
           type_label: Link
         upload:
           button_hint: 'Recommended image size: wider than 1500 pixels'

@@ -38,6 +38,19 @@ describe('ImageView', () => {
     expect(container).toMatchSnapshot()
   })
 
+  let onloadRef: Function | undefined
+  beforeAll(() => {
+    Object.defineProperty(Image.prototype, 'onload', {
+      get() {
+        return this._onload
+      },
+      set(onload: Function) {
+        onloadRef = onload
+        this._onload = onload
+      }
+    })
+  })
+
   it('renders pending panel when no image', () => {
     const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
       node: {
@@ -114,7 +127,8 @@ describe('ImageView', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
-    it('embeds image by paste link', () => {
+    it('embeds image by paste link', async () => {
+      jest.useRealTimers()
       const props = mockBlockViewProps<ImageOptions, ImageAttributes>({
         node: {
           uuid: imageUuid,
@@ -152,7 +166,9 @@ describe('ImageView', () => {
         }
       })
       fireEvent.click(screen.getByText('image_block.import_sources.link.button_text'))
-
+      // jest limit， can't test image load
+      onloadRef!()
+      await new Promise(resolve => setTimeout(resolve, 50))
       expect(screen.getByTestId(TEST_ID_ENUM.editor.imageBlock.image.id)).toBeInTheDocument()
     })
   })
