@@ -47,7 +47,6 @@ export const Layout = styled('div', {
       display: 'grid',
       gridTemplateColumns: '1fr auto',
       gridAutoRows: 'minmax(min-content, 100%)',
-      scrollbarGutter: 'stable both-edges',
       overflowY: 'auto',
       height: '100vh',
 
