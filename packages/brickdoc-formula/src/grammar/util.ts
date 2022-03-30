@@ -70,7 +70,7 @@ const encodeString = (str: string): string => {
 
 export const truncateString = (str: string, length: number = 20): string => {
   if (typeof str !== 'string') return str
-  if (str.length < length) return str
+  if (length === -1 || str.length < length) return str
   // console.log({ str })
   return `${str.substring(0, length)}...`
 }

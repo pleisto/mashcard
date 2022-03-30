@@ -72,7 +72,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       if (variable) {
         // TODO check no persist
         const displayData = dumpDisplayResultForDisplay(variable.t)
-        const value = displayValue(fetchResult(variable.t), rootId)
+        const value = displayValue(fetchResult(variable.t), rootId, true)
         devLog('Spreadsheet cell formula updated', { cellId, value, displayData })
         const newBlock = {
           ...block,

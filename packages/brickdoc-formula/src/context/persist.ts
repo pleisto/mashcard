@@ -33,7 +33,7 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
 }
 
 // eslint-disable-next-line complexity
-export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
+export const displayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncate: boolean = false): string => {
   switch (v.type) {
     case 'number':
       return String(v.result)
@@ -41,7 +41,7 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId): string => {
       // return v.result ? '✓' : '✗'
       return String(v.result)
     case 'string':
-      return truncateString(v.result)
+      return truncateString(v.result, disableTruncate ? -1 : undefined)
     case 'Date':
       return v.result.toISOString()
     case 'Error':

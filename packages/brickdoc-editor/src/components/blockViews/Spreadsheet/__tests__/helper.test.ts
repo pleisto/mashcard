@@ -34,5 +34,7 @@ describe('Spreadsheet Helper', () => {
     expect(parsePasteTable("c1\tc2\t'c\n3'\ne1")).toEqual([['c1', 'c2', 'c\n3'], ['e1']])
     expect(parsePasteTable('c1\tc2\t\'c\n3\'\ne1\n"f\t3"')).toEqual([['c1', 'c2', 'c\n3'], ['e1'], ['f\t3']])
     expect(parsePasteTable('"1\n1"\t2\n3\t\n4\t\n5\t')).toEqual([['1\n1', '2'], ['3'], ['4'], ['5']])
+
+    expect(parsePasteTable('col with space')).toEqual([['col with space']])
   })
 })
