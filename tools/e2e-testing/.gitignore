@@ -1,2 +1,5 @@
 test-results/
 /storageState.json
+/storageState-chromium.json
+/storageState-firefox.json
+/storageState-webkit.json

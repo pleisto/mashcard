@@ -1,6 +1,6 @@
-import { PageTreeNode } from '@/components/sidebar/PageList'
+import { PageTreeNode } from '@/pages/sidebar/PageListPage'
 
-export const pageTrees: PageTreeNode[] = [
+export const PAGE_TREES: PageTreeNode[] = [
   { pageName: '1' },
   { pageName: '1-1', parentNode: '1' },
   { pageName: '1-1-1', parentNode: '1-1' },

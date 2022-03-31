@@ -10,12 +10,12 @@ const config: PlaywrightTestConfig = {
   retries: 2,
   reporter: isCI ? [['dot'], ['github']] : 'list',
   timeout: 50000,
+  workers: 1,
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000/',
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    storageState: './storageState.json',
     navigationTimeout: 10000
   },
   globalSetup: './global-setup',
@@ -23,19 +23,22 @@ const config: PlaywrightTestConfig = {
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome']
+        ...devices['Desktop Chrome'],
+        storageState: './storageState-chromium.json'
       }
     },
     {
       name: 'firefox',
       use: {
-        ...devices['Desktop Firefox']
+        ...devices['Desktop Firefox'],
+        storageState: './storageState-firefox.json'
       }
     }
     // {
     //   name: 'webkit',
     //   use: {
-    //     ...devices['Desktop Safari']
+    //     ...devices['Desktop Safari'],
+    //     storageState: './storageState-firefox.json'
     //   }
     // }
   ],

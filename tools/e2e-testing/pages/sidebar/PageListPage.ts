@@ -1,5 +1,5 @@
+import { PAGE_SELECTOR } from '@/selectors/sidebar'
 import { Locator } from '@playwright/test'
-import { SIDEBAR_SELECTORS } from '@/selectors/sidebar'
 import { BasePage } from '../BasePage'
 
 export interface PageTreeNode {
@@ -9,42 +9,51 @@ export interface PageTreeNode {
 
 type ActionButton = 'Pin page' | 'Copy link' | 'Duplicate' | 'Rename' | 'Delete'
 
-export class PageList extends BasePage {
+export class PageListPage extends BasePage {
   getPageSectionTitle(): Locator {
-    return this.page.locator(SIDEBAR_SELECTORS.mainActions.pageSection)
+    return this.page.locator(PAGE_SELECTOR.pageSection)
   }
 
   getAddSubPageButton(index: number = 0): Locator {
-    return this.page.locator(SIDEBAR_SELECTORS.mainActions.addSubPageButton).nth(index)
+    return this.page.locator(PAGE_SELECTOR.addSubPageButton).nth(index)
+  }
+
+  getPageByIndex(index: number = 0): Locator {
+    return this.page.locator(PAGE_SELECTOR.pageItem(index))
   }
 
   getSubPage(index: number = 0): Locator {
-    return this.page.locator(SIDEBAR_SELECTORS.mainActions.pageIndent).nth(index)
+    return this.page.locator(PAGE_SELECTOR.pageIndent).nth(index)
   }
 
   getMoreActionIcon(index: number = 0): Locator {
-    return this.page.locator(SIDEBAR_SELECTORS.mainActions.moreActionIcon).nth(index)
+    return this.page.locator(PAGE_SELECTOR.moreActionIcon).nth(index)
   }
 
   getMoreButtonByText(actionButton: ActionButton, index: number = 0): Locator {
-    return this.page.locator(SIDEBAR_SELECTORS.mainActions.actionButton(actionButton)).nth(index)
+    return this.page.locator(PAGE_SELECTOR.actionButton(actionButton)).nth(index)
   }
 
   getArrow(index: number = 0): Locator {
-    return this.page.locator(SIDEBAR_SELECTORS.mainActions.arrow).nth(index)
+    return this.page.locator(PAGE_SELECTOR.arrow).nth(index)
+  }
+
+  async gotoHomePage(): Promise<void> {
+    await this.page.goto('/', { waitUntil: 'domcontentloaded' })
+    await this.waitForResponse('GetPageBlocks')
   }
 
   async hover(index: number = 0, position?: { x: number; y: number }): Promise<void> {
-    await this.page.hover(SIDEBAR_SELECTORS.mainActions.pageItem(index), { position })
+    await this.page.hover(PAGE_SELECTOR.pageItem(index), { position })
   }
 
   async addPage(): Promise<void> {
-    await this.waitForResponse('GetPageBlocks', this.page.locator(SIDEBAR_SELECTORS.mainActions.addPageButton).click())
+    await this.waitForResponseWithAction('GetPageBlocks', this.page.locator(PAGE_SELECTOR.addPageButton).click())
   }
 
   async addSubPage(index: number = 0): Promise<void> {
     await this.hover(index)
-    await this.waitForResponse('GetPageBlocks', this.getAddSubPageButton(index).click())
+    await this.waitForResponseWithAction('GetPageBlocks', this.getAddSubPageButton(index).click())
     const arrowClass = await this.getArrow().getAttribute('class')
     if (!arrowClass?.includes('-isExpanded-true')) {
       await this.getArrow().click()
@@ -54,12 +63,15 @@ export class PageList extends BasePage {
   async removePage(index: number = 0): Promise<void> {
     await this.hover(index)
     await this.getMoreActionIcon(index).click()
-    await this.waitForResponse('GetPageBlocks', this.getMoreButtonByText('Delete', index).click())
+    await this.waitForResponseWithAction('GetPageBlocks', this.getMoreButtonByText('Delete', index).click())
   }
 
-  async renamePage(pageName: string): Promise<void> {
-    await this.page.fill(SIDEBAR_SELECTORS.mainActions.renameInput, pageName)
-    await this.waitForResponse('GetPageBlocks', this.page.press(SIDEBAR_SELECTORS.mainActions.renameInput, 'Enter'))
+  async renamePage(pageName: string, index: number = 0): Promise<void> {
+    await this.hover(index)
+    await this.getMoreActionIcon(index).click()
+    await this.getMoreButtonByText('Rename', index).click()
+    await this.page.fill(PAGE_SELECTOR.renameInput, pageName)
+    await this.waitForResponseWithAction('GetPageBlocks', this.page.press(PAGE_SELECTOR.renameInput, 'Enter'))
   }
 
   async createPageTree(pageTrees: PageTreeNode[]): Promise<void> {
@@ -77,10 +89,7 @@ export class PageList extends BasePage {
         await this.getArrow(index).click()
       }
 
-      await this.hover(index)
-      await this.getMoreActionIcon(index).click()
-      await this.getMoreButtonByText('Rename', index).click()
-      await this.renamePage(pageName)
+      await this.renamePage(pageName, index)
     }
   }
 
@@ -88,7 +97,7 @@ export class PageList extends BasePage {
     while (await this.getPageSectionTitle().isVisible()) {
       await this.hover()
       await this.getMoreActionIcon().click()
-      await this.waitForResponse('GetPageBlocks', this.getMoreButtonByText('Delete').click())
+      await this.waitForResponseWithAction('GetPageBlocks', this.getMoreButtonByText('Delete').click())
     }
   }
 }

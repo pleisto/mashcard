@@ -38,11 +38,15 @@ jobs:
         id: get_e2e_account
         run: |
           if [[ $DEPLOY_ENV == 'trunk' ]]; then
-              echo ::set-output name=email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL }}
-              echo ::set-output name=password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD }}
+              echo ::set-output name=chromium_email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_1 }}
+              echo ::set-output name=chromium_password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_1 }}
+              echo ::set-output name=firefox_email::${{ secrets.TRUNK_E2E_LOGIN_EMAIL_2 }}
+              echo ::set-output name=firefox_password::${{ secrets.TRUNK_E2E_LOGIN_PASSWORD_2 }}
           else
-              echo ::set-output name=email::ADMIN3@brickdoc.com
-              echo ::set-output name=password::PASSWORD3
+              echo ::set-output name=chromium_email::ADMIN3@brickdoc.com
+              echo ::set-output name=chromium_password::PASSWORD3
+              echo ::set-output name=firefox_email::ADMIN4@brickdoc.com
+              echo ::set-output name=firefox_password::PASSWORD4
           fi
         env:
           DEPLOY_ENV: ${{ github.event.deployment_status.environment }}
@@ -51,8 +55,10 @@ jobs:
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
           PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}
-          E2E_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.email }}
-          E2E_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.password }}
+          E2E_CHROMIUM_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.chromium_email }}
+          E2E_CHROMIUM_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.chromium_password }}
+          E2E_FIREFOX_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.firefox_email }}
+          E2E_FIREFOX_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.firefox_password }}
       - name: Fix coverage files
         run: (find tools/e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
         continue-on-error: true
