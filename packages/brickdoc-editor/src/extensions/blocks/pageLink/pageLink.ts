@@ -50,7 +50,7 @@ export const PageLink = createBlock<PageLinkOptions, PageLinkAttributes>({
   },
 
   renderHTML({ HTMLAttributes }) {
-    return ['user-block', mergeAttributes(HTMLAttributes)]
+    return ['page-link-block', mergeAttributes(HTMLAttributes)]
   },
 
   addNodeView() {

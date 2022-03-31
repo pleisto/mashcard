@@ -1,6 +1,5 @@
 // ref: https://github.com/ueberdosis/tiptap/blob/main/packages/suggestion/src/suggestion.ts
 import { ReactRenderer, Editor as ReactEditor } from '@tiptap/react'
-import { Editor, Range } from '@tiptap/core'
 import { PluginKey } from 'prosemirror-state'
 import Suggestion from '@tiptap/suggestion'
 import { createPopup, PopupInstance } from '../../../helpers/popup'
@@ -10,10 +9,11 @@ import { PageItem } from '../../../components/extensionViews/MentionMenu/PageGro
 import { meta } from './meta'
 import { createExtension } from '../../common'
 import { ExternalProps } from '../../../context'
+import { filterMenuItemsByQuery } from './filterMenuItemsByQuery'
 
 const TRIGGER_CHAR = '@'
 
-interface MenuItems {
+export interface MenuItems {
   users: UserItem[]
   pages: PageItem[]
 }
@@ -29,52 +29,6 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
   name: meta.name,
 
   addProseMirrorPlugins() {
-    const filterMenuItemsByQuery = ({ query }: { query: string }): MenuItems => {
-      const searchValue = (query ?? '').toLowerCase()
-      const pages = this.options.externalProps.documentPages
-      const domain = this.options.externalProps.domain
-      const pagePath = (parentId: string | null | undefined, path: string[] = []): string[] => {
-        const parent = pages.find(p => p.key === parentId)
-
-        if (!parent) return path
-        return pagePath(parent.parentId, [parent.title ?? 'Untitled', ...path])
-      }
-      return {
-        users:
-          this.options.externalProps.spaceMembers
-            .filter(item => (item.name ?? '').toLowerCase().includes(searchValue))
-            .map(item => ({
-              name: item.name,
-              domain: item.domain,
-              avatar: item.avatar,
-              command(editor: Editor, range: Range) {
-                editor.chain().focus().deleteRange(range).setUserBlock(item.domain, item.name, item.avatar).run()
-              }
-            }))
-            .slice(0, 5) ?? [],
-        pages:
-          pages
-            .filter(item => {
-              if (searchValue) return (item.title ?? '').toLowerCase().includes(searchValue)
-              return !item.parentId
-            })
-            .map(item => ({
-              name: item.title ?? '',
-              icon: item.icon,
-              category: pagePath(item.parentId).join('/'),
-              command(editor: Editor, range: Range) {
-                editor
-                  .chain()
-                  .focus()
-                  .deleteRange(range)
-                  .setPageLinkBlock(item.key, `/${domain}/${item.key}`, item.title, item.icon)
-                  .run()
-              }
-            }))
-            .slice(0, 5) ?? []
-      }
-    }
-
     return [
       Suggestion({
         pluginKey: new PluginKey('mention'),
@@ -84,7 +38,7 @@ export const MentionCommands = createExtension<MentionCommandsOptions>({
           props.command(editor, range)
         },
         editor: this.editor,
-        items: filterMenuItemsByQuery as any,
+        items: filterMenuItemsByQuery(this.options) as any,
         render: () => {
           let reactRenderer: ReactRenderer
           let popup: PopupInstance

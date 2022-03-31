@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BulletList renders BulletList correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-bulletList"
+      >
+        <div
+          data-node-view-wrapper=""
+          style="pointer-events: none; white-space: normal;"
+        >
+          <ul
+            as="ul"
+            data-node-view-content=""
+            style="white-space: pre-wrap;"
+          >
+            <div
+              style="white-space: inherit;"
+            >
+              <li>
+                <p>
+                  item 1
+                </p>
+              </li>
+              <li>
+                <p>
+                  item 2
+                </p>
+              </li>
+              <li>
+                <p>
+                  item 3
+                </p>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

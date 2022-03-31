@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FontColor renders FontColor correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <span
+          style="color: [object Object]"
+        >
+          red
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;

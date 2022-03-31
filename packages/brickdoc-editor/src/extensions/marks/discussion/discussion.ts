@@ -29,7 +29,7 @@ const openDiscussionList = (markId: string | null): void => {
   }, 300)
 }
 
-export const DiscussionMark = createMark<DiscussionOptions, DiscussionAttributes>({
+export const Discussion = createMark<DiscussionOptions, DiscussionAttributes>({
   name: meta.name,
 
   // check for focused discussion mark

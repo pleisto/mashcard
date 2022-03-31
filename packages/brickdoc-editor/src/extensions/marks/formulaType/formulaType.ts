@@ -19,7 +19,7 @@ export const FORMULA_CLASS_NAME = 'brickdoc-formula-mark'
 export interface FormulaTypeOptions {}
 export type FormulaTypeAttributes = Omit<CodeFragment, 'hide'>
 
-export const FormulaTypeMark = createMark<FormulaTypeOptions, FormulaTypeAttributes>({
+export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>({
   name: meta.name,
 
   addAttributes() {

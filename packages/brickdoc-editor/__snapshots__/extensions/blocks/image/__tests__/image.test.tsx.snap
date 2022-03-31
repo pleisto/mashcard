@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders Image correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <div
+        class="react-renderer node-imageBlock"
+        draggable="true"
+      >
+        <div
+          data-node-view-wrapper=""
+          style="pointer-events: none; white-space: normal;"
+        >
+          <button
+            aria-haspopup="dialog"
+            class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brickdoc-block-image-section"
+            data-testid="editor-image-block-add-button"
+            role="button"
+            tabindex="0"
+            type="button"
+          >
+            <div
+              class="image-section-progressing"
+              style="width: 0%;"
+            />
+            <span
+              aria-label="image"
+              class="brd-icon brd-icon-image image-section-icon"
+              role="img"
+            >
+              <svg
+                fill="none"
+                height="1em"
+                viewBox="0 0 24 24"
+                width="1em"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M1 4a1 1 0 0 1 1-1h20a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4zm2 1v14h18V5H3z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+                <path
+                  clip-rule="evenodd"
+                  d="M16.31 8.777a1 1 0 0 1 1.359-.02l5 4.5-1.338 1.486-4.311-3.88-10.33 9.86-1.38-1.446 11-10.5z"
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                />
+                <path
+                  d="M9 9a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <div
+              class="image-section-content"
+            >
+              image_block.hint
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -23,7 +23,7 @@ declare module '@tiptap/core' {
   }
 }
 
-export const FontColorExtension = createExtension<FontColorOptions, FontColorAttributes>({
+export const FontColor = createExtension<FontColorOptions, FontColorAttributes>({
   name: meta.name,
 
   addOptions() {
