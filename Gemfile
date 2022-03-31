@@ -104,7 +104,6 @@ group :development do
 
   # vsocode ruby solargraph
   gem 'solargraph', require: false
-
 end
 
 # Plugin dependencies

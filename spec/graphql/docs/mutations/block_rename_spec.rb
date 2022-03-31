@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Docs::Mutations::BlockSoftDelete, type: :mutation do
+describe Docs::Mutations::BlockRename, type: :mutation do
   describe '#resolve' do
     mutation = <<-'GRAPHQL'
       mutation blockRename($input: BlockRenameInput!) {

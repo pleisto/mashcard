@@ -80,7 +80,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   })
 
   const deletePage = async (): Promise<void> => {
-    const input = { id: pageId }
+    const input = { id: pageId, hardDelete: false }
     await blockSoftDelete({ variables: { input } })
     if (pageId === id) {
       client.cache.modify({

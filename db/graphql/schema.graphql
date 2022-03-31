@@ -923,6 +923,11 @@ input BlockSoftDeleteInput {
   clientMutationId: String
 
   """
+  hard delete
+  """
+  hardDelete: Boolean!
+
+  """
   block unique id
   """
   id: UUID!

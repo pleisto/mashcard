@@ -491,6 +491,8 @@ export type BlockSnapshot = {
 export type BlockSoftDeleteInput = {
   /** A unique identifier for the client performing the mutation. */
   clientMutationId?: InputMaybe<Scalars['String']>
+  /** hard delete */
+  hardDelete: Scalars['Boolean']
   /** block unique id */
   id: Scalars['UUID']
 }
