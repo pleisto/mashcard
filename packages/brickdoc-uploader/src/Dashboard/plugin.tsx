@@ -76,6 +76,7 @@ export interface DashboardPluginOptions {
   ) => Promise<{ success: boolean; data: UnsplashImage[] }>
   fileType: string
   importSources: ImportSourceOption[]
+  canbeRemove?: boolean
 }
 
 export type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'

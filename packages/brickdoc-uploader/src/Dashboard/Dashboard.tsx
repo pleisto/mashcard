@@ -48,6 +48,8 @@ export interface ActionButtonOption {
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSources, pluginOptions }) => {
+  const sourceType = importSources[0].type
+  const { canbeRemove } = pluginOptions
   const [activeSource, setActiveSource] = React.useState(importSources[0])
   const [recentEmojis, handleSelectEmoji] = useEmoji(
     pluginOptions,
@@ -66,27 +68,29 @@ export const Dashboard: React.FC<DashboardProps> = ({ pluginId, uppy, importSour
     pluginOptions.onUploaded?.({ color: undefined, action: 'remove' })
   }
 
-  const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = [
-    {
-      label: 'Remove',
-      onClick: handleRemoveEmoji
-    }
-  ]
+  const EMOJI_ACTION_BUTTONS: ActionButtonOption[] = []
 
-  const GALLERY_ACTION_BUTTONS: ActionButtonOption[] = [
-    {
-      label: 'Remove',
-      onClick: handleRemoveGalleryImage
-    }
-  ]
+  const GALLERY_ACTION_BUTTONS: ActionButtonOption[] = []
 
   let actionButtons: ActionButtonOption[] = []
 
-  if (activeSource.type === 'emoji') {
+  if (sourceType === 'emoji') {
+    if (canbeRemove) {
+      EMOJI_ACTION_BUTTONS.push({
+        label: 'Remove',
+        onClick: handleRemoveEmoji
+      })
+    }
     actionButtons = EMOJI_ACTION_BUTTONS
   }
 
-  if (activeSource.type === 'gallery') {
+  if (sourceType === 'unsplash' || sourceType === 'gallery') {
+    if (canbeRemove) {
+      GALLERY_ACTION_BUTTONS.push({
+        label: 'Remove',
+        onClick: handleRemoveGalleryImage
+      })
+    }
     actionButtons = GALLERY_ACTION_BUTTONS
   }
 

@@ -89,7 +89,7 @@ export function useDocumentIconUploader(
   const popoverProps: Partial<PopoverProps> = {
     overlayClassName: styles.popover,
     trigger: 'click',
-    placement: 'top',
+    placement: 'bottom',
     destroyTooltipOnHide: true,
     content: (
       <Dashboard
@@ -100,6 +100,7 @@ export function useDocumentIconUploader(
         onUploaded={onUploaded}
         onFileLoaded={onLoaded}
         importSources={ICON_IMPORT_SOURCES}
+        canbeRemove={!!icon}
       />
     )
   }

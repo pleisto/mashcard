@@ -88,7 +88,7 @@ export function useDocumentCoverUploader(
   const popoverProps: Partial<PopoverProps> = {
     overlayClassName: styles.popover,
     trigger: 'click',
-    placement: 'top',
+    placement: 'bottom',
     destroyTooltipOnHide: true,
     content: (
       <Dashboard
@@ -99,6 +99,7 @@ export function useDocumentCoverUploader(
         onUploaded={onUploaded}
         onFileLoaded={onLoaded}
         importSources={IMPORT_SOURCES}
+        canbeRemove={!!cover}
       />
     )
   }

@@ -21,6 +21,7 @@ export interface DashboardProps {
   fetchUnsplashImages?: DashboardPluginOptions['fetchUnsplashImages']
   fileType?: DashboardPluginOptions['fileType']
   importSources: DashboardPluginOptions['importSources']
+  canbeRemove?: DashboardPluginOptions['canbeRemove']
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({
@@ -31,7 +32,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
   importSources,
   fileType,
   onFileLoaded,
-  onProgress
+  onProgress,
+  canbeRemove = false
 }) => {
   const container = React.useRef<HTMLElement>()
   const uppy = React.useRef<Uppy>()
@@ -67,7 +69,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
           prepareFileUpload,
           fetchUnsplashImages,
           importSources,
-          fileType: fileType!
+          fileType: fileType!,
+          canbeRemove
         })
       }}
     />
