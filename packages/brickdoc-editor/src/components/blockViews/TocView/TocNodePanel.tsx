@@ -19,7 +19,6 @@ const TocItemTitleText = styled('span', {
   '-webkit-box-orient': 'vertical',
   overflow: 'hidden',
   maxWidth: '100%',
-  position: 'relative',
   wordBreak: 'break-all',
 
   '&:after': {
@@ -39,6 +38,7 @@ const TocItemTitle = styled('span', {
   display: 'inline-block',
   fontSize: theme.fontSizes.body,
   lineHeight: 1.3,
+  position: 'relative',
 
   variants: {
     level: {
