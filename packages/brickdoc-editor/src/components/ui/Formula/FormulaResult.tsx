@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import {
   displayValue,
   dumpDisplayResultForDisplay,
@@ -17,13 +17,13 @@ export interface FormulaResultProps {
   pageId: string
 }
 
-export const FormulaResult: React.FC<FormulaResultProps> = ({ variableT, pageId }) => {
+export const FormulaResult: FC<FormulaResultProps> = ({ variableT, pageId }) => {
   if (!variableT) {
-    return <></>
+    return null
   }
 
   if (variableT.type === 'normal' && variableT.definition.trim() === '=' && !errorIsFatal(variableT)) {
-    return <></>
+    return null
   }
 
   const result = fetchResult(variableT)

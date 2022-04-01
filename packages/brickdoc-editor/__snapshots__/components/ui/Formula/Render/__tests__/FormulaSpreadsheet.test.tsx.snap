@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormulaSpreadsheet renders FormulaSpreadsheet correctly 1`] = `
+<div>
+  <span
+    class="brickdoc-formula-spreadsheet hover"
+  >
+    <table
+      class="spreadsheet-row-actions "
+    >
+      <thead>
+        <tr
+          data-row-id="first"
+        >
+          <th />
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="   "
+          data-row-id="rowId"
+        >
+          <td
+            class="row-action-panel"
+          >
+            <div
+              class="row-action-panel-layer"
+            >
+              <button
+                class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md row-number"
+                role="button"
+                tabindex="0"
+                type="button"
+              >
+                <span>
+                  1
+                </span>
+              </button>
+              <span
+                aria-haspopup="menu"
+                class="brd-c-hRyQNC-trigger row-action"
+              >
+                ⌄
+              </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="brickdoc-spreadsheet-block"
+    >
+      <table
+        class="spreadsheet-rows"
+      >
+        <thead>
+          <tr
+            class=""
+            data-row-id="first"
+          >
+            <th
+              class=" selected  "
+              data-column-id="columnId"
+            >
+              <div
+                class="column"
+              >
+                name
+              </div>
+              <span
+                aria-haspopup="menu"
+                class="brd-c-hRyQNC-trigger column-action"
+              >
+                ⌄
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="  "
+            data-row-id="rowId"
+          >
+            <td
+              class="selected"
+              data-cell-id="rowId,columnId"
+            >
+              <div
+                aria-haspopup="menu"
+                class="brd-c-hRyQNC-trigger cell"
+              >
+                <div />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </span>
+</div>
+`;

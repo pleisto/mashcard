@@ -19,3 +19,18 @@ window.matchMedia =
 HTMLCanvasElement.prototype.getContext = () => {
   // return whatever getContext has to return
 }
+
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+window.ResizeObserver = ResizeObserver
+
+Object.assign(navigator, {
+  clipboard: {
+    writeText: () => {}
+  }
+})
+
+window.scrollTo = () => {}

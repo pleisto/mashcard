@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer renders Drawer visible correctly 1`] = `
+<body>
+  <div />
+  <div
+    class="brd-c-cNleIv"
+    style="width: 17.5rem;"
+  >
+    <button
+      class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-idRjzH"
+      role="button"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        aria-label="close"
+        class="brd-icon brd-icon-close"
+        role="img"
+      >
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M4.707 3.293a1 1 0 0 0-1.414 1.414L10.586 12l-7.293 7.293a1 1 0 1 0 1.414 1.414L12 13.414l7.293 7.293a1 1 0 0 0 1.414-1.414L13.414 12l7.293-7.293a1 1 0 0 0-1.414-1.414L12 10.586 4.707 3.293z"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      class="brd-c-kPlcxR"
+    />
+    <div
+      class="brd-c-euHcXx"
+    >
+      drawer content
+    </div>
+  </div>
+</body>
+`;

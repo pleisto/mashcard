@@ -6,12 +6,6 @@ import { ToolbarGroupOption, ToolbarItemOption, ToolbarSubMenuOption } from '../
 import { BlockActionsMenu, BlockActionsMenuProps } from '../../BlockActions/BlockActionsMenu'
 import { useOptions } from '../useOptions'
 
-Object.assign(navigator, {
-  clipboard: {
-    writeText: () => {}
-  }
-})
-
 describe('useCodeBlockActionOptions', () => {
   it('triggers copy correctly', () => {
     const language = 'test-language'

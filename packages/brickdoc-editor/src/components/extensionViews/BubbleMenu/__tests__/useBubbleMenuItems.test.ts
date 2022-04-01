@@ -13,12 +13,6 @@ import { ExternalProps } from '../../../../context'
 import { useExtraItemsGroup } from '../useBubbleMenuItems/useExtraItemsGroup'
 import { useBubbleMenuItems } from '../useBubbleMenuItems'
 
-Object.assign(navigator, {
-  clipboard: {
-    writeText: () => {}
-  }
-})
-
 describe('useBubbleMenuItems', () => {
   it('gets menu items correctly', () => {
     const editor = mockEditor({

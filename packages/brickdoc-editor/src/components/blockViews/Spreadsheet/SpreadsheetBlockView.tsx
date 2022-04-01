@@ -41,7 +41,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   const parentId: string = node.attrs.uuid
   const prevData = node.attrs.data || {}
 
-  const { t } = useEditorI18n()
+  const [t] = useEditorI18n()
 
   const [title, setTitle] = React.useState<string>(node.attrs.title ?? '')
 

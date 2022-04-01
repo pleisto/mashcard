@@ -1,0 +1,683 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutocompleteList Active Completion renders block kind correctly 1`] = `
+<div>
+  <div
+    class="formula-autocomplete"
+  >
+    <div
+      class="formula-autocomplete-list"
+    >
+      <div
+        class="autocomplete-list-item active"
+        role="button"
+        tabindex="-1"
+      >
+        <span
+          aria-label="function"
+          class="brd-icon brd-icon-function autocomplete-list-item-icon"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+        <div
+          class="autocomplete-list-item-content"
+        >
+          <span
+            class="autocomplete-list-item-name"
+          />
+          <span
+            class="autocomplete-list-item-desc"
+          >
+            block
+             
+            description
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="formula-autocomplete-preview"
+    >
+      <div
+        class="autocomplete-preview-block"
+      >
+        <div
+          class="autocomplete-preview-block-name"
+        >
+          name
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AutocompleteList Active Completion renders column kind correctly 1`] = `
+<div>
+  <div
+    class="formula-autocomplete"
+  >
+    <div
+      class="formula-autocomplete-list"
+    >
+      <div
+        class="autocomplete-list-item active"
+        role="button"
+        tabindex="-1"
+      >
+        <span
+          aria-label="column"
+          class="brd-icon brd-icon-column autocomplete-list-item-icon"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M1 4C1 2.89543 1.89543 2 3 2H21C22.1046 2 23 2.89543 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4ZM21 4H3V20H21V4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M8 9C8 8.44772 8.30526 8 8.68182 8H22.3182C22.6947 8 23 8.44772 23 9C23 9.55228 22.6947 10 22.3182 10H8.68182C8.30526 10 8 9.55228 8 9Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M8 15C8 14.4477 8.30526 14 8.68182 14H22.3182C22.6947 14 23 14.4477 23 15C23 15.5523 22.6947 16 22.3182 16H8.68182C8.30526 16 8 15.5523 8 15Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M9 3C9.55228 3 10 3.60761 10 4.35714V20.6429C10 21.3924 9.55228 22 9 22C8.44772 22 8 21.3924 8 20.6429V4.35714C8 3.60761 8.44772 3 9 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M2 3C2.55228 3 3 3.44772 3 4V20H21V4C21 3.44772 21.4477 3 22 3C22.5523 3 23 3.44772 23 4V20C23 21.1046 22.1046 22 21 22H3C1.89543 22 1 21.1046 1 20V4C1 3.44772 1.44772 3 2 3Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+        <div
+          class="autocomplete-list-item-content"
+        >
+          <span
+            class="autocomplete-list-item-name"
+          />
+          <span
+            class="autocomplete-list-item-desc"
+          >
+            column
+             
+            description
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="formula-autocomplete-preview"
+    >
+      <div
+        class="brickdoc"
+      >
+        <div
+          class="ProseMirror"
+        >
+          <div
+            class="autocomplete-preview-column"
+          >
+            <span
+              class="brickdoc-formula-spreadsheet hover"
+            >
+              <table
+                class="spreadsheet-row-actions "
+              >
+                <thead>
+                  <tr
+                    data-row-id="first"
+                  >
+                    <th />
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="   "
+                    data-row-id="row"
+                  >
+                    <td
+                      class="row-action-panel"
+                    >
+                      <div
+                        class="row-action-panel-layer"
+                      >
+                        <button
+                          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md row-number"
+                          role="button"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <span>
+                            1
+                          </span>
+                        </button>
+                        <span
+                          aria-haspopup="menu"
+                          class="brd-c-hRyQNC-trigger row-action"
+                        >
+                          ⌄
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div
+                class="brickdoc-spreadsheet-block"
+              >
+                <table
+                  class="spreadsheet-rows"
+                >
+                  <thead>
+                    <tr
+                      class=""
+                      data-row-id="first"
+                    >
+                      <th
+                        class="   "
+                        data-column-id="column"
+                      >
+                        <div
+                          class="column"
+                        >
+                          name
+                        </div>
+                        <span
+                          aria-haspopup="menu"
+                          class="brd-c-hRyQNC-trigger column-action"
+                        >
+                          ⌄
+                        </span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="  "
+                      data-row-id="row"
+                    >
+                      <td
+                        class=""
+                        data-cell-id="row,column"
+                      >
+                        <div
+                          aria-haspopup="menu"
+                          class="brd-c-hRyQNC-trigger cell"
+                        >
+                          <div />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AutocompleteList Active Completion renders function kind correctly 1`] = `
+<div>
+  <div
+    class="formula-autocomplete"
+  >
+    <div
+      class="formula-autocomplete-list"
+    >
+      <div
+        class="autocomplete-list-item active"
+        role="button"
+        tabindex="-1"
+      >
+        <span
+          aria-label="function"
+          class="brd-icon brd-icon-function autocomplete-list-item-icon"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M4.02403 10.3944L2.0364 21H4.624L6.59951 10.3944H9.31412L9.69052 8.38797H6.96947L7.12697 7.40645L7.12713 7.40538C7.23453 6.7119 7.50783 6.17081 7.93972 5.76834C8.37395 5.36367 8.94124 5.15442 9.65936 5.15372C10.0443 5.16855 10.4251 5.21256 10.8021 5.28574L10.9984 5.32386L11.3253 3.23326L11.1433 3.1963C10.5072 3.0671 9.97256 3.00057 9.54287 3.00046C8.18911 2.98518 7.05862 3.35024 6.16862 4.10855C5.32054 4.83566 4.79246 5.83973 4.57597 7.10453L4.3823 8.38797H2.3764L2 10.3944H4.02403ZM6.93603 7.3751L6.74212 8.58362L6.93603 7.3751C6.93603 7.3751 6.93603 7.3751 6.93603 7.3751ZM9.45693 8.58362L9.15394 10.1987H6.43912L4.46361 20.8043L6.43912 10.1987H9.15393L9.45693 8.58362ZM9.07574 5.00716C8.57832 5.09502 8.15596 5.30078 7.80865 5.62444C7.42697 5.98013 7.16321 6.43322 7.01736 6.98371C7.16321 6.43322 7.42697 5.98014 7.80865 5.62444C8.15596 5.30078 8.57832 5.09502 9.07574 5.00716ZM11.3543 21L14.9165 16.6028L17.0071 21H19.8385L16.5498 14.7544L22 8.38797H18.7938L15.3685 12.6658L13.4228 8.38797H10.5782L13.7687 14.4972L8.15881 21H11.3543Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </span>
+        <div
+          class="autocomplete-list-item-content"
+        >
+          <span
+            class="autocomplete-list-item-name"
+          />
+          <span
+            class="autocomplete-list-item-desc"
+          >
+            function
+             
+            description
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="formula-autocomplete-preview"
+    >
+      <div
+        class="formula-autocomplete-preview-function"
+      >
+        <div
+          class="autocomplete-preview-name"
+        >
+          name
+           (
+          <span
+            class="autocomplete-preview-arg"
+          >
+            arg
+          </span>
+          )
+        </div>
+        <div
+          class="autocomplete-preview-desc"
+        />
+        <div
+          class="autocomplete-preview-section"
+        >
+          <div
+            class="autocomplete-preview-section-head"
+          >
+            Inputs
+          </div>
+          <div
+            class="autocomplete-preview-inputs-arg"
+          >
+            <span
+              class="autocomplete-preview-input-tag"
+            >
+              arg
+            </span>
+             : 
+            number
+          </div>
+        </div>
+        <div
+          class="autocomplete-preview-section"
+        >
+          <div
+            class="autocomplete-preview-section-head"
+          >
+            Outputs
+          </div>
+          None.
+        </div>
+        <div
+          class="autocomplete-preview-section"
+        >
+          <div
+            class="autocomplete-preview-section-head"
+          >
+            Example
+          </div>
+          <div
+            class="autocomplete-preview-example"
+          >
+            <div
+              class="brickdoc-formula-editor"
+            >
+              <div
+                class="ProseMirror"
+                contenteditable="false"
+                translate="no"
+              >
+                <p>
+                  <br
+                    class="ProseMirror-trailingBreak"
+                  />
+                </p>
+              </div>
+            </div>
+            <br />
+            <span
+              class="autocomplete-preview-example-result"
+            >
+              =
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1`] = `
+<div>
+  <div
+    class="formula-autocomplete"
+  >
+    <div
+      class="formula-autocomplete-list"
+    >
+      <div
+        class="autocomplete-list-item active"
+        role="button"
+        tabindex="-1"
+      >
+        <span
+          aria-label="table"
+          class="brd-icon brd-icon-table autocomplete-list-item-icon"
+          role="img"
+        >
+          <svg
+            fill="none"
+            height="1em"
+            viewBox="0 0 24 24"
+            width="1em"
+          >
+            <path
+              d="M21 3H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
+              stroke="currentColor"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+            <path
+              d="M2 9h20M8.75 9v12m6.5-12v12M2 15h20m0-11v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+        <div
+          class="autocomplete-list-item-content"
+        >
+          <span
+            class="autocomplete-list-item-name"
+          />
+          <span
+            class="autocomplete-list-item-desc"
+          >
+            spreadsheet
+             
+            description
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="formula-autocomplete-preview"
+    >
+      <div
+        class="brickdoc"
+      >
+        <div
+          class="ProseMirror"
+        >
+          <div
+            class="autocomplete-preview-spreadsheet"
+          >
+            <span
+              class="brickdoc-formula-spreadsheet "
+            >
+              <table
+                class="spreadsheet-row-actions "
+              >
+                <thead>
+                  <tr
+                    data-row-id="first"
+                  >
+                    <th />
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="   "
+                    data-row-id="row"
+                  >
+                    <td
+                      class="row-action-panel"
+                    >
+                      <div
+                        class="row-action-panel-layer"
+                      >
+                        <button
+                          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md row-number"
+                          role="button"
+                          tabindex="0"
+                          type="button"
+                        >
+                          <span>
+                            1
+                          </span>
+                        </button>
+                        <span
+                          aria-haspopup="menu"
+                          class="brd-c-hRyQNC-trigger row-action"
+                        >
+                          ⌄
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div
+                class="brickdoc-spreadsheet-block"
+              >
+                <table
+                  class="spreadsheet-rows"
+                >
+                  <thead>
+                    <tr
+                      class=""
+                      data-row-id="first"
+                    >
+                      <th
+                        class="   "
+                        data-column-id="column"
+                      >
+                        <div
+                          class="column"
+                        >
+                          name
+                        </div>
+                        <span
+                          aria-haspopup="menu"
+                          class="brd-c-hRyQNC-trigger column-action"
+                        >
+                          ⌄
+                        </span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="  "
+                      data-row-id="row"
+                    >
+                      <td
+                        class=""
+                        data-cell-id="row,column"
+                      >
+                        <div
+                          aria-haspopup="menu"
+                          class="brd-c-hRyQNC-trigger cell"
+                        >
+                          <div />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AutocompleteList Active Completion renders variable kind correctly 1`] = `
+<div>
+  <div
+    class="formula-autocomplete"
+  >
+    <div
+      class="formula-autocomplete-list"
+    >
+      <div
+        class="autocomplete-list-item active"
+        role="button"
+        tabindex="-1"
+      >
+        <span
+          aria-label="formula"
+          class="brd-icon brd-icon-formula autocomplete-list-item-icon"
+          role="img"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 4.5 18.5 3H4l9 9-9 9h14.5l1.5-1.5"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </span>
+        <div
+          class="autocomplete-list-item-content"
+        >
+          <span
+            class="autocomplete-list-item-name"
+          />
+          <span
+            class="autocomplete-list-item-desc"
+          >
+            variable
+             
+            description
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="formula-autocomplete-preview"
+    >
+      <div
+        class="formula-autocomplete-preview-variable"
+      >
+        <div
+          class="autocomplete-preview-name"
+        >
+          baz
+        </div>
+        <div
+          class="autocomplete-preview-section"
+        >
+          <div
+            class="autocomplete-preview-section-head"
+          >
+            Definition
+          </div>
+          <div
+            class="autocomplete-preview-definition"
+          >
+            <div
+              class="brickdoc-formula-editor"
+            >
+              <div
+                class="ProseMirror"
+                contenteditable="false"
+                translate="no"
+              >
+                =
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="autocomplete-preview-section"
+        >
+          <div
+            class="autocomplete-preview-section-head"
+          >
+            Type
+          </div>
+          <span
+            class="autocomplete-preview-input-tag"
+          >
+            Error
+          </span>
+        </div>
+        <div
+          class="autocomplete-preview-section"
+        >
+          <div
+            class="autocomplete-preview-section-head"
+          >
+            Value
+          </div>
+          <span
+            class="autocomplete-preview-output-tag"
+          >
+            <span
+              class="brickdoc-formula-borderless"
+              style="color: rgb(207, 31, 40); font-family: Fira Code;"
+            >
+              #&lt;Error&gt; Parse error: ""
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

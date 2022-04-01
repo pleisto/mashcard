@@ -1,5 +1,4 @@
 import { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
-import { NodeViewProps } from '@tiptap/react'
 import { debounce } from '@brickdoc/active-support'
 import { Icon, Input, Popover, styled, theme } from '@brickdoc/design-system'
 import { UnsplashImage } from '@brickdoc/uploader'
@@ -9,11 +8,12 @@ import { BlockContainer } from '../../BlockContainer'
 import { EditorContext } from '../../../../context/EditorContext'
 import { EmbedBlockAttributes } from '../EmbedView'
 import { useExternalProps } from '../../../../hooks/useExternalProps'
+import { EmbedViewProps } from '../../../../extensions/blocks/embed/meta'
 
 export interface GalleryTypeEmbedBlockProps {
-  deleteNode: NodeViewProps['deleteNode']
-  getPos: NodeViewProps['getPos']
-  node: NodeViewProps['node']
+  deleteNode: EmbedViewProps['deleteNode']
+  getPos: EmbedViewProps['getPos']
+  node: EmbedViewProps['node']
   updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
 }
 
@@ -199,8 +199,7 @@ export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
                   css={{
                     backgroundImage: `url(${item.smallUrl})`
                   }}
-                  onClick={handleSelectImage(item)}
-                >
+                  onClick={handleSelectImage(item)}>
                   <GalleryImageInfo>
                     <GalleryImageUsername>{item.username}</GalleryImageUsername>
                   </GalleryImageInfo>
@@ -209,8 +208,7 @@ export const GalleryTypeEmbedBlock: FC<GalleryTypeEmbedBlockProps> = ({
             </GalleryImageList>
             <LoadMorePlaceholder ref={createScrollObserver} />
           </Gallery>
-        }
-      >
+        }>
         <EmbedBlockPlaceholder
           data-testid={TEST_ID_ENUM.editor.embedBlock.addButton.id}
           icon={<Icon.Unsplash />}

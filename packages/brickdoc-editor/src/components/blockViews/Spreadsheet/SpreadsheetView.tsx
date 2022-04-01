@@ -126,7 +126,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
   width?: number
   setWidth?: (width: number) => void
 }> = ({ context, columnId, children, className = '', columnActions, draggable, onResize, width, setWidth }) => {
-  const { t } = useEditorI18n()
+  const [t] = useEditorI18n()
   const columnRef = React.createRef<HTMLTableHeaderCellElement>()
   const selected = context.selection.columnIds?.includes(columnId)
   const dragging = context.dragging.columnId === columnId
@@ -208,8 +208,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
           : {})
       }}
       onMouseDown={onMouseDown}
-      onContextMenu={onContextMenu}
-    >
+      onContextMenu={onContextMenu}>
       {children}
       {columnActions ? (
         <Dropdown
@@ -232,8 +231,7 @@ export const SpreadsheetHeaderColumn: React.FC<{
           placement="bottomStart"
           visible={dropdownVisible}
           onVisibleChange={onDropdownVisibleChange}
-          aria-label={t('spreadsheet.column.actions')}
-        >
+          aria-label={t('spreadsheet.column.actions')}>
           <span>⌄</span>
         </Dropdown>
       ) : (
@@ -256,7 +254,7 @@ export const SpreadsheetRowAction: React.FC<{
   draggable?: boolean
   height?: number
 }> = ({ context, rowId, children, rowNumber, rowActions, draggable, height }) => {
-  const { t } = useEditorI18n()
+  const [t] = useEditorI18n()
 
   const { hoverRowId } = context
 
@@ -322,8 +320,7 @@ export const SpreadsheetRowAction: React.FC<{
             }
           : {})
       }}
-      data-row-id={rowId}
-    >
+      data-row-id={rowId}>
       <td className="row-action-panel" onContextMenu={onContextMenu}>
         <div className="row-action-panel-layer" onMouseDown={onMouseDown}>
           <Button className="row-number" onClick={onClickRowNumber}>
@@ -350,8 +347,7 @@ export const SpreadsheetRowAction: React.FC<{
               placement="bottomStart"
               visible={dropdownVisible}
               onVisibleChange={onDropdownVisibleChange}
-              aria-label={t('spreadsheet.row.actions')}
-            >
+              aria-label={t('spreadsheet.row.actions')}>
               <span>⌄</span>
             </Dropdown>
           ) : (
@@ -427,7 +423,7 @@ export const SpreadsheetCellContainer: React.FC<{
   cellId: SpreadsheetSelectionCellId
   children?: React.ReactNode
 }> = ({ children, context, cellId }) => {
-  const { t } = useEditorI18n()
+  const [t] = useEditorI18n()
 
   const cellIdStr = `${cellId.rowId},${cellId.columnId}`
   const { selection } = context

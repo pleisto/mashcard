@@ -75,8 +75,6 @@ const drawerTransition = (visible?: boolean): Transition => ({
 export const Drawer: FC<DrawerProps> = ({ visible, className, title, renderBody, container, onClose, children }) => {
   const element = container ?? document.body
 
-  if (!element) return null
-
   return createPortal(
     <>
       <DrawerContainer

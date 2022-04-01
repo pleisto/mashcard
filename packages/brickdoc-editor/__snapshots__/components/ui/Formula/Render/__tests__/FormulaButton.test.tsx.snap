@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormulaButton renders FormulaButton correctly 1`] = `
+<div>
+  <button
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md"
+    role="button"
+    tabindex="0"
+    type="button"
+  >
+    <span>
+      name
+    </span>
+  </button>
+</div>
+`;

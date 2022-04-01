@@ -74,7 +74,7 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.formula) extensions.push(EXTENSION.Formula.configure(getConfigure(this.options?.formula)))
     // NOTE: formula only
     if (this.options.formulaKeyDown)
-      extensions.push(EXTENSION.FormulaHandleKeyDownExtension.configure(getConfigure(this.options?.formulaKeyDown)))
+      extensions.push(EXTENSION.FormulaHandleKeyDown.configure(getConfigure(this.options?.formulaKeyDown)))
     if (this.options.formulaType)
       extensions.push(EXTENSION.FormulaType.configure(getConfigure(this.options?.formulaType)))
     if (this.options.gapcursor) extensions.push(EXTENSION.Gapcursor)

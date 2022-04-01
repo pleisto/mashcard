@@ -77,10 +77,7 @@ export interface FormulaHandleKeyDownOptions {
 }
 export interface FormulaHandleKeyDownAttributes {}
 
-export const FormulaHandleKeyDownExtension = createExtension<
-  FormulaHandleKeyDownOptions,
-  FormulaHandleKeyDownAttributes
->({
+export const FormulaHandleKeyDown = createExtension<FormulaHandleKeyDownOptions, FormulaHandleKeyDownAttributes>({
   name: meta.name,
 
   addProseMirrorPlugins() {

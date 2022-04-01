@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormulaLiteral renders number type result correctly 1`] = `
+<div>
+  <span>
+    1
+  </span>
+</div>
+`;
+
+exports[`FormulaLiteral renders string type result correctly 1`] = `
+<div>
+  <span>
+    result
+  </span>
+</div>
+`;

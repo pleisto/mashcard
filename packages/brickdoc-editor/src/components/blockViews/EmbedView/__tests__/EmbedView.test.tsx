@@ -1,7 +1,6 @@
 import { Embedtype } from '@brickdoc/schema'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
 import { ExternalProps } from '../../../../context'
 import { EmbedAttributes, EmbedOptions } from '../../../../extensions'
 import { mockBlockViewProps } from '../../../common/tests'
@@ -146,10 +145,7 @@ describe('EmbedView', () => {
         }
       })
 
-      // eslint-disable-next-line max-nested-callbacks
-      act(() => {
-        render(<EmbedView {...props} />)
-      })
+      render(<EmbedView {...props} />)
 
       expect(screen.getByText('embed_block.types.gallery.label')).toBeInTheDocument()
     })

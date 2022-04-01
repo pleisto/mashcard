@@ -43,7 +43,7 @@ export const FormulaMenu: React.FC<FormulaMenuProps> = ({
   updateEditor,
   completion
 }) => {
-  const { t } = useEditorI18n()
+  const [t] = useEditorI18n()
   const [visible, setVisible] = React.useState(defaultVisible)
   const [inputName, setInputName] = React.useState(nameRef.current)
 

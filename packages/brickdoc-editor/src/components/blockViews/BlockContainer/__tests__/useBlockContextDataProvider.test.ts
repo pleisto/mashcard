@@ -1,12 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { useBlockContextDataProvider } from '../useBlockContextDataProvider'
 
-Object.assign(navigator, {
-  clipboard: {
-    writeText: () => {}
-  }
-})
-
 describe('useBlockContextDataProvider', () => {
   it('gets data correctly', () => {
     const mockUpdateDragging = jest.fn()

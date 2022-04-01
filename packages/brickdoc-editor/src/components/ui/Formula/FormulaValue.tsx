@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC, ReactElement } from 'react'
 import { resultToColorType, VariableDisplayData } from '@brickdoc/formula'
 import './Formula.less'
 import { FORMULA_COLORS, FORMULA_ICONS } from '../../../helpers'
@@ -14,7 +14,7 @@ export interface FormulaValueProps {
   selected?: SelectedType
 }
 
-export const FormulaValue: React.FC<FormulaValueProps> = ({
+export const FormulaValue: FC<FormulaValueProps> = ({
   name,
   border,
   selected,
@@ -56,7 +56,7 @@ export const FormulaValue: React.FC<FormulaValueProps> = ({
   // eslint-disable-next-line no-nested-ternary
   const finalDisplay = result.type === 'boolean' ? (result.result ? '✓' : '✗') : display
 
-  let data: React.ReactElement
+  let data: ReactElement
 
   switch (result.type) {
     case 'Error':
