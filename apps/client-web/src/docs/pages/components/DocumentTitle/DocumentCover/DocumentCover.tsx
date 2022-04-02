@@ -1,9 +1,9 @@
 import * as React from 'react'
-import styles from './DocumentCover.module.less'
-import { Button, Popover, PopoverProps, cx } from '@brickdoc/design-system'
+import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+import * as Root from './DocumentCover.style'
 
 interface DocumentCoverImage extends BlockImage {
   type: Blocktype.Image
@@ -51,20 +51,20 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
   }
 
   return (
-    <div
+    <Root.Cover
       data-testid={TEST_ID_ENUM.page.DocumentPage.cover.id}
-      className={cx(styles.cover, { [styles.uncover]: !documentCoverMeta }, className)}
-      style={style}
+      uncover={!documentCoverMeta}
+      className={className}
+      css={style}
     >
-      <div className={styles.buttons}>
+      <Root.Actions>
         {editable && (
           <>
             {documentCoverMeta && (
               <Popover {...popoverProps}>
                 <Button
                   data-testid={TEST_ID_ENUM.page.DocumentPage.changeCoverButton.id}
-                  className={styles.button}
-                  type="text"
+                  type="secondary"
                   disabled={!editable}
                 >
                   {t('title.change_cover')}
@@ -75,10 +75,20 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
             <Button className={styles.button} type="text" isDisabled={!editable}>
               {t('title.reposition')}
             </Button>
-            */}
+              */}
+
+            {/*
+                TODO: cover remove
+                <Button
+              data-testid={TEST_ID_ENUM.page.DocumentPage.removeCoverButton.id}
+              type="secondary"
+              disabled={!editable}
+            >
+              {t('title.remove_cover')}
+            </Button> */}
           </>
         )}
-      </div>
-    </div>
+      </Root.Actions>
+    </Root.Cover>
   )
 }

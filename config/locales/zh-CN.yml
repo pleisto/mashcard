@@ -699,6 +699,7 @@ zh-CN:
     title:
       add_icon: 添加图标
       add_cover: 添加封面
+      remove_cover: 删除封面
       change_cover: Change cover
       reposition: Reposition
       untitled: Untitled

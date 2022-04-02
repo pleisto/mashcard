@@ -593,6 +593,7 @@ en-US:
     title:
       add_icon: Add icon
       add_cover: Add cover
+      remove_cover: Remove
       change_cover: Change cover
       reposition: Reposition
       untitled: Untitled
