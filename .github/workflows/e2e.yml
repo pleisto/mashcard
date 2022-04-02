@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # run 3 copies of the current job in parallel
-        shard: [1, 2, 3]
+        # run 2 copies of the current job in parallel
+        shard: [1, 2]
       fail-fast: false
     steps:
       - name: Checkout the codebase
@@ -51,7 +51,8 @@ jobs:
         env:
           DEPLOY_ENV: ${{ github.event.deployment_status.environment }}
       - name: Run Playwright tests
-        run: yarn e2e-testing run-playwright --shard=${{ matrix.shard }}/3
+        run: yarn e2e-testing run-playwright --shard=${{ matrix.shard }}/2
+        if: success()
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
           PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.environment_url }}

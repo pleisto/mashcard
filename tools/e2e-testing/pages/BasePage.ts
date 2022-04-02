@@ -11,14 +11,6 @@ export class BasePage {
     return this.page.locator(COMMON_SELECTORS.tooltip)
   }
 
-  async gotoHomePage(): Promise<void> {
-    await this.page.goto('/', { waitUntil: 'domcontentloaded' })
-    const csrfToken = await this.page.evaluate(() => (window as any).brickdocContext.csrfToken)
-    // TODO: remove all pages & get pageBlocks
-    await this.waitForResponse('GetPageBlocks')
-    return csrfToken
-  }
-
   async waitForResponse(operationName: string): Promise<void> {
     await this.page.waitForResponse(
       response =>

@@ -7,12 +7,14 @@ import { BlockSoftDeleteInput, CreateBlockInput, InputType, OperationName, Optio
 
 export class BlockApi {
   private readonly request
-  private readonly csrfToken
   private readonly REQUEST_URL = '/.internal-apis/$graph'
+  private readonly REQUEST_HEADER
 
   constructor(request: APIRequestContext, csrfToken: string) {
     this.request = request
-    this.csrfToken = csrfToken
+    this.REQUEST_HEADER = {
+      'x-csrf-token': csrfToken
+    }
   }
 
   options(gqlQuery: string, operationName: OperationName, variables: InputType): OptionsType {
@@ -22,9 +24,7 @@ export class BlockApi {
         operationName,
         variables
       },
-      headers: {
-        'x-csrf-token': this.csrfToken
-      }
+      headers: this.REQUEST_HEADER
     }
   }
 
@@ -50,7 +50,6 @@ export class BlockApi {
 
   async createPage(page: PageBlock, parentId?: string): Promise<void> {
     const id = await this.createPageApi(createBlockConverter(page, parentId))
-    page.id = id
     await this.blockSyncBatch(page, id)
     if (page.children) {
       for (const child of page.children) {

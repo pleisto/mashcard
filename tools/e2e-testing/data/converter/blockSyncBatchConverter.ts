@@ -7,6 +7,7 @@ export function blockSyncBatchConverter(page: PageBlock, id: string): BlockSyncB
       blocks: blockConverter(page, id),
       deletedIds: [],
       rootId: id,
+      // hard code temporary until backend be fixed
       operatorId: '54701a5a-f151-499f-8cc3-069950144ad3'
     }
   }
