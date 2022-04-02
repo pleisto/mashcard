@@ -195,8 +195,7 @@ describe Docs::Mutations::BlockSyncBatch, type: :mutation do
         sort: 147
       }] } }
       internal_graphql_execute(mutation, input)
-      expect(response.success?).to be(false)
-      expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.cannot_modify_deleted_blocks"))
+      expect(response.success?).to be(true)
 
       self.current_user = nil
       self.current_space = nil

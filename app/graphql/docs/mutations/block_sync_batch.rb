@@ -18,7 +18,7 @@ module Docs
       root = Docs::Block.find_by(id: root_id)
 
       if root&.deleted_at
-        raise BrickGraphQL::Errors::ArgumentError, :cannot_modify_deleted_blocks
+        return
       end
 
       patches = []
