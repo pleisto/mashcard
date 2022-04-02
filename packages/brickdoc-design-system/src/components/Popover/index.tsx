@@ -13,10 +13,6 @@ export interface PopoverProps extends AbstractTriggerProps {
 
 const Popover: ForwardRefRenderFunction<unknown, PopoverProps> = (props, ref) => {
   const { title, content, role = 'dialog', compact, ...otherProps } = props
-  const overlayStyle = {
-    maxWidth: '100vw',
-    overflow: 'auto'
-  }
 
   const prefixCls = useMemo(
     () => props.prefixCls ?? (compact ? popoverCompactStyle() : popoverStyle()),
@@ -31,16 +27,7 @@ const Popover: ForwardRefRenderFunction<unknown, PopoverProps> = (props, ref) =>
     </>
   )
 
-  return (
-    <Tooltip
-      overlayStyle={overlayStyle}
-      {...otherProps}
-      ref={ref}
-      overlay={overlay}
-      prefixCls={prefixCls}
-      role={role}
-    />
-  )
+  return <Tooltip {...otherProps} ref={ref} overlay={overlay} prefixCls={prefixCls} role={role} />
 }
 
 const _Popover = forwardRef(Popover)

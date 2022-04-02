@@ -91,6 +91,10 @@ export function useDocumentIconUploader(
     trigger: 'click',
     placement: 'bottom',
     destroyTooltipOnHide: true,
+    overlayStyle: {
+      maxWidth: '100vw',
+      overflow: 'auto'
+    },
     content: (
       <Dashboard
         blockId={blockId}
