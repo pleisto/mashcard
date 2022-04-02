@@ -1,3 +1,4 @@
+import { EventType } from '@brickdoc/schema'
 import { CstNode } from 'chevrotain'
 import {
   ButtonType,
@@ -44,7 +45,7 @@ export type FormulaType =
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
-export type FormulaCodeFragmentType = 'TRUE' | 'FALSE' | 'Function' | 'Variable' | 'FunctionName'
+export type FormulaCodeFragmentType = 'TRUE' | 'FALSE' | 'Function' | 'Variable' | 'FunctionName' | 'LogicColumn'
 
 export type FormulaColorType = Exclude<FormulaType, 'boolean'> | FormulaCodeFragmentType
 
@@ -113,6 +114,7 @@ export type FunctionKey = `${FunctionGroup}::${FunctionNameType}` | FunctionName
 export type VariableKey = `#${NamespaceId}.${VariableId}`
 export type BlockKey = '#CurrentBlock' | `#${NamespaceId}`
 export type ColumnKey = `#${NamespaceId}.${ColumnId}`
+export type SpreadsheetKey = `#${NamespaceId}.${SpreadsheetId}`
 
 // TODO blockName -> string
 export type BlockName = NamespaceId
@@ -128,6 +130,7 @@ export type uuid = string
 export type NamespaceId = uuid
 export type VariableId = uuid
 export type ColumnId = uuid
+export type SpreadsheetId = uuid
 
 export type Feature = string
 export type Features = Feature[]
@@ -155,8 +158,6 @@ export interface BaseResult {
   view?: ViewData<ViewType>
   type: Exclude<FormulaType, 'void'>
   subType?: FormulaType
-  errorKind?: ErrorType
-  operator?: PredicateOperator
 }
 export interface NumberResult extends BaseResult {
   result: number
@@ -387,7 +388,7 @@ export interface Argument {
 }
 
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
-export type ComplexCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block' | 'UUID'
+export type ComplexCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block' | 'UUID' | 'LogicColumn'
 export type SimpleCodeFragmentType =
   | 'FunctionName'
   | 'Function'
@@ -409,7 +410,6 @@ interface BaseCompletion {
   readonly name: string
   readonly value: any
   readonly preview: any
-  readonly renderDescription: (blockId: NamespaceId) => string
   readonly codeFragments: CodeFragment[]
 }
 export interface FunctionCompletion extends BaseCompletion {
@@ -441,7 +441,7 @@ export interface BlockCompletion extends BaseCompletion {
 export interface SpreadsheetCompletion extends BaseCompletion {
   readonly kind: 'spreadsheet'
   readonly namespace: BlockName
-  readonly value: BlockKey
+  readonly value: SpreadsheetKey
   readonly preview: SpreadsheetType
 }
 
@@ -456,42 +456,11 @@ export interface FormulaNameToken {
   image: string
   type: string
 }
-
-export interface BaseFormulaName {
-  kind: ComplexCodeFragmentType
-  renderTokens: (namespaceIsExist: boolean, namespaceId: NamespaceId) => FormulaNameToken[]
-  key: string
-  name: string
-  namespaceId: string
-}
-
-export interface VariableFormulaName extends BaseFormulaName {
-  kind: 'Variable'
-  name: VariableName
-  key: VariableId
-}
-
-export interface BlockFormulaName extends BaseFormulaName {
-  kind: 'Block'
-  name: BlockName
-  key: NamespaceId
-}
-
-export interface SpreadsheetFormulaName extends BaseFormulaName {
-  kind: 'Spreadsheet'
-  name: SpreadsheetName
-  key: NamespaceId
-}
-
-export type FormulaName = VariableFormulaName | BlockFormulaName | SpreadsheetFormulaName
-
 export interface DirtyFormulaInfo {
   updatedAt: Date
 }
 export interface ContextInterface {
   features: string[]
-  spreadsheets: Record<NamespaceId, SpreadsheetType>
-  formulaNames: FormulaName[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
   reservedNames: string[]
   reverseVariableDependencies: Record<VariableKey, VariableDependency[]>
@@ -499,15 +468,21 @@ export interface ContextInterface {
   invoke: (name: FunctionNameType, ctx: FunctionContext, ...args: any[]) => Promise<AnyTypeResult>
   backendActions: BackendActions | undefined
   variableCount: () => number
-  findFormulaName: (namespaceId: NamespaceId) => FormulaName | undefined
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findViewRender: (viewType: ViewType) => ViewRender | undefined
-  findSpreadsheet: (namespaceId: NamespaceId) => SpreadsheetType | undefined
+  findSpreadsheetById: (spreadsheetId: SpreadsheetId) => SpreadsheetType | undefined
+  findBlockById: (blockId: NamespaceId) => BlockType | undefined
+  setBlock: (blockId: NamespaceId, name: string) => void
+  removeBlock: (blockId: NamespaceId) => void
+  setName: (nameDependency: NameDependencyWithKind) => void
+  removeName: (id: NamespaceId) => void
+  findNames: (namespaceId: NamespaceId, name: string) => NameDependencyWithKind[]
+  findSpreadsheetByName: (namespaceId: NamespaceId, name: string) => SpreadsheetType | undefined
   findColumnById: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
   findColumnByName: (namespaceId: NamespaceId, name: ColumnName) => ColumnType | undefined
   setSpreadsheet: (spreadsheet: SpreadsheetType) => void
-  removeSpreadsheet: (namespaceId: NamespaceId) => void
+  removeSpreadsheet: (spreadsheetId: SpreadsheetId) => void
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
   findVariableById: (namespaceId: NamespaceId, variableId: VariableId) => VariableInterface | undefined
   findVariableByName: (namespaceId: NamespaceId, name: string) => VariableInterface | undefined
@@ -515,6 +490,7 @@ export interface ContextInterface {
   removeVariable: (namespaceId: NamespaceId, variableId: VariableId) => Promise<void>
   findFunctionClause: (group: FunctionGroup, name: FunctionNameType) => FunctionClause<FormulaType> | undefined
   resetFormula: VoidFunction
+  cleanup: VoidFunction
 }
 
 interface TestCase {
@@ -603,9 +579,8 @@ export type FunctionClause<T extends FormulaType> = Omit<BaseFunctionClauseWithK
 
 export interface BaseCodeFragment {
   readonly code: CodeFragmentCodes
-  readonly value: string
+  readonly valuePrefix?: string
   readonly display: string
-  readonly renderText: undefined | ((text: string, attrs: CodeFragment, prevText: string) => string)
   readonly hide: boolean
   readonly type: FormulaType
   readonly errors: ErrorMessage[]
@@ -639,9 +614,15 @@ export interface VariableDependency {
   readonly namespaceId: NamespaceId
 }
 
-export interface VariableNameDependency {
+export interface NameDependency {
   readonly namespaceId: NamespaceId
   readonly name: string
+}
+
+export interface NameDependencyWithKind extends NameDependency {
+  readonly id: uuid
+  readonly kind: 'Block' | 'Variable' | 'Spreadsheet'
+  readonly renderTokens: (namespaceIsExist: boolean, namespaceId: NamespaceId) => FormulaNameToken[]
 }
 
 interface BaseVariableValue {
@@ -690,6 +671,19 @@ export interface SyncVariableTask extends BaseVariableTask {
   variableValue: VariableValue
 }
 
+export interface EventScope {
+  kind: 'Row' | 'Column'
+  keys: string[]
+}
+
+export interface EventDependency {
+  kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Cell'
+  readonly event: EventType
+  readonly eventId: string
+  scopes: EventScope[]
+  definitionHandler?: (deps: EventDependency, variable: VariableInterface, payload: any) => string | undefined
+}
+
 export type VariableTask = AsyncVariableTask | SyncVariableTask
 export interface VariableData {
   definition: Definition
@@ -708,9 +702,10 @@ export interface VariableData {
   cst?: CstNode
   codeFragments: CodeFragment[]
   flattenVariableDependencies: VariableDependency[]
-  variableNameDependencies: VariableNameDependency[]
+  nameDependencies: NameDependency[]
   variableDependencies: VariableDependency[]
   blockDependencies: NamespaceId[]
+  eventDependencies: EventDependency[]
   functionDependencies: Array<FunctionClause<FormulaType>>
 }
 export interface VariableMetadata {
@@ -728,15 +723,24 @@ export interface VariableInterface {
   isNew: boolean
   formulaContext: ContextInterface
 
-  buildFormula: () => Formula
-  clearDependency: VoidFunction
+  buildFormula: (definition?: string) => Formula
+  cleanup: (hard: boolean) => void
   trackDependency: VoidFunction
   trackDirty: VoidFunction
   save: VoidFunction
+  nameDependency: () => NameDependencyWithKind
   namespaceName: (pageId: NamespaceId) => string
   updateDefinition: (definition: Definition) => void
   meta: () => VariableMetadata
-  onUpdate: (skipPersist?: boolean) => void
+  onUpdate: ({
+    skipPersist,
+    tNotMatched,
+    savedTNotMatched
+  }: {
+    skipPersist?: boolean
+    tNotMatched?: boolean
+    savedTNotMatched?: boolean
+  }) => void
 }
 
 export interface BackendActions {

@@ -1,5 +1,5 @@
 import { CodeFragment, ErrorMessage, RecordResult } from '../../types'
-import { codeFragment2string } from '../codeFragment'
+import { codeFragment2string } from '../convert'
 import { OperatorType } from '../operator'
 import { extractSubType } from '../util'
 

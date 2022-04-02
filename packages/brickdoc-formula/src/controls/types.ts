@@ -14,7 +14,9 @@ import {
   AnyTypeResult,
   CodeFragment,
   ErrorMessage,
-  FormulaType
+  FormulaType,
+  SpreadsheetId,
+  NameDependencyWithKind
 } from '../types'
 
 export interface ControlType {
@@ -35,6 +37,7 @@ export interface ButtonType extends ControlType {
 
 export interface BlockInitializer {
   id: NamespaceId
+  name: string
 }
 
 type handleInterpretType = (name: string) => Promise<AnyTypeResult>
@@ -48,9 +51,12 @@ type handleCodeFragmentsType = (
   name: string,
   rhsCodeFragments: CodeFragment[]
 ) => handleCodeFragmentsResult
-export interface BlockType extends BlockInitializer {
+export interface BlockType {
+  id: NamespaceId
   _formulaContext: ContextInterface
   name: (pageId: NamespaceId) => string
+  nameDependency: () => NameDependencyWithKind
+  cleanup: VoidFunction
   persistence: () => BlockInitializer
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
@@ -58,19 +64,25 @@ export interface BlockType extends BlockInitializer {
 
 export interface ColumnInitializer {
   columnId: ColumnId
-  namespaceId: NamespaceId
+  spreadsheetId: SpreadsheetId
   name: ColumnName
+  title: string | undefined
+  displayIndex: string
   index: number
+  sort: number
 }
 
 export interface ColumnType extends ColumnInitializer {
   spreadsheet: SpreadsheetType
+  logic: boolean
+  display: () => string
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
   cells: () => CellType[]
 }
 
 export interface Row {
+  spreadsheetId: SpreadsheetId
   rowId: uuid
   rowIndex: number
 }
@@ -80,7 +92,7 @@ export interface RowType extends Row {
 }
 
 export interface RangeType {
-  spreadsheetId: uuid
+  spreadsheetId: SpreadsheetId
   columnSize: number
   rowSize: number
   rowIds: uuid[]
@@ -90,7 +102,7 @@ export interface RangeType {
 }
 
 export interface CellType {
-  spreadsheetId: uuid
+  spreadsheetId: SpreadsheetId
   cellId: uuid
   columnId: ColumnId
   rowId: uuid
@@ -101,17 +113,29 @@ export interface CellType {
 }
 
 export interface SpreadsheetInitializer {
-  blockId: NamespaceId
+  spreadsheetId: SpreadsheetId
+  namespaceId: NamespaceId
   ctx: BaseFunctionContext
   dynamic: boolean
   name: string
-  listColumns: () => ColumnInitializer[]
-  listRows: () => Row[]
-  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => CellType[]
+  columns: ColumnInitializer[]
+  rows: Row[]
+  getCell: ({
+    rowId,
+    columnId,
+    rowIndex,
+    columnIndex
+  }: {
+    rowId: uuid
+    columnId: uuid
+    rowIndex: number
+    columnIndex: number
+  }) => CellType
 }
 
 export interface SpreadsheetDynamicPersistence {
-  blockId: NamespaceId
+  spreadsheetId: SpreadsheetId
+  namespaceId: NamespaceId
   spreadsheetName: string
   columns: ColumnInitializer[]
   rows: Row[]
@@ -119,18 +143,22 @@ export interface SpreadsheetDynamicPersistence {
 }
 
 export interface SpreadsheetAllPersistence {
-  blockId: NamespaceId
+  spreadsheetId: SpreadsheetId
+  namespaceId: NamespaceId
   rowCount: number
   columnCount: number
   persistence?: SpreadsheetDynamicPersistence
 }
 
 export interface SpreadsheetType {
-  blockId: NamespaceId
+  spreadsheetId: SpreadsheetId
+  namespaceId: NamespaceId
   dynamic: boolean
+  cleanup: (hard: boolean) => void
   persistence?: SpreadsheetDynamicPersistence
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
+  nameDependency: () => NameDependencyWithKind
   columnCount: () => number
   rowCount: () => number
   name: () => string
@@ -140,8 +168,8 @@ export interface SpreadsheetType {
   findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined
   findCellDisplayData: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => VariableDisplayData | undefined
   getRow: (rowId: uuid) => Row | undefined
-  getColumnById: (columnId: ColumnId) => ColumnInitializer | undefined
-  getColumnByName: (name: string) => ColumnInitializer | undefined
+  getColumnById: (columnId: ColumnId) => ColumnType | undefined
+  getColumnByName: (name: string) => ColumnType | undefined
   toArray: () => string[][]
   toRecord: () => Array<Record<string, StringResult>>
   persistAll: () => SpreadsheetAllPersistence

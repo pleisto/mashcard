@@ -40,9 +40,6 @@ export const BlockSynced = event<Block>()('BlockSynced', (block: Block) => {
   return { id: block.id }
 })
 
-export const BlockSpreadsheetLoaded = event<{ id: string }>()('BlockSpreadsheetLoaded', ({ id }) => {
-  return { id }
-})
 export const BlockNameLoad = event<{ id: string; name: string }>()('BlockNameLoad', ({ id }) => {
   return { id }
 })
@@ -74,8 +71,59 @@ export const FormulaTaskCompleted = event<any>()('FormulaTaskCompleted', v => {
   return { id: `${v.namespaceId},${v.variableId}` }
 })
 
-export const FormulaUpdatedViaName = event<any>()('FormulaUpdatedViaName', v => {
-  return { id: `${v.t.namespaceId}#${v.t.name}` }
+export const SpreadsheetReloadViaId = event<{
+  spreadsheetId: string
+  namespaceId: string
+  scopes: any[]
+  key: string
+}>()('SpreadsheetReloadViaId', ({ spreadsheetId, namespaceId, key }) => {
+  return { id: `${namespaceId},${spreadsheetId}` }
+})
+
+export const SpreadsheetUpdateNameViaId = event<{
+  spreadsheetId: string
+  namespaceId: string
+  name: string
+  scopes: any[]
+  key: string
+}>()('SpreadsheetUpdateNameViaId', ({ spreadsheetId, namespaceId, name, key }) => {
+  return { id: `${namespaceId},${spreadsheetId}` }
+})
+
+export const SpreadsheetUpdateRowsViaId = event<{
+  spreadsheetId: string
+  namespaceId: string
+  rows: any
+  key: string
+}>()('SpreadsheetUpdateRowsViaId', ({ spreadsheetId, namespaceId, rows, key }) => {
+  return { id: `${namespaceId},${spreadsheetId}` }
+})
+
+export const SpreadsheetUpdateColumnsViaId = event<{
+  spreadsheetId: string
+  namespaceId: string
+  columns: any
+  key: string
+}>()('SpreadsheetUpdateColumnsViaId', ({ spreadsheetId, namespaceId, columns, key }) => {
+  return { id: `${namespaceId},${spreadsheetId}` }
+})
+
+export const FormulaContextNameChanged = event<{
+  id: string
+  namespaceId: string
+  name: string
+  kind: string
+}>()('FormulaContextNameChanged', ({ id, namespaceId, name, kind }) => {
+  return { id: `${namespaceId}#${name}` }
+})
+
+export const FormulaContextNameRemove = event<{
+  id: string
+  namespaceId: string
+  name: string
+  kind: string
+}>()('FormulaContextNameRemove', ({ id, namespaceId, name, kind }) => {
+  return { id: `${namespaceId}#${name}` }
 })
 
 export const SlashMenuHide = event<void>()('SlashMenuHide')

@@ -1,9 +1,24 @@
-import { CodeFragmentVisitor, column2attrs, columnRenderText } from '../grammar'
+import {
+  BrickdocEventBus,
+  EventSubscribed,
+  SpreadsheetReloadViaId,
+  SpreadsheetUpdateColumnsViaId,
+  SpreadsheetUpdateNameViaId,
+  SpreadsheetUpdateRowsViaId
+} from '@brickdoc/schema'
+import {
+  CodeFragmentVisitor,
+  column2codeFragment,
+  maybeEncodeString,
+  objectDiff,
+  codeFragments2definition
+} from '../grammar'
 import {
   AnyTypeResult,
   CodeFragment,
   ContextInterface,
   ErrorMessage,
+  NameDependencyWithKind,
   NamespaceId,
   StringResult,
   uuid,
@@ -18,48 +33,179 @@ import {
   ColumnInitializer,
   CellType,
   SpreadsheetAllPersistence,
-  handleCodeFragmentsResult
+  handleCodeFragmentsResult,
+  ColumnType
 } from './types'
 
 export class SpreadsheetClass implements SpreadsheetType {
   _formulaContext: ContextInterface
-  blockId: NamespaceId
+  spreadsheetId: NamespaceId
+  namespaceId: NamespaceId
   dynamic: boolean
   persistence?: SpreadsheetDynamicPersistence
+  _name: string
   name: () => string
-  listColumns: () => ColumnInitializer[]
-  listRows: () => Row[]
-  listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => CellType[]
+  getCell: ({
+    rowId,
+    columnId,
+    rowIndex,
+    columnIndex
+  }: {
+    rowId: uuid
+    columnId: uuid
+    rowIndex: number
+    columnIndex: number
+  }) => CellType
+
+  _columns: ColumnInitializer[]
+  _rows: Row[]
+  eventListeners: EventSubscribed[] = []
 
   constructor({
-    blockId,
+    spreadsheetId,
+    namespaceId,
     name,
-    listColumns,
-    listRows,
-    listCells,
+    columns,
+    rows,
+    getCell,
     dynamic,
     ctx: { meta, formulaContext }
   }: SpreadsheetInitializer) {
     this._formulaContext = formulaContext
     this.dynamic = dynamic
-    this.blockId = blockId
+    this.spreadsheetId = spreadsheetId
+    this.namespaceId = namespaceId
+    this.getCell = getCell
+    this._name = name
     if (meta) {
       this.name = () => {
         const v = formulaContext.findVariableById(meta.namespaceId, meta.variableId)
         if (v) {
           return v.t.name
         }
-        return name
+        return this._name
       }
     } else {
-      this.name = () => name
+      this.name = () => this._name
     }
-    this.listColumns = listColumns
-    this.listRows = listRows
-    this.listCells = listCells
+    this._columns = columns
+    this._rows = rows
 
     if (dynamic) {
       this.persistence = this.persistDynamic()
+    }
+
+    const nameSubscription = BrickdocEventBus.subscribe(
+      SpreadsheetUpdateNameViaId,
+      e => {
+        this._name = e.payload.name
+        this._formulaContext.setName(this.nameDependency())
+      },
+      { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+    )
+    this.eventListeners.push(nameSubscription)
+
+    const columnsSubcription = BrickdocEventBus.subscribe(
+      SpreadsheetUpdateColumnsViaId,
+      e => {
+        const oldColumns = this._columns
+        const newColumns = e.payload.columns
+        this._columns = newColumns
+
+        const pairs1 = objectDiff<ColumnInitializer>(oldColumns, newColumns)
+        const pairs2 = objectDiff<ColumnInitializer>(newColumns, oldColumns)
+        const changedColumnIds = [
+          ...new Set([...Object.values(pairs1), ...Object.values(pairs2)].flatMap(p => [p.columnId, p.displayIndex]))
+        ]
+        if (!changedColumnIds.length) return
+
+        BrickdocEventBus.dispatch(
+          SpreadsheetReloadViaId({
+            spreadsheetId: this.spreadsheetId,
+            scopes: [{ kind: 'Column', keys: changedColumnIds }],
+            namespaceId: this.namespaceId,
+            key: this.spreadsheetId
+          })
+        )
+      },
+      { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+    )
+    this.eventListeners.push(columnsSubcription)
+
+    const rowsSubcription = BrickdocEventBus.subscribe(
+      SpreadsheetUpdateRowsViaId,
+      e => {
+        const oldRows = this._rows
+        const newRows = e.payload.rows
+        this._rows = newRows
+
+        const pairs1 = objectDiff<Row>(oldRows, newRows)
+        const pairs2 = objectDiff<Row>(newRows, oldRows)
+        const changedRowIds = [...new Set([...Object.values(pairs1), ...Object.values(pairs2)].map(p => p.rowId))]
+        if (!changedRowIds.length) return
+
+        BrickdocEventBus.dispatch(
+          SpreadsheetReloadViaId({
+            spreadsheetId: this.spreadsheetId,
+            scopes: [{ kind: 'Row', keys: changedRowIds }],
+            namespaceId: this.namespaceId,
+            key: this.spreadsheetId
+          })
+        )
+      },
+      { eventId: `${namespaceId},${spreadsheetId}`, subscribeId: `Spreadsheet#${spreadsheetId}` }
+    )
+    this.eventListeners.push(rowsSubcription)
+  }
+
+  public listColumns(): ColumnInitializer[] {
+    return this._columns
+  }
+
+  public listRows(): Row[] {
+    return this._rows
+  }
+
+  public listCells({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }): CellType[] {
+    const finalRowIdsWithIndex = rowId ? this._rows.filter(row => row.rowId === rowId) : this._rows
+    const finalColumnIdsWithIndex = columnId
+      ? this._columns.filter(column => column.columnId === columnId)
+      : this._columns
+
+    return finalRowIdsWithIndex.flatMap(({ rowId, rowIndex }) =>
+      finalColumnIdsWithIndex.map(({ columnId, index: columnIndex }) => {
+        return this.getCell({ rowId, columnId, rowIndex, columnIndex })
+      })
+    )
+  }
+
+  public cleanup(hard: boolean): void {
+    if (hard) this._formulaContext.removeName(this.spreadsheetId)
+    this.eventListeners.forEach(listener => {
+      listener.unsubscribe()
+    })
+    this.eventListeners = []
+  }
+
+  public nameDependency(): NameDependencyWithKind {
+    const nameToken = { image: maybeEncodeString(this._name)[1], type: 'StringLiteral' }
+    return {
+      kind: 'Spreadsheet',
+      id: this.spreadsheetId,
+      namespaceId: this.namespaceId,
+      name: this._name,
+      renderTokens: (namespaceIsExist, pageId) => {
+        if (namespaceIsExist) {
+          return [nameToken]
+        }
+
+        const namespaceToken =
+          pageId === this.namespaceId
+            ? { image: 'CurrentBlock', type: 'CurrentBlock' }
+            : { image: this.namespaceId, type: 'UUID' }
+
+        return [{ image: '#', type: 'Sharp' }, namespaceToken, { image: '.', type: 'Dot' }, nameToken]
+      }
     }
   }
 
@@ -75,7 +221,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     const column = this.getColumnByName(name)
 
     if (column) {
-      return { type: 'Column', result: new ColumnClass(this, column) }
+      return { type: 'Column', result: column }
     }
 
     return { type: 'Error', result: `Column ${name} not found`, errorKind: 'runtime' }
@@ -91,7 +237,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     return { type: 'Row', result: { ...row, cells } }
   }
 
-  handleCodeFragments(
+  public handleCodeFragments(
     visitor: CodeFragmentVisitor,
     name: string,
     codeFragments: CodeFragment[]
@@ -135,7 +281,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     codeFragments: CodeFragment[]
   ): handleCodeFragmentsResult {
     const errors: ErrorMessage[] = []
-    const column = this._formulaContext.findColumnByName(this.blockId, name)
+    const column = this._formulaContext.findColumnByName(this.spreadsheetId, name)
 
     if (!column) {
       errors.push({ type: 'deps', message: `Column "${name}" not found` })
@@ -150,15 +296,38 @@ export class SpreadsheetClass implements SpreadsheetType {
     let finalRhsCodeFragments = codeFragments
 
     if (['StringLiteral', 'FunctionName'].includes(codeFragments[0].code)) {
-      finalRhsCodeFragments = [
-        {
-          ...codeFragments[0],
-          display: name,
-          code: 'Column',
-          attrs: column2attrs(column),
-          renderText: columnRenderText(column)
-        }
+      finalRhsCodeFragments = [column2codeFragment(column, visitor.ctx.meta.namespaceId)]
+    }
+
+    const spreadsheetEventDependency = visitor.eventDependencies
+      .reverse()
+      .find(
+        d =>
+          !(
+            d.kind === 'Spreadsheet' &&
+            d.event === SpreadsheetReloadViaId &&
+            d.eventId === `${this.namespaceId},${this.spreadsheetId}`
+          )
+      )
+
+    if (spreadsheetEventDependency) {
+      spreadsheetEventDependency.kind = 'Column'
+      spreadsheetEventDependency.scopes = [
+        { keys: [column.logic ? column.displayIndex : column.columnId], kind: 'Column' }
       ]
+      spreadsheetEventDependency.definitionHandler = (deps, variable, payload) => {
+        if (column.logic) return
+        const newColumn = this._columns.find(c => c.columnId === column.columnId)
+        if (!newColumn) return
+        const newCodeFragments = variable.t.codeFragments.map(c => {
+          if (c.code !== 'Column') return c
+          if (c.attrs.id !== column.columnId) return c
+          return { ...c, attrs: { ...c.attrs, name: newColumn.name } }
+        })
+        return codeFragments2definition(newCodeFragments, variable.t.namespaceId)
+      }
+    } else {
+      console.error('spreadsheetEventDependency column not found')
     }
 
     return {
@@ -170,7 +339,8 @@ export class SpreadsheetClass implements SpreadsheetType {
 
   persistDynamic(): SpreadsheetDynamicPersistence {
     return {
-      blockId: this.blockId,
+      spreadsheetId: this.spreadsheetId,
+      namespaceId: this.namespaceId,
       spreadsheetName: this.name(),
       columns: this.listColumns(),
       rows: this.listRows(),
@@ -180,7 +350,8 @@ export class SpreadsheetClass implements SpreadsheetType {
 
   persistAll(): SpreadsheetAllPersistence {
     return {
-      blockId: this.blockId,
+      spreadsheetId: this.spreadsheetId,
+      namespaceId: this.namespaceId,
       rowCount: this.columnCount(),
       columnCount: this.columnCount(),
       persistence: this.persistence
@@ -199,12 +370,21 @@ export class SpreadsheetClass implements SpreadsheetType {
     return this.listRows().find(row => row.rowId === rowId)
   }
 
-  getColumnById(columnId: string): ColumnInitializer | undefined {
-    return this.listColumns().find(col => col.columnId === columnId)
+  getColumnById(columnId: string): ColumnType | undefined {
+    const column = this.listColumns().find(col => col.columnId === columnId)
+    if (column) return new ColumnClass(this, column, false)
+    return undefined
   }
 
-  getColumnByName(name: string): ColumnInitializer | undefined {
-    return this.listColumns().find(col => col.name === name)
+  getColumnByName(name: string): ColumnType | undefined {
+    const column = this._columns.find(col => col.title === name)
+
+    if (column) return new ColumnClass(this, column, false)
+
+    const logicColumn = this._columns.find(col => col.displayIndex === name)
+    if (logicColumn) return new ColumnClass(this, logicColumn, true)
+
+    return undefined
   }
 
   findCellValue({ rowId, columnId }: { rowId: uuid; columnId: uuid }): string | undefined {

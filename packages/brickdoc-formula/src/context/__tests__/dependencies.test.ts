@@ -64,7 +64,7 @@ describe('Dependency', () => {
       type: 'number'
     })
     expect(
-      Object.values(formulaContext.context).map(v => ({
+      Object.values(formulaContext.variables).map(v => ({
         ...v.t,
         cst: null,
         task: { ...v.t.task, execStartTime: null, execEndTime: null, uuid: null }
@@ -178,7 +178,7 @@ describe('Dependency', () => {
     ).toEqual(104)
     expect(formulaContext.reverseVariableDependencies).toMatchSnapshot()
     expect(
-      Object.values(formulaContext.context).map(v => ({
+      Object.values(formulaContext.variables).map(v => ({
         ...v.t,
         cst: null,
         task: { ...v.t.task, execStartTime: null, execEndTime: null, uuid: null }

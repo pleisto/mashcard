@@ -167,7 +167,7 @@ export const useSpreadsheet = (options: {
         }))
       )
     },
-    [updateSpreadsheetAttributes, columns]
+    [columns, updateSpreadsheetAttributes]
   )
 
   const addColumn = React.useCallback(

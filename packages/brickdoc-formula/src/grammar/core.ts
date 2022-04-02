@@ -19,9 +19,10 @@ import {
   StringResult,
   BaseFormula,
   ErrorResult,
-  VariableNameDependency,
+  NameDependency,
   FormulaType,
-  VariableTask
+  VariableTask,
+  EventDependency
 } from '../types'
 import { VariableClass, castVariable } from '../context/variable'
 import { FormulaLexer } from './lexer'
@@ -52,9 +53,10 @@ export interface BaseParseResult {
   kind: VariableKind
   errorMessages: ErrorMessage[]
   variableDependencies: VariableDependency[]
-  variableNameDependencies: VariableNameDependency[]
+  nameDependencies: NameDependency[]
   functionDependencies: Array<FunctionClause<any>>
   blockDependencies: NamespaceId[]
+  eventDependencies: EventDependency[]
   codeFragments: CodeFragment[]
   flattenVariableDependencies: VariableDependency[]
   completions: Completion[]
@@ -199,18 +201,14 @@ const abbrev = ({
 
     const match = token.tokenType.name === 'StringLiteral' ? parseString(token.image) : token.image
 
-    const formulaName = formulaContext.formulaNames.find(
-      n => n.name === match && (n.kind !== 'Variable' || blockKey(n.namespaceId) === variableNamespace)
-    )
+    const name = formulaContext.findNames(variableNamespace.slice(1), match)[0]
 
-    // devLog({ formulaNames: formulaContext.formulaNames, variableNamespace, token: token.image, formulaName })
-
-    if (!formulaName) {
+    if (!name) {
       newInput = newInput.concat(token.image)
       return
     }
 
-    const renderTokens = formulaName.renderTokens(namespaceIsExist, namespaceId)
+    const renderTokens = name.renderTokens(namespaceIsExist, namespaceId)
 
     newTokens.pop()
     const newRenderTokens = renderTokens.map(({ image, type }) => ({
@@ -269,7 +267,7 @@ const changePosition = (
       specialCodeFragmentCount += 1
     }
 
-    if (codeFragment.value === '') {
+    if (codeFragment.display === '') {
       specialCodeFragmentCount -= 1
     }
     if (idx <= tokenIndex - specialCodeFragmentCount) {
@@ -299,7 +297,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     valid: true,
     async: false,
     effect: false,
-    persist: true,
+    persist: false,
     pure: true,
     cst: undefined,
     input,
@@ -311,8 +309,9 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     completions: [],
     codeFragments: [],
     variableDependencies: [],
-    variableNameDependencies: [],
+    nameDependencies: [],
     functionDependencies: [],
+    eventDependencies: [],
     blockDependencies: [],
     flattenVariableDependencies: []
   }
@@ -329,9 +328,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
       codeFragments: [
         {
           code: 'literal',
-          value: input,
           type: 'any',
-          renderText: undefined,
           hide: false,
           display: input,
           errors: [],
@@ -373,11 +370,24 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   returnValue.persist = codeFragmentVisitor.persist
   returnValue.pure = codeFragmentVisitor.pure
   returnValue.kind = codeFragmentVisitor.kind
-  returnValue.variableDependencies = codeFragmentVisitor.variableDependencies
-  returnValue.variableNameDependencies = codeFragmentVisitor.variableNameDependencies
+  returnValue.variableDependencies = [
+    ...new Map(codeFragmentVisitor.variableDependencies.map(item => [item.variableId, item])).values()
+  ]
+  returnValue.nameDependencies = [
+    ...new Map(codeFragmentVisitor.nameDependencies.map(item => [`${item.namespaceId},${item.name}`, item])).values()
+  ]
   returnValue.functionDependencies = codeFragmentVisitor.functionDependencies
-  returnValue.blockDependencies = codeFragmentVisitor.blockDependencies
-  returnValue.flattenVariableDependencies = codeFragmentVisitor.flattenVariableDependencies
+  returnValue.blockDependencies = [...new Map(codeFragmentVisitor.blockDependencies.map(item => [item, item])).values()]
+
+  returnValue.eventDependencies = [
+    ...new Map(
+      codeFragmentVisitor.eventDependencies.map(item => [`${item.kind},${item.event.eventType},${item.eventId}`, item])
+    ).values()
+  ]
+  returnValue.flattenVariableDependencies = [
+    ...new Map(codeFragmentVisitor.flattenVariableDependencies.map(item => [item.variableId, item])).values()
+  ]
+
   returnValue.inputImage = inputImage
 
   returnValue.cst = cst
@@ -400,9 +410,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
       if (restImages.length > 0) {
         codeFragments.push({
           code: 'parseErrorOther',
-          value: restImages,
           type: 'any',
-          renderText: undefined,
           hide: false,
           display: restImages,
           errors: errorMessages,
@@ -429,9 +437,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
       codeFragments[0],
       {
         code: 'parseErrorOther',
-        value: restImages,
         type: 'any',
-        renderText: undefined,
         hide: false,
         display: restImages,
         errors: finalErrorMessages,
@@ -443,7 +449,8 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
   const { finalCodeFragments: addSpaceCodeFragment, finalPositionFragment: addSpacePositionFragment } = addSpace(
     parseCodeFragments,
     newInput,
-    positionFragment
+    positionFragment,
+    namespaceId
   )
 
   const { finalCodeFragments, finalPositionFragment } = hideDot(addSpaceCodeFragment, addSpacePositionFragment)
@@ -507,9 +514,7 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     }
   }
 
-  const sameNameVariable = formulaContext.formulaNames.find(
-    v => v.name.toUpperCase() === name.toUpperCase() && v.namespaceId === namespaceId && v.key !== variableId
-  )
+  const sameNameVariable = formulaContext.findNames(namespaceId, name).filter(v => v.id !== variableId)[0]
 
   if (type === 'normal' && sameNameVariable) {
     return {
@@ -661,9 +666,10 @@ export const interpret = async ({
     persist,
     pure,
     variableDependencies,
-    variableNameDependencies,
+    nameDependencies,
     functionDependencies,
     blockDependencies,
+    eventDependencies,
     flattenVariableDependencies
   } = parseResult
   const {
@@ -688,9 +694,10 @@ export const interpret = async ({
     valid,
     kind: kind ?? 'constant',
     variableDependencies,
-    variableNameDependencies,
+    nameDependencies,
     flattenVariableDependencies,
     blockDependencies,
+    eventDependencies,
     functionDependencies,
     task
   }

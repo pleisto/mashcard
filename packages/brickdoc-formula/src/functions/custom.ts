@@ -13,7 +13,7 @@ export const CUSTOM_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     acceptError: false,
     pure: true,
     effect: false,
-    persist: true,
+    persist: false,
     description: 'Returns the sum of two numbers',
     group: 'custom',
     args: [

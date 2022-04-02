@@ -24,8 +24,7 @@ describe('AutocompleteList', () => {
       kind: 'block',
       namespace: 'namespace',
       value: '#value',
-      preview: preview as BlockType,
-      renderDescription: () => 'description'
+      preview: preview as BlockType
     }
     const completion: CompletionType = {
       kind: 'Completion',
@@ -62,8 +61,7 @@ describe('AutocompleteList', () => {
       kind: 'block',
       namespace: 'namespace',
       value: '#value',
-      preview: preview as BlockType,
-      renderDescription: () => 'description'
+      preview: preview as BlockType
     }
     const completion: CompletionType = {
       kind: 'Completion',
@@ -88,8 +86,7 @@ describe('AutocompleteList', () => {
       kind: 'block',
       namespace: 'namespace',
       value: '#value',
-      preview: preview as BlockType,
-      renderDescription: () => 'description'
+      preview: preview as BlockType
     }
     const completion: CompletionType = {
       kind: 'Completion',
@@ -115,8 +112,7 @@ describe('AutocompleteList', () => {
         kind: 'block',
         namespace: 'namespace',
         value: '#value',
-        preview: preview as BlockType,
-        renderDescription: () => 'description'
+        preview: preview as BlockType
       }
       const completion: CompletionType = {
         kind: 'Completion',
@@ -134,20 +130,8 @@ describe('AutocompleteList', () => {
 
     it('renders column kind correctly', () => {
       const spreadsheet: Partial<SpreadsheetType> = {
-        listColumns: () => [
-          {
-            columnId: 'column',
-            namespaceId: 'namespace',
-            name: 'name',
-            index: 0
-          }
-        ],
-        listRows: () => [
-          {
-            rowId: 'row',
-            rowIndex: 0
-          }
-        ],
+        listColumns: () => [],
+        listRows: () => [],
         findCellDisplayData: () => undefined,
         name: () => 'name'
       }
@@ -158,8 +142,7 @@ describe('AutocompleteList', () => {
         kind: 'column',
         namespace: 'namespace',
         value: '#column.field',
-        preview: preview as ColumnType,
-        renderDescription: () => 'description'
+        preview: preview as ColumnType
       }
       const completion: CompletionType = {
         kind: 'Completion',
@@ -177,20 +160,8 @@ describe('AutocompleteList', () => {
 
     it('renders spreadsheet kind correctly', () => {
       const preview: Partial<SpreadsheetType> = {
-        listColumns: () => [
-          {
-            columnId: 'column',
-            namespaceId: 'namespace',
-            name: 'name',
-            index: 0
-          }
-        ],
-        listRows: () => [
-          {
-            rowId: 'row',
-            rowIndex: 0
-          }
-        ],
+        listColumns: () => [],
+        listRows: () => [],
         findCellDisplayData: () => undefined,
         name: () => 'name'
       }
@@ -198,8 +169,7 @@ describe('AutocompleteList', () => {
         kind: 'spreadsheet',
         namespace: 'namespace',
         value: '#column.field',
-        preview: preview as SpreadsheetType,
-        renderDescription: () => 'description'
+        preview: preview as SpreadsheetType
       }
       const completion: CompletionType = {
         kind: 'Completion',
@@ -236,8 +206,7 @@ describe('AutocompleteList', () => {
         kind: 'function',
         namespace: 'namespace',
         value: 'function()',
-        preview: preview as FunctionClause<FormulaType>,
-        renderDescription: () => 'description'
+        preview: preview as FunctionClause<FormulaType>
       }
       const completion: CompletionType = {
         kind: 'Completion',
@@ -278,8 +247,7 @@ describe('AutocompleteList', () => {
         kind: 'variable',
         namespace: 'namespace',
         value: '#var.prop',
-        preview: variable,
-        renderDescription: () => 'description'
+        preview: variable
       }
       const completion: CompletionType = {
         kind: 'Completion',

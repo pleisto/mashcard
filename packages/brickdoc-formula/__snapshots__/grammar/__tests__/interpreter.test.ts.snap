@@ -8,9 +8,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": undefined,
@@ -18,9 +16,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -28,9 +24,7 @@ Array [
     "display": "\\"barbarbar\\"",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "\\"barbarbar\\"",
   },
   Object {
     "attrs": undefined,
@@ -38,9 +32,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -48,9 +40,7 @@ Array [
     "display": "&",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "&",
   },
   Object {
     "attrs": undefined,
@@ -58,9 +48,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": Object {
@@ -78,9 +66,7 @@ Array [
       },
     ],
     "hide": false,
-    "renderText": undefined,
-    "type": "string",
-    "value": "foo",
+    "type": "number",
   },
 ]
 `;
@@ -112,9 +98,7 @@ Array [
             "display": "=",
             "errors": Array [],
             "hide": false,
-            "renderText": undefined,
             "type": "any",
-            "value": "=",
           },
           Object {
             "attrs": undefined,
@@ -122,9 +106,7 @@ Array [
             "display": "1",
             "errors": Array [],
             "hide": false,
-            "renderText": undefined,
             "type": "number",
-            "value": "1",
           },
         ],
         "input": "=1",
@@ -138,7 +120,7 @@ Array [
     "key": "custom::PLUS",
     "lazy": false,
     "name": "PLUS",
-    "persist": true,
+    "persist": false,
     "pure": true,
     "reference": [Function],
     "returns": "number",

@@ -2,6 +2,7 @@ import { parse, innerInterpret } from '../core'
 import { FormulaContext } from '../../context'
 import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass, CellType } from '../../controls'
 import { VariableMetadata } from '../../types'
+import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
@@ -17,9 +18,9 @@ const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', position: 0, type: 'normal' }
 
 const rows: Row[] = [
-  { rowId: firstRowId, rowIndex: 0 },
-  { rowId: secondRowId, rowIndex: 1 },
-  { rowId: thirdRowId, rowIndex: 2 }
+  { rowId: firstRowId, rowIndex: 0, spreadsheetId },
+  { rowId: secondRowId, rowIndex: 1, spreadsheetId },
+  { rowId: thirdRowId, rowIndex: 2, spreadsheetId }
 ]
 
 const cells: CellType[] = [
@@ -118,19 +119,28 @@ const cells: CellType[] = [
 const columns: ColumnInitializer[] = [
   {
     columnId: firstColumnId,
-    namespaceId: spreadsheetId,
+    spreadsheetId,
+    sort: 0,
+    title: 'first',
+    displayIndex: 'A',
     name: 'first',
     index: 0
   },
   {
     columnId: secondColumnId,
-    namespaceId: spreadsheetId,
+    spreadsheetId,
+    sort: 1,
+    title: 'second',
+    displayIndex: 'B',
     name: 'second',
     index: 1
   },
   {
     columnId: thirdColumnId,
-    namespaceId: spreadsheetId,
+    spreadsheetId,
+    sort: 2,
+    title: 'third',
+    displayIndex: 'C',
     name: 'third',
     index: 2
   }
@@ -142,18 +152,12 @@ const spreadsheet: SpreadsheetType = new SpreadsheetClass({
   name: 'MySpreadsheet',
   dynamic: false,
   ctx: { formulaContext },
-  blockId: spreadsheetId,
-  listColumns: () => columns,
-  listRows: () => rows,
-  listCells: ({ rowId, columnId }) => {
-    let finalCells = cells
-    if (rowId) {
-      finalCells = finalCells.filter(cell => cell.rowId === rowId)
-    }
-    if (columnId) {
-      finalCells = finalCells.filter(cell => cell.columnId === columnId)
-    }
-    return finalCells
+  namespaceId,
+  spreadsheetId,
+  columns,
+  rows,
+  getCell: ({ rowId, columnId }) => {
+    return cells.find(cell => cell.rowId === rowId && cell.columnId === columnId)!
   }
 })
 
@@ -166,22 +170,25 @@ interface TestCase {
 
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
+const spreadsheetToken = `#${namespaceId}."MySpreadsheet"`
+
 const testCases: TestCase[] = [
   {
     label: 'CountIf ok',
-    input: `=CountIf(#${spreadsheetId}, #${spreadsheetId}."first" >= 3)`,
+    input: `=CountIf(${spreadsheetToken}, ${spreadsheetToken}."first" >= 3)`,
     error: 'Expected number but got Column',
     value: 2
   },
   {
     label: 'CountIf error1',
-    input: `=CountIf(#${spreadsheetId}, >= 3)`,
+    input: `=CountIf(${spreadsheetToken}, >= 3)`,
     error: undefined,
     value: 'Column is missing'
   }
 ]
 
 describe('Power Fx Functions', () => {
+  BrickdocEventBus.dispatch(BlockNameLoad({ id: namespaceId, name: 'Page1' }))
   formulaContext.setSpreadsheet(spreadsheet)
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 

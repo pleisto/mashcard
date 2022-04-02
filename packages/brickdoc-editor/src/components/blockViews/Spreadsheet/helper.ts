@@ -22,11 +22,8 @@ export const columnIndexFromDisplay = (str: string): number => {
 }
 
 export const columnDisplayTitle = (column: SpreadsheetColumn): string => {
-  if (typeof column.title !== 'undefined') {
-    return column.title
-  } else {
-    return columnDisplayIndex(column.sort)
-  }
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  return column.title || columnDisplayIndex(column.sort)
 }
 
 export const parsePasteTable = (str: string): string[][] => {

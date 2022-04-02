@@ -58,14 +58,7 @@ export const FormulaEditor: React.FC<FormulaEditorProps> = ({
       // console.debug('FormulaEditor:onFocus', props)
     },
     onBlur: (props: EditorEvents['blur']) => {
-      // NOTE Very hacky way to prevent blur hook
-      // TODO WHY IS THIS CALLED?
-      // = -> =1
-      // =1 -> =
-      if (props.event.relatedTarget) {
-        devLog('FormulaEditor:onBlur', props)
-        onBlur?.()
-      }
+      onBlur?.()
     },
     onUpdate: ({ editor, transaction }) => {
       const editorPosition = transaction.selection.from - 1

@@ -51,7 +51,7 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTrunc
     case 'Block':
       return v.result.name(pageId)
     case 'Column':
-      return `${v.result.spreadsheet.name()}.${v.result.name}`
+      return `${v.result.spreadsheet.name()}.${v.result.logic ? v.result.displayIndex : v.result.name}`
     case 'Row':
       return `[${v.result.rowIndex}] ${truncateArray(v.result.cells.map(c => c.value)).join(', ')}`
     case 'Range':
@@ -136,31 +136,25 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
 
   if (result.type === 'Spreadsheet' && !(result.result instanceof SpreadsheetClass)) {
     if (result.result.dynamic) {
-      const { blockId, spreadsheetName, columns, rows, cells }: SpreadsheetDynamicPersistence =
+      const { spreadsheetId, spreadsheetName, columns, rows, cells, namespaceId }: SpreadsheetDynamicPersistence =
         result.result.persistence!
       return {
         type: 'Spreadsheet',
         result: new SpreadsheetClass({
           ctx,
-          blockId,
+          spreadsheetId,
+          namespaceId,
           dynamic: true,
           name: spreadsheetName,
-          listColumns: () => columns,
-          listRows: () => rows,
-          listCells: ({ rowId, columnId }) => {
-            let finalCells = cells
-            if (rowId) {
-              finalCells = finalCells.filter(cell => cell.rowId === rowId)
-            }
-            if (columnId) {
-              finalCells = finalCells.filter(cell => cell.columnId === columnId)
-            }
-            return finalCells
+          columns,
+          rows,
+          getCell: ({ rowId, columnId }) => {
+            return cells.find(c => c.rowId === rowId && c.columnId === columnId)!
           }
         })
       }
     } else {
-      const spreadsheet = ctx.formulaContext.findSpreadsheet(result.result.blockId)
+      const spreadsheet = ctx.formulaContext.findSpreadsheetById(result.result.blockId)
       if (spreadsheet) {
         return { type: 'Spreadsheet', result: spreadsheet }
       } else {
@@ -170,22 +164,26 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
   }
 
   if (result.type === 'Range') {
-    const spreadsheet = ctx.formulaContext.findSpreadsheet(result.result.spreadsheetId)
+    const spreadsheet = ctx.formulaContext.findSpreadsheetById(result.result.spreadsheetId)
     return { type: 'Range', result: { ...result.result, spreadsheet } }
   }
 
   if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {
-    const spreadsheet = ctx.formulaContext.findSpreadsheet(result.result.namespaceId)
+    const spreadsheet = ctx.formulaContext.findSpreadsheetById(result.result.spreadsheetId)
     if (spreadsheet) {
-      return { type: 'Column', result: new ColumnClass(spreadsheet, result.result) }
+      return { type: 'Column', result: new ColumnClass(spreadsheet, result.result, false) }
     } else {
-      return { type: 'Error', result: `Spreadsheet ${result.result.namespaceId} not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Spreadsheet ${result.result.spreadsheetId} not found`, errorKind: 'deps' }
     }
   }
 
   if (result.type === 'Block' && !(result.result instanceof BlockClass)) {
-    const blockResult = new BlockClass(ctx.formulaContext, result.result)
-    return { type: 'Block', result: blockResult }
+    const block = ctx.formulaContext.findBlockById(result.result.id)
+    if (block) {
+      return { type: 'Block', result: block }
+    } else {
+      return { type: 'Error', result: `Block ${result.result.id} not found`, errorKind: 'deps' }
+    }
   }
 
   if (result.type === 'Button' && !(result.result instanceof ButtonClass)) {

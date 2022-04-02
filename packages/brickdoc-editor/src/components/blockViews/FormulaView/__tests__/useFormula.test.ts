@@ -110,40 +110,42 @@ const simpleCommonTestCases = [
   },
 
   // Variable simple
-  { input: 'num1', positions: [1, 2, 4], resultData: 2 },
-  { input: '"num1"', newInput: `num1`, resultData: 2 },
-  { input: `#CurrentBlock.num1`, newInput: 'num1', resultData: 2 },
-  { input: `#${namespaceId}."num1"`, newInput: `num1`, resultData: 2 },
+  { input: 'num1', newInput: '#CurrentBlock.num1', positions: [1, 2, 4], resultData: 2 },
+  { input: '"num1"', newInput: `#CurrentBlock.num1`, resultData: 2 },
+  { input: `#CurrentBlock.num1`, resultData: 2 },
+  { input: `#${namespaceId}."num1"`, newInput: `#CurrentBlock.num1`, resultData: 2 },
 
   // Variable complex
-  { input: 'foo_bar', positions: [3, 9], resultData: 123123 },
-  { input: `#CurrentBlock.foo_bar`, newInput: `foo_bar`, resultData: 123123 },
+  { input: 'foo_bar', newInput: '#CurrentBlock.foo_bar', positions: [3, 9], resultData: 123123 },
+  { input: `#CurrentBlock.foo_bar`, resultData: 123123 },
 
   // Variable with space
   {
     input: '  num1  +  1  ',
+    newInput: '  #CurrentBlock.num1  +  1  ',
     positions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
     resultData: 3
   },
-  { input: ' "num1" + 1 ', newInput: ` num1 + 1 `, resultData: 3 },
-  { input: ` #${namespaceId}.num1 + 1 `, newInput: ` num1 + 1 `, resultData: 3 },
-  { input: ` #CurrentBlock.num1 + 1 `, newInput: ` num1 + 1 `, resultData: 3 },
-  { input: ` #${namespaceId}."num1" + 1 `, newInput: ` num1 + 1 `, resultData: 3 },
+  { input: ' "num1" + 1 ', newInput: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
+  { input: ` #${namespaceId}.num1 + 1 `, newInput: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
+  { input: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
+  { input: ` #${namespaceId}."num1" + 1 `, newInput: ` #CurrentBlock.num1 + 1 `, resultData: 3 },
 
   // Variable complex input
   { input: `+foo_bar`, resultData: 'Parse error: "+"' },
   { input: `+#CurrentBlock.foo_bar`, resultData: 'Parse error: "+"' },
-  { input: `#CurrentBlock.foo_bar+`, newInput: `foo_bar+`, resultData: 'Missing expression' },
-  { input: `#CurrentBlock.foo_ba1r`, resultData: 'Variable "foo_ba1r" not found' },
+  { input: `#CurrentBlock.foo_bar+`, resultData: 'Missing expression' },
+  { input: `#CurrentBlock.foo_ba1r`, resultData: '"foo_ba1r" not found' },
 
   // Variable with error
   {
     input: ' " " & num1 ',
+    newInput: ` " " & #CurrentBlock.num1 `,
     positions: [5, 6, 7, 8, 9, 10, 11, 12],
     resultData: 'Expected string but got number'
   },
-  { input: ' num1 & " "', resultData: 'Expected string but got number' },
-  { input: 'a+num1', positions: [1], resultData: 'Unknown function a' }
+  { input: ' num1 & " "', newInput: ' #CurrentBlock.num1 & " "', resultData: 'Expected string but got number' },
+  { input: 'a+num1', newInput: 'a+#CurrentBlock.num1', positions: [1], resultData: 'Unknown function a' }
 ]
 
 const simpleNormalTestCases = [
@@ -192,8 +194,7 @@ const normalTestCases = [
                 code: 'NumberLiteral',
                 errors: [],
                 type: 'number',
-                display: '12',
-                value: '12'
+                display: '12'
               }
             }
           ]
@@ -215,8 +216,6 @@ const normalTestCases = [
                 errors: [],
                 type: 'number',
                 display: '12',
-                value: '12',
-                renderText: undefined,
                 hide: false
               }
             }
@@ -270,8 +269,6 @@ const spreadsheetTestCases = [
                 errors: [],
                 type: 'any',
                 display: '=',
-                value: '=',
-                renderText: undefined,
                 hide: false
               }
             }
@@ -289,8 +286,6 @@ const spreadsheetTestCases = [
                 errors: [],
                 type: 'number',
                 display: '12',
-                value: '12',
-                renderText: undefined,
                 hide: false
               }
             }
@@ -374,7 +369,7 @@ describe('useFormula', () => {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(['Position unmatched', result.current.editorContent]).toMatchSnapshot()
       }
-      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
+      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content), namespaceId)).toEqual(
         newInput ?? input
       )
 
@@ -414,7 +409,7 @@ describe('useFormula', () => {
         // eslint-disable-next-line jest/no-conditional-expect
         expect(['Position unmatched', result.current.editorContent]).toMatchSnapshot()
       }
-      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content))).toEqual(
+      expect(contentArrayToInput(fetchJSONContentArray(result.current.editorContent.content), namespaceId)).toEqual(
         // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         newInput ?? input
       )

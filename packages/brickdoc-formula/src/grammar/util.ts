@@ -1,9 +1,10 @@
-import { ILexingResult } from 'chevrotain'
+import _ from 'lodash'
 import {
   AnyTypeResult,
   CodeFragment,
   ErrorMessage,
   ErrorResult,
+  EventScope,
   ExpressionType,
   FormulaColorType,
   FormulaType,
@@ -11,6 +12,28 @@ import {
 } from '../types'
 import { InterpretArgument } from './interpreter'
 import { FormulaLexer } from './lexer'
+
+export const shouldReceiveEventByScope = (listenedScopes: EventScope[], eventScopes: EventScope[]): boolean => {
+  listenedScopes.forEach(listenedScope => {
+    const eventScope = eventScopes.find(scope => scope.kind === listenedScope.kind)
+    if (!eventScope) return false
+
+    const filteredArray = listenedScope.keys.filter(key => eventScope.keys.includes(key))
+    if (filteredArray.length === 0) return false
+  })
+
+  return true
+}
+
+export const reverseTraversalString = (str: string, min = 1): string[] => {
+  const result: string[] = []
+
+  for (let i = str.length - 1; i >= min; i--) {
+    result.push(str.slice(0, i))
+  }
+
+  return result
+}
 
 // TODO: dirty hack to get the string literal value
 export const parseString = (str: string): string => {
@@ -21,12 +44,6 @@ export const parseString = (str: string): string => {
 }
 
 const lexer = FormulaLexer
-
-const checkValidToken = (input: string): boolean => {
-  const lexResult: ILexingResult = lexer.tokenize(input)
-  const tokens = lexResult.tokens
-  return tokens.length === 1
-}
 
 export const checkValidName = (name: string): boolean => {
   if (name.length !== name.trim().length) {
@@ -47,7 +64,7 @@ export const checkValidName = (name: string): boolean => {
 }
 
 export const maybeEncodeString = (str: string): [boolean, string] => {
-  const valid = checkValidToken(str)
+  const valid = checkValidName(str)
   if (valid) {
     return [true, str]
   }
@@ -67,6 +84,8 @@ export const shouldReturnEarly = (result: AnyTypeResult | undefined, skipReturnE
 const encodeString = (str: string): string => {
   return `"${str}"`
 }
+export const objectDiff = <T>(a: T[], b: T[]): Record<number, T> =>
+  _.fromPairs(_.differenceWith(_.toPairs(a), _.toPairs(b), _.isEqual))
 
 export const truncateString = (str: string, length: number = 20): string => {
   if (typeof str !== 'string') return str
@@ -173,14 +192,23 @@ export const runtimeCheckType = (
   return undefined
 }
 
+export const columnDisplayIndex = (index: number): string => {
+  const r = index % 26
+  const l = Math.floor(index / 26)
+  return `${l > 0 ? columnDisplayIndex(l - 1) : ''}${String.fromCharCode(65 + r)}`
+}
+
 export const resultToColorType = ({ type, result }: AnyTypeResult): FormulaColorType => {
   if (type === 'boolean') {
     return result ? 'TRUE' : 'FALSE'
   }
+
+  if (type === 'Column' && result.logic) return 'LogicColumn'
+
   return type
 }
 
-export const attrsToColorType = ({ code, value }: CodeFragment): FormulaColorType => {
+export const attrsToColorType = ({ code, display, attrs }: CodeFragment): FormulaColorType => {
   switch (code) {
     case 'NullLiteral':
       return 'null'
@@ -189,10 +217,9 @@ export const attrsToColorType = ({ code, value }: CodeFragment): FormulaColorTyp
     case 'StringLiteral':
       return 'string'
     case 'BooleanLiteral':
-      return value === 'true' ? 'TRUE' : 'FALSE'
-    case 'Function':
-    case 'Variable':
-      return code
+      return display === 'true' ? 'TRUE' : 'FALSE'
+    case 'Column':
+      return attrs.kind as FormulaColorType
     default:
       return code as FormulaColorType
   }

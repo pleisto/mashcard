@@ -66,7 +66,7 @@ describe('Controls', () => {
     {
       label: 'set unknown',
       input: `=Set(#${namespaceId}.baz, 1)`,
-      parseErrorMessage: `Variable "baz" not found`,
+      parseErrorMessage: `"baz" not found`,
       result: null
     },
     // {

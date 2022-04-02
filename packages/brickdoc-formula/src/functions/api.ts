@@ -40,7 +40,7 @@ export const CORE_API_CLAUSES: Array<BaseFunctionClause<'Record'>> = [
   {
     name: 'CURRENT_POSITION',
     async: true,
-    persist: true,
+    persist: false,
     pure: false,
     effect: false,
     lazy: false,

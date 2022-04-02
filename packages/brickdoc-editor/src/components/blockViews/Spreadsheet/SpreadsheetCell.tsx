@@ -5,11 +5,12 @@ import {
   Event,
   BlockInput,
   SpreadsheetUpdateCellValue,
-  BlockSpreadsheetLoaded,
-  FormulaEditorSavedTrigger
+  FormulaEditorSavedTrigger,
+  SpreadsheetReloadViaId
 } from '@brickdoc/schema'
 import { FormulaBlockRender, useFormula } from '../FormulaView'
 import {
+  columnDisplayIndex,
   displayValue,
   dumpDisplayResultForDisplay,
   fetchResult,
@@ -19,12 +20,12 @@ import {
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { devLog } from '@brickdoc/design-system'
 import { useExternalProps } from '../../../hooks/useExternalProps'
-import * as Sentry from '@sentry/react'
 import { FormulaDisplay } from '../../ui/Formula'
 
 export interface SpreadsheetCellProps {
   context: SpreadsheetContext
   block: BlockInput
+  columnSort: number
   tableId: string
   saveBlock: (block: BlockInput) => void
   width?: number
@@ -35,6 +36,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   context,
   tableId,
   block,
+  columnSort,
   saveBlock,
   width,
   height
@@ -81,12 +83,23 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
         }
         setCurrentBlock(newBlock)
         saveBlock(newBlock)
-        BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: tableId }))
       }
+
+      BrickdocEventBus.dispatch(
+        SpreadsheetReloadViaId({
+          spreadsheetId: tableId,
+          scopes: [
+            { kind: 'Row', keys: [block.parentId] },
+            { kind: 'Column', keys: [block.data.columnId, columnDisplayIndex(columnSort)] }
+          ],
+          namespaceId: rootId,
+          key: tableId
+        })
+      )
       // devLog('updateFormula', { variable, block, newBlock, parentId, formulaId })
       // setEditing(false)
     },
-    [rootId, cellId, block, saveBlock, tableId]
+    [tableId, block, columnSort, rootId, cellId, saveBlock]
   )
 
   React.useEffect(() => {
@@ -130,18 +143,6 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const handleEnterEdit = (): void => {
     context.clearSelection()
     setEditing(true)
-  }
-
-  if (!variableT && currentBlock.text) {
-    Sentry.withScope(scope => {
-      const error = new Error(`Variable is undefined`)
-      scope.setExtra('display', currentBlock.text)
-      scope.setExtra('formulaId', formulaId)
-      scope.setExtra('rootId', rootId)
-      scope.setExtra('formulaName', formulaName)
-      error.message = `Variable is undefined`
-      Sentry.captureException(error)
-    })
   }
 
   if (editingCell || editing) {

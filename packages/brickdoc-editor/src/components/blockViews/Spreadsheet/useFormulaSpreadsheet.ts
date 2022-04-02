@@ -1,12 +1,18 @@
 import React from 'react'
-import { SpreadsheetType, SpreadsheetClass, ColumnInitializer, Row, CellType } from '@brickdoc/formula'
-import { BlockInput } from '@brickdoc/schema'
+import { SpreadsheetType, SpreadsheetClass, ColumnInitializer, Row } from '@brickdoc/formula'
+import {
+  BlockInput,
+  BrickdocEventBus,
+  SpreadsheetUpdateColumnsViaId,
+  SpreadsheetUpdateNameViaId,
+  SpreadsheetUpdateRowsViaId
+} from '@brickdoc/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
-import { columnDisplayTitle } from './helper'
+import { columnDisplayIndex, columnDisplayTitle } from './helper'
 import { useExternalProps } from '../../../hooks/useExternalProps'
 
 interface useFormulaSpreadsheetProps {
-  blockId: string
+  spreadsheetId: string
   columns: SpreadsheetColumn[]
   rows: BlockInput[]
   getCellBlock: (rowId: string, columnId: string) => BlockInput
@@ -14,66 +20,111 @@ interface useFormulaSpreadsheetProps {
 }
 
 export function useFormulaSpreadsheet({
-  blockId,
+  spreadsheetId,
   columns,
   rows,
-  title,
+  title: originalTitle,
   getCellBlock
-}: useFormulaSpreadsheetProps): void {
+}: useFormulaSpreadsheetProps): {
+  deleteSpreadsheet: () => void
+} {
+  const title = originalTitle || 'Untitled Spreadsheet'
   const externalProps = useExternalProps()
   const formulaContext = externalProps.formulaContext
+  const rootId = externalProps.rootId
+  const titleRef = React.useRef(title)
+
+  const rowData: Row[] = React.useMemo(
+    () => rows.map((row, rowIndex) => ({ rowId: row.id, rowIndex, spreadsheetId })),
+    [rows, spreadsheetId]
+  )
+  const columnData: ColumnInitializer[] = React.useMemo(
+    () =>
+      columns.map(({ uuid: columnId, sort, title }, index) => ({
+        columnId,
+        spreadsheetId,
+        sort,
+        title,
+        displayIndex: columnDisplayIndex(sort),
+        name: columnDisplayTitle({ uuid: columnId, sort, title }),
+        index
+      })),
+    [columns, spreadsheetId]
+  )
+
+  const rowsRef = React.useRef(rowData)
+  const columnsRef = React.useRef(columnData)
+
+  React.useEffect(() => {
+    BrickdocEventBus.dispatch(
+      SpreadsheetUpdateNameViaId({
+        spreadsheetId,
+        name: title,
+        scopes: [],
+        key: spreadsheetId,
+        namespaceId: rootId
+      })
+    )
+  }, [rootId, spreadsheetId, title])
+
+  React.useEffect(() => {
+    BrickdocEventBus.dispatch(
+      SpreadsheetUpdateRowsViaId({
+        spreadsheetId,
+        rows: rowData,
+        key: spreadsheetId,
+        namespaceId: rootId
+      })
+    )
+  }, [rootId, spreadsheetId, rowData])
+
+  React.useEffect(() => {
+    BrickdocEventBus.dispatch(
+      SpreadsheetUpdateColumnsViaId({
+        spreadsheetId,
+        columns: columnData,
+        key: spreadsheetId,
+        namespaceId: rootId
+      })
+    )
+  }, [rootId, spreadsheetId, columnData])
 
   React.useEffect(() => {
     if (!formulaContext) return
-    const spreadsheetName = title || 'Untitled Spreadsheet'
-    const columnData: ColumnInitializer[] = columns.map((column, index) => ({
-      columnId: column.uuid,
-      namespaceId: blockId,
-      name: columnDisplayTitle(column),
-      // index: column.sort
-      index
-    }))
-
-    const rowData: Row[] = rows.map((row, rowIndex) => ({ rowId: row.id, rowIndex }))
 
     const spreadsheet: SpreadsheetType = new SpreadsheetClass({
       ctx: { formulaContext },
-      blockId,
+      namespaceId: rootId,
+      spreadsheetId,
       dynamic: false,
-      name: spreadsheetName,
-      listColumns: () => columnData,
-      listRows: () => rowData,
-      listCells: ({ rowId, columnId }) => {
-        const rowIdsWithIndex = rows.map((row, index) => ({ rowId: row.id, rowIndex: index }))
-        const columnIdsWithIndex = columns.map((column, index) => ({ columnId: column.uuid, columnIndex: index }))
+      name: titleRef.current,
+      columns: columnsRef.current,
+      rows: rowsRef.current,
+      getCell: ({ rowId, columnId, rowIndex, columnIndex }) => {
+        const cellBlock = getCellBlock(rowId, columnId)
 
-        const finalRowIdsWithIndex = rowId ? rowIdsWithIndex.filter(row => row.rowId === rowId) : rowIdsWithIndex
-        const finalColumnIdsWithIndex = columnId
-          ? columnIdsWithIndex.filter(column => column.columnId === columnId)
-          : columnIdsWithIndex
-
-        return finalRowIdsWithIndex.flatMap(({ rowId, rowIndex }) =>
-          finalColumnIdsWithIndex.map(({ columnId, columnIndex }) => {
-            const cellBlock = getCellBlock(rowId, columnId)
-            const cell: CellType = {
-              spreadsheetId: blockId,
-              columnId,
-              rowIndex,
-              columnIndex,
-              rowId,
-              cellId: cellBlock.id,
-              value: cellBlock.text,
-              displayData: cellBlock.data.displayData
-            }
-            return cell
-          })
-        )
+        return {
+          spreadsheetId,
+          columnId,
+          rowIndex,
+          columnIndex,
+          rowId,
+          cellId: cellBlock.id,
+          value: cellBlock.text,
+          displayData: cellBlock.data.displayData
+        }
       }
     })
 
     formulaContext.setSpreadsheet(spreadsheet)
     return () => {
-      formulaContext.removeSpreadsheet(blockId)
+      // formulaContext.removeSpreadsheet(spreadsheetId)
     }
-  }, [blockId, title, columns, rows, formulaContext, getCellBlock])
+  }, [rootId, spreadsheetId, formulaContext, getCellBlock])
+
+  return {
+    deleteSpreadsheet: () => {
+      formulaContext?.removeSpreadsheet(spreadsheetId)
+    }
+  }
 }

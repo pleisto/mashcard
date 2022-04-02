@@ -1,6 +1,8 @@
 import type { IToken } from 'chevrotain'
 import { fetchResult } from '../context'
+import { ColumnClass } from '../controls'
 import { CodeFragment, Completion, FormulaType, FunctionContext } from '../types'
+import { codeFragment2value, column2completion } from './convert'
 
 export interface CompleteInput {
   readonly tokens: IToken[]
@@ -49,7 +51,7 @@ export const complete = ({
       return true
     }
 
-    lastCodeFragment = { ...codeFragment, value: codeFragment.value.concat(extraSpaces) }
+    lastCodeFragment = { ...codeFragment, display: codeFragment.display.concat(extraSpaces) }
     return false
   })
 
@@ -59,7 +61,8 @@ export const complete = ({
     return completions
   }
 
-  const { code, value } = lastCodeFragment
+  const { code } = lastCodeFragment
+  const value = codeFragment2value(lastCodeFragment, namespaceId)
   const tokenLowerCase = value.toLowerCase()
   // const lastTokenText = lastToken.image
 
@@ -77,11 +80,15 @@ export const complete = ({
 
       switch (last2CodeFragment.type) {
         case 'Spreadsheet':
-          completions = completions.map(c => {
-            return c.kind === 'column' && c.preview.namespaceId === last2CodeFragment.attrs?.id
-              ? { ...c, weight: c.weight + 1000 }
-              : c
-          })
+          // eslint-disable-next-line no-case-declarations
+          const spreadsheet = formulaContext.findSpreadsheetById(last2CodeFragment.attrs!.id)
+          if (spreadsheet) {
+            const columnCompletions = spreadsheet
+              .listColumns()
+              .map(column => column2completion(new ColumnClass(spreadsheet, column, false), namespaceId))
+
+            completions.push(...columnCompletions)
+          }
           break
         case 'Block':
           completions = completions.map(c => {
@@ -102,7 +109,7 @@ export const complete = ({
 
   if (['FunctionName', 'Function'].includes(code)) {
     completions = completions.map(c => {
-      const replacements: string[] = [value]
+      const replacements: string[] = []
 
       if (c.name === value) {
         return { ...c, weight: c.weight + 1000, replacements: [...replacements, ...c.replacements] }

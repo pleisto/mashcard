@@ -7,21 +7,9 @@ describe('FormulaSpreadsheet', () => {
     const columnId = 'columnId'
     const rowId = 'rowId'
     const spreadsheet: Partial<SpreadsheetType> = {
-      blockId: 'blockId',
-      listColumns: () => [
-        {
-          columnId,
-          namespaceId: 'namespaceId',
-          name: 'name',
-          index: 0
-        }
-      ],
-      listRows: () => [
-        {
-          rowId,
-          rowIndex: 0
-        }
-      ],
+      listColumns: () => [],
+      listRows: () => [],
+      spreadsheetId: 'blockId',
       findCellDisplayData: () => undefined,
       name: () => 'name'
     }

@@ -49,7 +49,7 @@ export const SUMIFS = (
   { result: column2 }: ColumnResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {
-  if (column1.namespaceId !== column2.namespaceId) {
+  if (column1.spreadsheetId !== column2.spreadsheetId) {
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
@@ -73,7 +73,7 @@ export const AVERAGEIFS = (
   { result: column2 }: ColumnResult,
   predicate: PredicateResult
 ): NumberResult | ErrorResult => {
-  if (column1.namespaceId !== column2.namespaceId) {
+  if (column1.spreadsheetId !== column2.spreadsheetId) {
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
@@ -120,7 +120,7 @@ export const SUMPRODUCT = (
   { result: column1 }: ColumnResult,
   { result: column2 }: ColumnResult
 ): NumberResult | ErrorResult => {
-  if (column1.namespaceId !== column2.namespaceId) {
+  if (column1.spreadsheetId !== column2.spreadsheetId) {
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
@@ -143,7 +143,7 @@ export const XLOOKUP = (
   notFoundValue: StringResult,
   { result: matchMode }: NumberResult
 ): StringResult | ErrorResult => {
-  if (lookupColumn.namespaceId !== returnColumn.namespaceId) {
+  if (lookupColumn.spreadsheetId !== returnColumn.spreadsheetId) {
     return { type: 'Error', result: 'Columns must be in the same namespace', errorKind: 'runtime' }
   }
 
@@ -186,7 +186,7 @@ export const VLOOKUP = (
   { result: column }: ColumnResult,
   { result: range }: BooleanResult
 ): StringResult | ErrorResult => {
-  if (spreadsheet.blockId !== column.namespaceId) {
+  if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
     return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
   }
 
@@ -233,7 +233,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
@@ -268,7 +268,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'string', result: 'foo' } }],
@@ -308,7 +308,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -330,7 +330,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -352,7 +352,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -374,7 +374,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -404,7 +404,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -434,7 +434,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -460,7 +460,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -486,7 +486,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],
@@ -508,7 +508,7 @@ export const CORE_SPREADSHEET_CLAUSES: Array<BaseFunctionClause<'number' | 'stri
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=123', output: { type: 'number', result: 123 } }],

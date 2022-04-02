@@ -2,6 +2,7 @@ import { parse, innerInterpret } from '../core'
 import { FormulaContext } from '../../context'
 import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass, CellType } from '../../controls'
 import { VariableMetadata } from '../../types'
+import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 
 const namespaceId = '57622108-1337-4edd-833a-2557835bcfe0'
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
@@ -19,26 +20,35 @@ const thirdRowId = '05f5ae67-b982-406e-a92f-e559c10a7ba6'
 const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', position: 0, type: 'normal' }
 
 const rows: Row[] = [
-  { rowId: firstRowId, rowIndex: 0 },
-  { rowId: secondRowId, rowIndex: 1 },
-  { rowId: thirdRowId, rowIndex: 2 }
+  { rowId: firstRowId, rowIndex: 0, spreadsheetId },
+  { rowId: secondRowId, rowIndex: 1, spreadsheetId },
+  { rowId: thirdRowId, rowIndex: 2, spreadsheetId }
 ]
 const columns: ColumnInitializer[] = [
   {
     columnId: firstColumnId,
-    namespaceId: spreadsheetId,
+    spreadsheetId,
+    sort: 0,
+    title: 'first',
+    displayIndex: 'A',
     name: 'first',
     index: 0
   },
   {
     columnId: secondColumnId,
-    namespaceId: spreadsheetId,
+    spreadsheetId,
+    sort: 1,
+    title: 'second',
+    displayIndex: 'B',
     name: 'second',
     index: 1
   },
   {
     columnId: thirdColumnId,
-    namespaceId: spreadsheetId,
+    spreadsheetId,
+    sort: 2,
+    title: 'third',
+    displayIndex: 'C',
     name: 'third',
     index: 2
   }
@@ -143,20 +153,16 @@ const spreadsheet: SpreadsheetType = new SpreadsheetClass({
   name: 'MySpreadsheet',
   ctx: { formulaContext },
   dynamic: false,
-  blockId: spreadsheetId,
-  listColumns: () => columns,
-  listRows: () => rows,
-  listCells: ({ rowId, columnId }) => {
-    let finalCells = cells
-    if (rowId) {
-      finalCells = finalCells.filter(cell => cell.rowId === rowId)
-    }
-    if (columnId) {
-      finalCells = finalCells.filter(cell => cell.columnId === columnId)
-    }
-    return finalCells
+  spreadsheetId,
+  namespaceId,
+  columns,
+  rows,
+  getCell: ({ rowId, columnId }) => {
+    return cells.find(cell => cell.rowId === rowId && cell.columnId === columnId)!
   }
 })
+
+const spreadsheetToken = `#${namespaceId}.MySpreadsheet`
 
 interface TestCase {
   input: string
@@ -170,142 +176,143 @@ const SNAPSHOT_FLAG = '<SNAPSHOT>'
 const testCases: TestCase[] = [
   {
     label: 'column',
-    input: `=#${spreadsheetId}."first"`,
-    value: { ...columns[0], spreadsheet }
+    input: `=${spreadsheetToken}."first"`,
+    value: SNAPSHOT_FLAG
   },
   {
     label: 'cell',
-    input: `=#${spreadsheetId}."first".1`,
+    input: `=${spreadsheetToken}."first".1`,
     value: cells[0]
   },
   {
     label: 'cell access',
-    input: `=#${spreadsheetId}."first"[1]`,
+    input: `=${spreadsheetToken}."first"[1]`,
     value: cells[0]
   },
   {
     label: 'cell error1',
-    input: `=#${spreadsheetId}."first".foobar`,
+    input: `=${spreadsheetToken}."first".foobar`,
     error: 'Need a number: foobar'
   },
   {
     label: 'cell error2',
-    input: `=#${spreadsheetId}."first".100`,
+    input: `=${spreadsheetToken}."first".100`,
     error: 'Cell out of range: 3'
   },
   {
     label: 'Range 1',
-    input: `=#${spreadsheetId}.first.1:#${spreadsheetId}.first.2`,
+    input: `=${spreadsheetToken}.first.1:${spreadsheetToken}.first.2`,
     value: SNAPSHOT_FLAG
   },
-  { label: 'in spreadsheet true', input: `=3 in #${spreadsheetId}`, value: true },
-  { label: 'toArray', input: `=#${spreadsheetId}.toArray()`, value: SNAPSHOT_FLAG },
-  { label: 'toRecordArray', input: `=#${spreadsheetId}.toRecordArray()`, value: SNAPSHOT_FLAG },
+  { label: 'in spreadsheet true', input: `=3 in ${spreadsheetToken}`, value: true },
+  { label: 'toArray', input: `=${spreadsheetToken}.toArray()`, value: SNAPSHOT_FLAG },
+  { label: 'toRecordArray', input: `=${spreadsheetToken}.toRecordArray()`, value: SNAPSHOT_FLAG },
   { label: 'Spreadsheet', input: `=Spreadsheet([]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Spreadsheet', input: `=Spreadsheet([1,2,3]).toArray()`, value: SNAPSHOT_FLAG },
   { label: 'Spreadsheet', input: `=Spreadsheet([{a: 1}, {a: 2}]).toArray()`, value: SNAPSHOT_FLAG },
-  { label: 'in spreadsheet false', input: `=4 in #${spreadsheetId}`, value: false },
-  { label: 'in column true', input: `=3 in #${spreadsheetId}."second"`, value: false },
-  { label: 'in column false', input: `=4 in #${spreadsheetId}.second`, value: true },
-  { label: 'exactin column true', input: `="foo" in #${spreadsheetId}.third`, value: true },
-  { label: 'COLUMN_COUNT', input: `=#${spreadsheetId}.COLUMN_COUNT()`, value: 3 },
-  { label: 'SUM', input: `=#${spreadsheetId}.first.SUM()`, value: 1 + 3 + 5 },
-  { label: 'MAX', input: `=#${spreadsheetId}.first.MAX()`, value: 5 },
-  { label: 'COUNTA', input: `=#${spreadsheetId}.first.COUNTA()`, value: 3 },
-  { label: 'COUNTA', input: `=#${spreadsheetId}.third.COUNTA()`, value: 2 },
+  { label: 'in spreadsheet false', input: `=4 in ${spreadsheetToken}`, value: false },
+  { label: 'in column true', input: `=3 in ${spreadsheetToken}."second"`, value: false },
+  { label: 'in column false', input: `=4 in ${spreadsheetToken}.second`, value: true },
+  { label: 'exactin column true', input: `="foo" in ${spreadsheetToken}.third`, value: true },
+  { label: 'COLUMN_COUNT', input: `=${spreadsheetToken}.COLUMN_COUNT()`, value: 3 },
+  { label: 'SUM', input: `=${spreadsheetToken}.first.SUM()`, value: 1 + 3 + 5 },
+  { label: 'MAX', input: `=${spreadsheetToken}.first.MAX()`, value: 5 },
+  { label: 'COUNTA', input: `=${spreadsheetToken}.first.COUNTA()`, value: 3 },
+  { label: 'COUNTA', input: `=${spreadsheetToken}.third.COUNTA()`, value: 2 },
   {
     label: 'SUMPRODUCT',
-    input: `=SUMPRODUCT(#${spreadsheetId}.first, #${spreadsheetId}.second)`,
+    input: `=SUMPRODUCT(${spreadsheetToken}.first, ${spreadsheetToken}.second)`,
     value: 1 * 2 + 3 * 4 + 5 * 6
   },
   {
     label: 'SUMIFS >3',
-    input: `=SUMIFS(#${spreadsheetId}.first, #${spreadsheetId}.second, >3)`,
+    input: `=SUMIFS(${spreadsheetToken}.first, ${spreadsheetToken}.second, >3)`,
     value: 3 + 5
   },
   {
     label: 'SUMIFS 4',
-    input: `=SUMIFS(#${spreadsheetId}.first, #${spreadsheetId}.second, 4)`,
+    input: `=SUMIFS(${spreadsheetToken}.first, ${spreadsheetToken}.second, 4)`,
     value: 3
   },
   {
     label: 'AVERAGEIFS 4',
-    input: `=AVERAGEIFS(#${spreadsheetId}.first, #${spreadsheetId}.second, >3)`,
+    input: `=AVERAGEIFS(${spreadsheetToken}.first, ${spreadsheetToken}.second, >3)`,
     value: 4
   },
   {
     label: 'AVERAGEIFS 100',
-    input: `=AVERAGEIFS(#${spreadsheetId}.first, #${spreadsheetId}.second, >100)`,
+    input: `=AVERAGEIFS(${spreadsheetToken}.first, ${spreadsheetToken}.second, >100)`,
     value: 'No matching values'
   },
   {
     label: 'COUNTIFS >2',
-    input: `=COUNTIFS(#${spreadsheetId}.first, >2)`,
+    input: `=COUNTIFS(${spreadsheetToken}.first, >2)`,
     value: 2
   },
   {
     label: 'COUNTIFS =1',
-    input: `=COUNTIFS(#${spreadsheetId}.first, 3)`,
+    input: `=COUNTIFS(${spreadsheetToken}.first, 3)`,
     value: 1
   },
   {
     label: 'VLOOKUP Not found',
-    input: `=VLOOKUP("", #${spreadsheetId}, #${spreadsheetId}.second)`,
+    input: `=VLOOKUP("", ${spreadsheetToken}, ${spreadsheetToken}.second)`,
     value: 'Not found'
   },
   {
     label: 'VLOOKUP Column check',
-    input: `=VLOOKUP("", #${spreadsheetId}, #${spreadsheetId}.first)`,
+    input: `=VLOOKUP("", ${spreadsheetToken}, ${spreadsheetToken}.first)`,
     value: 'Column cannot be the same as the first column'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, #${spreadsheetId}, #${spreadsheetId}.second)`,
+    input: `=VLOOKUP(1, ${spreadsheetToken}, ${spreadsheetToken}.second)`,
     value: '2'
   },
   {
     label: 'VLOOKUP Not found 2 range false',
-    input: `=VLOOKUP("2", #${spreadsheetId}, #${spreadsheetId}.second, false)`,
+    input: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second, false)`,
     value: 'Not found'
   },
   {
     label: 'VLOOKUP 2 range default',
-    input: `=VLOOKUP("2", #${spreadsheetId}, #${spreadsheetId}.second)`,
+    input: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second)`,
     value: '2'
   },
   {
     label: 'VLOOKUP 2 range true',
-    input: `=VLOOKUP("2", #${spreadsheetId}, #${spreadsheetId}.second, true)`,
+    input: `=VLOOKUP("2", ${spreadsheetToken}, ${spreadsheetToken}.second, true)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, #${spreadsheetId}, #${spreadsheetId}.second, true)`,
+    input: `=VLOOKUP(1, ${spreadsheetToken}, ${spreadsheetToken}.second, true)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok number',
-    input: `=VLOOKUP(1, #${spreadsheetId}, #${spreadsheetId}.second, false)`,
+    input: `=VLOOKUP(1, ${spreadsheetToken}, ${spreadsheetToken}.second, false)`,
     value: '2'
   },
   {
     label: 'VLOOKUP ok string',
-    input: `=VLOOKUP("1", #${spreadsheetId}, #${spreadsheetId}.second)`,
+    input: `=VLOOKUP("1", ${spreadsheetToken}, ${spreadsheetToken}.second)`,
     value: '2'
   },
   {
     label: 'XLOOKUP ok string',
-    input: `=XLOOKUP("1", #${spreadsheetId}.first, #${spreadsheetId}.second)`,
+    input: `=XLOOKUP("1", ${spreadsheetToken}.first, ${spreadsheetToken}.second)`,
     value: '2'
   },
   {
     label: 'XLOOKUP ok string',
-    input: `=XLOOKUP("123", #${spreadsheetId}.first, #${spreadsheetId}.second, "100")`,
+    input: `=XLOOKUP("123", ${spreadsheetToken}.first, ${spreadsheetToken}.second, "100")`,
     value: '100'
   }
 ]
 
 describe('Spreadsheet Functions', () => {
+  BrickdocEventBus.dispatch(BlockNameLoad({ id: namespaceId, name: 'Page1' }))
   formulaContext.setSpreadsheet(spreadsheet)
   const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
 
@@ -345,9 +352,9 @@ describe('Spreadsheet Functions', () => {
     const completions = formulaContext.completions(namespaceId, variableId)
     expect(completions[0].kind).toEqual('spreadsheet')
     expect(completions[0]).toMatchSnapshot()
-    expect(completions.filter(c => c.kind === 'column').length).toEqual(3)
+    expect(completions.filter(c => c.kind === 'column').length).toEqual(0)
 
-    const input1 = `=#${spreadsheetId}.first.`
+    const input1 = `=#${spreadsheetToken}.first.`
     const { completions: input1Completions } = parse({
       ctx: {
         ...ctx,

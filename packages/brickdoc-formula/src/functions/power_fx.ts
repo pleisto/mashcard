@@ -24,7 +24,7 @@ export const CountIf = (
     return { type: 'Error', result: 'Column is missing', errorKind: 'runtime' }
   }
 
-  if (spreadsheet.blockId !== column.namespaceId) {
+  if (spreadsheet.spreadsheetId !== column.spreadsheetId) {
     return { type: 'Error', result: 'Column must be in the same namespace', errorKind: 'runtime' }
   }
   const columns = spreadsheet.listColumns()
@@ -52,7 +52,7 @@ export const CORE_POWERFX_CLAUSES: Array<BaseFunctionClause<'number'>> = [
     async: false,
     pure: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     examples: [{ input: '=CountIf()', output: { type: 'number', result: 123 } }],

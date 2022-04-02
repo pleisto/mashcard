@@ -11,7 +11,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     acceptError: false,
     effect: false,
     lazy: false,
-    persist: true,
+    persist: false,
     args: [
       {
         type: 'number',
@@ -34,7 +34,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     name: 'FORTY_TWO',
     async: false,
     pure: true,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     lazy: false,
@@ -108,10 +108,10 @@ describe('Custom Function', () => {
     const input = '=NOW()'
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta, formulaContext: localFormulaContext }
-    const { success, cst, variableDependencies, variableNameDependencies } = parse({ ctx: finalCtx })
+    const { success, cst, variableDependencies, nameDependencies } = parse({ ctx: finalCtx })
     expect(success).toEqual(true)
     expect(variableDependencies).toEqual([])
-    expect(variableNameDependencies).toEqual([])
+    expect(nameDependencies).toEqual([])
     expect(cst).toMatchSnapshot()
   })
 
@@ -190,7 +190,7 @@ describe('Context', () => {
 
     expect(bar.t.functionDependencies).toEqual([])
     expect(bar.t.variableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
-    expect(bar.t.variableNameDependencies).toEqual([{ namespaceId, name: 'foo' }])
+    expect(bar.t.nameDependencies).toEqual([{ namespaceId, name: 'foo' }])
     expect(bar.t.flattenVariableDependencies).toEqual([{ namespaceId, variableId: fooVariableId }])
 
     const input = `=#${anotherBlockId}.bar`
@@ -246,7 +246,7 @@ describe('Context', () => {
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
-    expect(errorMessages).toEqual([{ message: 'Variable "unknown" not found', type: 'deps' }])
+    expect(errorMessages).toEqual([{ message: '"unknown" not found', type: 'deps' }])
   })
 
   it('unknown variable 2', () => {
@@ -254,6 +254,6 @@ describe('Context', () => {
     const newMeta = { ...meta, input }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages } = parse({ ctx: finalCtx })
-    expect(errorMessages).toEqual([{ message: 'Variable "unknown variable" not found', type: 'deps' }])
+    expect(errorMessages).toEqual([{ message: '"unknown variable" not found', type: 'deps' }])
   })
 })

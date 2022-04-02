@@ -13,7 +13,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     async: false,
     pure: true,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     effect: false,
     args: [
@@ -38,7 +38,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     name: 'FORTY_TWO',
     async: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     pure: true,
     effect: false,

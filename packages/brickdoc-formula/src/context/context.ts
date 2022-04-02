@@ -1,5 +1,5 @@
 import { CstNode, ILexingResult } from 'chevrotain'
-import { ColumnType, SpreadsheetType, ColumnClass, ColumnInitializer } from '../controls'
+import { ColumnType, SpreadsheetType, BlockType } from '../controls'
 import {
   ContextInterface,
   FunctionClause,
@@ -23,49 +23,49 @@ import {
   FunctionCompletion,
   VariableCompletion,
   SpreadsheetCompletion,
-  ColumnCompletion,
   Features,
-  FormulaName,
   AnyTypeResult,
   FunctionContext,
   BlockCompletion,
-  BlockFormulaName,
-  SpreadsheetResult,
   ColumnName,
   ViewType,
   ViewRender,
   View,
-  VariableValue,
   DirtyFormulaInfo,
   Formula,
-  DeleteFormula
+  DeleteFormula,
+  SpreadsheetId,
+  NameDependencyWithKind
 } from '../types'
 import {
   function2completion,
   spreadsheet2completion,
   variable2completion,
   variableKey,
-  column2completion,
-  block2completion,
-  block2name,
-  spreadsheet2name
+  block2completion
 } from '../grammar/convert'
 import { buildFunctionKey, BUILTIN_CLAUSES } from '../functions'
 import { CodeFragmentVisitor } from '../grammar/codeFragment'
 import { FormulaParser } from '../grammar/parser'
 import { FormulaLexer } from '../grammar/lexer'
-import { BlockNameLoad, BlockSpreadsheetLoaded, BrickdocEventBus, FormulaContextTickTrigger } from '@brickdoc/schema'
+import {
+  BlockNameLoad,
+  BrickdocEventBus,
+  EventSubscribed,
+  FormulaContextNameChanged,
+  FormulaContextNameRemove,
+  FormulaContextTickTrigger,
+  SpreadsheetReloadViaId
+} from '@brickdoc/schema'
 import { FORMULA_FEATURE_CONTROL } from './features'
 import { BlockClass } from '../controls/block'
 import { DEFAULT_VIEWS } from '../render'
-import { fetchResult } from './variable'
 
 export interface FormulaContextArgs {
   domain: string
   tickTimeout?: number
   functionClauses?: Array<BaseFunctionClause<any>>
   backendActions?: BackendActions
-  formulaNames?: FormulaName[]
   features?: string[]
 }
 
@@ -122,11 +122,13 @@ export class FormulaContext implements ContextInterface {
   tickTimeout: number
   features: Features
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo> = {}
-  context: Record<VariableKey, VariableInterface> = {}
+  variables: Record<VariableKey, VariableInterface> = {}
   viewRenders: Record<ViewType, ViewRender> = {}
   functionWeights: Record<FunctionKey, number> = {}
   variableWeights: Record<VariableKey, number> = {}
-  spreadsheets: Record<NamespaceId, SpreadsheetType> = {}
+  spreadsheets: Record<string, SpreadsheetType> = {}
+  names: Record<string, NameDependencyWithKind> = {}
+  blocks: Record<string, BlockType> = {}
   variableNameCounter: Record<FormulaType, Record<NamespaceId, number>> = {
     string: {},
     number: {},
@@ -166,14 +168,13 @@ export class FormulaContext implements ContextInterface {
   functionClausesMap: Record<FunctionKey, FunctionClause<any>>
   backendActions: BackendActions | undefined
   reservedNames: string[] = []
-  formulaNames: FormulaName[] = []
+  eventListeners: EventSubscribed[] = []
 
   constructor({
     domain,
     tickTimeout,
     functionClauses = [],
     backendActions,
-    formulaNames,
     features = [FORMULA_FEATURE_CONTROL]
   }: FormulaContextArgs) {
     this.domain = domain
@@ -184,25 +185,22 @@ export class FormulaContext implements ContextInterface {
       this.backendActions = backendActions
     }
 
-    if (formulaNames) {
-      this.formulaNames = formulaNames
-    }
-
     this.viewRenders = DEFAULT_VIEWS.reduce((o: Record<ViewType, ViewRender>, acc: View) => {
       o[acc.type] = acc.render
       return o
     }, {})
 
-    BrickdocEventBus.subscribe(BlockNameLoad, e => {
-      const namespaceId = e.payload.id
-      const name = e.payload.name || 'Untitled'
-      const block = new BlockClass(this, { id: namespaceId })
-      this.formulaNames = this.formulaNames
-        .filter(n => !(n.kind === 'Block' && n.key === namespaceId))
-        .concat({ ...block2name(block), name })
-    })
+    const blockNameSubscription = BrickdocEventBus.subscribe(
+      BlockNameLoad,
+      e => {
+        this.setBlock(e.payload.id, e.payload.name)
+      },
+      { subscribeId: `Domain#${this.domain}` }
+    )
 
-    BrickdocEventBus.subscribe(
+    this.eventListeners.push(blockNameSubscription)
+
+    const tickSubscription = BrickdocEventBus.subscribe(
       FormulaContextTickTrigger,
       e => {
         void this.tick(e.payload.state)
@@ -212,6 +210,8 @@ export class FormulaContext implements ContextInterface {
         subscribeId: `Domain#${this.domain}`
       }
     )
+
+    this.eventListeners.push(tickSubscription)
 
     void this.tick(undefined as ContextState)
 
@@ -247,6 +247,13 @@ export class FormulaContext implements ContextInterface {
     )
   }
 
+  public cleanup(): void {
+    this.eventListeners.forEach(listener => {
+      listener.unsubscribe()
+    })
+    this.eventListeners = []
+  }
+
   public async invoke(name: string, ctx: FunctionContext, ...args: any[]): Promise<AnyTypeResult> {
     const clause = this.functionClausesMap[name]
     if (!clause) {
@@ -261,45 +268,21 @@ export class FormulaContext implements ContextInterface {
       const weight: number = this.functionWeights[key as FunctionKey] || 0
       return function2completion(f, weight)
     })
-    const completionVariables: Array<[string, VariableInterface]> = Object.entries(this.context).filter(
+    const completionVariables: Array<[string, VariableInterface]> = Object.entries(this.variables).filter(
       ([key, c]) => c.t.variableId !== variableId && c.t.type === 'normal'
     )
     const variables: VariableCompletion[] = completionVariables.map(([key, v]) => {
       return variable2completion(v, namespaceId)
     })
-    const spreadsheets: SpreadsheetCompletion[] = Object.entries(this.spreadsheets).map(([key, spreadsheet]) => {
-      return spreadsheet2completion(spreadsheet, namespaceId)
+    const spreadsheets: SpreadsheetCompletion[] = Object.values(this.spreadsheets).map(spreadsheet => {
+      return spreadsheet2completion(spreadsheet!, namespaceId)
     })
 
-    const blocks: BlockCompletion[] = this.formulaNames
-      .filter(f => f.kind === 'Block')
-      .map(f => {
-        return block2completion(this, f as BlockFormulaName, namespaceId)
-      })
-
-    const columns: ColumnCompletion[] = Object.entries(this.spreadsheets).flatMap(([key, spreadsheet]) => {
-      return spreadsheet
-        .listColumns()
-        .map(column => column2completion(new ColumnClass(spreadsheet, column), namespaceId))
+    const blocks: BlockCompletion[] = Object.values(this.blocks).map(b => {
+      return block2completion(this, b, namespaceId)
     })
 
-    const dynamicColumns: ColumnCompletion[] = completionVariables
-      .filter(([key, v]) => {
-        return (
-          fetchResult(v.t).type === 'Spreadsheet' &&
-          v.savedT &&
-          (v.savedT.task.variableValue as any).result.result.dynamic
-        )
-      })
-      .flatMap(([key, v]) => {
-        const result = (v.savedT!.task.variableValue as VariableValue).result as SpreadsheetResult
-        return result.result
-          .listColumns()
-          .map((column: ColumnInitializer) => column2completion(new ColumnClass(result.result, column), namespaceId))
-      })
-    return [...functions, ...variables, ...blocks, ...spreadsheets, ...columns, ...dynamicColumns].sort(
-      (a, b) => b.weight - a.weight
-    )
+    return [...functions, ...variables, ...blocks, ...spreadsheets].sort((a, b) => b.weight - a.weight)
   }
 
   public getDefaultVariableName(namespaceId: NamespaceId, type: FormulaType): DefaultVariableName {
@@ -308,76 +291,116 @@ export class FormulaContext implements ContextInterface {
   }
 
   public variableCount(): number {
-    return Object.keys(this.context).length
+    return Object.keys(this.variables).length
   }
 
   public findViewRender(viewType: ViewType): ViewRender | undefined {
     return this.viewRenders[viewType]
   }
 
-  public findSpreadsheet(namespaceId: NamespaceId): SpreadsheetType | undefined {
-    return this.spreadsheets[namespaceId]
+  public findSpreadsheetById(spreadsheetId: SpreadsheetId): SpreadsheetType | undefined {
+    return this.spreadsheets[spreadsheetId]
   }
 
-  public findFormulaName(namespaceId: NamespaceId): FormulaName | undefined {
-    return this.formulaNames.find(f => f.key === namespaceId)
+  public findBlockById(blockId: NamespaceId): BlockType | undefined {
+    return this.blocks[blockId]
+  }
+
+  public setBlock(blockId: NamespaceId, name: string): void {
+    if (this.blocks[blockId]) return
+    const block = new BlockClass(this, { id: blockId, name })
+    this.blocks[blockId] = block
+    this.setName(block.nameDependency())
+  }
+
+  public removeBlock(blockId: NamespaceId): void {
+    if (!this.blocks[blockId]) return
+    this.blocks[blockId].cleanup()
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete this.blocks[blockId]
+  }
+
+  public findNames(namespaceId: NamespaceId, name: string): NameDependencyWithKind[] {
+    if (!name) return []
+    return Object.values(this.names).filter(
+      n => n.name.toUpperCase() === name.toUpperCase() && (n.kind === 'Block' || n.namespaceId === namespaceId)
+    )
+  }
+
+  public setName(nameDependency: NameDependencyWithKind): void {
+    const oldName = this.names[nameDependency.id]
+    this.names[nameDependency.id] = nameDependency
+    if (oldName && oldName.name === nameDependency.name) return
+
+    BrickdocEventBus.dispatch(FormulaContextNameChanged(nameDependency))
+  }
+
+  public removeName(id: NamespaceId): void {
+    const oldName = this.names[id]
+    if (!oldName) return
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete this.names[id]
+
+    BrickdocEventBus.dispatch(FormulaContextNameRemove(oldName))
+  }
+
+  public findSpreadsheetByName(namespaceId: NamespaceId, name: string): SpreadsheetType | undefined {
+    return Object.values(this.spreadsheets).find(s => s!.namespaceId === namespaceId && s!.name() === name)
   }
 
   public findColumnById(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
-    const spreadsheet = this.findSpreadsheet(namespaceId)
+    const spreadsheet = this.findSpreadsheetById(namespaceId)
     if (!spreadsheet) {
       return undefined
     }
 
-    const column = spreadsheet.getColumnById(variableId)
-
-    if (!column) {
-      return undefined
-    }
-
-    return new ColumnClass(spreadsheet, column)
+    return spreadsheet.getColumnById(variableId)
   }
 
   public findColumnByName(namespaceId: NamespaceId, name: ColumnName): ColumnType | undefined {
-    const spreadsheet = this.findSpreadsheet(namespaceId)
+    const spreadsheet = this.findSpreadsheetById(namespaceId)
     if (!spreadsheet) {
       return undefined
     }
 
-    const column = spreadsheet.getColumnByName(name)
-
-    if (!column) {
-      return undefined
-    }
-
-    return new ColumnClass(spreadsheet, column)
+    return spreadsheet.getColumnByName(name)
   }
 
   public setSpreadsheet(spreadsheet: SpreadsheetType): void {
-    this.spreadsheets[spreadsheet.blockId] = spreadsheet
-    this.formulaNames = this.formulaNames
-      .filter(n => !(n.kind === 'Spreadsheet' && n.key === spreadsheet.blockId))
-      .concat(spreadsheet2name(spreadsheet))
-    BrickdocEventBus.dispatch(BlockSpreadsheetLoaded({ id: spreadsheet.blockId }))
+    if (this.spreadsheets[spreadsheet.spreadsheetId]) return
+
+    this.spreadsheets[spreadsheet.spreadsheetId] = spreadsheet
+    this.setBlock(spreadsheet.namespaceId, '')
+    this.setName(spreadsheet.nameDependency())
+    BrickdocEventBus.dispatch(
+      SpreadsheetReloadViaId({
+        spreadsheetId: spreadsheet.spreadsheetId,
+        scopes: [],
+        namespaceId: spreadsheet.namespaceId,
+        key: spreadsheet.spreadsheetId
+      })
+    )
   }
 
-  public removeSpreadsheet(namespaceId: NamespaceId): void {
+  public removeSpreadsheet(spreadsheetId: SpreadsheetId): void {
+    if (!this.spreadsheets[spreadsheetId]) return
+    this.spreadsheets[spreadsheetId].cleanup(true)
     // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-    delete this.spreadsheets[namespaceId]
+    delete this.spreadsheets[spreadsheetId]
   }
 
   public findVariableById(namespaceId: NamespaceId, variableId: VariableId): VariableInterface | undefined {
-    const v = this.context[variableKey(namespaceId, variableId)]
+    const v = this.variables[variableKey(namespaceId, variableId)]
     return v
   }
 
   public findVariableByName(namespaceId: NamespaceId, name: string): VariableInterface | undefined {
-    const v = Object.values(this.context).find(v => v.t.namespaceId === namespaceId && v.t.name === name)
+    const v = Object.values(this.variables).find(v => v.t.namespaceId === namespaceId && v.t.name === name)
     return v
   }
 
   public listVariables(namespaceId: NamespaceId): VariableInterface[] {
-    return Object.values(this.context).filter(v => v.t.namespaceId === namespaceId)
+    return Object.values(this.variables).filter(v => v.t.namespaceId === namespaceId)
   }
 
   public commitVariable({ variable }: { variable: VariableInterface }): void {
@@ -386,14 +409,14 @@ export class FormulaContext implements ContextInterface {
 
     // 1. clear old dependencies
     if (oldVariable) {
-      oldVariable.clearDependency()
+      oldVariable.cleanup(false)
     }
 
     variable.isNew = false
     variable.savedT = variable.t
 
     // 2. replace variable object
-    this.context[variableKey(namespaceId, variableId)] = variable
+    this.variables[variableKey(namespaceId, variableId)] = variable
 
     // 3. track dependencies
     variable.trackDependency()
@@ -410,21 +433,15 @@ export class FormulaContext implements ContextInterface {
     }
 
     // 5. Persist
-    variable.onUpdate()
+    variable.onUpdate({})
   }
 
   public async removeVariable(namespaceId: NamespaceId, variableId: VariableId): Promise<void> {
     const key = variableKey(namespaceId, variableId)
-    const variable = this.context[key]
-    if (variable) {
-      variable.clearDependency()
-      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete this.context[key]
-
-      this.formulaNames = this.formulaNames.filter(n => !(n.kind === 'Variable' && n.key === variableId))
-
-      variable.onUpdate()
-    }
+    if (!this.variables[key]) return
+    this.variables[key].cleanup(true)
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete this.variables[key]
   }
 
   public findFunctionClause(group: FunctionGroup, name: FunctionNameType): FunctionClause<any> | undefined {
@@ -432,8 +449,9 @@ export class FormulaContext implements ContextInterface {
   }
 
   public resetFormula(): void {
-    this.context = {}
-    this.formulaNames = []
+    this.variables = {}
+    this.spreadsheets = {}
+    this.blocks = {}
     this.reverseVariableDependencies = {}
     this.reverseFunctionDependencies = {}
   }
@@ -446,6 +464,10 @@ export class FormulaContext implements ContextInterface {
   }
 
   private async commitDirty(): Promise<void> {
+    if (!this.backendActions) {
+      this.dirtyFormulas = {}
+      return
+    }
     const commitFormulas: Formula[] = []
     const deleteFormulas: DeleteFormula[] = []
     const commitVariables: VariableInterface[] = []
@@ -461,9 +483,13 @@ export class FormulaContext implements ContextInterface {
     })
     if (commitFormulas.length > 0 || deleteFormulas.length > 0) {
       // console.log('commit dirty', commitFormulas, deleteFormulas, this.backendActions)
-      await this.backendActions?.commit(commitFormulas, deleteFormulas)
+      const { success } = await this.backendActions.commit(commitFormulas, deleteFormulas)
+      if (success) {
+        this.dirtyFormulas = {}
+      } else {
+        console.error('commit dirty failed')
+      }
     }
-    this.dirtyFormulas = {}
   }
 
   private parseCodeFragments(input: string): CodeFragment[] {

@@ -27,6 +27,7 @@ import {
 } from '../controls'
 import { FORMULA_FEATURE_CONTROL } from '../context'
 import { v4 as uuid } from 'uuid'
+import { columnDisplayIndex } from '../grammar'
 
 export const Spreadsheet = (
   ctx: FunctionContext,
@@ -51,7 +52,7 @@ export const Spreadsheet = (
     return { type: 'Error', result: `Spreadsheet type unmatched: ${subType}`, errorKind: 'runtime' }
   }
 
-  const blockId = uuid()
+  const spreadsheetId = uuid()
   const defaultName = 'Dynamic Spreadsheet'
   const columns: ColumnInitializer[] = []
   const rows: Row[] = []
@@ -64,9 +65,12 @@ export const Spreadsheet = (
 
     keys.forEach((key, index) => {
       const column: ColumnInitializer = {
-        namespaceId: blockId,
+        spreadsheetId,
         columnId: keyWithIds.find(k => k.key === key)!.uuid,
         name: key,
+        sort: index,
+        title: key,
+        displayIndex: columnDisplayIndex(index),
         index
       }
 
@@ -75,11 +79,11 @@ export const Spreadsheet = (
 
     data.forEach((row, rowIndex) => {
       const rowId = uuid()
-      rows.push({ rowId, rowIndex })
+      rows.push({ rowId, rowIndex, spreadsheetId })
 
       columns.forEach(({ name, columnId }, columnIndex) => {
         const cell: CellType = {
-          spreadsheetId: blockId,
+          spreadsheetId,
           columnId,
           rowId,
           rowIndex,
@@ -97,20 +101,14 @@ export const Spreadsheet = (
 
   const spreadsheetDefinition: SpreadsheetInitializer = {
     ctx,
-    blockId,
+    spreadsheetId,
+    namespaceId: ctx.meta.namespaceId,
     dynamic: true,
     name: defaultName,
-    listColumns: () => columns,
-    listRows: () => rows,
-    listCells: ({ rowId, columnId }) => {
-      let finalCells = cells
-      if (rowId) {
-        finalCells = finalCells.filter(cell => cell.rowId === rowId)
-      }
-      if (columnId) {
-        finalCells = finalCells.filter(cell => cell.columnId === columnId)
-      }
-      return finalCells
+    columns,
+    rows,
+    getCell: ({ rowId, columnId }) => {
+      return cells.find(cell => cell.rowId === rowId && cell.columnId === columnId)!
     }
   }
 
@@ -170,7 +168,7 @@ export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'But
       name: 'Spreadsheet',
       async: false,
       pure: true,
-      persist: true,
+      persist: false,
       lazy: false,
       acceptError: false,
       effect: false,
@@ -187,7 +185,7 @@ export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'But
       name: 'Button',
       async: false,
       pure: true,
-      persist: true,
+      persist: false,
       lazy: false,
       acceptError: false,
       effect: false,
@@ -215,7 +213,7 @@ export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'But
       async: false,
       pure: true,
       lazy: false,
-      persist: true,
+      persist: false,
       acceptError: false,
       effect: false,
       feature: FORMULA_FEATURE_CONTROL,
@@ -232,7 +230,7 @@ export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'But
       name: 'Switch',
       async: false,
       pure: true,
-      persist: true,
+      persist: false,
       lazy: false,
       feature: FORMULA_FEATURE_CONTROL,
       acceptError: false,
@@ -259,7 +257,7 @@ export const CORE_CONTROL_CLAUSES: Array<BaseFunctionClause<'Spreadsheet' | 'But
       name: 'Select',
       async: false,
       pure: true,
-      persist: true,
+      persist: false,
       lazy: false,
       feature: FORMULA_FEATURE_CONTROL,
       acceptError: false,

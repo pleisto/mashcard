@@ -1,6 +1,12 @@
 import { checkValidName } from '../util'
 
-const validNames: Array<{ name: string }> = [{ name: 'a213' }, { name: '_a' }, { name: 'a_' }, { name: 'a测试' }]
+const validNames: Array<{ name: string }> = [
+  { name: 'a213' },
+  { name: '_a' },
+  { name: 'num0' },
+  { name: 'a_' },
+  { name: 'a测试' }
+]
 const invalidNames: Array<{ name: string }> = [
   { name: '123' },
   { name: '1a' },

@@ -42,8 +42,6 @@ exports[`AutocompleteList Active Completion renders block kind correctly 1`] = `
             class="autocomplete-list-item-desc"
           >
             block
-             
-            description
           </span>
         </div>
       </div>
@@ -131,8 +129,6 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
             class="autocomplete-list-item-desc"
           >
             column
-             
-            description
           </span>
         </div>
       </div>
@@ -162,37 +158,7 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
                     <th />
                   </tr>
                 </thead>
-                <tbody>
-                  <tr
-                    class="   "
-                    data-row-id="row"
-                  >
-                    <td
-                      class="row-action-panel"
-                    >
-                      <div
-                        class="row-action-panel-layer"
-                      >
-                        <button
-                          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md row-number"
-                          role="button"
-                          tabindex="0"
-                          type="button"
-                        >
-                          <span>
-                            1
-                          </span>
-                        </button>
-                        <span
-                          aria-haspopup="menu"
-                          class="brd-c-hRyQNC-trigger row-action"
-                        >
-                          ⌄
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody />
               </table>
               <div
                 class="brickdoc-spreadsheet-block"
@@ -204,43 +170,9 @@ exports[`AutocompleteList Active Completion renders column kind correctly 1`] = 
                     <tr
                       class=""
                       data-row-id="first"
-                    >
-                      <th
-                        class="   "
-                        data-column-id="column"
-                      >
-                        <div
-                          class="column"
-                        >
-                          name
-                        </div>
-                        <span
-                          aria-haspopup="menu"
-                          class="brd-c-hRyQNC-trigger column-action"
-                        >
-                          ⌄
-                        </span>
-                      </th>
-                    </tr>
+                    />
                   </thead>
-                  <tbody>
-                    <tr
-                      class="  "
-                      data-row-id="row"
-                    >
-                      <td
-                        class=""
-                        data-cell-id="row,column"
-                      >
-                        <div
-                          aria-haspopup="menu"
-                          class="brd-c-hRyQNC-trigger cell"
-                        >
-                          <div />
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody />
                 </table>
               </div>
             </span>
@@ -294,8 +226,6 @@ exports[`AutocompleteList Active Completion renders function kind correctly 1`] 
             class="autocomplete-list-item-desc"
           >
             function
-             
-            description
           </span>
         </div>
       </div>
@@ -440,8 +370,6 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
             class="autocomplete-list-item-desc"
           >
             spreadsheet
-             
-            description
           </span>
         </div>
       </div>
@@ -471,37 +399,7 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
                     <th />
                   </tr>
                 </thead>
-                <tbody>
-                  <tr
-                    class="   "
-                    data-row-id="row"
-                  >
-                    <td
-                      class="row-action-panel"
-                    >
-                      <div
-                        class="row-action-panel-layer"
-                      >
-                        <button
-                          class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md row-number"
-                          role="button"
-                          tabindex="0"
-                          type="button"
-                        >
-                          <span>
-                            1
-                          </span>
-                        </button>
-                        <span
-                          aria-haspopup="menu"
-                          class="brd-c-hRyQNC-trigger row-action"
-                        >
-                          ⌄
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody />
               </table>
               <div
                 class="brickdoc-spreadsheet-block"
@@ -513,43 +411,9 @@ exports[`AutocompleteList Active Completion renders spreadsheet kind correctly 1
                     <tr
                       class=""
                       data-row-id="first"
-                    >
-                      <th
-                        class="   "
-                        data-column-id="column"
-                      >
-                        <div
-                          class="column"
-                        >
-                          name
-                        </div>
-                        <span
-                          aria-haspopup="menu"
-                          class="brd-c-hRyQNC-trigger column-action"
-                        >
-                          ⌄
-                        </span>
-                      </th>
-                    </tr>
+                    />
                   </thead>
-                  <tbody>
-                    <tr
-                      class="  "
-                      data-row-id="row"
-                    >
-                      <td
-                        class=""
-                        data-cell-id="row,column"
-                      >
-                        <div
-                          aria-haspopup="menu"
-                          class="brd-c-hRyQNC-trigger cell"
-                        >
-                          <div />
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody />
                 </table>
               </div>
             </span>
@@ -602,8 +466,6 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
             class="autocomplete-list-item-desc"
           >
             variable
-             
-            description
           </span>
         </div>
       </div>

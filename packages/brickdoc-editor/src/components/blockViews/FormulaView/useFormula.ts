@@ -9,7 +9,8 @@ import {
   VariableData,
   VariableInterface,
   interpret,
-  FormulaType
+  FormulaType,
+  codeFragments2definition
 } from '@brickdoc/formula'
 import {
   BrickdocEventBus,
@@ -23,7 +24,7 @@ import {
   FormulaEditorSelectEventTrigger
 } from '@brickdoc/schema'
 import { JSONContent } from '@tiptap/core'
-import { devLog, devWarning } from '@brickdoc/design-system'
+import { devLog } from '@brickdoc/design-system'
 import React from 'react'
 import { EditorContentType } from '../../../editors/formulaEditor'
 import {
@@ -66,7 +67,8 @@ export interface UseFormulaOutput {
 const fetchEditorContent = (
   variable: VariableInterface | undefined,
   formulaIsNormal: boolean,
-  newPosition: number
+  newPosition: number,
+  pageId: string
 ): EditorContentType => {
   if (!variable) {
     return { content: undefined, input: formulaIsNormal ? '=' : '', position: newPosition }
@@ -77,7 +79,7 @@ const fetchEditorContent = (
 
     const codeFragments = maybeRemoveCodeFragmentsEqual(variableCodeFragments, formulaIsNormal)
     const newContent = codeFragmentsToJSONContentTotal(codeFragments)
-    const newInput = contentArrayToInput(fetchJSONContentArray(newContent))
+    const newInput = contentArrayToInput(fetchJSONContentArray(newContent), pageId)
     const newInputWithEqual = formulaIsNormal ? `=${newInput}` : newInput
 
     return { content: newContent, input: newInputWithEqual, position: newPosition }
@@ -143,14 +145,14 @@ export const useFormula = ({
   const defaultVariable = formulaContext?.findVariableById(rootId, formulaId)
 
   const formulaValue = defaultVariable?.t.valid
-    ? defaultVariable.t.codeFragments.map(fragment => fragment.value).join('')
+    ? codeFragments2definition(defaultVariable.t.codeFragments, rootId)
     : defaultVariable?.t.definition
 
   const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''
 
   const contextCompletions = formulaContext ? formulaContext.completions(rootId, formulaId) : []
 
-  const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal, 0)
+  const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal, 0, rootId)
 
   // Refs
   const nameRef = React.useRef(formulaName ?? defaultVariable?.t.name)
@@ -226,7 +228,8 @@ export const useFormula = ({
 
       const realInputs = positionBasedContentArrayToInput(
         fetchJSONContentArray(editorContentRef.current.content),
-        editorContentRef.current.position
+        editorContentRef.current.position,
+        rootId
       )
 
       const variableId = variableRef.current ? variableRef.current.t.variableId : formulaId
@@ -244,7 +247,7 @@ export const useFormula = ({
       const { completions, expressionType, success } = parseResult
       updateDefaultName(success ? expressionType : 'any')
       const newVariable = await interpret({ parseResult, ctx, skipExecute, variable: variableRef.current })
-      // console.log('parseResult', parseResult, newVariable)
+      console.log('parseResult', ctx, parseResult, newVariable)
 
       setCompletion({
         completions,
@@ -257,7 +260,7 @@ export const useFormula = ({
       doUnselectedFormula()
 
       if (inputIsEmpty || parseResult.valid) {
-        editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, parseResult.position)
+        editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, parseResult.position, rootId)
         // console.log('replace editorContent', editorContentRef.current, newVariable)
         replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
       }
@@ -272,26 +275,14 @@ export const useFormula = ({
 
   const handleSelectActiveCompletion = React.useCallback((): void => {
     const currentCompletion = completion.activeCompletion
-    if (!currentCompletion) {
-      devWarning(true, 'No active completion!')
-      return
-    }
+    if (!currentCompletion) return
 
     const { position, content } = editorContentRef.current
     let oldContent = fetchJSONContentArray(content)
     let positionChange: number = currentCompletion.positionChange
     const oldContentLast = oldContent[oldContent.length - 1]
-    const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, position)
+    const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, position, rootId)
 
-    // console.log('replace', {
-    //   oldContentLast,
-    //   oldContent,
-    //   prevText,
-    //   position,
-    //   nextText,
-    //   positionChange,
-    //   currentCompletion
-    // })
     if (oldContentLast && prevText && currentCompletion.replacements.length) {
       if (currentCompletion.replacements.includes(prevText) || currentCompletion.name.startsWith(prevText)) {
         positionChange -= prevText.length
@@ -307,10 +298,8 @@ export const useFormula = ({
           oldContent = [
             attrsToJSONContent({
               display: newText,
-              value: newText,
               code: 'unknown',
               type: 'any',
-              renderText: undefined,
               hide: false,
               errors: [],
               attrs: undefined
@@ -324,10 +313,8 @@ export const useFormula = ({
       ? [
           attrsToJSONContent({
             display: nextText,
-            value: nextText,
             code: 'unknown',
             type: 'any',
-            renderText: undefined,
             hide: false,
             errors: [],
             attrs: undefined
@@ -339,7 +326,7 @@ export const useFormula = ({
     const newContent: JSONContent[] = [...oldContent, ...completionContents, ...nextContents]
 
     const finalContent = buildJSONContentByArray(newContent)
-    const finalInput = contentArrayToInput(fetchJSONContentArray(finalContent))
+    const finalInput = contentArrayToInput(fetchJSONContentArray(finalContent), rootId)
     const finalInputAfterEqual = formulaIsNormal ? `=${finalInput}` : finalInput
     const newPosition = editorContentRef.current.position + positionChange
 
@@ -377,7 +364,7 @@ export const useFormula = ({
 
   const updateEditor = React.useCallback(
     (jsonContent: JSONContent, editorPosition: number): void => {
-      const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent))
+      const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent), rootId)
       const value = formulaType === 'normal' ? `=${newInput}` : newInput
       editorContentRef.current = { content: jsonContent, input: value, position: editorPosition }
       BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId, skipExecute: false }))
@@ -411,14 +398,19 @@ export const useFormula = ({
         onUpdateFormula?.(variable)
       }
 
-      editorContentRef.current = fetchEditorContent(variable, formulaIsNormal, editorContentRef.current.position)
+      editorContentRef.current = fetchEditorContent(
+        variable,
+        formulaIsNormal,
+        editorContentRef.current.position,
+        rootId
+      )
 
       if (variable.isNew && !variable.t.task.async) {
         const result = variable.t.task.variableValue
         updateDefaultName(result.success ? result.result.type : 'any')
       }
     },
-    [formulaIsNormal, updateDefaultName, onUpdateFormula]
+    [formulaIsNormal, rootId, onUpdateFormula, updateDefaultName]
   )
 
   const saveFormula = React.useCallback((): void => {

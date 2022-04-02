@@ -88,8 +88,10 @@ export const FormulaValue: FC<FormulaValueProps> = ({
     return data
   }
 
+  const title = result.type === 'Error' ? `${name}: ${result.result}` : name
+
   return (
-    <Tooltip title={name} destroyTooltipOnHide={true}>
+    <Tooltip title={title} destroyTooltipOnHide={true}>
       {data}
     </Tooltip>
   )

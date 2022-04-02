@@ -1427,9 +1427,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": undefined,
@@ -1437,9 +1435,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1447,9 +1443,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -1457,9 +1451,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
   Object {
     "attrs": undefined,
@@ -1467,9 +1459,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1477,9 +1467,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -1487,9 +1475,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1497,9 +1483,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
   Object {
     "attrs": undefined,
@@ -1507,9 +1491,7 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ")",
   },
   Object {
     "attrs": undefined,
@@ -1517,9 +1499,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1527,9 +1507,7 @@ Array [
     "display": "/",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "/",
   },
   Object {
     "attrs": undefined,
@@ -1537,9 +1515,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1547,9 +1523,7 @@ Array [
     "display": "2",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "2",
   },
   Object {
     "attrs": undefined,
@@ -1557,9 +1531,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1567,9 +1539,7 @@ Array [
     "display": "*",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "*",
   },
   Object {
     "attrs": undefined,
@@ -1577,9 +1547,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1587,9 +1555,7 @@ Array [
     "display": "0.1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "0.1",
   },
   Object {
     "attrs": undefined,
@@ -1597,9 +1563,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1607,9 +1571,7 @@ Array [
     "display": "==",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "==",
   },
   Object {
     "attrs": undefined,
@@ -1617,9 +1579,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1627,9 +1587,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -1637,9 +1595,7 @@ Array [
     "display": "!",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "!",
   },
   Object {
     "attrs": undefined,
@@ -1647,9 +1603,7 @@ Array [
     "display": "!",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "!",
   },
   Object {
     "attrs": undefined,
@@ -1657,9 +1611,7 @@ Array [
     "display": "true",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "true",
   },
   Object {
     "attrs": undefined,
@@ -1667,9 +1619,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1677,9 +1627,7 @@ Array [
     "display": "and",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "and",
   },
   Object {
     "attrs": undefined,
@@ -1687,9 +1635,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1697,9 +1643,7 @@ Array [
     "display": "false",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "false",
   },
   Object {
     "attrs": undefined,
@@ -1707,9 +1651,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1717,9 +1659,7 @@ Array [
     "display": "or",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "or",
   },
   Object {
     "attrs": undefined,
@@ -1727,9 +1667,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1737,9 +1675,7 @@ Array [
     "display": "true",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "true",
   },
   Object {
     "attrs": undefined,
@@ -1747,9 +1683,7 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ")",
   },
   Object {
     "attrs": undefined,
@@ -1757,9 +1691,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1767,9 +1699,7 @@ Array [
     "display": "==",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "boolean",
-    "value": "==",
   },
   Object {
     "attrs": undefined,
@@ -1777,9 +1707,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -1787,9 +1715,7 @@ Array [
     "display": "\\"123\\"",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "\\"123\\"",
   },
 ]
 `;
@@ -2152,9 +2078,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": undefined,
@@ -2162,9 +2086,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -2172,9 +2094,7 @@ Array [
     "display": "ABS",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "ABS",
   },
   Object {
     "attrs": undefined,
@@ -2182,9 +2102,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -2197,9 +2115,7 @@ Array [
       },
     ],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "\\"123\\"",
   },
   Object {
     "attrs": undefined,
@@ -2207,9 +2123,7 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": ")",
   },
 ]
 `;
@@ -3107,9 +3021,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": undefined,
@@ -3117,9 +3029,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -3127,9 +3037,7 @@ Array [
     "display": "custom::PLUS",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "custom::PLUS",
   },
   Object {
     "attrs": undefined,
@@ -3137,9 +3045,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -3147,9 +3053,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -3157,9 +3061,7 @@ Array [
     "display": "custom::FORTY_TWO",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "custom::FORTY_TWO",
   },
   Object {
     "attrs": undefined,
@@ -3167,9 +3069,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -3177,9 +3077,7 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": ")",
   },
   Object {
     "attrs": undefined,
@@ -3187,9 +3085,7 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ")",
   },
   Object {
     "attrs": undefined,
@@ -3197,9 +3093,7 @@ Array [
     "display": ",",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ",",
   },
   Object {
     "attrs": undefined,
@@ -3207,9 +3101,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -3217,9 +3109,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
   Object {
     "attrs": undefined,
@@ -3227,9 +3117,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -3237,9 +3125,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -3247,9 +3133,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -3257,9 +3141,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
   Object {
     "attrs": undefined,
@@ -3267,9 +3149,7 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": ")",
   },
 ]
 `;
@@ -3341,13 +3221,13 @@ Object {
                                             "children": Object {
                                               "Ampersand": Array [
                                                 Object {
-                                                  "endColumn": 16,
+                                                  "endColumn": 28,
                                                   "endLine": 1,
-                                                  "endOffset": 15,
+                                                  "endOffset": 27,
                                                   "image": "&",
-                                                  "startColumn": 16,
+                                                  "startColumn": 28,
                                                   "startLine": 1,
-                                                  "startOffset": 15,
+                                                  "startOffset": 27,
                                                   "tokenType": Object {
                                                     "CATEGORIES": Array [],
                                                     "PATTERN": /&/,
@@ -3377,13 +3257,13 @@ Object {
                                                                           "children": Object {
                                                                             "Dot": Array [
                                                                               Object {
-                                                                                "endColumn": 7,
+                                                                                "endColumn": 15,
                                                                                 "endLine": 1,
-                                                                                "endOffset": 6,
+                                                                                "endOffset": 14,
                                                                                 "image": ".",
-                                                                                "startColumn": 7,
+                                                                                "startColumn": 15,
                                                                                 "startLine": 1,
-                                                                                "startOffset": 6,
+                                                                                "startOffset": 14,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "PATTERN": /\\\\\\./,
@@ -3396,13 +3276,32 @@ Object {
                                                                                 "tokenTypeIdx": 32,
                                                                               },
                                                                               Object {
-                                                                                "endColumn": 11,
+                                                                                "endColumn": 19,
                                                                                 "endLine": 1,
-                                                                                "endOffset": 10,
+                                                                                "endOffset": 18,
                                                                                 "image": ".",
-                                                                                "startColumn": 11,
+                                                                                "startColumn": 19,
                                                                                 "startLine": 1,
-                                                                                "startOffset": 10,
+                                                                                "startOffset": 18,
+                                                                                "tokenType": Object {
+                                                                                  "CATEGORIES": Array [],
+                                                                                  "PATTERN": /\\\\\\./,
+                                                                                  "categoryMatches": Array [],
+                                                                                  "categoryMatchesMap": Object {},
+                                                                                  "isParent": false,
+                                                                                  "name": "Dot",
+                                                                                  "tokenTypeIdx": 32,
+                                                                                },
+                                                                                "tokenTypeIdx": 32,
+                                                                              },
+                                                                              Object {
+                                                                                "endColumn": 23,
+                                                                                "endLine": 1,
+                                                                                "endOffset": 22,
+                                                                                "image": ".",
+                                                                                "startColumn": 23,
+                                                                                "startLine": 1,
+                                                                                "startOffset": 22,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "PATTERN": /\\\\\\./,
@@ -3418,39 +3317,53 @@ Object {
                                                                             "lhs": Array [
                                                                               Object {
                                                                                 "children": Object {
-                                                                                  "simpleAtomicExpression": Array [
+                                                                                  "blockExpression": Array [
                                                                                     Object {
                                                                                       "children": Object {
-                                                                                        "constantExpression": Array [
+                                                                                        "CurrentBlock": Array [
                                                                                           Object {
-                                                                                            "children": Object {
-                                                                                              "StringLiteral": Array [
-                                                                                                Object {
-                                                                                                  "endColumn": 6,
-                                                                                                  "endLine": 1,
-                                                                                                  "endOffset": 5,
-                                                                                                  "image": "\\"FOO\\"",
-                                                                                                  "startColumn": 2,
-                                                                                                  "startLine": 1,
-                                                                                                  "startOffset": 1,
-                                                                                                  "tokenType": Object {
-                                                                                                    "CATEGORIES": Array [],
-                                                                                                    "PATTERN": /"\\(""\\|\\[\\^"\\]\\)\\*"/,
-                                                                                                    "categoryMatches": Array [],
-                                                                                                    "categoryMatchesMap": Object {},
-                                                                                                    "isParent": false,
-                                                                                                    "name": "StringLiteral",
-                                                                                                    "tokenTypeIdx": 47,
-                                                                                                  },
-                                                                                                  "tokenTypeIdx": 47,
-                                                                                                },
-                                                                                              ],
+                                                                                            "endColumn": 14,
+                                                                                            "endLine": 1,
+                                                                                            "endOffset": 13,
+                                                                                            "image": "CurrentBlock",
+                                                                                            "startColumn": 3,
+                                                                                            "startLine": 1,
+                                                                                            "startOffset": 2,
+                                                                                            "tokenType": Object {
+                                                                                              "CATEGORIES": Array [],
+                                                                                              "PATTERN": /CurrentBlock/,
+                                                                                              "categoryMatches": Array [],
+                                                                                              "categoryMatchesMap": Object {},
+                                                                                              "isParent": false,
+                                                                                              "name": "CurrentBlock",
+                                                                                              "tokenTypeIdx": 12,
                                                                                             },
-                                                                                            "name": "constantExpression",
+                                                                                            "tokenTypeIdx": 12,
+                                                                                          },
+                                                                                        ],
+                                                                                        "Sharp": Array [
+                                                                                          Object {
+                                                                                            "endColumn": 2,
+                                                                                            "endLine": 1,
+                                                                                            "endOffset": 1,
+                                                                                            "image": "#",
+                                                                                            "startColumn": 2,
+                                                                                            "startLine": 1,
+                                                                                            "startOffset": 1,
+                                                                                            "tokenType": Object {
+                                                                                              "CATEGORIES": Array [],
+                                                                                              "PATTERN": /#/,
+                                                                                              "categoryMatches": Array [],
+                                                                                              "categoryMatchesMap": Object {},
+                                                                                              "isParent": false,
+                                                                                              "name": "Sharp",
+                                                                                              "tokenTypeIdx": 31,
+                                                                                            },
+                                                                                            "tokenTypeIdx": 31,
                                                                                           },
                                                                                         ],
                                                                                       },
-                                                                                      "name": "simpleAtomicExpression",
+                                                                                      "name": "blockExpression",
                                                                                     },
                                                                                   ],
                                                                                 },
@@ -3462,13 +3375,39 @@ Object {
                                                                                 "children": Object {
                                                                                   "FunctionName": Array [
                                                                                     Object {
-                                                                                      "endColumn": 8,
+                                                                                      "endColumn": 18,
                                                                                       "endLine": 1,
-                                                                                      "endOffset": 7,
-                                                                                      "image": "T",
-                                                                                      "startColumn": 8,
+                                                                                      "endOffset": 17,
+                                                                                      "image": "foo",
+                                                                                      "startColumn": 16,
                                                                                       "startLine": 1,
-                                                                                      "startOffset": 7,
+                                                                                      "startOffset": 15,
+                                                                                      "tokenType": Object {
+                                                                                        "CATEGORIES": Array [],
+                                                                                        "PATTERN": /\\[a-zA-Z_\\]\\(\\(\\?!\\[,"'\`&#@:!\\$%\\^<>/\\?\\*=\\.;~\\|\\[\\(\\)\\{\\}\\+\\\\\\\\\\\\-\\\\\\]\\\\s\\]\\)\\.\\)\\*/,
+                                                                                        "categoryMatches": Array [],
+                                                                                        "categoryMatchesMap": Object {},
+                                                                                        "isParent": false,
+                                                                                        "name": "FunctionName",
+                                                                                        "tokenTypeIdx": 53,
+                                                                                      },
+                                                                                      "tokenTypeIdx": 53,
+                                                                                    },
+                                                                                  ],
+                                                                                },
+                                                                                "name": "keyExpression",
+                                                                              },
+                                                                              Object {
+                                                                                "children": Object {
+                                                                                  "FunctionName": Array [
+                                                                                    Object {
+                                                                                      "endColumn": 20,
+                                                                                      "endLine": 1,
+                                                                                      "endOffset": 19,
+                                                                                      "image": "T",
+                                                                                      "startColumn": 20,
+                                                                                      "startLine": 1,
+                                                                                      "startOffset": 19,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "PATTERN": /\\[a-zA-Z_\\]\\(\\(\\?!\\[,"'\`&#@:!\\$%\\^<>/\\?\\*=\\.;~\\|\\[\\(\\)\\{\\}\\+\\\\\\\\\\\\-\\\\\\]\\\\s\\]\\)\\.\\)\\*/,
@@ -3483,13 +3422,13 @@ Object {
                                                                                   ],
                                                                                   "LParen": Array [
                                                                                     Object {
-                                                                                      "endColumn": 9,
+                                                                                      "endColumn": 21,
                                                                                       "endLine": 1,
-                                                                                      "endOffset": 8,
+                                                                                      "endOffset": 20,
                                                                                       "image": "(",
-                                                                                      "startColumn": 9,
+                                                                                      "startColumn": 21,
                                                                                       "startLine": 1,
-                                                                                      "startOffset": 8,
+                                                                                      "startOffset": 20,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "PATTERN": /\\\\\\(/,
@@ -3504,13 +3443,13 @@ Object {
                                                                                   ],
                                                                                   "RParen": Array [
                                                                                     Object {
-                                                                                      "endColumn": 10,
+                                                                                      "endColumn": 22,
                                                                                       "endLine": 1,
-                                                                                      "endOffset": 9,
+                                                                                      "endOffset": 21,
                                                                                       "image": ")",
-                                                                                      "startColumn": 10,
+                                                                                      "startColumn": 22,
                                                                                       "startLine": 1,
-                                                                                      "startOffset": 9,
+                                                                                      "startOffset": 21,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "PATTERN": /\\\\\\)/,
@@ -3530,13 +3469,13 @@ Object {
                                                                                 "children": Object {
                                                                                   "FunctionName": Array [
                                                                                     Object {
-                                                                                      "endColumn": 12,
+                                                                                      "endColumn": 24,
                                                                                       "endLine": 1,
-                                                                                      "endOffset": 11,
+                                                                                      "endOffset": 23,
                                                                                       "image": "T",
-                                                                                      "startColumn": 12,
+                                                                                      "startColumn": 24,
                                                                                       "startLine": 1,
-                                                                                      "startOffset": 11,
+                                                                                      "startOffset": 23,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "PATTERN": /\\[a-zA-Z_\\]\\(\\(\\?!\\[,"'\`&#@:!\\$%\\^<>/\\?\\*=\\.;~\\|\\[\\(\\)\\{\\}\\+\\\\\\\\\\\\-\\\\\\]\\\\s\\]\\)\\.\\)\\*/,
@@ -3551,13 +3490,13 @@ Object {
                                                                                   ],
                                                                                   "LParen": Array [
                                                                                     Object {
-                                                                                      "endColumn": 13,
+                                                                                      "endColumn": 25,
                                                                                       "endLine": 1,
-                                                                                      "endOffset": 12,
+                                                                                      "endOffset": 24,
                                                                                       "image": "(",
-                                                                                      "startColumn": 13,
+                                                                                      "startColumn": 25,
                                                                                       "startLine": 1,
-                                                                                      "startOffset": 12,
+                                                                                      "startOffset": 24,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "PATTERN": /\\\\\\(/,
@@ -3572,13 +3511,13 @@ Object {
                                                                                   ],
                                                                                   "RParen": Array [
                                                                                     Object {
-                                                                                      "endColumn": 14,
+                                                                                      "endColumn": 26,
                                                                                       "endLine": 1,
-                                                                                      "endOffset": 13,
+                                                                                      "endOffset": 25,
                                                                                       "image": ")",
-                                                                                      "startColumn": 14,
+                                                                                      "startColumn": 26,
                                                                                       "startLine": 1,
-                                                                                      "startOffset": 13,
+                                                                                      "startOffset": 25,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "PATTERN": /\\\\\\)/,
@@ -3641,13 +3580,13 @@ Object {
                                                                                             "children": Object {
                                                                                               "StringLiteral": Array [
                                                                                                 Object {
-                                                                                                  "endColumn": 22,
+                                                                                                  "endColumn": 34,
                                                                                                   "endLine": 1,
-                                                                                                  "endOffset": 21,
+                                                                                                  "endOffset": 33,
                                                                                                   "image": "\\"Zzz\\"",
-                                                                                                  "startColumn": 18,
+                                                                                                  "startColumn": 30,
                                                                                                   "startLine": 1,
-                                                                                                  "startOffset": 17,
+                                                                                                  "startOffset": 29,
                                                                                                   "tokenType": Object {
                                                                                                     "CATEGORIES": Array [],
                                                                                                     "PATTERN": /"\\(""\\|\\[\\^"\\]\\)\\*"/,
@@ -3733,59 +3672,20 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
-    "attrs": undefined,
-    "code": "StringLiteral",
-    "display": "\\"FOO\\"",
+    "attrs": Object {
+      "id": "481b6dd1-e668-4477-9e47-cfe5cb1239d0",
+      "kind": "Variable",
+      "name": "foo",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Variable",
+    "display": "foo",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
-    "type": "string",
-    "value": "\\"FOO\\"",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Dot",
-    "display": ".",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": ".",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "Function",
-    "display": "T",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "T",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "LParen",
-    "display": "(",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": "(",
-  },
-  Object {
-    "attrs": undefined,
-    "code": "RParen",
-    "display": ")",
-    "errors": Array [],
-    "hide": false,
-    "renderText": undefined,
-    "type": "any",
-    "value": ")",
+    "type": "number",
   },
   Object {
     "attrs": undefined,
@@ -3793,9 +3693,7 @@ Array [
     "display": ".",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ".",
   },
   Object {
     "attrs": undefined,
@@ -3803,9 +3701,7 @@ Array [
     "display": "T",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "T",
   },
   Object {
     "attrs": undefined,
@@ -3813,9 +3709,7 @@ Array [
     "display": "(",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "(",
   },
   Object {
     "attrs": undefined,
@@ -3823,9 +3717,39 @@ Array [
     "display": ")",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ")",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "T",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
   },
   Object {
     "attrs": undefined,
@@ -3833,9 +3757,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -3843,9 +3765,7 @@ Array [
     "display": "&",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "&",
   },
   Object {
     "attrs": undefined,
@@ -3853,9 +3773,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -3863,9 +3781,7 @@ Array [
     "display": "\\"Zzz\\"",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "\\"Zzz\\"",
   },
 ]
 `;
@@ -4230,9 +4146,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": Object {
@@ -4245,9 +4159,7 @@ Array [
     "display": "Untitled",
     "errors": Array [],
     "hide": true,
-    "renderText": [Function],
     "type": "Block",
-    "value": "#CurrentBlock",
   },
   Object {
     "attrs": undefined,
@@ -4255,9 +4167,7 @@ Array [
     "display": ".",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ".",
   },
   Object {
     "attrs": undefined,
@@ -4265,14 +4175,12 @@ Array [
     "display": "\\"bar\\"",
     "errors": Array [
       Object {
-        "message": "Variable \\"bar\\" not found",
+        "message": "\\"bar\\" not found",
         "type": "deps",
       },
     ],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "\\"bar\\"",
   },
   Object {
     "attrs": undefined,
@@ -4280,9 +4188,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -4290,9 +4196,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -4300,9 +4204,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -4310,9 +4212,7 @@ Array [
     "display": "3",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "3",
   },
 ]
 `;
@@ -4677,9 +4577,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": Object {
@@ -4692,9 +4590,7 @@ Array [
     "display": "foo",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
-    "type": "string",
-    "value": "foo",
+    "type": "number",
   },
   Object {
     "attrs": undefined,
@@ -4702,9 +4598,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -4712,9 +4606,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -4722,9 +4614,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -4732,9 +4622,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
 ]
 `;
@@ -5099,9 +4987,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": Object {
@@ -5114,9 +5000,7 @@ Array [
     "display": "foo",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
-    "type": "string",
-    "value": "foo",
+    "type": "number",
   },
   Object {
     "attrs": undefined,
@@ -5124,9 +5008,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -5134,9 +5016,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -5144,9 +5024,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -5154,9 +5032,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
 ]
 `;
@@ -5521,9 +5397,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": undefined,
@@ -5531,9 +5405,7 @@ Array [
     "display": "#",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "#",
   },
   Object {
     "attrs": undefined,
@@ -5546,9 +5418,7 @@ Array [
       },
     ],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "cd4f6e1e-765e-4064-badd-b5585c7eff8e",
   },
   Object {
     "attrs": undefined,
@@ -5556,9 +5426,7 @@ Array [
     "display": ".",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ".",
   },
   Object {
     "attrs": undefined,
@@ -5566,14 +5434,12 @@ Array [
     "display": "foo",
     "errors": Array [
       Object {
-        "message": "Variable \\"foo\\" not found",
-        "type": "deps",
+        "message": "Block not found",
+        "type": "syntax",
       },
     ],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "foo",
   },
   Object {
     "attrs": undefined,
@@ -5581,9 +5447,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -5591,9 +5455,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -5601,9 +5463,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -5611,9 +5471,7 @@ Array [
     "display": "2",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "2",
   },
 ]
 `;
@@ -5967,9 +5825,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": undefined,
@@ -5986,9 +5842,7 @@ Array [
       },
     ],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "Bar",
   },
   Object {
     "attrs": undefined,
@@ -5996,9 +5850,7 @@ Array [
     "display": ".",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ".",
   },
   Object {
     "attrs": undefined,
@@ -6006,9 +5858,7 @@ Array [
     "display": "foo",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "foo",
   },
   Object {
     "attrs": undefined,
@@ -6016,9 +5866,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -6026,9 +5874,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -6036,9 +5882,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -6046,9 +5890,7 @@ Array [
     "display": "2",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "2",
   },
 ]
 `;
@@ -6413,9 +6255,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": Object {
@@ -6428,9 +6268,7 @@ Array [
     "display": "Untitled",
     "errors": Array [],
     "hide": true,
-    "renderText": [Function],
     "type": "Block",
-    "value": "#CurrentBlock",
   },
   Object {
     "attrs": undefined,
@@ -6438,9 +6276,7 @@ Array [
     "display": ".",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": ".",
   },
   Object {
     "attrs": undefined,
@@ -6448,14 +6284,12 @@ Array [
     "display": "bar",
     "errors": Array [
       Object {
-        "message": "Variable \\"bar\\" not found",
+        "message": "\\"bar\\" not found",
         "type": "deps",
       },
     ],
     "hide": false,
-    "renderText": undefined,
     "type": "string",
-    "value": "bar",
   },
   Object {
     "attrs": undefined,
@@ -6463,9 +6297,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -6473,9 +6305,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -6483,9 +6313,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -6493,9 +6321,7 @@ Array [
     "display": "3",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "3",
   },
 ]
 `;
@@ -6860,9 +6686,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": Object {
@@ -6875,9 +6699,7 @@ Array [
     "display": "foo",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
-    "type": "string",
-    "value": "foo",
+    "type": "number",
   },
   Object {
     "attrs": undefined,
@@ -6885,9 +6707,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -6895,9 +6715,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -6905,9 +6723,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -6915,9 +6731,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
 ]
 `;
@@ -7282,9 +7096,7 @@ Array [
     "display": "=",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": "=",
   },
   Object {
     "attrs": Object {
@@ -7297,9 +7109,7 @@ Array [
     "display": "foo",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
-    "type": "string",
-    "value": "foo",
+    "type": "number",
   },
   Object {
     "attrs": undefined,
@@ -7307,9 +7117,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -7317,9 +7125,7 @@ Array [
     "display": "+",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "+",
   },
   Object {
     "attrs": undefined,
@@ -7327,9 +7133,7 @@ Array [
     "display": " ",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "any",
-    "value": " ",
   },
   Object {
     "attrs": undefined,
@@ -7337,9 +7141,7 @@ Array [
     "display": "1",
     "errors": Array [],
     "hide": false,
-    "renderText": undefined,
     "type": "number",
-    "value": "1",
   },
 ]
 `;

@@ -1,13 +1,14 @@
 import {
-  BlockSpreadsheetLoaded,
+  BlockNameLoad,
   BrickdocEventBus,
   EventSubscribed,
+  FormulaContextNameChanged,
+  FormulaContextNameRemove,
   FormulaInnerRefresh,
   FormulaTaskCompleted,
   FormulaTaskStarted,
   FormulaTickViaId,
-  FormulaUpdatedViaId,
-  FormulaUpdatedViaName
+  FormulaUpdatedViaId
 } from '@brickdoc/schema'
 import {
   ContextInterface,
@@ -20,13 +21,14 @@ import {
   BaseFormula,
   FormulaSourceType,
   NamespaceId,
-  VariableTask
+  VariableTask,
+  NameDependencyWithKind
 } from '../types'
 import { parse, interpret } from '../grammar/core'
 import { dumpValue } from './persist'
-import { block2name, variable2name, variableKey } from '../grammar/convert'
-import { BlockClass } from '../controls/block'
+import { codeFragments2definition, variableKey } from '../grammar/convert'
 import { v4 as uuid } from 'uuid'
+import { maybeEncodeString, shouldReceiveEventByScope } from '../grammar'
 
 export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (task.async) {
@@ -75,6 +77,8 @@ export class VariableClass implements VariableInterface {
   t: VariableData
   savedT: VariableData | undefined
   isNew: boolean
+  isReadyT: boolean
+  isReadySavedT: boolean
   formulaContext: ContextInterface
 
   tickTimeout: number = 1000
@@ -86,6 +90,8 @@ export class VariableClass implements VariableInterface {
     this.t = t
     this.formulaContext = formulaContext
     this.isNew = true
+    this.isReadyT = false
+    this.isReadySavedT = false
 
     const tickSubscription = BrickdocEventBus.subscribe(
       FormulaTickViaId,
@@ -124,11 +130,32 @@ export class VariableClass implements VariableInterface {
     this.builtinEventListeners.push(taskCompleteSubscription)
   }
 
-  public onUpdate(skipPersist?: boolean): void {
-    BrickdocEventBus.dispatch(FormulaUpdatedViaId(this))
-    BrickdocEventBus.dispatch(FormulaUpdatedViaName(this))
+  public onUpdate({
+    skipPersist,
+    tNotMatched,
+    savedTNotMatched
+  }: {
+    skipPersist?: boolean
+    tNotMatched?: boolean
+    savedTNotMatched?: boolean
+  }): void {
+    if (!savedTNotMatched) {
+      BrickdocEventBus.dispatch(FormulaUpdatedViaId(this))
+    }
     if (!skipPersist) {
       this.trackDirty()
+    }
+
+    if (!this.t.task.async) {
+      const { result, success } = this.t.task.variableValue
+      this.isReadyT = success && result.type !== 'Error'
+    }
+
+    if (this.savedT) {
+      if (!this.savedT.task.async) {
+        const { result, success } = this.savedT.task.variableValue
+        this.isReadySavedT = success && result.type !== 'Error'
+      }
     }
   }
 
@@ -147,7 +174,7 @@ export class VariableClass implements VariableInterface {
     const async = tMatched ? this.t.task.async : this.savedT?.task.async
     if (!async) return
 
-    this.onUpdate(true)
+    this.onUpdate({ skipPersist: true, tNotMatched: !tMatched, savedTNotMatched: !savedTMatched })
     await new Promise(resolve => setTimeout(resolve, this.tickTimeout))
     BrickdocEventBus.dispatch(
       FormulaTickViaId({ uuid, variableId: this.t.variableId, namespaceId: this.t.namespaceId })
@@ -177,10 +204,11 @@ export class VariableClass implements VariableInterface {
       this.savedT!.task = task
     }
 
-    this.onUpdate()
+    this.onUpdate({ savedTNotMatched: !savedTMatched, tNotMatched: !tMatched })
   }
 
-  public clearDependency(): void {
+  public cleanup(hard: boolean): void {
+    if (hard) this.formulaContext.removeName(this.t.variableId)
     this.unsubscripeEvents()
 
     this.t.variableDependencies.forEach(dependency => {
@@ -202,22 +230,15 @@ export class VariableClass implements VariableInterface {
         : []
       this.formulaContext.reverseFunctionDependencies[dependencyKey] = [...functionDependencies]
     })
+
+    if (hard) this.onUpdate({})
   }
 
   public trackDependency(): void {
     this.subscripeEvents()
+    this.formulaContext.setBlock(this.t.namespaceId, '')
 
-    this.formulaContext.formulaNames = this.formulaContext.formulaNames
-      .filter(n => !(n.kind === 'Variable' && n.key === this.t.variableId))
-      .concat(variable2name(this))
-
-    if (
-      !this.formulaContext.formulaNames.find(n => n.kind === 'Block' && n.key === this.t.namespaceId) &&
-      this.t.type === 'normal'
-    ) {
-      const block = new BlockClass(this.formulaContext, { id: this.t.namespaceId })
-      this.formulaContext.formulaNames.push({ ...block2name(block), name: 'Untitled' })
-    }
+    this.formulaContext.setName(this.nameDependency())
 
     this.t.variableDependencies.forEach(dependency => {
       const dependencyKey = variableKey(dependency.namespaceId, dependency.variableId)
@@ -243,12 +264,9 @@ export class VariableClass implements VariableInterface {
   }
 
   namespaceName(pageId: NamespaceId): string {
-    // if (this.t.namespaceId === pageId) {
-    //   return 'Current Page'
-    // }
-    const formulaName = this.formulaContext.formulaNames.find(n => n.key === this.t.namespaceId && n.kind === 'Block')
-    if (formulaName) {
-      return formulaName.name
+    const block = this.formulaContext.findBlockById(this.t.namespaceId)
+    if (block) {
+      return block.name(pageId)
     }
 
     return 'Unknown'
@@ -265,14 +283,36 @@ export class VariableClass implements VariableInterface {
     }
   }
 
+  nameDependency(): NameDependencyWithKind {
+    const nameToken = { image: maybeEncodeString(this.t.name)[1], type: 'StringLiteral' }
+    return {
+      id: this.t.variableId,
+      namespaceId: this.t.namespaceId,
+      name: this.t.name,
+      kind: 'Variable',
+      renderTokens: (namespaceIsExist: boolean, pageId: NamespaceId) => {
+        if (namespaceIsExist) {
+          return [nameToken]
+        }
+
+        const namespaceToken =
+          pageId === this.t.namespaceId
+            ? { image: 'CurrentBlock', type: 'CurrentBlock' }
+            : { image: this.t.namespaceId, type: 'UUID' }
+
+        return [{ image: '#', type: 'Sharp' }, namespaceToken, { image: '.', type: 'Dot' }, nameToken]
+      }
+    }
+  }
+
   save(): void {
     this.formulaContext.commitVariable({ variable: this })
   }
 
-  public buildFormula(): Formula {
+  public buildFormula(definition?: string): Formula {
     return {
       blockId: this.t.namespaceId,
-      definition: this.t.definition,
+      definition: definition ?? this.t.definition,
       id: this.t.variableId,
       name: this.t.name,
       version: this.t.version,
@@ -281,25 +321,25 @@ export class VariableClass implements VariableInterface {
     }
   }
 
-  private async maybeReparseAndPersist(sourceUuid: string): Promise<void> {
+  private async maybeReparseAndPersist(sourceUuid: string, definition?: string): Promise<void> {
     if (this.currentUUID === sourceUuid) {
       return
     }
     this.currentUUID = sourceUuid
 
-    const formula = this.buildFormula()
-    this.clearDependency()
+    const formula = this.buildFormula(definition)
+    this.cleanup(false)
     await castVariable(this, this.formulaContext, formula)
+
     this.trackDependency()
     this.currentUUID = undefined
     if (this.savedT?.task.async === false) {
-      this.onUpdate()
+      this.onUpdate({ savedTNotMatched: false })
     }
   }
 
   public updateDefinition(definition: Definition): void {
-    this.t.definition = definition
-    void this.maybeReparseAndPersist(uuid())
+    void this.maybeReparseAndPersist(uuid(), definition)
   }
 
   private subscripeEvents(): void {
@@ -307,51 +347,80 @@ export class VariableClass implements VariableInterface {
     const innerRefreshSubscription = BrickdocEventBus.subscribe(
       FormulaInnerRefresh,
       e => {
-        this.onUpdate()
+        this.onUpdate({})
       },
       { eventId: `${t.namespaceId},${t.variableId}`, subscribeId: `InnerRefresh#${t.variableId}` }
     )
     this.eventListeners.push(innerRefreshSubscription)
 
-    t.blockDependencies.forEach(blockId => {
-      const result = BrickdocEventBus.subscribe(
-        BlockSpreadsheetLoaded,
+    t.eventDependencies.forEach(dependency => {
+      const eventSubscription = BrickdocEventBus.subscribe(
+        dependency.event,
         e => {
-          void this.maybeReparseAndPersist(e.payload.id)
+          if (!shouldReceiveEventByScope(dependency.scopes, e.payload.scopes)) return
+          const definition = dependency.definitionHandler?.(dependency, this, e.payload)
+          void this.maybeReparseAndPersist(e.payload.key, definition)
         },
-        { eventId: blockId, subscribeId: `SpreadsheetDependency#${t.variableId}` }
+        {
+          eventId: dependency.eventId,
+          subscribeId: `EventDependency#${t.namespaceId},${t.variableId}#${dependency.kind}#${dependency.eventId}`
+        }
       )
-      this.eventListeners.push(result)
+      this.eventListeners.push(eventSubscription)
+    })
+
+    t.blockDependencies.forEach(blockId => {
+      const blockNameSubscription = BrickdocEventBus.subscribe(
+        BlockNameLoad,
+        e => {
+          if (this.isReadySavedT) return
+          void this.maybeReparseAndPersist(blockId)
+        },
+        { subscribeId: `Variable#${this.t.variableId}`, eventId: blockId }
+      )
+      this.eventListeners.push(blockNameSubscription)
     })
 
     t.variableDependencies.forEach(({ variableId, namespaceId }) => {
-      const result = BrickdocEventBus.subscribe(
+      const variableIdSubscription = BrickdocEventBus.subscribe(
         FormulaUpdatedViaId,
         e => {
           if (e.payload.isNew) return
-          void this.maybeReparseAndPersist(e.payload.t.variableId)
+          const newCodeFragments = this.t.codeFragments.map(c => {
+            if (c.code !== 'Variable') return c
+            if (c.attrs.id !== variableId) return c
+            return { ...c, attrs: { ...c.attrs, name: e.payload.t.name } }
+          })
+          const definition = codeFragments2definition(newCodeFragments, this.t.namespaceId)
+          void this.maybeReparseAndPersist(e.payload.t.variableId, definition)
         },
         {
           eventId: `${namespaceId},${variableId}`,
           subscribeId: `Dependency#${t.namespaceId},${t.variableId}`
         }
       )
-      this.eventListeners.push(result)
+      this.eventListeners.push(variableIdSubscription)
     })
 
-    t.variableNameDependencies.forEach(({ name, namespaceId }) => {
-      const result = BrickdocEventBus.subscribe(
-        FormulaUpdatedViaName,
+    t.nameDependencies.forEach(({ name, namespaceId }) => {
+      const nameSubscription = BrickdocEventBus.subscribe(
+        FormulaContextNameChanged,
         e => {
-          if (e.payload.isNew) return
-          void this.maybeReparseAndPersist(e.payload.t.variableId)
+          if (this.isReadySavedT) return
+          void this.maybeReparseAndPersist(e.payload.id)
         },
-        {
-          eventId: `${namespaceId}#${name}`,
-          subscribeId: `Dependency#${t.namespaceId},${t.variableId}`
-        }
+        { eventId: `${namespaceId}#${name}`, subscribeId: `NameSetDependency#${t.variableId}` }
       )
-      this.eventListeners.push(result)
+      this.eventListeners.push(nameSubscription)
+
+      const nameRemoveSubscription = BrickdocEventBus.subscribe(
+        FormulaContextNameRemove,
+        e => {
+          void this.maybeReparseAndPersist(e.payload.id)
+        },
+        { eventId: `${namespaceId}#${name}`, subscribeId: `NameRemoveDependency#${t.variableId}` }
+      )
+      this.eventListeners.push(nameRemoveSubscription)
     })
   }
 

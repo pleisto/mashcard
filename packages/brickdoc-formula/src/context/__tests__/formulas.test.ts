@@ -7,7 +7,7 @@ describe('appendFormulas', () => {
     const formulaContext = new FormulaContext({ domain: 'test' })
     await appendFormulas(formulaContext, [])
 
-    expect(formulaContext.context).toEqual({})
+    expect(formulaContext.variables).toEqual({})
 
     const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
     const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
@@ -28,7 +28,7 @@ describe('appendFormulas', () => {
     ]
 
     await appendFormulas(formulaContext, formulas)
-    const value = Object.values(formulaContext.context).map((v: any) => {
+    const value = Object.values(formulaContext.variables).map((v: any) => {
       const t = v.t
       return {
         ...t,
@@ -42,7 +42,7 @@ describe('appendFormulas', () => {
     const formulaContext = new FormulaContext({ domain: 'test' })
     await appendFormulas(formulaContext, [])
 
-    expect(formulaContext.context).toEqual({})
+    expect(formulaContext.variables).toEqual({})
 
     const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
     const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
@@ -78,7 +78,7 @@ describe('appendFormulas', () => {
     ]
 
     await appendFormulas(formulaContext, formulas)
-    const value = Object.values(formulaContext.context).map((v: any) => {
+    const value = Object.values(formulaContext.variables).map((v: any) => {
       const t = v.t
       return {
         ...t,
@@ -94,7 +94,7 @@ describe('appendFormulas', () => {
     const formulaContext = new FormulaContext({ domain: 'test' })
     await appendFormulas(formulaContext, [])
 
-    expect(formulaContext.context).toEqual({})
+    expect(formulaContext.variables).toEqual({})
     // const fooVariableId = '1588aedf-06e1-47f1-9282-d2ffe865974c'
     const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
@@ -117,7 +117,7 @@ describe('appendFormulas', () => {
     ]
 
     await appendFormulas(formulaContext, formulas)
-    const value = Object.values(formulaContext.context).map((v: any) => {
+    const value = Object.values(formulaContext.variables).map((v: any) => {
       const t = v.t
       return {
         ...t,
@@ -131,7 +131,7 @@ describe('appendFormulas', () => {
     const formulaContext = new FormulaContext({ domain: 'test' })
     await appendFormulas(formulaContext, [])
 
-    expect(formulaContext.context).toEqual({})
+    expect(formulaContext.variables).toEqual({})
 
     const fooId = '615d7f74-dc97-4aae-8690-b6cba1072a6a'
     const fooNamespaceId = 'd986e871-cb85-4bd5-b675-87307f60b882'
@@ -152,7 +152,7 @@ describe('appendFormulas', () => {
     ]
 
     await appendFormulas(formulaContext, formulas)
-    const value = Object.values(formulaContext.context).map((v: any) => {
+    const value = Object.values(formulaContext.variables).map((v: any) => {
       const t = v.t
       return {
         ...t,

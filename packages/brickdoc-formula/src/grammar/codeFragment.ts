@@ -11,14 +11,14 @@ import {
   FunctionContext,
   ExpressionType,
   SimpleCodeFragmentType,
-  VariableNameDependency,
-  CodeFragmentAttrs
+  NameDependency,
+  CodeFragmentAttrs,
+  EventDependency
 } from '../types'
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
 import { intersectType, parseString } from './util'
-import { BlockClass } from '../controls/block'
-import { block2codeFragment, spreadsheet2codeFragment } from './convert'
+import { block2codeFragment, codeFragment2value } from './convert'
 import { PositionFragment } from './core'
 import {
   additionOperator,
@@ -40,10 +40,8 @@ import { parseByOperator } from './operator'
 
 export const token2fragment = (token: IToken, type: FormulaType): CodeFragment => {
   return {
-    value: token.image,
     code: token.tokenType.name as SimpleCodeFragmentType,
     errors: [],
-    renderText: undefined,
     hide: false,
     type,
     display: token.image,
@@ -62,15 +60,16 @@ const CodeFragmentCstVisitor = ParserInstance.getBaseCstVisitorConstructor<CstVi
 export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
   ctx: FunctionContext
   variableDependencies: VariableDependency[] = []
-  variableNameDependencies: VariableNameDependency[] = []
+  nameDependencies: NameDependency[] = []
   functionDependencies: Array<FunctionClause<any>> = []
+  eventDependencies: EventDependency[] = []
   blockDependencies: NamespaceId[] = []
   flattenVariableDependencies: VariableDependency[] = []
   kind: 'constant' | 'expression' = 'constant'
   async: boolean = false
   pure: boolean = true
   effect: boolean = false
-  persist: boolean = true
+  persist: boolean = false
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()
@@ -221,6 +220,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     let firstArgumentType: FormulaType = lhsType
 
+    // eslint-disable-next-line complexity
     ctx.Dot.forEach((dotOperand: CstNode | CstNode[], idx: number) => {
       const rhsCst = ctx.rhs?.[idx]
       const missingRhsErrors: ErrorMessage[] = rhsCst ? [] : [{ message: 'Missing expression', type: 'syntax' }]
@@ -253,9 +253,10 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
           ['null', 'string', 'boolean', 'number'].includes(firstArgumentType) && type !== 'Reference'
             ? [{ type: 'syntax', message: 'Access error' }]
             : []
-        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult = this.visit(rhsCst, {
-          type: 'string'
-        })
+        const { codeFragments: rhsCodeFragments, image: rhsImage }: CodeFragmentResult =
+          rhsCst.name === 'keyExpression'
+            ? this.visit(rhsCst, { type: 'string' })
+            : { codeFragments: [], image: rhsCst.image, type: 'any' }
         const name = parseString(rhsImage)
 
         let object
@@ -267,16 +268,19 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
             blockCodeFragment?.display === 'CurrentBlock'
               ? this.ctx.meta.namespaceId
               : blockCodeFragment?.code === 'UUID'
-              ? blockCodeFragment?.value
+              ? blockCodeFragment?.display
               : blockCodeFragment?.attrs?.id ?? ''
 
-          object = new BlockClass(this.ctx.formulaContext, { id: namespaceId })
+          object = this.ctx.formulaContext.findBlockById(namespaceId)
+          if (!object) {
+            extraErrorMessages.push({ type: 'syntax', message: 'Block not found' })
+          }
         }
 
         if (firstArgumentType === 'Spreadsheet') {
           const attrs: CodeFragmentAttrs | undefined = codeFragments[codeFragments.length - 2]?.attrs
           if (attrs) {
-            object = this.ctx.formulaContext.findSpreadsheet(attrs.namespaceId)
+            object = this.ctx.formulaContext.findSpreadsheetById(attrs.id)
           }
           if (!object) {
             extraErrorMessages.push({ type: 'syntax', message: 'Spreadsheet not found' })
@@ -682,10 +686,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     const image = images.join('')
 
     codeFragments.push({
-      value: image,
       code: 'NumberLiteral',
       errors,
-      renderText: undefined,
       hide: false,
       type: 'number',
       display: image,
@@ -734,31 +736,12 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     this.kind = 'expression'
     this.blockDependencies.push(namespaceId)
-    const formulaName = this.ctx.formulaContext.findFormulaName(namespaceId)
 
-    if (formulaName?.kind === 'Spreadsheet') {
-      const spreadsheet = this.ctx.formulaContext.findSpreadsheet(namespaceId)
-      if (spreadsheet) {
-        const parentType: FormulaType = 'Spreadsheet'
-        const { errorMessages, newType } = intersectType(type, parentType, 'blockExpression', this.ctx)
-        return {
-          codeFragments: [
-            {
-              ...token2fragment(namespaceToken, 'any'),
-              ...spreadsheet2codeFragment(spreadsheet, this.ctx.meta.namespaceId),
-              errors: errorMessages
-            }
-          ],
-          image: `#${namespaceToken.image}`,
-          type: newType
-        }
-      }
-    }
+    const block = this.ctx.formulaContext.findBlockById(namespaceId)
 
-    if (formulaName?.kind === 'Block') {
+    if (block) {
       const parentType: FormulaType = 'Block'
       const { errorMessages, newType } = intersectType(type, parentType, 'blockExpression', this.ctx)
-      const block = new BlockClass(this.ctx.formulaContext, { id: namespaceId })
       const hide = namespaceId === this.ctx.meta.namespaceId
 
       return {
@@ -834,10 +817,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     const functionKey = buildFunctionKey(group, name, true)
 
     const nameFragment: CodeFragment = {
-      value: functionKey,
       code: 'FunctionName',
       errors: [],
-      renderText: undefined,
       hide: false,
       type: 'any',
       display: functionKey,
@@ -845,6 +826,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     }
 
     if (!ctx.LParen) {
+      this.nameDependencies.push({ namespaceId: this.ctx.meta.namespaceId, name: functionKey })
+
       return {
         codeFragments: [
           {
@@ -883,8 +866,8 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       if (clause.effect) {
         this.effect = true
       }
-      if (!clause.persist) {
-        this.persist = false
+      if (clause.persist) {
+        this.persist = true
       }
       if (!clause.pure) {
         this.pure = false
@@ -1005,14 +988,6 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
   }
 }
 
-export const codeFragment2string = ({ code, value }: CodeFragment): string => {
-  if (code === 'StringLiteral') return parseString(value)
-  if (code === 'NumberLiteral') return value
-  if (code === 'FunctionName') return value
-
-  return ''
-}
-
 export const hideDot = (
   codeFragments: CodeFragment[],
   positionFragment: PositionFragment
@@ -1045,13 +1020,12 @@ export const hideDot = (
 export const addSpace = (
   codeFragments: CodeFragment[],
   input: string,
-  positionFragment: PositionFragment
+  positionFragment: PositionFragment,
+  namespaceId: string
 ): { finalCodeFragments: CodeFragment[]; finalPositionFragment: PositionFragment } => {
   const finalCodeFragments: CodeFragment[] = []
   const spaceCodeFragment: CodeFragment = {
     code: 'Space',
-    value: ' ',
-    renderText: undefined,
     hide: false,
     type: 'any',
     display: ' ',
@@ -1065,7 +1039,7 @@ export const addSpace = (
   codeFragments.forEach((codeFragment, idx) => {
     let match = false
     if (error) return
-    image = codeFragment.value
+    image = codeFragment2value(codeFragment, namespaceId)
 
     if (restInput.startsWith(image)) {
       finalCodeFragments.push(codeFragment)
@@ -1076,7 +1050,7 @@ export const addSpace = (
     const prefixSpaceCount = restInput.length - restInput.trimStart().length
     if (prefixSpaceCount > 0) {
       const spaceValue = ' '.repeat(prefixSpaceCount)
-      finalCodeFragments.push({ ...spaceCodeFragment, value: spaceValue, display: spaceValue })
+      finalCodeFragments.push({ ...spaceCodeFragment, display: spaceValue })
       restInput = restInput.substring(prefixSpaceCount)
     }
 
@@ -1086,20 +1060,6 @@ export const addSpace = (
   })
 
   if (error) {
-    // devWarning(true, 'addSpaceError', { input, codeFragments, restInput, finalCodeFragments, image })
-    // const errorMessage = `[Parse Error] ${input}`
-    // return [
-    //   {
-    //     code: 'other',
-    //     value: errorMessage,
-    //     type: 'any',
-    //     renderText: undefined,
-    //     display: errorMessage,
-    //     errors: [],
-    //     attrs: undefined
-    //   }
-    // ]
-
     return { finalCodeFragments: codeFragments, finalPositionFragment: positionFragment }
   }
 

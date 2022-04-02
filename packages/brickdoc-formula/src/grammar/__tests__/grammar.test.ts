@@ -303,9 +303,8 @@ const testCases: TestCase[] = [
   },
   {
     input: `=#${barNamespaceId}.Bar`,
-    label: 'variable name is case sensitive',
-    parseErrorType: 'syntax',
-    errorMessage: 'Variable "Bar" not found'
+    label: 'variable name is case insensitive',
+    value: 24
   },
   {
     input: `=bar`,
@@ -1180,7 +1179,7 @@ describe('Simple test case', () => {
         expect(variableValue.result.result).toEqual(value)
         expect(variableValue.success).toEqual(true)
       } else if (parseErrorType) {
-        expect(errorMessage).not.toEqual([])
+        expect(errorMessages[0]).not.toEqual(undefined)
         expect(errorMessages[0]!.message).toContain(errorMessage)
         expect(errorType).toEqual(parseErrorType)
       } else {

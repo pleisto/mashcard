@@ -1,4 +1,4 @@
-import { CodeFragment } from '@brickdoc/formula'
+import { codeFragment2display, CodeFragment } from '@brickdoc/formula'
 import { JSONContent } from '@tiptap/core'
 import { devWarning } from '@brickdoc/design-system'
 
@@ -81,7 +81,8 @@ export const attrsToJSONContent = (attrs: CodeFragment): JSONContent => {
 
 export const positionBasedContentArrayToInput = (
   content: JSONContent[],
-  position: number
+  position: number,
+  pageId: string
 ): { prevText: string; nextText: string } => {
   const prevTexts: string[] = []
   const nextTexts: string[] = []
@@ -89,7 +90,7 @@ export const positionBasedContentArrayToInput = (
   let firstTime = true
 
   content.forEach((c: JSONContent, idx) => {
-    const text = JSONContentToText(c, content[idx - 1])
+    const text = JSONContentToText(c, content[idx - 1], pageId)
     const display = c.text ?? ''
     input = input.concat(display)
     if (!firstTime) {
@@ -125,13 +126,13 @@ export const positionBasedContentArrayToInput = (
   return { prevText: prevTexts.join(''), nextText: nextTexts.join('') }
 }
 
-export const contentArrayToInput = (content: JSONContent[]): string => {
-  const input = content.map((c: JSONContent, idx) => JSONContentToText(c, content[idx - 1])).join('') ?? ''
+export const contentArrayToInput = (content: JSONContent[], pageId: string): string => {
+  const input = content.map((c: JSONContent, idx) => JSONContentToText(c, content[idx - 1], pageId)).join('') ?? ''
   // console.log('contentArrayToInput', { content, input })
   return input
 }
 
-const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined): string => {
+const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined, pageId: string): string => {
   if (c.type !== 'text') {
     devWarning(true, 'JSONContentToText: not text', c)
     return ''
@@ -154,18 +155,13 @@ const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined): stri
     return text
   }
 
-  const attrs: CodeFragment | undefined = mark.attrs as CodeFragment
+  const codeFragment: CodeFragment | undefined = mark.attrs as CodeFragment
 
-  if (!attrs) {
+  if (!codeFragment) {
     devWarning(true, 'JSONContentToText: no attrs', c)
     return text
   }
 
-  if (!attrs.renderText || typeof attrs.renderText === 'string') {
-    return attrs.display === text ? attrs.value : text
-  }
-
   const prevText = prevC?.text ?? ''
-
-  return attrs.renderText(text, attrs, prevText)
+  return codeFragment2display(codeFragment, text, prevText, pageId)
 }

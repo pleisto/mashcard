@@ -87,7 +87,12 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
     editable: documentEditable
   })
 
-  useFormulaSpreadsheet({ blockId: parentId, rows, columns, getCellBlock, title })
+  const { deleteSpreadsheet } = useFormulaSpreadsheet({ spreadsheetId: parentId, rows, columns, getCellBlock, title })
+
+  const handleDeleteNode = (): void => {
+    deleteSpreadsheet()
+    deleteNode()
+  }
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const title = event.target.value
@@ -179,7 +184,11 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
   const [rowLayoutHeights, setRowLayoutHeights] = React.useState<{ [rowId: string]: number }>({})
 
   return (
-    <BlockContainer node={node} deleteNode={deleteNode} actionOptions={actionOptions} onMouseDown={onSpreadsheetClick}>
+    <BlockContainer
+      node={node}
+      deleteNode={handleDeleteNode}
+      actionOptions={actionOptions}
+      onMouseDown={onSpreadsheetClick}>
       {documentEditable ? (
         <Input
           bordered={false}
@@ -235,9 +244,9 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
             <SpreadsheetHeader rowId="first" context={spreadsheetContext}>
               {columns.map((column, i) => {
                 const handleTitleSave = (value: string): boolean => {
-                  if (columns.some(c => c.title === value && c.uuid !== column.uuid)) {
+                  if (value && columns.some(c => c.title === value && c.uuid !== column.uuid)) {
                     // TODO: UI
-                    console.error('duplicate column name')
+                    console.error('duplicate column name', value, columns)
                     return false
                   } else {
                     updateColumn({ ...column, title: value })
@@ -279,8 +288,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     draggable={documentEditable}
                     onResize={onResize}
                     width={finalColumnWidths[column.uuid]}
-                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}
-                  >
+                    setWidth={number => setColumnWidths({ ...columnWidths, [column.uuid]: number })}>
                     <SpreadsheetColumnEditable
                       context={spreadsheetContext}
                       index={i}
@@ -301,16 +309,14 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                     rowId={rowBlock.id}
                     onHeightChange={(height: number) =>
                       setRowLayoutHeights({ ...rowLayoutHeights, [rowBlock.id]: height })
-                    }
-                  >
+                    }>
                     {columns.map((column, columnIdx) => {
                       const block = getCellBlock(rowBlock.id, column.uuid)
                       return (
                         <SpreadsheetCellContainer
                           key={block.id}
                           context={spreadsheetContext}
-                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}
-                        >
+                          cellId={{ rowId: rowBlock.id, columnId: column.uuid }}>
                           {documentEditable ? (
                             <SpreadsheetCell
                               context={spreadsheetContext}
@@ -318,6 +324,7 @@ export const SpreadsheetBlockView: React.FC<SpreadsheetViewProps> = ({
                               key={block.id}
                               block={block}
                               saveBlock={saveCellBlock}
+                              columnSort={column.sort}
                               width={finalColumnWidths[column.uuid]}
                               height={rowLayoutHeights[rowBlock.id]}
                             />

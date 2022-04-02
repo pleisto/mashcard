@@ -41,7 +41,7 @@ export const CORE_ARRAY_CLAUSES: Array<BaseFunctionClause<'string' | 'Array'>> =
     name: 'Join',
     async: false,
     lazy: false,
-    persist: true,
+    persist: false,
     acceptError: false,
     pure: true,
     effect: false,

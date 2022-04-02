@@ -11,9 +11,7 @@ Array [
         "display": "=",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "=",
       },
       Object {
         "attrs": undefined,
@@ -21,9 +19,7 @@ Array [
         "display": "123",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "123",
       },
     ],
     "cst": Object {
@@ -206,14 +202,16 @@ Array [
       "name": "startExpression",
     },
     "definition": "=123",
+    "eventDependencies": Array [],
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "isEffect": false,
-    "isPersist": true,
+    "isPersist": false,
     "isPure": true,
     "kind": "constant",
     "name": "foo",
+    "nameDependencies": Array [],
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
     "task": Object {
       "async": false,
@@ -232,7 +230,6 @@ Array [
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-    "variableNameDependencies": Array [],
     "version": 0,
   },
 ]
@@ -249,9 +246,7 @@ Array [
         "display": "=",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "=",
       },
       Object {
         "attrs": undefined,
@@ -259,9 +254,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -269,9 +262,7 @@ Array [
         "display": "123",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "123",
       },
       Object {
         "attrs": undefined,
@@ -279,9 +270,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -289,9 +278,7 @@ Array [
         "display": "+",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "+",
       },
       Object {
         "attrs": undefined,
@@ -299,9 +286,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -309,9 +294,7 @@ Array [
         "display": "0.123",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "0.123",
       },
     ],
     "cst": Object {
@@ -608,14 +591,16 @@ Array [
       "name": "startExpression",
     },
     "definition": "= 123 + 0.123",
+    "eventDependencies": Array [],
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "isEffect": false,
-    "isPersist": true,
+    "isPersist": false,
     "isPure": true,
     "kind": "constant",
     "name": "foo",
+    "nameDependencies": Array [],
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
     "task": Object {
       "async": false,
@@ -634,7 +619,6 @@ Array [
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "1588aedf-06e1-47f1-9282-d2ffe865974c",
-    "variableNameDependencies": Array [],
     "version": 0,
   },
   Object {
@@ -648,9 +632,7 @@ Array [
         "display": "=",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "=",
       },
       Object {
         "attrs": undefined,
@@ -658,9 +640,7 @@ Array [
         "display": "ABS",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "ABS",
       },
       Object {
         "attrs": undefined,
@@ -668,9 +648,7 @@ Array [
         "display": "(",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "(",
       },
       Object {
         "attrs": undefined,
@@ -678,9 +656,7 @@ Array [
         "display": "123",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "123",
       },
       Object {
         "attrs": undefined,
@@ -688,9 +664,7 @@ Array [
         "display": ")",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": ")",
       },
       Object {
         "attrs": undefined,
@@ -698,9 +672,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -708,9 +680,7 @@ Array [
         "display": "+",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "+",
       },
       Object {
         "attrs": undefined,
@@ -718,9 +688,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": Object {
@@ -733,9 +701,7 @@ Array [
         "display": "Untitled",
         "errors": Array [],
         "hide": false,
-        "renderText": [Function],
         "type": "Block",
-        "value": "#d986e871-cb85-4bd5-b675-87307f60b882",
       },
       Object {
         "attrs": undefined,
@@ -743,9 +709,7 @@ Array [
         "display": ".",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": ".",
       },
       Object {
         "attrs": Object {
@@ -758,9 +722,7 @@ Array [
         "display": "foo",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
-        "type": "string",
-        "value": "foo",
+        "type": "number",
       },
     ],
     "cst": Object {
@@ -1288,6 +1250,7 @@ Array [
       "name": "startExpression",
     },
     "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.foo",
+    "eventDependencies": Array [],
     "flattenVariableDependencies": Array [
       Object {
         "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
@@ -1316,9 +1279,7 @@ Array [
                 "display": "=",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "any",
-                "value": "=",
               },
               Object {
                 "attrs": undefined,
@@ -1326,9 +1287,7 @@ Array [
                 "display": "ABS",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "any",
-                "value": "ABS",
               },
               Object {
                 "attrs": undefined,
@@ -1336,9 +1295,7 @@ Array [
                 "display": "(",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "any",
-                "value": "(",
               },
               Object {
                 "attrs": undefined,
@@ -1346,9 +1303,7 @@ Array [
                 "display": "-1",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "number",
-                "value": "-1",
               },
               Object {
                 "attrs": undefined,
@@ -1356,9 +1311,7 @@ Array [
                 "display": ")",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "number",
-                "value": ")",
               },
             ],
             "input": "=ABS(-1)",
@@ -1372,7 +1325,7 @@ Array [
         "key": "ABS",
         "lazy": false,
         "name": "ABS",
-        "persist": true,
+        "persist": false,
         "pure": true,
         "reference": [Function],
         "returns": "number",
@@ -1388,10 +1341,16 @@ Array [
     ],
     "isAsync": false,
     "isEffect": false,
-    "isPersist": true,
+    "isPersist": false,
     "isPure": true,
     "kind": "expression",
     "name": "bar",
+    "nameDependencies": Array [
+      Object {
+        "name": "foo",
+        "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
+      },
+    ],
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
     "task": Object {
       "async": false,
@@ -1415,12 +1374,6 @@ Array [
       },
     ],
     "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
-    "variableNameDependencies": Array [
-      Object {
-        "name": "foo",
-        "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-      },
-    ],
     "version": 0,
   },
 ]
@@ -1459,9 +1412,7 @@ Array [
         "display": "=",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "=",
       },
       Object {
         "attrs": undefined,
@@ -1469,9 +1420,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -1479,9 +1428,7 @@ Array [
         "display": "123",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "123",
       },
       Object {
         "attrs": undefined,
@@ -1489,9 +1436,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -1508,9 +1453,7 @@ Array [
           },
         ],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "+",
       },
     ],
     "cst": Object {
@@ -1778,14 +1721,16 @@ Array [
       "recoveredNode": true,
     },
     "definition": "= 123 +",
+    "eventDependencies": Array [],
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [],
     "isAsync": false,
     "isEffect": false,
-    "isPersist": true,
+    "isPersist": false,
     "isPure": true,
     "kind": "unknown",
     "name": "foo",
+    "nameDependencies": Array [],
     "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
     "task": Object {
       "async": false,
@@ -1805,7 +1750,6 @@ Array [
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
-    "variableNameDependencies": Array [],
     "version": 0,
   },
 ]
@@ -1824,9 +1768,7 @@ Array [
         "display": "=",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "=",
       },
       Object {
         "attrs": undefined,
@@ -1834,9 +1776,7 @@ Array [
         "display": "ABS",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "ABS",
       },
       Object {
         "attrs": undefined,
@@ -1844,9 +1784,7 @@ Array [
         "display": "(",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "(",
       },
       Object {
         "attrs": undefined,
@@ -1854,9 +1792,7 @@ Array [
         "display": "123",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "123",
       },
       Object {
         "attrs": undefined,
@@ -1864,9 +1800,7 @@ Array [
         "display": ")",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": ")",
       },
       Object {
         "attrs": undefined,
@@ -1874,9 +1808,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -1884,9 +1816,7 @@ Array [
         "display": "+",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "number",
-        "value": "+",
       },
       Object {
         "attrs": undefined,
@@ -1894,9 +1824,7 @@ Array [
         "display": " ",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": " ",
       },
       Object {
         "attrs": undefined,
@@ -1904,9 +1832,7 @@ Array [
         "display": "#",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "#",
       },
       Object {
         "attrs": undefined,
@@ -1919,9 +1845,7 @@ Array [
           },
         ],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": "d986e871-cb85-4bd5-b675-87307f60b882",
       },
       Object {
         "attrs": undefined,
@@ -1929,9 +1853,7 @@ Array [
         "display": ".",
         "errors": Array [],
         "hide": false,
-        "renderText": undefined,
         "type": "any",
-        "value": ".",
       },
       Object {
         "attrs": undefined,
@@ -1939,14 +1861,12 @@ Array [
         "display": "foo",
         "errors": Array [
           Object {
-            "message": "Variable \\"foo\\" not found",
-            "type": "deps",
+            "message": "Block not found",
+            "type": "syntax",
           },
         ],
         "hide": false,
-        "renderText": undefined,
         "type": "string",
-        "value": "foo",
       },
     ],
     "cst": Object {
@@ -2474,6 +2394,7 @@ Array [
       "name": "startExpression",
     },
     "definition": "=ABS(123) + #d986e871-cb85-4bd5-b675-87307f60b882.foo",
+    "eventDependencies": Array [],
     "flattenVariableDependencies": Array [],
     "functionDependencies": Array [
       Object {
@@ -2497,9 +2418,7 @@ Array [
                 "display": "=",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "any",
-                "value": "=",
               },
               Object {
                 "attrs": undefined,
@@ -2507,9 +2426,7 @@ Array [
                 "display": "ABS",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "any",
-                "value": "ABS",
               },
               Object {
                 "attrs": undefined,
@@ -2517,9 +2434,7 @@ Array [
                 "display": "(",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "any",
-                "value": "(",
               },
               Object {
                 "attrs": undefined,
@@ -2527,9 +2442,7 @@ Array [
                 "display": "-1",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "number",
-                "value": "-1",
               },
               Object {
                 "attrs": undefined,
@@ -2537,9 +2450,7 @@ Array [
                 "display": ")",
                 "errors": Array [],
                 "hide": false,
-                "renderText": undefined,
                 "type": "number",
-                "value": ")",
               },
             ],
             "input": "=ABS(-1)",
@@ -2553,7 +2464,7 @@ Array [
         "key": "ABS",
         "lazy": false,
         "name": "ABS",
-        "persist": true,
+        "persist": false,
         "pure": true,
         "reference": [Function],
         "returns": "number",
@@ -2569,10 +2480,11 @@ Array [
     ],
     "isAsync": false,
     "isEffect": false,
-    "isPersist": true,
+    "isPersist": false,
     "isPure": true,
     "kind": "unknown",
     "name": "bar",
+    "nameDependencies": Array [],
     "namespaceId": "615d7f74-dc97-4aae-8690-b6cba1072a6a",
     "task": Object {
       "async": false,
@@ -2592,12 +2504,6 @@ Array [
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "475d9e73-e52a-42b3-8a95-477596812900",
-    "variableNameDependencies": Array [
-      Object {
-        "name": "foo",
-        "namespaceId": "d986e871-cb85-4bd5-b675-87307f60b882",
-      },
-    ],
     "version": 0,
   },
 ]
