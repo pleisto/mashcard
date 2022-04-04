@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "pino-std-serializers": "^5.1.1",
-    "slonik": "^28.0.0"
+    "slonik": "^28.1.0"
   },
   "sideEffects": false,
   "devDependencies": {

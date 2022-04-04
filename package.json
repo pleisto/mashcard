@@ -82,14 +82,14 @@
     "lint-staged": "^12.3.7",
     "mocha": "^9.2.2",
     "mocha-junit-reporter": "^2.0.2",
-    "prettier": "^2.6.1",
+    "prettier": "^2.6.2",
     "rollup-plugin-visualizer": "^5.6.0",
     "turbo": "^1.1.10",
     "typescript": "^4.6.3",
     "vite": "^2.9.1",
     "vite-plugin-istanbul": "^2.5.1",
     "vite-plugin-pwa": "^0.11.13",
-    "vite-plugin-ruby": "^3.0.8"
+    "vite-plugin-ruby": "^3.0.9"
   },
   "packageManager": "yarn@3.1.1",
   "resolutions": {
@@ -110,7 +110,7 @@
     "minimist": ">= 1.2.6"
   },
   "dependencies": {
-    "@swc/core": "^1.2.162",
+    "@swc/core": "^1.2.163",
     "@swc/helpers": "^0.3.8",
     "ts-node": "^10.7.0"
   },
