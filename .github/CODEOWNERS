@@ -1,14 +1,11 @@
-* @0xDing @aligo @clszzyh @Darmody @stackia
+* @stackia
 
-*.rb @0xDing @aligo @clszzyh
-Gemfile* @0xDing @aligo @clszzyh
-
-*.html @0xDing @Darmody @stackia
-*.js @0xDing @Darmody @stackia
-*.ts @0xDing @Darmody @stackia
-*.jsx @0xDing @Darmody @stackia
-*.tsx @0xDing @Darmody @stackia
-*.css @0xDing @Darmody @stackia
-*.less @0xDing @Darmody @stackia
-package.json @0xDing @Darmody @stackia
-yarn.lock @0xDing @Darmody @stackia
+/apps/landing-page/ @melchior-voidwolf @Darmody
+/apps/server-api/ @aligo @Darmody @clszzyh
+/apps/client-web/ @melchior-voidwolf @Darmody
+/packages/brickdoc-design-system/ @melchior-voidwolf @wizcas
+/packages/brickdoc-editor/ @Darmody @clszzyh
+/packages/brickdoc-formula/ @clszzyh @aligo
+/packages/brickdoc-uploader/ @Darmody @aligo
+/packages/brickdoc-schema/ @aligo @clszzyh
+/tools/e2e-testing/ @jizhekai @june2525
