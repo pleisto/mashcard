@@ -38,7 +38,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
   _ref
 ) => {
   const { id, icon = '', parentId, rootId, isExpanded, hasChildren, indent } = data
-  const ref = useForwardedRef(_ref)
+  const [ref, updateCallback] = useForwardedRef(_ref)
   const [dropSpot, setDropSpot] = useState<NodeRelativeSpot | null>(null)
 
   const handleSelect = useMemoizedFn(_e => onSelect?.(data))
@@ -143,7 +143,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
   return (
     <>
       <TreeRoot.Base
-        ref={ref}
+        ref={updateCallback}
         data-handler-id={handlerId}
         dragging={isDragging}
         selected={selected}
@@ -151,8 +151,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
         tabIndex={0}
         data-testid="BrkTree"
         className={className}
-        css={renderBorder}
-      >
+        css={renderBorder}>
         <TreeRoot.Indent
           css={{
             width: rem(`${16 * indent}px`)
@@ -163,8 +162,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
           data-testid="page-item"
           css={{
             width: `calc(100% - ${rem(`${16 * indent}px`)})`
-          }}
-        >
+          }}>
           <TreeRoot.ItemContent data-testid="item-content" onClick={handleSelect}>
             <TreeRoot.Content data-testid="content">
               {hasChildren || hasEmptyNode ? (
