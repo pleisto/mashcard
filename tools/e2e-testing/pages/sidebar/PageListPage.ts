@@ -33,6 +33,10 @@ export class PageListPage extends BasePage {
     return this.page.locator(PAGE_SELECTOR.arrow).nth(index)
   }
 
+  async clickPage(index: number = 0): Promise<void> {
+    await this.waitForResponseWithAction('GetBlockInfo', this.getPageByIndex(index).click())
+  }
+
   async hover(index: number = 0, position?: { x: number; y: number }): Promise<void> {
     await this.page.hover(PAGE_SELECTOR.pageItem(index), { position })
   }

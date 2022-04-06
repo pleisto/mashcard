@@ -21,7 +21,6 @@ export class BasePage {
   }
 
   async waitForResponseWithAction(operationName: string, actionFn: Promise<void>): Promise<void> {
-    await actionFn
-    await this.waitForResponse(operationName)
+    await Promise.all([this.waitForResponse(operationName), actionFn])
   }
 }

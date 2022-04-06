@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import * as crypto from 'crypto'
-import { Page, test as baseTest } from '@playwright/test'
+import { test as baseTest } from '@playwright/test'
 import { PageExtend } from '@/helpers/PageExtend'
 import { BlockApi } from '@/helpers/api/BlockApi'
 
@@ -13,7 +13,7 @@ export function generateUUID(): string {
 
 interface Fixtures {
   pageExtend: PageExtend
-  api: { page: Page; blockApi: BlockApi; csrfToken: string }
+  api: BlockApi
 }
 
 export const test = baseTest.extend<Fixtures>({
@@ -39,14 +39,12 @@ export const test = baseTest.extend<Fixtures>({
     await use(pageExtend)
   },
 
-  api: async ({ page, request }, use) => {
+  api: async ({ page }, use) => {
     await page.goto('/')
     const csrfToken: string = await page.evaluate(() => (window as any).brickdocContext.csrfToken)
-    const domain = await page.evaluate(() => (window as any).brickdocContext.currentSpace.domain)
-    const blockApi = new BlockApi(request, csrfToken)
-    const pages = await blockApi.getBlocks(domain)
-    await blockApi.removeAllPages(pages)
-    await use({ page, blockApi, csrfToken })
+    const blockApi = new BlockApi(page, csrfToken)
+    await blockApi.removeAllPages()
+    await use(blockApi)
   }
 })
 
