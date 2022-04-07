@@ -104,6 +104,17 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
         indent: indent ?? 0
       })
 
+      if (isExpanded && !children?.length && indent === 0) {
+        const emptyNode: InternalTreeNode = {
+          id: `empty-child-${node.id}`,
+          text: '',
+          indent: indent + 1,
+          hasChildren: false,
+          isEmptyNode: true
+        }
+        result.push(emptyNode)
+      }
+
       if (isExpanded && children) {
         for (const child of children) {
           flatten(child, indent + 1, result)
@@ -146,6 +157,7 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   }, [])
 
   const finalHeight = height ?? Math.min(nodeList.length * NODE_HEIGHT, DEFAULT_HEIGHT)
+
   return (
     <div ref={handleDndAreaRef}>
       {/* make sure root area is mounted, then mount dnd area */}

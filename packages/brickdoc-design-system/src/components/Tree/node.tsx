@@ -37,7 +37,7 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
   { data, className, onToggleExpansion, onSelect, nodeRenderer, selected, emptyNode, index, onMoveNode },
   _ref
 ) => {
-  const { id, icon = '', parentId, rootId, isExpanded, hasChildren, indent } = data
+  const { id, icon = '', parentId, isExpanded, hasChildren, indent } = data
   const [ref, updateCallback] = useForwardedRef(_ref)
   const [dropSpot, setDropSpot] = useState<NodeRelativeSpot | null>(null)
 
@@ -48,11 +48,8 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
     onToggleExpansion(data)
   })
 
-  const hasEmptyNode = useMemo(() => !parentId && rootId === id && !hasChildren, [parentId, rootId, id, hasChildren])
-
-  const emptyItem = typeof emptyNode === 'string' ? <TreeRoot.EmptyNode>{emptyNode}</TreeRoot.EmptyNode> : emptyNode
-
-  const showEmptyItem = hasEmptyNode && isExpanded ? emptyItem : null
+  const hasEmptyNode = useMemo(() => !parentId && !hasChildren, [parentId, hasChildren])
+  const canExpand = hasChildren || hasEmptyNode
 
   const [{ isDragging }, drag] = useDrag({
     type: DND_NODE_TYPE,
@@ -140,6 +137,12 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
 
   drag(drop(ref))
 
+  if (data.isEmptyNode) {
+    const wrappedEmptyItem =
+      typeof emptyNode === 'string' ? <TreeRoot.EmptyNode>{emptyNode}</TreeRoot.EmptyNode> : emptyNode
+    return <div ref={_ref}>{wrappedEmptyItem}</div>
+  }
+
   return (
     <>
       <TreeRoot.Base
@@ -151,7 +154,8 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
         tabIndex={0}
         data-testid="BrkTree"
         className={className}
-        css={renderBorder}>
+        css={renderBorder}
+      >
         <TreeRoot.Indent
           css={{
             width: rem(`${16 * indent}px`)
@@ -162,10 +166,11 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
           data-testid="page-item"
           css={{
             width: `calc(100% - ${rem(`${16 * indent}px`)})`
-          }}>
+          }}
+        >
           <TreeRoot.ItemContent data-testid="item-content" onClick={handleSelect}>
             <TreeRoot.Content data-testid="content">
-              {hasChildren || hasEmptyNode ? (
+              {canExpand ? (
                 <TreeRoot.ContentArrow isExpanded={isExpanded} data-testid="content-arrow" onClick={handleToggleExpand}>
                   <Right data-testid="content-icon" />
                 </TreeRoot.ContentArrow>
@@ -183,7 +188,6 @@ export const InternalNode: ForwardRefRenderFunction<HTMLDivElement, NodeProps> =
           </TreeRoot.ItemContent>
         </TreeRoot.PageItem>
       </TreeRoot.Base>
-      {showEmptyItem}
     </>
   )
 }

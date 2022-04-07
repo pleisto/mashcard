@@ -93,9 +93,8 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -137,9 +136,8 @@ exports[`Tree Basic should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -338,12 +336,11 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -382,12 +379,11 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -469,12 +465,11 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -556,12 +551,11 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -600,12 +594,11 @@ exports[`Tree ExpandAllOnLoad should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -721,9 +714,8 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -765,9 +757,8 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -849,12 +840,11 @@ exports[`Tree ExpandInitialSelection should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1013,9 +1003,8 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1057,9 +1046,8 @@ exports[`Tree ExpandOnSelect should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1263,9 +1251,8 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1309,9 +1296,8 @@ exports[`Tree RenderCustomNode should match the snapshot 1`] = `
                       class="brd-c-daBYDT"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1519,12 +1505,11 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1563,12 +1548,11 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1650,12 +1634,11 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1737,12 +1720,11 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div
@@ -1781,12 +1763,11 @@ exports[`Tree SortByDragging should match the snapshot 1`] = `
                     data-testid="content"
                   >
                     <div
-                      class="brd-c-daBYDT"
+                      class="brd-c-daBYDT brd-c-daBYDT-ckBCvq-isExpanded-true"
                       data-testid="content-arrow"
                     >
-                      <div
-                        class="brd-c-dUOXUg"
-                        data-testid="leaf-dot"
+                      <i
+                        data-testid="mock-icon-Right"
                       />
                     </div>
                     <div

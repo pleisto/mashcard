@@ -29,6 +29,7 @@ export interface TreeNode {
 export type InternalTreeNode = TreeNode & {
   hasChildren: boolean
   indent: number
+  isEmptyNode?: boolean
 }
 
 /**
