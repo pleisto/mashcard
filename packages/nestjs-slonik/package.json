@@ -17,7 +17,8 @@
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
     "lint:type": "run -T tsc",
-    "test:jest": "run -T jest"
+    "test:jest": "run -T jest",
+    "tsdoc": "run -T typedoc --options ../../tools/typedoc/config.json --out ./docs/api ./src/index.ts"
   },
   "dependencies": {
     "pino-std-serializers": "^5.2.0",

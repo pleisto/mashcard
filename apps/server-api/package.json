@@ -8,7 +8,8 @@
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
-    "lint:type": "run -T tsc"
+    "lint:type": "run -T tsc",
+    "tsdoc": "run -T typedoc --excludeExternals --options ../../tools/typedoc/config.json --out ./docs/api ./src/**/index.ts"
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.2",

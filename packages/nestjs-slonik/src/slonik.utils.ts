@@ -5,8 +5,16 @@ import { createPool, DatabasePool, Interceptor } from 'slonik'
 import { DEFAULT_POOL_NAME, SlonikModuleOptions, LOGGER_NAME } from './slonik.interface'
 import { camelCaseFieldNameInterceptor, queryLoggingInterceptor } from './interceptors'
 
+/**
+ * Create NestJS Logger instance from Slonik
+ */
 export const logger = new Logger(LOGGER_NAME)
 
+/**
+ * Get pool name from options or use default
+ * @param options
+ * @returns
+ */
 export function getPoolName(options: SlonikModuleOptions): string {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
   return options?.name || DEFAULT_POOL_NAME
@@ -24,6 +32,14 @@ export function getPoolToken(options: SlonikModuleOptions | string = DEFAULT_POO
   return `${name}PostgresPool`
 }
 
+/**
+ * Retry strategy for Slonik
+ * @param retryAttempts Number of retries
+ * @param retryDelay Delay between retries
+ * @param poolName Name of the pool
+ * @param verboseRetryLog Whether to log retry attempts
+ * @returns
+ */
 // eslint-disable-next-line max-params
 export function handleRetry(
   retryAttempts = 9,
@@ -53,6 +69,11 @@ export function handleRetry(
     )
 }
 
+/**
+ * Factory function for create a Slonik pool
+ * @param options
+ * @returns
+ */
 export const createPoolFactory = async (options: SlonikModuleOptions): Promise<DatabasePool> => {
   const poolToken = getPoolName(options)
 

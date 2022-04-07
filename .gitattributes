@@ -29,4 +29,5 @@ packages/brickdoc-design-icons/**/*.tsx linguist-generated merge=ours
 /.yarn/releases/** binary linguist-generated
 /.yarn/plugins/** binary linguist-generated
 /.yarn/cache/* linguist-generated
+**/docs/apis/** linguist-generated
 /.vscode/*.json linguist-language=JSON5

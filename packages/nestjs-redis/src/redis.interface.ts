@@ -3,12 +3,38 @@ import { RedisClientOptions, RedisClientType } from '@node-redis/client/dist/lib
 
 export type { RedisClientType }
 
+/**
+ * IoC Token for injecting Redis module options
+ */
 export const REDIS_MODULE_OPTIONS = Symbol('REDIS_MODULE_OPTIONS')
+
+/**
+ * IoC Token for injecting Redis client
+ */
 export const REDIS_CLIENT = Symbol('REDIS_CLIENT')
 
 export interface CryptoService {
+  /**
+   * Implement this method to encrypt data by key before storing it in redis
+   * @param data Data to encrypt
+   * @param key Encryption key
+   * @returns Encrypted data as string
+   */
   symmetricEncrypt: (data: string, key: string) => string
+
+  /**
+   * Implement this method to decrypt data by key after retrieving it from redis
+   * @param data Data to decrypt
+   * @param key Encryption key
+   * @returns Decrypted data as string
+   */
   symmetricDecrypt: (data: string, key: string) => string
+
+  /**
+   * Implement this method to provide a hashing algorithm
+   * @param data string to hash
+   * @returns hashed string
+   */
   dataMasking: (data: string) => string
 }
 

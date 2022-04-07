@@ -44,6 +44,10 @@ const loggerContext = (context: QueryContext): { [key: string]: any } => {
 const calcExecutionTime = (context: QueryContext): number =>
   Number(process.hrtime.bigint() - BigInt(context.queryInputTime)) / 1_000_000
 
+/**
+ * Create a Slonik interceptor that logs queries
+ * @returns
+ */
 export const queryLoggingInterceptor = (): Interceptor => {
   return {
     afterQueryExecution: (context, _query, result) => {

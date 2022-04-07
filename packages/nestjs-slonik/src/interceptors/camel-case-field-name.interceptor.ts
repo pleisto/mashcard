@@ -7,6 +7,28 @@ const fieldTest = (field: Field): boolean => {
   return underscoreFieldRegex.test(field.name)
 }
 
+/**
+ * Create a Slonik interceptor that converts field names to camelCase
+ * @returns Slonik interceptor
+ * @example
+ * ```
+ *  connection.any(sql`
+ *   SELECT
+ *     id,
+ *     full_name
+ *   FROM person
+ * `);
+ * ```
+ * =>
+ * ```
+ *  [
+ *    {
+ *      id: 1,
+ *     fullName: 1
+ *    }
+ *  ]
+ * ```
+ */
 export const camelCaseFieldNameInterceptor = (): Interceptor => {
   return {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
