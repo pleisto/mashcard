@@ -20,7 +20,7 @@
     "test:jest": "run -T jest"
   },
   "dependencies": {
-    "pino-std-serializers": "^5.1.1",
+    "pino-std-serializers": "^5.2.0",
     "slonik": "^28.1.0"
   },
   "sideEffects": false,

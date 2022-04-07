@@ -1,6 +1,15 @@
 const isCI = require('is-ci')
 const path = require('path')
-const esModules = ['lodash-es', 'refractor', 'decode-named-character-reference', 'character-entities'].join('|')
+const esModules = [
+  'lodash-es',
+  'refractor',
+  'decode-named-character-reference',
+  'character-entities',
+  'react-dnd',
+  'react-dnd-html5-backend',
+  '@react-dnd',
+  'dnd-core'
+].join('|')
 
 const monoRoot = path.join(__dirname, '..', '..')
 

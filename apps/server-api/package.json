@@ -11,7 +11,7 @@
     "lint:type": "run -T tsc"
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.1.1",
+    "@faker-js/faker": "^6.1.2",
     "@nestjs/testing": "^8.4.3",
     "cross-spawn": "^7.0.3",
     "leaked-handles": "^5.2.0",
