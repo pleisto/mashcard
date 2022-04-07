@@ -20,6 +20,7 @@ describe('appendFormulas', () => {
         version: 0,
         definition: '=123',
         type: 'normal',
+        meta: {},
         cacheValue: {
           type: 'number',
           result: 123
@@ -58,6 +59,7 @@ describe('appendFormulas', () => {
         definition: '= 123 + 0.123',
         version: 0,
         type: 'normal',
+        meta: {},
         cacheValue: {
           type: 'number',
           result: 123.123
@@ -70,6 +72,7 @@ describe('appendFormulas', () => {
         version: 0,
         definition: `=ABS(123) + #${fooNamespaceId}.foo`,
         type: 'normal',
+        meta: {},
         cacheValue: {
           type: 'number',
           result: 456
@@ -107,6 +110,7 @@ describe('appendFormulas', () => {
         id: barVariableId,
         blockId: barNamespaceId,
         version: 0,
+        meta: {},
         type: 'normal',
         definition: `=ABS(123) + #${fooNamespaceId}.foo`,
         cacheValue: {
@@ -143,6 +147,7 @@ describe('appendFormulas', () => {
         blockId: fooNamespaceId,
         version: 0,
         type: 'normal',
+        meta: {},
         definition: '= 123 +',
         cacheValue: {
           type: 'number',

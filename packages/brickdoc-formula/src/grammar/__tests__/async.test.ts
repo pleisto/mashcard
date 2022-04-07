@@ -15,7 +15,7 @@ const meta: VariableMetadata = {
   name: 'foo',
   input: '=SLEEP(24)',
   position: 0,
-  type: 'normal'
+  richType: { type: 'normal' }
 }
 
 const testCases = [

@@ -6,6 +6,7 @@
 #  id          :uuid             not null, primary key
 #  cache_value :json             not null
 #  definition  :text             not null
+#  meta        :json             not null
 #  name        :string           not null
 #  type        :integer          default("normal"), not null
 #  version     :integer          default(0), not null

@@ -25,6 +25,7 @@ import { FormulaDisplay } from '../../ui/Formula'
 export interface SpreadsheetCellProps {
   context: SpreadsheetContext
   block: BlockInput
+  columnIdx: number
   columnSort: number
   tableId: string
   saveBlock: (block: BlockInput) => void
@@ -36,6 +37,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   context,
   tableId,
   block,
+  columnIdx,
   columnSort,
   saveBlock,
   width,
@@ -47,12 +49,12 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   const minHeight = height ? height - 3 : undefined
 
   const [currentBlock, setCurrentBlock] = React.useState(block)
+  const rowId = block.parentId as string
+  const columnId = block.data.columnId
 
-  const cellId = `${currentBlock.parentId},${currentBlock.data.columnId}`
+  const cellId = `${rowId},${columnId}`
   const formulaId = currentBlock.data.formulaId
-  const formulaName = `Cell_${currentBlock.parentId}_${currentBlock.data.columnId}`.replaceAll('-', '')
-
-  const formulaType = 'spreadsheet'
+  const formulaName = `Cell_${rowId}_${columnId}`.replaceAll('-', '')
 
   const editing = context?.editingCellId === formulaName
   const [editingCell, setEditingCell] = React.useState(editing)
@@ -73,12 +75,10 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     (variable: VariableInterface | undefined): void => {
       if (variable) {
         // TODO check no persist
-        const displayData = dumpDisplayResultForDisplay(variable.t)
         const value = displayValue(fetchResult(variable.t), rootId, true)
-        devLog('Spreadsheet cell formula updated', { cellId, value, displayData })
+        devLog('Spreadsheet cell formula updated', { cellId, value })
         const newBlock = {
           ...block,
-          data: { ...block.data, displayData },
           text: value
         }
         setCurrentBlock(newBlock)
@@ -88,18 +88,18 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
       BrickdocEventBus.dispatch(
         SpreadsheetReloadViaId({
           spreadsheetId: tableId,
-          scopes: [
-            { kind: 'Row', keys: [block.parentId] },
-            { kind: 'Column', keys: [block.data.columnId, columnDisplayIndex(columnSort)] }
-          ],
+          scope: {
+            rows: [String(columnIdx + 1), rowId],
+            columns: [block.data.columnId, columnDisplayIndex(columnSort)]
+          },
           namespaceId: rootId,
-          key: tableId
+          key: variable?.currentUUID ?? tableId
         })
       )
-      // devLog('updateFormula', { variable, block, newBlock, parentId, formulaId })
+      // console.log('dispatch update cell', variable)
       // setEditing(false)
     },
-    [tableId, block, columnSort, rootId, cellId, saveBlock]
+    [tableId, columnIdx, rowId, block, columnSort, rootId, cellId, saveBlock]
   )
 
   React.useEffect(() => {
@@ -120,7 +120,14 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     rootId,
     formulaId,
     onUpdateFormula,
-    formulaType,
+    formulaRichType: {
+      type: 'spreadsheet',
+      meta: {
+        spreadsheetId: tableId,
+        columnId,
+        rowId
+      }
+    },
     formulaName,
     formulaContext
   })

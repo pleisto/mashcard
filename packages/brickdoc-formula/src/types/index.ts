@@ -8,10 +8,11 @@ import {
   SelectType,
   SwitchType,
   BlockType,
-  CellType,
   RowType,
-  RangeType
+  RangeType,
+  CellType
 } from '../controls'
+import { PositionFragment } from '../grammar'
 
 type FormulaBasicType = 'number' | 'string' | 'boolean' | 'null'
 type FormulaObjectType =
@@ -45,7 +46,14 @@ export type FormulaType =
 
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
-export type FormulaCodeFragmentType = 'TRUE' | 'FALSE' | 'Function' | 'Variable' | 'FunctionName' | 'LogicColumn'
+export type FormulaCodeFragmentType =
+  | 'TRUE'
+  | 'FALSE'
+  | 'Function'
+  | 'Variable'
+  | 'FunctionName'
+  | 'LogicColumn'
+  | 'LogicRow'
 
 export type FormulaColorType = Exclude<FormulaType, 'boolean'> | FormulaCodeFragmentType
 
@@ -131,6 +139,7 @@ export type NamespaceId = uuid
 export type VariableId = uuid
 export type ColumnId = uuid
 export type SpreadsheetId = uuid
+export type RowId = uuid
 
 export type Feature = string
 export type Features = Feature[]
@@ -358,6 +367,7 @@ export type FormulaSourceType = 'normal' | 'spreadsheet'
 export interface BaseFormula {
   blockId: uuid
   definition: string
+  meta: object
   id: uuid
   name: VariableName
   cacheValue: BaseResult
@@ -370,14 +380,8 @@ export interface DeleteFormula {
   id: uuid
 }
 
-export interface Formula extends BaseFormula {
+export type Formula = BaseFormula & {
   definition: Definition
-  type: FormulaSourceType
-}
-
-export interface FormulaWithTime extends Formula {
-  updatedAt: string
-  createdAt: number
 }
 
 export interface Argument {
@@ -388,7 +392,17 @@ export interface Argument {
 }
 
 export type CompletionKind = 'function' | 'variable' | 'spreadsheet' | 'column' | 'block'
-export type ComplexCodeFragmentType = 'Spreadsheet' | 'Column' | 'Variable' | 'Block' | 'UUID' | 'LogicColumn'
+export type ComplexCodeFragmentType =
+  | 'Spreadsheet'
+  | 'Column'
+  | 'Variable'
+  | 'Block'
+  | 'UUID'
+  | 'LogicColumn'
+  | 'Row'
+  | 'LogicRow'
+  | 'ThisRow'
+  | 'ThisRecord'
 export type SimpleCodeFragmentType =
   | 'FunctionName'
   | 'Function'
@@ -480,6 +494,7 @@ export interface ContextInterface {
   findNames: (namespaceId: NamespaceId, name: string) => NameDependencyWithKind[]
   findSpreadsheetByName: (namespaceId: NamespaceId, name: string) => SpreadsheetType | undefined
   findColumnById: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
+  findRowById: (namespaceId: NamespaceId, rowId: RowId) => RowType | undefined
   findColumnByName: (namespaceId: NamespaceId, name: ColumnName) => ColumnType | undefined
   setSpreadsheet: (spreadsheet: SpreadsheetType) => void
   removeSpreadsheet: (spreadsheetId: SpreadsheetId) => void
@@ -603,6 +618,19 @@ export interface CodeFragmentAttrs {
 
 export type CodeFragment = SpecialCodeFragment | OtherCodeFragment
 
+export interface CodeFragmentStepInput {
+  codeFragments: CodeFragment[]
+  positionFragment: PositionFragment
+}
+
+export type CodeFragmentStep = ({
+  input,
+  meta
+}: {
+  input: CodeFragmentStepInput
+  meta: VariableMetadata
+}) => CodeFragmentStepInput
+
 export interface CodeFragmentResult {
   readonly codeFragments: CodeFragment[]
   readonly type: FormulaType
@@ -672,15 +700,15 @@ export interface SyncVariableTask extends BaseVariableTask {
 }
 
 export interface EventScope {
-  kind: 'Row' | 'Column'
-  keys: string[]
+  rows?: string[]
+  columns?: string[]
 }
 
 export interface EventDependency {
-  kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Cell'
+  kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Row' | 'Cell'
   readonly event: EventType
   readonly eventId: string
-  scopes: EventScope[]
+  scope: EventScope
   definitionHandler?: (deps: EventDependency, variable: VariableInterface, payload: any) => string | undefined
 }
 
@@ -693,7 +721,7 @@ export interface VariableData {
   isPersist: boolean
   task: VariableTask
   kind: VariableKind
-  type: FormulaSourceType
+  richType: VariableRichType
   name: VariableName
   version: number
   namespaceId: NamespaceId
@@ -708,19 +736,38 @@ export interface VariableData {
   eventDependencies: EventDependency[]
   functionDependencies: Array<FunctionClause<FormulaType>>
 }
+
+export type VariableRichType = {
+  readonly type: FormulaSourceType
+} & (
+  | {
+      readonly type: 'normal'
+      readonly meta?: undefined
+    }
+  | {
+      readonly type: 'spreadsheet'
+      readonly meta: {
+        readonly spreadsheetId: SpreadsheetId
+        readonly columnId: ColumnId
+        readonly rowId: uuid
+      }
+    }
+)
+
 export interface VariableMetadata {
   readonly namespaceId: NamespaceId
   readonly variableId: VariableId
   readonly input: string
   readonly position: number
   readonly name: VariableName
-  readonly type: FormulaSourceType
+  readonly richType: VariableRichType
 }
 
 export interface VariableInterface {
   t: VariableData
   savedT: VariableData | undefined
   isNew: boolean
+  currentUUID: string
   formulaContext: ContextInterface
 
   buildFormula: (definition?: string) => Formula

@@ -32,7 +32,7 @@ const metas: VariableMetadata[] = [
 ].map(({ name, input }) => ({
   name,
   namespaceId,
-  type: 'normal',
+  richType: { type: 'normal' },
   position: 0,
   variableId: variableWithNames.find(v => v.name === name)!.variableId,
   input: input.replace(/\$([a-zA-Z0-9_-]+)/g, (a, variableName): string => {
@@ -80,7 +80,7 @@ describe('Dependency', () => {
       name: 'num0',
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const { errorMessages } = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(errorMessages).toEqual([{ message: 'Circular dependency found', type: 'circular_dependency' }])
@@ -153,7 +153,7 @@ describe('Dependency', () => {
       name: 'num1',
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } }) as SuccessParseResult
     expect(parseResult.errorMessages).toEqual([])

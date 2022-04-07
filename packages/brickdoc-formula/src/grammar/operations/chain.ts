@@ -17,13 +17,13 @@ export const chainOperator: OperatorType = {
 
     return args
   },
-  interpret: async ({ lhs, rhs, cst }) => {
+  interpret: async ({ lhs, rhs, cst, interpreter }) => {
     if (cst.name === 'FunctionCall') {
       return rhs!
     }
 
     if (cst.name === 'keyExpression') {
-      return await accessAttribute(lhs, rhs!.result as string)
+      return await accessAttribute(interpreter, lhs, rhs!.result as string)
     }
 
     throw new Error(`Unexpected cst type ${cst.name}`)

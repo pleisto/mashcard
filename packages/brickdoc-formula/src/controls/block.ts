@@ -12,17 +12,14 @@ import {
 import {
   codeFragments2definition,
   CodeFragmentVisitor,
+  FormulaInterpreter,
+  isKey,
   spreadsheet2codeFragment,
   variable2codeFragment
 } from '../grammar'
 import { fetchResult } from '../context/variable'
-import {
-  BlockNameLoad,
-  BrickdocEventBus,
-  EventSubscribed,
-  SpreadsheetReloadViaId,
-  SpreadsheetUpdateNameViaId
-} from '@brickdoc/schema'
+import { BlockNameLoad, BrickdocEventBus, EventSubscribed, SpreadsheetUpdateNameViaId } from '@brickdoc/schema'
+import { spreadsheet2eventDependency } from './event'
 
 export class BlockClass implements BlockType {
   _formulaContext: ContextInterface
@@ -79,7 +76,7 @@ export class BlockClass implements BlockType {
     this.eventListeners = []
   }
 
-  async handleInterpret(name: string): Promise<AnyTypeResult> {
+  async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
     const spreadsheet = this._formulaContext.findSpreadsheetByName(this.id, name)
     if (spreadsheet) {
       return { type: 'Spreadsheet', result: spreadsheet }
@@ -112,7 +109,7 @@ export class BlockClass implements BlockType {
     if (spreadsheet) {
       let finalCodeFragments = codeFragments
 
-      if (['StringLiteral', 'FunctionName'].includes(codeFragments[0].code)) {
+      if (isKey(codeFragments[0])) {
         finalCodeFragments = [spreadsheet2codeFragment(spreadsheet, visitor.ctx.meta.namespaceId)]
       }
 
@@ -120,7 +117,7 @@ export class BlockClass implements BlockType {
         eventId: `${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
         event: SpreadsheetUpdateNameViaId,
         kind: 'SpreadsheetName',
-        scopes: [],
+        scope: {},
         definitionHandler: (deps, variable, payload) => {
           const newCodeFragments = variable.t.codeFragments.map(c => {
             if (c.code !== 'Spreadsheet') return c
@@ -131,14 +128,7 @@ export class BlockClass implements BlockType {
         }
       }
 
-      const spreadsheetReloadEventDependency: EventDependency = {
-        eventId: `${spreadsheet.namespaceId},${spreadsheet.spreadsheetId}`,
-        event: SpreadsheetReloadViaId,
-        scopes: [],
-        kind: 'Column'
-      }
-
-      visitor.eventDependencies.push(spreadsheetNameEventDependency, spreadsheetReloadEventDependency)
+      visitor.eventDependencies.push(spreadsheetNameEventDependency, spreadsheet2eventDependency(spreadsheet))
 
       return {
         errors: [],
@@ -176,7 +166,7 @@ export class BlockClass implements BlockType {
 
     let finalCodeFragments = codeFragments
 
-    if (['StringLiteral', 'FunctionName'].includes(codeFragments[0].code)) {
+    if (isKey(codeFragments[0])) {
       finalCodeFragments = [variable2codeFragment(variable, visitor.ctx.meta.namespaceId)]
     }
 

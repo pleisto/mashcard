@@ -1,13 +1,5 @@
 import { CstNode, IToken } from 'chevrotain'
-import {
-  AnyTypeResult,
-  CodeFragment,
-  CodeFragmentResult,
-  ErrorMessage,
-  FormulaCheckType,
-  FormulaType,
-  FunctionContext
-} from '../types'
+import { AnyTypeResult, CodeFragment, CodeFragmentResult, ErrorMessage, FormulaCheckType, FormulaType } from '../types'
 import { CodeFragmentVisitor, CstVisitorArgument, token2fragment } from './codeFragment'
 import { InterpretArgument, FormulaInterpreter } from './interpreter'
 import { intersectType, runtimeCheckType, shouldReturnEarly } from './util'
@@ -19,7 +11,12 @@ export interface OperatorType {
   readonly reverseLhsAndRhs?: boolean
   readonly expressionType: FormulaType
   readonly lhsType: FormulaCheckType
-  readonly dynamicInterpretLhs?: (lhsArgs: InterpretArgument) => AnyTypeResult
+  readonly dynamicInterpretLhs?: (
+    lhsArgs: InterpretArgument,
+    operators: IToken[],
+    interpreter: FormulaInterpreter
+  ) => AnyTypeResult
+  readonly dynamicParseValidator?: (cstVisitor: CodeFragmentVisitor, result: CodeFragmentResult) => CodeFragmentResult
   readonly dynamicParseType?: (lhsType: FormulaType) => FormulaType
   readonly dynamicInterpretRhsType?: ({
     result,
@@ -58,13 +55,13 @@ export interface OperatorType {
     rhsTokenImage: string
   }) => CodeFragmentResult
   readonly interpret: ({
-    ctx,
+    interpreter,
     lhs,
     rhs,
     operator,
     cst
   }: {
-    ctx: FunctionContext
+    interpreter: FormulaInterpreter
     lhs: AnyTypeResult
     rhs: AnyTypeResult | undefined
     operator: IToken
@@ -99,7 +96,7 @@ export const interpretByOperator = async ({
   rhs: CstNode[] | undefined
 }): Promise<AnyTypeResult> => {
   if (!rhs) {
-    return dynamicInterpretLhs ? dynamicInterpretLhs(args) : await interpreter.visit(lhs!, args)
+    return dynamicInterpretLhs ? dynamicInterpretLhs(args, operators, interpreter) : await interpreter.visit(lhs!, args)
   }
 
   const typeErrorBefore = runtimeCheckType(args, expressionType, `${name} before`, interpreter.ctx)
@@ -108,7 +105,7 @@ export const interpretByOperator = async ({
   const lhsArgs: InterpretArgument = { ...args, type: lhsType, finalTypes: [] }
   // eslint-disable-next-line no-nested-ternary
   let result: AnyTypeResult = dynamicInterpretLhs
-    ? dynamicInterpretLhs(lhsArgs)
+    ? dynamicInterpretLhs(lhsArgs, operators, interpreter)
     : lhs
     ? await interpreter.visit(lhs, lhsArgs)
     : { type: 'null', result: null }
@@ -133,7 +130,7 @@ export const interpretByOperator = async ({
       throw new Error(`Operator not found`)
     }
 
-    result = await interpret({ ctx: interpreter.ctx, lhs: result, rhs: rhsValue, operator, cst: rhsOperand })
+    result = await interpret({ interpreter, lhs: result, rhs: rhsValue, operator, cst: rhsOperand })
   }
 
   if (packageInterpretResult) {
@@ -155,6 +152,7 @@ interface ParseInput {
   args: CstVisitorArgument
   prefixToken?: IToken[]
   suffixToken?: IToken[]
+  bodyToken?: IToken[]
   lhs: CstNode[] | undefined
   rhs: CstNode[] | undefined
 }
@@ -200,11 +198,13 @@ const innerParse = ({
     reverseLhsAndRhs,
     dynamicParseRhsType,
     dynamicParseType,
+    dynamicParseValidator,
     parseRhs
   },
   args,
   lhs,
-  rhs
+  rhs,
+  bodyToken
 }: ParseInput): CodeFragmentResult => {
   if (!rhs) {
     return cstVisitor.visit(lhs!, args)
@@ -212,6 +212,9 @@ const innerParse = ({
 
   const rhsCodeFragments: CodeFragment[] = []
   const rhsImages: string[] = []
+
+  const bodyTokenCodeFragments: CodeFragment[] = []
+  const bodyTokenImages: string[] = []
 
   const {
     codeFragments: lhsCodeFragments,
@@ -287,16 +290,29 @@ const innerParse = ({
     }
   })
 
+  if (bodyToken?.[0]) {
+    bodyTokenCodeFragments.push(token2fragment(bodyToken[0], 'any'))
+    bodyTokenImages.push(bodyToken[0].image)
+  }
+
   const finalCodeFragments: CodeFragment[] = reverseLhsAndRhs
-    ? [...rhsCodeFragments, ...lhsCodeFragments]
-    : [...lhsCodeFragments, ...rhsCodeFragments]
-  const finalImages: string[] = reverseLhsAndRhs ? [...rhsImages, lhsImage] : [lhsImage, ...rhsImages]
+    ? [...rhsCodeFragments, ...bodyTokenCodeFragments, ...lhsCodeFragments]
+    : [...lhsCodeFragments, ...bodyTokenCodeFragments, ...rhsCodeFragments]
+  const finalImages: string[] = reverseLhsAndRhs
+    ? [...rhsImages, ...bodyTokenImages, lhsImage]
+    : [lhsImage, ...bodyTokenImages, ...rhsImages]
 
   const finalType = dynamicParseType ? dynamicParseType(prevType) : expressionType
+
   const { errorMessages, newType } = intersectType(args.type, finalType, name, cstVisitor.ctx)
-  return {
+  const result = {
     image: finalImages.join(''),
     codeFragments: finalCodeFragments.map(c => ({ ...c, errors: [...errorMessages, ...c.errors] })),
     type: newType
   }
+
+  if (dynamicParseValidator) {
+    return dynamicParseValidator(cstVisitor, result)
+  }
+  return result
 }

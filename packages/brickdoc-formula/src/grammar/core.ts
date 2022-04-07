@@ -30,10 +30,11 @@ import { FORMULA_PARSER_VERSION } from '../version'
 import { FormulaParser } from './parser'
 import { complete } from './completer'
 import { FormulaInterpreter } from './interpreter'
-import { addSpace, CodeFragmentVisitor, hideDot } from './codeFragment'
+import { CodeFragmentVisitor } from './codeFragment'
 import { blockKey } from './convert'
 import { checkValidName, parseString, shouldReturnEarly } from './util'
 import { createVariableTask } from '../context'
+import { hideDotStep, addSpaceStep, applyThisRecordStep } from './steps'
 
 export interface BaseParseResult {
   success: boolean
@@ -162,7 +163,7 @@ const abbrev = ({
       }
     }
 
-    if (!['FunctionName', 'StringLiteral'].includes(tokenTypeName)) {
+    if (!['FunctionName', 'StringLiteral', 'NumberLiteral'].includes(tokenTypeName)) {
       newInput = newInput.concat(token.image)
       return
     }
@@ -285,7 +286,14 @@ const changePosition = (
 export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): ParseResult => {
   const {
     formulaContext,
-    meta: { namespaceId, variableId, input, name, type, position }
+    meta: {
+      namespaceId,
+      variableId,
+      input,
+      name,
+      richType: { type },
+      position
+    }
   } = ctx
   const version = FORMULA_PARSER_VERSION
 
@@ -446,14 +454,15 @@ export const parse = ({ ctx }: { ctx: FunctionContext; position?: number }): Par
     ]
   }
 
-  const { finalCodeFragments: addSpaceCodeFragment, finalPositionFragment: addSpacePositionFragment } = addSpace(
-    parseCodeFragments,
-    newInput,
-    positionFragment,
-    namespaceId
-  )
+  const { codeFragments: finalCodeFragments, positionFragment: finalPositionFragment } = [
+    addSpaceStep,
+    hideDotStep,
+    applyThisRecordStep
+  ].reduce((prev, step) => step({ input: prev, meta: { ...ctx.meta, input: newInput } }), {
+    codeFragments: parseCodeFragments,
+    positionFragment
+  })
 
-  const { finalCodeFragments, finalPositionFragment } = hideDot(addSpaceCodeFragment, addSpacePositionFragment)
   const newPosition = changePosition(finalCodeFragments, position, input, finalPositionFragment)
   const newPositionWithoutEqual = type === 'normal' ? newPosition - 1 : newPosition
 
@@ -674,7 +683,7 @@ export const interpret = async ({
   } = parseResult
   const {
     formulaContext,
-    meta: { name, input, namespaceId, variableId, type }
+    meta: { name, input, namespaceId, variableId, richType }
   } = ctx
   const task = await generateTask({ variable, ctx, skipExecute, parseResult })
 
@@ -683,7 +692,7 @@ export const interpret = async ({
     variableId,
     name,
     cst,
-    type,
+    richType,
     version,
     isAsync: async,
     isEffect: effect,

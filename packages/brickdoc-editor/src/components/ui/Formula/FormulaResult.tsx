@@ -22,7 +22,7 @@ export const FormulaResult: FC<FormulaResultProps> = ({ variableT, pageId }) => 
     return null
   }
 
-  if (variableT.type === 'normal' && variableT.definition.trim() === '=' && !errorIsFatal(variableT)) {
+  if (variableT.richType.type === 'normal' && variableT.definition.trim() === '=' && !errorIsFatal(variableT)) {
     return null
   }
 

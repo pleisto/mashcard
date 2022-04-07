@@ -11,7 +11,9 @@ import {
   column2codeFragment,
   maybeEncodeString,
   objectDiff,
-  codeFragments2definition
+  row2codeFragment,
+  isKey,
+  FormulaInterpreter
 } from '../grammar'
 import {
   AnyTypeResult,
@@ -26,15 +28,22 @@ import {
 } from '../types'
 import { ColumnClass } from './column'
 import {
+  column2eventDependency,
+  spreadsheetColumnKey2eventDependency,
+  spreadsheetRowKey2eventDependency
+} from './event'
+import { RowClass } from './row'
+import {
   SpreadsheetType,
   SpreadsheetInitializer,
   SpreadsheetDynamicPersistence,
   Row,
   ColumnInitializer,
-  CellType,
+  Cell,
   SpreadsheetAllPersistence,
   handleCodeFragmentsResult,
-  ColumnType
+  ColumnType,
+  RowType
 } from './types'
 
 export class SpreadsheetClass implements SpreadsheetType {
@@ -55,7 +64,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     columnId: uuid
     rowIndex: number
     columnIndex: number
-  }) => CellType
+  }) => Cell
 
   _columns: ColumnInitializer[]
   _rows: Row[]
@@ -122,7 +131,7 @@ export class SpreadsheetClass implements SpreadsheetType {
         BrickdocEventBus.dispatch(
           SpreadsheetReloadViaId({
             spreadsheetId: this.spreadsheetId,
-            scopes: [{ kind: 'Column', keys: changedColumnIds }],
+            scope: { columns: changedColumnIds },
             namespaceId: this.namespaceId,
             key: this.spreadsheetId
           })
@@ -141,13 +150,17 @@ export class SpreadsheetClass implements SpreadsheetType {
 
         const pairs1 = objectDiff<Row>(oldRows, newRows)
         const pairs2 = objectDiff<Row>(newRows, oldRows)
-        const changedRowIds = [...new Set([...Object.values(pairs1), ...Object.values(pairs2)].map(p => p.rowId))]
+        const changedRowIds = [
+          ...new Set(
+            [...Object.values(pairs1), ...Object.values(pairs2)].flatMap((p: Row) => [p.rowId, String(p.rowIndex + 1)])
+          )
+        ]
         if (!changedRowIds.length) return
 
         BrickdocEventBus.dispatch(
           SpreadsheetReloadViaId({
             spreadsheetId: this.spreadsheetId,
-            scopes: [{ kind: 'Row', keys: changedRowIds }],
+            scope: { rows: changedRowIds },
             namespaceId: this.namespaceId,
             key: this.spreadsheetId
           })
@@ -166,7 +179,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     return this._rows
   }
 
-  public listCells({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }): CellType[] {
+  public listCells({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }): Cell[] {
     const finalRowIdsWithIndex = rowId ? this._rows.filter(row => row.rowId === rowId) : this._rows
     const finalColumnIdsWithIndex = columnId
       ? this._columns.filter(column => column.columnId === columnId)
@@ -209,7 +222,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     }
   }
 
-  async handleInterpret(name: string): Promise<AnyTypeResult> {
+  async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
     const number = Number(name)
     if (!isNaN(number)) {
       return this.handleInterpretRow(number)
@@ -228,13 +241,12 @@ export class SpreadsheetClass implements SpreadsheetType {
   }
 
   private handleInterpretRow(number: number): AnyTypeResult {
-    const row = this.listRows()[number]
+    const row = this.getRowByIndex(number - 1)
     if (!row) {
       return { type: 'Error', result: `Row ${number} not found`, errorKind: 'runtime' }
     }
-    const cells: CellType[] = this.listCells({ rowId: row.rowId })
 
-    return { type: 'Row', result: { ...row, cells } }
+    return { type: 'Row', result: row }
   }
 
   public handleCodeFragments(
@@ -254,9 +266,22 @@ export class SpreadsheetClass implements SpreadsheetType {
     number: number,
     codeFragments: CodeFragment[]
   ): handleCodeFragmentsResult {
-    const errors: ErrorMessage[] = []
-    const row = this.listRows()[number]
+    visitor.eventDependencies = visitor.eventDependencies
+      .reverse()
+      .filter(
+        d =>
+          !(
+            d.kind === 'Spreadsheet' &&
+            d.event === SpreadsheetReloadViaId &&
+            d.eventId === `${this.namespaceId},${this.spreadsheetId}`
+          )
+      )
+      .reverse()
 
+    visitor.eventDependencies.push(spreadsheetRowKey2eventDependency(this, String(number)))
+
+    const errors: ErrorMessage[] = []
+    const row = this.getRowByIndex(number - 1)
     if (!row) {
       errors.push({ type: 'deps', message: `Row "${number}" not found` })
       return {
@@ -267,7 +292,10 @@ export class SpreadsheetClass implements SpreadsheetType {
     }
 
     const firstArgumentType = 'Row'
-    const finalRhsCodeFragments = codeFragments
+    let finalRhsCodeFragments = codeFragments
+    if (isKey(codeFragments[0])) {
+      finalRhsCodeFragments = [row2codeFragment(row, visitor.ctx.meta.namespaceId)]
+    }
     return {
       errors,
       firstArgumentType,
@@ -280,28 +308,9 @@ export class SpreadsheetClass implements SpreadsheetType {
     name: string,
     codeFragments: CodeFragment[]
   ): handleCodeFragmentsResult {
-    const errors: ErrorMessage[] = []
-    const column = this._formulaContext.findColumnByName(this.spreadsheetId, name)
-
-    if (!column) {
-      errors.push({ type: 'deps', message: `Column "${name}" not found` })
-      return {
-        errors,
-        firstArgumentType: undefined,
-        codeFragments
-      }
-    }
-
-    const firstArgumentType = 'Column'
-    let finalRhsCodeFragments = codeFragments
-
-    if (['StringLiteral', 'FunctionName'].includes(codeFragments[0].code)) {
-      finalRhsCodeFragments = [column2codeFragment(column, visitor.ctx.meta.namespaceId)]
-    }
-
-    const spreadsheetEventDependency = visitor.eventDependencies
+    visitor.eventDependencies = visitor.eventDependencies
       .reverse()
-      .find(
+      .filter(
         d =>
           !(
             d.kind === 'Spreadsheet' &&
@@ -309,25 +318,27 @@ export class SpreadsheetClass implements SpreadsheetType {
             d.eventId === `${this.namespaceId},${this.spreadsheetId}`
           )
       )
+      .reverse()
 
-    if (spreadsheetEventDependency) {
-      spreadsheetEventDependency.kind = 'Column'
-      spreadsheetEventDependency.scopes = [
-        { keys: [column.logic ? column.displayIndex : column.columnId], kind: 'Column' }
-      ]
-      spreadsheetEventDependency.definitionHandler = (deps, variable, payload) => {
-        if (column.logic) return
-        const newColumn = this._columns.find(c => c.columnId === column.columnId)
-        if (!newColumn) return
-        const newCodeFragments = variable.t.codeFragments.map(c => {
-          if (c.code !== 'Column') return c
-          if (c.attrs.id !== column.columnId) return c
-          return { ...c, attrs: { ...c.attrs, name: newColumn.name } }
-        })
-        return codeFragments2definition(newCodeFragments, variable.t.namespaceId)
+    const errors: ErrorMessage[] = []
+    const column = this._formulaContext.findColumnByName(this.spreadsheetId, name)
+
+    if (!column) {
+      visitor.eventDependencies.push(spreadsheetColumnKey2eventDependency(this, name))
+      errors.push({ type: 'deps', message: `Column "${name}" not found` })
+      return {
+        errors,
+        firstArgumentType: undefined,
+        codeFragments
       }
-    } else {
-      console.error('spreadsheetEventDependency column not found')
+    }
+    visitor.eventDependencies.push(column2eventDependency(column))
+
+    const firstArgumentType = 'Column'
+    let finalRhsCodeFragments = codeFragments
+
+    if (isKey(codeFragments[0])) {
+      finalRhsCodeFragments = [column2codeFragment(column, visitor.ctx.meta.namespaceId)]
     }
 
     return {
@@ -366,14 +377,22 @@ export class SpreadsheetClass implements SpreadsheetType {
     return this.listRows().length
   }
 
-  getRow(rowId: string): Row | undefined {
-    return this.listRows().find(row => row.rowId === rowId)
+  getRowById(rowId: string): RowType | undefined {
+    const row = this.listRows().find(row => row.rowId === rowId)
+    if (!row) return undefined
+    return new RowClass(this, row, false)
+  }
+
+  getRowByIndex(number: number): RowType | undefined {
+    const row = this.listRows()[number]
+    if (!row) return undefined
+    return new RowClass(this, row, true)
   }
 
   getColumnById(columnId: string): ColumnType | undefined {
     const column = this.listColumns().find(col => col.columnId === columnId)
-    if (column) return new ColumnClass(this, column, false)
-    return undefined
+    if (!column) return undefined
+    return new ColumnClass(this, column, false)
   }
 
   getColumnByName(name: string): ColumnType | undefined {

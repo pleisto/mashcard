@@ -1,5 +1,5 @@
 import { CstNode, ILexingResult } from 'chevrotain'
-import { ColumnType, SpreadsheetType, BlockType } from '../controls'
+import { ColumnType, SpreadsheetType, BlockType, RowType } from '../controls'
 import {
   ContextInterface,
   FunctionClause,
@@ -35,7 +35,8 @@ import {
   Formula,
   DeleteFormula,
   SpreadsheetId,
-  NameDependencyWithKind
+  NameDependencyWithKind,
+  RowId
 } from '../types'
 import {
   function2completion,
@@ -269,7 +270,7 @@ export class FormulaContext implements ContextInterface {
       return function2completion(f, weight)
     })
     const completionVariables: Array<[string, VariableInterface]> = Object.entries(this.variables).filter(
-      ([key, c]) => c.t.variableId !== variableId && c.t.type === 'normal'
+      ([key, c]) => c.t.variableId !== variableId && c.t.richType.type === 'normal'
     )
     const variables: VariableCompletion[] = completionVariables.map(([key, v]) => {
       return variable2completion(v, namespaceId)
@@ -350,19 +351,19 @@ export class FormulaContext implements ContextInterface {
 
   public findColumnById(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
     const spreadsheet = this.findSpreadsheetById(namespaceId)
-    if (!spreadsheet) {
-      return undefined
-    }
-
+    if (!spreadsheet) return undefined
     return spreadsheet.getColumnById(variableId)
+  }
+
+  public findRowById(namespaceId: NamespaceId, rowId: RowId): RowType | undefined {
+    const spreadsheet = this.findSpreadsheetById(namespaceId)
+    if (!spreadsheet) return undefined
+    return spreadsheet.getRowById(rowId)
   }
 
   public findColumnByName(namespaceId: NamespaceId, name: ColumnName): ColumnType | undefined {
     const spreadsheet = this.findSpreadsheetById(namespaceId)
-    if (!spreadsheet) {
-      return undefined
-    }
-
+    if (!spreadsheet) return undefined
     return spreadsheet.getColumnByName(name)
   }
 
@@ -375,7 +376,6 @@ export class FormulaContext implements ContextInterface {
     BrickdocEventBus.dispatch(
       SpreadsheetReloadViaId({
         spreadsheetId: spreadsheet.spreadsheetId,
-        scopes: [],
         namespaceId: spreadsheet.namespaceId,
         key: spreadsheet.spreadsheetId
       })
@@ -501,7 +501,7 @@ export class FormulaContext implements ContextInterface {
     const codeFragmentVisitor = new CodeFragmentVisitor({
       ctx: {
         formulaContext: this,
-        meta: { name: 'unknown', input, namespaceId: '', variableId: '', position: 0, type: 'normal' },
+        meta: { name: 'unknown', input, namespaceId: '', variableId: '', position: 0, richType: { type: 'normal' } },
         interpretContext: { ctx: {}, arguments: [] }
       }
     })

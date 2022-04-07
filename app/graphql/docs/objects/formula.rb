@@ -10,5 +10,6 @@ module Docs
     field :created_at, Integer, 'created at', null: false
     field :version, Integer, 'version', null: false
     field :type, String, 'type', null: false
+    field :meta, GraphQL::Types::JSON, 'meta', null: false
   end
 end

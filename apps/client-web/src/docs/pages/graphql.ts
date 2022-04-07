@@ -40,6 +40,7 @@ export const queryFormulas = gql`
       createdAt
       version
       type
+      meta
     }
   }
 `

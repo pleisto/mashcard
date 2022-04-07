@@ -28,6 +28,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
           name: 'create_formula',
           cacheValue: { type: 'string', result: '123' },
           definition: '=123',
+          meta: {},
           version: 0
         }], deleteFormulas: []
       } }
@@ -48,6 +49,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
         id: SecureRandom.uuid,
         name: 'formula_update',
         definition: "=123",
+        meta: {},
         cache_value: { type: 'string', result: '123' },
         version: 0,
         type: 'normal'
@@ -61,6 +63,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
         name: new_name,
         definition: '=123 + 1',
         cacheValue: { type: 'string', result: '123' },
+        meta: {},
         version: 0,
         type: 'normal'
       }], deleteFormulas: [] } }
@@ -81,7 +84,7 @@ describe Docs::Mutations::FormulaCommit, type: :mutation do
       self.current_space = user.personal_space.as_session_context
 
       formula = Docs::Formula.create!(
-        block_id: block.id, id: SecureRandom.uuid, name: 'formula delete',
+        block_id: block.id, id: SecureRandom.uuid, name: 'formula delete', meta: {},
         definition: "=123", cache_value: { 'value' => "123", 'type' => 'number' }
       )
 

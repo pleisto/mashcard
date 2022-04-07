@@ -18,8 +18,7 @@ import {
 import { buildFunctionKey } from '../functions'
 import { ParserInstance } from './parser'
 import { intersectType, parseString } from './util'
-import { block2codeFragment, codeFragment2value } from './convert'
-import { PositionFragment } from './core'
+import { block2codeFragment } from './convert'
 import {
   additionOperator,
   arrayOperator,
@@ -34,7 +33,9 @@ import {
   parenthesisOperator,
   rangeOperator,
   recordFieldOperator,
-  recordOperator
+  recordOperator,
+  thisRecordOperator,
+  thisRowOperator
 } from './operations'
 import { parseByOperator } from './operator'
 
@@ -294,6 +295,16 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
           }
           if (!object) {
             extraErrorMessages.push({ type: 'syntax', message: 'Column not found' })
+          }
+        }
+
+        if (firstArgumentType === 'Row') {
+          const attrs: CodeFragmentAttrs | undefined = codeFragments[codeFragments.length - 2]?.attrs
+          if (attrs) {
+            object = this.ctx.formulaContext.findRowById(attrs.namespaceId, attrs.id)
+          }
+          if (!object) {
+            extraErrorMessages.push({ type: 'syntax', message: 'Row not found' })
           }
         }
 
@@ -771,7 +782,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
     }
   }
 
-  lazyVariableExpression(ctx: any, { type }: CstVisitorArgument): CodeFragmentResult {
+  lazyVariableExpression(ctx: any, args: CstVisitorArgument): CodeFragmentResult {
     if (ctx.Self) {
       return { codeFragments: [token2fragment(ctx.Self[0], 'Reference')], type: 'Reference', image: ctx.Self[0].image }
     } else if (ctx.Input) {
@@ -780,6 +791,26 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
         type: 'Record',
         image: ctx.Input[0].image
       }
+    } else if (ctx.ThisRow) {
+      return parseByOperator({
+        cstVisitor: this,
+        operators: [],
+        bodyToken: ctx.ThisRow,
+        args,
+        operator: thisRowOperator,
+        rhs: [],
+        lhs: undefined
+      })
+    } else if (ctx.ThisRecord) {
+      return parseByOperator({
+        cstVisitor: this,
+        operators: [],
+        bodyToken: ctx.ThisRecord,
+        args,
+        operator: thisRecordOperator,
+        rhs: [],
+        lhs: undefined
+      })
     } else if (ctx.LambdaArgumentNumber) {
       return {
         codeFragments: [token2fragment(ctx.LambdaArgumentNumber[0], 'Reference')],
@@ -988,80 +1019,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
   }
 }
 
-export const hideDot = (
-  codeFragments: CodeFragment[],
-  positionFragment: PositionFragment
-): { finalCodeFragments: CodeFragment[]; finalPositionFragment: PositionFragment } => {
-  const finalCodeFragments: CodeFragment[] = []
-  let finalPositionFragment = positionFragment
-  codeFragments.forEach((c, idx) => {
-    if (c.code === 'Dot' && !c.hide) {
-      const prevCodeFragment = codeFragments[idx - 1]
-      const nextCodeFragment = codeFragments[idx + 1]
-      if (prevCodeFragment && nextCodeFragment && prevCodeFragment.code === 'Block' && prevCodeFragment.hide) {
-        const nextErrors = nextCodeFragment.errors
-        if (nextErrors.length === 0 || (nextErrors.length === 1 && nextErrors[0].type !== 'deps')) {
-          finalCodeFragments.pop()
-          if (finalPositionFragment.tokenIndex >= idx - 1) {
-            finalPositionFragment = { ...finalPositionFragment, tokenIndex: finalPositionFragment.tokenIndex - 3 }
-          }
-          return
-        }
-      }
-    }
-
-    finalCodeFragments.push(c)
-  })
-
-  // console.log({ codeFragments, finalCodeFragments, positionFragment, finalPositionFragment })
-  return { finalCodeFragments, finalPositionFragment }
+export const isKey = ({ code }: CodeFragment): boolean => {
+  return ['StringLiteral', 'FunctionName', 'NumberLiteral'].includes(code)
 }
 
-export const addSpace = (
-  codeFragments: CodeFragment[],
-  input: string,
-  positionFragment: PositionFragment,
-  namespaceId: string
-): { finalCodeFragments: CodeFragment[]; finalPositionFragment: PositionFragment } => {
-  const finalCodeFragments: CodeFragment[] = []
-  const spaceCodeFragment: CodeFragment = {
-    code: 'Space',
-    hide: false,
-    type: 'any',
-    display: ' ',
-    errors: [],
-    attrs: undefined
-  }
-
-  let restInput = input
-  let error = false
-  let image = ''
-  codeFragments.forEach((codeFragment, idx) => {
-    let match = false
-    if (error) return
-    image = codeFragment2value(codeFragment, namespaceId)
-
-    if (restInput.startsWith(image)) {
-      finalCodeFragments.push(codeFragment)
-      restInput = restInput.substring(image.length)
-      match = true
-    }
-
-    const prefixSpaceCount = restInput.length - restInput.trimStart().length
-    if (prefixSpaceCount > 0) {
-      const spaceValue = ' '.repeat(prefixSpaceCount)
-      finalCodeFragments.push({ ...spaceCodeFragment, display: spaceValue })
-      restInput = restInput.substring(prefixSpaceCount)
-    }
-
-    if (!match) {
-      error = true
-    }
-  })
-
-  if (error) {
-    return { finalCodeFragments: codeFragments, finalPositionFragment: positionFragment }
-  }
-
-  return { finalCodeFragments, finalPositionFragment: positionFragment }
-}

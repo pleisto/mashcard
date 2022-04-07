@@ -19,16 +19,16 @@ import {
   Definition,
   Formula,
   BaseFormula,
-  FormulaSourceType,
   NamespaceId,
   VariableTask,
-  NameDependencyWithKind
+  NameDependencyWithKind,
+  VariableRichType
 } from '../types'
 import { parse, interpret } from '../grammar/core'
 import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'
 import { v4 as uuid } from 'uuid'
-import { maybeEncodeString, shouldReceiveEventByScope } from '../grammar'
+import { maybeEncodeString, shouldReceiveEvent } from '../grammar'
 
 export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (task.async) {
@@ -62,11 +62,22 @@ export const fetchResult = ({ task }: VariableData): AnyTypeResult => {
 export const castVariable = async (
   oldVariable: VariableInterface | undefined,
   formulaContext: ContextInterface,
-  { name, definition, cacheValue, version, blockId, id, type: unknownType }: BaseFormula
+  { name, definition, cacheValue, version, blockId, id, type: unknownType, meta: unknownMeta }: BaseFormula
 ): Promise<VariableInterface> => {
-  const type = unknownType as FormulaSourceType
-  const meta: VariableMetadata = { namespaceId: blockId, variableId: id, name, input: definition, position: 0, type }
-  const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
+  const meta: Omit<VariableMetadata, 'richType'> = {
+    namespaceId: blockId,
+    variableId: id,
+    name,
+    input: definition,
+    position: 0
+  }
+  const richType = { type: unknownType, meta: unknownMeta ?? {} } as unknown as VariableRichType
+
+  const ctx = {
+    formulaContext,
+    meta: { ...meta, richType },
+    interpretContext: { ctx: {}, arguments: [] }
+  }
   const parseResult = parse({ ctx })
 
   const variable = await interpret({ variable: oldVariable, isLoad: true, ctx, parseResult })
@@ -83,7 +94,7 @@ export class VariableClass implements VariableInterface {
 
   tickTimeout: number = 1000
   eventListeners: EventSubscribed[] = []
-  currentUUID: string | undefined
+  currentUUID: string = uuid()
   builtinEventListeners: EventSubscribed[] = []
 
   constructor({ t, formulaContext }: { t: VariableData; formulaContext: ContextInterface }) {
@@ -279,7 +290,7 @@ export class VariableClass implements VariableInterface {
       name: this.t.name,
       position: 0,
       input: this.t.definition,
-      type: this.t.type
+      richType: this.t.richType
     }
   }
 
@@ -310,21 +321,29 @@ export class VariableClass implements VariableInterface {
   }
 
   public buildFormula(definition?: string): Formula {
-    return {
+    const formula: Omit<Formula, 'type' | 'meta'> = {
       blockId: this.t.namespaceId,
       definition: definition ?? this.t.definition,
       id: this.t.variableId,
       name: this.t.name,
       version: this.t.version,
-      type: this.t.type,
       cacheValue: dumpValue(fetchResult(this.t), this.t)
     }
+
+    const richType = {
+      ...this.t.richType,
+      meta: this.t.richType.meta ?? {}
+    } as unknown as { type: Formula['type']; meta: Formula['meta'] }
+
+    return { ...formula, ...richType }
   }
 
-  private async maybeReparseAndPersist(sourceUuid: string, definition?: string): Promise<void> {
-    if (this.currentUUID === sourceUuid) {
+  private async maybeReparseAndPersist(source: string, sourceUuid: string, definition?: string): Promise<void> {
+    if (sourceUuid && this.currentUUID === sourceUuid) {
       return
     }
+    // console.debug('reparse', source, sourceUuid, this.currentUUID, definition)
+
     this.currentUUID = sourceUuid
 
     const formula = this.buildFormula(definition)
@@ -332,14 +351,14 @@ export class VariableClass implements VariableInterface {
     await castVariable(this, this.formulaContext, formula)
 
     this.trackDependency()
-    this.currentUUID = undefined
+    this.currentUUID = uuid()
     if (this.savedT?.task.async === false) {
       this.onUpdate({ savedTNotMatched: false })
     }
   }
 
   public updateDefinition(definition: Definition): void {
-    void this.maybeReparseAndPersist(uuid(), definition)
+    void this.maybeReparseAndPersist('updateDefinition', uuid(), definition)
   }
 
   private subscripeEvents(): void {
@@ -357,9 +376,14 @@ export class VariableClass implements VariableInterface {
       const eventSubscription = BrickdocEventBus.subscribe(
         dependency.event,
         e => {
-          if (!shouldReceiveEventByScope(dependency.scopes, e.payload.scopes)) return
+          // console.log('event', this.currentUUID, { type: e.type, payload: e.payload, dependency })
+          if (!shouldReceiveEvent(dependency.scope, e.payload.scope)) return
           const definition = dependency.definitionHandler?.(dependency, this, e.payload)
-          void this.maybeReparseAndPersist(e.payload.key, definition)
+          void this.maybeReparseAndPersist(
+            `${dependency.event.eventType}_${dependency.eventId}`,
+            e.payload.key,
+            definition
+          )
         },
         {
           eventId: dependency.eventId,
@@ -374,7 +398,7 @@ export class VariableClass implements VariableInterface {
         BlockNameLoad,
         e => {
           if (this.isReadySavedT) return
-          void this.maybeReparseAndPersist(blockId)
+          void this.maybeReparseAndPersist(`BlockNameLoad_${blockId}`, blockId)
         },
         { subscribeId: `Variable#${this.t.variableId}`, eventId: blockId }
       )
@@ -392,7 +416,7 @@ export class VariableClass implements VariableInterface {
             return { ...c, attrs: { ...c.attrs, name: e.payload.t.name } }
           })
           const definition = codeFragments2definition(newCodeFragments, this.t.namespaceId)
-          void this.maybeReparseAndPersist(e.payload.t.variableId, definition)
+          void this.maybeReparseAndPersist(`FormulaUpdatedViaId_${variableId}`, e.payload.t.currentUUID, definition)
         },
         {
           eventId: `${namespaceId},${variableId}`,
@@ -407,7 +431,7 @@ export class VariableClass implements VariableInterface {
         FormulaContextNameChanged,
         e => {
           if (this.isReadySavedT) return
-          void this.maybeReparseAndPersist(e.payload.id)
+          void this.maybeReparseAndPersist(`FormulaContextNameChanged_${name}_${namespaceId}`, e.payload.id)
         },
         { eventId: `${namespaceId}#${name}`, subscribeId: `NameSetDependency#${t.variableId}` }
       )
@@ -416,7 +440,7 @@ export class VariableClass implements VariableInterface {
       const nameRemoveSubscription = BrickdocEventBus.subscribe(
         FormulaContextNameRemove,
         e => {
-          void this.maybeReparseAndPersist(e.payload.id)
+          void this.maybeReparseAndPersist(`FormulaContextNameRemove_${name}_${namespaceId}`, e.payload.id)
         },
         { eventId: `${namespaceId}#${name}`, subscribeId: `NameRemoveDependency#${t.variableId}` }
       )

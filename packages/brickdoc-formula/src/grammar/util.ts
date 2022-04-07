@@ -13,16 +13,39 @@ import {
 import { InterpretArgument } from './interpreter'
 import { FormulaLexer } from './lexer'
 
-export const shouldReceiveEventByScope = (listenedScopes: EventScope[], eventScopes: EventScope[]): boolean => {
-  listenedScopes.forEach(listenedScope => {
-    const eventScope = eventScopes.find(scope => scope.kind === listenedScope.kind)
-    if (!eventScope) return false
+// eslint-disable-next-line complexity
+export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventScope | undefined): boolean => {
+  if (!eventScope) return true
+  const listenedRows = listenedScope.rows ?? []
+  const listenedColumns = listenedScope.columns ?? []
+  const eventRows = eventScope.rows ?? []
+  const eventColumns = eventScope.columns ?? []
 
-    const filteredArray = listenedScope.keys.filter(key => eventScope.keys.includes(key))
-    if (filteredArray.length === 0) return false
-  })
+  if (listenedRows.length === 0 && listenedColumns.length === 0 && eventRows.length > 0 && eventColumns.length > 0)
+    return false
 
-  return true
+  const rowMatched = _.intersection(listenedRows, eventRows).length > 0
+  const columnMatched = _.intersection(listenedColumns, eventColumns).length > 0
+
+  if (!listenedRows.length && !listenedColumns.length) return true
+
+  if (listenedRows.length && listenedColumns.length) {
+    if (eventRows.length && eventColumns.length) {
+      return rowMatched && columnMatched
+    }
+
+    if (eventRows.length) {
+      return rowMatched
+    } else {
+      return columnMatched
+    }
+  }
+
+  if (listenedRows.length) {
+    return rowMatched && eventColumns.length === 0
+  } else {
+    return columnMatched && eventRows.length === 0
+  }
 }
 
 export const reverseTraversalString = (str: string, min = 1): string[] => {
@@ -204,6 +227,7 @@ export const resultToColorType = ({ type, result }: AnyTypeResult): FormulaColor
   }
 
   if (type === 'Column' && result.logic) return 'LogicColumn'
+  if (type === 'Row' && result.logic) return 'LogicRow'
 
   return type
 }

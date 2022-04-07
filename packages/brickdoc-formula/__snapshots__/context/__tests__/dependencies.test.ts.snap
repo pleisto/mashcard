@@ -94,6 +94,9 @@ Array [
     "name": "num0",
     "nameDependencies": Array [],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -107,7 +110,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
@@ -227,6 +229,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -240,7 +245,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -301,6 +305,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -314,7 +321,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -424,6 +430,10 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "meta": Object {},
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -437,7 +447,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -547,6 +556,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -560,7 +572,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -719,6 +730,10 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "meta": Object {},
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -732,7 +747,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -854,6 +868,10 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "meta": Object {},
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -867,7 +885,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -975,6 +992,9 @@ Array [
     "name": "num0",
     "nameDependencies": Array [],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -988,7 +1008,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "cd0755b8-0000-4326-876d-853e59cb0259",
@@ -1027,6 +1046,9 @@ Array [
     "name": "num1",
     "nameDependencies": Array [],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -1040,7 +1062,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [],
     "variableId": "88d64c7c-1111-4eea-be97-133e12c8c1ce",
@@ -1096,6 +1117,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -1109,7 +1133,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1219,6 +1242,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -1232,7 +1258,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1342,6 +1367,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -1355,7 +1383,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1514,6 +1541,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -1527,7 +1557,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {
@@ -1649,6 +1678,9 @@ Array [
       },
     ],
     "namespaceId": "9dda8306-dbe1-49d3-868d-1a7c86f27328",
+    "richType": Object {
+      "type": "normal",
+    },
     "task": Object {
       "async": false,
       "execEndTime": null,
@@ -1662,7 +1694,6 @@ Array [
         "success": true,
       },
     },
-    "type": "normal",
     "valid": true,
     "variableDependencies": Array [
       Object {

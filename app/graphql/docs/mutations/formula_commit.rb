@@ -15,6 +15,7 @@ module Docs
           if formula
             update_params = {
               name: args[:name],
+              meta: args[:meta],
               type: args[:type],
               definition: args[:definition],
               cache_value: args[:cache_value],

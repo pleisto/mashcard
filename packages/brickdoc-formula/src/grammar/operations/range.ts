@@ -1,4 +1,4 @@
-import { CellType } from '../../controls'
+import { Cell } from '../../controls'
 import { OperatorType } from '../operator'
 
 export const rangeOperator: OperatorType = {
@@ -6,11 +6,11 @@ export const rangeOperator: OperatorType = {
   expressionType: 'Range',
   lhsType: 'Cell',
   rhsType: 'Cell',
-  interpret: async ({ ctx, lhs, rhs }) => {
-    const startCell = lhs.result as CellType
-    const endCell = rhs!.result as CellType
+  interpret: async ({ interpreter, lhs, rhs }) => {
+    const startCell = lhs.result as Cell
+    const endCell = rhs!.result as Cell
 
-    const spreadsheet = ctx.formulaContext.findSpreadsheetById(startCell.spreadsheetId)
+    const spreadsheet = interpreter.ctx.formulaContext.findSpreadsheetById(startCell.spreadsheetId)
 
     if (!spreadsheet) {
       return { type: 'Error', result: 'Spreadsheet not found', errorKind: 'runtime' }

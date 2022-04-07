@@ -8,5 +8,6 @@ module Docs
     argument :cache_value, GraphQL::Types::JSON, 'dump value', required: true
     argument :version, Integer, 'version', required: true
     argument :type, String, 'type', required: true
+    argument :meta, GraphQL::Types::JSON, 'meta', required: true
   end
 end

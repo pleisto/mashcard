@@ -16,14 +16,21 @@ const testName1 = 'varvarabcvar'
 const SNAPSHOT_FLAG = '<SNAPSHOT>'
 
 const interpretContext = { ctx: {}, arguments: [] }
-const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', position: 0, type: 'normal' }
+const meta: VariableMetadata = {
+  namespaceId,
+  variableId,
+  name: testName1,
+  input: '=24',
+  position: 0,
+  richType: { type: 'normal' }
+}
 const barMeta: VariableMetadata = {
   namespaceId,
   variableId: barVariableId,
   name: 'bar',
   input: `=#${namespaceId}.${testName1}`,
   position: 0,
-  type: 'normal'
+  richType: { type: 'normal' }
 }
 describe('Controls', () => {
   beforeAll(async () => {
@@ -127,7 +134,7 @@ describe('Controls', () => {
       name: 'foo',
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const interpretContext = { ctx: {}, arguments: [] }
     const { errorMessages: errorMessage1 } = parse({
@@ -159,7 +166,7 @@ describe('Controls', () => {
         name: 'foo',
         input,
         position: 0,
-        type: 'normal'
+        richType: { type: 'normal' }
       }
       const parseResult = parse({
         ctx: {

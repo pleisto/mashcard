@@ -12,7 +12,7 @@ export const inOperator: OperatorType = {
       : ['Array']
     return { ...args, type: newType }
   },
-  interpret: async ({ ctx, lhs, rhs, operator }) => {
+  interpret: async ({ interpreter, lhs, rhs, operator }) => {
     const isExactIn = operator.tokenType.name === 'ExactIn'
     if (rhs!.type === 'Spreadsheet') {
       const match = String(lhs.result)
@@ -44,7 +44,7 @@ export const inOperator: OperatorType = {
     if (rhs!.type === 'Column') {
       const match = String(lhs.result)
       const column = rhs.result
-      const spreadsheet = ctx.formulaContext.findSpreadsheetById(column.spreadsheetId)
+      const spreadsheet = interpreter.ctx.formulaContext.findSpreadsheetById(column.spreadsheetId)
       if (!spreadsheet) {
         return { type: 'Error', result: 'Spreadsheet not found', errorKind: 'runtime' }
       }

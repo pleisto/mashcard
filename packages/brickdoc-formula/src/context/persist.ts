@@ -10,6 +10,7 @@ import {
 import { BlockClass } from '../controls/block'
 import { fetchResult } from './variable'
 import { truncateArray, truncateString } from '../grammar'
+import { RowClass } from '../controls/row'
 
 const VARIABLE_VERSION = 0
 
@@ -17,7 +18,7 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   return {
     definition: t.definition,
     result: fetchResult(t),
-    type: t.type,
+    type: t.richType.type,
     kind: t.kind,
     version: VARIABLE_VERSION,
     display: displayValue(fetchResult(t), ''),
@@ -27,13 +28,18 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
       name: t.name,
       position: 0,
       input: t.definition,
-      type: t.type
+      richType: t.richType
     }
   }
 }
 
-// eslint-disable-next-line complexity
 export const displayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncate: boolean = false): string => {
+  const value = innerDisplayValue(v, pageId, disableTruncate)
+  return value || '#Empty'
+}
+
+// eslint-disable-next-line complexity
+const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncate: boolean = false): string => {
   switch (v.type) {
     case 'number':
       return String(v.result)
@@ -51,9 +57,9 @@ export const displayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTrunc
     case 'Block':
       return v.result.name(pageId)
     case 'Column':
-      return `${v.result.spreadsheet.name()}.${v.result.logic ? v.result.displayIndex : v.result.name}`
+      return `${v.result.spreadsheet.name()}.${v.result.display()}`
     case 'Row':
-      return `[${v.result.rowIndex}] ${truncateArray(v.result.cells.map(c => c.value)).join(', ')}`
+      return `Row[${v.result.rowIndex}]`
     case 'Range':
       return `${v.result.columnSize}*${v.result.rowSize}`
     case 'Cell':
@@ -109,6 +115,7 @@ export const dumpValue = (result: BaseResult, t: VariableData): BaseResult => {
   if (
     result.result instanceof ColumnClass ||
     result.result instanceof BlockClass ||
+    result.result instanceof RowClass ||
     result.result instanceof ButtonClass ||
     result.result instanceof SelectClass ||
     result.result instanceof SwitchClass
@@ -126,6 +133,7 @@ export const dumpValue = (result: BaseResult, t: VariableData): BaseResult => {
   return result
 }
 
+// eslint-disable-next-line complexity
 export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResult => {
   if (result.type === 'Date' && !(result.result instanceof Date)) {
     return {
@@ -169,11 +177,20 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
   }
 
   if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {
-    const spreadsheet = ctx.formulaContext.findSpreadsheetById(result.result.spreadsheetId)
-    if (spreadsheet) {
-      return { type: 'Column', result: new ColumnClass(spreadsheet, result.result, false) }
+    const column = ctx.formulaContext.findColumnById(result.result.spreadsheetId, result.result.columnId)
+    if (column) {
+      return { type: 'Column', result: column }
     } else {
-      return { type: 'Error', result: `Spreadsheet ${result.result.spreadsheetId} not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Column ${result.result.columnId} not found`, errorKind: 'deps' }
+    }
+  }
+
+  if (result.type === 'Row' && !(result.result instanceof RowClass)) {
+    const row = ctx.formulaContext.findRowById(result.result.spreadsheetId, result.result.rowId)
+    if (row) {
+      return { type: 'Row', result: row }
+    } else {
+      return { type: 'Error', result: `Row ${result.result.rowId} not found`, errorKind: 'deps' }
     }
   }
 

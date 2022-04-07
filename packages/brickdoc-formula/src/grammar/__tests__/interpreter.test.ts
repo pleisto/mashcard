@@ -54,7 +54,14 @@ const fooVariableId = 'd986e871-cb85-4bd5-b675-87307f60b882'
 
 const variableId = '481b6dd1-e668-4477-9e47-cfe5cb1239d0'
 
-const meta: VariableMetadata = { namespaceId, variableId, name: 'example', input: '=!!!', position: 0, type: 'normal' }
+const meta: VariableMetadata = {
+  namespaceId,
+  variableId,
+  name: 'example',
+  input: '=!!!',
+  position: 0,
+  richType: { type: 'normal' }
+}
 
 describe('Custom Function', () => {
   const formulaContext = new FormulaContext({ domain: 'test', functionClauses })
@@ -184,7 +191,9 @@ describe('Context', () => {
 
     // Insert bar
     const meta = { namespaceId: anotherBlockId, variableId: anotherVariableId, name: 'bar' }
-    await quickInsert({ ctx: { ...ctx, meta: { ...meta, input: barInput, position: 0, type: 'normal' } } })
+    await quickInsert({
+      ctx: { ...ctx, meta: { ...meta, input: barInput, position: 0, richType: { type: 'normal' } } }
+    })
 
     const bar = formulaContext.findVariableById(anotherBlockId, anotherVariableId)!
 
@@ -200,7 +209,7 @@ describe('Context', () => {
       name: 'bar',
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const finalCtx = { ...ctx, meta: newMeta }
     const { errorMessages, flattenVariableDependencies } = parse({ ctx: finalCtx })

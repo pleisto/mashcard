@@ -770,14 +770,6 @@ const testCases: TestCase[] = [
     value: 3
   },
   {
-    input: '=AND(true, false, false)',
-    value: false
-  },
-  {
-    input: '=OR(true)',
-    value: true
-  },
-  {
     input: '=ABS(IF(false, -3, -4))',
     value: 4
   },
@@ -944,11 +936,6 @@ const testCases: TestCase[] = [
     errorMessage: 'Expected number but got Date'
   },
   {
-    input: '=AND(1, 2)',
-    parseErrorType: 'syntax',
-    errorMessage: 'Expected boolean but got number'
-  },
-  {
     input: '=ABS ( true )',
     parseErrorType: 'syntax',
     errorMessage: 'Expected number but got boolean'
@@ -1106,7 +1093,14 @@ const testCases: TestCase[] = [
 const formulaContext = new FormulaContext({ domain: 'test' })
 
 const name = 'foo'
-const meta: VariableMetadata = { variableId, namespaceId, name, input: '!!!', position: 0, type: 'normal' }
+const meta: VariableMetadata = {
+  variableId,
+  namespaceId,
+  name,
+  input: '!!!',
+  position: 0,
+  richType: { type: 'normal' }
+}
 
 const ctx: FunctionContext = {
   formulaContext,
@@ -1128,7 +1122,7 @@ describe('Simple test case', () => {
           variableId: barVariableId,
           input: '=24',
           position: 0,
-          type: 'normal'
+          richType: { type: 'normal' }
         }
       }
     })

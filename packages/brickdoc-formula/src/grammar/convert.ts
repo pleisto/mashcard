@@ -19,7 +19,7 @@ import {
   SpreadsheetKey,
   ColumnCompletion
 } from '../types'
-import { BlockType, ColumnType, SpreadsheetType } from '../controls'
+import { BlockType, ColumnType, RowType, SpreadsheetType } from '../controls'
 import { maybeEncodeString, parseString, reverseTraversalString } from './util'
 import { fetchResult } from '../context'
 
@@ -58,7 +58,14 @@ export const column2attrs = (column: ColumnType): CodeFragmentAttrs => ({
   kind: column.logic ? 'LogicColumn' : 'Column',
   namespaceId: column.spreadsheet.spreadsheetId,
   id: column.columnId,
-  name: column.logic ? column.displayIndex : column.name
+  name: column.display()
+})
+
+export const row2attrs = (row: RowType): CodeFragmentAttrs => ({
+  kind: row.logic ? 'LogicRow' : 'Row',
+  namespaceId: row.spreadsheetId,
+  id: row.rowId,
+  name: row.display()
 })
 
 const renderText = ({ code, display }: CodeFragment, text: string, value: string): string => {
@@ -133,7 +140,8 @@ export const codeFragment2display = (
     code === 'Spreadsheet' &&
     prevText !== '.' &&
     pageId === attrs.namespaceId &&
-    !value.startsWith('#CurrentBlock')
+    !value.startsWith('#CurrentBlock') &&
+    !text.toUpperCase().startsWith('THISRECORD')
   ) {
     return `#CurrentBlock.${finalText}`
   }
@@ -154,12 +162,23 @@ export const block2codeFragment = (block: BlockType, pageId: NamespaceId): CodeF
 export const column2codeFragment = (column: ColumnType, pageId: NamespaceId): CodeFragment => {
   // const value = columnKey(column.namespaceId, column.columnId)
   return {
-    display: column.logic ? column.displayIndex : column.name,
+    display: column.display(),
     errors: [],
     code: 'Column',
     type: 'Column',
     hide: false,
     attrs: column2attrs(column)
+  }
+}
+
+export const row2codeFragment = (row: RowType, pageId: NamespaceId): CodeFragment => {
+  return {
+    display: row.display(),
+    errors: [],
+    code: 'Row',
+    type: 'Row',
+    hide: false,
+    attrs: row2attrs(row)
   }
 }
 

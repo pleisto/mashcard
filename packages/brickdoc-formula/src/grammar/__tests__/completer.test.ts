@@ -18,14 +18,21 @@ const interpretContext = { ctx: {}, arguments: [] }
 const testName1 = 'varvarabcvar'
 const testName2 = 'a中文baz345_space_foo'
 
-const meta: VariableMetadata = { namespaceId, variableId, name: testName1, input: '=24', position: 0, type: 'normal' }
+const meta: VariableMetadata = {
+  namespaceId,
+  variableId,
+  name: testName1,
+  input: '=24',
+  position: 0,
+  richType: { type: 'normal' }
+}
 const barMeta: VariableMetadata = {
   namespaceId,
   variableId: barVariableId,
   name: 'bar',
   input: '=43',
   position: 0,
-  type: 'normal'
+  richType: { type: 'normal' }
 }
 const test2Meta: VariableMetadata = {
   namespaceId,
@@ -33,7 +40,7 @@ const test2Meta: VariableMetadata = {
   name: testName2,
   input: '=80',
   position: 0,
-  type: 'normal'
+  richType: { type: 'normal' }
 }
 describe('Complete', () => {
   beforeAll(async () => {
@@ -52,7 +59,7 @@ describe('Complete', () => {
       ctx: {
         formulaContext,
         interpretContext: { ctx: {}, arguments: [] },
-        meta: { namespaceId, variableId: testVariableId, name: 'foo', input, position: 0, type: 'normal' }
+        meta: { namespaceId, variableId: testVariableId, name: 'foo', input, position: 0, richType: { type: 'normal' } }
       },
       tokens,
       position: input.length,
@@ -71,7 +78,7 @@ describe('Complete', () => {
           name: 'foo',
           input,
           position: 0,
-          type: 'normal'
+          richType: { type: 'normal' }
         }
       },
       tokens,
@@ -235,7 +242,7 @@ describe('Complete', () => {
               name: 'foo',
               input,
               position: 0,
-              type: 'normal'
+              richType: { type: 'normal' }
             }
           },
           position: input.length

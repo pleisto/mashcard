@@ -15,6 +15,7 @@ describe Docs::Queries::Formulas, type: :query do
           type
           updatedAt
           createdAt
+          meta
         }
       }
     GRAPHQL
@@ -26,7 +27,7 @@ describe Docs::Queries::Formulas, type: :query do
 
       block = create(:docs_block, space: user.personal_space)
       formula = Docs::Formula.create!(
-        block_id: block.id, id: SecureRandom.uuid, name: 'foo',
+        block_id: block.id, id: SecureRandom.uuid, name: 'foo', meta: {},
         cache_value: { "type" => 'string', 'value' => '123' }, definition: "=123"
       )
 
@@ -38,6 +39,7 @@ describe Docs::Queries::Formulas, type: :query do
         'blockId' => formula.block_id,
         'type' => formula.type,
         'name' => formula.name,
+        'meta' => formula.meta,
         'definition' => formula.definition,
         'cacheValue' => formula.cache_value
       })

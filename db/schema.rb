@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_19_132057) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_02_110359) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -156,6 +156,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_19_132057) do
     t.datetime "updated_at", null: false
     t.integer "version", default: 0, null: false
     t.integer "type", default: 0, null: false
+    t.json "meta", default: {}, null: false
     t.index ["block_id", "name"], name: "index_docs_formulas_on_block_id_and_name", unique: true
     t.index ["space_id"], name: "index_docs_formulas_on_space_id"
   end

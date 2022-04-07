@@ -662,6 +662,8 @@ export type Formula = {
   definition: Scalars['String']
   /** object unique id */
   id: Scalars['UUID']
+  /** meta */
+  meta: Scalars['JSON']
   /** formula name */
   name: Scalars['String']
   /** type */
@@ -707,6 +709,8 @@ export type FormulaModifyInput = {
   definition: Scalars['String']
   /** id */
   id: Scalars['UUID']
+  /** meta */
+  meta: Scalars['JSON']
   /** name */
   name: Scalars['String']
   /** type */
@@ -2225,6 +2229,7 @@ export type GetFormulasQuery = {
     createdAt: number
     version: number
     type: string
+    meta: any
   }> | null
 }
 
@@ -4450,6 +4455,7 @@ export const GetFormulasDocument = gql`
       createdAt
       version
       type
+      meta
     }
   }
 `

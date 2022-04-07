@@ -13,7 +13,7 @@ describe('FormulaResult', () => {
     const name = 'baz'
 
     const input = `= 1 + 1`
-    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, type: 'normal' }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 
@@ -37,7 +37,7 @@ describe('FormulaResult', () => {
 
     // incorrect syntax
     const input = `= 1 ++++ 1`
-    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, type: 'normal' }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 
@@ -66,7 +66,7 @@ describe('FormulaResult', () => {
     const name = 'baz'
 
     const input = `=`
-    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, type: 'normal' }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 

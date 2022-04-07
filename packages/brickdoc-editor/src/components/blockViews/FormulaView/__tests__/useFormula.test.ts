@@ -15,7 +15,7 @@ const normalInput = {
   rootId,
   formulaId,
   updateFormula,
-  formulaType: normalFormulaType,
+  formulaRichType: { type: normalFormulaType },
   formulaName,
   formulaContext
 }
@@ -25,7 +25,7 @@ const spreadsheetInput = {
   rootId,
   formulaId,
   updateFormula,
-  formulaType: spreadsheetFormulaType,
+  formulaRichType: { type: spreadsheetFormulaType, meta: { spreadsheetId: '', columnId: '', rowId: '' } },
   formulaName,
   formulaContext
 }
@@ -56,7 +56,7 @@ const simpleMetas: VariableMetadata[] = [
 ].map(({ name, input }) => ({
   name,
   namespaceId,
-  type: 'normal',
+  richType: { type: 'normal' },
   position: 0,
   variableId: variableWithNames.find(v => v.name === name)!.variableId,
   input: input.replace(/\$([a-zA-Z0-9_-]+)/g, (a, variableName): string => {
@@ -70,7 +70,7 @@ const complexMetas: VariableMetadata[] = [
     input: '=123123',
     position: 0,
     namespaceId,
-    type: 'normal',
+    richType: { type: 'normal' },
     variableId: '781a575f-37a6-4e03-b125-595b72b8d6fe'
   }
 ]

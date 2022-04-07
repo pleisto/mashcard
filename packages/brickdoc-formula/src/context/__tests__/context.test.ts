@@ -20,6 +20,7 @@ const formulas: Formula[] = [
     definition: '=123',
     version: 0,
     type: 'normal',
+    meta: {},
     cacheValue: {
       type: 'number',
       result: 123
@@ -32,6 +33,7 @@ const formulas: Formula[] = [
     definition: `=ABS(120) + #${fooNamespaceId}.foo`,
     version: 0,
     type: 'normal',
+    meta: {},
     cacheValue: {
       type: 'number',
       result: 243
@@ -96,7 +98,7 @@ describe('Context', () => {
       name,
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([{ message: 'Name exist in same namespace', type: 'name_unique' }])
@@ -112,7 +114,7 @@ describe('Context', () => {
       name,
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is reserved', type: 'name_check' }])
@@ -128,7 +130,7 @@ describe('Context', () => {
       name,
       input,
       position: 0,
-      type: 'normal'
+      richType: { type: 'normal' }
     }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
     expect(parseResult.errorMessages).toEqual([{ message: 'Variable name is not valid', type: 'name_invalid' }])
@@ -139,7 +141,7 @@ describe('Context', () => {
     const name = 'ifname'
     const namespaceId = '37198be0-d10d-42dc-ae8b-20d45a95401b'
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
-    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, type: 'normal' }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
     const parseResult = parse({ ctx: { formulaContext, meta, interpretContext } })
 
     expect(parseResult.errorMessages).toEqual([{ message: 'Expected boolean but got number', type: 'type' }])
@@ -160,7 +162,7 @@ describe('Context', () => {
     const variableId = 'b4289606-2a52-48e3-a50f-77ee321dd84e'
     const name = 'baz'
     const input = `= #${fooNamespaceId}."foo"+#${barNamespaceId}."bar" `
-    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, type: 'normal' }
+    const meta: VariableMetadata = { namespaceId, variableId, name, input, position: 0, richType: { type: 'normal' } }
     const parseInput = { ctx: { formulaContext, meta, interpretContext } }
     const parseResult = parse(parseInput) as SuccessParseResult
 

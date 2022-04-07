@@ -41,7 +41,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     rootId,
     formulaId,
     formulaContext,
-    formulaType,
+    formulaRichType: { type: formulaType },
     formulaName
   })
 
