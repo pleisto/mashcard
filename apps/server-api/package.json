@@ -13,11 +13,11 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.2",
-    "@nestjs/testing": "^8.4.3",
+    "@nestjs/testing": "^8.4.4",
     "cross-spawn": "^7.0.3",
     "leaked-handles": "^5.2.0",
     "node-dev": "^7.4.2",
-    "pino-pretty": "^7.6.0"
+    "pino-pretty": "^7.6.1"
   },
   "dependencies": {
     "@brickdoc/active-support": "workspace:^",
@@ -25,11 +25,11 @@
     "@brickdoc/dotenv": "workspace:^",
     "@brickdoc/nestjs-redis": "workspace:^",
     "@nestjs/apollo": "^10.0.8",
-    "@nestjs/common": "^8.4.3",
+    "@nestjs/common": "^8.4.4",
     "@nestjs/config": "^2.0.0",
-    "@nestjs/core": "^8.4.3",
+    "@nestjs/core": "^8.4.4",
     "@nestjs/graphql": "^10.0.8",
-    "@nestjs/platform-fastify": "^8.4.3",
+    "@nestjs/platform-fastify": "^8.4.4",
     "@nestjs/terminus": "^8.0.6",
     "apollo-server-fastify": "^3.6.7",
     "fastify-cookie": "^5.6.0",

@@ -16,7 +16,7 @@
     "@brickdoc/schema": "workspace:^",
     "@brickdoc/test-helper": "workspace:^",
     "@brickdoc/uploader": "workspace:^",
-    "@pdftron/webviewer": "^8.4.0",
+    "@pdftron/webviewer": "^8.4.1",
     "@tiptap/core": "^2.0.0-beta.174",
     "@tiptap/extension-blockquote": "^2.0.0-beta.26",
     "@tiptap/extension-bold": "^2.0.0-beta.26",
