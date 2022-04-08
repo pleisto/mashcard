@@ -4,11 +4,11 @@ export const PAGE_SELECTOR = {
   pageSection: '[data-testid=page-tree-heading]',
   pageList: '[data-testid="virtual-list"]',
   addPageButton: 'button[data-testid="page-document-page-add-page-button"]',
-  addSubPageButton: '[data-testid=content-action] .brd-icon-add',
-  moreActionIcon: '[data-testid=content-action] .brd-icon-more',
+  addSubPageButton: (index: number) => `[data-testid=content-action] .brd-icon-add >> nth=${index}`,
+  moreActionIcon: (index: number) => `[data-testid=content-action] .brd-icon-more >> nth=${index}`,
   pageItem: (index: number) => `[data-testid="BrkTree"] >> nth=${index}`,
-  pageIndent: '[data-testid=indent]',
-  actionButton: (button: string) => `[role="menuitem"]:has-text("${button}")`,
+  pageIndent: (index: number) => `[data-testid=indent] >> nth=${index}`,
+  actionButton: (button: string, index: number) => `[role="menuitem"]:has-text("${button}") >> nth=${index}`,
   renameInput: `${COMMON_SELECTORS.tooltip} .MuiInput-input`,
-  arrow: '[data-testid=content-arrow]'
+  arrow: (index: number) => `[data-testid=content-arrow] >> nth=${index}`
 }

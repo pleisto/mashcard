@@ -2,10 +2,7 @@ import { COMMON_SELECTORS } from '@/selectors/common'
 import { Locator, Page } from '@playwright/test'
 
 export class BasePage {
-  public readonly page
-  constructor(page: Page) {
-    this.page = page
-  }
+  constructor(readonly page: Page) {}
 
   getTooltip(): Locator {
     return this.page.locator(COMMON_SELECTORS.tooltip)

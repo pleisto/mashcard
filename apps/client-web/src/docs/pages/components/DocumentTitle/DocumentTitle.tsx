@@ -104,7 +104,7 @@ export const DocumentTitle: React.FC<DocumentTitleProps> = ({ editable, blocks }
       >
         <Root.MaxWidth>
           {editable && (
-            <Root.Actions>
+            <Root.Actions data-testid={TEST_ID_ENUM.page.DocumentPage.actionButtons.id}>
               {!documentIconMeta && (
                 <Popover {...iconPopoverProps}>
                   <Root.Item as={Button} type="unstyled" disabled={!editable}>

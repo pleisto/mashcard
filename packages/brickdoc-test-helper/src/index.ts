@@ -13,6 +13,9 @@ export const TEST_ID_ENUM = {
       }
     },
     DocumentPage: {
+      actionButtons: {
+        id: 'page-document-page-action-buttons'
+      },
       iconButton: {
         id: 'page-document-page-icon-button'
       },

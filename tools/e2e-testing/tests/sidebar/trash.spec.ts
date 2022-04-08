@@ -10,6 +10,7 @@ test.skip('Trash', () => {
     const trash = new TrashPage(page)
     await trash.openTrashPage()
     const isInViewPort = await pageExtend.isInViewPort(COMMON_SELECTORS.tooltip)
+
     expect(isInViewPort).toBeTruthy()
   })
 })
