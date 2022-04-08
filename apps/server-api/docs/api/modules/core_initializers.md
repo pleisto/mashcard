@@ -1,10 +1,10 @@
-# Module: common/initializers
+# Module: core/initializers
 
 ## Table of contents
 
 ### Functions
 
-- [loadInitializers](common_initializers.md#loadinitializers)
+- [loadInitializers](core_initializers.md#loadinitializers)
 
 ## Functions
 
@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[common/initializers/index.ts:11](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/apps/server-api/src/common/initializers/index.ts#L11)
+[core/initializers/index.ts:11](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/apps/server-api/src/core/initializers/index.ts#L11)

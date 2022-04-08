@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module'
 @Module({
   imports: [CommonModule, CoreModule]
 })
-export class ServerModule implements OnApplicationShutdown {
+export class AppModule implements OnApplicationShutdown {
   constructor(private readonly logger: PinoLogger) {
     // use safe navigation operator to avoid error on devtools console
     this.logger?.setContext('BrickdocServer')

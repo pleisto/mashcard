@@ -680,7 +680,7 @@ node_modules/slonik/dist/src/types.d.ts:246
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-slonik/src/slonik.interface.ts#L6)
+[packages/nestjs-slonik/src/slonik.interface.ts:6](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L6)
 
 ___
 
@@ -690,7 +690,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-slonik/src/slonik.interface.ts#L7)
+[packages/nestjs-slonik/src/slonik.interface.ts:7](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L7)
 
 ___
 
@@ -700,7 +700,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-slonik/src/slonik.interface.ts#L5)
+[packages/nestjs-slonik/src/slonik.interface.ts:5](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L5)
 
 ___
 
@@ -710,7 +710,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:4](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-slonik/src/slonik.interface.ts#L4)
+[packages/nestjs-slonik/src/slonik.interface.ts:4](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L4)
 
 ___
 
@@ -740,7 +740,7 @@ node_modules/slonik/dist/src/index.d.ts:1
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.decorator.ts:5](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-slonik/src/slonik.decorator.ts#L5)
+[packages/nestjs-slonik/src/slonik.decorator.ts:5](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.decorator.ts#L5)
 
 ___
 

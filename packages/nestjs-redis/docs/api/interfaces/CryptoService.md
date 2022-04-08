@@ -30,7 +30,7 @@ hashed string
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:38](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L38)
+[packages/nestjs-redis/src/redis.interface.ts:38](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L38)
 
 ___
 
@@ -55,7 +55,7 @@ Decrypted data as string
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L31)
+[packages/nestjs-redis/src/redis.interface.ts:31](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L31)
 
 ___
 
@@ -80,4 +80,4 @@ Encrypted data as string
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L23)
+[packages/nestjs-redis/src/redis.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L23)

@@ -13,6 +13,6 @@ export const database = registerAs(
     redis: {
       url: env.REDIS_URL
     },
-    databaseUrl: env.DATABASE_URL
+    databaseUrl: `${env.DATABASE_URL_BASE}/${env.DATABASE_NAME}`
   })
 )

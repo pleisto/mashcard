@@ -1,18 +1,17 @@
 import { NestFactory } from '@nestjs/core'
 import { NestApplicationContextOptions } from '@nestjs/common/interfaces/nest-application-context-options.interface'
-import { ServerModule } from '../../server.module'
-
-export const v8InspectorEnabled =
-  typeof (globalThis as any).v8debug === 'object' || /--debug|--inspect/.test(process.execArgv.join(' '))
+import { AppModule } from '../../app.module'
 
 /**
- * Inject Context to Debugger console or REPL Runtime.
+ * Inject Context to Debugger console.
+ *
  */
 export async function registerDebugContext(options: NestApplicationContextOptions = {}): Promise<void> {
   /**
-   * Get Server Application Context.
+   * Register Server Application Context.
+   * @see {@url https://code.visualstudio.com/docs/nodejs/nodejs-debugging} for more details.
    */
-  const server = await NestFactory.createApplicationContext(ServerModule, options)
+  const server = await NestFactory.createApplicationContext(AppModule, options)
 
   /**
    * A token list that can be found by a token string.

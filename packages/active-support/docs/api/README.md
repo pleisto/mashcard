@@ -2638,7 +2638,7 @@ Converts an array of items with ids and parent ids to a nested tree in a perform
 
 #### Defined in
 
-[packages/active-support/src/index.ts:20](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/index.ts#L20)
+[packages/active-support/src/index.ts:20](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/index.ts#L20)
 
 ___
 
@@ -2784,7 +2784,7 @@ Returns the new array of chunks.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:117](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L117)
+[packages/active-support/src/modernLodash.ts:117](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L117)
 
 ___
 
@@ -2809,7 +2809,7 @@ Returns the cloned value.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:187](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L187)
+[packages/active-support/src/modernLodash.ts:187](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L187)
 
 ___
 
@@ -2937,7 +2937,7 @@ Returns the new array of filtered values.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:135](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L135)
+[packages/active-support/src/modernLodash.ts:135](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L135)
 
 ___
 
@@ -3374,7 +3374,7 @@ Returns the slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:144](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L144)
+[packages/active-support/src/modernLodash.ts:144](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L144)
 
 ___
 
@@ -3406,7 +3406,7 @@ The slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:153](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L153)
+[packages/active-support/src/modernLodash.ts:153](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L153)
 
 ___
 
@@ -4307,7 +4307,7 @@ Returns the slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:161](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L161)
+[packages/active-support/src/modernLodash.ts:161](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L161)
 
 ___
 
@@ -4461,7 +4461,7 @@ Checks if a given value is a empty like Ruby on Rails.
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:77](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L77)
+[packages/active-support/src/isType.ts:77](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L77)
 
 ___
 
@@ -4662,7 +4662,7 @@ value is T[]
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:65](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L65)
+[packages/active-support/src/isType.ts:65](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L65)
 
 ___
 
@@ -4690,7 +4690,7 @@ value is string
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:71](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L71)
+[packages/active-support/src/isType.ts:71](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L71)
 
 ___
 
@@ -4736,7 +4736,7 @@ value is undefined \| null
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:48](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L48)
+[packages/active-support/src/isType.ts:48](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L48)
 
 ___
 
@@ -4759,7 +4759,7 @@ value is number
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:39](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L39)
+[packages/active-support/src/isType.ts:39](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L39)
 
 ___
 
@@ -4883,7 +4883,7 @@ value is string
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:30](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L30)
+[packages/active-support/src/isType.ts:30](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L30)
 
 ___
 
@@ -4911,7 +4911,7 @@ value is string
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:57](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L57)
+[packages/active-support/src/isType.ts:57](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L57)
 
 ___
 
@@ -4936,7 +4936,7 @@ true if the value is a url, false otherwise.
 
 #### Defined in
 
-[packages/active-support/src/isType.ts:86](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/isType.ts#L86)
+[packages/active-support/src/isType.ts:86](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/isType.ts#L86)
 
 ___
 
@@ -5701,7 +5701,7 @@ the plural form of the word in the string
 
 #### Defined in
 
-[packages/active-support/src/inflections/index.ts:12](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/inflections/index.ts#L12)
+[packages/active-support/src/inflections/index.ts:12](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/inflections/index.ts#L12)
 
 ___
 
@@ -5898,7 +5898,7 @@ Returns the new filtered array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:179](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L179)
+[packages/active-support/src/modernLodash.ts:179](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L179)
 
 ___
 
@@ -6182,7 +6182,7 @@ the singular form of the word in the string
 
 #### Defined in
 
-[packages/active-support/src/inflections/index.ts:24](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/inflections/index.ts#L24)
+[packages/active-support/src/inflections/index.ts:24](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/inflections/index.ts#L24)
 
 ___
 
@@ -6842,7 +6842,7 @@ Returns the new duplicate free array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:170](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/active-support/src/modernLodash.ts#L170)
+[packages/active-support/src/modernLodash.ts:170](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/active-support/src/modernLodash.ts#L170)
 
 ___
 

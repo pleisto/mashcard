@@ -29,7 +29,7 @@ Applies to **all** methods.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:72](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L72)
+[packages/nestjs-redis/src/redis.interface.ts:72](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L72)
 
 ___
 
@@ -45,7 +45,7 @@ Applies to `set` method.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:112](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L112)
+[packages/nestjs-redis/src/redis.interface.ts:112](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L112)
 
 ___
 
@@ -62,7 +62,7 @@ Applies to **all** methods.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:62](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L62)
+[packages/nestjs-redis/src/redis.interface.ts:62](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L62)
 
 ___
 
@@ -76,7 +76,7 @@ Applies to `set` method.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:104](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L104)
+[packages/nestjs-redis/src/redis.interface.ts:104](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L104)
 
 ___
 
@@ -90,7 +90,7 @@ Applies to `set` method.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L98)
+[packages/nestjs-redis/src/redis.interface.ts:98](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L98)
 
 ___
 
@@ -104,7 +104,7 @@ Applies to `set` method.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:92](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L92)
+[packages/nestjs-redis/src/redis.interface.ts:92](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L92)
 
 ___
 
@@ -118,7 +118,7 @@ Applies to `set` method.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:79](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L79)
+[packages/nestjs-redis/src/redis.interface.ts:79](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L79)
 
 ___
 
@@ -133,4 +133,4 @@ Applies to `set` method.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:86](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L86)
+[packages/nestjs-redis/src/redis.interface.ts:86](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L86)

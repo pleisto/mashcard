@@ -1,12 +1,12 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { ConfigService } from '@nestjs/config'
-import { KMSService } from '../kms/kms.service'
-import { SecretSubKey } from '../kms/kms.interface'
+import { KMSService } from '../../common/kms/kms.service'
+import { SecretSubKey } from '../../common/kms/kms.interface'
 import { helmetRegister } from './helmet'
 import { setPinoAsLogger } from './logger'
 import { cookieRegister } from './cookie'
 import { sessionRegister } from './session'
-import { registerDebugContext, v8InspectorEnabled } from '../utils/debugger'
+import { registerDebugContext } from './debugger'
 
 export const loadInitializers = async (app: NestFastifyApplication): Promise<void> => {
   // Get Injection Service
@@ -27,5 +27,7 @@ export const loadInitializers = async (app: NestFastifyApplication): Promise<voi
   await helmetRegister(app)
 
   // Inject context to `globalThis.ctx` when Nodejs Debugger is enabled
+  const v8InspectorEnabled =
+    typeof (globalThis as any).v8debug === 'object' || /--debug|--inspect/.test(process.execArgv.join(' '))
   if (v8InspectorEnabled) await registerDebugContext()
 }

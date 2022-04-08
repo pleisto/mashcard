@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.module.ts:6](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.module.ts#L6)
+[packages/nestjs-redis/src/redis.module.ts:6](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.module.ts#L6)
 
 ___
 
@@ -55,4 +55,4 @@ ___
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.module.ts:13](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.module.ts#L13)
+[packages/nestjs-redis/src/redis.module.ts:13](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.module.ts#L13)

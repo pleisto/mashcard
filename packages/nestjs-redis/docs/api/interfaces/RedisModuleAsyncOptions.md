@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:51](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L51)
+[packages/nestjs-redis/src/redis.interface.ts:51](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L51)
 
 ## Methods
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:50](https://github.com/brickdoc/brickdoc/blob/5e2ec65d/packages/nestjs-redis/src/redis.interface.ts#L50)
+[packages/nestjs-redis/src/redis.interface.ts:50](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L50)

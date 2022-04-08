@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Available application environments"""
+enum AppEnv {
+  Development
+  Production
+  Staging
+  Test
+}
+
+"""Locale"""
+type Locale {
+  """Locale language's description of local"""
+  describe: String!
+
+  """English name of Language"""
+  language: String!
+
+  """Locale tag"""
+  tag: String!
+}
+
+"""Brickdoc Server Instance Metadata"""
+type Metadata {
+  """The current application environment"""
+  appEnv: AppEnv!
+
+  """Supported locales"""
+  supportedLocales: [Locale!]!
+
+  """Supported IANA timezones"""
+  supportedTimezones: [String!]!
+}
+
+type Query {
+  """Return information about current Brickdoc server instance."""
+  metadata: Metadata!
+}
