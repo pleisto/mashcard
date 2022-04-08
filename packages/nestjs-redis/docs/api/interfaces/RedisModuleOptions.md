@@ -50,7 +50,7 @@ If not provided, data will be stored in plain text.
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.interface.ts:46](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.interface.ts#L46)
+[packages/nestjs-redis/src/redis.interface.ts:46](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.interface.ts#L46)
 
 ___
 

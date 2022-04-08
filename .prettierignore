@@ -14,4 +14,4 @@ tools/helm-charts/**/*.yaml
 *.datauri.ts
 .next
 *.tsbuildinfo
-docs/apis/**/*.md
+docs/api/**/*.md

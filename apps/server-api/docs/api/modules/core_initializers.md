@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[core/initializers/index.ts:11](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/apps/server-api/src/core/initializers/index.ts#L11)
+[core/initializers/index.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L11)

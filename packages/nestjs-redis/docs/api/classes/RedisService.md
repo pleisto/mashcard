@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:20](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L20)
+[packages/nestjs-redis/src/redis.service.ts:20](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L20)
 
 ## Properties
 
@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:26](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L26)
+[packages/nestjs-redis/src/redis.service.ts:26](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L26)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:15](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L15)
+[packages/nestjs-redis/src/redis.service.ts:15](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L15)
 
 ## Accessors
 
@@ -76,7 +76,7 @@ Get node-redis client instance
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:46](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L46)
+[packages/nestjs-redis/src/redis.service.ts:46](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L46)
 
 ## Methods
 
@@ -101,7 +101,7 @@ delete result
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:110](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L110)
+[packages/nestjs-redis/src/redis.service.ts:110](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L110)
 
 ___
 
@@ -126,7 +126,7 @@ Promise<string>
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:90](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L90)
+[packages/nestjs-redis/src/redis.service.ts:90](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L90)
 
 ▸ **get**<`T`\>(`key`, `options?`): `Promise`<``null`` \| `T`\>
 
@@ -149,7 +149,7 @@ Promise<string>
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:91](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L91)
+[packages/nestjs-redis/src/redis.service.ts:91](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L91)
 
 ___
 
@@ -167,7 +167,7 @@ string - 'PONG'
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:118](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L118)
+[packages/nestjs-redis/src/redis.service.ts:118](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L118)
 
 ___
 
@@ -192,7 +192,7 @@ masked key
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:127](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L127)
+[packages/nestjs-redis/src/redis.service.ts:127](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L127)
 
 ___
 
@@ -218,7 +218,7 @@ Promise<boolean>
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:57](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L57)
+[packages/nestjs-redis/src/redis.service.ts:57](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L57)
 
 ▸ **set**<`T`\>(`key`, `value`, `options?`): `Promise`<``null`` \| `string`\>
 
@@ -242,7 +242,7 @@ Promise<boolean>
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:58](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L58)
+[packages/nestjs-redis/src/redis.service.ts:58](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L58)
 
 ___
 
@@ -271,4 +271,4 @@ namespace and key
 
 #### Defined in
 
-[packages/nestjs-redis/src/redis.service.ts:33](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-redis/src/redis.service.ts#L33)
+[packages/nestjs-redis/src/redis.service.ts:33](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-redis/src/redis.service.ts#L33)

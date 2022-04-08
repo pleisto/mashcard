@@ -16,4 +16,4 @@ Options for `ConfigModule.forRoot`
 
 #### Defined in
 
-[common/config/index.ts:9](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/apps/server-api/src/common/config/index.ts#L9)
+[common/config/index.ts:9](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/config/index.ts#L9)

@@ -15,10 +15,7 @@
       "outputs": ["docs/api/**"]
     },
     "precommit": {
-      "dependsOn": [
-        "lint:eslint",
-        "lint:type"
-      ]
+      "dependsOn": ["lint:eslint", "lint:type", "tsdoc"]
     }
   }
 }

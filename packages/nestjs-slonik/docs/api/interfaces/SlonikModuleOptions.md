@@ -28,7 +28,7 @@ open camelCaseFieldNameInterceptor
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:38](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L38)
+[packages/nestjs-slonik/src/slonik.interface.ts:38](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L38)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L11)
+[packages/nestjs-slonik/src/slonik.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L11)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L10)
+[packages/nestjs-slonik/src/slonik.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L10)
 
 ___
 
@@ -68,7 +68,7 @@ Connection pool name
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:18](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L18)
+[packages/nestjs-slonik/src/slonik.interface.ts:18](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L18)
 
 ___
 
@@ -81,7 +81,7 @@ Default: 10
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L28)
+[packages/nestjs-slonik/src/slonik.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L28)
 
 ___
 
@@ -94,7 +94,7 @@ Default: 3000
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:33](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L33)
+[packages/nestjs-slonik/src/slonik.interface.ts:33](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L33)
 
 ___
 
@@ -106,4 +106,4 @@ If `true`, will show verbose error messages on each connection retry.
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L23)
+[packages/nestjs-slonik/src/slonik.interface.ts:23](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L23)

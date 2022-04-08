@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L11)
+[packages/nestjs-slonik/src/slonik.interface.ts:11](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L11)
 
 ___
 
@@ -31,4 +31,4 @@ ___
 
 #### Defined in
 
-[packages/nestjs-slonik/src/slonik.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/01ea9f2e/packages/nestjs-slonik/src/slonik.interface.ts#L10)
+[packages/nestjs-slonik/src/slonik.interface.ts:10](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L10)

@@ -4,5 +4,6 @@
   "plugin": ["typedoc-plugin-markdown"],
   "categorizeByGroup": false,
   "hideBreadcrumbs": true,
-  "namedAnchors": true
+  "namedAnchors": true,
+  "gitRevision": "master"
 }
