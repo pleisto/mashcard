@@ -249,7 +249,7 @@ export const useFormula = ({
       const { completions, expressionType, success } = parseResult
       updateDefaultName(success ? expressionType : 'any')
       const newVariable = await interpret({ parseResult, ctx, skipExecute, variable: variableRef.current })
-      console.log('parseResult', ctx, parseResult, newVariable)
+      // console.log('parseResult', ctx, parseResult, newVariable)
 
       setCompletion({
         completions,
@@ -437,6 +437,7 @@ export const useFormula = ({
   const onSaveFormula = React.useCallback((): void => {
     // devLog({ variable: variableRef.current, name, defaultName })
     if (!variableRef.current) {
+      // console.error('variable is not found')
       onUpdateFormula?.(undefined)
       BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId, rootId }))
       return

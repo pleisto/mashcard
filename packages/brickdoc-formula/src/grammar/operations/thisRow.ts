@@ -22,10 +22,15 @@ export const thisRowOperator: OperatorType = {
     const {
       richType: {
         meta: { spreadsheetId, rowId }
-      }
+      },
+      namespaceId
     } = interpreter.ctx.meta
 
-    const row = interpreter.ctx.formulaContext.findRowById(spreadsheetId, rowId)
+    const row = interpreter.ctx.formulaContext.findRow(spreadsheetId, {
+      namespaceId,
+      type: 'id',
+      value: rowId
+    })
     if (!row) return { type: 'Error', result: `Row ${rowId} not found`, errorKind: 'runtime' }
 
     return { type: 'Row', result: row }
@@ -45,15 +50,21 @@ export const thisRowOperator: OperatorType = {
       namespaceId
     } = cstVisitor.ctx.meta
 
+    // TODO same as row
     const rowDependencyEvent: EventDependency = {
       kind: 'Row',
       event: SpreadsheetReloadViaId,
+      key: `Spreadsheet#Row#${spreadsheetId}#${rowId}`,
       eventId: `${namespaceId},${spreadsheetId}`,
       scope: { rows: [rowId] }
     }
     cstVisitor.eventDependencies.push(rowDependencyEvent)
 
-    const row = cstVisitor.ctx.formulaContext.findRowById(spreadsheetId, rowId)
+    const row = cstVisitor.ctx.formulaContext.findRow(spreadsheetId, {
+      namespaceId,
+      type: 'id',
+      value: rowId
+    })
     if (!row) {
       return {
         image,

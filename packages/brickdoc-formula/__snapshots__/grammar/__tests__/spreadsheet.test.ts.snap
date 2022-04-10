@@ -28,6 +28,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -49,6 +54,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -78,6 +88,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -99,6 +114,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -159,13 +179,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -204,6 +259,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -225,6 +285,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -254,6 +319,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -275,6 +345,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -335,13 +410,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -364,6 +474,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -416,12 +531,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -440,6 +557,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -461,6 +583,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -513,13 +640,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -542,6 +685,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -563,6 +711,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "third",
+      },
       "id": "2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
       "kind": "Column",
       "name": "third",
@@ -615,13 +768,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -660,6 +829,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -681,6 +855,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -733,13 +912,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -778,6 +973,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -799,6 +999,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -859,13 +1064,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -888,6 +1109,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -909,6 +1135,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -961,13 +1192,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -990,6 +1237,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1011,6 +1263,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -1048,6 +1305,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1069,6 +1331,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -1105,12 +1372,92 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6#1",
+    "kind": "Cell",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+      "rows": Array [
+        "1",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6#2",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -1148,6 +1495,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1169,6 +1521,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -1221,13 +1578,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -1266,6 +1639,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1287,6 +1665,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -1316,6 +1699,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1337,6 +1725,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -1397,13 +1790,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -1442,6 +1870,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1463,6 +1896,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -1492,6 +1930,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1513,6 +1956,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -1565,13 +2013,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -1610,6 +2093,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1631,6 +2119,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -1660,6 +2153,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -1681,6 +2179,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -1709,13 +2212,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -2275,6 +2813,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2304,6 +2847,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2325,6 +2873,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -2353,13 +2906,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -2422,6 +2991,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2451,6 +3025,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2472,6 +3051,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -2524,13 +3108,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -2593,6 +3193,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2622,6 +3227,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2643,6 +3253,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -2671,13 +3286,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -2740,6 +3371,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2769,6 +3405,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2790,6 +3431,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -2842,13 +3488,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -2911,6 +3573,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2940,6 +3607,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -2961,6 +3633,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -2989,13 +3666,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -3058,6 +3751,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3087,6 +3785,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3108,6 +3811,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -3136,13 +3844,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -3205,6 +3929,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3234,6 +3963,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3255,6 +3989,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -3307,13 +4046,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -3376,6 +4131,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3405,6 +4165,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3426,6 +4191,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -3478,13 +4248,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -3547,6 +4333,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3576,6 +4367,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3597,6 +4393,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -3625,13 +4426,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -3694,6 +4511,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3715,6 +4537,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -3744,6 +4571,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3765,6 +4597,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -3793,13 +4630,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -3862,6 +4734,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3883,6 +4760,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -3912,6 +4794,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -3933,6 +4820,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -3985,13 +4877,48 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -4014,6 +4941,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4082,12 +5014,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -4106,6 +5040,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4174,12 +5113,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -4198,6 +5139,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4255,12 +5201,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -4279,6 +5227,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4336,12 +5289,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -4360,6 +5315,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4381,6 +5341,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "1",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "LogicRow",
       "name": "1",
@@ -4425,12 +5390,28 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -4453,6 +5434,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4474,6 +5460,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "1",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "LogicRow",
       "name": "1",
@@ -4518,12 +5509,28 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -4534,7 +5541,7 @@ Array [
 ]
 `;
 
-exports[`Spreadsheet Functions [cell 1.1 A] =#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.1.A 1`] = `
+exports[`Spreadsheet Functions [cell 1.1 A * 3 + 1] =#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.1.A * 3 + 1 1`] = `
 Array [
   Object {
     "attrs": undefined,
@@ -4546,6 +5553,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4567,6 +5579,218 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "1",
+      },
+      "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "LogicRow",
+      "name": "1",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "Row",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "type": "Row",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionName",
+    "display": "A",
+    "errors": Array [],
+    "hide": false,
+    "type": "string",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Multi",
+    "display": "*",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "3",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Plus",
+    "display": "+",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions [cell 1.1 A * 3 + 1] =#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.1.A * 3 + 1 2`] = `
+Array [
+  Object {
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "SpreadsheetName",
+    "scope": Object {},
+  },
+  Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "1",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "1",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#A#1",
+    "kind": "Cell",
+    "scope": Object {
+      "columns": Array [
+        "A",
+      ],
+      "rows": Array [
+        "1",
+      ],
+    },
+  },
+]
+`;
+
+exports[`Spreadsheet Functions [cell 1.1 A] =#57622108-1337-4edd-833a-2557835bcfe0.MySpreadsheet.1.A 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
+      "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "name": "MySpreadsheet",
+      "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+    },
+    "code": "Spreadsheet",
+    "display": "MySpreadsheet",
+    "errors": Array [],
+    "hide": false,
+    "type": "Spreadsheet",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Dot",
+    "display": ".",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "1",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "LogicRow",
       "name": "1",
@@ -4603,19 +5827,64 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "1",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "1",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#A#1",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
         "A",
       ],
       "rows": Array [
-        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+        "1",
       ],
     },
   },
@@ -4634,6 +5903,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4655,6 +5929,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "1",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "LogicRow",
       "name": "1",
@@ -4691,19 +5970,64 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "1",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "1",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#first#1",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
         "first",
       ],
       "rows": Array [
-        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+        "1",
       ],
     },
   },
@@ -4722,6 +6046,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4790,12 +6119,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -4814,6 +6145,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4882,12 +6218,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -4906,6 +6244,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -4927,6 +6270,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -4971,13 +6319,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -5000,6 +6364,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5021,6 +6390,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -5062,12 +6436,59 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6#foobar",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -5093,6 +6514,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5114,6 +6540,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -5155,12 +6586,59 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6#100",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -5186,6 +6664,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5254,12 +6737,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -5278,6 +6763,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5335,12 +6825,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -5359,6 +6851,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5380,6 +6877,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "A",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "LogicColumn",
       "name": "A",
@@ -5416,16 +6918,63 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#A",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "A",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#A",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "A",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#A#1",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
-        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        "A",
       ],
       "rows": Array [
         "1",
@@ -5447,6 +6996,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5468,6 +7022,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -5504,12 +7063,59 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6#1",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -5535,6 +7141,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5579,12 +7190,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -5603,6 +7216,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5624,6 +7242,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "A",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "LogicColumn",
       "name": "A",
@@ -5644,13 +7267,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#A",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -5673,6 +7312,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5714,12 +7358,28 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#Z",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -5742,6 +7402,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5763,6 +7428,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "first",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "Column",
       "name": "first",
@@ -5783,13 +7453,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -5844,6 +7530,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5865,6 +7556,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "third",
+      },
       "id": "2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
       "kind": "Column",
       "name": "third",
@@ -5885,13 +7581,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#2723b7d9-22ce-4d93-b2ef-7cce1b122d64",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -5946,6 +7658,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -5967,6 +7684,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -5987,13 +7709,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -6032,6 +7770,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6053,6 +7796,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "second",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "Column",
       "name": "second",
@@ -6073,13 +7821,29 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
     "kind": "Column",
     "scope": Object {
       "columns": Array [
@@ -6134,6 +7898,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6154,12 +7923,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -6210,6 +7981,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6230,12 +8006,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -6254,6 +8032,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6298,12 +8081,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -6322,6 +8107,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6343,6 +8133,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "1",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "LogicRow",
       "name": "1",
@@ -6363,12 +8158,28 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#1",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -6391,6 +8202,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6432,12 +8248,28 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#100",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -6516,6 +8348,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6568,12 +8405,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -6669,6 +8508,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6721,12 +8565,14 @@ Array [
     "definitionHandler": [Function],
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "SpreadsheetName",
     "scope": Object {},
   },
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -6804,6 +8650,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6823,6 +8674,7 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
     "kind": "Spreadsheet",
     "scope": Object {},
   },
@@ -6841,6 +8693,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6862,6 +8719,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "A",
+      },
       "id": "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
       "kind": "LogicColumn",
       "name": "A",
@@ -6902,10 +8764,56 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#A",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "A",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#A",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "A",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#A#1",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
-        "62d9a9ee-88a1-46c7-a929-4a0d9dc0a4d6",
+        "A",
       ],
       "rows": Array [
         "1",
@@ -6927,6 +8835,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+      },
       "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
       "kind": "Spreadsheet",
       "name": "MySpreadsheet",
@@ -6948,6 +8861,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "name",
+        "value": "B",
+      },
       "id": "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
       "kind": "LogicColumn",
       "name": "B",
@@ -6983,10 +8901,56 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+    "kind": "Spreadsheet",
+    "scope": Object {},
+  },
+  Object {
+    "cleanup": Object {
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+      "kind": "Spreadsheet",
+      "scope": Object {},
+    },
+    "definitionHandler": [Function],
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#B",
+    "kind": "Column",
+    "scope": Object {
+      "columns": Array [
+        "B",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "definitionHandler": [Function],
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Column#28e28190-63bd-4f70-aeca-26e72574c01a#B",
+      "kind": "Column",
+      "scope": Object {
+        "columns": Array [
+          "B",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Column#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#B#1",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
-        "4e6f9adb-6f33-454e-9f9e-635dc98e3f28",
+        "B",
       ],
       "rows": Array [
         "1",
@@ -7008,6 +8972,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "Row",
       "name": "1",
@@ -7051,6 +9020,110 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+]
+`;
+
+exports[`Spreadsheet Functions Spreadsheet [thisRow [second] + 1] =ThisRow["second"] + 1 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
+      "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "name": "1",
+      "namespaceId": "28e28190-63bd-4f70-aeca-26e72574c01a",
+    },
+    "code": "ThisRow",
+    "display": "ThisRow",
+    "errors": Array [],
+    "hide": false,
+    "type": "Row",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LBracket",
+    "display": "[",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "StringLiteral",
+    "display": "\\"second\\"",
+    "errors": Array [],
+    "hide": false,
+    "type": "string",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RBracket",
+    "display": "]",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Plus",
+    "display": "+",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
+exports[`Spreadsheet Functions Spreadsheet [thisRow [second] + 1] =ThisRow["second"] + 1 2`] = `
+Array [
+  Object {
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -7073,6 +9146,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "Row",
       "name": "1",
@@ -7116,6 +9194,7 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -7138,6 +9217,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "Row",
       "name": "1",
@@ -7178,6 +9262,36 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#A#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -7203,6 +9317,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "Row",
       "name": "1",
@@ -7238,6 +9357,36 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#B#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -7263,6 +9412,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "Row",
       "name": "1",
@@ -7298,6 +9452,36 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+    "kind": "Row",
+    "scope": Object {
+      "rows": Array [
+        "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      ],
+    },
+  },
+  Object {
+    "cleanup": Object {
+      "cleanup": Object {
+        "event": [Function],
+        "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+        "key": "Spreadsheet#28e28190-63bd-4f70-aeca-26e72574c01a",
+        "kind": "Spreadsheet",
+        "scope": Object {},
+      },
+      "event": [Function],
+      "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+      "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      "kind": "Row",
+      "scope": Object {
+        "rows": Array [
+          "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+        ],
+      },
+    },
+    "event": [Function],
+    "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Row#Cell#28e28190-63bd-4f70-aeca-26e72574c01a#second#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
     "kind": "Cell",
     "scope": Object {
       "columns": Array [
@@ -7323,6 +9507,11 @@ Array [
   },
   Object {
     "attrs": Object {
+      "findKey": Object {
+        "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+        "type": "id",
+        "value": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
+      },
       "id": "ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
       "kind": "Row",
       "name": "1",
@@ -7342,6 +9531,7 @@ Array [
   Object {
     "event": [Function],
     "eventId": "57622108-1337-4edd-833a-2557835bcfe0,28e28190-63bd-4f70-aeca-26e72574c01a",
+    "key": "Spreadsheet#Row#28e28190-63bd-4f70-aeca-26e72574c01a#ec4fdfe8-4a12-4a76-aeae-2dea0229e734",
     "kind": "Row",
     "scope": Object {
       "rows": Array [
@@ -7481,6 +9671,11 @@ Object {
   "codeFragments": Array [
     Object {
       "attrs": Object {
+        "findKey": Object {
+          "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+          "type": "id",
+          "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+        },
         "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
         "kind": "Spreadsheet",
         "name": "MySpreadsheet",
@@ -12513,6 +14708,11 @@ Object {
   "codeFragments": Array [
     Object {
       "attrs": Object {
+        "findKey": Object {
+          "namespaceId": "57622108-1337-4edd-833a-2557835bcfe0",
+          "type": "id",
+          "value": "28e28190-63bd-4f70-aeca-26e72574c01a",
+        },
         "id": "28e28190-63bd-4f70-aeca-26e72574c01a",
         "kind": "Spreadsheet",
         "name": "MySpreadsheet",

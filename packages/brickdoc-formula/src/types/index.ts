@@ -473,6 +473,13 @@ export interface FormulaNameToken {
 export interface DirtyFormulaInfo {
   updatedAt: Date
 }
+
+export interface FindKey {
+  namespaceId: NamespaceId
+  type: 'id' | 'name'
+  value: string
+}
+
 export interface ContextInterface {
   features: string[]
   dirtyFormulas: Record<VariableKey, DirtyFormulaInfo>
@@ -485,17 +492,15 @@ export interface ContextInterface {
   getDefaultVariableName: (namespaceId: NamespaceId, type: FormulaType) => DefaultVariableName
   completions: (namespaceId: NamespaceId, variableId: VariableId | undefined) => Completion[]
   findViewRender: (viewType: ViewType) => ViewRender | undefined
-  findSpreadsheetById: (spreadsheetId: SpreadsheetId) => SpreadsheetType | undefined
   findBlockById: (blockId: NamespaceId) => BlockType | undefined
   setBlock: (blockId: NamespaceId, name: string) => void
   removeBlock: (blockId: NamespaceId) => void
   setName: (nameDependency: NameDependencyWithKind) => void
   removeName: (id: NamespaceId) => void
   findNames: (namespaceId: NamespaceId, name: string) => NameDependencyWithKind[]
-  findSpreadsheetByName: (namespaceId: NamespaceId, name: string) => SpreadsheetType | undefined
-  findColumnById: (namespaceId: NamespaceId, variableId: VariableId) => ColumnType | undefined
-  findRowById: (namespaceId: NamespaceId, rowId: RowId) => RowType | undefined
-  findColumnByName: (namespaceId: NamespaceId, name: ColumnName) => ColumnType | undefined
+  findSpreadsheet: (key: FindKey) => SpreadsheetType | undefined
+  findColumn: (spreadsheetId: SpreadsheetId, key: FindKey) => ColumnType | undefined
+  findRow: (spreadsheetId: SpreadsheetId, key: FindKey) => RowType | undefined
   setSpreadsheet: (spreadsheet: SpreadsheetType) => void
   removeSpreadsheet: (spreadsheetId: SpreadsheetId) => void
   listVariables: (namespaceId: NamespaceId) => VariableInterface[]
@@ -614,6 +619,7 @@ export interface CodeFragmentAttrs {
   readonly namespaceId: NamespaceId
   readonly id: uuid
   readonly name: string
+  readonly findKey: FindKey
 }
 
 export type CodeFragment = SpecialCodeFragment | OtherCodeFragment
@@ -656,10 +662,12 @@ export interface NameDependencyWithKind extends NameDependency {
 interface BaseVariableValue {
   readonly success: boolean
   readonly result: AnyTypeResult
+  readonly runtimeEventDependencies?: EventDependency[]
 }
 
 interface SuccessVariableValue extends BaseVariableValue {
   readonly success: true
+  readonly runtimeEventDependencies: EventDependency[]
   readonly result: AnyTypeResult
 }
 
@@ -705,11 +713,13 @@ export interface EventScope {
 }
 
 export interface EventDependency {
-  kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Row' | 'Cell'
+  readonly kind: 'SpreadsheetName' | 'ColumnName' | 'Spreadsheet' | 'Column' | 'Row' | 'Cell'
   readonly event: EventType
   readonly eventId: string
-  scope: EventScope
-  definitionHandler?: (deps: EventDependency, variable: VariableInterface, payload: any) => string | undefined
+  readonly scope: EventScope
+  readonly key: string
+  readonly definitionHandler?: (deps: EventDependency, variable: VariableInterface, payload: any) => string | undefined
+  readonly cleanup?: EventDependency
 }
 
 export type VariableTask = AsyncVariableTask | SyncVariableTask

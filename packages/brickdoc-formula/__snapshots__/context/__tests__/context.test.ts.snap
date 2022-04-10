@@ -11,6 +11,7 @@ Object {
       "result": 366,
       "type": "number",
     },
+    "runtimeEventDependencies": Array [],
     "success": true,
   },
 }

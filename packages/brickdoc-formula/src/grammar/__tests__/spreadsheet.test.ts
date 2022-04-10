@@ -73,6 +73,7 @@ const columns: ColumnInitializer[] = [
 
 const cells: Cell[] = [
   {
+    namespaceId,
     rowId: firstRowId,
     spreadsheetId,
     rowIndex: 0,
@@ -83,6 +84,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: firstRowId,
     spreadsheetId,
     rowIndex: 0,
@@ -93,6 +95,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: firstRowId,
     spreadsheetId,
     rowIndex: 0,
@@ -103,6 +106,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: secondRowId,
     spreadsheetId,
     rowIndex: 1,
@@ -113,6 +117,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: secondRowId,
     spreadsheetId,
     rowIndex: 1,
@@ -123,6 +128,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: secondRowId,
     spreadsheetId,
     rowIndex: 1,
@@ -133,6 +139,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: thirdRowId,
     spreadsheetId,
     rowIndex: 2,
@@ -143,6 +150,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: thirdRowId,
     spreadsheetId,
     rowIndex: 2,
@@ -153,6 +161,7 @@ const cells: Cell[] = [
     cellId: ''
   },
   {
+    namespaceId,
     rowId: thirdRowId,
     spreadsheetId,
     rowIndex: 2,
@@ -219,6 +228,11 @@ const spreadsheetTestCases: TestCase[] = [
     label: 'thisRow [second]',
     input: `=ThisRow["second"]`,
     value: [CELL_FLAG, 1]
+  },
+  {
+    label: 'thisRow [second] + 1',
+    input: `=ThisRow["second"] + 1`,
+    value: 3
   },
   {
     label: 'thisRow A',
@@ -292,6 +306,11 @@ const testCases: TestCase[] = [
     label: 'cell 1.1 A',
     input: `=${spreadsheetToken}.1.A`,
     value: [CELL_FLAG, 0]
+  },
+  {
+    label: 'cell 1.1 A * 3 + 1',
+    input: `=${spreadsheetToken}.1.A * 3 + 1`,
+    value: 4
   },
   {
     label: 'cell 1.[1] A',

@@ -37,35 +37,40 @@ const block2attrs = (block: BlockType, pageId: NamespaceId): CodeFragmentAttrs =
   kind: 'Block',
   namespaceId: block.id,
   id: block.id,
-  name: block.name(pageId)
+  name: block.name(pageId),
+  findKey: { namespaceId: block.id, type: 'id', value: block.id }
 })
 
 export const variable2attrs = (variable: VariableInterface): CodeFragmentAttrs => ({
   kind: 'Variable',
   namespaceId: variable.t.namespaceId,
   id: variable.t.variableId,
-  name: variable.t.name
+  name: variable.t.name,
+  findKey: { namespaceId: variable.t.namespaceId, type: 'id', value: variable.t.variableId }
 })
 
 export const spreadsheet2attrs = (spreadsheet: SpreadsheetType): CodeFragmentAttrs => ({
   kind: 'Spreadsheet',
   namespaceId: spreadsheet.namespaceId,
   id: spreadsheet.spreadsheetId,
-  name: spreadsheet.name()
+  name: spreadsheet.name(),
+  findKey: { namespaceId: spreadsheet.namespaceId, type: 'id', value: spreadsheet.spreadsheetId }
 })
 
 export const column2attrs = (column: ColumnType): CodeFragmentAttrs => ({
   kind: column.logic ? 'LogicColumn' : 'Column',
   namespaceId: column.spreadsheet.spreadsheetId,
   id: column.columnId,
-  name: column.display()
+  name: column.display(),
+  findKey: column.findKey
 })
 
 export const row2attrs = (row: RowType): CodeFragmentAttrs => ({
   kind: row.logic ? 'LogicRow' : 'Row',
   namespaceId: row.spreadsheetId,
   id: row.rowId,
-  name: row.display()
+  name: row.display(),
+  findKey: row.findKey
 })
 
 const renderText = ({ code, display }: CodeFragment, text: string, value: string): string => {
@@ -308,12 +313,6 @@ export const attrs2completion = (
     if (!variable) return undefined
     return variable2completion(variable, pageId)
   }
-
-  // if (kind === 'Spreadsheet') {
-  //   const spreadsheet = formulaContext.findSpreadsheetById(id)
-  //   if (!spreadsheet) return undefined
-  //   return spreadsheet2completion(spreadsheet, pageId)
-  // }
 
   return undefined
 }

@@ -27,7 +27,6 @@ import {
   AnyTypeResult,
   FunctionContext,
   BlockCompletion,
-  ColumnName,
   ViewType,
   ViewRender,
   View,
@@ -36,7 +35,7 @@ import {
   DeleteFormula,
   SpreadsheetId,
   NameDependencyWithKind,
-  RowId
+  FindKey
 } from '../types'
 import {
   function2completion,
@@ -299,10 +298,6 @@ export class FormulaContext implements ContextInterface {
     return this.viewRenders[viewType]
   }
 
-  public findSpreadsheetById(spreadsheetId: SpreadsheetId): SpreadsheetType | undefined {
-    return this.spreadsheets[spreadsheetId]
-  }
-
   public findBlockById(blockId: NamespaceId): BlockType | undefined {
     return this.blocks[blockId]
   }
@@ -345,26 +340,24 @@ export class FormulaContext implements ContextInterface {
     BrickdocEventBus.dispatch(FormulaContextNameRemove(oldName))
   }
 
-  public findSpreadsheetByName(namespaceId: NamespaceId, name: string): SpreadsheetType | undefined {
-    return Object.values(this.spreadsheets).find(s => s!.namespaceId === namespaceId && s!.name() === name)
+  public findSpreadsheet({ namespaceId, type, value }: FindKey): SpreadsheetType | undefined {
+    if (type === 'id') {
+      return this.spreadsheets[value]
+    } else {
+      return Object.values(this.spreadsheets).find(s => s!.namespaceId === namespaceId && s!.name() === value)
+    }
   }
 
-  public findColumnById(namespaceId: NamespaceId, variableId: VariableId): ColumnType | undefined {
-    const spreadsheet = this.findSpreadsheetById(namespaceId)
+  public findColumn(spreadsheetId: SpreadsheetId, key: FindKey): ColumnType | undefined {
+    const spreadsheet = this.findSpreadsheet({ namespaceId: key.namespaceId, type: 'id', value: spreadsheetId })
     if (!spreadsheet) return undefined
-    return spreadsheet.getColumnById(variableId)
+    return spreadsheet.findColumn(key)
   }
 
-  public findRowById(namespaceId: NamespaceId, rowId: RowId): RowType | undefined {
-    const spreadsheet = this.findSpreadsheetById(namespaceId)
+  public findRow(spreadsheetId: SpreadsheetId, key: FindKey): RowType | undefined {
+    const spreadsheet = this.findSpreadsheet({ namespaceId: key.namespaceId, type: 'id', value: spreadsheetId })
     if (!spreadsheet) return undefined
-    return spreadsheet.getRowById(rowId)
-  }
-
-  public findColumnByName(namespaceId: NamespaceId, name: ColumnName): ColumnType | undefined {
-    const spreadsheet = this.findSpreadsheetById(namespaceId)
-    if (!spreadsheet) return undefined
-    return spreadsheet.getColumnByName(name)
+    return spreadsheet.findRow(key)
   }
 
   public setSpreadsheet(spreadsheet: SpreadsheetType): void {

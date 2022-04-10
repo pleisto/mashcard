@@ -103,6 +103,7 @@ export function useFormulaSpreadsheet({
         const cellBlock = getCellBlock(rowId, columnId)
 
         return {
+          namespaceId: rootId,
           spreadsheetId,
           columnId,
           rowIndex,

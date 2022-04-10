@@ -73,17 +73,18 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
   const onUpdateFormula = React.useCallback(
     (variable: VariableInterface | undefined): void => {
-      if (variable) {
-        // TODO check no persist
-        const value = displayValue(fetchResult(variable.t), rootId, true)
-        devLog('Spreadsheet cell formula updated', { cellId, value })
-        const newBlock = {
-          ...block,
-          text: value
-        }
-        setCurrentBlock(newBlock)
-        saveBlock(newBlock)
+      if (!variable) return
+      // TODO check no persist
+      const value = displayValue(fetchResult(variable.t), rootId, true)
+      const oldValue = block.text
+      if (value === oldValue) return
+      devLog('Spreadsheet cell formula updated', { cellId, value })
+      const newBlock = {
+        ...block,
+        text: value
       }
+      setCurrentBlock(newBlock)
+      saveBlock(newBlock)
 
       BrickdocEventBus.dispatch(
         SpreadsheetReloadViaId({

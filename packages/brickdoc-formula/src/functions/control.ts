@@ -83,6 +83,7 @@ export const Spreadsheet = (
 
       columns.forEach(({ name, columnId }, columnIndex) => {
         const cell: Cell = {
+          namespaceId: ctx.meta.namespaceId,
           spreadsheetId,
           columnId,
           rowId,

@@ -10,7 +10,8 @@ import {
   Argument,
   FunctionContext,
   FormulaType,
-  ExpressionType
+  ExpressionType,
+  EventDependency
 } from '../types'
 import { extractSubType, parseString, runtimeCheckType, shouldReturnEarly } from './util'
 import { buildFunctionKey } from '../functions'
@@ -54,6 +55,7 @@ const InterpretCstVisitor = ParserInstance.getBaseCstVisitorConstructor<Interpre
 export class FormulaInterpreter extends InterpretCstVisitor {
   ctx: FunctionContext
   lazy: boolean = false
+  runtimeEventDependencies: EventDependency[] = []
 
   constructor({ ctx }: { ctx: FunctionContext }) {
     super()
@@ -154,6 +156,17 @@ export class FormulaInterpreter extends InterpretCstVisitor {
     })
   }
 
+  async accessExpression(ctx: any, args: InterpretArgument): Promise<AnyTypeResult> {
+    return await interpretByOperator({
+      interpreter: this,
+      operators: ctx.LBracket,
+      args,
+      operator: accessOperator,
+      rhs: ctx.rhs,
+      lhs: ctx.lhs
+    })
+  }
+
   async notExpression(ctx: any, args: InterpretArgument): Promise<AnyTypeResult> {
     return await interpretByOperator({
       interpreter: this,
@@ -182,17 +195,6 @@ export class FormulaInterpreter extends InterpretCstVisitor {
       operators: ctx.Dot,
       args,
       operator: chainOperator,
-      rhs: ctx.rhs,
-      lhs: ctx.lhs
-    })
-  }
-
-  async accessExpression(ctx: any, args: InterpretArgument): Promise<AnyTypeResult> {
-    return await interpretByOperator({
-      interpreter: this,
-      operators: ctx.LBracket,
-      args,
-      operator: accessOperator,
       rhs: ctx.rhs,
       lhs: ctx.lhs
     })

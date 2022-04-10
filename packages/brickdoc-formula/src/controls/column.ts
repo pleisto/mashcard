@@ -1,4 +1,4 @@
-import { ColumnType, ColumnInitializer, SpreadsheetType, Cell } from './types'
+import { ColumnType, ColumnInitializer, SpreadsheetType, Cell, getEventDependencyInput } from './types'
 import {
   AnyTypeResult,
   CellResult,
@@ -7,19 +7,22 @@ import {
   ColumnName,
   ErrorMessage,
   ErrorResult,
+  EventDependency,
+  FindKey,
   FormulaType,
   NamespaceId,
   VariableMetadata
 } from '../types'
-import { CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
+import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import { SpreadsheetReloadViaId } from '@brickdoc/schema'
-import { columnRowKey2eventDependency } from './event'
 import { CellClass } from '.'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId
   name: ColumnName
+  namespaceId: NamespaceId
   spreadsheetId: NamespaceId
+  findKey: FindKey
   index: number
   sort: number
   title: string | undefined
@@ -29,17 +32,20 @@ export class ColumnClass implements ColumnType {
 
   constructor(
     spreadsheet: SpreadsheetType,
-    { columnId, spreadsheetId: namespaceId, name, index, sort, displayIndex, title }: ColumnInitializer,
-    logic: boolean
+    { columnId, spreadsheetId, name, index, sort, displayIndex, title }: ColumnInitializer,
+    logic: boolean,
+    findKey: FindKey
   ) {
     this.sort = sort
     this.title = title
     this.displayIndex = displayIndex
     this.columnId = columnId
-    this.spreadsheetId = namespaceId
+    this.spreadsheetId = spreadsheetId
+    this.namespaceId = spreadsheet.namespaceId
     this.name = name
     this.index = index
     this.logic = logic
+    this.findKey = findKey
     this.spreadsheet = spreadsheet
   }
 
@@ -90,7 +96,41 @@ export class ColumnClass implements ColumnType {
       }
     }
 
-    return { type: 'Cell', result: new CellClass(this.spreadsheet, cell, { columnKey: this.key(), rowKey: name }) }
+    return {
+      type: 'Cell',
+      result: new CellClass(this.spreadsheet, cell, {
+        columnKey: this.key(),
+        rowKey: name,
+        cleanupEventDependency: this.eventDependency({})
+      })
+    }
+  }
+
+  eventDependency({ rowKey }: getEventDependencyInput): EventDependency {
+    if (rowKey) {
+      return {
+        kind: 'Cell',
+        event: SpreadsheetReloadViaId,
+        key: `Column#Cell#${this.spreadsheetId}#${this.key()}#${rowKey}`,
+        eventId: `${this.spreadsheet.namespaceId},${this.spreadsheetId}`,
+        scope: { rows: [rowKey], columns: [this.key()] },
+        cleanup: this.eventDependency({})
+      }
+    }
+    return {
+      ...this.spreadsheet.eventDependency({ columnKey: this.key() }),
+      definitionHandler: (deps, variable, payload) => {
+        if (this.logic) return
+        const newColumn = this.spreadsheet.listColumns().find(c => c.columnId === this.columnId)
+        if (!newColumn) return
+        const newCodeFragments = variable.t.codeFragments.map(c => {
+          if (c.code !== 'Column') return c
+          if (c.attrs.id !== this.columnId) return c
+          return { ...c, attrs: { ...c.attrs, name: newColumn.name } }
+        })
+        return codeFragments2definition(newCodeFragments, variable.t.namespaceId)
+      }
+    }
   }
 
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
@@ -102,19 +142,7 @@ export class ColumnClass implements ColumnType {
     name: string,
     codeFragments: CodeFragment[]
   ): { errors: ErrorMessage[]; firstArgumentType: FormulaType | undefined; codeFragments: CodeFragment[] } {
-    visitor.eventDependencies = visitor.eventDependencies
-      .reverse()
-      .filter(
-        d =>
-          !(
-            d.kind === 'Column' &&
-            d.event === SpreadsheetReloadViaId &&
-            d.eventId === `${this.spreadsheet.namespaceId},${this.spreadsheetId}`
-          )
-      )
-      .reverse()
-
-    visitor.eventDependencies.push(columnRowKey2eventDependency(this, name))
+    visitor.eventDependencies.push(this.eventDependency({ rowKey: name }))
 
     const result = this.findCellByNumber(visitor.ctx.meta, name)
     const errors: ErrorMessage[] = []

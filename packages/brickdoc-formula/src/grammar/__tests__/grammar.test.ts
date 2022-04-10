@@ -253,6 +253,11 @@ const testCases: TestCase[] = [
     value: 'foo'
   },
   {
+    input: '=[2, "foo", true][1]+1 * 12',
+    label: 'access and add',
+    value: 14
+  },
+  {
     input: '=[2, "foo", true].4',
     label: 'Array access 2',
     value: 'Index 4 out of bounds'
@@ -519,7 +524,7 @@ const testCases: TestCase[] = [
   {
     input: '= 2 ^ true',
     parseErrorType: 'syntax',
-    errorMessage: 'Expected number but got boolean'
+    errorMessage: 'Expected number,Cell but got boolean'
   },
   {
     input: '= 2^0',
@@ -567,7 +572,7 @@ const testCases: TestCase[] = [
     input: '=!1+1',
     label: 'not operator vs addition',
     parseErrorType: 'syntax',
-    errorMessage: 'Expected number but got boolean'
+    errorMessage: 'Expected number,Cell but got boolean'
   },
   {
     input: '=1 and 2',
@@ -918,7 +923,7 @@ const testCases: TestCase[] = [
   {
     input: '=null + 1',
     parseErrorType: 'syntax',
-    errorMessage: 'Expected number but got null'
+    errorMessage: 'Expected number,Cell but got null'
   },
   {
     input: '=ABS ( "a" )',
@@ -944,7 +949,7 @@ const testCases: TestCase[] = [
     input: '= 2 * (2 = 4)',
     label: 'type check',
     parseErrorType: 'syntax',
-    errorMessage: 'Expected number but got boolean'
+    errorMessage: 'Expected number,Cell but got boolean'
   },
   {
     input: '=1; 2; (1+3)',

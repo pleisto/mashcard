@@ -28,7 +28,7 @@ import { parse, interpret } from '../grammar/core'
 import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'
 import { v4 as uuid } from 'uuid'
-import { maybeEncodeString, shouldReceiveEvent } from '../grammar'
+import { cleanupEventDependency, maybeEncodeString, shouldReceiveEvent } from '../grammar'
 
 export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (task.async) {
@@ -94,6 +94,7 @@ export class VariableClass implements VariableInterface {
 
   tickTimeout: number = 1000
   eventListeners: EventSubscribed[] = []
+  eventDependencyListeners: EventSubscribed[] = []
   currentUUID: string = uuid()
   builtinEventListeners: EventSubscribed[] = []
 
@@ -204,7 +205,6 @@ export class VariableClass implements VariableInterface {
   private completeTask({ task }: { task: VariableTask }): void {
     const tMatched = task.uuid === this.t.task.uuid
     const savedTMatched = task.uuid === this.savedT?.task.uuid
-
     if (!tMatched && !savedTMatched) return
 
     if (tMatched) {
@@ -214,6 +214,8 @@ export class VariableClass implements VariableInterface {
     if (savedTMatched) {
       this.savedT!.task = task
     }
+
+    this.subscribeDependencies(savedTMatched ? this.savedT! : this.t)
 
     this.onUpdate({ savedTNotMatched: !savedTMatched, tNotMatched: !tMatched })
   }
@@ -361,18 +363,25 @@ export class VariableClass implements VariableInterface {
     void this.maybeReparseAndPersist('updateDefinition', uuid(), definition)
   }
 
-  private subscripeEvents(): void {
-    const t = this.t
-    const innerRefreshSubscription = BrickdocEventBus.subscribe(
-      FormulaInnerRefresh,
-      e => {
-        this.onUpdate({})
-      },
-      { eventId: `${t.namespaceId},${t.variableId}`, subscribeId: `InnerRefresh#${t.variableId}` }
-    )
-    this.eventListeners.push(innerRefreshSubscription)
+  private subscribeDependencies(t: VariableData): void {
+    this.eventDependencyListeners.forEach(listener => {
+      listener.unsubscribe()
+    })
+    this.eventDependencyListeners = []
+    const finalEventDependencies = t.task.async
+      ? t.eventDependencies
+      : [
+          ...new Map(
+            [
+              ...cleanupEventDependency('parse', t.eventDependencies),
+              ...cleanupEventDependency('runtime', t.task.variableValue.runtimeEventDependencies ?? [])
+            ].map(item => [`${item.kind},${item.event.eventType},${item.eventId},${item.key}`, item])
+          ).values()
+        ]
 
-    t.eventDependencies.forEach(dependency => {
+    // console.log('finalEventDependencies', this.t.name, finalEventDependencies)
+
+    finalEventDependencies.forEach(dependency => {
       const eventSubscription = BrickdocEventBus.subscribe(
         dependency.event,
         e => {
@@ -390,8 +399,22 @@ export class VariableClass implements VariableInterface {
           subscribeId: `EventDependency#${t.namespaceId},${t.variableId}#${dependency.kind}#${dependency.eventId}`
         }
       )
-      this.eventListeners.push(eventSubscription)
+      this.eventDependencyListeners.push(eventSubscription)
     })
+  }
+
+  private subscripeEvents(): void {
+    const t = this.t
+    const innerRefreshSubscription = BrickdocEventBus.subscribe(
+      FormulaInnerRefresh,
+      e => {
+        this.onUpdate({})
+      },
+      { eventId: `${t.namespaceId},${t.variableId}`, subscribeId: `InnerRefresh#${t.variableId}` }
+    )
+    this.eventListeners.push(innerRefreshSubscription)
+
+    this.subscribeDependencies(t)
 
     t.blockDependencies.forEach(blockId => {
       const blockNameSubscription = BrickdocEventBus.subscribe(
@@ -453,5 +476,10 @@ export class VariableClass implements VariableInterface {
       listener.unsubscribe()
     })
     this.eventListeners = []
+
+    this.eventDependencyListeners.forEach(listener => {
+      listener.unsubscribe()
+    })
+    this.eventDependencyListeners = []
   }
 }

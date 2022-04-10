@@ -162,7 +162,11 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
         })
       }
     } else {
-      const spreadsheet = ctx.formulaContext.findSpreadsheetById(result.result.blockId)
+      const spreadsheet = ctx.formulaContext.findSpreadsheet({
+        namespaceId: result.result.namespaceId,
+        value: result.result.spreadsheetId,
+        type: 'id'
+      })
       if (spreadsheet) {
         return { type: 'Spreadsheet', result: spreadsheet }
       } else {
@@ -172,12 +176,20 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
   }
 
   if (result.type === 'Range') {
-    const spreadsheet = ctx.formulaContext.findSpreadsheetById(result.result.spreadsheetId)
+    const spreadsheet = ctx.formulaContext.findSpreadsheet({
+      namespaceId: result.result.namespaceId,
+      type: 'id',
+      value: result.result.spreadsheetId
+    })
     return { type: 'Range', result: { ...result.result, spreadsheet } }
   }
 
   if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {
-    const column = ctx.formulaContext.findColumnById(result.result.spreadsheetId, result.result.columnId)
+    const column = ctx.formulaContext.findColumn(result.result.spreadsheetId, {
+      namespaceId: result.result.namespaceId,
+      type: 'id',
+      value: result.result.columnId
+    })
     if (column) {
       return { type: 'Column', result: column }
     } else {
@@ -186,7 +198,11 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
   }
 
   if (result.type === 'Row' && !(result.result instanceof RowClass)) {
-    const row = ctx.formulaContext.findRowById(result.result.spreadsheetId, result.result.rowId)
+    const row = ctx.formulaContext.findRow(result.result.spreadsheetId, {
+      namespaceId: result.result.namespaceId,
+      type: 'id',
+      value: result.result.rowId
+    })
     if (row) {
       return { type: 'Row', result: row }
     } else {

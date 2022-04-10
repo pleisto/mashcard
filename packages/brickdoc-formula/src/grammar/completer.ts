@@ -81,11 +81,22 @@ export const complete = ({
       switch (last2CodeFragment.type) {
         case 'Spreadsheet':
           // eslint-disable-next-line no-case-declarations
-          const spreadsheet = formulaContext.findSpreadsheetById(last2CodeFragment.attrs!.id)
+          const spreadsheet = formulaContext.findSpreadsheet({
+            namespaceId: last2CodeFragment.attrs!.namespaceId,
+            type: 'id',
+            value: last2CodeFragment.attrs!.id
+          })
           if (spreadsheet) {
-            const columnCompletions = spreadsheet
-              .listColumns()
-              .map(column => column2completion(new ColumnClass(spreadsheet, column, false), namespaceId))
+            const columnCompletions = spreadsheet.listColumns().map(column =>
+              column2completion(
+                new ColumnClass(spreadsheet, column, false, {
+                  namespaceId: spreadsheet.namespaceId,
+                  type: 'id',
+                  value: column.columnId
+                }),
+                namespaceId
+              )
+            )
 
             completions.push(...columnCompletions)
           }

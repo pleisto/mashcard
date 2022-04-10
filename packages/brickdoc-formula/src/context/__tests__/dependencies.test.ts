@@ -130,7 +130,7 @@ describe('Dependency', () => {
     await new Promise(resolve => setTimeout(resolve, 50))
 
     const num4 = formulaContext.findVariableById(namespaceId, variableIds[4])!
-    expect((num4.t.task.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
+    expect((num4.t.task.variableValue as VariableValue).result.result).toEqual('Expected number,Cell but got boolean')
 
     const num2 = formulaContext.findVariableById(namespaceId, variableIds[2])!
     expect((num2.t.task.variableValue as VariableValue).result.result).toEqual(true)
@@ -139,7 +139,7 @@ describe('Dependency', () => {
 
     // const num1 = formulaContext.findVariable(namespaceId, variableIds[1])!
     // num3 = num2 + num1 = 3
-    expect((num3.t.task.variableValue as VariableValue).result.result).toEqual('Expected number but got boolean')
+    expect((num3.t.task.variableValue as VariableValue).result.result).toEqual('Expected number,Cell but got boolean')
     jest.clearAllTimers()
   })
 

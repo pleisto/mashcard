@@ -1,21 +1,34 @@
 import { SpreadsheetReloadViaId } from '@brickdoc/schema'
 import { CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
-import { AnyTypeResult, CodeFragment, ErrorMessage, FormulaType, SpreadsheetId, uuid } from '../types'
+import {
+  AnyTypeResult,
+  CodeFragment,
+  ErrorMessage,
+  EventDependency,
+  FindKey,
+  FormulaType,
+  NamespaceId,
+  SpreadsheetId,
+  uuid
+} from '../types'
 import { CellClass } from './cell'
-import { rowColumnKey2eventDependency } from './event'
-import { Cell, Row, RowType, SpreadsheetType } from './types'
+import { Cell, getEventDependencyInput, Row, RowType, SpreadsheetType } from './types'
 
 export class RowClass implements RowType {
   spreadsheetId: SpreadsheetId
+  namespaceId: NamespaceId
   rowId: uuid
   rowIndex: number
+  findKey: FindKey
   spreadsheet: SpreadsheetType
   logic: boolean
 
-  constructor(spreadsheet: SpreadsheetType, { spreadsheetId, rowId, rowIndex }: Row, logic: boolean) {
+  constructor(spreadsheet: SpreadsheetType, { spreadsheetId, rowId, rowIndex }: Row, logic: boolean, findKey: FindKey) {
     this.spreadsheetId = spreadsheetId
+    this.namespaceId = spreadsheet.namespaceId
     this.rowId = rowId
     this.rowIndex = rowIndex
+    this.findKey = findKey
 
     this.spreadsheet = spreadsheet
     this.logic = logic
@@ -41,8 +54,23 @@ export class RowClass implements RowType {
     }
   }
 
+  eventDependency({ columnKey }: getEventDependencyInput): EventDependency {
+    if (columnKey) {
+      return {
+        kind: 'Cell',
+        event: SpreadsheetReloadViaId,
+        eventId: `${this.spreadsheet.namespaceId},${this.spreadsheetId}`,
+        key: `Row#Cell#${this.spreadsheetId}#${columnKey}#${this.key()}`,
+        scope: { rows: [this.key()], columns: [columnKey] },
+        cleanup: this.eventDependency({})
+      }
+    }
+
+    return this.spreadsheet.eventDependency({ rowKey: this.key() })
+  }
+
   async handleInterpret(interpreter: FormulaInterpreter, name: string): Promise<AnyTypeResult> {
-    const column = this.spreadsheet.getColumnByName(name)
+    const column = this.spreadsheet.findColumn({ namespaceId: this.namespaceId, value: name, type: 'name' })
     if (!column) {
       return {
         type: 'Error',
@@ -71,7 +99,14 @@ export class RowClass implements RowType {
       }
     }
 
-    return { type: 'Cell', result: new CellClass(this.spreadsheet, cell, { rowKey: this.key(), columnKey: name }) }
+    return {
+      type: 'Cell',
+      result: new CellClass(this.spreadsheet, cell, {
+        rowKey: this.key(),
+        columnKey: name,
+        cleanupEventDependency: this.eventDependency({})
+      })
+    }
   }
 
   handleCodeFragments(
@@ -79,21 +114,9 @@ export class RowClass implements RowType {
     name: string,
     codeFragments: CodeFragment[]
   ): { errors: ErrorMessage[]; firstArgumentType: FormulaType | undefined; codeFragments: CodeFragment[] } {
-    visitor.eventDependencies = visitor.eventDependencies
-      .reverse()
-      .filter(
-        d =>
-          !(
-            d.kind === 'Row' &&
-            d.event === SpreadsheetReloadViaId &&
-            d.eventId === `${this.spreadsheet.namespaceId},${this.spreadsheetId}`
-          )
-      )
-      .reverse()
+    visitor.eventDependencies.push(this.eventDependency({ columnKey: name }))
 
-    visitor.eventDependencies.push(rowColumnKey2eventDependency(this, name))
-
-    const column = this.spreadsheet.getColumnByName(name)
+    const column = this.spreadsheet.findColumn({ namespaceId: this.namespaceId, value: name, type: 'name' })
 
     if (!column) {
       return {

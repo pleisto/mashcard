@@ -23,7 +23,7 @@ export const chainOperator: OperatorType = {
     }
 
     if (cst.name === 'keyExpression') {
-      return await accessAttribute(interpreter, lhs, rhs!.result as string)
+      return await accessAttribute(interpreter, lhs, String(rhs!.result) as string)
     }
 
     throw new Error(`Unexpected cst type ${cst.name}`)

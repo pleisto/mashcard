@@ -17,7 +17,9 @@ import {
   ErrorMessage,
   FormulaType,
   SpreadsheetId,
-  NameDependencyWithKind
+  NameDependencyWithKind,
+  EventDependency,
+  FindKey
 } from '../types'
 
 export interface ControlType {
@@ -42,6 +44,15 @@ export interface BlockInitializer {
 }
 
 type handleInterpretType = (interpreter: FormulaInterpreter, name: string) => Promise<AnyTypeResult>
+export type getEventDependencyInput = { rowKey?: string; columnKey?: string } & (
+  | {
+      rowKey: string
+    }
+  | { columnKey: string }
+  | {}
+)
+
+type getEventDependency = ({ rowKey, columnKey }: getEventDependencyInput) => EventDependency
 export interface handleCodeFragmentsResult {
   errors: ErrorMessage[]
   firstArgumentType: FormulaType | undefined
@@ -75,11 +86,14 @@ export interface ColumnInitializer {
 
 export interface ColumnType extends ColumnInitializer {
   spreadsheet: SpreadsheetType
+  namespaceId: NamespaceId
+  findKey: FindKey
   logic: boolean
   display: () => string
   key: () => string
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
+  eventDependency: getEventDependency
   cells: () => Cell[]
 }
 
@@ -91,12 +105,15 @@ export interface Row {
 
 export interface RowType extends Row {
   spreadsheet: SpreadsheetType
+  namespaceId: NamespaceId
+  findKey: FindKey
   listCells: () => Cell[]
   logic: boolean
   display: () => string
   key: () => string
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
+  eventDependency: getEventDependency
 }
 
 export interface RangeType {
@@ -110,6 +127,7 @@ export interface RangeType {
 }
 
 export interface Cell {
+  namespaceId: NamespaceId
   spreadsheetId: SpreadsheetId
   cellId: uuid
   columnId: ColumnId
@@ -124,6 +142,7 @@ export interface CellType extends Cell {
   spreadsheet: SpreadsheetType
   columnKey: string
   rowKey: string
+  eventDependency: getEventDependency
 }
 
 export interface SpreadsheetInitializer {
@@ -172,6 +191,7 @@ export interface SpreadsheetType {
   persistence?: SpreadsheetDynamicPersistence
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
+  eventDependency: getEventDependency
   nameDependency: () => NameDependencyWithKind
   columnCount: () => number
   rowCount: () => number
@@ -181,10 +201,8 @@ export interface SpreadsheetType {
   listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
   findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined
   findCellDisplayData: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => VariableDisplayData | undefined
-  getRowById: (rowId: uuid) => RowType | undefined
-  getRowByIndex: (number: number) => RowType | undefined
-  getColumnById: (columnId: ColumnId) => ColumnType | undefined
-  getColumnByName: (name: string) => ColumnType | undefined
+  findRow: (key: FindKey) => RowType | undefined
+  findColumn: (key: FindKey) => ColumnType | undefined
   toArray: () => string[][]
   toRecord: () => Array<Record<string, StringResult>>
   persistAll: () => SpreadsheetAllPersistence

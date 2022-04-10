@@ -22,10 +22,15 @@ export const thisRecordOperator: OperatorType = {
     const {
       richType: {
         meta: { spreadsheetId }
-      }
+      },
+      namespaceId
     } = interpreter.ctx.meta
 
-    const spreadsheet = interpreter.ctx.formulaContext.findSpreadsheetById(spreadsheetId)
+    const spreadsheet = interpreter.ctx.formulaContext.findSpreadsheet({
+      namespaceId,
+      value: spreadsheetId,
+      type: 'id'
+    })
     if (!spreadsheet) return { type: 'Error', result: `Spreadsheet ${spreadsheet} not found`, errorKind: 'runtime' }
 
     return { type: 'Spreadsheet', result: spreadsheet }
@@ -45,16 +50,18 @@ export const thisRecordOperator: OperatorType = {
       namespaceId
     } = cstVisitor.ctx.meta
 
+    // TODO same as spreadsheet
     const spreadsheetReloadEventDependency: EventDependency = {
       eventId: `${namespaceId},${spreadsheetId}`,
       event: SpreadsheetReloadViaId,
+      key: `Spreadsheet#${spreadsheetId}`,
       scope: {},
       kind: 'Spreadsheet'
     }
 
     cstVisitor.eventDependencies.push(spreadsheetReloadEventDependency)
 
-    const spreadsheet = cstVisitor.ctx.formulaContext.findSpreadsheetById(spreadsheetId)
+    const spreadsheet = cstVisitor.ctx.formulaContext.findSpreadsheet({ namespaceId, type: 'id', value: spreadsheetId })
     if (!spreadsheet) {
       return {
         image,

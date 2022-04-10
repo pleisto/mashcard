@@ -44,7 +44,11 @@ export const inOperator: OperatorType = {
     if (rhs!.type === 'Column') {
       const match = String(lhs.result)
       const column = rhs.result
-      const spreadsheet = interpreter.ctx.formulaContext.findSpreadsheetById(column.spreadsheetId)
+      const spreadsheet = interpreter.ctx.formulaContext.findSpreadsheet({
+        namespaceId: column.spreadsheet.namespaceId,
+        type: 'id',
+        value: column.spreadsheetId
+      })
       if (!spreadsheet) {
         return { type: 'Error', result: 'Spreadsheet not found', errorKind: 'runtime' }
       }

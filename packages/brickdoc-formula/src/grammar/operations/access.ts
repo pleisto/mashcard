@@ -2,13 +2,24 @@ import { AnyTypeResult } from '../../types'
 import { FormulaInterpreter } from '../interpreter'
 import { OperatorType } from '../operator'
 
+const maybeTrackRuntimeDependency = (interpreter: FormulaInterpreter, result: AnyTypeResult): void => {
+  if (!(result.type === 'Spreadsheet' || result.type === 'Column' || result.type === 'Row' || result.type === 'Cell')) {
+    return
+  }
+
+  const eventDependency = result.result.eventDependency({})
+  interpreter.runtimeEventDependencies.push(eventDependency)
+}
+
 export const accessAttribute = async (
   interpreter: FormulaInterpreter,
   result: AnyTypeResult,
   key: string
 ): Promise<AnyTypeResult> => {
   if (result.type === 'Block' || result.type === 'Spreadsheet' || result.type === 'Column' || result.type === 'Row') {
-    return await result.result.handleInterpret(interpreter, key)
+    const finalResult = await result.result.handleInterpret(interpreter, key)
+    maybeTrackRuntimeDependency(interpreter, finalResult)
+    return finalResult
   }
 
   if (result.type === 'Record') {
@@ -48,6 +59,6 @@ export const accessOperator: OperatorType = {
   lhsType: 'any',
   rhsType: 'any',
   interpret: async ({ lhs, rhs, cst, interpreter }) => {
-    return await accessAttribute(interpreter, lhs, rhs!.result as string)
+    return await accessAttribute(interpreter, lhs, String(rhs!.result) as string)
   }
 }
