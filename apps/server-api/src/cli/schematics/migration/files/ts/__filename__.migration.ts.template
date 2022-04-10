@@ -1,0 +1,9 @@
+import { Migration } from '@slonik/migrator'
+
+export const up: Migration = async ({ context: { connection, sql } }) => {
+  await connection.query(sql`raise 'Up migration not implemented'`)
+}
+
+export const down: Migration = async ({ context: { connection, sql } }) => {
+  await connection.query(sql`raise 'Down migration not implemented'`)
+}

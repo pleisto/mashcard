@@ -105,6 +105,7 @@ export { default as times } from 'lodash/times'
 export { default as startCase } from 'lodash/startCase'
 export { default as snakeCase } from 'lodash/snakeCase'
 export { default as camelCase } from 'lodash/camelCase'
+export { default as kebabCase } from 'lodash/kebabCase'
 
 /**
  * ES Version of `lodash.chunk`

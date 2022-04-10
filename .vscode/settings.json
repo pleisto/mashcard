@@ -135,5 +135,6 @@
     "vitejs",
     "xxxl",
     "yarnpkg"
-  ]
+  ],
+  "pgsql.debugServerPort": 13000
 }

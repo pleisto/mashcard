@@ -96,6 +96,7 @@
 - [isUrl](README.md#isurl)
 - [isWeakMap](README.md#isweakmap)
 - [isWeakSet](README.md#isweakset)
+- [kebabCase](README.md#kebabcase)
 - [keyBy](README.md#keyby)
 - [last](README.md#last)
 - [ms](README.md#ms)
@@ -2784,7 +2785,7 @@ Returns the new array of chunks.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:117](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L117)
+[packages/active-support/src/modernLodash.ts:118](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L118)
 
 ___
 
@@ -2809,7 +2810,7 @@ Returns the cloned value.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:187](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L187)
+[packages/active-support/src/modernLodash.ts:188](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L188)
 
 ___
 
@@ -2937,7 +2938,7 @@ Returns the new array of filtered values.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:135](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L135)
+[packages/active-support/src/modernLodash.ts:136](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L136)
 
 ___
 
@@ -3374,7 +3375,7 @@ Returns the slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:144](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L144)
+[packages/active-support/src/modernLodash.ts:145](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L145)
 
 ___
 
@@ -3406,7 +3407,7 @@ The slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:153](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L153)
+[packages/active-support/src/modernLodash.ts:154](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L154)
 
 ___
 
@@ -4307,7 +4308,7 @@ Returns the slice of array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:161](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L161)
+[packages/active-support/src/modernLodash.ts:162](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L162)
 
 ___
 
@@ -4985,6 +4986,30 @@ Returns true if value is correctly classified, else false.
 #### Defined in
 
 node_modules/@types/lodash/common/lang.d.ts:1341
+
+___
+
+### <a id="kebabcase" name="kebabcase"></a> kebabCase
+
+▸ **kebabCase**(`string?`): `string`
+
+Converts string to kebab case.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `string?` | `string` | The string to convert. |
+
+#### Returns
+
+`string`
+
+Returns the kebab cased string.
+
+#### Defined in
+
+node_modules/@types/lodash/common/string.d.ts:157
 
 ___
 
@@ -5898,7 +5923,7 @@ Returns the new filtered array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:179](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L179)
+[packages/active-support/src/modernLodash.ts:180](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L180)
 
 ___
 
@@ -6842,7 +6867,7 @@ Returns the new duplicate free array.
 
 #### Defined in
 
-[packages/active-support/src/modernLodash.ts:170](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L170)
+[packages/active-support/src/modernLodash.ts:171](https://github.com/brickdoc/brickdoc/blob/master/packages/active-support/src/modernLodash.ts#L171)
 
 ___
 

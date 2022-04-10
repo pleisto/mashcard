@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "SchematicsBrickdocDbMigration",
+  "title": "db migration file for @brickdoc/api-server",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "migration name",
+      "x-prompt": "What is the migration name?",
+      "minLength": 2
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ts",
+        "sql"
+      ],
+      "description": "migration file type",
+      "default": "ts",
+      "x-prompt": "What is the migration file type?"
+    }
+  }
+}

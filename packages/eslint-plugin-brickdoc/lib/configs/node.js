@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   extends: [path.join(__dirname, 'base')],
-  plugins: ['node', 'security-node'],
+  plugins: ['node', 'security-node', 'sql'],
   rules: {
     'no-console': 'off',
     'node/no-deprecated-api': 'error',
@@ -10,7 +10,21 @@ module.exports = {
     'security-node/non-literal-reg-expr': 'warn',
     'security-node/detect-child-process': 'warn',
     'security-node/detect-buffer-unsafe-allocation': 'warn',
-    'security-node/detect-eval-with-expr': 'warn'
+    'security-node/detect-eval-with-expr': 'warn',
+    'sql/format': [
+      2,
+      {
+        ignoreExpressions: false,
+        ignoreInline: true,
+        ignoreTagless: true
+      }
+    ],
+    'sql/no-unsafe-query': [
+      2,
+      {
+        allowLiteral: false
+      }
+    ]
   },
   env: {
     browser: false,

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "SchematicsBrickdocDotenv",
+  "title": "Brickdoc .env file Options Schema",
+  "type": "object",
+  "properties": {
+    "dbUrl": {
+      "type": "string",
+      "description": "The database url without database name",
+      "default": "default use env.DATABASE_URL_BASE",
+      "x-prompt": "What is your database url without database name?"
+    },
+    "redisUrl": {
+      "type": "string",
+      "description": "The redis url",
+      "default": "default use env.REDIS_URL",
+      "x-prompt": "What is your redis url?"
+    }
+  }
+}

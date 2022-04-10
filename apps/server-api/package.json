@@ -1,11 +1,13 @@
 {
   "name": "@brickdoc/server-api",
   "private": true,
+  "schematics": "./src/cli/schematics/collection.json",
   "scripts": {
     "dev": "node-dev --enable-source-maps --inspect --notify=false src/main.ts server | pino-pretty -t SYS:standard -c -l",
     "start": "ts-node src/main.ts server",
     "console": "ts-node src/main.ts console",
     "cli": "ts-node src/main.ts",
+    "g": "ts-node src/cli/schematics/main.ts",
     "lint": "yarn lint:eslint && yarn lint:type",
     "lint:eslint": "TIMING=1 run -T eslint --cache --ext ts,tsx src",
     "lint:fix": "TIMING=1 run -T eslint --cache --ext ts,tsx src --fix",
@@ -13,9 +15,9 @@
     "tsdoc": "run -T typedoc --excludeExternals --options ../../tools/typedoc/config.json --out ./docs/api ./src/**/index.ts"
   },
   "devDependencies": {
+    "@brickdoc/schematics": "workspace:^",
     "@faker-js/faker": "^6.1.2",
     "@nestjs/testing": "^8.4.4",
-    "cross-spawn": "^7.0.3",
     "leaked-handles": "^5.2.0",
     "node-dev": "^7.4.2",
     "pino-pretty": "^7.6.1"
@@ -35,6 +37,8 @@
     "@nestjs/terminus": "^8.0.6",
     "@slonik/migrator": "^0.11.1",
     "apollo-server-fastify": "^3.6.7",
+    "cross-spawn": "^7.0.3",
+    "date-fns": "^2.28.0",
     "enquirer": "^2.3.6",
     "fastify-cookie": "^5.6.0",
     "fastify-helmet": "^7.0.1",

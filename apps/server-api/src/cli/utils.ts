@@ -4,7 +4,7 @@ import { createPoolFactory } from '@brickdoc/nestjs-slonik/src/slonik.utils'
 import { env } from 'process'
 import { join } from 'path'
 import { writeFileSync } from 'fs'
-import { spawn } from 'child_process'
+import { spawn } from 'cross-spawn'
 
 export { sql } from '@brickdoc/nestjs-slonik'
 
@@ -36,9 +36,18 @@ export const currentDbName = env.DATABASE_NAME
 const currentDbUri = `${env.DATABASE_URL_BASE}/${currentDbName}`
 
 /**
+ * Get the root path of the project.
+ */
+export const rootDir = join(__dirname, '../../')
+/**
  * Get the db directory path.
  */
-const dbDir = join(__dirname, '../../', 'db')
+export const dbDir = join(rootDir, 'db')
+
+/**
+ * Get the migrations directory path.
+ */
+export const migrationDir = join(dbDir, 'migrations')
 
 /**
  * Get the current database connection pool.
@@ -61,7 +70,7 @@ export const systemDbConn = async (): Promise<DatabasePool> => {
 export const currentMigrator = async (): Promise<SlonikMigrator> => {
   const slonik = await currentDbConn()
   return new SlonikMigrator({
-    migrationsPath: join(dbDir, 'migrations'),
+    migrationsPath: migrationDir,
     migrationTableName: 'db_migrations',
     slonik,
     logger: console
@@ -72,18 +81,17 @@ export const currentMigrator = async (): Promise<SlonikMigrator> => {
  * Dump current database's schema to a file.
  */
 export const dumpCurrentDbSchema = async (): Promise<void> => {
-  const dump = await spawn('pg_dump', ['--dbname', currentDbUri, '--schema-only', '--no-owner'])
-  dump.stderr.on('data', data => console.error(`${Styles.FgRed}STDERR${Styles.ResetAll}`, data.toString()))
-  dump.stdout.on('data', data => {
+  const dump = spawn('pg_dump', ['--dbname', currentDbUri, '--schema-only', '--no-owner'])
+  for await (const data of dump.stdout) {
     const fileBanner = `-----------------------------------------------------------
 -- THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY) --
------------------------------------------------------------
-    `
+-----------------------------------------------------------`
     const content = data
       .toString()
       .replace(/^(--|SET|SELECT pg_).*$/gm, '') // remove comments and server settings
       .replace(/(\n\n|\r\n\r\n)/g, '') // remove empty lines
       .replace(/;/g, ';\n') // add new line after each semicolon
-    writeFileSync(join(dbDir, 'schema.sql'), `${fileBanner}\n${content}`, { encoding: 'utf8', flag: 'w' })
-  })
+    writeFileSync(join(dbDir, 'structure.sql'), `${fileBanner}\n${content}`, { encoding: 'utf8', flag: 'w' })
+  }
+  console.log(`${Styles.FgGreen}Database schema dumped to ${dbDir}/structure.sql.`)
 }
