@@ -75,7 +75,7 @@ jobs:
           flags: frontend-e2e
       - name: Upload Playwright screenshots/traces/videos (when failed or flaky)
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: playwright-test-results
           if-no-files-found: ignore
