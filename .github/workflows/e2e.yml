@@ -69,7 +69,7 @@ jobs:
         run: (find tools/e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
         continue-on-error: true
       - name: Publish Playwright code coverage reports
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: frontend-e2e

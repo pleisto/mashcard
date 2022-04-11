@@ -85,7 +85,7 @@ jobs:
           check_name: Jest Test Report
       - name: Publish Jest code coverage reports
         if: steps.changed-es-files.outputs.any_changed == 'true'
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: frontend-unit
