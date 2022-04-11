@@ -1,9 +1,9 @@
 import { blockSyncBatchConverter } from '@/data/converter/blockSyncBatchConverter'
-import { PageBlock } from '@/data/type'
+import { PageBlock } from '@/data/types'
 import { Page } from '@playwright/test'
 import { createBlockConverter } from '../../data/converter/createBlockConverter'
 import { BLOCK_SOFT_DELETE, BLOCK_SYNC_BATCH, CREATE_BLOCK, GET_PAGE_BLOCKS } from './graphql'
-import { BlockSoftDeleteInput, CreateBlockInput, InputType, OperationName, OptionsType, PageType } from './type'
+import { BlockSoftDeleteInput, CreateBlockInput, InputType, OperationName, OptionsType, PageType } from './types'
 
 export class BlockApi {
   private readonly page

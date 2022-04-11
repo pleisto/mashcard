@@ -1,5 +1,5 @@
 import { TrashPage } from '@/pages/sidebar/TrashPage'
-import { test, expect } from '@/fixtures/testFixtures'
+import { test, expect } from '@/fixtures'
 import { COMMON_SELECTORS } from '@/selectors/common'
 
 // wait for refactoring, just skip first

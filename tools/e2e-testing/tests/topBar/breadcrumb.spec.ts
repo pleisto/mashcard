@@ -1,6 +1,6 @@
 import { FIVE_LAYER_PAGE_TREE, SINGLE_PAGE, SINGLE_PAGE_WITH_ICON } from '@/data/breadcrumb'
 import { INITIAL_PAGE, TWO_LAYER_PAGE_TREE } from '@/data/common'
-import { test, expect } from '@/fixtures/testFixtures'
+import { test, expect } from '@/fixtures'
 import { PageListPage } from '@/pages/sidebar/PageListPage'
 import { BreadcrumbPage } from '@/pages/topBar/BreadcrumbPage'
 
@@ -94,9 +94,7 @@ test.describe('Breadcrumb', () => {
       await pageList.expandArrow(index)
     }
     await pageList.clickPage(4)
-
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
-
     await breadcrumb.getBreadcrumbTextByIndex(1).click()
 
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(2)
@@ -110,10 +108,8 @@ test.describe('Breadcrumb', () => {
       await pageList.expandArrow(index)
     }
     await pageList.clickPage(4)
-
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
     await expect(breadcrumb.getBreadcrumbTextByIndex(3)).toHaveText('page 1-1-1-1-1')
-
     await breadcrumb.getBreadcrumbTextByIndex(2).click()
 
     await expect(breadcrumb.getBreadcrumbTextByIndex(3)).toHaveText('page 1-1-1-1')

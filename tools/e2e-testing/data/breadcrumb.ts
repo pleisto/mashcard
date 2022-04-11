@@ -1,4 +1,4 @@
-import { PageBlock } from './type'
+import { PageBlock } from './types'
 
 export const SINGLE_PAGE: PageBlock = {
   title: 'It is a breadcrumb which is more than 150px'

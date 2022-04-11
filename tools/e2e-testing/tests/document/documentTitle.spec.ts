@@ -1,5 +1,5 @@
 import { INITIAL_PAGE } from '@/data/common'
-import { test, expect } from '@/fixtures/testFixtures'
+import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
 import { DocumentTitlePage } from '@/pages/document/DocumentTitlePage'
 import { PageListPage } from '@/pages/sidebar/PageListPage'
