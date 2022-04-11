@@ -8,7 +8,7 @@
     "@angular-devkit/core": "^13.3.2",
     "@angular-devkit/schematics": "^13.3.2",
     "@angular-devkit/schematics-cli": "^13.3.2",
-    "@types/yargs": "^16.0.4"
+    "@types/yargs": "^17.0.10"
   },
   "scripts": {
     "lint": "yarn lint:eslint && yarn lint:type",

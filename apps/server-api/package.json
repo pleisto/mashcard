@@ -50,7 +50,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
     "tzdata": "^1.0.30",
-    "yargs": "^17.4.0",
+    "yargs": "^17.4.1",
     "yargs-parser": "^21.0.1"
   }
 }
