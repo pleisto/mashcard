@@ -34,3 +34,4 @@ Object.assign(navigator, {
 })
 
 window.scrollTo = () => {}
+window.scroll = () => {}

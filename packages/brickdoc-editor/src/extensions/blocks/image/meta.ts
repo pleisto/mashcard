@@ -8,7 +8,6 @@ export const meta: ExtensionMeta = {
 export interface ImageOptions {}
 export interface ImageAttributes {
   defaultFile?: File | null
-  isNew?: boolean
   image: {
     type: 'IMAGE'
     key?: string

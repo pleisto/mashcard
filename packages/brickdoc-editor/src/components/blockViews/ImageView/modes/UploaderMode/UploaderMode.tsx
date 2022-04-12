@@ -1,23 +1,25 @@
 import { FC, useCallback, useContext, useMemo, useState } from 'react'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
-import { NodeViewProps } from '@tiptap/react'
 import { Button, Icon, Popover } from '@brickdoc/design-system'
 import { BlockContainer } from '../../../BlockContainer'
 import { Dashboard, ImportSourceOption, UploadProgress, UploadResultData } from '@brickdoc/uploader'
 import { linkStorage, sizeFormat } from '../../../../../helpers/file'
 import { EditorContext } from '../../../../../context/EditorContext'
 import { useExternalProps } from '../../../../../hooks/useExternalProps'
+import { usePopoverVisible } from '../../../EmbedView/types/usePopoverVisible'
+import { ImageViewProps } from '../../../../../extensions/blocks/image/meta'
 
 export interface UploaderModeProps {
-  node: NodeViewProps['node']
-  deleteNode: NodeViewProps['deleteNode']
-  getPos: NodeViewProps['getPos']
+  node: ImageViewProps['node']
+  deleteNode: ImageViewProps['deleteNode']
+  getPos: ImageViewProps['getPos']
   updateImageAttributes: (attrs: Record<string, any>) => void
 }
 
 export const UploaderMode: FC<UploaderModeProps> = ({ node, deleteNode, getPos, updateImageAttributes }) => {
   const externalProps = useExternalProps()
   const { t } = useContext(EditorContext)
+  const [popoverVisible, handlePopoverVisibleChange] = usePopoverVisible(node.attrs.uuid)
 
   const onUploaded = useCallback(
     (data: UploadResultData): void => {
@@ -56,7 +58,8 @@ export const UploaderMode: FC<UploaderModeProps> = ({ node, deleteNode, getPos, 
         overlayClassName="brickdoc-block-image-section-popover"
         trigger="click"
         placement="bottom"
-        defaultVisible={node.attrs.isNew}
+        visible={popoverVisible}
+        onVisibleChange={handlePopoverVisibleChange}
         content={
           <Dashboard
             fileType="image"

@@ -9,6 +9,7 @@ import { prependHttp } from '../../../../helpers'
 import { EmbedBlockAttributes } from '../EmbedView'
 import { useWebsiteMetaProgress } from './useWebsiteMetaProgress'
 import { useExternalProps } from '../../../../hooks/useExternalProps'
+import { usePopoverVisible } from './usePopoverVisible'
 
 export interface LinkTypeEmbedBlockProps {
   deleteNode: NodeViewProps['deleteNode']
@@ -48,6 +49,7 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
   const [url, setUrl] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [progress, resetProgress, progressing] = useWebsiteMetaProgress()
+  const [popoverVisible, handlePopoverVisibleChange] = usePopoverVisible(node.attrs.uuid)
 
   const handleSubmit = useCallback(async (): Promise<void> => {
     if (!url) {
@@ -104,7 +106,8 @@ export const LinkTypeEmbedBlock: FC<LinkTypeEmbedBlockProps> = ({
   return (
     <BlockContainer node={node} getPos={getPos} actionOptions={['delete']} deleteNode={deleteNode}>
       <Popover
-        defaultVisible={node.attrs.isNew}
+        visible={popoverVisible}
+        onVisibleChange={handlePopoverVisibleChange}
         trigger="click"
         content={
           <InputPanel>

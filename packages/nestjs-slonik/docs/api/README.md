@@ -51,7 +51,7 @@
 - [JsonSqlToken](README.md#jsonsqltoken)
 - [ListSqlToken](README.md#listsqltoken)
 - [MockPoolOverrides](README.md#mockpooloverrides)
-- [Query](README.md#query)
+- [Query](README.md#query-2)
 - [QueryContext](README.md#querycontext)
 - [QueryResult](README.md#queryresult)
 - [QueryResultRow](README.md#queryresultrow)
@@ -71,7 +71,7 @@
 - [LOGGER\_NAME](README.md#logger_name)
 - [SLONIK\_MODULE\_ID](README.md#slonik_module_id)
 - [SLONIK\_MODULE\_OPTIONS](README.md#slonik_module_options)
-- [sql](README.md#sql)
+- [sql](README.md#sql-2)
 
 ### Functions
 
@@ -333,15 +333,15 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `afterPoolConnection?` | (`connectionContext`: `ConnectionContext`, `connection`: [`DatabasePoolConnection`](README.md#databasepoolconnection)) => `MaybePromise`<``null``\> |
-| `afterQueryExecution?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query), `result`: [`QueryResult`](README.md#queryresult)<[`QueryResultRow`](README.md#queryresultrow)\>) => `MaybePromise`<``null``\> |
+| `afterQueryExecution?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2), `result`: [`QueryResult`](README.md#queryresult)<[`QueryResultRow`](README.md#queryresultrow)\>) => `MaybePromise`<``null``\> |
 | `beforePoolConnection?` | (`connectionContext`: `PoolContext`) => `MaybePromise`<`undefined` \| ``null`` \| [`DatabasePool`](README.md#databasepool)\> |
 | `beforePoolConnectionRelease?` | (`connectionContext`: `ConnectionContext`, `connection`: [`DatabasePoolConnection`](README.md#databasepoolconnection)) => `MaybePromise`<``null``\> |
-| `beforeQueryExecution?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query)) => `MaybePromise`<``null`` \| [`QueryResult`](README.md#queryresult)<[`QueryResultRow`](README.md#queryresultrow)\>\> |
-| `beforeQueryResult?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query), `result`: [`QueryResult`](README.md#queryresult)<[`QueryResultRow`](README.md#queryresultrow)\>) => `MaybePromise`<``null``\> |
-| `beforeTransformQuery?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query)) => `MaybePromise`<``null``\> |
-| `queryExecutionError?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query), `error`: [`SlonikError`](classes/SlonikError.md), `notices`: readonly `NoticeMessage`[]) => `MaybePromise`<``null``\> |
-| `transformQuery?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query)) => [`Query`](README.md#query) |
-| `transformRow?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query), `row`: [`QueryResultRow`](README.md#queryresultrow), `fields`: readonly [`Field`](README.md#field)[]) => [`QueryResultRow`](README.md#queryresultrow) |
+| `beforeQueryExecution?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2)) => `MaybePromise`<``null`` \| [`QueryResult`](README.md#queryresult)<[`QueryResultRow`](README.md#queryresultrow)\>\> |
+| `beforeQueryResult?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2), `result`: [`QueryResult`](README.md#queryresult)<[`QueryResultRow`](README.md#queryresultrow)\>) => `MaybePromise`<``null``\> |
+| `beforeTransformQuery?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2)) => `MaybePromise`<``null``\> |
+| `queryExecutionError?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2), `error`: [`SlonikError`](classes/SlonikError.md), `notices`: readonly `NoticeMessage`[]) => `MaybePromise`<``null``\> |
+| `transformQuery?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2)) => [`Query`](README.md#query-2) |
+| `transformRow?` | (`queryContext`: [`QueryContext`](README.md#querycontext), `query`: [`Query`](README.md#query-2), `row`: [`QueryResultRow`](README.md#queryresultrow), `fields`: readonly [`Field`](README.md#field)[]) => [`QueryResultRow`](README.md#queryresultrow) |
 
 #### Defined in
 
@@ -417,7 +417,7 @@ node_modules/slonik/dist/src/types.d.ts:292
 
 ___
 
-### <a id="query" name="query"></a> Query
+### <a id="query-2" name="query-2"></a> Query
 
 Ƭ **Query**: `Object`
 
@@ -460,7 +460,7 @@ ___
 | :------ | :------ |
 | `connectionId` | `string` |
 | `log` | `Logger` |
-| `originalQuery` | [`Query`](README.md#query) |
+| `originalQuery` | [`Query`](README.md#query-2) |
 | `poolId` | `string` |
 | `queryId` | `QueryId` |
 | `queryInputTime` | `bigint` \| `number` |
@@ -714,7 +714,7 @@ ___
 
 ___
 
-### <a id="sql" name="sql"></a> sql
+### <a id="sql-2" name="sql-2"></a> sql
 
 • `Const` **sql**: `SqlTaggedTemplate`
 

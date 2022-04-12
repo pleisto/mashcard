@@ -24,4 +24,4 @@
 
 #### Defined in
 
-cli/schematics/dotenv/index.ts:7
+[cli/schematics/dotenv/index.ts:7](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/cli/schematics/dotenv/index.ts#L7)

@@ -12,7 +12,6 @@ export interface EmbedAttributes {
     type: 'EmbedMeta'
     embedType: Embedtype
   }
-  isNew?: boolean
   defaultFile?: File | null
   link: {
     type: 'LINK'

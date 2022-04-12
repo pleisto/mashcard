@@ -1,3 +1,5 @@
+import { uuid } from '@brickdoc/active-support'
+import { BlockJustCreated, BrickdocEventBus } from '@brickdoc/schema'
 import { mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
 import { ImageView } from '../../../components/blockViews'
@@ -30,7 +32,6 @@ export const Image = createBlock<ImageOptions, ImageAttributes>({
     return {
       ...this.parent?.(),
       defaultFile: { default: {} },
-      isNew: { default: false },
       image: {
         default: {
           type: 'IMAGE'
@@ -62,8 +63,15 @@ export const Image = createBlock<ImageOptions, ImageAttributes>({
       setImageBlock:
         (position?: number, defaultFile?: File) =>
         ({ chain }) => {
-          const content = { type: this.name, attrs: { defaultFile, isNew: true } }
-          return chain().insertBlockAt(content, position).run()
+          const id = uuid()
+          const content = { type: this.name, attrs: { defaultFile, uuid: id } }
+          const result = chain().insertBlockAt(content, position).run()
+
+          if (result) {
+            BrickdocEventBus.dispatch(BlockJustCreated({ id }))
+          }
+
+          return result
         }
     }
   }

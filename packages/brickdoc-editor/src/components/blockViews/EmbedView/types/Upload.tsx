@@ -1,5 +1,4 @@
-import { useCallback, ChangeEventHandler, FC, useContext, useEffect, useRef, useState } from 'react'
-import { NodeViewProps } from '@tiptap/react'
+import { useCallback, ChangeEventHandler, FC, useContext, useRef, useState } from 'react'
 import { EmbedBlockPlaceholder } from '../Placeholder'
 import { Icon, styled } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
@@ -9,11 +8,14 @@ import { BlockContainer } from '../../BlockContainer'
 import { EditorContext } from '../../../../context/EditorContext'
 import { EmbedBlockAttributes } from '../EmbedView'
 import { useExternalProps } from '../../../../hooks/useExternalProps'
+import { EmbedViewProps } from '../../../../extensions/blocks/embed/meta'
+import { useDefaultFile } from './useDefaultFile'
+import { useBlockJustCreated } from './useBlockJustCreated'
 
 export interface UploadTypeEmbedBlockProps {
-  deleteNode: NodeViewProps['deleteNode']
-  node: NodeViewProps['node']
-  getPos: NodeViewProps['getPos']
+  deleteNode: EmbedViewProps['deleteNode']
+  node: EmbedViewProps['node']
+  getPos: EmbedViewProps['getPos']
   updateEmbedBlockAttributes: (attrs: EmbedBlockAttributes, type: 'link' | 'image' | 'attachment') => void
 }
 
@@ -70,30 +72,13 @@ export const UploadTypeEmbedBlock: FC<UploadTypeEmbedBlockProps> = ({
     inputRef.current?.click()
   }, [])
 
-  useEffect(() => {
-    const uploadDefaultFile = (): void => {
-      const file = node.attrs.defaultFile as File
-      const fileType = getFileTypeByExtension(file.name)
-      void imperativeUpload(file, {
-        prepareFileUpload: externalProps.prepareFileUpload,
-        blockId: externalProps.rootId,
-        fileType,
-        onUploaded,
-        onProgress
-      })
-      node.attrs.defaultFile = null
-    }
-    if (node.attrs.defaultFile) {
-      uploadDefaultFile()
-      return
-    }
+  const handleBlockJustCreated = useCallback(() => {
+    if (node.attrs.defaultFile) return
+    handleChooseFile()
+  }, [handleChooseFile, node.attrs.defaultFile])
 
-    if (!node.attrs.defaultFile && node.attrs.isNew) {
-      handleChooseFile()
-      node.attrs.isNew = false
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  useBlockJustCreated(node.attrs.uuid, handleBlockJustCreated)
+  useDefaultFile(node, onUploaded, onProgress)
 
   return (
     <BlockContainer node={node} actionOptions={['delete']} deleteNode={deleteNode} getPos={getPos}>

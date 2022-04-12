@@ -1,9 +1,10 @@
 import { mergeAttributes, Content } from '@tiptap/core'
 import { ReactNodeViewRenderer } from '@tiptap/react'
-import { Embedtype } from '@brickdoc/schema'
+import { BlockJustCreated, BrickdocEventBus, Embedtype } from '@brickdoc/schema'
 import { EmbedView } from '../../../components/blockViews'
 import { createBlock, createJSONAttributeHtmlParser, createJSONAttributeHtmlRender } from '../../common'
 import { EmbedAttributes, EmbedOptions, meta } from './meta'
+import { uuid } from '@brickdoc/active-support'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -35,9 +36,6 @@ export const Embed = createBlock<EmbedOptions, EmbedAttributes>({
         },
         parseHTML: createJSONAttributeHtmlParser('data-embed-meta'),
         renderHTML: createJSONAttributeHtmlRender('embedMeta', 'data-embed-meta')
-      },
-      isNew: {
-        default: false
       },
       defaultFile: {
         default: null
@@ -87,17 +85,24 @@ export const Embed = createBlock<EmbedOptions, EmbedAttributes>({
       setEmbedBlock:
         (embedType, defaultFile, position) =>
         ({ chain }) => {
+          const id = uuid()
           const content: Content = {
             type: this.name,
             attrs: {
-              isNew: true,
+              uuid: id,
               defaultFile,
               embedMeta: {
                 embedType
               }
             }
           }
-          return chain().insertBlockAt(content, position).run()
+          const result = chain().insertBlockAt(content, position).run()
+
+          if (result) {
+            BrickdocEventBus.dispatch(BlockJustCreated({ id }))
+          }
+
+          return result
         }
     }
   }
