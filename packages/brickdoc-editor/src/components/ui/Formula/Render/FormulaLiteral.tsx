@@ -1,7 +1,7 @@
-import { AnyTypeResult, FormulaSourceType } from '@brickdoc/formula'
+import { FormulaSourceType, LiteralResult } from '@brickdoc/formula'
 
 export interface FormulaLiteralProps {
-  result: AnyTypeResult
+  result: LiteralResult
   formulaType: FormulaSourceType
 }
 

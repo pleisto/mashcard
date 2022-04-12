@@ -11,10 +11,8 @@ describe('FormulaValue', () => {
         result: 'error'
       },
       definition: '',
-      kind: 'constant',
-      type: 'normal',
       version: 1,
-      meta: {} as any,
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
@@ -30,10 +28,8 @@ describe('FormulaValue', () => {
         result: 'waiting'
       },
       definition: '',
-      kind: 'constant',
-      type: 'normal',
       version: 1,
-      meta: {} as any,
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
@@ -50,10 +46,8 @@ describe('FormulaValue', () => {
         result: 'error'
       },
       definition: '',
-      kind: 'constant',
-      type: 'normal',
       version: 1,
-      meta: {} as any,
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 
@@ -69,10 +63,8 @@ describe('FormulaValue', () => {
         result: 1
       },
       definition: '',
-      kind: 'constant',
-      type: 'normal',
       version: 1,
-      meta: {} as any,
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       display: 'display'
     }
 

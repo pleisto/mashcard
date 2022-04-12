@@ -16,7 +16,7 @@ export interface FormulaMenuProps {
   onVisibleChange: (visible: boolean) => void
   variableT?: VariableData
   handleDelete: (variable?: VariableData) => void
-  nameRef: React.MutableRefObject<string | undefined>
+  nameRef: React.MutableRefObject<string>
   defaultName: string
   updateEditor: (content: JSONContent, position: number) => void
   editorContent: EditorContentType

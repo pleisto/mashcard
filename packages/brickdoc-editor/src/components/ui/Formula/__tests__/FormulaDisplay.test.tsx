@@ -17,14 +17,12 @@ describe('FormulaDisplay', () => {
 
   it('renders literal kind correctly', () => {
     const displayData: VariableDisplayData = {
-      kind: 'literal',
       definition: `="string"`,
-      type: 'normal',
       result: {
-        type: 'string',
+        type: 'literal',
         result: 'string'
       },
-      meta: {} as any,
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       version: 1,
       display: 'string'
     }
@@ -35,14 +33,12 @@ describe('FormulaDisplay', () => {
 
   it('renders constant kind correctly', () => {
     const displayData: VariableDisplayData = {
-      kind: 'constant',
       definition: `="string"`,
-      type: 'normal',
       result: {
         type: 'string',
         result: 'string'
       },
-      meta: {} as any,
+      meta: { namespaceId: '', variableId: '', name: '', richType: { type: 'normal' }, input: '', position: 0 },
       version: 1,
       display: 'string'
     }

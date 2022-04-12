@@ -7,31 +7,35 @@ import {
   contentArrayToInput,
   fetchJSONContentArray
 } from '../../../../helpers'
-import { useFormula } from '../useFormula'
+import { useFormula, UseFormulaInput } from '../useFormula'
 
 const rootId = 'eb373fbc-a6e9-40a6-8c4b-45cda7230dda'
 const formulaId = '2838c176-9a82-4e4f-a197-969d70c64694'
-const updateFormula = (): void => {}
+const onUpdateFormula = (): void => {}
 const normalFormulaType: FormulaSourceType = 'normal'
-const formulaName = undefined
+const formulaName = ''
 const formulaContext = new FormulaContext({ domain: 'test' })
 
-const normalInput = {
-  rootId,
-  formulaId,
-  updateFormula,
-  formulaRichType: { type: normalFormulaType },
-  formulaName,
+const normalInput: UseFormulaInput = {
+  meta: {
+    namespaceId: rootId,
+    variableId: formulaId,
+    name: formulaName,
+    richType: { type: normalFormulaType }
+  },
+  onUpdateFormula,
   formulaContext
 }
 
 const spreadsheetFormulaType: FormulaSourceType = 'spreadsheet'
-const spreadsheetInput = {
-  rootId,
-  formulaId,
-  updateFormula,
-  formulaRichType: { type: spreadsheetFormulaType, meta: { spreadsheetId: '', columnId: '', rowId: '' } },
-  formulaName,
+const spreadsheetInput: UseFormulaInput = {
+  meta: {
+    namespaceId: rootId,
+    variableId: formulaId,
+    name: formulaName,
+    richType: { type: spreadsheetFormulaType, meta: { spreadsheetId: '', columnId: '', rowId: '' } }
+  },
+  onUpdateFormula,
   formulaContext
 }
 
@@ -337,7 +341,7 @@ describe('useFormula', () => {
       input: '',
       position: 0
     })
-    expect(result.current.nameRef.current).toBe(undefined)
+    expect(result.current.nameRef.current).toBe('')
     expect(result.current.defaultName).toBe('var1')
   })
   it('spreadsheet initial', () => {
@@ -349,7 +353,7 @@ describe('useFormula', () => {
       input: '=',
       position: 0
     })
-    expect(result.current.nameRef.current).toBe(undefined)
+    expect(result.current.nameRef.current).toBe('')
     expect(result.current.defaultName).toBe('var1')
   })
 

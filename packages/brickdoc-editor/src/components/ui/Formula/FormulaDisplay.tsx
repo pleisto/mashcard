@@ -35,12 +35,12 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     return <div />
   }
 
-  const { kind, result, type, meta } = displayData
+  const { result, meta } = displayData
 
-  if (kind === 'literal') {
+  if (result.type === 'literal') {
     return (
       <span {...props}>
-        <FormulaLiteral result={result} formulaType={type} />
+        <FormulaLiteral result={result} formulaType={meta.richType.type} />
       </span>
     )
   }

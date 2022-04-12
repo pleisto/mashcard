@@ -25,7 +25,7 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
   const rootId = externalProps.rootId
   const formulaContext = externalProps.formulaContext
   const formulaType = 'normal'
-  const formulaName = undefined
+  const formulaName = ''
   const {
     variableT,
     selected,
@@ -38,11 +38,13 @@ export const FormulaRender: React.FC<FormulaRenderProps> = ({
     editorContent,
     completion
   } = useFormula({
-    rootId,
-    formulaId,
-    formulaContext,
-    formulaRichType: { type: formulaType },
-    formulaName
+    meta: {
+      namespaceId: rootId,
+      variableId: formulaId,
+      richType: { type: formulaType },
+      name: formulaName
+    },
+    formulaContext
   })
 
   const hasMenu = handleDefaultPopoverVisibleChange && handleDelete

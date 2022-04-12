@@ -9,7 +9,8 @@ import {
   fetchResult,
   SpreadsheetReloadViaId,
   VariableDisplayData,
-  VariableInterface
+  VariableInterface,
+  VariableMetadata
 } from '@brickdoc/formula'
 import { SpreadsheetContext } from './SpreadsheetContext'
 import { devLog } from '@brickdoc/design-system'
@@ -111,19 +112,23 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
     return () => listener.unsubscribe()
   }, [formulaId, rootId, setEditing])
 
-  const { variableT, editorContent, commitFormula, completion, updateEditor } = useFormula({
-    rootId,
-    formulaId,
-    onUpdateFormula,
-    formulaRichType: {
+  const meta: Pick<VariableMetadata, 'richType' | 'variableId' | 'namespaceId' | 'name'> = {
+    namespaceId: rootId,
+    variableId: formulaId,
+    name: formulaName,
+    richType: {
       type: 'spreadsheet',
       meta: {
         spreadsheetId: tableId,
         columnId,
         rowId
       }
-    },
-    formulaName,
+    }
+  }
+
+  const { variableT, editorContent, commitFormula, completion, updateEditor } = useFormula({
+    meta,
+    onUpdateFormula,
     formulaContext
   })
 
@@ -165,11 +170,13 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
 
   const display = variableT ? displayValue(fetchResult(variableT), rootId) : currentBlock.text
   const fallbackDisplayData: VariableDisplayData | undefined = display
-    ? ({
-        result: { type: 'string', result: display },
-        kind: 'literal',
-        type: 'spreadsheet'
-      } as unknown as VariableDisplayData)
+    ? {
+        definition: display,
+        display,
+        version: 0,
+        meta: { ...meta, input: display, position: 0 },
+        result: { type: 'literal', result: display }
+      }
     : undefined
   const displayData: VariableDisplayData | undefined = variableT
     ? dumpDisplayResultForDisplay(variableT)

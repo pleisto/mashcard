@@ -27,5 +27,5 @@ const FormulaVegaBar: React.FC<FormulaVegaProps> = ({ result }) => {
 
 export const vegaBarView: View = {
   type: 'bar',
-  render: (attrs, data) => <FormulaVegaBar result={data.result as RecordResult} formulaType={data.type} />
+  render: (attrs, data) => <FormulaVegaBar result={data.result as RecordResult} formulaType={data.meta.richType.type} />
 }

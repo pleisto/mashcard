@@ -12,7 +12,6 @@ import {
   FormulaType,
   codeFragments2definition,
   VariableMetadata,
-  VariableRichType,
   FormulaUpdatedDraftTViaId,
   FormulaUpdatedViaId
 } from '@brickdoc/formula'
@@ -44,11 +43,8 @@ import {
 } from '../../../helpers'
 
 export interface UseFormulaInput {
-  rootId: string
-  formulaId: string
-  formulaName?: string
+  meta: Pick<VariableMetadata, 'richType' | 'variableId' | 'namespaceId' | 'name'>
   onUpdateFormula?: (variable: VariableInterface | undefined) => void
-  formulaRichType: VariableRichType
   formulaContext: ContextInterface | undefined | null
 }
 
@@ -56,7 +52,7 @@ export interface UseFormulaOutput {
   variableT: VariableData | undefined
   savedVariableT: VariableData | undefined
   selected: SelectedType | undefined
-  nameRef: React.MutableRefObject<string | undefined>
+  nameRef: React.MutableRefObject<string>
   defaultName: string
   formulaIsNormal: boolean
   editorContent: EditorContentType
@@ -136,29 +132,27 @@ export interface SelectType {
 }
 
 export const useFormula = ({
-  rootId,
-  formulaId,
+  meta: { richType, variableId, namespaceId, name: formulaName },
   onUpdateFormula,
-  formulaRichType,
-  formulaName,
   formulaContext
 }: UseFormulaInput): UseFormulaOutput => {
-  const formulaIsNormal = formulaRichType.type === 'normal'
+  const formulaIsNormal = richType.type === 'normal'
 
-  const defaultVariable = formulaContext?.findVariableById(rootId, formulaId)
+  const defaultVariable = formulaContext?.findVariableById(namespaceId, variableId)
 
   const formulaValue = defaultVariable?.t.valid
-    ? codeFragments2definition(defaultVariable.t.codeFragments, rootId)
+    ? codeFragments2definition(defaultVariable.t.codeFragments, namespaceId)
     : defaultVariable?.t.definition
 
-  const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(rootId, 'any') : ''
+  const contextDefaultName = formulaContext ? formulaContext.getDefaultVariableName(namespaceId, 'any') : ''
 
-  const contextCompletions = formulaContext ? formulaContext.completions(rootId, formulaId) : []
+  const contextCompletions = formulaContext ? formulaContext.completions(namespaceId, variableId) : []
 
-  const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal, 0, rootId)
+  const defaultEditorContent: EditorContentType = fetchEditorContent(defaultVariable, formulaIsNormal, 0, namespaceId)
 
   // Refs
-  const nameRef = React.useRef(formulaName ?? defaultVariable?.t.name)
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  const nameRef = React.useRef<string>(formulaName || (defaultVariable?.t.name ?? ''))
   const variableRef = React.useRef(defaultVariable)
   const editorContentRef = React.useRef(defaultEditorContent)
   const defaultNameRef = React.useRef(contextDefaultName)
@@ -172,7 +166,7 @@ export const useFormula = ({
   const [completion, setCompletion] = React.useState<CompletionType>({
     completions: contextCompletions,
     kind: 'Completion',
-    formulaType: formulaRichType.type,
+    formulaType: richType.type,
     input: formulaValue ?? '',
     activeCompletion: contextCompletions[0],
     activeCompletionIndex: 0
@@ -186,24 +180,24 @@ export const useFormula = ({
         FormulaEditorSelectEventTrigger({
           formulaId: selectFormulaId,
           rootId: selectRootId,
-          parentFormulaId: formulaId,
-          parentRootId: rootId,
+          parentFormulaId: variableId,
+          parentRootId: namespaceId,
           selected: true
         })
       )
     },
-    [formulaId, rootId]
+    [variableId, namespaceId]
   )
 
   const updateDefaultName = React.useCallback(
     (type: FormulaType) => {
       if (!formulaContext) return
       // if (type === 'any' && defaultNameRef.current && defaultNameRef.current !== 'any') return
-      const newDefaultName = formulaContext.getDefaultVariableName(rootId, type)
+      const newDefaultName = formulaContext.getDefaultVariableName(namespaceId, type)
       defaultNameRef.current = newDefaultName
       setDefaultName(newDefaultName)
     },
-    [formulaContext, rootId]
+    [formulaContext, namespaceId]
   )
 
   const doUnselectedFormula = React.useCallback(() => {
@@ -212,13 +206,13 @@ export const useFormula = ({
       FormulaEditorSelectEventTrigger({
         formulaId: selectFormula.current.selectFormulaId,
         rootId: selectFormula.current.selectRootId,
-        parentFormulaId: formulaId,
-        parentRootId: rootId,
+        parentFormulaId: variableId,
+        parentRootId: namespaceId,
         selected: false
       })
     )
     selectFormula.current = undefined
-  }, [formulaId, rootId])
+  }, [variableId, namespaceId])
 
   const doCalculate = React.useCallback(
     async (skipExecute: boolean): Promise<void> => {
@@ -232,18 +226,17 @@ export const useFormula = ({
       const realInputs = positionBasedContentArrayToInput(
         fetchJSONContentArray(editorContentRef.current.content),
         editorContentRef.current.position,
-        rootId
+        namespaceId
       )
 
-      const variableId = variableRef.current ? variableRef.current.t.variableId : formulaId
+      const newVariableId = variableRef.current ? variableRef.current.t.variableId : variableId
       const meta: VariableMetadata = {
-        namespaceId: rootId,
-        variableId,
-        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+        namespaceId,
+        variableId: newVariableId,
         name: nameRef.current || defaultNameRef.current,
         input: editorContentRef.current.input,
         position: realInputs.prevText.length,
-        richType: formulaRichType
+        richType
       }
       const ctx = { formulaContext, meta, interpretContext: { ctx: {}, arguments: [] } }
       const parseResult = parse({ ctx })
@@ -257,15 +250,15 @@ export const useFormula = ({
         activeCompletion: completions[0],
         activeCompletionIndex: 0,
         kind: 'Completion',
-        formulaType: formulaRichType.type,
+        formulaType: richType.type,
         input: editorContentRef.current.input
       })
       doUnselectedFormula()
 
       if (inputIsEmpty || parseResult.valid) {
-        editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, parseResult.position, rootId)
+        editorContentRef.current = fetchEditorContent(newVariable, formulaIsNormal, parseResult.position, namespaceId)
         // console.log('replace editorContent', editorContentRef.current, newVariable)
-        replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
+        replaceRoot({ editorContent: editorContentRef.current, rootId: namespaceId, formulaId: variableId })
       }
 
       variableRef.current = newVariable
@@ -273,7 +266,7 @@ export const useFormula = ({
 
       // devLog({ variable, ref: variableRef.current, finalInput, inputIsEmpty, parseResult, newVariable })
     },
-    [doUnselectedFormula, formulaContext, formulaId, formulaIsNormal, formulaRichType, rootId, updateDefaultName]
+    [doUnselectedFormula, formulaContext, variableId, formulaIsNormal, richType, namespaceId, updateDefaultName]
   )
 
   const handleSelectActiveCompletion = React.useCallback((): void => {
@@ -284,7 +277,7 @@ export const useFormula = ({
     let oldContent = fetchJSONContentArray(content)
     let positionChange: number = currentCompletion.positionChange
     const oldContentLast = oldContent[oldContent.length - 1]
-    const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, position, rootId)
+    const { prevText, nextText } = positionBasedContentArrayToInput(oldContent, position, namespaceId)
 
     if (oldContentLast && prevText && currentCompletion.replacements.length) {
       if (currentCompletion.replacements.includes(prevText) || currentCompletion.name.startsWith(prevText)) {
@@ -329,7 +322,7 @@ export const useFormula = ({
     const newContent: JSONContent[] = [...oldContent, ...completionContents, ...nextContents]
 
     const finalContent = buildJSONContentByArray(newContent)
-    const finalInput = contentArrayToInput(fetchJSONContentArray(finalContent), rootId)
+    const finalInput = contentArrayToInput(fetchJSONContentArray(finalContent), namespaceId)
     const finalInputAfterEqual = formulaIsNormal ? `=${finalInput}` : finalInput
     const newPosition = editorContentRef.current.position + positionChange
 
@@ -338,7 +331,7 @@ export const useFormula = ({
       input: finalInputAfterEqual,
       position: newPosition
     }
-    replaceRoot({ editorContent: editorContentRef.current, rootId, formulaId })
+    replaceRoot({ editorContent: editorContentRef.current, rootId: namespaceId, formulaId: variableId })
 
     devLog('selectCompletion', {
       finalContent,
@@ -350,12 +343,11 @@ export const useFormula = ({
       finalInputAfterEqual
     })
     void doCalculate(false)
-  }, [completion.activeCompletion, doCalculate, formulaId, formulaIsNormal, rootId])
+  }, [completion.activeCompletion, doCalculate, variableId, formulaIsNormal, namespaceId])
 
   const isDisableSave = React.useCallback((): boolean => {
     if (!formulaContext) return true
     if (!variableRef.current) return true
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     if (!(nameRef.current || defaultNameRef.current)) return true
     // if (!inputRef.current) return true
 
@@ -367,12 +359,14 @@ export const useFormula = ({
 
   const updateEditor = React.useCallback(
     (jsonContent: JSONContent, editorPosition: number): void => {
-      const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent), rootId)
+      const newInput = contentArrayToInput(fetchJSONContentArray(jsonContent), namespaceId)
       const value = formulaIsNormal ? `=${newInput}` : newInput
       editorContentRef.current = { content: jsonContent, input: value, position: editorPosition }
-      BrickdocEventBus.dispatch(FormulaCalculateTrigger({ formulaId, rootId, skipExecute: false }))
+      BrickdocEventBus.dispatch(
+        FormulaCalculateTrigger({ formulaId: variableId, rootId: namespaceId, skipExecute: false })
+      )
     },
-    [formulaId, formulaIsNormal, rootId]
+    [variableId, formulaIsNormal, namespaceId]
   )
 
   const setCompletionByIndex = React.useCallback(
@@ -406,7 +400,7 @@ export const useFormula = ({
         variable,
         formulaIsNormal,
         editorContentRef.current.position,
-        rootId
+        namespaceId
       )
 
       if (variable.isNew && !variable.t.task.async) {
@@ -414,7 +408,7 @@ export const useFormula = ({
         updateDefaultName(result.success ? result.result.type : 'any')
       }
     },
-    [formulaIsNormal, rootId, onUpdateFormula, updateDefaultName]
+    [formulaIsNormal, namespaceId, onUpdateFormula, updateDefaultName]
   )
 
   const saveFormula = React.useCallback((): void => {
@@ -425,29 +419,29 @@ export const useFormula = ({
     const input = editorContentRef.current.input
     const v = variableRef.current!
     v.t.definition = input
-    v.t.name = nameRef.current!
+    v.t.name = nameRef.current
     doUnselectedFormula()
 
     v.save()
 
-    BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId, rootId }))
+    BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId: variableId, rootId: namespaceId }))
 
     devLog('save ...', { input, variable: variableRef.current, formulaContext })
-  }, [doUnselectedFormula, formulaContext, formulaId, rootId])
+  }, [doUnselectedFormula, formulaContext, variableId, namespaceId])
 
   const onSaveFormula = React.useCallback((): void => {
     // devLog({ variable: variableRef.current, name, defaultName })
     if (!variableRef.current) {
       // console.error('variable is not found')
       onUpdateFormula?.(undefined)
-      BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId, rootId }))
+      BrickdocEventBus.dispatch(FormulaEditorSavedTrigger({ formulaId: variableId, rootId: namespaceId }))
       return
     }
 
     if (isDisableSave()) return
 
     saveFormula()
-  }, [isDisableSave, saveFormula, onUpdateFormula, formulaId, rootId])
+  }, [isDisableSave, saveFormula, onUpdateFormula, variableId, namespaceId])
 
   const commitFormula = React.useCallback(
     async (definition: string): Promise<void> => {
@@ -511,12 +505,12 @@ export const useFormula = ({
         }
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [completion, onSaveFormula, formulaId, handleSelectActiveCompletion, rootId, setCompletionByIndex])
+  }, [completion, onSaveFormula, variableId, handleSelectActiveCompletion, namespaceId, setCompletionByIndex])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
@@ -524,7 +518,7 @@ export const useFormula = ({
       event => {
         const attrs = event.payload.attrs as CodeFragmentAttrs | undefined
         if (attrs) {
-          const attrCompletion = attrs2completion(formulaContext!, attrs, rootId)
+          const attrCompletion = attrs2completion(formulaContext!, attrs, namespaceId)
           if (attrCompletion) {
             if (attrs.kind === 'Variable') {
               doSelectFormula(attrs.namespaceId, attrs.id)
@@ -538,12 +532,12 @@ export const useFormula = ({
         doUnselectedFormula()
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [completion, doSelectFormula, doUnselectedFormula, formulaContext, formulaId, rootId, setCompletionByIndex])
+  }, [completion, doSelectFormula, doUnselectedFormula, formulaContext, variableId, namespaceId, setCompletionByIndex])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
@@ -557,12 +551,12 @@ export const useFormula = ({
         }
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [formulaId, rootId])
+  }, [variableId, namespaceId])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
@@ -571,12 +565,12 @@ export const useFormula = ({
         onSaveFormula()
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [onSaveFormula, formulaId, rootId])
+  }, [onSaveFormula, variableId, namespaceId])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
@@ -585,12 +579,12 @@ export const useFormula = ({
         void doCalculate(e.payload.skipExecute)
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [doCalculate, formulaId, rootId])
+  }, [doCalculate, variableId, namespaceId])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
@@ -599,12 +593,12 @@ export const useFormula = ({
         updateVariable(e.payload)
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [updateVariable, formulaId, rootId])
+  }, [updateVariable, variableId, namespaceId])
 
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
@@ -613,12 +607,12 @@ export const useFormula = ({
         updateVariable(e.payload)
       },
       {
-        eventId: `${rootId},${formulaId}`,
-        subscribeId: `UseFormula#${rootId},${formulaId}`
+        eventId: `${namespaceId},${variableId}`,
+        subscribeId: `UseFormula#${namespaceId},${variableId}`
       }
     )
     return () => listener.unsubscribe()
-  }, [updateVariable, formulaId, rootId])
+  }, [updateVariable, variableId, namespaceId])
 
   return {
     variableT,

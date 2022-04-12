@@ -18,8 +18,6 @@ export const dumpDisplayResultForDisplay = (t: VariableData): VariableDisplayDat
   return {
     definition: t.definition,
     result: fetchResult(t),
-    type: t.richType.type,
-    kind: t.kind,
     version: VARIABLE_VERSION,
     display: displayValue(fetchResult(t), ''),
     meta: {
