@@ -2,7 +2,6 @@ import React from 'react'
 
 import {
   BrickdocEventBus,
-  Event,
   BlockInput,
   SpreadsheetUpdateCellValue,
   FormulaEditorSavedTrigger,
@@ -138,7 +137,7 @@ export const SpreadsheetCell: React.FC<SpreadsheetCellProps> = ({
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
       SpreadsheetUpdateCellValue,
-      (e: Event) => {
+      e => {
         const { value } = e.payload
         devLog('Spreadsheet update cell', { eventId, value })
         void commitFormula(value)

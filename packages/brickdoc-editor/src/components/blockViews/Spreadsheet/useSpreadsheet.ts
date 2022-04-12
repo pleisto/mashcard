@@ -4,13 +4,13 @@ import { isEqual } from '@brickdoc/active-support'
 import { devLog } from '@brickdoc/design-system'
 import {
   BrickdocEventBus,
-  Event,
   UpdateBlock,
   DeleteBlock,
   CommitBlocks,
   loadSpreadsheetBlocks,
   SpreadsheetLoaded,
-  BlockInput
+  BlockInput,
+  Block
 } from '@brickdoc/schema'
 
 export interface SpreadsheetColumn {
@@ -103,7 +103,7 @@ export const useSpreadsheet = (options: {
 
   BrickdocEventBus.subscribe(
     SpreadsheetLoaded,
-    (e: Event) => {
+    e => {
       const { parentId, blocks } = e.payload
       devLog(`loaded spreadsheet ${parentId}`, blocks)
       const newRows = [...rows]
@@ -133,7 +133,7 @@ export const useSpreadsheet = (options: {
             const newBlock = { ...block, sort: i }
             if (!isEqual(oldBlock, newBlock)) {
               devLog(`Saving row block ${newBlock.id}`)
-              BrickdocEventBus.dispatch(UpdateBlock({ block: newBlock }))
+              BrickdocEventBus.dispatch(UpdateBlock({ block: newBlock as Block }))
               blocksMap.current.set(block.id, newBlock)
             }
             return newBlock
@@ -292,7 +292,7 @@ export const useSpreadsheet = (options: {
       devLog(`Saving cell block`, block)
       setBlockToCellsMap(block)
       blocksMap.current.set(block.id, block)
-      BrickdocEventBus.dispatch(UpdateBlock({ block }))
+      BrickdocEventBus.dispatch(UpdateBlock({ block: block as Block }))
       BrickdocEventBus.dispatch(CommitBlocks({}))
     },
     [setBlockToCellsMap]

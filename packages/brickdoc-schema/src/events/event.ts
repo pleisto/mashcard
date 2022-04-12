@@ -1,16 +1,19 @@
-import { EventType, Event, EventConstructor } from './types'
+import { EventType, Event, EventConstructor, EventConfigure } from './types'
 
-export function event<EventPayload = void>() {
-  return <T extends string>(type: T, customConstructor?: EventConstructor<EventPayload>): EventType => {
-    function eventConstructor(payload: EventPayload): Event {
-      if (customConstructor) {
-        return { type, payload, ...customConstructor(payload) }
-      } else {
-        return { type, payload }
+export function event<EventPayload = void>(configure?: EventConfigure) {
+  return <T extends string>(type: T, customConstructor?: EventConstructor<EventPayload>): EventType<EventPayload> => {
+    function eventConstructor(payload: EventPayload): Event<EventPayload> {
+      return {
+        type,
+        payload,
+        configure: configure ?? {},
+        ...customConstructor?.(payload)
       }
     }
+
     eventConstructor.eventType = type
     eventConstructor.toString = () => type
+
     return eventConstructor
   }
 }

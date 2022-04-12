@@ -2,6 +2,9 @@ import { BrickdocEventBus } from '../eventBus'
 import { event } from '../event'
 
 describe('BrickdocEventBus', () => {
+  beforeEach(() => {
+    BrickdocEventBus.reset()
+  })
   it('can subscribe and dispatch', () => {
     const testEvent = event<string>()('testEvent', payload => {
       return { id: payload }
@@ -22,6 +25,8 @@ describe('BrickdocEventBus', () => {
       { eventId: 'middle' }
     )
 
+    expect(testEvent.toString()).toEqual('testEvent')
+
     expect(testResult.get('testEventHit')).not.toBe(true)
     expect(testResult.get('testEventHitRight')).not.toBe(true)
 
@@ -38,6 +43,44 @@ describe('BrickdocEventBus', () => {
     expect(testResult.get('testEventHitMiddle')).not.toBe(true)
     BrickdocEventBus.dispatch(testEvent('middle'))
     expect(testResult.get('testEventHitMiddle')).toBe(true)
+  })
+
+  it('can unsubscribe', () => {
+    const testEvent = event<string>()('testEvent', payload => {
+      return { id: payload }
+    })
+
+    const testResult = new Map<string, boolean>()
+
+    const { unsubscribe } = BrickdocEventBus.subscribe(testEvent, e => {
+      testResult.set('testEventHit', true)
+    })
+
+    unsubscribe()
+    BrickdocEventBus.dispatch(testEvent(''))
+
+    expect(testResult.get('testEventHit')).not.toBe(true)
+  })
+
+  it('can subscribe persist event', () => {
+    const testEvent = event<string>({ persist: true })('testEvent', payload => {
+      return { id: payload }
+    })
+
+    const testResult = new Map<string, boolean>()
+
+    BrickdocEventBus.dispatch(testEvent(''))
+
+    BrickdocEventBus.subscribe(testEvent, e => {
+      testResult.set('testEventHit', true)
+    })
+
+    BrickdocEventBus.subscribe(testEvent, e => {
+      testResult.set('testEventSecondHit', true)
+    })
+
+    expect(testResult.get('testEventHit')).toBe(true)
+    expect(testResult.get('testEventSecondHit')).not.toBe(true)
   })
 
   it('can dispatch subscriber in order of priority', () => {

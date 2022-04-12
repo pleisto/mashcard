@@ -8,10 +8,10 @@ export const BlockDeleted = event<Block>()('BlockDeleted', (block: Block) => {
   return { id: block.id }
 })
 
-export const UpdateBlock = event<{ block: Block; commit: boolean }>()('UpdateBlock', ({ block, commit }) => {
+export const UpdateBlock = event<{ block: Block; commit?: boolean }>()('UpdateBlock', ({ block, commit }) => {
   return { id: block.id }
 })
-export const DeleteBlock = event<{ blockId: string; commit: boolean }>()('DeleteBlock', ({ blockId, commit }) => {
+export const DeleteBlock = event<{ blockId: string; commit?: boolean }>()('DeleteBlock', ({ blockId, commit }) => {
   return { id: blockId }
 })
 export const CommitBlocks = event<{}>()('CommitBlocks', () => {
@@ -71,24 +71,35 @@ export const FormulaTaskCompleted = event<any>()('FormulaTaskCompleted', v => {
   return { id: `${v.namespaceId},${v.variableId}` }
 })
 
-export const SpreadsheetReloadViaId = event<{
+export interface SpreadsheetReloadViaIdPayload {
   spreadsheetId: string
   namespaceId: string
-  scope: any
-  key: string
-}>()('SpreadsheetReloadViaId', ({ spreadsheetId, namespaceId, key }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
-})
+  scope?: any
+  key?: string
+}
 
-export const SpreadsheetUpdateNameViaId = event<{
+export const SpreadsheetReloadViaId = event<SpreadsheetReloadViaIdPayload>()(
+  'SpreadsheetReloadViaId',
+  ({ spreadsheetId, namespaceId, key }) => {
+    return { id: `${namespaceId},${spreadsheetId}` }
+  }
+)
+
+export interface SpreadsheetUpdateNameViaIdPayload {
+  scopes?: any[]
   spreadsheetId: string
   namespaceId: string
   name: string
-  scope: any
+  scope?: any
   key: string
-}>()('SpreadsheetUpdateNameViaId', ({ spreadsheetId, namespaceId, name, key }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
-})
+}
+
+export const SpreadsheetUpdateNameViaId = event<SpreadsheetUpdateNameViaIdPayload>()(
+  'SpreadsheetUpdateNameViaId',
+  ({ spreadsheetId, namespaceId, name, key }) => {
+    return { id: `${namespaceId},${spreadsheetId}` }
+  }
+)
 
 export const SpreadsheetUpdateRowsViaId = event<{
   spreadsheetId: string
@@ -126,7 +137,7 @@ export const FormulaContextNameRemove = event<{
   return { id: `${namespaceId}#${name}` }
 })
 
-export const SlashMenuHide = event<void>()('SlashMenuHide')
+export const SlashMenuHide = event<{}>()('SlashMenuHide')
 
 export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenuKeyboardEventTrigger', ({ key }) => {
   return { key }
@@ -142,7 +153,7 @@ export const FormulaKeyboardEventTrigger = event<{
   return { key, formulaId, rootId, isEditor, completionIndex, id: `${rootId},${formulaId}` }
 })
 
-export const FormulaEditorHoverEventTrigger = event<{ attrs: any; formulaId: string; rootId: string }>()(
+export const FormulaEditorHoverEventTrigger = event<{ attrs: any; formulaId?: string; rootId?: string }>()(
   'FormulaEditorHoverEventTrigger',
   ({ attrs, formulaId, rootId }) => {
     return { attrs, formulaId, rootId, id: `${rootId},${formulaId}` }
@@ -226,6 +237,6 @@ export const DiscussionMarkInactive = event<{ markId?: string }>()('DiscussionMa
   return { markId }
 })
 
-export const DiscussionListToggle = event<{ visible: boolean }>()('DiscussionListTrigger', ({ visible }) => {
+export const DiscussionListToggle = event<{ visible?: boolean }>()('DiscussionListTrigger', ({ visible }) => {
   return { visible }
 })

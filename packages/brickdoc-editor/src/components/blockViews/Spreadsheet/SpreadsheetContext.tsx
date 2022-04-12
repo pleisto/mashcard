@@ -139,7 +139,7 @@ export const useSpreadsheetContext = (options: {
           const columnId = columnIds[columnIdx + ci]
           if (rowId && columnId) {
             const cellId = `${rowId},${columnId}`
-            BrickdocEventBus.dispatch(SpreadsheetUpdateCellValue({ parentId, cellId, value: c }))
+            BrickdocEventBus.dispatch(SpreadsheetUpdateCellValue({ parentId: parentId!, cellId, value: c }))
           }
         })
       })

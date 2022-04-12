@@ -6,20 +6,34 @@ import {
   EventIdSubscribers,
   EventSubscriber,
   EventSubscribed,
-  EventSubscribeConfig
+  EventSubscribeConfig,
+  EventsPool
 } from './types'
 
 class EventBus {
   private static instance?: EventBus = undefined
-  private eventSubscribers: EventSubscribers
-  private eventIdSubscribers: EventIdSubscribers
+  private eventSubscribers: EventSubscribers = {}
+  private eventIdSubscribers: EventIdSubscribers = {}
+  private eventsPool: EventsPool = {}
 
-  constructor() {
-    this.eventSubscribers = {}
-    this.eventIdSubscribers = {}
+  private subscribers(event: Event): EventSubscriber[] {
+    return [
+      ...(this.eventSubscribers[event.type] ?? []),
+      ...(this.eventIdSubscribers[event.type]?.[event.id ?? ''] ?? [])
+    ].sort((a, b) => (a.config.priority ?? 0) - (b.config.priority ?? 0))
   }
 
-  public subscribe(eventType: EventType, callback: EventCallback, config: EventSubscribeConfig = {}): EventSubscribed {
+  public reset(): void {
+    this.eventSubscribers = {}
+    this.eventIdSubscribers = {}
+    this.eventsPool = {}
+  }
+
+  public subscribe<T = {}>(
+    eventType: EventType<T>,
+    callback: EventCallback<T>,
+    config: EventSubscribeConfig = {}
+  ): EventSubscribed {
     const typeName = eventType.eventType
     const { eventId } = config
     let subscribers: EventSubscriber[]
@@ -27,15 +41,15 @@ class EventBus {
       if (!this.eventIdSubscribers[typeName]) {
         this.eventIdSubscribers[typeName] = {}
       }
-      if (!this.eventIdSubscribers[typeName][eventId]) {
-        this.eventIdSubscribers[typeName][eventId] = []
+      if (!this.eventIdSubscribers[typeName]![eventId]) {
+        this.eventIdSubscribers[typeName]![eventId] = []
       }
-      subscribers = this.eventIdSubscribers[typeName][eventId]
+      subscribers = this.eventIdSubscribers[typeName]![eventId]!
     } else {
       if (!this.eventSubscribers[typeName]) {
         this.eventSubscribers[typeName] = []
       }
-      subscribers = this.eventSubscribers[typeName]
+      subscribers = this.eventSubscribers[typeName]!
     }
     const subscriber: EventSubscriber = { config, callback }
     if (subscriber.config.subscribeId) {
@@ -51,32 +65,34 @@ class EventBus {
         subscribers.splice(idx, 1)
       }
     }
+
+    this.eventsPool[eventType.eventType]?.forEach(event => {
+      this.dispatch(event)
+    })
+
     return { unsubscribe }
   }
 
   public dispatch(event: Event): void {
-    const subscribers: EventSubscriber[] = []
-    const eventSubscribers = this.eventSubscribers[event.type]
-    if (eventSubscribers) {
-      eventSubscribers.forEach(s => subscribers.push(s))
+    if (!this.eventsPool[event.type]) {
+      this.eventsPool[event.type] = []
     }
-    if (event.id) {
-      const eventTypeSubscribers = this.eventIdSubscribers[event.type]
-      if (eventTypeSubscribers) {
-        const eventIdSubscribers = eventTypeSubscribers[event.id]
-        if (eventIdSubscribers) {
-          eventIdSubscribers.forEach(s => subscribers.push(s))
-        }
+    this.eventsPool[event.type]?.push(event)
+
+    const subscribers = this.subscribers(event)
+
+    const consumable = subscribers.length > 0 || !event.configure.persist
+    if (!consumable) return
+
+    while ((this.eventsPool[event.type]?.length ?? 0) > 0) {
+      const currentEvent = this.eventsPool[event.type]?.shift()
+
+      if (currentEvent) {
+        subscribers.forEach(s => {
+          s.callback(currentEvent)
+        })
       }
     }
-
-    // console.log('dispatch', event, subscribers)
-
-    subscribers
-      .sort((a, b) => (a.config.priority ?? 0) - (b.config.priority ?? 0))
-      .forEach(s => {
-        s.callback(event)
-      })
   }
 
   public static getInstance(): EventBus {
