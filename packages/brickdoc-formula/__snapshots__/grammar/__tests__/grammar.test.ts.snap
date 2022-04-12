@@ -3334,6 +3334,79 @@ Array [
 ]
 `;
 
+exports[`Simple test case [newline 5] = 
+1
++
+2
+ // => 3 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "  ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Plus",
+    "display": "+",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "2",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+]
+`;
+
 exports[`Simple test case [not operator vs addition] =!1+1 // => ✗ 1`] = `
 Array [
   Object {

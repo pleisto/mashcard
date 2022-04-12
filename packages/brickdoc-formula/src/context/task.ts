@@ -1,7 +1,8 @@
 import { FunctionContext, VariableTask, VariableValue } from '../types'
 import { v4 as uuid } from 'uuid'
-import { BrickdocEventBus, FormulaTaskCompleted, FormulaTaskStarted } from '@brickdoc/schema'
+import { BrickdocEventBus } from '@brickdoc/schema'
 import { ParseResult } from '../grammar'
+import { FormulaTaskCompleted, FormulaTaskStarted } from '../events'
 
 type TaskInput = (
   | {

@@ -1,12 +1,14 @@
 import React from 'react'
-import { SpreadsheetType, SpreadsheetClass, ColumnInitializer, Row } from '@brickdoc/formula'
 import {
-  BlockInput,
-  BrickdocEventBus,
-  SpreadsheetUpdateColumnsViaId,
+  SpreadsheetType,
+  SpreadsheetClass,
+  ColumnInitializer,
+  Row,
   SpreadsheetUpdateNameViaId,
-  SpreadsheetUpdateRowsViaId
-} from '@brickdoc/schema'
+  SpreadsheetUpdateRowsViaId,
+  SpreadsheetUpdateColumnsViaId
+} from '@brickdoc/formula'
+import { BlockInput, BrickdocEventBus } from '@brickdoc/schema'
 import { SpreadsheetColumn } from './useSpreadsheet'
 import { columnDisplayIndex, columnDisplayTitle } from './helper'
 import { useExternalProps } from '../../../hooks/useExternalProps'

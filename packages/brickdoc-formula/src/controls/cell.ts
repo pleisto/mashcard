@@ -1,4 +1,4 @@
-import { SpreadsheetReloadViaId } from '@brickdoc/schema'
+import { SpreadsheetReloadViaId } from '../events'
 import { ColumnId, EventDependency, NamespaceId, SpreadsheetId, uuid, VariableDisplayData } from '../types'
 import { CellType, SpreadsheetType, Cell } from './types'
 

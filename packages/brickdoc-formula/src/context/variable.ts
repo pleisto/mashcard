@@ -1,15 +1,4 @@
-import {
-  BlockNameLoad,
-  BrickdocEventBus,
-  EventSubscribed,
-  FormulaContextNameChanged,
-  FormulaContextNameRemove,
-  FormulaInnerRefresh,
-  FormulaTaskCompleted,
-  FormulaTaskStarted,
-  FormulaTickViaId,
-  FormulaUpdatedViaId
-} from '@brickdoc/schema'
+import { BlockNameLoad, BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
 import {
   ContextInterface,
   VariableData,
@@ -29,6 +18,16 @@ import { dumpValue } from './persist'
 import { codeFragments2definition, variableKey } from '../grammar/convert'
 import { v4 as uuid } from 'uuid'
 import { cleanupEventDependency, maybeEncodeString, shouldReceiveEvent } from '../grammar'
+import {
+  FormulaContextNameChanged,
+  FormulaContextNameRemove,
+  FormulaInnerRefresh,
+  FormulaTaskCompleted,
+  FormulaTaskStarted,
+  FormulaTickViaId,
+  FormulaUpdatedDraftTViaId,
+  FormulaUpdatedViaId
+} from '../events'
 
 export const errorIsFatal = ({ task }: VariableData): boolean => {
   if (task.async) {
@@ -151,7 +150,11 @@ export class VariableClass implements VariableInterface {
     tNotMatched?: boolean
     savedTNotMatched?: boolean
   }): void {
-    if (!savedTNotMatched) {
+    if (savedTNotMatched) {
+      if (!tNotMatched) {
+        BrickdocEventBus.dispatch(FormulaUpdatedDraftTViaId(this))
+      }
+    } else {
       BrickdocEventBus.dispatch(FormulaUpdatedViaId(this))
     }
     if (!skipPersist) {
@@ -216,7 +219,6 @@ export class VariableClass implements VariableInterface {
     }
 
     this.subscribeDependencies(savedTMatched ? this.savedT! : this.t)
-
     this.onUpdate({ savedTNotMatched: !savedTMatched, tNotMatched: !tMatched })
   }
 
@@ -439,7 +441,7 @@ export class VariableClass implements VariableInterface {
             return { ...c, attrs: { ...c.attrs, name: e.payload.t.name } }
           })
           const definition = codeFragments2definition(newCodeFragments, this.t.namespaceId)
-          void this.maybeReparseAndPersist(`FormulaUpdatedViaId_${variableId}`, e.payload.t.currentUUID, definition)
+          void this.maybeReparseAndPersist(`FormulaUpdatedViaId_${variableId}`, e.payload.currentUUID, definition)
         },
         {
           eventId: `${namespaceId},${variableId}`,

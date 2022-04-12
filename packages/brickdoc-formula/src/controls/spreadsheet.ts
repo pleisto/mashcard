@@ -1,11 +1,10 @@
+import { BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
 import {
-  BrickdocEventBus,
-  EventSubscribed,
   SpreadsheetReloadViaId,
   SpreadsheetUpdateColumnsViaId,
   SpreadsheetUpdateNameViaId,
   SpreadsheetUpdateRowsViaId
-} from '@brickdoc/schema'
+} from '../events'
 import {
   CodeFragmentVisitor,
   column2codeFragment,
@@ -269,7 +268,7 @@ export class SpreadsheetClass implements SpreadsheetType {
   }
 
   private handleInterpretRow(number: number): AnyTypeResult {
-    const row = this.findRow({namespaceId: this.namespaceId, type: 'name', value: String(number)})
+    const row = this.findRow({ namespaceId: this.namespaceId, type: 'name', value: String(number) })
     if (!row) {
       return { type: 'Error', result: `Row ${number} not found`, errorKind: 'runtime' }
     }

@@ -1,7 +1,12 @@
 import { FormulaContext, FormulaSourceType, quickInsert, VariableMetadata, VariableValue } from '@brickdoc/formula'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { JSONContent } from '@tiptap/core'
-import { buildJSONContentByArray, contentArrayToInput, fetchJSONContentArray } from '../../../../helpers'
+import {
+  buildJSONContentByArray,
+  buildJSONContentByDefinition,
+  contentArrayToInput,
+  fetchJSONContentArray
+} from '../../../../helpers'
 import { useFormula } from '../useFormula'
 
 const rootId = 'eb373fbc-a6e9-40a6-8c4b-45cda7230dda'
@@ -322,6 +327,7 @@ describe('useFormula', () => {
       await quickInsert({ ctx: { formulaContext, meta, interpretContext } })
     }
   })
+
   it('normal initial', () => {
     const { result } = renderHook(() => useFormula(spreadsheetInput))
 
@@ -471,6 +477,31 @@ describe('useFormula', () => {
       // eslint-disable-next-line jest/no-conditional-expect
       expect(result.current.editorContent.content).toEqual(buildJSONContentByArray(output.content as JSONContent[]))
     }
+    jest.clearAllTimers()
+  })
+
+  // TODO refactor me
+  // https://jestjs.io/docs/timer-mocks#advance-timers-by-time
+  // await new Promise(resolve => setTimeout(resolve, 50))
+  // jest.advanceTimersByTime(50)
+  it('async', async () => {
+    jest.useRealTimers()
+    const { result } = renderHook(() => useFormula(normalInput))
+
+    const content = buildJSONContentByDefinition('SLEEP(111)')!
+
+    await act(async () => {
+      result.current.updateEditor(content, 0)
+    })
+
+    expect(result.current.variableT?.valid).toEqual(true)
+    expect(result.current.variableT!.task.async).toEqual(true)
+
+    await new Promise(resolve => setTimeout(resolve, 50))
+    expect(result.current.variableT!.task.async).toEqual(true)
+
+    await new Promise(resolve => setTimeout(resolve, 200))
+    expect(result.current.variableT!.task.async).toEqual(false)
     jest.clearAllTimers()
   })
 })

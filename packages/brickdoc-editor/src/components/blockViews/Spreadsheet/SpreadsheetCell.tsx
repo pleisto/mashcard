@@ -1,18 +1,13 @@
 import React from 'react'
 
-import {
-  BrickdocEventBus,
-  BlockInput,
-  SpreadsheetUpdateCellValue,
-  FormulaEditorSavedTrigger,
-  SpreadsheetReloadViaId
-} from '@brickdoc/schema'
+import { BrickdocEventBus, BlockInput, SpreadsheetUpdateCellValue, FormulaEditorSavedTrigger } from '@brickdoc/schema'
 import { FormulaBlockRender, useFormula } from '../FormulaView'
 import {
   columnDisplayIndex,
   displayValue,
   dumpDisplayResultForDisplay,
   fetchResult,
+  SpreadsheetReloadViaId,
   VariableDisplayData,
   VariableInterface
 } from '@brickdoc/formula'

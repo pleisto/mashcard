@@ -18,7 +18,8 @@ import {
   variable2codeFragment
 } from '../grammar'
 import { fetchResult } from '../context/variable'
-import { BlockNameLoad, BrickdocEventBus, EventSubscribed, SpreadsheetUpdateNameViaId } from '@brickdoc/schema'
+import { BlockNameLoad, BrickdocEventBus, EventSubscribed } from '@brickdoc/schema'
+import { SpreadsheetUpdateNameViaId } from '../events'
 
 export class BlockClass implements BlockType {
   _formulaContext: ContextInterface

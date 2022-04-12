@@ -1,4 +1,4 @@
-import { SpreadsheetReloadViaId } from '@brickdoc/schema'
+import { SpreadsheetReloadViaId } from '../events'
 import { CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
 import {
   AnyTypeResult,

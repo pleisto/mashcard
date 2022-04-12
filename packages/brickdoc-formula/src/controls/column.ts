@@ -14,8 +14,8 @@ import {
   VariableMetadata
 } from '../types'
 import { codeFragments2definition, CodeFragmentVisitor, FormulaInterpreter } from '../grammar'
-import { SpreadsheetReloadViaId } from '@brickdoc/schema'
 import { CellClass } from '.'
+import { SpreadsheetReloadViaId } from '../events'
 
 export class ColumnClass implements ColumnType {
   columnId: ColumnId

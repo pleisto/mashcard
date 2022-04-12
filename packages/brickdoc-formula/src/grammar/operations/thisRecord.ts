@@ -1,4 +1,4 @@
-import { SpreadsheetReloadViaId } from '@brickdoc/schema'
+import { SpreadsheetReloadViaId } from '../../events'
 import { CodeFragment, ErrorMessage, EventDependency } from '../../types'
 import { spreadsheet2attrs, spreadsheet2codeFragment } from '../convert'
 import { OperatorType } from '../operator'

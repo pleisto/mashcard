@@ -725,6 +725,11 @@ const testCases: TestCase[] = [
     value: 2
   },
   {
+    input: '= \n1\n+\n2\n',
+    label: 'newline 5',
+    value: 3
+  },
+  {
     input: '="foo" &&& 123',
     parseErrorType: 'syntax',
     label: 'TODO &&&',

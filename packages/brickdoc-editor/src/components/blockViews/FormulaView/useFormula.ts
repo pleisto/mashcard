@@ -12,7 +12,9 @@ import {
   FormulaType,
   codeFragments2definition,
   VariableMetadata,
-  VariableRichType
+  VariableRichType,
+  FormulaUpdatedDraftTViaId,
+  FormulaUpdatedViaId
 } from '@brickdoc/formula'
 import {
   BrickdocEventBus,
@@ -20,7 +22,6 @@ import {
   FormulaEditorSaveEventTrigger,
   FormulaCalculateTrigger,
   FormulaKeyboardEventTrigger,
-  FormulaUpdatedViaId,
   FormulaEditorSavedTrigger,
   FormulaEditorHoverEventTrigger,
   FormulaEditorSelectEventTrigger
@@ -594,6 +595,20 @@ export const useFormula = ({
   React.useEffect(() => {
     const listener = BrickdocEventBus.subscribe(
       FormulaUpdatedViaId,
+      e => {
+        updateVariable(e.payload)
+      },
+      {
+        eventId: `${rootId},${formulaId}`,
+        subscribeId: `UseFormula#${rootId},${formulaId}`
+      }
+    )
+    return () => listener.unsubscribe()
+  }, [updateVariable, formulaId, rootId])
+
+  React.useEffect(() => {
+    const listener = BrickdocEventBus.subscribe(
+      FormulaUpdatedDraftTViaId,
       e => {
         updateVariable(e.payload)
       },

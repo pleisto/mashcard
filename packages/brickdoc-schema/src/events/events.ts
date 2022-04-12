@@ -44,99 +44,6 @@ export const BlockNameLoad = event<{ id: string; name: string }>()('BlockNameLoa
   return { id }
 })
 
-export const FormulaInnerRefresh = event<{ namespaceId: string; variableId: string }>()(
-  'FormulaInnerRefresh',
-  ({ namespaceId, variableId }) => {
-    return { id: `${namespaceId},${variableId}` }
-  }
-)
-
-export const FormulaTickViaId = event<{
-  uuid: string
-  variableId: string
-  namespaceId: string
-}>()('FormulaTickViaId', ({ uuid, variableId, namespaceId }) => {
-  return { id: `${namespaceId},${variableId}`, uuid, variableId, namespaceId }
-})
-
-export const FormulaUpdatedViaId = event<any>()('FormulaUpdatedViaId', v => {
-  return { id: `${v.t.namespaceId},${v.t.variableId}` }
-})
-
-export const FormulaTaskStarted = event<any>()('FormulaTaskStarted', v => {
-  return { id: `${v.namespaceId},${v.variableId}` }
-})
-
-export const FormulaTaskCompleted = event<any>()('FormulaTaskCompleted', v => {
-  return { id: `${v.namespaceId},${v.variableId}` }
-})
-
-export interface SpreadsheetReloadViaIdPayload {
-  spreadsheetId: string
-  namespaceId: string
-  scope?: any
-  key?: string
-}
-
-export const SpreadsheetReloadViaId = event<SpreadsheetReloadViaIdPayload>()(
-  'SpreadsheetReloadViaId',
-  ({ spreadsheetId, namespaceId, key }) => {
-    return { id: `${namespaceId},${spreadsheetId}` }
-  }
-)
-
-export interface SpreadsheetUpdateNameViaIdPayload {
-  scopes?: any[]
-  spreadsheetId: string
-  namespaceId: string
-  name: string
-  scope?: any
-  key: string
-}
-
-export const SpreadsheetUpdateNameViaId = event<SpreadsheetUpdateNameViaIdPayload>()(
-  'SpreadsheetUpdateNameViaId',
-  ({ spreadsheetId, namespaceId, name, key }) => {
-    return { id: `${namespaceId},${spreadsheetId}` }
-  }
-)
-
-export const SpreadsheetUpdateRowsViaId = event<{
-  spreadsheetId: string
-  namespaceId: string
-  rows: any
-  key: string
-}>()('SpreadsheetUpdateRowsViaId', ({ spreadsheetId, namespaceId, rows, key }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
-})
-
-export const SpreadsheetUpdateColumnsViaId = event<{
-  spreadsheetId: string
-  namespaceId: string
-  columns: any
-  key: string
-}>()('SpreadsheetUpdateColumnsViaId', ({ spreadsheetId, namespaceId, columns, key }) => {
-  return { id: `${namespaceId},${spreadsheetId}` }
-})
-
-export const FormulaContextNameChanged = event<{
-  id: string
-  namespaceId: string
-  name: string
-  kind: string
-}>()('FormulaContextNameChanged', ({ id, namespaceId, name, kind }) => {
-  return { id: `${namespaceId}#${name}` }
-})
-
-export const FormulaContextNameRemove = event<{
-  id: string
-  namespaceId: string
-  name: string
-  kind: string
-}>()('FormulaContextNameRemove', ({ id, namespaceId, name, kind }) => {
-  return { id: `${namespaceId}#${name}` }
-})
-
 export const SlashMenuHide = event<{}>()('SlashMenuHide')
 
 export const SlashMenuKeyboardEventTrigger = event<{ key: string }>()('SlashMenuKeyboardEventTrigger', ({ key }) => {
@@ -201,13 +108,6 @@ export const FormulaCalculateTrigger = event<{
 }>()('FormulaCalculateTrigger', ({ formulaId, rootId, skipExecute }) => {
   return { id: `${rootId},${formulaId}`, formulaId, rootId, skipExecute }
 })
-
-export const FormulaContextTickTrigger = event<{ domain: string; state: any }>()(
-  'FormulaContextTickTrigger',
-  ({ domain, state }) => {
-    return { id: `FormulaContext#${domain}`, domain, state }
-  }
-)
 
 export interface ExplorerMenuItem {
   label: React.ReactElement

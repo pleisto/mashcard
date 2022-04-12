@@ -1,7 +1,8 @@
-import { BrickdocEventBus, FormulaInnerRefresh } from '@brickdoc/schema'
+import { BrickdocEventBus } from '@brickdoc/schema'
 import { SelectInitializer, SelectOption, SelectType } from './types'
 import { ContextInterface, FunctionContext, FunctionResult, VariableMetadata } from '../types'
 import { functionResult2lambda } from '../grammar/lambda'
+import { FormulaInnerRefresh } from '../events'
 
 export class SelectClass implements SelectType {
   _meta: VariableMetadata
