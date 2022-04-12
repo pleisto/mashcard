@@ -847,26 +847,53 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
     const functionKey = buildFunctionKey(group, name, true)
 
-    const nameFragment: CodeFragment = {
-      code: 'FunctionName',
-      errors: [],
-      hide: false,
-      type: 'any',
-      display: functionKey,
-      attrs: undefined
-    }
+    const nameFragments: CodeFragment[] =
+      names.length === 1
+        ? [
+            {
+              code: 'Function',
+              errors: [],
+              hide: false,
+              type: 'any',
+              display: functionKey,
+              attrs: undefined
+            }
+          ]
+        : [
+            {
+              code: 'FunctionGroup',
+              errors: [],
+              hide: false,
+              type: 'any',
+              display: group,
+              attrs: undefined
+            },
+            {
+              code: 'DoubleColon',
+              errors: [],
+              hide: false,
+              type: 'any',
+              display: '::',
+              attrs: undefined
+            },
+            {
+              code: 'Function',
+              errors: [],
+              hide: false,
+              type: 'any',
+              display: name,
+              attrs: undefined
+            }
+          ]
 
     if (!ctx.LParen) {
       this.nameDependencies.push({ namespaceId: this.ctx.meta.namespaceId, name: functionKey })
 
       return {
-        codeFragments: [
-          {
-            ...nameFragment,
-            code: 'Function',
-            errors: [{ message: `Unknown function ${functionKey}`, type: 'syntax' }]
-          }
-        ],
+        codeFragments: nameFragments.map(c => ({
+          ...c,
+          errors: [{ message: `Unknown function ${functionKey}`, type: 'syntax' }]
+        })),
         image: images.join(''),
         type: 'any'
       }
@@ -930,11 +957,10 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
       const { errorMessages, newType } = intersectType(type, clause.returns, 'FunctionCall', this.ctx)
       return {
         codeFragments: [
-          {
-            ...nameFragment,
-            code: 'Function',
-            errors: [...chainError, ...errorMessages, ...argsErrorMessages]
-          },
+          ...nameFragments.map(c => ({
+            ...c,
+            errors: [...chainError, ...errorMessages, ...argsErrorMessages, ...c.errors]
+          })),
           { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
           ...argsCodeFragments,
           ...rparenCodeFragments
@@ -950,11 +976,7 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 
       return {
         codeFragments: [
-          {
-            ...nameFragment,
-            code: 'Function',
-            errors: clauseErrorMessages
-          },
+          ...nameFragments.map(c => ({ ...c, errors: [...clauseErrorMessages, ...c.errors] })),
           { ...token2fragment(ctx.LParen[0], 'any'), errors: rParenErrorMessages },
           ...argsCodeFragments,
           ...rparenCodeFragments

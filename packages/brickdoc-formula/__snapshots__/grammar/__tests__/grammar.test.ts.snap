@@ -2478,6 +2478,115 @@ Array [
 ]
 `;
 
+exports[`Simple test case [function with group] =custom::ADD (  -1,  1  ) // => 0 1`] = `
+Array [
+  Object {
+    "attrs": undefined,
+    "code": "Equal",
+    "display": "=",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "FunctionGroup",
+    "display": "custom",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "DoubleColon",
+    "display": "::",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Function",
+    "display": "ADD",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": " ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "LParen",
+    "display": "(",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "  ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "-1",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Comma",
+    "display": ",",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "  ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "NumberLiteral",
+    "display": "1",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "Space",
+    "display": "  ",
+    "errors": Array [],
+    "hide": false,
+    "type": "any",
+  },
+  Object {
+    "attrs": undefined,
+    "code": "RParen",
+    "display": ")",
+    "errors": Array [],
+    "hide": false,
+    "type": "number",
+  },
+]
+`;
+
 exports[`Simple test case [js precision] =123123123123123123123 // => 123123123123123130000 1`] = `
 Array [
   Object {

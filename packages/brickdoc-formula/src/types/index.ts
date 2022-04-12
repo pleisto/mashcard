@@ -406,6 +406,8 @@ export type ComplexCodeFragmentType =
 export type SimpleCodeFragmentType =
   | 'FunctionName'
   | 'Function'
+  | 'FunctionGroup'
+  | 'DoubleColon'
   | 'StringLiteral'
   | 'NumberLiteral'
   | 'BooleanLiteral'

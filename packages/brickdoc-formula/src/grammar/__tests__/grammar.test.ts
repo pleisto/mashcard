@@ -745,6 +745,11 @@ const testCases: TestCase[] = [
     value: 1
   },
   {
+    input: '=custom::ADD (  -1,  1  )',
+    label: 'function with group',
+    value: 0
+  },
+  {
     input: '=ABS ()',
     parseErrorType: 'syntax',
     errorMessage: 'Miss argument'

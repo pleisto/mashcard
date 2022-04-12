@@ -145,7 +145,9 @@ const simpleCommonTestCases = [
     resultData: 'Expected string but got number'
   },
   { input: ' num1 & " "', newInput: ' #CurrentBlock.num1 & " "', resultData: 'Expected string but got number' },
-  { input: 'a+num1', newInput: 'a+#CurrentBlock.num1', positions: [1], resultData: 'Unknown function a' }
+  { input: 'a+num1', newInput: 'a+#CurrentBlock.num1', positions: [1], resultData: 'Unknown function a' },
+
+  { input: 'custom::ADD(1)', positions: [1, 12], resultData: 'Argument count mismatch' }
 ]
 
 const simpleNormalTestCases = [
