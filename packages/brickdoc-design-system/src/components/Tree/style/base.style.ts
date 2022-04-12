@@ -118,7 +118,7 @@ export const EmptyNode = styled('p', {
   lineHeight: theme.space.xxxl,
   color: theme.colors.typeThirdary,
   paddingLeft: theme.space.lg,
-  marginBottom: theme.space.xxxs
+  borderBottom: `${theme.space.xxxs} solid #00000000`
 })
 
 export const Base = styled('div', {
@@ -129,7 +129,7 @@ export const Base = styled('div', {
   borderRadius: theme.space.xxs,
   background: 'transparent',
   marginRight: theme.space.xxxs,
-  marginBottom: theme.space.xxxs,
+  borderBottom: `${theme.space.xxxs} solid #00000000`,
   outline: 'none',
   '&:hover': {
     include: ['treeDefault'],
