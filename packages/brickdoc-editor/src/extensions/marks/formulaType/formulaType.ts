@@ -1,9 +1,9 @@
 import { attrsToColorType, CodeFragment } from '@brickdoc/formula'
 import { JSONContent, mergeAttributes } from '@tiptap/core'
-import { FORMULA_COLORS } from '../../../helpers'
 import { SetDocAttrStep } from '../../extensions/sync/SetDocAttrStep'
 import { meta } from './meta'
 import { createMark } from '../../common'
+import { FORMULA_COLOR_METAS } from '../../../components/ui/Formula'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -33,7 +33,7 @@ export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>
             return {}
           }
 
-          const colorMeta = FORMULA_COLORS[attrsToColorType(attributes as CodeFragment)]
+          const colorMeta = FORMULA_COLOR_METAS[attrsToColorType(attributes as CodeFragment)]
 
           if (!colorMeta) {
             return {
@@ -44,7 +44,7 @@ export const FormulaType = createMark<FormulaTypeOptions, FormulaTypeAttributes>
 
           return {
             'data-code': attributes.code,
-            style: `color: ${colorMeta.colorMain}; font-family: Fira Code;`
+            style: `color: ${colorMeta.colorCode}; font-family: Fira Code;`
           }
         }
       },

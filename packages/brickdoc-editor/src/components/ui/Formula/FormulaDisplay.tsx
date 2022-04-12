@@ -1,17 +1,9 @@
 import React from 'react'
 import { Icon } from '@brickdoc/design-system'
-import {
-  ButtonResult,
-  InputResult,
-  SpreadsheetType,
-  FormulaSourceType,
-  VariableDisplayData,
-  loadDisplayResult,
-  RangeType
-} from '@brickdoc/formula'
+import { FormulaSourceType, VariableDisplayData, loadDisplayResult } from '@brickdoc/formula'
 import { SelectedType } from '../../blockViews/FormulaView/useFormula'
 import { useExternalProps } from '../../../hooks/useExternalProps'
-import { FormulaButton, FormulaInput, FormulaLiteral, FormulaSpreadsheet, FormulaValue } from '.'
+import { FormulaLiteral, FormulaValue } from '.'
 
 export interface FormulaDisplayProps {
   displayData?: VariableDisplayData
@@ -66,32 +58,6 @@ export const FormulaDisplay: React.FC<FormulaDisplayProps> = ({
     const viewRender = formulaContext.findViewRender(dataResult.view.type)
     if (viewRender) {
       preview = viewRender(dataResult.view.attrs, newDisplayData)
-    }
-  }
-
-  if (!preview) {
-    switch (dataResult.type) {
-      case 'Button':
-        preview = <FormulaButton result={newDisplayData.result as ButtonResult} formulaType={newDisplayData.type} />
-        break
-      case 'Input':
-        preview = <FormulaInput result={newDisplayData.result as InputResult} formulaType={newDisplayData.type} />
-        break
-      case 'Spreadsheet':
-        preview = <FormulaSpreadsheet spreadsheet={newDisplayData.result.result as SpreadsheetType} />
-        break
-      case 'Range':
-        preview = (
-          <FormulaSpreadsheet
-            spreadsheet={(newDisplayData.result.result as any).spreadsheet}
-            columnIds={(newDisplayData.result.result as RangeType).columnIds}
-            rowIds={(newDisplayData.result.result as RangeType).rowIds}
-            clip={true}
-          />
-        )
-        break
-      default:
-        break
     }
   }
 
