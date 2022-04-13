@@ -44,6 +44,8 @@ interface PageMenuProps {
   // setPopoverKey: React.Dispatch<React.SetStateAction<string | undefined>>
   titleText: string
   pin: boolean
+  parentId?: string | null
+  nearNodeId?: string
 }
 
 export const PageMenu: React.FC<PageMenuProps> = ({
@@ -53,7 +55,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   mutable = true,
   pin,
   title,
-  titleText
+  titleText,
+  parentId,
+  nearNodeId
 }) => {
   const navigate = useNavigate()
   const client = useApolloClient()
@@ -96,6 +100,19 @@ export const PageMenu: React.FC<PageMenuProps> = ({
           }
         }
       })
+    }
+    if (nearNodeId) {
+      navigate(`/${domain}/${nearNodeId}`)
+      return
+    }
+    if (parentId) {
+      navigate(`/${domain}/${parentId}`)
+      return
+    }
+    const newPageInput = { title: '' }
+    const { data } = await blockCreate({ variables: { input: newPageInput } })
+    if (data?.blockCreate?.id) {
+      navigate(`/${domain}/${data?.blockCreate?.id}`)
     }
   }
 

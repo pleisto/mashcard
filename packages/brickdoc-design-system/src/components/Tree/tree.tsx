@@ -93,7 +93,12 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   }, [currentSelectedId])
 
   const nodeList = useMemo(() => {
-    function flatten(node: TreeNode, indent: number, result: InternalTreeNode[]): void {
+    const runner = (indent: number) => (node: TreeNode, index: number, arr: TreeNode[]) => {
+      const nearNode = arr[index - 1] || arr[index + 1]
+      flatten(node, indent, result, nearNode?.id)
+    }
+
+    function flatten(node: TreeNode, indent: number, result: InternalTreeNode[], nearNodeId?: string): void {
       const { children, id } = node
       const isExpanded = expandedIds.includes(id)
 
@@ -101,7 +106,8 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
         ...node,
         isExpanded,
         hasChildren: (children ?? []).length > 0,
-        indent: indent ?? 0
+        indent: indent ?? 0,
+        nearNodeId
       })
 
       if (isExpanded && !children?.length && indent === 0) {
@@ -116,16 +122,13 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
       }
 
       if (isExpanded && children) {
-        for (const child of children) {
-          flatten(child, indent + 1, result)
-        }
+        children.forEach(runner(indent + 1))
       }
     }
 
     const result: InternalTreeNode[] = []
-    for (const node of data) {
-      flatten(node, 0, result)
-    }
+
+    data.forEach(runner(0))
     return result
   }, [data, expandedIds])
 

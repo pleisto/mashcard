@@ -30,6 +30,7 @@ export type InternalTreeNode = TreeNode & {
   hasChildren: boolean
   indent: number
   isEmptyNode?: boolean
+  nearNodeId?: string
 }
 
 /**
@@ -55,4 +56,4 @@ export interface NodeMovement {
   targetSpot: NodeRelativeSpot
 }
 
-export type TreeNodeRenderer = (node: TreeNode) => ReactNode
+export type TreeNodeRenderer = (node: InternalTreeNode) => ReactNode

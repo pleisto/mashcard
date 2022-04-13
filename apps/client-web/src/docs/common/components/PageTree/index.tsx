@@ -209,6 +209,8 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         pageId={node.id}
         title={getTitle(node.text)}
         titleText={node.text}
+        nearNodeId={node.nearNodeId}
+        parentId={node.parentId}
       />
     )
   }
