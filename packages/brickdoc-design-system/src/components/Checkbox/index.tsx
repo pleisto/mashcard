@@ -11,8 +11,11 @@ export interface CheckboxProps
     Omit<SwitchInputProps, 'onBlur' | 'onChange' | 'onFocus'> {
   labelFirst?: boolean
   defaultChecked?: boolean
+  noLabel?: boolean
   checked?: boolean
   children?: React.ReactNode
+  indeterminate?: boolean
+  checkboxStyle?: React.CSSProperties
 }
 
 const CheckboxLabel = styled('label', root)
@@ -24,7 +27,18 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (pro
    * Do not use `useSwitch`(@mui/base/SwitchUnstyled),
    * Because `react-hook-form` required uncontrolled component.
    */
-  const { labelFirst = false, className, style, onChange, children, disabled, ...otherProps } = props
+  const {
+    labelFirst = false,
+    noLabel,
+    className,
+    style,
+    onChange,
+    children,
+    disabled,
+    checkboxStyle,
+    indeterminate,
+    ...otherProps
+  } = props
   const inputRef = ref ?? createRef<HTMLInputElement>()
   const [checked, setChecked] = useControllableValue<boolean>(props, {
     defaultValuePropName: 'defaultChecked',
@@ -34,8 +48,8 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (pro
   return (
     <CheckboxLabel className={className} style={style}>
       {labelFirst && children && <span>{children}</span>}
-      <CheckboxUI checked={checked} labelFirst={labelFirst} disabled={disabled}>
-        {checked && <Check aria-hidden />}
+      <CheckboxUI style={checkboxStyle} checked={checked} labelFirst={labelFirst} noLabel={noLabel} disabled={disabled}>
+        {checked && indeterminate ? '-' : <Check aria-hidden />}
         <VisuallyHidden>
           <input
             type="checkbox"

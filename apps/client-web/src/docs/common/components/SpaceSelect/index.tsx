@@ -7,9 +7,14 @@ import { SpaceCard } from '@/common/components/SpaceCard'
 import { Setting, Change, Check } from '@brickdoc/design-icons'
 import { useDocsI18n } from '../../hooks'
 import { ProfileModal } from '../ProfileModal'
-import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
-export const SpaceSelect: React.FC<DocMetaProps> = ({ docMeta }) => {
+export interface SpaceSelectProps {
+  docMeta: {
+    loginDomain: string
+  }
+}
+
+export const SpaceSelect: React.FC<SpaceSelectProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
   const { loading, data } = useGetSpacesQuery()
   const [userSignOut, { loading: signOutLoading }] = useUserSignOutMutation()

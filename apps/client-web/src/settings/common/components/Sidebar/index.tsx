@@ -5,7 +5,7 @@ import { SwitchSettingSpace } from '../SwitchSettingSpace'
 import { Button } from '@brickdoc/design-system'
 import { ArrowLeft } from '@brickdoc/design-icons'
 import { SidebarWrapper, MenuItem } from './index.styles'
-import Logo from '@/common/assets/logo_brickdoc.svg'
+import Logo from '@/common/assets/logo_brickdoc_without_name.svg'
 import { useSettingsI18n } from '../../hooks'
 
 export const Sidebar: FC = () => {

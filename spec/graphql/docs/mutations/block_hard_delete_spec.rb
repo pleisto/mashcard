@@ -21,14 +21,14 @@ describe Docs::Mutations::BlockHardDelete, type: :mutation do
       root_block = create(:docs_block, space: user.personal_space)
       expect(root_block.deleted_at).to eq(nil)
 
-      input = { input: { id: root_block.id } }
+      input = { input: { ids: [root_block.id] } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to eq(false)
       expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.not_deleted"))
 
       root_block.soft_delete!
 
-      input = { input: { id: root_block.id } }
+      input = { input: { ids: [root_block.id] } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to eq(true)
       expect(response.data).to eq({ "blockHardDelete" => nil })
@@ -36,7 +36,7 @@ describe Docs::Mutations::BlockHardDelete, type: :mutation do
       root_block.reload
       expect(root_block.deleted_permanently_at).to_not be(nil)
 
-      input = { input: { id: root_block.id } }
+      input = { input: { ids: [root_block.id] } }
       internal_graphql_execute(mutation, input)
       expect(response.success?).to eq(false)
       expect(response.errors[0]['message']).to eq(I18n.t("errors.graphql.argument_error.already_hard_delete"))

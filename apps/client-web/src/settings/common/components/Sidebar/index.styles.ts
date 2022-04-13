@@ -11,8 +11,7 @@ export const SidebarWrapper = styled('section', {
   '.actions': {
     header: {
       [`.brk-logo`]: {
-        height: '22px',
-        width: '84px',
+        height: '24px',
         margin: '1rem 18px'
       }
     },

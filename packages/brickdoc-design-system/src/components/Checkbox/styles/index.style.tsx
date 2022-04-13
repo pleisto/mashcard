@@ -5,7 +5,8 @@ export const root = css({
   flexWrap: 'wrap',
   display: 'inline-flex',
   position: 'relative',
-  isolation: 'isolation'
+  isolation: 'isolation',
+  borderRadius: '3px'
 })
 
 export const checkbox = css({
@@ -26,6 +27,11 @@ export const checkbox = css({
       },
       false: {
         marginRight: '10px'
+      }
+    },
+    noLabel: {
+      true: {
+        margin: 0
       }
     },
     checked: {

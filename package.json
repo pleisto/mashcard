@@ -115,6 +115,7 @@
   "dependencies": {
     "@swc/core": "^1.2.165",
     "@swc/helpers": "^0.3.8",
+    "dayjs": "^1.11.0",
     "ts-node": "^10.7.0"
   },
   "volta": {

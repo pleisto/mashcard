@@ -94,8 +94,13 @@ const Avatar: ForwardRefRenderFunction<HTMLSpanElement, AvatarProps> = (props, r
 
   const isCustomSize = typeof size === 'number' ? size : undefined
   let childrenNode = src ?? (initialsObj ? <span>{initialsObj.text}</span> : null) ?? <User theme="filled" />
-  if (typeof childrenNode === 'string')
-    childrenNode = <img src={childrenNode === '' ? defaultAvatar : childrenNode} alt={alt} />
+  if (typeof childrenNode === 'string') {
+    if (!childrenNode) {
+      childrenNode = defaultAvatar
+    } else {
+      childrenNode = childrenNode.length <= 4 ? childrenNode : <img src={childrenNode} alt={alt} />
+    }
+  }
 
   const customSizeCss = isCustomSize
     ? {

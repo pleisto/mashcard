@@ -26,13 +26,18 @@ import { PageMenu } from '../PageMenu'
 import { SIZE_GAP } from '../../blocks'
 import { queryPageBlocks } from '../../graphql'
 import { useDocsI18n } from '../../hooks'
-import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 import { queryBlockInfo } from '@/docs/pages/graphql'
 import { pagesVar } from '@/docs/reactiveVars'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
+interface DocMeta {
+  id?: string | undefined
+  domain: string
+  host: string
+}
 
-export interface PageTreeProps extends DocMetaProps {
+export interface PageTreeProps {
+  docMeta: DocMeta
   mode?: 'default' | 'subPage'
 }
 
@@ -200,7 +205,6 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
       <PageMenu
         mutable={mutable}
         docMeta={docMeta}
-        // setPopoverKey={setPopoverKey}
         pin={pin}
         pageId={node.id}
         title={getTitle(node.text)}

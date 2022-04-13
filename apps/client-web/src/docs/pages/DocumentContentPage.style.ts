@@ -21,13 +21,12 @@ export const Layout = styled('div', {
   backgroundClip: 'border-box',
   [`${Section}`]: {
     '.mainActions header > .brk-logo': {
-      height: '22px',
-      width: '84px',
+      height: '24px',
       margin: '1rem 18px'
     },
     '& > footer': {
-      marginBottom: '1rem',
-      width: '100%'
+      display: 'flex',
+      alignItems: 'center'
     },
     '.mainActions nav': {
       overflow: 'hidden'
@@ -114,6 +113,6 @@ export const sidebarButtonStyles = {
   display: 'flex',
   fontSize: theme.fontSizes.subHeadline,
   justifyContent: 'flex-start',
-  marginBottom: '1.5rem',
-  width: '100%'
+  flex: 1,
+  padding: '0.75rem'
 }

@@ -5,12 +5,17 @@ import { Button } from '@brickdoc/design-system'
 import { useNavigate } from 'react-router-dom'
 import { useBlockCreateMutation } from '@/BrickdocGraphQL'
 import { queryPageBlocks } from '../../../common/graphql'
-import { DocMetaProps } from '@/docs/pages/DocumentContentPage'
 
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { sidebarButtonStyles } from '../../DocumentContentPage.style'
 
-export const NewPage: React.FC<DocMetaProps> = ({ docMeta }) => {
+export interface NewPageProps {
+  docMeta: {
+    domain: string
+  }
+}
+
+export const NewPage: React.FC<NewPageProps> = ({ docMeta }) => {
   const { t } = useDocsI18n()
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({

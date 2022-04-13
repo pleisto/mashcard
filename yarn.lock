@@ -2075,6 +2075,7 @@ __metadata:
     browserlist: ^1.0.1
     commitizen: ^4.2.4
     cz-conventional-changelog: ^3.3.0
+    dayjs: ^1.11.0
     depcheck: ^1.4.3
     eslint: ^8.13.0
     fs-extra: ^10.0.1

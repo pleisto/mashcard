@@ -39,7 +39,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain,
 
   const onRestoreClick = async (): Promise<void> => {
     setRestoreButtonLoading(true)
-    const input: BlockRestoreInput = { id }
+    const input: BlockRestoreInput = { ids: [id] }
     await blockRestore({ variables: { input } })
     client.cache.modify({
       id: client.cache.identify({ __typename: 'BlockInfo', id }),
@@ -60,7 +60,7 @@ export const TrashPrompt: React.FC<TrashPromptProps> = ({ docMeta: { id, domain,
   const onConfirmDelete = async (): Promise<void> => {
     let path = `/${domain}`
     setHardDeleteConfirmLoading(true)
-    const input: BlockHardDeleteInput = { id }
+    const input: BlockHardDeleteInput = { ids: [id] }
     await blockHardDelete({ variables: { input } })
     if (pathArray?.length) {
       path = `/${domain}/${pathArray[pathArray.length - 1].id}`

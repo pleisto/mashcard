@@ -151,6 +151,7 @@ export const queryTrashBlocks = gql`
   query GetTrashBlocks($domain: String!, $blockId: UUID, $search: String) {
     trashBlocks(domain: $domain, blockId: $blockId, search: $search) {
       id
+      deletedAt
       pathArray {
         id
         text
@@ -160,7 +161,6 @@ export const queryTrashBlocks = gql`
             source
             key
           }
-
           ... on BlockEmoji {
             type
             name
@@ -173,6 +173,12 @@ export const queryTrashBlocks = gql`
       type
       text
       meta {
+        people {
+          type
+          domain
+          name
+          avatarUrl
+        }
         cover {
           ... on BlockImage {
             type
@@ -190,7 +196,6 @@ export const queryTrashBlocks = gql`
             source
             key
           }
-
           ... on BlockEmoji {
             type
             name
