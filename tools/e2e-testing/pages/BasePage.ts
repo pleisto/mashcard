@@ -8,6 +8,17 @@ export class BasePage {
     return this.page.locator(COMMON_SELECTORS.tooltip)
   }
 
+  async scrollUntilElementIntoView(waitingSelector: string, scrollSelector: string, offset = 100): Promise<void> {
+    while (!(await this.page.locator(waitingSelector).isVisible())) {
+      await this.page.evaluate(
+        async ({ scrollSelector, offset }) => {
+          document.querySelector(scrollSelector)!.scrollBy(0, offset)
+        },
+        { scrollSelector, offset }
+      )
+    }
+  }
+
   async waitForResponse(operationName: string): Promise<void> {
     await this.page.waitForResponse(
       response =>

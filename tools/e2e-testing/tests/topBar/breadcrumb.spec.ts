@@ -77,9 +77,7 @@ test.describe('Breadcrumb', () => {
     await api.createPageTree(FIVE_LAYER_PAGE_TREE)
     await api.pageReload()
 
-    for (let index = 0; index < 4; index++) {
-      await pageList.expandArrow(index)
-    }
+    await pageList.expandSubPageOneByOne(4)
     await pageList.clickPage(4)
 
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
@@ -90,9 +88,7 @@ test.describe('Breadcrumb', () => {
     await api.createPageTree(FIVE_LAYER_PAGE_TREE)
     await api.pageReload()
 
-    for (let index = 0; index < 4; index++) {
-      await pageList.expandArrow(index)
-    }
+    await pageList.expandSubPageOneByOne(4)
     await pageList.clickPage(4)
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
     await breadcrumb.getBreadcrumbTextByIndex(1).click()
@@ -104,9 +100,7 @@ test.describe('Breadcrumb', () => {
     await api.createPageTree(FIVE_LAYER_PAGE_TREE)
     await api.pageReload()
 
-    for (let index = 0; index < 4; index++) {
-      await pageList.expandArrow(index)
-    }
+    await pageList.expandSubPageOneByOne(4)
     await pageList.clickPage(4)
     await expect(breadcrumb.getBreadcrumbItems()).toHaveCount(4)
     await expect(breadcrumb.getBreadcrumbTextByIndex(3)).toHaveText('page 1-1-1-1-1')

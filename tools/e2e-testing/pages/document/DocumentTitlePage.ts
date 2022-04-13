@@ -8,6 +8,14 @@ export class DocumentTitlePage extends BasePage {
     return this.page.locator(DOCUMENT_TITLE_SELECTORS.documentTitle)
   }
 
+  getDocumentEmoji(): Locator {
+    return this.page.locator(DOCUMENT_TITLE_SELECTORS.documentEmoji)
+  }
+
+  getDocumentImageIcon(): Locator {
+    return this.page.locator(DOCUMENT_TITLE_SELECTORS.documentImageIcon)
+  }
+
   getActionButtons(): Locator {
     return this.page.locator(DOCUMENT_TITLE_SELECTORS.actionButtons)
   }
@@ -24,9 +32,13 @@ export class DocumentTitlePage extends BasePage {
     await this.waitForResponseWithAction('blockSyncBatch', this.getDocumentTitle().fill(title))
   }
 
-  async addIcon(): Promise<IconPage> {
+  async openIconPopup(): Promise<IconPage> {
     await this.getDocumentTitle().hover()
     await this.getAddIconButton().click()
     return new IconPage(this.page)
+  }
+
+  async reopenIconPopup(type: 'Emoji' | 'Image' = 'Emoji'): Promise<void> {
+    type === 'Emoji' ? await this.getDocumentEmoji().click() : await this.getDocumentImageIcon().click()
   }
 }

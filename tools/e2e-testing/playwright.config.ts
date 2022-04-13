@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
   forbidOnly: isCI,
   retries: 2,
   reporter: isCI ? [['dot'], ['github']] : 'list',
-  timeout: 30000,
+  timeout: 20000,
   workers: 1,
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000/',

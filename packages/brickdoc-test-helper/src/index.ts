@@ -34,6 +34,9 @@ export const TEST_ID_ENUM = {
       titleInput: {
         id: 'page-document-page-title-input'
       },
+      titleIcon: {
+        id: 'page-document-page-title-icon'
+      },
       addPageButton: {
         id: 'page-document-page-add-page-button'
       }

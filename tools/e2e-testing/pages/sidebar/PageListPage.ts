@@ -33,6 +33,10 @@ export class PageListPage extends BasePage {
     return this.page.locator(PAGE_SELECTOR.arrow(index))
   }
 
+  getRenameInput(): Locator {
+    return this.page.locator(PAGE_SELECTOR.renameInput)
+  }
+
   async clickPage(index: number = 0): Promise<void> {
     await this.waitForResponseWithAction('GetBlockInfo', this.getPageByIndex(index).click())
   }
@@ -41,6 +45,12 @@ export class PageListPage extends BasePage {
     const arrowClass = await this.getArrow(index).getAttribute('class')
     if (!arrowClass?.includes('-isExpanded-true')) {
       await this.getArrow(index).click()
+    }
+  }
+
+  async expandSubPageOneByOne(layer: number): Promise<void> {
+    for (let index = 0; index < layer; index++) {
+      await this.expandArrow(index)
     }
   }
 
@@ -64,7 +74,7 @@ export class PageListPage extends BasePage {
     await this.getPageByIndex(index).hover()
     await this.getMoreActionIcon(index).click()
     await this.getMoreButtonByText('Rename', index).click()
-    await this.page.fill(PAGE_SELECTOR.renameInput, pageName)
-    await this.waitForResponseWithAction('GetPageBlocks', this.page.press(PAGE_SELECTOR.renameInput, 'Enter'))
+    await this.getRenameInput().fill(pageName)
+    await this.waitForResponseWithAction('GetPageBlocks', this.getRenameInput().press('Enter'))
   }
 }
