@@ -14,6 +14,7 @@ export interface SpreadsheetAttributes {
     columns: SpreadsheetColumn[]
   }
   title: string
+  isDefaultTitle?: boolean
 }
 
 export interface SpreadsheetViewProps extends BlockViewProps<SpreadsheetOptions, SpreadsheetAttributes> {}

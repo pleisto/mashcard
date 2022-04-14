@@ -51,6 +51,9 @@ export const Spreadsheet = createBlock<SpreadsheetOptions, SpreadsheetAttributes
       },
       title: {
         default: ''
+      },
+      isDefaultTitle: {
+        default: true
       }
     }
   },
@@ -75,13 +78,25 @@ export const Spreadsheet = createBlock<SpreadsheetOptions, SpreadsheetAttributes
     return {
       setSpreadsheetBlock:
         (position?: number) =>
-        ({ chain }) => {
+        ({ chain, state }) => {
+          const spreadsheetTitles: string[] = []
+          state.doc.descendants(node => {
+            if (node.type.name === meta.name) {
+              spreadsheetTitles.push(node.attrs.title)
+            }
+          })
+          let newTitle = ''
+          for (let i = 1; newTitle === '' || spreadsheetTitles.includes(newTitle); i++) {
+            newTitle = `Table${i}`
+          }
           return chain()
             .insertBlockAt(
               {
                 type: this.name,
                 attrs: {
                   isNew: true,
+                  isDefaultTitle: true,
+                  title: newTitle,
                   data: {
                     columns: [
                       { uuid: uuid(), sort: 0 },
