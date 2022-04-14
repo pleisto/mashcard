@@ -62,8 +62,8 @@ describe('BrickdocEventBus', () => {
     expect(testResult.get('testEventHit')).not.toBe(true)
   })
 
-  it('can subscribe persist event', () => {
-    const testEvent = event<string>({ persist: true })('testEvent', payload => {
+  it('can subscribe sticky event', () => {
+    const testEvent = event<string>({ sticky: true })('testEvent', payload => {
       return { id: payload }
     })
 

@@ -26,6 +26,6 @@ export const BlockNameLoad = event<{ id: string; name: string }>()('BlockNameLoa
   return { id }
 })
 
-export const BlockJustCreated = event<{ id: string }>({ persist: true })('BlockJustCreated', ({ id }) => {
+export const BlockJustCreated = event<{ id: string }>({ sticky: true })('BlockJustCreated', ({ id }) => {
   return { id }
 })

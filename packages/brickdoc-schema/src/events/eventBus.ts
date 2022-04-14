@@ -26,7 +26,7 @@ class EventBus {
   private consume(event: Event): void {
     const subscribers = this.subscribers(event)
 
-    const consumable = subscribers.length > 0 || !event.configure.persist
+    const consumable = subscribers.length > 0 || !event.configure.sticky
     if (!consumable) return
 
     while ((this.eventsPool[event.type]?.length ?? 0) > 0) {

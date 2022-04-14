@@ -6,7 +6,7 @@ export interface Event<EventPayload = {}> {
 }
 
 export interface EventConfigure {
-  persist?: boolean
+  sticky?: boolean
 }
 
 export interface EventType<EventPayload = {}> {
