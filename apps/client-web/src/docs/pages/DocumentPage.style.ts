@@ -1,5 +1,12 @@
 import { styled } from '@brickdoc/design-system'
 
+export const PageSpinWrapper = styled('div', {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  include: ['flexCenter']
+})
+
 export const PageContent = styled('div', {
   width: '100%',
   display: 'flex',

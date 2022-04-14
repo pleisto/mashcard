@@ -101,6 +101,9 @@ export const PageMenu: React.FC<PageMenuProps> = ({
         }
       })
     }
+    if (location.pathname !== `/${domain}/${pageId}`) {
+      return
+    }
     if (nearNodeId) {
       navigate(`/${domain}/${nearNodeId}`)
       return

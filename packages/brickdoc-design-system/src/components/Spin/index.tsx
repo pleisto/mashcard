@@ -9,6 +9,7 @@ export type Color = 'dark' | 'light'
 export interface SpinProps {
   size?: Size
   color?: Color
+  className?: string
 }
 
 const SpinRoot = styled(motion.svg, spinStyle)

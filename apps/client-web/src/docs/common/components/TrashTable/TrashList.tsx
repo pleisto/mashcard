@@ -36,7 +36,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
     [keyword, domain]
   )
 
-  const { data, loading } = useGetTrashBlocksQuery({ variables: input })
+  const { data, loading: listLoading } = useGetTrashBlocksQuery({ variables: input })
   const [actionLoading, setActionLoading] = useState(false)
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState(false)
 
@@ -53,35 +53,55 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
   const [blockHardDelete] = useBlockHardDeleteMutation({ refetchQueries: [queryTrashBlocks] })
   const [blockRestore] = useBlockRestoreMutation({ refetchQueries: [queryTrashBlocks, queryPageBlocks] })
 
-  const onBatchDelete = useCallback(async () => {
-    const ids = selectedItem.map(item => item.id)
-    setActionLoading(true)
-    await blockHardDelete({ variables: { input: { ids } } })
-    setActionLoading(false)
-  }, [selectedItem, blockHardDelete])
+  const onBatchDelete = useCallback(
+    async (_ids?: string[]) => {
+      const ids = _ids ?? selectedItem.map(item => item.id)
+      setActionLoading(true)
+      await blockHardDelete({ variables: { input: { ids } } })
+      const nextList = list.filter(item => !ids.includes(item.id))
+      resetList(nextList)
+      setActionLoading(false)
+    },
+    [selectedItem, blockHardDelete, list, resetList]
+  )
 
-  const onBatchRestore = useCallback(async () => {
-    const ids = selectedItem.map(item => item.id)
-    setActionLoading(true)
-    await blockRestore({ variables: { input: { ids } } })
-    ids.forEach(id =>
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'BlockInfo', id }),
-        fields: {
-          isDeleted() {
-            return false
+  const onBatchRestore = useCallback(
+    async (_ids?: string[]) => {
+      const ids = _ids ?? selectedItem.map(item => item.id)
+      setActionLoading(true)
+      await blockRestore({ variables: { input: { ids } } })
+      const nextList = list.filter(item => !ids.includes(item.id))
+      resetList(nextList)
+      ids.forEach(id =>
+        client.cache.modify({
+          id: client.cache.identify({ __typename: 'BlockInfo', id }),
+          fields: {
+            isDeleted() {
+              return false
+            }
           }
-        }
-      })
-    )
-    setActionLoading(false)
-  }, [blockRestore, client.cache, selectedItem])
+        })
+      )
+      setActionLoading(false)
+    },
+    [blockRestore, client.cache, selectedItem, list, resetList]
+  )
 
-  if (loading || actionLoading) {
-    return <Spin size="lg" />
+  const onClickBatchDelete = async (): Promise<void> => {
+    await onBatchDelete()
   }
 
-  if (!data?.trashBlocks?.length) {
+  const onItemDelele = async (id: string): Promise<void> => {
+    await onBatchDelete([id])
+  }
+
+  const onItemRestore = async (id: string): Promise<void> => {
+    await onBatchRestore([id])
+  }
+
+  const showSpin = listLoading || actionLoading
+
+  if (!showSpin && !data?.trashBlocks?.length) {
     return <NotFound>{t('trash.not_found')}</NotFound>
   }
 
@@ -103,6 +123,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
 
   return (
     <List>
+      {showSpin && <Spin size="lg" className="trash-spin" />}
       <Item type="title" key="title">
         <Page>
           <SelectBlock />
@@ -115,7 +136,13 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
       </Item>
       {list.map((item: Block, index: number) => (
         <Item type="item" key={getKey(index)}>
-          <TrashItem domain={domain} block={item} onChange={onChange(index)} />
+          <TrashItem
+            domain={domain}
+            block={item}
+            onChange={onChange(index)}
+            onRestore={onItemRestore}
+            onDelete={onItemDelele}
+          />
         </Item>
       ))}
       {selectedNum > 0 && (
@@ -135,7 +162,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
             </span>
           </Page>
           <Action>
-            <Button style={{ marginRight: '0.5rem' }} icon={<Undo />} onClick={onBatchRestore}>
+            <Button style={{ marginRight: '0.5rem' }} icon={<Undo />} onClick={onClickBatchDelete}>
               {t('trash.restore_action')}
             </Button>
             <Button icon={<Delete />} type="danger" onClick={() => setHardDeleteModalVisible(true)}>
