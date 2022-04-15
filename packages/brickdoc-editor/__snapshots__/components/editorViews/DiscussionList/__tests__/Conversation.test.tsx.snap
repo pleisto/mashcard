@@ -15,7 +15,6 @@ exports[`DiscussionList > Conversation matches correct snapshot 1`] = `
         aria-haspopup="dialog"
         class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-PJLV brd-c-PJLV-intFQh-size-sm"
         role="button"
-        tabindex="0"
         type="button"
       >
         <span
@@ -36,7 +35,6 @@ exports[`DiscussionList > Conversation matches correct snapshot 1`] = `
       <button
         class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-PJLV brd-c-PJLV-intFQh-size-sm"
         role="button"
-        tabindex="0"
         type="button"
       >
         <span

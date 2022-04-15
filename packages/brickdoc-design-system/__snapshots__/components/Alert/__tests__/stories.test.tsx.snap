@@ -41,7 +41,6 @@ exports[`Alert Basic should match the snapshot 1`] = `
           aria-label="Dismiss Button"
           class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV"
           role="button"
-          tabindex="0"
           type="button"
         >
           <i
@@ -90,7 +89,6 @@ exports[`Alert MessageOnly should match the snapshot 1`] = `
           aria-label="Dismiss Button"
           class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV"
           role="button"
-          tabindex="0"
           type="button"
         >
           <i
@@ -146,7 +144,6 @@ exports[`Alert WithAction should match the snapshot 1`] = `
           <button
             class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-cAxcPy-size-md"
             role="button"
-            tabindex="0"
             type="button"
           >
             <span>
@@ -158,7 +155,6 @@ exports[`Alert WithAction should match the snapshot 1`] = `
           aria-label="Dismiss Button"
           class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-PJLV"
           role="button"
-          tabindex="0"
           type="button"
         >
           <i

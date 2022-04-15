@@ -10,7 +10,6 @@ exports[`Drawer renders Drawer visible correctly 1`] = `
     <button
       class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-eWWUXK-btnType-text brd-c-dsuUsp-cAxcPy-size-md brd-c-dsuUsp-iDpwiq-hasIcon-true brd-c-idRjzH"
       role="button"
-      tabindex="0"
       type="button"
     >
       <span

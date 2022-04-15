@@ -10,7 +10,6 @@ exports[`EmbedView matches correct snapshot 1`] = `
       class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-cAxcPy-size-md brickdoc-link-block-link"
       data-testid="editor-embed-block-link"
       role="button"
-      tabindex="0"
       type="button"
     >
       <div
