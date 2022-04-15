@@ -65,14 +65,6 @@ jobs:
           E2E_CHROMIUM_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.chromium_password }}
           E2E_FIREFOX_LOGIN_EMAIL: ${{ steps.get_e2e_account.outputs.firefox_email }}
           E2E_FIREFOX_LOGIN_PASSWORD: ${{ steps.get_e2e_account.outputs.firefox_password }}
-      - name: Fix coverage files
-        run: (find tools/e2e-testing/.nyc_output -type f -name "*.json" -print0 | xargs -0 sed -i "s#[\"]/app/#\"$(pwd)/#g") && yarn e2e-testing report
-        continue-on-error: true
-      - name: Publish Playwright code coverage reports
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: frontend-e2e
       - name: Upload Playwright screenshots/traces/videos (when failed or flaky)
         if: always()
         uses: actions/upload-artifact@v3

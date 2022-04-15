@@ -1,9 +1,10 @@
 import { test as baseTest } from '@playwright/test'
-import { apiFixture, coverageFixture, pageExtendFixture } from './extends'
+import { apiFixture, pageExtendFixture } from './extends'
 import { Fixtures } from './types'
 
 export const test = baseTest.extend<Fixtures>({
-  context: coverageFixture(),
+  // Disabled E2E coverage temporary
+  // context: coverageFixture(),
 
   pageExtend: pageExtendFixture(),
 

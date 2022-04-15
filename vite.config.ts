@@ -3,7 +3,6 @@ import RubyPlugin from 'vite-plugin-ruby'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import { visualizer } from 'rollup-plugin-visualizer'
-import IstanbulPlugin from 'vite-plugin-istanbul'
 
 // eslint-disable-next-line import/no-default-export
 export default defineConfig({
@@ -67,9 +66,6 @@ export default defineConfig({
           brotliSize: true,
           filename: './tmp/esm-bundle-stats.html'
         })
-      : undefined,
-    process.env.COVERAGE || process.env.RAILS_ENV === 'test'
-      ? IstanbulPlugin({ forceBuildInstrument: true })
       : undefined
   ],
   build: {
