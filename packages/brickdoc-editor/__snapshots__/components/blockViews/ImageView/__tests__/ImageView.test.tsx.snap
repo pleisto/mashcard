@@ -7,6 +7,59 @@ exports[`ImageView matches correct snapshot 1`] = `
     style="pointer-events: none; white-space: normal;"
   >
     <div
+      class="spining-wrapper"
+    >
+      <svg
+        class="brd-c-hsxsfB brd-c-hsxsfB-eNLjdr-size-lg brd-c-hsxsfB-jSsSsB-color-dark spin"
+        fill="none"
+        height="20"
+        style="opacity: 1;"
+        viewBox="0 0 20 20"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="10"
+          cy="10"
+          opacity="0.05"
+          r="9"
+          stroke="black"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <circle
+          cx="10"
+          cy="10"
+          opacity="0.1"
+          r="9"
+          stroke="black"
+          stroke-dasharray="1000"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <circle
+          cx="10"
+          cy="10"
+          opacity="0.2"
+          r="9"
+          stroke="black"
+          stroke-dasharray="1000"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+        <circle
+          cx="10"
+          cy="10"
+          opacity="1.0"
+          r="9"
+          stroke="black"
+          stroke-dasharray="1000"
+          stroke-linecap="round"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
+    <div
       class="brickdoc-block-image-section-container"
       role="cell"
     >
@@ -18,124 +71,6 @@ exports[`ImageView matches correct snapshot 1`] = `
           data-rmiz-wrap="visible"
           style="pointer-events: none; width: 100%;"
         >
-          <svg
-            aria-labelledby="image-block-skeleton-image-uuid-aria"
-            role="img"
-            style="width: 700px; height: 700px;"
-            viewBox="0 0 400 110"
-          >
-            <title
-              id="image-block-skeleton-image-uuid-aria"
-            >
-              Loading...
-            </title>
-            <rect
-              clip-path="url(#image-block-skeleton-image-uuid-diff)"
-              height="100%"
-              role="presentation"
-              style="fill: url(#image-block-skeleton-image-uuid-animated-diff);"
-              width="100%"
-              x="0"
-              y="0"
-            />
-            <defs>
-              <clippath
-                id="image-block-skeleton-image-uuid-diff"
-              >
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="250"
-                  x="0"
-                  y="0"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="220"
-                  x="20"
-                  y="20"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="170"
-                  x="20"
-                  y="40"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="250"
-                  x="0"
-                  y="60"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="200"
-                  x="20"
-                  y="80"
-                />
-                <rect
-                  height="10"
-                  rx="3"
-                  ry="3"
-                  width="80"
-                  x="20"
-                  y="100"
-                />
-              </clippath>
-              <lineargradient
-                id="image-block-skeleton-image-uuid-animated-diff"
-              >
-                <stop
-                  offset="0%"
-                  stop-color="#f5f6f7"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="-2; -2; 1"
-                  />
-                </stop>
-                <stop
-                  offset="50%"
-                  stop-color="#eee"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="-1; -1; 2"
-                  />
-                </stop>
-                <stop
-                  offset="100%"
-                  stop-color="#f5f6f7"
-                  stop-opacity="1"
-                >
-                  <animate
-                    attributeName="offset"
-                    dur="1.2s"
-                    keyTimes="0; 0.25; 1"
-                    repeatCount="indefinite"
-                    values="0; 0; 3"
-                  />
-                </stop>
-              </lineargradient>
-            </defs>
-          </svg>
           <img
             alt=""
             class="brickdoc-block-image loading"

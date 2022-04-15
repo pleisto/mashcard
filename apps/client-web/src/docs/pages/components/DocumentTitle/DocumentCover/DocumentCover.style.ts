@@ -19,6 +19,18 @@ export const Cover = styled('div', {
   backgroundPosition: '0 50%',
   backgroundSize: '100%',
 
+  'img.cover': {
+    height: '100%',
+    width: '100%'
+  },
+
+  '.cover-spin': {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+
   '&:hover': {
     [`${Actions}`]: {
       opacity: '100%'

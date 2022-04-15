@@ -2,12 +2,11 @@ import { FC, SyntheticEvent, useState } from 'react'
 import { Controlled as ImagePreview } from 'react-medium-image-zoom'
 import { BlockContainer } from '../../../BlockContainer'
 import { Resizable } from 're-resizable'
-import { Skeleton, cx } from '@brickdoc/design-system'
+import { cx, Spin } from '@brickdoc/design-system'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import { ImageViewProps } from '../../../../../extensions/blocks/image/meta'
 
 const MAX_WIDTH = 700
-
 export interface PreviewModeProps {
   node: ImageViewProps['node']
   deleteNode: ImageViewProps['deleteNode']
@@ -46,6 +45,11 @@ export const PreviewMode: FC<PreviewModeProps> = ({ node, deleteNode, getPos, ur
       deleteNode={deleteNode}
       actionOptions={['copy', 'delete']}
     >
+      {!loaded && (
+        <div className="spining-wrapper">
+          <Spin size="lg" className="spin" />
+        </div>
+      )}
       <div role="cell" className="brickdoc-block-image-section-container">
         <Resizable
           lockAspectRatio={true}
@@ -98,17 +102,6 @@ export const PreviewMode: FC<PreviewModeProps> = ({ node, deleteNode, getPos, ur
               setShowPreview(shouldZoom)
             }}
           >
-            {!loaded && (
-              <Skeleton
-                uniqueKey={`image-block-skeleton-${node.attrs.uuid}`}
-                type="list"
-                style={
-                  node.attrs.image.width
-                    ? { width: node.attrs.image.width, height: node.attrs.image.width / (node.attrs.image.ratio ?? 1) }
-                    : { width: MAX_WIDTH }
-                }
-              />
-            )}
             <img
               data-testid={TEST_ID_ENUM.editor.imageBlock.image.id}
               role="img"

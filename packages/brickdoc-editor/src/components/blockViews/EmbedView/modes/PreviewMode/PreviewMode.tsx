@@ -7,7 +7,7 @@ import { useActionOptions } from '../useActionOptions'
 import { useAttachmentMethods, UseAttachmentMethodsProps } from '../useAttachmentMethods'
 import './PreviewMode.less'
 import { BlockContainer } from '../../../BlockContainer'
-import { Skeleton, styled } from '@brickdoc/design-system'
+import { Spin, styled } from '@brickdoc/design-system'
 import { useWebViewer } from './useWebViewer'
 import { EmbedViewProps } from '../../../../../extensions/blocks/embed/meta'
 
@@ -78,7 +78,11 @@ export const PreviewMode: FC<PreviewModeProps> = ({
       actionOptions={actionOptions}
     >
       <div data-testid={TEST_ID_ENUM.editor.embedBlock.pdftron.id} className="brickdoc-pdftron-block">
-        {!documentReady && <Skeleton height={containerHeight} />}
+        {!documentReady && (
+          <div className="spining-wrapper" style={{ height: containerHeight }}>
+            <Spin className="spin" size="lg" />
+          </div>
+        )}
         <PreviewContainer ref={viewer} ready={documentReady} />
         <div className="brickdoc-pdftron-info">
           <FileIcon className="brickdoc-pdftron-info-icon" fileType={fileType} />

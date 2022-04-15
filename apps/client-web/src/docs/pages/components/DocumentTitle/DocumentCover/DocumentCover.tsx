@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
+import { ImageWithSpin } from '@/common/components'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import * as Root from './DocumentCover.style'
 
@@ -33,21 +34,20 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
   localUrl,
   className
 }) => {
-  let value = 'unset'
+  const [value, setValue] = React.useState('unset')
   const { t } = useDocsI18n()
-
-  if (documentCoverMeta?.type === Blocktype.Color) value = documentCoverMeta.color
+  if (documentCoverMeta?.type === Blocktype.Color && value !== documentCoverMeta.color) {
+    setValue(documentCoverMeta.color)
+  }
   if (documentCoverMeta?.type === Blocktype.Image) {
     const url = getDocCoverUrl() ?? localUrl ?? ''
-
-    if (url) {
-      value = `url("${url}")`
+    if (url && value !== url) {
+      setValue(url)
     }
   }
 
   const style = {
-    backgroundImage: value?.startsWith('#') ? 'unset' : value,
-    backgroundColor: value?.startsWith('#') ? value : 'unset'
+    backgroundColor: documentCoverMeta?.type === Blocktype.Color ? value : 'unset'
   }
 
   return (
@@ -57,6 +57,7 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
       className={className}
       css={style}
     >
+      {documentCoverMeta?.type === Blocktype.Image && <ImageWithSpin src={value} />}
       <Root.Actions>
         {editable && (
           <>
@@ -71,21 +72,6 @@ export const DocumentCover: React.FC<DocumentCoverProps> = ({
                 </Button>
               </Popover>
             )}
-            {/* TODO: cover reposition
-            <Button className={styles.button} type="text" isDisabled={!editable}>
-              {t('title.reposition')}
-            </Button>
-              */}
-
-            {/*
-                TODO: cover remove
-                <Button
-              data-testid={TEST_ID_ENUM.page.DocumentPage.removeCoverButton.id}
-              type="secondary"
-              disabled={!editable}
-            >
-              {t('title.remove_cover')}
-            </Button> */}
           </>
         )}
       </Root.Actions>
