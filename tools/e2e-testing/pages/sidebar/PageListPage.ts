@@ -37,11 +37,11 @@ export class PageListPage extends BasePage {
     return this.page.locator(PAGE_SELECTOR.renameInput)
   }
 
-  async clickPage(index: number = 0): Promise<void> {
+  async clickPage(index?: number): Promise<void> {
     await this.waitForResponseWithAction('GetBlockInfo', this.getPageByIndex(index).click())
   }
 
-  async expandArrow(index: number = 0): Promise<void> {
+  async expandArrow(index?: number): Promise<void> {
     const arrowClass = await this.getArrow(index).getAttribute('class')
     if (!arrowClass?.includes('-isExpanded-true')) {
       await this.getArrow(index).click()
@@ -58,19 +58,19 @@ export class PageListPage extends BasePage {
     await this.waitForResponseWithAction('GetPageBlocks', this.page.locator(PAGE_SELECTOR.addPageButton).click())
   }
 
-  async addSubPage(index: number = 0): Promise<void> {
+  async addSubPage(index?: number): Promise<void> {
     await this.getPageByIndex(index).hover()
     await this.waitForResponseWithAction('GetPageBlocks', this.getAddSubPageButton(index).click())
     await this.expandArrow()
   }
 
-  async removePage(index: number = 0): Promise<void> {
+  async removePage(index?: number): Promise<void> {
     await this.getPageByIndex(index).hover()
     await this.getMoreActionIcon(index).click()
     await this.waitForResponseWithAction('GetPageBlocks', this.getMoreButtonByText('Delete', index).click())
   }
 
-  async renamePage(pageName: string, index: number = 0): Promise<void> {
+  async renamePage(pageName: string, index?: number): Promise<void> {
     await this.getPageByIndex(index).hover()
     await this.getMoreActionIcon(index).click()
     await this.getMoreButtonByText('Rename', index).click()

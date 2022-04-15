@@ -1,9 +1,14 @@
 import { DOCUMENT_TITLE_SELECTORS } from '@/selectors/document/documentTitle'
 import { Locator } from '@playwright/test'
 import { BasePage } from '../BasePage'
+import { CoverPage } from './CoverPage'
 import { IconPage } from './IconPage'
 
 export class DocumentTitlePage extends BasePage {
+  getArticle(): Locator {
+    return this.page.locator(DOCUMENT_TITLE_SELECTORS.article)
+  }
+
   getDocumentTitle(): Locator {
     return this.page.locator(DOCUMENT_TITLE_SELECTORS.documentTitle)
   }
@@ -28,6 +33,18 @@ export class DocumentTitlePage extends BasePage {
     return this.page.locator(DOCUMENT_TITLE_SELECTORS.addCoverButton)
   }
 
+  getPageCover(): Locator {
+    return this.page.locator(DOCUMENT_TITLE_SELECTORS.pageCover)
+  }
+
+  getChangeCoverButton(): Locator {
+    return this.page.locator(DOCUMENT_TITLE_SELECTORS.changeCoverButton)
+  }
+
+  getRemoveCoverButton(): Locator {
+    return this.page.locator(DOCUMENT_TITLE_SELECTORS.removeButton)
+  }
+
   async fillTitle(title: string): Promise<void> {
     await this.waitForResponseWithAction('blockSyncBatch', this.getDocumentTitle().fill(title))
   }
@@ -40,5 +57,21 @@ export class DocumentTitlePage extends BasePage {
 
   async reopenIconPopup(type: 'Emoji' | 'Image' = 'Emoji'): Promise<void> {
     type === 'Emoji' ? await this.getDocumentEmoji().click() : await this.getDocumentImageIcon().click()
+  }
+
+  async openCoverPopup(): Promise<CoverPage> {
+    await this.getDocumentTitle().hover()
+    await this.getAddCoverButton().click()
+    return new CoverPage(this.page)
+  }
+
+  async changeCover(): Promise<void> {
+    await this.getPageCover().hover()
+    await this.getChangeCoverButton().click()
+  }
+
+  async removeCover(): Promise<void> {
+    await this.changeCover()
+    await this.getRemoveCoverButton().click()
   }
 }

@@ -1,5 +1,5 @@
 import { INITIAL_PAGE } from '@/data/common'
-import { ICON_DATA } from '@/data/icon'
+import { UPLOADER_DATA } from '@/data/uploaderDashboard'
 import { test, expect } from '@/fixtures'
 import { DocumentTitlePage } from '@/pages/document/DocumentTitlePage'
 import { IconPage } from '@/pages/document/IconPage'
@@ -29,7 +29,7 @@ test.describe('Add Icon', () => {
     })
 
     test('Verify popup will be closed when click out of popup', async () => {
-      await documentTitle.getDocumentTitle().click()
+      await documentTitle.getArticle().click({ position: { x: 10, y: 10 } })
 
       await expect(icon.getTooltip()).not.toBeVisible()
     })
@@ -54,19 +54,19 @@ test.describe('Add Icon', () => {
     const ACTIVE_CLASS = /active/
 
     test('Verify focused on Emoji Tab by default', async () => {
-      await expect(icon.getIconTab(IconTab.Emoji)).toHaveClass(ACTIVE_CLASS)
+      await expect(icon.getTab(IconTab.Emoji)).toHaveClass(ACTIVE_CLASS)
     })
 
     test('Verify toggle Tab is working well', async () => {
       await icon.switchTab(IconTab.UploadImage)
 
-      await expect(icon.getIconTab(IconTab.Emoji)).not.toHaveClass(ACTIVE_CLASS)
-      await expect(icon.getIconTab(IconTab.UploadImage)).toHaveClass(ACTIVE_CLASS)
+      await expect(icon.getTab(IconTab.Emoji)).not.toHaveClass(ACTIVE_CLASS)
+      await expect(icon.getTab(IconTab.UploadImage)).toHaveClass(ACTIVE_CLASS)
 
       await icon.switchTab(IconTab.Link)
 
-      await expect(icon.getIconTab(IconTab.UploadImage)).not.toHaveClass(ACTIVE_CLASS)
-      await expect(icon.getIconTab(IconTab.Link)).toHaveClass(ACTIVE_CLASS)
+      await expect(icon.getTab(IconTab.UploadImage)).not.toHaveClass(ACTIVE_CLASS)
+      await expect(icon.getTab(IconTab.Link)).toHaveClass(ACTIVE_CLASS)
     })
   })
 
@@ -105,7 +105,7 @@ test.describe('Add Icon', () => {
       await icon.addEmoji(EmojiGroup.SmileysAndEmotion)
       await documentTitle.reopenIconPopup()
 
-      await icon.removeIcon()
+      await icon.remove()
 
       await expect(icon.getTooltip()).not.toBeVisible()
       await expect(documentTitle.getDocumentEmoji()).not.toBeVisible()
@@ -114,7 +114,7 @@ test.describe('Add Icon', () => {
     test('Verify Recent icon is not empty when remove icon', async () => {
       await icon.addEmoji(EmojiGroup.SmileysAndEmotion)
       await documentTitle.reopenIconPopup()
-      await icon.removeIcon()
+      await icon.remove()
 
       await documentTitle.openIconPopup()
 
@@ -136,14 +136,14 @@ test.describe('Add Icon', () => {
   test.describe('Link', async () => {
     test('Verify will show error tooltip when paste invalid image url', async () => {
       await icon.switchTab(IconTab.Link)
-      await icon.pasteImageLink(ICON_DATA.INVALID_URL)
+      await icon.pasteImageLink(UPLOADER_DATA.INVALID_URL)
 
       await expect(icon.getErrorTooltip()).toBeVisible()
     })
 
-    test('Verify will', async () => {
+    test('Verify icon will be added when paste an valid image url', async () => {
       await icon.switchTab(IconTab.Link)
-      await icon.pasteImageLink(ICON_DATA.CORRECT_URL)
+      await icon.pasteImageLink(UPLOADER_DATA.CORRECT_URL)
 
       await expect(documentTitle.getDocumentImageIcon()).toHaveCSS('background-image', /url*/)
     })
