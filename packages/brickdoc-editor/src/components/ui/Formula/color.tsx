@@ -81,7 +81,7 @@ export const FORMULA_COLOR_METAS: Record<FormulaColorType, FormulaColorMeta> = {
   null: purpleColorMeta,
   number: cyanColorMeta,
   string: pinkColorMeta,
-  literal: pinkColorMeta,
+  literal: defaultColorMeta,
   Record: blueColorMeta,
   Array: blueColorMeta,
   Date: cyanColorMeta,

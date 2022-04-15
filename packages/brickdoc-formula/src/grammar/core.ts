@@ -572,11 +572,11 @@ const innerInterpretFirst = ({
   //     result
   //   }
   // }
-  if (!cst) {
-    return { success: true, result: { type: 'string', result: ctx.meta.input }, runtimeEventDependencies: [] }
-  }
   if (kind === 'literal') {
     return { success: true, result: { type: 'literal', result: ctx.meta.input }, runtimeEventDependencies: [] }
+  }
+  if (!cst) {
+    return { success: true, result: { type: 'string', result: ctx.meta.input }, runtimeEventDependencies: [] }
   }
   return undefined
 }
