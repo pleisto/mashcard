@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import { act } from 'react-dom/test-utils'
 import { Dashboard, ImportSourceOption } from '../Dashboard'
 import { DashboardPluginOptions } from '../plugin'
 import { RECENT_EMOJI_LOCAL_STORAGE_KEY } from '../useEmoji'
@@ -193,13 +194,13 @@ describe('Dashboard', () => {
 
       expect(options.onUploaded).toBeCalledTimes(1)
       expect((options.onUploaded as jest.Mock).mock.calls[0]).toMatchInlineSnapshot(`
-Array [
-  Object {
-    "action": "add",
-    "color": "#5f5f5f",
-  },
-]
-`)
+        Array [
+          Object {
+            "action": "add",
+            "color": "#5f5f5f",
+          },
+        ]
+      `)
     })
 
     it('clicks Remove Button will trigger remove action', () => {
@@ -244,7 +245,7 @@ Array [
         <Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />
       )
 
-      expect(container.firstChild).toMatchSnapshot()
+      expect(container).toMatchSnapshot()
     })
 
     it('renders correctly', () => {
@@ -257,7 +258,31 @@ Array [
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
       expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
-      expect(screen.getByRole('group')).toBeInTheDocument()
+    })
+
+    it('searches emoji correctly', () => {
+      jest.useFakeTimers()
+      const options: DashboardPluginOptions = {
+        target: {} as any,
+        importSources: sources,
+        fileType: 'image',
+        onUploaded: jest.fn()
+      }
+
+      render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
+
+      act(() => {
+        fireEvent.change(screen.getByPlaceholderText('Search for Emoji...'), {
+          target: {
+            value: 'smile'
+          }
+        })
+        jest.runAllTimers()
+      })
+
+      const list = screen.getAllByRole('option')
+
+      expect(list[0].textContent).toMatchInlineSnapshot(`"😼"`)
     })
 
     it('selects emoji item normally', () => {
@@ -271,26 +296,25 @@ Array [
       render(<Dashboard pluginId="dashboard" importSources={sources} pluginOptions={options} uppy={uppy} />)
 
       expect(screen.getByText(source.typeLabel!)).toBeInTheDocument()
-      const list = screen.getByRole('list')
-      fireEvent.click(list.firstChild!)
+      const list = screen.getAllByRole('option')
+      fireEvent.click(list[0])
 
-      expect(screen.getAllByRole('group')).toHaveLength(2)
       expect(options.onUploaded).toHaveBeenCalledTimes(1)
       expect((options.onUploaded as jest.Mock).mock.calls[0]).toMatchInlineSnapshot(`
-Array [
-  Object {
-    "action": "add",
-    "emoji": Object {
-      "emoji": "😀",
-      "emoji_version": "1.0",
-      "name": "grinning face",
-      "skin_tone_support": false,
-      "slug": "grinning_face",
-      "unicode_version": "1.0",
-    },
-  },
-]
-`)
+        Array [
+          Object {
+            "action": "add",
+            "emoji": Object {
+              "emoji": "😀",
+              "emoji_version": "1.0",
+              "name": "grinning face",
+              "skin_tone_support": false,
+              "slug": "grinning_face",
+              "unicode_version": "1.0",
+            },
+          },
+        ]
+      `)
     })
 
     it('clicks Remove Button will trigger remove action', () => {

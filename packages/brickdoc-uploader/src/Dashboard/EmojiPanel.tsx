@@ -1,6 +1,7 @@
-import React from 'react'
+import { FC, forwardRef, useCallback, useMemo, useState } from 'react'
 import { debounce } from '@brickdoc/active-support'
 import { Button } from '@brickdoc/design-system'
+import List from 'rc-virtual-list'
 import { ImportSourceOption } from './Dashboard'
 import { DashboardPluginOptions, UploadResultData } from './plugin'
 
@@ -25,107 +26,88 @@ export interface EmojiMeta {
 
 const RECENT_GROUP = 'RECENT'
 
-export const EmojiPanel: React.FC<EmojiPanelProps> = ({ emojiData, recentEmojis, onSelectEmoji }) => {
-  const [search, setSearch] = React.useState('')
+const EmojiGroup = forwardRef<
+  HTMLDivElement,
+  {
+    item: { name: string; emojis: EmojiMeta[]; height: number }
+    onSelectEmoji: EmojiPanelProps['onSelectEmoji']
+  }
+>(({ item: { name, height, emojis }, onSelectEmoji }, ref) => {
+  return (
+    <div ref={ref} style={{ height }} role="group" key={name} className="dashboard-emoji-group">
+      <div className="dashboard-emoji-group-name">{name}</div>
+      <div role="listbox" className="dashboard-emoji-list">
+        {emojis.map(item => {
+          if (!item.name) {
+            return null
+          }
+          return (
+            <Button
+              role="option"
+              type="text"
+              key={item.name}
+              className="dashboard-emoji-item"
+              onClick={() => onSelectEmoji(item, 'add')}>
+              <span aria-label={item.name} className="dashboard-emoji" role="img">
+                {item.emoji}
+              </span>
+            </Button>
+          )
+        })}
+      </div>
+    </div>
+  )
+})
+
+export const EmojiPanel: FC<EmojiPanelProps> = ({ emojiData, recentEmojis, onSelectEmoji }) => {
+  const [search, setSearch] = useState('')
+
+  const getEmojis = useCallback(
+    (name: string): EmojiMeta[] => {
+      let data: EmojiMeta[] = []
+      if (name === RECENT_GROUP) {
+        data = recentEmojis ?? []
+      } else {
+        data = emojiData[name] ?? []
+      }
+
+      if (!search) return data
+
+      return data.filter(emoji => emoji?.name?.includes(search))
+    },
+    [emojiData, recentEmojis, search]
+  )
+
+  const groups = useMemo(
+    () =>
+      [RECENT_GROUP, ...Object.keys(emojiData)]
+        .map(name => {
+          const emojis = getEmojis(name)
+          return {
+            name,
+            emojis,
+            height:
+              /** emojis height */ (Math.ceil(emojis.length) / 16) * (32 + 9) +
+              /** title height */ 20 +
+              /** group gap */ 18
+          }
+        })
+        .filter(i => i.emojis.length > 0),
+    [emojiData, getEmojis]
+  )
+
   const handleSearchEmoji = debounce((event: any): void => {
     const search = event.target.value
     setSearch(search)
   }, 200)
 
-  const getEmojis = (name: string): EmojiMeta[] => {
-    let data: EmojiMeta[] = []
-    if (name === RECENT_GROUP) {
-      data = recentEmojis ?? []
-    } else {
-      data = emojiData[name] ?? []
-    }
-
-    if (!search) return data
-
-    return data.filter(emoji => emoji?.name?.includes(search))
-  }
-
-  const [activeGroups, setActiveGroups] = React.useState<string[]>([RECENT_GROUP, Object.keys(emojiData)[0]])
-
-  const observeY = React.useRef<number>()
-  const createScrollObserver = (ele: HTMLElement): void => {
-    if (!ele) {
-      return
-    }
-
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1.0
-    }
-
-    new IntersectionObserver((entities): void => {
-      const y = entities[0].boundingClientRect.y
-      const groups = [RECENT_GROUP, ...Object.keys(emojiData)]
-      const updater = debounce(() => {
-        setActiveGroups(prevGroups => {
-          const newGroup = groups[prevGroups.length]
-          if (!newGroup || prevGroups.includes(newGroup)) {
-            return prevGroups
-          }
-
-          return [...prevGroups, newGroup]
-        })
-      }, 300)
-
-      if (observeY.current! > y) {
-        if (activeGroups.length === groups.length) {
-          return
-        }
-
-        updater()
-      }
-      observeY.current = y
-    }, options).observe(ele)
-  }
-
   return (
     <div className="uploader-dashboard-emoji-panel">
       <input className="dashboard-emoji-search-input" placeholder="Search for Emoji..." onChange={handleSearchEmoji} />
       <div className="dashboard-emoji-section">
-        {activeGroups.map(name => {
-          const emojis = getEmojis(name)
-
-          if (emojis.length === 0) {
-            return null
-          }
-
-          return (
-            <div role="group" key={name} className="dashboard-emoji-group">
-              <div className="dashboard-emoji-group-name">{name}</div>
-              <div role="list" className="dashboard-emoji-list">
-                {emojis.map(item => {
-                  if (!item.name) {
-                    return null
-                  }
-                  return (
-                    <Button
-                      type="text"
-                      key={item.name}
-                      className="dashboard-emoji-item"
-                      onClick={() => onSelectEmoji(item, 'add')}
-                    >
-                      <span aria-label={item.name} className="dashboard-emoji" role="img">
-                        {item.emoji}
-                      </span>
-                    </Button>
-                  )
-                })}
-                <div
-                  ref={container => {
-                    createScrollObserver(container!)
-                  }}
-                  className="emoji-load-more-placeholder"
-                />
-              </div>
-            </div>
-          )
-        })}
+        <List data={groups} height={323} itemHeight={323} itemKey="name">
+          {item => <EmojiGroup onSelectEmoji={onSelectEmoji} item={item} />}
+        </List>
       </div>
     </div>
   )

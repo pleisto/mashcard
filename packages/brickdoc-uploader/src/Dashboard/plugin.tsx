@@ -81,12 +81,14 @@ export interface DashboardPluginOptions {
 
 export type SourceType = 'upload' | 'link' | 'unsplash' | 'emoji' | 'gallery'
 
+export const DashboardPluginName = 'brd-dashboard'
+
 export class DashboardPlugin extends BasePlugin {
   opts: DashboardPluginOptions
 
   constructor(uppy: Uppy, opts: DashboardPluginOptions) {
     super(uppy, opts)
-    this.id = 'brd-dashboard'
+    this.id = DashboardPluginName
     this.type = 'orchestrator'
     this.opts = opts
   }

@@ -1,7 +1,7 @@
-import * as React from 'react'
+import { FC, useEffect, useRef } from 'react'
 import { Uppy } from '@uppy/core'
 import XhrUploadPlugin from '@uppy/xhr-upload'
-import { DashboardPlugin, DashboardPluginOptions } from './plugin'
+import { DashboardPlugin, DashboardPluginName, DashboardPluginOptions } from './plugin'
 
 export type {
   UploadResultData,
@@ -24,7 +24,7 @@ export interface DashboardProps {
   canbeRemove?: DashboardPluginOptions['canbeRemove']
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({
+export const Dashboard: FC<DashboardProps> = ({
   blockId,
   onUploaded,
   prepareFileUpload,
@@ -35,12 +35,49 @@ export const Dashboard: React.FC<DashboardProps> = ({
   onProgress,
   canbeRemove = false
 }) => {
-  const container = React.useRef<HTMLElement>()
-  const uppy = React.useRef<Uppy>()
+  const container = useRef<HTMLElement>()
+  const uppy = useRef<Uppy>()
 
-  if (!uppy) {
-    return null
-  }
+  useEffect(() => {
+    const options = {
+      target: container.current!,
+      blockId,
+      onProgress,
+      onUploaded,
+      onFileLoaded,
+      prepareFileUpload,
+      fetchUnsplashImages,
+      importSources,
+      fileType: fileType!,
+      canbeRemove
+    }
+
+    if (!uppy.current) {
+      uppy.current = new Uppy()
+      // TODO: use active storage instead
+      uppy.current.use(XhrUploadPlugin, {
+        endpoint: '/',
+        method: 'PUT',
+        formData: false,
+        getResponseData: () => ({
+          url: ''
+        })
+      })
+      uppy.current.use(DashboardPlugin, options)
+    } else {
+      uppy.current.getPlugin(DashboardPluginName)?.setOptions(options)
+    }
+  }, [
+    blockId,
+    canbeRemove,
+    fetchUnsplashImages,
+    fileType,
+    importSources,
+    onFileLoaded,
+    onProgress,
+    onUploaded,
+    prepareFileUpload
+  ])
 
   return (
     <div
@@ -50,28 +87,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
         }
 
         container.current = ele ?? undefined
-        uppy.current = new Uppy()
-        // TODO: use active storage instead
-        uppy.current.use(XhrUploadPlugin, {
-          endpoint: '/',
-          method: 'PUT',
-          formData: false,
-          getResponseData: () => ({
-            url: ''
-          })
-        })
-        uppy.current.use(DashboardPlugin, {
-          target: container.current!,
-          blockId,
-          onProgress,
-          onUploaded,
-          onFileLoaded,
-          prepareFileUpload,
-          fetchUnsplashImages,
-          importSources,
-          fileType: fileType!,
-          canbeRemove
-        })
       }}
     />
   )
