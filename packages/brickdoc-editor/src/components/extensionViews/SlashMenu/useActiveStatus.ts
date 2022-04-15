@@ -35,7 +35,7 @@ export function useActiveStatus(
   }, [type.length, suggestion.length, recent.length])
 
   // keyboard events
-  const [menuRef] = useKeyboardEvent(currentItem, itemLength, setActiveIndex, command)
+  const [menuRef] = useKeyboardEvent(type, currentItem, itemLength, setActiveIndex, command)
 
   const handleActiveIndexChange = useCallback((index: number) => {
     setActiveIndex((index + itemLength.current) % itemLength.current)

@@ -16,13 +16,15 @@ const TRIGGER_CHAR = '/'
 export interface SlashCommandsOptions {}
 export interface SlashCommandsAttributes {}
 
+const pluginKey = new PluginKey('slashMenu')
+
 export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommandsAttributes>({
   name: meta.name,
 
   addProseMirrorPlugins() {
     return [
       Suggestion({
-        pluginKey: new PluginKey('slashMenu'),
+        pluginKey,
         char: TRIGGER_CHAR,
         startOfLine: true,
         command: ({ editor, range, props }) => {
@@ -87,6 +89,15 @@ export const SlashCommands = createExtension<SlashCommandsOptions, SlashCommands
               if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Enter' || key === 'Escape') {
                 BrickdocEventBus.dispatch(SlashMenuKeyboardEventTrigger({ key }))
                 return true
+              }
+
+              if (key === '=') {
+                const state = pluginKey.getState(this.editor.view.state)
+
+                if (state && state.query === '') {
+                  BrickdocEventBus.dispatch(SlashMenuKeyboardEventTrigger({ key }))
+                  return true
+                }
               }
 
               return false

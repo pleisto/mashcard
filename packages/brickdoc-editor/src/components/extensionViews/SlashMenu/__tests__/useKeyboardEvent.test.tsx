@@ -5,6 +5,11 @@ import { SlashMenuItem } from '../SlashMenu'
 import { useKeyboardEvent } from '../useKeyboardEvent'
 
 describe('useKeyboardEvent', () => {
+  const formulaItem: SlashMenuItem = {
+    key: 'formula',
+    icon: <span>icon</span>,
+    command: () => {}
+  }
   const item: SlashMenuItem = {
     key: 'key',
     icon: <span>icon</span>,
@@ -29,7 +34,7 @@ describe('useKeyboardEvent', () => {
     renderHook(() => {
       const itemRef = useRef(item)
       const itemLength = useRef(3)
-      return useKeyboardEvent(itemRef, itemLength, setActiveIndex, command)
+      return useKeyboardEvent([formulaItem], itemRef, itemLength, setActiveIndex, command)
     })
 
     BrickdocEventBus.dispatch(
@@ -46,7 +51,7 @@ describe('useKeyboardEvent', () => {
     renderHook(() => {
       const itemRef = useRef(item)
       const itemLength = useRef(3)
-      return useKeyboardEvent(itemRef, itemLength, setActiveIndex, command)
+      return useKeyboardEvent([formulaItem], itemRef, itemLength, setActiveIndex, command)
     })
 
     BrickdocEventBus.dispatch(
@@ -63,7 +68,7 @@ describe('useKeyboardEvent', () => {
     renderHook(() => {
       const itemRef = useRef(item)
       const itemLength = useRef(3)
-      return useKeyboardEvent(itemRef, itemLength, setActiveIndex, command)
+      return useKeyboardEvent([formulaItem], itemRef, itemLength, setActiveIndex, command)
     })
 
     BrickdocEventBus.dispatch(
@@ -81,7 +86,7 @@ describe('useKeyboardEvent', () => {
     renderHook(() => {
       const itemRef = useRef(item)
       const itemLength = useRef(3)
-      return useKeyboardEvent(itemRef, itemLength, setActiveIndex, command)
+      return useKeyboardEvent([formulaItem], itemRef, itemLength, setActiveIndex, command)
     })
 
     let hide = false
@@ -97,5 +102,23 @@ describe('useKeyboardEvent', () => {
     )
 
     expect(hide).toBeTruthy()
+  })
+
+  it('triggers = correctly', () => {
+    const command = jest.fn()
+    renderHook(() => {
+      const itemRef = useRef(item)
+      const itemLength = useRef(3)
+      return useKeyboardEvent([formulaItem], itemRef, itemLength, setActiveIndex, command)
+    })
+
+    BrickdocEventBus.dispatch(
+      SlashMenuKeyboardEventTrigger({
+        key: '='
+      })
+    )
+
+    expect(activeIndex).toBe(1)
+    expect(command).toBeCalled()
   })
 })

@@ -3,12 +3,14 @@ import { BrickdocEventBus, SlashMenuKeyboardEventTrigger, SlashMenuHide } from '
 import { SlashMenuItem, SlashMenuProps } from '.'
 
 export function useKeyboardEvent(
+  type: SlashMenuItem[],
   currentItem: MutableRefObject<SlashMenuItem | undefined>,
   itemLength: MutableRefObject<number>,
   setActiveIndex: Dispatch<SetStateAction<number>>,
   command: SlashMenuProps['command']
 ): [MutableRefObject<HTMLUListElement | undefined>] {
   const menuRef = useRef<HTMLUListElement>()
+  const formulaMenuItem = type.find(item => item.key === 'formula')
 
   const scrollItemIntoView = (index: number): void =>
     menuRef.current
@@ -44,6 +46,9 @@ export function useKeyboardEvent(
           break
         case 'Escape':
           BrickdocEventBus.dispatch(SlashMenuHide({}))
+          break
+        case '=':
+          if (formulaMenuItem) command(formulaMenuItem)
           break
       }
     })
