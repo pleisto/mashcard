@@ -163,5 +163,7 @@ const JSONContentToText = (c: JSONContent, prevC: JSONContent | undefined, pageI
   }
 
   const prevText = prevC?.text ?? ''
-  return codeFragment2display(codeFragment, text, prevText, pageId)
+  // TODO handle paste
+  const attrs = typeof codeFragment.attrs === 'string' ? JSON.parse(codeFragment.attrs) : codeFragment.attrs
+  return codeFragment2display({ ...codeFragment, attrs }, text, prevText, pageId)
 }

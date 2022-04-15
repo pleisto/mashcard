@@ -224,17 +224,15 @@ export class SpreadsheetClass implements SpreadsheetType {
     if (!isNaN(number)) {
       return this.handleInterpretRow(number)
     }
-    return this.handleInterpretColumn(name)
+    return this.handleInterpretColumn(interpreter, name)
   }
 
-  private handleInterpretColumn(name: string): AnyTypeResult {
+  private handleInterpretColumn(interpreter: FormulaInterpreter, name: string): AnyTypeResult {
     const column = this.findColumn({ namespaceId: this.namespaceId, type: 'name', value: name })
 
-    if (column) {
-      return { type: 'Column', result: column }
-    }
+    if (!column) return { type: 'Error', result: `Column ${name} not found`, errorKind: 'runtime' }
 
-    return { type: 'Error', result: `Column ${name} not found`, errorKind: 'runtime' }
+    return { type: 'Column', result: column }
   }
 
   eventDependency({ rowKey, columnKey }: getEventDependencyInput): EventDependency {

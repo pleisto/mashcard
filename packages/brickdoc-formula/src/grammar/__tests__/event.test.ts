@@ -51,6 +51,24 @@ const testCases: Array<{
   },
   {
     listenedScope: { columns: ['column1'] },
+    eventScope: {},
+    label: 'column - spreadsheet',
+    result: true
+  },
+  {
+    listenedScope: { rows: ['row1'] },
+    eventScope: {},
+    label: 'row - spreadsheet',
+    result: true
+  },
+  {
+    listenedScope: { columns: ['column1'], rows: ['row1'] },
+    eventScope: {},
+    label: 'cell - spreadsheet',
+    result: true
+  },
+  {
+    listenedScope: { columns: ['column1'] },
     eventScope: { columns: ['column1'] },
     label: 'column1 ',
     result: true
@@ -82,7 +100,37 @@ const testCases: Array<{
   {
     listenedScope: { columns: ['column1'] },
     eventScope: { rows: ['row1'] },
-    label: 'column1 and row1',
+    label: 'column - row',
+    result: true
+  },
+  {
+    listenedScope: { columns: ['column1'] },
+    eventScope: { rows: ['row1'], columns: ['column1'] },
+    label: 'column - cell1',
+    result: true
+  },
+  {
+    listenedScope: { columns: ['column1'] },
+    eventScope: { rows: ['row1'], columns: ['column2'] },
+    label: 'column - cell2',
+    result: false
+  },
+  {
+    listenedScope: { rows: ['row1'] },
+    eventScope: { columns: ['column1'] },
+    label: 'row - column',
+    result: true
+  },
+  {
+    listenedScope: { rows: ['row1'] },
+    eventScope: { rows: ['row1'], columns: ['column1'] },
+    label: 'row - cell1',
+    result: true
+  },
+  {
+    listenedScope: { rows: ['row1'] },
+    eventScope: { rows: ['row2'], columns: ['column1'] },
+    label: 'row - cell2',
     result: false
   },
   {
@@ -119,7 +167,13 @@ const testCases: Array<{
     listenedScope: { columns: ['column1'] },
     eventScope: { columns: ['column1', 'column3'], rows: ['row1'] },
     label: 'cell update 2',
-    result: false
+    result: true
+  },
+  {
+    listenedScope: { rows: ['row1'] },
+    eventScope: { columns: ['column1', 'column3'], rows: ['row1'] },
+    label: 'cell update 3',
+    result: true
   }
 ]
 

@@ -17,13 +17,26 @@ import { FormulaLexer } from './lexer'
 // eslint-disable-next-line complexity
 export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventScope | undefined): boolean => {
   if (!eventScope) return true
+
   const listenedRows = listenedScope.rows ?? []
   const listenedColumns = listenedScope.columns ?? []
   const eventRows = eventScope.rows ?? []
   const eventColumns = eventScope.columns ?? []
 
+  // Whole spreadsheet change
+  if (eventRows.length === 0 && eventColumns.length === 0) return true
+
+  // Listen to spreadsheet, ignore cell change
   if (listenedRows.length === 0 && listenedColumns.length === 0 && eventRows.length > 0 && eventColumns.length > 0)
     return false
+
+  // Listen to column, change row
+  if (listenedRows.length === 0 && listenedColumns.length > 0 && eventRows.length > 0 && eventColumns.length === 0)
+    return true
+
+  // Listen to row, change column
+  if (listenedRows.length > 0 && listenedColumns.length === 0 && eventRows.length === 0 && eventColumns.length > 0)
+    return true
 
   const rowMatched = _.intersection(listenedRows, eventRows).length > 0
   const columnMatched = _.intersection(listenedColumns, eventColumns).length > 0
@@ -43,9 +56,9 @@ export const shouldReceiveEvent = (listenedScope: EventScope, eventScope: EventS
   }
 
   if (listenedRows.length) {
-    return rowMatched && eventColumns.length === 0
+    return rowMatched
   } else {
-    return columnMatched && eventRows.length === 0
+    return columnMatched
   }
 }
 
