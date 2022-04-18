@@ -17,7 +17,7 @@
     "@sentry/integrations": "^6.19.6",
     "@sentry/react": "^6.19.6",
     "@sentry/tracing": "^6.19.6",
-    "dayjs": "^1.11.0",
+    "dayjs": "^1.11.1",
     "framer-motion": "^6.3.0",
     "graphql": "^16.3.0",
     "graphql-ruby-client": "^1.10.7",
