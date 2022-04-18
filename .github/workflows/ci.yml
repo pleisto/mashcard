@@ -79,7 +79,7 @@ jobs:
           NODE_OPTIONS: '--max-old-space-size=5950'
       - name: Publish Jest test reports
         if: always() && steps.changed-es-files.outputs.any_changed == 'true'
-        uses: mikepenz/action-junit-report@v3.0.1
+        uses: mikepenz/action-junit-report@v3.0.2
         with:
           report_paths: junit-reports/jest.xml
           check_name: Jest Test Report
@@ -154,13 +154,13 @@ jobs:
         run: cd gems/brickdoc_settings && bundle && bundle exec rspec --format RspecJunitFormatter --out ../../junit-reports/rspec_setting.xml && cd ../..
       - name: Publish RSpec test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
-        uses: mikepenz/action-junit-report@v3.0.1
+        uses: mikepenz/action-junit-report@v3.0.2
         with:
           report_paths: junit-reports/rspec.xml
           check_name: Rails RSpec Test Report
       - name: Publish RSpec setting test reports
         if: always() && steps.changed-ruby-files.outputs.any_changed == 'true'
-        uses: mikepenz/action-junit-report@v3.0.1
+        uses: mikepenz/action-junit-report@v3.0.2
         with:
           report_paths: junit-reports/rspec_setting.xml
           check_name: Rails RSpec Test Setting Report
