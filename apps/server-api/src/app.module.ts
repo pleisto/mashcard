@@ -1,5 +1,4 @@
-import { Module, OnApplicationShutdown } from '@nestjs/common'
-import { PinoLogger } from 'nestjs-pino'
+import { Module } from '@nestjs/common'
 import { CommonModule } from './common/common.module'
 import { CoreModule } from './core/core.module'
 /**
@@ -8,13 +7,4 @@ import { CoreModule } from './core/core.module'
 @Module({
   imports: [CommonModule, CoreModule]
 })
-export class AppModule implements OnApplicationShutdown {
-  constructor(private readonly logger: PinoLogger) {
-    // use safe navigation operator to avoid error on devtools console
-    this.logger?.setContext('BrickdocServer')
-  }
-
-  public async onApplicationShutdown(signal: string): Promise<void> {
-    this.logger.info({ signal }, 'Server is shutting down now')
-  }
-}
+export class AppModule {}

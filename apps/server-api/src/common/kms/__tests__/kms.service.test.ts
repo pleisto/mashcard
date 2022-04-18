@@ -1,6 +1,5 @@
 import { Test } from '@nestjs/testing'
-import { ConfigModule } from '@nestjs/config'
-import { configOptions } from '../../config'
+import { env } from 'process'
 import { KMSModule } from '../kms.module'
 import { KMSService } from '../kms.service'
 import { faker } from '@faker-js/faker'
@@ -10,7 +9,7 @@ describe('KMSService', () => {
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot(configOptions), KMSModule]
+      imports: [KMSModule.forRoot({ seed: env.SECRET_KEY_SEED! })]
     }).compile()
     kms = moduleRef.get<KMSService>(KMSService)
   })

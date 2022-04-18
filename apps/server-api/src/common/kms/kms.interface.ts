@@ -4,3 +4,13 @@ export enum SecretSubKey {
   DATA_ENCRYPTION = 2,
   SECURE_COOKIE = 3
 }
+
+export const KMS_MODULE_OPTIONS = Symbol('KMS_MODULE_OPTIONS')
+
+export interface KMSModuleOptions {
+  /**
+   * Secret key seed. {seedName}:{base64-encoded-seed}
+   * @example 'plain:MTIz=='
+   */
+  seed: string
+}

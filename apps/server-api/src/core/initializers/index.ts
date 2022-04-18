@@ -3,11 +3,13 @@ import { ConfigService } from '@nestjs/config'
 import { KMSService } from '../../common/kms/kms.service'
 import { SecretSubKey } from '../../common/kms/kms.interface'
 import { helmetRegister } from './helmet'
-import { setPinoAsLogger } from './logger'
 import { cookieRegister } from './cookie'
 import { sessionRegister } from './session'
 import { registerDebugContext } from './debugger'
 
+/**
+ * loadInitializers will be called by `/main.ts` when the application is bootstrapped and listening for connections.
+ */
 export const loadInitializers = async (app: NestFastifyApplication): Promise<void> => {
   // Get Injection Service
   const kmsService = app.get(KMSService)
@@ -15,7 +17,6 @@ export const loadInitializers = async (app: NestFastifyApplication): Promise<voi
 
   // common initializers
   app.enableShutdownHooks()
-  setPinoAsLogger(app)
   app.flushLogs()
 
   cookieRegister(app, kmsService.subKey(SecretSubKey.SECURE_COOKIE, 'signature'))

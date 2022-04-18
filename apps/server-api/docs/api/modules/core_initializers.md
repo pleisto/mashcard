@@ -12,6 +12,8 @@
 
 ▸ **loadInitializers**(`app`): `Promise`<`void`\>
 
+loadInitializers will be called by `/main.ts` when the application is bootstrapped and listening for connections.
+
 #### Parameters
 
 | Name | Type |
@@ -24,4 +26,4 @@
 
 #### Defined in
 
-[core/initializers/index.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L11)
+[core/initializers/index.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L13)

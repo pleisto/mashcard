@@ -2,13 +2,10 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-"""Available application environments"""
-enum AppEnv {
-  Development
-  Production
-  Staging
-  Test
-}
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
 
 """Locale"""
 type Locale {
@@ -24,8 +21,8 @@ type Locale {
 
 """Brickdoc Server Instance Metadata"""
 type Metadata {
-  """The current application environment"""
-  appEnv: AppEnv!
+  """Some settings are exposed to the client."""
+  exposedSettings: JSONObject
 
   """Supported locales"""
   supportedLocales: [Locale!]!

@@ -28,7 +28,7 @@ export function dotenv(options: ComponentOptions): Rule {
  * @returns
  */
 function generateSeed(): string {
-  return Buffer.from(generateKey()).toString('base64')
+  return `plain:${Buffer.from(generateKey()).toString('base64')}`
 }
 
 /**

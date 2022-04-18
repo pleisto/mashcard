@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common'
-import { SeedDecoder } from './seedDecoder/base.decoder'
+import { SeedDecoder } from './decoder/base.decoder'
 import { SecretSubKey } from './kms.interface'
 import { deriveKey, genericHash, aeadDecrypt, aeadEncrypt } from '@brickdoc/cypherpunk'
 import { memoize } from '@brickdoc/active-support'

@@ -1,6 +1,6 @@
 import '@brickdoc/dotenv/src/config'
+import { env } from 'process'
 import { NestFactory } from '@nestjs/core'
-import { ConfigService } from '@nestjs/config'
 import { Logger } from '@nestjs/common'
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
 import { AppModule } from './app.module'
@@ -18,12 +18,9 @@ async function startServer(): Promise<void> {
   // load initializers
   await loadInitializers(app)
 
-  const configService = app.get(ConfigService)
-  const port = configService.get<number>('application.port')!
-
-  await app.listen(port, () => {
-    log.log(`Listening on: http://0.0.0.0:${port}`)
-  })
+  // run server
+  const port = env.SERVER_PORT ?? 3000
+  await app.listen(port, () => log.log(`Listening on: http://0.0.0.0:${port}`))
 }
 
 void runCliOrServer(startServer)

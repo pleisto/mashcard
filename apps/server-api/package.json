@@ -3,7 +3,7 @@
   "private": true,
   "schematics": "./src/cli/schematics/collection.json",
   "scripts": {
-    "dev": "node-dev --enable-source-maps --inspect --notify=false src/main.ts server | pino-pretty -t SYS:standard -c -l",
+    "dev": "node-dev --enable-source-maps --inspect --notify=false src/main.ts server",
     "start": "ts-node src/main.ts server",
     "console": "ts-node src/main.ts console",
     "cli": "ts-node src/main.ts",
@@ -18,6 +18,8 @@
     "@brickdoc/schematics": "workspace:^",
     "@faker-js/faker": "^6.1.2",
     "@nestjs/testing": "^8.4.4",
+    "@types/graphql-type-json": "^0.3.2",
+    "@types/lru-cache": "^7.6.1",
     "leaked-handles": "^5.2.0",
     "node-dev": "^7.4.3",
     "pino-pretty": "^7.6.1"
@@ -44,13 +46,14 @@
     "fastify-helmet": "^7.0.1",
     "fastify-secure-session": "github:brickdoc/fastify-secure-session",
     "graphql": "^16.3.0",
-    "nestjs-pino": "^2.5.2",
+    "graphql-type-json": "^0.3.2",
+    "lru-cache": "^7.8.1",
     "node-dev": "^7.4.3",
-    "pino-http": "^6.6.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
     "tzdata": "^1.0.30",
     "yargs": "^17.4.1",
-    "yargs-parser": "^21.0.1"
+    "yargs-parser": "^21.0.1",
+    "yup": "^0.32.11"
   }
 }

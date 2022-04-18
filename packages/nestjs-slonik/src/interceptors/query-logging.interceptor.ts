@@ -103,8 +103,9 @@ export const queryLoggingInterceptor = (): Interceptor => {
 
       return null
     },
-    queryExecutionError: (context, _query, error) => {
+    queryExecutionError: (context, query, error) => {
       logger.error('query execution produced an error', {
+        query,
         error: err(error),
         ...loggerContext(context)
       })
