@@ -117,7 +117,7 @@ Array [
         "input": "=1",
         "output": Object {
           "result": 1,
-          "type": "any",
+          "type": "number",
         },
       },
     ],

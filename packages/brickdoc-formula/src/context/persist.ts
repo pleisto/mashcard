@@ -47,6 +47,7 @@ const innerDisplayValue = (v: AnyTypeResult, pageId: NamespaceId, disableTruncat
     case 'string':
       return truncateString(v.result, disableTruncate ? -1 : undefined)
     case 'Date':
+      if (isNaN(v.result as unknown as number)) return v.result.toDateString()
       return v.result.toISOString()
     case 'Error':
       return `#<Error> ${v.result}`
@@ -105,8 +106,8 @@ export const loadDisplayResult = (ctx: FunctionContext, displayResult: VariableD
   return { ...displayResult, result: loadValue(ctx, displayResult.result) as any }
 }
 
-export const dumpValue = (result: BaseResult, t: VariableData): BaseResult => {
-  if (!t.isPersist) {
+export const dumpValue = (result: BaseResult, t?: VariableData): BaseResult => {
+  if (t && !t.isPersist) {
     return { type: 'NoPersist', result: null }
   }
 
@@ -168,7 +169,7 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
       if (spreadsheet) {
         return { type: 'Spreadsheet', result: spreadsheet }
       } else {
-        return { type: 'Error', result: `Spreadsheet ${result.result.blockId} not found`, errorKind: 'deps' }
+        return { type: 'Error', result: `Spreadsheet not found`, errorKind: 'deps' }
       }
     }
   }
@@ -183,28 +184,20 @@ export const loadValue = (ctx: FunctionContext, result: BaseResult): AnyTypeResu
   }
 
   if (result.type === 'Column' && !(result.result instanceof ColumnClass)) {
-    const column = ctx.formulaContext.findColumn(result.result.spreadsheetId, {
-      namespaceId: result.result.namespaceId,
-      type: 'id',
-      value: result.result.columnId
-    })
+    const column = ctx.formulaContext.findColumn(result.result.spreadsheetId, result.result.findKey)
     if (column) {
       return { type: 'Column', result: column }
     } else {
-      return { type: 'Error', result: `Column ${result.result.columnId} not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Column not found`, errorKind: 'deps' }
     }
   }
 
   if (result.type === 'Row' && !(result.result instanceof RowClass)) {
-    const row = ctx.formulaContext.findRow(result.result.spreadsheetId, {
-      namespaceId: result.result.namespaceId,
-      type: 'id',
-      value: result.result.rowId
-    })
+    const row = ctx.formulaContext.findRow(result.result.spreadsheetId, result.result.findKey)
     if (row) {
       return { type: 'Row', result: row }
     } else {
-      return { type: 'Error', result: `Row ${result.result.rowId} not found`, errorKind: 'deps' }
+      return { type: 'Error', result: `Row not found`, errorKind: 'deps' }
     }
   }
 

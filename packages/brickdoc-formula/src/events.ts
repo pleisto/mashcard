@@ -1,6 +1,6 @@
 import { event } from '@brickdoc/schema'
 import { ContextState } from './context'
-import { ColumnInitializer, Row } from './controls'
+import { Column, Row } from './controls'
 import { EventScope, VariableInterface, VariableTask } from './types'
 
 export const FormulaInnerRefresh = event<{ namespaceId: string; variableId: string }>()(
@@ -70,7 +70,7 @@ export const SpreadsheetUpdateRowsViaId = event<{
 export const SpreadsheetUpdateColumnsViaId = event<{
   spreadsheetId: string
   namespaceId: string
-  columns: ColumnInitializer[]
+  columns: Column[]
   key: string
 }>()('SpreadsheetUpdateColumnsViaId', ({ spreadsheetId, namespaceId }) => {
   return { id: `${namespaceId},${spreadsheetId}` }

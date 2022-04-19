@@ -74,7 +74,7 @@ export interface BlockType {
   handleInterpret: handleInterpretType
 }
 
-export interface ColumnInitializer {
+export interface Column {
   columnId: ColumnId
   spreadsheetId: SpreadsheetId
   name: ColumnName
@@ -84,7 +84,7 @@ export interface ColumnInitializer {
   sort: number
 }
 
-export interface ColumnType extends ColumnInitializer {
+export interface ColumnType extends Column {
   spreadsheet: SpreadsheetType
   namespaceId: NamespaceId
   findKey: FindKey
@@ -94,6 +94,7 @@ export interface ColumnType extends ColumnInitializer {
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
   eventDependency: getEventDependency
+  newCell: (cell: Cell, rowKey: string) => CellType
   cells: () => Cell[]
 }
 
@@ -111,6 +112,7 @@ export interface RowType extends Row {
   logic: boolean
   display: () => string
   key: () => string
+  newCell: (cell: Cell, columnKey: string) => CellType
   handleCodeFragments: handleCodeFragmentsType
   handleInterpret: handleInterpretType
   eventDependency: getEventDependency
@@ -151,7 +153,7 @@ export interface SpreadsheetInitializer {
   ctx: BaseFunctionContext
   dynamic: boolean
   name: string
-  columns: ColumnInitializer[]
+  columns: Column[]
   rows: Row[]
   getCell: ({
     rowId,
@@ -170,7 +172,7 @@ export interface SpreadsheetDynamicPersistence {
   spreadsheetId: SpreadsheetId
   namespaceId: NamespaceId
   spreadsheetName: string
-  columns: ColumnInitializer[]
+  columns: Column[]
   rows: Row[]
   cells: Cell[]
 }
@@ -196,7 +198,7 @@ export interface SpreadsheetType {
   columnCount: () => number
   rowCount: () => number
   name: () => string
-  listColumns: () => ColumnInitializer[]
+  listColumns: () => Column[]
   listRows: () => Row[]
   listCells: ({ rowId, columnId }: { rowId?: uuid; columnId?: uuid }) => Cell[]
   findCellValue: ({ rowId, columnId }: { rowId: uuid; columnId: uuid }) => string | undefined

@@ -1,6 +1,6 @@
 import { parse, innerInterpret } from '../core'
 import { FormulaContext } from '../../context'
-import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass, Cell } from '../../controls'
+import { Row, Column, SpreadsheetType, SpreadsheetClass, Cell } from '../../controls'
 import { VariableMetadata } from '../../types'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 
@@ -132,7 +132,7 @@ const cells: Cell[] = [
   }
 ]
 
-const columns: ColumnInitializer[] = [
+const columns: Column[] = [
   {
     columnId: firstColumnId,
     spreadsheetId,

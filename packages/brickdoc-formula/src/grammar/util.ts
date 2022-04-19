@@ -279,6 +279,7 @@ export const attrsToColorType = ({ code, display, attrs }: CodeFragment): Formul
     case 'BooleanLiteral':
       return display === 'true' ? 'TRUE' : 'FALSE'
     case 'Column':
+    case 'Row':
       return attrs.kind as FormulaColorType
     default:
       return code as FormulaColorType

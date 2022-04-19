@@ -26,7 +26,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
         name: 'b'
       }
     ],
-    examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
+    examples: [{ input: '=1', output: { type: 'number', result: 1 } }],
     description: '',
     group: 'custom',
     returns: 'number',
@@ -43,7 +43,7 @@ const functionClauses: Array<BaseFunctionClause<any>> = [
     pure: true,
     effect: false,
     args: [],
-    examples: [{ input: '=1', output: { type: 'any', result: 1 } }],
+    examples: [{ input: '=1', output: { type: 'number', result: 1 } }],
     description: '',
     group: 'custom',
     returns: 'number',

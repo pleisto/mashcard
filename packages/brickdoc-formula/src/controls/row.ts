@@ -12,7 +12,7 @@ import {
   uuid
 } from '../types'
 import { CellClass } from './cell'
-import { Cell, getEventDependencyInput, Row, RowType, SpreadsheetType } from './types'
+import { Cell, CellType, getEventDependencyInput, Row, RowType, SpreadsheetType } from './types'
 
 export class RowClass implements RowType {
   spreadsheetId: SpreadsheetId
@@ -46,8 +46,9 @@ export class RowClass implements RowType {
     return this.spreadsheet.listCells({ rowId: this.rowId })
   }
 
-  persistence(): Row {
+  persistence(): Row & { findKey: FindKey } {
     return {
+      findKey: this.findKey,
       rowIndex: this.rowIndex,
       rowId: this.rowId,
       spreadsheetId: this.spreadsheetId
@@ -99,14 +100,15 @@ export class RowClass implements RowType {
       }
     }
 
-    return {
-      type: 'Cell',
-      result: new CellClass(this.spreadsheet, cell, {
-        rowKey: this.key(),
-        columnKey: name,
-        cleanupEventDependency: this.eventDependency({})
-      })
-    }
+    return { type: 'Cell', result: this.newCell(cell, name) }
+  }
+
+  newCell(cell: Cell, columnKey: string): CellType {
+    return new CellClass(this.spreadsheet, cell, {
+      rowKey: this.key(),
+      columnKey,
+      cleanupEventDependency: this.eventDependency({})
+    })
   }
 
   handleCodeFragments(

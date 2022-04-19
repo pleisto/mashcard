@@ -1,4 +1,4 @@
-import { ColumnType, ColumnInitializer, SpreadsheetType, Cell, getEventDependencyInput } from './types'
+import { ColumnType, Column, SpreadsheetType, Cell, getEventDependencyInput, CellType } from './types'
 import {
   AnyTypeResult,
   CellResult,
@@ -32,7 +32,7 @@ export class ColumnClass implements ColumnType {
 
   constructor(
     spreadsheet: SpreadsheetType,
-    { columnId, spreadsheetId, name, index, sort, displayIndex, title }: ColumnInitializer,
+    { columnId, spreadsheetId, name, index, sort, displayIndex, title }: Column,
     logic: boolean,
     findKey: FindKey
   ) {
@@ -61,10 +61,11 @@ export class ColumnClass implements ColumnType {
     return this.spreadsheet.listCells({ columnId: this.columnId })
   }
 
-  persistence(): ColumnInitializer {
+  persistence(): Column & { findKey: FindKey } {
     return {
       title: this.title,
       displayIndex: this.displayIndex,
+      findKey: this.findKey,
       sort: this.sort,
       columnId: this.columnId,
       spreadsheetId: this.spreadsheetId,
@@ -96,14 +97,15 @@ export class ColumnClass implements ColumnType {
       }
     }
 
-    return {
-      type: 'Cell',
-      result: new CellClass(this.spreadsheet, cell, {
-        columnKey: this.key(),
-        rowKey: name,
-        cleanupEventDependency: this.eventDependency({})
-      })
-    }
+    return { type: 'Cell', result: this.newCell(cell, name) }
+  }
+
+  newCell(cell: Cell, rowKey: string): CellType {
+    return new CellClass(this.spreadsheet, cell, {
+      columnKey: this.key(),
+      rowKey,
+      cleanupEventDependency: this.eventDependency({})
+    })
   }
 
   eventDependency({ rowKey }: getEventDependencyInput): EventDependency {

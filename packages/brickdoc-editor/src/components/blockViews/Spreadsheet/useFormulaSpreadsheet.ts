@@ -2,7 +2,7 @@ import React from 'react'
 import {
   SpreadsheetType,
   SpreadsheetClass,
-  ColumnInitializer,
+  Column,
   Row,
   SpreadsheetUpdateNameViaId,
   SpreadsheetUpdateRowsViaId,
@@ -40,7 +40,7 @@ export function useFormulaSpreadsheet({
     () => rows.map((row, rowIndex) => ({ rowId: row.id, rowIndex, spreadsheetId })),
     [rows, spreadsheetId]
   )
-  const columnData: ColumnInitializer[] = React.useMemo(
+  const columnData: Column[] = React.useMemo(
     () =>
       columns.map(({ uuid: columnId, sort, title }, index) => ({
         columnId,

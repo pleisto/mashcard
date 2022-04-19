@@ -34,7 +34,7 @@ import {
   SpreadsheetInitializer,
   SpreadsheetDynamicPersistence,
   Row,
-  ColumnInitializer,
+  Column,
   Cell,
   SpreadsheetAllPersistence,
   handleCodeFragmentsResult,
@@ -63,7 +63,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     columnIndex: number
   }) => Cell
 
-  _columns: ColumnInitializer[]
+  _columns: Column[]
   _rows: Row[]
   eventListeners: EventSubscribed[] = []
 
@@ -118,8 +118,8 @@ export class SpreadsheetClass implements SpreadsheetType {
         const newColumns = e.payload.columns
         this._columns = newColumns
 
-        const pairs1 = objectDiff<ColumnInitializer>(oldColumns, newColumns)
-        const pairs2 = objectDiff<ColumnInitializer>(newColumns, oldColumns)
+        const pairs1 = objectDiff<Column>(oldColumns, newColumns)
+        const pairs2 = objectDiff<Column>(newColumns, oldColumns)
         const changedColumnIds = [
           ...new Set([...Object.values(pairs1), ...Object.values(pairs2)].flatMap(p => [p.columnId, p.displayIndex]))
         ]
@@ -168,7 +168,7 @@ export class SpreadsheetClass implements SpreadsheetType {
     this.eventListeners.push(rowsSubcription)
   }
 
-  public listColumns(): ColumnInitializer[] {
+  public listColumns(): Column[] {
     return this._columns
   }
 
@@ -426,7 +426,7 @@ export class SpreadsheetClass implements SpreadsheetType {
   }
 
   toArray(): string[][] {
-    const columns: ColumnInitializer[] = this.listColumns()
+    const columns: Column[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
     const result: string[][] = []
@@ -445,7 +445,7 @@ export class SpreadsheetClass implements SpreadsheetType {
   }
 
   toRecord(): Array<Record<string, StringResult>> {
-    const columns: ColumnInitializer[] = this.listColumns()
+    const columns: Column[] = this.listColumns()
     const rows: Row[] = this.listRows()
 
     const result: Array<Record<string, StringResult>> = []

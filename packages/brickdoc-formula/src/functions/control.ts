@@ -22,7 +22,7 @@ import {
   InputClass,
   SpreadsheetInitializer,
   SpreadsheetClass,
-  ColumnInitializer,
+  Column,
   Cell
 } from '../controls'
 import { FORMULA_FEATURE_CONTROL } from '../context'
@@ -54,7 +54,7 @@ export const Spreadsheet = (
 
   const spreadsheetId = uuid()
   const defaultName = 'Dynamic Spreadsheet'
-  const columns: ColumnInitializer[] = []
+  const columns: Column[] = []
   const rows: Row[] = []
   const cells: Cell[] = []
 
@@ -64,7 +64,7 @@ export const Spreadsheet = (
     const keyWithIds = keys.map(key => ({ key, uuid: uuid() }))
 
     keys.forEach((key, index) => {
-      const column: ColumnInitializer = {
+      const column: Column = {
         spreadsheetId,
         columnId: keyWithIds.find(k => k.key === key)!.uuid,
         name: key,

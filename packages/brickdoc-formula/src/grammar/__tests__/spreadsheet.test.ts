@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import { parse, innerInterpret } from '../core'
 import { FormulaContext } from '../../context'
-import { Row, ColumnInitializer, SpreadsheetType, SpreadsheetClass, Cell } from '../../controls'
+import { Row, Column, SpreadsheetType, SpreadsheetClass, Cell } from '../../controls'
 import { VariableMetadata } from '../../types'
 import { BlockNameLoad, BrickdocEventBus } from '@brickdoc/schema'
 
@@ -41,7 +41,7 @@ const rows: Row[] = [
   { rowId: secondRowId, rowIndex: 1, spreadsheetId },
   { rowId: thirdRowId, rowIndex: 2, spreadsheetId }
 ]
-const columns: ColumnInitializer[] = [
+const columns: Column[] = [
   {
     columnId: firstColumnId,
     spreadsheetId,
