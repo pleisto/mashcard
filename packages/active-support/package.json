@@ -30,6 +30,6 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@types/lodash": "^4.14.181"
+    "@types/lodash": "^4.14.182"
   }
 }

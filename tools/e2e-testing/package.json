@@ -13,7 +13,7 @@
     "lint:type": "run -T tsc"
   },
   "devDependencies": {
-    "@playwright/test": "^1.21.0",
+    "@playwright/test": "^1.21.1",
     "nyc": "^15.1.0"
   }
 }
