@@ -61,12 +61,12 @@ export class DocumentTitlePage extends BasePage {
 
   async openCoverPopup(): Promise<CoverPage> {
     await this.getDocumentTitle().hover()
-    await this.getAddCoverButton().click()
+    await this.waitForResponseWithAction('QueryUnsplashImage', this.getAddCoverButton().click())
     return new CoverPage(this.page)
   }
 
   async changeCover(): Promise<void> {
-    await this.getPageCover().hover()
+    await this.getPageCover().hover({ force: true })
     await this.getChangeCoverButton().click()
   }
 

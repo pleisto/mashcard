@@ -80,7 +80,7 @@ test.describe('Add Cover', () => {
     test('Verify image can be added as cover', async () => {
       await cover.addCover()
 
-      await expect(documentTitle.getPageCover()).toHaveCSS('background-image', /url*/)
+      await expect(documentTitle.getPageCover()).toHaveAttribute('src', /https:*/)
     })
   })
 
@@ -91,7 +91,7 @@ test.describe('Add Cover', () => {
 
       await cover.uploadImage(path.join(__dirname, '../../data/imgs/cover.jpg'))
 
-      await expect(documentTitle.getPageCover()).toHaveCSS('background-image', /url*/)
+      await expect(documentTitle.getPageCover()).toHaveAttribute('src', /https:*/)
     })
   })
 
@@ -107,7 +107,7 @@ test.describe('Add Cover', () => {
       await cover.switchTab(CoverTab.Link)
       await cover.pasteImageLink(UPLOADER_DATA.CORRECT_URL)
 
-      await expect(documentTitle.getPageCover()).toHaveCSS('background-image', /url*/)
+      await expect(documentTitle.getPageCover()).toHaveAttribute('src', /https:*/)
     })
   })
 

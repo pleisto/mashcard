@@ -12,7 +12,7 @@ export class CoverPage extends UploaderDashboardPage {
   }
 
   async addCover(index?: number): Promise<void> {
-    await this.waitForResponseWithAction('QueryUnsplashImage', this.getUnsplashImageByIndex(index).click())
+    await this.waitForResponseWithAction('blockSyncBatch', this.getUnsplashImageByIndex(index).click())
   }
 
   async searchImage(name: string): Promise<void> {

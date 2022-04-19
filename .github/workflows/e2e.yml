@@ -10,16 +10,6 @@ jobs:
     name: Playwright Test
     if: github.event.deployment_status.state == 'success' && (github.event.deployment_status.environment == 'pr_preview' || github.event.deployment_status.environment == 'trunk')
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # run 2 copies of the current job in parallel
-        shard: [1, 2]
-        include:
-          - shard: 1
-            browser: chromium
-          - shard: 2
-            browser: firefox
-      fail-fast: false
     steps:
       - name: Checkout the codebase
         uses: actions/checkout@v3
@@ -56,7 +46,7 @@ jobs:
         env:
           DEPLOY_ENV: ${{ github.event.deployment_status.environment }}
       - name: Run Playwright tests
-        run: TEST_BROWSER=${{ matrix.browser }} yarn e2e-testing run-playwright --shard=${{ matrix.shard }}/2
+        run: yarn e2e-testing run-playwright
         if: success()
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
