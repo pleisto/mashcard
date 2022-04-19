@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[common/settings/settings.service.ts:165](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L165)
+[common/settings/settings.service.ts:177](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L177)
 
 ___
 
@@ -131,7 +131,7 @@ Batch delete cached items
 
 #### Defined in
 
-[common/settings/settings.service.ts:173](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L173)
+[common/settings/settings.service.ts:185](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L185)
 
 ___
 
@@ -154,13 +154,13 @@ generate a cache key for the given scope and key
 
 #### Defined in
 
-[common/settings/settings.service.ts:161](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L161)
+[common/settings/settings.service.ts:173](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L173)
 
 ___
 
 ### <a id="calculatescope" name="calculatescope"></a> calculateScope
 
-▸ `Protected` **calculateScope**(`strategy?`, `context`): `string`
+▸ `Protected` **calculateScope**(`strategy?`, `context`): [scope: string, fallbackScope?: string]
 
 calculate the scope based on the session context
 
@@ -173,11 +173,11 @@ calculate the scope based on the session context
 
 #### Returns
 
-`string`
+[scope: string, fallbackScope?: string]
 
 #### Defined in
 
-[common/settings/settings.service.ts:136](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L136)
+[common/settings/settings.service.ts:140](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L140)
 
 ___
 
@@ -205,13 +205,13 @@ Find the config map item by key
 
 #### Defined in
 
-[common/settings/settings.service.ts:129](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L129)
+[common/settings/settings.service.ts:133](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L133)
 
 ___
 
 ### <a id="get" name="get"></a> get
 
-▸ **get**<`I`, `K`\>(`key`, `context?`): `Promise`<`undefined` \| `K`\>
+▸ **get**<`T`\>(`key`, `context?`): `Promise`<`undefined` \| `T`\>
 
 Get a setting value
 
@@ -219,19 +219,18 @@ Get a setting value
 
 | Name | Type |
 | :------ | :------ |
-| `I` | `I` |
-| `K` | extends `string` \| `number` \| `symbol` = keyof `I` |
+| `T` | `unknown` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `key` | `K` |
+| `key` | `string` |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns
 
-`Promise`<`undefined` \| `K`\>
+`Promise`<`undefined` \| `T`\>
 
 #### Defined in
 
@@ -241,7 +240,7 @@ ___
 
 ### <a id="update" name="update"></a> update
 
-▸ **update**<`I`, `K`\>(`key`, `value`, `context?`): `Promise`<`boolean`\>
+▸ **update**<`T`\>(`key`, `value`, `context?`): `Promise`<`boolean`\>
 
 Update a setting value on the database
 
@@ -249,15 +248,14 @@ Update a setting value on the database
 
 | Name | Type |
 | :------ | :------ |
-| `I` | `I` |
-| `K` | extends `string` \| `number` \| `symbol` = keyof `I` |
+| `T` | `unknown` |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `key` | `K` |
-| `value` | `I`[`K`] |
+| `key` | `string` |
+| `value` | `T` |
 | `context` | [`ScopeContext`](../interfaces/common_settings.ScopeContext.md) |
 
 #### Returns

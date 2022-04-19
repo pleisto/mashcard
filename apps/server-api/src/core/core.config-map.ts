@@ -31,7 +31,7 @@ export class CoreConfigMap {
    */
   @Item({
     clientExposed: true,
-    scope: ScopeLookupStrategy.USER_FIRST,
+    scope: ScopeLookupStrategy.USER_BASED,
     validation: mixed().oneOf(supportLocales.map(l => l.tag))
   })
   defaultLanguage: string = 'en-US'
@@ -41,7 +41,7 @@ export class CoreConfigMap {
    */
   @Item({
     clientExposed: true,
-    scope: ScopeLookupStrategy.USER_FIRST,
+    scope: ScopeLookupStrategy.USER_BASED,
     validation: mixed().oneOf(supportedTimezones)
   })
   defaultTimezone: string = 'Etc/UTC'

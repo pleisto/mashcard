@@ -1,19 +1,22 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
-import { ConfigService } from '@nestjs/config'
+import { SettingsService } from '../../common/settings'
 import { KMSService } from '../../common/kms/kms.service'
 import { SecretSubKey } from '../../common/kms/kms.interface'
-import { helmetRegister } from './helmet'
-import { cookieRegister } from './cookie'
-import { sessionRegister } from './session'
-import { registerDebugContext } from './debugger'
+import { helmetRegister } from './helmet.register'
+import { cookieRegister } from './cookie.register'
+import { sessionRegister } from './session.register'
+import { debugContextRegister } from './debugger.register'
+import { initCheckRegister } from './init-check.register'
 
 /**
  * loadInitializers will be called by `/main.ts` when the application is bootstrapped and listening for connections.
  */
 export const loadInitializers = async (app: NestFastifyApplication): Promise<void> => {
+  await initCheckRegister(app)
+
   // Get Injection Service
   const kmsService = app.get(KMSService)
-  const configService = app.get(ConfigService)
+  const settingsService = app.get(SettingsService)
 
   // common initializers
   app.enableShutdownHooks()
@@ -23,12 +26,12 @@ export const loadInitializers = async (app: NestFastifyApplication): Promise<voi
   sessionRegister(
     app,
     kmsService.subKey(SecretSubKey.SECURE_COOKIE, 'session'),
-    configService.get<boolean>('application.tlsEnabled')!
+    (await settingsService.get<boolean>('core.tlsEnabled'))!
   )
   await helmetRegister(app)
 
   // Inject context to `globalThis.ctx` when Nodejs Debugger is enabled
   const v8InspectorEnabled =
     typeof (globalThis as any).v8debug === 'object' || /--debug|--inspect/.test(process.execArgv.join(' '))
-  if (v8InspectorEnabled) await registerDebugContext()
+  if (v8InspectorEnabled) await debugContextRegister()
 }

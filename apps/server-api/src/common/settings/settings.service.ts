@@ -28,23 +28,23 @@ export class SettingsService {
    * @param key
    * @param scope
    */
-  async get<I, K extends keyof I = keyof I>(key: K, context: ScopeContext = {}): Promise<K | undefined> {
-    const item = this.findItem<K>(key as string)
+  async get<T = unknown>(key: string, context: ScopeContext = {}): Promise<T | undefined> {
+    const item = this.findItem<T>(key as string)
     if (!item) return undefined
     // LOCAL_STATIC items are not stored in the database
     if (item.options.scope === ScopeLookupStrategy.LOCAL_STATIC) return item.defaultValue
 
-    const scope = this.calculateScope(item.options.scope, context)
+    const [scope, fallbackScope] = this.calculateScope(item.options.scope, context)
     // try to get the value from the cache first
     const cachedKeyWithScope = this.cachedKey(key as string, scope)
     const cachedValue = this.cache.get(this.cachedKey(key as string, scope))
-    if (cachedValue) return cachedValue as K
+    if (cachedValue) return cachedValue as T
 
     // query the database
-    let dbValue = await findSetting<K>(this.pool, item.key, scope)
+    let dbValue = await findSetting<T>(this.pool, item.key, scope, fallbackScope)
     if (dbValue && item.options.encrypted) {
       const plain = this.kms.symmetricDecrypt(item.value as unknown as string, scope)
-      dbValue = JSON.parse(plain) as K
+      dbValue = JSON.parse(plain)
     }
 
     // set cache after query
@@ -59,8 +59,8 @@ export class SettingsService {
    * @param value
    * @param scope
    */
-  async update<I, K extends keyof I = keyof I>(key: K, value: I[K], context: ScopeContext = {}): Promise<boolean> {
-    const item = this.findItem<K>(key as string)
+  async update<T = unknown>(key: string, value: T, context: ScopeContext = {}): Promise<boolean> {
+    const item = this.findItem<T>(key as string)
     if (!item) {
       console.error('Cannot find key `%s` in any ConfigMap. Only the defined items can be updated.', key)
       return false
@@ -75,7 +75,7 @@ export class SettingsService {
     // todo: general error handling
     item.options.validation?.validateSync(value)
 
-    const scope = this.calculateScope(item.options.scope, context)
+    const [scope] = this.calculateScope(item.options.scope, context)
     // encrypt value if needed
     const storedValue = item.options.encrypted ? this.kms.symmetricEncrypt(JSON.stringify(value), scope) : value
     const dbResult = await createOrUpdateSetting(this.pool, key as string, storedValue, scope)
@@ -110,10 +110,14 @@ export class SettingsService {
     // static items will not be queried from the database
     const queryedItems = items
       .filter(i => i.options.scope !== ScopeLookupStrategy.LOCAL_STATIC)
-      .map(i => ({
-        key: i.key,
-        scope: this.calculateScope(i.options.scope, context)
-      }))
+      .map(i => {
+        const [scope, fallbackScope] = this.calculateScope(i.options.scope, context)
+        return {
+          key: i.key,
+          scope,
+          fallbackScope
+        }
+      })
     const dbResult = await findSettings(this.pool, queryedItems)
     const result = items.map(item => ({
       ...item,
@@ -136,17 +140,25 @@ export class SettingsService {
   protected calculateScope(
     strategy: ScopeLookupStrategy = ScopeLookupStrategy.ROOT_ONLY,
     context: ScopeContext
-  ): string {
+  ): [scope: string, fallbackScope?: string] {
     const user = context.userId ? `.user_${context.userId}` : ''
     const workspace = context.workspaceId ? `.workspace_${context.workspaceId}` : ''
 
     switch (strategy) {
       case ScopeLookupStrategy.ROOT_ONLY:
-        return SCOPE_ROOT_NODE
-      case ScopeLookupStrategy.WORKSPACE_FIRST:
-        return `${SCOPE_ROOT_NODE}${user}${workspace}`
-      case ScopeLookupStrategy.USER_FIRST:
-        return `${SCOPE_ROOT_NODE}${workspace}${user}`
+        return [SCOPE_ROOT_NODE]
+      case ScopeLookupStrategy.WORKSPACE_BASED:
+        return [
+          `${SCOPE_ROOT_NODE}${workspace}${user}`,
+          // fallback scope
+          `${SCOPE_ROOT_NODE}${user}`
+        ]
+      case ScopeLookupStrategy.USER_BASED:
+        return [
+          `${SCOPE_ROOT_NODE}${user}${workspace}`,
+          // fallback scope
+          `${SCOPE_ROOT_NODE}${workspace}`
+        ]
       default:
         throw new Error('Unsupported scope lookup strategy')
     }

@@ -26,4 +26,4 @@ loadInitializers will be called by `/main.ts` when the application is bootstrapp
 
 #### Defined in
 
-[core/initializers/index.ts:13](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L13)
+[core/initializers/index.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/core/initializers/index.ts#L14)

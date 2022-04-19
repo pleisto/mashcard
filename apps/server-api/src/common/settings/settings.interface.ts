@@ -13,21 +13,37 @@ export enum ScopeLookupStrategy {
   /**
    * Static item will not read/write from/to the database.
    * It's value will be get from the ConfigMap file directly.
+   *
+   * reading order:
+   * 1. from the ConfigMap file
    */
   LOCAL_STATIC = 'local-static',
 
   /**
-   * scope: 'root'.
+   * This is default strategy.
+   * reading order:
+   * 1. from db with scope: 'root'
+   * 2. from the ConfigMap file
    */
   ROOT_ONLY = 'root-only',
   /**
-   * scope: `root.user_.*.workspace_*`
+   * reading order:
+   * 1. from db with scope: 'workspace_*.user_*'
+   * 2. from db with scope: 'workspace_*'
+   * 3. from db with scope: 'user_*'
+   * 4. from db with scope: 'root'
+   * 5. from the ConfigMap file
    */
-  WORKSPACE_FIRST = 'workspace-first',
+  WORKSPACE_BASED = 'workspace-based',
   /**
-   * scope: `root.workspace_*.user_*`
+   * reading order:
+   * 1. from db with scope: 'user_*.workspace_*'
+   * 2. from db with scope: 'user_*'
+   * 3. from db with scope: 'workspace_*'
+   * 4. from db with scope: 'root'
+   * 5. from the ConfigMap file
    */
-  USER_FIRST = 'user-first'
+  USER_BASED = 'user-based'
 }
 
 // todo: add mutual exclusion for `public` and `encrypted` properties
@@ -39,11 +55,12 @@ export interface ItemOptions {
 
   /**
    * Enabled data at rest encryption.
-   * if `static` is true, encrypted will be ignored.
+   * if `clientExposed` is true or scope is`LOCAL_STATIC`, encrypted will be ignored.
    */
   encrypted?: boolean
 
   /**
+   * Ordering strategy when recursively resolving scopes.
    * Defaults to `ScopeLookupStrategy.ROOT_ONLY`.
    */
   scope?: ScopeLookupStrategy

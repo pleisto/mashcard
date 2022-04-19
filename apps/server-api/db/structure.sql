@@ -9,6 +9,22 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
+CREATE FUNCTION public.settings_scope_priority(scope public.ltree, fallback text DEFAULT ''::text, root text DEFAULT 'root'::text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  RETURN CASE scope::text
+         WHEN 'root' THEN 0
+         WHEN fallback THEN 1
+         ELSE nlevel(scope)
+         END;
+
+END;
+
+$$;
+
+COMMENT ON FUNCTION public.settings_scope_priority(scope public.ltree, fallback text, root text) IS 'Returns the priority of a scope. The root scope has the lowest priority.';
+
 CREATE TABLE public.db_migrations (
     name text NOT NULL,
     hash text NOT NULL,

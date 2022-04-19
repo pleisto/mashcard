@@ -6,7 +6,7 @@ import { AppModule } from '../../app.module'
  * Inject Context to Debugger console.
  *
  */
-export async function registerDebugContext(options: NestApplicationContextOptions = {}): Promise<void> {
+export async function debugContextRegister(options: NestApplicationContextOptions = {}): Promise<void> {
   /**
    * Register Server Application Context.
    * @see {@url https://code.visualstudio.com/docs/nodejs/nodejs-debugging} for more details.

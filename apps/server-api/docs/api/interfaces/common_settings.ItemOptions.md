@@ -21,7 +21,7 @@ The public fields will be exposed to the client.
 
 #### Defined in
 
-[common/settings/settings.interface.ts:38](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L38)
+[common/settings/settings.interface.ts:54](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L54)
 
 ___
 
@@ -30,11 +30,11 @@ ___
 • `Optional` **encrypted**: `boolean`
 
 Enabled data at rest encryption.
-if `static` is true, encrypted will be ignored.
+if `clientExposed` is true or scope is`LOCAL_STATIC`, encrypted will be ignored.
 
 #### Defined in
 
-[common/settings/settings.interface.ts:44](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L44)
+[common/settings/settings.interface.ts:60](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L60)
 
 ___
 
@@ -42,11 +42,12 @@ ___
 
 • `Optional` **scope**: [`ScopeLookupStrategy`](../enums/common_settings.ScopeLookupStrategy.md)
 
+Ordering strategy when recursively resolving scopes.
 Defaults to `ScopeLookupStrategy.ROOT_ONLY`.
 
 #### Defined in
 
-[common/settings/settings.interface.ts:49](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L49)
+[common/settings/settings.interface.ts:66](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L66)
 
 ___
 
@@ -58,4 +59,4 @@ yup schema for validation
 
 #### Defined in
 
-[common/settings/settings.interface.ts:54](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L54)
+[common/settings/settings.interface.ts:71](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L71)

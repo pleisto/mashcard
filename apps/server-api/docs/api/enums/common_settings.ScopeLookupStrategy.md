@@ -10,8 +10,8 @@ scope lookup strategy
 
 - [LOCAL\_STATIC](common_settings.ScopeLookupStrategy.md#local_static)
 - [ROOT\_ONLY](common_settings.ScopeLookupStrategy.md#root_only)
-- [USER\_FIRST](common_settings.ScopeLookupStrategy.md#user_first)
-- [WORKSPACE\_FIRST](common_settings.ScopeLookupStrategy.md#workspace_first)
+- [USER\_BASED](common_settings.ScopeLookupStrategy.md#user_based)
+- [WORKSPACE\_BASED](common_settings.ScopeLookupStrategy.md#workspace_based)
 
 ## Enumeration members
 
@@ -22,9 +22,12 @@ scope lookup strategy
 Static item will not read/write from/to the database.
 It's value will be get from the ConfigMap file directly.
 
+reading order:
+1. from the ConfigMap file
+
 #### Defined in
 
-[common/settings/settings.interface.ts:17](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L17)
+[common/settings/settings.interface.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L20)
 
 ___
 
@@ -32,32 +35,45 @@ ___
 
 • **ROOT\_ONLY** = `"root-only"`
 
-scope: 'root'.
+This is default strategy.
+reading order:
+1. from db with scope: 'root'
+2. from the ConfigMap file
 
 #### Defined in
 
-[common/settings/settings.interface.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L22)
+[common/settings/settings.interface.ts:28](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L28)
 
 ___
 
-### <a id="user_first" name="user_first"></a> USER\_FIRST
+### <a id="user_based" name="user_based"></a> USER\_BASED
 
-• **USER\_FIRST** = `"user-first"`
+• **USER\_BASED** = `"user-based"`
 
-scope: `root.workspace_*.user_*`
+reading order:
+1. from db with scope: 'user_*.workspace_*'
+2. from db with scope: 'user_*'
+3. from db with scope: 'workspace_*'
+4. from db with scope: 'root'
+5. from the ConfigMap file
 
 #### Defined in
 
-[common/settings/settings.interface.ts:30](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L30)
+[common/settings/settings.interface.ts:46](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L46)
 
 ___
 
-### <a id="workspace_first" name="workspace_first"></a> WORKSPACE\_FIRST
+### <a id="workspace_based" name="workspace_based"></a> WORKSPACE\_BASED
 
-• **WORKSPACE\_FIRST** = `"workspace-first"`
+• **WORKSPACE\_BASED** = `"workspace-based"`
 
-scope: `root.user_.*.workspace_*`
+reading order:
+1. from db with scope: 'workspace_*.user_*'
+2. from db with scope: 'workspace_*'
+3. from db with scope: 'user_*'
+4. from db with scope: 'root'
+5. from the ConfigMap file
 
 #### Defined in
 
-[common/settings/settings.interface.ts:26](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L26)
+[common/settings/settings.interface.ts:37](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.interface.ts#L37)

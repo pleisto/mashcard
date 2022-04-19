@@ -2169,7 +2169,6 @@ __metadata:
     "@faker-js/faker": ^6.1.2
     "@nestjs/apollo": ^10.0.9
     "@nestjs/common": ^8.4.4
-    "@nestjs/config": ^2.0.0
     "@nestjs/core": ^8.4.4
     "@nestjs/graphql": ^10.0.9
     "@nestjs/platform-fastify": ^8.4.4
@@ -3930,22 +3929,6 @@ __metadata:
     class-validator:
       optional: true
   checksum: bd0326a7a52b4ca819ca8790cec1e649ba0067d2eee54a32aabe890729f5d7dd6ecbf834cf68aa6727974a693981a4a6c119574dd12560914041380010632174
-  languageName: node
-  linkType: hard
-
-"@nestjs/config@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@nestjs/config@npm:2.0.0"
-  dependencies:
-    dotenv: 16.0.0
-    dotenv-expand: 8.0.2
-    lodash: 4.17.21
-    uuid: 8.3.2
-  peerDependencies:
-    "@nestjs/common": ^7.0.0 || ^8.0.0
-    reflect-metadata: ^0.1.13
-    rxjs: ^6.0.0 || ^7.2.0
-  checksum: f0aedec1b6a6fd44f686121c05d38b7ff32f3e70c5df1ded91fae788ee73e1371f6f1a6a9223c82f41c5e15a38ccf09aaf6650fc71714c0813452595fb5f3917
   languageName: node
   linkType: hard
 
@@ -7875,7 +7858,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.14":
+"@types/react-dom@npm:^17.0.15":
   version: 17.0.15
   resolution: "@types/react-dom@npm:17.0.15"
   dependencies:
@@ -7930,7 +7913,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.43":
+"@types/react@npm:^17.0.44":
   version: 17.0.44
   resolution: "@types/react@npm:17.0.44"
   dependencies:
@@ -11917,7 +11900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.11.0":
+"dayjs@npm:^1.11.1":
   version: 1.11.1
   resolution: "dayjs@npm:1.11.1"
   checksum: d5fefd79935f64a3c262e67af7ebeca180bc402b3e99be4e12d20b6d438af3f86d507ba1cbaff95dc0b4e67f1067cea3eaf37b6b74f5494fdd4a6a2909514cd1
@@ -12418,13 +12401,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-expand@npm:8.0.2":
-  version: 8.0.2
-  resolution: "dotenv-expand@npm:8.0.2"
-  checksum: 4b42b2602478bccf1bfde25c97ecc0fee4059e74df4f8fda7f076b2ef428315e00b301bda43eec3707bfa083837abb284d6fec91571f164449243001ed8eef81
-  languageName: node
-  linkType: hard
-
 "dotenv-expand@npm:^5.1.0":
   version: 5.1.0
   resolution: "dotenv-expand@npm:5.1.0"
@@ -12439,7 +12415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:16.0.0, dotenv@npm:^16.0.0":
+"dotenv@npm:^16.0.0":
   version: 16.0.0
   resolution: "dotenv@npm:16.0.0"
   checksum: 664cebb51f0a9a1d1b930f51f0271e72e26d62feaecc9dc03df39453dd494b4e724809ca480fb3ec3213382b1ed3f791aaeb83569a137f9329ce58efd4853dbf
@@ -12938,7 +12914,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.14.34":
+"esbuild@npm:^0.14.36":
   version: 0.14.36
   resolution: "esbuild@npm:0.14.36"
   dependencies:
