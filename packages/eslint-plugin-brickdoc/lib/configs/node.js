@@ -11,7 +11,7 @@ module.exports = {
     'security-node/detect-child-process': 'warn',
     'security-node/detect-buffer-unsafe-allocation': 'warn',
     'security-node/detect-eval-with-expr': 'warn',
-    'sql/format': 'off',
+    'sql/format': 'warn',
     'sql/no-unsafe-query': [
       2,
       {

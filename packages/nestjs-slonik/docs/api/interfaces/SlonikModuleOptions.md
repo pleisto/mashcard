@@ -10,7 +10,6 @@
 
 ### Properties
 
-- [camelCaseFieldNames](SlonikModuleOptions.md#camelcasefieldnames)
 - [clientConfigurationInput](SlonikModuleOptions.md#clientconfigurationinput)
 - [connectionUri](SlonikModuleOptions.md#connectionuri)
 - [name](SlonikModuleOptions.md#name)
@@ -19,18 +18,6 @@
 - [verboseRetryLog](SlonikModuleOptions.md#verboseretrylog)
 
 ## Properties
-
-### <a id="camelcasefieldnames" name="camelcasefieldnames"></a> camelCaseFieldNames
-
-• `Optional` **camelCaseFieldNames**: `boolean`
-
-open camelCaseFieldNameInterceptor
-
-#### Defined in
-
-[packages/nestjs-slonik/src/slonik.interface.ts:38](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/slonik.interface.ts#L38)
-
-___
 
 ### <a id="clientconfigurationinput" name="clientconfigurationinput"></a> clientConfigurationInput
 

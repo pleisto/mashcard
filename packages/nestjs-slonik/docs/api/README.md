@@ -2,6 +2,12 @@
 
 ## Table of contents
 
+### Namespaces
+
+- [assignment](modules/assignment.md)
+- [identifiers](modules/identifiers.md)
+- [values](modules/values.md)
+
 ### Classes
 
 - [BackendTerminatedError](classes/BackendTerminatedError.md)

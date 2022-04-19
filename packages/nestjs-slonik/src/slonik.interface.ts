@@ -31,11 +31,6 @@ export interface SlonikModuleOptions extends SlonikOptions {
    * Default: 3000
    */
   retryDelay?: number
-
-  /**
-   * open camelCaseFieldNameInterceptor
-   */
-  camelCaseFieldNames?: boolean
 }
 
 export interface SlonikOptionsFactory {

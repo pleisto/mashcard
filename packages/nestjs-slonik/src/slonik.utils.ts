@@ -3,7 +3,7 @@ import { Observable, defer, lastValueFrom } from 'rxjs'
 import { delay, scan, retryWhen } from 'rxjs/operators'
 import { createPool, DatabasePool, Interceptor } from 'slonik'
 import { DEFAULT_POOL_NAME, SlonikModuleOptions, LOGGER_NAME } from './slonik.interface'
-import { camelCaseFieldNameInterceptor, queryLoggingInterceptor } from './interceptors'
+import { queryLoggingInterceptor } from './interceptors'
 
 /**
  * Create NestJS Logger instance from Slonik
@@ -79,7 +79,6 @@ export const createPoolFactory = async (options: SlonikModuleOptions): Promise<D
 
   // Set default interceptors
   const interceptors: Interceptor[] = [queryLoggingInterceptor()]
-  if (options.camelCaseFieldNames) interceptors.push(camelCaseFieldNameInterceptor())
 
   return await lastValueFrom(
     defer(async () => {
