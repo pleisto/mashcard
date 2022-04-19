@@ -18,7 +18,7 @@ exports[`Button rendering IconOnly should match the snapshot 1`] = `
 <div>
   <button
     aria-label="Add Record"
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-dfQaBM-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-kEEMvd-btnType-secondary brd-c-dsuUsp-iCyVCv-size-lg brd-c-dsuUsp-kaXTQH-circle-lg brd-c-dsuUsp-iDpwiq-hasIcon-true"
     role="button"
     type="button"
   >
@@ -161,7 +161,7 @@ exports[`Button rendering should match the snapshot as a block button 1`] = `
 exports[`Button rendering should match the snapshot by size "lg" 1`] = `
 <div>
   <button
-    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-dfQaBM-size-lg"
+    class="ButtonUnstyled-root brd-c-dsuUsp brd-c-dsuUsp-foEQdY-btnType-primary brd-c-dsuUsp-iCyVCv-size-lg"
     role="button"
     type="button"
   >

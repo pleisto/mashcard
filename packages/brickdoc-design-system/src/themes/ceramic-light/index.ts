@@ -6,6 +6,7 @@ import { fonts } from './fonts'
 import { borderStyles } from './borderStyles'
 import { zIndices } from './zIndices'
 import { lineHeights } from './lineHeights'
+import { titleOffset } from './titleOffset'
 
 export { mixins as ceramicLightMixins } from './mixins'
 
@@ -17,5 +18,6 @@ export const ceramicLightTheme = {
   space,
   borderStyles,
   zIndices,
-  lineHeights
+  lineHeights,
+  titleOffset
 }

@@ -8,11 +8,11 @@ export const fontSizes = {
   callout: rem(12),
   subHeadline: rem(14),
   body: rem(16),
-  title5: rem(18),
+  title5: rem(16),
   title4: rem(20),
-  title3: rem(24),
-  title2: rem(30),
-  title1: rem(36),
+  title3: rem(22),
+  title2: rem(26),
+  title1: rem(30),
   largeTitle: rem(48),
   superTitle: rem(64)
 }

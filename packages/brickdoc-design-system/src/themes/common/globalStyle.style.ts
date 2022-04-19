@@ -1,4 +1,6 @@
 import { fontFaceSets } from './fontFaceSets.style'
+import { ceramicLightTheme } from '../ceramic-light/index'
+
 export const globalStyleSheet = {
   ...fontFaceSets,
   html: {
@@ -65,13 +67,38 @@ export const globalStyleSheet = {
   },
   'h1, h2, h3, h4, h5, h6': {
     marginTop: 0,
-    marginBottom: '0.5em',
-    fontWeight: '500',
+    marginBottom: 0,
+    fontWeight: '600',
     color: '$colors$typePrimary'
+  },
+  h1: {
+    fontSize: ceramicLightTheme.fontSizes.title1,
+    lineHeight: ceramicLightTheme.lineHeights.title1,
+    paddingTop: ceramicLightTheme.titleOffset.title1
+  },
+  h2: {
+    fontSize: ceramicLightTheme.fontSizes.title2,
+    lineHeight: ceramicLightTheme.lineHeights.title2,
+    paddingTop: ceramicLightTheme.titleOffset.title2
+  },
+  h3: {
+    fontSize: ceramicLightTheme.fontSizes.title3,
+    lineHeight: ceramicLightTheme.lineHeights.title3,
+    paddingTop: ceramicLightTheme.titleOffset.title3
+  },
+  h4: {
+    fontSize: ceramicLightTheme.fontSizes.title4,
+    lineHeight: ceramicLightTheme.lineHeights.title4,
+    paddingTop: ceramicLightTheme.titleOffset.title4
+  },
+  h5: {
+    fontSize: ceramicLightTheme.fontSizes.title5,
+    lineHeight: ceramicLightTheme.lineHeights.title5,
+    paddingTop: ceramicLightTheme.titleOffset.title5
   },
   p: {
     marginTop: 0,
-    marginBottom: '1em'
+    marginBottom: 0
   },
   'input, button, select, optgroup, textarea': {
     margin: 0,
