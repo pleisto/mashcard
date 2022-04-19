@@ -1889,8 +1889,8 @@ __metadata:
     rc-dropdown: ^3.4.1
     rc-select: ^14.1.1
     rc-tabs: ^11.12.0
-    rc-trigger: ^5.2.15
-    rc-util: ^5.20.1
+    rc-trigger: ^5.2.16
+    rc-util: ^5.21.0
     rc-virtual-list: ^3.4.6
     react: ^17.0.2
     react-colorful: ^5.5.1
@@ -18926,11 +18926,11 @@ __metadata:
   linkType: hard
 
 "nanoid@npm:^3.1.25, nanoid@npm:^3.1.30, nanoid@npm:^3.1.32, nanoid@npm:^3.3.1":
-  version: 3.3.2
-  resolution: "nanoid@npm:3.3.2"
+  version: 3.3.3
+  resolution: "nanoid@npm:3.3.3"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 376717f0685251fad77850bd84c6b8d57837c71eeb1c05be7c742140cc1835a5a2953562add05166d6dbc8fb65f3fdffa356213037b967a470e1691dc3e7b9cc
+  checksum: ada019402a07464a694553c61d2dca8a4353645a7d92f2830f0d487fedff403678a0bee5323a46522752b2eab95a0bc3da98b6cccaa7c0c55cd9975130e6d6f0
   languageName: node
   linkType: hard
 
@@ -21469,8 +21469,8 @@ __metadata:
   linkType: hard
 
 "rc-menu@npm:~9.5.1":
-  version: 9.5.4
-  resolution: "rc-menu@npm:9.5.4"
+  version: 9.5.5
+  resolution: "rc-menu@npm:9.5.5"
   dependencies:
     "@babel/runtime": ^7.10.1
     classnames: 2.x
@@ -21482,7 +21482,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: f858bdddd35bf96d0fbd66045dbace142d2058ce5e5c1c3529e89bd6fc82e68336e2ef053c17780099007ad0a12a06f8d4d1bf7349910b6c598704c1f5465f3c
+  checksum: 168fda92f7348eedb95a9cf3b959eb20ae7401e0a17268f2a2d5093c39cca7aa0132ad8872e866a02bc565b59755aacdbbf1e8b039f85ce0a2efed52c7ff5b9a
   languageName: node
   linkType: hard
 
@@ -21565,9 +21565,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rc-trigger@npm:^5.0.4, rc-trigger@npm:^5.1.2, rc-trigger@npm:^5.2.15":
-  version: 5.2.15
-  resolution: "rc-trigger@npm:5.2.15"
+"rc-trigger@npm:^5.0.4, rc-trigger@npm:^5.1.2, rc-trigger@npm:^5.2.16":
+  version: 5.2.16
+  resolution: "rc-trigger@npm:5.2.16"
   dependencies:
     "@babel/runtime": ^7.11.2
     classnames: ^2.2.6
@@ -21577,13 +21577,13 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: 44cec028890d44f6438df4edde98501d3d6323baf8344d306053cc541588a2d684df9a886bacce34bce012a34740981df99535434e2438a6cf4c5abe61cde041
+  checksum: e5fe19f9f9a77fdcfbd16773936d16616957511e4f6c34a19e38ae46d2d1369b8b693f557009e63fb7cbc78ffb858b60fb7bd0aaf0637c278f189106273c4f50
   languageName: node
   linkType: hard
 
-"rc-util@npm:^5.12.0, rc-util@npm:^5.15.0, rc-util@npm:^5.16.1, rc-util@npm:^5.17.0, rc-util@npm:^5.19.2, rc-util@npm:^5.20.1, rc-util@npm:^5.3.0, rc-util@npm:^5.5.0":
-  version: 5.20.1
-  resolution: "rc-util@npm:5.20.1"
+"rc-util@npm:^5.12.0, rc-util@npm:^5.15.0, rc-util@npm:^5.16.1, rc-util@npm:^5.17.0, rc-util@npm:^5.19.2, rc-util@npm:^5.21.0, rc-util@npm:^5.3.0, rc-util@npm:^5.5.0":
+  version: 5.21.0
+  resolution: "rc-util@npm:5.21.0"
   dependencies:
     "@babel/runtime": ^7.12.5
     react-is: ^16.12.0
@@ -21591,7 +21591,7 @@ __metadata:
   peerDependencies:
     react: ">=16.9.0"
     react-dom: ">=16.9.0"
-  checksum: d0ab6f7e763f51ed50e2cdfe39cee13fdb889f49f7303c3ab639116d6269ad2cf453b4f05ba5ef7756e619c645cfae38cb3b869f76fbaa41550f050e6ee2c9a9
+  checksum: a2a3347db820ed0a29697f52bcedc4374edcb28d4069ebc8d9c6c2b9e2172ae62e4876aaa3f6273b21c989a06176f54b6a772ac59af7d1d03f9cdd49149fc2d3
   languageName: node
   linkType: hard
 
@@ -23430,7 +23430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks-proxy-agent@npm:6.1.1, socks-proxy-agent@npm:^6.1.1":
+"socks-proxy-agent@npm:6.1.1":
   version: 6.1.1
   resolution: "socks-proxy-agent@npm:6.1.1"
   dependencies:
@@ -23441,7 +23441,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks@npm:^2.6.1":
+"socks-proxy-agent@npm:^6.1.1":
+  version: 6.2.0
+  resolution: "socks-proxy-agent@npm:6.2.0"
+  dependencies:
+    agent-base: ^6.0.2
+    debug: ^4.3.3
+    socks: ^2.6.2
+  checksum: 6723fd64fb50334e2b340fd0a80fd8488ffc5bc43d85b7cf1d25612044f814dd7d6ea417fd47602159941236f7f4bd15669fa5d7e1f852598a31288e1a43967b
+  languageName: node
+  linkType: hard
+
+"socks@npm:^2.6.1, socks@npm:^2.6.2":
   version: 2.6.2
   resolution: "socks@npm:2.6.2"
   dependencies:
