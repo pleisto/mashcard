@@ -544,7 +544,7 @@ en-US:
       delete_confirmation_cancel: Cancel
       in_trash_prompt: This page is in trash.
       restore_action: Restore page
-      hard_delete_action: Delete permanently
+      hard_delete_action: Delete Page
       selected: selected
     discussion:
       menu: Comment

@@ -10,6 +10,7 @@ import React, { useCallback, useState } from 'react'
 import { useDocsI18n } from '../../hooks'
 import { TrashItem } from './TrashItem'
 import { Card, Delete, Undo } from '@brickdoc/design-icons'
+
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import { useApolloClient } from '@apollo/client'
 import { List, Item, NotFound, Page, Time, Action, SelectBlock, SelectedBar } from './Trash.style'
@@ -68,6 +69,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
   const onBatchRestore = useCallback(
     async (_ids?: string[]) => {
       const ids = _ids ?? selectedItem.map(item => item.id)
+
       setActionLoading(true)
       await blockRestore({ variables: { input: { ids } } })
       const nextList = list.filter(item => !ids.includes(item.id))
@@ -122,29 +124,31 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
   }
 
   return (
-    <List>
-      {showSpin && <Spin size="lg" className="trash-spin" />}
-      <Item type="title" key="title">
-        <Page>
-          <SelectBlock />
-          {t('trash.pages')}
-        </Page>
-        <Time>{t('trash.deleted_at')}</Time>
-        <Action>
-          <Card />
-        </Action>
-      </Item>
-      {list.map((item: Block, index: number) => (
-        <Item type="item" key={getKey(index)}>
-          <TrashItem
-            domain={domain}
-            block={item}
-            onChange={onChange(index)}
-            onRestore={onItemRestore}
-            onDelete={onItemDelele}
-          />
+    <>
+      <List>
+        {showSpin && <Spin size="lg" className="trash-spin" />}
+        <Item type="title" key="title">
+          <Page>
+            <SelectBlock />
+            {t('trash.pages')}
+          </Page>
+          <Time>{t('trash.deleted_at')}</Time>
+          <Action>
+            <Card />
+          </Action>
         </Item>
-      ))}
+        {list.map((item: Block, index: number) => (
+          <Item type="item" key={getKey(index)}>
+            <TrashItem
+              domain={domain}
+              block={item}
+              onChange={onChange(index)}
+              onRestore={onItemRestore}
+              onDelete={onItemDelele}
+            />
+          </Item>
+        ))}
+      </List>
       {selectedNum > 0 && (
         <SelectedBar>
           <Page>
@@ -177,7 +181,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
             confirmBtnText={t('trash.delete_confirmation_ok')}
             cancelBtnText={t('trash.delete_confirmation_cancel')}
             onCancel={() => setHardDeleteModalVisible(false)}
-            onConfirm={onBatchDelete}
+            onConfirm={onClickBatchDelete}
             open={hardDeleteModalVisible}
           >
             {selectedNum > 1
@@ -186,6 +190,6 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
           </ConfirmDialog>
         </SelectedBar>
       )}
-    </List>
+    </>
   )
 }

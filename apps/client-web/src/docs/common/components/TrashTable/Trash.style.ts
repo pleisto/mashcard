@@ -6,7 +6,9 @@ export const PageContainer = styled('div', {
   overflowX: 'hidden',
   ...utils.mixins.refractionSecondary,
   ...utils.mixins.ceramicSecondary,
-  padding: '5rem 7rem 0'
+  padding: '5rem 7rem 0',
+  display: 'flex',
+  flexFlow: 'column'
 })
 
 export const Title = styled('title', {
@@ -26,6 +28,9 @@ export const InputSuffix = styled('span', {
 })
 
 export const List = styled('ul', {
+  flex: 1,
+  overflowX: 'hidden',
+  overflowY: 'auto',
   listStyle: 'none',
   margin: 0,
   padding: 0,
@@ -164,12 +169,11 @@ export const NotFound = styled('p', {
 })
 
 export const SelectedBar = styled(Item, {
+  flexShrink: 0,
   display: 'flex',
   height: '5rem',
   background: theme.colors.overlaySecondary,
   padding: '0 0.5rem 0 0',
-  position: 'sticky',
-  bottom: 0,
   borderRadius: 4,
   '&:hover': {
     backgroundColor: theme.colors.overlaySecondary

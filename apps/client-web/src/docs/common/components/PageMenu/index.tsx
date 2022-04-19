@@ -19,9 +19,10 @@ import {
   useBlockCreateMutation,
   useBlockRenameMutation,
   useBlockPinOrUnpinMutation,
-  useBlockDuplicateMutation
+  useBlockDuplicateMutation,
+  GetTrashBlocksDocument
 } from '@/BrickdocGraphQL'
-import { queryBlockPins, queryPageBlocks, queryTrashBlocks } from '../../graphql'
+import { queryBlockPins, queryPageBlocks } from '../../graphql'
 import styles from './styles.module.less'
 import { useApolloClient, useReactiveVar } from '@apollo/client'
 import { editorVar, FormulaContextVar } from '@/docs/reactiveVars'
@@ -69,7 +70,7 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const [copied, setCopied] = React.useState<boolean>(false)
 
   const [blockSoftDelete, { loading: blockDeleteLoading }] = useBlockSoftDeleteMutation({
-    refetchQueries: [queryPageBlocks, queryTrashBlocks]
+    refetchQueries: [queryPageBlocks, GetTrashBlocksDocument]
   })
 
   const [blockCreate, { loading: createBlockLoading }] = useBlockCreateMutation({
@@ -91,25 +92,11 @@ export const PageMenu: React.FC<PageMenuProps> = ({
   const deletePage = async (): Promise<void> => {
     const input = { id: pageId, hardDelete: false }
     await blockSoftDelete({ variables: { input } })
-    if (pageId === id) {
-      client.cache.modify({
-        id: client.cache.identify({ __typename: 'BlockInfo', id }),
-        fields: {
-          isDeleted() {
-            return true
-          }
-        }
-      })
-    }
     if (location.pathname !== `/${domain}/${pageId}`) {
       return
     }
-    if (nearNodeId) {
-      navigate(`/${domain}/${nearNodeId}`)
-      return
-    }
-    if (parentId) {
-      navigate(`/${domain}/${parentId}`)
+    if (nearNodeId ?? parentId) {
+      navigate(`/${domain}/${nearNodeId ?? parentId}`)
       return
     }
     const newPageInput = { title: '' }
