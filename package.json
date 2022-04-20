@@ -112,7 +112,7 @@
     "minimist": ">= 1.2.6"
   },
   "dependencies": {
-    "@swc/core": "^1.2.168",
+    "@swc/core": "^1.2.170",
     "@swc/helpers": "^0.3.8",
     "dayjs": "^1.11.1",
     "ts-node": "^10.7.0"
