@@ -22,6 +22,8 @@ type FormulaComplexType = 'Cst' | 'Reference' | 'Function' | 'Predicate'
 
 export type FormulaControlType = 'Button' | 'Switch' | 'Select' | 'Input' | 'Radio' | 'Rate' | 'Slider'
 
+type UnusedFormulaControlType = 'Radio' | 'Rate' | 'Slider'
+
 export type FormulaType =
   | FormulaBasicType
   | FormulaObjectType
@@ -40,16 +42,11 @@ export type PersistFormulaType = Exclude<
   'any' | 'void' | 'Blank' | 'Range' | FormulaControlType | FormulaComplexType
 >
 
+type UsedFormulaType = Exclude<FormulaType, 'any' | 'void' | UnusedFormulaControlType>
+
 export type FormulaCheckType = FormulaType | [FormulaType, ...FormulaType[]]
 
-export type FormulaCodeFragmentType =
-  | 'TRUE'
-  | 'FALSE'
-  | 'Function'
-  | 'Variable'
-  | 'FunctionName'
-  | 'LogicColumn'
-  | 'LogicRow'
+type FormulaCodeFragmentType = 'TRUE' | 'FALSE' | 'Function' | 'Variable' | 'FunctionName' | 'LogicColumn' | 'LogicRow'
 
 export type FormulaColorType = Exclude<FormulaType, 'boolean'> | FormulaCodeFragmentType
 
@@ -329,7 +326,7 @@ interface SelfReference extends BaseReference {
   kind: 'self'
 }
 
-export type AnyTypeResult =
+type AnyResult =
   | NumberResult
   | BooleanResult
   | StringResult
@@ -357,6 +354,8 @@ export type AnyTypeResult =
   | PendingResult
   | WaitingResult
   | NoPersistResult
+
+export type AnyTypeResult = UsedFormulaType extends AnyResult['type'] ? AnyResult : never
 
 export type TypedResult<T extends FormulaType> = Extract<AnyTypeResult, { type: T }>
 

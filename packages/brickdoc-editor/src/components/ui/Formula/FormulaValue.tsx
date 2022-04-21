@@ -34,7 +34,7 @@ export const FormulaValue: FC<FormulaValueProps> = ({
 
   if (!hasBorder) {
     return (
-      <span className="brickdoc-formula-borderless" style={{ color: colorCode, fontFamily: 'Fira Code' }}>
+      <span className="brickdoc-formula-borderless" style={{ color: colorCode }}>
         {display}
       </span>
     )

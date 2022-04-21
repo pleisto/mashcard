@@ -532,7 +532,7 @@ exports[`AutocompleteList Active Completion renders variable kind correctly 1`] 
           >
             <span
               class="brickdoc-formula-borderless"
-              style="color: rgb(207, 31, 40); font-family: Fira Code;"
+              style="color: rgb(207, 31, 40);"
             >
               #&lt;Error&gt; Parse error: ""
             </span>

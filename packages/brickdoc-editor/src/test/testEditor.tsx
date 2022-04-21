@@ -1,5 +1,12 @@
 import { DependencyList, FC } from 'react'
-import { Editor, EditorContent as TiptapEditorContent, EditorOptions, Extensions, useEditor } from '@tiptap/react'
+import {
+  Editor,
+  EditorContent as TiptapEditorContent,
+  EditorOptions,
+  Extensions,
+  JSONContent,
+  useEditor
+} from '@tiptap/react'
 import { Document } from '@tiptap/extension-document'
 import { Paragraph } from '@tiptap/extension-paragraph'
 import { Text } from '@tiptap/extension-text'
@@ -8,7 +15,7 @@ import { CommandHelper } from '../extensions'
 import TextStyle from '@tiptap/extension-text-style'
 
 export interface TestEditorContentProps {
-  content?: string
+  content?: string | JSONContent
   extensions?: Extensions
 }
 

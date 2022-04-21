@@ -101,7 +101,7 @@ exports[`FormulaValue renders borderless correctly 1`] = `
 <div>
   <span
     class="brickdoc-formula-borderless"
-    style="color: rgb(207, 31, 40); font-family: Fira Code;"
+    style="color: rgb(207, 31, 40);"
   >
     display
   </span>

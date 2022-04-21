@@ -1,0 +1,1269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formulaType "normal" - " " " & num1 " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="StringLiteral"
+          data-display="\\" \\""
+          data-type="string"
+          style="color: #d81b60;"
+        >
+          " "
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Ampersand"
+          data-display="&"
+          data-type="string"
+        >
+          &
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\",\\"name\\":\\"num1\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\"}}"
+          data-code="Variable"
+          data-display="num1"
+          data-errors="Expected string but got number"
+          data-type="number"
+          style="color: #d81b60;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          num1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - " 1 + 1  +  1 " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display="  "
+          data-type="any"
+        >
+            
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display="  "
+          data-type="any"
+        >
+            
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "#CurrentBlock" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"name\\":\\"Untitled\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\"}}"
+          data-code="Block"
+          data-display="Untitled"
+          data-type="Block"
+          style="color: #356cf9;"
+        >
+          Untitled
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "#CurrentBlock.num1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\",\\"name\\":\\"num1\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\"}}"
+          data-code="Variable"
+          data-display="num1"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          num1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "123" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="123"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          123
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "123asdasd" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="123"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          123
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="parseErrorOther"
+          data-display="asdasd"
+          data-errors="Not all input parsed: asdasd"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          asdasd
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "a+num1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Function"
+          data-display="a"
+          data-errors="Unknown function a"
+          data-type="any"
+          style="color: #356cf9;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          a
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\",\\"name\\":\\"num1\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\"}}"
+          data-code="Variable"
+          data-display="num1"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          num1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "a123 1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Function"
+          data-display="a123"
+          data-errors="Function a123 not found"
+          data-type="any"
+          style="color: #356cf9;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          a123
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "custom::ADD(1)" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="FunctionGroup"
+          data-display="custom"
+          data-type="any"
+        >
+          custom
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="DoubleColon"
+          data-display="::"
+          data-type="any"
+        >
+          ::
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Function"
+          data-display="ADD"
+          data-type="any"
+          style="color: #356cf9;"
+        >
+          ADD
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="LParen"
+          data-display="("
+          data-type="any"
+        >
+          (
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-errors="Argument count mismatch"
+          data-type="number"
+          style="color: #39b3e8;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="RParen"
+          data-display=")"
+          data-type="number"
+        >
+          )
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "normal" - "foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"781a575f-37a6-4e03-b125-595b72b8d6fe\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"781a575f-37a6-4e03-b125-595b72b8d6fe\\"}}"
+          data-code="Variable"
+          data-display="foo_bar"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "   " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="literal"
+          data-display="   "
+          data-type="any"
+          style="color: #908B9C;"
+        >
+             
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - " foo baz " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="literal"
+          data-display=" foo baz "
+          data-type="any"
+          style="color: #908B9C;"
+        >
+           foo baz 
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <br
+          class="ProseMirror-trailingBreak"
+        />
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "= " " & num1 " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="StringLiteral"
+          data-display="\\" \\""
+          data-type="string"
+          style="color: #d81b60;"
+        >
+          " "
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Ampersand"
+          data-display="&"
+          data-type="string"
+        >
+          &
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\",\\"name\\":\\"num1\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\"}}"
+          data-code="Variable"
+          data-display="num1"
+          data-errors="Expected string but got number"
+          data-type="number"
+          style="color: #d81b60;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          num1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "= 1 + 1  +  1 " 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display="  "
+          data-type="any"
+        >
+            
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display="  "
+          data-type="any"
+        >
+            
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="literal"
+          data-display="="
+          data-type="any"
+          style="color: #908B9C;"
+        >
+          =
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=#CurrentBlock" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Block\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"name\\":\\"Untitled\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\"}}"
+          data-code="Block"
+          data-display="Untitled"
+          data-type="Block"
+          style="color: #356cf9;"
+        >
+          Untitled
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=#CurrentBlock.num1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\",\\"name\\":\\"num1\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\"}}"
+          data-code="Variable"
+          data-display="num1"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          num1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=123" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="123"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          123
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=123asdasd" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="123"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          123
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="parseErrorOther"
+          data-display="asdasd"
+          data-errors="Not all input parsed: asdasd"
+          data-type="any"
+          style="
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          asdasd
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=a+num1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Function"
+          data-display="a"
+          data-errors="Unknown function a"
+          data-type="any"
+          style="color: #356cf9;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          a
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Plus"
+          data-display="+"
+          data-type="number"
+        >
+          +
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\",\\"name\\":\\"num1\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"88d64c7c-1111-4eea-be97-133e12c8c1ce\\"}}"
+          data-code="Variable"
+          data-display="num1"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          num1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=a123 1" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Function"
+          data-display="a123"
+          data-errors="Function a123 not found"
+          data-type="any"
+          style="color: #356cf9;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          a123
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Space"
+          data-display=" "
+          data-type="any"
+        >
+           
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-type="number"
+          style="color: #39b3e8;"
+        >
+          1
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=custom::ADD(1)" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="FunctionGroup"
+          data-display="custom"
+          data-type="any"
+        >
+          custom
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="DoubleColon"
+          data-display="::"
+          data-type="any"
+        >
+          ::
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Function"
+          data-display="ADD"
+          data-type="any"
+          style="color: #356cf9;"
+        >
+          ADD
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="LParen"
+          data-display="("
+          data-type="any"
+        >
+          (
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="NumberLiteral"
+          data-display="1"
+          data-errors="Argument count mismatch"
+          data-type="number"
+          style="color: #39b3e8;; 
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #cf1f28;
+"
+        >
+          1
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="RParen"
+          data-display=")"
+          data-type="number"
+        >
+          )
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`formulaType "spreadsheet" - "=foo_bar" 1`] = `
+<div>
+  <div>
+    <div
+      class="ProseMirror"
+      contenteditable="true"
+      tabindex="0"
+      translate="no"
+    >
+      <p>
+        <mark
+          class="brickdoc-formula-mark"
+          data-code="Equal"
+          data-display="="
+          data-type="any"
+        >
+          =
+        </mark>
+        <mark
+          class="brickdoc-formula-mark"
+          data-attrs="{\\"kind\\":\\"Variable\\",\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"id\\":\\"781a575f-37a6-4e03-b125-595b72b8d6fe\\",\\"name\\":\\"foo_bar\\",\\"findKey\\":{\\"namespaceId\\":\\"eb373fbc-a6e9-40a6-8c4b-45cda7230dda\\",\\"type\\":\\"id\\",\\"value\\":\\"781a575f-37a6-4e03-b125-595b72b8d6fe\\"}}"
+          data-code="Variable"
+          data-display="foo_bar"
+          data-type="number"
+          style="color: #d81b60;"
+        >
+          foo_bar
+        </mark>
+      </p>
+    </div>
+  </div>
+</div>
+`;

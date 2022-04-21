@@ -41,7 +41,7 @@ exports[`FormulaResult renders formula result correctly 1`] = `
       </span>
       <span
         class="brickdoc-formula-borderless"
-        style="color: rgb(57, 179, 232); font-family: Fira Code;"
+        style="color: rgb(57, 179, 232);"
       >
         2
       </span>
