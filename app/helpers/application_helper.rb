@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 module ApplicationHelper
   def global_context
-    puts 'x'
-    puts BrickdocConfig.to_frontend(scope: :features)
     {
       version: Brickdoc::Runtime.version,
       internalApiEndpoint: internal_graphql_api_path,

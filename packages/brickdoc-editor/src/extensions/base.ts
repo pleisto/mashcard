@@ -46,6 +46,7 @@ export interface BaseOptions {
   underline: Partial<EXTENSION.UnderlineOptions> | boolean
   uniqueID: Partial<EXTENSION.UniqueIDOptions> | boolean
   user: Partial<EXTENSION.UserOptions> | boolean
+  collaboration: Partial<EXTENSION.CollaborationOptions> | boolean
 }
 
 const getConfigure = <T>(configure: T | boolean): Partial<T> => (configure === true ? {} : (configure as T))
@@ -80,7 +81,6 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.gapcursor) extensions.push(EXTENSION.Gapcursor)
     if (this.options.hardBreak) extensions.push(EXTENSION.HardBreak.configure(getConfigure(this.options?.hardBreak)))
     if (this.options.heading) extensions.push(EXTENSION.Heading.configure(getConfigure(this.options?.heading)))
-    if (this.options.history) extensions.push(EXTENSION.History.configure(getConfigure(this.options?.history)))
     if (this.options.horizontalRule)
       extensions.push(EXTENSION.HorizontalRule.configure(getConfigure(this.options?.horizontalRule)))
     if (this.options.indent) extensions.push(EXTENSION.Indent.configure(getConfigure(this.options?.indent)))
@@ -115,6 +115,14 @@ export const Base = Extension.create<BaseOptions>({
     if (this.options.underline) extensions.push(EXTENSION.Underline.configure(getConfigure(this.options?.underline)))
     if (this.options.uniqueID) extensions.push(EXTENSION.UniqueID.configure(getConfigure(this.options?.uniqueID)))
     if (this.options.user) extensions.push(EXTENSION.User.configure(getConfigure(this.options?.user)))
+
+    if (this.options.collaboration) {
+      extensions.push(EXTENSION.Collaboration.configure(getConfigure(this.options?.collaboration)))
+      // extensions.push(EXTENSION.CollaborationCursor.configure({}))
+    }
+
+    if (!this.options.collaboration && this.options.history)
+      extensions.push(EXTENSION.History.configure(getConfigure(this.options?.history)))
 
     return extensions
   }

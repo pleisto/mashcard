@@ -127,7 +127,8 @@ module Docs
       root ||= new_blocks_hash.fetch(root_id)
       root.maybe_save_snapshot!
 
-      if patches.present?
+      # rubocop:disable Lint/LiteralAsCondition
+      if false && patches.present?
         ## NOTE dirty data
         if patches.any? { |patch| patch.fetch(:path).blank? }
           root.clear_cache

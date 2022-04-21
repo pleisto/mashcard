@@ -61,6 +61,16 @@ export const NewPatch = gql`
   }
 `
 
+export const Ydoc = gql`
+  subscription ydoc($docId: UUID!) {
+    ydoc(docId: $docId) {
+      operatorId
+      stateId
+      updates
+    }
+  }
+`
+
 export const queryBlockInfo = gql`
   query GetBlockInfo($id: String!, $domain: String!) {
     blockInfo(id: $id, domain: $domain) {
@@ -233,6 +243,28 @@ export const querySpreadsheetChildren = gql`
         text
         content
         data
+      }
+    }
+  }
+`
+
+export const queryGetDocument = gql`
+  query GetDocument($docId: String!) {
+    document(docId: $docId) {
+      id
+      stateId
+      state
+    }
+  }
+`
+
+export const SyncDocument = gql`
+  mutation SyncDocument($input: SyncDocumentInput!) {
+    syncDocument(input: $input) {
+      errors
+      document {
+        state
+        stateId
       }
     }
   }

@@ -34,7 +34,8 @@ export const ParagraphView: FC<ParagraphViewProps> = props => {
       contentForCopy={node.textContent}
       style={{ position: 'relative' }}
       ref={blockContainerRef}
-      actionOptions={['copy', 'delete', 'transform']}>
+      actionOptions={['copy', 'delete', 'transform']}
+    >
       <NodeViewContent draggable={false} data-placeholder="" as="p" className={placeholderClassName} />
     </BlockContainer>
   )

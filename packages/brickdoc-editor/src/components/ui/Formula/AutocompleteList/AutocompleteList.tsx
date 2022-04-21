@@ -73,7 +73,8 @@ export const AutocompleteList: React.FC<AutocompleteListProps> = ({ rootId, form
                 onClick={() => handleOnClick(index)}
                 key={index}
                 onKeyDown={onKeyDown}
-                className={cx('autocomplete-list-item', { active: index === completion.activeCompletionIndex })}>
+                className={cx('autocomplete-list-item', { active: index === completion.activeCompletionIndex })}
+              >
                 {React.cloneElement(icon, { className: 'autocomplete-list-item-icon' })}
                 <div className="autocomplete-list-item-content">
                   <span className="autocomplete-list-item-name">{c.name}</span>

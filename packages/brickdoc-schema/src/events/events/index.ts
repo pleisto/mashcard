@@ -1,4 +1,5 @@
 export * from './block'
+export * from './doc'
 export * from './editor'
 export * from './formula'
 export * from './spreadsheet'

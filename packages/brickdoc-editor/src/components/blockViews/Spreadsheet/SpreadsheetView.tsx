@@ -208,7 +208,8 @@ export const SpreadsheetHeaderColumn: React.FC<{
           : {})
       }}
       onMouseDown={onMouseDown}
-      onContextMenu={onContextMenu}>
+      onContextMenu={onContextMenu}
+    >
       {children}
       {columnActions ? (
         <Dropdown
@@ -231,7 +232,8 @@ export const SpreadsheetHeaderColumn: React.FC<{
           placement="bottomStart"
           visible={dropdownVisible}
           onVisibleChange={onDropdownVisibleChange}
-          aria-label={t('spreadsheet.column.actions')}>
+          aria-label={t('spreadsheet.column.actions')}
+        >
           <span>⌄</span>
         </Dropdown>
       ) : (
@@ -320,7 +322,8 @@ export const SpreadsheetRowAction: React.FC<{
             }
           : {})
       }}
-      data-row-id={rowId}>
+      data-row-id={rowId}
+    >
       <td className="row-action-panel" onContextMenu={onContextMenu}>
         <div className="row-action-panel-layer" onMouseDown={onMouseDown}>
           <Button className="row-number" onClick={onClickRowNumber}>
@@ -347,7 +350,8 @@ export const SpreadsheetRowAction: React.FC<{
               placement="bottomStart"
               visible={dropdownVisible}
               onVisibleChange={onDropdownVisibleChange}
-              aria-label={t('spreadsheet.row.actions')}>
+              aria-label={t('spreadsheet.row.actions')}
+            >
               <span>⌄</span>
             </Dropdown>
           ) : (

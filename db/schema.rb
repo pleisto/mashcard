@@ -146,6 +146,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_110359) do
     t.index ["space_id"], name: "index_docs_blocks_on_space_id"
   end
 
+  create_table "docs_documents", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.binary "state"
+    t.uuid "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "docs_formulas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "space_id", null: false
     t.uuid "block_id", null: false

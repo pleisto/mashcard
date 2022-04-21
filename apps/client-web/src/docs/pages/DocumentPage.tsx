@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo } from 'react'
-import { Spin } from '@brickdoc/design-system'
+import { Spin, devLog } from '@brickdoc/design-system'
 import { EditorContent, useEditor, useEditorI18n } from '@brickdoc/editor'
 import { Block } from '@/BrickdocGraphQL'
 import { DocumentTitle } from './components/DocumentTitle'
-import { useSyncProvider } from './hooks'
+import { useSyncProvider, useDocSyncProvider } from './hooks'
 import { blocksToJSONContents } from '../common/blocks'
 import { JSONContent } from '@tiptap/core'
 import { TrashPrompt } from '../common/components/TrashPrompt'
@@ -35,9 +35,14 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
 
   const { rootBlock, data, loading, onDocSave } = useSyncProvider(queryVariables)
 
+  const { ydoc, initBlocksToEditor } = useDocSyncProvider({ docId: docMeta.id as string })
+
   const freeze = mode === 'presentation'
   const currentRootBlock = rootBlock.current
   const [documentEditable] = useDocumentEditable(freeze ?? false, docMeta, currentRootBlock)
+
+  // TODO: refactor editor and editable reactive var
+  // const documentEditable = !freeze
 
   const externalProps = useEditorExternalProps({
     docMeta,
@@ -48,33 +53,25 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
   const editor = useEditor({
     onSave: onDocSave,
     externalProps,
-    editable: documentEditable
+    editable: documentEditable,
+    ydoc: ydoc.current
   })
 
+  // TODO: refactor editor reactive var
   useEffect(() => {
-    if (!freeze) editorVar(editor)
+    editorVar(freeze ? null : editor)
   }, [editor, freeze])
 
   useEffect(() => {
-    if (editor && !editor.isDestroyed && data?.childrenBlocks) {
+    if (editor && !editor.isDestroyed && data?.childrenBlocks && initBlocksToEditor.current) {
+      devLog('init blocks to editor')
       const content: JSONContent[] = blocksToJSONContents(data?.childrenBlocks as Block[])
 
       if (content.length) {
         editor.chain().setMeta('preventUpdate', true).replaceRoot(content[0]).run()
       }
     }
-  }, [editor, data, data?.childrenBlocks])
-
-  // due to #914, to reduce conflicts, temporarily disable subscription for documents in presentation mode
-  if (docMeta.snapshotVersion === 0 && !freeze) {
-    // Fix #1155
-    // useDocumentSubscription({
-    //   docid: docMeta.id as string,
-    //   editor,
-    //   setDocumentEditable,
-    //   refetchDocument: refetch
-    // })
-  }
+  }, [editor, data, data?.childrenBlocks, initBlocksToEditor])
 
   if (loading || docMeta.documentInfoLoading) {
     return (
@@ -104,7 +101,7 @@ export const DocumentPage: React.FC<DocumentPageProps> = ({ docMeta, mode }) => 
           '@smDown': 'sm'
         }}
       >
-        <DocumentTitle blocks={data?.childrenBlocks} editable={documentEditable} />
+        <DocumentTitle docId={docMeta.id} blocks={data?.childrenBlocks} editable={documentEditable} />
         <Root.PageContent>
           <EditorContent editor={editor} externalProps={externalProps} />
         </Root.PageContent>

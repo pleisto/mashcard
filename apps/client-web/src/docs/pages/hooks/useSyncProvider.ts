@@ -2,7 +2,6 @@
 import React from 'react'
 import { Node } from 'prosemirror-model'
 import { useApolloClient } from '@apollo/client'
-import { devLog } from '@brickdoc/design-system'
 import {
   BlockInput,
   Block,
@@ -11,6 +10,7 @@ import {
   GetSpreadsheetChildrenDocument
 } from '@/BrickdocGraphQL'
 import { isEqual } from '@brickdoc/active-support'
+import { devLog } from '@brickdoc/design-system'
 import { isSavingVar } from '../../reactiveVars'
 import { nodeToBlock } from '../../common/blocks'
 import {
@@ -19,6 +19,8 @@ import {
   BlockUpdated,
   BlockDeleted,
   BlockNameLoad,
+  DocMetaLoaded,
+  UpdateDocMeta,
   BlockSynced,
   UpdateBlock,
   DeleteBlock,
@@ -69,6 +71,10 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       docBlocksMap.current.set(block.id, block)
     })
     rootBlock.current = docBlocksMap.current.get(rootId.current)
+    if (rootBlock.current) {
+      const { id, meta } = rootBlock.current
+      BrickdocEventBus.dispatch(DocMetaLoaded({ id, meta }))
+    }
   }, [queryVariables, data?.childrenBlocks])
 
   const commitDirty = async (): Promise<void> => {
@@ -88,8 +94,25 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
         )
         .map(b => {
           // HACK: delete all __typename
-          const block = { __typename: undefined, ...b, meta: b.meta ?? {} }
+          const block = {
+            __typename: undefined,
+            deletedAt: undefined,
+            blobs: undefined,
+            rootId: undefined,
+            ...b,
+            meta: b.meta ?? {}
+          }
+          if (b.id === rootBlock.current?.id) {
+            block.meta = { ...rootBlock.current.meta, ...block.meta }
+            block.text = block.meta.title ?? ''
+          }
           delete block.__typename
+          delete block.deletedAt
+          delete block.blobs
+          delete block.rootId
+          if (!block.parentId) {
+            delete block.parentId
+          }
           return block
         })
 
@@ -97,7 +120,7 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
 
       if (blocks.length > 0 || deletedIds.length > 0) {
         blocks.forEach(b => {
-          if (!b.parentId || b.type === 'doc') {
+          if (b.type === 'doc') {
             BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
           }
           BrickdocEventBus.dispatch(BlockUpdated(b as Block))
@@ -141,6 +164,8 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
   const onDocSave = async (doc: Node): Promise<void> => {
     if (!docBlocksMap.current.size) return
     isSavingVar(true)
+    // NOTE: tempfix for root uuid
+    doc.attrs.uuid = rootId.current ?? doc.attrs.uuid
     const docBlocks = nodeToBlock(doc, 0)
     const deletedIds = new Set(docBlocksMap.current.keys())
     deletedIds.delete(rootId.current)
@@ -242,6 +267,20 @@ export function useSyncProvider(queryVariables: { rootId: string; snapshotVersio
       const { blockId, commit } = e.payload
       dirtyToDeleteIds.current.add(blockId)
       if (commit) {
+        void commitDirty()
+      }
+    },
+    { subscribeId: 'SyncProvider' }
+  )
+
+  BrickdocEventBus.subscribe(
+    UpdateDocMeta,
+    e => {
+      const { id, meta } = e.payload
+      if (id === rootBlock.current?.id) {
+        const newBlock = { ...rootBlock.current, meta: { ...rootBlock.current.meta, ...meta } }
+        newBlock.text = newBlock.meta.title ?? ''
+        dirtyBlocksMap.current.set(id, newBlock)
         void commitDirty()
       }
     },

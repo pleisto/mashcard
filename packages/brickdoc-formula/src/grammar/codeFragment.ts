@@ -1044,4 +1044,3 @@ export class CodeFragmentVisitor extends CodeFragmentCstVisitor {
 export const isKey = ({ code }: CodeFragment): boolean => {
   return ['StringLiteral', 'FunctionName', 'NumberLiteral'].includes(code)
 }
-
