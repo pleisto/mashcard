@@ -1,4 +1,4 @@
-import { Button, Spin, styled, theme } from '@brickdoc/design-system'
+import { Button, Spin, ImageWithSpin, styled, theme } from '@brickdoc/design-system'
 import React from 'react'
 import { useBoolean } from 'ahooks'
 import { debounce } from '@brickdoc/active-support'
@@ -122,7 +122,7 @@ export const UnsplashPanel: React.FC<UnsplashPanelProps> = ({ pluginOptions }) =
               className="unsplash-image-item"
               onClick={handleUnsplashImageSelect(image)}
             >
-              <div style={{ backgroundImage: `url("${image.smallUrl}")` }} className="unsplash-image" />
+              <ImageWithSpin src={image.smallUrl} className="unsplash-image" />
               <div className="unsplash-image-username">@{image.username}</div>
             </Button>
           ))

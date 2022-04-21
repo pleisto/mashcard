@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { Button, Popover, PopoverProps } from '@brickdoc/design-system'
+import { Button, Popover, PopoverProps, ImageWithSpin } from '@brickdoc/design-system'
 import { BlockColor, BlockImage, Blocktype } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '@/docs/common/hooks'
-import { ImageWithSpin } from '@/common/components'
 import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 import * as Root from './DocumentCover.style'
 

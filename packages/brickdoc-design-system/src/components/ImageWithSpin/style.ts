@@ -1,4 +1,4 @@
-import { theme, styled } from '@brickdoc/design-system'
+import { theme, styled } from '../../themes'
 
 export const ImageWithSpinWrapper = styled('div', {
   position: 'relative',
@@ -22,7 +22,13 @@ export const Image = styled('img', {
   variants: {
     spining: {
       true: {
-        filter: 'blur(75px)'
+        transform: 'scale(1.2)',
+        filter: 'blur(35px)'
+      }
+    },
+    hidePic: {
+      true: {
+        filter: 'opacity(0%)!important'
       }
     }
   }
