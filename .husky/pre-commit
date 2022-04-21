@@ -3,3 +3,5 @@
 
 yarn lint-staged
 yarn precommit
+
+find . -name '*.md' -exec chmod -x {} +
