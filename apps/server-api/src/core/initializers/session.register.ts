@@ -1,8 +1,13 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import secureSession from 'fastify-secure-session'
-import { ms } from '@brickdoc/active-support'
+import { ms, Result } from '@brickdoc/active-support'
 
-export const sessionRegister = (app: NestFastifyApplication, secretKey: string, tlsEnabled: boolean): void => {
+export const sessionRegister = (
+  app: NestFastifyApplication,
+  secretKey: string,
+  tlsEnabled: Result<boolean | undefined, Error>
+): void => {
+  if (tlsEnabled.isErr()) throw tlsEnabled.error
   void app.register(secureSession, {
     cookieName: '__memex_secure__',
     key: Buffer.from(secretKey, 'hex'),
@@ -10,7 +15,7 @@ export const sessionRegister = (app: NestFastifyApplication, secretKey: string, 
       httpOnly: true,
       path: '/',
       sameSite: 'lax',
-      secure: tlsEnabled,
+      secure: tlsEnabled.value,
       maxAge: Math.round(ms('2 weeks') / 1000) // maxAge (in seconds)
     }
   })

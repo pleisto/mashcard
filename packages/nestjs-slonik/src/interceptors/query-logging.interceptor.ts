@@ -50,7 +50,7 @@ const calcExecutionTime = (context: QueryContext): number =>
  */
 export const queryLoggingInterceptor = (): Interceptor => {
   return {
-    afterQueryExecution: (context, _query, result) => {
+    afterQueryExecution: (context, query, result) => {
       for (const notice of result.notices) {
         if (notice.message && isAutoExplainJsonMessage(notice.message)) {
           logger.log('Auto explain', {
@@ -62,8 +62,16 @@ export const queryLoggingInterceptor = (): Interceptor => {
 
       const executionTime = ms(calcExecutionTime(context))
 
-      logger.debug('Query execution result', {
+      const values = []
+
+      for (const value of query.values) {
+        values.push(Buffer.isBuffer(value) ? `[Buffer ${value.byteLength}]` : value)
+      }
+
+      logger.log('Query execution result', {
         executionTime,
+        query: query.sql,
+        values,
         rowCount: result.rowCount,
         ...loggerContext(context)
       })
@@ -88,16 +96,8 @@ export const queryLoggingInterceptor = (): Interceptor => {
         }
       }
 
-      const values = []
-
-      for (const value of query.values) {
-        values.push(Buffer.isBuffer(value) ? `[Buffer ${value.byteLength}]` : value)
-      }
-
       logger.debug('Executing query', {
-        sql: query.sql,
         stackTrace,
-        values,
         ...loggerContext(context)
       })
 

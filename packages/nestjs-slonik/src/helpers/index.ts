@@ -5,3 +5,4 @@
 export * as values from './values.helper'
 export * as identifiers from './identifiers.helper'
 export * as assignment from './assignment.helper'
+export { withResultType } from './result-type.helper'

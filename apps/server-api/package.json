@@ -47,10 +47,12 @@
     "graphql": "^16.3.0",
     "graphql-type-json": "^0.3.2",
     "lru-cache": "^7.8.1",
+    "nest-winston": "^1.6.2",
     "node-dev": "^7.4.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
     "tzdata": "^1.0.30",
+    "winston": "^3.7.2",
     "yargs": "^17.4.1",
     "yargs-parser": "^21.0.1",
     "yup": "^0.32.11"

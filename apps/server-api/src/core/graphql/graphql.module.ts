@@ -4,6 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { env } from 'process'
 import { join } from 'path/posix'
+import { LoggingPlugin } from './logging.plugin'
 
 @Module({
   imports: [
@@ -16,9 +17,11 @@ import { join } from 'path/posix'
         path: '/.internal-apis/$graph',
         autoSchemaFile: join(process.cwd(), 'db/schema.gql'),
         playground: false,
-        plugins: [ApolloServerPluginLandingPageLocalDefault()]
+        plugins: [ApolloServerPluginLandingPageLocalDefault()],
+        autoTransformHttpErrors: false
       })
     })
-  ]
+  ],
+  providers: [LoggingPlugin]
 })
 export class GraphQLModule {}

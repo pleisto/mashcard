@@ -1,4 +1,5 @@
-import { DatabasePool, sql, values, assignment } from '@brickdoc/nestjs-slonik'
+import { DatabasePool, sql, values, assignment, withResultType } from '@brickdoc/nestjs-slonik'
+import { Result, ok } from '@brickdoc/active-support'
 
 /**
  * create or update a setting value on the database
@@ -8,7 +9,7 @@ export const createOrUpdateSetting = async (
   key: string,
   value: any,
   scope: string
-): Promise<boolean> => {
+): Promise<Result<null, Error>> => {
   const timestampz = new Date().toISOString()
 
   const updatedValues = {
@@ -24,7 +25,7 @@ export const createOrUpdateSetting = async (
     updated_at: updatedValues.updated_at
   }
 
-  const result = await dbPool.query(sql`
+  const result = await withResultType(dbPool).any(sql`
 INSERT Into settings (key, value, scope, created_at, updated_at)
     VALUES (${values.fromObject(insertValues)})
 ON CONFLICT (key, scope)
@@ -32,7 +33,7 @@ ON CONFLICT (key, scope)
         ${assignment.fromObject(updatedValues)}
 `)
 
-  return result.rowCount === 1
+  return result.andThen(() => ok(null))
 }
 
 /**
@@ -47,7 +48,7 @@ export const findSetting = async <T>(
   key: string,
   scope: string,
   fallbackScope?: string
-): Promise<T | undefined> => {
+): Promise<Result<T | null, Error>> => {
   const priority = fallbackScope
     ? sql`settings_scope_priority(scope,${fallbackScope})`
     : sql`settings_scope_priority(scope)`
@@ -58,7 +59,7 @@ export const findSetting = async <T>(
     : // without fallback scope
       sql`scope @> ${scope}`
 
-  const result = await dbPool.maybeOne<{ value: string; depth: number }>(sql`
+  const result = await withResultType(dbPool).maybeOne<{ value: string }>(sql`
 SELECT
     value,
     ${priority} AS depth
@@ -71,8 +72,8 @@ ORDER BY
     depth DESC
 LIMIT 1
 `)
-  if (!result) return undefined
-  return result.value as unknown as T
+
+  return result.andThen(data => ok(data?.value as unknown as T | null))
 }
 
 /**
@@ -81,9 +82,9 @@ LIMIT 1
 export const findSettings = async (
   dbPool: DatabasePool,
   items: Array<{ key: string; scope: string; fallbackScope?: string }>
-): Promise<Array<{ value: any; key: string }> | undefined> => {
+): Promise<Result<Array<{ value: any; key: string }>, Error>> => {
   // use a window function to get the latest matching value for each key
-  const result = await dbPool.many<{ value: string; key: string }>(sql`
+  const result = await withResultType(dbPool).any<{ value: string; key: string }>(sql`
 SELECT
     *
 FROM (
@@ -110,8 +111,5 @@ WHERE
     row_number = 1;
 
 `)
-
-  if (!result) return undefined
-
-  return result as Array<{ value: any; key: string }>
+  return result as Result<Array<{ value: any; key: string }>, Error>
 }

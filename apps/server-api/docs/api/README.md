@@ -8,6 +8,7 @@
 - [cli/commands](modules/cli_commands.md)
 - [cli/schematics/dotenv](modules/cli_schematics_dotenv.md)
 - [cli/schematics/migration](modules/cli_schematics_migration.md)
+- [common/errors](modules/common_errors.md)
 - [common/kms](modules/common_kms.md)
 - [common/settings](modules/common_settings.md)
 - [core/initializers](modules/core_initializers.md)

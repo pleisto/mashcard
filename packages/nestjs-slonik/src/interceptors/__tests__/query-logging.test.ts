@@ -20,7 +20,8 @@ describe('queryLoggingInterceptor.interceptor.ts', () => {
   beforeEach(() => {
     mockLogger = {
       debug: jest.spyOn(logger, 'debug').mockImplementation(() => {}),
-      error: jest.spyOn(logger, 'error').mockImplementation(() => {})
+      error: jest.spyOn(logger, 'error').mockImplementation(() => {}),
+      log: jest.spyOn(logger, 'log').mockImplementation(() => {})
     }
   })
 
@@ -44,8 +45,8 @@ describe('queryLoggingInterceptor.interceptor.ts', () => {
       rowCount: 1,
       rows: []
     })
-    expect(logger.debug).toHaveBeenCalled()
-    expect(mockLogger.debug.mock.calls[0][0]).toBe('Query execution result')
+    expect(logger.log).toHaveBeenCalled()
+    expect(mockLogger.log.mock.calls[0][0]).toBe('Query execution result')
   })
 
   it('beforeQueryExecution should work', () => {
@@ -68,7 +69,6 @@ describe('queryLoggingInterceptor.interceptor.ts', () => {
     )
     expect(logger.debug).toHaveBeenCalled()
     const log = mockLogger.debug.mock.calls[0][1]!
-    expect(log.sql).toBe(query.sql)
     expect(log.stackTrace).toEqual([
       `${stackTrace[0].fileName}:${stackTrace[0].lineNumber}:${stackTrace[0].columnNumber}`
     ])

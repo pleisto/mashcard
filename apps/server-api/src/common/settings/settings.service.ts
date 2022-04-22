@@ -1,5 +1,13 @@
 import { Injectable } from '@nestjs/common'
 import LRU from 'lru-cache'
+import { ValidationError } from 'yup'
+import { Result, err, ok } from '@brickdoc/active-support'
+import {
+  NotFoundError,
+  ChangeConflictError,
+  ValueValidationError,
+  UnSupportedScopeLookupStrategyError
+} from './settings.errors'
 import { ConfigMapExplorer } from './config-map.explorer'
 import { SettingsItem, SCOPE_ROOT_NODE, ScopeLookupStrategy, ScopeContext } from './settings.interface'
 import { InjectPool, DatabasePool } from '@brickdoc/nestjs-slonik'
@@ -28,29 +36,30 @@ export class SettingsService {
    * @param key
    * @param scope
    */
-  async get<T = unknown>(key: string, context: ScopeContext = {}): Promise<T | undefined> {
+  async get<T = unknown>(key: string, context: ScopeContext = {}): Promise<Result<T | undefined, Error>> {
     const item = this.findItem<T>(key as string)
-    if (!item) return undefined
+    if (!item) return ok(undefined)
     // LOCAL_STATIC items are not stored in the database
-    if (item.options.scope === ScopeLookupStrategy.LOCAL_STATIC) return item.defaultValue
+    if (item.options.scope === ScopeLookupStrategy.LOCAL_STATIC) return ok(item.defaultValue)
 
     const [scope, fallbackScope] = this.calculateScope(item.options.scope, context)
     // try to get the value from the cache first
     const cachedKeyWithScope = this.cachedKey(key as string, scope)
     const cachedValue = this.cache.get(this.cachedKey(key as string, scope))
-    if (cachedValue) return cachedValue as T
+    if (cachedValue) return ok(cachedValue as T)
 
     // query the database
-    let dbValue = await findSetting<T>(this.pool, item.key, scope, fallbackScope)
-    if (dbValue && item.options.encrypted) {
-      const plain = this.kms.symmetricDecrypt(item.value as unknown as string, scope)
-      dbValue = JSON.parse(plain)
-    }
-
-    // set cache after query
-    const result = dbValue ?? item.defaultValue
-    this.cache.set(cachedKeyWithScope, result)
-    return result
+    return (await findSetting<T>(this.pool, item.key, scope, fallbackScope)).andThen(data => {
+      const decodedData =
+        // if the data is encrypted, decrypt it
+        (data && item.options.encrypted
+          ? JSON.parse(this.kms.symmetricDecrypt(item.value as unknown as string, scope))
+          : data) ||
+        // fallback to the default value
+        item.defaultValue
+      this.cache.set(cachedKeyWithScope, decodedData)
+      return ok(decodedData)
+    })
   }
 
   /**
@@ -59,21 +68,25 @@ export class SettingsService {
    * @param value
    * @param scope
    */
-  async update<T = unknown>(key: string, value: T, context: ScopeContext = {}): Promise<boolean> {
+  async update<T = unknown>(key: string, value: T, context: ScopeContext = {}): Promise<Result<null, Error>> {
     const item = this.findItem<T>(key as string)
-    if (!item) {
-      console.error('Cannot find key `%s` in any ConfigMap. Only the defined items can be updated.', key)
-      return false
-    }
+    if (!item) return err(new NotFoundError(key))
 
-    if (item.options.scope === ScopeLookupStrategy.LOCAL_STATIC) {
-      console.error(' Item `%s` has been set to `ScopeLookupStrategy.LOCAL_STATIC`, so it cannot be updated.', key)
-      return false
-    }
+    if (item.options.scope === ScopeLookupStrategy.LOCAL_STATIC)
+      return err(
+        new ChangeConflictError({
+          key,
+          options: item.options,
+          reason: 'ScopeLookupStrategy.LOCAL_STATIC'
+        })
+      )
 
     // validate the value
-    // todo: general error handling
-    item.options.validation?.validateSync(value)
+    try {
+      item.options.validation?.validateSync(value)
+    } catch (e) {
+      if (e instanceof ValidationError) return err(new ValueValidationError(key, e))
+    }
 
     const [scope] = this.calculateScope(item.options.scope, context)
     // encrypt value if needed
@@ -81,7 +94,7 @@ export class SettingsService {
     const dbResult = await createOrUpdateSetting(this.pool, key as string, storedValue, scope)
 
     // if the update is successful, update the cache
-    if (dbResult) {
+    if (dbResult.isOk()) {
       if (item.options.scope === ScopeLookupStrategy.ROOT_ONLY) {
         // update the cache for the root scope
         this.cache.set(this.cachedKey(key as string, SCOPE_ROOT_NODE), value)
@@ -99,14 +112,13 @@ export class SettingsService {
   /**
    * Get all setting items that are exposed to the client
    */
-  async allExposedItems(context: ScopeContext = {}): Promise<Array<SettingsItem<unknown>> | undefined> {
+  async allExposedItems(context: ScopeContext = {}): Promise<Result<Array<SettingsItem<unknown>>, Error>> {
     // try to get the value from the cache first
     const cachedKey = this.allExportedItemsCachedKey(context)
     const cachedValue = this.cache.get(cachedKey)
-    if (cachedValue) return cachedValue as Array<SettingsItem<unknown>>
-
+    if (cachedValue) return ok(cachedValue as Array<SettingsItem<unknown>>)
     const items = this.configMap.filter(i => i.options.clientExposed)
-    if (!items) return undefined
+    if (!items) return ok([])
     // static items will not be queried from the database
     const queryedItems = items
       .filter(i => i.options.scope !== ScopeLookupStrategy.LOCAL_STATIC)
@@ -118,13 +130,14 @@ export class SettingsService {
           fallbackScope
         }
       })
-    const dbResult = await findSettings(this.pool, queryedItems)
-    const result = items.map(item => ({
-      ...item,
-      value: dbResult?.find(r => r.key === item.key)?.value ?? item.defaultValue
-    }))
-    this.cache.set(cachedKey, result)
-    return result
+    return (await findSettings(this.pool, queryedItems)).andThen(data => {
+      const result = items.map(item => ({
+        ...item,
+        value: data?.find(r => r.key === item.key)?.value ?? item.defaultValue
+      }))
+      this.cache.set(cachedKey, result)
+      return ok(result)
+    })
   }
 
   /**
@@ -160,7 +173,7 @@ export class SettingsService {
           `${SCOPE_ROOT_NODE}${workspace}`
         ]
       default:
-        throw new Error('Unsupported scope lookup strategy')
+        throw new UnSupportedScopeLookupStrategyError(strategy)
     }
   }
 

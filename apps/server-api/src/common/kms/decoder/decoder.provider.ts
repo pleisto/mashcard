@@ -1,5 +1,6 @@
 import { Provider, Scope } from '@nestjs/common'
 import { Buffer } from 'buffer'
+import { BrickdocBaseError } from '../../errors'
 import { PlainSeedDecoder } from './plain.decoder'
 import { SeedDecoder } from './base.decoder'
 import { KMS_MODULE_OPTIONS, KMSModuleOptions } from '../kms.interface'
@@ -28,7 +29,6 @@ const decoderResolver = (decoder: string, rawSeed: Buffer): SeedDecoder => {
     case 'plain':
       return new PlainSeedDecoder(rawSeed)
     default:
-      // todo: add server plugin support
-      throw new Error(`Unimplemented SecretSeedDecoder: ${decoder}`)
+      throw new BrickdocBaseError('apiSrv.kms.UNKNOWN_SEED_DECODER', `Unknown seed decoder \`${decoder}\``)
   }
 }

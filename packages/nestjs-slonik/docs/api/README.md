@@ -97,6 +97,7 @@
 - [isSqlToken](README.md#issqltoken)
 - [parseDsn](README.md#parsedsn)
 - [stringifyDsn](README.md#stringifydsn)
+- [withResultType](README.md#withresulttype)
 
 ## Type aliases
 
@@ -1008,3 +1009,42 @@ ___
 #### Defined in
 
 node_modules/slonik/dist/src/utilities/stringifyDsn.d.ts:2
+
+___
+
+### <a id="withresulttype" name="withresulttype"></a> withResultType
+
+▸ **withResultType**(`conn`, `errorHandler?`): `Object`
+
+Query the database with result type
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `conn` | [`DatabasePool`](README.md#databasepool) | `undefined` | DatabasePool |
+| `errorHandler` | (`e`: `unknown`) => `ExpectedError` | `defaultErrorHandler` |  |
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `any` | <T\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`T`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<readonly `T`[], `ExpectedError`\>\> |
+| `anyFirst` | <T, Row\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`Row`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<readonly `Row`[keyof `Row`][], `ExpectedError`\>\> |
+| `copyFromBinary` | (`streamQuery`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<[`QueryResultRow`](README.md#queryresultrow)\>, `tupleList`: readonly readonly any[][], `columnTypes`: readonly `string`[]) => `Promise`<`ResultAsync`<``null`` \| `Record`<`string`, `unknown`\>, `ExpectedError`\>\> |
+| `exists` | <T\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`T`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<`boolean`, `ExpectedError`\>\> |
+| `many` | <T\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`T`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<readonly `T`[], `ExpectedError`\>\> |
+| `manyFirst` | <T, Row\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`Row`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<readonly `Row`[keyof `Row`][], `ExpectedError`\>\> |
+| `maybeOne` | <T\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`T`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<``null`` \| `T`, `ExpectedError`\>\> |
+| `maybeOneFirst` | <T, Row\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`Row`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<``null`` \| `Row`[keyof `Row`], `ExpectedError`\>\> |
+| `one` | <T\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`T`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<`T`, `ExpectedError`\>\> |
+| `oneFirst` | <T, Row\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`Row`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<`Row`[keyof `Row`], `ExpectedError`\>\> |
+| `query` | <T\>(`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<`T`\>, `values?`: `PrimitiveValueExpression`[]) => `Promise`<`ResultAsync`<[`QueryResult`](README.md#queryresult)<`T`\>, `ExpectedError`\>\> |
+| `stream` | (`sql`: [`TaggedTemplateLiteralInvocation`](interfaces/TaggedTemplateLiteralInvocation.md)<[`QueryResultRow`](README.md#queryresultrow)\>, `streamHandler`: `StreamHandler`, `config?`: `QueryStreamConfig`) => `Promise`<`ResultAsync`<``null`` \| `Record`<`string`, `unknown`\>, `ExpectedError`\>\> |
+| `transaction` | <T\>(`handler`: `TransactionFunction`<`T`\>, `transactionRetryLimit?`: `number`) => `Promise`<`ResultAsync`<`T`, `ExpectedError`\>\> |
+
+#### Defined in
+
+[packages/nestjs-slonik/src/helpers/result-type.helper.ts:30](https://github.com/brickdoc/brickdoc/blob/master/packages/nestjs-slonik/src/helpers/result-type.helper.ts#L30)

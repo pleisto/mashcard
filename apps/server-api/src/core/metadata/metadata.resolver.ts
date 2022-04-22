@@ -10,10 +10,9 @@ export class MetadataResolver {
     description: 'Return information about current Brickdoc server instance.'
   })
   async metadata(): Promise<Metadata> {
-    const exposedSettings = await this.settings.allExposedItems()
-    if (exposedSettings) {
-      this.metadataModel.exposedSettings = Object.fromEntries(exposedSettings.map(item => [item.key, item.value]))
-    }
+    const exposedSettings = (await this.settings.allExposedItems()).unwrapOr([])
+    this.metadataModel.exposedSettings = Object.fromEntries(exposedSettings.map(item => [item.key, item.value]))
+
     return this.metadataModel
   }
 }

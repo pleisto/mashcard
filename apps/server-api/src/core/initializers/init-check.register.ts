@@ -1,5 +1,6 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { env } from 'process'
+import { BrickdocBaseError } from '../../common/errors'
 import { currentMigrator } from '../../cli/utils'
 
 export const initCheckRegister = async (_app: NestFastifyApplication): Promise<void> => {
@@ -8,11 +9,11 @@ export const initCheckRegister = async (_app: NestFastifyApplication): Promise<v
     // eslint-disable-next-line no-prototype-builtins
     key => !env.hasOwnProperty(key)
   )
-  if (missedEnvVars.length > 0) throw new Error(`Missing environment variables: ${missedEnvVars.join(', ')}`)
+  if (missedEnvVars.length > 0) throw new BrickdocBaseError('apiSrv.core.MISSING_REQUIRED_ENVS', `${missedEnvVars}`)
 
   // Check pending db migrations
   const migrator = await currentMigrator()
   const pendingMigrations = await migrator.pending()
-  if (pendingMigrations.length > 0)
-    throw new Error(`Pending database migrations: ${pendingMigrations.map(m => m.name).join(', ')}`)
+  if (pendingMigrations.length !== 0)
+    throw new BrickdocBaseError('apiSrv.core.DB_MIGRATIONS_PENDING', `${pendingMigrations.map(m => m.name).join(', ')}`)
 }

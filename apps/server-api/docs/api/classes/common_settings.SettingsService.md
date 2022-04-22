@@ -41,7 +41,7 @@
 
 #### Defined in
 
-[common/settings/settings.service.ts:14](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L14)
+[common/settings/settings.service.ts:22](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L22)
 
 ## Properties
 
@@ -51,7 +51,7 @@
 
 #### Defined in
 
-[common/settings/settings.service.ts:11](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L11)
+[common/settings/settings.service.ts:19](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L19)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[common/settings/settings.service.ts:12](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L12)
+[common/settings/settings.service.ts:20](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L20)
 
 ___
 
@@ -87,13 +87,13 @@ ___
 
 #### Defined in
 
-[common/settings/settings.service.ts:177](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L177)
+[common/settings/settings.service.ts:190](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L190)
 
 ___
 
 ### <a id="allexposeditems" name="allexposeditems"></a> allExposedItems
 
-▸ **allExposedItems**(`context?`): `Promise`<`undefined` \| [`SettingsItem`](../interfaces/common_settings.SettingsItem.md)<`unknown`\>[]\>
+▸ **allExposedItems**(`context?`): `Promise`<`Result`<[`SettingsItem`](../interfaces/common_settings.SettingsItem.md)<`unknown`\>[], `Error`\>\>
 
 Get all setting items that are exposed to the client
 
@@ -105,11 +105,11 @@ Get all setting items that are exposed to the client
 
 #### Returns
 
-`Promise`<`undefined` \| [`SettingsItem`](../interfaces/common_settings.SettingsItem.md)<`unknown`\>[]\>
+`Promise`<`Result`<[`SettingsItem`](../interfaces/common_settings.SettingsItem.md)<`unknown`\>[], `Error`\>\>
 
 #### Defined in
 
-[common/settings/settings.service.ts:102](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L102)
+[common/settings/settings.service.ts:115](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L115)
 
 ___
 
@@ -131,7 +131,7 @@ Batch delete cached items
 
 #### Defined in
 
-[common/settings/settings.service.ts:185](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L185)
+[common/settings/settings.service.ts:198](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L198)
 
 ___
 
@@ -154,7 +154,7 @@ generate a cache key for the given scope and key
 
 #### Defined in
 
-[common/settings/settings.service.ts:173](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L173)
+[common/settings/settings.service.ts:186](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L186)
 
 ___
 
@@ -177,7 +177,7 @@ calculate the scope based on the session context
 
 #### Defined in
 
-[common/settings/settings.service.ts:140](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L140)
+[common/settings/settings.service.ts:153](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L153)
 
 ___
 
@@ -205,13 +205,13 @@ Find the config map item by key
 
 #### Defined in
 
-[common/settings/settings.service.ts:133](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L133)
+[common/settings/settings.service.ts:146](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L146)
 
 ___
 
 ### <a id="get" name="get"></a> get
 
-▸ **get**<`T`\>(`key`, `context?`): `Promise`<`undefined` \| `T`\>
+▸ **get**<`T`\>(`key`, `context?`): `Promise`<`Result`<`undefined` \| `T`, `Error`\>\>
 
 Get a setting value
 
@@ -230,17 +230,17 @@ Get a setting value
 
 #### Returns
 
-`Promise`<`undefined` \| `T`\>
+`Promise`<`Result`<`undefined` \| `T`, `Error`\>\>
 
 #### Defined in
 
-[common/settings/settings.service.ts:31](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L31)
+[common/settings/settings.service.ts:39](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L39)
 
 ___
 
 ### <a id="update" name="update"></a> update
 
-▸ **update**<`T`\>(`key`, `value`, `context?`): `Promise`<`boolean`\>
+▸ **update**<`T`\>(`key`, `value`, `context?`): `Promise`<`Result`<``null``, `Error`\>\>
 
 Update a setting value on the database
 
@@ -260,8 +260,8 @@ Update a setting value on the database
 
 #### Returns
 
-`Promise`<`boolean`\>
+`Promise`<`Result`<``null``, `Error`\>\>
 
 #### Defined in
 
-[common/settings/settings.service.ts:62](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L62)
+[common/settings/settings.service.ts:71](https://github.com/brickdoc/brickdoc/blob/master/apps/server-api/src/common/settings/settings.service.ts#L71)

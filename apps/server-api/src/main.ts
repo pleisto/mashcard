@@ -13,10 +13,21 @@ const log = new Logger('BrickdocServer')
  * Create Server Application instance.
  */
 async function startServer(): Promise<void> {
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), { bufferLogs: true })
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
+    bufferLogs: true
+  })
 
   // load initializers
   await loadInitializers(app)
+
+  process.on('unhandledRejection', (reason: Error, p) => {
+    const e: Error = reason instanceof Error ? reason : new Error(reason)
+    log.error(`unhandledRejection: ${e.message}`, e)
+  })
+
+  process.on('uncaughtException', (e: Error) => {
+    log.error(`uncaughtException: ${e.message}`, e)
+  })
 
   // run server
   const port = env.SERVER_PORT ?? 3000

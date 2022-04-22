@@ -2,6 +2,7 @@ import { Injectable, OnApplicationBootstrap } from '@nestjs/common'
 import { DiscoveryService } from '@nestjs/core'
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper'
 import { uniq } from '@brickdoc/active-support'
+import { DuplicateNameSpaceError } from './settings.errors'
 import { SettingsItem, ConfigMapProviders } from './settings.interface'
 import { ConfigMapMetadataAccessor } from './config-map-metadata.accessor'
 
@@ -14,10 +15,12 @@ export class ConfigMapExplorer implements OnApplicationBootstrap {
 
   onApplicationBootstrap(): void {
     // Check if all config maps namespaces are unique on application bootstrap
-    if (uniq(this.allNamespaces()).length !== this.allNamespaces().length) {
-      throw new Error(`Common/Settings: All config-map namespaces must be unique.
-      namespace: ${this.allNamespaces().join(', ')}`)
-    }
+    const uniqNamespaces = uniq(this.allNamespaces())
+    if (uniqNamespaces.length !== this.allNamespaces().length)
+      throw new DuplicateNameSpaceError(
+        // duplicate namespaces
+        this.allNamespaces().filter(n => uniqNamespaces.includes(n))
+      )
   }
 
   /**
