@@ -6,9 +6,22 @@ concurrency:
 env:
   YARN_CHECKSUM_BEHAVIOR: update
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.filter.outputs.changes }}
+    steps:
+      - name: Checkout the codebase
+        uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: .github/e2e_rule.yml
+
   playwright:
+    needs: changes
     name: Playwright Test
-    if: github.event.deployment_status.state == 'success' && (github.event.deployment_status.environment == 'pr_preview' || github.event.deployment_status.environment == 'trunk')
+    if: fromJSON(needs.changes.outputs.apps)[0] != null && github.event.deployment_status.state == 'success' && (github.event.deployment_status.environment == 'pr_preview' || github.event.deployment_status.environment == 'trunk')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the codebase
@@ -46,7 +59,7 @@ jobs:
         env:
           DEPLOY_ENV: ${{ github.event.deployment_status.environment }}
       - name: Run Playwright tests
-        run: yarn e2e-testing run-playwright
+        run: yarn e2e-testing run-playwright ${{ join(fromJSON(needs.changes.outputs.apps), ' ') }}
         if: success()
         env:
           NODE_OPTIONS: '--max-old-space-size=5950'
