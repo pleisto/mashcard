@@ -658,7 +658,7 @@ zh-CN:
       learn: 了解共享
       copy_link_button: 复制链接
       copy_link_button_done: Copied
-      invite_placeholder: 添加人员、电子邮件、群组或集成
+      invite_placeholder: 通过用户名添加人员
       invite_button: 邀请
       copy_hint: Share link copied
       tooltip: share or publish to the web

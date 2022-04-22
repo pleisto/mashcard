@@ -551,26 +551,31 @@ en-US:
       tooltip: show comments on current page
     share:
       menu: Share
+      invite: Invite
+      share_title: Share the page
       share_to_web: Share to web
       share_to_web_description: Publish and share link with anyone
       allow_edit: Allow edit
       learn: Learn about sharing
       copy_link_button: Copy link
       copy_link_button_done: Copied
-      invite_placeholder: Add people, emails, groups, or intergrations
+      invite_placeholder: Add people by username
       invite_button: Invite
       copy_hint: Share link copied
       tooltip: share or publish to the web
     invite:
       learn: Learn more about sharing
       type_hint: Type or paste in space domain above, separated by commas.
-      search: Add people by Web ID
+      search: Add people by username
+      no_result: no result
       button: Invite
       confirm_button: Confirm
       edit_message: Can edit
       edit_message_description: Can edit, but not share with others.
       view_message: Can view
       view_message_description: Cannot edit or share with others.
+      no_view_message: Can’t view
+      no_view_message_description: Cannot view or share with others.
       remove_message: Remove
     snapshots:
       name: Snapshot

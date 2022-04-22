@@ -1,5 +1,5 @@
 import React from 'react'
-import { cx, Button, Dropdown, Menu, MenuProps, Modal, Icon, Select, Spin, Tag } from '@brickdoc/design-system'
+import { cx, Button, Dropdown, Menu, MenuProps, Modal, Icon, Spin, Tag, Select } from '@brickdoc/design-system'
 import { useDocsI18n } from '../../hooks'
 import {
   BlockCreateShareLinkInput,

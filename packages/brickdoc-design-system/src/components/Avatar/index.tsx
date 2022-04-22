@@ -4,7 +4,7 @@ import { name2Initials, string2Color } from './initials'
 import defaultAvatar from './assets/avatars.png'
 import { styled, theme } from '../../themes'
 
-type AvatarSize = 'sm' | 'md' | 'lg'
+type AvatarSize = 'sm' | 'md' | 'lg' | 'xs' | 'xxs'
 
 export interface AvatarProps extends Omit<HTMLProps<HTMLDivElement>, 'size' | 'src' | 'css' | 'ref'> {
   shape?: 'circle' | 'square'
@@ -59,6 +59,16 @@ const AvatarWrapper = styled('span', {
         boxSize: '1.5rem',
         lineHeight: '1.5rem',
         fontSize: '1.5rem'
+      },
+      xs: {
+        boxSize: '1.375rem',
+        lineHeight: '1.375rem',
+        fontSize: '1.375rem'
+      },
+      xxs: {
+        boxSize: '1rem',
+        lineHeight: '1rem',
+        fontSize: '1rem'
       }
     },
     default: {

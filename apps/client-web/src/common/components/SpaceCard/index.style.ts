@@ -31,6 +31,18 @@ export const Card = styled('div', {
   height: '2rem',
   variants: {
     size: {
+      xxs: {
+        [`${Name}`]: {
+          fontSize: theme.fontSizes.subHeadline,
+          lineHeight: theme.lineHeights.subHeadline
+        }
+      },
+      xs: {
+        [`${Name}`]: {
+          fontSize: theme.fontSizes.subHeadline,
+          lineHeight: theme.lineHeights.subHeadline
+        }
+      },
       sm: {
         [`${Content}`]: {
           marginLeft: 8

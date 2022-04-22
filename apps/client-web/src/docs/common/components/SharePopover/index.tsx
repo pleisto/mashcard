@@ -1,87 +1,68 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect, useMemo } from 'react'
-import { Button, Input, Icon, Popover, Switch, toast, cx, useList } from '@brickdoc/design-system'
+import React, { useCallback, useState } from 'react'
+import { Button, Icon, Popover, toast, Spin, Select, Menu, Dropdown } from '@brickdoc/design-system'
+
+import { debounce } from '@brickdoc/active-support'
 import { useDocsI18n } from '../../hooks'
-import { InviteModal } from '../InviteModal'
 import {
   useBlockCreateShareLinkMutation,
-  BlockCreateShareLinkInput,
   Policytype,
   ShareLinkState,
   useGetBlockShareLinksQuery,
-  ShareLink
+  QuerySpaceSearchDocument,
+  QuerySpaceSearchQuery as Query,
+  QuerySpaceSearchQueryVariables as Variables,
+  BlockCreateShareLinkInput
 } from '@/BrickdocGraphQL'
+import { LineDown } from '@brickdoc/design-icons'
+import { useImperativeQuery } from '@/common/hooks'
 import { ShareLinkListItem } from '../ShareLinkListItem'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import styles from './index.module.less'
-import { List, Item } from './index.style'
+import { SpaceCard, SpaceType } from '@/common/components/SpaceCard'
+import { queryBlockShareLinks } from '../../graphql'
+import { Wrapper, InviteBar, List, Item, SharePopTitle, CopyLinkWrapper } from './index.style'
+import { Action, menu } from '../ShareLinkListItem/index.style'
+import { selectStyle } from './select.style'
 
+const menuClassName = menu()
+const prefixCls = selectStyle()
 interface SharePopoverProps {
   docMeta: NonNullDocMeta
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+const debounceTimeout = 800
+
+type SpaceValue = string
+
 export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, setVisible }) => {
   const { t } = useDocsI18n()
-  const [shareWithAnonymousLoading, setShareWithAnonymousLoading] = React.useState<boolean>(false)
-  const [anonymousEditableLoading, setAnonymousEditableLoading] = React.useState<boolean>(false)
-  const [shareWithAnonymousValue, setShareWithAnonymousValue] = React.useState<boolean>(false)
-  const [anonymousEditableValue, setAnonymousEditableValue] = React.useState<boolean>(false)
-  const [inviteModalVisible, setInviteModalVisible] = React.useState<boolean>(false)
+  const [inviteLoading, setInviteLoading] = React.useState<boolean>(false)
   const [copied, setCopied] = React.useState<boolean>(false)
-  const [blockCreateShareLink] = useBlockCreateShareLinkMutation()
+  const [blockCreateShareLink] = useBlockCreateShareLinkMutation({ refetchQueries: [queryBlockShareLinks] })
   const { data } = useGetBlockShareLinksQuery({ fetchPolicy: 'no-cache', variables: { id: docMeta.id } })
-  const { list, getKey, addList } = useList<ShareLink>()
+  const [fetching, setFetching] = React.useState(false)
+  const [spaceValue, setSpaceValue] = React.useState<SpaceValue[]>([])
+  const spaceSearch = useImperativeQuery<Query, Variables>(QuerySpaceSearchDocument)
+  const [options, setOptions] = React.useState<SpaceType[]>([])
 
-  const ANYONE_DOMAIN = 'anyone'
+  const [inviteUserPolicy, setInviteUserPolicy] = useState<Policytype>(Policytype.View)
 
-  useEffect(() => {
-    const anyoneShareLink = data?.blockShareLinks.find(link => link.shareSpaceData.domain === ANYONE_DOMAIN)
-    if (anyoneShareLink) {
-      setShareWithAnonymousValue(anyoneShareLink.state === ShareLinkState.Enabled)
-      setAnonymousEditableValue(anyoneShareLink.policy === Policytype.Edit)
-    } else {
-      setShareWithAnonymousValue(false)
-      setAnonymousEditableValue(false)
-    }
-  }, [data, docMeta.domain, docMeta.id])
-
-  const onClickInviteButton = (): void => {
-    setInviteModalVisible(true)
-  }
-
-  const handleVisibleChange = (value: boolean): void => {
-    if (!inviteModalVisible && !value) {
-      setVisible(false)
-    }
-  }
-
-  const onSwitchShareAnonymous = async (checked: boolean): Promise<void> => {
-    setShareWithAnonymousLoading(true)
-    const state: ShareLinkState = checked ? ShareLinkState.Enabled : ShareLinkState.Disabled
-    const policy: Policytype = anonymousEditableValue ? Policytype.Edit : Policytype.View
+  const inviteUsers = useCallback(async () => {
+    setInviteLoading(true)
     const input: BlockCreateShareLinkInput = {
       id: docMeta.id,
-      target: [{ domain: ANYONE_DOMAIN, policy, state }]
+      target: spaceValue.map(domain => ({
+        domain,
+        policy: inviteUserPolicy,
+        state: ShareLinkState.Enabled
+      }))
     }
     await blockCreateShareLink({ variables: { input } })
-    setShareWithAnonymousValue(checked)
-    setShareWithAnonymousLoading(false)
-  }
-
-  const onSwitchAnonymousEditable = async (checked: boolean): Promise<void> => {
-    setAnonymousEditableLoading(true)
-    const state: ShareLinkState = shareWithAnonymousValue ? ShareLinkState.Enabled : ShareLinkState.Disabled
-    const policy: Policytype = checked ? Policytype.Edit : Policytype.View
-    const input: BlockCreateShareLinkInput = {
-      id: docMeta.id,
-      target: [{ domain: ANYONE_DOMAIN, policy, state }]
-    }
-    await blockCreateShareLink({ variables: { input } })
-    setAnonymousEditableValue(checked)
-    setAnonymousEditableLoading(false)
-  }
+    setSpaceValue([])
+    setInviteLoading(false)
+  }, [spaceValue, inviteUserPolicy, blockCreateShareLink, docMeta.id])
 
   const link = `${docMeta.host}${docMeta.path}`
   const handleCopy = async (): Promise<void> => {
@@ -90,101 +71,121 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
     setCopied(true)
   }
 
-  const allowEditContent = shareWithAnonymousValue ? (
-    <>
-      <div className={cx(styles.row, styles.bordered)}>
-        <div className={styles.content}>
-          <label htmlFor="allow-edit-content-switch" className={styles.head}>
-            {t('share.allow_edit')}
-          </label>
-        </div>
-        <div className={styles.action}>
-          <Switch
-            id="allow-edit-content-switch"
-            size="sm"
-            onChange={async e => await onSwitchAnonymousEditable(e.target.checked)}
-            loading={anonymousEditableLoading}
-            checked={anonymousEditableValue}
-          />
-        </div>
-      </div>
-    </>
-  ) : null
+  const anyoneItem = data?.blockShareLinks.find(item => item.shareSpaceData.name === 'anyone') ?? {
+    policy: Policytype.View,
+    state: ShareLinkState.Disabled,
+    shareSpaceData: {
+      domain: 'anyone',
+      name: 'anyone'
+    }
+  }
 
-  const inviteData = useMemo(
-    () =>
-      data?.blockShareLinks.filter(
-        link => link.state === ShareLinkState.Enabled && link.shareSpaceData.domain !== ANYONE_DOMAIN
-      ) ?? [],
-    [data]
-  )
-
-  const suggestSpaces =
-    data?.blockShareLinks
-      .filter(link => link.shareSpaceData.domain !== ANYONE_DOMAIN)
-      .map(link => link.shareSpaceData) ?? []
-
-  useEffect(() => {
-    addList(inviteData as ShareLink[])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inviteData])
-
-  const inviteList = list.length ? (
-    <div className={styles.invite_list}>
-      <List>
-        {list.map((item: ShareLink, index: number) => (
-          <Item key={getKey(index)}>
+  const inviteList = (
+    <List>
+      <Item key="anyone">
+        <ShareLinkListItem docMeta={docMeta} item={anyoneItem} isAnyOne />
+      </Item>
+      {data?.blockShareLinks
+        .filter(item => item.shareSpaceData.name !== 'anyone')
+        .filter(item => item.state !== ShareLinkState.Disabled)
+        .map(item => (
+          <Item key={item.key}>
             <ShareLinkListItem docMeta={docMeta} item={item} />
           </Item>
         ))}
-      </List>
-    </div>
-  ) : (
-    <></>
+    </List>
+  )
+
+  const debounceFetcher = React.useMemo(() => {
+    const loadOptions = async (value: string): Promise<void> => {
+      setOptions([])
+      setFetching(true)
+      const { data } = await spaceSearch({ input: value })
+      const spaces: SpaceType[] = data?.spaceSearch?.filter(space => space.domain !== docMeta.domain) ?? []
+      setOptions(spaces)
+      setFetching(false)
+    }
+
+    return debounce(loadOptions, debounceTimeout)
+  }, [spaceSearch, docMeta.domain])
+
+  const onChangeInviterPolicy = (key: string) => {
+    setInviteUserPolicy(key as Policytype)
+  }
+
+  const menu = (
+    <Menu onAction={onChangeInviterPolicy}>
+      <Menu.Item className={menuClassName} itemKey={Policytype.View} active={Policytype.View === inviteUserPolicy}>
+        <div className="content">
+          <div className="head">{t('invite.view_message')}</div>
+          <div className="desc">{t('invite.view_message_description')}</div>
+        </div>
+      </Menu.Item>
+      <Menu.Item className={menuClassName} itemKey={Policytype.Edit} active={Policytype.Edit === inviteUserPolicy}>
+        <div className="content">
+          <div className="head">{t('invite.edit_message')}</div>
+          <div className="desc">{t('invite.edit_message_description')}</div>
+        </div>
+      </Menu.Item>
+    </Menu>
+  )
+  const policyMessage = Policytype.Edit === inviteUserPolicy ? t('invite.edit_message') : t('invite.view_message')
+
+  const policyData = (
+    <Action
+      css={{
+        position: 'absolute',
+        right: 86,
+        top: 8
+      }}
+    >
+      <Dropdown overlay={menu}>
+        <div>
+          {policyMessage} <LineDown />
+        </div>
+      </Dropdown>
+    </Action>
   )
 
   const shareContent = (
-    <>
-      <div className={cx(styles.row, styles.bordered)}>
-        <div className={styles.icon}>
-          <Icon.International />
-        </div>
-        <div className={styles.content}>
-          <label htmlFor="share-to-web-switch" className={styles.head}>
-            {t('share.share_to_web')}
-          </label>
-          <span className={styles.description}>{t('share.share_to_web_description')}</span>
-        </div>
-        <div className={styles.action}>
-          <Switch
-            id="share-to-web-switch"
-            size="sm"
-            onChange={async e => await onSwitchShareAnonymous(e.target.checked)}
-            loading={shareWithAnonymousLoading}
-            checked={shareWithAnonymousValue}
-          />
-        </div>
-      </div>
-      {allowEditContent}
-
-      <div className={cx(styles.row, styles.bordered)}>
-        <div role="button" tabIndex={-1} className={styles.inputWrapper} onClick={onClickInviteButton}>
-          <Input className={styles.input} placeholder={t('share.invite_placeholder')} readOnly />
-          <Button className={styles.inputButton} type="primary">
-            {t('share.invite_button')}
-          </Button>
-        </div>
-      </div>
-
+    <Wrapper>
+      <SharePopTitle>{t('share.share_title')}</SharePopTitle>
+      <InviteBar>
+        <Select
+          prefixCls={prefixCls}
+          className="user-picker"
+          showSearch
+          placeholder={t('invite.search')}
+          notFoundContent={
+            fetching ? <Spin size="sm" /> : <span style={{ padding: '0 8px' }}>{t('invite.no_result')}</span>
+          }
+          mode="multiple"
+          filterOption={false}
+          onSearch={debounceFetcher}
+          value={spaceValue}
+          onChange={newValue => {
+            setSpaceValue(newValue)
+          }}
+        >
+          {options.map(space => (
+            <Select.Option key={space.domain} value={space.domain}>
+              <SpaceCard size="xs" space={space} />
+            </Select.Option>
+          ))}
+        </Select>
+        {policyData}
+        <Button onClick={inviteUsers} disabled={inviteLoading} className="invite-btn">
+          {t('share.invite_button')}
+        </Button>
+      </InviteBar>
       {inviteList}
 
-      <div className={styles.footer}>
-        <div role="button" tabIndex={-1} onClick={handleCopy} className={styles.action}>
-          {copied ? <Icon.Check /> : <Icon.Link />}
-          <span>{t(copied ? 'share.copy_link_button_done' : 'share.copy_link_button')}</span>
-        </div>
-      </div>
-    </>
+      <CopyLinkWrapper>
+        <Button type="primary" size="sm" onClick={handleCopy} icon={copied ? <Icon.Check /> : <Icon.Link />}>
+          {t(copied ? 'share.copy_link_button_done' : 'share.copy_link_button')}
+        </Button>
+      </CopyLinkWrapper>
+    </Wrapper>
   )
 
   return (
@@ -194,15 +195,8 @@ export const SharePopover: React.FC<SharePopoverProps> = ({ docMeta, visible, se
         trigger="click"
         placement="bottom"
         visible={visible}
+        overlayStyle={{ zIndex: 1 }}
         content={shareContent}
-        overlayClassName={styles.popover}
-        onVisibleChange={handleVisibleChange}
-      />
-      <InviteModal
-        docMeta={docMeta}
-        visible={inviteModalVisible}
-        suggestSpaces={suggestSpaces}
-        setVisible={setInviteModalVisible}
       />
     </>
   )
