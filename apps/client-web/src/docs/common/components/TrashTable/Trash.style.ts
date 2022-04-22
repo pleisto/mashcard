@@ -48,18 +48,33 @@ export const Page = styled('div', {
   flex: 4,
   display: 'flex',
   alignItems: 'center',
-  'p.title': {
+  cursor: 'pointer',
+  overflow: 'hidden',
+  minWidth: 0,
+  paddingRight: '0.5rem',
+  '.ellipsis': {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
+  },
+  '.title': {
     margin: 0,
     display: 'flex',
     alignItems: 'center',
     fontSize: '0.875rem',
     lineHeight: '1.375rem',
-    color: theme.colors.typePrimary
+    color: theme.colors.typePrimary,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
   },
-  'p.path': {
+  '.path': {
     margin: '0 0 0 1.75rem',
     fontSize: '0.75rem',
-    lineHeight: 1.5
+    lineHeight: 1.5,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'
   }
 })
 
@@ -95,6 +110,10 @@ export const ActionButtonStyle = {
   }
 }
 
+export const PageTile = styled('div', {
+  flex: 1
+})
+
 export const SelectBlock = styled('div', {
   width: '2rem',
   display: 'flex',
@@ -102,6 +121,7 @@ export const SelectBlock = styled('div', {
   justifyContent: 'center',
   fontSize: 18,
   opacity: 0,
+  flexShrink: 0,
   variants: {
     checked: {
       true: {

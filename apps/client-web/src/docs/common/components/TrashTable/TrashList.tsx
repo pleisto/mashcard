@@ -6,10 +6,12 @@ import {
   useBlockHardDeleteMutation
 } from '@/BrickdocGraphQL'
 import { Spin, useList, Checkbox, Button, theme, ConfirmDialog } from '@brickdoc/design-system'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { TrashItem } from './TrashItem'
 import { Card, Delete, Undo } from '@brickdoc/design-icons'
+import { debounce } from '@brickdoc/active-support'
 
 import { queryPageBlocks, queryTrashBlocks } from '../../graphql'
 import { useApolloClient } from '@apollo/client'
@@ -24,20 +26,36 @@ export interface BlockWithChecked extends Block {
   checked?: boolean
 }
 
+const debounceTimeout = 200
+
 export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
   const { t } = useDocsI18n()
   const client = useApolloClient()
+  const [input, setInput] = useState<GetTrashBlocksQueryVariables>({ domain, search: keyword })
   const { list, getKey, addList, resetList, replace } = useList<BlockWithChecked>()
-
-  const input: GetTrashBlocksQueryVariables = React.useMemo(
-    () => ({
-      domain,
-      search: keyword
-    }),
-    [keyword, domain]
+  const setInputDebounce = useMemo(
+    () =>
+      debounce((domain, keyword) => {
+        setInput({
+          domain,
+          search: keyword
+        })
+      }, debounceTimeout),
+    []
   )
 
-  const { data, loading: listLoading } = useGetTrashBlocksQuery({ variables: input })
+  const { key } = useLocation()
+
+  useEffect(() => {
+    setInputDebounce(domain, keyword)
+  }, [domain, keyword, setInputDebounce])
+
+  const { data, loading: listLoading, refetch } = useGetTrashBlocksQuery({ variables: input })
+
+  useEffect(() => {
+    refetch()
+  }, [key, refetch])
+
   const [actionLoading, setActionLoading] = useState(false)
   const [hardDeleteModalVisible, setHardDeleteModalVisible] = useState(false)
 
@@ -91,6 +109,10 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
 
   const onClickBatchDelete = async (): Promise<void> => {
     await onBatchDelete()
+  }
+
+  const onClickBatchRestore = async (): Promise<void> => {
+    await onBatchRestore()
   }
 
   const onItemDelele = async (id: string): Promise<void> => {
@@ -166,7 +188,7 @@ export const PageTrash: React.FC<PageTrashProps> = ({ domain, keyword }) => {
             </span>
           </Page>
           <Action>
-            <Button style={{ marginRight: '0.5rem' }} icon={<Undo />} onClick={onClickBatchDelete}>
+            <Button style={{ marginRight: '0.5rem' }} icon={<Undo />} onClick={onClickBatchRestore}>
               {t('trash.restore_action')}
             </Button>
             <Button icon={<Delete />} type="danger" onClick={() => setHardDeleteModalVisible(true)}>

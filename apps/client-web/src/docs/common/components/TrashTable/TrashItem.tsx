@@ -10,7 +10,7 @@ import { FilePages, Delete, Undo } from '@brickdoc/design-icons'
 import { useNavigate } from 'react-router-dom'
 import { useDocsI18n } from '../../hooks'
 import { NonNullDocMeta } from '@/docs/pages/DocumentContentPage'
-import { Page, Time, Action, ActionButtonStyle, AvatarEmoji, SelectBlock } from './Trash.style'
+import { Page, Time, Action, ActionButtonStyle, AvatarEmoji, SelectBlock, PageTile } from './Trash.style'
 
 interface TrashItemProps {
   block: BlockWithChecked
@@ -47,12 +47,14 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
     return path.icon && path.icon.type === Blocktype.Emoji ? (path.icon as BlockEmoji).emoji : ''
   }
 
-  const title = block.text || t('title.untitled')
+  const title = <span className="ellipsis">{block.text || t('title.untitled')}</span>
   const titleData =
     block.pathArray.length === 0 ? (
       <></>
     ) : (
-      <p className="path">{block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}</p>
+      <div className="path ellipsis">
+        {block.pathArray.map(p => `${getEmoji(p)}${p.text || t('title.untitled')}`).join(' / ')}
+      </div>
     )
   const onDeleteConfrim = async () => {
     setActionLoading(true)
@@ -63,6 +65,11 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
 
   const onClickRestore = async () => {
     await onRestore(block.id)
+  }
+
+  const onCancelDelete = (): void => {
+    setHardDeleteModalVisible(false)
+    setActionLoading(false)
   }
 
   return (
@@ -79,13 +86,13 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
             style={{ background: theme.colors.white.value }}
           />
         </SelectBlock>
-        <div onClick={onClickLink}>
-          <p className="title">
+        <PageTile className="ellipsis" onClick={onClickLink}>
+          <div className="title">
             {avatar}
             {title}
-          </p>
+          </div>
           {titleData}
-        </div>
+        </PageTile>
       </Page>
       <Time>{block.deletedAt && dayjs(block.deletedAt).format('YYYY-MM-DD HH:mm:ss')}</Time>
       <Action>
@@ -107,7 +114,7 @@ export const TrashItem: React.FC<TrashItemProps> = ({ domain, block, onChange, o
         }}
         confirmBtnText={t('trash.delete_confirmation_ok')}
         cancelBtnText={t('trash.delete_confirmation_cancel')}
-        onCancel={() => setActionLoading(false)}
+        onCancel={onCancelDelete}
         onConfirm={onDeleteConfrim}
         open={hardDeleteModalVisible}
       >
