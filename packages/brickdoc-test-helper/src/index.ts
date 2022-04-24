@@ -43,6 +43,14 @@ export const TEST_ID_ENUM = {
     }
   },
   editor: {
+    blockAction: {
+      button: {
+        id: 'editor-block-action-button'
+      }
+    },
+    linkMenu: {
+      id: 'editor-link-menu'
+    },
     mentionCommands: {
       item: {
         id: 'editor-slash-commands-item'

@@ -3,6 +3,7 @@ import { SuggestionProps } from '@tiptap/suggestion'
 import { UserGroup, UserItem } from './UserGroup'
 import { Menu, styled } from '@brickdoc/design-system'
 import { PageGroup, PageItem } from './PageGroup'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface MentionCommandsMenuProps
   extends Omit<SuggestionProps, 'items' | 'decorationNode' | 'text' | 'clientRect'> {
@@ -44,7 +45,7 @@ export const MentionCommandsMenu: React.FC<MentionCommandsMenuProps> = ({
   }
 
   return (
-    <MentionMenu size={size} baseId={baseId}>
+    <MentionMenu size={size} baseId={baseId} data-testid={TEST_ID_ENUM.editor.linkMenu.id}>
       <UserGroup
         active={activeCategory === 'users'}
         activeIndex={activeIndex}

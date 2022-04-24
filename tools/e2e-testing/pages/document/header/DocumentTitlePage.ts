@@ -1,6 +1,6 @@
-import { DOCUMENT_TITLE_SELECTORS } from '@/selectors/document/documentTitle'
+import { DOCUMENT_TITLE_SELECTORS } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../BasePage'
+import { BasePage } from '../../BasePage'
 import { CoverPage } from './CoverPage'
 import { IconPage } from './IconPage'
 

@@ -1,6 +1,6 @@
-import { TabType, UPLOADER_DASHBOARD_SELECTOR } from '@/selectors/document/uploaderDashboard'
+import { TabType, UPLOADER_DASHBOARD_SELECTOR } from '@/selectors/document'
 import { Locator } from '@playwright/test'
-import { BasePage } from '../BasePage'
+import { BasePage } from '../../BasePage'
 
 export class UploaderDashboardPage extends BasePage {
   getTab(tabName: TabType): Locator {

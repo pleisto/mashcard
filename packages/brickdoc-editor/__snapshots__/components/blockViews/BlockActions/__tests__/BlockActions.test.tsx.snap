@@ -10,6 +10,7 @@ exports[`BlockActions matches snapshot correctly 1`] = `
       class="brd-c-iAZzvg"
       contenteditable="false"
       data-drag-handle="true"
+      data-testid="editor-block-action-button"
       draggable="true"
     >
       <button

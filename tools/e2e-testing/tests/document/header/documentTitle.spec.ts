@@ -1,7 +1,7 @@
 import { INITIAL_PAGE } from '@/data/common'
 import { test, expect } from '@/fixtures'
 import { rem2Pixel } from '@/helpers/utils/rem2Pixel'
-import { DocumentTitlePage } from '@/pages/document/DocumentTitlePage'
+import { DocumentTitlePage } from '@/pages/document/header/DocumentTitlePage'
 import { PageListPage } from '@/pages/sidebar/PageListPage'
 
 test.describe('Document Title', () => {

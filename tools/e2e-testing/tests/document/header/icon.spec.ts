@@ -1,11 +1,11 @@
 import { INITIAL_PAGE } from '@/data/common'
 import { UPLOADER_DATA } from '@/data/uploaderDashboard'
 import { test, expect } from '@/fixtures'
-import { DocumentTitlePage } from '@/pages/document/DocumentTitlePage'
-import { IconPage } from '@/pages/document/IconPage'
+import { DocumentTitlePage } from '@/pages/document/header/DocumentTitlePage'
+import { IconPage } from '@/pages/document/header/IconPage'
 import { PageListPage } from '@/pages/sidebar/PageListPage'
 import { COMMON_SELECTORS } from '@/selectors/common'
-import { EmojiGroup, IconTab } from '@/selectors/document/icon'
+import { EmojiGroup, IconTab } from '@/selectors/document'
 import path from 'path'
 
 test.describe('Add Icon', () => {

@@ -1,4 +1,4 @@
-import { EmojiGroup, ICON_SELECTOR } from '@/selectors/document/icon'
+import { EmojiGroup, ICON_SELECTOR } from '@/selectors/document'
 import { Locator } from '@playwright/test'
 import { UploaderDashboardPage } from './UploaderDashboardPage'
 

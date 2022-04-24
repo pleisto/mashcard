@@ -6,6 +6,7 @@ exports[`BlockActionButton matches snapshot correctly 1`] = `
     aria-haspopup="dialog"
     contenteditable="false"
     data-drag-handle="true"
+    data-testid="editor-block-action-button"
     draggable="true"
   >
     <button
@@ -49,6 +50,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 1`] = `
     aria-haspopup="dialog"
     contenteditable="false"
     data-drag-handle="true"
+    data-testid="editor-block-action-button"
     draggable="true"
   >
     <button
@@ -92,6 +94,7 @@ exports[`BlockActionButton triggers mouse enter/leave event normally 2`] = `
     aria-haspopup="dialog"
     contenteditable="false"
     data-drag-handle="true"
+    data-testid="editor-block-action-button"
     draggable="true"
   >
     <button

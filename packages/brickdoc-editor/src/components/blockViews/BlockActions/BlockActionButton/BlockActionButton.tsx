@@ -3,6 +3,7 @@ import { Button, IconProps, Popover, styled, theme } from '@brickdoc/design-syst
 import { BlockActionsMenu, BlockActionsMenuProps } from '../BlockActionsMenu'
 import { DragSecondary } from '../../../ui'
 import { useBlockContext } from '../../../../hooks/useBlockContext'
+import { TEST_ID_ENUM } from '@brickdoc/test-helper'
 
 export interface BlockActionButtonProps extends Omit<BlockActionsMenuProps, 'onClose'> {
   className?: string
@@ -49,6 +50,7 @@ const Trigger: FC<{
       suppressContentEditableWarning={true}
       draggable={true}
       data-drag-handle
+      data-testid={TEST_ID_ENUM.editor.blockAction.button.id}
       {...restProps}
     >
       <StyledBlockActionButton

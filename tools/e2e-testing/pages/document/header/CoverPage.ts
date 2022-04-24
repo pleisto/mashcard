@@ -1,4 +1,4 @@
-import { COVER_SELECTOR } from '@/selectors/document/cover'
+import { COVER_SELECTOR } from '@/selectors/document'
 import { Locator } from '@playwright/test'
 import { UploaderDashboardPage } from './UploaderDashboardPage'
 
