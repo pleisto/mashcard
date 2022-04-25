@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@brickdoc/schematics": "workspace:^",
-    "@faker-js/faker": "^6.1.2",
+    "@faker-js/faker": "^6.2.0",
     "@nestjs/testing": "^8.4.4",
     "@types/graphql-type-json": "^0.3.2",
     "@types/lru-cache": "^7.6.1",
