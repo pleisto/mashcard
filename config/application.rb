@@ -32,6 +32,8 @@ module Brickdoc
     config.autoload_paths << Rails.root.join('app', 'services')
 
     config.active_record.query_log_tags_enabled = true
+    config.active_job.queue_adapter = :async
+
 
     # Run some initializers before Zeitwerk is loaded.
     # This empty initializer forces the :let_zeitwerk_take_over initializer to run before we load initializers

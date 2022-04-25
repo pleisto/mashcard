@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 7.0.2'
+gem 'rails', '~> 7.0', '>= 7.0.2.3'
 gem 'pg', '~> 1.3.1'
 gem 'puma', '~> 5.6'
 gem 'puma_worker_killer', '~> 0.3.1'
@@ -29,13 +29,13 @@ gem 'logstop', '>= 0.2.8'
 gem 'accept_language', '>= 2.0.1'
 gem 'nokogiri', '>= 1.13.0'
 
-gem 'google-cloud-storage', '~> 1.36', '>= 1.36.1'
+gem 'google-cloud-storage', '~> 1.36', '>= 1.36.2'
 gem 'google-cloud-kms', '~> 2.3'
 
 # Feature toggles
-gem 'flipper', '~> 0.24.0'
-gem 'flipper-active_record', '~> 0.24.0'
-gem 'flipper-active_support_cache_store', '~> 0.24.0'
+gem 'flipper', '~> 0.24.1'
+gem 'flipper-active_record', '~> 0.24.1'
+gem 'flipper-active_support_cache_store', '~> 0.24.1'
 
 gem 'default_value_for', github: 'brickdoc/default_value_for'
 
@@ -47,10 +47,9 @@ gem "sentry-rails", '~> 5.0.2'
 gem 'graphql', '~> 1.13'
 gem 'graphql-fragment_cache', '~> 1.10'
 gem 'apollo_upload_server', '~> 2.1'
-gem 'graphql-batch', '~> 0.5'
 
 # Frontend
-gem 'vite_rails', '~> 3.0.5'
+gem 'vite_rails', '~> 3.0.8'
 
 ## IAM
 gem 'action_policy', '~> 0.6.0'
@@ -66,8 +65,6 @@ gem 'blake3', '~> 0.1.3'
 gem 'oauth2', '1.4.7'
 
 ## Background Tasks
-gem 'sidekiq', '~> 6.4'
-gem 'sidekiq-cron', '~> 1.2'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.5' # Don't rely on Linux/macOS timezone data.
@@ -77,7 +74,6 @@ gem 'brickdoc_settings', path: 'gems/brickdoc_settings'
 gem 'unsplash'
 
 group :development, :test do
-  gem 'cypress-on-rails', '~> 1.12.1'
   gem 'brakeman'
   gem 'ffaker'
   gem 'rubocop', '>= 1.25.1'
@@ -102,8 +98,6 @@ group :development do
   gem 'listen', '~> 3.7'
   gem 'annotate'
 
-  # vsocode ruby solargraph
-  gem 'solargraph', require: false
 end
 
 # Plugin dependencies

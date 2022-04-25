@@ -99,10 +99,6 @@
     "preact": "10.6.6",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.15",
-    "@storybook/builder-webpack4": "npm:storybook-builder-vite@>=0.1.16",
-    "@storybook/manager-webpack4": "npm:@storybook/manager-webpack5@>=6.5.0-alpha.40",
-    "webpack": ">=5",
-    "esbuild": "^0.14.38",
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.1#.yarn/patches/@rails-actioncable-npm-7.0.1-7dd9553527",
     "cached-path-relative": ">=1.1.0",
     "trim": ">= 1.0.1",
@@ -110,7 +106,8 @@
     "cpy": "npm:@brickdoc/cpy@>=8.1.2-patch.1",
     "@jest/transform": "npm:@jest/transform@>=27",
     "prosemirror-view": "patch:prosemirror-view@npm:1.23.7#.yarn/patches/prosemirror-view-npm-1.23.7-5085f0bf9b",
-    "minimist": ">= 1.2.6"
+    "minimist": ">= 1.2.6",
+    "vite-plugin-mdx": "patch:vite-plugin-mdx@npm:3.5.10#.yarn/patches/vite-plugin-mdx-npm-3.5.10-ae54c30668"
   },
   "dependencies": {
     "@swc/core": "^1.2.171",

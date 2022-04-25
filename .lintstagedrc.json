@@ -1,5 +1,4 @@
 {
   "*.(json|yml|md|graphql|ts|tsx|js|jsx)": ["prettier --write"],
-  "(app|lib|config|gems)/**/*.rb": ["bundle exec rubocop --parallel --force-exclusion"],
   "packages/brickdoc-design-icons/assets/**/*.svg": ["yarn workspace @brickdoc/design-icons generator"]
 }

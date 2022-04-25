@@ -37,16 +37,12 @@ module Brickdoc
         !!defined?(::Rails::Console)
       end
 
-      def sidekiq?
-        !!(defined?(::Sidekiq) && Sidekiq.server?)
-      end
-
       def rake?
         !!(defined?(::Rake) && Rake.application.top_level_tasks.any?) || !!defined?(::Rails::Command::RunnerCommand)
       end
 
       def multi_threaded?
-        web_server? || sidekiq?
+        web_server?
       end
 
       def max_threads
@@ -54,9 +50,6 @@ module Brickdoc
 
         if web_server? && Puma.respond_to?(:cli_config)
           threads += Puma.cli_config.options[:max_threads]
-        elsif sidekiq?
-          # An extra thread for the poller in Sidekiq Cron.
-          threads += Sidekiq.options[:concurrency] + 1
         end
 
         threads

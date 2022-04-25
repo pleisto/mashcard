@@ -1,6 +1,0 @@
----
-:concurrency: 5
-cicd:
-  :concurrency: 1
-:queues:
-  - default

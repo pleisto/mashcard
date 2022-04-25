@@ -14,9 +14,7 @@ module BrickGraphQL
     default_max_page_size DEFAULT_MAX_PAGE_SIZE
 
     use GraphQL::FragmentCache
-    use ::GraphQL::Batch
     # connections.add(ActiveRecord::Relation, ::GraphQL::Pro::PostgresStableRelationConnection)
-    disable_introspection_entry_points if Rails.env.production?
 
     query_analyzer(Concerns::QueryLogger)
 

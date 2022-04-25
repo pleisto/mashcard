@@ -49,20 +49,6 @@ spec:
             {{- else }}
             {{- toYaml .Values.resources | nindent 12 }}
             {{- end }}
-        - name: {{ .Chart.Name }}-sidekiq
-          {{- include "brickdoc.deploymentCommon" . }}
-          command: ["bundle", "exec", "sidekiq", "-C", "/app/config/sidekiq.yml"]
-          resources:
-            {{- if .Values.previewEnv }}
-            requests:
-              cpu: "0.01"
-              memory: 32Mi
-            limits:
-              cpu: "0.5"
-              memory: 512Mi
-            {{- else }}
-            {{- toYaml .Values.resources | nindent 12 }}
-            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
