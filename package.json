@@ -7,7 +7,8 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "tools/*"
+    "tools/*",
+    "plugins/*"
   ],
   "scripts": {
     "postinstall": "husky install && ./bin/pdftron static ",
@@ -101,7 +102,7 @@
     "@storybook/builder-webpack4": "npm:storybook-builder-vite@>=0.1.16",
     "@storybook/manager-webpack4": "npm:@storybook/manager-webpack5@>=6.5.0-alpha.40",
     "webpack": ">=5",
-    "esbuild": "^0.14.36",
+    "esbuild": "^0.14.38",
     "@rails/actioncable": "patch:@rails/actioncable@npm:7.0.1#.yarn/patches/@rails-actioncable-npm-7.0.1-7dd9553527",
     "cached-path-relative": ">=1.1.0",
     "trim": ">= 1.0.1",
@@ -118,7 +119,6 @@
     "ts-node": "^10.7.0"
   },
   "volta": {
-    "node": "16.14.0",
-    "yarn": "1.22.18"
+    "node": "18.0.0"
   }
 }
