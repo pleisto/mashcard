@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useMemo } from 'react'
+import { getSidebarStyle, logSideBarWidth } from '@/common/utils/sidebarStyle'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import Split from '@uiw/react-split'
 import { DocumentTopBar } from './components/DocumentTopBar'
+import { ContentSidebar } from './components/ContentSidebar'
 import { DocumentPage } from './DocumentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
-import { PageTree } from '@/docs/common/components/PageTree'
 import { SpaceSelect } from '@/docs/common/components/SpaceSelect'
-import { TrashButton } from '@/docs/common/components/TrashButton'
-import { NewPage } from './components/NewPage'
 import { Helmet } from 'react-helmet-async'
 import { GetBlockInfoQuery, Policytype, useBlockCreateMutation, useGetBlockInfoQuery } from '@/BrickdocGraphQL'
 import { useDocsI18n } from '../common/hooks'
@@ -14,13 +14,12 @@ import { queryPageBlocks } from '../common/graphql'
 import { FormulaContextVar } from '../reactiveVars'
 import { validate as isValidUUID } from 'uuid'
 import { appendFormulas, FormulaContext } from '@brickdoc/formula'
-import Logo from '@/common/assets/logo_brickdoc_without_name.svg'
 import * as Root from './DocumentContentPage.style'
 import { useFormulaActions } from './hooks/useFormulaActions'
 import { AppError404 } from '@/AppError'
 
 type Collaborator = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['collaborators'][0]
-type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
+export type Path = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['pathArray'][0]
 type icon = Exclude<Exclude<GetBlockInfoQuery['blockInfo'], undefined>, null>['icon']
 
 export interface DocMeta {
@@ -70,6 +69,7 @@ export const DocumentContentPage: React.FC = () => {
   const { currentSpace, currentUser, host, lastDomain, lastBlockIds, featureFlags } = useContext(BrickdocContext)
   const { t } = useDocsI18n()
   const navigate = useNavigate()
+  const preSidebarStyle = useMemo(getSidebarStyle, [])
 
   const loginDomain = currentSpace.domain
 
@@ -187,26 +187,7 @@ export const DocumentContentPage: React.FC = () => {
   }, [blockCreate, docid, history, domain, docMeta, lastDomain, lastBlockIds])
 
   const siderBar =
-    !docMeta.isAnonymous &&
-    (docMeta.isMine ? (
-      <>
-        <div className="mainActions">
-          <header style={{ fontSize: 0 }}>
-            <img className="brk-logo" src={Logo} alt="Brickdoc" />
-          </header>
-          <nav>
-            <SpaceSelect docMeta={docMeta} />
-            <PageTree docMeta={docMeta} />
-          </nav>
-        </div>
-        <footer>
-          <NewPage docMeta={docMeta} />
-          <TrashButton docMeta={docMeta} />
-        </footer>
-      </>
-    ) : (
-      <SpaceSelect docMeta={docMeta} />
-    ))
+    !docMeta.isAnonymous && (docMeta.isMine ? <ContentSidebar docMeta={docMeta} /> : <SpaceSelect docMeta={docMeta} />)
   if (docMeta.isNotExist) {
     return <AppError404 btnCallback={() => navigate('/')} />
   }
@@ -223,25 +204,27 @@ export const DocumentContentPage: React.FC = () => {
           '@smDown': 'sm'
         }}
       >
-        {siderBar && <Root.Section>{siderBar}</Root.Section>}
-        <main>
-          {(!loading || docMeta.isMine) && (
-            <header>
-              <DocumentTopBar docMeta={docMeta} />
-            </header>
-          )}
-          <section>
-            <article id="article">
-              {docMeta.id && (
-                <DocumentPage
-                  docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
-                  mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'}
-                />
-              )}
-            </article>
-            <aside id="aside" />
-          </section>
-        </main>
+        <Split onDragEnd={logSideBarWidth}>
+          {siderBar && <Root.Section style={preSidebarStyle}>{siderBar}</Root.Section>}
+          <main className="content">
+            {(!loading || docMeta.isMine) && (
+              <header>
+                <DocumentTopBar docMeta={docMeta} />
+              </header>
+            )}
+            <section>
+              <article id="article">
+                {docMeta.id && (
+                  <DocumentPage
+                    docMeta={{ ...docMeta, editable: docMeta.editable && !isAnonymous && !docMeta.isDeleted }}
+                    mode={!docMeta.editable || isAnonymous ? 'presentation' : 'default'}
+                  />
+                )}
+              </article>
+              <aside id="aside" />
+            </section>
+          </main>
+        </Split>
       </Root.Layout>
     </>
   )

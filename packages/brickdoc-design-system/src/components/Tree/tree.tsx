@@ -22,6 +22,7 @@ import { useUpdate } from 'ahooks'
 
 export interface TreeProps {
   height?: number
+  virtual?: boolean
   data: TreeNode[]
   currentSelectedId?: string
   initialSelectedId?: string
@@ -41,7 +42,6 @@ export interface TreeProps {
 export type TreeRef = ListRef
 
 const NODE_HEIGHT = 34
-const DEFAULT_HEIGHT = 200
 
 /** Tree
  * @example
@@ -49,6 +49,7 @@ const DEFAULT_HEIGHT = 200
 const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
   {
     height,
+    virtual,
     data: nextData,
     expandAll,
     expandOnSelect,
@@ -159,8 +160,6 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
     }
   }, [])
 
-  const finalHeight = height ?? Math.min(nodeList.length * NODE_HEIGHT, DEFAULT_HEIGHT)
-
   return (
     <div ref={handleDndAreaRef}>
       {/* make sure root area is mounted, then mount dnd area */}
@@ -169,8 +168,9 @@ const TreeInternal: ForwardRefRenderFunction<TreeRef, TreeProps> = (
           <List<InternalTreeNode>
             className={className}
             data={nodeList}
+            height={height}
+            virtual={virtual}
             data-testid="virtual-list"
-            height={finalHeight}
             itemHeight={NODE_HEIGHT}
             itemKey="id"
             ref={ref ?? listRef}

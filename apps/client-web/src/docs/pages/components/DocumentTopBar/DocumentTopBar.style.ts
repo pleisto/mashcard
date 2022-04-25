@@ -73,6 +73,7 @@ export const TopBar = styled('div', {
   alignItems: 'center',
   justifyContent: 'space-between',
   height: '3.5rem',
+  overflow: 'hidden',
 
   variants: {
     width: {

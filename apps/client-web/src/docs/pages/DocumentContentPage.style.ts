@@ -1,14 +1,55 @@
 import bg from '@/common/assets/ceramicBg.webp'
 import { theme, styled } from '@brickdoc/design-system'
+import { getNativeSidebarWdith } from '@/settings/common/sidebar'
+
+const hideScrollStyle = getNativeSidebarWdith()
+  ? {
+      '&::-webkit-scrollbar-thumb': {
+        background: 'transparent'
+      },
+      '&:hover::-webkit-scrollbar-thumb': {
+        background: theme.colors.overlayPrimary
+      }
+    }
+  : null
 
 export const Section = styled('section', {
   display: 'flex',
   flexDirection: 'column',
-  width: '270px',
   height: '100vh',
-  padding: '0.1px 0.5rem 0',
+  padding: '0.1px 0 0 0.5rem',
   marginTop: '-0.1px',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  minWidth: 270,
+  maxWidth: 496,
+  '.mainActions': {
+    position: 'sticky',
+    flex: 1,
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    overflow: 'hidden auto',
+    ...hideScrollStyle,
+    header: {
+      position: 'sticky',
+      top: 0,
+      left: 0,
+      width: '100%',
+      fontSize: 0,
+      zIndex: 2,
+      backdropFilter: 'blur(10px)'
+    },
+    nav: {
+      flex: 1
+    }
+  },
+  footer: {
+    zIndex: 2,
+    position: 'sticky',
+    width: '100%',
+    bottom: 0,
+    left: 0,
+    backdropFilter: 'blur(10px)'
+  }
 })
 
 export const Layout = styled('div', {
@@ -19,24 +60,40 @@ export const Layout = styled('div', {
   background: `url(${bg}) no-repeat center center fixed`,
   backgroundSize: 'cover, cover',
   backgroundClip: 'border-box',
+  '.w-split': {
+    height: '100%',
+    width: '100%'
+  },
+  '.w-split-horizontal': {
+    '.w-split-bar': {
+      width: '0.5rem',
+      background: 'transparent',
+      boxShadow: 'none',
+      flexShrink: 0,
+      '&:hover': {
+        background: 'transparent'
+      },
+      '&::after, &::before': {
+        display: 'none'
+      }
+    }
+  },
   [`${Section}`]: {
-    '.mainActions header > .brk-logo': {
+    'header > .brk-logo': {
       height: '24px',
       margin: '1rem 18px'
     },
-    '& > footer': {
+    '& > .mainActions > footer': {
       display: 'flex',
       alignItems: 'center'
-    },
-    '.mainActions nav': {
-      overflow: 'hidden'
     }
   },
-  '& > main': {
+  '& main.content': {
     display: 'flex',
     flexDirection: 'column',
     flex: 'auto',
     height: '100vh',
+    overflow: 'hidden',
     '& > header': {
       height: '3.5rem',
       padding: '0 3.5rem 0 0',
@@ -68,7 +125,10 @@ export const Layout = styled('div', {
         [`${Section}`]: {
           display: 'none'
         },
-        '& > main': {
+        '.w-split-bar': {
+          display: 'none'
+        },
+        '& main.content': {
           flex: 1,
           '& > header': {
             background: theme.colors.ceramicSecondary
@@ -88,7 +148,7 @@ export const Layout = styled('div', {
         [`${Section}`]: {
           display: 'none'
         },
-        '& > main': {
+        '& main.content': {
           flex: 1,
           '& > header': {
             background: theme.colors.backgroundSecondary

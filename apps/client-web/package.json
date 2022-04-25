@@ -17,6 +17,7 @@
     "@sentry/integrations": "^6.19.6",
     "@sentry/react": "^6.19.6",
     "@sentry/tracing": "^6.19.6",
+    "@uiw/react-split": "^5.8.7",
     "dayjs": "^1.11.1",
     "framer-motion": "^6.3.1",
     "graphql": "^16.3.0",

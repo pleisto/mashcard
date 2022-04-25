@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   useGetPageBlocksQuery,
   useBlockMoveMutation,
@@ -54,19 +54,21 @@ const SubPageModeEmptyNode = styled('span', {
   paddingLeft: '1.75rem'
 })
 
-const PageTreeRoot = styled('div', {
-  marginBottom: '2px',
-  maxHeight: '63vh',
-  overflow: 'auto'
-})
+const PageTreeRoot = styled('div', {})
 
 const PageTreeHeading = styled('div', {
   color: theme.colors.typeSecondary,
   fontSize: theme.fontSizes.callout,
   fontWeight: 500,
   lineHeight: '2rem',
-  paddingLeft: theme.space.md
+  paddingLeft: theme.space.md,
+  position: 'sticky',
+  zIndex: 1,
+  backdropFilter: 'blur(10px)'
 })
+
+const TREE_HEAD_HEIGHT = 32
+const FOOTER_HEIGHT = 46
 
 export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   type BlockType = Exclude<Exclude<GetPageBlocksQuery['pageBlocks'], undefined>, null>[0]
@@ -75,12 +77,12 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
 
   const { data } = useGetPageBlocksQuery({ variables: { domain: docMeta.domain } })
   // recreate these blocks because we can't modify [data.pageBlocks]'s properties
-  const [dataPageBlocks, setDataPageBlocks] = React.useState(
+  const [dataPageBlocks, setDataPageBlocks] = useState(
     data?.pageBlocks?.map(block => ({
       ...block
     })) ?? []
   )
-  React.useEffect(() => {
+  useEffect(() => {
     setDataPageBlocks(
       data?.pageBlocks?.map(block => ({
         ...block
@@ -241,10 +243,10 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return (
       <Tree
         emptyNode={t('blocks.no_pages')}
-        // selectable={!docMeta.documentInfoLoading}
         initialSelectedId={docMeta.id}
         currentSelectedId={docMeta.id}
         treeNodeClassName={mode === 'subPage' ? subPageModeNodeStyle() : ''}
+        height={mode === 'subPage' ? 200 : undefined}
         data={treeData as unknown as TreeNode[]}
         draggable={draggable && isDraggable}
         onDrop={onDrop}
@@ -276,7 +278,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     return blocks
   }, [dataPageBlocks, docMeta.id, mode])
 
-  React.useEffect(() => {
+  useEffect(() => {
     pageBlocks.forEach(b => {
       if (!b.parentId || b.type === 'doc') {
         BrickdocEventBus.dispatch(BlockNameLoad({ id: b.id, name: b.text }))
@@ -284,7 +286,7 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
     })
   }, [pageBlocks])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const flattedData = (dataPageBlocks ?? [])
       .map(b => {
         const title = getTitle(b.text)
@@ -328,10 +330,10 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
         return block
       }
     })
-
-  const pinTree = pinTreeBlocks.length ? (
+  const showPin = !!pinTreeBlocks.length
+  const pinTree = showPin ? (
     <>
-      <PageTreeHeading>Pin</PageTreeHeading>
+      <PageTreeHeading style={{ top: 0 }}>Pin</PageTreeHeading>
       {treeElement(pinTreeBlocks, false)}
     </>
   ) : (
@@ -339,11 +341,20 @@ export const PageTree: React.FC<PageTreeProps> = ({ docMeta, mode }) => {
   )
 
   return pageBlocks.length ? (
-    <PageTreeRoot>
-      {pinTree}
-      {!hideHeading && <PageTreeHeading data-testid={TEST_ID_ENUM.page.pageTree.heading.id}>Pages</PageTreeHeading>}
-      {treeElement(pageBlocks, draggable && mutable)}
-    </PageTreeRoot>
+    <>
+      <PageTreeRoot>
+        {pinTree}
+        {!hideHeading && (
+          <PageTreeHeading
+            style={{ top: showPin ? TREE_HEAD_HEIGHT : 0, bottom: FOOTER_HEIGHT }} // Consider also the two cases of sticking to the bottom and the top
+            data-testid={TEST_ID_ENUM.page.pageTree.heading.id}
+          >
+            Pages
+          </PageTreeHeading>
+        )}
+        {treeElement(pageBlocks, draggable && mutable)}
+      </PageTreeRoot>
+    </>
   ) : (
     <>{mode === 'subPage' && <SubPageModeEmptyNode>{t('blocks.no_pages')}</SubPageModeEmptyNode>}</>
   )

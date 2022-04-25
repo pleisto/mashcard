@@ -13,7 +13,6 @@ import { isSavingVar } from '../../../reactiveVars'
 import { DocMeta, NonNullDocMeta } from '../../DocumentContentPage'
 import { BrickdocContext } from '@/common/brickdocContext'
 import Logo from '@/common/assets/logo_brickdoc.svg'
-/* import styles from './DocumentTopBar.module.less' */
 import * as Root from './DocumentTopBar.style'
 import loadingIcon from './loading.png'
 

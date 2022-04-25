@@ -4,6 +4,7 @@ import { useErrorNotification } from '@/common/hooks'
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
 import { Loading, globalStyle, Provider } from '@brickdoc/design-system'
 import { HelmetProvider } from 'react-helmet-async'
+import { initBrickdocSidebarStyle } from '@/settings/common/sidebar'
 import { apolloClient } from './apollo'
 import { RootRoutes } from './RootRoutes'
 import { withProfiler, ErrorBoundary } from '@sentry/react'
@@ -12,6 +13,7 @@ import { isLoadingVar } from '@/common/reactiveVars'
 export const App: FC = () => {
   // Inject global styles
   globalStyle()
+  initBrickdocSidebarStyle()
 
   const context = useContext(BrickdocContext)
   const isLoading = useReactiveVar(isLoadingVar)

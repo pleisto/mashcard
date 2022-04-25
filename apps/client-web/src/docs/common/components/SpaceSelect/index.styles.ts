@@ -13,6 +13,7 @@ export const ActionsGroup = styled('div', {
 
 export const selectStyle = {
   display: 'flex',
+  flexShrink: 0,
   width: '100%',
   justifyContent: 'space-between',
   alignItems: 'center',
