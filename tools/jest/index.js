@@ -10,7 +10,10 @@ const esModules = [
   '@react-dnd',
   'dnd-core',
   'y-protocols',
-  'lib0'
+  'lib0',
+  'uuid',
+  '@hookform/resolvers',
+  'preact'
 ].join('|')
 
 const monoRoot = path.join(__dirname, '..', '..')
@@ -18,8 +21,10 @@ const monoRoot = path.join(__dirname, '..', '..')
 module.exports = {
   esModules,
   baseConfig: hasDom => ({
-    testURL: 'http://localhost',
-    testEnvironment: 'jsdom',
+    testEnvironmentOptions: {
+      url: 'http://localhost'
+    },
+    testEnvironment: hasDom ? 'jsdom' : 'node',
     transform: {
       '^.+\\.(t|j)sx?$': ['@swc/jest']
     },
@@ -33,11 +38,17 @@ module.exports = {
         }
       : {},
     setupFilesAfterEnv: hasDom ? [`${monoRoot}/tools/jest/dom.js`] : [],
-    timers: 'fake',
+    fakeTimers: {
+      enableGlobally: hasDom
+    },
     testMatch: ['**/**/__tests__/**/*.(ts|tsx)', '**/**/*.@(spec|test).(ts|tsx)', '!**/dist/**'],
     snapshotResolver: hasDom ? `${monoRoot}/tools/jest/snapshot-resolver.js` : undefined,
     reporters: isCI
-      ? ['default', ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]]
+      ? [
+          'default',
+          'github-actions',
+          ['jest-junit', { outputDirectory: 'junit-reports', outputName: 'jest.xml', suiteName: 'jest' }]
+        ]
       : ['default'],
     transformIgnorePatterns: [`${monoRoot}/node_modules/(?!(${esModules})/)`]
   })

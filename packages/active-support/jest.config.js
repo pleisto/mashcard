@@ -1,4 +1,3 @@
 module.exports = {
-  ...require('../../tools/jest').baseConfig(false),
-  name: '@brickdoc/active-support'
+  ...require('../../tools/jest').baseConfig(false)
 }
