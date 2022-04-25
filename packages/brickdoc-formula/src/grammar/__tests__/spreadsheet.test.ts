@@ -308,6 +308,11 @@ const testCases: TestCase[] = [
     value: [CELL_FLAG, 0]
   },
   {
+    label: 'cell 1.1 A toString',
+    input: `=${spreadsheetToken}.1.A.toString()`,
+    value: '1'
+  },
+  {
     label: 'cell 1.1 A * 3 + 1',
     input: `=${spreadsheetToken}.1.A * 3 + 1`,
     value: 4

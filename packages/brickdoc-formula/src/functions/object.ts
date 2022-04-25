@@ -12,6 +12,10 @@ export const toString = (ctx: FunctionContext, obj: AnyTypeResult): StringResult
     }
   }
 
+  if (obj.type === 'Cell') {
+    return { type: 'string', result: obj.result.value }
+  }
+
   return {
     result: JSON.stringify(obj.result),
     type: 'string'
